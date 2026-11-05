@@ -1,0 +1,50 @@
+{
+  "job": "PI09-TYPES-REMAINDER-SOURCE03-0042",
+  "status": "FAIL",
+  "error": null,
+  "FULL": true,
+  "finished": 1793839396.404777,
+  "elapsed": 12.322473049163818,
+  "peaks": {
+    "new": 170319872,
+    "whole": 5368709120,
+    "pids": 5,
+    "rss": 2449522688,
+    "globalPids": 17,
+    "globalRss": 3357851648
+  },
+  "config": {
+    "job": "PI09-TYPES-REMAINDER-SOURCE03-0042",
+    "controller": 63976,
+    "accepted": 1793839384.082304,
+    "workDeadline": 1793839564.082304,
+    "fullDeadline": 1793839624.082304,
+    "otherNew": 5368709120,
+    "baseline": {
+      "checkout": 76218368,
+      "entireGit": 1186275328,
+      "entireNode": 209088512,
+      "entirePython": 1045037056,
+      "readOnlyDependencies": 438317056,
+      "phaseTemporary": 0
+    },
+    "newCap": 209715200,
+    "priorWhole": 5368709120,
+    "pins": {
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/guard.py": "ed7aabfb463c1aafcddb5fdd8ed18796643d6f2a2a941af18f35d317901073b8",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/accounting.py": "1a2ed019be0af4d673786532c8b46eda81cd6137a7ac27c9f97b83a34387483c",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/source.mjs": "9db8679224112925d1244ef663703bcb7ac590edc1ae06c883fe7342fd23f256",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/dependencies.mjs": "328bc8c0cdc65105536c09ae475070153642c3d26abd4eb8ffbb0928e667771b",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/sparse-source.mjs": "e460bda407949ac50e8b51a00fb5d1e13c4b3b9034d0a329fbf6ef354cd3ffc2",
+      "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3.14": "1192b994fbb50303c9df2cc97c9d63797d454c7f57f20ca682877c9e770429aa",
+      "/Users/lhs/Desktop/mcr/frontend/package.json": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3",
+      "/Users/lhs/Desktop/mcr/frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+    },
+    "head": "1df46250d0edba1257139f4c82205eed54f6e74f",
+    "carryPolicy": "Conservative5GiB WHOLE and160MiB retained NEW upper preserve legacy/prep/closed-round positive maxima; old64MiB prep cap/history unchanged, no deletion credits."
+  },
+  "phaseTemporary": "/private/tmp/mcr-pi09-source-1793839384",
+  "remainingOwned": [],
+  "temporaryAbsent": true
+}

@@ -1,0 +1,35 @@
+{
+  "task": "PI09",
+  "originalTasks": [
+    "FE32",
+    "FE33",
+    "QA06"
+  ],
+  "ia": [
+    "R01"
+  ],
+  "status": "IN_PROGRESS_SOURCE_PREP",
+  "base": "5ac4bc6e69ee47e6782c2d0b25c72c5544a540d6",
+  "formerHead": "64b44cc154c243cdf9842fb9eac77731db9f2be0",
+  "checkout": "existing mcr-worktrees/fe-mural-editor (exclusive PI09 loan)",
+  "branch": "codex/mcr-fe-PI09-parade-ink-wall",
+  "rootGrant": "Exact three presentation leaves and new tests/helper/docs/evidence prefixes; former213 literal physical/presentation STOP and Root residual STOP; protected semantics read-only.",
+  "sparseManifestSha256": "5f2afadb625f7ff6c665e00f6b987a2334b4faa0398ec40b23a733c8f38c55b4",
+  "sparsePaths": 3951,
+  "oldPathsRetained": 2501,
+  "oldPathsAbsentAtBase": 0,
+  "positiveMaterializationLogicalBytes": 30365239,
+  "positiveAllocation4kBytes": 34459648,
+  "wholePhysicalStartKiB": 48584,
+  "prepCapBytes": 67108864,
+  "prepExpiresUtc": "2026-11-05T00:25:00Z",
+  "acceptedAtUtc": "2026-11-04T23:57:16Z",
+  "priorMaximum": "Inherited carry preserved; not reset and no deletion credits. Allocator retains historical ledger.",
+  "reserveFloorBytes": 8589934592,
+  "pi01Source": "056a8c48ff667134dee8e5e99710185294e4b898",
+  "pi01Qualification": "UNQUALIFIED_SOURCE_CHECKPOINT; source/native NOT_RUN at intake; exact composite permitted, not release acceptance.",
+  "referenceSha256": "9e7f17a666e1ecfc738a14b75bb3a166235a05c401f206aa24f26cf7463cbc27",
+  "sourceChecks": "NOT_RUN",
+  "nativeChecks": "NOT_RUN",
+  "goalDisposition": "Original foreground-only goal remains BLOCKED and unfinished; broader authorized PI09 objective recorded in own doc without reset/false completion."
+}

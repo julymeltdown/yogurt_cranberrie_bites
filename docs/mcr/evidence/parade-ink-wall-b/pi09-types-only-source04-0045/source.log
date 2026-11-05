@@ -1,0 +1,15 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Typecheck/lint failed; preserve evidence and fix
+    at file:///Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/source.mjs:76:1 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.22.2

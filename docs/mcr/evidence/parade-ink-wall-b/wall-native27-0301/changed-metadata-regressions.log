@@ -1,0 +1,7 @@
+test_ended_ordinary_identity_query_restarts_complete_census (__main__.Cases.test_ended_ordinary_identity_query_restarts_complete_census) ... ok
+test_exact_old_and_new_infrastructure_pairs_require_birth (__main__.Cases.test_exact_old_and_new_infrastructure_pairs_require_birth) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.012s
+
+OK

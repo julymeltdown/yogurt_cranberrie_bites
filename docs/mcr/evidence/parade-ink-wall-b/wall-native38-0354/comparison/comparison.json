@@ -1,0 +1,270 @@
+{
+  "reference": {
+    "sourceSha256": "9e7f17a666e1ecfc738a14b75bb3a166235a05c401f206aa24f26cf7463cbc27",
+    "convention": "exclusive right/bottom source pixels; manually bounded visible ink, +/-1 source pixel",
+    "sourceAnchors": {
+      "component": [
+        849,
+        280,
+        1256,
+        454
+      ],
+      "printedViewport": [
+        862,
+        291,
+        1036,
+        443
+      ],
+      "pencil": [
+        1050,
+        291,
+        1093,
+        335
+      ],
+      "erase": [
+        1050,
+        339,
+        1093,
+        383
+      ],
+      "fill": [
+        1050,
+        389,
+        1093,
+        433
+      ],
+      "palette": [
+        1105,
+        292,
+        1248,
+        389
+      ],
+      "primaryAction": [
+        1105,
+        399,
+        1248,
+        438
+      ]
+    },
+    "normalizations": [
+      {
+        "width": 360,
+        "scale": 0.8845208845208845,
+        "dimensions": [
+          360,
+          154
+        ],
+        "sha256": "9b6220688ddd7e48f80dbc724d89b38afca9114096bbaebff4216050d3942b2e"
+      },
+      {
+        "width": 390,
+        "scale": 0.9582309582309583,
+        "dimensions": [
+          390,
+          167
+        ],
+        "sha256": "d18b64b0f79f1421efb6b54c6bdf01d21a31ff3487fdb368109083ab4c5c179d"
+      },
+      {
+        "width": 430,
+        "scale": 1.0565110565110565,
+        "dimensions": [
+          430,
+          184
+        ],
+        "sha256": "381a659c55d5475239feb7f49877dcef1c3822e806fd7f6a688ca6b931a080fb"
+      }
+    ],
+    "adaptations": [
+      "Printed viewport is174x152; real128x128 raster uses uniform square fit without changing protected mapping.",
+      "Separate44px targets require a two-row horizontally scrolling16-color palette and reachable secondary tools.",
+      "The true existing explicit confirm and original predicates replace the sample SAVE wording; no dummy action."
+    ]
+  },
+  "comparisons": [
+    {
+      "viewportWidth": 360,
+      "actualBounds": {
+        "x": 17,
+        "y": 103,
+        "width": 326,
+        "height": 154,
+        "top": 103,
+        "right": 343,
+        "bottom": 257,
+        "left": 17
+      },
+      "uniformReferenceScale": 0.800982800982801,
+      "referenceDimensions": [
+        326,
+        139
+      ],
+      "actualDimensions": [
+        326,
+        154
+      ],
+      "rawMeanAbsoluteRGB": [
+        92.1693689745837,
+        107.54061429368178,
+        105.27328499721138
+      ],
+      "status": "DIAGNOSTIC_RAW_NOT_ACCEPTANCE",
+      "masking": "NONE; actual mural and server palette values vary; structural bounds remain visible.",
+      "actualGeometry": {
+        "bounds": {
+          "x": 17,
+          "y": 103,
+          "width": 326,
+          "height": 154,
+          "top": 103,
+          "right": 343,
+          "bottom": 257,
+          "left": 17
+        },
+        "surface": {
+          "x": 24,
+          "y": 110,
+          "width": 138,
+          "height": 138,
+          "top": 110,
+          "right": 162,
+          "bottom": 248,
+          "left": 24
+        },
+        "palette": {
+          "x": 222,
+          "y": 110,
+          "width": 113.984375,
+          "height": 104,
+          "top": 110,
+          "right": 335.984375,
+          "bottom": 214,
+          "left": 222
+        }
+      }
+    },
+    {
+      "viewportWidth": 390,
+      "actualBounds": {
+        "x": 17,
+        "y": 103,
+        "width": 356,
+        "height": 170.734375,
+        "top": 103,
+        "right": 373,
+        "bottom": 273.734375,
+        "left": 17
+      },
+      "uniformReferenceScale": 0.8746928746928747,
+      "referenceDimensions": [
+        356,
+        152
+      ],
+      "actualDimensions": [
+        356,
+        171
+      ],
+      "rawMeanAbsoluteRGB": [
+        92.9734706616729,
+        109.11129180629476,
+        106.60971483014653
+      ],
+      "status": "DIAGNOSTIC_RAW_NOT_ACCEPTANCE",
+      "masking": "NONE; actual mural and server palette values vary; structural bounds remain visible.",
+      "actualGeometry": {
+        "bounds": {
+          "x": 17,
+          "y": 103,
+          "width": 356,
+          "height": 170.734375,
+          "top": 103,
+          "right": 373,
+          "bottom": 273.734375,
+          "left": 17
+        },
+        "surface": {
+          "x": 24,
+          "y": 110,
+          "width": 156.734375,
+          "height": 156.734375,
+          "top": 110,
+          "right": 180.734375,
+          "bottom": 266.734375,
+          "left": 24
+        },
+        "palette": {
+          "x": 240.734375,
+          "y": 110,
+          "width": 125.25,
+          "height": 104,
+          "top": 110,
+          "right": 365.984375,
+          "bottom": 214,
+          "left": 240.734375
+        }
+      }
+    },
+    {
+      "viewportWidth": 430,
+      "actualBounds": {
+        "x": 17,
+        "y": 103,
+        "width": 396,
+        "height": 195.75,
+        "top": 103,
+        "right": 413,
+        "bottom": 298.75,
+        "left": 17
+      },
+      "uniformReferenceScale": 0.972972972972973,
+      "referenceDimensions": [
+        396,
+        169
+      ],
+      "actualDimensions": [
+        396,
+        196
+      ],
+      "rawMeanAbsoluteRGB": [
+        94.60965522572666,
+        109.80281127602557,
+        107.25517934446506
+      ],
+      "status": "DIAGNOSTIC_RAW_NOT_ACCEPTANCE",
+      "masking": "NONE; actual mural and server palette values vary; structural bounds remain visible.",
+      "actualGeometry": {
+        "bounds": {
+          "x": 17,
+          "y": 103,
+          "width": 396,
+          "height": 195.75,
+          "top": 103,
+          "right": 413,
+          "bottom": 298.75,
+          "left": 17
+        },
+        "surface": {
+          "x": 24,
+          "y": 110,
+          "width": 181.75,
+          "height": 181.75,
+          "top": 110,
+          "right": 205.75,
+          "bottom": 291.75,
+          "left": 24
+        },
+        "palette": {
+          "x": 265.75,
+          "y": 110,
+          "width": 140.234375,
+          "height": 104,
+          "top": 110,
+          "right": 405.984375,
+          "bottom": 214,
+          "left": 265.75
+        }
+      }
+    }
+  ],
+  "qualification": "Exact source/native/composite and functional adaptations require owner inspection after resource FULL; raw diff is not a pass."
+}

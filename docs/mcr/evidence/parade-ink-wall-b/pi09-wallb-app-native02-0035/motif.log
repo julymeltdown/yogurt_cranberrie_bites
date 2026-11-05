@@ -1,0 +1,45 @@
+9:39:51 AM [vite] Internal server error: Failed to resolve import "../../../../../../e2e/reference-integrated/whole/data" from "frontend/src/app/world-entry/mural-production/__tests__/default-entry/preview.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/src/app/world-entry/mural-production/__tests__/default-entry/preview.ts:3:63
+  1  |  // TEST ONLY: actual main, canonical login, production Wall factory and incumbent Phaser.
+  2  |  // HTTP/C05 below are deterministic simulations; no live/backend/IN04 claim.
+  3  |  import { wholeData, eventId, userId, frame, changedSelf } from "../../../../../../e2e/reference-integrated/whole/data";
+     |                                                                  ^
+  4  |  import { domainResponse } from "../../../../../../e2e/reference-integrated/data";
+  5  |  import { response as socialResponse } from "../../../../social-composition/__tests__/fixtures";
+      at TransformPluginContext._formatLog (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29960:39)
+      at TransformPluginContext.error (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29957:14)
+      at normalizeUrl (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:26993:18)
+      at async file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:27056:30
+      at async Promise.all (index 0)
+      at async TransformPluginContext.transform (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:27024:4)
+      at async EnvironmentPluginContainer.transform (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29745:14)
+      at async loadAndTransform (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:19729:26)
+9:39:51 AM [vite] (client) Pre-transform error: Failed to resolve import "../../../../../../e2e/reference-integrated/whole/data" from "frontend/src/app/world-entry/mural-production/__tests__/default-entry/preview.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/src/app/world-entry/mural-production/__tests__/default-entry/preview.ts:3:63
+  1  |  // TEST ONLY: actual main, canonical login, production Wall factory and incumbent Phaser.
+  2  |  // HTTP/C05 below are deterministic simulations; no live/backend/IN04 claim.
+  3  |  import { wholeData, eventId, userId, frame, changedSelf } from "../../../../../../e2e/reference-integrated/whole/data";
+     |                                                                  ^
+  4  |  import { domainResponse } from "../../../../../../e2e/reference-integrated/data";
+  5  |  import { response as socialResponse } from "../../../../social-composition/__tests__/fixtures";
+9:39:51 AM [vite] (client) Pre-transform error: Failed to resolve import "../../../../../contracts/assets/v2/reviewed/avatar-manifest.schema.json" from "frontend/src/world/network/transport/contract.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/src/world/network/transport/contract.ts:7:29
+  5  |  import common from "../../../../../contracts/assets/v1/common.schema.json";
+  6  |  import reviewedAvatar from "../../../../../contracts/assets/v2/reviewed/avatar-config.schema.json";
+  7  |  import reviewedManifest from "../../../../../contracts/assets/v2/reviewed/avatar-manifest.schema.json";
+     |                                ^
+  8  |  import policy from "../../../../../contracts/realtime/v1/policy.json";
+  9  |  export { policy };
+9:39:51 AM [vite] (client) Pre-transform error: Failed to resolve import "../../../../../contracts/assets/v2/reviewed/avatar-manifest.schema.json" from "frontend/src/world/network/transport/contract.ts". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/src/world/network/transport/contract.ts:7:29
+  5  |  import common from "../../../../../contracts/assets/v1/common.schema.json";
+  6  |  import reviewedAvatar from "../../../../../contracts/assets/v2/reviewed/avatar-config.schema.json";
+  7  |  import reviewedManifest from "../../../../../contracts/assets/v2/reviewed/avatar-manifest.schema.json";
+     |                                ^
+  8  |  import policy from "../../../../../contracts/realtime/v1/policy.json";
+  9  |  export { policy };
+{"status":"INCOMPLETE_OR_FAILED","cases":1,"errors":[{"width":360,"error":"locator.fill: Timeout 15000ms exceeded.\nCall log:\n  - waiting for getByLabel('Email', { exact: true })\n"}]}

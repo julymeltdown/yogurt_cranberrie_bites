@@ -1,0 +1,17 @@
+{
+  "nativeHelperSyntax": {
+    "status": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "typecheck": {
+    "status": 2,
+    "stdout": "error TS2688: Cannot find type definition file for 'vite/client'.\n  The file is in the program because:\n    Entry point of type library 'vite/client' specified in compilerOptions\n",
+    "stderr": ""
+  },
+  "lint": {
+    "status": 0,
+    "stdout": "",
+    "stderr": ""
+  }
+}

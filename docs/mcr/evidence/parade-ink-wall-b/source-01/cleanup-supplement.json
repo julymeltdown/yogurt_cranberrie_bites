@@ -1,0 +1,8 @@
+{
+  "originalFullReceipt": "FULL.json",
+  "temporaryAbsent": true,
+  "nodeStarted": false,
+  "productChecks": "NOT_RUN",
+  "reason": "Guardian accounting scan called expensive process sampling on every filesystem checkpoint; fixed by throttling live samples, no cap/floor/deadline relaxation.",
+  "sourceUnchanged": true
+}

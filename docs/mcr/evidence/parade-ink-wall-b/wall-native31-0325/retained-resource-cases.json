@@ -1,0 +1,14 @@
+{
+  "qualification": "RETAINED_TWO_COMPLETED_NATIVE27_RESOURCE_CASES_NOT_OVERALL_ROUND_PASS",
+  "source": "docs/mcr/evidence/parade-ink-wall-b/wall-native27-0301",
+  "sourceRoundStatus": "FAIL",
+  "fullSha256": "c1ae4b1971043f6beafdd63e3476381b931c35b03d740faff873242b2ea005ff",
+  "logSha256": "a5f32e3e7a844ffa3381829f3cbb510291c33022312f814a0a1ad68bd56437b3",
+  "currentInputs": {
+    "resource_receipts.py": "03085c376e25d92bdc33cdcaabb5e19b3a43e2e7489fc22e5ab66a2c56e8dda9",
+    "control-cases.py": "060d85aa097eb39509f08692dd67b25b4ca482b56f0e37528c7f91ebfe79725c"
+  },
+  "exactDeltaManifestSha256": "47c19f5b9d209100b841602b1afe4543bd6f863da8d34b7f8fd8821d4546df99",
+  "necessaryRelativeIdentityCaseRunsSeparately": true,
+  "currentControllerOrderingChanged": true
+}

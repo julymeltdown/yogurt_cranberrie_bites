@@ -1,0 +1,42 @@
+{
+  "status": "PASS_SOURCE_ONLY",
+  "tests": {
+    "count": 36,
+    "source": "da8939bc6240688740c195716e638d9bd3801640",
+    "lint": "PASS"
+  },
+  "types": {
+    "source": "a37915376aa07bddbe8e14b06528dfa5df8d5c35",
+    "roots": 1111,
+    "diagnostics": 0,
+    "noEmit": true,
+    "incremental": false,
+    "sourceHelperSyntax": "PASS",
+    "full": 1793840764.540781
+  },
+  "retainedIdentity": [
+    {
+      "path": "frontend/src/features/mural/editor/MuralEditor.tsx",
+      "sha256": "28f2ddc53dc4076278d0882a6bc982286718d357039a212ba20ee40e5b360212",
+      "byteIdenticalTo36CaseSource02": true
+    },
+    {
+      "path": "frontend/src/features/mural/editor/editor.css",
+      "sha256": "7a93b6176336e2e59dc4def15af1fbf53d9bd91eb19eac0a5eea5b5a844e5a59",
+      "byteIdenticalTo36CaseSource02": true
+    },
+    {
+      "path": "frontend/src/features/mural/editor/tools-b.css",
+      "sha256": "c5be478d424aae3b59046c2ffdc56a65c62f1260d9f30f9779b6b51ba88fd3b1",
+      "byteIdenticalTo36CaseSource02": true
+    },
+    {
+      "path": "frontend/src/features/mural/editor/__tests__/parade-ink-wall-b/presentation.test.tsx",
+      "sha256": "af7bd5919d292e1aa61399d0486e23e55afda85fbe84a365a65dfae085b6e7ee",
+      "byteIdenticalTo36CaseSource02": true
+    }
+  ],
+  "browser": "UNQUALIFIED",
+  "liveDeviceIN04": "NOT_RUN",
+  "publication": "NOT_RUN"
+}

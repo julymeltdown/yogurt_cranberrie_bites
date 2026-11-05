@@ -1,0 +1,15 @@
+{
+  "status": "STATIC_SOURCE_BOUNDARY_ONLY_NOT_RUNTIME",
+  "unchangedMuralPrefixSha256": "c55faf46a813088f677055297823c6c866b66663ca286f4589fe6a0e79cf2d88",
+  "eventAndPredicateAttributesUnchanged": 42,
+  "protectedReadset": {
+    "frontend/src/features/mural/editor/controller.ts": "412f821f6c8a7e4b810103abc6c6755422eb4f575cf7bed118862e515b7db795",
+    "frontend/src/features/mural/editor/input.ts": "5c111dd36e002f7af687c3cb9fc398c9fdb4fd9909fdf85997c8336d268d7ec1",
+    "frontend/src/features/mural/editor/tools.ts": "134f6e9c87716b56b2259544ab33139a40810398d0c16e681d7536681b14789c",
+    "frontend/src/features/mural/sync/MuralSyncPanel.tsx": "48b9eea42bfe30ba21ad7eeda9bca47bb7a0d36f2ddd59863cd6396d73f6492b",
+    "frontend/src/features/mural/sync/controller.ts": "67a4a15cec45cbd43d334c0c338cb87eba19b8820eb7685c0ddfa623f7be4fac"
+  },
+  "diagnosticHistory": [
+    "Initial proof script used non-normalized ../ Git path; corrected proof path only, no product changes."
+  ]
+}

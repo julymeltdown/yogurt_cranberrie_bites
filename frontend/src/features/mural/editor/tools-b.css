@@ -1,6 +1,7 @@
-/* Option B owns this addition; the incumbent editor.css remains unchanged. */
+/* PI09 layout only. Wall B controller/capability semantics remain unchanged. */
 .mcr-mural--tools-b .mcr-mural__tools:last-child button:last-child { position:static; }
-.mcr-mural__view-tools { display:flex; gap:4px; align-items:center; padding:3px 6px; }
-.mcr-mural__view-tools p { flex:1; min-inline-size:0; font-size:11px; }
-.mcr-mural__view-tools button { display:grid; place-items:center; flex:0 0 44px; inline-size:44px; block-size:44px; padding:11px; }
-.mcr-mural__view-tools svg { inline-size:20px; block-size:20px; }
+.mcr-mural__view-tools { display:flex; flex-wrap:wrap; gap:4px; align-items:center; padding:var(--pi-content-inset); }
+.mcr-mural__view-tools p { flex:1 1 100%; min-inline-size:0; }
+.mcr-mural__view-tools .mcr-mural__view-buttons,.mcr-mural__view-tools .mcr-mural__tools { display:flex; flex-wrap:wrap; align-items:center; gap:4px; }
+.mcr-mural__view-tools button { display:grid; place-items:center; flex:0 0 var(--pi-hit); inline-size:var(--pi-hit); block-size:var(--pi-hit); padding:9px; }
+.mcr-mural__view-tools svg { inline-size:var(--pi-icon); block-size:var(--pi-icon); }

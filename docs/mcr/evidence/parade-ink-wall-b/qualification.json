@@ -1,0 +1,16 @@
+{
+  "owner": "01a1a5d9-6954-7bd3-9b08-7109883187b5",
+  "task": "PI09 / FE32 / FE33 / QA06 / IA R01",
+  "status": "QUALIFIED_FOR_PUBLICATION",
+  "candidate": "769e2ddbeba36d29b9a01c0095e6207d4c47d4c1",
+  "base": "5ac4bc6e69ee47e6782c2d0b25c72c5544a540d6",
+  "qualification": "ACTUAL_DEFAULT_APP_SYNTHETIC_HTTP_MOCK_READY_NOT_LIVE",
+  "source": {"affectedCases": 36, "scopedLint": "PASS", "typeRoots": 1111, "typeDiagnostics": 0, "protectedEventDisabledPressedExpressionsUnchanged": 42},
+  "retainedMotif": {"round": "pi09-wallb-app-native07-0120", "completedWidths": [360, 390, 430], "originalOverallStatus": "FAIL", "binding": "wall-native38-0354/retained-motif.json"},
+  "currentCommands": {"report": "wall-native38-0354/commands/report.json", "case": "PASS", "reportStatus": "MOCK_READY", "fillUndoOpaqueErase": true, "originalUnknownCheckedWithoutReplay": true, "actualWithdrawalAndRestoration": true, "actualReconnectSingleWorldWithoutWallReplay": true, "canonicalSignoutActive": 0, "canonicalSignoutBlobURLs": 0, "browserDisconnected": true, "serverCloseResolved": true},
+  "visualInspection": {"generatedPNGCount": 12, "allIndividuallyInspected": true, "comparison": "wall-native38-0354/comparison/comparison.json", "widths": [360, 390, 430], "masking": "NONE", "rawDifferences": "DIAGNOSTIC_NOT_ACCEPTANCE", "adaptations": ["Square real128x128 raster instead of printed174x152 viewport", "All16 server colors in horizontally scrolling two-row44px targets", "Existing real Confirm conditional below workbench instead of unconditional sample SAVE", "Approved motif and server palette preserved"]},
+  "resourceClosure": {"proof": "wall-native38-0354/FULL.json", "status": "PASS", "FULL": true, "actualFullEpoch": 1793851383.378984, "remainingOwned": [], "temporaryAbsent": true, "primaryNewMaximumBytes": 606228480, "wholeFloorBytes": 5368709120, "cumulativeNewUpperMiB": 592, "allHigherHistoricalSamplesRetained": true, "totalPNGCount": 24},
+  "retainedCaptures": "Native14, Native18 and Native36 captures are explicitly reused; Native38 supplies fresh state assertions, not new screenshot metrics",
+  "excludedAcceptance": ["live backend", "physical iOS", "physical Android", "hardware safe area", "software keyboard", "new venue", "IN04", "QA08", "200-user qualification"],
+  "publication": "Pending direct standing412e scoped integration and verified canonical receipt"
+}

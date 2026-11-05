@@ -1,0 +1,7 @@
+{
+  "qualification": "RETAINED_TWO_IDENTITY_CASES_AND_COMMAND_HELPER_SYNTAX_LINT_NOT_NATIVE33_ROUND_PASS",
+  "fullSha256": "3b1ad273ede34d55e3d820fb2d22933254b4ff6f0ab76fd091704a379138c62c",
+  "identityLogSha256": "0055c35e2263e76beb2bd79b44e9575e1bdf0938fb5fe886627ceead916cb3b2",
+  "deltaManifestSha256": "407adfdabfd2aca5a41a3932037e7e52f80d8bb49242dd2e287c470368ab11a9",
+  "helperEvidence": "Pinned sequential controller entered commands after both unchanged helper checks returned zero."
+}

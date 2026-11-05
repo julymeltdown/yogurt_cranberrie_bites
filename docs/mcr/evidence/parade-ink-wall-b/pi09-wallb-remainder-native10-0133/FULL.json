@@ -1,0 +1,79 @@
+{
+  "job": "PI09-WALLB-REMAINDER-NATIVE10-0133",
+  "status": "FAIL",
+  "error": "AccountingError('checkpoint/root/measurement failure')",
+  "failureDetail": {
+    "accounting": {
+      "reason": "checkpoint/root/measurement failure",
+      "attempts": [
+        {
+          "attempt": 1,
+          "complete": false,
+          "knownBytes": 0,
+          "scopes": {
+            "checkout": 0,
+            "entireGit": 0,
+            "entireNode": 0,
+            "entirePython": 0,
+            "readOnlyDependencies": 0,
+            "entireChrome": 0,
+            "phaseTemporary": 0,
+            "receiptDiscovery": 0
+          },
+          "races": [],
+          "entries": 0,
+          "cause": {
+            "type": "AssertionError",
+            "message": "Unresolved legacy booking for 01a1a5d9-6950-7920-8c80-5214d4ce0eaf",
+            "errno": null
+          },
+          "finishedMonotonic": 186114.637657416
+        }
+      ],
+      "complete": false
+    },
+    "cause": "AssertionError('Unresolved legacy booking for 01a1a5d9-6950-7920-8c80-5214d4ce0eaf')"
+  },
+  "FULL": true,
+  "finished": 1793842547.074555,
+  "elapsed": 0.3026697635650635,
+  "peaks": {},
+  "config": {
+    "job": "PI09-WALLB-REMAINDER-NATIVE10-0133",
+    "controller": 78060,
+    "accepted": 1793842546.771887,
+    "workDeadline": 1793842846.771887,
+    "fullDeadline": 1793842906.771887,
+    "otherNew": 5368709120,
+    "baseline": {},
+    "censusRoot": "/private/tmp/mcr-pi09-native-1793842546",
+    "carriedNew": 306184192,
+    "newCap": 402653184,
+    "kind": "browser",
+    "processCap": 24,
+    "rssCap": 4294967296,
+    "priorWhole": 5368709120,
+    "pins": {
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/native-round.py": "e327a93943f581cfcc0453a91819bdb295f26202589b1e7cbcfeefa16feafff6",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/accounting.py": "1a2ed019be0af4d673786532c8b46eda81cd6137a7ac27c9f97b83a34387483c",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/app.mjs": "e78c49aab9a99ed7d82c35d02d76d42ab0dd92e165c437820e135dab43f6e1d8",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/dependencies.mjs": "328bc8c0cdc65105536c09ae475070153642c3d26abd4eb8ffbb0928e667771b",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/reference.py": "201cba576d57df307d6c6c84d9def3e39fecd67fc2bcf6f20a28f414cfae39d6",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/sparse-source.mjs": "9cc73ae64444a085966467aa24eddc48b6827114d6c275283589f4cfb57eae8d",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/resource_receipts.py": "a7f994421f916951d48f8517a1d103628fd51d400b1ea397da30c4189c01fc94",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/admission-fixture/transform.mjs": "4e008bb7e4803d77944401e5d3c8d91e3af4b151b3a4bf134cef1b0132435abc",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/control-cases.py": "bbaaf5f0d2e1e18f8a4af14f52740ddf296c164b6946f8550c37ae4ab7a41ec5",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/sync-ready.mjs": "1f64421236c6abceaeae682900218cb3840d988ee0e9f176a0b5fc14f2511b75",
+      "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3.14": "1192b994fbb50303c9df2cc97c9d63797d454c7f57f20ca682877c9e770429aa",
+      "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome": "3f0acaf1e585195596d73ffa1824baa72c3c3ac115b5cfc43d789030a3f23d93",
+      "/Users/lhs/Desktop/mcr/frontend/package.json": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3",
+      "/Users/lhs/Desktop/mcr/frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+    },
+    "head": "9d4c1d521b6c4244e3a446299bae5e7ce3b785bf",
+    "carryPolicy": "Conservative5GiB WHOLE; carried NEW rounds up every retained observed maximum plus1MiB control freeze, at least292MiB including priorDOC16 and entire newDOC4. Prospective384MiB upper is shared and never resets; no deletion credits."
+  },
+  "phaseTemporary": "/private/tmp/mcr-pi09-native-1793842546",
+  "remainingOwned": [],
+  "temporaryAbsent": true
+}

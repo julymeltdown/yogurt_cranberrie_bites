@@ -1,0 +1,42 @@
+{
+  "job": "PI09-WALLB-APP-NATIVE07-0120",
+  "controller": 94074,
+  "accepted": 1793841616.469656,
+  "workDeadline": 1793841916.469656,
+  "fullDeadline": 1793841976.469656,
+  "otherNew": 5368709120,
+  "baseline": {
+    "checkout": 77017088,
+    "entireGit": 1198653440,
+    "entireNode": 209088512,
+    "entirePython": 1045037056,
+    "readOnlyDependencies": 438317056,
+    "entireChrome": 1527132160,
+    "phaseTemporary": 4096,
+    "receiptDiscovery": 98304
+  },
+  "censusRoot": "/private/tmp/mcr-pi09-native-1793841616",
+  "carriedNew": 268435456,
+  "newCap": 335544320,
+  "kind": "browser",
+  "processCap": 24,
+  "rssCap": 4294967296,
+  "priorWhole": 5368709120,
+  "pins": {
+    "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/native-round.py": "0279cea6925a8086c72a68dfeeb395594a85f762f141e1e8cb0d742bc44cbc9c",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/accounting.py": "1a2ed019be0af4d673786532c8b46eda81cd6137a7ac27c9f97b83a34387483c",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/app.mjs": "250b4dc687aba35618db5a2bd1a7dce90af56519ee87f96e50caf0f8eb58640d",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/dependencies.mjs": "328bc8c0cdc65105536c09ae475070153642c3d26abd4eb8ffbb0928e667771b",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/reference.py": "201cba576d57df307d6c6c84d9def3e39fecd67fc2bcf6f20a28f414cfae39d6",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/sparse-source.mjs": "9cc73ae64444a085966467aa24eddc48b6827114d6c275283589f4cfb57eae8d",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/resource_receipts.py": "b6d8cb3e03ffe90b210298b747a67ac199d331fce689ec4bb1ab7206ccd18cdd",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/admission-fixture/transform.mjs": "4e008bb7e4803d77944401e5d3c8d91e3af4b151b3a4bf134cef1b0132435abc",
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3.14": "1192b994fbb50303c9df2cc97c9d63797d454c7f57f20ca682877c9e770429aa",
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome": "3f0acaf1e585195596d73ffa1824baa72c3c3ac115b5cfc43d789030a3f23d93",
+    "/Users/lhs/Desktop/mcr/frontend/package.json": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3",
+    "/Users/lhs/Desktop/mcr/frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+  },
+  "head": "02859b7b1e8918b2e6d16fa9a84234bb1bbba041",
+  "carryPolicy": "Conservative5GiB WHOLE and256MiB retained NEW upper preserve legacy/prep/closed-round positive maxima; old64MiB prep cap/history unchanged, no deletion credits."
+}

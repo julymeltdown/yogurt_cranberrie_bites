@@ -1,0 +1,9 @@
+{
+  "qualification": "RETAINED_CAPTURE_AND_RECOVERY_HELPER_SYNTAX_LINT_NOT_NATIVE37_ROUND_PASS",
+  "fullSha256": "86fdc274275bd38938eb58b08d994203c771e88427b76f95bd85e598bc025a97",
+  "unchangedPins": {
+    "capture-reuse.mjs": "4661a77d858269bee09a19329674fccd3372ab864fe3880f49f8f8becd8a3d48",
+    "sync-recover.mjs": "201c1b09ae55339802818768d02e1fbb36d1a740fa39c4baa9fb434f44a1ddde"
+  },
+  "evidence": "Exact sequential controller reached actual App report after all four helper checks returned zero."
+}

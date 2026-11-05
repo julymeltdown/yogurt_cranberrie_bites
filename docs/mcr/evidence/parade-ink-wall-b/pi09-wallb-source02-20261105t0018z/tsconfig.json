@@ -1,0 +1,27 @@
+{
+  "extends": "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "incremental": false,
+    "paths": {
+      "react": [
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/@types/react"
+      ],
+      "react/*": [
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/@types/react/*"
+      ],
+      "react-dom/*": [
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/@types/react-dom/*"
+      ],
+      "*": [
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/*"
+      ]
+    },
+    "typeRoots": [
+      "/Users/lhs/Desktop/mcr/frontend/node_modules/@types"
+    ]
+  },
+  "include": [
+    "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/src"
+  ]
+}

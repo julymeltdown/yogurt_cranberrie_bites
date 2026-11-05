@@ -1,0 +1,30 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend
+
+ ✓ src/features/mural/editor/__tests__/wall-tools-b/tools.test.ts (18 tests) 80ms
+ ✓ src/features/mural/editor/__tests__/reference-target/presentation.test.tsx (4 tests) 210ms
+ ✓ src/features/mural/editor/__tests__/parade-ink-wall-b/presentation.test.tsx (4 tests) 236ms
+ ✓ src/features/mural/editor/__tests__/wall-tools-b/presentation.test.tsx (3 tests) 229ms
+ ✓ src/features/mural/editor/__tests__/input.test.ts (7 tests) 3ms
+
+ Test Files  5 passed (5)
+      Tests  36 passed (36)
+   Start at  09:36:11
+   Duration  2.51s (transform 168ms, setup 0ms, import 519ms, tests 759ms, environment 902ms)
+
+JSON report written to /private/tmp/mcr-pi09-source-1793838969/tests.json
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Typecheck/lint failed; preserve evidence and fix
+    at file:///Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/source.mjs:57:1 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.22.2

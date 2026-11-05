@@ -1,0 +1,91 @@
+{
+  "job": "WALL-NATIVE22-0226",
+  "status": "FAIL",
+  "error": "AccountingError('checkpoint/root/measurement failure')",
+  "failureDetail": {
+    "accounting": {
+      "reason": "checkpoint/root/measurement failure",
+      "attempts": [
+        {
+          "attempt": 1,
+          "complete": false,
+          "knownBytes": 2254254080,
+          "scopes": {
+            "checkout": 79540224,
+            "entireGit": 1225736192,
+            "entireNode": 209088512,
+            "entirePython": 739889152,
+            "readOnlyDependencies": 0,
+            "entireChrome": 0,
+            "phaseTemporary": 0,
+            "receiptDiscovery": 0
+          },
+          "races": [],
+          "entries": 35941,
+          "cause": {
+            "type": "AssertionError",
+            "message": "Guard absolute script mismatch: {\"owner\": \"01a1a5d9-6954-7bd3-9b08-7109883187b5\", \"offer\": \"WALL-NATIVE22-0226\", \"pid\": 30919, \"birth\": \"Thu Nov 5 11:29:14 2026\", \"declaredScript\": \"/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/native-round.py\", \"observedScriptCandidates\": [], \"commandSHA256\": \"efc7749dfc5f00754e19a7d31af78b4a4bbfd21d1716a3da04d50cccbfe23cb0\"}",
+            "errno": null
+          },
+          "finishedMonotonic": 189323.712169083
+        }
+      ],
+      "complete": false
+    },
+    "cause": "AssertionError('Guard absolute script mismatch: {\"owner\": \"01a1a5d9-6954-7bd3-9b08-7109883187b5\", \"offer\": \"WALL-NATIVE22-0226\", \"pid\": 30919, \"birth\": \"Thu Nov 5 11:29:14 2026\", \"declaredScript\": \"/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/native-round.py\", \"observedScriptCandidates\": [], \"commandSHA256\": \"efc7749dfc5f00754e19a7d31af78b4a4bbfd21d1716a3da04d50cccbfe23cb0\"}')"
+  },
+  "FULL": true,
+  "finished": 1793845756.151553,
+  "elapsed": 2.0403189659118652,
+  "peaks": {},
+  "config": {
+    "job": "WALL-NATIVE22-0226",
+    "controller": 30894,
+    "accepted": 1793845754.111236,
+    "workDeadline": 1793846054.111236,
+    "fullDeadline": 1793846114.111236,
+    "otherNew": 5368709120,
+    "baseline": {
+      "checkout": 79540224,
+      "entireGit": 1225736192,
+      "entireNode": 209088512,
+      "entirePython": 1045037056,
+      "readOnlyDependencies": 438317056,
+      "entireChrome": 1527132160,
+      "phaseTemporary": 4096,
+      "receiptDiscovery": 241664
+    },
+    "censusRoot": "/private/tmp/mcr-pi09-native-1793845754",
+    "carriedNew": 452984832,
+    "allHistoricalSampleNewMaximum": 446726144,
+    "newCap": 503316480,
+    "kind": "browser",
+    "processCap": 24,
+    "rssCap": 4294967296,
+    "priorWhole": 5368709120,
+    "pins": {
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/native-round.py": "ccdc86027b5544e1a23373d9d52f764fff50fc3ffadcbf6339e04edd440810b9",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/accounting.py": "1a2ed019be0af4d673786532c8b46eda81cd6137a7ac27c9f97b83a34387483c",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/app.mjs": "281c1c63fdef9d42706ad31c5db94099a79ec486d0c429f23e044f8966d82b13",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/dependencies.mjs": "328bc8c0cdc65105536c09ae475070153642c3d26abd4eb8ffbb0928e667771b",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/reference.py": "201cba576d57df307d6c6c84d9def3e39fecd67fc2bcf6f20a28f414cfae39d6",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/sparse-source.mjs": "9cc73ae64444a085966467aa24eddc48b6827114d6c275283589f4cfb57eae8d",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/resource_receipts.py": "59897bed842730359b00f1a6c4b7350e62dff9492d8f37c6e7be60fa01a02606",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/admission-fixture/transform.mjs": "4e008bb7e4803d77944401e5d3c8d91e3af4b151b3a4bf134cef1b0132435abc",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/control-cases.py": "ab2e7bdadfa08f0e9828be6862ca3a0a8e8e57b9f02f548b6004a2792c2448a7",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/sync-ready.mjs": "a873d3e68a9fccca63231a8f069598f4a5a2ae07af8e7253c0d9758f4dfa4ec9",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/capture-reuse.mjs": "6f18326b792b143c91d2ce0789fc6af9a099735db9376444604b1090715b381e",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/commands-driver-deltas.json": "ea39e5829353f0b5cec88339928fe66990758280400f5d9e134028636527f3ef",
+      "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3.14": "1192b994fbb50303c9df2cc97c9d63797d454c7f57f20ca682877c9e770429aa",
+      "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome": "3f0acaf1e585195596d73ffa1824baa72c3c3ac115b5cfc43d789030a3f23d93",
+      "/Users/lhs/Desktop/mcr/frontend/package.json": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3",
+      "/Users/lhs/Desktop/mcr/frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+    },
+    "head": "3e2d911fdd05b360861e91dede06d1a13c228fdd",
+    "carryPolicy": "Conservative5GiB WHOLE; NEW rounds up every retained observed maximum plus1MiB control freeze. Floors432MiB for480/400MiB for448/360MiB otherwise retain every old phase, entire ordinary DOC uppers and retained-root growth. Selected upper is cumulative and never resets; no deletion credits."
+  },
+  "phaseTemporary": "/private/tmp/mcr-pi09-native-1793845754",
+  "remainingOwned": [],
+  "temporaryAbsent": true
+}

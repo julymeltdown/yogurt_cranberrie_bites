@@ -1,0 +1,39 @@
+{
+  "job": "PI09-WALLB-SOURCE01-20261105T0007Z",
+  "status": "FAIL",
+  "error": "AssertionError('Independent guardian not ready')",
+  "FULL": true,
+  "finished": 1793837595.621567,
+  "elapsed": 8.7349271774292,
+  "peaks": {},
+  "config": {
+    "job": "PI09-WALLB-SOURCE01-20261105T0007Z",
+    "controller": 97736,
+    "accepted": 1793837586.8866408,
+    "workDeadline": 1793837826.8866408,
+    "fullDeadline": 1793837886.8866408,
+    "otherNew": 4294967296,
+    "baseline": {
+      "checkout": 75948032,
+      "entireGit": 1193566208,
+      "entireNode": 209088512,
+      "entirePython": 1045037056,
+      "readOnlyDependencies": 438317056,
+      "phaseTemporary": 0
+    },
+    "priorWhole": 4294967296,
+    "pins": {
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/guard.py": "ede9de5c70117bef66af49b614675bb45bb9261bd19cb0763358ad27a8ef8af7",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/accounting.py": "1a2ed019be0af4d673786532c8b46eda81cd6137a7ac27c9f97b83a34387483c",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/source.mjs": "cb651e6a171099fd3e27a6bfbee58cdeb641b3eca8b03fb1ddafae164b7840d3",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/dependencies.mjs": "54cc3b8c54e96964755786fe2c3cb867037f364943f17ea3b956da2f47d6f925",
+      "/Users/lhs/Desktop/mcr/frontend/package.json": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3",
+      "/Users/lhs/Desktop/mcr/frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+    },
+    "head": "ea765b9b6dcdc3ec7f37f3464e8983d9fe1f5573",
+    "carryPolicy": "Conservative4GiB WHOLE high water includes legacy/prep carry; independent old64MiB prep cap/history unchanged."
+  },
+  "phaseTemporary": "/private/tmp/mcr-pi09-source-1793837586",
+  "remainingOwned": []
+}

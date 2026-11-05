@@ -1,0 +1,280 @@
+{
+  "nativeHelperSyntax": {
+    "status": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "sourceHelperSyntax": {
+    "status": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "typecheck": {
+    "status": 2,
+    "stdout": "\u001b[96msrc/shared/ui/Dialog.tsx\u001b[0m:\u001b[93m2\u001b[0m:\u001b[93m30\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS7016: \u001b[0mCould not find a declaration file for module 'react-dom'. '/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/react-dom@19.2.7_react@19.2.7/node_modules/react-dom/index.js' implicitly has an 'any' type.\n  If the 'react-dom' package actually exposes this module, consider sending a pull request to amend 'https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react-dom'\n\n\u001b[7m2\u001b[0m import { createPortal } from 'react-dom'\n\u001b[7m \u001b[0m \u001b[91m                             ~~~~~~~~~~~\u001b[0m\n",
+    "stderr": "",
+    "rootFiles": 1111,
+    "noEmit": true,
+    "incremental": false,
+    "sparseInputs": {
+      "contracts/assets/v2/reviewed/avatar-config.schema.json": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "8d4b5772c763a32e58dd49bf5115894703bba603c6e2c01333cef5a86c988c2e",
+        "bytes": 4149,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "contracts/assets/v2/reviewed/avatar-manifest.schema.json": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "3fd9bfd589a7f4d2749081ef76057f8bbaf488fbf7385c4cc024ffd01790ccbf",
+        "bytes": 119959,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "frontend/e2e/reference-integrated/whole/data.ts": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "8031884ce211e04272a20d66db4427b67a192a197a766d14a6f848765cc99d33",
+        "bytes": 4237,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "contracts/fixtures/assets/selected-static/avatar-manifest.json": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "04b0815c5ad66729c578236b010974e44274e6562a9e9dd4599a861e2eed485e",
+        "bytes": 4166,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "frontend/public/world/maps/geometry.json": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "fe8cb22822a00cccaf61125829f306b7049cef9dc46b7e0218bc4b21ee18d713",
+        "bytes": 29538,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "frontend/public/world/maps/virtual-places.json": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "0edef366bdfa7799d94312f479a539f3fffa9aad1c877c6f07e9fc2818535c83",
+        "bytes": 4446,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "frontend/public/world/maps/binding-inputs.json": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "cd37c2e5eb728049b0b4ad866d405c45bf1cb42d50418c806576b72d6f66bdeb",
+        "bytes": 1231,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "frontend/public/world/themes/binding-inputs.json": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "06c2a406b1a4c7628719651386188e79fc718cb54ae26b583ae7898e65fbb87f",
+        "bytes": 7736,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "frontend/public/world/illustrated-runtime/bindings.json": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "70a44abaa7ff2274d5d094a7a06156f4903030f6784fae53f08cd9afea9a2eba",
+        "bytes": 35434,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "frontend/e2e/reference-integrated/data.ts": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "186ca7d28cca66f2eab4fe87f95fc76e5a4acca432b109abb7216ddfc404a994",
+        "bytes": 2111,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "frontend/e2e/real/social/observations.ts": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "6bfc6cd6a2d5c744eb258fdbd1e0f9b90dc2cb8885ceff8f1e277fdb9c2c4e9c",
+        "bytes": 4741,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "frontend/e2e/real/mural-helpers.ts": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "b7845326b3306318e7d01a0cdc1213b792cde0c00fe0d96514aacae11566b647",
+        "bytes": 27397,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "frontend/public/world/reference-scene-v2/architecture-v2/revenge/scenery.json": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "68e23383ac162d2bcfe0a28019a9aa7685da6a81edb8d304c69a8d306b0388dd",
+        "bytes": 10636,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "frontend/public/world/reference-scene-v2/architecture-v2/parade/scenery.json": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "11241a53b1ccd5e11a70e920d0a9e90e34213ded5174684fba34daf93e41fe18",
+        "bytes": 10600,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "frontend/public/world/reference-scene-v2/architecture-v2/danger/scenery.json": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "60595eceb1207e91eaca34cc5868fadd10d51be3b99aabd344abe7dc99ee7255",
+        "bytes": 10600,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "frontend/public/world/reference-scene-v2/map-cozy-v1/presentation.json": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "b3c08ea713e7413539c976a49c5f1267bee3345f8cc2d1dafb99fede8e733a0a",
+        "bytes": 14186,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "frontend/public/world/reference-scene-v2/map-service-labels-v1/label-presentation.json": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "3869218ae5c1c54c001e533f9a405a7f9fbfe6d5078e765daf51132aeab0aa26",
+        "bytes": 17716,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "frontend/public/world/reference-scene-v2/map-venue-massing-v1/presentation.json": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "06c6d4dad6b2c141079f3b54f7407dd0458e9e918d043c46f20524f56d0a37c7",
+        "bytes": 12965,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "contracts/fixtures/domain/closure-start-command.json": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "8b777fb6030cc2b6aecc53cedc59965df2e573690ce860734fe0a31e4ae1ef4f",
+        "bytes": 92,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "contracts/fixtures/domain/closure-resume-command.json": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "25c4e8a69b546569d7b2c7caac530f87bbc350d2ba5704edab91f76628b1870f",
+        "bytes": 167,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "contracts/fixtures/domain/closure-resume-missing-job.json": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "3f5d8a5829c2b3873f254c47ac625d6e73dc62199f83ff53559774b2bb7c0de0",
+        "bytes": 115,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "contracts/fixtures/domain/closure-start-with-job.json": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "6be2fe5696bf3b73a0513bde0ac39c3a97e05152e4aa121a6892759a9af7f5f6",
+        "bytes": 144,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "contracts/fixtures/domain/closure-resume-unknown-field.json": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "a57dbaaabdf2128103644f7cc9bdfbc111d658a1fa5141820a37adae9ef29e1b",
+        "bytes": 184,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "contracts/fixtures/domain/closure-resume-invalid-job.json": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "25cb2effaf9a56d389ce42d2d7a8ae3c99aa6b05ea43bfa0ff3d8d79313bb3c4",
+        "bytes": 143,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "contracts/fixtures/assets/selected-static/photo01_front_01.json": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "a49ec9dcf405f2d783041fe332d687c59337fbc736f2394f6f7c5d93c4e5574b",
+        "bytes": 209,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "contracts/generated/api-client/runtime.ts": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "2022e42863e2d0970071d6930c0ec746384768901ca2854fc67f09d40ea33065",
+        "bytes": 14573,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "contracts/generated/api-client/document.ts": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "95a5e5e5a9da7e970fe2e2eb6850f6529adace9976736d1296264d06275d85f6",
+        "bytes": 2219435,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "contracts/generated/api-client/formats.ts": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "c3b897d24cee22c5f4aa744d6edd9c3fe71b55f6610e9e2b55315956a1c85dff",
+        "bytes": 2210,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "contracts/generated/api-client/types.ts": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "32de221a260c37703735cef910411a9969a9401fcdc9d217cf0c3b5321a99eb0",
+        "bytes": 668714,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "frontend/src/shared/validation/__tests__/evidence/prerequisite-probe-572473f.json": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "16a9ee51f13e185e91bd7d4f8384f2bc879faba37e93fdc0e13ff8d6ac0b6bfb",
+        "bytes": 1153,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "frontend/src/features/people/__tests__/evidence/unicode-length/prerequisite-probe-00ecd45.json": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "831b3f998faa23f9dc73a9d4f3c6e47dd3cf40aa4879401cb75b169100e52db3",
+        "bytes": 1968,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "frontend/public/world/reference-scene-v2/geometry-proposal.json": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "d2650b06842b577eb8a8a455446a10e8f69ef5f9c6cfa2dd2d6008fcc7b89542",
+        "bytes": 176405,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "frontend/e2e/real/social/admission.d.mts": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "89369877097b9643759780867e8c391018ed79583c17b6f7842cc74e2d01cf67",
+        "bytes": 1232,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "frontend/e2e/real/social/cohort.d.mts": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "ef46319ef594a774b305f5d429316d743a594656e22ab7d29efd275c4bb8fc6f",
+        "bytes": 389,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "contracts/fixtures/assets/illustrated/valid-theme.json": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "563cdd1bfbdeaab1b023651a56954fb69733edbc2e9317d8fc3715fde5a33a25",
+        "bytes": 2285,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "contracts/fixtures/assets/illustrated/invalid-unknown-field.json": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "4355370393b1149ed4b7e68f6cf34e59d94f393738b8cbd89c098a7c60508d50",
+        "bytes": 2306,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "contracts/fixtures/assets/illustrated/invalid-texture-limit.json": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "7a1fc1e590a8a80402827ae0e6f8f955b44fd95a8fb79977062acc614e4aeb53",
+        "bytes": 2286,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "contracts/fixtures/asset-semantics/illustrated-cases.json": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "cb37aa0a71540c0aa987a2ae7f588d7a94e413ce4022bf3d17febed5d211fb73",
+        "bytes": 59906,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "contracts/fixtures/realtime/motion-v1/vectors.json": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "4929a4ff10b33c7bf8286f5e2208f3a044ed73d5780d242ceb4a40629c457c6a",
+        "bytes": 11415,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "contracts/fixtures/realtime/motion-v1/negotiated.json": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "871eebcd1adc4d0d16c6c059f1f5908abde2259baa71610e73437bc99f9585b6",
+        "bytes": 4855,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "frontend/public/world/reference-scene-v2/runtime/source-binding-v2.json": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "1fc65dab0ee743ad7f0cd2eeeeb34bde629ea352f16a0a69333e6e8ff06da2e2",
+        "bytes": 1451,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "frontend/src/features/intro/__tests__/evidence/unicode-length/preview.tsx": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "4f1fe51e5258ea14c8802bbc03a638a7689a2b0991f4cf2a023d5e0e2b3deb51",
+        "bytes": 1539,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      },
+      "frontend/src/features/people/__tests__/evidence/unicode-length/preview.tsx": {
+        "source": "85435b6e260f6e9ca692e7578c9489679b816ee0",
+        "sha256": "ea10deaac21a99a4d96c2ea09a0ab14370cef2ce9a1f8d4788896b64be1604ca",
+        "bytes": 1428,
+        "reason": "EXACT_TRACKED_SPARSE_INPUT_READ_ONLY"
+      }
+    }
+  }
+}

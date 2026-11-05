@@ -1,0 +1,98 @@
+{
+  "job": "PI09-WALLB-REMAINDER-NATIVE16-0202",
+  "status": "FAIL",
+  "error": "AccountingError('checkpoint/root/measurement failure')",
+  "failureDetail": {
+    "accounting": {
+      "reason": "checkpoint/root/measurement failure",
+      "attempts": [
+        {
+          "attempt": 1,
+          "complete": false,
+          "knownBytes": 2163597312,
+          "scopes": {
+            "checkout": 78966784,
+            "entireGit": 1223602176,
+            "entireNode": 209088512,
+            "entirePython": 651939840,
+            "readOnlyDependencies": 0,
+            "entireChrome": 0,
+            "phaseTemporary": 0,
+            "receiptDiscovery": 0
+          },
+          "races": [],
+          "entries": 33976,
+          "cause": {
+            "type": "AssertionError",
+            "message": "Unresolved live workflow roots: [{'pid': 5875, 'parent': 5859, 'executable': 'python', 'scriptCandidates': [], 'birth': None, 'preflightFlag': False}]",
+            "errno": null
+          },
+          "finishedMonotonic": 187582.911965125
+        }
+      ],
+      "complete": false
+    },
+    "cause": "AssertionError(\"Unresolved live workflow roots: [{'pid': 5875, 'parent': 5859, 'executable': 'python', 'scriptCandidates': [], 'birth': None, 'preflightFlag': False}]\")"
+  },
+  "FULL": true,
+  "finished": 1793844015.490793,
+  "elapsed": 22.227017879486084,
+  "peaks": {
+    "new": 408260608,
+    "whole": 5368709120,
+    "pids": 12,
+    "rss": 3107110912,
+    "globalPids": 17,
+    "globalRss": 3248193536
+  },
+  "config": {
+    "job": "PI09-WALLB-REMAINDER-NATIVE16-0202",
+    "controller": 1788,
+    "accepted": 1793843993.263776,
+    "workDeadline": 1793844293.263776,
+    "fullDeadline": 1793844353.263776,
+    "otherNew": 5368709120,
+    "baseline": {
+      "checkout": 78946304,
+      "entireGit": 1223315456,
+      "entireNode": 209088512,
+      "entirePython": 1045037056,
+      "readOnlyDependencies": 438317056,
+      "entireChrome": 1527132160,
+      "phaseTemporary": 4096,
+      "receiptDiscovery": 180224
+    },
+    "censusRoot": "/private/tmp/mcr-pi09-native-1793843993",
+    "carriedNew": 377487360,
+    "allHistoricalSampleNewMaximum": 368136192,
+    "newCap": 436207616,
+    "kind": "browser",
+    "processCap": 24,
+    "rssCap": 4294967296,
+    "priorWhole": 5368709120,
+    "pins": {
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/native-round.py": "b0f3a116145c7ac16140e674439a0dfc8ea8ee8f5e986ee7cabb11fe3931d1ae",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/accounting.py": "1a2ed019be0af4d673786532c8b46eda81cd6137a7ac27c9f97b83a34387483c",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/app.mjs": "281c1c63fdef9d42706ad31c5db94099a79ec486d0c429f23e044f8966d82b13",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/dependencies.mjs": "328bc8c0cdc65105536c09ae475070153642c3d26abd4eb8ffbb0928e667771b",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/reference.py": "201cba576d57df307d6c6c84d9def3e39fecd67fc2bcf6f20a28f414cfae39d6",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/sparse-source.mjs": "9cc73ae64444a085966467aa24eddc48b6827114d6c275283589f4cfb57eae8d",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/resource_receipts.py": "373bbaeaae8b2e82ebcc9b66be77115c676aea7a331239039a0458e126b2031d",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/admission-fixture/transform.mjs": "4e008bb7e4803d77944401e5d3c8d91e3af4b151b3a4bf134cef1b0132435abc",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/control-cases.py": "426e57a79bdd32efd6d26e1a6dafc10ab7abdb8d80883139194af5d8484073d8",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/sync-ready.mjs": "a873d3e68a9fccca63231a8f069598f4a5a2ae07af8e7253c0d9758f4dfa4ec9",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/capture-reuse.mjs": "bebaf8e1b156efbc7bc31f086df81964209080f1a2348d8ca52fb79c684c7c0e",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/commands-driver-deltas.json": "ea39e5829353f0b5cec88339928fe66990758280400f5d9e134028636527f3ef",
+      "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3.14": "1192b994fbb50303c9df2cc97c9d63797d454c7f57f20ca682877c9e770429aa",
+      "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome": "3f0acaf1e585195596d73ffa1824baa72c3c3ac115b5cfc43d789030a3f23d93",
+      "/Users/lhs/Desktop/mcr/frontend/package.json": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3",
+      "/Users/lhs/Desktop/mcr/frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+    },
+    "head": "b6bef791dc0a08d17bf3abd87c05fbe14b4afb15",
+    "carryPolicy": "Conservative5GiB WHOLE; carried NEW rounds up every retained observed maximum plus1MiB control freeze, at least360MiB including priorDOC16, entire newDOC4 and measured between-round retained-root growth. Prospective416MiB upper is shared and never resets; no deletion credits."
+  },
+  "phaseTemporary": "/private/tmp/mcr-pi09-native-1793843993",
+  "remainingOwned": [],
+  "temporaryAbsent": true
+}

@@ -1,0 +1,82 @@
+{
+  "qualifiedNative27": {
+    "resource_receipts.py": {
+      "qualifiedSha256": "de25d00eb880c581ba665c0b32895054d6774db98f61b8fb1febc817d53d7367",
+      "currentSha256": "9de790c62b019ee318120730984571be8c5dcac1b86838cccd658be6add72a23",
+      "exactDeltas": [
+        {
+          "before": "",
+          "after": "import shlex\n"
+        },
+        {
+          "before": "",
+          "after": "\nclass OrdinaryImageMismatch(AssertionError):\n    def __init__(self,claim,controller,actual):\n        self.pid=controller['pid'];self.expected_birth=controller['birth']\n        super().__init__('Ordinary actual executable mismatch: '+json.dumps({'owner':claim['ownerThreadId'],'offer':claim['offerId'],'pid':self.pid,'birth':self.expected_birth,'expectedImage':controller['executable'],'actualImage':actual}))\n"
+        },
+        {
+          "before": "",
+          "after": "def relative_primary_matches(controller,command):\n    \"\"\"Resolve only the actual primary Python program, never an argument marker.\"\"\"\n    argv=shlex.split(command)\n    if not argv or not Path(argv[0]).name.lower().startswith('python'):return False\n    program=None\n    for value in argv[1:]:\n        if value in ['-c','-m']:return False\n        if value.startswith('-'):continue\n        program=value;break\n    declared=controller.get('script')\n    if not program or Path(program).is_absolute() or not program.endswith('.py') or not declared or not Path(declared).is_absolute():return False\n    pid=controller['pid']\n    actual_executable=subprocess.check_output(['ps','-p',str(pid),'-o','comm='],text=True).strip()\n    if not controller.get('executable') or actual_executable!=controller['executable']:return False\n    cwd_output=subprocess.check_output(['lsof','-a','-p',str(pid),'-d','cwd','-Fn'],text=True)\n    directories=[line[1:] for line in cwd_output.splitlines() if line.startswith('n')]\n    if len(directories)!=1 or not Path(directories[0]).is_absolute():return False\n    return (Path(directories[0])/program).resolve()==Path(declared).resolve()\n\n"
+        },
+        {
+          "before": "",
+          "after": "        except OrdinaryImageMismatch as error:\n            if attempt==2:raise\n            assert time.time()+.1<config['workDeadline'],'Identity reconciliation deadline'\n            time.sleep(.1);fresh=processes()\n            current_birth=fresh.births.get(error.pid)\n            if error.pid in {row[0] for row in fresh} and (not current_birth or ' '.join(current_birth.split())==' '.join(error.expected_birth.split())):raise\n            # Never return a partial census or exempt a live mismatching image.\n            # An observed departure restarts every receipt/root/cap check.\n            rows=fresh\n"
+        },
+        {
+          "before": "                    assert actual_executable==controller['executable'],'Ordinary actual executable mismatch'\n",
+          "after": "                    if actual_executable!=controller['executable']:raise OrdinaryImageMismatch(claim,controller,actual_executable)\n"
+        },
+        {
+          "before": "                assert any(value in actual[3] for value in markers),'Controller script/root mismatch'\n",
+          "after": "                assert any(value in actual[3] for value in markers) or relative_primary_matches(controller,actual[3]),'Controller script/root mismatch: '+json.dumps({'owner':claim['ownerThreadId'],'offer':claim['offerId'],'pid':controller['pid'],'birth':actual_birth,'declaredMarkers':markers,'observedScriptCandidates':[part for part in actual[3].split() if part.endswith(('.py','.mjs','.cjs','.ts'))],'commandSHA256':hashlib.sha256(actual[3].encode()).hexdigest()})\n"
+        },
+        {
+          "before": "        for guard in claim.get('guardControllers',[]):\n            assert claim.get('kind')!='ordinary' and claim.get('executionWorkflow') is not False,'Ordinary role cannot declare execution guards'\n",
+          "after": "        for guard in claim.get('guardControllers',[]):\n"
+        },
+        {
+          "before": "",
+          "after": "            assert claim.get('kind')!='ordinary' and claim.get('executionWorkflow') is not False,'Ordinary role cannot declare live execution guards: '+json.dumps({'owner':claim['ownerThreadId'],'offer':claim['offerId'],'pid':pid})\n"
+        }
+      ]
+    },
+    "control-cases.py": {
+      "qualifiedSha256": "3f8442e9d632f7782c91b30d8f6b1fc1a7303f1db61999a1799eb7f1922189d5",
+      "currentSha256": "fd68a826bc484afb8e3970a07e2c095c5b3b94a3c3cdc92ddadb8c5b903684a0",
+      "exactDeltas": [
+        {
+          "before": "",
+          "after": "    def test_relative_primary_requires_actual_cwd_executable_and_exact_program(self):\n        controller=self.records[r.OWNER]['controller']\n        controller.update(script='/mcr/owned folder/start.py',executable='/actual/python')\n        self.rows=[(111,1,1024,\"python 'owned folder/start.py'\")]\n        def metadata(command,**_kwargs):\n            return '/actual/python\\n' if command[0]=='ps' else 'p111\\nn/mcr\\n'\n        self.comm_response=metadata\n        self.assertEqual(self.census()['claims'],1)\n        self.comm_response=lambda command,**kwargs:'/wrong/python\\n' if command[0]=='ps' else metadata(command,**kwargs)\n        with self.assertRaisesRegex(AssertionError,'Controller script/root mismatch'):self.census()\n        self.comm_response=lambda command,**kwargs:metadata(command,**kwargs) if command[0]=='ps' else 'p111\\nn/wrong\\n'\n        with self.assertRaisesRegex(AssertionError,'Controller script/root mismatch'):self.census()\n        self.comm_response=metadata\n        self.rows=[(111,1,1024,\"python other.py --output 'owned folder/start.py'\")]\n        with self.assertRaisesRegex(AssertionError,'Controller script/root mismatch'):self.census()\n        self.rows=[(111,1,1024,\"python -c 'print(1)' 'owned folder/start.py'\")]\n        with self.assertRaisesRegex(AssertionError,'Controller script/root mismatch'):self.census()\n    def test_absent_ordinary_guard_history_does_not_hide_live_guard(self):\n        self.records['ordinary']={'ownerThreadId':'ordinary','offerId':'PREP','state':'FULL','kind':'ordinary','controller':None,'guardControllers':[{'pid':333,'birth':'TEST_BIRTH','script':'/mcr/old-guard.py'}]}\n        self.assertEqual(self.census()['claims'],1)\n        self.rows.append((333,1,1024,'python /mcr/old-guard.py'))\n        with self.assertRaisesRegex(AssertionError,'Ordinary role cannot declare live execution guards'):self.census()\n    def test_ordinary_image_departure_restarts_complete_census_but_live_mismatch_fails(self):\n        self.observation('PREP',executable='/actual/python')\n        self.rows=r.ProcessRows(self.rows,{111:'TEST_BIRTH',222:'TEST_BIRTH'})\n        self.config['workDeadline']=r.time.time()+10\n        self.comm_response=lambda *_args,**_kwargs:'/ended/image\\n'\n        fresh=r.ProcessRows([self.rows[0]],{111:'TEST_BIRTH'})\n        with patch.object(r,'processes',return_value=fresh),patch.object(r.time,'sleep'):\n            result=self.census()\n        self.assertEqual(result['claims'],1)\n        self.assertFalse(any(item['owner']=='ordinary' for item in result['observed']))\n        fresh=r.ProcessRows(self.rows,{111:'TEST_BIRTH',222:'TEST_BIRTH'})\n        with patch.object(r,'processes',return_value=fresh),patch.object(r.time,'sleep'),self.assertRaisesRegex(AssertionError,'Ordinary actual executable mismatch'):\n            self.census()\n    def test_nested_yield_preserves_active_and_legacy_claims(self):\n        self.records['yielded']={'ownerThreadId':'yielded','offerId':'OLD','acceptedAtEpoch':1,'state':'ACCEPTED','kind':'source','processCap':6,'rssCapBytes':r.GiB,'controller':None,'guardControllers':[],'queueDisposition':{'offerId':'NEW','state':'UNREADY_YIELD'}}\n        self.members=[{'owner':'yielded','offerId':'OLD','acceptedAtEpoch':1,'state':'ACCEPTED','kind':'source'}]\n        result=self.census();self.assertEqual(result['claims'],2);self.assertEqual(result['reservedPids'],30)\n        self.rows.append((222,1,1024,'python /mcr/hidden.py'))\n        with self.assertRaisesRegex(AssertionError,'Unresolved live workflow'):self.census()\n        self.rows.pop()\n        self.records['yielded'].update(offerId='NEW',state='FULL',acceptedAtEpoch=2)\n        with self.assertRaisesRegex(AssertionError,'Unresolved legacy booking'):self.census()\n        self.members=[];self.records['yielded']['state']='UNREADY_YIELD'\n        with self.assertRaisesRegex(AssertionError,'Unknown receipt state'):self.census()\n"
+        }
+      ]
+    }
+  },
+  "qualifiedNative33": {
+    "resource_receipts.py": {
+      "qualifiedSha256": "7f2738e895a9eb58850f5b2d4321013ead00366e7ddf045723708176c6be78d7",
+      "currentSha256": "9de790c62b019ee318120730984571be8c5dcac1b86838cccd658be6add72a23",
+      "exactDeltas": [
+        {
+          "before": "",
+          "after": "\nclass OrdinaryImageMismatch(AssertionError):\n    def __init__(self,claim,controller,actual):\n        self.pid=controller['pid'];self.expected_birth=controller['birth']\n        super().__init__('Ordinary actual executable mismatch: '+json.dumps({'owner':claim['ownerThreadId'],'offer':claim['offerId'],'pid':self.pid,'birth':self.expected_birth,'expectedImage':controller['executable'],'actualImage':actual}))\n"
+        },
+        {
+          "before": "",
+          "after": "        except OrdinaryImageMismatch as error:\n            if attempt==2:raise\n            assert time.time()+.1<config['workDeadline'],'Identity reconciliation deadline'\n            time.sleep(.1);fresh=processes()\n            current_birth=fresh.births.get(error.pid)\n            if error.pid in {row[0] for row in fresh} and (not current_birth or ' '.join(current_birth.split())==' '.join(error.expected_birth.split())):raise\n            # Never return a partial census or exempt a live mismatching image.\n            # An observed departure restarts every receipt/root/cap check.\n            rows=fresh\n"
+        },
+        {
+          "before": "                    assert actual_executable==controller['executable'],'Ordinary actual executable mismatch'\n",
+          "after": "                    if actual_executable!=controller['executable']:raise OrdinaryImageMismatch(claim,controller,actual_executable)\n"
+        }
+      ]
+    },
+    "control-cases.py": {
+      "qualifiedSha256": "aa36fc8e183cbf468b7279fad2250130c05f318b8bbe3557f89169a1fb35b454",
+      "currentSha256": "fd68a826bc484afb8e3970a07e2c095c5b3b94a3c3cdc92ddadb8c5b903684a0",
+      "exactDeltas": [
+        {
+          "before": "",
+          "after": "    def test_ordinary_image_departure_restarts_complete_census_but_live_mismatch_fails(self):\n        self.observation('PREP',executable='/actual/python')\n        self.rows=r.ProcessRows(self.rows,{111:'TEST_BIRTH',222:'TEST_BIRTH'})\n        self.config['workDeadline']=r.time.time()+10\n        self.comm_response=lambda *_args,**_kwargs:'/ended/image\\n'\n        fresh=r.ProcessRows([self.rows[0]],{111:'TEST_BIRTH'})\n        with patch.object(r,'processes',return_value=fresh),patch.object(r.time,'sleep'):\n            result=self.census()\n        self.assertEqual(result['claims'],1)\n        self.assertFalse(any(item['owner']=='ordinary' for item in result['observed']))\n        fresh=r.ProcessRows(self.rows,{111:'TEST_BIRTH',222:'TEST_BIRTH'})\n        with patch.object(r,'processes',return_value=fresh),patch.object(r.time,'sleep'),self.assertRaisesRegex(AssertionError,'Ordinary actual executable mismatch'):\n            self.census()\n    def test_nested_yield_preserves_active_and_legacy_claims(self):\n        self.records['yielded']={'ownerThreadId':'yielded','offerId':'OLD','acceptedAtEpoch':1,'state':'ACCEPTED','kind':'source','processCap':6,'rssCapBytes':r.GiB,'controller':None,'guardControllers':[],'queueDisposition':{'offerId':'NEW','state':'UNREADY_YIELD'}}\n        self.members=[{'owner':'yielded','offerId':'OLD','acceptedAtEpoch':1,'state':'ACCEPTED','kind':'source'}]\n        result=self.census();self.assertEqual(result['claims'],2);self.assertEqual(result['reservedPids'],30)\n        self.rows.append((222,1,1024,'python /mcr/hidden.py'))\n        with self.assertRaisesRegex(AssertionError,'Unresolved live workflow'):self.census()\n        self.rows.pop()\n        self.records['yielded'].update(offerId='NEW',state='FULL',acceptedAtEpoch=2)\n        with self.assertRaisesRegex(AssertionError,'Unresolved legacy booking'):self.census()\n        self.members=[];self.records['yielded']['state']='UNREADY_YIELD'\n        with self.assertRaisesRegex(AssertionError,'Unknown receipt state'):self.census()\n"
+        }
+      ]
+    }
+  }
+}

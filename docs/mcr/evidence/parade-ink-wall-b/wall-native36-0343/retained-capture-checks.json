@@ -1,0 +1,6 @@
+{
+  "qualification": "RETAINED_NATIVE28_HELPER_SYNTAX_AND_LINT_ONLY_NOT_ROUND_PASS",
+  "fullSha256": "956a779833de34926fa930ff2f6b6bcc6fdff248effeff90305f2b0920ad41d5",
+  "controllerFlowPin": "5ad2ac62aeb626b2a1bafa7be687e8daa68a9e9e698cd846ccd80f63adee7bed",
+  "evidence": "Pinned sequential controller reached commands after both helper return codes were zero; helper unchanged."
+}

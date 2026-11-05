@@ -1,0 +1,48 @@
+{
+  "job": "PI09-WALLB-SOURCE02-20261105T0018Z",
+  "status": "FAIL",
+  "error": null,
+  "FULL": true,
+  "finished": 1793838976.723064,
+  "elapsed": 6.832952976226807,
+  "peaks": {
+    "new": 85446656,
+    "whole": 5368709120,
+    "pids": 5,
+    "rss": 1368375296,
+    "globalPids": 5,
+    "globalRss": 1174421504
+  },
+  "config": {
+    "job": "PI09-WALLB-SOURCE02-20261105T0018Z",
+    "controller": 15248,
+    "accepted": 1793838969.890111,
+    "workDeadline": 1793839209.890111,
+    "fullDeadline": 1793839269.890111,
+    "otherNew": 5368709120,
+    "baseline": {
+      "checkout": 76013568,
+      "entireGit": 1187041280,
+      "entireNode": 209088512,
+      "entirePython": 1045037056,
+      "readOnlyDependencies": 438317056,
+      "phaseTemporary": 0
+    },
+    "priorWhole": 5368709120,
+    "pins": {
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/guard.py": "01a566bed98475202e7db25d5964268448ab944dcd83098344fe8a54b2a2d9d2",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/accounting.py": "1a2ed019be0af4d673786532c8b46eda81cd6137a7ac27c9f97b83a34387483c",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/source.mjs": "cb651e6a171099fd3e27a6bfbee58cdeb641b3eca8b03fb1ddafae164b7840d3",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/dependencies.mjs": "328bc8c0cdc65105536c09ae475070153642c3d26abd4eb8ffbb0928e667771b",
+      "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3.14": "1192b994fbb50303c9df2cc97c9d63797d454c7f57f20ca682877c9e770429aa",
+      "/Users/lhs/Desktop/mcr/frontend/package.json": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3",
+      "/Users/lhs/Desktop/mcr/frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+    },
+    "head": "da8939bc6240688740c195716e638d9bd3801640",
+    "carryPolicy": "Conservative5GiB WHOLE and80MiB retained NEW upper preserve legacy/prep/closed-round positive maxima; old64MiB prep cap/history unchanged, no deletion credits."
+  },
+  "phaseTemporary": "/private/tmp/mcr-pi09-source-1793838969",
+  "remainingOwned": [],
+  "temporaryAbsent": true
+}

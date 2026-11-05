@@ -1,0 +1,29 @@
+{
+  "qualification": "EXACT_COMMANDS_ONLY_DELTAS_FROM_NATIVE07_MOTIF_DRIVER",
+  "deltas": [
+    {
+      "before": "",
+      "after": "    await (await import('./sync-recover.mjs')).reconnectAfterDegraded(page,editor,expect)\n    c.syncRecovered={state:await state(page),world:await page.evaluate(()=>window.__MURAL_ROOT_ENTRY__.worldProof())};assert.equal(c.syncRecovered.state.peak,1);assert.equal(c.syncRecovered.state.requests.filter(row=>row.method==='POST'&&row.path.includes('/mural/')).length,c.state.requests.filter(row=>row.method==='POST'&&row.path.includes('/mural/')).length);assert.equal(c.syncRecovered.world.mural?.objects,1)\n"
+    },
+    {
+      "before": "    await page.evaluate(()=>window.__MURAL_ROOT_ENTRY__.denyTools(true));await editor.getByRole('button',{name:'Refresh confirmed wall',exact:true}).click()\n",
+      "after": "    await (await import('./sync-ready.mjs')).denyToolsAndRefresh(page,editor,expect)\n"
+    },
+    {
+      "before": "",
+      "after": "    await (await import('./sync-ready.mjs')).restoreTools(page,editor,expect)\n"
+    },
+    {
+      "before": "assert(c.syncDegraded.writeButtons.every(button=>button.disabled))",
+      "after": "assert(!c.syncDegraded.editorPresent||(c.syncDegraded.writeButtons.length===3&&c.syncDegraded.writeButtons.every(button=>button.disabled)))"
+    },
+    {
+      "before": "    await expect(editor.getByRole('button',{name:'Fill preview',exact:true})).toBeDisabled()",
+      "after": "    await expect(page.getByText('Wall unavailable. Reconnect to a qualified world scene before opening the current wall.',{exact:true})).toBeVisible()\n    await expect(editor).toHaveCount(0);assert.equal((await page.evaluate(()=>window.__MURAL_ROOT_ENTRY__.worldProof())).mural,null)"
+    },
+    {
+      "before": "async function screenshot(page,name){",
+      "after": "async function screenshot(page,name){if(mode==='commands'&&process.env.PI09_REUSE_COMMAND_CAPTURES){const reused=await (await import('./capture-reuse.mjs')).reuseCapture(name,out,process.env.PI09_REUSE_COMMAND_CAPTURES);if(reused)return reused}"
+    }
+  ]
+}

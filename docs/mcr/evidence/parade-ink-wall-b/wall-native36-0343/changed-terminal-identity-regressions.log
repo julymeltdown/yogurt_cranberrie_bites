@@ -1,0 +1,7 @@
+test_ordinary_image_departure_restarts_complete_census_but_live_mismatch_fails (__main__.Cases.test_ordinary_image_departure_restarts_complete_census_but_live_mismatch_fails) ... ok
+test_nested_yield_preserves_active_and_legacy_claims (__main__.Cases.test_nested_yield_preserves_active_and_legacy_claims) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.005s
+
+OK

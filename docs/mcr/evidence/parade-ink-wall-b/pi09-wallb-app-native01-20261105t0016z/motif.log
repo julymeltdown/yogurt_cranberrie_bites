@@ -1,0 +1,15 @@
+file:///Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/app.mjs:11
+import {chromium,expect} from '@playwright/test'
+        ^^^^^^^^
+SyntaxError: Named export 'chromium' not found. The requested module '@playwright/test' is a CommonJS module, which may not support all module.exports as named exports.
+CommonJS modules can always be imported via the default export, for example using:
+
+import pkg from '@playwright/test';
+const {chromium,expect} = pkg;
+
+    at #asyncInstantiate (node:internal/modules/esm/module_job:455:21)
+    at async ModuleJob.run (node:internal/modules/esm/module_job:553:5)
+    at async node:internal/modules/esm/loader:647:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.22.2

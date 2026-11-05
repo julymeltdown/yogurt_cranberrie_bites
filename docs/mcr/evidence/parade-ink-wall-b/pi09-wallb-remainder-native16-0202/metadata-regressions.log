@@ -1,0 +1,13 @@
+test_absent_controller_reservation (__main__.Cases.test_absent_controller_reservation) ... ok
+test_dictionary_booking_live_digest (__main__.Cases.test_dictionary_booking_live_digest) ... ok
+test_null_script_ordinary (__main__.Cases.test_null_script_ordinary) ... ok
+test_observation_only_ended (__main__.Cases.test_observation_only_ended) ... ok
+test_ordinary_cannot_hide_node (__main__.Cases.test_ordinary_cannot_hide_node) ... ok
+test_same_offer_exact_epoch (__main__.Cases.test_same_offer_exact_epoch) ... ok
+test_string_booking_live_digest (__main__.Cases.test_string_booking_live_digest) ... ok
+test_unknown_script_fails (__main__.Cases.test_unknown_script_fails) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.009s
+
+OK

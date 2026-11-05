@@ -1,0 +1,22 @@
+{
+  "qualification": "RETAINED_COMPLETED_NATIVE07_CASES_NOT_NATIVE07_OVERALL_PASS",
+  "source": "docs/mcr/evidence/parade-ink-wall-b/pi09-wallb-app-native07-0120/motif/report.partial.json",
+  "sha256": "98604882ddc24f9d3958cd61abbe7bd8c7bdf608a2d7f6eae736f680d8175955",
+  "priorCandidate": "02859b7b1e8918b2e6d16fa9a84234bb1bbba041",
+  "currentCandidate": "cbeebc21086f1bfbba81ad7e3d8cf561df2b9887",
+  "runnerUnchanged": false,
+  "declaredCommandsOnlyDelta": {
+    "restoresToolsBeforeClose": true,
+    "rejectsVacuousPresentEditorButtonProof": true,
+    "motifDriverBytesUnchanged": true,
+    "syncReadySha256": "1f64421236c6abceaeae682900218cb3840d988ee0e9f176a0b5fc14f2511b75"
+  },
+  "sourceReadsetRechecked": true,
+  "widths": [
+    360,
+    390,
+    430
+  ],
+  "originalRoundStatus": "FAIL",
+  "closedFullSha256": "2215b55030e3d6916dd5f27e0d372abb2edbe61cbf1d3e889ef910f61eafcf67"
+}

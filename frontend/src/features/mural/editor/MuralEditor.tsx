@@ -143,9 +143,10 @@ export function MuralEditor({ controller, onRefresh, synchronizationStatus }: { 
   const recovery = unresolved || state.availability !== 'writable' || snapshot?.state !== 'EDITABLE'
   const confirmLabel = draft?.operation === 'fill' ? 'Confirm fill' : draft?.operation === 'erase' ? 'Confirm erase' : draft?.operation === 'undo' ? 'Confirm undo' : 'Confirm pixel'
   const refresh = () => { onRefresh?.(); void controller.refreshTools() }
-  return <section className="mcr-mural mcr-mural--tools-b" aria-label="Wall editor"><ConcertWindow title="Wall" icon="wall">
+  return <section className="mcr-mural mcr-mural--tools-b mcr-mural--parade-ink" aria-label="Wall editor"><ConcertWindow title="Wall" icon="wall">
     {snapshot && <>
       <h3 className="mcr-mural__heading">THE BLACK PARADE</h3>
+      <div className="mcr-mural__workbench">
       <div className="mcr-mural__workspace">
         <div ref={surface} className={`mcr-mural__surface mcr-mural__surface--${tool}`} role="group" aria-label="Mural pixel preview" aria-describedby={`${id}-help ${id}-keyboard`} tabIndex={0}
           onKeyDown={keyboard} onContextMenu={e => { e.preventDefault(); input.cancel() }}
@@ -159,12 +160,6 @@ export function MuralEditor({ controller, onRefresh, synchronizationStatus }: { 
             <button type="button" aria-label="Pencil preview" title="Pencil preview" aria-pressed={tool === 'pencil'} disabled={!controller.canUseTool('pencil')} onClick={() => chooseTool('pencil')}><ToolIcon name="pencil" /></button>
             <button type="button" aria-label="Erase preview" title="Erase preview" aria-pressed={tool === 'erase'} disabled={!controller.canUseTool('erase')} onClick={() => chooseTool('erase')}><ToolIcon name="erase" /></button>
             <button type="button" aria-label="Fill preview" title="Fill preview" aria-pressed={tool === 'fill'} disabled={!controller.canUseTool('fill')} onClick={() => chooseTool('fill')}><ToolIcon name="fill" /></button>
-            <button type="button" aria-label="Preview undo of my last action" title="Preview undo of my last action" disabled={!controller.canUseTool('undo')} onClick={() => { input.cancel(); controller.previewUndo() }}><ToolIcon name="undo" /></button>
-          </div>
-          <div className="mcr-mural__tools">
-            <output aria-label="Zoom level">{view.zoom}×</output>
-            <button type="button" aria-label="Zoom in" title="Zoom in" onClick={() => { input.cancel(); updateView(zoomViewport(view.zoom * 2)) }} disabled={view.zoom >= 8}><ToolIcon name="plus" /></button>
-            <button type="button" aria-label="Zoom out" title="Zoom out" onClick={() => { input.cancel(); updateView(zoomViewport(view.zoom / 2)) }} disabled={view.zoom <= 1}><ToolIcon name="minus" /></button>
           </div>
         </div>
       </div>
@@ -179,10 +174,6 @@ export function MuralEditor({ controller, onRefresh, synchronizationStatus }: { 
         </div>
       </fieldset>
       <p id={`${id}-palette-help`} className="mcr-mural__sr-only">{snapshot.palette.length} server colors. Scroll horizontally or focus this palette and use Left, Right, Home or End. Tab reaches every color.</p>
-      <div className="mcr-mural__view-tools" role="group" aria-label="Additional wall view controls">
-        <p>{state.toolContext ? `${state.toolContext.budget.remaining} / 512 changed cells available · shared across all tools and tabs` : state.toolStatus === 'loading' ? 'Checking server tools…' : 'Additional tools unavailable until verified by the server.'}</p>
-        <button type="button" aria-label="Pan wall" title="Pan wall" aria-pressed={tool === 'pan'} onClick={() => chooseTool('pan')}><ToolIcon name="pan" /></button>
-        <button type="button" aria-label="Fit wall" title="Fit wall" onClick={() => { input.cancel(); updateView(boundViewport(fitView())) }}><ToolIcon name="fit" /></button>
       </div>
       {(selection || draft || unresolved) && <div className="mcr-mural__preview" aria-label="Selection preview">
         <div><strong>PREVIEW ONLY</strong><p>{draft ? `${draft.operation.toUpperCase()} · ${draft.count} changed ${draft.count === 1 ? 'cell' : 'cells'} · revision ${draft.revision}`
@@ -192,6 +183,19 @@ export function MuralEditor({ controller, onRefresh, synchronizationStatus }: { 
         <ConcertAction className="mcr-mural__confirm" pending={state.phase === 'sending'} disabled={!controller.canConfirm()} onClick={() => void controller.confirm()}>{confirmLabel}</ConcertAction>
         <button type="button" aria-label="Cancel preview" title="Cancel preview" disabled={!(selection || draft) || busy} onClick={() => controller.cancelSelection()}><span aria-hidden="true">×</span></button>
       </div>}
+      <div className="mcr-mural__view-tools" role="group" aria-label="Additional wall view controls">
+        <p>{state.toolContext ? `${state.toolContext.budget.remaining} / 512 changed cells available · shared across all tools and tabs` : state.toolStatus === 'loading' ? 'Checking server tools…' : 'Additional tools unavailable until verified by the server.'}</p>
+        <div className="mcr-mural__view-buttons">
+            <button type="button" aria-label="Preview undo of my last action" title="Preview undo of my last action" disabled={!controller.canUseTool('undo')} onClick={() => { input.cancel(); controller.previewUndo() }}><ToolIcon name="undo" /></button>
+          <div className="mcr-mural__tools">
+            <output aria-label="Zoom level">{view.zoom}×</output>
+            <button type="button" aria-label="Zoom in" title="Zoom in" onClick={() => { input.cancel(); updateView(zoomViewport(view.zoom * 2)) }} disabled={view.zoom >= 8}><ToolIcon name="plus" /></button>
+            <button type="button" aria-label="Zoom out" title="Zoom out" onClick={() => { input.cancel(); updateView(zoomViewport(view.zoom / 2)) }} disabled={view.zoom <= 1}><ToolIcon name="minus" /></button>
+          </div>
+        <button type="button" aria-label="Pan wall" title="Pan wall" aria-pressed={tool === 'pan'} onClick={() => chooseTool('pan')}><ToolIcon name="pan" /></button>
+        <button type="button" aria-label="Fit wall" title="Fit wall" onClick={() => { input.cancel(); updateView(boundViewport(fitView())) }}><ToolIcon name="fit" /></button>
+        </div>
+      </div>
     </>}
     <div className="mcr-mural__meta"><span>{snapshot ? `REV ${snapshot.revision} · ${snapshot.state}` : 'No confirmed wall'}</span>
       <span>{unresolved ? 'Command unresolved' : state.availability !== 'writable' ? state.availability : cooldown > 0 ? `Cooldown: ${cooldown}s` : snapshot ? `${snapshot.palette.length} colors · scroll →` : 'Loading'}</span></div>
@@ -223,7 +227,7 @@ function ToolIcon({ name }: { name: 'pencil' | 'erase' | 'fill' | 'undo' | 'pan'
     {name === 'pencil' ? <path d="m4 15 11-11 5 5L9 20l-6 1 1-6Zm9-9 5 5M4 15l5 5" />
       : name === 'erase' ? <path d="m3 14 9-10 9 8-7 8H8l-5-6Zm4-4 9 8M8 20h13" />
       : name === 'fill' ? <><path d="m3 12 9-9 8 8-9 9-8-8Zm9-9-2-2M4 12h15M21 15s-2 3-2 4a2 2 0 0 0 4 0c0-1-2-4-2-4Z" /></>
-      : name === 'undo' ? <path d="M8 4 2 10l6 6M3 10h11a7 7 0 0 1 0 14" />
+      : name === 'undo' ? <path d="M8 5 3 10l5 5M4 10h10a6 6 0 0 1 0 12h-3" />
       : name === 'pan' ? <><path d="M8 13V5a2 2 0 0 1 4 0v7-9a2 2 0 0 1 4 0v9-6a2 2 0 0 1 4 0v10c0 5-3 6-7 6-3 0-5-2-7-5l-3-4c-1-2 1-4 3-2l2 2Z" /></>
       : name === 'plus' ? <path d="M12 4v16M4 12h16" /> : name === 'minus' ? <path d="M4 12h16" />
       : <path d="M3 9V3h6M15 3h6v6M21 15v6h-6M9 21H3v-6M8 8h8v8H8Z" />}

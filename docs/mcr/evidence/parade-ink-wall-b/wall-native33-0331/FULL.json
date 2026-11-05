@@ -1,0 +1,71 @@
+{
+  "job": "WALL-NATIVE33-0331",
+  "status": "FAIL",
+  "error": "AssertionError('Guard absolute script mismatch: {\"owner\": \"01a1a5d9-6954-7bd3-9b08-7109883187b5\", \"offer\": \"WALL-NATIVE33-0331\", \"pid\": 76940, \"birth\": \"Thu Nov 5 12:37:32 2026\", \"declaredScript\": \"/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/native-round.py\", \"observedScriptCandidates\": [], \"commandSHA256\": \"efc7749dfc5f00754e19a7d31af78b4a4bbfd21d1716a3da04d50cccbfe23cb0\"}')",
+  "failureDetail": {
+    "accounting": null,
+    "cause": null
+  },
+  "FULL": true,
+  "finished": 1793849867.414081,
+  "elapsed": 15.321075916290283,
+  "peaks": {
+    "new": 523202560,
+    "whole": 5368709120,
+    "pids": 12,
+    "rss": 2386657280,
+    "globalPids": 17,
+    "globalRss": 2618507264
+  },
+  "config": {
+    "job": "WALL-NATIVE33-0331",
+    "controller": 76901,
+    "accepted": 1793849852.0930061,
+    "workDeadline": 1793850152.0930061,
+    "fullDeadline": 1793850212.0930061,
+    "otherNew": 5368709120,
+    "baseline": {
+      "checkout": 81059840,
+      "entireGit": 1236398080,
+      "entireNode": 209088512,
+      "entirePython": 1045037056,
+      "readOnlyDependencies": 438317056,
+      "entireChrome": 1527132160,
+      "phaseTemporary": 8192,
+      "receiptDiscovery": 397312
+    },
+    "censusRoot": "/private/tmp/mcr-pi09-native-1793849852",
+    "initialIdentityReconciliation": true,
+    "carriedNew": 498073600,
+    "allHistoricalSampleNewMaximum": 496418816,
+    "newCap": 536870912,
+    "kind": "browser",
+    "processCap": 24,
+    "rssCap": 4294967296,
+    "priorWhole": 5368709120,
+    "pins": {
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/native-round.py": "175f6a92fc1a89982621fef60b6147db74e67eb260b6f611487cb58ceb98d424",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/accounting.py": "1a2ed019be0af4d673786532c8b46eda81cd6137a7ac27c9f97b83a34387483c",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/app.mjs": "b0ccabf019c52af20d310ead53854a5883a8535efcbef519874cd6bd7d5d00c5",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/dependencies.mjs": "328bc8c0cdc65105536c09ae475070153642c3d26abd4eb8ffbb0928e667771b",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/reference.py": "201cba576d57df307d6c6c84d9def3e39fecd67fc2bcf6f20a28f414cfae39d6",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/sparse-source.mjs": "9cc73ae64444a085966467aa24eddc48b6827114d6c275283589f4cfb57eae8d",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/resource_receipts.py": "7f2738e895a9eb58850f5b2d4321013ead00366e7ddf045723708176c6be78d7",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/admission-fixture/transform.mjs": "4e008bb7e4803d77944401e5d3c8d91e3af4b151b3a4bf134cef1b0132435abc",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/control-cases.py": "aa36fc8e183cbf468b7279fad2250130c05f318b8bbe3557f89169a1fb35b454",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/sync-ready.mjs": "fcaf7b858cfe5e2480fe9a8d54edc8fc7b399017269a4e609c504e8783e975f3",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/capture-reuse.mjs": "6f18326b792b143c91d2ce0789fc6af9a099735db9376444604b1090715b381e",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/commands-driver-deltas.json": "b1c88e50c03ee5d8fc5bc84dc04036c9272e874be1ae601da6c3f3f78bcb3a8d",
+      "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3.14": "1192b994fbb50303c9df2cc97c9d63797d454c7f57f20ca682877c9e770429aa",
+      "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome": "3f0acaf1e585195596d73ffa1824baa72c3c3ac115b5cfc43d789030a3f23d93",
+      "/Users/lhs/Desktop/mcr/frontend/package.json": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3",
+      "/Users/lhs/Desktop/mcr/frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6"
+    },
+    "head": "80ba9d55baaba57f6d74bb0b11e94297eb803567",
+    "carryPolicy": "Conservative5GiB WHOLE; NEW rounds up every retained observed maximum plus1MiB control freeze. Floors434MiB for480/400MiB for448/360MiB otherwise retain every old phase, entire ordinary DOC uppers including FINALDOC1 and retained-root growth. Selected upper is cumulative and never resets; no deletion credits."
+  },
+  "phaseTemporary": "/private/tmp/mcr-pi09-native-1793849852",
+  "remainingOwned": [],
+  "temporaryAbsent": true
+}

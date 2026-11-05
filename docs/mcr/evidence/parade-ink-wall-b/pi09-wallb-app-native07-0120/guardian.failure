@@ -1,0 +1,1 @@
+{"error": "AssertionError(\"Unresolved live workflow roots: [{'pid': 99184, 'parent': 49590, 'executable': 'python', 'scriptCandidates': ['/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/parade-ink-reports/supervise-allocated.py'], 'birth': 'Thu Nov  5 10:20:43 2026', 'preflightFlag': False}]\")", "accounting": null}

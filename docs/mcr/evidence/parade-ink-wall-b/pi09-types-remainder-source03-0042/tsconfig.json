@@ -1,0 +1,31 @@
+{
+  "extends": "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "incremental": false,
+    "types": [
+      "/Users/lhs/Desktop/mcr/frontend/node_modules/vite/client.d.ts"
+    ],
+    "paths": {
+      "react": [
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/@types/react"
+      ],
+      "react/*": [
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/@types/react/*"
+      ],
+      "react-dom/*": [
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/@types/react-dom/*"
+      ],
+      "*": [
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/*"
+      ]
+    },
+    "typeRoots": [
+      "/Users/lhs/Desktop/mcr/frontend/node_modules/@types"
+    ]
+  },
+  "include": [
+    "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/src",
+    "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/vite.config.ts"
+  ]
+}

@@ -1,0 +1,17 @@
+test_absent_ordinary_observation_is_not_a_live_identity (__main__.Cases.test_absent_ordinary_observation_is_not_a_live_identity) ... ok
+test_ended_ordinary_identity_query_restarts_complete_census (__main__.Cases.test_ended_ordinary_identity_query_restarts_complete_census) ... ERROR
+test_guard_ancestor_deduplicates_and_requires_birth (__main__.Cases.test_guard_ancestor_deduplicates_and_requires_birth) ... ok
+
+======================================================================
+ERROR: test_ended_ordinary_identity_query_restarts_complete_census (__main__.Cases.test_ended_ordinary_identity_query_restarts_complete_census)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/control-cases.py", line 75, in test_ended_ordinary_identity_query_restarts_complete_census
+    self.assertEqual(next(item for item in result['observed'] if item['owner']=='ordinary')['pids'],0)
+                     ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+StopIteration
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.007s
+
+FAILED (errors=1)
