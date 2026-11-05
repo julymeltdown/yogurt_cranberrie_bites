@@ -1,6 +1,9 @@
-import { createContext, useContext, useEffect, useState, type ReactNode } from 'react'
+import { useCallback, createContext, useContext, useEffect, useState, type ReactNode } from 'react'
 import { WorldRooms, type ReplicationReader } from '../../features/world-rooms'
 import { WorldNearby } from '../../features/world-nearby'
+import type { NearbyPerson } from '../../features/world-nearby/projection'
+import { useReviewedCharacterOwner } from '../character-entry/provider'
+import { ReviewedCharacterView } from '../character-entry/ReviewedCharacterView'
 import { createWorldAccessBridge, type WorldAccessBridge } from './bridge'
 import type { EntryAuth, WorldEntryRequest } from './authority'
 
@@ -24,6 +27,9 @@ export function WorldRoomsPanel() {
   return bridge ? <WorldRooms controller={bridge.controller} /> : <p role="status">Room access is unavailable until your current world access is verified.</p>
 }
 export function WorldNearbyPanel() {
-  const bridge = useContext(AccessContext)
-  return bridge ? <WorldNearby controller={bridge.controller} /> : <p role="status">Nearby people are unavailable until your current world access is verified.</p>
+  const bridge = useContext(AccessContext), owner = useReviewedCharacterOwner()
+  const renderAvatar = useCallback((person: NearbyPerson) => owner?.isCurrent() && person.avatar?.config
+    ? <ReviewedCharacterView owner={owner} config={person.avatar.config} label={`${person.displayName}'s avatar`} size={64} />
+    : <span role="img" aria-label={`${person.displayName}'s avatar unavailable`}>Character unavailable</span>, [owner])
+  return bridge ? <WorldNearby controller={bridge.controller} renderAvatar={renderAvatar} /> : <p role="status">Nearby people are unavailable until your current world access is verified.</p>
 }

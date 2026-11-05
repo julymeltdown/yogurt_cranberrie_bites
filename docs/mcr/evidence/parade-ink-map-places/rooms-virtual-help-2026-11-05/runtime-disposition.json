@@ -1,0 +1,38 @@
+{
+  "status": "IN_PROGRESS_NOT_ACCEPTED",
+  "canonicalConsumer": "7b81bf62d22b48a1ea653a1a84fae199c2b1d837",
+  "source14": {
+    "status": "PASS",
+    "acceptedAtEpoch": 1793863577.582509,
+    "fullAtEpoch": 1793863590.76047,
+    "exits": [
+      0,
+      0
+    ]
+  },
+  "native10": {
+    "acceptedAtEpoch": 1793864339.71045,
+    "fullUTC": "2026-11-05T07:39:04.406187+00:00",
+    "failure": "Own launcher supplied unsupported PHASE=native; no browser started",
+    "retainedNewPeak": 344924160
+  },
+  "native11": {
+    "acceptedAtEpoch": 1793864748.222656,
+    "fullUTC": "2026-11-05T07:46:06.594110+00:00",
+    "commandStartedUTC": "2026-11-05T07:45:52.361366+00:00",
+    "commandFinishedUTC": "2026-11-05T07:46:03.614135+00:00",
+    "failure": "native.mjs:73 activeSockets remained0 at5000ms; actual authorized recognized policy and /world CONNECTING state, zero sockets/canvases, no pageerrors",
+    "rootCause": "UNPROVEN",
+    "captures": 0,
+    "shareSafe": "NO_IMAGE",
+    "retainedNewPeak": 378359808,
+    "wholePeak": 6769795072,
+    "resources": 0,
+    "portClosed": true,
+    "linkAbsent": true,
+    "tmpAbsent": true
+  },
+  "scope": "Controlled actual App/Auth fixture, not live service/device/multiuser; no original FE19 closure or W04 invitation claim",
+  "nextOwner": "26e owns runtime diagnosis/visual/focus qualification and fixes when usable resources are allocated; 412e owns publication routing and combined checks",
+  "reservedFinal1": "Counted once inside native11 carry345972736; higher native11 peak378359808 retained without refund"
+}
