@@ -203,3 +203,27 @@
 .venue-meeting-invitation .venue-meeting-actions > button::before {
   inset-block: clamp(2.5px, calc(20.93px - 4.2857vw), 5.5px);
 }
+
+/* Reference reply type and place labels use distinct scales inside fixed rows. */
+.venue-meeting-message-bubble:not(.venue-meeting-message-with-place) {
+  padding-bottom: 6px;
+}
+.venue-meeting-message-bubble:not(.venue-meeting-message-with-place) > p {
+  margin-top: 0;
+  padding-block: 4px;
+  padding-inline: clamp(6px, calc(2.86vw - 4.3px), 8px);
+  font-size: clamp(14.5px, 4.2vw, 18px);
+  line-height: 1.15;
+}
+.venue-meeting-place-compact strong { font-size: clamp(15px, 4.2vw, 18px); }
+.venue-meeting-place-compact {
+  padding-inline-start: clamp(5px, calc(10vw - 31px), 8px);
+  gap: clamp(5px, calc(20vw - 67px), 11px);
+}
+@media (min-width: 375px) and (max-width: 409px) {
+  .venue-meeting-conversation .venue-meeting-participants { transform: translateY(3px); }
+  .venue-meeting-conversation .venue-meeting-guidance {
+    padding-top: 3px;
+    padding-bottom: clamp(0px, calc(2.86vw - 10.3px), 2px);
+  }
+}

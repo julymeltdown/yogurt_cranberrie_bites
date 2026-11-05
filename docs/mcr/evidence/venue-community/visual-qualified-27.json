@@ -1,0 +1,760 @@
+{
+  "task": "AM-FE-COMM-01 / VENU-FE-M01",
+  "status": "MOCK_READY_THREE_CHANGED_VISUAL_CRITERIA_PASS_NATIVE27_RESOURCE_PASS",
+  "implementationSource": "33cb7cf323df48b06323ad10351e89e38bcbd528",
+  "productCSSSource": "4306a61847e8eb42c5d2e2f13a081132fd0a0cb5",
+  "productPath": "frontend/src/features/venue-invitations/meeting.css",
+  "classification": "CONTROLLED_CHANGED_CONVERSATION_REGIONS",
+  "developerDisposition": "(b) No remaining material defect in the three corrected owned regions after personal inspection of all16PNGs.",
+  "criteria": [
+    {
+      "id": "reply-typography-padding",
+      "status": "PASS_OWNER_INSPECTED",
+      "finding": "The incoming reply now has proportional type and a compact bubble at all three widths; no material owned defect remains.",
+      "fontPx": [
+        15.12,
+        16.38,
+        18.0
+      ]
+    },
+    {
+      "id": "reviewed-place-label-inset",
+      "status": "PASS_OWNER_INSPECTED",
+      "finding": "The reviewed-place label is legible at the reference scale, with corrected icon spacing at390/430px; no material owned defect remains.",
+      "fontPx": [
+        15.12,
+        16.38,
+        18.0
+      ]
+    },
+    {
+      "id": "390-participant-guidance-baselines",
+      "status": "PASS_OWNER_INSPECTED",
+      "finding": "Participant and guidance baselines now align with the reference anatomy while the divider retains its position; no material owned defect remains.",
+      "participantTranslateYPx": 3,
+      "guidancePaddingTopPx": 3
+    }
+  ],
+  "remainingMaterialOwnedDiscrepancies": [],
+  "inspectionAtUTC": "2026-11-05T08:38:53.890581+00:00",
+  "inspectedPNGs": 16,
+  "images": [
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-27/native/conversation-360-diff.png",
+      "sha256": "c55cbe47ef5e6f97af30a7a4f52e7ba7c1250d0fe871bab2477f369dc85b4b2f",
+      "bytes": 121800,
+      "dimensions": [
+        340,
+        272
+      ],
+      "developerInspected": true
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-27/native/conversation-360-overlay.png",
+      "sha256": "90e6278583500c2a6e08cea37926dc463af8c111e6dfc1871ee964025b8570e2",
+      "bytes": 102650,
+      "dimensions": [
+        340,
+        272
+      ],
+      "developerInspected": true
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-27/native/conversation-360-reference.png",
+      "sha256": "c3e574c65e10af0bfb1e72863c177f86a9415171e4341c746afd72b646bd7fd3",
+      "bytes": 114307,
+      "dimensions": [
+        340,
+        272
+      ],
+      "developerInspected": true
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-27/native/conversation-360.png",
+      "sha256": "347e0aa6ae7649de9f6b2cebc2f4eb947e9b9f9b092bf85e3314b5af2621c11e",
+      "bytes": 30239,
+      "dimensions": [
+        340,
+        272
+      ],
+      "developerInspected": true
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-27/native/conversation-390-diff.png",
+      "sha256": "985e1951c2b15c064e217a871d413e4d19b4f161d42aa55f688cfc7f7354c414",
+      "bytes": 139696,
+      "dimensions": [
+        370,
+        295
+      ],
+      "developerInspected": true
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-27/native/conversation-390-overlay.png",
+      "sha256": "2dd61ff6f0055cab991f1b8a77c5e9153f03635c0c70c2622446385574db697b",
+      "bytes": 117388,
+      "dimensions": [
+        370,
+        295
+      ],
+      "developerInspected": true
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-27/native/conversation-390-reference.png",
+      "sha256": "7bc0dec744a8294912699bd2abe2ceee79a4b0049142ab4acbf6a373317a2504",
+      "bytes": 132257,
+      "dimensions": [
+        370,
+        295
+      ],
+      "developerInspected": true
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-27/native/conversation-390.png",
+      "sha256": "9b19c1548901b734a49e6a2ab8af13ebb4c129f3b8851034ce96cfc1fb25eeb8",
+      "bytes": 33326,
+      "dimensions": [
+        370,
+        295
+      ],
+      "developerInspected": true
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-27/native/conversation-430-diff.png",
+      "sha256": "0084cccf77bfdafbd9200f88bcc9fcfdc29d337c7c23bacd7706dbe019ca2b6d",
+      "bytes": 166087,
+      "dimensions": [
+        410,
+        325
+      ],
+      "developerInspected": true
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-27/native/conversation-430-overlay.png",
+      "sha256": "d6e16c56202e5823b85ee53c29377210f7dbb73144375b0c6700321870130f61",
+      "bytes": 138703,
+      "dimensions": [
+        410,
+        325
+      ],
+      "developerInspected": true
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-27/native/conversation-430-reference.png",
+      "sha256": "0baefe0fdc43e600943afd21b6db1b34850d3bb52e458b62e9458bbb79e0cbf8",
+      "bytes": 156374,
+      "dimensions": [
+        410,
+        325
+      ],
+      "developerInspected": true
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-27/native/conversation-430.png",
+      "sha256": "2cde5697b6c56ba9b9699ea6807c92246bc700cf3debcb89e61eca00744c1737",
+      "bytes": 37335,
+      "dimensions": [
+        410,
+        325
+      ],
+      "developerInspected": true
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-27/native/short-height-390.png",
+      "sha256": "dd7aba0fc76e8790b13581fdd741dd38bd7d2b64ef70aaefe470d16ca9afffd8",
+      "bytes": 53327,
+      "dimensions": [
+        390,
+        605
+      ],
+      "developerInspected": true
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-27/native/uncertain-360.png",
+      "sha256": "b5c725b2a6b511a4d7af44f737b5fa574e34a7edca2e6cfdae3e767f27548aa0",
+      "bytes": 60003,
+      "dimensions": [
+        360,
+        701
+      ],
+      "developerInspected": true
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-27/native/uncertain-390.png",
+      "sha256": "901b26f023e4f933ff634095602bf712d154f78bc33d1acbf74c1b54ed93b372",
+      "bytes": 63407,
+      "dimensions": [
+        390,
+        725
+      ],
+      "developerInspected": true
+    },
+    {
+      "path": "docs/mcr/evidence/venue-community/native-round-27/native/uncertain-430.png",
+      "sha256": "e7f0a54fee922f50876ae119221e66360e3f166807be2087fd4be7b4f31b7459",
+      "bytes": 67180,
+      "dimensions": [
+        430,
+        739
+      ],
+      "developerInspected": true
+    }
+  ],
+  "cases": [
+    {
+      "caseId": "P02-meeting-conversation",
+      "originalPhotoSHA256": "f7d841c815dfbf85b48b7e61a06106b9edab195e7bfbd4d37b78d8b23e610ac1",
+      "referenceRole": "Photo2 meeting component anatomy only; no map geometry comparison",
+      "developerMeasuredSourceROI": [
+        447,
+        451,
+        387,
+        307
+      ],
+      "actualViewportCSSWidth": 360,
+      "actualViewportCSSHeight": 844,
+      "devicePixelRatio": 1,
+      "uniformScaleAndCropTransform": {
+        "sourceCrop": [
+          447,
+          451,
+          387,
+          307
+        ],
+        "scaleX": 0.8785529715762274,
+        "scaleY": 0.8785529715762274,
+        "padBottomPx": 2
+      },
+      "implementationCommit": "33cb7cf323df48b06323ad10351e89e38bcbd528",
+      "originalCaptureTimeWithTimezone": "2026-11-05T08:36:05.567Z",
+      "fixtureOrRealServiceDeviceLabel": "CONTROLLED_CHANGED_CONVERSATION_REGIONS",
+      "fixtureClockMs": 1800000000000,
+      "producerContractSourcePins": {
+        "spatialContractSHA256": "bbf13c1623c2bf06570705287dd2e670bf5a665739d39a586fe1cc93fff77fec",
+        "wire": "CANONICAL_81680fc8_NOT_USED_BY_COMPONENT_FIXTURE"
+      },
+      "actualCapturePath": "docs/mcr/evidence/venue-community/native-round-27/native/conversation-360.png",
+      "referenceCropPath": "docs/mcr/evidence/venue-community/native-round-27/native/conversation-360-reference.png",
+      "overlayPath": "docs/mcr/evidence/venue-community/native-round-27/native/conversation-360-overlay.png",
+      "diffPath": "docs/mcr/evidence/venue-community/native-round-27/native/conversation-360-diff.png",
+      "declaredVariableDataMasks": [],
+      "meanAbsoluteRGBDifference": [
+        28.842063148788927,
+        29.646215397923875,
+        29.363786764705882
+      ],
+      "materialDiscrepancies": [],
+      "fixDisposition": "OWNER_INSPECTED_THREE_CHANGED_CRITERIA_PASS_FULL_SCREEN_ACCEPTANCE_SEPARATE",
+      "remainingMaterialOwnedDiscrepancies": [],
+      "retainedOtherDifferences": [
+        "Photo rasterization/subpixel glyph differences remain visible in unmasked comparisons.",
+        "Product portraits use the approved source-pack derivative; legacy reference portraits are not product assets."
+      ]
+    },
+    {
+      "caseId": "P02-meeting-conversation",
+      "originalPhotoSHA256": "f7d841c815dfbf85b48b7e61a06106b9edab195e7bfbd4d37b78d8b23e610ac1",
+      "referenceRole": "Photo2 meeting component anatomy only; no map geometry comparison",
+      "developerMeasuredSourceROI": [
+        447,
+        451,
+        387,
+        307
+      ],
+      "actualViewportCSSWidth": 390,
+      "actualViewportCSSHeight": 844,
+      "devicePixelRatio": 1,
+      "uniformScaleAndCropTransform": {
+        "sourceCrop": [
+          447,
+          451,
+          387,
+          307
+        ],
+        "scaleX": 0.9560723514211886,
+        "scaleY": 0.9560723514211886,
+        "padBottomPx": 1
+      },
+      "implementationCommit": "33cb7cf323df48b06323ad10351e89e38bcbd528",
+      "originalCaptureTimeWithTimezone": "2026-11-05T08:36:06.015Z",
+      "fixtureOrRealServiceDeviceLabel": "CONTROLLED_CHANGED_CONVERSATION_REGIONS",
+      "fixtureClockMs": 1800000000000,
+      "producerContractSourcePins": {
+        "spatialContractSHA256": "bbf13c1623c2bf06570705287dd2e670bf5a665739d39a586fe1cc93fff77fec",
+        "wire": "CANONICAL_81680fc8_NOT_USED_BY_COMPONENT_FIXTURE"
+      },
+      "actualCapturePath": "docs/mcr/evidence/venue-community/native-round-27/native/conversation-390.png",
+      "referenceCropPath": "docs/mcr/evidence/venue-community/native-round-27/native/conversation-390-reference.png",
+      "overlayPath": "docs/mcr/evidence/venue-community/native-round-27/native/conversation-390-overlay.png",
+      "diffPath": "docs/mcr/evidence/venue-community/native-round-27/native/conversation-390-diff.png",
+      "declaredVariableDataMasks": [],
+      "meanAbsoluteRGBDifference": [
+        24.720714612918,
+        25.706642235455796,
+        25.550865781035274
+      ],
+      "materialDiscrepancies": [],
+      "fixDisposition": "OWNER_INSPECTED_THREE_CHANGED_CRITERIA_PASS_FULL_SCREEN_ACCEPTANCE_SEPARATE",
+      "remainingMaterialOwnedDiscrepancies": [],
+      "retainedOtherDifferences": [
+        "Photo rasterization/subpixel glyph differences remain visible in unmasked comparisons.",
+        "Product portraits use the approved source-pack derivative; legacy reference portraits are not product assets."
+      ]
+    },
+    {
+      "caseId": "P02-meeting-conversation",
+      "originalPhotoSHA256": "f7d841c815dfbf85b48b7e61a06106b9edab195e7bfbd4d37b78d8b23e610ac1",
+      "referenceRole": "Photo2 meeting component anatomy only; no map geometry comparison",
+      "developerMeasuredSourceROI": [
+        447,
+        451,
+        387,
+        307
+      ],
+      "actualViewportCSSWidth": 430,
+      "actualViewportCSSHeight": 844,
+      "devicePixelRatio": 1,
+      "uniformScaleAndCropTransform": {
+        "sourceCrop": [
+          447,
+          451,
+          387,
+          307
+        ],
+        "scaleX": 1.0594315245478036,
+        "scaleY": 1.0594315245478036,
+        "padBottomPx": 0
+      },
+      "implementationCommit": "33cb7cf323df48b06323ad10351e89e38bcbd528",
+      "originalCaptureTimeWithTimezone": "2026-11-05T08:36:06.596Z",
+      "fixtureOrRealServiceDeviceLabel": "CONTROLLED_CHANGED_CONVERSATION_REGIONS",
+      "fixtureClockMs": 1800000000000,
+      "producerContractSourcePins": {
+        "spatialContractSHA256": "bbf13c1623c2bf06570705287dd2e670bf5a665739d39a586fe1cc93fff77fec",
+        "wire": "CANONICAL_81680fc8_NOT_USED_BY_COMPONENT_FIXTURE"
+      },
+      "actualCapturePath": "docs/mcr/evidence/venue-community/native-round-27/native/conversation-430.png",
+      "referenceCropPath": "docs/mcr/evidence/venue-community/native-round-27/native/conversation-430-reference.png",
+      "overlayPath": "docs/mcr/evidence/venue-community/native-round-27/native/conversation-430-overlay.png",
+      "diffPath": "docs/mcr/evidence/venue-community/native-round-27/native/conversation-430-diff.png",
+      "declaredVariableDataMasks": [],
+      "meanAbsoluteRGBDifference": [
+        26.4926904315197,
+        27.74987617260788,
+        27.454626641651032
+      ],
+      "materialDiscrepancies": [],
+      "fixDisposition": "OWNER_INSPECTED_THREE_CHANGED_CRITERIA_PASS_FULL_SCREEN_ACCEPTANCE_SEPARATE",
+      "remainingMaterialOwnedDiscrepancies": [],
+      "retainedOtherDifferences": [
+        "Photo rasterization/subpixel glyph differences remain visible in unmasked comparisons.",
+        "Product portraits use the approved source-pack derivative; legacy reference portraits are not product assets."
+      ]
+    }
+  ],
+  "native": {
+    "result": "PASS",
+    "classification": "CONTROLLED_CHANGED_CONVERSATION_REGIONS",
+    "limitation": "Existing normalized adapter fixture and real components. Changed reply type/place label/header baseline only. No invitation, Map command, privacy, server, device or old-suite requalification.",
+    "sourceCommit": "33cb7cf323df48b06323ad10351e89e38bcbd528",
+    "fixtureClockMs": 1800000000000,
+    "originalPhotoSHA256": "f7d841c815dfbf85b48b7e61a06106b9edab195e7bfbd4d37b78d8b23e610ac1",
+    "spatialSHA256": "bbf13c1623c2bf06570705287dd2e670bf5a665739d39a586fe1cc93fff77fec",
+    "widths": [
+      {
+        "width": 360,
+        "result": "PASS",
+        "conversation": {
+          "path": "docs/mcr/evidence/venue-community/native-round-27/native/conversation-360.png",
+          "capturedAt": "2026-11-05T08:36:05.567Z",
+          "viewport": {
+            "width": 360,
+            "height": 844
+          },
+          "dpr": 1,
+          "componentBounds": {
+            "x": 10,
+            "y": 201,
+            "width": 340,
+            "height": 271.171875
+          }
+        },
+        "uncertain": {
+          "path": "docs/mcr/evidence/venue-community/native-round-27/native/uncertain-360.png",
+          "capturedAt": "2026-11-05T08:36:05.736Z",
+          "viewport": {
+            "width": 360,
+            "height": 844
+          },
+          "dpr": 1,
+          "componentBounds": {
+            "x": 0,
+            "y": 139,
+            "width": 360,
+            "height": 700.578125
+          }
+        },
+        "shortHeight": null,
+        "changedRegionGeometry": {
+          ".venue-meeting-participants": {
+            "x": 19,
+            "y": 227,
+            "width": 326,
+            "height": 22,
+            "fontSize": "14.04px",
+            "lineHeight": "18.954px",
+            "padding": "0px"
+          },
+          ".venue-meeting-guidance": {
+            "x": 15,
+            "y": 249,
+            "width": 330,
+            "height": 22.0625,
+            "fontSize": "13.392px",
+            "lineHeight": "18.0792px",
+            "padding": "0px 0px 3px"
+          },
+          ".venue-meeting-place-compact strong": {
+            "x": 95.3125,
+            "y": 325.734375,
+            "width": 147.0625,
+            "height": 20.40625,
+            "fontSize": "15.12px",
+            "lineHeight": "20.412px",
+            "padding": "0px"
+          },
+          ".venue-meeting-message-bubble:not(.venue-meeting-message-with-place) > p": {
+            "x": 58.3125,
+            "y": 374.765625,
+            "width": 90.5,
+            "height": 27.390625,
+            "fontSize": "15.12px",
+            "lineHeight": "17.388px",
+            "padding": "4px 6px"
+          }
+        },
+        "minimumConversationTouchTarget": 44,
+        "keyboardLimit": "Desktop headless resize/focus only, no physical keyboard qualification"
+      },
+      {
+        "width": 390,
+        "result": "PASS",
+        "conversation": {
+          "path": "docs/mcr/evidence/venue-community/native-round-27/native/conversation-390.png",
+          "capturedAt": "2026-11-05T08:36:06.015Z",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "dpr": 1,
+          "componentBounds": {
+            "x": 10,
+            "y": 152,
+            "width": 370,
+            "height": 294.625
+          }
+        },
+        "uncertain": {
+          "path": "docs/mcr/evidence/venue-community/native-round-27/native/uncertain-390.png",
+          "capturedAt": "2026-11-05T08:36:06.184Z",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "dpr": 1,
+          "componentBounds": {
+            "x": 0,
+            "y": 90,
+            "width": 390,
+            "height": 724.03125
+          }
+        },
+        "shortHeight": {
+          "path": "docs/mcr/evidence/venue-community/native-round-27/native/short-height-390.png",
+          "capturedAt": "2026-11-05T08:36:06.334Z",
+          "viewport": {
+            "width": 390,
+            "height": 520
+          },
+          "dpr": 1,
+          "componentBounds": {
+            "x": 0,
+            "y": -84,
+            "width": 390,
+            "height": 604.046875
+          }
+        },
+        "changedRegionGeometry": {
+          ".venue-meeting-participants": {
+            "x": 19,
+            "y": 182.65625,
+            "width": 356,
+            "height": 23.390625,
+            "fontSize": "15.21px",
+            "lineHeight": "20.5335px",
+            "padding": "0px"
+          },
+          ".venue-meeting-guidance": {
+            "x": 15,
+            "y": 205.1875,
+            "width": 360,
+            "height": 24.4375,
+            "fontSize": "14.508px",
+            "lineHeight": "19.5858px",
+            "padding": "3px 0px 0.854px"
+          },
+          ".venue-meeting-place-compact strong": {
+            "x": 109.0625,
+            "y": 286.703125,
+            "width": 148.375,
+            "height": 22.09375,
+            "fontSize": "16.38px",
+            "lineHeight": "22.113px",
+            "padding": "0px"
+          },
+          ".venue-meeting-message-bubble:not(.venue-meeting-message-with-place) > p": {
+            "x": 63.0625,
+            "y": 341.671875,
+            "width": 98.515625,
+            "height": 28.828125,
+            "fontSize": "16.38px",
+            "lineHeight": "18.837px",
+            "padding": "4px 6.854px"
+          }
+        },
+        "minimumConversationTouchTarget": 44,
+        "keyboardLimit": "Desktop headless resize/focus only, no physical keyboard qualification"
+      },
+      {
+        "width": 430,
+        "result": "PASS",
+        "conversation": {
+          "path": "docs/mcr/evidence/venue-community/native-round-27/native/conversation-430.png",
+          "capturedAt": "2026-11-05T08:36:06.596Z",
+          "viewport": {
+            "width": 430,
+            "height": 844
+          },
+          "dpr": 1,
+          "componentBounds": {
+            "x": 10,
+            "y": 141,
+            "width": 410,
+            "height": 324.9375
+          }
+        },
+        "uncertain": {
+          "path": "docs/mcr/evidence/venue-community/native-round-27/native/uncertain-430.png",
+          "capturedAt": "2026-11-05T08:36:06.764Z",
+          "viewport": {
+            "width": 430,
+            "height": 844
+          },
+          "dpr": 1,
+          "componentBounds": {
+            "x": 0,
+            "y": 79,
+            "width": 430,
+            "height": 738.15625
+          }
+        },
+        "shortHeight": null,
+        "changedRegionGeometry": {
+          ".venue-meeting-participants": {
+            "x": 19,
+            "y": 172.375,
+            "width": 396,
+            "height": 25.796875,
+            "fontSize": "16.77px",
+            "lineHeight": "22.6395px",
+            "padding": "0px"
+          },
+          ".venue-meeting-guidance": {
+            "x": 15,
+            "y": 203.171875,
+            "width": 400,
+            "height": 24.59375,
+            "fontSize": "15.996px",
+            "lineHeight": "21.5946px",
+            "padding": "0px 0px 2px"
+          },
+          ".venue-meeting-place-compact strong": {
+            "x": 115.40625,
+            "y": 288.03125,
+            "width": 170.078125,
+            "height": 24.296875,
+            "fontSize": "18px",
+            "lineHeight": "24.3px",
+            "padding": "0px"
+          },
+          ".venue-meeting-message-bubble:not(.venue-meeting-message-with-place) > p": {
+            "x": 69.40625,
+            "y": 350.953125,
+            "width": 109.046875,
+            "height": 30.6875,
+            "fontSize": "18px",
+            "lineHeight": "20.7px",
+            "padding": "4px 7.998px"
+          }
+        },
+        "minimumConversationTouchTarget": 44,
+        "keyboardLimit": "Desktop headless resize/focus only, no physical keyboard qualification"
+      }
+    ],
+    "errors": [],
+    "browserVersion": "156.0.8078.4"
+  },
+  "execution": {
+    "allocation": "COMM-VENUE-NATIVE27-0834",
+    "actualAcceptEpoch": 1793867738.111078,
+    "actualFullEpoch": 1793867769.033501,
+    "rawReleaseSHA256": "c5e3470924a1a83a0ffef7af622fc347621ec3a95f988178ec841b596bc2f412",
+    "controllerExit": 0,
+    "guardianExit": 0,
+    "commandExits": [
+      0,
+      0
+    ],
+    "commands": [
+      "node conversation-native.mjs",
+      "python3 -B conversation-compare.py Photo2 native-round-27/native"
+    ],
+    "resourceResult": "PASS",
+    "resourcesReleased": true,
+    "dependencyLinkAbsent": true,
+    "scratchCacheAbsent": true,
+    "peakNew": {
+      "bytes": 465258132,
+      "rss": 1512062976,
+      "processes": 8
+    },
+    "peakWhole": {
+      "bytes": 4823205968,
+      "entries": 72132
+    },
+    "initialPrimarySampleBeforeGuardianLaunch": true,
+    "guardianSampleBeforeEachCommand": true,
+    "independentLiveSnapshots": {
+      "primary-membership.json": {
+        "observedAtEpoch": 1793867767.969536,
+        "globalWorkflows": 1,
+        "source": 0,
+        "browser": 1,
+        "target": 0,
+        "actualPids": [
+          14192,
+          14681,
+          15017,
+          15018,
+          37112
+        ],
+        "actualRSSBytes": 424017920,
+        "actualFreeBytes": 17952149504,
+        "afterAllFutureBytes": 14900793344,
+        "verifiedIdentities": {
+          "14192": {
+            "pid": 14192,
+            "birth": "Thu Nov 5 17:35:47 2026",
+            "parent": 49590,
+            "descriptorSHA256": "a119313a0c260340cf2c8838801a306e8006d8de00f3d79b4862bc5d04be61da",
+            "terminal": false,
+            "liveVerified": true,
+            "ownerClaim": [
+              "01a1a204-c583-7670-965a-4891b8b1289e",
+              "COMM-VENUE-NATIVE27-0834",
+              1793867738.111078
+            ],
+            "snapshotSHA256": "4b2c5eb9c94ec1b22e84d3bd3f4972ad42ccc431d2298e74006fc2ad4e989fc1"
+          },
+          "14681": {
+            "pid": 14681,
+            "birth": "Thu Nov 5 17:36:03 2026",
+            "parent": 14192,
+            "descriptorSHA256": "8394dbb7ee1531d2c1ebd4bc396c6c7a9b341972a0ea5ec522e7e884300ec46e",
+            "terminal": false,
+            "liveVerified": true,
+            "ownerClaim": [
+              "01a1a204-c583-7670-965a-4891b8b1289e",
+              "COMM-VENUE-NATIVE27-0834",
+              1793867738.111078
+            ],
+            "snapshotSHA256": "4b2c5eb9c94ec1b22e84d3bd3f4972ad42ccc431d2298e74006fc2ad4e989fc1"
+          }
+        }
+      },
+      "guardian-membership.json": {
+        "observedAtEpoch": 1793867767.527732,
+        "globalWorkflows": 1,
+        "source": 0,
+        "browser": 1,
+        "target": 0,
+        "actualPids": [
+          14192,
+          14681,
+          14994,
+          14995,
+          37112
+        ],
+        "actualRSSBytes": 433422336,
+        "actualFreeBytes": 17930006528,
+        "afterAllFutureBytes": 14878650368,
+        "verifiedIdentities": {
+          "14192": {
+            "pid": 14192,
+            "birth": "Thu Nov 5 17:35:47 2026",
+            "parent": 49590,
+            "descriptorSHA256": "a119313a0c260340cf2c8838801a306e8006d8de00f3d79b4862bc5d04be61da",
+            "terminal": false,
+            "liveVerified": true,
+            "ownerClaim": [
+              "01a1a204-c583-7670-965a-4891b8b1289e",
+              "COMM-VENUE-NATIVE27-0834",
+              1793867738.111078
+            ],
+            "snapshotSHA256": "9a6e681f6dda949c59e485004440c0c372a135c9ca3e6f623c9c37fa1392262e"
+          },
+          "14681": {
+            "pid": 14681,
+            "birth": "Thu Nov 5 17:36:03 2026",
+            "parent": 14192,
+            "descriptorSHA256": "8394dbb7ee1531d2c1ebd4bc396c6c7a9b341972a0ea5ec522e7e884300ec46e",
+            "terminal": false,
+            "liveVerified": true,
+            "ownerClaim": [
+              "01a1a204-c583-7670-965a-4891b8b1289e",
+              "COMM-VENUE-NATIVE27-0834",
+              1793867738.111078
+            ],
+            "snapshotSHA256": "9a6e681f6dda949c59e485004440c0c372a135c9ca3e6f623c9c37fa1392262e"
+          }
+        }
+      }
+    }
+  },
+  "retainedHistory": {
+    "Source25NewThreeCases": "PASS_EXIT0",
+    "Source25CasesSHA256": "e56a4390f7549c436009236892e246d1707bfcfecf85792bcc9176ae88ab6927",
+    "Source25Outer": "RESOURCE_FAIL_NOT_RETROACTIVELY_CHANGED",
+    "Native18Outer": "RESOURCE_FAIL_NOT_RETROACTIVELY_CHANGED",
+    "Native23Outer": "RESOURCE_FAIL_BEFORE_PAYLOAD",
+    "Source24Outer": "RESOURCE_FAIL_BEFORE_PAYLOAD",
+    "Native24": "GENUINE_UNUSED_NEVER_ACCEPTED",
+    "Native25": "GENUINE_UNUSED_NEVER_ACCEPTED",
+    "Native26Outer": "RESOURCE_FAIL_BEFORE_GUARDIAN_OR_PAYLOAD",
+    "Native26RawReleaseSHA256": "6ddedebe709a165a7df03b2c6e88300106061e3816ebaf71c9fb29f1acde07a6",
+    "Source26ProofBooking": "DECLINED_NO_BYTES_NO_PREREQUISITE"
+  },
+  "art": {
+    "sourcePackSHA256": "f8d6c83818bced007f71af1f59dbc53cd88115c5dab0112fc302d8469a4fdc6f",
+    "derivativePath": "frontend/public/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+    "derivativeSHA256": "e124c88815b22220df2f2dc59e2f26b3ceb845e57b77674fd8e55383116d7efe",
+    "disposition": "Existing approved source-pack derivative unchanged; no legacy product portrait."
+  },
+  "limitations": [
+    "Controlled normalized-adapter fixture and real components only.",
+    "No real HTTP/live server/two-principal/device/physical-keyboard/GPS/arrival qualification.",
+    "Unchanged invitation retains Native18 evidence; no invitation or prior functional-suite replay.",
+    "Full-screen VENU acceptance and original FE10/FE20/FE29/QA06/QA07 task closure are not inferred.",
+    "Exact raster equality with the photographed reference is not claimed."
+  ]
+}
