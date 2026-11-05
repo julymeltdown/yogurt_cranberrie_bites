@@ -84,6 +84,7 @@ class AttachmentCases(unittest.TestCase):
         self.deployment = Mock()
         self.expiry = time.time() + 300
         self.inputs = {"environment_id": IDS[4], "window_id": "current-window",
+                       "frontend_candidate": "a" * 40,
                        "restore_snapshot_id": IDS[5], "expires_at": self.expiry,
                        "actor_sessions": [(p[0], p[2]) for p in self.principals],
                        "validate_deployment": self.deployment}
@@ -109,6 +110,13 @@ class AttachmentCases(unittest.TestCase):
         self.assertEqual(value.observations.kwargs["actor_sessions"], tuple(self.inputs["actor_sessions"]))
         self.assertTrue(value.observations.calls and value.controls.calls)
         self.assertGreaterEqual(self.deployment.call_count, 2)
+        self.assertEqual(value.controls.kwargs["candidate"], "a" * 40)
+        self.assertEqual(value.observations.kwargs["candidate"], "a" * 40)
+
+    def test_frontend_candidate_cannot_be_replaced_by_a_helper_revision(self):
+        with self.assertRaises(ValueError):
+            self.attach({**self.inputs, "frontend_candidate": "b" * 40})
+        self.assertEqual(list(self.root.iterdir()), [])
 
     def test_private_handoff_never_serializes_principal_tokens_or_environment(self):
         value = self.attach()

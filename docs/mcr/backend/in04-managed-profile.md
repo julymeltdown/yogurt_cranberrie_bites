@@ -9,11 +9,12 @@ The Root profile is `backend/scripts/mcr/in04_wall_runtime/launch.py`. Run it as
 the existing finite launcher allocation arguments, the actual seven-service
 `--inputs`, and a private `--in04-managed-inputs` file. Import starts no job.
 
-The closed managed file has five fields:
+The closed managed file has six fields:
 
 ```json
 {
   "version": 1,
+  "frontend_candidate": "<full published frontend commit; independent of helper/backend revisions>",
   "environment_id": "<fresh canonical nonnil UUID>",
   "window_id": "<one named finite managed window>",
   "operator_packet": {"path": "<absolute private operator receipt>", "sha256": "<exact receipt SHA-256>"},
@@ -25,6 +26,48 @@ Use `NONE` for a window that does not perform the IN04 PostgreSQL/Concert restar
 The file and operator packet must be owned, private regular files. The actual
 operator executable, source, compiled receipt and Enrollment helper are pinned;
 an arbitrary executable or a qualification label cannot replace them.
+
+The frontend candidate must be an exact commit in the recorded `origin/master`
+history with a frontend package. Its domain and realtime contract bytes must
+equal the backend/helper contract source. Contract drift fails closed; a newer
+frontend does not relabel an older backend. The attachment's candidate and fault
+bindings use this frontend revision. The private descriptor keeps
+`source.helperRevision`, per-service `backendRevisions` and `source.frontendRevision`
+separately. The actual frontend builder supplies `applicationRelease` only when it
+builds and starts the selected published App; the backend never synthesizes it.
+
+The revision-separation correction is source-qualified at
+`d47d36ec5ec37cf921b597cc7af6d30885c5edb2`. Under the distinct finite
+`ROOT-IN04-FRONTEND-BINDING-SOURCE01-20261105T0012Z` allocation, seven real-local-Git
+binding cases, the new attachment mismatch case and the changed attachment
+construction case passed: nine tests, exit 0. Five changed Python files and three
+private controls passed AST parsing; private JSON and immutable pins passed.
+These checks start no product service and certify no real frontend deployment.
+
+```sh
+PYTHONPATH=backend/scripts/mcr python3 -B -m unittest -v \
+  in04_wall_runtime.test_frontend_binding \
+  in04_wall_runtime.test_attachment.AttachmentCases.test_actual_objects_sessions_and_observations_precede_descriptors \
+  in04_wall_runtime.test_attachment.AttachmentCases.test_frontend_candidate_cannot_be_replaced_by_a_helper_revision
+```
+
+Retained test-log SHA256: `f99c0aa50bf10db138cc8f9e3b18704da39c75d1a1ad6f10578aa182eef60b10`.
+Full-release SHA256: `564fa4b3569d93319fd9f63198e21802b7d683896f8b492c40f109c08a94ffbd`.
+
+Both guards were live and fully sampled before tests. Actual acceptance was
+`1793837614.767688`; actual full release was `1793837617.510829`. Both guards
+reported no failure; all children, workflows, source jobs and remaining growth
+were zero, with no target access. The allocator and PI01 successor received
+literal release before this evidence update. Peaks: 7 processes, 103,268,352 bytes
+RSS, 409,600 bytes NEW, 34,435,354,624 bytes WHOLE; minimum free space
+16,490,512,384 bytes. The retained local receipt directory is identified by
+basename `mcr-root-in04-managed-sfcb4p33`; machine-local paths are not published.
+
+The current canonical frontend contract boundary at `8b47e0e40e8182d2401565fbb079533efffb41e7`
+differs from the compiled Concert `7d74b7f` domain and realtime contracts. The new
+gate correctly requires a coherent producer before runtime admission. The new
+Auth19 main compilation closes only its own missing executable input; genuine
+Enrollment, roles, Settings, private attachment and IN04 remain `NOT_RUN`.
 
 The profile installs the actual Enrollment mail sink before Auth starts. The
 existing policy operator publishes only an isolated synthetic policy into the

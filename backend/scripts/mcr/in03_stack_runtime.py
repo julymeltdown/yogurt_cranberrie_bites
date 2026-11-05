@@ -615,7 +615,8 @@ def run(args, managed=None):
             with patch.object(runtime, "readiness_value", readiness):
                 attachment = ManagedAttachment(inputs=attachment_inputs, stack=stack, browser=browser,
                     guard=guard, pins=pins, manifests=manifests, context=context, principals=principals,
-                    source_root=root, candidate=revision, origin=args.browser_origin, expires_at=expires_at)
+                    source_root=root, candidate=attachment_inputs["frontend_candidate"],
+                    origin=args.browser_origin, expires_at=expires_at)
                 attachment_ready = getattr(managed, "attachment_ready", None)
                 if callable(attachment_ready):
                     attachment_ready(attachment=attachment, context=context, args=args)
@@ -644,6 +645,7 @@ def run(args, managed=None):
             "allocation_id": args.allocation_id}
         if attachment is not None:
             private["managedRuntime"] = attachment.handoff()
+            private["source"]["frontendRevision"] = attachment_inputs["frontend_candidate"]
             private["fault_control"] = "OWNER_BOUND_REQUEST_CHECKPOINT"
             report["providers"] = "ROOT_MANAGED_PROFILE; actual observations required"
         private["services"]["concert-service"] = {

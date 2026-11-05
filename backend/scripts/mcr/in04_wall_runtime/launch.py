@@ -67,9 +67,10 @@ def timestamp(value):
 def load_config(path):
     raw = source.private_input(path)
     config = source.closed(source.json_object(raw),
-        ("version", "environment_id", "window_id", "operator_packet", "restart_stage"), "in04-profile-schema")
+        ("version", "environment_id", "window_id", "operator_packet", "restart_stage", "frontend_candidate"), "in04-profile-schema")
     need(type(config["version"]) is int and config["version"] == 1)
     canonical_uuid(config["environment_id"])
+    source.source_revision(config["frontend_candidate"])
     need(config["restart_stage"] in ("NONE", "POSTGRES_CONCERT_AFTER_BASELINE"))
     need(isinstance(config["window_id"], str)
          and re.fullmatch(r"[A-Za-z0-9_-]{1,96}", config["window_id"]))
@@ -89,6 +90,29 @@ def load_config(path):
     binary = source.BinaryPin(Path(executable["path"]), executable["sha256"], OPERATOR_SOURCE)
     binary.validate()
     return config, raw, packet_raw, binary
+
+
+def validate_frontend_binding(root, helper_revision, frontend_candidate):
+    """Bind the published App independently of the actual backend source.
+
+    Application build identity is produced later by the frontend builder. These
+    checks neither invent that identity nor replace its own source validation.
+    """
+    source.source_revision(helper_revision)
+    source.source_revision(frontend_candidate)
+    need(source.git(root, "rev-parse", frontend_candidate + "^{commit}").decode().strip()
+         == frontend_candidate, "in04-frontend-commit-required")
+    source.git(root, "merge-base", "--is-ancestor", frontend_candidate, "refs/remotes/origin/master")
+    # A published backend-only history without an App is not an App candidate.
+    package = source.json_object(source.source_bytes(root, frontend_candidate, "frontend/package.json"))
+    need(isinstance(package, dict) and isinstance(package.get("version"), str),
+         "in04-frontend-package-required")
+    hashes = {}
+    for path in ("contracts/generated/mcr-domain.openapi.json", "contracts/realtime/v1/world.schema.json"):
+        actual = source.source_bytes(root, helper_revision, path)
+        need(actual == source.source_bytes(root, frontend_candidate, path), "in04-frontend-contract-drift")
+        hashes[path] = digest(actual)
+    return hashes
 
 
 def get_json(browser, origin, path, token, *, expected=200, maximum=65536):
@@ -153,6 +177,8 @@ class ManagedProfile:
         config = source.json_object(source.private_input(args.inputs))
         self.root = Path(config["helper_source"]["root"])
         self.revision = source.source_revision(config["helper_source"]["revision"])
+        self.frontend_candidate = self.config["frontend_candidate"]
+        self.frontend_contracts = validate_frontend_binding(self.root, self.revision, self.frontend_candidate)
         need(digest(source.source_bytes(self.root, self.revision, ENROLLMENT_HELPER)) == ENROLLMENT_SHA)
         need(digest(source.source_bytes(self.root, self.revision,
              "backend/scripts/mcr/in04_wall_runtime/roles.py")) == ROLES_SHA)
@@ -270,6 +296,8 @@ class ManagedProfile:
                  and source.private_input(publication) == publication_raw)
             need(source.validate_sources(self.root, self.revision) == helper_sources
                  and source.validate_binary_cohort(pins) == self.binary_identity)
+            need(validate_frontend_binding(self.root, self.revision, self.frontend_candidate)
+                 == self.frontend_contracts)
             need(set(stack.children) == source.SERVICES and all(
                 stack.children.get(name) is child for name, child in peer_children.items()))
             child = stack.children["concert-service"]
@@ -290,6 +318,7 @@ class ManagedProfile:
 
         validate_deployment()
         return {"environment_id": self.config["environment_id"], "window_id": self.config["window_id"],
+            "frontend_candidate": self.frontend_candidate,
             "restore_snapshot_id": checkpoint, "expires_at": min(expires_at, self.work_expiry),
             "validate_deployment": validate_deployment,
             "actor_sessions": tuple((p[0], p[2]) for p in principals)}

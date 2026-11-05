@@ -36,7 +36,8 @@ class ManagedAttachment:
         self.files, self.sockets, self.closed = {}, {}, False
         need(isinstance(inputs, dict) and set(inputs) == {
             "environment_id", "window_id", "restore_snapshot_id", "expires_at",
-            "validate_deployment", "actor_sessions"})
+            "validate_deployment", "actor_sessions", "frontend_candidate"})
+        need(source.source_revision(inputs["frontend_candidate"]) == source.source_revision(candidate))
         need(len(principals) == 3 and all(isinstance(p, tuple) and len(p) == 3
              and isinstance(p[1], Path) and isinstance(p[2], str) and p[2] for p in principals))
         sessions = tuple((uuid(p[0]), p[2]) for p in principals)
