@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "scope": "SOURCE_ASSET_AND_PRESENTATION_ANCHORS_ONLY",
+  "sourcePhoto": "5-Photo-5.jpg",
+  "sourceSHA256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+  "assetSHA256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+  "sourceROI": [
+    0,
+    0,
+    1024,
+    1280
+  ],
+  "assetROI": [
+    0,
+    0,
+    1024,
+    1280
+  ],
+  "viewportCSS": [
+    1024,
+    1280
+  ],
+  "devicePixelRatio": 1,
+  "uniformScale": 1,
+  "comparison": "UNMASKED_RGB_EXACT",
+  "rgbDifferencePixels": 0,
+  "originalJPEGBytesExact": true,
+  "candidates": 22,
+  "outputs": [
+    {
+      "path": "docs/mcr/art/evidence/paradise-city-siteplan-v1/PARADISECITY-ART-QUALIFY01-0125-attempt-1-anchors.png",
+      "bytes": 1598095,
+      "sha256": "ee8bcd36da8e51dbe4f36e73590425cc58047fe42847ea0a92875cb007713221"
+    },
+    {
+      "path": "docs/mcr/art/evidence/paradise-city-siteplan-v1/PARADISECITY-ART-QUALIFY01-0125-attempt-1-anchor-layer.png",
+      "bytes": 29094,
+      "sha256": "76c0015790987f1f22b49da3feac61e914940fdfdabd338d1abb28ed8318dcca"
+    },
+    {
+      "path": "docs/mcr/art/evidence/paradise-city-siteplan-v1/PARADISECITY-ART-QUALIFY01-0125-attempt-1-unmasked-rgb-diff.png",
+      "bytes": 3891,
+      "sha256": "456657838a8b69e07084ffb3e0f2825865652088fd47be42c798b37da54a63d5"
+    }
+  ],
+  "annotationIsSeparateTransparentRGBA": true,
+  "notAppCapture": true,
+  "notGeographicCalibration": true
+}

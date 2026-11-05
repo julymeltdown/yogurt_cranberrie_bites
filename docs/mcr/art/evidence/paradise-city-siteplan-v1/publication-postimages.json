@@ -1,0 +1,271 @@
+{
+   "allResourceOverallFailuresRetained" : true,
+   "allowedScopes" : [
+      "frontend/public/venue/paradise-city/v1/",
+      "frontend/src/features/paradise-city-map/art-source/",
+      "docs/mcr/art/paradise-city-siteplan-v1.md",
+      "docs/mcr/art/evidence/paradise-city-siteplan-v1/"
+   ],
+   "files" : [
+      {
+         "bytes" : 29094,
+         "gitBlob" : "89b3a9d023a473f21743d4866033d83ce8977055",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/PARADISECITY-ART-QUALIFY01-0125-attempt-1-anchor-layer.png",
+         "sha256" : "76c0015790987f1f22b49da3feac61e914940fdfdabd338d1abb28ed8318dcca"
+      },
+      {
+         "bytes" : 1598095,
+         "gitBlob" : "2dd85d857e955358dc6a5a646e77d56d0f9395de",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/PARADISECITY-ART-QUALIFY01-0125-attempt-1-anchors.png",
+         "sha256" : "ee8bcd36da8e51dbe4f36e73590425cc58047fe42847ea0a92875cb007713221"
+      },
+      {
+         "bytes" : 1457,
+         "gitBlob" : "cb1509c43cc3a76e5bf3ae379d1d1d7b8210c8c0",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/PARADISECITY-ART-QUALIFY01-0125-attempt-1-comparison.json",
+         "sha256" : "6b919e0dbab95a351269816e73ff90e9e1d65d28529b35fad9b647e8cda2a97d"
+      },
+      {
+         "bytes" : 3891,
+         "gitBlob" : "3923f3488f3b0b34c224f3f66e2f1567314e3f4c",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/PARADISECITY-ART-QUALIFY01-0125-attempt-1-unmasked-rgb-diff.png",
+         "sha256" : "456657838a8b69e07084ffb3e0f2825865652088fd47be42c798b37da54a63d5"
+      },
+      {
+         "bytes" : 2501,
+         "gitBlob" : "6d9fa6d0303c820d462b4d537f7a96e6266ed897",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/PARADISECITY-ART-QUALIFY01-0125-independent-guardian.jsonl",
+         "sha256" : "52f041ddc121ebc122a9bac1c9898ea16f8e7dd869b540ec29f33d5e7150036d"
+      },
+      {
+         "bytes" : 18966,
+         "gitBlob" : "1ebfde2bbffcb7bcc73d6a61a4c43955046f67bf",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/PARADISECITY-ART-QUALIFY01-0125.jsonl",
+         "sha256" : "b27a40066784f6b187767ff55d5699eeaa8bcab5640187af3e93efc0a9a8440e"
+      },
+      {
+         "bytes" : 1416,
+         "gitBlob" : "9f39a2388bc20a42f41aa8f3b6281a5f89c7e15e",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/PARADISECITY-ART-QUALIFY02-0133-independent-guardian.jsonl",
+         "sha256" : "ecc34f4c29adeecabc2f327a3b83bac1e6bb8d28eb128b1d648b74e891edceac"
+      },
+      {
+         "bytes" : 12195,
+         "gitBlob" : "0bbc21069d46af7e5d38876fdbacb62cee232c19",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/PARADISECITY-ART-QUALIFY02-0133.jsonl",
+         "sha256" : "0850423a6a6e8a39a2a43d070282101e6091a553eb76ea1ac6be1a372edd9fc3"
+      },
+      {
+         "bytes" : 2304,
+         "gitBlob" : "4fdec11e7d9ab97bf1bc8599f47676aff51f6521",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/PARADISECITY-ART-QUALIFY03-0133-independent-guardian.jsonl",
+         "sha256" : "db7b003bbc49d875b9982a81786c32be759798ff072bdff55bd455f73bbd7710"
+      },
+      {
+         "bytes" : 18122,
+         "gitBlob" : "6c6c62e33591f7c391895c4ea0a66d025a138cbf",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/PARADISECITY-ART-QUALIFY03-0133.jsonl",
+         "sha256" : "f7c999bd07ed4389133e1fe89a40baa846c51a72144f9b3ef2f2f0f6026bf4aa"
+      },
+      {
+         "bytes" : 2508,
+         "gitBlob" : "63ab07534db6acece58083f59491419309b6db3f",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/PARADISECITY-ART-QUALIFY04-0152-independent-guardian.jsonl",
+         "sha256" : "4d35630ac301c04290a59bde66450a033a837232a4e72afd618d375cd70e41f3"
+      },
+      {
+         "bytes" : 3405,
+         "gitBlob" : "8ec08d41789a39187aec17fd9a70d28f39f633eb",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/PARADISECITY-ART-QUALIFY04-0152-positive-binding.json",
+         "sha256" : "8b533fd510263c1877180ef777c13bf17c9a0e8497863f0183b60920f20069e9"
+      },
+      {
+         "bytes" : 20527,
+         "gitBlob" : "d383a108e7b8cbdf6e407a0edb3e5e57bf9c9847",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/PARADISECITY-ART-QUALIFY04-0152.jsonl",
+         "sha256" : "57e0565d1b7251adc52adb52040812a2410e19bafedd7ee04b74b28d7cdcdc0f"
+      },
+      {
+         "bytes" : 2111,
+         "gitBlob" : "79a1f6121cc953a7ad6add44c544d3372bafe7d2",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/PARADISECITY-ART-QUALIFY05-0152-independent-guardian.jsonl",
+         "sha256" : "ffc08abd2f863fadbf691f8b2a72c4e1b856c771f3ce2802679afb9b817b29e2"
+      },
+      {
+         "bytes" : 13627,
+         "gitBlob" : "235b35013bfe72462419ea320b8cb24fb004dfd1",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/PARADISECITY-ART-QUALIFY05-0152.jsonl",
+         "sha256" : "193ea315597268629f0c561d78568204c0180529d48aeb6e5216ac249baa8695"
+      },
+      {
+         "bytes" : 3838,
+         "gitBlob" : "059cf09a21cde888b36f0a659a96de54b09fa0d7",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/bind_positive_evidence.py",
+         "sha256" : "5726288e3fb1a51ab01c77942c36a95e18f105efb12764ec0b8c063ddd9a44d6"
+      },
+      {
+         "bytes" : 3223,
+         "gitBlob" : "7bae39594c959729e3f0335e588d474a9f25733b",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/compare.py",
+         "sha256" : "0fc78ea58b9e94a58fcea8f6592a07e27873f495d8e6797b2d93a87763859f71"
+      },
+      {
+         "bytes" : 3327,
+         "gitBlob" : "81bd2656f92ab709c4749c7bebb4b884c68d1e1c",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/delivery-assessment.json",
+         "sha256" : "6d2c6f5cbe3440786b964966d177c24f899ccea7dfece193f8cc832b8cf9fb44"
+      },
+      {
+         "bytes" : 253,
+         "gitBlob" : "a6a5e5fea51245653a7204ce99d494dcac03ab96",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/fixdoc-booking.json",
+         "sha256" : "2f6df392144fa0966467c15bdd480109c809147917bf4da9101974b6716d849a"
+      },
+      {
+         "bytes" : 257,
+         "gitBlob" : "c1ae229db50efc145bab3e69029df542361126ad",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/fixdoc32-booking.json",
+         "sha256" : "8246a289dd166b1f5373bbbc227607a089b1e6fac83afd80c14912299ddc4d6c"
+      },
+      {
+         "bytes" : 20422,
+         "gitBlob" : "3a88e38a0cbb651beeeca47110e4310ee75dc223",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/guard.py",
+         "sha256" : "4e64b82598a921094c3e59f589f2fa7f6447ab684f9443fb7610c30e52f6cbce"
+      },
+      {
+         "bytes" : 2296,
+         "gitBlob" : "1d24d6928cfd5a7df88f4cb025675426d019192b",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/guard_regressions.py",
+         "sha256" : "0c3dd74d0b55069491aeba302a7010e6e9c0e175055b72c6393f76b51fb56dab"
+      },
+      {
+         "bytes" : 1601,
+         "gitBlob" : "afadede85c17f9a446fdf9ecd67175f56b445bce",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/identity_regressions.py",
+         "sha256" : "5c871fe5333d5609ad5fa8c747c9d8641ee8ecae4dd2f5868ed3bbab21aba1f0"
+      },
+      {
+         "bytes" : 9363,
+         "gitBlob" : "adb0ae8b20d03715f699950bca16e976395dca56",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/inventory.py",
+         "sha256" : "ecf6a2582f9c87072c8320af83a9b737d84aa1876d5d6b72f23ab4e31669a373"
+      },
+      {
+         "bytes" : 3623,
+         "gitBlob" : "6c3c958a0733c356a578733922a911cc69f00554",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/ordinary.py",
+         "sha256" : "16622dcfd7b9ef6b7fcbf9952d19b0f051b748efb1a7af7a29db84996ba57cd5"
+      },
+      {
+         "bytes" : 518,
+         "gitBlob" : "0be8db519ccd545540ac52ad92dce05b9505db16",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/preparation-booking.json",
+         "sha256" : "da7a5e931ec7efd429edbf7a2fc25a4eae337c987b19162eaf008827d8e38c2b"
+      },
+      {
+         "bytes" : 3128,
+         "gitBlob" : "e80026826710b52bd308bfacc8bc307d1fab165a",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/preserved-custody.json",
+         "sha256" : "b3637fd224a9d686b32d50906943bf79ff3cfc3e3b13d8fbc8b6aa89a620978f"
+      },
+      {
+         "bytes" : 3701,
+         "gitBlob" : "4fd01c576d0da31774bdba6825ce1af92b386972",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/resource_guardian.py",
+         "sha256" : "ee226c65fbd10f72c480ac2dfe9a6815e1325a81062821cf1f6b7a562ae0994e"
+      },
+      {
+         "bytes" : 11942,
+         "gitBlob" : "71654f579ff8cd607d693e7751008842c3cd53cd",
+         "mode" : "100644",
+         "path" : "docs/mcr/art/paradise-city-siteplan-v1.md",
+         "sha256" : "690cc8de83dde1c44072a80ffbdbc16ddec7bca1a28354b2fb5eb4a97112c12f"
+      },
+      {
+         "bytes" : 8202,
+         "gitBlob" : "492ba7376694d72c7fbd65d401db31e24909e8e5",
+         "mode" : "100644",
+         "path" : "frontend/public/venue/paradise-city/v1/asset-interface.json",
+         "sha256" : "a29a47add30fe9fe9cd20dcab5f5dd5004cf1290106794fb407991f1c5142dcd"
+      },
+      {
+         "bytes" : 328720,
+         "gitBlob" : "8b193d9b3e6fa96e615c17f82eb0ff876c745704",
+         "mode" : "100644",
+         "path" : "frontend/public/venue/paradise-city/v1/siteplan-photo-5.jpg",
+         "sha256" : "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0"
+      },
+      {
+         "bytes" : 3238,
+         "gitBlob" : "1dd6c5b08c3d25a7875fe9fc849312d9dce03512",
+         "mode" : "100644",
+         "path" : "frontend/public/venue/paradise-city/v1/source-provenance.json",
+         "sha256" : "e18cfa90b1baedce92f5dd1453bc122f7c0881a105dc7f32b342c62f3617c68a"
+      },
+      {
+         "bytes" : 5381,
+         "gitBlob" : "fc10dc7d0e37df830461b21c09b705088b3d62d5",
+         "mode" : "100644",
+         "path" : "frontend/src/features/paradise-city-map/art-source/package.py",
+         "sha256" : "af6dc5082b0224df81b13aa5edbd812fbfa4e3232062eaf2193e06f3de052c23"
+      },
+      {
+         "bytes" : 4580,
+         "gitBlob" : "1b960ad84c283581b34e828674c64f9811eeb0ef",
+         "mode" : "100644",
+         "path" : "frontend/src/features/paradise-city-map/art-source/qualifier.test.ts",
+         "sha256" : "1ca033552d84507012152b2675c9b3f468f1c7e0185c2939479a166a43b64e55"
+      },
+      {
+         "bytes" : 7484,
+         "gitBlob" : "c8a0c1b78d6971c17ad36e25d584ef395a59d140",
+         "mode" : "100644",
+         "path" : "frontend/src/features/paradise-city-map/art-source/qualify.ts",
+         "sha256" : "83cc29e438d5ae22b2b45a2d7d5a943adf606d96cf6dcd741191fbb9a9e5d71c"
+      },
+      {
+         "bytes" : 4183,
+         "gitBlob" : "c969f5dc551ee2fbcfce85314e9b75e80beb9797",
+         "mode" : "100644",
+         "path" : "frontend/src/features/paradise-city-map/art-source/source-anchors.json",
+         "sha256" : "d13c582165da9ba79a555b3f3750445853ded89c6a1f9b4864df24f7e049d5f4"
+      }
+   ],
+   "format" : "PARADISE_CITY_EXACT_PUBLICATION_POSTIMAGES_V1",
+   "importPolicy" : "EXACT_POSTIMAGES_ON_CURRENT_MASTER_NO_PRIVATE_ANCESTRY_OR_OLD_ROOF_PATHS",
+   "manifestSelfPath" : "docs/mcr/art/evidence/paradise-city-siteplan-v1/publication-postimages.json",
+   "publicationBaseline" : "ac24131a69b4d4779a0d588582a7198def466846",
+   "qualifiedArtifactSourceCommit" : "bc0b0100d023caf883096f4df37d43d6a4937ca7",
+   "selfExcludedForNonCircularHash" : true,
+   "selfPinConveyedInDirectHandoff" : true,
+   "sourceBase" : "8ac5dc2e2b9b336885da3ec85e82641a9f8cebe1"
+}

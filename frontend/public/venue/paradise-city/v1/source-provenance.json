@@ -1,0 +1,73 @@
+{
+  "format": "PARADISE_CITY_ILLUSTRATED_SOURCE_PACK_V1",
+  "schemaVersion": "paradise-city-siteplan-v1",
+  "sourceBase": "8ac5dc2e2b9b336885da3ec85e82641a9f8cebe1",
+  "publicationBaseline": "ac24131a69b4d4779a0d588582a7198def466846",
+  "variantId": "photo-5-provisional",
+  "primaryState": "PROVISIONAL",
+  "original": {
+    "file": "5-Photo-5.jpg",
+    "id": "photo-5",
+    "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+    "bytes": 328720,
+    "width": 1024,
+    "height": 1280
+  },
+  "originalBytesUnchanged": true,
+  "imageTransform": "NONE_FULL_1024x1280_BOARD_RETAINED",
+  "referenceContract": {
+    "sourceCommit": "d3bf31f6481ed7f43e6c50d8c885c89de64ee0d5",
+    "manifest": "docs/mcr/design/venue-redesign-2026-11-05/reference-manifest.json",
+    "stateMap": "docs/mcr/design/venue-redesign-2026-11-05/reference-state-map.json",
+    "publicationState": "CANONICAL_RECEIPT_PENDING_AT_SOURCE_PREPARATION",
+    "roiPolicy": "DEVELOPER_MEASUREMENT_REQUIRED_NOT_EXPLORATORY_ROI"
+  },
+  "supplementaryLabelReference": {
+    "id": "photo-10",
+    "sha256": "1f0e133be3a4bf999fb7871188cce67086d09106a095c266b74e648a67777f63",
+    "bytes": 320653,
+    "use": "PHOTO ZONE label corroboration only; all source anchor geometry is measured on Photo 5; no variant geometry blending"
+  },
+  "sourceCandidatePolicy": "ART_SOURCE_KEYS_AND_IMAGE_PX_ANCHOR_GEOMETRY_ONLY; SPATIAL_OWNER_ADOPTS_PRESENTATION_IDS_AND_MEANING",
+  "anchorSource": {
+    "path": "frontend/src/features/paradise-city-map/art-source/source-anchors.json",
+    "sha256": "d13c582165da9ba79a555b3f3750445853ded89c6a1f9b4864df24f7e049d5f4",
+    "bytes": 4183
+  },
+  "recipe": {
+    "path": "frontend/src/features/paradise-city-map/art-source/package.py",
+    "sha256": "af6dc5082b0224df81b13aa5edbd812fbfa4e3232062eaf2193e06f3de052c23",
+    "bytes": 5381
+  },
+  "outputs": [
+    {
+      "path": "frontend/public/venue/paradise-city/v1/siteplan-photo-5.jpg",
+      "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+      "bytes": 328720
+    },
+    {
+      "path": "frontend/public/venue/paradise-city/v1/asset-interface.json",
+      "sha256": "a29a47add30fe9fe9cd20dcab5f5dd5004cf1290106794fb407991f1c5142dcd",
+      "bytes": 8202
+    }
+  ],
+  "illustrationLimits": [
+    "Not to scale; no geographic calibration",
+    "Queue labels are source illustration, not live counters or verified capacity",
+    "P1/P2/R1/R2 are literal source labels without invented operating rights",
+    "No physical access, gate validity, safe route, navigation, permission, operating hours or arrival authority",
+    "No live example user, phone location or freshness data"
+  ],
+  "characterPolicy": "APPROVED_EXISTING_ORIGINALS_ONLY_IN_CONSUMER_OVERLAYS; NO_CHARACTER_ASSET_ADDED_OR_CHANGED",
+  "rights": {
+    "source": "User-supplied reference, packaged byte for byte under explicit task instruction",
+    "externalArtwork": "No external artwork acquired or generated",
+    "font": "No font packaged; supplied JPEG typography retained unchanged"
+  },
+  "notRun": [
+    "Integrated App/Map/Friends/Notes journeys",
+    "Actual phone GPS or geographic projection",
+    "Physical venue/operator acceptance",
+    "Device acceptance"
+  ]
+}

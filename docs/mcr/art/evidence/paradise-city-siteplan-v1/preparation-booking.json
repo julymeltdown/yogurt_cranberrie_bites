@@ -1,0 +1,16 @@
+{
+  "offer": "PARADISECITY-ART-PREP128-0116",
+  "status": "FULL",
+  "acceptedAtEpoch": 1793841431.564384,
+  "capBytes": 134217728,
+  "priorWhole": 4005626992,
+  "carry": 4005626992,
+  "wholePeak": 4125089621,
+  "positivePeak": 119462629,
+  "minFree": 23501275136,
+  "sourceBase": "8ac5dc2e2b9b336885da3ec85e82641a9f8cebe1",
+  "publicationBaseline": "ac24131a69b4d4779a0d588582a7198def466846",
+  "actualBranchPostimages": 0,
+  "expiresUTC": "2026-11-05T01:40:00Z",
+  "observedUTC": "2026-11-05T01:23:32.039404+00:00"
+}

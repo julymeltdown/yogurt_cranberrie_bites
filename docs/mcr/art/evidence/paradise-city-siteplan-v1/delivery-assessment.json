@@ -1,0 +1,51 @@
+{
+  "disposition": "QUALIFIED_FOR_SOURCE_ASSET_INTERFACE_DELIVERY",
+  "responsibleOwner": "01a1a231-0dc4-7b50-92bd-c0f0f56bd970",
+  "qualifiedArtifactSourceCommit": "bc0b0100d023caf883096f4df37d43d6a4937ca7",
+  "sourceBase": "8ac5dc2e2b9b336885da3ec85e82641a9f8cebe1",
+  "publicationBaseline": "ac24131a69b4d4779a0d588582a7198def466846",
+  "referencePublicationCommit": "6ff3e481cfcf820c2e14a9a670ae2dc3bffc9afb",
+  "referencePublicationBatch": "1907016b6aa41c17998acab691a83e99d0a80076",
+  "originalAssetCriteria": {
+    "exactOriginalJPEGAndFullBoard": "PASS",
+    "closedThreeFilePack": "PASS",
+    "sourceAnchorAndProvenanceClosure": "PASS",
+    "sourceCandidates": 22,
+    "sourceCoordinateSpace": "image-px",
+    "candidateReview": "ILLUSTRATED_UNCALIBRATED",
+    "productPositiveAndHostileCasesPassed": 12,
+    "guardCasesPassed": 13,
+    "changedIdentityCasesPassed": 8,
+    "unmaskedRGBDifferencePixels": 0,
+    "sourceROI": [0, 0, 1024, 1280],
+    "assetROI": [0, 0, 1024, 1280],
+    "viewportCSS": [1024, 1280],
+    "devicePixelRatio": 1,
+    "uniformScale": 1,
+    "diagnosticIsSeparateTransparentRGBA": true,
+    "developerInspectedOriginalAssetOverlayLayerAndDiff": true,
+    "remainingAssetDefects": []
+  },
+  "immutableEvidence": [
+    {"file": "PARADISECITY-ART-QUALIFY01-0125.jsonl", "sha256": "b27a40066784f6b187767ff55d5699eeaa8bcab5640187af3e93efc0a9a8440e", "overall": "FAIL", "positiveUse": "12 product cases, package/verify, unmasked comparison and original output pins"},
+    {"file": "PARADISECITY-ART-QUALIFY03-0133.jsonl", "sha256": "f7c999bd07ed4389133e1fe89a40baa846c51a72144f9b3ef2f2f0f6026bf4aa", "overall": "FAIL", "positiveUse": "13 guard regressions"},
+    {"file": "PARADISECITY-ART-QUALIFY04-0152.jsonl", "sha256": "57e0565d1b7251adc52adb52040812a2410e19bafedd7ee04b74b28d7cdcdc0f", "overall": "FAIL", "positiveUse": "8 changed identity cases, current closed-pack verification and exact source/output evidence binding"},
+    {"file": "PARADISECITY-ART-QUALIFY04-0152-positive-binding.json", "sha256": "8b533fd510263c1877180ef777c13bf17c9a0e8497863f0183b60920f20069e9", "positiveUse": "Current-byte binding preserves prior overall failures"},
+    {"file": "PARADISECITY-ART-QUALIFY05-0152.jsonl", "sha256": "193ea315597268629f0c561d78568204c0180529d48aeb6e5216ac249baa8695", "overall": "FAIL", "positiveUse": "No product credit; pre-workload unknown-controller failure retained"}
+  ],
+  "resourceDisposition": {
+    "allFiveOverallRounds": "FAIL_RETAINED",
+    "currentExecutionResources": 0,
+    "allWorkersAndGuardsReaped": true,
+    "privateTemporaryRootsRemoved": true,
+    "lastObservedWholePeakBytes": 4181277439,
+    "lastObservedCumulativeNewPeakBytes": 221435639,
+    "familyNewCapBytes": 268435456,
+    "closingSourceDocsGitUsesRemainingFamilyHeadroom": true,
+    "additionalOverallResourcePassIsNotAnOriginalAssetCriterion": true,
+    "sourceOnlyDeliveryDecisionMadeByResponsibleDeveloper": true
+  },
+  "excludedAcceptance": ["integrated consumer", "360/390/430 mobile viewport captures", "GPS calibration", "live user or notes data", "permissions or operator availability", "physical venue", "original blocked FE-REF-SCENE goal"],
+  "publication": "DIRECT_EXACT_FOUR_SCOPE_POSTIMAGES_TO_SOLE_PUBLISHER_412E_NO_PRIVATE_ANCESTRY",
+  "canonicalAssetReceipt": "PENDING_AT_HANDOFF"
+}

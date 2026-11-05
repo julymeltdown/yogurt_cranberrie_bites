@@ -1,0 +1,77 @@
+{
+  "sourceBase": "8ac5dc2e2b9b336885da3ec85e82641a9f8cebe1",
+  "publicationBaseline": "ac24131a69b4d4779a0d588582a7198def466846",
+  "policy": "READ_ONLY_OLD_PRIVATE_CARRY_EXCLUDED_FROM_PUBLISHING",
+  "files": [
+    {
+      "path": "docs/mcr/art/evidence/map-roof-silhouette-derived-v4/AR02-AR04-V4-ROOF-QUALIFY01-0055-independent-guardian.jsonl",
+      "bytes": 929,
+      "sha256": "1a6e8dec67d6e3bca78eb4dd1182df8a088d43b2772fe054637763d117a897ef"
+    },
+    {
+      "path": "docs/mcr/art/evidence/map-roof-silhouette-derived-v4/AR02-AR04-V4-ROOF-QUALIFY01-0055.jsonl",
+      "bytes": 7779,
+      "sha256": "7243ee46f6151645abe1e98c392962fe8c803805a52fed054dfc9f524728fb90"
+    },
+    {
+      "path": "docs/mcr/art/evidence/map-roof-silhouette-derived-v4/guard.py",
+      "bytes": 16830,
+      "sha256": "f9f5200abcad44ecbe0a9c90b0920d7a9af447ccf465c7368b9c704147d4b3ab"
+    },
+    {
+      "path": "docs/mcr/art/evidence/map-roof-silhouette-derived-v4/inventory.py",
+      "bytes": 6489,
+      "sha256": "3db99e379f10c1fa01c899d9894251bf161175f5971273975755cc70208dc312"
+    },
+    {
+      "path": "docs/mcr/art/evidence/map-roof-silhouette-derived-v4/preparation-booking.json",
+      "bytes": 436,
+      "sha256": "dca2d3968a0bdc5dfc9cc61e4ba1d85ea5d31ba4cd24616aa5a0b5b21b55aab2"
+    },
+    {
+      "path": "docs/mcr/art/evidence/map-roof-silhouette-derived-v4/preparation128-booking.json",
+      "bytes": 318,
+      "sha256": "22410fc2ef7a39e36179a66a68d1fed48090f641bc37bd3d2b56e3ec3909203b"
+    },
+    {
+      "path": "docs/mcr/art/evidence/map-roof-silhouette-derived-v4/previews.py",
+      "bytes": 1571,
+      "sha256": "e782566fe86ba197f7dd6dd540142b2aa44bdfcb01888b5efdc56d38a1ee9d2c"
+    },
+    {
+      "path": "docs/mcr/art/evidence/map-roof-silhouette-derived-v4/resource_guardian.py",
+      "bytes": 3539,
+      "sha256": "4856c555e5eaeaff153030fbd1b7fcb29b00eb2a999b324f29af3306c27124d1"
+    },
+    {
+      "path": "docs/mcr/art/map-roof-silhouette-derived-v4.md",
+      "bytes": 3887,
+      "sha256": "fe9fcbfb8fa6d45fffda3a32613dcebdba09af6e95d539bba8f346d110a8bf3e"
+    },
+    {
+      "path": "frontend/public/world/map-roof-silhouette-derived-v4/README.md",
+      "bytes": 1093,
+      "sha256": "d243306b9539755be87858ae515410ecdf15f0a3161721433a21ff633ce6ab9c"
+    },
+    {
+      "path": "frontend/public/world/map-roof-silhouette-derived-v4/build.py",
+      "bytes": 16290,
+      "sha256": "bdcb682d21a43359d10e05f0a19f40c34089955b94623f981c05b9f0f4becb8e"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map-roof-silhouette-derived-v4/qualifier_test.py",
+      "bytes": 7077,
+      "sha256": "b14c0e7a97ab787ca6ca481194ea379e5ba5d62bcebe209b145fce8978f8ad7e"
+    },
+    {
+      "path": "frontend/src/world/reference-scene/map-roof-silhouette-derived-v4/qualify.py",
+      "bytes": 10269,
+      "sha256": "25b98005cf50e9504a5def5ea86f3c7a69b3ddceab0930d4aa04d0de84dacca3"
+    },
+    {
+      "path": "docs/mcr/art/evidence/map-roof-silhouette-derived-v4/doc32-booking.json",
+      "bytes": 316,
+      "sha256": "93c2a6fec9218e1172f0e5645eed394d0aa5da47476d21c46ecf4453e1c6ab64"
+    }
+  ]
+}
