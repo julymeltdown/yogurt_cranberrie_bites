@@ -1,0 +1,271 @@
+{
+  "schema_version": 1,
+  "kind": "FAILED_BUILD_ATTEMPT_NOT_ACCEPTANCE",
+  "owner": "Root backend Product/API developer",
+  "source_commit": "12361094851474726117374a304c973a2e33fd0e",
+  "source_branch": "codex/mcr-be-product-api",
+  "application_changes": false,
+  "offer": "ROOT-COHERENT-MAINS04-0120",
+  "state": "FAILED_FULL_RELEASED",
+  "accepted_epoch": 1793844937.642138,
+  "accepted_kst": "2026-11-05T11:15:37.642138+09:00",
+  "target_and_full_release_epoch": 1793844942.749108,
+  "target_and_full_release_kst": "2026-11-05T11:15:42.749108+09:00",
+  "exit_code": 1,
+  "failure": "RuntimeError: unresolved global workflow",
+  "cargo_started": true,
+  "cargo_completed": false,
+  "cargo_exit_code": null,
+  "cargo_messages": {
+    "compiler_artifact": 342,
+    "build_script_executed": 34,
+    "build_finished": 0,
+    "executable_artifact": 0
+  },
+  "completed_main_build_receipt": false,
+  "immutable_main_copies": [],
+  "actual_live_samples": {
+    "primary": {
+      "sample": {
+        "at": 1793844940.7209249,
+        "processes": 7,
+        "rss": 485703680,
+        "target_growth": 0,
+        "outside": 2076672,
+        "new": 2076672,
+        "whole": 48726315008,
+        "free": 22838263808
+      },
+      "failure": null
+    },
+    "guardian": {
+      "peak": {
+        "at": 1793844940.931856,
+        "processes": 9,
+        "rss": 398671872,
+        "target_growth": 0,
+        "outside": 2076672,
+        "new": 2076672,
+        "whole": 48726315008,
+        "free": 22838263808
+      },
+      "failure": null,
+      "ended": 1793844941.942406
+    }
+  },
+  "qualification": "No successful mains, application, native, HTTP, browser or integration qualification",
+  "accepted_caps": {
+    "max_processes": 32,
+    "max_rss_bytes": 8589934592,
+    "new_bytes": 2147483648,
+    "target_new_bytes": 1879048192,
+    "outside_new_bytes": 268435456,
+    "whole_bytes": 51539607552,
+    "compile_seconds": 600,
+    "freeze_seconds": 660,
+    "work_seconds": 720,
+    "full_seconds": 900
+  },
+  "carry_at_accept": 48724238336,
+  "actual_observed_peak": {
+    "at": 1793844940.7209249,
+    "processes": 7,
+    "rss": 485703680,
+    "target_growth": 0,
+    "outside": 2076672,
+    "new": 2076672,
+    "whole": 48726315008,
+    "free": 22837166080
+  },
+  "guardian_observed_peak": {
+    "at": 1793844940.931856,
+    "processes": 9,
+    "rss": 398671872,
+    "target_growth": 0,
+    "outside": 2076672,
+    "new": 2076672,
+    "whole": 48726315008,
+    "free": 22838263808
+  },
+  "later_observed_carry_floor": 48728027136,
+  "later_carry_source": "WorldBUILD03 owner-reported literal FULL1793845069.7960188; not a modification of this accepted round",
+  "complete_non_target_before_admission_bytes": 15326777344,
+  "raw_unknown": [
+    {
+      "pid": 73975,
+      "reason": "unknown or ambiguous actual owner/root",
+      "identity_chain": [
+        {
+          "pid": 73975,
+          "ppid": 49590,
+          "pgid": 73975,
+          "birth": "Thu Nov 5 11:15:41 2026",
+          "executable": "/bin/zsh",
+          "script": null,
+          "cwd": null,
+          "root_refs": []
+        },
+        {
+          "pid": 49590,
+          "ppid": 49453,
+          "pgid": 49453,
+          "birth": "Tue Nov 3 20:42:11 2026",
+          "executable": "${CODEX_DESKTOP}/codex",
+          "script": null,
+          "cwd": "/",
+          "root_refs": []
+        },
+        {
+          "pid": 49453,
+          "ppid": 1,
+          "pgid": 49453,
+          "birth": "Tue Nov 3 20:42:10 2026",
+          "executable": "${CODEX_DESKTOP}/ChatGPT",
+          "script": null,
+          "cwd": "/",
+          "root_refs": []
+        },
+        {
+          "pid": 1,
+          "ppid": 0,
+          "pgid": 1,
+          "birth": "Tue Nov 3 06:53:55 2026",
+          "executable": "/sbin/launchd",
+          "script": null,
+          "cwd": null,
+          "root_refs": []
+        }
+      ]
+    }
+  ],
+  "controls": {
+    "metrics.py": "4317eef320b19bf079a37c48c7d39c869c460ecc14f3b62ed5c8753c171921d3",
+    "accounting.py": "1a2ed019be0af4d673786532c8b46eda81cd6137a7ac27c9f97b83a34387483c",
+    "controller.py": "9c6979bf2cbb08a9b4c3717418ef4fa9818d0c416d43eae675ab55a390adba69",
+    "builder.py": "36b6f4a6617e5eb98971abd20dc869bcb63f5307edc921d0f660a67939c09000",
+    "guardian.py": "e5f0b4d3341ed2e91725320bbdcb5c15735be43c29a866d03524792f4b64ec25"
+  },
+  "source_readset_count": 2545,
+  "byte_identical_cargo_inputs_mtime_refreshed": 1827,
+  "source_content_unchanged_after_cleanup": true,
+  "owned_resources_after": {
+    "workflow": 0,
+    "children": 0,
+    "remaining_new_bytes": 0,
+    "target_access": "NONE"
+  },
+  "raw_evidence": {
+    "acceptance.json": {
+      "sha256": "193bf6d09bd261f508a3735ef527437fc46e3cf296a45e68f93c82496cdbe28b",
+      "bytes": 2600,
+      "location": "${ROOT04}/acceptance.json"
+    },
+    "FULL.json": {
+      "sha256": "86dcfb3317e8a724e2ca9824afac3a22ddf9a6a993db87efd32a8c9f5a409b84",
+      "bytes": 860,
+      "location": "${ROOT04}/FULL.json"
+    },
+    "request.json": {
+      "sha256": "138036e07f47ffe7a1f2cceb83c73882826279aaeeb87e3974471e984fd7e610",
+      "bytes": 1666,
+      "location": "${ROOT04}/request.json"
+    },
+    "plan.json": {
+      "sha256": "1637199707e7b368af5dfe78af6026b0dfad293e19e62ad0583f392f7242bf4b",
+      "bytes": 3180,
+      "location": "${ROOT04}/plan.json"
+    },
+    "readset.json": {
+      "sha256": "7157f6dbde3a03c3be3fb06b48ef65548c00aa480537c6197d7e4c213340f2d7",
+      "bytes": 347210,
+      "location": "${ROOT04}/readset.json"
+    },
+    "source-pins.json": {
+      "sha256": "f099fce99c5db6cf9baeed0be36b3bb12015c1ac0f8a21bf28ec81cd1def45a8",
+      "bytes": 346956,
+      "location": "${ROOT04}/source-pins.json"
+    },
+    "primary.live.json": {
+      "sha256": "09060d6f4aa4d685b746c6e5de0289e4e336c3d8b5c6af40e423782d0f11155e",
+      "bytes": 231,
+      "location": "${ROOT04}/primary.live.json"
+    },
+    "guardian.result.json": {
+      "sha256": "3a8f0804cfb92218480fca12ce04b9b62889f16174669abeadaf6cff6f3e057b",
+      "bytes": 258,
+      "location": "${ROOT04}/guardian.result.json"
+    },
+    "coherent-mains-1.jsonl": {
+      "sha256": "f8d566b9af7f0e0d41be17615d3ada449cd9c6fa38cd84ae4ade590f299edfb4",
+      "bytes": 299217,
+      "location": "${ROOT04}/coherent-mains-1.jsonl"
+    },
+    "coherent-mains-1.stderr": {
+      "sha256": "fde24eef1f1c254b6f8a4bab783080f0107f88db4c94cf7b6b112c3a9dfc2c80",
+      "bytes": 716,
+      "location": "${ROOT04}/coherent-mains-1.stderr"
+    },
+    "global-live-73653.json": {
+      "sha256": "86ec44514a3dfbbcf64f040ec391bbac43fb5923df0893249da4b261810734d8",
+      "bytes": 2590,
+      "location": "${ROOT04}/global-live-73653.json"
+    },
+    "own-mtime-refresh.json": {
+      "sha256": "734f1e64095a362718c05820f542edb4aa0740c7ca20de0f018002407cab8100",
+      "bytes": 656118,
+      "location": "${ROOT04}/own-mtime-refresh.json"
+    },
+    "non-target-census-before-root04-admission.json": {
+      "sha256": "d89124367451eac4d1bc7bc72a5b82ef33369191519b38a6d1bd9b0663be5762",
+      "bytes": 55860,
+      "location": "${ROOT04}/non-target-census-before-root04-admission.json"
+    }
+  },
+  "raw_evidence_policy": "Private immutable controls retained separately. ${ROOT04} is a local-evidence alias, not a shipped artifact. This curated record does not certify all resource accounting or reconstruct unknown owner identity.",
+  "next_execution": "No Root05 allocation. A distinct offer and actual diagnosis/identity resolution are required; round04 never restarts.",
+  "publication_scope": "These two documentation files only; no private application ancestry or runtime artifact delivery.",
+  "documentation_validation": {
+    "source_readset_byte_check": {
+      "exit_code": 0,
+      "files": 2545
+    },
+    "application_diff_check": {
+      "argv": [
+        "git",
+        "diff",
+        "--quiet",
+        "--",
+        "backend",
+        "frontend",
+        "contracts"
+      ],
+      "exit_code": 0
+    },
+    "json_parse_and_local_path_sanitization": {
+      "exit_code": 0
+    },
+    "limits": "Source/document checks only; no compiler/test/runtime rerun"
+  },
+  "requested_cargo_argv_from_sealed_builder": [
+    "cargo",
+    "+1.88.0",
+    "build",
+    "--manifest-path",
+    "${ROOT}/backend/Cargo.toml",
+    "--locked",
+    "--offline",
+    "-j",
+    "2",
+    "--config",
+    "profile.dev.package.contracts-build.opt-level=2",
+    "--message-format=json",
+    "-p",
+    "concert-service",
+    "-p",
+    "api-gateway",
+    "--bin",
+    "concert-service",
+    "--bin",
+    "api-gateway"
+  ]
+}
