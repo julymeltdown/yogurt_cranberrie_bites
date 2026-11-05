@@ -1,0 +1,12 @@
+{
+  "at": 1793863027.2670279,
+  "status": "PASS",
+  "scope": "PRODUCER_ONLY_SIMULTANEOUS_RGBA_DECODE_NOT_WORLD_RENDERER_SWAP",
+  "baselineProcessPeakRSSBytes": 28868608,
+  "processPeakRSSBytes": 52789248,
+  "oldDecodedRGBABytes": 8175616,
+  "newDecodedRGBABytes": 4492352,
+  "simultaneousDecodedRGBABytes": 12667968,
+  "swap": "producer active image tuple changed once while both generations retained",
+  "runtimeWorldEvidence": false
+}

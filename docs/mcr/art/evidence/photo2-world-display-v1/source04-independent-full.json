@@ -1,0 +1,12 @@
+{
+  "at": 1793862778.558008,
+  "failure": null,
+  "peak": {
+    "whole": 4372654422,
+    "positive": 8869520,
+    "rss": 217022464,
+    "processes": 5
+  },
+  "samples": 9,
+  "minimumFree": 17019260928
+}

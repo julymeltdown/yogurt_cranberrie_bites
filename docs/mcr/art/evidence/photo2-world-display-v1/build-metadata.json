@@ -1,0 +1,50 @@
+{
+  "status": "GENERATED_NOT_YET_QUALIFIED",
+  "outputs": [
+    {
+      "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/ground.svg",
+      "bytes": 1623572,
+      "sha256": "9d9063e466949223d889f4f6d859e8dd54b51f64ff3677161cab44f7b8c85ab5"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/ground.png",
+      "bytes": 61501,
+      "sha256": "5d4c6c56186088fd86de836dc0c66a9aff7df1cf373615f070e2a63b9272d9c0"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/atlas.png",
+      "bytes": 27038,
+      "sha256": "db05972c262e6406872afea9ef8f7ce3c9be3eb443946023d5d2afdf93018795"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/atlas-editable.json",
+      "bytes": 874317,
+      "sha256": "0cb243163c696df5fc8ea95316819bbbfe6ca2b9f9a9e413fd6f0dee13507126"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/asset-interface.json",
+      "bytes": 46548,
+      "sha256": "085880838187f5e0514afaf25c4a75d4a3fe0a4a48453a05d86b73b71e591c77"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/source-provenance.json",
+      "bytes": 3469,
+      "sha256": "a89d811ce5ae4ca0cbe9d0ee7ab808b6bfbe63479ef8e75720342cbe83738567"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/README.md",
+      "bytes": 2058,
+      "sha256": "ec2f88ebd55a248890f9e96dbcf4575d8c437fca5a6bada98e5c516260fdbdb4"
+    }
+  ],
+  "blockedCells": 858,
+  "supportPieces": 1618,
+  "frames": 24,
+  "units": {
+    "sourcePixelCount": 1123088,
+    "decodedRGBABytes": 4492352,
+    "sourcePixelCountLimit": 2097152,
+    "transferByteLimit": 2097152,
+    "actualPngTransferBytes": 88539
+  }
+}

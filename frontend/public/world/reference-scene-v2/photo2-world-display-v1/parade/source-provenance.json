@@ -1,0 +1,83 @@
+{
+  "schema": "mcr-photo2-world-display-provenance-v1",
+  "version": 1,
+  "authorship": "Original project-authored editable vector primitives, deterministic Pillow rasterization; no generated or sampled character/reference pixels",
+  "reference": {
+    "kind": "USER_SUPPLIED_VISUAL_REFERENCE_ONLY",
+    "filename": "2-Photo-2.jpg",
+    "upload": "01a19e5c-e9c6-7973-a53b-a6d19141620f/9FC49E03-6C0E-4776-A954-2CA5C12CB495",
+    "sha256": "9e7f17a666e1ecfc738a14b75bb3a166235a05c401f206aa24f26cf7463cbc27",
+    "sourcePixelSampling": false
+  },
+  "producerContract": {
+    "canonicalCommit": "33491ccf9b0ae3835ad691072d8479b299f543d8",
+    "path": "docs/mcr/evidence/pi08-finish-01/photo2-world-contract/producer-contract-v2.json",
+    "sha256": "3fce374b7f60d46e8561559c42470a3343708f9eb3236a1d01050c4f0aa3a12d"
+  },
+  "nativeSource": {
+    "commit": "8dee1335a79f831e6a29f005a50f2c0f65777d46",
+    "path": "frontend/src/world/reference-scene/spatial-v3/source-inputs.json",
+    "blob": "06a3ba188101448a8449a4e93599cf087ba2be73",
+    "sha256": "847d9c92a4ddfa22b8187bb6afe9a9fc2e6e09b1c7fe8e5f85c5a7f5c0d846a9",
+    "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+    "width": 768,
+    "height": 1296
+  },
+  "sourceCode": {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/author.py",
+    "bytes": 22457,
+    "sha256": "ca1be3ec595a7054447165fa8e929e1ffca7fae982bb8fb089ebf031dbbc45b4"
+  },
+  "outputs": [
+    {
+      "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/ground.svg",
+      "bytes": 1623572,
+      "sha256": "9d9063e466949223d889f4f6d859e8dd54b51f64ff3677161cab44f7b8c85ab5"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/ground.png",
+      "bytes": 61501,
+      "sha256": "5d4c6c56186088fd86de836dc0c66a9aff7df1cf373615f070e2a63b9272d9c0"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/atlas.png",
+      "bytes": 27038,
+      "sha256": "db05972c262e6406872afea9ef8f7ce3c9be3eb443946023d5d2afdf93018795"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/atlas-editable.json",
+      "bytes": 874317,
+      "sha256": "0cb243163c696df5fc8ea95316819bbbfe6ca2b9f9a9e413fd6f0dee13507126"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/asset-interface.json",
+      "bytes": 46548,
+      "sha256": "085880838187f5e0514afaf25c4a75d4a3fe0a4a48453a05d86b73b71e591c77"
+    },
+    {
+      "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/README.md",
+      "bytes": 2058,
+      "sha256": "ec2f88ebd55a248890f9e96dbcf4575d8c437fca5a6bada98e5c516260fdbdb4"
+    }
+  ],
+  "dependencies": {
+    "python": "3.14.3",
+    "pillow": "12.2.0",
+    "network": false,
+    "newDependencies": false
+  },
+  "preserved": [
+    "user originals",
+    "selected characters and all avatar bytes",
+    "22 native IDs/transforms/feet/depths",
+    "geometry/collision/spawns/proximity/room identity",
+    "REVENGE/DANGER",
+    "old quality-v6 pixels/hash/release tuple"
+  ],
+  "limits": [
+    "Source asset and producer checks do not admit a World release",
+    "Consumer renderer/projection/occlusion/native/whole Photo2 acceptance remains separate",
+    "No physical availability or attendance authority",
+    "SVG/PNG external-rasterizer parity not claimed"
+  ]
+}

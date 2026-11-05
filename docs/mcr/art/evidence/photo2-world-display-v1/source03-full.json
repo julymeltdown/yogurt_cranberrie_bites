@@ -1,0 +1,62 @@
+{
+  "offerId": "ART231-PHOTO2-SOURCE03-0647",
+  "status": "FAIL",
+  "failure": "AssertionError(('accepted root birth unavailable/mismatch', '01a1a1fe-1ab7-79b0-adbc-d4c025701acb')); final:AssertionError(('accepted root birth unavailable/mismatch', '01a1a1fe-1ab7-79b0-adbc-d4c025701acb'))",
+  "acceptedAtEpoch": 1793861607.101136,
+  "bootstrapAtEpoch": 1793861607.101136,
+  "actualFullEpoch": 1793861614.764074,
+  "commands": [
+    {
+      "name": "original-vector-raster",
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "-B",
+        "-u",
+        "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/author.py",
+        "--build"
+      ],
+      "pid": 56937,
+      "exit": 0,
+      "log": {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source03-command-00.log",
+        "bytes": 1639,
+        "sha256": "652616a28f71529bef678a3db83d00a140637af9d8ee8f4dd8ad533ba392356f"
+      }
+    },
+    {
+      "name": "scoped-strict-types",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--max-old-space-size=256",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+        "--project",
+        "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/scoped-tsconfig.json",
+        "--pretty",
+        "false"
+      ],
+      "pid": 57080,
+      "exit": 0,
+      "log": {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source03-command-01.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "peak": {
+    "whole": 4363784902,
+    "positive": 6223996,
+    "rss": 144637952,
+    "processes": 5
+  },
+  "minimumFree": 16879874048,
+  "allChildrenReaped": true,
+  "tempAbsent": true,
+  "resources": {
+    "processes": 0,
+    "appSlots": 0
+  },
+  "sourceArtOnly": true,
+  "personalInspection": "PENDING",
+  "worldRuntimeAcceptance": false
+}

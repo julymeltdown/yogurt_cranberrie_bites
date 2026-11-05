@@ -1,0 +1,12 @@
+{
+  "at": 1793861614.025506,
+  "failure": "AssertionError(('unknown actual MCR roots', [(57137, '/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/fe-public/docs/mcr/evidence/qa06-device-fixture-ready-01/round.py source07')]))",
+  "peak": {
+    "whole": 4363768833,
+    "positive": 6207927,
+    "rss": 165691392,
+    "processes": 6
+  },
+  "samples": 5,
+  "minimumFree": 16879976448
+}

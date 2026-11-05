@@ -1,0 +1,46 @@
+{
+  "head": "3e2e4b2568ee80ad5a6b6711554ee1fa444b1594",
+  "files": [
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/author.py",
+      "bytes": 21205,
+      "sha256": "cf4b97d8ad675d40453bd6bc03752455465f8c377721c9b4532e26cdb3f47bef"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/controller.py",
+      "bytes": 8356,
+      "sha256": "f1b53f9fa351b1ee9dc571d8f49fe208922ecff05eb8853e7c2ee5eaeb6dfd94"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source-control.py",
+      "bytes": 11814,
+      "sha256": "3e1aed729b2eeed94ff523f9874b1592a7d7e4848d0d4124dccd42098f2f43fe"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/memory-probe.py",
+      "bytes": 1765,
+      "sha256": "0bc75747783bcf6307b79739d7c868ee5782bedcdd99edf26d5a045ca94f2b89"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/scoped-tsconfig.json",
+      "bytes": 338,
+      "sha256": "bcb6e7497b02fb094b24e1ecfe970c937201b825a8244fe52893d2d574006120"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/frontend/src/features/parade-ink/world-hud/__tests__/photo2-art-source-v1/qualifier.test.ts",
+      "bytes": 11264,
+      "sha256": "26f88cbe9002ac476c82798e5aab5c2dc4d23d6fc7cc78265dba45d1f0d337c8"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/README.md",
+      "bytes": 2058,
+      "sha256": "ec2f88ebd55a248890f9e96dbcf4575d8c437fca5a6bada98e5c516260fdbdb4"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/frontend/tsconfig.json",
+      "bytes": 660,
+      "sha256": "55050e293472fb6ec4aa2690c8cad7cb5a5a107ba483bf98851a0c4e707c6528"
+    }
+  ],
+  "meaning": "Actual source frozen during authorized readiness bootstrap; final controller bootstrap fix is pinned by exact SHA and committed with delivery"
+}

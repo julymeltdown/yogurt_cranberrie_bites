@@ -1,0 +1,74 @@
+{
+  "offerId": "ART231-PHOTO2-SOURCE06-0715",
+  "status": "PASS",
+  "failure": null,
+  "acceptedAtEpoch": 1793863019.880687,
+  "bootstrapAtEpoch": 1793863019.880687,
+  "actualFullEpoch": 1793863030.664347,
+  "commands": [
+    {
+      "name": "changed-receipt-interop",
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "-B",
+        "-u",
+        "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source-control05.py",
+        "--interop-check"
+      ],
+      "pid": 96227,
+      "exit": 0,
+      "log": {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source06-command-00.log",
+        "bytes": 127,
+        "sha256": "11a6121d866c164d6dbf109b87b1fe5cea28423d14dcd667a9351826f71e77c4"
+      }
+    },
+    {
+      "name": "owned-hostile-frame-support-qualifier",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--max-old-space-size=256",
+        "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/frontend/src/features/parade-ink/world-hud/__tests__/photo2-art-source-v1/qualifier.test.ts"
+      ],
+      "pid": 96250,
+      "exit": 0,
+      "log": {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source06-command-01.log",
+        "bytes": 674,
+        "sha256": "814da5715e5f7da83d9fd8abbbd72b1ac18ea6c077f96a8c1a48f6a4cffdaf5f"
+      }
+    },
+    {
+      "name": "single-producer-decode-probe",
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "-B",
+        "-u",
+        "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/memory-probe.py"
+      ],
+      "pid": 96315,
+      "exit": 0,
+      "log": {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source06-command-02.log",
+        "bytes": 415,
+        "sha256": "386234fd8ec5c20454cbfc2d68b1fd33787407ed227c08dd5795b0947c78e457"
+      }
+    }
+  ],
+  "peak": {
+    "whole": 4390566003,
+    "positive": 1124576,
+    "rss": 147210240,
+    "processes": 5
+  },
+  "minimumFree": 16822792192,
+  "allChildrenReaped": true,
+  "tempAbsent": true,
+  "resources": {
+    "processes": 0,
+    "appSlots": 0
+  },
+  "sourceArtOnly": true,
+  "personalInspection": "PENDING",
+  "worldRuntimeAcceptance": false
+}

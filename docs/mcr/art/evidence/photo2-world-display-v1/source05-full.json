@@ -1,0 +1,79 @@
+{
+  "offerId": "ART231-PHOTO2-SOURCE04-0657",
+  "status": "FAIL",
+  "failure": "AssertionError(('unknown actual MCR roots', [(89612, '/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /private/tmp/mcr-c06-parade-binding-6b5d-20261105/sourceprep16B.py')]))",
+  "acceptedAtEpoch": 1793862768.666643,
+  "bootstrapAtEpoch": 1793862768.666643,
+  "actualFullEpoch": 1793862779.389913,
+  "commands": [
+    {
+      "name": "changed-receipt-interop",
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "-B",
+        "-u",
+        "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source-control04.py",
+        "--interop-check"
+      ],
+      "pid": 89472,
+      "exit": 0,
+      "log": {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source05-command-00.log",
+        "bytes": 67,
+        "sha256": "dc9b15d7df15ff269cfe61a49a19619a06cc86c84630630a81a6ae546e5056a1"
+      }
+    },
+    {
+      "name": "original-vector-raster",
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+        "-B",
+        "-u",
+        "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/author.py",
+        "--build"
+      ],
+      "pid": 89498,
+      "exit": 0,
+      "log": {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source05-command-01.log",
+        "bytes": 1639,
+        "sha256": "bfeea67cbf3ebbba06045f4cdd0a2983afa555f25db93c1b4b0f87ec32aa7a3b"
+      }
+    },
+    {
+      "name": "scoped-strict-types",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--max-old-space-size=256",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+        "--project",
+        "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/scoped-tsconfig.json",
+        "--pretty",
+        "false"
+      ],
+      "pid": 89573,
+      "exit": 0,
+      "log": {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source05-command-02.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "peak": {
+    "whole": 4372664211,
+    "positive": 8879309,
+    "rss": 147111936,
+    "processes": 5
+  },
+  "minimumFree": 17019023360,
+  "allChildrenReaped": true,
+  "tempAbsent": true,
+  "resources": {
+    "processes": 0,
+    "appSlots": 0
+  },
+  "sourceArtOnly": true,
+  "personalInspection": "PENDING",
+  "worldRuntimeAcceptance": false
+}

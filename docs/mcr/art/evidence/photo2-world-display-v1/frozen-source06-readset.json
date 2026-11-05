@@ -1,0 +1,96 @@
+{
+  "head": "3e2e4b2568ee80ad5a6b6711554ee1fa444b1594",
+  "files": [
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/author.py",
+      "bytes": 22457,
+      "sha256": "ca1be3ec595a7054447165fa8e929e1ffca7fae982bb8fb089ebf031dbbc45b4"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/controller06.py",
+      "bytes": 2234,
+      "sha256": "b78ce84c138b2159e8512f9b11377ecb8dc3570f08169c6790cd28750e98412c"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/controller.py",
+      "bytes": 8356,
+      "sha256": "f1b53f9fa351b1ee9dc571d8f49fe208922ecff05eb8853e7c2ee5eaeb6dfd94"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source-control05.py",
+      "bytes": 4382,
+      "sha256": "85e9da6ebeeda92bbe56440cc873e5ba0fa0d8161df38af5a58dc250a9a18804"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source-control04.py",
+      "bytes": 3312,
+      "sha256": "78afe84050d0d428506c3b558b7e085a63729018daf3ad9f02ed7c0709f313f3"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source-control.py",
+      "bytes": 11814,
+      "sha256": "3e1aed729b2eeed94ff523f9874b1592a7d7e4848d0d4124dccd42098f2f43fe"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/memory-probe.py",
+      "bytes": 1765,
+      "sha256": "0bc75747783bcf6307b79739d7c868ee5782bedcdd99edf26d5a045ca94f2b89"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/scoped-tsconfig.json",
+      "bytes": 338,
+      "sha256": "bcb6e7497b02fb094b24e1ecfe970c937201b825a8244fe52893d2d574006120"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/collision-support.json",
+      "bytes": 1054609,
+      "sha256": "007d76ed1940da163b98ea5ac8c0835782dd7d7bf1f6f1acde6e36090652d5ca"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/frontend/src/features/parade-ink/world-hud/__tests__/photo2-art-source-v1/qualifier.test.ts",
+      "bytes": 12029,
+      "sha256": "957ca90714db452a4cacaca4e702e909c07d0b19d1c0c029c786663c9b4f799f"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/README.md",
+      "bytes": 2058,
+      "sha256": "ec2f88ebd55a248890f9e96dbcf4575d8c437fca5a6bada98e5c516260fdbdb4"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/frontend/tsconfig.json",
+      "bytes": 660,
+      "sha256": "55050e293472fb6ec4aa2690c8cad7cb5a5a107ba483bf98851a0c4e707c6528"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/ground.svg",
+      "bytes": 1623572,
+      "sha256": "9d9063e466949223d889f4f6d859e8dd54b51f64ff3677161cab44f7b8c85ab5"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/ground.png",
+      "bytes": 61501,
+      "sha256": "5d4c6c56186088fd86de836dc0c66a9aff7df1cf373615f070e2a63b9272d9c0"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/atlas.png",
+      "bytes": 27038,
+      "sha256": "db05972c262e6406872afea9ef8f7ce3c9be3eb443946023d5d2afdf93018795"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/atlas-editable.json",
+      "bytes": 874317,
+      "sha256": "0cb243163c696df5fc8ea95316819bbbfe6ca2b9f9a9e413fd6f0dee13507126"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/asset-interface.json",
+      "bytes": 46548,
+      "sha256": "085880838187f5e0514afaf25c4a75d4a3fe0a4a48453a05d86b73b71e591c77"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/source-provenance.json",
+      "bytes": 3469,
+      "sha256": "a89d811ce5ae4ca0cbe9d0ee7ab808b6bfbe63479ef8e75720342cbe83738567"
+    }
+  ],
+  "meaning": "Actual source frozen during authorized readiness bootstrap; final controller bootstrap fix is pinned by exact SHA and committed with delivery"
+}

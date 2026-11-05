@@ -1,0 +1,332 @@
+[
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/atlas-contact.png",
+    "bytes": 45805,
+    "sha256": "88f935373cbbf6975cdd8c19fbe221dee4d1ef4cdf0f9e43ce00fb6d51f71711"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/author.py",
+    "bytes": 22457,
+    "sha256": "ca1be3ec595a7054447165fa8e929e1ffca7fae982bb8fb089ebf031dbbc45b4"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/build-metadata.json",
+    "bytes": 1877,
+    "sha256": "790e902248e1dceae4341a801234ae8f93479bb92c89dcb18ec763aabf0b66da"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/collision-support.json",
+    "bytes": 1054609,
+    "sha256": "007d76ed1940da163b98ea5ac8c0835782dd7d7bf1f6f1acde6e36090652d5ca"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/controller.py",
+    "bytes": 8356,
+    "sha256": "f1b53f9fa351b1ee9dc571d8f49fe208922ecff05eb8853e7c2ee5eaeb6dfd94"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/controller04.py",
+    "bytes": 2177,
+    "sha256": "8a9ce9d992e72e048a174f95bed486e0b54c611b01ac031c5a947a3522351423"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/controller05.py",
+    "bytes": 1237,
+    "sha256": "04a5f02ed0f333497f78271b35d94c3b825626de309dfb857dd660f03e9300d3"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/controller06.py",
+    "bytes": 2234,
+    "sha256": "b78ce84c138b2159e8512f9b11377ecb8dc3570f08169c6790cd28750e98412c"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/decode-probe.json",
+    "bytes": 437,
+    "sha256": "52a54ed59e47edf52c4f8b02025414b44246221d245090083d93c36e68c41352"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/frozen-source03-readset.json",
+    "bytes": 2203,
+    "sha256": "b4a0a0c9453bb7e290bc1b7b36f408b61e6d01f9f97755393264d1eeba841a41"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/frozen-source04-readset.json",
+    "bytes": 2296,
+    "sha256": "04e8d04f0e677d849ac4378460f2f9b5bbedd8afe91d17b1e24264f29a83f901"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/frozen-source05-readset.json",
+    "bytes": 2697,
+    "sha256": "8a2e12c72c95c7b2c66e41307a95d2f3a4ba890f5a17efd8d7ab0efea42370e0"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/frozen-source06-readset.json",
+    "bytes": 4835,
+    "sha256": "496c589dbc0659568390ba8d135eed7236b7663c113396ff642d069b147d7460"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/full-scene.png",
+    "bytes": 87399,
+    "sha256": "e934730d9ef36eceef0ed73c493e25cf23f3849164dc41a24ec6682db3a1c57a"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/memory-probe.py",
+    "bytes": 1765,
+    "sha256": "0bc75747783bcf6307b79739d7c868ee5782bedcdd99edf26d5a045ca94f2b89"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/qualification-review.json",
+    "bytes": 2975,
+    "sha256": "05b2532566cf34a96e7f34266e7308533b934c3746b10ce1f38bfd42b6b9a5aa"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/reference-comparison.png",
+    "bytes": 379957,
+    "sha256": "33cc8bf9d6f3fce2c7bba95a00abc946edc3e72fa1040097e6c371a8c592d1e0"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/scene-viewport.png",
+    "bytes": 33520,
+    "sha256": "1b48d20175a3f804132c426fe95402767f740ec2fff4f687cdb19beb7df9d58b"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/scoped-tsconfig.json",
+    "bytes": 338,
+    "sha256": "bcb6e7497b02fb094b24e1ecfe970c937201b825a8244fe52893d2d574006120"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/source-control.py",
+    "bytes": 11814,
+    "sha256": "3e1aed729b2eeed94ff523f9874b1592a7d7e4848d0d4124dccd42098f2f43fe"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/source-control04.py",
+    "bytes": 3312,
+    "sha256": "78afe84050d0d428506c3b558b7e085a63729018daf3ad9f02ed7c0709f313f3"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/source-control05.py",
+    "bytes": 4382,
+    "sha256": "85e9da6ebeeda92bbe56440cc873e5ba0fa0d8161df38af5a58dc250a9a18804"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/source03-candidate/README.md",
+    "bytes": 2058,
+    "sha256": "ec2f88ebd55a248890f9e96dbcf4575d8c437fca5a6bada98e5c516260fdbdb4"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/source03-candidate/asset-interface.json",
+    "bytes": 46548,
+    "sha256": "201e8694fe84c63e054a0a50bc37345bfe1383d833632be39fa94b8b9d9e62c9"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/source03-candidate/atlas-contact.png",
+    "bytes": 50160,
+    "sha256": "c4b28189b3594b290181c26be53d07b5d53a5d5be12af7029f98bc853e598734"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/source03-candidate/atlas-editable.json",
+    "bytes": 1247750,
+    "sha256": "12a209c876b177688abf69d6692045eba18ef7400834a1a37d96c82bedd6458d"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/source03-candidate/atlas.png",
+    "bytes": 30381,
+    "sha256": "8fd5654a9566f9ab769ac073ff98c64914c64ac4ff3c057fb1f312f9a416b8ba"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/source03-candidate/build-metadata.json",
+    "bytes": 1877,
+    "sha256": "bbb4eb40a1d2a6df159d9e7d9e4bb05939beb9e463c4c5740049045883be54c5"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/source03-candidate/collision-support.json",
+    "bytes": 1054609,
+    "sha256": "ddeaf484723eaaf26005d1ca234beff7183be43c0addd71c89eae3d0692ac4b5"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/source03-candidate/full-scene.png",
+    "bytes": 66272,
+    "sha256": "bd5a829d924c11e4b0115c43da0364992e908768d2040b5588ecd0755435933a"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/source03-candidate/ground.png",
+    "bytes": 31648,
+    "sha256": "946170a22c1ccedeabb71af18e155264f2475975848e4157a39fb58b80dc2d47"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/source03-candidate/ground.svg",
+    "bytes": 777132,
+    "sha256": "12258ef63fa6f65bcb33953b7f56dfbd9f980a6e1ef27673cc5449d97956607a"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/source03-candidate/manifest.json",
+    "bytes": 3862,
+    "sha256": "efcbf44b38adccf96f371083e7046ed73e868c4e654a9a3b09630e72b9e5cda6"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/source03-candidate/reference-comparison.png",
+    "bytes": 374127,
+    "sha256": "d42bc7f6d172af625a3aeb106b5d5a8d73565d656ccf2fed16c8adf0b27913c4"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/source03-candidate/scene-viewport.png",
+    "bytes": 27791,
+    "sha256": "e506897c622568a8b720714e7ac4b95af9317074a0bf3e6a1a6047b6b6fb722d"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/source03-candidate/source-provenance.json",
+    "bytes": 3469,
+    "sha256": "d42cf7dd7f775445cf9383009f08c1d8a8a15ac897c948f64ad0f68485ee21d3"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/source03-candidate/support-diagnostic.png",
+    "bytes": 40276,
+    "sha256": "1c81bf99d0f4b05966f05dc6516a15b62d0194fb76ae964537cc27d9e6bc1800"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/source03-command-00.log",
+    "bytes": 1639,
+    "sha256": "652616a28f71529bef678a3db83d00a140637af9d8ee8f4dd8ad533ba392356f"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/source03-command-01.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/source03-events.jsonl",
+    "bytes": 15146,
+    "sha256": "faf0b690067c4fbdf5c1196cde32667655c896b0ec7a3f4735838b716055193a"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/source03-full.json",
+    "bytes": 2146,
+    "sha256": "8382704ae1bb126debcd8b1418a69a84ec6ce52ed54df9cebdfa106bf5b32736"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/source03-independent-full.json",
+    "bytes": 464,
+    "sha256": "9e032db9b85617f8b82d4d34a25e77bd453666a51178a04353ee467cef679f12"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/source04-events.jsonl",
+    "bytes": 3609,
+    "sha256": "1e772ad1dc2b5061e6d2bd7217d5b1e2c7b78844a6428ec334cab68702e31b7c"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/source04-full.json",
+    "bytes": 667,
+    "sha256": "3b1b8898b0a8349b359a6753f026a4447f47368cf1f1c1b970e4e27b01b6e76c"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/source04-independent-full.json",
+    "bytes": 203,
+    "sha256": "996570241fd2ae22d640c84c23a52a3d6777e6056b26a6958672bb9c6b823f13"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/source05-command-00.log",
+    "bytes": 67,
+    "sha256": "dc9b15d7df15ff269cfe61a49a19619a06cc86c84630630a81a6ae546e5056a1"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/source05-command-01.log",
+    "bytes": 1639,
+    "sha256": "bfeea67cbf3ebbba06045f4cdd0a2983afa555f25db93c1b4b0f87ec32aa7a3b"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/source05-command-02.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/source05-events.jsonl",
+    "bytes": 16378,
+    "sha256": "cdeab0d39ddbf7cb08beb9b5e683bdc704d40d88a977047f570c9812e4866325"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/source05-full.json",
+    "bytes": 2797,
+    "sha256": "aa105a6e9a978eb847bad5796e5ec939ccce6e3a157db6a3a8bbff068853a09d"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/source06-command-00.log",
+    "bytes": 127,
+    "sha256": "11a6121d866c164d6dbf109b87b1fe5cea28423d14dcd667a9351826f71e77c4"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/source06-command-01.log",
+    "bytes": 674,
+    "sha256": "814da5715e5f7da83d9fd8abbbd72b1ac18ea6c077f96a8c1a48f6a4cffdaf5f"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/source06-command-02.log",
+    "bytes": 415,
+    "sha256": "386234fd8ec5c20454cbfc2d68b1fd33787407ed227c08dd5795b0947c78e457"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/source06-events.jsonl",
+    "bytes": 15866,
+    "sha256": "db49a2e113e0a25f37103212e5e7b42fa2cbbe199d55c77221d5b5914e583b96"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/source06-full.json",
+    "bytes": 2482,
+    "sha256": "1df1226b738c4b08952a87d5d8073b0c97931109b0ccdbdf49d441fc765624de"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/source06-independent-full.json",
+    "bytes": 202,
+    "sha256": "3b57cb325215c81e6f9e1e83995a3bf4e7a7f8a69384cd8782052ec927f6c868"
+  },
+  {
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/support-diagnostic.png",
+    "bytes": 65955,
+    "sha256": "3cd989da054c4711e6102b3934ca04f9f5be7d0a42b027858524ac4068d54316"
+  },
+  {
+    "path": "docs/mcr/art/photo2-world-display-v1.md",
+    "bytes": 8612,
+    "sha256": "4e9d716a14476e814952aeec63d2ba90cdc1fd58621ce8bbb7ce78353deec858"
+  },
+  {
+    "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/README.md",
+    "bytes": 2058,
+    "sha256": "ec2f88ebd55a248890f9e96dbcf4575d8c437fca5a6bada98e5c516260fdbdb4"
+  },
+  {
+    "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/asset-interface.json",
+    "bytes": 46548,
+    "sha256": "085880838187f5e0514afaf25c4a75d4a3fe0a4a48453a05d86b73b71e591c77"
+  },
+  {
+    "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/atlas-editable.json",
+    "bytes": 874317,
+    "sha256": "0cb243163c696df5fc8ea95316819bbbfe6ca2b9f9a9e413fd6f0dee13507126"
+  },
+  {
+    "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/atlas.png",
+    "bytes": 27038,
+    "sha256": "db05972c262e6406872afea9ef8f7ce3c9be3eb443946023d5d2afdf93018795"
+  },
+  {
+    "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/ground.png",
+    "bytes": 61501,
+    "sha256": "5d4c6c56186088fd86de836dc0c66a9aff7df1cf373615f070e2a63b9272d9c0"
+  },
+  {
+    "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/ground.svg",
+    "bytes": 1623572,
+    "sha256": "9d9063e466949223d889f4f6d859e8dd54b51f64ff3677161cab44f7b8c85ab5"
+  },
+  {
+    "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/source-provenance.json",
+    "bytes": 3469,
+    "sha256": "a89d811ce5ae4ca0cbe9d0ee7ab808b6bfbe63479ef8e75720342cbe83738567"
+  },
+  {
+    "path": "frontend/src/features/parade-ink/world-hud/__tests__/photo2-art-source-v1/qualifier.test.ts",
+    "bytes": 12029,
+    "sha256": "957ca90714db452a4cacaca4e702e909c07d0b19d1c0c029c786663c9b4f799f"
+  }
+]

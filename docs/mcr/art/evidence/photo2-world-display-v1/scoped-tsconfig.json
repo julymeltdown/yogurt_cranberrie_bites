@@ -1,0 +1,10 @@
+{
+  "extends": "../../../../../frontend/tsconfig.json",
+  "compilerOptions": {
+    "types": ["node"],
+    "typeRoots": ["/Users/lhs/Desktop/mcr/frontend/node_modules/@types"]
+  },
+  "files": ["../../../../../frontend/src/features/parade-ink/world-hud/__tests__/photo2-art-source-v1/qualifier.test.ts"],
+  "include": [],
+  "exclude": []
+}

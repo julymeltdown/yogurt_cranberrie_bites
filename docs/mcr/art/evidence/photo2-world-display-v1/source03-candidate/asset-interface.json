@@ -1,0 +1,2159 @@
+{
+  "schemaVersion": "mcr-photo2-world-art-source-v1",
+  "version": 1,
+  "variantId": "photo2-parade-display-v1",
+  "themeId": "PARADE",
+  "status": "SOURCE_ARTIFACT_NOT_RELEASE_ADMITTED",
+  "sourceInput": {
+    "canonicalCommit": "33491ccf9b0ae3835ad691072d8479b299f543d8",
+    "contractPath": "docs/mcr/evidence/pi08-finish-01/photo2-world-contract/producer-contract-v2.json",
+    "contractSHA256": "3fce374b7f60d46e8561559c42470a3343708f9eb3236a1d01050c4f0aa3a12d",
+    "referenceSHA256": "9e7f17a666e1ecfc738a14b75bb3a166235a05c401f206aa24f26cf7463cbc27",
+    "nativeSource": {
+      "commit": "8dee1335a79f831e6a29f005a50f2c0f65777d46",
+      "path": "frontend/src/world/reference-scene/spatial-v3/source-inputs.json",
+      "blob": "06a3ba188101448a8449a4e93599cf087ba2be73",
+      "sha256": "847d9c92a4ddfa22b8187bb6afe9a9fc2e6e09b1c7fe8e5f85c5a7f5c0d846a9",
+      "geometryHash": "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+      "width": 768,
+      "height": 1296
+    }
+  },
+  "scenery": {
+    "version": 1,
+    "ground": {
+      "id": "parade_photo2_display_v1_ground",
+      "path": "world/reference-scene-v2/photo2-world-display-v1/parade/ground.png",
+      "sha256": "sha256:946170a22c1ccedeabb71af18e155264f2475975848e4157a39fb58b80dc2d47",
+      "bytes": 31648,
+      "width_px": 499,
+      "height_px": 1200
+    },
+    "atlases": [
+      {
+        "id": "parade_photo2_display_v1_atlas",
+        "path": "world/reference-scene-v2/photo2-world-display-v1/parade/atlas.png",
+        "sha256": "sha256:8fd5654a9566f9ab769ac073ff98c64914c64ac4ff3c057fb1f312f9a416b8ba",
+        "bytes": 30381,
+        "width_px": 512,
+        "height_px": 1024
+      }
+    ],
+    "objects": [
+      {
+        "id": "main_stage",
+        "atlas_id": "parade_photo2_display_v1_atlas",
+        "frame": {
+          "x": 2,
+          "y": 2,
+          "width": 211,
+          "height": 211
+        },
+        "x": 160,
+        "y": 37,
+        "width": 300,
+        "height": 336,
+        "depth_y": 360
+      },
+      {
+        "id": "north_white_food",
+        "atlas_id": "parade_photo2_display_v1_atlas",
+        "frame": {
+          "x": 217,
+          "y": 2,
+          "width": 109,
+          "height": 141
+        },
+        "x": 665,
+        "y": 31,
+        "width": 100,
+        "height": 120,
+        "depth_y": 150
+      },
+      {
+        "id": "west_white_merch",
+        "atlas_id": "parade_photo2_display_v1_atlas",
+        "frame": {
+          "x": 330,
+          "y": 2,
+          "width": 72,
+          "height": 64
+        },
+        "x": 160,
+        "y": 381,
+        "width": 132,
+        "height": 154,
+        "depth_y": 530
+      },
+      {
+        "id": "culture_park_plaque",
+        "atlas_id": "parade_photo2_display_v1_atlas",
+        "frame": {
+          "x": 406,
+          "y": 2,
+          "width": 36,
+          "height": 46
+        },
+        "x": 585,
+        "y": 319,
+        "width": 156,
+        "height": 96,
+        "depth_y": 411
+      },
+      {
+        "id": "cross_banner_east",
+        "atlas_id": "parade_photo2_display_v1_atlas",
+        "frame": {
+          "x": 446,
+          "y": 2,
+          "width": 18,
+          "height": 85
+        },
+        "x": 522,
+        "y": 141,
+        "width": 50,
+        "height": 134,
+        "depth_y": 271
+      },
+      {
+        "id": "meeting_pavilion",
+        "atlas_id": "parade_photo2_display_v1_atlas",
+        "frame": {
+          "x": 2,
+          "y": 217,
+          "width": 150,
+          "height": 130
+        },
+        "x": 256,
+        "y": 779,
+        "width": 236,
+        "height": 206,
+        "depth_y": 985
+      },
+      {
+        "id": "giveaway_pavilion",
+        "atlas_id": "parade_photo2_display_v1_atlas",
+        "frame": {
+          "x": 156,
+          "y": 217,
+          "width": 150,
+          "height": 130
+        },
+        "x": 440,
+        "y": 1044,
+        "width": 236,
+        "height": 206,
+        "depth_y": 1250
+      },
+      {
+        "id": "rooted_tree_01",
+        "atlas_id": "parade_photo2_display_v1_atlas",
+        "frame": {
+          "x": 310,
+          "y": 217,
+          "width": 120,
+          "height": 160
+        },
+        "x": 146,
+        "y": -22,
+        "width": 166,
+        "height": 159,
+        "depth_y": 137
+      },
+      {
+        "id": "rooted_tree_02",
+        "atlas_id": "parade_photo2_display_v1_atlas",
+        "frame": {
+          "x": 2,
+          "y": 381,
+          "width": 120,
+          "height": 160
+        },
+        "x": 328,
+        "y": -25,
+        "width": 166,
+        "height": 162,
+        "depth_y": 137
+      },
+      {
+        "id": "rooted_tree_03",
+        "atlas_id": "parade_photo2_display_v1_atlas",
+        "frame": {
+          "x": 126,
+          "y": 381,
+          "width": 140,
+          "height": 170
+        },
+        "x": 558,
+        "y": -28,
+        "width": 166,
+        "height": 165,
+        "depth_y": 137
+      },
+      {
+        "id": "rooted_tree_04",
+        "atlas_id": "parade_photo2_display_v1_atlas",
+        "frame": {
+          "x": 270,
+          "y": 381,
+          "width": 115,
+          "height": 110
+        },
+        "x": 2,
+        "y": 220,
+        "width": 166,
+        "height": 162,
+        "depth_y": 382
+      },
+      {
+        "id": "rooted_tree_05",
+        "atlas_id": "parade_photo2_display_v1_atlas",
+        "frame": {
+          "x": 389,
+          "y": 381,
+          "width": 80,
+          "height": 100
+        },
+        "x": 634,
+        "y": 220,
+        "width": 134,
+        "height": 134,
+        "depth_y": 354
+      },
+      {
+        "id": "rooted_tree_06",
+        "atlas_id": "parade_photo2_display_v1_atlas",
+        "frame": {
+          "x": 2,
+          "y": 555,
+          "width": 72,
+          "height": 90
+        },
+        "x": 640,
+        "y": 455,
+        "width": 128,
+        "height": 125,
+        "depth_y": 580
+      },
+      {
+        "id": "rooted_tree_07",
+        "atlas_id": "parade_photo2_display_v1_atlas",
+        "frame": {
+          "x": 78,
+          "y": 555,
+          "width": 100,
+          "height": 130
+        },
+        "x": 5,
+        "y": 535,
+        "width": 166,
+        "height": 162,
+        "depth_y": 697
+      },
+      {
+        "id": "rooted_tree_08",
+        "atlas_id": "parade_photo2_display_v1_atlas",
+        "frame": {
+          "x": 182,
+          "y": 555,
+          "width": 100,
+          "height": 130
+        },
+        "x": 40,
+        "y": 983,
+        "width": 166,
+        "height": 165,
+        "depth_y": 1148
+      },
+      {
+        "id": "rooted_tree_09",
+        "atlas_id": "parade_photo2_display_v1_atlas",
+        "frame": {
+          "x": 286,
+          "y": 555,
+          "width": 95,
+          "height": 120
+        },
+        "x": 594,
+        "y": 809,
+        "width": 166,
+        "height": 144,
+        "depth_y": 953
+      },
+      {
+        "id": "rooted_tree_10",
+        "atlas_id": "parade_photo2_display_v1_atlas",
+        "frame": {
+          "x": 385,
+          "y": 555,
+          "width": 90,
+          "height": 120
+        },
+        "x": 8,
+        "y": 1137,
+        "width": 166,
+        "height": 144,
+        "depth_y": 1281
+      },
+      {
+        "id": "rooted_tree_11",
+        "atlas_id": "parade_photo2_display_v1_atlas",
+        "frame": {
+          "x": 2,
+          "y": 689,
+          "width": 90,
+          "height": 108
+        },
+        "x": 410,
+        "y": 455,
+        "width": 166,
+        "height": 162,
+        "depth_y": 617
+      },
+      {
+        "id": "food_counters",
+        "atlas_id": "parade_photo2_display_v1_atlas",
+        "frame": {
+          "x": 96,
+          "y": 689,
+          "width": 110,
+          "height": 100
+        },
+        "x": 568,
+        "y": 611,
+        "width": 190,
+        "height": 164,
+        "depth_y": 775
+      },
+      {
+        "id": "northern_hall",
+        "atlas_id": "parade_photo2_display_v1_atlas",
+        "frame": {
+          "x": 210,
+          "y": 689,
+          "width": 150,
+          "height": 135
+        },
+        "x": 12,
+        "y": -94,
+        "width": 248,
+        "height": 190,
+        "depth_y": 96
+      },
+      {
+        "id": "north_eastern_hall",
+        "atlas_id": "parade_photo2_display_v1_atlas",
+        "frame": {
+          "x": 2,
+          "y": 828,
+          "width": 150,
+          "height": 135
+        },
+        "x": 472,
+        "y": -94,
+        "width": 248,
+        "height": 190,
+        "depth_y": 96
+      },
+      {
+        "id": "merch_venue_hall",
+        "atlas_id": "parade_photo2_display_v1_atlas",
+        "frame": {
+          "x": 156,
+          "y": 828,
+          "width": 140,
+          "height": 120
+        },
+        "x": 8,
+        "y": 551,
+        "width": 212,
+        "height": 180,
+        "depth_y": 731
+      }
+    ]
+  },
+  "sceneDescriptor": {
+    "schema": "mcr-photo2-world-display-v1",
+    "version": 1,
+    "mesh": {
+      "columns": [
+        -128,
+        0,
+        160,
+        226,
+        310,
+        460,
+        585,
+        665,
+        715,
+        765,
+        768,
+        896
+      ],
+      "rows": [
+        -128,
+        0,
+        31,
+        37,
+        150,
+        151,
+        319,
+        336,
+        360,
+        373,
+        424,
+        530,
+        544,
+        617,
+        985,
+        1296,
+        1424
+      ],
+      "display": [
+        {
+          "x": -180,
+          "y": -128
+        },
+        {
+          "x": -112,
+          "y": -128
+        },
+        {
+          "x": 0,
+          "y": -128
+        },
+        {
+          "x": 36,
+          "y": -128
+        },
+        {
+          "x": 105.5,
+          "y": -128
+        },
+        {
+          "x": 211,
+          "y": -128
+        },
+        {
+          "x": 270.0,
+          "y": -128.0
+        },
+        {
+          "x": 275.0,
+          "y": -128
+        },
+        {
+          "x": 329.5,
+          "y": -128
+        },
+        {
+          "x": 384,
+          "y": -128
+        },
+        {
+          "x": 387,
+          "y": -128
+        },
+        {
+          "x": 480,
+          "y": -128
+        },
+        {
+          "x": -180,
+          "y": -20
+        },
+        {
+          "x": -112,
+          "y": -20
+        },
+        {
+          "x": 0,
+          "y": -20
+        },
+        {
+          "x": 36,
+          "y": -20
+        },
+        {
+          "x": 105.5,
+          "y": -20
+        },
+        {
+          "x": 211,
+          "y": -20
+        },
+        {
+          "x": 270.0,
+          "y": -4.7560975609756095
+        },
+        {
+          "x": 275.0,
+          "y": 5
+        },
+        {
+          "x": 329.5,
+          "y": 5
+        },
+        {
+          "x": 384,
+          "y": 5
+        },
+        {
+          "x": 387,
+          "y": 5
+        },
+        {
+          "x": 480,
+          "y": 5
+        },
+        {
+          "x": -180,
+          "y": 0
+        },
+        {
+          "x": -112,
+          "y": 0
+        },
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 36,
+          "y": 0
+        },
+        {
+          "x": 105.5,
+          "y": 0
+        },
+        {
+          "x": 211,
+          "y": 0
+        },
+        {
+          "x": 270.0,
+          "y": 25.609756097560975
+        },
+        {
+          "x": 275.0,
+          "y": 42
+        },
+        {
+          "x": 329.5,
+          "y": 42
+        },
+        {
+          "x": 384,
+          "y": 42
+        },
+        {
+          "x": 387,
+          "y": 42
+        },
+        {
+          "x": 480,
+          "y": 42
+        },
+        {
+          "x": -180,
+          "y": 4
+        },
+        {
+          "x": -112,
+          "y": 4
+        },
+        {
+          "x": 0,
+          "y": 4
+        },
+        {
+          "x": 36,
+          "y": 4
+        },
+        {
+          "x": 105.5,
+          "y": 4
+        },
+        {
+          "x": 211,
+          "y": 4
+        },
+        {
+          "x": 270.0,
+          "y": 31.439024390243905
+        },
+        {
+          "x": 275.0,
+          "y": 49
+        },
+        {
+          "x": 329.5,
+          "y": 49
+        },
+        {
+          "x": 384,
+          "y": 49
+        },
+        {
+          "x": 387,
+          "y": 49
+        },
+        {
+          "x": 480,
+          "y": 49
+        },
+        {
+          "x": -180,
+          "y": 81.3157894736842
+        },
+        {
+          "x": -112,
+          "y": 81.3157894736842
+        },
+        {
+          "x": 0,
+          "y": 81.3157894736842
+        },
+        {
+          "x": 36,
+          "y": 81.3157894736842
+        },
+        {
+          "x": 105.5,
+          "y": 81.3157894736842
+        },
+        {
+          "x": 211,
+          "y": 81.3157894736842
+        },
+        {
+          "x": 270.0,
+          "y": 143.3183568677792
+        },
+        {
+          "x": 275.0,
+          "y": 183.0
+        },
+        {
+          "x": 329.5,
+          "y": 183.0
+        },
+        {
+          "x": 384,
+          "y": 183.0
+        },
+        {
+          "x": 387,
+          "y": 183.0
+        },
+        {
+          "x": 480,
+          "y": 183.0
+        },
+        {
+          "x": -180,
+          "y": 82
+        },
+        {
+          "x": -112,
+          "y": 82
+        },
+        {
+          "x": 0,
+          "y": 82
+        },
+        {
+          "x": 36,
+          "y": 82
+        },
+        {
+          "x": 105.5,
+          "y": 82
+        },
+        {
+          "x": 211,
+          "y": 82
+        },
+        {
+          "x": 270.0,
+          "y": 144.1951219512195
+        },
+        {
+          "x": 275.0,
+          "y": 184
+        },
+        {
+          "x": 329.5,
+          "y": 184
+        },
+        {
+          "x": 384,
+          "y": 184
+        },
+        {
+          "x": 387,
+          "y": 184
+        },
+        {
+          "x": 480,
+          "y": 184
+        },
+        {
+          "x": -180,
+          "y": 180
+        },
+        {
+          "x": -112,
+          "y": 180
+        },
+        {
+          "x": 0,
+          "y": 180
+        },
+        {
+          "x": 36,
+          "y": 180
+        },
+        {
+          "x": 105.5,
+          "y": 180
+        },
+        {
+          "x": 211,
+          "y": 180
+        },
+        {
+          "x": 270.0,
+          "y": 217.8048780487805
+        },
+        {
+          "x": 275.0,
+          "y": 242
+        },
+        {
+          "x": 329.5,
+          "y": 242
+        },
+        {
+          "x": 384,
+          "y": 242
+        },
+        {
+          "x": 387,
+          "y": 242
+        },
+        {
+          "x": 480,
+          "y": 242
+        },
+        {
+          "x": -180,
+          "y": 190
+        },
+        {
+          "x": -112,
+          "y": 190
+        },
+        {
+          "x": 0,
+          "y": 190
+        },
+        {
+          "x": 36,
+          "y": 190
+        },
+        {
+          "x": 105.5,
+          "y": 190
+        },
+        {
+          "x": 211,
+          "y": 190
+        },
+        {
+          "x": 270.0,
+          "y": 226.58536585365854
+        },
+        {
+          "x": 275.0,
+          "y": 250
+        },
+        {
+          "x": 329.5,
+          "y": 250
+        },
+        {
+          "x": 384,
+          "y": 250
+        },
+        {
+          "x": 387,
+          "y": 250
+        },
+        {
+          "x": 480,
+          "y": 250
+        },
+        {
+          "x": -180,
+          "y": 215
+        },
+        {
+          "x": -112,
+          "y": 215
+        },
+        {
+          "x": 0,
+          "y": 215
+        },
+        {
+          "x": 36,
+          "y": 215
+        },
+        {
+          "x": 105.5,
+          "y": 215
+        },
+        {
+          "x": 211,
+          "y": 215
+        },
+        {
+          "x": 270.0,
+          "y": 246.70731707317074
+        },
+        {
+          "x": 275.0,
+          "y": 267
+        },
+        {
+          "x": 329.5,
+          "y": 267
+        },
+        {
+          "x": 384,
+          "y": 267
+        },
+        {
+          "x": 387,
+          "y": 267
+        },
+        {
+          "x": 480,
+          "y": 267
+        },
+        {
+          "x": -180,
+          "y": 223
+        },
+        {
+          "x": -112,
+          "y": 223
+        },
+        {
+          "x": 0,
+          "y": 223
+        },
+        {
+          "x": 36,
+          "y": 223
+        },
+        {
+          "x": 105.5,
+          "y": 223
+        },
+        {
+          "x": 211,
+          "y": 223
+        },
+        {
+          "x": 270.0,
+          "y": 254.70731707317074
+        },
+        {
+          "x": 275.0,
+          "y": 275
+        },
+        {
+          "x": 329.5,
+          "y": 275
+        },
+        {
+          "x": 384,
+          "y": 275
+        },
+        {
+          "x": 387,
+          "y": 275
+        },
+        {
+          "x": 480,
+          "y": 275
+        },
+        {
+          "x": -180,
+          "y": 300
+        },
+        {
+          "x": -112,
+          "y": 300
+        },
+        {
+          "x": 0,
+          "y": 300
+        },
+        {
+          "x": 36,
+          "y": 300
+        },
+        {
+          "x": 105.5,
+          "y": 300
+        },
+        {
+          "x": 211,
+          "y": 300
+        },
+        {
+          "x": 270.0,
+          "y": 300.0
+        },
+        {
+          "x": 275.0,
+          "y": 300
+        },
+        {
+          "x": 329.5,
+          "y": 300
+        },
+        {
+          "x": 384,
+          "y": 300
+        },
+        {
+          "x": 387,
+          "y": 300
+        },
+        {
+          "x": 480,
+          "y": 300
+        },
+        {
+          "x": -180,
+          "y": 335
+        },
+        {
+          "x": -112,
+          "y": 335
+        },
+        {
+          "x": 0,
+          "y": 335
+        },
+        {
+          "x": 36,
+          "y": 335
+        },
+        {
+          "x": 105.5,
+          "y": 335
+        },
+        {
+          "x": 211,
+          "y": 335
+        },
+        {
+          "x": 270.0,
+          "y": 344.1463414634146
+        },
+        {
+          "x": 275.0,
+          "y": 350
+        },
+        {
+          "x": 329.5,
+          "y": 350
+        },
+        {
+          "x": 384,
+          "y": 350
+        },
+        {
+          "x": 387,
+          "y": 350
+        },
+        {
+          "x": 480,
+          "y": 350
+        },
+        {
+          "x": -180,
+          "y": 344
+        },
+        {
+          "x": -112,
+          "y": 344
+        },
+        {
+          "x": 0,
+          "y": 344
+        },
+        {
+          "x": 36,
+          "y": 344
+        },
+        {
+          "x": 105.5,
+          "y": 344
+        },
+        {
+          "x": 211,
+          "y": 344
+        },
+        {
+          "x": 270.0,
+          "y": 353.7560975609756
+        },
+        {
+          "x": 275.0,
+          "y": 360
+        },
+        {
+          "x": 329.5,
+          "y": 360
+        },
+        {
+          "x": 384,
+          "y": 360
+        },
+        {
+          "x": 387,
+          "y": 360
+        },
+        {
+          "x": 480,
+          "y": 360
+        },
+        {
+          "x": -180,
+          "y": 600
+        },
+        {
+          "x": -112,
+          "y": 600
+        },
+        {
+          "x": 0,
+          "y": 600
+        },
+        {
+          "x": 36,
+          "y": 600
+        },
+        {
+          "x": 105.5,
+          "y": 600
+        },
+        {
+          "x": 211,
+          "y": 600
+        },
+        {
+          "x": 270.0,
+          "y": 600.0
+        },
+        {
+          "x": 275.0,
+          "y": 600
+        },
+        {
+          "x": 329.5,
+          "y": 600
+        },
+        {
+          "x": 384,
+          "y": 600
+        },
+        {
+          "x": 387,
+          "y": 600
+        },
+        {
+          "x": 480,
+          "y": 600
+        },
+        {
+          "x": -180,
+          "y": 860
+        },
+        {
+          "x": -112,
+          "y": 860
+        },
+        {
+          "x": 0,
+          "y": 860
+        },
+        {
+          "x": 36,
+          "y": 860
+        },
+        {
+          "x": 105.5,
+          "y": 860
+        },
+        {
+          "x": 211,
+          "y": 860
+        },
+        {
+          "x": 270.0,
+          "y": 860.0
+        },
+        {
+          "x": 275.0,
+          "y": 860
+        },
+        {
+          "x": 329.5,
+          "y": 860
+        },
+        {
+          "x": 384,
+          "y": 860
+        },
+        {
+          "x": 387,
+          "y": 860
+        },
+        {
+          "x": 480,
+          "y": 860
+        },
+        {
+          "x": -180,
+          "y": 1180
+        },
+        {
+          "x": -112,
+          "y": 1180
+        },
+        {
+          "x": 0,
+          "y": 1180
+        },
+        {
+          "x": 36,
+          "y": 1180
+        },
+        {
+          "x": 105.5,
+          "y": 1180
+        },
+        {
+          "x": 211,
+          "y": 1180
+        },
+        {
+          "x": 270.0,
+          "y": 1180.0
+        },
+        {
+          "x": 275.0,
+          "y": 1180
+        },
+        {
+          "x": 329.5,
+          "y": 1180
+        },
+        {
+          "x": 384,
+          "y": 1180
+        },
+        {
+          "x": 387,
+          "y": 1180
+        },
+        {
+          "x": 480,
+          "y": 1180
+        },
+        {
+          "x": -180,
+          "y": 1308
+        },
+        {
+          "x": -112,
+          "y": 1308
+        },
+        {
+          "x": 0,
+          "y": 1308
+        },
+        {
+          "x": 36,
+          "y": 1308
+        },
+        {
+          "x": 105.5,
+          "y": 1308
+        },
+        {
+          "x": 211,
+          "y": 1308
+        },
+        {
+          "x": 270.0,
+          "y": 1308.0
+        },
+        {
+          "x": 275.0,
+          "y": 1308
+        },
+        {
+          "x": 329.5,
+          "y": 1308
+        },
+        {
+          "x": 384,
+          "y": 1308
+        },
+        {
+          "x": 387,
+          "y": 1308
+        },
+        {
+          "x": 480,
+          "y": 1308
+        }
+      ]
+    },
+    "displayBounds": {
+      "x": -112,
+      "y": -20,
+      "width": 499,
+      "height": 1200
+    },
+    "frames": [
+      {
+        "id": "main_stage",
+        "kind": "native-landmark-billboard",
+        "native": {
+          "id": "main_stage",
+          "x": 160,
+          "y": 37,
+          "width": 300,
+          "height": 336,
+          "depth_y": 360
+        },
+        "nativeFoot": {
+          "x": 310.0,
+          "y": 360
+        },
+        "displayFoot": {
+          "x": 105.5,
+          "y": 215.0
+        },
+        "paintWidth": 211,
+        "paintHeight": 211,
+        "origin": {
+          "x": 0.5,
+          "y": 1
+        },
+        "displayRect": {
+          "x": 0.0,
+          "y": 4.0,
+          "width": 211,
+          "height": 211
+        },
+        "collisionSupport": "Exact frozen native grid projected with the same mesh; ground depicts blocked support even beyond decorative alpha; no new collider or fabricated interaction.",
+        "atlasRect": {
+          "x": 2,
+          "y": 2,
+          "width": 211,
+          "height": 211
+        }
+      },
+      {
+        "id": "north_white_food",
+        "kind": "native-landmark-billboard",
+        "native": {
+          "id": "north_white_food",
+          "x": 665,
+          "y": 31,
+          "width": 100,
+          "height": 120,
+          "depth_y": 150
+        },
+        "nativeFoot": {
+          "x": 715.0,
+          "y": 150
+        },
+        "displayFoot": {
+          "x": 329.5,
+          "y": 183.0
+        },
+        "paintWidth": 109,
+        "paintHeight": 141,
+        "origin": {
+          "x": 0.5,
+          "y": 1
+        },
+        "displayRect": {
+          "x": 275.0,
+          "y": 42.0,
+          "width": 109,
+          "height": 141
+        },
+        "collisionSupport": "Exact frozen native grid projected with the same mesh; ground depicts blocked support even beyond decorative alpha; no new collider or fabricated interaction.",
+        "atlasRect": {
+          "x": 217,
+          "y": 2,
+          "width": 109,
+          "height": 141
+        }
+      },
+      {
+        "id": "west_white_merch",
+        "kind": "native-landmark-billboard",
+        "native": {
+          "id": "west_white_merch",
+          "x": 160,
+          "y": 381,
+          "width": 132,
+          "height": 154,
+          "depth_y": 530
+        },
+        "nativeFoot": {
+          "x": 226.0,
+          "y": 530
+        },
+        "displayFoot": {
+          "x": 36.0,
+          "y": 335.0
+        },
+        "paintWidth": 72,
+        "paintHeight": 64,
+        "origin": {
+          "x": 0.5,
+          "y": 1
+        },
+        "displayRect": {
+          "x": 0.0,
+          "y": 271.0,
+          "width": 72,
+          "height": 64
+        },
+        "collisionSupport": "Exact frozen native grid projected with the same mesh; ground depicts blocked support even beyond decorative alpha; no new collider or fabricated interaction.",
+        "atlasRect": {
+          "x": 330,
+          "y": 2,
+          "width": 72,
+          "height": 64
+        }
+      },
+      {
+        "id": "culture_park_plaque",
+        "kind": "native-landmark-billboard",
+        "native": {
+          "id": "culture_park_plaque",
+          "x": 585,
+          "y": 319,
+          "width": 156,
+          "height": 96,
+          "depth_y": 411
+        },
+        "nativeFoot": {
+          "x": 663.0,
+          "y": 411
+        },
+        "displayFoot": {
+          "x": 274.875,
+          "y": 293.12013390722143
+        },
+        "paintWidth": 36,
+        "paintHeight": 46,
+        "origin": {
+          "x": 0.5,
+          "y": 1
+        },
+        "displayRect": {
+          "x": 256.875,
+          "y": 247.12013390722143,
+          "width": 36,
+          "height": 46
+        },
+        "collisionSupport": "Exact frozen native grid projected with the same mesh; ground depicts blocked support even beyond decorative alpha; no new collider or fabricated interaction.",
+        "atlasRect": {
+          "x": 406,
+          "y": 2,
+          "width": 36,
+          "height": 46
+        }
+      },
+      {
+        "id": "cross_banner_east",
+        "kind": "native-landmark-billboard",
+        "native": {
+          "id": "cross_banner_east",
+          "x": 522,
+          "y": 141,
+          "width": 50,
+          "height": 134,
+          "depth_y": 271
+        },
+        "nativeFoot": {
+          "x": 547.0,
+          "y": 271
+        },
+        "displayFoot": {
+          "x": 252.064,
+          "y": 178.31219512195122
+        },
+        "paintWidth": 18,
+        "paintHeight": 85,
+        "origin": {
+          "x": 0.5,
+          "y": 1
+        },
+        "displayRect": {
+          "x": 243.064,
+          "y": 93.31219512195122,
+          "width": 18,
+          "height": 85
+        },
+        "collisionSupport": "Exact frozen native grid projected with the same mesh; ground depicts blocked support even beyond decorative alpha; no new collider or fabricated interaction.",
+        "atlasRect": {
+          "x": 446,
+          "y": 2,
+          "width": 18,
+          "height": 85
+        }
+      },
+      {
+        "id": "meeting_pavilion",
+        "kind": "native-landmark-billboard",
+        "native": {
+          "id": "meeting_pavilion",
+          "x": 256,
+          "y": 779,
+          "width": 236,
+          "height": 206,
+          "depth_y": 985
+        },
+        "nativeFoot": {
+          "x": 374.0,
+          "y": 985
+        },
+        "displayFoot": {
+          "x": 150.51333333333332,
+          "y": 860.0
+        },
+        "paintWidth": 150,
+        "paintHeight": 130,
+        "origin": {
+          "x": 0.5,
+          "y": 1
+        },
+        "displayRect": {
+          "x": 75.51333333333332,
+          "y": 730.0,
+          "width": 150,
+          "height": 130
+        },
+        "collisionSupport": "Exact frozen native grid projected with the same mesh; ground depicts blocked support even beyond decorative alpha; no new collider or fabricated interaction.",
+        "atlasRect": {
+          "x": 2,
+          "y": 217,
+          "width": 150,
+          "height": 130
+        }
+      },
+      {
+        "id": "giveaway_pavilion",
+        "kind": "native-landmark-billboard",
+        "native": {
+          "id": "giveaway_pavilion",
+          "x": 440,
+          "y": 1044,
+          "width": 236,
+          "height": 206,
+          "depth_y": 1250
+        },
+        "nativeFoot": {
+          "x": 558.0,
+          "y": 1250
+        },
+        "displayFoot": {
+          "x": 257.256,
+          "y": 1132.668810289389
+        },
+        "paintWidth": 150,
+        "paintHeight": 130,
+        "origin": {
+          "x": 0.5,
+          "y": 1
+        },
+        "displayRect": {
+          "x": 182.25599999999997,
+          "y": 1002.6688102893891,
+          "width": 150,
+          "height": 130
+        },
+        "collisionSupport": "Exact frozen native grid projected with the same mesh; ground depicts blocked support even beyond decorative alpha; no new collider or fabricated interaction.",
+        "atlasRect": {
+          "x": 156,
+          "y": 217,
+          "width": 150,
+          "height": 130
+        }
+      },
+      {
+        "id": "rooted_tree_01",
+        "kind": "native-landmark-billboard",
+        "native": {
+          "id": "rooted_tree_01",
+          "x": 146,
+          "y": -22,
+          "width": 166,
+          "height": 159,
+          "depth_y": 137
+        },
+        "nativeFoot": {
+          "x": 229.0,
+          "y": 137
+        },
+        "displayFoot": {
+          "x": 38.482142857142854,
+          "y": 72.42105263157895
+        },
+        "paintWidth": 120,
+        "paintHeight": 160,
+        "origin": {
+          "x": 0.5,
+          "y": 1
+        },
+        "displayRect": {
+          "x": -21.517857142857146,
+          "y": -87.57894736842105,
+          "width": 120,
+          "height": 160
+        },
+        "collisionSupport": "Exact frozen native grid projected with the same mesh; ground depicts blocked support even beyond decorative alpha; no new collider or fabricated interaction.",
+        "atlasRect": {
+          "x": 310,
+          "y": 217,
+          "width": 120,
+          "height": 160
+        }
+      },
+      {
+        "id": "rooted_tree_02",
+        "kind": "native-landmark-billboard",
+        "native": {
+          "id": "rooted_tree_02",
+          "x": 328,
+          "y": -25,
+          "width": 166,
+          "height": 162,
+          "depth_y": 137
+        },
+        "nativeFoot": {
+          "x": 411.0,
+          "y": 137
+        },
+        "displayFoot": {
+          "x": 176.53666666666666,
+          "y": 72.42105263157895
+        },
+        "paintWidth": 120,
+        "paintHeight": 160,
+        "origin": {
+          "x": 0.5,
+          "y": 1
+        },
+        "displayRect": {
+          "x": 116.53666666666666,
+          "y": -87.57894736842105,
+          "width": 120,
+          "height": 160
+        },
+        "collisionSupport": "Exact frozen native grid projected with the same mesh; ground depicts blocked support even beyond decorative alpha; no new collider or fabricated interaction.",
+        "atlasRect": {
+          "x": 2,
+          "y": 381,
+          "width": 120,
+          "height": 160
+        }
+      },
+      {
+        "id": "rooted_tree_03",
+        "kind": "native-landmark-billboard",
+        "native": {
+          "id": "rooted_tree_03",
+          "x": 558,
+          "y": -28,
+          "width": 166,
+          "height": 165,
+          "depth_y": 137
+        },
+        "nativeFoot": {
+          "x": 641.0,
+          "y": 137
+        },
+        "displayFoot": {
+          "x": 273.5,
+          "y": 158.22443341247572
+        },
+        "paintWidth": 140,
+        "paintHeight": 170,
+        "origin": {
+          "x": 0.5,
+          "y": 1
+        },
+        "displayRect": {
+          "x": 203.5,
+          "y": -11.775566587524281,
+          "width": 140,
+          "height": 170
+        },
+        "collisionSupport": "Exact frozen native grid projected with the same mesh; ground depicts blocked support even beyond decorative alpha; no new collider or fabricated interaction.",
+        "atlasRect": {
+          "x": 126,
+          "y": 381,
+          "width": 140,
+          "height": 170
+        }
+      },
+      {
+        "id": "rooted_tree_04",
+        "kind": "native-landmark-billboard",
+        "native": {
+          "id": "rooted_tree_04",
+          "x": 2,
+          "y": 220,
+          "width": 166,
+          "height": 162,
+          "depth_y": 382
+        },
+        "nativeFoot": {
+          "x": 85.0,
+          "y": 382
+        },
+        "displayFoot": {
+          "x": -52.5,
+          "y": 236.58823529411765
+        },
+        "paintWidth": 115,
+        "paintHeight": 110,
+        "origin": {
+          "x": 0.5,
+          "y": 1
+        },
+        "displayRect": {
+          "x": -110.0,
+          "y": 126.58823529411765,
+          "width": 115,
+          "height": 110
+        },
+        "collisionSupport": "Exact frozen native grid projected with the same mesh; ground depicts blocked support even beyond decorative alpha; no new collider or fabricated interaction.",
+        "atlasRect": {
+          "x": 270,
+          "y": 381,
+          "width": 115,
+          "height": 110
+        }
+      },
+      {
+        "id": "rooted_tree_05",
+        "kind": "native-landmark-billboard",
+        "native": {
+          "id": "rooted_tree_05",
+          "x": 634,
+          "y": 220,
+          "width": 134,
+          "height": 134,
+          "depth_y": 354
+        },
+        "nativeFoot": {
+          "x": 701.0,
+          "y": 354
+        },
+        "displayFoot": {
+          "x": 314.24,
+          "y": 262.75
+        },
+        "paintWidth": 80,
+        "paintHeight": 100,
+        "origin": {
+          "x": 0.5,
+          "y": 1
+        },
+        "displayRect": {
+          "x": 274.24,
+          "y": 162.75,
+          "width": 80,
+          "height": 100
+        },
+        "collisionSupport": "Exact frozen native grid projected with the same mesh; ground depicts blocked support even beyond decorative alpha; no new collider or fabricated interaction.",
+        "atlasRect": {
+          "x": 389,
+          "y": 381,
+          "width": 80,
+          "height": 100
+        }
+      },
+      {
+        "id": "rooted_tree_06",
+        "kind": "native-landmark-billboard",
+        "native": {
+          "id": "rooted_tree_06",
+          "x": 640,
+          "y": 455,
+          "width": 128,
+          "height": 125,
+          "depth_y": 580
+        },
+        "nativeFoot": {
+          "x": 704.0,
+          "y": 580
+        },
+        "displayFoot": {
+          "x": 317.51,
+          "y": 478.3561643835617
+        },
+        "paintWidth": 72,
+        "paintHeight": 90,
+        "origin": {
+          "x": 0.5,
+          "y": 1
+        },
+        "displayRect": {
+          "x": 281.51,
+          "y": 388.3561643835617,
+          "width": 72,
+          "height": 90
+        },
+        "collisionSupport": "Exact frozen native grid projected with the same mesh; ground depicts blocked support even beyond decorative alpha; no new collider or fabricated interaction.",
+        "atlasRect": {
+          "x": 2,
+          "y": 555,
+          "width": 72,
+          "height": 90
+        }
+      },
+      {
+        "id": "rooted_tree_07",
+        "kind": "native-landmark-billboard",
+        "native": {
+          "id": "rooted_tree_07",
+          "x": 5,
+          "y": 535,
+          "width": 166,
+          "height": 162,
+          "depth_y": 697
+        },
+        "nativeFoot": {
+          "x": 88.0,
+          "y": 697
+        },
+        "displayFoot": {
+          "x": -50.39999999999999,
+          "y": 656.5217391304349
+        },
+        "paintWidth": 100,
+        "paintHeight": 130,
+        "origin": {
+          "x": 0.5,
+          "y": 1
+        },
+        "displayRect": {
+          "x": -100.39999999999999,
+          "y": 526.5217391304349,
+          "width": 100,
+          "height": 130
+        },
+        "collisionSupport": "Exact frozen native grid projected with the same mesh; ground depicts blocked support even beyond decorative alpha; no new collider or fabricated interaction.",
+        "atlasRect": {
+          "x": 78,
+          "y": 555,
+          "width": 100,
+          "height": 130
+        }
+      },
+      {
+        "id": "rooted_tree_08",
+        "kind": "native-landmark-billboard",
+        "native": {
+          "id": "rooted_tree_08",
+          "x": 40,
+          "y": 983,
+          "width": 166,
+          "height": 165,
+          "depth_y": 1148
+        },
+        "nativeFoot": {
+          "x": 123.0,
+          "y": 1148
+        },
+        "displayFoot": {
+          "x": -25.899999999999995,
+          "y": 1027.717041800643
+        },
+        "paintWidth": 100,
+        "paintHeight": 130,
+        "origin": {
+          "x": 0.5,
+          "y": 1
+        },
+        "displayRect": {
+          "x": -75.89999999999999,
+          "y": 897.7170418006431,
+          "width": 100,
+          "height": 130
+        },
+        "collisionSupport": "Exact frozen native grid projected with the same mesh; ground depicts blocked support even beyond decorative alpha; no new collider or fabricated interaction.",
+        "atlasRect": {
+          "x": 182,
+          "y": 555,
+          "width": 100,
+          "height": 130
+        }
+      },
+      {
+        "id": "rooted_tree_09",
+        "kind": "native-landmark-billboard",
+        "native": {
+          "id": "rooted_tree_09",
+          "x": 594,
+          "y": 809,
+          "width": 166,
+          "height": 144,
+          "depth_y": 953
+        },
+        "nativeFoot": {
+          "x": 677.0,
+          "y": 953
+        },
+        "displayFoot": {
+          "x": 288.08,
+          "y": 837.3913043478261
+        },
+        "paintWidth": 95,
+        "paintHeight": 120,
+        "origin": {
+          "x": 0.5,
+          "y": 1
+        },
+        "displayRect": {
+          "x": 240.57999999999998,
+          "y": 717.3913043478261,
+          "width": 95,
+          "height": 120
+        },
+        "collisionSupport": "Exact frozen native grid projected with the same mesh; ground depicts blocked support even beyond decorative alpha; no new collider or fabricated interaction.",
+        "atlasRect": {
+          "x": 286,
+          "y": 555,
+          "width": 95,
+          "height": 120
+        }
+      },
+      {
+        "id": "rooted_tree_10",
+        "kind": "native-landmark-billboard",
+        "native": {
+          "id": "rooted_tree_10",
+          "x": 8,
+          "y": 1137,
+          "width": 166,
+          "height": 144,
+          "depth_y": 1281
+        },
+        "nativeFoot": {
+          "x": 91.0,
+          "y": 1281
+        },
+        "displayFoot": {
+          "x": -48.3,
+          "y": 1164.5659163987139
+        },
+        "paintWidth": 90,
+        "paintHeight": 120,
+        "origin": {
+          "x": 0.5,
+          "y": 1
+        },
+        "displayRect": {
+          "x": -93.3,
+          "y": 1044.5659163987139,
+          "width": 90,
+          "height": 120
+        },
+        "collisionSupport": "Exact frozen native grid projected with the same mesh; ground depicts blocked support even beyond decorative alpha; no new collider or fabricated interaction.",
+        "atlasRect": {
+          "x": 385,
+          "y": 555,
+          "width": 90,
+          "height": 120
+        }
+      },
+      {
+        "id": "rooted_tree_11",
+        "kind": "native-landmark-billboard",
+        "native": {
+          "id": "rooted_tree_11",
+          "x": 410,
+          "y": 455,
+          "width": 166,
+          "height": 162,
+          "depth_y": 617
+        },
+        "nativeFoot": {
+          "x": 493.0,
+          "y": 617
+        },
+        "displayFoot": {
+          "x": 226.576,
+          "y": 600.0
+        },
+        "paintWidth": 90,
+        "paintHeight": 108,
+        "origin": {
+          "x": 0.5,
+          "y": 1
+        },
+        "displayRect": {
+          "x": 181.576,
+          "y": 492.0,
+          "width": 90,
+          "height": 108
+        },
+        "collisionSupport": "Exact frozen native grid projected with the same mesh; ground depicts blocked support even beyond decorative alpha; no new collider or fabricated interaction.",
+        "atlasRect": {
+          "x": 2,
+          "y": 689,
+          "width": 90,
+          "height": 108
+        }
+      },
+      {
+        "id": "food_counters",
+        "kind": "native-landmark-billboard",
+        "native": {
+          "id": "food_counters",
+          "x": 568,
+          "y": 611,
+          "width": 190,
+          "height": 164,
+          "depth_y": 775
+        },
+        "nativeFoot": {
+          "x": 663.0,
+          "y": 775
+        },
+        "displayFoot": {
+          "x": 274.875,
+          "y": 711.6304347826087
+        },
+        "paintWidth": 110,
+        "paintHeight": 100,
+        "origin": {
+          "x": 0.5,
+          "y": 1
+        },
+        "displayRect": {
+          "x": 219.875,
+          "y": 611.6304347826087,
+          "width": 110,
+          "height": 100
+        },
+        "collisionSupport": "Exact frozen native grid projected with the same mesh; ground depicts blocked support even beyond decorative alpha; no new collider or fabricated interaction.",
+        "atlasRect": {
+          "x": 96,
+          "y": 689,
+          "width": 110,
+          "height": 100
+        }
+      },
+      {
+        "id": "northern_hall",
+        "kind": "native-landmark-billboard",
+        "native": {
+          "id": "northern_hall",
+          "x": 12,
+          "y": -94,
+          "width": 248,
+          "height": 190,
+          "depth_y": 96
+        },
+        "nativeFoot": {
+          "x": 136.0,
+          "y": 96
+        },
+        "displayFoot": {
+          "x": -16.800000000000004,
+          "y": 44.36842105263158
+        },
+        "paintWidth": 150,
+        "paintHeight": 135,
+        "origin": {
+          "x": 0.5,
+          "y": 1
+        },
+        "displayRect": {
+          "x": -91.80000000000001,
+          "y": -90.63157894736841,
+          "width": 150,
+          "height": 135
+        },
+        "collisionSupport": "Exact frozen native grid projected with the same mesh; ground depicts blocked support even beyond decorative alpha; no new collider or fabricated interaction.",
+        "atlasRect": {
+          "x": 210,
+          "y": 689,
+          "width": 150,
+          "height": 135
+        }
+      },
+      {
+        "id": "north_eastern_hall",
+        "kind": "native-landmark-billboard",
+        "native": {
+          "id": "north_eastern_hall",
+          "x": 472,
+          "y": -94,
+          "width": 248,
+          "height": 190,
+          "depth_y": 96
+        },
+        "nativeFoot": {
+          "x": 596.0,
+          "y": 96
+        },
+        "displayFoot": {
+          "x": 270.6875,
+          "y": 95.31012303043384
+        },
+        "paintWidth": 150,
+        "paintHeight": 135,
+        "origin": {
+          "x": 0.5,
+          "y": 1
+        },
+        "displayRect": {
+          "x": 195.6875,
+          "y": -39.68987696956616,
+          "width": 150,
+          "height": 135
+        },
+        "collisionSupport": "Exact frozen native grid projected with the same mesh; ground depicts blocked support even beyond decorative alpha; no new collider or fabricated interaction.",
+        "atlasRect": {
+          "x": 2,
+          "y": 828,
+          "width": 150,
+          "height": 135
+        }
+      },
+      {
+        "id": "merch_venue_hall",
+        "kind": "native-landmark-billboard",
+        "native": {
+          "id": "merch_venue_hall",
+          "x": 8,
+          "y": 551,
+          "width": 212,
+          "height": 180,
+          "depth_y": 731
+        },
+        "nativeFoot": {
+          "x": 114.0,
+          "y": 731
+        },
+        "displayFoot": {
+          "x": -32.199999999999996,
+          "y": 680.5434782608696
+        },
+        "paintWidth": 140,
+        "paintHeight": 120,
+        "origin": {
+          "x": 0.5,
+          "y": 1
+        },
+        "displayRect": {
+          "x": -102.19999999999999,
+          "y": 560.5434782608696,
+          "width": 140,
+          "height": 120
+        },
+        "collisionSupport": "Exact frozen native grid projected with the same mesh; ground depicts blocked support even beyond decorative alpha; no new collider or fabricated interaction.",
+        "atlasRect": {
+          "x": 156,
+          "y": 828,
+          "width": 140,
+          "height": 120
+        }
+      }
+    ],
+    "boards": [
+      {
+        "id": "photo2-shortcut-meet",
+        "kind": "nonphysical-panel-shortcut",
+        "width": 85,
+        "height": 83,
+        "displayRect": {
+          "x": 7,
+          "y": 358,
+          "width": 85,
+          "height": 83
+        },
+        "destination": "/meet",
+        "interactionId": null,
+        "atlasRect": {
+          "x": 300,
+          "y": 828,
+          "width": 85,
+          "height": 83
+        }
+      },
+      {
+        "id": "photo2-shortcut-wall",
+        "kind": "nonphysical-panel-shortcut",
+        "width": 88,
+        "height": 76,
+        "displayRect": {
+          "x": 237,
+          "y": 382,
+          "width": 88,
+          "height": 76
+        },
+        "destination": "/wall",
+        "interactionId": null,
+        "atlasRect": {
+          "x": 389,
+          "y": 828,
+          "width": 88,
+          "height": 76
+        }
+      }
+    ],
+    "occlusion": "Use projected native foot Y for visual depth, deterministic native ID tie order, same rule for actual actor feet. Preserve native depth_y metadata. Ground support includes exact projected frozen blockers; props are decorative billboards and do not define server collision. No foreground prop may conceal its accessible shortcut/focus ring.",
+    "nativeTileTexture": "SEPARATE_EXISTING_PINNED_C06_TILED_TEXTURE_UNCHANGED",
+    "collisionSupport": {
+      "source": "EXACT_FROZEN_NATIVE_GRID_PROJECTED_BY_CONTRACT_MESH",
+      "blockedCellCount": 858,
+      "proofSHA256": "ddeaf484723eaaf26005d1ca234beff7183be43c0addd71c89eae3d0692ac4b5"
+    }
+  },
+  "resourceUnits": {
+    "sourcePixelCount": 1123088,
+    "decodedRGBABytes": 4492352,
+    "sourcePixelCountLimit": 2097152,
+    "transferByteLimit": 2097152,
+    "actualPngTransferBytes": 62029
+  },
+  "activation": {
+    "state": "NOT_ADMITTED",
+    "required": "2162/Root coherent new PARADE theme_revision/content_hash/catalog tuple; exact new resources and descriptor SHA before activation",
+    "otherEras": "REVENGE/DANGER unchanged"
+  }
+}

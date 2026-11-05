@@ -1,0 +1,75 @@
+{
+  "meaning": "Actual Source03 candidate before material visual correction; qualifier/probe were unrun",
+  "files": [
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source03-candidate/ground.svg",
+      "bytes": 777132,
+      "sha256": "12258ef63fa6f65bcb33953b7f56dfbd9f980a6e1ef27673cc5449d97956607a"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source03-candidate/ground.png",
+      "bytes": 31648,
+      "sha256": "946170a22c1ccedeabb71af18e155264f2475975848e4157a39fb58b80dc2d47"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source03-candidate/atlas.png",
+      "bytes": 30381,
+      "sha256": "8fd5654a9566f9ab769ac073ff98c64914c64ac4ff3c057fb1f312f9a416b8ba"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source03-candidate/atlas-editable.json",
+      "bytes": 1247750,
+      "sha256": "12a209c876b177688abf69d6692045eba18ef7400834a1a37d96c82bedd6458d"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source03-candidate/asset-interface.json",
+      "bytes": 46548,
+      "sha256": "201e8694fe84c63e054a0a50bc37345bfe1383d833632be39fa94b8b9d9e62c9"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source03-candidate/source-provenance.json",
+      "bytes": 3469,
+      "sha256": "d42cf7dd7f775445cf9383009f08c1d8a8a15ac897c948f64ad0f68485ee21d3"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source03-candidate/README.md",
+      "bytes": 2058,
+      "sha256": "ec2f88ebd55a248890f9e96dbcf4575d8c437fca5a6bada98e5c516260fdbdb4"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source03-candidate/full-scene.png",
+      "bytes": 66272,
+      "sha256": "bd5a829d924c11e4b0115c43da0364992e908768d2040b5588ecd0755435933a"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source03-candidate/scene-viewport.png",
+      "bytes": 27791,
+      "sha256": "e506897c622568a8b720714e7ac4b95af9317074a0bf3e6a1a6047b6b6fb722d"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source03-candidate/reference-comparison.png",
+      "bytes": 374127,
+      "sha256": "d42bc7f6d172af625a3aeb106b5d5a8d73565d656ccf2fed16c8adf0b27913c4"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source03-candidate/atlas-contact.png",
+      "bytes": 50160,
+      "sha256": "c4b28189b3594b290181c26be53d07b5d53a5d5be12af7029f98bc853e598734"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source03-candidate/support-diagnostic.png",
+      "bytes": 40276,
+      "sha256": "1c81bf99d0f4b05966f05dc6516a15b62d0194fb76ae964537cc27d9e6bc1800"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source03-candidate/collision-support.json",
+      "bytes": 1054609,
+      "sha256": "ddeaf484723eaaf26005d1ca234beff7183be43c0addd71c89eae3d0692ac4b5"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/source03-candidate/build-metadata.json",
+      "bytes": 1877,
+      "sha256": "bbb4eb40a1d2a6df159d9e7d9e4bb05939beb9e463c4c5740049045883be54c5"
+    }
+  ]
+}
