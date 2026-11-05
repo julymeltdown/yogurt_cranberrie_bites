@@ -163,13 +163,19 @@ it('keeps the existing sign-in composition and all OAuth providers disabled afte
   expect(router.state.location.pathname).toBe('/login')
   expect(screen.getByText('Event entry is not open yet. Please check back later.')).toBeVisible()
 })
-it('does not revoke an existing canonical account or reuse old denial projection on a fresh clean callback navigation', async () => {
-  const { auth, router, fetch } = setup('/auth/callback?error=access_denied&returnTo=%2Ffeed')
+it('preserves canonical identity behind admission on a fresh clean callback navigation', async () => {
+  const { auth, router, fetch, requests } = setup('/auth/callback?error=access_denied&returnTo=%2Ffeed')
   await screen.findByRole('heading', { name: 'Sign-in cancelled' })
-  const identity = auth.session.replace(auth.session.read().generation, { userId, eventId, accessToken: 'existing-canonical-token' })
-  await act(async () => { await router.navigate('/auth/callback') })
-  expect(screen.getByRole('heading', { name: 'Provider sign-in is unavailable' })).toBeVisible()
-  expect(screen.getByRole('link', { name: 'Back to your destination' })).toHaveAttribute('href', '/world')
+  let identity: ReturnType<typeof auth.session.replace> = null
+  await act(async () => {
+    identity = auth.session.replace(auth.session.read().generation, { userId, eventId, accessToken: 'existing-canonical-token' })
+    await router.navigate('/auth/callback')
+  })
+  expect(await screen.findByRole('heading', { name: 'World entry paused' })).toBeVisible()
+  fireEvent.click(screen.getByRole('button', { name: 'Check entry again' }))
+  await waitFor(() => expect(auth.read().admission).toBe('ERROR'))
+  expect(router.state.location).toMatchObject({ pathname: '/auth/callback', search: '', hash: '', state: null })
   expect(auth.session.isCurrent(identity!)).toBe(true); expect(auth.session.read().accessToken).toBe('existing-canonical-token')
-  expect(fetch).not.toHaveBeenCalled()
+  expect(requests.map(request => new URL(request.url).pathname)).toEqual(['/api/auth/enrollment/admission'])
+  expect(requests[0]!.method).toBe('GET'); expect(fetch).toHaveBeenCalledOnce()
 })

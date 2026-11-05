@@ -1,0 +1,148 @@
+{
+  "status": "PASS_CONTROLLED_CLIENT",
+  "browserVersion": "156.0.8078.80",
+  "results": [
+    {
+      "width": 360,
+      "height": 800,
+      "case": "denied",
+      "status": "PASS",
+      "provenance": "RETAINED_NATIVE04_CANDIDATE2",
+      "captureWindowUTC": [
+        "2026-11-05T06:59:22.077Z",
+        "2026-11-05T06:59:25.628Z"
+      ]
+    },
+    {
+      "width": 360,
+      "height": 800,
+      "case": "foreign",
+      "status": "PASS",
+      "provenance": "RETAINED_NATIVE04_CANDIDATE2",
+      "captureWindowUTC": [
+        "2026-11-05T06:59:22.077Z",
+        "2026-11-05T06:59:25.628Z"
+      ]
+    },
+    {
+      "width": 360,
+      "height": 800,
+      "case": "expired",
+      "status": "PASS",
+      "provenance": "RETAINED_NATIVE04_CANDIDATE2",
+      "captureWindowUTC": [
+        "2026-11-05T06:59:22.077Z",
+        "2026-11-05T06:59:25.628Z"
+      ]
+    },
+    {
+      "width": 360,
+      "height": 800,
+      "case": "restricted",
+      "status": "PASS"
+    },
+    {
+      "width": 360,
+      "height": 800,
+      "case": "success",
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "height": 480,
+      "case": "denied",
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "height": 480,
+      "case": "foreign",
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "height": 480,
+      "case": "expired",
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "height": 480,
+      "case": "restricted",
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "height": 480,
+      "case": "success",
+      "status": "PASS"
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "case": "denied",
+      "status": "PASS"
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "case": "foreign",
+      "status": "PASS"
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "case": "expired",
+      "status": "PASS"
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "case": "restricted",
+      "status": "PASS"
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "case": "success",
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "case": "canonical-app-target-/feed",
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "case": "canonical-app-target-/me",
+      "status": "PASS"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "case": "canonical-app-target-/meet/people",
+      "status": "PASS"
+    },
+    {
+      "case": "route-exit-cancels-late-adoption",
+      "status": "PASS"
+    }
+  ],
+  "calls": {
+    "refresh": 12,
+    "admission": 9,
+    "logout": 3,
+    "cancelled": 1
+  },
+  "errors": [],
+  "retainedCases": 3,
+  "freshCases": 16,
+  "limitations": [
+    "Synthetic Node HTTP cookie/303 counterpart; actual Gateway OAuth/state cryptography/provider exchange NOT_RUN",
+    "Canonical App/router/Auth/admission/cookie/privacy implementation exercised; no production capability enabled",
+    "Retained cases keep their failed outer resource round; their provenance does not qualify that round",
+    "No device/live service/whole BE03 acceptance"
+  ]
+}

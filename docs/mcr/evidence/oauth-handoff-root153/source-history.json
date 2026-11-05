@@ -1,0 +1,349 @@
+{
+  "scope": "Frontend anonymous OAuth callback handoff",
+  "status": "SOURCE_AND_CONTROLLED_CLIENT_QUALIFIED",
+  "canonicalDependencyReadset": "8dee1335a79f831e6a29f005a50f2c0f65777d46",
+  "prospectiveFutureCorrection": {
+    "allocatorAsOfUTC": "2026-11-05T05:47:14.844626+00:00",
+    "globalExactFutureBytes": 9586068447,
+    "globalUpperFutureBytes": 9596567552,
+    "ownListedPhaseBytesAlreadyIncluded": 134217728,
+    "otherNamedUpperBytes": 9462349824,
+    "rule": "Exclude this listed own phase once, then add its actual remaining upper. Count ordinary and mutually-exclusive target once. Preserve higher fresh nonoverlapping reservations and all historical charges."
+  },
+  "productionChanges": [
+    "frontend/src/features/auth/model/session.ts",
+    "frontend/src/features/auth/model/callback.ts",
+    "frontend/src/features/auth/ui/Callback.tsx"
+  ],
+  "historicalRounds": [
+    {
+      "round": "SOURCE01",
+      "status": "FAIL",
+      "reason": "A later strict peer identity observation failed before any product command.",
+      "payloadChecksCompleted": 0
+    },
+    {
+      "round": "SOURCE02",
+      "status": "FAIL",
+      "reason": "Cold canonical App transformation exceeded the initial 16 MiB scratch allowance before completed test results.",
+      "payloadChecksCompleted": 0,
+      "measurementGap": "Assertion preceded peak recording; over-limit scratch peak was not captured. Entire old 1 GiB family was subsequently charged; that debit does not qualify the historical cap."
+    },
+    {
+      "round": "SOURCE03",
+      "status": "FAIL",
+      "reason": "Nine charged processes exceeded the eight-process cap.",
+      "payloadChecksCompleted": 0
+    },
+    {
+      "round": "SOURCE04",
+      "acceptedAtEpoch": 1793853899.4032052,
+      "actualFullEpoch": 1793853911.026459,
+      "status": "FAIL",
+      "resourceClosure": "All resources released; scratch absent.",
+      "passingHistoricalTests": {
+        "node": 98,
+        "callbackView": 14
+      },
+      "reason": "Existing recovery suite could not collect because the private dependency resolver lacked react-hook-form.",
+      "types": "NOT_RUN",
+      "lint": "NOT_RUN",
+      "qualificationLimit": "Session production postimage subsequently changed; these historical session/view passes do not qualify the new lifecycle correction."
+    },
+    {
+      "round": "SOURCE05",
+      "acceptedAtEpoch": 1793854873.950828,
+      "actualFullEpoch": 1793854880.6690218,
+      "status": "FAIL",
+      "resourceClosure": "All resources released; scratch absent.",
+      "recoveryTests": {
+        "passed": 21,
+        "failed": 1
+      },
+      "reason": "Fresh authenticated callback test expected callback content despite the canonical admission gate.",
+      "types": "NOT_RUN",
+      "lint": "NOT_RUN"
+    },
+    {
+      "round": "SOURCE06",
+      "acceptedAtEpoch": 1793855167.0955799,
+      "actualFullEpoch": 1793855172.706203,
+      "status": "FAIL",
+      "resourceClosure": "All resources released; scratch absent.",
+      "reason": "Independent guard measured nine charged processes against the eight-process cap.",
+      "payloadCommandsCompleted": 0,
+      "cumulativePositiveBytes": 1329324544,
+      "measurementGap": "Both observers wrote the same intermediate measurement file; the guard FULL preserves its higher process peak but the precise intermediate process list was overwritten."
+    },
+    {
+      "round": "SOURCE07",
+      "acceptedAtEpoch": 1793855938.324,
+      "actualFullEpoch": 1793855944.298292,
+      "status": "FAIL",
+      "resourceClosure": "All resources released; scratch absent.",
+      "bothCompleteInitialLive": true,
+      "reason": "Both strict observers rejected a peer guard whose recorded cwd differed from its actual cwd.",
+      "payloadCommandsCompleted": 0,
+      "cumulativePositiveBytes": 1346241120,
+      "producerDisposition": "The peer owner confirmed that its identity helper copied the caller checkout cwd instead of the guard's private launch cwd, corrected the actual descriptor and retained the failed round.",
+      "prospectiveObserverChanges": [
+        "Independent census helper bursts serialized without sharing census results or lowering caps.",
+        "Separate primary and guard intermediate measurements.",
+        "Exact-birth ENDED_WORK guard descriptor; kernel death and global book release remain separate parent facts."
+      ]
+    },
+    {
+      "round": "SOURCE08",
+      "acceptedAtEpoch": 1793856819.339725,
+      "actualFullEpoch": 1793856821.8506691,
+      "status": "FAIL",
+      "resourceClosure": "All resources released; scratch absent.",
+      "bothCompleteInitialLive": false,
+      "reason": "The required physical future disk reserve did not fit before payload.",
+      "payloadCommandsCompleted": 0,
+      "cumulativePositiveBytes": 1363149408,
+      "freeBytesAtFailure": 22301790208,
+      "minimumRequiredBytesAtFailure": 22682796032,
+      "minimumDeficitBytes": 381005824,
+      "futureMinimumBytes": 12884901888,
+      "ownFutureUpperBytes": 134217728,
+      "afterFutureFloorBytes": 9663676416,
+      "nextRunCondition": "Actual changed capacity or corrected applicable producer inputs, with a fresh distinct allocation. No unchanged retry or weaker floor is inferred."
+    },
+    {
+      "round": "SOURCE09",
+      "acceptedAtEpoch": 1793857855.382557,
+      "actualFullEpoch": 1793857858.275075,
+      "status": "FAIL",
+      "resourceClosure": "All resources released; scratch absent.",
+      "primaryCompleteInitialLive": true,
+      "guardCompleteInitialLive": false,
+      "reason": "Independent guard exhausted full-census retries while an observed process's actual cwd was unavailable.",
+      "payloadCommandsCompleted": 0,
+      "cumulativePositiveBytes": 1380057696,
+      "freeBytesAtPassingPrimarySample": 21204602880,
+      "requiredFreeBytesAtPassingPrimarySample": 19260243968,
+      "deficitBytesAtPassingPrimarySample": 0,
+      "qualificationLimit": "The corrected capacity calculation fit; it does not turn the incomplete independent census into a passing round. No causal attribution to a particular peer workflow is established."
+    }
+  ],
+  "retainedSource11Round": {
+    "round": "SOURCE11",
+    "acceptedAtEpoch": 1793858738.019191,
+    "actualFullEpoch": 1793858773.806027,
+    "status": "FAIL",
+    "bothCompleteInitialLive": true,
+    "resourcesReleased": true,
+    "scratchRemaining": false,
+    "commands": {
+      "sessionTests": 42,
+      "callbackBoundaryTests": 17,
+      "focusedRecoveryTests": 1,
+      "lintExit": 0,
+      "strictExit": 1
+    },
+    "reason": "Private immutable overlay omitted canonical E2E service and two realtime fixtures, producing five unresolved imports.",
+    "unchangedProductChecksRetained": true,
+    "cumulativePositiveBytes": 1421791200,
+    "nextCondition": "Exact missing canonical inputs added to harness and a distinct finite strict-only source allocation."
+  },
+  "source10": {
+    "acceptedAtEpoch": 1793858340.38182,
+    "actualFullEpoch": 1793858341.566993,
+    "status": "FAIL",
+    "payloadCommandsCompleted": 0,
+    "bothCompleteInitialLive": false,
+    "resourcesReleased": true,
+    "reason": "Peer inline helper lacked stored-program identity and a comparable command digest.",
+    "producerDisposition": "Exact old descriptor retained; actual tool exit and kernel absence recorded separately. Future stored-program descriptors corrected prospectively.",
+    "preAcceptEntryFailure": "Controller generation syntax error; corrected before actual ACCEPT, no zero-resource startup claim.",
+    "cumulativePositiveBytes": 1396965984
+  },
+  "source12": {
+    "acceptedAtEpoch": 1793858994.372591,
+    "actualFullEpoch": 1793858996.408724,
+    "status": "FAIL",
+    "payloadCommandsCompleted": 0,
+    "primaryCompleteInitialLive": false,
+    "guardCompleteInitialLive": true,
+    "resourcesReleased": true,
+    "scratchRemaining": false,
+    "reason": "Primary strict consumer refused a peer ordinary descriptor with stdin marker instead of absolute stored script.",
+    "cumulativePositiveBytes": 1438699488,
+    "source11GreensRetained": true,
+    "fullStrictAfterOverlayCorrection": "NOT_RUN"
+  },
+  "accounting": {
+    "familyTotalBytes": 2147483648,
+    "historicalSource13CarryMinimumBytes": 1455607776,
+    "currentCumulativePositivePeakBytes": 1705184704,
+    "sharedPhasePositiveBytes": 268435456,
+    "sharedPhaseUpperBytes": 1724043232,
+    "wholeCapBytes": 51539607552,
+    "allHigherActualsRemainBinding": true,
+    "noResetOrRefund": true
+  },
+  "source13HistoricalAdmission": {
+    "state": "PASS_SOURCE_ONLY",
+    "conditionalOfferId": "ROOT153-OAUTH-SOURCE13-0615",
+    "executionDisposition": "SOURCE_COMMANDS_COMPLETED_AFTER_FRESH_ADMISSION",
+    "sourceAcceptByUTC": "2026-11-05T06:55:00Z",
+    "sharedSourceAndNativePositivePhaseTotalBytes": 134217728,
+    "phaseIncludes": [
+      "SOURCE13",
+      "NATIVE01",
+      "necessary NATIVE02"
+    ],
+    "allocatorDenial": {
+      "observedAtUTC": "2026-11-05T06:27:25Z",
+      "freeBytes": 18625470464,
+      "minimumRequiredBytes": 19461570560,
+      "deficitBytes": 836100096,
+      "resumeCondition": "Genuine capacity or coherent accounting change; then fresh dual complete LIVE checks. No unchanged census replay."
+    },
+    "remainingCommand": null,
+    "producerRepairExactPinsPrepared": true,
+    "preflight": {
+      "allocatorAsOfUTC": "2026-11-05T06:23:11.994573+00:00",
+      "freeBytes": 18755117056,
+      "globalFutureUpperBytes": 9797894144,
+      "ownListedPhaseExcludedOnceBytes": 134217728,
+      "ownFutureUpperBytes": 134217728,
+      "afterFutureFloorBytes": 9663676416,
+      "minimumNamedRequiredBytes": 19461570560,
+      "minimumDeficitBytes": 706453504,
+      "qualification": "Preflight only; no complete LIVE census or execution acceptance. Higher applicable reservations remain binding."
+    }
+  },
+  "source13Full": {
+    "acceptedAtEpoch": 1793860559.0256839,
+    "actualFullEpoch": 1793860581.136321,
+    "status": "PASS_SOURCE_ONLY",
+    "strictFiles": 1860,
+    "strictExit": 0,
+    "retainedSource11Tests": 60,
+    "retainedOwnedLintExit": 0,
+    "resourcesReleased": true,
+    "scratchRemaining": false,
+    "sourceCommit": "1dd05337528389aa5f3c4d563ab421886f8f16ab"
+  },
+  "nativeRounds": [
+    {
+      "round": "NATIVE01",
+      "acceptedAtEpoch": 1793860702.441864,
+      "actualFullEpoch": 1793860716.884216,
+      "status": "FAIL",
+      "completedScenarios": 0,
+      "reason": "Vite filesystem CSS imports could not resolve the virtual canonical styles.",
+      "resourcesReleased": true,
+      "scratchRemaining": false,
+      "port5187Released": true,
+      "cumulativePositiveBytes": 1507685882
+    },
+    {
+      "round": "NATIVE02",
+      "acceptedAtEpoch": 1793860917.178439,
+      "actualFullEpoch": 1793860931.2857752,
+      "status": "FAIL",
+      "completedScenarios": 0,
+      "reason": "CSS errors were resolved; the initial callback heading remained absent. Underlying boot cause is not established because the driver did not persist page errors on failure.",
+      "resourcesReleased": true,
+      "scratchRemaining": false,
+      "port5187Released": true,
+      "cumulativePositiveBytes": 1557555187,
+      "wholeBytes": 5419038223,
+      "rssBytes": 2239184896,
+      "processes": 13,
+      "scratchBytes": 30489785
+    },
+    {
+      "round": "NATIVE03",
+      "acceptedAtEpoch": 1793861649.149952,
+      "actualFullEpoch": 1793861680.639307,
+      "status": "FAIL",
+      "completedScenarios": 0,
+      "reason": "Strict external ordinary-helper executable identity mismatch interrupted the browser before a completed scenario or failure diagnostic.",
+      "driverSyntaxExit": 0,
+      "driverLintExit": 0,
+      "configSyntaxExit": 0,
+      "resourcesReleased": true,
+      "scratchRemaining": false,
+      "port5187Released": true,
+      "cumulativePositiveBytes": 1604999885,
+      "wholeBytes": 5420534640
+    },
+    {
+      "round": "NATIVE04",
+      "acceptedAtEpoch": 1793861902.4887831,
+      "actualFullEpoch": 1793861968.1237671,
+      "status": "FAIL",
+      "completedScenarios": 3,
+      "reason": "Actual JSX CommonJS browser boot failure was corrected in candidate2; cumulative positive growth then exceeded the fixed phase upper before remaining cases completed.",
+      "partialCases": ["denied-360", "foreign-360", "expired-360"],
+      "partialScreenshotsInspected": 3,
+      "partialCandidatePageErrors": [],
+      "resourcesReleased": true,
+      "scratchRemaining": false,
+      "port5187Released": true,
+      "cumulativePositiveBytes": 1657329863,
+      "phaseUpperBytes": 1656934368,
+      "overLimitBytes": 395495,
+      "wholeBytes": 5421238896,
+      "rssBytes": 2380857344,
+      "processes": 14,
+      "scratchBytes": 30526777,
+      "qualification": "Partial controlled-client cases only; resource round remains failed."
+    },
+    {
+      "round": "NATIVE05",
+      "acceptedAtEpoch": 1793862385.289403,
+      "actualFullEpoch": 1793862423.397795,
+      "status": "PASS_CONTROLLED_CLIENT",
+      "completedScenarios": 19,
+      "freshCases": 16,
+      "retainedNative04Candidate2Cases": 3,
+      "screenshots": 12,
+      "screenshotsPersonallyInspected": 12,
+      "resourcesReleased": true,
+      "scratchRemaining": false,
+      "port5187Released": true,
+      "cumulativePositiveBytes": 1705184704,
+      "phaseUpperBytes": 1724043232,
+      "wholeBytes": 5424386671,
+      "rssBytes": 2445279232,
+      "processes": 14,
+      "scratchBytes": 30563993,
+      "pageErrors": [],
+      "limitation": "Actual canonical client with synthetic HTTP cookie/303 counterpart; not actual Gateway/provider, latest combined master, device or whole BE03."
+    }
+  ],
+  "runtime": {
+    "controlledClientBrowser": "PASS_CONTROLLED_CLIENT",
+    "actualGatewayProvider": "NOT_RUN",
+    "registeredProviderCustody": "NOT_ESTABLISHED",
+    "device": "NOT_RUN",
+    "publicOAuthCapabilities": "OFF",
+    "wholeBE03Acceptance": false
+  },
+  "retainedSource11": {
+    "round": "SOURCE11",
+    "sessionTests": 42,
+    "callbackBoundaryTests": 17,
+    "focusedRecoveryTests": 1,
+    "lintExit": 0,
+    "productionAndTestsUnchanged": true,
+    "privateExactPinsRetained": true
+  },
+  "qualifiedSourceCommands": {
+    "round": "SOURCE13",
+    "acceptedAtEpoch": 1793860559.0256839,
+    "results": [
+      {
+        "check": "full-strict-types",
+        "exit": 0,
+        "passedTests": null
+      }
+    ],
+    "limitation": "Successful literal Source13 FULL is recorded separately above; browser and real provider remain unqualified."
+  }
+}

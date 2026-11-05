@@ -12,10 +12,18 @@ export function readResetLocation(search: string, hash: string) {
   const invalid = [...params.keys()].some(key => key !== 'returnTo') || params.getAll('returnTo').length > 1 || Boolean(hash && (!match || match[0] !== hash))
   return { target, token: !invalid && match ? match[1]! : null, invalid }
 }
-export type CallbackPresentation = { kind: 'denied' | 'invalid-state' | 'unavailable'; target: string }
+export type CallbackPresentation = { kind: 'denied' | 'invalid-state' | 'unavailable' | 'handoff' | 'restricted'; target: string }
 export function readCallbackLocation(search: string, hash: string): CallbackPresentation {
   if (search.length > 16_384 || hash.length > 16_384) return { kind: 'invalid-state', target: '/world' }
   const params = new URLSearchParams(search), target = localTarget(params)
+  if (params.has('status')) {
+    const handoffTarget = params.get('returnTo')
+    const safeTarget = ['/world', '/feed', '/me', '/meet/people'].includes(handoffTarget ?? '') ? handoffTarget! : '/world'
+    if (hash || params.getAll('status').length !== 1 || params.getAll('returnTo').length > 1
+      || [...params.keys()].some(key => key !== 'status' && key !== 'returnTo')) return { kind: 'invalid-state', target: safeTarget }
+    const status = params.get('status')
+    return { kind: status === 'success' ? 'handoff' : status === 'denied' ? 'denied' : status === 'error' ? 'unavailable' : 'invalid-state', target: safeTarget }
+  }
   // Inspect only the denial marker/presence of fields. Never parse/import credentials,
   // replay a code, validate server state in the browser, or manufacture signed-in success.
   if (hash || params.getAll('returnTo').length > 1 || params.getAll('error').length > 1 || params.getAll('state').length > 1

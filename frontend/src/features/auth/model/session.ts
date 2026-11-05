@@ -12,6 +12,7 @@ import { decodeAdmission, type EnrollmentAdmission } from './enrollment-contract
 import { createAccountDeletionOwner } from './account-deletion'
 
 type Notice = 'invalid-input' | 'credentials' | 'rate-limited' | 'unavailable' | 'expired' | 'changed' | null
+export type OAuthHandoffResult = 'ready' | 'restricted' | 'unavailable'
 export type AdmissionStatus = 'unchecked' | 'checking' | 'ERROR' | EnrollmentAdmission['decision']
 export interface AuthState {
   /** Optional for existing embedding fixtures; a missing value never admits an authenticated actor. */
@@ -46,6 +47,11 @@ export function createSessionController(options: SessionOptions) {
   let started = false, disposed = false, intent = 0, expiresAt = 0, enrollmentEmailAvailable = false
   let expiry: ReturnType<typeof setTimeout> | undefined
   let refreshFlight: Promise<void> | undefined
+  let oauthFlight: Promise<OAuthHandoffResult> | undefined
+  let oauthInstalling: SessionScope | undefined
+  // A new provider authorization navigates away and returns to a new document.
+  // Neither a repeated callback marker nor uncertain cookie rotation is retried here.
+  let oauthAttempted = false
   let capabilitiesFlight: Promise<void> | undefined
   let admissionFlight: { generation: number; promise: Promise<boolean> } | undefined
   const listeners = new Set<() => void>()
@@ -59,9 +65,9 @@ export function createSessionController(options: SessionOptions) {
     publish({ readiness: eventId ? 'anonymous' : 'unavailable', pending: null, notice, admission: 'unchecked', admissionPending: false })
   }
   const recovery = createRecovery({ session, http, privacy, cookiePolicy,
-    canStart: () => !disposed && state.pending === null && !enrollment.pending, beforeConfirm: () => clear() })
+    canStart: () => !disposed && !oauthFlight && state.pending === null && !enrollment.pending, beforeConfirm: () => clear() })
   const enrollment = createEnrollment({ session, http, privacy,
-    canStart: () => !disposed && state.pending === null && !recovery.pending && !admissionFlight && privacy.capture().gate === 'open', available: () => enrollmentEmailAvailable })
+    canStart: () => !disposed && !oauthFlight && state.pending === null && !recovery.pending && !admissionFlight && privacy.capture().gate === 'open', available: () => enrollmentEmailAvailable })
   // Canonical OAuth/restored identities enter through the existing session port, not email capability.
   let identitySignal = session.read().signal
   const changedIdentity = () => {
@@ -69,7 +75,8 @@ export function createSessionController(options: SessionOptions) {
     identitySignal = session.read().signal
     identitySignal.addEventListener('abort', changedIdentity, { once: true })
     admissionFlight = undefined
-    publish({ admission: 'unchecked', admissionPending: false, readiness: session.read().userId ? 'checking' : eventId ? 'anonymous' : 'unavailable' })
+    const installing = Boolean(oauthInstalling && session.isCurrent(oauthInstalling))
+    publish({ admission: installing ? 'checking' : 'unchecked', admissionPending: false, readiness: session.read().userId ? 'checking' : eventId ? 'anonymous' : 'unavailable' })
     if (started && !disposed && session.read().userId) void checkAdmission()
   }
   identitySignal.addEventListener('abort', changedIdentity, { once: true })
@@ -165,6 +172,45 @@ export function createSessionController(options: SessionOptions) {
     try { await flight } catch (error) { if (current(attempt, expected)) clear('expired'); throw error }
     finally { if (refreshFlight === flight) refreshFlight = undefined }
   }
+  function completeOAuthHandoff(signal?: AbortSignal): Promise<OAuthHandoffResult> {
+    if (signal?.aborted) return Promise.resolve('unavailable')
+    if (oauthFlight) return oauthFlight
+    if (oauthAttempted || disposed || !eventId || session.read().userId || state.pending || recovery.pending
+      || enrollment.pending || !cookiePolicy.available) return Promise.resolve('unavailable')
+    oauthAttempted = true
+    const expected = session.read(), attempt = intent
+    let owned = expected, adopted = false
+    // Route cancellation also aborts the original anonymous session signal used
+    // by FE01's shared refresh flight; a late cookie response cannot adopt identity.
+    const cancel = () => { if (!adopted && current(attempt, owned)) clear() }
+    signal?.addEventListener('abort', cancel, { once: true })
+    const flight: Promise<OAuthHandoffResult> = Promise.resolve().then(() => cookiePolicy.run('refresh', async (): Promise<OAuthHandoffResult> => {
+      if (signal?.aborted || !current(attempt, expected)) return 'unavailable'
+      const result = await http.refreshSession(signal)
+      if (signal?.aborted || !current(attempt, expected)) return 'unavailable'
+      const auth = result.data as ReturnType<typeof decodeAuth>
+      oauthInstalling = { generation: expected.generation + 1, userId: auth.userId, eventId }
+      let installed: ReturnType<typeof session.replace>
+      try { installed = session.replace(expected.generation, { userId: auth.userId, eventId, accessToken: auth.accessToken }) }
+      finally { oauthInstalling = undefined }
+      if (!installed || !session.isCurrent(installed)) return 'unavailable'
+      owned = session.read(); adopted = true
+      expireIn(auth.expiresIn)
+      // Verified identity and its canonical admission outlive the callback route.
+      const admitted = await checkAdmission()
+      return !signal?.aborted && current(attempt, installed) ? admitted ? 'ready' : 'restricted' : 'unavailable'
+    }, signal)).catch(error => {
+      if (current(attempt, owned)) clear(notice(error))
+      return 'unavailable' as const
+    }).finally(() => {
+      signal?.removeEventListener('abort', cancel)
+      if (oauthFlight === flight) oauthFlight = undefined
+      if (!disposed && intent === attempt && state.pending === 'login') publish({ pending: null })
+    }).then(result => !signal?.aborted && current(attempt, owned) ? result : 'unavailable')
+    oauthFlight = flight
+    publish({ pending: 'login', notice: null, logout: 'none' })
+    return flight
+  }
   async function requestWithPolicy<T>(input: Omit<HttpRequest<T>, 'refresh'>, allowReadReplay: boolean) {
     // Features cannot opt into FE01's uncoordinated refresh path through this composition.
     if ('refresh' in input || input.path.startsWith('/api/auth/')) throw new TransportError('invalid-request')
@@ -211,11 +257,11 @@ export function createSessionController(options: SessionOptions) {
     return input.domainOperation === 'revealConcertSocialHandle' ? requestSensitive(input) : requestWithPolicy(input, true)
   }
   const deletion = createAccountDeletionOwner({ http, session, privacy,
-    usable: () => !disposed && state.pending === null && !recovery.pending && !enrollment.pending,
+    usable: () => !disposed && !oauthFlight && state.pending === null && !recovery.pending && !enrollment.pending,
     credentialExpiry: () => expiresAt, unauthorized: () => clear('expired'),
   })
   return {
-    session, queryClient, privacy, request, requestSensitive, enrollment, checkAdmission, accountDeletion: deletion.port,
+    session, queryClient, privacy, request, requestSensitive, enrollment, checkAdmission, completeOAuthHandoff, accountDeletion: deletion.port,
     checkEnrollmentAvailability: () => capabilities(true),
     requestPasswordReset: recovery.request,
     async confirmPasswordReset(token: string, newPassword: string, signal?: AbortSignal) {
@@ -230,7 +276,7 @@ export function createSessionController(options: SessionOptions) {
     start() { if (!started && !disposed) { started = true; void capabilities(); if (session.read().userId) void checkAdmission() } },
     retryCapabilities() { if (state.capabilities !== 'loading') void capabilities() },
     async login(email: string, password: string): Promise<boolean> {
-      if (disposed || state.pending || recovery.pending || enrollment.pending || !eventId || !state.emailEnabled) return false
+      if (disposed || oauthFlight || state.pending || recovery.pending || enrollment.pending || !eventId || !state.emailEnabled) return false
       if (!validLogin(email, password)) { publish({ notice: 'invalid-input', logout: 'none' }); return false }
       clear(); const attempt = intent
       publish({ pending: 'login', logout: 'none' })

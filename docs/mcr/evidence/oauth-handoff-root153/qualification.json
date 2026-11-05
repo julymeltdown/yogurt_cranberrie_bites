@@ -1,0 +1,176 @@
+{
+  "status": "PASS_SOURCE_AND_CONTROLLED_CLIENT_ONLY",
+  "canonicalDependencyCommit": "8dee1335a79f831e6a29f005a50f2c0f65777d46",
+  "productionSourceCommit": "1dd05337528389aa5f3c4d563ab421886f8f16ab",
+  "strictFiles": 1860,
+  "retainedSource11Tests": 60,
+  "scopedLintExit": 0,
+  "browser": "156.0.8078.80",
+  "cases": 19,
+  "freshCases": 16,
+  "retainedCases": 3,
+  "pageErrors": [],
+  "calls": {
+    "refresh": 12,
+    "admission": 9,
+    "logout": 3,
+    "cancelled": 1
+  },
+  "actualNative05": {
+    "acceptedAtEpoch": 1793862385.289403,
+    "actualFullEpoch": 1793862423.397795,
+    "status": "PASS_CONTROLLED_CLIENT",
+    "resourcesReleased": true,
+    "remainingDescendants": [],
+    "scratchRemaining": false,
+    "port5187Released": true,
+    "peak": {
+      "whole": 5424386671,
+      "new": 1705184704,
+      "pids": 14,
+      "rss": 2445279232,
+      "tmp": 30563993
+    }
+  },
+  "privateImmutableRawFullSHAs": {
+    "SOURCE11": "7a38f3301bc434631d48654bf68733a5708e21cf9108e36a072b15fea06efa0e",
+    "SOURCE13": "9ef084e7a9852fa56a711bff1578afe56fc260c16ee1703c9dbb319835d0eabb",
+    "NATIVE01": "41881d7ae15a5f51e9f234cd9331ef636676f0553be9137a8aae76e39dc8925c",
+    "NATIVE02": "74d4843afce59823454a78acb1597efb3d3c284c485dcbfe2b37322a14d6ded2",
+    "NATIVE03": "d5bee808e513ea8bedeffd54c85a066eb5107723e2854bf9da6a6497836c369a",
+    "NATIVE04": "053646f65557588ad739a09efaba48a53a5d9f86b0fbc4051081732f066d2def",
+    "NATIVE05": "87099c374261845ffc06ccd00c6dca7895173a648cb8b5facb7b91a53b0be30e"
+  },
+  "privateNative05ReadsetSHA": "22ca84c9617c1b4cb9aceaa32c7709f555591568af270d1da6adbcfba41adfad",
+  "privateRetentionPacketSHA": "6981eb45dd2e350921a5502b1cd405de00119efd60fe364fe2454c80ff8e70e8",
+  "reportSHA": "eb877f007fe36c314938bbe3524d03c040d1de640f0931bf06d826bbf1a69b7f",
+  "captures": [
+    {
+      "path": "docs/mcr/evidence/oauth-handoff-root153/native05/attempt-1/denied-360.png",
+      "sha256": "6c438d1f0233f7efdbd7820f47dd37eaa20ae9a1a243c0f991fa03a1b80f90f8",
+      "width": 360,
+      "height": 800,
+      "personallyInspected": true,
+      "shareSafe": true,
+      "retainedFromNative04": true
+    },
+    {
+      "path": "docs/mcr/evidence/oauth-handoff-root153/native05/attempt-1/denied-390.png",
+      "sha256": "218c93e3a7179f9aff4a47aa666af6c83289d22919df15e87d49fd92e4a01d92",
+      "width": 390,
+      "height": 480,
+      "personallyInspected": true,
+      "shareSafe": true,
+      "retainedFromNative04": false
+    },
+    {
+      "path": "docs/mcr/evidence/oauth-handoff-root153/native05/attempt-1/denied-430.png",
+      "sha256": "ab96b665ea407dffbaf0924f9003f991d208109b20a24791309b6191f52f4554",
+      "width": 430,
+      "height": 932,
+      "personallyInspected": true,
+      "shareSafe": true,
+      "retainedFromNative04": false
+    },
+    {
+      "path": "docs/mcr/evidence/oauth-handoff-root153/native05/attempt-1/expired-360.png",
+      "sha256": "3c3327961275df38649888a071fd8f0e0334b889571d2a393e91b3e250de9947",
+      "width": 360,
+      "height": 800,
+      "personallyInspected": true,
+      "shareSafe": true,
+      "retainedFromNative04": true
+    },
+    {
+      "path": "docs/mcr/evidence/oauth-handoff-root153/native05/attempt-1/expired-390.png",
+      "sha256": "64a5bc56bb3648a50efce32284b6cca90f8668532e29f776e198f687eef22b58",
+      "width": 390,
+      "height": 480,
+      "personallyInspected": true,
+      "shareSafe": true,
+      "retainedFromNative04": false
+    },
+    {
+      "path": "docs/mcr/evidence/oauth-handoff-root153/native05/attempt-1/expired-430.png",
+      "sha256": "64727f13689236b26f946b08edf5e96aadf1f9a5d066d818cb71a0367bab272e",
+      "width": 430,
+      "height": 932,
+      "personallyInspected": true,
+      "shareSafe": true,
+      "retainedFromNative04": false
+    },
+    {
+      "path": "docs/mcr/evidence/oauth-handoff-root153/native05/attempt-1/foreign-360.png",
+      "sha256": "44c16ca0da770a70d951ef3d6d57042ca9cfb16705608a557f72bb53fddbc964",
+      "width": 360,
+      "height": 800,
+      "personallyInspected": true,
+      "shareSafe": true,
+      "retainedFromNative04": true
+    },
+    {
+      "path": "docs/mcr/evidence/oauth-handoff-root153/native05/attempt-1/foreign-390.png",
+      "sha256": "61654ba4fceea1bd50caee73ff84fb8ddd850643a3201ed43d2bbf6860889290",
+      "width": 390,
+      "height": 480,
+      "personallyInspected": true,
+      "shareSafe": true,
+      "retainedFromNative04": false
+    },
+    {
+      "path": "docs/mcr/evidence/oauth-handoff-root153/native05/attempt-1/foreign-430.png",
+      "sha256": "5f5689771f12cd16b880e320d844c0870b5154923113c246d7ebbe146e33ba25",
+      "width": 430,
+      "height": 932,
+      "personallyInspected": true,
+      "shareSafe": true,
+      "retainedFromNative04": false
+    },
+    {
+      "path": "docs/mcr/evidence/oauth-handoff-root153/native05/attempt-1/restricted-360.png",
+      "sha256": "a574ce6b3044e383cf699e931ffc2f1be72bd342c433348c1486291e12b89139",
+      "width": 360,
+      "height": 800,
+      "personallyInspected": true,
+      "shareSafe": true,
+      "retainedFromNative04": false
+    },
+    {
+      "path": "docs/mcr/evidence/oauth-handoff-root153/native05/attempt-1/restricted-390.png",
+      "sha256": "f087cccba241be09fba22ae88c1b32adeb923d302b8b98a1813038ae643b0e69",
+      "width": 390,
+      "height": 480,
+      "personallyInspected": true,
+      "shareSafe": true,
+      "retainedFromNative04": false
+    },
+    {
+      "path": "docs/mcr/evidence/oauth-handoff-root153/native05/attempt-1/restricted-430.png",
+      "sha256": "d0bb10e043e10b9e03c3971c28502e912ce1ad5e1af0341384455fee1af0bdeb",
+      "width": 430,
+      "height": 932,
+      "personallyInspected": true,
+      "shareSafe": true,
+      "retainedFromNative04": false
+    }
+  ],
+  "retainedCaptureWindowUTC": [
+    "2026-11-05T06:59:22.077Z",
+    "2026-11-05T06:59:25.628Z"
+  ],
+  "freshCaptureBoundUTC": [
+    "2026-11-05T07:06:25.289Z",
+    "2026-11-05T07:06:58Z"
+  ],
+  "captureClockLimit": "Bounded by actual ACCEPT and recorded driver progress, not exact shutter timestamps",
+  "historicalFailureDisposition": "Every prior source/native failure remains failed, including Native04 phase cap overrun395495 bytes; failed raw logs/receipts remain immutable privately.",
+  "visualScope": "Readability/actions/no horizontal overflow only; incumbent inactive-account boundary focus not claimed",
+  "limitations": [
+    "Synthetic Node HTTP cookie/303 counterpart; actual Gateway OAuth/state cryptography/provider exchange NOT_RUN",
+    "Canonical App/router/Auth/admission/cookie/privacy implementation exercised; no production capability enabled",
+    "Retained cases keep their failed outer resource round; their provenance does not qualify that round",
+    "No device/live service/whole BE03 acceptance",
+    "No combined latest-master product qualification or public capability activation"
+  ],
+  "publication": "Separate sole-publisher exact postimage/remote receipt; no private ancestry integration"
+}
