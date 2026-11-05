@@ -1,0 +1,83 @@
+syntax = "proto3";
+package venue.notes.v1;
+
+// N01 DTO family only. Actual transport is the existing signed canonical
+// concert.product.v1.ProductService; these messages grant no identity/role.
+// Public HTTP uses the snake_case schema in place-notes.openapi.json.
+enum NoteAudience {
+  NOTE_AUDIENCE_UNSPECIFIED = 0;
+  FRIENDS = 1;
+  EVERYONE = 2;
+}
+enum NoteExpiry {
+  NOTE_EXPIRY_UNSPECIFIED = 0;
+  ONE_HOUR = 1;
+  VENUE_END_DAY = 2;
+}
+// Projection of the L-owned selection tuple, NOT a second landmark authority.
+message NoteLandmarkSelection {
+  string landmark_id = 1;
+  int64 catalog_revision = 2;
+  int64 landmark_revision = 3;
+}
+message CreatePlaceNote {
+  string text = 1; // nonblank, <=1000 Unicode scalars and <=4000 UTF-8 bytes
+  NoteAudience audience = 2;
+  NoteExpiry expiry = 3;
+  NoteLandmarkSelection landmark_selection = 4;
+}
+message CreatePlaceReply {
+  string text = 1;
+  int64 expected_parent_revision = 2;
+  // No audience/expiry overrides: replies inherit and cannot outlive parent.
+}
+message NoteMeetingEntry {
+  string landmark_id = 1;
+  string recipient_user_id = 2;
+  int64 landmark_revision = 3;
+  string access_until = 4; // UTC RFC3339, actual M-authorized composer entry
+}
+message PlaceNote {
+  string id = 1;
+  string landmark_id = 2;
+  int64 landmark_revision = 3;
+  // Actual current C03 PublicProfile JSON, validated before HTTP embedding as
+  // object `author`. This is never a request-supplied profile or arbitrary JSON.
+  bytes author_public_profile_json = 4;
+  string text = 5;
+  string created_at = 6;
+  string expires_at = 7;
+  int64 revision = 8;
+  NoteAudience audience = 9;
+  NoteExpiry expiry = 10;
+  optional string parent_id = 11;
+  uint32 reply_count = 12; // exact CURRENT-viewer authorized count only
+  bool can_reply = 13;
+  bool can_withdraw = 14;
+  NoteMeetingEntry meet_here = 15; // absent unless actual M adapter authorizes
+}
+message NotePage {
+  repeated PlaceNote items = 1;
+  uint32 visible_count = 2;
+  PlaceNote parent = 3;
+  optional string next_before = 4;
+  string server_now = 5;
+  string access_until = 6;
+}
+message NoteThread {
+  PlaceNote note = 1;
+  repeated PlaceNote replies = 2;
+  optional string next_before = 3;
+  string server_now = 4;
+  string access_until = 5;
+}
+message NoteResourceReference { string id = 1; int64 revision = 2; }
+message NoteCommand {
+  string receipt_id = 1;
+  string operation_id = 2;
+  string state = 3; // closed PENDING|SUCCEEDED|FAILED|RETIRED; see OpenAPI
+  NoteResourceReference resource = 4;
+  optional string failure_reason = 5;
+  string created_at = 6;
+  string expires_at = 7; // BE15 RECEIPT expiry, never note expiry extension
+}

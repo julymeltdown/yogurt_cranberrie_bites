@@ -1,0 +1,2386 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "MCR Paradise City Place Notes",
+    "version": "1.0.0",
+    "description": "N01 additive source contract. Actual current Auth/Friend/L/retained native/M providers and Root integration required; absent authority fails closed. No physical or service acceptance."
+  },
+  "x-mcr-scope": "VENU-BE-N01",
+  "x-mcr-source-base": "ba99630a2d256c9b493348b3e5dfadae460cb636",
+  "x-mcr-authority-source": "e8f576d7702483f6f1bbfa14e0f5134c4c5051cb",
+  "x-mcr-public-profile-provenance": {
+    "source": "contracts/generated/mcr-domain.openapi.json",
+    "sha256": "d43d32a6dd5a589db80bbe657ba43c7d91daa09f53d84810615baddba8cd56a2",
+    "exactCopiedSchemas": [
+      "AssetId",
+      "AvatarConfig",
+      "AvatarState",
+      "LayeredAvatarConfig",
+      "PublicProfile",
+      "ReviewedMotionAvatarConfig",
+      "WholeCharacterAvatarConfig"
+    ]
+  },
+  "x-mcr-recovery": {
+    "existingOperation": "getConcertCommandStatus",
+    "path": "/api/concert/events/{eventId}/commands",
+    "query": [
+      "operation_id",
+      "idempotency_key"
+    ],
+    "requiredN01StatusOwnerRouting": true,
+    "rawBodyInReceipt": false,
+    "unknownMeansFailure": false
+  },
+  "x-mcr-privacy": {
+    "everyone": "CURRENT_AUTHENTICATED_SAME_EVENT_ELIGIBLE_PARTICIPANTS",
+    "friends": "CURRENT_MUTUAL_FRIEND_AND_BOTH_BLOCK_DIRECTIONS",
+    "replyAudience": "INTERSECTION_WITH_PARENT",
+    "replyExpiry": "EXACT_ORIGINAL_PARENT_ABSOLUTE_EXPIRY",
+    "oneHour": "ACTUAL_DB_CREATED_AT_PLUS_ONE_HOUR",
+    "endDay": "ACTUAL_REVIEWED_VENUE_EVENT_POLICY_TIMEZONE_AND_ABSOLUTE_BOUNDARY",
+    "unconfiguredDependencyStatus": 503,
+    "noPublicArchive": true,
+    "scope": "USER_AND_EVENT",
+    "bodyPurge": "EARLIEST_FEASIBLE_EXPIRY_WITHDRAWAL_MODERATION_DELETION; ACTUAL_SCHEDULER_POLICY_REQUIRED"
+  },
+  "paths": {
+    "/api/concert/events/{eventId}/venue/landmarks/{landmarkId}/notes": {
+      "get": {
+        "operationId": "listVenuePlaceNotes",
+        "tags": [
+          "VenuePlaceNotes"
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "not": {
+                "const": "00000000-0000-0000-0000-000000000000"
+              }
+            }
+          },
+          {
+            "name": "landmarkId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128,
+              "pattern": "^[A-Za-z0-9._~-]+$",
+              "not": {
+                "enum": [
+                  ".",
+                  ".."
+                ]
+              }
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20
+            }
+          },
+          {
+            "name": "before",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "pattern": "^[1-9][0-9]{0,18}\\.[0-9a-f-]{36}$",
+              "maxLength": 56
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Currently authorized response",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotePage"
+                },
+                "example": {
+                  "items": [],
+                  "visible_count": 0,
+                  "parent": null,
+                  "next_before": null,
+                  "server_now": "2026-11-05T00:00:00Z",
+                  "access_until": "2026-11-05T00:00:05Z"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createVenuePlaceNote",
+        "tags": [
+          "VenuePlaceNotes"
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "not": {
+                "const": "00000000-0000-0000-0000-000000000000"
+              }
+            }
+          },
+          {
+            "name": "landmarkId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128,
+              "pattern": "^[A-Za-z0-9._~-]+$",
+              "not": {
+                "enum": [
+                  ".",
+                  ".."
+                ]
+              }
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "not": {
+                "const": "00000000-0000-0000-0000-000000000000"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Currently authorized response",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteCommand"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePlaceNote"
+              },
+              "examples": {
+                "synthetic": {
+                  "summary": "SYNTHETIC; no real place or author claim",
+                  "value": {
+                    "text": "Synthetic place note for contract testing only.",
+                    "audience": "FRIENDS",
+                    "expiry": "ONE_HOUR",
+                    "landmark_selection": {
+                      "landmark_id": "synthetic-landmark-not-a-physical-approval",
+                      "catalog_revision": 1,
+                      "landmark_revision": 7
+                    }
+                  }
+                },
+                "venueEndDay": {
+                  "summary": "Requires actual reviewed venue policy; example is NOT a configured cutoff",
+                  "value": {
+                    "text": "Synthetic place note for contract testing only.",
+                    "audience": "EVERYONE",
+                    "expiry": "VENUE_END_DAY",
+                    "landmark_selection": {
+                      "landmark_id": "synthetic-landmark-not-a-physical-approval",
+                      "catalog_revision": 1,
+                      "landmark_revision": 7
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/concert/events/{eventId}/venue/landmarks/{landmarkId}/notes/{noteId}": {
+      "get": {
+        "operationId": "getVenuePlaceNote",
+        "tags": [
+          "VenuePlaceNotes"
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "not": {
+                "const": "00000000-0000-0000-0000-000000000000"
+              }
+            }
+          },
+          {
+            "name": "landmarkId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128,
+              "pattern": "^[A-Za-z0-9._~-]+$",
+              "not": {
+                "enum": [
+                  ".",
+                  ".."
+                ]
+              }
+            }
+          },
+          {
+            "name": "noteId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "not": {
+                "const": "00000000-0000-0000-0000-000000000000"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Currently authorized response",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteThread"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "withdrawVenuePlaceNote",
+        "tags": [
+          "VenuePlaceNotes"
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "not": {
+                "const": "00000000-0000-0000-0000-000000000000"
+              }
+            }
+          },
+          {
+            "name": "landmarkId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128,
+              "pattern": "^[A-Za-z0-9._~-]+$",
+              "not": {
+                "enum": [
+                  ".",
+                  ".."
+                ]
+              }
+            }
+          },
+          {
+            "name": "noteId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "not": {
+                "const": "00000000-0000-0000-0000-000000000000"
+              }
+            }
+          },
+          {
+            "name": "expected_revision",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740990
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "not": {
+                "const": "00000000-0000-0000-0000-000000000000"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Currently authorized response",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteCommand"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/concert/events/{eventId}/venue/landmarks/{landmarkId}/notes/{noteId}/replies": {
+      "get": {
+        "operationId": "listVenuePlaceReplies",
+        "tags": [
+          "VenuePlaceNotes"
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "not": {
+                "const": "00000000-0000-0000-0000-000000000000"
+              }
+            }
+          },
+          {
+            "name": "landmarkId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128,
+              "pattern": "^[A-Za-z0-9._~-]+$",
+              "not": {
+                "enum": [
+                  ".",
+                  ".."
+                ]
+              }
+            }
+          },
+          {
+            "name": "noteId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "not": {
+                "const": "00000000-0000-0000-0000-000000000000"
+              }
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20
+            }
+          },
+          {
+            "name": "before",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "pattern": "^[1-9][0-9]{0,18}\\.[0-9a-f-]{36}$",
+              "maxLength": 56
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Currently authorized response",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotePage"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createVenuePlaceReply",
+        "tags": [
+          "VenuePlaceNotes"
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "eventId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "not": {
+                "const": "00000000-0000-0000-0000-000000000000"
+              }
+            }
+          },
+          {
+            "name": "landmarkId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128,
+              "pattern": "^[A-Za-z0-9._~-]+$",
+              "not": {
+                "enum": [
+                  ".",
+                  ".."
+                ]
+              }
+            }
+          },
+          {
+            "name": "noteId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "not": {
+                "const": "00000000-0000-0000-0000-000000000000"
+              }
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+              "not": {
+                "const": "00000000-0000-0000-0000-000000000000"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Currently authorized response",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteCommand"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Closed error; no private body",
+            "headers": {
+              "Cache-Control": {
+                "description": "Every private response is no-store.",
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoteError"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePlaceReply"
+              },
+              "example": {
+                "text": "Synthetic reply only.",
+                "expected_parent_revision": 1
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
+    "schemas": {
+      "NoteAudience": {
+        "type": "string",
+        "enum": [
+          "FRIENDS",
+          "EVERYONE"
+        ]
+      },
+      "NoteExpiry": {
+        "type": "string",
+        "enum": [
+          "ONE_HOUR",
+          "VENUE_END_DAY"
+        ]
+      },
+      "NoteLandmarkSelection": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "landmark_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128,
+            "pattern": "^[A-Za-z0-9._~-]+$",
+            "not": {
+              "enum": [
+                ".",
+                ".."
+              ]
+            }
+          },
+          "catalog_revision": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740990
+          },
+          "landmark_revision": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740990
+          }
+        },
+        "required": [
+          "landmark_id",
+          "catalog_revision",
+          "landmark_revision"
+        ]
+      },
+      "CreatePlaceNote": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "text": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000,
+            "pattern": "^(?=[\\s\\S]*\\S)[^\\u0000-\\u0009\\u000b-\\u001f\\u007f-\\u009f]*$",
+            "x-maxUtf8Bytes": 4000,
+            "description": "Unicode scalar count <=1000; UTF-8 <=4000 bytes; LF allowed, other control characters rejected. Unpaired surrogates rejected."
+          },
+          "audience": {
+            "$ref": "#/components/schemas/NoteAudience"
+          },
+          "expiry": {
+            "$ref": "#/components/schemas/NoteExpiry"
+          },
+          "landmark_selection": {
+            "$ref": "#/components/schemas/NoteLandmarkSelection"
+          }
+        },
+        "required": [
+          "text",
+          "audience",
+          "expiry",
+          "landmark_selection"
+        ]
+      },
+      "CreatePlaceReply": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "text": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000,
+            "pattern": "^(?=[\\s\\S]*\\S)[^\\u0000-\\u0009\\u000b-\\u001f\\u007f-\\u009f]*$",
+            "x-maxUtf8Bytes": 4000,
+            "description": "Unicode scalar count <=1000; UTF-8 <=4000 bytes; LF allowed, other control characters rejected. Unpaired surrogates rejected."
+          },
+          "expected_parent_revision": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740990
+          }
+        },
+        "required": [
+          "text",
+          "expected_parent_revision"
+        ]
+      },
+      "NoteMeetingEntry": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "landmark_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128,
+            "pattern": "^[A-Za-z0-9._~-]+$",
+            "not": {
+              "enum": [
+                ".",
+                ".."
+              ]
+            }
+          },
+          "recipient_user_id": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+            "not": {
+              "const": "00000000-0000-0000-0000-000000000000"
+            }
+          },
+          "landmark_revision": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740990
+          },
+          "access_until": {
+            "type": "string",
+            "format": "date-time",
+            "pattern": "Z$"
+          }
+        },
+        "required": [
+          "landmark_id",
+          "recipient_user_id",
+          "landmark_revision",
+          "access_until"
+        ]
+      },
+      "PlaceNote": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+            "not": {
+              "const": "00000000-0000-0000-0000-000000000000"
+            }
+          },
+          "landmark_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128,
+            "pattern": "^[A-Za-z0-9._~-]+$",
+            "not": {
+              "enum": [
+                ".",
+                ".."
+              ]
+            }
+          },
+          "landmark_revision": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740990
+          },
+          "author": {
+            "$ref": "#/components/schemas/PublicProfile"
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000,
+            "pattern": "^(?=[\\s\\S]*\\S)[^\\u0000-\\u0009\\u000b-\\u001f\\u007f-\\u009f]*$",
+            "x-maxUtf8Bytes": 4000,
+            "description": "Unicode scalar count <=1000; UTF-8 <=4000 bytes; LF allowed, other control characters rejected. Unpaired surrogates rejected."
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "pattern": "Z$"
+          },
+          "expires_at": {
+            "type": "string",
+            "format": "date-time",
+            "pattern": "Z$"
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740990
+          },
+          "audience": {
+            "$ref": "#/components/schemas/NoteAudience"
+          },
+          "expiry": {
+            "$ref": "#/components/schemas/NoteExpiry"
+          },
+          "parent_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid",
+                "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+                "not": {
+                  "const": "00000000-0000-0000-0000-000000000000"
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "reply_count": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000
+          },
+          "can_reply": {
+            "type": "boolean"
+          },
+          "can_withdraw": {
+            "type": "boolean"
+          },
+          "meet_here": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/NoteMeetingEntry"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "landmark_id",
+          "landmark_revision",
+          "author",
+          "text",
+          "created_at",
+          "expires_at",
+          "revision",
+          "audience",
+          "expiry",
+          "parent_id",
+          "reply_count",
+          "can_reply",
+          "can_withdraw",
+          "meet_here"
+        ]
+      },
+      "NoteResourceReference": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+            "not": {
+              "const": "00000000-0000-0000-0000-000000000000"
+            }
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740990
+          }
+        },
+        "required": [
+          "id",
+          "revision"
+        ]
+      },
+      "NoteCommand": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "receipt_id": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+            "not": {
+              "const": "00000000-0000-0000-0000-000000000000"
+            }
+          },
+          "operation_id": {
+            "enum": [
+              "createVenuePlaceNote",
+              "createVenuePlaceReply",
+              "withdrawVenuePlaceNote"
+            ]
+          },
+          "state": {
+            "enum": [
+              "PENDING",
+              "SUCCEEDED",
+              "FAILED",
+              "RETIRED"
+            ]
+          },
+          "resource": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/NoteResourceReference"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "failure_reason": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "pattern": "Z$"
+          },
+          "expires_at": {
+            "type": "string",
+            "format": "date-time",
+            "pattern": "Z$"
+          }
+        },
+        "required": [
+          "receipt_id",
+          "operation_id",
+          "state",
+          "resource",
+          "failure_reason",
+          "created_at",
+          "expires_at"
+        ]
+      },
+      "NoteError": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "pattern": "^CONCERT_[0-9]{3}$"
+          },
+          "message": {
+            "type": "string",
+            "maxLength": 120
+          },
+          "traceId": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+            "not": {
+              "const": "00000000-0000-0000-0000-000000000000"
+            }
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time",
+            "pattern": "Z$"
+          },
+          "details": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "reason": {
+                "enum": [
+                  "INVALID_INPUT",
+                  "AUTHENTICATION_REQUIRED",
+                  "PERMISSION_DENIED",
+                  "RESOURCE_UNAVAILABLE",
+                  "VERSION_CONFLICT",
+                  "EVENT_READ_ONLY",
+                  "NOTE_CAPACITY",
+                  "DEPENDENCY_UNAVAILABLE",
+                  "DEADLINE_EXCEEDED"
+                ]
+              }
+            },
+            "required": [
+              "reason"
+            ]
+          }
+        },
+        "required": [
+          "code",
+          "message",
+          "traceId",
+          "timestamp",
+          "details"
+        ]
+      },
+      "NotePage": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "items": {
+            "type": "array",
+            "maxItems": 50,
+            "items": {
+              "$ref": "#/components/schemas/PlaceNote"
+            }
+          },
+          "visible_count": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000
+          },
+          "parent": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/PlaceNote"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "next_before": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[1-9][0-9]{0,18}\\.[0-9a-f-]{36}$",
+                "maxLength": 56
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "server_now": {
+            "type": "string",
+            "format": "date-time",
+            "pattern": "Z$"
+          },
+          "access_until": {
+            "type": "string",
+            "format": "date-time",
+            "pattern": "Z$"
+          }
+        },
+        "required": [
+          "items",
+          "visible_count",
+          "parent",
+          "next_before",
+          "server_now",
+          "access_until"
+        ]
+      },
+      "NoteThread": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "note": {
+            "$ref": "#/components/schemas/PlaceNote"
+          },
+          "replies": {
+            "type": "array",
+            "maxItems": 50,
+            "items": {
+              "$ref": "#/components/schemas/PlaceNote"
+            }
+          },
+          "next_before": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[1-9][0-9]{0,18}\\.[0-9a-f-]{36}$",
+                "maxLength": 56
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "server_now": {
+            "type": "string",
+            "format": "date-time",
+            "pattern": "Z$"
+          },
+          "access_until": {
+            "type": "string",
+            "format": "date-time",
+            "pattern": "Z$"
+          }
+        },
+        "required": [
+          "note",
+          "replies",
+          "next_before",
+          "server_now",
+          "access_until"
+        ]
+      },
+      "PublicProfile": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "user_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "display_name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40
+          },
+          "bio": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 0,
+                "maxLength": 160
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "avatar": {
+            "$ref": "#/components/schemas/AvatarState"
+          }
+        },
+        "required": [
+          "user_id",
+          "display_name",
+          "bio",
+          "avatar"
+        ]
+      },
+      "AvatarState": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "revision": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "config": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/AvatarConfig"
+              },
+              {
+                "$ref": "#/components/schemas/ReviewedMotionAvatarConfig"
+              }
+            ]
+          }
+        },
+        "required": [
+          "revision",
+          "config"
+        ]
+      },
+      "ReviewedMotionAvatarConfig": {
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "contract_version",
+              "kind",
+              "manifest_id",
+              "manifest_version",
+              "representation",
+              "preset_id"
+            ],
+            "properties": {
+              "contract_version": {
+                "const": "2.0.0"
+              },
+              "kind": {
+                "const": "avatar_config"
+              },
+              "manifest_id": {
+                "const": "mcr_selected_motion_reviewed_20261104"
+              },
+              "manifest_version": {
+                "const": 2
+              },
+              "representation": {
+                "const": "motion_preset"
+              },
+              "preset_id": {
+                "enum": [
+                  "motion_v2_photo01_front_01",
+                  "motion_v2_photo01_front_02",
+                  "motion_v2_photo01_front_03",
+                  "motion_v2_photo01_front_04",
+                  "motion_v2_photo01_front_05",
+                  "motion_v2_photo01_front_06"
+                ]
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "contract_version",
+              "kind",
+              "manifest_id",
+              "manifest_version",
+              "representation",
+              "item_ids"
+            ],
+            "properties": {
+              "contract_version": {
+                "const": "2.0.0"
+              },
+              "kind": {
+                "const": "avatar_config"
+              },
+              "manifest_id": {
+                "const": "mcr_selected_motion_reviewed_20261104"
+              },
+              "manifest_version": {
+                "const": 2
+              },
+              "representation": {
+                "const": "motion_layered"
+              },
+              "item_ids": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "body",
+                  "eyes",
+                  "hair",
+                  "outfit",
+                  "accessory"
+                ],
+                "properties": {
+                  "body": {
+                    "enum": [
+                      "motion_v2_body_0",
+                      "motion_v2_body_1",
+                      "motion_v2_body_2",
+                      "motion_v2_body_3",
+                      "motion_v2_body_4",
+                      "motion_v2_body_5",
+                      "motion_v2_body_6",
+                      "motion_v2_body_7"
+                    ]
+                  },
+                  "eyes": {
+                    "enum": [
+                      "motion_v2_eyes_0",
+                      "motion_v2_eyes_1",
+                      "motion_v2_eyes_2",
+                      "motion_v2_eyes_3"
+                    ]
+                  },
+                  "hair": {
+                    "enum": [
+                      "motion_v2_hair_0",
+                      "motion_v2_hair_1",
+                      "motion_v2_hair_2",
+                      "motion_v2_hair_3",
+                      "motion_v2_hair_4",
+                      "motion_v2_hair_5"
+                    ]
+                  },
+                  "outfit": {
+                    "enum": [
+                      "motion_v2_outfit_0",
+                      "motion_v2_outfit_1",
+                      "motion_v2_outfit_2",
+                      "motion_v2_outfit_3",
+                      "motion_v2_outfit_4",
+                      "motion_v2_outfit_5",
+                      null
+                    ]
+                  },
+                  "accessory": {
+                    "enum": [
+                      "motion_v2_accessory_0",
+                      "motion_v2_accessory_1",
+                      "motion_v2_accessory_2",
+                      "motion_v2_accessory_3",
+                      null
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "AvatarConfig": {
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/LayeredAvatarConfig"
+          },
+          {
+            "$ref": "#/components/schemas/WholeCharacterAvatarConfig"
+          }
+        ]
+      },
+      "WholeCharacterAvatarConfig": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "contract_version",
+          "kind",
+          "manifest_id",
+          "manifest_version",
+          "representation",
+          "preset_id"
+        ],
+        "properties": {
+          "contract_version": {
+            "const": "1.1.0"
+          },
+          "kind": {
+            "const": "avatar_config"
+          },
+          "manifest_id": {
+            "const": "mcr_selected_static_20261103"
+          },
+          "manifest_version": {
+            "const": 1
+          },
+          "representation": {
+            "const": "whole_character"
+          },
+          "preset_id": {
+            "enum": [
+              "photo01_front_01",
+              "photo01_front_02",
+              "photo01_front_03",
+              "photo01_front_04",
+              "photo01_front_05",
+              "photo01_front_06"
+            ]
+          }
+        }
+      },
+      "LayeredAvatarConfig": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "contract_version",
+          "kind",
+          "manifest_id",
+          "manifest_version",
+          "item_ids",
+          "skin_tone_id"
+        ],
+        "properties": {
+          "contract_version": {
+            "const": "1.0.0"
+          },
+          "kind": {
+            "const": "avatar_config"
+          },
+          "manifest_id": {
+            "$ref": "#/components/schemas/AssetId"
+          },
+          "manifest_version": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "item_ids": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "body",
+              "eyes",
+              "hair",
+              "outfit",
+              "accessory"
+            ],
+            "properties": {
+              "body": {
+                "$ref": "#/components/schemas/AssetId"
+              },
+              "eyes": {
+                "$ref": "#/components/schemas/AssetId"
+              },
+              "hair": {
+                "$ref": "#/components/schemas/AssetId"
+              },
+              "outfit": {
+                "$ref": "#/components/schemas/AssetId"
+              },
+              "accessory": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/AssetId"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            }
+          },
+          "skin_tone_id": {
+            "$ref": "#/components/schemas/AssetId"
+          }
+        }
+      },
+      "AssetId": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_]{0,63}$"
+      }
+    }
+  }
+}
