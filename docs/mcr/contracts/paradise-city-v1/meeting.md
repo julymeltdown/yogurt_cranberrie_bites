@@ -39,7 +39,9 @@ landmarkRevision} or null}`. selectedFriendId is canonical UUID. The optional
 landmark uses a real provider identity (1–128 ASCII unreserved characters,
 excluding . and ..) and two separate positive safe-integer review revisions.
 MESSAGE resolve/list/send/status works with only selectedFriendId; invite create,
-detail and decision require the reviewed landmark. GET uses flat query fields
+detail and decision require the reviewed landmark. GET invitation detail requires all three
+landmark query parameters; their absence or a partial triple returns400 INVALID_INPUT.
+Other selected-context GETs use flat query fields
 selectedFriendId and optional all-or-none landmarkId/catalogRevision/
 landmarkRevision. Map identity/revision, physicalPlaceId/currentPlaceRevision,
 provider/source/provenance are owner facts, not client permission or invented
@@ -93,6 +95,33 @@ matching expectedRevision. Expiry is computed by database clock; a read never
 writes EXPIRED. Decisions use revision CAS. Conflicting decision/key returns409.
 Foreign/absent resources share404 RESOURCE_UNAVAILABLE after actor checks.
 Malformed400; technical rate429; missing authority/persistence503.
+
+All public errors use the canonical guarded JSON envelope
+`{code, message, traceId?, timestamp?, details: {reason}}`. Flat `{reason}` is
+not a valid public error in this corrected contract. M domain failures emit
+`code = CONCERT_<status>`, fixed message `Concert request unavailable`, the
+sealed request UUID as traceId and a UTC timestamp. No internal diagnostics,
+source-owner details or user content enter this projection. Transport failures
+use the same envelope. Clients must retain the original command key after an
+uncertain write; envelope compatibility does not register or authorize dispatch.
+
+| HTTP status | details.reason |
+| --- | --- |
+| 400 | INVALID_INPUT |
+| 401 | AUTHENTICATION_REQUIRED (canonical transport) |
+| 403 | PERMISSION_DENIED, ORIGIN_NOT_ALLOWED, BROWSER_INTENT_REQUIRED (canonical transport) |
+| 404 | RESOURCE_UNAVAILABLE |
+| 409 | REVISION_OR_KEY_CONFLICT |
+| 429 | RATE_LIMITED |
+| 503 | DEPENDENCY_UNAVAILABLE |
+| 504 | DEADLINE_EXCEEDED (canonical transport) |
+
+The OpenAPI declares these responses explicitly for every M operation and also
+provides the shared ErrorResponse schema. Root's closed operation registry and
+per-status reason admission must be updated by its owner before the canonical
+HTTP client may dispatch M requests. This source correction supersedes the flat
+error shape in published commit574b3e5; it does not change that historical pin.
+
 
 ## Receipts, reconnect and retention
 
