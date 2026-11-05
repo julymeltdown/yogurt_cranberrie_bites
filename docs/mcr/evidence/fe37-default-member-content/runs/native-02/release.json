@@ -1,0 +1,235 @@
+{
+  "allocation": "ORIGINAL-FE37-DEFAULT-APP-NATIVE02-0105",
+  "class": "native",
+  "candidate": "4fc0a19baea22ba859faabc338be6e9015e01881",
+  "acceptedUtc": "2026-11-05T01:07:12.870206+00:00",
+  "acceptedFreeBytes": 16287293440,
+  "otherReserveBytes": 5368709120,
+  "workUtc": "2026-11-05T01:10:12.870206+00:00",
+  "hardUtc": "2026-11-05T01:11:12.870206+00:00",
+  "sourceSha256": {
+    "frontend/src/app/operations-composition/member-content/use-review.ts": "fbd1746574a413bf8dbe456b92419d20ab8aad9caf7b7af3a4acb749e2811236",
+    "frontend/src/app/operations-composition/member-content/index.ts": "406cd72e69681407d4dcfada97d8b3d8c859e9a84cb6293379e6e4c64f00b011",
+    "frontend/src/app/operations-composition/__tests__/member-content-production/composition.test.tsx": "a379e3616268fd79f1112ab8e8eb482a375a4b69aaac88a97fb596d5fdf7091a",
+    "frontend/src/app/operations-composition/__tests__/member-content-production/harness.ts": "34e9a9c3ab7f09b3a0aae2e15e8556e87ecc27b5854de817b49702d4454d1c8e",
+    "frontend/src/app/operations-composition/__tests__/member-content-production/server.ts": "b0a4e5f5996f972ea5a248538577780030ba8db85b1bc3de7f8faa14e4d05459",
+    "frontend/e2e/visual/fe37-member-content/native.mjs": "39092f171793547e35b6495a72ec55517efedaaf37b5db554bc6ac67f3fc7215",
+    "frontend/e2e/visual/fe37-member-content/config.mjs": "3f446cbbfb1025a7d0a5f1e6d07f86d49d7e96be8a62df18933589a0f9fe1775",
+    "docs/mcr/evidence/fe37-default-member-content/run-allocated.py": "057902030f1250c53e9d3aa6d0fb1ceedb24abba0c4d4defe072c2df3b286fa8",
+    "docs/mcr/evidence/fe37-default-member-content/supervise-allocated.py": "50ad6e26d25efba8d51363c4eb026219537befd450844a5a2565d1958bba57f8",
+    "docs/mcr/evidence/fe37-default-member-content/git_carry.py": "0a157b46cf60a506d5974e8d26449e4815b6e2e4576aff907c0fce2e37f538a5",
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+    "frontend/tsconfig.json": "55050e293472fb6ec4aa2690c8cad7cb5a5a107ba483bf98851a0c4e707c6528",
+    "frontend/src/features/admin/reports/ui/ModerationReview.tsx": "a03bc69c25c073140cb8dbe6c8675ebe520d557b1a313ecabd465d33e1239619",
+    "frontend/src/features/admin/reports/ui/moderation.css": "b9b43dd58fa07677b906c894f2c0d5a0fa52e622cd812507a8f0bdff3ef9c4d0",
+    "frontend/src/features/admin/reports/model/controller.ts": "cd5a614c9432c400df20d6a128ab53f37638740176d227f0ed860235d510cddb",
+    "frontend/src/features/admin/reports/model/contract.ts": "6e5b006e65d8366ed6b9be52e54fc4bf92459357440a8f6ad3c2ece95b9d73e8",
+    "frontend/src/app/operations-composition/owner.ts": "f2580f4f9f08779ed0fd0832d3926510ed6b95372d2364cea119c78217916d81",
+    "frontend/src/app/operations-composition/panel.tsx": "565ee596ce1a6c5363f17d7976ea45feb3a89ab0ed4b605d2f824a4bd9b7561b",
+    "frontend/src/app/ports.ts": "8794c176b8634278fd1dda81e7e984d41a2c748bc118973912448de282f21d81",
+    "frontend/src/main.tsx": "73dcb049c45fc5125de1637587a09373664c31d4899ef15dea0119a0ace3d5a6",
+    "frontend/src/app/AdminBoundary.tsx": "da057524a77573a6b1c7ff65849ee0d3a9471b491209fe721c976075e62b25a6",
+    "frontend/src/shared/api/domain-operations.generated.ts": "3610456a0925aee9c4e3a32564016ea6acc26b7ab01ce536659b7333a5ddd447"
+  },
+  "guardianPid": 11583,
+  "outerPid": 11478,
+  "standingBeforeChildrenUtc": "2026-11-05T01:07:14.830351+00:00",
+  "retained": {
+    "checkoutBytes": 1384857600,
+    "gitMetadataBytes": 2387968,
+    "readOnlyDependencyLogicalBytes": 408236853,
+    "readOnlyDependencyAllocatedBytes": 438317056,
+    "readOnlyDependencyChargeBytes": 438317056,
+    "readOnlyNodeRuntimeBytes": 122564432,
+    "readOnlyFoundation": {
+      "bytes": 0,
+      "postimages": [],
+      "qualification": "Canonical source only; no PI01 overlay"
+    },
+    "entirePythonPrefix": "/Library/Frameworks/Python.framework/Versions/3.14",
+    "entirePythonChargeBytes": 1045037056,
+    "readOnlyNodeSha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+    "readOnlyChromeLogicalBytes": 1524099438,
+    "readOnlyChromeAllocatedBytes": 1527132160,
+    "readOnlyChromeChargeBytes": 1527132160,
+    "ownedSharedGitInventory": {
+      "bytes": 117559296,
+      "objectCount": 544,
+      "inodes": [
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/39/7b391e8be0452e2af65d3927713b638a3b53c8",
+          "logicalBytes": 3938,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/4f/c0a19baea22ba859faabc338be6e9015e01881",
+          "logicalBytes": 220,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/68/f7a9bf6035d8b65bb12f6c885d608ebb808b7c",
+          "logicalBytes": 2197,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/6e/1b73a622654f5defbd1c0a896caf390c586bfe",
+          "logicalBytes": 619,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/83/3d74ec1f94ccacbfed5d73875f81851c2fb878",
+          "logicalBytes": 6588,
+          "allocatedBytes": 8192,
+          "chargeBytes": 8192
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/9c/309f0fd878742c1421c6575754d93306715e7c",
+          "logicalBytes": 1716,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/be/4db5d095e150c14f91eb8799927daa5fc208c1",
+          "logicalBytes": 231,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/e1/5ef45f36519aef46a98e0f96a6d4dd7e48c806",
+          "logicalBytes": 7017,
+          "allocatedBytes": 8192,
+          "chargeBytes": 8192
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/e8/31e846c10a0b1c72727ca6242b5b6b5440a5b0",
+          "logicalBytes": 107,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-4b302edbf94a2ee1cc380457c6f2cc39f8dbd17b.idx",
+          "logicalBytes": 83532,
+          "allocatedBytes": 86016,
+          "chargeBytes": 86016
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-4b302edbf94a2ee1cc380457c6f2cc39f8dbd17b.pack",
+          "logicalBytes": 11648904,
+          "allocatedBytes": 11649024,
+          "chargeBytes": 11649024
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-4b302edbf94a2ee1cc380457c6f2cc39f8dbd17b.rev",
+          "logicalBytes": 11832,
+          "allocatedBytes": 12288,
+          "chargeBytes": 12288
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-d4d7e686e78fcd35069b39d7608f0c07f0c19c85.idx",
+          "logicalBytes": 732516,
+          "allocatedBytes": 733184,
+          "chargeBytes": 733184
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-d4d7e686e78fcd35069b39d7608f0c07f0c19c85.pack",
+          "logicalBytes": 104924051,
+          "allocatedBytes": 104927232,
+          "chargeBytes": 104927232
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-d4d7e686e78fcd35069b39d7608f0c07f0c19c85.rev",
+          "logicalBytes": 104544,
+          "allocatedBytes": 106496,
+          "chargeBytes": 106496
+        }
+      ]
+    },
+    "sharedGitCommonDirReadOnly": "/Users/lhs/Desktop/mcr/.git",
+    "copiedGitCarryBytes": 0
+  },
+  "caps": {
+    "wholeBytes": 8589934592,
+    "newBytes": 209715200,
+    "temporaryBytes": 167772160,
+    "durableBytes": 41943040,
+    "rssBytes": 4294967296,
+    "processes": 32
+  },
+  "peaks": {
+    "wholeBytes": 4671713104,
+    "newBytes": 33857536,
+    "temporaryBytes": 30552064,
+    "durableBytes": 3788800,
+    "rssBytes": 2351775744,
+    "processes": 12
+  },
+  "commands": [
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/.bin/oxlint",
+        "--deny-warnings",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/frontend/src/app/operations-composition/__tests__/member-content-production/server.ts"
+      ],
+      "cwd": ".",
+      "exitCode": 0,
+      "elapsedSeconds": 0.41332945798058063
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/frontend/src/app/operations-composition/__tests__/member-content-production/server.ts"
+      ],
+      "cwd": ".",
+      "exitCode": 0,
+      "elapsedSeconds": 0.4055731660046149
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/frontend/e2e/visual/fe37-member-content/native.mjs"
+      ],
+      "cwd": ".",
+      "exitCode": 1,
+      "elapsedSeconds": 47.28149999998277
+    }
+  ],
+  "status": "FAIL",
+  "initialSampleBeforeWorkload": {
+    "utc": "2026-11-05T01:07:14.858773+00:00",
+    "pids": [
+      11583,
+      11478
+    ],
+    "wholeBytes": 4651679568,
+    "newBytes": 8192,
+    "temporaryBytes": 8192,
+    "durableBytes": 446464,
+    "rssBytes": 181026816,
+    "processes": 2,
+    "freeBytes": 16290066432
+  },
+  "sourcePlan": "full",
+  "commandFailures": [
+    2
+  ],
+  "failure": "Commands failed; all original logs retained",
+  "portRebound": 5371,
+  "fullUtc": "2026-11-05T01:08:03.074763+00:00",
+  "cleanupSeconds": 0.05887962502310984,
+  "remainingProcesses": [],
+  "dependencyLinkAbsent": true,
+  "temporaryAbsent": true,
+  "freeAfterBytes": 16275824640,
+  "finishedBeforeHardDeadline": true,
+  "released": true,
+  "logSha256": {
+    "00.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "01.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "02.log": "cf20a37e973219345dfc0ca890bd6b8411f798b65df934854d691f379f434708"
+  }
+}

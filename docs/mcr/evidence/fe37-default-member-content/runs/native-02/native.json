@@ -1,0 +1,109 @@
+{
+  "status": "FAIL",
+  "source": "4fc0a19baea22ba859faabc338be6e9015e01881",
+  "qualification": "Actual main/router/AdminBoundary/default composition/current controllers and registry; controlled HTTP. Canonical CSS, no PI01 overlay or Photo2 claim. Real producer/EOF/downstream world session/physical device NOT_RUN.",
+  "cases": [
+    {
+      "width": 360,
+      "role": "MODERATOR",
+      "settingsStatus": 200,
+      "statusGets": 2,
+      "moderationPosts": 4,
+      "checks": [
+        "minimal-profile",
+        "exact-filter",
+        "confirm-cancel-focus-no-write",
+        "pending-A-B-content-reports-A-same-key",
+        "404-unknown-disabled",
+        "corroborated-suspend-unsuspend",
+        "hide-restore",
+        "no-nested-main-or-overflow"
+      ]
+    },
+    {
+      "width": 390,
+      "role": "MODERATOR",
+      "settingsStatus": 200,
+      "statusGets": 2,
+      "moderationPosts": 12,
+      "checks": [
+        "minimal-profile",
+        "exact-filter",
+        "confirm-cancel-focus-no-write",
+        "pending-A-B-content-reports-A-same-key",
+        "404-unknown-disabled",
+        "corroborated-suspend-unsuspend",
+        "hide-restore",
+        "no-nested-main-or-overflow"
+      ]
+    },
+    {
+      "width": 430,
+      "role": "OPERATOR",
+      "settingsStatus": 403,
+      "statusGets": 2,
+      "moderationPosts": 4,
+      "checks": [
+        "minimal-profile",
+        "exact-filter",
+        "confirm-cancel-focus-no-write",
+        "pending-A-B-content-reports-A-same-key",
+        "404-unknown-disabled",
+        "corroborated-suspend-unsuspend",
+        "hide-restore",
+        "no-nested-main-or-overflow"
+      ]
+    },
+    {
+      "name": "failed",
+      "status": "PASS"
+    },
+    {
+      "name": "conflict",
+      "status": "PASS"
+    }
+  ],
+  "captures": [
+    "member-360.png",
+    "member-confirm-360.png",
+    "member-pending-360.png",
+    "content-360.png",
+    "member-unknown-360.png",
+    "member-suspended-360.png",
+    "content-post-hidden-360.png",
+    "content-restored-360.png",
+    "member-390.png",
+    "member-confirm-390.png",
+    "member-pending-390.png",
+    "content-390.png",
+    "member-unknown-390.png",
+    "member-suspended-390.png",
+    "content-post-hidden-390.png",
+    "content-comment-hidden-390.png",
+    "content-party-hidden-390.png",
+    "content-giveaway-hidden-390.png",
+    "content-intro-hidden-390.png",
+    "content-restored-390.png",
+    "member-430.png",
+    "member-confirm-430.png",
+    "member-pending-430.png",
+    "content-430.png",
+    "member-unknown-430.png",
+    "member-suspended-430.png",
+    "content-post-hidden-430.png",
+    "content-restored-430.png",
+    "state-failed-390.png",
+    "state-conflict-390.png",
+    "failure.png"
+  ],
+  "errors": [],
+  "cleanup": {
+    "browserClosed": true,
+    "serverClosed": true
+  },
+  "browser": "156.0.8078.80",
+  "failure": {
+    "stage": "390/withdrawal",
+    "error": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('heading', { name: 'Administration unavailable', exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"to.be.visible\" with timeout 5000ms\n  - waiting for getByRole('heading', { name: 'Administration unavailable', exact: true })\n"
+  }
+}

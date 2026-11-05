@@ -1,0 +1,1 @@
+e2e/visual/fe37-member-content/native.mjs:95:44: warning unicorn(prefer-string-starts-ends-with): Prefer String#endsWith over a regex with a dollar sign. help: Replace `/\/admin\/users$/.test(new URL(r.url).pathname)` with `new URL(r.url).pathname.endsWith('/admin/users')`.

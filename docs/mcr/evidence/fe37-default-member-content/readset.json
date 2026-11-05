@@ -1,0 +1,133 @@
+{
+  "base": "0c9e9613c7e5890953f3a0de14c433ea5b7d0ee1",
+  "preservedO04": "5bfbbae3025698903593202590987cd3dbb3586d",
+  "newFrontend": {
+    "frontend/src/app/operations-composition/owner.ts": {
+      "bytes": 11323,
+      "sha256": "f2580f4f9f08779ed0fd0832d3926510ed6b95372d2364cea119c78217916d81"
+    },
+    "frontend/src/app/operations-composition/panel.tsx": {
+      "bytes": 6384,
+      "sha256": "565ee596ce1a6c5363f17d7976ea45feb3a89ab0ed4b605d2f824a4bd9b7561b"
+    },
+    "frontend/src/app/operations-composition/member-content/use-review.ts": {
+      "bytes": 945,
+      "sha256": "fbd1746574a413bf8dbe456b92419d20ab8aad9caf7b7af3a4acb749e2811236"
+    },
+    "frontend/src/app/operations-composition/member-content/index.ts": {
+      "bytes": 3598,
+      "sha256": "406cd72e69681407d4dcfada97d8b3d8c859e9a84cb6293379e6e4c64f00b011"
+    },
+    "frontend/src/app/operations-composition/__tests__/member-content-production/composition.test.tsx": {
+      "bytes": 11349,
+      "sha256": "a379e3616268fd79f1112ab8e8eb482a375a4b69aaac88a97fb596d5fdf7091a"
+    },
+    "frontend/src/app/operations-composition/__tests__/member-content-production/harness.ts": {
+      "bytes": 1522,
+      "sha256": "34e9a9c3ab7f09b3a0aae2e15e8556e87ecc27b5854de817b49702d4454d1c8e"
+    },
+    "frontend/src/app/operations-composition/__tests__/member-content-production/server.ts": {
+      "bytes": 5877,
+      "sha256": "b0a4e5f5996f972ea5a248538577780030ba8db85b1bc3de7f8faa14e4d05459"
+    },
+    "frontend/e2e/visual/fe37-member-content/native.mjs": {
+      "bytes": 13188,
+      "sha256": "27685f51a59dfb39665286595f76b8942c414920844a278a5389910260a1e805"
+    },
+    "frontend/e2e/visual/fe37-member-content/config.mjs": {
+      "bytes": 1422,
+      "sha256": "3f446cbbfb1025a7d0a5f1e6d07f86d49d7e96be8a62df18933589a0f9fe1775"
+    }
+  },
+  "protectedReadonly": {
+    "frontend/src/features/admin/reports/model/controller.ts": {
+      "bytes": 19535,
+      "sha256": "cd5a614c9432c400df20d6a128ab53f37638740176d227f0ed860235d510cddb"
+    },
+    "frontend/src/features/admin/reports/model/contract.ts": {
+      "bytes": 3500,
+      "sha256": "6e5b006e65d8366ed6b9be52e54fc4bf92459357440a8f6ad3c2ece95b9d73e8"
+    },
+    "frontend/src/features/admin/reports/model/validate.ts": {
+      "bytes": 3395,
+      "sha256": "6ef318a0da70e08b04e7a5797816fd09a868a1a6e3e54b999d867e880db9ed37"
+    },
+    "frontend/src/features/admin/reports/ui/ModerationReview.tsx": {
+      "bytes": 6070,
+      "sha256": "a03bc69c25c073140cb8dbe6c8675ebe520d557b1a313ecabd465d33e1239619"
+    },
+    "frontend/src/features/admin/reports/ui/moderation.css": {
+      "bytes": 2007,
+      "sha256": "b9b43dd58fa07677b906c894f2c0d5a0fa52e622cd812507a8f0bdff3ef9c4d0"
+    },
+    "frontend/src/features/admin/reports/index.ts": {
+      "bytes": 444,
+      "sha256": "8cd3efb5cbb9eb4c35a564ddd52614f5c9fe2a2e11255231d15bd3a0edfd0ec9"
+    },
+    "frontend/src/features/admin/members/index.ts": {
+      "bytes": 308,
+      "sha256": "edd62388b0cd1b6ad21d8b788a1826c3d96f7cfb556ae96d27585700d4661305"
+    },
+    "frontend/src/features/admin/content/index.ts": {
+      "bytes": 310,
+      "sha256": "43f8e8da55b1fc0c54bca563108dda3f1e46befafd557fbe0b3a23227a4aef63"
+    },
+    "frontend/src/app/operations-composition/reports/index.ts": {
+      "bytes": 2984,
+      "sha256": "b449d7fee64b9274e2373ca549576202e5c38cf5d876018ecc1f44f59b437a46"
+    },
+    "frontend/src/app/operations-composition/reports/evidence.ts": {
+      "bytes": 3744,
+      "sha256": "e6fea429c2a3f3c98622943a6a9458a2407daa037c995aed4b3c02e536c72b63"
+    },
+    "frontend/src/app/operations-entry/index.ts": {
+      "bytes": 9409,
+      "sha256": "d6139ce9279c61b7e430495ba1f2c7a15ec6b5f4157726df5309b625769ce437"
+    },
+    "frontend/src/app/AdminBoundary.tsx": {
+      "bytes": 2101,
+      "sha256": "da057524a77573a6b1c7ff65849ee0d3a9471b491209fe721c976075e62b25a6"
+    },
+    "frontend/src/app/router.tsx": {
+      "bytes": 7878,
+      "sha256": "31a2ea3a7bdf57e1f135782f6177c128d1c1319194cfcd5e09e7506a3a651598"
+    },
+    "frontend/src/app/ports.ts": {
+      "bytes": 6819,
+      "sha256": "8794c176b8634278fd1dda81e7e984d41a2c748bc118973912448de282f21d81"
+    },
+    "frontend/src/shared/api/domain-operations.generated.ts": {
+      "bytes": 97463,
+      "sha256": "3610456a0925aee9c4e3a32564016ea6acc26b7ab01ce536659b7333a5ddd447"
+    }
+  },
+  "controls": {
+    "docs/mcr/evidence/fe37-default-member-content/git_carry.py": {
+      "bytes": 2829,
+      "sha256": "0a157b46cf60a506d5974e8d26449e4815b6e2e4576aff907c0fce2e37f538a5"
+    },
+    "docs/mcr/evidence/fe37-default-member-content/supervise-allocated.py": {
+      "bytes": 13305,
+      "sha256": "4c6c913f5738af61fae8fc94344030a2955bad7489222b93de67e862e7287ff6"
+    },
+    "docs/mcr/evidence/fe37-default-member-content/run-allocated.py": {
+      "bytes": 19575,
+      "sha256": "653d7bf0a755299eec4406d5295b1770c97abd006992451edd48c62cd62a0467"
+    }
+  },
+  "checks": "23new/fulltypes/configsyntax PASS at7ad source01; scopedlint+changednative syntax PASS atf1 source02, no matrix replay.",
+  "peerServicePolicy": "14d512 mount NOT_IMPORTED; final additive publication must preserve current qualified ready hunks",
+  "oldGoal": "BLOCKED unchanged; new unbudgeted functional objective in own report",
+  "native": "Controlled qualification PASS by preserved Native02 three-width main+failed/conflict and Native03 five-state remainder. Native01/02 wholejob FAIL retained. No real producer/EOF/physical or Parade wrapper qualification.",
+  "ordinaryRenewal": {
+    "offer": "DOCPREP32-0110",
+    "acceptedUtc": "2026-11-05T01:12:01.117332+00:00",
+    "expiresUtc": "2026-11-05T01:40:00Z",
+    "additionalBytes": 33554432,
+    "freeBytes": 16203116544,
+    "oldPrepExpiryUnchanged": "2026-11-05T01:10:00Z",
+    "priorWholeMaxAtLeastBytes": 4671713104,
+    "retain": "All old ordinary actual growth and histories; no refund/reset. Additional32 includes later closed O04 projection11MiB+own8MiB+Git8MiB."
+  },
+  "priorWholeMaxAtLeastBytes": 4675354448
+}

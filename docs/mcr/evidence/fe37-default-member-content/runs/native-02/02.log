@@ -1,0 +1,72 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+ExpectError: expect(locator).toBeVisible() failed
+
+Locator: getByRole('heading', { name: 'Administration unavailable', exact: true })
+Expected: visible
+Timeout: 5000ms
+Error: element(s) not found
+
+Call log:
+  - Expect "to.be.visible" with timeout 5000ms
+  - waiting for getByRole('heading', { name: 'Administration unavailable', exact: true })
+
+    at captureRawStack (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)
+    at callMatcherAsStep (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)
+    at Object.toBeVisible (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)
+    at /Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/frontend/e2e/visual/fe37-member-content/native.mjs:109:276 {
+  matcherResult: {
+    message: 'expect(locator).toBeVisible() failed\n' +
+      '\n' +
+      "Locator: getByRole('heading', { name: 'Administration unavailable', exact: true })\n" +
+      'Expected: visible\n' +
+      'Timeout: 5000ms\n' +
+      'Error: element(s) not found\n' +
+      '\n' +
+      'Call log:\n' +
+      '  - Expect "to.be.visible" with timeout 5000ms\n' +
+      "  - waiting for getByRole('heading', { name: 'Administration unavailable', exact: true })\n",
+    pass: false,
+    actual: undefined,
+    name: 'toBeVisible',
+    expected: 'visible',
+    log: [
+      '  - Expect "to.be.visible" with timeout 5000ms',
+      "  - waiting for getByRole('heading', { name: 'Administration unavailable', exact: true })"
+    ],
+    timeout: 5000,
+    ariaSnapshot: '- main:\n' +
+      '  - link "MCR Concert World":\n' +
+      '    - /url: /\n' +
+      '  - heading "Event administration" [level=1]\n' +
+      '  - navigation "Administration sections":\n' +
+      '    - link "Control room":\n' +
+      '      - /url: /admin\n' +
+      '    - link "Event":\n' +
+      '      - /url: /admin/event\n' +
+      '    - link "Places":\n' +
+      '      - /url: /admin/places\n' +
+      '    - link "Wall":\n' +
+      '      - /url: /admin/mural\n' +
+      '    - link "Closure":\n' +
+      '      - /url: /admin/archive\n' +
+      '    - link "Audit":\n' +
+      '      - /url: /admin/audit\n' +
+      '    - link "Reports":\n' +
+      '      - /url: /admin/reports\n' +
+      '    - link "Content":\n' +
+      '      - /url: /admin/content\n' +
+      '  - region "Administration access":\n' +
+      '    - heading "Review tools unavailable" [level=2]\n' +
+      '    - status: Current operator access and authorized event information are required. Previous controls and private progress are hidden.\n' +
+      '  - button "Check current access"\n' +
+      '  - link "Back to world":\n' +
+      '    - /url: /world\n' +
+      '  - link "Back to home":\n' +
+      '    - /url: /'
+  }
+}
+
+Node.js v24.22.2

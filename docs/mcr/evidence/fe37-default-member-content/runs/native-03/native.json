@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "source": "7a74a25afd38542cefc610b4c54086497a0d7750",
+  "qualification": "Actual main/router/AdminBoundary/default composition/current controllers and registry; controlled HTTP. Canonical CSS, no PI01 overlay or Photo2 claim. Real producer/EOF/downstream world session/physical device NOT_RUN.",
+  "plan": "remainder",
+  "cases": [
+    {
+      "name": "withdrawal",
+      "status": "PASS"
+    },
+    {
+      "name": "malformed",
+      "status": "PASS"
+    },
+    {
+      "name": "missing-profile",
+      "status": "PASS"
+    },
+    {
+      "name": "deleted",
+      "status": "PASS"
+    },
+    {
+      "name": "denied",
+      "status": "PASS"
+    }
+  ],
+  "captures": [
+    "state-withdrawal-390.png",
+    "state-malformed-390.png",
+    "state-missing-profile-390.png",
+    "state-deleted-390.png",
+    "state-denied-390.png"
+  ],
+  "errors": [],
+  "cleanup": {
+    "browserClosed": true,
+    "serverClosed": true
+  },
+  "browser": "156.0.8078.80"
+}

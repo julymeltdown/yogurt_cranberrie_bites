@@ -1,0 +1,2023 @@
+{
+  "allocation": "ORIGINAL-FE37-DEFAULT-MOUNT-PREP32-0042",
+  "acceptedUtc": "2026-11-05T00:42:41.939130Z",
+  "expiresUtc": "2026-11-05T01:10:00Z",
+  "positiveCapBytes": 33554432,
+  "preservedO04": "5bfbbae3025698903593202590987cd3dbb3586d",
+  "base": "0c9e9613c7e5890953f3a0de14c433ea5b7d0ee1",
+  "acceptedFreeBytes": 15390900224,
+  "sourceAndGitReserveBytes": 16777216,
+  "projectedTotalPositiveBytes": 27762688,
+  "priorWholeMaximumBytes": 4651679568,
+  "postimages": [
+    {
+      "path": "backend/scripts/mcr/in03_stack_runtime.py",
+      "mode": "100644",
+      "blob": "ea27bee48e88276ba880e9b7eb651c9ab4ea4c0a",
+      "bytes": 43324,
+      "roundedBytes": 45056
+    },
+    {
+      "path": "backend/scripts/mcr/in04_wall_runtime/attachment.py",
+      "mode": "100644",
+      "blob": "48b3e168f2687deae5feab009ec7751b7b4d5a7b",
+      "bytes": 8166,
+      "roundedBytes": 8192
+    },
+    {
+      "path": "backend/scripts/mcr/in04_wall_runtime/launch.py",
+      "mode": "100644",
+      "blob": "5463b637e4197fceeb258c788e4bf86cab465649",
+      "bytes": 18183,
+      "roundedBytes": 20480
+    },
+    {
+      "path": "backend/scripts/mcr/in04_wall_runtime/test_attachment.py",
+      "mode": "100644",
+      "blob": "9a49964ab0f31c09fcffeb865f21115b82a72496",
+      "bytes": 11133,
+      "roundedBytes": 12288
+    },
+    {
+      "path": "backend/scripts/mcr/in04_wall_runtime/test_frontend_binding.py",
+      "mode": "100644",
+      "blob": "4b0f94e1a0d0ca0f8b05200afe81fdf7578a18b4",
+      "bytes": 4087,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "backend/services/concert-service/src/config/deletion_world_binding.rs",
+      "mode": "100644",
+      "blob": "2d6e4328336f2e4f2f03d8b840457e13edf3c665",
+      "bytes": 1473,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "backend/services/concert-service/src/config/mod.rs",
+      "mode": "100644",
+      "blob": "452e33a77fc2c75973103dd75381d7146fbf9b8b",
+      "bytes": 11861,
+      "roundedBytes": 12288
+    },
+    {
+      "path": "backend/services/concert-service/src/config/world_runtime.rs",
+      "mode": "100644",
+      "blob": "b2d1327fb9852a658e40004a25a398cec2bb502d",
+      "bytes": 26669,
+      "roundedBytes": 28672
+    },
+    {
+      "path": "backend/services/concert-service/tests/deletion_world_binding.rs",
+      "mode": "100644",
+      "blob": "0ecf5cb69d5c59e11e3719e69c52437106965604",
+      "bytes": 9312,
+      "roundedBytes": 12288
+    },
+    {
+      "path": "docs/mcr/backend/auth19-main-qualification-2026-11-05.md",
+      "mode": "100644",
+      "blob": "ebd58652016a1948515055761d55fa34d2a2d8a2",
+      "bytes": 3862,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/backend/deletion-world-binding.md",
+      "mode": "100644",
+      "blob": "ad05424f9ccf7464b7831d330518ee9ad72c4f08",
+      "bytes": 10169,
+      "roundedBytes": 12288
+    },
+    {
+      "path": "docs/mcr/backend/in04-managed-profile.md",
+      "mode": "100644",
+      "blob": "eb1a9d7f0f9672d51fefced71d9e9597a0f54279",
+      "bytes": 7664,
+      "roundedBytes": 8192
+    },
+    {
+      "path": "docs/mcr/backend/party-production.md",
+      "mode": "100644",
+      "blob": "5b869d62b3d709000854e7207d296667d4e43ece",
+      "bytes": 42761,
+      "roundedBytes": 45056
+    },
+    {
+      "path": "docs/mcr/evidence/in02-journey/assignment.json",
+      "mode": "100644",
+      "blob": "dc84276bc49271f03574a801788ff728d02d4a61",
+      "bytes": 7945,
+      "roundedBytes": 8192
+    },
+    {
+      "path": "docs/mcr/evidence/in02-journey/delivery-handoff.json",
+      "mode": "100644",
+      "blob": "d3d69816622e9f6f51ba9a5f3b0c1166ecf62a3f",
+      "bytes": 4196,
+      "roundedBytes": 8192
+    },
+    {
+      "path": "docs/mcr/evidence/in02-journey/missing-authority-producer.json",
+      "mode": "100644",
+      "blob": "276903949e6bc677aa3d1ccdbd012af18b74ff10",
+      "bytes": 2939,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/in02-journey/source-controller.py",
+      "mode": "100644",
+      "blob": "94b785c474e09368bf1226f9dcce06ff0d76b5e8",
+      "bytes": 7604,
+      "roundedBytes": 8192
+    },
+    {
+      "path": "docs/mcr/evidence/in02-journey/source-guard.py",
+      "mode": "100644",
+      "blob": "a58a3f1dc6234f32c2f1b812dd33a09822349218",
+      "bytes": 12676,
+      "roundedBytes": 16384
+    },
+    {
+      "path": "docs/mcr/evidence/in02-journey/source-preparation.json",
+      "mode": "100644",
+      "blob": "63d44aca99917ef0dd0a8a4d29719ac970d06d1a",
+      "bytes": 1621,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/in02-journey/source-validation.json",
+      "mode": "100644",
+      "blob": "d0f57d9a13dc7672405b93b5e08a3371a6c65b1a",
+      "bytes": 9637,
+      "roundedBytes": 12288
+    },
+    {
+      "path": "docs/mcr/evidence/in03-public-journey/default-app-source-round-1/attempt-1.log",
+      "mode": "100644",
+      "blob": "260a4a4368ee91bd315eff40098538819f44b174",
+      "bytes": 2377,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/in03-public-journey/default-app-source-round-1/attempt-2.log",
+      "mode": "100644",
+      "blob": "5e257e632b509c916a9890399f8ae2823172b2e9",
+      "bytes": 359,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/in03-public-journey/default-app-source-round-1/attempt-3.log",
+      "mode": "100644",
+      "blob": "ffc1afbbaa6145d6f627ac28bde86a733208b2f8",
+      "bytes": 591,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/in03-public-journey/default-app-source-round-1/qualification.json",
+      "mode": "100644",
+      "blob": "ce085e170d3be355f42962c1305288d2f19b7701",
+      "bytes": 18053,
+      "roundedBytes": 20480
+    },
+    {
+      "path": "docs/mcr/evidence/in04-runtime-adapter/community-clock-source-qualification.json",
+      "mode": "100644",
+      "blob": "bdfde9a5b7c2f8aa5db1fb7b18af26730e64c49f",
+      "bytes": 3890,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/acceptance-2045.json",
+      "mode": "100644",
+      "blob": "083d41352044b1c1949e6c48415900047cb2dd72",
+      "bytes": 1352,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/acceptance-2125.json",
+      "mode": "100644",
+      "blob": "c0ad2d0bff520a1b73c1e9a43a26a2516c004e13",
+      "bytes": 1619,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/acceptance-browser-2320.json",
+      "mode": "100644",
+      "blob": "51465253ae77c72aef477021c71228834e412e25",
+      "bytes": 2969,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/acceptance-browser-2349-current.json",
+      "mode": "100644",
+      "blob": "74c611c905f87a3301c3d5b8c0222c082ce0465b",
+      "bytes": 3128,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/acceptance-browser-2349.json",
+      "mode": "100644",
+      "blob": "3e6cba846ad10965f22be13a15cf8c625b19e1b3",
+      "bytes": 2776,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/acceptance-factory.json",
+      "mode": "100644",
+      "blob": "2a1174c2aedb66f284582f8495b75bd3c47c244e",
+      "bytes": 1828,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/admission-update-browser-2320.json",
+      "mode": "100644",
+      "blob": "98d5286fe07a35ef87008a5b4a38d14b36a05621",
+      "bytes": 801,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/admission.py",
+      "mode": "100644",
+      "blob": "bfc2aca7de9da36712c4022272f79f2d133c6002",
+      "bytes": 2392,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/browser-freeze-2349-B.json",
+      "mode": "100644",
+      "blob": "7fe5bc68e2518e2568888fad1d007d8e5665493b",
+      "bytes": 830721,
+      "roundedBytes": 831488
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/browser-freeze-2349-C.json",
+      "mode": "100644",
+      "blob": "c814092d9688e0a7ad34bece30b55bd88b896d67",
+      "bytes": 830706,
+      "roundedBytes": 831488
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/browser-freeze-2349.json",
+      "mode": "100644",
+      "blob": "b8996ace7409d3542c7593b359c529a21a19fa5a",
+      "bytes": 830684,
+      "roundedBytes": 831488
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/browser-freeze-B.json",
+      "mode": "100644",
+      "blob": "c495c9e26d62ac438c02013058577fea4e1f584f",
+      "bytes": 830572,
+      "roundedBytes": 831488
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/browser-freeze-retry.json",
+      "mode": "100644",
+      "blob": "a4b41f02a232b70c1e70de057fafd823bf9ac5be",
+      "bytes": 830559,
+      "roundedBytes": 831488
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/browser-freeze.json",
+      "mode": "100644",
+      "blob": "0935904add0a01bae182abf7e47ce374a2178792",
+      "bytes": 830575,
+      "roundedBytes": 831488
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/browser-qualification-2320.json",
+      "mode": "100644",
+      "blob": "159d1aaea0e9ffe328e2a286957be0d1463fae8d",
+      "bytes": 5302,
+      "roundedBytes": 8192
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/browser-qualification-2349.json",
+      "mode": "100644",
+      "blob": "fb9e8596c571d757bf72a3d52a437d2d96754707",
+      "bytes": 7135,
+      "roundedBytes": 8192
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/capacity-correction-factory.json",
+      "mode": "100644",
+      "blob": "d58170382c096ef2634dda3b813580d597715eb0",
+      "bytes": 1371,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/expiryA-guardian-config.json",
+      "mode": "100644",
+      "blob": "66e2af3565abb777bdc7a92505198f18d167ac7f",
+      "bytes": 673,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/expiryA-guardian.json",
+      "mode": "100644",
+      "blob": "99c2d3d109ee2f28636e981f9f7c8a15b27eb46b",
+      "bytes": 229,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/expiryA-guardian.ready",
+      "mode": "100644",
+      "blob": "404b12ccca3049220fc5af0f87bfc49d7af5a29d",
+      "bytes": 17,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/expiryA-guardian.stop",
+      "mode": "100644",
+      "blob": "1a2ada974e9182359b63605def249a4a73dbf880",
+      "bytes": 17,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/expiryA-source-focus.log",
+      "mode": "100644",
+      "blob": "5ba610a95e5f51e4f5d25216fda7839908816327",
+      "bytes": 248,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/expiryA-source-lint.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "roundedBytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/expiryA-source-plan.log",
+      "mode": "100644",
+      "blob": "c80edf3cf7227190a43b2e94943b9d21c3afb99b",
+      "bytes": 1435,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/expiryA-source-syntax.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "roundedBytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/expiryA-source-types.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "roundedBytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/expiryA.json",
+      "mode": "100644",
+      "blob": "91087d547267d2e2c896d2b9fc6a94ee9d9dd5cf",
+      "bytes": 2980,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/expiryA.log",
+      "mode": "100644",
+      "blob": "987ab48c3ebe202231cb7bea38de22503cf6988a",
+      "bytes": 29,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/expiryLintA-guardian-config.json",
+      "mode": "100644",
+      "blob": "02daa963a819cea28bf5f4a91d118257290f14ed",
+      "bytes": 682,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/expiryLintA-guardian.json",
+      "mode": "100644",
+      "blob": "f413b35f19c5665bca1814459ba0479639248d5a",
+      "bytes": 222,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/expiryLintA-guardian.ready",
+      "mode": "100644",
+      "blob": "f6336e124c569f667ce84e252dee7813d05d8d06",
+      "bytes": 17,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/expiryLintA-guardian.stop",
+      "mode": "100644",
+      "blob": "1e9676b3a7341865ab131a488ba9c366869ae7c6",
+      "bytes": 17,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/expiryLintA.json",
+      "mode": "100644",
+      "blob": "64dd1962148ed1af69061b37f0552a88e4ddbf6b",
+      "bytes": 3280,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/expiryLintA.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "roundedBytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/expiryLintB-guardian-config.json",
+      "mode": "100644",
+      "blob": "c15af787d117d658818d3d90df66e43dd1c26bff",
+      "bytes": 682,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/expiryLintB-guardian.json",
+      "mode": "100644",
+      "blob": "326ce8236c8ed6afdf5f8a1d0e1c393d6c508ddd",
+      "bytes": 222,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/expiryLintB-guardian.ready",
+      "mode": "100644",
+      "blob": "36dd785d21424da8737d38d7677cecb62362760f",
+      "bytes": 17,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/expiryLintB-guardian.stop",
+      "mode": "100644",
+      "blob": "9d2eeded7892f5c5616ddb8a5938742aab4ea40f",
+      "bytes": 17,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/expiryLintB.json",
+      "mode": "100644",
+      "blob": "3fdd2f602ba25c1bb676f2b49aa0976ef2cb242e",
+      "bytes": 3281,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/expiryLintB.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "roundedBytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/expiryTypesA-guardian-config.json",
+      "mode": "100644",
+      "blob": "1d2e66937daeea22d862fbe0b1d39373abbaa34a",
+      "bytes": 684,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/expiryTypesA-guardian.json",
+      "mode": "100644",
+      "blob": "ee1d6cb1910a4ef681d956dd9041fb1e12cf8a50",
+      "bytes": 230,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/expiryTypesA-guardian.ready",
+      "mode": "100644",
+      "blob": "40685c1f108c4c8b7181883a8b2eafaabdd58296",
+      "bytes": 17,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/expiryTypesA-guardian.stop",
+      "mode": "100644",
+      "blob": "afec4158330c9ba139b194e04affd4cd3d13613d",
+      "bytes": 17,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/expiryTypesA.json",
+      "mode": "100644",
+      "blob": "9f3af3815eda9960698880c1a6ab416307a3f34a",
+      "bytes": 3285,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/expiryTypesA.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "roundedBytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/expiryTypesB-guardian-config.json",
+      "mode": "100644",
+      "blob": "3a287c35acbef5b0258edadbbe9cb76a2bebc89d",
+      "bytes": 684,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/expiryTypesB-guardian.json",
+      "mode": "100644",
+      "blob": "c8499f9eb87a352840805df1faae7ae84b494ef1",
+      "bytes": 230,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/expiryTypesB-guardian.ready",
+      "mode": "100644",
+      "blob": "2d8107a2547d1aeaa220ca959e1e0afbabfa7dab",
+      "bytes": 17,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/expiryTypesB-guardian.stop",
+      "mode": "100644",
+      "blob": "c97568008f593aa8026f581002e4c3b55dcb3080",
+      "bytes": 17,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/expiryTypesB.json",
+      "mode": "100644",
+      "blob": "06870455e1b4478fc9775acd1e7e25cd44ef379b",
+      "bytes": 3288,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/expiryTypesB.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "roundedBytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/factoryA-guardian-config.json",
+      "mode": "100644",
+      "blob": "eb26f96edf41f59f80fa8cb94bbf647f6d9c5f38",
+      "bytes": 675,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/factoryA-guardian.json",
+      "mode": "100644",
+      "blob": "dbb8964f84dff1ff9885023ddb7cbd6a80781569",
+      "bytes": 228,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/factoryA-guardian.ready",
+      "mode": "100644",
+      "blob": "86d41fb8e84a425a69d26e70b95c9b92b38f5ba7",
+      "bytes": 17,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/factoryA-guardian.stop",
+      "mode": "100644",
+      "blob": "cb7f69520b958459e0f5b626b08ebc8fd5f9358a",
+      "bytes": 16,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/factoryA.json",
+      "mode": "100644",
+      "blob": "efde2a66be5a64098fff89ed3771c38894dcede5",
+      "bytes": 3274,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/factoryA.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "roundedBytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/factoryB-guardian-config.json",
+      "mode": "100644",
+      "blob": "2c5b852f5c3467c36bb0230aa486aa84e35b1834",
+      "bytes": 675,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/factoryB-guardian.json",
+      "mode": "100644",
+      "blob": "ec1d6b0c2b7af253e667a38596f55dff66373243",
+      "bytes": 221,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/factoryB-guardian.ready",
+      "mode": "100644",
+      "blob": "b47dc8e46a5ed4cd026bff057739d00246e30443",
+      "bytes": 18,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/factoryB-guardian.stop",
+      "mode": "100644",
+      "blob": "f52e666359695e763672dfaee906a089433d8ebf",
+      "bytes": 18,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/factoryB.json",
+      "mode": "100644",
+      "blob": "3297c77235948c07ef0c135ae5cb281b27ea907c",
+      "bytes": 3264,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/factoryB.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "roundedBytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingBrowserA-browser/failure-390.png",
+      "mode": "100644",
+      "blob": "1296b91a2379087c769810d4b18e937a72f1a9e9",
+      "bytes": 22703,
+      "roundedBytes": 24576
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingBrowserA-browser/maintenance-390.png",
+      "mode": "100644",
+      "blob": "88e088e2e245aaac9f1abee6c135e0079af4a08e",
+      "bytes": 24675,
+      "roundedBytes": 28672
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingBrowserA-browser/minimum-client-390.png",
+      "mode": "100644",
+      "blob": "84f81bdfd6e063673348e37c63cf5f5cb28f802f",
+      "bytes": 26841,
+      "roundedBytes": 28672
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingBrowserA-browser/report.json",
+      "mode": "100644",
+      "blob": "b419202c7abb2f60c5cf2a355778376b18a31cce",
+      "bytes": 4698,
+      "roundedBytes": 8192
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingBrowserA-guardian-config.json",
+      "mode": "100644",
+      "blob": "5b2d77c3244c15cf1fc3787e7addc8040a41d2be",
+      "bytes": 696,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingBrowserA-guardian.json",
+      "mode": "100644",
+      "blob": "04fd1f14e5d030f1233b6fb2178706420ffeda9e",
+      "bytes": 231,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingBrowserA-guardian.ready",
+      "mode": "100644",
+      "blob": "56064477af4b05fbfed65af70073298396906e2d",
+      "bytes": 17,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingBrowserA-guardian.stop",
+      "mode": "100644",
+      "blob": "2191d6a899a019aac730c7259b13f3534dbe75d5",
+      "bytes": 17,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingBrowserA.json",
+      "mode": "100644",
+      "blob": "74ac118858f73744d53cf6303acac0787b11a0ef",
+      "bytes": 3125,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingBrowserA.log",
+      "mode": "100644",
+      "blob": "21ccba25cb78ee8b96ad82c5d6d6af1f263f759b",
+      "bytes": 3494,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingBrowserB-browser/consumed-normal-390.png",
+      "mode": "100644",
+      "blob": "4072c3367c108a3c701f999df0c89868af5e7825",
+      "bytes": 81040,
+      "roundedBytes": 81920
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingBrowserB-browser/failure-390.png",
+      "mode": "100644",
+      "blob": "4072c3367c108a3c701f999df0c89868af5e7825",
+      "bytes": 81040,
+      "roundedBytes": 81920
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingBrowserB-browser/maintenance-390.png",
+      "mode": "100644",
+      "blob": "88e088e2e245aaac9f1abee6c135e0079af4a08e",
+      "bytes": 24675,
+      "roundedBytes": 28672
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingBrowserB-browser/minimum-client-390.png",
+      "mode": "100644",
+      "blob": "84f81bdfd6e063673348e37c63cf5f5cb28f802f",
+      "bytes": 26841,
+      "roundedBytes": 28672
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingBrowserB-browser/ordinary-503-390.png",
+      "mode": "100644",
+      "blob": "7ff8d22f3beec3b9ff0482a771fced99d88f191c",
+      "bytes": 27284,
+      "roundedBytes": 28672
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingBrowserB-browser/report.json",
+      "mode": "100644",
+      "blob": "7cbf5919841c5ed6dbc79af63332a3017a4f3066",
+      "bytes": 12979,
+      "roundedBytes": 16384
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingBrowserB-guardian-config.json",
+      "mode": "100644",
+      "blob": "73e8d7833dfb8a1a89e32c70d71dfc7590e6f744",
+      "bytes": 696,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingBrowserB-guardian.json",
+      "mode": "100644",
+      "blob": "9162df994cd295d261e292ef4cb4fa493685771e",
+      "bytes": 232,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingBrowserB-guardian.ready",
+      "mode": "100644",
+      "blob": "18721a1e415a2a8e0c48e42da733cdd8e9130dbf",
+      "bytes": 17,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingBrowserB-guardian.stop",
+      "mode": "100644",
+      "blob": "da176fa0ae45001e8ee098158afa172d4a4b12cd",
+      "bytes": 17,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingBrowserB.json",
+      "mode": "100644",
+      "blob": "b2867aa8537c877a2753606f22f6597d62a1b10a",
+      "bytes": 3127,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingBrowserB.log",
+      "mode": "100644",
+      "blob": "37e5b5e43d929169c266a5c9d8ee49a7197429f1",
+      "bytes": 8671,
+      "roundedBytes": 12288
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingBrowserC-browser/bootstrap-401-390.png",
+      "mode": "100644",
+      "blob": "1296b91a2379087c769810d4b18e937a72f1a9e9",
+      "bytes": 22703,
+      "roundedBytes": 24576
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingBrowserC-browser/bootstrap-403-390.png",
+      "mode": "100644",
+      "blob": "3f94120630faa16182b29ec8c4304134b3af4b57",
+      "bytes": 22788,
+      "roundedBytes": 24576
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingBrowserC-browser/consumed-normal-390.png",
+      "mode": "100644",
+      "blob": "4dccadf2094627fb62d438c2a82223fd16e5faee",
+      "bytes": 166237,
+      "roundedBytes": 167936
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingBrowserC-browser/event-not-found-390.png",
+      "mode": "100644",
+      "blob": "91be81dd4af1c3c62f2c0158999e59d3570e2b49",
+      "bytes": 22008,
+      "roundedBytes": 24576
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingBrowserC-browser/expired-bootstrap-390.png",
+      "mode": "100644",
+      "blob": "7ff8d22f3beec3b9ff0482a771fced99d88f191c",
+      "bytes": 27284,
+      "roundedBytes": 28672
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingBrowserC-browser/late-policy-390.png",
+      "mode": "100644",
+      "blob": "7ff8d22f3beec3b9ff0482a771fced99d88f191c",
+      "bytes": 27284,
+      "roundedBytes": 28672
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingBrowserC-browser/maintenance-390.png",
+      "mode": "100644",
+      "blob": "88e088e2e245aaac9f1abee6c135e0079af4a08e",
+      "bytes": 24675,
+      "roundedBytes": 28672
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingBrowserC-browser/minimum-client-390.png",
+      "mode": "100644",
+      "blob": "84f81bdfd6e063673348e37c63cf5f5cb28f802f",
+      "bytes": 26841,
+      "roundedBytes": 28672
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingBrowserC-browser/ordinary-503-390.png",
+      "mode": "100644",
+      "blob": "7ff8d22f3beec3b9ff0482a771fced99d88f191c",
+      "bytes": 27284,
+      "roundedBytes": 28672
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingBrowserC-browser/report.json",
+      "mode": "100644",
+      "blob": "0cd3954be216fd1f55d266304bb128dd37ebf82d",
+      "bytes": 20711,
+      "roundedBytes": 24576
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingBrowserC-guardian-config.json",
+      "mode": "100644",
+      "blob": "8be405ae7cb8143b8a0e15794c85cbf93a8ed5a0",
+      "bytes": 696,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingBrowserC-guardian.json",
+      "mode": "100644",
+      "blob": "ff44f24a33d92836d3b45e3c0ca263b6c28510d9",
+      "bytes": 230,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingBrowserC-guardian.ready",
+      "mode": "100644",
+      "blob": "b16e656d88d62b2509db7490f5adf22af27afbfc",
+      "bytes": 17,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingBrowserC-guardian.stop",
+      "mode": "100644",
+      "blob": "73cb61df33e846ca597624903b086c05a952da51",
+      "bytes": 17,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingBrowserC.json",
+      "mode": "100644",
+      "blob": "fa040c08ec6b923b13d417eb765c023dc1a7a637",
+      "bytes": 3128,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingBrowserC.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "roundedBytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingLintA-guardian-config.json",
+      "mode": "100644",
+      "blob": "7e7c44ad48556eb2b058ebf8501aa01b3d62743d",
+      "bytes": 690,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingLintA-guardian.json",
+      "mode": "100644",
+      "blob": "d793199ee12894446a7d3d2c401fa94202ec01e1",
+      "bytes": 222,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingLintA-guardian.ready",
+      "mode": "100644",
+      "blob": "49b5cb07923266d03f297a48f7ea7fb4ab2fe5f2",
+      "bytes": 17,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingLintA-guardian.stop",
+      "mode": "100644",
+      "blob": "ffcda2129a692954c0672d5a834dca384a6fc3c7",
+      "bytes": 17,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingLintA.json",
+      "mode": "100644",
+      "blob": "2ef06e6e2751d790f784a38924b820a3fcbc5ff9",
+      "bytes": 3284,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingLintA.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "roundedBytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingLintB-guardian-config.json",
+      "mode": "100644",
+      "blob": "49beeee7582eaf51feec188a2645c04277784514",
+      "bytes": 690,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingLintB-guardian.json",
+      "mode": "100644",
+      "blob": "b4dc58a455d29a082b1db1eafa04b9bb2ff6d352",
+      "bytes": 222,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingLintB-guardian.ready",
+      "mode": "100644",
+      "blob": "e85a17fcca7f98ceab1a12ee30ac052fd5621f56",
+      "bytes": 17,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingLintB-guardian.stop",
+      "mode": "100644",
+      "blob": "81273c5c43d776a74f1e97eee54bd183bb64000c",
+      "bytes": 17,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingLintB.json",
+      "mode": "100644",
+      "blob": "702b4bd0cfb834704de892de61ac1fb2b764c3c7",
+      "bytes": 3289,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingLintB.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "roundedBytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingTypesA-guardian-config.json",
+      "mode": "100644",
+      "blob": "b2ddd01e8b3cbae466012ddd9d80be372a068a49",
+      "bytes": 692,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingTypesA-guardian.json",
+      "mode": "100644",
+      "blob": "0f1e2eb086860e01a9279299d79ab4ae0c00a99d",
+      "bytes": 229,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingTypesA-guardian.ready",
+      "mode": "100644",
+      "blob": "e1eccbbb04e0873ca988af70cead0df93b94dba6",
+      "bytes": 17,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingTypesA-guardian.stop",
+      "mode": "100644",
+      "blob": "48facd8dafb6944040a2c980bbc4ec10de8352ea",
+      "bytes": 17,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingTypesA.json",
+      "mode": "100644",
+      "blob": "cef973e99d045430bf292402f9418b656ee779ce",
+      "bytes": 3292,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/forwardingTypesA.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "roundedBytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/full-browser-2320.json",
+      "mode": "100644",
+      "blob": "5e856e85ab06d858dc82e91d3db2bcb03edf9074",
+      "bytes": 556,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/full-browser-2349.json",
+      "mode": "100644",
+      "blob": "1718911ab8a0ff223000103197aa07ba32db1c8c",
+      "bytes": 2862,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/guardian.py",
+      "mode": "100644",
+      "blob": "f74d711030e3970750cdb0d114ca12d9c3221f67",
+      "bytes": 3092,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/lease.py",
+      "mode": "100644",
+      "blob": "7b4d48451093e03f75f272346534b1fd8720274f",
+      "bytes": 12247,
+      "roundedBytes": 12288
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/policyBrowserA-browser/failure-390.png",
+      "mode": "100644",
+      "blob": "67a7d7744054d0e1797a992737253b2cca3dbb29",
+      "bytes": 2740,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/policyBrowserA-browser/report.json",
+      "mode": "100644",
+      "blob": "1b7cf93cc81b4d20959c414c9d7120a71f6bfbc2",
+      "bytes": 734,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/policyBrowserA-guardian-config.json",
+      "mode": "100644",
+      "blob": "cc61e72faaf1bfc81181d0890c57d62c7870d53e",
+      "bytes": 688,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/policyBrowserA-guardian.json",
+      "mode": "100644",
+      "blob": "4cbc047f9b87506d5d6b02a2b3517d771f517cfd",
+      "bytes": 231,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/policyBrowserA-guardian.ready",
+      "mode": "100644",
+      "blob": "3bad17757826529040f663c17cb4ae199dac7528",
+      "bytes": 18,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/policyBrowserA-guardian.stop",
+      "mode": "100644",
+      "blob": "9760db92f787893920a13939e194678467276fbb",
+      "bytes": 17,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/policyBrowserA.json",
+      "mode": "100644",
+      "blob": "cacea6f972e22f36c599ac0671fa4c2b9702a91d",
+      "bytes": 3119,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/policyBrowserA.log",
+      "mode": "100644",
+      "blob": "4eeca1b64c042c31af9907ef0a1665aa9d627e99",
+      "bytes": 3135,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/policyBrowserB-browser/failure-390.png",
+      "mode": "100644",
+      "blob": "f421e6dc1db56550cfa6c9902f3540f5c221b151",
+      "bytes": 67641,
+      "roundedBytes": 69632
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/policyBrowserB-browser/report.json",
+      "mode": "100644",
+      "blob": "85f4d373b5c6cfd5422e21ef86182b6e91dbd603",
+      "bytes": 788,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/policyBrowserB-guardian-config.json",
+      "mode": "100644",
+      "blob": "6ba1441039b84f385b0f69fe999137e2ca630a74",
+      "bytes": 688,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/policyBrowserB-guardian.json",
+      "mode": "100644",
+      "blob": "dcd0d8c42b54fbe4a09980e0ef48339ad61cb5aa",
+      "bytes": 232,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/policyBrowserB-guardian.ready",
+      "mode": "100644",
+      "blob": "ed0d2a67bfa8122f017ba42b82c3fa62046f264a",
+      "bytes": 18,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/policyBrowserB-guardian.stop",
+      "mode": "100644",
+      "blob": "7bcae2f4b3837fdd617df25d70c104a22779f231",
+      "bytes": 17,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/policyBrowserB.json",
+      "mode": "100644",
+      "blob": "1f17ff9a141ea578d106cb40f60286ceebdd6258",
+      "bytes": 3122,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/policyBrowserB.log",
+      "mode": "100644",
+      "blob": "457bdb4294c20de9f5d063368c89a8d4e884f31d",
+      "bytes": 1167,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/publication-WorldShell.patch",
+      "mode": "100644",
+      "blob": "a2e2c12119e55feb4c8a124ad335a0868648e6ae",
+      "bytes": 4107,
+      "roundedBytes": 8192
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/publication-manifest.json",
+      "mode": "100644",
+      "blob": "33464b7394e22eb5f41debe6c82016380c0b8c61",
+      "bytes": 62498,
+      "roundedBytes": 65536
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/publication-ports.patch",
+      "mode": "100644",
+      "blob": "623360530133d065c8804a74603ccae00bdc3475",
+      "bytes": 2285,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/source-freeze-2125.json",
+      "mode": "100644",
+      "blob": "035be0acee93b6ffc20ecbd857d348a142051050",
+      "bytes": 535499,
+      "roundedBytes": 536576
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/source-freeze-B.json",
+      "mode": "100644",
+      "blob": "ef724252384347c976fda82cbf2dc89529721d85",
+      "bytes": 535174,
+      "roundedBytes": 536576
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/source-freeze-C.json",
+      "mode": "100644",
+      "blob": "0d6585537f13c4613c401ce478f71c92136919f7",
+      "bytes": 535127,
+      "roundedBytes": 536576
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/source-freeze-factory.json",
+      "mode": "100644",
+      "blob": "ad49a801c184aad931aab76bc1dac34977755c49",
+      "bytes": 541082,
+      "roundedBytes": 544768
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/source-freeze.json",
+      "mode": "100644",
+      "blob": "152a3224df896e2429d2f0640e7c0e764153a335",
+      "bytes": 534995,
+      "roundedBytes": 536576
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/source-qualification-2125.json",
+      "mode": "100644",
+      "blob": "61124dd34bc78d95bc8e59c8a9e1814ec7385d3f",
+      "bytes": 1607,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/source-qualification-factory.json",
+      "mode": "100644",
+      "blob": "7c767e1e57896f9e9bff552e151d7441b0624731",
+      "bytes": 2576,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/source-qualification.json",
+      "mode": "100644",
+      "blob": "23486bd11d3780ea29092180ac5b0cf05efba693",
+      "bytes": 2956,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/source.py",
+      "mode": "100644",
+      "blob": "72d3c13677a283ab63e8e5e0eaa412edcd59c3e9",
+      "bytes": 1573,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/sourceA-guardian-config.json",
+      "mode": "100644",
+      "blob": "15c13e8ca1b4cd53e166422d0f38c2cf88b38812",
+      "bytes": 673,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/sourceA-guardian.json",
+      "mode": "100644",
+      "blob": "9e5f98e444f4047d179585416d302268f242b275",
+      "bytes": 227,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/sourceA-guardian.ready",
+      "mode": "100644",
+      "blob": "3052c83ac487cc41981f4212a4cd4c739719e15f",
+      "bytes": 17,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/sourceA-guardian.stop",
+      "mode": "100644",
+      "blob": "396f363a0b3ccc632982f450eb375467af460e38",
+      "bytes": 17,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/sourceA-source-focus.log",
+      "mode": "100644",
+      "blob": "12146bbd4920bdab9c82ee9026229f845649a658",
+      "bytes": 9769,
+      "roundedBytes": 12288
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/sourceA.json",
+      "mode": "100644",
+      "blob": "31d0a895fdb6eb149a98e67a0b56d76ce203d67d",
+      "bytes": 2590,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/sourceA.log",
+      "mode": "100644",
+      "blob": "65986c1ed258bd5df32ba04005be6be88c69875b",
+      "bytes": 6,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/sourceB-guardian-config.json",
+      "mode": "100644",
+      "blob": "3a6b518ab706bc33e2947ccecf120abc322bd13a",
+      "bytes": 673,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/sourceB-guardian.json",
+      "mode": "100644",
+      "blob": "0bda872a417cc963ebe1025cadcc8fbfaa247a43",
+      "bytes": 229,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/sourceB-guardian.ready",
+      "mode": "100644",
+      "blob": "afe9879b56411041ff4ff6b7afb68f705b48e500",
+      "bytes": 18,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/sourceB-guardian.stop",
+      "mode": "100644",
+      "blob": "93a34359eea1eea188c35844f4ea525fd6b66d03",
+      "bytes": 17,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/sourceB-source-focus.log",
+      "mode": "100644",
+      "blob": "8c09371579def437b950920a0d938f6b19625227",
+      "bytes": 248,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/sourceB-source-lint.log",
+      "mode": "100644",
+      "blob": "d52552c7877aed3b6aa3d1b2a84859583bbbf791",
+      "bytes": 240,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/sourceB-source-types.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "roundedBytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/sourceB.json",
+      "mode": "100644",
+      "blob": "0b534f026e67f166986349cb164519c8bdf26dc3",
+      "bytes": 2595,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/sourceB.log",
+      "mode": "100644",
+      "blob": "49710d19b0163129e4f5657b99a41f5735c02e8a",
+      "bytes": 17,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/sourceC-guardian-config.json",
+      "mode": "100644",
+      "blob": "027cf0460df948c57e179e8a85ca6e87a6833181",
+      "bytes": 673,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/sourceC-guardian.json",
+      "mode": "100644",
+      "blob": "e2596411c3a1c8527ea7c3d3d79bec03260a7fb7",
+      "bytes": 229,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/sourceC-guardian.ready",
+      "mode": "100644",
+      "blob": "9a053951f35b013b5fdfe474f933902b5b18e102",
+      "bytes": 18,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/sourceC-guardian.stop",
+      "mode": "100644",
+      "blob": "872d1f4ebc8737bf9d6dcc39d63a419b1951e3a7",
+      "bytes": 16,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/sourceC-source-focus.log",
+      "mode": "100644",
+      "blob": "345a208f1948f1451ccc58afcbdfe8f8ee4e98b2",
+      "bytes": 248,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/sourceC-source-lint.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "roundedBytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/sourceC-source-plan.log",
+      "mode": "100644",
+      "blob": "c80edf3cf7227190a43b2e94943b9d21c3afb99b",
+      "bytes": 1435,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/sourceC-source-types.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "roundedBytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/sourceC.json",
+      "mode": "100644",
+      "blob": "b8259ea0ebf557518c522a626057b7a26d207075",
+      "bytes": 2596,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/pre-world-service-policy/sourceC.log",
+      "mode": "100644",
+      "blob": "0e7fa9c5e6f8495499f8cca5f4189ba8943f8e29",
+      "bytes": 22,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/managed-source/intake-inventory-max.json",
+      "mode": "100644",
+      "blob": "b68e265608bb2e14937d67d3143d3cc7bffc9767",
+      "bytes": 5511,
+      "roundedBytes": 8192
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/managed-source/intake-inventory.json",
+      "mode": "100644",
+      "blob": "189f3079e89ca35fde6ad07080b80b45681c0f46",
+      "bytes": 5041,
+      "roundedBytes": 8192
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/managed-source/offer-2338.json",
+      "mode": "100644",
+      "blob": "298ac5677cd0443e5ab4ea8c01fd1fd882ddeb7b",
+      "bytes": 1067,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/managed-source/offer-2349.json",
+      "mode": "100644",
+      "blob": "e32d5b4d769d91d4c13d0e2a4ba9ea6d572b98b1",
+      "bytes": 1382,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/managed-source/qualification.json",
+      "mode": "100644",
+      "blob": "96b2122868d5bb0245d457e96950fbcaed2a8327",
+      "bytes": 10574,
+      "roundedBytes": 12288
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/managed-source/resource_guard.py",
+      "mode": "100644",
+      "blob": "385d0f99eb92fc5fc313c29cc9d61a782f9c2a29",
+      "bytes": 8926,
+      "roundedBytes": 12288
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/managed-source/retry-intake-inventory.json",
+      "mode": "100644",
+      "blob": "459077d45d6f38a579c727aa003fdf47904acc27",
+      "bytes": 5513,
+      "roundedBytes": 8192
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/managed-source/round01/FULL.json",
+      "mode": "100644",
+      "blob": "bd876714da17f974cb6d72b8ebeb68b9e71b7709",
+      "bytes": 818,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/managed-source/round01/baseline.json",
+      "mode": "100644",
+      "blob": "6f14b9810057fc0934f63706d2179c1026fdfed1",
+      "bytes": 1424,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/managed-source/round01/config.json",
+      "mode": "100644",
+      "blob": "1b0e3c720e062d4786a4f84507a2cde5b002ab54",
+      "bytes": 4552,
+      "roundedBytes": 8192
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/managed-source/round01/process-measurement.lock",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "roundedBytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/managed-source/round01/stop",
+      "mode": "100644",
+      "blob": "1e13d54dc116a39589fe17fa039ea518e5527455",
+      "bytes": 5,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/managed-source/round02/FULL.json",
+      "mode": "100644",
+      "blob": "dc52ba7b405aa2095cb09b7f8c4ef265a58c77e9",
+      "bytes": 2247,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/managed-source/round02/baseline.json",
+      "mode": "100644",
+      "blob": "f8b4991bed104966775b33325f5387a9b9c8e5ca",
+      "bytes": 1424,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/managed-source/round02/config.json",
+      "mode": "100644",
+      "blob": "41f9a07c4312af64d613c7d192e51c218bb774fa",
+      "bytes": 4715,
+      "roundedBytes": 8192
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/managed-source/round02/guardian-full.json",
+      "mode": "100644",
+      "blob": "3d52c1bd10263b64dc526460b4487155192ed4d4",
+      "bytes": 174,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/managed-source/round02/guardian-ready.json",
+      "mode": "100644",
+      "blob": "3c6fa90d8ab5ee7bf158c391079da8c8ff6d0f63",
+      "bytes": 174,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/managed-source/round02/new-tests.log",
+      "mode": "100644",
+      "blob": "69958643551431c0ff25099696365607cadf471f",
+      "bytes": 1008,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/managed-source/round02/process-measurement.lock",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "roundedBytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/managed-source/round02/stop",
+      "mode": "100644",
+      "blob": "1e13d54dc116a39589fe17fa039ea518e5527455",
+      "bytes": 5,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/managed-source/round02/syntax-journey.mjs.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "roundedBytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/managed-source/round02/syntax-managed-admission.mjs.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "roundedBytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/managed-source/round02/syntax-managed-admission.test.mjs.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "roundedBytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/managed-source/source_round.py",
+      "mode": "100644",
+      "blob": "628096c89a6c74cab0f24e1219d9f838f7d41f91",
+      "bytes": 11208,
+      "roundedBytes": 12288
+    },
+    {
+      "path": "docs/mcr/evidence/qa09-frontend/resumption-readset.json",
+      "mode": "100644",
+      "blob": "6902359496932776888c4cc9a76d99ccb6bf0e55",
+      "bytes": 3475,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/execution-plan.md",
+      "mode": "100644",
+      "blob": "248d509acbfc0bced7700db1f87604b3fba86dcc",
+      "bytes": 14546,
+      "roundedBytes": 16384
+    },
+    {
+      "path": "docs/mcr/frontend/community-clock-build-input.md",
+      "mode": "100644",
+      "blob": "0549c98b4f739fb9bbaa3ee008dccfa79a60cad1",
+      "bytes": 3804,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "docs/mcr/frontend/in03-public-journey.md",
+      "mode": "100644",
+      "blob": "645f7c8932812e2c6c068724b5a9282d01aa9a62",
+      "bytes": 57807,
+      "roundedBytes": 61440
+    },
+    {
+      "path": "docs/mcr/frontend/pre-world-service-policy.md",
+      "mode": "100644",
+      "blob": "5e97d1a87a3dd42091d024d70215b2d6df80e5b0",
+      "bytes": 27175,
+      "roundedBytes": 28672
+    },
+    {
+      "path": "docs/mcr/frontend/qa09-recovery.md",
+      "mode": "100644",
+      "blob": "b91b266eb545df20c259af58965dc698bb78f9dc",
+      "bytes": 30225,
+      "roundedBytes": 32768
+    },
+    {
+      "path": "docs/mcr/functional-delivery-plan.md",
+      "mode": "100644",
+      "blob": "eedfd4e7713b134cf70d58648e2c4ac4db1d7aa0",
+      "bytes": 75668,
+      "roundedBytes": 77824
+    },
+    {
+      "path": "docs/mcr/progress.md",
+      "mode": "100644",
+      "blob": "0be4bc1c7521b6b1f2c7f17736073b1350bbf732",
+      "bytes": 22233,
+      "roundedBytes": 24576
+    },
+    {
+      "path": "docs/mcr/qa/meetup-pickup-in02.md",
+      "mode": "100644",
+      "blob": "a023acf7614922bd5e405a7f7f1a776f502dbc7c",
+      "bytes": 26542,
+      "roundedBytes": 28672
+    },
+    {
+      "path": "docs/mcr/task-progress-2026-11-04.json",
+      "mode": "100644",
+      "blob": "f36bd539b3e68fca1ef04d1b99aafe52f6b1c71b",
+      "bytes": 693220,
+      "roundedBytes": 696320
+    },
+    {
+      "path": "frontend/e2e/real/meetup-pickup-helpers.ts",
+      "mode": "100644",
+      "blob": "b0f8eeeebbad95a7a2a6f697bd0dbdae13bff1b3",
+      "bytes": 34054,
+      "roundedBytes": 36864
+    },
+    {
+      "path": "frontend/e2e/real/meetup-pickup.spec.ts",
+      "mode": "100644",
+      "blob": "6be329218fecf9e39054bea636038fbb96ba52a2",
+      "bytes": 47989,
+      "roundedBytes": 49152
+    },
+    {
+      "path": "frontend/e2e/real/qa09-recovery/journey.mjs",
+      "mode": "100644",
+      "blob": "a0148c7e8e145cad797f942aa2bfff5fd5d44e12",
+      "bytes": 3610,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "frontend/e2e/real/qa09-recovery/managed-admission.mjs",
+      "mode": "100644",
+      "blob": "aa35b764542441a730dd796c058084de608dcdd0",
+      "bytes": 5087,
+      "roundedBytes": 8192
+    },
+    {
+      "path": "frontend/e2e/real/qa09-recovery/managed-admission.test.mjs",
+      "mode": "100644",
+      "blob": "0c3d15ecccce61896d3a585551fa81e08d2b09c3",
+      "bytes": 7630,
+      "roundedBytes": 8192
+    },
+    {
+      "path": "frontend/e2e/real/social/default-app/audit.mjs",
+      "mode": "100644",
+      "blob": "497a0b2fe3772e262bc5bb9a420b1f885251be40",
+      "bytes": 2639,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "frontend/e2e/real/social/default-app/audit.test.mjs",
+      "mode": "100644",
+      "blob": "9d8ed44fefaf4f8b0615c20ad605d935e269d7b1",
+      "bytes": 2567,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "frontend/e2e/real/social/default-app/check.mjs",
+      "mode": "100644",
+      "blob": "428e0469b4c750d5ebc22e4f4372ed5b7874f4c6",
+      "bytes": 2155,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "frontend/e2e/real/social/default-app/configuration.mjs",
+      "mode": "100644",
+      "blob": "e4964fbc3f664fe62adc57693543c0a338c00956",
+      "bytes": 4672,
+      "roundedBytes": 8192
+    },
+    {
+      "path": "frontend/e2e/real/social/default-app/configuration.test.mjs",
+      "mode": "100644",
+      "blob": "df243cbc9cb4a599c837a33d7f423b86a803d5c1",
+      "bytes": 7641,
+      "roundedBytes": 8192
+    },
+    {
+      "path": "frontend/e2e/real/social/default-app/default-app.spec.ts",
+      "mode": "100644",
+      "blob": "921df6e84d828c8e1e8bb2bd1bb7d79023617950",
+      "bytes": 10238,
+      "roundedBytes": 12288
+    },
+    {
+      "path": "frontend/e2e/real/social/default-app/enrollment.mjs",
+      "mode": "100644",
+      "blob": "03dc53d225b03de2ef122ef8a9ed06ab00fd964c",
+      "bytes": 3539,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "frontend/e2e/real/social/default-app/observe.ts",
+      "mode": "100644",
+      "blob": "ce992a4b4b55617971394aa63f6be1c48de3112d",
+      "bytes": 6338,
+      "roundedBytes": 8192
+    },
+    {
+      "path": "frontend/e2e/real/social/default-app/playwright.config.ts",
+      "mode": "100644",
+      "blob": "fdef612bf4cf47a0f776a03d4ba953df29d2263e",
+      "bytes": 922,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "frontend/e2e/real/social/default-app/serve.mjs",
+      "mode": "100644",
+      "blob": "8241bdd7e11c403190e61c7f1d1cc22e0e686336",
+      "bytes": 8293,
+      "roundedBytes": 12288
+    },
+    {
+      "path": "frontend/e2e/real/social/default-app/social-ui.ts",
+      "mode": "100644",
+      "blob": "89f33548310c9e37f53920d21e3738254ea6b627",
+      "bytes": 15285,
+      "roundedBytes": 16384
+    },
+    {
+      "path": "frontend/e2e/real/social/default-app/source.mjs",
+      "mode": "100644",
+      "blob": "e70e246373c9a0a801718227992361687a0cb0bc",
+      "bytes": 4235,
+      "roundedBytes": 8192
+    },
+    {
+      "path": "frontend/e2e/real/social/default-app/source.test.mjs",
+      "mode": "100644",
+      "blob": "9bc0b5cf46eae7ce281125400e83ad3a789cb52d",
+      "bytes": 2508,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "frontend/e2e/real/social/default-app/tsconfig.json",
+      "mode": "100644",
+      "blob": "d567a3e07569bdcfda9de9f9edf1f311424a7d5b",
+      "bytes": 213,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "frontend/e2e/real/social/default-app/ui.ts",
+      "mode": "100644",
+      "blob": "eba342dfa61d5da39ca2f100e5460ef9a289e434",
+      "bytes": 7632,
+      "roundedBytes": 8192
+    },
+    {
+      "path": "frontend/e2e/runtime-adapters/in04-wall-b/application-release.mjs",
+      "mode": "100644",
+      "blob": "94abf24e426d4e766b644aebe92ae90952541224",
+      "bytes": 8856,
+      "roundedBytes": 12288
+    },
+    {
+      "path": "frontend/e2e/runtime-adapters/in04-wall-b/community-clock-input.mjs",
+      "mode": "100644",
+      "blob": "b5e843fd052de817b76d3986dd8cf835f50124cd",
+      "bytes": 2365,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "frontend/e2e/runtime-adapters/in04-wall-b/community-clock-input.test.mjs",
+      "mode": "100644",
+      "blob": "83bddd1c6abb0eb055f421022bc9de838c5a836c",
+      "bytes": 7616,
+      "roundedBytes": 8192
+    },
+    {
+      "path": "frontend/e2e/runtime-adapters/in04-wall-b/server.mjs",
+      "mode": "100644",
+      "blob": "efce06d9eaf1367527af0d086bbfd1f69c065797",
+      "bytes": 10637,
+      "roundedBytes": 12288
+    },
+    {
+      "path": "frontend/src/app/WorldShell.tsx",
+      "mode": "100644",
+      "blob": "955a529e283dde67a39adcf718a2b6164bbf5fbc",
+      "bytes": 14343,
+      "roundedBytes": 16384
+    },
+    {
+      "path": "frontend/src/app/ports.ts",
+      "mode": "100644",
+      "blob": "4afeb0c87ee41d46514eddcc0d7e763eabec95e9",
+      "bytes": 6819,
+      "roundedBytes": 8192
+    },
+    {
+      "path": "frontend/src/app/pre-world-policy/PolicyNotice.tsx",
+      "mode": "100644",
+      "blob": "a994e233314ac87628df1ae613df3d123787807f",
+      "bytes": 1517,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "frontend/src/app/pre-world-policy/__tests__/attempt.test.tsx",
+      "mode": "100644",
+      "blob": "de60b9fc75e356e50441031ca3214579fd7c65b4",
+      "bytes": 4736,
+      "roundedBytes": 8192
+    },
+    {
+      "path": "frontend/src/app/pre-world-policy/__tests__/contract.test.ts",
+      "mode": "100644",
+      "blob": "24fb25bb795922d71075f8bdc278e812c18e95e6",
+      "bytes": 4257,
+      "roundedBytes": 8192
+    },
+    {
+      "path": "frontend/src/app/pre-world-policy/__tests__/controller.test.ts",
+      "mode": "100644",
+      "blob": "8a43369ab7918e4e5561d2d8e9f14389ebeca99e",
+      "bytes": 7658,
+      "roundedBytes": 8192
+    },
+    {
+      "path": "frontend/src/app/pre-world-policy/__tests__/fixtures.ts",
+      "mode": "100644",
+      "blob": "7816b452abffb9e7a3e35804eb887028ad4032c4",
+      "bytes": 878,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "frontend/src/app/pre-world-policy/__tests__/native.html",
+      "mode": "100644",
+      "blob": "b945857f33b1bb60e6d0d37719cb2262b3a76f47",
+      "bytes": 267,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "frontend/src/app/pre-world-policy/__tests__/native.mjs",
+      "mode": "100644",
+      "blob": "4870b36be938294583abf26fe5575ec1600a920e",
+      "bytes": 8049,
+      "roundedBytes": 8192
+    },
+    {
+      "path": "frontend/src/app/pre-world-policy/__tests__/native.ts",
+      "mode": "100644",
+      "blob": "1c856d6b450288ec75de6c5c7f9dfc1a265e0d86",
+      "bytes": 2870,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "frontend/src/app/pre-world-policy/__tests__/vitest.config.ts",
+      "mode": "100644",
+      "blob": "5c86f71e0a9ccd6362bd28f1a938eb38ce6c7138",
+      "bytes": 514,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "frontend/src/app/pre-world-policy/contract.ts",
+      "mode": "100644",
+      "blob": "4b08455fb003326c7910f4e9f754445f64ed4ae1",
+      "bytes": 3846,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "frontend/src/app/pre-world-policy/controller.ts",
+      "mode": "100644",
+      "blob": "37b842f696a84870b056f29e019c7af7b89c6628",
+      "bytes": 7376,
+      "roundedBytes": 8192
+    },
+    {
+      "path": "frontend/src/app/pre-world-policy/model.ts",
+      "mode": "100644",
+      "blob": "93fd15c78bb24a321e323ae64296d43c5db4f779",
+      "bytes": 1629,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "frontend/src/app/pre-world-policy/production.ts",
+      "mode": "100644",
+      "blob": "2550b9ac87ba796f7e6cb4d3abe608ce4afd04e2",
+      "bytes": 426,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "frontend/src/app/pre-world-policy/transport.ts",
+      "mode": "100644",
+      "blob": "f498f4acd411d31a995fbcae96759e3eff785a82",
+      "bytes": 2527,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "frontend/src/app/pre-world-policy/usePolicyAttempt.ts",
+      "mode": "100644",
+      "blob": "e03d1c60c2d5152e59a7c76c058001ffce5e1d2e",
+      "bytes": 2977,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "frontend/src/app/world-presentation/WorldTools.tsx",
+      "mode": "100644",
+      "blob": "5fb45bab954f58b22612eef5d9deba5416304c1c",
+      "bytes": 1653,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "frontend/src/app/world-presentation/__tests__/in02-navigation/navigation.test.tsx",
+      "mode": "100644",
+      "blob": "8ecdef62dd4a0a88bfe74e17817e81b76367cc83",
+      "bytes": 1332,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "frontend/src/features/admin/reports/ui/ModerationReview.tsx",
+      "mode": "100644",
+      "blob": "6da25307ec634310664a9b23114022941c9af224",
+      "bytes": 6070,
+      "roundedBytes": 8192
+    },
+    {
+      "path": "frontend/src/features/party-discovery/__tests__/fixtures/harness.ts",
+      "mode": "100644",
+      "blob": "35b8ffffbe82edab152ccf6ce4cdce061c892577",
+      "bytes": 2321,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "frontend/src/features/party-discovery/__tests__/in02-navigation/navigation.test.tsx",
+      "mode": "100644",
+      "blob": "bd3b0edc5323935eede3db3e3eebc0d0e166ee7b",
+      "bytes": 4362,
+      "roundedBytes": 8192
+    },
+    {
+      "path": "frontend/src/features/party-discovery/ui/PartyDiscovery.tsx",
+      "mode": "100644",
+      "blob": "bbf893fca090e12a29f8ebc5cebfce222f65fd20",
+      "bytes": 18703,
+      "roundedBytes": 20480
+    },
+    {
+      "path": "frontend/src/features/party-management/__tests__/harness.ts",
+      "mode": "100644",
+      "blob": "366211bcfaf6d719b1685e15279bac4b4183cc10",
+      "bytes": 2913,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "frontend/src/features/party-management/__tests__/in02-navigation/navigation.test.tsx",
+      "mode": "100644",
+      "blob": "17ce38375055a672a1762da9d23b7c241467f675",
+      "bytes": 3168,
+      "roundedBytes": 4096
+    },
+    {
+      "path": "frontend/src/features/party-management/ui/PartyManagement.tsx",
+      "mode": "100644",
+      "blob": "441c238c2b7532725e341adc163a9fd313669e55",
+      "bytes": 5729,
+      "roundedBytes": 8192
+    }
+  ]
+}
