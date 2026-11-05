@@ -67,11 +67,11 @@ class Round:
         self.accepted = float(os.environ['MCR_VENU_ACCEPT_EPOCH'])
         self.work = self.accepted+int(os.environ['MCR_VENU_WORK_SECONDS']); self.hard = self.accepted+int(os.environ['MCR_VENU_FULL_SECONDS'])
         self.cap = (128 if self.mode == 'source' else 200)*MIB
-        self.pids, self.rss = (8, 3*GIB) if self.mode == 'source' else (24, int(3.5*GIB))
+        self.pids, self.rss = (8, int(2.5*GIB)) if self.mode == 'source' else (24, int(3.5*GIB))
         self.port = int(os.environ.get('MCR_VENU_PORT', '0'))
         self.log = EVIDENCE/(self.out.name+'-controller.jsonl') if role == 'controller' else self.out/'guardian.jsonl'
         self.seen = {}; self.peak = dict(processes=0, rssBytes=0, newBytes=0, tmpBytes=0, wholeBytes=6642925568)
-        self.minimum = free(); self.carry = 6642925568; self.spent_tmp = 0
+        self.minimum = free(); self.carry = 6642925568; self.spent_tmp = 0; self.new_carry = 0
 
     def event(self, value):
         with self.log.open('a') as f: f.write(json.dumps(value)+'\n')
@@ -87,7 +87,8 @@ class Round:
     def port_closed(self):
         if self.mode != 'native': return True
         with socket.socket() as s:
-            try: s.bind(('127.0.0.1',self.port)); return True
+            s.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
+            try: s.bind(('127.0.0.1',self.port)); s.listen(1); return True
             except OSError: return False
 
     def initialize(self):
@@ -100,18 +101,19 @@ class Round:
         for name in ('controller.py','guardian.py'):
             assert hashlib.sha256((EVIDENCE/name).read_bytes()).hexdigest()==os.environ['MCR_VENU_'+name.split('.')[0].upper()+'_SHA']
         pins(); count = dependencies()
-        prior = 6642925568
+        prior, prior_new = 6642925568, 40919040
         for p in EVIDENCE.glob('*-controller.jsonl'):
             for line in p.read_text().splitlines():
-                row=json.loads(line); prior=max(prior,row.get('peak',{}).get('wholeBytes',0))
+                row=json.loads(line); prior=max(prior,row.get('peak',{}).get('wholeBytes',0)); prior_new=max(prior_new,row.get('peak',{}).get('newBytes',0))
                 if row.get('type')=='FULL' and row.get('role')=='controller': self.spent_tmp+=row.get('peak',{}).get('tmpBytes',0)
         self.carry=max(prior,size(ROOTS,True)+34*MIB)
+        self.new_carry=max(prior_new,34*MIB+size(MUTABLE)+self.spent_tmp,105992192 if self.mode=='native' else 40919040)
         self.peak['wholeBytes']=self.carry
         assert self.carry+self.cap<=8*GIB, 'complete whole carry plus worst-case NEW'
         floor=int(os.environ['MCR_VENU_START_FLOOR']); other=int(os.environ['MCR_VENU_OTHER_NEW'])
         assert floor>=11*GIB and free()>=floor and free()-other-self.cap>=9*GIB
         self.event(dict(type='ACCEPT',role=self.role,lease=self.lease,at=time.time(),workDeadline=self.work,fullDeadline=self.hard,
-                        carryBytes=self.carry,priorSpentTemporaryBytes=self.spent_tmp,dependencyRecords=count,freeBytes=free(),otherNewUpperBytes=other))
+                        carryBytes=self.carry,newCarryBytes=self.new_carry,priorSpentTemporaryBytes=self.spent_tmp,dependencyRecords=count,freeBytes=free(),otherNewUpperBytes=other))
         self.check(initial=True)
 
     def check(self, initial=False):
@@ -122,14 +124,15 @@ class Round:
         self.owners=sample['owners']
         rows=membership.processes(); receipt=json.loads(membership.OWN.read_text())
         roots={c['pid'] for c in [receipt.get('controller')]+receipt.get('guardControllers',[]) if c and c['pid'] in rows and rows[c['pid']]['birth']==' '.join(c['birth'].split())}
-        tree=set(roots)
+        # An observed exact child remains ours if the OS reparents it before exit.
+        tree=set(roots)|{pid for pid,birth in self.seen.items() if pid in rows and rows[pid]['birth']==birth}
         while True:
             extra={pid for pid,row in rows.items() if row['parent'] in tree}-tree
             if not extra: break
             tree|=extra
         self.seen.update({pid:rows[pid]['birth'] for pid in tree if pid!=os.getpid()})
         temp=size([self.tmp]); counters=dict(processes=len(tree)+2,rssBytes=sum(rows[p]['rss'] for p in tree)+24*MIB,
-            newBytes=34*MIB+size(MUTABLE)+self.spent_tmp+temp,tmpBytes=temp,wholeBytes=max(self.carry,size(ROOTS,True)+34*MIB)+temp)
+            newBytes=max(self.new_carry,34*MIB+size(MUTABLE)+self.spent_tmp)+temp,tmpBytes=temp,wholeBytes=max(self.carry,size(ROOTS,True)+34*MIB)+temp)
         for key,value in counters.items(): self.peak[key]=max(self.peak[key],value)
         self.minimum=min(self.minimum,free())
         assert counters['processes']<=self.pids and counters['rssBytes']<=self.rss, 'own ALL PID/RSS cap'

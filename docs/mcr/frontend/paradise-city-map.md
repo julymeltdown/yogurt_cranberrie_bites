@@ -164,3 +164,80 @@ the actual borrowed meeting leaf and Root wire mappings as their qualified
 inputs arrive, then deliver scoped source/evidence and verify publisher remote
 receipts. Production default mount stays Root153-owned and requires its own
 combined-current-source runtime evidence. This task remains IN_PROGRESS.
+
+The follow-up Location factory is now authored in
+`model/location-adapter.ts`, with the final independent L/N aggregation in
+`app/venue-entry/capability-adapters.ts`. These new postimages are UNQUALIFIED
+until their own focused tests, full strict types and scoped lint actually run.
+The factory borrows the exact published c40abc74 Location client types through
+a private read-only Git type overlay. It creates no HTTP client, Auth, clock,
+transport, cache, geolocation watch or automatic read. Root supplies the
+original authority and clock, current authorized people, explicit sharing
+viewer consent, and reviewed provider-grant-to-ART associations. Missing
+inputs fail closed. WGS84 phone coordinates never become illustrated points;
+only a current explicitly reviewed self-reported check-in can use its ART
+anchor. Current friend MESSAGE rights remain available without a location.
+
+Pending incoming/outgoing location requests now have consumer projections and
+explicit Approve/Deny/Cancel controls. Only current eligible counterparts and
+unexpired requests are actionable. The factory forwards the original request
+revision and decision to the existing client. Optional Notes reads forward
+the original signal to the Notes owner's explicit load/loadThread methods;
+they do not infer read authority from write rights or fan out across landmarks.
+Aggregation handles missing L/N independently and routes unknown-command
+recovery to exactly one recorded owner, never by key prefix or probing.
+
+Native01-05 remain failed attempts. Native01 reached Vite/Chrome but produced
+no screenshots; its original failed port cleanup receipt is preserved beside
+the later factual cleanup reconciliation. Native02 and Native03 stopped on
+peer identity failures; Native03 passed the three changed closure-race guard
+regressions. Native04 passed changed-fixture lint, then stopped before browser
+on unregistered publisher helper PID77678 (actual FULL1793848375.051043,
+all0). Native05 passed syntax, then stopped before browser on unregistered
+BE10/BE11 ordinary shell PID9606 (actual FULL1793848652.8143191, all0).
+Both initial complete live samples passed in these last two rounds. The
+conservative cumulative NEW high-water remains at least105,992,192 bytes,
+WHOLE at least6,678,867,968 bytes, plus all later higher values. No deleted
+temporary peak or failed attempt is reset. Actual App captures/reference
+comparisons and the actual borrowed Meeting UI remain NOT_RUN.
+
+SOURCE13 stopped during its first resource check before Node, on the retained
+ordinary-runtime-child assertion. The original error lacked owner/child
+identity, so no historical owner is invented. The same unchanged assertion
+now includes those identities for later failures. SOURCE14 at2883bd522 passed
+all21 new focused cases (16 adapter,5 request UI), then full ordinary strict
+types found one unused type import. That import is removed; lint remains
+unrun pending the finishing round. Actual t01793849891.79175 and FULL
+1793849920.274657, exit1/all0, exact11,480 dependencies preserved. The two
+complete independent initial samples passed. Actual peak RSS2,211,577,856B
+was within2.5GiB, but the source controller advertised/enforced3GiB rather
+than the requested2.5GiB ceiling. The prospective source ceiling is corrected
+to2.5GiB; this does not retroactively certify the historical ceiling. NEW
+is at least107,438,080B and WHOLE6,680,313,856B, plus all higher later values.
+The21 passing cases retain their actual input and will not be replayed merely
+to obtain an overall green finishing receipt.
+
+SOURCE15 failed its first initial sample with a bare assertion before Node.
+The retained error does not identify its exact stack. Its receiver still
+rejected top-level UNREADY_YIELD, and QA04 had published that never-accepted
+zero-work disposition before this sample. QA04 subsequently restored its
+actual runtime FULL receipt and nested the unused-offer disposition. Our
+private receiver now tolerates only that strict historical zero-work shape;
+it changes no shared official runtime enum. A yield cannot release an older
+legacy claim without the same owner's actual prior FULL/zero-release proof.
+Unknown live payloads still fail closed. Exceptions now retain tracebacks,
+and later publications preserve the existing closed-receipt references.
+
+SOURCE16 at4460748103f3258fc9744cc4ae104d395aa358c1 passed the three NEW
+receiver boundary cases, full ordinary strict nonincremental types and
+scoped deny-warning lint. Actual t01793850443.981657, outer FULL
+1793850487.618156, exit0/all0; both independent complete initial samples
+passed and11,480 dependency records were preserved. This round enforced
+exactly8PID/2.5GiB; peak8PID/1,989,427,200B RSS, NEW108,879,872B,
+WHOLE6,681,755,648B, with all historical/deleted-TMP values carried.
+The21 SOURCE14 feature tests and42 earlier consumer tests remain at their
+actual source pins, with no passing-suite replay. New production changes
+since SOURCE14 are only removal of the unused type import. The normalized
+Location factory, aggregation, request controls and explicit Notes reads are
+now SOURCE_QUALIFIED, with actual producer/status/default-mount integration,
+full-App screenshots, reference comparison and live-device acceptance OPEN.

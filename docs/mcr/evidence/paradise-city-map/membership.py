@@ -31,7 +31,7 @@ def verify_controller(claim, control, row):
     unavailable = row['command'] in ('(Python)', '<defunct>')
     if unavailable:
         prior = _verified.get(key)
-        assert row.get('status', '').startswith('Z') and prior and prior['parent'] == row['parent'], 'unavailable argv lacks independently verified exact terminal identity'
+        assert row.get('status', '').startswith('Z') and prior and prior['parent'] == row['parent'], 'unavailable argv lacks independently verified exact terminal identity: ' + json.dumps(dict(owner=claim['ownerThreadId'], offer=claim.get('offerId'), pid=control['pid'], birth=row['birth'], status=row.get('status'), expectedScript=control.get('script')))
         return
     assert script_matches(control, row), 'resource controller identity mismatch: ' + json.dumps(dict(owner=claim['ownerThreadId'], pid=control['pid'], birth=row['birth'], expectedScript=control['script'], observedExecutable=row['command'].split()[0], observedCommandSHA256=hashlib.sha256(row['command'].encode()).hexdigest(), commandLength=len(row['command'])))
     actual_comm = None
@@ -76,6 +76,8 @@ def identity(pid, script, output=None):
 
 
 def publish(value):
+    if 'closedReceipts' not in value and OWN.is_file():
+        value['closedReceipts'] = json.loads(OWN.read_text()).get('closedReceipts', [])
     value['publishedAtEpoch'] = time.time()
     temporary = OWN.with_name('.' + OWN.name + '.' + str(os.getpid()) + '.tmp')
     temporary.write_text(json.dumps(value, indent=2) + '\n')
@@ -98,7 +100,7 @@ def epoch(value):
             return None
 
 
-def sample(proposed=None):
+def sample(proposed=None, _reconciliations=0):
     policy = json.loads((BASE / 'resource-receipt-interface.json').read_text())['limits']
     legacy = json.loads((BASE / 'resource-membership-current.json').read_text())['entries']
     files = list(DIRECTORY.glob('*.json'))
@@ -108,7 +110,10 @@ def sample(proposed=None):
         assert file.stat().st_size <= 65536, 'oversized resource receipt'
         record = json.loads(file.read_text())
         assert file.stem == record['ownerThreadId']
-        assert record['state'] in ('ACCEPTED', 'FULL', 'DECLINED')
+        assert record['state'] in ('ACCEPTED', 'FULL', 'DECLINED', 'UNREADY_YIELD'), 'unsupported receipt state: ' + file.stem
+        if record['state'] == 'UNREADY_YIELD':
+            assert record.get('acceptedAtEpoch') is None and record.get('remainingNewUpperBytes') == 0 and not record.get('controller') and not record.get('guardControllers') \
+                and (record.get('workflow') == 0 or record.get('resources') == 0) and record.get('workflow') in (None, 0) and record.get('resources') in (None, 0), 'yield cannot hide an accepted or positive workflow: ' + file.stem
         records[record['ownerThreadId']] = record
     if proposed is not None:
         assert proposed['ownerThreadId'] == OWNER
@@ -120,6 +125,16 @@ def sample(proposed=None):
             continue
         owner = old.get('ownerThreadId', old.get('owner'))
         record = records.get(owner)
+        if record and record['state'] == 'UNREADY_YIELD':
+            # A never-accepted offer cannot release an older accepted booking.
+            # Reconcile legacy ONLY through its actual closed execution receipt.
+            candidates = [record.get('previousActualExecution')] + record.get('closedReceipts', [])
+            closed = [value for value in candidates if isinstance(value, dict) and value.get('ownerThreadId') == owner
+                      and (value.get('state') == 'FULL' or value.get('resourcesReleased') is True)
+                      and (value.get('resources') == 0 or value.get('resourcesReleased') is True)
+                      and epoch(value.get('acceptedAtEpoch')) is not None and epoch(value.get('actualFullEpoch')) is not None
+                      and epoch(value['actualFullEpoch']) >= epoch(value['acceptedAtEpoch'])]
+            record = max(closed, key=lambda value: epoch(value['acceptedAtEpoch'])) if closed else None
         resolved = False
         if record:
             a, b = epoch(record.get('acceptedAtEpoch')), epoch(old.get('acceptedAtEpoch', old.get('actualAccept')))
@@ -147,7 +162,20 @@ def sample(proposed=None):
                 continue
             pid = control['pid']
             if pid in rows:
-                verify_controller(claim, control, rows[pid])
+                try:
+                    verify_controller(claim, control, rows[pid])
+                except AssertionError:
+                    # Records precede the process snapshot. An exact booking can
+                    # publish factual FULL between them. Resample everything only
+                    # after that same booking explicitly attests all-zero cleanup.
+                    # A dead PID alone never releases a positive reservation.
+                    current_path = DIRECTORY / (claim['ownerThreadId'] + '.json')
+                    if rows[pid]['command'] in ('(Python)', '<defunct>') and _reconciliations < 2 and current_path.is_file():
+                        current = json.loads(current_path.read_text())
+                        full = epoch(current.get('actualFullEpoch'))
+                        if current.get('state') == 'FULL' and current.get('resources') == 0 and full is not None and full >= (epoch(claim.get('acceptedAtEpoch')) or 0) and current.get('offerId') == claim.get('offerId') and epoch(current.get('acceptedAtEpoch')) == epoch(claim.get('acceptedAtEpoch')):
+                            return sample(proposed, _reconciliations + 1)
+                    raise
                 roots.add(pid)
         for matcher in claim.get('legacyMatchers', []):
             roots.update(pid for pid, row in rows.items() if matcher and matcher in row['command'])
@@ -190,7 +218,10 @@ def sample(proposed=None):
                 command = rows[child]['command']
                 heavy = bool(re.search(r'\b(?:node|cargo|rustc)(?:\s|$)', command)) or ('Google Chrome --' in command and '--headless' in command)
                 script_child = child != pid and python_script_command(command)
-                assert not heavy and not script_child, 'ordinary role cannot cover runtime payload'
+                assert not heavy and not script_child, 'ordinary role cannot cover runtime payload: ' + json.dumps(dict(
+                    owner=record.get('ownerThreadId'), offer=record.get('offerId'), ordinaryPid=pid,
+                    childPid=child, birth=rows[child]['birth'], executable=command.split()[0],
+                    scriptCandidates=re.findall(r'/[^\s]+\.py', command), commandSHA256=hashlib.sha256(command.encode()).hexdigest()))
             ordinary_pids.update(tree)
             # Count the observed shell supervising a factual ordinary publisher.
             # Its other children are NOT covered by this metadata observation.

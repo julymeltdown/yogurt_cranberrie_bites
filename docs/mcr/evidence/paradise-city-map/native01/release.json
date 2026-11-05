@@ -1,0 +1,21 @@
+{
+  "type": "FULL",
+  "role": "guardian",
+  "lease": "PI11-APP-NATIVE01-0215",
+  "at": 1793847418.340885,
+  "exitCode": 1,
+  "failure": "RuntimeError('Orderly stop requested')",
+  "peak": {
+    "processes": 13,
+    "rssBytes": 2514042880,
+    "newBytes": 75718656,
+    "tmpBytes": 30273536,
+    "wholeBytes": 6678867968
+  },
+  "minimumFreeBytes": 23650164736,
+  "livePids": [],
+  "resources": 1,
+  "privateTmpAbsent": true,
+  "portClosed": false,
+  "retainedDependencyRecords": 11480
+}

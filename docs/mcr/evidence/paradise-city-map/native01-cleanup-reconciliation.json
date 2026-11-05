@@ -1,0 +1,31 @@
+{
+  "type": "LATER_CLEANUP_RECONCILIATION_NOT_RETROSPECTIVE_PASS",
+  "lease": "PI11-APP-NATIVE01-0215",
+  "at": 1793847514.832554,
+  "originalFull": {
+    "type": "FULL",
+    "role": "controller",
+    "lease": "PI11-APP-NATIVE01-0215",
+    "at": 1793847419.177977,
+    "exitCode": 1,
+    "failure": "AssertionError('unavailable argv lacks independently verified exact terminal identity')",
+    "peak": {
+      "processes": 13,
+      "rssBytes": 2514026496,
+      "newBytes": 75718656,
+      "tmpBytes": 30273536,
+      "wholeBytes": 6678867968
+    },
+    "minimumFreeBytes": 23650484224,
+    "livePids": [],
+    "resources": 1,
+    "privateTmpAbsent": true,
+    "portClosed": false,
+    "retainedDependencyRecords": 11480
+  },
+  "rawFullSHA256": "675ab2aed053caf1f248cd589fe40bcbca10dc0addc4801b9daafd9b7e52eae3",
+  "actualListeners": [],
+  "strictPortRebound": true,
+  "resources": 0,
+  "privateTmpAbsent": true
+}

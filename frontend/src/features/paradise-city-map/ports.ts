@@ -34,6 +34,10 @@ export interface PlaceNote extends PlaceReply {
   readonly canReply: boolean; readonly canMeet: boolean; readonly replies: readonly PlaceReply[]
 }
 export type SharingState = 'off' | 'active' | 'paused' | 'revoked'
+export interface VenueLocationRequest {
+  readonly id: string; readonly requesterId: string; readonly subjectId: string
+  readonly revision: number; readonly expiresAtMs: number
+}
 export interface CapabilitySnapshot {
   readonly scope: PrivacyScope; readonly venue: SiteplanIdentity
   readonly classification: 'AUTHORITATIVE_ADAPTER' | 'CONTROLLED_FIXTURE'
@@ -41,6 +45,8 @@ export interface CapabilitySnapshot {
   readonly serverNowMs: number | null; readonly accessUntilMs: number | null
   readonly self: PersonView | null; readonly friends: readonly PersonView[]; readonly notes: readonly PlaceNote[]
   readonly sharing: SharingState
+  /** Current pending requests only, independently withdrawn with their L lease. */
+  readonly locationRequests?: { readonly incoming: readonly VenueLocationRequest[]; readonly outgoing: readonly VenueLocationRequest[] }
   readonly rights: {
     readonly sharePhone: boolean; readonly pause: boolean
     readonly checkIn: readonly LandmarkId[]; readonly postNote: readonly LandmarkId[]
@@ -52,11 +58,15 @@ export interface GeoFix {
 }
 export type CommandResult = { readonly state: 'applied' | 'rejected' | 'unknown' }
 export interface CommandContext { readonly key: string; readonly scope: PrivacyScope; readonly venue: SiteplanIdentity; readonly signal: AbortSignal }
+export type VenueReadContext = Omit<CommandContext, 'key'>
 export interface VenueCapabilities extends ReadPort<CapabilitySnapshot | null> {
+  loadNotes?(landmarkId: LandmarkId, context: VenueReadContext): Promise<boolean>
+  loadNoteThread?(noteId: string, context: VenueReadContext): Promise<boolean>
   beginPhoneSharing(context: CommandContext): Promise<CommandResult>
   publishPhoneFix(fix: GeoFix, context: CommandContext): Promise<CommandResult>
   pause(reason: 'user' | 'background' | 'withdrawal', context: CommandContext): Promise<CommandResult>
   requestLocation(userId: string, context: CommandContext): Promise<CommandResult>
+  decideLocationRequest?(id: string, decision: 'APPROVE' | 'DENY' | 'CANCEL', context: CommandContext): Promise<CommandResult>
   checkIn(landmarkId: LandmarkId, context: CommandContext): Promise<CommandResult>
   postNote(input: { readonly landmarkId: LandmarkId; readonly body: string; readonly audience: NoteAudience; readonly expiry: NoteExpiry }, context: CommandContext): Promise<CommandResult>
   reply(input: { readonly noteId: string; readonly body: string }, context: CommandContext): Promise<CommandResult>

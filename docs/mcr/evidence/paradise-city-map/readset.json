@@ -2,7 +2,7 @@
   "task": "PARADISECITY-MAP-FRIENDS-NOTES",
   "base": "5e28dc35dda0126ca5463f810f06eda8a56dc38f",
   "classification": "UNQUALIFIED_FROZEN_CONSUMER_CANDIDATE",
-  "priorWholeHighWaterBytes": 6648594432,
+  "priorWholeHighWaterBytes": 6680313856,
   "spatialTypeInput": {
     "commit": "4f94914d06d54c3b465930cc23d40be91a1255cb",
     "pinsDeclaredIn": "docs/mcr/evidence/paradise-city-map/typecheck.mjs",
@@ -1211,28 +1211,28 @@
     },
     {
       "path": "docs/mcr/evidence/paradise-city-map/controller.py",
-      "bytes": 966,
-      "sha256": "9d6521e0906f06fb00bf156261a282444c3f0f2ef6e3de13ce24a6dab7473584"
+      "bytes": 994,
+      "sha256": "69ce45f1def03a0970136034c0746662b64f22b48e5bd0a8e3e5d95e707facad"
     },
     {
       "path": "docs/mcr/evidence/paradise-city-map/finite.py",
-      "bytes": 10509,
-      "sha256": "0f986b7134f70714b4f6272f8b58acd8ea7e6d681c83bb3559430586655237fd"
+      "bytes": 11038,
+      "sha256": "a36a1c1c721f0db040bffdef257836b9e5ffc3ece0812a4eefe55898253b74df"
     },
     {
       "path": "docs/mcr/evidence/paradise-city-map/guardian.py",
-      "bytes": 3064,
-      "sha256": "a54343fd582917680b4232cc4136c535d1e2df107302b54a1a7e96ef468b5ce9"
+      "bytes": 4394,
+      "sha256": "f0d84dde86f9df1c861b6afd9dd4e4ec0c158d010118fb7fdeb7528cdaf044f2"
     },
     {
       "path": "docs/mcr/evidence/paradise-city-map/membership.py",
-      "bytes": 13283,
-      "sha256": "045b622e8c83e19b6b0236ef8c0e4b0c269c124524e002c9d1c158c988a6af9a"
+      "bytes": 16592,
+      "sha256": "55183ae60227b7df71fde6de794725969f5e6cdaf9135416795e9d209e6e749a"
     },
     {
       "path": "docs/mcr/evidence/paradise-city-map/membership_test.py",
-      "bytes": 8258,
-      "sha256": "254a4155c634074a3632e6c62a1098a6a0a74426fa9aeb2f874bb4e522c4e36c"
+      "bytes": 11720,
+      "sha256": "1053f6abbd4661b0eef6816dcb8317e3fa6f31ba21d4da66769961538fb4cf56"
     },
     {
       "path": "docs/mcr/evidence/paradise-city-map/prepare.py",
@@ -1241,8 +1241,8 @@
     },
     {
       "path": "docs/mcr/evidence/paradise-city-map/typecheck.mjs",
-      "bytes": 2784,
-      "sha256": "ff38386d79bf78c936be8efe685f0031c2368b27a9c3f9f15297e43eeb4f781f"
+      "bytes": 3516,
+      "sha256": "0e825c1f052a887c194fa8d1de9403a02a633ab08cb1bd98bf567c0ad6e55c02"
     },
     {
       "path": "frontend/.npmrc",
@@ -2486,8 +2486,8 @@
     },
     {
       "path": "frontend/e2e/venue-map/native.mjs",
-      "bytes": 20108,
-      "sha256": "0870ce60c74b7b1f0dd0ee9a7ae293440ee2e2050abd7fe8a86e8b63328326cf"
+      "bytes": 20680,
+      "sha256": "afbf561fb7e497183cd809672a6bcd6a325d3bd10f5bd95da40575ea395e40e1"
     },
     {
       "path": "frontend/e2e/venue-map/preview.html",
@@ -14336,8 +14336,8 @@
     },
     {
       "path": "frontend/src/app/venue-entry/capability-adapters.ts",
-      "bytes": 2691,
-      "sha256": "b7f22dbf11be0b956f1886498c105a5e32aed4ef2bca998c0e1729e0e2b4100f"
+      "bytes": 8877,
+      "sha256": "b23fdab1d3e8f4d9abd897ea52b8834ba19a6f734981d7495ba7b4baa328d76f"
     },
     {
       "path": "frontend/src/app/venue-entry/consumer.ts",
@@ -23205,6 +23205,11 @@
       "sha256": "f8736dd4237769e72704533e2ab9e3f3684e31ea58b8e69427fec3c3a977dab2"
     },
     {
+      "path": "frontend/src/features/paradise-city-map/__tests__/consumer/adapter-vitest.config.ts",
+      "bytes": 532,
+      "sha256": "60922cae8898a96a789ad7c66a68f03c3d1502dd217b743abe9e641f47a36a20"
+    },
+    {
       "path": "frontend/src/features/paradise-city-map/__tests__/consumer/browser-location.test.ts",
       "bytes": 3480,
       "sha256": "5849f3e48abfe863eb6b2da14ed3fcc3dc74e21c6834107c33ef4076871b89ee"
@@ -23218,6 +23223,16 @@
       "path": "frontend/src/features/paradise-city-map/__tests__/consumer/harness.ts",
       "bytes": 6569,
       "sha256": "80eb41acabedc37f60a1136afb55725a182b6c6322c5ef77aded91a9443727db"
+    },
+    {
+      "path": "frontend/src/features/paradise-city-map/__tests__/consumer/location-adapter.test.ts",
+      "bytes": 17166,
+      "sha256": "cef47f6b8aedeb2b402eb2d1c461b9fb0d571704fd22b18b334fd3f426ce63a8"
+    },
+    {
+      "path": "frontend/src/features/paradise-city-map/__tests__/consumer/location-requests.test.tsx",
+      "bytes": 4084,
+      "sha256": "06af1b9f1fc7a1d94fc997bc7a2f49d510c1309cc974ecc69c1526af5cd5a8c5"
     },
     {
       "path": "frontend/src/features/paradise-city-map/__tests__/consumer/tsconfig.full.json",
@@ -23241,8 +23256,13 @@
     },
     {
       "path": "frontend/src/features/paradise-city-map/model/controller.ts",
-      "bytes": 17637,
-      "sha256": "3961de0e13891107b42b23a965c13b7166b6fbe8b24766d360da5d8abbc72700"
+      "bytes": 19940,
+      "sha256": "46786a504724b40c7b85f1985703ae10ad698257c5c9dd740f5f033a3c9320a8"
+    },
+    {
+      "path": "frontend/src/features/paradise-city-map/model/location-adapter.ts",
+      "bytes": 17911,
+      "sha256": "8cbd4f3be0c65b8fb96c83cbc5c3eaaea06ea85161af24cf6f06a3d45a5e1095"
     },
     {
       "path": "frontend/src/features/paradise-city-map/model/siteplan-view.ts",
@@ -23251,8 +23271,8 @@
     },
     {
       "path": "frontend/src/features/paradise-city-map/ports.ts",
-      "bytes": 6238,
-      "sha256": "94caaab2f25b5c7546a6b5b278d47b4dcfca51ac31d1227efa1147d817bdf328"
+      "bytes": 6986,
+      "sha256": "d3d4d8b196707633b4c1a4cba4ef7e165cead00086ed447096ab67ac8a80af7e"
     },
     {
       "path": "frontend/src/features/paradise-city-map/ui/MapCanvas.tsx",
@@ -23261,13 +23281,13 @@
     },
     {
       "path": "frontend/src/features/paradise-city-map/ui/ParadiseCityMap.tsx",
-      "bytes": 15952,
-      "sha256": "323c5475ec0a9d6ecbb1c123684614034e93c3836adb3380887059b24d6f92eb"
+      "bytes": 18225,
+      "sha256": "69f7f948723056d64d9f90bdc2afcfa65f7c5f2c05c6490b429039880629911f"
     },
     {
       "path": "frontend/src/features/paradise-city-map/ui/paradise-city-map.css",
-      "bytes": 10001,
-      "sha256": "fb7d7fa6f8e0ba6299785207b9fbd3de6c333c6c06342feb7b66a23dccbf8e35"
+      "bytes": 10227,
+      "sha256": "0bd0b3445bfb86d9f284701d34cf1ad8b78080cb0f870426f13cf0937430bf9c"
     },
     {
       "path": "frontend/src/features/party-authoring/__tests__/authoring.test.tsx",

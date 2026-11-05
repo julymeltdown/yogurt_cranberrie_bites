@@ -11,6 +11,7 @@ export function ParadiseCityMap({ controller, renderPortrait }: { readonly contr
   const { venue } = controller, host = useRef<HTMLDivElement>(null), returnTo = useRef<HTMLElement | null>(null), wasOpen = useRef(false)
   const [consented, setConsented] = useState(false), [showSharing, setShowSharing] = useState(false), [focusLandmark, setFocusLandmark] = useState<{ readonly id: LandmarkId; readonly serial: number } | null>(null)
   const [meetingPlace, setMeetingPlace] = useState<LandmarkId | ''>(''), [meetingTarget, setMeetingTarget] = useState('')
+  const [notesPlace, setNotesPlace] = useState<LandmarkId | ''>('')
   const personId = state.selection?.kind === 'friend' ? state.selection.id : null
   const placeId = state.selection && 'id' in state.selection && state.selection.kind !== 'friend' ? state.selection.id : null
   const selectedPerson = personId ? state.people.find(p => p.userId === personId) : null
@@ -18,6 +19,8 @@ export function ParadiseCityMap({ controller, renderPortrait }: { readonly contr
   const selectedNotes = state.notes.filter(n => selectedPlace ? n.landmarkId === selectedPlace.id : true)
   const hasSheet = Boolean(state.selection || state.draft), locked = state.busy || state.uncertain || state.meeting?.locked
   const now = state.snapshot?.serverNowMs ?? null
+  const incoming = (state.snapshot?.locationRequests?.incoming ?? []).filter(r => r.subjectId === state.snapshot?.scope.userId && now !== null && r.expiresAtMs > now && state.people.some(p => p.userId === r.requesterId))
+  const outgoing = (state.snapshot?.locationRequests?.outgoing ?? []).filter(r => r.requesterId === state.snapshot?.scope.userId && now !== null && r.expiresAtMs > now && state.people.some(p => p.userId === r.subjectId))
   useEffect(() => {
     if (hasSheet && !wasOpen.current) host.current?.querySelector<HTMLElement>('.pc-sheet button,.pc-sheet textarea')?.focus({ preventScroll: true })
     if (!hasSheet && wasOpen.current) (returnTo.current?.isConnected ? returnTo.current : host.current)?.focus({ preventScroll: true })
@@ -38,6 +41,7 @@ export function ParadiseCityMap({ controller, renderPortrait }: { readonly contr
       <div className="pc-actions"><button type="button" disabled={locked || !note.canReply} onClick={() => controller.compose(note.landmarkId, note.id)}>REPLY</button>
         <button type="button" className="pc-primary" disabled={locked || !note.canMeet || !place?.meetingContext} onClick={() => { if (place) void controller.openMeeting('INVITE', note.author, place, 'map-note') }}>MEET HERE</button></div>
       {note.replies.map(reply => <div className="pc-note-reply" key={reply.id}><div className="pc-portrait">{renderPortrait(reply.author, 64)}</div><div><strong>Reply to {note.author.displayName}</strong><p>{reply.body}</p></div></div>)}
+      {controller.canLoadNoteThread && <button type="button" disabled={locked} onClick={() => { void controller.loadNotes(note.id, true) }}>READ REPLIES</button>}
     </article>
   }
   return <div className="pc-map" ref={host} tabIndex={-1} aria-label="Paradise City map" onKeyDown={event => {
@@ -75,7 +79,15 @@ export function ParadiseCityMap({ controller, renderPortrait }: { readonly contr
       </section> : state.tab === 'FRIENDS' ? <div className="pc-friends" aria-label="Friends at the venue">{state.people.length ? state.people.map(person => <article className="pc-friend-row" key={person.userId}>
         <div className="pc-portrait">{renderPortrait(person, 64)}</div><div className="pc-friend-copy"><button type="button" className="pc-name-button" aria-label={person.displayName} onClick={() => select({ kind: 'friend', id: person.userId })}><strong className="pc-name">{person.displayName}</strong><span className="pc-friend-place">⌖ {placeLabel(person)}</span><small>{locationLabel(person, now)}</small></button></div>
         <button type="button" disabled={locked} onClick={() => { if (person.canRequest && (person.locationSource === 'last-known' || person.locationSource === 'unavailable')) void controller.requestLocation(person.userId); else select({ kind: 'friend', id: person.userId }) }}>{person.canRequest && (person.locationSource === 'last-known' || person.locationSource === 'unavailable') ? 'ASK LOCATION' : 'VIEW'}</button>
-      </article>) : <p role="status">Friends are unavailable until current location visibility is authorized.</p>}</div> : state.tab === 'NOTES' || state.selection?.kind === 'notes' ? <section className="pc-sheet pc-notes" aria-label="Place notes">
+      </article>) : <p role="status">Friends are unavailable until current location visibility is authorized.</p>}
+      {(incoming.length > 0 || outgoing.length > 0) && <section className="pc-location-requests" aria-label="Location requests"><h2>Location requests</h2>
+        {incoming.map(request => <article key={request.id}><p>{state.people.find(p => p.userId === request.requesterId)?.displayName} asked for your location.</p><div className="pc-actions">
+          <button type="button" disabled={locked} onClick={() => { void controller.decideLocationRequest(request.id, 'APPROVE') }}>APPROVE</button>
+          <button type="button" disabled={locked} onClick={() => { void controller.decideLocationRequest(request.id, 'DENY') }}>DENY</button></div></article>)}
+        {outgoing.map(request => <article key={request.id}><p>Waiting for {state.people.find(p => p.userId === request.subjectId)?.displayName} to respond.</p><button type="button" disabled={locked} onClick={() => { void controller.decideLocationRequest(request.id, 'CANCEL') }}>CANCEL REQUEST</button></article>)}
+      </section>}</div> : state.tab === 'NOTES' || state.selection?.kind === 'notes' ? <section className="pc-sheet pc-notes" aria-label="Place notes">
+        {controller.canLoadNotes && <><label className="pc-place-picker">Read notes at<select aria-label="Read notes at place" value={notesPlace || selectedPlace?.id || venue.landmarks[0]?.id || ''} disabled={locked} onChange={event => setNotesPlace(venue.landmarks.find(p => p.id === event.target.value)?.id ?? '')}>{venue.landmarks.map(p => <option key={p.id} value={p.id}>{p.label}</option>)}</select></label>
+        <button type="button" disabled={locked} onClick={() => { const id = notesPlace || selectedPlace?.id || venue.landmarks[0]?.id; if (id) void controller.loadNotes(id) }}>READ NOTES</button></>}
         {selectedPlace && <header><h2>{selectedPlace.label.toUpperCase()} / {selectedNotes.length} NOTES</h2><button type="button" aria-label="Close selected notes" disabled={locked} onClick={close}>×</button></header>}
         {selectedNotes.length ? selectedNotes.map(noteCard) : <p role="status">No current notes are available for this place.</p>}
         <button type="button" className="pc-primary pc-full" disabled={locked || !state.snapshot?.rights.postNote.length} onClick={() => { const id = selectedPlace?.id ?? state.snapshot?.rights.postNote[0]; if (id) controller.compose(id) }}>+ NEW NOTE</button>

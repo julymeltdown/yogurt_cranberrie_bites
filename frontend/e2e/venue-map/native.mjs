@@ -4,7 +4,7 @@ import { createHash } from 'node:crypto'
 import { execFileSync } from 'node:child_process'
 import { readFile, writeFile, mkdir, statfs } from 'node:fs/promises'
 import { resolve, dirname, extname } from 'node:path'
-import { createServer } from 'vite'
+import { createServer, transformWithEsbuild } from 'vite'
 import { chromium, expect } from '@playwright/test'
 const root = resolve(import.meta.dirname, '../../..'), frontend = resolve(root, 'frontend')
 const output = process.env.MCR_VENU_OUTPUT, temporary = process.env.MCR_VENU_TMP, lease = process.env.MCR_VENU_LEASE, port = Number(process.env.MCR_VENU_PORT)
@@ -50,6 +50,7 @@ function transform(code, path) {
 async function guard() { const disk = await statfs(root); assert(disk.bavail * disk.bsize >= 8 * 1024 ** 3); assert(Date.now() / 1000 < deadline) }
 let server, browser, context, diagnosticPage
 await mkdir(output, { recursive: true })
+await writeFile(resolve(output, 'native-report.json'), JSON.stringify(report, null, 2) + '\n')
 try {
  await guard()
  server = await createServer({ root: frontend, configLoader: 'runner', cacheDir: resolve(temporary, 'vite'), logLevel: 'error',
@@ -61,7 +62,12 @@ try {
    const absolute = source.startsWith('/src/') ? resolve(frontend, '.' + source) : importer && source.startsWith('.') ? resolve(dirname(importer.split('?')[0]), source) : source
    if (absolute.startsWith(resolve(root, spatialPrefix) + '/')) { const name = absolute.slice(resolve(root, spatialPrefix).length + 1).replace(/\.ts$/, '') + '.ts'; if (spatialModules.has(name)) return virtual + name }
  },
- load(id) { if (id.startsWith('\0paradise-spatial:')) return spatialModules.get(id.slice('\0paradise-spatial:'.length)) },
+ async load(id) { if (id.startsWith('\0paradise-spatial:')) {
+   const name = id.slice('\0paradise-spatial:'.length), source = spatialModules.get(name)
+   assert(source, 'Exact virtual producer source missing')
+   const result = await transformWithEsbuild(source, 'paradise-spatial/' + name, { loader: 'ts', target: 'esnext' })
+   return { code: result.code, map: result.map }
+ } },
  transform(code, id) { const path = id.split('?')[0].slice(root.length + 1); if (replacements[path]) return transform(code, path) },
  configureServer(instance) { instance.middlewares.use(async (req, res, next) => {
    const pathname = new URL(req.url, 'http://localhost').pathname
@@ -76,6 +82,7 @@ try {
   await guard(); context = await browser.newContext({ viewport: { width, height }, hasTouch: true, reducedMotion: 'reduce', locale: 'en-GB', timezoneId: 'Asia/Seoul', serviceWorkers: 'block', permissions: ['geolocation'], geolocation: { latitude: 37.437, longitude: 126.459, accuracy: 15 } })
   const page = await context.newPage(); diagnosticPage = page; page.setDefaultTimeout(10000); page.on('pageerror', e => report.errors.push(e.message)); await page.clock.setFixedTime(new Date('2026-11-07T07:00:00Z'))
   const item = { width, height, dpr: 1, status: 'IN_PROGRESS', captures: [], componentCaptures: [], checks: [] }; report.cases.push(item)
+  await writeFile(resolve(output, 'native-report.json'), JSON.stringify(report, null, 2) + '\n')
   const fixture = () => page.evaluate(() => window.__PARADISE_CITY_FIXTURE__.state())
   const world = () => page.evaluate(() => window.__REVIEWED_ROOT_ENTRY__.state())
   async function shot(state) {
@@ -86,6 +93,7 @@ try {
     await component.screenshot({ path: resolve(output, componentFile) })
     item.componentCaptures.push({ state, selector: selectors[state], file: componentFile, sha256: hash(await readFile(resolve(output, componentFile))), box: await component.boundingBox(), viewport: { width, height }, dpr: await page.evaluate(() => devicePixelRatio), clock: (await fixture()).clockFromOriginalBinding, camera: await page.locator('.pc-map-viewport').evaluate(e => ({ left: e.scrollLeft, top: e.scrollTop, width: e.clientWidth, height: e.clientHeight })), classification: 'CONTROLLED_FIXTURE_EMULATED_GPS_NOT_LIVE' })
    }
+   await writeFile(resolve(output, 'native-report.json'), JSON.stringify(report, null, 2) + '\n')
   }
   await page.goto(`http://127.0.0.1:${port}/login`); await page.getByLabel('Email', { exact: true }).fill('venue-fixture@example.test'); await page.getByLabel('Password', { exact: true }).fill('fixture-password'); await page.getByRole('button', { name: 'Sign in with email', exact: true }).click()
   await expect.poll(async () => (await world()).active).toBe(1); await expect(page.locator('.shell-world-host canvas')).toHaveCount(1)

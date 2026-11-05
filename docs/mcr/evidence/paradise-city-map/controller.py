@@ -4,6 +4,7 @@ os.environ.setdefault('MCR_VENU_ACCEPT_EPOCH', str(time.time()))
 import signal
 import subprocess
 import sys
+import traceback
 sys.dont_write_bytecode = True
 from finite import EVIDENCE, ROOT, Round
 import membership
@@ -20,7 +21,7 @@ try:
         round.check(); time.sleep(.25)
     code=child.returncode
 except BaseException as error:
-    failure=repr(error); code=1
+    failure=traceback.format_exc(); code=1
 finally:
     value=round.release(code,failure,child)
 raise SystemExit(code if not value['resources'] else 2)

@@ -40,6 +40,39 @@ class MembershipTests(unittest.TestCase):
         self.rows = {}
         self.assertEqual(self.run_sample()['reservedProcesses'], 24)
 
+    def yield_record(self):
+        value = dict(ownerThreadId='yielding', offerId='future', state='UNREADY_YIELD', kind='source',
+                     acceptedAtEpoch=None, remainingNewUpperBytes=0, controller=None, guardControllers=[], workflow=0)
+        (self.records / 'yielding.json').write_text(json.dumps(value))
+        return value
+
+    def test_unready_yield_is_not_a_workflow_reservation(self):
+        self.yield_record()
+        result = self.run_sample()
+        self.assertEqual(result['owners'], [membership.OWNER])
+        self.assertEqual(result['reservedProcesses'], 24)
+
+    def test_unready_yield_cannot_hide_positive_or_unknown_work(self):
+        value = self.yield_record()
+        for patch_value in (dict(acceptedAtEpoch=10), dict(remainingNewUpperBytes=1), dict(controller=self.record['controller']), dict(workflow=1), dict(workflow=1, resources=0)):
+            (self.records / 'yielding.json').write_text(json.dumps(dict(value, **patch_value)))
+            with self.assertRaisesRegex(AssertionError, 'yield cannot hide'):
+                self.run_sample()
+        self.yield_record()
+        self.rows[900] = dict(parent=1, birth='Thu Nov 5 00:00:01 2026', rss=4096, command='python3 /private/tmp/mcr-yielding/payload.py')
+        with self.assertRaisesRegex(AssertionError, 'unresolved workflow'):
+            self.run_sample()
+
+    def test_unready_yield_needs_actual_prior_full_to_reconcile_legacy(self):
+        value = self.yield_record()
+        self.legacy = [dict(owner='yielding', cohort='previous', kind='source', state='ACTUAL_ACCEPT_NO_FULL',
+                            acceptedAtEpoch=9, processCap=80, rssCapGiB=1, remainingNewConservativeUpperBytes=0)]
+        with self.assertRaises(AssertionError):
+            self.run_sample()
+        prior = dict(ownerThreadId='yielding', offerId='previous', state='FULL', acceptedAtEpoch=9, actualFullEpoch=20, resources=0)
+        (self.records / 'yielding.json').write_text(json.dumps(dict(value, previousActualExecution=prior)))
+        self.assertEqual(self.run_sample()['reservedProcesses'], 24)
+
     def test_modern_full_entry_does_not_restore_a_closed_claim(self):
         self.legacy = [dict(ownerThreadId='closed', offerId='closed', state='FULL', processCap=96)]
         self.assertEqual(self.run_sample()['reservedProcesses'], 24)
@@ -130,6 +163,30 @@ class MembershipTests(unittest.TestCase):
         self.rows[900] = dict(parent=1, birth='Thu Nov 5 00:00:01 2026', rss=4096,
                              command="/bin/zsh -c python3 - <<'PY'\np='/private/tmp/mcr-metadata/controller.py'\nPY")
         self.assertEqual(self.run_sample()['owners'], [membership.OWNER])
+
+    def test_exact_new_full_resamples_a_stale_terminal_claim(self):
+        self.rows[777].update(command='(Python)', status='Z')
+        def after_records():
+            latest = dict(self.record, state='FULL', resources=0, actualFullEpoch=20)
+            (self.records / (membership.OWNER + '.json')).write_text(json.dumps(latest))
+            return self.rows
+        with patch.object(membership, 'processes', after_records):
+            result = self.run_sample()
+        self.assertEqual(result['owners'], [])
+        self.assertEqual(result['reservedProcesses'], 0)
+
+    def test_incomplete_or_other_booking_full_cannot_release_terminal_claim(self):
+        self.rows[777].update(command='(Python)', status='Z')
+        for fields in (dict(resources=1), dict(offerId='other'), dict(acceptedAtEpoch=11)):
+            with self.subTest(fields=fields):
+                def after_records():
+                    latest = dict(self.record, state='FULL', resources=0, actualFullEpoch=20)
+                    latest.update(fields)
+                    (self.records / (membership.OWNER + '.json')).write_text(json.dumps(latest))
+                    return self.rows
+                with patch.object(membership, 'processes', after_records):
+                    with self.assertRaisesRegex(AssertionError, 'independently verified'):
+                        self.run_sample()
 
     def test_unknown_relative_python_script_still_fails_closed(self):
         self.rows[900] = dict(parent=1, birth='Thu Nov 5 00:00:01 2026', rss=4096,

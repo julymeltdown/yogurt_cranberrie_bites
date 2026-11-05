@@ -20,6 +20,12 @@ for(const [name,sha256] of Object.entries(expected)) {
  const target=resolve(overlay,path.slice('frontend/src/'.length)); await mkdir(dirname(target),{recursive:true}); await writeFile(target,bytes,{mode:0o444})
  inputs.push({path,sha256,bytes:bytes.length,privateOverlay:target})
 }
+const locationProducer='c40abc748da86721c85008261f5a604002cf5d92', locationPath='frontend/src/shared/api/paradise-city-v1/location.ts'
+const locationBytes=execFileSync('git',['show',`${locationProducer}:${locationPath}`],{cwd:root})
+const locationSHA='4a0aef3c3e93b79d389aaa0a6ab02079b1291b9462422b2dd64202359a09296e'
+assert.equal(createHash('sha256').update(locationBytes).digest('hex'),locationSHA)
+const locationTarget=resolve(overlay,locationPath.slice('frontend/src/'.length)); await mkdir(dirname(locationTarget),{recursive:true}); await writeFile(locationTarget,locationBytes,{mode:0o444})
+inputs.push({path:locationPath,sha256:locationSHA,bytes:locationBytes.length,privateOverlay:locationTarget,producer:locationProducer})
 const config=resolve(temporary,'full-ordinary-tsconfig.json')
 await writeFile(config,JSON.stringify({extends:resolve(front,'tsconfig.json'),include:[resolve(front,'src'),resolve(front,'vite.config.ts'),resolve(front,'e2e/venue-map')],compilerOptions:{incremental:false,rootDirs:[resolve(front,'src'),overlay],typeRoots:[resolve(front,'node_modules/@types'),resolve(front,'node_modules')],paths:{zod:[resolve(front,'node_modules/zod')]}}},null,2))
 await writeFile(resolve(process.env.MCR_VENU_OUTPUT,'type-input-receipt.json'),JSON.stringify({producer,inputs,classification:'ACTUAL_SPATIAL_PRODUCER_INPUT_NOT_PRODUCER_ACCEPTANCE',ordinaryProject:resolve(front,'tsconfig.json'),changes:['rootDirs: five exact immutable Git producer modules in read-only private TMP','typeRoots: original explicit vite/client anchored to retained frontend dependencies; inherited types unchanged','zod: existing read-only package resolution','incremental:false','include: all ordinary source/config plus own actual-App fixture, no exclusions']},null,2)+'\n')

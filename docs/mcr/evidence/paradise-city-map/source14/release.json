@@ -1,0 +1,21 @@
+{
+  "type": "FULL",
+  "role": "guardian",
+  "lease": "MAP-LFACTORY-SOURCE14-0329",
+  "at": 1793849918.615365,
+  "exitCode": 1,
+  "failure": "RuntimeError('Command failed; preserve immutable attempt and close offer')",
+  "peak": {
+    "processes": 7,
+    "rssBytes": 2211577856,
+    "newBytes": 106074112,
+    "tmpBytes": 81920,
+    "wholeBytes": 6678949888
+  },
+  "minimumFreeBytes": 23362678784,
+  "livePids": [],
+  "resources": 0,
+  "privateTmpAbsent": true,
+  "portClosed": true,
+  "retainedDependencyRecords": 11480
+}

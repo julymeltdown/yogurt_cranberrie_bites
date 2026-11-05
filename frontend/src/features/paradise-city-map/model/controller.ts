@@ -33,6 +33,7 @@ export function createVenueMapController({ venue, authority, capabilities, meeti
   let busy = false, notice = '', uncertainKey: string | null = null, operation = 0, uploadGeneration = 0
   let localPause = false, pauseKey: string | null = null, pauseCommand: AbortController | null = null
   let command: AbortController | null = null, uploading: AbortController | null = null
+  let noteRead: AbortController | null = null
   let wake: ReturnType<typeof setTimeout> | undefined
   let state: MapState
   let focusRequest: MapState['focusRequest'] = null, focusSerial = 0
@@ -56,7 +57,7 @@ export function createVenueMapController({ venue, authority, capabilities, meeti
     if (!snapshot) {
       selection = current() && selection?.kind === 'landmark' && landmark(selection.id) ? selection : null
       if (!current()) focusRequest = null
-      draft = null; command?.abort(); pauseCommand?.abort(); uploading?.abort(); uploadGeneration++; phone.stop(); busy = false; uncertainKey = null; pauseKey = null
+      draft = null; command?.abort(); pauseCommand?.abort(); uploading?.abort(); noteRead?.abort(); uploadGeneration++; phone.stop(); busy = false; uncertainKey = null; pauseKey = null
     } else {
       const selectedFriend = selection?.kind === 'friend' ? selection.id : null
       if (selectedFriend && !people.some(p => p.userId === selectedFriend)) selection = null
@@ -73,7 +74,8 @@ export function createVenueMapController({ venue, authority, capabilities, meeti
     state = { tab, selection, draft, snapshot, people, notes, busy, uncertain: uncertainKey !== null || pauseKey !== null, notice, disposed: !active,
       meeting: borrowed, phone: phone.read(), focusRequest }
     if (snapshot && now !== null) {
-      const deadlines = [snapshot.accessUntilMs, snapshot.self?.freshUntilMs, ...snapshot.friends.map(p => p.freshUntilMs), ...snapshot.notes.map(n => n.expiresAtMs)]
+      const deadlines = [snapshot.accessUntilMs, snapshot.self?.freshUntilMs, ...snapshot.friends.map(p => p.freshUntilMs), ...snapshot.notes.map(n => n.expiresAtMs),
+        ...(snapshot.locationRequests?.incoming ?? []).map(r => r.expiresAtMs), ...(snapshot.locationRequests?.outgoing ?? []).map(r => r.expiresAtMs)]
         .filter((value): value is number => value !== null && value !== undefined && Number.isFinite(value) && value > now)
       if (deadlines.length) wake = setTimeout(refresh, Math.min(2147483647, Math.max(1, Math.min(...deadlines) - now)))
     }
@@ -123,7 +125,7 @@ export function createVenueMapController({ venue, authority, capabilities, meeti
   }
   function dispose() {
     if (!active) return
-    active = false; clearTimeout(wake); operation++; command?.abort(); pauseCommand?.abort(); stopPhone(); selection = null; draft = null; busy = false; uncertainKey = null; pauseKey = null
+    active = false; clearTimeout(wake); operation++; command?.abort(); pauseCommand?.abort(); noteRead?.abort(); stopPhone(); selection = null; draft = null; busy = false; uncertainKey = null; pauseKey = null
     for (const stop of stops.splice(0)) stop()
     authority.signal.removeEventListener('abort', invalidate); refresh(); listeners.clear()
   }
@@ -133,6 +135,18 @@ export function createVenueMapController({ venue, authority, capabilities, meeti
   if (!current()) invalidate()
   return {
     venue, read: () => state, subscribe(listener: () => void) { listeners.add(listener); return () => { listeners.delete(listener) } }, dispose,
+    canLoadNotes: !!capabilities.loadNotes, canLoadNoteThread: !!capabilities.loadNoteThread,
+    async loadNotes(id: string, thread = false) {
+      const place = landmark(id), method = thread ? capabilities.loadNoteThread : capabilities.loadNotes
+      if (!current() || busy || uncertainKey || pauseKey || state.meeting?.locked || !method || (!thread && !place) || thread && !state.notes.some(n => n.id === id)) return
+      noteRead?.abort(); const controller = new AbortController(); noteRead = controller
+      try {
+        const ctx = { scope: authority.scope, venue: venue.identity, signal: controller.signal }
+        const loaded = thread ? await capabilities.loadNoteThread!(id, ctx) : await capabilities.loadNotes!(place!.id, ctx)
+        if (current() && !controller.signal.aborted && noteRead === controller) { notice = loaded ? '' : 'Notes are unavailable for this place.'; refresh() }
+      } catch { if (current() && !controller.signal.aborted) { notice = 'Notes could not be read. Try again.'; refresh() } }
+      finally { if (noteRead === controller) noteRead = null }
+    },
     focus(intent: VenueMapFocusIntent) {
       const place = landmark(intent.landmarkId)
       if (!current() || !place || !sameScope(intent.scope, authority.scope) || !sameVenue(intent.venue, venue.identity) || state.meeting?.locked || busy || uncertainKey || pauseKey) return false
@@ -167,6 +181,14 @@ export function createVenueMapController({ venue, authority, capabilities, meeti
     },
     async checkIn(id: string) { const place = landmark(id); if (place && readSnapshot()?.rights.checkIn.includes(place.id)) await run(ctx => capabilities.checkIn(place.id, ctx), 'Check-in confirmed.') },
     async requestLocation(id: string) { if (state.people.some(p => p.userId === id && p.canRequest)) await run(ctx => capabilities.requestLocation(id, ctx), 'Location request sent.') },
+    async decideLocationRequest(id: string, decision: 'APPROVE' | 'DENY' | 'CANCEL') {
+      const snapshot = readSnapshot(), requests = decision === 'CANCEL' ? snapshot?.locationRequests?.outgoing : snapshot?.locationRequests?.incoming
+      const request = requests?.find(r => r.id === id), self = authority.scope.userId
+      const counterpart = request && (decision === 'CANCEL' ? request.subjectId : request.requesterId)
+      if (!request || !snapshot || snapshot.serverNowMs === null || request.expiresAtMs <= snapshot.serverNowMs || !capabilities.decideLocationRequest
+        || (decision === 'CANCEL' ? request.requesterId !== self : request.subjectId !== self) || !state.people.some(p => p.userId === counterpart && p.visible)) return
+      await run(ctx => capabilities.decideLocationRequest!(id, decision, ctx), decision === 'APPROVE' ? 'Location request approved.' : decision === 'DENY' ? 'Location request denied.' : 'Location request cancelled.')
+    },
     async openMeeting(action: 'INVITE' | 'MESSAGE', person: Pick<PersonView, 'userId'>, place: LandmarkView | undefined, origin: 'map-friend' | 'map-landmark' | 'map-note') {
       const snap = readSnapshot(), fixed = place ? landmark(place.id) : undefined
       const association = fixed?.meetingContext ?? undefined
