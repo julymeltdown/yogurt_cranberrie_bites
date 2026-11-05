@@ -1,0 +1,207 @@
+{
+  "status": "CLIENT_SOURCE_AND_CONTROLLED_DEFAULT_BROWSER_QUALIFIED_PENDING_PUBLICATION",
+  "source": "a44ecee1809f8c4d0b951418396464e5a005b262",
+  "base": "2cc7f5ded62491fc5d5b9d17dd5cb0691bc10d0c",
+  "canonicalIdentity": "db1bacda16c1e0cf69c7a00b9729e277e9e31863",
+  "canonical150": "83f55f9639273a7994a30d6a591e642f7e4b674f",
+  "contractInput": "7c563cf09fe971b904ac9549f5e3e8fe1391d94a",
+  "offer": "FE41-REQUEST-FORWARDING-FUNCTIONAL-20261104T2349Z",
+  "readset": "browser-freeze-2349-C.json",
+  "inputs": 5590,
+  "allReadsetControlExecutablePinsMatchedAfter": true,
+  "jobs": [
+    {
+      "attempt": "forwardingTypesA",
+      "head": "9007f9734c0db2f92ca0d2a222df41e40c3f04c1",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/frontend/node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--allowImportingTsExtensions",
+        "--project",
+        "frontend/tsconfig.json"
+      ],
+      "exitCode": 0,
+      "primaryPeaks": {
+        "whole": 10698542104,
+        "growth": 1366145,
+        "temporary": 1362660,
+        "durable": 3485,
+        "files": 29504,
+        "processes": 4,
+        "rss": 1983447040
+      },
+      "independentPeaks": {
+        "processes": 4,
+        "rss": 1953251328,
+        "temporary": 1362660
+      }
+    },
+    {
+      "attempt": "forwardingLintA",
+      "head": "9007f9734c0db2f92ca0d2a222df41e40c3f04c1",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/frontend/node_modules/oxlint/bin/oxlint",
+        "--deny-warnings",
+        "frontend/src/app/pre-world-policy",
+        "frontend/src/app/ports.ts",
+        "frontend/src/app/WorldShell.tsx"
+      ],
+      "exitCode": 0,
+      "primaryPeaks": {
+        "whole": 10697186817,
+        "growth": 10858,
+        "temporary": 0,
+        "durable": 10858,
+        "files": 29510,
+        "processes": 3,
+        "rss": 125927424
+      },
+      "independentPeaks": {
+        "processes": 2,
+        "rss": 125829120,
+        "temporary": 0
+      }
+    },
+    {
+      "attempt": "forwardingBrowserA",
+      "head": "9007f9734c0db2f92ca0d2a222df41e40c3f04c1",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "frontend/src/app/pre-world-policy/__tests__/native.mjs"
+      ],
+      "exitCode": 1,
+      "primaryPeaks": {
+        "whole": 12373895845,
+        "growth": 30056016,
+        "temporary": 29946949,
+        "durable": 97505,
+        "files": 30414,
+        "processes": 11,
+        "rss": 2327232512
+      },
+      "independentPeaks": {
+        "processes": 11,
+        "rss": 2331508736,
+        "temporary": 29946949
+      }
+    },
+    {
+      "attempt": "forwardingBrowserB",
+      "head": "42bf6538058362fb31c2c2d9f6323a4919e1feff",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "frontend/src/app/pre-world-policy/__tests__/native.mjs"
+      ],
+      "exitCode": 1,
+      "primaryPeaks": {
+        "whole": 12375040923,
+        "growth": 31201094,
+        "temporary": 29946949,
+        "durable": 1194842,
+        "files": 30471,
+        "processes": 11,
+        "rss": 2647916544
+      },
+      "independentPeaks": {
+        "processes": 11,
+        "rss": 2654322688,
+        "temporary": 29946949
+      }
+    },
+    {
+      "attempt": "forwardingBrowserC",
+      "head": "a44ecee1809f8c4d0b951418396464e5a005b262",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "frontend/src/app/pre-world-policy/__tests__/native.mjs"
+      ],
+      "exitCode": 0,
+      "primaryPeaks": {
+        "whole": 12377331065,
+        "growth": 33491236,
+        "temporary": 29964079,
+        "durable": 2417452,
+        "files": 30530,
+        "processes": 11,
+        "rss": 2723856384
+      },
+      "independentPeaks": {
+        "processes": 11,
+        "rss": 2725937152,
+        "temporary": 29964079
+      }
+    },
+    {
+      "attempt": "forwardingLintB",
+      "head": "a44ecee1809f8c4d0b951418396464e5a005b262",
+      "command": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/frontend/node_modules/oxlint/bin/oxlint",
+        "--deny-warnings",
+        "frontend/src/app/pre-world-policy",
+        "frontend/src/app/ports.ts",
+        "frontend/src/app/WorldShell.tsx"
+      ],
+      "exitCode": 0,
+      "primaryPeaks": {
+        "whole": 10700750697,
+        "growth": 3574738,
+        "temporary": 0,
+        "durable": 2421534,
+        "files": 29650,
+        "processes": 3,
+        "rss": 123240448
+      },
+      "independentPeaks": {
+        "processes": 2,
+        "rss": 123207680,
+        "temporary": 0
+      }
+    }
+  ],
+  "browserReport": "forwardingBrowserC-browser/report.json",
+  "captures": [
+    "maintenance",
+    "minimum-client",
+    "ordinary-503",
+    "consumed-normal",
+    "late-policy",
+    "event-not-found",
+    "expired-bootstrap",
+    "bootstrap-401",
+    "bootstrap-403"
+  ],
+  "captureCount": 9,
+  "captureCountCorrection": "Initial direct FULL message and allocator echo said8; actual final report has9, unchanged.",
+  "fullReceipt": "full-browser-2349.json",
+  "rawFailuresPreserved": [
+    "forwardingBrowserA-browser/report.json",
+    "forwardingBrowserB-browser/report.json"
+  ],
+  "repairs": [
+    {
+      "commit": "42bf6538058362fb31c2c2d9f6323a4919e1feff",
+      "cause": "Reload correctly clears in-memory Auth and displays current destination sign-in gate, not fixture login form."
+    },
+    {
+      "commit": "a44ecee1809f8c4d0b951418396464e5a005b262",
+      "cause": "Full mobile panel pauses covered World; use normal Reduce panel control before socket assertions."
+    }
+  ],
+  "qualificationReuse": "18 focused tests atf15782d79 + factory/fulltypes source evidence retained; no unchanged matrix replay. Product TypeScript unchanged since9007, final driver changes onlyMJS and final ownedlint passed.",
+  "limits": "One390 viewport, serial contexts, actual main/canonical UI Auth/admission/HTTP/C03/Phaser with controlled C05 and selected-art fixtures. TEST ONLY known catalog pair; no actual publisher/catalog, native service HTTP, multiuser, device, load or full visual-reference acceptance.",
+  "resource": "all execution claims0 before docs; same original deadline throughout all failed/fixed/final jobs",
+  "documentationBooking": {
+    "positiveGrowthCap": 16777216,
+    "expiresUTC": "2026-11-05T00:20:00Z",
+    "baselineMeasuredAt": 1793836680.1697762,
+    "baselineOwnedAndSharedGitBytes": 2425631165,
+    "priorWholeHighwaterBytes": 12377331065,
+    "closedRuntimeNewCapNotReset": 268435456
+  },
+  "provenance": "Newly authored rendering/controller/transport; TESTONLY actualmain Auth/C03/C05 fixture imported unchanged from sharing-safety-default/native.tsx; canonical db1 identity and coherent83 registry intaken via merges, not reauthored."
+}

@@ -1,0 +1,10 @@
+{
+  "failure": null,
+  "peaks": {
+    "processes": 11,
+    "rss": 2263760896,
+    "temporary": 29946885
+  },
+  "finished": 1793834797.0986009,
+  "guardianSha256": "c183b1936ad477c230131335fd0297891b0d205e8f9512bfcbf1db2f1f7eee4e"
+}

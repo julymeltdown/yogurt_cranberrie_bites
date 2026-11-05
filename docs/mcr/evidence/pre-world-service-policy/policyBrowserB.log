@@ -1,0 +1,18 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: {"result":"FAIL","cases":[],"errors":[],"limits":"One390 viewport, serial contexts, actual main/canonical UI Auth/admission/HTTP/C03/Phaser with controlled C05 and selected-art fixtures. TEST ONLY known catalog pair; no actual publisher/catalog, native service HTTP, multiuser, device, load or full visual-reference acceptance.","stage":"trusted maintenance expiry and manual version retry","failure":"Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('heading', { name: 'World entry is paused', exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"to.be.visible\" with timeout 5000ms\n  - waiting for getByRole('heading', { name: 'World entry is paused', exact: true })\n","closed":true}
+
+'FAIL' !== 'PASS'
+
+    at file:///Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/frontend/src/app/pre-world-policy/__tests__/native.mjs:120:8 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 'FAIL',
+  expected: 'PASS',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.22.2

@@ -1,0 +1,26 @@
+{
+  "state": "PRE_CHILD_HIGHER_PEER_CLAIM_RECONCILED",
+  "originalAcceptance": "acceptance-browser-2320.json",
+  "mapHigherClaim": {
+    "processCap": 24,
+    "rssGiB": 3.5
+  },
+  "mapActualFullUtc": "2026-11-04T23:23:03.084259Z",
+  "mapRemainingGrowth": 0,
+  "source": "Direct6b5d custody relay ofMap40fde FULL; nativefailed, onlyreleasefactconsumed",
+  "rootAssemblyActualFullUtc": "2026-11-04T23:18:01.839548Z",
+  "conservativeRemainingPeers": {
+    "AprocessCap": 32,
+    "ArssGiB": 8,
+    "CstatusProcessCap": 8,
+    "CstatusRssGiB": 1,
+    "ownProcessCap": 24,
+    "ownRssGiB": 3,
+    "sumProcessCaps": 64,
+    "sumRssGiB": 12
+  },
+  "otherGrowthBytesUnchanged": 6442450944,
+  "clocksUnchanged": true,
+  "ownChildNotDispatchedUntilMapReleaseReconciled": true,
+  "rawAcceptancePreserved": true
+}

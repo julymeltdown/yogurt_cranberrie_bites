@@ -1,0 +1,57 @@
+{
+  "offer": "FE41-REQUEST-FORWARDING-FUNCTIONAL-20261104T2349Z",
+  "head": "42bf6538058362fb31c2c2d9f6323a4919e1feff",
+  "job": "browser",
+  "argv": [
+    "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+    "frontend/src/app/pre-world-policy/__tests__/native.mjs"
+  ],
+  "started": 1793836325.809624,
+  "cutoff": 1793836536,
+  "release": 1793836596,
+  "carryFiles": 30197,
+  "carryBytes": 12343839829,
+  "dependencyFiles": 11104,
+  "dependencyBytes": 408236853,
+  "peaks": {
+    "whole": 12375040923,
+    "growth": 31201094,
+    "temporary": 29946949,
+    "durable": 1194842,
+    "files": 30471,
+    "processes": 11,
+    "rss": 2647916544
+  },
+  "minFree": 15441608704,
+  "exitCode": 1,
+  "sourcePins": {
+    "frontend/src/app/pre-world-policy/production.ts": "a772527ce2a7b996ed36a141a863d3d91628224c89743e93add834d09a9b4556",
+    "frontend/src/app/pre-world-policy/contract.ts": "6ac1e058a174447326e24fefc69c9c257f1e4606a7e9c803cd944f553a2380de",
+    "frontend/src/app/pre-world-policy/usePolicyAttempt.ts": "ed9d2d7a69096846a180201470864903d6cca30cf4f7443b64c132c1bca48125",
+    "frontend/src/app/pre-world-policy/model.ts": "7e4e63aa17eb4a67d290030d8ebfedd1f906032407f098ddfb1be7f5adf400ed",
+    "frontend/src/app/pre-world-policy/PolicyNotice.tsx": "8b547aee36ff36503fcc1d36b5d9ebb757daf5b3b7c4a5a6da6153dff44e1cb6",
+    "frontend/src/app/pre-world-policy/transport.ts": "165cd778df43c783d9984db1cc9659aeb6097d6e41d04345a20ca62eeb6017e2",
+    "frontend/src/app/pre-world-policy/controller.ts": "b94b193af251869b53e9ee9b8ddcee96346b6067118479a5f2823017ce520126",
+    "frontend/src/app/pre-world-policy/__tests__/fixtures.ts": "e42a11653fd349198339258eb3b00eefc640c7f5923c0499e0cd7ed7fafd73b7",
+    "frontend/src/app/pre-world-policy/__tests__/attempt.test.tsx": "55b9707c609b4b4c96d8ac28991451d574ceb03eb48d8fe76c4f4eda68dac493",
+    "frontend/src/app/pre-world-policy/__tests__/controller.test.ts": "64c100afddf6b8ebd67ca5e70f743b4c6b8b8e460540202b1472bf680fb6551c",
+    "frontend/src/app/pre-world-policy/__tests__/native.html": "4c82f4a8e37b5e7bd0fd3ad5449dba34262eda2f7b2f5d9b4d123ab55bbb7ce0",
+    "frontend/src/app/pre-world-policy/__tests__/native.ts": "132125ef61974e8ae7dd9231822c0d9613376a1e8a5bb5fa87b014be76874838",
+    "frontend/src/app/pre-world-policy/__tests__/contract.test.ts": "018dd0607482cdd7bfc904d4240599d58e2d967afde535fd0202bfc98d6ff234",
+    "frontend/src/app/pre-world-policy/__tests__/native.mjs": "b5e6ee94771ce68142efaef2329715321bdd4dc5e53494cb71b9a4f05bda57cb",
+    "frontend/src/app/pre-world-policy/__tests__/vitest.config.ts": "dad379f08ce9ecf0ac1859d7c7d7ae29a2ccdf06328f6bbedccb331e63e58073"
+  },
+  "locks": {
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+    "frontend/package.json": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3"
+  },
+  "startFree": 15471562752,
+  "otherWorstGrowth": 2684354560,
+  "startFloorGiB": 11,
+  "finished": 1793836336.767961,
+  "childrenRemaining": [],
+  "linkAbsent": true,
+  "scratchAbsent": true,
+  "freeAfter": 15461441536,
+  "releasedBeforeDeadline": true
+}

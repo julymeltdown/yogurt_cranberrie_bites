@@ -1,0 +1,59 @@
+{
+  "status": "SOURCE_PASS_PRODUCTION_JOIN_PENDING",
+  "qualifiedHead": "f15782d79dd1c97eb06b1c446b5469ebdcbe1491",
+  "contractInput": "b4233d3e6d09e6b86576e1253b0c395e5dfb6faf",
+  "accepted": "acceptance-2125.json",
+  "readset": "source-freeze-2125.json",
+  "sourceInputs": 3601,
+  "readsetMismatches": [],
+  "commands": "source.py exactcommands",
+  "attempt": "expiryA",
+  "qualified": [
+    "18 focused tests",
+    "full nonincremental TypeScript including browser preparation",
+    "owned deny-warning lint",
+    "Node browser-driver syntax",
+    "planning check"
+  ],
+  "receipt": "expiryA.json",
+  "independentGuardian": "expiryA-guardian.json",
+  "guardianFailure": null,
+  "peaks": {
+    "whole": 4445573884,
+    "growth": 1445329,
+    "temporary": 1423948,
+    "durable": 4021,
+    "files": 27614,
+    "processes": 5,
+    "rss": 1818869760
+  },
+  "independentGuardianPeaks": {
+    "processes": 5,
+    "rss": 1822097408,
+    "temporary": 1423948
+  },
+  "minFree": 13324808192,
+  "actualFullUtc": "2026-11-04T21:06:00.087483Z",
+  "fullEpoch": 1793826360.087483,
+  "childrenRemaining": [],
+  "linkAbsent": true,
+  "scratchAbsent": true,
+  "closedOffer": true,
+  "resourcesReleasedBeforeDocumentation": true,
+  "releaseRecipients": [
+    "21d",
+    "Tools332b fresh2130 successor"
+  ],
+  "notRun": [
+    "actualgenerated150 operation invocation",
+    "qualified release API factory join",
+    "changed actual-main browser",
+    "real service-policy HTTP",
+    "device",
+    "multiuser",
+    "performance",
+    "full visual reference acceptance"
+  ],
+  "controlMismatches": [],
+  "lockMismatches": []
+}

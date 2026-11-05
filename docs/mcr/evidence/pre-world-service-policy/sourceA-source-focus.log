@@ -1,0 +1,276 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/frontend
+
+ ❯ src/app/pre-world-policy/__tests__/attempt.test.tsx (3 tests | 2 failed) 1088ms
+   × does not dispatch a discarded StrictMode attempt or restamp a mismatched privacy capture 1006ms
+   × clears a displayed trusted notice on expiry without automatic retry 9ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/app/pre-world-policy/__tests__/attempt.test.tsx > does not dispatch a discarded StrictMode attempt or restamp a mismatched privacy capture
+TestingLibraryElementError: Unable to find role="heading" and name "World entry is paused"
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"shell-gate"[39m
+    [36m>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"shell-link"[39m
+        [33mdata-discover[39m=[32m"true"[39m
+        [33mhref[39m=[32m"/"[39m
+      [36m>[39m
+        [0mMCR Concert World[0m
+      [36m</a>[39m
+      [36m<h1[39m
+        [33mtabindex[39m=[32m"-1"[39m
+      [36m>[39m
+        [0mEvent availability could not be confirmed[0m
+      [36m</h1>[39m
+      [36m<section[39m
+        [33maria-labelledby[39m=[32m"_r_1_"[39m
+        [33mclass[39m=[32m"mcr-feedback mcr-feedback--error"[39m
+        [33mrole[39m=[32m"alert"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mid[39m=[32m"_r_1_"[39m
+        [36m>[39m
+          [0mYour destination is saved[0m
+        [36m</h2>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"mcr-feedback__body"[39m
+        [36m>[39m
+          [36m<p>[39m
+            [0mWe could not obtain a current service decision. No World has been opened.[0m
+          [36m</p>[39m
+        [36m</div>[39m
+      [36m</section>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"shell-actions"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"mcr-button mcr-button--secondary "[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mCheck again[0m
+        [36m</button>[39m
+        [36m<a[39m
+          [33mclass[39m=[32m"shell-link"[39m
+          [33mdata-discover[39m=[32m"true"[39m
+          [33mhref[39m=[32m"/"[39m
+        [36m>[39m
+          [0mBack to home[0m
+        [36m</a>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+
+Ignored nodes: comments, script, style
+[36m<html>[39m
+  [36m<head />[39m
+  [36m<body>[39m
+    [36m<div>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"shell-gate"[39m
+      [36m>[39m
+        [36m<a[39m
+          [33mclass[39m=[32m"shell-link"[39m
+          [33mdata-discover[39m=[32m"true"[39m
+          [33mhref[39m=[32m"/"[39m
+        [36m>[39m
+          [0mMCR Concert World[0m
+        [36m</a>[39m
+        [36m<h1[39m
+          [33mtabindex[39m=[32m"-1"[39m
+        [36m>[39m
+          [0mEvent availability could not be confirmed[0m
+        [36m</h1>[39m
+        [36m<section[39m
+          [33maria-labelledby[39m=[32m"_r_1_"[39m
+          [33mclass[39m=[32m"mcr-feedback mcr-feedback--error"[39m
+          [33mrole[39m=[32m"alert"[39m
+        [36m>[39m
+          [36m<h2[39m
+            [33mid[39m=[32m"_r_1_"[39m
+          [36m>[39m
+            [0mYour destination is saved[0m
+          [36m</h2>[39m
+          [36m<div[39m
+            [33mclass[39m=[32m"mcr-feedback__body"[39m
+          [36m>[39m
+            [36m<p>[39m
+              [0mWe could not obtain a current service decision. No World has been opened.[0m
+            [36m</p>[39m
+          [36m</div>[39m
+        [36m</section>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"shell-actions"[39m
+        [36m>[39m
+          [36m<button[39m
+            [33mclass[39m=[32m"mcr-button mcr-button--secondary "[39m
+            [33mtype[39m=[32m"button"[39m
+          [36m>[39m
+            [0mCheck again[0m
+          [36m</button>[39m
+          [36m<a[39m
+            [33mclass[39m=[32m"shell-link"[39m
+            [33mdata-discover[39m=[32m"true"[39m
+            [33mhref[39m=[32m"/"[39m
+          [36m>[39m
+            [0mBack to home[0m
+          [36m</a>[39m
+        [36m</div>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</body>[39m
+[36m</html>[39m
+ ❯ waitForWrapper ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/wait-for.js:163:27
+ ❯ src/app/pre-world-policy/__tests__/attempt.test.tsx:46:9
+     44|   }
+     45|   const view = render(<StrictMode><MemoryRouter><Harness /></MemoryRou…
+     46|   await waitFor(() => expect(screen.getByRole('heading', { name: 'Worl…
+       |         ^
+     47|   expect(port.read).toHaveBeenCalledTimes(1)
+     48|   expect(claims[0]?.scope).toEqual(privacyScope)
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  src/app/pre-world-policy/__tests__/attempt.test.tsx > clears a displayed trusted notice on expiry without automatic retry
+TestingLibraryElementError: Unable to find an accessible element with the role "heading" and name "World entry is paused"
+
+Here are the accessible roles:
+
+  link:
+
+  Name "MCR Concert World":
+  [36m<a[39m
+    [33mclass[39m=[32m"shell-link"[39m
+    [33mdata-discover[39m=[32m"true"[39m
+    [33mhref[39m=[32m"/"[39m
+  [36m/>[39m
+
+  Name "Back to home":
+  [36m<a[39m
+    [33mclass[39m=[32m"shell-link"[39m
+    [33mdata-discover[39m=[32m"true"[39m
+    [33mhref[39m=[32m"/"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  heading:
+
+  Name "Event availability could not be confirmed":
+  [36m<h1[39m
+    [33mtabindex[39m=[32m"-1"[39m
+  [36m/>[39m
+
+  Name "Your destination is saved":
+  [36m<h2[39m
+    [33mid[39m=[32m"_r_2_"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  alert:
+
+  Name "Your destination is saved":
+  [36m<section[39m
+    [33maria-labelledby[39m=[32m"_r_2_"[39m
+    [33mclass[39m=[32m"mcr-feedback mcr-feedback--error"[39m
+    [33mrole[39m=[32m"alert"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+  paragraph:
+
+  Name "":
+  [36m<p />[39m
+
+  --------------------------------------------------
+  button:
+
+  Name "Check again":
+  [36m<button[39m
+    [33mclass[39m=[32m"mcr-button mcr-button--secondary "[39m
+    [33mtype[39m=[32m"button"[39m
+  [36m/>[39m
+
+  --------------------------------------------------
+
+Ignored nodes: comments, script, style
+[36m<body>[39m
+  [36m<div>[39m
+    [36m<div[39m
+      [33mclass[39m=[32m"shell-gate"[39m
+    [36m>[39m
+      [36m<a[39m
+        [33mclass[39m=[32m"shell-link"[39m
+        [33mdata-discover[39m=[32m"true"[39m
+        [33mhref[39m=[32m"/"[39m
+      [36m>[39m
+        [0mMCR Concert World[0m
+      [36m</a>[39m
+      [36m<h1[39m
+        [33mtabindex[39m=[32m"-1"[39m
+      [36m>[39m
+        [0mEvent availability could not be confirmed[0m
+      [36m</h1>[39m
+      [36m<section[39m
+        [33maria-labelledby[39m=[32m"_r_2_"[39m
+        [33mclass[39m=[32m"mcr-feedback mcr-feedback--error"[39m
+        [33mrole[39m=[32m"alert"[39m
+      [36m>[39m
+        [36m<h2[39m
+          [33mid[39m=[32m"_r_2_"[39m
+        [36m>[39m
+          [0mYour destination is saved[0m
+        [36m</h2>[39m
+        [36m<div[39m
+          [33mclass[39m=[32m"mcr-feedback__body"[39m
+        [36m>[39m
+          [36m<p>[39m
+            [0mWe could not obtain a current service decision. No World has been opened.[0m
+          [36m</p>[39m
+        [36m</div>[39m
+      [36m</section>[39m
+      [36m<div[39m
+        [33mclass[39m=[32m"shell-actions"[39m
+      [36m>[39m
+        [36m<button[39m
+          [33mclass[39m=[32m"mcr-button mcr-button--secondary "[39m
+          [33mtype[39m=[32m"button"[39m
+        [36m>[39m
+          [0mCheck again[0m
+        [36m</button>[39m
+        [36m<a[39m
+          [33mclass[39m=[32m"shell-link"[39m
+          [33mdata-discover[39m=[32m"true"[39m
+          [33mhref[39m=[32m"/"[39m
+        [36m>[39m
+          [0mBack to home[0m
+        [36m</a>[39m
+      [36m</div>[39m
+    [36m</div>[39m
+  [36m</div>[39m
+[36m</body>[39m
+ ❯ Object.getElementError ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/config.js:37:19
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:76:38
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:52:17
+ ❯ ../../../mcr/frontend/node_modules/.pnpm/@testing-library+dom@10.4.1/node_modules/@testing-library/dom/dist/query-helpers.js:95:19
+ ❯ src/app/pre-world-policy/__tests__/attempt.test.tsx:71:19
+     69|     render(<MemoryRouter><Harness /></MemoryRouter>)
+     70|     await act(async () => { await vi.advanceTimersByTimeAsync(0) })
+     71|     expect(screen.getByRole('heading', { name: 'World entry is paused'…
+       |                   ^
+     72|     await act(async () => { await vi.advanceTimersByTimeAsync(100) })
+     73|     expect(screen.getByRole('heading', { name: 'Event availability cou…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  2 failed | 14 passed (16)
+   Start at  05:41:27
+   Duration  2.01s (transform 54ms, setup 0ms, import 188ms, tests 1.10s, environment 469ms)
+

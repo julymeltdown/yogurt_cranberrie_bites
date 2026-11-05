@@ -1,0 +1,91 @@
+{
+  "measured": 1793836235.230433,
+  "free": 15489069056,
+  "sourceFiles": 16091,
+  "sourceBytes": 1445877888,
+  "gitFiles": 689,
+  "gitBytes": 978058403,
+  "metadataFiles": 8,
+  "metadataBytes": 2268676,
+  "dependencyFiles": 11104,
+  "dependencyBytes": 408236853,
+  "outFiles": 113,
+  "outBytes": 6184376,
+  "browserFiles": 697,
+  "browserBytes": 1524099438,
+  "nodeFiles": 1,
+  "nodeBytes": 122564432,
+  "offer": "FE41-REQUEST-FORWARDING-FUNCTIONAL-20261104T2349Z",
+  "head": "9007f9734c0db2f92ca0d2a222df41e40c3f04c1",
+  "acceptedAt": 1793836236.985394,
+  "acceptedAtUTC": "2026-11-04T23:50:36.985394+00:00",
+  "cutoff": 1793836536,
+  "release": 1793836596,
+  "otherWorstGrowth": 2684354560,
+  "startFloorGiB": 11,
+  "minimumCarryBytes": 10697175959,
+  "minimumCarryFiles": 29499,
+  "priorCarryHighwaterBytes": 9173076521,
+  "freshLargestComponentBytes": 1524099438,
+  "fullFreshCarryBytes": 4481105690,
+  "conservativeBrowserCarryBytes": 12343839829,
+  "wholeCapBytes": 15032385536,
+  "newCapBytes": 268435456,
+  "temporaryCapBytes": 201326592,
+  "durableCapBytes": 67108864,
+  "filesCap": 40000,
+  "processCap": 24,
+  "rssCapBytes": 3221225472,
+  "sourceInputs": 5590,
+  "controls": {
+    "guardian.py": "c183b1936ad477c230131335fd0297891b0d205e8f9512bfcbf1db2f1f7eee4e",
+    "admission.py": "cb6512429cc15189113529b36e9cb303d2d36cb147ee8a93d1e9b35d0e620830",
+    "lease.py": "6b8f035e409a1f570ced93bc455a5dfa8ffa5b6e7ed16e79e67b87560f7cf2c2",
+    "source.py": "f65fc74b28e83089da8a95a5788797c592662ed70c773d963c86a2c5fa968746"
+  },
+  "externalExecutables": {
+    "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome": "3f0acaf1e585195596d73ffa1824baa72c3c3ac115b5cfc43d789030a3f23d93"
+  },
+  "predecessor": {
+    "offer": "BE39-OWNED-RUSTFMT-SOURCE2349",
+    "disposition": "DECLINED_PRE_ACCEPT_BEFORE23:50:07Z/all0; erroneous23:54timestamp corrected by owner",
+    "QA09actualFull": 1793836184.946213
+  },
+  "declaredHostReservation": {
+    "World": "DECLINED/all0",
+    "RootAuth19": "PREPARED_UNACCEPTED/all0",
+    "Gift": "DECLINED/all0",
+    "IN02": {
+      "processes": 10,
+      "rssGiB": 1.5
+    },
+    "PI01": {
+      "processes": 8,
+      "rssGiB": 2
+    },
+    "PI04": {
+      "processes": 12,
+      "rssGiB": 3
+    },
+    "own": {
+      "processes": 24,
+      "rssGiB": 3
+    },
+    "sumProcessCaps": 54,
+    "sumRssGiB": 9.5,
+    "global": 4,
+    "source": 3,
+    "browser": 1
+  },
+  "onlyJobs": [
+    "types",
+    "lint",
+    "browser"
+  ],
+  "reserveAfterAll": 12806705152,
+  "carryRule": "max(previous whole+largest fresh component, full fresh carry); browser additionally retains complete Chrome+Node",
+  "admissionUpdateAt": 1793836274.217549,
+  "admissionUpdateReason": "21d crossing prospective2353: PI01FULL; PI213native24/4/NEW256 prospective +PI04source12/3/NEW128+IN02ordinary10/1.5+own24/3=70ALL11.5RSS/G4/browser2; no target actualACCEPT reported. Preserve original baseline and fixed clocks.",
+  "rawAcceptance": "acceptance-browser-2349.json"
+}

@@ -1,0 +1,112 @@
+{
+  "status": "SOURCE_PASS_PRODUCTION_JOIN_PENDING",
+  "contractInput": "e11bd284136851544e54083c70c8679721b9ca1b",
+  "accepted": "acceptance-2045.json",
+  "readset": "source-freeze-C.json",
+  "sourceInputs": 3598,
+  "commands": "source.py exactcommands",
+  "rounds": [
+    {
+      "attempt": "sourceA",
+      "exitCode": 1,
+      "finished": 1793824890.29109,
+      "peaks": {
+        "whole": 4441496111,
+        "growth": 210883,
+        "temporary": 199066,
+        "durable": 11817,
+        "files": 27561,
+        "processes": 6,
+        "rss": 448118784
+      },
+      "minFree": 16538103808,
+      "guardian": {
+        "failure": null,
+        "peaks": {
+          "processes": 6,
+          "rss": 452247552,
+          "temporary": 173748
+        },
+        "finished": 1793824890.141867,
+        "guardianSha256": "c183b1936ad477c230131335fd0297891b0d205e8f9512bfcbf1db2f1f7eee4e"
+      },
+      "childrenRemaining": [],
+      "linkAbsent": true,
+      "scratchAbsent": true
+    },
+    {
+      "attempt": "sourceB",
+      "exitCode": 1,
+      "finished": 1793824917.0962691,
+      "peaks": {
+        "whole": 4443198904,
+        "growth": 1913676,
+        "temporary": 1362652,
+        "durable": 551021,
+        "files": 27567,
+        "processes": 5,
+        "rss": 1922613248
+      },
+      "minFree": 16650772480,
+      "guardian": {
+        "failure": null,
+        "peaks": {
+          "processes": 5,
+          "rss": 1893416960,
+          "temporary": 1362652
+        },
+        "finished": 1793824916.959135,
+        "guardianSha256": "c183b1936ad477c230131335fd0297891b0d205e8f9512bfcbf1db2f1f7eee4e"
+      },
+      "childrenRemaining": [],
+      "linkAbsent": true,
+      "scratchAbsent": true
+    },
+    {
+      "attempt": "sourceC",
+      "exitCode": 0,
+      "finished": 1793824939.764569,
+      "peaks": {
+        "whole": 4444128555,
+        "growth": 2843327,
+        "temporary": 1751932,
+        "durable": 1091385,
+        "files": 27584,
+        "processes": 5,
+        "rss": 1877573632
+      },
+      "minFree": 16530706432,
+      "guardian": {
+        "failure": null,
+        "peaks": {
+          "processes": 5,
+          "rss": 1900003328,
+          "temporary": 1423916
+        },
+        "finished": 1793824939.614839,
+        "guardianSha256": "c183b1936ad477c230131335fd0297891b0d205e8f9512bfcbf1db2f1f7eee4e"
+      },
+      "childrenRemaining": [],
+      "linkAbsent": true,
+      "scratchAbsent": true
+    }
+  ],
+  "qualified": [
+    "16 focused tests",
+    "full nonincremental TypeScript",
+    "owned deny-warning lint",
+    "planning check"
+  ],
+  "notRun": [
+    "actualgenerated150 operation invocation",
+    "qualified release API factory join",
+    "changed actual-main browser",
+    "real service-policy HTTP",
+    "device",
+    "multiuser",
+    "performance"
+  ],
+  "closedOffer": true,
+  "resourcesReleasedBeforeDocumentation": true,
+  "successor": "205expiryfix2045 directly notified with21d atFULL"
+}

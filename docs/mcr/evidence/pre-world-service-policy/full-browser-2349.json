@@ -1,0 +1,118 @@
+{
+  "offer": "FE41-REQUEST-FORWARDING-FUNCTIONAL-20261104T2349Z",
+  "acceptedAt": 1793836236.985394,
+  "cutoff": 1793836536,
+  "deadline": 1793836596,
+  "actualFull": 1793836416.257896,
+  "lastChildReleased": 1793836406.039388,
+  "allRemainingProcesses": 0,
+  "allRemainingRss": 0,
+  "remainingGrowthReservation": 0,
+  "remainingWholeReservation": 0,
+  "linkAbsent": true,
+  "scratchAbsent": true,
+  "jobs": [
+    {
+      "job": "types",
+      "head": "9007f9734c0db2f92ca0d2a222df41e40c3f04c1",
+      "exitCode": 0,
+      "finished": 1793836256.771323,
+      "peaks": {
+        "whole": 10698542104,
+        "growth": 1366145,
+        "temporary": 1362660,
+        "durable": 3485,
+        "files": 29504,
+        "processes": 4,
+        "rss": 1983447040
+      }
+    },
+    {
+      "job": "lint",
+      "head": "9007f9734c0db2f92ca0d2a222df41e40c3f04c1",
+      "exitCode": 0,
+      "finished": 1793836276.193378,
+      "peaks": {
+        "whole": 10697186817,
+        "growth": 10858,
+        "temporary": 0,
+        "durable": 10858,
+        "files": 29510,
+        "processes": 3,
+        "rss": 125927424
+      }
+    },
+    {
+      "job": "browser",
+      "head": "9007f9734c0db2f92ca0d2a222df41e40c3f04c1",
+      "exitCode": 1,
+      "finished": 1793836294.910757,
+      "peaks": {
+        "whole": 12373895845,
+        "growth": 30056016,
+        "temporary": 29946949,
+        "durable": 97505,
+        "files": 30414,
+        "processes": 11,
+        "rss": 2327232512
+      }
+    },
+    {
+      "job": "browser",
+      "head": "42bf6538058362fb31c2c2d9f6323a4919e1feff",
+      "exitCode": 1,
+      "finished": 1793836336.767961,
+      "peaks": {
+        "whole": 12375040923,
+        "growth": 31201094,
+        "temporary": 29946949,
+        "durable": 1194842,
+        "files": 30471,
+        "processes": 11,
+        "rss": 2647916544
+      }
+    },
+    {
+      "job": "browser",
+      "head": "a44ecee1809f8c4d0b951418396464e5a005b262",
+      "exitCode": 0,
+      "finished": 1793836397.9491782,
+      "peaks": {
+        "whole": 12377331065,
+        "growth": 33491236,
+        "temporary": 29964079,
+        "durable": 2417452,
+        "files": 30530,
+        "processes": 11,
+        "rss": 2723856384
+      }
+    },
+    {
+      "job": "lint",
+      "head": "a44ecee1809f8c4d0b951418396464e5a005b262",
+      "exitCode": 0,
+      "finished": 1793836406.039388,
+      "peaks": {
+        "whole": 10700750697,
+        "growth": 3574738,
+        "temporary": 0,
+        "durable": 2421534,
+        "files": 29650,
+        "processes": 3,
+        "rss": 123240448
+      }
+    }
+  ],
+  "peak": {
+    "whole": 12377331065,
+    "growth": 33491236,
+    "temporary": 29964079,
+    "durable": 2421534,
+    "files": 30530,
+    "processes": 11,
+    "rss": 2723856384
+  },
+  "minimumFree": 15417765888,
+  "freeAfter": 15458816000,
+  "browserResult": "PASS"
+}

@@ -1,0 +1,11 @@
+{
+  "result": "FAIL",
+  "cases": [],
+  "errors": [
+    "Failed to fetch dynamically imported module: http://127.0.0.1:5173/src/app/social-composition/__tests__/sharing-safety-default/native.mjs"
+  ],
+  "limits": "One390 viewport, serial contexts, actual main/canonical UI Auth/admission/HTTP/C03/Phaser with controlled C05 and selected-art fixtures. TEST ONLY known catalog pair; no actual publisher/catalog, native service HTTP, multiuser, device, load or full visual-reference acceptance.",
+  "stage": "trusted maintenance expiry and manual version retry",
+  "failure": "TimeoutError: locator.fill: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('Email', { exact: true })\u001b[22m\n",
+  "closed": true
+}

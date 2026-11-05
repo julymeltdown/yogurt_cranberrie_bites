@@ -1,0 +1,56 @@
+{
+  "offer": "FE41-EXPIRY-ASCII-SOURCE-20261104T2125Z",
+  "head": "f15782d79dd1c97eb06b1c446b5469ebdcbe1491",
+  "job": "source",
+  "argv": [
+    "python3",
+    "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/pre-world-service-policy/source.py"
+  ],
+  "started": 1793826348.4483688,
+  "cutoff": 1793826634,
+  "release": 1793826694,
+  "carryFiles": 27584,
+  "carryBytes": 4444128555,
+  "dependencyFiles": 11104,
+  "dependencyBytes": 408236853,
+  "peaks": {
+    "whole": 4445573884,
+    "growth": 1445329,
+    "temporary": 1423948,
+    "durable": 4021,
+    "files": 27614,
+    "processes": 5,
+    "rss": 1818869760
+  },
+  "minFree": 13324808192,
+  "exitCode": 0,
+  "sourcePins": {
+    "frontend/src/app/pre-world-policy/contract.ts": "0447334423ef99093027904a89ebe6122501096aacd0559e691def4069638355",
+    "frontend/src/app/pre-world-policy/usePolicyAttempt.ts": "ed9d2d7a69096846a180201470864903d6cca30cf4f7443b64c132c1bca48125",
+    "frontend/src/app/pre-world-policy/model.ts": "7e4e63aa17eb4a67d290030d8ebfedd1f906032407f098ddfb1be7f5adf400ed",
+    "frontend/src/app/pre-world-policy/PolicyNotice.tsx": "8b547aee36ff36503fcc1d36b5d9ebb757daf5b3b7c4a5a6da6153dff44e1cb6",
+    "frontend/src/app/pre-world-policy/transport.ts": "165cd778df43c783d9984db1cc9659aeb6097d6e41d04345a20ca62eeb6017e2",
+    "frontend/src/app/pre-world-policy/controller.ts": "b94b193af251869b53e9ee9b8ddcee96346b6067118479a5f2823017ce520126",
+    "frontend/src/app/pre-world-policy/__tests__/fixtures.ts": "e42a11653fd349198339258eb3b00eefc640c7f5923c0499e0cd7ed7fafd73b7",
+    "frontend/src/app/pre-world-policy/__tests__/attempt.test.tsx": "55b9707c609b4b4c96d8ac28991451d574ceb03eb48d8fe76c4f4eda68dac493",
+    "frontend/src/app/pre-world-policy/__tests__/controller.test.ts": "64c100afddf6b8ebd67ca5e70f743b4c6b8b8e460540202b1472bf680fb6551c",
+    "frontend/src/app/pre-world-policy/__tests__/native.html": "4c82f4a8e37b5e7bd0fd3ad5449dba34262eda2f7b2f5d9b4d123ab55bbb7ce0",
+    "frontend/src/app/pre-world-policy/__tests__/native.ts": "b4349a3528020ea1020c78ade289fba0b5150b314745f51192670165de2361c5",
+    "frontend/src/app/pre-world-policy/__tests__/contract.test.ts": "018dd0607482cdd7bfc904d4240599d58e2d967afde535fd0202bfc98d6ff234",
+    "frontend/src/app/pre-world-policy/__tests__/native.mjs": "5a2c03672eecd6c95c80cbe3bfeee78d29cabc615f9e9f25a7bf3964c9b98658",
+    "frontend/src/app/pre-world-policy/__tests__/vitest.config.ts": "dad379f08ce9ecf0ac1859d7c7d7ae29a2ccdf06328f6bbedccb331e63e58073"
+  },
+  "locks": {
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+    "frontend/package.json": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3"
+  },
+  "startFree": 13345107968,
+  "otherWorstGrowth": 3184752980,
+  "startFloorGiB": 11,
+  "finished": 1793826360.087483,
+  "childrenRemaining": [],
+  "linkAbsent": true,
+  "scratchAbsent": true,
+  "freeAfter": 14846640128,
+  "releasedBeforeDeadline": true
+}

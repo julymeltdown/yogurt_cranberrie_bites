@@ -1,0 +1,80 @@
+{
+  "status": "FACTORY_SOURCE_PASS_GENERATED_AND_BROWSER_PENDING",
+  "qualifiedHead": "fe5f62143cebc11d223826d1cac767efebf5c663",
+  "canonicalIdentity": "db1bacda16c1e0cf69c7a00b9729e277e9e31863",
+  "identitySource": "23c3937fd2cd9fa21d42a49e5b262bd14657ebe9",
+  "contractInput": "7c563cf09fe971b904ac9549f5e3e8fe1391d94a",
+  "accepted": "acceptance-factory.json",
+  "readset": "source-freeze-factory.json",
+  "sourceInputs": 3637,
+  "readsetMismatches": [],
+  "controlMismatches": [],
+  "lockMismatches": [],
+  "rounds": [
+    {
+      "receipt": "factoryA.json",
+      "job": "types",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/frontend/node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--allowImportingTsExtensions",
+        "--project",
+        "frontend/tsconfig.json"
+      ],
+      "exitCode": 0,
+      "independentGuardian": "factoryA-guardian.json",
+      "guardianFailure": null
+    },
+    {
+      "receipt": "factoryB.json",
+      "job": "lint",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/frontend/node_modules/oxlint/bin/oxlint",
+        "--deny-warnings",
+        "frontend/src/app/pre-world-policy",
+        "frontend/src/app/ports.ts",
+        "frontend/src/app/WorldShell.tsx"
+      ],
+      "exitCode": 0,
+      "independentGuardian": "factoryB-guardian.json",
+      "guardianFailure": null
+    }
+  ],
+  "reusedFocusedSource": "f15782d79dd1c97eb06b1c446b5469ebdcbe1491 / dbe0a0db3 18cases",
+  "noMatrixReplay": true,
+  "actualFullUtc": "2026-11-04T21:18:38.035990+00:00",
+  "peaks": {
+    "whole": 5971077769,
+    "growth": 1404447,
+    "temporary": 1362588,
+    "durable": 6781,
+    "files": 28574,
+    "processes": 4,
+    "rss": 1862959104
+  },
+  "minFree": 21599563776,
+  "closedOffer": true,
+  "allRemainingClaims": 0,
+  "resourcesReleasedBeforeDocumentation": true,
+  "releaseRecipients": [
+    "21d",
+    "Art534 conditional fresh2120 successor",
+    "53d added postFULL, immediately notified before commit"
+  ],
+  "notRun": [
+    "actualgenerated150 operation invocation",
+    "changed actual-main browser",
+    "actualservercatalog recognition",
+    "real service-policy HTTP",
+    "device",
+    "multiuser",
+    "performance",
+    "full visual-reference acceptance"
+  ],
+  "capacityCorrection": "capacity-correction-factory.json",
+  "hostAdmissionExceptionRecorded": true
+}

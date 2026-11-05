@@ -1,0 +1,15 @@
+{
+  "offer": "FE41-EXPIRY-FUNCTIONAL-BROWSER-20261104T2320Z",
+  "state": "FULL_RELEASE_BROWSER_FAILED",
+  "actualFull": 1793834877.473035,
+  "actualFullUtc": "2026-11-04T23:27:57.473035+00:00",
+  "lastChildReleased": 1793834797.2675781,
+  "remainingProcessRssGrowthReservations": 0,
+  "children": [],
+  "dependencyLinkAbsent": true,
+  "scratchAbsent": true,
+  "deadline": 1793834927,
+  "beforeFullDeadline": true,
+  "result": "types/lint PASS twice; browserA fixture import failed; browserB UI login failed; no policy-flow PASS",
+  "noFurtherJobs": true
+}

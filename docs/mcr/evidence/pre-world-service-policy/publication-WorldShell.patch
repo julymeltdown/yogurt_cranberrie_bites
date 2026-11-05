@@ -1,0 +1,62 @@
+diff --git a/frontend/src/app/WorldShell.tsx b/frontend/src/app/WorldShell.tsx
+index d10c65252..955a529e2 100644
+--- a/frontend/src/app/WorldShell.tsx
++++ b/frontend/src/app/WorldShell.tsx
+@@ -15,6 +15,9 @@ import type { PrivacyScope } from '../shared/query/privacy'
+ import { AdmissionBoundary } from '../features/auth/ui/AdmissionBoundary'
+ import { ConnectionStatus } from '../features/connection-status'
+ import { beginCommunityBootstrap, type CommunityBootstrapBinding } from './community-adoption/bootstrap'
++import { ShellLoadError } from './ports'
++import { PolicyNotice } from './pre-world-policy/PolicyNotice'
++import { usePolicyAttempt } from './pre-world-policy/usePolicyAttempt'
+ 
+ const SessionShellHeader = lazy(() => import('./shell-chrome/identity').then(module => ({ default: module.SessionShellHeader })))
+ const RootSocialFeatures = lazy(() => import('./world-panels/social').then(module => ({ default: module.RootSocialFeatures })))
+@@ -39,13 +42,18 @@ function BootstrapBoundary({ scope }: { scope: ActiveScope }) {
+     () => privacy?.capture().policyGeneration ?? -1,
+   )
+   const captured = privacy?.capture() ?? null
++  const policy = usePolicyAttempt({ source: ports, port: ports.preWorldPolicy, scope, privacyScope: captured, attempt,
++    isCurrent: () => ports.session.isCurrent(scope) && Boolean(privacy && captured && privacy.isCurrent(captured)) })
+   const result = useScopedLoad(scope, async signal => {
+-    const timing = beginCommunityBootstrap({ privacy, scope: captured, signal, profile: ports.communityClock })
++    const preflight = policy.start(signal)
++    if (!await preflight.prepare(signal) || !preflight.isFresh()) throw new ShellLoadError('unavailable')
++    const timing = beginCommunityBootstrap({ privacy, scope: captured, signal: preflight.signal, profile: ports.communityClock })
+     try {
+       const value = privacy && captured
+-        ? await privacy.run(captured, context => ports.bootstrap.load(scope, context.signal), signal)
+-        : await ports.bootstrap.load(scope, signal)
++        ? await privacy.run(captured, context => ports.bootstrap.load(scope, context.signal), preflight.signal)
++        : await ports.bootstrap.load(scope, preflight.signal)
+       if (!validBootstrap(value, scope)) throw new Error('Invalid bootstrap binding')
++      if (!preflight.consume()) throw new ShellLoadError('unavailable')
+       // Keep capabilities attached to the lease that authorized their read. Never
+       // relabel an old decision with a newly captured policy generation.
+       const bootstrap: ShellBootstrap = Object.freeze({ ...value,
+@@ -53,8 +61,24 @@ function BootstrapBoundary({ scope }: { scope: ActiveScope }) {
+         capabilities: projectCapabilities(value.capabilities),
+       })
+       return { bootstrap, privacyScope: captured, community: timing.complete(value) }
+-    } catch (error) { timing.dispose(); throw error }
++    } catch (error) {
++      timing.dispose()
++      // The existing Auth bootstrap loader classifies cancellation as unauthenticated.
++      // A policy-expiry cancellation must not prompt a still-current actor to sign in.
++      const decision = preflight.read()
++      if (error instanceof ShellLoadError && error.reason === 'unauthenticated'
++        && decision.kind === 'unavailable' && decision.reason === 'expired'
++        && ports.session.isCurrent(scope) && captured && privacy?.isCurrent(captured)) {
++        throw new ShellLoadError('unavailable')
++      }
++      throw error
++    }
+   }, `${attempt}:${policyGeneration}`)
++  if (result.status !== 'ready' && (result.status === 'loading' || result.reason === 'unavailable')
++    && policy.view.kind !== 'normal' && policy.view.kind !== 'consumed') {
++    return <PolicyNotice view={policy.view} retry={() => setAttempt(n => n + 1)}
++      reload={ports.connectionStatus?.reload ?? (() => window.location.reload())} />
++  }
+   if (result.status !== 'ready') return <div className="shell-gate">
+     <Link className="shell-link" to="/">MCR Concert World</Link>
+     <h1 tabIndex={-1}>{result.status === 'loading' ? 'Opening your event' : {

@@ -1,0 +1,1 @@
+frontend/src/app/pre-world-policy/controller.ts:42:29: warning unicorn(no-useless-spread): Using a spread operator here creates a new array unnecessarily. help: `for…of` can iterate over iterable, it's unnecessary to convert to an array.

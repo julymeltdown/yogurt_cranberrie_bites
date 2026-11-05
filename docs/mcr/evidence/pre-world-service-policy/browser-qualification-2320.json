@@ -1,0 +1,150 @@
+{
+  "status": "SOURCE_PASS_BROWSER_FAILED_FIX_PENDING",
+  "offer": "FE41-EXPIRY-FUNCTIONAL-BROWSER-20261104T2320Z",
+  "accepted": "acceptance-browser-2320.json",
+  "originalFreeze": "browser-freeze.json",
+  "fixedImportFreeze": "browser-freeze-B.json",
+  "canonicalIdentity": "db1bacda16c1e0cf69c7a00b9729e277e9e31863",
+  "canonical150": "83f55f9639273a7994a30d6a591e642f7e4b674f",
+  "qualifiedTypesLintHead": "72bae53e7638eb3486cd96e1fd13f52a2ab90d82",
+  "rounds": [
+    {
+      "attempt": "expiryTypesA",
+      "job": "types",
+      "head": "a03a70f10ca021883e47de3cf37f63a4a27d54d5",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/frontend/node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--allowImportingTsExtensions",
+        "--project",
+        "frontend/tsconfig.json"
+      ],
+      "exitCode": 0,
+      "receipt": "expiryTypesA.json",
+      "guardian": "expiryTypesA-guardian.json",
+      "guardianFailure": null
+    },
+    {
+      "attempt": "expiryLintA",
+      "job": "lint",
+      "head": "a03a70f10ca021883e47de3cf37f63a4a27d54d5",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/frontend/node_modules/oxlint/bin/oxlint",
+        "--deny-warnings",
+        "frontend/src/app/pre-world-policy",
+        "frontend/src/app/ports.ts",
+        "frontend/src/app/WorldShell.tsx"
+      ],
+      "exitCode": 0,
+      "receipt": "expiryLintA.json",
+      "guardian": "expiryLintA-guardian.json",
+      "guardianFailure": null
+    },
+    {
+      "attempt": "policyBrowserA",
+      "job": "browser",
+      "head": "a03a70f10ca021883e47de3cf37f63a4a27d54d5",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "frontend/src/app/pre-world-policy/__tests__/native.mjs"
+      ],
+      "exitCode": 1,
+      "receipt": "policyBrowserA.json",
+      "guardian": "policyBrowserA-guardian.json",
+      "guardianFailure": null
+    },
+    {
+      "attempt": "expiryTypesB",
+      "job": "types",
+      "head": "72bae53e7638eb3486cd96e1fd13f52a2ab90d82",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/frontend/node_modules/typescript/bin/tsc",
+        "--noEmit",
+        "--incremental",
+        "false",
+        "--allowImportingTsExtensions",
+        "--project",
+        "frontend/tsconfig.json"
+      ],
+      "exitCode": 0,
+      "receipt": "expiryTypesB.json",
+      "guardian": "expiryTypesB-guardian.json",
+      "guardianFailure": null
+    },
+    {
+      "attempt": "expiryLintB",
+      "job": "lint",
+      "head": "72bae53e7638eb3486cd96e1fd13f52a2ab90d82",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/frontend/node_modules/oxlint/bin/oxlint",
+        "--deny-warnings",
+        "frontend/src/app/pre-world-policy",
+        "frontend/src/app/ports.ts",
+        "frontend/src/app/WorldShell.tsx"
+      ],
+      "exitCode": 0,
+      "receipt": "expiryLintB.json",
+      "guardian": "expiryLintB-guardian.json",
+      "guardianFailure": null
+    },
+    {
+      "attempt": "policyBrowserB",
+      "job": "browser",
+      "head": "72bae53e7638eb3486cd96e1fd13f52a2ab90d82",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "frontend/src/app/pre-world-policy/__tests__/native.mjs"
+      ],
+      "exitCode": 1,
+      "receipt": "policyBrowserB.json",
+      "guardian": "policyBrowserB-guardian.json",
+      "guardianFailure": null
+    }
+  ],
+  "sourceInputs": 5590,
+  "currentPostRunChangedPaths": [
+    "frontend/src/app/pre-world-policy/__tests__/native.mjs",
+    "frontend/src/app/pre-world-policy/__tests__/native.ts"
+  ],
+  "changedPathsMatchRecordedGitHead": true,
+  "otherReadsetMismatches": [],
+  "controlsAndExecutablesUnchanged": true,
+  "actualFullUtc": "2026-11-04T23:27:57.473035+00:00",
+  "fullReceipt": "full-browser-2320.json",
+  "peaks": {
+    "whole": 9173076521,
+    "growth": 31235444,
+    "temporary": 29963872,
+    "durable": 932232,
+    "files": 29499,
+    "processes": 13,
+    "rss": 2263924736
+  },
+  "minFree": 17399865344,
+  "closedOffer": true,
+  "allResourceClaims": 0,
+  "directReleaseBeforeDocumentation": [
+    "21d",
+    "BE06 6b5d",
+    "FE37 230"
+  ],
+  "browserAFailure": "Extensionless import selected Node native.mjs rather than browser native.tsx; fixed at72bae53e7 and subsequent types/lint passed",
+  "browserBFailure": "Actual UI login failed; no policy cases accepted. Static trace found fixture Request body transfer followed by forwarding original input. Normalized Request forwarding fixed at320924f4d, NOT_RUN",
+  "reusedFocusedSource": "f15782d79dd1c97eb06b1c446b5469ebdcbe1491 / dbe0a0db3 18cases; no replay",
+  "notRun": [
+    "latest Request-forwarding fix",
+    "successful actual-main policy journey",
+    "real service-policy server/catalog",
+    "device",
+    "multiuser",
+    "performance",
+    "full visual-reference acceptance",
+    "client publication"
+  ]
+}

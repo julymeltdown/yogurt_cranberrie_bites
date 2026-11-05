@@ -1,0 +1,30 @@
+diff --git a/frontend/src/app/ports.ts b/frontend/src/app/ports.ts
+index 2be1d192b..fd6264578 100644
+--- a/frontend/src/app/ports.ts
++++ b/frontend/src/app/ports.ts
+@@ -9,6 +9,8 @@ import { createMemorySession, type SessionPort, type SessionScope } from '../sha
+ import { createRootCharacterRegistry, type RootCharacterRegistry } from './character-entry/runtime'
+ import type { ConnectionStatusController } from '../features/connection-status/model'
+ import { createDefaultAdmin, type AdminComposition } from './operations-composition/owner'
++import type { PreWorldPolicyPort } from './pre-world-policy/model'
++import { createDefaultPreWorldPolicy } from './pre-world-policy/production'
+ 
+ export type SessionReadiness = 'unknown' | 'checking' | 'ready' | 'anonymous' | 'unavailable' | 'error'
+ export interface ReadinessPort {
+@@ -54,6 +56,8 @@ export interface WorldAccessBinding { readonly release: WorldEntryRequest; reado
+   readonly presentation?: import('../world/composition').WorldPresentationPort; readonly reconnect?: () => Promise<boolean> }
+ export interface WorldAccessBindingPort { read(): WorldAccessBinding | null; subscribe(listener: () => void): () => void }
+ export interface ShellPorts {
++  /** Trusted operational preflight; absent means unavailable, never an implicit NORMAL. */
++  readonly preWorldPolicy?: PreWorldPolicyPort
+   /** Absent until a supported clock environment is qualified; never inferred from Bootstrap. */
+   readonly communityClock?: import('./community-adoption/bootstrap').CommunityClockProfile
+   readonly connectionStatus?: { readonly controller: ConnectionStatusController; readonly reload: () => void }
+@@ -85,6 +89,7 @@ export function createProductionPorts(auth?: SessionController, worldOptions: Om
+     catch (error) { characters.dispose(); throw error }
+     const admin = createDefaultAdmin(auth)
+     return { eventId: publicEventId, ...(social ? { social } : {}), characters, auth, session: auth.session, readiness: auth.readiness, world: production.world, worldAccess: production.access,
++      preWorldPolicy: createDefaultPreWorldPolicy(auth),
+       dispose() { try { admin.dispose() } finally { try { production.dispose() } finally { characters.dispose() } } },
+       bootstrap: { load: auth.loadBootstrap }, admin }
+   }

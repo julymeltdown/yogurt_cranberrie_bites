@@ -1,0 +1,92 @@
+{
+  "measured": 1793834566.8304052,
+  "free": 17542664192,
+  "sourceFiles": 16044,
+  "sourceBytes": 1443272461,
+  "gitFiles": 323,
+  "gitBytes": 966634606,
+  "metadataFiles": 8,
+  "metadataBytes": 2261711,
+  "dependencyFiles": 11104,
+  "dependencyBytes": 408236853,
+  "outFiles": 66,
+  "outBytes": 3581672,
+  "browserFiles": 697,
+  "browserBytes": 1524099438,
+  "nodeFiles": 1,
+  "nodeBytes": 122564432,
+  "offer": "FE41-EXPIRY-FUNCTIONAL-BROWSER-20261104T2320Z",
+  "head": "a03a70f10ca021883e47de3cf37f63a4a27d54d5",
+  "acceptedAt": 1793834567.427864,
+  "acceptedAtUTC": "2026-11-04T23:22:47.427864+00:00",
+  "cutoff": 1793834867,
+  "release": 1793834927,
+  "otherWorstGrowth": 6442450944,
+  "startFloorGiB": 11,
+  "minimumCarryBytes": 7495177207,
+  "minimumCarryFiles": 28574,
+  "priorCarryHighwaterBytes": 5971077769,
+  "freshLargestComponentBytes": 1524099438,
+  "fullFreshCarryBytes": 4467069501,
+  "conservativeBrowserCarryBytes": 9141841077,
+  "carryRule": "max(previous whole + largest fresh Chrome/Node/source/Git/deps component, full fresh carry); browser supervisor additionally retains measured Chrome and Node",
+  "wholeCapBytes": 10737418240,
+  "newCapBytes": 268435456,
+  "temporaryCapBytes": 201326592,
+  "durableCapBytes": 67108864,
+  "filesCap": 40000,
+  "processCap": 24,
+  "rssCapBytes": 3221225472,
+  "sourceInputs": 5590,
+  "controls": {
+    "guardian.py": "c183b1936ad477c230131335fd0297891b0d205e8f9512bfcbf1db2f1f7eee4e",
+    "admission.py": "cb6512429cc15189113529b36e9cb303d2d36cb147ee8a93d1e9b35d0e620830",
+    "lease.py": "6b8f035e409a1f570ced93bc455a5dfa8ffa5b6e7ed16e79e67b87560f7cf2c2",
+    "source.py": "f65fc74b28e83089da8a95a5788797c592662ed70c773d963c86a2c5fa968746"
+  },
+  "externalExecutables": {
+    "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome": "3f0acaf1e585195596d73ffa1824baa72c3c3ac115b5cfc43d789030a3f23d93"
+  },
+  "predecessor": {
+    "offer": "ReportPythonSOURCE2320",
+    "actualFull": 1793834486.215432,
+    "receipt": "/private/tmp/mcr-report-helper-python-7ii4vqhq/full-release.json",
+    "qualification": "FAIL1;5pass/10notrun; onlyresource-releasefactconsumed"
+  },
+  "declaredHostReservation": {
+    "A": {
+      "processCap": 32,
+      "rssGiB": 8
+    },
+    "Cstatus": {
+      "processCap": 8,
+      "rssGiB": 1
+    },
+    "DassemblyConservative": {
+      "processCap": 6,
+      "rssGiB": 0.5
+    },
+    "own": {
+      "processCap": 24,
+      "rssGiB": 3
+    },
+    "sumProcessCaps": 70,
+    "sumRssGiB": 12.5,
+    "limitProcesses": 96,
+    "limitRssGiB": 18,
+    "globalMaximum": 4,
+    "sourceMaximum": 3,
+    "browserMaximum": 2
+  },
+  "conditionalPeersHoldingNothing": [
+    "BE06native6b5d waits own FULL",
+    "FE37native230 waits own and BE06 FULL"
+  ],
+  "onlyJobs": [
+    "types",
+    "lint",
+    "browser"
+  ],
+  "reserveAfterAll": 10831777792
+}

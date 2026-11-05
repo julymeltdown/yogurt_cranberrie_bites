@@ -1,0 +1,53 @@
+{
+  "offer": "FE41-PREWORLD-POLICY-SOURCE-20261104T2045Z",
+  "head": "2cc7f5ded62491fc5d5b9d17dd5cb0691bc10d0c",
+  "job": "source",
+  "argv": [
+    "python3",
+    "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/pre-world-service-policy/source.py"
+  ],
+  "started": 1793824886.2080379,
+  "cutoff": 1793825176,
+  "release": 1793825236,
+  "carryFiles": 27542,
+  "carryBytes": 4441285228,
+  "dependencyFiles": 11104,
+  "dependencyBytes": 408236853,
+  "peaks": {
+    "whole": 4441496111,
+    "growth": 210883,
+    "temporary": 199066,
+    "durable": 11817,
+    "files": 27561,
+    "processes": 6,
+    "rss": 448118784
+  },
+  "minFree": 16538103808,
+  "exitCode": 1,
+  "sourcePins": {
+    "frontend/src/app/pre-world-policy/contract.ts": "5897be5d643ad85f1d0ef6aecd39d160dbf09a4b4ce9c8d3bdd4a4cccca88096",
+    "frontend/src/app/pre-world-policy/usePolicyAttempt.ts": "ed9d2d7a69096846a180201470864903d6cca30cf4f7443b64c132c1bca48125",
+    "frontend/src/app/pre-world-policy/model.ts": "7e4e63aa17eb4a67d290030d8ebfedd1f906032407f098ddfb1be7f5adf400ed",
+    "frontend/src/app/pre-world-policy/PolicyNotice.tsx": "8b547aee36ff36503fcc1d36b5d9ebb757daf5b3b7c4a5a6da6153dff44e1cb6",
+    "frontend/src/app/pre-world-policy/transport.ts": "165cd778df43c783d9984db1cc9659aeb6097d6e41d04345a20ca62eeb6017e2",
+    "frontend/src/app/pre-world-policy/controller.ts": "99abab652c5cdc8c3a31598765eed6f703d696640b23e3e9c8bf346316b31e2d",
+    "frontend/src/app/pre-world-policy/__tests__/fixtures.ts": "e42a11653fd349198339258eb3b00eefc640c7f5923c0499e0cd7ed7fafd73b7",
+    "frontend/src/app/pre-world-policy/__tests__/attempt.test.tsx": "3e9bef1bdb0ab3240f4858111efa2811bdeefb96cf33186b779fc5d50ba99885",
+    "frontend/src/app/pre-world-policy/__tests__/controller.test.ts": "f220a152dae8b612426b5797d2053676b159f601fdb2af83805056f7d9d14600",
+    "frontend/src/app/pre-world-policy/__tests__/contract.test.ts": "941786a2b2087e0b62fdbced2abfadd4bf1e821d70142e252bbaa8f6da1207ab",
+    "frontend/src/app/pre-world-policy/__tests__/vitest.config.ts": "dad379f08ce9ecf0ac1859d7c7d7ae29a2ccdf06328f6bbedccb331e63e58073"
+  },
+  "locks": {
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+    "frontend/package.json": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3"
+  },
+  "startFree": 16539082752,
+  "otherWorstGrowth": 6442450944,
+  "startFloorGiB": 11,
+  "finished": 1793824890.29109,
+  "childrenRemaining": [],
+  "linkAbsent": true,
+  "scratchAbsent": true,
+  "freeAfter": 16542359552,
+  "releasedBeforeDeadline": true
+}

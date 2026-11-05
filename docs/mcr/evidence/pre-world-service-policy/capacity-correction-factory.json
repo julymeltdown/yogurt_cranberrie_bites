@@ -1,0 +1,47 @@
+{
+  "status": "POST_FULL_ALLOCATOR_CAPACITY_CORRECTION",
+  "issuer": "21d",
+  "offer": "FE41-FACTORY-SOURCE-20261104T2120Z",
+  "rawAcceptance": "acceptance-factory.json",
+  "preserveRawAcceptance": true,
+  "staleOfferPeerB": {
+    "owner": "Root153",
+    "processCap": 6,
+    "rssGiB": 0.5
+  },
+  "actualPeerB": {
+    "owner": "FE37source03",
+    "acceptedUtc": "2026-11-04T21:18:05.259814Z",
+    "fullUtc": "2026-11-04T21:18:10.821122Z",
+    "processCap": 32,
+    "rssGiB": 4
+  },
+  "actualAdmissionSum": {
+    "processCaps": 112,
+    "rssGiB": 20
+  },
+  "hostLimits": {
+    "processCaps": 96,
+    "rssGiB": 18
+  },
+  "staleOfferedAdmissionSum": {
+    "processCaps": 86,
+    "rssGiB": 16.5
+  },
+  "afterPeerBFullSum": {
+    "processCaps": 80,
+    "rssGiB": 16
+  },
+  "firstOwnSupervisorStartedEpoch": 1793827098.089808,
+  "peerBFullEpoch": 1793827090.821122,
+  "ownJobsStartedAfterPeerBReleased": true,
+  "measuredHostOverlapRss": "NOT_MEASURED; reservation caps are not measured host usage",
+  "ownResults": "types/lint exit0; own guards and resource cleanup passed; no aggregate host-cap proof claimed at acceptance",
+  "jobReplay": false,
+  "newSuccessorRecipient": "53d added after actualFULL and original documentation draft; immediately notified before commit",
+  "originalReleaseRecipientsBeforeDraft": [
+    "21d",
+    "Art534"
+  ],
+  "noOfferExtension": true
+}

@@ -1,0 +1,13 @@
+{
+  "root": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2",
+  "scratch": "/private/tmp/mcr-pre-world-policy-expiryLintA",
+  "output": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/pre-world-service-policy/expiryLintA-guardian",
+  "supervisor": 40994,
+  "cutoff": 1793834867,
+  "processes": 24,
+  "rss": 3221225472,
+  "temporary": 201326592,
+  "guardianSha256": "c183b1936ad477c230131335fd0297891b0d205e8f9512bfcbf1db2f1f7eee4e",
+  "supervisorFile": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/pre-world-service-policy/lease.py",
+  "supervisorSha256": "6b8f035e409a1f570ced93bc455a5dfa8ffa5b6e7ed16e79e67b87560f7cf2c2"
+}
