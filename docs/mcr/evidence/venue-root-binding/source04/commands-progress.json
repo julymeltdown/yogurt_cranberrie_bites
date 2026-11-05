@@ -1,0 +1,19 @@
+[
+  {
+    "label": "tests",
+    "argv": [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+      "run",
+      "--configLoader",
+      "runner",
+      "--config",
+      "e2e/venue-root-binding/vitest.config.mjs",
+      "--no-cache",
+      "--reporter",
+      "dot"
+    ],
+    "pid": 25235,
+    "exit": 0
+  }
+]

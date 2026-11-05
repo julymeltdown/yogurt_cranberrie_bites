@@ -1,0 +1,11 @@
+[
+  {
+    "label": "controlled-venue-root-native",
+    "argv": [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "e2e/venue-root-binding/native.mjs"
+    ],
+    "pid": 82659,
+    "exit": 0
+  }
+]

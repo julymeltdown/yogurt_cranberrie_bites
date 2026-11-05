@@ -1,0 +1,31 @@
+{
+  "classification": "OWN_SOURCE_BINDINGS_NOT_EXECUTION_QUALIFICATION",
+  "source": "3d9db2209d2f05b66d9af1b42145a45889315a0e",
+  "base": "4b91d113b578dff4227e442a1587f72a6409b507",
+  "files": [
+    {
+      "path": "frontend/src/app/venue-root/VenueRootFeatures.tsx",
+      "bytes": 2040,
+      "sha256": "fff44f94eacbd863ee11df1b9ca99fb1dfeeee40222956ef1748d10833ddefe0"
+    },
+    {
+      "path": "frontend/src/app/venue-root/binding.ts",
+      "bytes": 6805,
+      "sha256": "f93d4fad368021f93cb882fabb64a68428da6e635757c6cd2db3aaa3d94fb347"
+    },
+    {
+      "path": "frontend/src/app/venue-root/index.ts",
+      "bytes": 289,
+      "sha256": "4f4b2a8f39824684be8ff3fdf72c90261eac762d15311f9e143e0be5e8d3d404"
+    },
+    {
+      "path": "frontend/src/app/venue-root/input.ts",
+      "bytes": 3045,
+      "sha256": "ae26cfc943bfcad10b8fcbe8ead198ddd3915f2a819c9d2db458b7c20280a558"
+    }
+  ],
+  "originalPersistentGoal": "Avatar FE12/FE13 BLOCKED unchanged",
+  "rootCallsiteOwnership": "Root153 WorldShell/default map route/image loader",
+  "publisher": "412e",
+  "scope": "VENU-FE-ROOT-BINDING-01"
+}

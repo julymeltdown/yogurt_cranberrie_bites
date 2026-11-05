@@ -1,0 +1,182 @@
+[
+  {
+    "source": "1c5c991676844402e694037bd95aa72e6cf7e3da",
+    "path": "frontend/src/app/venue-entry/ParadiseCityMapPanel.tsx",
+    "bytes": 2367,
+    "sha256": "1c8a3af156fff556de78e3768cf717adc2c1dfc8c3412cad7b64dee60b85ac05"
+  },
+  {
+    "source": "1c5c991676844402e694037bd95aa72e6cf7e3da",
+    "path": "frontend/src/app/venue-entry/consumer.ts",
+    "bytes": 2100,
+    "sha256": "38c2c13f82e8f2e3e026be1a5ef8b6e65eb20240ac8b6f2779319617a5e88c12"
+  },
+  {
+    "source": "1c5c991676844402e694037bd95aa72e6cf7e3da",
+    "path": "frontend/src/app/venue-entry/capability-adapters.ts",
+    "bytes": 2691,
+    "sha256": "b7f22dbf11be0b956f1886498c105a5e32aed4ef2bca998c0e1729e0e2b4100f"
+  },
+  {
+    "source": "1c5c991676844402e694037bd95aa72e6cf7e3da",
+    "path": "frontend/src/app/venue-entry/browser-location.ts",
+    "bytes": 3664,
+    "sha256": "79d7a837bd1dae970bb3a8dd789621b93dad66056457a532d09955cd547e750e"
+  },
+  {
+    "source": "1c5c991676844402e694037bd95aa72e6cf7e3da",
+    "path": "frontend/src/features/paradise-city-map/index.ts",
+    "bytes": 233,
+    "sha256": "70dab54d8dc9c9d95aa172ba4e0409663d359270dedff5718bb96fff3e87861e"
+  },
+  {
+    "source": "1c5c991676844402e694037bd95aa72e6cf7e3da",
+    "path": "frontend/src/features/paradise-city-map/model/controller.ts",
+    "bytes": 17637,
+    "sha256": "3961de0e13891107b42b23a965c13b7166b6fbe8b24766d360da5d8abbc72700"
+  },
+  {
+    "source": "1c5c991676844402e694037bd95aa72e6cf7e3da",
+    "path": "frontend/src/features/paradise-city-map/model/siteplan-view.ts",
+    "bytes": 1371,
+    "sha256": "c1f62f24bf5195d982997355e25bae77a92c0b548eb59dea46e81d6d14de514a"
+  },
+  {
+    "source": "1c5c991676844402e694037bd95aa72e6cf7e3da",
+    "path": "frontend/src/features/paradise-city-map/ui/MapCanvas.tsx",
+    "bytes": 9320,
+    "sha256": "16e0a5ed0794f5d861b59ac4be59a76287be412579e1c192ac96323b071afd0b"
+  },
+  {
+    "source": "1c5c991676844402e694037bd95aa72e6cf7e3da",
+    "path": "frontend/src/features/paradise-city-map/ui/ParadiseCityMap.tsx",
+    "bytes": 15952,
+    "sha256": "323c5475ec0a9d6ecbb1c123684614034e93c3836adb3380887059b24d6f92eb"
+  },
+  {
+    "source": "1c5c991676844402e694037bd95aa72e6cf7e3da",
+    "path": "frontend/src/features/paradise-city-map/ui/paradise-city-map.css",
+    "bytes": 10001,
+    "sha256": "fb7d7fa6f8e0ba6299785207b9fbd3de6c333c6c06342feb7b66a23dccbf8e35"
+  },
+  {
+    "source": "e9535129cffa3917f5b9b5ae3f5ee992609c4419",
+    "path": "frontend/src/features/paradise-city-map/ports.ts",
+    "bytes": 6238,
+    "sha256": "94caaab2f25b5c7546a6b5b278d47b4dcfca51ac31d1227efa1147d817bdf328"
+  },
+  {
+    "source": "d3dd189c9a340c37f6c6814464a62802ced793b4",
+    "path": "frontend/src/features/paradise-city-map/spatial/contract.ts",
+    "bytes": 7289,
+    "sha256": "b75f7cf748949a1a858626fe098f3d1b0dd22e65eeea31d551b37fa309745a42"
+  },
+  {
+    "source": "d3dd189c9a340c37f6c6814464a62802ced793b4",
+    "path": "frontend/src/features/paradise-city-map/spatial/image-resource.ts",
+    "bytes": 7478,
+    "sha256": "6d5e0f7c607d8ae17f03dd3030aa52e7c57d2f0ff1377d9384c6bed2554aba18"
+  },
+  {
+    "source": "d3dd189c9a340c37f6c6814464a62802ced793b4",
+    "path": "frontend/src/features/paradise-city-map/spatial/model.ts",
+    "bytes": 2617,
+    "sha256": "370023d8a25d135fce56969c5b5e2e8a20bfdd17e92eb0ab24da04b8aae219bd"
+  },
+  {
+    "source": "d3dd189c9a340c37f6c6814464a62802ced793b4",
+    "path": "frontend/src/features/paradise-city-map/spatial/registration.ts",
+    "bytes": 3618,
+    "sha256": "75c57f43a81ecaeab1cd9b0dad86329744516285501137fa5d4abb8ff25fe314"
+  },
+  {
+    "source": "d3dd189c9a340c37f6c6814464a62802ced793b4",
+    "path": "frontend/src/features/paradise-city-map/spatial/viewport.ts",
+    "bytes": 5068,
+    "sha256": "19489edc14c739050c3f4c6a8b32d76156f059f7620eeaa155148ff4a5a193f9"
+  },
+  {
+    "source": "7acd0ec240bae068f1714ac5f20477dde0a6425e",
+    "path": "frontend/src/app/venue-community-entry/index.ts",
+    "bytes": 536,
+    "sha256": "dcc339cd0da359ec38f66362a47de11257ff241a5eebb8f2180f744678637afc"
+  },
+  {
+    "source": "7acd0ec240bae068f1714ac5f20477dde0a6425e",
+    "path": "frontend/src/app/venue-community-entry/owner.ts",
+    "bytes": 16658,
+    "sha256": "0b9d7aeb9ee456c2ba6aa176fa8dc39bf06ff1dd61f251ed8fda33f67217eba3"
+  },
+  {
+    "source": "7acd0ec240bae068f1714ac5f20477dde0a6425e",
+    "path": "frontend/src/app/venue-community-entry/ports.ts",
+    "bytes": 2477,
+    "sha256": "99cec13c4d5c40c74c12bee0b29aa964206b334801ed20aef2692ab165d672e5"
+  },
+  {
+    "source": "7acd0ec240bae068f1714ac5f20477dde0a6425e",
+    "path": "frontend/src/app/venue-community-entry/provider.tsx",
+    "bytes": 2671,
+    "sha256": "2e090aa0eb67c43be25ead509a66d8b5d8c7a47dbdf6a6a1f0e45bca39871678"
+  },
+  {
+    "source": "7acd0ec240bae068f1714ac5f20477dde0a6425e",
+    "path": "frontend/src/app/venue-community-entry/routes.tsx",
+    "bytes": 1709,
+    "sha256": "705259be1cfef865b81e38de122fe29add106d2ef76a406cdec88df642f369fb"
+  },
+  {
+    "source": "7acd0ec240bae068f1714ac5f20477dde0a6425e",
+    "path": "frontend/src/app/venue-community-entry/view.tsx",
+    "bytes": 3039,
+    "sha256": "9cfb8ce310000856ab11ff09fc0c1a4bbf502790648c4b8006de9cbffec8f906"
+  },
+  {
+    "source": "7acd0ec240bae068f1714ac5f20477dde0a6425e",
+    "path": "frontend/src/app/venue-community-entry/adapter.ts",
+    "bytes": 15858,
+    "sha256": "424260b8efe3dbfb3c489a9b6df0cec5b2fe17a69868b9ed64fd67e3f8096831"
+  },
+  {
+    "source": "7acd0ec240bae068f1714ac5f20477dde0a6425e",
+    "path": "frontend/src/features/venue-invitations/Invitation.tsx",
+    "bytes": 3653,
+    "sha256": "d31e2d904f017cd528a1dfb75cd5f1a96242d5a8219b92c570e0ecd8fe30cdd7"
+  },
+  {
+    "source": "7acd0ec240bae068f1714ac5f20477dde0a6425e",
+    "path": "frontend/src/features/venue-invitations/model.ts",
+    "bytes": 3505,
+    "sha256": "ed0f8d4024c76e68500617aeda35ec728d86d841019d730ee48f482d33e53c9d"
+  },
+  {
+    "source": "7acd0ec240bae068f1714ac5f20477dde0a6425e",
+    "path": "frontend/src/features/venue-invitations/meeting.css",
+    "bytes": 5716,
+    "sha256": "8d16974ac14209139ff1394858acf05067a96ef02e69863a742d18ed73ad800c"
+  },
+  {
+    "source": "7acd0ec240bae068f1714ac5f20477dde0a6425e",
+    "path": "frontend/src/features/meeting-conversation/Conversation.tsx",
+    "bytes": 4123,
+    "sha256": "32ad8790950407bc06058fc79df43d342481d136ce4d83a5f6b3c6c1a7e5672a"
+  },
+  {
+    "source": "81680fc8995246c2e03e1a8f5fc1221a0785a535",
+    "path": "frontend/src/shared/api/paradise-city-v1/meeting.ts",
+    "bytes": 25784,
+    "sha256": "f0e6fbc693218a8a4c468977071d3c2a747ab11c5d86f8b5aad1a4b75b770f71"
+  },
+  {
+    "source": "d3dd189c9a340c37f6c6814464a62802ced793b4",
+    "path": "frontend/public/venue/paradise-city/v1/asset-interface.json",
+    "bytes": 8202,
+    "sha256": "a29a47add30fe9fe9cd20dcab5f5dd5004cf1290106794fb407991f1c5142dcd"
+  },
+  {
+    "source": "d3dd189c9a340c37f6c6814464a62802ced793b4",
+    "path": "frontend/public/venue/paradise-city/v1/siteplan-photo-5.jpg",
+    "bytes": 328720,
+    "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0"
+  }
+]

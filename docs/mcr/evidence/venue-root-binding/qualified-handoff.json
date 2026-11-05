@@ -1,0 +1,391 @@
+{
+  "task": "VENU-FE-ROOT-BINDING-01",
+  "classification": "MOCK_READY_CONTROLLED_HOST_ONLY_NOT_DEFAULT_APP_LIVE_DEVICE_OR_VENU_ACCEPTANCE",
+  "base": "4b91d113b578dff4227e442a1587f72a6409b507",
+  "candidate": "63aac84ea9e9e9fb4f856bcd11e117b366da06d2",
+  "productionHostUnchangedSince15TestPass": "872a93559",
+  "focusedCases": {
+    "passed": 15,
+    "log": "docs/mcr/evidence/venue-root-binding/source04/tests.log",
+    "sha256": "229525ef192be4ea93c4ec1bb658e9d84e7280b4c668b39584108034b002c8d7",
+    "wholeRound": "FAIL_RETAINED_SUBSET_PASS"
+  },
+  "source07": {
+    "types": 0,
+    "lint": 0,
+    "controlSyntax": 0,
+    "typeRoots": 9,
+    "transitiveFiles": 750,
+    "diagnostics": 0,
+    "immutableInputs": 30,
+    "fullAtEpoch": 1793848744.775926
+  },
+  "native04": {
+    "exit": 0,
+    "status": "PASS",
+    "reportSHA256": "0530b97a3335ad459560d60d73702a6a9c5ddc9449961dcdaa80ff2b6f6f583a",
+    "fullAtEpoch": 1793849900.0547168,
+    "widths": [
+      {
+        "width": 360,
+        "state": {
+          "owners": 1,
+          "clockSame": true,
+          "borrowedSame": true,
+          "counts": {
+            "requests": 0,
+            "keys": 0,
+            "phoneStarts": 0,
+            "phoneDisposes": 0,
+            "navigations": 0,
+            "reads": 2
+          },
+          "current": "ready"
+        },
+        "retainedMessage": true,
+        "focusRouteReturn": true,
+        "withdrawal": true,
+        "sameBorrowedCanvasSentinel": true
+      },
+      {
+        "width": 390,
+        "state": {
+          "owners": 1,
+          "clockSame": true,
+          "borrowedSame": true,
+          "counts": {
+            "requests": 0,
+            "keys": 0,
+            "phoneStarts": 0,
+            "phoneDisposes": 0,
+            "navigations": 0,
+            "reads": 2
+          },
+          "current": "ready"
+        },
+        "retainedMessage": true,
+        "focusRouteReturn": true,
+        "withdrawal": true,
+        "sameBorrowedCanvasSentinel": true
+      },
+      {
+        "width": 430,
+        "state": {
+          "owners": 1,
+          "clockSame": true,
+          "borrowedSame": true,
+          "counts": {
+            "requests": 0,
+            "keys": 0,
+            "phoneStarts": 0,
+            "phoneDisposes": 0,
+            "navigations": 0,
+            "reads": 2
+          },
+          "current": "ready"
+        },
+        "retainedMessage": true,
+        "focusRouteReturn": true,
+        "withdrawal": true,
+        "sameBorrowedCanvasSentinel": true
+      }
+    ],
+    "pageErrors": [],
+    "captures": [
+      {
+        "path": "docs/mcr/evidence/venue-root-binding/native04/native/360-map-focus-return.png",
+        "bytes": 193249,
+        "sha256": "d43e0f245de0536a218f8ec7f9351c9f2eba8f73adc286f0fcbcbac3d135d7c6",
+        "width": 360,
+        "height": 885,
+        "ownerInspected": true,
+        "observation": "Retained draft, selected main-gate map return or unavailable withdrawal as named; controlled fixture labels visible; readable controls and no visible horizontal clipping."
+      },
+      {
+        "path": "docs/mcr/evidence/venue-root-binding/native04/native/360-retained-message.png",
+        "bytes": 48234,
+        "sha256": "ee8093a0c24537250edf8bc433642629217d424af302eceeb6cea90060279317",
+        "width": 360,
+        "height": 956,
+        "ownerInspected": true,
+        "observation": "Retained draft, selected main-gate map return or unavailable withdrawal as named; controlled fixture labels visible; readable controls and no visible horizontal clipping."
+      },
+      {
+        "path": "docs/mcr/evidence/venue-root-binding/native04/native/360-withdrawn.png",
+        "bytes": 25114,
+        "sha256": "8bd19fe982a65c82bc80cff44158cb2721017fc9ce900401da1650bb919bb03d",
+        "width": 360,
+        "height": 844,
+        "ownerInspected": true,
+        "observation": "Retained draft, selected main-gate map return or unavailable withdrawal as named; controlled fixture labels visible; readable controls and no visible horizontal clipping."
+      },
+      {
+        "path": "docs/mcr/evidence/venue-root-binding/native04/native/390-map-focus-return.png",
+        "bytes": 206581,
+        "sha256": "5dde5daf390bd16b21fc0c3d42ae0c92d4034939436be6199726923e8fbc3cfe",
+        "width": 390,
+        "height": 867,
+        "ownerInspected": true,
+        "observation": "Retained draft, selected main-gate map return or unavailable withdrawal as named; controlled fixture labels visible; readable controls and no visible horizontal clipping."
+      },
+      {
+        "path": "docs/mcr/evidence/venue-root-binding/native04/native/390-retained-message.png",
+        "bytes": 48733,
+        "sha256": "e4d88b013e59b1ecc2353a2e58b2743558fac9e60623c8155acfab7ced54e92b",
+        "width": 390,
+        "height": 956,
+        "ownerInspected": true,
+        "observation": "Retained draft, selected main-gate map return or unavailable withdrawal as named; controlled fixture labels visible; readable controls and no visible horizontal clipping."
+      },
+      {
+        "path": "docs/mcr/evidence/venue-root-binding/native04/native/390-withdrawn.png",
+        "bytes": 25508,
+        "sha256": "5ead906c84b6f1997db8d78f4f0263a0086a1b6e27597e5665f9508d4cfe9586",
+        "width": 390,
+        "height": 844,
+        "ownerInspected": true,
+        "observation": "Retained draft, selected main-gate map return or unavailable withdrawal as named; controlled fixture labels visible; readable controls and no visible horizontal clipping."
+      },
+      {
+        "path": "docs/mcr/evidence/venue-root-binding/native04/native/430-map-focus-return.png",
+        "bytes": 220989,
+        "sha256": "fe283b08cd888a9ffa2347713352e0b7d81ff77199a4a2684a3002f012212d55",
+        "width": 430,
+        "height": 867,
+        "ownerInspected": true,
+        "observation": "Retained draft, selected main-gate map return or unavailable withdrawal as named; controlled fixture labels visible; readable controls and no visible horizontal clipping."
+      },
+      {
+        "path": "docs/mcr/evidence/venue-root-binding/native04/native/430-retained-message.png",
+        "bytes": 48574,
+        "sha256": "e9f04d78411059002386bae6b9b4863ca27bd53450d17312af8ef8a5334e6036",
+        "width": 430,
+        "height": 956,
+        "ownerInspected": true,
+        "observation": "Retained draft, selected main-gate map return or unavailable withdrawal as named; controlled fixture labels visible; readable controls and no visible horizontal clipping."
+      },
+      {
+        "path": "docs/mcr/evidence/venue-root-binding/native04/native/430-withdrawn.png",
+        "bytes": 25405,
+        "sha256": "cb11cc6d2980af28d4d94d05b73c38850ffd058d94d84d33b68562ba316a2f86",
+        "width": 430,
+        "height": 844,
+        "ownerInspected": true,
+        "observation": "Retained draft, selected main-gate map return or unavailable withdrawal as named; controlled fixture labels visible; readable controls and no visible horizontal clipping."
+      }
+    ],
+    "wholeMaximumBytes": 9831386388,
+    "familyCumulativeNewMaximumBytes": 298699252
+  },
+  "immutableInputs": [
+    {
+      "source": "1c5c991676844402e694037bd95aa72e6cf7e3da",
+      "path": "frontend/src/app/venue-entry/ParadiseCityMapPanel.tsx",
+      "bytes": 2367,
+      "sha256": "1c8a3af156fff556de78e3768cf717adc2c1dfc8c3412cad7b64dee60b85ac05"
+    },
+    {
+      "source": "1c5c991676844402e694037bd95aa72e6cf7e3da",
+      "path": "frontend/src/app/venue-entry/consumer.ts",
+      "bytes": 2100,
+      "sha256": "38c2c13f82e8f2e3e026be1a5ef8b6e65eb20240ac8b6f2779319617a5e88c12"
+    },
+    {
+      "source": "1c5c991676844402e694037bd95aa72e6cf7e3da",
+      "path": "frontend/src/app/venue-entry/capability-adapters.ts",
+      "bytes": 2691,
+      "sha256": "b7f22dbf11be0b956f1886498c105a5e32aed4ef2bca998c0e1729e0e2b4100f"
+    },
+    {
+      "source": "1c5c991676844402e694037bd95aa72e6cf7e3da",
+      "path": "frontend/src/app/venue-entry/browser-location.ts",
+      "bytes": 3664,
+      "sha256": "79d7a837bd1dae970bb3a8dd789621b93dad66056457a532d09955cd547e750e"
+    },
+    {
+      "source": "1c5c991676844402e694037bd95aa72e6cf7e3da",
+      "path": "frontend/src/features/paradise-city-map/index.ts",
+      "bytes": 233,
+      "sha256": "70dab54d8dc9c9d95aa172ba4e0409663d359270dedff5718bb96fff3e87861e"
+    },
+    {
+      "source": "1c5c991676844402e694037bd95aa72e6cf7e3da",
+      "path": "frontend/src/features/paradise-city-map/model/controller.ts",
+      "bytes": 17637,
+      "sha256": "3961de0e13891107b42b23a965c13b7166b6fbe8b24766d360da5d8abbc72700"
+    },
+    {
+      "source": "1c5c991676844402e694037bd95aa72e6cf7e3da",
+      "path": "frontend/src/features/paradise-city-map/model/siteplan-view.ts",
+      "bytes": 1371,
+      "sha256": "c1f62f24bf5195d982997355e25bae77a92c0b548eb59dea46e81d6d14de514a"
+    },
+    {
+      "source": "1c5c991676844402e694037bd95aa72e6cf7e3da",
+      "path": "frontend/src/features/paradise-city-map/ui/MapCanvas.tsx",
+      "bytes": 9320,
+      "sha256": "16e0a5ed0794f5d861b59ac4be59a76287be412579e1c192ac96323b071afd0b"
+    },
+    {
+      "source": "1c5c991676844402e694037bd95aa72e6cf7e3da",
+      "path": "frontend/src/features/paradise-city-map/ui/ParadiseCityMap.tsx",
+      "bytes": 15952,
+      "sha256": "323c5475ec0a9d6ecbb1c123684614034e93c3836adb3380887059b24d6f92eb"
+    },
+    {
+      "source": "1c5c991676844402e694037bd95aa72e6cf7e3da",
+      "path": "frontend/src/features/paradise-city-map/ui/paradise-city-map.css",
+      "bytes": 10001,
+      "sha256": "fb7d7fa6f8e0ba6299785207b9fbd3de6c333c6c06342feb7b66a23dccbf8e35"
+    },
+    {
+      "source": "e9535129cffa3917f5b9b5ae3f5ee992609c4419",
+      "path": "frontend/src/features/paradise-city-map/ports.ts",
+      "bytes": 6238,
+      "sha256": "94caaab2f25b5c7546a6b5b278d47b4dcfca51ac31d1227efa1147d817bdf328"
+    },
+    {
+      "source": "d3dd189c9a340c37f6c6814464a62802ced793b4",
+      "path": "frontend/src/features/paradise-city-map/spatial/contract.ts",
+      "bytes": 7289,
+      "sha256": "b75f7cf748949a1a858626fe098f3d1b0dd22e65eeea31d551b37fa309745a42"
+    },
+    {
+      "source": "d3dd189c9a340c37f6c6814464a62802ced793b4",
+      "path": "frontend/src/features/paradise-city-map/spatial/image-resource.ts",
+      "bytes": 7478,
+      "sha256": "6d5e0f7c607d8ae17f03dd3030aa52e7c57d2f0ff1377d9384c6bed2554aba18"
+    },
+    {
+      "source": "d3dd189c9a340c37f6c6814464a62802ced793b4",
+      "path": "frontend/src/features/paradise-city-map/spatial/model.ts",
+      "bytes": 2617,
+      "sha256": "370023d8a25d135fce56969c5b5e2e8a20bfdd17e92eb0ab24da04b8aae219bd"
+    },
+    {
+      "source": "d3dd189c9a340c37f6c6814464a62802ced793b4",
+      "path": "frontend/src/features/paradise-city-map/spatial/registration.ts",
+      "bytes": 3618,
+      "sha256": "75c57f43a81ecaeab1cd9b0dad86329744516285501137fa5d4abb8ff25fe314"
+    },
+    {
+      "source": "d3dd189c9a340c37f6c6814464a62802ced793b4",
+      "path": "frontend/src/features/paradise-city-map/spatial/viewport.ts",
+      "bytes": 5068,
+      "sha256": "19489edc14c739050c3f4c6a8b32d76156f059f7620eeaa155148ff4a5a193f9"
+    },
+    {
+      "source": "7acd0ec240bae068f1714ac5f20477dde0a6425e",
+      "path": "frontend/src/app/venue-community-entry/index.ts",
+      "bytes": 536,
+      "sha256": "dcc339cd0da359ec38f66362a47de11257ff241a5eebb8f2180f744678637afc"
+    },
+    {
+      "source": "7acd0ec240bae068f1714ac5f20477dde0a6425e",
+      "path": "frontend/src/app/venue-community-entry/owner.ts",
+      "bytes": 16658,
+      "sha256": "0b9d7aeb9ee456c2ba6aa176fa8dc39bf06ff1dd61f251ed8fda33f67217eba3"
+    },
+    {
+      "source": "7acd0ec240bae068f1714ac5f20477dde0a6425e",
+      "path": "frontend/src/app/venue-community-entry/ports.ts",
+      "bytes": 2477,
+      "sha256": "99cec13c4d5c40c74c12bee0b29aa964206b334801ed20aef2692ab165d672e5"
+    },
+    {
+      "source": "7acd0ec240bae068f1714ac5f20477dde0a6425e",
+      "path": "frontend/src/app/venue-community-entry/provider.tsx",
+      "bytes": 2671,
+      "sha256": "2e090aa0eb67c43be25ead509a66d8b5d8c7a47dbdf6a6a1f0e45bca39871678"
+    },
+    {
+      "source": "7acd0ec240bae068f1714ac5f20477dde0a6425e",
+      "path": "frontend/src/app/venue-community-entry/routes.tsx",
+      "bytes": 1709,
+      "sha256": "705259be1cfef865b81e38de122fe29add106d2ef76a406cdec88df642f369fb"
+    },
+    {
+      "source": "7acd0ec240bae068f1714ac5f20477dde0a6425e",
+      "path": "frontend/src/app/venue-community-entry/view.tsx",
+      "bytes": 3039,
+      "sha256": "9cfb8ce310000856ab11ff09fc0c1a4bbf502790648c4b8006de9cbffec8f906"
+    },
+    {
+      "source": "7acd0ec240bae068f1714ac5f20477dde0a6425e",
+      "path": "frontend/src/app/venue-community-entry/adapter.ts",
+      "bytes": 15858,
+      "sha256": "424260b8efe3dbfb3c489a9b6df0cec5b2fe17a69868b9ed64fd67e3f8096831"
+    },
+    {
+      "source": "7acd0ec240bae068f1714ac5f20477dde0a6425e",
+      "path": "frontend/src/features/venue-invitations/Invitation.tsx",
+      "bytes": 3653,
+      "sha256": "d31e2d904f017cd528a1dfb75cd5f1a96242d5a8219b92c570e0ecd8fe30cdd7"
+    },
+    {
+      "source": "7acd0ec240bae068f1714ac5f20477dde0a6425e",
+      "path": "frontend/src/features/venue-invitations/model.ts",
+      "bytes": 3505,
+      "sha256": "ed0f8d4024c76e68500617aeda35ec728d86d841019d730ee48f482d33e53c9d"
+    },
+    {
+      "source": "7acd0ec240bae068f1714ac5f20477dde0a6425e",
+      "path": "frontend/src/features/venue-invitations/meeting.css",
+      "bytes": 5716,
+      "sha256": "8d16974ac14209139ff1394858acf05067a96ef02e69863a742d18ed73ad800c"
+    },
+    {
+      "source": "7acd0ec240bae068f1714ac5f20477dde0a6425e",
+      "path": "frontend/src/features/meeting-conversation/Conversation.tsx",
+      "bytes": 4123,
+      "sha256": "32ad8790950407bc06058fc79df43d342481d136ce4d83a5f6b3c6c1a7e5672a"
+    },
+    {
+      "source": "81680fc8995246c2e03e1a8f5fc1221a0785a535",
+      "path": "frontend/src/shared/api/paradise-city-v1/meeting.ts",
+      "bytes": 25784,
+      "sha256": "f0e6fbc693218a8a4c468977071d3c2a747ab11c5d86f8b5aad1a4b75b770f71"
+    },
+    {
+      "source": "d3dd189c9a340c37f6c6814464a62802ced793b4",
+      "path": "frontend/public/venue/paradise-city/v1/asset-interface.json",
+      "bytes": 8202,
+      "sha256": "a29a47add30fe9fe9cd20dcab5f5dd5004cf1290106794fb407991f1c5142dcd"
+    },
+    {
+      "source": "d3dd189c9a340c37f6c6814464a62802ced793b4",
+      "path": "frontend/public/venue/paradise-city/v1/siteplan-photo-5.jpg",
+      "bytes": 328720,
+      "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0"
+    }
+  ],
+  "limits": [
+    "Auth identity/social permissions/M projections are controlled fixtures.",
+    "Canvas is a lifetime sentinel, not Phaser or real World.",
+    "No actual server/device/multiuser/latest-reference visual or default-app acceptance.",
+    "Root153 owns WorldShell/router/image loader callsite and its changed-path validation.",
+    "Map and Meeting UI visual parity remains with their implementation owners.",
+    "Guard semantic synthetic regressions remain NOT_RUN; syntax and actual dual native guard execution are separately recorded.",
+    "Original Avatar FE12/FE13 persistent goal remains BLOCKED unchanged."
+  ],
+  "historicalFailuresPreserved": [
+    "source01",
+    "source02",
+    "source03",
+    "source04",
+    "source05",
+    "source06",
+    "native01",
+    "native02",
+    "native03"
+  ],
+  "resources": {
+    "owned": 0,
+    "privateTemporaryAbsent": true,
+    "dependencyLinkAbsent": true,
+    "browserServerTargetResources": 0,
+    "port5384Released": true
+  },
+  "publisher": "412e",
+  "writer": "STOP_AT_COMMITTED_HANDOFF_UNLESS_PUBLISHER_RETURNS_A_SPECIFIC_SCOPED_FIX"
+}

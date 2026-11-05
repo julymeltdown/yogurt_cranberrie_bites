@@ -1,0 +1,33 @@
+[96me2e/venue-root-binding/fixture.ts[0m:[93m26[0m:[93m39[0m - [91merror[0m[90m TS2345: [0mArgument of type 'Promise<ShellBootstrap>' is not assignable to parameter of type 'ShellBootstrap'.
+  Type 'Promise<ShellBootstrap>' is missing the following properties from type 'ShellBootstrap': contractVersion, event, participant, worldAvailable, capabilities
+
+[7m26[0m   const community = timeline.complete(checkedBootstrap()), clock = community.read()!.clock
+[7m  [0m [91m                                      ~~~~~~~~~~~~~~~~~~[0m
+
+  [96me2e/venue-root-binding/fixture.ts[0m:[93m26[0m:[93m39[0m
+    [7m26[0m   const community = timeline.complete(checkedBootstrap()), clock = community.read()!.clock
+    [7m  [0m [96m                                      ~~~~~~~~~~~~~~~~~~[0m
+    Did you forget to use 'await'?
+[96msrc/app/venue-root/binding.ts[0m:[93m37[0m:[93m63[0m - [91merror[0m[90m TS7006: [0mParameter 'intent' implicitly has an 'any' type.
+
+[7m37[0m   const focusProxy: VenueMapFocusPort = Object.freeze({ focus(intent) {
+[7m  [0m [91m                                                              ~~~~~~[0m
+[96msrc/app/venue-root/binding.ts[0m:[93m50[0m:[93m9[0m - [91merror[0m[90m TS2322: [0mType 'Readonly<{ read(): MeetingLeafSnapshot | null; subscribe(listener: any): () => void; open(intent: any): Promise<MeetingOpenResult | { kind: string; }>; close(): boolean; }>' is not assignable to type 'MeetingConsumerPort'.
+  The types returned by 'open(...)' are incompatible between these types.
+    Type 'Promise<MeetingOpenResult | { kind: string; }>' is not assignable to type 'Promise<MeetingOpenResult>'.
+      Type 'MeetingOpenResult | { kind: string; }' is not assignable to type 'MeetingOpenResult'.
+        Type '{ kind: string; }' is not assignable to type 'MeetingOpenResult'.
+          Types of property 'kind' are incompatible.
+            Type 'string' is not assignable to type '"unavailable" | "opened" | "stale"'.
+
+[7m50[0m   const meetingProxy: MeetingConsumerPort = Object.freeze({
+[7m  [0m [91m        ~~~~~~~~~~~~[0m
+[96msrc/app/venue-root/binding.ts[0m:[93m52[0m:[93m15[0m - [91merror[0m[90m TS7006: [0mParameter 'listener' implicitly has an 'any' type.
+
+[7m52[0m     subscribe(listener) { if (!active) return () => {}; meetingListeners.add(listener); return () => { meetingListeners.delete(listener) } },
+[7m  [0m [91m              ~~~~~~~~[0m
+[96msrc/app/venue-root/binding.ts[0m:[93m53[0m:[93m16[0m - [91merror[0m[90m TS7006: [0mParameter 'intent' implicitly has an 'any' type.
+
+[7m53[0m     async open(intent) {
+[7m  [0m [91m               ~~~~~~[0m
+{"roots":9,"transitiveFiles":748,"immutableInputs":28,"diagnostics":5}

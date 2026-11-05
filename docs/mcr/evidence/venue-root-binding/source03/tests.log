@@ -1,0 +1,171 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/art-runtime/frontend
+
+xxxxxxxxxxxxxxx
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 15 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  e2e/venue-root-binding/binding.test.tsx > actual venue root input and lifetime bridge > projects the registered 22 ART IDs once and snapshots explicit real-provider associations
+TypeError: Cannot read properties of null (reading 'clock')
+ ❯ fixture e2e/venue-root-binding/fixture.ts:26:84
+     24|     onInterruption: () => () => {},
+     25|   }))
+     26|   const community = timeline.complete(checkedBootstrap()), clock = com…
+       |                                                                                    ^
+     27|   const loader = createSiteplanLoader(productionSiteplanRegistration, …
+     28|     fetch: async url => String(url).endsWith('.json') ? new Response(m…
+ ❯ setup e2e/venue-root-binding/binding.test.tsx:24:42
+ ❯ e2e/venue-root-binding/binding.test.tsx:28:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/15]⎯
+
+ FAIL  e2e/venue-root-binding/binding.test.tsx > actual venue root input and lifetime bridge > rejects a different asset registration instead of constructing another loader or map
+TypeError: Cannot read properties of null (reading 'clock')
+ ❯ fixture e2e/venue-root-binding/fixture.ts:26:84
+     24|     onInterruption: () => () => {},
+     25|   }))
+     26|   const community = timeline.complete(checkedBootstrap()), clock = com…
+       |                                                                                    ^
+     27|   const loader = createSiteplanLoader(productionSiteplanRegistration, …
+     28|     fetch: async url => String(url).endsWith('.json') ? new Response(m…
+ ❯ setup e2e/venue-root-binding/binding.test.tsx:24:42
+ ❯ e2e/venue-root-binding/binding.test.tsx:36:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/15]⎯
+
+ FAIL  e2e/venue-root-binding/binding.test.tsx > actual venue root input and lifetime bridge > rejects a focus intent with stale userId
+ FAIL  e2e/venue-root-binding/binding.test.tsx > actual venue root input and lifetime bridge > rejects a focus intent with stale eventId
+ FAIL  e2e/venue-root-binding/binding.test.tsx > actual venue root input and lifetime bridge > rejects a focus intent with stale generation
+ FAIL  e2e/venue-root-binding/binding.test.tsx > actual venue root input and lifetime bridge > rejects a focus intent with stale policyGeneration
+ FAIL  e2e/venue-root-binding/binding.test.tsx > actual venue root input and lifetime bridge > rejects a focus intent with stale gate
+TypeError: Cannot read properties of null (reading 'clock')
+ ❯ fixture e2e/venue-root-binding/fixture.ts:26:84
+     24|     onInterruption: () => () => {},
+     25|   }))
+     26|   const community = timeline.complete(checkedBootstrap()), clock = com…
+       |                                                                                    ^
+     27|   const loader = createSiteplanLoader(productionSiteplanRegistration, …
+     28|     fetch: async url => String(url).endsWith('.json') ? new Response(m…
+ ❯ setup e2e/venue-root-binding/binding.test.tsx:24:42
+ ❯ e2e/venue-root-binding/binding.test.tsx:40:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/15]⎯
+
+ FAIL  e2e/venue-root-binding/binding.test.tsx > actual venue root input and lifetime bridge > requires the same venue and a known ART ID; successful focus authorizes one navigation
+TypeError: Cannot read properties of null (reading 'clock')
+ ❯ fixture e2e/venue-root-binding/fixture.ts:26:84
+     24|     onInterruption: () => () => {},
+     25|   }))
+     26|   const community = timeline.complete(checkedBootstrap()), clock = com…
+       |                                                                                    ^
+     27|   const loader = createSiteplanLoader(productionSiteplanRegistration, …
+     28|     fetch: async url => String(url).endsWith('.json') ? new Response(m…
+ ❯ setup e2e/venue-root-binding/binding.test.tsx:24:42
+ ❯ e2e/venue-root-binding/binding.test.tsx:47:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/15]⎯
+
+ FAIL  e2e/venue-root-binding/binding.test.tsx > actual venue root input and lifetime bridge > scrubs both proxies before hostile unsubscribe and subscriber callbacks on privacy withdrawal
+TypeError: Cannot read properties of null (reading 'clock')
+ ❯ fixture e2e/venue-root-binding/fixture.ts:26:84
+     24|     onInterruption: () => () => {},
+     25|   }))
+     26|   const community = timeline.complete(checkedBootstrap()), clock = com…
+       |                                                                                    ^
+     27|   const loader = createSiteplanLoader(productionSiteplanRegistration, …
+     28|     fetch: async url => String(url).endsWith('.json') ? new Response(m…
+ ❯ setup e2e/venue-root-binding/binding.test.tsx:24:42
+ ❯ e2e/venue-root-binding/binding.test.tsx:55:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/15]⎯
+
+ FAIL  e2e/venue-root-binding/binding.test.tsx > actual venue root input and lifetime bridge > fences a late meeting open after abort and cannot resurrect an old delegate
+TypeError: Cannot read properties of null (reading 'clock')
+ ❯ fixture e2e/venue-root-binding/fixture.ts:26:84
+     24|     onInterruption: () => () => {},
+     25|   }))
+     26|   const community = timeline.complete(checkedBootstrap()), clock = com…
+       |                                                                                    ^
+     27|   const loader = createSiteplanLoader(productionSiteplanRegistration, …
+     28|     fetch: async url => String(url).endsWith('.json') ? new Response(m…
+ ❯ setup e2e/venue-root-binding/binding.test.tsx:24:42
+ ❯ e2e/venue-root-binding/binding.test.tsx:67:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/15]⎯
+
+ FAIL  e2e/venue-root-binding/binding.test.tsx > actual venue root input and lifetime bridge > keeps the image/local map input when community clock is unavailable and creates no meeting authority
+TypeError: Cannot read properties of null (reading 'clock')
+ ❯ fixture e2e/venue-root-binding/fixture.ts:26:84
+     24|     onInterruption: () => () => {},
+     25|   }))
+     26|   const community = timeline.complete(checkedBootstrap()), clock = com…
+       |                                                                                    ^
+     27|   const loader = createSiteplanLoader(productionSiteplanRegistration, …
+     28|     fetch: async url => String(url).endsWith('.json') ? new Response(m…
+ ❯ setup e2e/venue-root-binding/binding.test.tsx:24:42
+ ❯ e2e/venue-root-binding/binding.test.tsx:75:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/15]⎯
+
+ FAIL  e2e/venue-root-binding/binding.test.tsx > actual venue root input and lifetime bridge > rejects a substitute clock or shell signal even if its current sample looks the same
+TypeError: Cannot read properties of null (reading 'clock')
+ ❯ fixture e2e/venue-root-binding/fixture.ts:26:84
+     24|     onInterruption: () => () => {},
+     25|   }))
+     26|   const community = timeline.complete(checkedBootstrap()), clock = com…
+       |                                                                                    ^
+     27|   const loader = createSiteplanLoader(productionSiteplanRegistration, …
+     28|     fetch: async url => String(url).endsWith('.json') ? new Response(m…
+ ❯ setup e2e/venue-root-binding/binding.test.tsx:24:42
+ ❯ e2e/venue-root-binding/binding.test.tsx:80:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/15]⎯
+
+ FAIL  e2e/venue-root-binding/binding.test.tsx > actual venue root input and lifetime bridge > borrows actual map and meeting owners without a Map→release→meeting rebind cycle
+TypeError: Cannot read properties of null (reading 'clock')
+ ❯ fixture e2e/venue-root-binding/fixture.ts:26:84
+     24|     onInterruption: () => () => {},
+     25|   }))
+     26|   const community = timeline.complete(checkedBootstrap()), clock = com…
+       |                                                                                    ^
+     27|   const loader = createSiteplanLoader(productionSiteplanRegistration, …
+     28|     fetch: async url => String(url).endsWith('.json') ? new Response(m…
+ ❯ setup e2e/venue-root-binding/binding.test.tsx:24:42
+ ❯ e2e/venue-root-binding/binding.test.tsx:86:21
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/15]⎯
+
+ FAIL  e2e/venue-root-binding/binding.test.tsx > retains actual providers across Outlet remounts, then clears the rendered private leaf on withdrawal
+TypeError: Cannot read properties of null (reading 'clock')
+ ❯ fixture e2e/venue-root-binding/fixture.ts:26:84
+     24|     onInterruption: () => () => {},
+     25|   }))
+     26|   const community = timeline.complete(checkedBootstrap()), clock = com…
+       |                                                                                    ^
+     27|   const loader = createSiteplanLoader(productionSiteplanRegistration, …
+     28|     fetch: async url => String(url).endsWith('.json') ? new Response(m…
+ ❯ setup e2e/venue-root-binding/binding.test.tsx:24:42
+ ❯ e2e/venue-root-binding/binding.test.tsx:100:19
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/15]⎯
+
+ FAIL  e2e/venue-root-binding/binding.test.tsx > renders the approved illustration and local tabs without capability or clock authority
+TypeError: Cannot read properties of null (reading 'clock')
+ ❯ fixture e2e/venue-root-binding/fixture.ts:26:84
+     24|     onInterruption: () => () => {},
+     25|   }))
+     26|   const community = timeline.complete(checkedBootstrap()), clock = com…
+       |                                                                                    ^
+     27|   const loader = createSiteplanLoader(productionSiteplanRegistration, …
+     28|     fetch: async url => String(url).endsWith('.json') ? new Response(m…
+ ❯ setup e2e/venue-root-binding/binding.test.tsx:24:42
+ ❯ e2e/venue-root-binding/binding.test.tsx:121:19
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[11/15]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  15 failed (15)
+   Start at  12:04:28
+   Duration  1.70s (transform 833ms, setup 0ms, import 1.18s, tests 20ms, environment 418ms)
+

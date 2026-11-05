@@ -1,0 +1,55 @@
+[
+  {
+    "label": "tests",
+    "argv": [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+      "run",
+      "--configLoader",
+      "runner",
+      "--config",
+      "e2e/venue-root-binding/vitest.config.mjs",
+      "--no-cache",
+      "--reporter",
+      "dot"
+    ],
+    "pid": 22051,
+    "exit": 1
+  },
+  {
+    "label": "types",
+    "argv": [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "--max-old-space-size=2048",
+      "e2e/venue-root-binding/typecheck.mjs"
+    ],
+    "pid": 22545,
+    "exit": 1
+  },
+  {
+    "label": "lint",
+    "argv": [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "/Users/lhs/Desktop/mcr/frontend/node_modules/oxlint/bin/oxlint",
+      "--deny-warnings",
+      "src/app/venue-root",
+      "e2e/venue-root-binding"
+    ],
+    "pid": 23388,
+    "exit": 0
+  },
+  {
+    "label": "control-syntax",
+    "argv": [
+      "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+      "-B",
+      "-c",
+      "import ast, pathlib; [ast.parse(pathlib.Path(p).read_text(), filename=p) for p in __import__(\"sys\").argv[1:]]",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/qualify.py",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/guardian.py",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/ordinary.py"
+    ],
+    "pid": 23481,
+    "exit": 0
+  }
+]

@@ -1,0 +1,606 @@
+{
+  "breach": null,
+  "samples": 3,
+  "peaks": {
+    "processes": 4,
+    "rss": 84803584,
+    "temporary": 64,
+    "durable": 1782688,
+    "new": 284581057,
+    "whole": 9532691232
+  },
+  "initial": {
+    "pids": [
+      10828,
+      10909,
+      10913
+    ],
+    "processes": 3,
+    "rss": 55492608,
+    "temporary": 64,
+    "durable": 1716896,
+    "new": 284523521,
+    "whole": 9532633696,
+    "wholeInventory": {
+      "total": 6240028243,
+      "roots": [
+        {
+          "root": "/Users/lhs/Desktop/mcr-worktrees/art-runtime",
+          "bytes": 1509582976,
+          "inodes": 18685
+        },
+        {
+          "root": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+          "bytes": 438891729,
+          "inodes": 13420
+        },
+        {
+          "root": "/Users/lhs/Desktop/mcr-tools",
+          "bytes": 419021528,
+          "inodes": 8089
+        },
+        {
+          "root": "/Users/lhs/Desktop/mcr/.git",
+          "bytes": 1231978208,
+          "inodes": 4318
+        },
+        {
+          "root": "/Library/Frameworks/Python.framework/Versions/3.14",
+          "bytes": 1046142375,
+          "inodes": 28412
+        },
+        {
+          "root": "/opt/homebrew/Cellar/git/2.55.0",
+          "bytes": 67168482,
+          "inodes": 1839
+        },
+        {
+          "root": "/opt/homebrew/opt/git/libexec/git-core",
+          "bytes": 0,
+          "inodes": 0
+        },
+        {
+          "root": "/opt/homebrew/bin/git",
+          "bytes": 27164,
+          "inodes": 2
+        },
+        {
+          "root": "/Applications/Google Chrome.app",
+          "bytes": 1527215781,
+          "inodes": 1339
+        }
+      ]
+    },
+    "free": 23428055040,
+    "global": {
+      "metadataAsOf": "2026-11-05T01:47:30.991757+00:00",
+      "members": [
+        {
+          "cohort": "QA04-SOURCE14-0325",
+          "kind": "source",
+          "pids": [],
+          "processCap": 8,
+          "rssCapBytes": 2147483648,
+          "remainingNewBytes": 58404864,
+          "state": "ACCEPTED"
+        },
+        {
+          "cohort": "VenueRootBinding",
+          "kind": "browser",
+          "pids": [
+            10828,
+            10909,
+            10913
+          ],
+          "processCap": 24,
+          "rssCapBytes": 4294967296,
+          "remainingNewBytes": 402653184,
+          "state": "ACTUAL_ACCEPT"
+        }
+      ],
+      "unresolvedPids": [],
+      "workflows": 2,
+      "sources": 1,
+      "browsers": 1,
+      "targets": 0,
+      "distinctPids": [
+        10828,
+        10909,
+        10913
+      ],
+      "actualRSS": 55492608,
+      "chargedPIDs": 32,
+      "chargedRSS": 6442450944,
+      "otherUpper": 2759536640,
+      "receiptFiles": [
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a19e5c-e9c6-7973-a53b-a6d19141620f.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a19f83-12cc-7f21-8ad3-55749f012d9b.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a00c-2690-7bc0-94fc-52609655ea83.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a153-1227-7e72-801f-a2a6b91981e1.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fd-6b5d-75b0-8d42-01ade79b9393.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fe-16e1-7ee3-a9dc-8b5f037cc24c.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fe-1ab7-79b0-adbc-d4c025701acb.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fe-1eed-7d12-a247-879cd521e0ec.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a202-3ff2-7a93-95c3-374c6df97281.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a204-c583-7670-965a-4891b8b1289e.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a205-3f89-78c3-aa67-719c4bb40b8d.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a207-f012-7343-a24b-12b9c544973f.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a20f-8d37-71c3-a429-8a55bb6d6c49.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a213-03de-72d3-9ecf-2f72b574cf82.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a213-61d6-7a20-a8e7-476649312f8c.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a21a-a088-7c31-83e3-19de119ba873.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a21e-ab80-7012-b9fa-cdb69eed097b.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a230-6acc-7e82-9e4b-92506decc745.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a231-0dc4-7b50-92bd-c0f0f56bd970.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a232-21e2-75c2-8474-a5fa6ae895cd.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a232-b91d-78f1-a13a-1361788ba51c.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a267-37a0-7723-a4e9-a3a6f5b27f52.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a26e-1de2-7b41-a294-c9a79cfded9b.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a533-50a8-7fb2-b3ed-96b941b96bbf.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a534-4fcf-7291-abe3-a97ba2fcafcd.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-40c576fad94a.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-40fde6c81bb4.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-412e295fa211.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6950-7920-8c80-5214d4ce0eaf.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6954-7bd3-9b08-7109883187b5.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6955-7820-bcd4-8e0a21629aa2.json"
+      ],
+      "ordinary": [
+        {
+          "owner": "01a1a5d9-6950-7920-8c80-5214d4ce0eaf",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        },
+        {
+          "owner": "01a1a21a-a088-7c31-83e3-19de119ba873",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        },
+        {
+          "owner": "01a1a5d9-332b-7822-a8f7-412e295fa211",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        },
+        {
+          "owner": "01a19e5c-e9c6-7973-a53b-a6d19141620f",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        },
+        {
+          "owner": "01a1a00c-2690-7bc0-94fc-52609655ea83",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        },
+        {
+          "owner": "01a1a1fd-6b5d-75b0-8d42-01ade79b9393",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        },
+        {
+          "owner": "01a1a205-3f89-78c3-aa67-719c4bb40b8d",
+          "state": "ACCEPTED",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 16777216
+        },
+        {
+          "owner": "01a1a207-f012-7343-a24b-12b9c544973f",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        },
+        {
+          "owner": "01a1a213-03de-72d3-9ecf-2f72b574cf82",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        },
+        {
+          "owner": "01a1a21a-a088-7c31-83e3-19de119ba873",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        },
+        {
+          "owner": "01a1a267-37a0-7723-a4e9-a3a6f5b27f52",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        },
+        {
+          "owner": "01a1a5d9-332b-7822-a8f7-412e295fa211",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        }
+      ],
+      "processes": [
+        {
+          "pid": 10828,
+          "parent": 49590,
+          "group": 10828,
+          "rss": 29114368,
+          "birth": "Thu Nov 5 12:31:11 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/qualify.py",
+          "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+        },
+        {
+          "pid": 10909,
+          "parent": 10828,
+          "group": 10828,
+          "rss": 24166400,
+          "birth": "Thu Nov 5 12:31:11 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/guardian.py /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/native03/guard-config.json",
+          "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+        },
+        {
+          "pid": 10913,
+          "parent": 10909,
+          "group": 10828,
+          "rss": 2211840,
+          "birth": "Thu Nov 5 12:31:11 2026",
+          "command": "ps -axo pid=,ppid=,pgid=,rss=,lstart=,args=",
+          "executable": null
+        }
+      ]
+    },
+    "ownedIdentities": [
+      {
+        "pid": 10828,
+        "parent": 49590,
+        "group": 10828,
+        "rss": 29114368,
+        "birth": "Thu Nov 5 12:31:11 2026",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/qualify.py",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+      },
+      {
+        "pid": 10909,
+        "parent": 10828,
+        "group": 10828,
+        "rss": 24166400,
+        "birth": "Thu Nov 5 12:31:11 2026",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/guardian.py /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/native03/guard-config.json",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+      },
+      {
+        "pid": 10913,
+        "parent": 10909,
+        "group": 10828,
+        "rss": 2211840,
+        "birth": "Thu Nov 5 12:31:11 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,rss=,lstart=,args=",
+        "executable": null
+      }
+    ],
+    "pngCount": 0,
+    "pngBytes": 0
+  },
+  "last": {
+    "pids": [
+      10828,
+      10909,
+      11046,
+      11297
+    ],
+    "processes": 4,
+    "rss": 84803584,
+    "temporary": 64,
+    "durable": 1782688,
+    "new": 284581057,
+    "whole": 9532691232,
+    "wholeInventory": {
+      "total": 6240089715,
+      "roots": [
+        {
+          "root": "/Users/lhs/Desktop/mcr-worktrees/art-runtime",
+          "bytes": 1509648768,
+          "inodes": 18693
+        },
+        {
+          "root": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+          "bytes": 438891729,
+          "inodes": 13420
+        },
+        {
+          "root": "/Users/lhs/Desktop/mcr-tools",
+          "bytes": 419021528,
+          "inodes": 8089
+        },
+        {
+          "root": "/Users/lhs/Desktop/mcr/.git",
+          "bytes": 1231973888,
+          "inodes": 4315
+        },
+        {
+          "root": "/Library/Frameworks/Python.framework/Versions/3.14",
+          "bytes": 1046142375,
+          "inodes": 28412
+        },
+        {
+          "root": "/opt/homebrew/Cellar/git/2.55.0",
+          "bytes": 67168482,
+          "inodes": 1839
+        },
+        {
+          "root": "/opt/homebrew/opt/git/libexec/git-core",
+          "bytes": 0,
+          "inodes": 0
+        },
+        {
+          "root": "/opt/homebrew/bin/git",
+          "bytes": 27164,
+          "inodes": 2
+        },
+        {
+          "root": "/Applications/Google Chrome.app",
+          "bytes": 1527215781,
+          "inodes": 1339
+        }
+      ]
+    },
+    "free": 23427952640,
+    "global": {
+      "metadataAsOf": "2026-11-05T01:47:30.991757+00:00",
+      "members": [
+        {
+          "cohort": "QA04-SOURCE14-0325",
+          "kind": "source",
+          "pids": [],
+          "processCap": 8,
+          "rssCapBytes": 2147483648,
+          "remainingNewBytes": 58404864,
+          "state": "ACCEPTED"
+        },
+        {
+          "cohort": "VenueRootBinding",
+          "kind": "browser",
+          "pids": [
+            10828,
+            10909,
+            11046,
+            11297
+          ],
+          "processCap": 24,
+          "rssCapBytes": 4294967296,
+          "remainingNewBytes": 402653184,
+          "state": "ACTUAL_ACCEPT"
+        }
+      ],
+      "unresolvedPids": [],
+      "workflows": 2,
+      "sources": 1,
+      "browsers": 1,
+      "targets": 0,
+      "distinctPids": [
+        10828,
+        10909,
+        11046,
+        11297
+      ],
+      "actualRSS": 84803584,
+      "chargedPIDs": 32,
+      "chargedRSS": 6442450944,
+      "otherUpper": 2759536640,
+      "receiptFiles": [
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a19e5c-e9c6-7973-a53b-a6d19141620f.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a19f83-12cc-7f21-8ad3-55749f012d9b.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a00c-2690-7bc0-94fc-52609655ea83.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a153-1227-7e72-801f-a2a6b91981e1.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fd-6b5d-75b0-8d42-01ade79b9393.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fe-16e1-7ee3-a9dc-8b5f037cc24c.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fe-1ab7-79b0-adbc-d4c025701acb.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fe-1eed-7d12-a247-879cd521e0ec.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a202-3ff2-7a93-95c3-374c6df97281.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a204-c583-7670-965a-4891b8b1289e.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a205-3f89-78c3-aa67-719c4bb40b8d.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a207-f012-7343-a24b-12b9c544973f.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a20f-8d37-71c3-a429-8a55bb6d6c49.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a213-03de-72d3-9ecf-2f72b574cf82.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a213-61d6-7a20-a8e7-476649312f8c.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a21a-a088-7c31-83e3-19de119ba873.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a21e-ab80-7012-b9fa-cdb69eed097b.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a230-6acc-7e82-9e4b-92506decc745.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a231-0dc4-7b50-92bd-c0f0f56bd970.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a232-21e2-75c2-8474-a5fa6ae895cd.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a232-b91d-78f1-a13a-1361788ba51c.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a267-37a0-7723-a4e9-a3a6f5b27f52.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a26e-1de2-7b41-a294-c9a79cfded9b.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a533-50a8-7fb2-b3ed-96b941b96bbf.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a534-4fcf-7291-abe3-a97ba2fcafcd.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-40c576fad94a.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-40fde6c81bb4.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-412e295fa211.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6950-7920-8c80-5214d4ce0eaf.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6954-7bd3-9b08-7109883187b5.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6955-7820-bcd4-8e0a21629aa2.json"
+      ],
+      "ordinary": [
+        {
+          "owner": "01a1a5d9-6950-7920-8c80-5214d4ce0eaf",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        },
+        {
+          "owner": "01a1a21a-a088-7c31-83e3-19de119ba873",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        },
+        {
+          "owner": "01a1a5d9-332b-7822-a8f7-412e295fa211",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        },
+        {
+          "owner": "01a19e5c-e9c6-7973-a53b-a6d19141620f",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        },
+        {
+          "owner": "01a1a00c-2690-7bc0-94fc-52609655ea83",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        },
+        {
+          "owner": "01a1a1fd-6b5d-75b0-8d42-01ade79b9393",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        },
+        {
+          "owner": "01a1a205-3f89-78c3-aa67-719c4bb40b8d",
+          "state": "ACCEPTED",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 16777216
+        },
+        {
+          "owner": "01a1a207-f012-7343-a24b-12b9c544973f",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        },
+        {
+          "owner": "01a1a213-03de-72d3-9ecf-2f72b574cf82",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        },
+        {
+          "owner": "01a1a21a-a088-7c31-83e3-19de119ba873",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        },
+        {
+          "owner": "01a1a267-37a0-7723-a4e9-a3a6f5b27f52",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        },
+        {
+          "owner": "01a1a5d9-332b-7822-a8f7-412e295fa211",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        }
+      ],
+      "processes": [
+        {
+          "pid": 10828,
+          "parent": 49590,
+          "group": 10828,
+          "rss": 43433984,
+          "birth": "Thu Nov 5 12:31:11 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/qualify.py",
+          "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+        },
+        {
+          "pid": 10909,
+          "parent": 10828,
+          "group": 10828,
+          "rss": 39157760,
+          "birth": "Thu Nov 5 12:31:11 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/guardian.py /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/native03/guard-config.json",
+          "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+        },
+        {
+          "pid": 11046,
+          "parent": 10828,
+          "group": 11046,
+          "rss": 0,
+          "birth": "Thu Nov 5 12:31:13 2026",
+          "command": "<defunct>",
+          "executable": "<defunct>"
+        },
+        {
+          "pid": 11297,
+          "parent": 10909,
+          "group": 10828,
+          "rss": 2211840,
+          "birth": "Thu Nov 5 12:31:14 2026",
+          "command": "ps -axo pid=,ppid=,pgid=,rss=,lstart=,args=",
+          "executable": null
+        }
+      ]
+    },
+    "ownedIdentities": [
+      {
+        "pid": 10828,
+        "parent": 49590,
+        "group": 10828,
+        "rss": 43433984,
+        "birth": "Thu Nov 5 12:31:11 2026",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/qualify.py",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+      },
+      {
+        "pid": 10909,
+        "parent": 10828,
+        "group": 10828,
+        "rss": 39157760,
+        "birth": "Thu Nov 5 12:31:11 2026",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/guardian.py /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/native03/guard-config.json",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+      },
+      {
+        "pid": 11046,
+        "parent": 10828,
+        "group": 11046,
+        "rss": 0,
+        "birth": "Thu Nov 5 12:31:13 2026",
+        "command": "<defunct>",
+        "executable": "<defunct>"
+      },
+      {
+        "pid": 11297,
+        "parent": 10909,
+        "group": 10828,
+        "rss": 2211840,
+        "birth": "Thu Nov 5 12:31:14 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,rss=,lstart=,args=",
+        "executable": null
+      }
+    ],
+    "pngCount": 0,
+    "pngBytes": 0
+  },
+  "minimumFree": 23427952640
+}

@@ -1,0 +1,999 @@
+{
+  "breach": "global PID/RSS cap",
+  "samples": 1,
+  "peaks": {
+    "processes": 3,
+    "rss": 56115200,
+    "temporary": 64,
+    "durable": 957312,
+    "new": 282677677,
+    "whole": 8964690884
+  },
+  "initial": {
+    "pids": [
+      66710,
+      66827,
+      66842
+    ],
+    "processes": 3,
+    "rss": 56115200,
+    "temporary": 64,
+    "durable": 957312,
+    "new": 282677677,
+    "whole": 8964690884,
+    "wholeInventory": {
+      "total": 4709474382,
+      "roots": [
+        {
+          "root": "/Users/lhs/Desktop/mcr-worktrees/art-runtime",
+          "bytes": 1508819296,
+          "inodes": 18636
+        },
+        {
+          "root": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+          "bytes": 438891729,
+          "inodes": 13420
+        },
+        {
+          "root": "/Users/lhs/Desktop/mcr-tools",
+          "bytes": 419021528,
+          "inodes": 8089
+        },
+        {
+          "root": "/Users/lhs/Desktop/mcr/.git",
+          "bytes": 1229403808,
+          "inodes": 3846
+        },
+        {
+          "root": "/Library/Frameworks/Python.framework/Versions/3.14",
+          "bytes": 1046142375,
+          "inodes": 28412
+        },
+        {
+          "root": "/opt/homebrew/Cellar/git/2.55.0",
+          "bytes": 67168482,
+          "inodes": 1839
+        },
+        {
+          "root": "/opt/homebrew/opt/git/libexec/git-core",
+          "bytes": 0,
+          "inodes": 0
+        },
+        {
+          "root": "/opt/homebrew/bin/git",
+          "bytes": 27164,
+          "inodes": 2
+        }
+      ]
+    },
+    "free": 23611863040,
+    "global": {
+      "metadataAsOf": "2026-11-05T01:47:30.991757+00:00",
+      "members": [
+        {
+          "cohort": "BE42-PH1-COMPILE-FIVE-09-0249",
+          "kind": "target",
+          "pids": [
+            5445,
+            5455,
+            99401
+          ],
+          "processCap": 32,
+          "rssCapBytes": 8589934592,
+          "remainingNewBytes": 2147483648,
+          "state": "ACCEPTED"
+        },
+        {
+          "cohort": "ROOT153-M-REGISTRATION-SOURCE04-0307",
+          "kind": "source",
+          "pids": [
+            65941,
+            66104,
+            66841
+          ],
+          "processCap": 8,
+          "rssCapBytes": 4294967296,
+          "remainingNewBytes": 85206455,
+          "state": "ACCEPTED"
+        },
+        {
+          "cohort": "PRIVATE-NATIVE12-0307",
+          "kind": "browser",
+          "pids": [
+            65439,
+            65605,
+            65924,
+            66151,
+            66161,
+            66318,
+            66335,
+            66402,
+            66409,
+            66413,
+            66414
+          ],
+          "processCap": 24,
+          "rssCapBytes": 4294967296,
+          "remainingNewBytes": 58720256,
+          "state": "ACCEPTED"
+        },
+        {
+          "cohort": "VenueRootBinding",
+          "kind": "source",
+          "pids": [
+            66710,
+            66827,
+            66842
+          ],
+          "processCap": 12,
+          "rssCapBytes": 3221225472,
+          "remainingNewBytes": 402653184,
+          "state": "ACTUAL_ACCEPT"
+        }
+      ],
+      "unresolvedPids": [],
+      "workflows": 4,
+      "sources": 2,
+      "browsers": 1,
+      "targets": 1,
+      "distinctPids": [
+        5445,
+        5455,
+        26507,
+        65439,
+        65605,
+        65924,
+        65941,
+        66104,
+        66151,
+        66161,
+        66318,
+        66335,
+        66402,
+        66409,
+        66413,
+        66414,
+        66710,
+        66827,
+        66841,
+        66842,
+        99401
+      ],
+      "actualRSS": 7245594624,
+      "chargedPIDs": 77,
+      "chargedRSS": 24292048896,
+      "otherUpper": 5059650999,
+      "receiptFiles": [
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a19e5c-e9c6-7973-a53b-a6d19141620f.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a19f83-12cc-7f21-8ad3-55749f012d9b.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a00c-2690-7bc0-94fc-52609655ea83.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a153-1227-7e72-801f-a2a6b91981e1.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fe-16e1-7ee3-a9dc-8b5f037cc24c.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fe-1ab7-79b0-adbc-d4c025701acb.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fe-1eed-7d12-a247-879cd521e0ec.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a202-3ff2-7a93-95c3-374c6df97281.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a204-c583-7670-965a-4891b8b1289e.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a205-3f89-78c3-aa67-719c4bb40b8d.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a207-f012-7343-a24b-12b9c544973f.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a20f-8d37-71c3-a429-8a55bb6d6c49.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a213-03de-72d3-9ecf-2f72b574cf82.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a213-61d6-7a20-a8e7-476649312f8c.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a21a-a088-7c31-83e3-19de119ba873.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a21e-ab80-7012-b9fa-cdb69eed097b.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a230-6acc-7e82-9e4b-92506decc745.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a231-0dc4-7b50-92bd-c0f0f56bd970.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a232-21e2-75c2-8474-a5fa6ae895cd.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a232-b91d-78f1-a13a-1361788ba51c.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a267-37a0-7723-a4e9-a3a6f5b27f52.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a26e-1de2-7b41-a294-c9a79cfded9b.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a533-50a8-7fb2-b3ed-96b941b96bbf.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a534-4fcf-7291-abe3-a97ba2fcafcd.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-40c576fad94a.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-40fde6c81bb4.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-412e295fa211.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6950-7920-8c80-5214d4ce0eaf.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6954-7bd3-9b08-7109883187b5.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6955-7820-bcd4-8e0a21629aa2.json"
+      ],
+      "ordinary": [
+        {
+          "owner": "01a1a5d9-6950-7920-8c80-5214d4ce0eaf",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        },
+        {
+          "owner": "01a1a21a-a088-7c31-83e3-19de119ba873",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        },
+        {
+          "owner": "01a1a5d9-332b-7822-a8f7-412e295fa211",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        },
+        {
+          "owner": "01a19e5c-e9c6-7973-a53b-a6d19141620f",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        },
+        {
+          "owner": "01a1a00c-2690-7bc0-94fc-52609655ea83",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        },
+        {
+          "owner": "01a19f83-12cc-7f21-8ad3-55749f012d9b",
+          "state": "ACCEPTED",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 50331648
+        },
+        {
+          "owner": "01a1a205-3f89-78c3-aa67-719c4bb40b8d",
+          "state": "ACCEPTED",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 16777216
+        },
+        {
+          "owner": "01a1a207-f012-7343-a24b-12b9c544973f",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        },
+        {
+          "owner": "01a1a267-37a0-7723-a4e9-a3a6f5b27f52",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        },
+        {
+          "owner": "01a1a5d9-332b-7822-a8f7-40c576fad94a",
+          "state": "ACCEPTED",
+          "verified": true,
+          "pids": [
+            26507
+          ],
+          "remainingNewBytes": 16777216
+        },
+        {
+          "owner": "01a1a5d9-332b-7822-a8f7-412e295fa211",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        }
+      ],
+      "processes": [
+        {
+          "pid": 5445,
+          "parent": 99401,
+          "group": 5445,
+          "rss": 33701888,
+          "birth": "Thu Nov 5 12:01:19 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /private/tmp/mcr-be42-compile-09-exec/run.py /private/tmp/mcr-be42-compile-09-exec",
+          "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+        },
+        {
+          "pid": 5455,
+          "parent": 5445,
+          "group": 5455,
+          "rss": 126271488,
+          "birth": "Thu Nov 5 12:01:19 2026",
+          "command": "/Users/lhs/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/cargo test --locked --offline -p concert-service --test production_private_data_native --test private_data_production --test account_deletion_runtime --test media_deletion --test account_private_data_aggregate --no-run --message-format=json --config profile.dev.package.contracts-build.opt-level=2",
+          "executable": "/Users/lhs/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/cargo"
+        },
+        {
+          "pid": 26507,
+          "parent": 49590,
+          "group": 26507,
+          "rss": 3890954240,
+          "birth": "Thu Nov 5 12:05:07 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /private/tmp/mcr-venu-l-transport-40c576-0304/ordinary.py",
+          "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+        },
+        {
+          "pid": 65439,
+          "parent": 49590,
+          "group": 65439,
+          "rss": 182026240,
+          "birth": "Thu Nov 5 12:10:54 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/frontend/src/app/__tests__/parade-ink-private-pages/native-round.py --job PRIVATE-NATIVE12-0307 --candidate 66f51267314347d30eb7854b79c5502ee3eb2c09 --accepted-epoch 1793848254 --other-new-bytes 8589934592 --new-carry-bytes 343932928 --output /Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-12 --port 5382 --foundation-commit b5b44e47531e3b75febc5ee5cdd6a11b1648779c",
+          "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+        },
+        {
+          "pid": 65605,
+          "parent": 65439,
+          "group": 65605,
+          "rss": 45613056,
+          "birth": "Thu Nov 5 12:10:56 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/frontend/src/app/__tests__/parade-ink-private-pages/watchdog.py /private/tmp/mcr-parade-ink-private-n0uzdldu/config.json",
+          "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+        },
+        {
+          "pid": 65924,
+          "parent": 65439,
+          "group": 65924,
+          "rss": 1086586880,
+          "birth": "Thu Nov 5 12:11:03 2026",
+          "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node /Users/lhs/Desktop/mcr/frontend/node_modules/vite/bin/vite.js --config e2e/visual/parade-ink-private-pages/vite.config.ts --configLoader runner --host 127.0.0.1 --port 5382 --strictPort",
+          "executable": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node"
+        },
+        {
+          "pid": 65941,
+          "parent": 49590,
+          "group": 65941,
+          "rss": 59604992,
+          "birth": "Thu Nov 5 12:11:03 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /private/tmp/mcr-paradise-notes-api-root153-0221/meeting-source.py M-SOURCE04",
+          "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+        },
+        {
+          "pid": 66104,
+          "parent": 65941,
+          "group": 66104,
+          "rss": 62980096,
+          "birth": "Thu Nov 5 12:11:03 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /private/tmp/mcr-paradise-notes-api-root153-0221/meeting-source.py M-SOURCE04 --watch",
+          "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+        },
+        {
+          "pid": 66151,
+          "parent": 65439,
+          "group": 66151,
+          "rss": 192036864,
+          "birth": "Thu Nov 5 12:11:04 2026",
+          "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node e2e/visual/parade-ink-private-pages/native.mjs",
+          "executable": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node"
+        },
+        {
+          "pid": 66161,
+          "parent": 66151,
+          "group": 66161,
+          "rss": 249806848,
+          "birth": "Thu Nov 5 12:11:04 2026",
+          "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/private/tmp/mcr-parade-ink-private-n0uzdldu/playwright_chromiumdev_profile-6etgFh --remote-debugging-pipe --no-startup-window",
+          "executable": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+        },
+        {
+          "pid": 66318,
+          "parent": 66161,
+          "group": 66161,
+          "rss": 188448768,
+          "birth": "Thu Nov 5 12:11:05 2026",
+          "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (GPU).app/Contents/MacOS/Google Chrome Helper (GPU) --type=gpu-process --gpu-recent-crash-count=0 --no-sandbox --disable-breakpad --headless --enable-unsafe-swiftshader --noerrdialogs --user-data-dir=/private/tmp/mcr-parade-ink-private-n0uzdldu/playwright_chromiumdev_profile-6etgFh --gpu-preferences=WAAAAAAAAAAgAAAEAAAAAAAAAAAAAGAAQAAAAAAAAAADAAAAAAAAADgAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAKAAAAAAAAAAoAAAAAAAAAAgAAAAAAAAADAAAAAEAAAAAAAAAAAAAAAgAAAAAAAAACAAAAAAAAAA= --shared-files --field-trial-handle=1718379636,r,8623175634654077324,18411063503265868798,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,17080156221985763061,5353311569558663982,4 --trace-process-track-uuid=3190708988185955192",
+          "executable": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (GPU).app/Contents/MacOS/Google Chrome Helper (GPU)"
+        },
+        {
+          "pid": 66335,
+          "parent": 66161,
+          "group": 66161,
+          "rss": 146391040,
+          "birth": "Thu Nov 5 12:11:05 2026",
+          "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper --type=utility --utility-sub-type=network.mojom.NetworkService --lang=en-US --service-sandbox-type=network --no-sandbox --mute-audio --noerrdialogs --user-data-dir=/private/tmp/mcr-parade-ink-private-n0uzdldu/playwright_chromiumdev_profile-6etgFh --shared-files --field-trial-handle=1718379636,r,8623175634654077324,18411063503265868798,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,17080156221985763061,5353311569558663982,4 --trace-process-track-uuid=3190708989122997041",
+          "executable": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+        },
+        {
+          "pid": 66402,
+          "parent": 66161,
+          "group": 66161,
+          "rss": 85901312,
+          "birth": "Thu Nov 5 12:11:05 2026",
+          "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper --type=utility --utility-sub-type=storage.mojom.StorageService --lang=en-US --service-sandbox-type=service --no-sandbox --mute-audio --noerrdialogs --user-data-dir=/private/tmp/mcr-parade-ink-private-n0uzdldu/playwright_chromiumdev_profile-6etgFh --shared-files --field-trial-handle=1718379636,r,8623175634654077324,18411063503265868798,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,17080156221985763061,5353311569558663982,4 --trace-process-track-uuid=3190708990060038890",
+          "executable": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+        },
+        {
+          "pid": 66409,
+          "parent": 66161,
+          "group": 66161,
+          "rss": 196509696,
+          "birth": "Thu Nov 5 12:11:05 2026",
+          "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --top-chrome-webui --noerrdialogs --user-data-dir=/private/tmp/mcr-parade-ink-private-n0uzdldu/playwright_chromiumdev_profile-6etgFh --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=6 --launch-time-ticks=191833415081 --shared-files --field-trial-handle=1718379636,r,8623175634654077324,18411063503265868798,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,17080156221985763061,5353311569558663982,4 --trace-process-track-uuid=3190708991934122588",
+          "executable": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+        },
+        {
+          "pid": 66413,
+          "parent": 66161,
+          "group": 66161,
+          "rss": 105906176,
+          "birth": "Thu Nov 5 12:11:05 2026",
+          "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --noerrdialogs --user-data-dir=/private/tmp/mcr-parade-ink-private-n0uzdldu/playwright_chromiumdev_profile-6etgFh --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=8 --launch-time-ticks=191833454761 --shared-files --field-trial-handle=1718379636,r,8623175634654077324,18411063503265868798,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,17080156221985763061,5353311569558663982,4 --trace-process-track-uuid=3190708993808206286",
+          "executable": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+        },
+        {
+          "pid": 66414,
+          "parent": 66161,
+          "group": 66161,
+          "rss": 492388352,
+          "birth": "Thu Nov 5 12:11:05 2026",
+          "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --noerrdialogs --user-data-dir=/private/tmp/mcr-parade-ink-private-n0uzdldu/playwright_chromiumdev_profile-6etgFh --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=7 --launch-time-ticks=191833455202 --shared-files --field-trial-handle=1718379636,r,8623175634654077324,18411063503265868798,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,17080156221985763061,5353311569558663982,4 --trace-process-track-uuid=3190708992871164437",
+          "executable": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+        },
+        {
+          "pid": 66710,
+          "parent": 49590,
+          "group": 66710,
+          "rss": 29409280,
+          "birth": "Thu Nov 5 12:11:08 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/qualify.py",
+          "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+        },
+        {
+          "pid": 66827,
+          "parent": 66710,
+          "group": 66710,
+          "rss": 24461312,
+          "birth": "Thu Nov 5 12:11:09 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/guardian.py /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/source06/guard-config.json",
+          "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+        },
+        {
+          "pid": 66841,
+          "parent": 65941,
+          "group": 65941,
+          "rss": 1261568,
+          "birth": "Thu Nov 5 12:11:09 2026",
+          "command": "(lsof)",
+          "executable": null
+        },
+        {
+          "pid": 66842,
+          "parent": 66827,
+          "group": 66710,
+          "rss": 2244608,
+          "birth": "Thu Nov 5 12:11:09 2026",
+          "command": "ps -axo pid=,ppid=,pgid=,rss=,lstart=,args=",
+          "executable": null
+        },
+        {
+          "pid": 99401,
+          "parent": 49590,
+          "group": 99401,
+          "rss": 43089920,
+          "birth": "Thu Nov 5 12:00:01 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B -u /private/tmp/mcr-be42-compile-09-exec/guardian.py /private/tmp/mcr-be42-compile-09-exec build",
+          "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+        }
+      ]
+    },
+    "ownedIdentities": [
+      {
+        "pid": 66710,
+        "parent": 49590,
+        "group": 66710,
+        "rss": 29409280,
+        "birth": "Thu Nov 5 12:11:08 2026",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/qualify.py",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+      },
+      {
+        "pid": 66827,
+        "parent": 66710,
+        "group": 66710,
+        "rss": 24461312,
+        "birth": "Thu Nov 5 12:11:09 2026",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/guardian.py /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/source06/guard-config.json",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+      },
+      {
+        "pid": 66842,
+        "parent": 66827,
+        "group": 66710,
+        "rss": 2244608,
+        "birth": "Thu Nov 5 12:11:09 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,rss=,lstart=,args=",
+        "executable": null
+      }
+    ],
+    "pngCount": 0,
+    "pngBytes": 0
+  },
+  "last": {
+    "pids": [
+      66710,
+      66827,
+      66842
+    ],
+    "processes": 3,
+    "rss": 56115200,
+    "temporary": 64,
+    "durable": 957312,
+    "new": 282677677,
+    "whole": 8964690884,
+    "wholeInventory": {
+      "total": 4709474382,
+      "roots": [
+        {
+          "root": "/Users/lhs/Desktop/mcr-worktrees/art-runtime",
+          "bytes": 1508819296,
+          "inodes": 18636
+        },
+        {
+          "root": "/Users/lhs/Desktop/mcr/frontend/node_modules",
+          "bytes": 438891729,
+          "inodes": 13420
+        },
+        {
+          "root": "/Users/lhs/Desktop/mcr-tools",
+          "bytes": 419021528,
+          "inodes": 8089
+        },
+        {
+          "root": "/Users/lhs/Desktop/mcr/.git",
+          "bytes": 1229403808,
+          "inodes": 3846
+        },
+        {
+          "root": "/Library/Frameworks/Python.framework/Versions/3.14",
+          "bytes": 1046142375,
+          "inodes": 28412
+        },
+        {
+          "root": "/opt/homebrew/Cellar/git/2.55.0",
+          "bytes": 67168482,
+          "inodes": 1839
+        },
+        {
+          "root": "/opt/homebrew/opt/git/libexec/git-core",
+          "bytes": 0,
+          "inodes": 0
+        },
+        {
+          "root": "/opt/homebrew/bin/git",
+          "bytes": 27164,
+          "inodes": 2
+        }
+      ]
+    },
+    "free": 23611863040,
+    "global": {
+      "metadataAsOf": "2026-11-05T01:47:30.991757+00:00",
+      "members": [
+        {
+          "cohort": "BE42-PH1-COMPILE-FIVE-09-0249",
+          "kind": "target",
+          "pids": [
+            5445,
+            5455,
+            99401
+          ],
+          "processCap": 32,
+          "rssCapBytes": 8589934592,
+          "remainingNewBytes": 2147483648,
+          "state": "ACCEPTED"
+        },
+        {
+          "cohort": "ROOT153-M-REGISTRATION-SOURCE04-0307",
+          "kind": "source",
+          "pids": [
+            65941,
+            66104,
+            66841
+          ],
+          "processCap": 8,
+          "rssCapBytes": 4294967296,
+          "remainingNewBytes": 85206455,
+          "state": "ACCEPTED"
+        },
+        {
+          "cohort": "PRIVATE-NATIVE12-0307",
+          "kind": "browser",
+          "pids": [
+            65439,
+            65605,
+            65924,
+            66151,
+            66161,
+            66318,
+            66335,
+            66402,
+            66409,
+            66413,
+            66414
+          ],
+          "processCap": 24,
+          "rssCapBytes": 4294967296,
+          "remainingNewBytes": 58720256,
+          "state": "ACCEPTED"
+        },
+        {
+          "cohort": "VenueRootBinding",
+          "kind": "source",
+          "pids": [
+            66710,
+            66827,
+            66842
+          ],
+          "processCap": 12,
+          "rssCapBytes": 3221225472,
+          "remainingNewBytes": 402653184,
+          "state": "ACTUAL_ACCEPT"
+        }
+      ],
+      "unresolvedPids": [],
+      "workflows": 4,
+      "sources": 2,
+      "browsers": 1,
+      "targets": 1,
+      "distinctPids": [
+        5445,
+        5455,
+        26507,
+        65439,
+        65605,
+        65924,
+        65941,
+        66104,
+        66151,
+        66161,
+        66318,
+        66335,
+        66402,
+        66409,
+        66413,
+        66414,
+        66710,
+        66827,
+        66841,
+        66842,
+        99401
+      ],
+      "actualRSS": 7245594624,
+      "chargedPIDs": 77,
+      "chargedRSS": 24292048896,
+      "otherUpper": 5059650999,
+      "receiptFiles": [
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a19e5c-e9c6-7973-a53b-a6d19141620f.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a19f83-12cc-7f21-8ad3-55749f012d9b.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a00c-2690-7bc0-94fc-52609655ea83.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a153-1227-7e72-801f-a2a6b91981e1.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fe-16e1-7ee3-a9dc-8b5f037cc24c.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fe-1ab7-79b0-adbc-d4c025701acb.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fe-1eed-7d12-a247-879cd521e0ec.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a202-3ff2-7a93-95c3-374c6df97281.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a204-c583-7670-965a-4891b8b1289e.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a205-3f89-78c3-aa67-719c4bb40b8d.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a207-f012-7343-a24b-12b9c544973f.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a20f-8d37-71c3-a429-8a55bb6d6c49.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a213-03de-72d3-9ecf-2f72b574cf82.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a213-61d6-7a20-a8e7-476649312f8c.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a21a-a088-7c31-83e3-19de119ba873.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a21e-ab80-7012-b9fa-cdb69eed097b.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a230-6acc-7e82-9e4b-92506decc745.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a231-0dc4-7b50-92bd-c0f0f56bd970.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a232-21e2-75c2-8474-a5fa6ae895cd.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a232-b91d-78f1-a13a-1361788ba51c.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a267-37a0-7723-a4e9-a3a6f5b27f52.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a26e-1de2-7b41-a294-c9a79cfded9b.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a533-50a8-7fb2-b3ed-96b941b96bbf.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a534-4fcf-7291-abe3-a97ba2fcafcd.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-40c576fad94a.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-40fde6c81bb4.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-412e295fa211.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6950-7920-8c80-5214d4ce0eaf.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6954-7bd3-9b08-7109883187b5.json",
+        "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6955-7820-bcd4-8e0a21629aa2.json"
+      ],
+      "ordinary": [
+        {
+          "owner": "01a1a5d9-6950-7920-8c80-5214d4ce0eaf",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        },
+        {
+          "owner": "01a1a21a-a088-7c31-83e3-19de119ba873",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        },
+        {
+          "owner": "01a1a5d9-332b-7822-a8f7-412e295fa211",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        },
+        {
+          "owner": "01a19e5c-e9c6-7973-a53b-a6d19141620f",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        },
+        {
+          "owner": "01a1a00c-2690-7bc0-94fc-52609655ea83",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        },
+        {
+          "owner": "01a19f83-12cc-7f21-8ad3-55749f012d9b",
+          "state": "ACCEPTED",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 50331648
+        },
+        {
+          "owner": "01a1a205-3f89-78c3-aa67-719c4bb40b8d",
+          "state": "ACCEPTED",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 16777216
+        },
+        {
+          "owner": "01a1a207-f012-7343-a24b-12b9c544973f",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        },
+        {
+          "owner": "01a1a267-37a0-7723-a4e9-a3a6f5b27f52",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        },
+        {
+          "owner": "01a1a5d9-332b-7822-a8f7-40c576fad94a",
+          "state": "ACCEPTED",
+          "verified": true,
+          "pids": [
+            26507
+          ],
+          "remainingNewBytes": 16777216
+        },
+        {
+          "owner": "01a1a5d9-332b-7822-a8f7-412e295fa211",
+          "state": "FULL",
+          "verified": false,
+          "pids": [],
+          "remainingNewBytes": 0
+        }
+      ],
+      "processes": [
+        {
+          "pid": 5445,
+          "parent": 99401,
+          "group": 5445,
+          "rss": 33701888,
+          "birth": "Thu Nov 5 12:01:19 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /private/tmp/mcr-be42-compile-09-exec/run.py /private/tmp/mcr-be42-compile-09-exec",
+          "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+        },
+        {
+          "pid": 5455,
+          "parent": 5445,
+          "group": 5455,
+          "rss": 126271488,
+          "birth": "Thu Nov 5 12:01:19 2026",
+          "command": "/Users/lhs/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/cargo test --locked --offline -p concert-service --test production_private_data_native --test private_data_production --test account_deletion_runtime --test media_deletion --test account_private_data_aggregate --no-run --message-format=json --config profile.dev.package.contracts-build.opt-level=2",
+          "executable": "/Users/lhs/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/cargo"
+        },
+        {
+          "pid": 26507,
+          "parent": 49590,
+          "group": 26507,
+          "rss": 3890954240,
+          "birth": "Thu Nov 5 12:05:07 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /private/tmp/mcr-venu-l-transport-40c576-0304/ordinary.py",
+          "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+        },
+        {
+          "pid": 65439,
+          "parent": 49590,
+          "group": 65439,
+          "rss": 182026240,
+          "birth": "Thu Nov 5 12:10:54 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/frontend/src/app/__tests__/parade-ink-private-pages/native-round.py --job PRIVATE-NATIVE12-0307 --candidate 66f51267314347d30eb7854b79c5502ee3eb2c09 --accepted-epoch 1793848254 --other-new-bytes 8589934592 --new-carry-bytes 343932928 --output /Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/docs/mcr/evidence/parade-ink-private-pages/native-12 --port 5382 --foundation-commit b5b44e47531e3b75febc5ee5cdd6a11b1648779c",
+          "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+        },
+        {
+          "pid": 65605,
+          "parent": 65439,
+          "group": 65605,
+          "rss": 45613056,
+          "birth": "Thu Nov 5 12:10:56 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/fe-reference-frame-footer/frontend/src/app/__tests__/parade-ink-private-pages/watchdog.py /private/tmp/mcr-parade-ink-private-n0uzdldu/config.json",
+          "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+        },
+        {
+          "pid": 65924,
+          "parent": 65439,
+          "group": 65924,
+          "rss": 1086586880,
+          "birth": "Thu Nov 5 12:11:03 2026",
+          "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node /Users/lhs/Desktop/mcr/frontend/node_modules/vite/bin/vite.js --config e2e/visual/parade-ink-private-pages/vite.config.ts --configLoader runner --host 127.0.0.1 --port 5382 --strictPort",
+          "executable": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node"
+        },
+        {
+          "pid": 65941,
+          "parent": 49590,
+          "group": 65941,
+          "rss": 59604992,
+          "birth": "Thu Nov 5 12:11:03 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /private/tmp/mcr-paradise-notes-api-root153-0221/meeting-source.py M-SOURCE04",
+          "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+        },
+        {
+          "pid": 66104,
+          "parent": 65941,
+          "group": 66104,
+          "rss": 62980096,
+          "birth": "Thu Nov 5 12:11:03 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /private/tmp/mcr-paradise-notes-api-root153-0221/meeting-source.py M-SOURCE04 --watch",
+          "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+        },
+        {
+          "pid": 66151,
+          "parent": 65439,
+          "group": 66151,
+          "rss": 192036864,
+          "birth": "Thu Nov 5 12:11:04 2026",
+          "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node e2e/visual/parade-ink-private-pages/native.mjs",
+          "executable": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node"
+        },
+        {
+          "pid": 66161,
+          "parent": 66151,
+          "group": 66161,
+          "rss": 249806848,
+          "birth": "Thu Nov 5 12:11:04 2026",
+          "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/private/tmp/mcr-parade-ink-private-n0uzdldu/playwright_chromiumdev_profile-6etgFh --remote-debugging-pipe --no-startup-window",
+          "executable": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+        },
+        {
+          "pid": 66318,
+          "parent": 66161,
+          "group": 66161,
+          "rss": 188448768,
+          "birth": "Thu Nov 5 12:11:05 2026",
+          "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (GPU).app/Contents/MacOS/Google Chrome Helper (GPU) --type=gpu-process --gpu-recent-crash-count=0 --no-sandbox --disable-breakpad --headless --enable-unsafe-swiftshader --noerrdialogs --user-data-dir=/private/tmp/mcr-parade-ink-private-n0uzdldu/playwright_chromiumdev_profile-6etgFh --gpu-preferences=WAAAAAAAAAAgAAAEAAAAAAAAAAAAAGAAQAAAAAAAAAADAAAAAAAAADgAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAKAAAAAAAAAAoAAAAAAAAAAgAAAAAAAAADAAAAAEAAAAAAAAAAAAAAAgAAAAAAAAACAAAAAAAAAA= --shared-files --field-trial-handle=1718379636,r,8623175634654077324,18411063503265868798,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,17080156221985763061,5353311569558663982,4 --trace-process-track-uuid=3190708988185955192",
+          "executable": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (GPU).app/Contents/MacOS/Google Chrome Helper (GPU)"
+        },
+        {
+          "pid": 66335,
+          "parent": 66161,
+          "group": 66161,
+          "rss": 146391040,
+          "birth": "Thu Nov 5 12:11:05 2026",
+          "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper --type=utility --utility-sub-type=network.mojom.NetworkService --lang=en-US --service-sandbox-type=network --no-sandbox --mute-audio --noerrdialogs --user-data-dir=/private/tmp/mcr-parade-ink-private-n0uzdldu/playwright_chromiumdev_profile-6etgFh --shared-files --field-trial-handle=1718379636,r,8623175634654077324,18411063503265868798,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,17080156221985763061,5353311569558663982,4 --trace-process-track-uuid=3190708989122997041",
+          "executable": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+        },
+        {
+          "pid": 66402,
+          "parent": 66161,
+          "group": 66161,
+          "rss": 85901312,
+          "birth": "Thu Nov 5 12:11:05 2026",
+          "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper --type=utility --utility-sub-type=storage.mojom.StorageService --lang=en-US --service-sandbox-type=service --no-sandbox --mute-audio --noerrdialogs --user-data-dir=/private/tmp/mcr-parade-ink-private-n0uzdldu/playwright_chromiumdev_profile-6etgFh --shared-files --field-trial-handle=1718379636,r,8623175634654077324,18411063503265868798,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,17080156221985763061,5353311569558663982,4 --trace-process-track-uuid=3190708990060038890",
+          "executable": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+        },
+        {
+          "pid": 66409,
+          "parent": 66161,
+          "group": 66161,
+          "rss": 196509696,
+          "birth": "Thu Nov 5 12:11:05 2026",
+          "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --top-chrome-webui --noerrdialogs --user-data-dir=/private/tmp/mcr-parade-ink-private-n0uzdldu/playwright_chromiumdev_profile-6etgFh --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=6 --launch-time-ticks=191833415081 --shared-files --field-trial-handle=1718379636,r,8623175634654077324,18411063503265868798,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,17080156221985763061,5353311569558663982,4 --trace-process-track-uuid=3190708991934122588",
+          "executable": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+        },
+        {
+          "pid": 66413,
+          "parent": 66161,
+          "group": 66161,
+          "rss": 105906176,
+          "birth": "Thu Nov 5 12:11:05 2026",
+          "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --noerrdialogs --user-data-dir=/private/tmp/mcr-parade-ink-private-n0uzdldu/playwright_chromiumdev_profile-6etgFh --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=8 --launch-time-ticks=191833454761 --shared-files --field-trial-handle=1718379636,r,8623175634654077324,18411063503265868798,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,17080156221985763061,5353311569558663982,4 --trace-process-track-uuid=3190708993808206286",
+          "executable": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+        },
+        {
+          "pid": 66414,
+          "parent": 66161,
+          "group": 66161,
+          "rss": 492388352,
+          "birth": "Thu Nov 5 12:11:05 2026",
+          "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --noerrdialogs --user-data-dir=/private/tmp/mcr-parade-ink-private-n0uzdldu/playwright_chromiumdev_profile-6etgFh --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=7 --launch-time-ticks=191833455202 --shared-files --field-trial-handle=1718379636,r,8623175634654077324,18411063503265868798,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,17080156221985763061,5353311569558663982,4 --trace-process-track-uuid=3190708992871164437",
+          "executable": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+        },
+        {
+          "pid": 66710,
+          "parent": 49590,
+          "group": 66710,
+          "rss": 29409280,
+          "birth": "Thu Nov 5 12:11:08 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/qualify.py",
+          "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+        },
+        {
+          "pid": 66827,
+          "parent": 66710,
+          "group": 66710,
+          "rss": 24461312,
+          "birth": "Thu Nov 5 12:11:09 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/guardian.py /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/source06/guard-config.json",
+          "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+        },
+        {
+          "pid": 66841,
+          "parent": 65941,
+          "group": 65941,
+          "rss": 1261568,
+          "birth": "Thu Nov 5 12:11:09 2026",
+          "command": "(lsof)",
+          "executable": null
+        },
+        {
+          "pid": 66842,
+          "parent": 66827,
+          "group": 66710,
+          "rss": 2244608,
+          "birth": "Thu Nov 5 12:11:09 2026",
+          "command": "ps -axo pid=,ppid=,pgid=,rss=,lstart=,args=",
+          "executable": null
+        },
+        {
+          "pid": 99401,
+          "parent": 49590,
+          "group": 99401,
+          "rss": 43089920,
+          "birth": "Thu Nov 5 12:00:01 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B -u /private/tmp/mcr-be42-compile-09-exec/guardian.py /private/tmp/mcr-be42-compile-09-exec build",
+          "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+        }
+      ]
+    },
+    "ownedIdentities": [
+      {
+        "pid": 66710,
+        "parent": 49590,
+        "group": 66710,
+        "rss": 29409280,
+        "birth": "Thu Nov 5 12:11:08 2026",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/qualify.py",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+      },
+      {
+        "pid": 66827,
+        "parent": 66710,
+        "group": 66710,
+        "rss": 24461312,
+        "birth": "Thu Nov 5 12:11:09 2026",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/guardian.py /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/source06/guard-config.json",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+      },
+      {
+        "pid": 66842,
+        "parent": 66827,
+        "group": 66710,
+        "rss": 2244608,
+        "birth": "Thu Nov 5 12:11:09 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,rss=,lstart=,args=",
+        "executable": null
+      }
+    ],
+    "pngCount": 0,
+    "pngBytes": 0
+  },
+  "minimumFree": 23611863040
+}
