@@ -34,7 +34,7 @@ function makeFixture(scope: PrivacyScope, binding: CommunityBootstrapBinding, ve
     self: { ...person(userId, 'You'), avatar: portrait(0), point: main.point, landmarkId: main.id, updatedAtMs: now, freshUntilMs: now + 120000 },
     friends: [friend, { ...friend, userId: userId + '-peer', displayName: 'Gerardway', avatar: portrait(2), point: sub.point, landmarkId: sub.id },
       { ...friend, userId: userId + '-stale', displayName: 'frankie_13', avatar: portrait(3), point: null, landmarkId: null, locationSource: 'unavailable', updatedAtMs: null, freshUntilMs: null }],
-    notes: initial.notes.map(note => ({ ...note, landmarkId: main.id, author: friend, createdAtMs: now - 300000, expiresAtMs: now + 3600000 })) }
+    notes: initial.notes.map(note => ({ ...note, body: 'Trading stickers here until 18:30.', landmarkId: main.id, author: friend, createdAtMs: now - 300000, expiresAtMs: now + 3600000 })) }
   let uncertain = false
   function publish() { for (const listener of listeners) listener() }
   async function command(name: string, input: unknown, context: CommandContext): Promise<CommandResult> {
@@ -65,7 +65,7 @@ function makeFixture(scope: PrivacyScope, binding: CommunityBootstrapBinding, ve
   }
   // Only borrowed-leaf entry is exercised here. Invitation/conversation UI remains204-owned.
   const meeting: MeetingConsumerPort = { read: () => null, subscribe: () => () => {}, open: async intent => { opens.push(intent); return { kind: 'unavailable' } }, close: () => true }
-  return { capabilities, meeting, api: { state: () => ({ calls, opens, classification: 'CONTROLLED_FIXTURE', siteplan: { identity: venue.identity, landmarks: venue.landmarks.map(place => ({ id: place.id, point: place.point })), imageWidth: venue.image.width, imageHeight: venue.image.height, sourceKind: 'VERIFIED_PRODUCER_IMAGE_LEASE' }, clockFromOriginalBinding: binding.read()?.clock.read() ?? null }),
+  return { capabilities, meeting, api: { state: () => ({ calls, opens, classification: 'CONTROLLED_FIXTURE', siteplan: { identity: venue.identity, landmarks: venue.landmarks.map(place => ({ id: place.id, label: place.label, point: place.point, illustration: place.illustration })), imageWidth: venue.image.width, imageHeight: venue.image.height, sourceKind: 'VERIFIED_PRODUCER_IMAGE_LEASE' }, clockFromOriginalBinding: binding.read()?.clock.read() ?? null }),
     unavailable() { snapshot = null; publish() }, uncertain(value: boolean) { uncertain = value },
     noLocation() { if (snapshot) { snapshot = { ...snapshot, friends: snapshot.friends.map(p => ({ ...p, point: null, landmarkId: null, locationSource: 'unavailable' })) }; publish() } },
     cluster() { if (snapshot) { snapshot = { ...snapshot, friends: snapshot.friends.map((p, i) => i < 2 ? { ...p, point: { x: main.point.x + i * 8, y: main.point.y } } : p) }; publish() } },

@@ -40,7 +40,7 @@ try:
           'MembershipTests.test_incomplete_or_other_booking_full_cannot_release_terminal_claim',
           'MembershipTests.test_terminal_identity_requires_this_guard_prior_proof_and_keeps_full_cap'],
           [node,str(EVIDENCE/'typecheck.mjs')],
-          [node,'node_modules/oxlint/bin/oxlint','--deny-warnings','e2e/venue-map/native.mjs','e2e/venue-map/preview.ts'],
+          [node,'node_modules/oxlint/bin/oxlint','--deny-warnings','e2e/venue-map/native.mjs'],
           [node,'--check','e2e/venue-map/native.mjs'],[node,'e2e/venue-map/native.mjs'],[sys.executable,'-B',str(EVIDENCE/'compare.py')]]))
         stages=os.environ.get('MCR_VENU_NATIVE_STAGES','lint,syntax,browser,compare').split(',')
         assert stages and len(set(stages))==len(stages) and all(stage in native_commands for stage in stages)

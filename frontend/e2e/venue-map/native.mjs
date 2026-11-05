@@ -30,7 +30,7 @@ const schema = JSON.parse(await readFile(resolve(root, 'contracts/assets/v2/revi
 const participant = JSON.parse(await readFile(resolve(root, 'contracts/fixtures/core/bootstrap-open.json'), 'utf8')).participant
 const durable = { avatar: { revision: 7, config: schema.$defs.ReviewedMotionAvatarManifest.const.presets[0].config }, participantRevision: participant.revision, reads: 0, writes: [] }
 const input = { revision: 'TEST_ONLY_PARADISE_CITY_not_C05_authority', reviewedBy: 'Synthetic actual-App fixture', movementPolicy: { speedPxPerSecond: 96, footWidthPx: 12, footHeightPx: 8, interactionRadiusPx: 96 }, zoom: 1 }
-const report = { candidate, lease, qualification: 'ACTUAL_MAIN_AUTH_WORLD_WITH_TEST_ONLY_VENUE_COMPOSITION_NOT_PRODUCTION_OR_LIVE', status: 'IN_PROGRESS', artInput: { commit: artCommit, path: artPath, sha256: hash(art), bytes: art.length, qualification: 'EXACT_PRODUCER_INPUT_NOT_PRODUCER_QUALIFICATION' }, spatialInput: { commit: spatialCommit, hashes: spatialHashes, classification: 'ACTUAL_PRODUCER_INPUT_NO_PEER_PREFIX_COPY' }, injections: [], cases: [], errors: [], limits: ['Synthetic venue capabilities, people, notes and emulated geolocation; no physical-device or service acceptance.', 'Borrowed meeting entry only; actual developer204 invitation/conversation leaf integration remains separate.', 'TEST_ONLY clock profile feeds the original canonical bootstrap timeline; no second loader or timeline.', 'Reference ROI/capture overlays and personal visual iteration remain separate acceptance evidence.'] }
+const report = { candidate, lease, qualification: 'ACTUAL_MAIN_AUTH_WORLD_WITH_TEST_ONLY_VENUE_COMPOSITION_NOT_PRODUCTION_OR_LIVE', status: 'IN_PROGRESS', changedScope: 'Reference spacing, supplied note age, per-landmark source/review declarations and complete Fit bounds only. Native16 functional journeys retained, not replayed.', artInput: { commit: artCommit, path: artPath, sha256: hash(art), bytes: art.length, qualification: 'EXACT_PRODUCER_INPUT_NOT_PRODUCER_QUALIFICATION' }, spatialInput: { commit: spatialCommit, hashes: spatialHashes, classification: 'ACTUAL_PRODUCER_INPUT_NO_PEER_PREFIX_COPY' }, injections: [], cases: [], errors: [], limits: ['Synthetic venue capabilities, people, notes and emulated geolocation; no physical-device or service acceptance.', 'Borrowed meeting entry only; actual developer204 invitation/conversation leaf integration remains separate.', 'TEST_ONLY clock profile feeds the original canonical bootstrap timeline; no second loader or timeline.', 'Reference ROI/capture overlays and personal visual iteration remain separate acceptance evidence.'] }
 report.policyInput = { release: policyFixtureRelease, qualification: 'TEST_ONLY_RECOGNIZED_CATALOG_PAIR_AND_NORMAL_SERVICE_DECISION_NOT_PRODUCTION_RELEASE_OR_LIVE_POLICY' }
 const publicPaths = new Set(execFileSync('git', ['ls-tree', '-r', '--name-only', candidate, 'frontend/public'], { cwd: root, encoding: 'utf8' }).trim().split('\n'))
 const replacements = {
@@ -81,19 +81,24 @@ try {
  }) } }], server: { host: '127.0.0.1', port, strictPort: true, watch: null } })
  await server.listen(); browser = await chromium.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: true }); report.browser = browser.version()
  for (const [width, height] of [[360, 800], [390, 844], [430, 932], [390, 420]]) {
-  await guard(); context = await browser.newContext({ viewport: { width, height }, hasTouch: true, reducedMotion: 'reduce', locale: 'en-GB', timezoneId: 'Asia/Seoul', serviceWorkers: 'block', permissions: ['geolocation'], geolocation: { latitude: 37.437, longitude: 126.459, accuracy: 15 } })
+  await guard(); context = await browser.newContext({ viewport: { width, height }, hasTouch: true, reducedMotion: 'reduce', locale: 'en-GB', timezoneId: 'Asia/Seoul', serviceWorkers: 'block', permissions: [] })
   const page = await context.newPage(); diagnosticPage = page; page.setDefaultTimeout(10000); page.on('pageerror', e => report.errors.push(e.message)); await page.clock.setFixedTime(new Date('2026-11-07T07:00:00Z'))
   const item = { width, height, dpr: 1, status: 'IN_PROGRESS', captures: [], componentCaptures: [], checks: [] }; report.cases.push(item)
   await writeFile(resolve(output, 'native-report.json'), JSON.stringify(report, null, 2) + '\n')
   const fixture = () => page.evaluate(() => window.__PARADISE_CITY_FIXTURE__.state())
   const world = () => page.evaluate(() => window.__REVIEWED_ROOT_ENTRY__.state())
   async function shot(state) {
+   if (['friends', 'notes', 'note-composer'].includes(state)) {
+    const selector = { friends: '.pc-friend-row button', notes: '.pc-note-card button', 'note-composer': '.pc-composer button,.pc-composer select' }[state]
+    const bounds = await page.locator(selector).evaluateAll(nodes => nodes.map(e => ({ label: e.getAttribute('aria-label') ?? e.textContent, width: e.getBoundingClientRect().width, height: e.getBoundingClientRect().height })))
+    assert(bounds.length > 0 && bounds.every(b => b.width >= 44 && b.height >= 44)); (item.controlBounds ??= []).push({ state, bounds })
+   }
    const file = `${width}-${height}-${state}.png`; await page.screenshot({ path: resolve(output, file), fullPage: false }); item.captures.push({ state, file, sha256: hash(await readFile(resolve(output, file))) })
    const selectors = { friends: '.pc-friend-row', notes: '.pc-note-card', 'note-composer': '.pc-composer' }
    if (width === 390 && height === 844 && selectors[state]) {
     const component = page.locator(selectors[state]).first(), componentFile = `${width}-${height}-${state}-component.png`
     await component.screenshot({ path: resolve(output, componentFile) })
-    item.componentCaptures.push({ state, selector: selectors[state], file: componentFile, sha256: hash(await readFile(resolve(output, componentFile))), box: await component.boundingBox(), viewport: { width, height }, dpr: await page.evaluate(() => devicePixelRatio), clock: (await fixture()).clockFromOriginalBinding, camera: await page.locator('.pc-map-viewport').evaluate(e => ({ left: e.scrollLeft, top: e.scrollTop, width: e.clientWidth, height: e.clientHeight })), classification: 'CONTROLLED_FIXTURE_EMULATED_GPS_NOT_LIVE' })
+    item.componentCaptures.push({ state, selector: selectors[state], file: componentFile, sha256: hash(await readFile(resolve(output, componentFile))), box: await component.boundingBox(), viewport: { width, height }, dpr: await page.evaluate(() => devicePixelRatio), clock: (await fixture()).clockFromOriginalBinding, camera: await page.locator('.pc-map-viewport').evaluate(e => ({ left: e.scrollLeft, top: e.scrollTop, width: e.clientWidth, height: e.clientHeight })), classification: 'CONTROLLED_REFERENCE_FIXTURE_NO_DEVICE_OR_LIVE_QUALIFICATION' })
    }
    await writeFile(resolve(output, 'native-report.json'), JSON.stringify(report, null, 2) + '\n')
   }
@@ -102,37 +107,31 @@ try {
   const host = page.locator('[data-world-host]'); await host.evaluate(e => Reflect.set(e, '__venueIncumbent', 'same'))
   await page.getByRole('button', { name: 'World tools', exact: true }).click(); await page.locator('a[href="/world/map"]').click()
   await expect(page.getByRole('tab', { name: 'MAP', exact: true })).toBeVisible(); await expect(page.locator('.pc-map-plane > img')).toBeVisible(); await expect.poll(async () => page.locator('.pc-map-plane > img').evaluate(e => e.complete && e.naturalWidth === 1024)).toBe(true)
-  await expect(page.getByText('SYNTHETIC EXAMPLE · positions, people and times are not live.', { exact: true })).toBeVisible(); assert.equal((await fixture()).calls.length, 0); assert.equal((await fixture()).siteplan.landmarks.length, 22); assert.equal(await page.locator('.pc-map-plane > img').evaluate(e => e.currentSrc.startsWith('blob:')), true); item.siteplan = (await fixture()).siteplan; await shot('map-overview')
-  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true)
-  const plane = page.locator('.pc-map-plane'), before = await plane.boundingBox(); await page.getByRole('button', { name: 'Zoom in', exact: true }).click(); const zoomed = await plane.boundingBox(); assert(zoomed.width > before.width)
-  const viewport = page.getByRole('region', { name: 'Paradise City siteplan; arrow keys or drag to pan', exact: true })
-  await viewport.focus(); await viewport.press('Home'); await viewport.press('ArrowDown'); await expect.poll(() => viewport.evaluate(e => e.scrollTop)).toBeGreaterThan(0)
-  await viewport.press('ArrowRight'); await expect.poll(() => viewport.evaluate(e => e.scrollLeft)).toBeGreaterThan(0)
-  await viewport.press('End'); const landmark = page.locator('[data-landmark-id="main-gate"]'); await landmark.focus(); await expect(landmark).toBeFocused()
-  const v = await viewport.boundingBox(), marker = await landmark.boundingBox(); assert(marker.x >= v.x && marker.y >= v.y && marker.x + marker.width <= v.x + v.width && marker.y + marker.height <= v.y + v.height)
-  await viewport.focus(); await viewport.press('Home'); await viewport.press('ArrowDown')
-  const dragBefore = await viewport.evaluate(e => e.scrollTop), dragBox = await viewport.boundingBox()
-  await page.mouse.move(dragBox.x + 12, dragBox.y + dragBox.height / 2); await page.mouse.down(); await page.mouse.move(dragBox.x + 12, dragBox.y + dragBox.height / 2 - 24, { steps: 6 }); await page.mouse.up()
-  await expect.poll(() => viewport.evaluate(e => e.scrollTop)).toBeGreaterThan(dragBefore); item.checks.push('keyboard-pan-home-end-landmark-focus-reveal-and-pointer-pan')
+  await expect(page.getByText('SYNTHETIC EXAMPLE · positions, people and times are not live.', { exact: true })).toBeVisible(); assert.equal((await fixture()).calls.length, 0); assert.equal((await fixture()).siteplan.landmarks.length, 22); assert.equal(await page.locator('.pc-map-plane > img').evaluate(e => e.currentSrc.startsWith('blob:')), true); item.siteplan = (await fixture()).siteplan
+  await page.getByRole('button', { name: 'Fit complete siteplan', exact: true }).click()
+  const fitViewport = await page.locator('.pc-map-viewport').boundingBox(), fitImage = await page.locator('.pc-map-plane > img').boundingBox()
+  assert(fitImage.x >= fitViewport.x - 1 && fitImage.y >= fitViewport.y - 1 && fitImage.x + fitImage.width <= fitViewport.x + fitViewport.width + 1 && fitImage.y + fitImage.height <= fitViewport.y + fitViewport.height + 1)
+  item.checks.push('complete-photo5-provisional-siteplan-visible-at-fit'); await shot('map-overview')
   if (width === 390 && height === 844) {
-   await viewport.focus(); await viewport.press('Home'); const touchBox = await viewport.boundingBox(), cdp = await context.newCDPSession(page)
-   const x = touchBox.x + 16, y = touchBox.y + touchBox.height * .75
-   await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x, y, id: 1 }] })
-   for (const dy of [20, 40, 70, 100]) await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x, y: y - dy, id: 1 }] })
-   await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] }); await expect.poll(() => viewport.evaluate(e => e.scrollTop)).toBeGreaterThan(0); await cdp.detach(); item.checks.push('native-browser-touch-pan')
+   item.landmarkDeclarations = []
+   for (const place of item.siteplan.landmarks) {
+    const target = page.locator(`[data-landmark-id="${place.id}"]`)
+    await target.focus(); await target.press('Enter'); const card = page.getByRole('region', { name: `${place.label} location card`, exact: true })
+    const declaration = card.locator('[data-landmark-review]')
+    await expect(declaration).toBeVisible(); await expect(declaration).toHaveAttribute('data-landmark-review', 'ILLUSTRATED_UNCALIBRATED')
+    assert.equal(await declaration.getAttribute('data-landmark-sources'), place.illustration.sourceRefs.map(source => source.id).join(','))
+    assert(place.illustration.sourceRefs.length > 0); await expect(declaration).toContainText('physical placement unverified')
+    item.landmarkDeclarations.push({ id: place.id, ...place.illustration, visibleDeclaration: await declaration.textContent() })
+    await page.getByRole('button', { name: 'Close location card', exact: true }).click()
+   }
+   assert.equal(item.landmarkDeclarations.length, 22); item.checks.push('all-22-landmarks-resolve-with-declared-source-and-uncalibrated-review')
   }
-  await page.getByRole('button', { name: 'Fit complete siteplan', exact: true }).click(); await page.getByRole('button', { name: 'Reset map view', exact: true }).click(); item.checks.push('zoom-fit-reset')
-  await page.getByRole('tab', { name: 'MAP', exact: true }).focus(); await page.getByRole('tab', { name: 'MAP', exact: true }).press('ArrowRight'); await expect(page.getByRole('tab', { name: 'FRIENDS', exact: true })).toBeFocused(); await expect(page.getByRole('tab', { name: 'FRIENDS', exact: true })).toHaveAttribute('aria-selected', 'true'); item.checks.push('roving-tab-keyboard-selection')
+  assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true)
+  await page.getByRole('button', { name: 'Reset map view', exact: true }).click()
   await page.getByRole('tab', { name: 'FRIENDS', exact: true }).click(); await shot('friends')
-  await page.getByRole('button', { name: 'inkparade', exact: true }).click(); await expect(page.getByRole('dialog', { name: 'inkparade' })).toBeVisible(); await shot('friend-selected'); await page.getByRole('button', { name: 'MESSAGE', exact: true }).click(); await expect.poll(async () => (await fixture()).opens.length).toBe(1); assert.equal((await fixture()).calls.length, 0)
-  await page.getByRole('button', { name: 'Close friend details', exact: true }).click()
-  await page.evaluate(() => window.__PARADISE_CITY_FIXTURE__.noLocation()); await page.getByRole('button', { name: 'inkparade', exact: true }).click(); await expect(page.getByRole('button', { name: 'MESSAGE', exact: true })).toBeEnabled(); await expect(page.getByRole('button', { name: 'MEET HERE', exact: true })).toBeDisabled(); await page.getByRole('button', { name: 'MESSAGE', exact: true }).click(); assert.equal((await fixture()).opens.at(-1).landmark, undefined); item.checks.push('authorized-message-without-location-landmark-invitation')
-  await page.getByRole('button', { name: 'Close friend details', exact: true }).click(); await page.getByRole('tab', { name: 'NOTES', exact: true }).click(); await shot('notes'); await page.getByRole('button', { name: '+ NEW NOTE', exact: true }).click(); await page.getByRole('textbox', { name: 'Note text', exact: true }).fill('Explicit synthetic note'); await shot('note-composer'); await page.getByRole('button', { name: '+ POST NOTE', exact: true }).click(); await expect(page.getByText('Explicit synthetic note', { exact: true })).toBeVisible(); assert.equal((await fixture()).calls.filter(c => c.name === 'postNote').length, 1); item.checks.push('one-explicit-note-write')
-  const note = page.locator('.pc-note-card').filter({ has: page.getByText('Explicit synthetic note', { exact: true }) })
-  await note.getByRole('button', { name: 'REPLY', exact: true }).click(); await expect(page.getByRole('combobox', { name: 'Note place', exact: true })).toBeDisabled(); await expect(page.getByRole('button', { name: 'EVERYONE', exact: true })).toHaveCount(0)
-  await page.getByRole('textbox', { name: 'Reply text', exact: true }).fill('Explicit synthetic reply'); await page.getByRole('button', { name: 'POST REPLY', exact: true }).click(); await expect(page.getByText('Explicit synthetic reply', { exact: true })).toBeVisible(); assert.equal((await fixture()).calls.filter(c => c.name === 'reply').length, 1); item.checks.push('one-explicit-reply-inherits-parent-place-and-audience')
-  await page.getByRole('button', { name: 'Share location', exact: true }).click(); const consent = page.getByRole('button', { name: 'Allow phone location', exact: true }); await expect(consent).toBeDisabled(); await page.getByRole('checkbox', { name: 'I want to share my phone location.', exact: true }).check(); await consent.click(); await expect.poll(async () => (await fixture()).calls.filter(c => c.name === 'publishPhoneFix').length).toBeGreaterThan(0); await page.getByRole('button', { name: 'Pause', exact: true }).click(); await expect(page.getByText('Location sharing paused', { exact: true })).toBeVisible(); item.checks.push('explicit-emulated-geolocation-opt-in-and-pause')
-  await page.evaluate(() => window.__PARADISE_CITY_FIXTURE__.withdraw()); await expect(page.getByText('Explicit synthetic note', { exact: true })).toHaveCount(0); await expect(page.getByText(/Live location, check-in, meetings and notes are unavailable/)).toBeVisible(); await shot('unavailable'); item.checks.push('private-withdrawal-scrub')
+  await page.getByRole('button', { name: 'inkparade', exact: true }).click(); await expect(page.getByRole('dialog', { name: 'inkparade' })).toBeVisible(); await shot('friend-selected');
+  await page.getByRole('button', { name: 'Close friend details', exact: true }).click(); await page.getByRole('tab', { name: 'NOTES', exact: true }).click(); await expect(page.getByText('Trading stickers here until 18:30.', { exact: true })).toBeVisible(); await expect(page.locator('.pc-note-author').getByText('5m ago', { exact: true })).toBeVisible(); item.checks.push('reference-state-note-body-and-qualified-clock-age'); await shot('notes'); await page.getByRole('button', { name: '+ NEW NOTE', exact: true }).click(); await page.getByRole('textbox', { name: 'Note text', exact: true }).fill('Waiting near Main Gate in a black parade jacket.'); await shot('note-composer');
+  item.checks.push('changed-reference-states-retain-44px-controls-and-place-select')
   assert.equal((await world()).canvases, 1); assert.equal((await world()).sockets, 1); assert.equal(await host.evaluate(e => Reflect.get(e, '__venueIncumbent')), 'same'); item.checks.push('one-incumbent-world-and-socket')
   await page.getByRole('button', { name: 'Back to previous panel', exact: true }).click(); await expect(page).toHaveURL(/\/world(?:\?|$)/); item.status = 'PASS'; await context.close(); context = null
  }

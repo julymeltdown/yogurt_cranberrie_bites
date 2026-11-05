@@ -1,0 +1,33 @@
+{
+  "kind": "FACTUAL_ORDINARY_PREPARATION_78270_DISPOSITION_NOT_RECONSTRUCTED_BEGIN_END",
+  "ownerThreadId": "01a1a5d9-332b-7822-a8f7-40fde6c81bb4",
+  "actualObservedByPeer": {
+    "pid": 78270,
+    "birth": "Thu Nov 5 14:58:19 2026",
+    "parentPid": 49590,
+    "groupPid": 78270,
+    "rssBytes": 89456640
+  },
+  "program": {
+    "sourceCommit": "6f3440dbe670f9844d2cef556b7a6a5d05af1c18",
+    "path": "docs/mcr/evidence/paradise-city-map/prepare.py",
+    "sha256": "47ecc893f8ef927215986f1fa14de4449136ee1beb45033a0a720be0fadb8ff0"
+  },
+  "retainedActualToolOutput": {
+    "at": 1793858300.9684951,
+    "readsetSHA256": "f5d31fc686a6f3baf2b10b3e5f1474c560c974132b403361681c0a0ef10eeb5a",
+    "pins": 5767,
+    "freeBytes": 21542326272,
+    "exit": 0
+  },
+  "producerBehavior": "Bare ordinaryObservation embedded inside previous finite17 FULL; actualpid/birthSeconds/executable/cwd/absoluteScript/booking/observedAt; endedAt/exit in finally. No app/compiler/browser children.",
+  "booking": "PARADISECITY-PI11-PREP64-0114",
+  "sameCumulativeCapBytes": 67108864,
+  "expiryUTC": "2026-11-05T06:30:00Z",
+  "missingEvidence": [
+    "Exact old immutable begin and end receipt bytes were not retained before later canonical replacement.",
+    "Exact kernel birth microseconds and relative peer read/OS snapshot/publication times are not retained."
+  ],
+  "historicalResult": "DefaultSource13 remains overall FAIL; no retrospective identity exemption or PASS.",
+  "prospectiveRepair": "Complete kernel-first typed ordinaryActivities profile and immutable per-invocation begin/end receipts; retain finite FULL top-level lifecycle, SAME book and all historical charges."
+}

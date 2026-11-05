@@ -1,0 +1,42 @@
+{
+  "ownerThreadId": "01a1a5d9-332b-7822-a8f7-40fde6c81bb4",
+  "offerId": "PARADISECITY-PI11-PREP64-0114",
+  "kind": "ordinary",
+  "activityState": "FULL",
+  "phase": "SOURCE_PIN_PREPARATION",
+  "identity": {
+    "actualpid": 98358,
+    "pid": 98358,
+    "parentPid": 49590,
+    "groupPid": 98358,
+    "birth": "Thu Nov 5 15:01:54 2026",
+    "birthSec": 1793858514,
+    "birthUsec": 76637,
+    "birthEpoch": 1793858514.076637,
+    "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences",
+    "script": "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/prepare.py",
+    "scriptSHA256": "01270a223b2e0dcf315d3ab32ddef1751114d4d813c39b55e7a1c9fe0a53a8b7",
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+    "argv": [
+      "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+      "-B",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/prepare.py"
+    ],
+    "commandDigest": "cb033c3c62dbe9c60739c810aa24b27e1caf0fe327ade39e07113a6cedc73406",
+    "commandDigestEncoding": "sha256:kern-procargs2-argv-json-utf8-v1",
+    "role": "ordinary-source-pin-preparation-no-runtime",
+    "booking": "PARADISECITY-PI11-PREP64-0114",
+    "observedAt": 1793858514.109195,
+    "canonicalReplaceReturnedAt": 1793858514.1097841,
+    "endedAt": 1793858515.6992798,
+    "exit": 0
+  },
+  "sameCumulativeAllowanceBytes": 67108864,
+  "expiryEpoch": 1793860200.0,
+  "accounting": "Existing SAME PREP64 only; no new allowance, refund or reset",
+  "beginReceipt": "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/ordinary-preparation/98358-1793858514-76637-begin.json",
+  "beginSHA256": "49c745801f4d70d8d63793fe7ef4df7112c960432ee35195e416e887cd3bb686",
+  "endReceipt": "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/ordinary-preparation/98358-1793858514-76637-end.json",
+  "endedAt": 1793858515.6992798,
+  "exit": 0
+}

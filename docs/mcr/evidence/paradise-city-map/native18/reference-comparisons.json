@@ -1,0 +1,256 @@
+{
+  "candidate": "6f3440dbe670f9844d2cef556b7a6a5d05af1c18",
+  "lease": "MAP-FINISH-NATIVE18-0555",
+  "qualification": "CONTROLLED_APP_COMPONENT_COMPARISONS_PENDING_OWNER_INSPECTION",
+  "comparisons": [
+    {
+      "state": "friends",
+      "reference": {
+        "path": "/tmp/codex-remote-attachments/01a1a385-9f32-73c2-8715-ff54bd1e0497/5AE18B10-B53F-405C-9CC2-1541ECB4BAFA/9-Photo-9.jpg",
+        "sha256": "2c9a8a240495467c9b03a0cce445515f3b879c6e2aef4bc0a366f1aa855051a9",
+        "roi": [
+          466,
+          438,
+          851,
+          518
+        ],
+        "bounds": "left,top,right,bottom; source pixels",
+        "status": "OWNER_SELECTED_BOUNDS_PENDING_CROP_INSPECTION"
+      },
+      "candidate": {
+        "state": "friends",
+        "selector": ".pc-friend-row",
+        "file": "390-844-friends-component.png",
+        "sha256": "cd08e12c5c99ae7e5d476d978bf5f7a005d5239b7c61970b170d1d6b43047138",
+        "box": {
+          "x": 16,
+          "y": 380.75,
+          "width": 358,
+          "height": 74
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "dpr": 1,
+        "clock": {
+          "scope": {
+            "userId": "00000000-0000-4000-8000-000000000101",
+            "eventId": "00000000-0000-4000-8000-000000000201",
+            "generation": 2,
+            "policyGeneration": 2,
+            "gate": "open"
+          },
+          "nowMs": 1794034804448
+        },
+        "camera": {
+          "left": 0,
+          "top": 111,
+          "width": 368,
+          "height": 239
+        },
+        "classification": "CONTROLLED_REFERENCE_FIXTURE_NO_DEVICE_OR_LIVE_QUALIFICATION"
+      },
+      "sourceCandidate": "6f3440dbe670f9844d2cef556b7a6a5d05af1c18",
+      "uniformScale": 0.9298701298701298,
+      "scaledReferenceHeight": 74,
+      "candidateHeight": 75,
+      "padding": "Magenta explicitly marks unmatched height; no masks, warp, region suppression or pixel identity claim",
+      "meanAbsoluteRGB": [
+        42.98871508379888,
+        46.655493482309126,
+        47.39154562383613
+      ],
+      "pixelClaim": "DESCRIPTIVE_DIFFERENCE_ONLY_NOT_A_VISUAL_PASS",
+      "files": {
+        "reference-crop": {
+          "file": "friends-reference-crop.png",
+          "sha256": "65af7ad269b6f94d5adfa458119d717fe7274ec48335cc91eca4a05c1e15f910"
+        },
+        "reference-uniform-scale": {
+          "file": "friends-reference-uniform-scale.png",
+          "sha256": "39e75e75a9231c6811f2b159df84aa410b1d65ff1cd732209bb746c10f80cda4"
+        },
+        "candidate-padded": {
+          "file": "friends-candidate-padded.png",
+          "sha256": "6cd43dddb7ef6419375a44b8da873ae56134c70698968d3ef11798b2ce06d199"
+        },
+        "overlay": {
+          "file": "friends-overlay.png",
+          "sha256": "cc67d31041c386bf5617218a2b5734ef6671145095670b93088c68e450bd4dad"
+        },
+        "diff": {
+          "file": "friends-diff.png",
+          "sha256": "5df3cd1f922598ef91db90fb5d33d14d1d5d52ac30f20e0405ee3b5272c12cda"
+        }
+      },
+      "ownerDisposition": "PENDING_PERSONAL_INSPECTION_AND_MATERIAL_DIFFERENCE_ITERATION"
+    },
+    {
+      "state": "notes",
+      "reference": {
+        "path": "/tmp/codex-remote-attachments/01a1a385-9f32-73c2-8715-ff54bd1e0497/5AE18B10-B53F-405C-9CC2-1541ECB4BAFA/10-Photo-10.jpg",
+        "sha256": "1f0e133be3a4bf999fb7871188cce67086d09106a095c266b74e648a67777f63",
+        "roi": [
+          36,
+          593,
+          417,
+          724
+        ],
+        "bounds": "left,top,right,bottom; source pixels",
+        "status": "OWNER_SELECTED_BOUNDS_PENDING_CROP_INSPECTION"
+      },
+      "candidate": {
+        "state": "notes",
+        "selector": ".pc-note-card",
+        "file": "390-844-notes-component.png",
+        "sha256": "8a059432088f7b51da6137c0ec317be6d55a8692ad5b8ca58ae22d0474594c74",
+        "box": {
+          "x": 18,
+          "y": 482.75,
+          "width": 354,
+          "height": 123
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "dpr": 1,
+        "clock": {
+          "scope": {
+            "userId": "00000000-0000-4000-8000-000000000101",
+            "eventId": "00000000-0000-4000-8000-000000000201",
+            "generation": 2,
+            "policyGeneration": 2,
+            "gate": "open"
+          },
+          "nowMs": 1794034804734
+        },
+        "camera": {
+          "left": 0,
+          "top": 111,
+          "width": 368,
+          "height": 239
+        },
+        "classification": "CONTROLLED_REFERENCE_FIXTURE_NO_DEVICE_OR_LIVE_QUALIFICATION"
+      },
+      "sourceCandidate": "6f3440dbe670f9844d2cef556b7a6a5d05af1c18",
+      "uniformScale": 0.9291338582677166,
+      "scaledReferenceHeight": 122,
+      "candidateHeight": 124,
+      "padding": "Magenta explicitly marks unmatched height; no masks, warp, region suppression or pixel identity claim",
+      "meanAbsoluteRGB": [
+        48.30756788773465,
+        64.0951795152178,
+        61.008383451795154
+      ],
+      "pixelClaim": "DESCRIPTIVE_DIFFERENCE_ONLY_NOT_A_VISUAL_PASS",
+      "files": {
+        "reference-crop": {
+          "file": "notes-reference-crop.png",
+          "sha256": "cd7bd6b5504e483493f6f99c396d2662f20c63669f145e671542d931b9065866"
+        },
+        "reference-uniform-scale": {
+          "file": "notes-reference-uniform-scale.png",
+          "sha256": "baab4cdd4baf2c230192b76cce3be0196285fb460f7938a348d00bb8925ffd38"
+        },
+        "candidate-padded": {
+          "file": "notes-candidate-padded.png",
+          "sha256": "86389c52e1807e76431db36b30c27545aea4f80abbb7c751a47f31958a03c799"
+        },
+        "overlay": {
+          "file": "notes-overlay.png",
+          "sha256": "8e31b93202a506d74d8fa3dee05ab68ad4e5d6ed07e4be78fde965df50a6666e"
+        },
+        "diff": {
+          "file": "notes-diff.png",
+          "sha256": "3c667dee1ecbe42b653597e082437b1c932f772c556709dae342a51917e3e71b"
+        }
+      },
+      "ownerDisposition": "PENDING_PERSONAL_INSPECTION_AND_MATERIAL_DIFFERENCE_ITERATION"
+    },
+    {
+      "state": "note-composer",
+      "reference": {
+        "path": "/tmp/codex-remote-attachments/01a1a385-9f32-73c2-8715-ff54bd1e0497/5AE18B10-B53F-405C-9CC2-1541ECB4BAFA/10-Photo-10.jpg",
+        "sha256": "1f0e133be3a4bf999fb7871188cce67086d09106a095c266b74e648a67777f63",
+        "roi": [
+          447,
+          378,
+          830,
+          748
+        ],
+        "bounds": "left,top,right,bottom; source pixels",
+        "status": "OWNER_SELECTED_BOUNDS_PENDING_CROP_INSPECTION"
+      },
+      "candidate": {
+        "state": "note-composer",
+        "selector": ".pc-composer",
+        "file": "390-844-note-composer-component.png",
+        "sha256": "ab8177d965b3c0f66b671f7a6f050f08a806915fa93d8f9231cd91e8df4c2699",
+        "box": {
+          "x": 11,
+          "y": 374.75,
+          "width": 368,
+          "height": 356
+        },
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "dpr": 1,
+        "clock": {
+          "scope": {
+            "userId": "00000000-0000-4000-8000-000000000101",
+            "eventId": "00000000-0000-4000-8000-000000000201",
+            "generation": 2,
+            "policyGeneration": 2,
+            "gate": "open"
+          },
+          "nowMs": 1794034804904
+        },
+        "camera": {
+          "left": 0,
+          "top": 111,
+          "width": 368,
+          "height": 239
+        },
+        "classification": "CONTROLLED_REFERENCE_FIXTURE_NO_DEVICE_OR_LIVE_QUALIFICATION"
+      },
+      "sourceCandidate": "6f3440dbe670f9844d2cef556b7a6a5d05af1c18",
+      "uniformScale": 0.9608355091383812,
+      "scaledReferenceHeight": 356,
+      "candidateHeight": 357,
+      "padding": "Magenta explicitly marks unmatched height; no masks, warp, region suppression or pixel identity claim",
+      "meanAbsoluteRGB": [
+        36.04402630617464,
+        42.767354767994156,
+        42.49140634514676
+      ],
+      "pixelClaim": "DESCRIPTIVE_DIFFERENCE_ONLY_NOT_A_VISUAL_PASS",
+      "files": {
+        "reference-crop": {
+          "file": "note-composer-reference-crop.png",
+          "sha256": "59963aebe21e274f2a508f621715586b6e87eb7872b6a745bfc71fc6ad9519c9"
+        },
+        "reference-uniform-scale": {
+          "file": "note-composer-reference-uniform-scale.png",
+          "sha256": "184d00cf88370ae8ef101a43022da77620a96dd0036b63b8a6b23477c336685c"
+        },
+        "candidate-padded": {
+          "file": "note-composer-candidate-padded.png",
+          "sha256": "d3a7260fc4586a940097c5019feafd437b4a216716b71c545fc3c05502abc93d"
+        },
+        "overlay": {
+          "file": "note-composer-overlay.png",
+          "sha256": "5c0e16632320815f8041ee1139674115fb501602d396bdd40b7df9e57c0d366f"
+        },
+        "diff": {
+          "file": "note-composer-diff.png",
+          "sha256": "96e288c3c66bff67277e0ffb7200d3635422a35d454008897cdd5a9b587e0bf9"
+        }
+      },
+      "ownerDisposition": "PENDING_PERSONAL_INSPECTION_AND_MATERIAL_DIFFERENCE_ITERATION"
+    }
+  ]
+}

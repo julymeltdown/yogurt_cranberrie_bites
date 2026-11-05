@@ -1,12 +1,13 @@
 import type { ReactNode } from 'react'
 import type { PrivacyScope } from '../../shared/query/privacy'
-import type { SiteplanIdentity, LandmarkId } from './spatial/contract'
+import type { SiteplanIdentity, LandmarkId, SourceReference } from './spatial/contract'
 
 /** Consumer projections and injected capabilities, never HTTP DTOs or endpoint authority. */
 export interface ReadPort<T> { read(): T; subscribe(listener: () => void): () => void }
 export interface MapPoint { readonly x: number; readonly y: number }
 export interface LandmarkView {
   readonly id: LandmarkId; readonly label: string; readonly point: MapPoint
+  readonly illustration?: { readonly sourceRefs: readonly SourceReference[]; readonly review: 'ILLUSTRATED_UNCALIBRATED' }
   /** Current real-place provider association, never inferred from the illustrated ID. */
   readonly meetingContext: MeetingLandmarkContext | null
 }

@@ -1,0 +1,21 @@
+{
+  "type": "FULL",
+  "role": "guardian",
+  "lease": "MAP-FINISH-NATIVE17-0548",
+  "at": 1793857857.466368,
+  "exitCode": 1,
+  "failure": "Traceback (most recent call last):\n  File \"/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/guardian.py\", line 55, in <module>\n    round.check(); time.sleep(.25)\n    ~~~~~~~~~~~^^\n  File \"/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/finite.py\", line 126, in check\n    sample = membership.sample()\n  File \"/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/membership.py\", line 220, in sample\n    assert script_matches(control, rows[pid]), 'ordinary script identity mismatch: ' + json.dumps(dict(\n           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^\nAssertionError: ordinary script identity mismatch: {\"owner\": \"01a1a1fe-1eed-7d12-a247-879cd521e0ec\", \"offer\": \"DEFAULT-VENUE-HOST-PREP32-0350\", \"pid\": 57830, \"birth\": \"Thu Nov 5 14:50:55 2026\", \"expectedScript\": \"/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/default-ordinary.py\", \"observedExecutable\": \"/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python\", \"status\": \"Ss\", \"commandSHA256\": \"3a6247f86bc9331c025b10c60d54050e6c9e5d6bdb93e6a13d56601e4ae2a2ad\"}\n",
+  "peak": {
+    "processes": 13,
+    "rssBytes": 2220048384,
+    "newBytes": 413413376,
+    "tmpBytes": 31297536,
+    "wholeBytes": 6986289152
+  },
+  "minimumFreeBytes": 21178384384,
+  "livePids": [],
+  "resources": 0,
+  "privateTmpAbsent": true,
+  "portClosed": true,
+  "retainedDependencyRecords": 11480
+}

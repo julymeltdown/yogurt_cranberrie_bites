@@ -1,0 +1,329 @@
+{
+  "kind": "OWNER_INSPECTED_CHANGED_REFERENCE_CLIENT_FINISH_WITH_EXPLICIT_ADAPTATIONS_NOT_PIXEL_OR_WHOLE_VENU_ACCEPTANCE",
+  "candidate": "6f3440dbe670f9844d2cef556b7a6a5d05af1c18",
+  "lease": "MAP-FINISH-NATIVE18-0555",
+  "branch": "codex/mcr-paradise-city-map",
+  "functionalScope": "Four changed reference states contexts PASS. Native16 pan/touch/write/reply/GPS/privacy journeys retained at their original pin, not replayed.",
+  "captureWindowAsiaSeoul": [
+    "2026-11-05T14:59:00.746329+09:00",
+    "2026-11-05T14:59:26.904135+09:00"
+  ],
+  "exactShutter": "UNRECORDED; run window is not a per-image shutter time; filemtime is not used",
+  "runtime": "Actual main/Auth/WorldShell/real Phaser through explicit TEST_ONLY route/provider and synthetic policy/venue/people/notes. No live/defaultRoot/provider/device qualification. Native18 granted no phone/geolocation permission and exercised no GPS.",
+  "images": [
+    {
+      "file": "360-800-map-overview.png",
+      "sha256": "869e46f8741c9367489cab911683c281eabc784781390410a558b805a608c8da",
+      "bytes": 259790,
+      "dimensions": [
+        360,
+        800
+      ],
+      "personallyInspected": true,
+      "disposition": "SHARE_SAFE_SYNTHETIC_NO_CREDENTIALS_PRIVATE_PARTICIPANTS_OR_PHONE_COORDINATES"
+    },
+    {
+      "file": "360-800-friends.png",
+      "sha256": "3cb183ffb04ec48e0c69c91c7e8e642383d19f25efce9e874a52c6de58251979",
+      "bytes": 183169,
+      "dimensions": [
+        360,
+        800
+      ],
+      "personallyInspected": true,
+      "disposition": "SHARE_SAFE_SYNTHETIC_NO_CREDENTIALS_PRIVATE_PARTICIPANTS_OR_PHONE_COORDINATES"
+    },
+    {
+      "file": "360-800-friend-selected.png",
+      "sha256": "213a1ae9f86a7a49f20e97bcd970a6b21d2f2d892496463a81f6127c8cebf366",
+      "bytes": 174127,
+      "dimensions": [
+        360,
+        800
+      ],
+      "personallyInspected": true,
+      "disposition": "SHARE_SAFE_SYNTHETIC_NO_CREDENTIALS_PRIVATE_PARTICIPANTS_OR_PHONE_COORDINATES"
+    },
+    {
+      "file": "360-800-notes.png",
+      "sha256": "2048ddeeaacb670ffbac0f2e5c99f65d246e8b4a65157250ad967747c8e70b1d",
+      "bytes": 174259,
+      "dimensions": [
+        360,
+        800
+      ],
+      "personallyInspected": true,
+      "disposition": "SHARE_SAFE_SYNTHETIC_NO_CREDENTIALS_PRIVATE_PARTICIPANTS_OR_PHONE_COORDINATES"
+    },
+    {
+      "file": "360-800-note-composer.png",
+      "sha256": "8ab7d6a2473bafdb25a88eff8caadefe5be4ad2f188c83152fe44a0821528c91",
+      "bytes": 170815,
+      "dimensions": [
+        360,
+        800
+      ],
+      "personallyInspected": true,
+      "disposition": "SHARE_SAFE_SYNTHETIC_NO_CREDENTIALS_PRIVATE_PARTICIPANTS_OR_PHONE_COORDINATES"
+    },
+    {
+      "file": "390-844-map-overview.png",
+      "sha256": "29514eea66371679de65b675621c3a23b3bdc555281762ccbddf5277f13d10eb",
+      "bytes": 303617,
+      "dimensions": [
+        390,
+        844
+      ],
+      "personallyInspected": true,
+      "disposition": "SHARE_SAFE_SYNTHETIC_NO_CREDENTIALS_PRIVATE_PARTICIPANTS_OR_PHONE_COORDINATES"
+    },
+    {
+      "file": "390-844-friends.png",
+      "sha256": "d1bb2649c66b7959edc752ec365c116a9067e276cb9035388faff5e87bd0edcd",
+      "bytes": 198316,
+      "dimensions": [
+        390,
+        844
+      ],
+      "personallyInspected": true,
+      "disposition": "SHARE_SAFE_SYNTHETIC_NO_CREDENTIALS_PRIVATE_PARTICIPANTS_OR_PHONE_COORDINATES"
+    },
+    {
+      "file": "390-844-friend-selected.png",
+      "sha256": "b205cda9664e044c4c5e6d2b9f14ef537c8ecd8516b7a06c34b606c98426f507",
+      "bytes": 186646,
+      "dimensions": [
+        390,
+        844
+      ],
+      "personallyInspected": true,
+      "disposition": "SHARE_SAFE_SYNTHETIC_NO_CREDENTIALS_PRIVATE_PARTICIPANTS_OR_PHONE_COORDINATES"
+    },
+    {
+      "file": "390-844-notes.png",
+      "sha256": "7ba513d070b64c0c1178a8037700f6cb70bee0a544eea8276cb328a3af7e00da",
+      "bytes": 186305,
+      "dimensions": [
+        390,
+        844
+      ],
+      "personallyInspected": true,
+      "disposition": "SHARE_SAFE_SYNTHETIC_NO_CREDENTIALS_PRIVATE_PARTICIPANTS_OR_PHONE_COORDINATES"
+    },
+    {
+      "file": "390-844-note-composer.png",
+      "sha256": "d1171dfc64d6b31ff1137f9671018e91b2a9d9a2e1e094182579f52a05fbc53e",
+      "bytes": 182564,
+      "dimensions": [
+        390,
+        844
+      ],
+      "personallyInspected": true,
+      "disposition": "SHARE_SAFE_SYNTHETIC_NO_CREDENTIALS_PRIVATE_PARTICIPANTS_OR_PHONE_COORDINATES"
+    },
+    {
+      "file": "390-844-friends-component.png",
+      "sha256": "cd08e12c5c99ae7e5d476d978bf5f7a005d5239b7c61970b170d1d6b43047138",
+      "bytes": 11419,
+      "dimensions": [
+        358,
+        75
+      ],
+      "personallyInspected": true,
+      "disposition": "SHARE_SAFE_SYNTHETIC_NO_CREDENTIALS_PRIVATE_PARTICIPANTS_OR_PHONE_COORDINATES"
+    },
+    {
+      "file": "390-844-notes-component.png",
+      "sha256": "8a059432088f7b51da6137c0ec317be6d55a8692ad5b8ca58ae22d0474594c74",
+      "bytes": 16618,
+      "dimensions": [
+        354,
+        124
+      ],
+      "personallyInspected": true,
+      "disposition": "SHARE_SAFE_SYNTHETIC_NO_CREDENTIALS_PRIVATE_PARTICIPANTS_OR_PHONE_COORDINATES"
+    },
+    {
+      "file": "390-844-note-composer-component.png",
+      "sha256": "ab8177d965b3c0f66b671f7a6f050f08a806915fa93d8f9231cd91e8df4c2699",
+      "bytes": 20441,
+      "dimensions": [
+        368,
+        357
+      ],
+      "personallyInspected": true,
+      "disposition": "SHARE_SAFE_SYNTHETIC_NO_CREDENTIALS_PRIVATE_PARTICIPANTS_OR_PHONE_COORDINATES"
+    },
+    {
+      "file": "430-932-map-overview.png",
+      "sha256": "956bac9a31337bee58487b131f2008e97536c2b92accc85296198dc93dba64b3",
+      "bytes": 362223,
+      "dimensions": [
+        430,
+        932
+      ],
+      "personallyInspected": true,
+      "disposition": "SHARE_SAFE_SYNTHETIC_NO_CREDENTIALS_PRIVATE_PARTICIPANTS_OR_PHONE_COORDINATES"
+    },
+    {
+      "file": "430-932-friends.png",
+      "sha256": "79126f9f2f82588fe6b6e77bacd6b80d2af8ff43d550ad12784ff5d148661901",
+      "bytes": 213957,
+      "dimensions": [
+        430,
+        932
+      ],
+      "personallyInspected": true,
+      "disposition": "SHARE_SAFE_SYNTHETIC_NO_CREDENTIALS_PRIVATE_PARTICIPANTS_OR_PHONE_COORDINATES"
+    },
+    {
+      "file": "430-932-friend-selected.png",
+      "sha256": "f40c8ea270095a780c83f219406b0b4e9cfcdee64cad7a43dc2600f84d5f1563",
+      "bytes": 202483,
+      "dimensions": [
+        430,
+        932
+      ],
+      "personallyInspected": true,
+      "disposition": "SHARE_SAFE_SYNTHETIC_NO_CREDENTIALS_PRIVATE_PARTICIPANTS_OR_PHONE_COORDINATES"
+    },
+    {
+      "file": "430-932-notes.png",
+      "sha256": "ff445b82c5d0f926245578d413ab3c757aadd934dadaad7910e95ba39d97a665",
+      "bytes": 202049,
+      "dimensions": [
+        430,
+        932
+      ],
+      "personallyInspected": true,
+      "disposition": "SHARE_SAFE_SYNTHETIC_NO_CREDENTIALS_PRIVATE_PARTICIPANTS_OR_PHONE_COORDINATES"
+    },
+    {
+      "file": "430-932-note-composer.png",
+      "sha256": "04c80274dc335401bd65a317cef246653c83c3bafb24de14f93633d166bb4ad6",
+      "bytes": 198675,
+      "dimensions": [
+        430,
+        932
+      ],
+      "personallyInspected": true,
+      "disposition": "SHARE_SAFE_SYNTHETIC_NO_CREDENTIALS_PRIVATE_PARTICIPANTS_OR_PHONE_COORDINATES"
+    },
+    {
+      "file": "390-420-map-overview.png",
+      "sha256": "9db9c3e991502e45889768712ff1f71bd9862d93e6338fbe980c99f7ca76e17c",
+      "bytes": 101465,
+      "dimensions": [
+        390,
+        420
+      ],
+      "personallyInspected": true,
+      "disposition": "SHARE_SAFE_SYNTHETIC_NO_CREDENTIALS_PRIVATE_PARTICIPANTS_OR_PHONE_COORDINATES"
+    },
+    {
+      "file": "390-420-friends.png",
+      "sha256": "ae8fdfb258be8d015d5da75e70e88335e96cb91fe48b90b14286ee7b4f3d12e0",
+      "bytes": 118326,
+      "dimensions": [
+        390,
+        420
+      ],
+      "personallyInspected": true,
+      "disposition": "SHARE_SAFE_SYNTHETIC_NO_CREDENTIALS_PRIVATE_PARTICIPANTS_OR_PHONE_COORDINATES"
+    },
+    {
+      "file": "390-420-friend-selected.png",
+      "sha256": "be552da820197ec1eeb66d6c64313150140044f1b09f1e14907f72f04b944aca",
+      "bytes": 117032,
+      "dimensions": [
+        390,
+        420
+      ],
+      "personallyInspected": true,
+      "disposition": "SHARE_SAFE_SYNTHETIC_NO_CREDENTIALS_PRIVATE_PARTICIPANTS_OR_PHONE_COORDINATES"
+    },
+    {
+      "file": "390-420-notes.png",
+      "sha256": "a98f1653457e7c6273469b25a52268176c64661d57adf097cacd82bf60d01480",
+      "bytes": 108710,
+      "dimensions": [
+        390,
+        420
+      ],
+      "personallyInspected": true,
+      "disposition": "SHARE_SAFE_SYNTHETIC_NO_CREDENTIALS_PRIVATE_PARTICIPANTS_OR_PHONE_COORDINATES"
+    },
+    {
+      "file": "390-420-note-composer.png",
+      "sha256": "cdfa4326f5a17d7ee9065ce3c93f1c8b7112a5503b6ec02ccaad863a91e84314",
+      "bytes": 110461,
+      "dimensions": [
+        390,
+        420
+      ],
+      "personallyInspected": true,
+      "disposition": "SHARE_SAFE_SYNTHETIC_NO_CREDENTIALS_PRIVATE_PARTICIPANTS_OR_PHONE_COORDINATES"
+    }
+  ],
+  "comparisons": [
+    {
+      "state": "friends",
+      "candidateHeight": 75,
+      "uniformScaledReferenceHeight": 74,
+      "ownerDisposition": "PERSONALLY_INSPECTED_COMPONENT_REFERENCE_OVERLAY_DIFF_CONTACT_SHEET",
+      "unmasked": true,
+      "uniformScaleOnly": true
+    },
+    {
+      "state": "notes",
+      "candidateHeight": 124,
+      "uniformScaledReferenceHeight": 122,
+      "ownerDisposition": "PERSONALLY_INSPECTED_COMPONENT_REFERENCE_OVERLAY_DIFF_CONTACT_SHEET",
+      "unmasked": true,
+      "uniformScaleOnly": true
+    },
+    {
+      "state": "note-composer",
+      "candidateHeight": 357,
+      "uniformScaledReferenceHeight": 356,
+      "ownerDisposition": "PERSONALLY_INSPECTED_COMPONENT_REFERENCE_OVERLAY_DIFF_CONTACT_SHEET",
+      "unmasked": true,
+      "uniformScaleOnly": true
+    }
+  ],
+  "materialAdaptations": [
+    "Approved supplied-v1 canonical portraits replace historical reference character appearance; no legacy repaint.",
+    "44px controls and explicit READ REPLIES/read-place selection remain visible.",
+    "Native select preserves actual reviewed-place choices; missing end-of-day policy and meeting provider stay disabled.",
+    "Fixture author/body/draft are explicitly named reference-state examples under visible synthetic banner; age uses supplied creation time and snapshot clock.",
+    "Short390x420 viewport shows partial scroll positions; lower content remains in scroll layout. Bounds checks do not claim every action is simultaneously in view."
+  ],
+  "remainingMeasuredGeometry": "Residual1px Friends/composer and2px Notes after uniform-width scale; no material spacing defect observed in owned changed components. No pixel identity or48-case matrix PASS.",
+  "venuArt01": [
+    {
+      "criterion": 1,
+      "status": "SATISFIED",
+      "evidence": "Retained delivered ART231 fcd0780537eb9f724a1f130523f02656e1be9ee6 and Spatial26 4f94914d06d54c3b465930cc23d40be91a1255cb / canonicald3dd189; exact original Photo5 bytes and manifest borrowed without producer rerun."
+    },
+    {
+      "criterion": 2,
+      "status": "SATISFIED_IN_CONTROLLED_CLIENT",
+      "evidence": "All four actual native contexts assert complete provisionalPhoto5 Fit bounds; exact complete art retained; image-pixel geometry is uniformly scaled. Foreground Friends/Notes adaptations stated separately."
+    },
+    {
+      "criterion": 3,
+      "status": "SATISFIED_IN_CONTROLLED_CLIENT",
+      "evidence": "390x844 resolves every one of22 actual displayed landmarks using focused Enter; per-landmark original sourceRefs plus ILLUSTRATED_UNCALIBRATED displayed and recorded in native-report.landmarkDeclarations. No physical review invented."
+    },
+    {
+      "criterion": 4,
+      "status": "SATISFIED",
+      "evidence": "One photo-5-provisional identity, verified1024x1280 blob and same-source anchors; approved source portraits only; no geographic calibration or mixed variants."
+    }
+  ],
+  "openAuthorities": [
+    "Real defaultRoot composition/current backend friendship/location/note services and provider associations: their current owners.",
+    "Actual204 invitation/conversation leaf integration and physical-device/GPS qualification: respective owners/QA06.",
+    "Whole VENU/48-case acceptance and existing historical BLOCKED goal remain unchanged."
+  ]
+}

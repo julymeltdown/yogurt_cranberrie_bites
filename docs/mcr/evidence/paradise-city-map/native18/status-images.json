@@ -1,0 +1,64 @@
+[
+  {
+    "file": "390-844-notes.png",
+    "sha256": "7ba513d070b64c0c1178a8037700f6cb70bee0a544eea8276cb328a3af7e00da",
+    "bytes": 186305,
+    "dimensions": [
+      390,
+      844
+    ],
+    "personallyInspected": true,
+    "disposition": "SHARE_SAFE_SYNTHETIC_NO_CREDENTIALS_PRIVATE_PARTICIPANTS_OR_PHONE_COORDINATES",
+    "absolutePath": "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/native18/390-844-notes.png",
+    "screenState": "390-844-notes.png",
+    "captureWindowAsiaSeoul": [
+      "2026-11-05T14:59:00.746329+09:00",
+      "2026-11-05T14:59:26.904135+09:00"
+    ],
+    "exactShutter": "UNRECORDED",
+    "source": "6f3440dbe670f9844d2cef556b7a6a5d05af1c18",
+    "branch": "codex/mcr-paradise-city-map",
+    "publicationState": "Qualified local source; sealed412e publication pending",
+    "caseStatus": "Native18 allfourchangedcontextsPASS; personalinspectioncomplete",
+    "conditions": "Actual main/Auth/WorldShell/real Phaser through explicit TEST_ONLY route/provider and synthetic policy/venue/people/notes. No live/defaultRoot/provider/device qualification. Native18 granted no phone/geolocation permission and exercised no GPS.",
+    "visibleChanges": "Visible5m supplied note age, same-state fixture text, compactspacing and retained44pxcontrols",
+    "remainingDifferences": [
+      "Approved supplied-v1 canonical portraits replace historical reference character appearance; no legacy repaint.",
+      "44px controls and explicit READ REPLIES/read-place selection remain visible.",
+      "Native select preserves actual reviewed-place choices; missing end-of-day policy and meeting provider stay disabled.",
+      "Fixture author/body/draft are explicitly named reference-state examples under visible synthetic banner; age uses supplied creation time and snapshot clock.",
+      "Short390x420 viewport shows partial scroll positions; lower content remains in scroll layout. Bounds checks do not claim every action is simultaneously in view."
+    ]
+  },
+  {
+    "file": "390-844-note-composer.png",
+    "sha256": "d1171dfc64d6b31ff1137f9671018e91b2a9d9a2e1e094182579f52a05fbc53e",
+    "bytes": 182564,
+    "dimensions": [
+      390,
+      844
+    ],
+    "personallyInspected": true,
+    "disposition": "SHARE_SAFE_SYNTHETIC_NO_CREDENTIALS_PRIVATE_PARTICIPANTS_OR_PHONE_COORDINATES",
+    "absolutePath": "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/native18/390-844-note-composer.png",
+    "screenState": "390-844-note-composer.png",
+    "captureWindowAsiaSeoul": [
+      "2026-11-05T14:59:00.746329+09:00",
+      "2026-11-05T14:59:26.904135+09:00"
+    ],
+    "exactShutter": "UNRECORDED",
+    "source": "6f3440dbe670f9844d2cef556b7a6a5d05af1c18",
+    "branch": "codex/mcr-paradise-city-map",
+    "publicationState": "Qualified local source; sealed412e publication pending",
+    "caseStatus": "Native18 allfourchangedcontextsPASS; personalinspectioncomplete",
+    "conditions": "Actual main/Auth/WorldShell/real Phaser through explicit TEST_ONLY route/provider and synthetic policy/venue/people/notes. No live/defaultRoot/provider/device qualification. Native18 granted no phone/geolocation permission and exercised no GPS.",
+    "visibleChanges": "Visible5m supplied note age, same-state fixture text, compactspacing and retained44pxcontrols",
+    "remainingDifferences": [
+      "Approved supplied-v1 canonical portraits replace historical reference character appearance; no legacy repaint.",
+      "44px controls and explicit READ REPLIES/read-place selection remain visible.",
+      "Native select preserves actual reviewed-place choices; missing end-of-day policy and meeting provider stay disabled.",
+      "Fixture author/body/draft are explicitly named reference-state examples under visible synthetic banner; age uses supplied creation time and snapshot clock.",
+      "Short390x420 viewport shows partial scroll positions; lower content remains in scroll layout. Bounds checks do not claim every action is simultaneously in view."
+    ]
+  }
+]

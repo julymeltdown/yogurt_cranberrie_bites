@@ -1,0 +1,2655 @@
+{
+  "candidate": "6f3440dbe670f9844d2cef556b7a6a5d05af1c18",
+  "lease": "MAP-FINISH-NATIVE18-0555",
+  "qualification": "ACTUAL_MAIN_AUTH_WORLD_WITH_TEST_ONLY_VENUE_COMPOSITION_NOT_PRODUCTION_OR_LIVE",
+  "status": "PASS",
+  "changedScope": "Reference spacing, supplied note age, per-landmark source/review declarations and complete Fit bounds only. Native16 functional journeys retained, not replayed.",
+  "artInput": {
+    "commit": "fcd0780537eb9f724a1f130523f02656e1be9ee6",
+    "path": "frontend/public/venue/paradise-city/v1/siteplan-photo-5.jpg",
+    "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+    "bytes": 328720,
+    "qualification": "EXACT_PRODUCER_INPUT_NOT_PRODUCER_QUALIFICATION"
+  },
+  "spatialInput": {
+    "commit": "4f94914d06d54c3b465930cc23d40be91a1255cb",
+    "hashes": {
+      "contract.ts": "b75f7cf748949a1a858626fe098f3d1b0dd22e65eeea31d551b37fa309745a42",
+      "image-resource.ts": "6d5e0f7c607d8ae17f03dd3030aa52e7c57d2f0ff1377d9384c6bed2554aba18",
+      "model.ts": "370023d8a25d135fce56969c5b5e2e8a20bfdd17e92eb0ab24da04b8aae219bd",
+      "registration.ts": "75c57f43a81ecaeab1cd9b0dad86329744516285501137fa5d4abb8ff25fe314",
+      "viewport.ts": "19489edc14c739050c3f4c6a8b32d76156f059f7620eeaa155148ff4a5a193f9"
+    },
+    "classification": "ACTUAL_PRODUCER_INPUT_NO_PEER_PREFIX_COPY"
+  },
+  "injections": [
+    {
+      "path": "frontend/src/main.tsx",
+      "preimageSHA256": "73dcb049c45fc5125de1637587a09373664c31d4899ef15dea0119a0ace3d5a6",
+      "postimageSHA256": "303ac8638a2e5de646be4e3625b00a398c3d812701ae9de7b25efa0b05c5188c",
+      "classification": "VIRTUAL_TEST_ONLY_NO_SOURCE_FILE_WRITE",
+      "replacements": [
+        [
+          "import { createAppRouter } from './app/router'",
+          "import { createVenueFixtureRouter as createAppRouter } from '/e2e/venue-map/composition'"
+        ]
+      ],
+      "importAdded": false
+    },
+    {
+      "path": "frontend/src/app/WorldShell.tsx",
+      "preimageSHA256": "6c66a6e61b84fc4180bfa589148cf10018a7166fe15d468b722f5c88cb95fde1",
+      "postimageSHA256": "10209c0aa4aefe8b5d9f233984c03b0b7e2020247e5c199e3078b4c928502493",
+      "classification": "VIRTUAL_TEST_ONLY_NO_SOURCE_FILE_WRITE",
+      "replacements": [
+        [
+          "<ProductionWorldFeatures privacyScope={privacyScope}>",
+          "<VenueFixtureBoundary auth={auth} scope={privacyScope} binding={community}><ProductionWorldFeatures privacyScope={privacyScope}>"
+        ],
+        [
+          "</ProductionWorldFeatures></CommunityFeatures>",
+          "</ProductionWorldFeatures></VenueFixtureBoundary></CommunityFeatures>"
+        ]
+      ],
+      "importAdded": true
+    }
+  ],
+  "cases": [
+    {
+      "width": 360,
+      "height": 800,
+      "dpr": 1,
+      "status": "PASS",
+      "captures": [
+        {
+          "state": "map-overview",
+          "file": "360-800-map-overview.png",
+          "sha256": "869e46f8741c9367489cab911683c281eabc784781390410a558b805a608c8da"
+        },
+        {
+          "state": "friends",
+          "file": "360-800-friends.png",
+          "sha256": "3cb183ffb04ec48e0c69c91c7e8e642383d19f25efce9e874a52c6de58251979"
+        },
+        {
+          "state": "friend-selected",
+          "file": "360-800-friend-selected.png",
+          "sha256": "213a1ae9f86a7a49f20e97bcd970a6b21d2f2d892496463a81f6127c8cebf366"
+        },
+        {
+          "state": "notes",
+          "file": "360-800-notes.png",
+          "sha256": "2048ddeeaacb670ffbac0f2e5c99f65d246e8b4a65157250ad967747c8e70b1d"
+        },
+        {
+          "state": "note-composer",
+          "file": "360-800-note-composer.png",
+          "sha256": "8ab7d6a2473bafdb25a88eff8caadefe5be4ad2f188c83152fe44a0821528c91"
+        }
+      ],
+      "componentCaptures": [],
+      "checks": [
+        "complete-photo5-provisional-siteplan-visible-at-fit",
+        "reference-state-note-body-and-qualified-clock-age",
+        "changed-reference-states-retain-44px-controls-and-place-select",
+        "one-incumbent-world-and-socket"
+      ],
+      "siteplan": {
+        "identity": {
+          "venueId": "paradise-city",
+          "siteplanId": "paradise-city-siteplan",
+          "revision": 1,
+          "variantId": "photo-5-provisional"
+        },
+        "landmarks": [
+          {
+            "id": "stage",
+            "label": "STAGE",
+            "point": {
+              "x": 240,
+              "y": 185
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "standing-a",
+            "label": "STANDING A",
+            "point": {
+              "x": 260,
+              "y": 358
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "standing-b",
+            "label": "STANDING B",
+            "point": {
+              "x": 373,
+              "y": 273
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "foh",
+            "label": "FOH",
+            "point": {
+              "x": 413,
+              "y": 431
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "main-gate",
+            "label": "MAIN GATE",
+            "point": {
+              "x": 246,
+              "y": 636
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "sub-gate",
+            "label": "SUB GATE",
+            "point": {
+              "x": 592,
+              "y": 531
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "station",
+            "label": "PARADISE CITY STATION",
+            "point": {
+              "x": 181,
+              "y": 749
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "chroma",
+            "label": "CHROMA",
+            "point": {
+              "x": 670,
+              "y": 394
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "studio-paradise",
+            "label": "STUDIO PARADISE",
+            "point": {
+              "x": 637,
+              "y": 147
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "spa-cimer",
+            "label": "SPA CIMER",
+            "point": {
+              "x": 870,
+              "y": 262
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "wonderbox",
+            "label": "WONDERBOX",
+            "point": {
+              "x": 886,
+              "y": 534
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "art-paradiso-plaza",
+            "label": "ART PARADISO / PLAZA",
+            "point": {
+              "x": 585,
+              "y": 716
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "photo-zone",
+            "label": "PHOTO ZONE",
+            "point": {
+              "x": 308,
+              "y": 822
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                },
+                {
+                  "id": "photo-10",
+                  "sha256": "1f0e133be3a4bf999fb7871188cce67086d09106a095c266b74e648a67777f63",
+                  "bytes": 320653
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "queue-a",
+            "label": "A QUEUE 1~3000",
+            "point": {
+              "x": 125,
+              "y": 447
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "queue-b",
+            "label": "B QUEUE 1~3000",
+            "point": {
+              "x": 765,
+              "y": 472
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "queue-a-b-3001-plus",
+            "label": "A+B QUEUE 3001+",
+            "point": {
+              "x": 727,
+              "y": 1039
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "p1",
+            "label": "P1",
+            "point": {
+              "x": 320,
+              "y": 475
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "p2",
+            "label": "P2",
+            "point": {
+              "x": 475,
+              "y": 386
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "r1",
+            "label": "R1",
+            "point": {
+              "x": 190,
+              "y": 455
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "r2",
+            "label": "R2",
+            "point": {
+              "x": 493,
+              "y": 262
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "toilets",
+            "label": "TOILETS",
+            "point": {
+              "x": 522,
+              "y": 162
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "medical-symbol",
+            "label": "Medical cross symbol",
+            "point": {
+              "x": 507,
+              "y": 452
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          }
+        ],
+        "imageWidth": 1024,
+        "imageHeight": 1280,
+        "sourceKind": "VERIFIED_PRODUCER_IMAGE_LEASE"
+      },
+      "controlBounds": [
+        {
+          "state": "friends",
+          "bounds": [
+            {
+              "label": "inkparade",
+              "width": 216,
+              "height": 60
+            },
+            {
+              "label": "VIEW",
+              "width": 44,
+              "height": 44
+            },
+            {
+              "label": "Gerardway",
+              "width": 216,
+              "height": 60
+            },
+            {
+              "label": "VIEW",
+              "width": 44,
+              "height": 44
+            },
+            {
+              "label": "frankie_13",
+              "width": 159.46875,
+              "height": 60
+            },
+            {
+              "label": "ASK LOCATION",
+              "width": 100.53125,
+              "height": 44
+            }
+          ]
+        },
+        {
+          "state": "notes",
+          "bounds": [
+            {
+              "label": "REPLY",
+              "width": 101,
+              "height": 44
+            },
+            {
+              "label": "MEET HERE",
+              "width": 101,
+              "height": 44
+            },
+            {
+              "label": "READ REPLIES",
+              "width": 102,
+              "height": 44
+            }
+          ]
+        },
+        {
+          "state": "note-composer",
+          "bounds": [
+            {
+              "label": "Close note composer",
+              "width": 44,
+              "height": 44
+            },
+            {
+              "label": "Note place",
+              "width": 279.46875,
+              "height": 44
+            },
+            {
+              "label": "FRIENDS",
+              "width": 112,
+              "height": 44
+            },
+            {
+              "label": "EVERYONE",
+              "width": 112,
+              "height": 44
+            },
+            {
+              "label": "1 HOUR",
+              "width": 112,
+              "height": 44
+            },
+            {
+              "label": "END OF DAY",
+              "width": 112,
+              "height": 44
+            },
+            {
+              "label": "+ POST NOTE",
+              "width": 324,
+              "height": 44
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "dpr": 1,
+      "status": "PASS",
+      "captures": [
+        {
+          "state": "map-overview",
+          "file": "390-844-map-overview.png",
+          "sha256": "29514eea66371679de65b675621c3a23b3bdc555281762ccbddf5277f13d10eb"
+        },
+        {
+          "state": "friends",
+          "file": "390-844-friends.png",
+          "sha256": "d1bb2649c66b7959edc752ec365c116a9067e276cb9035388faff5e87bd0edcd"
+        },
+        {
+          "state": "friend-selected",
+          "file": "390-844-friend-selected.png",
+          "sha256": "b205cda9664e044c4c5e6d2b9f14ef537c8ecd8516b7a06c34b606c98426f507"
+        },
+        {
+          "state": "notes",
+          "file": "390-844-notes.png",
+          "sha256": "7ba513d070b64c0c1178a8037700f6cb70bee0a544eea8276cb328a3af7e00da"
+        },
+        {
+          "state": "note-composer",
+          "file": "390-844-note-composer.png",
+          "sha256": "d1171dfc64d6b31ff1137f9671018e91b2a9d9a2e1e094182579f52a05fbc53e"
+        }
+      ],
+      "componentCaptures": [
+        {
+          "state": "friends",
+          "selector": ".pc-friend-row",
+          "file": "390-844-friends-component.png",
+          "sha256": "cd08e12c5c99ae7e5d476d978bf5f7a005d5239b7c61970b170d1d6b43047138",
+          "box": {
+            "x": 16,
+            "y": 380.75,
+            "width": 358,
+            "height": 74
+          },
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "dpr": 1,
+          "clock": {
+            "scope": {
+              "userId": "00000000-0000-4000-8000-000000000101",
+              "eventId": "00000000-0000-4000-8000-000000000201",
+              "generation": 2,
+              "policyGeneration": 2,
+              "gate": "open"
+            },
+            "nowMs": 1794034804448
+          },
+          "camera": {
+            "left": 0,
+            "top": 111,
+            "width": 368,
+            "height": 239
+          },
+          "classification": "CONTROLLED_REFERENCE_FIXTURE_NO_DEVICE_OR_LIVE_QUALIFICATION"
+        },
+        {
+          "state": "notes",
+          "selector": ".pc-note-card",
+          "file": "390-844-notes-component.png",
+          "sha256": "8a059432088f7b51da6137c0ec317be6d55a8692ad5b8ca58ae22d0474594c74",
+          "box": {
+            "x": 18,
+            "y": 482.75,
+            "width": 354,
+            "height": 123
+          },
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "dpr": 1,
+          "clock": {
+            "scope": {
+              "userId": "00000000-0000-4000-8000-000000000101",
+              "eventId": "00000000-0000-4000-8000-000000000201",
+              "generation": 2,
+              "policyGeneration": 2,
+              "gate": "open"
+            },
+            "nowMs": 1794034804734
+          },
+          "camera": {
+            "left": 0,
+            "top": 111,
+            "width": 368,
+            "height": 239
+          },
+          "classification": "CONTROLLED_REFERENCE_FIXTURE_NO_DEVICE_OR_LIVE_QUALIFICATION"
+        },
+        {
+          "state": "note-composer",
+          "selector": ".pc-composer",
+          "file": "390-844-note-composer-component.png",
+          "sha256": "ab8177d965b3c0f66b671f7a6f050f08a806915fa93d8f9231cd91e8df4c2699",
+          "box": {
+            "x": 11,
+            "y": 374.75,
+            "width": 368,
+            "height": 356
+          },
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "dpr": 1,
+          "clock": {
+            "scope": {
+              "userId": "00000000-0000-4000-8000-000000000101",
+              "eventId": "00000000-0000-4000-8000-000000000201",
+              "generation": 2,
+              "policyGeneration": 2,
+              "gate": "open"
+            },
+            "nowMs": 1794034804904
+          },
+          "camera": {
+            "left": 0,
+            "top": 111,
+            "width": 368,
+            "height": 239
+          },
+          "classification": "CONTROLLED_REFERENCE_FIXTURE_NO_DEVICE_OR_LIVE_QUALIFICATION"
+        }
+      ],
+      "checks": [
+        "complete-photo5-provisional-siteplan-visible-at-fit",
+        "all-22-landmarks-resolve-with-declared-source-and-uncalibrated-review",
+        "reference-state-note-body-and-qualified-clock-age",
+        "changed-reference-states-retain-44px-controls-and-place-select",
+        "one-incumbent-world-and-socket"
+      ],
+      "siteplan": {
+        "identity": {
+          "venueId": "paradise-city",
+          "siteplanId": "paradise-city-siteplan",
+          "revision": 1,
+          "variantId": "photo-5-provisional"
+        },
+        "landmarks": [
+          {
+            "id": "stage",
+            "label": "STAGE",
+            "point": {
+              "x": 240,
+              "y": 185
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "standing-a",
+            "label": "STANDING A",
+            "point": {
+              "x": 260,
+              "y": 358
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "standing-b",
+            "label": "STANDING B",
+            "point": {
+              "x": 373,
+              "y": 273
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "foh",
+            "label": "FOH",
+            "point": {
+              "x": 413,
+              "y": 431
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "main-gate",
+            "label": "MAIN GATE",
+            "point": {
+              "x": 246,
+              "y": 636
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "sub-gate",
+            "label": "SUB GATE",
+            "point": {
+              "x": 592,
+              "y": 531
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "station",
+            "label": "PARADISE CITY STATION",
+            "point": {
+              "x": 181,
+              "y": 749
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "chroma",
+            "label": "CHROMA",
+            "point": {
+              "x": 670,
+              "y": 394
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "studio-paradise",
+            "label": "STUDIO PARADISE",
+            "point": {
+              "x": 637,
+              "y": 147
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "spa-cimer",
+            "label": "SPA CIMER",
+            "point": {
+              "x": 870,
+              "y": 262
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "wonderbox",
+            "label": "WONDERBOX",
+            "point": {
+              "x": 886,
+              "y": 534
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "art-paradiso-plaza",
+            "label": "ART PARADISO / PLAZA",
+            "point": {
+              "x": 585,
+              "y": 716
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "photo-zone",
+            "label": "PHOTO ZONE",
+            "point": {
+              "x": 308,
+              "y": 822
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                },
+                {
+                  "id": "photo-10",
+                  "sha256": "1f0e133be3a4bf999fb7871188cce67086d09106a095c266b74e648a67777f63",
+                  "bytes": 320653
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "queue-a",
+            "label": "A QUEUE 1~3000",
+            "point": {
+              "x": 125,
+              "y": 447
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "queue-b",
+            "label": "B QUEUE 1~3000",
+            "point": {
+              "x": 765,
+              "y": 472
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "queue-a-b-3001-plus",
+            "label": "A+B QUEUE 3001+",
+            "point": {
+              "x": 727,
+              "y": 1039
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "p1",
+            "label": "P1",
+            "point": {
+              "x": 320,
+              "y": 475
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "p2",
+            "label": "P2",
+            "point": {
+              "x": 475,
+              "y": 386
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "r1",
+            "label": "R1",
+            "point": {
+              "x": 190,
+              "y": 455
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "r2",
+            "label": "R2",
+            "point": {
+              "x": 493,
+              "y": 262
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "toilets",
+            "label": "TOILETS",
+            "point": {
+              "x": 522,
+              "y": 162
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "medical-symbol",
+            "label": "Medical cross symbol",
+            "point": {
+              "x": 507,
+              "y": 452
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          }
+        ],
+        "imageWidth": 1024,
+        "imageHeight": 1280,
+        "sourceKind": "VERIFIED_PRODUCER_IMAGE_LEASE"
+      },
+      "landmarkDeclarations": [
+        {
+          "id": "stage",
+          "sourceRefs": [
+            {
+              "id": "photo-5",
+              "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+              "bytes": 328720
+            }
+          ],
+          "review": "ILLUSTRATED_UNCALIBRATED",
+          "visibleDeclaration": "Illustration source: Photo 5. Uncalibrated illustration; physical placement unverified."
+        },
+        {
+          "id": "standing-a",
+          "sourceRefs": [
+            {
+              "id": "photo-5",
+              "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+              "bytes": 328720
+            }
+          ],
+          "review": "ILLUSTRATED_UNCALIBRATED",
+          "visibleDeclaration": "Illustration source: Photo 5. Uncalibrated illustration; physical placement unverified."
+        },
+        {
+          "id": "standing-b",
+          "sourceRefs": [
+            {
+              "id": "photo-5",
+              "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+              "bytes": 328720
+            }
+          ],
+          "review": "ILLUSTRATED_UNCALIBRATED",
+          "visibleDeclaration": "Illustration source: Photo 5. Uncalibrated illustration; physical placement unverified."
+        },
+        {
+          "id": "foh",
+          "sourceRefs": [
+            {
+              "id": "photo-5",
+              "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+              "bytes": 328720
+            }
+          ],
+          "review": "ILLUSTRATED_UNCALIBRATED",
+          "visibleDeclaration": "Illustration source: Photo 5. Uncalibrated illustration; physical placement unverified."
+        },
+        {
+          "id": "main-gate",
+          "sourceRefs": [
+            {
+              "id": "photo-5",
+              "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+              "bytes": 328720
+            }
+          ],
+          "review": "ILLUSTRATED_UNCALIBRATED",
+          "visibleDeclaration": "Illustration source: Photo 5. Uncalibrated illustration; physical placement unverified."
+        },
+        {
+          "id": "sub-gate",
+          "sourceRefs": [
+            {
+              "id": "photo-5",
+              "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+              "bytes": 328720
+            }
+          ],
+          "review": "ILLUSTRATED_UNCALIBRATED",
+          "visibleDeclaration": "Illustration source: Photo 5. Uncalibrated illustration; physical placement unverified."
+        },
+        {
+          "id": "station",
+          "sourceRefs": [
+            {
+              "id": "photo-5",
+              "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+              "bytes": 328720
+            }
+          ],
+          "review": "ILLUSTRATED_UNCALIBRATED",
+          "visibleDeclaration": "Illustration source: Photo 5. Uncalibrated illustration; physical placement unverified."
+        },
+        {
+          "id": "chroma",
+          "sourceRefs": [
+            {
+              "id": "photo-5",
+              "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+              "bytes": 328720
+            }
+          ],
+          "review": "ILLUSTRATED_UNCALIBRATED",
+          "visibleDeclaration": "Illustration source: Photo 5. Uncalibrated illustration; physical placement unverified."
+        },
+        {
+          "id": "studio-paradise",
+          "sourceRefs": [
+            {
+              "id": "photo-5",
+              "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+              "bytes": 328720
+            }
+          ],
+          "review": "ILLUSTRATED_UNCALIBRATED",
+          "visibleDeclaration": "Illustration source: Photo 5. Uncalibrated illustration; physical placement unverified."
+        },
+        {
+          "id": "spa-cimer",
+          "sourceRefs": [
+            {
+              "id": "photo-5",
+              "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+              "bytes": 328720
+            }
+          ],
+          "review": "ILLUSTRATED_UNCALIBRATED",
+          "visibleDeclaration": "Illustration source: Photo 5. Uncalibrated illustration; physical placement unverified."
+        },
+        {
+          "id": "wonderbox",
+          "sourceRefs": [
+            {
+              "id": "photo-5",
+              "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+              "bytes": 328720
+            }
+          ],
+          "review": "ILLUSTRATED_UNCALIBRATED",
+          "visibleDeclaration": "Illustration source: Photo 5. Uncalibrated illustration; physical placement unverified."
+        },
+        {
+          "id": "art-paradiso-plaza",
+          "sourceRefs": [
+            {
+              "id": "photo-5",
+              "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+              "bytes": 328720
+            }
+          ],
+          "review": "ILLUSTRATED_UNCALIBRATED",
+          "visibleDeclaration": "Illustration source: Photo 5. Uncalibrated illustration; physical placement unverified."
+        },
+        {
+          "id": "photo-zone",
+          "sourceRefs": [
+            {
+              "id": "photo-5",
+              "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+              "bytes": 328720
+            },
+            {
+              "id": "photo-10",
+              "sha256": "1f0e133be3a4bf999fb7871188cce67086d09106a095c266b74e648a67777f63",
+              "bytes": 320653
+            }
+          ],
+          "review": "ILLUSTRATED_UNCALIBRATED",
+          "visibleDeclaration": "Illustration source: Photo 5 · Photo 10. Uncalibrated illustration; physical placement unverified."
+        },
+        {
+          "id": "queue-a",
+          "sourceRefs": [
+            {
+              "id": "photo-5",
+              "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+              "bytes": 328720
+            }
+          ],
+          "review": "ILLUSTRATED_UNCALIBRATED",
+          "visibleDeclaration": "Illustration source: Photo 5. Uncalibrated illustration; physical placement unverified."
+        },
+        {
+          "id": "queue-b",
+          "sourceRefs": [
+            {
+              "id": "photo-5",
+              "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+              "bytes": 328720
+            }
+          ],
+          "review": "ILLUSTRATED_UNCALIBRATED",
+          "visibleDeclaration": "Illustration source: Photo 5. Uncalibrated illustration; physical placement unverified."
+        },
+        {
+          "id": "queue-a-b-3001-plus",
+          "sourceRefs": [
+            {
+              "id": "photo-5",
+              "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+              "bytes": 328720
+            }
+          ],
+          "review": "ILLUSTRATED_UNCALIBRATED",
+          "visibleDeclaration": "Illustration source: Photo 5. Uncalibrated illustration; physical placement unverified."
+        },
+        {
+          "id": "p1",
+          "sourceRefs": [
+            {
+              "id": "photo-5",
+              "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+              "bytes": 328720
+            }
+          ],
+          "review": "ILLUSTRATED_UNCALIBRATED",
+          "visibleDeclaration": "Illustration source: Photo 5. Uncalibrated illustration; physical placement unverified."
+        },
+        {
+          "id": "p2",
+          "sourceRefs": [
+            {
+              "id": "photo-5",
+              "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+              "bytes": 328720
+            }
+          ],
+          "review": "ILLUSTRATED_UNCALIBRATED",
+          "visibleDeclaration": "Illustration source: Photo 5. Uncalibrated illustration; physical placement unverified."
+        },
+        {
+          "id": "r1",
+          "sourceRefs": [
+            {
+              "id": "photo-5",
+              "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+              "bytes": 328720
+            }
+          ],
+          "review": "ILLUSTRATED_UNCALIBRATED",
+          "visibleDeclaration": "Illustration source: Photo 5. Uncalibrated illustration; physical placement unverified."
+        },
+        {
+          "id": "r2",
+          "sourceRefs": [
+            {
+              "id": "photo-5",
+              "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+              "bytes": 328720
+            }
+          ],
+          "review": "ILLUSTRATED_UNCALIBRATED",
+          "visibleDeclaration": "Illustration source: Photo 5. Uncalibrated illustration; physical placement unverified."
+        },
+        {
+          "id": "toilets",
+          "sourceRefs": [
+            {
+              "id": "photo-5",
+              "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+              "bytes": 328720
+            }
+          ],
+          "review": "ILLUSTRATED_UNCALIBRATED",
+          "visibleDeclaration": "Illustration source: Photo 5. Uncalibrated illustration; physical placement unverified."
+        },
+        {
+          "id": "medical-symbol",
+          "sourceRefs": [
+            {
+              "id": "photo-5",
+              "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+              "bytes": 328720
+            }
+          ],
+          "review": "ILLUSTRATED_UNCALIBRATED",
+          "visibleDeclaration": "Illustration source: Photo 5. Uncalibrated illustration; physical placement unverified."
+        }
+      ],
+      "controlBounds": [
+        {
+          "state": "friends",
+          "bounds": [
+            {
+              "label": "inkparade",
+              "width": 230,
+              "height": 62.1875
+            },
+            {
+              "label": "VIEW",
+              "width": 44,
+              "height": 44
+            },
+            {
+              "label": "Gerardway",
+              "width": 230,
+              "height": 62.1875
+            },
+            {
+              "label": "VIEW",
+              "width": 44,
+              "height": 44
+            },
+            {
+              "label": "frankie_13",
+              "width": 173.46875,
+              "height": 62.1875
+            },
+            {
+              "label": "ASK LOCATION",
+              "width": 100.53125,
+              "height": 44
+            }
+          ]
+        },
+        {
+          "state": "notes",
+          "bounds": [
+            {
+              "label": "REPLY",
+              "width": 111,
+              "height": 44
+            },
+            {
+              "label": "MEET HERE",
+              "width": 111,
+              "height": 44
+            },
+            {
+              "label": "READ REPLIES",
+              "width": 112,
+              "height": 44
+            }
+          ]
+        },
+        {
+          "state": "note-composer",
+          "bounds": [
+            {
+              "label": "Close note composer",
+              "width": 44,
+              "height": 44
+            },
+            {
+              "label": "Note place",
+              "width": 309.46875,
+              "height": 44
+            },
+            {
+              "label": "FRIENDS",
+              "width": 119.5,
+              "height": 44
+            },
+            {
+              "label": "EVERYONE",
+              "width": 119.5,
+              "height": 44
+            },
+            {
+              "label": "1 HOUR",
+              "width": 119.5,
+              "height": 44
+            },
+            {
+              "label": "END OF DAY",
+              "width": 119.5,
+              "height": 44
+            },
+            {
+              "label": "+ POST NOTE",
+              "width": 354,
+              "height": 44
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "dpr": 1,
+      "status": "PASS",
+      "captures": [
+        {
+          "state": "map-overview",
+          "file": "430-932-map-overview.png",
+          "sha256": "956bac9a31337bee58487b131f2008e97536c2b92accc85296198dc93dba64b3"
+        },
+        {
+          "state": "friends",
+          "file": "430-932-friends.png",
+          "sha256": "79126f9f2f82588fe6b6e77bacd6b80d2af8ff43d550ad12784ff5d148661901"
+        },
+        {
+          "state": "friend-selected",
+          "file": "430-932-friend-selected.png",
+          "sha256": "f40c8ea270095a780c83f219406b0b4e9cfcdee64cad7a43dc2600f84d5f1563"
+        },
+        {
+          "state": "notes",
+          "file": "430-932-notes.png",
+          "sha256": "ff445b82c5d0f926245578d413ab3c757aadd934dadaad7910e95ba39d97a665"
+        },
+        {
+          "state": "note-composer",
+          "file": "430-932-note-composer.png",
+          "sha256": "04c80274dc335401bd65a317cef246653c83c3bafb24de14f93633d166bb4ad6"
+        }
+      ],
+      "componentCaptures": [],
+      "checks": [
+        "complete-photo5-provisional-siteplan-visible-at-fit",
+        "reference-state-note-body-and-qualified-clock-age",
+        "changed-reference-states-retain-44px-controls-and-place-select",
+        "one-incumbent-world-and-socket"
+      ],
+      "siteplan": {
+        "identity": {
+          "venueId": "paradise-city",
+          "siteplanId": "paradise-city-siteplan",
+          "revision": 1,
+          "variantId": "photo-5-provisional"
+        },
+        "landmarks": [
+          {
+            "id": "stage",
+            "label": "STAGE",
+            "point": {
+              "x": 240,
+              "y": 185
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "standing-a",
+            "label": "STANDING A",
+            "point": {
+              "x": 260,
+              "y": 358
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "standing-b",
+            "label": "STANDING B",
+            "point": {
+              "x": 373,
+              "y": 273
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "foh",
+            "label": "FOH",
+            "point": {
+              "x": 413,
+              "y": 431
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "main-gate",
+            "label": "MAIN GATE",
+            "point": {
+              "x": 246,
+              "y": 636
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "sub-gate",
+            "label": "SUB GATE",
+            "point": {
+              "x": 592,
+              "y": 531
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "station",
+            "label": "PARADISE CITY STATION",
+            "point": {
+              "x": 181,
+              "y": 749
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "chroma",
+            "label": "CHROMA",
+            "point": {
+              "x": 670,
+              "y": 394
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "studio-paradise",
+            "label": "STUDIO PARADISE",
+            "point": {
+              "x": 637,
+              "y": 147
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "spa-cimer",
+            "label": "SPA CIMER",
+            "point": {
+              "x": 870,
+              "y": 262
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "wonderbox",
+            "label": "WONDERBOX",
+            "point": {
+              "x": 886,
+              "y": 534
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "art-paradiso-plaza",
+            "label": "ART PARADISO / PLAZA",
+            "point": {
+              "x": 585,
+              "y": 716
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "photo-zone",
+            "label": "PHOTO ZONE",
+            "point": {
+              "x": 308,
+              "y": 822
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                },
+                {
+                  "id": "photo-10",
+                  "sha256": "1f0e133be3a4bf999fb7871188cce67086d09106a095c266b74e648a67777f63",
+                  "bytes": 320653
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "queue-a",
+            "label": "A QUEUE 1~3000",
+            "point": {
+              "x": 125,
+              "y": 447
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "queue-b",
+            "label": "B QUEUE 1~3000",
+            "point": {
+              "x": 765,
+              "y": 472
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "queue-a-b-3001-plus",
+            "label": "A+B QUEUE 3001+",
+            "point": {
+              "x": 727,
+              "y": 1039
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "p1",
+            "label": "P1",
+            "point": {
+              "x": 320,
+              "y": 475
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "p2",
+            "label": "P2",
+            "point": {
+              "x": 475,
+              "y": 386
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "r1",
+            "label": "R1",
+            "point": {
+              "x": 190,
+              "y": 455
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "r2",
+            "label": "R2",
+            "point": {
+              "x": 493,
+              "y": 262
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "toilets",
+            "label": "TOILETS",
+            "point": {
+              "x": 522,
+              "y": 162
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "medical-symbol",
+            "label": "Medical cross symbol",
+            "point": {
+              "x": 507,
+              "y": 452
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          }
+        ],
+        "imageWidth": 1024,
+        "imageHeight": 1280,
+        "sourceKind": "VERIFIED_PRODUCER_IMAGE_LEASE"
+      },
+      "controlBounds": [
+        {
+          "state": "friends",
+          "bounds": [
+            {
+              "label": "inkparade",
+              "width": 270,
+              "height": 62.1875
+            },
+            {
+              "label": "VIEW",
+              "width": 44,
+              "height": 44
+            },
+            {
+              "label": "Gerardway",
+              "width": 270,
+              "height": 62.1875
+            },
+            {
+              "label": "VIEW",
+              "width": 44,
+              "height": 44
+            },
+            {
+              "label": "frankie_13",
+              "width": 213.46875,
+              "height": 62.1875
+            },
+            {
+              "label": "ASK LOCATION",
+              "width": 100.53125,
+              "height": 44
+            }
+          ]
+        },
+        {
+          "state": "notes",
+          "bounds": [
+            {
+              "label": "REPLY",
+              "width": 124.328125,
+              "height": 44
+            },
+            {
+              "label": "MEET HERE",
+              "width": 124.328125,
+              "height": 44
+            },
+            {
+              "label": "READ REPLIES",
+              "width": 125.34375,
+              "height": 44
+            }
+          ]
+        },
+        {
+          "state": "note-composer",
+          "bounds": [
+            {
+              "label": "Close note composer",
+              "width": 44,
+              "height": 44
+            },
+            {
+              "label": "Note place",
+              "width": 349.46875,
+              "height": 44
+            },
+            {
+              "label": "FRIENDS",
+              "width": 139.5,
+              "height": 44
+            },
+            {
+              "label": "EVERYONE",
+              "width": 139.5,
+              "height": 44
+            },
+            {
+              "label": "1 HOUR",
+              "width": 139.5,
+              "height": 44
+            },
+            {
+              "label": "END OF DAY",
+              "width": 139.5,
+              "height": 44
+            },
+            {
+              "label": "+ POST NOTE",
+              "width": 394,
+              "height": 44
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 420,
+      "dpr": 1,
+      "status": "PASS",
+      "captures": [
+        {
+          "state": "map-overview",
+          "file": "390-420-map-overview.png",
+          "sha256": "9db9c3e991502e45889768712ff1f71bd9862d93e6338fbe980c99f7ca76e17c"
+        },
+        {
+          "state": "friends",
+          "file": "390-420-friends.png",
+          "sha256": "ae8fdfb258be8d015d5da75e70e88335e96cb91fe48b90b14286ee7b4f3d12e0"
+        },
+        {
+          "state": "friend-selected",
+          "file": "390-420-friend-selected.png",
+          "sha256": "be552da820197ec1eeb66d6c64313150140044f1b09f1e14907f72f04b944aca"
+        },
+        {
+          "state": "notes",
+          "file": "390-420-notes.png",
+          "sha256": "a98f1653457e7c6273469b25a52268176c64661d57adf097cacd82bf60d01480"
+        },
+        {
+          "state": "note-composer",
+          "file": "390-420-note-composer.png",
+          "sha256": "cdfa4326f5a17d7ee9065ce3c93f1c8b7112a5503b6ec02ccaad863a91e84314"
+        }
+      ],
+      "componentCaptures": [],
+      "checks": [
+        "complete-photo5-provisional-siteplan-visible-at-fit",
+        "reference-state-note-body-and-qualified-clock-age",
+        "changed-reference-states-retain-44px-controls-and-place-select",
+        "one-incumbent-world-and-socket"
+      ],
+      "siteplan": {
+        "identity": {
+          "venueId": "paradise-city",
+          "siteplanId": "paradise-city-siteplan",
+          "revision": 1,
+          "variantId": "photo-5-provisional"
+        },
+        "landmarks": [
+          {
+            "id": "stage",
+            "label": "STAGE",
+            "point": {
+              "x": 240,
+              "y": 185
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "standing-a",
+            "label": "STANDING A",
+            "point": {
+              "x": 260,
+              "y": 358
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "standing-b",
+            "label": "STANDING B",
+            "point": {
+              "x": 373,
+              "y": 273
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "foh",
+            "label": "FOH",
+            "point": {
+              "x": 413,
+              "y": 431
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "main-gate",
+            "label": "MAIN GATE",
+            "point": {
+              "x": 246,
+              "y": 636
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "sub-gate",
+            "label": "SUB GATE",
+            "point": {
+              "x": 592,
+              "y": 531
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "station",
+            "label": "PARADISE CITY STATION",
+            "point": {
+              "x": 181,
+              "y": 749
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "chroma",
+            "label": "CHROMA",
+            "point": {
+              "x": 670,
+              "y": 394
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "studio-paradise",
+            "label": "STUDIO PARADISE",
+            "point": {
+              "x": 637,
+              "y": 147
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "spa-cimer",
+            "label": "SPA CIMER",
+            "point": {
+              "x": 870,
+              "y": 262
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "wonderbox",
+            "label": "WONDERBOX",
+            "point": {
+              "x": 886,
+              "y": 534
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "art-paradiso-plaza",
+            "label": "ART PARADISO / PLAZA",
+            "point": {
+              "x": 585,
+              "y": 716
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "photo-zone",
+            "label": "PHOTO ZONE",
+            "point": {
+              "x": 308,
+              "y": 822
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                },
+                {
+                  "id": "photo-10",
+                  "sha256": "1f0e133be3a4bf999fb7871188cce67086d09106a095c266b74e648a67777f63",
+                  "bytes": 320653
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "queue-a",
+            "label": "A QUEUE 1~3000",
+            "point": {
+              "x": 125,
+              "y": 447
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "queue-b",
+            "label": "B QUEUE 1~3000",
+            "point": {
+              "x": 765,
+              "y": 472
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "queue-a-b-3001-plus",
+            "label": "A+B QUEUE 3001+",
+            "point": {
+              "x": 727,
+              "y": 1039
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "p1",
+            "label": "P1",
+            "point": {
+              "x": 320,
+              "y": 475
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "p2",
+            "label": "P2",
+            "point": {
+              "x": 475,
+              "y": 386
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "r1",
+            "label": "R1",
+            "point": {
+              "x": 190,
+              "y": 455
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "r2",
+            "label": "R2",
+            "point": {
+              "x": 493,
+              "y": 262
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "toilets",
+            "label": "TOILETS",
+            "point": {
+              "x": 522,
+              "y": 162
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          },
+          {
+            "id": "medical-symbol",
+            "label": "Medical cross symbol",
+            "point": {
+              "x": 507,
+              "y": 452
+            },
+            "illustration": {
+              "sourceRefs": [
+                {
+                  "id": "photo-5",
+                  "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+                  "bytes": 328720
+                }
+              ],
+              "review": "ILLUSTRATED_UNCALIBRATED"
+            }
+          }
+        ],
+        "imageWidth": 1024,
+        "imageHeight": 1280,
+        "sourceKind": "VERIFIED_PRODUCER_IMAGE_LEASE"
+      },
+      "controlBounds": [
+        {
+          "state": "friends",
+          "bounds": [
+            {
+              "label": "inkparade",
+              "width": 230,
+              "height": 62.1875
+            },
+            {
+              "label": "VIEW",
+              "width": 44,
+              "height": 44
+            },
+            {
+              "label": "Gerardway",
+              "width": 230,
+              "height": 62.1875
+            },
+            {
+              "label": "VIEW",
+              "width": 44,
+              "height": 44
+            },
+            {
+              "label": "frankie_13",
+              "width": 173.46875,
+              "height": 62.1875
+            },
+            {
+              "label": "ASK LOCATION",
+              "width": 100.53125,
+              "height": 44
+            }
+          ]
+        },
+        {
+          "state": "notes",
+          "bounds": [
+            {
+              "label": "REPLY",
+              "width": 111,
+              "height": 44
+            },
+            {
+              "label": "MEET HERE",
+              "width": 111,
+              "height": 44
+            },
+            {
+              "label": "READ REPLIES",
+              "width": 112,
+              "height": 44
+            }
+          ]
+        },
+        {
+          "state": "note-composer",
+          "bounds": [
+            {
+              "label": "Close note composer",
+              "width": 44,
+              "height": 44
+            },
+            {
+              "label": "Note place",
+              "width": 309.46875,
+              "height": 44
+            },
+            {
+              "label": "FRIENDS",
+              "width": 119.5,
+              "height": 44
+            },
+            {
+              "label": "EVERYONE",
+              "width": 119.5,
+              "height": 44
+            },
+            {
+              "label": "1 HOUR",
+              "width": 119.5,
+              "height": 44
+            },
+            {
+              "label": "END OF DAY",
+              "width": 119.5,
+              "height": 44
+            },
+            {
+              "label": "+ POST NOTE",
+              "width": 354,
+              "height": 44
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "limits": [
+    "Synthetic venue capabilities, people, notes and emulated geolocation; no physical-device or service acceptance.",
+    "Borrowed meeting entry only; actual developer204 invitation/conversation leaf integration remains separate.",
+    "TEST_ONLY clock profile feeds the original canonical bootstrap timeline; no second loader or timeline.",
+    "Reference ROI/capture overlays and personal visual iteration remain separate acceptance evidence."
+  ],
+  "policyInput": {
+    "release": {
+      "version": 1,
+      "applicationVersion": "0.1.0",
+      "buildId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "sourceRevision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    "qualification": "TEST_ONLY_RECOGNIZED_CATALOG_PAIR_AND_NORMAL_SERVICE_DECISION_NOT_PRODUCTION_RELEASE_OR_LIVE_POLICY"
+  },
+  "browser": "156.0.8078.80"
+}

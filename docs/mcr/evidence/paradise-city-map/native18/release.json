@@ -1,0 +1,21 @@
+{
+  "type": "FULL",
+  "role": "guardian",
+  "lease": "MAP-FINISH-NATIVE18-0555",
+  "at": 1793858373.1354702,
+  "exitCode": 0,
+  "failure": null,
+  "peak": {
+    "processes": 14,
+    "rssBytes": 3253125120,
+    "newBytes": 443715584,
+    "tmpBytes": 30302208,
+    "wholeBytes": 7016591360
+  },
+  "minimumFreeBytes": 21370396672,
+  "livePids": [],
+  "resources": 0,
+  "privateTmpAbsent": true,
+  "portClosed": true,
+  "retainedDependencyRecords": 11480
+}
