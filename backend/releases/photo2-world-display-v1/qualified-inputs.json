@@ -1,0 +1,25 @@
+{
+  "active_fix": "World renderer consumption and full Photo2/native/runtime acceptance remain open; lamp source correction complete",
+  "art_commit": "a8027217ec9bc5b33a9219b74726ea707f33e0cc",
+  "format": "MCR_PHOTO2_QUALIFIED_INPUTS",
+  "full_photo2_acceptance": false,
+  "interface": {
+    "bytes": 46552,
+    "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/asset-interface.json",
+    "sha256": "sha256:dd2d09f2aebe3c631fcd0eed8cc09e11df8661550a38fa214ee50e6c39b81600"
+  },
+  "lamp_fix_source_complete": true,
+  "producer_commit": "a8027217ec9bc5b33a9219b74726ea707f33e0cc",
+  "provenance": {
+    "bytes": 3469,
+    "path": "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/source-provenance.json",
+    "sha256": "sha256:8cebea0e8f5adcb9fa479b01936e89e65fa15a1a625f5afc47bd0a898e9ed465"
+  },
+  "qualification_sha256": "sha256:7ef35cbbbff44ae3fe0a0681f984f611fb1d9f744d2432145ff0ec245164894f",
+  "scenery_hash": "sha256:d714d971dc45ea2d191552db9ccdad0c8a62441f3962b161301686c9584aeef6",
+  "source_kind": "FILESYSTEM_MANIFEST_PINNED_SOURCE",
+  "source_qualification": "SOURCE_QUALIFIED_PERSONALLY_INSPECTED_LAMP_FIX_COMPLETE",
+  "theme_hash": "sha256:146d1fdc816052d3a78ef7b8c90d7cb1a6eeaff29c7dec9a1be458c0b377508f",
+  "version": 1,
+  "world_runtime_acceptance": false
+}

@@ -1,0 +1,108 @@
+{
+  "admission": "NOT_ADMITTED",
+  "avatar": {
+    "bytes": 4166,
+    "path": "contracts/fixtures/assets/selected-static/avatar-manifest.json",
+    "sha256": "sha256:04b0815c5ad66729c578236b010974e44274e6562a9e9dd4599a861e2eed485e"
+  },
+  "avatar_source_registry": {
+    "bytes": 21539,
+    "path": "frontend/src/entities/avatar/character-source-pack.json",
+    "sha256": "sha256:f8d6c83818bced007f71af1f59dbc53cd88115c5dab0112fc302d8469a4fdc6f"
+  },
+  "capabilities_enabled": false,
+  "checks": [
+    "C03 Bootstrap schema and invariants",
+    "C06 complete bundle schema/hash/bindings",
+    "exact reviewed source qualification and source binding",
+    "all scene source hashes/sizes",
+    "PNG full decode/dimensions/hash",
+    "selected avatar original/derived source identity"
+  ],
+  "format": "MCR_PHOTO2_OPERATOR_BUNDLE_CANDIDATE",
+  "generator": {
+    "bytes": 15292,
+    "path": "backend/scripts/mcr/build_photo2_parade_binding.py",
+    "sha256": "sha256:84226248eccb32db2cb17f4e92af2c8c785639a9efa83f9ecb69cd3a8f2b8058"
+  },
+  "limits": [
+    "Source provenance applies to exact supplied scene inputs only.",
+    "Original virtual places remain UNREVIEWED/VIRTUAL_CONCEPT/CONCEPT_ONLY.",
+    "The validation event/actor are inert template identities, not real admission or authorization.",
+    "No original source, artwork, map, avatar manifest or fixture is modified.",
+    "SOURCE_QUALIFIED_PERSONALLY_INSPECTED_LAMP_FIX_COMPLETE",
+    "World renderer consumption and full Photo2/native/runtime acceptance remain open; lamp source correction complete",
+    "World runtime and full Photo2 visual acceptance remain open; candidate is not admitted."
+  ],
+  "map": {
+    "bytes": 28839,
+    "path": "backend/releases/reference-scene-v2/quality-v6/map-manifest.json",
+    "sha256": "sha256:81f6890b114a75a2885032c4f5c38a7fac685203fbde9a4481eef6b9c2bbb632"
+  },
+  "not_certified_by_builder": [
+    "Rust from_source_bound_files constructor",
+    "Gateway HTTP",
+    "operator admission",
+    "visual fidelity acceptance"
+  ],
+  "outputs": [
+    {
+      "bytes": 10010,
+      "path": "backend/releases/photo2-world-display-v1/theme-parade.json",
+      "sha256": "sha256:be707793f89157b02d676f5995425afe0277cbf60c2e3e79159e82029932ea30"
+    },
+    {
+      "bytes": 204282,
+      "path": "backend/releases/photo2-world-display-v1/bootstrap.json",
+      "sha256": "sha256:d917deec26b77998034cec646ee515871c222991de1969ad21cb125088ddf337"
+    },
+    {
+      "bytes": 9220,
+      "path": "backend/releases/photo2-world-display-v1/source-binding.json",
+      "sha256": "sha256:aac3c40bec7c793c077f9ea54742d27a6e6746d263ae9606161a44e431b28515"
+    },
+    {
+      "bytes": 1330,
+      "path": "backend/releases/photo2-world-display-v1/qualified-inputs.json",
+      "sha256": "sha256:b442e715e4c9e56f8e5a0901d9b6b1ebed4ec3c909aa78290a10b155706de9a0"
+    },
+    {
+      "bytes": 9916,
+      "path": "backend/releases/operator-bundle/quality-v6/theme-revenge.json",
+      "sha256": "sha256:c01a12f61687e00d6f34651cfd026d8146733412e2b813f0274b8bb8a9ca3f3e"
+    },
+    {
+      "bytes": 9889,
+      "path": "backend/releases/operator-bundle/quality-v6/theme-danger.json",
+      "sha256": "sha256:ac908ec595c14bb21972cd800c1bb8540a81bd6da386574a89d229f5be04162b"
+    }
+  ],
+  "palette_source": {
+    "bytes": 7736,
+    "path": "frontend/public/world/themes/binding-inputs.json",
+    "sha256": "sha256:06c2a406b1a4c7628719651386188e79fc718cb54ae26b583ae7898e65fbb87f"
+  },
+  "qualification": {
+    "bytes": 7288,
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/qualification-review-v3.json",
+    "sha256": "sha256:7ef35cbbbff44ae3fe0a0681f984f611fb1d9f744d2432145ff0ec245164894f"
+  },
+  "qualified_inputs": {
+    "bytes": 1330,
+    "path": "backend/releases/photo2-world-display-v1/qualified-inputs.json",
+    "sha256": "sha256:b442e715e4c9e56f8e5a0901d9b6b1ebed4ec3c909aa78290a10b155706de9a0"
+  },
+  "resource_root": "frontend/public",
+  "source_binding": {
+    "bytes": 9220,
+    "path": "backend/releases/photo2-world-display-v1/source-binding.json",
+    "sha256": "sha256:aac3c40bec7c793c077f9ea54742d27a6e6746d263ae9606161a44e431b28515"
+  },
+  "source_qualification": {
+    "bytes": 7288,
+    "path": "docs/mcr/art/evidence/photo2-world-display-v1/qualification-review-v3.json",
+    "sha256": "sha256:7ef35cbbbff44ae3fe0a0681f984f611fb1d9f744d2432145ff0ec245164894f"
+  },
+  "state": "CONTRACT_READY",
+  "version": 1
+}

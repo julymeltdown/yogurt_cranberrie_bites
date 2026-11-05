@@ -77,7 +77,11 @@ pub fn validate(document: &Value) -> Result<(), Error> {
             }
         }
         if let Some(scenery) = theme.get("scenery") {
-            scenery_semantics(scenery, geometry)?;
+            scenery_semantics(
+                scenery,
+                geometry,
+                super::photo2::registered_theme(theme, map)?,
+            )?;
         }
     }
     Ok(())
@@ -85,7 +89,7 @@ pub fn validate(document: &Value) -> Result<(), Error> {
 
 /// Closed C06 schema validation precedes these cross-field bounds. Matching
 /// Python/Phaser limits do not confer source-art or venue approval.
-fn scenery_semantics(scenery: &Value, geometry: &Value) -> Result<(), Error> {
+fn scenery_semantics(scenery: &Value, geometry: &Value, photo2: bool) -> Result<(), Error> {
     let width = number(&geometry["width_cells"])?
         .checked_mul(number(&geometry["tile_width_px"])?)
         .ok_or(Error::ReleaseUnavailable)?;
@@ -109,7 +113,9 @@ fn scenery_semantics(scenery: &Value, geometry: &Value) -> Result<(), Error> {
             .ok_or(Error::ReleaseUnavailable)?;
     }
     ensure(bytes <= 2_097_152 && pixels <= 2_097_152)?;
-    ensure(number(&ground["width_px"])? == width && number(&ground["height_px"])? == height)?;
+    if !photo2 {
+        ensure(number(&ground["width_px"])? == width && number(&ground["height_px"])? == height)?;
+    }
     // Ground's schema bounds establish these conversions and additions as safe.
     let (width, height) = (width as i64, height as i64);
     for object in unique(&scenery["objects"], "id")?.values() {

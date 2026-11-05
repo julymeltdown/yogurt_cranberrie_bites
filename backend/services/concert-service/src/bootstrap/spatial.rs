@@ -50,9 +50,17 @@ struct Binding {
 #[serde(deny_unknown_fields)]
 struct SceneBinding {
     theme_id: String,
+    #[serde(default, deserialize_with = "display_profile")]
+    display_profile: Option<String>,
     scenery_source: FilePin,
     scene_sources: Vec<FilePin>,
     runtime_resources: Vec<ImagePin>,
+}
+// Absent is legacy; an explicit null must not expand the closed version-2 shape.
+fn display_profile<'de, D: serde::Deserializer<'de>>(
+    deserializer: D,
+) -> Result<Option<String>, D::Error> {
+    String::deserialize(deserializer).map(Some)
 }
 #[derive(Deserialize)]
 struct ProposalGeometry {
@@ -185,13 +193,34 @@ fn load(
     let binding: Binding = serde_json::from_slice(&index).map_err(invalid)?;
     ensure(
         binding.format == "MCR_SOURCE_BOUND_SPATIAL_RELEASE"
-            && binding.version == 2
+            && matches!(binding.version, 2 | 3)
             && revision(&binding.source_commit)
             && revision(&binding.art_commit)
             && revision(&binding.tilemap_commit)
             && !binding.scenes.is_empty()
             && binding.scenes.len() <= 3,
     )?;
+    let display_count = binding
+        .scenes
+        .iter()
+        .filter(|scene| scene.display_profile.is_some())
+        .count();
+    ensure(
+        (binding.version == 2 && display_count == 0)
+            || (binding.version == 3 && display_count == 1),
+    )?;
+    for scene in &binding.scenes {
+        if let Some(profile) = &scene.display_profile {
+            ensure(
+                scene.theme_id == "PARADE"
+                    && profile == super::photo2::PROFILE
+                    && scene.scenery_source.path
+                        == format!("{}asset-interface.json", super::photo2::PREFIX),
+            )?;
+            let registered = super::photo2::registration(&scene.scenery_source.sha256)?;
+            ensure(binding.art_commit == registered.art_commit)?;
+        }
+    }
     let map_bytes = read(map)?;
     super::json::parse(&map_bytes).map_err(invalid)?;
     let canonical = canonical_json_bytes(&map_bytes).map_err(invalid)?;
@@ -282,30 +311,69 @@ fn verify_scene(
     ] {
         ensure(paths.insert(pin.path.clone()))?;
     }
-    let scenery =
-        super::json::parse(&verify_file(root, &scene.scenery_source)?).map_err(invalid)?;
-    validate_tiled(
-        tiled,
-        &map["geometry"],
-        &[serde_json::json!({"texture": {
-            "width_px": scenery["ground"]["width_px"], "height_px": scenery["ground"]["height_px"],
-            "path": scenery["ground"]["path"]
-        }})],
-    )?;
+    let raw = verify_file(root, &scene.scenery_source)?;
+    let display = scene.display_profile.is_some();
+    let scenery = if display {
+        // The independently pinned interface contains fractional display mesh coordinates.
+        // It is never parsed as an integer-only C03 document or native Tiled texture.
+        let interface: Value = serde_json::from_slice(&raw).map_err(invalid)?;
+        super::photo2::interface_scenery(&interface, &scene.scenery_source.sha256, map)?
+    } else {
+        super::json::parse(&raw).map_err(invalid)?
+    };
+    if !display {
+        validate_tiled(
+            tiled,
+            &map["geometry"],
+            &[serde_json::json!({"texture": {
+                "width_px": scenery["ground"]["width_px"], "height_px": scenery["ground"]["height_px"],
+                "path": scenery["ground"]["path"]
+            }})],
+        )?;
+    }
     let mut layout = None;
+    let mut provenance = false;
     for pin in &scene.scene_sources {
         ensure(paths.insert(pin.path.clone()))?;
         let raw = verify_file(root, pin)?;
-        if pin.path.ends_with("/layout.json") {
+        if display {
+            if pin.path == format!("{}source-provenance.json", super::photo2::PREFIX) {
+                ensure(
+                    !provenance
+                        && pin.sha256
+                            == super::photo2::registration(&scene.scenery_source.sha256)?
+                                .provenance_hash,
+                )?;
+                // Exact qualified bytes, not self-reported REVIEWED labels, establish this source.
+                let _: Value = serde_json::from_slice(&raw).map_err(invalid)?;
+                provenance = true;
+            }
+        } else if pin.path.ends_with("/layout.json") {
             ensure(layout.is_none())?;
             layout = Some(serde_json::from_slice::<SourceLayout>(&raw).map_err(invalid)?);
         }
     }
-    verify_layout(
-        layout.as_ref().ok_or(Error::ReleaseUnavailable)?,
-        proposal,
-        &scenery,
-    )?;
+    if display {
+        ensure(provenance && proposal.placements.len() == 22)?;
+        let expected = proposal
+            .placements
+            .iter()
+            .map(|p| p.id.as_str())
+            .collect::<std::collections::BTreeSet<_>>();
+        let actual = scenery["objects"]
+            .as_array()
+            .ok_or(Error::ReleaseUnavailable)?
+            .iter()
+            .map(|v| v["id"].as_str().ok_or(Error::ReleaseUnavailable))
+            .collect::<Result<std::collections::BTreeSet<_>, _>>()?;
+        ensure(expected.len() == 22 && expected == actual)?;
+    } else {
+        verify_layout(
+            layout.as_ref().ok_or(Error::ReleaseUnavailable)?,
+            proposal,
+            &scenery,
+        )?;
+    }
     let descriptors = std::iter::once(&scenery["ground"])
         .chain(
             scenery["atlases"]
@@ -461,13 +529,21 @@ pub(super) fn validate_product(
         .ok_or(Error::ReleaseUnavailable)?;
     ensure(binding.scenes.len() == 3 && themes.len() == 3)?;
     for scene in &binding.scenes {
-        let supplied =
-            super::json::parse(&verify_file(root, &scene.scenery_source)?).map_err(invalid)?;
+        let raw = verify_file(root, &scene.scenery_source)?;
+        let supplied = if scene.display_profile.is_some() {
+            let interface: Value = serde_json::from_slice(&raw).map_err(invalid)?;
+            super::photo2::interface_scenery(&interface, &scene.scenery_source.sha256, &expected)?
+        } else {
+            super::json::parse(&raw).map_err(invalid)?
+        };
         let theme = themes
             .iter()
             .find(|theme| theme["theme_id"] == scene.theme_id)
             .ok_or(Error::ReleaseUnavailable)?;
         ensure(theme["scenery"] == supplied)?;
+        if scene.display_profile.is_some() {
+            super::photo2::bind_theme(theme, &expected, &scene.scenery_source.sha256)?;
+        }
         textures.push(&theme["texture"]);
     }
     for texture in textures {

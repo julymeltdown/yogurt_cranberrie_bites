@@ -6,7 +6,8 @@ use chrono::Utc;
 use concert_application::bootstrap::*;
 use concert_application::world_ticket::{AvatarPin, MapPin};
 use concert_domain::{
-    AssetId, AuthUserId, AvatarSelection, EventId, EventPhase, ParticipantKey, Preferences, Revision,
+    AssetId, AuthUserId, AvatarSelection, EventId, EventPhase, ParticipantKey, Preferences,
+    Revision,
 };
 use serde_json::Value;
 use sqlx::{postgres::PgRow, PgPool, Row};
@@ -15,6 +16,7 @@ use tonic::{Request, Response, Status};
 use uuid::Uuid;
 
 mod json;
+mod photo2;
 pub mod release;
 mod schema;
 pub mod spatial;
@@ -82,7 +84,8 @@ impl ProductReleaseBundle {
         resource_root: &Path,
         source_binding: &Path,
     ) -> Result<Arc<ValidatedProductRelease>, BootstrapServiceError> {
-        let release = Self::from_product_files(bootstrap, avatar_manifest, map_manifest, themes, features)?;
+        let release =
+            Self::from_product_files(bootstrap, avatar_manifest, map_manifest, themes, features)?;
         spatial::validate_product(&release, map_manifest, source_binding, resource_root)?;
         Ok(release)
     }

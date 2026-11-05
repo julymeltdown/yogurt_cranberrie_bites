@@ -123,18 +123,48 @@ def quote(value):
 
 
 def release_inputs():
-    bundle = json.loads((RELEASE / "bundle.json").read_bytes())
-    for pin in [bundle["map"], bundle["avatar"], bundle["source_binding"], *bundle["outputs"]]:
+    family = os.environ.get("MCR_IN01_RELEASE_FAMILY", "quality-v6")
+    auth.require(family in ("quality-v6", "photo2-world-display-v1"), "release-family")
+    selected = RELEASE if family == "quality-v6" else ROOT / "backend/releases/photo2-world-display-v1"
+    bundle = json.loads((selected / "bundle.json").read_bytes())
+    pins = [bundle["map"], bundle["avatar"], bundle["source_binding"], *bundle["outputs"]]
+    if family == "photo2-world-display-v1":
+        auth.require(bundle.get("format") == "MCR_PHOTO2_OPERATOR_BUNDLE_CANDIDATE"
+                     and bundle.get("admission") == "NOT_ADMITTED"
+                     and bundle.get("state") == "CONTRACT_READY"
+                     and bundle.get("capabilities_enabled") is False, "photo2-bundle-policy")
+        pins.extend([bundle["qualification"], bundle["qualified_inputs"]])
+    for pin in pins:
         path = (ROOT / pin["path"]).resolve()
         auth.require(path.is_relative_to(ROOT) and path.is_file(), "release-path")
         auth.require(path.stat().st_size == pin["bytes"]
                      and "sha256:" + dev.runtime.digest(path) == pin["sha256"], "release-pin")
+    if family == "photo2-world-display-v1":
+        # Rebuild/check the dedicated candidate from registered qualified inputs;
+        # path presence and self-reported NOT_ADMITTED metadata are not admission.
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("mcr_photo2_binding", ROOT / "backend/scripts/mcr/build_photo2_parade_binding.py")
+        producer = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(producer)
+        qualification = bundle["qualification"]
+        supplied_theme = json.loads((selected / "theme-parade.json").read_bytes())
+        expected = producer.build(ROOT, ROOT / qualification["path"], qualification["sha256"], supplied_theme["theme_revision"])
+        auth.require(all((ROOT / path).read_bytes() == raw for path, raw in expected.items()), "photo2-candidate-drift")
+        outputs = bundle["outputs"]
+        def output(name):
+            matches = [pin for pin in outputs if Path(pin["path"]).name == name]
+            auth.require(len(matches) == 1, "photo2-output-ambiguity")
+            return str(ROOT / matches[0]["path"])
+        theme_files = {f"CONCERT_{theme}_MANIFEST_FILE": output(f"theme-{theme.lower()}.json")
+                       for theme in ("REVENGE", "PARADE", "DANGER")}
+    else:
+        theme_files = {f"CONCERT_{theme}_MANIFEST_FILE": str(RELEASE / f"theme-{theme.lower()}.json")
+                       for theme in ("REVENGE", "PARADE", "DANGER")}
     return {
-        "CONCERT_BOOTSTRAP_FILE": str(RELEASE / "bootstrap.json"),
+        "CONCERT_BOOTSTRAP_FILE": str(selected / "bootstrap.json"),
         "CONCERT_AVATAR_MANIFEST_FILE": str(ROOT / bundle["avatar"]["path"]),
         "CONCERT_MAP_MANIFEST_FILE": str(ROOT / bundle["map"]["path"]),
-        **{f"CONCERT_{theme}_MANIFEST_FILE": str(RELEASE / f"theme-{theme.lower()}.json")
-           for theme in ("REVENGE", "PARADE", "DANGER")},
+        **theme_files,
         "source_binding": str(ROOT / bundle["source_binding"]["path"]),
         "asset_root": str(ROOT / "frontend/public"),
     }

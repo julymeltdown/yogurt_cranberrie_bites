@@ -258,7 +258,47 @@ def validate_map(map_):
     return places, interactions
 
 
-def validate_scenery(scenery, geometry):
+# No product Photo2 tuple is registered until genuine immutable ART qualification.
+# These literal pins must match bootstrap/photo2.rs; source-interface readiness is insufficient.
+PHOTO2_REGISTERED_THEMES = ({'theme_hash': 'sha256:146d1fdc816052d3a78ef7b8c90d7cb1a6eeaff29c7dec9a1be458c0b377508f', 'scenery_hash': 'sha256:d714d971dc45ea2d191552db9ccdad0c8a62441f3962b161301686c9584aeef6'},)
+PHOTO2_PREFIX = "world/reference-scene-v2/photo2-world-display-v1/parade/"
+
+
+def photo2_registered_theme(theme, map_):
+    scenery = theme.get("scenery", {})
+    textures = [scenery.get("ground", {}), *scenery.get("atlases", [])]
+    if not any(t.get("path", "").startswith(PHOTO2_PREFIX) for t in textures):
+        return False
+    registration = next((r for r in PHOTO2_REGISTERED_THEMES
+                         if r["theme_hash"] == theme["content_hash"]), None)
+    require(registration is not None, "unregistered Photo2 theme")
+    require(theme["theme_id"] == "PARADE" and theme["theme_revision"] >= 2
+            and map_["map_revision"] == 4 and map_["map_id"] == "mcr_reference_scene_r3"
+            and map_["content_hash"] == "sha256:736afd273a067f6c40db76b8cc54412416fba88984a50d9a6b6738d869831fb8"
+            and map_["geometry_hash"] == "sha256:899aca9bd6ce499c6f46aff5eaf21e30ab34b301e988771b978a6fab7c2d469f",
+            "Photo2 native map or revision mismatch")
+    require("sha256:" + hashlib.sha256(canonical_bytes(scenery)).hexdigest() == registration["scenery_hash"],
+            "Photo2 scenery tuple mismatch")
+    require(theme["texture"] == {"image_state": "PROVIDED",
+            "path": "world/reference-scene-v2/quality-v6/ground.png",
+            "sha256": "sha256:e2d9f785d31ea9e9a1888dc8f73d182eca917b54e1924fbf5159bc91be96e795",
+            "width_px": 768, "height_px": 1296}, "Photo2 native texture changed")
+    require(len(scenery["atlases"]) == 1 and scenery["ground"]["path"] == PHOTO2_PREFIX + "ground.png"
+            and (scenery["ground"]["width_px"], scenery["ground"]["height_px"]) == (499, 1200)
+            and scenery["atlases"][0]["path"] == PHOTO2_PREFIX + "atlas.png"
+            and (scenery["atlases"][0]["width_px"], scenery["atlases"][0]["height_px"]) == (512, 1024),
+            "Photo2 exact display resources mismatch")
+    objects = [{k: v for k, v in obj.items() if k not in ("atlas_id", "frame")}
+               for obj in scenery["objects"]]
+    require(len(objects) == 22 and "sha256:" + hashlib.sha256(canonical_bytes(objects)).hexdigest()
+            == "sha256:8305532e5438901164b2fcd208b9603ea32d2779a5b6cbaacb277685e4b05499",
+            "Photo2 native object identity/order changed")
+    require(all(o["atlas_id"] == scenery["atlases"][0]["id"] for o in scenery["objects"]),
+            "Photo2 object atlas mismatch")
+    return True
+
+
+def validate_scenery(scenery, geometry, *, theme=None, map_=None):
     """C06 cross-field rules, after schema validation; no image/art approval."""
     width = geometry["width_cells"] * geometry["tile_width_px"]
     height = geometry["height_cells"] * geometry["tile_height_px"]
@@ -269,8 +309,9 @@ def validate_scenery(scenery, geometry):
             "scenery aggregate transfer budget exceeded")
     require(sum(t["width_px"] * t["height_px"] for t in textures) <= 2_097_152,
             "scenery aggregate pixel budget exceeded")
-    require((scenery["ground"]["width_px"], scenery["ground"]["height_px"]) == (width, height),
-            "scenery ground dimensions differ from map extent")
+    if theme is None or not photo2_registered_theme(theme, map_):
+        require((scenery["ground"]["width_px"], scenery["ground"]["height_px"]) == (width, height),
+                "scenery ground dimensions differ from map extent")
     atlases = index_unique(scenery["atlases"], "id", "scenery atlases")
     objects = index_unique(scenery["objects"], "id", "scenery objects")
     for obj in objects.values():
@@ -335,7 +376,7 @@ def validate_bundle(documents, checks=None):
         require(all(gid <= tile_count for layer in ("terrain_layer", "overdraw_layer")
                     for row in geometry[layer] for gid in row), "tile ID exceeds theme texture layout")
         if "scenery" in theme:
-            validate_scenery(theme["scenery"], geometry)
+            validate_scenery(theme["scenery"], geometry, theme=theme, map_=map_)
     return {
         "status": "CONTRACT_READY", "documents_validated": len(documents),
         "themes": sorted(themes), "contract_version": avatar["contract_version"],
