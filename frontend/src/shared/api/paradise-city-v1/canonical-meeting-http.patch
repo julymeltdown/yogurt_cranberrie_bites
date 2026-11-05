@@ -1,0 +1,13 @@
+--- a/frontend/src/shared/api/http.ts
++++ b/frontend/src/shared/api/http.ts
+@@ -172,0 +173,10 @@
++  }
++  // These closed Meeting queries use the wire's canonical unreserved spelling.
++  // URLSearchParams would encode an allowed '~' landmark byte as '%7E'.
++  if (request.errorFamily === 'domain' && request.domainOperation && [
++    'resolveVenueMeetingContext', 'listVenueMeetingInvitations', 'getVenueMeetingInvitation',
++    'createVenueMeetingInvitation', 'decideVenueMeetingInvitation', 'listVenueMeetingMessages',
++    'sendVenueMeetingMessage', 'getVenueMeetingCommand',
++  ].includes(request.domainOperation)) {
++    url.search = Object.entries(request.query ?? {})
++      .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(String(value))}`).join('&')

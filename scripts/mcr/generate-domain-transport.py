@@ -97,6 +97,9 @@ def main():
     bridge = ROOT / "scripts/mcr/paradise-city-v1/place_notes_transport.py"
     inputs[str(bridge.relative_to(ROOT))] = hashlib.sha256(bridge.read_bytes()).hexdigest()
     runpy.run_path(str(bridge))["extend"](ROOT, inputs, operations, queries, errors)
+    meeting = ROOT / "scripts/mcr/paradise-city-v1/meeting_transport.py"
+    inputs[str(meeting.relative_to(ROOT))] = hashlib.sha256(meeting.read_bytes()).hexdigest()
+    runpy.run_path(str(meeting))["extend"](ROOT, inputs, operations, queries, errors)
     def emit(name, value):
         # One entry per line keeps repeated route metadata reviewable without inflating the bundle.
         rows = [f"  {json.dumps(k)}: {json.dumps(v, separators=(',', ':'))}," for k, v in value.items()]

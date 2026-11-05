@@ -171,6 +171,16 @@ function prepare<T>(request: HttpRequest<T>, snapshot: SessionSnapshot) {
       || (typeof value === 'number' && !Number.isFinite(value))) throw new TransportError('invalid-request')
     url.searchParams.append(key, String(value))
   }
+  // These closed Meeting queries use the wire's canonical unreserved spelling.
+  // URLSearchParams would encode an allowed '~' landmark byte as '%7E'.
+  if (request.errorFamily === 'domain' && request.domainOperation && [
+    'resolveVenueMeetingContext', 'listVenueMeetingInvitations', 'getVenueMeetingInvitation',
+    'createVenueMeetingInvitation', 'decideVenueMeetingInvitation', 'listVenueMeetingMessages',
+    'sendVenueMeetingMessage', 'getVenueMeetingCommand',
+  ].includes(request.domainOperation)) {
+    url.search = Object.entries(request.query ?? {})
+      .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(String(value))}`).join('&')
+  }
   const headers = new Headers(request.headers)
   for (const [name, value] of headers) {
     if (!['x-correlation-id', 'x-request-id', 'x-client-id'].includes(name)
