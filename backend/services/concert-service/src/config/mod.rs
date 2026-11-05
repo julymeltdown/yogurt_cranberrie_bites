@@ -1,4 +1,5 @@
 pub mod account_deletion_runtime;
+pub mod deletion_world_binding;
 use crate::adapters::out::{repository::PgConcertRepository, SystemClock, UnavailablePolicy};
 use concert_application::ConcertCore;
 use migration_runtime::{MigrationMode, SchemaProbe};

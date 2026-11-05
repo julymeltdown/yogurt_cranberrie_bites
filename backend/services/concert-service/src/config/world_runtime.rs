@@ -215,7 +215,7 @@ impl WorldRuntimeSettings {
         pool: sqlx::PgPool,
         ports: WorldProductionPorts,
     ) -> anyhow::Result<()> {
-        self.serve_inner(pool, ports, None, SocketTransport::default(), None)
+        self.serve_inner(pool, ports, None, SocketTransport::default(), None, None)
             .await
     }
     /// Startup barrier for a supervised C03 listener. Failure drops the sender;
@@ -226,8 +226,10 @@ impl WorldRuntimeSettings {
         ports: WorldProductionPorts,
         ready: tokio::sync::oneshot::Sender<()>,
     ) -> anyhow::Result<()> {
-        self.serve_inner(pool, ports, Some(ready), SocketTransport::default(), None)
-            .await
+        self.serve_inner(
+            pool, ports, Some(ready), SocketTransport::default(), None, None,
+        )
+        .await
     }
     /// Supply the single incumbent socket registry with its canonical policy
     /// baseline installed before any runtime or listener clones are created.
@@ -238,7 +240,7 @@ impl WorldRuntimeSettings {
         ready: tokio::sync::oneshot::Sender<()>,
         transport: SocketTransport,
     ) -> anyhow::Result<()> {
-        self.serve_inner(pool, ports, Some(ready), transport, None)
+        self.serve_inner(pool, ports, Some(ready), transport, None, None)
             .await
     }
     /// Publish this exact native owner's local invalidation leg only after the
@@ -253,8 +255,28 @@ impl WorldRuntimeSettings {
             Arc<crate::world::invalidation::WorldInvalidationConsumer>,
         >,
     ) -> anyhow::Result<()> {
-        self.serve_inner(pool, ports, Some(ready), transport, Some(local))
+        self.serve_inner(pool, ports, Some(ready), transport, Some(local), None)
             .await
+    }
+    /// Opt-in account deletion composition receives the exact incumbent bridge
+    /// and socket registry after the normal startup checks. The receiver must
+    /// also await `ready` and retain the original serving task's supervision.
+    /// A dropped receiver is a startup failure and uses that task's cleanup.
+    pub async fn serve_with_ready_social_and_deletion(
+        self,
+        pool: sqlx::PgPool,
+        ports: WorldProductionPorts,
+        ready: tokio::sync::oneshot::Sender<()>,
+        transport: SocketTransport,
+        local: tokio::sync::oneshot::Sender<
+            Arc<crate::world::invalidation::WorldInvalidationConsumer>,
+        >,
+        deletion: tokio::sync::oneshot::Sender<super::deletion_world_binding::ServingWorldBinding>,
+    ) -> anyhow::Result<()> {
+        self.serve_inner(
+            pool, ports, Some(ready), transport, Some(local), Some(deletion),
+        )
+        .await
     }
     async fn serve_inner(
         self,
@@ -266,6 +288,9 @@ impl WorldRuntimeSettings {
             tokio::sync::oneshot::Sender<
                 Arc<crate::world::invalidation::WorldInvalidationConsumer>,
             >,
+        >,
+        deletion: Option<
+            tokio::sync::oneshot::Sender<super::deletion_world_binding::ServingWorldBinding>,
         >,
     ) -> anyhow::Result<()> {
         let template: serde_json::Value =
@@ -391,7 +416,7 @@ impl WorldRuntimeSettings {
                 }
             }
         };
-        let server = axum::serve(listener, world_ws::router(state))
+        let server = axum::serve(listener, world_ws::router(state.clone()))
             .with_graceful_shutdown(platform::shutdown::global().cancelled());
         let startup = tokio::time::timeout(Duration::from_secs(2), async {
             handle
@@ -420,6 +445,16 @@ impl WorldRuntimeSettings {
                         crate::world::invalidation::WorldInvalidationConsumer::new(bridge.clone()),
                     ))
                     .map_err(|_| anyhow::anyhow!("World local invalidation receiver closed"))?;
+            }
+            if let Some(deletion) = deletion {
+                let binding = super::deletion_world_binding::ServingWorldBinding::new(
+                    bridge.clone(),
+                    state.clone(),
+                )
+                .map_err(|_| anyhow::anyhow!("World deletion serving ownership is invalid"))?;
+                deletion
+                    .send(binding)
+                    .map_err(|_| anyhow::anyhow!("World deletion serving receiver closed"))?;
             }
             if let Some(ready) = ready {
                 ready
