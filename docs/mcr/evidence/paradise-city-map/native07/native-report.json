@@ -1,0 +1,44 @@
+{
+  "candidate": "a812512bc4d70ec2f94045e59a535e39e18111ca",
+  "lease": "MAP-LFACTORY-NATIVE07-0352",
+  "qualification": "ACTUAL_MAIN_AUTH_WORLD_WITH_TEST_ONLY_VENUE_COMPOSITION_NOT_PRODUCTION_OR_LIVE",
+  "status": "IN_PROGRESS",
+  "artInput": {
+    "commit": "fcd0780537eb9f724a1f130523f02656e1be9ee6",
+    "path": "frontend/public/venue/paradise-city/v1/siteplan-photo-5.jpg",
+    "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+    "bytes": 328720,
+    "qualification": "EXACT_PRODUCER_INPUT_NOT_PRODUCER_QUALIFICATION"
+  },
+  "spatialInput": {
+    "commit": "4f94914d06d54c3b465930cc23d40be91a1255cb",
+    "hashes": {
+      "contract.ts": "b75f7cf748949a1a858626fe098f3d1b0dd22e65eeea31d551b37fa309745a42",
+      "image-resource.ts": "6d5e0f7c607d8ae17f03dd3030aa52e7c57d2f0ff1377d9384c6bed2554aba18",
+      "model.ts": "370023d8a25d135fce56969c5b5e2e8a20bfdd17e92eb0ab24da04b8aae219bd",
+      "registration.ts": "75c57f43a81ecaeab1cd9b0dad86329744516285501137fa5d4abb8ff25fe314",
+      "viewport.ts": "19489edc14c739050c3f4c6a8b32d76156f059f7620eeaa155148ff4a5a193f9"
+    },
+    "classification": "ACTUAL_PRODUCER_INPUT_NO_PEER_PREFIX_COPY"
+  },
+  "injections": [],
+  "cases": [
+    {
+      "width": 360,
+      "height": 800,
+      "dpr": 1,
+      "status": "IN_PROGRESS",
+      "captures": [],
+      "componentCaptures": [],
+      "checks": []
+    }
+  ],
+  "errors": [],
+  "limits": [
+    "Synthetic venue capabilities, people, notes and emulated geolocation; no physical-device or service acceptance.",
+    "Borrowed meeting entry only; actual developer204 invitation/conversation leaf integration remains separate.",
+    "TEST_ONLY clock profile feeds the original canonical bootstrap timeline; no second loader or timeline.",
+    "Reference ROI/capture overlays and personal visual iteration remain separate acceptance evidence."
+  ],
+  "browser": "156.0.8078.80"
+}

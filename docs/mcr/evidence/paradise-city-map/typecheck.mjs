@@ -4,6 +4,8 @@ import {mkdir,writeFile} from 'node:fs/promises'
 import {resolve,dirname} from 'node:path'
 import assert from 'node:assert/strict'
 const root=resolve(import.meta.dirname,'../../../..'), front=resolve(root,'frontend'), temporary=process.env.MCR_VENU_TMP
+const scope=process.env.MCR_VENU_TYPES_SCOPE??'ordinary'
+assert(['ordinary','fixture'].includes(scope))
 assert(temporary?.startsWith('/private/tmp/mcr-paradise-city-map-'))
 const producer='4f94914d06d54c3b465930cc23d40be91a1255cb', prefix='frontend/src/features/paradise-city-map/spatial/'
 const expected={
@@ -26,8 +28,9 @@ const locationSHA='4a0aef3c3e93b79d389aaa0a6ab02079b1291b9462422b2dd64202359a092
 assert.equal(createHash('sha256').update(locationBytes).digest('hex'),locationSHA)
 const locationTarget=resolve(overlay,locationPath.slice('frontend/src/'.length)); await mkdir(dirname(locationTarget),{recursive:true}); await writeFile(locationTarget,locationBytes,{mode:0o444})
 inputs.push({path:locationPath,sha256:locationSHA,bytes:locationBytes.length,privateOverlay:locationTarget,producer:locationProducer})
-const config=resolve(temporary,'full-ordinary-tsconfig.json')
-await writeFile(config,JSON.stringify({extends:resolve(front,'tsconfig.json'),include:[resolve(front,'src'),resolve(front,'vite.config.ts'),resolve(front,'e2e/venue-map')],compilerOptions:{incremental:false,rootDirs:[resolve(front,'src'),overlay],typeRoots:[resolve(front,'node_modules/@types'),resolve(front,'node_modules')],paths:{zod:[resolve(front,'node_modules/zod')]}}},null,2))
-await writeFile(resolve(process.env.MCR_VENU_OUTPUT,'type-input-receipt.json'),JSON.stringify({producer,inputs,classification:'ACTUAL_SPATIAL_PRODUCER_INPUT_NOT_PRODUCER_ACCEPTANCE',ordinaryProject:resolve(front,'tsconfig.json'),changes:['rootDirs: five exact immutable Git producer modules in read-only private TMP','typeRoots: original explicit vite/client anchored to retained frontend dependencies; inherited types unchanged','zod: existing read-only package resolution','incremental:false','include: all ordinary source/config plus own actual-App fixture, no exclusions']},null,2)+'\n')
+const include=scope==='fixture'?[resolve(front,'e2e/venue-map/preview.ts'),resolve(front,'e2e/venue-map/composition.tsx')]:[resolve(front,'src'),resolve(front,'vite.config.ts'),resolve(front,'e2e/venue-map')]
+const config=resolve(temporary,scope+'-tsconfig.json')
+await writeFile(config,JSON.stringify({extends:resolve(front,'tsconfig.json'),include,compilerOptions:{incremental:false,rootDirs:[resolve(front,'src'),overlay],typeRoots:[resolve(front,'node_modules/@types'),resolve(front,'node_modules')],paths:{zod:[resolve(front,'node_modules/zod')]}}},null,2))
+await writeFile(resolve(process.env.MCR_VENU_OUTPUT,'type-input-receipt.json'),JSON.stringify({producer,inputs,scope,include,classification:scope==='fixture'?'AFFECTED_FIXTURE_AND_TRANSITIVE_IMPORTS_NOT_FRESH_ALL_SOURCE':'ACTUAL_SPATIAL_PRODUCER_INPUT_NOT_PRODUCER_ACCEPTANCE',ordinaryProject:resolve(front,'tsconfig.json'),changes:['rootDirs: five exact immutable Git producer modules in read-only private TMP','typeRoots: original explicit vite/client anchored to retained frontend dependencies; inherited types unchanged','zod: existing read-only package resolution','incremental:false','No import exclusions; declared fixture entrypoints or ordinary project roots as recorded']},null,2)+'\n')
 const result=spawnSync(process.execPath,[resolve(front,'node_modules/typescript/bin/tsc'),'-p',config,'--pretty','false'],{cwd:front,encoding:'utf8'})
 process.stdout.write(result.stdout??'');process.stderr.write(result.stderr??'');process.exit(result.status??1)

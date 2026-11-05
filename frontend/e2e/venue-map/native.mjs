@@ -4,8 +4,9 @@ import { createHash } from 'node:crypto'
 import { execFileSync } from 'node:child_process'
 import { readFile, writeFile, mkdir, statfs } from 'node:fs/promises'
 import { resolve, dirname, extname } from 'node:path'
-import { createServer, transformWithEsbuild } from 'vite'
+import { createServer, transformWithOxc } from 'vite'
 import { chromium, expect } from '@playwright/test'
+import { policyFixtureRelease } from '../../src/app/pre-world-policy/__tests__/fixtures.ts'
 const root = resolve(import.meta.dirname, '../../..'), frontend = resolve(root, 'frontend')
 const output = process.env.MCR_VENU_OUTPUT, temporary = process.env.MCR_VENU_TMP, lease = process.env.MCR_VENU_LEASE, port = Number(process.env.MCR_VENU_PORT)
 const deadline = Number(process.env.MCR_VENU_ACCEPT_EPOCH) + Number(process.env.MCR_VENU_WORK_SECONDS)
@@ -30,6 +31,7 @@ const participant = JSON.parse(await readFile(resolve(root, 'contracts/fixtures/
 const durable = { avatar: { revision: 7, config: schema.$defs.ReviewedMotionAvatarManifest.const.presets[0].config }, participantRevision: participant.revision, reads: 0, writes: [] }
 const input = { revision: 'TEST_ONLY_PARADISE_CITY_not_C05_authority', reviewedBy: 'Synthetic actual-App fixture', movementPolicy: { speedPxPerSecond: 96, footWidthPx: 12, footHeightPx: 8, interactionRadiusPx: 96 }, zoom: 1 }
 const report = { candidate, lease, qualification: 'ACTUAL_MAIN_AUTH_WORLD_WITH_TEST_ONLY_VENUE_COMPOSITION_NOT_PRODUCTION_OR_LIVE', status: 'IN_PROGRESS', artInput: { commit: artCommit, path: artPath, sha256: hash(art), bytes: art.length, qualification: 'EXACT_PRODUCER_INPUT_NOT_PRODUCER_QUALIFICATION' }, spatialInput: { commit: spatialCommit, hashes: spatialHashes, classification: 'ACTUAL_PRODUCER_INPUT_NO_PEER_PREFIX_COPY' }, injections: [], cases: [], errors: [], limits: ['Synthetic venue capabilities, people, notes and emulated geolocation; no physical-device or service acceptance.', 'Borrowed meeting entry only; actual developer204 invitation/conversation leaf integration remains separate.', 'TEST_ONLY clock profile feeds the original canonical bootstrap timeline; no second loader or timeline.', 'Reference ROI/capture overlays and personal visual iteration remain separate acceptance evidence.'] }
+report.policyInput = { release: policyFixtureRelease, qualification: 'TEST_ONLY_RECOGNIZED_CATALOG_PAIR_AND_NORMAL_SERVICE_DECISION_NOT_PRODUCTION_RELEASE_OR_LIVE_POLICY' }
 const publicPaths = new Set(execFileSync('git', ['ls-tree', '-r', '--name-only', candidate, 'frontend/public'], { cwd: root, encoding: 'utf8' }).trim().split('\n'))
 const replacements = {
  'frontend/src/main.tsx': [["import { createAppRouter } from './app/router'", "import { createVenueFixtureRouter as createAppRouter } from '/e2e/venue-map/composition'"]],
@@ -54,7 +56,7 @@ await writeFile(resolve(output, 'native-report.json'), JSON.stringify(report, nu
 try {
  await guard()
  server = await createServer({ root: frontend, configLoader: 'runner', cacheDir: resolve(temporary, 'vite'), logLevel: 'error',
- define: { 'import.meta.env.VITE_MCR_EVENT_ID': JSON.stringify('00000000-0000-4000-8000-000000000201'), 'import.meta.env.VITE_MCR_LOCAL_INPUT_CONFIG': JSON.stringify(JSON.stringify(input)) },
+ define: { 'import.meta.env.VITE_MCR_EVENT_ID': JSON.stringify('00000000-0000-4000-8000-000000000201'), 'import.meta.env.VITE_MCR_LOCAL_INPUT_CONFIG': JSON.stringify(JSON.stringify(input)), 'import.meta.env.VITE_MCR_APPLICATION_RELEASE': JSON.stringify(policyFixtureRelease) },
  plugins: [{ name: 'paradise-city-actual-app-test-only', enforce: 'pre',
  resolveId(source, importer) {
    const virtual = '\0paradise-spatial:'
@@ -65,7 +67,7 @@ try {
  async load(id) { if (id.startsWith('\0paradise-spatial:')) {
    const name = id.slice('\0paradise-spatial:'.length), source = spatialModules.get(name)
    assert(source, 'Exact virtual producer source missing')
-   const result = await transformWithEsbuild(source, 'paradise-spatial/' + name, { loader: 'ts', target: 'esnext' })
+   const result = await transformWithOxc(source, 'paradise-spatial/' + name, { lang: 'ts', target: 'esnext' })
    return { code: result.code, map: result.map }
  } },
  transform(code, id) { const path = id.split('?')[0].slice(root.length + 1); if (replacements[path]) return transform(code, path) },

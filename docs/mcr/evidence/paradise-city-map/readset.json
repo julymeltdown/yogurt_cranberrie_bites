@@ -2,7 +2,7 @@
   "task": "PARADISECITY-MAP-FRIENDS-NOTES",
   "base": "5e28dc35dda0126ca5463f810f06eda8a56dc38f",
   "classification": "UNQUALIFIED_FROZEN_CONSUMER_CANDIDATE",
-  "priorWholeHighWaterBytes": 6680313856,
+  "priorWholeHighWaterBytes": 6803927040,
   "spatialTypeInput": {
     "commit": "4f94914d06d54c3b465930cc23d40be91a1255cb",
     "pinsDeclaredIn": "docs/mcr/evidence/paradise-city-map/typecheck.mjs",
@@ -1216,18 +1216,18 @@
     },
     {
       "path": "docs/mcr/evidence/paradise-city-map/finite.py",
-      "bytes": 11038,
-      "sha256": "a36a1c1c721f0db040bffdef257836b9e5ffc3ece0812a4eefe55898253b74df"
+      "bytes": 11568,
+      "sha256": "6ebd63cf60b44aceb77659b98b067aa469eff4a8613cd482838f8220d1ac4ef3"
     },
     {
       "path": "docs/mcr/evidence/paradise-city-map/guardian.py",
-      "bytes": 4394,
-      "sha256": "f0d84dde86f9df1c861b6afd9dd4e4ec0c158d010118fb7fdeb7528cdaf044f2"
+      "bytes": 4477,
+      "sha256": "3d20c904337bdc1e4af350be505e54747f5815755105df706e4a40a77b9d45a4"
     },
     {
       "path": "docs/mcr/evidence/paradise-city-map/membership.py",
-      "bytes": 16592,
-      "sha256": "55183ae60227b7df71fde6de794725969f5e6cdaf9135416795e9d209e6e749a"
+      "bytes": 17338,
+      "sha256": "ceba1ee0a60508d7f8f52318f4a60b29743857af002eb2e987ce629500a44982"
     },
     {
       "path": "docs/mcr/evidence/paradise-city-map/membership_test.py",
@@ -1236,13 +1236,13 @@
     },
     {
       "path": "docs/mcr/evidence/paradise-city-map/prepare.py",
-      "bytes": 3239,
-      "sha256": "8d4518a01e6a926d2d3f31193dddcf6e1966d4d9c66ed42ff452b17a44cc1e63"
+      "bytes": 4010,
+      "sha256": "c7d293a82f39ae8d4a63763f623281947aa394d9478d376057258f96cd736105"
     },
     {
       "path": "docs/mcr/evidence/paradise-city-map/typecheck.mjs",
-      "bytes": 3516,
-      "sha256": "0e825c1f052a887c194fa8d1de9403a02a633ab08cb1bd98bf567c0ad6e55c02"
+      "bytes": 3841,
+      "sha256": "9737859e5331daca3feec513e4106bea5d826cb462c8a0586b53fdac6c761050"
     },
     {
       "path": "frontend/.npmrc",
@@ -2486,8 +2486,8 @@
     },
     {
       "path": "frontend/e2e/venue-map/native.mjs",
-      "bytes": 20680,
-      "sha256": "afbf561fb7e497183cd809672a6bcd6a325d3bd10f5bd95da40575ea395e40e1"
+      "bytes": 21021,
+      "sha256": "2ed61dd0b033fb20874fcd31e8bb1472c4a58d8116477067a07886be878921ff"
     },
     {
       "path": "frontend/e2e/venue-map/preview.html",
@@ -2496,8 +2496,8 @@
     },
     {
       "path": "frontend/e2e/venue-map/preview.ts",
-      "bytes": 845,
-      "sha256": "2893b5147e4fb367086da8e2fd47d9b0605331ca50cf44229162f69aef163da7"
+      "bytes": 1689,
+      "sha256": "f5cc1440876df02232c8af1e4eefcadbb38145b23f0bbff5dccc7d09ca3bf329"
     },
     {
       "path": "frontend/e2e/visual/qa06/cohorts/help-minimal.json",
@@ -23286,8 +23286,8 @@
     },
     {
       "path": "frontend/src/features/paradise-city-map/ui/paradise-city-map.css",
-      "bytes": 10227,
-      "sha256": "0bd0b3445bfb86d9f284701d34cf1ad8b78080cb0f870426f13cf0937430bf9c"
+      "bytes": 10234,
+      "sha256": "42c5d1ae8dbc8d9eaeb950ab64ed470c2e97e40614ba68e91d3d396a95fa3465"
     },
     {
       "path": "frontend/src/features/party-authoring/__tests__/authoring.test.tsx",

@@ -1,0 +1,21 @@
+{
+  "type": "FULL",
+  "role": "guardian",
+  "lease": "MAP-LFACTORY-NATIVE06-0352",
+  "at": 1793850782.047296,
+  "exitCode": 1,
+  "failure": "Traceback (most recent call last):\n  File \"/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/guardian.py\", line 56, in <module>\n    if code: raise RuntimeError('Command failed; preserve immutable attempt and close offer')\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: Command failed; preserve immutable attempt and close offer\n",
+  "peak": {
+    "processes": 13,
+    "rssBytes": 2522251264,
+    "newBytes": 139153408,
+    "tmpBytes": 30273536,
+    "wholeBytes": 6712029184
+  },
+  "minimumFreeBytes": 22952894464,
+  "livePids": [],
+  "resources": 0,
+  "privateTmpAbsent": true,
+  "portClosed": true,
+  "retainedDependencyRecords": 11480
+}

@@ -1,10 +1,13 @@
 """Ordinary metadata/pin preparation only. No application, compiler, test or browser."""
+import ctypes
 import datetime
 import hashlib
 import json
 import os
 from pathlib import Path
 import subprocess
+import struct
+import sys
 import time
 
 ROOT=Path(__file__).resolve().parents[4]
@@ -12,18 +15,30 @@ OUT=Path(__file__).resolve().parent
 RECEIPT=Path('/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-40fde6c81bb4.json')
 record=json.loads(RECEIPT.read_text())
 assert record['state'] in ('FULL','DECLINED'), 'ordinary prep cannot replace an active workflow'
-birth=subprocess.check_output(['ps','-p',str(os.getpid()),'-o','lstart='],text=True).strip()
+assert sys.platform == 'darwin', 'ordinary identity requires the actual Darwin kernel'
+libproc=ctypes.CDLL('/usr/lib/libproc.dylib',use_errno=True)
+libproc.proc_pidinfo.argtypes=[ctypes.c_int,ctypes.c_int,ctypes.c_uint64,ctypes.c_void_p,ctypes.c_int]
+libproc.proc_pidinfo.restype=ctypes.c_int
+info=ctypes.create_string_buffer(136)
+assert libproc.proc_pidinfo(os.getpid(),3,0,info,len(info)) == len(info)
+started=struct.unpack_from('=Q',info.raw,120)[0]
+birth=' '.join(time.strftime('%a %b %e %H:%M:%S %Y',time.localtime(started)).split())
+executable=ctypes.create_string_buffer(4096)
+libproc.proc_pidpath.argtypes=[ctypes.c_int,ctypes.c_void_p,ctypes.c_uint32]
+libproc.proc_pidpath.restype=ctypes.c_int
+assert libproc.proc_pidpath(os.getpid(),executable,len(executable)) > 0
 observation=dict(actualpid=os.getpid(),birth=birth,cwd=str(ROOT),script=str(Path(__file__).resolve()),
-    executable=subprocess.check_output(['ps','-p',str(os.getpid()),'-o','comm='],text=True).strip(),
+    executable=executable.value.decode(),
     role='ordinary-source-pin-preparation-no-runtime',booking='PARADISECITY-PI11-PREP64-0114',observedAt=time.time())
-observation['commandDigest']=hashlib.sha256(subprocess.check_output(['ps','-ww','-p',str(os.getpid()),'-o','command='])).hexdigest()
 def publish():
     temporary=RECEIPT.with_name('.'+RECEIPT.name+'.'+str(os.getpid())+'.tmp')
     temporary.write_text(json.dumps(record,indent=2)+'\n');temporary.replace(RECEIPT)
 record['ordinaryObservation']=observation;publish()
 outcome=1
 try:
-    assert time.time()<datetime.datetime(2026,11,5,4,0,tzinfo=datetime.timezone.utc).timestamp()
+    assert birth == ' '.join(subprocess.check_output(['ps','-p',str(os.getpid()),'-o','lstart='],text=True).split())
+    assert observation['executable'] == subprocess.check_output(['ps','-p',str(os.getpid()),'-o','comm='],text=True).strip()
+    assert time.time()<datetime.datetime(2026,11,5,5,0,tzinfo=datetime.timezone.utc).timestamp()
     v=os.statvfs(ROOT);free=v.f_bavail*v.f_frsize
     assert free>=8*1024**3+5*1024**3+64*1024**2
     paths=subprocess.check_output(['git','ls-files','--cached','--others','--exclude-standard','-z'],cwd=ROOT).decode().split('\0')

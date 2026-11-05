@@ -1,0 +1,21 @@
+{
+  "type": "FULL",
+  "role": "guardian",
+  "lease": "MAP-LFACTORY-NATIVE11-0430",
+  "at": 1793853084.332507,
+  "exitCode": 1,
+  "failure": "Traceback (most recent call last):\n  File \"/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/guardian.py\", line 55, in <module>\n    round.check(); time.sleep(.25)\n    ~~~~~~~~~~~^^\n  File \"/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/finite.py\", line 126, in check\n    sample = membership.sample()\n  File \"/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/membership.py\", line 259, in sample\n    assert not unknown, 'unresolved workflow roots: ' + json.dumps(unknown)\n           ^^^^^^^^^^^\nAssertionError: unresolved workflow roots: [{\"pid\": 86641, \"parentPid\": 49590, \"birth\": \"Thu Nov 5 13:31:23 2026\", \"executable\": \"/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python\", \"scriptCandidates\": [\"/private/tmp/mcr-world-moderation-termination-20261105/ordinary-author.py\", \"/private/tmp/mcr-world-moderation-termination-20261105/prepare-pretarget-dual-census.py\"], \"commandSHA256\": \"5644a1b9f09ebf101854e74195feb9dcfcb0df3b21ee4f6938fb79b504b5e2fa\"}]\n",
+  "peak": {
+    "processes": 6,
+    "rssBytes": 657276928,
+    "newBytes": 231051264,
+    "tmpBytes": 0,
+    "wholeBytes": 6803927040
+  },
+  "minimumFreeBytes": 22276882432,
+  "livePids": [],
+  "resources": 0,
+  "privateTmpAbsent": true,
+  "portClosed": true,
+  "retainedDependencyRecords": 11480
+}

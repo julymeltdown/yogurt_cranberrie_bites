@@ -1,0 +1,21 @@
+{
+  "type": "FULL",
+  "role": "guardian",
+  "lease": "MAP-LFACTORY-NATIVE07-0352",
+  "at": 1793851183.830097,
+  "exitCode": 1,
+  "failure": "Traceback (most recent call last):\n  File \"/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/guardian.py\", line 54, in <module>\n    round.check(); time.sleep(.25)\n    ~~~~~~~~~~~^^\n  File \"/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/finite.py\", line 135, in check\n    newBytes=max(self.new_carry,34*MIB+size(MUTABLE)+self.spent_tmp)+temp,tmpBytes=temp,wholeBytes=max(self.carry,size(ROOTS,True)+34*MIB)+temp)\n                                                                                                                  ~~~~^^^^^^^^^^^^\n  File \"/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/finite.py\", line 27, in size\n    for entry in path.rglob('*') if path.is_dir() and not path.is_symlink() else [path]:\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/glob.py\", line 480, in select_recursive\n    yield from select_recursive_step(stack, match_pos)\n  File \"/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/glob.py\", line 503, in select_recursive_step\n    yield from select_next(entry_path, exists=True)\n  File \"/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/glob.py\", line 433, in select_wildcard\n    entries = self.scandir(path)\n  File \"/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/glob.py\", line 535, in scandir\n    entries = list(scandir_it)\n  File \"/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/guardian.py\", line 16, in <lambda>\n    signal.signal(signal.SIGTERM,lambda *_: (_ for _ in ()).throw(RuntimeError('Orderly stop requested')))\n                                            ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/guardian.py\", line 16, in <genexpr>\n    signal.signal(signal.SIGTERM,lambda *_: (_ for _ in ()).throw(RuntimeError('Orderly stop requested')))\nRuntimeError: Orderly stop requested\n",
+  "peak": {
+    "processes": 14,
+    "rssBytes": 2423980032,
+    "newBytes": 169033728,
+    "tmpBytes": 29855744,
+    "wholeBytes": 6741909504
+  },
+  "minimumFreeBytes": 22718586880,
+  "livePids": [],
+  "resources": 0,
+  "privateTmpAbsent": true,
+  "portClosed": true,
+  "retainedDependencyRecords": 11480
+}

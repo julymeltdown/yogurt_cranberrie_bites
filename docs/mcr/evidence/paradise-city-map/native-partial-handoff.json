@@ -1,0 +1,589 @@
+{
+  "kind": "PARTIAL_NATIVE_FIXTURE_AND_CAPTURE_EVIDENCE_NOT_VISUAL_ACCEPTANCE",
+  "ownerThreadId": "01a1a5d9-332b-7822-a8f7-40fde6c81bb4",
+  "sourceCommit": "1c8ea62cc7c3c472fe09a6234971ef1381cb5733",
+  "sourceBase": "c9f81b8f0a08138d1ceb5ea675c7c8702697d34c",
+  "canonicalBaseline": "a63d8ba9601d90c627e6fc04a6b06b381bac28a8",
+  "paths": [
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/finite.py",
+      "mode": "100644",
+      "blob": "be17d8465e3032f3b13571ac84b9608e7df384d3",
+      "sha256": "6ebd63cf60b44aceb77659b98b067aa469eff4a8613cd482838f8220d1ac4ef3",
+      "bytes": 11568,
+      "canonicalPreimage": {
+        "mode": "100644",
+        "blob": "a06547cba12a5bce394fb95bee7d7eed75ee9981",
+        "sha256": "a36a1c1c721f0db040bffdef257836b9e5ffc3ece0812a4eefe55898253b74df",
+        "bytes": 11038
+      }
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/guardian.py",
+      "mode": "100644",
+      "blob": "87d3c0220b7179c0d515ff2e44bfed82f6ced837",
+      "sha256": "3d20c904337bdc1e4af350be505e54747f5815755105df706e4a40a77b9d45a4",
+      "bytes": 4477,
+      "canonicalPreimage": {
+        "mode": "100644",
+        "blob": "bbcd3db46700af37bc85c7e85d3fd920f9531886",
+        "sha256": "f0d84dde86f9df1c861b6afd9dd4e4ec0c158d010118fb7fdeb7528cdaf044f2",
+        "bytes": 4394
+      }
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/membership.py",
+      "mode": "100644",
+      "blob": "9f83607d237acfd0881684ed020c73c91ae231c2",
+      "sha256": "ceba1ee0a60508d7f8f52318f4a60b29743857af002eb2e987ce629500a44982",
+      "bytes": 17338,
+      "canonicalPreimage": {
+        "mode": "100644",
+        "blob": "fef3ddba23c322489ea439babb39efd02ead3538",
+        "sha256": "55183ae60227b7df71fde6de794725969f5e6cdaf9135416795e9d209e6e749a",
+        "bytes": 16592
+      }
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native06-controller-census.json",
+      "mode": "100644",
+      "blob": "24e5995bb867a8a7ca938c20d0568553d417c0e0",
+      "sha256": "7fa309140bdf83076e8a67a1d6cf8caba014944e9af4d82a60dc2c488b44a92f",
+      "bytes": 418,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native06-controller.jsonl",
+      "mode": "100644",
+      "blob": "bd44994549a5358da795ca6d9ac998cee77b4a05",
+      "sha256": "7bba26966f3553340a365c24c976a708dc80f99a80d4096773c5bf08459e7ef1",
+      "bytes": 1174,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native06/command-00.log",
+      "mode": "100644",
+      "blob": "7d55cd148be939597a8c368684e09a28a0d65fb2",
+      "sha256": "fe7e792f13338778a97379a3a2ec8363d0fec910c7565511200cb480c1ccc1f6",
+      "bytes": 3142,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native06/failure.png",
+      "mode": "100644",
+      "blob": "54e6f3061be8fb3ba3164de753bf561347cd0880",
+      "sha256": "29dea5c44531703d9de222eff66f90a74c28d37af76dd1c31387987e19518618",
+      "bytes": 44856,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native06/guardian-census.json",
+      "mode": "100644",
+      "blob": "687cdd71e4cee1e690ad4060f1eafc0f7099b03b",
+      "sha256": "08870b8713fe74322458ec95fbe6b425153f187b71c48f8f063d333a68ddd199",
+      "bytes": 430,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native06/guardian.jsonl",
+      "mode": "100644",
+      "blob": "6a1fe910aa2087a5f4f43ed1c53705d963376c06",
+      "sha256": "9b8e62531dbc1fefd7d810f89c2f532ff8a2654d5b57492cc861146d46f0bfa4",
+      "bytes": 1833,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native06/native-report.json",
+      "mode": "100644",
+      "blob": "ff927e364f0dccfd76c719b0f8fc7dcb6fff6d86",
+      "sha256": "0d05f36ad142f908c58caa80f983988f13237f7f7e28d1e04f660c2d50c7dab5",
+      "bytes": 3543,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native06/release.json",
+      "mode": "100644",
+      "blob": "2f40df28ab554cea7a7d585184a1256c063651c0",
+      "sha256": "16fcc91da76d25ff71a33ab2b5a0d57046b739657cc0abdcb3ecd4c5d23c60d9",
+      "bytes": 890,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native07-controller-census.json",
+      "mode": "100644",
+      "blob": "30092ee02facbc5b0009188dc291710af4a36335",
+      "sha256": "6005980f96231378aa34d6897e7c607c523387fb91dd358852cebf2737da14d4",
+      "bytes": 550,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native07-controller.jsonl",
+      "mode": "100644",
+      "blob": "ccbcf27d51153c5fe82c5c3dc6fd55f11001888b",
+      "sha256": "94d99c1b35eefe39550286d5ff1b50041c1da4afdca9d6d9e8c280e21f57d179",
+      "bytes": 2026,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native07/command-00.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native07/guardian-census.json",
+      "mode": "100644",
+      "blob": "150533499f8c78e9a7fb62f872a13f57a44817f6",
+      "sha256": "4113b444f9801001ef719e294cb4334087ba131435365ee18846efff8fecdcbb",
+      "bytes": 550,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native07/guardian.jsonl",
+      "mode": "100644",
+      "blob": "bd6f8528a42cad748f85b03ffe670765be865949",
+      "sha256": "9a698ad3e5c080729ecba2e377d9022642bd83024f47d536ad60142b836281b7",
+      "bytes": 3433,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native07/native-report.json",
+      "mode": "100644",
+      "blob": "0915fc84d0148122ba70ba2487d68862c350add4",
+      "sha256": "8dcd56c15ac74b51fd7857fe72da63324dfbc9f1b1a56932e1051f9201b747af",
+      "bytes": 1905,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native07/release.json",
+      "mode": "100644",
+      "blob": "1bca723d34d241eef30092553dcb470b690eed7f",
+      "sha256": "67b39ea5b52fad7c2532846a0061451b09966d5cf2e7fbc6f0b1a652d5e90405",
+      "bytes": 2680,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native08-controller-census.json",
+      "mode": "100644",
+      "blob": "2f10dc672e0e34e260bc2b0dab247d242da1ad23",
+      "sha256": "44b9703b471b80c8982f16ebc4ea1382bd4447ea5d89ca0310908eedafaf744c",
+      "bytes": 430,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native08-controller.jsonl",
+      "mode": "100644",
+      "blob": "3d91e0b30af835f63ef40d8ded4b71d9b409df8a",
+      "sha256": "589b905794fdbb1d1b5bbacdda6c79e2711312da7cf32787fd9728de6fa28585",
+      "bytes": 1158,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native08-shell-closure.json",
+      "mode": "100644",
+      "blob": "53d0ce0fd28961cea04c25218bea97f332257da8",
+      "sha256": "443109c59249114df331c99d77cdf4e8534a5b36b6e46d38f1e0ff00e2bb589c",
+      "bytes": 1192,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native08/guardian-census.json",
+      "mode": "100644",
+      "blob": "0e018f652d63aff5ad6b8513af506697a1292de9",
+      "sha256": "9442cfb508e3ff352e4d4fe6180f734790c9afb052d122828afd0346817fd46f",
+      "bytes": 430,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native08/guardian.jsonl",
+      "mode": "100644",
+      "blob": "fc47e76f57a8e371b63e690ac3d0f8cf33e77cda",
+      "sha256": "50496af43e80a3fc78bfdd67f60e1c42cd540bfe85b2fcfb4fbc826fca6f4460",
+      "bytes": 2114,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native08/release.json",
+      "mode": "100644",
+      "blob": "64893181544388dbeebca30b586019681ffff87c",
+      "sha256": "2b1fabf282850729388dc66a9ac95558cf9fa2f17b43e19e6881de01d7ddd765",
+      "bytes": 1400,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native09-controller-census.json",
+      "mode": "100644",
+      "blob": "02e34a1590a0e3eddad487841a01a8c69fe137d1",
+      "sha256": "6d1b71481b10a2bdb4c129394599df057168fa2ea31fc153c8fabcac1edd22ae",
+      "bytes": 440,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native09-controller.jsonl",
+      "mode": "100644",
+      "blob": "f099240365bc536509ce2a10490eddf152332a29",
+      "sha256": "becc34e52f59570f8f62559ffc21ba03743f4101712b83615b6eb1b35adea735",
+      "bytes": 1162,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native09/command-00.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native09/command-01.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native09/command-02.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native09/failure.png",
+      "mode": "100644",
+      "blob": "e9fc7aa041eebf2aca957d829190a7f844673afa",
+      "sha256": "99ca57f8f9643a04596902d5f44e25213ddf0b4f65f5a76097448ec1253900e1",
+      "bytes": 25508,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native09/guardian-census.json",
+      "mode": "100644",
+      "blob": "803162e0a1a78053f52cde9da0f00f44a56007cf",
+      "sha256": "5b51e3084fa00420df710a2b5b6bc3a0d00fd3395bfb66932fa9f33e2462e47e",
+      "bytes": 526,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native09/guardian.jsonl",
+      "mode": "100644",
+      "blob": "1eec6e68fede87617f338f5eada8e5b5a169e2c9",
+      "sha256": "a06bcdc4af89ce9ed4263153d72f6014d95614d4b08b917bbbccea845ea0377f",
+      "bytes": 2201,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native09/native-report.json",
+      "mode": "100644",
+      "blob": "4c9bd15e4048af289732afd75169b0399013f434",
+      "sha256": "69b001ffa02ad81dff0295d08a7232b209f1b37071fdd903316d26bcbc208996",
+      "bytes": 4041,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native09/release.json",
+      "mode": "100644",
+      "blob": "8f7d572581e177bb6b92402e1d79b411f1d1e82f",
+      "sha256": "a4c4559d0328851d5120a8799dc3e8f4eed1ce0938fe7840fb39b16cd46eab66",
+      "bytes": 890,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native10-controller-census.json",
+      "mode": "100644",
+      "blob": "32cc8ec09f0c04371bbec88719501a91b9e4ecd1",
+      "sha256": "322a700b189a2d3cb3dbca5ec8ed8182817a5ecf61adc37569f66f70c4e19ceb",
+      "bytes": 472,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native10-controller.jsonl",
+      "mode": "100644",
+      "blob": "b4d9e257e81c476ec4ca635f25a83bfd4771fffb",
+      "sha256": "d2befa45e83a204b8e9a10120ee280a83e1b2a7ecb2b6df97c6ddd24b4ed61ee",
+      "bytes": 2162,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native10-status-images.json",
+      "mode": "100644",
+      "blob": "de627fc5c2e6062ea80befe22a125fbf385a7612",
+      "sha256": "7318623d14bc8d30424cf70c316518b0818135568b883c4bf3312226551c492a",
+      "bytes": 2724,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native10/360-800-friend-selected.png",
+      "mode": "100644",
+      "blob": "0a98ae1b878236aa0723cb6705ca0c7ea8f8c036",
+      "sha256": "213a1ae9f86a7a49f20e97bcd970a6b21d2f2d892496463a81f6127c8cebf366",
+      "bytes": 174127,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native10/360-800-friends.png",
+      "mode": "100644",
+      "blob": "a12b49b0b590f32031201255fd0662fa8f118ba2",
+      "sha256": "b772b3a0d94189d405b5d78712adc175db717950b433880e14e321da407452ba",
+      "bytes": 183132,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native10/360-800-map-overview.png",
+      "mode": "100644",
+      "blob": "a15df294a59b5fd12af8ebc51f52d7de0aae9b56",
+      "sha256": "f2c65ea6e41b16f4a419bada424aa566234db34823c72ffc5a232d6a3e4aed53",
+      "bytes": 346162,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native10/360-800-notes.png",
+      "mode": "100644",
+      "blob": "e954894b6e2d9993b358af8d3d8a5a82c47ce8b3",
+      "sha256": "142d68c41337b8679eb44635b8568f15638556321ec1e896247382403ad93058",
+      "bytes": 181725,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native10/command-00.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native10/command-01.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native10/command-02.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native10/command-03.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native10/failure.png",
+      "mode": "100644",
+      "blob": "e954894b6e2d9993b358af8d3d8a5a82c47ce8b3",
+      "sha256": "142d68c41337b8679eb44635b8568f15638556321ec1e896247382403ad93058",
+      "bytes": 181725,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native10/guardian-census.json",
+      "mode": "100644",
+      "blob": "fe9f187ac7bb3310a22ce1f86e091b9cd0bb4849",
+      "sha256": "2bfd3d3c31ab9017a8b24d39c174f22cd8a2a5bdee91cffa76e85740b50a1fba",
+      "bytes": 507,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native10/guardian.jsonl",
+      "mode": "100644",
+      "blob": "9fd43b11f94b164aac56c4de5fe3c2e76526d3cd",
+      "sha256": "5d68706e5350d5b5ef20dd73ad6811a5473872b0032043aeddc4fc2a68af030a",
+      "bytes": 3040,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native10/native-report.json",
+      "mode": "100644",
+      "blob": "f3c8ecf9d626a048b8ee0a1a13e7c3c0c4572da4",
+      "sha256": "fb1cccd1e4001233d93955c5f9d58515463514818bee7dcc06db91e280fab50d",
+      "bytes": 9703,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native10/release.json",
+      "mode": "100644",
+      "blob": "1adaf0d0394e26a1fdcf166ac589015967665581",
+      "sha256": "a1b6558af5204bb953f7664bbf8ea7679d44989d1bd8446b8bb7f7f5485ba1f4",
+      "bytes": 890,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native10/type-input-receipt.json",
+      "mode": "100644",
+      "blob": "94cfc9e8ae6c39b53d4a65ce19b7bf5a4f80cd04",
+      "sha256": "63dcaca927c5fc1cefd0947ffe71224c58bcb03f5b63644c46780915661535c4",
+      "bytes": 2905,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native11-controller-census.json",
+      "mode": "100644",
+      "blob": "23fc157e12b13a2874b6e9cd4c45865c7fd81039",
+      "sha256": "f637c9d9bce24ea38d14a849d7fdf20846270a967272a83d2614f85619440246",
+      "bytes": 430,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native11-controller.jsonl",
+      "mode": "100644",
+      "blob": "6946a9a153de34844f6a3f316d625b4e9510d684",
+      "sha256": "ed1c741e9e13ad566eae40798d20f4fa568587f774100b20e67cdf2a51eccea3",
+      "bytes": 1226,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native11/command-00.log",
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native11/guardian-census.json",
+      "mode": "100644",
+      "blob": "6ae72e1dd7971ae9052b41b2ae0854d1a45cb41f",
+      "sha256": "5fb4028cf9ef6c3a001acbbae7d65ac3e07116835188e70207693db581bc85c0",
+      "bytes": 441,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native11/guardian.jsonl",
+      "mode": "100644",
+      "blob": "44b2a2a14b8d6d135aaf7243faa9405274563dda",
+      "sha256": "e792b41906d59ddd2d1d3cc99fdd12ec9814f55053e0dba921d0b5794f1755a9",
+      "bytes": 2392,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native11/native-report.json",
+      "mode": "100644",
+      "blob": "1a3e5eec196430455e23ed40afd763e8dd74e179",
+      "sha256": "057fde993d06f64a474568db51fcb4aef53e7b9c160f56a0e81408517012caf7",
+      "bytes": 2285,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/native11/release.json",
+      "mode": "100644",
+      "blob": "e03e03acacdaa1c2d6b0aad2f02cbde919b36b0c",
+      "sha256": "6edd73a3792882f9ba8cb1adc866ac88e8c463662e5a043b25f8b78f36f1a697",
+      "bytes": 1605,
+      "canonicalPreimage": null
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/prepare.py",
+      "mode": "100644",
+      "blob": "c2cac5943372598afcf6e9ba643990fa350b1890",
+      "sha256": "c7d293a82f39ae8d4a63763f623281947aa394d9478d376057258f96cd736105",
+      "bytes": 4010,
+      "canonicalPreimage": {
+        "mode": "100644",
+        "blob": "c705d9c6e62f9b1b66b82da3eaa07b68831de14a",
+        "sha256": "8d4518a01e6a926d2d3f31193dddcf6e1966d4d9c66ed42ff452b17a44cc1e63",
+        "bytes": 3239
+      }
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/readset.json",
+      "mode": "100644",
+      "blob": "28df881dd1312f764b467380016c53661f445598",
+      "sha256": "12ceeda3a632064a6060885745fe8c89ba82e87598ff0df2b8074cc4c9160d24",
+      "bytes": 1196583,
+      "canonicalPreimage": {
+        "mode": "100644",
+        "blob": "5dc01bfc13fe2414117164d926e3e9fe8f85b606",
+        "sha256": "61d25eb0d4345b2f5fe1cec7aa321154e5a3c8520fdc9f07fa62e2351bf67804",
+        "bytes": 1196582
+      }
+    },
+    {
+      "path": "docs/mcr/evidence/paradise-city-map/typecheck.mjs",
+      "mode": "100644",
+      "blob": "6d4044a5859c94856dbacae8d425c9f1a013b81a",
+      "sha256": "9737859e5331daca3feec513e4106bea5d826cb462c8a0586b53fdac6c761050",
+      "bytes": 3841,
+      "canonicalPreimage": {
+        "mode": "100644",
+        "blob": "d349ce400c8218ebc2851a6596b44d159e443c34",
+        "sha256": "0e825c1f052a887c194fa8d1de9403a02a633ab08cb1bd98bf567c0ad6e55c02",
+        "bytes": 3516
+      }
+    },
+    {
+      "path": "docs/mcr/frontend/paradise-city-map.md",
+      "mode": "100644",
+      "blob": "1dd989a7855c60dc75fd2cdcd60dd2f5c9505cf8",
+      "sha256": "0948851a9b626085c92b0a487b24d65a3bfd1f0eb884e1636996af397548cefd",
+      "bytes": 27840,
+      "canonicalPreimage": {
+        "mode": "100644",
+        "blob": "04e4d0b25e1af632f5f36939438c00c056072e62",
+        "sha256": "923c9bc29aef5cf5778fff132ecb8b60a26d5ec99c2d2287443e4f87c46475df",
+        "bytes": 16355
+      }
+    },
+    {
+      "path": "frontend/e2e/venue-map/native.mjs",
+      "mode": "100644",
+      "blob": "9b979441e470a42d78e9ffdaaca4b5e5581c7a5c",
+      "sha256": "2ed61dd0b033fb20874fcd31e8bb1472c4a58d8116477067a07886be878921ff",
+      "bytes": 21021,
+      "canonicalPreimage": {
+        "mode": "100644",
+        "blob": "3fe90ca1c0780fcb261a36584ab65e5e31613635",
+        "sha256": "afbf561fb7e497183cd809672a6bcd6a325d3bd10f5bd95da40575ea395e40e1",
+        "bytes": 20680
+      }
+    },
+    {
+      "path": "frontend/e2e/venue-map/preview.ts",
+      "mode": "100644",
+      "blob": "f00d964bee5ef760213fb22538832917c3996274",
+      "sha256": "f5cc1440876df02232c8af1e4eefcadbb38145b23f0bbff5dccc7d09ca3bf329",
+      "bytes": 1689,
+      "canonicalPreimage": {
+        "mode": "100644",
+        "blob": "0b07f885ee57173909962979e031bcbad2b89f10",
+        "sha256": "2893b5147e4fb367086da8e2fd47d9b0605331ca50cf44229162f69aef163da7",
+        "bytes": 845
+      }
+    }
+  ],
+  "manifestSelf": {
+    "path": "docs/mcr/evidence/paradise-city-map/native-partial-handoff.json",
+    "mode": "100644",
+    "canonicalPreimage": null
+  },
+  "excludedUnqualifiedProductionDraft": [
+    "frontend/src/features/paradise-city-map/ui/paradise-city-map.css"
+  ],
+  "qualification": [
+    "Existing production baseline ea6027af478981376bbb25f6f80b5bcf347d87ae remains unchanged.",
+    "Native10 affected fixture strict types, changed driver/preview lint and driver syntax passed at their actual source pin. Native10 overall FAILED after four 360x800 feature captures, personally inspected.",
+    "Native06-11 raw failures and all resource high-water values retained; no browser/reference/whole-VENU acceptance."
+  ],
+  "limits": [
+    "The production CSS correction is explicitly excluded and still unqualified. Canonical Notes overlap remains an open defect until verified follow-up.",
+    "No 390 component comparisons, full four-viewport completion, actual204 leaf UI, default Root mounting, real services, physical device or new global task closure.",
+    "No private ancestry, unrelated source, producer prefix, asset, API, Root WorldShell or router writes."
+  ],
+  "rawWhitespaceDiagnostics": {
+    "exitCode": 2,
+    "stdout": "docs/mcr/evidence/paradise-city-map/native06/command-00.log:16: new blank line at EOF.\n",
+    "stderr": ""
+  }
+}

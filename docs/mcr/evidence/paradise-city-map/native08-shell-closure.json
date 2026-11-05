@@ -1,0 +1,23 @@
+{
+  "kind": "HISTORICAL_UNKNOWN_SHELL_CURRENT_ABSENCE_ONLY",
+  "observedAtUTC": "2026-11-05T04:13:07.810968+00:00",
+  "historical": {
+    "pid": 86653,
+    "parentPid": 49590,
+    "birth": "Thu Nov 5 13:10:03 2026",
+    "scriptCandidate": "/private/tmp/mcr-be38-notice-205-prep/augment01-preparation.py",
+    "commandSHA256": "a9c47d7d951686ee3b2fb8f87ca506ba9aaa106e22a438df3be484b9da88c991"
+  },
+  "currentPs": {
+    "argv": ["ps", "-ww", "-p", "86653", "-o", "pid=,ppid=,lstart=,comm=,command="],
+    "exitCode": 1,
+    "stdout": "",
+    "result": "NO_CURRENT_PROCESS_WITH_THIS_PID"
+  },
+  "producerAcknowledgment": "205 recognized its matching exact-time invocation using a retained default login shell, without claiming independent historical PID/birth proof. Future script launches use login:false immediate exec of absolute Python and script, with in-process identity publication before helpers.",
+  "limits": [
+    "This observation does not establish the historical shell exit time.",
+    "Native08 remains failed and closed before commands.",
+    "No exemption for unknown or newly launched processes; every later initial sample must independently verify current membership."
+  ]
+}

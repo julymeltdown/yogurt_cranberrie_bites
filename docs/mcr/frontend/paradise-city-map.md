@@ -167,8 +167,8 @@ combined-current-source runtime evidence. This task remains IN_PROGRESS.
 
 The follow-up Location factory is now authored in
 `model/location-adapter.ts`, with the final independent L/N aggregation in
-`app/venue-entry/capability-adapters.ts`. These new postimages are UNQUALIFIED
-until their own focused tests, full strict types and scoped lint actually run.
+`app/venue-entry/capability-adapters.ts`. These postimages are SOURCE_QUALIFIED by the retained SOURCE14 feature
+cases and SOURCE16 full strict types and scoped lint described below.
 The factory borrows the exact published c40abc74 Location client types through
 a private read-only Git type overlay. It creates no HTTP client, Auth, clock,
 transport, cache, geolocation watch or automatic read. Root supplies the
@@ -241,3 +241,187 @@ since SOURCE14 are only removal of the unused type import. The normalized
 Location factory, aggregation, request controls and explicit Notes reads are
 now SOURCE_QUALIFIED, with actual producer/status/default-mount integration,
 full-App screenshots, reference comparison and live-device acceptance OPEN.
+
+
+The 65-path qualified source follow-up is published at canonical
+`ea6027af478981376bbb25f6f80b5bcf347d87ae`. Independent producer verification
+matched every manifest row and the manifest itself by path, mode, blob,
+SHA-256 and byte count, checked the exact changed path set and sole parent,
+and confirmed that the freshly observed remote master
+`ee2398a95ce95f3aeee5e7c72c5b294d933ebe8f` contains this delivery.
+The publisher receipt SHA-256 is
+`25d3526b52847d074b5dbbb642bf411909cc5a16fb3bdf5db6a6d349194003cd`.
+SOURCE16 allocation t0 and controller ACCEPT are separate observations:
+1793850443.981657 and1793850449.8551948 respectively.
+
+Native06 reached Vite and Chrome, but main module loading failed before
+login because the installed Vite8.1.3 `transformWithEsbuild` requires the
+separately absent optional esbuild dependency. The retained report includes
+this page error, the timed-out Email lookup and a diagnostic failure.png;
+there are no feature captures or reference comparisons. Actual allocation
+t01793850756.5827, controller ACCEPT1793850761.405802, outer FULL
+1793850783.096297, exit1/all0, port5179 closed, temporary directory absent,
+and11,480 retained dependency records unchanged. Both complete initial
+samples passed. Peak13PID/2,522,251,264B RSS, NEW139,177,984B,
+TMP30,298,112B and WHOLE6,712,053,760B remain cumulative accounting inputs.
+The prospective fixture repair uses the already bundled Vite
+`transformWithOxc` with explicit TypeScript language, following the official
+[Vite JavaScript API](https://v8.vite.dev/guide/api-javascript) and
+[migration guide](https://v8.vite.dev/guide/migration). No dependency is
+installed and no production input changes. Repair07 remains UNACCEPTED
+until its own admission and finite checks; Native06 is never reopened.
+
+
+Native07 ran the Oxc repair with exactly browser/compare stages. Both
+independent initial global samples passed. Allocation t01793851167.024405,
+controller ACCEPT1793851170.549394, outer FULL1793851184.824359,
+exit1/all0, port5179 closed, private temporary directory absent, dependencies
+11,480 unchanged. The controller stopped on the concurrent BE10/BE11
+owner's top-level CLEANUP_REQUIRED receipt, which still held positive
+16PID/2GiB/134,131,712B NEW reservations. This consumer does not waive
+that unknown active state. The guardian then stopped orderly. The retained
+browser report is an interrupted IN_PROGRESS checkpoint with errors[],
+zero feature captures and no comparison; this is not a browser PASS.
+Actual own controller was PID1081; PIDs99583/99664 belonged to the other
+owner. Peak14PID/2,533,883,904B RSS, NEW169,033,728B,
+TMP29,855,744B, WHOLE6,741,909,504B, minimum free22,717,186,048B.
+All historical TMP peaks now sum98,983,936B and continue to count after
+deletion. Native08 is not authorized or accepted by this incident record;
+a fresh repair grant and factual peer cleanup are required.
+
+QA04 separately observed our actual pre-preparation shell PID90722 before
+prepare.py registered itself. The shell combined a Git seal and preparation;
+registration inside the later script did not cover that earlier shell.
+That failed peer sample is retained without a waiver. Preparation now runs
+through a login-disabled direct exec of the absolute Python script. The
+script obtains its own birth and actual executable from Darwin libproc and
+publishes the ordinary observation before spawning any helper. A subsequent
+ordinary-only invocation cross-checked both values against ps, generated
+5,767 pins and exited0. This is metadata preparation, not application or
+resource-workflow qualification. The existing PREP64 cumulative limit and
+authorized04:30UTC time-only extension remain unchanged.
+
+For Native08, both controller identities now publish actual Darwin kernel
+birth and executable before spawning children or performing census. Its
+future NEW reservation is bounded to40,681,472B and checked against the
+remaining cumulative200MiB family; the cumulative ceiling is unchanged.
+Actual initial samples independently verified the new identities.
+
+Native08-0405 followed PI07's actual new07 ACCEPT1793851720.9634361.
+Own allocation t01793851795.4241998, controller ACCEPT1793851798.9536672,
+guardian ACCEPT1793851802.34514, outer FULL1793851806.53272,
+exit1/all0, port5179 closed, private temporary directory absent and
+11,480 dependency records unchanged. Both complete initial samples passed,
+then the guardian observed unregistered shell PID86653, PPID49590,
+birthThuNov5 13:10:03 and script candidate
+`/private/tmp/mcr-be38-notice-205-prep/augment01-preparation.py`.
+Its command SHA-256 was
+`a9c47d7d951686ee3b2fb8f87ca506ba9aaa106e22a438df3be484b9da88c991`.
+Path alone does not establish owner attribution. The guard stopped before
+any command: no lint, syntax, browser, capture or comparison ran. There is
+no native report or command log for this attempt. Peak5PID/604,127,232B
+RSS, NEW169,033,728B, TMP0B, WHOLE6,741,909,504B, minimum free
+22,497,099,776B. The original failed attempt stays closed; any further
+repair needs a separate actual grant and admission.
+
+Native09-0415 allocation t01793852035.312572, controller
+ACCEPT1793852039.654474, outer FULL1793852059.884436,
+exit1/all0, port5179 closed, TMP absent and dependencies11,480 unchanged.
+Both complete initial samples passed. Changed Oxc-driver scoped lint
+passed1793852046.7456388 and syntax passed1793852048.0310981.
+The browser command failed1793852057.4560251 after successful login:
+the personally inspected diagnostic screenshot shows the actual app's
+"Event availability could not be confirmed" notice. No World was opened,
+no feature state was captured and no comparison ran. The browser recorded
+errors[] and timed out expecting one active World socket, receiving zero.
+
+The fixture lacked the Root application release injection and protected
+service-policy response. The prospective own-fixture repair borrows the
+canonical TEST_ONLY policy catalog pair, injects it through the actual Root
+release parser, and returns a canonical synthetic NORMAL service decision
+only for the exact fixture event, GET, original bearer and recognized
+two-field version/release query. Other policy inputs return UNAVAILABLE.
+No production policy, registry, Auth or shared source changes. The repaired
+preview and driver need their own scoped lint and browser run; no fresh
+full TypeScript qualification is claimed for this fixture change.
+
+Native09 peak14PID/2,615,820,288B RSS, NEW199,307,264B,
+TMP30,273,536B, WHOLE6,772,183,040B, minimum free22,430,466,048B.
+All historical TMP peaks now sum129,257,472B. The original cumulative
+200MiB family has only10,407,936B remaining before any higher growth,
+less than the known cold-start TMP peak30,273,536B. Therefore no next
+browser run fits that unchanged ceiling. An explicit same-family256MiB
+amendment is requested; the optional controller ceiling parameter defaults
+to200MiB and does not itself authorize an amendment or execution.
+Any new attempt must carry every old high-water value and publish its
+actual cumulative ceiling and future bound. PREP64's authorized time-only
+extension is now04:45UTC, with no additional64MiB allocation.
+
+Native10-0420 used the explicitly amended SAME cumulative256MiB family,
+which is56MiB above200MiB, with all old usage retained. Actual allocation
+t01793852672.248671, controller ACCEPT1793852676.8671758,
+outer FULL1793852710.841749, exit1/all0, TMP absent, port5179 closed,
+dependencies11,480 unchanged. Both complete independent initial samples
+passed. The affected fixture entrypoints and all their transitive imports
+passed strict nonincremental types1793852688.530545; this is not a fresh
+all-source run. Changed native/preview lint passed1793852689.659355 and
+driver syntax passed1793852690.825689.
+
+The browser reached actual main/Auth/World and the consumer. Four360x800
+feature captures (overview, Friends, selected friend, Notes) were produced
+and personally inspected, alongside original reference Photos9/10. The
+checkpoint passed keyboard pan/Home/End, marker focus reveal, mouse pan,
+zoom/fit/reset, roving tabs and authorized MESSAGE with/without location.
+The actual entry had one canvas and one active socket. The later final
+same-incumbent/socket assertions were not reached and are not claimed.
+There were no page errors. The browser failed1793852708.415116 because
+the sharing bar intercepted the unforced +NEWNOTE click. The raw failed
+report and diagnostic image remain unchanged. No390 component captures,
+composer/post/reply/phone/privacy-completion proof or ROI comparisons ran.
+
+The actual layout defect is that .pc-tab-panel's zero flex basis permits
+its contents to overflow beneath its following sharing bar. The prospective
+one-property production CSS fix uses flex:1 0 auto, retaining intrinsic
+content height and allowing the outer map panel to scroll. No TypeScript,
+logic or authority changes. This CSS postimage is UNQUALIFIED until a new
+actual browser attempt verifies the previously blocked interaction.
+
+Native10 peak14PID/2,998,583,296B RSS, NEW231,051,264B,
+TMP31,744,000B, WHOLE6,803,927,040B, minimum free22,300,397,568B.
+All historical TMP peaks now sum161,001,472B; the same256MiB ceiling
+has37,384,192B remaining before higher growth. A browser-only cold start
+is known to consume30,273,536B. Any new attempt remains separately
+unaccepted until granted, with all values carried and no replay of the
+passing fixture types/lint/syntax solely for an overall green result.
+PREP64's authorized time-only extension is05:00UTC with no new64MiB.
+
+Native11-0430 allocation t01793853069.355336, controller
+ACCEPT1793853074.232447, outer FULL1793853086.340213,
+exit1/all0, TMP absent, port5179 closed, dependencies11,480 unchanged.
+Both complete initial samples passed. The browser was interrupted before
+feature capture on unknown ordinary-author PID86641, PPID49590,
+birthThuNov5 13:31:23. The raw IN_PROGRESS/errors[] checkpoint has no
+feature captures and is not a CSS or browser PASS. Peak13PID/
+2,438,086,656B RSS, NEW260,907,008B, TMP29,855,744B,
+WHOLE6,833,782,784B; conservative minimum free across both guards
+22,276,882,432B. All historical TMP peaks now sum190,857,216B.
+The same256MiB family has7,528,448B remaining before higher growth,
+less than the known cold start; no further browser attempt fits it.
+
+Owner20f supplied immutable START/END records matching the unknown tuple.
+START observedAt1793853083.169166 precedes identity collection; END
+endedAt1793853083.23057 precedes its final write. Neither proves the
+actual canonical publication or process-exit time. The executed author
+used two ps helpers before publication; only publication before its runpy
+payload was guaranteed. The owner fixed future bootstrap identity through
+in-process libproc and retained the old evidence, including an intermediate
+zero-padded-day failure. A later PID24938 ordinary publication used the
+correct day format and recorded canonicalReplaceReturnedAt before helpers.
+Receipt-read/process-snapshot races remain possible but are not established
+as Native11's exact historical cause. No historical failure is waived.
+
+Three existing Native10 images were supplied to WorldSL for the next
+regular human update with original capture age, full source pin, actual-App
+versus controlled-input scope and individual share-safe dispositions in
+native10-status-images.json. This was ordinary metadata delivery only,
+with no new browser, lease, capture or review requirement.

@@ -66,7 +66,10 @@ class Round:
         self.lease = os.environ['MCR_VENU_LEASE']; self.out = Path(os.environ['MCR_VENU_OUTPUT']); self.tmp = Path(os.environ['MCR_VENU_TMP'])
         self.accepted = float(os.environ['MCR_VENU_ACCEPT_EPOCH'])
         self.work = self.accepted+int(os.environ['MCR_VENU_WORK_SECONDS']); self.hard = self.accepted+int(os.environ['MCR_VENU_FULL_SECONDS'])
-        self.cap = (128 if self.mode == 'source' else 200)*MIB
+        self.cap = (128 if self.mode == 'source' else int(os.environ.get('MCR_VENU_NATIVE_FAMILY_MIB', '200')))*MIB
+        assert self.cap in ((128*MIB,) if self.mode == 'source' else (200*MIB,256*MIB))
+        self.future = int(os.environ.get('MCR_VENU_FUTURE_NEW_UPPER', self.cap))
+        assert 0 < self.future <= self.cap
         self.pids, self.rss = (8, int(2.5*GIB)) if self.mode == 'source' else (24, int(3.5*GIB))
         self.port = int(os.environ.get('MCR_VENU_PORT', '0'))
         self.log = EVIDENCE/(self.out.name+'-controller.jsonl') if role == 'controller' else self.out/'guardian.jsonl'
@@ -80,7 +83,7 @@ class Round:
     def resource(self):
         return dict(ownerThreadId=membership.OWNER, offerId=self.lease, state='ACCEPTED', acceptedAtEpoch=self.accepted,
                     workDeadlineEpoch=self.work, fullDeadlineEpoch=self.hard, kind='source' if self.mode=='source' else 'browser',
-                    processCap=self.pids, rssCapBytes=self.rss, remainingNewUpperBytes=self.cap,
+                    processCap=self.pids, rssCapBytes=self.rss, remainingNewUpperBytes=self.future,
                     controller=membership.identity(os.getpid(), EVIDENCE/'controller.py', self.out), guardControllers=[],
                     receiptPaths=dict(accept=str(EVIDENCE/(self.out.name+'-controller.jsonl')), full=str(EVIDENCE/(self.out.name+'-controller.jsonl'))))
 
@@ -108,11 +111,14 @@ class Round:
                 if row.get('type')=='FULL' and row.get('role')=='controller': self.spent_tmp+=row.get('peak',{}).get('tmpBytes',0)
         self.carry=max(prior,size(ROOTS,True)+34*MIB)
         self.new_carry=max(prior_new,34*MIB+size(MUTABLE)+self.spent_tmp,105992192 if self.mode=='native' else 40919040)
+        if 'MCR_VENU_FUTURE_NEW_UPPER' in os.environ:
+            assert self.future <= self.cap-self.new_carry, 'future reservation exceeds actual cumulative remainder'
         self.peak['wholeBytes']=self.carry
         assert self.carry+self.cap<=8*GIB, 'complete whole carry plus worst-case NEW'
         floor=int(os.environ['MCR_VENU_START_FLOOR']); other=int(os.environ['MCR_VENU_OTHER_NEW'])
         assert floor>=11*GIB and free()>=floor and free()-other-self.cap>=9*GIB
         self.event(dict(type='ACCEPT',role=self.role,lease=self.lease,at=time.time(),workDeadline=self.work,fullDeadline=self.hard,
+                        cumulativeNewCeilingBytes=self.cap,futureNewUpperBytes=self.future,
                         carryBytes=self.carry,newCarryBytes=self.new_carry,priorSpentTemporaryBytes=self.spent_tmp,dependencyRecords=count,freeBytes=free(),otherNewUpperBytes=other))
         self.check(initial=True)
 

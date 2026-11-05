@@ -1,0 +1,54 @@
+{
+  "kind": "EXISTING_PERSONALLY_INSPECTED_STATUS_IMAGES_NO_NEW_CAPTURE",
+  "round": "MAP-LFACTORY-NATIVE10-0420",
+  "overall": "FAIL",
+  "branch": "codex/mcr-paradise-city-map",
+  "sourceCommit": "3ca16d48e6072b331a2e2570accde5c81f5f45fe",
+  "viewport": {
+    "width": 360,
+    "height": 800,
+    "dpr": 1
+  },
+  "captureWindowUTC": [
+    "2026-11-05T04:24:50.825689+00:00",
+    "2026-11-05T04:25:08.415116+00:00"
+  ],
+  "captureWindowKST": [
+    "2026-11-05T13:24:50.825689+09:00",
+    "2026-11-05T13:25:08.415116+09:00"
+  ],
+  "exactShutterTimeRecorded": false,
+  "scope": "Actual main, canonical Auth/login, WorldShell and real Phaser World; TEST_ONLY route/provider overrides compose Map with deterministic people/notes/capabilities, canonical synthetic service policy and emulated geolocation. Not production default Map mounting or real services. Entry canvas1/active socket1 asserted; final same-incumbent assertions not reached.",
+  "privacy": "SHARE_SAFE_FOR_PROJECT_STATUS: synthetic reference aliases/messages and approved character art only; no credentials, real account data or phone coordinates visible. Fixture notice remains visible.",
+  "limits": [
+    "Original capture age retained; no fresh screenshot claim.",
+    "Native10 overall FAIL: sharing bar overlaps and intercepts +NEWNOTE. Later CSS correction not verified.",
+    "No 390 component comparisons, four-viewport completion, actual204 Meeting leaf, live device or whole-VENU acceptance."
+  ],
+  "images": [
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/native10/360-800-friends.png",
+      "sha256": "b772b3a0d94189d405b5d78712adc175db717950b433880e14e321da407452ba",
+      "personallyInspected": true,
+      "fileWriteTimeKST": "2026-11-05T13:24:57.149226+09:00",
+      "fileWriteTimeIsNotExactShutterTime": true,
+      "state": "friends"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/native10/360-800-friend-selected.png",
+      "sha256": "213a1ae9f86a7a49f20e97bcd970a6b21d2f2d892496463a81f6127c8cebf366",
+      "personallyInspected": true,
+      "fileWriteTimeKST": "2026-11-05T13:24:57.247884+09:00",
+      "fileWriteTimeIsNotExactShutterTime": true,
+      "state": "friend-selected"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/native10/360-800-notes.png",
+      "sha256": "142d68c41337b8679eb44635b8568f15638556321ec1e896247382403ad93058",
+      "personallyInspected": true,
+      "fileWriteTimeKST": "2026-11-05T13:24:57.499218+09:00",
+      "fileWriteTimeIsNotExactShutterTime": true,
+      "state": "notes"
+    }
+  ]
+}

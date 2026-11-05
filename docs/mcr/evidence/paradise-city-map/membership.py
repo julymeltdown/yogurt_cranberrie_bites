@@ -1,5 +1,6 @@
 """Owner-local receipt discovery; no grants, queue, or peer mutations."""
 import datetime
+import ctypes
 import hashlib
 import json
 import os
@@ -7,6 +8,7 @@ from pathlib import Path
 import re
 import shlex
 import subprocess
+import struct
 import time
 
 OWNER = '01a1a5d9-332b-7822-a8f7-40fde6c81bb4'
@@ -67,9 +69,19 @@ def processes():
 
 
 def identity(pid, script, output=None):
-    row = processes()[pid]
-    executable = subprocess.check_output(['ps', '-p', str(pid), '-o', 'comm='], text=True).strip()
-    result = dict(pid=pid, birth=row['birth'], executable=executable, script=str(script), cwd=os.getcwd())
+    assert pid == os.getpid(), 'only the current controller can publish its identity'
+    libproc = ctypes.CDLL('/usr/lib/libproc.dylib', use_errno=True)
+    libproc.proc_pidinfo.argtypes = [ctypes.c_int, ctypes.c_int, ctypes.c_uint64, ctypes.c_void_p, ctypes.c_int]
+    libproc.proc_pidinfo.restype = ctypes.c_int
+    info = ctypes.create_string_buffer(136)
+    assert libproc.proc_pidinfo(pid, 3, 0, info, len(info)) == len(info)
+    started = struct.unpack_from('=Q', info.raw, 120)[0]
+    birth = ' '.join(time.strftime('%a %b %e %H:%M:%S %Y', time.localtime(started)).split())
+    executable = ctypes.create_string_buffer(4096)
+    libproc.proc_pidpath.argtypes = [ctypes.c_int, ctypes.c_void_p, ctypes.c_uint32]
+    libproc.proc_pidpath.restype = ctypes.c_int
+    assert libproc.proc_pidpath(pid, executable, len(executable)) > 0
+    result = dict(pid=pid, birth=birth, executable=executable.value.decode(), script=str(script), cwd=os.getcwd())
     if output is not None:
         result['outputRoot'] = str(output)
     return result

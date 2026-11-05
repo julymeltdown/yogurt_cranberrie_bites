@@ -35,11 +35,12 @@ try:
         assert stages and len(set(stages))==len(stages) and all(stage in all_commands for stage in stages)
         commands=[all_commands[stage] for stage in stages]
     else:
-        native_commands=dict(zip(('metadata','lint','syntax','browser','compare'),[[sys.executable,'-B',str(EVIDENCE/'membership_test.py'),
+        native_commands=dict(zip(('metadata','types','lint','syntax','browser','compare'),[[sys.executable,'-B',str(EVIDENCE/'membership_test.py'),
           'MembershipTests.test_exact_new_full_resamples_a_stale_terminal_claim',
           'MembershipTests.test_incomplete_or_other_booking_full_cannot_release_terminal_claim',
           'MembershipTests.test_terminal_identity_requires_this_guard_prior_proof_and_keeps_full_cap'],
-          [node,'node_modules/oxlint/bin/oxlint','--deny-warnings','e2e/venue-map/native.mjs'],
+          [node,str(EVIDENCE/'typecheck.mjs')],
+          [node,'node_modules/oxlint/bin/oxlint','--deny-warnings','e2e/venue-map/native.mjs','e2e/venue-map/preview.ts'],
           [node,'--check','e2e/venue-map/native.mjs'],[node,'e2e/venue-map/native.mjs'],[sys.executable,'-B',str(EVIDENCE/'compare.py')]]))
         stages=os.environ.get('MCR_VENU_NATIVE_STAGES','lint,syntax,browser,compare').split(',')
         assert stages and len(set(stages))==len(stages) and all(stage in native_commands for stage in stages)

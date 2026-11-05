@@ -1,0 +1,16 @@
+12:52:49 PM [vite] (client) Pre-transform error: Failed to load `transformWithEsbuild`. It is deprecated and it now requires esbuild to be installed separately. If you are a package author, please migrate to `transformWithOxc` instead.
+12:52:49 PM [vite] (client) Pre-transform error: Failed to load `transformWithEsbuild`. It is deprecated and it now requires esbuild to be installed separately. If you are a package author, please migrate to `transformWithOxc` instead.
+12:52:49 PM [vite] Internal server error: Failed to load `transformWithEsbuild`. It is deprecated and it now requires esbuild to be installed separately. If you are a package author, please migrate to `transformWithOxc` instead.
+      at transformWithEsbuild (file:///Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:2976:9)
+      at async LoadPluginContext.load (file:///Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/frontend/e2e/venue-map/native.mjs:68:19)
+      at async EnvironmentPluginContainer.load (file:///Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29703:19)
+      at async loadAndTransform (file:///Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:19682:21)
+      at async viteTransformMiddleware (file:///Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:24160:20)
+12:52:49 PM [vite] Internal server error: Failed to load `transformWithEsbuild`. It is deprecated and it now requires esbuild to be installed separately. If you are a package author, please migrate to `transformWithOxc` instead.
+      at transformWithEsbuild (file:///Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:2976:9)
+      at async LoadPluginContext.load (file:///Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/frontend/e2e/venue-map/native.mjs:68:19)
+      at async EnvironmentPluginContainer.load (file:///Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29703:19)
+      at async loadAndTransform (file:///Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:19682:21)
+      at async viteTransformMiddleware (file:///Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:24160:20)
+12:52:49 PM [vite] (client) [Unhandled error] TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:5179/src/main.tsx
+
