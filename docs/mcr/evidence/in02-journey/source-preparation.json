@@ -1,0 +1,40 @@
+{
+  "task": "IN02",
+  "kind": "source-preparation-cut",
+  "status": "NOT_RUN",
+  "base": "adec636683a37d9799e409f718a9aa15e60f00bd",
+  "files": {
+    "frontend/e2e/real/meetup-pickup.spec.ts": {
+      "sha256": "1f71c5b7ffa4ce9102f766aa3769967427ca1208615f4efce4ab7808bc8eb37d",
+      "bytes": 47989
+    },
+    "frontend/e2e/real/meetup-pickup-helpers.ts": {
+      "sha256": "81f0b60bba5caf5d3bfac7b81230398a13f925635b717c458fc8aa260ac497cb",
+      "bytes": 34054
+    },
+    "frontend/src/features/party-discovery/ui/PartyDiscovery.tsx": {
+      "sha256": "5e97f1b4b9812ed562b8a990f6328d0e2aeb1d8750bfbf58228a2897e0b664d0",
+      "bytes": 18430
+    },
+    "frontend/src/app/world-presentation/WorldTools.tsx": {
+      "sha256": "f0ad3bbe3594c5d024d66dcb0ed26f9ab08bf7747a3dcd6f0d64ee50003dff39",
+      "bytes": 1653
+    },
+    "frontend/src/features/party-management/ui/PartyManagement.tsx": {
+      "sha256": "10d78d07524b75ac8fc90cdd3b9142415fb697d66bc75306b261818fb93557f8",
+      "bytes": 5729
+    },
+    "frontend/src/features/party-discovery/__tests__/in02-navigation/navigation.test.tsx": {
+      "sha256": "2a006f942ee1d91758c37c401f24d22f195e89d019ef33c2723906c2a6833060",
+      "bytes": 4206
+    },
+    "frontend/src/app/world-presentation/__tests__/in02-navigation/navigation.test.tsx": {
+      "sha256": "007094b6e41f08ab13675c2bd909970837094d5133c7f53b544331b25423333d",
+      "bytes": 1332
+    },
+    "frontend/src/features/party-management/__tests__/in02-navigation/navigation.test.tsx": {
+      "sha256": "817ce0135b6e51f5928768479135a0b2bc3a538c6249a9628352c361786d3c9e",
+      "bytes": 2543
+    }
+  }
+}

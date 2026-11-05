@@ -1,0 +1,70 @@
+{
+  "task": "IN02",
+  "publisher": "01a1a5d9-332b-7822-a8f7-412e295fa211",
+  "status": "SOURCE_QUALIFIED_AWAITING_PUBLICATION",
+  "originalTask": "IN_PROGRESS",
+  "realJourney": "NOT_RUN",
+  "base": "adec636683a37d9799e409f718a9aa15e60f00bd",
+  "validatedSource": "fa1e566673d61c071e2f6ce50b50a0f8a7a6d91a",
+  "branch": "codex/mcr-fe-IN02-meetup-pickup",
+  "sourceAncestry": [
+    "dd73fab6d8db7303d44a034d8e39610a58894562",
+    "780acd5038ba555265e35e9d044c685f3f4ded50",
+    "fa1e566673d61c071e2f6ce50b50a0f8a7a6d91a"
+  ],
+  "paths": [
+    "docs/mcr/evidence/in02-journey/assignment.json",
+    "docs/mcr/evidence/in02-journey/delivery-handoff.json",
+    "docs/mcr/evidence/in02-journey/missing-authority-producer.json",
+    "docs/mcr/evidence/in02-journey/source-controller.py",
+    "docs/mcr/evidence/in02-journey/source-guard.py",
+    "docs/mcr/evidence/in02-journey/source-preparation.json",
+    "docs/mcr/evidence/in02-journey/source-validation.json",
+    "docs/mcr/qa/meetup-pickup-in02.md",
+    "frontend/e2e/real/meetup-pickup-helpers.ts",
+    "frontend/e2e/real/meetup-pickup.spec.ts",
+    "frontend/src/app/world-presentation/WorldTools.tsx",
+    "frontend/src/app/world-presentation/__tests__/in02-navigation/navigation.test.tsx",
+    "frontend/src/features/party-discovery/__tests__/fixtures/harness.ts",
+    "frontend/src/features/party-discovery/__tests__/in02-navigation/navigation.test.tsx",
+    "frontend/src/features/party-discovery/ui/PartyDiscovery.tsx",
+    "frontend/src/features/party-management/__tests__/harness.ts",
+    "frontend/src/features/party-management/__tests__/in02-navigation/navigation.test.tsx",
+    "frontend/src/features/party-management/ui/PartyManagement.tsx"
+  ],
+  "applicationHunks": {
+    "frontend/src/features/party-discovery/ui/PartyDiscovery.tsx": "Only current scoped decoded ownership/ACTIVE membership predicates and additive Manage party/Open rendezvous ShellLinks in PartyDetail. Preserve canonical renderOwnerPortrait signature/row and PI05 presentation; never whole-file replace older safe base.",
+    "frontend/src/features/party-management/ui/PartyManagement.tsx": "Only ShellLink import/current qualified same-party,event,meeting-revision beacon link in PartyRally. Preserve PI05 presentation.",
+    "frontend/src/app/world-presentation/WorldTools.tsx": "Only Check-in ShellLink using existing navigation/icon pattern."
+  },
+  "fixtureCustody": "Root153 literal STOP transferred exact two Party harness canonical synthetic admission prerequisite; no product Auth/controller semantics changed. Separate admissionRequests preserves existing feature assertions.",
+  "counterpart": "PI05 already reported composing navigation into its separate candidate; publisher reconciles actual source, treats identical hunk as already present, preserves latest presentation and never uses whole-file older source.",
+  "validation": {
+    "record": "docs/mcr/evidence/in02-journey/source-validation.json",
+    "commandExits": [
+      0,
+      0,
+      0
+    ],
+    "affectedVitestCases": 68,
+    "focusedTypecheck": "PASS",
+    "changedLint": "PASS",
+    "retainedHelperCases": 83,
+    "priorFailedRoundPreserved": true,
+    "resourceRelease": "FULL"
+  },
+  "excluded": [
+    "Borrowed frontend/src/app/ports.ts",
+    "Borrowed frontend/src/world/composition/policy.ts",
+    "Local source-ready/offers/grants and original source-round-01/02 raw custody logs",
+    "Root constructor/MeetingEntryRelease/WorldShell, Auth/controllers/CSS/contracts/manifests/locks/backend/source archive",
+    "No new authority shim or producer implementation"
+  ],
+  "publication": "Apply validated assigned paths/hunks with publisher-owned relevant combined checks and concurrent-history reconciliation; never force-push. Return canonical delivered commit ancestry/remote receipt. No king/SL/parent review or ACK gate.",
+  "remainingOriginalCriteria": [
+    "Actual qualified authority producer and Root-owned mounting",
+    "Actual measured runtime clock/current serving cohort",
+    "Approved real physical-place input under existing Main question",
+    "Original two-client authorization/recovery/inventory/one-time pickup journey and actual outcome evidence"
+  ]
+}

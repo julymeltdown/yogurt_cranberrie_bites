@@ -147,6 +147,9 @@ export function PartyDetail({ controller, partyId, renderOwnerPortrait }: { cont
   const s = useParty(controller)
   useEffect(() => { void controller.loadDetail(partyId) }, [controller, partyId])
   const p = s.detail.data?.party_id === partyId ? s.detail.data : null, reason = controller.applyReason()
+  const activity = s.access && s.activity.phase === 'ready' ? s.activity.data : null
+  const owned = !!p && !!activity?.owned.items.some(item => item.party_id === p.party_id && item.owner.user_id === p.owner.user_id)
+  const member = !!p && !!activity?.memberships.items.some(item => item.party_id === p.party_id && item.state === 'ACTIVE')
   return <div className="party-view"><nav className="party-tabs" aria-label="Party navigation"><Link id="party-all" to="/meet" onClick={() => controller.setView('parties')}>All parties</Link><Link id="party-plan" to="/meet" onClick={() => controller.setView('plan')}>MY PLAN</Link></nav>
     <CommandStatus controller={controller} />{!s.access && <p role="status">Party information is unavailable until your current event access is verified.</p>}<ReadState resource={s.detail} label="party" retry={() => void controller.loadDetail(partyId)} />
     {p && <article><p className="party-meta">{p.ticket_section ?? 'Any ticket section'} · {p.state.toLowerCase()}</p><h2>{p.title}</h2><div aria-label={`Host: ${p.owner.display_name}`}>{renderOwnerPortrait?.(p.owner) ?? <span role="status" aria-label="Host portrait unavailable">Character unavailable</span>}</div><p>Hosted by {p.owner.display_name}</p>
@@ -154,6 +157,8 @@ export function PartyDetail({ controller, partyId, renderOwnerPortrait }: { cont
         <div><dt>Meeting time</dt><dd><time dateTime={p.meeting_starts_at}>{time(p.meeting_starts_at)}</time> to <time dateTime={p.meeting_ends_at}>{time(p.meeting_ends_at)}</time></dd></div></dl>
       <p className="party-prose">{p.description || 'No description supplied.'}</p><h3>Requirements</h3><p className="party-prose">{p.requirements || 'No additional requirements supplied.'}</p>
       <Link id={`party-place-${p.public_place_id}`} to={`/world/places/${p.public_place_id}`}>Review place information</Link><p className="party-hint">A place reference and virtual position do not confirm real arrival. Review the current place guidance before making physical plans.</p>
+      {owned && <Link id={`party-manage-${p.party_id}`} to={`${partyPath(p.party_id)}/manage`}>Manage party</Link>}
+      {(owned || member) && <Link id={`party-rally-${p.party_id}`} to={`${partyPath(p.party_id)}/rally`}>Open rendezvous</Link>}
       <section className="party-apply" aria-label="Apply to party"><h3>Apply to this party</h3><p>The host reviews applications. Applying does not consume an available place.</p>
         <label>Note to the host <span className="party-hint">(optional, up to 500 characters)</span><textarea maxLength={500} value={s.note} onChange={e => controller.setNote(e.target.value)} disabled={!!reason && !['idle', 'succeeded', 'failed'].includes(s.command.phase)} /></label>
         <button type="button" disabled={!!reason} aria-describedby="party-apply-reason" onClick={() => void controller.apply()}>Apply to party</button>

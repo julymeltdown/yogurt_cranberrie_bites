@@ -1,4 +1,5 @@
 import { useEffect, useState, useSyncExternalStore } from 'react'
+import { ShellLink } from '../../../app/navigation'
 import type { PartyManagementController, RallyState } from '../model/controller'
 import {kstTime} from '../../party-authoring/model/time'
 import './management.css'
@@ -24,6 +25,7 @@ export function PartyRally({controller}:{controller:PartyManagementController}){
  const authority=controller.meeting(),enabled=!!authority&&!!s.rally&&['ready','succeeded','failed'].includes(s.phase)
  return <section className="party-management"><h1>Rendezvous</h1><p>Meeting revision {s.party?.meeting_revision??'unavailable'}. Previous reports do not prove arrival at a changed meeting.</p>
   {!authority?<p>Current authorized physical meeting details are unavailable or expired.</p>:<p>{authority.description}</p>}
+  {authority&&s.party&&s.rally?.beacon_id&&s.rally.party_id===s.party.party_id&&s.rally.event_id===s.party.event_id&&s.rally.meeting_revision===s.party.meeting_revision&&<ShellLink id={`rally-beacon-${s.rally.beacon_id}`} to={`/meet/beacons/${s.rally.beacon_id}`}>View current meeting guidance</ShellLink>}
   <button onClick={()=>void controller.loadRally()} disabled={!authority}>Read current rally</button>
   {s.rally&&<ul>{s.rally.entries.map(e=><li key={e.user_id}>{e.user_id}: {e.meeting_revision===s.rally!.meeting_revision?e.state.replaceAll('_',' '):'STALE · previous meeting report'} · self-reported {kstTime(e.self_reported_at)}</li>)}</ul>}
   <label><input type="checkbox" checked={ack} disabled={!enabled} onChange={e=>setAck(e.target.checked)}/>I am explicitly reporting my physical meeting status.</label>

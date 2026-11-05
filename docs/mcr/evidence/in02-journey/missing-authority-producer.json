@@ -1,0 +1,33 @@
+{
+  "task": "IN02",
+  "status": "MISSING_UPSTREAM_PRODUCER",
+  "canonicalReference": "6b6c94d246dcbde75763c2b139d0c7754fd795a0",
+  "responsibleSourceDisposition": "Confirmed directly by clock/authority owner53d and Gift producer267; Root153 routed producer/contract work to backend Root1fc",
+  "mountedGap": {
+    "owner": "community-adoption/owner.ts release omits rally/pickupPlace/pickupMeeting",
+    "meeting": "WorldShell mounts MeetingEntryFeatures with release=null",
+    "available": "CommunityBootstrapBinding.read() returns existing clock/readInterval/publicPlaces/places only; preserve same original Bootstrap/scope/signal/lifetime"
+  },
+  "missingInterfaces": {
+    "meeting": "MeetingAuthorityPort with current same-scope expiry, read/write decisions, maxTTL, eventCutoff, authorized audiences and actual per-place revisions",
+    "rally": "ManagementOptions.authority with current partyId, meetingRevision, same PrivacyScope, expiry and authorized description",
+    "pickupRead": "GiftPickupOptions.placeAuthority: current scoped placeId/placeRevision/mapRevision/expiry bound to the actual reservation/giveaway/private meeting",
+    "pickupWrite": "GiveawayAuthoringOptions.meeting: same-scope/same-giveaway QualifiedPickupMeeting and current expiry, preserving explicit physical acknowledgment"
+  },
+  "privateReadVersusFutureWrite": {
+    "currentPrivateRead": "Gift producer current pickup GET revalidates authorized actor, current reservation/giveaway/meeting, active HELD or READY reservation, event cutoff and DB expiry; locks current event map and reviewed VERIFIED OPEN physical place plus exact internal per-place revision. DTO is a current-read snapshot only.",
+    "futureMeetingWrite": "No existing public per-place revision producer for new/edited QualifiedPickupMeeting is available. Private GET does not grant future-write authority, renewed lease or invented transport TTL. Code POST additionally requires READY and pickup start.",
+    "revisionPrecision": "FE19 PlaceResponse.revision is catalog revision; community projection source.mapRevision is map.map_revision; neither is per-place revision."
+  },
+  "constraints": [
+    "No generated ready shim or new Auth/cache/clock/place/membership authority",
+    "Do not infer authority from MY PLAN, public choices, coordinates, fixtures or successful source checks",
+    "Root retains CommunityFeatures constructor and actual MeetingEntryRelease/WorldShell mounting",
+    "Developer204 has only narrow owner.ts functional wiring/new pickup-authority.ts/new scoped tests if a genuine source becomes available; no implicit root/feature-controller/contract grant",
+    "Main owns one pending physical-place input question; no duplicate or inferred answer"
+  ],
+  "realJourney": "NOT_RUN",
+  "measuredRuntimeClockInput": "NOT_RUN",
+  "jointServingCohort": "NOT_RUN",
+  "rootRoute": "01a1a153-1227-7e72-801f-a2a6b91981e1 -> 01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08"
+}

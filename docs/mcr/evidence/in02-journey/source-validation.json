@@ -1,0 +1,259 @@
+{
+  "task": "IN02",
+  "status": "SOURCE_QUALIFIED",
+  "realJourney": "NOT_RUN",
+  "validatedSource": "fa1e566673d61c071e2f6ce50b50a0f8a7a6d91a",
+  "base": "adec636683a37d9799e409f718a9aa15e60f00bd",
+  "ancestry": [
+    "dd73fab6d8db7303d44a034d8e39610a58894562",
+    "780acd5038ba555265e35e9d044c685f3f4ded50",
+    "fa1e566673d61c071e2f6ce50b50a0f8a7a6d91a"
+  ],
+  "allocation": "IN02-CORRECTED-SOURCE02-20261105T0004Z",
+  "acceptedAt": "2026-11-05T00:07:14.293188+00:00",
+  "actualFullAt": "2026-11-05T00:07:26.839739+00:00",
+  "commandExits": [
+    0,
+    0,
+    0
+  ],
+  "checks": [
+    {
+      "name": "Affected navigation and original Party regressions",
+      "result": "PASS",
+      "files": 6,
+      "cases": 68,
+      "newNavigationCases": 13,
+      "existingRegressionCases": 55
+    },
+    {
+      "name": "Focused strict TypeScript 6 explicit-file check with --ignoreConfig",
+      "result": "PASS",
+      "exit": 0,
+      "limitation": "Not a full application build or full-repository typecheck"
+    },
+    {
+      "name": "Changed fixture/navigation files oxlint --deny-warnings",
+      "result": "PASS",
+      "files": 4,
+      "exit": 0
+    }
+  ],
+  "retainedUnchangedEvidence": {
+    "source": "780acd5038ba555265e35e9d044c685f3f4ded50",
+    "helperSelfTests": {
+      "result": "PASS",
+      "cases": 83,
+      "exit": 0
+    },
+    "originalEightPathLint": {
+      "result": "PASS",
+      "exit": 0
+    },
+    "reason": "Helper and original application hunks unchanged at corrected source; changed tests/fixtures linted in round 2"
+  },
+  "priorFailedRound": {
+    "allocation": "IN02-FOCUSED-CLIENT-SOURCE-20261104T2347Z",
+    "source": "780acd5038ba555265e35e9d044c685f3f4ded50",
+    "commandExits": [
+      0,
+      1,
+      1,
+      0
+    ],
+    "vitest": {
+      "passed": 18,
+      "failed": 50
+    },
+    "typecheck": "TS5112 before checking types; corrected command adds --ignoreConfig",
+    "fixtureFailure": "Party fallback DTO reached real Auth admission decoder; corrected exact synthetic GET admission fixture now precedes feature handler and recording",
+    "status": "FAIL",
+    "historyPreserved": true
+  },
+  "postimages": {
+    "frontend/e2e/real/meetup-pickup.spec.ts": {
+      "bytes": 47989,
+      "sha256": "1f71c5b7ffa4ce9102f766aa3769967427ca1208615f4efce4ab7808bc8eb37d"
+    },
+    "frontend/e2e/real/meetup-pickup-helpers.ts": {
+      "bytes": 34054,
+      "sha256": "81f0b60bba5caf5d3bfac7b81230398a13f925635b717c458fc8aa260ac497cb"
+    },
+    "frontend/src/features/party-discovery/ui/PartyDiscovery.tsx": {
+      "bytes": 18430,
+      "sha256": "5e97f1b4b9812ed562b8a990f6328d0e2aeb1d8750bfbf58228a2897e0b664d0"
+    },
+    "frontend/src/app/world-presentation/WorldTools.tsx": {
+      "bytes": 1653,
+      "sha256": "f0ad3bbe3594c5d024d66dcb0ed26f9ab08bf7747a3dcd6f0d64ee50003dff39"
+    },
+    "frontend/src/features/party-management/ui/PartyManagement.tsx": {
+      "bytes": 5729,
+      "sha256": "10d78d07524b75ac8fc90cdd3b9142415fb697d66bc75306b261818fb93557f8"
+    },
+    "frontend/src/features/party-discovery/__tests__/in02-navigation/navigation.test.tsx": {
+      "bytes": 4362,
+      "sha256": "e39df7464faf884f9646767a8ad6bff8df51d445c1c7e5e55d813f71f0ada67b"
+    },
+    "frontend/src/app/world-presentation/__tests__/in02-navigation/navigation.test.tsx": {
+      "bytes": 1332,
+      "sha256": "007094b6e41f08ab13675c2bd909970837094d5133c7f53b544331b25423333d"
+    },
+    "frontend/src/features/party-management/__tests__/in02-navigation/navigation.test.tsx": {
+      "bytes": 3168,
+      "sha256": "01c5ab23ca0e2f39b8116e8d8e9227d4b0ea35584c3f77285219f969e1a0f101"
+    },
+    "frontend/src/features/party-discovery/__tests__/fixtures/harness.ts": {
+      "bytes": 2321,
+      "sha256": "ac340dd17a33dbe5c2f8c4e0218a833ebb653359ea2eeba0d7ecca9a693ad8c1"
+    },
+    "frontend/src/features/party-management/__tests__/harness.ts": {
+      "bytes": 2913,
+      "sha256": "f9b05fac0ca34af49e955771cd493278ce7d9d8d55ab8eb235f03ae8a601e923"
+    }
+  },
+  "node": {
+    "version": "24.22.2",
+    "sha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a"
+  },
+  "lockSha256": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+  "readSet": {
+    "inputs": 1790,
+    "intakeSha256": "a50e77a6cf3aa23efba9f5ae192e8a4fe3310ca3acd10d6c94b27a57108d3442",
+    "matchedBeforeAndAfter": true,
+    "borrowedRootInputs": "app/ports.ts and world/composition/policy.ts remained READONLY and are excluded from handoff"
+  },
+  "guard": {
+    "supervisorSha256": "40daccb1a033af0d5a520ddb0284e82655e5c0426dd671da169b2348d4788132",
+    "guardianSha256": "0f45bf33c9deae1019f38e96b832eed0d2f83ca1377d9f5f7846ef54a2f1e392",
+    "bothCompleteInitialSamplesBeforeChildren": true,
+    "release": "FULL",
+    "ownedProcessesRemaining": [],
+    "dependencyLinkAbsent": true,
+    "scratchCacheAbsent": true,
+    "peakNewBytes": 15557100,
+    "peakAllProcesses": 7,
+    "peakAggregateRssBytes": 1193771008,
+    "peakWholeBytes": 3504899426,
+    "peakWholeEntries": 39539,
+    "priorExternalUncertainty": {
+      "bytes": 208,
+      "entries": 4,
+      "untouched": true
+    }
+  },
+  "commands": [
+    [
+      "$NODE24",
+      "$RETAINED_FRONTEND_DEPS/vitest/vitest.mjs",
+      "run",
+      "--config",
+      "$IN02_CHECKOUT/.in02-source-round-02/vitest.config.mjs",
+      "--configLoader",
+      "native"
+    ],
+    [
+      "$NODE24",
+      "$RETAINED_FRONTEND_DEPS/typescript/bin/tsc",
+      "--ignoreConfig",
+      "--noEmit",
+      "--strict",
+      "--noUncheckedIndexedAccess",
+      "--exactOptionalPropertyTypes",
+      "--noUnusedLocals",
+      "--noUnusedParameters",
+      "--module",
+      "ESNext",
+      "--moduleResolution",
+      "Bundler",
+      "--target",
+      "ES2022",
+      "--lib",
+      "ES2022,DOM,DOM.Iterable",
+      "--jsx",
+      "react-jsx",
+      "--resolveJsonModule",
+      "--allowImportingTsExtensions",
+      "--skipLibCheck",
+      "--types",
+      "vite/client,node",
+      "e2e/real/meetup-pickup.spec.ts",
+      "e2e/real/meetup-pickup-helpers.ts",
+      "src/features/party-discovery/__tests__/in02-navigation/navigation.test.tsx",
+      "src/app/world-presentation/__tests__/in02-navigation/navigation.test.tsx",
+      "src/features/party-management/__tests__/in02-navigation/navigation.test.tsx"
+    ],
+    [
+      "$NODE24",
+      "$RETAINED_FRONTEND_DEPS/oxlint/bin/oxlint",
+      "--deny-warnings",
+      "src/features/party-discovery/__tests__/fixtures/harness.ts",
+      "src/features/party-management/__tests__/harness.ts",
+      "src/features/party-discovery/__tests__/in02-navigation/navigation.test.tsx",
+      "src/features/party-management/__tests__/in02-navigation/navigation.test.tsx"
+    ]
+  ],
+  "evidenceHashes": {
+    "source-round-01/01.log": {
+      "bytes": 125,
+      "sha256": "b31b2c2503e943951ce2dc859e0e9ae4c68616f15f561a9e6eaddd46cdec3ef9",
+      "custody": "Original local evidence preserved; not rewritten or replaced"
+    },
+    "source-round-01/02.log": {
+      "bytes": 93095,
+      "sha256": "9930b5f4621410369dc35c9b0d41c82f62c58d3608bca14adf7fe4be1dea0480",
+      "custody": "Original local evidence preserved; not rewritten or replaced"
+    },
+    "source-round-01/03.log": {
+      "bytes": 142,
+      "sha256": "5b766b55df5bc15c215149742c8fe88d72a584cb45f5422c7edca1594b6d0cb5",
+      "custody": "Original local evidence preserved; not rewritten or replaced"
+    },
+    "source-round-01/04.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "custody": "Original local evidence preserved; not rewritten or replaced"
+    },
+    "source-round-01/release.json": {
+      "bytes": 780,
+      "sha256": "2b26a6730f2e9a1a6dac5e2d41ccceb0a9c69b0891e12f15ea9f2e713a886db7",
+      "custody": "Original local evidence preserved; not rewritten or replaced"
+    },
+    "source-round-02/01.log": {
+      "bytes": 249,
+      "sha256": "84071b9becb733e931e7f75e937f8ecf06e63f8ba9c62ebea248d48ce69c2517",
+      "custody": "Original local evidence preserved; not rewritten or replaced"
+    },
+    "source-round-02/02.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "custody": "Original local evidence preserved; not rewritten or replaced"
+    },
+    "source-round-02/03.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "custody": "Original local evidence preserved; not rewritten or replaced"
+    },
+    "source-round-02/primary-supervisor.jsonl": {
+      "bytes": 11131,
+      "sha256": "d1d7214e4e84288461c53adbd571b6e52370e8c4e20174669912c0cd5b0d4e4c",
+      "custody": "Original local evidence preserved; not rewritten or replaced"
+    },
+    "source-round-02/guardian.jsonl": {
+      "bytes": 3501,
+      "sha256": "9c993a49dff3fde2a33d0fd9bdb7308c72aca438d4462abf9c44b2606e62e069",
+      "custody": "Original local evidence preserved; not rewritten or replaced"
+    },
+    "source-round-02/release.json": {
+      "bytes": 740,
+      "sha256": "4a5d52956c61f5a1cab9ef7e419c0e656e3f5ac4931ab6d21a0635f966d458ba",
+      "custody": "Original local evidence preserved; not rewritten or replaced"
+    }
+  },
+  "limitations": [
+    "No real two-client HTTP/WebSocket/browser/physical-place/reservation/pickup flow ran",
+    "No qualified serving cohort, production measured clock input, or approved physical-place input available",
+    "Meeting/rally/pickup authority producer absent in canonical frontend; see missing-authority-producer.json",
+    "No pending source execution lease or technical review/ACK stage"
+  ]
+}

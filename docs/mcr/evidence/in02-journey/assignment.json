@@ -1,0 +1,111 @@
+{
+  "task": "IN02",
+  "specification": "MCR_IMPLEMENTATION_PLAN_V2_EN.md:564",
+  "owner": "developer204",
+  "status": "IN_PROGRESS",
+  "realJourney": "NOT_RUN",
+  "objective": "Complete original IN02 real two-client request/approval, reviewed physical beacon/rally, atomic giveaway reservation and confirmed one-time pickup through existing FE21/22/23/24/25/26 callers. Implement necessary caller/orchestration changes, negative/recovery/authorization/inventory checks, developer-owned validation and fixes, documentation and immutable scoped committed handoff to the standing publisher; finish only on actual delivery receipt and truthful original criterion disposition.",
+  "completionCriteria": [
+    "Reconcile existing canonical three-path harness with current actual caller and Party/Gift/Clock/managed-cohort interfaces; reuse the existing harness without a new chat, checkout, target or competing writer",
+    "Implement all missing assigned-path orchestration and meaningful request/approval, beacon/rally, reservation recovery/atomic inventory, authorization/revocation and confirmed one-time pickup assertions; obtain a literal narrow Root transfer for genuine application caller bugs outside this scope",
+    "Use reviewed published physical place/map revision/provenance, explicit audience/revision/expiry and actual physical acknowledgment for affected physical positive steps only; virtual movement never proves arrival; no invented authority or duplicated human input question",
+    "Continue source, clock, portrait, caller and native preparation independently of absent physical-positive input; execute only within fresh named21d bounds; compiled artifacts are not native allocations",
+    "Developer performs relevant source and actual real-service two-client validation, diagnoses and fixes failures, preserves unchanged qualified evidence and labels incomplete actual stages NOT_RUN rather than accepting mocked/offline evidence",
+    "Record source/contract revisions, paths, exact commands/exits, source/runtime limitations, cleanup and delivered ancestry; stage only granted paths and preserve concurrent work",
+    "Deliver an immutable exact-path committed handoff to standing publisher412e (01a1a5d9-332b-7822-a8f7-412e295fa211), consume responsible canonical publication receipt, with no king/SL review/ACK or consumer proof replay"
+  ],
+  "checkout": "/Users/lhs/Desktop/mcr-worktrees/fe-wall-tools-b-204",
+  "branch": "codex/mcr-fe-IN02-meetup-pickup",
+  "safeBase": "adec636683a37d9799e409f718a9aa15e60f00bd",
+  "preservedFE10Branch": "codex/mcr-fe-FE10-consent-admission",
+  "sourceRevision": "7f05f596cb64ae7f415d0822addf4b3e1fe77a44",
+  "sourcePostimages": {
+    "frontend/e2e/real/meetup-pickup.spec.ts": {
+      "sha256": "527ac79ae30df6f64f0ff69fe20e865f2ad820419ace29b7b37aace383c667ad",
+      "bytes": 37673,
+      "matchesCanonical": true
+    },
+    "frontend/e2e/real/meetup-pickup-helpers.ts": {
+      "sha256": "957d72a2f7d8d24261d0cc4ccb3612ba6361e1c6d6097a5c63ec86620b1e4fc2",
+      "bytes": 24509,
+      "matchesCanonical": true
+    },
+    "docs/mcr/qa/meetup-pickup-in02.md": {
+      "sha256": "40284aafb79b1e59a2be1c52252f6dec175bf258d19108a2f4455d6109aeb4df",
+      "bytes": 14950,
+      "matchesCanonical": true
+    }
+  },
+  "writeOwnership": [
+    "frontend/e2e/real/meetup-pickup.spec.ts",
+    "frontend/e2e/real/meetup-pickup-helpers.ts",
+    "docs/mcr/qa/meetup-pickup-in02.md",
+    "docs/mcr/evidence/in02-journey/** (new only)",
+    "frontend/src/features/party-discovery/ui/PartyDiscovery.tsx (PartyDetail Manage/rendezvous links only)",
+    "frontend/src/app/world-presentation/WorldTools.tsx (Check-in ShellLink only)",
+    "frontend/src/features/party-management/ui/PartyManagement.tsx (PartyRally current beacon ShellLink/import only)",
+    "frontend/src/features/party-discovery/__tests__/in02-navigation/** (new only)",
+    "frontend/src/app/world-presentation/__tests__/in02-navigation/** (new only)",
+    "frontend/src/features/party-management/__tests__/in02-navigation/** (new only)",
+    "frontend/src/features/party-discovery/__tests__/fixtures/harness.ts (exact synthetic admission prerequisite only)",
+    "frontend/src/features/party-management/__tests__/harness.ts (exact synthetic admission prerequisite only)"
+  ],
+  "excluded": [
+    "Root borrowed frontend/src/app/ports.ts and frontend/src/world/composition/policy.ts",
+    "All other frontend/backend paths, root composition, Bootstrap/Auth, contracts/registries/manifests/lockfiles/CSS/feature controllers, source archive and peer checkouts"
+  ],
+  "existingPersistentGoal": {
+    "task": "FE10",
+    "status": "BLOCKED",
+    "unfinished": true,
+    "modified": false,
+    "newPersistentGoalCreated": false,
+    "reason": "An unfinished substantive FE10 goal exists; preserve it truthfully. This explicit new authorized IN02 objective is durable here and is not barred by incompatible metadata."
+  },
+  "resourceState": "No active validation lease, process, temporary dependency link or scratch; no execution authorized by assignment alone",
+  "publisher": "01a1a5d9-332b-7822-a8f7-412e295fa211",
+  "lead": "01a1a1fe-c5f1-7e60-87c2-43785b07f941",
+  "firstImplementationAction": "Trace existing three-path source prerequisite/clock/UI orchestration against current actual composition and producer interfaces, then repair assigned-path gaps without introducing a replacement harness or generic live prerequisite for source preparation.",
+  "policy": "English only; preserve selected model/reasoning, no token budget, no king/SL review stage.",
+  "rootTransfers": {
+    "owner": "01a1a153-1227-7e72-801f-a2a6b91981e1",
+    "stopped": "Exact navigation hunks released to developer204; no controller/CSS/Auth/root-composition rights",
+    "canonicalReference": "37add6d996eacb7674c1c220150870d7090d5e09",
+    "portraitReconciliation": "Canonical PartyDetail includes later renderOwnerPortrait signature/row. Preserve it when publishing these additive navigation hunks.",
+    "fixturePrerequisite": "Root153 literal STOP transferred only two existing Party fixture harnesses; canonical synthetic admission GET response through real Auth path, feature recording/authorization unchanged",
+    "futureAuthorityComposition": "Narrow owner.ts imports/borrowed-source wiring/releasefields/cleanup plus new pickup-authority.ts and new __tests__/pickup-authority/** granted after current Source FULL; no safe producer exists, no inert shim authored; Root retains constructor/mounting"
+  },
+  "applicationPreimages": {
+    "frontend/src/features/party-discovery/ui/PartyDiscovery.tsx": {
+      "sha256": "687d59c29d6155ead1df9152391af9f5422e6441b60b51b15df7084b0582f148",
+      "bytes": 17844
+    },
+    "frontend/src/app/world-presentation/WorldTools.tsx": {
+      "sha256": "1b4206cb413700246803c38b71cb16ebf3875008af65767774d7b89e36bf69a1",
+      "bytes": 1534
+    },
+    "frontend/src/features/party-management/ui/PartyManagement.tsx": {
+      "sha256": "9a7b47e97ae64cb29e7383b5707b02c4f24fca001bf3d73099272325a58a7b58",
+      "bytes": 5370
+    }
+  },
+  "sourceValidation": {
+    "status": "SOURCE_QUALIFIED",
+    "source": "fa1e566673d61c071e2f6ce50b50a0f8a7a6d91a",
+    "record": "source-validation.json",
+    "commandExits": [
+      0,
+      0,
+      0
+    ],
+    "realJourney": "NOT_RUN"
+  },
+  "currentReadiness": {
+    "jointServingCohort": "NOT_RUN",
+    "physicalPositiveInput": "Main owns the one pending event/venue/provenance/spots/audience/validity question",
+    "partyProducer": "0c1219093ce7e38ff4bd3dd7491f261ac7ba4a55; old2130 build unqualified, no fresh public cohort",
+    "giftProducer": "01ff9a1a91114101c4edc580d7d9c0f87f09e6fa; no fresh public cohort",
+    "productClock": "Published source 3fa294d79fd6f2822bf1f6dc6703bc4fe792e402; real MEASURED input absent, NOT_RUN",
+    "upstreamAuthority": "MISSING_UPSTREAM_PRODUCER, see missing-authority-producer.json; Root153 routed to backend Root1fc"
+  }
+}

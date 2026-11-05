@@ -1,3 +1,60 @@
+# IN02 current continuation (2026-11-05)
+
+Original task IN02 (specification row 564) is **IN_PROGRESS**. Actual two-client service/browser acceptance is **NOT_RUN**. Developer204 owns implementation, relevant validation, fixes, documentation and a scoped committed handoff to the standing publishing developer412e. No king/SL review, acknowledgment or separate QA stage is required. The original unfinished FE10 goal remains truthfully preserved; it is not completed by this work.
+
+The first focused Source round, `IN02-FOCUSED-CLIENT-SOURCE-20261104T2347Z`, ran against `780acd5038ba555265e35e9d044c685f3f4ded50`. Its command exits were `[0, 1, 1, 0]`: 83 helper checks passed; six affected Vitest files had 18 passing and 50 failing cases; TypeScript stopped at TS5112 before checking types; lint passed for the eight original source/test paths. The feature fixtures returned Party DTOs for the new canonical `/api/auth/enrollment/admission` prerequisite, so Auth correctly rejected those responses before protected feature reads. This round is **FAIL**, not acceptance. Its raw logs, original intake and release receipt remain preserved locally in `source-round-01/` under the IN02 evidence directory.
+
+Root153 subsequently stopped and transferred only the two existing Party fixture harnesses for an explicit synthetic canonical admission response. The fix intercepts that exact GET before custom feature handlers, runs the real Auth decoder and admission state transition, and records admission requests separately from existing feature-request assertions. It changes no Auth or feature controller semantics. New navigation cases require admitted/loaded prerequisites and a visible positive link before testing revocation. The corrected explicit-file TypeScript command uses TypeScript 6's `--ignoreConfig`. These corrections were qualified under the separate round-2 allocation below; the old offer remains closed.
+
+Round 1 reached FULL release at `2026-11-04T23:51:43.057456Z`, with no owned process, dependency link or scratch/cache left. Peak new accounting was 13,670,645 bytes, peak owned processes six and peak RSS 893,026,304 bytes. The prior 208-byte/four-entry external uncertainty remains untouched. Helper and unchanged-file lint results are retained. Every actual IN02 service/browser flow remains **NOT_RUN**.
+
+Corrected source `fa1e566673d61c071e2f6ce50b50a0f8a7a6d91a` is **SOURCE_QUALIFIED** under `IN02-CORRECTED-SOURCE02-20261105T0004Z`: all six affected test files and 68 cases passed (13 new navigation cases plus 55 original Party regressions); focused strict explicit-file TypeScript passed; lint with `--deny-warnings` passed for the four changed fixture/test paths. All three exits were zero, without a repair replay. All 1,790 frozen input pins matched before and after execution. This was a focused typecheck, not a full application build. The unchanged 83 helper checks and prior eight-path lint remain retained results.
+
+Round 2 accepted at `2026-11-05T00:07:14.293188Z` and reached FULL release at `2026-11-05T00:07:26.839739Z`, before the original 180-second WORK and 240-second FULL deadlines. Both guards completed initial samples before workload children. Conservative combined peaks were 15,557,100 new bytes, seven owned processes and 1,193,771,008 RSS bytes; the nonshrinking WHOLE floor remained 3,504,899,426 bytes and 39,539 entries. No owned process, borrowed dependency link, scratch/cache, browser, server, database or target remained. Direct release went to allocator21d and queued successor PI08 before documentation. Exact commands, source postimages, binary/control pins, original failed-history hashes and release evidence are recorded in `docs/mcr/evidence/in02-journey/source-validation.json`.
+
+The next real composition dependency is a **missing upstream authority producer**, confirmed by clock owner53d at canonical `6b6c94d246dcbde75763c2b139d0c7754fd795a0` and Gift owner267. The actual community owner exposes its existing clock, reviewed public-place choices and journal; it supplies no rally, pickup-place or pickup-meeting authority. `MeetingEntryFeatures` still mounts with `release={null}`. Declared optional ports and DTO types are not production producers. A genuine same-scope source must supply current authorized audiences/read-write decisions, meeting and per-place revisions, expiry/cutoff and withdrawal semantics. Public choices, MY PLAN and virtual coordinates cannot establish those facts.
+
+Gift pickup GET does revalidate the authorized actor, current active HELD/READY reservation, private meeting, current map and reviewed VERIFIED OPEN physical place, exact internal per-place revision and DB expiry/cutoff. Its DTO supports a bound **current-read snapshot**; it does not grant future-write authority or an invented transport lifetime. New/edited meeting authoring still lacks a public per-place revision producer. FE19's response revision is a catalog revision; the community projection's map revision is the actual map revision; neither is a per-place revision. Code issuance additionally requires READY state and pickup start. The concrete missing interfaces and source-owner disposition are recorded in `missing-authority-producer.json` beside the validation record. Root153 routed producer/contract work to backend Root1fc and retains final constructor and meeting-release mounting. No inert ready shim or broader Root/controller change was authored under the narrow future wiring grant.
+
+Source custody starts at `adec636683a37d9799e409f718a9aa15e60f00bd`, branch `codex/mcr-fe-IN02-meetup-pickup`, in the existing exclusive developer204 checkout. The initial three harness/document files matched canonical `7f05f596cb64ae7f415d0822addf4b3e1fe77a44` byte for byte. Exact preimages, assigned paths and original completion criteria are recorded in `docs/mcr/evidence/in02-journey/assignment.json`.
+
+Root153 explicitly stopped and transferred only these application hunks, together with new focused tests in each feature's `__tests__/in02-navigation/` directory:
+
+- PartyDetail: current decoded MY PLAN ownership opens **Manage party**; ownership or ACTIVE membership opens **Open rendezvous**. Pending, removed or absent membership grants neither member entry nor owner tools.
+- WorldTools: **Check-in** uses the existing `/world/check-in` ShellLink and navigation/icon pattern.
+- PartyRally: **View current meeting guidance** links only the server-decoded beacon for the same current party/event/meeting revision while current physical meeting authority exists.
+
+No controller, Auth, World engine, CSS, contract, manifest, lockfile or backend ownership transfers with these hunks. Root's canonical `37add6d996eacb7674c1c220150870d7090d5e09` PartyDetail has an additional selected-pack portrait signature/row absent from the safe base. Publication must preserve that portrait hunk and apply only the additive navigation changes. Borrowed `frontend/src/app/ports.ts` and `frontend/src/world/composition/policy.ts` remain excluded.
+
+The existing journey now navigates through real same-document controls and verifies the World host stays connected. Its intentional reload explicitly signs in again through the saved destination before checking the original command key; it never assumes a refresh cookie restores an anonymous in-memory session. Current-owner reads use existing read controls or real list/re-entry links. The new-key reservation probe uses the actual latest GiveawayPublic revision and requires `DUPLICATE_ACTIVE_RESERVATION`, rather than accepting a stale-CAS conflict. A recipient's owner-management probe requires generic 404 `RESOURCE_UNAVAILABLE` without private fields. One guaranteed-different code attempt must yield a durable FAILED `PICKUP_CODE_INVALID` invocation with unchanged READY reservation/revision and stock before the original valid code is used. That negative attempt intentionally spends admission/rate budget; a used-up fixture or other denial is a separate truthful outcome. Duplicate claim checks bind the durable pickup receipt, terminal reservation revision and returned collection time; a new BE15 invocation receipt may differ. Revocation uses an actual authenticated captured read after observing cached-guidance withdrawal; an anonymous reload is not authorization evidence.
+
+Expiry observation includes the full request interval and timestamp quantum using a monotonic clock. This is a harness observation only, not a product-clock qualification or physical-arrival grant. Node-only contract/World decoder loaders require `TMPDIR` to name an allocated current-user-owned mode-0700 directory and `MCR_IN02_PRIVATE_CACHE` to be strictly inside it. No default Vite cache may be written through borrowed dependencies.
+
+## Scoped current configuration
+
+The original IN02 top-level input retains its exact version-1 keys shown in the historical section below. Its `worldConfigPath` may now point to an exact version-2 private configuration containing: `version: 2`, `isolated: true`, allowed `origin`, event UUID, 40-hex `releaseRevision`, exactly two distinct real `{email,password,userId}` accounts, and hash-pinned `serviceReceipt: {path,sha256}`. This scoped configuration has **no artReview field**. Service descriptor bytes must exist, be private and match the pin. Account zero owns both disposable resources; account one is the applicant/recipient. Main owns the single pending physical-input question; no synthetic place, generated raster or virtual position replaces reviewed physical authority.
+
+For this version-2 world configuration, the private pinned prerequisite receipt has exactly:
+
+```text
+kind: mcr-in02-prerequisites-v2
+status: READY
+isolated: true
+origin, eventId, releaseRevision: exact current configuration bindings
+expiresAt: future UTC timestamp covering the bounded run
+dependencies: {BE19: READY, BE23: READY, BE24: READY, FE23: READY, FE25: READY, FE26: READY}
+resources: {partyId, giveawayId, placeId, mapRevision, placeRevision, meetingSha256}
+serviceReceipt: {path, sha256}: exact same serving-cohort descriptor pin
+```
+
+READY declares usable isolated inputs for an attempt; it is not task acceptance or a runtime PASS. The actual run still verifies independent real logins, actor/event Bootstrap, real C05 presence/movement, current resource/clock/physical bindings and all original journey assertions. An unrelated completed IN01 art/theme/customization suite is not a prerequisite. Version-1 inputs/receipts retain their historical validation for compatibility; do not manufacture legacy art or IN01 reports. Invalid/missing input is NOT_RUN; a missing expected control or failed assertion after usable input is FAIL.
+
+Focused source validation is complete independently of the unavailable serving cohort and affected physical-positive inputs. No current same-service cohort, actors, disposable resource IDs or accepted native execution window have been delivered to this owner. No browser, database, Vite server or native journey has been launched by this continuation. The task remains **IN_PROGRESS** through publication and the original real-flow criteria; source qualification does not close those criteria or the preserved FE10 goal.
+
+## Historical source qualification (2026-11-04)
+
+The following original delivery records are preserved as historical evidence. Their old root-composition and full-IN01/art prerequisites do not describe the current scoped continuation. Canonical `bd087fde` already composes the community-entry routes. Historical path ownership and validation counts apply to that original source cut only.
+
 # IN02 meetup and pickup harness
 
 ## Delivery and acceptance

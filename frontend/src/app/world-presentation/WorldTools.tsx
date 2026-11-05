@@ -23,6 +23,7 @@ export function WorldTools({ open, onOpenChange }: {
     </button>
     <nav id="world-tools-destinations" aria-label="World tools" hidden={!open}>
       <ShellLink id="world-map" to="/world/map"><ConcertIcon name="map" /><span>Map</span></ShellLink>
+      <ShellLink id="world-check-in" to="/world/check-in"><ConcertIcon name="meet" /><span>Check-in</span></ShellLink>
       <ShellLink id="world-rooms" to="/world/rooms"><ConcertIcon name="world" /><span>Rooms</span></ShellLink>
       <ShellLink id="world-nearby" to="/world/nearby"><ConcertIcon name="meet" /><span>Nearby</span></ShellLink>
       <ShellLink id="world-help" to="/world/help"><ConcertIcon name="help" /><span>Help</span></ShellLink>
