@@ -6,26 +6,19 @@ import { ParadeFooter } from '../../shell-chrome/parade-footer'
 
 afterEach(cleanup)
 
-it('keeps the ornament out of the accessibility tree and the action tab order', () => {
+// Photo 2 supersedes the ornamental crowd footer. Real caller actions remain.
+it('keeps real actions in the tab order without adding the superseded ornament', () => {
   const { container } = render(<section aria-label="Party actions"><button>Create party</button><ParadeFooter /></section>)
   expect(screen.getAllByRole('button')).toHaveLength(1)
   expect(screen.queryByRole('img')).toBeNull()
-  const footer = container.querySelector('.mcr-chrome-parade-footer')!
-  expect(footer).toHaveAttribute('aria-hidden', 'true')
-  expect(footer.querySelector('img')).toHaveAttribute('alt', '')
-  expect(footer.querySelector('img')).toHaveAttribute('draggable', 'false')
-  expect(footer.querySelector('a, button, input, [tabindex], [role]')).toBeNull()
+  expect(container.querySelector('.mcr-chrome-parade-footer')).toBeNull()
+  expect(screen.getByRole('region', { name: 'Party actions' }).children).toHaveLength(1)
   screen.getByRole('button').focus()
   expect(screen.getByRole('button')).toHaveFocus()
 })
 
-it('shares only the fixed local print asset without document-global SVG references or untrusted URLs', () => {
+it('repeated former footer slots add no assets, global SVG references or focus targets', () => {
   const { container } = render(<><ParadeFooter /><ParadeFooter /></>)
-  expect(container.querySelectorAll('img')).toHaveLength(2)
-  for (const image of container.querySelectorAll('img')) {
-    expect(image).toHaveAttribute('src', '/reference-parade-print-v2/parade-print.svg')
-    expect(image).toHaveAttribute('width', '360')
-    expect(image).toHaveAttribute('height', '96')
-  }
-  expect(container.querySelector('use, [id], image, foreignObject, [href], [style], [srcset]')).toBeNull()
+  expect(container).toBeEmptyDOMElement()
+  expect(container.querySelector('img, svg, use, [id], image, foreignObject, [href], [style], [srcset], a, button, input, [tabindex], [role]')).toBeNull()
 })

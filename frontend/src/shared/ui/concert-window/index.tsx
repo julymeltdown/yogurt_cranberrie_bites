@@ -49,7 +49,7 @@ export function ConcertWindow({ title, children, headingLevel = 2, icon = 'star'
   const Heading = headingLevel === 1 ? 'h1' : headingLevel === 3 ? 'h3' : 'h2'
   return <section id={id} className={`concert-kit concert-window${embedded ? ' concert-window--embedded' : ''}`} aria-labelledby={titleId}>
     <header className="concert-window__titlebar concert-window__titlebar--reference">
-      {icon === 'star' ? <img className="mcr-reference-window-stars" src="/reference-window-controls-v2/stars.svg" width={72} height={24} alt="" aria-hidden="true" draggable={false} /> : <ConcertIcon name={icon} />}<Heading id={titleId}>{title}</Heading>
+      {icon !== 'star' && <ConcertIcon name={icon} />}<Heading id={titleId}>{title}</Heading>
       {onClose && <button className="concert-window__close" type="button" aria-label={closeLabel} onClick={onClose}>
         <img className="mcr-reference-window-ink" src="/reference-window-controls-v2/close.svg" width={24} height={24} alt="" aria-hidden="true" draggable={false} />
       </button>}

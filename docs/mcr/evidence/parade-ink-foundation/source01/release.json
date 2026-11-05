@@ -1,0 +1,26 @@
+{
+  "type": "FULL",
+  "lease": "PI01-FOUNDATION-QUALIFICATION-20261104T2348Z",
+  "mode": "source",
+  "at": "2026-11-04T23:49:30.878727+00:00",
+  "exitCode": 1,
+  "failure": "RuntimeError('Command failed; immutable attempt retained, offer closes after cleanup')",
+  "peak": {
+    "processes": 4,
+    "rssBytes": 1990950912,
+    "newBytes": 52740096,
+    "tmpBytes": 17080320,
+    "wholeBytes": 2764328960
+  },
+  "minimumFreeBytes": 15485820928,
+  "finalFreeBytes": 15498670080,
+  "seenPids": [
+    59961,
+    59963,
+    60132
+  ],
+  "livePids": [],
+  "ownedLinkAbsent": true,
+  "privateTmpAbsent": true,
+  "resources": 0
+}

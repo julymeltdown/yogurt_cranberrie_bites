@@ -1,0 +1,31 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend
+
+ ❯ src/app/reference-chrome-v2/chrome.test.tsx (5 tests | 1 failed) 1228ms
+   × keeps real profile content in its scroll owner and hides the entire flow in peek without an ornamental footer 1141ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/app/reference-chrome-v2/chrome.test.tsx > keeps real profile content in its scroll owner and hides the entire flow in peek without an ornamental footer
+Error: expect(element).toHaveTextContent()
+
+Expected element to have text content:
+  Account access is unavailable
+Received:
+  Opening your account…
+ ❯ src/app/reference-chrome-v2/chrome.test.tsx:77:54
+     75|     expect(body.querySelector('.mcr-chrome-parade-footer')).toBeNull()
+     76|     expect(content.parentElement).toBe(flow)
+     77|     expect(content.querySelector('[role="status"]')).toHaveTextContent…
+       |                                                      ^
+     78|     fireEvent.click(screen.getByRole('button', { name: 'Minimize panel…
+     79|     expect(body).not.toBeVisible()
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 6 passed (7)
+   Start at  09:08:40
+   Duration  3.61s (transform 1.56s, setup 0ms, import 1.13s, tests 1.30s, environment 1.01s)
+

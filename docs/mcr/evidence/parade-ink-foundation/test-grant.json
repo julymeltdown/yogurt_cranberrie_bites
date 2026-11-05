@@ -1,0 +1,9 @@
+{
+  "authority": "Root153 literal exclusive TEST-only transfer 2026-11-05T00:00Z",
+  "paths": [
+    "frontend/src/app/__tests__/reference-frame-footer/footer.test.tsx",
+    "frontend/src/app/reference-chrome-v2/chrome.test.tsx"
+  ],
+  "reason": "Approved Photo 2 removes crowd/footer/title stars and uses currentColor SVG panel glyphs. Preserve real actions, focus, destinations, IDs, controller/navigation semantics. Existing content-before-More-actions order is asserted without production reordering.",
+  "qualification": "Changed seven test invocations NOT_RUN; no old source result relabeled"
+}

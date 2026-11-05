@@ -1,0 +1,105 @@
+/* Shared PI01 presentation only. Component props and behavior remain incumbent. */
+:root {
+  --mcr-ink: var(--pi-ink);
+  --mcr-paper: var(--pi-paper);
+  --mcr-cream: var(--pi-disabled);
+  --mcr-red: var(--pi-crimson);
+  --mcr-muted: var(--pi-muted);
+  --mcr-focus: var(--pi-focus);
+  color: var(--pi-ink);
+  background: var(--pi-paper);
+  font-family: var(--pi-font-body);
+  font-size: 16px;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+}
+body { color: var(--pi-ink); background: var(--pi-paper); }
+button, input, select, textarea { font: inherit; }
+button, a, input, select, textarea, summary, [tabindex] { -webkit-tap-highlight-color: transparent; }
+:is(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 3px solid var(--pi-focus);
+  outline-offset: 2px;
+}
+.mcr-button, .mcr-input, .mcr-tab {
+  min-inline-size: var(--pi-hit);
+  min-block-size: var(--pi-hit);
+  border: var(--pi-rule-width) solid var(--pi-rule);
+  border-radius: var(--pi-radius);
+  font: 700 var(--pi-control-size)/var(--pi-control-leading) var(--pi-font-display);
+}
+.mcr-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 14px;
+  color: var(--pi-on-dark);
+  background: var(--pi-crimson);
+  border-color: var(--pi-crimson);
+  box-shadow: none;
+  text-align: center;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+  transition: none;
+}
+.mcr-button--secondary { color: var(--pi-ink); background: var(--pi-paper); border-color: var(--pi-rule); }
+.mcr-button--quiet { color: var(--pi-ink); background: transparent; border-color: transparent; text-decoration: underline; text-underline-offset: 3px; }
+.mcr-button--danger { color: var(--pi-on-dark); background: var(--pi-crimson); border-color: var(--pi-crimson); }
+.mcr-button:active:not(:disabled) { filter: brightness(.88); }
+.mcr-button:disabled, .mcr-tab:disabled { color: var(--pi-muted); background: var(--pi-disabled); border-color: var(--pi-soft-rule); cursor: default; }
+.mcr-button[aria-busy="true"] { cursor: progress; }
+@media (hover: hover) { .mcr-button:not(:disabled):hover { filter: brightness(.92); } }
+.mcr-field { display: grid; min-inline-size: 0; gap: 6px; margin-block: 12px; }
+.mcr-field__label { font: 700 16px/22px var(--pi-font-body); }
+.mcr-field__required, .mcr-field__hint { color: var(--pi-muted); font: 400 var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body); }
+.mcr-input {
+  inline-size: 100%;
+  min-inline-size: 0;
+  padding: 9px 10px;
+  color: var(--pi-ink);
+  background: var(--pi-paper);
+  font: 400 var(--pi-body-size)/var(--pi-body-leading) var(--pi-font-body);
+}
+.mcr-input:disabled { color: var(--pi-muted); background: var(--pi-disabled); }
+.mcr-input[aria-invalid="true"] { border: 2px solid var(--pi-crimson); }
+.mcr-field__error { color: var(--pi-crimson); font: 700 var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body); }
+.mcr-overlay {
+  position: fixed; inset: 0; z-index: calc(100 + var(--mcr-modal-depth, 0));
+  display: flex; align-items: center; justify-content: center;
+  padding: max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+  background: rgb(23 23 23 / 60%);
+}
+.mcr-dialog { inline-size: min(100%, 34rem); min-inline-size: 0; max-block-size: 100%; overflow-y: auto; overscroll-behavior: contain; border: var(--pi-frame-border) solid var(--pi-ink); color: var(--pi-ink); background: var(--pi-paper); overflow-wrap: anywhere; font: 400 var(--pi-body-size)/var(--pi-body-leading) var(--pi-font-body); }
+.mcr-dialog__header { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-block-size: var(--pi-title-height); padding: 0 2px 0 10px; border: 0; color: var(--pi-on-dark); background: var(--pi-ink); }
+.mcr-dialog__header h2 { margin: 0; font: 700 var(--pi-title-size)/var(--pi-title-leading) var(--pi-font-display); }
+.mcr-dialog__header .mcr-button { color: var(--pi-on-dark); background: transparent; border: 0; }
+.mcr-dialog__header :focus-visible { outline-color: var(--pi-on-dark); outline-offset: -3px; }
+.mcr-dialog__body { padding: 12px; }
+.mcr-dialog__description { margin-block-end: 12px; }
+.mcr-overlay--sheet { align-items: flex-end; padding-block-end: 0; }
+.mcr-dialog--sheet { inline-size: min(100%, 42rem); padding-block-end: max(12px, env(safe-area-inset-bottom)); border-block-end: 0; }
+.mcr-tablist { display: flex; gap: var(--pi-tab-gap); padding: 0 0 8px; overflow-x: auto; border: 0; scrollbar-width: thin; }
+.mcr-tablist[aria-orientation="vertical"] { flex-direction: column; }
+.mcr-tab { flex: 1 0 auto; min-block-size: var(--pi-tab-height); padding: 7px 8px; color: var(--pi-ink); background: var(--pi-paper); cursor: pointer; text-decoration: none; }
+.mcr-tab[aria-selected="true"] { color: var(--pi-on-dark); background: var(--pi-ink); border-color: var(--pi-ink); text-decoration: none; }
+.mcr-tabpanel { padding: 0; overflow-wrap: anywhere; }
+.mcr-feedback { padding: 12px; border: 1px solid var(--pi-rule); color: var(--pi-ink); background: var(--pi-paper); overflow-wrap: anywhere; }
+.mcr-feedback--empty { border-style: solid; }
+.mcr-feedback h2 { margin: 0 0 6px; font: 700 18px/22px var(--pi-font-body); }
+.mcr-feedback__body { font: 400 16px/22px var(--pi-font-body); }
+.mcr-feedback__action { margin-block-start: 8px; }
+.mcr-skeleton { padding-block: 4px; }
+.mcr-skeleton__line { block-size: 14px; margin-block: 8px; background: var(--pi-disabled); }
+.mcr-skeleton__line:last-child { inline-size: 70%; }
+.mcr-toasts { inline-size: 100%; color: var(--pi-ink); }
+.mcr-toast-list { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.mcr-toast-list + .mcr-toast-list:not(:empty) { margin-block-start: 8px; }
+.mcr-toast { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px; padding: 8px 10px; border: 1px solid var(--pi-rule); background: var(--pi-paper); overflow-wrap: anywhere; }
+.mcr-toast p { flex: 1 1 12rem; min-inline-size: 0; }
+@media (prefers-reduced-motion: reduce) { .mcr-button, .mcr-tab, .mcr-dialog { transition: none; animation: none; scroll-behavior: auto; } }
+@media (forced-colors: active) {
+  .mcr-overlay { background: Canvas; }
+  .mcr-tab[aria-selected="true"] { outline: 2px solid Highlight; outline-offset: -4px; }
+  :is(a, button, input, select, textarea, summary, [tabindex]):focus-visible { outline-color: Highlight; }
+}

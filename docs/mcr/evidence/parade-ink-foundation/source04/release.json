@@ -1,0 +1,29 @@
+{
+  "type": "FULL",
+  "lease": "PI01-COMPAT-FIXTURE-SOURCE04-20261105T0013Z",
+  "mode": "source",
+  "at": "2026-11-05T00:15:32.471479+00:00",
+  "exitCode": 0,
+  "failure": null,
+  "peak": {
+    "processes": 4,
+    "rssBytes": 1876803584,
+    "newBytes": 55738368,
+    "tmpBytes": 20078592,
+    "wholeBytes": 5395849216
+  },
+  "minimumFreeBytes": 16314093568,
+  "finalFreeBytes": 16330252288,
+  "seenPids": [
+    9556,
+    9558,
+    9624,
+    10816,
+    11200
+  ],
+  "livePids": [],
+  "ownedLinkAbsent": true,
+  "privateTmpAbsent": true,
+  "ownedPortClosed": true,
+  "resources": 0
+}

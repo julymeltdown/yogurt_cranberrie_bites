@@ -7,78 +7,21 @@
 .mcr-reference-panel-flow:has(.party-browse .meet-discovery):not(:has(.shell-more-sections[open])) > .mcr-reference-panel-content { display:flex; flex-direction:column; flex:1 1 0; min-block-size:0; }
 .mcr-reference-panel-flow:has(.party-browse .meet-discovery):not(:has(.shell-more-sections[open])) > .mcr-reference-panel-content > .shell-more-sections { flex:0 0 auto; }
 .mcr-reference-panel-flow:has(.party-browse .meet-discovery):not(:has(.shell-more-sections[open])) > .mcr-reference-panel-content > .party-browse { flex:1 1 0; block-size:auto; min-block-size:0; }
-.mcr-reference-window-ink { display:block; inline-size:24px; block-size:24px; object-fit:contain; pointer-events:none; user-select:none; }
-.mcr-reference-window-ink--stars { inline-size:72px; }
+/* Shared Photo 2 ink controls remain decorative inside real 44px buttons. */
+.mcr-reference-window-ink { display:block; inline-size:var(--pi-icon); block-size:var(--pi-icon); object-fit:contain; pointer-events:none; user-select:none; }
+.mcr-reference-window-ink--stars { inline-size:var(--pi-icon); }
 .mcr-reference-window-ink--collapse { transform:rotate(-90deg); }
 .mcr-reference-window-ink--restore { transform:rotate(90deg); }
-:root .public-entry--poster .public-header.mcr-reference-public-titlebar { min-block-size:48px; block-size:auto; padding:0 4px; background:var(--mcr-frame-title-bg,#251017); color:var(--mcr-frame-title-ink,#f2eadf); }
-.mcr-reference-public-titlebar > .public-brand, .mcr-reference-public-titlebar > .public-text-link { display:flex; align-items:center; justify-content:center; min-inline-size:44px; min-block-size:44px; }
-.mcr-reference-public-titlebar > .public-text-link .mcr-reference-window-ink { inline-size:24px; block-size:24px; padding:2px; border:1px solid #f2eadf; background:#a2232b; transform:rotate(180deg); }
-.public-entry--poster .mcr-reference-public-titlebar > a:focus-visible { outline:2px solid #f2eadf; outline-offset:-3px; }
-.concert-window > .concert-window__titlebar.concert-window__titlebar--reference { gap:6px; min-block-size:48px; padding:0 2px 0 8px; background:var(--mcr-frame-title-bg,#251017); color:var(--mcr-frame-title-ink,#f2eadf); border-bottom:3px double var(--mcr-frame-paper,#e9e1d4); }
-.concert-window__titlebar--reference > .mcr-reference-window-stars { flex:0 0 auto; inline-size:60px; block-size:24px; object-fit:contain; }
-.concert-window__titlebar.concert-window__titlebar--reference > .concert-window__close { display:grid; place-items:center; inline-size:44px; block-size:44px; min-inline-size:44px; min-block-size:44px; padding:0; border:0; border-radius:0; background:transparent; box-shadow:none; }
-.concert-window__titlebar--reference .mcr-reference-window-ink { inline-size:24px; block-size:24px; padding:2px; border:1px solid #f2eadf; background:#a2232b; }
-.concert-window__titlebar--reference > button:focus-visible { outline:2px solid #f2eadf; outline-offset:-3px; }
-
-/* Shared panel chrome follows the reference's ink title strip. The 24px printed
-   controls sit in separate 44px targets; focus and all three actions stay intact. */
-.world-shell:not([data-panel-size='closed']) .mcr-chrome-panel-header {
-  min-block-size:47px;
-  padding:0 2px 0 8px;
-  border:0;
-  border-block-end:3px double #eee7da;
-  background:#1b1918;
-  color:#fff6e7;
-}
-.world-shell:not([data-panel-size='closed']) .mcr-chrome-panel-header > h1 {
-  min-inline-size:0;
-  padding-block:3px;
-  font:800 clamp(20px,5.8vw,23px)/1.15 'Arial Narrow','Helvetica Neue',Arial,sans-serif;
-  font-stretch:condensed;
-  letter-spacing:-.02em;
-}
-.world-shell:not([data-panel-size='closed']) .mcr-chrome-panel-header > button {
-  inline-size:44px;
-  block-size:44px;
-  min-inline-size:44px;
-  min-block-size:44px;
-}
-.world-shell:not([data-panel-size='closed']) .mcr-chrome-panel-header .mcr-reference-window-ink {
-  border-color:#eee7da;
-}
-.world-shell:not([data-panel-size='closed']) .mcr-chrome-panel-header .mcr-chrome-panel-close .mcr-reference-window-ink {
-  background:#a2232b;
-}
-/* Half panels retain the existing identity and navigation, with the same compact
-   paper/ink proportions as the full panel. Closed World remains owner-qualified. */
-.world-shell:not([data-panel-size='closed']) > .mcr-chrome-header {
-  min-block-size:50px;
-  padding:2px;
-  border:1px solid #191817;
-  background:#1b1918;
-}
-.world-shell:not([data-panel-size='closed']) > .mcr-chrome-bottom {
-  gap:0;
-  padding:1px;
-  border:1px solid #191817;
-}
-.world-shell:not([data-panel-size='closed']) > .mcr-chrome-bottom > a {
-  min-block-size:52px;
-  padding:3px 1px;
-  border-radius:1px;
-  font-size:13px;
-}
+:root .public-entry--poster .public-header.mcr-reference-public-titlebar { min-block-size:var(--pi-title-height); block-size:auto; padding:0 4px; background:var(--pi-ink); color:var(--pi-on-dark); }
+.mcr-reference-public-titlebar > .public-brand, .mcr-reference-public-titlebar > .public-text-link { display:flex; align-items:center; justify-content:center; min-inline-size:var(--pi-hit); min-block-size:var(--pi-hit); color:inherit; }
+.mcr-reference-public-titlebar > .public-text-link .mcr-reference-window-ink { padding:2px; border:1px solid var(--pi-on-dark); background:var(--pi-crimson); transform:rotate(180deg); }
+.public-entry--poster .mcr-reference-public-titlebar > a:focus-visible { outline:2px solid var(--pi-on-dark); outline-offset:-3px; }
+.concert-window > .concert-window__titlebar.concert-window__titlebar--reference { gap:6px; min-block-size:var(--pi-title-height); padding:0 2px 0 10px; background:var(--pi-ink); color:var(--pi-on-dark); border:0; }
+.concert-window__titlebar.concert-window__titlebar--reference > .concert-window__close { display:grid; place-items:center; inline-size:var(--pi-hit); block-size:var(--pi-hit); min-inline-size:var(--pi-hit); min-block-size:var(--pi-hit); padding:0; border:0; border-radius:0; background:transparent; box-shadow:none; }
+.concert-window__titlebar--reference .mcr-reference-window-ink { padding:2px; border:1px solid var(--pi-on-dark); background:var(--pi-crimson); }
+.concert-window__titlebar--reference > button:focus-visible { outline:2px solid var(--pi-on-dark); outline-offset:-3px; }
 @media (forced-colors:active) {
-  .world-shell:not([data-panel-size='closed']) .mcr-chrome-panel-header { border-block-end:1px solid CanvasText; }
-  .world-shell:not([data-panel-size='closed']) .mcr-chrome-panel-header > button { border:1px solid ButtonText; }
-}
-@media (forced-colors:active) {
-  .mcr-chrome-panel-header .mcr-reference-window-ink,
-  .concert-window__titlebar--reference .mcr-reference-window-ink,
-  .mcr-reference-public-titlebar .mcr-reference-window-ink,
-  .concert-window__titlebar--reference > .mcr-reference-window-stars { forced-color-adjust:none; background-color:#251017; }
-  .concert-window__titlebar--reference > button { border:1px solid ButtonText; }
-  .concert-window__titlebar--reference > button:focus-visible { outline-color:Highlight; }
+  .mcr-chrome-panel-header button, .concert-window__titlebar--reference > button { border:1px solid ButtonText; }
+  .mcr-chrome-panel-header :focus-visible, .concert-window__titlebar--reference > button:focus-visible,
   .public-entry--poster .mcr-reference-public-titlebar > a:focus-visible { outline-color:Highlight; }
 }

@@ -1,0 +1,32 @@
+{
+  "type": "FULL",
+  "lease": "PI01-FOUNDATION-APP-NATIVE02-20261105T0005Z",
+  "mode": "native",
+  "at": "2026-11-05T00:04:15.247579+00:00",
+  "exitCode": 1,
+  "failure": "RuntimeError('Command failed; immutable attempt retained, offer closes after cleanup')",
+  "peak": {
+    "processes": 10,
+    "rssBytes": 2246967296,
+    "newBytes": 65921024,
+    "tmpBytes": 30265344,
+    "wholeBytes": 5355905024
+  },
+  "minimumFreeBytes": 15413497856,
+  "finalFreeBytes": 15446622208,
+  "seenPids": [
+    41559,
+    41585,
+    41612,
+    41613,
+    41615,
+    41618,
+    41620,
+    41621
+  ],
+  "livePids": [],
+  "ownedLinkAbsent": true,
+  "privateTmpAbsent": true,
+  "ownedPortClosed": true,
+  "resources": 0
+}

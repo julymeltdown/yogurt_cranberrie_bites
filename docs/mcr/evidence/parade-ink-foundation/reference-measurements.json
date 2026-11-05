@@ -1,0 +1,227 @@
+{
+  "version": "pi01-photo2-v1",
+  "status": "SOURCE_MEASUREMENT_NOT_APPLICATION_ACCEPTANCE",
+  "reference": {
+    "path": "docs/mcr/design/parade-ink-2026-11-05/parade-ink.jpg",
+    "sha256": "9e7f17a666e1ecfc738a14b75bb3a166235a05c401f206aa24f26cf7463cbc27",
+    "dimensions": [
+      1280,
+      853
+    ],
+    "canonicalRevision": "f025bdb6fb409f3b7706e475dfabb5f3d21fe168"
+  },
+  "cropConvention": "[left,top,rightExclusive,bottomExclusive], source pixels; Lanczos normalization only, original unchanged",
+  "crops": {
+    "feed-frame": [
+      24,
+      60,
+      419,
+      847
+    ],
+    "world-frame": [
+      436,
+      60,
+      832,
+      847
+    ],
+    "tabs-toolbar": [
+      849,
+      504,
+      1256,
+      636
+    ],
+    "avatar-popover": [
+      849,
+      83,
+      1256,
+      234
+    ],
+    "text-post": [
+      849,
+      680,
+      1256,
+      832
+    ]
+  },
+  "primaryNormalize": {
+    "sourceWidth": 395,
+    "targetCssWidth": 390,
+    "scale": 0.9873417721518988
+  },
+  "sourceAnchors": {
+    "outerFrame": [
+      24,
+      60,
+      419,
+      847
+    ],
+    "header": [
+      29,
+      65,
+      414,
+      112
+    ],
+    "tabRow": [
+      36,
+      120,
+      408,
+      160
+    ],
+    "firstCard": [
+      36,
+      173,
+      408,
+      467
+    ],
+    "footer": [
+      29,
+      790,
+      414,
+      840
+    ]
+  },
+  "derivedCss": {
+    "outerBorder": 2,
+    "innerFrameInset": 2,
+    "innerBorder": 1,
+    "contentInset": 6,
+    "headerHeight": 48,
+    "tabHeight": 44,
+    "tabGap": 4,
+    "iconInk": 24,
+    "minimumTarget": 44,
+    "bodySize": 18,
+    "bodyLine": 22,
+    "headingSize": 26,
+    "headingLine": 32,
+    "controlSize": 18,
+    "controlLine": 22
+  },
+  "paletteSamples": {
+    "headerAndSelectedMedian": [
+      23,
+      23,
+      23
+    ],
+    "panelMedian": [
+      249,
+      249,
+      248
+    ],
+    "cardMedian": [
+      249,
+      248,
+      246
+    ],
+    "primaryMedian": [
+      146,
+      37,
+      50
+    ]
+  },
+  "fontSelection": "Reference JPEG has no font metadata. Bundled Roboto/Oswald selected by measured ink/advance comparison; no claim of an extracted original font. Browser metrics/fixed-region comparison still NOT_RUN.",
+  "fontMetricsPillow": [
+    {
+      "text": "FEED",
+      "size": 26,
+      "weight": 700,
+      "advance": 51.0,
+      "inkBounds": [
+        0,
+        11,
+        51,
+        32
+      ],
+      "ascentDescent": [
+        32,
+        8
+      ]
+    },
+    {
+      "text": "WORLD",
+      "size": 26,
+      "weight": 700,
+      "advance": 75.0,
+      "inkBounds": [
+        0,
+        11,
+        75,
+        32
+      ],
+      "ascentDescent": [
+        32,
+        8
+      ]
+    },
+    {
+      "text": "ALL",
+      "size": 18,
+      "weight": 700,
+      "advance": 26.0,
+      "inkBounds": [
+        0,
+        7,
+        26,
+        22
+      ],
+      "ascentDescent": [
+        22,
+        6
+      ]
+    },
+    {
+      "text": "MEETUP",
+      "size": 18,
+      "weight": 700,
+      "advance": 60.0,
+      "inkBounds": [
+        0,
+        7,
+        60,
+        22
+      ],
+      "ascentDescent": [
+        22,
+        6
+      ]
+    },
+    {
+      "text": "GIVEAWAY",
+      "size": 18,
+      "weight": 700,
+      "advance": 75.0,
+      "inkBounds": [
+        0,
+        7,
+        75,
+        22
+      ],
+      "ascentDescent": [
+        22,
+        6
+      ]
+    },
+    {
+      "text": "NEW POST",
+      "size": 22,
+      "weight": 700,
+      "advance": 90.0,
+      "inkBounds": [
+        0,
+        9,
+        90,
+        27
+      ],
+      "ascentDescent": [
+        27,
+        7
+      ]
+    }
+  ],
+  "declaredAdaptations": [
+    "Reference 24px printed window controls receive distinct nonoverlapping44px native targets; center spacing expands where needed.",
+    "Reference tab ink is about40px tall; native hit area is44px.",
+    "Dynamic viewport height/authorized content may vary; fixed insets/borders/type remain shared.",
+    "No fabricated level, DM/SayHi, guestbook, quantity or receipt state."
+  ]
+}

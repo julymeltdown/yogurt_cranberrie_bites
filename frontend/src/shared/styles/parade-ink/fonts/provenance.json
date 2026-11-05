@@ -1,0 +1,66 @@
+{
+  "fetchedAt": "2026-11-04T23:30:11.175568+00:00",
+  "license": "SIL Open Font License 1.1; exact license files retained",
+  "files": [
+    {
+      "repository": "https://github.com/google/fonts",
+      "revision": "1c627bfa375fc51cf86fabeca4f6e08a95f0aa5c",
+      "sourcePath": "ofl/roboto/Roboto[wdth,wght].ttf",
+      "url": "https://raw.githubusercontent.com/google/fonts/1c627bfa375fc51cf86fabeca4f6e08a95f0aa5c/ofl/roboto/Roboto%5Bwdth%2Cwght%5D.ttf",
+      "destination": "frontend/src/shared/styles/parade-ink/fonts/Roboto.ttf",
+      "bytes": 488584,
+      "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+      "transform": "none"
+    },
+    {
+      "repository": "https://github.com/google/fonts",
+      "revision": "1c627bfa375fc51cf86fabeca4f6e08a95f0aa5c",
+      "sourcePath": "ofl/roboto/OFL.txt",
+      "url": "https://raw.githubusercontent.com/google/fonts/1c627bfa375fc51cf86fabeca4f6e08a95f0aa5c/ofl/roboto/OFL.txt",
+      "destination": "frontend/src/shared/styles/parade-ink/fonts/roboto-OFL.txt",
+      "bytes": 4394,
+      "sha256": "061402327a96aadb0bfb694a960ed289ecd38d383e396243831ab81feb109c41",
+      "transform": "none"
+    },
+    {
+      "repository": "https://github.com/google/fonts",
+      "revision": "1c627bfa375fc51cf86fabeca4f6e08a95f0aa5c",
+      "sourcePath": "ofl/roboto/METADATA.pb",
+      "url": "https://raw.githubusercontent.com/google/fonts/1c627bfa375fc51cf86fabeca4f6e08a95f0aa5c/ofl/roboto/METADATA.pb",
+      "destination": "frontend/src/shared/styles/parade-ink/fonts/roboto-METADATA.pb",
+      "bytes": 1463,
+      "sha256": "6fef19da54fb62d152f0c7b21710e6849950db7ecf852ea29511c593dad462f0",
+      "transform": "none"
+    },
+    {
+      "repository": "https://github.com/google/fonts",
+      "revision": "8b0a1d0f5983c89bc2b93f1b5fb55f9e252744b5",
+      "sourcePath": "ofl/oswald/Oswald[wght].ttf",
+      "url": "https://raw.githubusercontent.com/google/fonts/8b0a1d0f5983c89bc2b93f1b5fb55f9e252744b5/ofl/oswald/Oswald%5Bwght%5D.ttf",
+      "destination": "frontend/src/shared/styles/parade-ink/fonts/Oswald.ttf",
+      "bytes": 172088,
+      "sha256": "5b38c246e255a12f5712d640d56bcced0472466fc68983d2d0410ec0457c2817",
+      "transform": "none"
+    },
+    {
+      "repository": "https://github.com/google/fonts",
+      "revision": "8b0a1d0f5983c89bc2b93f1b5fb55f9e252744b5",
+      "sourcePath": "ofl/oswald/OFL.txt",
+      "url": "https://raw.githubusercontent.com/google/fonts/8b0a1d0f5983c89bc2b93f1b5fb55f9e252744b5/ofl/oswald/OFL.txt",
+      "destination": "frontend/src/shared/styles/parade-ink/fonts/oswald-OFL.txt",
+      "bytes": 4483,
+      "sha256": "0fd731a904b729a4e02eaf5e8ebd06783edd9abe400e8882760160230675b652",
+      "transform": "none"
+    },
+    {
+      "repository": "https://github.com/google/fonts",
+      "revision": "8b0a1d0f5983c89bc2b93f1b5fb55f9e252744b5",
+      "sourcePath": "ofl/oswald/METADATA.pb",
+      "url": "https://raw.githubusercontent.com/google/fonts/8b0a1d0f5983c89bc2b93f1b5fb55f9e252744b5/ofl/oswald/METADATA.pb",
+      "destination": "frontend/src/shared/styles/parade-ink/fonts/oswald-METADATA.pb",
+      "bytes": 4396,
+      "sha256": "3d5119d2e99a15e7c2973937d10a77e7aa1fc6a28fe173b02e059485aa596097",
+      "transform": "none"
+    }
+  ]
+}

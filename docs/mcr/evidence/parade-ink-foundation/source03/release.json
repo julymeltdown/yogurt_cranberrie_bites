@@ -1,0 +1,27 @@
+{
+  "type": "FULL",
+  "lease": "PI01-COMPAT-FIXTURE-SOURCE03-20261105T0010Z",
+  "mode": "source",
+  "at": "2026-11-05T00:08:46.101112+00:00",
+  "exitCode": 1,
+  "failure": "RuntimeError('Command failed; immutable attempt retained, offer closes after cleanup')",
+  "peak": {
+    "processes": 4,
+    "rssBytes": 741621760,
+    "newBytes": 55525376,
+    "tmpBytes": 19865600,
+    "wholeBytes": 5375770624
+  },
+  "minimumFreeBytes": 15423971328,
+  "finalFreeBytes": 15444041728,
+  "seenPids": [
+    71405,
+    71560,
+    72726
+  ],
+  "livePids": [],
+  "ownedLinkAbsent": true,
+  "privateTmpAbsent": true,
+  "ownedPortClosed": true,
+  "resources": 0
+}

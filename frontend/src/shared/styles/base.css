@@ -1,6 +1,10 @@
+@import "./parade-ink/tokens.css";
 @import "./cozy-identity-backgrounds-v1.css";
 @import "./cozy-community-backgrounds-v1.css";
+@import "./parade-ink/primitives.css";
 
+/* Retained landing/layout/accessibility rules; shared PI01 paint takes precedence. */
+@layer mcr-foundation-legacy {
 :root {
   --mcr-ink: #201d1d;
   --mcr-paper: #e9e1d4;
@@ -470,4 +474,5 @@ h2 {
     outline: 2px solid Highlight;
     outline-offset: -4px;
   }
+}
 }

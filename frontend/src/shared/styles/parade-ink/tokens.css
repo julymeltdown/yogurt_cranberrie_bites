@@ -1,0 +1,50 @@
+/* PI01 Photo 2 contract v1. UI appearance is independent of the World era. */
+@font-face {
+  font-family: "Parade Ink Text";
+  src: url("./fonts/Roboto.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 75% 100%;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Parade Ink Display";
+  src: url("./fonts/Oswald.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 200 700;
+  font-display: swap;
+}
+:root {
+  --pi-contract: "pi01-photo2-v1";
+  --pi-ink: #171717;
+  --pi-paper: #f9f9f8;
+  --pi-surface: #f9f8f6;
+  --pi-muted: #545454;
+  --pi-rule: #3c3c3b;
+  --pi-soft-rule: #777774;
+  --pi-crimson: #922532;
+  --pi-on-dark: #ffffff;
+  --pi-disabled: #e3e3e0;
+  --pi-focus: #922532;
+  --pi-font-body: "Parade Ink Text", Arial, sans-serif;
+  --pi-font-display: "Parade Ink Display", "Arial Narrow", Arial, sans-serif;
+  --pi-body-size: 18px;
+  --pi-body-leading: 22px;
+  --pi-title-size: 26px;
+  --pi-title-leading: 32px;
+  --pi-control-size: 18px;
+  --pi-control-leading: 22px;
+  --pi-meta-size: 14px;
+  --pi-meta-leading: 18px;
+  --pi-frame-border: 2px;
+  --pi-frame-keyline: 2px;
+  --pi-rule-width: 1px;
+  --pi-content-inset: 6px;
+  --pi-title-height: 48px;
+  --pi-hit: 44px;
+  --pi-icon: 24px;
+  --pi-tab-height: 44px;
+  --pi-tab-gap: 4px;
+  --pi-radius: 2px;
+  --pi-row-gap: 8px;
+}

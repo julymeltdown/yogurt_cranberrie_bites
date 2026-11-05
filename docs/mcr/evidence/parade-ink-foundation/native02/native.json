@@ -1,0 +1,41 @@
+{
+  "result": "FAIL",
+  "foundation": "4405712efd218cb157547cfef057286a7be8bd1f",
+  "borrowed": [
+    {
+      "path": "frontend/src/features/event-feed/EventFeed.tsx",
+      "commit": "293bec35693c688900e38e6e019343cdc6f01e44",
+      "sha256": "3da54997fa7c683abb3753defb2723ce9cb6b2918d261395f2537709f655ec4e"
+    },
+    {
+      "path": "frontend/src/features/event-feed/feed.css",
+      "commit": "293bec35693c688900e38e6e019343cdc6f01e44",
+      "sha256": "dcc2c340893353b1ed44f23e8564ad6806055804ebdf4f575a1deb9d0bdb70ae"
+    },
+    {
+      "path": "frontend/src/features/event-feed/parade-ink/AuthorHeading.tsx",
+      "commit": "293bec35693c688900e38e6e019343cdc6f01e44",
+      "sha256": "22987af21193a9d51ef3bbc513e5513e7a39dc5609b6ba41bf78f60a4cb3258d"
+    },
+    {
+      "path": "frontend/src/features/feed-thread/FeedThread.tsx",
+      "commit": "293bec35693c688900e38e6e019343cdc6f01e44",
+      "sha256": "4619fa807ce8da559452801c7998878673e5048782e5069bf8fb03348ff38898"
+    }
+  ],
+  "qualification": "Actual incumbent App router/WorldShell/production Auth and Phaser composition, deterministic HTTP/C05/geometric test terrain; exact read-only qualified Feed/Thread overlay. No live backend, approved World-art comparison, physical device or multiuser/load acceptance. Supplemental states are separately labeled.",
+  "screenshots": [
+    {
+      "file": "failure.png",
+      "sha256": "ec6057f678dec4ccfd5c63155fd4dc8e7ad22b5e4a526aba04d989a10bdace5f",
+      "bytes": 24725,
+      "capturedAt": "2026-11-05T00:04:13.059Z"
+    }
+  ],
+  "cases": [],
+  "errors": [],
+  "failure": {
+    "stage": "360/feed",
+    "error": "Error: expect(received).toBe(expected) // Object.is equality\n\nExpected: true\nReceived: false\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate"
+  }
+}

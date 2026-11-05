@@ -1,0 +1,89 @@
+{
+  "task": "PI01",
+  "base": "f025bdb6fb409f3b7706e475dfabb5f3d21fe168",
+  "grant": "LiteralRoot153 fifteen existing presentation paths; formerwriterSTOP received; shared/ui barrel and functional paths excluded",
+  "goal": "Original unfinished FE19 BLOCKED metadata preserved; separately authorized whole PI01 objective recorded in own foundation document",
+  "prep": {
+    "capBytes": 67108864,
+    "expiresAt": "2026-11-05T01:00:00Z",
+    "priorWholeHighWater": 1707606622,
+    "initialMaterializedLogical": 846959065,
+    "initialAllocated": 868405248,
+    "projectedPositiveCheckout": 11784587,
+    "gitReserve": 35651584,
+    "authoringReserve": 8388608,
+    "totalProjectedPositive": 55824779,
+    "afterCheckoutLogical": 857836371,
+    "afterCheckoutAllocated": 880087040,
+    "newRuntimeLease": false
+  },
+  "preimages": [
+    {
+      "path": "frontend/src/shared/styles/base.css",
+      "sha256": "f5e73b3b5aacd352781b6d8313b25c2346f74f631d960e7ba392181a9485c105"
+    },
+    {
+      "path": "frontend/src/shared/styles/themes/themes.css",
+      "sha256": "e4abaaa489deeaeaa9075e690f566ecd951a9f347076debaebbd6cae5e956f1a"
+    },
+    {
+      "path": "frontend/src/shared/ui/concert-window/index.tsx",
+      "sha256": "17aa9096ebe34f7d9c0ab49c669088672135713960fd3a7915eb8ba13b439154"
+    },
+    {
+      "path": "frontend/src/shared/ui/concert-window/concert-window.css",
+      "sha256": "ae2b0c9e1a1e638218823b7e6715a53b5d6af6020069e2c858bb3450da493d3f"
+    },
+    {
+      "path": "frontend/src/shared/ui/controls.tsx",
+      "sha256": "0aca62d6862fa0a0e2cc28d53cf58f184defdc6f7f63afe0484d8c87931c470d"
+    },
+    {
+      "path": "frontend/src/shared/ui/feedback.tsx",
+      "sha256": "b4c0517287e8f139799d6a836b66edd9961c00a6feb44bac173781a75a7f607f"
+    },
+    {
+      "path": "frontend/src/shared/ui/Dialog.tsx",
+      "sha256": "f2c7a386e77652325206bafb4067f024a867754a112f021e3fa499ba78d3ee18"
+    },
+    {
+      "path": "frontend/src/shared/ui/Tabs.tsx",
+      "sha256": "4ee35f9bb32595681107138943b38b5c8fcaee9532cd052985482d19ae5fe1ee"
+    },
+    {
+      "path": "frontend/src/app/shell.css",
+      "sha256": "108da146fe93ff3e7bec225a737a2ff304fcb3f38f6015c0c8fca1c659f69a72"
+    },
+    {
+      "path": "frontend/src/app/shell-chrome/index.tsx",
+      "sha256": "498fa45b9f14b784bbc410984bc99728bab02e8782f60b15e604c6bcc8283304"
+    },
+    {
+      "path": "frontend/src/app/shell-chrome/identity.tsx",
+      "sha256": "cb52295e98b6146caa8cef00743bdf35f978ec38cd0c9ddb0193b9c4bd441890"
+    },
+    {
+      "path": "frontend/src/app/shell-chrome/parade-footer.tsx",
+      "sha256": "a76ee4fc64d249ad44afba0ccc7cce699c57c6771b311b94c5e80cdcaae91b8a"
+    },
+    {
+      "path": "frontend/src/app/shell-chrome/shell-chrome.css",
+      "sha256": "1fdfaa797e8474a9d17f00e48658d231e4e4791dd9870a7df012946e6c0a3925"
+    },
+    {
+      "path": "frontend/src/app/reference-chrome-v2/WindowInk.tsx",
+      "sha256": "e1a5dfe723f3b32eb1d6aae37acac8ef93fd1c412eea22b9d7c38d2b5aba429b"
+    },
+    {
+      "path": "frontend/src/app/reference-chrome-v2/chrome.css",
+      "sha256": "45276b3a69f080d4537b26522b9aebf947bbe803dfd529bb907fbfc0d22d69be"
+    }
+  ],
+  "narrowTransfer": {
+    "owner": "PI08 40c576",
+    "path": "frontend/src/app/shell-chrome/index.tsx",
+    "scope": "EraControls and BottomNavigation return JSX/presentation + necessary scoped imports; functional logic protected",
+    "sourceUnchangedFromBase": true,
+    "PI01Retains": "ShellHeader,PanelHeader,identity and existing shared CSS"
+  }
+}

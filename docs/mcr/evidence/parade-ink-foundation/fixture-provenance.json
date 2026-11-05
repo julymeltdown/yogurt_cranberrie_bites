@@ -1,0 +1,13 @@
+{
+  "sourceRevision": "f025bdb6fb409f3b7706e475dfabb5f3d21fe168",
+  "sourcePath": "frontend/src/app/__tests__/default-shell/qualified.tsx",
+  "sourceSHA256": "c38c9545ab51d2eea0bb25c77a7977b151a6dc5ea2c08912ea9c50ac7cb1f977",
+  "destination": "frontend/src/app/__tests__/parade-ink-foundation/qualified.tsx",
+  "changes": [
+    "Use existing qualified-data by read-only relative import.",
+    "Respond to exact /api/auth/enrollment/admission with existing contract-valid synthetic admission fixture.",
+    "Await actual auth.checkAdmission() before opening actual default App; never mutate or bypass Auth/admission/controller.",
+    "Reuse existing Window declaration without duplicate global declaration."
+  ],
+  "result": "Native02 remained safely paused because its old fixture omitted current admission endpoint; new fixture qualification NOT_RUN"
+}

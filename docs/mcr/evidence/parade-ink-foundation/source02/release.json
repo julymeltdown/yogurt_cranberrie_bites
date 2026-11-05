@@ -1,0 +1,28 @@
+{
+  "type": "FULL",
+  "lease": "PI01-FOUNDATION-REMAINING-SOURCE02-20261104T2355Z",
+  "mode": "source",
+  "at": "2026-11-04T23:54:28.495128+00:00",
+  "exitCode": 0,
+  "failure": null,
+  "peak": {
+    "processes": 4,
+    "rssBytes": 1956118528,
+    "newBytes": 53944320,
+    "tmpBytes": 18284544,
+    "wholeBytes": 2782613504
+  },
+  "minimumFreeBytes": 15443357696,
+  "finalFreeBytes": 15461867520,
+  "seenPids": [
+    90257,
+    90259,
+    90404,
+    91066,
+    91080
+  ],
+  "livePids": [],
+  "ownedLinkAbsent": true,
+  "privateTmpAbsent": true,
+  "resources": 0
+}

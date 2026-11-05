@@ -1,0 +1,188 @@
+9:16:40 AM [vite] (client) Pre-transform error: Failed to resolve import "../event-feed/parade-ink/AuthorHeading" from "src/features/feed-thread/FeedThread.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/features/feed-thread/FeedThread.tsx:6:30
+  2  |  import { PostContent, ReadStatus } from "../event-feed/EventFeed";
+  3  |  import { messages } from "../event-feed/runtime";
+  4  |  import { AuthorHeading } from "../event-feed/parade-ink/AuthorHeading";
+     |                                 ^
+  5  |  import { FeedGlyph } from "../event-feed/FeedGlyph";
+  6  |  import "../event-feed/feed.css";
+9:16:40 AM [vite] (client) Pre-transform error: Failed to resolve import "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/features/event-feed/parade-ink/AuthorHeading.tsx" from "src/features/event-feed/parade-ink/AuthorHeading.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/features/event-feed/parade-ink/AuthorHeading.tsx:63:46
+  61 |  import * as RefreshRuntime from "/@react-refresh";
+  62 |  const inWebWorker = typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope;
+  63 |  import * as __vite_react_currentExports from "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/fe...
+     |                                                ^
+  64 |  if (import.meta.hot && !inWebWorker) {
+  65 |    if (!window.$RefreshReg$) {
+9:16:40 AM [vite] Internal server error: Failed to resolve import "../event-feed/parade-ink/AuthorHeading" from "src/features/feed-thread/FeedThread.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/features/feed-thread/FeedThread.tsx:6:30
+  2  |  import { PostContent, ReadStatus } from "../event-feed/EventFeed";
+  3  |  import { messages } from "../event-feed/runtime";
+  4  |  import { AuthorHeading } from "../event-feed/parade-ink/AuthorHeading";
+     |                                 ^
+  5  |  import { FeedGlyph } from "../event-feed/FeedGlyph";
+  6  |  import "../event-feed/feed.css";
+      at TransformPluginContext._formatLog (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29960:39)
+      at TransformPluginContext.error (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29957:14)
+      at normalizeUrl (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:26993:18)
+      at async file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:27056:30
+      at async Promise.all (index 3)
+      at async TransformPluginContext.transform (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:27024:4)
+      at async EnvironmentPluginContainer.transform (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29745:14)
+      at async loadAndTransform (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:19729:26)
+9:16:40 AM [vite] (client) Pre-transform error: Failed to resolve import "../event-feed/parade-ink/AuthorHeading" from "src/features/feed-thread/FeedThread.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/features/feed-thread/FeedThread.tsx:6:30
+  2  |  import { PostContent, ReadStatus } from "../event-feed/EventFeed";
+  3  |  import { messages } from "../event-feed/runtime";
+  4  |  import { AuthorHeading } from "../event-feed/parade-ink/AuthorHeading";
+     |                                 ^
+  5  |  import { FeedGlyph } from "../event-feed/FeedGlyph";
+  6  |  import "../event-feed/feed.css";
+9:16:40 AM [vite] Internal server error: Failed to resolve import "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/features/event-feed/parade-ink/AuthorHeading.tsx" from "src/features/event-feed/parade-ink/AuthorHeading.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/features/event-feed/parade-ink/AuthorHeading.tsx:63:46
+  61 |  import * as RefreshRuntime from "/@react-refresh";
+  62 |  const inWebWorker = typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope;
+  63 |  import * as __vite_react_currentExports from "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/fe...
+     |                                                ^
+  64 |  if (import.meta.hot && !inWebWorker) {
+  65 |    if (!window.$RefreshReg$) {
+      at TransformPluginContext._formatLog (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29960:39)
+      at TransformPluginContext.error (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29957:14)
+      at normalizeUrl (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:26993:18)
+      at async file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:27056:30
+      at async Promise.all (index 3)
+      at async TransformPluginContext.transform (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:27024:4)
+      at async EnvironmentPluginContainer.transform (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:29745:14)
+      at async loadAndTransform (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:19729:26)
+      at async viteTransformMiddleware (file:///Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/vite@8.1.3_@types+node@24.13.2_jiti@2.7.0/node_modules/vite/dist/node/chunks/node.js:24160:20)
+9:16:40 AM [vite] (client) Pre-transform error: Failed to resolve import "../event-feed/parade-ink/AuthorHeading" from "src/features/feed-thread/FeedThread.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/features/feed-thread/FeedThread.tsx:6:30
+  2  |  import { PostContent, ReadStatus } from "../event-feed/EventFeed";
+  3  |  import { messages } from "../event-feed/runtime";
+  4  |  import { AuthorHeading } from "../event-feed/parade-ink/AuthorHeading";
+     |                                 ^
+  5  |  import { FeedGlyph } from "../event-feed/FeedGlyph";
+  6  |  import "../event-feed/feed.css";
+9:16:40 AM [vite] (client) Pre-transform error: Failed to resolve import "../event-feed/parade-ink/AuthorHeading" from "src/features/feed-thread/FeedThread.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/features/feed-thread/FeedThread.tsx:6:30
+  2  |  import { PostContent, ReadStatus } from "../event-feed/EventFeed";
+  3  |  import { messages } from "../event-feed/runtime";
+  4  |  import { AuthorHeading } from "../event-feed/parade-ink/AuthorHeading";
+     |                                 ^
+  5  |  import { FeedGlyph } from "../event-feed/FeedGlyph";
+  6  |  import "../event-feed/feed.css";
+9:16:40 AM [vite] (client) Pre-transform error: Failed to resolve import "../event-feed/parade-ink/AuthorHeading" from "src/features/feed-thread/FeedThread.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/features/feed-thread/FeedThread.tsx:6:30
+  2  |  import { PostContent, ReadStatus } from "../event-feed/EventFeed";
+  3  |  import { messages } from "../event-feed/runtime";
+  4  |  import { AuthorHeading } from "../event-feed/parade-ink/AuthorHeading";
+     |                                 ^
+  5  |  import { FeedGlyph } from "../event-feed/FeedGlyph";
+  6  |  import "../event-feed/feed.css";
+9:16:40 AM [vite] (client) Pre-transform error: Failed to resolve import "../event-feed/parade-ink/AuthorHeading" from "src/features/feed-thread/FeedThread.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/features/feed-thread/FeedThread.tsx:6:30
+  2  |  import { PostContent, ReadStatus } from "../event-feed/EventFeed";
+  3  |  import { messages } from "../event-feed/runtime";
+  4  |  import { AuthorHeading } from "../event-feed/parade-ink/AuthorHeading";
+     |                                 ^
+  5  |  import { FeedGlyph } from "../event-feed/FeedGlyph";
+  6  |  import "../event-feed/feed.css";
+9:16:40 AM [vite] (client) Pre-transform error: Failed to resolve import "../event-feed/parade-ink/AuthorHeading" from "src/features/feed-thread/FeedThread.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/features/feed-thread/FeedThread.tsx:6:30
+  2  |  import { PostContent, ReadStatus } from "../event-feed/EventFeed";
+  3  |  import { messages } from "../event-feed/runtime";
+  4  |  import { AuthorHeading } from "../event-feed/parade-ink/AuthorHeading";
+     |                                 ^
+  5  |  import { FeedGlyph } from "../event-feed/FeedGlyph";
+  6  |  import "../event-feed/feed.css";
+9:16:40 AM [vite] (client) Pre-transform error: Failed to resolve import "../event-feed/parade-ink/AuthorHeading" from "src/features/feed-thread/FeedThread.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/features/feed-thread/FeedThread.tsx:6:30
+  2  |  import { PostContent, ReadStatus } from "../event-feed/EventFeed";
+  3  |  import { messages } from "../event-feed/runtime";
+  4  |  import { AuthorHeading } from "../event-feed/parade-ink/AuthorHeading";
+     |                                 ^
+  5  |  import { FeedGlyph } from "../event-feed/FeedGlyph";
+  6  |  import "../event-feed/feed.css";
+9:16:40 AM [vite] (client) Pre-transform error: Failed to resolve import "../event-feed/parade-ink/AuthorHeading" from "src/features/feed-thread/FeedThread.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/features/feed-thread/FeedThread.tsx:6:30
+  2  |  import { PostContent, ReadStatus } from "../event-feed/EventFeed";
+  3  |  import { messages } from "../event-feed/runtime";
+  4  |  import { AuthorHeading } from "../event-feed/parade-ink/AuthorHeading";
+     |                                 ^
+  5  |  import { FeedGlyph } from "../event-feed/FeedGlyph";
+  6  |  import "../event-feed/feed.css";
+9:16:40 AM [vite] (client) Pre-transform error: Failed to resolve import "../event-feed/parade-ink/AuthorHeading" from "src/features/feed-thread/FeedThread.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/features/feed-thread/FeedThread.tsx:6:30
+  2  |  import { PostContent, ReadStatus } from "../event-feed/EventFeed";
+  3  |  import { messages } from "../event-feed/runtime";
+  4  |  import { AuthorHeading } from "../event-feed/parade-ink/AuthorHeading";
+     |                                 ^
+  5  |  import { FeedGlyph } from "../event-feed/FeedGlyph";
+  6  |  import "../event-feed/feed.css";
+9:16:40 AM [vite] (client) Pre-transform error: Failed to resolve import "../event-feed/parade-ink/AuthorHeading" from "src/features/feed-thread/FeedThread.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/features/feed-thread/FeedThread.tsx:6:30
+  2  |  import { PostContent, ReadStatus } from "../event-feed/EventFeed";
+  3  |  import { messages } from "../event-feed/runtime";
+  4  |  import { AuthorHeading } from "../event-feed/parade-ink/AuthorHeading";
+     |                                 ^
+  5  |  import { FeedGlyph } from "../event-feed/FeedGlyph";
+  6  |  import "../event-feed/feed.css";
+9:16:40 AM [vite] (client) Pre-transform error: Failed to resolve import "../event-feed/parade-ink/AuthorHeading" from "src/features/feed-thread/FeedThread.tsx". Does the file exist?
+  Plugin: vite:import-analysis
+  File: /Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/features/feed-thread/FeedThread.tsx:6:30
+  2  |  import { PostContent, ReadStatus } from "../event-feed/EventFeed";
+  3  |  import { messages } from "../event-feed/runtime";
+  4  |  import { AuthorHeading } from "../event-feed/parade-ink/AuthorHeading";
+     |                                 ^
+  5  |  import { FeedGlyph } from "../event-feed/FeedGlyph";
+  6  |  import "../event-feed/feed.css";
+9:16:40 AM [vite] (client) [console.error] TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:5365/src/app/world-panels/social.tsx
+
+The above error occurred in one of your React components.
+
+React will try to recreate this component tree from scratch using the error boundary you provided, RenderErrorBoundary.
+
+9:16:40 AM [vite] (client) [console.error] React Router caught the following error during render TypeError: Failed to fetch dynamically imported module: http://127.0.0.1:5365/src/app/world-panels/social.tsx
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+ExpectError: expect(received).toBe(expected) // Object.is equality
+
+Expected: true
+Received: false
+
+Call Log:
+- Timeout 5000ms exceeded while waiting on the predicate
+    at captureRawStack (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright-core@1.61.1/node_modules/playwright-core/lib/coreBundle.js:3172:17)
+    at callMatcherAsStep (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12877:57)
+    at Object.toBe (/Users/lhs/Desktop/mcr/frontend/node_modules/.pnpm/playwright@1.61.1/node_modules/playwright/lib/matchers/expect.js:12867:23)
+    at /Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/app/__tests__/parade-ink-foundation/native.mjs:34:58 {
+  matcherResult: {
+    pass: false,
+    message: 'expect(received).toBe(expected) // Object.is equality\n' +
+      '\n' +
+      'Expected: true\n' +
+      'Received: false\n' +
+      '\n' +
+      'Call Log:\n' +
+      '- Timeout 5000ms exceeded while waiting on the predicate',
+    name: 'toBe'
+  }
+}
+
+Node.js v24.22.2
