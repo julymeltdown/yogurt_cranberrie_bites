@@ -1,0 +1,44 @@
+{
+  "booking": "PREWORLD-FINALDOC16-0229",
+  "createdAt": 1793845860.15311,
+  "expiresUTC": "2026-11-05T04:00:00Z",
+  "additionalPositiveCap": 16777216,
+  "baseline": {
+    "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2": {
+      "files": 16427,
+      "bytes": 1477724623
+    },
+    "/Users/lhs/Desktop/mcr/.git": {
+      "files": 3063,
+      "bytes": 1216717173
+    }
+  },
+  "oldFIXDOC16DeadlineUnchanged": "2026-11-05T02:30:00Z",
+  "oldFIXDOC16InclusiveObservedUpperPreserved": 7131024,
+  "oldFIXDOC16CurrentInclusive": {
+    "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2": 3104177,
+    "/Users/lhs/Desktop/mcr/.git": 4026847
+  },
+  "oldFinishDOC16UpperPreserved": 19427611,
+  "native05NEWMaxPreserved": 173027763,
+  "native05WHOLEMaxPreserved": 19840421427,
+  "native05TMPMaxPreserved": 30298058,
+  "entireNewBookIncludedInFutureNativeNEW": 16777216,
+  "minimumRetainedAfterEntireNewBook": 189804979,
+  "existingCumulativeNEWCap": 201326592,
+  "projectedNextNativeAtObservedTMP": 220103037,
+  "scope": "Authorized minimal own lease/driver/control and necessary same-fixture fixes, evidence, owner inspection notes, docs, scoped Git and direct412e handoff. No executable checks under ordinary booking.",
+  "free": 23880527872,
+  "extension": {
+    "at": 1793847907.661817,
+    "authority": "21d PREWORLD-NATIVE08-0301 direct offer",
+    "sameRemainingBook": true,
+    "additionalBytes": 0
+  },
+  "lastObservedAt": 1793848640.5594728,
+  "lastPositiveGrowth": {
+    "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2": 6005571,
+    "/Users/lhs/Desktop/mcr/.git": 2815349
+  },
+  "positiveObservedUpper": 8820920
+}

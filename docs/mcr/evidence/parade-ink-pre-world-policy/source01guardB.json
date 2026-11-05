@@ -1,0 +1,235 @@
+{
+  "offer": "PI12-PREWORLD-SOURCE01-0035",
+  "head": "a1c6959aab081ca8d3e8d6cbec055a27e71cfb03",
+  "job": "guard",
+  "argv": [
+    "python3",
+    "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/scope-guard.py"
+  ],
+  "started": 1793839420.825024,
+  "cutoff": 1793839504,
+  "release": 1793839564,
+  "carryFiles": 61225,
+  "carryBytes": 13901430503,
+  "dependencyFiles": 11104,
+  "dependencyBytes": 408236853,
+  "peaks": {
+    "whole": 13905340687,
+    "growth": 3910184,
+    "temporary": 0,
+    "durable": 10438,
+    "files": 61430,
+    "processes": 4,
+    "rss": 253755392
+  },
+  "minFree": 15379673088,
+  "exitCode": 0,
+  "sourcePins": {
+    "frontend/src/app/pre-world-policy/parade-ink/pre-world.css": "a6ced91cc84d70c74fdd6bbe0a56e0609d5640f9c51996862ea1979f13cc21ff",
+    "frontend/src/app/pre-world-policy/parade-ink/PreWorldFrame.tsx": "9fae8ff3d927b70da481334e27c712418d6321ae30a052c008ebeb2a1c3a1164",
+    "frontend/src/app/pre-world-policy/__tests__/parade-ink/frame.test.tsx": "57d5502ba6b41667ac41dfc6cb43a7d2144fc5c8c42dfc85ab369c030e49c64f",
+    "frontend/src/app/pre-world-policy/__tests__/parade-ink/vitest.config.ts": "808a73983d775971a0e8f4a66dc3dacf5e177a0fc1de2bd43f71c3fa3c260bbd"
+  },
+  "locks": {
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+    "frontend/package.json": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3"
+  },
+  "lastGlobal": {
+    "metadataAsOf": "2026-11-05T00:42:50.464528+00:00",
+    "members": [
+      {
+        "cohort": "PI12PreWorld",
+        "kind": "source",
+        "pids": [
+          68500,
+          68738,
+          68891
+        ],
+        "processCap": 24,
+        "rssCapBytes": 3221225472,
+        "remainingNewBytes": 33554432,
+        "state": "ACTUAL_ACCEPT"
+      }
+    ],
+    "unresolvedPids": [],
+    "workflows": 1,
+    "sources": 1,
+    "browsers": 0,
+    "targets": 0,
+    "distinctPids": [
+      68500,
+      68738,
+      68891
+    ],
+    "actualRSS": 252739584,
+    "chargedPIDs": 24,
+    "chargedRSS": 3221225472,
+    "otherUpper": 3221225472,
+    "processes": [
+      {
+        "pid": 68500,
+        "parent": 49590,
+        "group": 68500,
+        "rss": 224968704,
+        "birth": "Thu Nov 5 09:43:39 2026",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B docs/mcr/evidence/parade-ink-pre-world-policy/lease.py --offer PI12-PREWORLD-SOURCE01-0035 --head a1c6959aab081ca8d3e8d6cbec055a27e71cfb03 --job guard --attempt source01guardB --acceptance source01-acceptance.json --cutoff 1793839504 --release 1793839564 --whole 17179869184 --growth 33554432 --temporary 25165824 --durable 4194304 --files 90000 --processes 24 --rss 3221225472 --start-floor 11"
+      },
+      {
+        "pid": 68738,
+        "parent": 68500,
+        "group": 68500,
+        "rss": 25608192,
+        "birth": "Thu Nov 5 09:43:41 2026",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/guardian.py /Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/source01guardB-guardian-config.json"
+      },
+      {
+        "pid": 68891,
+        "parent": 68500,
+        "group": 68500,
+        "rss": 2162688,
+        "birth": "Thu Nov 5 09:43:42 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,rss=,lstart=,args="
+      }
+    ]
+  },
+  "primaryInitial": {
+    "sampled": 1793839421.655287,
+    "peaks": {
+      "whole": 13905334517,
+      "growth": 3904014,
+      "temporary": 0,
+      "durable": 4268,
+      "files": 61427,
+      "processes": 1,
+      "rss": 223428608
+    },
+    "globalState": {
+      "metadataAsOf": "2026-11-05T00:42:50.464528+00:00",
+      "members": [
+        {
+          "cohort": "PI12PreWorld",
+          "kind": "source",
+          "pids": [
+            68500,
+            68720
+          ],
+          "processCap": 24,
+          "rssCapBytes": 3221225472,
+          "remainingNewBytes": 33554432,
+          "state": "ACTUAL_ACCEPT"
+        }
+      ],
+      "unresolvedPids": [],
+      "workflows": 1,
+      "sources": 1,
+      "browsers": 0,
+      "targets": 0,
+      "distinctPids": [
+        68500,
+        68720
+      ],
+      "actualRSS": 226082816,
+      "chargedPIDs": 24,
+      "chargedRSS": 3221225472,
+      "otherUpper": 3221225472,
+      "processes": [
+        {
+          "pid": 68500,
+          "parent": 49590,
+          "group": 68500,
+          "rss": 223920128,
+          "birth": "Thu Nov 5 09:43:39 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B docs/mcr/evidence/parade-ink-pre-world-policy/lease.py --offer PI12-PREWORLD-SOURCE01-0035 --head a1c6959aab081ca8d3e8d6cbec055a27e71cfb03 --job guard --attempt source01guardB --acceptance source01-acceptance.json --cutoff 1793839504 --release 1793839564 --whole 17179869184 --growth 33554432 --temporary 25165824 --durable 4194304 --files 90000 --processes 24 --rss 3221225472 --start-floor 11"
+        },
+        {
+          "pid": 68720,
+          "parent": 68500,
+          "group": 68500,
+          "rss": 2162688,
+          "birth": "Thu Nov 5 09:43:41 2026",
+          "command": "ps -axo pid=,ppid=,pgid=,rss=,lstart=,args="
+        }
+      ]
+    }
+  },
+  "startFree": 15381188608,
+  "otherWorstGrowth": 3221225472,
+  "startFloorGiB": 11,
+  "independentInitial": {
+    "sampled": 1793839421.991576,
+    "values": {
+      "processes": 2,
+      "rss": 248102912,
+      "temporary": 0,
+      "whole": 13905338508,
+      "growth": 3908005,
+      "durable": 8259,
+      "files": 61428
+    },
+    "free": 15381131264,
+    "globalState": {
+      "metadataAsOf": "2026-11-05T00:42:50.464528+00:00",
+      "members": [
+        {
+          "cohort": "PI12PreWorld",
+          "kind": "source",
+          "pids": [
+            68500,
+            68738,
+            68797
+          ],
+          "processCap": 24,
+          "rssCapBytes": 3221225472,
+          "remainingNewBytes": 33554432,
+          "state": "ACTUAL_ACCEPT"
+        }
+      ],
+      "unresolvedPids": [],
+      "workflows": 1,
+      "sources": 1,
+      "browsers": 0,
+      "targets": 0,
+      "distinctPids": [
+        68500,
+        68738,
+        68797
+      ],
+      "actualRSS": 250920960,
+      "chargedPIDs": 24,
+      "chargedRSS": 3221225472,
+      "otherUpper": 3221225472,
+      "processes": [
+        {
+          "pid": 68500,
+          "parent": 49590,
+          "group": 68500,
+          "rss": 224460800,
+          "birth": "Thu Nov 5 09:43:39 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B docs/mcr/evidence/parade-ink-pre-world-policy/lease.py --offer PI12-PREWORLD-SOURCE01-0035 --head a1c6959aab081ca8d3e8d6cbec055a27e71cfb03 --job guard --attempt source01guardB --acceptance source01-acceptance.json --cutoff 1793839504 --release 1793839564 --whole 17179869184 --growth 33554432 --temporary 25165824 --durable 4194304 --files 90000 --processes 24 --rss 3221225472 --start-floor 11"
+        },
+        {
+          "pid": 68738,
+          "parent": 68500,
+          "group": 68500,
+          "rss": 24297472,
+          "birth": "Thu Nov 5 09:43:41 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/guardian.py /Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/source01guardB-guardian-config.json"
+        },
+        {
+          "pid": 68797,
+          "parent": 68738,
+          "group": 68500,
+          "rss": 2162688,
+          "birth": "Thu Nov 5 09:43:41 2026",
+          "command": "ps -axo pid=,ppid=,pgid=,rss=,lstart=,args="
+        }
+      ]
+    }
+  },
+  "finished": 1793839423.525644,
+  "childrenRemaining": [],
+  "linkAbsent": true,
+  "scratchAbsent": true,
+  "freeAfter": 15379636224,
+  "releasedBeforeDeadline": true
+}

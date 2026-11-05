@@ -1,0 +1,61 @@
+{
+  "observed": 1793841605.400425,
+  "ownerRecordPath": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a230-6acc-7e82-9e4b-92506decc745.json",
+  "record": {
+    "ownerThreadId": "01a1a230-6acc-7e82-9e4b-92506decc745",
+    "offerId": "ORIGINAL-FE37-DEFAULT-APP-NATIVE03-0110",
+    "state": "FULL",
+    "acceptedAtEpoch": 1793841143.082609,
+    "workDeadlineEpoch": 1793841323.082609,
+    "fullDeadlineEpoch": 1793841383.082609,
+    "kind": "browser",
+    "processCap": 32,
+    "rssCapBytes": 4294967296,
+    "remainingNewUpperBytes": 0,
+    "controller": {
+      "pid": 48444,
+      "birth": "Thu Nov  5 10:12:24 2026",
+      "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+      "script": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/fe37-default-member-content/run-allocated.py",
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts",
+      "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/fe37-default-member-content/runs/native-03"
+    },
+    "guardControllers": [
+      {
+        "pid": 47833,
+        "birth": "Thu Nov  5 10:12:22 2026",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+        "script": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/fe37-default-member-content/supervise-allocated.py",
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts",
+        "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/fe37-default-member-content/runs/native-03"
+      }
+    ],
+    "receiptPaths": {
+      "accept": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/parade-ink-reports/resource-history/fe37-native-03/accepted.json",
+      "full": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/parade-ink-reports/resource-history/fe37-native-03/release.json",
+      "outerFull": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/parade-ink-reports/resource-history/fe37-native-03/outer-release.json",
+      "bootstrap": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/parade-ink-reports/resource-history/fe37-native-03/bootstrap-accepted.json"
+    },
+    "publishedAtEpoch": 1793841582.9236,
+    "actualFullEpoch": 1793841158.800446,
+    "resources": 0,
+    "historicalCheckoutReceiptPaths": {
+      "accept": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/fe37-default-member-content/runs/native-03/accepted.json",
+      "full": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/fe37-default-member-content/runs/native-03/release.json",
+      "outerFull": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/fe37-default-member-content/runs/native-03/outer-release.json"
+    },
+    "receiptRelocation": {
+      "observedAtEpoch": 1793841582.923599,
+      "sourceCommit": "bc38036e75ab82fdc9fc5c436365249b572c54fd",
+      "sha256": {
+        "accepted.json": "f6896e30eabe675a1f0255a12ff0d9075cf22b7cd7668dc4fd18f732cd6b6de7",
+        "release.json": "764aa19e5d777b5191724666f4bb3be9eebd68d97a222fdd6d0919e646a5ae00",
+        "outer-release.json": "f1f65714f80c3ee0c7d56883360e6f2a0ac00d60f8be34cdd62a61ef734daa67",
+        "bootstrap-accepted.json": "0591526b63ac788b3db34010db44965d1227281fd6687b49774deadcde9b9ac2"
+      },
+      "reason": "Exclusive checkout returned to preserved O04 branch after Native03 actual FULL; original checkout paths no longer materialized. These exact own immutable JSON receipts remain physically readable."
+    }
+  },
+  "actualFullReceiptSHA256": "764aa19e5d777b5191724666f4bb3be9eebd68d97a222fdd6d0919e646a5ae00",
+  "actualFullReceiptBytes": 23705
+}

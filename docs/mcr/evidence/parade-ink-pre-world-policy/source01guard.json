@@ -1,0 +1,44 @@
+{
+  "offer": "PI12-PREWORLD-SOURCE01-0035",
+  "head": "a1c6959aab081ca8d3e8d6cbec055a27e71cfb03",
+  "job": "guard",
+  "argv": [
+    "python3",
+    "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/scope-guard.py"
+  ],
+  "started": 1793839334.947493,
+  "cutoff": 1793839504,
+  "release": 1793839564,
+  "carryFiles": 61225,
+  "carryBytes": 13901430503,
+  "dependencyFiles": 11104,
+  "dependencyBytes": 408236853,
+  "peaks": {
+    "whole": 13901485661,
+    "growth": 55158,
+    "temporary": 0,
+    "durable": 2556,
+    "files": 61240,
+    "processes": 1,
+    "rss": 223182848
+  },
+  "minFree": 9223372036854775807,
+  "exitCode": null,
+  "sourcePins": {
+    "frontend/src/app/pre-world-policy/parade-ink/pre-world.css": "a6ced91cc84d70c74fdd6bbe0a56e0609d5640f9c51996862ea1979f13cc21ff",
+    "frontend/src/app/pre-world-policy/parade-ink/PreWorldFrame.tsx": "9fae8ff3d927b70da481334e27c712418d6321ae30a052c008ebeb2a1c3a1164",
+    "frontend/src/app/pre-world-policy/__tests__/parade-ink/frame.test.tsx": "57d5502ba6b41667ac41dfc6cb43a7d2144fc5c8c42dfc85ab369c030e49c64f",
+    "frontend/src/app/pre-world-policy/__tests__/parade-ink/vitest.config.ts": "808a73983d775971a0e8f4a66dc3dacf5e177a0fc1de2bd43f71c3fa3c260bbd"
+  },
+  "locks": {
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+    "frontend/package.json": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3"
+  },
+  "guardFailure": "('unresolved workflow claims', [55970])",
+  "finished": 1793839335.729604,
+  "childrenRemaining": [],
+  "linkAbsent": true,
+  "scratchAbsent": true,
+  "freeAfter": 15393189888,
+  "releasedBeforeDeadline": true
+}

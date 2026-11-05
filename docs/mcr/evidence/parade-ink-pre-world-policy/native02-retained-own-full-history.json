@@ -1,0 +1,82 @@
+[
+  {
+    "ownerThreadId": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+    "offerId": "PI12-PREWORLD-SOURCE01-0035",
+    "acceptedAtEpoch": 1793839324.4544158,
+    "actualFullEpoch": 1793839523.7412832,
+    "originalDisposition": "ACTUAL_PARTIAL_FULL",
+    "resourcesReleased": true,
+    "fullPath": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/source01-FULL.json",
+    "fullSHA": "40c1233473cc266339362838b784d1036e2dd9555025249e7cd7e839a2ed9939"
+  },
+  {
+    "ownerThreadId": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+    "offerId": "PI12-PREWORLD-REMAINDER-SOURCE02-0048",
+    "acceptedAtEpoch": 1793840538.236363,
+    "actualFullEpoch": 1793840672.24317,
+    "originalDisposition": "ACTUAL_PARTIAL_FULL",
+    "resourcesReleased": true,
+    "fullPath": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/source02-FULL.json",
+    "fullSHA": "c558cf15958f54133aa9b7671611c1aa6d50bd6da8f38e31a0e899537c04ab5f"
+  },
+  {
+    "ownerThreadId": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+    "offerId": "PI12-PREWORLD-REMAINDER-SOURCE03-0110",
+    "acceptedAtEpoch": 1793841500.076382,
+    "actualFullEpoch": 1793841502.4827242,
+    "originalDisposition": "FULL",
+    "resourcesReleased": true,
+    "fullPath": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/source03-FULL.json",
+    "fullSHA": "7d97192b927b720f8f08fa43bb4c7be5878ac00c157e10389c2c90a3b5b5d716"
+  },
+  {
+    "ownerThreadId": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+    "offerId": "PI12-PREWORLD-REMAINDER-SOURCE04-0122",
+    "acceptedAtEpoch": 1793841790.946882,
+    "actualFullEpoch": 1793841794.259439,
+    "originalDisposition": "FULL",
+    "resourcesReleased": true,
+    "fullPath": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/source04-FULL.json",
+    "fullSHA": "dca3e92e88f33dbcba563aaf001b03de420aee332309dc15a139ba8a5ed5f730"
+  },
+  {
+    "ownerThreadId": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+    "offerId": "PI12-PREWORLD-REMAINDER-SOURCE05-0122",
+    "acceptedAtEpoch": 1793841869.033528,
+    "actualFullEpoch": 1793841873.891208,
+    "originalDisposition": "FULL",
+    "resourcesReleased": true,
+    "fullPath": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/source05-FULL.json",
+    "fullSHA": "12ed0a9824d72686a49aa5786306c43e63a28ad4976d92be67fc72f96aaa4c2b"
+  },
+  {
+    "ownerThreadId": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+    "offerId": "PI12-PREWORLD-REMAINDER-SOURCE06-0122",
+    "acceptedAtEpoch": 1793841921.31903,
+    "actualFullEpoch": 1793841927.2687979,
+    "originalDisposition": "FULL",
+    "resourcesReleased": true,
+    "fullPath": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/source06-FULL.json",
+    "fullSHA": "0ddda5108a95b3bdb4a0638a860c76b6021b9d8626d86f50b0fc5a6d6eaf2859"
+  },
+  {
+    "ownerThreadId": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+    "offerId": "PI12-PREWORLD-FULLTYPES-SOURCE07-0128",
+    "acceptedAtEpoch": 1793842154.415776,
+    "actualFullEpoch": 1793842169.1470752,
+    "originalDisposition": "FULL",
+    "resourcesReleased": true,
+    "fullPath": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/source07-FULL.json",
+    "fullSHA": "edc7cb7529736eaf5b5bf9f0a188d236be8ea8ac5ec18a490fd5faf96d26d359"
+  },
+  {
+    "ownerThreadId": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+    "offerId": "PI12-PREWORLD-APP-NATIVE01-0133",
+    "acceptedAtEpoch": 1793842591.517885,
+    "actualFullEpoch": 1793842595.145656,
+    "originalDisposition": "FULL",
+    "resourcesReleased": true,
+    "fullPath": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/native01-FULL.json",
+    "fullSHA": "a499b44b59fd271ad0392fef33660c7213b8c5ed91ecdb808b68ff88c1947040"
+  }
+]

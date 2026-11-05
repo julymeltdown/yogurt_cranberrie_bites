@@ -1,0 +1,1646 @@
+{
+  "state": "VALIDATED_COMMITTED_HANDOFF_READY",
+  "preparedAt": 1793849138.359343,
+  "scope": "Root153-granted PI12 pre-World S02/S03 presentation subset only",
+  "sourceBase": "8b47e0e40e8182d2401565fbb079533efffb41e7",
+  "nativeExecutedSource": "c1690d0b4b987e39f8403336280abbe271701610",
+  "sourceBranch": "codex/mcr-fe-PI12-preworld-parade-ink",
+  "publisher": "01a1a5d9-332b-7822-a8f7-412e295fa211",
+  "publishMode": "Explicit postimage paths, not wholesale branch merge; preserve master ancestry and concurrent work, noforce",
+  "postimages": [
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/admission.py",
+      "bytes": 2595,
+      "sha256": "7ace98224294c6480631c372993a46d22849f7d50b04fe1550a8bfc30125128b"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/completed-finisher-regression.py",
+      "bytes": 2706,
+      "sha256": "ba569c5fd4759ac01a90903a7aee89f270b0169f38d0d4e9955ca70cfee3de44"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/completion-audit.json",
+      "bytes": 7824,
+      "sha256": "9cc397365b4217328eb3304708addc078a1a1265863d40315b68bb4661764d93"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/docs04-booking.json",
+      "bytes": 375,
+      "sha256": "78011fc1668dac04d3cb6a2247fd7f9a1336bac5937072bc30004dfd816d7465"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/docs16-booking.json",
+      "bytes": 615,
+      "sha256": "079cf51538874ddab647389c65a8f585611f8f258a17e6ea88209dd06668de35"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/finaldoc16-0229-booking.json",
+      "bytes": 1631,
+      "sha256": "581354e240cff6064a644ea382a35c0680d51e3d2940581f1cd69b2d4ffeef71"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/finish-doc16-0128-booking.json",
+      "bytes": 751,
+      "sha256": "b8b0d07788d3eaeca4aa12433661c5ac8b613a08db4be1b026eabd21b933dade"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/fixdoc16-0206-booking.json",
+      "bytes": 965,
+      "sha256": "c4df99df93561a8ac5e1b6c44fe91e4240b7fc88742b15cf42253b5690fdcd16"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/foundation-inputs.json",
+      "bytes": 7434,
+      "sha256": "d1a24a8433cfc0fef31981564efad293e01b95d05ec83f4ec96946ccab6ea92b"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/guard-registration-repair.json",
+      "bytes": 828,
+      "sha256": "17da8b0aca3fe85f5de77a37bc4eaf93a00fa5cb8b20e459f69506244859eaa0"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/guardian.py",
+      "bytes": 27273,
+      "sha256": "8a92fceb4731da8ba18d6eec841ef05680b8713133255561caf5c71fa6741094"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/intake.json",
+      "bytes": 4307342,
+      "sha256": "220c017fd49156951908e0d55d85a90a98dca0fcaf4c80f03c9f25dd4c6fea1a"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/lease.py",
+      "bytes": 26568,
+      "sha256": "e274c4c3b61fd23b3d449fc18db1bd07025d3516c63ba93ebb58d6a877ac205f"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native01-FULL.json",
+      "bytes": 427,
+      "sha256": "a499b44b59fd271ad0392fef33660c7213b8c5ed91ecdb808b68ff88c1947040"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native01-acceptance.json",
+      "bytes": 1045,
+      "sha256": "c7b6e7370be3e3fb81edf00f4c24508e0c40c49233858d3b476a02bb84e1bcea"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native01-bootstrap-acceptance.json",
+      "bytes": 599,
+      "sha256": "a6e130f768ec7cf050a855a56b14c919bc65f4669d0bcc059ca816cfe71c3742"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native01-freeze.json",
+      "bytes": 851962,
+      "sha256": "3afc0c7e54c09055e105d506e8917d552c521a1e4255a514791ffdeb4518cd9c"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native01-guardian-config.json",
+      "bytes": 2814,
+      "sha256": "f7a163f1dcd03adecfd6cab7ce4b35d3551b996564730934a1817dd4b0895c40"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native01-guardian.json",
+      "bytes": 23916,
+      "sha256": "0acc8f5e1accc255c640f5ea14c06f80d60b97269507dc5d213c009cfcc72029"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native01-guardian.ready",
+      "bytes": 9857,
+      "sha256": "ea615f6c38beab65fac1c3bb3bb09bcb76af5e6369adfc96a42055a1db855b13"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native01-guardian.stop",
+      "bytes": 17,
+      "sha256": "bc89fb07ebd02b5d02d0863a9a7b74dafe3e7301f47d1c52ba9581f31d353541"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native01-independent-census.json",
+      "bytes": 10983,
+      "sha256": "caef1f672179f9f19881208914ecb486b78f3235179c026e433dee7a3be1c29a"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native01-primary-census.json",
+      "bytes": 11175,
+      "sha256": "22141ee8ac9ffb7200c71323e6e0e2d7088d335e8f18db6aec1b56984489c379"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native01.json",
+      "bytes": 37276,
+      "sha256": "5b99aafebac87bd30fafc9ba0c9630c1f190bfc39993c0592cd2fbab132fec9c"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native02-FULL.json",
+      "bytes": 370,
+      "sha256": "37bb5924daa6b6f1649e5c377992be4bdc48582b1b0d1a0561ec917c3bbf519d"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native02-acceptance.json",
+      "bytes": 1045,
+      "sha256": "cd7626860e343b9291b0ccf250789b813523160d6b6242af5701dfc71fa46316"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native02-bootstrap-acceptance.json",
+      "bytes": 599,
+      "sha256": "0f5dad89c6e5da60208730f64a70053c925abe0fcd430c77f3606948c941bb30"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native02-freeze.json",
+      "bytes": 852760,
+      "sha256": "fb7589845e30ed2584c00af63f0b1b3b8b1d47753b8f2fd8337184bc285fb9c6"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native02-resource-predecessor.json",
+      "bytes": 1456,
+      "sha256": "badb116cfb93931f73de424287377941353694ab9b29035d9888c3a28657f15a"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native02-retained-own-full-history.json",
+      "bytes": 3980,
+      "sha256": "7762ccac878388a66fd5b524c0509871357d4e9a12e8eef8971f56b409da5e2d"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native02.json",
+      "bytes": 1726,
+      "sha256": "dd37c2cb2d5f96bc347cdcee30e8550538db79bf0225e02cba921100f8b05cf3"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native03-FULL.json",
+      "bytes": 443,
+      "sha256": "4adc4f9da2367e011cacb0a01b8e3cb27c6300575df97a3ced687236b5f99efa"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native03-acceptance.json",
+      "bytes": 1037,
+      "sha256": "81e46c66f935e478677c1a94204b78e937e7a54dbb0f988d6b316da5bee023ff"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native03-bootstrap-acceptance.json",
+      "bytes": 591,
+      "sha256": "1abdd4fd1c744c67ffb69d042169e8aa52324f21cf3a203976aa3aba893228da"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native03-disposition.json",
+      "bytes": 2361,
+      "sha256": "cdae9791175aa7667b804e37e3e2508dd90314fc8c141defe8746c9094146492"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native03-freeze.json",
+      "bytes": 853117,
+      "sha256": "0eff6716b51c9a14d508e88b7adbc9ce90147befd006c11c4da76f36a38f015c"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native03-guardian-config.json",
+      "bytes": 2797,
+      "sha256": "921e122e828735423337f0b4b107e32358e171ead3854d66486b6b1b8208bd06"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native03-guardian.json",
+      "bytes": 28593,
+      "sha256": "18cddaf2b11121c17bbb624ecb331f051b8cb25e2954d387bafb8d96305d9c62"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native03-guardian.ready",
+      "bytes": 11761,
+      "sha256": "75443940c898de8cd90fa510dbd65cb114e95b5fa019fcbeb46bb363f791455e"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native03-guardian.stop",
+      "bytes": 16,
+      "sha256": "9a7b330efd462a84b4c345d26013389a2645645265434a770d9aa9e76a6f9d80"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native03-independent-census.json",
+      "bytes": 13168,
+      "sha256": "1573a804e916c36ef29eb2a699a66e411046a77632e323ea45c205ab9fe3de76"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native03-preparation.json",
+      "bytes": 979,
+      "sha256": "1a6e16b6ac632b2182f562732fd28db5f01cc4c535f5f13a9c6d1dac8522e76a"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native03-primary-census.json",
+      "bytes": 13168,
+      "sha256": "3342866b6ba07c234467cd940d5278aa4b4922468833a135f9bda74ba9afc8ca"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native03-resource-predecessor.json",
+      "bytes": 1232,
+      "sha256": "8b6314dfee477700932dd3a60b7cc2649628cf01616ee8e94c89471bdafedfa0"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native03.json",
+      "bytes": 45333,
+      "sha256": "90a1be334cce430beeae31deb1f09bfd366d6c006571a6cf60305bdc49ac4021"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native04-FULL.json",
+      "bytes": 416,
+      "sha256": "fce8e79917a7afb670ae5df22c582d16f5e1a911483903f4e9798533ad89f915"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native04-acceptance.json",
+      "bytes": 1037,
+      "sha256": "281e5c239840b1af527a45ccbb1f8de7a44555549a30ed50578f07aff6a8db02"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native04-bootstrap-acceptance.json",
+      "bytes": 591,
+      "sha256": "04b43700c8ca3a93bb6b729863b43f1efcc60279e95cd19032b3d0698245504d"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native04-disposition.json",
+      "bytes": 2158,
+      "sha256": "261b8708f3ecea4b70939ec0dd5fe20308aeb11cc25cc770c25346e0b9ca6b35"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native04-freeze.json",
+      "bytes": 853361,
+      "sha256": "935c02e416119768d3c97932d98ad0069ef2905389f15296f1a94aab9632cfff"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native04-guardian-config.json",
+      "bytes": 2797,
+      "sha256": "d22b19a1156fb84e54db87734269d2396ba2ec61871d5ad69fc29d3662b9e579"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native04-guardian.json",
+      "bytes": 29146,
+      "sha256": "1a7fdd668cf9d5adb8e8648aab6a67a1b3c0bea10e61bf145bc716b5b64932eb"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native04-guardian.ready",
+      "bytes": 11959,
+      "sha256": "f3090004540b668683f9b55f0b7eeec795c9f969d6a036347569f9e449833675"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native04-guardian.stop",
+      "bytes": 17,
+      "sha256": "d4cd5d8f3c8db709bbbe3362c31df4ce9a5b95d276691fe739d3cb4150f9128a"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native04-independent-census.json",
+      "bytes": 13418,
+      "sha256": "2d307396c037f1fe7a8d65eddde5e0bbf22780f994c4f99cde09eb9770e2155b"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native04-peer230-resource-repair.json",
+      "bytes": 43384,
+      "sha256": "a3d61791caef1c427ca5e041e5afaacd46b657c5bf36356905de09fefccac989"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native04-primary-census.json",
+      "bytes": 13781,
+      "sha256": "f1382802710b6b1083107e8054db891ff8e0fadb1fda6dade30506bbdcd97f72"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native04-resource-predecessor.json",
+      "bytes": 18676,
+      "sha256": "e31dccf110b1587580718a8a1a2199f253c04b3dafe30ad7e1f6c24be02c9be4"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native04.json",
+      "bytes": 45899,
+      "sha256": "20d8609887193745b68a11af937770d6196f5ea6df490e2c2abe790d4f8309ba"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native05-FULL.json",
+      "bytes": 361,
+      "sha256": "f4181c49b1cff16b7c7177052f40229e4120f3297d5d5f70bb5ac7fe0f56bf47"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native05-acceptance.json",
+      "bytes": 1037,
+      "sha256": "6e5a0887698970b0c6e57efc4abdbe092d8b8b1bf3a9f63e46ce75fb07c281b2"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native05-bootstrap-acceptance.json",
+      "bytes": 591,
+      "sha256": "a6d189713bbf58cf954352496492b36a4df3db0e4d0ae0ed5e3a71ebd0c70737"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native05-browser/failure.png",
+      "bytes": 2528,
+      "sha256": "f91898b9cc72371a885582ae4413f3170c1962c371dab277d9ce741d8fbb2bde"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native05-browser/report.json",
+      "bytes": 844,
+      "sha256": "5864e04ae9da3ea37ec1ea7e623a991259783803d275b3581d5ffda9d211f087"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native05-disposition.json",
+      "bytes": 2558,
+      "sha256": "957ccefc1c50dc5d95e1d2d939c0bf515d0b27ea752e31d0e79065c7c572452a"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native05-freeze.json",
+      "bytes": 853329,
+      "sha256": "ae67af1f17f1e75df8a47dd6f36e10d8f4b165a19899b779cd4edf4e3654e878"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native05-guardian-config.json",
+      "bytes": 2797,
+      "sha256": "f979296b1d6b66fe6598a0cf0eea7c92ee05408a3a89942e9a6ba252f2dd968e"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native05-guardian.bootstrap.json",
+      "bytes": 9125,
+      "sha256": "9a8a1a2e7ce922425b55002bbb67f090e7ca81a5aa745452486da09faedf7695"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native05-guardian.json",
+      "bytes": 28616,
+      "sha256": "dae32218cf7087fe2dc58283b73508ee402c721f55a1ae982f62b0d8bbc74c4e"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native05-guardian.ready",
+      "bytes": 11807,
+      "sha256": "3cb1ad61ce90a132c61781332d20630900a35ef8665f0439ddb722994917b732"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native05-guardian.stop",
+      "bytes": 17,
+      "sha256": "d34c32ca6073600c5e3a2c0bec63d092db1f5c6f1756a7f132787b8e3a0b941a"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native05-independent-census.json",
+      "bytes": 13191,
+      "sha256": "60bfbf553ea0d207c5794151637cf66ba02cfb57c141415d563ef24f8e8aac8b"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native05-primary-census.json",
+      "bytes": 13191,
+      "sha256": "43d8b9234ea87922f3f134f3285cb01cdc50aec07689b994162757dc47d9e6a1"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native05-resource-predecessor.json",
+      "bytes": 87863,
+      "sha256": "a5e0ab77bf6d30b353be2096d3efdc63ea6ae54f1eee5cdcfdad610940f84630"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native05.json",
+      "bytes": 50397,
+      "sha256": "fcd8e597cbf6016052f4ad44de7ee297c6cbd5487ca99c6852167a62dfef6d55"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native05.log",
+      "bytes": 1375,
+      "sha256": "1d6da390d60de6223da2a7d4fc4e23c6964e1ca368a6d30dbbea0b1e46819100"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native06-FULL.json",
+      "bytes": 416,
+      "sha256": "ad8be5eecb66869671104022e14cd2a31fe686a8063b496b7c1bbaa344f41772"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native06-acceptance.json",
+      "bytes": 1041,
+      "sha256": "62299da4757c9f5557345b6e7e5333cd1bbf4d921175c0f526fd77365e79822b"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native06-bootstrap-acceptance.json",
+      "bytes": 594,
+      "sha256": "f023a624fb85fe60cc599b10c610b0e0ca5b64c52f81705f930f00091e3a82ee"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native06-disposition.json",
+      "bytes": 2154,
+      "sha256": "dd845808ee23863dab68e8fe6c9d8ecb830333b371228fea52d0522515a1a0c6"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native06-freeze.json",
+      "bytes": 853816,
+      "sha256": "8cea95df6159a938f28cfc0266e5baa0f69cf4fb7d889038cc3dff823c26692e"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native06-guardian-config.json",
+      "bytes": 2805,
+      "sha256": "2f3108f40cb9ebe1fc659b9949ef5ed29bcc5f74bdd6655a4d803751952de656"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native06-guardian.bootstrap.json",
+      "bytes": 9768,
+      "sha256": "02ebfa6fd5199f0996238dd1284fd8553eed13c6ec317efce97b0326904e7ee4"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native06-guardian.json",
+      "bytes": 27081,
+      "sha256": "2b0c451c7a57bfc9143ca15b4470961769bccafc6a669b83b9c392ada82dbde8"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native06-guardian.ready",
+      "bytes": 11021,
+      "sha256": "9fcde0ceb44985cb276e87e2af9b5938fe2a1e53337a0e354af946fb9289ecdc"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native06-guardian.stop",
+      "bytes": 18,
+      "sha256": "cf255b6e50a373fe88438194be3bf4d54a59fbb487658f82c4528473cb37ba09"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native06-independent-census.json",
+      "bytes": 12632,
+      "sha256": "9ba51cec3685e944834401645049d462f58f05076e799c8bcfc6031d5ef58d39"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native06-primary-census.json",
+      "bytes": 12632,
+      "sha256": "ac481f0a852db377378ce1970d265465ec2a9d2692c076fb45a54a4dc241b039"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native06.json",
+      "bytes": 42433,
+      "sha256": "a50856cd7430ea5de627cf1da57373538fffab822aa82aee9cf2ded09398d7d6"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native07-FULL.json",
+      "bytes": 414,
+      "sha256": "13b4c000cc3b46db5a72ea008cf40cd72f90a54d94e596fb2196b025df0bb6b4"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native07-acceptance.json",
+      "bytes": 1037,
+      "sha256": "87910dd8bed78b17427f1d8f195c1eabcae317d876f24fb7c71a9a88e111f13b"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native07-bootstrap-acceptance.json",
+      "bytes": 591,
+      "sha256": "6d1e307cdfbf68c08295e5d5472f4b535ea850685eb3ca75456da175779b8c98"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native07-browser/bootstrap-pending-360x844.png",
+      "bytes": 17950,
+      "sha256": "792536395f21ba2950abcf8ef4691ece40241b03da0b12c0abf17ad085b5d169"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native07-browser/maintenance-360x844.png",
+      "bytes": 22993,
+      "sha256": "1c02c44744390cf306f4edfde076a3727999223373d49df998bf57a54e83faed"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native07-browser/minimum-version-360x844.png",
+      "bytes": 25086,
+      "sha256": "944aaf1ac94d8f38c3203aac371e7f95f5145e2d71907c9812e69405324ba478"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native07-browser/not-found-360x844.png",
+      "bytes": 20073,
+      "sha256": "69954a37f12d9d960954eb4e852aaaec88b23fca7f982013f4912147da11b104"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native07-browser/policy-pending-360x844.png",
+      "bytes": 20869,
+      "sha256": "11ee1b269bda7904b2a5be35c3b5726817dde4dbff67b6a17b566280047e6496"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native07-browser/unavailable-360x844.png",
+      "bytes": 25501,
+      "sha256": "8655db53c6e598df8c5807ed53b29274d612dbb84f5efbae1969593a17cdca31"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native07-disposition.json",
+      "bytes": 2129,
+      "sha256": "f43415d79af8d8d7639749757924c5ab3ef1097882994cb0e00afc9094fac9ed"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native07-freeze.json",
+      "bytes": 853780,
+      "sha256": "060b8698c4b1e6af2894ab37fdea39b2f1ffccf4334170f5c0d0df4707bee984"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native07-guardian-config.json",
+      "bytes": 2797,
+      "sha256": "c4a9828d7914a8989219bf0d910891effc360c3672a0203c3b5ccfa9d8cec42d"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native07-guardian.bootstrap.json",
+      "bytes": 10385,
+      "sha256": "2245ef4d4b2e5916553e32b57a9889a1f06649946573b2169bfb7c44ebbd735a"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native07-guardian.json",
+      "bytes": 38837,
+      "sha256": "04937eeee8b1976e6a3b335150d15a6466f3ce631013e9274a67e8109a2b517b"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native07-guardian.ready",
+      "bytes": 10832,
+      "sha256": "201fda460a220d73f104e86ac1f8a5787cef146f450657b4b4892f5ede81e8d0"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native07-guardian.stop",
+      "bytes": 17,
+      "sha256": "c65b07d7716436201ef8db73e764ebdf6293f2d7d46e2063a3e0d17b6eb957cb"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native07-independent-census.json",
+      "bytes": 24497,
+      "sha256": "9fb1107533bb059d228581de342e4c32b8146742c491a11e2577d145ce79fb95"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native07-owner-visual-notes.md",
+      "bytes": 1095,
+      "sha256": "cd50d5e002b6f5a82719f51138553494745a350d64fb9202a592ad2917fbef42"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native07-primary-census.json",
+      "bytes": 24749,
+      "sha256": "e0fb673199cf59b561a950aabf00582125ab323fafd27d787eae828a01446a91"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native07.json",
+      "bytes": 60551,
+      "sha256": "c2f8c33107a14daa096c8425e5a670a35ab6a7a5eb7d1962284a345c1b9fcc42"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native07.log",
+      "bytes": 930,
+      "sha256": "29d741a1c23af474e73a3c3af7ce19d79edb8a2ca669abf8959f5d35f8f63a07"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native08-FULL.json",
+      "bytes": 416,
+      "sha256": "96b41fe93e8c3ca01c6d31e8568e7a88c34da884162f315cdc73d9e947ad6270"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native08-acceptance.json",
+      "bytes": 1037,
+      "sha256": "8b80a4af89bdf0aed01db54eb982a2af57c43f21c7d0734173d8bd86b6f528ad"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native08-bootstrap-acceptance.json",
+      "bytes": 705,
+      "sha256": "69bf352e43cb560032d3828421c5a2b2c8a3ede725f5d9e9424d9e2d8bb04ac7"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native08-control-changes.md",
+      "bytes": 1717,
+      "sha256": "986a2041ef43d9792fabbb6362f2a1327b12a42da9a3f6271db8f3b51416a29b"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native08-disposition.json",
+      "bytes": 1783,
+      "sha256": "0b3dbe455dca0268b59670e65c4e8d21f3372ee17164024b6eb4a1071a809f65"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native08-freeze.json",
+      "bytes": 844608,
+      "sha256": "da627ff6b7fef810a17968e16fa386f0689af29ab602404c0431d4d73f1abf1c"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native08-primary-census.json",
+      "bytes": 13731,
+      "sha256": "86931af256aeaf626d59c110dbfb50fd07d741fc8a124029df4b09cb332f75b4"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native08.json",
+      "bytes": 16921,
+      "sha256": "0222d3c387981fe559d816d3e6c55fae5912de1dc80c484a4310d9f115b39dd9"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native09-FULL.json",
+      "bytes": 417,
+      "sha256": "b8cebbdb4db340ffa37b83fac5247adbeb2804bc774706fef2f42d2fb76bc413"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native09-acceptance.json",
+      "bytes": 1038,
+      "sha256": "8193307875c9719ad1716bb5861c4d50e44f37eefeb7dd54028ed9dd96635509"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native09-bootstrap-acceptance.json",
+      "bytes": 705,
+      "sha256": "c00750a57caa96998c3f30adec50cb611ee70e138f42148f0e15354cf061d0fe"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native09-browser/report.partial.json",
+      "bytes": 1259,
+      "sha256": "16e1f62b79a5d697fe0e3c6b21d27d13bc0ecf5a4e37541b865f8d272a982946"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native09-disposition.json",
+      "bytes": 20387,
+      "sha256": "c754e59dba38cc56c0b1e94f8182246fac1b8c85b38c7dfe5f7401d43d6b0170"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native09-freeze.json",
+      "bytes": 844757,
+      "sha256": "f08d88c668050170537e359c6750f5eb64f6cc4467de629a82524761c37646f1"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native09-guardian-config.json",
+      "bytes": 2798,
+      "sha256": "abcd80eda310d2083e1d86f785750105b86dc79fd77a4260db685e8bda1f9c7c"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native09-guardian.bootstrap.json",
+      "bytes": 11585,
+      "sha256": "49de682bc27ba588b2eeedb9168849f6248342ae765db43e2053940ab4bbd19f"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native09-guardian.json",
+      "bytes": 40068,
+      "sha256": "d5a405d2a9c463960733896879a3589090a6eb71f7d28b821253a85d7613998d"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native09-guardian.ready",
+      "bytes": 13565,
+      "sha256": "a46a3e9288026093a90ada3398cca34bccfba081aeea685f265c47c6c703374b"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native09-guardian.stop",
+      "bytes": 18,
+      "sha256": "6625fafc7c7aed6faaebf3940afe4fc40f25b0622d708c59f76db6a386d948eb"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native09-independent-census.json",
+      "bytes": 22080,
+      "sha256": "49c054ef20bc8c7605a5266c543bb005f777e2c5f7f2b1c4a04382e8cc3b061e"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native09-ordinary-identity-repair.json",
+      "bytes": 1427,
+      "sha256": "54257cd853ff08f69ab3e5bc82f9e74b4e3ff46c89c7e963d103e970850839bc"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native09-primary-census.json",
+      "bytes": 27043,
+      "sha256": "53a25c37bb17f2eb41992cff2eefefe737984f32dc04a4a53e13c8a1f6f601d7"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native09.json",
+      "bytes": 70580,
+      "sha256": "e2fc7eb8b59a058b789f9e4019b0ef5e2f945bfd465aff2ce4f194066d82e7d9"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native09.log",
+      "bytes": 219,
+      "sha256": "68359a370739c16b01604912a05df7a5de29ee20d41bb10600040ecf4ac1f750"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native10-FULL.json",
+      "bytes": 14945,
+      "sha256": "147e72157c010b83dc83be589a07d8b25096fc765723bd47f7cea2b629b03c98"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native10-acceptance.json",
+      "bytes": 1036,
+      "sha256": "41b2320af0d8c700005f02d4b4967da832f35cb0ca6836626b6e9bfd236bc740"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native10-bootstrap-acceptance.json",
+      "bytes": 705,
+      "sha256": "35355376340752a93539260f6f21ad1dd39855ce48db33004a5f95578bf3f3bb"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native10-disposition.json",
+      "bytes": 1546,
+      "sha256": "31411c47b85c766e9584ed21e68469be9151d7731449c60ed9cbf665cc5aa21f"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native10-freeze.json",
+      "bytes": 845136,
+      "sha256": "4333e91feee9eedb2cff5002a1e5d7ce84d7f2083dda288b24e56941398f834c"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native10-guardian-config.json",
+      "bytes": 2796,
+      "sha256": "36c0bd1f8f248d0c995cacc80f648c00dd73fa6b036016145d485e9cf378c01f"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native10-guardian.bootstrap.json",
+      "bytes": 12138,
+      "sha256": "f4e0f9bab864136b38f56f141c708a2e87f002a909c5620595b900b3bfee2c3f"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native10-guardian.json",
+      "bytes": 47611,
+      "sha256": "c62d54a070a955f0d9fb458dc285c2a7a34cceeb9bf0f0918c48e36b599a29b3"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native10-guardian.ready",
+      "bytes": 12472,
+      "sha256": "4519922c66b990fa8c1dbff5475540a4109a182d923f8792981ea73445a540d7"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native10-guardian.stop",
+      "bytes": 17,
+      "sha256": "78a074de54f2c707f5c5e1fccc2f4865946317aedb870da8e74bd8769e04b017"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native10-independent-census.json",
+      "bytes": 16635,
+      "sha256": "fd936a18cd49d3f815414bac2df85090adc7f31aef4fb590637de547fdcc08f6"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native10-primary-census.json",
+      "bytes": 16636,
+      "sha256": "96ad56f2e77a84749f86439acea3f50fbe39dbba429be28a32d5cde13087f9d8"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native10.json",
+      "bytes": 79436,
+      "sha256": "17e43a67efb905ae7281efe4e76f836e09b9676f4b902907172d1ba1d41e16fc"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native11-FULL.json",
+      "bytes": 411,
+      "sha256": "e16dfe199a4833688ccc9c93b423acb6dc558f1ea5dd3dd757c5c556858e4281"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native11-acceptance.json",
+      "bytes": 1037,
+      "sha256": "f9ed665b359e9e04858dcb0601511a1b7121da5625e348a00cb38637c6e4db08"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native11-bootstrap-acceptance.json",
+      "bytes": 705,
+      "sha256": "cd14da8aa38f03f0bb6078b6a9fa94b93a7e45c78b89b60df32931294d3f0aca"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native11-disposition.json",
+      "bytes": 1166,
+      "sha256": "7217a301ad9938adbe2fdad7aaeb26e09534028bf5894ca6431b2f5631114ee5"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native11-freeze.json",
+      "bytes": 845035,
+      "sha256": "3c2a636338ab863f537450be9ed988f0e2216adbcc8fcd3a68a50d36e6ada8b1"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native11-notes-slot-release.json",
+      "bytes": 1940,
+      "sha256": "e962ae36a60f25aabfc083a50d3fb625516e6ac1009505a19176eadbbc5b69ea"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native11.json",
+      "bytes": 2680,
+      "sha256": "b1a82f6e1c7cec85589ba14af710bb9c485a4ea15976df7b1a7b2291d0a56de9"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native12-FULL.json",
+      "bytes": 1972,
+      "sha256": "6c68a1b4e2cb2afca9f967f22aa47e75561bd8ea31cd08b283d7bbc425f08197"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native12-acceptance.json",
+      "bytes": 1041,
+      "sha256": "b2d69452c73400af813c548b0bede50fbc73cec78838d61fe9a270b2d7b376b2"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native12-bootstrap-acceptance.json",
+      "bytes": 708,
+      "sha256": "d58ba7229ae69713d67395f81ae326e56f74667d1a72318294c7da111336d177"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native12-freeze.json",
+      "bytes": 845098,
+      "sha256": "d4b78864f7d83a962b6a7ec5589ccee0b753de8f42e5614eedaba8c7bda892ea"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native12-publisher-identity-inputs.json",
+      "bytes": 2233,
+      "sha256": "dde307ff1a606580d52d124d6d59e43f7a1e039178656a93bd6450f617df9de9"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-FULL.json",
+      "bytes": 360,
+      "sha256": "5701df8d516a6e1977ea0fd02d05e1d76afcbcbe29dcf9763404923dd9f9c44c"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-acceptance.json",
+      "bytes": 1037,
+      "sha256": "13e760eb23bf3a96e962cfe661bfe141400381e743dd306e80ef180dcbe6a483"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-bootstrap-acceptance.json",
+      "bytes": 705,
+      "sha256": "949bbeaec891d31d0dacb7af88ff045fb848771432c7fa7a139ed054b4b86d93"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-browser/bootstrap-pending-360x844.png",
+      "bytes": 17950,
+      "sha256": "792536395f21ba2950abcf8ef4691ece40241b03da0b12c0abf17ad085b5d169"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-browser/bootstrap-pending-390x844.png",
+      "bytes": 18215,
+      "sha256": "7dff84f51dcced72fe24957087e39c2a1387b85d2119af70e331daee1a720040"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-browser/bootstrap-pending-430x844.png",
+      "bytes": 17777,
+      "sha256": "bc2649576e5bcc46720b72df815e21c772f5ee2039e7b942117ebeec7902f916"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-browser/denied-360x844.png",
+      "bytes": 20734,
+      "sha256": "1ae395dcbc25bc4cc20368c577cd1b7484a7a488053fe551a034a78c6ab02386"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-browser/denied-390x844.png",
+      "bytes": 21530,
+      "sha256": "b2c487ddf267a61444ba8c9116894b15e602e9020d82e54bb04701dcf729bca5"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-browser/denied-430x844.png",
+      "bytes": 22202,
+      "sha256": "87e7825ca5be127e77c391421fb64dcc0b40dd53fc8bb5924d0693812abc691d"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-browser/expired-policy-360x844.png",
+      "bytes": 25501,
+      "sha256": "8655db53c6e598df8c5807ed53b29274d612dbb84f5efbae1969593a17cdca31"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-browser/expired-policy-390x844.png",
+      "bytes": 25835,
+      "sha256": "d4597a829be9201c1b57ca611c2e40d5071ffa0472edbe67a8d71709ede4c41b"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-browser/expired-policy-430x844.png",
+      "bytes": 26566,
+      "sha256": "3c40eafb25226985374a6aa39d7f0b2642deb33b1da41122fcb97ce784c5a93b"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-browser/gone-360x844.png",
+      "bytes": 23024,
+      "sha256": "cad248687d078aeb923bb6ae3ddbcdf4d78de73dfd3a973c95e56d7e879adbb7"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-browser/gone-390x844.png",
+      "bytes": 23482,
+      "sha256": "2798994a5f2b421e49ce161468b8844af311b7698ce24cd720affa72bb900974"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-browser/gone-430x844.png",
+      "bytes": 24196,
+      "sha256": "3cd4ff823b8e9ec7ab1ab7a73e88f6be8bb36ab4e194c720eedb3263c99aa9f7"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-browser/maintenance-360x844.png",
+      "bytes": 22993,
+      "sha256": "1c02c44744390cf306f4edfde076a3727999223373d49df998bf57a54e83faed"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-browser/maintenance-390x844.png",
+      "bytes": 22924,
+      "sha256": "bd0c4334bd075e1da29bebbcccf699cd83e30a7f0e134b33819085417cd96c93"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-browser/maintenance-430x844.png",
+      "bytes": 23315,
+      "sha256": "2757bff1c75dfaf1178d4f839031065b982842bc38f22371472f80f9ad78367a"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-browser/minimum-version-360x844.png",
+      "bytes": 25086,
+      "sha256": "944aaf1ac94d8f38c3203aac371e7f95f5145e2d71907c9812e69405324ba478"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-browser/minimum-version-390x380.png",
+      "bytes": 22947,
+      "sha256": "c3603731b0fab43ba967cffe07b7a098838591eb6cc75043a73abc0a51ef5148"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-browser/minimum-version-390x844.png",
+      "bytes": 25374,
+      "sha256": "1d1a8060fcd6884e4dd8e6c1bfc7183d6fdb86b6ed3cb112f4424e4a66b22403"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-browser/minimum-version-430x844.png",
+      "bytes": 26252,
+      "sha256": "da81f7ae6a83b4bd8b7c087a16da5022cd6963df4e5ac9e94f7f5d9712fb7f41"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-browser/minimum-version-keyboard-focus-390x380.png",
+      "bytes": 23258,
+      "sha256": "001dc62472f7b68bd82c84b2794a5373cf92a5309992362ed738f6e76bd8b694"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-browser/minimum-version-keyboard-focus-390x844.png",
+      "bytes": 25699,
+      "sha256": "5cb500d8d7470bcf3ed16f28514f5cef28ed6d39f7bb1359408599601bd18c77"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-browser/not-found-360x844.png",
+      "bytes": 20073,
+      "sha256": "69954a37f12d9d960954eb4e852aaaec88b23fca7f982013f4912147da11b104"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-browser/not-found-390x844.png",
+      "bytes": 20886,
+      "sha256": "03fb4a615397c53fb4e22b662ceffbd15ae319540bd2fe14579163716d9c2c92"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-browser/not-found-430x844.png",
+      "bytes": 21559,
+      "sha256": "da89dbec322310daeaf6dee37fa08883b8d55b6cf64582458667a88ca4c198bb"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-browser/policy-pending-360x844.png",
+      "bytes": 20869,
+      "sha256": "11ee1b269bda7904b2a5be35c3b5726817dde4dbff67b6a17b566280047e6496"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-browser/policy-pending-390x844.png",
+      "bytes": 21003,
+      "sha256": "546e20e9a0b070e5207c8fb01147f31e8159c1eb1f45b299ce3c3b8ae58f3e78"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-browser/policy-pending-430x844.png",
+      "bytes": 21887,
+      "sha256": "d91977b5abe4c27c533077be88379b37505206360b782b06c4e8f4cce34db6f9"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-browser/report.json",
+      "bytes": 176967,
+      "sha256": "7bf4cd1aa7a7901b34440eb1f70ae3ddb45923de024b4f95fd5fb53c372534d7"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-browser/report.partial.json",
+      "bytes": 176954,
+      "sha256": "41715a748ced7aecd326a1b9a8bfbf28408218e04356e0cefc63422e7337a5f4"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-browser/session-boundary-360x844.png",
+      "bytes": 21288,
+      "sha256": "6f588ecd6c590f89bf77a2b6f307aaeaa2e661ca4109d58f568c814685f19544"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-browser/session-boundary-390x844.png",
+      "bytes": 21963,
+      "sha256": "843e50d3334816dccc5305d68d6405f6c02b09b5c51c8b7493aa4642d609375b"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-browser/session-boundary-430x844.png",
+      "bytes": 21630,
+      "sha256": "579581e87f080fa38e2256f9e9548c52479d3655b83063d46d48795980f9bef3"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-browser/throttled-360x844.png",
+      "bytes": 23165,
+      "sha256": "b0374f580f2d5d69dcc28fa5c85bd459ea5024d41142a46eee68ce9aadc4a59a"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-browser/throttled-390x380.png",
+      "bytes": 21227,
+      "sha256": "6918684b025d65af8bd21bd99aa1cfb0283194b94071b47524f6097b319a6df3"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-browser/throttled-390x844.png",
+      "bytes": 23616,
+      "sha256": "35dd59277be91f30bee229f17aa8feb26de97bc9bdc3d4dff08bdaa4f8c4f664"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-browser/throttled-430x844.png",
+      "bytes": 24326,
+      "sha256": "7fa221a392b6f22606504a74b496d7b9f8b1e4d1c77a88628224da5533cabe53"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-browser/unavailable-360x844.png",
+      "bytes": 25501,
+      "sha256": "8655db53c6e598df8c5807ed53b29274d612dbb84f5efbae1969593a17cdca31"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-browser/unavailable-390x844.png",
+      "bytes": 25835,
+      "sha256": "d4597a829be9201c1b57ca611c2e40d5071ffa0472edbe67a8d71709ede4c41b"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-browser/unavailable-430x844.png",
+      "bytes": 26566,
+      "sha256": "3c40eafb25226985374a6aa39d7f0b2642deb33b1da41122fcb97ce784c5a93b"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-disposition.json",
+      "bytes": 1853,
+      "sha256": "27e302d5f3e81247d6951f35e236425bcd0d824482efa9b4622b1ce8dcc8f7d0"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-freeze.json",
+      "bytes": 845116,
+      "sha256": "fbb13244a67670cc002d9665e6666228f0248bfcd85fa21d21a7b4e22573610f"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-guardian-config.json",
+      "bytes": 2797,
+      "sha256": "a534ef0630fb7dfd44db34e90e206080371239e956399c6b1812a05f67cd6a1f"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-guardian.bootstrap.json",
+      "bytes": 13847,
+      "sha256": "840986487cac758e89e220e64a8a33b5f5c614dbf30f663303f558c9f060199d"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-guardian.json",
+      "bytes": 27439,
+      "sha256": "7fbb9b666978321ddfd2cb5a0e2c6ab2f7d6defc83528f83ee2e02af33c565e5"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-guardian.ready",
+      "bytes": 11392,
+      "sha256": "2cf824ced7b5b350bf724600158f9c7499375eab64adfb319ac68e39aaf7f8cf"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-guardian.stop",
+      "bytes": 18,
+      "sha256": "7ab0be7557943bf961308bbccb891bf8c45a545a6a33b9bcbfac94df3cd82e53"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-independent-census.json",
+      "bytes": 12659,
+      "sha256": "0e1191f0d21d0cd3ee29ddb28394aae2c95d665e3de2eeff38f9655b828415dc"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-owner-visual-notes.md",
+      "bytes": 2375,
+      "sha256": "fa617fb8ad463ed575e1fc4f2746be086d535a96275340447692340285236166"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-primary-census.json",
+      "bytes": 12660,
+      "sha256": "8dd6d39304e1735f2f53e19d883ab71b0201d459624060ada958b1e39ce0a4b4"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13.json",
+      "bytes": 48850,
+      "sha256": "1729c155a37404ab18312ff1560c68313ed257bdc15c133621b7e6ab58b2fbbf"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native13.log",
+      "bytes": 913,
+      "sha256": "0eb2e7dfea853b7179b818e1f705c7978c927b7b84765fa5082668b262df7a50"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/pi01-contract.json",
+      "bytes": 5513,
+      "sha256": "d897b5e68116d216cdef20533d755bfb19f3c62629b07aa4f0103b9d56461c94"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/producer-final-native10-readset.json",
+      "bytes": 12188,
+      "sha256": "eb80d722f513ce794fe35317a87702dd2878321a2d76f313d36265b3d593d5ef"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/publication-source-checkpoint.json",
+      "bytes": 3508,
+      "sha256": "ca81e5cc8b69e55d0664de128d7cde16cfa178c8ebb2ed37d1757e627f2ca7cf"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/receipt-path-regression.py",
+      "bytes": 2275,
+      "sha256": "19c42187d2460e140c276561251199b0e051cccffe3e51e1cbef7ad0a1a6240c"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/scope-guard.py",
+      "bytes": 3990,
+      "sha256": "68c7cb0b25ee6e377a726f6a68adb23e7954171cad8a1df6a9cfd5032fca8b16"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source-freeze.json",
+      "bytes": 847411,
+      "sha256": "abed2a0efb9d465b86fafde32a47546861e560698475538521d145e1d6aef9a4"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source01-FULL.json",
+      "bytes": 3447,
+      "sha256": "40c1233473cc266339362838b784d1036e2dd9555025249e7cd7e839a2ed9939"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source01-acceptance.json",
+      "bytes": 2556,
+      "sha256": "58bd93eca1b8ace462cd56a27e66c9f89311674e0b13646a098a90f83cd84107"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source01-fix-freeze.json",
+      "bytes": 847788,
+      "sha256": "070106e440ae88e7f7df3d2082a3dbb08fae0b513103814692937271eafd7b33"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source01focus-guardian-config.json",
+      "bytes": 3989,
+      "sha256": "d8689da07dca6a1418e597971b7867619aab06a4e0654b92a754b2a35b25d03a"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source01focus-guardian.json",
+      "bytes": 4902,
+      "sha256": "98c3a3647e93f277d3eb152d5d24735f51276a594f18e70e070ff292ae03e900"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source01focus-guardian.ready",
+      "bytes": 1902,
+      "sha256": "307bdc74f88f3acc06aacc7f09cc862e1a9e2ce60dcbd09a569aa720db029cff"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source01focus-guardian.stop",
+      "bytes": 18,
+      "sha256": "d1f1672315bdd93af2a576164b7ddcbcb961f785f2cdea4da19879c34f4abe42"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source01focus.json",
+      "bytes": 8524,
+      "sha256": "f75b4b8eff1f5c81966aca2896a80376ce9683562819f7610e1df9c002c92820"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source01focus.log",
+      "bytes": 245,
+      "sha256": "741c255bf21a96d56701952619c694620ef7181af4f31106c39f40736f7f43cb"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source01guard.json",
+      "bytes": 1712,
+      "sha256": "f820785750f5ea70692057fc650a50e8e558bff60aef7b5a775187bac64163b8"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source01guardB-guardian-config.json",
+      "bytes": 3991,
+      "sha256": "95dcd2957f98bb2e48954c22100f5c4e7d126d6b0392078038ab2f40b97c3e41"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source01guardB-guardian.json",
+      "bytes": 4904,
+      "sha256": "c4643e0e3082226b6ba59fb29305b80bc342baabb7f519170ac03d6b53125108"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source01guardB-guardian.ready",
+      "bytes": 1902,
+      "sha256": "3a2ed55f5e57168d3dbdb7d233f7b363432469d85c05ec8ff589ec6427e3fdd9"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source01guardB-guardian.stop",
+      "bytes": 17,
+      "sha256": "56da629fd6e1b236c7a83551431cf416b1e070abada950e432ff1ff33624bab2"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source01guardB.json",
+      "bytes": 8230,
+      "sha256": "c2506d882b83f3d83ad9a22bbb5f59f27b235a12d7b82ffec4db61aaf4ef6f0f"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source01guardB.log",
+      "bytes": 277,
+      "sha256": "aa5ffda9961aca3ed74a97d7bf02872336ce30c123a697d79199659d0e11bc0d"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source01types-guardian-config.json",
+      "bytes": 3989,
+      "sha256": "5880a6d4c3cb4203ebcd1487d4e2bd380461459cc9828e9f7a849d72e28f4c1d"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source01types-guardian.json",
+      "bytes": 4908,
+      "sha256": "67d02a3c05b7e26b2a547c3b9e4af7d22896411134ab753c3af1d0f0f2fc04a0"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source01types-guardian.ready",
+      "bytes": 1901,
+      "sha256": "aa8966bbc3c9de49dbbe9b9b15beb6152c388e6f5454864045bde116fad4e9bd"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source01types-guardian.stop",
+      "bytes": 17,
+      "sha256": "c0bcba8368c266e8d4e2322d1db7dee0cb1bff524f7f623317a2c59663793f31"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source01types.json",
+      "bytes": 8403,
+      "sha256": "a2007e84f28f28c6d04db9ec433fa1f2cd5dc46f13befee165e2d2c7f2937afe"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source01types.log",
+      "bytes": 241,
+      "sha256": "13f46036ae3f0d447ccee3bdec16747fece7255dfff3b2fff681d6f5e0a8e77f"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source02-FULL.json",
+      "bytes": 2350,
+      "sha256": "c558cf15958f54133aa9b7671611c1aa6d50bd6da8f38e31a0e899537c04ab5f"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source02-acceptance.json",
+      "bytes": 7234,
+      "sha256": "cdc25ac6dbfeb400b40f79d722de72c50daa5f387cb5781f437cda4f8fd06b14"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source02-fix-freeze.json",
+      "bytes": 850620,
+      "sha256": "15bc959200240d0de2e581eb282d6e81d6366f54a9c05af980dbf634ded3a37d"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source02-freeze.json",
+      "bytes": 850206,
+      "sha256": "6d5db8e90703c15971a9c29010e6bf36e78748e661f71f8d378b1e8ed50e178d"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source02-preflight-1793840163453693000.json",
+      "bytes": 5058,
+      "sha256": "7161f415735d55d4b247993130d27467795c7a477076a40a639dc915bfc36c56"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source02types-guardian-config.json",
+      "bytes": 9003,
+      "sha256": "fc8812ea8385bdc20ad978a197041e49ea90d4f9ce8b8f057d2f5a7802ff4a15"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source02types-guardian.json",
+      "bytes": 13749,
+      "sha256": "e92499c72a80da57fe132d5cc8eea759910d613d2a4379846059b90c21e06cbb"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source02types-guardian.ready",
+      "bytes": 5624,
+      "sha256": "637e378ad28b467bd1054b1c00a8604c0011b007d3660fb01b04e57073a2159c"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source02types-guardian.stop",
+      "bytes": 17,
+      "sha256": "4e63f2a99e62a8e6d92276f7b9284e03894e7423c0adf5709b560fc30e98bbba"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source02types.json",
+      "bytes": 21855,
+      "sha256": "c32ba6f89a92f5712271dfbe5d3ce894762f2ca5f4dcd17fe7c6771c772b784f"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source02types.log",
+      "bytes": 249,
+      "sha256": "a3adc0d081b5270ff712e25010cc823dc0fbe2427b766d8b45ad6fad252518a9"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source02typesB-guardian-config.json",
+      "bytes": 9005,
+      "sha256": "453c0af1fa1e3ec0af7233f5bc88a98d8001a49fedef1eae23193dc1cb503d61"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source02typesB-guardian.json",
+      "bytes": 16284,
+      "sha256": "a3f04a45f8acb71d484bb8d4406c297419f46f072d6bd29597e4e655f15028d8"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source02typesB-guardian.ready",
+      "bytes": 7090,
+      "sha256": "ffbc6745f8cd8c8791183eb0cbde713c5ac4b0aecac22db8ba9f5827f58802ef"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source02typesB-guardian.stop",
+      "bytes": 17,
+      "sha256": "0ce583affed257bf1f25f6bc5a626507b1eee488f02aa10b8472e35c6c89630f"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source02typesB.json",
+      "bytes": 26200,
+      "sha256": "ba9b9bcce5d8e1598184f3cc558ad94b8df1f9aba1232aa7e494d01d4c003454"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source02typesB.log",
+      "bytes": 1279036,
+      "sha256": "5746e047117be35e00ea3d9c32085e4a3d3bb97dbe0af2eb486572cdcae03a66"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source03-FULL.json",
+      "bytes": 449,
+      "sha256": "7d97192b927b720f8f08fa43bb4c7be5878ac00c157e10389c2c90a3b5b5d716"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source03-acceptance.json",
+      "bytes": 1015,
+      "sha256": "9fe8b7b9d216e631367842a7cc9f17ee55f94a3754269e7b14f25948862c64f7"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source03-bootstrap-acceptance.json",
+      "bytes": 569,
+      "sha256": "0094fa1efb11fd4c2494ffc44d3ff5aab71d5923c092faad6485501f8fcbf4f4"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source03-freeze.json",
+      "bytes": 850947,
+      "sha256": "fb6611751db499f8860ca9cc8bfa9e124be80d7285f5200ca8088f93d965ede0"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source03-peer230-receipt-correction.json",
+      "bytes": 3787,
+      "sha256": "3eea5fe5d0f440b710c283a1581b8ac25b070638e156c8dbc27cdc14a885d740"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source03-peer230-receipt-failure.json",
+      "bytes": 2263,
+      "sha256": "31bb14a60479946d4cd2a215de95ff5e82fa776601fe4e2f2af062bb37afabd4"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source03.json",
+      "bytes": 1635,
+      "sha256": "bdb78d854f584f4f0107ce7d446b0b731f2dae6d449d8d73eb853103bb0cf066"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source04-FULL.json",
+      "bytes": 391,
+      "sha256": "dca3e92e88f33dbcba563aaf001b03de420aee332309dc15a139ba8a5ed5f730"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source04-acceptance.json",
+      "bytes": 1050,
+      "sha256": "abce1bdb90499f74cbeeb4ba2fcd7af6734b55e3f3e369efb91b953b80b019e3"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source04-bootstrap-acceptance.json",
+      "bytes": 604,
+      "sha256": "f4362660b714437ef681b9affe069b8b62e80de021fa79878018b0a860b3c10a"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source04-freeze.json",
+      "bytes": 851219,
+      "sha256": "47b016b6a8319c648adc7147e0a2f228ee89e22330fb3d0d30a486014a33800a"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source04-owner-schema-failure.json",
+      "bytes": 2130,
+      "sha256": "0bb45813dc9bbb20836879290e806ad9afd12302683e513c189b496b1ddbf027"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source04.json",
+      "bytes": 1609,
+      "sha256": "bac957cf6dfb75340d40770516901e1826b58db39a5ba0af1a40f1252deb5bb7"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source05-FULL.json",
+      "bytes": 442,
+      "sha256": "12ed0a9824d72686a49aa5786306c43e63a28ad4976d92be67fc72f96aaa4c2b"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source05-acceptance.json",
+      "bytes": 1050,
+      "sha256": "583d9f96ee1aa401b5139623f10d9995d07fde268e8673d256f8738f5900ed43"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source05-bootstrap-acceptance.json",
+      "bytes": 604,
+      "sha256": "3205c3c5a07c0e2f9e42fb641a5b6b20ff69cfd0bf53a6ab73710bce2d2fe5fe"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source05-freeze.json",
+      "bytes": 851220,
+      "sha256": "b5bada553c0a619e33db821237f56d2ac4301b6a90bebf9eb2908ef76189be9e"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source05-guardian-config.json",
+      "bytes": 2820,
+      "sha256": "e85960a4c23c2acb57494fd542e9cee8269729b5730de125ceb704bd5264132a"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source05-guardian.json",
+      "bytes": 23949,
+      "sha256": "e4337e629d787f79e90f5a41efc8fce99f06b9614c246e10c6705764191ea321"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source05-guardian.ready",
+      "bytes": 9805,
+      "sha256": "baa4dc59d5e1abb5469dc33c3767b98bed8087d5554be714cf7074c6fc6a45e8"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source05-guardian.stop",
+      "bytes": 18,
+      "sha256": "10d79de3dfd4e4bb4346db625d5e1ca0cc1942cc3edb37b394b5be78041a84e9"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source05-independent-census.json",
+      "bytes": 10954,
+      "sha256": "e9f3040f10aa209a7c1c34b4f7239d3c30bb4e96477e0c9120eba4d778a95090"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source05-peer213-full-observation.json",
+      "bytes": 2014,
+      "sha256": "c1a0a52516647ff4c5d03cf18080a78d70d88e77292ed1218ef608286f3d6316"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source05-primary-census.json",
+      "bytes": 10954,
+      "sha256": "c4b1537c3da2b1a1d88db62361ad01266897c09a9cbb2f19e43b7e73ea6ab946"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source05.json",
+      "bytes": 37335,
+      "sha256": "98eeb0ff5fc5d2ddffcbd792c856fa8fc03f29706d21c2d8974e16817c935332"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source05.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source06-FULL.json",
+      "bytes": 377,
+      "sha256": "0ddda5108a95b3bdb4a0638a860c76b6021b9d8626d86f50b0fc5a6d6eaf2859"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source06-acceptance.json",
+      "bytes": 1048,
+      "sha256": "f075ac666734c421cc7e0554e98d487191a877e7d0075f761a88be2e142c777a"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source06-bootstrap-acceptance.json",
+      "bytes": 601,
+      "sha256": "f78b6bd86a93e55ca632ce7d25d28a744df3b498e1f13585c577bc43bd1c7e69"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source06-guardian-config.json",
+      "bytes": 2814,
+      "sha256": "f57690e2fe0ee84005e5ecceb65c8d35fe4fb03d1aeeaeddb9a01dc1da69d8d1"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source06-guardian.json",
+      "bytes": 23884,
+      "sha256": "200977d715e49330d5a263627aa713466fb3fd5ee3606a96a753dc12b277a503"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source06-guardian.ready",
+      "bytes": 9805,
+      "sha256": "f4816f61f4f3083e7ddadc7408772113b84822b82f520abc645e89d27e911007"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source06-guardian.stop",
+      "bytes": 17,
+      "sha256": "1d7317d50300e2212ccd9957d1215626918372bfc24a2df91762ef040c03150a"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source06-independent-census.json",
+      "bytes": 10955,
+      "sha256": "7ce186aa32d440d1406e21fb58e3c61c3c6826a035db1edbd69858c7fa50d6f2"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source06-peer-state-failure.json",
+      "bytes": 2207,
+      "sha256": "8df0d8ba8525719e911293038baab49b5b41429d958efe40baf9eaa80aa53f24"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source06-primary-census.json",
+      "bytes": 10954,
+      "sha256": "eb0ad14ed235b4bb42fc268b24cdecfc4d60c83f5a911f64f1f77c64db5f54fd"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source06.json",
+      "bytes": 38159,
+      "sha256": "f99ffc9a84e2e7264d09155c8a9a06025efa60ebe78213799c9ea557212de0a8"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source06.log",
+      "bytes": 24,
+      "sha256": "7139b41275c3dcfae391ded25a1455e8ff8c9d2cd82b5f63d60df33cd18255f8"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source07-FULL.json",
+      "bytes": 376,
+      "sha256": "edc7cb7529736eaf5b5bf9f0a188d236be8ea8ac5ec18a490fd5faf96d26d359"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source07-acceptance.json",
+      "bytes": 1050,
+      "sha256": "bcf51c8e7deb23c7473b26507a0c06aca8be96e7f0391917e2dd2a17f1bba87b"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source07-bootstrap-acceptance.json",
+      "bytes": 604,
+      "sha256": "a8ef3da0de28d6d78c76fe557f6d35baa42f97fc8c032b83c466badac4503010"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source07-freeze.json",
+      "bytes": 851384,
+      "sha256": "bc7e90ea7931e15a2c7653bfe7b2ae894457e95722cfd3da9c4b59e9d2da7c49"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source07-guardian-config.json",
+      "bytes": 2820,
+      "sha256": "b19c36bb8c5b6327c3404b841bb96c19e263b2ceed5909ab3f791255d49e1e54"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source07-guardian.json",
+      "bytes": 24940,
+      "sha256": "73a9bd87b74f7024922f87ffb17cccb1b212fc70f73e34e1c7759bddd92de2f2"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source07-guardian.ready",
+      "bytes": 10208,
+      "sha256": "bbae625f7fcf3e83207d1e9e4d66f554cdda977f312383ccd7228a9e88493ea4"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source07-guardian.stop",
+      "bytes": 16,
+      "sha256": "eb01974ab3265093c5515426252c14f7bf1b8fe3233dbb33d5e93cea2fab0e39"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source07-independent-census.json",
+      "bytes": 11438,
+      "sha256": "5c1760b692bdcc55f877c548db0418292f2fad6d8c2c530c94bc2440cd9663c3"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source07-primary-census.json",
+      "bytes": 11438,
+      "sha256": "fe4d5d4f16fcddb67adc3949bdda91f968d842fd1dba8af39d1285846cb2d932"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source07.json",
+      "bytes": 39737,
+      "sha256": "73e80f27e8e51ffd4a0d623b23cfe095998329ae13b31e711a99df47f599ba57"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source07.log",
+      "bytes": 12,
+      "sha256": "5b16cd1f12dc08d9c026df14d14b33ffbdd21244471f86171fd9a2e851a78d06"
+    },
+    {
+      "path": "docs/mcr/frontend/parade-ink-pre-world-policy.md",
+      "bytes": 4847,
+      "sha256": "6a916f63c53332eeb833bf54b601ea4775638394810c4497256325b6a95b2d5e"
+    },
+    {
+      "path": "frontend/e2e/visual/parade-ink-pre-world-policy/fixture.ts",
+      "bytes": 239,
+      "sha256": "1956ed5274061f25cd0c8321ecc912f1db7b3741dc26d8194ece3f29fd0ed7b1"
+    },
+    {
+      "path": "frontend/e2e/visual/parade-ink-pre-world-policy/native.html",
+      "bytes": 267,
+      "sha256": "4ad454a243a88e0ba817fa7242ca9e9e2edff48f27ce00e8271274b23a7f4759"
+    },
+    {
+      "path": "frontend/e2e/visual/parade-ink-pre-world-policy/native.mjs",
+      "bytes": 13730,
+      "sha256": "42407d303d9b840e179d669f96a748706500d7e39740a90abb68ba228f7f80d9"
+    },
+    {
+      "path": "frontend/e2e/visual/parade-ink-pre-world-policy/vite.config.ts",
+      "bytes": 2500,
+      "sha256": "2fb3d015233dd21c1c60d588f7188452380df1092afa1694b460a4427cb69355"
+    },
+    {
+      "path": "frontend/src/app/WorldShell.tsx",
+      "bytes": 14304,
+      "sha256": "e2d69c0b41156be38879b3758a33ca8db3c4e1b8325fb6aa4217fd504a5f07bd"
+    },
+    {
+      "path": "frontend/src/app/pre-world-policy/PolicyNotice.tsx",
+      "bytes": 1453,
+      "sha256": "0990976fff2823e88c345b280b32ef253d996c31c14e206f9ebafdbdaf900dec"
+    },
+    {
+      "path": "frontend/src/app/pre-world-policy/__tests__/parade-ink/frame.test.tsx",
+      "bytes": 2418,
+      "sha256": "57d5502ba6b41667ac41dfc6cb43a7d2144fc5c8c42dfc85ab369c030e49c64f"
+    },
+    {
+      "path": "frontend/src/app/pre-world-policy/__tests__/parade-ink/vitest.config.ts",
+      "bytes": 525,
+      "sha256": "808a73983d775971a0e8f4a66dc3dacf5e177a0fc1de2bd43f71c3fa3c260bbd"
+    },
+    {
+      "path": "frontend/src/app/pre-world-policy/parade-ink/PreWorldFrame.tsx",
+      "bytes": 801,
+      "sha256": "9fae8ff3d927b70da481334e27c712418d6321ae30a052c008ebeb2a1c3a1164"
+    },
+    {
+      "path": "frontend/src/app/pre-world-policy/parade-ink/pre-world.css",
+      "bytes": 2841,
+      "sha256": "a6ced91cc84d70c74fdd6bbe0a56e0609d5640f9c51996862ea1979f13cc21ff"
+    }
+  ],
+  "manifestSelf": "Publish this file from the final committed handoff HEAD; self-hash intentionally excluded.",
+  "canonicalFoundation": {
+    "source": "7f9d1095c492867aac70c91c3a9a1b3ab161c687",
+    "canonical": "651159ec7bae9ff5e1bbc9d3dd083fc08faa02d9",
+    "readsetSHA": "eb80d722f513ce794fe35317a87702dd2878321a2d76f313d36265b3d593d5ef"
+  },
+  "sharedComposition": {
+    "path": "frontend/src/app/WorldShell.tsx",
+    "base": "8b47e0e40e8182d2401565fbb079533efffb41e7",
+    "rule": "Compose ONLY necessary PreWorldFrame import and BootstrapBoundary NON-READY fallback presentation into current canonical WorldShell. Preserve ready return/hooks/logic/allcurrentHUD/downstreampeerchanges. Do not replace current caller with this old-base whole-file postimage.",
+    "leafRule": "PolicyNotice.tsx: presentational wrapper/import/classes only; exact predicates/copy/minVersion/reload/retry/navigation retained."
+  },
+  "validation": {
+    "sourceProtectionGroups": 6,
+    "newFrameCases": 3,
+    "sourceLint": 0,
+    "fullNonincrementalTypes": 0,
+    "literalDecoderCases": 6,
+    "exactFinisherCases": 5,
+    "changedDriverLint": 0,
+    "nativeScenarios": 35,
+    "nativeCaptures": 37,
+    "ownedFrameCaptures": 34,
+    "external401Compatibility": 3,
+    "nativeBrowserExit": 0,
+    "dualGuard": "PASS",
+    "resourcesReleased": true,
+    "ownerVisual": "All37PNGs+Photo2 opened, no material assigned-region defect",
+    "evidence": "native13-disposition.json/native13-browser/report.json/native13-owner-visual-notes.md",
+    "retainedSource": "source01/source06/source07/native05/native09; no unchangedreplay"
+  },
+  "publishingOwnerDuties": "Current combined composition/path checks and nonforce remote delivery/readback under its authority; resolve technical integration directly, no King/SL ACK/review or wholefamilywait.",
+  "remaining": "One actual canonical publishing receipt; no independent producer or oldFE41 reopening.",
+  "limits": [
+    "No wholePI12/QA06/IN04/IN05/IA closure",
+    "No live catalog/server/physicaldevice/multiuser/load acceptance",
+    "Generalroute/inWorld/Operator/Reports remain otherowners",
+    "Three401captures unchangedowner83boundary compatibility, notleafvisualredesign"
+  ]
+}

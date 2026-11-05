@@ -1,0 +1,222 @@
+{
+  "root": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2",
+  "scratch": "/private/tmp/mcr-pi12-preworld-source02types",
+  "output": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/source02types-guardian",
+  "supervisor": 81688,
+  "cutoff": 1793840628,
+  "processes": 24,
+  "rss": 3221225472,
+  "temporary": 25165824,
+  "whole": 17179869184,
+  "growth": 33554432,
+  "durable": 4194304,
+  "files": 90000,
+  "admission": {
+    "measured": 1793840537.434707,
+    "free": 16419082240,
+    "sourceFiles": 16292,
+    "sourceBytes": 1466792908,
+    "gitFiles": 4103,
+    "gitBytes": 1185275531,
+    "metadataFiles": 10,
+    "metadataBytes": 3486195,
+    "dependencyFiles": 11104,
+    "dependencyBytes": 408236853,
+    "pythonFiles": 25322,
+    "pythonBytes": 985764025,
+    "nodeRuntimeFiles": 4797,
+    "nodeRuntimeBytes": 197443269,
+    "outFiles": 33,
+    "outBytes": 6975199,
+    "browserFiles": 697,
+    "browserBytes": 1524099438,
+    "nodeFiles": 1,
+    "nodeBytes": 122564432,
+    "offer": "PI12-PREWORLD-REMAINDER-SOURCE02-0048",
+    "accepted": 1793840538.236363,
+    "cutoff": 1793840628,
+    "release": 1793840688,
+    "startFloorGiB": 11,
+    "otherWorstGrowth": 3221225472,
+    "minimumCarryBytes": 15430943909,
+    "minimumCarryFiles": 62325,
+    "ownerReceiptBytes": 2015,
+    "head": "2c63bca3afa1db25aece72c8e5cf9663bbd258eb",
+    "initialGlobal": {
+      "metadataAsOf": "2026-11-05T00:56:25.476625+00:00",
+      "receiptPins": [
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08.json",
+          "bytes": 1058,
+          "sha256": "4bc3c62e8f2c4bb82d6c6bea339878ac3df7e46f3ee9b7062e679f9d46678418"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fe-1ab7-79b0-adbc-d4c025701acb.json",
+          "bytes": 1478,
+          "sha256": "c861a981804c192f95a09de7b491e0ef46d4b9f45c6983bbfea062b05bb362c4"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fe-1eed-7d12-a247-879cd521e0ec.json",
+          "bytes": 1909,
+          "sha256": "a0c50d8018c7dcc5458903f6ceb0fa8cf1b15ae96bffba3fdc976385cb008f5e"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a207-f012-7343-a24b-12b9c544973f.json",
+          "bytes": 1038,
+          "sha256": "f0d8439da50bf3629bc1ebf6a2e05b68c6d6b036e58f701454c591f824d8d8ab"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a20f-8d37-71c3-a429-8a55bb6d6c49.json",
+          "bytes": 1167,
+          "sha256": "4b65792b9e25193b351300b66dae6f66e48b7d4c711443792c30952b7570dccd"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a21a-a088-7c31-83e3-19de119ba873.json",
+          "bytes": 2209,
+          "sha256": "d29934695b72751a32bcaa3b6b446a5adeafb0688c970757affbcdcaff1d7b3a"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a21e-ab80-7012-b9fa-cdb69eed097b.json",
+          "bytes": 2015,
+          "sha256": "16dd1e60e118e507232c6bfca68deee2ffc7c9d90ed5d6f9963b506b8d575df0"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a232-21e2-75c2-8474-a5fa6ae895cd.json",
+          "bytes": 1176,
+          "sha256": "7455092d2fe3ee2cba2638132fdb7e37ecf43f360a7d28f51a32bff7f0f3d191"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a267-37a0-7723-a4e9-a3a6f5b27f52.json",
+          "bytes": 1109,
+          "sha256": "905b9a29a5ed197a1db92a3296c8c67b99e834404dede47c712f46cb612b81d5"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a26e-1de2-7b41-a294-c9a79cfded9b.json",
+          "bytes": 1707,
+          "sha256": "4cf912ee224f02f6519045f9fb45b420b5d6d8bf99bf9f4689977faac1126636"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a533-50a8-7fb2-b3ed-96b941b96bbf.json",
+          "bytes": 1396,
+          "sha256": "4d53aeaad195bfa3e117aac1353cfcd5cbcd2f77cf9df4db46045b4a03897a49"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-40c576fad94a.json",
+          "bytes": 1402,
+          "sha256": "9fbfecef595e2be2245c41476d82b3f08246e5ef66eadf226b4184c2d03db3c4"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-40fde6c81bb4.json",
+          "bytes": 1177,
+          "sha256": "a77c9fbdda5d7cd7e7da4d056e4ab0ff22ea684d0230608c59d55947272cfe48"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-412e295fa211.json",
+          "bytes": 2108,
+          "sha256": "22e23cae71a436afe56927e0c1f0aa46eee6879008f86c01166b59520890125e"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6954-7bd3-9b08-7109883187b5.json",
+          "bytes": 1182,
+          "sha256": "a4a44f540b9cb875b3a6e69cb79233c349c4ec80de684fd677e9e5e59f7e7612"
+        }
+      ],
+      "members": [
+        {
+          "cohort": "PI12PreWorld",
+          "kind": "source",
+          "pids": [
+            81513,
+            81674
+          ],
+          "processCap": 24,
+          "rssCapBytes": 3221225472,
+          "remainingNewBytes": 33554432,
+          "state": "ACTUAL_ACCEPT"
+        }
+      ],
+      "unresolvedPids": [],
+      "workflows": 1,
+      "sources": 1,
+      "browsers": 0,
+      "targets": 0,
+      "distinctPids": [
+        81513,
+        81674
+      ],
+      "actualRSS": 224067584,
+      "ordinaryGitOnly": {
+        "pids": [],
+        "script": "/private/tmp/mcr-publisher-412e-capacity-composition-delivery.py",
+        "sha256": "8bd689d14ffd14ef04b2209cf890eb113a52a261c350e9cc2809d60971293622",
+        "executionWorkflow": false
+      },
+      "chargedPIDs": 24,
+      "chargedRSS": 3221225472,
+      "otherUpper": 3221225472,
+      "processes": [
+        {
+          "pid": 81513,
+          "parent": 49590,
+          "group": 81513,
+          "rss": 221904896,
+          "birth": "Thu Nov 5 10:02:15 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B -"
+        },
+        {
+          "pid": 81674,
+          "parent": 81513,
+          "group": 81513,
+          "rss": 2162688,
+          "birth": "Thu Nov 5 10:02:17 2026",
+          "command": "ps -axo pid=,ppid=,pgid=,rss=,lstart=,args="
+        }
+      ]
+    },
+    "predecessorFullPaths": [
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/source01-full-release.json",
+      "/private/tmp/mcr-pi10-source04-0043/outer-full.json"
+    ],
+    "historicalUnknownDisposition": {
+      "pid": 35574,
+      "owner": "PI04GiveawayNative03 independentguardian",
+      "actualPrimaryPID": 35496,
+      "actualAccept": 1793840112.374063,
+      "literalFullUTC": "2026-11-05T00:55:33.004Z",
+      "source": "Directallocator actualresponsibleownerFULL, not PSabsence",
+      "receipt": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/parade-ink-giveaway/native03/round.json",
+      "at": 1793840500.921629
+    },
+    "fileCap": 90000,
+    "wholeCap": 17179869184,
+    "newCap": 33554432,
+    "temporaryCap": 25165824,
+    "durableCap": 4194304,
+    "processCap": 24,
+    "rssCap": 3221225472,
+    "onlyJobs": [
+      "types",
+      "lint",
+      "syntax"
+    ]
+  },
+  "commonGit": "/Users/lhs/Desktop/mcr/.git",
+  "worktreeGit": "/Users/lhs/Desktop/mcr/.git/worktrees/be-avatar-motion-v2",
+  "evidence": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy",
+  "carryBytes": 15430943909,
+  "carryFiles": 62325,
+  "mode": "source",
+  "offer": {
+    "processes": 24,
+    "rssBytes": 3221225472,
+    "newBytes": 33554432,
+    "otherUpperBytes": 3221225472
+  },
+  "offerId": "PI12-PREWORLD-REMAINDER-SOURCE02-0048",
+  "acceptedAtEpoch": 1793840538.236363,
+  "workDeadlineEpoch": 1793840628,
+  "fullDeadlineEpoch": 1793840688,
+  "guardianSha256": "902254775d5bd28f9d1f75c30c5b04348a966ff5a5602b86aa5249f8b89c8792",
+  "supervisorFile": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/lease.py",
+  "supervisorSha256": "504759e627cc9b1eb740c417ba48accf9a5d66b7c84fc955d7e82c54177ce032"
+}

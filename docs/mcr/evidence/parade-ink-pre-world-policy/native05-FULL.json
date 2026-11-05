@@ -1,0 +1,14 @@
+{
+  "state": "FULL",
+  "offer": "PREWORLD-NATIVE05-0226",
+  "finished": 1793845727.7126179,
+  "resources": {
+    "children": 0,
+    "link": 0,
+    "temporary": 0,
+    "reservations": 0
+  },
+  "receipt": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/native05.json",
+  "exitCode": 1,
+  "guardFailure": null
+}

@@ -1,0 +1,6197 @@
+{
+  "result": "PASS",
+  "captures": [
+    {
+      "name": "policy-pending",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "title": "Checking event availability",
+      "file": "policy-pending-360x844.png",
+      "capturedAtUTC": "2026-11-05T03:21:24.179Z",
+      "capturedAtKST": "2026-11-05 12:21:24 GMT+9",
+      "regions": {
+        "frame": {
+          "box": {
+            "x": 6,
+            "y": 58,
+            "width": 348,
+            "height": 218.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "2px",
+          "padding": "2px"
+        },
+        "title": {
+          "box": {
+            "x": 10,
+            "y": 62,
+            "width": 340,
+            "height": 48
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "6px"
+        },
+        "heading": {
+          "box": {
+            "x": 16,
+            "y": 70,
+            "width": 287.90625,
+            "height": 32
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "border": "0px",
+          "padding": "0px"
+        },
+        "body": {
+          "box": {
+            "x": 10,
+            "y": 110,
+            "width": 340,
+            "height": 106.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "12px"
+        },
+        "actions": {
+          "box": {
+            "x": 10,
+            "y": 216.1875,
+            "width": 340,
+            "height": 56
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "0px 12px 12px"
+        },
+        "controls": [
+          {
+            "name": "MCR Concert World",
+            "width": 142.71875,
+            "height": 44
+          },
+          {
+            "name": "Back to home",
+            "width": 316,
+            "height": 44
+          }
+        ]
+      },
+      "snapshot": {
+        "reads": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+            "query": "?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "method": "GET",
+            "authorized": true,
+            "cache": "no-store"
+          }
+        ],
+        "bootstrapDispatches": 0,
+        "retained": {
+          "path": "/meet/people",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "url": "http://127.0.0.1:5383/api/auth/capabilities",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/login",
+              "url": "http://127.0.0.1:5383/api/auth/login",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            }
+          ],
+          "frames": [],
+          "baselineEnabled": false,
+          "policyRevision": 1,
+          "sockets": 0,
+          "activeSockets": 0,
+          "peakSockets": 0,
+          "peakCanvases": 0,
+          "canvases": 0,
+          "sameHost": true,
+          "sameCanvas": true
+        }
+      }
+    },
+    {
+      "name": "bootstrap-pending",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "title": "Opening your event",
+      "file": "bootstrap-pending-360x844.png",
+      "capturedAtUTC": "2026-11-05T03:21:25.512Z",
+      "capturedAtKST": "2026-11-05 12:21:25 GMT+9",
+      "regions": {
+        "frame": {
+          "box": {
+            "x": 6,
+            "y": 58,
+            "width": 348,
+            "height": 218.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "2px",
+          "padding": "2px"
+        },
+        "title": {
+          "box": {
+            "x": 10,
+            "y": 62,
+            "width": 340,
+            "height": 48
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "6px"
+        },
+        "heading": {
+          "box": {
+            "x": 16,
+            "y": 70,
+            "width": 202.984375,
+            "height": 32
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "border": "0px",
+          "padding": "0px"
+        },
+        "body": {
+          "box": {
+            "x": 10,
+            "y": 110,
+            "width": 340,
+            "height": 106.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "12px"
+        },
+        "actions": {
+          "box": {
+            "x": 10,
+            "y": 216.1875,
+            "width": 340,
+            "height": 56
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "0px 12px 12px"
+        },
+        "controls": [
+          {
+            "name": "MCR Concert World",
+            "width": 142.71875,
+            "height": 44
+          },
+          {
+            "name": "Back to home",
+            "width": 316,
+            "height": 44
+          }
+        ]
+      },
+      "snapshot": {
+        "reads": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+            "query": "?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "method": "GET",
+            "authorized": true,
+            "cache": "no-store"
+          }
+        ],
+        "bootstrapDispatches": 1,
+        "retained": {
+          "path": "/meet/people",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "url": "http://127.0.0.1:5383/api/auth/capabilities",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/login",
+              "url": "http://127.0.0.1:5383/api/auth/login",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            }
+          ],
+          "frames": [],
+          "baselineEnabled": false,
+          "policyRevision": 1,
+          "sockets": 0,
+          "activeSockets": 0,
+          "peakSockets": 0,
+          "peakCanvases": 0,
+          "canvases": 0,
+          "sameHost": true,
+          "sameCanvas": true
+        }
+      }
+    },
+    {
+      "name": "maintenance",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "title": "World entry is paused",
+      "file": "maintenance-360x844.png",
+      "capturedAtUTC": "2026-11-05T03:21:26.829Z",
+      "capturedAtKST": "2026-11-05 12:21:26 GMT+9",
+      "regions": {
+        "frame": {
+          "box": {
+            "x": 6,
+            "y": 58,
+            "width": 348,
+            "height": 296.28125
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "2px",
+          "padding": "2px"
+        },
+        "title": {
+          "box": {
+            "x": 10,
+            "y": 62,
+            "width": 340,
+            "height": 48
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "6px"
+        },
+        "heading": {
+          "box": {
+            "x": 16,
+            "y": 70,
+            "width": 235.671875,
+            "height": 32
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "border": "0px",
+          "padding": "0px"
+        },
+        "body": {
+          "box": {
+            "x": 10,
+            "y": 110,
+            "width": 340,
+            "height": 132.28125
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "12px"
+        },
+        "actions": {
+          "box": {
+            "x": 10,
+            "y": 242.28125,
+            "width": 340,
+            "height": 108
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "0px 12px 12px"
+        },
+        "controls": [
+          {
+            "name": "MCR Concert World",
+            "width": 142.71875,
+            "height": 44
+          },
+          {
+            "name": "Check again",
+            "width": 316,
+            "height": 44
+          },
+          {
+            "name": "Back to home",
+            "width": 316,
+            "height": 44
+          }
+        ]
+      },
+      "snapshot": {
+        "reads": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+            "query": "?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "method": "GET",
+            "authorized": true,
+            "cache": "no-store"
+          }
+        ],
+        "bootstrapDispatches": 0,
+        "retained": {
+          "path": "/meet/people",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "url": "http://127.0.0.1:5383/api/auth/capabilities",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/login",
+              "url": "http://127.0.0.1:5383/api/auth/login",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            }
+          ],
+          "frames": [],
+          "baselineEnabled": false,
+          "policyRevision": 1,
+          "sockets": 0,
+          "activeSockets": 0,
+          "peakSockets": 0,
+          "peakCanvases": 0,
+          "canvases": 0,
+          "sameHost": true,
+          "sameCanvas": true
+        }
+      }
+    },
+    {
+      "name": "minimum-version",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "title": "An app update is required",
+      "file": "minimum-version-360x844.png",
+      "capturedAtUTC": "2026-11-05T03:21:28.093Z",
+      "capturedAtKST": "2026-11-05 12:21:28 GMT+9",
+      "regions": {
+        "frame": {
+          "box": {
+            "x": 6,
+            "y": 58,
+            "width": 348,
+            "height": 322.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "2px",
+          "padding": "2px"
+        },
+        "title": {
+          "box": {
+            "x": 10,
+            "y": 62,
+            "width": 340,
+            "height": 48
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "6px"
+        },
+        "heading": {
+          "box": {
+            "x": 16,
+            "y": 70,
+            "width": 274.40625,
+            "height": 32
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "border": "0px",
+          "padding": "0px"
+        },
+        "body": {
+          "box": {
+            "x": 10,
+            "y": 110,
+            "width": 340,
+            "height": 106.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "12px"
+        },
+        "actions": {
+          "box": {
+            "x": 10,
+            "y": 216.1875,
+            "width": 340,
+            "height": 160
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "0px 12px 12px"
+        },
+        "controls": [
+          {
+            "name": "MCR Concert World",
+            "width": 142.71875,
+            "height": 44
+          },
+          {
+            "name": "Reload app",
+            "width": 316,
+            "height": 44
+          },
+          {
+            "name": "Check again",
+            "width": 316,
+            "height": 44
+          },
+          {
+            "name": "Back to home",
+            "width": 316,
+            "height": 44
+          }
+        ]
+      },
+      "snapshot": {
+        "reads": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+            "query": "?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "method": "GET",
+            "authorized": true,
+            "cache": "no-store"
+          }
+        ],
+        "bootstrapDispatches": 0,
+        "retained": {
+          "path": "/meet/people",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "url": "http://127.0.0.1:5383/api/auth/capabilities",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/login",
+              "url": "http://127.0.0.1:5383/api/auth/login",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            }
+          ],
+          "frames": [],
+          "baselineEnabled": false,
+          "policyRevision": 1,
+          "sockets": 0,
+          "activeSockets": 0,
+          "peakSockets": 0,
+          "peakCanvases": 0,
+          "canvases": 0,
+          "sameHost": true,
+          "sameCanvas": true
+        }
+      }
+    },
+    {
+      "name": "unavailable",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "title": "Event availability could not be confirmed",
+      "file": "unavailable-360x844.png",
+      "capturedAtUTC": "2026-11-05T03:21:29.045Z",
+      "capturedAtKST": "2026-11-05 12:21:29 GMT+9",
+      "regions": {
+        "frame": {
+          "box": {
+            "x": 6,
+            "y": 58,
+            "width": 348,
+            "height": 298.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "2px",
+          "padding": "2px"
+        },
+        "title": {
+          "box": {
+            "x": 10,
+            "y": 62,
+            "width": 340,
+            "height": 76
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "6px"
+        },
+        "heading": {
+          "box": {
+            "x": 16,
+            "y": 68,
+            "width": 328,
+            "height": 64
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "border": "0px",
+          "padding": "0px"
+        },
+        "body": {
+          "box": {
+            "x": 10,
+            "y": 138,
+            "width": 340,
+            "height": 106.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "12px"
+        },
+        "actions": {
+          "box": {
+            "x": 10,
+            "y": 244.1875,
+            "width": 340,
+            "height": 108
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "0px 12px 12px"
+        },
+        "controls": [
+          {
+            "name": "MCR Concert World",
+            "width": 142.71875,
+            "height": 44
+          },
+          {
+            "name": "Check again",
+            "width": 316,
+            "height": 44
+          },
+          {
+            "name": "Back to home",
+            "width": 316,
+            "height": 44
+          }
+        ]
+      },
+      "snapshot": {
+        "reads": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+            "query": "?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "method": "GET",
+            "authorized": true,
+            "cache": "no-store"
+          }
+        ],
+        "bootstrapDispatches": 0,
+        "retained": {
+          "path": "/meet/people",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "url": "http://127.0.0.1:5383/api/auth/capabilities",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/login",
+              "url": "http://127.0.0.1:5383/api/auth/login",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            }
+          ],
+          "frames": [],
+          "baselineEnabled": false,
+          "policyRevision": 1,
+          "sockets": 0,
+          "activeSockets": 0,
+          "peakSockets": 0,
+          "peakCanvases": 0,
+          "canvases": 0,
+          "sameHost": true,
+          "sameCanvas": true
+        }
+      }
+    },
+    {
+      "name": "not-found",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "title": "Event not found",
+      "file": "not-found-360x844.png",
+      "capturedAtUTC": "2026-11-05T03:21:30.354Z",
+      "capturedAtKST": "2026-11-05 12:21:30 GMT+9",
+      "regions": {
+        "frame": {
+          "box": {
+            "x": 6,
+            "y": 58,
+            "width": 348,
+            "height": 270.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "2px",
+          "padding": "2px"
+        },
+        "title": {
+          "box": {
+            "x": 10,
+            "y": 62,
+            "width": 340,
+            "height": 48
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "6px"
+        },
+        "heading": {
+          "box": {
+            "x": 16,
+            "y": 70,
+            "width": 167.765625,
+            "height": 32
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "border": "0px",
+          "padding": "0px"
+        },
+        "body": {
+          "box": {
+            "x": 10,
+            "y": 110,
+            "width": 340,
+            "height": 106.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "12px"
+        },
+        "actions": {
+          "box": {
+            "x": 10,
+            "y": 216.1875,
+            "width": 340,
+            "height": 108
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "0px 12px 12px"
+        },
+        "controls": [
+          {
+            "name": "MCR Concert World",
+            "width": 142.71875,
+            "height": 44
+          },
+          {
+            "name": "Try again",
+            "width": 316,
+            "height": 44
+          },
+          {
+            "name": "Back to home",
+            "width": 316,
+            "height": 44
+          }
+        ]
+      },
+      "snapshot": {
+        "reads": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+            "query": "?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "method": "GET",
+            "authorized": true,
+            "cache": "no-store"
+          }
+        ],
+        "bootstrapDispatches": 0,
+        "retained": {
+          "path": "/meet/people",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "url": "http://127.0.0.1:5383/api/auth/capabilities",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/login",
+              "url": "http://127.0.0.1:5383/api/auth/login",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            }
+          ],
+          "frames": [],
+          "baselineEnabled": false,
+          "policyRevision": 1,
+          "sockets": 0,
+          "activeSockets": 0,
+          "peakSockets": 0,
+          "peakCanvases": 0,
+          "canvases": 0,
+          "sameHost": true,
+          "sameCanvas": true
+        }
+      }
+    },
+    {
+      "name": "session-boundary",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "title": "Sign in to continue",
+      "file": "session-boundary-360x844.png",
+      "capturedAtUTC": "2026-11-05T03:21:31.678Z",
+      "capturedAtKST": "2026-11-05 12:21:31 GMT+9",
+      "regions": {
+        "externalBoundary": "Unchanged canonical AccessNotice; generic presentation owner83",
+        "preservedSignInHref": "/login?returnTo=%2Fmeet%2Fpeople"
+      },
+      "snapshot": {
+        "reads": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+            "query": "?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "method": "GET",
+            "authorized": true,
+            "cache": "no-store"
+          }
+        ],
+        "bootstrapDispatches": 1,
+        "retained": {
+          "path": "/meet/people",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "url": "http://127.0.0.1:5383/api/auth/capabilities",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/login",
+              "url": "http://127.0.0.1:5383/api/auth/login",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/refresh",
+              "url": "http://127.0.0.1:5383/api/auth/refresh",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            }
+          ],
+          "frames": [],
+          "baselineEnabled": false,
+          "policyRevision": 1,
+          "sockets": 0,
+          "activeSockets": 0,
+          "peakSockets": 0,
+          "peakCanvases": 0,
+          "canvases": 0,
+          "sameHost": true,
+          "sameCanvas": true
+        }
+      }
+    },
+    {
+      "name": "denied",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "title": "Access denied",
+      "file": "denied-360x844.png",
+      "capturedAtUTC": "2026-11-05T03:21:32.957Z",
+      "capturedAtKST": "2026-11-05 12:21:32 GMT+9",
+      "regions": {
+        "frame": {
+          "box": {
+            "x": 6,
+            "y": 58,
+            "width": 348,
+            "height": 270.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "2px",
+          "padding": "2px"
+        },
+        "title": {
+          "box": {
+            "x": 10,
+            "y": 62,
+            "width": 340,
+            "height": 48
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "6px"
+        },
+        "heading": {
+          "box": {
+            "x": 16,
+            "y": 70,
+            "width": 145.375,
+            "height": 32
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "border": "0px",
+          "padding": "0px"
+        },
+        "body": {
+          "box": {
+            "x": 10,
+            "y": 110,
+            "width": 340,
+            "height": 106.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "12px"
+        },
+        "actions": {
+          "box": {
+            "x": 10,
+            "y": 216.1875,
+            "width": 340,
+            "height": 108
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "0px 12px 12px"
+        },
+        "controls": [
+          {
+            "name": "MCR Concert World",
+            "width": 142.71875,
+            "height": 44
+          },
+          {
+            "name": "Try again",
+            "width": 316,
+            "height": 44
+          },
+          {
+            "name": "Back to home",
+            "width": 316,
+            "height": 44
+          }
+        ]
+      },
+      "snapshot": {
+        "reads": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+            "query": "?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "method": "GET",
+            "authorized": true,
+            "cache": "no-store"
+          }
+        ],
+        "bootstrapDispatches": 1,
+        "retained": {
+          "path": "/meet/people",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "url": "http://127.0.0.1:5383/api/auth/capabilities",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/login",
+              "url": "http://127.0.0.1:5383/api/auth/login",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            }
+          ],
+          "frames": [],
+          "baselineEnabled": false,
+          "policyRevision": 1,
+          "sockets": 0,
+          "activeSockets": 0,
+          "peakSockets": 0,
+          "peakCanvases": 0,
+          "canvases": 0,
+          "sameHost": true,
+          "sameCanvas": true
+        }
+      }
+    },
+    {
+      "name": "gone",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "title": "This event is no longer available",
+      "file": "gone-360x844.png",
+      "capturedAtUTC": "2026-11-05T03:21:34.224Z",
+      "capturedAtKST": "2026-11-05 12:21:34 GMT+9",
+      "regions": {
+        "frame": {
+          "box": {
+            "x": 6,
+            "y": 58,
+            "width": 348,
+            "height": 298.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "2px",
+          "padding": "2px"
+        },
+        "title": {
+          "box": {
+            "x": 10,
+            "y": 62,
+            "width": 340,
+            "height": 76
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "6px"
+        },
+        "heading": {
+          "box": {
+            "x": 16,
+            "y": 68,
+            "width": 328,
+            "height": 64
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "border": "0px",
+          "padding": "0px"
+        },
+        "body": {
+          "box": {
+            "x": 10,
+            "y": 138,
+            "width": 340,
+            "height": 106.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "12px"
+        },
+        "actions": {
+          "box": {
+            "x": 10,
+            "y": 244.1875,
+            "width": 340,
+            "height": 108
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "0px 12px 12px"
+        },
+        "controls": [
+          {
+            "name": "MCR Concert World",
+            "width": 142.71875,
+            "height": 44
+          },
+          {
+            "name": "Try again",
+            "width": 316,
+            "height": 44
+          },
+          {
+            "name": "Back to home",
+            "width": 316,
+            "height": 44
+          }
+        ]
+      },
+      "snapshot": {
+        "reads": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+            "query": "?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "method": "GET",
+            "authorized": true,
+            "cache": "no-store"
+          }
+        ],
+        "bootstrapDispatches": 1,
+        "retained": {
+          "path": "/meet/people",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "url": "http://127.0.0.1:5383/api/auth/capabilities",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/login",
+              "url": "http://127.0.0.1:5383/api/auth/login",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            }
+          ],
+          "frames": [],
+          "baselineEnabled": false,
+          "policyRevision": 1,
+          "sockets": 0,
+          "activeSockets": 0,
+          "peakSockets": 0,
+          "peakCanvases": 0,
+          "canvases": 0,
+          "sameHost": true,
+          "sameCanvas": true
+        }
+      }
+    },
+    {
+      "name": "throttled",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "title": "Please wait before trying again",
+      "file": "throttled-360x844.png",
+      "capturedAtUTC": "2026-11-05T03:21:35.573Z",
+      "capturedAtKST": "2026-11-05 12:21:35 GMT+9",
+      "regions": {
+        "frame": {
+          "box": {
+            "x": 6,
+            "y": 58,
+            "width": 348,
+            "height": 298.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "2px",
+          "padding": "2px"
+        },
+        "title": {
+          "box": {
+            "x": 10,
+            "y": 62,
+            "width": 340,
+            "height": 76
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "6px"
+        },
+        "heading": {
+          "box": {
+            "x": 16,
+            "y": 68,
+            "width": 328,
+            "height": 64
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "border": "0px",
+          "padding": "0px"
+        },
+        "body": {
+          "box": {
+            "x": 10,
+            "y": 138,
+            "width": 340,
+            "height": 106.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "12px"
+        },
+        "actions": {
+          "box": {
+            "x": 10,
+            "y": 244.1875,
+            "width": 340,
+            "height": 108
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "0px 12px 12px"
+        },
+        "controls": [
+          {
+            "name": "MCR Concert World",
+            "width": 142.71875,
+            "height": 44
+          },
+          {
+            "name": "Try again",
+            "width": 316,
+            "height": 44
+          },
+          {
+            "name": "Back to home",
+            "width": 316,
+            "height": 44
+          }
+        ]
+      },
+      "snapshot": {
+        "reads": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+            "query": "?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "method": "GET",
+            "authorized": true,
+            "cache": "no-store"
+          }
+        ],
+        "bootstrapDispatches": 1,
+        "retained": {
+          "path": "/meet/people",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "url": "http://127.0.0.1:5383/api/auth/capabilities",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/login",
+              "url": "http://127.0.0.1:5383/api/auth/login",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            }
+          ],
+          "frames": [],
+          "baselineEnabled": false,
+          "policyRevision": 1,
+          "sockets": 0,
+          "activeSockets": 0,
+          "peakSockets": 0,
+          "peakCanvases": 0,
+          "canvases": 0,
+          "sameHost": true,
+          "sameCanvas": true
+        }
+      }
+    },
+    {
+      "name": "expired-policy",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "title": "Event availability could not be confirmed",
+      "file": "expired-policy-360x844.png",
+      "capturedAtUTC": "2026-11-05T03:21:37.648Z",
+      "capturedAtKST": "2026-11-05 12:21:37 GMT+9",
+      "regions": {
+        "frame": {
+          "box": {
+            "x": 6,
+            "y": 58,
+            "width": 348,
+            "height": 298.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "2px",
+          "padding": "2px"
+        },
+        "title": {
+          "box": {
+            "x": 10,
+            "y": 62,
+            "width": 340,
+            "height": 76
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "6px"
+        },
+        "heading": {
+          "box": {
+            "x": 16,
+            "y": 68,
+            "width": 328,
+            "height": 64
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "border": "0px",
+          "padding": "0px"
+        },
+        "body": {
+          "box": {
+            "x": 10,
+            "y": 138,
+            "width": 340,
+            "height": 106.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "12px"
+        },
+        "actions": {
+          "box": {
+            "x": 10,
+            "y": 244.1875,
+            "width": 340,
+            "height": 108
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "0px 12px 12px"
+        },
+        "controls": [
+          {
+            "name": "MCR Concert World",
+            "width": 142.71875,
+            "height": 44
+          },
+          {
+            "name": "Check again",
+            "width": 316,
+            "height": 44
+          },
+          {
+            "name": "Back to home",
+            "width": 316,
+            "height": 44
+          }
+        ]
+      },
+      "snapshot": {
+        "reads": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+            "query": "?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "method": "GET",
+            "authorized": true,
+            "cache": "no-store"
+          }
+        ],
+        "bootstrapDispatches": 0,
+        "retained": {
+          "path": "/meet/people",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "url": "http://127.0.0.1:5383/api/auth/capabilities",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/login",
+              "url": "http://127.0.0.1:5383/api/auth/login",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            }
+          ],
+          "frames": [],
+          "baselineEnabled": false,
+          "policyRevision": 1,
+          "sockets": 0,
+          "activeSockets": 0,
+          "peakSockets": 0,
+          "peakCanvases": 0,
+          "canvases": 0,
+          "sameHost": true,
+          "sameCanvas": true
+        }
+      }
+    },
+    {
+      "name": "policy-pending",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "title": "Checking event availability",
+      "file": "policy-pending-390x844.png",
+      "capturedAtUTC": "2026-11-05T03:21:38.959Z",
+      "capturedAtKST": "2026-11-05 12:21:38 GMT+9",
+      "regions": {
+        "frame": {
+          "box": {
+            "x": 6,
+            "y": 58,
+            "width": 378,
+            "height": 218.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "2px",
+          "padding": "2px"
+        },
+        "title": {
+          "box": {
+            "x": 10,
+            "y": 62,
+            "width": 370,
+            "height": 48
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "6px"
+        },
+        "heading": {
+          "box": {
+            "x": 16,
+            "y": 70,
+            "width": 287.90625,
+            "height": 32
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "border": "0px",
+          "padding": "0px"
+        },
+        "body": {
+          "box": {
+            "x": 10,
+            "y": 110,
+            "width": 370,
+            "height": 106.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "12px"
+        },
+        "actions": {
+          "box": {
+            "x": 10,
+            "y": 216.1875,
+            "width": 370,
+            "height": 56
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "0px 12px 12px"
+        },
+        "controls": [
+          {
+            "name": "MCR Concert World",
+            "width": 142.71875,
+            "height": 44
+          },
+          {
+            "name": "Back to home",
+            "width": 346,
+            "height": 44
+          }
+        ]
+      },
+      "snapshot": {
+        "reads": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+            "query": "?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "method": "GET",
+            "authorized": true,
+            "cache": "no-store"
+          }
+        ],
+        "bootstrapDispatches": 0,
+        "retained": {
+          "path": "/meet/people",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "url": "http://127.0.0.1:5383/api/auth/capabilities",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/login",
+              "url": "http://127.0.0.1:5383/api/auth/login",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            }
+          ],
+          "frames": [],
+          "baselineEnabled": false,
+          "policyRevision": 1,
+          "sockets": 0,
+          "activeSockets": 0,
+          "peakSockets": 0,
+          "peakCanvases": 0,
+          "canvases": 0,
+          "sameHost": true,
+          "sameCanvas": true
+        }
+      }
+    },
+    {
+      "name": "bootstrap-pending",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "title": "Opening your event",
+      "file": "bootstrap-pending-390x844.png",
+      "capturedAtUTC": "2026-11-05T03:21:40.254Z",
+      "capturedAtKST": "2026-11-05 12:21:40 GMT+9",
+      "regions": {
+        "frame": {
+          "box": {
+            "x": 6,
+            "y": 58,
+            "width": 378,
+            "height": 218.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "2px",
+          "padding": "2px"
+        },
+        "title": {
+          "box": {
+            "x": 10,
+            "y": 62,
+            "width": 370,
+            "height": 48
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "6px"
+        },
+        "heading": {
+          "box": {
+            "x": 16,
+            "y": 70,
+            "width": 202.984375,
+            "height": 32
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "border": "0px",
+          "padding": "0px"
+        },
+        "body": {
+          "box": {
+            "x": 10,
+            "y": 110,
+            "width": 370,
+            "height": 106.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "12px"
+        },
+        "actions": {
+          "box": {
+            "x": 10,
+            "y": 216.1875,
+            "width": 370,
+            "height": 56
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "0px 12px 12px"
+        },
+        "controls": [
+          {
+            "name": "MCR Concert World",
+            "width": 142.71875,
+            "height": 44
+          },
+          {
+            "name": "Back to home",
+            "width": 346,
+            "height": 44
+          }
+        ]
+      },
+      "snapshot": {
+        "reads": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+            "query": "?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "method": "GET",
+            "authorized": true,
+            "cache": "no-store"
+          }
+        ],
+        "bootstrapDispatches": 1,
+        "retained": {
+          "path": "/meet/people",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "url": "http://127.0.0.1:5383/api/auth/capabilities",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/login",
+              "url": "http://127.0.0.1:5383/api/auth/login",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            }
+          ],
+          "frames": [],
+          "baselineEnabled": false,
+          "policyRevision": 1,
+          "sockets": 0,
+          "activeSockets": 0,
+          "peakSockets": 0,
+          "peakCanvases": 0,
+          "canvases": 0,
+          "sameHost": true,
+          "sameCanvas": true
+        }
+      }
+    },
+    {
+      "name": "maintenance",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "title": "World entry is paused",
+      "file": "maintenance-390x844.png",
+      "capturedAtUTC": "2026-11-05T03:21:41.541Z",
+      "capturedAtKST": "2026-11-05 12:21:41 GMT+9",
+      "regions": {
+        "frame": {
+          "box": {
+            "x": 6,
+            "y": 58,
+            "width": 378,
+            "height": 270.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "2px",
+          "padding": "2px"
+        },
+        "title": {
+          "box": {
+            "x": 10,
+            "y": 62,
+            "width": 370,
+            "height": 48
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "6px"
+        },
+        "heading": {
+          "box": {
+            "x": 16,
+            "y": 70,
+            "width": 235.671875,
+            "height": 32
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "border": "0px",
+          "padding": "0px"
+        },
+        "body": {
+          "box": {
+            "x": 10,
+            "y": 110,
+            "width": 370,
+            "height": 106.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "12px"
+        },
+        "actions": {
+          "box": {
+            "x": 10,
+            "y": 216.1875,
+            "width": 370,
+            "height": 108
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "0px 12px 12px"
+        },
+        "controls": [
+          {
+            "name": "MCR Concert World",
+            "width": 142.71875,
+            "height": 44
+          },
+          {
+            "name": "Check again",
+            "width": 346,
+            "height": 44
+          },
+          {
+            "name": "Back to home",
+            "width": 346,
+            "height": 44
+          }
+        ]
+      },
+      "snapshot": {
+        "reads": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+            "query": "?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "method": "GET",
+            "authorized": true,
+            "cache": "no-store"
+          }
+        ],
+        "bootstrapDispatches": 0,
+        "retained": {
+          "path": "/meet/people",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "url": "http://127.0.0.1:5383/api/auth/capabilities",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/login",
+              "url": "http://127.0.0.1:5383/api/auth/login",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            }
+          ],
+          "frames": [],
+          "baselineEnabled": false,
+          "policyRevision": 1,
+          "sockets": 0,
+          "activeSockets": 0,
+          "peakSockets": 0,
+          "peakCanvases": 0,
+          "canvases": 0,
+          "sameHost": true,
+          "sameCanvas": true
+        }
+      }
+    },
+    {
+      "name": "minimum-version",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "title": "An app update is required",
+      "file": "minimum-version-390x844.png",
+      "capturedAtUTC": "2026-11-05T03:21:42.880Z",
+      "capturedAtKST": "2026-11-05 12:21:42 GMT+9",
+      "regions": {
+        "frame": {
+          "box": {
+            "x": 6,
+            "y": 58,
+            "width": 378,
+            "height": 322.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "2px",
+          "padding": "2px"
+        },
+        "title": {
+          "box": {
+            "x": 10,
+            "y": 62,
+            "width": 370,
+            "height": 48
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "6px"
+        },
+        "heading": {
+          "box": {
+            "x": 16,
+            "y": 70,
+            "width": 274.40625,
+            "height": 32
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "border": "0px",
+          "padding": "0px"
+        },
+        "body": {
+          "box": {
+            "x": 10,
+            "y": 110,
+            "width": 370,
+            "height": 106.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "12px"
+        },
+        "actions": {
+          "box": {
+            "x": 10,
+            "y": 216.1875,
+            "width": 370,
+            "height": 160
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "0px 12px 12px"
+        },
+        "controls": [
+          {
+            "name": "MCR Concert World",
+            "width": 142.71875,
+            "height": 44
+          },
+          {
+            "name": "Reload app",
+            "width": 346,
+            "height": 44
+          },
+          {
+            "name": "Check again",
+            "width": 346,
+            "height": 44
+          },
+          {
+            "name": "Back to home",
+            "width": 346,
+            "height": 44
+          }
+        ]
+      },
+      "snapshot": {
+        "reads": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+            "query": "?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "method": "GET",
+            "authorized": true,
+            "cache": "no-store"
+          }
+        ],
+        "bootstrapDispatches": 0,
+        "retained": {
+          "path": "/meet/people",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "url": "http://127.0.0.1:5383/api/auth/capabilities",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/login",
+              "url": "http://127.0.0.1:5383/api/auth/login",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            }
+          ],
+          "frames": [],
+          "baselineEnabled": false,
+          "policyRevision": 1,
+          "sockets": 0,
+          "activeSockets": 0,
+          "peakSockets": 0,
+          "peakCanvases": 0,
+          "canvases": 0,
+          "sameHost": true,
+          "sameCanvas": true
+        }
+      }
+    },
+    {
+      "name": "minimum-version-keyboard-focus",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "title": "An app update is required",
+      "file": "minimum-version-keyboard-focus-390x844.png",
+      "capturedAtUTC": "2026-11-05T03:21:42.935Z",
+      "capturedAtKST": "2026-11-05 12:21:42 GMT+9",
+      "regions": {
+        "frame": {
+          "box": {
+            "x": 6,
+            "y": 58,
+            "width": 378,
+            "height": 322.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "2px",
+          "padding": "2px"
+        },
+        "title": {
+          "box": {
+            "x": 10,
+            "y": 62,
+            "width": 370,
+            "height": 48
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "6px"
+        },
+        "heading": {
+          "box": {
+            "x": 16,
+            "y": 70,
+            "width": 274.40625,
+            "height": 32
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "border": "0px",
+          "padding": "0px"
+        },
+        "body": {
+          "box": {
+            "x": 10,
+            "y": 110,
+            "width": 370,
+            "height": 106.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "12px"
+        },
+        "actions": {
+          "box": {
+            "x": 10,
+            "y": 216.1875,
+            "width": 370,
+            "height": 160
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "0px 12px 12px"
+        },
+        "controls": [
+          {
+            "name": "MCR Concert World",
+            "width": 142.71875,
+            "height": 44
+          },
+          {
+            "name": "Reload app",
+            "width": 346,
+            "height": 44
+          },
+          {
+            "name": "Check again",
+            "width": 346,
+            "height": 44
+          },
+          {
+            "name": "Back to home",
+            "width": 346,
+            "height": 44
+          }
+        ]
+      },
+      "snapshot": {
+        "reads": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+            "query": "?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "method": "GET",
+            "authorized": true,
+            "cache": "no-store"
+          }
+        ],
+        "bootstrapDispatches": 0,
+        "retained": {
+          "path": "/meet/people",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "url": "http://127.0.0.1:5383/api/auth/capabilities",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/login",
+              "url": "http://127.0.0.1:5383/api/auth/login",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            }
+          ],
+          "frames": [],
+          "baselineEnabled": false,
+          "policyRevision": 1,
+          "sockets": 0,
+          "activeSockets": 0,
+          "peakSockets": 0,
+          "peakCanvases": 0,
+          "canvases": 0,
+          "sameHost": true,
+          "sameCanvas": true
+        }
+      }
+    },
+    {
+      "name": "unavailable",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "title": "Event availability could not be confirmed",
+      "file": "unavailable-390x844.png",
+      "capturedAtUTC": "2026-11-05T03:21:44.329Z",
+      "capturedAtKST": "2026-11-05 12:21:44 GMT+9",
+      "regions": {
+        "frame": {
+          "box": {
+            "x": 6,
+            "y": 58,
+            "width": 378,
+            "height": 298.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "2px",
+          "padding": "2px"
+        },
+        "title": {
+          "box": {
+            "x": 10,
+            "y": 62,
+            "width": 370,
+            "height": 76
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "6px"
+        },
+        "heading": {
+          "box": {
+            "x": 16,
+            "y": 68,
+            "width": 358,
+            "height": 64
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "border": "0px",
+          "padding": "0px"
+        },
+        "body": {
+          "box": {
+            "x": 10,
+            "y": 138,
+            "width": 370,
+            "height": 106.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "12px"
+        },
+        "actions": {
+          "box": {
+            "x": 10,
+            "y": 244.1875,
+            "width": 370,
+            "height": 108
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "0px 12px 12px"
+        },
+        "controls": [
+          {
+            "name": "MCR Concert World",
+            "width": 142.71875,
+            "height": 44
+          },
+          {
+            "name": "Check again",
+            "width": 346,
+            "height": 44
+          },
+          {
+            "name": "Back to home",
+            "width": 346,
+            "height": 44
+          }
+        ]
+      },
+      "snapshot": {
+        "reads": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+            "query": "?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "method": "GET",
+            "authorized": true,
+            "cache": "no-store"
+          }
+        ],
+        "bootstrapDispatches": 0,
+        "retained": {
+          "path": "/meet/people",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "url": "http://127.0.0.1:5383/api/auth/capabilities",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/login",
+              "url": "http://127.0.0.1:5383/api/auth/login",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            }
+          ],
+          "frames": [],
+          "baselineEnabled": false,
+          "policyRevision": 1,
+          "sockets": 0,
+          "activeSockets": 0,
+          "peakSockets": 0,
+          "peakCanvases": 0,
+          "canvases": 0,
+          "sameHost": true,
+          "sameCanvas": true
+        }
+      }
+    },
+    {
+      "name": "not-found",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "title": "Event not found",
+      "file": "not-found-390x844.png",
+      "capturedAtUTC": "2026-11-05T03:21:45.725Z",
+      "capturedAtKST": "2026-11-05 12:21:45 GMT+9",
+      "regions": {
+        "frame": {
+          "box": {
+            "x": 6,
+            "y": 58,
+            "width": 378,
+            "height": 270.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "2px",
+          "padding": "2px"
+        },
+        "title": {
+          "box": {
+            "x": 10,
+            "y": 62,
+            "width": 370,
+            "height": 48
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "6px"
+        },
+        "heading": {
+          "box": {
+            "x": 16,
+            "y": 70,
+            "width": 167.765625,
+            "height": 32
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "border": "0px",
+          "padding": "0px"
+        },
+        "body": {
+          "box": {
+            "x": 10,
+            "y": 110,
+            "width": 370,
+            "height": 106.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "12px"
+        },
+        "actions": {
+          "box": {
+            "x": 10,
+            "y": 216.1875,
+            "width": 370,
+            "height": 108
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "0px 12px 12px"
+        },
+        "controls": [
+          {
+            "name": "MCR Concert World",
+            "width": 142.71875,
+            "height": 44
+          },
+          {
+            "name": "Try again",
+            "width": 346,
+            "height": 44
+          },
+          {
+            "name": "Back to home",
+            "width": 346,
+            "height": 44
+          }
+        ]
+      },
+      "snapshot": {
+        "reads": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+            "query": "?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "method": "GET",
+            "authorized": true,
+            "cache": "no-store"
+          }
+        ],
+        "bootstrapDispatches": 0,
+        "retained": {
+          "path": "/meet/people",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "url": "http://127.0.0.1:5383/api/auth/capabilities",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/login",
+              "url": "http://127.0.0.1:5383/api/auth/login",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            }
+          ],
+          "frames": [],
+          "baselineEnabled": false,
+          "policyRevision": 1,
+          "sockets": 0,
+          "activeSockets": 0,
+          "peakSockets": 0,
+          "peakCanvases": 0,
+          "canvases": 0,
+          "sameHost": true,
+          "sameCanvas": true
+        }
+      }
+    },
+    {
+      "name": "session-boundary",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "title": "Sign in to continue",
+      "file": "session-boundary-390x844.png",
+      "capturedAtUTC": "2026-11-05T03:21:47.077Z",
+      "capturedAtKST": "2026-11-05 12:21:47 GMT+9",
+      "regions": {
+        "externalBoundary": "Unchanged canonical AccessNotice; generic presentation owner83",
+        "preservedSignInHref": "/login?returnTo=%2Fmeet%2Fpeople"
+      },
+      "snapshot": {
+        "reads": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+            "query": "?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "method": "GET",
+            "authorized": true,
+            "cache": "no-store"
+          }
+        ],
+        "bootstrapDispatches": 1,
+        "retained": {
+          "path": "/meet/people",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "url": "http://127.0.0.1:5383/api/auth/capabilities",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/login",
+              "url": "http://127.0.0.1:5383/api/auth/login",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/refresh",
+              "url": "http://127.0.0.1:5383/api/auth/refresh",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            }
+          ],
+          "frames": [],
+          "baselineEnabled": false,
+          "policyRevision": 1,
+          "sockets": 0,
+          "activeSockets": 0,
+          "peakSockets": 0,
+          "peakCanvases": 0,
+          "canvases": 0,
+          "sameHost": true,
+          "sameCanvas": true
+        }
+      }
+    },
+    {
+      "name": "denied",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "title": "Access denied",
+      "file": "denied-390x844.png",
+      "capturedAtUTC": "2026-11-05T03:21:48.427Z",
+      "capturedAtKST": "2026-11-05 12:21:48 GMT+9",
+      "regions": {
+        "frame": {
+          "box": {
+            "x": 6,
+            "y": 58,
+            "width": 378,
+            "height": 270.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "2px",
+          "padding": "2px"
+        },
+        "title": {
+          "box": {
+            "x": 10,
+            "y": 62,
+            "width": 370,
+            "height": 48
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "6px"
+        },
+        "heading": {
+          "box": {
+            "x": 16,
+            "y": 70,
+            "width": 145.375,
+            "height": 32
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "border": "0px",
+          "padding": "0px"
+        },
+        "body": {
+          "box": {
+            "x": 10,
+            "y": 110,
+            "width": 370,
+            "height": 106.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "12px"
+        },
+        "actions": {
+          "box": {
+            "x": 10,
+            "y": 216.1875,
+            "width": 370,
+            "height": 108
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "0px 12px 12px"
+        },
+        "controls": [
+          {
+            "name": "MCR Concert World",
+            "width": 142.71875,
+            "height": 44
+          },
+          {
+            "name": "Try again",
+            "width": 346,
+            "height": 44
+          },
+          {
+            "name": "Back to home",
+            "width": 346,
+            "height": 44
+          }
+        ]
+      },
+      "snapshot": {
+        "reads": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+            "query": "?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "method": "GET",
+            "authorized": true,
+            "cache": "no-store"
+          }
+        ],
+        "bootstrapDispatches": 1,
+        "retained": {
+          "path": "/meet/people",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "url": "http://127.0.0.1:5383/api/auth/capabilities",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/login",
+              "url": "http://127.0.0.1:5383/api/auth/login",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            }
+          ],
+          "frames": [],
+          "baselineEnabled": false,
+          "policyRevision": 1,
+          "sockets": 0,
+          "activeSockets": 0,
+          "peakSockets": 0,
+          "peakCanvases": 0,
+          "canvases": 0,
+          "sameHost": true,
+          "sameCanvas": true
+        }
+      }
+    },
+    {
+      "name": "gone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "title": "This event is no longer available",
+      "file": "gone-390x844.png",
+      "capturedAtUTC": "2026-11-05T03:21:49.776Z",
+      "capturedAtKST": "2026-11-05 12:21:49 GMT+9",
+      "regions": {
+        "frame": {
+          "box": {
+            "x": 6,
+            "y": 58,
+            "width": 378,
+            "height": 270.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "2px",
+          "padding": "2px"
+        },
+        "title": {
+          "box": {
+            "x": 10,
+            "y": 62,
+            "width": 370,
+            "height": 48
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "6px"
+        },
+        "heading": {
+          "box": {
+            "x": 16,
+            "y": 70,
+            "width": 344.8125,
+            "height": 32
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "border": "0px",
+          "padding": "0px"
+        },
+        "body": {
+          "box": {
+            "x": 10,
+            "y": 110,
+            "width": 370,
+            "height": 106.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "12px"
+        },
+        "actions": {
+          "box": {
+            "x": 10,
+            "y": 216.1875,
+            "width": 370,
+            "height": 108
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "0px 12px 12px"
+        },
+        "controls": [
+          {
+            "name": "MCR Concert World",
+            "width": 142.71875,
+            "height": 44
+          },
+          {
+            "name": "Try again",
+            "width": 346,
+            "height": 44
+          },
+          {
+            "name": "Back to home",
+            "width": 346,
+            "height": 44
+          }
+        ]
+      },
+      "snapshot": {
+        "reads": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+            "query": "?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "method": "GET",
+            "authorized": true,
+            "cache": "no-store"
+          }
+        ],
+        "bootstrapDispatches": 1,
+        "retained": {
+          "path": "/meet/people",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "url": "http://127.0.0.1:5383/api/auth/capabilities",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/login",
+              "url": "http://127.0.0.1:5383/api/auth/login",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            }
+          ],
+          "frames": [],
+          "baselineEnabled": false,
+          "policyRevision": 1,
+          "sockets": 0,
+          "activeSockets": 0,
+          "peakSockets": 0,
+          "peakCanvases": 0,
+          "canvases": 0,
+          "sameHost": true,
+          "sameCanvas": true
+        }
+      }
+    },
+    {
+      "name": "throttled",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "title": "Please wait before trying again",
+      "file": "throttled-390x844.png",
+      "capturedAtUTC": "2026-11-05T03:21:51.135Z",
+      "capturedAtKST": "2026-11-05 12:21:51 GMT+9",
+      "regions": {
+        "frame": {
+          "box": {
+            "x": 6,
+            "y": 58,
+            "width": 378,
+            "height": 270.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "2px",
+          "padding": "2px"
+        },
+        "title": {
+          "box": {
+            "x": 10,
+            "y": 62,
+            "width": 370,
+            "height": 48
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "6px"
+        },
+        "heading": {
+          "box": {
+            "x": 16,
+            "y": 70,
+            "width": 334.15625,
+            "height": 32
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "border": "0px",
+          "padding": "0px"
+        },
+        "body": {
+          "box": {
+            "x": 10,
+            "y": 110,
+            "width": 370,
+            "height": 106.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "12px"
+        },
+        "actions": {
+          "box": {
+            "x": 10,
+            "y": 216.1875,
+            "width": 370,
+            "height": 108
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "0px 12px 12px"
+        },
+        "controls": [
+          {
+            "name": "MCR Concert World",
+            "width": 142.71875,
+            "height": 44
+          },
+          {
+            "name": "Try again",
+            "width": 346,
+            "height": 44
+          },
+          {
+            "name": "Back to home",
+            "width": 346,
+            "height": 44
+          }
+        ]
+      },
+      "snapshot": {
+        "reads": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+            "query": "?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "method": "GET",
+            "authorized": true,
+            "cache": "no-store"
+          }
+        ],
+        "bootstrapDispatches": 1,
+        "retained": {
+          "path": "/meet/people",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "url": "http://127.0.0.1:5383/api/auth/capabilities",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/login",
+              "url": "http://127.0.0.1:5383/api/auth/login",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            }
+          ],
+          "frames": [],
+          "baselineEnabled": false,
+          "policyRevision": 1,
+          "sockets": 0,
+          "activeSockets": 0,
+          "peakSockets": 0,
+          "peakCanvases": 0,
+          "canvases": 0,
+          "sameHost": true,
+          "sameCanvas": true
+        }
+      }
+    },
+    {
+      "name": "expired-policy",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "title": "Event availability could not be confirmed",
+      "file": "expired-policy-390x844.png",
+      "capturedAtUTC": "2026-11-05T03:21:53.202Z",
+      "capturedAtKST": "2026-11-05 12:21:53 GMT+9",
+      "regions": {
+        "frame": {
+          "box": {
+            "x": 6,
+            "y": 58,
+            "width": 378,
+            "height": 298.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "2px",
+          "padding": "2px"
+        },
+        "title": {
+          "box": {
+            "x": 10,
+            "y": 62,
+            "width": 370,
+            "height": 76
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "6px"
+        },
+        "heading": {
+          "box": {
+            "x": 16,
+            "y": 68,
+            "width": 358,
+            "height": 64
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "border": "0px",
+          "padding": "0px"
+        },
+        "body": {
+          "box": {
+            "x": 10,
+            "y": 138,
+            "width": 370,
+            "height": 106.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "12px"
+        },
+        "actions": {
+          "box": {
+            "x": 10,
+            "y": 244.1875,
+            "width": 370,
+            "height": 108
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "0px 12px 12px"
+        },
+        "controls": [
+          {
+            "name": "MCR Concert World",
+            "width": 142.71875,
+            "height": 44
+          },
+          {
+            "name": "Check again",
+            "width": 346,
+            "height": 44
+          },
+          {
+            "name": "Back to home",
+            "width": 346,
+            "height": 44
+          }
+        ]
+      },
+      "snapshot": {
+        "reads": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+            "query": "?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "method": "GET",
+            "authorized": true,
+            "cache": "no-store"
+          }
+        ],
+        "bootstrapDispatches": 0,
+        "retained": {
+          "path": "/meet/people",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "url": "http://127.0.0.1:5383/api/auth/capabilities",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/login",
+              "url": "http://127.0.0.1:5383/api/auth/login",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            }
+          ],
+          "frames": [],
+          "baselineEnabled": false,
+          "policyRevision": 1,
+          "sockets": 0,
+          "activeSockets": 0,
+          "peakSockets": 0,
+          "peakCanvases": 0,
+          "canvases": 0,
+          "sameHost": true,
+          "sameCanvas": true
+        }
+      }
+    },
+    {
+      "name": "policy-pending",
+      "viewport": {
+        "width": 430,
+        "height": 844
+      },
+      "title": "Checking event availability",
+      "file": "policy-pending-430x844.png",
+      "capturedAtUTC": "2026-11-05T03:21:54.511Z",
+      "capturedAtKST": "2026-11-05 12:21:54 GMT+9",
+      "regions": {
+        "frame": {
+          "box": {
+            "x": 6,
+            "y": 58,
+            "width": 418,
+            "height": 218.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "2px",
+          "padding": "2px"
+        },
+        "title": {
+          "box": {
+            "x": 10,
+            "y": 62,
+            "width": 410,
+            "height": 48
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "6px"
+        },
+        "heading": {
+          "box": {
+            "x": 16,
+            "y": 70,
+            "width": 287.90625,
+            "height": 32
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "border": "0px",
+          "padding": "0px"
+        },
+        "body": {
+          "box": {
+            "x": 10,
+            "y": 110,
+            "width": 410,
+            "height": 106.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "12px"
+        },
+        "actions": {
+          "box": {
+            "x": 10,
+            "y": 216.1875,
+            "width": 410,
+            "height": 56
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "0px 12px 12px"
+        },
+        "controls": [
+          {
+            "name": "MCR Concert World",
+            "width": 142.71875,
+            "height": 44
+          },
+          {
+            "name": "Back to home",
+            "width": 386,
+            "height": 44
+          }
+        ]
+      },
+      "snapshot": {
+        "reads": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+            "query": "?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "method": "GET",
+            "authorized": true,
+            "cache": "no-store"
+          }
+        ],
+        "bootstrapDispatches": 0,
+        "retained": {
+          "path": "/meet/people",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "url": "http://127.0.0.1:5383/api/auth/capabilities",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/login",
+              "url": "http://127.0.0.1:5383/api/auth/login",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            }
+          ],
+          "frames": [],
+          "baselineEnabled": false,
+          "policyRevision": 1,
+          "sockets": 0,
+          "activeSockets": 0,
+          "peakSockets": 0,
+          "peakCanvases": 0,
+          "canvases": 0,
+          "sameHost": true,
+          "sameCanvas": true
+        }
+      }
+    },
+    {
+      "name": "bootstrap-pending",
+      "viewport": {
+        "width": 430,
+        "height": 844
+      },
+      "title": "Opening your event",
+      "file": "bootstrap-pending-430x844.png",
+      "capturedAtUTC": "2026-11-05T03:21:55.796Z",
+      "capturedAtKST": "2026-11-05 12:21:55 GMT+9",
+      "regions": {
+        "frame": {
+          "box": {
+            "x": 6,
+            "y": 58,
+            "width": 418,
+            "height": 192.09375
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "2px",
+          "padding": "2px"
+        },
+        "title": {
+          "box": {
+            "x": 10,
+            "y": 62,
+            "width": 410,
+            "height": 48
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "6px"
+        },
+        "heading": {
+          "box": {
+            "x": 16,
+            "y": 70,
+            "width": 202.984375,
+            "height": 32
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "border": "0px",
+          "padding": "0px"
+        },
+        "body": {
+          "box": {
+            "x": 10,
+            "y": 110,
+            "width": 410,
+            "height": 80.09375
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "12px"
+        },
+        "actions": {
+          "box": {
+            "x": 10,
+            "y": 190.09375,
+            "width": 410,
+            "height": 56
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "0px 12px 12px"
+        },
+        "controls": [
+          {
+            "name": "MCR Concert World",
+            "width": 142.71875,
+            "height": 44
+          },
+          {
+            "name": "Back to home",
+            "width": 386,
+            "height": 44
+          }
+        ]
+      },
+      "snapshot": {
+        "reads": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+            "query": "?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "method": "GET",
+            "authorized": true,
+            "cache": "no-store"
+          }
+        ],
+        "bootstrapDispatches": 1,
+        "retained": {
+          "path": "/meet/people",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "url": "http://127.0.0.1:5383/api/auth/capabilities",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/login",
+              "url": "http://127.0.0.1:5383/api/auth/login",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            }
+          ],
+          "frames": [],
+          "baselineEnabled": false,
+          "policyRevision": 1,
+          "sockets": 0,
+          "activeSockets": 0,
+          "peakSockets": 0,
+          "peakCanvases": 0,
+          "canvases": 0,
+          "sameHost": true,
+          "sameCanvas": true
+        }
+      }
+    },
+    {
+      "name": "maintenance",
+      "viewport": {
+        "width": 430,
+        "height": 844
+      },
+      "title": "World entry is paused",
+      "file": "maintenance-430x844.png",
+      "capturedAtUTC": "2026-11-05T03:21:57.105Z",
+      "capturedAtKST": "2026-11-05 12:21:57 GMT+9",
+      "regions": {
+        "frame": {
+          "box": {
+            "x": 6,
+            "y": 58,
+            "width": 418,
+            "height": 270.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "2px",
+          "padding": "2px"
+        },
+        "title": {
+          "box": {
+            "x": 10,
+            "y": 62,
+            "width": 410,
+            "height": 48
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "6px"
+        },
+        "heading": {
+          "box": {
+            "x": 16,
+            "y": 70,
+            "width": 235.671875,
+            "height": 32
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "border": "0px",
+          "padding": "0px"
+        },
+        "body": {
+          "box": {
+            "x": 10,
+            "y": 110,
+            "width": 410,
+            "height": 106.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "12px"
+        },
+        "actions": {
+          "box": {
+            "x": 10,
+            "y": 216.1875,
+            "width": 410,
+            "height": 108
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "0px 12px 12px"
+        },
+        "controls": [
+          {
+            "name": "MCR Concert World",
+            "width": 142.71875,
+            "height": 44
+          },
+          {
+            "name": "Check again",
+            "width": 386,
+            "height": 44
+          },
+          {
+            "name": "Back to home",
+            "width": 386,
+            "height": 44
+          }
+        ]
+      },
+      "snapshot": {
+        "reads": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+            "query": "?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "method": "GET",
+            "authorized": true,
+            "cache": "no-store"
+          }
+        ],
+        "bootstrapDispatches": 0,
+        "retained": {
+          "path": "/meet/people",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "url": "http://127.0.0.1:5383/api/auth/capabilities",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/login",
+              "url": "http://127.0.0.1:5383/api/auth/login",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            }
+          ],
+          "frames": [],
+          "baselineEnabled": false,
+          "policyRevision": 1,
+          "sockets": 0,
+          "activeSockets": 0,
+          "peakSockets": 0,
+          "peakCanvases": 0,
+          "canvases": 0,
+          "sameHost": true,
+          "sameCanvas": true
+        }
+      }
+    },
+    {
+      "name": "minimum-version",
+      "viewport": {
+        "width": 430,
+        "height": 844
+      },
+      "title": "An app update is required",
+      "file": "minimum-version-430x844.png",
+      "capturedAtUTC": "2026-11-05T03:21:58.418Z",
+      "capturedAtKST": "2026-11-05 12:21:58 GMT+9",
+      "regions": {
+        "frame": {
+          "box": {
+            "x": 6,
+            "y": 58,
+            "width": 418,
+            "height": 322.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "2px",
+          "padding": "2px"
+        },
+        "title": {
+          "box": {
+            "x": 10,
+            "y": 62,
+            "width": 410,
+            "height": 48
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "6px"
+        },
+        "heading": {
+          "box": {
+            "x": 16,
+            "y": 70,
+            "width": 274.40625,
+            "height": 32
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "border": "0px",
+          "padding": "0px"
+        },
+        "body": {
+          "box": {
+            "x": 10,
+            "y": 110,
+            "width": 410,
+            "height": 106.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "12px"
+        },
+        "actions": {
+          "box": {
+            "x": 10,
+            "y": 216.1875,
+            "width": 410,
+            "height": 160
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "0px 12px 12px"
+        },
+        "controls": [
+          {
+            "name": "MCR Concert World",
+            "width": 142.71875,
+            "height": 44
+          },
+          {
+            "name": "Reload app",
+            "width": 386,
+            "height": 44
+          },
+          {
+            "name": "Check again",
+            "width": 386,
+            "height": 44
+          },
+          {
+            "name": "Back to home",
+            "width": 386,
+            "height": 44
+          }
+        ]
+      },
+      "snapshot": {
+        "reads": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+            "query": "?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "method": "GET",
+            "authorized": true,
+            "cache": "no-store"
+          }
+        ],
+        "bootstrapDispatches": 0,
+        "retained": {
+          "path": "/meet/people",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "url": "http://127.0.0.1:5383/api/auth/capabilities",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/login",
+              "url": "http://127.0.0.1:5383/api/auth/login",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            }
+          ],
+          "frames": [],
+          "baselineEnabled": false,
+          "policyRevision": 1,
+          "sockets": 0,
+          "activeSockets": 0,
+          "peakSockets": 0,
+          "peakCanvases": 0,
+          "canvases": 0,
+          "sameHost": true,
+          "sameCanvas": true
+        }
+      }
+    },
+    {
+      "name": "unavailable",
+      "viewport": {
+        "width": 430,
+        "height": 844
+      },
+      "title": "Event availability could not be confirmed",
+      "file": "unavailable-430x844.png",
+      "capturedAtUTC": "2026-11-05T03:21:59.380Z",
+      "capturedAtKST": "2026-11-05 12:21:59 GMT+9",
+      "regions": {
+        "frame": {
+          "box": {
+            "x": 6,
+            "y": 58,
+            "width": 418,
+            "height": 298.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "2px",
+          "padding": "2px"
+        },
+        "title": {
+          "box": {
+            "x": 10,
+            "y": 62,
+            "width": 410,
+            "height": 76
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "6px"
+        },
+        "heading": {
+          "box": {
+            "x": 16,
+            "y": 68,
+            "width": 398,
+            "height": 64
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "border": "0px",
+          "padding": "0px"
+        },
+        "body": {
+          "box": {
+            "x": 10,
+            "y": 138,
+            "width": 410,
+            "height": 106.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "12px"
+        },
+        "actions": {
+          "box": {
+            "x": 10,
+            "y": 244.1875,
+            "width": 410,
+            "height": 108
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "0px 12px 12px"
+        },
+        "controls": [
+          {
+            "name": "MCR Concert World",
+            "width": 142.71875,
+            "height": 44
+          },
+          {
+            "name": "Check again",
+            "width": 386,
+            "height": 44
+          },
+          {
+            "name": "Back to home",
+            "width": 386,
+            "height": 44
+          }
+        ]
+      },
+      "snapshot": {
+        "reads": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+            "query": "?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "method": "GET",
+            "authorized": true,
+            "cache": "no-store"
+          }
+        ],
+        "bootstrapDispatches": 0,
+        "retained": {
+          "path": "/meet/people",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "url": "http://127.0.0.1:5383/api/auth/capabilities",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/login",
+              "url": "http://127.0.0.1:5383/api/auth/login",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            }
+          ],
+          "frames": [],
+          "baselineEnabled": false,
+          "policyRevision": 1,
+          "sockets": 0,
+          "activeSockets": 0,
+          "peakSockets": 0,
+          "peakCanvases": 0,
+          "canvases": 0,
+          "sameHost": true,
+          "sameCanvas": true
+        }
+      }
+    },
+    {
+      "name": "not-found",
+      "viewport": {
+        "width": 430,
+        "height": 844
+      },
+      "title": "Event not found",
+      "file": "not-found-430x844.png",
+      "capturedAtUTC": "2026-11-05T03:22:00.246Z",
+      "capturedAtKST": "2026-11-05 12:22:00 GMT+9",
+      "regions": {
+        "frame": {
+          "box": {
+            "x": 6,
+            "y": 58,
+            "width": 418,
+            "height": 270.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "2px",
+          "padding": "2px"
+        },
+        "title": {
+          "box": {
+            "x": 10,
+            "y": 62,
+            "width": 410,
+            "height": 48
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "6px"
+        },
+        "heading": {
+          "box": {
+            "x": 16,
+            "y": 70,
+            "width": 167.765625,
+            "height": 32
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "border": "0px",
+          "padding": "0px"
+        },
+        "body": {
+          "box": {
+            "x": 10,
+            "y": 110,
+            "width": 410,
+            "height": 106.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "12px"
+        },
+        "actions": {
+          "box": {
+            "x": 10,
+            "y": 216.1875,
+            "width": 410,
+            "height": 108
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "0px 12px 12px"
+        },
+        "controls": [
+          {
+            "name": "MCR Concert World",
+            "width": 142.71875,
+            "height": 44
+          },
+          {
+            "name": "Try again",
+            "width": 386,
+            "height": 44
+          },
+          {
+            "name": "Back to home",
+            "width": 386,
+            "height": 44
+          }
+        ]
+      },
+      "snapshot": {
+        "reads": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+            "query": "?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "method": "GET",
+            "authorized": true,
+            "cache": "no-store"
+          }
+        ],
+        "bootstrapDispatches": 0,
+        "retained": {
+          "path": "/meet/people",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "url": "http://127.0.0.1:5383/api/auth/capabilities",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/login",
+              "url": "http://127.0.0.1:5383/api/auth/login",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            }
+          ],
+          "frames": [],
+          "baselineEnabled": false,
+          "policyRevision": 1,
+          "sockets": 0,
+          "activeSockets": 0,
+          "peakSockets": 0,
+          "peakCanvases": 0,
+          "canvases": 0,
+          "sameHost": true,
+          "sameCanvas": true
+        }
+      }
+    },
+    {
+      "name": "session-boundary",
+      "viewport": {
+        "width": 430,
+        "height": 844
+      },
+      "title": "Sign in to continue",
+      "file": "session-boundary-430x844.png",
+      "capturedAtUTC": "2026-11-05T03:22:01.604Z",
+      "capturedAtKST": "2026-11-05 12:22:01 GMT+9",
+      "regions": {
+        "externalBoundary": "Unchanged canonical AccessNotice; generic presentation owner83",
+        "preservedSignInHref": "/login?returnTo=%2Fmeet%2Fpeople"
+      },
+      "snapshot": {
+        "reads": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+            "query": "?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "method": "GET",
+            "authorized": true,
+            "cache": "no-store"
+          }
+        ],
+        "bootstrapDispatches": 1,
+        "retained": {
+          "path": "/meet/people",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "url": "http://127.0.0.1:5383/api/auth/capabilities",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/login",
+              "url": "http://127.0.0.1:5383/api/auth/login",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/refresh",
+              "url": "http://127.0.0.1:5383/api/auth/refresh",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            }
+          ],
+          "frames": [],
+          "baselineEnabled": false,
+          "policyRevision": 1,
+          "sockets": 0,
+          "activeSockets": 0,
+          "peakSockets": 0,
+          "peakCanvases": 0,
+          "canvases": 0,
+          "sameHost": true,
+          "sameCanvas": true
+        }
+      }
+    },
+    {
+      "name": "denied",
+      "viewport": {
+        "width": 430,
+        "height": 844
+      },
+      "title": "Access denied",
+      "file": "denied-430x844.png",
+      "capturedAtUTC": "2026-11-05T03:22:02.950Z",
+      "capturedAtKST": "2026-11-05 12:22:02 GMT+9",
+      "regions": {
+        "frame": {
+          "box": {
+            "x": 6,
+            "y": 58,
+            "width": 418,
+            "height": 270.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "2px",
+          "padding": "2px"
+        },
+        "title": {
+          "box": {
+            "x": 10,
+            "y": 62,
+            "width": 410,
+            "height": 48
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "6px"
+        },
+        "heading": {
+          "box": {
+            "x": 16,
+            "y": 70,
+            "width": 145.375,
+            "height": 32
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "border": "0px",
+          "padding": "0px"
+        },
+        "body": {
+          "box": {
+            "x": 10,
+            "y": 110,
+            "width": 410,
+            "height": 106.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "12px"
+        },
+        "actions": {
+          "box": {
+            "x": 10,
+            "y": 216.1875,
+            "width": 410,
+            "height": 108
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "0px 12px 12px"
+        },
+        "controls": [
+          {
+            "name": "MCR Concert World",
+            "width": 142.71875,
+            "height": 44
+          },
+          {
+            "name": "Try again",
+            "width": 386,
+            "height": 44
+          },
+          {
+            "name": "Back to home",
+            "width": 386,
+            "height": 44
+          }
+        ]
+      },
+      "snapshot": {
+        "reads": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+            "query": "?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "method": "GET",
+            "authorized": true,
+            "cache": "no-store"
+          }
+        ],
+        "bootstrapDispatches": 1,
+        "retained": {
+          "path": "/meet/people",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "url": "http://127.0.0.1:5383/api/auth/capabilities",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/login",
+              "url": "http://127.0.0.1:5383/api/auth/login",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            }
+          ],
+          "frames": [],
+          "baselineEnabled": false,
+          "policyRevision": 1,
+          "sockets": 0,
+          "activeSockets": 0,
+          "peakSockets": 0,
+          "peakCanvases": 0,
+          "canvases": 0,
+          "sameHost": true,
+          "sameCanvas": true
+        }
+      }
+    },
+    {
+      "name": "gone",
+      "viewport": {
+        "width": 430,
+        "height": 844
+      },
+      "title": "This event is no longer available",
+      "file": "gone-430x844.png",
+      "capturedAtUTC": "2026-11-05T03:22:04.282Z",
+      "capturedAtKST": "2026-11-05 12:22:04 GMT+9",
+      "regions": {
+        "frame": {
+          "box": {
+            "x": 6,
+            "y": 58,
+            "width": 418,
+            "height": 270.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "2px",
+          "padding": "2px"
+        },
+        "title": {
+          "box": {
+            "x": 10,
+            "y": 62,
+            "width": 410,
+            "height": 48
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "6px"
+        },
+        "heading": {
+          "box": {
+            "x": 16,
+            "y": 70,
+            "width": 344.8125,
+            "height": 32
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "border": "0px",
+          "padding": "0px"
+        },
+        "body": {
+          "box": {
+            "x": 10,
+            "y": 110,
+            "width": 410,
+            "height": 106.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "12px"
+        },
+        "actions": {
+          "box": {
+            "x": 10,
+            "y": 216.1875,
+            "width": 410,
+            "height": 108
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "0px 12px 12px"
+        },
+        "controls": [
+          {
+            "name": "MCR Concert World",
+            "width": 142.71875,
+            "height": 44
+          },
+          {
+            "name": "Try again",
+            "width": 386,
+            "height": 44
+          },
+          {
+            "name": "Back to home",
+            "width": 386,
+            "height": 44
+          }
+        ]
+      },
+      "snapshot": {
+        "reads": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+            "query": "?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "method": "GET",
+            "authorized": true,
+            "cache": "no-store"
+          }
+        ],
+        "bootstrapDispatches": 1,
+        "retained": {
+          "path": "/meet/people",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "url": "http://127.0.0.1:5383/api/auth/capabilities",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/login",
+              "url": "http://127.0.0.1:5383/api/auth/login",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            }
+          ],
+          "frames": [],
+          "baselineEnabled": false,
+          "policyRevision": 1,
+          "sockets": 0,
+          "activeSockets": 0,
+          "peakSockets": 0,
+          "peakCanvases": 0,
+          "canvases": 0,
+          "sameHost": true,
+          "sameCanvas": true
+        }
+      }
+    },
+    {
+      "name": "throttled",
+      "viewport": {
+        "width": 430,
+        "height": 844
+      },
+      "title": "Please wait before trying again",
+      "file": "throttled-430x844.png",
+      "capturedAtUTC": "2026-11-05T03:22:05.634Z",
+      "capturedAtKST": "2026-11-05 12:22:05 GMT+9",
+      "regions": {
+        "frame": {
+          "box": {
+            "x": 6,
+            "y": 58,
+            "width": 418,
+            "height": 270.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "2px",
+          "padding": "2px"
+        },
+        "title": {
+          "box": {
+            "x": 10,
+            "y": 62,
+            "width": 410,
+            "height": 48
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "6px"
+        },
+        "heading": {
+          "box": {
+            "x": 16,
+            "y": 70,
+            "width": 334.15625,
+            "height": 32
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "border": "0px",
+          "padding": "0px"
+        },
+        "body": {
+          "box": {
+            "x": 10,
+            "y": 110,
+            "width": 410,
+            "height": 106.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "12px"
+        },
+        "actions": {
+          "box": {
+            "x": 10,
+            "y": 216.1875,
+            "width": 410,
+            "height": 108
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "0px 12px 12px"
+        },
+        "controls": [
+          {
+            "name": "MCR Concert World",
+            "width": 142.71875,
+            "height": 44
+          },
+          {
+            "name": "Try again",
+            "width": 386,
+            "height": 44
+          },
+          {
+            "name": "Back to home",
+            "width": 386,
+            "height": 44
+          }
+        ]
+      },
+      "snapshot": {
+        "reads": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+            "query": "?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "method": "GET",
+            "authorized": true,
+            "cache": "no-store"
+          }
+        ],
+        "bootstrapDispatches": 1,
+        "retained": {
+          "path": "/meet/people",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "url": "http://127.0.0.1:5383/api/auth/capabilities",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/login",
+              "url": "http://127.0.0.1:5383/api/auth/login",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            }
+          ],
+          "frames": [],
+          "baselineEnabled": false,
+          "policyRevision": 1,
+          "sockets": 0,
+          "activeSockets": 0,
+          "peakSockets": 0,
+          "peakCanvases": 0,
+          "canvases": 0,
+          "sameHost": true,
+          "sameCanvas": true
+        }
+      }
+    },
+    {
+      "name": "expired-policy",
+      "viewport": {
+        "width": 430,
+        "height": 844
+      },
+      "title": "Event availability could not be confirmed",
+      "file": "expired-policy-430x844.png",
+      "capturedAtUTC": "2026-11-05T03:22:07.725Z",
+      "capturedAtKST": "2026-11-05 12:22:07 GMT+9",
+      "regions": {
+        "frame": {
+          "box": {
+            "x": 6,
+            "y": 58,
+            "width": 418,
+            "height": 298.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "2px",
+          "padding": "2px"
+        },
+        "title": {
+          "box": {
+            "x": 10,
+            "y": 62,
+            "width": 410,
+            "height": 76
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "6px"
+        },
+        "heading": {
+          "box": {
+            "x": 16,
+            "y": 68,
+            "width": 398,
+            "height": 64
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "border": "0px",
+          "padding": "0px"
+        },
+        "body": {
+          "box": {
+            "x": 10,
+            "y": 138,
+            "width": 410,
+            "height": 106.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "12px"
+        },
+        "actions": {
+          "box": {
+            "x": 10,
+            "y": 244.1875,
+            "width": 410,
+            "height": 108
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "0px 12px 12px"
+        },
+        "controls": [
+          {
+            "name": "MCR Concert World",
+            "width": 142.71875,
+            "height": 44
+          },
+          {
+            "name": "Check again",
+            "width": 386,
+            "height": 44
+          },
+          {
+            "name": "Back to home",
+            "width": 386,
+            "height": 44
+          }
+        ]
+      },
+      "snapshot": {
+        "reads": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+            "query": "?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "method": "GET",
+            "authorized": true,
+            "cache": "no-store"
+          }
+        ],
+        "bootstrapDispatches": 0,
+        "retained": {
+          "path": "/meet/people",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "url": "http://127.0.0.1:5383/api/auth/capabilities",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/login",
+              "url": "http://127.0.0.1:5383/api/auth/login",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            }
+          ],
+          "frames": [],
+          "baselineEnabled": false,
+          "policyRevision": 1,
+          "sockets": 0,
+          "activeSockets": 0,
+          "peakSockets": 0,
+          "peakCanvases": 0,
+          "canvases": 0,
+          "sameHost": true,
+          "sameCanvas": true
+        }
+      }
+    },
+    {
+      "name": "minimum-version",
+      "viewport": {
+        "width": 390,
+        "height": 380
+      },
+      "title": "An app update is required",
+      "file": "minimum-version-390x380.png",
+      "capturedAtUTC": "2026-11-05T03:22:09.014Z",
+      "capturedAtKST": "2026-11-05 12:22:09 GMT+9",
+      "regions": {
+        "frame": {
+          "box": {
+            "x": 6,
+            "y": 58,
+            "width": 378,
+            "height": 322.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "2px",
+          "padding": "2px"
+        },
+        "title": {
+          "box": {
+            "x": 10,
+            "y": 62,
+            "width": 370,
+            "height": 48
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "6px"
+        },
+        "heading": {
+          "box": {
+            "x": 16,
+            "y": 70,
+            "width": 274.40625,
+            "height": 32
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "border": "0px",
+          "padding": "0px"
+        },
+        "body": {
+          "box": {
+            "x": 10,
+            "y": 110,
+            "width": 370,
+            "height": 106.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "12px"
+        },
+        "actions": {
+          "box": {
+            "x": 10,
+            "y": 216.1875,
+            "width": 370,
+            "height": 160
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "0px 12px 12px"
+        },
+        "controls": [
+          {
+            "name": "MCR Concert World",
+            "width": 142.71875,
+            "height": 44
+          },
+          {
+            "name": "Reload app",
+            "width": 346,
+            "height": 44
+          },
+          {
+            "name": "Check again",
+            "width": 346,
+            "height": 44
+          },
+          {
+            "name": "Back to home",
+            "width": 346,
+            "height": 44
+          }
+        ]
+      },
+      "snapshot": {
+        "reads": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+            "query": "?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "method": "GET",
+            "authorized": true,
+            "cache": "no-store"
+          }
+        ],
+        "bootstrapDispatches": 0,
+        "retained": {
+          "path": "/meet/people",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "url": "http://127.0.0.1:5383/api/auth/capabilities",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/login",
+              "url": "http://127.0.0.1:5383/api/auth/login",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            }
+          ],
+          "frames": [],
+          "baselineEnabled": false,
+          "policyRevision": 1,
+          "sockets": 0,
+          "activeSockets": 0,
+          "peakSockets": 0,
+          "peakCanvases": 0,
+          "canvases": 0,
+          "sameHost": true,
+          "sameCanvas": true
+        }
+      }
+    },
+    {
+      "name": "minimum-version-keyboard-focus",
+      "viewport": {
+        "width": 390,
+        "height": 380
+      },
+      "title": "An app update is required",
+      "file": "minimum-version-keyboard-focus-390x380.png",
+      "capturedAtUTC": "2026-11-05T03:22:09.075Z",
+      "capturedAtKST": "2026-11-05 12:22:09 GMT+9",
+      "regions": {
+        "frame": {
+          "box": {
+            "x": 6,
+            "y": 58,
+            "width": 378,
+            "height": 322.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "2px",
+          "padding": "2px"
+        },
+        "title": {
+          "box": {
+            "x": 10,
+            "y": 62,
+            "width": 370,
+            "height": 48
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "6px"
+        },
+        "heading": {
+          "box": {
+            "x": 16,
+            "y": 70,
+            "width": 274.40625,
+            "height": 32
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "border": "0px",
+          "padding": "0px"
+        },
+        "body": {
+          "box": {
+            "x": 10,
+            "y": 110,
+            "width": 370,
+            "height": 106.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "12px"
+        },
+        "actions": {
+          "box": {
+            "x": 10,
+            "y": 216.1875,
+            "width": 370,
+            "height": 160
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "0px 12px 12px"
+        },
+        "controls": [
+          {
+            "name": "MCR Concert World",
+            "width": 142.71875,
+            "height": 44
+          },
+          {
+            "name": "Reload app",
+            "width": 346,
+            "height": 44
+          },
+          {
+            "name": "Check again",
+            "width": 346,
+            "height": 44
+          },
+          {
+            "name": "Back to home",
+            "width": 346,
+            "height": 44
+          }
+        ]
+      },
+      "snapshot": {
+        "reads": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+            "query": "?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "method": "GET",
+            "authorized": true,
+            "cache": "no-store"
+          }
+        ],
+        "bootstrapDispatches": 0,
+        "retained": {
+          "path": "/meet/people",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "url": "http://127.0.0.1:5383/api/auth/capabilities",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/login",
+              "url": "http://127.0.0.1:5383/api/auth/login",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            }
+          ],
+          "frames": [],
+          "baselineEnabled": false,
+          "policyRevision": 1,
+          "sockets": 0,
+          "activeSockets": 0,
+          "peakSockets": 0,
+          "peakCanvases": 0,
+          "canvases": 0,
+          "sameHost": true,
+          "sameCanvas": true
+        }
+      }
+    },
+    {
+      "name": "throttled",
+      "viewport": {
+        "width": 390,
+        "height": 380
+      },
+      "title": "Please wait before trying again",
+      "file": "throttled-390x380.png",
+      "capturedAtUTC": "2026-11-05T03:22:10.506Z",
+      "capturedAtKST": "2026-11-05 12:22:10 GMT+9",
+      "regions": {
+        "frame": {
+          "box": {
+            "x": 6,
+            "y": 58,
+            "width": 378,
+            "height": 270.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgb(249, 249, 248)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "2px",
+          "padding": "2px"
+        },
+        "title": {
+          "box": {
+            "x": 10,
+            "y": 62,
+            "width": 370,
+            "height": 48
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgb(23, 23, 23)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "6px"
+        },
+        "heading": {
+          "box": {
+            "x": 16,
+            "y": 70,
+            "width": 334.15625,
+            "height": 32
+          },
+          "color": "rgb(255, 255, 255)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Display\", \"Arial Narrow\", Arial, sans-serif",
+          "size": "26px",
+          "leading": "32px",
+          "border": "0px",
+          "padding": "0px"
+        },
+        "body": {
+          "box": {
+            "x": 10,
+            "y": 110,
+            "width": 370,
+            "height": 106.1875
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "12px"
+        },
+        "actions": {
+          "box": {
+            "x": 10,
+            "y": 216.1875,
+            "width": 370,
+            "height": 108
+          },
+          "color": "rgb(23, 23, 23)",
+          "background": "rgba(0, 0, 0, 0)",
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "size": "18px",
+          "leading": "22px",
+          "border": "0px",
+          "padding": "0px 12px 12px"
+        },
+        "controls": [
+          {
+            "name": "MCR Concert World",
+            "width": 142.71875,
+            "height": 44
+          },
+          {
+            "name": "Try again",
+            "width": 346,
+            "height": 44
+          },
+          {
+            "name": "Back to home",
+            "width": 346,
+            "height": 44
+          }
+        ]
+      },
+      "snapshot": {
+        "reads": [
+          {
+            "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/service-policy",
+            "query": "?client_version=0.1.0&client_release=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "method": "GET",
+            "authorized": true,
+            "cache": "no-store"
+          }
+        ],
+        "bootstrapDispatches": 1,
+        "retained": {
+          "path": "/meet/people",
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "url": "http://127.0.0.1:5383/api/auth/capabilities",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/login",
+              "url": "http://127.0.0.1:5383/api/auth/login",
+              "method": "POST",
+              "key": null,
+              "baseline": false,
+              "authorized": false,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "url": "http://127.0.0.1:5383/api/auth/enrollment/admission",
+              "method": "GET",
+              "key": null,
+              "baseline": false,
+              "authorized": true,
+              "cache": "no-store"
+            }
+          ],
+          "frames": [],
+          "baselineEnabled": false,
+          "policyRevision": 1,
+          "sockets": 0,
+          "activeSockets": 0,
+          "peakSockets": 0,
+          "peakCanvases": 0,
+          "canvases": 0,
+          "sameHost": true,
+          "sameCanvas": true
+        }
+      }
+    }
+  ],
+  "completedCases": [
+    {
+      "name": "policy-pending",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "completedAtUTC": "2026-11-05T03:21:24.221Z"
+    },
+    {
+      "name": "bootstrap-pending",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "completedAtUTC": "2026-11-05T03:21:25.548Z"
+    },
+    {
+      "name": "maintenance",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "completedAtUTC": "2026-11-05T03:21:26.857Z"
+    },
+    {
+      "name": "minimum-version",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "completedAtUTC": "2026-11-05T03:21:28.265Z"
+    },
+    {
+      "name": "unavailable",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "completedAtUTC": "2026-11-05T03:21:29.100Z"
+    },
+    {
+      "name": "not-found",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "completedAtUTC": "2026-11-05T03:21:30.390Z"
+    },
+    {
+      "name": "session-boundary",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "completedAtUTC": "2026-11-05T03:21:31.711Z"
+    },
+    {
+      "name": "denied",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "completedAtUTC": "2026-11-05T03:21:32.992Z"
+    },
+    {
+      "name": "gone",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "completedAtUTC": "2026-11-05T03:21:34.260Z"
+    },
+    {
+      "name": "throttled",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "completedAtUTC": "2026-11-05T03:21:35.607Z"
+    },
+    {
+      "name": "expired-policy",
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "completedAtUTC": "2026-11-05T03:21:37.678Z"
+    },
+    {
+      "name": "policy-pending",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "completedAtUTC": "2026-11-05T03:21:38.997Z"
+    },
+    {
+      "name": "bootstrap-pending",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "completedAtUTC": "2026-11-05T03:21:40.290Z"
+    },
+    {
+      "name": "maintenance",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "completedAtUTC": "2026-11-05T03:21:41.578Z"
+    },
+    {
+      "name": "minimum-version",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "completedAtUTC": "2026-11-05T03:21:43.083Z"
+    },
+    {
+      "name": "unavailable",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "completedAtUTC": "2026-11-05T03:21:44.386Z"
+    },
+    {
+      "name": "not-found",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "completedAtUTC": "2026-11-05T03:21:45.763Z"
+    },
+    {
+      "name": "session-boundary",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "completedAtUTC": "2026-11-05T03:21:47.111Z"
+    },
+    {
+      "name": "denied",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "completedAtUTC": "2026-11-05T03:21:48.463Z"
+    },
+    {
+      "name": "gone",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "completedAtUTC": "2026-11-05T03:21:49.811Z"
+    },
+    {
+      "name": "throttled",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "completedAtUTC": "2026-11-05T03:21:51.169Z"
+    },
+    {
+      "name": "expired-policy",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "completedAtUTC": "2026-11-05T03:21:53.232Z"
+    },
+    {
+      "name": "policy-pending",
+      "viewport": {
+        "width": 430,
+        "height": 844
+      },
+      "completedAtUTC": "2026-11-05T03:21:54.549Z"
+    },
+    {
+      "name": "bootstrap-pending",
+      "viewport": {
+        "width": 430,
+        "height": 844
+      },
+      "completedAtUTC": "2026-11-05T03:21:55.838Z"
+    },
+    {
+      "name": "maintenance",
+      "viewport": {
+        "width": 430,
+        "height": 844
+      },
+      "completedAtUTC": "2026-11-05T03:21:57.147Z"
+    },
+    {
+      "name": "minimum-version",
+      "viewport": {
+        "width": 430,
+        "height": 844
+      },
+      "completedAtUTC": "2026-11-05T03:21:58.589Z"
+    },
+    {
+      "name": "unavailable",
+      "viewport": {
+        "width": 430,
+        "height": 844
+      },
+      "completedAtUTC": "2026-11-05T03:21:59.438Z"
+    },
+    {
+      "name": "not-found",
+      "viewport": {
+        "width": 430,
+        "height": 844
+      },
+      "completedAtUTC": "2026-11-05T03:22:00.283Z"
+    },
+    {
+      "name": "session-boundary",
+      "viewport": {
+        "width": 430,
+        "height": 844
+      },
+      "completedAtUTC": "2026-11-05T03:22:01.641Z"
+    },
+    {
+      "name": "denied",
+      "viewport": {
+        "width": 430,
+        "height": 844
+      },
+      "completedAtUTC": "2026-11-05T03:22:02.983Z"
+    },
+    {
+      "name": "gone",
+      "viewport": {
+        "width": 430,
+        "height": 844
+      },
+      "completedAtUTC": "2026-11-05T03:22:04.316Z"
+    },
+    {
+      "name": "throttled",
+      "viewport": {
+        "width": 430,
+        "height": 844
+      },
+      "completedAtUTC": "2026-11-05T03:22:05.671Z"
+    },
+    {
+      "name": "expired-policy",
+      "viewport": {
+        "width": 430,
+        "height": 844
+      },
+      "completedAtUTC": "2026-11-05T03:22:07.758Z"
+    },
+    {
+      "name": "minimum-version",
+      "viewport": {
+        "width": 390,
+        "height": 380
+      },
+      "completedAtUTC": "2026-11-05T03:22:09.228Z"
+    },
+    {
+      "name": "throttled",
+      "viewport": {
+        "width": 390,
+        "height": 380
+      },
+      "completedAtUTC": "2026-11-05T03:22:10.564Z"
+    }
+  ],
+  "errors": [],
+  "interactions": [
+    {
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "keyboardReload": "preserved destination, canonical anonymous gate, no World"
+    },
+    {
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "manualKeyboardRetry": "exactly one new policy read, no bootstrap"
+    },
+    {
+      "viewport": {
+        "width": 360,
+        "height": 844
+      },
+      "sessionBoundary": "Canonical Auth revokes scope; sign-in preserves destination; no premature World"
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "keyboardReload": "preserved destination, canonical anonymous gate, no World"
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "manualKeyboardRetry": "exactly one new policy read, no bootstrap"
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sessionBoundary": "Canonical Auth revokes scope; sign-in preserves destination; no premature World"
+    },
+    {
+      "viewport": {
+        "width": 430,
+        "height": 844
+      },
+      "keyboardReload": "preserved destination, canonical anonymous gate, no World"
+    },
+    {
+      "viewport": {
+        "width": 430,
+        "height": 844
+      },
+      "manualKeyboardRetry": "exactly one new policy read, no bootstrap"
+    },
+    {
+      "viewport": {
+        "width": 430,
+        "height": 844
+      },
+      "sessionBoundary": "Canonical Auth revokes scope; sign-in preserves destination; no premature World"
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 380
+      },
+      "keyboardReload": "preserved destination, canonical anonymous gate, no World"
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 380
+      },
+      "shortHeightAction": "keyboard focus and scroll reach actual retry"
+    }
+  ],
+  "startupDiagnostics": [
+    {
+      "console": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    },
+    {
+      "console": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    },
+    {
+      "path": "/api/auth/capabilities",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "console": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    },
+    {
+      "path": "/api/auth/capabilities",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "console": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    },
+    {
+      "path": "/api/auth/capabilities",
+      "failure": "net::ERR_ABORTED"
+    },
+    {
+      "console": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    },
+    {
+      "path": "/api/auth/capabilities",
+      "failure": "net::ERR_ABORTED"
+    }
+  ],
+  "privatePort": 5383,
+  "foundation": "Exact readonly final PI01 source7f9d1095 eighteen postimages, owner-qualified/published canonical651159ec; this leaf controlled validation is separate from combinedmaster/live/device acceptance",
+  "limits": "PI12 pre-World S02/S03 subset only; actual main/default Auth/ports and controlled HTTP/C03/C05 fixtures. No live server/catalog/device, in-World overlays, general route-error or wholePI12 acceptance.",
+  "crashpadNamespace": "/private/tmp/mcr-pi12-preworld-native13/crashpad",
+  "crashpadProcesses": [
+    "43708     1 43707 Thu Nov  5 12:21:22 2026     /Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/chrome_crashpad_handler --monitor-self-annotation=ptype=crashpad-handler --database=/private/tmp/mcr-pi12-preworld-native13/crashpad --url=https://clients2.google.com/cr/report --annotation=channel= --annotation=plat=OS X --annotation=prod=Chrome_Mac --annotation=ver=156.0.8078.80 --handshake-fd=7"
+  ],
+  "closed": true,
+  "pngCount": 37,
+  "pngBytes": 846254,
+  "familyPNGCount": 44,
+  "familyPNGBytes": 981254,
+  "serverClosed": true
+}

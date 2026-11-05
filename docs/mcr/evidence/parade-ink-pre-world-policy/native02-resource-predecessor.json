@@ -1,0 +1,31 @@
+{
+  "observed": 1793843492.330679,
+  "ownOffer": "PI12-PREWORLD-APP-NATIVE02-0145",
+  "ownState": "UNACCEPTED_READY_NO_HELD_SLOT",
+  "ownResources": 0,
+  "predecessorLiteralReleases": [
+    {
+      "offerId": "PI12-GENERIC-NATIVE03-0145",
+      "state": "FULL",
+      "acceptedAtEpoch": 1793843207.6128561,
+      "actualFullUTC": "2026-11-05T01:47:08.556994+00:00",
+      "actualFullEpoch": 1793843228.556994,
+      "resourcesReleased": true,
+      "fullPath": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/docs/mcr/evidence/parade-ink-report-error-network/native03/guardian.json",
+      "fullSHA256": "7088d4b84950992c8d0c1908bbbb0e92cd53780dd5d0812bcedcef53a1efd9b0",
+      "verifiedSHA256": "7088d4b84950992c8d0c1908bbbb0e92cd53780dd5d0812bcedcef53a1efd9b0"
+    },
+    {
+      "offerId": "PI12-GENERIC-NATIVE04-0145",
+      "state": "FULL",
+      "acceptedAtEpoch": 1793843386.3897128,
+      "actualFullUTC": "2026-11-05T01:50:08.122995+00:00",
+      "actualFullEpoch": 1793843408.122995,
+      "resourcesReleased": true,
+      "fullPath": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/docs/mcr/evidence/parade-ink-report-error-network/native04/guardian.json",
+      "fullSHA256": "767b641aa132e7883a6a9bd89d469f2a602186ec730fd7b5cc227070d5fc1ed7",
+      "verifiedSHA256": "767b641aa132e7883a6a9bd89d469f2a602186ec730fd7b5cc227070d5fc1ed7"
+    }
+  ],
+  "next": "Fresh actual globalbrowserfit then ownactualACCEPT; directFULL to213/21d beforeinspection"
+}

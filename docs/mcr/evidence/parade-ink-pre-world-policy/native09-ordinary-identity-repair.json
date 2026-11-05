@@ -1,0 +1,25 @@
+{
+  "observedAt": 1793848074.9130838,
+  "owner": "01a1a5d9-332b-7822-a8f7-40c576fad94a",
+  "historicalFailedPin": "7461c57eb67beec0c89b13b71876f7c3579176774da40fbb3fe11b922bb9c29e",
+  "currentCanonicalSHA": "cd471c644697ada2c778a8bdac6c1c94d4188287e59f4489dc8f4b1caeed49dd",
+  "controller": {
+    "pid": 26507,
+    "birth": "Thu Nov  5 12:05:07 2026",
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+    "script": "/private/tmp/mcr-venu-l-transport-40c576-0304/ordinary.py",
+    "cwd": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b",
+    "outputRoot": "/private/tmp/mcr-venu-l-transport-40c576-0304"
+  },
+  "ordinaryObservation": {
+    "actualpid": 26507,
+    "birth": "Thu Nov  5 12:05:07 2026",
+    "cwd": "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b",
+    "role": "bounded L four-leaf ordinary authoring accounting observer; no payload",
+    "observedAt": 1793847907.283674,
+    "booking": "VENU-L-TRANSPORT-PREP16-0304",
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+    "script": "/private/tmp/mcr-venu-l-transport-40c576-0304/ordinary.py"
+  },
+  "historicalDisposition": "Native08 remains failed. Historical changed metadata shape pending responsible-owner report. Current exact PID/birth/script physically reobserved; no blind exemption or peer metadata edit."
+}

@@ -1,0 +1,23 @@
+{
+  "offer": "PREWORLD-NATIVE09-0301",
+  "accepted": 1793848085.352656,
+  "cutoff": 1793848385.352656,
+  "release": 1793848445.352656,
+  "head": "94ca73d2da0f9a2abbec7c90cc0bc1cdcc95ec2d",
+  "whole": 21474836480,
+  "new": 335544320,
+  "files": 90000,
+  "processes": 24,
+  "rss": 3758096384,
+  "minimumCarryBytes": 19950000000,
+  "fullDOC16UpperBytes": 16777216,
+  "retainedGrowthBytes": 268435456,
+  "pngFamily": {
+    "cap": 48,
+    "retainedCount": 7,
+    "retainedBytes": 135000,
+    "byteCap": 16777216
+  },
+  "cwd": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2",
+  "controller": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/lease.py"
+}

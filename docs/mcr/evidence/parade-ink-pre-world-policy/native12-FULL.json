@@ -1,0 +1,27 @@
+{
+  "state": "FULL",
+  "offer": "PREWORLD-NATIVE12-0316",
+  "finished": 1793848843.6042721,
+  "resources": {
+    "children": 0,
+    "link": 0,
+    "temporary": 0,
+    "reservations": 0
+  },
+  "exitCode": 1,
+  "preflightFailure": "Passed incorrect --head; pretry HEAD assertion failed after admission but before guardians/link/TMP/payload. Actual completed ownexecsession74980exit1; actual controllerPID absent, link/scratch absent.",
+  "actualHEAD": "6952025cecd15a659c5430b808ffbdd58245d8b5",
+  "providedHEAD": "6952025cefc134755bc6fe26fb4d1a6cfa80ff31",
+  "closedPermanently": true,
+  "controller": {
+    "pid": 34101,
+    "birth": "Thu Nov 5 12:20:18 2026",
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+    "script": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/lease.py",
+    "cwd": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2",
+    "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy",
+    "actualArgs": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/lease.py --offer PREWORLD-NATIVE12-0316 --head 6952025cefc134755bc6fe26fb4d1a6cfa80ff31 --job browser --attempt native12 --acceptance native12-acceptance.json --cutoff 0 --release 1 --whole 21474836480 --growth 469762048 --temporary 100663296 --durable 16777216 --files 90000 --processes 24 --rss 3758096384 --start-floor 12 --freeze native12-freeze.json --bootstrap-work 300 --bootstrap-full 360 --minimum-carry-bytes 20060000000 --retained-growth-bytes 419430400 --retain-decoder-pass --retain-native09-controls --family-png-cap 48 --retained-png-count 7 --retained-png-bytes 135000"
+  },
+  "cleanupVerifiedAt": 1793848843.6042721,
+  "releasedBeforeDeadline": true
+}

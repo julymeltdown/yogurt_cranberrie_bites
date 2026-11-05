@@ -1,0 +1,43 @@
+{
+  "observed": 1793841940.555739,
+  "records": [
+    {
+      "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c.json",
+      "record": {
+        "ownerThreadId": "01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c",
+        "offerId": "PI12-REPORT-ERROR-NETWORK-SOURCE06-0120",
+        "state": "ACCEPTED_RUNNING",
+        "acceptedAtEpoch": 1793841918.372315,
+        "workDeadlineEpoch": 1793842098.372315,
+        "fullDeadlineEpoch": 1793842158.372315,
+        "kind": "source",
+        "processCap": 12,
+        "rssCapBytes": 3221225472,
+        "remainingNewUpperBytes": 134217728,
+        "controller": {
+          "pid": 27230,
+          "birth": "Thu Nov  5 10:25:28 2026",
+          "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+          "script": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/docs/mcr/evidence/parade-ink-report-error-network/controller.py",
+          "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/docs/mcr/evidence/parade-ink-report-error-network/source06",
+          "workingDirectory": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map"
+        },
+        "guardControllers": [
+          {
+            "pid": 27051,
+            "birth": "Thu Nov  5 10:25:26 2026",
+            "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+            "script": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/docs/mcr/evidence/parade-ink-report-error-network/guardian.py",
+            "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/docs/mcr/evidence/parade-ink-report-error-network/source06",
+            "workingDirectory": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map"
+          }
+        ],
+        "receiptPaths": {
+          "accept": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/docs/mcr/evidence/parade-ink-report-error-network/source06-offer.private.json",
+          "full": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/docs/mcr/evidence/parade-ink-report-error-network/source06/guardian.json"
+        },
+        "publishedAtEpoch": 1793841930.5782242
+      }
+    }
+  ]
+}

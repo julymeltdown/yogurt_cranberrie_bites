@@ -1,0 +1,14 @@
+{
+  "state": "FULL",
+  "offer": "PREWORLD-NATIVE06-0233",
+  "finished": 1793846038.694773,
+  "resources": {
+    "children": 0,
+    "link": 0,
+    "temporary": 0,
+    "reservations": 0
+  },
+  "receipt": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/native06.json",
+  "exitCode": null,
+  "guardFailure": "AssertionError(('unresolved workflow claims', [57755]))"
+}

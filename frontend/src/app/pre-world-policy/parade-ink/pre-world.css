@@ -1,0 +1,86 @@
+/* PI12 pre-World leaves consume PI01 pi01-photo2-v1; no local token palette. */
+.pi-pre-world {
+  position: fixed;
+  inset: 0;
+  box-sizing: border-box;
+  inline-size: min(100%, 44rem);
+  min-inline-size: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  margin-inline: auto;
+  padding: max(var(--pi-content-inset), env(safe-area-inset-top))
+    max(var(--pi-content-inset), env(safe-area-inset-right))
+    max(var(--pi-content-inset), env(safe-area-inset-bottom))
+    max(var(--pi-content-inset), env(safe-area-inset-left));
+  color: var(--pi-ink);
+  font: 400 var(--pi-body-size)/var(--pi-body-leading) var(--pi-font-body);
+  overflow-wrap: anywhere;
+}
+.pi-pre-world__brand {
+  display: flex;
+  align-items: center;
+  min-block-size: var(--pi-hit);
+  inline-size: fit-content;
+  margin-block-end: var(--pi-row-gap);
+  color: var(--pi-ink);
+  font: 700 var(--pi-control-size)/var(--pi-control-leading) var(--pi-font-display);
+  text-underline-offset: 3px;
+}
+.pi-pre-world__window {
+  min-inline-size: 0;
+  border: var(--pi-frame-border) solid var(--pi-ink);
+  padding: var(--pi-frame-keyline);
+  color: var(--pi-ink);
+  background: var(--pi-paper);
+}
+.pi-pre-world__title {
+  display: flex;
+  align-items: center;
+  min-block-size: var(--pi-title-height);
+  padding: var(--pi-content-inset);
+  color: var(--pi-on-dark);
+  background: var(--pi-ink);
+}
+.pi-pre-world__title h1 {
+  min-inline-size: 0;
+  margin: 0;
+  color: inherit;
+  font: 700 var(--pi-title-size)/var(--pi-title-leading) var(--pi-font-display);
+  text-transform: uppercase;
+}
+.pi-pre-world__body { padding: calc(var(--pi-content-inset) * 2); }
+.pi-pre-world .mcr-feedback {
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+.pi-pre-world .mcr-feedback h2 {
+  margin: 0 0 var(--pi-row-gap);
+  font: 700 var(--pi-body-size)/var(--pi-body-leading) var(--pi-font-body);
+}
+.pi-pre-world .mcr-feedback__body {
+  font: 400 var(--pi-body-size)/var(--pi-body-leading) var(--pi-font-body);
+}
+.pi-pre-world .mcr-feedback p { margin: 0; }
+.pi-pre-world__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--pi-row-gap);
+  padding: 0 calc(var(--pi-content-inset) * 2) calc(var(--pi-content-inset) * 2);
+}
+.pi-pre-world__actions .mcr-button { flex: 1 1 12rem; }
+.pi-pre-world__actions > .shell-link {
+  display: flex;
+  align-items: center;
+  flex-basis: 100%;
+  min-block-size: var(--pi-hit);
+  color: var(--pi-ink);
+  font: 700 var(--pi-control-size)/var(--pi-control-leading) var(--pi-font-display);
+  text-underline-offset: 3px;
+}
+.pi-pre-world :focus-visible { outline-color: var(--pi-focus); }
+.pi-pre-world__title h1:focus-visible { outline-color: var(--pi-on-dark); }
+@media (forced-colors: active) {
+  .pi-pre-world__title { color: CanvasText; background: Canvas; border: 1px solid CanvasText; }
+  .pi-pre-world :focus-visible { outline-color: Highlight; }
+}

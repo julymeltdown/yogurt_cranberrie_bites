@@ -1,0 +1,22 @@
+{
+  "booking": "DOC16-0110",
+  "additionalCap": 16777216,
+  "expiresUTC": "2026-11-05T01:35:00Z",
+  "created": 1793841200.808673,
+  "baseline": {
+    "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2": {
+      "files": 16307,
+      "bytes": 1469041272
+    },
+    "/Users/lhs/Desktop/mcr/.git": {
+      "files": 3515,
+      "bytes": 1187183101
+    }
+  },
+  "oldDOC4ObservedUpperPreserved": 12294898,
+  "source02WholeMaxPreserved": 15434601828,
+  "source03MinimumCarryBeforeFullDOC16Upper": 16958701266,
+  "projectedWholeWithDOC16AndNEW32": 17009032914,
+  "source03WholeCap": 17179869184,
+  "free": 16201039872
+}

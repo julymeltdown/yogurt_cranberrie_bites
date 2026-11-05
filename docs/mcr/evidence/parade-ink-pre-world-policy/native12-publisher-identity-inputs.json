@@ -1,0 +1,35 @@
+{
+  "observedAt": 1793848768.7281651,
+  "historicalPath": "/private/tmp/mcr-publisher-412e-before-stable-ordinary-observation-20261105.json",
+  "historicalSHA": "a1c79b497f077aa70f441154bcac20c7e95d78fc10014980861cf63b27e64d49",
+  "historicalIdentity": {
+    "pid": 18612,
+    "birth": "Thu Nov  5 12:03:43 2026",
+    "birthFormat": "ps lstart",
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+    "launcher": "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+    "parentPid": 49590,
+    "script": "/private/tmp/mcr-publisher-412e-capacity-composition-delivery.py",
+    "outputRoot": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-publisher-412e-3ma93b4i",
+    "workingRoot": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-public"
+  },
+  "historicalFullPath": "/private/tmp/mcr-publisher-412e-venue-clients-map-dispositions-receipt.json",
+  "historicalFullSHA": "dddcc8da289dfb1f71f1c1b85cd5e6b5a0cf55a25195b8baffb2aaf92f609464",
+  "currentCanonicalPath": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-412e295fa211.json",
+  "currentCanonicalSHA": "6336eb1e4d7aa51877f75b4ad4a1d0537e74aa786a75155218392267cbadd047",
+  "currentIdentity": {
+    "pid": 3479,
+    "birth": "Thu Nov  5 12:16:35 2026",
+    "birthFormat": "ps lstart",
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+    "launcher": "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+    "parentPid": 49590,
+    "script": "/private/tmp/mcr-publisher-412e-adapter-post-final-state-and-pi11-pins.py",
+    "outputRoot": "/private/tmp/mcr-publisher-412e-adapter-post-final-state-and-pi11-pins-metadata",
+    "workingRoot": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-public"
+  },
+  "currentScriptSHA": "a763d6b3de701b4d4399aa0bce3f1f7b78899bade4495d328f7a2fc4a72ca940",
+  "currentState": "FULL",
+  "currentExecutionWorkflow": false,
+  "meaning": "Actual producer identities/current script hash, historical oldhelperFULL preserved. No blind mutableoldpin repin or unknown root exemption. Fresh activecanonical and actualOS census still required."
+}

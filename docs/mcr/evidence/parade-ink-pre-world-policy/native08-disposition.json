@@ -1,0 +1,28 @@
+{
+  "state": "INITIAL_CENSUS_ABORT_NOT_ACCEPTED",
+  "full": {
+    "ownerThreadId": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+    "offerId": "PREWORLD-NATIVE08-0301",
+    "acceptedAtEpoch": 1793847967.429149,
+    "actualFullEpoch": 1793847970.841516,
+    "originalDisposition": "INITIAL_CENSUS_ABORT_NO_CHECKS",
+    "resourcesReleased": true,
+    "fullPath": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/native08-FULL.json",
+    "fullSHA": "96b41fe93e8c3ca01c6d31e8568e7a88c34da884162f315cdc73d9e947ad6270"
+  },
+  "sourceHEAD": "e6a852f8950ebe339989c47514336b98ddf4bc9c",
+  "checksRun": [],
+  "newPNGs": 0,
+  "unknownPID": 26507,
+  "historicalCanonicalSHA": "7461c57eb67beec0c89b13b71876f7c3579176774da40fbb3fe11b922bb9c29e",
+  "currentCanonicalSHA": "cd471c644697ada2c778a8bdac6c1c94d4188287e59f4489dc8f4b1caeed49dd",
+  "disposition": "Current producer canonical contains recognizable exact ordinary controller; historical changed record requires responsible-owner disposition. No blind exemption/no retroPASS.",
+  "responsibleOwnerHistoricalDisposition": {
+    "receivedAt": 1793848147.732001,
+    "immutableInitial": "/private/tmp/mcr-venu-l-transport-40c576-0304/ACCEPT.json",
+    "initialPublishedEpoch": 1793847907.283674,
+    "initialShape": "ACCEPTED ordinary; controller:null; nested ordinaryObservation actualpid/birth/executable/script/cwd/observedAt; no commandDigest",
+    "prospectiveRepair": "Current canonical exact controller and executionWorkflow:false were added after receiver failure; initial shape did not contain controller.",
+    "meaning": "Historical metadata existed before scan but own reader could not consume this nested shape; Native08 remains failed; Native09 used fresh clarified canonical."
+  }
+}

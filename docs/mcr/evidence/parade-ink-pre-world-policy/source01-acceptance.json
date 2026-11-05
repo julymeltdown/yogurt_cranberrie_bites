@@ -1,0 +1,103 @@
+{
+  "measured": 1793839323.5913548,
+  "free": 15395979264,
+  "sourceFiles": 16267,
+  "sourceBytes": 1465012621,
+  "gitFiles": 3028,
+  "gitBytes": 1173717381,
+  "metadataFiles": 10,
+  "metadataBytes": 3481518,
+  "dependencyFiles": 11104,
+  "dependencyBytes": 408236853,
+  "pythonFiles": 25322,
+  "pythonBytes": 985764025,
+  "nodeRuntimeFiles": 4797,
+  "nodeRuntimeBytes": 197443269,
+  "outFiles": 8,
+  "outBytes": 5198065,
+  "browserFiles": 697,
+  "browserBytes": 1524099438,
+  "nodeFiles": 1,
+  "nodeBytes": 122564432,
+  "offer": "PI12-PREWORLD-SOURCE01-0035",
+  "accepted": 1793839324.4544158,
+  "cutoff": 1793839504,
+  "release": 1793839564,
+  "startFloorGiB": 11,
+  "otherWorstGrowth": 3221225472,
+  "minimumCarryBytes": 13901430503,
+  "minimumCarryFiles": 61225,
+  "head": "a1c6959aab081ca8d3e8d6cbec055a27e71cfb03",
+  "sourceCandidate": "91845e4344a212cc1f4f33fdf75ff7a8b4e4adcf",
+  "initialGlobal": {
+    "metadataAsOf": "2026-11-05T00:41:01.981888+00:00",
+    "members": [
+      {
+        "cohort": "PI06Native02",
+        "kind": "browser",
+        "pids": [],
+        "processCap": 20,
+        "rssCapBytes": 4294967296,
+        "remainingNewBytes": 268435456,
+        "state": "ACTUAL_ACCEPT_NO_FULL_RECEIPT_YET"
+      },
+      {
+        "cohort": "PI12PreWorld",
+        "kind": "source",
+        "pids": [
+          54859,
+          55252
+        ],
+        "processCap": 24,
+        "rssCapBytes": 3221225472,
+        "remainingNewBytes": 33554432,
+        "state": "ACTUAL_ACCEPT"
+      }
+    ],
+    "unresolvedPids": [],
+    "workflows": 2,
+    "sources": 1,
+    "browsers": 1,
+    "targets": 0,
+    "distinctPids": [
+      54859,
+      55252
+    ],
+    "actualRSS": 222937088,
+    "chargedPIDs": 44,
+    "chargedRSS": 7516192768,
+    "otherUpper": 3221225472,
+    "processes": [
+      {
+        "pid": 54859,
+        "parent": 49590,
+        "group": 54859,
+        "rss": 220774400,
+        "birth": "Thu Nov 5 09:42:01 2026",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B -"
+      },
+      {
+        "pid": 55252,
+        "parent": 54859,
+        "group": 54859,
+        "rss": 2162688,
+        "birth": "Thu Nov 5 09:42:03 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,rss=,lstart=,args="
+      }
+    ]
+  },
+  "fileCap": 90000,
+  "wholeCap": 17179869184,
+  "newCap": 33554432,
+  "temporaryCap": 25165824,
+  "durableCap": 4194304,
+  "processCap": 24,
+  "rssCap": 3221225472,
+  "onlyJobs": [
+    "guard",
+    "focus",
+    "types",
+    "lint",
+    "syntax"
+  ]
+}

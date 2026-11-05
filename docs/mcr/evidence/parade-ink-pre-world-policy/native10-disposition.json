@@ -1,0 +1,52 @@
+{
+  "state": "GLOBAL_PID_RESERVATION_CAP_ABORT_NO_BROWSER",
+  "full": {
+    "ownerThreadId": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+    "offerId": "PREWORLD-NATIVE10-0310",
+    "acceptedAtEpoch": 1793848344.928902,
+    "actualFullEpoch": 1793848353.666568,
+    "originalDisposition": "INITIALS_LIVE_THEN_GLOBAL_PID_RESERVATIONS_98_OVER96_NO_BROWSER",
+    "resourcesReleased": true,
+    "fullPath": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/native10-FULL.json",
+    "fullSHA": "147e72157c010b83dc83be589a07d8b25096fc765723bd47f7cea2b629b03c98"
+  },
+  "sourceHEAD": "9abae170008b93eb3aab584ade54f4df034fd608",
+  "peaks": {
+    "whole": 20010783993,
+    "growth": 353105529,
+    "temporary": 706531,
+    "durable": 59081,
+    "files": 62424,
+    "processes": 3,
+    "rss": 261636096
+  },
+  "chargedPIDs": 98,
+  "chargedRSS": 18826412032,
+  "memberCaps": [
+    {
+      "cohort": "GENERIC-NATIVE11-0310",
+      "kind": "browser",
+      "processCap": 24
+    },
+    {
+      "cohort": "BE42-PH1-COMPILE-FIVE-09-0249",
+      "kind": "target",
+      "processCap": 32
+    },
+    {
+      "cohort": "VENU-NOTES-ADAPTER-SOURCE02-0307",
+      "kind": "source",
+      "processCap": 16
+    },
+    {
+      "cohort": "PI12PreWorld",
+      "kind": "browser",
+      "processCap": 24
+    }
+  ],
+  "ordinaryPhysicalPIDs": 2,
+  "unresolvedPids": [],
+  "newPNGs": 0,
+  "checksReplayed": [],
+  "next": "Named repair11 only after actual literal peer release and currentfit; no cap weakening or oldroundrestart."
+}

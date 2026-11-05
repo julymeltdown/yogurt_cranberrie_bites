@@ -1,0 +1,41 @@
+{
+  "offer": "PREWORLD-NATIVE03-0206",
+  "head": "4cc87e377cfc2fbed2dbad569ea72d19451ff917",
+  "job": "browser",
+  "started": 1793844241.923572,
+  "finished": 1793844248.728585,
+  "checks": null,
+  "exitCode": null,
+  "guardFailure": "AssertionError(('missing ACCEPT receipt', '01a1a230-6acc-7e82-9e4b-92506decc745'))",
+  "guardTraceback": "Traceback (most recent call last):\n  File \"/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/lease.py\", line 264, in <module>\n    measure()\n    ~~~~~~~^^\n  File \"/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/lease.py\", line 206, in measure\n    global_state = shared['global_sample'](shared_config, shared['process_rows'](), {pid for pid, _ in processes})\n  File \"/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/guardian.py\", line 191, in global_sample\n    entries, receipt_pins, ordinary_records = membership_entries(metadata)\n                                              ~~~~~~~~~~~~~~~~~~^^^^^^^^^^\n  File \"/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/guardian.py\", line 132, in membership_entries\n    assert Path(record['receiptPaths']['accept']).is_file(), ('missing ACCEPT receipt', owner)\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^\nAssertionError: ('missing ACCEPT receipt', '01a1a230-6acc-7e82-9e4b-92506decc745')\n",
+  "peaks": {
+    "whole": 19770753788,
+    "growth": 105611388,
+    "temporary": 710927,
+    "durable": 42315,
+    "files": 62415,
+    "processes": 3,
+    "rss": 261341184
+  },
+  "minFree": 22961811456,
+  "freeAfter": 22962454528,
+  "childrenRemaining": [],
+  "linkAbsent": true,
+  "scratchAbsent": true,
+  "typeConfigAbsent": true,
+  "releasedBeforeDeadline": true,
+  "primaryInitialSampled": 1793844243.64649,
+  "independentInitial": {
+    "sampled": 1793844243.959031,
+    "values": {
+      "processes": 2,
+      "rss": 254050304,
+      "temporary": 0,
+      "whole": 19770016534,
+      "growth": 104874134,
+      "durable": 16477,
+      "files": 62401
+    }
+  },
+  "disposition": "Both complete initial guards LIVE; later owner230 missing ACCEPT path during immutable foundation staging. No decoder/native workload or PNG. Closed, no restart."
+}

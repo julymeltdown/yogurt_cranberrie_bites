@@ -1,0 +1,91 @@
+{
+  "offer": "PI12-PREWORLD-REMAINDER-SOURCE02-0048",
+  "state": "ACTUAL_PARTIAL_FULL",
+  "accepted": 1793840538.236363,
+  "fixedWorkDeadline": 1793840628,
+  "fixedFullDeadline": 1793840688,
+  "actualFull": 1793840672.24317,
+  "head": "7c89dbdc7d95bf33949a523be29d43a55749c860",
+  "children": 0,
+  "link": 0,
+  "temporary": 0,
+  "remainingReservations": 0,
+  "phases": [
+    {
+      "name": "source02types",
+      "job": "types",
+      "exitCode": 2,
+      "guardFailure": null,
+      "finished": 1793840543.531372,
+      "peaks": {
+        "whole": 15432328735,
+        "growth": 1384826,
+        "temporary": 1362716,
+        "durable": 22110,
+        "files": 62330,
+        "processes": 4,
+        "rss": 1237991424
+      },
+      "minFree": 16419446784
+    },
+    {
+      "name": "source02typesB",
+      "job": "types",
+      "exitCode": 2,
+      "guardFailure": null,
+      "finished": 1793840612.788722,
+      "peaks": {
+        "whole": 15434601828,
+        "growth": 3657919,
+        "temporary": 1362636,
+        "durable": 2203513,
+        "files": 62397,
+        "processes": 4,
+        "rss": 2195324928
+      },
+      "minFree": 16389165056
+    }
+  ],
+  "independent": [
+    {
+      "name": "source02types",
+      "peaks": {
+        "processes": 3,
+        "rss": 1125072896,
+        "temporary": 1362716,
+        "whole": 15432328735,
+        "growth": 1384826,
+        "durable": 22127,
+        "files": 62330
+      }
+    },
+    {
+      "name": "source02typesB",
+      "peaks": {
+        "processes": 4,
+        "rss": 2189328384,
+        "temporary": 0,
+        "whole": 15434601828,
+        "growth": 3657919,
+        "durable": 2203513,
+        "files": 62397
+      }
+    }
+  ],
+  "peak": {
+    "whole": 15434601828,
+    "growth": 3657919,
+    "temporary": 1362716,
+    "durable": 2203513,
+    "files": 62397,
+    "processes": 4,
+    "rss": 2195324928
+  },
+  "free": 16342179840,
+  "results": {
+    "fullTypes": "FAIL retained baseUrl affects React declarations; both raw TS5101 and TS7016/derived diagnostics retained",
+    "ownedDenyLint": "NOT_RUN_FIXED_WINDOW_CLOSED",
+    "nativeSyntax": "NOT_RUN_FIXED_WINDOW_CLOSED"
+  },
+  "next": "Fresh distinct round; replace broad baseUrl override with exact temporary zod-only paths mapping extending unchanged full project; run remaining lint and syntax as independent serial jobs."
+}

@@ -1,0 +1,14 @@
+{
+  "state": "FULL",
+  "offer": "PI12-PREWORLD-FULLTYPES-SOURCE07-0128",
+  "finished": 1793842169.1470752,
+  "resources": {
+    "children": 0,
+    "link": 0,
+    "temporary": 0,
+    "reservations": 0
+  },
+  "receipt": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/source07.json",
+  "exitCode": 0,
+  "guardFailure": null
+}

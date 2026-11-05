@@ -1,0 +1,21 @@
+CHECK decoder
+{"result": "PASS", "cases": 6, "behavior": "Exact owner/offer closure only; unrelated round/owner retained; five unsafe literal receipts rejected"}
+CHECK browser
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: {"result":"FAIL","captures":[],"errors":[],"interactions":[],"privatePort":5383,"foundation":"Exact readonly final PI01 source7f9d1095 eighteen postimages, owner-qualified/published canonical651159ec; this leaf controlled validation is separate from combinedmaster/live/device acceptance","limits":"PI12 pre-World S02/S03 subset only; actual main/default Auth/ports and controlled HTTP/C03/C05 fixtures. No live server/catalog/device, in-World overlays, general route-error or wholePI12 acceptance.","stage":"policy-pending/360x844","failure":"AssertionError [ERR_ASSERTION]: Actual default entry must consume PI01; no injected replacement styles\n+ actual - expected\n\n+ ''\n- '\"pi01-photo2-v1\"'\n","failureState":null,"closed":true,"pngCount":1,"pngBytes":2528,"serverClosed":true}
+
+'FAIL' !== 'PASS'
+
+    at file:///Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/frontend/e2e/visual/parade-ink-pre-world-policy/native.mjs:159:8 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 'FAIL',
+  expected: 'PASS',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.22.2

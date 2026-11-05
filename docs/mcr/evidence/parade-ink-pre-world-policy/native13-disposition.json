@@ -1,0 +1,50 @@
+{
+  "state": "INTEGRATED",
+  "scope": "PI12 pre-World S02/S03 presentation subset",
+  "sourceHEAD": "c1690d0b4b987e39f8403336280abbe271701610",
+  "offer": "PREWORLD-NATIVE13-0316",
+  "accepted": 1793848871.546834,
+  "primaryInitial": 1793848874.688519,
+  "independentInitial": 1793848875.100503,
+  "browserExitCode": 0,
+  "browserFinished": 1793848930.944753,
+  "actualFull": 1793848931.568351,
+  "fullPath": "docs/mcr/evidence/parade-ink-pre-world-policy/native13-FULL.json",
+  "fullSHA": "5701df8d516a6e1977ea0fd02d05e1d76afcbcbe29dcf9763404923dd9f9c44c",
+  "combinedPeaks": {
+    "whole": 20091580673,
+    "growth": 451011073,
+    "temporary": 30342866,
+    "durable": 1267530,
+    "files": 62674,
+    "processes": 13,
+    "rss": 2678931456
+  },
+  "minFreeBytes": 23461683200,
+  "checksReplayed": [],
+  "retainedPositives": [
+    "source01 six preservation groups",
+    "source01 threeframecases",
+    "source06 scopedlint/syntax0",
+    "source07 fullnonincrementaltypes0",
+    "native05 sixdecoder0",
+    "native09 fivefinishercases0/driverlint0"
+  ],
+  "completedScenarios": 35,
+  "captures": 37,
+  "ownedFrameCaptures": 34,
+  "externalAuthCompatibilityCaptures": 3,
+  "familyPNGs": 44,
+  "familyPNGBytes": 981254,
+  "reportSHA": "7bf4cd1aa7a7901b34440eb1f70ae3ddb45923de024b4f95fd5fb53c372534d7",
+  "ownerVisualDisposition": "All37 actual PNGs and Photo2 opened; no material assigned-region defect remains; see native13-owner-visual-notes.md",
+  "resources": {
+    "children": 0,
+    "link": 0,
+    "temporary": 0,
+    "reservations": 0
+  },
+  "directReleaseBeforeInspection": true,
+  "canonicalPublication": "PENDING_DIRECT412E",
+  "limits": "PI12 pre-World S02/S03 subset only; actual main/default Auth/ports and controlled HTTP/C03/C05 fixtures. No live server/catalog/device, in-World overlays, general route-error or wholePI12 acceptance."
+}

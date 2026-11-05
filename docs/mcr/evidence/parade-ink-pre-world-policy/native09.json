@@ -1,0 +1,1329 @@
+{
+  "offer": "PREWORLD-NATIVE09-0301",
+  "head": "94ca73d2da0f9a2abbec7c90cc0bc1cdcc95ec2d",
+  "job": "browser",
+  "argv": [
+    "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+    "frontend/e2e/visual/parade-ink-pre-world-policy/native.mjs"
+  ],
+  "started": 1793848087.067466,
+  "cutoff": 1793848385.352656,
+  "release": 1793848445.352656,
+  "carryFiles": 62398,
+  "carryBytes": 19950000000,
+  "dependencyFiles": 11104,
+  "dependencyBytes": 408236853,
+  "peaks": {
+    "whole": 19974059748,
+    "growth": 292495204,
+    "temporary": 23962781,
+    "durable": 70172,
+    "files": 62538,
+    "processes": 11,
+    "rss": 1737768960
+  },
+  "minFree": 23553949696,
+  "exitCode": null,
+  "sourcePins": {
+    "frontend/src/app/pre-world-policy/parade-ink/pre-world.css": "a6ced91cc84d70c74fdd6bbe0a56e0609d5640f9c51996862ea1979f13cc21ff",
+    "frontend/src/app/pre-world-policy/parade-ink/PreWorldFrame.tsx": "9fae8ff3d927b70da481334e27c712418d6321ae30a052c008ebeb2a1c3a1164",
+    "frontend/src/app/pre-world-policy/__tests__/parade-ink/frame.test.tsx": "57d5502ba6b41667ac41dfc6cb43a7d2144fc5c8c42dfc85ab369c030e49c64f",
+    "frontend/src/app/pre-world-policy/__tests__/parade-ink/vitest.config.ts": "808a73983d775971a0e8f4a66dc3dacf5e177a0fc1de2bd43f71c3fa3c260bbd"
+  },
+  "locks": {
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+    "frontend/package.json": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3"
+  },
+  "lastGlobal": {
+    "metadataAsOf": "2026-11-05T01:47:30.991757+00:00",
+    "receiptPins": [
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a19e5c-e9c6-7973-a53b-a6d19141620f.json",
+        "bytes": 3895,
+        "sha256": "c3c945947002a8271d54f1ebcb9a70fe4e6d2135949fea9254f1efd9129bf64c"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c.json",
+        "bytes": 11611,
+        "sha256": "5c860e3578c2120a78c78c1b150a05c0705021cd6a3643dfbca2eedd94a97aa1"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a00c-2690-7bc0-94fc-52609655ea83.json",
+        "bytes": 3492,
+        "sha256": "db5c39a54f3d8e1496b571fd8512b6fd629f1c5ec132df8d4608539638c62f95"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a153-1227-7e72-801f-a2a6b91981e1.json",
+        "bytes": 10238,
+        "sha256": "13bdaad1b2562adcad0b7042bdc37ae04f573b99a1942abbfac9c160f90a3fd5"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08.json",
+        "bytes": 3688,
+        "sha256": "9cd14f513d03211e8c220474b0e56af541d180aa7000c5376415bc58ca216285"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fe-16e1-7ee3-a9dc-8b5f037cc24c.json",
+        "bytes": 18464,
+        "sha256": "9d2d2bb9ef71ca821c1268fca9bf5c7f6b93f3b9ee2574ead5d79c3ecab279e2"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fe-1ab7-79b0-adbc-d4c025701acb.json",
+        "bytes": 26341,
+        "sha256": "c204ebf33135850ebb1e3387c423b73035d90b16ea22dc2fd4bbd4e9b52c29f4"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fe-1eed-7d12-a247-879cd521e0ec.json",
+        "bytes": 2830,
+        "sha256": "2752d50309d7429006ef1e44c22cf1de1c12bf4e7ae9244a80bdac82a87e2daf"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a202-3ff2-7a93-95c3-374c6df97281.json",
+        "bytes": 1101,
+        "sha256": "438e25fedca8f085cbbdbf9bebbbcc3d25aa75acd1cbf2bcddd63db9480181a8"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a204-c583-7670-965a-4891b8b1289e.json",
+        "bytes": 5803,
+        "sha256": "9d9ad490389c6b7255e4fa732882fc8bdc2028b2d25e903258bbd160e5e1a2e4"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a205-3f89-78c3-aa67-719c4bb40b8d.json",
+        "bytes": 1118,
+        "sha256": "1d1ed82883c87bab12fbfa0b28119e929a653e8645e16e16b35533556df895c8"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a207-f012-7343-a24b-12b9c544973f.json",
+        "bytes": 7058,
+        "sha256": "ac365d17f04d3540384651700a3de3b8f24b7627116017e9c3f7afedd2d7bae2"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a20f-8d37-71c3-a429-8a55bb6d6c49.json",
+        "bytes": 8141,
+        "sha256": "6dcb526386992f45efb90d495c9a1e3372673ece6b820dcb4e9f5ad586463bef"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a213-03de-72d3-9ecf-2f72b574cf82.json",
+        "bytes": 8331,
+        "sha256": "790ca7baa759492ed6ab3714b98dd1ba51dfbb49902c668bc59963c7f8c29fa2"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a213-61d6-7a20-a8e7-476649312f8c.json",
+        "bytes": 6155,
+        "sha256": "875dfaa137a9dd1177174c9446ae30c3cfcc5430daf1ee8d264b71d01bdefed9"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a21a-a088-7c31-83e3-19de119ba873.json",
+        "bytes": 8345,
+        "sha256": "cdae4657d3ff409b74d1652268344e6c65a467da07050c96edf11cf9737ffff2"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a21e-ab80-7012-b9fa-cdb69eed097b.json",
+        "bytes": 11052,
+        "sha256": "102eb97b144d57b5a10f92e0281743015a4deedc9ee3b519dac0bd1bfe3ddab0"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a230-6acc-7e82-9e4b-92506decc745.json",
+        "bytes": 1918,
+        "sha256": "e5eb71b700b7239a35eb243407b5e38cc72c252c1c1205b67686e2dbd1b54e20"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a231-0dc4-7b50-92bd-c0f0f56bd970.json",
+        "bytes": 4851,
+        "sha256": "5a18ddcdab9cd183f087bfc22b5053428dcbece0579ec5791c151f3bef45bd29"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a232-21e2-75c2-8474-a5fa6ae895cd.json",
+        "bytes": 9284,
+        "sha256": "a78c8800ce67c06f82880036f18a26c195f4ec22532a8b841671a29befcae557"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a232-b91d-78f1-a13a-1361788ba51c.json",
+        "bytes": 5350,
+        "sha256": "dae4e46ac271962bc9b6469325a01cb6405afe1c2f3fe0c691ef77e249ca4f18"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a267-37a0-7723-a4e9-a3a6f5b27f52.json",
+        "bytes": 1596,
+        "sha256": "4af276f3c2975d08a1385d1675d89f2eaccbd75e9715ca8aaceeaef8c6d10288"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a26e-1de2-7b41-a294-c9a79cfded9b.json",
+        "bytes": 3182,
+        "sha256": "499ad426dbbe11c72b3e54d9158d92690b1cb7a5578ba30a63742830c8a794c2"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a533-50a8-7fb2-b3ed-96b941b96bbf.json",
+        "bytes": 5453,
+        "sha256": "e333e7c87ba1846ee909866b781c09a4c76fbe3044637b4af42e101f818e622b"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a534-4fcf-7291-abe3-a97ba2fcafcd.json",
+        "bytes": 7592,
+        "sha256": "1228bc34e4a8db4091941737c074ddd5928408c897e7b678e40a4f93bb776ecf"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-40c576fad94a.json",
+        "bytes": 2936,
+        "sha256": "cd471c644697ada2c778a8bdac6c1c94d4188287e59f4489dc8f4b1caeed49dd"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-40fde6c81bb4.json",
+        "bytes": 3389,
+        "sha256": "43aed6084efa1a4c4db517def6b2ec2f93abd7fe52b5b7fd0b862aa374e2e470"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-412e295fa211.json",
+        "bytes": 2905,
+        "sha256": "9f0b3ea13b208f9baa92ed5a0e79979ba8ec1b534319789ab148bf68f5362343"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6950-7920-8c80-5214d4ce0eaf.json",
+        "bytes": 5915,
+        "sha256": "89844402429cb421aee2e6c6181eb593bca478868ad74eac96199048e091db36"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6954-7bd3-9b08-7109883187b5.json",
+        "bytes": 17917,
+        "sha256": "790f417b9f64412999e6ad070c841df4220dd0f541b6e51e48cf2ef7e74a24e9"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6955-7820-bcd4-8e0a21629aa2.json",
+        "bytes": 7111,
+        "sha256": "68cb336baef948ebfc1c24c256ca57ab72b0f1711e5897a8b0365627c2a49679"
+      }
+    ],
+    "members": [
+      {
+        "cohort": "BE42-PH1-COMPILE-FIVE-09-0249",
+        "kind": "target",
+        "pids": [
+          5445,
+          5455,
+          99401
+        ],
+        "processCap": 32,
+        "rssCapBytes": 8589934592,
+        "remainingNewBytes": 2147483648,
+        "state": "ACCEPTED_OWNER_RESOURCE_RECEIPT"
+      },
+      {
+        "cohort": "POST-CONTROL-SOURCE04-0301",
+        "kind": "source",
+        "pids": [
+          46693
+        ],
+        "processCap": 4,
+        "rssCapBytes": 1073741824,
+        "remainingNewBytes": 536870912,
+        "state": "ACCEPTED_OWNER_RESOURCE_RECEIPT"
+      },
+      {
+        "cohort": "PI12PreWorld",
+        "kind": "browser",
+        "pids": [
+          47980,
+          48231,
+          48733,
+          48740,
+          48745,
+          48757,
+          48758,
+          48761,
+          48779,
+          48792,
+          48793,
+          48844
+        ],
+        "processCap": 24,
+        "rssCapBytes": 3758096384,
+        "remainingNewBytes": 335544320,
+        "state": "ACTUAL_ACCEPT"
+      }
+    ],
+    "unresolvedPids": [
+      48772
+    ],
+    "workflows": 3,
+    "sources": 1,
+    "browsers": 1,
+    "targets": 1,
+    "distinctPids": [
+      5445,
+      5455,
+      20056,
+      20057,
+      26507,
+      46693,
+      47980,
+      48231,
+      48733,
+      48740,
+      48745,
+      48757,
+      48758,
+      48761,
+      48779,
+      48792,
+      48793,
+      48844,
+      99401
+    ],
+    "actualRSS": 4413112320,
+    "ordinaryIdentityPins": [
+      {
+        "owner": "01a1a5d9-332b-7822-a8f7-40c576fad94a",
+        "pid": 26507,
+        "birth": "Thu Nov 5 12:05:07 2026",
+        "script": "/private/tmp/mcr-venu-l-transport-40c576-0304/ordinary.py"
+      },
+      {
+        "kind": "verified desktop tool infrastructure",
+        "pid": 20056,
+        "birth": "Wed Nov 4 23:26:42 2026",
+        "actualArgs": "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node --experimental-vm-modules /var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/.tmpCCbUfQ/kernel.js --session-id 91e5a248e5e44ccb88561bbb3057a9f6 --working-dir /Users/lhs/Desktop/mcr"
+      },
+      {
+        "kind": "verified desktop tool infrastructure",
+        "pid": 20057,
+        "birth": "Wed Nov 4 23:26:42 2026",
+        "actualArgs": "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node /var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/.tmpCCbUfQ/trusted-worker.js /Users/lhs/Desktop/mcr"
+      }
+    ],
+    "ordinaryGitOnly": {
+      "pids": [
+        20056,
+        20057,
+        26507
+      ],
+      "script": "/private/tmp/mcr-publisher-412e-capacity-composition-delivery.py",
+      "sha256": "8bd689d14ffd14ef04b2209cf890eb113a52a261c350e9cc2809d60971293622",
+      "executionWorkflow": false
+    },
+    "chargedPIDs": 63,
+    "chargedRSS": 15553118208,
+    "otherUpper": 5368709120,
+    "ordinaryFutureUpperBytes": 2684354560,
+    "processes": [
+      {
+        "pid": 5445,
+        "parent": 99401,
+        "group": 5445,
+        "rss": 33701888,
+        "birth": "Thu Nov 5 12:01:19 2026",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /private/tmp/mcr-be42-compile-09-exec/run.py /private/tmp/mcr-be42-compile-09-exec"
+      },
+      {
+        "pid": 5455,
+        "parent": 5445,
+        "group": 5455,
+        "rss": 126271488,
+        "birth": "Thu Nov 5 12:01:19 2026",
+        "command": "/Users/lhs/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/cargo test --locked --offline -p concert-service --test production_private_data_native --test private_data_production --test account_deletion_runtime --test media_deletion --test account_private_data_aggregate --no-run --message-format=json --config profile.dev.package.contracts-build.opt-level=2"
+      },
+      {
+        "pid": 20056,
+        "parent": 16604,
+        "group": 16491,
+        "rss": 4063232,
+        "birth": "Wed Nov 4 23:26:42 2026",
+        "command": "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node --experimental-vm-modules /var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/.tmpCCbUfQ/kernel.js --session-id 91e5a248e5e44ccb88561bbb3057a9f6 --working-dir /Users/lhs/Desktop/mcr"
+      },
+      {
+        "pid": 20057,
+        "parent": 16604,
+        "group": 16491,
+        "rss": 31916032,
+        "birth": "Wed Nov 4 23:26:42 2026",
+        "command": "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node /var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/.tmpCCbUfQ/trusted-worker.js /Users/lhs/Desktop/mcr"
+      },
+      {
+        "pid": 26507,
+        "parent": 49590,
+        "group": 26507,
+        "rss": 2095366144,
+        "birth": "Thu Nov 5 12:05:07 2026",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /private/tmp/mcr-venu-l-transport-40c576-0304/ordinary.py"
+      },
+      {
+        "pid": 46693,
+        "parent": 49590,
+        "group": 46693,
+        "rss": 183025664,
+        "birth": "Thu Nov 5 12:07:37 2026",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py 04"
+      },
+      {
+        "pid": 47980,
+        "parent": 49590,
+        "group": 47980,
+        "rss": 230375424,
+        "birth": "Thu Nov 5 12:08:05 2026",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/lease.py --offer PREWORLD-NATIVE09-0301 --head 94ca73d2da0f9a2abbec7c90cc0bc1cdcc95ec2d --job browser --attempt native09 --acceptance native09-acceptance.json --cutoff 0 --release 1 --whole 21474836480 --growth 335544320 --temporary 100663296 --durable 16777216 --files 90000 --processes 24 --rss 3758096384 --start-floor 12 --freeze native09-freeze.json --bootstrap-work 300 --bootstrap-full 360 --minimum-carry-bytes 19950000000 --retained-growth-bytes 268435456 --retain-decoder-pass --check-completed-finisher --family-png-cap 48 --retained-png-count 7 --retained-png-bytes 135000"
+      },
+      {
+        "pid": 48231,
+        "parent": 47980,
+        "group": 47980,
+        "rss": 28344320,
+        "birth": "Thu Nov 5 12:08:08 2026",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/guardian.py /Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/native09-guardian-config.json"
+      },
+      {
+        "pid": 48733,
+        "parent": 47980,
+        "group": 48733,
+        "rss": 635912192,
+        "birth": "Thu Nov 5 12:08:19 2026",
+        "command": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node frontend/e2e/visual/parade-ink-pre-world-policy/native.mjs"
+      },
+      {
+        "pid": 48740,
+        "parent": 48733,
+        "group": 48740,
+        "rss": 221675520,
+        "birth": "Thu Nov 5 12:08:19 2026",
+        "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-edgeupdater --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints,msForceBrowserSignIn,msEdgeUpdateLaunchServicesPreferredVersion --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --headless --hide-scrollbars --mute-audio --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --no-sandbox --user-data-dir=/private/tmp/mcr-pi12-preworld-native09/playwright_chromiumdev_profile-UVv5Wb --remote-debugging-pipe --no-startup-window"
+      },
+      {
+        "pid": 48745,
+        "parent": 1,
+        "group": 48744,
+        "rss": 8945664,
+        "birth": "Thu Nov 5 12:08:19 2026",
+        "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/chrome_crashpad_handler --monitor-self-annotation=ptype=crashpad-handler --database=/private/tmp/mcr-pi12-preworld-native09/crashpad --url=https://clients2.google.com/cr/report --annotation=channel= --annotation=plat=OS X --annotation=prod=Chrome_Mac --annotation=ver=156.0.8078.80 --handshake-fd=7"
+      },
+      {
+        "pid": 48757,
+        "parent": 48740,
+        "group": 48740,
+        "rss": 144474112,
+        "birth": "Thu Nov 5 12:08:20 2026",
+        "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (GPU).app/Contents/MacOS/Google Chrome Helper (GPU) --type=gpu-process --gpu-recent-crash-count=0 --no-sandbox --disable-breakpad --headless --enable-unsafe-swiftshader --noerrdialogs --user-data-dir=/private/tmp/mcr-pi12-preworld-native09/playwright_chromiumdev_profile-UVv5Wb --gpu-preferences=WAAAAAAAAAAgAAAEAAAAAAAAAAAAAGAAQAAAAAAAAAADAAAAAAAAADgAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAKAAAAAAAAAAoAAAAAAAAAAgAAAAAAAAADAAAAAEAAAAAAAAAAAAAAAgAAAAAAAAACAAAAAAAAAA= --shared-files --field-trial-handle=1718379636,r,5678695022919863262,8650865748791528554,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,13569422561284396751,2276661089900457692,4 --trace-process-track-uuid=3190708988185955192"
+      },
+      {
+        "pid": 48758,
+        "parent": 48740,
+        "group": 48740,
+        "rss": 107855872,
+        "birth": "Thu Nov 5 12:08:20 2026",
+        "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper --type=utility --utility-sub-type=network.mojom.NetworkService --lang=en-US --service-sandbox-type=network --no-sandbox --mute-audio --noerrdialogs --user-data-dir=/private/tmp/mcr-pi12-preworld-native09/playwright_chromiumdev_profile-UVv5Wb --shared-files --field-trial-handle=1718379636,r,5678695022919863262,8650865748791528554,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,13569422561284396751,2276661089900457692,4 --trace-process-track-uuid=3190708989122997041"
+      },
+      {
+        "pid": 48761,
+        "parent": 48740,
+        "group": 48740,
+        "rss": 85671936,
+        "birth": "Thu Nov 5 12:08:20 2026",
+        "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper --type=utility --utility-sub-type=storage.mojom.StorageService --lang=en-US --service-sandbox-type=service --no-sandbox --mute-audio --noerrdialogs --user-data-dir=/private/tmp/mcr-pi12-preworld-native09/playwright_chromiumdev_profile-UVv5Wb --shared-files --field-trial-handle=1718379636,r,5678695022919863262,8650865748791528554,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,13569422561284396751,2276661089900457692,4 --trace-process-track-uuid=3190708990060038890"
+      },
+      {
+        "pid": 48772,
+        "parent": 49590,
+        "group": 48772,
+        "rss": 4063232,
+        "birth": "Thu Nov 5 12:08:20 2026",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /private/tmp/mcr-gateway207-settings-28-enfm_kd9/be38/remaining-seven-build/bind-offer.py"
+      },
+      {
+        "pid": 48779,
+        "parent": 48740,
+        "group": 48740,
+        "rss": 184385536,
+        "birth": "Thu Nov 5 12:08:20 2026",
+        "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --top-chrome-webui --noerrdialogs --user-data-dir=/private/tmp/mcr-pi12-preworld-native09/playwright_chromiumdev_profile-UVv5Wb --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=6 --launch-time-ticks=191668140096 --shared-files --field-trial-handle=1718379636,r,5678695022919863262,8650865748791528554,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,13569422561284396751,2276661089900457692,4 --trace-process-track-uuid=3190708991934122588"
+      },
+      {
+        "pid": 48792,
+        "parent": 48740,
+        "group": 48740,
+        "rss": 105906176,
+        "birth": "Thu Nov 5 12:08:20 2026",
+        "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --noerrdialogs --user-data-dir=/private/tmp/mcr-pi12-preworld-native09/playwright_chromiumdev_profile-UVv5Wb --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=8 --launch-time-ticks=191668175400 --shared-files --field-trial-handle=1718379636,r,5678695022919863262,8650865748791528554,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,13569422561284396751,2276661089900457692,4 --trace-process-track-uuid=3190708993808206286"
+      },
+      {
+        "pid": 48793,
+        "parent": 48740,
+        "group": 48740,
+        "rss": 140099584,
+        "birth": "Thu Nov 5 12:08:20 2026",
+        "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --noerrdialogs --user-data-dir=/private/tmp/mcr-pi12-preworld-native09/playwright_chromiumdev_profile-UVv5Wb --no-sandbox --disable-back-forward-cache --disable-background-timer-throttling --disable-breakpad --force-color-profile=srgb --remote-debugging-pipe --allow-pre-commit-input --blink-settings=primaryHoverType=2,availableHoverTypes=2,primaryPointerType=4,availablePointerTypes=4 --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=7 --launch-time-ticks=191668175720 --shared-files --field-trial-handle=1718379636,r,5678695022919863262,8650865748791528554,262144 --enable-features=CDPScreenshotNewSurface --disable-features=AutoDeElevate,AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,OptimizationHints,PaintHolding,RenderDocument,ThirdPartyStoragePartitioning,Translate,msEdgeUpdateLaunchServicesPreferredVersion,msForceBrowserSignIn --variations-seed-version --pseudonymization-salt-handle=1935764596,r,13569422561284396751,2276661089900457692,4 --trace-process-track-uuid=3190708992871164437"
+      },
+      {
+        "pid": 48844,
+        "parent": 47980,
+        "group": 47980,
+        "rss": 2228224,
+        "birth": "Thu Nov 5 12:08:20 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,rss=,lstart=,args="
+      },
+      {
+        "pid": 99401,
+        "parent": 49590,
+        "group": 99401,
+        "rss": 42893312,
+        "birth": "Thu Nov 5 12:00:01 2026",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B -u /private/tmp/mcr-be42-compile-09-exec/guardian.py /private/tmp/mcr-be42-compile-09-exec build"
+      }
+    ]
+  },
+  "primaryInitial": {
+    "sampled": 1793848088.8435578,
+    "peaks": {
+      "whole": 19950025699,
+      "growth": 268461155,
+      "temporary": 0,
+      "durable": 1038,
+      "files": 62405,
+      "processes": 1,
+      "rss": 228458496
+    },
+    "globalState": {
+      "metadataAsOf": "2026-11-05T01:47:30.991757+00:00",
+      "receiptPins": [
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a19e5c-e9c6-7973-a53b-a6d19141620f.json",
+          "bytes": 3895,
+          "sha256": "c3c945947002a8271d54f1ebcb9a70fe4e6d2135949fea9254f1efd9129bf64c"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c.json",
+          "bytes": 11611,
+          "sha256": "5c860e3578c2120a78c78c1b150a05c0705021cd6a3643dfbca2eedd94a97aa1"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a00c-2690-7bc0-94fc-52609655ea83.json",
+          "bytes": 3492,
+          "sha256": "db5c39a54f3d8e1496b571fd8512b6fd629f1c5ec132df8d4608539638c62f95"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a153-1227-7e72-801f-a2a6b91981e1.json",
+          "bytes": 10238,
+          "sha256": "13bdaad1b2562adcad0b7042bdc37ae04f573b99a1942abbfac9c160f90a3fd5"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08.json",
+          "bytes": 3688,
+          "sha256": "9cd14f513d03211e8c220474b0e56af541d180aa7000c5376415bc58ca216285"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fe-16e1-7ee3-a9dc-8b5f037cc24c.json",
+          "bytes": 18464,
+          "sha256": "9d2d2bb9ef71ca821c1268fca9bf5c7f6b93f3b9ee2574ead5d79c3ecab279e2"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fe-1ab7-79b0-adbc-d4c025701acb.json",
+          "bytes": 26341,
+          "sha256": "c204ebf33135850ebb1e3387c423b73035d90b16ea22dc2fd4bbd4e9b52c29f4"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fe-1eed-7d12-a247-879cd521e0ec.json",
+          "bytes": 2830,
+          "sha256": "2752d50309d7429006ef1e44c22cf1de1c12bf4e7ae9244a80bdac82a87e2daf"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a202-3ff2-7a93-95c3-374c6df97281.json",
+          "bytes": 1101,
+          "sha256": "438e25fedca8f085cbbdbf9bebbbcc3d25aa75acd1cbf2bcddd63db9480181a8"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a204-c583-7670-965a-4891b8b1289e.json",
+          "bytes": 5803,
+          "sha256": "9d9ad490389c6b7255e4fa732882fc8bdc2028b2d25e903258bbd160e5e1a2e4"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a205-3f89-78c3-aa67-719c4bb40b8d.json",
+          "bytes": 1118,
+          "sha256": "1d1ed82883c87bab12fbfa0b28119e929a653e8645e16e16b35533556df895c8"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a207-f012-7343-a24b-12b9c544973f.json",
+          "bytes": 7058,
+          "sha256": "ac365d17f04d3540384651700a3de3b8f24b7627116017e9c3f7afedd2d7bae2"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a20f-8d37-71c3-a429-8a55bb6d6c49.json",
+          "bytes": 8141,
+          "sha256": "6dcb526386992f45efb90d495c9a1e3372673ece6b820dcb4e9f5ad586463bef"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a213-03de-72d3-9ecf-2f72b574cf82.json",
+          "bytes": 8331,
+          "sha256": "790ca7baa759492ed6ab3714b98dd1ba51dfbb49902c668bc59963c7f8c29fa2"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a213-61d6-7a20-a8e7-476649312f8c.json",
+          "bytes": 6155,
+          "sha256": "875dfaa137a9dd1177174c9446ae30c3cfcc5430daf1ee8d264b71d01bdefed9"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a21a-a088-7c31-83e3-19de119ba873.json",
+          "bytes": 8345,
+          "sha256": "cdae4657d3ff409b74d1652268344e6c65a467da07050c96edf11cf9737ffff2"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a21e-ab80-7012-b9fa-cdb69eed097b.json",
+          "bytes": 10177,
+          "sha256": "1df69a9f3180446d099a1fdaa5e9482db853443c3746a21fd761fb31da7aaa20"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a230-6acc-7e82-9e4b-92506decc745.json",
+          "bytes": 1918,
+          "sha256": "e5eb71b700b7239a35eb243407b5e38cc72c252c1c1205b67686e2dbd1b54e20"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a231-0dc4-7b50-92bd-c0f0f56bd970.json",
+          "bytes": 4851,
+          "sha256": "5a18ddcdab9cd183f087bfc22b5053428dcbece0579ec5791c151f3bef45bd29"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a232-21e2-75c2-8474-a5fa6ae895cd.json",
+          "bytes": 9284,
+          "sha256": "a78c8800ce67c06f82880036f18a26c195f4ec22532a8b841671a29befcae557"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a232-b91d-78f1-a13a-1361788ba51c.json",
+          "bytes": 5350,
+          "sha256": "dae4e46ac271962bc9b6469325a01cb6405afe1c2f3fe0c691ef77e249ca4f18"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a267-37a0-7723-a4e9-a3a6f5b27f52.json",
+          "bytes": 1596,
+          "sha256": "4af276f3c2975d08a1385d1675d89f2eaccbd75e9715ca8aaceeaef8c6d10288"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a26e-1de2-7b41-a294-c9a79cfded9b.json",
+          "bytes": 3182,
+          "sha256": "499ad426dbbe11c72b3e54d9158d92690b1cb7a5578ba30a63742830c8a794c2"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a533-50a8-7fb2-b3ed-96b941b96bbf.json",
+          "bytes": 5453,
+          "sha256": "e333e7c87ba1846ee909866b781c09a4c76fbe3044637b4af42e101f818e622b"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a534-4fcf-7291-abe3-a97ba2fcafcd.json",
+          "bytes": 7592,
+          "sha256": "1228bc34e4a8db4091941737c074ddd5928408c897e7b678e40a4f93bb776ecf"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-40c576fad94a.json",
+          "bytes": 2936,
+          "sha256": "cd471c644697ada2c778a8bdac6c1c94d4188287e59f4489dc8f4b1caeed49dd"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-40fde6c81bb4.json",
+          "bytes": 3389,
+          "sha256": "43aed6084efa1a4c4db517def6b2ec2f93abd7fe52b5b7fd0b862aa374e2e470"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-412e295fa211.json",
+          "bytes": 2905,
+          "sha256": "9f0b3ea13b208f9baa92ed5a0e79979ba8ec1b534319789ab148bf68f5362343"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6950-7920-8c80-5214d4ce0eaf.json",
+          "bytes": 5915,
+          "sha256": "89844402429cb421aee2e6c6181eb593bca478868ad74eac96199048e091db36"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6954-7bd3-9b08-7109883187b5.json",
+          "bytes": 17917,
+          "sha256": "790f417b9f64412999e6ad070c841df4220dd0f541b6e51e48cf2ef7e74a24e9"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6955-7820-bcd4-8e0a21629aa2.json",
+          "bytes": 7111,
+          "sha256": "68cb336baef948ebfc1c24c256ca57ab72b0f1711e5897a8b0365627c2a49679"
+        }
+      ],
+      "members": [
+        {
+          "cohort": "BE42-PH1-COMPILE-FIVE-09-0249",
+          "kind": "target",
+          "pids": [
+            5445,
+            5455,
+            99401
+          ],
+          "processCap": 32,
+          "rssCapBytes": 8589934592,
+          "remainingNewBytes": 2147483648,
+          "state": "ACCEPTED_OWNER_RESOURCE_RECEIPT"
+        },
+        {
+          "cohort": "POST-CONTROL-SOURCE04-0301",
+          "kind": "source",
+          "pids": [
+            46693,
+            47054
+          ],
+          "processCap": 4,
+          "rssCapBytes": 1073741824,
+          "remainingNewBytes": 536870912,
+          "state": "ACCEPTED_OWNER_RESOURCE_RECEIPT"
+        },
+        {
+          "cohort": "PI12PreWorld",
+          "kind": "browser",
+          "pids": [
+            47980,
+            48227
+          ],
+          "processCap": 24,
+          "rssCapBytes": 3758096384,
+          "remainingNewBytes": 335544320,
+          "state": "ACTUAL_ACCEPT"
+        }
+      ],
+      "unresolvedPids": [],
+      "workflows": 3,
+      "sources": 1,
+      "browsers": 1,
+      "targets": 1,
+      "distinctPids": [
+        5445,
+        5455,
+        20056,
+        20057,
+        26507,
+        46693,
+        47054,
+        47980,
+        48227,
+        99401
+      ],
+      "actualRSS": 2825650176,
+      "ordinaryIdentityPins": [
+        {
+          "owner": "01a1a5d9-332b-7822-a8f7-40c576fad94a",
+          "pid": 26507,
+          "birth": "Thu Nov 5 12:05:07 2026",
+          "script": "/private/tmp/mcr-venu-l-transport-40c576-0304/ordinary.py"
+        },
+        {
+          "kind": "verified desktop tool infrastructure",
+          "pid": 20056,
+          "birth": "Wed Nov 4 23:26:42 2026",
+          "actualArgs": "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node --experimental-vm-modules /var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/.tmpCCbUfQ/kernel.js --session-id 91e5a248e5e44ccb88561bbb3057a9f6 --working-dir /Users/lhs/Desktop/mcr"
+        },
+        {
+          "kind": "verified desktop tool infrastructure",
+          "pid": 20057,
+          "birth": "Wed Nov 4 23:26:42 2026",
+          "actualArgs": "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node /var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/.tmpCCbUfQ/trusted-worker.js /Users/lhs/Desktop/mcr"
+        }
+      ],
+      "ordinaryGitOnly": {
+        "pids": [
+          20056,
+          20057,
+          26507
+        ],
+        "script": "/private/tmp/mcr-publisher-412e-capacity-composition-delivery.py",
+        "sha256": "8bd689d14ffd14ef04b2209cf890eb113a52a261c350e9cc2809d60971293622",
+        "executionWorkflow": false
+      },
+      "chargedPIDs": 63,
+      "chargedRSS": 15430352896,
+      "otherUpper": 5368709120,
+      "ordinaryFutureUpperBytes": 2684354560,
+      "processes": [
+        {
+          "pid": 5445,
+          "parent": 99401,
+          "group": 5445,
+          "rss": 33701888,
+          "birth": "Thu Nov 5 12:01:19 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /private/tmp/mcr-be42-compile-09-exec/run.py /private/tmp/mcr-be42-compile-09-exec"
+        },
+        {
+          "pid": 5455,
+          "parent": 5445,
+          "group": 5455,
+          "rss": 126271488,
+          "birth": "Thu Nov 5 12:01:19 2026",
+          "command": "/Users/lhs/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/cargo test --locked --offline -p concert-service --test production_private_data_native --test private_data_production --test account_deletion_runtime --test media_deletion --test account_private_data_aggregate --no-run --message-format=json --config profile.dev.package.contracts-build.opt-level=2"
+        },
+        {
+          "pid": 20056,
+          "parent": 16604,
+          "group": 16491,
+          "rss": 4063232,
+          "birth": "Wed Nov 4 23:26:42 2026",
+          "command": "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node --experimental-vm-modules /var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/.tmpCCbUfQ/kernel.js --session-id 91e5a248e5e44ccb88561bbb3057a9f6 --working-dir /Users/lhs/Desktop/mcr"
+        },
+        {
+          "pid": 20057,
+          "parent": 16604,
+          "group": 16491,
+          "rss": 31916032,
+          "birth": "Wed Nov 4 23:26:42 2026",
+          "command": "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node /var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/.tmpCCbUfQ/trusted-worker.js /Users/lhs/Desktop/mcr"
+        },
+        {
+          "pid": 26507,
+          "parent": 49590,
+          "group": 26507,
+          "rss": 1972600832,
+          "birth": "Thu Nov 5 12:05:07 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /private/tmp/mcr-venu-l-transport-40c576-0304/ordinary.py"
+        },
+        {
+          "pid": 46693,
+          "parent": 49590,
+          "group": 46693,
+          "rss": 182943744,
+          "birth": "Thu Nov 5 12:07:37 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py 04"
+        },
+        {
+          "pid": 47054,
+          "parent": 46693,
+          "group": 47054,
+          "rss": 200507392,
+          "birth": "Thu Nov 5 12:07:44 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py guard /private/tmp/mcr-post21a-be39-compile-unit04-0202/source-run-04/accept.json"
+        },
+        {
+          "pid": 47980,
+          "parent": 49590,
+          "group": 47980,
+          "rss": 228524032,
+          "birth": "Thu Nov 5 12:08:05 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/lease.py --offer PREWORLD-NATIVE09-0301 --head 94ca73d2da0f9a2abbec7c90cc0bc1cdcc95ec2d --job browser --attempt native09 --acceptance native09-acceptance.json --cutoff 0 --release 1 --whole 21474836480 --growth 335544320 --temporary 100663296 --durable 16777216 --files 90000 --processes 24 --rss 3758096384 --start-floor 12 --freeze native09-freeze.json --bootstrap-work 300 --bootstrap-full 360 --minimum-carry-bytes 19950000000 --retained-growth-bytes 268435456 --retain-decoder-pass --check-completed-finisher --family-png-cap 48 --retained-png-count 7 --retained-png-bytes 135000"
+        },
+        {
+          "pid": 48227,
+          "parent": 47980,
+          "group": 47980,
+          "rss": 2228224,
+          "birth": "Thu Nov 5 12:08:08 2026",
+          "command": "ps -axo pid=,ppid=,pgid=,rss=,lstart=,args="
+        },
+        {
+          "pid": 99401,
+          "parent": 49590,
+          "group": 99401,
+          "rss": 42893312,
+          "birth": "Thu Nov 5 12:00:01 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B -u /private/tmp/mcr-be42-compile-09-exec/guardian.py /private/tmp/mcr-be42-compile-09-exec build"
+        }
+      ]
+    }
+  },
+  "startFree": 23582531584,
+  "otherWorstGrowth": 3221225472,
+  "startFloorGiB": 12,
+  "independentInitial": {
+    "sampled": 1793848089.269877,
+    "values": {
+      "processes": 3,
+      "rss": 257458176,
+      "temporary": 0,
+      "whole": 19950055712,
+      "growth": 268491168,
+      "durable": 30175,
+      "files": 62408
+    },
+    "free": 23582457856,
+    "globalState": {
+      "metadataAsOf": "2026-11-05T01:47:30.991757+00:00",
+      "receiptPins": [
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a19e5c-e9c6-7973-a53b-a6d19141620f.json",
+          "bytes": 3895,
+          "sha256": "c3c945947002a8271d54f1ebcb9a70fe4e6d2135949fea9254f1efd9129bf64c"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c.json",
+          "bytes": 11611,
+          "sha256": "5c860e3578c2120a78c78c1b150a05c0705021cd6a3643dfbca2eedd94a97aa1"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a00c-2690-7bc0-94fc-52609655ea83.json",
+          "bytes": 3492,
+          "sha256": "db5c39a54f3d8e1496b571fd8512b6fd629f1c5ec132df8d4608539638c62f95"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a153-1227-7e72-801f-a2a6b91981e1.json",
+          "bytes": 10238,
+          "sha256": "13bdaad1b2562adcad0b7042bdc37ae04f573b99a1942abbfac9c160f90a3fd5"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08.json",
+          "bytes": 3688,
+          "sha256": "9cd14f513d03211e8c220474b0e56af541d180aa7000c5376415bc58ca216285"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fe-16e1-7ee3-a9dc-8b5f037cc24c.json",
+          "bytes": 18464,
+          "sha256": "9d2d2bb9ef71ca821c1268fca9bf5c7f6b93f3b9ee2574ead5d79c3ecab279e2"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fe-1ab7-79b0-adbc-d4c025701acb.json",
+          "bytes": 26341,
+          "sha256": "c204ebf33135850ebb1e3387c423b73035d90b16ea22dc2fd4bbd4e9b52c29f4"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fe-1eed-7d12-a247-879cd521e0ec.json",
+          "bytes": 2830,
+          "sha256": "2752d50309d7429006ef1e44c22cf1de1c12bf4e7ae9244a80bdac82a87e2daf"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a202-3ff2-7a93-95c3-374c6df97281.json",
+          "bytes": 1101,
+          "sha256": "438e25fedca8f085cbbdbf9bebbbcc3d25aa75acd1cbf2bcddd63db9480181a8"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a204-c583-7670-965a-4891b8b1289e.json",
+          "bytes": 5803,
+          "sha256": "9d9ad490389c6b7255e4fa732882fc8bdc2028b2d25e903258bbd160e5e1a2e4"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a205-3f89-78c3-aa67-719c4bb40b8d.json",
+          "bytes": 1118,
+          "sha256": "1d1ed82883c87bab12fbfa0b28119e929a653e8645e16e16b35533556df895c8"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a207-f012-7343-a24b-12b9c544973f.json",
+          "bytes": 7058,
+          "sha256": "ac365d17f04d3540384651700a3de3b8f24b7627116017e9c3f7afedd2d7bae2"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a20f-8d37-71c3-a429-8a55bb6d6c49.json",
+          "bytes": 8141,
+          "sha256": "6dcb526386992f45efb90d495c9a1e3372673ece6b820dcb4e9f5ad586463bef"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a213-03de-72d3-9ecf-2f72b574cf82.json",
+          "bytes": 8331,
+          "sha256": "790ca7baa759492ed6ab3714b98dd1ba51dfbb49902c668bc59963c7f8c29fa2"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a213-61d6-7a20-a8e7-476649312f8c.json",
+          "bytes": 6155,
+          "sha256": "875dfaa137a9dd1177174c9446ae30c3cfcc5430daf1ee8d264b71d01bdefed9"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a21a-a088-7c31-83e3-19de119ba873.json",
+          "bytes": 8345,
+          "sha256": "cdae4657d3ff409b74d1652268344e6c65a467da07050c96edf11cf9737ffff2"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a21e-ab80-7012-b9fa-cdb69eed097b.json",
+          "bytes": 11053,
+          "sha256": "693e94b45493cc1f6819f3b010bd4b70efd1461b49fe94fc2928e8a8dbe486ba"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a230-6acc-7e82-9e4b-92506decc745.json",
+          "bytes": 1918,
+          "sha256": "e5eb71b700b7239a35eb243407b5e38cc72c252c1c1205b67686e2dbd1b54e20"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a231-0dc4-7b50-92bd-c0f0f56bd970.json",
+          "bytes": 4851,
+          "sha256": "5a18ddcdab9cd183f087bfc22b5053428dcbece0579ec5791c151f3bef45bd29"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a232-21e2-75c2-8474-a5fa6ae895cd.json",
+          "bytes": 9284,
+          "sha256": "a78c8800ce67c06f82880036f18a26c195f4ec22532a8b841671a29befcae557"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a232-b91d-78f1-a13a-1361788ba51c.json",
+          "bytes": 5350,
+          "sha256": "dae4e46ac271962bc9b6469325a01cb6405afe1c2f3fe0c691ef77e249ca4f18"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a267-37a0-7723-a4e9-a3a6f5b27f52.json",
+          "bytes": 1596,
+          "sha256": "4af276f3c2975d08a1385d1675d89f2eaccbd75e9715ca8aaceeaef8c6d10288"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a26e-1de2-7b41-a294-c9a79cfded9b.json",
+          "bytes": 3182,
+          "sha256": "499ad426dbbe11c72b3e54d9158d92690b1cb7a5578ba30a63742830c8a794c2"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a533-50a8-7fb2-b3ed-96b941b96bbf.json",
+          "bytes": 5453,
+          "sha256": "e333e7c87ba1846ee909866b781c09a4c76fbe3044637b4af42e101f818e622b"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a534-4fcf-7291-abe3-a97ba2fcafcd.json",
+          "bytes": 7592,
+          "sha256": "1228bc34e4a8db4091941737c074ddd5928408c897e7b678e40a4f93bb776ecf"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-40c576fad94a.json",
+          "bytes": 2936,
+          "sha256": "cd471c644697ada2c778a8bdac6c1c94d4188287e59f4489dc8f4b1caeed49dd"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-40fde6c81bb4.json",
+          "bytes": 3389,
+          "sha256": "43aed6084efa1a4c4db517def6b2ec2f93abd7fe52b5b7fd0b862aa374e2e470"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-412e295fa211.json",
+          "bytes": 2905,
+          "sha256": "9f0b3ea13b208f9baa92ed5a0e79979ba8ec1b534319789ab148bf68f5362343"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6950-7920-8c80-5214d4ce0eaf.json",
+          "bytes": 5915,
+          "sha256": "89844402429cb421aee2e6c6181eb593bca478868ad74eac96199048e091db36"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6954-7bd3-9b08-7109883187b5.json",
+          "bytes": 17917,
+          "sha256": "790f417b9f64412999e6ad070c841df4220dd0f541b6e51e48cf2ef7e74a24e9"
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6955-7820-bcd4-8e0a21629aa2.json",
+          "bytes": 7111,
+          "sha256": "68cb336baef948ebfc1c24c256ca57ab72b0f1711e5897a8b0365627c2a49679"
+        }
+      ],
+      "members": [
+        {
+          "cohort": "BE42-PH1-COMPILE-FIVE-09-0249",
+          "kind": "target",
+          "pids": [
+            5445,
+            5455,
+            99401
+          ],
+          "processCap": 32,
+          "rssCapBytes": 8589934592,
+          "remainingNewBytes": 2147483648,
+          "state": "ACCEPTED_OWNER_RESOURCE_RECEIPT"
+        },
+        {
+          "cohort": "POST-CONTROL-SOURCE04-0301",
+          "kind": "source",
+          "pids": [
+            46693,
+            47054
+          ],
+          "processCap": 4,
+          "rssCapBytes": 1073741824,
+          "remainingNewBytes": 536870912,
+          "state": "ACCEPTED_OWNER_RESOURCE_RECEIPT"
+        },
+        {
+          "cohort": "PI12PreWorld",
+          "kind": "browser",
+          "pids": [
+            47980,
+            48231,
+            48242
+          ],
+          "processCap": 24,
+          "rssCapBytes": 3758096384,
+          "remainingNewBytes": 335544320,
+          "state": "ACTUAL_ACCEPT"
+        }
+      ],
+      "unresolvedPids": [],
+      "workflows": 3,
+      "sources": 1,
+      "browsers": 1,
+      "targets": 1,
+      "distinctPids": [
+        5445,
+        5455,
+        20056,
+        20057,
+        26507,
+        46693,
+        47054,
+        47980,
+        48231,
+        48242,
+        99401
+      ],
+      "actualRSS": 2855452672,
+      "ordinaryIdentityPins": [
+        {
+          "owner": "01a1a5d9-332b-7822-a8f7-40c576fad94a",
+          "pid": 26507,
+          "birth": "Thu Nov 5 12:05:07 2026",
+          "script": "/private/tmp/mcr-venu-l-transport-40c576-0304/ordinary.py"
+        },
+        {
+          "kind": "verified desktop tool infrastructure",
+          "pid": 20056,
+          "birth": "Wed Nov 4 23:26:42 2026",
+          "actualArgs": "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node --experimental-vm-modules /var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/.tmpCCbUfQ/kernel.js --session-id 91e5a248e5e44ccb88561bbb3057a9f6 --working-dir /Users/lhs/Desktop/mcr"
+        },
+        {
+          "kind": "verified desktop tool infrastructure",
+          "pid": 20057,
+          "birth": "Wed Nov 4 23:26:42 2026",
+          "actualArgs": "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node /var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/.tmpCCbUfQ/trusted-worker.js /Users/lhs/Desktop/mcr"
+        }
+      ],
+      "ordinaryGitOnly": {
+        "pids": [
+          20056,
+          20057,
+          26507
+        ],
+        "script": "/private/tmp/mcr-publisher-412e-capacity-composition-delivery.py",
+        "sha256": "8bd689d14ffd14ef04b2209cf890eb113a52a261c350e9cc2809d60971293622",
+        "executionWorkflow": false
+      },
+      "chargedPIDs": 63,
+      "chargedRSS": 15433285632,
+      "otherUpper": 5368709120,
+      "ordinaryFutureUpperBytes": 2684354560,
+      "processes": [
+        {
+          "pid": 5445,
+          "parent": 99401,
+          "group": 5445,
+          "rss": 33701888,
+          "birth": "Thu Nov 5 12:01:19 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /private/tmp/mcr-be42-compile-09-exec/run.py /private/tmp/mcr-be42-compile-09-exec"
+        },
+        {
+          "pid": 5455,
+          "parent": 5445,
+          "group": 5455,
+          "rss": 126271488,
+          "birth": "Thu Nov 5 12:01:19 2026",
+          "command": "/Users/lhs/.rustup/toolchains/1.88.0-aarch64-apple-darwin/bin/cargo test --locked --offline -p concert-service --test production_private_data_native --test private_data_production --test account_deletion_runtime --test media_deletion --test account_private_data_aggregate --no-run --message-format=json --config profile.dev.package.contracts-build.opt-level=2"
+        },
+        {
+          "pid": 20056,
+          "parent": 16604,
+          "group": 16491,
+          "rss": 4063232,
+          "birth": "Wed Nov 4 23:26:42 2026",
+          "command": "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node --experimental-vm-modules /var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/.tmpCCbUfQ/kernel.js --session-id 91e5a248e5e44ccb88561bbb3057a9f6 --working-dir /Users/lhs/Desktop/mcr"
+        },
+        {
+          "pid": 20057,
+          "parent": 16604,
+          "group": 16491,
+          "rss": 31916032,
+          "birth": "Wed Nov 4 23:26:42 2026",
+          "command": "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node /var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/.tmpCCbUfQ/trusted-worker.js /Users/lhs/Desktop/mcr"
+        },
+        {
+          "pid": 26507,
+          "parent": 49590,
+          "group": 26507,
+          "rss": 1975533568,
+          "birth": "Thu Nov 5 12:05:07 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /private/tmp/mcr-venu-l-transport-40c576-0304/ordinary.py"
+        },
+        {
+          "pid": 46693,
+          "parent": 49590,
+          "group": 46693,
+          "rss": 182943744,
+          "birth": "Thu Nov 5 12:07:37 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py 04"
+        },
+        {
+          "pid": 47054,
+          "parent": 46693,
+          "group": 47054,
+          "rss": 200507392,
+          "birth": "Thu Nov 5 12:07:44 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py guard /private/tmp/mcr-post21a-be39-compile-unit04-0202/source-run-04/accept.json"
+        },
+        {
+          "pid": 47980,
+          "parent": 49590,
+          "group": 47980,
+          "rss": 228605952,
+          "birth": "Thu Nov 5 12:08:05 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/lease.py --offer PREWORLD-NATIVE09-0301 --head 94ca73d2da0f9a2abbec7c90cc0bc1cdcc95ec2d --job browser --attempt native09 --acceptance native09-acceptance.json --cutoff 0 --release 1 --whole 21474836480 --growth 335544320 --temporary 100663296 --durable 16777216 --files 90000 --processes 24 --rss 3758096384 --start-floor 12 --freeze native09-freeze.json --bootstrap-work 300 --bootstrap-full 360 --minimum-carry-bytes 19950000000 --retained-growth-bytes 268435456 --retain-decoder-pass --check-completed-finisher --family-png-cap 48 --retained-png-count 7 --retained-png-bytes 135000"
+        },
+        {
+          "pid": 48231,
+          "parent": 47980,
+          "group": 47980,
+          "rss": 26787840,
+          "birth": "Thu Nov 5 12:08:08 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/guardian.py /Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/native09-guardian-config.json"
+        },
+        {
+          "pid": 48242,
+          "parent": 48231,
+          "group": 47980,
+          "rss": 2228224,
+          "birth": "Thu Nov 5 12:08:09 2026",
+          "command": "ps -axo pid=,ppid=,pgid=,rss=,lstart=,args="
+        },
+        {
+          "pid": 99401,
+          "parent": 49590,
+          "group": 99401,
+          "rss": 42893312,
+          "birth": "Thu Nov 5 12:00:01 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B -u /private/tmp/mcr-be42-compile-09-exec/guardian.py /private/tmp/mcr-be42-compile-09-exec build"
+        }
+      ]
+    }
+  },
+  "pngFamily": {
+    "cap": 48,
+    "retainedCount": 7,
+    "retainedBytes": 135000
+  },
+  "foundationSource": "7f9d1095c492867aac70c91c3a9a1b3ab161c687",
+  "foundationPins": [
+    {
+      "path": "frontend/src/shared/styles/base.css",
+      "bytes": 8595,
+      "sha256": "c687b4d31895eb1f1414277663bd5d707b56f6ded1abef9154262b9d27c2f303",
+      "file": "/private/tmp/mcr-pi12-preworld-native09/foundation/frontend/src/shared/styles/base.css"
+    },
+    {
+      "path": "frontend/src/shared/styles/themes/themes.css",
+      "bytes": 1159,
+      "sha256": "c7d8561ab09c4402812e0eacf72cc56b6cc2ce7a84449632e8054573d4802e4c",
+      "file": "/private/tmp/mcr-pi12-preworld-native09/foundation/frontend/src/shared/styles/themes/themes.css"
+    },
+    {
+      "path": "frontend/src/shared/ui/concert-window/index.tsx",
+      "bytes": 6205,
+      "sha256": "0b532322426fd4f0aae0e2667cae80e2257917eda8cb1de6455ee3670025ae56",
+      "file": "/private/tmp/mcr-pi12-preworld-native09/foundation/frontend/src/shared/ui/concert-window/index.tsx"
+    },
+    {
+      "path": "frontend/src/shared/ui/concert-window/concert-window.css",
+      "bytes": 5848,
+      "sha256": "9b03795cc11ed06130ebdc2ec386948d91f0e9cbba592f876a82c72ef1014c92",
+      "file": "/private/tmp/mcr-pi12-preworld-native09/foundation/frontend/src/shared/ui/concert-window/concert-window.css"
+    },
+    {
+      "path": "frontend/src/app/shell.css",
+      "bytes": 13201,
+      "sha256": "b12f4bbddb55d144fb6da89ab2686e0225455ed3bedaff70ad8a34ef6a0161dc",
+      "file": "/private/tmp/mcr-pi12-preworld-native09/foundation/frontend/src/app/shell.css"
+    },
+    {
+      "path": "frontend/src/app/shell-chrome/parade-footer.tsx",
+      "bytes": 130,
+      "sha256": "ecbb1b9f16a61315c7e63b3ba296e7d0977619fb0df899b950e3a41b8a1c6428",
+      "file": "/private/tmp/mcr-pi12-preworld-native09/foundation/frontend/src/app/shell-chrome/parade-footer.tsx"
+    },
+    {
+      "path": "frontend/src/app/shell-chrome/shell-chrome.css",
+      "bytes": 6153,
+      "sha256": "264fa91f2b9d45f6d7756cfcde5fa0656d714e6c2190d325800d14c2f9639ea1",
+      "file": "/private/tmp/mcr-pi12-preworld-native09/foundation/frontend/src/app/shell-chrome/shell-chrome.css"
+    },
+    {
+      "path": "frontend/src/app/reference-chrome-v2/WindowInk.tsx",
+      "bytes": 1117,
+      "sha256": "019662bb93b5eb92dd76b670738462c905a2a191ce7457b6ecbeb3efca9f33e4",
+      "file": "/private/tmp/mcr-pi12-preworld-native09/foundation/frontend/src/app/reference-chrome-v2/WindowInk.tsx"
+    },
+    {
+      "path": "frontend/src/app/reference-chrome-v2/chrome.css",
+      "bytes": 3451,
+      "sha256": "6a5449d6d89bd16497a17c9e46a872f4b9f8afe3cedff76835045529d2afca45",
+      "file": "/private/tmp/mcr-pi12-preworld-native09/foundation/frontend/src/app/reference-chrome-v2/chrome.css"
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/fonts/Oswald.ttf",
+      "bytes": 172088,
+      "sha256": "5b38c246e255a12f5712d640d56bcced0472466fc68983d2d0410ec0457c2817",
+      "file": "/private/tmp/mcr-pi12-preworld-native09/foundation/frontend/src/shared/styles/parade-ink/fonts/Oswald.ttf"
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/fonts/Roboto.ttf",
+      "bytes": 488584,
+      "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+      "file": "/private/tmp/mcr-pi12-preworld-native09/foundation/frontend/src/shared/styles/parade-ink/fonts/Roboto.ttf"
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/fonts/oswald-METADATA.pb",
+      "bytes": 4396,
+      "sha256": "3d5119d2e99a15e7c2973937d10a77e7aa1fc6a28fe173b02e059485aa596097",
+      "file": "/private/tmp/mcr-pi12-preworld-native09/foundation/frontend/src/shared/styles/parade-ink/fonts/oswald-METADATA.pb"
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/fonts/oswald-OFL.txt",
+      "bytes": 4483,
+      "sha256": "0fd731a904b729a4e02eaf5e8ebd06783edd9abe400e8882760160230675b652",
+      "file": "/private/tmp/mcr-pi12-preworld-native09/foundation/frontend/src/shared/styles/parade-ink/fonts/oswald-OFL.txt"
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/fonts/provenance.json",
+      "bytes": 3273,
+      "sha256": "aded4b656522bd2c4de6cfd1be9e9a6cfcf96d94ecc61e3a2f36497a465574db",
+      "file": "/private/tmp/mcr-pi12-preworld-native09/foundation/frontend/src/shared/styles/parade-ink/fonts/provenance.json"
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/fonts/roboto-METADATA.pb",
+      "bytes": 1463,
+      "sha256": "6fef19da54fb62d152f0c7b21710e6849950db7ecf852ea29511c593dad462f0",
+      "file": "/private/tmp/mcr-pi12-preworld-native09/foundation/frontend/src/shared/styles/parade-ink/fonts/roboto-METADATA.pb"
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/fonts/roboto-OFL.txt",
+      "bytes": 4394,
+      "sha256": "061402327a96aadb0bfb694a960ed289ecd38d383e396243831ab81feb109c41",
+      "file": "/private/tmp/mcr-pi12-preworld-native09/foundation/frontend/src/shared/styles/parade-ink/fonts/roboto-OFL.txt"
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/primitives.css",
+      "bytes": 6508,
+      "sha256": "c5a327ec4e63407ea5119a48ab20632c63e81780a842b57c0bb5e856e7ca78e0",
+      "file": "/private/tmp/mcr-pi12-preworld-native09/foundation/frontend/src/shared/styles/parade-ink/primitives.css"
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/tokens.css",
+      "bytes": 1334,
+      "sha256": "15b68ce29df755e81849d2bc359f2c2aaade9857d5e04c32692bf9aab4700556",
+      "file": "/private/tmp/mcr-pi12-preworld-native09/foundation/frontend/src/shared/styles/parade-ink/tokens.css"
+    }
+  ],
+  "foundationReadsetSha256": "eb80d722f513ce794fe35317a87702dd2878321a2d76f313d36265b3d593d5ef",
+  "checks": [
+    {
+      "job": "finisher",
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+        "-B",
+        "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/completed-finisher-regression.py"
+      ],
+      "exitCode": 0,
+      "finished": 1793848097.254038
+    },
+    {
+      "job": "driverLint",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/frontend/node_modules/oxlint/bin/oxlint",
+        "--deny-warnings",
+        "frontend/e2e/visual/parade-ink-pre-world-policy/native.mjs"
+      ],
+      "exitCode": 0,
+      "finished": 1793848098.348526
+    }
+  ],
+  "retainedDecoderQualification": {
+    "receipt": "native05.json",
+    "cases": 6,
+    "exitCode": 0,
+    "unchangedSourceSha256": "19c42187d2460e140c276561251199b0e051cccffe3e51e1cbef7ad0a1a6240c"
+  },
+  "guardFailure": "AssertionError(('unresolved workflow claims', [48772]))",
+  "guardTraceback": "Traceback (most recent call last):\n  File \"/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/lease.py\", line 320, in <module>\n    measure(); time.sleep(max(0, .25 - (time.monotonic()-sampled)))\n    ~~~~~~~^^\n  File \"/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/lease.py\", line 220, in measure\n    shared['global_check'](shared_config, global_state, free)\n    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/guardian.py\", line 313, in global_check\n    assert not state['unresolvedPids'], ('unresolved workflow claims', state['unresolvedPids'])\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: ('unresolved workflow claims', [48772])\n",
+  "finished": 1793848100.8445811,
+  "childrenRemaining": [],
+  "linkAbsent": true,
+  "scratchAbsent": true,
+  "typeConfigAbsent": true,
+  "freeAfter": 23580151808,
+  "releasedBeforeDeadline": true
+}

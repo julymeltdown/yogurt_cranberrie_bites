@@ -1,0 +1,66 @@
+{
+  "offer": "PREWORLD-NATIVE05-0226",
+  "head": "d85ad092a2fbd1fc1ae3de7790ca53fbda1157b4",
+  "started": 1793845714.98667,
+  "finished": 1793845727.7126179,
+  "checks": [
+    {
+      "job": "decoder",
+      "argv": [
+        "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+        "-B",
+        "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/receipt-path-regression.py"
+      ],
+      "exitCode": 0,
+      "finished": 1793845724.2953448
+    },
+    {
+      "job": "browser",
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "frontend/e2e/visual/parade-ink-pre-world-policy/native.mjs"
+      ],
+      "exitCode": 1,
+      "finished": 1793845727.147986
+    }
+  ],
+  "exitCode": 1,
+  "guardFailure": null,
+  "peaks": {
+    "whole": 19840421427,
+    "growth": 173027763,
+    "temporary": 30298058,
+    "durable": 67728,
+    "files": 62603,
+    "processes": 9,
+    "rss": 1376223232
+  },
+  "minFree": 23856275456,
+  "freeAfter": 23886835712,
+  "childrenRemaining": [],
+  "linkAbsent": true,
+  "scratchAbsent": true,
+  "typeConfigAbsent": true,
+  "releasedBeforeDeadline": true,
+  "primaryInitial": 1793845716.699399,
+  "independentInitial": 1793845717.139146,
+  "actualGuardPublicationBeforeInventory": 1793845716.7905989,
+  "actualGuardPID": 27708,
+  "browserReport": {
+    "result": "FAIL",
+    "captures": [],
+    "errors": [],
+    "interactions": [],
+    "privatePort": 5383,
+    "foundation": "Exact readonly final PI01 source7f9d1095 eighteen postimages, owner-qualified/published canonical651159ec; this leaf controlled validation is separate from combinedmaster/live/device acceptance",
+    "limits": "PI12 pre-World S02/S03 subset only; actual main/default Auth/ports and controlled HTTP/C03/C05 fixtures. No live server/catalog/device, in-World overlays, general route-error or wholePI12 acceptance.",
+    "stage": "policy-pending/360x844",
+    "failure": "AssertionError [ERR_ASSERTION]: Actual default entry must consume PI01; no injected replacement styles\n+ actual - expected\n\n+ ''\n- '\"pi01-photo2-v1\"'\n",
+    "failureState": null,
+    "closed": true,
+    "pngCount": 1,
+    "pngBytes": 2528,
+    "serverClosed": true
+  },
+  "ownerInspection": "Actual failure.png opened: blank white360x844; no product visual acceptance. Fixture global null/token empty observed before nested dynamic imports completed; readiness wait fix committedff948b189 before ordinary deadline, not yet executed."
+}

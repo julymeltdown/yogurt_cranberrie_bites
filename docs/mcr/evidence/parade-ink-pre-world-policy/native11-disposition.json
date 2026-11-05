@@ -1,0 +1,27 @@
+{
+  "state": "INITIAL_STALE_LEGACY_PUBLISHER_HASH_ABORT_NOT_ACCEPTED",
+  "full": {
+    "ownerThreadId": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+    "offerId": "PREWORLD-NATIVE11-0310",
+    "acceptedAtEpoch": 1793848477.645097,
+    "actualFullEpoch": 1793848481.44902,
+    "originalDisposition": "INITIAL_STALE_LEGACY_PUBLISHER_HASH_ABORT_NO_BROWSER",
+    "resourcesReleased": true,
+    "fullPath": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/native11-FULL.json",
+    "fullSHA": "e16dfe199a4833688ccc9c93b423acb6dc558f1ea5dd3dd757c5c556858e4281"
+  },
+  "sourceHEAD": "2d5fd9e3b87fcd92e6e912628e271ff90871fe4f",
+  "peaks": {
+    "whole": 20020001508,
+    "growth": 356517348,
+    "temporary": 0,
+    "durable": 1037,
+    "files": 62400,
+    "processes": 1,
+    "rss": 228540416
+  },
+  "failure": "Exact live legacy mutable publisher helper no longer matched historical audited ordinary-only pin; no blind repin/exemption",
+  "newPNGs": 0,
+  "checksReplayed": [],
+  "next": "Responsible publisher actual exit/identity and fresh named browser-only round/currentfit; all native and canonical criteria stay open."
+}

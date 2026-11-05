@@ -1,0 +1,289 @@
+{
+  "sampled": 1793845727.2736099,
+  "samplerPID": 27708,
+  "metadataAsOf": "2026-11-05T01:47:30.991757+00:00",
+  "receiptPins": [
+    {
+      "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a19e5c-e9c6-7973-a53b-a6d19141620f.json",
+      "bytes": 3895,
+      "sha256": "c3c945947002a8271d54f1ebcb9a70fe4e6d2135949fea9254f1efd9129bf64c"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c.json",
+      "bytes": 10246,
+      "sha256": "b69af0bc60b9457320255812c57b3d1f10425bcdffb471fc278ae388aefa99b1"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a00c-2690-7bc0-94fc-52609655ea83.json",
+      "bytes": 4923,
+      "sha256": "e247ced24ea5b2e7db21a0c034bd1559369f46579ccb8e8fd9edf3b48e25750a"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a153-1227-7e72-801f-a2a6b91981e1.json",
+      "bytes": 14956,
+      "sha256": "db57244d3d012bbbca776daa4dec402426d27b3e1d46ba820468a148009af100"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08.json",
+      "bytes": 2063,
+      "sha256": "d7c2fcccb930ada3ed66769508dc646e3dbc805aefa4438dfd0ce68ace5290d3"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fe-16e1-7ee3-a9dc-8b5f037cc24c.json",
+      "bytes": 16128,
+      "sha256": "75e2672c2fa5d2509ecd9fc278148b6e52ce4d9de86095c21bfaca3378018fdb"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fe-1ab7-79b0-adbc-d4c025701acb.json",
+      "bytes": 14587,
+      "sha256": "87611122c2f8e4a56f8c35236635a7eca2d9ee3ba985bdc58a918854534f8416"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fe-1eed-7d12-a247-879cd521e0ec.json",
+      "bytes": 7598,
+      "sha256": "3fbf8b2d012871bfb4f03849b13deab550235b23162953f4b33a2d801c4c9979"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a202-3ff2-7a93-95c3-374c6df97281.json",
+      "bytes": 1093,
+      "sha256": "0eb324be5587fd91a094e75d8abc2d4280f9bc846fef2b6579898da223c1c34e"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a204-c583-7670-965a-4891b8b1289e.json",
+      "bytes": 3114,
+      "sha256": "c46c9f5d2db314026e692bfcc6a337faa801cdc05c5198946b7da06b1647bad4"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a205-3f89-78c3-aa67-719c4bb40b8d.json",
+      "bytes": 1731,
+      "sha256": "baeb12f567b6cab096f4df08c7823062136fce65d9c5a63f1679151e6d435f7c"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a207-f012-7343-a24b-12b9c544973f.json",
+      "bytes": 7864,
+      "sha256": "b239d520b6d8d885fdf26125068268bf4ead4c04cce721d4c20b4f360a6af9b3"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a20f-8d37-71c3-a429-8a55bb6d6c49.json",
+      "bytes": 6367,
+      "sha256": "308763470a92f4e90f8116a795bba1a1396dce3aecd439620b9bd2d5392bd094"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a213-03de-72d3-9ecf-2f72b574cf82.json",
+      "bytes": 4901,
+      "sha256": "7f0b82f08238d00cd4fdb57f60ac9ad325c2f1a983f75613c479e342ab602d89"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a213-61d6-7a20-a8e7-476649312f8c.json",
+      "bytes": 4296,
+      "sha256": "7d9acc7e922ff235e4c3261bb32f758b63557e4591434b8b6cc6bd2a31a56388"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a21a-a088-7c31-83e3-19de119ba873.json",
+      "bytes": 2329,
+      "sha256": "a884030f2881f32662be3c684787b37c36a9d35c41a7c770a74d7390da3bb336"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a21e-ab80-7012-b9fa-cdb69eed097b.json",
+      "bytes": 8692,
+      "sha256": "51fdd53c2fd7af84edbab94f847c71f9efbf1270b80782245956927c938fb937"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a230-6acc-7e82-9e4b-92506decc745.json",
+      "bytes": 1918,
+      "sha256": "e5eb71b700b7239a35eb243407b5e38cc72c252c1c1205b67686e2dbd1b54e20"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a231-0dc4-7b50-92bd-c0f0f56bd970.json",
+      "bytes": 4851,
+      "sha256": "5a18ddcdab9cd183f087bfc22b5053428dcbece0579ec5791c151f3bef45bd29"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a232-21e2-75c2-8474-a5fa6ae895cd.json",
+      "bytes": 5592,
+      "sha256": "9abdce7290a03ec906d3be9ba46c94e52deb31f853145aedba75f13af6ebfb27"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a232-b91d-78f1-a13a-1361788ba51c.json",
+      "bytes": 5276,
+      "sha256": "e2ecbdaff5dcf23d38a7faf11ef13a1679db69deac1b3ac193a8dc6ca5fd22e1"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a267-37a0-7723-a4e9-a3a6f5b27f52.json",
+      "bytes": 779,
+      "sha256": "86d7a6fac4c39317f0a291dbd98aad3b018198abd06b9aaa97f5622f20cc6c15"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a26e-1de2-7b41-a294-c9a79cfded9b.json",
+      "bytes": 2009,
+      "sha256": "24da5f22e4fe12380a5f5e8ae40d1f622e2c1a2d4ee29350a056e6e35270a4c8"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a533-50a8-7fb2-b3ed-96b941b96bbf.json",
+      "bytes": 2048,
+      "sha256": "41b096eea7364a535fc0f94423ed0d98455e9e635f099cf83556de118ff4fc56"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a534-4fcf-7291-abe3-a97ba2fcafcd.json",
+      "bytes": 7592,
+      "sha256": "1228bc34e4a8db4091941737c074ddd5928408c897e7b678e40a4f93bb776ecf"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-40c576fad94a.json",
+      "bytes": 1410,
+      "sha256": "fa22ed948efcf19359690ce074e8c0329b4cf51b30bda6880dbfccba0dd425a7"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-40fde6c81bb4.json",
+      "bytes": 2957,
+      "sha256": "57715efc67c3ef3318b42a70118b00802655a03356b208a40699b58567c47675"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-412e295fa211.json",
+      "bytes": 2182,
+      "sha256": "bdd4d046ad50b8a71ce1156cdfa932ee4487617c181739fe42a183a193a85792"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6950-7920-8c80-5214d4ce0eaf.json",
+      "bytes": 5915,
+      "sha256": "89844402429cb421aee2e6c6181eb593bca478868ad74eac96199048e091db36"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6954-7bd3-9b08-7109883187b5.json",
+      "bytes": 14304,
+      "sha256": "10e1b971a6d9ae92950023a3402817860be1f79a2dd1cb86262e4c59bced28f9"
+    },
+    {
+      "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6955-7820-bcd4-8e0a21629aa2.json",
+      "bytes": 6652,
+      "sha256": "e881a8798ce15c3d62709bf97b23858f2c99bdaa3efa553572ac9e2362d849f1"
+    }
+  ],
+  "members": [
+    {
+      "cohort": "PI12PreWorld",
+      "kind": "browser",
+      "pids": [
+        27190,
+        27708,
+        28559
+      ],
+      "processCap": 24,
+      "rssCapBytes": 3758096384,
+      "remainingNewBytes": 201326592,
+      "state": "ACTUAL_ACCEPT"
+    }
+  ],
+  "unresolvedPids": [],
+  "workflows": 1,
+  "sources": 0,
+  "browsers": 1,
+  "targets": 0,
+  "distinctPids": [
+    20056,
+    20057,
+    24727,
+    27190,
+    27708,
+    28559
+  ],
+  "actualRSS": 356499456,
+  "ordinaryIdentityPins": [
+    {
+      "owner": "01a1a153-1227-7e72-801f-a2a6b91981e1",
+      "pid": 24727,
+      "birth": "Thu Nov 5 11:28:07 2026",
+      "role": "Bounded Notes-only source preparation; no executable qualification",
+      "commandDigest": "99c3d4c6768d32e683d00b7386dad8948b208728f7ffbbddf96dd45deb124747"
+    },
+    {
+      "owner": "01a1a153-1227-7e72-801f-a2a6b91981e1",
+      "pid": 24727,
+      "birth": "Thu Nov 5 11:28:07 2026",
+      "role": "Bounded Notes-only source preparation; no executable qualification",
+      "commandDigest": "99c3d4c6768d32e683d00b7386dad8948b208728f7ffbbddf96dd45deb124747"
+    },
+    {
+      "owner": "01a1a153-1227-7e72-801f-a2a6b91981e1",
+      "pid": 24727,
+      "birth": "Thu Nov 5 11:28:07 2026",
+      "script": "/private/tmp/mcr-paradise-notes-api-root153-0221/finish-prep.py"
+    },
+    {
+      "kind": "verified desktop tool infrastructure",
+      "pid": 20056,
+      "birth": "Wed Nov 4 23:26:42 2026",
+      "actualArgs": "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node --experimental-vm-modules /var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/.tmpCCbUfQ/kernel.js --session-id 91e5a248e5e44ccb88561bbb3057a9f6 --working-dir /Users/lhs/Desktop/mcr"
+    },
+    {
+      "kind": "verified desktop tool infrastructure",
+      "pid": 20057,
+      "birth": "Wed Nov 4 23:26:42 2026",
+      "actualArgs": "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node /var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/.tmpCCbUfQ/trusted-worker.js /Users/lhs/Desktop/mcr"
+    }
+  ],
+  "ordinaryGitOnly": {
+    "pids": [
+      20056,
+      20057,
+      24727
+    ],
+    "script": "/private/tmp/mcr-publisher-412e-capacity-composition-delivery.py",
+    "sha256": "8bd689d14ffd14ef04b2209cf890eb113a52a261c350e9cc2809d60971293622",
+    "executionWorkflow": false
+  },
+  "chargedPIDs": 27,
+  "chargedRSS": 3855450112,
+  "otherUpper": 3221225472,
+  "ordinaryFutureUpperBytes": 2684354560,
+  "processes": [
+    {
+      "pid": 20056,
+      "parent": 16604,
+      "group": 16491,
+      "rss": 4063232,
+      "birth": "Wed Nov 4 23:26:42 2026",
+      "command": "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node --experimental-vm-modules /var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/.tmpCCbUfQ/kernel.js --session-id 91e5a248e5e44ccb88561bbb3057a9f6 --working-dir /Users/lhs/Desktop/mcr"
+    },
+    {
+      "pid": 20057,
+      "parent": 16604,
+      "group": 16491,
+      "rss": 33210368,
+      "birth": "Wed Nov 4 23:26:42 2026",
+      "command": "/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node /var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/.tmpCCbUfQ/trusted-worker.js /Users/lhs/Desktop/mcr"
+    },
+    {
+      "pid": 24727,
+      "parent": 49590,
+      "group": 24727,
+      "rss": 60080128,
+      "birth": "Thu Nov 5 11:28:07 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /private/tmp/mcr-paradise-notes-api-root153-0221/finish-prep.py"
+    },
+    {
+      "pid": 27190,
+      "parent": 49590,
+      "group": 27190,
+      "rss": 228818944,
+      "birth": "Thu Nov 5 11:28:33 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/lease.py --offer PREWORLD-NATIVE05-0226 --head d85ad092a2fbd1fc1ae3de7790ca53fbda1157b4 --job browser --attempt native05 --acceptance native05-acceptance.json --cutoff 0 --release 1 --whole 21474836480 --growth 201326592 --temporary 100663296 --durable 16777216 --files 90000 --processes 24 --rss 3758096384 --start-floor 12 --freeze native05-freeze.json --bootstrap-work 300 --bootstrap-full 360 --minimum-carry-bytes 19810000000 --retained-growth-bytes 142606336"
+    },
+    {
+      "pid": 27708,
+      "parent": 27190,
+      "group": 27190,
+      "rss": 28131328,
+      "birth": "Thu Nov 5 11:28:36 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/guardian.py /Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/native05-guardian-config.json"
+    },
+    {
+      "pid": 28559,
+      "parent": 27708,
+      "group": 27190,
+      "rss": 2195456,
+      "birth": "Thu Nov 5 11:28:47 2026",
+      "command": "ps -axo pid=,ppid=,pgid=,rss=,lstart=,args="
+    }
+  ]
+}

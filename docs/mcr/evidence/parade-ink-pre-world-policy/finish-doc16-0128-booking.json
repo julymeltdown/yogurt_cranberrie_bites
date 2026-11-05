@@ -1,0 +1,25 @@
+{
+  "booking": "PREWORLD-FINISH-DOC16-0128",
+  "additionalCap": 16777216,
+  "expiresUTC": "2026-11-05T02:05:00Z",
+  "created": 1793842111.931008,
+  "baseline": {
+    "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2": {
+      "files": 16346,
+      "bytes": 1471826122
+    },
+    "/Users/lhs/Desktop/mcr/.git": {
+      "files": 2972,
+      "bytes": 1196057039
+    }
+  },
+  "oldDOC4ObservedUpperPreserved": 12294898,
+  "oldDOC16ObservedUpperPreserved": 13397941,
+  "source06WholeMaxPreserved": 17031062671,
+  "source040506SharedNEWObservedUpperPreserved": 29530294,
+  "newSOURCE070809SharedNEWCap": 83886080,
+  "fullNewDOC16Upper": 16777216,
+  "prospectiveRetainedNEWFloor": 50331648,
+  "prospectiveWholeFloor": 17050000000,
+  "free": 23414415360
+}

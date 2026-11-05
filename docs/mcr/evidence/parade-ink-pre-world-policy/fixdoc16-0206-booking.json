@@ -1,0 +1,25 @@
+{
+  "booking": "PREWORLD-FIXDOC16-0206",
+  "created": 1793844126.37709,
+  "expiresUTC": "2026-11-05T02:30:00Z",
+  "additionalCap": 16777216,
+  "baseline": {
+    "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2": {
+      "files": 16379,
+      "bytes": 1474620446
+    },
+    "/Users/lhs/Desktop/mcr/.git": {
+      "files": 3680,
+      "bytes": 1212690326
+    }
+  },
+  "priorFinishDOC16ObservedUpperPreserved": 19427611,
+  "priorFinishDOC16DeadlineUnchanged": "2026-11-05T02:05:00Z",
+  "native02WholeMaxPreserved": 19750001045,
+  "native02NEWMaxPreserved": 83887125,
+  "prospectiveNative03CumulativeNEWCap": 201326592,
+  "entireAdditionalDOC16Charged": 16777216,
+  "free": 23012401152,
+  "scope": "Owned literal-path decoder/traceback/control/docs/scoped Git; no executable validation under this ordinary book",
+  "priorUpperExplanation": "Inclusive old-book baseline growth at fresh book t0; shared common Git +16633287 and WT +2794324, no subtraction/refund"
+}

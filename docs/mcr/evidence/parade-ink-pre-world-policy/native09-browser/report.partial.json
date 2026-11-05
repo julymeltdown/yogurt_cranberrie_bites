@@ -1,0 +1,19 @@
+{
+  "result": "FAIL",
+  "captures": [],
+  "completedCases": [],
+  "errors": [],
+  "interactions": [],
+  "startupDiagnostics": [],
+  "privatePort": 5383,
+  "foundation": "Exact readonly final PI01 source7f9d1095 eighteen postimages, owner-qualified/published canonical651159ec; this leaf controlled validation is separate from combinedmaster/live/device acceptance",
+  "limits": "PI12 pre-World S02/S03 subset only; actual main/default Auth/ports and controlled HTTP/C03/C05 fixtures. No live server/catalog/device, in-World overlays, general route-error or wholePI12 acceptance.",
+  "crashpadNamespace": "/private/tmp/mcr-pi12-preworld-native09/crashpad",
+  "crashpadProcesses": [
+    "48745     1 48744 Thu Nov  5 12:08:19 2026     /Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/156.0.8078.80/Helpers/chrome_crashpad_handler --monitor-self-annotation=ptype=crashpad-handler --database=/private/tmp/mcr-pi12-preworld-native09/crashpad --url=https://clients2.google.com/cr/report --annotation=channel= --annotation=plat=OS X --annotation=prod=Chrome_Mac --annotation=ver=156.0.8078.80 --handshake-fd=7"
+  ],
+  "stage": "start",
+  "pngCount": 0,
+  "pngBytes": 0,
+  "checkpointAtUTC": "2026-11-05T03:08:20.346Z"
+}

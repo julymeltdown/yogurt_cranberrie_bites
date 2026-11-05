@@ -1,0 +1,39 @@
+{
+  "offer": "PREWORLD-NATIVE04-0215",
+  "head": "94eebda291bf77cb91c85f150e8e283be0f8c0b8",
+  "started": 1793845257.6695411,
+  "finished": 1793845264.456342,
+  "exitCode": null,
+  "checks": null,
+  "guardFailure": "AssertionError(('unresolved workflow claims', [97688]))",
+  "guardTraceback": "Traceback (most recent call last):\n  File \"/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/lease.py\", line 264, in <module>\n    measure()\n    ~~~~~~~^^\n  File \"/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/lease.py\", line 209, in measure\n    shared['global_check'](shared_config, global_state, free)\n    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/guardian.py\", line 288, in global_check\n    assert not state['unresolvedPids'], ('unresolved workflow claims', state['unresolvedPids'])\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: ('unresolved workflow claims', [97688])\n",
+  "peaks": {
+    "whole": 19800754624,
+    "growth": 134972352,
+    "temporary": 710927,
+    "durable": 43014,
+    "files": 62415,
+    "processes": 3,
+    "rss": 261128192
+  },
+  "minFree": 23970246656,
+  "freeAfter": 23971094528,
+  "childrenRemaining": [],
+  "linkAbsent": true,
+  "scratchAbsent": true,
+  "typeConfigAbsent": true,
+  "releasedBeforeDeadline": true,
+  "primaryInitial": 1793845259.400542,
+  "independentInitial": 1793845259.739273,
+  "unresolved": [
+    {
+      "pid": 97688,
+      "parent": 49590,
+      "group": 97688,
+      "rss": 22298624,
+      "birth": "Thu Nov 5 11:21:04 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /private/tmp/mcr-be42-compile-07-0529/guardian.py /private/tmp/mcr-be42-compile-07-0529 build"
+    }
+  ],
+  "disposition": "Both initial LIVE, prechild stop on newly unregistered BE42 guard. Neither changed decoder nor browser dispatched; no same-offer restart. Direct FULL successor+allocator before PID/log inspection."
+}

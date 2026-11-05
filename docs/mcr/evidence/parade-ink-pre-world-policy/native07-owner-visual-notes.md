@@ -1,0 +1,5 @@
+# Native07 partial owner inspection
+
+The developer visually inspected all six retained360x844 actual default-App captures: policy pending, bootstrap pending, maintenance, minimum-version, unavailable503 and not-found404, alongside preserved Photo2. They show the supplied condensed display type, black title region, symmetric paper keyline, legible body copy and existing action hierarchy. Wrapped503 heading remains inside its black region without clipping; the404 primary retry and503 outlined policy retry remain distinct. No decorative left rail appears. These pre-World states are an adaptation of the fixed PI01 regions, not a claim that Photo2 pictured these exact screens.
+
+No material defect was identified in these six static360 views. Native07 was interrupted before a final report; PNG presence and visual inspection do not establish completed scenario/input assertions. Width390/430, shortheight390x380, keyboard focus/reload/retry, expiry and the other states remain pending the full qualified native run. No whole-family, live service, device or canonical publication acceptance.

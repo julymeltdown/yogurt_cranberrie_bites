@@ -1,0 +1,46 @@
+{
+  "state": "PARTIAL_NOT_ACCEPTED",
+  "sourceHEAD": "cc00b4f439bf38e256823dd44e37ef58c1f586f8",
+  "full": {
+    "ownerThreadId": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+    "offerId": "PREWORLD-NATIVE07-0237",
+    "acceptedAtEpoch": 1793847171.571899,
+    "actualFullEpoch": 1793847192.1085,
+    "originalDisposition": "PARTIAL_NATIVE_RESOURCE_ABORT_NOT_ACCEPTED",
+    "resourcesReleased": true,
+    "fullPath": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/native07-FULL.json",
+    "fullSHA": "13b4c000cc3b46db5a72ea008cf40cd72f90a54d94e596fb2196b025df0bb6b4"
+  },
+  "driverLintExitCode": 0,
+  "actualPNGs": 6,
+  "completedCasePassesClaimed": 0,
+  "reportAbsent": true,
+  "peaks": {
+    "whole": 19910515795,
+    "growth": 236036691,
+    "temporary": 30326122,
+    "durable": 188800,
+    "files": 62578,
+    "processes": 11,
+    "rss": 2556133376
+  },
+  "readerDefect": {
+    "pid": 60660,
+    "owner": "01a1a204-c583-7670-965a-4891b8b1289e",
+    "actualOwnerFullEpoch": 1793847191.317804,
+    "canonicalPublishedEpoch": 1793847191.318688,
+    "censusEpoch": 1793847191.329987,
+    "canonicalSHA": "2d61bafd183a27bee293d028dfc0343759ca2a2acaac57d4f5a3bb8b6149e06d",
+    "literalFullSHA": "f47e7a7fcf052602eb14934b3e63e11bac1cab900fecbf1a173a3d6e38e5fc6a",
+    "correction": "Own reader falsely classified exact already-FULL source controller during synchronous receipt/exit finishing; no missing registration claim survives."
+  },
+  "ownOrphanDefect": {
+    "pid": 61326,
+    "birth": "Thu Nov 5 11:53:03 2026",
+    "actualExe": "Google Chrome Framework 156.0.8078.80/Helpers/chrome_crashpad_handler",
+    "commandSHA": "bb9093a0f575507fbe5572b15dedc74c9ad901aabc49b4566e8e9d2926babe40",
+    "responsibleOwner": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+    "status": "Historical uncharged detached Chrome crash handler; Native07 resource ownership not retroqualified."
+  },
+  "next": "Fresh08: exact finisher regression, changed driver lint and complete original37 native cases. Verify actual installed handler argv contains private TMP namespace and charge both guards."
+}

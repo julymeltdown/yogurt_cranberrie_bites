@@ -1,0 +1,4 @@
+CHECK finisher
+{"result": "PASS", "cases": 5, "behavior": "Exact FULL finisher retains physical PID/RSS only; new child, reused birth, incomplete cleanup and different offer fail closed"}
+CHECK driverLint
+CHECK browser

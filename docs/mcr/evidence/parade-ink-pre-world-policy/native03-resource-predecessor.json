@@ -1,0 +1,28 @@
+{
+  "observed": 1793844224.521206,
+  "path": "/Users/lhs/Desktop/mcr-worktrees/fe-social-feed/docs/mcr/evidence/pi07-avatar-parade-ink/native03-cleanup-full.json",
+  "sha256": "3b55ebe10cf96259d7906e4b4fc1ac66f992de5d434cc814a05757f75af42a9e",
+  "reportedActualAccept": 1793844147.754694,
+  "reportedActualFULL": "2026-11-05T02:03:06.201924Z",
+  "literal": {
+    "offer": "PI07-EDITOR-PROFILE-NATIVE03-0157",
+    "acceptedAtEpoch": 1793844147.754694,
+    "fullAt": "2026-11-05T02:03:06.201924+00:00",
+    "state": "FULL",
+    "status": "FAIL",
+    "resourcesClosed": true,
+    "survivingPids": [],
+    "scratchAbsent": true,
+    "noListener": true,
+    "reuseBind": true,
+    "allExecutionResources": 0,
+    "rawFailedOuter": {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/fe-social-feed/docs/mcr/evidence/pi07-avatar-parade-ink/native03-watch-report.json",
+      "sha256": "05efd62986e634a32bdae037dc9fb09ece2953f86d2f49e44730c6d67ca2c988"
+    },
+    "newPhasePositivePeakFloor": 512000,
+    "sourceSpentFloor": 587304960,
+    "wholeFloor": 4437364736,
+    "disposition": "No restart; changed-driver syntax/lint passed; guard abort before captures. Primary PermissionError and original CLEANUP_REQUIRED report preserved."
+  }
+}

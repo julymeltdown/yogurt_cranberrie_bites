@@ -1,0 +1,17 @@
+{
+  "offer": "PI12-PREWORLD-REMAINDER-SOURCE04-0122",
+  "accepted": 1793841790.946882,
+  "cutoff": 1793841910.946882,
+  "release": 1793841970.946882,
+  "head": "8b87a16e3cd1a0bc42440f898e374613c86ccb6b",
+  "whole": 17179869184,
+  "new": 33554432,
+  "files": 90000,
+  "processes": 24,
+  "rss": 3221225472,
+  "minimumCarryBytes": 17025811145,
+  "fullDOC16UpperBytes": 16777216,
+  "retainedGrowthBytes": 16777216,
+  "cwd": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2",
+  "controller": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/lease.py"
+}

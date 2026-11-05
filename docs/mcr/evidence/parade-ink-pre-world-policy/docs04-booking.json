@@ -1,0 +1,17 @@
+{
+  "booking": "DOC4MiB-0048",
+  "expiresUTC": "2026-11-05T01:10:00Z",
+  "cap": 4194304,
+  "measured": 1793839728.1624372,
+  "free": 15260262400,
+  "baseline": {
+    "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2": {
+      "files": 16289,
+      "bytes": 1465926508
+    },
+    "/Users/lhs/Desktop/mcr/.git": {
+      "files": 3106,
+      "bytes": 1176827728
+    }
+  }
+}

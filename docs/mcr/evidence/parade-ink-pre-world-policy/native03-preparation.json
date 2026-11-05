@@ -1,0 +1,22 @@
+{
+  "preparedAt": 1793844163.7428212,
+  "state": "UNACCEPTED_NO_RESERVATION",
+  "previousActualFULL": {
+    "ownerThreadId": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+    "offerId": "PI12-PREWORLD-APP-NATIVE02-0145",
+    "acceptedAtEpoch": 1793843661.641477,
+    "actualFullEpoch": 1793843665.774038,
+    "fullPath": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/native02-FULL.json",
+    "fullSHA256": "37bb5924daa6b6f1649e5c377992be4bdc48582b1b0d1a0561ec917c3bbf519d",
+    "resourcesReleased": true,
+    "resources": {
+      "children": 0,
+      "link": 0,
+      "temporary": 0,
+      "reservations": 0
+    }
+  },
+  "sourceChecks": "Retained six protection groups, three frame tests, lint, syntax and full ordinary types PASS; no replay",
+  "next": "After PI07Native03 literal FULL/decline/unreadyyield and fresh fit, six changed-decoder cases then original remaining native matrix",
+  "ordinaryOldInclusiveUpper": 19427611
+}

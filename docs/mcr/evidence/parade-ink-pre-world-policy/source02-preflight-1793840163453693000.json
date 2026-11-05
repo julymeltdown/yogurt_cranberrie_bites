@@ -1,0 +1,127 @@
+{
+  "state": "PROSPECTIVE_UNACCEPTED_NO_WORKLOAD",
+  "sampled": 1793840163.4537,
+  "global": {
+    "metadataAsOf": "2026-11-05T00:51:18.704611+00:00",
+    "receiptPins": [
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08.json",
+        "bytes": 1058,
+        "sha256": "4bc3c62e8f2c4bb82d6c6bea339878ac3df7e46f3ee9b7062e679f9d46678418"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fe-1ab7-79b0-adbc-d4c025701acb.json",
+        "bytes": 1439,
+        "sha256": "4b3724a06b20598b3121445d0fda2c774fc702ac0e4d80cf911cb8086cc018da"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a1fe-1eed-7d12-a247-879cd521e0ec.json",
+        "bytes": 1909,
+        "sha256": "a0c50d8018c7dcc5458903f6ceb0fa8cf1b15ae96bffba3fdc976385cb008f5e"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a207-f012-7343-a24b-12b9c544973f.json",
+        "bytes": 1062,
+        "sha256": "7ac00a5f4658bf96c6b93422529fbd45c2000979fab3b575546fa66112aeabeb"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a21a-a088-7c31-83e3-19de119ba873.json",
+        "bytes": 2209,
+        "sha256": "d29934695b72751a32bcaa3b6b446a5adeafb0688c970757affbcdcaff1d7b3a"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a21e-ab80-7012-b9fa-cdb69eed097b.json",
+        "bytes": 2015,
+        "sha256": "16dd1e60e118e507232c6bfca68deee2ffc7c9d90ed5d6f9963b506b8d575df0"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a232-21e2-75c2-8474-a5fa6ae895cd.json",
+        "bytes": 1176,
+        "sha256": "7455092d2fe3ee2cba2638132fdb7e37ecf43f360a7d28f51a32bff7f0f3d191"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a267-37a0-7723-a4e9-a3a6f5b27f52.json",
+        "bytes": 1109,
+        "sha256": "905b9a29a5ed197a1db92a3296c8c67b99e834404dede47c712f46cb612b81d5"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a26e-1de2-7b41-a294-c9a79cfded9b.json",
+        "bytes": 1707,
+        "sha256": "4cf912ee224f02f6519045f9fb45b420b5d6d8bf99bf9f4689977faac1126636"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a533-50a8-7fb2-b3ed-96b941b96bbf.json",
+        "bytes": 1380,
+        "sha256": "1506ca466313aa320be233cb5c6d47fbd16c585272cd9ac1cfe0d9a44ecf30c1"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-40c576fad94a.json",
+        "bytes": 1074,
+        "sha256": "3a2b0833bedc7aafd2aa13f412c41476acc04ee852506c681e6b04ff5f12ada1"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-332b-7822-a8f7-412e295fa211.json",
+        "bytes": 2108,
+        "sha256": "22e23cae71a436afe56927e0c1f0aa46eee6879008f86c01166b59520890125e"
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6954-7bd3-9b08-7109883187b5.json",
+        "bytes": 1186,
+        "sha256": "b2b67ffc006ab85528cac8dae13af1c9b5979d8542dc962702d1a9a0f459de4a"
+      }
+    ],
+    "members": [
+      {
+        "cohort": "PI12PreWorld",
+        "kind": "source",
+        "pids": [
+          40953,
+          41029
+        ],
+        "processCap": 24,
+        "rssCapBytes": 3221225472,
+        "remainingNewBytes": 33554432,
+        "state": "ACTUAL_ACCEPT"
+      }
+    ],
+    "unresolvedPids": [],
+    "workflows": 1,
+    "sources": 1,
+    "browsers": 0,
+    "targets": 0,
+    "distinctPids": [
+      40953,
+      41029
+    ],
+    "actualRSS": 26836992,
+    "ordinaryGitOnly": {
+      "pids": [],
+      "script": "/private/tmp/mcr-publisher-412e-capacity-composition-delivery.py",
+      "sha256": "8bd689d14ffd14ef04b2209cf890eb113a52a261c350e9cc2809d60971293622",
+      "executionWorkflow": false
+    },
+    "chargedPIDs": 24,
+    "chargedRSS": 3221225472,
+    "otherUpper": 3221225472,
+    "processes": [
+      {
+        "pid": 40953,
+        "parent": 49590,
+        "group": 40953,
+        "rss": 24657920,
+        "birth": "Thu Nov 5 09:56:03 2026",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B -"
+      },
+      {
+        "pid": 41029,
+        "parent": 40953,
+        "group": 40953,
+        "rss": 2179072,
+        "birth": "Thu Nov 5 09:56:03 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,rss=,lstart=,args="
+      }
+    ]
+  },
+  "free": 15344164864,
+  "priorUnknown35574Matches": []
+}

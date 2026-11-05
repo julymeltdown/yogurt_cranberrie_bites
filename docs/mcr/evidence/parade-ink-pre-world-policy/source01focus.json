@@ -1,0 +1,245 @@
+{
+  "offer": "PI12-PREWORLD-SOURCE01-0035",
+  "head": "a1c6959aab081ca8d3e8d6cbec055a27e71cfb03",
+  "job": "focus",
+  "argv": [
+    "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+    "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/frontend/node_modules/vitest/vitest.mjs",
+    "run",
+    "--root",
+    "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/frontend",
+    "--configLoader",
+    "runner",
+    "--no-cache",
+    "--maxWorkers",
+    "1",
+    "--config",
+    "src/app/pre-world-policy/__tests__/parade-ink/vitest.config.ts"
+  ],
+  "started": 1793839441.268969,
+  "cutoff": 1793839504,
+  "release": 1793839564,
+  "carryFiles": 61225,
+  "carryBytes": 13901430503,
+  "dependencyFiles": 11104,
+  "dependencyBytes": 408236853,
+  "peaks": {
+    "whole": 13905394383,
+    "growth": 3963880,
+    "temporary": 0,
+    "durable": 29725,
+    "files": 61455,
+    "processes": 5,
+    "rss": 509231104
+  },
+  "minFree": 15379599360,
+  "exitCode": 0,
+  "sourcePins": {
+    "frontend/src/app/pre-world-policy/parade-ink/pre-world.css": "a6ced91cc84d70c74fdd6bbe0a56e0609d5640f9c51996862ea1979f13cc21ff",
+    "frontend/src/app/pre-world-policy/parade-ink/PreWorldFrame.tsx": "9fae8ff3d927b70da481334e27c712418d6321ae30a052c008ebeb2a1c3a1164",
+    "frontend/src/app/pre-world-policy/__tests__/parade-ink/frame.test.tsx": "57d5502ba6b41667ac41dfc6cb43a7d2144fc5c8c42dfc85ab369c030e49c64f",
+    "frontend/src/app/pre-world-policy/__tests__/parade-ink/vitest.config.ts": "808a73983d775971a0e8f4a66dc3dacf5e177a0fc1de2bd43f71c3fa3c260bbd"
+  },
+  "locks": {
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+    "frontend/package.json": "0f7a05587bcf1af5f4d5d077a0c2d90011adc87e1036a61db9ef3acf37c8b7d3"
+  },
+  "lastGlobal": {
+    "metadataAsOf": "2026-11-05T00:43:52.950451+00:00",
+    "members": [
+      {
+        "cohort": "PI12PreWorld",
+        "kind": "source",
+        "pids": [
+          70924,
+          71026,
+          71098
+        ],
+        "processCap": 24,
+        "rssCapBytes": 3221225472,
+        "remainingNewBytes": 33554432,
+        "state": "ACTUAL_ACCEPT"
+      }
+    ],
+    "unresolvedPids": [],
+    "workflows": 1,
+    "sources": 1,
+    "browsers": 0,
+    "targets": 0,
+    "distinctPids": [
+      70924,
+      71026,
+      71098
+    ],
+    "actualRSS": 252674048,
+    "chargedPIDs": 24,
+    "chargedRSS": 3221225472,
+    "otherUpper": 3221225472,
+    "processes": [
+      {
+        "pid": 70924,
+        "parent": 49590,
+        "group": 70924,
+        "rss": 224690176,
+        "birth": "Thu Nov 5 09:44:00 2026",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B docs/mcr/evidence/parade-ink-pre-world-policy/lease.py --offer PI12-PREWORLD-SOURCE01-0035 --head a1c6959aab081ca8d3e8d6cbec055a27e71cfb03 --job focus --attempt source01focus --acceptance source01-acceptance.json --cutoff 1793839504 --release 1793839564 --whole 17179869184 --growth 33554432 --temporary 25165824 --durable 4194304 --files 90000 --processes 24 --rss 3221225472 --start-floor 11"
+      },
+      {
+        "pid": 71026,
+        "parent": 70924,
+        "group": 70924,
+        "rss": 25837568,
+        "birth": "Thu Nov 5 09:44:02 2026",
+        "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/guardian.py /Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/source01focus-guardian-config.json"
+      },
+      {
+        "pid": 71098,
+        "parent": 70924,
+        "group": 70924,
+        "rss": 2146304,
+        "birth": "Thu Nov 5 09:44:04 2026",
+        "command": "ps -axo pid=,ppid=,pgid=,rss=,lstart=,args="
+      }
+    ]
+  },
+  "primaryInitial": {
+    "sampled": 1793839442.83418,
+    "peaks": {
+      "whole": 13905388247,
+      "growth": 3957744,
+      "temporary": 0,
+      "durable": 23589,
+      "files": 61452,
+      "processes": 1,
+      "rss": 223051776
+    },
+    "globalState": {
+      "metadataAsOf": "2026-11-05T00:43:52.950451+00:00",
+      "members": [
+        {
+          "cohort": "PI12PreWorld",
+          "kind": "source",
+          "pids": [
+            70924,
+            71024
+          ],
+          "processCap": 24,
+          "rssCapBytes": 3221225472,
+          "remainingNewBytes": 33554432,
+          "state": "ACTUAL_ACCEPT"
+        }
+      ],
+      "unresolvedPids": [],
+      "workflows": 1,
+      "sources": 1,
+      "browsers": 0,
+      "targets": 0,
+      "distinctPids": [
+        70924,
+        71024
+      ],
+      "actualRSS": 225787904,
+      "chargedPIDs": 24,
+      "chargedRSS": 3221225472,
+      "otherUpper": 3221225472,
+      "processes": [
+        {
+          "pid": 70924,
+          "parent": 49590,
+          "group": 70924,
+          "rss": 223625216,
+          "birth": "Thu Nov 5 09:44:00 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B docs/mcr/evidence/parade-ink-pre-world-policy/lease.py --offer PI12-PREWORLD-SOURCE01-0035 --head a1c6959aab081ca8d3e8d6cbec055a27e71cfb03 --job focus --attempt source01focus --acceptance source01-acceptance.json --cutoff 1793839504 --release 1793839564 --whole 17179869184 --growth 33554432 --temporary 25165824 --durable 4194304 --files 90000 --processes 24 --rss 3221225472 --start-floor 11"
+        },
+        {
+          "pid": 71024,
+          "parent": 70924,
+          "group": 70924,
+          "rss": 2162688,
+          "birth": "Thu Nov 5 09:44:02 2026",
+          "command": "ps -axo pid=,ppid=,pgid=,rss=,lstart=,args="
+        }
+      ]
+    }
+  },
+  "startFree": 15379673088,
+  "otherWorstGrowth": 3221225472,
+  "startFloorGiB": 11,
+  "independentInitial": {
+    "sampled": 1793839443.1252859,
+    "values": {
+      "processes": 2,
+      "rss": 247414784,
+      "temporary": 0,
+      "whole": 13905392236,
+      "growth": 3961733,
+      "durable": 27578,
+      "files": 61453
+    },
+    "free": 15379656704,
+    "globalState": {
+      "metadataAsOf": "2026-11-05T00:43:52.950451+00:00",
+      "members": [
+        {
+          "cohort": "PI12PreWorld",
+          "kind": "source",
+          "pids": [
+            70924,
+            71026,
+            71028
+          ],
+          "processCap": 24,
+          "rssCapBytes": 3221225472,
+          "remainingNewBytes": 33554432,
+          "state": "ACTUAL_ACCEPT"
+        }
+      ],
+      "unresolvedPids": [],
+      "workflows": 1,
+      "sources": 1,
+      "browsers": 0,
+      "targets": 0,
+      "distinctPids": [
+        70924,
+        71026,
+        71028
+      ],
+      "actualRSS": 250249216,
+      "chargedPIDs": 24,
+      "chargedRSS": 3221225472,
+      "otherUpper": 3221225472,
+      "processes": [
+        {
+          "pid": 70924,
+          "parent": 49590,
+          "group": 70924,
+          "rss": 223952896,
+          "birth": "Thu Nov 5 09:44:00 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B docs/mcr/evidence/parade-ink-pre-world-policy/lease.py --offer PI12-PREWORLD-SOURCE01-0035 --head a1c6959aab081ca8d3e8d6cbec055a27e71cfb03 --job focus --attempt source01focus --acceptance source01-acceptance.json --cutoff 1793839504 --release 1793839564 --whole 17179869184 --growth 33554432 --temporary 25165824 --durable 4194304 --files 90000 --processes 24 --rss 3221225472 --start-floor 11"
+        },
+        {
+          "pid": 71026,
+          "parent": 70924,
+          "group": 70924,
+          "rss": 24133632,
+          "birth": "Thu Nov 5 09:44:02 2026",
+          "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/guardian.py /Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/source01focus-guardian-config.json"
+        },
+        {
+          "pid": 71028,
+          "parent": 71026,
+          "group": 70924,
+          "rss": 2162688,
+          "birth": "Thu Nov 5 09:44:03 2026",
+          "command": "ps -axo pid=,ppid=,pgid=,rss=,lstart=,args="
+        }
+      ]
+    }
+  },
+  "finished": 1793839445.2504,
+  "childrenRemaining": [],
+  "linkAbsent": true,
+  "scratchAbsent": true,
+  "freeAfter": 15378624512,
+  "releasedBeforeDeadline": true
+}

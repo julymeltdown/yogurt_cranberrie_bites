@@ -1,0 +1,122 @@
+{
+  "recordedAt": 1793849103.438232,
+  "taskStatus": "INTEGRATED",
+  "completionClaim": false,
+  "scope": "Root-granted PI12 pre-World S02/S03 presentation subset only; original FE41 stays closed/canonical6b6",
+  "sourceBase": "8b47e0e40e8182d2401565fbb079533efffb41e7",
+  "productDriverSource": "8ebf0773c40c3da84ce5fc420b0cceea928689ce",
+  "evidenceReadThisTurn": [
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source01guardB.log",
+      "sha256": "aa5ffda9961aca3ed74a97d7bf02872336ce30c123a697d79199659d0e11bc0d"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source01focus.log",
+      "sha256": "741c255bf21a96d56701952619c694620ef7181af4f31106c39f40736f7f43cb"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source06.json",
+      "sha256": "f99ffc9a84e2e7264d09155c8a9a06025efa60ebe78213799c9ea557212de0a8"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/source07.json",
+      "sha256": "73e80f27e8e51ffd4a0d623b23cfe095998329ae13b31e711a99df47f599ba57"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/native03-FULL.json",
+      "sha256": "4adc4f9da2367e011cacb0a01b8e3cb27c6300575df97a3ced687236b5f99efa"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-pre-world-policy/publication-source-checkpoint.json",
+      "sha256": "ca81e5cc8b69e55d0664de128d7cde16cfa178c8ebb2ed37d1757e627f2ca7cf"
+    }
+  ],
+  "requirements": [
+    {
+      "requirement": "Exact assigned paths; unchanged bootstrap predicates/hooks/ready/downstream, status/reason/copy/actions, policy/minimum-version logic, pure presentation/single tokens/no left bars",
+      "sourceEvidence": "source01guardB.log: six groups PASS",
+      "remaining": "None within assigned leaf; retain qualified source/native/visual evidence without replay.",
+      "status": "INTEGRATED"
+    },
+    {
+      "requirement": "Stable heading association across rerenders, distinct concurrent labels, native action focus/disabled/home semantics",
+      "sourceEvidence": "source01focus.log: three cases PASS",
+      "remaining": "None within assigned leaf; retain qualified source/native/visual evidence without replay.",
+      "status": "INTEGRATED"
+    },
+    {
+      "requirement": "Scoped application/test lint and ordinary full strict nonincremental project types",
+      "sourceEvidence": "source06.json lint0 and syntax0; source07.json types0",
+      "remaining": "None within assigned leaf; retain qualified source/native/visual evidence without replay.",
+      "status": "INTEGRATED"
+    },
+    {
+      "requirement": "Consume final actual PI01 pi01-photo2-v1 producer inputs without token/font fork or shared writes",
+      "sourceEvidence": "native13-disposition.json + native13-browser/report.json + native13-owner-visual-notes.md",
+      "remaining": "None within assigned leaf; retain qualified source/native/visual evidence without replay.",
+      "status": "INTEGRATED"
+    },
+    {
+      "requirement": "360/390/430px actual default-App ten-state matrix including policy/bootstrap pending, maintenance, minimum version, unavailable/404/401/403/410/429",
+      "status": "INTEGRATED",
+      "expectedEvidence": "30 original width-state captures and measured frame/type/control/no-overflow/no-early-World checks; three401 captures are unchanged owner83 boundary compatibility only",
+      "remaining": "None within assigned leaf; retain qualified source/native/visual evidence without replay.",
+      "sourceEvidence": "native13-disposition.json + native13-browser/report.json + native13-owner-visual-notes.md"
+    },
+    {
+      "requirement": "390x380 short-height minimum-version/throttled; policy expiry without automatic refetch; native keyboard reload/retry/focus and reachable short-height action",
+      "status": "INTEGRATED",
+      "expectedEvidence": "Two short-height, three expiry, two focus captures plus interaction assertions; total37 captures,34 owned-frame and3 external-boundary",
+      "remaining": "None within assigned leaf; retain qualified source/native/visual evidence without replay.",
+      "sourceEvidence": "native13-disposition.json + native13-browser/report.json + native13-owner-visual-notes.md"
+    },
+    {
+      "requirement": "Developer visual comparison of actual new PNGs against preserved Photo2 and fixed PI01 regions; necessary corrections and relevant reruns",
+      "status": "INTEGRATED",
+      "expectedEvidence": "Owner inspection of360/390/430/short-height/focus actual artifacts; no claim of pictured-screen pixel identity for unpictured pre-World adaptation",
+      "sourceEvidence": "native13-disposition.json + native13-browser/report.json + native13-owner-visual-notes.md",
+      "remaining": "None within assigned leaf; retain qualified source/native/visual evidence without replay."
+    },
+    {
+      "requirement": "Changed literal-history decoder positive exact identity and unsafe-receipt rejection",
+      "status": "INTEGRATED",
+      "expectedEvidence": "receipt-path-regression.py six cases inside fresh accepted native lease before browser; ordinary authoring does not qualify it",
+      "sourceEvidence": "Native05 actual decoder exit0, six adversarial cases PASS; exact owner/offer closure and five unsafe receipts rejected",
+      "remaining": "None within assigned leaf; retain qualified source/native/visual evidence without replay."
+    },
+    {
+      "requirement": "Finite allocated runtime, actual discoverable controller/guards, dual complete LIVE samples, cumulative caps, literal cleanup/release",
+      "sourceEvidence": "native13-disposition.json + native13-browser/report.json + native13-owner-visual-notes.md",
+      "remaining": "None within assigned leaf; retain qualified source/native/visual evidence without replay.",
+      "status": "INTEGRATED"
+    },
+    {
+      "requirement": "Concise final docs/evidence, scoped committed validated handoff to412e and actual canonical publication",
+      "status": "IN_PROGRESS",
+      "sourceEvidence": "Committed implementation and raw/source evidence; publication-source-checkpoint is explicitly not a final handoff",
+      "remaining": "Committed final handoff and one actual412e canonical publishing receipt; no manager review gate."
+    },
+    {
+      "requirement": "Exact completed source-controller finisher PID/birth/script/offer/FULL cleanup role without descendant exemption; actual private Chrome crashpad ownership",
+      "status": "INTEGRATED",
+      "sourceEvidence": "Native09 five cases exit0, driverLint0, actual Chrome156 handler48745 database=/private/tmp/mcr-pi12-preworld-native09/crashpad, durable checkpoint; actual overall native remains failed",
+      "remaining": "None within assigned leaf; retain qualified source/native/visual evidence without replay."
+    }
+  ],
+  "limits": [
+    "No wholePI12/IN/IA closure",
+    "No generic route/in-World/operator/reports ownership",
+    "No live catalog/server/device/multiuser/load acceptance",
+    "No static screenshot substituted for UI",
+    "No king/SL technical review or ACK gate"
+  ],
+  "latestNativeAttempt": "native13-disposition.json",
+  "latestDriverSource": "e6a852f8950ebe339989c47514336b98ddf4bc9c",
+  "actualSourceAndControlQualification": "Six preservation groups,threeframecases,fullordinarytypes,originalscopedlint; Native05sixdecoder; Native09fivefinishercases+changeddriverlint0; no replay",
+  "nativeDisposition": "PASS:35completecases/37captures/dualguardPASS/all0; all37PNGs visually inspected, no material assigned-region defects",
+  "resourceState": "Actual FULL/all0, no hold. Only committed direct412e canonical publication receipt remains.",
+  "remainingRequired": [
+    "Final committed direct412e publishing handoff",
+    "Actual canonical publication receipt/currentcomposition validation"
+  ]
+}

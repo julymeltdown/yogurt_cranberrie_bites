@@ -1,0 +1,1184 @@
+{
+  "observedAt": 1793845151.829204,
+  "responsibleOwner": "01a1a230-6acc-7e82-9e4b-92506decc745",
+  "source": "b69640b5bf551e90246d035d3273d5481adb5ec8",
+  "controls": [
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/supervise-allocated.py",
+      "commit": "b69640b5bf551e90246d035d3273d5481adb5ec8",
+      "bytes": 17896,
+      "sha256": "61cefe7b81ef0bac9869e62af4f922a0c839df7672007d6ac7665a79fe7aff60"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/run-allocated.py",
+      "commit": "b69640b5bf551e90246d035d3273d5481adb5ec8",
+      "bytes": 22663,
+      "sha256": "a6442da1aa073629c08281c82e03aa0383b5cb8647e537fa033d0d180c4e3616"
+    }
+  ],
+  "receipts": [
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/source-03/bootstrap-accepted.json",
+      "commit": "71204892b0b3fc50dde880a0995ab18258315a2e",
+      "bytes": 1327,
+      "sha256": "5df15e6d705fcb22c2618e15b5b2c50741d8e1a0db433792c4a3d5bbe791a02b",
+      "receipt": {
+        "ownerThreadId": "01a1a230-6acc-7e82-9e4b-92506decc745",
+        "offerId": "PARTPREVIEW-SOURCE03-0215",
+        "state": "ACCEPTED",
+        "acceptedAtEpoch": 1793845045.147944,
+        "workDeadlineEpoch": 1793845405.147944,
+        "fullDeadlineEpoch": 1793845465.147944,
+        "kind": "source",
+        "processCap": 8,
+        "rssCapBytes": 3221225472,
+        "remainingNewUpperBytes": 5009408,
+        "controller": {
+          "pid": 79616,
+          "birth": "Thu Nov  5 11:17:25 2026",
+          "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+          "script": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/parade-ink-part-preview/supervise-allocated.py",
+          "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts",
+          "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/parade-ink-part-preview/runs/source-03"
+        },
+        "guardControllers": [],
+        "receiptPaths": {
+          "accept": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/parade-ink-part-preview/runs/source-03/bootstrap-accepted.json",
+          "full": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/parade-ink-part-preview/runs/source-03/outer-release.json"
+        },
+        "publishedAtEpoch": 1793845045.323731,
+        "stage": "Actual outer Python, before expensive carry census and before primary launch"
+      }
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/source-03/primary-bootstrap-accepted.json",
+      "commit": "71204892b0b3fc50dde880a0995ab18258315a2e",
+      "bytes": 1834,
+      "sha256": "fd30e2f06aff7d65e4043cf40961b0b6c642b7bacd7706ab4e2d57acca53ffd0",
+      "receipt": {
+        "ownerThreadId": "01a1a230-6acc-7e82-9e4b-92506decc745",
+        "offerId": "PARTPREVIEW-SOURCE03-0215",
+        "state": "ACCEPTED",
+        "acceptedAtEpoch": 1793845045.147944,
+        "workDeadlineEpoch": 1793845405.147944,
+        "fullDeadlineEpoch": 1793845465.147944,
+        "kind": "source",
+        "processCap": 8,
+        "rssCapBytes": 3221225472,
+        "remainingNewUpperBytes": 5009408,
+        "controller": {
+          "pid": 79767,
+          "birth": "Thu Nov  5 11:17:26 2026",
+          "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+          "script": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/parade-ink-part-preview/run-allocated.py",
+          "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts",
+          "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/parade-ink-part-preview/runs/source-03"
+        },
+        "guardControllers": [
+          {
+            "pid": 79616,
+            "birth": "Thu Nov  5 11:17:25 2026",
+            "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+            "script": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/parade-ink-part-preview/supervise-allocated.py",
+            "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts",
+            "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/parade-ink-part-preview/runs/source-03"
+          }
+        ],
+        "receiptPaths": {
+          "accept": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/parade-ink-part-preview/runs/source-03/primary-bootstrap-accepted.json",
+          "full": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/parade-ink-part-preview/runs/source-03/release.json"
+        },
+        "publishedAtEpoch": 1793845046.7220569,
+        "stage": "Actual primary and outer Python before expensive carry census, no workload"
+      }
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/source-03/accepted.json",
+      "commit": "71204892b0b3fc50dde880a0995ab18258315a2e",
+      "bytes": 11171,
+      "sha256": "d4ac2045e022088ca063a0bfe6d53c11ff58ff99f9111195fbf8dfebeecfa448",
+      "receipt": {
+        "allocation": "PARTPREVIEW-SOURCE03-0215",
+        "state": "ACTUAL_ACCEPT_LIVE",
+        "class": "source",
+        "root": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts",
+        "candidate": "b69640b5bf551e90246d035d3273d5481adb5ec8",
+        "acceptedUtc": "2026-11-05T02:17:25.147944+00:00",
+        "workUtc": "2026-11-05T02:23:25.147944+00:00",
+        "hardUtc": "2026-11-05T02:24:25.147944+00:00",
+        "caps": {
+          "wholeBytes": 8589934592,
+          "newBytes": 134217728,
+          "temporaryBytes": 100663296,
+          "durableBytes": 33554432,
+          "rssBytes": 3221225472,
+          "processes": 8
+        },
+        "pids": [
+          79767,
+          79616
+        ],
+        "pidBirth": {
+          "79767": "Thu Nov  5 11:17:26 2026",
+          "79616": "Thu Nov  5 11:17:25 2026"
+        },
+        "initialSample": {
+          "utc": "2026-11-05T02:17:28.097822+00:00",
+          "pids": [
+            79767,
+            79616
+          ],
+          "wholeBytes": 5533209766,
+          "newBytes": 129228800,
+          "temporaryBytes": 20480,
+          "durableBytes": 339968,
+          "rssBytes": 184500224,
+          "processes": 2,
+          "freeBytes": 23948828672
+        },
+        "retained": {
+          "checkoutBytes": 1378791424,
+          "gitMetadataBytes": 2371584,
+          "readOnlyDependencyLogicalBytes": 408236853,
+          "readOnlyDependencyAllocatedBytes": 438317056,
+          "readOnlyDependencyChargeBytes": 438317056,
+          "readOnlyNodeRuntimeBytes": 122564432,
+          "readOnlyFoundation": {
+            "bytes": 0,
+            "postimages": []
+          },
+          "entirePythonPrefix": "/Library/Frameworks/Python.framework/Versions/3.14",
+          "entirePythonChargeBytes": 1045037056,
+          "readOnlyNodeSha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+          "readOnlyChromeLogicalBytes": 0,
+          "readOnlyChromeAllocatedBytes": 0,
+          "readOnlyChromeChargeBytes": 0,
+          "ownedSharedGitInventory": {
+            "bytes": 999153664,
+            "objectCount": 1282,
+            "inodes": [
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/03/7f60305c9dfd974893591655228b53eb02ed12",
+                "logicalBytes": 7587,
+                "allocatedBytes": 8192,
+                "chargeBytes": 8192
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/0f/2e68a7d4cf05929071c832d8406e3df5e116ed",
+                "logicalBytes": 196,
+                "allocatedBytes": 4096,
+                "chargeBytes": 4096
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/13/4a48992ec6e4e056d784c0696fa135a83f12d3",
+                "logicalBytes": 621,
+                "allocatedBytes": 4096,
+                "chargeBytes": 4096
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/25/44de761d631ea545c607e5560d7f97d26376fa",
+                "logicalBytes": 91,
+                "allocatedBytes": 4096,
+                "chargeBytes": 4096
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/26/8b35420c762adbdf1977236044b51165ce9c32",
+                "logicalBytes": 206,
+                "allocatedBytes": 4096,
+                "chargeBytes": 4096
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/38/c140b744aa9810685cc86b060884546f1e2777",
+                "logicalBytes": 195,
+                "allocatedBytes": 4096,
+                "chargeBytes": 4096
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/3b/94f611252a7ad3c87795f940ec0fb22cf86a17",
+                "logicalBytes": 2710,
+                "allocatedBytes": 4096,
+                "chargeBytes": 4096
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/48/d0cbe66eefe2321bf9719fcdab6fc9ccb921f5",
+                "logicalBytes": 163,
+                "allocatedBytes": 4096,
+                "chargeBytes": 4096
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/48/dcd80e34fd95a44117d5d4af48d7e1efaf651e",
+                "logicalBytes": 322,
+                "allocatedBytes": 4096,
+                "chargeBytes": 4096
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/51/c1b1992897ed0b11d362ad6d5243aedc50d442",
+                "logicalBytes": 622,
+                "allocatedBytes": 4096,
+                "chargeBytes": 4096
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/58/731c45af0fa31b9eabe5764b5b209f66aa03aa",
+                "logicalBytes": 403,
+                "allocatedBytes": 4096,
+                "chargeBytes": 4096
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/5a/6add51b375fd2d25061f5025539ce2ac34ed38",
+                "logicalBytes": 202,
+                "allocatedBytes": 4096,
+                "chargeBytes": 4096
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/5f/2e665840ffad25769c040c9ea72369e06d5037",
+                "logicalBytes": 612,
+                "allocatedBytes": 4096,
+                "chargeBytes": 4096
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/7d/2b3cbbb3be01711cddac3955a0749882922fba",
+                "logicalBytes": 320,
+                "allocatedBytes": 4096,
+                "chargeBytes": 4096
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/82/c963bc35d6cd8af5f89e8c0b6b05c99875facf",
+                "logicalBytes": 199,
+                "allocatedBytes": 4096,
+                "chargeBytes": 4096
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/84/59ba83257b42bec222e520095ac0e5e696812e",
+                "logicalBytes": 64,
+                "allocatedBytes": 4096,
+                "chargeBytes": 4096
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/87/4e7c79bd517cebff7288c0c15995af8095901f",
+                "logicalBytes": 134,
+                "allocatedBytes": 4096,
+                "chargeBytes": 4096
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/8b/d0934aee44a731e30d9b0747fd327656b3aa62",
+                "logicalBytes": 77,
+                "allocatedBytes": 4096,
+                "chargeBytes": 4096
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/96/a3c5cfc5be335a7d7ed7afd1f450f540818a8f",
+                "logicalBytes": 108,
+                "allocatedBytes": 4096,
+                "chargeBytes": 4096
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/98/3e03bb754c625ae9c0e2ad8d0441ed64fc0d58",
+                "logicalBytes": 6980,
+                "allocatedBytes": 8192,
+                "chargeBytes": 8192
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/98/a732e793665258033ef14290260688eeb1ee3a",
+                "logicalBytes": 4094,
+                "allocatedBytes": 4096,
+                "chargeBytes": 4096
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/a6/71ccfd67f03a6643382d259bc9ed515f9cf8d4",
+                "logicalBytes": 278,
+                "allocatedBytes": 4096,
+                "chargeBytes": 4096
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/aa/ca42425f0a6691ba0bb3b1910131f55e4c70fa",
+                "logicalBytes": 6979,
+                "allocatedBytes": 8192,
+                "chargeBytes": 8192
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/b0/a3a8b06420922e0c026e704a825bb3f37abafa",
+                "logicalBytes": 5607,
+                "allocatedBytes": 8192,
+                "chargeBytes": 8192
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/b6/9640b5bf551e90246d035d3273d5481adb5ec8",
+                "logicalBytes": 205,
+                "allocatedBytes": 4096,
+                "chargeBytes": 4096
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/bb/f7b6dd21a1d023232b8899943215e00064c24e",
+                "logicalBytes": 7434,
+                "allocatedBytes": 8192,
+                "chargeBytes": 8192
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/bf/fc2b11161ae3448e9aa4b5ffcfa93b1a154d69",
+                "logicalBytes": 282,
+                "allocatedBytes": 4096,
+                "chargeBytes": 4096
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/d1/b863f5c0639803f4b2a09d3e086e17e3cdde35",
+                "logicalBytes": 108,
+                "allocatedBytes": 4096,
+                "chargeBytes": 4096
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/d8/9ec98ad4f982bf73ffe8d4bba363b5514c3686",
+                "logicalBytes": 294,
+                "allocatedBytes": 4096,
+                "chargeBytes": 4096
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/e5/8a8f4e4a87e64e67d993b1f889b3ea7e3d4ade",
+                "logicalBytes": 1712,
+                "allocatedBytes": 4096,
+                "chargeBytes": 4096
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/e9/08fc89c9bf162a0f8ff8cf1a7be842d40cce12",
+                "logicalBytes": 1711,
+                "allocatedBytes": 4096,
+                "chargeBytes": 4096
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/eb/a457d7237e52ea583d7f3653e4678051d10751",
+                "logicalBytes": 2179,
+                "allocatedBytes": 4096,
+                "chargeBytes": 4096
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-ab4854f60122605118991305ec7453424540f3b0.idx",
+                "logicalBytes": 1501452,
+                "allocatedBytes": 1503232,
+                "chargeBytes": 1503232
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-ab4854f60122605118991305ec7453424540f3b0.pack",
+                "logicalBytes": 856348041,
+                "allocatedBytes": 856350720,
+                "chargeBytes": 856350720
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-ab4854f60122605118991305ec7453424540f3b0.rev",
+                "logicalBytes": 214392,
+                "allocatedBytes": 217088,
+                "chargeBytes": 217088
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-d4d7e686e78fcd35069b39d7608f0c07f0c19c85.idx",
+                "logicalBytes": 732516,
+                "allocatedBytes": 733184,
+                "chargeBytes": 733184
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-d4d7e686e78fcd35069b39d7608f0c07f0c19c85.pack",
+                "logicalBytes": 104924051,
+                "allocatedBytes": 104927232,
+                "chargeBytes": 104927232
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-d4d7e686e78fcd35069b39d7608f0c07f0c19c85.rev",
+                "logicalBytes": 104544,
+                "allocatedBytes": 106496,
+                "chargeBytes": 106496
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-e8a90bcbcaa80be8a2d7b0093009c6d90068f0d6.idx",
+                "logicalBytes": 228936,
+                "allocatedBytes": 229376,
+                "chargeBytes": 229376
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-e8a90bcbcaa80be8a2d7b0093009c6d90068f0d6.pack",
+                "logicalBytes": 34898305,
+                "allocatedBytes": 34902016,
+                "chargeBytes": 34902016
+              },
+              {
+                "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-e8a90bcbcaa80be8a2d7b0093009c6d90068f0d6.rev",
+                "logicalBytes": 32604,
+                "allocatedBytes": 32768,
+                "chargeBytes": 32768
+              }
+            ]
+          },
+          "sharedGitCommonDirReadOnly": "/Users/lhs/Desktop/mcr/.git",
+          "copiedGitCarryBytes": 0
+        },
+        "executables": {
+          "79767": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+          "79616": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+        }
+      }
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-part-preview/runs/source-03/outer-release.json",
+      "commit": "71204892b0b3fc50dde880a0995ab18258315a2e",
+      "bytes": 20127,
+      "sha256": "32af51555433af8e5c6069582909fbdc9f0091815da423765f93a1fd1e81e286",
+      "receipt": {
+        "allocation": "PARTPREVIEW-SOURCE03-0215",
+        "outerPid": 79616,
+        "pins": {
+          "run-allocated.py": "a6442da1aa073629c08281c82e03aa0383b5cb8647e537fa033d0d180c4e3616",
+          "supervise-allocated.py": "61cefe7b81ef0bac9869e62af4f922a0c839df7672007d6ac7665a79fe7aff60",
+          "git_carry.py": "f157383a9332141c2f335f1cda6514e13f15a6dadc13f2545f7f517dde7a5bea",
+          "membership.py": "7e9b14c3730b243fed7b403e2ccfbe455208f6e5c40124ad854c9d2f27cf7eee"
+        },
+        "readOnlyFoundation": {
+          "bytes": 0,
+          "postimages": []
+        },
+        "standingUtc": "2026-11-05T02:17:26.473170+00:00",
+        "carryBytes": 5533209766,
+        "entirePythonPrefix": "/Library/Frameworks/Python.framework/Versions/3.14",
+        "entirePythonChargeBytes": 1061352790,
+        "ownedSharedGitInventory": {
+          "bytes": 999153664,
+          "objectCount": 1282,
+          "inodes": [
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/03/7f60305c9dfd974893591655228b53eb02ed12",
+              "logicalBytes": 7587,
+              "allocatedBytes": 8192,
+              "chargeBytes": 8192
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/0f/2e68a7d4cf05929071c832d8406e3df5e116ed",
+              "logicalBytes": 196,
+              "allocatedBytes": 4096,
+              "chargeBytes": 4096
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/13/4a48992ec6e4e056d784c0696fa135a83f12d3",
+              "logicalBytes": 621,
+              "allocatedBytes": 4096,
+              "chargeBytes": 4096
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/25/44de761d631ea545c607e5560d7f97d26376fa",
+              "logicalBytes": 91,
+              "allocatedBytes": 4096,
+              "chargeBytes": 4096
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/26/8b35420c762adbdf1977236044b51165ce9c32",
+              "logicalBytes": 206,
+              "allocatedBytes": 4096,
+              "chargeBytes": 4096
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/38/c140b744aa9810685cc86b060884546f1e2777",
+              "logicalBytes": 195,
+              "allocatedBytes": 4096,
+              "chargeBytes": 4096
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/3b/94f611252a7ad3c87795f940ec0fb22cf86a17",
+              "logicalBytes": 2710,
+              "allocatedBytes": 4096,
+              "chargeBytes": 4096
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/48/d0cbe66eefe2321bf9719fcdab6fc9ccb921f5",
+              "logicalBytes": 163,
+              "allocatedBytes": 4096,
+              "chargeBytes": 4096
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/48/dcd80e34fd95a44117d5d4af48d7e1efaf651e",
+              "logicalBytes": 322,
+              "allocatedBytes": 4096,
+              "chargeBytes": 4096
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/51/c1b1992897ed0b11d362ad6d5243aedc50d442",
+              "logicalBytes": 622,
+              "allocatedBytes": 4096,
+              "chargeBytes": 4096
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/58/731c45af0fa31b9eabe5764b5b209f66aa03aa",
+              "logicalBytes": 403,
+              "allocatedBytes": 4096,
+              "chargeBytes": 4096
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/5a/6add51b375fd2d25061f5025539ce2ac34ed38",
+              "logicalBytes": 202,
+              "allocatedBytes": 4096,
+              "chargeBytes": 4096
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/5f/2e665840ffad25769c040c9ea72369e06d5037",
+              "logicalBytes": 612,
+              "allocatedBytes": 4096,
+              "chargeBytes": 4096
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/7d/2b3cbbb3be01711cddac3955a0749882922fba",
+              "logicalBytes": 320,
+              "allocatedBytes": 4096,
+              "chargeBytes": 4096
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/82/c963bc35d6cd8af5f89e8c0b6b05c99875facf",
+              "logicalBytes": 199,
+              "allocatedBytes": 4096,
+              "chargeBytes": 4096
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/84/59ba83257b42bec222e520095ac0e5e696812e",
+              "logicalBytes": 64,
+              "allocatedBytes": 4096,
+              "chargeBytes": 4096
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/87/4e7c79bd517cebff7288c0c15995af8095901f",
+              "logicalBytes": 134,
+              "allocatedBytes": 4096,
+              "chargeBytes": 4096
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/8b/d0934aee44a731e30d9b0747fd327656b3aa62",
+              "logicalBytes": 77,
+              "allocatedBytes": 4096,
+              "chargeBytes": 4096
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/96/a3c5cfc5be335a7d7ed7afd1f450f540818a8f",
+              "logicalBytes": 108,
+              "allocatedBytes": 4096,
+              "chargeBytes": 4096
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/98/3e03bb754c625ae9c0e2ad8d0441ed64fc0d58",
+              "logicalBytes": 6980,
+              "allocatedBytes": 8192,
+              "chargeBytes": 8192
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/98/a732e793665258033ef14290260688eeb1ee3a",
+              "logicalBytes": 4094,
+              "allocatedBytes": 4096,
+              "chargeBytes": 4096
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/a6/71ccfd67f03a6643382d259bc9ed515f9cf8d4",
+              "logicalBytes": 278,
+              "allocatedBytes": 4096,
+              "chargeBytes": 4096
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/aa/ca42425f0a6691ba0bb3b1910131f55e4c70fa",
+              "logicalBytes": 6979,
+              "allocatedBytes": 8192,
+              "chargeBytes": 8192
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/b0/a3a8b06420922e0c026e704a825bb3f37abafa",
+              "logicalBytes": 5607,
+              "allocatedBytes": 8192,
+              "chargeBytes": 8192
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/b6/9640b5bf551e90246d035d3273d5481adb5ec8",
+              "logicalBytes": 205,
+              "allocatedBytes": 4096,
+              "chargeBytes": 4096
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/bb/f7b6dd21a1d023232b8899943215e00064c24e",
+              "logicalBytes": 7434,
+              "allocatedBytes": 8192,
+              "chargeBytes": 8192
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/bf/fc2b11161ae3448e9aa4b5ffcfa93b1a154d69",
+              "logicalBytes": 282,
+              "allocatedBytes": 4096,
+              "chargeBytes": 4096
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/d1/b863f5c0639803f4b2a09d3e086e17e3cdde35",
+              "logicalBytes": 108,
+              "allocatedBytes": 4096,
+              "chargeBytes": 4096
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/d8/9ec98ad4f982bf73ffe8d4bba363b5514c3686",
+              "logicalBytes": 294,
+              "allocatedBytes": 4096,
+              "chargeBytes": 4096
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/e5/8a8f4e4a87e64e67d993b1f889b3ea7e3d4ade",
+              "logicalBytes": 1712,
+              "allocatedBytes": 4096,
+              "chargeBytes": 4096
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/e9/08fc89c9bf162a0f8ff8cf1a7be842d40cce12",
+              "logicalBytes": 1711,
+              "allocatedBytes": 4096,
+              "chargeBytes": 4096
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/eb/a457d7237e52ea583d7f3653e4678051d10751",
+              "logicalBytes": 2179,
+              "allocatedBytes": 4096,
+              "chargeBytes": 4096
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-ab4854f60122605118991305ec7453424540f3b0.idx",
+              "logicalBytes": 1501452,
+              "allocatedBytes": 1503232,
+              "chargeBytes": 1503232
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-ab4854f60122605118991305ec7453424540f3b0.pack",
+              "logicalBytes": 856348041,
+              "allocatedBytes": 856350720,
+              "chargeBytes": 856350720
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-ab4854f60122605118991305ec7453424540f3b0.rev",
+              "logicalBytes": 214392,
+              "allocatedBytes": 217088,
+              "chargeBytes": 217088
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-d4d7e686e78fcd35069b39d7608f0c07f0c19c85.idx",
+              "logicalBytes": 732516,
+              "allocatedBytes": 733184,
+              "chargeBytes": 733184
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-d4d7e686e78fcd35069b39d7608f0c07f0c19c85.pack",
+              "logicalBytes": 104924051,
+              "allocatedBytes": 104927232,
+              "chargeBytes": 104927232
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-d4d7e686e78fcd35069b39d7608f0c07f0c19c85.rev",
+              "logicalBytes": 104544,
+              "allocatedBytes": 106496,
+              "chargeBytes": 106496
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-e8a90bcbcaa80be8a2d7b0093009c6d90068f0d6.idx",
+              "logicalBytes": 228936,
+              "allocatedBytes": 229376,
+              "chargeBytes": 229376
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-e8a90bcbcaa80be8a2d7b0093009c6d90068f0d6.pack",
+              "logicalBytes": 34898305,
+              "allocatedBytes": 34902016,
+              "chargeBytes": 34902016
+            },
+            {
+              "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-e8a90bcbcaa80be8a2d7b0093009c6d90068f0d6.rev",
+              "logicalBytes": 32604,
+              "allocatedBytes": 32768,
+              "chargeBytes": 32768
+            }
+          ]
+        },
+        "samples": [
+          {
+            "utc": "2026-11-05T02:17:26.501192+00:00",
+            "pids": [
+              79616,
+              79761
+            ],
+            "processes": 2,
+            "rssBytes": 31752192,
+            "wholeBytes": 5533209766,
+            "newBytes": 129208320,
+            "temporaryBytes": 0,
+            "durableBytes": 335872,
+            "freeBytes": 23930920960
+          },
+          {
+            "utc": "2026-11-05T02:17:26.875340+00:00",
+            "pids": [
+              79616,
+              79767,
+              79781
+            ],
+            "processes": 3,
+            "rssBytes": 60784640,
+            "wholeBytes": 5533209766,
+            "newBytes": 129228800,
+            "temporaryBytes": 16384,
+            "durableBytes": 339968,
+            "freeBytes": 23930900480
+          },
+          {
+            "utc": "2026-11-05T02:17:27.555735+00:00",
+            "pids": [
+              79616,
+              79767,
+              79787,
+              79889
+            ],
+            "processes": 4,
+            "rssBytes": 63864832,
+            "wholeBytes": 5533209766,
+            "newBytes": 129228800,
+            "temporaryBytes": 16384,
+            "durableBytes": 339968,
+            "freeBytes": 23947415552
+          },
+          {
+            "utc": "2026-11-05T02:17:28.103462+00:00",
+            "pids": [
+              79616,
+              79767,
+              79982
+            ],
+            "processes": 3,
+            "rssBytes": 99778560,
+            "wholeBytes": 5533209766,
+            "newBytes": 129232896,
+            "temporaryBytes": 20480,
+            "durableBytes": 339968,
+            "freeBytes": 23948828672
+          },
+          {
+            "utc": "2026-11-05T02:17:28.676364+00:00",
+            "pids": [
+              79616,
+              79767,
+              80004,
+              80061
+            ],
+            "processes": 4,
+            "rssBytes": 329334784,
+            "wholeBytes": 5533209766,
+            "newBytes": 129269760,
+            "temporaryBytes": 24576,
+            "durableBytes": 372736,
+            "freeBytes": 23948804096
+          },
+          {
+            "utc": "2026-11-05T02:17:29.231806+00:00",
+            "pids": [
+              79616,
+              79767,
+              80004,
+              80087
+            ],
+            "processes": 4,
+            "rssBytes": 470319104,
+            "wholeBytes": 5533209766,
+            "newBytes": 129269760,
+            "temporaryBytes": 24576,
+            "durableBytes": 372736,
+            "freeBytes": 23947653120
+          },
+          {
+            "utc": "2026-11-05T02:17:29.755645+00:00",
+            "pids": [
+              79616,
+              79767,
+              80004,
+              80133
+            ],
+            "processes": 4,
+            "rssBytes": 525942784,
+            "wholeBytes": 5533209766,
+            "newBytes": 129269760,
+            "temporaryBytes": 24576,
+            "durableBytes": 372736,
+            "freeBytes": 23946964992
+          },
+          {
+            "utc": "2026-11-05T02:17:30.300398+00:00",
+            "pids": [
+              79616,
+              79767,
+              80158,
+              80204
+            ],
+            "processes": 4,
+            "rssBytes": 382091264,
+            "wholeBytes": 5533209766,
+            "newBytes": 129282048,
+            "temporaryBytes": 24576,
+            "durableBytes": 385024,
+            "freeBytes": 23946907648
+          },
+          {
+            "utc": "2026-11-05T02:17:30.891232+00:00",
+            "pids": [
+              79616,
+              79767,
+              80158,
+              80233,
+              80237
+            ],
+            "processes": 5,
+            "rssBytes": 642514944,
+            "wholeBytes": 5533209766,
+            "newBytes": 129282048,
+            "temporaryBytes": 24576,
+            "durableBytes": 385024,
+            "freeBytes": 23946895360
+          },
+          {
+            "utc": "2026-11-05T02:17:31.485719+00:00",
+            "pids": [
+              79616,
+              79767,
+              80158,
+              80263,
+              80267
+            ],
+            "processes": 5,
+            "rssBytes": 851918848,
+            "wholeBytes": 5533209766,
+            "newBytes": 129282048,
+            "temporaryBytes": 24576,
+            "durableBytes": 385024,
+            "freeBytes": 23946932224
+          },
+          {
+            "utc": "2026-11-05T02:17:32.056255+00:00",
+            "pids": [
+              79616,
+              79767,
+              80158,
+              80300
+            ],
+            "processes": 4,
+            "rssBytes": 1075740672,
+            "wholeBytes": 5533209766,
+            "newBytes": 129282048,
+            "temporaryBytes": 24576,
+            "durableBytes": 385024,
+            "freeBytes": 23942049792
+          },
+          {
+            "utc": "2026-11-05T02:17:32.650386+00:00",
+            "pids": [
+              79616,
+              79767,
+              80158,
+              80368,
+              80375
+            ],
+            "processes": 5,
+            "rssBytes": 1285963776,
+            "wholeBytes": 5533209766,
+            "newBytes": 129282048,
+            "temporaryBytes": 24576,
+            "durableBytes": 385024,
+            "freeBytes": 23952433152
+          },
+          {
+            "utc": "2026-11-05T02:17:33.237737+00:00",
+            "pids": [
+              79616,
+              79767,
+              80158,
+              80470,
+              80471
+            ],
+            "processes": 5,
+            "rssBytes": 1378992128,
+            "wholeBytes": 5533209766,
+            "newBytes": 129282048,
+            "temporaryBytes": 24576,
+            "durableBytes": 385024,
+            "freeBytes": 23952367616
+          },
+          {
+            "utc": "2026-11-05T02:17:33.952816+00:00",
+            "pids": [
+              79616,
+              79767,
+              80158,
+              80532,
+              80533
+            ],
+            "processes": 5,
+            "rssBytes": 1474838528,
+            "wholeBytes": 5533209766,
+            "newBytes": 129282048,
+            "temporaryBytes": 24576,
+            "durableBytes": 385024,
+            "freeBytes": 23944970240
+          },
+          {
+            "utc": "2026-11-05T02:17:34.523309+00:00",
+            "pids": [
+              79616,
+              79767,
+              80158,
+              80635,
+              80636
+            ],
+            "processes": 5,
+            "rssBytes": 1532805120,
+            "wholeBytes": 5533209766,
+            "newBytes": 129282048,
+            "temporaryBytes": 24576,
+            "durableBytes": 385024,
+            "freeBytes": 23946842112
+          },
+          {
+            "utc": "2026-11-05T02:17:35.086202+00:00",
+            "pids": [
+              79616,
+              79767,
+              80158,
+              80723,
+              80724
+            ],
+            "processes": 5,
+            "rssBytes": 1573535744,
+            "wholeBytes": 5533209766,
+            "newBytes": 129282048,
+            "temporaryBytes": 24576,
+            "durableBytes": 385024,
+            "freeBytes": 23939100672
+          },
+          {
+            "utc": "2026-11-05T02:17:35.685055+00:00",
+            "pids": [
+              79616,
+              79767,
+              80158,
+              81058,
+              81061
+            ],
+            "processes": 5,
+            "rssBytes": 1597833216,
+            "wholeBytes": 5533209766,
+            "newBytes": 129282048,
+            "temporaryBytes": 24576,
+            "durableBytes": 385024,
+            "freeBytes": 23932985344
+          },
+          {
+            "utc": "2026-11-05T02:17:36.269135+00:00",
+            "pids": [
+              79616,
+              79767,
+              80158,
+              81099,
+              81100
+            ],
+            "processes": 5,
+            "rssBytes": 1627455488,
+            "wholeBytes": 5533209766,
+            "newBytes": 129282048,
+            "temporaryBytes": 24576,
+            "durableBytes": 385024,
+            "freeBytes": 23930011648
+          },
+          {
+            "utc": "2026-11-05T02:17:36.873921+00:00",
+            "pids": [
+              79616,
+              79767,
+              80158,
+              81151
+            ],
+            "processes": 4,
+            "rssBytes": 1682849792,
+            "wholeBytes": 5533209766,
+            "newBytes": 129282048,
+            "temporaryBytes": 24576,
+            "durableBytes": 385024,
+            "freeBytes": 23922143232
+          },
+          {
+            "utc": "2026-11-05T02:17:37.659610+00:00",
+            "pids": [
+              79616,
+              79767,
+              80158,
+              81362,
+              81364
+            ],
+            "processes": 5,
+            "rssBytes": 1751662592,
+            "wholeBytes": 5533209766,
+            "newBytes": 129282048,
+            "temporaryBytes": 24576,
+            "durableBytes": 385024,
+            "freeBytes": 23932280832
+          },
+          {
+            "utc": "2026-11-05T02:17:38.247315+00:00",
+            "pids": [
+              79616,
+              79767,
+              80158,
+              81480,
+              81481
+            ],
+            "processes": 5,
+            "rssBytes": 1874411520,
+            "wholeBytes": 5533209766,
+            "newBytes": 129282048,
+            "temporaryBytes": 24576,
+            "durableBytes": 385024,
+            "freeBytes": 23940411392
+          },
+          {
+            "utc": "2026-11-05T02:17:38.864582+00:00",
+            "pids": [
+              79616,
+              79767,
+              80158,
+              81545,
+              81546
+            ],
+            "processes": 5,
+            "rssBytes": 1957265408,
+            "wholeBytes": 5533209766,
+            "newBytes": 129282048,
+            "temporaryBytes": 24576,
+            "durableBytes": 385024,
+            "freeBytes": 23938224128
+          },
+          {
+            "utc": "2026-11-05T02:17:39.531640+00:00",
+            "pids": [
+              79616,
+              79767,
+              80158,
+              81667,
+              81668
+            ],
+            "processes": 5,
+            "rssBytes": 2013036544,
+            "wholeBytes": 5533209766,
+            "newBytes": 129282048,
+            "temporaryBytes": 24576,
+            "durableBytes": 385024,
+            "freeBytes": 23941632000
+          },
+          {
+            "utc": "2026-11-05T02:17:40.110688+00:00",
+            "pids": [
+              79616,
+              79767,
+              80158,
+              81727,
+              81728
+            ],
+            "processes": 5,
+            "rssBytes": 2146729984,
+            "wholeBytes": 5533209766,
+            "newBytes": 129282048,
+            "temporaryBytes": 24576,
+            "durableBytes": 385024,
+            "freeBytes": 23935000576
+          },
+          {
+            "utc": "2026-11-05T02:17:40.666592+00:00",
+            "pids": [
+              79616,
+              79767,
+              80158,
+              81774,
+              81775
+            ],
+            "processes": 5,
+            "rssBytes": 193495040,
+            "wholeBytes": 5533209766,
+            "newBytes": 130646016,
+            "temporaryBytes": 1388544,
+            "durableBytes": 385024,
+            "freeBytes": 23929737216
+          },
+          {
+            "utc": "2026-11-05T02:17:41.212101+00:00",
+            "pids": [
+              79616,
+              79767,
+              81797,
+              81817,
+              81818
+            ],
+            "processes": 5,
+            "rssBytes": 194330624,
+            "wholeBytes": 5533209766,
+            "newBytes": 130646016,
+            "temporaryBytes": 1388544,
+            "durableBytes": 385024,
+            "freeBytes": 23929139200
+          },
+          {
+            "utc": "2026-11-05T02:17:41.773723+00:00",
+            "pids": [
+              79616,
+              79767,
+              81882
+            ],
+            "processes": 3,
+            "rssBytes": 35618816,
+            "wholeBytes": 5533209766,
+            "newBytes": 129318912,
+            "temporaryBytes": 40960,
+            "durableBytes": 405504,
+            "freeBytes": 23930630144
+          }
+        ],
+        "status": "PASS",
+        "initialSampleBeforePrimary": {
+          "utc": "2026-11-05T02:17:26.501192+00:00",
+          "pids": [
+            79616,
+            79761
+          ],
+          "processes": 2,
+          "rssBytes": 31752192,
+          "wholeBytes": 5533209766,
+          "newBytes": 129208320,
+          "temporaryBytes": 0,
+          "durableBytes": 335872,
+          "freeBytes": 23930920960
+        },
+        "initialGlobalCensus": {
+          "observedAtEpoch": 1793845046.577356,
+          "psSnapshotSHA256": "5005004a471f647223fc26523d1bbac237cae823c30c8f6f1c6678d72c558a68",
+          "owners": [
+            "01a1a20f-8d37-71c3-a429-8a55bb6d6c49",
+            "01a1a230-6acc-7e82-9e4b-92506decc745"
+          ],
+          "ordinaryActualPids": [
+            79660
+          ],
+          "reservedProcesses": 32,
+          "reservedRSSBytes": 9663676416,
+          "actualPids": [
+            78709,
+            78789,
+            79616,
+            79660,
+            79766
+          ],
+          "actualRSSBytes": 372719616,
+          "otherNewUpperBytes": 3758096384
+        },
+        "exitCode": 0,
+        "remainingBeforeFinalReap": [],
+        "remainingProcesses": [],
+        "fullUtc": "2026-11-05T02:17:42.093908+00:00",
+        "outerTemporaryAbsent": true,
+        "finishedBeforeHardDeadline": true,
+        "freeAfterBytes": 23929905152
+      }
+    }
+  ],
+  "ownerDisposition": "Source03-0215 actually exercised both bootstrap-before-canonical-pointer stages PASS; actual FULL2026-11-05T02:17:42.093908Z/all0. Consume resource prerequisite only, no application review or generalized qualification."
+}

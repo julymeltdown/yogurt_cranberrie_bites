@@ -1,0 +1,141 @@
+{
+  "offer": "PI12-PREWORLD-SOURCE01-0035",
+  "state": "ACTUAL_PARTIAL_FULL",
+  "accepted": 1793839324.4544158,
+  "fixedWorkDeadline": 1793839504,
+  "fixedFullDeadline": 1793839564,
+  "actualFull": 1793839523.7412832,
+  "head": "fd3ea7c1a24f6f60d7ffc5d3502fc16aae762e4d",
+  "children": 0,
+  "link": 0,
+  "temporary": 0,
+  "remainingReservations": 0,
+  "phases": [
+    {
+      "name": "source01guard",
+      "job": "guard",
+      "exitCode": null,
+      "guardFailure": "('unresolved workflow claims', [55970])",
+      "finished": 1793839335.729604,
+      "peaks": {
+        "whole": 13901485661,
+        "growth": 55158,
+        "temporary": 0,
+        "durable": 2556,
+        "files": 61240,
+        "processes": 1,
+        "rss": 223182848
+      },
+      "minFree": 9223372036854775807
+    },
+    {
+      "name": "source01guardB",
+      "job": "guard",
+      "exitCode": 0,
+      "guardFailure": null,
+      "finished": 1793839423.525644,
+      "peaks": {
+        "whole": 13905340687,
+        "growth": 3910184,
+        "temporary": 0,
+        "durable": 10438,
+        "files": 61430,
+        "processes": 4,
+        "rss": 253755392
+      },
+      "minFree": 15379673088
+    },
+    {
+      "name": "source01focus",
+      "job": "focus",
+      "exitCode": 0,
+      "guardFailure": null,
+      "finished": 1793839445.2504,
+      "peaks": {
+        "whole": 13905394383,
+        "growth": 3963880,
+        "temporary": 0,
+        "durable": 29725,
+        "files": 61455,
+        "processes": 5,
+        "rss": 509231104
+      },
+      "minFree": 15379599360
+    },
+    {
+      "name": "source01types",
+      "job": "types",
+      "exitCode": 2,
+      "guardFailure": null,
+      "finished": 1793839458.075525,
+      "peaks": {
+        "whole": 13906844454,
+        "growth": 5413951,
+        "temporary": 1362660,
+        "durable": 49300,
+        "files": 61501,
+        "processes": 4,
+        "rss": 2190065664
+      },
+      "minFree": 15375331328
+    }
+  ],
+  "independent": [
+    {
+      "name": "source01guardB",
+      "peaks": {
+        "processes": 2,
+        "rss": 250576896,
+        "temporary": 0,
+        "whole": 13905340704,
+        "growth": 3910201,
+        "durable": 10455,
+        "files": 61431
+      }
+    },
+    {
+      "name": "source01focus",
+      "peaks": {
+        "processes": 4,
+        "rss": 504872960,
+        "temporary": 0,
+        "whole": 13905407525,
+        "growth": 3977022,
+        "durable": 29743,
+        "files": 61456
+      }
+    },
+    {
+      "name": "source01types",
+      "peaks": {
+        "processes": 4,
+        "rss": 2199306240,
+        "temporary": 1362660,
+        "whole": 13906844471,
+        "growth": 5413968,
+        "durable": 49317,
+        "files": 61502
+      }
+    }
+  ],
+  "peak": {
+    "whole": 13906844454,
+    "growth": 5413951,
+    "temporary": 1362660,
+    "durable": 49300,
+    "files": 61501,
+    "processes": 5,
+    "rss": 2190065664
+  },
+  "free": 15280791552,
+  "results": {
+    "scopeGuard6": "PASS",
+    "newFocus3": "PASS",
+    "fullTypes": "FAIL_TS2307_zod_resolution_TS7006",
+    "fullTypesCorrectedBaseUrl": "NOT_RUN_FIXED_WINDOW_EXHAUSTED",
+    "ownedDenyLint": "NOT_RUN",
+    "nativeSyntax": "NOT_RUN"
+  },
+  "fix": "fd3ea7c1a24f6f60d7ffc5d3502fc16aae762e4d types-command baseUrl retained frontend/node_modules; no product source change",
+  "next": "fresh distinct finite offer for corrected full types, lint, native driver syntax; no old tests replay"
+}

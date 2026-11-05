@@ -1,0 +1,43 @@
+{
+  "observed": 1793841537.6962812,
+  "publishedRecordPath": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a230-6acc-7e82-9e4b-92506decc745.json",
+  "record": {
+    "ownerThreadId": "01a1a230-6acc-7e82-9e4b-92506decc745",
+    "offerId": "ORIGINAL-FE37-DEFAULT-APP-NATIVE03-0110",
+    "state": "FULL",
+    "acceptedAtEpoch": 1793841143.082609,
+    "workDeadlineEpoch": 1793841323.082609,
+    "fullDeadlineEpoch": 1793841383.082609,
+    "kind": "browser",
+    "processCap": 32,
+    "rssCapBytes": 4294967296,
+    "remainingNewUpperBytes": 0,
+    "controller": {
+      "pid": 48444,
+      "birth": "Thu Nov  5 10:12:24 2026",
+      "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+      "script": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/fe37-default-member-content/run-allocated.py",
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts",
+      "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/fe37-default-member-content/runs/native-03"
+    },
+    "guardControllers": [
+      {
+        "pid": 47833,
+        "birth": "Thu Nov  5 10:12:22 2026",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+        "script": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/fe37-default-member-content/supervise-allocated.py",
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts",
+        "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/fe37-default-member-content/runs/native-03"
+      }
+    ],
+    "receiptPaths": {
+      "accept": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/fe37-default-member-content/runs/native-03/accepted.json",
+      "full": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/fe37-default-member-content/runs/native-03/release.json",
+      "outerFull": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/docs/mcr/evidence/fe37-default-member-content/runs/native-03/outer-release.json"
+    },
+    "publishedAtEpoch": 1793841158.800907,
+    "actualFullEpoch": 1793841158.800446,
+    "resources": 0
+  },
+  "fullPathExists": false
+}

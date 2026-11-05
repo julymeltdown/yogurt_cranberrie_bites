@@ -1,0 +1,201 @@
+{
+  "publishedBeforeInventoryAt": 1793847174.769346,
+  "guardPid": 60228,
+  "actualRegistration": {
+    "ownerThreadId": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+    "offerId": "PREWORLD-NATIVE07-0237",
+    "state": "ACCEPTED",
+    "publishedAtEpoch": 1793847174.7684631,
+    "acceptedAtEpoch": 1793847171.571899,
+    "workDeadlineEpoch": 1793847471.571899,
+    "fullDeadlineEpoch": 1793847531.571899,
+    "kind": "browser",
+    "processCap": 24,
+    "rssCapBytes": 3758096384,
+    "remainingNewUpperBytes": 268435456,
+    "controller": {
+      "pid": 60057,
+      "birth": "Thu Nov 5 11:52:51 2026",
+      "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+      "script": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/lease.py",
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2",
+      "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy",
+      "actualArgs": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/lease.py --offer PREWORLD-NATIVE07-0237 --head cc00b4f439bf38e256823dd44e37ef58c1f586f8 --job browser --attempt native07 --acceptance native07-acceptance.json --cutoff 0 --release 1 --whole 21474836480 --growth 268435456 --temporary 100663296 --durable 16777216 --files 90000 --processes 24 --rss 3758096384 --start-floor 12 --freeze native07-freeze.json --bootstrap-work 300 --bootstrap-full 360 --minimum-carry-bytes 19880000000 --retained-growth-bytes 205520896 --retain-decoder-pass"
+    },
+    "guardControllers": [
+      {
+        "pid": 60228,
+        "birth": "Thu Nov 5 11:52:54 2026",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+        "script": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/guardian.py",
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2",
+        "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy",
+        "actualArgs": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/guardian.py /Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/native07-guardian-config.json"
+      }
+    ],
+    "knownRootMatchers": [
+      "/private/tmp/mcr-pi12-preworld-native07"
+    ],
+    "receiptPaths": {
+      "accept": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/native07-bootstrap-acceptance.json",
+      "full": null
+    },
+    "closedReceipts": [
+      {
+        "ownerThreadId": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+        "offerId": "PI12-PREWORLD-SOURCE01-0035",
+        "acceptedAtEpoch": 1793839324.4544158,
+        "actualFullEpoch": 1793839523.7412832,
+        "originalDisposition": "ACTUAL_PARTIAL_FULL",
+        "resourcesReleased": true,
+        "fullPath": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/source01-FULL.json",
+        "fullSHA": "40c1233473cc266339362838b784d1036e2dd9555025249e7cd7e839a2ed9939"
+      },
+      {
+        "ownerThreadId": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+        "offerId": "PI12-PREWORLD-REMAINDER-SOURCE02-0048",
+        "acceptedAtEpoch": 1793840538.236363,
+        "actualFullEpoch": 1793840672.24317,
+        "originalDisposition": "ACTUAL_PARTIAL_FULL",
+        "resourcesReleased": true,
+        "fullPath": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/source02-FULL.json",
+        "fullSHA": "c558cf15958f54133aa9b7671611c1aa6d50bd6da8f38e31a0e899537c04ab5f"
+      },
+      {
+        "ownerThreadId": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+        "offerId": "PI12-PREWORLD-REMAINDER-SOURCE03-0110",
+        "acceptedAtEpoch": 1793841500.076382,
+        "actualFullEpoch": 1793841502.4827242,
+        "originalDisposition": "FULL",
+        "resourcesReleased": true,
+        "fullPath": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/source03-FULL.json",
+        "fullSHA": "7d97192b927b720f8f08fa43bb4c7be5878ac00c157e10389c2c90a3b5b5d716"
+      },
+      {
+        "ownerThreadId": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+        "offerId": "PI12-PREWORLD-REMAINDER-SOURCE04-0122",
+        "acceptedAtEpoch": 1793841790.946882,
+        "actualFullEpoch": 1793841794.259439,
+        "originalDisposition": "FULL",
+        "resourcesReleased": true,
+        "fullPath": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/source04-FULL.json",
+        "fullSHA": "dca3e92e88f33dbcba563aaf001b03de420aee332309dc15a139ba8a5ed5f730"
+      },
+      {
+        "ownerThreadId": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+        "offerId": "PI12-PREWORLD-REMAINDER-SOURCE05-0122",
+        "acceptedAtEpoch": 1793841869.033528,
+        "actualFullEpoch": 1793841873.891208,
+        "originalDisposition": "FULL",
+        "resourcesReleased": true,
+        "fullPath": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/source05-FULL.json",
+        "fullSHA": "12ed0a9824d72686a49aa5786306c43e63a28ad4976d92be67fc72f96aaa4c2b"
+      },
+      {
+        "ownerThreadId": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+        "offerId": "PI12-PREWORLD-REMAINDER-SOURCE06-0122",
+        "acceptedAtEpoch": 1793841921.31903,
+        "actualFullEpoch": 1793841927.2687979,
+        "originalDisposition": "FULL",
+        "resourcesReleased": true,
+        "fullPath": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/source06-FULL.json",
+        "fullSHA": "0ddda5108a95b3bdb4a0638a860c76b6021b9d8626d86f50b0fc5a6d6eaf2859"
+      },
+      {
+        "ownerThreadId": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+        "offerId": "PI12-PREWORLD-FULLTYPES-SOURCE07-0128",
+        "acceptedAtEpoch": 1793842154.415776,
+        "actualFullEpoch": 1793842169.1470752,
+        "originalDisposition": "FULL",
+        "resourcesReleased": true,
+        "fullPath": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/source07-FULL.json",
+        "fullSHA": "edc7cb7529736eaf5b5bf9f0a188d236be8ea8ac5ec18a490fd5faf96d26d359"
+      },
+      {
+        "ownerThreadId": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+        "offerId": "PI12-PREWORLD-APP-NATIVE01-0133",
+        "acceptedAtEpoch": 1793842591.517885,
+        "actualFullEpoch": 1793842595.145656,
+        "originalDisposition": "FULL",
+        "resourcesReleased": true,
+        "fullPath": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/native01-FULL.json",
+        "fullSHA": "a499b44b59fd271ad0392fef33660c7213b8c5ed91ecdb808b68ff88c1947040"
+      },
+      {
+        "ownerThreadId": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+        "offerId": "PI12-PREWORLD-APP-NATIVE02-0145",
+        "acceptedAtEpoch": 1793843661.641477,
+        "actualFullEpoch": 1793843665.774038,
+        "fullPath": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/native02-FULL.json",
+        "fullSHA256": "37bb5924daa6b6f1649e5c377992be4bdc48582b1b0d1a0561ec917c3bbf519d",
+        "resourcesReleased": true,
+        "resources": {
+          "children": 0,
+          "link": 0,
+          "temporary": 0,
+          "reservations": 0
+        }
+      },
+      {
+        "ownerThreadId": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+        "offerId": "PREWORLD-NATIVE03-0206",
+        "acceptedAtEpoch": 1793844240.306632,
+        "actualFullEpoch": 1793844248.728585,
+        "fullPath": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/native03-FULL.json",
+        "fullSHA256": "4adc4f9da2367e011cacb0a01b8e3cb27c6300575df97a3ced687236b5f99efa",
+        "resourcesReleased": true,
+        "resources": {
+          "children": 0,
+          "link": 0,
+          "temporary": 0,
+          "reservations": 0
+        }
+      },
+      {
+        "ownerThreadId": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+        "offerId": "PREWORLD-NATIVE04-0215",
+        "acceptedAtEpoch": 1793845256.148293,
+        "actualFullEpoch": 1793845264.456342,
+        "fullPath": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/native04-FULL.json",
+        "fullSHA256": "fce8e79917a7afb670ae5df22c582d16f5e1a911483903f4e9798533ad89f915",
+        "resourcesReleased": true,
+        "resources": {
+          "children": 0,
+          "link": 0,
+          "temporary": 0,
+          "reservations": 0
+        }
+      },
+      {
+        "ownerThreadId": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+        "offerId": "PREWORLD-NATIVE05-0226",
+        "acceptedAtEpoch": 1793845713.205296,
+        "actualFullEpoch": 1793845727.7126179,
+        "fullPath": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/native05-FULL.json",
+        "fullSHA256": "f4181c49b1cff16b7c7177052f40229e4120f3297d5d5f70bb5ac7fe0f56bf47",
+        "resourcesReleased": true,
+        "resources": {
+          "children": 0,
+          "link": 0,
+          "temporary": 0,
+          "reservations": 0
+        }
+      },
+      {
+        "ownerThreadId": "01a1a21e-ab80-7012-b9fa-cdb69eed097b",
+        "offerId": "PREWORLD-NATIVE06-0233",
+        "acceptedAtEpoch": 1793846032.2179542,
+        "actualFullEpoch": 1793846038.694773,
+        "fullPath": "/Users/lhs/Desktop/mcr-worktrees/be-avatar-motion-v2/docs/mcr/evidence/parade-ink-pre-world-policy/native06-FULL.json",
+        "fullSHA256": "ad8be5eecb66869671104022e14cd2a31fe686a8063b496b7c1bbaa344f41772",
+        "resourcesReleased": true,
+        "resources": {
+          "children": 0,
+          "link": 0,
+          "temporary": 0,
+          "reservations": 0
+        }
+      }
+    ]
+  }
+}

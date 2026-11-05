@@ -18,6 +18,7 @@ import { beginCommunityBootstrap, type CommunityBootstrapBinding } from './commu
 import { ShellLoadError } from './ports'
 import { PolicyNotice } from './pre-world-policy/PolicyNotice'
 import { usePolicyAttempt } from './pre-world-policy/usePolicyAttempt'
+import { PreWorldFrame } from './pre-world-policy/parade-ink/PreWorldFrame'
 import { WorldHudHeaderSlot, WorldHudLayout, WorldHudToolsSlot, WorldHudViewport } from '../features/parade-ink/world-hud'
 
 const SessionShellHeader = lazy(() => import('./shell-chrome/identity').then(module => ({ default: module.SessionShellHeader })))
@@ -80,20 +81,17 @@ function BootstrapBoundary({ scope }: { scope: ActiveScope }) {
     return <PolicyNotice view={policy.view} retry={() => setAttempt(n => n + 1)}
       reload={ports.connectionStatus?.reload ?? (() => window.location.reload())} />
   }
-  if (result.status !== 'ready') return <div className="shell-gate">
-    <Link className="shell-link" to="/">MCR Concert World</Link>
-    <h1 tabIndex={-1}>{result.status === 'loading' ? 'Opening your event' : {
+  if (result.status !== 'ready') return <PreWorldFrame title={result.status === 'loading' ? 'Opening your event' : {
       unauthenticated: 'Sign in to continue', denied: 'Access denied', 'not-found': 'Event not found',
       gone: 'This event is no longer available', 'rate-limited': 'Please wait before trying again', unavailable: 'Your event is unavailable',
-    }[result.reason]}</h1>
+    }[result.reason]} actions={<>
+      {result.status === 'error' && <Button onClick={() => setAttempt(n => n + 1)}>Try again</Button>}
+      <Link className="shell-link" to="/">Back to home</Link>
+    </>}>
     <Feedback kind={result.status === 'loading' ? 'status' : 'error'} title="Your destination is saved">
       <p>{result.status === 'loading' ? 'Checking the event before opening your link.' : 'We could not confirm access. No private content has been opened.'}</p>
     </Feedback>
-    <div className="shell-actions">
-      {result.status === 'error' && <Button onClick={() => setAttempt(n => n + 1)}>Try again</Button>}
-      <Link className="shell-link" to="/">Back to home</Link>
-    </div>
-  </div>
+  </PreWorldFrame>
   return <WorldShell scope={scope} bootstrap={result.value.bootstrap} privacyScope={result.value.privacyScope} community={result.value.community} />
 }
 
