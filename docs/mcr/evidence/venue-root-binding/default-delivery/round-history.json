@@ -1,0 +1,202 @@
+{
+  "rounds": [
+    {
+      "round": "default-control-source14",
+      "path": "docs/mcr/evidence/venue-root-binding/default-control-source14/FULL.json",
+      "sha256": "5051383f7666cd7ea8e609024e8a0a4ca79c4c46f2b27522c51449ed36410282",
+      "status": "PASS",
+      "fullEpoch": 1793858831.160218,
+      "remainingOwned": [],
+      "retained": "Historical bytes/status unchanged; no retrospective PASS"
+    },
+    {
+      "round": "default-interop-source16",
+      "path": "docs/mcr/evidence/venue-root-binding/default-interop-source16/FULL.json",
+      "sha256": "e7bea6c56eb40fcb98a85e59d4726c2268df23a8b095d1b34f2a6bef328ca8d3",
+      "status": "FAIL",
+      "fullEpoch": 1793860963.261055,
+      "remainingOwned": [],
+      "retained": "Historical bytes/status unchanged; no retrospective PASS"
+    },
+    {
+      "round": "default-interop-source17",
+      "path": "docs/mcr/evidence/venue-root-binding/default-interop-source17/FULL.json",
+      "sha256": "e173bfb39b53806223e6181db0aa0ed83fdacd887a96201c9b153c9544d0d573",
+      "status": "FAIL",
+      "fullEpoch": 1793861388.481188,
+      "remainingOwned": [],
+      "retained": "Historical bytes/status unchanged; no retrospective PASS"
+    },
+    {
+      "round": "default-interop-source18",
+      "path": "docs/mcr/evidence/venue-root-binding/default-interop-source18/FULL.json",
+      "sha256": "ac169240cd372de0dd093ad6711efbed3c5bd6871984e9d67bea0d1a365c1333",
+      "status": "PASS",
+      "fullEpoch": 1793861849.204586,
+      "remainingOwned": [],
+      "retained": "Historical bytes/status unchanged; no retrospective PASS"
+    },
+    {
+      "round": "default-native01",
+      "path": "docs/mcr/evidence/venue-root-binding/default-native01/FULL.json",
+      "sha256": "ffdb91f24e71009579c05cc474049bdd9af87e45b70323773164b4ae5a24478b",
+      "status": "FAIL",
+      "fullEpoch": 1793851855.7640882,
+      "remainingOwned": [],
+      "retained": "Historical bytes/status unchanged; no retrospective PASS"
+    },
+    {
+      "round": "default-native02",
+      "path": "docs/mcr/evidence/venue-root-binding/default-native02/FULL.json",
+      "sha256": "cb56d08ae2d15269c06047a7e622c3e97c92b211d3906edfa3cae6b91f8dfd64",
+      "status": "FAIL",
+      "fullEpoch": 1793851935.267725,
+      "remainingOwned": [],
+      "retained": "Historical bytes/status unchanged; no retrospective PASS"
+    },
+    {
+      "round": "default-native03",
+      "path": "docs/mcr/evidence/venue-root-binding/default-native03/FULL.json",
+      "sha256": "516670a0acfff1011e936b1360144d38452eeb6d5bfd84dc514c603824bc9fbc",
+      "status": "FAIL",
+      "fullEpoch": 1793852616.207422,
+      "remainingOwned": [],
+      "retained": "Historical bytes/status unchanged; no retrospective PASS"
+    },
+    {
+      "round": "default-native04",
+      "path": "docs/mcr/evidence/venue-root-binding/default-native04/FULL.json",
+      "sha256": "72c4e6d85a73c7bbe4c6fa4ff21d7238764343f9e24f87b1fc610153a2de448b",
+      "status": "FAIL",
+      "fullEpoch": 1793852727.354759,
+      "remainingOwned": [],
+      "retained": "Historical bytes/status unchanged; no retrospective PASS"
+    },
+    {
+      "round": "default-native06",
+      "path": "docs/mcr/evidence/venue-root-binding/default-native06/FULL.json",
+      "sha256": "6b447705f4a5bd6a2973877aae6a9334fad536ebda2bf72824be1d35d844182e",
+      "status": "FAIL",
+      "fullEpoch": 1793853109.574572,
+      "remainingOwned": [],
+      "retained": "Historical bytes/status unchanged; no retrospective PASS"
+    },
+    {
+      "round": "default-native07",
+      "path": "docs/mcr/evidence/venue-root-binding/default-native07/FULL.json",
+      "sha256": "6177890477b67b567c5be46570f78c3dcbc250c50ab8807387b4d334f755f732",
+      "status": "FAIL",
+      "fullEpoch": 1793854610.306344,
+      "remainingOwned": [],
+      "retained": "Historical bytes/status unchanged; no retrospective PASS"
+    },
+    {
+      "round": "default-native08",
+      "path": "docs/mcr/evidence/venue-root-binding/default-native08/FULL.json",
+      "sha256": "42518943c9a88ec39948db04f69bb40210c04415f5197881a7595a1f3642702f",
+      "status": "FAIL",
+      "fullEpoch": 1793855001.459154,
+      "remainingOwned": [],
+      "retained": "Historical bytes/status unchanged; no retrospective PASS"
+    },
+    {
+      "round": "default-native09",
+      "path": "docs/mcr/evidence/venue-root-binding/default-native09/FULL.json",
+      "sha256": "b60907ded912478c8c08eaa6229640a42d8eb3a8b8b25b9559913cc8d2ff0ce1",
+      "status": "FAIL",
+      "fullEpoch": 1793855357.298878,
+      "remainingOwned": [],
+      "retained": "Historical bytes/status unchanged; no retrospective PASS"
+    },
+    {
+      "round": "default-native12",
+      "path": "docs/mcr/evidence/venue-root-binding/default-native12/FULL.json",
+      "sha256": "35aff005a80824c9fd7c89f16f94145e0e23d416112076d1c347eef185ce5efb",
+      "status": "FAIL",
+      "fullEpoch": 1793857858.171875,
+      "remainingOwned": [],
+      "retained": "Historical bytes/status unchanged; no retrospective PASS"
+    },
+    {
+      "round": "default-native14",
+      "path": "docs/mcr/evidence/venue-root-binding/default-native14/FULL.json",
+      "sha256": "d491e6f602355b9bb274b4497cd9cfc7195cf6fe37be6e0c1c60eee2fba0cfa1",
+      "status": "FAIL",
+      "fullEpoch": 1793858944.177759,
+      "remainingOwned": [],
+      "retained": "Historical bytes/status unchanged; no retrospective PASS"
+    },
+    {
+      "round": "default-native16",
+      "path": "docs/mcr/evidence/venue-root-binding/default-native16/FULL.json",
+      "sha256": "4af9dc9bbd78038b36820f61d72d3102dd3ea54cbf8223e8c8e82293f47bae8b",
+      "status": "FAIL",
+      "fullEpoch": 1793862789.521823,
+      "remainingOwned": [],
+      "retained": "Historical bytes/status unchanged; no retrospective PASS"
+    },
+    {
+      "round": "default-native17",
+      "path": "docs/mcr/evidence/venue-root-binding/default-native17/FULL.json",
+      "sha256": "3d44354815bfcafa2b0de2e44f441481cf81b6a1af19b13381a6d16121b07556",
+      "status": "PASS",
+      "fullEpoch": 1793863091.322387,
+      "remainingOwned": [],
+      "retained": "Historical bytes/status unchanged; no retrospective PASS"
+    },
+    {
+      "round": "default-source01",
+      "path": "docs/mcr/evidence/venue-root-binding/default-source01/FULL.json",
+      "sha256": "051875e29000706d1215dc97e1825438857434b88fd774e0d89681bba4185b8b",
+      "status": "FAIL",
+      "fullEpoch": 1793851210.05899,
+      "remainingOwned": [],
+      "retained": "Historical bytes/status unchanged; no retrospective PASS"
+    },
+    {
+      "round": "default-source02",
+      "path": "docs/mcr/evidence/venue-root-binding/default-source02/FULL.json",
+      "sha256": "a4c9c808c9274815e0ad42ffbb4844a0a7d8ec949f0a164c58eff8db16e51a36",
+      "status": "PASS",
+      "fullEpoch": 1793851259.592622,
+      "remainingOwned": [],
+      "retained": "Historical bytes/status unchanged; no retrospective PASS"
+    },
+    {
+      "round": "default-source13",
+      "path": "docs/mcr/evidence/venue-root-binding/default-source13/FULL.json",
+      "sha256": "de01a090f5084b07bd4701d28eb456d254992047b21de8672a890dce9b4deaf7",
+      "status": "FAIL",
+      "fullEpoch": 1793858300.880756,
+      "remainingOwned": [],
+      "retained": "Historical bytes/status unchanged; no retrospective PASS"
+    },
+    {
+      "path": "docs/mcr/evidence/venue-root-binding/default-native05-unused-yield.json",
+      "sha256": "f51f1d15ba189a646215b2292ea37dbde81c278a4877cdffa18a92dd2d9fadfc",
+      "state": "GENUINELY_UNUSED_OR_YIELD_AS_ORIGINAL",
+      "retained": true
+    },
+    {
+      "path": "docs/mcr/evidence/venue-root-binding/default-native10-unused-yield.json",
+      "sha256": "408b31267800f50c72d0fe8c1a8a722fd55f1cdbd3dfe7e73ceeda6741e1eb95",
+      "state": "GENUINELY_UNUSED_OR_YIELD_AS_ORIGINAL",
+      "retained": true
+    },
+    {
+      "path": "docs/mcr/evidence/venue-root-binding/default-native11-unused-yield.json",
+      "sha256": "b1404ae9facc74f8b2488ae95bce44cca675f00ef5f0bc8e715c7eafcf567cc6",
+      "state": "GENUINELY_UNUSED_OR_YIELD_AS_ORIGINAL",
+      "retained": true
+    },
+    {
+      "path": "docs/mcr/evidence/venue-root-binding/default-source15-unused.json",
+      "sha256": "4da307e29f7da92827936c04bf3c724084ffbb9ed869617cdf0ded46453629a1",
+      "state": "GENUINELY_UNUSED_OR_YIELD_AS_ORIGINAL",
+      "retained": true
+    }
+  ],
+  "rawCustody": "Original raw records remain committed in owner history; only declared exact packet paths are published. No private ancestry.",
+  "noRestart": true,
+  "noRetainedGreensReplayed": true
+}

@@ -1,0 +1,36 @@
+[
+  {
+    "label": "policy16e-ordinary-receiver",
+    "argv": [
+      "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+      "-B",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/policy16e-ordinary-tests.py"
+    ],
+    "pid": 77925,
+    "exit": 0
+  },
+  {
+    "label": "types",
+    "argv": [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "--max-old-space-size=2048",
+      "e2e/venue-root-binding/default-typecheck.mjs"
+    ],
+    "pid": 77946,
+    "exit": 0
+  },
+  {
+    "label": "control-syntax",
+    "argv": [
+      "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+      "-B",
+      "-c",
+      "import ast,pathlib,sys;[ast.parse(pathlib.Path(p).read_text(),filename=p) for p in sys.argv[1:]]",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/qualify.py",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/guardian.py",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/default-ordinary.py"
+    ],
+    "pid": 78243,
+    "exit": 0
+  }
+]

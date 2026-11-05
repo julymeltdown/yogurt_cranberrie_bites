@@ -1,0 +1,24 @@
+{
+  "rows": [
+    {
+      "path": "frontend/src/app/WorldShell.tsx",
+      "canonical": "ea6027af478981376bbb25f6f80b5bcf347d87ae",
+      "beforeSHA256": "52cf10918150f2186239d970cab6c6e2641732393226b3c5698ad7c4d6f5a2ef",
+      "afterSHA256": "6a3a66050b654c9b4f452c08c23e276942547bd86945acec83f9d33493168906",
+      "beforeBytes": 14680,
+      "afterBytes": 18093,
+      "patchSHA256": "954214aa7233baae4b4f0021e7aa03974c588cb9c881f6029af0ee6079fd0257"
+    },
+    {
+      "path": "frontend/src/app/router.tsx",
+      "canonical": "ea6027af478981376bbb25f6f80b5bcf347d87ae",
+      "beforeSHA256": "0ae6afcf6514a51757c3f18682502a8409c99a1e5c207cf4ed765268fb557a25",
+      "afterSHA256": "35fcaa4b16007142f2be5b0e0e929b931bf45fbc85c727e038ac470efbcf4c8a",
+      "beforeBytes": 8496,
+      "afterBytes": 8518,
+      "patchSHA256": "fd9742ae5b8d92cdafcf6bbc8214c08f10c9cbc6942de12f3bd382e12bfa949b"
+    }
+  ],
+  "initialInverseProof": "custody-and-composition.json",
+  "rule": "Only host imports/component/wrapper and explicit qualified MapPanel lazy target change; all canonical PI12/HUD/safety/navigation retained. No stopped Root whole-postimage publication."
+}

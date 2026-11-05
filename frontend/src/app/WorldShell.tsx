@@ -1,5 +1,5 @@
-import { lazy, Suspense, useLayoutEffect, useRef, useState, useSyncExternalStore, type ReactNode } from 'react'
-import { Link, Outlet, useLocation, useNavigationType } from 'react-router-dom'
+import { lazy, Suspense, useCallback, useLayoutEffect, useRef, useState, useSyncExternalStore, type ReactNode } from 'react'
+import { Link, Outlet, useLocation, useNavigate, useNavigationType } from 'react-router-dom'
 import { Button, Feedback } from '../shared/ui'
 import { AccessNotice, scopeKey, useAccess, usePorts, useScopedLoad, validBootstrap } from './access'
 import { MAX_SHELL_LOCATIONS, NavigationMemory, ShellLink, usePanelBack } from './navigation'
@@ -20,6 +20,10 @@ import { PolicyNotice } from './pre-world-policy/PolicyNotice'
 import { usePolicyAttempt } from './pre-world-policy/usePolicyAttempt'
 import { PreWorldFrame } from './pre-world-policy/parade-ink/PreWorldFrame'
 import { WorldHudHeaderSlot, WorldHudLayout, WorldHudToolsSlot, WorldHudViewport } from '../features/parade-ink/world-hud'
+import type { SessionController } from '../features/auth/model/session'
+import { createSiteplanLoader } from '../features/paradise-city-map/spatial/image-resource'
+import { productionSiteplanRegistration } from '../features/paradise-city-map/spatial/registration'
+import { createVenueRootInput, sameVenueRootScope, VenueRootFeatures, type VenueRootInput } from './venue-root'
 
 const SessionShellHeader = lazy(() => import('./shell-chrome/identity').then(module => ({ default: module.SessionShellHeader })))
 const RootSocialFeatures = lazy(() => import('./world-panels/social').then(module => ({ default: module.RootSocialFeatures })))
@@ -123,7 +127,7 @@ export function WorldShell({ scope, bootstrap, privacyScope = null, community = 
     return () => { viewport?.removeEventListener('resize', update); window.removeEventListener('resize', update) }
   }, [])
   return <Suspense fallback={<p role="status">Opening your event…</p>}><CharacterProvider bootstrap={bootstrap} scope={privacyScope}><RootMediaProvider auth={auth} scope={privacyScope}><CommunityFeatures bootstrap={bootstrap} privacyScope={privacyScope} binding={community}><ProductionWorldFeatures privacyScope={privacyScope}><AccountProvider auth={auth} bootstrap={bootstrap} privacyScope={privacyScope} assets={accountAssets}><MeetingEntryFeatures auth={auth ?? null} release={null}>
-    <RootSocialFeatures bootstrap={bootstrap} scope={privacyScope}><NavigationMemory>
+    <VenueShellFeatures auth={auth ?? null} scope={privacyScope} community={community}><RootSocialFeatures bootstrap={bootstrap} scope={privacyScope}><NavigationMemory>
     {connectionStatus && <ConnectionStatus controller={connectionStatus.controller} reload={connectionStatus.reload} />}
     <WorldHudLayout active={!panelOpen} toolsOpen={worldToolsOpen} onToolsChange={setWorldToolsOpen}>
     <div className="world-shell pi08-world-shell" data-mcr-shell="" data-panel-size={panelOpen ? size : 'closed'} ref={root}
@@ -140,7 +144,60 @@ export function WorldShell({ scope, bootstrap, privacyScope = null, community = 
         : <WorldHudToolsSlot><WorldTools open={worldToolsOpen} onOpenChange={setWorldToolsOpen} /></WorldHudToolsSlot>}
     </div>
     <BottomNavigation />
-  </div></WorldHudLayout></NavigationMemory></RootSocialFeatures></MeetingEntryFeatures></AccountProvider></ProductionWorldFeatures></CommunityFeatures></RootMediaProvider></CharacterProvider></Suspense>
+  </div></WorldHudLayout></NavigationMemory></RootSocialFeatures></VenueShellFeatures></MeetingEntryFeatures></AccountProvider></ProductionWorldFeatures></CommunityFeatures></RootMediaProvider></CharacterProvider></Suspense>
+}
+
+/** One verified public image lease for the original shell, independent of Outlet. */
+export function VenueShellFeatures({ auth, scope, community, children }: {
+  readonly auth: SessionController | null; readonly scope: PrivacyScope | null
+  readonly community: CommunityBootstrapBinding | null; readonly children: ReactNode
+}) {
+  const navigate = useNavigate(), navigation = useRef(navigate)
+  navigation.current = navigate
+  const navigateToMap = useCallback(() => navigation.current('/world/map'), [])
+  const [bound, setBound] = useState<{ auth: SessionController; scope: PrivacyScope; community: CommunityBootstrapBinding; input: VenueRootInput } | null>(null)
+  useLayoutEffect(() => {
+    if (!auth || !scope || !community || !community.scope || !sameVenueRootScope(scope, community.scope)
+      || scope.gate !== 'open' || community.signal.aborted
+      || !auth.session.isCurrent(scope) || !auth.privacy.isCurrent(scope)) return
+    const signal = community.signal
+    const loader = createSiteplanLoader(productionSiteplanRegistration, { origin: window.location.origin })
+    let active = true
+    const current = () => {
+      try { return active && !signal.aborted && auth.session.isCurrent(scope) && auth.privacy.isCurrent(scope) }
+      catch { return false }
+    }
+    const withdraw = () => {
+      if (!active) return
+      active = false
+      // Withdraw publication before image disposal or borrower cleanup can re-enter.
+      setBound(value => value?.scope === scope && value.community === community ? null : value)
+      try { loader.dispose() } catch { /* A failed borrowed decoder cannot retain publication. */ }
+    }
+    signal.addEventListener('abort', withdraw, { once: true })
+    let stop = () => {}
+    try {
+      const cleanup = auth.privacy.registerCleanup(withdraw)
+      if (active) stop = cleanup
+      else cleanup()
+      if (current()) void Promise.resolve().then(() => current() ? loader.load(signal) : null).then(siteplan => {
+        if (!siteplan) return
+        if (!current()) { siteplan.dispose(); return }
+        const input = createVenueRootInput({ auth, scope, signal, community, siteplan,
+          meeting: null, newCommandKey: () => crypto.randomUUID(), navigateToMap })
+        if (current()) setBound({ auth, scope, community, input })
+        else siteplan.dispose()
+      }).catch(withdraw)
+      else withdraw()
+    } catch { withdraw() }
+    return () => {
+      withdraw(); signal.removeEventListener('abort', withdraw)
+      try { stop() } catch { /* Release the loader even when the observer rejects cleanup. */ }
+    }
+  }, [auth, scope, community, navigateToMap])
+  const input = bound?.auth === auth && bound.scope === scope && bound.community === community
+    && !bound.input.signal.aborted && auth?.privacy.isCurrent(bound.input.scope) ? bound.input : null
+  return <VenueRootFeatures borrowed={input}>{children}</VenueRootFeatures>
 }
 
 function PanelFrame({ size, onSize, positions, children }: { size: 'peek' | 'half' | 'full'; onSize: (size: 'peek' | 'half' | 'full') => void; positions: Map<string, number>; children: ReactNode }) {

@@ -1,0 +1,32 @@
+{
+  "product": [
+    {
+      "path": "frontend/src/app/WorldShell.tsx",
+      "canonicalPreimageRevision": "8ccdeb0a753c4a5dab9bccc670efb195c51c0611",
+      "preimageSHA256": "52cf10918150f2186239d970cab6c6e2641732393226b3c5698ad7c4d6f5a2ef",
+      "postimageSHA256": "6a3a66050b654c9b4f452c08c23e276942547bd86945acec83f9d33493168906",
+      "qualifiedSource": "0dfff7599a999362bb377e784531c35d8932e1ae",
+      "unchangedSinceNative": true
+    },
+    {
+      "path": "frontend/src/app/router.tsx",
+      "canonicalPreimageRevision": "8ccdeb0a753c4a5dab9bccc670efb195c51c0611",
+      "preimageSHA256": "0ae6afcf6514a51757c3f18682502a8409c99a1e5c207cf4ed765268fb557a25",
+      "postimageSHA256": "35fcaa4b16007142f2be5b0e0e929b931bf45fbc85c727e038ac470efbcf4c8a",
+      "qualifiedSource": "0dfff7599a999362bb377e784531c35d8932e1ae",
+      "unchangedSinceNative": true
+    }
+  ],
+  "referenceProvenance": "docs/mcr/evidence/venue-root-binding/default/reference-provenance.json",
+  "retainedDependencyAlias": {
+    "specifier": "@hookform/resolvers/zod",
+    "packageVersion": "5.4.0",
+    "packageSHA256": "4c94b8c3b12469f53486ca275d279642b8745007d2d80ce060d9f1dc407483b3",
+    "esmSHA256": "19322fa11e447bfc41013112718fbc7c2f9b7ce531103d2086180985ec3c284e"
+  },
+  "immutableInputCount": 2360,
+  "nativeSource": "0dfff7599a999362bb377e784531c35d8932e1ae",
+  "originalSourcePreserved": true,
+  "reusedRendering": false,
+  "sourceHistory": "Source13,14,18 and Native17 remain at their literal pins; source adapter/optimizer fixes are owner authored and retain exact predecessor metadata."
+}

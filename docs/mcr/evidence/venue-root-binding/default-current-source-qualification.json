@@ -1,0 +1,60 @@
+{
+  "status": "CURRENT_COMBINED_SOURCE_QUALIFIED_FOR_CONDITIONAL_NATIVE14",
+  "retainedSource13": {
+    "source": "0f9825d7deb83e6dd3dc24b8e8eb9bf2bb875581",
+    "overallHistoricalStatus": "FAIL_UNCHANGED",
+    "evidenceCommit": "069b43ea683ca7a08d786318397ac92bfe0e2f9e",
+    "commands": [
+      {
+        "label": "policy16e-ordinary-receiver",
+        "exit": 0
+      },
+      {
+        "label": "types",
+        "exit": 0
+      },
+      {
+        "label": "control-syntax",
+        "exit": 0
+      }
+    ],
+    "typeResult": {
+      "roots": 5,
+      "transitiveFiles": 944,
+      "immutableInputs": 2360,
+      "diagnostics": 0
+    }
+  },
+  "controlSuccessor": {
+    "source": "d971920ba6cd2a6512f88fdd6af30902bdc4d320",
+    "status": "PASS",
+    "acceptedUTC": "2026-11-05T06:07:08.316415+00:00",
+    "fullAtEpoch": 1793858831.160218,
+    "metadataChecks": {
+      "status": "PASS",
+      "newMetadataBoundaries": [
+        "Map exact immutable begin/end + typed kernel argv with controlled probes",
+        "Map domain/book/birth/immutable receipt/readset negatives; FULL is not exit",
+        "BE03 explicit helper/scope amendment + crossed epoch/UTC/cap/domain negatives",
+        "Exact current finite phase owner/offer negatives; no family carry or ordinary book reinterpretation"
+      ],
+      "fixtureKernelProbes": "Injected only; no live retained fixture PID probe",
+      "applicationCommandsRun": 0
+    },
+    "dualCompleteInitialLive": true,
+    "guardianBreach": null,
+    "resourcesHeld": 0,
+    "fullSHA256": "5051383f7666cd7ea8e609024e8a0a4ca79c4c46f2b27522c51449ed36410282"
+  },
+  "productAndFixtureChangedSinceRetainedChecks": false,
+  "unchangedGreensReplayed": false,
+  "browserReferenceStatus": "NOT_RUN",
+  "native14Prerequisite": "Source readiness satisfied by actual current control successor plus retained command greens; actual B2 admission still independently required",
+  "carry": {
+    "new": 403087933,
+    "whole": 14085231289,
+    "temporaryPeak": 18544384,
+    "cumulativeTemporary": 323994840,
+    "remainingUpperBeforeLaterWrites": 115194564
+  }
+}

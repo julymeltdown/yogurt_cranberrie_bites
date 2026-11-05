@@ -1,0 +1,47 @@
+{
+  "task": "DEFAULT-VENUE-HOST-INTEROP-SOURCE18-0654",
+  "status": "PASS_CHANGED_INTEROP_AND_AST_ONLY",
+  "source": "308293537a841414143c67d29a9ce6f08512ec3e",
+  "actualAcceptEpoch": 1793861846.193424,
+  "actualFullEpoch": 1793861849.204586,
+  "fullSHA256": "ac169240cd372de0dd093ad6711efbed3c5bd6871984e9d67bea0d1a365c1333",
+  "metadataChecks": {
+    "status": "PASS",
+    "profile": "N213-ORDINARY-SELF-V4-KERNELARGV-20261105",
+    "fixture": {
+      "path": "/private/tmp/mcr-venue-notes-213-0122/ordinary-v4-history/87861-1793860225-369710/FULL.json",
+      "sha256": "ce019e771880ba29690549d8d843ba474089b9d1db04acf9677505dd1bee0001"
+    },
+    "changedBoundaries": [
+      "actual immutable V4 positive",
+      "actual PI08 schema5 tuple in controlled envelope",
+      "PI08 schema/book/domain/alias/absence/readset negatives",
+      "ART numeric birth without text, kernel/rawPS/state/absence/readset negatives",
+      "C06 new immutable tuple with distinct Python/kernel digests; no historical repair",
+      "lossless immutable retry operands stored once and referenced without recursive copies",
+      "separate sys.argv/orig_argv/kernel/rawPS domains",
+      "exact actual kernel vector including argv0",
+      "birth/action/book/finisher/readset negatives",
+      "affected adapter AST"
+    ],
+    "fixtureKernelProbes": "Injected only; no retained fixture PID inspected",
+    "applicationCommandsRun": 0
+  },
+  "dualLive": "Primary and independent initial complete samples passed; retained in raw records",
+  "peaks": {
+    "processes": 3,
+    "rss": 87834624,
+    "temporary": 64,
+    "durable": 26695008,
+    "new": 461357181,
+    "whole": 15892982366
+  },
+  "minimumFree": 16685473792,
+  "resourcesRemaining": [],
+  "temporaryAbsent": true,
+  "dependencyLinkAbsent": true,
+  "temporaryCumulativeBytes": 354599442,
+  "retained": "Source13 command greens and Control14 PASS at their original source pins; source15unused/source16FAIL/source17FAIL/native14FAIL unchanged",
+  "limits": "Controlled immutable metadata fixture probes, no retained fixture PID probe. No application, browser, device, multiuser, full types or visual qualification.",
+  "ordinaryLauncher": "Direct /bin/sh login:false exec of absolute stored Python entry and pinned action; no heredoc launcher. Natural source preparation63367 recorded before helpers."
+}

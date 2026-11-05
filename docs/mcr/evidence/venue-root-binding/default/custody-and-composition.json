@@ -1,0 +1,34 @@
+{
+  "task": "DEFAULT-VENUE-HOST-01",
+  "receivedAtEpoch": 1793850601.7183292,
+  "soleWriter": "01a1a1fe-1eed-7d12-a247-879cd521e0ec",
+  "previousWriters": "Root153 and Root1fc STOPPED/TRANSFERRED",
+  "canonical": "4c397da262f63db82f252e5f29a6e63aa062b492",
+  "records": [
+    {
+      "path": "frontend/src/app/WorldShell.tsx",
+      "canonical": "4c397da262f63db82f252e5f29a6e63aa062b492",
+      "canonicalSHA256": "52cf10918150f2186239d970cab6c6e2641732393226b3c5698ad7c4d6f5a2ef",
+      "stoppedRootPath": "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/src/app/WorldShell.tsx",
+      "stoppedRootSHA256": "e0aeb128f7349316081d2ec5720a546e67f2b02f55ed02cb75a58ca3bf1fe186",
+      "composedSHA256": "e0aeb128f7349316081d2ec5720a546e67f2b02f55ed02cb75a58ca3bf1fe186",
+      "inverseSHA256": "52cf10918150f2186239d970cab6c6e2641732393226b3c5698ad7c4d6f5a2ef",
+      "wholeCanonicalInverse": "EXACT",
+      "onlyHostHunks": true,
+      "peerWholePostimageEqual": true
+    },
+    {
+      "path": "frontend/src/app/router.tsx",
+      "canonical": "4c397da262f63db82f252e5f29a6e63aa062b492",
+      "canonicalSHA256": "0ae6afcf6514a51757c3f18682502a8409c99a1e5c207cf4ed765268fb557a25",
+      "stoppedRootPath": "/Users/lhs/Desktop/mcr-worktrees/fe-delivery-publish/frontend/src/app/router.tsx",
+      "stoppedRootSHA256": "35fcaa4b16007142f2be5b0e0e929b931bf45fbc85c727e038ac470efbcf4c8a",
+      "composedSHA256": "643b883bbca20752666da00a03556bbd9bbfe8c4a992ac7ef948246327be7c1b",
+      "inverseSHA256": "0ae6afcf6514a51757c3f18682502a8409c99a1e5c207cf4ed765268fb557a25",
+      "wholeCanonicalInverse": "EXACT",
+      "onlyHostHunks": true,
+      "peerWholePostimageEqual": false
+    }
+  ],
+  "newGoal": "UNBUDGETED durable objective in owned document; incompatible actual Avatar goal BLOCKED preserved"
+}

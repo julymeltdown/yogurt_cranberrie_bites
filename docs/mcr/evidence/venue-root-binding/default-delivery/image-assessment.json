@@ -1,0 +1,248 @@
+{
+  "status": "FUNCTIONAL_HOST_PASS_VISUAL_ACCEPTANCE_OPEN",
+  "inspectedAtEpoch": 1793863452.284698,
+  "inspector": "Implementation owner01a1a1fe-1eed-7d12-a247-879cd521e0ec",
+  "images": [
+    {
+      "path": "docs/mcr/evidence/venue-root-binding/default-native17/native/360-default-friends.png",
+      "sha256": "2d36695a7ea90e0bbd03b39b372bcb4b62aaef86bde7d354d72fb05f7cc82f7b",
+      "bytes": 114709,
+      "width": 360,
+      "height": 844,
+      "personallyInspected": true
+    },
+    {
+      "path": "docs/mcr/evidence/venue-root-binding/default-native17/native/360-default-map.png",
+      "sha256": "e481f80082d48acf1284585348ca61940042b99194fedc7c77d47bbedb1f3120",
+      "bytes": 268832,
+      "width": 360,
+      "height": 844,
+      "personallyInspected": true
+    },
+    {
+      "path": "docs/mcr/evidence/venue-root-binding/default-native17/native/360-default-notes.png",
+      "sha256": "33161f8f32d14c9c871ff82013f6bb4f94402e30a8b1d30221dc294b1301f805",
+      "bytes": 170534,
+      "width": 360,
+      "height": 844,
+      "personallyInspected": true
+    },
+    {
+      "path": "docs/mcr/evidence/venue-root-binding/default-native17/native/360-default-place.png",
+      "sha256": "069ae329665ad7ff9296822e1aca191db35b272eb3dfba3e58f0c4312255b2db",
+      "bytes": 128275,
+      "width": 360,
+      "height": 844,
+      "personallyInspected": true
+    },
+    {
+      "path": "docs/mcr/evidence/venue-root-binding/default-native17/native/360-default-world.png",
+      "sha256": "38de3e74afdf1a4196c4a5fdd75a7aa42fed81bcc40fe5202fab16c2c3ba526a",
+      "bytes": 205266,
+      "width": 360,
+      "height": 844,
+      "personallyInspected": true
+    },
+    {
+      "path": "docs/mcr/evidence/venue-root-binding/default-native17/native/390-comparison-diff.png",
+      "sha256": "7af80db0b47f8c4f9d4b9320816c41454544497f79d2d364517ad8ef2213cb06",
+      "bytes": 2869661,
+      "width": 390,
+      "height": 3626,
+      "personallyInspected": true
+    },
+    {
+      "path": "docs/mcr/evidence/venue-root-binding/default-native17/native/390-comparison-overlay.png",
+      "sha256": "959244eb4cc78dc078a85ff652eb9b441855ae6db8a73ba7294556c159b68bd3",
+      "bytes": 2630287,
+      "width": 390,
+      "height": 3626,
+      "personallyInspected": true
+    },
+    {
+      "path": "docs/mcr/evidence/venue-root-binding/default-native17/native/390-comparison-reference.png",
+      "sha256": "596517df8c82fe9df16aa308471e3da8db2077354c417a5cbb7e0ce23b455b6f",
+      "bytes": 2759240,
+      "width": 390,
+      "height": 3626,
+      "personallyInspected": true
+    },
+    {
+      "path": "docs/mcr/evidence/venue-root-binding/default-native17/native/390-default-friends.png",
+      "sha256": "2bcef57d5d68eba09bb34b48888c2e2ca0582258b1af3adc7213b0e5f6e48801",
+      "bytes": 112605,
+      "width": 368,
+      "height": 774,
+      "personallyInspected": true
+    },
+    {
+      "path": "docs/mcr/evidence/venue-root-binding/default-native17/native/390-default-notes.png",
+      "sha256": "6f735761fa00d4eb2c6badc850b10aaa2654fcce281b4a21c3d54a0615a8b950",
+      "bytes": 178128,
+      "width": 368,
+      "height": 774,
+      "personallyInspected": true
+    },
+    {
+      "path": "docs/mcr/evidence/venue-root-binding/default-native17/native/390-default-place.png",
+      "sha256": "dc3012a04560586541da796a88634ac8d8b19072d6310d849a1d89fc0380d733",
+      "bytes": 127309,
+      "width": 368,
+      "height": 774,
+      "personallyInspected": true
+    },
+    {
+      "path": "docs/mcr/evidence/venue-root-binding/default-native17/native/390-default-world.png",
+      "sha256": "5939b1fa1603669a1b84406c5faf153a67cd9e5d7f8cc04efca3b1d325a0d584",
+      "bytes": 210287,
+      "width": 390,
+      "height": 844,
+      "personallyInspected": true
+    },
+    {
+      "path": "docs/mcr/evidence/venue-root-binding/default-native17/native/390-primary-image.png",
+      "sha256": "26ebfcc4a909cdc0c2893de32e8d0431051bd1393906b23cb97a16d1c025f2ae",
+      "bytes": 286762,
+      "width": 368,
+      "height": 460,
+      "personallyInspected": true
+    },
+    {
+      "path": "docs/mcr/evidence/venue-root-binding/default-native17/native/430-default-friends.png",
+      "sha256": "c37cbe616f03a3a5265a2228e33aaa06f8c04ee75277aa8c2a7d9a4512281e1b",
+      "bytes": 115321,
+      "width": 430,
+      "height": 844,
+      "personallyInspected": true
+    },
+    {
+      "path": "docs/mcr/evidence/venue-root-binding/default-native17/native/430-default-map.png",
+      "sha256": "dabd4dbc93ce250719be244d1c69c3083e7e2de32c2380d7d82f35081ef4a59d",
+      "bytes": 364507,
+      "width": 430,
+      "height": 844,
+      "personallyInspected": true
+    },
+    {
+      "path": "docs/mcr/evidence/venue-root-binding/default-native17/native/430-default-notes.png",
+      "sha256": "25ec4e564518b961fa24afdc80574916a4e7e1ade665ee516ed95f3c9be293a8",
+      "bytes": 196132,
+      "width": 430,
+      "height": 844,
+      "personallyInspected": true
+    },
+    {
+      "path": "docs/mcr/evidence/venue-root-binding/default-native17/native/430-default-place.png",
+      "sha256": "fd0883cc7e74efb7d2049072b01926cf55fb9e971213deb0f9467081cca6d50f",
+      "bytes": 130028,
+      "width": 430,
+      "height": 844,
+      "personallyInspected": true
+    },
+    {
+      "path": "docs/mcr/evidence/venue-root-binding/default-native17/native/430-default-world.png",
+      "sha256": "dcec7ce9a102545e51334963e9427a11945808fc6db4e349657f23319613da76",
+      "bytes": 218015,
+      "width": 430,
+      "height": 844,
+      "personallyInspected": true
+    }
+  ],
+  "findings": [
+    "All18 native PNGs viewed directly, including15 actual captures and3 five-row reference/overlay/diff sheets.",
+    "360/390/430 World shows one incumbent game with six approved-source actors and retained navigation.",
+    "Approved Paradise City siteplan and real Map/Friends/Notes/place controls render; no static screenshot substitutes for UI.",
+    "Absent current Friends, physical location, reviewed place, meeting and command capabilities remain unavailable/disabled; no fabricated populated rows.",
+    "Reference sheets visibly retain material World-stage/framing/typography and Friends/Notes/meeting-row differences. Ten-screen visual acceptance remains OPEN.",
+    "Primary-photo resampling differs slightly and includes an overlapping map control at the captured image edge; it is not whole-photo pixel identity.",
+    "Some full-page mobile captures show scroll-dependent lower-panel content; this packet does not claim all device keyboard/safe-area/scroll or clipping acceptance."
+  ],
+  "comparisons": [
+    {
+      "case": "primary-image",
+      "originalPhoto": "photo-05.jpg",
+      "developerMeasuredSourceROI": [
+        0,
+        0,
+        1024,
+        1280
+      ],
+      "output": {
+        "w": 368,
+        "h": 460
+      },
+      "meanRGBAbsoluteDifference": 2.143222274732199,
+      "status": "SAME_APPROVED_SOURCE_RESAMPLING_RECORDED",
+      "masks": []
+    },
+    {
+      "case": "world-frame",
+      "originalPhoto": "parade-ink.jpg",
+      "developerMeasuredSourceROI": [
+        436,
+        61,
+        397,
+        785
+      ],
+      "output": {
+        "w": 390,
+        "h": 844
+      },
+      "meanRGBAbsoluteDifference": 71.2895592822133,
+      "status": "MATERIAL_DIFFERENCES_OPEN",
+      "masks": []
+    },
+    {
+      "case": "friends",
+      "originalPhoto": "photo-09.jpg",
+      "developerMeasuredSourceROI": [
+        463,
+        113,
+        386,
+        653
+      ],
+      "output": {
+        "w": 368,
+        "h": 774
+      },
+      "meanRGBAbsoluteDifference": 57.48600227502528,
+      "status": "MATERIAL_DIFFERENCES_OPEN",
+      "masks": []
+    },
+    {
+      "case": "notes",
+      "originalPhoto": "photo-10.jpg",
+      "developerMeasuredSourceROI": [
+        32,
+        112,
+        386,
+        656
+      ],
+      "output": {
+        "w": 368,
+        "h": 774
+      },
+      "meanRGBAbsoluteDifference": 78.56910038197955,
+      "status": "MATERIAL_DIFFERENCES_OPEN",
+      "masks": []
+    },
+    {
+      "case": "place",
+      "originalPhoto": "photo-02.jpg",
+      "developerMeasuredSourceROI": [
+        445,
+        109,
+        386,
+        657
+      ],
+      "output": {
+        "w": 368,
+        "h": 774
+      },
+      "meanRGBAbsoluteDifference": 65.97243404299142,
+      "status": "MATERIAL_DIFFERENCES_OPEN",
+      "masks": []
+    }
+  ],
+  "qualification": "Actual frozen canonical main/Auth/router/WorldShell plus own host, controlled HTTP/C05/reviewed art; NOT_LIVE_NOT_DEVICE_NOT_WHOLE_VENU"
+}

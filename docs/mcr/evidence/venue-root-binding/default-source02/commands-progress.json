@@ -1,0 +1,43 @@
+[
+  {
+    "label": "tests",
+    "argv": [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+      "run",
+      "--configLoader",
+      "runner",
+      "--config",
+      "e2e/venue-root-binding/default-vitest.config.mjs",
+      "--no-cache",
+      "--reporter",
+      "dot"
+    ],
+    "pid": 7881,
+    "exit": 0
+  },
+  {
+    "label": "types",
+    "argv": [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "--max-old-space-size=2048",
+      "e2e/venue-root-binding/default-typecheck.mjs"
+    ],
+    "pid": 8008,
+    "exit": 0
+  },
+  {
+    "label": "lint",
+    "argv": [
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+      "/Users/lhs/Desktop/mcr/frontend/node_modules/oxlint/bin/oxlint",
+      "--deny-warnings",
+      "src/app/WorldShell.tsx",
+      "src/app/router.tsx",
+      "src/app/__tests__/venue-host-integration",
+      "e2e/venue-root-binding"
+    ],
+    "pid": 8609,
+    "exit": 0
+  }
+]

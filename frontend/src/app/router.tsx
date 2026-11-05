@@ -24,7 +24,7 @@ const BlockedUsersPanel = lazy(() => import('./safety-entry/panels').then(module
 const AccountControlsPanel = lazy(() => import('./account-deletion-entry/panel'))
 const MeetingCheckInPanel = lazy(() => import('./meeting-entry').then(module => ({ default: module.MeetingCheckInPanel })))
 const MeetingBeaconPanel = lazy(() => import('./meeting-entry').then(module => ({ default: module.MeetingBeaconPanel })))
-const MapPanel = lazy(() => import('./world-panels').then(module => ({ default: module.ProductionMapPanel })))
+const MapPanel = lazy(() => import('./venue-entry/ParadiseCityMapPanel').then(module => ({ default: module.ParadiseCityMapPanel })))
 const PlacePanel = lazy(() => import('./world-panels').then(module => ({ default: module.ProductionPlacePanel })))
 const ThemePanel = lazy(() => import('./world-panels').then(module => ({ default: module.ProductionThemePanel })))
 const WallPanel = lazy(() => import('./world-panels').then(module => ({ default: module.ProductionWallPanel })))

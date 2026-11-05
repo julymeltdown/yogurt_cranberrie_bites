@@ -1,0 +1,268 @@
+{
+  "state": "ACTUAL_FULL",
+  "status": "PASS",
+  "fullAtEpoch": 1793861849.204586,
+  "offer": {
+    "ordinaryPrograms": {
+      "/private/tmp/mcr-publisher-412e-capacity-composition-delivery.py": "98523ce9d454f2fdfdc4080ca9fa11e6b724a9343217a8c2f03c44b16d854456",
+      "/private/tmp/mcr-publisher-412e-venue-plan-preflight.py": "e934c65738a0ce27c6cfe656e0092d60612a88448ff3f9f415a1860792d6264a",
+      "/private/tmp/mcr-paradise-notes-api-root153-0159/ordinary.py": "f3347ac741f1379f444c915c738a8580d5722301b3bba8d4b8ddda23e3aab2a1",
+      "/private/tmp/mcr-paradise-notes-api-root153-0221/ordinary.py": "27766baf5884d4bab1e72f262fda1df659b79f4f5679bfe1bfa9d840ed6a6566",
+      "/private/tmp/mcr-paradise-notes-api-root153-0221/meeting-prep.py": "652074d4bebb8add5d7539f3a3338c5a4a0fa1ba020d4bc2c3de671004e2e2bb",
+      "/private/tmp/mcr-venu-l-transport-40c576-0304/ordinary.py": "f6e1125f09dc1591bc8df44053e0a7476866adb751d1432b5f381233e2faf872",
+      "/private/tmp/mcr-oauth-handoff-root153-prep-0407.py": "7460f03ce0b64fae36baa9e9da2786a23ae4e6885320e2a21e2c45a29fff67ca",
+      "/private/tmp/mcr-publisher-412e-pi09-wall-delivery-preflight-r4.py": "29894239706bb4350073cdfe03eaf3c56ed8f858544b2d5eba7074eb4aa1b70e",
+      "/private/tmp/mcr-publisher-412e-capacity-composition-delivery-v3.py": "c89085ed0baaa69ab2cda78700f469912d00ecae74bc9013540ea49c04580688",
+      "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/paradise-city-siteplan-v1/strict-ts-fix-01/preparation.py": "61fbd881fd44ef0055440974958d9d1a9ce4593ce1638045139d6ba424329163",
+      "/private/tmp/mcr-qa03-wall-build-controlprep2-0415/prep.py": "b314bfcf27737fed514be1f71ef66c985862492f7806040c694e23f4081bf2e1",
+      "/private/tmp/mcr-oauth-handoff-root153-threadseal-0428.py": "8272b182d77980fdf7e6f6ca539a3a2c6af56278ec793495d7601b222f08b376"
+    },
+    "ordinaryRolePins": [
+      {
+        "ownerThreadId": "01a1a153-1227-7e72-801f-a2a6b91981e1",
+        "offerId": "AM-FE-N01-API-PREP128-0159",
+        "acceptedAtEpoch": 1793843766.393444,
+        "script": "/private/tmp/mcr-paradise-notes-api-root153-0159/ordinary.py",
+        "phase": "SOURCE_AUTHORING",
+        "role": "Bounded Notes-only source preparation; no executable qualification"
+      },
+      {
+        "ownerThreadId": "01a1a153-1227-7e72-801f-a2a6b91981e1",
+        "offerId": "ROOT153-N01-SEALPREP16-0221",
+        "acceptedAtEpoch": 1793845236.666132,
+        "script": "/private/tmp/mcr-paradise-notes-api-root153-0221/ordinary.py",
+        "phase": "SOURCE_AUTHORING",
+        "role": "Bounded Notes-only source preparation; no executable qualification"
+      },
+      {
+        "ownerThreadId": "01a1a153-1227-7e72-801f-a2a6b91981e1",
+        "offerId": "ROOT153-M-REGISTRATION-PREP16-0258",
+        "acceptedAtEpoch": 1793847523.069383,
+        "phase": "SOURCE_AUTHORING",
+        "role": "Bounded Notes-only source preparation; no executable qualification",
+        "script": "/private/tmp/mcr-paradise-notes-api-root153-0221/meeting-prep.py"
+      },
+      {
+        "ownerThreadId": "01a1a5d9-332b-7822-a8f7-40c576fad94a",
+        "offerId": "VENU-L-TRANSPORT-PREP16-0304",
+        "acceptedAtEpoch": 1793847907.283674,
+        "phase": "ORDINARY_SOURCE_ONLY_ACCOUNTING",
+        "role": "bounded L four-leaf ordinary authoring accounting observer; no payload",
+        "script": "/private/tmp/mcr-venu-l-transport-40c576-0304/ordinary.py"
+      },
+      {
+        "ownerThreadId": "01a1a153-1227-7e72-801f-a2a6b91981e1",
+        "offerId": "ROOT153-OAUTH-PREP64-0407",
+        "acceptedAtEpoch": 1793851697.9060428,
+        "phase": "SOURCE_AUTHORING",
+        "script": "/private/tmp/mcr-oauth-handoff-root153-prep-0407.py",
+        "role": "Bounded Root OAuth handoff source authoring; no executable qualification"
+      },
+      {
+        "ownerThreadId": "01a1a231-0dc4-7b50-92bd-c0f0f56bd970",
+        "offerId": "ART-PC-STRICT-SOURCE01-0418",
+        "acceptedAtEpoch": 1793852707.204701,
+        "phase": "BOTH_INITIAL_LIVE",
+        "script": "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/paradise-city-siteplan-v1/strict-ts-fix-01/controller.py",
+        "role": "ART-PC-STRICT scoped TypeScript and twelve hostile-case qualification controller",
+        "roleField": "controller"
+      },
+      {
+        "ownerThreadId": "01a1a202-3b96-7822-ab54-2f7d29aa42e5",
+        "offerId": "QA03-WALL-BUILD-CONTROLPREP2-0415",
+        "acceptedAtEpoch": 1793851994.5738292,
+        "phase": null,
+        "script": "/private/tmp/mcr-qa03-wall-build-controlprep2-0415/prep.py",
+        "role": "ordinary bounded private QA03 control/readset authoring; no app/test/compiler/browser/target"
+      },
+      {
+        "ownerThreadId": "01a1a153-1227-7e72-801f-a2a6b91981e1",
+        "offerId": "ROOT153-OAUTH-THREADSEAL64-0428",
+        "acceptedAtEpoch": 1793853077.9441578,
+        "phase": "SOURCE_AUTHORING",
+        "script": "/private/tmp/mcr-oauth-handoff-root153-threadseal-0428.py",
+        "role": "Bounded Root OAuth handoff source authoring; no executable qualification"
+      }
+    ],
+    "peerFullReceipts": [
+      {
+        "ownerThreadId": "01a1a5d9-6950-7920-8c80-5214d4ce0eaf",
+        "offerId": "PI12-OPERATIONS-SOURCE01-0111",
+        "acceptedAtEpoch": 1793841168.846922,
+        "path": "/private/tmp/mcr-pi12-operations-source01-0111/FULL.json",
+        "sha256": "201ad2eabcf46e7e311b34dd3292019f399d9e7a576e35f1190dfa77196b9b1a"
+      },
+      {
+        "ownerThreadId": "01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c",
+        "offerId": "PI12-REPORT-ERROR-NETWORK-SOURCE03-0116",
+        "acceptedAtEpoch": 1793841406.9410958,
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-ref-map/docs/mcr/evidence/parade-ink-report-error-network/source03/guardian.json",
+        "sha256": "2f9c914666e8eabc0827d43d77ae8262ac6c07dadb44eb46db97b0fd2b9fac89"
+      }
+    ],
+    "id": "DEFAULT-VENUE-HOST-INTEROP-SOURCE18-0654",
+    "authorizedOfferIds": [
+      "DEFAULT-VENUE-HOST-INTEROP-SOURCE18-0654"
+    ],
+    "source": "308293537a841414143c67d29a9ce6f08512ec3e",
+    "kind": "source",
+    "processes": 4,
+    "rssBytes": 536870912,
+    "wholeBytes": 17179869184,
+    "newBytes": 518282497,
+    "temporaryBytes": 167772160,
+    "durableBytes": 41943040,
+    "admissionFreeBytes": 11811160064,
+    "afterAllFreeBytes": 9663676416,
+    "continuousFreeBytes": 8589934592,
+    "otherUpperBytes": 2684354560,
+    "minimumCarryBytes": 15431625185,
+    "spentTemporaryBytes": 354599378,
+    "ordinaryReservedBytes": 50331648,
+    "acceptByUTC": "2026-11-05T07:15:00+00:00",
+    "workSeconds": 90,
+    "fullSeconds": 120,
+    "priorFullPaths": [
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/source01-full-release.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/source02/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/source03/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/source04/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/source05/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/native01/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/native02/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/native03/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/native04/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/native05/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/native06/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/native07/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/source01/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/source02/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/source03/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/source04/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/source05/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/source06/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/source07/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/native01/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/native02/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/native03/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/native04/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/default-source01/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/default-source02/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/default-native01/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/default-native02/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/default-native03/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/default-native04/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/default-native06/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/default-native07/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/default-native08/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/default-native09/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/default-native12/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/default-source13/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/default-control-source14/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/default-native14/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/default-interop-source16/FULL.json",
+      "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/default-interop-source17/FULL.json"
+    ],
+    "ordinaryProgramInputs": {
+      "/private/tmp/mcr-paradise-notes-api-root153-0221/ordinary.py": "27766baf5884d4bab1e72f262fda1df659b79f4f5679bfe1bfa9d840ed6a6566",
+      "/Users/lhs/Desktop/mcr-worktrees/qa07-input-delta-332b/scripts/mcr/resource-accounting/accounting.py": "1a2ed019be0af4d673786532c8b46eda81cd6137a7ac27c9f97b83a34387483c",
+      "/private/tmp/mcr-paradise-notes-api-root153-0221/location-prep.py": "01a88587583b94812e9ca617e9966bf8c5282a628a5b3ce3f9ba4e65d3c900f9",
+      "/private/tmp/mcr-publisher-412e-ordinary-identity-v3.py": "103556a8ce4943b7d95baff1d8602a64091ce4f390173ebc1aa9384355ae20ef",
+      "/private/tmp/mcr-publisher-412e-capacity-composition-delivery-v3.py": "c89085ed0baaa69ab2cda78700f469912d00ecae74bc9013540ea49c04580688",
+      "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/paradise-city-siteplan-v1/inventory.py": "ecf6a2582f9c87072c8320af83a9b737d84aa1876d5d6b72f23ab4e31669a373",
+      "/private/tmp/mcr-oauth-handoff-root153-threadseal-0428.py": "8272b182d77980fdf7e6f6ca539a3a2c6af56278ec793495d7601b222f08b376",
+      "/private/tmp/mcr-oauth-handoff-root153-sealprep-0424.py": "3519e02b44cf0d63e805b11f549f7f90a0468db11f3dbdf039e75ae09af51fe3",
+      "/private/tmp/mcr-oauth-handoff-root153-repairprep-0422.py": "d2d2ffd2e801c21843db954f423a3f52e516510ee5d17b7d78bb772a6c9415b7",
+      "/private/tmp/mcr-oauth-handoff-root153-prep-0407.py": "7460f03ce0b64fae36baa9e9da2786a23ae4e6885320e2a21e2c45a29fff67ca",
+      "/private/tmp/mcr-be03-oauth-12cc/ordinary_source.py": "9e892e7c925cf98bc72d19e8a174013ce611f124f7a9da0bbb5f9113010f45f1",
+      "/Users/lhs/Desktop/mcr-evidence/be38-policy-status-16e/ordinary_kernel_producer.py": "dbad10a747263fd134891a542dbddd05ee21557026d84fafee5af3a1f7f4a5d2",
+      "/Users/lhs/Desktop/mcr-evidence/be38-policy-status-16e/ordinary_control.py": "21cc4068550f2da7b2b9353d0bd0fb7f379be378b134467fee3474aea7861d52",
+      "/Users/lhs/Desktop/mcr-evidence/be38-policy-status-16e/ordinary-renewal.json": "7468d91201628ef82cc09a5784ae4117df4723cc9935f837165b64bddbea5058",
+      "/Users/lhs/Desktop/mcr-evidence/be38-policy-status-16e/ordinary_kernel_producer_160.py": "e52eed9b8cf6c639577e091cd987261f2b8649e4f49c5d849de0944a791309fa",
+      "/Users/lhs/Desktop/mcr-evidence/be38-policy-status-16e/ordinary_control_160.py": "4e10df88c5703d585173db4ef1f0a7ef43aba4be6b250c786d600efa4608b5ba",
+      "/Users/lhs/Desktop/mcr-evidence/be38-policy-status-16e/ordinary-renewal-160.json": "cfa8ba5346ec110e912e5310eadb0e80060e41274594d8990f7752feaaccf1aa",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/ordinary-preparation/98358-1793858514-76637-begin.json": "49c745801f4d70d8d63793fe7ef4df7112c960432ee35195e416e887cd3bb686",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/ordinary-preparation/98358-1793858514-76637-end.json": "eeee5e5371fffb2e005f3dcd99eb1f9908ec667a48806cf7436bfd003383309a",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/ordinary-78270-disposition.json": "9f689a98f03cf066f36266a8218f7c64856b54632acadcf7f3450605292fe7f0",
+      "/private/tmp/mcr-be03-oauth-12cc/ordinary-scope-extension0630-1793858552523555000.json": "67bace3f15e27869bf0e6d645b64cb427b5a9ef590c3507c064f76bc977b2430",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/prepare.py": "5d8f64a3dd2d5642f250df77a4d535ea2203e7f1d747a79ebadcccc3d8cddf52",
+      "/private/tmp/mcr-venue-notes-213-0122/ordinary-preparation-v4.py": "675f741eed52cc6eb82200ebf39b435c56001f25dfe07348985ab63487eb5ac0",
+      "/private/tmp/mcr-venue-notes-213-0122/diagnostic05/typed_ordinary.py": "0b1b19d7eb17612b15b15d45b2449cfc0977504ee95637db9516839ebbe4b359",
+      "/private/tmp/mcr-venue-notes-213-0122/ordinary-v4-history/87861-1793860225-369710/FULL.json": "ce019e771880ba29690549d8d843ba474089b9d1db04acf9677505dd1bee0001",
+      "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/pi08-finish-01/photo2-world-contract/ordinary-schema5-actual-kernel-handoff.json": "53445809cf56171872b47478485254270d23e689e64c551584f041eb4b5fec21",
+      "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/preparation-03.py": "cd2170cbdbf23cb1d1666f9b6db5f655fa9d90b7dd605ea3827230415c32906d",
+      "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/preparation-05.py": "d9fba5f34ad631d64bdd433003b690be8bf7ed52a17c96c6afd64ff9a438028a",
+      "/Users/lhs/Desktop/mcr-worktrees/art-map-cozy-v1/docs/mcr/art/evidence/photo2-world-display-v1/preparation-06.py": "df0b9b097887692df7a3b1d59a9a6e4ce417373e10d8dd98d209eddf4e390f13",
+      "/private/tmp/mcr-c06-parade-binding-6b5d-20261105/sourceprep.py": "6bd18ec2f7abc11e8665cab2eb37b0908652de8d38366effcea689a5519bf8e4",
+      "/private/tmp/mcr-c06-parade-binding-6b5d-20261105/ordinary-BEGIN-39087-1793861140-2781272.json": "45d002f5de98e61a52393865cd97b3c7c5a4ff108aa235659606d968825f940c",
+      "/private/tmp/mcr-c06-parade-binding-6b5d-20261105/ordinary-FULL-39087-1793861140-2781272.json": "c4be40cee3e2388a23254ee723ce41e971dcd1b75c56dd03eb0031c67464d4f1"
+    },
+    "priorPngCount": 9,
+    "priorPngBytes": 842387,
+    "familyNewBytes": 536870912,
+    "freshGrowthBytes": 4194304,
+    "minimumNewCarryBytes": 460711978,
+    "pngCap": 48,
+    "pngBytesCap": 16777216,
+    "qualifyCurrentMounting": false,
+    "strictModeOnly": false,
+    "skipPassedReceiver": true,
+    "pendingGrant": false,
+    "remainingCommands": [],
+    "planningAllFutureBytes": 3355443200,
+    "ordinaryFutureBytes": 2684354560,
+    "targetFutureBytes": 0,
+    "qualifyBe03Receiver": false,
+    "qualifyPolicy16eReceiver": false,
+    "futureProjection": {
+      "path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/resource-allocation-current.json",
+      "sha256": "f0e0c931b9d4661fcafb498bd5aeca68691a54ed0b3d6a12459ead09b4885f72",
+      "ownPhaseIncludedOnce": true,
+      "compilerOffersWithdrawn": true
+    },
+    "variant": "NEW_C06_FORWARD_IDENTITY_LOSSLESS_STORAGE_BOUNDARIES_AND_NEVER_RUN_INTEROP_AST",
+    "phaseOfferAliases": [
+      "DEFAULT-VENUE-HOST-INTEROP-SOURCE18-0654"
+    ],
+    "controlMetadataOnly": true,
+    "roundNewLimitBytes": 4194304,
+    "phaseRemainingUpperAcrossControlAndNativeBytes": 82063744,
+    "explicitInputPinAmendments": [
+      {
+        "path": "/private/tmp/mcr-be03-oauth-12cc/ordinary_source.py",
+        "priorSHA256": "2ef2036036e3470d0671f99b8342384e941c7ca2d7819650c94e576d7adb33ec",
+        "currentSHA256": "9e892e7c925cf98bc72d19e8a174013ce611f124f7a9da0bbb5f9113010f45f1",
+        "meaning": "Current source read as metadata-only; refresh input freshness only. No new identity profile/old PASS or expired booking revival."
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/prepare.py",
+        "priorSHA256": "01270a223b2e0dcf315d3ab32ddef1751114d4d813c39b55e7a1c9fe0a53a8b7",
+        "currentSHA256": "5d8f64a3dd2d5642f250df77a4d535ea2203e7f1d747a79ebadcccc3d8cddf52",
+        "meaning": "Current source read as metadata-only; refresh input freshness only. No new identity profile/old PASS or expired booking revival."
+      }
+    ],
+    "metadataCheckModule": "interop15-metadata.py",
+    "n213ActivityFull": {
+      "path": "/private/tmp/mcr-venue-notes-213-0122/ordinary-v4-history/87861-1793860225-369710/FULL.json",
+      "sha256": "ce019e771880ba29690549d8d843ba474089b9d1db04acf9677505dd1bee0001"
+    },
+    "pi08InterfaceHandoff": {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/pi08-finish-01/photo2-world-contract/ordinary-schema5-actual-kernel-handoff.json",
+      "sha256": "53445809cf56171872b47478485254270d23e689e64c551584f041eb4b5fec21"
+    },
+    "sourceTicketPredecessor": {
+      "owner": "01a1a207-f012-7343-a24b-12b9c544973f",
+      "path": "/private/tmp/mcr-gateway207-settings-28-enfm_kd9/be38/controls-0515/source08-1793860876399545000/FULL.json",
+      "sha256": "b81dca858cabc1facce9a77985953fbac1b716b5170d2b2630546161bcf248f5"
+    },
+    "acceptedUTC": "2026-11-05T06:57:26.193424+00:00",
+    "workDeadline": "2026-11-05T06:58:56.193424+00:00",
+    "deadline": "2026-11-05T06:59:26.193424+00:00"
+  },
+  "remainingOwned": [],
+  "privateTempAbsent": true,
+  "dependencyLinkAbsent": true,
+  "browserServerTargetResources": 0,
+  "supervisor": "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/default-interop-source18/supervisor.json",
+  "qualification": []
+}

@@ -1,0 +1,177 @@
+{
+  "task": "DEFAULT-VENUE-HOST-01",
+  "status": "DEVELOPER_VALIDATED_WAITING_PUBLICATION",
+  "qualifiedSource": "0dfff7599a999362bb377e784531c35d8932e1ae",
+  "frozenCanonicalReadset": "ea6027af478981376bbb25f6f80b5bcf347d87ae",
+  "currentDeclaredCanonicalPreimage": "8ccdeb0a753c4a5dab9bccc670efb195c51c0611",
+  "product": [
+    {
+      "path": "frontend/src/app/WorldShell.tsx",
+      "canonicalPreimageRevision": "8ccdeb0a753c4a5dab9bccc670efb195c51c0611",
+      "preimageSHA256": "52cf10918150f2186239d970cab6c6e2641732393226b3c5698ad7c4d6f5a2ef",
+      "postimageSHA256": "6a3a66050b654c9b4f452c08c23e276942547bd86945acec83f9d33493168906",
+      "qualifiedSource": "0dfff7599a999362bb377e784531c35d8932e1ae",
+      "unchangedSinceNative": true
+    },
+    {
+      "path": "frontend/src/app/router.tsx",
+      "canonicalPreimageRevision": "8ccdeb0a753c4a5dab9bccc670efb195c51c0611",
+      "preimageSHA256": "0ae6afcf6514a51757c3f18682502a8409c99a1e5c207cf4ed765268fb557a25",
+      "postimageSHA256": "35fcaa4b16007142f2be5b0e0e929b931bf45fbc85c727e038ac470efbcf4c8a",
+      "qualifiedSource": "0dfff7599a999362bb377e784531c35d8932e1ae",
+      "unchangedSinceNative": true
+    }
+  ],
+  "retainedSource": [
+    {
+      "round": "default-source02",
+      "source": "e286da391bbdd79968c9ef38d81ce3f0b1f3a27c",
+      "checks": "Seven focused mounting cases PASS; types5roots/944transitive/2360inputs/0diagnostics; lint0",
+      "overall": "PASS"
+    },
+    {
+      "round": "default-native04",
+      "checks": "Eight mounting cases printed PASS including StrictMode; command exit not retained",
+      "overall": "FAIL_UNCHANGED"
+    },
+    {
+      "round": "default-source13",
+      "source": "0f9825d7deb83e6dd3dc24b8e8eb9bf2bb875581",
+      "checks": "New receiver3/types944/AST exited0; product unchanged afterward",
+      "overall": "FAIL_UNCHANGED"
+    },
+    {
+      "round": "default-control-source14",
+      "status": "PASS_CONTROL_ONLY"
+    },
+    {
+      "round": "default-interop-source18",
+      "source": "308293537a841414143c67d29a9ce6f08512ec3e",
+      "status": "PASS_CHANGED_CONTROL_ONLY"
+    }
+  ],
+  "native": {
+    "round": "default-native17",
+    "actualAcceptEpoch": 1793863063.95517,
+    "actualFullEpoch": 1793863091.322387,
+    "fullSHA256": "3d44354815bfcafa2b0de2e44f441481cf81b6a1af19b13381a6d16121b07556",
+    "reportSHA256": "353b8d014138ad811df9d0b425f62813903479900af478bf034e74604251c30a",
+    "commands": [
+      {
+        "label": "birth-calendar-regression",
+        "argv": [
+          "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3",
+          "-B",
+          "/Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/birth-calendar-tests.py"
+        ],
+        "pid": 97187,
+        "exit": 0
+      },
+      {
+        "label": "native-driver-syntax",
+        "argv": [
+          "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+          "--check",
+          "e2e/venue-root-binding/default-native.mjs"
+        ],
+        "pid": 97282,
+        "exit": 0
+      },
+      {
+        "label": "native-fixture-lint",
+        "argv": [
+          "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+          "/Users/lhs/Desktop/mcr/frontend/node_modules/oxlint/bin/oxlint",
+          "--deny-warnings",
+          "e2e/venue-root-binding/default-native.mjs",
+          "e2e/venue-root-binding/default-preview.ts",
+          "e2e/venue-root-binding/default-readset.mjs"
+        ],
+        "pid": 97336,
+        "exit": 0
+      },
+      {
+        "label": "default-venue-root-native",
+        "argv": [
+          "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+          "e2e/venue-root-binding/default-native.mjs"
+        ],
+        "pid": 97354,
+        "exit": 0
+      }
+    ],
+    "status": "PASS_FUNCTIONAL_VISUAL_OPEN",
+    "widths": [
+      360,
+      390,
+      430
+    ],
+    "browser": "156.0.8078.80",
+    "behavior": [
+      "Actual UI login through frozen canonical main/Auth/router",
+      "One incumbent Phaser canvas and peakone presence per shell",
+      "Approved1024x1280 source image with single manifest/JPEG read through actual StrictMode",
+      "DefaultMap routing and provider mounting",
+      "Landmark focus/Escape return",
+      "Back retains Friends and same image/canvas",
+      "Unauthorized live capabilities fail closed",
+      "Canonical signout releases canvas/socket/blob URLs"
+    ],
+    "pageErrors": [],
+    "resourceFailures": [
+      {
+        "width": 360,
+        "url": "http://127.0.0.1:5384/@fs/private/tmp/mcr-venue-root-8hpryxx2/default-venue-vite/deps/react-dom_client.js?v=57e9a395",
+        "failure": "net::ERR_ABORTED"
+      },
+      {
+        "width": 360,
+        "url": "http://127.0.0.1:5384/@fs/private/tmp/mcr-venue-root-8hpryxx2/default-venue-vite/deps/react-router-dom.js?v=e9cf8775",
+        "failure": "net::ERR_ABORTED"
+      }
+    ],
+    "resourceFailureDisposition": "Two recorded360px dependency requests aborted; complete login/journey at all widths passed, pageErrors empty. Events retained, not suppressed.",
+    "inspectedImages": 18,
+    "pngBytes": 11085898,
+    "priorPngCount": 9,
+    "priorPngBytes": 842387
+  },
+  "resources": {
+    "peaks": {
+      "processes": 12,
+      "rss": 3572137984,
+      "temporary": 30957210,
+      "durable": 39439968,
+      "new": 505069319,
+      "whole": 16860085330
+    },
+    "minimumFree": 16329277440,
+    "guardianBreach": null,
+    "guardianSamples": 21,
+    "cleanupErrors": [],
+    "remainingOwned": [],
+    "privateTempAbsent": true,
+    "dependencyLinkAbsent": true,
+    "browserServerTargetResources": 0,
+    "cumulativeTemporaryBytes": 385556716,
+    "release": "Literal FULL sent directly to Community22 and21d before diagnostics/inspection"
+  },
+  "limits": [
+    "Visual parity OPEN, four material comparison rows retained",
+    "Controlled HTTP/C05 only; live backend/database/multiuser/device NOT qualified",
+    "Native pin is frozen ea6027 plus exact two host overrides; latestcombinedmaster runtime NOT claimed",
+    "Missing production clock/Friends/physical/meeting/Notes authorization producers are not fabricated",
+    "Original Avatar task disposition and historical BLOCKED persistent goal are separate and unchanged"
+  ],
+  "preserved": [
+    "Selected art/C06/AR03 unchanged",
+    "docs/source unchanged",
+    "No backend/contracts/assets/manifests/lockfile/Auth/Phaser source changes"
+  ],
+  "custody": {
+    "soleWriter": "01a1a1fe-1eed-7d12-a247-879cd521e0ec",
+    "publisher": "01a1a5d9-332b-7822-a8f7-412e295fa211",
+    "routing": "Direct exact portable postimages, no king/SL review or ACK",
+    "writerReturn": "On canonical publication, exact host files return to Root153; no further writing after handoff"
+  }
+}

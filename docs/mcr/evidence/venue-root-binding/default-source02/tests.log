@@ -1,0 +1,10 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/art-runtime/frontend
+
+·······
+
+ Test Files  1 passed (1)
+      Tests  7 passed (7)
+   Start at  13:00:48
+   Duration  1.64s (transform 792ms, setup 0ms, import 1.07s, tests 224ms, environment 263ms)
+

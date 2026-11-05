@@ -1,0 +1,27 @@
+{
+  "task": "DEFAULT-VENUE-HOST-NATIVE16-0710",
+  "status": "FAIL_BEFORE_PAYLOAD",
+  "source": "bdc165f33c43feb5f2c9a539738e13d36c068319",
+  "actualAcceptEpoch": 1793862787.603195,
+  "actualFullEpoch": 1793862789.521823,
+  "fullSHA256": "4af9dc9bbd78038b36820f61d72d3102dd3ea54cbf8223e8c8e82293f47bae8b",
+  "cause": "QA06 finite roots89840/89850 had Nov05 presentation versus retained psNov5; textual day padding rejected before payload.",
+  "commands": [],
+  "browser": "NOT_RUN",
+  "newCaptures": 0,
+  "peaks": {
+    "processes": 3,
+    "rss": 69500928,
+    "temporary": 64,
+    "durable": 26961856,
+    "new": 462033645,
+    "whole": 16355016011
+  },
+  "minimumFree": 17019543552,
+  "cumulativeTemporaryBytes": 354599506,
+  "resourcesRemaining": [],
+  "privateTempAbsent": true,
+  "dependencyLinkAbsent": true,
+  "release": "Literal FULL routed directly to Community204 and21d before diagnostics; no restart.",
+  "successor": "Calendar-value comparison and actual retained descriptor negatives prepared, NOT_RUN; distinct grant required."
+}
