@@ -1,0 +1,136 @@
+{
+  "at": 1793858745.546402,
+  "status": "QUALIFIED_ACTUAL_LOGICAL_ZOOM_ONLY_FULL_PHOTO2_OPEN",
+  "source": "60ccb4bc8a7a0189697704bbf6565c6f421a1ab3",
+  "inputSHA256": "ca28af24a732eb25f7e1735ecb26ecac7dde77eba7895e1714b8be39ea50dc3e",
+  "actualAccept": 1793858451.278763,
+  "actualFull": 1793858464.800849,
+  "actualToolExit": 0,
+  "bothLive": {
+    "primary": 93033,
+    "guardian": 93117,
+    "at": 1793858452.407847,
+    "initial": {
+      "pid": 93117,
+      "at": 1793858452.366205,
+      "sample": {
+        "free": 21235707904,
+        "all": 3,
+        "rss": 55558144,
+        "new": 778051584,
+        "whole": 5473333248,
+        "pids": [
+          93033,
+          93117,
+          93200
+        ]
+      }
+    }
+  },
+  "resources": 0,
+  "kernelPrimary": {
+    "pid": 93033,
+    "present": false,
+    "observedAtEpoch": 1793858745.54644,
+    "method": "proc_pidinfo PROC_PIDTBSDINFO"
+  },
+  "kernelGuardian": {
+    "pid": 93117,
+    "present": false,
+    "observedAtEpoch": 1793858745.546453,
+    "method": "proc_pidinfo PROC_PIDTBSDINFO"
+  },
+  "logicalSteps": [
+    {
+      "logical": 2,
+      "actual": 1.3082191780821917
+    },
+    {
+      "logical": 3,
+      "actual": 1.9623287671232874
+    },
+    {
+      "logical": 4,
+      "actual": 2.6164383561643834
+    },
+    {
+      "logical": 5,
+      "actual": 3.2705479452054793
+    },
+    {
+      "logical": 6,
+      "actual": 3.924657534246575
+    },
+    {
+      "logical": 7,
+      "actual": 4.578767123287671
+    },
+    {
+      "logical": 8,
+      "actual": 5.232876712328767
+    },
+    {
+      "logical": 7,
+      "actual": 4.578767123287671
+    },
+    {
+      "logical": 6,
+      "actual": 3.924657534246575
+    },
+    {
+      "logical": 5,
+      "actual": 3.2705479452054793
+    },
+    {
+      "logical": 4,
+      "actual": 2.6164383561643834
+    },
+    {
+      "logical": 3,
+      "actual": 1.9623287671232874
+    },
+    {
+      "logical": 2,
+      "actual": 1.3082191780821917
+    },
+    {
+      "logical": 1,
+      "actual": 0.6541095890410958
+    }
+  ],
+  "fit": 0.6541095890410958,
+  "actorAnchorsUnchanged": true,
+  "postimagesExact": true,
+  "browserErrors": [],
+  "personalInspection": {
+    "images": [
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/pi08-finish-01/native11/world-zoom-8.png",
+        "width": 390,
+        "height": 775,
+        "bytes": 59992,
+        "sha256": "1da49a13230dd3aa31d1b068f0b51d92630e1836803780830f10c85bd9341e4d",
+        "personallyInspected": true
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/pi08-finish-01/native11/world-zoom-restored.png",
+        "width": 390,
+        "height": 775,
+        "bytes": 377572,
+        "sha256": "ac030ca952dbbda688eea97cfa522bdc53c99b6f264fee653430f20c07fd4ff9",
+        "personallyInspected": true
+      }
+    ],
+    "finding": "8x enlarges actual scenery under unchanged controls; restored1x returns the same viewport and native actor feet. Existing quality_v6 materials/layout still differ materially from Photo2. No new Photo2 art/profile displayed.",
+    "shareSafety": "SHARE_SAFE synthetic fixture identities only, approved public art; no private participants, credentials, GPS/location or physical device capture",
+    "shutter": "Exact shutter UNRECORDED; original measured runwindow 2026-11-05 15:00:51.279-15:01:04.801 KST, not filesystemmtime",
+    "runtime": "ACTUAL_DEFAULT_APP_CONTROLLED_HTTP_C05_NOT_LIVE; actual default App/Auth/Phaser with synthetic HTTP/C05/preWorldpolicy, NOT_LIVE/productionAdmittedfalse; DPR1; no GPS/device evidence"
+  },
+  "retained": "Native08/09 matrix and Source01eight/Source02three/Source04one greens unchanged, no replay",
+  "familyPngMetadata": {
+    "countAcrossTwoOwnedEvidenceRoots": 92,
+    "bytesAcrossTwoOwnedEvidenceRoots": 16760684,
+    "declaredOriginalCap": "96PNG24MiB; Native11only2NEWPNG2MiB"
+  },
+  "open": "FullPI08/Photo2/art/renderer/nativeadmission remainsACTIVE; no counts/venue/live/device closure"
+}

@@ -1,0 +1,43 @@
+{
+  "at": 1793858451.271822,
+  "status": "NATIVE11_PREACCEPT_READY_NOT_ACCEPT",
+  "predecessorB1": {
+    "offer": "PI11-NATIVE06-0555",
+    "actualFullEpoch": 1793858328.697642,
+    "source": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a26e-1de2-7b41-a294-c9a79cfded9b.json"
+  },
+  "slotAuthority": "Literalallocator21d B1succession PI11Native06 -> PI08Native11 -> CommunityNative17; no simultaneouspreflight newB",
+  "projectionSHA256": "6282a7e654f702a9473ffc9a94d1e8e282090de297c2b27c93e2399ee1c9c93b",
+  "globalUpper": 9730785280,
+  "ownPhaseOnce": 33554432,
+  "otherMiB": 9248,
+  "freshExcesses": [],
+  "snapshot": {
+    "observedAtEpoch": 1793858451.266332,
+    "psSnapshotSHA256": "30eeed83cf3d94eb8b6d17aa02d7d8f5f3f37f6eeec4efa71bcdb552b6dc5423",
+    "owners": [
+      "01a1a5d9-6955-7820-bcd4-8e0a21629aa2"
+    ],
+    "ordinaryActualPids": [
+      93033,
+      93109
+    ],
+    "reservedProcesses": 24,
+    "reservedRSSBytes": 3758096384,
+    "actualPids": [
+      93033,
+      93109
+    ],
+    "actualRSSBytes": 28704768,
+    "otherNewUpperBytes": 2684354560,
+    "receiptReadConsistency": {
+      "attempts": 1,
+      "stableRevisionSHA256": "97dd0c6a23c9c8a0c2ea8189fa65943ab1724f9096192d6b2f568f426d1c795a",
+      "unstableObservations": [],
+      "boundary": "Every returned claim/cap/PID/future passed the unchanged strict reader against a stable receipt revision; no reservation released from absence"
+    }
+  },
+  "free": 21245399040,
+  "source": "60ccb4bc8a7a0189697704bbf6565c6f421a1ab3",
+  "inputSHA": "ca28af24a732eb25f7e1735ecb26ecac7dde77eba7895e1714b8be39ea50dc3e"
+}

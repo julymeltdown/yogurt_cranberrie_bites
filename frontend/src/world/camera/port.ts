@@ -19,7 +19,7 @@ export function createCameraControl(view: WorldCamera, foot: Point, zoom: number
     project: (client: Point) => disposed || !valid(client) ? null : view.project(client),
     unproject: (point: Point) => disposed || !valid(point) ? null : view.unproject(point),
     setZoom(value: number) { if (disposed || !Number.isFinite(value) || value < 1 || value > 8) return false; currentZoom = value; view.center(following ? latest : lookedAt, currentZoom); return true },
-    read: () => ({ following, camera: view.read() }),
+    read: () => { const camera = view.read(); return { following, camera: camera ? { ...camera, zoom: currentZoom } : null } },
     dispose() { disposed = true },
   }
 }

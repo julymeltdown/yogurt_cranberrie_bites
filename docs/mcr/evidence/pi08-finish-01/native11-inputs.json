@@ -1,0 +1,139 @@
+{
+  "task": "PI08-LOGICAL-ZOOM-FOLLOWUP",
+  "canonicalSource": "7b81bf62d22b48a1ea653a1a84fae199c2b1d837",
+  "preservedParent": "6c12f4882123c8dfc51afb57e59cb5f69de3c910",
+  "implementationAndDrivers": [
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/index.tsx",
+      "bytes": 4748,
+      "sha256": "07a665805caf24baba0655430bf3ea9ff1782ef5f0bcdbc23503654ecc24f1a5"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/world-context.tsx",
+      "bytes": 1897,
+      "sha256": "80e3f26bb9b9f606b55ac609ba76e157b67f002734758a8b215c98b967169836"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/world-hud.css",
+      "bytes": 6850,
+      "sha256": "7be988a5da2ecb87a2fbeeed6d26b62f84c312460d2e81f4bd599c5763b86e44"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/git-source.mjs",
+      "bytes": 4462,
+      "sha256": "061edf54b879a53301f68c38549b1c4d8cd3e35b2c95eb450ffa3f06c3a0debc"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/fixture.mjs",
+      "bytes": 1865,
+      "sha256": "09ca8f8ad16a0f42428ec50cb92f217e36076a0b6fec33277f1beeb295c51ed6"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/preview.html",
+      "bytes": 357,
+      "sha256": "dd40a008e8396972ec2f81816873c8b24860d0b1102892124e5ba48ef1863f7b"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/native-zoom.mjs",
+      "bytes": 8694,
+      "sha256": "55e1cd44eac1251e7722f2dd5c3b3658ab23442dec479b536bac03c4621d7bb7"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/native11-round.py",
+      "bytes": 15262,
+      "sha256": "3ba8e87df68991542c1d504d9d3e08a59c1c8c48a5664022037555bca542e3c9"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/resource_snapshot.py",
+      "bytes": 4172,
+      "sha256": "ec2338c56bc59704399237ecb35f1f23602a8e6543aa31e1fbc53ad77ebcb6bb"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/resource_guard.py",
+      "bytes": 385,
+      "sha256": "65b6b2d90cdd682f012859f92e5bd5c9f4098f30fef82a8b6acb45b74d4cdae6"
+    },
+    {
+      "path": "frontend/src/world/scenes/MapScene.ts",
+      "bytes": 19666,
+      "sha256": "d60d66fa29770ec3639250e65f988cbea288632401bac0eb87873b606df6b9d6"
+    },
+    {
+      "path": "frontend/src/world/camera/port.ts",
+      "bytes": 1856,
+      "sha256": "3ddca1263288c40edab61f02bfd4a0649bb05c5378e4a9a4d94298f400bdbd3b"
+    }
+  ],
+  "borrowedReadonlyGuardian": "frontend/src/features/gift-discovery/__tests__/parade-ink/guardian.py",
+  "borrowedReadonlyMembership": "frontend/src/features/gift-discovery/__tests__/parade-ink/membership.py",
+  "wholeRootsMetadata": "docs/mcr/evidence/parade-ink-giveaway/native-whole-census.json",
+  "node": {
+    "path": "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+    "sha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a"
+  },
+  "chromeVersion": "156.0.8078.80",
+  "reference": {
+    "sha256": "9e7f17a666e1ecfc738a14b75bb3a166235a05c401f206aa24f26cf7463cbc27",
+    "crop": [
+      436,
+      60,
+      832,
+      847
+    ],
+    "scale": "390/396"
+  },
+  "retainedBehavior": "Two JSX leaves remain exact canonical source; old qualified10HUD tests retained. CSS geometry only, source checks/native fresh.",
+  "borrowedReadonlyGuardianSha256": "1b56f5723453a165939752b78c0660bd90811af9199dddc4c127f35c7f613d11",
+  "borrowedReadonlyMembershipSha256": "d2e52f549c07977265b131a1ed2a178b805ddef174fdc55c6d339dc8f370ae67",
+  "wholeRootsMetadataSha256": "9ef02fcd19a52f0fc1350c38afbdd35f7c7916d0d9ac46e2b10e111f2fdc8332",
+  "round": "native09",
+  "priorRound": {
+    "offer": "PI08-FINISH-NATIVE08-0425",
+    "acceptedAtEpoch": 1793853389.9536672,
+    "actualFullEpoch": 1793853403.261356,
+    "rawStatus": "PASS",
+    "retained": "Original full App matrix, focus/era/safe-area/withdrawal, source/hash/control/geometry greens retained; no full replay.",
+    "nativeReportSHA256": "f8bf43bf201ec480661d4a0203f61e5d52293c8a8ab6f8128eb736bf06bb3ef1",
+    "NEWMax": 691036160,
+    "WHOLEMax": 5472190464,
+    "post08OrdinaryGitAllocatedUpperBytes": 7372800,
+    "allHigherRetained": true,
+    "necessaryDifference": "Only exact display fallback cover/look-ahead and owned native changed-frame proof; same frozen authoritative objects/actors/geometry."
+  },
+  "allocation": {
+    "offer": "PI08-FINISH-NATIVE09-0453",
+    "cumulativeFamilyNEWCapBytes": 771751936,
+    "carriedNewBytes": 702545920,
+    "futureNativePositiveUpperBytes": 44040192,
+    "physicalNativeRoundNEWCapBytes": 746586112,
+    "otherOwnSourceFutureUpperBytes": 16777216,
+    "familyControlAndHigherMarginBytes": 8388608,
+    "acceptBeforeUTC": "2026-11-05T05:30:00Z",
+    "ordinarySameUnspent64ExpiryUTC": "2026-11-05T06:00:00Z",
+    "scope": "Only changed native syntax/scoped display lint then new390/360/430/short display frames/comparisons; <=10PNG6MiB/inclusive96PNG24MiB. Retain08originalmatrix. Entire736family counted forfloors/current reservation; both primary/guardian physicalnativecap712 limits nativefresh42; futureSource16 onlyonce. Newfirst afterCommunity12actualfact/freshB2G4/current12GiB conservativeotherfutures."
+  },
+  "collectorQualification": "Eight Native05 and two Native06 collector cases PASS retained. Strict stable semantic sampling unchanged.",
+  "controlledPolicyQualification": "TEST_ONLY exact canonical synthetic release fixture plus protected GET event/version/build/Bearer recognition. Unknown requests return UNAVAILABLE. No production recognition or provider/Auth bypass.",
+  "literalSharedHunkTransfer": {
+    "grantor": "Root153",
+    "receivingBranch": "codex/mcr-fe-PI08-finish-01",
+    "path": "frontend/src/world/scenes/MapScene.ts",
+    "preimageBlob": "845fe9e162919d5894e3a23ff28283b0b0f23e2c",
+    "function": "refreshCamera",
+    "hunk": "Only recognized-reference fallback expression appended to existing spatialV5CameraPresentation at original line145. Root retainedwriterSTOPPED; receivingacceptance relayed beforeedit. Existingfoot/transforms/geometry/IDs/assets/characters unchanged."
+  },
+  "stage1IndependentOffer": "PI08-DISPLAY-CONTRACT-SOURCE01-0456: two new leaves only; fresh16MiB source insideSAME736family, unaccepted and unstarted; not a dependency of this necessary09.",
+  "classification": "ACTUAL_DEFAULT_APP_CONTROLLED_HTTP_C05_ONLY_NEW_ZOOM_FLOW",
+  "retainedEvidence": [
+    "native08/native.json",
+    "native09/native.json",
+    "source01/round.json",
+    "source02/round.json"
+  ],
+  "currentReadsetNote": "Only newzoom driver with literal transferred MapScene+control.read postimages; existing profile assets/sources immutable7b81; no newPhoto2art loaded",
+  "offer": "PI08-ZOOM-NATIVE11-0532",
+  "phaseBoundary": "Distinctunused eligibility after Native10 preacceptNOACCEPT; same32MiBphaseonce, noextra32 oroldmatrix/source replay",
+  "scope": "ActualZoom +/- logical1through8through1/lowerboundcontinuity only; controller prospective futurepositive correction; max2NEWPNG2MiB within original96PNG24MiB",
+  "capacityAmendment": "Literalallocator21d SAME768->784MiB(+16only), noadditional32phase; Native11B1ONLYafterPI11Native06literalFULL/unusedyield; accept06:45",
+  "ordinaryTimeAmendment": "Literal21d SAMEunspent64MiB through06:30, noreset/new64"
+}
