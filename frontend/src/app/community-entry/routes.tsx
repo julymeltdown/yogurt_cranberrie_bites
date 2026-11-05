@@ -7,8 +7,10 @@ import { GiftPickup } from '../../features/gift-pickup'
 import { canonicalId } from '../routes'
 import { createCommunityEntry, unavailableCommunityEntry, type CommunityEntry } from './bridge'
 import type { CommunityEntryAuth, CommunityEntryRelease } from './ports'
+import { usePickupMedia, type PickupMediaLease } from './pickup-media'
 
 const Context = createContext<CommunityEntry | null>(null)
+const CapturedContext = createContext<PickupMediaLease | null>(null)
 const noSubscribe = () => () => {}, empty = () => unavailableCommunityEntry
 /** Mount inside the existing community owner, outside route panels. No new Auth/query/world owners. */
 export function CommunityEntryProvider({ auth, release, children }: {
@@ -20,7 +22,8 @@ export function CommunityEntryProvider({ auth, release, children }: {
     return () => entry.dispose()
   }, [auth, release])
   const current = owner?.auth === auth && owner.release === release ? owner.entry : null
-  return <Context value={current}>{children}</Context>
+  const captured = current && owner ? { auth: owner.auth, release: owner.release, entry: current } : null
+  return <Context value={current}><CapturedContext value={captured}>{children}</CapturedContext></Context>
 }
 export function useCommunityEntry() {
   const entry = useContext(Context)
@@ -74,7 +77,9 @@ function GiftPickupTarget({ giveawayId, reservationId }: { readonly giveawayId?:
   const { entry, state } = useCommunityEntry()
   const controller = useSelection(`pickup:${giveawayId ?? ''}:${reservationId ?? ''}`, e => e.giftPickup(giveawayId, reservationId), attempt)
   const recovery = state.phase === 'available' ? entry?.pickupRecovery() ?? null : null
-  return controller ? <GiftPickup controller={controller} /> : recovery
+  const lease = useContext(CapturedContext)
+  const renderImage = usePickupMedia(controller, state.phase === 'available' && lease?.entry === entry ? lease : null)
+  return controller ? <GiftPickup controller={controller} renderImage={renderImage} /> : recovery
     ? <PickupRecovery controller={recovery} retry={() => setAttempt(v => v + 1)} /> : <Unavailable />
 }
 function PickupRecovery({ controller, retry }: { controller: NonNullable<ReturnType<CommunityEntry['pickupRecovery']>>; retry: () => void }) {

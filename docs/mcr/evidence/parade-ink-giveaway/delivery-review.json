@@ -1,0 +1,299 @@
+{
+  "status": "DEVELOPER_QUALIFIED_FOR_SCOPED_PUBLICATION",
+  "reviewedAtUTC": "2026-11-05T02:35:42.445856+00:00",
+  "sourceQualifiedCommit": "41d45a48ea11a64c7b5688385c2990a15dbbf898",
+  "base": "f025bdb6fb409f3b7706e475dfabb5f3d21fe168",
+  "scope": "PI04 G01-G07 / FE24-FE26 / QA06 presentation only; same controllers/contracts/privacy/inventory/journals/one-time collection",
+  "publication": "READY; exact canonical publication proof must follow publisher412e uptake",
+  "historicalPersistentGoal": "BLOCKED remains unchanged; this record does not complete/reset it",
+  "foundation": {
+    "commit": "80e6d082fdebcd237f64264e2eebb3eedbc5abdc",
+    "contract": "pi01-photo2-v1",
+    "files": 18,
+    "readsetSha256": "4360966a5135644942bc4267bfe00477ccd83182510791f8c2d4acb591152c72"
+  },
+  "sourceValidation": {
+    "baseline": "unit-source03:48tests/8filesPASS; fixture types/lint0",
+    "affected": "source08:22tests/4filesPASS; relevant strict types/lint0; nine resource casesPASS",
+    "typedSourceReuse": "Typed product/fixture source unchanged since respective qualified candidates; later product changes are scoped CSS only",
+    "resourceChecks": "Ten prior cases retained; two newly affected COMPLETED/live-observation cases PASS in Native12. No blanket state widening."
+  },
+  "nativeValidation": {
+    "native06": "32 route/state positives and36PNGs; overallFAIL retained; only sixteen unchanged-state images reused",
+    "native10": "14 affected cases and21PNGs; all three widths for browse/reserve/manage, inventory keyboard scroll; overallFAIL retained wrong covered-panel socket oracle",
+    "native12": {
+      "status": "PASS",
+      "cases": [
+        {
+          "name": "detail-approved-portrait",
+          "width": 390,
+          "status": "PASS",
+          "metrics": {
+            "width": 64,
+            "height": 64,
+            "fontSize": "18px",
+            "lineHeight": "22px",
+            "overflow": false,
+            "text": ""
+          },
+          "classification": "Exact admitted selected-source portrait; immutable f025 release and atlas"
+        },
+        {
+          "name": "detail-unavailable-portrait",
+          "width": 390,
+          "status": "PASS",
+          "metrics": {
+            "width": 368,
+            "height": 18,
+            "fontSize": "14px",
+            "lineHeight": "18px",
+            "overflow": false,
+            "text": "Character unavailable"
+          },
+          "classification": "TEST_ONLY actual asset failure; no identity substitution"
+        }
+      ],
+      "readsetSha256": "b96380fef05d381e4d19a75b033acbce3444928be7368ff32d7d36165a01b260",
+      "acceptedEpoch": 1793845827.617125,
+      "actualFullEpoch": 1793845838.240406,
+      "CSSViewport": "390x844, DPR1; earlier affected widths360/390/430",
+      "browser": "Chrome156.0.8078.80",
+      "pageErrors": [],
+      "foundationUnchanged": true
+    },
+    "WorldPolicy": "Immutable f025 world/composition/index.ts201-208 keeps one presence while panel covers engine; only document backgrounding withdraws it",
+    "WorldActual": {
+      "resumed": "one live socket/one canvas",
+      "covered": "engine hidden, host inert, same canvas and one existing presence",
+      "backgrounded": "phase suspended/zero active socket/same canvas",
+      "foregrounded": "one active socket/peak1/same canvas, two sequential sockets total"
+    },
+    "familyScreenshots": {
+      "count": 66,
+      "bytes": 3398415
+    },
+    "selectedPublicationScreenshots": 39,
+    "syntheticBoundary": "Real default router/providers/controllers/renderer with TEST_ONLY HTTP/C05/clock/platform events, not live service or device qualification"
+  },
+  "visualDisposition": {
+    "ownerInspection": "All21 Native10 captures/comparisons and both Native12 portrait captures personally inspected; unchanged Native06 retained-state images inspected in original round",
+    "row": {
+      "actual": [
+        368,
+        120
+      ],
+      "normalizedReference": [
+        368,
+        112
+      ],
+      "image": 92,
+      "exception": "44px accessible controls account for additional row height; variable text wraps naturally"
+    },
+    "reservation": {
+      "actual": [
+        368,
+        110
+      ],
+      "normalizedReference": [
+        368,
+        112
+      ],
+      "image": 96,
+      "disposition": "Photo beside title/stock/time/quantity/confirm; no material fixed-layout deviation remains"
+    },
+    "portraits": "Actual admitted64x64 portrait; actual asset-unavailable fallback368x18 at14/18, no overflow or replacement identity",
+    "inventory": "480px minimum table inside keyboard-focusable horizontal scroll, all360/390/430 checks pass",
+    "references": "Photo2 palette/chrome; Photo1 Giveaway/reservation anatomy; original SHA-pinned crops, width normalization/top-left/50% overlay, no broad masks or similarity acceptance score",
+    "exceptions": [
+      "Single-item quantity fixed at1 with disabled adjustments; no new quantity API",
+      "Missing authorized media retains honest No photo/unavailable state",
+      "Reservation uses current authorized time window; public place label/reference remains in discovery/detail; no invented place label or private plan"
+    ]
+  },
+  "physicalAuthority": "Default app has no reviewed pickupPlace/Meeting producer; private plan/code remains honestly unavailable. Masked positive code fixture is TEST_ONLY and does not close IN02/physical/device/live backend gates.",
+  "noProductMutation": "No Auth/model/controller/contract/journal/World/art/foundation changes; no new owner or fetcher from presentation; no era preference change",
+  "selectedScreenshots": [
+    "docs/mcr/evidence/parade-ink-giveaway/native10/browse-360.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/browse-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/browse-430.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/comparison-reservation-side-by-side-overlay.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/comparison-row-normalized-overlay.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/comparison-row-side-by-side.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/create-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/create-short-validation-focus-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/detail-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/manage-360.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/manage-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/manage-430.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/owner-inventory-360.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/owner-inventory-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/owner-inventory-430.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/pending-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/reserve-360.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/reserve-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/reserve-430.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/sold-out-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/uncertain-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native12/detail-approved-portrait-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native12/detail-unavailable-portrait-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native06/activity-360.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native06/activity-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native06/activity-430.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native06/create-360.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native06/create-430.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native06/pickup-360.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native06/pickup-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native06/pickup-430.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native06/loading-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native06/error-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native06/expired-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native06/cancelled-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native06/owner-claim-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native06/claimed-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native06/conflict-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native06/code-qualified-component-390.png"
+  ],
+  "history": {
+    "archive": "pre-publication-history.md",
+    "archiveSha256": "f5d68200f607629d9b1afa88999698944218c2ddc2d28781bd5e4a0027bd9b76",
+    "storage": "All failed and partial raw rounds preserved unchanged on owner branch; only relevant final/reused evidence published",
+    "closedRounds": [
+      {
+        "path": "docs/mcr/evidence/parade-ink-giveaway/checks/round.json",
+        "sha256": "a73d9261372ec0e897ee943606c5e6b04989fc4153a2daa830a6cff198afd82a",
+        "status": "FAIL",
+        "actualFullEpoch": null,
+        "acceptedEpoch": 1793836492.511,
+        "elapsedSeconds": 5.56
+      },
+      {
+        "path": "docs/mcr/evidence/parade-ink-giveaway/native/round.json",
+        "sha256": "6987e5437c0ea878c2b7a1b6d940a5ab2690810bc01084c8e57191919355e381",
+        "status": "FAIL",
+        "actualFullEpoch": null,
+        "acceptedEpoch": 1793838342.523,
+        "elapsedSeconds": 55.27
+      },
+      {
+        "path": "docs/mcr/evidence/parade-ink-giveaway/native02/round.json",
+        "sha256": "fbd55ee292265877b582d0016a870eefb49ba9ba83ac2afb2ca7847a0b592273",
+        "status": "FAIL",
+        "actualFullEpoch": null,
+        "acceptedEpoch": 1793839375.004746,
+        "elapsedSeconds": 34.11
+      },
+      {
+        "path": "docs/mcr/evidence/parade-ink-giveaway/native03/round.json",
+        "sha256": "871b0ffb829771512fb1e24d71072dc9b400b3ca3313a897f7118dab8d1e4024",
+        "status": "FAIL",
+        "actualFullEpoch": null,
+        "acceptedEpoch": 1793840112.374063,
+        "elapsedSeconds": 20.63
+      },
+      {
+        "path": "docs/mcr/evidence/parade-ink-giveaway/native04/round.json",
+        "sha256": "2c2f97c446a98c2cbc886dd251e18d9b8361046891ab19887c8c9a0bb10330a4",
+        "status": "FAIL",
+        "actualFullEpoch": 1793841033.064967,
+        "acceptedEpoch": 1793841026.5110788,
+        "elapsedSeconds": 6.36
+      },
+      {
+        "path": "docs/mcr/evidence/parade-ink-giveaway/native05/round.json",
+        "sha256": "34e0dd810c59ad2bf0b88624f6370cd3a061a623bae287b24ef30ee384d1b236",
+        "status": "FAIL",
+        "actualFullEpoch": 1793841250.763399,
+        "acceptedEpoch": 1793841234.203882,
+        "elapsedSeconds": 16.34
+      },
+      {
+        "path": "docs/mcr/evidence/parade-ink-giveaway/native06/round.json",
+        "sha256": "49fddc401bc61c8d6e559bd7c9ff0e9503feca6ac5a112100a585f84b713ed80",
+        "status": "FAIL",
+        "actualFullEpoch": 1793841435.528896,
+        "acceptedEpoch": 1793841373.679795,
+        "elapsedSeconds": 61.64
+      },
+      {
+        "path": "docs/mcr/evidence/parade-ink-giveaway/native07/round.json",
+        "sha256": "0a7c4596878242bb34a0a7beb9b791d30e40f3ef04881da9fb671c2b2f81eaae",
+        "status": "FAIL",
+        "actualFullEpoch": 1793842859.0936162,
+        "acceptedEpoch": 1793842842.761027,
+        "elapsedSeconds": 16.22
+      },
+      {
+        "path": "docs/mcr/evidence/parade-ink-giveaway/native08/round.json",
+        "sha256": "8a07d355a188a75d7ccec4fc599f8e883f38cacf5f4fd2e7a9b4aad4441727ad",
+        "status": "FAIL",
+        "actualFullEpoch": 1793843335.636333,
+        "acceptedEpoch": 1793843331.9394948,
+        "elapsedSeconds": 3.59
+      },
+      {
+        "path": "docs/mcr/evidence/parade-ink-giveaway/native09/round.json",
+        "sha256": "fdac52beea016e8cb4d35f888527610973a3b54d6a448c4c9d928220c09198b9",
+        "status": "FAIL",
+        "actualFullEpoch": 1793844118.570188,
+        "acceptedEpoch": 1793844117.415787,
+        "elapsedSeconds": 1.03
+      },
+      {
+        "path": "docs/mcr/evidence/parade-ink-giveaway/native10/round.json",
+        "sha256": "a5c55bc582e2f89c80739cdbe27fdf8f273dfad98a5456dfee3ca75a5c51be1b",
+        "status": "FAIL",
+        "actualFullEpoch": 1793844589.869216,
+        "acceptedEpoch": 1793844538.58906,
+        "elapsedSeconds": 51.18
+      },
+      {
+        "path": "docs/mcr/evidence/parade-ink-giveaway/native11/round.json",
+        "sha256": "ed883d021df2aa559c4d4ed62ec57ffa2be7488da4bbba3e6237af9c0de6f399",
+        "status": "FAIL",
+        "actualFullEpoch": 1793845226.308556,
+        "acceptedEpoch": 1793845219.39836,
+        "elapsedSeconds": 6.76
+      },
+      {
+        "path": "docs/mcr/evidence/parade-ink-giveaway/native12/round.json",
+        "sha256": "0d32cafdd69a06573420587667b9e5e4602de5c61bc0bc00048aaba69f8f069c",
+        "status": "PASS",
+        "actualFullEpoch": 1793845838.240406,
+        "acceptedEpoch": 1793845827.617125,
+        "elapsedSeconds": 10.52
+      },
+      {
+        "path": "docs/mcr/evidence/parade-ink-giveaway/source07/round.json",
+        "sha256": "70ac6f93336ac15d140fd6362875b5105ac5a5318f2ebfa77748c6fc9aea38b4",
+        "status": "FAIL",
+        "actualFullEpoch": 1793842049.484599,
+        "acceptedEpoch": 1793842048.8907142,
+        "elapsedSeconds": 0.46
+      },
+      {
+        "path": "docs/mcr/evidence/parade-ink-giveaway/source08/round.json",
+        "sha256": "6d7ff4f2b9b7a30952b0da211921f55a812907063bf8de2a50fbb7c762e8d00f",
+        "status": "PASS",
+        "actualFullEpoch": 1793842736.838658,
+        "acceptedEpoch": 1793842724.3636851,
+        "elapsedSeconds": 12.36
+      },
+      {
+        "path": "docs/mcr/evidence/parade-ink-giveaway/unit-source02/round.json",
+        "sha256": "25550caf7ed43f53d1e99759c79dc489cb74d2117ddf00694e663468e53d882d",
+        "status": "FAIL",
+        "actualFullEpoch": null,
+        "acceptedEpoch": 1793837178.821,
+        "elapsedSeconds": 19.18
+      },
+      {
+        "path": "docs/mcr/evidence/parade-ink-giveaway/unit-source03/round.json",
+        "sha256": "a2667043212b9958d55bbf58e323acd4a72c4cde2a98307cdb50561492c534a5",
+        "status": "PASS",
+        "actualFullEpoch": null,
+        "acceptedEpoch": 1793837789.732,
+        "elapsedSeconds": 12.41
+      }
+    ]
+  }
+}

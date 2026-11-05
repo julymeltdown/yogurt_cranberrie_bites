@@ -1,0 +1,103 @@
+{
+  "references": [
+    {
+      "name": "1-Photo-1.jpg",
+      "sha256": "c2af15948299caf1c2c0905ffd89a84963975d8078298e6050f5cdd5ca344dbc",
+      "width": 1280,
+      "height": 853
+    },
+    {
+      "name": "2-Photo-2.jpg",
+      "sha256": "9e7f17a666e1ecfc738a14b75bb3a166235a05c401f206aa24f26cf7463cbc27",
+      "width": 1280,
+      "height": 853
+    }
+  ],
+  "classification": "Visual comparison only; variable text, real stock and authorized media differ. No broad masks or acceptance score.",
+  "records": [
+    {
+      "name": "row-side-by-side",
+      "reference": "1-Photo-1.jpg",
+      "crop": [
+        454,
+        183,
+        377,
+        115
+      ],
+      "transform": {
+        "scale": 0.9761273209549072,
+        "translation": [
+          0,
+          0
+        ],
+        "repaint": false,
+        "masks": [],
+        "overlayAlpha": null
+      },
+      "actual": {
+        "width": 368,
+        "height": 120
+      },
+      "normalizedReference": {
+        "width": 368,
+        "height": 112
+      }
+    },
+    {
+      "name": "row-normalized-overlay",
+      "reference": "1-Photo-1.jpg",
+      "crop": [
+        454,
+        183,
+        377,
+        115
+      ],
+      "transform": {
+        "scale": 0.9761273209549072,
+        "translation": [
+          0,
+          0
+        ],
+        "repaint": false,
+        "masks": [],
+        "overlayAlpha": 0.5
+      },
+      "actual": {
+        "width": 368,
+        "height": 120
+      },
+      "normalizedReference": {
+        "width": 368,
+        "height": 112
+      }
+    },
+    {
+      "name": "reservation-side-by-side-overlay",
+      "reference": "1-Photo-1.jpg",
+      "crop": [
+        877,
+        299,
+        378,
+        115
+      ],
+      "transform": {
+        "scale": 0.9735449735449735,
+        "translation": [
+          0,
+          0
+        ],
+        "repaint": false,
+        "masks": [],
+        "overlayAlpha": 0.5
+      },
+      "actual": {
+        "width": 368,
+        "height": 110
+      },
+      "normalizedReference": {
+        "width": 368,
+        "height": 112
+      }
+    }
+  ]
+}

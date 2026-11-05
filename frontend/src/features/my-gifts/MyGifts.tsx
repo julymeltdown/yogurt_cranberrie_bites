@@ -7,7 +7,7 @@ import type { GiftDiscoveryController } from '../gift-discovery/model/controller
 export function MyGifts({ controller }: { controller: GiftDiscoveryController }) {
   const state = useGifts(controller), [collection, setCollection] = useState<'giving' | 'receiving'>('giving')
   useEffect(() => { if (state.context?.capabilities.gifts.available) void controller.loadActivity() }, [controller, state.context])
-  return <section className="gifts-view" aria-label="My gift activity"><GiftAccess state={state}>
+  return <section className="gifts-view gift-activity" aria-label="My gift activity"><GiftAccess state={state}>
     <header className="gift-intro"><h2>My gifts</h2><ShellLink id="my-gifts-browse" to="/gifts">Browse giveaways →</ShellLink></header>
     <p>What you share. What you receive.</p>
     <div className="gift-tabs" role="group" aria-label="Gift activity collections">

@@ -1,3 +1,4 @@
+import { admission } from '../../../features/auth/__tests__/enrollment-consent/fixtures'
 import { createSessionController } from '../../../features/auth/model/session'
 import { createPartyController, type PartyAccess } from '../../../features/party-discovery'
 import { createGiftDiscoveryController, type GiftContext } from '../../../features/gift-discovery'
@@ -10,13 +11,13 @@ import type { PrivacyScope } from '../../../shared/query/privacy'
 
 export { giftId, reservationId, place, ids, now }
 export function fixture(options: { owner?: boolean; storage?: Pick<Storage, 'getItem' | 'setItem' | 'removeItem'> } = {}) {
-  const requests: Request[] = [], signals = new Set<() => void>(), clockListeners = new Set<() => void>()
+  const admissionRequests: Request[] = [], requests: Request[] = [], signals = new Set<() => void>(), clockListeners = new Set<() => void>()
   const stored = new Map<string, string>(), storage = options.storage ?? { getItem: (k: string) => stored.get(k) ?? null,
     setItem: (k: string, v: string) => { stored.set(k, v) }, removeItem: (k: string) => { stored.delete(k) } }
   const actor = options.owner ? owner : recipient
   let lost = false, held = false
   const auth = createSessionController({ eventId: event, cookiePolicy: { available: true, onInvalidate: () => () => {}, run: (_k, w) => w(), dispose() {} }, fetch: async input => {
-    const r = input as Request; requests.push(r.clone()); const path = new URL(r.url).pathname
+    const r = input as Request; if (r.method === 'GET' && new URL(r.url).pathname === '/api/auth/enrollment/admission') { admissionRequests.push(r.clone()); return Response.json(admission()) }; requests.push(r.clone()); const path = new URL(r.url).pathname
     if (r.method !== 'GET') {
       if (lost) throw new TypeError('Synthetic response lost')
       held = true; return Response.json(reservation({ recipient_id: actor, state: 'HELD' }))
@@ -50,7 +51,7 @@ export function fixture(options: { owner?: boolean; storage?: Pick<Storage, 'get
   const release: CommunityEntryRelease = { scope, signal: lifetime.signal, parties, gifts, access: accessPort, context: contextPort,
     clock: { read: () => clockAvailable ? { scope: clockScope, nowMs: now } : null, subscribe(fn) { clockListeners.add(fn); return () => { clockListeners.delete(fn) } } },
     places: { read: () => ({ scope: placeScope, items: [{ id: place, label: 'SYNTHETIC qualified gift place' }, { id: ids.place, label: 'SYNTHETIC party place' }] }), subscribe }, journal }
-  return { auth, scope, release, lifetime, requests, stored, journal, parties, gifts,
+  return { auth, scope, release, lifetime, requests, admissionRequests, stored, journal, parties, gifts,
     loseResponse() { lost = true },
     clock(available: boolean, s = scope) { clockAvailable = available; clockScope = s; Array.from(clockListeners).forEach(fn => fn()) },
     places(s: PrivacyScope) { placeScope = s; Array.from(signals).forEach(fn => fn()) },

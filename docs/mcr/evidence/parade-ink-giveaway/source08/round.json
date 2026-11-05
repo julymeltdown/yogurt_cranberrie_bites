@@ -1,0 +1,159 @@
+{
+  "booking": "PI04-AFFECTED-SOURCE08-0133",
+  "mode": "source08",
+  "acceptedEpoch": 1793842724.3636851,
+  "workDeadline": 1793842904.3636851,
+  "fullDeadline": 1793842964.3636851,
+  "carriedNewBytes": 33554432,
+  "startAvailable": 23385489408,
+  "status": "PASS",
+  "commands": [
+    {
+      "label": "affected-types",
+      "pid": 95451,
+      "exitCode": 0
+    },
+    {
+      "label": "affected-lint",
+      "pid": 95718,
+      "exitCode": 0
+    },
+    {
+      "label": "affected-unit",
+      "pid": 95729,
+      "exitCode": 0
+    },
+    {
+      "label": "driver-syntax",
+      "pid": 96080,
+      "exitCode": 0
+    },
+    {
+      "label": "resource-cases",
+      "pid": 96155,
+      "exitCode": 0
+    }
+  ],
+  "temporaryCleaned": true,
+  "dependencyLinkRemoved": true,
+  "controllerMetadata": {
+    "pid": 95267,
+    "birth": "Thu Nov 5 10:38:44 2026",
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+    "script": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/frontend/src/features/gift-discovery/__tests__/parade-ink/round.py",
+    "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+    "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/parade-ink-giveaway/source08"
+  },
+  "resourceIndex": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/owner-resource-receipts/01a1a5d9-6955-7820-bcd4-8e0a21629aa2.json",
+  "ownerClaim": {
+    "owner": "01a1a5d9-6955-7820-bcd4-8e0a21629aa2",
+    "booking": "PI04-AFFECTED-SOURCE08-0133",
+    "kind": "source",
+    "root": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+    "controller": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/frontend/src/features/gift-discovery/__tests__/parade-ink/round.py",
+    "pid": 95267,
+    "pgid": 95267,
+    "birth": "Thu Nov  5 10:38:44 2026",
+    "at": 1793842724.4301162,
+    "acceptedEpoch": 1793842724.3636851,
+    "workDeadline": 1793842904.3636851,
+    "fullDeadline": 1793842964.3636851,
+    "processCap": 12,
+    "rssCapBytes": 3221225472,
+    "newCapBytes": 67108864,
+    "carriedNewBytes": 33554432,
+    "wholeCapBytes": 8589934592,
+    "wholeRoots": [
+      "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+      "/Users/lhs/Desktop/mcr/.git",
+      "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64",
+      "/Users/lhs/Desktop/mcr/frontend/node_modules",
+      "/Library/Frameworks/Python.framework/Versions/3.14",
+      "/Applications/Google Chrome.app",
+      "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences",
+      "/Users/lhs/Desktop/mcr/frontend/public",
+      "/private/tmp/codex-remote-attachments/01a19e5c-e9c6-7973-a53b-a6d19141620f/9FC49E03-6C0E-4776-A954-2CA5C12CB495/1-Photo-1.jpg",
+      "/private/tmp/codex-remote-attachments/01a19e5c-e9c6-7973-a53b-a6d19141620f/9FC49E03-6C0E-4776-A954-2CA5C12CB495/2-Photo-2.jpg"
+    ],
+    "privateTemporaryRoot": "/private/tmp/mcr-pi04-source08-0138"
+  },
+  "bothLiveBeforeWorkload": {
+    "primary": 95267,
+    "guardian": 95425,
+    "at": 1793842725.4357061,
+    "initial": {
+      "pid": 95425,
+      "at": 1793842725.3801532,
+      "sample": {
+        "free": 23385292800,
+        "all": 3,
+        "rss": 53919744,
+        "new": 33562624,
+        "whole": 5398618112,
+        "pids": [
+          95267,
+          95425,
+          95445
+        ]
+      }
+    }
+  },
+  "guardianMetadata": {
+    "pid": 95425,
+    "birth": "Thu Nov 5 10:38:44 2026",
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+    "script": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/frontend/src/features/gift-discovery/__tests__/parade-ink/guardian.py",
+    "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+    "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/parade-ink-giveaway/source08"
+  },
+  "initialMembership": {
+    "observedAtEpoch": 1793842725.495981,
+    "psSnapshotSHA256": "179d7ed4497417bf136b6ddc54d5a8fb95bd59a13a21be4608ba7a58b9272dd3",
+    "owners": [
+      "01a1a00c-2690-7bc0-94fc-52609655ea83",
+      "01a1a5d9-6955-7820-bcd4-8e0a21629aa2"
+    ],
+    "ordinaryActualPids": [
+      95417
+    ],
+    "reservedProcesses": 44,
+    "reservedRSSBytes": 11811160064,
+    "actualPids": [
+      95267,
+      95417,
+      95425,
+      95450
+    ],
+    "actualRSSBytes": 155631616,
+    "otherNewUpperBytes": 4831838208
+  },
+  "guardian": {
+    "status": "STOPPED",
+    "pid": 95425,
+    "last": {
+      "free": 23374155776,
+      "all": 4,
+      "rss": 57720832,
+      "new": 34951168,
+      "whole": 5400006656,
+      "pids": [
+        95267,
+        95425,
+        96155,
+        96228
+      ]
+    },
+    "maximum": {
+      "all": 5,
+      "rss": 1114357760,
+      "new": 34951168,
+      "whole": 5400006656
+    }
+  },
+  "endAvailable": 23375527936,
+  "elapsedSeconds": 12.36,
+  "checkoutPositiveBytes": 16384,
+  "outsideMetadataBytes": 4096,
+  "remainingManagedParent": 0,
+  "actualFullEpoch": 1793842736.838658
+}

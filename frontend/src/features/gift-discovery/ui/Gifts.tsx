@@ -6,6 +6,7 @@ import { giveawayStatus, reservationEligibility, type GiftDiscoveryController, t
 import { ConcertRow, ConcertState } from '../../../shared/ui/concert-window'
 import { canReviewReservation, ReferenceGiftRow, ReferencePickupRow, type RenderGiftImage, type RenderGiftOwnerPortrait } from './reference-presentation'
 export type { GiftImageRequest, RenderGiftImage } from './reference-presentation'
+import './parade-ink/family.css'
 import './gifts.css'
 import './reference-gifts.css'
 
@@ -146,10 +147,10 @@ export function GiftDetail({ controller, giveawayId, places = [], renderGiftImag
 }) {
   const state = useGifts(controller), key = JSON.stringify(state.context?.scope)
   useEffect(() => { controller.select(giveawayId) }, [controller, giveawayId, key])
-  return <section className="gifts-view" aria-label="Giveaway detail"><GiftAccess state={state}>
+  return <section className="gifts-view gift-detail" aria-label="Giveaway detail"><GiftAccess state={state}>
     <ShellLink id="gift-back" to="/gifts">← All giveaways</ShellLink>
     <GiftResult resource={state.selectedId === giveawayId ? state.detail : { phase: 'loading', data: null, failure: null, retryAt: null }} now={state.now} label="giveaway" retry={() => void controller.retryDetail()}>{gift => <>
-      <header className="gift-detail-heading"><p className="gift-eyebrow">{giveawayStatus(gift, state.now)}</p><h2>{gift.title}</h2><div aria-label={`Shared by ${gift.owner.display_name}`}>{renderOwnerPortrait?.(gift.owner) ?? <span role="status" aria-label="Owner portrait unavailable">Character unavailable</span>}</div><p>Shared by {gift.owner.display_name}</p></header>
+      <header className="gift-detail-heading"><p className="gift-eyebrow">{giveawayStatus(gift, state.now)}</p><h2>{gift.title}</h2><div className="gift-detail-portrait" aria-label={`Shared by ${gift.owner.display_name}`}>{renderOwnerPortrait?.(gift.owner) ?? <span role="status" aria-label="Owner portrait unavailable">Character unavailable</span>}</div><p>Shared by {gift.owner.display_name}</p></header>
       <div className="gift-detail-media" role="group" aria-label="Giveaway photo" key={`${key}:${gift.giveaway_id}:${gift.image_media_id}`}>
         {gift.image_media_id === null ? <p>No photo</p>
           : state.context && renderGiftImage

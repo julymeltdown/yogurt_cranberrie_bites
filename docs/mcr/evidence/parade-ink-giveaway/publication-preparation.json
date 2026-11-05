@@ -1,0 +1,668 @@
+{
+  "status": "READY_FOR_SCOPED_PUBLICATION; developer source/runtime/visual qualification complete",
+  "base": "f025bdb6fb409f3b7706e475dfabb5f3d21fe168",
+  "publisher": "01a1a5d9-332b-7822-a8f7-412e295fa211",
+  "privateBranch": "codex/mcr-fe-PI04-parade-ink-giveaway",
+  "publicationRule": "Apply only scoped final paths to actual canonical parent; do not merge private ancestry or unrelated art.",
+  "narrowCaller": {
+    "path": "frontend/src/app/community-entry/routes.tsx",
+    "preimageSha256": "3b7cd3b75cb584a727877034a7e57065d5a7a9bdbe2ec104199fcfc7563e2549",
+    "postimageSha256": "241cc9af32fdf2007a0baafff14468c928db2886424361a3444dda59ac14db92",
+    "patchSha256": "9760806540ec401865d41a80ac57f70c6c57fe07ccb7622806f14a45fdd3f705",
+    "hunks": "imports and captured readonly entry context; GiftPickupTarget pure media composition only"
+  },
+  "sourcePaths": [
+    "frontend/src/app/community-entry/__tests__/fixture.ts",
+    "frontend/src/app/community-entry/__tests__/parade-ink-pickup-media/scope.test.ts",
+    "frontend/src/app/community-entry/pickup-media.tsx",
+    "frontend/src/app/community-entry/routes.tsx",
+    "frontend/src/features/gift-discovery/__tests__/fixtures/data.ts",
+    "frontend/src/features/gift-discovery/__tests__/parade-ink/guardian.py",
+    "frontend/src/features/gift-discovery/__tests__/parade-ink/membership.py",
+    "frontend/src/features/gift-discovery/__tests__/parade-ink/membership_test.py",
+    "frontend/src/features/gift-discovery/__tests__/parade-ink/native.mjs",
+    "frontend/src/features/gift-discovery/__tests__/parade-ink/presentation.test.tsx",
+    "frontend/src/features/gift-discovery/__tests__/parade-ink/preview.html",
+    "frontend/src/features/gift-discovery/__tests__/parade-ink/preview.tsx",
+    "frontend/src/features/gift-discovery/__tests__/parade-ink/reference-comparison.mjs",
+    "frontend/src/features/gift-discovery/__tests__/parade-ink/round.py",
+    "frontend/src/features/gift-discovery/__tests__/parade-ink/source-closure.py",
+    "frontend/src/features/gift-discovery/__tests__/parade-ink/state-preview.html",
+    "frontend/src/features/gift-discovery/__tests__/parade-ink/state-preview.tsx",
+    "frontend/src/features/gift-discovery/__tests__/parade-ink/tsconfig.json",
+    "frontend/src/features/gift-discovery/__tests__/parade-ink/tsconfig.native.json",
+    "frontend/src/features/gift-discovery/__tests__/parade-ink/vitest.config.mjs",
+    "frontend/src/features/gift-discovery/ui/Gifts.tsx",
+    "frontend/src/features/gift-discovery/ui/gifts.css",
+    "frontend/src/features/gift-discovery/ui/parade-ink/family.css",
+    "frontend/src/features/gift-discovery/ui/reference-gifts.css",
+    "frontend/src/features/gift-discovery/ui/reference-presentation.tsx",
+    "frontend/src/features/gift-pickup/__tests__/harness.ts",
+    "frontend/src/features/gift-pickup/__tests__/parade-ink/presentation.test.tsx",
+    "frontend/src/features/gift-pickup/ui/GiftPickup.tsx",
+    "frontend/src/features/gift-pickup/ui/pickup.css",
+    "frontend/src/features/giveaway-authoring/__tests__/harness.ts",
+    "frontend/src/features/giveaway-authoring/__tests__/parade-ink/presentation.test.tsx",
+    "frontend/src/features/giveaway-authoring/ui/GiveawayAuthoring.tsx",
+    "frontend/src/features/giveaway-authoring/ui/giveaway-authoring.css",
+    "frontend/src/features/my-gifts/MyGifts.tsx"
+  ],
+  "excluded": "All unchanged materialized dependencies, Auth/controllers/contracts/journals, shared foundation and retained lawn assets are read-only and excluded.",
+  "sourceValidation": {
+    "candidate": "8bbe3b440cf81c852775d3a98a9c0a84d68d9ea7",
+    "uniqueCases": 48,
+    "result": "PASS",
+    "evidence": "unit-source03/round.json"
+  },
+  "nativeValidation": {
+    "result": "QUALIFIED_SCOPED_DELIVERY",
+    "native12": "PASS remaining2portrait+World invariants; rawNative06/10 overallFAIL retained with named positive-case reuse",
+    "review": "docs/mcr/evidence/parade-ink-giveaway/delivery-review.json",
+    "physicalLimits": "Default app has no reviewed pickupPlace/Meeting producer; private plan/code remains honestly unavailable. Masked positive code fixture is TEST_ONLY and does not close IN02/physical/device/live backend gates."
+  },
+  "physicalPickupAuthority": "Default App unavailable honestly; qualified TEST_ONLY component positive does not close actual producer/physical/device integration gates.",
+  "affectedSourceValidation": {
+    "candidate": "f7d6008831f62dff2e2fd8e0e8023513c260b915",
+    "tests": 22,
+    "files": 4,
+    "types": "PASS",
+    "lint": "PASS",
+    "driverSyntax": "PASS",
+    "resourceCases": 9,
+    "evidence": "source08/round.json"
+  },
+  "sourcePostimages": [
+    {
+      "path": "frontend/src/app/community-entry/__tests__/fixture.ts",
+      "sha256": "a358180a49bb249ca3936667b4c1eeb50bf43b75dde05b9b7f3e63a300a15c43",
+      "bytes": 5818
+    },
+    {
+      "path": "frontend/src/app/community-entry/__tests__/parade-ink-pickup-media/scope.test.ts",
+      "sha256": "c8e1e3e54f2ac60de50c09df5ac5a80d7638223042b2d82721cfa0df9e74ef5f",
+      "bytes": 4055
+    },
+    {
+      "path": "frontend/src/app/community-entry/pickup-media.tsx",
+      "sha256": "c9374c12f2d6a1cf9fc7035cad6513cd87efaa145b4f51dcf4a7012e419521ca",
+      "bytes": 2310
+    },
+    {
+      "path": "frontend/src/app/community-entry/routes.tsx",
+      "sha256": "241cc9af32fdf2007a0baafff14468c928db2886424361a3444dda59ac14db92",
+      "bytes": 7680
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/__tests__/fixtures/data.ts",
+      "sha256": "922799510b9a4e581e24310494f8d15e537e7bf0506f6d5f0e72ae281bdfe515",
+      "bytes": 3662
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/__tests__/parade-ink/guardian.py",
+      "sha256": "1b56f5723453a165939752b78c0660bd90811af9199dddc4c127f35c7f613d11",
+      "bytes": 3849
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/__tests__/parade-ink/membership.py",
+      "sha256": "d2e52f549c07977265b131a1ed2a178b805ddef174fdc55c6d339dc8f370ae67",
+      "bytes": 11575
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/__tests__/parade-ink/membership_test.py",
+      "sha256": "1ff77c4d90ff0a9e5ebe2a4d1d9f1f383a6fbc2bf118d695547a50c57f9a0aad",
+      "bytes": 5949
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/__tests__/parade-ink/native.mjs",
+      "sha256": "0a8d3c2a7d3ac65698062ab1693164272f8dc2ba26fbdc1891ca010681cd6885",
+      "bytes": 30269
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/__tests__/parade-ink/presentation.test.tsx",
+      "sha256": "29f0ac5a39bf78fa97e629f9caa6fbc87cfab6af501df682fcba72e03bbd10d3",
+      "bytes": 1264
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/__tests__/parade-ink/preview.html",
+      "sha256": "2da394272d47a92abbe2aa479225da46dd947e0228c08f131f98ba394854cd99",
+      "bytes": 283
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/__tests__/parade-ink/preview.tsx",
+      "sha256": "8be40421d8723887c87dd01a099799b90fbdd8dd801d1920b1ca3f4047974c4f",
+      "bytes": 13603
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/__tests__/parade-ink/reference-comparison.mjs",
+      "sha256": "0a507ef36ef882be2b8dc89a980d92c8f4044d43b9a889b7c301ce4ff66c9e84",
+      "bytes": 3923
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/__tests__/parade-ink/round.py",
+      "sha256": "d0928df91b571c04eeee3a65a4cb515c2f9bde78528dcb58b46389d0cd672207",
+      "bytes": 17248
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/__tests__/parade-ink/source-closure.py",
+      "sha256": "ae37ea2946f76f9f1417e10ddf5a6914546660285f1b12984fc5698158bf5c93",
+      "bytes": 2679
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/__tests__/parade-ink/state-preview.html",
+      "sha256": "c7e6d6013076faeb1fd59fe10d4ceb49c5e2416c05990e605445932b66fa8f08",
+      "bytes": 303
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/__tests__/parade-ink/state-preview.tsx",
+      "sha256": "968a558c902b33cb3821e6133fd938cb2a9e2da0790e81e806b1a8c5f2d62229",
+      "bytes": 1307
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/__tests__/parade-ink/tsconfig.json",
+      "sha256": "38629730cbf44b6622e1586a3c0675ccc99a097250209932bf2a02186733f11d",
+      "bytes": 1095
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/__tests__/parade-ink/tsconfig.native.json",
+      "sha256": "816644150c766b8daae3c4a983f5568b5c1ca8392e927f1703cceb5c9155e649",
+      "bytes": 90
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/__tests__/parade-ink/vitest.config.mjs",
+      "sha256": "67e302a5261d397d557e2239fe09551fa8d0fbcf5f3d8e614bbf7693f08f50e5",
+      "bytes": 1141
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/ui/Gifts.tsx",
+      "sha256": "bac05f5fd421f5888cf1d538352f0984aea092acee7fbcc845b498782a57462b",
+      "bytes": 16305
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/ui/gifts.css",
+      "sha256": "99288ba20a6b96932c5d11b82961d9d842639ef33ad289841db5f6fc8346c534",
+      "bytes": 5839
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/ui/parade-ink/family.css",
+      "sha256": "957beab0bb573ae4520994eed4daa319ffd2e0a35e4849ed407db141399914b8",
+      "bytes": 3442
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/ui/reference-gifts.css",
+      "sha256": "01a9397ae8fb258097ff57832a5f6d26fe767bb0b093310416466f77aababfb0",
+      "bytes": 6391
+    },
+    {
+      "path": "frontend/src/features/gift-discovery/ui/reference-presentation.tsx",
+      "sha256": "4e3497e7bddae99ca6a4b4f61b051dc8581138e9c70634a11e239562267797e1",
+      "bytes": 5655
+    },
+    {
+      "path": "frontend/src/features/gift-pickup/__tests__/harness.ts",
+      "sha256": "0c8b7537282f1ef70369575fa4d4fa900c7fa00f7401fd3603a05f71e177d09a",
+      "bytes": 3800
+    },
+    {
+      "path": "frontend/src/features/gift-pickup/__tests__/parade-ink/presentation.test.tsx",
+      "sha256": "89f0e36031e50224cf19e638bc2ac3824009f6782648b89c4e3b13dc17246f78",
+      "bytes": 2638
+    },
+    {
+      "path": "frontend/src/features/gift-pickup/ui/GiftPickup.tsx",
+      "sha256": "1cd38bd55f3b0fc16be0811d1cf4faf09f47433f9e0016964827aa2891e3cdfb",
+      "bytes": 6194
+    },
+    {
+      "path": "frontend/src/features/gift-pickup/ui/pickup.css",
+      "sha256": "e72860dd45a4624d6d0f892eb916f1dbc4f7ac604f0369e5c5cbd19fd6704ebe",
+      "bytes": 2575
+    },
+    {
+      "path": "frontend/src/features/giveaway-authoring/__tests__/harness.ts",
+      "sha256": "feb1fc1ce1e0224d32d185830f83f2cf1b2a5861de8f939cf9c131b01cd537d6",
+      "bytes": 2550
+    },
+    {
+      "path": "frontend/src/features/giveaway-authoring/__tests__/parade-ink/presentation.test.tsx",
+      "sha256": "23f157689bf1a4dd679b98c9cd28b0e87e0159dd62bacd9db40ed785f8311f98",
+      "bytes": 1123
+    },
+    {
+      "path": "frontend/src/features/giveaway-authoring/ui/GiveawayAuthoring.tsx",
+      "sha256": "2dc897bdafe7c703eee8b9607b248b448c3ccad9698fb766dd698dec6c07c80f",
+      "bytes": 7822
+    },
+    {
+      "path": "frontend/src/features/giveaway-authoring/ui/giveaway-authoring.css",
+      "sha256": "31c47dfaa403d5f4eb6d056f93d2118c26a7cb00f5cbd6b350c2911570b28db8",
+      "bytes": 2110
+    },
+    {
+      "path": "frontend/src/features/my-gifts/MyGifts.tsx",
+      "sha256": "c28fc37c984c4676732c3803f48e5873fe4da19b82e283826e7610b500da8b87",
+      "bytes": 3449
+    }
+  ],
+  "integrationExceptions": {
+    "frontend/src/app/community-entry/routes.tsx": "Apply caller-composition.patch hunks only against current caller, preserving unrelated changes; do not replace whole stale file.",
+    "admissionFixtures": "Apply proposed-admission-fixtures.patch TEST_ONLY admission reads, preserving all original assertions and unrelated current fixture changes."
+  },
+  "evidencePolicy": "Only final/reused evidence paths listed here; all earlier failed/partial raw rounds remain unchanged on owner branch. Do not publish retained art/materialized closure/private ancestry or stale replacement images.",
+  "completionRemaining": [
+    "Publisher412e normal canonical-parent uptake and exact published commit/postimage proof"
+  ],
+  "sourceQualifiedCandidate": "41d45a48ea11a64c7b5688385c2990a15dbbf898",
+  "evidencePaths": [
+    "docs/mcr/evidence/parade-ink-giveaway/caller-composition.patch",
+    "docs/mcr/evidence/parade-ink-giveaway/delivery-review.json",
+    "docs/mcr/evidence/parade-ink-giveaway/foundation-final-readset.json",
+    "docs/mcr/evidence/parade-ink-giveaway/native06/activity-360.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native06/activity-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native06/activity-430.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native06/cancelled-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native06/claimed-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native06/code-qualified-component-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native06/conflict-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native06/create-360.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native06/create-430.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native06/error-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native06/expired-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native06/loading-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native06/native.json",
+    "docs/mcr/evidence/parade-ink-giveaway/native06/owner-claim-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native06/pickup-360.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native06/pickup-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native06/pickup-430.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native06/round.json",
+    "docs/mcr/evidence/parade-ink-giveaway/native10-inputs.json",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/browse-360.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/browse-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/browse-430.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/comparison-reservation-side-by-side-overlay.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/comparison-row-normalized-overlay.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/comparison-row-side-by-side.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/create-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/create-short-validation-focus-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/detail-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/manage-360.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/manage-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/manage-430.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/native-lint.log",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/native.json",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/owner-inventory-360.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/owner-inventory-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/owner-inventory-430.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/pending-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/reference-comparison.json",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/reserve-360.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/reserve-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/reserve-430.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/resource-cases.log",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/round.json",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/sold-out-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native10/uncertain-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native12-inputs.json",
+    "docs/mcr/evidence/parade-ink-giveaway/native12/detail-approved-portrait-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native12/detail-unavailable-portrait-390.png",
+    "docs/mcr/evidence/parade-ink-giveaway/native12/native-lint.log",
+    "docs/mcr/evidence/parade-ink-giveaway/native12/native.json",
+    "docs/mcr/evidence/parade-ink-giveaway/native12/resource-cases.log",
+    "docs/mcr/evidence/parade-ink-giveaway/native12/round.json",
+    "docs/mcr/evidence/parade-ink-giveaway/proposed-admission-fixtures.patch",
+    "docs/mcr/evidence/parade-ink-giveaway/source08-inputs.json",
+    "docs/mcr/evidence/parade-ink-giveaway/source08/affected-lint.log",
+    "docs/mcr/evidence/parade-ink-giveaway/source08/affected-types.log",
+    "docs/mcr/evidence/parade-ink-giveaway/source08/affected-unit.log",
+    "docs/mcr/evidence/parade-ink-giveaway/source08/driver-syntax.log",
+    "docs/mcr/evidence/parade-ink-giveaway/source08/resource-cases.log",
+    "docs/mcr/evidence/parade-ink-giveaway/source08/round.json",
+    "docs/mcr/evidence/parade-ink-giveaway/unit-source03/fixture-lint.log",
+    "docs/mcr/evidence/parade-ink-giveaway/unit-source03/fixture-types.log",
+    "docs/mcr/evidence/parade-ink-giveaway/unit-source03/round.json",
+    "docs/mcr/evidence/parade-ink-giveaway/unit-source03/unit.log",
+    "docs/mcr/frontend/parade-ink-giveaway.md"
+  ],
+  "evidencePostimages": [
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/caller-composition.patch",
+      "sha256": "9760806540ec401865d41a80ac57f70c6c57fe07ccb7622806f14a45fdd3f705",
+      "bytes": 2530
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/delivery-review.json",
+      "sha256": "232b350b07ada5b1151c302cfd46e32161ea684c48e464dd1b6fbf9e3948034f",
+      "bytes": 14354
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/foundation-final-readset.json",
+      "sha256": "4360966a5135644942bc4267bfe00477ccd83182510791f8c2d4acb591152c72",
+      "bytes": 12165
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native06/activity-360.png",
+      "sha256": "f985a455b11c6573ca56006d35b3a230ef04756895b1ba3a032f5e88bd324571",
+      "bytes": 36986
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native06/activity-390.png",
+      "sha256": "fdebeb22bf66c0f44eac85ffea1d8eb97bb00aa1b55a990d6e874232bab1238e",
+      "bytes": 37581
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native06/activity-430.png",
+      "sha256": "83685177a4c93eee5c28f3d443b0feb519324f239263ff7acd89e5a02c52e1c6",
+      "bytes": 37529
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native06/cancelled-390.png",
+      "sha256": "6ec6f2e5cfc8ec1869e1c330b6df678ace931619f29345c7f9143cf9bae49116",
+      "bytes": 27891
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native06/claimed-390.png",
+      "sha256": "85dfa85a11c8fcd981f8b2afa0e676d68b263f5a948053197dec65bf9a08f45d",
+      "bytes": 58252
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native06/code-qualified-component-390.png",
+      "sha256": "aecd7093ac0729ce3d7673c653db30a3850b44e31b19d5af3725ff7810f32989",
+      "bytes": 63916
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native06/conflict-390.png",
+      "sha256": "ca8c32a6a9c66f43082805c6b81b5a130a72c18a37119d065dba07aad839ea11",
+      "bytes": 64037
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native06/create-360.png",
+      "sha256": "1cd7f11e3007cd901d8533ef89f63122d41e726df42a977925a69db9de70c810",
+      "bytes": 48237
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native06/create-430.png",
+      "sha256": "05bed69e84d4d8a983893d245c578482172e9c609f673b4820268850be4c8439",
+      "bytes": 53864
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native06/error-390.png",
+      "sha256": "0038af96abfd2e64a55577a290c19324db4e3057f4c433cb11084d37719c0cd7",
+      "bytes": 31753
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native06/expired-390.png",
+      "sha256": "3cf459ba6dcad609399531fd4fd35bc70fc1e9861629f628ecf15ed866623cc9",
+      "bytes": 27859
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native06/loading-390.png",
+      "sha256": "af80294236d4dcdae37ede1da586087b275f7a7473274c0ed1300e6a25ae660f",
+      "bytes": 24744
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native06/native.json",
+      "sha256": "c24caf5012cb8602319d92fbb7684995b7954fdffcc0675bd41b749ff27c95bc",
+      "bytes": 72367
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native06/owner-claim-390.png",
+      "sha256": "b35221a92987688e5b8c8a701585017b6ac10af709b97c983f5626b47ddf023f",
+      "bytes": 48263
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native06/pickup-360.png",
+      "sha256": "f8a5ee7e7ba96d9f0038fc3e44d9f67972dec3b942cc1f787ed6b677dc81f272",
+      "bytes": 50914
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native06/pickup-390.png",
+      "sha256": "f48b6bf602b12b85fbb5c3c669338bac03552061f0add7e56fbd6bea4fe3e093",
+      "bytes": 51003
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native06/pickup-430.png",
+      "sha256": "0051873076388b5d72d03836fd41959c60137febce2320c1ae2dde3401095af2",
+      "bytes": 50733
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native06/round.json",
+      "sha256": "49fddc401bc61c8d6e559bd7c9ff0e9503feca6ac5a112100a585f84b713ed80",
+      "bytes": 4381
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native10-inputs.json",
+      "sha256": "44c114fe7195f2afee2224f9de30cbeaea6842caf0eb1d72a4cf753aabd062e2",
+      "bytes": 103291
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native10/browse-360.png",
+      "sha256": "45b715f475d56babb676cbd2ec6c13120dd1d1c3481813f7fd9920a8d42dbd26",
+      "bytes": 47555
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native10/browse-390.png",
+      "sha256": "49f48e55f522892d0167251aad55783b61950cfd07f80f0b6df411bcdf264191",
+      "bytes": 46666
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native10/browse-430.png",
+      "sha256": "e22691d2a94f1b6b67f6648546384145440473c5a4386d5789d062406abadf99",
+      "bytes": 46620
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native10/comparison-reservation-side-by-side-overlay.png",
+      "sha256": "04f869053bf65633a1f9e44bd15a2b7d5a062cb75cf14091b18df23b1c0af4e8",
+      "bytes": 122328
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native10/comparison-row-normalized-overlay.png",
+      "sha256": "443dc089ff82829006da9b3e4bb5b32f12443ba4c81cd4a13ea68839e46e18c0",
+      "bytes": 65935
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native10/comparison-row-side-by-side.png",
+      "sha256": "b1fe3a3bfccdf53b10578597a15a0613516eba9ed753a54799266a73fcb0924a",
+      "bytes": 80159
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native10/create-390.png",
+      "sha256": "69df189525407532677f7b5850b20a0dad187addf29755105840c8fe6c91e715",
+      "bytes": 53305
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native10/create-short-validation-focus-390.png",
+      "sha256": "2fc393d80195b8eefad6ba0a4863dec0f4c57c5b4330aa4816acbb83ef07deb7",
+      "bytes": 36665
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native10/detail-390.png",
+      "sha256": "ae2238acaf9a821bbe793dd6fd439ad72f8d0501db472fbad128404d6740892d",
+      "bytes": 54361
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native10/manage-360.png",
+      "sha256": "7b83b147f7ad696fce593e79641b1af294040bb3263c35a46d8937ad77755c5a",
+      "bytes": 55455
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native10/manage-390.png",
+      "sha256": "0e14806fef2c59fa8587e8c9c75afa4a235fc71fe6b60a91b66aaaf2ad0995f3",
+      "bytes": 60597
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native10/manage-430.png",
+      "sha256": "e088ce3bf55e896514edfde58403276690b852929dd6a5628b380305d90bb5c1",
+      "bytes": 60978
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native10/native-lint.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native10/native.json",
+      "sha256": "b2b13a5c4e24638535b9e4534e62ba3bf021c4285e91e4c5352c29ccd16266ef",
+      "bytes": 75686
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native10/owner-inventory-360.png",
+      "sha256": "12a4bc9f22fe4769d322c94c3b362607e4999644212f9deb2391183b109fd455",
+      "bytes": 58433
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native10/owner-inventory-390.png",
+      "sha256": "af0862918dd0a5a2220d683d7e0b16a0e611276bee7594e00b8ff8457e77d46c",
+      "bytes": 60536
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native10/owner-inventory-430.png",
+      "sha256": "3787209fca732d6e493994adf8291f23503d1c848dd177317af7134631048e2b",
+      "bytes": 63552
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native10/pending-390.png",
+      "sha256": "6e65ccffc4d69162449e206eaef7d780523a2380320bfa189d07e35d732fdf09",
+      "bytes": 30070
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native10/reference-comparison.json",
+      "sha256": "cfb65d34aadb0874a355b74b58163534c813c87bc601dec7d1dd18583806e3d9",
+      "bytes": 2091
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native10/reserve-360.png",
+      "sha256": "9d84db8dde1d0a56e7c3e26eac0db3f5d5379cc36d3517a6173a98588370253a",
+      "bytes": 21062
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native10/reserve-390.png",
+      "sha256": "d0c7db297c6f640ab540737ef1b044e1367800eabd14a8a3c0810881e3e21359",
+      "bytes": 21287
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native10/reserve-430.png",
+      "sha256": "a6a0774450e078bf586d75cfd49808ea4667576e03ba8035b85690711082e943",
+      "bytes": 20461
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native10/resource-cases.log",
+      "sha256": "1a902fd4c537c33c9c15041b84a9ad5661cfe31a3f4d21f81c9f7ae7a631eec6",
+      "bytes": 109
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native10/round.json",
+      "sha256": "a5c55bc582e2f89c80739cdbe27fdf8f273dfad98a5456dfee3ca75a5c51be1b",
+      "bytes": 5034
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native10/sold-out-390.png",
+      "sha256": "1f088ad3188f390953ffb513ec7b0c1cd1d7289e59fdc8f5e0acd0c4ecb6276f",
+      "bytes": 21148
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native10/uncertain-390.png",
+      "sha256": "0b9b79698cdba1cc657500635d55c2e6747fe913bcd40d1a7444c81d200ae4da",
+      "bytes": 33833
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native12-inputs.json",
+      "sha256": "b96380fef05d381e4d19a75b033acbce3444928be7368ff32d7d36165a01b260",
+      "bytes": 104008
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native12/detail-approved-portrait-390.png",
+      "sha256": "50e4be07fcf179d2979a3a35d6947f8724d822f9b71eb0c036955e2e2023f860",
+      "bytes": 56849
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native12/detail-unavailable-portrait-390.png",
+      "sha256": "e6825dfbb17f4d93d4c5248b6b9b67bc49325b78105997399cef0eb1cd186037",
+      "bytes": 53633
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native12/native-lint.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native12/native.json",
+      "sha256": "c00886d5d02bc45ebb47ee825007b3684e52853a3b9836e6a7cbe1b2c3986e3d",
+      "bytes": 24279
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native12/resource-cases.log",
+      "sha256": "6f283ee6225d2cef4c0127d95456a6f954c45141c92b97dd89016cb1c630e8f4",
+      "bytes": 100
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/native12/round.json",
+      "sha256": "0d32cafdd69a06573420587667b9e5e4602de5c61bc0bc00048aaba69f8f069c",
+      "bytes": 4837
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/proposed-admission-fixtures.patch",
+      "sha256": "2c8f3c89341dcb09f6f06c1a57bd32425f12443ed91073283c3560dfa8b2c25d",
+      "bytes": 12324
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/source08-inputs.json",
+      "sha256": "d84bb729a7626f3eecbd2f93561444a445ea6f15cfa5e5e2dd8abef355da13a4",
+      "bytes": 101626
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/source08/affected-lint.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/source08/affected-types.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/source08/affected-unit.log",
+      "sha256": "50d3507b66b2d8c9b1186353901acc70b92118c8b068ea8a3bb9b44ed81f582a",
+      "bytes": 251
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/source08/driver-syntax.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/source08/resource-cases.log",
+      "sha256": "31fee74ca91764ff428912a09870cbe01b998b86899b47ff32b2bbbf7fdc0d92",
+      "bytes": 107
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/source08/round.json",
+      "sha256": "6d7ff4f2b9b7a30952b0da211921f55a812907063bf8de2a50fbb7c762e8d00f",
+      "bytes": 5067
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/unit-source03/fixture-lint.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/unit-source03/fixture-types.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/unit-source03/round.json",
+      "sha256": "a2667043212b9958d55bbf58e323acd4a72c4cde2a98307cdb50561492c534a5",
+      "bytes": 1451
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-giveaway/unit-source03/unit.log",
+      "sha256": "f29be2cb3d438c9698dc56cb28f78bf4a89612397311029966b732d100b9415f",
+      "bytes": 251
+    },
+    {
+      "path": "docs/mcr/frontend/parade-ink-giveaway.md",
+      "sha256": "3db2610fa065a64d6834f745b4c5ddfc053fd5d84c27da70a63a53b91b5b5c5f",
+      "bytes": 8318
+    }
+  ],
+  "privateHistoryArchive": "docs/mcr/evidence/parade-ink-giveaway/pre-publication-history.md"
+}

@@ -1,0 +1,74 @@
+{
+  "booking": "PI04-UNIT-DIAGNOSTIC-SOURCE03-20261105T0013Z",
+  "mode": "unit-source03",
+  "acceptedEpoch": 1793837789.732,
+  "workDeadline": 1793837909.732,
+  "fullDeadline": 1793837969.732,
+  "carriedNewBytes": 8388608,
+  "startAvailable": 16271372288,
+  "status": "PASS",
+  "commands": [
+    {
+      "label": "fixture-types",
+      "pid": 15384,
+      "exitCode": 0
+    },
+    {
+      "label": "fixture-lint",
+      "pid": 15904,
+      "exitCode": 0
+    },
+    {
+      "label": "unit",
+      "pid": 15912,
+      "exitCode": 0
+    }
+  ],
+  "temporaryCleaned": true,
+  "dependencyLinkRemoved": true,
+  "bothLiveBeforeWorkload": {
+    "primary": 15298,
+    "guardian": 15381,
+    "at": 1793837790.1665359,
+    "initial": {
+      "pid": 15381,
+      "at": 1793837790.1430552,
+      "sample": {
+        "free": 16271351808,
+        "all": 3,
+        "rss": 42467328,
+        "new": 8392704,
+        "pids": [
+          15298,
+          15381,
+          15382
+        ]
+      }
+    }
+  },
+  "guardian": {
+    "status": "STOPPED",
+    "pid": 15381,
+    "last": {
+      "free": 16193286144,
+      "all": 4,
+      "rss": 43368448,
+      "new": 9773056,
+      "pids": [
+        15298,
+        15381,
+        15912,
+        16610
+      ]
+    },
+    "maximum": {
+      "all": 4,
+      "rss": 1137573888,
+      "new": 9773056
+    }
+  },
+  "endAvailable": 16192991232,
+  "elapsedSeconds": 12.41,
+  "checkoutPositiveBytes": 4096,
+  "remainingManagedParent": 0
+}

@@ -1,0 +1,104 @@
+--- a/frontend/src/features/gift-pickup/__tests__/harness.ts
++++ b/frontend/src/features/gift-pickup/__tests__/harness.ts
+@@ -1,3 +1,4 @@
++import { admission } from '../../auth/__tests__/enrollment-consent/fixtures'
+ import fixture from '../../../../../contracts/fixtures/domain/giveaway-management.json'
+ import {CAPABILITIES,projectCapabilities} from '../../../app/capabilities'
+ import {createSessionController} from '../../auth/model/session'
+@@ -11,11 +12,11 @@
+ export const meeting=()=>({place_id:place,map_revision:1,place_revision:2,instructions:'Private pickup fixture instructions',identification:'Fixture badge',expires_at:'2026-11-07T09:15:00Z'})
+ export function memoryJournal(){let stored:PickupIntent|null=null;return{read:(actor:string,event:string)=>stored?.actor===actor&&stored.event===event?structuredClone(stored):null,write(i:PickupIntent){stored=structuredClone(i)},clear(){stored=null},peek:()=>stored} satisfies IntentJournal&{peek():PickupIntent|null}}
+ export function harness(options:{handler?:(r:Request)=>Response|Promise<Response>;owner?:boolean;reserveOnly?:boolean;journal?:IntentJournal;clock?:()=>number|null}={}){
+- const requests:Request[]=[],listeners=new Set<()=>void>(),placeListeners=new Set<()=>void>(),actor=options.owner?owner:recipient,journal=options.journal??memoryJournal()
+- const auth=createSessionController({eventId:event,cookiePolicy:{available:true,onInvalidate:()=>()=>{},run:(_k,w)=>w(),dispose(){}},fetch:async input=>{const r=input as Request;requests.push(r.clone());if(options.handler)return options.handler(r);const p=new URL(r.url).pathname;return Response.json(p.endsWith('/pickup')?{reservation:reservation(),meeting:meeting()}:p.endsWith(giftId)?gift():reservation())}})
++ const requests:Request[]=[],admissionRequests:Request[]=[],listeners=new Set<()=>void>(),placeListeners=new Set<()=>void>(),actor=options.owner?owner:recipient,journal=options.journal??memoryJournal()
++ const auth=createSessionController({eventId:event,cookiePolicy:{available:true,onInvalidate:()=>()=>{},run:(_k,w)=>w(),dispose(){}},fetch:async input=>{const r=input as Request;if(r.method==='GET'&&new URL(r.url).pathname==='/api/auth/enrollment/admission'){admissionRequests.push(r.clone());return Response.json(admission())}requests.push(r.clone());if(options.handler)return options.handler(r);const p=new URL(r.url).pathname;return Response.json(p.endsWith('/pickup')?{reservation:reservation(),meeting:meeting()}:p.endsWith(giftId)?gift():reservation())}})
+  auth.session.replace(0,{userId:actor,eventId:event,accessToken:'fixture-token'})
+  let context:GiftContext|null={scope:auth.privacy.capture(),eventPhase:'OPEN',capabilities:projectCapabilities(Object.fromEntries(CAPABILITIES.map(k=>[k,{available:true,reason:null}])))},authority:PickupPlaceAuthority|null={scope:auth.privacy.capture(),placeId:place,placeRevision:2,mapRevision:1,expiresAt:now+7200000},key=90
+  const config:GiftPickupOptions={auth,context:{read:()=>context,subscribe(f){listeners.add(f);return()=>{listeners.delete(f)}}},giveawayId:giftId,...options.reserveOnly?{}:{reservationId},journal,now:options.clock??(()=>now),newKey:()=>`00000000-0000-4000-8000-${String(++key).padStart(12,'0')}`,placeAuthority:{read:()=>authority,subscribe(f){placeListeners.add(f);return()=>{placeListeners.delete(f)}}}}
+  const controller=createGiftPickup(config)
+- return{auth,controller,requests,config,journal,actor,publish(c:GiftContext|null){context=c;Array.from(listeners).forEach(f=>f())},place(a:PickupPlaceAuthority|null){authority=a;Array.from(placeListeners).forEach(f=>f())},dispose(){controller.dispose();auth.dispose()}}
++ return{auth,controller,requests,admissionRequests,config,journal,actor,publish(c:GiftContext|null){context=c;Array.from(listeners).forEach(f=>f())},place(a:PickupPlaceAuthority|null){authority=a;Array.from(placeListeners).forEach(f=>f())},dispose(){controller.dispose();auth.dispose()}}
+ }
+--- a/frontend/src/features/giveaway-authoring/__tests__/harness.ts
++++ b/frontend/src/features/giveaway-authoring/__tests__/harness.ts
+@@ -1,3 +1,4 @@
++import { admission } from '../../auth/__tests__/enrollment-consent/fixtures'
+ import fixture from '../../../../../contracts/fixtures/domain/giveaway-management.json'
+ import {CAPABILITIES,projectCapabilities} from '../../../app/capabilities'
+ import {createSessionController} from '../../auth/model/session'
+@@ -9,10 +10,10 @@
+ export const key='00000000-0000-4000-8000-000000000091'
+ export const draft=():GiftDraft=>({title:'Encore postcards',description:'Made to share.',quantity_total:10,pickup_starts_at:'2026-11-07T08:00:00Z',pickup_ends_at:'2026-11-07T10:00:00Z',public_place_id:place,state:'DRAFT'})
+ export function harness(handler?:(r:Request)=>Response|Promise<Response>,editing=false,image?:QualifiedImagePort){
+- const requests:Request[]=[],listeners=new Set<()=>void>();const auth=createSessionController({eventId:event,cookiePolicy:{available:true,onInvalidate:()=>()=>{},run:(_k,w)=>w(),dispose(){}},fetch:async input=>{const r=input as Request;requests.push(r.clone());if(handler)return handler(r);const m=management();return Response.json(r.method==='GET'?m:{...m.giveaway,state:'DRAFT'})}})
++ const requests:Request[]=[],admissionRequests:Request[]=[],listeners=new Set<()=>void>();const auth=createSessionController({eventId:event,cookiePolicy:{available:true,onInvalidate:()=>()=>{},run:(_k,w)=>w(),dispose(){}},fetch:async input=>{const r=input as Request;if(r.method==='GET'&&new URL(r.url).pathname==='/api/auth/enrollment/admission'){admissionRequests.push(r.clone());return Response.json(admission())}requests.push(r.clone());if(handler)return handler(r);const m=management();return Response.json(r.method==='GET'?m:{...m.giveaway,state:'DRAFT'})}})
+  auth.session.replace(0,{userId:actor,eventId:event,accessToken:'fixture-token'})
+  let context:GiftContext|null={scope:auth.privacy.capture(),eventPhase:'OPEN',capabilities:projectCapabilities(Object.fromEntries(CAPABILITIES.map(k=>[k,{available:true,reason:null}])))}
+  const options:GiveawayAuthoringOptions={auth,context:{read:()=>context,subscribe(f){listeners.add(f);return()=>{listeners.delete(f)}}},places:()=>[{id:place,label:'Qualified fixture place'}],now:()=>Date.parse('2026-11-04T00:00:00Z'),newKey:()=>key,...editing?{giveawayId:giftId}:{},...image?{image}:{}}
+  const controller=createGiveawayAuthoring(options)
+- return{auth,controller,requests,options,publish(c:GiftContext|null){context=c;Array.from(listeners).forEach(f=>f())},dispose(){controller.dispose();auth.dispose()}}
++ return{auth,controller,requests,admissionRequests,options,publish(c:GiftContext|null){context=c;Array.from(listeners).forEach(f=>f())},dispose(){controller.dispose();auth.dispose()}}
+ }
+--- a/frontend/src/features/gift-discovery/__tests__/fixtures/data.ts
++++ b/frontend/src/features/gift-discovery/__tests__/fixtures/data.ts
+@@ -1,3 +1,4 @@
++import { admission } from '../../../auth/__tests__/enrollment-consent/fixtures'
+ import management from '../../../../../../contracts/fixtures/domain/giveaway-management.json'
+ import { createSessionController } from '../../../auth/model/session'
+ import { CAPABILITIES, projectCapabilities } from '../../../../app/capabilities'
+@@ -14,11 +15,11 @@
+ export const allCapabilities = () => projectCapabilities(Object.fromEntries(CAPABILITIES.map(key => [key, { available: true, reason: null }])))
+ export function deferred<T>() { let resolve!: (value: T) => void; const promise = new Promise<T>(done => { resolve = done }); return { resolve, promise } }
+ export function fixture(options: { handler?: (request: Request) => Response | Promise<Response>; clock?: GiftClock; limit?: number } = {}) {
+-  const requests: Request[] = []
++  const admissionRequests: Request[] = [], requests: Request[] = []
+   const auth = createSessionController({ eventId, timeoutMs: 2000, cookiePolicy: {
+     available: true, onInvalidate: () => () => {}, run: (_kind, work) => work(), dispose() {},
+   }, fetch: async input => {
+-    const request = input as Request; requests.push(request)
++    const request = input as Request; if (request.method === 'GET' && new URL(request.url).pathname === '/api/auth/enrollment/admission') { admissionRequests.push(request.clone()); return Response.json(admission()) }; requests.push(request)
+     if (options.handler) return options.handler(request)
+     const path = new URL(request.url).pathname
+     return Response.json(path.endsWith('/me/giveaways') ? { giving: { items: [giveaway({ owner: { ...giveaway().owner, user_id: auth.session.read().userId! }, state: 'DRAFT' })], next_cursor: null },
+@@ -31,7 +32,7 @@
+   const controller = createGiftDiscoveryController({ auth, context: { read: () => context,
+     subscribe(listener) { listeners.add(listener); return () => { listeners.delete(listener) } } },
+     clock: options.clock ?? { now: () => now, setTimeout: () => 1, clearTimeout() {} }, ...(options.limit ? { limit: options.limit } : {}) })
+-  return { auth, controller, requests,
++  return { auth, controller, requests, admissionRequests,
+     context: () => context,
+     publish(value: GiftContext | null) { context = value; listeners.forEach(listener => listener()) },
+     rebind() { context = { scope: auth.privacy.capture(), capabilities: allCapabilities(), eventPhase: 'OPEN' }; listeners.forEach(listener => listener()) },
+--- a/frontend/src/app/community-entry/__tests__/fixture.ts
++++ b/frontend/src/app/community-entry/__tests__/fixture.ts
+@@ -1,3 +1,4 @@
++import { admission } from '../../../features/auth/__tests__/enrollment-consent/fixtures'
+ import { createSessionController } from '../../../features/auth/model/session'
+ import { createPartyController, type PartyAccess } from '../../../features/party-discovery'
+ import { createGiftDiscoveryController, type GiftContext } from '../../../features/gift-discovery'
+@@ -10,13 +11,13 @@
+ 
+ export { giftId, reservationId, place, ids, now }
+ export function fixture(options: { owner?: boolean; storage?: Pick<Storage, 'getItem' | 'setItem' | 'removeItem'> } = {}) {
+-  const requests: Request[] = [], signals = new Set<() => void>(), clockListeners = new Set<() => void>()
++  const admissionRequests: Request[] = [], requests: Request[] = [], signals = new Set<() => void>(), clockListeners = new Set<() => void>()
+   const stored = new Map<string, string>(), storage = options.storage ?? { getItem: (k: string) => stored.get(k) ?? null,
+     setItem: (k: string, v: string) => { stored.set(k, v) }, removeItem: (k: string) => { stored.delete(k) } }
+   const actor = options.owner ? owner : recipient
+   let lost = false, held = false
+   const auth = createSessionController({ eventId: event, cookiePolicy: { available: true, onInvalidate: () => () => {}, run: (_k, w) => w(), dispose() {} }, fetch: async input => {
+-    const r = input as Request; requests.push(r.clone()); const path = new URL(r.url).pathname
++    const r = input as Request; if (r.method === 'GET' && new URL(r.url).pathname === '/api/auth/enrollment/admission') { admissionRequests.push(r.clone()); return Response.json(admission()) }; requests.push(r.clone()); const path = new URL(r.url).pathname
+     if (r.method !== 'GET') {
+       if (lost) throw new TypeError('Synthetic response lost')
+       held = true; return Response.json(reservation({ recipient_id: actor, state: 'HELD' }))
+@@ -50,7 +51,7 @@
+   const release: CommunityEntryRelease = { scope, signal: lifetime.signal, parties, gifts, access: accessPort, context: contextPort,
+     clock: { read: () => clockAvailable ? { scope: clockScope, nowMs: now } : null, subscribe(fn) { clockListeners.add(fn); return () => { clockListeners.delete(fn) } } },
+     places: { read: () => ({ scope: placeScope, items: [{ id: place, label: 'SYNTHETIC qualified gift place' }, { id: ids.place, label: 'SYNTHETIC party place' }] }), subscribe }, journal }
+-  return { auth, scope, release, lifetime, requests, stored, journal, parties, gifts,
++  return { auth, scope, release, lifetime, requests, admissionRequests, stored, journal, parties, gifts,
+     loseResponse() { lost = true },
+     clock(available: boolean, s = scope) { clockAvailable = available; clockScope = s; Array.from(clockListeners).forEach(fn => fn()) },
+     places(s: PrivacyScope) { placeScope = s; Array.from(signals).forEach(fn => fn()) },

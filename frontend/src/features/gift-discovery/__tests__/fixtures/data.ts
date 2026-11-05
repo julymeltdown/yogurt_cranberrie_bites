@@ -1,3 +1,4 @@
+import { admission } from '../../../auth/__tests__/enrollment-consent/fixtures'
 import management from '../../../../../../contracts/fixtures/domain/giveaway-management.json'
 import { createSessionController } from '../../../auth/model/session'
 import { CAPABILITIES, projectCapabilities } from '../../../../app/capabilities'
@@ -14,11 +15,11 @@ export function reservation(patch: Partial<Reservation> = {}): Reservation { ret
 export const allCapabilities = () => projectCapabilities(Object.fromEntries(CAPABILITIES.map(key => [key, { available: true, reason: null }])))
 export function deferred<T>() { let resolve!: (value: T) => void; const promise = new Promise<T>(done => { resolve = done }); return { resolve, promise } }
 export function fixture(options: { handler?: (request: Request) => Response | Promise<Response>; clock?: GiftClock; limit?: number } = {}) {
-  const requests: Request[] = []
+  const admissionRequests: Request[] = [], requests: Request[] = []
   const auth = createSessionController({ eventId, timeoutMs: 2000, cookiePolicy: {
     available: true, onInvalidate: () => () => {}, run: (_kind, work) => work(), dispose() {},
   }, fetch: async input => {
-    const request = input as Request; requests.push(request)
+    const request = input as Request; if (request.method === 'GET' && new URL(request.url).pathname === '/api/auth/enrollment/admission') { admissionRequests.push(request.clone()); return Response.json(admission()) }; requests.push(request)
     if (options.handler) return options.handler(request)
     const path = new URL(request.url).pathname
     return Response.json(path.endsWith('/me/giveaways') ? { giving: { items: [giveaway({ owner: { ...giveaway().owner, user_id: auth.session.read().userId! }, state: 'DRAFT' })], next_cursor: null },
@@ -31,7 +32,7 @@ export function fixture(options: { handler?: (request: Request) => Response | Pr
   const controller = createGiftDiscoveryController({ auth, context: { read: () => context,
     subscribe(listener) { listeners.add(listener); return () => { listeners.delete(listener) } } },
     clock: options.clock ?? { now: () => now, setTimeout: () => 1, clearTimeout() {} }, ...(options.limit ? { limit: options.limit } : {}) })
-  return { auth, controller, requests,
+  return { auth, controller, requests, admissionRequests,
     context: () => context,
     publish(value: GiftContext | null) { context = value; listeners.forEach(listener => listener()) },
     rebind() { context = { scope: auth.privacy.capture(), capabilities: allCapabilities(), eventPhase: 'OPEN' }; listeners.forEach(listener => listener()) },

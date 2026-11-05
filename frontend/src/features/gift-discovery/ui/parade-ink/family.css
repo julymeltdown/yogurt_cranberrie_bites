@@ -1,0 +1,23 @@
+/* PI04 consumes pi01-photo2-v1. The shell owns the frame, titlebar and inset. */
+:is(.giveaway-authoring,.gift-pickup,.gifts-view,.gifts-reference) { box-sizing: border-box; color: var(--pi-ink); font: 400 var(--pi-body-size)/var(--pi-body-leading) var(--pi-font-body); overflow-wrap: anywhere; min-width: 0; }
+:is(.giveaway-authoring,.gift-pickup) { width: 100%; margin: 0; padding: 0 0 max(12px,env(safe-area-inset-bottom)); background: var(--pi-paper); }
+:is(.giveaway-authoring,.gift-pickup) :is(h1,h2,p) { margin: 0; }
+:is(.giveaway-authoring,.gift-pickup) p { line-height: var(--pi-body-leading); }
+.gift-family-heading { display: grid; gap: var(--pi-content-inset); padding: 0 0 12px; border-bottom: var(--pi-rule-width) solid var(--pi-rule); }
+.gift-family-heading > p:first-child { font: 700 var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-display); letter-spacing: .04em; }
+.gift-family-heading h1 { font: 700 var(--pi-title-size)/var(--pi-title-leading) var(--pi-font-display); text-transform: uppercase; }
+.gift-family-heading > p:last-child { color: var(--pi-muted); font-size: var(--pi-meta-size); line-height: var(--pi-meta-leading); }
+:is(.giveaway-authoring,.gift-pickup) :is(input,select,button) { box-sizing: border-box; min-width: 0; max-width: 100%; min-height: var(--pi-hit); border: var(--pi-rule-width) solid var(--pi-rule); border-radius: var(--pi-radius); padding: 8px; color: var(--pi-ink); background: var(--pi-paper); font: inherit; }
+:is(.giveaway-authoring,.gift-pickup) button { cursor: pointer; font: 700 var(--pi-control-size)/var(--pi-control-leading) var(--pi-font-display); }
+:is(.giveaway-authoring,.gift-pickup) :is(button,input,select):disabled { color: var(--pi-muted); background: var(--pi-disabled); cursor: not-allowed; opacity: 1; }
+:is(.giveaway-authoring,.gift-pickup) :is(button,input,select,a,summary):focus-visible { outline: 3px solid var(--pi-focus); outline-offset: 2px; }
+:is(.giveaway-authoring,.gift-pickup) .gift-family-primary:not(:disabled),.giveaway-authoring button[type=submit]:not(:disabled) { background: var(--pi-crimson); color: var(--pi-on-dark); }
+:is(.giveaway-authoring,.gift-pickup) > section { display: grid; gap: var(--pi-row-gap); margin-block: 12px; border: var(--pi-rule-width) solid var(--pi-rule); padding: var(--pi-content-inset); }
+:is(.giveaway-authoring,.gift-pickup) h2 { font: 700 var(--pi-control-size)/var(--pi-control-leading) var(--pi-font-display); }
+:is(.giveaway-authoring,.gift-pickup) label { display: grid; gap: 5px; }
+:is(.giveaway-authoring,.gift-pickup) .gift-family-check { display: flex; align-items: center; gap: 8px; min-height: var(--pi-hit); font-size: var(--pi-meta-size); line-height: var(--pi-meta-leading); }
+:is(.giveaway-authoring,.gift-pickup) input[type=checkbox] { flex: 0 0 20px; width: 20px; min-height: 20px; margin: 0; accent-color: var(--pi-crimson); }
+:is(.giveaway-authoring,.gift-pickup) [role=status]:empty { display: none; }
+:is(.giveaway-authoring,.gift-pickup) > [role=status]:not(:empty) { padding: var(--pi-content-inset); margin-block: var(--pi-row-gap); border: var(--pi-rule-width) solid var(--pi-rule); background: var(--pi-surface); }
+.gift-family-note { color: var(--pi-muted); font-size: var(--pi-meta-size); line-height: var(--pi-meta-leading); }
+@media (forced-colors: active) { :is(.giveaway-authoring,.gift-pickup,.gifts-view,.gifts-reference) :focus-visible { outline: 3px solid Highlight; } }

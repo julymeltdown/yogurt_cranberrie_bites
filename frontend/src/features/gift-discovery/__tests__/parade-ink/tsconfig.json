@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "allowImportingTsExtensions": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "types": [
+      "vite/client",
+      "node"
+    ],
+    "incremental": false
+  },
+  "include": [
+    "./*.test.tsx",
+    "../../ui/Gifts.tsx",
+    "../../../my-gifts/MyGifts.tsx",
+    "../../../giveaway-authoring/ui/GiveawayAuthoring.tsx",
+    "../../../gift-pickup/ui/GiftPickup.tsx",
+    "../../../giveaway-authoring/__tests__/parade-ink/*.test.tsx",
+    "../../../gift-pickup/__tests__/parade-ink/*.test.tsx",
+    "../../../../app/community-entry/routes.tsx",
+    "../../../../app/community-entry/__tests__/parade-ink-pickup-media/*.test.ts"
+  ]
+}
