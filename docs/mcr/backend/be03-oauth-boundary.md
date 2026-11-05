@@ -890,3 +890,35 @@ All 15 application/shared leaves remain UNPUBLISHED and the Gateway qualificatio
 remains OPEN. Provider, SQL, browser and native runtime are NOT_RUN. Public OAuth
 remains OFF; denial still does not tombstone Auth state and its replay gap remains
 OPEN. No IN02, visual, design or product acceptance increment is claimed.
+
+
+## 2026-11-05 09:13 UTC: complete source inputs authored; Gateway07 refused before Cargo
+
+This entry supersedes the earlier statement that the source augmentation was not yet materialized. It does not qualify the application or replace the retained failed-run history.
+
+### Actual source authoring
+
+Under distinct ordinary-only grant `BE03-INCLUDE-CLOSURE-PREP64-0853`, the developer accepted at epoch `1793869026.991588` and reached FULL at `1793869027.72485`, exit 0. A fresh regular-file export contains 2,356 files: all 2,339 exact candidate backend files plus the 17 audited root documentation/contract build inputs. All 166 audited include destinations exist. The allocation sum was 37,601,280 bytes; no hardlinks, compiler, target access, application tests, or runtime activity were used for this authoring. The original AMEND10 export remains untouched. The real worktree HEAD and index remained unchanged.
+
+- Export: `/private/tmp/mcr-be03-oauth-12cc/projection-inputs11/source`.
+- Source seal: `projection-inputs11/source-seal.json`, SHA256 `aa11da5e12667623c5f674199b21fa410257a213ad359255f0edf6f78e18e4f3`.
+- Authoring FULL: `projection-inputs11/AUTHORING_FULL.json`, SHA256 `2743e5a1bc1ff2754be48062c72da51068a43c5fc182abea5a6c92c3d54516b8`.
+- Authoring disposition: `projection-inputs11/authoring-disposition.json`, SHA256 `0d7b1f54f595fe2e90b78e798803acec4d89cdc09304f1ae3e7300f602bf3e09`.
+
+These are source-authoring results, not a compiler or application PASS. The source candidate remains `11be1d4395354b02c94211ed33f7992105750e42`, backend tree `df28cd9a1e1559e723010255dd5dafd82cf71135`; copied root inputs retain their recorded source tree/blob provenance in the seal.
+
+### Actual Gateway07 result and correction
+
+Distinct `BE03-GATEWAY-CHECK07-0904` was actually accepted at epoch `1793869796.164363`; FULL at `1793869808.02053`, exit 1, resources 0, both guardians and child reaped. The run verified the sealed source before starting guardians, then refused in PRE_TARGET: `guard_protocol.py:106` still imposed obsolete cumulative ceiling `1090519040`, below the newly authorized carry. Both complete LIVE, target custody/access, and Cargo were NOT_RUN. The latest actual target component therefore remains Gateway06; Gateway07 supplies no fresh target upper. Notice Compile05 likewise never finite-accepted or touched the target.
+
+- Actual output directory: `/private/tmp/mcr-be03-oauth-12cc/gateway-check07-run01`.
+- `FULL.json`: SHA256 `9d9bf392302090c99a36f7b860b6dba6b50c3e9be4636033ca294383964b3a74`.
+- `TARGET_RELEASE.json`: SHA256 `8be639c994b7905f8db9c8b8542ffd6027827dc2d90c18967eb1edea2e6d1628`, release epoch `1793869808.02003`, `targetCustodyActuallyEntered=false`.
+- `failure-disposition.json`: SHA256 `1844a6e442da1decd649cb5261d168c9e28fb2793c1b80d4456781e36ad6710e`.
+- Captured root union: `root-union.current-handoff.json`, SHA256 `1b8667230e9f7126904cd3c7e3b2ea4b9b400869202e16ce8a51d1ed0b41e011`; includes the coherent Notice metadata-only 197-root handoff. Exact inherited profile/tools are in the release receipt.
+
+The entire 128 MiB allocation remains conservatively charged. Cumulative family carry is now `1392099328` bytes; retained whole floor is `85899345920` bytes. No refund or historical reset occurred. Previous Gateway06 four control-case passes and C06 two retention-case passes were not replayed or upgraded to application acceptance.
+
+The developer authored a fresh immutable Gateway08 guard that checks `prepChargedOnceBytes <= observed family <= familyAfterEntireBookBytes <= familyCapBytes`, replacing the obsolete fixed ceiling. Guard SHA256 is `426f3e97223447e13b4961b5fa517508c5446ab8adb40084c903bf31a92d8e93`. Proposed exact retry packet `/private/tmp/mcr-be03-oauth-12cc/gateway-check08-run01/proposal.prepared.json`, SHA256 `39f7b51d056ca2f5f01e9c649a2b722464a32e6c04ccc4ebe41f62858c2de52a`, requests the same single offline Rust 1.88 locked single-job `api-gateway --lib --tests` Cargo check, combined 128 MiB / target 104 MiB / outside 32 MiB including bootstrap 8 MiB and shared retention 4 MiB. Its prospective family cap 1,472 MiB is a REQUEST, not an inferred grant. Source correction ran no compiler or tests. Execution waits only for actual fresh allocation and fit, without king/SL review or ACK.
+
+All 15 application/shared leaves remain UNPUBLISHED. Public OAuth remains OFF; Auth-state tombstoning/replay gap remains OPEN. Provider, SQL, browser/native runtime and application tests remain NOT_RUN. This documentation successor changes no backend/application content and must not be reported as BE03 or IN02 acceptance.
