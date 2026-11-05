@@ -1,0 +1,9 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/frontend
+
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  14:52:32
+   Duration  288ms (transform 20ms, setup 0ms, import 29ms, tests 194ms, environment 0ms)
+

@@ -1,0 +1,12 @@
+{
+  "at": 1793857763.447018,
+  "authority": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/backend-current-capacity-reconciliation-20261105T054714.json",
+  "authoritySHA256": "79071580e9f60dfce629edc77f3ee0e10196d22c6d90a59db10ea9fe7bbed5d6",
+  "publishedGlobalFutureUpperBytes": 9596567552,
+  "includesOwnSource03PhaseBytes": 4194304,
+  "otherBytesExcludingOwnOnce": 9592373248,
+  "ownFutureBytes": 4194304,
+  "rule": "Retain9GiBresidual/start11/live8/allhigher and fresh completecensus, same768family fullcap; no retainedcarry double charge or queuedtarget doublecount",
+  "sourceGrant": "PI08-DISPLAY-CONTRACT-SOURCE03-0532",
+  "sourceSeal": "868cea3def28f274d7b669a2ed0c4a66e6a08045"
+}

@@ -37,5 +37,21 @@
     "frontend/src/world/reference-scene/photo2-world-display-v1/phaser.ts"
   ],
   "hunkLimits": "Root literal transfer only: model imports/optionaldisplayfield/strictnewversiondispatch; phaser prepareReferenceSceneSkin newprofilebranch+cleanup; MapScene create/prepareSkin/refreshCamera/cameraprojectionread/avatarupdate/muralprojection newprofilehunks; illustrated validateScenery grounddimension equality+necessaryimport only. Preserve all legacy profile behavior including exact b4c81367 camera fallback; no Auth/router/resolver/physics/C06 bypass.",
-  "rootStop": "Received literalRoot153 STOP; no other known writer; own receiving acceptance precedes any source write."
+  "rootStop": "Received literalRoot153 STOP; no other known writer; own receiving acceptance precedes any source write.",
+  "allocatorAuthoringAmendment": {
+    "source": "Literal allocator21d incoming 2026-11-05 05:40: budgetscope extends ONLY exactnewmodel/phaserfiles named in acceptedRootgrant; no blanketfolder",
+    "paths": [
+      "frontend/src/world/reference-scene/photo2-world-display-v1/model.ts",
+      "frontend/src/world/reference-scene/photo2-world-display-v1/phaser.ts"
+    ],
+    "rootGrantReference": "9a0cd1bd2c78441c20b03a4a0bfd18d181859a14:docs/mcr/evidence/pi08-finish-01/photo2-world-contract/next-custody-request.json; literalRootSTOP and receiver8562bd74b8ba0c9619b58fd4349b5131eb2b6472 receipt",
+    "boundary": "Authoring only, not part of pureSource03; all shared incumbent hunks remain unedited pending scoped resource amendment if needed"
+  },
+  "allocatorIncumbentHunkAuthoringAmendment": {
+    "source": "Literalallocator21d incoming2026-11-05 05:48 capacitycorrection+SAME64 authoring amendment",
+    "acceptedBeforeWrites": true,
+    "pathsAndHunks": "Root literal transfer only: model imports/optionaldisplayfield/strictnewversiondispatch; phaser prepareReferenceSceneSkin newprofilebranch+cleanup; MapScene create/prepareSkin/refreshCamera/cameraprojectionread/avatarupdate/muralprojection newprofilehunks; illustrated validateScenery grounddimension equality+necessaryimport only. Preserve all legacy profile behavior including exact b4c81367 camera fallback; no Auth/router/resolver/physics/C06 bypass.",
+    "authorityReference": "RootliteralSTOP/receiver8562bd74b8ba0c9619b58fd4349b5131eb2b6472 and allocator21d incoming05:48; no blanketfolder or newwriter",
+    "validation": "Separatefuturefrozenscope required; all incumbent source hunks still UNEDITED"
+  }
 }

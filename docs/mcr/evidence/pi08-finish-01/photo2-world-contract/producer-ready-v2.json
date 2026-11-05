@@ -1,0 +1,79 @@
+{
+  "version": 1,
+  "status": "SOURCE_FRAME_PROJECTION_INTERFACE_QUALIFIED_READY_FOR_ART_PRODUCER_NOT_PIXELS_OR_RUNTIME_ADMITTED",
+  "sourceCommit": "d3a2a1dea2c27b29b951bc37844f7751a9c83bcd",
+  "candidate": {
+    "path": "docs/mcr/evidence/pi08-finish-01/photo2-world-contract/producer-input-v2.json",
+    "sha256": "da87fef51caf2333e2fb9b05755efff0046c7254f0b399bc234b1308697c52fd"
+  },
+  "contract": {
+    "path": "docs/mcr/evidence/pi08-finish-01/photo2-world-contract/producer-contract-v2.json",
+    "sha256": "3fce374b7f60d46e8561559c42470a3343708f9eb3236a1d01050c4f0aa3a12d"
+  },
+  "qualification": {
+    "offer": "PI08-DISPLAY-CONTRACT-SOURCE04-0551",
+    "accepted": 1793857951.190708,
+    "full": 1793857954.825193,
+    "exit": 0,
+    "newCases": 1,
+    "typesExit": 0,
+    "lintExit": 0,
+    "readsetSHA256": "7bcf332dd1c5fc512120fe07bbc052db5ce879a4538394ded7c887e99bc91f55",
+    "raw": "docs/mcr/evidence/pi08-finish-01/source04/round.json",
+    "rawSHA256": "8dbbafb15d5c34e911f8e41126bcf7654938827f6725bc91b54826cc224f3f64",
+    "bothLive": {
+      "primary": 60068,
+      "guardian": 60153,
+      "at": 1793857952.181138,
+      "initial": {
+        "pid": 60153,
+        "at": 1793857952.1226602,
+        "sample": {
+          "free": 21158940672,
+          "all": 3,
+          "rss": 55230464,
+          "new": 773857280,
+          "whole": 5471391744,
+          "pids": [
+            60068,
+            60153,
+            60163
+          ]
+        }
+      }
+    },
+    "resources": 0,
+    "actualPrimaryAndGuardianAbsenceObserved": true
+  },
+  "retained": "OriginalSource03foldFAIL raw and originalcandidatev1/contractv1 unchanged; retainedSource01eight/Source02three withoutreplay",
+  "proposedExclusiveARTOutputs": [
+    "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/ground.svg",
+    "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/ground.png",
+    "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/atlas.png",
+    "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/atlas-editable.json",
+    "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/asset-interface.json",
+    "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/source-provenance.json",
+    "frontend/public/world/reference-scene-v2/photo2-world-display-v1/parade/README.md",
+    "frontend/src/features/parade-ink/world-hud/__tests__/photo2-art-source-v1/qualifier.test.ts",
+    "docs/mcr/art/photo2-world-display-v1.md",
+    "docs/mcr/art/evidence/photo2-world-display-v1/**"
+  ],
+  "producerResponsibility": "ActualoriginalPARADEground/atlas/sourceprovenance/editor/pixelreview under UI533 literalexclusive10path transfer and allocator21d owngrant. This packet is not the writergrant. Source-onlypass is the prerequisite; do not waitasset-consumingrenderer/native.",
+  "consumerInterface": {
+    "native": "22 exact nativeIDs/coords/frames frozen incontract; no geometry/spawn/collision/proximity/room/identity changes",
+    "projection": "Use corrected204vertices sharedpositiveprojection/inverse foractors/input/collision/support/affordances; no perobjectoffset; foot originbottomcenter, projectedfootY occlusion and deterministicnativeIDties",
+    "boards": "photo2-shortcut-meet and photo2-shortcut-wall:2 nonphysicalboardframes, existingauthorizedpanels only, samepermissions/pending/disabled, keyboard/focus>=44CSS, no interactionID",
+    "dimensions": "Thisversion499x1200ground/displaybounds[-112,-20,499,1200],512x1024atlas/24 exact slots; versionedderivedinputs, not permanentproductfreeze",
+    "separateNativeTileTexture": "Retainexact separatelypinned existingTiled-compatible native texture input for C06/Tiled schema; newdisplayground is scenery-only, not relabeled oldpixels",
+    "admission": "NewPARADEtheme_revision/content_hash/assetbytes+hashes+sourceprovenance and exactC03catalog allowlist beforeconsume; no oldhashnewpixels; missingmixedtuple failclosed",
+    "units": {
+      "sourcePixelCount": 1123088,
+      "decodedRGBABytes": 4492352,
+      "sourcePixelCountLimit": 2097152,
+      "transferByteLimit": 2097152,
+      "actualPngTransferBytes": "NOT_PRODUCED",
+      "peakDuringSwapBytes": "NOT_RUN"
+    }
+  },
+  "open": "No actual ARTpixels/transfer/swappeak/collisiondepiction/occlusion/native/surfacevisualqualification, nofullPI08closure"
+}

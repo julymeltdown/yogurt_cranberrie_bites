@@ -1,0 +1,761 @@
+{
+  "ownerThreadId": "01a1a5d9-6955-7820-bcd4-8e0a21629aa2",
+  "offerId": "PI08-DISPLAY-CONTRACT-SOURCE04-0551",
+  "state": "ACCEPTED",
+  "kind": "source",
+  "acceptedAtEpoch": 1793857951.190708,
+  "workDeadlineEpoch": 1793858071.190708,
+  "fullDeadlineEpoch": 1793858131.190708,
+  "processCap": 8,
+  "rssCapBytes": 1073741824,
+  "newCapBytes": 805306368,
+  "carriedNewBytes": 773849088,
+  "remainingNewUpperBytes": 4194304,
+  "controller": {
+    "pid": 60068,
+    "birth": "Thu Nov 5 14:52:30 2026",
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+    "script": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/frontend/src/features/parade-ink/world-hud/__tests__/finish-01/contract-source04.py",
+    "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+    "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/pi08-finish-01/source04"
+  },
+  "guardControllers": [],
+  "receiptPaths": {
+    "accept": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/pi08-finish-01/source04/accepted.json",
+    "full": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/pi08-finish-01/source04/round.json"
+  },
+  "publishedAtEpoch": 1793857951.249587,
+  "resources": 1,
+  "ordinaryObservationHistoryArchives": [
+    {
+      "path": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/pi08-finish-01/photo2-world-contract/ordinary-observation-history-0524.json",
+      "sha256": "2556ed8446c05d551242642b97a782e61b6f1d872a618865477ee6b52d76a260",
+      "bytes": 50286,
+      "entries": 60
+    }
+  ],
+  "ordinaryObservationHistory": [
+    {
+      "observation": {
+        "state": "LIVE",
+        "actualpid": 82765,
+        "birth": "Thu Nov 5 14:22:21 2026",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+        "role": "ordinary metadata finisher only; payload authoring complete, actual process exit not yet inferred",
+        "observedAt": 1793856142.139938,
+        "booking": "SAME unspent64MiB through06:00UTC",
+        "commandDigest": "6c2899e3ae688dd0aa06a9a522e9e64fc5f039599920217fe97e2cc30078267a",
+        "commandDigestEncoding": "SHA256 of Python json.dumps(sys.argv)",
+        "finishingAtEpoch": 1793856142.22801
+      },
+      "actualExitCode": 0,
+      "exitObservedAtEpoch": 1793856165.602599,
+      "disposition": "Prior tool actual exit0 and PID absence observed before removal"
+    },
+    {
+      "observation": {
+        "state": "LIVE",
+        "actualpid": 83488,
+        "birth": "Thu Nov 5 14:22:45 2026",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+        "role": "ordinary metadata finisher only; payload authoring complete, actual process exit not yet inferred",
+        "observedAt": 1793856165.607856,
+        "booking": "SAME unspent64MiB through06:00UTC",
+        "commandDigest": "6c2899e3ae688dd0aa06a9a522e9e64fc5f039599920217fe97e2cc30078267a",
+        "commandDigestEncoding": "SHA256 of Python json.dumps(sys.argv)",
+        "finishingAtEpoch": 1793856165.682208
+      },
+      "actualExitCode": 0,
+      "exitObservedAtEpoch": 1793856201.1732,
+      "disposition": "Prior tool actual exit0 and PID absence observed before removal"
+    },
+    {
+      "observation": {
+        "state": "LIVE",
+        "actualpid": 84944,
+        "birth": "Thu Nov 5 14:23:20 2026",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+        "role": "ordinary metadata finisher only; payload authoring complete, actual process exit not yet inferred",
+        "observedAt": 1793856201.180599,
+        "booking": "SAME unspent64MiB through06:00UTC",
+        "commandDigest": "6c2899e3ae688dd0aa06a9a522e9e64fc5f039599920217fe97e2cc30078267a",
+        "commandDigestEncoding": "SHA256 of Python json.dumps(sys.argv)",
+        "finishingAtEpoch": 1793856201.259956
+      },
+      "actualExitCode": 0,
+      "exitObservedAtEpoch": 1793856216.046048,
+      "disposition": "Prior tool actual exit0 and PID absence observed before removal"
+    },
+    {
+      "observation": {
+        "state": "LIVE",
+        "actualpid": 93461,
+        "birth": "Thu Nov 5 14:23:35 2026",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+        "role": "ordinary scoped source/docs/Git/receipt authoring; no application payload",
+        "observedAt": 1793856216.0531971,
+        "booking": "SAME unspent64MiB through06:00UTC",
+        "commandDigest": "6c2899e3ae688dd0aa06a9a522e9e64fc5f039599920217fe97e2cc30078267a",
+        "commandDigestEncoding": "SHA256 of Python json.dumps(sys.argv)"
+      },
+      "transitionAtEpoch": 1793856216.20343,
+      "disposition": "Same actual PID exec is now the canonical finite controller; ordinary bootstrap observation ended, no process exit inferred"
+    },
+    {
+      "observation": {
+        "state": "LIVE",
+        "actualpid": 93461,
+        "birth": "Thu Nov 5 14:23:35 2026",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+        "script": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/frontend/src/features/parade-ink/world-hud/__tests__/finish-01/contract-source02.py",
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+        "role": "FULL receipt finisher only; no workload, guardian, browser or dependency link remains",
+        "observedAt": 1793856220.999476,
+        "booking": "SAME unspent ordinary64MiB through06:00UTC; no workflow reservation",
+        "commandDigest": "b2b0010ce46457d5f401af3085ff45769ace7c5221f4816c56a9e9e088398f2d",
+        "commandDigestEncoding": "SHA256 of Python json.dumps(sys.argv); not raw ps command"
+      },
+      "actualExitCode": 0,
+      "exitObservedAtEpoch": 1793856238.6673129,
+      "disposition": "Prior tool actual exit0 and PID absence observed before removal"
+    },
+    {
+      "observation": {
+        "state": "LIVE",
+        "actualpid": 96073,
+        "birth": "Thu Nov 5 14:23:58 2026",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+        "role": "ordinary metadata finisher only; payload authoring complete, actual process exit not yet inferred",
+        "observedAt": 1793856238.674432,
+        "booking": "SAME unspent64MiB through06:00UTC",
+        "commandDigest": "6c2899e3ae688dd0aa06a9a522e9e64fc5f039599920217fe97e2cc30078267a",
+        "commandDigestEncoding": "SHA256 of Python json.dumps(sys.argv)",
+        "finishingAtEpoch": 1793856238.678418
+      },
+      "actualExitCode": 0,
+      "exitObservedAtEpoch": 1793856307.268079,
+      "disposition": "Prior tool actual exit0 and PID absence observed before removal"
+    },
+    {
+      "observation": {
+        "state": "LIVE",
+        "actualpid": 98252,
+        "birth": "Thu Nov 5 14:25:07 2026",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+        "role": "ordinary scoped source/docs/Git/receipt authoring; no application payload",
+        "observedAt": 1793856307.273412,
+        "booking": "SAME unspent64MiB through06:00UTC",
+        "commandDigest": "6c2899e3ae688dd0aa06a9a522e9e64fc5f039599920217fe97e2cc30078267a",
+        "commandDigestEncoding": "SHA256 of Python json.dumps(sys.argv)"
+      },
+      "actualExitCode": 1,
+      "exitObservedAtEpoch": 1793856338.707896,
+      "disposition": "Prior tool actual exit1 and PID absence observed before removal"
+    },
+    {
+      "observation": {
+        "state": "LIVE",
+        "actualpid": 99115,
+        "birth": "Thu Nov 5 14:25:38 2026",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+        "role": "ordinary metadata finisher only; payload authoring complete, actual process exit not yet inferred",
+        "observedAt": 1793856338.713535,
+        "booking": "SAME unspent64MiB through06:00UTC",
+        "commandDigest": "6c2899e3ae688dd0aa06a9a522e9e64fc5f039599920217fe97e2cc30078267a",
+        "commandDigestEncoding": "SHA256 of Python json.dumps(sys.argv)",
+        "finishingAtEpoch": 1793856338.7146711
+      },
+      "actualExitCode": 0,
+      "exitObservedAtEpoch": 1793856360.360665,
+      "disposition": "Prior tool actual exit0 and PID absence observed before removal"
+    },
+    {
+      "observation": {
+        "state": "LIVE",
+        "actualpid": 99772,
+        "birth": "Thu Nov 5 14:26:00 2026",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+        "role": "ordinary metadata finisher only; payload authoring complete, actual process exit not yet inferred",
+        "observedAt": 1793856360.3659892,
+        "booking": "SAME unspent64MiB through06:00UTC",
+        "commandDigest": "6c2899e3ae688dd0aa06a9a522e9e64fc5f039599920217fe97e2cc30078267a",
+        "commandDigestEncoding": "SHA256 of Python json.dumps(sys.argv)",
+        "finishingAtEpoch": 1793856360.454278
+      },
+      "actualExitCode": 0,
+      "exitObservedAtEpoch": 1793856470.5290968,
+      "disposition": "Prior tool actual exit0 and PID absence observed before removal"
+    },
+    {
+      "observation": {
+        "state": "LIVE",
+        "actualpid": 5739,
+        "birth": "Thu Nov 5 14:27:50 2026",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+        "role": "ordinary refused preaccept metadata finisher only; no runtime started",
+        "observedAt": 1793856470.534252,
+        "booking": "SAME unspent64MiB through06:00UTC",
+        "commandDigest": "6c2899e3ae688dd0aa06a9a522e9e64fc5f039599920217fe97e2cc30078267a",
+        "commandDigestEncoding": "SHA256 of Python json.dumps(sys.argv)"
+      },
+      "actualExitCode": 1,
+      "exitObservedAtEpoch": 1793856586.139533,
+      "disposition": "Prior tool actual exit1 and PID absence observed before removal"
+    },
+    {
+      "observation": {
+        "state": "LIVE",
+        "actualpid": 9538,
+        "birth": "Thu Nov 5 14:29:45 2026",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+        "role": "ordinary metadata finisher only; payload authoring complete, actual process exit not yet inferred",
+        "observedAt": 1793856586.145426,
+        "booking": "SAME unspent64MiB through06:00UTC",
+        "commandDigest": "6c2899e3ae688dd0aa06a9a522e9e64fc5f039599920217fe97e2cc30078267a",
+        "commandDigestEncoding": "SHA256 of Python json.dumps(sys.argv)",
+        "finishingAtEpoch": 1793856586.156199
+      },
+      "actualExitCode": 0,
+      "exitObservedAtEpoch": 1793856651.1984482,
+      "disposition": "Prior tool actual exit0 and PID absence observed before removal"
+    },
+    {
+      "observation": {
+        "state": "LIVE",
+        "actualpid": 12542,
+        "birth": "Thu Nov 5 14:30:51 2026",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+        "role": "ordinary metadata finisher only; payload authoring complete, actual process exit not yet inferred",
+        "observedAt": 1793856651.204733,
+        "booking": "SAME unspent64MiB through06:00UTC",
+        "commandDigest": "6c2899e3ae688dd0aa06a9a522e9e64fc5f039599920217fe97e2cc30078267a",
+        "commandDigestEncoding": "SHA256 of Python json.dumps(sys.argv)",
+        "finishingAtEpoch": 1793856651.5615711
+      },
+      "actualExitCode": 0,
+      "exitObservedAtEpoch": 1793856694.4829361,
+      "disposition": "Prior tool actual exit0 and PID absence observed before removal"
+    },
+    {
+      "observation": {
+        "state": "LIVE",
+        "actualpid": 14537,
+        "birth": "Thu Nov 5 14:31:34 2026",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+        "role": "ordinary metadata finisher only; payload authoring complete, actual process exit not yet inferred",
+        "observedAt": 1793856694.4886699,
+        "booking": "SAME unspent64MiB through06:00UTC",
+        "commandDigest": "6c2899e3ae688dd0aa06a9a522e9e64fc5f039599920217fe97e2cc30078267a",
+        "commandDigestEncoding": "SHA256 of Python json.dumps(sys.argv)",
+        "finishingAtEpoch": 1793856694.490279
+      },
+      "actualExitCode": 0,
+      "exitObservedAtEpoch": 1793856735.7209,
+      "disposition": "Prior tool actual exit0 and PID absence observed before removal"
+    },
+    {
+      "observation": {
+        "state": "LIVE",
+        "actualpid": 16279,
+        "birth": "Thu Nov 5 14:32:15 2026",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+        "role": "ordinary metadata finisher only; payload authoring complete, actual process exit not yet inferred",
+        "observedAt": 1793856735.725983,
+        "booking": "SAME unspent64MiB through06:00UTC",
+        "commandDigest": "6c2899e3ae688dd0aa06a9a522e9e64fc5f039599920217fe97e2cc30078267a",
+        "commandDigestEncoding": "SHA256 of Python json.dumps(sys.argv)",
+        "finishingAtEpoch": 1793856735.8071492
+      },
+      "actualExitCode": 0,
+      "exitObservedAtEpoch": 1793856821.255533,
+      "disposition": "Prior tool actual exit0 and PID absence observed before removal"
+    },
+    {
+      "observation": {
+        "state": "LIVE",
+        "actualpid": 18715,
+        "birth": "Thu Nov 5 14:33:41 2026",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+        "role": "ordinary metadata finisher only; payload authoring complete, actual process exit not yet inferred",
+        "observedAt": 1793856821.261248,
+        "booking": "SAME unspent64MiB through06:00UTC",
+        "commandDigest": "6c2899e3ae688dd0aa06a9a522e9e64fc5f039599920217fe97e2cc30078267a",
+        "commandDigestEncoding": "SHA256 of Python json.dumps(sys.argv)",
+        "finishingAtEpoch": 1793856822.23746
+      },
+      "actualExitCode": 0,
+      "exitObservedAtEpoch": 1793856965.439796,
+      "disposition": "Prior tool actual exit0 and PID absence observed before removal"
+    },
+    {
+      "observation": {
+        "state": "LIVE",
+        "actualpid": 21531,
+        "birth": "Thu Nov 5 14:36:05 2026",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+        "role": "ordinary metadata finisher only; payload authoring complete, actual process exit not yet inferred",
+        "observedAt": 1793856965.44505,
+        "booking": "SAME unspent64MiB through06:00UTC",
+        "commandDigest": "6c2899e3ae688dd0aa06a9a522e9e64fc5f039599920217fe97e2cc30078267a",
+        "commandDigestEncoding": "SHA256 of Python json.dumps(sys.argv)",
+        "finishingAtEpoch": 1793856965.5181508
+      },
+      "actualExitCode": 0,
+      "exitObservedAtEpoch": 1793857069.6141162,
+      "disposition": "Prior tool actual exit0 and PID absence observed before removal"
+    },
+    {
+      "observation": {
+        "state": "LIVE",
+        "actualpid": 25006,
+        "birth": "Thu Nov 5 14:37:49 2026",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+        "role": "ordinary metadata finisher only; payload authoring complete, actual process exit not yet inferred",
+        "observedAt": 1793857069.620032,
+        "booking": "SAME unspent64MiB through06:00UTC",
+        "commandDigest": "6c2899e3ae688dd0aa06a9a522e9e64fc5f039599920217fe97e2cc30078267a",
+        "commandDigestEncoding": "SHA256 of Python json.dumps(sys.argv)",
+        "finishingAtEpoch": 1793857069.881761
+      },
+      "actualExitCode": 0,
+      "exitObservedAtEpoch": 1793857310.204732,
+      "disposition": "Prior tool actual exit0 and PID absence observed before removal"
+    },
+    {
+      "observation": {
+        "state": "LIVE",
+        "actualpid": 30511,
+        "birth": "Thu Nov 5 14:41:50 2026",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+        "role": "ordinary metadata finisher only; payload authoring complete, actual process exit not yet inferred",
+        "observedAt": 1793857310.2101078,
+        "booking": "SAME unspent64MiB through06:00UTC",
+        "commandDigest": "6c2899e3ae688dd0aa06a9a522e9e64fc5f039599920217fe97e2cc30078267a",
+        "commandDigestEncoding": "SHA256 of Python json.dumps(sys.argv)",
+        "finishingAtEpoch": 1793857310.293144
+      },
+      "actualExitCode": 0,
+      "exitObservedAtEpoch": 1793857445.766342,
+      "disposition": "Prior tool actual exit0 and PID absence observed before removal"
+    },
+    {
+      "observation": {
+        "state": "LIVE",
+        "actualpid": 35646,
+        "birth": "Thu Nov 5 14:44:05 2026",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+        "role": "ordinary metadata finisher only; payload authoring complete, actual process exit not yet inferred",
+        "observedAt": 1793857445.7719748,
+        "booking": "SAME unspent64MiB through06:00UTC",
+        "commandDigest": "6c2899e3ae688dd0aa06a9a522e9e64fc5f039599920217fe97e2cc30078267a",
+        "commandDigestEncoding": "SHA256 of Python json.dumps(sys.argv)",
+        "finishingAtEpoch": 1793857445.85318
+      },
+      "actualExitCode": 0,
+      "exitObservedAtEpoch": 1793857535.2943602,
+      "disposition": "Prior tool actual exit0 and PID absence observed before removal"
+    },
+    {
+      "observation": {
+        "state": "LIVE",
+        "actualpid": 40139,
+        "birth": "Thu Nov 5 14:45:35 2026",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+        "role": "ordinary metadata finisher only; payload authoring complete, actual process exit not yet inferred",
+        "observedAt": 1793857535.299911,
+        "booking": "SAME unspent64MiB through06:00UTC",
+        "commandDigest": "6c2899e3ae688dd0aa06a9a522e9e64fc5f039599920217fe97e2cc30078267a",
+        "commandDigestEncoding": "SHA256 of Python json.dumps(sys.argv)",
+        "finishingAtEpoch": 1793857535.3758998
+      },
+      "actualExitCode": 0,
+      "exitObservedAtEpoch": 1793857564.501208,
+      "disposition": "Prior tool actual exit0 and PID absence observed before removal"
+    },
+    {
+      "observation": {
+        "state": "LIVE",
+        "actualpid": 41228,
+        "birth": "Thu Nov 5 14:46:04 2026",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+        "role": "ordinary scoped source/docs/Git/receipt authoring; no application payload",
+        "observedAt": 1793857564.506439,
+        "booking": "SAME unspent64MiB through06:00UTC",
+        "commandDigest": "6c2899e3ae688dd0aa06a9a522e9e64fc5f039599920217fe97e2cc30078267a",
+        "commandDigestEncoding": "SHA256 of Python json.dumps(sys.argv)"
+      },
+      "actualExitCode": 1,
+      "exitObservedAtEpoch": 1793857582.177582,
+      "disposition": "Prior tool actual exit1 and PID absence observed before removal"
+    },
+    {
+      "observation": {
+        "state": "LIVE",
+        "actualpid": 41937,
+        "birth": "Thu Nov 5 14:46:21 2026",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+        "role": "ordinary metadata finisher only; payload authoring complete, actual process exit not yet inferred",
+        "observedAt": 1793857582.182668,
+        "booking": "SAME unspent64MiB through06:00UTC",
+        "commandDigest": "6c2899e3ae688dd0aa06a9a522e9e64fc5f039599920217fe97e2cc30078267a",
+        "commandDigestEncoding": "SHA256 of Python json.dumps(sys.argv)",
+        "finishingAtEpoch": 1793857582.269892
+      },
+      "actualExitCode": 0,
+      "exitObservedAtEpoch": 1793857614.906343,
+      "disposition": "Prior tool actual exit0 and PID absence observed before removal"
+    },
+    {
+      "observation": {
+        "state": "LIVE",
+        "actualpid": 43165,
+        "birth": "Thu Nov 5 14:46:54 2026",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+        "role": "ordinary metadata finisher only; payload authoring complete, actual process exit not yet inferred",
+        "observedAt": 1793857614.911801,
+        "booking": "SAME unspent64MiB through06:00UTC",
+        "commandDigest": "6c2899e3ae688dd0aa06a9a522e9e64fc5f039599920217fe97e2cc30078267a",
+        "commandDigestEncoding": "SHA256 of Python json.dumps(sys.argv)",
+        "finishingAtEpoch": 1793857616.0604658
+      },
+      "actualExitCode": 0,
+      "exitObservedAtEpoch": 1793857726.595446,
+      "disposition": "Prior tool actual exit0 and PID absence observed before removal"
+    },
+    {
+      "observation": {
+        "state": "LIVE",
+        "actualpid": 48750,
+        "birth": "Thu Nov 5 14:48:46 2026",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+        "role": "ordinary metadata finisher only; payload authoring complete, actual process exit not yet inferred",
+        "observedAt": 1793857726.601044,
+        "booking": "SAME unspent64MiB through06:00UTC",
+        "commandDigest": "6c2899e3ae688dd0aa06a9a522e9e64fc5f039599920217fe97e2cc30078267a",
+        "commandDigestEncoding": "SHA256 of Python json.dumps(sys.argv)",
+        "finishingAtEpoch": 1793857726.665817
+      },
+      "actualExitCode": 0,
+      "exitObservedAtEpoch": 1793857763.441078,
+      "disposition": "Prior tool actual exit0 and PID absence observed before removal"
+    },
+    {
+      "observation": {
+        "state": "LIVE",
+        "actualpid": 55086,
+        "birth": "Thu Nov 5 14:49:23 2026",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+        "role": "ordinary scoped source/docs/Git/receipt authoring; no application payload",
+        "observedAt": 1793857763.446315,
+        "booking": "SAME unspent64MiB through06:00UTC",
+        "commandDigest": "6c2899e3ae688dd0aa06a9a522e9e64fc5f039599920217fe97e2cc30078267a",
+        "commandDigestEncoding": "SHA256 of Python json.dumps(sys.argv)"
+      },
+      "transitionAtEpoch": 1793857763.5764842,
+      "disposition": "Same actual PID exec is now the canonical finite controller; ordinary bootstrap observation ended, no process exit inferred"
+    },
+    {
+      "observation": {
+        "state": "LIVE",
+        "actualpid": 55086,
+        "birth": "Thu Nov 5 14:49:23 2026",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+        "script": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/frontend/src/features/parade-ink/world-hud/__tests__/finish-01/contract-source03.py",
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+        "role": "FULL receipt finisher only; no workload, guardian, browser or dependency link remains",
+        "observedAt": 1793857766.151735,
+        "booking": "SAME unspent ordinary64MiB through06:00UTC; no workflow reservation",
+        "commandDigest": "5a5473cff2104e9de9579debf84d3dc108a493a869e78c157d27ba9ff4da1b10",
+        "commandDigestEncoding": "SHA256 of Python json.dumps(sys.argv); not raw ps command"
+      },
+      "actualExitCode": 1,
+      "exitObservedAtEpoch": 1793857809.245344,
+      "disposition": "Prior tool actual exit1 and PID absence observed before removal"
+    },
+    {
+      "observation": {
+        "state": "LIVE",
+        "actualpid": 56215,
+        "birth": "Thu Nov 5 14:50:09 2026",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+        "role": "ordinary metadata finisher only; payload authoring complete, actual process exit not yet inferred",
+        "observedAt": 1793857809.250616,
+        "booking": "SAME unspent64MiB through06:00UTC",
+        "commandDigest": "6c2899e3ae688dd0aa06a9a522e9e64fc5f039599920217fe97e2cc30078267a",
+        "commandDigestEncoding": "SHA256 of Python json.dumps(sys.argv)",
+        "finishingAtEpoch": 1793857809.251611
+      },
+      "actualExitCode": 0,
+      "exitObservedAtEpoch": 1793857938.891851,
+      "disposition": "Prior tool actual exit0 and PID absence observed before removal"
+    },
+    {
+      "observation": {
+        "state": "LIVE",
+        "actualpid": 59553,
+        "birth": "Thu Nov 5 14:52:18 2026",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+        "role": "ordinary metadata finisher only; payload authoring complete, actual process exit not yet inferred",
+        "observedAt": 1793857938.897577,
+        "booking": "SAME unspent64MiB through06:00UTC",
+        "commandDigest": "6c2899e3ae688dd0aa06a9a522e9e64fc5f039599920217fe97e2cc30078267a",
+        "commandDigestEncoding": "SHA256 of Python json.dumps(sys.argv)",
+        "finishingAtEpoch": 1793857938.991234
+      },
+      "actualExitCode": 0,
+      "exitObservedAtEpoch": 1793857951.120449,
+      "disposition": "Prior tool actual exit0 and PID absence observed before removal"
+    },
+    {
+      "observation": {
+        "state": "LIVE",
+        "actualpid": 60068,
+        "birth": "Thu Nov 5 14:52:30 2026",
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1",
+        "role": "ordinary scoped source/docs/Git/receipt authoring; no application payload",
+        "observedAt": 1793857951.1258812,
+        "booking": "SAME unspent64MiB through06:00UTC",
+        "commandDigest": "6c2899e3ae688dd0aa06a9a522e9e64fc5f039599920217fe97e2cc30078267a",
+        "commandDigestEncoding": "SHA256 of Python json.dumps(sys.argv)"
+      },
+      "transitionAtEpoch": 1793857951.249758,
+      "disposition": "Same actual PID exec is now the canonical finite controller; ordinary bootstrap observation ended, no process exit inferred"
+    }
+  ],
+  "closedOffers": [
+    {
+      "ownerThreadId": "01a1a5d9-6955-7820-bcd4-8e0a21629aa2",
+      "offerId": "PI04-GIVEAWAY-APP-NATIVE04-0103",
+      "acceptedAtEpoch": 1793841026.5110788,
+      "actualFullEpoch": 1793841033.064967,
+      "immutableFULLpath": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/parade-ink-giveaway/native04/round.json",
+      "immutableFULLsha256": "2c2f97c446a98c2cbc886dd251e18d9b8361046891ab19887c8c9a0bb10330a4",
+      "resources": 0
+    },
+    {
+      "ownerThreadId": "01a1a5d9-6955-7820-bcd4-8e0a21629aa2",
+      "offerId": "PI04-GIVEAWAY-APP-NATIVE05-0113",
+      "acceptedAtEpoch": 1793841234.203882,
+      "actualFullEpoch": 1793841250.763399,
+      "immutableFULLpath": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/parade-ink-giveaway/native05/round.json",
+      "immutableFULLsha256": "34e0dd810c59ad2bf0b88624f6370cd3a061a623bae287b24ef30ee384d1b236",
+      "resources": 0
+    },
+    {
+      "ownerThreadId": "01a1a5d9-6955-7820-bcd4-8e0a21629aa2",
+      "offerId": "PI04-GIVEAWAY-APP-NATIVE06-0116",
+      "acceptedAtEpoch": 1793841373.679795,
+      "actualFullEpoch": 1793841435.528896,
+      "immutableFULLpath": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/parade-ink-giveaway/native06/round.json",
+      "immutableFULLsha256": "49fddc401bc61c8d6e559bd7c9ff0e9503feca6ac5a112100a585f84b713ed80",
+      "resources": 0
+    },
+    {
+      "ownerThreadId": "01a1a5d9-6955-7820-bcd4-8e0a21629aa2",
+      "offerId": "PI04-GIVEAWAY-APP-NATIVE07-0125",
+      "acceptedAtEpoch": 1793842842.761027,
+      "actualFullEpoch": 1793842859.0936162,
+      "immutableFULLpath": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/parade-ink-giveaway/native07/round.json",
+      "immutableFULLsha256": "0a7c4596878242bb34a0a7beb9b791d30e40f3ef04881da9fb671c2b2f81eaae",
+      "resources": 0
+    },
+    {
+      "ownerThreadId": "01a1a5d9-6955-7820-bcd4-8e0a21629aa2",
+      "offerId": "PI04-GIVEAWAY-APP-NATIVE08-0147",
+      "acceptedAtEpoch": 1793843331.9394948,
+      "actualFullEpoch": 1793843335.636333,
+      "immutableFULLpath": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/parade-ink-giveaway/native08/round.json",
+      "immutableFULLsha256": "8a07d355a188a75d7ccec4fc599f8e883f38cacf5f4fd2e7a9b4aad4441727ad",
+      "resources": 0
+    },
+    {
+      "ownerThreadId": "01a1a5d9-6955-7820-bcd4-8e0a21629aa2",
+      "offerId": "PI04-GIVEAWAY-NATIVE09-0202",
+      "acceptedAtEpoch": 1793844117.415787,
+      "actualFullEpoch": 1793844118.570188,
+      "immutableFULLpath": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/parade-ink-giveaway/native09/round.json",
+      "immutableFULLsha256": "fdac52beea016e8cb4d35f888527610973a3b54d6a448c4c9d928220c09198b9",
+      "resources": 0
+    },
+    {
+      "ownerThreadId": "01a1a5d9-6955-7820-bcd4-8e0a21629aa2",
+      "offerId": "PI04-GIVEAWAY-NATIVE10-0212",
+      "acceptedAtEpoch": 1793844538.58906,
+      "actualFullEpoch": 1793844589.869216,
+      "immutableFULLpath": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/parade-ink-giveaway/native10/round.json",
+      "immutableFULLsha256": "a5c55bc582e2f89c80739cdbe27fdf8f273dfad98a5456dfee3ca75a5c51be1b",
+      "resources": 0
+    },
+    {
+      "ownerThreadId": "01a1a5d9-6955-7820-bcd4-8e0a21629aa2",
+      "offerId": "PI04-GIVEAWAY-NATIVE11-0212",
+      "acceptedAtEpoch": 1793845219.39836,
+      "actualFullEpoch": 1793845226.308556,
+      "immutableFULLpath": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/parade-ink-giveaway/native11/round.json",
+      "immutableFULLsha256": "ed883d021df2aa559c4d4ed62ec57ffa2be7488da4bbba3e6237af9c0de6f399",
+      "resources": 0
+    },
+    {
+      "ownerThreadId": "01a1a5d9-6955-7820-bcd4-8e0a21629aa2",
+      "offerId": "PI04-NATIVE12-0226",
+      "acceptedAtEpoch": 1793845827.617125,
+      "actualFullEpoch": 1793845838.240406,
+      "immutableFULLpath": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/parade-ink-giveaway/native12/round.json",
+      "immutableFULLsha256": "0d32cafdd69a06573420587667b9e5e4602de5c61bc0bc00048aaba69f8f069c",
+      "resources": 0
+    },
+    {
+      "ownerThreadId": "01a1a5d9-6955-7820-bcd4-8e0a21629aa2",
+      "offerId": "PI04-AFFECTED-SOURCE07-0125",
+      "acceptedAtEpoch": 1793842048.8907142,
+      "actualFullEpoch": 1793842049.484599,
+      "immutableFULLpath": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/parade-ink-giveaway/source07/round.json",
+      "immutableFULLsha256": "70ac6f93336ac15d140fd6362875b5105ac5a5318f2ebfa77748c6fc9aea38b4",
+      "resources": 0
+    },
+    {
+      "ownerThreadId": "01a1a5d9-6955-7820-bcd4-8e0a21629aa2",
+      "offerId": "PI04-AFFECTED-SOURCE08-0133",
+      "acceptedAtEpoch": 1793842724.3636851,
+      "actualFullEpoch": 1793842736.838658,
+      "immutableFULLpath": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/parade-ink-giveaway/source08/round.json",
+      "immutableFULLsha256": "6d7ff4f2b9b7a30952b0da211921f55a812907063bf8de2a50fbb7c762e8d00f",
+      "resources": 0
+    },
+    {
+      "ownerThreadId": "01a1a5d9-6955-7820-bcd4-8e0a21629aa2",
+      "offerId": "PI08-FINISH-NATIVE01-0329",
+      "acceptedAtEpoch": 1793849713.385565,
+      "actualFullEpoch": 1793849747.015669,
+      "immutableFULLpath": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/pi08-finish-01/native01/round.json",
+      "immutableFULLsha256": "8c68854ce02191ec0a3015fd1df3f5d552c6720dff6ad0b90c539507a5b8ddd6",
+      "resources": 0
+    },
+    {
+      "ownerThreadId": "01a1a5d9-6955-7820-bcd4-8e0a21629aa2",
+      "offerId": "PI08-FINISH-NATIVE02-0329",
+      "acceptedAtEpoch": 1793850455.225622,
+      "actualFullEpoch": 1793850475.3721259,
+      "immutableFULLpath": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/pi08-finish-01/native02/round.json",
+      "immutableFULLsha256": "a2506cd8110cff8fdc0e52f24f0c5d4f1e1333cc22014c886b0350911d731d0a",
+      "resources": 0
+    },
+    {
+      "ownerThreadId": "01a1a5d9-6955-7820-bcd4-8e0a21629aa2",
+      "offerId": "PI08-FINISH-NATIVE03-0352",
+      "acceptedAtEpoch": 1793850860.6570408,
+      "actualFullEpoch": 1793850876.4955258,
+      "immutableFULLpath": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/pi08-finish-01/native03/round.json",
+      "immutableFULLsha256": "e2b8fab7bf7e08d164f2effd3f58b7e7366dfacf53872fc61aa2b29b573b0f94",
+      "resources": 0
+    },
+    {
+      "ownerThreadId": "01a1a5d9-6955-7820-bcd4-8e0a21629aa2",
+      "offerId": "PI08-FINISH-NATIVE04-0352",
+      "acceptedAtEpoch": 1793850969.822998,
+      "actualFullEpoch": 1793850974.833452,
+      "immutableFULLpath": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/pi08-finish-01/native04/round.json",
+      "immutableFULLsha256": "8eae6ff1b3325a1f91dc260e3c1aca90b363d510613cdddcbc34ff4248b35650",
+      "resources": 0
+    },
+    {
+      "ownerThreadId": "01a1a5d9-6955-7820-bcd4-8e0a21629aa2",
+      "offerId": "PI08-FINISH-NATIVE05-0405",
+      "acceptedAtEpoch": 1793851677.72699,
+      "actualFullEpoch": 1793851682.25889,
+      "immutableFULLpath": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/pi08-finish-01/native05/round.json",
+      "immutableFULLsha256": "3039276d929c5cff38e3bb47b301e923cf2d72798acbec8128cdf9917f26f734",
+      "resources": 0
+    },
+    {
+      "ownerThreadId": "01a1a5d9-6955-7820-bcd4-8e0a21629aa2",
+      "offerId": "PI08-FINISH-NATIVE06-0405",
+      "acceptedAtEpoch": 1793852164.5691469,
+      "actualFullEpoch": 1793852214.279686,
+      "immutableFULLpath": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/pi08-finish-01/native06/round.json",
+      "immutableFULLsha256": "562e99ac09b5c863ccac05b462ba6e386726e56caa95737432221bf547e4b368",
+      "resources": 0
+    },
+    {
+      "ownerThreadId": "01a1a5d9-6955-7820-bcd4-8e0a21629aa2",
+      "offerId": "PI08-FINISH-NATIVE07-0425",
+      "acceptedAtEpoch": 1793853003.65695,
+      "actualFullEpoch": 1793853017.5819361,
+      "immutableFULLpath": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/pi08-finish-01/native07/round.json",
+      "immutableFULLsha256": "c796373ce415c30346e8b72ac59a2e9394e7f7337e1c4fd98400bb44bf51df35",
+      "resources": 0
+    },
+    {
+      "ownerThreadId": "01a1a5d9-6955-7820-bcd4-8e0a21629aa2",
+      "offerId": "PI08-FINISH-NATIVE08-0425",
+      "acceptedAtEpoch": 1793853389.9536672,
+      "actualFullEpoch": 1793853403.261356,
+      "immutableFULLpath": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/pi08-finish-01/native08/round.json",
+      "immutableFULLsha256": "928a82e272e886602c834e398dd75eef4d824a394ca20deb60a3c49d9e62f884",
+      "resources": 0
+    },
+    {
+      "ownerThreadId": "01a1a5d9-6955-7820-bcd4-8e0a21629aa2",
+      "offerId": "PI08-FINISH-NATIVE09-0453",
+      "acceptedAtEpoch": 1793854765.449481,
+      "actualFullEpoch": 1793854778.9147048,
+      "immutableFULLpath": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/pi08-finish-01/native09/round.json",
+      "immutableFULLsha256": "fece14759925d3290e65aef2c7ad5e981278a8ccbca27620964e1db880124adc",
+      "resources": 0
+    },
+    {
+      "ownerThreadId": "01a1a5d9-6955-7820-bcd4-8e0a21629aa2",
+      "offerId": "PI08-DISPLAY-CONTRACT-SOURCE01-0456",
+      "acceptedAtEpoch": 1793855527.3920739,
+      "actualFullEpoch": 1793855531.6856031,
+      "immutableFULLpath": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/pi08-finish-01/source01/round.json",
+      "immutableFULLsha256": "6e14d474409a043b9143c402230d69a073381e1331e17af8ccde05154d571877",
+      "resources": 0
+    },
+    {
+      "ownerThreadId": "01a1a5d9-6955-7820-bcd4-8e0a21629aa2",
+      "offerId": "PI08-DISPLAY-CONTRACT-SOURCE02-0517",
+      "acceptedAtEpoch": 1793856216.1316931,
+      "actualFullEpoch": 1793856220.9969542,
+      "immutableFULLpath": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/pi08-finish-01/source02/round.json",
+      "immutableFULLsha256": "052aa9db0b0f3586cbce1f2a09ae6a523aaab10ac4f68a1e88eb66d726e3c405",
+      "resources": 0
+    },
+    {
+      "ownerThreadId": "01a1a5d9-6955-7820-bcd4-8e0a21629aa2",
+      "offerId": "PI08-DISPLAY-CONTRACT-SOURCE03-0532",
+      "acceptedAtEpoch": 1793857763.5142121,
+      "actualFullEpoch": 1793857766.149915,
+      "immutableFULLpath": "/Users/lhs/Desktop/mcr-worktrees/art-cute-community-v1/docs/mcr/evidence/pi08-finish-01/source03/round.json",
+      "immutableFULLsha256": "c4831cae89789df3122943c7b6d4501cf035cad6e002065fc6195ce7be2e67a7",
+      "resources": 0
+    }
+  ]
+}

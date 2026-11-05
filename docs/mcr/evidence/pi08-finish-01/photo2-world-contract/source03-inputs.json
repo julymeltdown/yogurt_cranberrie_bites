@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "files": [
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/producer-layout.test.ts",
+      "bytes": 4723,
+      "sha256": "17a9d892690721a95c5562a2476352f6a5c1d5cc931284e9c615ca9489f26c62"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/producer-layout.config.mjs",
+      "bytes": 324,
+      "sha256": "306e138bb8adb8042770d9314e6ff40d772d75dba70a91ffc597508a2d93790c"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/contract-source03.py",
+      "bytes": 15841,
+      "sha256": "c27a58d641de0775e549e8ada2d664e27751c5989885541f9e406930e64bf002"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/resource_snapshot.py",
+      "bytes": 4172,
+      "sha256": "ec2338c56bc59704399237ecb35f1f23602a8e6543aa31e1fbc53ad77ebcb6bb"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/resource_guard.py",
+      "bytes": 385,
+      "sha256": "65b6b2d90cdd682f012859f92e5bd5c9f4098f30fef82a8b6acb45b74d4cdae6"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/photo2-world-display-v1.ts",
+      "bytes": 15075,
+      "sha256": "a37dfc5dcd4a0f533ad4d607cab0ced9caa10ca1c3fcdcd8894fbb00997d9e50"
+    },
+    {
+      "path": "docs/mcr/evidence/pi08-finish-01/photo2-world-contract/producer-input-candidate.json",
+      "bytes": 37915,
+      "sha256": "585c98691033c390ebe433217ee1b7fd646ac1fc5cbb3b39889b82c5434e37ed"
+    },
+    {
+      "path": "docs/mcr/evidence/pi08-finish-01/photo2-world-contract/producer-contract-v1.json",
+      "bytes": 38509,
+      "sha256": "98c12d93104fa15c7cc8e76d9ed65996b8549350e3c4641525852649173e506d"
+    }
+  ],
+  "scope": "ONLY new204-vertex/22+2frame producerdata case and its relevant strict types/lint; no unchanged source/native replay",
+  "offer": "PI08-DISPLAY-CONTRACT-SOURCE03-0532",
+  "resourceGrant": "Literal allocator21d incoming 2026-11-05 05:40: pure8PID1GiB/WHOLE8/SAME768/fresh4MiBANDremaining/120WORK180FULL/noportbrowserinstall/accept06",
+  "futureReserve": "min(actual family remaining,4MiB accepted phase), no retained carry charged twice; OTHER12GiB minimum and all floors unchanged"
+}

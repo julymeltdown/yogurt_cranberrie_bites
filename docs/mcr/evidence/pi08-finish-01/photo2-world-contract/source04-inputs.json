@@ -1,0 +1,49 @@
+{
+  "version": 1,
+  "files": [
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/producer-layout-v2.test.ts",
+      "bytes": 4722,
+      "sha256": "1648898b5543de39f27c9d05c9a211c438525e016758f32384770b18b4b61b5a"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/producer-layout-v2.config.mjs",
+      "bytes": 327,
+      "sha256": "a2de15736852dc3c590de9d4b69fb45c773f16ad1f65cb0ec6736789ef3ba2f2"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/contract-source04.py",
+      "bytes": 15854,
+      "sha256": "967fbb70b8c37bc2733822b26e529fcc4ef6e1f4d823eef02e9d282af6b05319"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/resource_snapshot.py",
+      "bytes": 4172,
+      "sha256": "ec2338c56bc59704399237ecb35f1f23602a8e6543aa31e1fbc53ad77ebcb6bb"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/resource_guard.py",
+      "bytes": 385,
+      "sha256": "65b6b2d90cdd682f012859f92e5bd5c9f4098f30fef82a8b6acb45b74d4cdae6"
+    },
+    {
+      "path": "frontend/src/features/parade-ink/world-hud/photo2-world-display-v1.ts",
+      "bytes": 15075,
+      "sha256": "a37dfc5dcd4a0f533ad4d607cab0ced9caa10ca1c3fcdcd8894fbb00997d9e50"
+    },
+    {
+      "path": "docs/mcr/evidence/pi08-finish-01/photo2-world-contract/producer-input-v2.json",
+      "bytes": 38407,
+      "sha256": "da87fef51caf2333e2fb9b05755efff0046c7254f0b399bc234b1308697c52fd"
+    },
+    {
+      "path": "docs/mcr/evidence/pi08-finish-01/photo2-world-contract/producer-contract-v2.json",
+      "bytes": 39013,
+      "sha256": "3fce374b7f60d46e8561559c42470a3343708f9eb3236a1d01050c4f0aa3a12d"
+    }
+  ],
+  "scope": "Only correctedNEW204-vertex/22+2framecase and previouslyuncompleted strict/lint; Source03failedraw and Source01eight/Source02three greens retained withoutreplay",
+  "offer": "PI08-DISPLAY-CONTRACT-SOURCE04-0551",
+  "resourceGrant": "Literal21d conditionalgrant afterchangedinputfreeze;8PID1GiB/WHOLE8/SAME768/fresh4MiBANDremaining/120WORK180FULL/accept06:15/noportbrowserinstall",
+  "futureReserve": "min(actual family remaining,4MiB accepted phase), no retained carry charged twice; OTHER12GiB minimum and all floors unchanged"
+}
