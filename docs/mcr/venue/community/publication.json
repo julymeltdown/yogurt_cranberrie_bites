@@ -1,0 +1,18 @@
+{
+  "task": "AM-FE-COMM-01",
+  "classification": "CANONICAL_SOURCE_ONLY_PUBLISHED",
+  "master": "41d90738e3941cdfc663d00551e0f7db2cd3aa4f",
+  "parent": "e9535129cffa3917f5b9b5ae3f5ee992609c4419",
+  "publisher": "01a1a5d9-332b-7822-a8f7-412e295fa211",
+  "publisherReceipt": "/private/tmp/mcr-publisher-412e-venue-community-batch-receipt.json",
+  "publisherReceiptSha256": "f4f1c676f009ab2e492ef39dc658f7b9fcd916b46938e0cee0f03adbf0deeb3b",
+  "receiptConsumed": true,
+  "remoteVerification": "Responsible publishing developer reports normal push exit0; fresh fetch and independent ls-remote agree",
+  "native": "NOT_RUN",
+  "wireAdapterPaginationLists": "NOT_STARTED_ACTUAL_SHARED_CLIENT_PIN_PENDING",
+  "rootHostAndTargets": "NOT_INTEGRATED_ROOT_OWNED",
+  "liveTwoPrincipalDeviceGPS": "NOT_RUN",
+  "originalIN02IN03": "NOT_RUN",
+  "legacyFE10Goal": "BLOCKED_UNCHANGED",
+  "productAcceptance": false
+}
