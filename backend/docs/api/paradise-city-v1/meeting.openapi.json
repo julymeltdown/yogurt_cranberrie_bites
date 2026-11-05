@@ -1,0 +1,99 @@
+{
+  "openapi": "3.1.0",
+  "info": {"title": "Paradise City contextual meeting", "version": "1.0.0", "description": "VENU-BE-M01. Source contract only until registered and qualified; no default production friend/landmark/retention authority."},
+  "security": [{"session": []}],
+  "paths": {
+    "/api/concert/events/{eventId}/venue-meeting/context": {
+      "get": {"operationId": "resolveVenueMeetingContext", "description": "Read only. Landmark is optional for selected-friend MESSAGE. No invitation, conversation or message creation. Context identifiers never grant access.",
+        "parameters": [{"$ref": "#/components/parameters/event"}, {"$ref": "#/components/parameters/friend"}, {"$ref": "#/components/parameters/landmark"}, {"$ref": "#/components/parameters/catalogRevision"}, {"$ref": "#/components/parameters/landmarkRevision"}],
+        "responses": {"200": {"description": "Current authorized selected context", "headers": {"Cache-Control": {"schema": {"const": "no-store"}}}, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/MeetingContext"}}}}, "default": {"$ref": "#/components/responses/error"}}
+      }
+    },
+    "/api/concert/events/{eventId}/venue-meeting/invitations": {
+      "get": {"operationId": "listVenueMeetingInvitations", "description": "Actor/event inbox. Each row rechecks current selected-friend/landmark authority; denied rows omitted, source outage refuses the page.",
+        "parameters": [{"$ref": "#/components/parameters/event"}, {"$ref": "#/components/parameters/cursor"}, {"name": "direction", "in": "query", "required": true, "schema": {"enum": ["INCOMING", "OUTGOING"]}}],
+        "responses": {"200": {"description": "Page, at most50 items; empty page may have nextCursor", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/MeetingInboxPage"}}}}, "default": {"$ref": "#/components/responses/error"}}
+      },
+      "post": {"operationId": "createVenueMeetingInvitation", "parameters": [{"$ref": "#/components/parameters/event"}, {"$ref": "#/components/parameters/key"}],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/CreateInvitation"}}}},
+        "responses": {"200": {"description": "Atomic effect receipt", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/AppliedReceipt"}}}}, "default": {"$ref": "#/components/responses/error"}}
+      }
+    },
+    "/api/concert/events/{eventId}/venue-meeting/invitations/{invitationId}": {
+      "get": {"operationId": "getVenueMeetingInvitation",
+        "parameters": [{"$ref": "#/components/parameters/event"}, {"$ref": "#/components/parameters/invitation"}, {"$ref": "#/components/parameters/friend"}, {"$ref": "#/components/parameters/landmark"}, {"$ref": "#/components/parameters/catalogRevision"}, {"$ref": "#/components/parameters/landmarkRevision"}],
+        "responses": {"200": {"description": "Current invitation and actor-specific decisions", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/MeetingInvitation"}}}}, "default": {"$ref": "#/components/responses/error"}}
+      }
+    },
+    "/api/concert/events/{eventId}/venue-meeting/invitations/{invitationId}/decision": {
+      "post": {"operationId": "decideVenueMeetingInvitation", "description": "Recipient ACCEPT/DECLINE while PENDING; sender CANCEL while PENDING or ACCEPTED before expiry; revision CAS. Cancellation alone does not revoke independent conversation rights.",
+        "parameters": [{"$ref": "#/components/parameters/event"}, {"$ref": "#/components/parameters/invitation"}, {"$ref": "#/components/parameters/key"}],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/DecideInvitation"}}}},
+        "responses": {"200": {"description": "Atomic effect receipt", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/AppliedReceipt"}}}}, "default": {"$ref": "#/components/responses/error"}}
+      }
+    },
+    "/api/concert/events/{eventId}/venue-meeting/messages": {
+      "get": {"operationId": "listVenueMeetingMessages", "description": "Current authorized context, never global bare-user DM. Reconnect reauthorizes all source owners.",
+        "parameters": [{"$ref": "#/components/parameters/event"}, {"$ref": "#/components/parameters/friend"}, {"$ref": "#/components/parameters/landmark"}, {"$ref": "#/components/parameters/catalogRevision"}, {"$ref": "#/components/parameters/landmarkRevision"}, {"$ref": "#/components/parameters/cursor"}],
+        "responses": {"200": {"description": "Increasing committed sequence page; dedupe by id and sequence", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/MeetingMessagePage"}}}}, "default": {"$ref": "#/components/responses/error"}}
+      },
+      "post": {"operationId": "sendVenueMeetingMessage", "description": "Explicit write; landmark optional. Atomically creates conversation if needed. No invitation prerequisite. Optional invitation association grants no authority.",
+        "parameters": [{"$ref": "#/components/parameters/event"}, {"$ref": "#/components/parameters/key"}],
+        "requestBody": {"required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/SendMessage"}}}},
+        "responses": {"200": {"description": "Atomic effect receipt", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/AppliedReceipt"}}}}, "default": {"$ref": "#/components/responses/error"}}
+      }
+    },
+    "/api/concert/events/{eventId}/venue-meeting/commands/{commandKey}": {
+      "get": {"operationId": "getVenueMeetingCommand", "description": "Reconcile the ORIGINAL key. UNKNOWN does not authorize automatic retry or a new key. Result is historical effect snapshot; fetch current invitation for rights/state.",
+        "parameters": [{"$ref": "#/components/parameters/event"}, {"name": "commandKey", "in": "path", "required": true, "schema": {"$ref": "#/components/schemas/Uuid"}}, {"$ref": "#/components/parameters/friend"}, {"$ref": "#/components/parameters/landmark"}, {"$ref": "#/components/parameters/catalogRevision"}, {"$ref": "#/components/parameters/landmarkRevision"}],
+        "responses": {"200": {"description": "Current-authorized APPLIED or non-oracular UNKNOWN", "content": {"application/json": {"schema": {"oneOf": [{"$ref": "#/components/schemas/StatusAppliedReceipt"}, {"$ref": "#/components/schemas/UnknownReceipt"}]}}}}, "default": {"$ref": "#/components/responses/error"}}
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {"session": {"type": "http", "scheme": "bearer", "description": "Actual canonical authenticated session; never supplied JSON actor authority."}},
+    "parameters": {
+      "event": {"name": "eventId", "in": "path", "required": true, "schema": {"$ref": "#/components/schemas/Uuid"}},
+      "invitation": {"name": "invitationId", "in": "path", "required": true, "schema": {"$ref": "#/components/schemas/Uuid"}},
+      "key": {"name": "Idempotency-Key", "in": "header", "required": true, "schema": {"$ref": "#/components/schemas/Uuid"}},
+      "friend": {"name": "selectedFriendId", "in": "query", "required": true, "schema": {"$ref": "#/components/schemas/Uuid"}},
+      "landmark": {"name": "landmarkId", "in": "query", "required": false, "schema": {"$ref": "#/components/schemas/OpaqueIdentity"}},
+      "catalogRevision": {"name": "catalogRevision", "in": "query", "required": false, "schema": {"$ref": "#/components/schemas/Revision"}},
+      "landmarkRevision": {"name": "landmarkRevision", "in": "query", "required": false, "schema": {"$ref": "#/components/schemas/Revision"}},
+      "cursor": {"name": "cursor", "in": "query", "required": false, "schema": {"$ref": "#/components/schemas/Cursor"}}
+    },
+    "responses": {"error": {"description": "400 INVALID_INPUT; 404 RESOURCE_UNAVAILABLE (foreign/absent identical); 409 REVISION_OR_KEY_CONFLICT; 429 RATE_LIMITED; 503 DEPENDENCY_UNAVAILABLE. Canonical transport may additionally return401/403/504.", "content": {"application/json": {"schema": {"type": "object", "required": ["reason"], "properties": {"reason": {"enum": ["INVALID_INPUT", "RESOURCE_UNAVAILABLE", "REVISION_OR_KEY_CONFLICT", "RATE_LIMITED", "DEPENDENCY_UNAVAILABLE"]}}, "additionalProperties": false}}}}},
+    "schemas": {
+      "Uuid": {"type": "string", "format": "uuid", "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$", "not": {"const": "00000000-0000-0000-0000-000000000000"}},
+      "Revision": {"type": "integer", "minimum": 1, "maximum": 9007199254740991},
+      "Cursor": {"type": "string", "pattern": "^(0|[1-9][0-9]{0,15})$", "description": "Canonical decimal0..9007199254740991; server rejects larger values."},
+      "OpaqueIdentity": {"type": "string", "minLength": 1, "maxLength": 128, "pattern": "^[A-Za-z0-9._~-]+$", "not": {"enum": [".", ".."]}},
+      "Instant": {"type": "string", "format": "date-time", "description": "Server/database time, RFC3339."},
+      "LandmarkSelection": {"type": "object", "additionalProperties": false, "required": ["landmarkId", "catalogRevision", "landmarkRevision"], "properties": {"landmarkId": {"$ref": "#/components/schemas/OpaqueIdentity"}, "catalogRevision": {"$ref": "#/components/schemas/Revision"}, "landmarkRevision": {"$ref": "#/components/schemas/Revision"}}},
+      "Selection": {"type": "object", "additionalProperties": false, "required": ["selectedFriendId"], "properties": {"selectedFriendId": {"$ref": "#/components/schemas/Uuid"}, "landmark": {"anyOf": [{"$ref": "#/components/schemas/LandmarkSelection"}, {"type": "null"}]}}, "description": "MESSAGE permits no landmark. Invitations/decisions require a reviewed landmark. Query uses optional all-or-none flat landmarkId/catalogRevision/landmarkRevision. Map/physical-place bindings are owner-returned facts, never fake client authority."},
+      "MeetingContext": {"type": "object", "additionalProperties": false,
+        "required": ["contextId", "eventId", "actorId", "selection", "conversationId", "canRead", "canSend", "canInvite", "relationshipRevision", "policyRevision", "serverTime", "validUntil", "eventTimezone", "invitationExpiresAt", "contentExpiresAt", "purgeAt"],
+        "properties": {"contextId": {"type": "string", "pattern": "^vm1_[0-9a-f]{64}$"}, "eventId": {"$ref": "#/components/schemas/Uuid"}, "actorId": {"$ref": "#/components/schemas/Uuid"}, "selection": {"$ref": "#/components/schemas/Selection"}, "conversationId": {"anyOf": [{"$ref": "#/components/schemas/Uuid"}, {"type": "null"}]}, "canRead": {"type": "boolean"}, "canSend": {"type": "boolean"}, "canInvite": {"type": "boolean"}, "relationshipRevision": {"$ref": "#/components/schemas/Revision"}, "policyRevision": {"$ref": "#/components/schemas/Revision"}, "serverTime": {"$ref": "#/components/schemas/Instant"}, "validUntil": {"$ref": "#/components/schemas/Instant"}, "eventTimezone": {"type": "string", "minLength": 1}, "invitationExpiresAt": {"anyOf": [{"$ref": "#/components/schemas/Instant"}, {"type": "null"}]}, "contentExpiresAt": {"$ref": "#/components/schemas/Instant"}, "purgeAt": {"$ref": "#/components/schemas/Instant"}}
+      },
+      "MeetingInvitation": {"type": "object", "additionalProperties": false, "required": ["id", "eventId", "senderId", "recipientId", "landmarkId", "revision", "state", "createdAt", "expiresAt", "allowedInvitationActions"],
+        "properties": {"id": {"$ref": "#/components/schemas/Uuid"}, "eventId": {"$ref": "#/components/schemas/Uuid"}, "senderId": {"$ref": "#/components/schemas/Uuid"}, "recipientId": {"$ref": "#/components/schemas/Uuid"}, "landmarkId": {"$ref": "#/components/schemas/OpaqueIdentity"}, "revision": {"$ref": "#/components/schemas/Revision"}, "state": {"enum": ["PENDING", "ACCEPTED", "DECLINED", "CANCELLED", "EXPIRED"]}, "createdAt": {"$ref": "#/components/schemas/Instant"}, "expiresAt": {"$ref": "#/components/schemas/Instant"}, "allowedInvitationActions": {"type": "array", "uniqueItems": true, "items": {"enum": ["ACCEPT", "DECLINE", "CANCEL"]}}}
+      },
+      "InvitationSelection": {"allOf": [{"$ref": "#/components/schemas/Selection"}, {"type": "object", "required": ["landmark"], "properties": {"landmark": {"$ref": "#/components/schemas/LandmarkSelection"}}}]},
+      "CreateInvitation": {"type": "object", "additionalProperties": false, "required": ["selection"], "properties": {"selection": {"$ref": "#/components/schemas/InvitationSelection"}}},
+      "DecideInvitation": {"type": "object", "additionalProperties": false, "required": ["selection", "expectedRevision", "decision"], "properties": {"selection": {"$ref": "#/components/schemas/InvitationSelection"}, "expectedRevision": {"$ref": "#/components/schemas/Revision"}, "decision": {"enum": ["ACCEPT", "DECLINE", "CANCEL"]}}},
+      "SendMessage": {"type": "object", "additionalProperties": false, "required": ["selection", "body"], "properties": {"selection": {"$ref": "#/components/schemas/Selection"}, "body": {"type": "string", "minLength": 1, "maxLength": 2000, "description": "Plain text, Unicode scalar values; also<=8000 UTF-8 bytes, nonblank, no controls except tab/newline."}, "invitationId": {"anyOf": [{"$ref": "#/components/schemas/Uuid"}, {"type": "null"}]}}},
+      "MeetingMessage": {"type": "object", "additionalProperties": false, "required": ["id", "sequence", "senderId", "body", "invitationId", "createdAt", "expiresAt"], "properties": {"id": {"$ref": "#/components/schemas/Uuid"}, "sequence": {"$ref": "#/components/schemas/Revision"}, "senderId": {"$ref": "#/components/schemas/Uuid"}, "body": {"type": "string", "minLength": 1, "maxLength": 2000}, "invitationId": {"anyOf": [{"$ref": "#/components/schemas/Uuid"}, {"type": "null"}]}, "createdAt": {"$ref": "#/components/schemas/Instant"}, "expiresAt": {"$ref": "#/components/schemas/Instant"}}},
+      "MeetingMessagePage": {"type": "object", "additionalProperties": false, "required": ["contextId", "conversationId", "items", "cursor", "hasMore", "gap", "serverTime"], "properties": {"contextId": {"type": "string", "pattern": "^vm1_[0-9a-f]{64}$"}, "conversationId": {"anyOf": [{"$ref": "#/components/schemas/Uuid"}, {"type": "null"}]}, "items": {"type": "array", "maxItems": 50, "items": {"$ref": "#/components/schemas/MeetingMessage"}}, "cursor": {"$ref": "#/components/schemas/Cursor"}, "hasMore": {"type": "boolean"}, "gap": {"type": "boolean"}, "serverTime": {"$ref": "#/components/schemas/Instant"}}},
+      "MeetingInboxPage": {"type": "object", "additionalProperties": false, "required": ["items", "nextCursor", "serverTime"], "properties": {"items": {"type": "array", "maxItems": 50, "items": {"type": "object", "additionalProperties": false, "required": ["selection", "invitation"], "properties": {"selection": {"$ref": "#/components/schemas/Selection"}, "invitation": {"$ref": "#/components/schemas/MeetingInvitation"}}}}, "nextCursor": {"anyOf": [{"$ref": "#/components/schemas/Cursor"}, {"type": "null"}]}, "serverTime": {"$ref": "#/components/schemas/Instant"}}},
+      "MessageEffect": {"type": "object", "additionalProperties": false, "required": ["id", "conversationId", "sequence", "createdAt", "expiresAt"], "properties": {"id": {"$ref": "#/components/schemas/Uuid"}, "conversationId": {"$ref": "#/components/schemas/Uuid"}, "sequence": {"$ref": "#/components/schemas/Revision"}, "createdAt": {"$ref": "#/components/schemas/Instant"}, "expiresAt": {"$ref": "#/components/schemas/Instant"}}},
+      "Effect": {"description": "Historical effect snapshot; invitation rights/state must be reread.", "oneOf": [{"type": "object", "additionalProperties": false, "required": ["kind", "invitation"], "properties": {"kind": {"const": "INVITATION"}, "invitation": {"$ref": "#/components/schemas/MeetingInvitation"}}}, {"type": "object", "additionalProperties": false, "required": ["kind", "message"], "properties": {"kind": {"const": "MESSAGE"}, "message": {"$ref": "#/components/schemas/MessageEffect"}}}]},
+      "AppliedReceipt": {"type": "object", "additionalProperties": false, "required": ["commandKey", "state", "result", "replayed"], "properties": {"commandKey": {"$ref": "#/components/schemas/Uuid"}, "state": {"const": "APPLIED"}, "result": {"$ref": "#/components/schemas/Effect"}, "replayed": {"type": "boolean"}}},
+      "StatusAppliedReceipt": {"type": "object", "additionalProperties": false, "required": ["commandKey", "state", "operation", "result", "serverTime"], "properties": {"commandKey": {"$ref": "#/components/schemas/Uuid"}, "state": {"const": "APPLIED"}, "operation": {"enum": ["createVenueMeetingInvitation", "decideVenueMeetingInvitation", "sendVenueMeetingMessage"]}, "result": {"$ref": "#/components/schemas/Effect"}, "serverTime": {"$ref": "#/components/schemas/Instant"}}},
+      "UnknownReceipt": {"type": "object", "additionalProperties": false, "required": ["commandKey", "state", "serverTime"], "properties": {"commandKey": {"$ref": "#/components/schemas/Uuid"}, "state": {"const": "UNKNOWN"}, "serverTime": {"$ref": "#/components/schemas/Instant"}}}
+    }
+  },
+  "x-mcr-authority": "Actual canonical session/event/current bilateral Friends/block/suspension/deletion plus reviewed conversation policy/retention/event timezone. Reviewed physical landmark is required only for selected landmark/invitation association. No default provider; missing source503.",
+  "x-mcr-limits": {"requestBytes": 12000, "messageUnicodeScalars": 2000, "messageUtf8Bytes": 8000, "messagesPerActorEventMinute": 30, "invitationsPerActorEventMinute": 10, "pageSize": 50},
+  "x-mcr-cache-policy": "All guarded responses no-store; cap disclosure at current owner and each returned message/pending invitation expiry. Invalidate actor/event private caches on revocation, expiry, logout and account change.",
+  "x-mcr-unknown-outcome": "Retain original idempotency key. Read original command receipt; UNKNOWN never authorizes automatic mutation retry."
+}

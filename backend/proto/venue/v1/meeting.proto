@@ -1,0 +1,118 @@
+syntax = "proto3";
+package venue.v1;
+
+// Venue M01 DTO vocabulary. Production transport remains the canonical sealed
+// concert.product.v1.ProductService; no second unguarded RPC service is defined.
+message MeetingSelection {
+  string selected_friend_id = 1;
+  MeetingLandmarkSelection landmark = 2; // optional; required for invitations
+}
+message MeetingLandmarkSelection {
+  string landmark_id = 1;
+  int64 catalog_revision = 2;
+  int64 landmark_revision = 3;
+}
+message MeetingContext {
+  string context_id = 1;
+  string event_id = 2;
+  string actor_id = 3;
+  MeetingSelection selection = 4;
+  optional string conversation_id = 5;
+  bool can_read = 6;
+  bool can_send = 7;
+  bool can_invite = 8;
+  int64 relationship_revision = 9;
+  int64 policy_revision = 10;
+  string server_time = 11;
+  string valid_until = 12;
+  string event_timezone = 13;
+  optional string invitation_expires_at = 14;
+  string content_expires_at = 15;
+  string purge_at = 16;
+}
+enum MeetingInvitationState {
+  MEETING_INVITATION_STATE_UNSPECIFIED = 0;
+  MEETING_INVITATION_STATE_PENDING = 1;
+  MEETING_INVITATION_STATE_ACCEPTED = 2;
+  MEETING_INVITATION_STATE_DECLINED = 3;
+  MEETING_INVITATION_STATE_CANCELLED = 4;
+  MEETING_INVITATION_STATE_EXPIRED = 5;
+}
+enum MeetingInvitationDecision {
+  MEETING_INVITATION_DECISION_UNSPECIFIED = 0;
+  MEETING_INVITATION_DECISION_ACCEPT = 1;
+  MEETING_INVITATION_DECISION_DECLINE = 2;
+  MEETING_INVITATION_DECISION_CANCEL = 3;
+}
+message MeetingInvitation {
+  string id = 1;
+  string event_id = 2;
+  string sender_id = 3;
+  string recipient_id = 4;
+  string landmark_id = 5;
+  int64 revision = 6;
+  MeetingInvitationState state = 7;
+  string created_at = 8;
+  string expires_at = 9;
+  repeated MeetingInvitationDecision allowed_invitation_actions = 10;
+}
+message CreateMeetingInvitation { MeetingSelection selection = 1; }
+message DecideMeetingInvitation {
+  MeetingSelection selection = 1;
+  int64 expected_revision = 2;
+  MeetingInvitationDecision decision = 3;
+}
+message SendMeetingMessage {
+  MeetingSelection selection = 1;
+  string body = 2;
+  optional string invitation_id = 3;
+}
+message MeetingMessage {
+  string id = 1;
+  int64 sequence = 2;
+  string sender_id = 3;
+  string body = 4;
+  optional string invitation_id = 5;
+  string created_at = 6;
+  string expires_at = 7;
+}
+message MeetingMessagePage {
+  string context_id = 1;
+  repeated MeetingMessage items = 2;
+  string cursor = 3;
+  bool has_more = 4;
+  bool gap = 5;
+  string server_time = 6;
+  optional string conversation_id = 7;
+}
+message MeetingInboxItem {
+  MeetingSelection selection = 1;
+  MeetingInvitation invitation = 2;
+}
+message MeetingInboxPage {
+  repeated MeetingInboxItem items = 1;
+  optional string next_cursor = 2;
+  string server_time = 3;
+}
+message MeetingMessageReceipt {
+  string id = 1;
+  string conversation_id = 2;
+  int64 sequence = 3;
+  string created_at = 4;
+  string expires_at = 5;
+}
+message MeetingCommandResult {
+  oneof snapshot {
+    MeetingInvitation invitation = 1;
+    MeetingMessageReceipt message = 2;
+  }
+  string kind = 3; // INVITATION or MESSAGE in the public JSON contract.
+}
+message MeetingCommandReceipt {
+  string command_key = 1;
+  string state = 2; // APPLIED or UNKNOWN; UNKNOWN never authorizes replay.
+  optional string operation = 3;
+  MeetingCommandResult result = 4; // historical effect snapshot, not live rights
+  optional bool replayed = 5;
+  optional string server_time = 6;
+}
