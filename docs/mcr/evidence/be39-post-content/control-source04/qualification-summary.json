@@ -1,0 +1,66 @@
+{
+  "state": "PARTIAL_FAILED_VALIDATION_NO_PRODUCT_PASS",
+  "backendSourceCommit": "cc0e6918e1380e98cb4fd1d7b8e1a6efb6b39c78",
+  "priorHEAD": "9171c531e00f8691306bf6b68e0b7f8ceac7ec09",
+  "rounds": [
+    {
+      "round": "POST-CONTROL-SOURCE02-0204",
+      "acceptedAtEpoch": 1793846080.7682319,
+      "workDeadlineEpoch": 1793846200.7682319,
+      "fullDeadlineEpoch": 1793846260.7682319,
+      "actualFullEpoch": 1793846170.55013,
+      "FULL_SHA256": "961eea6358e2ec27da786718cb4ac373ade5c8b9dbf5685a4846f1aa714f9774",
+      "failure": "AccountingError: checkpoint/root/measurement failure",
+      "cleanupFailure": "AssertionError: PID root no longer matches 62488 <defunct>",
+      "initialCompletePair": "NOT_ESTABLISHED",
+      "fixtures": "NOT_RUN",
+      "resourcePass": false
+    },
+    {
+      "round": "POST-CONTROL-SOURCE03-0301",
+      "acceptedAtEpoch": 1793847854.6624918,
+      "workDeadlineEpoch": 1793847974.6624918,
+      "fullDeadlineEpoch": 1793848034.6624918,
+      "actualFullEpoch": 1793847895.307734,
+      "FULL_SHA256": "831abea9a63569b8f2e9a450e053e652bae2f355d5fbfc2c23c61f0d5aed617f",
+      "failure": "AccountingError: checkpoint/root/measurement failure",
+      "cleanupFailure": "AssertionError: PID root no longer matches 21802 /Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B docs/mcr/evidence/venue-root-binding/qualify.py",
+      "initialCompletePair": "NOT_ESTABLISHED",
+      "fixtures": "NOT_RUN",
+      "resourcePass": false
+    },
+    {
+      "round": "POST-CONTROL-SOURCE04-0301",
+      "acceptedAtEpoch": 1793848064.078023,
+      "workDeadlineEpoch": 1793848184.078023,
+      "fullDeadlineEpoch": 1793848244.078023,
+      "actualFullEpoch": 1793848152.5561311,
+      "FULL_SHA256": "0338666a93f385989a44c2d1d8da5bd5592e4a3faba73da7af64255718f3d9f1",
+      "failure": "AccountingError: scan deadline",
+      "cleanupFailure": "AccountingError: scan deadline",
+      "initialCompletePair": "NOT_ESTABLISHED",
+      "fixtures": "NOT_RUN",
+      "resourcePass": false
+    }
+  ],
+  "cumulativeSourceAdmissionLastComplete": {
+    "minimum_free": 23587082240,
+    "own_processes": 2,
+    "own_rss": 227868672,
+    "global_processes": 7,
+    "global_rss": 2134884352,
+    "global_workflows": 2,
+    "cumulative_new": 353140736,
+    "whole": 49235402752
+  },
+  "originalFixedBaselineUnchanged": true,
+  "Source01UncertifiedReservationBytes": 16777216,
+  "Source02Source03Source04Gaps": "NOT_CERTIFIED; all prior high maps and maxima retained privately",
+  "queuedCompile": "NOT_ACCEPTED_UNREADY_YIELDED_NEW_READY_REQUEST_REQUIRED",
+  "backendSixUnitSelectors": "NOT_RUN",
+  "fiveNativeCases": "NOT_RUN",
+  "priorCompileResult": "UNIT02 exit101; fixes uncompiled; UNIT03 no Cargo",
+  "frozenFeedRef": "e74b392db36eb862917b4b75779694d6c372e924",
+  "ordinaryEvidenceCopyLogicalBytes": 343745,
+  "ordinaryEvidenceCopyAllocatedBytes": 516096
+}

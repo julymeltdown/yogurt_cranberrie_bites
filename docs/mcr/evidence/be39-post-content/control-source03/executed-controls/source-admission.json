@@ -1,0 +1,125 @@
+{
+  "state": "METADATA_ONLY_PASS_NOT_RUNTIME_QUALIFICATION",
+  "complete_source_admission": {
+    "epoch": 1793847854.605458,
+    "complete": true,
+    "actual_live_metadata": {
+      "own_processes": 2,
+      "own_rss": 263602176,
+      "global_processes": 6,
+      "global_rss": 492437504,
+      "global_workflows": 3,
+      "global_source": 2,
+      "global_browser": 0,
+      "global_warm_rust": 1,
+      "global_cohorts": [
+        [
+          "BE42-PH1-COMPILE-FIVE-09-0249",
+          "warmRust"
+        ],
+        [
+          "ROOT-SOURCE-FMT02-0303",
+          "source"
+        ]
+      ],
+      "global_pid_birth_group_root_records": [
+        {
+          "cohort": "BE42-PH1-COMPILE-FIVE-09-0249",
+          "pid": 99401,
+          "pgid": 99401,
+          "birth": "Thu Nov 5 12:00:01 2026",
+          "root_command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B -u /private/tmp/mcr-be42-compile-09-exec/guardian.py /private/tmp/mcr-be42-compile-09-exec build"
+        },
+        {
+          "cohort": "BE42-PH1-COMPILE-FIVE-09-0249",
+          "pid": 5445,
+          "pgid": 5445,
+          "birth": "Thu Nov 5 12:01:19 2026",
+          "root_command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /private/tmp/mcr-be42-compile-09-exec/run.py /private/tmp/mcr-be42-compile-09-exec"
+        },
+        {
+          "cohort": "ROOT-SOURCE-FMT02-0303",
+          "pid": 19396,
+          "pgid": 19396,
+          "birth": "Thu Nov 5 12:03:51 2026",
+          "root_command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /private/tmp/mcr-root-deletion-source-fmt02-20261105/controller.py"
+        }
+      ],
+      "own_pids": [
+        20550,
+        21040
+      ],
+      "unresolved_accepted_reserved_pids": 0,
+      "declared_global_pids": 44,
+      "declared_global_rss": 10200547328,
+      "unknown": [],
+      "other_accepted_remaining_new_bytes": 2189426688
+    },
+    "peak": {
+      "minimum_free": 23625539584,
+      "own_processes": 2,
+      "own_rss": 263602176,
+      "global_processes": 6,
+      "global_rss": 492437504,
+      "global_workflows": 3,
+      "cumulative_new": 309538816,
+      "whole": 49191800832
+    },
+    "target_access": "NONE"
+  },
+  "free": 23625539584,
+  "epoch": 1793847854.658192,
+  "sample": {
+    "own_processes": 2,
+    "own_rss": 263602176,
+    "global_processes": 6,
+    "global_rss": 492437504,
+    "global_workflows": 3,
+    "global_source": 2,
+    "global_browser": 0,
+    "global_warm_rust": 1,
+    "global_cohorts": [
+      [
+        "BE42-PH1-COMPILE-FIVE-09-0249",
+        "warmRust"
+      ],
+      [
+        "ROOT-SOURCE-FMT02-0303",
+        "source"
+      ]
+    ],
+    "global_pid_birth_group_root_records": [
+      {
+        "cohort": "BE42-PH1-COMPILE-FIVE-09-0249",
+        "pid": 99401,
+        "pgid": 99401,
+        "birth": "Thu Nov 5 12:00:01 2026",
+        "root_command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B -u /private/tmp/mcr-be42-compile-09-exec/guardian.py /private/tmp/mcr-be42-compile-09-exec build"
+      },
+      {
+        "cohort": "BE42-PH1-COMPILE-FIVE-09-0249",
+        "pid": 5445,
+        "pgid": 5445,
+        "birth": "Thu Nov 5 12:01:19 2026",
+        "root_command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /private/tmp/mcr-be42-compile-09-exec/run.py /private/tmp/mcr-be42-compile-09-exec"
+      },
+      {
+        "cohort": "ROOT-SOURCE-FMT02-0303",
+        "pid": 19396,
+        "pgid": 19396,
+        "birth": "Thu Nov 5 12:03:51 2026",
+        "root_command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /private/tmp/mcr-root-deletion-source-fmt02-20261105/controller.py"
+      }
+    ],
+    "own_pids": [
+      20550,
+      21040
+    ],
+    "unresolved_accepted_reserved_pids": 0,
+    "declared_global_pids": 44,
+    "declared_global_rss": 10200547328,
+    "unknown": [],
+    "other_accepted_remaining_new_bytes": 2189426688
+  },
+  "target_access": "NONE"
+}

@@ -1,0 +1,37 @@
+{
+  "epoch": 1793848135.345251,
+  "sampler_pid": 46693,
+  "failure": "AccountingError: scan deadline",
+  "traceback": "Traceback (most recent call last):\n  File \"/private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py\", line 147, in sample\n    receipt = accounting.collect(self.roots, deadline=min(time.monotonic()+35, time.monotonic()+self.a['fullDeadlineEpoch']-time.time()-10), checkpoint=self.fast, attempts=3)\n  File \"/private/tmp/mcr-post21a-be39-compile-unit04-0202/accounting.py\", line 242, in collect\n    walk(fd, identity.scan_path, scope, 0)\n    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/private/tmp/mcr-post21a-be39-compile-unit04-0202/accounting.py\", line 225, in walk\n    walk(child, child_path, scope, depth + 1)\n    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/private/tmp/mcr-post21a-be39-compile-unit04-0202/accounting.py\", line 225, in walk\n    walk(child, child_path, scope, depth + 1)\n    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/private/tmp/mcr-post21a-be39-compile-unit04-0202/accounting.py\", line 225, in walk\n    walk(child, child_path, scope, depth + 1)\n    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  [Previous line repeated 6 more times]\n  File \"/private/tmp/mcr-post21a-be39-compile-unit04-0202/accounting.py\", line 213, in walk\n    check()\n    ~~~~~^^\n  File \"/private/tmp/mcr-post21a-be39-compile-unit04-0202/accounting.py\", line 184, in check\n    raise AccountingError('scan deadline', records)\naccounting.AccountingError: scan deadline\n",
+  "accounting_receipt": {
+    "reason": "scan deadline",
+    "attempts": [
+      {
+        "attempt": 1,
+        "complete": false,
+        "knownBytes": 3280928768,
+        "scopes": {
+          "source": 1407606784,
+          "common_git": 1230000128,
+          "evidence": 9461760,
+          "cargo_home": 633860096,
+          "rust188": 0,
+          "rust197_source_syntax_toolchain": 0,
+          "python_framework": 0,
+          "git_toolchain": 0,
+          "native_toolchain": 0,
+          "old_world_recipient_history": 0,
+          "old_world_producer_history": 0,
+          "previous_compile_unit01_history": 0,
+          "resource_metadata": 0,
+          "previous_compile_unit02_history": 0,
+          "previous_compile_unit03_history": 0
+        },
+        "races": [],
+        "entries": 39360,
+        "finishedMonotonic": 191703.058226916
+      }
+    ],
+    "complete": false
+  }
+}

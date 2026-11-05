@@ -1,0 +1,31 @@
+{
+  "state": "FAILED",
+  "failure": "RuntimeError: finite SOURCE interrupted",
+  "cleanup_failure": "AssertionError: PID root no longer matches 21802 /Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B docs/mcr/evidence/venue-root-binding/qualify.py",
+  "test_exit": null,
+  "fixture_inputs": "SYNTHETIC_ONLY_ACTUAL_PRODUCTION_FUNCTION",
+  "outer_accounting": "REAL_LIVE_NOT_MOCKED",
+  "guard_reaped": true,
+  "peak": {
+    "minimum_free": 23620030464,
+    "own_processes": 4,
+    "own_rss": 507428864,
+    "global_processes": 15,
+    "global_rss": 1244430336,
+    "global_workflows": 3
+  },
+  "target_Cargo_PG_browser": "NOT_RUN",
+  "epoch": 1793847865.784244,
+  "guardian": {
+    "failure": "AccountingError: checkpoint/root/measurement failure",
+    "epoch": 1793847865.6809962,
+    "peak": {
+      "minimum_free": 23620030464,
+      "own_processes": 4,
+      "own_rss": 527482880,
+      "global_processes": 15,
+      "global_rss": 1244135424,
+      "global_workflows": 3
+    }
+  }
+}

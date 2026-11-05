@@ -1,0 +1,6 @@
+{
+  "epoch": 1793847865.678282,
+  "sampler_pid": 21043,
+  "failure": "AssertionError: PID root no longer matches 21802 /Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B docs/mcr/evidence/venue-root-binding/qualify.py",
+  "traceback": "Traceback (most recent call last):\n  File \"/private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py\", line 55, in metadata\n    sample = budget.processes({**a, 'process_cap': 4, 'rss_cap_bytes': GIB, 'kind': 'source'})\n  File \"/private/tmp/mcr-post21a-be39-compile-unit04-0202/budget.py\", line 201, in processes\n    assert cohort.get('kind')=='ordinary' and expected.get('script') is None and row[4].split()[-1]=='-','PID root no longer matches '+str(expected['pid'])+' '+row[4]\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: PID root no longer matches 21802 /Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B docs/mcr/evidence/venue-root-binding/qualify.py\n"
+}

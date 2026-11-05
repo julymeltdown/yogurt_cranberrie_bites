@@ -1,0 +1,23 @@
+{
+  "original_path_pins": {
+    "/private/tmp/mcr-post21a-be39-compile-unit04-0202/budget.py": "25ef01f79482c676cf86501b6703ec0edfc10956cb54233273484e4b0c18966e",
+    "/private/tmp/mcr-post21a-be39-compile-unit04-0202/receipt_proof.py": "d3c3783929b8a3c9f253ceec75ede3a6d1175ad9855058340ae8fc9d848b08a5",
+    "/private/tmp/mcr-post21a-be39-compile-unit04-0202/accounting.py": "d525a94f8bbc3a89a47bf84bda757c985d9f722aa985d7b60a2d600bffcb720a",
+    "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py": "a11641f220c306a20a6ac0bf13bb015adf135ca41211310cac0d2aa4b7ead826",
+    "/private/tmp/mcr-post21a-be39-compile-unit04-0202/test_process_receipts.py": "b3d32a9a174aabc198402c37b7a392178907363763c1996542e9081209bdddd7",
+    "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-baseline.json.gz": "e2783a1ec4a3a1f512a573af50afde3109cf8419a373ff6555f508aa3f52d92d",
+    "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-plan.json": "e2ae0db9983c5e241848681d8b3cd5b7552912ce89c0e4ec953d4623c94895c7",
+    "/private/tmp/mcr-post21a-be39-compile-unit04-0202/global-roster.json": "1eb37d9d4fb6fe0483f80a75118fc2602a95f0856b8db85f4455340391f24bf7",
+    "/private/tmp/mcr-post21a-be39-compile-unit04-0202/python-launcher-image.json": "1ac37458d911bea991e7c1ca2a2f338b98548e87308890a22719dcbc4ae6cab3",
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3.14": "1192b994fbb50303c9df2cc97c9d63797d454c7f57f20ca682877c9e770429aa",
+    "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python": "c9ce7b8516f24348a0e589e3004fd1246dc04756168b98bb8bd71fc67d0b8868"
+  },
+  "preserved_exact_preimages": {
+    "budget.py": "25ef01f79482c676cf86501b6703ec0edfc10956cb54233273484e4b0c18966e",
+    "receipt_proof.py": "d3c3783929b8a3c9f253ceec75ede3a6d1175ad9855058340ae8fc9d848b08a5",
+    "accounting.py": "d525a94f8bbc3a89a47bf84bda757c985d9f722aa985d7b60a2d600bffcb720a",
+    "source_control.py": "a11641f220c306a20a6ac0bf13bb015adf135ca41211310cac0d2aa4b7ead826",
+    "test_process_receipts.py": "b3d32a9a174aabc198402c37b7a392178907363763c1996542e9081209bdddd7"
+  },
+  "state": "ACTUAL_SOURCE01_CLOSED_ORIGINAL_CONTROLS_NOT_REOPENED"
+}

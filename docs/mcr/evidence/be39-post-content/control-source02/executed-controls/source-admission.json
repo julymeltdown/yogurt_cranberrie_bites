@@ -1,0 +1,82 @@
+{
+  "complete_source_admission": {
+    "epoch": 1793846080.534097,
+    "complete": true,
+    "actual_live_metadata": {
+      "own_processes": 2,
+      "own_rss": 242188288,
+      "global_processes": 58,
+      "global_rss": 12590219264,
+      "global_workflows": 3,
+      "global_source": 2,
+      "global_browser": 1,
+      "global_warm_rust": 0,
+      "global_cohorts": [
+        [
+          "GENERIC-NATIVE08-0215",
+          "browser"
+        ],
+        [
+          "BE42-ALLOCATION-CONTROLS01-0226",
+          "source"
+        ]
+      ],
+      "global_pid_birth_group_root_records": [],
+      "own_pids": [
+        61987,
+        62310
+      ],
+      "unresolved_accepted_reserved_pids": 56,
+      "declared_global_pids": 60,
+      "declared_global_rss": 13421772800,
+      "unknown": [],
+      "other_accepted_remaining_new_bytes": 301989888
+    },
+    "peak": {
+      "minimum_free": 23856734208,
+      "own_processes": 2,
+      "own_rss": 242188288,
+      "global_processes": 58,
+      "global_rss": 12590219264,
+      "global_workflows": 3,
+      "cumulative_new": 244592640,
+      "whole": 49126854656
+    },
+    "target_access": "NONE"
+  },
+  "state": "METADATA_ONLY_PASS_NOT_RUNTIME_QUALIFICATION",
+  "epoch": 1793846080.584702,
+  "free": 23861121024,
+  "sample": {
+    "own_processes": 2,
+    "own_rss": 31145984,
+    "global_processes": 58,
+    "global_rss": 12379176960,
+    "global_workflows": 3,
+    "global_source": 2,
+    "global_browser": 1,
+    "global_warm_rust": 0,
+    "global_cohorts": [
+      [
+        "GENERIC-NATIVE08-0215",
+        "browser"
+      ],
+      [
+        "BE42-ALLOCATION-CONTROLS01-0226",
+        "source"
+      ]
+    ],
+    "global_pid_birth_group_root_records": [],
+    "own_pids": [
+      61987,
+      62029
+    ],
+    "unresolved_accepted_reserved_pids": 56,
+    "declared_global_pids": 60,
+    "declared_global_rss": 13421772800,
+    "unknown": [],
+    "other_accepted_remaining_new_bytes": 301989888
+  },
+  "target_access": "NONE",
+  "fixture_execution": "NOT_RUN"
+}

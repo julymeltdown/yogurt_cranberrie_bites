@@ -1,0 +1,65 @@
+{
+  "state": "FULL_RELEASED_FAILED_PRE_FIXTURE_OUTER_GUARD",
+  "ownerThreadId": "01a1a21a-a088-7c31-83e3-19de119ba873",
+  "offerId": "POST-CONTROL-SOURCE02-0204",
+  "acceptedAtEpoch": 1793846080.7682319,
+  "actualFullEpoch": 1793846170.55013,
+  "workDeadlineEpoch": 1793846200.7682319,
+  "fullDeadlineEpoch": 1793846260.7682319,
+  "resourcesReleased": true,
+  "resources": {
+    "workflows": 0,
+    "children": 0,
+    "guards": 0,
+    "tests": 0,
+    "target": 0,
+    "Cargo": 0,
+    "PG": 0,
+    "browser": 0,
+    "ports": 0,
+    "cleanup": 0
+  },
+  "remainingNewUpperBytes": 0,
+  "fixture_tests": "NOT_RUN",
+  "failure": "AssertionError: PID root no longer matches 62488 <defunct>",
+  "cleanup_failure": "AssertionError: PID root no longer matches 62488 <defunct>",
+  "guardian_failure": "AccountingError: checkpoint/root/measurement failure",
+  "peak_observed": {
+    "minimum_free": 23856619520,
+    "own_processes": 4,
+    "own_rss": 492175360,
+    "global_processes": 63,
+    "global_rss": 13020250112,
+    "global_workflows": 4
+  },
+  "final_growth_not_certified": true,
+  "identities_verified_absent": [
+    {
+      "pid": 61986,
+      "birth": "Thu Nov 5 11:34:34 2026",
+      "pgid": 61986,
+      "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+      "script": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py",
+      "outputRoot": "/private/tmp/mcr-post21a-be39-compile-unit04-0202",
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/be-world-recipient-producer",
+      "OScomm": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+    },
+    {
+      "pid": 62314,
+      "birth": "Thu Nov 5 11:34:40 2026",
+      "pgid": 62314,
+      "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+      "script": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py",
+      "outputRoot": "/private/tmp/mcr-post21a-be39-compile-unit04-0202",
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/be-world-recipient-producer",
+      "OScomm": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+    }
+  ],
+  "owned_groups_absent": [
+    61986,
+    62314
+  ],
+  "target_access": "NONE",
+  "within_original_full_deadline": true,
+  "original_cumulative_budget_not_reset": true
+}

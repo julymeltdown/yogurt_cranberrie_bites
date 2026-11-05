@@ -1,0 +1,39 @@
+{
+  "stage": "CENSUS_BEFORE_ASSERT",
+  "epoch": 1793846085.5909529,
+  "sampler_pid": 61986,
+  "relevant_actual_processes": [
+    {
+      "pid": 61986,
+      "ppid": 49590,
+      "pgid": 61986,
+      "rss": 221396992,
+      "birth": "Thu Nov 5 11:34:34 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py 02"
+    },
+    {
+      "pid": 62323,
+      "ppid": 49590,
+      "pgid": 62323,
+      "rss": 182992896,
+      "birth": "Thu Nov 5 11:34:42 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/frontend/e2e/visual/parade-ink-wall-b/native-round.py --job WALL-NATIVE24-0233 --new-mib 480 --other-gib 5 --retained-motif /Users/lhs/Desktop/mcr-worktrees/fe-mural-editor/docs/mcr/evidence/parade-ink-wall-b/pi09-wallb-app-native07-0120/motif/report.partial.json"
+    },
+    {
+      "pid": 62709,
+      "ppid": 62609,
+      "pgid": 62709,
+      "rss": 30474240,
+      "birth": "Thu Nov 5 11:34:45 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /private/tmp/mcr-paradise-notes-api-root153-0221/source.py SOURCE04 --watch"
+    },
+    {
+      "pid": 62609,
+      "ppid": 49590,
+      "pgid": 62609,
+      "rss": 32833536,
+      "birth": "Thu Nov 5 11:34:44 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /private/tmp/mcr-paradise-notes-api-root153-0221/source.py SOURCE04"
+    }
+  ]
+}

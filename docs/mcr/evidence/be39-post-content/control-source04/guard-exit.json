@@ -1,0 +1,12 @@
+{
+  "failure": "AccountingError: scan deadline",
+  "epoch": 1793848100.2991009,
+  "peak": {
+    "minimum_free": 23553101824,
+    "own_processes": 4,
+    "own_rss": 479019008,
+    "global_processes": 16,
+    "global_rss": 4049993728,
+    "global_workflows": 3
+  }
+}

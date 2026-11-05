@@ -1,0 +1,148 @@
+{
+  "round": "POST-CONTROL-SOURCE03-0301",
+  "files": [
+    {
+      "originalPath": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-run-03/accept-identities.json",
+      "retainedPath": "accept-identities.json",
+      "SHA256": "f28bb2cf402e04175ecb7f093ae90b83f7c6e6b236d07ab8784896f954f7d900",
+      "bytes": 7898
+    },
+    {
+      "originalPath": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-run-03/controller-result.json",
+      "retainedPath": "controller-result.json",
+      "SHA256": "db420b05055780d7e6f4aecbe510c286814582aa61eaa1b71c0800e4d20d1f68",
+      "bytes": 1032
+    },
+    {
+      "originalPath": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-run-03/accept.json",
+      "retainedPath": "accept.json",
+      "SHA256": "0197d48214c4db5d6ba501ff5bb762a8c65f2474482833abeefb460cf46d7257",
+      "bytes": 4547
+    },
+    {
+      "originalPath": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-run-03/FULL.json",
+      "retainedPath": "FULL.json",
+      "SHA256": "831abea9a63569b8f2e9a450e053e652bae2f355d5fbfc2c23c61f0d5aed617f",
+      "bytes": 2526
+    },
+    {
+      "originalPath": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-run-03/guard-exit.json",
+      "retainedPath": "guard-exit.json",
+      "SHA256": "5c8b3a586c48f7cbbf941873b82327314df7bbc758d8882d25a2de40134bce9d",
+      "bytes": 287
+    },
+    {
+      "originalPath": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-run-03/guard-identity.json",
+      "retainedPath": "guard-identity.json",
+      "SHA256": "cda9dea4601ba598780565ed978140ce87365291bde88e4c3cec645780ea1c75",
+      "bytes": 521
+    },
+    {
+      "originalPath": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-run-03/guard-failure.json",
+      "retainedPath": "guard-failure.json",
+      "SHA256": "622665e01c79c77aa4d18a2b0d7d7a12dd561a770357b1f860a8e8102ddba6a2",
+      "bytes": 102
+    },
+    {
+      "originalPath": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-run-03/executed-controls/source-admission.json",
+      "retainedPath": "executed-controls/source-admission.json",
+      "SHA256": "63307d9d405494a7768b9bf0bc2e17f943ef8480c9474b75b6c69d00a0b56ccd",
+      "bytes": 4175
+    },
+    {
+      "originalPath": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-run-03/executed-controls/source-budget-amendment.json",
+      "retainedPath": "executed-controls/source-budget-amendment.json",
+      "SHA256": "a084a203a7d518d1dba148d8a649dedbec7635b6b6b50d2165175d0fb80eb13f",
+      "bytes": 1117
+    },
+    {
+      "originalPath": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-run-03/executed-controls/accounting.py",
+      "retainedPath": "executed-controls/accounting.py",
+      "SHA256": "d525a94f8bbc3a89a47bf84bda757c985d9f722aa985d7b60a2d600bffcb720a",
+      "bytes": 14601
+    },
+    {
+      "originalPath": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-run-03/executed-controls/budget.py",
+      "retainedPath": "executed-controls/budget.py",
+      "SHA256": "f7799c11af7ec8f4ab929b0c7677de9bff988afb248ca181b2dd3dbf06d21e31",
+      "bytes": 23879
+    },
+    {
+      "originalPath": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-run-03/executed-controls/global-roster.json",
+      "retainedPath": "executed-controls/global-roster.json",
+      "SHA256": "1eb37d9d4fb6fe0483f80a75118fc2602a95f0856b8db85f4455340391f24bf7",
+      "bytes": 495
+    },
+    {
+      "originalPath": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-run-03/executed-controls/receipt_proof.py",
+      "retainedPath": "executed-controls/receipt_proof.py",
+      "SHA256": "69706c0727698ed2dddcfbadbc20a7eaa8db5a693319f313d217ba2e44ee13b3",
+      "bytes": 3735
+    },
+    {
+      "originalPath": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-run-03/executed-controls/source_control.py",
+      "retainedPath": "executed-controls/source_control.py",
+      "SHA256": "ab26df1ccfc714c72d42d280819d68d1ec6b05ba59d9c5368cb81a9f3e7ba3e1",
+      "bytes": 19947
+    },
+    {
+      "originalPath": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-run-03/executed-controls/python-launcher-image.json",
+      "retainedPath": "executed-controls/python-launcher-image.json",
+      "SHA256": "1ac37458d911bea991e7c1ca2a2f338b98548e87308890a22719dcbc4ae6cab3",
+      "bytes": 1080
+    },
+    {
+      "originalPath": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-run-03/executed-controls/manifest.json",
+      "retainedPath": "executed-controls/manifest.json",
+      "SHA256": "6d0e556fab4d484f000b9e34e7ffd71043010c5d5d420428073c4e141f29d4a6",
+      "bytes": 3789
+    },
+    {
+      "originalPath": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-run-03/executed-controls/test_process_receipts.py",
+      "retainedPath": "executed-controls/test_process_receipts.py",
+      "SHA256": "0f7c723725e756b7ff845683a0f79608f0b917a637a6b802ed56bfaeaeaf0002",
+      "bytes": 12001
+    },
+    {
+      "originalPath": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-run-03/executed-controls/source-plan.json",
+      "retainedPath": "executed-controls/source-plan.json",
+      "SHA256": "e52ad1e32fde69ecafa4bfe7a9d4d30b8be61c3e843cab7d90186734b4a4676b",
+      "bytes": 1693
+    },
+    {
+      "originalPath": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-global-failure-20550.json",
+      "retainedPath": "source-global-failure-20550.json",
+      "SHA256": "8a0394096d3d2fc2407a35ef66f955ae2f66e5aa3d0fccc2af002d6524221d0c",
+      "bytes": 1085
+    },
+    {
+      "originalPath": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/global-sample-before-assert-20550.json",
+      "retainedPath": "global-sample-before-assert-20550.json",
+      "SHA256": "dfaf9b7b45bd3d0cd1d2a3e8aee025d804173e8189865f638ea65e18003aa3a0",
+      "bytes": 1600
+    },
+    {
+      "originalPath": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-global-failure-21043.json",
+      "retainedPath": "source-global-failure-21043.json",
+      "SHA256": "9ad218ae323fc2b061b6781a5fb0fcec6e37b71a474826ae50a336c0c6c1e700",
+      "bytes": 1085
+    },
+    {
+      "originalPath": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-accounting-failure-21043.json",
+      "retainedPath": "source-accounting-failure-21043.json",
+      "SHA256": "8e370f2257ef9508a2abc48fb74f9e7fdd6a6c9a50bf11bec67ffc14db7a5408",
+      "bytes": 4263
+    },
+    {
+      "originalPath": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/global-sample-before-assert-21043.json",
+      "retainedPath": "global-sample-before-assert-21043.json",
+      "SHA256": "fa344526fb5721c60a3268760e451755ad5cbdb8c8d52bc737535487b1eea921",
+      "bytes": 2008
+    }
+  ],
+  "fixedBaselineSHA256": "e2783a1ec4a3a1f512a573af50afde3109cf8419a373ff6555f508aa3f52d92d",
+  "baselineAndHighInodeMapsNotCopiedOrReset": true,
+  "fixtureMethods": "NOT_RUN",
+  "finalAllocationGrowth": "NOT_CERTIFIED",
+  "productPass": false
+}

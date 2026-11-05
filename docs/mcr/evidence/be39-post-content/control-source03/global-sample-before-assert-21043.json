@@ -1,0 +1,47 @@
+{
+  "stage": "CENSUS_BEFORE_ASSERT",
+  "epoch": 1793847865.6724858,
+  "sampler_pid": 21043,
+  "relevant_actual_processes": [
+    {
+      "pid": 5445,
+      "ppid": 99401,
+      "pgid": 5445,
+      "rss": 33701888,
+      "birth": "Thu Nov 5 12:01:19 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /private/tmp/mcr-be42-compile-09-exec/run.py /private/tmp/mcr-be42-compile-09-exec"
+    },
+    {
+      "pid": 20550,
+      "ppid": 49590,
+      "pgid": 20550,
+      "rss": 290209792,
+      "birth": "Thu Nov 5 12:04:09 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py 03"
+    },
+    {
+      "pid": 21043,
+      "ppid": 20550,
+      "pgid": 21043,
+      "rss": 204161024,
+      "birth": "Thu Nov 5 12:04:14 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py guard /private/tmp/mcr-post21a-be39-compile-unit04-0202/source-run-03/accept.json"
+    },
+    {
+      "pid": 21909,
+      "ppid": 21802,
+      "pgid": 21802,
+      "rss": 23674880,
+      "birth": "Thu Nov 5 12:04:25 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/guardian.py /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/venue-root-binding/source03/guard-config.json"
+    },
+    {
+      "pid": 99401,
+      "ppid": 49590,
+      "pgid": 99401,
+      "rss": 42713088,
+      "birth": "Thu Nov 5 12:00:01 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B -u /private/tmp/mcr-be42-compile-09-exec/guardian.py /private/tmp/mcr-be42-compile-09-exec build"
+    }
+  ]
+}

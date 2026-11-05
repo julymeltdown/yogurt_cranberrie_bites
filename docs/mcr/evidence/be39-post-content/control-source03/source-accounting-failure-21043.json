@@ -1,0 +1,42 @@
+{
+  "epoch": 1793847865.679303,
+  "sampler_pid": 21043,
+  "failure": "AccountingError: checkpoint/root/measurement failure",
+  "traceback": "Traceback (most recent call last):\n  File \"/private/tmp/mcr-post21a-be39-compile-unit04-0202/accounting.py\", line 242, in collect\n    walk(fd, identity.scan_path, scope, 0)\n    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/private/tmp/mcr-post21a-be39-compile-unit04-0202/accounting.py\", line 225, in walk\n    walk(child, child_path, scope, depth + 1)\n    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/private/tmp/mcr-post21a-be39-compile-unit04-0202/accounting.py\", line 225, in walk\n    walk(child, child_path, scope, depth + 1)\n    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/private/tmp/mcr-post21a-be39-compile-unit04-0202/accounting.py\", line 225, in walk\n    walk(child, child_path, scope, depth + 1)\n    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  [Previous line repeated 1 more time]\n  File \"/private/tmp/mcr-post21a-be39-compile-unit04-0202/accounting.py\", line 213, in walk\n    check()\n    ~~~~~^^\n  File \"/private/tmp/mcr-post21a-be39-compile-unit04-0202/accounting.py\", line 185, in check\n    checkpoint()\n    ~~~~~~~~~~^^\n  File \"/private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py\", line 136, in fast\n    self.sampled, free = metadata({**self.a, 'output_directory': str(O), 'controller_pid': self.a['controller']['pid'], 'global_roster_path': str(O / 'global-roster.json')})\n                         ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py\", line 55, in metadata\n    sample = budget.processes({**a, 'process_cap': 4, 'rss_cap_bytes': GIB, 'kind': 'source'})\n  File \"/private/tmp/mcr-post21a-be39-compile-unit04-0202/budget.py\", line 201, in processes\n    assert cohort.get('kind')=='ordinary' and expected.get('script') is None and row[4].split()[-1]=='-','PID root no longer matches '+str(expected['pid'])+' '+row[4]\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: PID root no longer matches 21802 /Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B docs/mcr/evidence/venue-root-binding/qualify.py\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py\", line 147, in sample\n    receipt = accounting.collect(self.roots, deadline=min(time.monotonic()+35, time.monotonic()+self.a['fullDeadlineEpoch']-time.time()-10), checkpoint=self.fast, attempts=3)\n  File \"/private/tmp/mcr-post21a-be39-compile-unit04-0202/accounting.py\", line 269, in collect\n    raise AccountingError('checkpoint/root/measurement failure', records) from error\naccounting.AccountingError: checkpoint/root/measurement failure\n",
+  "accounting_receipt": {
+    "reason": "checkpoint/root/measurement failure",
+    "attempts": [
+      {
+        "attempt": 1,
+        "complete": false,
+        "knownBytes": 1033879552,
+        "scopes": {
+          "source": 1033879552,
+          "common_git": 0,
+          "evidence": 0,
+          "cargo_home": 0,
+          "rust188": 0,
+          "rust197_source_syntax_toolchain": 0,
+          "python_framework": 0,
+          "git_toolchain": 0,
+          "native_toolchain": 0,
+          "old_world_recipient_history": 0,
+          "old_world_producer_history": 0,
+          "previous_compile_unit01_history": 0,
+          "resource_metadata": 0,
+          "previous_compile_unit02_history": 0,
+          "previous_compile_unit03_history": 0
+        },
+        "races": [],
+        "entries": 11597,
+        "cause": {
+          "type": "AssertionError",
+          "message": "PID root no longer matches 21802 /Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B docs/mcr/evidence/venue-root-binding/qualify.py",
+          "errno": null
+        },
+        "finishedMonotonic": 191433.39158425
+      }
+    ],
+    "complete": false
+  }
+}

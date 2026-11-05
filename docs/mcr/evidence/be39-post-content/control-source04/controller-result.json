@@ -1,0 +1,31 @@
+{
+  "state": "FAILED",
+  "failure": "RuntimeError: finite SOURCE interrupted",
+  "cleanup_failure": "AccountingError: scan deadline",
+  "test_exit": null,
+  "fixture_inputs": "SYNTHETIC_ONLY_ACTUAL_PRODUCTION_FUNCTION",
+  "outer_accounting": "REAL_LIVE_NOT_MOCKED",
+  "guard_reaped": true,
+  "peak": {
+    "minimum_free": 23554117632,
+    "own_processes": 4,
+    "own_rss": 479313920,
+    "global_processes": 13,
+    "global_rss": 3855826944,
+    "global_workflows": 3
+  },
+  "target_Cargo_PG_browser": "NOT_RUN",
+  "epoch": 1793848135.347221,
+  "guardian": {
+    "failure": "AccountingError: scan deadline",
+    "epoch": 1793848100.2991009,
+    "peak": {
+      "minimum_free": 23553101824,
+      "own_processes": 4,
+      "own_rss": 479019008,
+      "global_processes": 16,
+      "global_rss": 4049993728,
+      "global_workflows": 3
+    }
+  }
+}

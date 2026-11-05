@@ -1,0 +1,12 @@
+{
+  "failure": "AccountingError: checkpoint/root/measurement failure",
+  "epoch": 1793847865.6809962,
+  "peak": {
+    "minimum_free": 23620030464,
+    "own_processes": 4,
+    "own_rss": 527482880,
+    "global_processes": 15,
+    "global_rss": 1244135424,
+    "global_workflows": 3
+  }
+}

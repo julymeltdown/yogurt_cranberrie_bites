@@ -1,0 +1,36 @@
+{
+  "epoch": 1793848272.273875,
+  "method": "Python ast.parse only; no imports/fixtures/product execution",
+  "files": [
+    {
+      "file": "budget.py",
+      "SHA256": "8b13eaa9923cf5c773c08bb5fcc0407b4200e7ae79b30d9f7babd45d813aee7e",
+      "AST": "PASS",
+      "execution": "NOT_RUN_BY_THIS_CHECK"
+    },
+    {
+      "file": "receipt_proof.py",
+      "SHA256": "69706c0727698ed2dddcfbadbc20a7eaa8db5a693319f313d217ba2e44ee13b3",
+      "AST": "PASS",
+      "execution": "NOT_RUN_BY_THIS_CHECK"
+    },
+    {
+      "file": "accounting.py",
+      "SHA256": "d525a94f8bbc3a89a47bf84bda757c985d9f722aa985d7b60a2d600bffcb720a",
+      "AST": "PASS",
+      "execution": "NOT_RUN_BY_THIS_CHECK"
+    },
+    {
+      "file": "source_control.py",
+      "SHA256": "1ca250d50cf6b9129857c9946b35af36ca4393159df3602167474c1640ec3fe5",
+      "AST": "PASS",
+      "execution": "NOT_RUN_BY_THIS_CHECK"
+    },
+    {
+      "file": "test_process_receipts.py",
+      "SHA256": "01bf65f2e6bee1933160aa557f98c90d9bd91e5a205a2411fa732ebd61d9f301",
+      "AST": "PASS",
+      "execution": "NOT_RUN_BY_THIS_CHECK"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "stage": "CENSUS_BEFORE_ASSERT",
+  "epoch": 1793844472.2598631,
+  "sampler_pid": 40014,
+  "relevant_actual_processes": [
+    {
+      "pid": 36364,
+      "ppid": 49590,
+      "pgid": 36364,
+      "rss": 40747008,
+      "birth": "Thu Nov 5 11:06:33 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /private/tmp/mcr-be42-compile-04-0233/guardian.py /private/tmp/mcr-be42-compile-04-0233 build"
+    },
+    {
+      "pid": 36991,
+      "ppid": 36364,
+      "pgid": 36991,
+      "rss": 33538048,
+      "birth": "Thu Nov 5 11:06:35 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /private/tmp/mcr-be42-compile-04-0233/run.py /private/tmp/mcr-be42-compile-04-0233"
+    },
+    {
+      "pid": 40010,
+      "ppid": 49590,
+      "pgid": 40010,
+      "rss": 167100416,
+      "birth": "Thu Nov 5 11:07:25 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py 01"
+    },
+    {
+      "pid": 40014,
+      "ppid": 40010,
+      "pgid": 40014,
+      "rss": 171130880,
+      "birth": "Thu Nov 5 11:07:26 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py guard /private/tmp/mcr-post21a-be39-compile-unit04-0202/source-run-01/accept.json"
+    },
+    {
+      "pid": 41148,
+      "ppid": 49590,
+      "pgid": 41148,
+      "rss": 28852224,
+      "birth": "Thu Nov 5 11:07:50 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /Users/lhs/Desktop/mcr-worktrees/art-runtime/docs/mcr/evidence/service-policy-composition/qualify.py"
+    },
+    {
+      "pid": 86147,
+      "ppid": 49590,
+      "pgid": 86147,
+      "rss": 62586880,
+      "birth": "Thu Nov 5 10:56:06 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /private/tmp/mcr-paradise-notes-api-root153-0159/ordinary.py"
+    }
+  ]
+}

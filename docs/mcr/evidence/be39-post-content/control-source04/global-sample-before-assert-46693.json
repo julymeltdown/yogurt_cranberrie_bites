@@ -1,0 +1,80 @@
+{
+  "stage": "COMPLETE_CENSUS_BEFORE_ASSERT",
+  "epoch": 1793848135.100617,
+  "sampler_pid": 46693,
+  "relevant_actual_processes": [
+    {
+      "pid": 5445,
+      "ppid": 99401,
+      "pgid": 5445,
+      "rss": 33701888,
+      "birth": "Thu Nov 5 12:01:19 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /private/tmp/mcr-be42-compile-09-exec/run.py /private/tmp/mcr-be42-compile-09-exec"
+    },
+    {
+      "pid": 26507,
+      "ppid": 49590,
+      "pgid": 26507,
+      "rss": 2467856384,
+      "birth": "Thu Nov 5 12:05:07 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /private/tmp/mcr-venu-l-transport-40c576-0304/ordinary.py"
+    },
+    {
+      "pid": 46693,
+      "ppid": 49590,
+      "pgid": 46693,
+      "rss": 183451648,
+      "birth": "Thu Nov 5 12:07:37 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py 04"
+    },
+    {
+      "pid": 99401,
+      "ppid": 49590,
+      "pgid": 99401,
+      "rss": 42893312,
+      "birth": "Thu Nov 5 12:00:01 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B -u /private/tmp/mcr-be42-compile-09-exec/guardian.py /private/tmp/mcr-be42-compile-09-exec build"
+    }
+  ],
+  "sample": {
+    "own_processes": 2,
+    "own_rss": 185696256,
+    "global_processes": 6,
+    "global_rss": 2856419328,
+    "global_workflows": 2,
+    "global_source": 1,
+    "global_browser": 0,
+    "global_warm_rust": 1,
+    "global_cohorts": [
+      [
+        "BE42-PH1-COMPILE-FIVE-09-0249",
+        "warmRust"
+      ]
+    ],
+    "global_pid_birth_group_root_records": [
+      {
+        "cohort": "BE42-PH1-COMPILE-FIVE-09-0249",
+        "pid": 99401,
+        "pgid": 99401,
+        "birth": "Thu Nov 5 12:00:01 2026",
+        "root_command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B -u /private/tmp/mcr-be42-compile-09-exec/guardian.py /private/tmp/mcr-be42-compile-09-exec build"
+      },
+      {
+        "cohort": "BE42-PH1-COMPILE-FIVE-09-0249",
+        "pid": 5445,
+        "pgid": 5445,
+        "birth": "Thu Nov 5 12:01:19 2026",
+        "root_command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /private/tmp/mcr-be42-compile-09-exec/run.py /private/tmp/mcr-be42-compile-09-exec"
+      }
+    ],
+    "own_pids": [
+      46693,
+      51263
+    ],
+    "unresolved_accepted_reserved_pids": 0,
+    "declared_global_pids": 36,
+    "declared_global_rss": 9663676416,
+    "unknown": [],
+    "other_accepted_remaining_new_bytes": 2197815296
+  }
+}

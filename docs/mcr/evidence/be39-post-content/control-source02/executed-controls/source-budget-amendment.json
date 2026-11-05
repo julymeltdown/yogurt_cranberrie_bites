@@ -1,0 +1,29 @@
+{
+  "state": "PROSPECTIVE_SOURCE02_AMENDMENT_NOT_WORKER_ACCEPT",
+  "allocator": "01a1a21d-39ec-7912-84cb-910058e7a110",
+  "epoch_recorded": 1793845080.2452989,
+  "shared_new_bytes": 536870912,
+  "prior_uncertified_reservation_bytes": 16777216,
+  "prior_historical_growth_certified": false,
+  "additional_upper_bytes": 520093696,
+  "original_fixed_baseline_unchanged": true,
+  "ordinary_TOTAL64_permission_unchanged": true,
+  "accept_by_utc": "2026-11-05T03:00:00Z",
+  "same_caps": {
+    "processes": 4,
+    "rss_bytes": 1073741824,
+    "WORK": 120,
+    "FULL": 180,
+    "WHOLE": 51539607552
+  },
+  "target_access": false,
+  "minimum_cumulative_carry_bytes": 207409152,
+  "whole_limit_bytes": 68719476736,
+  "ordinary_total_bytes": 536870912,
+  "ordinary_expires_utc": "2026-11-05T02:50:00Z",
+  "historical_cap_incident_preserved": true,
+  "latest_amendment_epoch_recorded": 1793845855.926371,
+  "all_old_actual_MAX_retained": true,
+  "previous_128MiB_admission_refused": true,
+  "previous_ordinary_overlap_NOT_CERTIFIED": true
+}

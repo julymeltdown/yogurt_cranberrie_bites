@@ -1,0 +1,31 @@
+{
+  "state": "FAILED",
+  "failure": "AssertionError: PID root no longer matches 62488 <defunct>",
+  "cleanup_failure": "AssertionError: PID root no longer matches 62488 <defunct>",
+  "test_exit": null,
+  "fixture_inputs": "SYNTHETIC_ONLY_ACTUAL_PRODUCTION_FUNCTION",
+  "outer_accounting": "REAL_LIVE_NOT_MOCKED",
+  "guard_reaped": true,
+  "peak": {
+    "minimum_free": 23856619520,
+    "own_processes": 4,
+    "own_rss": 492175360,
+    "global_processes": 63,
+    "global_rss": 13020250112,
+    "global_workflows": 4
+  },
+  "target_Cargo_PG_browser": "NOT_RUN",
+  "epoch": 1793846085.5966341,
+  "guardian": {
+    "failure": "AccountingError: checkpoint/root/measurement failure",
+    "epoch": 1793846085.473484,
+    "peak": {
+      "minimum_free": 23856619520,
+      "own_processes": 4,
+      "own_rss": 448069632,
+      "global_processes": 62,
+      "global_rss": 13024280576,
+      "global_workflows": 4
+    }
+  }
+}

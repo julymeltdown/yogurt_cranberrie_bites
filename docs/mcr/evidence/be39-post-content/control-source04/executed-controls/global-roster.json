@@ -1,0 +1,11 @@
+{
+  "issuer": "Resource21d",
+  "basis": "Fresh discovery pointer for SOURCE pure-fixture admission; actual owner records and legacy claims read live, not allocator ACK",
+  "management_membership_path": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d/resource-membership-current.json",
+  "observed_epoch": 1793844337.974841,
+  "cohorts": [],
+  "closed_cohort_receipts": {},
+  "active_controller_pids": [],
+  "other_reserved_bytes": 3355443200,
+  "prior_whole_MAX_bytes": 43312521216
+}

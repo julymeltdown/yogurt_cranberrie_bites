@@ -1,0 +1,85 @@
+{
+  "state": "CLOSED_FAILED_BEFORE_FIXTURES",
+  "source_commit": "9171c531e00f8691306bf6b68e0b7f8ceac7ec09",
+  "offer": "POST-CONTROL-SOURCE01-0204",
+  "actualACCEPT": 1793844446.060404,
+  "actualFULL": 1793844495.518228,
+  "all_resources_released": true,
+  "fixture_execution": "NOT_RUN",
+  "complete_initial_pair": false,
+  "inner_exception_retained": false,
+  "diagnostic_limit": "The SOURCE01 wrapper omitted AccountingError cause/receipt. Preassert process snapshots alone do not establish its exact cause. Future source now retains both; not retroactive evidence.",
+  "growth": "NOT_CERTIFIED; no zero-cost claim or baseline reset. Entire original16MiB allowance conservatively reserved for prospective accounting; actual historical peak remains unknown.",
+  "fixed_baseline": {
+    "path": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-baseline.json.gz",
+    "sha256": "e2783a1ec4a3a1f512a573af50afde3109cf8419a373ff6555f508aa3f52d92d"
+  },
+  "future_SOURCE02": "NOT_ACCEPTED; separate prospective cumulative32MiB amendment requested; existingsourceprepTOTAL64unchanged",
+  "target_Rust_Node_PG_SQL_browser_network_install": "NOT_RUN",
+  "artifacts": {
+    "accept.json": {
+      "sha256": "081fe2555bec9b15119342a66380ace764f989d211956e8e196dc0c00b0ca77a",
+      "bytes": 3249
+    },
+    "accept-identities.json": {
+      "sha256": "12a798f9b2551c08d6b79cd481488b5751e39cb9a8a020b49f3afb539089d8d5",
+      "bytes": 3813
+    },
+    "controller-result.json": {
+      "sha256": "b69118ed91477b7ff7feed1c64b292d256de09dc9d474f671c156a1474828c3e",
+      "bytes": 888
+    },
+    "guard-identity.json": {
+      "sha256": "76b315f19c2d0296c57d01b2d202241270d19029ee143bcd4ff1c8531959d63b",
+      "bytes": 521
+    },
+    "guard-failure.json": {
+      "sha256": "4b9935d4198690dfd5e6b227b3060f1e412c4efc8091fead76dfabd4f3ed1963",
+      "bytes": 103
+    },
+    "guard-exit.json": {
+      "sha256": "612435d754d5a40299b72dbc7b9eecd5314a7e9d452b66fa2a4d7de36f9b8e6e",
+      "bytes": 285
+    },
+    "FULL.json": {
+      "sha256": "9a6d9bab1cf723b86df51a40a6f421b366bf644174357664b18d9ef5e7100bd2",
+      "bytes": 2378
+    },
+    "executed-source-pins.json": {
+      "sha256": "84097939ae5c82e2c81ebeb1630192392883e5d526951dd41b64d525c1f662c9",
+      "bytes": 2203
+    },
+    "executed-budget.py": {
+      "sha256": "25ef01f79482c676cf86501b6703ec0edfc10956cb54233273484e4b0c18966e",
+      "bytes": 21802
+    },
+    "executed-source_control.py": {
+      "sha256": "a11641f220c306a20a6ac0bf13bb015adf135ca41211310cac0d2aa4b7ead826",
+      "bytes": 13645
+    },
+    "executed-receipt_proof.py": {
+      "sha256": "d3c3783929b8a3c9f253ceec75ede3a6d1175ad9855058340ae8fc9d848b08a5",
+      "bytes": 3372
+    },
+    "executed-test_process_receipts.py": {
+      "sha256": "b3d32a9a174aabc198402c37b7a392178907363763c1996542e9081209bdddd7",
+      "bytes": 9022
+    },
+    "executed-accounting.py": {
+      "sha256": "d525a94f8bbc3a89a47bf84bda757c985d9f722aa985d7b60a2d600bffcb720a",
+      "bytes": 14601
+    },
+    "global-sample-before-assert-40010.json": {
+      "sha256": "b2132347e3210100e8a4730553775ae2500106b11162a313e7ae2a3c395a8cb9",
+      "bytes": 1815
+    },
+    "global-sample-before-assert-40014.json": {
+      "sha256": "cc1661c0049f8104b201feee12381272d4ae523468c5f9c1ad1cda64c993492f",
+      "bytes": 2222
+    },
+    "source-plan.json": {
+      "sha256": "e2ae0db9983c5e241848681d8b3cd5b7552912ce89c0e4ec953d4623c94895c7",
+      "bytes": 1455
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "actualpid": 61986,
+  "birth": "Thu Nov 5 11:34:34 2026",
+  "role": "ordinary source-only preaccept shell wrapper, historical and ended",
+  "cwd": null,
+  "declaredCwd": "/Users/lhs/Desktop/mcr-worktrees/be-world-recipient-producer",
+  "executable": null,
+  "reportedHistoricalExecutable": "/bin/sh",
+  "historicalCwdMeasured": false,
+  "reportedCommandSHA256": "ae8b2ec30e3fc9c9ed0280163afed4da2c2ae241ca0855138fa571d4add76c76",
+  "reportingOwner": "01a1a202-3ff2-7a93-95c3-374c6df97281",
+  "historicalCommandPurpose": "metadata_probe.py --complete, pin freeze, exec source_control.py 02",
+  "wasMissingFromLiveOwnerIndex": true,
+  "subsequentExec": {
+    "samePidAndBirth": true,
+    "controller": {
+      "pid": 61986,
+      "birth": "Thu Nov 5 11:34:34 2026",
+      "pgid": 61986,
+      "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+      "script": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py",
+      "outputRoot": "/private/tmp/mcr-post21a-be39-compile-unit04-0202",
+      "cwd": "/Users/lhs/Desktop/mcr-worktrees/be-world-recipient-producer",
+      "OScomm": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+    },
+    "actualSOURCE02Accept": 1793846080.7682319,
+    "guardControllers": [
+      {
+        "pid": 62314,
+        "birth": "Thu Nov 5 11:34:40 2026",
+        "pgid": 62314,
+        "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+        "script": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py",
+        "outputRoot": "/private/tmp/mcr-post21a-be39-compile-unit04-0202",
+        "cwd": "/Users/lhs/Desktop/mcr-worktrees/be-world-recipient-producer",
+        "OScomm": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+      }
+    ]
+  },
+  "ended": true,
+  "endedObservedAtEpoch": 1793847182.2962801,
+  "exactEndedAtEpoch": null,
+  "exit": null,
+  "currentMatchingPids": [],
+  "observationRecordedAtEpoch": 1793847284.690592,
+  "source02FULL": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-run-02/FULL.json",
+  "noRetrospectivePrechildCompliance": true,
+  "currentActiveIdentity": null,
+  "futureLaunchCorrection": "Use one direct exec launch; publish that actual Python bootstrap before heavy admission in the same process. No child descriptor substitutes for a live wrapper. Requires fresh authority; closedSOURCE02 never reopens."
+}

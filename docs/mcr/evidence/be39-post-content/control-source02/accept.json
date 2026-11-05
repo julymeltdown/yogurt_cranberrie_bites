@@ -1,0 +1,66 @@
+{
+  "ownerThreadId": "01a1a21a-a088-7c31-83e3-19de119ba873",
+  "offerId": "POST-CONTROL-SOURCE02-0204",
+  "state": "ACCEPTED",
+  "kind": "source",
+  "acceptedAtEpoch": 1793846080.7682319,
+  "workDeadlineEpoch": 1793846200.7682319,
+  "fullDeadlineEpoch": 1793846260.7682319,
+  "processCap": 4,
+  "rssCapBytes": 1073741824,
+  "remainingNewUpperBytes": 536870912,
+  "controller": {
+    "pid": 61986,
+    "birth": "Thu Nov 5 11:34:34 2026",
+    "pgid": 61986,
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+    "script": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py",
+    "outputRoot": "/private/tmp/mcr-post21a-be39-compile-unit04-0202",
+    "cwd": "/Users/lhs/Desktop/mcr-worktrees/be-world-recipient-producer",
+    "OScomm": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python"
+  },
+  "guardControllers": [],
+  "receiptPaths": {
+    "accept": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-run-02/accept.json",
+    "full": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-run-02/FULL.json"
+  },
+  "closedHistory": [
+    {
+      "state": "FULL",
+      "ownerThreadId": "01a1a21a-a088-7c31-83e3-19de119ba873",
+      "offerId": "POST21A-BE39-COMPILE-UNIT03-0111",
+      "acceptedAtEpoch": 1793843217.049885,
+      "actualFullEpoch": 1793843273.254553,
+      "resourcesReleased": true,
+      "fullPath": "/private/tmp/mcr-post21a-be39-compile-unit03-0111/FULL.json",
+      "fullSHA256": "dc1565ebd2a2d40a0000831db95c25e0e5667d652fc7ade5c62d85a6350d89a3"
+    },
+    {
+      "state": "FULL",
+      "ownerThreadId": "01a1a21a-a088-7c31-83e3-19de119ba873",
+      "offerId": "POST-CONTROL-SOURCE01-0204",
+      "acceptedAtEpoch": 1793844446.060404,
+      "actualFullEpoch": 1793844495.518228,
+      "resourcesReleased": true,
+      "fullPath": "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-run-01/FULL.json",
+      "fullSHA256": "9a6d9bab1cf723b86df51a40a6f421b366bf644174357664b18d9ef5e7100bd2"
+    }
+  ],
+  "immutable_file_pins": {
+    "/private/tmp/mcr-post21a-be39-compile-unit04-0202/budget.py": "465502546828754cd097bea19023e826c83adae559284e1538ef46d0cf069081",
+    "/private/tmp/mcr-post21a-be39-compile-unit04-0202/receipt_proof.py": "69706c0727698ed2dddcfbadbc20a7eaa8db5a693319f313d217ba2e44ee13b3",
+    "/private/tmp/mcr-post21a-be39-compile-unit04-0202/accounting.py": "d525a94f8bbc3a89a47bf84bda757c985d9f722aa985d7b60a2d600bffcb720a",
+    "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py": "5560371da51abdafa857c8403a99cd0fee3e8f8641b8a1b5cca4b12541855185",
+    "/private/tmp/mcr-post21a-be39-compile-unit04-0202/test_process_receipts.py": "efbacf6f7fe26b3f6e4165c79208bfc41e627e3a3060b270d76b5ce5136c5194",
+    "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-baseline.json.gz": "e2783a1ec4a3a1f512a573af50afde3109cf8419a373ff6555f508aa3f52d92d",
+    "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-plan.json": "e52ad1e32fde69ecafa4bfe7a9d4d30b8be61c3e843cab7d90186734b4a4676b",
+    "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-budget-amendment.json": "ae8aabbe0069b1681b0d8752ed5fb75802c6f253b69a9a38aeb011cb7b794c54",
+    "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-admission.json": "d7c938501f8a2b4d293061731452453875f3bacff2971d02dc5972a28195db97",
+    "/private/tmp/mcr-post21a-be39-compile-unit04-0202/global-roster.json": "1eb37d9d4fb6fe0483f80a75118fc2602a95f0856b8db85f4455340391f24bf7",
+    "/private/tmp/mcr-post21a-be39-compile-unit04-0202/python-launcher-image.json": "1ac37458d911bea991e7c1ca2a2f338b98548e87308890a22719dcbc4ae6cab3",
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3.14": "1192b994fbb50303c9df2cc97c9d63797d454c7f57f20ca682877c9e770429aa",
+    "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python": "c9ce7b8516f24348a0e589e3004fd1246dc04756168b98bb8bd71fc67d0b8868"
+  },
+  "minimum_cumulative_carry_bytes": 244592640,
+  "minimum_whole_highwater_bytes": 49126854656
+}

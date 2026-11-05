@@ -1,0 +1,103 @@
+{
+  "state": "METADATA_ONLY_PASS_NOT_RUNTIME_QUALIFICATION",
+  "complete_source_admission": {
+    "epoch": 1793848064.009542,
+    "complete": true,
+    "actual_live_metadata": {
+      "own_processes": 2,
+      "own_rss": 227868672,
+      "global_processes": 6,
+      "global_rss": 2134884352,
+      "global_workflows": 2,
+      "global_source": 1,
+      "global_browser": 0,
+      "global_warm_rust": 1,
+      "global_cohorts": [
+        [
+          "BE42-PH1-COMPILE-FIVE-09-0249",
+          "warmRust"
+        ]
+      ],
+      "global_pid_birth_group_root_records": [
+        {
+          "cohort": "BE42-PH1-COMPILE-FIVE-09-0249",
+          "pid": 99401,
+          "pgid": 99401,
+          "birth": "Thu Nov 5 12:00:01 2026",
+          "root_command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B -u /private/tmp/mcr-be42-compile-09-exec/guardian.py /private/tmp/mcr-be42-compile-09-exec build"
+        },
+        {
+          "cohort": "BE42-PH1-COMPILE-FIVE-09-0249",
+          "pid": 5445,
+          "pgid": 5445,
+          "birth": "Thu Nov 5 12:01:19 2026",
+          "root_command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /private/tmp/mcr-be42-compile-09-exec/run.py /private/tmp/mcr-be42-compile-09-exec"
+        }
+      ],
+      "own_pids": [
+        46693,
+        47050
+      ],
+      "unresolved_accepted_reserved_pids": 0,
+      "declared_global_pids": 36,
+      "declared_global_rss": 9663676416,
+      "unknown": [],
+      "other_accepted_remaining_new_bytes": 2197815296
+    },
+    "peak": {
+      "minimum_free": 23587082240,
+      "own_processes": 2,
+      "own_rss": 227868672,
+      "global_processes": 7,
+      "global_rss": 2134884352,
+      "global_workflows": 2,
+      "cumulative_new": 353140736,
+      "whole": 49235402752
+    },
+    "target_access": "NONE"
+  },
+  "free": 23604027392,
+  "epoch": 1793848064.0733829,
+  "sample": {
+    "own_processes": 2,
+    "own_rss": 227868672,
+    "global_processes": 6,
+    "global_rss": 2134884352,
+    "global_workflows": 2,
+    "global_source": 1,
+    "global_browser": 0,
+    "global_warm_rust": 1,
+    "global_cohorts": [
+      [
+        "BE42-PH1-COMPILE-FIVE-09-0249",
+        "warmRust"
+      ]
+    ],
+    "global_pid_birth_group_root_records": [
+      {
+        "cohort": "BE42-PH1-COMPILE-FIVE-09-0249",
+        "pid": 99401,
+        "pgid": 99401,
+        "birth": "Thu Nov 5 12:00:01 2026",
+        "root_command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B -u /private/tmp/mcr-be42-compile-09-exec/guardian.py /private/tmp/mcr-be42-compile-09-exec build"
+      },
+      {
+        "cohort": "BE42-PH1-COMPILE-FIVE-09-0249",
+        "pid": 5445,
+        "pgid": 5445,
+        "birth": "Thu Nov 5 12:01:19 2026",
+        "root_command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python /private/tmp/mcr-be42-compile-09-exec/run.py /private/tmp/mcr-be42-compile-09-exec"
+      }
+    ],
+    "own_pids": [
+      46693,
+      47050
+    ],
+    "unresolved_accepted_reserved_pids": 0,
+    "declared_global_pids": 36,
+    "declared_global_rss": 9663676416,
+    "unknown": [],
+    "other_accepted_remaining_new_bytes": 2197815296
+  },
+  "target_access": "NONE"
+}

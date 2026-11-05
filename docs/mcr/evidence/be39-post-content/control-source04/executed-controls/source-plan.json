@@ -1,0 +1,33 @@
+{
+  "roots": {
+    "source": "/Users/lhs/Desktop/mcr-worktrees/be-world-recipient-producer",
+    "common_git": "/Users/lhs/Desktop/mcr/.git",
+    "evidence": "/private/tmp/mcr-post21a-be39-compile-unit04-0202",
+    "cargo_home": "/Users/lhs/.cargo",
+    "rust188": "/Users/lhs/.rustup/toolchains/1.88.0-aarch64-apple-darwin",
+    "rust197_source_syntax_toolchain": "/Users/lhs/.rustup/toolchains/1.97.1-aarch64-apple-darwin",
+    "python_framework": "/Library/Frameworks/Python.framework/Versions/3.14",
+    "git_toolchain": "/opt/homebrew/Cellar/git/2.55.0",
+    "native_toolchain": "/Library/Developer/CommandLineTools",
+    "old_world_recipient_history": "/private/tmp/mcr-world-recipient-8f645fb-20261104",
+    "old_world_producer_history": "/private/tmp/mcr-world-producer-combined-3a9ba86-20261104",
+    "previous_compile_unit01_history": "/private/tmp/mcr-post21a-be39-compile-unit01-20261105",
+    "resource_metadata": "/Users/lhs/Desktop/mcr-evidence/backend-staffing-01a1a21d",
+    "previous_compile_unit02_history": "/private/tmp/mcr-post21a-be39-compile-unit02-0052",
+    "previous_compile_unit03_history": "/private/tmp/mcr-post21a-be39-compile-unit03-0111"
+  },
+  "file_roots": [
+    "/usr/sbin/lsof",
+    "/bin/ps",
+    "/usr/bin/cc"
+  ],
+  "initial_prepared_bytes": 606208,
+  "measured_complete_union_bytes": 9553637376,
+  "whole_carry_bytes": 48882262016,
+  "baseline_epoch": 1793844394.887529,
+  "target_excluded_and_never_read": true,
+  "prior_whole_carry_bytes": 43312521216,
+  "higher_carry_basis": "/private/tmp/mcr-world-moderation-termination-20261105/build3/full-release.json",
+  "fixed_baseline_not_recaptured": true,
+  "minimum_whole_highwater_bytes": 49089671168
+}
