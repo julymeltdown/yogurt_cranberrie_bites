@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-05T09:25:46+09:00",
+  "updated_at": "2026-11-05T10:22:21+09:00",
   "progress_basis": "REVISED_FUNCTIONAL_DELIVERY; historical original criteria outcomes are retained separately",
   "published_snapshot": "a9c04eb256e7b50e6efc99bfd076eca9a8293100",
   "method": "Human-authorized full112-task replan using original task/IA definitions, responsible-owner hourly dispositions and canonical publisher receipts. Kings do not inspect implementation, SQL, tests or screenshots. No new technical acceptance is inferred.",
@@ -35,7 +35,7 @@
       "FE32",
       "FE33"
     ],
-    "percentage_interpretation": "Unweighted completed-task fraction for the revised active plan, not effort, feature completeness or a prediction of remaining time. DeferredQA08 is excluded explicitly, not counted done.",
+    "percentage_interpretation": "Unweighted completion of111 active ORIGINAL functional tasks only. The mandatory8-deliverable venue amendment and10extension IA states are tracked separately; this is not an expanded-product readiness or effort percentage.",
     "product_release_state": "NOT_READY",
     "full112_completion_claim": false,
     "integration_gates": {
@@ -43,7 +43,7 @@
       "IN02": "OPEN",
       "IN03": "WAITING_INPUT for actual authorized claim/provider provenance; internal implementation also remains incomplete. No duplicate human question.",
       "IN04": "OPEN, expandedWallB",
-      "IN05": "OPEN, functional decision with explicitQA08 deferral"
+      "IN05": "OPEN; reconcile all112 originals/61IA, selected Parade Ink requirements and mandatory VENUE_2026_11_05 deliverables/extension states, with QA08 explicitly deferred."
     },
     "capacity": {
       "owner_chat": "01a1a21d-39ec-7912-84cb-910058e7a110",
@@ -98,7 +98,7 @@
       "FE41"
     ],
     "current_original_criteria_outcomes": 57,
-    "progress_updated_at": "2026-11-05T09:25:46+09:00",
+    "progress_updated_at": "2026-11-05T10:22:21+09:00",
     "hosted_ci": {
       "state": "QUALIFIED_PUBLISHED",
       "observed_at": "2026-11-04T18:18:00Z",
@@ -223,48 +223,22 @@
       }
     ],
     "current_delivery_checkpoint": {
-      "recorded_at": "2026-11-05T09:25:46+09:00",
-      "source": "Backend21d00:17UTC and FrontendKing38500:22UTC hourly dispositions plus canonical publication receipts; no manager technical review.",
-      "canonical_publication": "3bab5b9a40a31106ab3b74c0e14e89bfb28ca61d",
-      "new_original_closures": [
-        "BE06",
-        "FE41"
-      ],
+      "recorded_at": "2026-11-05T10:22:21+09:00",
+      "kind": "DIRECT_HUMAN_SCOPE_AMENDMENT",
+      "canonical_snapshot_before_amendment": "cf7bb13735aeb20e0b796b2071726f048a211bd0",
+      "new_original_closures": [],
       "done_tasks": 52,
       "active_tasks": 111,
       "remaining_active_tasks": 59,
       "original_criteria_outcomes": 57,
       "design_accepted_families": 0,
       "design_total_families": 12,
-      "design_assigned_families": 12,
-      "source_and_bounded_deliveries": [
-        "Reports controlled-client and source5ac4bc6e",
-        "IN03 source2c2fd0a9",
-        "QA09 source860ec838",
-        "FE41 controlled-client6b6c94d",
-        "Auth MAIN compile accounting8b47e0e4",
-        "IN02 navigation/source d58d1b24",
-        "Root clock-input/build-identity source6414d3c9; actual measurement/cohort remains open"
-      ],
-      "resource_movement": "Disk incident recovered under fresh applicable floors; ordinary source/preparation and Git publication resumed. Actual accepted rounds remain bounded by current21d allocation. Root/Party/World builds and bounded route units are credited only within owner-reported scope; managed services/cohorts and whole runtime journeys remain open. Next warm-target compile routes to207 directly.",
-      "staffing": "All12 design families assigned to existing owners. Finished FE41 context reused for PI12. No genuinely unattended ready backend scope reported; other work has implementation owners and execution/input dependencies.",
-      "remaining_boundaries": [
-        "All12 full Parade Ink families and applicable native/device comparisons",
-        "Managed service/principal startup and coherent frontend/backend cohorts",
-        "Real IN02-IN05 authorization/privacy/inventory/recovery and release evidence",
-        "Pending affected inputs: physical-place provenance, Party audience, U03 visibility, IN03 claims/provider and BE39 deletion-profile review decision"
-      ],
-      "readiness": "NOT_READY",
-      "accounting": "112 original tasks and61 IA preserved; QA08 deferred, not passed. No global task credit from source helpers, builds, captures, goal-only scope or publication volume.",
-      "current_scope_closures": [
-        "QA01"
-      ],
-      "task_count_change_since_previous_hourly": 3,
-      "closure_basis": {
-        "BE06": "Full original bootstrap criteria; canonical66551b07",
-        "FE41": "Full original pure-client criteria; owner/Root explicit disposition via385, canonical6b6c94d",
-        "QA01": "Selected Wall B current delta closed at canonicalaac0d96d; already counted in historical39, no duplicate original outcome"
-      }
+      "added_required_venue_deliverables": 8,
+      "added_venue_completed": 0,
+      "amendment_id": "VENUE_2026_11_05",
+      "reference_publication": "UI533 owns original reference/Progressions packet; canonical receipt pending at this Main authoring checkpoint.",
+      "accounting": "Additional mandatory scope outside the preserved112 original IDs/61IA. Original52/111 is a historical-scope functional metric, not expanded-product readiness; no blended percentage or automatic reopening. All8 venue deliverables and extension states must be reconciled for final delivery.",
+      "readiness": "NOT_READY"
     },
     "scope_interpretation": {
       "QA06": "Original widths, skins, actual devices, keyboard/safearea, readability/reachability/clipping/oldUI checks remain intact. All61IA entries remain required; no unrequested universal61x3x3 capture gate.",
@@ -422,6 +396,50 @@
         ],
         "readiness": "NOT_READY",
         "accounting": "112 original tasks and61 IA preserved; QA08 deferred, not passed. No global task credit from source helpers, builds, captures, goal-only scope or publication volume."
+      },
+      {
+        "recorded_at": "2026-11-05T09:25:46+09:00",
+        "source": "Backend21d00:17UTC and FrontendKing38500:22UTC hourly dispositions plus canonical publication receipts; no manager technical review.",
+        "canonical_publication": "3bab5b9a40a31106ab3b74c0e14e89bfb28ca61d",
+        "new_original_closures": [
+          "BE06",
+          "FE41"
+        ],
+        "done_tasks": 52,
+        "active_tasks": 111,
+        "remaining_active_tasks": 59,
+        "original_criteria_outcomes": 57,
+        "design_accepted_families": 0,
+        "design_total_families": 12,
+        "design_assigned_families": 12,
+        "source_and_bounded_deliveries": [
+          "Reports controlled-client and source5ac4bc6e",
+          "IN03 source2c2fd0a9",
+          "QA09 source860ec838",
+          "FE41 controlled-client6b6c94d",
+          "Auth MAIN compile accounting8b47e0e4",
+          "IN02 navigation/source d58d1b24",
+          "Root clock-input/build-identity source6414d3c9; actual measurement/cohort remains open"
+        ],
+        "resource_movement": "Disk incident recovered under fresh applicable floors; ordinary source/preparation and Git publication resumed. Actual accepted rounds remain bounded by current21d allocation. Root/Party/World builds and bounded route units are credited only within owner-reported scope; managed services/cohorts and whole runtime journeys remain open. Next warm-target compile routes to207 directly.",
+        "staffing": "All12 design families assigned to existing owners. Finished FE41 context reused for PI12. No genuinely unattended ready backend scope reported; other work has implementation owners and execution/input dependencies.",
+        "remaining_boundaries": [
+          "All12 full Parade Ink families and applicable native/device comparisons",
+          "Managed service/principal startup and coherent frontend/backend cohorts",
+          "Real IN02-IN05 authorization/privacy/inventory/recovery and release evidence",
+          "Pending affected inputs: physical-place provenance, Party audience, U03 visibility, IN03 claims/provider and BE39 deletion-profile review decision"
+        ],
+        "readiness": "NOT_READY",
+        "accounting": "112 original tasks and61 IA preserved; QA08 deferred, not passed. No global task credit from source helpers, builds, captures, goal-only scope or publication volume.",
+        "current_scope_closures": [
+          "QA01"
+        ],
+        "task_count_change_since_previous_hourly": 3,
+        "closure_basis": {
+          "BE06": "Full original bootstrap criteria; canonical66551b07",
+          "FE41": "Full original pure-client criteria; owner/Root explicit disposition via385, canonical6b6c94d",
+          "QA01": "Selected Wall B current delta closed at canonicalaac0d96d; already counted in historical39, no duplicate original outcome"
+        }
       }
     ],
     "reopened_historical_tasks_at_replan": [
@@ -434,16 +452,33 @@
       "QA07"
     ],
     "physical_input_question": {
-      "state": "PENDING_HUMAN_INPUT",
+      "state": "PARTIALLY_SUPPLIED_REMAINING_AUTHORITY_INPUTS",
       "custodian": "Main King",
       "affected_tasks": [
         "IN02",
         "FE19"
       ],
       "submitted_at": "2026-11-05T06:31:51+09:00",
-      "question": "Approved real event/venue, official map/location source, permitted meetup/pickup spots, audience and validity dates/times.",
-      "basis": "Root explicitly reported no fresh approved physical place and no identified prior question custodian. Main submitted one async question; no answer inferred.",
-      "boundary": "Source/native/clock/caller/correlation and independent criteria continue. Only affected physical-location positive checks require this input. Separate Party notification audience question remains pending."
+      "question": "Remaining authoritative georeferencing/calibration, current permitted meeting locations and access/closure reviewer/validity, and applicable third-party physical-source rights not established by supplied art.",
+      "basis": "Venue name and ten design references are now supplied. Do not repeat the old venue/image request or infer operational approval/GPS calibration from illustrations.",
+      "boundary": "Only dependent physical/location claims await genuinely missing authority. Common flows, static reference work and contracts continue; existing Party/U03/claim/BE39 questions remain single-custodian.",
+      "prior_record_before_venue_amendment": {
+        "state": "PENDING_HUMAN_INPUT",
+        "custodian": "Main King",
+        "affected_tasks": [
+          "IN02",
+          "FE19"
+        ],
+        "submitted_at": "2026-11-05T06:31:51+09:00",
+        "question": "Approved real event/venue, official map/location source, permitted meetup/pickup spots, audience and validity dates/times.",
+        "basis": "Root explicitly reported no fresh approved physical place and no identified prior question custodian. Main submitted one async question; no answer inferred.",
+        "boundary": "Source/native/clock/caller/correlation and independent criteria continue. Only affected physical-location positive checks require this input. Separate Party notification audience question remains pending."
+      },
+      "supplied": {
+        "venue": "Paradise City",
+        "references": "Ten user-provided venue and Map/Friends/Notes images; upload5AE18B10-B53F-405C-9CC2-1541ECB4BAFA",
+        "authority": "Direct human venue amendment; visual/art requirements only"
+      }
     },
     "design_delivery": {
       "revision": "2026-11-05-parade-ink",
@@ -814,7 +849,8 @@
           ],
           "reference_authority": [
             "previous_ten_screen_structure",
-            "photo2_world_language"
+            "photo2_world_language",
+            "VENUE_2026_11_05 affected-surface override; provisionalP05/P09/P10/P02 anatomy"
           ],
           "coordinator": "Frontend King385 through existing functional/UI leads",
           "implementation_owner": "Exact existing developer and file scope assigned after this plan is published; no lease inferred from historic title",
@@ -824,10 +860,25 @@
           "completion": "Functioning default-app component family; fixed reference comparison and applicable states/responsive checks by implementation owner; approved assets; fixes and canonical publication; no unapproved material fixed-region deviation.",
           "evidence": [],
           "canonical_commit": null,
-          "dispatch_state": "SOURCE_IMPLEMENTATION_STARTED",
-          "dispatch_note": "Existing owner assigned in the responsible frontend lead registry; exact actual grants and resource rounds remain with the leads. This accounting entry grants no custody or execution.",
+          "dispatch_state": "OLD_VENUE_STOP_CONFIRMED_REVISED_CHILD_CUSTODY_PENDING",
+          "dispatch_note": "Retain original owner40fde and qualified useful historical work; new venue scope proposed, not accepted/implemented by inheritance. Original World/rooms/nearby duties remain.",
           "owner_reference": "40fde",
-          "ownership_basis": "FrontendKing38500:22UTC hourly named-owner disposition; actual exclusive paths and resource limits remain in responsible lead records, not granted by this register."
+          "ownership_basis": "FrontendKing38500:22UTC hourly named-owner disposition; actual exclusive paths and resource limits remain in responsible lead records, not granted by this register.",
+          "prior_dispatch_before_venue_amendment": {
+            "state": "IN_PROGRESS",
+            "dispatch_state": "SOURCE_IMPLEMENTATION_STARTED",
+            "dispatch_note": "Existing owner assigned in the responsible frontend lead registry; exact actual grants and resource rounds remain with the leads. This accounting entry grants no custody or execution."
+          },
+          "required_amendment_ids": [
+            "VENU-ART01",
+            "VENU-BE-L01",
+            "VENU-FE-L01",
+            "VENU-BE-M01",
+            "VENU-FE-M01",
+            "VENU-BE-N01",
+            "VENU-FE-N01",
+            "VENU-IN01"
+          ]
         },
         {
           "id": "PI12",
@@ -1011,14 +1062,15 @@
       ],
       "preservation": "No changes to original112 task scopes/acceptance/completion criteria,61 IA/source originals,accepted code or existing exclusive writer custody. Keep validated queued patches.",
       "publication_route": "Standing publisher412e; design dispatch starts on canonical plan publication without another king/SL ACK.",
-      "progress_updated_at": "2026-11-05T09:25:46+09:00",
+      "progress_updated_at": "2026-11-05T10:22:21+09:00",
       "plan_canonical_commit": "f025bdb6fb409f3b7706e475dfabb5f3d21fe168",
       "dispatch_counts": {
         "CORRECTION_AWAITING_QUALIFICATION": 1,
         "IMPLEMENTATION_AND_VALIDATION_IN_PROGRESS": 2,
         "CUSTODY_ACCEPTED_PREPARATION": 4,
-        "SOURCE_IMPLEMENTATION_STARTED": 4,
-        "SOURCE_QUALIFIED": 1
+        "SOURCE_IMPLEMENTATION_STARTED": 3,
+        "SOURCE_QUALIFIED": 1,
+        "OLD_VENUE_STOP_CONFIRMED_REVISED_CHILD_CUSTODY_PENDING": 1
       },
       "staffing_snapshot": {
         "recorded_at": "2026-11-05T09:25:46+09:00",
@@ -1056,16 +1108,420 @@
           "PI05",
           "PI06",
           "PI08",
-          "PI09",
-          "PI11"
+          "PI09"
         ],
         "correction_awaiting_qualification": [
           "PI01"
         ],
-        "coverage_exception": "PI12 S01/in-world recovery ownership is being resolved directly by World/Community/Root; reuse an existing QA05 candidate only if genuinely unowned, no duplicate chat."
-      }
+        "coverage_exception": "PI12 S01/in-world recovery ownership is being resolved directly by World/Community/Root; reuse an existing QA05 candidate only if genuinely unowned, no duplicate chat.",
+        "source_started_before_venue_amendment": [
+          "PI01",
+          "PI02",
+          "PI03",
+          "PI05",
+          "PI06",
+          "PI08",
+          "PI09",
+          "PI11"
+        ],
+        "venue_retargeting": "PI11 old venue scope stopped; new-reference implementation/grants not inferred from old source starts. Other existing family ownership remains."
+      },
+      "reference_precedence_updates": [
+        {
+          "recorded_at": "2026-11-05T10:22:21+09:00",
+          "amendment_id": "VENUE_2026_11_05",
+          "applies_to": "Affected Paradise City venue/map/friends/notes/invitation/contextual-message surfaces; chieflyPI11 and linked new flow states",
+          "primary": "docs/mcr/design/venue-redesign-2026-11-05/reference-manifest.json",
+          "local_override": "New venue photos govern affected surfaces, including burgundy active tabs. Other Parade Ink surfaces and independent World eras remain.",
+          "unrelated_surfaces": "Retain global Parade Ink and original World-era semantics."
+        }
+      ]
     },
-    "current_staffing_snapshot": "All12 design families assigned to existing owners. Finished FE41 context reused for PI12. No genuinely unattended ready backend scope reported; other work has implementation owners and execution/input dependencies. Disk incident recovered under fresh applicable floors; ordinary source/preparation and Git publication resumed. Actual accepted rounds remain bounded by current21d allocation. Root/Party/World builds and bounded route units are credited only within owner-reported scope; managed services/cohorts and whole runtime journeys remain open. Next warm-target compile routes to207 directly."
+    "current_staffing_snapshot": "All12 design families assigned to existing owners. Finished FE41 context reused for PI12. No genuinely unattended ready backend scope reported; other work has implementation owners and execution/input dependencies. Disk incident recovered under fresh applicable floors; ordinary source/preparation and Git publication resumed. Actual accepted rounds remain bounded by current21d allocation. Root/Party/World builds and bounded route units are credited only within owner-reported scope; managed services/cohorts and whole runtime journeys remain open. Next warm-target compile routes to207 directly.",
+    "venue_amendment": {
+      "id": "VENUE_2026_11_05",
+      "recorded_at": "2026-11-05T10:22:21+09:00",
+      "authority": "Direct human venue-function/reference amendment in Frontend King conversation01a1a385-9f32-73c2-8715-ff54bd1e0497; exact human text verified by Main. Not inferred from artwork alone.",
+      "required": true,
+      "state": "PLANNED_DELIVERY_REQUIRED",
+      "source_upload_id": "5AE18B10-B53F-405C-9CC2-1541ECB4BAFA",
+      "scope_document": "docs/mcr/venue-feature-amendment-2026-11-05.md",
+      "flow_document": "docs/mcr/progressions.md",
+      "reference_manifest": "docs/mcr/design/venue-redesign-2026-11-05/reference-manifest.json",
+      "reference_state_map": "docs/mcr/design/venue-redesign-2026-11-05/reference-state-map.json",
+      "reference_document_owner": "UI533 under Frontend385; canonical publication pending this checkpoint",
+      "reference_roles": {
+        "P01": "Fenced whole-plan base alternative",
+        "P04": "Second fenced whole-plan alternative",
+        "P05": "Provisional simplified whole-plan base with TOILETS",
+        "P02": "Selected friend/fixed landmark meeting, MESSAGE, MEET HERE, accept/decline/cancel and ASK LOCATION components",
+        "P03/P06/P10": "Distinct notes variants: map/list/selection, composer/change-place, Friends/Everyone,1h/endday, replies and Meet Here; P10 provisional primary",
+        "P07/P08/P09": "Distinct friends variants: markers/clusters, current/check-in/stale rows, VIEW/ASK LOCATION, selected friend MESSAGE/MEET HERE and pause/sharing; P09 provisional primary"
+      },
+      "primary_art_choice": {
+        "state": "PROVISIONAL_PENDING_OPTIONAL_USER_CHOICE",
+        "provisional_base": "P05",
+        "provisional_friends": "P09",
+        "provisional_notes": "P10",
+        "meeting_anatomy": "P02",
+        "alternative_base": [
+          "P01",
+          "P04"
+        ],
+        "question_custodian": "FrontendKing385",
+        "no_geometry_blending": true
+      },
+      "local_visual_override": "New venue photos govern affected surfaces, including burgundy active tabs. Other Parade Ink surfaces and independent World eras remain.",
+      "deliverable_count": 8,
+      "completed_deliverables": 0,
+      "deliverables": [
+        {
+          "id": "VENU-ART01",
+          "title": "Complete venue artwork and independent site model",
+          "lane": "ART / FE model",
+          "proposed_owners": [
+            "231 venue artwork",
+            "26e pure physical-venue model"
+          ],
+          "related_original_tasks": [
+            "AR01",
+            "AR02",
+            "C06",
+            "BE08",
+            "FE19"
+          ],
+          "scope": "Preserve all ten originals and an explicit master-variant decision; produce the complete Paradise City site plan, landmark IDs and an independent site-plan projection/model with provenance and closure states. Preserve original walkable World obligations; never alias site pixels or virtual coordinates to WGS84.",
+          "completion": "Published approved-source assets/model and actual venue overview; every displayed landmark resolves with declared source/review status; no mixed variant geometry, legacy character substitution or invented calibration.",
+          "state": "NOT_STARTED",
+          "required": true,
+          "dispatch_state": "EXACT_CHILD_GRANT_AND_RECEIVER_ACCEPTANCE_PENDING"
+        },
+        {
+          "id": "VENU-BE-L01",
+          "title": "Location consent, friendship eligibility and freshness",
+          "lane": "BE",
+          "proposed_owners": [
+            "16e proposed by Root; acceptance/custody pending"
+          ],
+          "related_original_tasks": [
+            "C03",
+            "C04",
+            "C05",
+            "BE08",
+            "BE09",
+            "BE29",
+            "BE33",
+            "BE37",
+            "BE41",
+            "BE42"
+          ],
+          "scope": "Add real phone-location opt-in, distinct sharing/viewer permissions, current/check-in/last-known timestamps, location requests and pause/revoke semantics; event/friend/blocked/suspended/deleted filtering and bounded retention.",
+          "completion": "Actual authorized producer persists and enforces consent, freshness/expiry and revocation across reads/mutations/realtime/cache; unauthorized requests reveal no coordinates/history; no virtual movement or invitation acceptance creates physical arrival.",
+          "state": "NOT_STARTED",
+          "required": true,
+          "dispatch_state": "EXACT_CHILD_GRANT_AND_RECEIVER_ACCEPTANCE_PENDING"
+        },
+        {
+          "id": "VENU-FE-L01",
+          "title": "Venue Map and Friends client",
+          "lane": "FE",
+          "proposed_owners": [
+            "40fde proposed by Root for Map/Friends/Notes shell",
+            "26e model counterpart"
+          ],
+          "related_original_tasks": [
+            "FE19",
+            "FE20",
+            "FE31",
+            "FE35",
+            "QA06",
+            "QA07"
+          ],
+          "scope": "Implement complete venue overview/zoom/recenter/landmarks and MAP/FRIENDS/NOTES navigation; friend clusters, selected friend, current/stale/check-in states, permission/denial/offline handling, request/pause/revoke controls through typed contracts.",
+          "completion": "Working client states and accessible actions match corresponding reference panels; real browser permission and actual backend integration are qualified by responsible owners separately from deterministic visual fixtures; no fake live status.",
+          "state": "NOT_STARTED",
+          "required": true,
+          "dispatch_state": "EXACT_CHILD_GRANT_AND_RECEIVER_ACCEPTANCE_PENDING"
+        },
+        {
+          "id": "VENU-BE-M01",
+          "title": "Landmark invitations and contextual conversation",
+          "lane": "BE",
+          "proposed_owners": [
+            "b91d proposed; compatibility/custody pending"
+          ],
+          "related_original_tasks": [
+            "C04",
+            "C05",
+            "BE08",
+            "BE09",
+            "BE16",
+            "BE17",
+            "BE18",
+            "BE19",
+            "BE33",
+            "BE36",
+            "BE37",
+            "BE41",
+            "BE42"
+          ],
+          "scope": "Add fixed reviewed-landmark invitation create/accept/decline/cancel transitions and participant-authorized contextual MESSAGE conversation, with current place revisions, idempotency, privacy and lifecycle/retention behavior. Selected-friend MESSAGE may open without creating or accepting an invitation; invitationId is optional, opening performs no implicit send/write, and access is scoped to the authorized friend/place context.",
+          "completion": "Actual invitation/conversation producers persist decisions and messages, reauthorize current authorized conversation actors and places, handle duplicate/uncertain actions and block/delete/expire transitions; no automatic location disclosure or arrival.",
+          "state": "NOT_STARTED",
+          "required": true,
+          "dispatch_state": "EXACT_CHILD_GRANT_AND_RECEIVER_ACCEPTANCE_PENDING"
+        },
+        {
+          "id": "VENU-FE-M01",
+          "title": "Invitation and meeting-conversation client",
+          "lane": "FE",
+          "proposed_owners": [
+            "204 proposed by Community; custody pending"
+          ],
+          "related_original_tasks": [
+            "FE19",
+            "FE20",
+            "FE21",
+            "FE22",
+            "FE23",
+            "FE35",
+            "QA06",
+            "QA07"
+          ],
+          "scope": "Implement fixed-landmark invite composer/details, incoming/outgoing invitation states, accept/decline/cancel, contextual MESSAGE and note Meet Here entry using typed ports and truthful mutation states. MESSAGE can open directly from a selected friend/place context without an invite; no mutation occurs merely by opening it.",
+          "completion": "Actual working invitation and contextual conversation states match reference Photo2 anatomy, recover uncertain submissions without duplication, preserve drafts appropriately and show only authorized participants/content; no static-message substitute.",
+          "state": "NOT_STARTED",
+          "required": true,
+          "dispatch_state": "EXACT_CHILD_GRANT_AND_RECEIVER_ACCEPTANCE_PENDING"
+        },
+        {
+          "id": "VENU-BE-N01",
+          "title": "Place-anchored notes and replies",
+          "lane": "BE",
+          "proposed_owners": [
+            "213 backend Reports/authorization developer proposed; not frontend Profile213"
+          ],
+          "related_original_tasks": [
+            "C04",
+            "C05",
+            "BE08",
+            "BE31",
+            "BE32",
+            "BE33",
+            "BE36",
+            "BE37",
+            "BE41",
+            "BE42"
+          ],
+          "scope": "Add place-anchored notes/replies with explicit Friends/Everyone event audience, create/list/group/select/reply authorization and server-enforced1h/endday expiry, deletion/moderation/revocation and safe Meet Here links.",
+          "completion": "Actual producer enforces note/place/audience/expiry at access time and on changes; expired/deleted/blocked notes are not recoverable through replies, map clusters or caches; persistence and restart preserve deadlines.",
+          "state": "NOT_STARTED",
+          "required": true,
+          "dispatch_state": "EXACT_CHILD_GRANT_AND_RECEIVER_ACCEPTANCE_PENDING"
+        },
+        {
+          "id": "VENU-FE-N01",
+          "title": "Notes map, list, composer and reply client",
+          "lane": "FE",
+          "proposed_owners": [
+            "40fde Map shell; exact Notes leaf writer must be assigned without overlap"
+          ],
+          "related_original_tasks": [
+            "FE19",
+            "FE27",
+            "FE28",
+            "FE35",
+            "FE40",
+            "QA06",
+            "QA07"
+          ],
+          "scope": "Implement note clusters/list/selection, place-anchored composer, Friends/Everyone controls,1h/endday expiry, replies and Meet Here; truthful empty/loading/expired/denied/offline and uncertain-write states.",
+          "completion": "Working notes and reply states match mapped photo panels, retain safe drafts, never expose expired/private data, and hand off Meet Here to a real authorized invitation flow; actual producers integrated separately from visual fixtures.",
+          "state": "NOT_STARTED",
+          "required": true,
+          "dispatch_state": "EXACT_CHILD_GRANT_AND_RECEIVER_ACCEPTANCE_PENDING"
+        },
+        {
+          "id": "VENU-IN01",
+          "title": "Integrated venue flows and repeated reference comparison",
+          "lane": "Existing implementation owners / integration",
+          "proposed_owners": [
+            "Root1fc andRoot153 with each responsible FE/BE/art developer"
+          ],
+          "related_original_tasks": [
+            "QA04",
+            "QA06",
+            "QA07",
+            "QA09",
+            "IN02",
+            "IN03",
+            "IN05"
+          ],
+          "scope": "Join real location, invitations/conversation and notes against actual authorized producers, retain original functional/device/privacy/recovery requirements, and close every mapped fixed-region reference difference through repeated owner-owned pairs/overlays/diffs.",
+          "completion": "Responsible developers deliver the integrated requested journeys and actual applicable privacy/persistence/recovery/device outcomes; comparison case map covers every required photo state with resolved material discrepancies and canonical publication. QA08 load/performance qualification remains deferred.",
+          "state": "NOT_STARTED",
+          "required": true,
+          "dispatch_state": "EXACT_CHILD_GRANT_AND_RECEIVER_ACCEPTANCE_PENDING"
+        }
+      ],
+      "ia_extension_count": 10,
+      "ia_extensions": [
+        {
+          "id": "VENU-IA01",
+          "title": "Venue overview and landmarks",
+          "related_original_ia": [
+            "W02",
+            "W03",
+            "W08"
+          ],
+          "delivery_id": "VENU-FE-L01",
+          "route": "Assigned by Root153 through exact route/composition custody; not a new URL grant",
+          "state": "NOT_STARTED"
+        },
+        {
+          "id": "VENU-IA02",
+          "title": "Friends list and map clusters",
+          "related_original_ia": [
+            "W02",
+            "M09"
+          ],
+          "delivery_id": "VENU-FE-L01",
+          "route": "Assigned by Root153 through exact route/composition custody; not a new URL grant",
+          "state": "NOT_STARTED"
+        },
+        {
+          "id": "VENU-IA03",
+          "title": "Location permission, sharing and source/freshness controls",
+          "related_original_ia": [
+            "W07",
+            "U05",
+            "U08",
+            "U09"
+          ],
+          "delivery_id": "VENU-FE-L01",
+          "route": "Assigned by Root153 through exact route/composition custody; not a new URL grant",
+          "state": "NOT_STARTED"
+        },
+        {
+          "id": "VENU-IA04",
+          "title": "Selected friend and location request",
+          "related_original_ia": [
+            "M09",
+            "U10"
+          ],
+          "delivery_id": "VENU-FE-L01",
+          "route": "Assigned by Root153 through exact route/composition custody; not a new URL grant",
+          "state": "NOT_STARTED"
+        },
+        {
+          "id": "VENU-IA05",
+          "title": "Fixed-landmark invitation composer",
+          "related_original_ia": [
+            "W03",
+            "M02",
+            "M06"
+          ],
+          "delivery_id": "VENU-FE-M01",
+          "route": "Assigned by Root153 through exact route/composition custody; not a new URL grant",
+          "state": "NOT_STARTED"
+        },
+        {
+          "id": "VENU-IA06",
+          "title": "Incoming/outgoing invitation decision and status",
+          "related_original_ia": [
+            "M03",
+            "M05",
+            "M06",
+            "U10"
+          ],
+          "delivery_id": "VENU-FE-M01",
+          "route": "Assigned by Root153 through exact route/composition custody; not a new URL grant",
+          "state": "NOT_STARTED"
+        },
+        {
+          "id": "VENU-IA07",
+          "title": "Contextual friend/place meeting conversation",
+          "related_original_ia": [
+            "M06",
+            "M09"
+          ],
+          "delivery_id": "VENU-FE-M01",
+          "route": "Assigned by Root153 through exact route/composition custody; not a new URL grant",
+          "state": "NOT_STARTED"
+        },
+        {
+          "id": "VENU-IA08",
+          "title": "Place-note map clusters and list",
+          "related_original_ia": [
+            "W02",
+            "W03",
+            "F01"
+          ],
+          "delivery_id": "VENU-FE-N01",
+          "route": "Assigned by Root153 through exact route/composition custody; not a new URL grant",
+          "state": "NOT_STARTED"
+        },
+        {
+          "id": "VENU-IA09",
+          "title": "Place-note composer, audience and expiry",
+          "related_original_ia": [
+            "F02",
+            "W03"
+          ],
+          "delivery_id": "VENU-FE-N01",
+          "route": "Assigned by Root153 through exact route/composition custody; not a new URL grant",
+          "state": "NOT_STARTED"
+        },
+        {
+          "id": "VENU-IA10",
+          "title": "Note details/replies and Meet Here",
+          "related_original_ia": [
+            "F03",
+            "M06"
+          ],
+          "delivery_id": "VENU-FE-N01",
+          "route": "Assigned by Root153 through exact route/composition custody; not a new URL grant",
+          "state": "NOT_STARTED"
+        }
+      ],
+      "accounting": "Additional mandatory scope outside the preserved112 original IDs/61IA. Original52/111 is a historical-scope functional metric, not expanded-product readiness; no blended percentage or automatic reopening. All8 venue deliverables and extension states must be reconciled for final delivery.",
+      "old_scope_stop": {
+        "reported_by": "Frontend385 from actual Root owner receipts",
+        "231": "Four old roof-v4 leases STOP/RETURN, jobsFULL/resources0; history and branches preserved; old unaccepted offer declined.",
+        "26e": "Old Mapv3 adoption never started and STOP accepted; independent PI01 work preserved.",
+        "40fde": "Old PI11 venue scope STOP01:07:21Z; source/controls/docs retained, resources0 and obsolete native offers declined.",
+        "new_child_grants": "Proposals until exact grant/receiver acceptance/fresh capacity. Parent contract custody below is explicitly transferred.",
+        "main_ui_docs": "Main STOP/RETURN before any writes to progressions/reference directory; UI533 sole writer. Main only central4 plus scope amendment."
+      },
+      "contract_parent_custody": {
+        "backend_owner": "Root1fc",
+        "backend_new_families": [
+          "backend/proto/venue/v1/**",
+          "backend/docs/api/paradise-city-v1/**",
+          "docs/mcr/contracts/paradise-city-v1/**"
+        ],
+        "frontend_owner": "Root153",
+        "frontend_new_family": "frontend/src/shared/api/paradise-city-v1/**",
+        "capability_type_owner": "40fde feature capability types; actual frozen wire is authoritative",
+        "existing_shared_families": "No blanket transfer of old monolithic API/proto/generated families, manifests, lockfiles or CI. Exact additive registration hunks require their actual current writer transfer.",
+        "authority": "Frontend385 literal STOP/RETURN before writes and explicit new-family Root custody handoff."
+      },
+      "message_semantics": "Selected-friend/place-context MESSAGE may open without creating or accepting an invitation; invitationId optional; opening has no implicit send/write; no global bare-user DM.",
+      "privacy_boundaries": [
+        "Device permission, sharing consent, friendship eligibility, explicit physical check-in and virtualWorld presence are distinct.",
+        "Photo positions/times are not actual live location, calibrated GPS, attendance or operational place approval.",
+        "Friend/request/invitation state grants no automatic GPS disclosure. Pause/freshness/last-known/revoke semantics are explicit and server-enforced.",
+        "Notes Friends/Everyone audience and1h/endday expiry are server-enforced, including replies/clusters/cache; event timezone and audience boundary must be explicit."
+      ],
+      "comparison_rule": "At every affected iteration, responsible developer records originalSHA+measuredROI/case/viewport/DPR/scale/sourcecommit/time/fixture-or-real-service metadata, actual capture pair, overlay/diff and discrepancy/fix disposition. No invented ROI, broad masks or manager pixel/code review.",
+      "open_inputs": [
+        "Single optional primary-art choice with Frontend385; common flows proceed provisionally.",
+        "Actual missing authoritative georeferencing/calibration, approved event-day places/access/closure/validity and applicable external-source rights.",
+        "Only after source/reference tracing: any unresolved friend eligibility/freshness/check-in/context access/retention/endday semantics. No invented values or duplicate human questions."
+      ],
+      "publisher": "Standing412e; independent immutable qualified lane packets; no managerACK or whole backend wave barrier."
+    },
+    "prior_percentage_interpretation_before_venue_amendment": "Unweighted completed-task fraction for the revised active plan, not effort, feature completeness or a prediction of remaining time. DeferredQA08 is excluded explicitly, not counted done."
   },
   "historical_accounting": {
     "baseline_revision": "7eac13ce30d6dd6be4df30727f75d5df90d3489d",
@@ -1229,7 +1685,11 @@
         "current_scope_evidence": [
           "docs/mcr/core-contract.md"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "required_amendment_links": [
+          "VENU-BE-L01"
+        ],
+        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria."
       }
     },
     {
@@ -1280,7 +1740,13 @@
           "owner_chat": "01a1a533-50a8-7fb2-b3ed-96b941b96bbf",
           "scope": "Existing developer50a8 actually accepted a fresh unbudgeted QA01/C04 goal and exclusive coverage/docs custody from Root; overlap with proposed operator UI work was withdrawn before writes. Existing schemas/generators remain read-only absent a specific transfer.",
           "manager_ack_required": false
-        }
+        },
+        "required_amendment_links": [
+          "VENU-BE-L01",
+          "VENU-BE-M01",
+          "VENU-BE-N01"
+        ],
+        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria."
       }
     },
     {
@@ -1317,7 +1783,13 @@
         "current_scope_evidence": [
           "docs/mcr/realtime-contract.md"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "required_amendment_links": [
+          "VENU-BE-L01",
+          "VENU-BE-M01",
+          "VENU-BE-N01"
+        ],
+        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria."
       }
     },
     {
@@ -1365,7 +1837,11 @@
           "published_commit": "6504448fa682b10c53b3f6cd3e0aeef4d75b1483",
           "basis": "Responsible contract owner explicitly accepted all five original C06 criteria and published the three-file disposition at6504448f. Existing current schemas, byte-identical six golden assets and retained qualified avatar/map/theme consumers satisfy the original contract scope; the owner ran one existing six-golden validator for the actual validator/scenery delta. No asset, contract or application source changed in this disposition. Original artwork, real integration, full reference and device outcomes retain their separate task boundaries. Main records the canonical owner receipt without technical re-review or repeated validation.",
           "manager_technical_review": false
-        }
+        },
+        "required_amendment_links": [
+          "VENU-ART01"
+        ],
+        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria."
       },
       "latest_owner_activity": {
         "reported_at": "2026-11-05T03:25:55+09:00",
@@ -1517,7 +1993,11 @@
           "docs/mcr/venue-provenance.md:42",
           "U_SCOPE"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "required_amendment_links": [
+          "VENU-ART01"
+        ],
+        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria."
       }
     },
     {
@@ -1575,7 +2055,11 @@
         "design_family_ids": [
           "PI11"
         ],
-        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership.",
+        "required_amendment_links": [
+          "VENU-ART01"
+        ],
+        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria."
       }
     },
     {
@@ -2227,7 +2711,14 @@
           "at": "2026-11-05T04:53:24+09:00",
           "basis": "Backend lead 19:40UTC task records and current receiving-chat assignments; no manager technical review.",
           "interpretation": "Routing contacts, not new assignments or exclusive file grants. Actual current writer and stop/transfer are established directly by the responsible lead and publisher."
-        }
+        },
+        "required_amendment_links": [
+          "VENU-ART01",
+          "VENU-BE-L01",
+          "VENU-BE-M01",
+          "VENU-BE-N01"
+        ],
+        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria."
       }
     },
     {
@@ -2298,7 +2789,12 @@
           "at": "2026-11-05T04:53:24+09:00",
           "basis": "Backend lead 19:40UTC task records and current receiving-chat assignments; no manager technical review.",
           "interpretation": "Routing contacts, not new assignments or exclusive file grants. Actual current writer and stop/transfer are established directly by the responsible lead and publisher."
-        }
+        },
+        "required_amendment_links": [
+          "VENU-BE-L01",
+          "VENU-BE-M01"
+        ],
+        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria."
       }
     },
     {
@@ -2779,7 +3275,11 @@
           "nextAction": "19f83 single-artifact functional compile/freeze/native/restart queued after older READY cohorts; Root mounts actual qualified runtime ports.",
           "commitPush": "5043ed9c98acf8aa5b696f37cb533856a83aa571 finaldocs; qualifiedaf2 frozen source",
           "source": "Backend staffing16:00 digest; existing responsible-owner records, no Main technical review"
-        }
+        },
+        "required_amendment_links": [
+          "VENU-BE-M01"
+        ],
+        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria."
       }
     },
     {
@@ -2837,7 +3337,11 @@
           "nextAction": "19f83 single-artifact functional compile/freeze/native/restart queued after older READY cohorts; Root mounts actual qualified runtime ports.",
           "commitPush": "5043ed9c98acf8aa5b696f37cb533856a83aa571 finaldocs; qualifiedaf2 frozen source",
           "source": "Backend staffing16:00 digest; existing responsible-owner records, no Main technical review"
-        }
+        },
+        "required_amendment_links": [
+          "VENU-BE-M01"
+        ],
+        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria."
       }
     },
     {
@@ -2898,7 +3402,11 @@
           "nextAction": "19f83 single-artifact functional compile/freeze/native/restart queued after older READY cohorts; Root mounts actual qualified runtime ports.",
           "commitPush": "5043ed9c98acf8aa5b696f37cb533856a83aa571 finaldocs; qualifiedaf2 frozen source",
           "source": "Backend staffing16:00 digest; existing responsible-owner records, no Main technical review"
-        }
+        },
+        "required_amendment_links": [
+          "VENU-BE-M01"
+        ],
+        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria."
       }
     },
     {
@@ -2960,7 +3468,11 @@
           "nextAction": "Use preserved qualified physical/rally handoff; current Party owner is Root/19f83, not former213. Do not displace active Wall202.",
           "commitPush": "origin/codex/mcr-be-physical-rally d32a0e9dceee87050016fdd1517d817c0d438996 clean; no masterworkerpush",
           "source": "Backend staffing16:00 digest; existing responsible-owner records, no Main technical review"
-        }
+        },
+        "required_amendment_links": [
+          "VENU-BE-M01"
+        ],
+        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria."
       }
     },
     {
@@ -3581,7 +4093,11 @@
           "at": "2026-11-05T04:53:24+09:00",
           "basis": "Backend lead 19:40UTC task records and current receiving-chat assignments; no manager technical review.",
           "interpretation": "Routing contacts, not new assignments or exclusive file grants. Actual current writer and stop/transfer are established directly by the responsible lead and publisher."
-        }
+        },
+        "required_amendment_links": [
+          "VENU-BE-L01"
+        ],
+        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria."
       }
     },
     {
@@ -3714,7 +4230,11 @@
           "at": "2026-11-05T04:53:24+09:00",
           "basis": "Backend lead 19:40UTC task records and current receiving-chat assignments; no manager technical review.",
           "interpretation": "Routing contacts, not new assignments or exclusive file grants. Actual current writer and stop/transfer are established directly by the responsible lead and publisher."
-        }
+        },
+        "required_amendment_links": [
+          "VENU-BE-N01"
+        ],
+        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria."
       }
     },
     {
@@ -3780,7 +4300,11 @@
           "at": "2026-11-05T04:53:24+09:00",
           "basis": "Backend lead 19:40UTC task records and current receiving-chat assignments; no manager technical review.",
           "interpretation": "Routing contacts, not new assignments or exclusive file grants. Actual current writer and stop/transfer are established directly by the responsible lead and publisher."
-        }
+        },
+        "required_amendment_links": [
+          "VENU-BE-N01"
+        ],
+        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria."
       }
     },
     {
@@ -3870,7 +4394,13 @@
             "question_owner": "Main KING, relayed through Community SLc5f1 to Party12cc and Notification6ec9",
             "continuation": "Existing three Application directions and authorized immutable Party correlation continue. Only undefined fanout semantics wait; no original BE33 completion or proposed policy approval is inferred."
           }
-        }
+        },
+        "required_amendment_links": [
+          "VENU-BE-L01",
+          "VENU-BE-M01",
+          "VENU-BE-N01"
+        ],
+        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria."
       }
     },
     {
@@ -4078,7 +4608,12 @@
           "state": "ACTUAL_STOP_TRANSFER_IMPLEMENTING",
           "scope": "Whole Report authorization/evidence feature transferred from205 to03de in a new isolated checkout at the stopped source; prior Media checkout and unfinished goal preserved.",
           "remaining": "Implement qualified COMMENT/MURAL target authorization, REPORT attachments, functional checks/fixes and direct publication."
-        }
+        },
+        "required_amendment_links": [
+          "VENU-BE-M01",
+          "VENU-BE-N01"
+        ],
+        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria."
       }
     },
     {
@@ -4145,7 +4680,13 @@
           "at": "2026-11-05T04:53:24+09:00",
           "basis": "Backend lead 19:40UTC task records and current receiving-chat assignments; no manager technical review.",
           "interpretation": "Routing contacts, not new assignments or exclusive file grants. Actual current writer and stop/transfer are established directly by the responsible lead and publisher."
-        }
+        },
+        "required_amendment_links": [
+          "VENU-BE-L01",
+          "VENU-BE-M01",
+          "VENU-BE-N01"
+        ],
+        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria."
       }
     },
     {
@@ -4417,7 +4958,13 @@
           "nextAction": "Use qualified local leaf; Root genuine production contracts/composition and combined cohort; no false fullBE41 acceptance or additional worker proof.",
           "commitPush": "2d12b7fa SocialGrantsqualified; neworiginalcontinuationunpublished",
           "source": "Backend staffing16:00 digest; existing responsible-owner records, no Main technical review"
-        }
+        },
+        "required_amendment_links": [
+          "VENU-BE-L01",
+          "VENU-BE-M01",
+          "VENU-BE-N01"
+        ],
+        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria."
       }
     },
     {
@@ -4488,7 +5035,13 @@
           "at": "2026-11-05T04:53:24+09:00",
           "basis": "Backend lead 19:40UTC task records and current receiving-chat assignments; no manager technical review.",
           "interpretation": "Routing contacts, not new assignments or exclusive file grants. Actual current writer and stop/transfer are established directly by the responsible lead and publisher."
-        }
+        },
+        "required_amendment_links": [
+          "VENU-BE-L01",
+          "VENU-BE-M01",
+          "VENU-BE-N01"
+        ],
+        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria."
       }
     },
     {
@@ -5669,8 +6222,8 @@
         "original_acceptance": "Concept-only place never offered as verified physical destination; map mismatch produces recovery UI.",
         "updated_scope": "Preserve completed Map/Places/help behavior and finish the explicitly expanded reference presentation and truthful release binding.",
         "remaining_work": [
-          "Address documented Map composition/density differences with asset/CSS counterparts, preserving the completed ART04 canopy/substrate correction and label/focus behavior.",
-          "Reconcile actual current release/physical-place binding while keeping concept-only/closed/mismatch states truthful; do not repeat already-closed original producer/caller work."
+          "Retarget the affected venue overview/place/help presentation to the new Paradise City references through VENU-ART01/VENU-FE-L01, preserving useful pan/zoom, source provenance and qualified historical work; old roof-only/Mapv3 acceptance is superseded for this scope.",
+          "Keep source/review/closure/version/physical-versus-virtual behavior truthful; real new phone-location/meeting/note duties are separately required in the VENU register and are not satisfied by old map fixtures."
         ],
         "complete_when": "Concept-only place never offered as verified physical destination; map mismatch produces recovery UI.",
         "reason": "Historical original client closure remains true. The named newer Map reference milestone has concrete remaining differences; 20531 closes only its bounded ART04 goal.",
@@ -5717,7 +6270,18 @@
         "design_family_ids": [
           "PI11"
         ],
-        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership.",
+        "required_amendment_links": [
+          "VENU-ART01",
+          "VENU-FE-L01",
+          "VENU-FE-M01",
+          "VENU-FE-N01"
+        ],
+        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria.",
+        "prior_remaining_work_before_venue_amendment": [
+          "Address documented Map composition/density differences with asset/CSS counterparts, preserving the completed ART04 canopy/substrate correction and label/focus behavior.",
+          "Reconcile actual current release/physical-place binding while keeping concept-only/closed/mismatch states truthful; do not repeat already-closed original producer/caller work."
+        ]
       }
     },
     {
@@ -5766,7 +6330,12 @@
         "design_family_ids": [
           "PI11"
         ],
-        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership.",
+        "required_amendment_links": [
+          "VENU-FE-L01",
+          "VENU-FE-M01"
+        ],
+        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria."
       }
     },
     {
@@ -5835,7 +6404,11 @@
         "design_family_ids": [
           "PI05"
         ],
-        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership.",
+        "required_amendment_links": [
+          "VENU-FE-M01"
+        ],
+        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria."
       }
     },
     {
@@ -5888,7 +6461,11 @@
         "design_family_ids": [
           "PI05"
         ],
-        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership.",
+        "required_amendment_links": [
+          "VENU-FE-M01"
+        ],
+        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria."
       }
     },
     {
@@ -5940,7 +6517,11 @@
         "design_family_ids": [
           "PI05"
         ],
-        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership.",
+        "required_amendment_links": [
+          "VENU-FE-M01"
+        ],
+        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria."
       }
     },
     {
@@ -6166,7 +6747,11 @@
         "design_family_ids": [
           "PI02"
         ],
-        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership.",
+        "required_amendment_links": [
+          "VENU-FE-N01"
+        ],
+        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria."
       }
     },
     {
@@ -6229,7 +6814,11 @@
         "design_family_ids": [
           "PI03"
         ],
-        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership.",
+        "required_amendment_links": [
+          "VENU-FE-N01"
+        ],
+        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria."
       }
     },
     {
@@ -6398,7 +6987,11 @@
         "design_family_ids": [
           "PI12"
         ],
-        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership.",
+        "required_amendment_links": [
+          "VENU-FE-L01"
+        ],
+        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria."
       },
       "latest_owner_activity": {
         "reported_at": "2026-11-05T03:10:54+09:00",
@@ -6658,7 +7251,13 @@
         "design_family_ids": [
           "PI12"
         ],
-        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership.",
+        "required_amendment_links": [
+          "VENU-FE-L01",
+          "VENU-FE-M01",
+          "VENU-FE-N01"
+        ],
+        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria."
       },
       "latest_owner_activity": {
         "reported_at": "2026-11-05T03:24:00+09:00",
@@ -6981,7 +7580,11 @@
         "design_family_ids": [
           "PI12"
         ],
-        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership.",
+        "required_amendment_links": [
+          "VENU-FE-N01"
+        ],
+        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria."
       }
     },
     {
@@ -7297,7 +7900,11 @@
           "docs/mcr/reviews/fe28-receipt-privacy.md",
           "docs/mcr/frontend/social-sharing.md"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "required_amendment_links": [
+          "VENU-IN01"
+        ],
+        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria."
       }
     },
     {
@@ -7442,7 +8049,14 @@
           "PI12"
         ],
         "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership.",
-        "current_design_plan": "docs/mcr/design/parade-ink-delivery-plan-2026-11-05.md"
+        "current_design_plan": "docs/mcr/design/parade-ink-delivery-plan-2026-11-05.md",
+        "required_amendment_links": [
+          "VENU-FE-L01",
+          "VENU-FE-M01",
+          "VENU-FE-N01",
+          "VENU-IN01"
+        ],
+        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria."
       }
     },
     {
@@ -7516,7 +8130,14 @@
         "design_family_ids": [
           "PI01"
         ],
-        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership."
+        "design_scope_note": "Parade Ink presentation obligation tracked under QA06; original functional state/history retained. This link grants no source ownership.",
+        "required_amendment_links": [
+          "VENU-FE-L01",
+          "VENU-FE-M01",
+          "VENU-FE-N01",
+          "VENU-IN01"
+        ],
+        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria."
       }
     },
     {
@@ -7640,7 +8261,11 @@
           "docs/mcr/backend/account-deletion.md",
           "docs/mcr/frontend/closure-resume-integration.md"
         ],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "required_amendment_links": [
+          "VENU-IN01"
+        ],
+        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria."
       }
     },
     {
@@ -7823,7 +8448,11 @@
           "owner_chat": "01a1a204-c583-7670-965a-4891b8b1289e",
           "scope": "Existing developer204/c583 actually accepted whole original IN02 in fe-wall-tools-b-204, branch codex/mcr-fe-IN02-meetup-pickup, after actual former-writer STOP and Root no-incumbent confirmation. Existing 7f05f596 spec/helpers/docs and own evidence only; source work active, actual backend cohort not yet serving. CommunitySL owns direct staffing and counterpart wakeups.",
           "manager_ack_required": false
-        }
+        },
+        "required_amendment_links": [
+          "VENU-IN01"
+        ],
+        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria."
       }
     },
     {
@@ -7874,7 +8503,11 @@
         "ownership_note": "Known current owners are routing evidence, not a new file lease. Leads allocate any unassigned remainder to an existing capable developer before dispatch; exact paths/worktree remain exclusive.",
         "validation_owner": "Responsible implementation developer; designated publisher for changed shared composition",
         "current_scope_evidence": [],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "required_amendment_links": [
+          "VENU-IN01"
+        ],
+        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria."
       }
     },
     {
@@ -7943,7 +8576,8 @@
         "remaining_work": [
           "Reconcile every one of112 original task IDs and all61 required IA entries against the revised scope.",
           "Publish the functional-delivery decision only when111 active tasks and their required functional/visual/device/recovery outcomes are satisfied; retainQA08 as DEFERRED_BY_USER.",
-          "Record operators, deployment limits and genuine external-input gaps; do not present deferred capacity as qualified."
+          "Record operators, deployment limits and genuine external-input gaps; do not present deferred capacity as qualified.",
+          "Reconcile mandatory VENUE_2026_11_05 eight deliverables and ten extension IA states alongside preserved112originals/61IA and selected design before final product delivery; QA08 remains deferred."
         ],
         "complete_when": "Same-candidate functional delivery of all active requirements is proven by responsible developers and canonical publications; QA08 alone is explicitly deferred, with no false full112/performance-complete claim.",
         "reason": "User-authorized amendment removesQA08 from active delivery gating, not from the original register.",
@@ -7982,7 +8616,16 @@
         "ownership_note": "Known current owners are routing evidence, not a new file lease. Leads allocate any unassigned remainder to an existing capable developer before dispatch; exact paths/worktree remain exclusive.",
         "validation_owner": "Responsible implementation developer; designated publisher for changed shared composition",
         "current_scope_evidence": [],
-        "active_delivery_requirement": true
+        "active_delivery_requirement": true,
+        "required_amendment_links": [
+          "VENU-IN01"
+        ],
+        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria.",
+        "prior_remaining_work_before_venue_amendment": [
+          "Reconcile every one of112 original task IDs and all61 required IA entries against the revised scope.",
+          "Publish the functional-delivery decision only when111 active tasks and their required functional/visual/device/recovery outcomes are satisfied; retainQA08 as DEFERRED_BY_USER.",
+          "Record operators, deployment limits and genuine external-input gaps; do not present deferred capacity as qualified."
+        ]
       }
     }
   ],

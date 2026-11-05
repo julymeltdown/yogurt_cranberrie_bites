@@ -10,6 +10,18 @@ Original **FE41 is fully closed and published** at `6b6c94d24`, explicitly confi
 
 Original **QA01 and its selected Wall B current delta are DONE** for the defined offline contract/fixture scope, as explicitly disposed in the published [owner record](qa/qa01-original-completion.md) at `aac0d96d`. This removes one reopened delta; QA01 was already among the historical39 outcomes and is not counted as a new original completion. Actual producer transactions, live services, devices and integration gates remain separate.
 
+## New required venue amendment — 2026-11-05T10:22:21+09:00
+
+The latest direct human references require a complete Paradise City venue view and **Map/Friends/Notes**, real opt-in phone-location states, fixed-landmark invitations with contextual MESSAGE, and place notes/replies with Friends/Everyone and1h/endday expiry. [Progressions](progressions.md) owns the product flows and [reference-state mapping](design/venue-redesign-2026-11-05/reference-state-map.json); the [scope-transition record](venue-feature-amendment-2026-11-05.md) defines eight additional required deliverables and ten extension IA states.
+
+**Original baseline stays52/111 (46.8%); venue extension starts0/8 complete.** All112 original IDs/61IA/history andQA08 deferral are preserved. The original fraction is not expanded-product readiness. New venue work must be completed for final delivery; existing unrelated closures are not automatically reopened.
+
+Old roof-only/Mapv3/PI11 venue work has actual STOP/preservation reports; useful commits/source/fixtures and unrelated PI01/World/runtime work remain. New child source assignments need actual disjoint custody and fresh capacity, not Main approval. Root1fc owns the new venue protocol/schema families; Root153 owns the separate frontend public API family. Existing monolithic/shared source is not globally transferred.
+
+Photo5 base, Photo9 Friends, Photo10 Notes and Photo2 meeting anatomy are provisional while the Frontend King holds the single optional artwork question. Do not merge conflicting base geometry. Burgundy selected tabs are a venue-local override; other Parade Ink surfaces remain. Developers must repeatedly pair each implemented state with its matching reference at the same viewport, record ROI/SHA/build/context and overlay/diff, and fix material differences. Kings/SLs do not perform implementation or pixel review.
+
+The venue name and ten visual references are supplied; only genuinely missing authoritative physical/georeferencing/access/closure/validity inputs remain in the existing question. Selected-friend MESSAGE can open without an invite, with no implicit send/write and no global bare-user DM. GPS, check-in, invitation acceptance and virtual movement stay distinct.
+
 ## Current priority: Parade Ink design delivery
 
 The latest human choice is **Parade Ink (Photo 2), one app-wide appearance**. It supersedes After Dark. Light surfaces, black headers and black selected tabs, strong symmetric borders and crimson primary actions are the fixed visual direction. REVENGE/PARADE/DANGER remain independent World eras.

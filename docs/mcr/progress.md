@@ -1,6 +1,18 @@
 # Execution record — functional delivery
 
-Updated **2026-11-05T09:25:46+09:00** from both hourly lead dispositions and canonical publisher receipts. The [revised plan](functional-delivery-plan.md) and [machine register](task-progress-2026-11-04.json) retain original scope and historical evidence.
+Updated **2026-11-05T10:22:21+09:00** for the direct human venue amendment. [Progressions](progressions.md) defines the added flows; this file and the [machine register](task-progress-2026-11-04.json) retain numerical accounting and the original task history.
+
+## New required venue amendment — 2026-11-05T10:22:21+09:00
+
+The latest direct human references require a complete Paradise City venue view and **Map/Friends/Notes**, real opt-in phone-location states, fixed-landmark invitations with contextual MESSAGE, and place notes/replies with Friends/Everyone and1h/endday expiry. [Progressions](progressions.md) owns the product flows and [reference-state mapping](design/venue-redesign-2026-11-05/reference-state-map.json); the [scope-transition record](venue-feature-amendment-2026-11-05.md) defines eight additional required deliverables and ten extension IA states.
+
+**Original baseline stays52/111 (46.8%); venue extension starts0/8 complete.** All112 original IDs/61IA/history andQA08 deferral are preserved. The original fraction is not expanded-product readiness. New venue work must be completed for final delivery; existing unrelated closures are not automatically reopened.
+
+Old roof-only/Mapv3/PI11 venue work has actual STOP/preservation reports; useful commits/source/fixtures and unrelated PI01/World/runtime work remain. New child source assignments need actual disjoint custody and fresh capacity, not Main approval. Root1fc owns the new venue protocol/schema families; Root153 owns the separate frontend public API family. Existing monolithic/shared source is not globally transferred.
+
+Photo5 base, Photo9 Friends, Photo10 Notes and Photo2 meeting anatomy are provisional while the Frontend King holds the single optional artwork question. Do not merge conflicting base geometry. Burgundy selected tabs are a venue-local override; other Parade Ink surfaces remain. Developers must repeatedly pair each implemented state with its matching reference at the same viewport, record ROI/SHA/build/context and overlay/diff, and fix material differences. Kings/SLs do not perform implementation or pixel review.
+
+The venue name and ten visual references are supplied; only genuinely missing authoritative physical/georeferencing/access/closure/validity inputs remain in the existing question. Selected-friend MESSAGE can open without an invite, with no implicit send/write and no global bare-user DM. GPS, check-in, invitation acceptance and virtual movement stay distinct.
 
 ## Current priority: Parade Ink design delivery
 
@@ -26,7 +38,7 @@ Developers compare fixed geometry, type, spacing, borders, icons, assets and con
 | PI08 | World HUD and era controls | IN_PROGRESS; owner 40c576 |
 | PI09 | Wall B editor and states | IN_PROGRESS; owner restored original Wall3187b5 |
 | PI10 | Public, authentication and legal | NOT_STARTED; custody/preparation, source start not confirmed here; owner 50 |
-| PI11 | Map, places, rooms and check-in | IN_PROGRESS; owner 40fde |
+| PI11 | Map, places, rooms and check-in | IN_PROGRESS; old venue scope stopped, new-reference child custody pending; owner40fde |
 | PI12 | Supporting safety, operations and archive | NOT_STARTED; custody/preparation, source start not confirmed here; owner 230 Reports +21e preWorld; other incumbents retain their scopes |
 
 These12 families partition all61 required IA entries with shared dependencies; they are not12 additional original tasks. No Parade Ink acceptance is inferred from earlier screenshots or this planning commit.
@@ -76,7 +88,7 @@ This is an unweighted task-count fraction, not an effort estimate or a claim tha
 
 | ID | Task | Remaining current scope |
 | --- | --- | --- |
-| FE19 | Map, place details, and help | Address documented Map composition/density differences with asset/CSS counterparts, preserving the completed ART04 canopy/substrate correction and label/focus behavior; Reconcile actual current release/physical-place binding while keeping concept-only/closed/mismatch states truthful; do not repeat already-closed original producer/caller work. |
+| FE19 | Map, place details, and help | Retarget the affected venue overview/place/help presentation to the new Paradise City references through VENU-ART01/VENU-FE-L01, preserving useful pan/zoom, source provenance and qualified historical work; old roof-only/Mapv3 acceptance is superseded for this scope.; Keep source/review/closure/version/physical-versus-virtual behavior truthful; real new phone-location/meeting/note duties are separately required in the VENU register and are not satisfied by old map fixtures. |
 | FE21 | Party discovery and application | Finish the renewed Meet density CSS scope with owner 6950 and preserve the already published first-view 10-source/9-native/47-path delivery at `40a40c3c`; Adopt authorized portraits/place/capability inputs through the existing owners; preserve unavailable production clock/authority states and published Community behavior. |
 | FE24 | Giveaway discovery and own activity | Protected GiftDetail binding, caller integration and density work are published and credited; finish actual authorized production media/motif inputs without fabricating a null binding; Preserve stock/action/recipient privacy and close the remaining original/current criteria with actual producers; full FE24/IN02 and visual acceptance remain open. |
 | FE32 | Mural editing surface | Selected B tools and default Wall lifecycle are published with developer-qualified controlled source/native evidence; preserve these increments and address actual producer integration or remaining task-local visual/input gaps; Complete actual authorized service behavior for cooldown, quota, conflict and unknown-outcome recovery with the backend owner; real two-client IN04 and full visual/device acceptance remain separately open. |
