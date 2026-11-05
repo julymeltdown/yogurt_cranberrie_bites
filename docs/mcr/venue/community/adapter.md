@@ -1,3 +1,17 @@
+# Current CSS and normalized adapter checkpoint
+
+Current CSS source is `7f6cc5d5740aa58334dd76f5ddd29a35e3fa849d`. Native18's actual component fixture and unmasked comparison commands both exited 0. Its **outer resource result is FAIL**, because the controller could not obtain identity metadata for its own finished, unreaped guardian. The immutable release is FULL at 2026-11-05T06:14:02.367796Z (all owned resources zero), SHA256 `937cb7ff19fd21ba56d6fa38c2cbfb62c45e5b2a3b4c8eca421d53a92e8a626a`. FULL denotes resource release; it does not turn the failed round into a pass. Product-command results and resource-controller results are recorded separately in `docs/mcr/evidence/venue-community/visual-qualified-18.json`.
+
+The developer individually inspected all 28 final state/reference/overlay/difference PNGs after direct FULL relay. The 360/390/430px conversation heights are 270.84375 / 294.390625 / 324.84375px, against uniformly scaled reference heights 269.71576 / 293.51421 / 325.24548px. Both authorized Map controls, minimum 44px pointer boxes, composer focus, original-action recovery without resend, uncertain-result locking, privacy cleanup and the 390x520 fixture passed. This is real component code with controlled normalized adapter data. It does not certify the default application shell, live HTTP/server, multiuser, physical mobile keyboard/device/GPS, arrival or whole VENU acceptance.
+
+The changes use the existing read-only Roboto variable font and selected approved character derivative. They correct title/participant/message geometry, action typography and responsive visible frames while retaining 44px hit areas. No product TypeScript, Auth, Map owner, shared contracts, root composition, manifest, lockfile, dependency or font asset changes are included. Source02's unchanged TypeScript retains its 69-case/focused-type/lint qualification. No old green suite was replayed. Small text/glyph metrics and subpixel offsets remain visible in the unmasked comparisons; exact pixel parity remains OPEN. Legacy reference artwork is comparison input only.
+
+The private prospective terminal-child fix is `f350ce8ab3b6c74e1499ffcb005aa116e4175b8f`. It calls only the caller-owned Popen.poll before each fresh metadata attempt, preserving failed observations and strict unknown/live identity checks. Four new source-only control cases and fresh independent LIVE observations are NOT_RUN. Allocator conditionally authorized distinct SOURCE19-0628 but capacity-denied execution after an observed 836,100,096-byte reserve shortfall. There is no ACCEPT or held resource; resumption requires a genuine capacity/accounting change. No Native18 raw result is rewritten, and this private control ancestry is excluded from publication.
+
+Earlier sections below are historical checkpoints and retain their original results and limits.
+
+---
+
 # Native11 CSS delivery
 
 The final CSS correction is qualified by `docs/mcr/evidence/venue-community/visual-qualified-11.json`. It changes layout, proportional control typography and the reference-sampled burgundy token only. The already published13 frontend postimages retain their source/contract semantics. No public HTTP contract, root composition, Auth, Map owner, manifest or lockfile changes are included. Exact visual and real integration gates retain the limitations in visual-validation.md.
