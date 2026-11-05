@@ -1,5 +1,40 @@
 # Parallel execution and delivery plan
 
+<!-- BEGIN MAIN_HOURLY_20261105_1330 -->
+## CURRENT — 2026-11-05 13:30 KST, including late PI12 publication
+
+**Original functional tasks: 58/111 DONE (52.3%), 53 remaining. Current original criteria outcomes: 61/112. Design families: 9/12 accepted, 3 in progress. Mandatory venue: 0/8 complete, 10 extension IA entries, 48 actual comparisons NOT_RUN. Product readiness: NOT_READY; QA08 remains deferred.**
+
+| Current original state | Count |
+| --- | ---: |
+| DONE | 58 |
+| IN_PROGRESS | 44 |
+| WAITING_INPUT | 3 |
+| REOPENED | 3 |
+| DEFERRED_BY_USER | 1 |
+| OPEN | 3 |
+
+FE32's selected Wall B client delta is DONE, priority0, from responsible6954's literal all-current-client-criteria SATISFIED/MOCK_READY disposition at canonicalfe3a9712b11b0cbaa7ac1844f13dfcc5af80c7fe/source8407fd7a3dee35441b238d0a71d43de042910dd3. This covers grid/palette/pan/zoom/preview/confirm/touch DOM/360px bounds/cooldown, opaque erase, four-connected fill up to256 cells, eligible latest-own undo with expiry/revision, shared512 budget and accessible confirmation. Historical FE32 original criteria were already credited: zero new original outcomes. Frozen root39, original61 and22 new closures remain unchanged. Reopened IDs are FE19/FE24/FE33. FE33/IN04/QA06/backend/device/keyboard/safe-area duties remain separate; FE21/38/39/37/C04/QA01 are not recounted.
+
+Design acceptance covers PI01–06/09/10/12. PI09 is owner-satisfied at the same Wall canonical, retaining square128 raster, all16 colors,44px scrolling palette and conditional real Confirm adaptations. The original13:30 PI12 publication-pending observation is retained in JSON history. Late canonical3c9af1557f419293a56b1b1cb73381b69bbab9cf/sourceece84f117cdade0d56f97dc6aa4f0ff5a494942f closes that sole dependency, joining delivered operators/Reports, preWorld78886ffa and generic/report/error822b4d01; Main explicitly authorizes acceptance once in this same transaction. Original FE34's incompatible goal stays BLOCKED. PI07 owner534 editor/PartPreview, PI08 owner2162 narrow HUD finish and PI11 owner26e rooms/nearby/help remain open. Client/design acceptance does not close broader live/device/QA06/IA/venue/release obligations. Archived contexts grant no goal completion or new custody.
+
+Venue milestones Lregistration33efa6f0/Mapea6027af/Notesadapter4c397da2/controlledhost1774a36c are scoped source deliveries, not real default WorldShell/Phaser/native/reference/live/whole VENU acceptance. Root153's exact default-mount transfer to1eed is actually accepted; initial seven tests/types/lint passed while later StrictMode/eighth-case and browser proof remain unqualified in this digest. Browser attempts failed before opening. ART231's narrow strict-test repair is canonical8dee1335;26e SOURCE06 remains separate, without bitmap/anchor/product-qualifier changes or relaxed assertions. Missing real Friends authority, location policy, venue clock and reviewed physical inputs stay fail-closed requirements; no whole-backend-wave barrier is added.
+
+SafetyDialog Escape is canonical034a8bb2 with nine focused controlled cases; original FE36/QA07 criterion mapping remains unreconciled pending literal responsible disposition. Community08c83be3/7e887df5 retained a6–9px residual at the13:30 observation; its subsequent qualified CSS follow-up resolves that height excess while minor typography/header/message-offset/focus-glyph differences remain OPEN. No whole VENU/default-shell/live HTTP/server/device/multiuser closure follows. Post07/08 are failed control history, not product readiness.
+
+BE03 frontend OAuth writer Root153 actually accepted the exact callback scope: /auth/callback, one success/denied/error outcome, optional bounded returnTo /world,/feed,/me,/meet/people, URL scrubbing before requests and success only as a refresh trigger through canonical admission. Source validation is pending/public capabilities OFF. Backend12cc retains only Gateway/harness and its transferred paragraph. No new provider, bearer URL, production Refresh or204/50a8 Auth grant. BE10/11 canonical51af7f7a qualifies freshness/stored membership only; whole BE11/full stack/restart/device/load/ignored cases stay open. Gift's bounded component delivery does not activate routes or close original14/native PG0076+0096/roles/recovery/HTTP/multiuser/liveness gates.
+
+W04 virtual room invitation remains OPEN/NOT_IMPLEMENTED, with one existing human policy question PENDING/unfrozen; five-minute expiry is a proposal.6b5d actually accepted W04-PRODUCER-01, initially only its new planning document after21d booking. Root1fc retains shared RPC/proto/Gateway/contracts/migrations;20f retains World runtime/moderation. No producer/API grant, production policy freeze or FE18 chooser/membership reopen is inferred.
+
+Existing21d allocation and412e publication routes continue; no demonstrated unattended ready stream, new chat or model override. Earlier resource failures remain historical.21d's12:36 hourly introduced published new-ACCEPT ordering before next start; accepted clocks/caps/custody stay unchanged and this record grants no execution. No global quota restoration or FastOFF claim. Reused controlled-host12:38KST/Wall10:20KST screenshots are dated evidence, not current services or new qualification.
+
+Main's explicit once-only four-document reconciliation uses the single38513:30 digest, literal owner dispositions and late PI12 amendment. Exact prior current checkpoint/design/staffing and original Markdown remain historical. All112 task definitions,61IA, acceptance/amendment links and111 unrelated rows are preserved. Publisher checks are document/JSON/count/ID/history/whitespace/Git/remote only; no application, SQL, tests, runtime, pixel or King/SL technical review/ACK.
+<!-- END MAIN_HOURLY_20261105_1330 -->
+
+## HISTORICAL — previous current checkpoint and records retained verbatim
+
+# Parallel execution and delivery plan
+
 <!-- BEGIN MAIN_HOURLY_20261105_1228 -->
 ## CURRENT — 2026-11-05 12:28 KST responsible-owner reconciliation
 
