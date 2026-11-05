@@ -1,0 +1,275 @@
+{
+  "schemaVersion": 1,
+  "classification": "ORIGINAL_FE21_FE39_CLIENT_CRITERIA_SATISFIED_PUBLISHED_SOURCE_MOCK_READY",
+  "auditPin": "2dafee707b8923e04e56c980857c49dbcef7f438",
+  "atUTC": "2026-11-05T02:59:06.397445+00:00",
+  "startingHead": "3fde1c7ed66291f52f26899c8e5c49bbae4d0a09",
+  "persistentGoal": {
+    "status": "blocked",
+    "scope": "Incompatible unfinished default Admin composition",
+    "mutation": "NONE",
+    "tokenBudget": "NONE"
+  },
+  "publicationComparisons": [
+    {
+      "packet": "FE21_FE24",
+      "owner": "531c4672123e6f25b4f82ceb704b09d078792fb9",
+      "base": "096858b96c3bc11ca92222a3b87cd026ee412ede",
+      "published": "4bf9022f943e601c0f876d7ca7e5fdc54036b8e6",
+      "pathsCompared": 52,
+      "allModesBlobsExactAtPublication": true,
+      "sortedModeBlobPathRowsSha256": "3bd95284aa9424c26a2de0304607adc795e290f5b30dd437b1665d8889ff9a56",
+      "publicationAncestorOfAuditPin": true
+    },
+    {
+      "packet": "FE39_entry",
+      "owner": "d762018bfbdab43af08f8fea29dc4c3b5fa932c9",
+      "base": "ff96d53eb817c93dd1bafb5c4f125630f995413b",
+      "published": "a9c04eb256e7b50e6efc99bfd076eca9a8293100",
+      "pathsCompared": 55,
+      "allModesBlobsExactAtPublication": true,
+      "sortedModeBlobPathRowsSha256": "8709258b2dd3b020b164abfa0dd39e2d19b38b82c0f9ddfe45fd28cb28e7230e",
+      "publicationAncestorOfAuditPin": true
+    },
+    {
+      "packet": "FE39_terminal",
+      "owner": "e0be061fc66c20b7a4e5e3927eda098da3babdbe",
+      "base": "e0be061fc66c20b7a4e5e3927eda098da3babdbe^",
+      "published": "3255aae0507d63d3261e40a3826b2ec592cc4612",
+      "pathsCompared": 3,
+      "allModesBlobsExactAtPublication": true,
+      "sortedModeBlobPathRowsSha256": "be3b7bd455acf998fdc7490d76b93e8e0a738475c0a643589e700eeaed38cfda",
+      "publicationAncestorOfAuditPin": true
+    }
+  ],
+  "retainedEvidenceReadback": [
+    {
+      "report": "docs/mcr/evidence/fe21-fe24-client/native/report.json",
+      "reportSha256": "88de4808562a08a30b700877cda25c516aa345037a338a73253cae758d3e5aa3",
+      "hashesCompared": 46,
+      "matching": 37,
+      "changedPaths": [
+        "contracts/generated/mcr-domain.openapi.json",
+        "frontend/src/app/CommunityFeatures.tsx",
+        "frontend/src/app/router.tsx",
+        "frontend/src/features/gift-discovery/ui/Gifts.tsx",
+        "frontend/src/features/gift-discovery/ui/reference-gifts.css",
+        "frontend/src/features/gift-discovery/ui/reference-presentation.tsx",
+        "frontend/src/features/party-discovery/__tests__/fixtures/harness.ts",
+        "frontend/src/features/party-discovery/ui/PartyDiscovery.tsx",
+        "frontend/src/features/party-discovery/ui/party-discovery.css"
+      ],
+      "classification": "HISTORICAL_SOURCE_BOUND_NOT_FRESH_COMBINED_MASTER_RUNTIME"
+    },
+    {
+      "report": "frontend/src/features/admin/closure/__tests__/resume/evidence/browser/report.json",
+      "reportSha256": "77b7e3ff2c7cbd59525386563a60dc896a086f686ccb078c584fb1f964c2215c",
+      "hashesCompared": 25,
+      "matching": 16,
+      "changedPaths": [
+        "frontend/src/features/admin/closure/EventClosure.tsx",
+        "frontend/src/features/admin/mural/WallControl.tsx",
+        "frontend/src/features/admin/mural/owner.ts",
+        "frontend/src/features/admin/mural/transport.ts",
+        "frontend/src/shared/api/http.ts",
+        "contracts/domain/v1/admin.schema.json",
+        "contracts/domain/v1/operations.json",
+        "contracts/domain/v1/policy.json",
+        "frontend/src/shared/api/domain-operations.generated.ts"
+      ],
+      "classification": "HISTORICAL_SOURCE_BOUND_NOT_FRESH_COMBINED_MASTER_RUNTIME"
+    },
+    {
+      "report": "docs/mcr/evidence/wall-control-closure-fe39-current/terminal-fix-qualification.json",
+      "reportSha256": "2608655d53c28e5f4a7412f142e3d5637fe3ee05a9f65d8240e4b6aa41846784",
+      "hashesCompared": 3,
+      "matching": 3,
+      "changedPaths": [],
+      "classification": "HISTORICAL_SOURCE_BOUND_NOT_FRESH_COMBINED_MASTER_RUNTIME"
+    }
+  ],
+  "historicalResources": [
+    {
+      "prefix": "wall-control-closure-fe39-current",
+      "retainedReleaseRecords": [
+        {
+          "path": "docs/mcr/evidence/wall-control-closure-fe39-current/native-01-qualified/release.json",
+          "sha256": "55dfd98eb425e80d88905b9442d199f84229a0d9d66ded6e460c425a2c357ec1"
+        },
+        {
+          "path": "docs/mcr/evidence/wall-control-closure-fe39-current/source-01-baseline-type-failure/release.json",
+          "sha256": "ab8b56241ae8d570c139e6eec472ee32c5c0a5829dbdf4fd8d057877eaaf4cbe"
+        },
+        {
+          "path": "docs/mcr/evidence/wall-control-closure-fe39-current/source-02-qualified/release.json",
+          "sha256": "16c35b94144e73a5579c329ff533d95d05b603e7be2ac709df863e180b4f232c"
+        },
+        {
+          "path": "docs/mcr/evidence/wall-control-closure-fe39-current/source-03-terminal-qualified/release.json",
+          "sha256": "b9a976662040cae595e064941f065b114c2f7d32308d64386441abeaf0d42a20"
+        }
+      ],
+      "historicalMaximaAcrossTheseRecords": {
+        "pids": 11,
+        "rss": 2020474880,
+        "temporary": 30752768,
+        "durable": 1392640,
+        "other": 0,
+        "new_total": 30918967,
+        "whole": 2215443683
+      },
+      "classification": "PRESERVED_NOT_RESET_INCLUDES_RETAINED_FAILURES"
+    },
+    {
+      "prefix": "default-admin-composition",
+      "retainedReleaseRecords": [
+        {
+          "path": "docs/mcr/evidence/default-admin-composition/actual-source-01-old-registry/release.json",
+          "sha256": "6b52465f0c8ec68786d35826285b60c3f32556109c0de16d562781b6d25ee418"
+        },
+        {
+          "path": "docs/mcr/evidence/default-admin-composition/actual-source-02-cleanup-lint/release.json",
+          "sha256": "476453ffdfce5a45c89550c987e8976000b134d0532220d8d1545ed35276d8cf"
+        },
+        {
+          "path": "docs/mcr/evidence/default-admin-composition/actual-source-03-qualified-lint/release.json",
+          "sha256": "46b02b9956d0be99a3448050495048d072625d1c7b96e7ead715fabf0d2e8beb"
+        },
+        {
+          "path": "docs/mcr/evidence/default-admin-composition/native-01-entry-failure/release.json",
+          "sha256": "88205e3583bbe46244cc76eb587c2b3c2064fc3c88a2afcfe1cb8d2b62e09908"
+        },
+        {
+          "path": "docs/mcr/evidence/default-admin-composition/native-02-interception-failure/release.json",
+          "sha256": "3f22e3d78a4c4b6c2f9a3b8fcc153a50663093660e245d89895877251b2a86af"
+        },
+        {
+          "path": "docs/mcr/evidence/default-admin-composition/native-03-qualified/release.json",
+          "sha256": "b851231670d4b05475a535944c7433530b897ec834c9cdf5e84bbe5dbd543457"
+        },
+        {
+          "path": "docs/mcr/evidence/default-admin-composition/source-01-query-type-failure/release.json",
+          "sha256": "47d4e1f0f5fa63dcfe49c7c4a5eb87ce0533ed8357cd939f4080100c9a38d819"
+        },
+        {
+          "path": "docs/mcr/evidence/default-admin-composition/source-02-current-types-lint-syntax/release.json",
+          "sha256": "6e32ecdb7dfae6de75ce96ca9f9df73abd61f74f0737856815e1a05ea01c199a"
+        }
+      ],
+      "historicalMaximaAcrossTheseRecords": {
+        "pids": 12,
+        "rss": 2259746816,
+        "temporary": 30736384,
+        "durable": 516096,
+        "other": 0,
+        "new_total": 92096007,
+        "whole": 2254325026
+      },
+      "classification": "PRESERVED_NOT_RESET_INCLUDES_RETAINED_FAILURES"
+    },
+    {
+      "prefix": "community-clock-runtime",
+      "retainedReleaseRecords": [
+        {
+          "path": "docs/mcr/evidence/community-clock-runtime/source-01/release.json",
+          "sha256": "f082e6dbcfba77b2b766ee1536b45e261fed1a3616f3ddfba9850d7468cef6c5"
+        },
+        {
+          "path": "docs/mcr/evidence/community-clock-runtime/source-02/release.json",
+          "sha256": "1c0cee050f4e18007a44ff121245d5c38c87847a2e8eb948e31a9062551c1bcf"
+        },
+        {
+          "path": "docs/mcr/evidence/community-clock-runtime/source-03-preflight/release.json",
+          "sha256": "f9d42e5dcefff298142530389f36acfe006aedfc7d08680623c5b5735160a79a"
+        },
+        {
+          "path": "docs/mcr/evidence/community-clock-runtime/source-04/release.json",
+          "sha256": "87e6e827bdaf0abd793d9c4e4dc601f9fd8e22f1c54736efc8148b8031b9feae"
+        },
+        {
+          "path": "docs/mcr/evidence/community-clock-runtime/source-05/release.json",
+          "sha256": "11ceac21aad8418acad3ae7d50d891282fc1fd54d2c5846ac1360b19580e3667"
+        }
+      ],
+      "historicalMaximaAcrossTheseRecords": {
+        "pids": 5,
+        "rss": 1940946944,
+        "temporary": 0,
+        "durable": 638976,
+        "other": 2002944,
+        "new_total": 125960192,
+        "whole": 2487570432
+      },
+      "classification": "PRESERVED_NOT_RESET_INCLUDES_RETAINED_FAILURES"
+    }
+  ],
+  "newWork": "Only NEW disposition documentation and this receipt. No application source edit or test/build/browser replay.",
+  "notRun": [
+    "fresh combined-master runtime",
+    "actual measured clock input",
+    "production meeting/pickup authority",
+    "serving operator side effects",
+    "IN02/IN04/QA09",
+    "physical devices"
+  ],
+  "QA08": "DEFERRED_BY_USER",
+  "ordinaryResource": {
+    "booking": "FE21-FE39-FINISHPREP16-0252",
+    "newTotalUpperBytes": 16777216,
+    "validUntilUTC": "2026-11-05T04:00:00Z",
+    "preflight": {
+      "at": "2026-11-05T02:58:23.109547+00:00",
+      "freeBytes": 23669047296,
+      "observedAccepted": [
+        {
+          "owner": "01a1a205-3f89-78c3-aa67-719c4bb40b8d",
+          "offer": "BE38-NOTICE-PREP16-0255",
+          "kind": "ordinary",
+          "remainingNewUpperBytes": 16777216,
+          "sha256": "1d1ed82883c87bab12fbfa0b28119e929a653e8645e16e16b35533556df895c8"
+        },
+        {
+          "owner": "01a1a1fe-1eed-7d12-a247-879cd521e0ec",
+          "offer": "VENU-FE-ROOT-BINDING-PREP16-0249",
+          "kind": "ordinary",
+          "remainingNewUpperBytes": 16777216,
+          "sha256": "8b39b54222b50c0939d8035d5a5624e95d2c0b950c7adc5422f397b3c90cbed8"
+        }
+      ],
+      "executionRemaining": 0,
+      "combinedOrdinaryUpper": 2684354560,
+      "extraConservativeOwnReserve": 16777216,
+      "afterAllObservedClaimsAndCeilings": 20967915520,
+      "method": "Fresh actual owner-receipt reads plus entire combined ordinary ceiling. No absent-PID release; no runtime-guard qualification.",
+      "gitDirKiB": 2172
+    },
+    "scope": "ordinary documentation/control/scoped Git only",
+    "workloadResourcesHeld": 0,
+    "oldUnused64MiB": "RELEASED_NOT_REUSED",
+    "carry": "Existing retained carry is preserved and already reflected in actual free space. Historical maxima above are not reset.",
+    "completedControlChecks": {
+      "canonicalRelativeLinks": "PASS",
+      "receiptJson": "PASS",
+      "assignedNewPathsOnly": "PASS",
+      "authoredBytesUnder32KiB": "PASS",
+      "gitDiffCachedCheck": "PASS_AFTER_EOF_FIX",
+      "dependencyLink": "ABSENT",
+      "applicationTestsBuildBrowser": "NOT_RUN_NOT_NEEDED_FOR_DOCUMENTATION"
+    },
+    "preCommitUTC": "2026-11-05T03:00:03.324891+00:00",
+    "preCommitFreeBytes": 23644119040,
+    "historicalPlusNewConservativeEnvelope": {
+      "priorRetainedNewMaximumBytes": 125960192,
+      "newOrdinaryTotalUpperBytes": 16777216,
+      "sumForNonResetAccountingBytes": 142737408,
+      "priorRetainedWholeMaximumBytes": 2487570432,
+      "priorWholePlusNewUpperBytes": 2504347648,
+      "note": "Conservative ledger continuity only. No runtime WHOLE/RSS/workflow lease or fresh qualification is invented."
+    }
+  },
+  "documentationChecks": {
+    "initialLocalLinkCheck": "FAILED: retained checkout predates parade-ink-meet.md; canonical audit tree contains the linked document. No materialization performed.",
+    "initialDiffCheck": "FAILED: extra blank line at new document EOF; removed.",
+    "correction": "Resolve relative links against the explicitly pinned canonical tree (plus the new receipt), preserving historical checkout; normalize EOF."
+  }
+}
