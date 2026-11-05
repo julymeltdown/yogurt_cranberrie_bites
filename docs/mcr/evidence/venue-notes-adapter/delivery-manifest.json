@@ -1,0 +1,509 @@
+{
+  "status": "READY_FOR_DIRECT_412E_DELIVERY",
+  "task": "N-ADAPTER-01",
+  "ownerThreadId": "01a1a533-50a8-7fb2-b3ed-96b941b96bbf",
+  "base": "b977c447fc89adda653b7a823f67d1771fd8f219",
+  "packetSource": "a92f5ae52e1872bc5d951d6964a72b4bd4e20b2e",
+  "qualifiedProductSource": "7742cc3617f11905a2af62e42da35e743967aedb",
+  "paths": [
+    {
+      "path": "docs/mcr/evidence/venue-notes-adapter/preparation.json",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "d5003e1448814fd719e107656d37f36a788fc741",
+      "sha256": "f25a6c7cd2aafe18508922796807cf79b5610eca3f16a7138856108cdbfdfb14",
+      "bytes": 859
+    },
+    {
+      "path": "docs/mcr/evidence/venue-notes-adapter/readset.json",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "424818d523f362d144ba1c8c468489ae977cf48f",
+      "sha256": "3d5afce37be27e8947017a7ccfe25d172e0ffce06408db609ea44f7e508a7aef",
+      "bytes": 85030
+    },
+    {
+      "path": "docs/mcr/evidence/venue-notes-adapter/scope-audit.json",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "aecec5e3e07d06a2b5cc03b797536e7a4446bf18",
+      "sha256": "e71956ec8c6ea64c2e664540a5c71f9fc41e88a2d52ffb484dd139753508e058",
+      "bytes": 8583
+    },
+    {
+      "path": "docs/mcr/evidence/venue-notes-adapter/source01-proposal.json",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "151230dfeef6f0ba6fc1548a13e1cea4e9605369",
+      "sha256": "13a08ac8e78d2c854a53c099e362180f4e04f987bd9e2f7cf72413e09e76158c",
+      "bytes": 6012
+    },
+    {
+      "path": "docs/mcr/evidence/venue-notes-adapter/source01/command-00.log",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "b40e352ece5ca749c09afc692bd4e5f6f64c7db1",
+      "sha256": "6658e02713814aec8824c7c89dcc90e9331c2a9a5194c422048763d9ae604217",
+      "bytes": 1560
+    },
+    {
+      "path": "docs/mcr/evidence/venue-notes-adapter/source01/command-01.log",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "15f51215a0c1dcfb128f5aa25cb04cb88e94bcb0",
+      "sha256": "50600469674c8779858d7e808f3fd11d8d833c26d0e554c33b96a33c57595dd2",
+      "bytes": 2872
+    },
+    {
+      "path": "docs/mcr/evidence/venue-notes-adapter/source01/command-02.log",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "91b5ada8156193587a5c9c7c0b4ec5ecccd1be61",
+      "sha256": "8db88179247def6a05757fb0d869b03fffaf8a8a32f66d342c2281f00c33fc7c",
+      "bytes": 476
+    },
+    {
+      "path": "docs/mcr/evidence/venue-notes-adapter/source01/guard-full.json",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "fc0b2dd585403b0d4b58465c0ec8942864799537",
+      "sha256": "4259ed3ca4999e8eb765415b55b361bd73ecd1c428d8b386293d58eeed558e27",
+      "bytes": 375
+    },
+    {
+      "path": "docs/mcr/evidence/venue-notes-adapter/source01/guard-initial.json",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "540b863f1415749a3cf9486e1861f846e17ab756",
+      "sha256": "349efd471a466bf416f28cc69ea26ecfc5939012e2205f76710af9ce278e4535",
+      "bytes": 674
+    },
+    {
+      "path": "docs/mcr/evidence/venue-notes-adapter/source01/offer.json",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "2ed3a40d6421914cba27269f2871c946f0e7651d",
+      "sha256": "a6569b2fcde63ed9775e96500c9fde0ef3e09a3fc589368de8af19e0ed091529",
+      "bytes": 6181
+    },
+    {
+      "path": "docs/mcr/evidence/venue-notes-adapter/source01/outer-full.json",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "6a780f1a6e5d7a34187d164daa656ac0f50b7346",
+      "sha256": "6197ad7d2fb2966a39abc2c66bf80e4254caef66a3c207f0e66f4fbd1a10522f",
+      "bytes": 1654
+    },
+    {
+      "path": "docs/mcr/evidence/venue-notes-adapter/source01/outer-initial.json",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "af1f30dcffb04798b40f698a1ab02af2d401068b",
+      "sha256": "2cf74e9676532fcfebd5a3a34a83a02df07705fa1644a6ca2b821cb9be14eec0",
+      "bytes": 675
+    },
+    {
+      "path": "docs/mcr/evidence/venue-notes-adapter/source02-proposal.json",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "8b55bd1977e92604e1fd39573b9b778ed483f2d0",
+      "sha256": "d08d202503812398f1937b4ce3c6731456c477d0a18f23b6adb08fd2c1200de3",
+      "bytes": 6224
+    },
+    {
+      "path": "docs/mcr/evidence/venue-notes-adapter/source02/command-00.log",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "5adc54e77c5e3e8977be4aaa3bdd782e2e6eda5a",
+      "sha256": "4c4b8a4ac2cec1b80e867a4cb4b9cbfb8bfd10b1cd83a95d2047f9778122b732",
+      "bytes": 259
+    },
+    {
+      "path": "docs/mcr/evidence/venue-notes-adapter/source02/command-01.log",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/venue-notes-adapter/source02/guard-full.json",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "17c5ed6dbf047752cde62b96428780a822f9742d",
+      "sha256": "dd5dc4542ea5529021eea878fde0c99a0652f197affed5b06cef2f1ce28f7f46",
+      "bytes": 384
+    },
+    {
+      "path": "docs/mcr/evidence/venue-notes-adapter/source02/guard-initial.json",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "caff2edab62e92a25d323f1e07368fc3da5651e1",
+      "sha256": "73c353f9eaeb322ba02dc07801262621799c423dff54e65afd92fc25a2f24a89",
+      "bytes": 751
+    },
+    {
+      "path": "docs/mcr/evidence/venue-notes-adapter/source02/offer.json",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "3e9207d67d2611f2fefd4533ac6e3b7f6acd4e99",
+      "sha256": "be942b158031eeb8f403dc33eb43839e8ac6b6d46dc199161a7dcaf75bd9d4c1",
+      "bytes": 6393
+    },
+    {
+      "path": "docs/mcr/evidence/venue-notes-adapter/source02/outer-full.json",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "3eef9ccfef4780640d121cc1bf1b6661caa8eea4",
+      "sha256": "129905cbf52ba9ef07285219d184dab70450fbd8d354b3a4a0470d739d21744c",
+      "bytes": 1532
+    },
+    {
+      "path": "docs/mcr/evidence/venue-notes-adapter/source02/outer-initial.json",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "a3ddfcfa61d65a8c257f66c71bc433d27d23126d",
+      "sha256": "939278483b0a9afc316602267cbf9c10e034045fd52ccd274b080a0e673ffcf3",
+      "bytes": 753
+    },
+    {
+      "path": "docs/mcr/evidence/venue-notes-adapter/source05-proposal.json",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "b6056e2c07dd07aaa8699db1cb49d29a81e2269a",
+      "sha256": "13e1a932b5c1afaee3dc3464c22b2ed01b441391f74b36e2361839e6e4a6d043",
+      "bytes": 6206
+    },
+    {
+      "path": "docs/mcr/evidence/venue-notes-adapter/source05/guard-full.json",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "501ade6d4163b205dfe4947204c4f4ccc386fc32",
+      "sha256": "b8a91b6d96067dffccd2e8bd6dc6fbb48c24c55fb996970e23c0dc242372de5a",
+      "bytes": 418
+    },
+    {
+      "path": "docs/mcr/evidence/venue-notes-adapter/source05/guard-initial.json",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "2b0a0f787d994c1cb17d58ace48a5a98731a1c22",
+      "sha256": "ef7d80fb0557fd1f4ceb1ddc560b24701ff67a93be9595aa08f33095f7540713",
+      "bytes": 620
+    },
+    {
+      "path": "docs/mcr/evidence/venue-notes-adapter/source05/offer.json",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "7e09f1768b9c010c0c8a0498f891939fd56a2d08",
+      "sha256": "0fb9f8e7f80f23fee2970dc66bca752c63471bb58efb26ef9e7630146f711e99",
+      "bytes": 6375
+    },
+    {
+      "path": "docs/mcr/evidence/venue-notes-adapter/source05/original-unknown.json",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "9ac92bb39c510f837f80b80056c9ce3ba7e1eb3d",
+      "sha256": "495d9f6c8fe2b05df64ea52dfbd414634b27df9d74f57e9fbe8ccbaccf25dc92",
+      "bytes": 901
+    },
+    {
+      "path": "docs/mcr/evidence/venue-notes-adapter/source05/outer-full.json",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "f3ab2351fa1364d698c4761cd0ee43683284b1a9",
+      "sha256": "2b8d1c1f0a8f97a73afa8376e21aeab0b784e39efaa520a61e8293a5a6dd4c75",
+      "bytes": 651
+    },
+    {
+      "path": "docs/mcr/evidence/venue-notes-adapter/source05/outer-initial.json",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "73276821fc4325be053317d9f52f73fb6d426cd6",
+      "sha256": "18dc42db329d23c2b12835f6d2a34b76d7881239af9577ddaf8fc595f5ea8214",
+      "bytes": 620
+    },
+    {
+      "path": "docs/mcr/evidence/venue-notes-adapter/source07-proposal.json",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "c1b6b5e9dc494f5d445a971db30cebdf301705a2",
+      "sha256": "6f28d5155100838418396273cbbe6489b3b3074a9d262599c4a76f330b8d0599",
+      "bytes": 6901
+    },
+    {
+      "path": "docs/mcr/evidence/venue-notes-adapter/source07/command-00.log",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "0e7a03172b8ab002bea05c7477ab35d1ff47a776",
+      "sha256": "9385ecfdcfa90d5afa8df61edfd37ab42ea96e1cb492a06e8d34ad5de890214b",
+      "bytes": 257
+    },
+    {
+      "path": "docs/mcr/evidence/venue-notes-adapter/source07/command-01.log",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/venue-notes-adapter/source07/command-02.log",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "docs/mcr/evidence/venue-notes-adapter/source07/guard-full.json",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "892f74001f0d916d2ddb982df376f5410c087641",
+      "sha256": "86afede9bd18ad0205404e36e107f6ec8ef4b76be2014bd269a02dd5cb3140d6",
+      "bytes": 374
+    },
+    {
+      "path": "docs/mcr/evidence/venue-notes-adapter/source07/guard-initial.json",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "271fbd87e01db72b33cad9e79011d6ae4002623a",
+      "sha256": "74abad4772d46a8589c0b6d0c3ee11a4ce1380aec81d0dd59cbe1b5ac6069f40",
+      "bytes": 605
+    },
+    {
+      "path": "docs/mcr/evidence/venue-notes-adapter/source07/offer.json",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "3ab99ebd640a9f49daa1f3b63ad24b801979eb03",
+      "sha256": "33a156af0e8e608c8595ed5e0d910738f36a2045ce189e077f02e5b9c180cdd7",
+      "bytes": 7070
+    },
+    {
+      "path": "docs/mcr/evidence/venue-notes-adapter/source07/outer-full.json",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "7a51806bcc10e2e7dd71163bb21cf284356219a4",
+      "sha256": "9ddd3322aa6aada0bac78a980b82112a2efccfd30419ad8f54c6b21821986f35",
+      "bytes": 1714
+    },
+    {
+      "path": "docs/mcr/evidence/venue-notes-adapter/source07/outer-initial.json",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "a3271e854492848fe6190b4727b1f211bfc5b711",
+      "sha256": "7d5c977b2b8884836dbc33a078fa78b77017d5fc6bcfcee41080cb8c929f6775",
+      "bytes": 605
+    },
+    {
+      "path": "docs/mcr/frontend/venue-notes-adapter.md",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "fe438c94c573345a6dced5a7d191261fa3939e34",
+      "sha256": "a72692dc5841b329cef85b81263d75449359798dd2b5b1e007bdefc63ca4d164",
+      "bytes": 14053
+    },
+    {
+      "path": "frontend/src/app/venue-notes-adapter/__tests__/adapter.test.ts",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "e5089ce8c2d268894a57b70e93805be5119fa832",
+      "sha256": "9eba7e84f012e779edc4a6eb5338cca99e9fe088ed605fb995dd418d453de2dd",
+      "bytes": 15674
+    },
+    {
+      "path": "frontend/src/app/venue-notes-adapter/__tests__/prepare.py",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "0465840d4a89d7606637b7eea9e898ff3b7a44aa",
+      "sha256": "fb17900cb99a42ab7563803ca2086be2d61c08db2109a5ea161e3013bed3a1ee",
+      "bytes": 2206
+    },
+    {
+      "path": "frontend/src/app/venue-notes-adapter/__tests__/proposal.py",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "4cda3ca0555f86e574094901098288fda456d6e2",
+      "sha256": "b08106d0d722e6d04c5a2af3e0e2fc3b0512a1bb1a5fcda4e9b1739956eeabc6",
+      "bytes": 3553
+    },
+    {
+      "path": "frontend/src/app/venue-notes-adapter/__tests__/readset.py",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "4810b7b0e9a646bc7543bc27c02f5f22d03a93ef",
+      "sha256": "d73c7f4101c72eb8a39ecf61e61223eaa6699e84d5bd5027d00b9a1eea03a5a6",
+      "bytes": 2949
+    },
+    {
+      "path": "frontend/src/app/venue-notes-adapter/__tests__/round.py",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "ad6c7cfaef94512539bfbf9c5cd7cc80c31994d9",
+      "sha256": "559f78e9162d9cc913acfd9eb81aabf94921f5590bb411fc36fb49d15bdf6b5a",
+      "bytes": 9414
+    },
+    {
+      "path": "frontend/src/app/venue-notes-adapter/__tests__/vitest.config.mjs",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "20fc44e899f9a0dedd11758a9d9b706a653a2c21",
+      "sha256": "110284c1698d4cd7cec4b72551c2b95ea88e7ef59cd856a0d6f5052c92550912",
+      "bytes": 682
+    },
+    {
+      "path": "frontend/src/app/venue-notes-adapter/index.ts",
+      "preimage": null,
+      "mode": "100644",
+      "blob": "2f6f63305fd3f0d5312e8fc465548f4134883e37",
+      "sha256": "e7893e97d427044dc7fbe9b00e8f1d51ecfe1e2e9b5f7cdea1819c8554630126",
+      "bytes": 17363
+    }
+  ],
+  "manifestSelf": "docs/mcr/evidence/venue-notes-adapter/delivery-manifest.json",
+  "manifestSelfRule": "Deliver manifest as one additional path; external SHA in final handoff avoids recursive selfhash",
+  "qualification": {
+    "source01": {
+      "result": "FAIL",
+      "commands": [
+        {
+          "argv": [
+            "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+            "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+            "run",
+            "--config",
+            "/Users/lhs/Desktop/mcr-worktrees/sl-world/frontend/src/app/venue-notes-adapter/__tests__/vitest.config.mjs",
+            "--configLoader",
+            "runner"
+          ],
+          "exit": 1
+        },
+        {
+          "argv": [
+            "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+            "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+            "-p",
+            "/private/tmp/mcr-venue-notes-source01/scratch/overlay/frontend/tsconfig.json",
+            "--pretty",
+            "false",
+            "--incremental",
+            "false"
+          ],
+          "exit": 2
+        },
+        {
+          "argv": [
+            "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+            "/Users/lhs/Desktop/mcr/frontend/node_modules/oxlint/bin/oxlint",
+            "--deny-warnings",
+            "/Users/lhs/Desktop/mcr-worktrees/sl-world/frontend/src/app/venue-notes-adapter"
+          ],
+          "exit": 1
+        }
+      ],
+      "fullEpoch": 1793848216.4680362,
+      "fullSHA256": "6197ad7d2fb2966a39abc2c66bf80e4254caef66a3c207f0e66f4fbd1a10522f"
+    },
+    "source02": {
+      "result": "FAIL",
+      "commands": [
+        {
+          "argv": [
+            "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+            "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+            "run",
+            "--config",
+            "/Users/lhs/Desktop/mcr-worktrees/sl-world/frontend/src/app/venue-notes-adapter/__tests__/vitest.config.mjs",
+            "--configLoader",
+            "runner",
+            "-t",
+            "preserves .*|independently available|binds replies|scrubs synchronously|requires an explicit|reconciles only|rejects substituted|keeps .* unknown"
+          ],
+          "exit": 0
+        },
+        {
+          "argv": [
+            "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+            "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+            "-p",
+            "/private/tmp/mcr-venue-notes-source02/scratch/overlay/frontend/tsconfig.json",
+            "--pretty",
+            "false",
+            "--incremental",
+            "false"
+          ],
+          "exit": 0
+        }
+      ],
+      "fullEpoch": 1793848380.490931,
+      "fullSHA256": "129905cbf52ba9ef07285219d184dab70450fbd8d354b3a4a0470d739d21744c"
+    },
+    "source05": {
+      "result": "FAIL",
+      "commands": [],
+      "fullEpoch": 1793849215.348382,
+      "fullSHA256": "2b8d1c1f0a8f97a73afa8376e21aeab0b784e39efaa520a61e8293a5a6dd4c75"
+    },
+    "source07": {
+      "result": "PASS",
+      "commands": [
+        {
+          "argv": [
+            "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+            "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+            "run",
+            "--config",
+            "/Users/lhs/Desktop/mcr-worktrees/sl-world/frontend/src/app/venue-notes-adapter/__tests__/vitest.config.mjs",
+            "--configLoader",
+            "runner",
+            "-t",
+            "keeps an uncertain command unknown after"
+          ],
+          "exit": 0
+        },
+        {
+          "argv": [
+            "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+            "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+            "-p",
+            "/private/tmp/mcr-venue-notes-source07/scratch/overlay/frontend/tsconfig.json",
+            "--pretty",
+            "false",
+            "--incremental",
+            "false"
+          ],
+          "exit": 0
+        },
+        {
+          "argv": [
+            "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+            "/Users/lhs/Desktop/mcr/frontend/node_modules/oxlint/bin/oxlint",
+            "--deny-warnings",
+            "/Users/lhs/Desktop/mcr-worktrees/sl-world/frontend/src/app/venue-notes-adapter"
+          ],
+          "exit": 0
+        }
+      ],
+      "fullEpoch": 1793849853.891082,
+      "fullSHA256": "9ddd3322aa6aada0bac78a980b82112a2efccfd30419ad8f54c6b21821986f35"
+    }
+  },
+  "retainedDiffDiagnostics": [
+    "docs/mcr/evidence/venue-notes-adapter/source01/command-00.log:37: new blank line at EOF.",
+    "docs/mcr/evidence/venue-notes-adapter/source02/command-00.log:9: new blank line at EOF.",
+    "docs/mcr/evidence/venue-notes-adapter/source07/command-00.log:9: new blank line at EOF."
+  ],
+  "borrowed": {
+    "ports": "e9535129cffa3917f5b9b5ae3f5ee992609c4419",
+    "rawN": "336375622af28116904b8b923651cad00b60806e",
+    "canonicalHTTP": "51514ca4074fb131d7fe55577c1766935d71ce60",
+    "spatial": "d3dd189c9a340c37f6c6814464a62802ced793b4",
+    "clock": "59016e7d80a96c89bdab4dd1b18f5faba22f0992"
+  },
+  "open": [
+    "Actual Root N status routing/admission",
+    "Qualified current creation-rights/reviewed-association producer injection",
+    "Consumer/aggregate integration",
+    "Live backend/public HTTP/native/multiuser/latest-master/release"
+  ],
+  "publication": "Explicit new leaves only; preserve canonical peer work, never force push; verify exact postimages and ancestry; no King/SL review queue"
+}

@@ -1,0 +1,9 @@
+
+ RUN  v4.1.9 /private/tmp/mcr-venue-notes-source07/scratch/overlay/frontend
+
+
+ Test Files  1 passed (1)
+      Tests  4 passed | 31 skipped (35)
+   Start at  12:37:23
+   Duration  221ms (transform 77ms, setup 0ms, import 125ms, tests 7ms, environment 0ms)
+

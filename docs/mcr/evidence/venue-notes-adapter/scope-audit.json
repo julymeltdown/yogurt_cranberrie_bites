@@ -1,0 +1,198 @@
+{
+  "status": "PASS",
+  "base": "b977c447fc89adda653b7a823f67d1771fd8f219",
+  "packetSource": "a92f5ae52e1872bc5d951d6964a72b4bd4e20b2e",
+  "qualifiedProductSource": "7742cc3617f11905a2af62e42da35e743967aedb",
+  "paths": [
+    "docs/mcr/evidence/venue-notes-adapter/preparation.json",
+    "docs/mcr/evidence/venue-notes-adapter/readset.json",
+    "docs/mcr/evidence/venue-notes-adapter/source01-proposal.json",
+    "docs/mcr/evidence/venue-notes-adapter/source01/command-00.log",
+    "docs/mcr/evidence/venue-notes-adapter/source01/command-01.log",
+    "docs/mcr/evidence/venue-notes-adapter/source01/command-02.log",
+    "docs/mcr/evidence/venue-notes-adapter/source01/guard-full.json",
+    "docs/mcr/evidence/venue-notes-adapter/source01/guard-initial.json",
+    "docs/mcr/evidence/venue-notes-adapter/source01/offer.json",
+    "docs/mcr/evidence/venue-notes-adapter/source01/outer-full.json",
+    "docs/mcr/evidence/venue-notes-adapter/source01/outer-initial.json",
+    "docs/mcr/evidence/venue-notes-adapter/source02-proposal.json",
+    "docs/mcr/evidence/venue-notes-adapter/source02/command-00.log",
+    "docs/mcr/evidence/venue-notes-adapter/source02/command-01.log",
+    "docs/mcr/evidence/venue-notes-adapter/source02/guard-full.json",
+    "docs/mcr/evidence/venue-notes-adapter/source02/guard-initial.json",
+    "docs/mcr/evidence/venue-notes-adapter/source02/offer.json",
+    "docs/mcr/evidence/venue-notes-adapter/source02/outer-full.json",
+    "docs/mcr/evidence/venue-notes-adapter/source02/outer-initial.json",
+    "docs/mcr/evidence/venue-notes-adapter/source05-proposal.json",
+    "docs/mcr/evidence/venue-notes-adapter/source05/guard-full.json",
+    "docs/mcr/evidence/venue-notes-adapter/source05/guard-initial.json",
+    "docs/mcr/evidence/venue-notes-adapter/source05/offer.json",
+    "docs/mcr/evidence/venue-notes-adapter/source05/original-unknown.json",
+    "docs/mcr/evidence/venue-notes-adapter/source05/outer-full.json",
+    "docs/mcr/evidence/venue-notes-adapter/source05/outer-initial.json",
+    "docs/mcr/evidence/venue-notes-adapter/source07-proposal.json",
+    "docs/mcr/evidence/venue-notes-adapter/source07/command-00.log",
+    "docs/mcr/evidence/venue-notes-adapter/source07/command-01.log",
+    "docs/mcr/evidence/venue-notes-adapter/source07/command-02.log",
+    "docs/mcr/evidence/venue-notes-adapter/source07/guard-full.json",
+    "docs/mcr/evidence/venue-notes-adapter/source07/guard-initial.json",
+    "docs/mcr/evidence/venue-notes-adapter/source07/offer.json",
+    "docs/mcr/evidence/venue-notes-adapter/source07/outer-full.json",
+    "docs/mcr/evidence/venue-notes-adapter/source07/outer-initial.json",
+    "docs/mcr/frontend/venue-notes-adapter.md",
+    "frontend/src/app/venue-notes-adapter/__tests__/adapter.test.ts",
+    "frontend/src/app/venue-notes-adapter/__tests__/prepare.py",
+    "frontend/src/app/venue-notes-adapter/__tests__/proposal.py",
+    "frontend/src/app/venue-notes-adapter/__tests__/readset.py",
+    "frontend/src/app/venue-notes-adapter/__tests__/round.py",
+    "frontend/src/app/venue-notes-adapter/__tests__/vitest.config.mjs",
+    "frontend/src/app/venue-notes-adapter/index.ts"
+  ],
+  "protectedUnchanged": [
+    "docs/source",
+    "frontend/package.json",
+    "frontend/pnpm-lock.yaml",
+    "frontend/src/app/venue-entry",
+    "frontend/src/features/paradise-city-map",
+    "frontend/src/shared/api"
+  ],
+  "imports": [
+    "../meeting-entry/ports",
+    "../../features/paradise-city-map/ports",
+    "../../features/paradise-city-map/spatial/contract",
+    "../../shared/query/privacy",
+    "../../shared/api/paradise-city-v1/notes",
+    "../../shared/api/paradise-city-v1/notes.generated",
+    "../../shared/api/paradise-city-v1/schema"
+  ],
+  "sourceSHA256": "e7893e97d427044dc7fbe9b00e8f1d51ecfe1e2e9b5f7cdea1819c8554630126",
+  "readsetSHA256": "3d5afce37be27e8947017a7ccfe25d172e0ffce06408db609ea44f7e508a7aef",
+  "qualification": {
+    "source01": {
+      "result": "FAIL",
+      "commands": [
+        {
+          "argv": [
+            "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+            "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+            "run",
+            "--config",
+            "/Users/lhs/Desktop/mcr-worktrees/sl-world/frontend/src/app/venue-notes-adapter/__tests__/vitest.config.mjs",
+            "--configLoader",
+            "runner"
+          ],
+          "exit": 1
+        },
+        {
+          "argv": [
+            "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+            "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+            "-p",
+            "/private/tmp/mcr-venue-notes-source01/scratch/overlay/frontend/tsconfig.json",
+            "--pretty",
+            "false",
+            "--incremental",
+            "false"
+          ],
+          "exit": 2
+        },
+        {
+          "argv": [
+            "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+            "/Users/lhs/Desktop/mcr/frontend/node_modules/oxlint/bin/oxlint",
+            "--deny-warnings",
+            "/Users/lhs/Desktop/mcr-worktrees/sl-world/frontend/src/app/venue-notes-adapter"
+          ],
+          "exit": 1
+        }
+      ],
+      "fullEpoch": 1793848216.4680362,
+      "fullSHA256": "6197ad7d2fb2966a39abc2c66bf80e4254caef66a3c207f0e66f4fbd1a10522f"
+    },
+    "source02": {
+      "result": "FAIL",
+      "commands": [
+        {
+          "argv": [
+            "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+            "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+            "run",
+            "--config",
+            "/Users/lhs/Desktop/mcr-worktrees/sl-world/frontend/src/app/venue-notes-adapter/__tests__/vitest.config.mjs",
+            "--configLoader",
+            "runner",
+            "-t",
+            "preserves .*|independently available|binds replies|scrubs synchronously|requires an explicit|reconciles only|rejects substituted|keeps .* unknown"
+          ],
+          "exit": 0
+        },
+        {
+          "argv": [
+            "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+            "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+            "-p",
+            "/private/tmp/mcr-venue-notes-source02/scratch/overlay/frontend/tsconfig.json",
+            "--pretty",
+            "false",
+            "--incremental",
+            "false"
+          ],
+          "exit": 0
+        }
+      ],
+      "fullEpoch": 1793848380.490931,
+      "fullSHA256": "129905cbf52ba9ef07285219d184dab70450fbd8d354b3a4a0470d739d21744c"
+    },
+    "source05": {
+      "result": "FAIL",
+      "commands": [],
+      "fullEpoch": 1793849215.348382,
+      "fullSHA256": "2b8d1c1f0a8f97a73afa8376e21aeab0b784e39efaa520a61e8293a5a6dd4c75"
+    },
+    "source07": {
+      "result": "PASS",
+      "commands": [
+        {
+          "argv": [
+            "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+            "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+            "run",
+            "--config",
+            "/Users/lhs/Desktop/mcr-worktrees/sl-world/frontend/src/app/venue-notes-adapter/__tests__/vitest.config.mjs",
+            "--configLoader",
+            "runner",
+            "-t",
+            "keeps an uncertain command unknown after"
+          ],
+          "exit": 0
+        },
+        {
+          "argv": [
+            "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+            "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+            "-p",
+            "/private/tmp/mcr-venue-notes-source07/scratch/overlay/frontend/tsconfig.json",
+            "--pretty",
+            "false",
+            "--incremental",
+            "false"
+          ],
+          "exit": 0
+        },
+        {
+          "argv": [
+            "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+            "/Users/lhs/Desktop/mcr/frontend/node_modules/oxlint/bin/oxlint",
+            "--deny-warnings",
+            "/Users/lhs/Desktop/mcr-worktrees/sl-world/frontend/src/app/venue-notes-adapter"
+          ],
+          "exit": 0
+        }
+      ],
+      "fullEpoch": 1793849853.891082,
+      "fullSHA256": "9ddd3322aa6aada0bac78a980b82112a2efccfd30419ad8f54c6b21821986f35"
+    }
+  },
+  "goal": "Historical QA01/C04 usageLimited unchanged; new objective completed in docs except receipt verification after publication",
+  "limits": "Headless leaf only; actual Root providers/aggregate/live-stack/latest-master/device/release open"
+}

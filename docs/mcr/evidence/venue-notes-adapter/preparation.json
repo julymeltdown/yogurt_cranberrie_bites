@@ -1,0 +1,20 @@
+{
+  "book": "VENU-NOTES-ADAPTER-PREP32-0255",
+  "acceptedEpoch": 1793847267.437461,
+  "deadlineUTC": "2026-11-05T04:00:00Z",
+  "upperBytes": 33554432,
+  "identity": {
+    "pid": 68413,
+    "birth": "Thu Nov 5 11:54:27 2026",
+    "executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+    "script": "/Users/lhs/Desktop/mcr-worktrees/sl-world/frontend/src/app/venue-notes-adapter/__tests__/prepare.py",
+    "cwd": "/Users/lhs/Desktop/mcr-worktrees/sl-world",
+    "outputRoot": "/Users/lhs/Desktop/mcr-worktrees/sl-world/docs/mcr/evidence/venue-notes-adapter"
+  },
+  "priorPI10": "Published8b7/Native12FULL; all MAX/history retained; no reset",
+  "scope": [
+    "frontend/src/app/venue-notes-adapter/**",
+    "docs/mcr/frontend/venue-notes-adapter.md",
+    "docs/mcr/evidence/venue-notes-adapter/**"
+  ]
+}

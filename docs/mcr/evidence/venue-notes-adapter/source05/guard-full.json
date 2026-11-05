@@ -1,0 +1,18 @@
+{
+  "result": "FAIL",
+  "epoch": 1793849214.392621,
+  "failure": "AssertionError('Unresolved live MCR workflow roots: [76856]')",
+  "peak": {
+    "whole": 5592001307,
+    "new": 720548608,
+    "processes": 6,
+    "rss": 258113536,
+    "native_payload": 0,
+    "global_rss": 253509632,
+    "global_workflows": 2,
+    "global_source": 2,
+    "global_browsers": 0,
+    "global_target": 0,
+    "global_processes": 6
+  }
+}

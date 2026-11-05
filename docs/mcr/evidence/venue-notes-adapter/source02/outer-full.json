@@ -1,0 +1,53 @@
+{
+  "lease": "VENU-NOTES-ADAPTER-SOURCE02-0307",
+  "result": "FAIL",
+  "exit": 1,
+  "failure": "AssertionError(); guard failed",
+  "commands": [
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/frontend/src/app/venue-notes-adapter/__tests__/vitest.config.mjs",
+        "--configLoader",
+        "runner",
+        "-t",
+        "preserves .*|independently available|binds replies|scrubs synchronously|requires an explicit|reconciles only|rejects substituted|keeps .* unknown"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+        "-p",
+        "/private/tmp/mcr-venue-notes-source02/scratch/overlay/frontend/tsconfig.json",
+        "--pretty",
+        "false",
+        "--incremental",
+        "false"
+      ],
+      "exit": 0
+    }
+  ],
+  "full_epoch": 1793848380.490931,
+  "peak": {
+    "whole": 5576903451,
+    "new": 666174208,
+    "processes": 6,
+    "rss": 1031798784,
+    "native_payload": 0,
+    "global_rss": 4303355904,
+    "global_workflows": 4,
+    "global_source": 1,
+    "global_browsers": 2,
+    "global_target": 1,
+    "global_processes": 22
+  },
+  "minimum_free": 23544889344,
+  "remaining": [],
+  "execution_resources": 0,
+  "before_hard": true
+}

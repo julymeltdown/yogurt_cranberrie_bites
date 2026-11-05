@@ -1,0 +1,2 @@
+src/app/venue-notes-adapter/index.ts:108:50: warning unicorn(no-useless-spread): Using a spread operator here creates a new array unnecessarily. help: `for…of` can iterate over iterable, it's unnecessary to convert to an array.
+src/app/venue-notes-adapter/__tests__/adapter.test.ts:39:55: warning unicorn(no-useless-spread): Using a spread operator here creates a new array unnecessarily. help: `for…of` can iterate over iterable, it's unnecessary to convert to an array.

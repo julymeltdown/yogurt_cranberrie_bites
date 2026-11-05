@@ -1,0 +1,18 @@
+{
+  "result": "FAIL",
+  "epoch": 1793848378.815226,
+  "failure": "AssertionError('new cap')",
+  "peak": {
+    "whole": 5576862491,
+    "new": 668398336,
+    "processes": 6,
+    "rss": 970932224,
+    "native_payload": 0,
+    "global_rss": 4314103808,
+    "global_workflows": 4,
+    "global_source": 1,
+    "global_browsers": 2,
+    "global_target": 1,
+    "global_processes": 22
+  }
+}

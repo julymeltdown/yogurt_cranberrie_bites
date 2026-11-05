@@ -1,0 +1,18 @@
+{
+  "result": "PASS",
+  "epoch": 1793848215.5979252,
+  "peak": {
+    "whole": 5568318235,
+    "new": 613352192,
+    "processes": 6,
+    "rss": 1027768320,
+    "native_payload": 0,
+    "global_rss": 4660969472,
+    "global_workflows": 2,
+    "global_source": 1,
+    "global_browsers": 0,
+    "global_target": 1,
+    "global_processes": 17
+  },
+  "minimum_free": 23549140992
+}

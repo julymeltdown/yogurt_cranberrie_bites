@@ -1,0 +1,37 @@
+
+ RUN  v4.1.9 /private/tmp/mcr-venue-notes-source01/scratch/overlay/frontend
+
+ ❯ src/app/venue-notes-adapter/__tests__/adapter.test.ts (31 tests | 2 failed) 20ms
+     × rejects substituted status receipt without replay 4ms
+     × rejects substituted status resource without replay 1ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  src/app/venue-notes-adapter/__tests__/adapter.test.ts > actual raw N client to primary Notes partial > rejects substituted status receipt without replay
+ FAIL  src/app/venue-notes-adapter/__tests__/adapter.test.ts > actual raw N client to primary Notes partial > rejects substituted status resource without replay
+AssertionError: expected { state: 'applied' } to deeply equal { state: 'unknown' }
+
+- Expected
++ Received
+
+  {
+-   "state": "unknown",
++   "state": "applied",
+  }
+
+ ❯ src/app/venue-notes-adapter/__tests__/adapter.test.ts:182:55
+    180|     const f = fixture({ status: { read } }); await f.load()
+    181|     f.respond(receipt({ resource: { id: noteId, revision: 4 } }), 202)…
+    182|     expect(await f.adapter.resolve(key, f.context())).toEqual({ state:…
+       |                                                       ^
+    183|   })
+    184|   it.each(['PENDING', 'RETIRED'] as const)('keeps %s unknown with its …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 29 passed (31)
+   Start at  12:10:06
+   Duration  227ms (transform 75ms, setup 0ms, import 124ms, tests 20ms, environment 0ms)
+

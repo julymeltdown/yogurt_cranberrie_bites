@@ -1,0 +1,30 @@
+{
+  "epoch": 1793849204.846261,
+  "sample": {
+    "whole": 5582797595,
+    "new": 706081536,
+    "processes": 6,
+    "rss": 235143168
+  },
+  "global_sample": {
+    "epoch": 1793849204.845488,
+    "membership_asof": "2026-11-05T01:47:30.991757+00:00",
+    "cohorts": [
+      "01a1a267-37a0-7723-a4e9-a3a6f5b27f52:GIFT-COMPOSE-MATERIAL02-0325"
+    ],
+    "pids": [
+      75651,
+      75732,
+      75974,
+      75975
+    ],
+    "declared_pids": 22,
+    "declared_rss": 3221225472.0,
+    "rss": 240123904,
+    "qualified_control_identities": [],
+    "workflows": 2,
+    "source": 2,
+    "browsers": 0,
+    "target": 0
+  }
+}

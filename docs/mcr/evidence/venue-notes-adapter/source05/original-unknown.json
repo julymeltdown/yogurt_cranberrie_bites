@@ -1,0 +1,37 @@
+{
+  "epoch": 1793849214.392273,
+  "sampler": 75732,
+  "attempt": 2,
+  "owned_before": [
+    75651,
+    75732,
+    76849,
+    76850
+  ],
+  "owned_current": [
+    75651,
+    75732,
+    76947
+  ],
+  "cohorts": [
+    "01a1a267-37a0-7723-a4e9-a3a6f5b27f52:GIFT-COMPOSE-MATERIAL02-0325"
+  ],
+  "identities": [
+    {
+      "pid": 76856,
+      "parent": 49590,
+      "rss": 106545152,
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B docs/mcr/evidence/paradise-city-map/prepare.py",
+      "birth": "Thu Nov 5 12:26:53 2026"
+    }
+  ],
+  "unresolved": [
+    {
+      "pid": 76856,
+      "parent": 49590,
+      "rss": 106545152,
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B docs/mcr/evidence/paradise-city-map/prepare.py",
+      "birth": "Thu Nov 5 12:26:53 2026"
+    }
+  ]
+}

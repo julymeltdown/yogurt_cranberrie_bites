@@ -1,0 +1,25 @@
+{
+  "lease": "NOTES-ADAPTER-SOURCE05-0325",
+  "result": "FAIL",
+  "exit": 1,
+  "failure": "AssertionError('Unresolved live MCR workflow roots: [76856]'); guard failed; final census AssertionError('new cap')",
+  "commands": [],
+  "full_epoch": 1793849215.348382,
+  "peak": {
+    "whole": 5587970843,
+    "new": 773407488,
+    "processes": 6,
+    "rss": 254050304,
+    "native_payload": 0,
+    "global_rss": 254017536,
+    "global_workflows": 2,
+    "global_source": 2,
+    "global_browsers": 0,
+    "global_target": 0,
+    "global_processes": 6
+  },
+  "minimum_free": 23411757056,
+  "remaining": [],
+  "execution_resources": 0,
+  "before_hard": true
+}

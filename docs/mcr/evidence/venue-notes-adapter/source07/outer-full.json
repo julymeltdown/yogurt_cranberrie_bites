@@ -1,0 +1,62 @@
+{
+  "lease": "NOTES-ADAPTER-SOURCE07-0331",
+  "result": "PASS",
+  "exit": 0,
+  "failure": null,
+  "commands": [
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/vitest/vitest.mjs",
+        "run",
+        "--config",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/frontend/src/app/venue-notes-adapter/__tests__/vitest.config.mjs",
+        "--configLoader",
+        "runner",
+        "-t",
+        "keeps an uncertain command unknown after"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/typescript/bin/tsc",
+        "-p",
+        "/private/tmp/mcr-venue-notes-source07/scratch/overlay/frontend/tsconfig.json",
+        "--pretty",
+        "false",
+        "--incremental",
+        "false"
+      ],
+      "exit": 0
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/oxlint/bin/oxlint",
+        "--deny-warnings",
+        "/Users/lhs/Desktop/mcr-worktrees/sl-world/frontend/src/app/venue-notes-adapter"
+      ],
+      "exit": 0
+    }
+  ],
+  "full_epoch": 1793849853.891082,
+  "peak": {
+    "whole": 5595003675,
+    "new": 821510912,
+    "processes": 6,
+    "rss": 1033764864,
+    "native_payload": 0,
+    "global_rss": 1158856704,
+    "global_workflows": 2,
+    "global_source": 1,
+    "global_browsers": 1,
+    "global_target": 0,
+    "global_processes": 12
+  },
+  "minimum_free": 23360299008,
+  "remaining": [],
+  "execution_resources": 0,
+  "before_hard": true
+}

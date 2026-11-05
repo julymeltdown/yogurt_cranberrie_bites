@@ -1,0 +1,14 @@
+../../../../../../private/tmp/mcr-venue-notes-source01/scratch/overlay/frontend/src/app/venue-notes-adapter/__tests__/adapter.test.ts(59,73): error TS2322: Type '{ request: Mock<(<K extends NotesOperationId>(id: K, input: NotesInputs[K], context: { readonly scope: PrivacyScope; readonly signal: AbortSignal; }) => Promise<...>)>; } | null' is not assignable to type 'Readonly<{ request<K extends NotesOperationId>(id: K, input: NotesInputs[K], context: { readonly scope: PrivacyScope; readonly signal: AbortSignal; }): Promise<...>; }> | null'.
+  Type '{ request: Mock<(<K extends NotesOperationId>(id: K, input: NotesInputs[K], context: { readonly scope: PrivacyScope; readonly signal: AbortSignal; }) => Promise<NotesResponses[K]>)>; }' is not assignable to type 'Readonly<{ request<K extends NotesOperationId>(id: K, input: NotesInputs[K], context: { readonly scope: PrivacyScope; readonly signal: AbortSignal; }): Promise<...>; }>'.
+    The types returned by 'request(...)' are incompatible between these types.
+      Type 'Promise<NoteCommand | NotePage | NoteThread>' is not assignable to type 'Promise<NotesResponses[K]>'.
+        Type 'NoteCommand | NotePage | NoteThread' is not assignable to type 'NotesResponses[K]'.
+          Type 'NoteCommand' is not assignable to type 'NotesResponses[K]'.
+            Type 'NoteCommand' is not assignable to type 'NoteCommand & NotePage & NoteThread'.
+              Type 'NoteCommand' is missing the following properties from type 'NotePage': "items", "visible_count", "parent", "next_before", and 2 more.
+../../../../../../private/tmp/mcr-venue-notes-source01/scratch/overlay/frontend/src/shared/api/paradise-city-v1/notes.ts(51,3): error TS2322: Type 'Readonly<{ send<T>(request: NotesRequest<T>, context: { readonly scope: PrivacyScope; readonly signal: AbortSignal; }): Promise<unknown>; }>' is not assignable to type 'NotesTransport'.
+  The types returned by 'send(...)' are incompatible between these types.
+    Type 'Promise<unknown>' is not assignable to type 'Promise<{ readonly status: number; readonly data: unknown; }>'.
+      Type 'unknown' is not assignable to type '{ readonly status: number; readonly data: unknown; }'.
+../../../../../../private/tmp/mcr-venue-notes-source01/scratch/overlay/frontend/src/shared/api/paradise-city-v1/notes.ts(57,9): error TS2322: Type 'keyof NotesInputs' is not assignable to type '"listConcertParties" | "getConcertParty" | "createConcertParty" | "updateConcertParty" | "cancelConcertParty" | "transferConcertParty" | "listConcertPartyApplications" | ... 109 more ... | "setConcertServicePolicy"'.
+  Type '"createVenuePlaceNote"' is not assignable to type '"listConcertParties" | "getConcertParty" | "createConcertParty" | "updateConcertParty" | "cancelConcertParty" | "transferConcertParty" | "listConcertPartyApplications" | ... 109 more ... | "setConcertServicePolicy"'.
