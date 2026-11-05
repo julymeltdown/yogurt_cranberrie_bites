@@ -1,5 +1,33 @@
 # Revised functional delivery plan — 2026-11-05
 
+<!-- BEGIN MAIN_HOURLY_20261105_1532 -->
+## CURRENT — 2026-11-05 15:32 KST responsible-owner reconciliation
+
+**Original58/111 active DONE (52.3%),53 remaining;112 original tasks/61 original IA unchanged. Criteria61/frozen39/new original closures22; design10/12, PI08/PI11 open. VENU1/8 DONE, seven remaining; ten extension IA and48 stable comparisons NOT_RUN. QA08DEFERRED_BY_USER; full112false; productNOT_READY.**
+
+VENU-ART01 is DONE / OWNER_SATISFIED_CANONICAL, consumed once from WorldSL's literal four-criterion SATISFIED disposition. Source4296f4770dfd1a6c1e99ff0a4fd1b3e1b4ebfcc4; canonical03c24e05a6a99368344d80bbe831946c1d8fba12. Producers231 approved-source assets (fcd078) and26e independent spatial model (d3dd189/4f94914) plus consumer40fde supply the complete single Photo5 site plan in four controlled contexts, overview/pan/zoom/Fit, uniform22 pixel anchors and all22 original sourceRefs / ILLUSTRATED_UNCALIBRATED declarations. See [owner disposition](evidence/paradise-city-map/native18/owner-inspection.json); management does not inspect application or images.
+
+Minor1–2px residuals and disclosed44px/read/select/policy adaptations remain; this is not pixel identity. The primary art variant remains PROVISIONAL with its existing optional question, original roles and ten exact originals. No human variant approval, physical review/calibration/GPS/current attendance, defaultRoot/actual204/device/whole48 matrix, originalAR02/FE19 or otherVENU acceptance is inferred. No extra live/device prerequisite is added to this finished pure-art/controlled-client criterion. VENU-IN01 retains its actual recorded state.
+
+Map40fde is actually terminal/clean; its grants and unused ordinary remainder returned, historicalBLOCKED goal preserved, same context archived and no next scope accepted. Existing narrow2162/1eed transfers remain. Prior ART01, venue, checkpoint and staffing dispositions are archived once; all eight completion definitions and ten extension IA rows remain intact.
+| Existing owner / stream | Current remainder and next action |
+| --- | --- |
+| PI08 /2162,231,existing6b5d,Roots | Qualified contract33491ccf and logical zoom8c601c71 published. New Photo2 scenery/renderer activation/full parity unfinished.231 accepted ten NEW producer paths and authored vector source; PNG generation/qualification unfinished and capacity-denied.6b5d accepted source-readiness ONLY; actual BE release paths/preimages/write custody need Root1fc discovery. No BE production grant or FE compatibility change. |
+| Community /204 | Later than fixed06:30:10 register:7c2066bb controlledNative18 component improvement published. Productnative/compare0/0 and owner inspection scoped; OUTER_RESOURCE_FAIL remains failed. Minor text/glyph differences and broader integration/device open; no task/venueclosure. Earlier pending-manifest observation stays historical. |
+| OAuth /Root153,12cc and provider owners | Focused session/boundary/recovery/lint passed; strict overlay/import/metadata, Source13/native/provider/SQL/publicOFF qualification unfinished.8940a51f is source-onlyreport;15 application/core leaves excluded.956cb709 is N213 ownedreport, not product/native completion.12a033ae repairs Map registration only. |
+| PI11/default host/QA06 /26e,1eed,SAME1ab7 | PI11 reached one realWorld canvas/socket but failed fixture/HUD entry and separate process metadata; existing owner retains finish. Default adapters and QA06 fixture-source qualification unfinished.1ab7 actually accepted exact existingfe-public fixture lifecycle; physical executor/device/access/control/reachable fixture and oldBLOCKED goal separately UNCONFIRMED. |
+| Backend /21d and existing producers |06:05UTC digest adds no whole backend original completion. Source/control/future reservations are not runtime passes or accepted holds. After-futures disk fit is21d-owned; only fresh usable windows/direct custody apply. Preserve limits/cumulative history/failures/unrun states; no cleanup/globalkill/reset/model/newchats. |
+| W04 /existing World/Root owners | Existing single human policy question PENDING/UNFROZEN, planning only; no new invitation grant. Friends/viewer/location/event-clock/reviewed physical inputs remain actual producer/access decisions. No duplicate question or whole-backend-wave barrier. |
+| Staffing /existing functional leads | No verified ready unstaffed disjoint work. Developers continue implementation/validation/fixes and412e publication independently. Main/SLs do no code/query/runtime/pixel review; their ACK never gates work. |
+This is MAIN_HOURLY_20261105_1532, Main's new temporary sole four-document composition grant after source-STOP; it ends at this canonical publication receipt. The prior14:32 grant ended separately. The06:30:10UTC private frontend register remains immutable; Community7c2066 is a later dated delta. Authoritative inputs are Main's single38515:32KST and Backend21d06:05UTC lead conclusions plus the register's literal WorldSL disposition. No second digest, source inspection, test, capture, application/device/SQL execution or technical approval is introduced.
+
+All112 original rows and61 original IA arrays are byte-equivalent as data. DONE58/IN_PROGRESS44/WAITING_INPUT3/REOPENED3/OPEN3/DEFERRED_BY_USER1 remain;111active/53remaining/52.3%. All12 design definitions/dispositions remain; PI07/FE32/PI09/PI12 already consumed and not repeated. VENU1/8 is separate from originals/design and is not a blended readiness percentage. Preserve truthful failed/unrun states, all historical clauses, user QA08/200-user deferral and resource clocks. Ordinary metadata/Git checks only, fresh preimages, exact scope, private index, non-force publication; no review/ACK/proof-only successor.
+<!-- END MAIN_HOURLY_20261105_1532 -->
+
+## HISTORICAL — complete preceding Markdown retained byte for byte; earlier CURRENT labels are dated snapshots
+
+# Revised functional delivery plan — 2026-11-05
+
 <!-- BEGIN MAIN_HOURLY_20261105_1432 -->
 ## CURRENT — 2026-11-05 14:32 KST responsible-owner reconciliation
 
