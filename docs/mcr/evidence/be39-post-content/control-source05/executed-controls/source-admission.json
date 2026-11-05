@@ -1,0 +1,67 @@
+{
+  "state": "METADATA_ONLY_PASS_NOT_RUNTIME_QUALIFICATION",
+  "complete_source_admission": {
+    "epoch": 1793848966.0147572,
+    "complete": true,
+    "actual_live_metadata": {
+      "own_processes": 3,
+      "own_rss": 279019520,
+      "global_processes": 3,
+      "global_rss": 279019520,
+      "global_workflows": 1,
+      "global_source": 1,
+      "global_browser": 0,
+      "global_warm_rust": 0,
+      "global_cohorts": [],
+      "global_pid_birth_group_root_records": [],
+      "own_pids": [
+        55177,
+        55180,
+        55647
+      ],
+      "unresolved_accepted_reserved_pids": 0,
+      "declared_global_pids": 4,
+      "declared_global_rss": 1073741824,
+      "unknown": [],
+      "other_accepted_remaining_new_bytes": 33554432,
+      "other_accepted_ordinary_remaining_new_bytes": 33554432
+    },
+    "peak": {
+      "minimum_free": 23525572608,
+      "own_processes": 3,
+      "own_rss": 279019520,
+      "global_processes": 3,
+      "global_rss": 279019520,
+      "global_workflows": 1,
+      "cumulative_new": 404000768,
+      "whole": 49286262784
+    },
+    "target_access": "NONE"
+  },
+  "free": 23539986432,
+  "epoch": 1793848966.0686028,
+  "sample": {
+    "own_processes": 3,
+    "own_rss": 279019520,
+    "global_processes": 3,
+    "global_rss": 279019520,
+    "global_workflows": 1,
+    "global_source": 1,
+    "global_browser": 0,
+    "global_warm_rust": 0,
+    "global_cohorts": [],
+    "global_pid_birth_group_root_records": [],
+    "own_pids": [
+      55177,
+      55180,
+      55647
+    ],
+    "unresolved_accepted_reserved_pids": 0,
+    "declared_global_pids": 4,
+    "declared_global_rss": 1073741824,
+    "unknown": [],
+    "other_accepted_remaining_new_bytes": 33554432,
+    "other_accepted_ordinary_remaining_new_bytes": 33554432
+  },
+  "target_access": "NONE"
+}

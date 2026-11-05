@@ -1,0 +1,18 @@
+{
+  "pins": {
+    "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-budget-amendment.json": "a084a203a7d518d1dba148d8a649dedbec7635b6b6b50d2165175d0fb80eb13f",
+    "/private/tmp/mcr-post21a-be39-compile-unit04-0202/accounting.py": "d525a94f8bbc3a89a47bf84bda757c985d9f722aa985d7b60a2d600bffcb720a",
+    "/private/tmp/mcr-post21a-be39-compile-unit04-0202/budget.py": "e3f58cb7121471abfe11fd5f64d9295978c7a83c516f8c4518af81f0ae780685",
+    "/private/tmp/mcr-post21a-be39-compile-unit04-0202/global-roster.json": "1eb37d9d4fb6fe0483f80a75118fc2602a95f0856b8db85f4455340391f24bf7",
+    "/private/tmp/mcr-post21a-be39-compile-unit04-0202/receipt_proof.py": "69706c0727698ed2dddcfbadbc20a7eaa8db5a693319f313d217ba2e44ee13b3",
+    "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-baseline.json.gz": "e2783a1ec4a3a1f512a573af50afde3109cf8419a373ff6555f508aa3f52d92d",
+    "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py": "65c411b8b6ebe01d79c7584e714055ba4ec82d7a6bd44b3751f5ee261c0f1d1d",
+    "/private/tmp/mcr-post21a-be39-compile-unit04-0202/python-launcher-image.json": "1ac37458d911bea991e7c1ca2a2f338b98548e87308890a22719dcbc4ae6cab3",
+    "/private/tmp/mcr-post21a-be39-compile-unit04-0202/test_process_receipts.py": "8d7e8165082bd9452b19a42dd45d1769d8f5a3c6dc4a67f1fbe095aa282c2721",
+    "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-plan.json": "e52ad1e32fde69ecafa4bfe7a9d4d30b8be61c3e843cab7d90186734b4a4676b",
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3.14": "1192b994fbb50303c9df2cc97c9d63797d454c7f57f20ca682877c9e770429aa",
+    "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python": "c9ce7b8516f24348a0e589e3004fd1246dc04756168b98bb8bd71fc67d0b8868",
+    "/private/tmp/mcr-post21a-be39-compile-unit04-0202/source-admission.json": "842beb3a4a64acb8e56296fbec87d6dafeb70b375154881378f2ec12d1d908ae"
+  },
+  "fixed_baseline_not_copied": true
+}

@@ -1,0 +1,32 @@
+{
+  "state": "UNREADY_YIELD",
+  "ownerThreadId": "01a1a21a-a088-7c31-83e3-19de119ba873",
+  "offerId": "POST-CONTROL-SOURCE06-0314",
+  "epoch": 1793849611.090423,
+  "actualAccepted": false,
+  "actualAcceptEpoch": null,
+  "resourcesHeld": false,
+  "resources": {
+    "workflows": 0,
+    "guards": 0,
+    "children": 0,
+    "target": 0,
+    "tests": 0,
+    "Cargo": 0,
+    "PG": 0,
+    "browser": 0,
+    "ports": 0
+  },
+  "reason": "Preaccept complete ordinary source admission could not reconcile actual unregistered shell PID21624 birth ThuNov5 12:32:30 /bin/zsh -lc df -k /private/tmp | tail -1; ls -ld /private/tmp/mcr-be42-compile-10-exec. Source06 never ACCEPTED; retain all raw refusals and old Source05 FULL. Ready later listed first attempts may proceed.",
+  "predecessorObserved": {
+    "owner": "01a1a5d9-332b-7822-a8f7-40c576fad94a",
+    "offerId": "VENU-L-TRANSPORT-SOURCE04-0325",
+    "canonicalAcceptEpoch": 1793849440.314636,
+    "canonicalFullEpoch": 1793849447.814463
+  },
+  "minimumCumulativeCarryBytes": 406593536,
+  "minimumWholeCarryBytes": 49288855552,
+  "allHigherAndGapsRetained": true,
+  "originalBaselineUnchanged": true,
+  "noSource06ClockReset": true
+}

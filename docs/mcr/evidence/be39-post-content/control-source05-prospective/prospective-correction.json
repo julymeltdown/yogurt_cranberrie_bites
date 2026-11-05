@@ -1,0 +1,31 @@
+{
+  "state": "PROSPECTIVE_NOT_ALLOCATED_NOT_ACCEPTED_NOT_RUNTIME_QUALIFIED",
+  "requestedOffer": "POST-CONTROL-SOURCE05-0314",
+  "historicalSource04Unchanged": true,
+  "files": [
+    {
+      "file": "source_control.py",
+      "SHA256": "24f22de2086f6fcf887ad13057b4fd1537f50c9d26e4ce9c408ee497308ac650",
+      "validation": "AST_PARSE_ONLY",
+      "fixtures": "NOT_RUN"
+    },
+    {
+      "file": "test_process_receipts.py",
+      "SHA256": "e0c201ab421bbdb2abcd51d083c24344b6212c19abe8df2559d133fc0d93c037",
+      "validation": "AST_PARSE_ONLY",
+      "fixtures": "NOT_RUN"
+    }
+  ],
+  "unchangedBudgetSHA256": "8b13eaa9923cf5c773c08bb5fcc0407b4200e7ae79b30d9f7babd45d813aee7e",
+  "unchangedAccountingSHA256": "d525a94f8bbc3a89a47bf84bda757c985d9f722aa985d7b60a2d600bffcb720a",
+  "source04FULLSHA256": "0338666a93f385989a44c2d1d8da5bd5592e4a3faba73da7af64255718f3d9f1",
+  "diagnosis": "accounting.walk calls checkpoint once per filesystem entry; SourceGuard.fast previously hashed all immutable pins before its cadence condition. Actual Source04 deadline failure and ordinary preflight success are consistent with this owned source defect; no measured causal performance PASS is claimed.",
+  "correction": "Keep fixed WORK/FULL checks on every checkpoint. Check immutable hashes with existing .3-second actual metadata samples, explicitly before and after fixture payload; do not skip roots, accepted memberships or fresh complete independent initials.",
+  "newRegression": "One of the same ten NOT_RUN fixture methods executes actual extracted SourceGuard.fast/verify_pins against synthetic clock/files/metadata, checks bounded hashes for repeated checkpoints, detects pin mutation, and enforces the fixed clock even with cached metadata. It is not real resource evidence.",
+  "execution": "MUST obtain distinct allocator offer and actual fresh fit before invoking prospective05; closed01..04 never restart. No target/Cargo/native/PG/browser/services.",
+  "minimumCumulativeCarryBytes": 353140736,
+  "minimumWholeCarryBytes": 49235402752,
+  "originalBaseline": "UNCHANGED",
+  "familyBytes": 536870912,
+  "historicalGaps": "NOT_CERTIFIED"
+}

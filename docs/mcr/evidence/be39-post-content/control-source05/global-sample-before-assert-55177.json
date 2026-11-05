@@ -1,0 +1,37 @@
+{
+  "stage": "COMPLETE_CENSUS_BEFORE_ASSERT",
+  "epoch": 1793848974.517422,
+  "sampler_pid": 55177,
+  "relevant_actual_processes": [
+    {
+      "pid": 55177,
+      "ppid": 49590,
+      "pgid": 55177,
+      "rss": 273219584,
+      "birth": "Thu Nov 5 12:22:39 2026",
+      "command": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python -B /private/tmp/mcr-post21a-be39-compile-unit04-0202/source_control.py 05"
+    }
+  ],
+  "sample": {
+    "own_processes": 2,
+    "own_rss": 275464192,
+    "global_processes": 2,
+    "global_rss": 275464192,
+    "global_workflows": 1,
+    "global_source": 1,
+    "global_browser": 0,
+    "global_warm_rust": 0,
+    "global_cohorts": [],
+    "global_pid_birth_group_root_records": [],
+    "own_pids": [
+      55177,
+      56376
+    ],
+    "unresolved_accepted_reserved_pids": 0,
+    "declared_global_pids": 4,
+    "declared_global_rss": 1073741824,
+    "unknown": [],
+    "other_accepted_remaining_new_bytes": 33554432,
+    "other_accepted_ordinary_remaining_new_bytes": 33554432
+  }
+}

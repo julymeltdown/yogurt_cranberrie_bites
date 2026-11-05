@@ -1,0 +1,22 @@
+{
+  "state": "OBSERVED_INSTALLED_MACOS_PYTHON_FRAMEWORK_LAUNCHER_REEXEC",
+  "epoch": 1793840602.74142,
+  "probe_pid": 86406,
+  "sys_executable": "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+  "actual_ps_executable": "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+  "files": {
+    "/Library/Frameworks/Python.framework/Versions/3.14/bin/python3.14": {
+      "sha256": "1192b994fbb50303c9df2cc97c9d63797d454c7f57f20ca682877c9e770429aa",
+      "device": 16777229,
+      "inode": 50195923,
+      "bytes": 135696
+    },
+    "/Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python": {
+      "sha256": "c9ce7b8516f24348a0e589e3004fd1246dc04756168b98bb8bd71fc67d0b8868",
+      "device": 16777229,
+      "inode": 50196741,
+      "bytes": 118272
+    }
+  },
+  "rule": "Only this exact observed pinned launcher/image pair; actual PID birth and owner script/root must still match. Actual image and advertised launcher retained separately. No other executable mismatch allowed."
+}

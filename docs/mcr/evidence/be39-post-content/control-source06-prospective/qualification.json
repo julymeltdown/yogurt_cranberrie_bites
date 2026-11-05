@@ -1,0 +1,66 @@
+{
+  "state": "SOURCE06_NOT_ACCEPTED_UNREADY_YIELD",
+  "source05": {
+    "acceptedAtEpoch": 1793848966.072507,
+    "fullPath": "../control-source05/FULL.json",
+    "FULL_SHA256": "361f30927ab73e4fef332df7d0dbf6ac2ba703f6ac02b61df0b7cb84690877a1",
+    "fixtureMethods": "NOT_RUN",
+    "primary": "Unknown actual unrepresented pre-exec QA04 shell PID55690 at1793848967.509033; responsible owner later acknowledged shell vs Python stages, no retrospective registration."
+  },
+  "minimumCumulativeCarryBytes": 406593536,
+  "minimumWholeCarryBytes": 49288855552,
+  "higherInodeMaximaAndUnqualifiedGapsRetained": true,
+  "fixedBaselineSHA256": "e2783a1ec4a3a1f512a573af50afde3109cf8419a373ff6555f508aa3f52d92d",
+  "sameCumulativeFamilyBytes": 536870912,
+  "prospectiveFiles": [
+    {
+      "file": "budget.py",
+      "SHA256": "4fe881b7970fc9f37d1bad048c91ce35cb4ea204ad8f958d6309daa12924df77",
+      "AST": "PASS",
+      "execution": "NOT_RUN"
+    },
+    {
+      "file": "source_control.py",
+      "SHA256": "688e15b97ae8564b3800a1a4ec7458789e7cb601a44fc369729659839bdccce5",
+      "AST": "PASS",
+      "execution": "NOT_RUN"
+    },
+    {
+      "file": "test_process_receipts.py",
+      "SHA256": "f7b1a8dcaa7e8a405727e0340e9172cee5208c8a523ad05730278ff24bb21af0",
+      "AST": "PASS",
+      "execution": "NOT_RUN"
+    }
+  ],
+  "source06Refusals": [
+    {
+      "path": "inprocess-1793849431829512000-failure.json",
+      "SHA256": "c5a6a13970c2653387f2aa26ecf4e2d3af5903aeb790bbf013ddda6c972443c8",
+      "failure": "AssertionError: ordinary observation purpose missing"
+    },
+    {
+      "path": "inprocess-1793849284748719000-failure.json",
+      "SHA256": "7c569fe96bcfcc6f2c4e0a7704c27b940a84acfbe293c82004a133ae72b8a40b",
+      "failure": "AssertionError: typed ordinary observation booking required"
+    },
+    {
+      "path": "inprocess-1793849547515171000-failure.json",
+      "SHA256": "4b9fe55d0eec2ea025e608423a5f4ff585762451ac36f38b4689d91184523dca",
+      "failure": "AccountingError: checkpoint/root/measurement failure"
+    }
+  ],
+  "yieldSHA256": "72cc7fa79784da2dcaf9a01a1c9841ec66f84dc6c9f836a3d1c84de0d1f912a9",
+  "meaningfulFixtureMethods": 10,
+  "fixtureExecution": "NOT_RUN",
+  "source06AcceptEpoch": null,
+  "changes": [
+    "Pin hashes run at existing0.3-second metadata cadence plus explicit pre/postpayload verification; fixed clock asserted everyentry.",
+    "Direct local-PID controller/guardian bootstrap identities before complete ordinary census; same processes then transition to actual source acceptance without a fabricated ordinary zero-resource release.",
+    "Nested ordinaryObservation is separate from canonical ACCEPT/FULL and old exact owner/offer/acceptance claims; ended/nonmatching observations identify no current process.",
+    "Exact live PID/birth/OS image/cwd/program and nonempty factual purpose required. Typed per-owner bookings retained; unquantified ordinary metadata finishers charge full combined2.5GiB ordinary envelope once, not invented zero future growth.",
+    "Unknown live MCR shells still failclosed. No blanket shell/zombie/cwd/basename exemption.",
+    "Canonical closedReceipts alias supported; legacy dedup requires exact owner/offer/acceptance tuple.",
+    "Before actual ACCEPT, enforce current publication predecessor and, after own yield, all later ready first attempts, then refresh actual full reservations and residual floor."
+  ],
+  "limits": "Source06 still needs truthful actual ACCEPT after current order and freshfit, before04:00UTC; source05 closed forever. No target/Cargo/native/PG/browser/services. All ten fixtures/six backend units/five nativecases remainNOT_RUN. Syntax is not runtime qualification."
+}
