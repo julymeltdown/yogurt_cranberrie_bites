@@ -1,0 +1,130 @@
+{
+  "base": "5ac4bc6e69ee47e6782c2d0b25c72c5544a540d6",
+  "sourceCheckpoint": "743c0cc606f1102770066f1472206e5b7aa8c5c4 product/source02 8/types/lint/syntax retained; product unchanged since.",
+  "scope": "PI12 O04 Reports presentation only; hooks/Member/Content exactly unchanged after removing only granted import/Reports return",
+  "changedFrontend": {
+    "frontend/e2e/visual/parade-ink-reports/config.mjs": {
+      "bytes": 1401,
+      "sha256": "838ab1acc3c4b00126f4524b9546f60a9f254fd5ca75a9c6d0808a7fd481adea"
+    },
+    "frontend/e2e/visual/parade-ink-reports/foundation.mjs": {
+      "bytes": 4629,
+      "sha256": "365be6e7c79edf4c0986a6fc6de2a4330e7a982f56637bcc329ba42477fc4fdb"
+    },
+    "frontend/e2e/visual/parade-ink-reports/native.mjs": {
+      "bytes": 13074,
+      "sha256": "6493a6c6b46078fbe58c26b87e72856473903c92917f4a600356256ea68e5d15"
+    },
+    "frontend/e2e/visual/parade-ink-reports/reference.py": {
+      "bytes": 2237,
+      "sha256": "5ec0135a3899a22efdaad88c8ef525dd159e68f1fa86137dca845f82703757c1"
+    },
+    "frontend/src/features/admin/reports/__tests__/parade-ink/presentation.test.tsx": {
+      "bytes": 6025,
+      "sha256": "d2ea84b6be078a033b885129f0c6d110ab3fbccc38e45cfc26ee02de208ccf85"
+    },
+    "frontend/src/features/admin/reports/ui/ModerationReview.tsx": {
+      "bytes": 6308,
+      "sha256": "7b467ebe485652533bd5931091cac59a3203c83ca8f7a74647c8603658436c4a"
+    },
+    "frontend/src/features/admin/reports/ui/parade-ink/ReportsReview.tsx": {
+      "bytes": 8000,
+      "sha256": "f6c88ed6d38d17d48aa19efa70d4814e5541add81aa196fcedb36467388d99b7"
+    },
+    "frontend/src/features/admin/reports/ui/parade-ink/reports.css": {
+      "bytes": 5495,
+      "sha256": "f328a683d9e6c61c0aa83f3799ec8c9384b078b81170f036ac44ccf98713684d"
+    }
+  },
+  "protectedReadonly": {
+    "frontend/src/features/admin/reports/model/controller.ts": {
+      "bytes": 19535,
+      "sha256": "cd5a614c9432c400df20d6a128ab53f37638740176d227f0ed860235d510cddb"
+    },
+    "frontend/src/features/admin/reports/model/contract.ts": {
+      "bytes": 3500,
+      "sha256": "6e5b006e65d8366ed6b9be52e54fc4bf92459357440a8f6ad3c2ece95b9d73e8"
+    },
+    "frontend/src/features/admin/reports/model/validate.ts": {
+      "bytes": 3395,
+      "sha256": "6ef318a0da70e08b04e7a5797816fd09a868a1a6e3e54b999d867e880db9ed37"
+    },
+    "frontend/src/features/admin/reports/index.ts": {
+      "bytes": 444,
+      "sha256": "8cd3efb5cbb9eb4c35a564ddd52614f5c9fe2a2e11255231d15bd3a0edfd0ec9"
+    },
+    "frontend/src/features/admin/reports/ui/moderation.css": {
+      "bytes": 2007,
+      "sha256": "b9b43dd58fa07677b906c894f2c0d5a0fa52e622cd812507a8f0bdff3ef9c4d0"
+    },
+    "frontend/src/features/admin/members/index.ts": {
+      "bytes": 308,
+      "sha256": "edd62388b0cd1b6ad21d8b788a1826c3d96f7cfb556ae96d27585700d4661305"
+    },
+    "frontend/src/features/admin/content/index.ts": {
+      "bytes": 310,
+      "sha256": "43f8e8da55b1fc0c54bca563108dda3f1e46befafd557fbe0b3a23227a4aef63"
+    },
+    "frontend/src/app/operations-composition/owner.ts": {
+      "bytes": 10497,
+      "sha256": "0cca44c74fbd5a8d3622b54cb33898659d9a690424bb15ce70a5d8c21b0f1e1c"
+    },
+    "frontend/src/app/operations-composition/panel.tsx": {
+      "bytes": 5037,
+      "sha256": "829c4b95046f48b549a37d22a04799c12edcb83528c1989c1423b1d28fa8952e"
+    },
+    "frontend/src/app/operations-composition/__tests__/reports-production/harness.ts": {
+      "bytes": 1846,
+      "sha256": "e9b444dc0629b359bb64730899d2ce03187346f82afa4465a2ac89229516c587"
+    },
+    "frontend/src/app/operations-composition/__tests__/reports-production/server.ts": {
+      "bytes": 3745,
+      "sha256": "7a7ae2a1396e51b3fba9cdd4400cbc494912245dfe1e85d063b5a3092d190288"
+    },
+    "frontend/src/shared/api/domain-operations.generated.ts": {
+      "bytes": 97463,
+      "sha256": "3610456a0925aee9c4e3a32564016ea6acc26b7ab01ce536659b7333a5ddd447"
+    },
+    "frontend/src/shared/api/http.ts": {
+      "bytes": 24241,
+      "sha256": "23dc24d55f9d91f769af10106930e2fc0a7ac78dbc6aa3294f6c5ea526947fee"
+    },
+    "frontend/src/features/auth/model/session.ts": {
+      "bytes": 18997,
+      "sha256": "12289039f5d10a0d87b1403220e80dd8a4da2feda8452c5b73a9b241052104f7"
+    },
+    "frontend/src/shared/query/privacy.ts": {
+      "bytes": 9885,
+      "sha256": "9f39e9e25b1c322bbe4b2f19a52d930aa369940757e01611ed632aa11cf2f081"
+    }
+  },
+  "foundationSourceApiPin": "056a8c48ff667134dee8e5e99710185294e4b898",
+  "sourceChecks": "source-02 commands PASS: 8/8 new cases, full nonincremental types, scoped lint, 3 helper syntax. Input743c. Raw guard receipts PASS; their complete PID/RSS samples first followed child launch, so no retrospective pre-child-sample claim. New guards correct that before native.",
+  "native": "Native03 PASS actualdefaultReportsApp3width+states/2helperlint+syntax. Input096ea977. Native01 countfailure/Native02preprimarydriftfailure retained.27PNGs2326924B inclreference, representativevisualcomparison inspected.",
+  "oldGoal": "BLOCKED unchanged; real backend/evidenceEOF/physical open",
+  "foundationShellCorrection": "b5b44e47531e3b75febc5ee5cdd6a11b1648779c; only shell.css production change, other17 postimages unchanged; native still unqualified",
+  "controls": {
+    "docs/mcr/evidence/parade-ink-reports/git_carry.py": "8480356c28b07081fa8be9b497db60ca3f0336ebbcc13c487a7ac809312fbe4d",
+    "docs/mcr/evidence/parade-ink-reports/supervise-allocated.py": "09270f2c7b68cae7e3ebf80ecf817e4a245faddabf164125765431b7e580eebf",
+    "docs/mcr/evidence/parade-ink-reports/run-allocated.py": "b2725dceffa37f0359885fc4b454a7cb4bb46b627ccf2207b973d095f3b3050b",
+    "docs/mcr/evidence/parade-ink-reports/membership.py": "6ff2262229cbaf79394d271b7a0c6bef28417531c67bded37ead1436219d1144"
+  },
+  "ordinary": "DOCPREP32-0110 additional32 accepted2026-11-05T01:12:01.117332Z throughfixed01:40; oldPREP32expiry01:10/O04FIXDOC32expiry01:00 unchanged, allgrowth/history retained. Closed O04return75positivepostimages2248704rounded+own8MiB+Git8MiB+used2MiB=21123072<33554432.",
+  "foundationReadonlyOverride": "Expand nested CSS imports in memory from exact selected b5 blobs and two exact canonical5ac cozy CSS blobs; verify readonly font postimages and rewrite URLs to actual readonly fonts. No peer transitive CSS or source copies.",
+  "retainedFunctional": "bc38036e75ab82fdc9fc5c436365249b572c54fd qualified packet sent412e; full owned Git closure retained; priorWHOLEmax>=4675354448.",
+  "resourceContract": "Ownlocal adaptation of actualPI01source77cfe94af membership; exactownowner/OTHERenv, removes broadshellskip. Bothguards independentboundedreceipts+legacy/freshsamePSdescendants/uniqueatomiccensus beforechildren andcontinuously. No sharedsampler or copied producerexecutionclaim.",
+  "sharedNativeBudget": {
+    "offers": [
+      "03-0124",
+      "04-0124",
+      "05-0124"
+    ],
+    "totalBytes": 209715200,
+    "initialConservativeCarryBytes": 83886080,
+    "basis": "80MiB exceeds all retained oldO04source01+source02+native01peakNEW(44617728) +ENTIREnewDOC32(33554432) +admission/docsmetadata. Keep oldordinarywhole histories separately; allhigheractuals retained. Add each new closedrun peak increment without resetting next offer.",
+    "fixedFoundationPin": "b5b44e47531e3b75febc5ee5cdd6a11b1648779c",
+    "peakAfter03Bytes": 116887552
+  },
+  "priorWholeMaxAtLeastBytes": 4683662502,
+  "canonicalFunctionalReceipt": "cf7bb13735aeb20e0b796b2071726f048a211bd0 frombc38036e; preserve functionalowner/panel atpublication"
+}

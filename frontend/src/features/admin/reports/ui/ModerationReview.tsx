@@ -1,6 +1,7 @@
 import { useEffect, useRef, useSyncExternalStore } from 'react';
 import { actions, rowId, rowKey, type Row } from '../model/contract';
 import type { ModerationController } from '../model/controller';
+import { isReportsLane, ReportsReview } from './parade-ink/ReportsReview';
 import './moderation.css';
 const titles = { reports: 'Report queue', members: 'Member review', content: 'Content review' };
 const label = (r: Row) => 'report_id' in r ? r.target_type + ' report' : 'user_id' in r ? r.profile.display_name : r.target_type + ' content';
@@ -20,6 +21,8 @@ export function ModerationReview({ controller }: {
         if (state.confirm)
             confirm.current?.focus();
     }, [state.confirm]);
+    if (isReportsLane(controller.lane))
+        return <ReportsReview controller={controller} state={state} heading={heading} confirm={confirm} opener={opener}/>;
     if (!state.access)
         return <main className="moderation"><h1>Moderator access unavailable</h1><p role="alert">A current server authorization for this event is required. No private records are open.</p></main>;
     return <main className="moderation"><header><p>Event moderation</p><h1>{titles[controller.lane]}</h1><p>Private review. Use only the information needed for this action.</p>

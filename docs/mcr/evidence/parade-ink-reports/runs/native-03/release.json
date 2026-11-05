@@ -1,0 +1,804 @@
+{
+  "allocation": "O04-ADMIN-APP-NATIVE03-0124",
+  "class": "native",
+  "candidate": "096ea977570710a81e0138db240d803b44327571",
+  "acceptedUtc": "2026-11-05T01:26:49.154682+00:00",
+  "acceptedFreeBytes": 23457570816,
+  "otherReserveBytes": 5368709120,
+  "workUtc": "2026-11-05T01:29:49.154682+00:00",
+  "hardUtc": "2026-11-05T01:30:49.154682+00:00",
+  "sourceSha256": {
+    "frontend/src/features/admin/reports/ui/parade-ink/ReportsReview.tsx": "f6c88ed6d38d17d48aa19efa70d4814e5541add81aa196fcedb36467388d99b7",
+    "frontend/src/features/admin/reports/ui/parade-ink/reports.css": "f328a683d9e6c61c0aa83f3799ec8c9384b078b81170f036ac44ccf98713684d",
+    "frontend/src/features/admin/reports/__tests__/parade-ink/presentation.test.tsx": "d2ea84b6be078a033b885129f0c6d110ab3fbccc38e45cfc26ee02de208ccf85",
+    "frontend/e2e/visual/parade-ink-reports/foundation.mjs": "365be6e7c79edf4c0986a6fc6de2a4330e7a982f56637bcc329ba42477fc4fdb",
+    "frontend/e2e/visual/parade-ink-reports/reference.py": "5ec0135a3899a22efdaad88c8ef525dd159e68f1fa86137dca845f82703757c1",
+    "frontend/e2e/visual/parade-ink-reports/native.mjs": "6493a6c6b46078fbe58c26b87e72856473903c92917f4a600356256ea68e5d15",
+    "frontend/e2e/visual/parade-ink-reports/config.mjs": "838ab1acc3c4b00126f4524b9546f60a9f254fd5ca75a9c6d0808a7fd481adea",
+    "docs/mcr/evidence/parade-ink-reports/run-allocated.py": "b2725dceffa37f0359885fc4b454a7cb4bb46b627ccf2207b973d095f3b3050b",
+    "docs/mcr/evidence/parade-ink-reports/supervise-allocated.py": "09270f2c7b68cae7e3ebf80ecf817e4a245faddabf164125765431b7e580eebf",
+    "docs/mcr/evidence/parade-ink-reports/git_carry.py": "8480356c28b07081fa8be9b497db60ca3f0336ebbcc13c487a7ac809312fbe4d",
+    "docs/mcr/evidence/parade-ink-reports/membership.py": "6ff2262229cbaf79394d271b7a0c6bef28417531c67bded37ead1436219d1144",
+    "frontend/pnpm-lock.yaml": "47ca44459819ad0e887d2f4f93394fdf3b1053b8f45edc9ceb0236981feee1f6",
+    "frontend/tsconfig.json": "55050e293472fb6ec4aa2690c8cad7cb5a5a107ba483bf98851a0c4e707c6528",
+    "frontend/src/features/admin/reports/ui/ModerationReview.tsx": "7b467ebe485652533bd5931091cac59a3203c83ca8f7a74647c8603658436c4a",
+    "frontend/src/features/admin/reports/ui/moderation.css": "b9b43dd58fa07677b906c894f2c0d5a0fa52e622cd812507a8f0bdff3ef9c4d0",
+    "frontend/src/features/admin/reports/model/controller.ts": "cd5a614c9432c400df20d6a128ab53f37638740176d227f0ed860235d510cddb",
+    "frontend/src/features/admin/reports/model/contract.ts": "6e5b006e65d8366ed6b9be52e54fc4bf92459357440a8f6ad3c2ece95b9d73e8",
+    "frontend/src/app/operations-composition/owner.ts": "0cca44c74fbd5a8d3622b54cb33898659d9a690424bb15ce70a5d8c21b0f1e1c",
+    "frontend/src/app/operations-composition/panel.tsx": "829c4b95046f48b549a37d22a04799c12edcb83528c1989c1423b1d28fa8952e",
+    "frontend/src/app/ports.ts": "610276ca63284e664b824a521c007cba7d78c82d8f5e26c6f3c530a4b539a55f",
+    "frontend/src/main.tsx": "73dcb049c45fc5125de1637587a09373664c31d4899ef15dea0119a0ace3d5a6",
+    "frontend/src/app/AdminBoundary.tsx": "da057524a77573a6b1c7ff65849ee0d3a9471b491209fe721c976075e62b25a6",
+    "frontend/src/shared/api/domain-operations.generated.ts": "3610456a0925aee9c4e3a32564016ea6acc26b7ab01ce536659b7333a5ddd447"
+  },
+  "guardianPid": 34269,
+  "outerPid": 34218,
+  "standingBeforeChildrenUtc": "2026-11-05T01:26:51.509615+00:00",
+  "retained": {
+    "checkoutBytes": 1375760384,
+    "gitMetadataBytes": 2359296,
+    "readOnlyDependencyLogicalBytes": 408236853,
+    "readOnlyDependencyAllocatedBytes": 438317056,
+    "readOnlyDependencyChargeBytes": 438317056,
+    "readOnlyNodeRuntimeBytes": 122564432,
+    "readOnlyFoundation": {
+      "pin": "b5b44e47531e3b75febc5ee5cdd6a11b1648779c",
+      "bytes": 782336,
+      "postimages": [
+        {
+          "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/app/reference-chrome-v2/WindowInk.tsx",
+          "sha256": "16ce865a27dea4e79e239a19bd9290120844aa7857925af4652d37582de78278",
+          "observedReadonlySha256": "019662bb93b5eb92dd76b670738462c905a2a191ce7457b6ecbeb3efca9f33e4",
+          "source": "immutable Git load override",
+          "bytes": 916,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/app/reference-chrome-v2/chrome.css",
+          "sha256": "857c14a183f4e008861ba119e65da490d52e6715ff5ca6b46b68b553f63f9c1e",
+          "observedReadonlySha256": "6a5449d6d89bd16497a17c9e46a872f4b9f8afe3cedff76835045529d2afca45",
+          "source": "immutable Git load override",
+          "bytes": 3451,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/app/shell-chrome/parade-footer.tsx",
+          "sha256": "ecbb1b9f16a61315c7e63b3ba296e7d0977619fb0df899b950e3a41b8a1c6428",
+          "observedReadonlySha256": "ecbb1b9f16a61315c7e63b3ba296e7d0977619fb0df899b950e3a41b8a1c6428",
+          "source": "verified readonly file",
+          "bytes": 130,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/app/shell-chrome/shell-chrome.css",
+          "sha256": "264fa91f2b9d45f6d7756cfcde5fa0656d714e6c2190d325800d14c2f9639ea1",
+          "observedReadonlySha256": "264fa91f2b9d45f6d7756cfcde5fa0656d714e6c2190d325800d14c2f9639ea1",
+          "source": "verified readonly file",
+          "bytes": 6153,
+          "chargeBytes": 8192
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/app/shell.css",
+          "sha256": "b12f4bbddb55d144fb6da89ab2686e0225455ed3bedaff70ad8a34ef6a0161dc",
+          "observedReadonlySha256": "b12f4bbddb55d144fb6da89ab2686e0225455ed3bedaff70ad8a34ef6a0161dc",
+          "source": "verified readonly file",
+          "bytes": 13201,
+          "chargeBytes": 16384
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/shared/styles/base.css",
+          "sha256": "d9788ee432554115f802c9def0c90b4e657165571e3b7429ad2d596be86928d6",
+          "observedReadonlySha256": "c687b4d31895eb1f1414277663bd5d707b56f6ded1abef9154262b9d27c2f303",
+          "source": "immutable Git load override",
+          "bytes": 8537,
+          "chargeBytes": 12288
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/shared/styles/parade-ink/fonts/Oswald.ttf",
+          "sha256": "5b38c246e255a12f5712d640d56bcced0472466fc68983d2d0410ec0457c2817",
+          "observedReadonlySha256": "5b38c246e255a12f5712d640d56bcced0472466fc68983d2d0410ec0457c2817",
+          "source": "verified readonly file",
+          "bytes": 172088,
+          "chargeBytes": 176128
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/shared/styles/parade-ink/fonts/Roboto.ttf",
+          "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+          "observedReadonlySha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+          "source": "verified readonly file",
+          "bytes": 488584,
+          "chargeBytes": 491520
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/shared/styles/parade-ink/fonts/oswald-METADATA.pb",
+          "sha256": "3d5119d2e99a15e7c2973937d10a77e7aa1fc6a28fe173b02e059485aa596097",
+          "observedReadonlySha256": "3d5119d2e99a15e7c2973937d10a77e7aa1fc6a28fe173b02e059485aa596097",
+          "source": "verified readonly file",
+          "bytes": 4396,
+          "chargeBytes": 8192
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/shared/styles/parade-ink/fonts/oswald-OFL.txt",
+          "sha256": "0fd731a904b729a4e02eaf5e8ebd06783edd9abe400e8882760160230675b652",
+          "observedReadonlySha256": "0fd731a904b729a4e02eaf5e8ebd06783edd9abe400e8882760160230675b652",
+          "source": "verified readonly file",
+          "bytes": 4483,
+          "chargeBytes": 8192
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/shared/styles/parade-ink/fonts/provenance.json",
+          "sha256": "aded4b656522bd2c4de6cfd1be9e9a6cfcf96d94ecc61e3a2f36497a465574db",
+          "observedReadonlySha256": "aded4b656522bd2c4de6cfd1be9e9a6cfcf96d94ecc61e3a2f36497a465574db",
+          "source": "verified readonly file",
+          "bytes": 3273,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/shared/styles/parade-ink/fonts/roboto-METADATA.pb",
+          "sha256": "6fef19da54fb62d152f0c7b21710e6849950db7ecf852ea29511c593dad462f0",
+          "observedReadonlySha256": "6fef19da54fb62d152f0c7b21710e6849950db7ecf852ea29511c593dad462f0",
+          "source": "verified readonly file",
+          "bytes": 1463,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/shared/styles/parade-ink/fonts/roboto-OFL.txt",
+          "sha256": "061402327a96aadb0bfb694a960ed289ecd38d383e396243831ab81feb109c41",
+          "observedReadonlySha256": "061402327a96aadb0bfb694a960ed289ecd38d383e396243831ab81feb109c41",
+          "source": "verified readonly file",
+          "bytes": 4394,
+          "chargeBytes": 8192
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/shared/styles/parade-ink/primitives.css",
+          "sha256": "c5a327ec4e63407ea5119a48ab20632c63e81780a842b57c0bb5e856e7ca78e0",
+          "observedReadonlySha256": "c5a327ec4e63407ea5119a48ab20632c63e81780a842b57c0bb5e856e7ca78e0",
+          "source": "verified readonly file",
+          "bytes": 6508,
+          "chargeBytes": 8192
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/shared/styles/parade-ink/tokens.css",
+          "sha256": "15b68ce29df755e81849d2bc359f2c2aaade9857d5e04c32692bf9aab4700556",
+          "observedReadonlySha256": "15b68ce29df755e81849d2bc359f2c2aaade9857d5e04c32692bf9aab4700556",
+          "source": "verified readonly file",
+          "bytes": 1334,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/shared/styles/themes/themes.css",
+          "sha256": "c7d8561ab09c4402812e0eacf72cc56b6cc2ce7a84449632e8054573d4802e4c",
+          "observedReadonlySha256": "c7d8561ab09c4402812e0eacf72cc56b6cc2ce7a84449632e8054573d4802e4c",
+          "source": "verified readonly file",
+          "bytes": 1159,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/shared/ui/concert-window/concert-window.css",
+          "sha256": "9b03795cc11ed06130ebdc2ec386948d91f0e9cbba592f876a82c72ef1014c92",
+          "observedReadonlySha256": "9b03795cc11ed06130ebdc2ec386948d91f0e9cbba592f876a82c72ef1014c92",
+          "source": "verified readonly file",
+          "bytes": 5848,
+          "chargeBytes": 8192
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/shared/ui/concert-window/index.tsx",
+          "sha256": "0b532322426fd4f0aae0e2667cae80e2257917eda8cb1de6455ee3670025ae56",
+          "observedReadonlySha256": "0b532322426fd4f0aae0e2667cae80e2257917eda8cb1de6455ee3670025ae56",
+          "source": "verified readonly file",
+          "bytes": 6205,
+          "chargeBytes": 8192
+        }
+      ],
+      "canonicalCss": [
+        {
+          "path": "frontend/src/shared/styles/cozy-identity-backgrounds-v1.css",
+          "sha256": "77b25626d6c94f3f226e1ccc079a8b96d11d6a4873dfc6e20fcef174c49f5f6d",
+          "bytes": 3891,
+          "chargeBasis": "Already charged entire canonical checkout; immutable in-memory CSS expansion"
+        },
+        {
+          "path": "frontend/src/shared/styles/cozy-community-backgrounds-v1.css",
+          "sha256": "d26dd8fbee928539f2689ccd9bb6269e4cb964c58b78e8cc86afbd894f228504",
+          "bytes": 2260,
+          "chargeBasis": "Already charged entire canonical checkout; immutable in-memory CSS expansion"
+        }
+      ]
+    },
+    "entirePythonPrefix": "/Library/Frameworks/Python.framework/Versions/3.14",
+    "entirePythonChargeBytes": 1045037056,
+    "readOnlyNodeSha256": "b6fb419f0f43bb2fbca273700294dd2f3b685a64b60e8417c295f47646a70e4a",
+    "readOnlyChromeLogicalBytes": 1524099438,
+    "readOnlyChromeAllocatedBytes": 1527132160,
+    "readOnlyChromeChargeBytes": 1527132160,
+    "ownedSharedGitInventory": {
+      "bytes": 122392576,
+      "objectCount": 992,
+      "inodes": [
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/08/83e02bfe3fa4bba463ff47377c040f206081e6",
+          "logicalBytes": 1712,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/09/6ea977570710a81e0138db240d803b44327571",
+          "logicalBytes": 212,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/11/6fb2a76376dd3f36df659b0d715bcd9411e96d",
+          "logicalBytes": 6950,
+          "allocatedBytes": 8192,
+          "chargeBytes": 8192
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/18/fd0b28143fb266b6a57b041ad29491c073d969",
+          "logicalBytes": 132,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/1a/f9c3d6d0b14952ad5e6d21dd12a9c565044db9",
+          "logicalBytes": 193,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/1c/3b4bf38a778ccab84ab6fecda6f1ae06c8a3b2",
+          "logicalBytes": 6713,
+          "allocatedBytes": 8192,
+          "chargeBytes": 8192
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/1d/53da2a66c04d52650537150ac7843416d703dc",
+          "logicalBytes": 621,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/27/52c83d36c512e749a0db92a422ac72981ab2fb",
+          "logicalBytes": 621,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/28/2bc74e78604d8f6113d5395c04ff2f4f967dac",
+          "logicalBytes": 236,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/28/f8c179abf2ae77d202daf7918c786509cc2586",
+          "logicalBytes": 237,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/2b/0aae606f8e10abb5425ccbab33d22c85bbf1f6",
+          "logicalBytes": 1712,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/2b/7763d2dbeac5bf0ff153c814726dd9ae538044",
+          "logicalBytes": 6823,
+          "allocatedBytes": 8192,
+          "chargeBytes": 8192
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/2d/a2d86cd8dc3de09bec34552ca1283f1bbea28c",
+          "logicalBytes": 622,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/32/257ee99ddca27646261590eb4704c806d14c0b",
+          "logicalBytes": 6951,
+          "allocatedBytes": 8192,
+          "chargeBytes": 8192
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/35/c4e07b4dba370743b5516e1ff9fa5d3d8b178b",
+          "logicalBytes": 1711,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/39/0dd08d439547c35c8008b899e612f69f4cb6ca",
+          "logicalBytes": 2069,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/39/fb8217aad599c45d4b61869ffad5e248a75dd7",
+          "logicalBytes": 6950,
+          "allocatedBytes": 8192,
+          "chargeBytes": 8192
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/3a/8bc6ff9813f037537f76bc62ad8b648d1afb1f",
+          "logicalBytes": 1713,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/3c/015df7d3dafa04d33605bee53b0c07d5537295",
+          "logicalBytes": 107,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/44/c1bcfc5e7f3689d28a69152c4d9e82011a1709",
+          "logicalBytes": 237,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/46/2f4aa61d1787f787a9a9ebb1e9b06bcef668f5",
+          "logicalBytes": 108,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/46/9c2f9b60e031b7d53dcbedf35debb266a7ca0b",
+          "logicalBytes": 206,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/4c/e077507039e89dffae9bb67b17330aeb01d6f6",
+          "logicalBytes": 6326,
+          "allocatedBytes": 8192,
+          "chargeBytes": 8192
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/4e/a16da9131df2781e32682adecbb4e2286a68a9",
+          "logicalBytes": 3795,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/52/2a01d1bde7b35a44c2b177179fc4046fa7b66f",
+          "logicalBytes": 272,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/58/1532193ae87dc85f3ec49bf05de0b19b4dff2f",
+          "logicalBytes": 3323,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/60/60900035d8a11846df817f4ec2eb1416db8f2c",
+          "logicalBytes": 3324,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/60/67082d772650e043c3613469023f741120d4fd",
+          "logicalBytes": 3324,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/67/69794edd6b3afc4e4057f5ed2fb09eefc95ec6",
+          "logicalBytes": 1714,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/6c/ee10c4badd28140242600c9fe0cffb9ceab63f",
+          "logicalBytes": 212,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/70/72c17482dfcff69f9f5a0a4099639b016907c8",
+          "logicalBytes": 6790,
+          "allocatedBytes": 8192,
+          "chargeBytes": 8192
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/72/e1b4ac205bc21c7a734be28e1abfb21ef91096",
+          "logicalBytes": 6951,
+          "allocatedBytes": 8192,
+          "chargeBytes": 8192
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/74/179baa4a674213d8a32e09c6509c883c28ef0a",
+          "logicalBytes": 614,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/74/5033c0301895cc58bf1dfae9295b9849222a9a",
+          "logicalBytes": 88,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/78/3975bcb5663329f6ebf8be495adae9cb0f51e0",
+          "logicalBytes": 155,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/7a/b0ae8fe37e1c9f316b5a6051d93547496d6009",
+          "logicalBytes": 3560,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/7b/8eebf9f008f2fbe8f9650f23130189a9833160",
+          "logicalBytes": 271,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/80/75ba189ddf2b2120e3a4b0a36ce70193b4ea0d",
+          "logicalBytes": 56,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/82/a2c1b892d0713dce79785380d425d4699b4ed3",
+          "logicalBytes": 452,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/89/13950823d9721d2d2a2d011e0b4f89d2e7de12",
+          "logicalBytes": 4988,
+          "allocatedBytes": 8192,
+          "chargeBytes": 8192
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/8f/bcadac2d75a4ce09787916ba9223134c47dc1d",
+          "logicalBytes": 1713,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/91/cffefcc0af1c7c4c5d5241d812027c928d294f",
+          "logicalBytes": 4824,
+          "allocatedBytes": 8192,
+          "chargeBytes": 8192
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/96/751e6a889e06437af18fa991985788f07837c4",
+          "logicalBytes": 6823,
+          "allocatedBytes": 8192,
+          "chargeBytes": 8192
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/9a/40eebd7f809a4425be4a8bff79503faad6578a",
+          "logicalBytes": 107,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/a2/48ac58b63413742657368187d70b0ae744ff5a",
+          "logicalBytes": 108,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/a2/e85e2d3a0be8b3e1411eb1fa572ffa88dcfd55",
+          "logicalBytes": 4771,
+          "allocatedBytes": 8192,
+          "chargeBytes": 8192
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/a9/7b15283a290d8da4c08647069ac2a66e5138c0",
+          "logicalBytes": 108,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/a9/893945484df1b8ff16ef122affb931d52f4d27",
+          "logicalBytes": 2819,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/ab/c5c092439f98d45fb0bd567b829ab0d679ab52",
+          "logicalBytes": 622,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/b0/85b84316e44a5d03c7a720ab612e42c0504716",
+          "logicalBytes": 200,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/b4/9d0a9b58a60f4d99190d69705bbd520f3daf48",
+          "logicalBytes": 270,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/b5/4873fd2d72659add4147557666cb68f589fc58",
+          "logicalBytes": 1996,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/bd/4a103bc90619d1623dd2b63b4d12fe178e3516",
+          "logicalBytes": 106,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/c1/147249a7a24eb8275adb335d456c3936a55b77",
+          "logicalBytes": 208,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/c3/5b112da7366135c5954338884adf1ef366eb10",
+          "logicalBytes": 621,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/ca/87dfef78f35e4ade7de7f42073faa650115b72",
+          "logicalBytes": 212,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/cd/afa0ddc5a09bc05d017ac18aded3ac57969560",
+          "logicalBytes": 6951,
+          "allocatedBytes": 8192,
+          "chargeBytes": 8192
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/ce/296254fd5f05916ed8d496ece1795d98f86a21",
+          "logicalBytes": 188,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/cf/9c772d2fbbee6f1018f597bef3edc34550fa43",
+          "logicalBytes": 403,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/d4/254fbc98b270a3c4164137d77db3171d1fff5c",
+          "logicalBytes": 621,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/d4/d200b22a0014ffbed43bd97e6e27f3e4eca3e8",
+          "logicalBytes": 4993,
+          "allocatedBytes": 8192,
+          "chargeBytes": 8192
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/d8/f527e61c36cccfa557828fe18fb06140716e86",
+          "logicalBytes": 621,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/db/b7fd6ce931ca630c7d7972bfea1e619f1e19ce",
+          "logicalBytes": 6701,
+          "allocatedBytes": 8192,
+          "chargeBytes": 8192
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/e5/2162a91a1c6542b4c51deb7f1e72477ef0b759",
+          "logicalBytes": 468,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/ea/cd0bd43e6000c7b235f7a0c5d7b0c3222da527",
+          "logicalBytes": 1713,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/f5/13d3f542e7ec56ef452c7e8bbb0ab6a14ec089",
+          "logicalBytes": 107,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/fa/0d012260f7331de60cdba3f64bc1895b650936",
+          "logicalBytes": 6951,
+          "allocatedBytes": 8192,
+          "chargeBytes": 8192
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/fc/6ca2527d480008ae799ed52ed518f0777afd94",
+          "logicalBytes": 547,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/fd/61c56d0de9ae6e38598aa90458d770fbf1b024",
+          "logicalBytes": 107,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/fe/cbc1c9dde5993dcc982a6d43c62596cabad6dd",
+          "logicalBytes": 2820,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-4b302edbf94a2ee1cc380457c6f2cc39f8dbd17b.idx",
+          "logicalBytes": 83532,
+          "allocatedBytes": 86016,
+          "chargeBytes": 86016
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-4b302edbf94a2ee1cc380457c6f2cc39f8dbd17b.pack",
+          "logicalBytes": 11648904,
+          "allocatedBytes": 11649024,
+          "chargeBytes": 11649024
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-4b302edbf94a2ee1cc380457c6f2cc39f8dbd17b.rev",
+          "logicalBytes": 11832,
+          "allocatedBytes": 12288,
+          "chargeBytes": 12288
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-d04a77c88d43e15f9f3252c1b69db8b8edecf06b.idx",
+          "logicalBytes": 26972,
+          "allocatedBytes": 28672,
+          "chargeBytes": 28672
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-d04a77c88d43e15f9f3252c1b69db8b8edecf06b.pack",
+          "logicalBytes": 4489667,
+          "allocatedBytes": 4493312,
+          "chargeBytes": 4493312
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-d04a77c88d43e15f9f3252c1b69db8b8edecf06b.rev",
+          "logicalBytes": 3752,
+          "allocatedBytes": 4096,
+          "chargeBytes": 4096
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-d4d7e686e78fcd35069b39d7608f0c07f0c19c85.idx",
+          "logicalBytes": 732516,
+          "allocatedBytes": 733184,
+          "chargeBytes": 733184
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-d4d7e686e78fcd35069b39d7608f0c07f0c19c85.pack",
+          "logicalBytes": 104924051,
+          "allocatedBytes": 104927232,
+          "chargeBytes": 104927232
+        },
+        {
+          "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-d4d7e686e78fcd35069b39d7608f0c07f0c19c85.rev",
+          "logicalBytes": 104544,
+          "allocatedBytes": 106496,
+          "chargeBytes": 106496
+        }
+      ]
+    },
+    "sharedGitCommonDirReadOnly": "/Users/lhs/Desktop/mcr/.git",
+    "copiedGitCarryBytes": 0
+  },
+  "caps": {
+    "wholeBytes": 8589934592,
+    "newBytes": 209715200,
+    "temporaryBytes": 167772160,
+    "durableBytes": 41943040,
+    "rssBytes": 4294967296,
+    "processes": 32
+  },
+  "peaks": {
+    "wholeBytes": 4675354448,
+    "newBytes": 116887552,
+    "temporaryBytes": 30576640,
+    "durableBytes": 3543040,
+    "rssBytes": 2344747008,
+    "processes": 10
+  },
+  "commands": [
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr/frontend/node_modules/.bin/oxlint",
+        "--deny-warnings",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/frontend/e2e/visual/parade-ink-reports/native.mjs",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/frontend/e2e/visual/parade-ink-reports/foundation.mjs"
+      ],
+      "cwd": ".",
+      "exitCode": 0,
+      "elapsedSeconds": 0.500549582997337
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/frontend/e2e/visual/parade-ink-reports/native.mjs"
+      ],
+      "cwd": ".",
+      "exitCode": 0,
+      "elapsedSeconds": 0.5073090409860015
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "--check",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/frontend/e2e/visual/parade-ink-reports/foundation.mjs"
+      ],
+      "cwd": ".",
+      "exitCode": 0,
+      "elapsedSeconds": 0.49278929200954735
+    },
+    {
+      "argv": [
+        "/Users/lhs/Desktop/mcr-tools/node-v24.22.2-darwin-arm64/bin/node",
+        "/Users/lhs/Desktop/mcr-worktrees/fe-ref-gifts/frontend/e2e/visual/parade-ink-reports/native.mjs"
+      ],
+      "cwd": ".",
+      "exitCode": 0,
+      "elapsedSeconds": 17.030980667012045
+    }
+  ],
+  "status": "PASS",
+  "initialSampleBeforeWorkload": {
+    "utc": "2026-11-05T01:26:51.539028+00:00",
+    "pids": [
+      34269,
+      34218
+    ],
+    "wholeBytes": 4675354448,
+    "newBytes": 83918848,
+    "temporaryBytes": 32768,
+    "durableBytes": 1069056,
+    "rssBytes": 182779904,
+    "processes": 2,
+    "freeBytes": 23457087488
+  },
+  "initialGlobalCensus": {
+    "observedAtEpoch": 1793842011.640224,
+    "psSnapshotSHA256": "95f2002f6b9f72bc5333927b344f5b4d338eb869222caf1538e1237952a9986e",
+    "owners": [
+      "01a1a230-6acc-7e82-9e4b-92506decc745"
+    ],
+    "ordinaryActualPids": [],
+    "reservedProcesses": 32,
+    "reservedRSSBytes": 4294967296,
+    "actualPids": [
+      34218,
+      34269,
+      34549
+    ],
+    "actualRSSBytes": 185106432,
+    "otherNewUpperBytes": 2684354560
+  },
+  "sourcePlan": "full",
+  "portRebound": 5370,
+  "fullUtc": "2026-11-05T01:27:10.433130+00:00",
+  "cleanupSeconds": 0.055940833990462124,
+  "remainingProcesses": [],
+  "dependencyLinkAbsent": true,
+  "temporaryAbsent": true,
+  "freeAfterBytes": 23439761408,
+  "finishedBeforeHardDeadline": true,
+  "released": true,
+  "logSha256": {
+    "00.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "01.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "03.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "02.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "sourceCommit": "bc38036e75ab82fdc9fc5c436365249b572c54fd",
+  "sourcePrefix": "docs/mcr/evidence/fe37-default-member-content/runs/native-03/",
+  "purpose": "Byte-identical own historical receipts retained through exclusive checkout branch return; no source or capture copying, no new execution or retrospective claim.",
+  "sha256": {
+    "accepted.json": "f6896e30eabe675a1f0255a12ff0d9075cf22b7cd7668dc4fd18f732cd6b6de7",
+    "release.json": "764aa19e5d777b5191724666f4bb3be9eebd68d97a222fdd6d0919e646a5ae00",
+    "outer-release.json": "f1f65714f80c3ee0c7d56883360e6f2a0ac00d60f8be34cdd62a61ef734daa67",
+    "bootstrap-accepted.json": "0591526b63ac788b3db34010db44965d1227281fd6687b49774deadcde9b9ac2"
+  }
+}

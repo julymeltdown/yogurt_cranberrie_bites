@@ -1,0 +1,513 @@
+{
+  "allocation": "O04-ADMIN-APP-NATIVE01-0035",
+  "outerPid": 52539,
+  "pins": {
+    "run-allocated.py": "974473d8a3eea252bcb55fca2c4c5bf2f4dadc60fc8d011633e35989af1d81ab",
+    "supervise-allocated.py": "6256a227d9822af5663f5d48ec2d43298b3c295674e03bce3aabd522cb622a92",
+    "git_carry.py": "632caf71bfbd513c8e8f9543773e1c882ea5f12cdf6de5041c4243adba007568"
+  },
+  "readOnlyFoundation": {
+    "pin": "b5b44e47531e3b75febc5ee5cdd6a11b1648779c",
+    "bytes": 782336,
+    "postimages": [
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/app/reference-chrome-v2/WindowInk.tsx",
+        "sha256": "16ce865a27dea4e79e239a19bd9290120844aa7857925af4652d37582de78278",
+        "observedReadonlySha256": "16ce865a27dea4e79e239a19bd9290120844aa7857925af4652d37582de78278",
+        "source": "verified readonly file",
+        "bytes": 916,
+        "chargeBytes": 4096
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/app/reference-chrome-v2/chrome.css",
+        "sha256": "857c14a183f4e008861ba119e65da490d52e6715ff5ca6b46b68b553f63f9c1e",
+        "observedReadonlySha256": "857c14a183f4e008861ba119e65da490d52e6715ff5ca6b46b68b553f63f9c1e",
+        "source": "verified readonly file",
+        "bytes": 3451,
+        "chargeBytes": 4096
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/app/shell-chrome/parade-footer.tsx",
+        "sha256": "ecbb1b9f16a61315c7e63b3ba296e7d0977619fb0df899b950e3a41b8a1c6428",
+        "observedReadonlySha256": "ecbb1b9f16a61315c7e63b3ba296e7d0977619fb0df899b950e3a41b8a1c6428",
+        "source": "verified readonly file",
+        "bytes": 130,
+        "chargeBytes": 4096
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/app/shell-chrome/shell-chrome.css",
+        "sha256": "264fa91f2b9d45f6d7756cfcde5fa0656d714e6c2190d325800d14c2f9639ea1",
+        "observedReadonlySha256": "264fa91f2b9d45f6d7756cfcde5fa0656d714e6c2190d325800d14c2f9639ea1",
+        "source": "verified readonly file",
+        "bytes": 6153,
+        "chargeBytes": 8192
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/app/shell.css",
+        "sha256": "b12f4bbddb55d144fb6da89ab2686e0225455ed3bedaff70ad8a34ef6a0161dc",
+        "observedReadonlySha256": "b12f4bbddb55d144fb6da89ab2686e0225455ed3bedaff70ad8a34ef6a0161dc",
+        "source": "verified readonly file",
+        "bytes": 13201,
+        "chargeBytes": 16384
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/shared/styles/base.css",
+        "sha256": "d9788ee432554115f802c9def0c90b4e657165571e3b7429ad2d596be86928d6",
+        "observedReadonlySha256": "c687b4d31895eb1f1414277663bd5d707b56f6ded1abef9154262b9d27c2f303",
+        "source": "immutable Git load override",
+        "bytes": 8537,
+        "chargeBytes": 12288
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/shared/styles/parade-ink/fonts/Oswald.ttf",
+        "sha256": "5b38c246e255a12f5712d640d56bcced0472466fc68983d2d0410ec0457c2817",
+        "observedReadonlySha256": "5b38c246e255a12f5712d640d56bcced0472466fc68983d2d0410ec0457c2817",
+        "source": "verified readonly file",
+        "bytes": 172088,
+        "chargeBytes": 176128
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/shared/styles/parade-ink/fonts/Roboto.ttf",
+        "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+        "observedReadonlySha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+        "source": "verified readonly file",
+        "bytes": 488584,
+        "chargeBytes": 491520
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/shared/styles/parade-ink/fonts/oswald-METADATA.pb",
+        "sha256": "3d5119d2e99a15e7c2973937d10a77e7aa1fc6a28fe173b02e059485aa596097",
+        "observedReadonlySha256": "3d5119d2e99a15e7c2973937d10a77e7aa1fc6a28fe173b02e059485aa596097",
+        "source": "verified readonly file",
+        "bytes": 4396,
+        "chargeBytes": 8192
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/shared/styles/parade-ink/fonts/oswald-OFL.txt",
+        "sha256": "0fd731a904b729a4e02eaf5e8ebd06783edd9abe400e8882760160230675b652",
+        "observedReadonlySha256": "0fd731a904b729a4e02eaf5e8ebd06783edd9abe400e8882760160230675b652",
+        "source": "verified readonly file",
+        "bytes": 4483,
+        "chargeBytes": 8192
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/shared/styles/parade-ink/fonts/provenance.json",
+        "sha256": "aded4b656522bd2c4de6cfd1be9e9a6cfcf96d94ecc61e3a2f36497a465574db",
+        "observedReadonlySha256": "aded4b656522bd2c4de6cfd1be9e9a6cfcf96d94ecc61e3a2f36497a465574db",
+        "source": "verified readonly file",
+        "bytes": 3273,
+        "chargeBytes": 4096
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/shared/styles/parade-ink/fonts/roboto-METADATA.pb",
+        "sha256": "6fef19da54fb62d152f0c7b21710e6849950db7ecf852ea29511c593dad462f0",
+        "observedReadonlySha256": "6fef19da54fb62d152f0c7b21710e6849950db7ecf852ea29511c593dad462f0",
+        "source": "verified readonly file",
+        "bytes": 1463,
+        "chargeBytes": 4096
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/shared/styles/parade-ink/fonts/roboto-OFL.txt",
+        "sha256": "061402327a96aadb0bfb694a960ed289ecd38d383e396243831ab81feb109c41",
+        "observedReadonlySha256": "061402327a96aadb0bfb694a960ed289ecd38d383e396243831ab81feb109c41",
+        "source": "verified readonly file",
+        "bytes": 4394,
+        "chargeBytes": 8192
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/shared/styles/parade-ink/primitives.css",
+        "sha256": "c5a327ec4e63407ea5119a48ab20632c63e81780a842b57c0bb5e856e7ca78e0",
+        "observedReadonlySha256": "c5a327ec4e63407ea5119a48ab20632c63e81780a842b57c0bb5e856e7ca78e0",
+        "source": "verified readonly file",
+        "bytes": 6508,
+        "chargeBytes": 8192
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/shared/styles/parade-ink/tokens.css",
+        "sha256": "15b68ce29df755e81849d2bc359f2c2aaade9857d5e04c32692bf9aab4700556",
+        "observedReadonlySha256": "15b68ce29df755e81849d2bc359f2c2aaade9857d5e04c32692bf9aab4700556",
+        "source": "verified readonly file",
+        "bytes": 1334,
+        "chargeBytes": 4096
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/shared/styles/themes/themes.css",
+        "sha256": "c7d8561ab09c4402812e0eacf72cc56b6cc2ce7a84449632e8054573d4802e4c",
+        "observedReadonlySha256": "c7d8561ab09c4402812e0eacf72cc56b6cc2ce7a84449632e8054573d4802e4c",
+        "source": "verified readonly file",
+        "bytes": 1159,
+        "chargeBytes": 4096
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/shared/ui/concert-window/concert-window.css",
+        "sha256": "9b03795cc11ed06130ebdc2ec386948d91f0e9cbba592f876a82c72ef1014c92",
+        "observedReadonlySha256": "9b03795cc11ed06130ebdc2ec386948d91f0e9cbba592f876a82c72ef1014c92",
+        "source": "verified readonly file",
+        "bytes": 5848,
+        "chargeBytes": 8192
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/fe-runtime-preferences/frontend/src/shared/ui/concert-window/index.tsx",
+        "sha256": "0b532322426fd4f0aae0e2667cae80e2257917eda8cb1de6455ee3670025ae56",
+        "observedReadonlySha256": "0b532322426fd4f0aae0e2667cae80e2257917eda8cb1de6455ee3670025ae56",
+        "source": "verified readonly file",
+        "bytes": 6205,
+        "chargeBytes": 8192
+      }
+    ]
+  },
+  "standingUtc": "2026-11-05T00:41:40.860793+00:00",
+  "carryBytes": 4636796070,
+  "entirePythonPrefix": "/Library/Frameworks/Python.framework/Versions/3.14",
+  "entirePythonChargeBytes": 1061352790,
+  "ownedSharedGitInventory": {
+    "bytes": 109416448,
+    "objectCount": 655,
+    "inodes": [
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-365e9292fd3a0dcaf1c173deff507574252d14d0.idx",
+        "logicalBytes": 7204,
+        "allocatedBytes": 8192,
+        "chargeBytes": 8192
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-365e9292fd3a0dcaf1c173deff507574252d14d0.pack",
+        "logicalBytes": 1279075,
+        "allocatedBytes": 1282048,
+        "chargeBytes": 1282048
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-365e9292fd3a0dcaf1c173deff507574252d14d0.rev",
+        "logicalBytes": 928,
+        "allocatedBytes": 4096,
+        "chargeBytes": 4096
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-a1e3dbceac17afec020bca5558b7eb3505dda997.idx",
+        "logicalBytes": 26972,
+        "allocatedBytes": 28672,
+        "chargeBytes": 28672
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-a1e3dbceac17afec020bca5558b7eb3505dda997.pack",
+        "logicalBytes": 2320426,
+        "allocatedBytes": 2322432,
+        "chargeBytes": 2322432
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-a1e3dbceac17afec020bca5558b7eb3505dda997.rev",
+        "logicalBytes": 3752,
+        "allocatedBytes": 4096,
+        "chargeBytes": 4096
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-d4d7e686e78fcd35069b39d7608f0c07f0c19c85.idx",
+        "logicalBytes": 732516,
+        "allocatedBytes": 733184,
+        "chargeBytes": 733184
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-d4d7e686e78fcd35069b39d7608f0c07f0c19c85.pack",
+        "logicalBytes": 104924051,
+        "allocatedBytes": 104927232,
+        "chargeBytes": 104927232
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-d4d7e686e78fcd35069b39d7608f0c07f0c19c85.rev",
+        "logicalBytes": 104544,
+        "allocatedBytes": 106496,
+        "chargeBytes": 106496
+      }
+    ]
+  },
+  "samples": [
+    {
+      "utc": "2026-11-05T00:41:40.884394+00:00",
+      "pids": [
+        52539,
+        52595
+      ],
+      "processes": 2,
+      "rssBytes": 29655040,
+      "wholeBytes": 4636796070,
+      "newBytes": 0,
+      "temporaryBytes": 0,
+      "durableBytes": 196608,
+      "freeBytes": 15401959424
+    },
+    {
+      "utc": "2026-11-05T00:41:41.047964+00:00",
+      "pids": [
+        52539,
+        52600,
+        52604,
+        52606
+      ],
+      "processes": 4,
+      "rssBytes": 70254592,
+      "wholeBytes": 4636808358,
+      "newBytes": 12288,
+      "temporaryBytes": 12288,
+      "durableBytes": 196608,
+      "freeBytes": 15401947136
+    },
+    {
+      "utc": "2026-11-05T00:41:41.476388+00:00",
+      "pids": [
+        52539,
+        52600,
+        52687
+      ],
+      "processes": 3,
+      "rssBytes": 56082432,
+      "wholeBytes": 4636808358,
+      "newBytes": 12288,
+      "temporaryBytes": 12288,
+      "durableBytes": 196608,
+      "freeBytes": 15401791488
+    },
+    {
+      "utc": "2026-11-05T00:41:41.878197+00:00",
+      "pids": [
+        52539,
+        52600,
+        52723,
+        52724
+      ],
+      "processes": 4,
+      "rssBytes": 58310656,
+      "wholeBytes": 4636808358,
+      "newBytes": 12288,
+      "temporaryBytes": 12288,
+      "durableBytes": 196608,
+      "freeBytes": 15401766912
+    },
+    {
+      "utc": "2026-11-05T00:41:42.301425+00:00",
+      "pids": [
+        52539,
+        52600,
+        52745,
+        52760
+      ],
+      "processes": 4,
+      "rssBytes": 342425600,
+      "wholeBytes": 4636820646,
+      "newBytes": 24576,
+      "temporaryBytes": 20480,
+      "durableBytes": 200704,
+      "freeBytes": 15401914368
+    },
+    {
+      "utc": "2026-11-05T00:41:42.743242+00:00",
+      "pids": [
+        52539,
+        52600,
+        52745,
+        53376
+      ],
+      "processes": 4,
+      "rssBytes": 393117696,
+      "wholeBytes": 4637156518,
+      "newBytes": 360448,
+      "temporaryBytes": 20480,
+      "durableBytes": 536576,
+      "freeBytes": 15401652224
+    },
+    {
+      "utc": "2026-11-05T00:41:43.183041+00:00",
+      "pids": [
+        52539,
+        52600,
+        52745,
+        53377,
+        53391,
+        53392,
+        53395,
+        53396,
+        53408,
+        53411,
+        53412,
+        53413
+      ],
+      "processes": 12,
+      "rssBytes": 1495941120,
+      "wholeBytes": 4662154406,
+      "newBytes": 25358336,
+      "temporaryBytes": 25018368,
+      "durableBytes": 536576,
+      "freeBytes": 15374958592
+    },
+    {
+      "utc": "2026-11-05T00:41:43.624828+00:00",
+      "pids": [
+        52539,
+        52600,
+        52745,
+        53377,
+        53391,
+        53392,
+        53395,
+        53408,
+        53412,
+        53413,
+        53436
+      ],
+      "processes": 11,
+      "rssBytes": 2071543808,
+      "wholeBytes": 4662154406,
+      "newBytes": 25358336,
+      "temporaryBytes": 25018368,
+      "durableBytes": 536576,
+      "freeBytes": 15375732736
+    },
+    {
+      "utc": "2026-11-05T00:41:44.079411+00:00",
+      "pids": [
+        52539,
+        52600,
+        52745,
+        53377,
+        53391,
+        53392,
+        53395,
+        53408,
+        53412,
+        53413,
+        53616
+      ],
+      "processes": 11,
+      "rssBytes": 2236366848,
+      "wholeBytes": 4662203558,
+      "newBytes": 25407488,
+      "temporaryBytes": 25067520,
+      "durableBytes": 536576,
+      "freeBytes": 15375458304
+    },
+    {
+      "utc": "2026-11-05T00:41:44.502624+00:00",
+      "pids": [
+        52539,
+        52600,
+        52745,
+        53377,
+        53391,
+        53392,
+        53395,
+        53408,
+        53412,
+        53413,
+        53636
+      ],
+      "processes": 11,
+      "rssBytes": 2263990272,
+      "wholeBytes": 4662203558,
+      "newBytes": 25407488,
+      "temporaryBytes": 25067520,
+      "durableBytes": 536576,
+      "freeBytes": 15376142336
+    },
+    {
+      "utc": "2026-11-05T00:41:44.900177+00:00",
+      "pids": [
+        52539,
+        52600,
+        52745,
+        53377,
+        53391,
+        53392,
+        53395,
+        53408,
+        53412,
+        53413,
+        53659
+      ],
+      "processes": 11,
+      "rssBytes": 2267512832,
+      "wholeBytes": 4662203558,
+      "newBytes": 25407488,
+      "temporaryBytes": 25067520,
+      "durableBytes": 536576,
+      "freeBytes": 15376130048
+    },
+    {
+      "utc": "2026-11-05T00:41:45.331792+00:00",
+      "pids": [
+        52539,
+        52600,
+        52745,
+        53377,
+        53391,
+        53392,
+        53395,
+        53408,
+        53412,
+        53413,
+        53704
+      ],
+      "processes": 11,
+      "rssBytes": 2288844800,
+      "wholeBytes": 4662727846,
+      "newBytes": 25931776,
+      "temporaryBytes": 25550848,
+      "durableBytes": 671744,
+      "freeBytes": 15374290944
+    },
+    {
+      "utc": "2026-11-05T00:41:45.777435+00:00",
+      "pids": [
+        52539,
+        52600,
+        52745,
+        53377,
+        53724
+      ],
+      "processes": 5,
+      "rssBytes": 1310130176,
+      "wholeBytes": 4667995302,
+      "newBytes": 31199232,
+      "temporaryBytes": 30511104,
+      "durableBytes": 884736,
+      "freeBytes": 15369244672
+    },
+    {
+      "utc": "2026-11-05T00:41:46.206881+00:00",
+      "pids": [
+        52539,
+        52600,
+        53756,
+        53757
+      ],
+      "processes": 4,
+      "rssBytes": 187908096,
+      "wholeBytes": 4637545638,
+      "newBytes": 749568,
+      "temporaryBytes": 32768,
+      "durableBytes": 913408,
+      "freeBytes": 15397695488
+    }
+  ],
+  "status": "FAIL",
+  "initialSampleBeforePrimary": {
+    "utc": "2026-11-05T00:41:40.884394+00:00",
+    "pids": [
+      52539,
+      52595
+    ],
+    "processes": 2,
+    "rssBytes": 29655040,
+    "wholeBytes": 4636796070,
+    "newBytes": 0,
+    "temporaryBytes": 0,
+    "durableBytes": 196608,
+    "freeBytes": 15401959424
+  },
+  "exitCode": 1,
+  "failure": "Primary failed; logs preserved",
+  "remainingBeforeFinalReap": [],
+  "remainingProcesses": [],
+  "fullUtc": "2026-11-05T00:41:46.531663+00:00",
+  "outerTemporaryAbsent": true,
+  "finishedBeforeHardDeadline": true,
+  "freeAfterBytes": 15397601280
+}

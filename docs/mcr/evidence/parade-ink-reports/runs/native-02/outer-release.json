@@ -1,0 +1,16 @@
+{
+  "allocation": "O04-ADMIN-APP-NATIVE02-0120",
+  "status": "FAIL",
+  "actualFullEpoch": 1793841667.0434408,
+  "fullUtc": "2026-11-05T01:21:07.043441+00:00",
+  "stage": "Outer admission before temporary directory, primary guard, Node, Vite or Chrome",
+  "failure": "Readonly PI01 changed: frontend/src/app/reference-chrome-v2/WindowInk.tsx",
+  "controllerPid": 99184,
+  "controllerBirth": "Thu Nov  5 10:20:43 2026",
+  "controllerAbsentOrDifferentBirth": true,
+  "workloadLaunched": false,
+  "remainingProcesses": [],
+  "resources": 0,
+  "released": true,
+  "clockBasis": "Actual post-process-return cleanup observation; no reconstructed earlier FULL timestamp"
+}

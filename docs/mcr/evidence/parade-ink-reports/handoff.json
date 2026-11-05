@@ -1,0 +1,558 @@
+{
+  "base": "5ac4bc6e69ee47e6782c2d0b25c72c5544a540d6",
+  "qualifiedNativeInput": "096ea977570710a81e0138db240d803b44327571",
+  "scope": "Only Reports presentation import/Reports-only return in shared ModerationReview, new Reports-only view/CSS/tests/harness/doc/evidence prefixes",
+  "protected": {
+    "frontend/src/features/admin/reports/model/controller.ts": {
+      "sha256": "cd5a614c9432c400df20d6a128ab53f37638740176d227f0ed860235d510cddb",
+      "unchangedFromBase": true
+    },
+    "frontend/src/features/admin/reports/model/contract.ts": {
+      "sha256": "6e5b006e65d8366ed6b9be52e54fc4bf92459357440a8f6ad3c2ece95b9d73e8",
+      "unchangedFromBase": true
+    },
+    "frontend/src/features/admin/reports/model/validate.ts": {
+      "sha256": "6ef318a0da70e08b04e7a5797816fd09a868a1a6e3e54b999d867e880db9ed37",
+      "unchangedFromBase": true
+    },
+    "frontend/src/features/admin/reports/index.ts": {
+      "sha256": "8cd3efb5cbb9eb4c35a564ddd52614f5c9fe2a2e11255231d15bd3a0edfd0ec9",
+      "unchangedFromBase": true
+    },
+    "frontend/src/features/admin/reports/ui/moderation.css": {
+      "sha256": "b9b43dd58fa07677b906c894f2c0d5a0fa52e622cd812507a8f0bdff3ef9c4d0",
+      "unchangedFromBase": true
+    },
+    "frontend/src/features/admin/members/index.ts": {
+      "sha256": "edd62388b0cd1b6ad21d8b788a1826c3d96f7cfb556ae96d27585700d4661305",
+      "unchangedFromBase": true
+    },
+    "frontend/src/features/admin/content/index.ts": {
+      "sha256": "43f8e8da55b1fc0c54bca563108dda3f1e46befafd557fbe0b3a23227a4aef63",
+      "unchangedFromBase": true
+    },
+    "frontend/src/app/operations-composition/owner.ts": {
+      "sha256": "0cca44c74fbd5a8d3622b54cb33898659d9a690424bb15ce70a5d8c21b0f1e1c",
+      "unchangedFromBase": true
+    },
+    "frontend/src/app/operations-composition/panel.tsx": {
+      "sha256": "829c4b95046f48b549a37d22a04799c12edcb83528c1989c1423b1d28fa8952e",
+      "unchangedFromBase": true
+    },
+    "frontend/src/app/operations-composition/__tests__/reports-production/harness.ts": {
+      "sha256": "e9b444dc0629b359bb64730899d2ce03187346f82afa4465a2ac89229516c587",
+      "unchangedFromBase": true
+    },
+    "frontend/src/app/operations-composition/__tests__/reports-production/server.ts": {
+      "sha256": "7a7ae2a1396e51b3fba9cdd4400cbc494912245dfe1e85d063b5a3092d190288",
+      "unchangedFromBase": true
+    },
+    "frontend/src/shared/api/domain-operations.generated.ts": {
+      "sha256": "3610456a0925aee9c4e3a32564016ea6acc26b7ab01ce536659b7333a5ddd447",
+      "unchangedFromBase": true
+    },
+    "frontend/src/shared/api/http.ts": {
+      "sha256": "23dc24d55f9d91f769af10106930e2fc0a7ac78dbc6aa3294f6c5ea526947fee",
+      "unchangedFromBase": true
+    },
+    "frontend/src/features/auth/model/session.ts": {
+      "sha256": "12289039f5d10a0d87b1403220e80dd8a4da2feda8452c5b73a9b241052104f7",
+      "unchangedFromBase": true
+    },
+    "frontend/src/shared/query/privacy.ts": {
+      "sha256": "9f39e9e25b1c322bbe4b2f19a52d930aa369940757e01611ed632aa11cf2f081",
+      "unchangedFromBase": true
+    }
+  },
+  "paths": {
+    "docs/mcr/evidence/parade-ink-reports/git_carry.py": {
+      "mode": "100644",
+      "bytes": 4883,
+      "sha256": "8480356c28b07081fa8be9b497db60ca3f0336ebbcc13c487a7ac809312fbe4d"
+    },
+    "docs/mcr/evidence/parade-ink-reports/membership.py": {
+      "mode": "100644",
+      "bytes": 10206,
+      "sha256": "6ff2262229cbaf79394d271b7a0c6bef28417531c67bded37ead1436219d1144"
+    },
+    "docs/mcr/evidence/parade-ink-reports/readset.json": {
+      "mode": "100644",
+      "bytes": 7526,
+      "sha256": "611d1a56f79195a78367db61baf51dda9c81e66d2ae6a0cdaaf9207852976dd9"
+    },
+    "docs/mcr/evidence/parade-ink-reports/resource-history/fe37-native-03/accepted.json": {
+      "mode": "100644",
+      "bytes": 19351,
+      "sha256": "f6896e30eabe675a1f0255a12ff0d9075cf22b7cd7668dc4fd18f732cd6b6de7"
+    },
+    "docs/mcr/evidence/parade-ink-reports/resource-history/fe37-native-03/bootstrap-accepted.json": {
+      "mode": "100644",
+      "bytes": 1360,
+      "sha256": "0591526b63ac788b3db34010db44965d1227281fd6687b49774deadcde9b9ac2"
+    },
+    "docs/mcr/evidence/parade-ink-reports/resource-history/fe37-native-03/origin.json": {
+      "mode": "100644",
+      "bytes": 713,
+      "sha256": "16f0c5f89ac639d06e6a8aa55cd69aaa993b8150a4e1408632d1725e36eb5a02"
+    },
+    "docs/mcr/evidence/parade-ink-reports/resource-history/fe37-native-03/outer-release.json": {
+      "mode": "100644",
+      "bytes": 32700,
+      "sha256": "f1f65714f80c3ee0c7d56883360e6f2a0ac00d60f8be34cdd62a61ef734daa67"
+    },
+    "docs/mcr/evidence/parade-ink-reports/resource-history/fe37-native-03/release.json": {
+      "mode": "100644",
+      "bytes": 23705,
+      "sha256": "764aa19e5d777b5191724666f4bb3be9eebd68d97a222fdd6d0919e646a5ae00"
+    },
+    "docs/mcr/evidence/parade-ink-reports/run-allocated.py": {
+      "mode": "100644",
+      "bytes": 20292,
+      "sha256": "b2725dceffa37f0359885fc4b454a7cb4bb46b627ccf2207b973d095f3b3050b"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-01/00.log": {
+      "mode": "100644",
+      "bytes": 414,
+      "sha256": "a9e287503fa63e5d6e9f5a4f8316383d272989515bcbe9b4543833838361365d"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-01/app-confirmation-360.png": {
+      "mode": "100644",
+      "bytes": 115213,
+      "sha256": "f99cf157b0a01391fc1f2485e8d7e1d12a4d1e07932fef2025f550a1fae03908"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-01/app-evidence-unavailable-360.png": {
+      "mode": "100644",
+      "bytes": 92501,
+      "sha256": "a8f56f920eda104006635f53ebdc0c9746808a9f75a2083bb7ce71c1ba9b5a2f"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-01/app-queue-360.png": {
+      "mode": "100644",
+      "bytes": 39235,
+      "sha256": "4cd2b3c07c104ef32befa734f3f9c984ea8bd1d2308c66bcb4362161b4951a72"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-01/comparison.html": {
+      "mode": "100644",
+      "bytes": 998,
+      "sha256": "66d26f622c554e8ff1c08aa5fe300890e35cc6f55a077a20e5216960ed5158ff"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-01/failure.png": {
+      "mode": "100644",
+      "bytes": 90574,
+      "sha256": "de405330565d8125ee2e201f5828890a436b8b33cb79fb41bbc993ac0bffe76f"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-01/initial-sample.json": {
+      "mode": "100644",
+      "bytes": 259,
+      "sha256": "71ae615c80b2a987dcf306e76a971ad7b1b2019c4a9aa2db7aa320595759a888"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-01/native.json": {
+      "mode": "100644",
+      "bytes": 7790,
+      "sha256": "19489b28a627cbb27f6ec6ae27d606e156e2e7ea03e696c93b903a3b2699272b"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-01/outer-primary.log": {
+      "mode": "100644",
+      "bytes": 15826,
+      "sha256": "310002e20b8f9449256c569077908e50765c5697455ee34b18ee9398f3289fc1"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-01/outer-release.json": {
+      "mode": "100644",
+      "bytes": 16622,
+      "sha256": "ddac54a9e137a3f615e81a0950601a93248ab3014aeec4525b8ed483ddbdba26"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-01/reference-frame-390.png": {
+      "mode": "100644",
+      "bytes": 324536,
+      "sha256": "d821c042b93f226ac0645c099aa06f4e6e2199b2df2b5c6bad389f3841919cd6"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-01/reference.json": {
+      "mode": "100644",
+      "bytes": 538,
+      "sha256": "5c9d92833e1fc87b74a6665b922c736cc7f004b54e3518e12bfa9680c15a5f03"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-01/release.json": {
+      "mode": "100644",
+      "bytes": 15826,
+      "sha256": "310002e20b8f9449256c569077908e50765c5697455ee34b18ee9398f3289fc1"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-02/bootstrap-accepted.json": {
+      "mode": "100644",
+      "bytes": 1310,
+      "sha256": "b7332560da4f07e47eef1f064c2ab89f6b7bc1b1d6bc6ac4fa8a4a4d690ab974"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-02/outer-release.json": {
+      "mode": "100644",
+      "bytes": 665,
+      "sha256": "40fc75a69783e4ff8548c1e88a8e859d4b578d637c6bae41997e04b59077fb34"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/00.log": {
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/01.log": {
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/02.log": {
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/03.log": {
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/accepted.json": {
+      "mode": "100644",
+      "bytes": 28096,
+      "sha256": "cb9163d31e87b9c5326af57235c0cce2eb856f80b26b28e0481ec8769fe43f02"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/app-confirmation-360.png": {
+      "mode": "100644",
+      "bytes": 115213,
+      "sha256": "f99cf157b0a01391fc1f2485e8d7e1d12a4d1e07932fef2025f550a1fae03908"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/app-confirmation-390.png": {
+      "mode": "100644",
+      "bytes": 115558,
+      "sha256": "948a203e6f93ca016327dcabe1cc561aad1b61b9626b0408f3578715f1a3ad62"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/app-confirmation-430.png": {
+      "mode": "100644",
+      "bytes": 115645,
+      "sha256": "4669f393eeedf440ccc872bbcd9f92573d0de9146d717f4043240933491f235b"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/app-conflict-390.png": {
+      "mode": "100644",
+      "bytes": 99915,
+      "sha256": "0ea296b039913ee492baf7a9e45325ccea377c3e55dae1f7a1f96488813b8891"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/app-denied-390.png": {
+      "mode": "100644",
+      "bytes": 34011,
+      "sha256": "1fc75e47c14f614e908d12127cae692119a7fcc7c432e25c007df268e0e863dd"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/app-empty-390.png": {
+      "mode": "100644",
+      "bytes": 42204,
+      "sha256": "7a13f568ba2fe66ad10902371d08d1270678934e73a0caa192d87d1c6b686df2"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/app-evidence-unavailable-360.png": {
+      "mode": "100644",
+      "bytes": 92501,
+      "sha256": "a8f56f920eda104006635f53ebdc0c9746808a9f75a2083bb7ce71c1ba9b5a2f"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/app-evidence-unavailable-390.png": {
+      "mode": "100644",
+      "bytes": 92308,
+      "sha256": "b1e61215199f1d2ae9114912914c7af2896ad0eea0f07e0101d23fb3d6165a18"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/app-evidence-unavailable-430.png": {
+      "mode": "100644",
+      "bytes": 92470,
+      "sha256": "1aea49d06262a7e20baca57e63fcd642860feefeefe8b52097ba101123d6b5f7"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/app-pending-360.png": {
+      "mode": "100644",
+      "bytes": 105350,
+      "sha256": "51956e177c6034a0fa7c226ac381ad2e59c554f4530bb75d6e58aff9d2fbaf19"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/app-pending-390.png": {
+      "mode": "100644",
+      "bytes": 104959,
+      "sha256": "5d054da556d7ebfdafc05d91266451744643c7ccbcfeb7ecc1fa133d413e8fce"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/app-pending-430.png": {
+      "mode": "100644",
+      "bytes": 105346,
+      "sha256": "b88d632201cb4b08b4acb524b5dd8132065461fc348e2173fbcc9f4f18726aea"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/app-pressed-review-390.png": {
+      "mode": "100644",
+      "bytes": 91125,
+      "sha256": "9e7fb69b01f1f091e436831774c5945735cca3de29cc7f59ce818c82816e51d8"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/app-queue-360.png": {
+      "mode": "100644",
+      "bytes": 39235,
+      "sha256": "4cd2b3c07c104ef32befa734f3f9c984ea8bd1d2308c66bcb4362161b4951a72"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/app-queue-390.png": {
+      "mode": "100644",
+      "bytes": 39679,
+      "sha256": "9052be65af682bf4cf1e883e40fb922805d1abcb866627df3a845da00ae66205"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/app-queue-430.png": {
+      "mode": "100644",
+      "bytes": 39704,
+      "sha256": "892b1c509c5ae66867e9ba7d1ae2d27dff506337dac37659da106991607b1c49"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/app-short-status-360.png": {
+      "mode": "100644",
+      "bytes": 28996,
+      "sha256": "b4eaced57c96cd3697c93449adb39077ec501b80680f703da4d7fa821a74fb8a"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/app-short-status-390.png": {
+      "mode": "100644",
+      "bytes": 34039,
+      "sha256": "fb86b4416739569a7374472e1b6a548fb3d0d01f6e6a6967d7dec320d47bcec9"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/app-short-status-430.png": {
+      "mode": "100644",
+      "bytes": 33633,
+      "sha256": "31d62aec2cfc7b05a0d125d5ac9f1c0f3d1f08337b403ff4d814dc0c6df83533"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/app-terminal-360.png": {
+      "mode": "100644",
+      "bytes": 65789,
+      "sha256": "0819477efb92b11f16931fb56ac3878d65f1a542d250f3494d9ffbb48159ea11"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/app-terminal-390.png": {
+      "mode": "100644",
+      "bytes": 102729,
+      "sha256": "20dd1c6e89209cfdc47cb47aff32333c596bdad2f7872ac58aeb2365db1fd0f9"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/app-terminal-430.png": {
+      "mode": "100644",
+      "bytes": 65486,
+      "sha256": "feb6e619ed14a226f6518e57460761c757256d4432bd808dadecff522015e832"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/app-unknown-360.png": {
+      "mode": "100644",
+      "bytes": 109003,
+      "sha256": "e5e72302275e850e5c856082eb26edec02ed10a48167c31bf0e81a8387b5aee3"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/app-unknown-390.png": {
+      "mode": "100644",
+      "bytes": 109397,
+      "sha256": "21707e2ab814b432b0a25e2286796f604534a8576273cf5025698240da964180"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/app-unknown-430.png": {
+      "mode": "100644",
+      "bytes": 109147,
+      "sha256": "574cceaa610ec409294907d95fa20695b982d6e1bf7ab5d218fed1dd0359d94a"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/bootstrap-accepted.json": {
+      "mode": "100644",
+      "bytes": 1313,
+      "sha256": "94337398b0d3d1b9b2a30001e6325f5bcc9895d6f95357813eb4e6ad81873f4b"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/comparison.html": {
+      "mode": "100644",
+      "bytes": 998,
+      "sha256": "66d26f622c554e8ff1c08aa5fe300890e35cc6f55a077a20e5216960ed5158ff"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/initial-sample.json": {
+      "mode": "100644",
+      "bytes": 263,
+      "sha256": "4a4a6c71c05b135ea216892f161dd374a692ffa7a3ac6130341a21ba4101221f"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/native.json": {
+      "mode": "100644",
+      "bytes": 11118,
+      "sha256": "468a06f16a113ddf7dcf490e6efa760e4a9e8e359a6ef0b261cd81cb3a42a991"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/outer-census.json": {
+      "mode": "100644",
+      "bytes": 417,
+      "sha256": "23ea20c63fe97c55668aadb50e91161e308566e597c55b3d1fdc255e10f64fdd"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/outer-primary.log": {
+      "mode": "100644",
+      "bytes": 33438,
+      "sha256": "585e470d5734ded29f43031a141a0487d63436b894fb41bf553d883d9640a0b0"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/outer-release.json": {
+      "mode": "100644",
+      "bytes": 44483,
+      "sha256": "d691a378434ca92434ee6d03618d74bf6b671d0123ea15c281e3548823433aab"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/own-390-queue-region.png": {
+      "mode": "100644",
+      "bytes": 18946,
+      "sha256": "4f4df08e56c7d90896b4bcf88ecd0137ad8babf711a170fd1e952edcb7f3b141"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/primary-census.json": {
+      "mode": "100644",
+      "bytes": 441,
+      "sha256": "c77399f51b4dd1395e9c45a4025eccf433549b0ce3b18a15d3daf341c2aecc73"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/reference-frame-390.png": {
+      "mode": "100644",
+      "bytes": 324536,
+      "sha256": "d821c042b93f226ac0645c099aa06f4e6e2199b2df2b5c6bad389f3841919cd6"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/reference.json": {
+      "mode": "100644",
+      "bytes": 538,
+      "sha256": "5c9d92833e1fc87b74a6665b922c736cc7f004b54e3518e12bfa9680c15a5f03"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/release.json": {
+      "mode": "100644",
+      "bytes": 33438,
+      "sha256": "585e470d5734ded29f43031a141a0487d63436b894fb41bf553d883d9640a0b0"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/native-03/resource.json": {
+      "mode": "100644",
+      "bytes": 28175,
+      "sha256": "096d75f6e6a07e364588f2283530c1624efbd9b49eab1a3a525f57bb569af541"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/source-01/00.log": {
+      "mode": "100644",
+      "bytes": 133,
+      "sha256": "b352400289b7076ecddf3d8502b1746c87211a7299b4d2fdab3fad5d84886006"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/source-01/01.log": {
+      "mode": "100644",
+      "bytes": 1293,
+      "sha256": "1a614bef17e382039979ff0c48193aa15306f98d5b5707ff6a12c81583bdab4a"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/source-01/02.log": {
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/source-01/03.log": {
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/source-01/04.log": {
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/source-01/05.log": {
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/source-01/outer-primary.log": {
+      "mode": "100644",
+      "bytes": 22870,
+      "sha256": "35450aa66a928b844e68d1500519aa5009f6f1b43b01466e51be6fdcb38570f4"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/source-01/outer-release.json": {
+      "mode": "100644",
+      "bytes": 26824,
+      "sha256": "8b8bcf666a3b3897a8f9134784aae1232f71efc2db56e22ee4ff2340f5abd12e"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/source-01/release.json": {
+      "mode": "100644",
+      "bytes": 22870,
+      "sha256": "35450aa66a928b844e68d1500519aa5009f6f1b43b01466e51be6fdcb38570f4"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/source-01/vitest.json": {
+      "mode": "100644",
+      "bytes": 1097,
+      "sha256": "546c5c8d12349be3697c3ff5c6cf6bc9fb9ac936126e6be443ab109f81e93fc2"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/source-02/00.log": {
+      "mode": "100644",
+      "bytes": 133,
+      "sha256": "26f28c033943bb5a800c523bfffe2a5c2369e089c19fa786c6fee72804ca5b4f"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/source-02/01.log": {
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/source-02/02.log": {
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/source-02/03.log": {
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/source-02/04.log": {
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/source-02/05.log": {
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/source-02/outer-primary.log": {
+      "mode": "100644",
+      "bytes": 15119,
+      "sha256": "355996fc6541bf812cb49b8f970518f7bc968ecbd8fd477127aa180a8676de32"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/source-02/outer-release.json": {
+      "mode": "100644",
+      "bytes": 20932,
+      "sha256": "3b1458c67e8c7b59f9a9e5067d2b57ca6857ef747f2738cdf73665be90b9f5f6"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/source-02/release.json": {
+      "mode": "100644",
+      "bytes": 15119,
+      "sha256": "355996fc6541bf812cb49b8f970518f7bc968ecbd8fd477127aa180a8676de32"
+    },
+    "docs/mcr/evidence/parade-ink-reports/runs/source-02/vitest.json": {
+      "mode": "100644",
+      "bytes": 3035,
+      "sha256": "da8220cba5a0a8c2139424c3300fcf184cc2fb54c572725fabddce3da491724f"
+    },
+    "docs/mcr/evidence/parade-ink-reports/supervise-allocated.py": {
+      "mode": "100644",
+      "bytes": 16115,
+      "sha256": "09270f2c7b68cae7e3ebf80ecf817e4a245faddabf164125765431b7e580eebf"
+    },
+    "docs/mcr/frontend/parade-ink-reports.md": {
+      "mode": "100644",
+      "bytes": 18864,
+      "sha256": "93bd3b16e4260276fd7770a66dc341719473f00eb28f1f990247a2864a5112e2"
+    },
+    "frontend/e2e/visual/parade-ink-reports/config.mjs": {
+      "mode": "100644",
+      "bytes": 1401,
+      "sha256": "838ab1acc3c4b00126f4524b9546f60a9f254fd5ca75a9c6d0808a7fd481adea"
+    },
+    "frontend/e2e/visual/parade-ink-reports/foundation.mjs": {
+      "mode": "100644",
+      "bytes": 4629,
+      "sha256": "365be6e7c79edf4c0986a6fc6de2a4330e7a982f56637bcc329ba42477fc4fdb"
+    },
+    "frontend/e2e/visual/parade-ink-reports/native.mjs": {
+      "mode": "100644",
+      "bytes": 13074,
+      "sha256": "6493a6c6b46078fbe58c26b87e72856473903c92917f4a600356256ea68e5d15"
+    },
+    "frontend/e2e/visual/parade-ink-reports/reference.py": {
+      "mode": "100644",
+      "bytes": 2237,
+      "sha256": "5ec0135a3899a22efdaad88c8ef525dd159e68f1fa86137dca845f82703757c1"
+    },
+    "frontend/src/features/admin/reports/__tests__/parade-ink/presentation.test.tsx": {
+      "mode": "100644",
+      "bytes": 6025,
+      "sha256": "d2ea84b6be078a033b885129f0c6d110ab3fbccc38e45cfc26ee02de208ccf85"
+    },
+    "frontend/src/features/admin/reports/ui/ModerationReview.tsx": {
+      "mode": "100644",
+      "bytes": 6308,
+      "sha256": "7b467ebe485652533bd5931091cac59a3203c83ca8f7a74647c8603658436c4a"
+    },
+    "frontend/src/features/admin/reports/ui/parade-ink/ReportsReview.tsx": {
+      "mode": "100644",
+      "bytes": 8000,
+      "sha256": "f6c88ed6d38d17d48aa19efa70d4814e5541add81aa196fcedb36467388d99b7"
+    },
+    "frontend/src/features/admin/reports/ui/parade-ink/reports.css": {
+      "mode": "100644",
+      "bytes": 5495,
+      "sha256": "f328a683d9e6c61c0aa83f3799ec8c9384b078b81170f036ac44ccf98713684d"
+    }
+  },
+  "sharedSubtractsToBase": true,
+  "strippedSharedSha256": "a03bc69c25c073140cb8dbe6c8675ebe520d557b1a313ecabd465d33e1239619",
+  "canonicalPreservation": "Keep cf7bb137 MemberContent owner/panel and6950 indices/wrappers/currentServicePolicy; those files are NOT in O04 packet. No private ancestry import.",
+  "qualification": "Controlled defaultApp with exactb5immutableoverlay; no currentcombinedmaster/realproducerEOF/device/wholePI12 claim."
+}

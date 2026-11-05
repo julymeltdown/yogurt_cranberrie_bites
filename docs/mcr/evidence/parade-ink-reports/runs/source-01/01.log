@@ -1,0 +1,9 @@
+src/app/feed-entry/__tests__/vite.config.ts(1,43): error TS2307: Cannot find module 'vite' or its corresponding type declarations.
+src/app/feed-entry/__tests__/vite.config.ts(21,8): error TS7006: Parameter 'id' implicitly has an 'any' type.
+src/features/admin/reports/ui/ModerationReview.tsx(44,139): error TS2367: This comparison appears to be unintentional because the types '"content" | "members"' and '"reports"' have no overlap.
+src/features/admin/reports/ui/ModerationReview.tsx(45,74): error TS2367: This comparison appears to be unintentional because the types '"content" | "members"' and '"reports"' have no overlap.
+src/features/settings/runtime-adoption/__tests__/vitest.config.ts(2,19): error TS2307: Cannot find module '@vitejs/plugin-react' or its corresponding type declarations.
+src/features/theme/__tests__/original-fe06/vitest.config.ts(2,19): error TS2307: Cannot find module '@vitejs/plugin-react' or its corresponding type declarations.
+vite.config.ts(1,30): error TS2307: Cannot find module 'vite' or its corresponding type declarations.
+vite.config.ts(2,19): error TS2307: Cannot find module '@vitejs/plugin-react' or its corresponding type declarations.
+vite.config.ts(3,25): error TS2307: Cannot find module '@tailwindcss/vite' or its corresponding type declarations.

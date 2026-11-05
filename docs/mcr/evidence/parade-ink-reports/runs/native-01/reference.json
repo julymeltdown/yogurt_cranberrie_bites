@@ -1,0 +1,16 @@
+{
+  "source": "docs/mcr/design/parade-ink-2026-11-05/parade-ink.jpg",
+  "sha256": "9e7f17a666e1ecfc738a14b75bb3a166235a05c401f206aa24f26cf7463cbc27",
+  "originalSize": [
+    1280,
+    853
+  ],
+  "crop": [
+    24,
+    60,
+    419,
+    847
+  ],
+  "normalization": "395 source pixels to 390 CSS px; original source bytes retained",
+  "adaptation": "O04 is unpictured. Compare shared title/type/rules/light surfaces/action anatomy; no invented Feed fields/window actions/filters on Reports. Actual app captures retain native CSS geometry."
+}

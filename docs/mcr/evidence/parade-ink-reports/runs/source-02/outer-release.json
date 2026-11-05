@@ -1,0 +1,843 @@
+{
+  "allocation": "PI12-O04-SOURCE02-20261105T0023Z",
+  "outerPid": 64099,
+  "pins": {
+    "run-allocated.py": "2a9a52cd07a8adcae07b00914022d0942344f1cfd6c03ebe9a006b012ce668cf",
+    "supervise-allocated.py": "bc7fde88efe7cbcab511200111f4a8c134bcd43b43116b510b00b063937701cd",
+    "git_carry.py": "deb1aa8025ed1111dd46ce1e06f55d5085155687a6f9a15447e37ae4e80a20a0"
+  },
+  "standingUtc": "2026-11-05T00:25:16.246943+00:00",
+  "carryBytes": 3462979408,
+  "entirePythonPrefix": "/Library/Frameworks/Python.framework/Versions/3.14",
+  "entirePythonChargeBytes": 1061352790,
+  "ownedSharedGitInventory": {
+    "bytes": 105914368,
+    "objectCount": 349,
+    "inodes": [
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/0a/d0b0a46f14ad340ba68d5569e478ef835695c5",
+        "logicalBytes": 720,
+        "allocatedBytes": 4096,
+        "chargeBytes": 4096
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/1b/924ebfb0ccf2aa512f1044e35ce3f05c46bb98",
+        "logicalBytes": 88,
+        "allocatedBytes": 4096,
+        "chargeBytes": 4096
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/2d/135fd2dfcfa35db9a7a4b226deac3dbf79e1dc",
+        "logicalBytes": 125,
+        "allocatedBytes": 4096,
+        "chargeBytes": 4096
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/34/cf294f890aeb5344469c62d92c86ff590a00d5",
+        "logicalBytes": 1714,
+        "allocatedBytes": 4096,
+        "chargeBytes": 4096
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/41/7b5c567d6a27bba9867e422ee854dd5b601672",
+        "logicalBytes": 576,
+        "allocatedBytes": 4096,
+        "chargeBytes": 4096
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/43/a2aaf103bfe856b5cb15692a611cca6f6af0db",
+        "logicalBytes": 226,
+        "allocatedBytes": 4096,
+        "chargeBytes": 4096
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/4a/1fb83e425146d1b9381129386b2e850a18a06b",
+        "logicalBytes": 2895,
+        "allocatedBytes": 4096,
+        "chargeBytes": 4096
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/74/3c0cc606f1102770066f1472206e5b7aa8c5c4",
+        "logicalBytes": 208,
+        "allocatedBytes": 4096,
+        "chargeBytes": 4096
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/77/932bdb42d1fc3a602e2753c0d3b3f8e4b580ea",
+        "logicalBytes": 2783,
+        "allocatedBytes": 4096,
+        "chargeBytes": 4096
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/78/3a8bf07eda2ee045ad8dc8d1cfd2c9e08ef631",
+        "logicalBytes": 4431,
+        "allocatedBytes": 8192,
+        "chargeBytes": 8192
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/7e/e37bcf5e0c5b9614cf7827063fac326db1c56d",
+        "logicalBytes": 157,
+        "allocatedBytes": 4096,
+        "chargeBytes": 4096
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/81/f7c45159b94ddee86eadfe3268b0ab7a51d9e7",
+        "logicalBytes": 6825,
+        "allocatedBytes": 8192,
+        "chargeBytes": 8192
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/88/3f928313b7f0b7d21170f1b6a6b411f3f8f412",
+        "logicalBytes": 107,
+        "allocatedBytes": 4096,
+        "chargeBytes": 4096
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/8e/088e603017de745851cafcf1c3cb5cee74e5e0",
+        "logicalBytes": 197,
+        "allocatedBytes": 4096,
+        "chargeBytes": 4096
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/93/05024dad96122382894f68eedb7000e460ba2c",
+        "logicalBytes": 2515,
+        "allocatedBytes": 4096,
+        "chargeBytes": 4096
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/96/f72e3e58868e536440d1dbee1d8b189716368b",
+        "logicalBytes": 295,
+        "allocatedBytes": 4096,
+        "chargeBytes": 4096
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/9c/63fe0d7c232907286fdcf83dc6e7b53fcb41df",
+        "logicalBytes": 1028,
+        "allocatedBytes": 4096,
+        "chargeBytes": 4096
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/a6/90bcd6a250a169ab1e1bf62f0c0fff7380ea93",
+        "logicalBytes": 417,
+        "allocatedBytes": 4096,
+        "chargeBytes": 4096
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/cc/a23a69b99897ccfedba52c2ac9b52829c7fa6e",
+        "logicalBytes": 51,
+        "allocatedBytes": 4096,
+        "chargeBytes": 4096
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/cd/8a491ccbf58e178f8db327b24de013753b5b40",
+        "logicalBytes": 5526,
+        "allocatedBytes": 8192,
+        "chargeBytes": 8192
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/d5/73c7129faa3e7da26d787b1bb9f343ed552e26",
+        "logicalBytes": 206,
+        "allocatedBytes": 4096,
+        "chargeBytes": 4096
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/da/5b7eed6e62e80efb9d48127044043040c7592c",
+        "logicalBytes": 548,
+        "allocatedBytes": 4096,
+        "chargeBytes": 4096
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/e3/71c2ea0d84980a5b24813595fe97b0a64029f9",
+        "logicalBytes": 5213,
+        "allocatedBytes": 8192,
+        "chargeBytes": 8192
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/e6/5f35e98a2deb269d9d8cd0f27c70ba00c09a58",
+        "logicalBytes": 403,
+        "allocatedBytes": 4096,
+        "chargeBytes": 4096
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/e7/ccbd84c089e65578b5439c4611d9e055d3bb3f",
+        "logicalBytes": 622,
+        "allocatedBytes": 4096,
+        "chargeBytes": 4096
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/ec/c60af75b4c377d25dd0942e4cfaf885cf7e9bf",
+        "logicalBytes": 92,
+        "allocatedBytes": 4096,
+        "chargeBytes": 4096
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/ed/066eb92e120f9b68507b7b24685e9182ee9ac3",
+        "logicalBytes": 133,
+        "allocatedBytes": 4096,
+        "chargeBytes": 4096
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/ed/6951abde38c60e6813396daaf20bef3b49f4d5",
+        "logicalBytes": 144,
+        "allocatedBytes": 4096,
+        "chargeBytes": 4096
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/f4/9c6f33674dcdb66fca209fecd197f627a84a9e",
+        "logicalBytes": 2072,
+        "allocatedBytes": 4096,
+        "chargeBytes": 4096
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/f7/1228ce5e9fd7df534dae146cb8c80f07b1ace3",
+        "logicalBytes": 6951,
+        "allocatedBytes": 8192,
+        "chargeBytes": 8192
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/f7/5d9a6df911574c247c3e5761d6bf079e83cac9",
+        "logicalBytes": 1080,
+        "allocatedBytes": 4096,
+        "chargeBytes": 4096
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-d4d7e686e78fcd35069b39d7608f0c07f0c19c85.idx",
+        "logicalBytes": 732516,
+        "allocatedBytes": 733184,
+        "chargeBytes": 733184
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-d4d7e686e78fcd35069b39d7608f0c07f0c19c85.pack",
+        "logicalBytes": 104924051,
+        "allocatedBytes": 104927232,
+        "chargeBytes": 104927232
+      },
+      {
+        "path": "/Users/lhs/Desktop/mcr/.git/objects/pack/pack-d4d7e686e78fcd35069b39d7608f0c07f0c19c85.rev",
+        "logicalBytes": 104544,
+        "allocatedBytes": 106496,
+        "chargeBytes": 106496
+      }
+    ]
+  },
+  "samples": [
+    {
+      "utc": "2026-11-05T00:25:16.408081+00:00",
+      "pids": [
+        64099,
+        64239,
+        64285,
+        64288
+      ],
+      "processes": 4,
+      "rssBytes": 67305472,
+      "wholeBytes": 3462979408,
+      "newBytes": 8192,
+      "temporaryBytes": 8192,
+      "durableBytes": 131072,
+      "freeBytes": 15736352768
+    },
+    {
+      "utc": "2026-11-05T00:25:16.831520+00:00",
+      "pids": [
+        64099,
+        64239,
+        64372,
+        64376
+      ],
+      "processes": 4,
+      "rssBytes": 57344000,
+      "wholeBytes": 3462979408,
+      "newBytes": 8192,
+      "temporaryBytes": 8192,
+      "durableBytes": 131072,
+      "freeBytes": 15736340480
+    },
+    {
+      "utc": "2026-11-05T00:25:17.245745+00:00",
+      "pids": [
+        64099,
+        64239,
+        64457
+      ],
+      "processes": 3,
+      "rssBytes": 55918592,
+      "wholeBytes": 3462979408,
+      "newBytes": 8192,
+      "temporaryBytes": 8192,
+      "durableBytes": 131072,
+      "freeBytes": 15734673408
+    },
+    {
+      "utc": "2026-11-05T00:25:17.702161+00:00",
+      "pids": [
+        64099,
+        64239,
+        64476,
+        64483,
+        64484
+      ],
+      "processes": 5,
+      "rssBytes": 231833600,
+      "wholeBytes": 3462979408,
+      "newBytes": 16384,
+      "temporaryBytes": 16384,
+      "durableBytes": 131072,
+      "freeBytes": 15734624256
+    },
+    {
+      "utc": "2026-11-05T00:25:18.115625+00:00",
+      "pids": [
+        64099,
+        64239,
+        64476,
+        64515,
+        64648,
+        64649
+      ],
+      "processes": 6,
+      "rssBytes": 410173440,
+      "wholeBytes": 3462979408,
+      "newBytes": 16384,
+      "temporaryBytes": 16384,
+      "durableBytes": 131072,
+      "freeBytes": 15735107584
+    },
+    {
+      "utc": "2026-11-05T00:25:18.627414+00:00",
+      "pids": [
+        64099,
+        64239,
+        64476,
+        64515,
+        64742,
+        64743
+      ],
+      "processes": 6,
+      "rssBytes": 540246016,
+      "wholeBytes": 3462979408,
+      "newBytes": 8179712,
+      "temporaryBytes": 8179712,
+      "durableBytes": 131072,
+      "freeBytes": 15728062464
+    },
+    {
+      "utc": "2026-11-05T00:25:19.051464+00:00",
+      "pids": [
+        64099,
+        64239,
+        64476,
+        64515,
+        64760,
+        64761
+      ],
+      "processes": 6,
+      "rssBytes": 870285312,
+      "wholeBytes": 3462979408,
+      "newBytes": 12222464,
+      "temporaryBytes": 12222464,
+      "durableBytes": 131072,
+      "freeBytes": 15723954176
+    },
+    {
+      "utc": "2026-11-05T00:25:19.483895+00:00",
+      "pids": [
+        64099,
+        64239,
+        64476,
+        64778,
+        64779
+      ],
+      "processes": 5,
+      "rssBytes": 496091136,
+      "wholeBytes": 3462979408,
+      "newBytes": 24576,
+      "temporaryBytes": 16384,
+      "durableBytes": 139264,
+      "freeBytes": 15736209408
+    },
+    {
+      "utc": "2026-11-05T00:25:19.918703+00:00",
+      "pids": [
+        64099,
+        64239,
+        64824,
+        64833,
+        64835
+      ],
+      "processes": 5,
+      "rssBytes": 255836160,
+      "wholeBytes": 3462979408,
+      "newBytes": 24576,
+      "temporaryBytes": 16384,
+      "durableBytes": 139264,
+      "freeBytes": 15736164352
+    },
+    {
+      "utc": "2026-11-05T00:25:20.344716+00:00",
+      "pids": [
+        64099,
+        64239,
+        64824,
+        64854,
+        64855
+      ],
+      "processes": 5,
+      "rssBytes": 543145984,
+      "wholeBytes": 3462979408,
+      "newBytes": 24576,
+      "temporaryBytes": 16384,
+      "durableBytes": 139264,
+      "freeBytes": 15736147968
+    },
+    {
+      "utc": "2026-11-05T00:25:20.757182+00:00",
+      "pids": [
+        64099,
+        64239,
+        64824,
+        64872,
+        64873
+      ],
+      "processes": 5,
+      "rssBytes": 679297024,
+      "wholeBytes": 3462979408,
+      "newBytes": 24576,
+      "temporaryBytes": 16384,
+      "durableBytes": 139264,
+      "freeBytes": 15752888320
+    },
+    {
+      "utc": "2026-11-05T00:25:21.177724+00:00",
+      "pids": [
+        64099,
+        64239,
+        64824,
+        64890,
+        64891
+      ],
+      "processes": 5,
+      "rssBytes": 866582528,
+      "wholeBytes": 3462979408,
+      "newBytes": 24576,
+      "temporaryBytes": 16384,
+      "durableBytes": 139264,
+      "freeBytes": 15752863744
+    },
+    {
+      "utc": "2026-11-05T00:25:21.618520+00:00",
+      "pids": [
+        64099,
+        64239,
+        64824,
+        64928,
+        64929
+      ],
+      "processes": 5,
+      "rssBytes": 1054900224,
+      "wholeBytes": 3462979408,
+      "newBytes": 24576,
+      "temporaryBytes": 16384,
+      "durableBytes": 139264,
+      "freeBytes": 15735570432
+    },
+    {
+      "utc": "2026-11-05T00:25:22.034685+00:00",
+      "pids": [
+        64099,
+        64239,
+        64824,
+        64954,
+        64956
+      ],
+      "processes": 5,
+      "rssBytes": 1245331456,
+      "wholeBytes": 3462979408,
+      "newBytes": 24576,
+      "temporaryBytes": 16384,
+      "durableBytes": 139264,
+      "freeBytes": 15735504896
+    },
+    {
+      "utc": "2026-11-05T00:25:22.544555+00:00",
+      "pids": [
+        64099,
+        64239,
+        64824,
+        64982,
+        64983
+      ],
+      "processes": 5,
+      "rssBytes": 1312243712,
+      "wholeBytes": 3462979408,
+      "newBytes": 24576,
+      "temporaryBytes": 16384,
+      "durableBytes": 139264,
+      "freeBytes": 15735156736
+    },
+    {
+      "utc": "2026-11-05T00:25:22.957928+00:00",
+      "pids": [
+        64099,
+        64239,
+        64824,
+        65077,
+        65078
+      ],
+      "processes": 5,
+      "rssBytes": 1424359424,
+      "wholeBytes": 3462979408,
+      "newBytes": 24576,
+      "temporaryBytes": 16384,
+      "durableBytes": 139264,
+      "freeBytes": 15735132160
+    },
+    {
+      "utc": "2026-11-05T00:25:23.371184+00:00",
+      "pids": [
+        64099,
+        64239,
+        64824,
+        65096,
+        65097
+      ],
+      "processes": 5,
+      "rssBytes": 1479475200,
+      "wholeBytes": 3462979408,
+      "newBytes": 24576,
+      "temporaryBytes": 16384,
+      "durableBytes": 139264,
+      "freeBytes": 15735132160
+    },
+    {
+      "utc": "2026-11-05T00:25:23.789293+00:00",
+      "pids": [
+        64099,
+        64239,
+        64824,
+        65203,
+        65204
+      ],
+      "processes": 5,
+      "rssBytes": 1517305856,
+      "wholeBytes": 3462979408,
+      "newBytes": 24576,
+      "temporaryBytes": 16384,
+      "durableBytes": 139264,
+      "freeBytes": 15735115776
+    },
+    {
+      "utc": "2026-11-05T00:25:24.206624+00:00",
+      "pids": [
+        64099,
+        64239,
+        64824,
+        65279,
+        65280
+      ],
+      "processes": 5,
+      "rssBytes": 1544175616,
+      "wholeBytes": 3462979408,
+      "newBytes": 24576,
+      "temporaryBytes": 16384,
+      "durableBytes": 139264,
+      "freeBytes": 15734726656
+    },
+    {
+      "utc": "2026-11-05T00:25:24.630533+00:00",
+      "pids": [
+        64099,
+        64239,
+        64824,
+        65412,
+        65413
+      ],
+      "processes": 5,
+      "rssBytes": 1577713664,
+      "wholeBytes": 3462979408,
+      "newBytes": 24576,
+      "temporaryBytes": 16384,
+      "durableBytes": 139264,
+      "freeBytes": 15734685696
+    },
+    {
+      "utc": "2026-11-05T00:25:25.051564+00:00",
+      "pids": [
+        64099,
+        64239,
+        64824,
+        65438,
+        65440
+      ],
+      "processes": 5,
+      "rssBytes": 1597358080,
+      "wholeBytes": 3462979408,
+      "newBytes": 24576,
+      "temporaryBytes": 16384,
+      "durableBytes": 139264,
+      "freeBytes": 15735586816
+    },
+    {
+      "utc": "2026-11-05T00:25:25.467634+00:00",
+      "pids": [
+        64099,
+        64239,
+        64824,
+        65459,
+        65460
+      ],
+      "processes": 5,
+      "rssBytes": 1621704704,
+      "wholeBytes": 3462979408,
+      "newBytes": 24576,
+      "temporaryBytes": 16384,
+      "durableBytes": 139264,
+      "freeBytes": 15735582720
+    },
+    {
+      "utc": "2026-11-05T00:25:25.890170+00:00",
+      "pids": [
+        64099,
+        64239,
+        64824,
+        65479,
+        65480
+      ],
+      "processes": 5,
+      "rssBytes": 1649164288,
+      "wholeBytes": 3462979408,
+      "newBytes": 24576,
+      "temporaryBytes": 16384,
+      "durableBytes": 139264,
+      "freeBytes": 15735562240
+    },
+    {
+      "utc": "2026-11-05T00:25:26.389543+00:00",
+      "pids": [
+        64099,
+        64239,
+        64824,
+        65500,
+        65501
+      ],
+      "processes": 5,
+      "rssBytes": 1704067072,
+      "wholeBytes": 3462979408,
+      "newBytes": 24576,
+      "temporaryBytes": 16384,
+      "durableBytes": 139264,
+      "freeBytes": 15735562240
+    },
+    {
+      "utc": "2026-11-05T00:25:26.789821+00:00",
+      "pids": [
+        64099,
+        64239,
+        64824,
+        65540,
+        65541
+      ],
+      "processes": 5,
+      "rssBytes": 1766047744,
+      "wholeBytes": 3462979408,
+      "newBytes": 24576,
+      "temporaryBytes": 16384,
+      "durableBytes": 139264,
+      "freeBytes": 15752323072
+    },
+    {
+      "utc": "2026-11-05T00:25:27.205604+00:00",
+      "pids": [
+        64099,
+        64239,
+        64824,
+        65558,
+        65559
+      ],
+      "processes": 5,
+      "rssBytes": 1848688640,
+      "wholeBytes": 3462979408,
+      "newBytes": 24576,
+      "temporaryBytes": 16384,
+      "durableBytes": 139264,
+      "freeBytes": 15735201792
+    },
+    {
+      "utc": "2026-11-05T00:25:27.620464+00:00",
+      "pids": [
+        64099,
+        64239,
+        64824,
+        65651,
+        65652
+      ],
+      "processes": 5,
+      "rssBytes": 1925808128,
+      "wholeBytes": 3462979408,
+      "newBytes": 24576,
+      "temporaryBytes": 16384,
+      "durableBytes": 139264,
+      "freeBytes": 15734996992
+    },
+    {
+      "utc": "2026-11-05T00:25:28.084255+00:00",
+      "pids": [
+        64099,
+        64239,
+        64824,
+        65672,
+        65673
+      ],
+      "processes": 5,
+      "rssBytes": 1970536448,
+      "wholeBytes": 3462979408,
+      "newBytes": 24576,
+      "temporaryBytes": 16384,
+      "durableBytes": 139264,
+      "freeBytes": 15734779904
+    },
+    {
+      "utc": "2026-11-05T00:25:28.513416+00:00",
+      "pids": [
+        64099,
+        64239,
+        64824,
+        65765,
+        65766
+      ],
+      "processes": 5,
+      "rssBytes": 2010857472,
+      "wholeBytes": 3462979408,
+      "newBytes": 24576,
+      "temporaryBytes": 16384,
+      "durableBytes": 139264,
+      "freeBytes": 15734775808
+    },
+    {
+      "utc": "2026-11-05T00:25:28.937475+00:00",
+      "pids": [
+        64099,
+        64239,
+        64824,
+        65783,
+        65784
+      ],
+      "processes": 5,
+      "rssBytes": 2123644928,
+      "wholeBytes": 3462979408,
+      "newBytes": 24576,
+      "temporaryBytes": 16384,
+      "durableBytes": 139264,
+      "freeBytes": 15734755328
+    },
+    {
+      "utc": "2026-11-05T00:25:29.455774+00:00",
+      "pids": [
+        64099,
+        64239,
+        64824,
+        65877,
+        65878
+      ],
+      "processes": 5,
+      "rssBytes": 2171863040,
+      "wholeBytes": 3462979408,
+      "newBytes": 1388544,
+      "temporaryBytes": 1380352,
+      "durableBytes": 139264,
+      "freeBytes": 15733854208
+    },
+    {
+      "utc": "2026-11-05T00:25:29.879073+00:00",
+      "pids": [
+        64099,
+        64239,
+        66003,
+        66021,
+        66024
+      ],
+      "processes": 5,
+      "rssBytes": 247660544,
+      "wholeBytes": 3462979408,
+      "newBytes": 1388544,
+      "temporaryBytes": 1380352,
+      "durableBytes": 139264,
+      "freeBytes": 15733465088
+    },
+    {
+      "utc": "2026-11-05T00:25:30.315079+00:00",
+      "pids": [
+        64099,
+        64239,
+        66086,
+        66093,
+        66094
+      ],
+      "processes": 5,
+      "rssBytes": 186335232,
+      "wholeBytes": 3462979408,
+      "newBytes": 1388544,
+      "temporaryBytes": 1380352,
+      "durableBytes": 139264,
+      "freeBytes": 15732686848
+    },
+    {
+      "utc": "2026-11-05T00:25:30.756657+00:00",
+      "pids": [
+        64099,
+        64239,
+        66106,
+        66113,
+        66114
+      ],
+      "processes": 5,
+      "rssBytes": 186613760,
+      "wholeBytes": 3462979408,
+      "newBytes": 1388544,
+      "temporaryBytes": 1380352,
+      "durableBytes": 139264,
+      "freeBytes": 15732686848
+    },
+    {
+      "utc": "2026-11-05T00:25:31.189519+00:00",
+      "pids": [
+        64099,
+        64239,
+        66125,
+        66133,
+        66137
+      ],
+      "processes": 5,
+      "rssBytes": 186793984,
+      "wholeBytes": 3462979408,
+      "newBytes": 1388544,
+      "temporaryBytes": 1380352,
+      "durableBytes": 139264,
+      "freeBytes": 15732682752
+    },
+    {
+      "utc": "2026-11-05T00:25:31.675936+00:00",
+      "pids": [
+        64099,
+        64239,
+        66184,
+        66185
+      ],
+      "processes": 4,
+      "rssBytes": 185925632,
+      "wholeBytes": 3462979408,
+      "newBytes": 53248,
+      "temporaryBytes": 28672,
+      "durableBytes": 155648,
+      "freeBytes": 15749451776
+    }
+  ],
+  "status": "PASS",
+  "exitCode": 0,
+  "remainingBeforeFinalReap": [],
+  "remainingProcesses": [],
+  "fullUtc": "2026-11-05T00:25:31.986698+00:00",
+  "outerTemporaryAbsent": true,
+  "finishedBeforeHardDeadline": true,
+  "freeAfterBytes": 15749431296
+}
