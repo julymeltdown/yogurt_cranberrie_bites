@@ -720,3 +720,75 @@ Outer guard recorded four complete samples, peak WHOLE **67,332,583,424 bytes**,
 This pass qualifies the bounded metadata readset/identity boundary and its two guards only. Unchanged unresolved claims still refuse, continuously changed readsets refuse, and no PID absence, startup grace, owner inference or broad executable ignore is introduced. Exact failed raw readsets are retained in a bounded compressed representation when that path is exercised. No provider, Auth exchange/state crypto, SQL, browser, compiler, target, native copied executable or application test ran. Public OAuth remains OFF. The isolated application candidate and original physical checkout stay unqualified; the incompatible blocked Party goal remains truthful and unchanged.
 
 A distinct future compiler allocation is still required. Old `BE03-CHECK03-0605` stays withdrawn and genuinely unused. An illustrative additional 128 MiB upper would bring family charge to **1,090,109,440 bytes**, leaving **409,600 bytes** before any higher growth; this arithmetic grants no resource or target custody and resets no history. Existing compiler admission explicitly refuses the old offer, so a fresh entry, current custody, current capacity and literal allocation must precede any compiler/target access. No King/SL approval stage is introduced.
+
+
+## 2026-11-05 08:24 UTC: shared retention cases qualified; compiler allocation pending
+
+The responsible C06 implementation owner executed the two new chunked-readset
+retention cases once under actual `C06-BINDING-SOURCE02-0808`, after both guards
+were LIVE. BE03 retains that exact-module qualification and will not replay the
+two cases. This qualifies only the changed evidence-retention boundary. C06's
+overall round remains FAIL after its later Python application checks returned
+six passes, one failure and one error because the required URI/date-time format
+checkers were unavailable. Its generator, Rustfmt and compiler were NOT_RUN.
+No historical Source01 overflow operands were reconstructed and no earlier
+failed outer round becomes PASS.
+
+Exact retained inputs (all under
+`/private/tmp/mcr-c06-parade-binding-6b5d-20261105/validation-source01/round02/`):
+
+- `retention-case-qualification.json`: SHA-256
+  `98b5a4fe8a28c7a077cba4b48b8b5f5c01b7558eb78e7321eef6032c7d6c0837`.
+- `new-retention-case-result.json`: SHA-256
+  `5f025aabd9e04dc167f4ff410b2c85736ea3e6414b418f95959f1e88896d0ae3`;
+  two NEW cases PASS, unchanged old cases replayed zero times.
+- `both-live.json`: SHA-256
+  `dce3b0d2b2f318c448e5c0435295e5738cc5c88649f62d1a7618c0c8e18be2ab`.
+- `full.json`: SHA-256
+  `c3d0abb38fa9aaddacac33d4019b2ef4d8a6880fd07d25812c345d67a5280212`;
+  actual ACCEPT `1793866524.308318`, FULL `1793866606.405836`, resources zero,
+  result FAIL. Case disposition is
+  `PASS_NEW_RETENTION_CASES_NO_OUTER_RETROACTIVE_PASS`.
+- Exact module `readset_chunks04.py`: SHA-256
+  `79a2697b937350aba0cbdd9b17272da4c71b9d479eb9f7e2cedde37a3c47da17`.
+
+The module stores exact one-read UTF-8 raw operands in content-addressed,
+compressed immutable chunks and indexes, each at most 128 KiB, deduplicated
+across both guards and repeated frames. One shared 4 MiB reservation, including
+administration, is checked before writes; exhaustion refuses without deleting
+or replacing earlier evidence. That reservation is included in the compiler's
+8 MiB bootstrap and 16 MiB outside cap, not a new book or extra allowance.
+
+Compiler offer `BE03-GATEWAY-CHECK04-0755` is literal UNUSED: the 08:15 UTC
+acceptance deadline elapsed without actual ACCEPT. No target stat/read/lock,
+Cargo, bootstrap case, retention case or application test occurred under it.
+A distinct usable allocation has been requested. The prepared successor is
+`/private/tmp/mcr-be03-oauth-12cc/gateway-check04-run01/proposal-retained-ready08.json`,
+SHA-256 `701a3752fba88b8274255873448a68644186c13d9cde7f2cfce03e6f78df4ad3`;
+entry `gateway-check04-controls/run.py` SHA-256
+`dfea233fc73a37190c22d17990aa8d7e400dd937d70e5881f0ececc643a9b049`.
+The remaining planned new cases are the two bootstrap/joint-budget cases only.
+The exact proposed command remains:
+
+```text
+cargo +1.88.0 check --offline --locked -p api-gateway --lib --tests -j 1 --config profile.dev.package.contracts-build.opt-level=2
+```
+
+Incoming custody is the actual World10 handoff
+`/private/tmp/mcr-world-moderation-termination-20261105/build10/actual-target-input-handoff.json`
+SHA-256 `ace669c5d8758f404a93067250c9915b9217539068569b5fe83eacce61fb3d82`,
+linking literal TARGET `59a7bc017e1669fed960fabc7538928d011a9bfa9af2fcb981bc211063b45f6e`
+and FULL `e5f24e70fc296c79556ff4925f1abe8fca7d71851d390412a18eea3daee81a0e`.
+Private field-name translations explicitly identify themselves as metadata,
+reference the immutable originals and retain `success:false`, cleanup recovery
+and unrun runtime checks. A resource release is not product qualification.
+C06's reported higher WHOLE history of 77,309,411,328 bytes is retained; the next
+actual allocation must check fresh fit and preserve every higher observation.
+
+All 15 application/shared leaves remain UNCOMPILED and UNPUBLISHED. The sealed
+backend source stays `11be1d4395354b02c94211ed33f7992105750e42`, backend tree
+`df28cd9a1e1559e723010255dd5dafd82cf71135`. Mounted tests, provider, SQL,
+browser and native runtime remain NOT_RUN. Public OAuth stays OFF. Denial still
+clears the browser cookie without tombstoning Auth state; that replay gap is
+OPEN. The real worktree HEAD and index remain outside this documentation-only
+change. No king/SL review or acknowledgment is a prerequisite.
