@@ -1,4 +1,4 @@
-import { createSessionController } from '../../src/features/auth/model/session'
+import { createFixtureSessionController } from './auth-fixture'
 import { createElement } from 'react'
 import { createModeration, type ModeratorLease } from '../../src/features/admin/reports/model/controller'
 import { ModerationReview } from '../../src/features/admin/reports/ui/ModerationReview'
@@ -13,7 +13,7 @@ export async function evidenceCells(role: Role): Promise<Cell[]> {
   const userId = id(500 + roles.indexOf(role)), calls: string[] = [], listeners = new Set<() => void>()
   let report = { report_id: id(803), event_id: eventId, target_type: 'USER', target_id: id(2), state: 'OPEN', revision: 1, created_at: '2026-11-07T08:00:00Z' }
   const privateDetail = () => ({ report, reporter_id: id(899), reason: 'PRIVACY', text: markers[2], evidence_media_ids: [id(804)] })
-  const auth = createSessionController({ eventId, fetch: async input => {
+  const auth = createFixtureSessionController({ eventId, fetch: async input => {
     const request = input as Request
     calls.push(request.method)
     // A denied client must not dispatch: a synthetic backend does not grant by role name.

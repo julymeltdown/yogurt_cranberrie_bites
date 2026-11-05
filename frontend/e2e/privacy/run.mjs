@@ -6,6 +6,7 @@ import { execFileSync } from 'node:child_process'
 import { createHarnessServer, here, root, requireDependency } from './runtime.mjs'
 
 const output = resolve(root, 'docs/mcr/evidence/privacy-frontend')
+const admissionOnly = process.argv.includes('--admission-compatibility')
 const server = await createHarnessServer()
 let browser
 const errors = []
@@ -18,12 +19,18 @@ try {
   page.on('pageerror', error => errors.push(error.message)) // Synthetic runner only; no real credentials/payloads.
   // Reject accidental live calls: this runner must remain fixture-only.
   await page.route(url => url.pathname.startsWith('/api/'), route => { errors.push('unexpected network API dispatch'); return route.abort() })
-  await page.goto(`http://127.0.0.1:${server.httpServer.address().port}/`)
+  await page.goto(`http://127.0.0.1:${server.httpServer.address().port}/${admissionOnly ? '?admission-compatibility' : ''}`)
   try { await page.waitForFunction(() => window.qa04 !== undefined, null, { timeout: 15000 }) }
   catch { console.error(errors); throw new Error('QA04 fixture module failed to start') }
   const report = await page.evaluate(() => window.qa04)
   assert.deepEqual(errors, [])
   assert.equal(report.result, 'MOCK_READY')
+  if (admissionOnly) {
+    assert.equal(report.qualification, 'SYNTHETIC_ADMISSION_COMPATIBILITY_ONLY')
+    assert.equal(report.checks.length, 4)
+    assert.equal(report.originalMatrixReplayed, false)
+    assert.equal(report.realService, 'NOT_RUN')
+  } else {
   assert.equal(report.cells.filter(cell => cell.status === 'PASS').length, 28)
   assert.equal(report.cells.filter(cell => cell.status === 'UNSUPPORTED').length, 7)
   assert.equal(report.domainMatrix.length, 175)
@@ -31,6 +38,7 @@ try {
   assert.equal(report.mountedUI.length, 28)
   assert.equal(new Set(report.mountedUI.map(cell => cell.domain + ':' + cell.role)).size, 28)
   assert.ok(report.mountedUI.every(cell => cell.qualification === 'SYNTHETIC_MOUNTED_COMPONENT_ONLY' && cell.assertions.length > 0))
+  }
   // Every mounted private component has been unmounted and removed after its assertions.
   assert.doesNotMatch(await page.locator('body').innerText(), /qa04_private_/)
   const files = [
@@ -53,9 +61,10 @@ try {
   }
   const sourcePins = Object.fromEntries(await Promise.all([...new Set(files)].sort().map(async file => [file, createHash('sha256').update(await readFile(resolve(root, file))).digest('hex')])))
   Object.assign(report, { browser: browser.version(), node: process.version, candidate: execFileSync('git', ['rev-parse', 'HEAD'], { cwd: root, encoding: 'utf8' }).trim(),
-    command: 'NODE frontend/e2e/privacy/run.mjs', exitCode: 0, sourcePins, actualApiNetworkCalls: 0, pageErrors: errors })
-  await writeFile(resolve(output, 'fixture-report.json'), JSON.stringify(report, null, 2) + '\n')
-  console.log(JSON.stringify({ result: report.result, passed: 28, unsupportedWS: 7, domainPassed: report.domainMatrix.filter(cell => cell.status === 'PASS').length, domainUnsupported: report.domainMatrix.filter(cell => cell.status === 'UNSUPPORTED').length, mountedComponentScenarios: report.mountedUI.length, projections: report.projections.length, pageErrors: errors.length }))
+    command: 'NODE frontend/e2e/privacy/run.mjs' + (admissionOnly ? ' --admission-compatibility' : ''), exitCode: 0, sourcePins, actualApiNetworkCalls: 0, pageErrors: errors })
+  await writeFile(resolve(output, admissionOnly ? 'admission-compatibility-report.json' : 'fixture-report.json'), JSON.stringify(report, null, 2) + '\n')
+  console.log(JSON.stringify(admissionOnly ? { result: report.result, qualification: report.qualification, checks: report.checks.length, originalMatrixReplayed: false, pageErrors: errors.length }
+    : { result: report.result, passed: 28, unsupportedWS: 7, domainPassed: report.domainMatrix.filter(cell => cell.status === 'PASS').length, domainUnsupported: report.domainMatrix.filter(cell => cell.status === 'UNSUPPORTED').length, mountedComponentScenarios: report.mountedUI.length, projections: report.projections.length, pageErrors: errors.length }))
 } finally {
   await browser?.close()
   await server.close()

@@ -5,7 +5,7 @@ import { mountPrivateView, mountedUI } from './mounted-ui'
 import { createMemorySession } from '../../src/shared/api/http'
 import { createQueryPrivacy, publicOnlyDehydrateOptions, type PolicyChange } from '../../src/shared/query/privacy'
 import { publicQueryKey } from '../../src/shared/query/keys'
-import { createSessionController } from '../../src/features/auth/model/session'
+import { createFixtureSessionController } from './auth-fixture'
 import { createSocialSharingController } from '../../src/features/social-sharing/model/controller'
 import { publicIntroSchema } from '../../src/entities/intro/model/contract'
 import { beaconSchema } from '../../src/features/meet-beacon/model/contract'
@@ -59,7 +59,7 @@ async function socialCell(role: Role): Promise<Cell[]> {
     }
     return noStore(requestBody)
   }
-  const auth = createSessionController({ eventId, fetch })
+  const auth = createFixtureSessionController({ eventId, fetch })
   auth.session.replace(0, { userId, eventId, accessToken: 'qa04-fixture-only-token' })
   const controller = createSocialSharingController({ auth, sensitiveRead: auth.requestSensitive,
     access: { read: () => ({ available: true, readOnly: false }), subscribe: () => () => undefined }, now: () => epoch })

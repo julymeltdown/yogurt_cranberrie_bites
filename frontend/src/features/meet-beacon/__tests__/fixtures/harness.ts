@@ -2,6 +2,7 @@
 import fixture from '../../../../../../contracts/fixtures/domain/private-beacon.json'
 import { createSessionController } from '../../../auth/model/session'
 import { isolatedCookiePolicy } from '../../../auth/__tests__/fixtures/data'
+import { admission } from '../../../auth/__tests__/enrollment-consent/fixtures'
 import { createPlacesController } from '../../../places/model/controller'
 import { places, release, eventId, userId } from '../../../places/__tests__/fixtures/data'
 import { createMeetingBeaconController } from '../../model/controller'
@@ -30,7 +31,9 @@ export async function harness(photoClient?: import('../../model/photo-client').M
   const requests: Request[] = [], authorityListeners = new Set<() => void>(), photoListeners = new Set<() => void>()
   const items = places(), map = await release(items)
   const auth = createSessionController({ eventId, cookiePolicy: isolatedCookiePolicy(), fetch: async input => {
-    const r = input as Request, path = new URL(r.url).pathname; requests.push(r.clone())
+    const r = input as Request, path = new URL(r.url).pathname
+    if (r.method === 'GET' && path === '/api/auth/enrollment/admission') return Response.json(admission())
+    requests.push(r.clone())
     const custom = override?.(r); if (custom) return custom
     if (path.endsWith('/places')) return Response.json({ event_id: eventId, revision: 7, items })
     if (path.endsWith('/commands')) return Response.json(status)

@@ -8,6 +8,7 @@ Run from the repository root:
 
 ```sh
 NODE frontend/e2e/privacy/run.mjs
+NODE frontend/e2e/privacy/run.mjs --admission-compatibility
 NODE --test frontend/e2e/privacy/live-gate.node.mjs
 NODE frontend/e2e/privacy/typecheck.mjs
 NODE frontend/e2e/privacy/node_modules/oxlint/bin/oxlint frontend/e2e/privacy
@@ -47,3 +48,9 @@ This is **SYNTHETIC_MOUNTED_COMPONENT_ONLY** evidence. It does not mount the aut
 ## Node selftest discovery boundary
 
 The gate selftest is `live-gate.node.mjs` and is executed explicitly with `node --test`. It imports `node:test`, not Vitest. The earlier `.test.mjs` name matched Vitest’s default discovery pattern and produced “No test suite found” in the historical FE09 broad diagnostic, even while Node test cases ran. The rename preserves the selftest bytes and keeps it outside that Vitest pattern without changing shared configuration. Historical commands and source paths in earlier receipts refer to their original committed candidates. This local discovery fix does not make the frozen broad diagnostic green or change QA04’s real-service dependency.
+
+## Current admission fixture compatibility
+
+`auth-fixture.ts` composes the existing canonical SessionController with the Auth owner's `admission()` and `isolatedCookiePolicy()` fixture factories. Only the synthetic GET admission response is intercepted; actual Auth validates the receipt and applies its normal protected-read and privacy policy. It supplies no real principal, consent, role or runtime authority. The social/evidence/recipient fixture transports keep their existing relationship/lease/expiry responses.
+
+`--admission-compatibility` reuses this native runner for four targeted assertions: actual admission before a protected social read, consent withdrawal clearing private state while retaining canonical identity, the retained beacon factory's admission-before-FE19 initialization, and preservation of beacon denial mode/request accounting. It does not invoke the old seven-role matrix, full native fixture suite or a second browser/runtime. Its separate `admission-compatibility-report.json` must not overwrite or refresh historical `fixture-report.json` evidence. The beacon fixture change is a literal Root-transferred import/GET-response hunk; all other feature source remains read-only. Execution still needs a fresh finite resource allocation.

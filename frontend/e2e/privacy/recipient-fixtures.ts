@@ -1,4 +1,4 @@
-import { createSessionController } from '../../src/features/auth/model/session'
+import { createFixtureSessionController } from './auth-fixture'
 import { createElement } from 'react'
 import { createGiftPickup } from '../../src/features/gift-pickup/model/controller'
 import { GiftPickup } from '../../src/features/gift-pickup/ui/GiftPickup'
@@ -20,7 +20,7 @@ export async function recipientCells(role: Role): Promise<Cell[]> {
   const late = deferred<Response>(), calls: string[] = [], listeners = new Set<() => void>()
   let delayed = false, pickupReads = 0, storedIntent: PickupIntent | null = null
   const receiptId = id(902)
-  const auth = createSessionController({ eventId, fetch: async input => {
+  const auth = createFixtureSessionController({ eventId, fetch: async input => {
     const request = input as Request, path = new URL(request.url).pathname
     calls.push(request.method)
     if (request.method === 'GET') {

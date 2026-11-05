@@ -1,0 +1,159 @@
+{
+  "task": "QA04 admission compatibility fixture increment",
+  "publicationBase": "37add6d996eacb7674c1c220150870d7090d5e09",
+  "sourceStateBeforePortableEvidence": "f440e016db43ee236aea9dfc7a03f20d117b688b",
+  "sourceCandidate": "b5d8b0e9c7b4baf1f2b0ad4aef5c938c75c57307",
+  "staticValidatedCheckout": "5b713dcbcdfb0c14774e05794020e528c3d7a4bd",
+  "scope": {
+    "exactChangedSourcePaths": [
+      "frontend/e2e/privacy/README.md",
+      "frontend/e2e/privacy/admission-compatibility.ts",
+      "frontend/e2e/privacy/auth-fixture.ts",
+      "frontend/e2e/privacy/browser.ts",
+      "frontend/e2e/privacy/evidence-fixtures.ts",
+      "frontend/e2e/privacy/fixtures.ts",
+      "frontend/e2e/privacy/recipient-fixtures.ts",
+      "frontend/e2e/privacy/run.mjs",
+      "frontend/src/features/meet-beacon/__tests__/fixtures/harness.ts"
+    ],
+    "sharedTransfer": {
+      "owner": "Root153",
+      "path": "frontend/src/features/meet-beacon/__tests__/fixtures/harness.ts",
+      "ownerRevision": "7e41574a525c74c7be27c6bbb9c26f4265f41b37",
+      "grantedPreimageSHA256": "953b18c140c5f3fd09ec7735727c22089400df79a66ab2e4d26ebaff41fd3ca1",
+      "postimageSHA256": "f7d2899055c74e34d62f86560d6ef60028d81f9af245de7598c8e2fa039329fb"
+    },
+    "productImplementationChanged": false,
+    "frozenSourceChanged": false
+  },
+  "behavior": "Use the canonical Auth admission factory before protected fixture reads. Consent revalidation preserves session identity, retires the private scope, clears private controller/cache state and prevents further feature dispatch. The retained beacon fixture admits exact GET before normal feature request accounting.",
+  "native": {
+    "offer": "QA04-ADMISSION-NATIVE02-0433",
+    "actualAcceptEpoch": 1793853113.10534,
+    "actualFullEpoch": 1793853124.999309,
+    "actualFullSHA256": "d50f608a83e9a80e97bc21f9db25455d788cbf127adcad8e43c952ec1bbd81ac",
+    "command": "node frontend/e2e/privacy/run.mjs --admission-compatibility",
+    "driverExitCode": 0,
+    "result": "MOCK_READY",
+    "qualification": "SYNTHETIC_ADMISSION_COMPATIBILITY_ONLY",
+    "checks": [
+      "actual Auth admission before social protected read",
+      "actual consent withdrawal clears private state without changing identity",
+      "retained beacon admission/FE19 initialization",
+      "retained beacon denial mode and request accounting"
+    ],
+    "sourcePinCount": 163,
+    "report": "admission-compatibility-report.json",
+    "actualApiNetworkCalls": 0,
+    "pageErrors": [],
+    "originalMatrixReplayed": false,
+    "resourceRound": "FAIL",
+    "failureSummary": "Unregistered sibling handoff login shell89244 interrupted accounting before the primary joined the completed native child. Independent child-cleanup exit0 and four-check report remain valid command evidence; FULL commands[] does not erase them. No resource PASS claimed."
+  },
+  "static": {
+    "offer": "QA04-SOURCE23-0507",
+    "actualAcceptEpoch": 1793855284.847775,
+    "actualFullEpoch": 1793855300.042757,
+    "actualFullSHA256": "74329f0eb9c94eb47dbd425364a37382cd59fb4a516919802f82109c516040a9",
+    "commands": [
+      {
+        "argv": [
+          "node",
+          "--max-old-space-size=1024",
+          "frontend/e2e/privacy/typecheck.mjs"
+        ],
+        "exitCode": 0,
+        "stdout": "QA04 strict harness/transitive public-interface types: PASS"
+      },
+      {
+        "argv": [
+          "node",
+          "--max-old-space-size=1024",
+          "frontend/e2e/privacy/node_modules/oxlint/bin/oxlint",
+          "frontend/e2e/privacy"
+        ],
+        "exitCode": 0,
+        "stdout": ""
+      }
+    ],
+    "bothInitialCompleteLive": true,
+    "sourcePinsUnchanged": true,
+    "resourceRound": "FAIL",
+    "failureSummary": "After both commands completed0, the primary final CLEANUP scan found unregistered PI11 login shell31612. PI11 confirmed exact launcher history and corrected future nonlogin immediate Python launches. Independent guardian exited0/LIVE. No retrospective registration or resource PASS."
+  },
+  "retainedFailedHistory": [
+    {
+      "rounds": "Source01-18",
+      "status": "Historical admission/control failures; raw records retained on owner branch",
+      "qualification": "Do not use as qualification of the changed candidate; raw controls omitted from bounded publication"
+    },
+    {
+      "round": "Source19",
+      "typesExitCode": 0,
+      "lintExitCode": 0,
+      "candidateBoundary": "Older postimages; these passes do not qualify the b5d8 repair",
+      "resourceRound": "FAIL during CLEANUP on BE03-confirmed unregistered inspection shell36058"
+    },
+    {
+      "round": "Native01",
+      "driverExitCode": 1,
+      "failure": "Consent-withdrawal canonical identity assertion failed; no four-case report",
+      "repair": "b5d8 changes use actual canonical admission revalidation rather than feature denial as the admission trigger",
+      "resourceRound": "Separate CLEANUP failure retained"
+    },
+    {
+      "round": "Source20",
+      "actualAcceptance": false,
+      "status": "Preaccept control failure on unknown98680; later99017 event is separate",
+      "yieldEpoch": 1793854652.0433369,
+      "noPayload": true
+    },
+    {
+      "round": "Source21",
+      "actualAcceptance": true,
+      "typecheckExitCode": -15,
+      "lint": "NOT_RUN",
+      "status": "Unknown17868 during accepted work interrupted typecheck",
+      "producerDisposition": "207 confirmed its default login-shell launch and corrected future entry; historical FAIL unchanged"
+    },
+    {
+      "round": "Source22",
+      "actualAcceptance": false,
+      "status": "Preaccept control failure on unknown22980",
+      "yieldEpoch": 1793855123.0656362,
+      "noPayload": true,
+      "producerDisposition": "Allocator reported00c exact actor-history confirmation and future launcher correction; Root excluded; historical FAIL unchanged"
+    }
+  ],
+  "cleanup": {
+    "nativeObservedOwnedBrowserIdentitiesAbsent": true,
+    "nativeTemporaryProfileContentsAbsent": true,
+    "sourceControllersAbsent": true,
+    "ownedChildren": [],
+    "dependencyLinkAbsent": true,
+    "resourcesHeld": false
+  },
+  "accountingBoundary": {
+    "minimumRetainedNewBytes": 385679360,
+    "minimumRetainedWholeBytes": 5820747776,
+    "uncapturedNativeGapsUpperBytes": 268435456,
+    "carryAllHigherRawGitAndDocumentationGrowth": true,
+    "cumulativeNewCapBytes": 402653184,
+    "noResetOrDeletionCredit": true
+  },
+  "originalQA04": {
+    "status": "BLOCKED",
+    "realServiceHTTP_WS_Cache": "NOT_RUN",
+    "persistentGoal": "Existing unbudgeted unfinished goal retained",
+    "missingProducer": "Serving Concert EXE/cohort/private principal references, actual seven-principal resource/canary/denial catalog, and registered privacy WS/cache handoff",
+    "producerOwnerThread": "01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08",
+    "frontendAttachmentThread": "01a1a153-1227-7e72-801f-a2a6b91981e1",
+    "nativeReportOriginalTaskField": "Historical IN_PROGRESS field preserved in original report; current task disposition is BLOCKED"
+  },
+  "publication": {
+    "ownerThread": "01a1a5d9-332b-7822-a8f7-412e295fa211",
+    "noKingOrSLReviewOrAckGate": true,
+    "noUnchangedRuntimeReplayNeeded": true,
+    "rawEvidence": "Full immutable controls and public failure events remain on the owner branch; this compact receipt preserves their disposition and actual FULL hashes without publishing private process argv."
+  }
+}
