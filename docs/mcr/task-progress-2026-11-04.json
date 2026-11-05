@@ -1154,7 +1154,7 @@
         "P01": "Fenced whole-plan base alternative",
         "P04": "Second fenced whole-plan alternative",
         "P05": "Provisional simplified whole-plan base with TOILETS",
-        "P02": "Selected friend/fixed landmark meeting, MESSAGE, MEET HERE, accept/decline/cancel and ASK LOCATION components",
+        "P02": "Selected friend/event MESSAGE without a landmark prerequisite; fixed-landmark INVITE/MEET HERE, accept/decline/cancel and ASK LOCATION components",
         "P03/P06/P10": "Distinct notes variants: map/list/selection, composer/change-place, Friends/Everyone,1h/endday, replies and Meet Here; P10 provisional primary",
         "P07/P08/P09": "Distinct friends variants: markers/clusters, current/check-in/stale rows, VIEW/ASK LOCATION, selected friend MESSAGE/MEET HERE and pause/sharing; P09 provisional primary"
       },
@@ -1265,7 +1265,7 @@
             "BE41",
             "BE42"
           ],
-          "scope": "Add fixed reviewed-landmark invitation create/accept/decline/cancel transitions and participant-authorized contextual MESSAGE conversation, with current place revisions, idempotency, privacy and lifecycle/retention behavior. Selected-friend MESSAGE may open without creating or accepting an invitation; invitationId is optional, opening performs no implicit send/write, and access is scoped to the authorized friend/place context.",
+          "scope": "Add fixed reviewed-landmark invitation create/accept/decline/cancel transitions with current place revisions, idempotency, privacy and lifecycle/retention behavior. Separately provide contextual MESSAGE for an authorized selected friend and event context without a landmark or invitation prerequisite. Landmark/invitation linkage is optional and never permission; invitationId is optional, opening performs no invite/send/write, and cancellation rights remain producer-authorized. No global bare-user DM.",
           "completion": "Actual invitation/conversation producers persist decisions and messages, reauthorize current authorized conversation actors and places, handle duplicate/uncertain actions and block/delete/expire transitions; no automatic location disclosure or arrival.",
           "state": "NOT_STARTED",
           "required": true,
@@ -1288,7 +1288,7 @@
             "QA06",
             "QA07"
           ],
-          "scope": "Implement fixed-landmark invite composer/details, incoming/outgoing invitation states, accept/decline/cancel, contextual MESSAGE and note Meet Here entry using typed ports and truthful mutation states. MESSAGE can open directly from a selected friend/place context without an invite; no mutation occurs merely by opening it.",
+          "scope": "Implement fixed-landmark invite composer/details, incoming/outgoing invitation states, accept/decline/cancel, contextual MESSAGE and note Meet Here entry using typed ports and truthful mutation states. MESSAGE opens directly from an authorized selected friend and event context without a landmark or invitation prerequisite. Optional landmark/invitation linkage is not permission; no mutation occurs merely by opening MESSAGE. Fixed reviewed landmarks are required only for INVITE actions, and cancellation rights remain producer-authorized.",
           "completion": "Actual working invitation and contextual conversation states match reference Photo2 anatomy, recover uncertain submissions without duplication, preserve drafts appropriately and show only authorized participants/content; no static-message substitute.",
           "state": "NOT_STARTED",
           "required": true,
@@ -1440,7 +1440,7 @@
         },
         {
           "id": "VENU-IA07",
-          "title": "Contextual friend/place meeting conversation",
+          "title": "Contextual selected-friend/event conversation",
           "related_original_ia": [
             "M06",
             "M09"
@@ -1506,7 +1506,7 @@
         "existing_shared_families": "No blanket transfer of old monolithic API/proto/generated families, manifests, lockfiles or CI. Exact additive registration hunks require their actual current writer transfer.",
         "authority": "Frontend385 literal STOP/RETURN before writes and explicit new-family Root custody handoff."
       },
-      "message_semantics": "Selected-friend/place-context MESSAGE may open without creating or accepting an invitation; invitationId optional; opening has no implicit send/write; no global bare-user DM.",
+      "message_semantics": "MESSAGE opens from an authorized selected friend and event context without a landmark or invitation prerequisite. A fixed reviewed landmark is required only for INVITE actions. Landmark/invitation linkage is optional and never grants message permission; invitationId is optional; opening performs no invite/send/write; no global bare-user DM. Cancellation rights remain producer-authorized.",
       "privacy_boundaries": [
         "Device permission, sharing consent, friendship eligibility, explicit physical check-in and virtualWorld presence are distinct.",
         "Photo positions/times are not actual live location, calibrated GPS, attendance or operational place approval.",

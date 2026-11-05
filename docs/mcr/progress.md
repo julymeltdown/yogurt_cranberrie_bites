@@ -12,7 +12,7 @@ Old roof-only/Mapv3/PI11 venue work has actual STOP/preservation reports; useful
 
 Photo5 base, Photo9 Friends, Photo10 Notes and Photo2 meeting anatomy are provisional while the Frontend King holds the single optional artwork question. Do not merge conflicting base geometry. Burgundy selected tabs are a venue-local override; other Parade Ink surfaces remain. Developers must repeatedly pair each implemented state with its matching reference at the same viewport, record ROI/SHA/build/context and overlay/diff, and fix material differences. Kings/SLs do not perform implementation or pixel review.
 
-The venue name and ten visual references are supplied; only genuinely missing authoritative physical/georeferencing/access/closure/validity inputs remain in the existing question. Selected-friend MESSAGE can open without an invite, with no implicit send/write and no global bare-user DM. GPS, check-in, invitation acceptance and virtual movement stay distinct.
+The venue name and ten visual references are supplied; only genuinely missing authoritative physical/georeferencing/access/closure/validity inputs remain in the existing question. MESSAGE opens from an authorized selected friend and event context without a landmark or invitation prerequisite. A fixed reviewed landmark is required only for INVITE actions; optional landmark/invitation linkage never grants message permission. Opening MESSAGE performs no implicit send/write, and there is no global bare-user DM. GPS, check-in, invitation acceptance and virtual movement stay distinct.
 
 ## Current priority: Parade Ink design delivery
 
