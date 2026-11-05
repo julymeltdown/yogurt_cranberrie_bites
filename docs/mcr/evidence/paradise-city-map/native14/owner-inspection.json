@@ -1,0 +1,230 @@
+{
+  "kind": "OWNER_INSPECTION_MEASURED_SPACING_ITERATION_RESIDUAL_FIX_REQUIRED",
+  "candidate": "d97b189c19196c3ae266f98d8282e6a754876337",
+  "lease": "MAP-LFACTORY-NATIVE14-0507",
+  "images": [
+    {
+      "file": "360-800-map-overview.png",
+      "sha256": "f2c65ea6e41b16f4a419bada424aa566234db34823c72ffc5a232d6a3e4aed53",
+      "personallyInspected": true,
+      "inspection": "BYTE_IDENTICAL_TO_PERSONALLY_INSPECTED_NATIVE12"
+    },
+    {
+      "file": "360-800-friends.png",
+      "sha256": "b772b3a0d94189d405b5d78712adc175db717950b433880e14e321da407452ba",
+      "personallyInspected": true,
+      "inspection": "BYTE_IDENTICAL_TO_PERSONALLY_INSPECTED_NATIVE12"
+    },
+    {
+      "file": "360-800-friend-selected.png",
+      "sha256": "213a1ae9f86a7a49f20e97bcd970a6b21d2f2d892496463a81f6127c8cebf366",
+      "personallyInspected": true,
+      "inspection": "BYTE_IDENTICAL_TO_PERSONALLY_INSPECTED_NATIVE12"
+    },
+    {
+      "file": "360-800-notes.png",
+      "sha256": "9bf0dec5ba83d46f4d0da06484f100c47918c57ae1f1dc43387c35a40a97374f",
+      "personallyInspected": true,
+      "inspection": "PERSONALLY_VIEWED_NATIVE14"
+    },
+    {
+      "file": "360-800-note-composer.png",
+      "sha256": "2937fe48d147543657e26e06b2406c812b1f630b07d7e3bbd385bd50a679b7fc",
+      "personallyInspected": true,
+      "inspection": "PERSONALLY_VIEWED_NATIVE14"
+    },
+    {
+      "file": "360-800-unavailable.png",
+      "sha256": "48f9a8ebfd1670af211481b394c3b4463c6ff6978de0ca83867e05ed86ecb9bc",
+      "personallyInspected": true,
+      "inspection": "BYTE_IDENTICAL_TO_PERSONALLY_INSPECTED_NATIVE12"
+    },
+    {
+      "file": "390-844-map-overview.png",
+      "sha256": "33679991a0e9a603d70c3370378e6122ec5392029eee2c1552d70ea178476344",
+      "personallyInspected": true,
+      "inspection": "BYTE_IDENTICAL_TO_PERSONALLY_INSPECTED_NATIVE12"
+    },
+    {
+      "file": "390-844-friends.png",
+      "sha256": "63ba26d4c867714719e11e1a44a15ea76b56c5da1ee2e50c0eafdac1b6f45705",
+      "personallyInspected": true,
+      "inspection": "PERSONALLY_VIEWED_NATIVE14"
+    },
+    {
+      "file": "390-844-friend-selected.png",
+      "sha256": "f8076e98fd575248c4dcdee47a963ff40040ebcdbfd3f34c7af56ab43125aea4",
+      "personallyInspected": true,
+      "inspection": "PERSONALLY_VIEWED_NATIVE14"
+    },
+    {
+      "file": "390-844-notes.png",
+      "sha256": "c0dc1f929db9ab31f1b9b01410a744382ed07a6ae64ac87c4d8833b9ca6b333e",
+      "personallyInspected": true,
+      "inspection": "PERSONALLY_VIEWED_NATIVE14"
+    },
+    {
+      "file": "390-844-note-composer.png",
+      "sha256": "6da91a8460367a97a796a9f1a8ebe8ee1421425f3826754677f8d7467001f0b0",
+      "personallyInspected": true,
+      "inspection": "PERSONALLY_VIEWED_NATIVE14"
+    },
+    {
+      "file": "390-844-unavailable.png",
+      "sha256": "fe1d9ed93c3f346e03ed8d3828fa7add5aa70e5d4ebc750bbb4ed844737e9f94",
+      "personallyInspected": true,
+      "inspection": "PERSONALLY_VIEWED_NATIVE14"
+    },
+    {
+      "file": "390-844-friends-component.png",
+      "sha256": "043685f1c2ef6b488218b262868ad1a2ce5c16f696bced95b0cea8886e3c73c9",
+      "personallyInspected": true,
+      "inspection": "BYTE_IDENTICAL_TO_PERSONALLY_INSPECTED_NATIVE12"
+    },
+    {
+      "file": "390-844-notes-component.png",
+      "sha256": "59621833b918f3a28b5a6c19e14834653b3fcf6d862c3f296a387a782c8196e0",
+      "personallyInspected": true,
+      "inspection": "PERSONALLY_VIEWED_NATIVE14"
+    },
+    {
+      "file": "390-844-note-composer-component.png",
+      "sha256": "ebef563b43aa21c22077c55efecc9c1ca581b06a012688a32fd204d42c30629f",
+      "personallyInspected": true,
+      "inspection": "PERSONALLY_VIEWED_NATIVE14"
+    },
+    {
+      "file": "430-932-map-overview.png",
+      "sha256": "a57cea275b7c6b7ba746f71f82429e97d20b869461acb7472a142acdfeedc651",
+      "personallyInspected": true,
+      "inspection": "BYTE_IDENTICAL_TO_PERSONALLY_INSPECTED_NATIVE12"
+    },
+    {
+      "file": "430-932-friends.png",
+      "sha256": "46d85320494ba637030a5303345aeee00ab22398864fd2cd1c6f2a2256bac071",
+      "personallyInspected": true,
+      "inspection": "BYTE_IDENTICAL_TO_PERSONALLY_INSPECTED_NATIVE12"
+    },
+    {
+      "file": "430-932-friend-selected.png",
+      "sha256": "f40c8ea270095a780c83f219406b0b4e9cfcdee64cad7a43dc2600f84d5f1563",
+      "personallyInspected": true,
+      "inspection": "BYTE_IDENTICAL_TO_PERSONALLY_INSPECTED_NATIVE12"
+    },
+    {
+      "file": "430-932-notes.png",
+      "sha256": "ac4d1b68dfc369122536fb05b067eb6a4524febabbe8dd0857562d9bbb2801e0",
+      "personallyInspected": true,
+      "inspection": "PERSONALLY_VIEWED_NATIVE14"
+    },
+    {
+      "file": "430-932-note-composer.png",
+      "sha256": "202c115fdabd1eeeb32d6c33498b2f1a2c6567a91e22b17321923930e88c44f6",
+      "personallyInspected": true,
+      "inspection": "PERSONALLY_VIEWED_NATIVE14"
+    },
+    {
+      "file": "430-932-unavailable.png",
+      "sha256": "797ca02d3f84a53c4b01aebba7900e43112aeb40783cabf998d5cf76c9026288",
+      "personallyInspected": true,
+      "inspection": "PERSONALLY_VIEWED_NATIVE14"
+    },
+    {
+      "file": "390-420-map-overview.png",
+      "sha256": "3b6114d40dce39f7d0073b41ddae8b6efa6bde67cf2bb6ff1f1294e885086345",
+      "personallyInspected": true,
+      "inspection": "BYTE_IDENTICAL_TO_PERSONALLY_INSPECTED_NATIVE12"
+    },
+    {
+      "file": "390-420-friends.png",
+      "sha256": "8b6732154d606193b7b0d7cd219813a6b84fbeb13850d58a949c912a2815e7d8",
+      "personallyInspected": true,
+      "inspection": "BYTE_IDENTICAL_TO_PERSONALLY_INSPECTED_NATIVE12"
+    },
+    {
+      "file": "390-420-friend-selected.png",
+      "sha256": "25a93cd308f30a54b7bfc773162b62999ade5f3f80e7c3cb46571701f0c0ad71",
+      "personallyInspected": true,
+      "inspection": "BYTE_IDENTICAL_TO_PERSONALLY_INSPECTED_NATIVE12"
+    },
+    {
+      "file": "390-420-notes.png",
+      "sha256": "64c73a7d473c83992bde10df3104a7c430fa4ee6c87cd1f6ad6a59834f695a0b",
+      "personallyInspected": true,
+      "inspection": "BYTE_IDENTICAL_TO_PERSONALLY_INSPECTED_NATIVE12"
+    },
+    {
+      "file": "390-420-note-composer.png",
+      "sha256": "8e14ff605d6ea34c288443c65c605f9a84c81776962958002e69a5f5c67abef8",
+      "personallyInspected": true,
+      "inspection": "PERSONALLY_VIEWED_NATIVE14"
+    },
+    {
+      "file": "390-420-unavailable.png",
+      "sha256": "1f8fd059291ca37319d8ce9c821d24843e1e6160f5d2088c13ff61f7a464b82f",
+      "personallyInspected": true,
+      "inspection": "BYTE_IDENTICAL_TO_PERSONALLY_INSPECTED_NATIVE12"
+    }
+  ],
+  "comparisons": [
+    {
+      "state": "friends",
+      "referenceScaledHeight": 74,
+      "candidateHeight": 79,
+      "referenceROI": [
+        466,
+        438,
+        851,
+        518
+      ],
+      "personallyInspected": true
+    },
+    {
+      "state": "notes",
+      "referenceScaledHeight": 122,
+      "candidateHeight": 157,
+      "referenceROI": [
+        36,
+        593,
+        417,
+        724
+      ],
+      "personallyInspected": true
+    },
+    {
+      "state": "note-composer",
+      "referenceScaledHeight": 356,
+      "candidateHeight": 380,
+      "referenceROI": [
+        447,
+        378,
+        830,
+        748
+      ],
+      "personallyInspected": true
+    }
+  ],
+  "functional": "ALL_FOUR_CONTEXTS_PASS",
+  "beforeAfter": {
+    "native12": {
+      "notes": 209,
+      "composer": 410
+    },
+    "native14": {
+      "notes": 157,
+      "composer": 380
+    }
+  },
+  "findings": [
+    "All27 native images personally inspected:13 new byte sequences viewed directly,14 exact SHA matches to previously inspected Native12.",
+    "Three ROI comparison pairs/contact sheet personally inspected; raw reports preserved.",
+    "Notes action consolidation saves52px; composer initial textarea saves30px.",
+    "At360px MEET HERE wraps in the compact three-action row; needs scoped font/padding correction before final visual delivery.",
+    "Composer header close button still makes header44px tall versus30px title anatomy; keep44px hit target with positioned close control.",
+    "Remaining reference differences include named body/approved portrait and required44px touch controls, explicit READ REPLIES, disabled end-of-day/Meeting until producer authority. No masking/warp/data change."
+  ],
+  "limits": [
+    "CONTROLLED actual main/Auth/WorldShell/realPhaser fixture, synthetic services/capabilities/emulatedGPS; notdefaultRoot/actual204leaf/live/device.",
+    "Native14 functionalPASS preserved, Native13 pre-browserFAIL preserved; nopixel/48case/wholeVENU closure."
+  ]
+}

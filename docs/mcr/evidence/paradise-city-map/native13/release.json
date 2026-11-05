@@ -1,0 +1,21 @@
+{
+  "type": "FULL",
+  "role": "guardian",
+  "lease": "MAP-LFACTORY-NATIVE13-0500",
+  "at": 1793855172.3382668,
+  "exitCode": 1,
+  "failure": "Traceback (most recent call last):\n  File \"/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/guardian.py\", line 18, in <module>\n    round.initialize()\n    ~~~~~~~~~~~~~~~~^^\n  File \"/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/finite.py\", line 112, in initialize\n    self.carry=max(prior,size(ROOTS,True)+34*MIB)\n                         ~~~~^^^^^^^^^^^^\n  File \"/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/finite.py\", line 27, in size\n    for entry in path.rglob('*') if path.is_dir() and not path.is_symlink() else [path]:\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/pathlib/__init__.py\", line 276, in _from_parsed_string\n    def _from_parsed_string(self, path_str):\n    \n  File \"/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/guardian.py\", line 16, in <lambda>\n    signal.signal(signal.SIGTERM,lambda *_: (_ for _ in ()).throw(RuntimeError('Orderly stop requested')))\n                                            ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/lhs/Desktop/mcr-worktrees/fe-profile-preferences/docs/mcr/evidence/paradise-city-map/guardian.py\", line 16, in <genexpr>\n    signal.signal(signal.SIGTERM,lambda *_: (_ for _ in ()).throw(RuntimeError('Orderly stop requested')))\nRuntimeError: Orderly stop requested\n",
+  "peak": {
+    "processes": 0,
+    "rssBytes": 0,
+    "newBytes": 0,
+    "tmpBytes": 0,
+    "wholeBytes": 6642925568
+  },
+  "minimumFreeBytes": 25976266752,
+  "livePids": [],
+  "resources": 0,
+  "privateTmpAbsent": true,
+  "portClosed": true,
+  "retainedDependencyRecords": 11480
+}

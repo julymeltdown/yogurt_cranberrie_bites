@@ -1,0 +1,340 @@
+{
+  "kind": "OWNER_INSPECTED_CONTROLLED_FUNCTIONAL_PASS_AND_MEASURED_CSS_ITERATION",
+  "candidate": "61bafe284f08bbf78f849373ea5e9a29aa20e770",
+  "lease": "MAP-LFACTORY-NATIVE16-0519",
+  "functional": "ALL_FOUR_CONTEXTS_PASS",
+  "contexts": [
+    {
+      "width": 360,
+      "height": 800,
+      "dpr": 1,
+      "checks": [
+        "keyboard-pan-home-end-landmark-focus-reveal-and-pointer-pan",
+        "zoom-fit-reset",
+        "roving-tab-keyboard-selection",
+        "authorized-message-without-location-landmark-invitation",
+        "one-explicit-note-write",
+        "one-explicit-reply-inherits-parent-place-and-audience",
+        "explicit-emulated-geolocation-opt-in-and-pause",
+        "private-withdrawal-scrub",
+        "one-incumbent-world-and-socket"
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "dpr": 1,
+      "checks": [
+        "keyboard-pan-home-end-landmark-focus-reveal-and-pointer-pan",
+        "native-browser-touch-pan",
+        "zoom-fit-reset",
+        "roving-tab-keyboard-selection",
+        "authorized-message-without-location-landmark-invitation",
+        "one-explicit-note-write",
+        "one-explicit-reply-inherits-parent-place-and-audience",
+        "explicit-emulated-geolocation-opt-in-and-pause",
+        "private-withdrawal-scrub",
+        "one-incumbent-world-and-socket"
+      ]
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "dpr": 1,
+      "checks": [
+        "keyboard-pan-home-end-landmark-focus-reveal-and-pointer-pan",
+        "zoom-fit-reset",
+        "roving-tab-keyboard-selection",
+        "authorized-message-without-location-landmark-invitation",
+        "one-explicit-note-write",
+        "one-explicit-reply-inherits-parent-place-and-audience",
+        "explicit-emulated-geolocation-opt-in-and-pause",
+        "private-withdrawal-scrub",
+        "one-incumbent-world-and-socket"
+      ]
+    },
+    {
+      "width": 390,
+      "height": 420,
+      "dpr": 1,
+      "checks": [
+        "keyboard-pan-home-end-landmark-focus-reveal-and-pointer-pan",
+        "zoom-fit-reset",
+        "roving-tab-keyboard-selection",
+        "authorized-message-without-location-landmark-invitation",
+        "one-explicit-note-write",
+        "one-explicit-reply-inherits-parent-place-and-audience",
+        "explicit-emulated-geolocation-opt-in-and-pause",
+        "private-withdrawal-scrub",
+        "one-incumbent-world-and-socket"
+      ]
+    }
+  ],
+  "images": [
+    {
+      "file": "360-800-map-overview.png",
+      "sha256": "f2c65ea6e41b16f4a419bada424aa566234db34823c72ffc5a232d6a3e4aed53",
+      "personallyInspected": true,
+      "inspection": "EXACT_BYTES_PREVIOUSLY_PERSONALLY_VIEWED",
+      "priorInspectedArtifact": "native14/360-800-map-overview.png"
+    },
+    {
+      "file": "360-800-friends.png",
+      "sha256": "b772b3a0d94189d405b5d78712adc175db717950b433880e14e321da407452ba",
+      "personallyInspected": true,
+      "inspection": "EXACT_BYTES_PREVIOUSLY_PERSONALLY_VIEWED",
+      "priorInspectedArtifact": "native14/360-800-friends.png"
+    },
+    {
+      "file": "360-800-friend-selected.png",
+      "sha256": "213a1ae9f86a7a49f20e97bcd970a6b21d2f2d892496463a81f6127c8cebf366",
+      "personallyInspected": true,
+      "inspection": "EXACT_BYTES_PREVIOUSLY_PERSONALLY_VIEWED",
+      "priorInspectedArtifact": "native14/360-800-friend-selected.png"
+    },
+    {
+      "file": "360-800-notes.png",
+      "sha256": "f40cc99b28e5e05872b2b20681c2c1cb057bf4df9119cc83a99e35ed17024fd8",
+      "personallyInspected": true,
+      "inspection": "EXACT_BYTES_PREVIOUSLY_PERSONALLY_VIEWED",
+      "priorInspectedArtifact": "native15/360-800-notes.png"
+    },
+    {
+      "file": "360-800-note-composer.png",
+      "sha256": "b579065e7ebc207b057ceda102df18daa8e676645858fe907a3e9e227bd0ecde",
+      "personallyInspected": true,
+      "inspection": "PERSONALLY_VIEWED_NATIVE16_NEW_BYTES",
+      "priorInspectedArtifact": null
+    },
+    {
+      "file": "360-800-unavailable.png",
+      "sha256": "0742b36c31822c3d752e6c383a524dd74d4ff747cd8d6f815c1b902cbd20730a",
+      "personallyInspected": true,
+      "inspection": "PERSONALLY_VIEWED_NATIVE16_NEW_BYTES",
+      "priorInspectedArtifact": null
+    },
+    {
+      "file": "390-844-map-overview.png",
+      "sha256": "33679991a0e9a603d70c3370378e6122ec5392029eee2c1552d70ea178476344",
+      "personallyInspected": true,
+      "inspection": "EXACT_BYTES_PREVIOUSLY_PERSONALLY_VIEWED",
+      "priorInspectedArtifact": "native14/390-844-map-overview.png"
+    },
+    {
+      "file": "390-844-friends.png",
+      "sha256": "63ba26d4c867714719e11e1a44a15ea76b56c5da1ee2e50c0eafdac1b6f45705",
+      "personallyInspected": true,
+      "inspection": "EXACT_BYTES_PREVIOUSLY_PERSONALLY_VIEWED",
+      "priorInspectedArtifact": "native14/390-844-friends.png"
+    },
+    {
+      "file": "390-844-friend-selected.png",
+      "sha256": "f8076e98fd575248c4dcdee47a963ff40040ebcdbfd3f34c7af56ab43125aea4",
+      "personallyInspected": true,
+      "inspection": "EXACT_BYTES_PREVIOUSLY_PERSONALLY_VIEWED",
+      "priorInspectedArtifact": "native14/390-844-friend-selected.png"
+    },
+    {
+      "file": "390-844-notes.png",
+      "sha256": "9313bccfde9194a1336c377fb6d5ba737590460ff707c4cbfdae93ec36bfd38d",
+      "personallyInspected": true,
+      "inspection": "PERSONALLY_VIEWED_NATIVE16_NEW_BYTES",
+      "priorInspectedArtifact": null
+    },
+    {
+      "file": "390-844-note-composer.png",
+      "sha256": "60f15354099dc5bab73458be06935c92220faf4d022ca45266c4f4f0b1fd5c9d",
+      "personallyInspected": true,
+      "inspection": "EXACT_BYTES_PREVIOUSLY_PERSONALLY_VIEWED",
+      "priorInspectedArtifact": "native15/390-844-note-composer.png"
+    },
+    {
+      "file": "390-844-unavailable.png",
+      "sha256": "fe1d9ed93c3f346e03ed8d3828fa7add5aa70e5d4ebc750bbb4ed844737e9f94",
+      "personallyInspected": true,
+      "inspection": "EXACT_BYTES_PREVIOUSLY_PERSONALLY_VIEWED",
+      "priorInspectedArtifact": "native14/390-844-unavailable.png"
+    },
+    {
+      "file": "390-844-friends-component.png",
+      "sha256": "043685f1c2ef6b488218b262868ad1a2ce5c16f696bced95b0cea8886e3c73c9",
+      "personallyInspected": true,
+      "inspection": "EXACT_BYTES_PREVIOUSLY_PERSONALLY_VIEWED",
+      "priorInspectedArtifact": "native14/390-844-friends-component.png"
+    },
+    {
+      "file": "390-844-notes-component.png",
+      "sha256": "68cded9c3c81a95e396e8ce34c4814cee91eec18adc1542bfad2908cd969acd8",
+      "personallyInspected": true,
+      "inspection": "PERSONALLY_VIEWED_NATIVE16_NEW_BYTES",
+      "priorInspectedArtifact": null
+    },
+    {
+      "file": "390-844-note-composer-component.png",
+      "sha256": "b37ca5b22b5820cb297cac1f3edaef08343db6662495bc0f0eac35b8aaf4289d",
+      "personallyInspected": true,
+      "inspection": "PERSONALLY_VIEWED_NATIVE16_NEW_BYTES",
+      "priorInspectedArtifact": null
+    },
+    {
+      "file": "430-932-map-overview.png",
+      "sha256": "a57cea275b7c6b7ba746f71f82429e97d20b869461acb7472a142acdfeedc651",
+      "personallyInspected": true,
+      "inspection": "EXACT_BYTES_PREVIOUSLY_PERSONALLY_VIEWED",
+      "priorInspectedArtifact": "native14/430-932-map-overview.png"
+    },
+    {
+      "file": "430-932-friends.png",
+      "sha256": "46d85320494ba637030a5303345aeee00ab22398864fd2cd1c6f2a2256bac071",
+      "personallyInspected": true,
+      "inspection": "EXACT_BYTES_PREVIOUSLY_PERSONALLY_VIEWED",
+      "priorInspectedArtifact": "native14/430-932-friends.png"
+    },
+    {
+      "file": "430-932-friend-selected.png",
+      "sha256": "f40c8ea270095a780c83f219406b0b4e9cfcdee64cad7a43dc2600f84d5f1563",
+      "personallyInspected": true,
+      "inspection": "EXACT_BYTES_PREVIOUSLY_PERSONALLY_VIEWED",
+      "priorInspectedArtifact": "native14/430-932-friend-selected.png"
+    },
+    {
+      "file": "430-932-notes.png",
+      "sha256": "e6ab8eef83cc7b579d19b7299a0521f7d6f14f330ae48ec728d4425c8d420102",
+      "personallyInspected": true,
+      "inspection": "PERSONALLY_VIEWED_NATIVE16_NEW_BYTES",
+      "priorInspectedArtifact": null
+    },
+    {
+      "file": "430-932-note-composer.png",
+      "sha256": "37033bd899d53eb0758c7796fcba9d679fc68749e3560fddb87052e5d89dfad2",
+      "personallyInspected": true,
+      "inspection": "PERSONALLY_VIEWED_NATIVE16_NEW_BYTES",
+      "priorInspectedArtifact": null
+    },
+    {
+      "file": "430-932-unavailable.png",
+      "sha256": "913cc604567adf5358dc830fa18be5123dbdf7f03dcfd1ccc6ac4bd7801bee6c",
+      "personallyInspected": true,
+      "inspection": "EXACT_BYTES_PREVIOUSLY_PERSONALLY_VIEWED",
+      "priorInspectedArtifact": "native12/430-932-unavailable.png"
+    },
+    {
+      "file": "390-420-map-overview.png",
+      "sha256": "3b6114d40dce39f7d0073b41ddae8b6efa6bde67cf2bb6ff1f1294e885086345",
+      "personallyInspected": true,
+      "inspection": "EXACT_BYTES_PREVIOUSLY_PERSONALLY_VIEWED",
+      "priorInspectedArtifact": "native14/390-420-map-overview.png"
+    },
+    {
+      "file": "390-420-friends.png",
+      "sha256": "8b6732154d606193b7b0d7cd219813a6b84fbeb13850d58a949c912a2815e7d8",
+      "personallyInspected": true,
+      "inspection": "EXACT_BYTES_PREVIOUSLY_PERSONALLY_VIEWED",
+      "priorInspectedArtifact": "native14/390-420-friends.png"
+    },
+    {
+      "file": "390-420-friend-selected.png",
+      "sha256": "25a93cd308f30a54b7bfc773162b62999ade5f3f80e7c3cb46571701f0c0ad71",
+      "personallyInspected": true,
+      "inspection": "EXACT_BYTES_PREVIOUSLY_PERSONALLY_VIEWED",
+      "priorInspectedArtifact": "native14/390-420-friend-selected.png"
+    },
+    {
+      "file": "390-420-notes.png",
+      "sha256": "64c73a7d473c83992bde10df3104a7c430fa4ee6c87cd1f6ad6a59834f695a0b",
+      "personallyInspected": true,
+      "inspection": "EXACT_BYTES_PREVIOUSLY_PERSONALLY_VIEWED",
+      "priorInspectedArtifact": "native14/390-420-notes.png"
+    },
+    {
+      "file": "390-420-note-composer.png",
+      "sha256": "136e8881389673cc9fc28c56522743be3789d18da66cd3f2d5671d64f751e1a5",
+      "personallyInspected": true,
+      "inspection": "PERSONALLY_VIEWED_NATIVE16_NEW_BYTES",
+      "priorInspectedArtifact": null
+    },
+    {
+      "file": "390-420-unavailable.png",
+      "sha256": "1f8fd059291ca37319d8ce9c821d24843e1e6160f5d2088c13ff61f7a464b82f",
+      "personallyInspected": true,
+      "inspection": "EXACT_BYTES_PREVIOUSLY_PERSONALLY_VIEWED",
+      "priorInspectedArtifact": "native14/390-420-unavailable.png"
+    }
+  ],
+  "comparisonContactSheet": {
+    "file": "reference-comparison-contact-sheet.png",
+    "sha256": "b3a8d5041795380a10b8bb2bdfd3a2139e1e39916d31e6ce91c04053d6a4d9d2",
+    "personallyInspected": true
+  },
+  "comparisons": [
+    {
+      "state": "friends",
+      "referenceROI": [
+        466,
+        438,
+        851,
+        518
+      ],
+      "uniformWidthScale": 0.9298701298701298,
+      "referenceScaledHeight": 74,
+      "candidateHeight": 79,
+      "personallyInspected": true,
+      "disposition": "MEASURED_DIFFERENCES_DOCUMENTED_NO_PIXEL_IDENTITY_CLAIM"
+    },
+    {
+      "state": "notes",
+      "referenceROI": [
+        36,
+        593,
+        417,
+        724
+      ],
+      "uniformWidthScale": 0.9291338582677166,
+      "referenceScaledHeight": 122,
+      "candidateHeight": 157,
+      "personallyInspected": true,
+      "disposition": "MEASURED_DIFFERENCES_DOCUMENTED_NO_PIXEL_IDENTITY_CLAIM"
+    },
+    {
+      "state": "note-composer",
+      "referenceROI": [
+        447,
+        378,
+        830,
+        748
+      ],
+      "uniformWidthScale": 0.9608355091383812,
+      "referenceScaledHeight": 356,
+      "candidateHeight": 366,
+      "personallyInspected": true,
+      "disposition": "MEASURED_DIFFERENCES_DOCUMENTED_NO_PIXEL_IDENTITY_CLAIM"
+    }
+  ],
+  "beforeAfter": {
+    "native12": {
+      "notes": 209,
+      "composer": 410
+    },
+    "native14": {
+      "notes": 157,
+      "composer": 380
+    },
+    "native16": {
+      "notes": 157,
+      "composer": 366
+    }
+  },
+  "findings": [
+    "All27 native images personally inspected:8 new byte sequences directly viewed,19 exact SHA matches to previously inspected captures; two representative matching frames also viewed again. Three reference pairs/contact sheet inspected.",
+    "360px MEET HERE remains one line; REPLY/MEET HERE/READ REPLIES retain44px minimum hit targets and explicit read semantics.",
+    "Composer title26px/30px header with positioned44px close target removes another14px; initial textarea100px remains vertically resizable.",
+    "Notes209\u2192157px, composer410\u2192366px; Friends79px/reference74px unchanged. Notes reference122px versus157px retains a longer named synthetic body,44px actions and extra explicit READ REPLIES. Composer366px/reference356px retains44px touch controls and real reviewed-place select anatomy.",
+    "No clipping or action interception observed in inspected final layouts; short-height captures preserve actual scroll framing and all final privacy/incumbent checks passed.",
+    "Approved canonical character originals/reference aliases, synthetic text/freshness and unavailable Meeting/end-of-day policy differences remain exposed, not masked or repainted."
+  ],
+  "limits": [
+    "Actual main/Auth/WorldShell/realPhaser TEST_ONLY route/provider, synthetic venue capabilities/policy/notes/people and emulatedGPS. No default Root/current production service/physical device/actual204 leaf qualification.",
+    "Raw generated comparison reports keep original PENDING labels; this additive owner record supplies measured inspection/disposition.",
+    "No48-case/pixel-equivalence/wholeVENU/task-counter closure. Native13 and15 resource FAIL remain unchanged;12 and14 functional PASS are independent."
+  ]
+}

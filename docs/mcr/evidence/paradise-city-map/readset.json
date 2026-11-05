@@ -2,7 +2,7 @@
   "task": "PARADISECITY-MAP-FRIENDS-NOTES",
   "base": "5e28dc35dda0126ca5463f810f06eda8a56dc38f",
   "classification": "UNQUALIFIED_FROZEN_CONSUMER_CANDIDATE",
-  "priorWholeHighWaterBytes": 6833782784,
+  "priorWholeHighWaterBytes": 6924689408,
   "spatialTypeInput": {
     "commit": "4f94914d06d54c3b465930cc23d40be91a1255cb",
     "pinsDeclaredIn": "docs/mcr/evidence/paradise-city-map/typecheck.mjs",
@@ -1216,8 +1216,8 @@
     },
     {
       "path": "docs/mcr/evidence/paradise-city-map/finite.py",
-      "bytes": 11576,
-      "sha256": "4e51cc0193022e0330efcc57fc63fa14fd3c370977c4fde929facf46a06c6063"
+      "bytes": 11592,
+      "sha256": "560536b85282234d4cdbbfc24de5f6c79d9933b2dedef60c46de7f511eafb7aa"
     },
     {
       "path": "docs/mcr/evidence/paradise-city-map/guardian.py",
@@ -23286,8 +23286,8 @@
     },
     {
       "path": "frontend/src/features/paradise-city-map/ui/paradise-city-map.css",
-      "bytes": 10234,
-      "sha256": "42c5d1ae8dbc8d9eaeb950ab64ed470c2e97e40614ba68e91d3d396a95fa3465"
+      "bytes": 10852,
+      "sha256": "d7b91fedb577e4c26a66d2e4a0d136fe2e20b0febd7d2b780f1e0f218f38f09a"
     },
     {
       "path": "frontend/src/features/party-authoring/__tests__/authoring.test.tsx",
