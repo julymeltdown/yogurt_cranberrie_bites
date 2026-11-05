@@ -9,6 +9,8 @@ export function SafetyDialog({ title, children, onDismiss }: { title:string;chil
   return()=>{if(dialog.open&&typeof dialog.close==='function')dialog.close();if(previous instanceof HTMLElement&&previous.isConnected)previous.focus()}
  },[])
  return <dialog className="mcr-safety-dialog" ref={ref} aria-labelledby={id} onKeyDown={event=>{
+   // Keep Escape's native cancel action inside this modal, away from panel navigation.
+   if(event.key==='Escape'){event.stopPropagation();return}
    if(event.key!=='Tab')return
    const stops=Array.from(ref.current!.querySelectorAll<HTMLElement>('button:not(:disabled),input:not(:disabled),select:not(:disabled),textarea:not(:disabled),a[href],[tabindex="0"]')).filter(node=>node.getClientRects().length>0)
    const first=stops[0],last=stops.at(-1)

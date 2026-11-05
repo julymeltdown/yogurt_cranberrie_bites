@@ -292,7 +292,7 @@ def main():
         assert time.time() < offer['workDeadline'] - 20, 'Outer initial deadline'
         time.sleep(.05)
     assert json.loads((output / 'outer-initial.json').read_text())['freeBytes'] >= offer['startFloorBytes']
-    readset = json.loads((EVIDENCE / 'readset.json').read_text())
+    readset = json.loads((EVIDENCE / offer.get('readsetFile', 'readset.json')).read_text())
     for p, digest in readset['files'].items():
         assert hashlib.sha256((ROOT / p).read_bytes()).hexdigest() == digest, p
     census_path = output / ('outer-census.json.gz' if offer.get('compressedCensus') else 'outer-census.json')
@@ -362,6 +362,16 @@ if(!ctx)process.exitCode=1;else{process.exitCode=ctx.state.getFiles().some(f=>f.
             commands = [('helper-lint', [str(NODE), str(DEPS / 'oxlint/bin/oxlint'), '--deny-warnings', str(ROOT / 'frontend/e2e/visual/parade-ink-route-status/native.mjs'), str(ROOT / 'frontend/e2e/visual/parade-ink-route-status/foundation-overlay.mjs')]),
                         ('native-helper-syntax', [str(NODE), '--check', str(ROOT / 'frontend/e2e/visual/parade-ink-route-status/native.mjs')]),
                         ('overlay-helper-syntax', [str(NODE), '--check', str(ROOT / 'frontend/e2e/visual/parade-ink-route-status/foundation-overlay.mjs')])]
+        if offer.get('dialogEscape'):
+            assert offer['mode'] == 'BROWSER' and offer['group'] == 'both'
+            dialog_files = ['frontend/src/features/safety/Dialog.tsx',
+                'frontend/e2e/visual/parade-ink-route-status/dialog-preview.tsx',
+                'frontend/e2e/visual/parade-ink-route-status/dialog-service.ts',
+                'frontend/e2e/visual/parade-ink-route-status/dialog-native.mjs']
+            lint_files = offer.get('dialogChangedFiles', dialog_files)
+            assert lint_files and all(p in dialog_files for p in lint_files)
+            commands = [('dialog-lint', [str(NODE), str(DEPS / 'oxlint/bin/oxlint'), '--deny-warnings', *[str(ROOT / p) for p in lint_files]]),
+                ('dialog-native', [str(NODE), str(ROOT / dialog_files[-1])])]
         for label, argv in commands:
             report['samples'].append(sample(offer, os.getppid(), baseline))
             with (output / (label + '.log')).open('wb') as log:

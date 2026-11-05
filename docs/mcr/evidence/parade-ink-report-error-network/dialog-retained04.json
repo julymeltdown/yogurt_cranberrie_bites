@@ -1,0 +1,21 @@
+{
+  "source": {
+    "path": "docs/mcr/evidence/parade-ink-report-error-network/dialog-escape-native04/dialog-native.json",
+    "sha256": "b77b0264e4e4780729d673968fe97274cb26e2a2290963a5e6a9fed639910610",
+    "sourceCommit": "3a41c6465c430ec49ccaeee22e3458cfa0033762",
+    "guardSha256": "d0217cc155dc92fd4f02a2c93262e788b4227765be76ef75e03252051b6f9aec",
+    "actualFULL": 1793851412.229522
+  },
+  "DialogSha256": "0182adfdde950ff5c27802f3539e8cf6eb05fc6523ef78cf2e18260e0a408f81",
+  "WorldShellSha256": "6c66a6e61b84fc4180bfa589148cf10018a7166fe15d468b722f5c88cb95fde1",
+  "caseNames": [
+    "blocks-native-escape-844",
+    "blocks-native-escape-480",
+    "shell-escape-outside-dialog",
+    "signout-native-escape",
+    "deletion-button-native-escape",
+    "deletion-input-native-escape",
+    "deletion-button-cancel-reset"
+  ],
+  "limitation": "Seven completed assertion cases only. Overall native04 FAIL retained; both report cases remained unfinished because native modal correctly made background controls inert."
+}

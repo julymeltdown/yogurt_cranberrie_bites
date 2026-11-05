@@ -1,0 +1,162 @@
+{
+  "task": "FE-DIALOG-ESC-01",
+  "qualification": "ACTUAL_MAIN_CANONICAL_AUTH_PRODUCTION_READINESS_CONTROLLED_HTTP_C05_NOT_LIVE_OR_DEVICE",
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "report-cancel-Escape",
+      "status": "PASS",
+      "path": "/world",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "nativeCancelEvents": 1,
+      "focus": "Skip to contentSelected fixture fanSynthetic contract fixtureREVENGEPARADEDANGERRevenge selected.Interact⌖RecenterControls & helpNearby in worldNo reachable interaction nearbyZoom −Zoom +Focus the map or joystick: arrows / W A S D move, E interacts, R recenters. Tap a walkable destination.Local movement ready.World connected.Reconnect worldVirtual position is not physical arrival.WorldToolsMapCheck-inRoomsNearbyHelpWorldFeedMeetGiftsWallMe",
+      "mutationCount": 0,
+      "canvases": 1,
+      "activeSockets": 1,
+      "sameHost": true,
+      "sameCanvas": true
+    },
+    {
+      "name": "report-cancel-button",
+      "status": "PASS",
+      "path": "/world",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "nativeCancelEvents": 0,
+      "focus": "Skip to contentSelected fixture fanSynthetic contract fixtureREVENGEPARADEDANGERRevenge selected.Interact⌖RecenterControls & helpNearby in worldNo reachable interaction nearbyZoom −Zoom +Focus the map or joystick: arrows / W A S D move, E interacts, R recenters. Tap a walkable destination.Local movement ready.World connected.Reconnect worldVirtual position is not physical arrival.WorldToolsMapCheck-inRoomsNearbyHelpWorldFeedMeetGiftsWallMe",
+      "mutationCount": 0,
+      "canvases": 1,
+      "activeSockets": 1,
+      "sameHost": true,
+      "sameCanvas": true
+    }
+  ],
+  "retainedChecks": [
+    {
+      "name": "blocks-native-escape-844",
+      "status": "PASS",
+      "path": "/me/blocks",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "nativeCancelEvents": 1,
+      "focus": "Unblock user",
+      "mutationCount": 0,
+      "canvases": 1,
+      "activeSockets": 1,
+      "sameHost": true,
+      "sameCanvas": true
+    },
+    {
+      "name": "blocks-native-escape-480",
+      "status": "PASS",
+      "path": "/me/blocks",
+      "viewport": {
+        "width": 390,
+        "height": 480
+      },
+      "nativeCancelEvents": 1,
+      "focus": "Unblock user",
+      "mutationCount": 0,
+      "canvases": 1,
+      "activeSockets": 1,
+      "sameHost": true,
+      "sameCanvas": true
+    },
+    {
+      "name": "shell-escape-outside-dialog",
+      "status": "PASS",
+      "path": "/me",
+      "viewport": {
+        "width": 390,
+        "height": 480
+      },
+      "nativeCancelEvents": 1,
+      "focus": "Unblock user",
+      "mutationCount": 0,
+      "canvases": 1,
+      "activeSockets": 1,
+      "sameHost": true,
+      "sameCanvas": true
+    },
+    {
+      "name": "signout-native-escape",
+      "status": "PASS",
+      "path": "/me/account",
+      "viewport": {
+        "width": 390,
+        "height": 480
+      },
+      "nativeCancelEvents": 1,
+      "focus": "Sign out",
+      "mutationCount": 0,
+      "canvases": 1,
+      "activeSockets": 1,
+      "sameHost": true,
+      "sameCanvas": true
+    },
+    {
+      "name": "deletion-button-native-escape",
+      "status": "PASS",
+      "path": "/me/account",
+      "viewport": {
+        "width": 390,
+        "height": 480
+      },
+      "nativeCancelEvents": 1,
+      "focus": "Request account deletion",
+      "mutationCount": 0,
+      "canvases": 1,
+      "activeSockets": 1,
+      "sameHost": true,
+      "sameCanvas": true
+    },
+    {
+      "name": "deletion-input-native-escape",
+      "status": "PASS",
+      "path": "/me/account",
+      "viewport": {
+        "width": 390,
+        "height": 480
+      },
+      "nativeCancelEvents": 1,
+      "focus": "Request account deletion",
+      "mutationCount": 0,
+      "canvases": 1,
+      "activeSockets": 1,
+      "sameHost": true,
+      "sameCanvas": true
+    },
+    {
+      "name": "deletion-button-cancel-reset",
+      "status": "PASS",
+      "path": "/me/account",
+      "viewport": {
+        "width": 390,
+        "height": 480
+      },
+      "nativeCancelEvents": 1,
+      "focus": "Request account deletion",
+      "mutationCount": 0,
+      "canvases": 1,
+      "activeSockets": 1,
+      "sameHost": true,
+      "sameCanvas": true
+    }
+  ],
+  "errors": [],
+  "retainedSource": {
+    "path": "docs/mcr/evidence/parade-ink-report-error-network/dialog-escape-native04/dialog-native.json",
+    "sha256": "b77b0264e4e4780729d673968fe97274cb26e2a2290963a5e6a9fed639910610",
+    "sourceCommit": "3a41c6465c430ec49ccaeee22e3458cfa0033762",
+    "guardSha256": "d0217cc155dc92fd4f02a2c93262e788b4227765be76ef75e03252051b6f9aec",
+    "actualFULL": 1793851412.229522
+  },
+  "finishedAt": "2026-11-05T04:16:49.737Z"
+}

@@ -1,0 +1,457 @@
+{
+  "task": "FE-DIALOG-ESC-01",
+  "status": "PASS_FOCUSED_CONTROLLED_ACTUAL_DEFAULT_APP",
+  "responsibleImplementationOwner": "01a19f83-2c2a-7fa0-a98d-1c4f5f65cb3c",
+  "originalCriterionDeltas": {
+    "FE36": "Shared block/report/account Escape cancellation delta developer-validated; publication routed to412e.",
+    "QA07": "Shared dialog keyboard/native cancellation/opener focus delta developer-validated; no blanket reopening or closure."
+  },
+  "baseCommit": "4bef707b1a8bbeda4e27fc7b54240a9493a724ce",
+  "firstFixCommit": "18fa686d6a55e6c9961aabdf93229cf32328e8ad",
+  "qualifiedSourceCommit": "e80a9dd935b3ffb3d7aeb1fa53c52118e5b9055a",
+  "productionChange": {
+    "path": "frontend/src/features/safety/Dialog.tsx",
+    "mode": "100644",
+    "preimageBlob": "d28ad319770946e489e6df6ee9f84017210701b4",
+    "preimageSha256": "8cfdf13e621986fadba50e35ceb16f0515dbf85ab346fb82077e3af2147e4531",
+    "postimageBlob": "1eb151acc815b7e1ce3d44fa768ea5cc7447d33e",
+    "postimageSha256": "0182adfdde950ff5c27802f3539e8cf6eb05fc6523ef78cf2e18260e0a408f81",
+    "bytes": 1659,
+    "behavior": "Stop Escape propagation without preventing default; preserve native onCancel, Tab and existing opener restoration."
+  },
+  "canonicalPreimageRevision": "4c397da262f63db82f252e5f29a6e63aa062b492",
+  "sourceComposition": "Actual local src/main, canonical Auth/readiness/WorldShell/PanelFrame/controllers; controlled HTTP/C05 and readonly18-leaf PI01 overlay. Not latest combined master runtime.",
+  "readonlyWorldShellSha256": "6c66a6e61b84fc4180bfa589148cf10018a7166fe15d468b722f5c88cb95fde1",
+  "foundationTupleSha256": "a9b89a8bee524066009722f020cccc869ff506f65a79b35e5d7de289a6f24fd7",
+  "readsetPath": "docs/mcr/evidence/parade-ink-report-error-network/dialog-readset.json",
+  "readsetSha256": "9c07a6c8e31afd09b180b1316a91ee59bf0040e6cb3d2a9eaa4534990bf1a8a6",
+  "coverage": {
+    "total": 9,
+    "freshNative06": 2,
+    "retainedCompletedNative04": 7,
+    "selectedPngs": 2,
+    "familyPngTotal": 42,
+    "zeroNewPngAfter04": true
+  },
+  "checks": [
+    {
+      "name": "blocks-native-escape-844",
+      "status": "PASS",
+      "path": "/me/blocks",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "nativeCancelEvents": 1,
+      "focus": "Unblock user",
+      "mutationCount": 0,
+      "canvases": 1,
+      "activeSockets": 1,
+      "sameHost": true,
+      "sameCanvas": true,
+      "executionRound": 4,
+      "nativeCancelAsserted": true
+    },
+    {
+      "name": "blocks-native-escape-480",
+      "status": "PASS",
+      "path": "/me/blocks",
+      "viewport": {
+        "width": 390,
+        "height": 480
+      },
+      "nativeCancelEvents": 1,
+      "focus": "Unblock user",
+      "mutationCount": 0,
+      "canvases": 1,
+      "activeSockets": 1,
+      "sameHost": true,
+      "sameCanvas": true,
+      "executionRound": 4,
+      "nativeCancelAsserted": true
+    },
+    {
+      "name": "shell-escape-outside-dialog",
+      "status": "PASS",
+      "path": "/me",
+      "viewport": {
+        "width": 390,
+        "height": 480
+      },
+      "nativeCancelEvents": null,
+      "focus": "Unblock user",
+      "mutationCount": 0,
+      "canvases": 1,
+      "activeSockets": 1,
+      "sameHost": true,
+      "sameCanvas": true,
+      "executionRound": 4,
+      "nativeCancelAsserted": false
+    },
+    {
+      "name": "signout-native-escape",
+      "status": "PASS",
+      "path": "/me/account",
+      "viewport": {
+        "width": 390,
+        "height": 480
+      },
+      "nativeCancelEvents": 1,
+      "focus": "Sign out",
+      "mutationCount": 0,
+      "canvases": 1,
+      "activeSockets": 1,
+      "sameHost": true,
+      "sameCanvas": true,
+      "executionRound": 4,
+      "nativeCancelAsserted": true
+    },
+    {
+      "name": "deletion-button-native-escape",
+      "status": "PASS",
+      "path": "/me/account",
+      "viewport": {
+        "width": 390,
+        "height": 480
+      },
+      "nativeCancelEvents": 1,
+      "focus": "Request account deletion",
+      "mutationCount": 0,
+      "canvases": 1,
+      "activeSockets": 1,
+      "sameHost": true,
+      "sameCanvas": true,
+      "executionRound": 4,
+      "nativeCancelAsserted": true
+    },
+    {
+      "name": "deletion-input-native-escape",
+      "status": "PASS",
+      "path": "/me/account",
+      "viewport": {
+        "width": 390,
+        "height": 480
+      },
+      "nativeCancelEvents": 1,
+      "focus": "Request account deletion",
+      "mutationCount": 0,
+      "canvases": 1,
+      "activeSockets": 1,
+      "sameHost": true,
+      "sameCanvas": true,
+      "executionRound": 4,
+      "nativeCancelAsserted": true
+    },
+    {
+      "name": "deletion-button-cancel-reset",
+      "status": "PASS",
+      "path": "/me/account",
+      "viewport": {
+        "width": 390,
+        "height": 480
+      },
+      "nativeCancelEvents": null,
+      "focus": "Request account deletion",
+      "mutationCount": 0,
+      "canvases": 1,
+      "activeSockets": 1,
+      "sameHost": true,
+      "sameCanvas": true,
+      "executionRound": 4,
+      "nativeCancelAsserted": false
+    },
+    {
+      "name": "report-cancel-Escape",
+      "status": "PASS",
+      "path": "/world",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "nativeCancelEvents": 1,
+      "focus": null,
+      "mutationCount": 0,
+      "canvases": 1,
+      "activeSockets": 1,
+      "sameHost": true,
+      "sameCanvas": true,
+      "executionRound": 6,
+      "nativeCancelAsserted": true,
+      "focusDisposition": "Report route exits to World; no opener-restoration claim."
+    },
+    {
+      "name": "report-cancel-button",
+      "status": "PASS",
+      "path": "/world",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "nativeCancelEvents": null,
+      "focus": null,
+      "mutationCount": 0,
+      "canvases": 1,
+      "activeSockets": 1,
+      "sameHost": true,
+      "sameCanvas": true,
+      "executionRound": 6,
+      "nativeCancelAsserted": false,
+      "focusDisposition": "Report route exits to World; no opener-restoration claim."
+    }
+  ],
+  "rounds": [
+    {
+      "round": 1,
+      "slot": "FE-DIALOG-ESC-NATIVE01-0351",
+      "sourceCommit": "18fa686d6a55e6c9961aabdf93229cf32328e8ad",
+      "acceptedAt": 1793850865.7260659,
+      "workDeadline": 1793851225.7260659,
+      "fullDeadline": 1793851285.7260659,
+      "actualFULL": 1793850879.609364,
+      "status": "FAIL",
+      "commands": [],
+      "failure": "'changedExisting'",
+      "completedFreshCases": 0,
+      "retainedCases": 0,
+      "withinFULLDeadline": true,
+      "resourcesReleased": true,
+      "linkAbsent": true,
+      "temporaryAbsent": true,
+      "growthMaximum": 83427328,
+      "durableMaximum": 52137984,
+      "guardSha256": "c853750cb4314fc5634681f692ef5d0ce1b48d6e89e299d9f303ccf8a7b9b2a8",
+      "controllerSha256": "db75cf6d6e6a9fca4827dc531d3583907098e68cac65d53442fd3b6aaa96633f",
+      "nativeSha256": null
+    },
+    {
+      "round": 2,
+      "slot": "FE-DIALOG-ESC-NATIVE02-0351",
+      "sourceCommit": "bf2c968a5ad487f239f5d9a02bb6edb8e7582e8b",
+      "acceptedAt": 1793850956.970752,
+      "workDeadline": 1793851316.970752,
+      "fullDeadline": 1793851376.970752,
+      "actualFULL": 1793850986.096823,
+      "status": "FAIL",
+      "commands": [
+        {
+          "label": "dialog-lint",
+          "exit": 0
+        },
+        {
+          "label": "dialog-native",
+          "exit": 1
+        }
+      ],
+      "failure": "Error: expect(locator).toBeVisible() failed\n\nLocator: getByRole('heading', { name: 'SOCIAL LINKS', exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n  - Expect \"to.be.visible\" with timeout 5000ms\n  - waiting for getByRole('heading', { name: 'SOCIAL LINKS', exact: true })\n",
+      "completedFreshCases": 0,
+      "retainedCases": 0,
+      "withinFULLDeadline": true,
+      "resourcesReleased": true,
+      "linkAbsent": true,
+      "temporaryAbsent": true,
+      "growthMaximum": 84041728,
+      "durableMaximum": 53944320,
+      "guardSha256": "cf2ccd21f389c0ba70d452085642dc7bbc64370feddee8ea443de7794fe42259",
+      "controllerSha256": "0a6f3bd2e573915307cb69f96efec6e8ac245bcf3f2cee3665a559ff148f6c1b",
+      "nativeSha256": "26a3be7718b39750fd141a28b8b2bc3044eea5f4024a7069eef034a817d0e54e"
+    },
+    {
+      "round": 3,
+      "slot": "FE-DIALOG-ESC-NATIVE03-0359",
+      "sourceCommit": "b7d864ef887b4f2b321b9094786ba9c62a0d8242",
+      "acceptedAt": 1793851264.7827652,
+      "workDeadline": 1793851624.7827652,
+      "fullDeadline": 1793851684.7827652,
+      "actualFULL": 1793851292.964273,
+      "status": "FAIL",
+      "commands": [
+        {
+          "label": "dialog-lint",
+          "exit": 0
+        },
+        {
+          "label": "dialog-native",
+          "exit": 1
+        }
+      ],
+      "failure": "Error: expect(received).toBeGreaterThan(expected)\n\nExpected: > 0\nReceived:   0\n\nCall Log:\n- Timeout 5000ms exceeded while waiting on the predicate",
+      "completedFreshCases": 0,
+      "retainedCases": 0,
+      "withinFULLDeadline": true,
+      "resourcesReleased": true,
+      "linkAbsent": true,
+      "temporaryAbsent": true,
+      "growthMaximum": 84041728,
+      "durableMaximum": 55734272,
+      "guardSha256": "c84c0026a4ea809a0f4d2d8173b8fcfd11b3e620cc319a22511b8691b3f7b5fe",
+      "controllerSha256": "47b434c4e1bc545466dc0d5848805b266a7a2b2794a634000cef96c813fd128c",
+      "nativeSha256": "b8cf32d9b8878a980604ce13d608d1c7cda878c14a06717d3a8c99fca5bc5d4c"
+    },
+    {
+      "round": 4,
+      "slot": "FE-DIALOG-ESC-NATIVE04-0359",
+      "sourceCommit": "3a41c6465c430ec49ccaeee22e3458cfa0033762",
+      "acceptedAt": 1793851376.6723552,
+      "workDeadline": 1793851736.6723552,
+      "fullDeadline": 1793851796.6723552,
+      "actualFULL": 1793851412.229522,
+      "status": "FAIL",
+      "commands": [
+        {
+          "label": "dialog-lint",
+          "exit": 0
+        },
+        {
+          "label": "dialog-native",
+          "exit": 1
+        }
+      ],
+      "failure": "TimeoutError: locator.click: Timeout 12000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Reduce panel', exact: true })\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" aria-expanded=\"true\" aria-label=\"Reduce panel\">\u2026</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 \u00d7 waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <h2 id=\"_r_g_\">Report a concern</h2> from <div id=\"shell-panel-body\" class=\"shell-panel-body\">\u2026</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 \u00d7 waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <h2 id=\"_r_g_\">Report a concern</h2> from <div id=\"shell-panel-body\" class=\"shell-panel-body\">\u2026</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    23 \u00d7 waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <h2 id=\"_r_g_\">Report a concern</h2> from <div id=\"shell-panel-body\" class=\"shell-panel-body\">\u2026</div> subtree intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+      "completedFreshCases": 7,
+      "retainedCases": 0,
+      "withinFULLDeadline": true,
+      "resourcesReleased": true,
+      "linkAbsent": true,
+      "temporaryAbsent": true,
+      "growthMaximum": 84041728,
+      "durableMaximum": 57810944,
+      "guardSha256": "d0217cc155dc92fd4f02a2c93262e788b4227765be76ef75e03252051b6f9aec",
+      "controllerSha256": "2e7146c3743050812b2dacca4d66282ba3a09394ca34652e07fdcca711644da1",
+      "nativeSha256": "b77b0264e4e4780729d673968fe97274cb26e2a2290963a5e6a9fed639910610"
+    },
+    {
+      "round": 5,
+      "slot": "FE-DIALOG-ESC-NATIVE05-0407",
+      "sourceCommit": "cf07c9cf382f44cb5a944d682271025108acfa58",
+      "acceptedAt": 1793851994.3947961,
+      "workDeadline": 1793852354.3947961,
+      "fullDeadline": 1793852414.3947961,
+      "actualFULL": 1793852033.3558662,
+      "status": "FAIL",
+      "commands": [
+        {
+          "label": "dialog-lint",
+          "exit": 0
+        },
+        {
+          "label": "dialog-native",
+          "exit": 1
+        }
+      ],
+      "failure": "ReferenceError: dialog is not defined",
+      "completedFreshCases": 0,
+      "retainedCases": 7,
+      "withinFULLDeadline": true,
+      "resourcesReleased": true,
+      "linkAbsent": true,
+      "temporaryAbsent": true,
+      "growthMaximum": 89833472,
+      "durableMaximum": 59645952,
+      "guardSha256": "9c9d180af063e56071218cb632f3cc2e071da4bb743f7b61806a6be880399a6f",
+      "controllerSha256": "4f9b7339f5024c9d7868f42e8651341eec2e40e6d9c21b9707e3b543fac88755",
+      "nativeSha256": "590125d9fb88b5eb5a727fdb780129222c78fd9bf211015a29bf1909125a94c4"
+    },
+    {
+      "round": 6,
+      "slot": "FE-DIALOG-ESC-NATIVE06-0407",
+      "sourceCommit": "e80a9dd935b3ffb3d7aeb1fa53c52118e5b9055a",
+      "acceptedAt": 1793852189.0331142,
+      "workDeadline": 1793852549.0331142,
+      "fullDeadline": 1793852609.0331142,
+      "actualFULL": 1793852210.6657012,
+      "status": "PASS",
+      "commands": [
+        {
+          "label": "dialog-lint",
+          "exit": 0
+        },
+        {
+          "label": "dialog-native",
+          "exit": 0
+        }
+      ],
+      "failure": null,
+      "completedFreshCases": 2,
+      "retainedCases": 7,
+      "withinFULLDeadline": true,
+      "resourcesReleased": true,
+      "linkAbsent": true,
+      "temporaryAbsent": true,
+      "growthMaximum": 89833472,
+      "durableMaximum": 61435904,
+      "guardSha256": "eae2dc88b06d60af4d20607946a424b57f481c91ca227178098a26bfb9d819f2",
+      "controllerSha256": "45c4175017784f43deeb3da85e854ba48ae939928c39713049e6b5cd9870c450",
+      "nativeSha256": "93474108806606815a19415df84b0abb428d8e66e13d1028ad7ad5929a11bd72"
+    }
+  ],
+  "images": [
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/dialog-escape-native04/blocks-before-escape-390-480.png",
+      "sha256": "73c4e9caa166af7897a4f79359b13cdb51b626a0292a58b7ff4e23bfaf10375e",
+      "bytes": 33813,
+      "width": 390,
+      "height": 480,
+      "purpose": "Controlled functional cancellation/focus evidence; not product-art or whole-product visual acceptance."
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-report-error-network/dialog-escape-native04/blocks-restored-opener-390-480.png",
+      "sha256": "6039aa41ecdbafc96c9044e66656a0d6dd952add4f6d8570b04a25e31f22ecab",
+      "bytes": 35677,
+      "width": 390,
+      "height": 480,
+      "purpose": "Controlled functional cancellation/focus evidence; not product-art or whole-product visual acceptance."
+    }
+  ],
+  "copyProvenance": [
+    {
+      "sourceRevision": "3459fbb136f2e22dbfb0ab85f19f1e7033637b22",
+      "native17Candidate": "418823adfcfe807ab839e61eeb3536da38aae026",
+      "sourcePath": "frontend/e2e/visual/parade-ink-private-pages/preview.tsx",
+      "sourceSha256": "f4e6f49b3c3ac58a43cc35359df1a2253cc780d1a1a95da7aa63444d06e32094",
+      "destination": "frontend/e2e/visual/parade-ink-route-status/dialog-preview.tsx",
+      "destinationSha256": "5eb0c8d019ddd2be00d97e081651d27c748a2fe1c9b58067321bf126c9c04de8",
+      "changes": "Local service import and explicit report target search only."
+    },
+    {
+      "sourceRevision": "3459fbb136f2e22dbfb0ab85f19f1e7033637b22",
+      "native17Candidate": "418823adfcfe807ab839e61eeb3536da38aae026",
+      "sourcePath": "frontend/e2e/visual/parade-ink-private-pages/service.ts",
+      "sourceSha256": "b55379815a4111b32f0c89a7d5567231f8f5a156bbbd9cf57f8e19e91608c097",
+      "destination": "frontend/e2e/visual/parade-ink-route-status/dialog-service.ts",
+      "destinationSha256": "b55379815a4111b32f0c89a7d5567231f8f5a156bbbd9cf57f8e19e91608c097",
+      "changes": "Exact bytes"
+    }
+  ],
+  "retainedLint": {
+    "round": 2,
+    "changedDialogPreviewServiceExit": 0,
+    "DialogPostimageUnchanged": true,
+    "latestChangedNativeDriverLintRound": 6,
+    "latestChangedNativeDriverLintExit": 0
+  },
+  "resourceDisposition": {
+    "state": "FULL",
+    "actualFULL": 1793852210.6657012,
+    "workloadAndResourceHolds": 0,
+    "familyMaximumRetained": 89833472,
+    "durableMaximumNative06": 61435904,
+    "temporaryMaximumNative06": 25284608,
+    "rssMaximumNative06": 2881601536,
+    "same256MiBCumulativeFamily": true,
+    "prep8ChargedOnce": true,
+    "noResetRefundDeletionCredit": true
+  },
+  "producerIncidentsPreserved": [
+    "Native01 relative guardian argv disagreed with declared absolute script; later launches use exact absolute path. Peer failure unchanged.",
+    "QA04 Source18 observed ordinary zsh-lc metadata wrapper before Python publication. Prospective wrappers use /bin/sh login:false immediate absolute Python exec and libproc self-publication before helpers. No old receipt rewritten."
+  ],
+  "limitations": [
+    "Controlled HTTP/C05; no real backend, device, multiuser or latest combined-master runtime acceptance.",
+    "Native01 through05 remain whole-round FAIL. Only seven fully completed native04 cases retained.",
+    "Raw nativeCancelEvents outside Escape cases may be a prior diagnostic counter; only Escape cases assert exactly one native cancel.",
+    "Controlled fixture labels/art and functional captures do not certify product artwork or visual fidelity.",
+    "Original QA05 remains BLOCKED/seven real cases NOT_RUN.",
+    "No unchanged historical80-case replay, build/database/install or broad caller/WorldShell change."
+  ],
+  "publication": "PENDING named developer412e; no king/SL inspection or ACK gate."
+}
