@@ -1,0 +1,1047 @@
+{
+  "candidate": "84add31d7d009f95da40e12ddff133efbe693584",
+  "lease": "MAP-LFACTORY-NATIVE12-0453",
+  "qualification": "ACTUAL_MAIN_AUTH_WORLD_WITH_TEST_ONLY_VENUE_COMPOSITION_NOT_PRODUCTION_OR_LIVE",
+  "status": "PASS",
+  "artInput": {
+    "commit": "fcd0780537eb9f724a1f130523f02656e1be9ee6",
+    "path": "frontend/public/venue/paradise-city/v1/siteplan-photo-5.jpg",
+    "sha256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+    "bytes": 328720,
+    "qualification": "EXACT_PRODUCER_INPUT_NOT_PRODUCER_QUALIFICATION"
+  },
+  "spatialInput": {
+    "commit": "4f94914d06d54c3b465930cc23d40be91a1255cb",
+    "hashes": {
+      "contract.ts": "b75f7cf748949a1a858626fe098f3d1b0dd22e65eeea31d551b37fa309745a42",
+      "image-resource.ts": "6d5e0f7c607d8ae17f03dd3030aa52e7c57d2f0ff1377d9384c6bed2554aba18",
+      "model.ts": "370023d8a25d135fce56969c5b5e2e8a20bfdd17e92eb0ab24da04b8aae219bd",
+      "registration.ts": "75c57f43a81ecaeab1cd9b0dad86329744516285501137fa5d4abb8ff25fe314",
+      "viewport.ts": "19489edc14c739050c3f4c6a8b32d76156f059f7620eeaa155148ff4a5a193f9"
+    },
+    "classification": "ACTUAL_PRODUCER_INPUT_NO_PEER_PREFIX_COPY"
+  },
+  "injections": [
+    {
+      "path": "frontend/src/main.tsx",
+      "preimageSHA256": "73dcb049c45fc5125de1637587a09373664c31d4899ef15dea0119a0ace3d5a6",
+      "postimageSHA256": "303ac8638a2e5de646be4e3625b00a398c3d812701ae9de7b25efa0b05c5188c",
+      "classification": "VIRTUAL_TEST_ONLY_NO_SOURCE_FILE_WRITE",
+      "replacements": [
+        [
+          "import { createAppRouter } from './app/router'",
+          "import { createVenueFixtureRouter as createAppRouter } from '/e2e/venue-map/composition'"
+        ]
+      ],
+      "importAdded": false
+    },
+    {
+      "path": "frontend/src/app/WorldShell.tsx",
+      "preimageSHA256": "6c66a6e61b84fc4180bfa589148cf10018a7166fe15d468b722f5c88cb95fde1",
+      "postimageSHA256": "10209c0aa4aefe8b5d9f233984c03b0b7e2020247e5c199e3078b4c928502493",
+      "classification": "VIRTUAL_TEST_ONLY_NO_SOURCE_FILE_WRITE",
+      "replacements": [
+        [
+          "<ProductionWorldFeatures privacyScope={privacyScope}>",
+          "<VenueFixtureBoundary auth={auth} scope={privacyScope} binding={community}><ProductionWorldFeatures privacyScope={privacyScope}>"
+        ],
+        [
+          "</ProductionWorldFeatures></CommunityFeatures>",
+          "</ProductionWorldFeatures></VenueFixtureBoundary></CommunityFeatures>"
+        ]
+      ],
+      "importAdded": true
+    }
+  ],
+  "cases": [
+    {
+      "width": 360,
+      "height": 800,
+      "dpr": 1,
+      "status": "PASS",
+      "captures": [
+        {
+          "state": "map-overview",
+          "file": "360-800-map-overview.png",
+          "sha256": "f2c65ea6e41b16f4a419bada424aa566234db34823c72ffc5a232d6a3e4aed53"
+        },
+        {
+          "state": "friends",
+          "file": "360-800-friends.png",
+          "sha256": "b772b3a0d94189d405b5d78712adc175db717950b433880e14e321da407452ba"
+        },
+        {
+          "state": "friend-selected",
+          "file": "360-800-friend-selected.png",
+          "sha256": "213a1ae9f86a7a49f20e97bcd970a6b21d2f2d892496463a81f6127c8cebf366"
+        },
+        {
+          "state": "notes",
+          "file": "360-800-notes.png",
+          "sha256": "4af6deff1dc3baf918ca95004a33c5a6aac674aaac299a9de6950795edbc6166"
+        },
+        {
+          "state": "note-composer",
+          "file": "360-800-note-composer.png",
+          "sha256": "90c27f2b33c6e184217c64f4096ef55b97e17a7dbe80ae28b8509f35ae7b1c8f"
+        },
+        {
+          "state": "unavailable",
+          "file": "360-800-unavailable.png",
+          "sha256": "48f9a8ebfd1670af211481b394c3b4463c6ff6978de0ca83867e05ed86ecb9bc"
+        }
+      ],
+      "componentCaptures": [],
+      "checks": [
+        "keyboard-pan-home-end-landmark-focus-reveal-and-pointer-pan",
+        "zoom-fit-reset",
+        "roving-tab-keyboard-selection",
+        "authorized-message-without-location-landmark-invitation",
+        "one-explicit-note-write",
+        "one-explicit-reply-inherits-parent-place-and-audience",
+        "explicit-emulated-geolocation-opt-in-and-pause",
+        "private-withdrawal-scrub",
+        "one-incumbent-world-and-socket"
+      ],
+      "siteplan": {
+        "identity": {
+          "venueId": "paradise-city",
+          "siteplanId": "paradise-city-siteplan",
+          "revision": 1,
+          "variantId": "photo-5-provisional"
+        },
+        "landmarks": [
+          {
+            "id": "stage",
+            "point": {
+              "x": 240,
+              "y": 185
+            }
+          },
+          {
+            "id": "standing-a",
+            "point": {
+              "x": 260,
+              "y": 358
+            }
+          },
+          {
+            "id": "standing-b",
+            "point": {
+              "x": 373,
+              "y": 273
+            }
+          },
+          {
+            "id": "foh",
+            "point": {
+              "x": 413,
+              "y": 431
+            }
+          },
+          {
+            "id": "main-gate",
+            "point": {
+              "x": 246,
+              "y": 636
+            }
+          },
+          {
+            "id": "sub-gate",
+            "point": {
+              "x": 592,
+              "y": 531
+            }
+          },
+          {
+            "id": "station",
+            "point": {
+              "x": 181,
+              "y": 749
+            }
+          },
+          {
+            "id": "chroma",
+            "point": {
+              "x": 670,
+              "y": 394
+            }
+          },
+          {
+            "id": "studio-paradise",
+            "point": {
+              "x": 637,
+              "y": 147
+            }
+          },
+          {
+            "id": "spa-cimer",
+            "point": {
+              "x": 870,
+              "y": 262
+            }
+          },
+          {
+            "id": "wonderbox",
+            "point": {
+              "x": 886,
+              "y": 534
+            }
+          },
+          {
+            "id": "art-paradiso-plaza",
+            "point": {
+              "x": 585,
+              "y": 716
+            }
+          },
+          {
+            "id": "photo-zone",
+            "point": {
+              "x": 308,
+              "y": 822
+            }
+          },
+          {
+            "id": "queue-a",
+            "point": {
+              "x": 125,
+              "y": 447
+            }
+          },
+          {
+            "id": "queue-b",
+            "point": {
+              "x": 765,
+              "y": 472
+            }
+          },
+          {
+            "id": "queue-a-b-3001-plus",
+            "point": {
+              "x": 727,
+              "y": 1039
+            }
+          },
+          {
+            "id": "p1",
+            "point": {
+              "x": 320,
+              "y": 475
+            }
+          },
+          {
+            "id": "p2",
+            "point": {
+              "x": 475,
+              "y": 386
+            }
+          },
+          {
+            "id": "r1",
+            "point": {
+              "x": 190,
+              "y": 455
+            }
+          },
+          {
+            "id": "r2",
+            "point": {
+              "x": 493,
+              "y": 262
+            }
+          },
+          {
+            "id": "toilets",
+            "point": {
+              "x": 522,
+              "y": 162
+            }
+          },
+          {
+            "id": "medical-symbol",
+            "point": {
+              "x": 507,
+              "y": 452
+            }
+          }
+        ],
+        "imageWidth": 1024,
+        "imageHeight": 1280,
+        "sourceKind": "VERIFIED_PRODUCER_IMAGE_LEASE"
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "dpr": 1,
+      "status": "PASS",
+      "captures": [
+        {
+          "state": "map-overview",
+          "file": "390-844-map-overview.png",
+          "sha256": "33679991a0e9a603d70c3370378e6122ec5392029eee2c1552d70ea178476344"
+        },
+        {
+          "state": "friends",
+          "file": "390-844-friends.png",
+          "sha256": "128444ae199ee9a613a2c40b4f05df81f987a4b9ad44f940d5676b5ed5ea7424"
+        },
+        {
+          "state": "friend-selected",
+          "file": "390-844-friend-selected.png",
+          "sha256": "8c1e4eb047d2d7e95b3ea49577cbb29e90384efbc31b698b0a675bafa3459567"
+        },
+        {
+          "state": "notes",
+          "file": "390-844-notes.png",
+          "sha256": "285727be65929ed0df9eda16de31067fde7504a31ea4f13752c2ce60735644dd"
+        },
+        {
+          "state": "note-composer",
+          "file": "390-844-note-composer.png",
+          "sha256": "1a588aad90fab2c049dcc1a6ffcea32dde66370915a9721d0fb0e87cec5406fc"
+        },
+        {
+          "state": "unavailable",
+          "file": "390-844-unavailable.png",
+          "sha256": "db79d782e4829e7ae0d4347bbe6e30a5179b27b56b1c4dad571ebfaa6af4d7bc"
+        }
+      ],
+      "componentCaptures": [
+        {
+          "state": "friends",
+          "selector": ".pc-friend-row",
+          "file": "390-844-friends-component.png",
+          "sha256": "043685f1c2ef6b488218b262868ad1a2ce5c16f696bced95b0cea8886e3c73c9",
+          "box": {
+            "x": 16,
+            "y": 380.75,
+            "width": 358,
+            "height": 78.1875
+          },
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "dpr": 1,
+          "clock": {
+            "scope": {
+              "userId": "00000000-0000-4000-8000-000000000101",
+              "eventId": "00000000-0000-4000-8000-000000000201",
+              "generation": 2,
+              "policyGeneration": 2,
+              "gate": "open"
+            },
+            "nowMs": 1794034803706
+          },
+          "camera": {
+            "left": 0,
+            "top": 112,
+            "width": 368,
+            "height": 239
+          },
+          "classification": "CONTROLLED_FIXTURE_EMULATED_GPS_NOT_LIVE"
+        },
+        {
+          "state": "notes",
+          "selector": ".pc-note-card",
+          "file": "390-844-notes-component.png",
+          "sha256": "a76a465177ded2f25173640a364d9308a2a3102be3daaeda21758c5aff7a4faf",
+          "box": {
+            "x": 18,
+            "y": 482.75,
+            "width": 354,
+            "height": 207.5
+          },
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "dpr": 1,
+          "clock": {
+            "scope": {
+              "userId": "00000000-0000-4000-8000-000000000101",
+              "eventId": "00000000-0000-4000-8000-000000000201",
+              "generation": 2,
+              "policyGeneration": 2,
+              "gate": "open"
+            },
+            "nowMs": 1794034804127
+          },
+          "camera": {
+            "left": 0,
+            "top": 112,
+            "width": 368,
+            "height": 239
+          },
+          "classification": "CONTROLLED_FIXTURE_EMULATED_GPS_NOT_LIVE"
+        },
+        {
+          "state": "note-composer",
+          "selector": ".pc-composer",
+          "file": "390-844-note-composer-component.png",
+          "sha256": "11b2abd747644145dbc13f78c77c1cb2917c4f92219000dcb51704c16ee2f041",
+          "box": {
+            "x": 11,
+            "y": 374.75,
+            "width": 368,
+            "height": 409
+          },
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "dpr": 1,
+          "clock": {
+            "scope": {
+              "userId": "00000000-0000-4000-8000-000000000101",
+              "eventId": "00000000-0000-4000-8000-000000000201",
+              "generation": 2,
+              "policyGeneration": 2,
+              "gate": "open"
+            },
+            "nowMs": 1794034804297
+          },
+          "camera": {
+            "left": 0,
+            "top": 112,
+            "width": 368,
+            "height": 239
+          },
+          "classification": "CONTROLLED_FIXTURE_EMULATED_GPS_NOT_LIVE"
+        }
+      ],
+      "checks": [
+        "keyboard-pan-home-end-landmark-focus-reveal-and-pointer-pan",
+        "native-browser-touch-pan",
+        "zoom-fit-reset",
+        "roving-tab-keyboard-selection",
+        "authorized-message-without-location-landmark-invitation",
+        "one-explicit-note-write",
+        "one-explicit-reply-inherits-parent-place-and-audience",
+        "explicit-emulated-geolocation-opt-in-and-pause",
+        "private-withdrawal-scrub",
+        "one-incumbent-world-and-socket"
+      ],
+      "siteplan": {
+        "identity": {
+          "venueId": "paradise-city",
+          "siteplanId": "paradise-city-siteplan",
+          "revision": 1,
+          "variantId": "photo-5-provisional"
+        },
+        "landmarks": [
+          {
+            "id": "stage",
+            "point": {
+              "x": 240,
+              "y": 185
+            }
+          },
+          {
+            "id": "standing-a",
+            "point": {
+              "x": 260,
+              "y": 358
+            }
+          },
+          {
+            "id": "standing-b",
+            "point": {
+              "x": 373,
+              "y": 273
+            }
+          },
+          {
+            "id": "foh",
+            "point": {
+              "x": 413,
+              "y": 431
+            }
+          },
+          {
+            "id": "main-gate",
+            "point": {
+              "x": 246,
+              "y": 636
+            }
+          },
+          {
+            "id": "sub-gate",
+            "point": {
+              "x": 592,
+              "y": 531
+            }
+          },
+          {
+            "id": "station",
+            "point": {
+              "x": 181,
+              "y": 749
+            }
+          },
+          {
+            "id": "chroma",
+            "point": {
+              "x": 670,
+              "y": 394
+            }
+          },
+          {
+            "id": "studio-paradise",
+            "point": {
+              "x": 637,
+              "y": 147
+            }
+          },
+          {
+            "id": "spa-cimer",
+            "point": {
+              "x": 870,
+              "y": 262
+            }
+          },
+          {
+            "id": "wonderbox",
+            "point": {
+              "x": 886,
+              "y": 534
+            }
+          },
+          {
+            "id": "art-paradiso-plaza",
+            "point": {
+              "x": 585,
+              "y": 716
+            }
+          },
+          {
+            "id": "photo-zone",
+            "point": {
+              "x": 308,
+              "y": 822
+            }
+          },
+          {
+            "id": "queue-a",
+            "point": {
+              "x": 125,
+              "y": 447
+            }
+          },
+          {
+            "id": "queue-b",
+            "point": {
+              "x": 765,
+              "y": 472
+            }
+          },
+          {
+            "id": "queue-a-b-3001-plus",
+            "point": {
+              "x": 727,
+              "y": 1039
+            }
+          },
+          {
+            "id": "p1",
+            "point": {
+              "x": 320,
+              "y": 475
+            }
+          },
+          {
+            "id": "p2",
+            "point": {
+              "x": 475,
+              "y": 386
+            }
+          },
+          {
+            "id": "r1",
+            "point": {
+              "x": 190,
+              "y": 455
+            }
+          },
+          {
+            "id": "r2",
+            "point": {
+              "x": 493,
+              "y": 262
+            }
+          },
+          {
+            "id": "toilets",
+            "point": {
+              "x": 522,
+              "y": 162
+            }
+          },
+          {
+            "id": "medical-symbol",
+            "point": {
+              "x": 507,
+              "y": 452
+            }
+          }
+        ],
+        "imageWidth": 1024,
+        "imageHeight": 1280,
+        "sourceKind": "VERIFIED_PRODUCER_IMAGE_LEASE"
+      }
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "dpr": 1,
+      "status": "PASS",
+      "captures": [
+        {
+          "state": "map-overview",
+          "file": "430-932-map-overview.png",
+          "sha256": "a57cea275b7c6b7ba746f71f82429e97d20b869461acb7472a142acdfeedc651"
+        },
+        {
+          "state": "friends",
+          "file": "430-932-friends.png",
+          "sha256": "46d85320494ba637030a5303345aeee00ab22398864fd2cd1c6f2a2256bac071"
+        },
+        {
+          "state": "friend-selected",
+          "file": "430-932-friend-selected.png",
+          "sha256": "f40c8ea270095a780c83f219406b0b4e9cfcdee64cad7a43dc2600f84d5f1563"
+        },
+        {
+          "state": "notes",
+          "file": "430-932-notes.png",
+          "sha256": "2539bd777fe887203cd4100d0bd86ca9ef80b924b674a51ef2752eee70b371e9"
+        },
+        {
+          "state": "note-composer",
+          "file": "430-932-note-composer.png",
+          "sha256": "e81bd9920c750314cf34f039920ae46e0c5b49293f94b64742ea700c96806011"
+        },
+        {
+          "state": "unavailable",
+          "file": "430-932-unavailable.png",
+          "sha256": "913cc604567adf5358dc830fa18be5123dbdf7f03dcfd1ccc6ac4bd7801bee6c"
+        }
+      ],
+      "componentCaptures": [],
+      "checks": [
+        "keyboard-pan-home-end-landmark-focus-reveal-and-pointer-pan",
+        "zoom-fit-reset",
+        "roving-tab-keyboard-selection",
+        "authorized-message-without-location-landmark-invitation",
+        "one-explicit-note-write",
+        "one-explicit-reply-inherits-parent-place-and-audience",
+        "explicit-emulated-geolocation-opt-in-and-pause",
+        "private-withdrawal-scrub",
+        "one-incumbent-world-and-socket"
+      ],
+      "siteplan": {
+        "identity": {
+          "venueId": "paradise-city",
+          "siteplanId": "paradise-city-siteplan",
+          "revision": 1,
+          "variantId": "photo-5-provisional"
+        },
+        "landmarks": [
+          {
+            "id": "stage",
+            "point": {
+              "x": 240,
+              "y": 185
+            }
+          },
+          {
+            "id": "standing-a",
+            "point": {
+              "x": 260,
+              "y": 358
+            }
+          },
+          {
+            "id": "standing-b",
+            "point": {
+              "x": 373,
+              "y": 273
+            }
+          },
+          {
+            "id": "foh",
+            "point": {
+              "x": 413,
+              "y": 431
+            }
+          },
+          {
+            "id": "main-gate",
+            "point": {
+              "x": 246,
+              "y": 636
+            }
+          },
+          {
+            "id": "sub-gate",
+            "point": {
+              "x": 592,
+              "y": 531
+            }
+          },
+          {
+            "id": "station",
+            "point": {
+              "x": 181,
+              "y": 749
+            }
+          },
+          {
+            "id": "chroma",
+            "point": {
+              "x": 670,
+              "y": 394
+            }
+          },
+          {
+            "id": "studio-paradise",
+            "point": {
+              "x": 637,
+              "y": 147
+            }
+          },
+          {
+            "id": "spa-cimer",
+            "point": {
+              "x": 870,
+              "y": 262
+            }
+          },
+          {
+            "id": "wonderbox",
+            "point": {
+              "x": 886,
+              "y": 534
+            }
+          },
+          {
+            "id": "art-paradiso-plaza",
+            "point": {
+              "x": 585,
+              "y": 716
+            }
+          },
+          {
+            "id": "photo-zone",
+            "point": {
+              "x": 308,
+              "y": 822
+            }
+          },
+          {
+            "id": "queue-a",
+            "point": {
+              "x": 125,
+              "y": 447
+            }
+          },
+          {
+            "id": "queue-b",
+            "point": {
+              "x": 765,
+              "y": 472
+            }
+          },
+          {
+            "id": "queue-a-b-3001-plus",
+            "point": {
+              "x": 727,
+              "y": 1039
+            }
+          },
+          {
+            "id": "p1",
+            "point": {
+              "x": 320,
+              "y": 475
+            }
+          },
+          {
+            "id": "p2",
+            "point": {
+              "x": 475,
+              "y": 386
+            }
+          },
+          {
+            "id": "r1",
+            "point": {
+              "x": 190,
+              "y": 455
+            }
+          },
+          {
+            "id": "r2",
+            "point": {
+              "x": 493,
+              "y": 262
+            }
+          },
+          {
+            "id": "toilets",
+            "point": {
+              "x": 522,
+              "y": 162
+            }
+          },
+          {
+            "id": "medical-symbol",
+            "point": {
+              "x": 507,
+              "y": 452
+            }
+          }
+        ],
+        "imageWidth": 1024,
+        "imageHeight": 1280,
+        "sourceKind": "VERIFIED_PRODUCER_IMAGE_LEASE"
+      }
+    },
+    {
+      "width": 390,
+      "height": 420,
+      "dpr": 1,
+      "status": "PASS",
+      "captures": [
+        {
+          "state": "map-overview",
+          "file": "390-420-map-overview.png",
+          "sha256": "3b6114d40dce39f7d0073b41ddae8b6efa6bde67cf2bb6ff1f1294e885086345"
+        },
+        {
+          "state": "friends",
+          "file": "390-420-friends.png",
+          "sha256": "8b6732154d606193b7b0d7cd219813a6b84fbeb13850d58a949c912a2815e7d8"
+        },
+        {
+          "state": "friend-selected",
+          "file": "390-420-friend-selected.png",
+          "sha256": "25a93cd308f30a54b7bfc773162b62999ade5f3f80e7c3cb46571701f0c0ad71"
+        },
+        {
+          "state": "notes",
+          "file": "390-420-notes.png",
+          "sha256": "64c73a7d473c83992bde10df3104a7c430fa4ee6c87cd1f6ad6a59834f695a0b"
+        },
+        {
+          "state": "note-composer",
+          "file": "390-420-note-composer.png",
+          "sha256": "e908af187c2a0bb8127eecce7bab0ec4482164015b99618fb948142298b0c219"
+        },
+        {
+          "state": "unavailable",
+          "file": "390-420-unavailable.png",
+          "sha256": "1f8fd059291ca37319d8ce9c821d24843e1e6160f5d2088c13ff61f7a464b82f"
+        }
+      ],
+      "componentCaptures": [],
+      "checks": [
+        "keyboard-pan-home-end-landmark-focus-reveal-and-pointer-pan",
+        "zoom-fit-reset",
+        "roving-tab-keyboard-selection",
+        "authorized-message-without-location-landmark-invitation",
+        "one-explicit-note-write",
+        "one-explicit-reply-inherits-parent-place-and-audience",
+        "explicit-emulated-geolocation-opt-in-and-pause",
+        "private-withdrawal-scrub",
+        "one-incumbent-world-and-socket"
+      ],
+      "siteplan": {
+        "identity": {
+          "venueId": "paradise-city",
+          "siteplanId": "paradise-city-siteplan",
+          "revision": 1,
+          "variantId": "photo-5-provisional"
+        },
+        "landmarks": [
+          {
+            "id": "stage",
+            "point": {
+              "x": 240,
+              "y": 185
+            }
+          },
+          {
+            "id": "standing-a",
+            "point": {
+              "x": 260,
+              "y": 358
+            }
+          },
+          {
+            "id": "standing-b",
+            "point": {
+              "x": 373,
+              "y": 273
+            }
+          },
+          {
+            "id": "foh",
+            "point": {
+              "x": 413,
+              "y": 431
+            }
+          },
+          {
+            "id": "main-gate",
+            "point": {
+              "x": 246,
+              "y": 636
+            }
+          },
+          {
+            "id": "sub-gate",
+            "point": {
+              "x": 592,
+              "y": 531
+            }
+          },
+          {
+            "id": "station",
+            "point": {
+              "x": 181,
+              "y": 749
+            }
+          },
+          {
+            "id": "chroma",
+            "point": {
+              "x": 670,
+              "y": 394
+            }
+          },
+          {
+            "id": "studio-paradise",
+            "point": {
+              "x": 637,
+              "y": 147
+            }
+          },
+          {
+            "id": "spa-cimer",
+            "point": {
+              "x": 870,
+              "y": 262
+            }
+          },
+          {
+            "id": "wonderbox",
+            "point": {
+              "x": 886,
+              "y": 534
+            }
+          },
+          {
+            "id": "art-paradiso-plaza",
+            "point": {
+              "x": 585,
+              "y": 716
+            }
+          },
+          {
+            "id": "photo-zone",
+            "point": {
+              "x": 308,
+              "y": 822
+            }
+          },
+          {
+            "id": "queue-a",
+            "point": {
+              "x": 125,
+              "y": 447
+            }
+          },
+          {
+            "id": "queue-b",
+            "point": {
+              "x": 765,
+              "y": 472
+            }
+          },
+          {
+            "id": "queue-a-b-3001-plus",
+            "point": {
+              "x": 727,
+              "y": 1039
+            }
+          },
+          {
+            "id": "p1",
+            "point": {
+              "x": 320,
+              "y": 475
+            }
+          },
+          {
+            "id": "p2",
+            "point": {
+              "x": 475,
+              "y": 386
+            }
+          },
+          {
+            "id": "r1",
+            "point": {
+              "x": 190,
+              "y": 455
+            }
+          },
+          {
+            "id": "r2",
+            "point": {
+              "x": 493,
+              "y": 262
+            }
+          },
+          {
+            "id": "toilets",
+            "point": {
+              "x": 522,
+              "y": 162
+            }
+          },
+          {
+            "id": "medical-symbol",
+            "point": {
+              "x": 507,
+              "y": 452
+            }
+          }
+        ],
+        "imageWidth": 1024,
+        "imageHeight": 1280,
+        "sourceKind": "VERIFIED_PRODUCER_IMAGE_LEASE"
+      }
+    }
+  ],
+  "errors": [],
+  "limits": [
+    "Synthetic venue capabilities, people, notes and emulated geolocation; no physical-device or service acceptance.",
+    "Borrowed meeting entry only; actual developer204 invitation/conversation leaf integration remains separate.",
+    "TEST_ONLY clock profile feeds the original canonical bootstrap timeline; no second loader or timeline.",
+    "Reference ROI/capture overlays and personal visual iteration remain separate acceptance evidence."
+  ],
+  "policyInput": {
+    "release": {
+      "version": 1,
+      "applicationVersion": "0.1.0",
+      "buildId": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "sourceRevision": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    "qualification": "TEST_ONLY_RECOGNIZED_CATALOG_PAIR_AND_NORMAL_SERVICE_DECISION_NOT_PRODUCTION_RELEASE_OR_LIVE_POLICY"
+  },
+  "browser": "156.0.8078.80"
+}

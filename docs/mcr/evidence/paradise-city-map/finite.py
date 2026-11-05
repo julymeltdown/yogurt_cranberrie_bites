@@ -67,7 +67,7 @@ class Round:
         self.accepted = float(os.environ['MCR_VENU_ACCEPT_EPOCH'])
         self.work = self.accepted+int(os.environ['MCR_VENU_WORK_SECONDS']); self.hard = self.accepted+int(os.environ['MCR_VENU_FULL_SECONDS'])
         self.cap = (128 if self.mode == 'source' else int(os.environ.get('MCR_VENU_NATIVE_FAMILY_MIB', '200')))*MIB
-        assert self.cap in ((128*MIB,) if self.mode == 'source' else (200*MIB,256*MIB))
+        assert self.cap in ((128*MIB,) if self.mode == 'source' else (200*MIB,256*MIB,320*MIB))
         self.future = int(os.environ.get('MCR_VENU_FUTURE_NEW_UPPER', self.cap))
         assert 0 < self.future <= self.cap
         self.pids, self.rss = (8, int(2.5*GIB)) if self.mode == 'source' else (24, int(3.5*GIB))

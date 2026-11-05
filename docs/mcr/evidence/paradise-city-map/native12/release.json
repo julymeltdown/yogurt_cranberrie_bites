@@ -1,0 +1,21 @@
+{
+  "type": "FULL",
+  "role": "guardian",
+  "lease": "MAP-LFACTORY-NATIVE12-0453",
+  "at": 1793854658.968896,
+  "exitCode": 0,
+  "failure": null,
+  "peak": {
+    "processes": 14,
+    "rssBytes": 3258744832,
+    "newBytes": 291209216,
+    "tmpBytes": 30302208,
+    "wholeBytes": 6864084992
+  },
+  "minimumFreeBytes": 26549608448,
+  "livePids": [],
+  "resources": 0,
+  "privateTmpAbsent": true,
+  "portClosed": true,
+  "retainedDependencyRecords": 11480
+}

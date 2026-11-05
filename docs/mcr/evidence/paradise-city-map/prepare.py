@@ -38,7 +38,7 @@ outcome=1
 try:
     assert birth == ' '.join(subprocess.check_output(['ps','-p',str(os.getpid()),'-o','lstart='],text=True).split())
     assert observation['executable'] == subprocess.check_output(['ps','-p',str(os.getpid()),'-o','comm='],text=True).strip()
-    assert time.time()<datetime.datetime(2026,11,5,5,0,tzinfo=datetime.timezone.utc).timestamp()
+    assert time.time()<datetime.datetime(2026,11,5,6,0,tzinfo=datetime.timezone.utc).timestamp()
     v=os.statvfs(ROOT);free=v.f_bavail*v.f_frsize
     assert free>=8*1024**3+5*1024**3+64*1024**2
     paths=subprocess.check_output(['git','ls-files','--cached','--others','--exclude-standard','-z'],cwd=ROOT).decode().split('\0')

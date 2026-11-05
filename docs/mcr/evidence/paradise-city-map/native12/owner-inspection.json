@@ -1,0 +1,276 @@
+{
+  "kind": "OWNER_PERSONAL_INSPECTION_FUNCTIONAL_PASS_VISUAL_DIFFERENCES_OPEN",
+  "candidate": "84add31d7d009f95da40e12ddff133efbe693584",
+  "lease": "MAP-LFACTORY-NATIVE12-0453",
+  "viewportContexts": [
+    {
+      "width": 360,
+      "height": 800,
+      "dpr": 1,
+      "status": "PASS",
+      "checks": [
+        "keyboard-pan-home-end-landmark-focus-reveal-and-pointer-pan",
+        "zoom-fit-reset",
+        "roving-tab-keyboard-selection",
+        "authorized-message-without-location-landmark-invitation",
+        "one-explicit-note-write",
+        "one-explicit-reply-inherits-parent-place-and-audience",
+        "explicit-emulated-geolocation-opt-in-and-pause",
+        "private-withdrawal-scrub",
+        "one-incumbent-world-and-socket"
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "dpr": 1,
+      "status": "PASS",
+      "checks": [
+        "keyboard-pan-home-end-landmark-focus-reveal-and-pointer-pan",
+        "native-browser-touch-pan",
+        "zoom-fit-reset",
+        "roving-tab-keyboard-selection",
+        "authorized-message-without-location-landmark-invitation",
+        "one-explicit-note-write",
+        "one-explicit-reply-inherits-parent-place-and-audience",
+        "explicit-emulated-geolocation-opt-in-and-pause",
+        "private-withdrawal-scrub",
+        "one-incumbent-world-and-socket"
+      ]
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "dpr": 1,
+      "status": "PASS",
+      "checks": [
+        "keyboard-pan-home-end-landmark-focus-reveal-and-pointer-pan",
+        "zoom-fit-reset",
+        "roving-tab-keyboard-selection",
+        "authorized-message-without-location-landmark-invitation",
+        "one-explicit-note-write",
+        "one-explicit-reply-inherits-parent-place-and-audience",
+        "explicit-emulated-geolocation-opt-in-and-pause",
+        "private-withdrawal-scrub",
+        "one-incumbent-world-and-socket"
+      ]
+    },
+    {
+      "width": 390,
+      "height": 420,
+      "dpr": 1,
+      "status": "PASS",
+      "checks": [
+        "keyboard-pan-home-end-landmark-focus-reveal-and-pointer-pan",
+        "zoom-fit-reset",
+        "roving-tab-keyboard-selection",
+        "authorized-message-without-location-landmark-invitation",
+        "one-explicit-note-write",
+        "one-explicit-reply-inherits-parent-place-and-audience",
+        "explicit-emulated-geolocation-opt-in-and-pause",
+        "private-withdrawal-scrub",
+        "one-incumbent-world-and-socket"
+      ]
+    }
+  ],
+  "images": [
+    {
+      "file": "360-800-map-overview.png",
+      "sha256": "f2c65ea6e41b16f4a419bada424aa566234db34823c72ffc5a232d6a3e4aed53",
+      "personallyInspected": true
+    },
+    {
+      "file": "360-800-friends.png",
+      "sha256": "b772b3a0d94189d405b5d78712adc175db717950b433880e14e321da407452ba",
+      "personallyInspected": true
+    },
+    {
+      "file": "360-800-friend-selected.png",
+      "sha256": "213a1ae9f86a7a49f20e97bcd970a6b21d2f2d892496463a81f6127c8cebf366",
+      "personallyInspected": true
+    },
+    {
+      "file": "360-800-notes.png",
+      "sha256": "4af6deff1dc3baf918ca95004a33c5a6aac674aaac299a9de6950795edbc6166",
+      "personallyInspected": true
+    },
+    {
+      "file": "360-800-note-composer.png",
+      "sha256": "90c27f2b33c6e184217c64f4096ef55b97e17a7dbe80ae28b8509f35ae7b1c8f",
+      "personallyInspected": true
+    },
+    {
+      "file": "360-800-unavailable.png",
+      "sha256": "48f9a8ebfd1670af211481b394c3b4463c6ff6978de0ca83867e05ed86ecb9bc",
+      "personallyInspected": true
+    },
+    {
+      "file": "390-844-map-overview.png",
+      "sha256": "33679991a0e9a603d70c3370378e6122ec5392029eee2c1552d70ea178476344",
+      "personallyInspected": true
+    },
+    {
+      "file": "390-844-friends.png",
+      "sha256": "128444ae199ee9a613a2c40b4f05df81f987a4b9ad44f940d5676b5ed5ea7424",
+      "personallyInspected": true
+    },
+    {
+      "file": "390-844-friend-selected.png",
+      "sha256": "8c1e4eb047d2d7e95b3ea49577cbb29e90384efbc31b698b0a675bafa3459567",
+      "personallyInspected": true
+    },
+    {
+      "file": "390-844-notes.png",
+      "sha256": "285727be65929ed0df9eda16de31067fde7504a31ea4f13752c2ce60735644dd",
+      "personallyInspected": true
+    },
+    {
+      "file": "390-844-note-composer.png",
+      "sha256": "1a588aad90fab2c049dcc1a6ffcea32dde66370915a9721d0fb0e87cec5406fc",
+      "personallyInspected": true
+    },
+    {
+      "file": "390-844-unavailable.png",
+      "sha256": "db79d782e4829e7ae0d4347bbe6e30a5179b27b56b1c4dad571ebfaa6af4d7bc",
+      "personallyInspected": true
+    },
+    {
+      "file": "390-844-friends-component.png",
+      "sha256": "043685f1c2ef6b488218b262868ad1a2ce5c16f696bced95b0cea8886e3c73c9",
+      "personallyInspected": true
+    },
+    {
+      "file": "390-844-notes-component.png",
+      "sha256": "a76a465177ded2f25173640a364d9308a2a3102be3daaeda21758c5aff7a4faf",
+      "personallyInspected": true
+    },
+    {
+      "file": "390-844-note-composer-component.png",
+      "sha256": "11b2abd747644145dbc13f78c77c1cb2917c4f92219000dcb51704c16ee2f041",
+      "personallyInspected": true
+    },
+    {
+      "file": "430-932-map-overview.png",
+      "sha256": "a57cea275b7c6b7ba746f71f82429e97d20b869461acb7472a142acdfeedc651",
+      "personallyInspected": true
+    },
+    {
+      "file": "430-932-friends.png",
+      "sha256": "46d85320494ba637030a5303345aeee00ab22398864fd2cd1c6f2a2256bac071",
+      "personallyInspected": true
+    },
+    {
+      "file": "430-932-friend-selected.png",
+      "sha256": "f40c8ea270095a780c83f219406b0b4e9cfcdee64cad7a43dc2600f84d5f1563",
+      "personallyInspected": true
+    },
+    {
+      "file": "430-932-notes.png",
+      "sha256": "2539bd777fe887203cd4100d0bd86ca9ef80b924b674a51ef2752eee70b371e9",
+      "personallyInspected": true
+    },
+    {
+      "file": "430-932-note-composer.png",
+      "sha256": "e81bd9920c750314cf34f039920ae46e0c5b49293f94b64742ea700c96806011",
+      "personallyInspected": true
+    },
+    {
+      "file": "430-932-unavailable.png",
+      "sha256": "913cc604567adf5358dc830fa18be5123dbdf7f03dcfd1ccc6ac4bd7801bee6c",
+      "personallyInspected": true
+    },
+    {
+      "file": "390-420-map-overview.png",
+      "sha256": "3b6114d40dce39f7d0073b41ddae8b6efa6bde67cf2bb6ff1f1294e885086345",
+      "personallyInspected": true
+    },
+    {
+      "file": "390-420-friends.png",
+      "sha256": "8b6732154d606193b7b0d7cd219813a6b84fbeb13850d58a949c912a2815e7d8",
+      "personallyInspected": true
+    },
+    {
+      "file": "390-420-friend-selected.png",
+      "sha256": "25a93cd308f30a54b7bfc773162b62999ade5f3f80e7c3cb46571701f0c0ad71",
+      "personallyInspected": true
+    },
+    {
+      "file": "390-420-notes.png",
+      "sha256": "64c73a7d473c83992bde10df3104a7c430fa4ee6c87cd1f6ad6a59834f695a0b",
+      "personallyInspected": true
+    },
+    {
+      "file": "390-420-note-composer.png",
+      "sha256": "e908af187c2a0bb8127eecce7bab0ec4482164015b99618fb948142298b0c219",
+      "personallyInspected": true
+    },
+    {
+      "file": "390-420-unavailable.png",
+      "sha256": "1f8fd059291ca37319d8ce9c821d24843e1e6160f5d2088c13ff61f7a464b82f",
+      "personallyInspected": true
+    }
+  ],
+  "comparisonContactSheet": {
+    "file": "reference-comparison-contact-sheet.png",
+    "sha256": "72b2f30ca212d25363d2a986a78650b2bacbd936e9f659b363518dca14d9f9a3",
+    "personallyInspected": true
+  },
+  "comparisons": [
+    {
+      "state": "friends",
+      "referenceROI": [
+        466,
+        438,
+        851,
+        518
+      ],
+      "widthScale": 0.9298701298701298,
+      "referenceScaledHeight": 74,
+      "candidateHeight": 79,
+      "personallyInspected": true,
+      "disposition": "DESCRIPTIVE_COMPARISON_NOT_PIXEL_PASS"
+    },
+    {
+      "state": "notes",
+      "referenceROI": [
+        36,
+        593,
+        417,
+        724
+      ],
+      "widthScale": 0.9291338582677166,
+      "referenceScaledHeight": 122,
+      "candidateHeight": 209,
+      "personallyInspected": true,
+      "disposition": "DESCRIPTIVE_COMPARISON_NOT_PIXEL_PASS"
+    },
+    {
+      "state": "note-composer",
+      "referenceROI": [
+        447,
+        378,
+        830,
+        748
+      ],
+      "widthScale": 0.9608355091383812,
+      "referenceScaledHeight": 356,
+      "candidateHeight": 410,
+      "personallyInspected": true,
+      "disposition": "DESCRIPTIVE_COMPARISON_NOT_PIXEL_PASS"
+    }
+  ],
+  "findings": [
+    "Original Notes sharing-bar interception is corrected: +NEWNOTE, composer, one post and one reply completed in all four contexts without force clicks.",
+    "All24 viewport frames and3 components inspected. Short-height views scroll to actions; their captures expose original partial framing rather than concealing it.",
+    "Friends row79px versus uniformly scaled74px reference; approved canonical character and named synthetic freshness/body differ from original variable data.",
+    "Notes209px versus scaled122px reference: separate explicit READ REPLIES action and two-line body contribute material excess height. No parity acceptance.",
+    "Composer410px versus scaled356px reference: textarea and spacing are materially taller; planned bounded CSS iteration.",
+    "Missing end-of-day policy remains disabled; unavailable Meeting actions do not invent producer authority."
+  ],
+  "limits": [
+    "TEST_ONLY actual main/Auth/WorldShell/realPhaser composition, synthetic services/capabilities/policy/emulatedGPS; not default Root or physical/live qualification.",
+    "Final incumbent/canvas/socket assertions did run and passed in this round, unlike retained Native10.",
+    "Actual204 conversation/invitation leaf UI remains separate; no48-case/wholeVENU/defaultRoot claim.",
+    "Raw generated comparisons retain their original PENDING labels; this additive owner record supplies actual inspection without rewriting raw evidence."
+  ]
+}

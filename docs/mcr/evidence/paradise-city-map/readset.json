@@ -2,7 +2,7 @@
   "task": "PARADISECITY-MAP-FRIENDS-NOTES",
   "base": "5e28dc35dda0126ca5463f810f06eda8a56dc38f",
   "classification": "UNQUALIFIED_FROZEN_CONSUMER_CANDIDATE",
-  "priorWholeHighWaterBytes": 6803927040,
+  "priorWholeHighWaterBytes": 6833782784,
   "spatialTypeInput": {
     "commit": "4f94914d06d54c3b465930cc23d40be91a1255cb",
     "pinsDeclaredIn": "docs/mcr/evidence/paradise-city-map/typecheck.mjs",
@@ -1216,8 +1216,8 @@
     },
     {
       "path": "docs/mcr/evidence/paradise-city-map/finite.py",
-      "bytes": 11568,
-      "sha256": "6ebd63cf60b44aceb77659b98b067aa469eff4a8613cd482838f8220d1ac4ef3"
+      "bytes": 11576,
+      "sha256": "4e51cc0193022e0330efcc57fc63fa14fd3c370977c4fde929facf46a06c6063"
     },
     {
       "path": "docs/mcr/evidence/paradise-city-map/guardian.py",
@@ -1237,7 +1237,7 @@
     {
       "path": "docs/mcr/evidence/paradise-city-map/prepare.py",
       "bytes": 4010,
-      "sha256": "c7d293a82f39ae8d4a63763f623281947aa394d9478d376057258f96cd736105"
+      "sha256": "63de0d11246c69c93d728237e6c60ed9e05779cb122458f94bbca79a5e4a54eb"
     },
     {
       "path": "docs/mcr/evidence/paradise-city-map/typecheck.mjs",
