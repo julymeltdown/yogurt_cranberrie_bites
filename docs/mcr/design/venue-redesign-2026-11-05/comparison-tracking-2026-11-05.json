@@ -1,0 +1,1021 @@
+{
+  "schemaVersion": 1,
+  "snapshotAt": "2026-11-05T02:19:51.799760+00:00",
+  "purpose": "Ongoing source/publication dispositions and first new venue comparison tracking; not a task-progress denominator or acceptance gate.",
+  "evidenceBasis": {
+    "kind": "Responsible-owner reports and canonical publication receipts; local Git ancestry and own documentation metadata checks only.",
+    "latestLocalCanonicalHead": "41d90738e3941cdfc663d00551e0f7db2cd3aa4f",
+    "ownerReportThreads": [
+      "01a1a385-9f32-73c2-8715-ff54bd1e0497",
+      "01a1a5d9-332b-7822-a8f7-412e295fa211",
+      "01a1a5d9-332b-7822-a8f7-40fde6c81bb4",
+      "01a1a26e-1de2-7b41-a294-c9a79cfded9b",
+      "01a1a204-c583-7670-965a-4891b8b1289e"
+    ],
+    "implementationInspectionByDocumentationOwner": "NOT_RUN; no code/query/test-output/image/pixel review or rerun.",
+    "snapshotLimit": "Statuses are observations, not a claim that no later handoff exists. Update on a substantive responsible-owner delivery."
+  },
+  "authority": {
+    "flows": "../../progressions.md",
+    "scopeRegister": "../../venue-feature-amendment-2026-11-05.md",
+    "stateMap": "reference-state-map.json",
+    "stateMapSHA256": "1245fb779a0a01611419b167f73db48ce1c37b69892c8b0a4a7dfbf159ed3e04",
+    "manifest": "reference-manifest.json",
+    "stableCaseCount": 48,
+    "primaryRoles": "Provisional Photo 5 map / Photo 9 Friends / Photo 10 Notes / Photo 2 meeting anatomy; retain alternatives separately."
+  },
+  "deliveryObjective": {
+    "objective": "Maintain Progressions with substantive responsible-owner implementation/publication outcomes and a truthful per-case reference comparison record; preserve all supplied originals and stable case IDs; validate only owned documentation metadata, commit exact paths, resolve publication fixes and obtain a canonical standing-publisher receipt.",
+    "tokenBudget": null,
+    "criteria": [
+      "Published source/asset/contracts are distinguished from whole implementation and comparison acceptance.",
+      "All 48 case IDs and source hashes are preserved; no measured ROI/capture/parity is invented.",
+      "All ten JPEGs, existing state-map/manifest/validation and central five files remain unchanged.",
+      "Only owned document and new comparison metadata pass bounded JSON/path/hash/scope checks.",
+      "Scoped immutable handoff and fixes reach canonical master through publisher412e without King/SL review acknowledgment."
+    ],
+    "historicalPersistentGoal": {
+      "actualStatus": "blocked",
+      "relationship": "Incompatible historical background-integration goal remains unfinished and unchanged; no reset, pause or false completion."
+    },
+    "ongoingUpdatePolicy": "Batch the next substantive responsible-owner handoff; no filler/proof-only commit, extra native cohort or waiting-only goal."
+  },
+  "resourceBooking": {
+    "id": "PROGRESSIONS-DOC20-0215",
+    "actualOrdinaryAcceptAt": "2026-11-05T02:19:51.799760+00:00",
+    "expiresAt": "2026-11-05T03:00:00+00:00",
+    "positiveGrowthUpperBytes": 20971520,
+    "priorClosedPositiveUpperBytes": [
+      16777216,
+      8388608
+    ],
+    "retainedRootUnionFloorBytes": 3340685312,
+    "freeBytesAtAdmission": 23974477824,
+    "ordinaryAggregateUpperBytes": 2684354560,
+    "noDeletionOrResetCredits": true,
+    "operations": "Ordinary document/JSON authoring, hashes, paths and scoped Git only; no application, image/pixel inspection, test or browser workflow.",
+    "observation": {
+      "pid": 90850,
+      "actualOSProcess": "90850 Thu Nov  5 11:19:51 2026     /Library/Frameworks/Python.framework/Versions/3.14/Resources/Python.app/Contents/MacOS/Python",
+      "cwd": "/Users/lhs/.codex/worktrees/2a57/mcr",
+      "script": "Python stdin document-authoring cell",
+      "role": "ordinary documentation author; no G/S/B/T workflow reservation claimed"
+    }
+  },
+  "ownerDispositions": [
+    {
+      "id": "reference-packet",
+      "owner": "UI533 documentation owner",
+      "ownerThreadId": "01a1a533-0644-7ef0-9ee8-9f1755817fb9",
+      "publication": "PUBLISHED_VERIFIED",
+      "canonicalCommit": "6ff3e481cfcf820c2e14a9a670ae2dc3bffc9afb",
+      "disposition": "Product flows, ten byte-original JPEGs, provenance and 48 state cases published.",
+      "qualificationBoundary": "Documentation and metadata only. No application comparison or VENU acceptance."
+    },
+    {
+      "id": "venue-art",
+      "owner": "ART231 source/asset/interface owner",
+      "ownerThreadId": "01a1a231-0dc4-7b50-92bd-c0f0f56bd970",
+      "publication": "PUBLISHED_VERIFIED",
+      "canonicalCommit": "fcd0780537eb9f724a1f130523f02656e1be9ee6",
+      "disposition": "Qualified exact Photo 5 source asset and asset interface; 22 illustrated image-pixel anchor candidates.",
+      "qualificationBoundary": "Source/asset/interface only; illustrated and uncalibrated. No integrated App, GPS transform, real-place permission, arrival, live queue or device acceptance."
+    },
+    {
+      "id": "location-contract",
+      "owner": "L01 backend producer (16e), coordinated by Root1fc",
+      "coordinatorThreadId": "01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08",
+      "publication": "PUBLISHED_VERIFIED",
+      "canonicalCommit": "217c52c25180217b9fd1264af9b8cae52ec88a1a",
+      "disposition": "Owner-reported source/schema/protoc qualification.",
+      "qualificationBoundary": "Contract qualification only; no service, phone permission/location, friendship/privacy integration or real-device acceptance."
+    },
+    {
+      "id": "notes-contract",
+      "owner": "N01 backend producer (backend 213), coordinated by Root1fc",
+      "coordinatorThreadId": "01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08",
+      "publication": "PUBLISHED_VERIFIED",
+      "canonicalCommit": "8d4561d9291274f867fc921ba8ed4c28790a85a7",
+      "disposition": "Owner-reported schema qualification and protoc parse.",
+      "qualificationBoundary": "Contract qualification only; actual routing, producer policy, persistence, expiry, cleanup and device flows remain open."
+    },
+    {
+      "id": "meeting-contract",
+      "owner": "M01 backend producer (b91d), coordinated by Root1fc",
+      "coordinatorThreadId": "01a1a1fc-7f3d-7ff1-9416-e3435c8a6f08",
+      "publication": "PUBLISHED_VERIFIED",
+      "canonicalCommit": "574b3e5a2a4533d70da3236b2c42c465a32e34a4",
+      "disposition": "Owner-reported limited source/structure qualification; historical overall resource/source failure is retained.",
+      "qualificationBoundary": "No whole-source-round, full semantic/protoc/generator/Rust/Gateway/service/device qualification. Selected-friend/event MESSAGE has no landmark, location, check-in or invitation prerequisite."
+    },
+    {
+      "id": "map-consumer",
+      "owner": "UI40fde Map/Friends/Notes consumer",
+      "ownerThreadId": "01a1a5d9-332b-7822-a8f7-40fde6c81bb4",
+      "publication": "NOT_CONFIRMED_FOR_WHOLE_FEATURE",
+      "implementationState": "IN_PROGRESS",
+      "disposition": "Responsible owner reports 42 consumer tests and 11 resource regressions passed. Finishing type/lint attempts remain interrupted or unresolved; new native comparison remains unfinished.",
+      "sourceDependencyHandoff": {
+        "sourcePin": "647c18e",
+        "scope": "Exact feature ports source-only handoff; independent of whole consumer qualification.",
+        "publication": "HANDOFF_REPORTED_NOT_YET_CANONICALLY_CONFIRMED"
+      },
+      "qualificationBoundary": "No whole Map, new native comparison, live GPS/service or device acceptance. Resource-round failures retain their original status."
+    },
+    {
+      "id": "spatial-implementation",
+      "owner": "Spatial26e image-space model/loader/viewport owner",
+      "ownerThreadId": "01a1a26e-1de2-7b41-a294-c9a79cfded9b",
+      "publication": "NOT_CONFIRMED_FOR_WHOLE_FEATURE",
+      "implementationState": "IN_PROGRESS",
+      "disposition": "Responsible owner reports seven new loader/product checks passed, with other retained bounded checks; current finishing types/lint remain open.",
+      "sourceDependencyHandoff": {
+        "sourceCommit": "998db81eae683142f0417abb6648ed6b86212b6f",
+        "scope": "Only frozen spatial/contract.ts interface",
+        "sha256": "bbf13c1623c2bf06570705287dd2e670bf5a665739d39a586fe1cc93fff77fec",
+        "publication": "HANDOFF_REPORTED_NOT_YET_CANONICALLY_CONFIRMED",
+        "qualificationBoundary": "Retained bounded type/test evidence; known lint warning. No whole spatial implementation/native acceptance."
+      },
+      "qualificationBoundary": "Source-only interface handoff does not qualify newer spatial implementation, physical projection or App comparison."
+    },
+    {
+      "id": "community-invitation-conversation",
+      "owner": "FE204 granted invitation/contextual-conversation leaf",
+      "ownerThreadId": "01a1a204-c583-7670-965a-4891b8b1289e",
+      "publication": "HANDOFF_REPORTED_NOT_YET_CANONICALLY_CONFIRMED",
+      "implementationState": "CONTRACT_READY",
+      "sourceProductHandoff": "3cfb7cce3",
+      "curatedDocumentationSuccessor": "4e0de94607964387392f6c0ac427051b2edfaa3d",
+      "disposition": "Responsible owner reports 45 tests, strict types and scoped lint exited zero against exact pinned ports/spatial inputs. Source-only leaf handoff sent; producer dependencies and actual Root wire integration remain open.",
+      "qualificationBoundary": "Historical source resource admission omitted complete global membership and the full Python framework; no retroactive resource PASS. Native control changes remain prospective; no browser/reference/live/device acceptance."
+    }
+  ],
+  "comparisonSummary": {
+    "firstNewVenueActualAppComparison": "NOT_RUN",
+    "totalStableCases": 48,
+    "casesWithMeasuredROI": 0,
+    "casesWithPairedEvidence": 0,
+    "materialParity": "NOT_MEASURED",
+    "serviceAndDeviceAcceptance": "NOT_RUN_OR_OPEN_PER_IMPLEMENTATION_OWNER",
+    "acceptanceAuthority": "Responsible implementation owners inspect/fix matching-state native comparisons. No King/SL code or pixel review/ACK stage."
+  },
+  "caseComparisons": [
+    {
+      "caseId": "P01-whole-plan",
+      "sourcePhoto": 1,
+      "sourceSHA256": "2366e1ce7e76e3b5932879d0602a8642dc36775dbd41b4378945ed838a4aa9b3",
+      "referenceRole": "whole-site fenced alternative",
+      "comparisonTargetRole": "RETAINED_ALTERNATIVE",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P04-whole-plan",
+      "sourcePhoto": 4,
+      "sourceSHA256": "4347ef9ba4f13c22e3575c80e9ff0eecd2aa569678e49223170a4b2491e589eb",
+      "referenceRole": "whole-site fenced alternative",
+      "comparisonTargetRole": "RETAINED_ALTERNATIVE",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P05-whole-plan",
+      "sourcePhoto": 5,
+      "sourceSHA256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+      "referenceRole": "PROVISIONAL primary base map",
+      "comparisonTargetRole": "PROVISIONAL_PRIMARY",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P02-selected-friend",
+      "sourcePhoto": 2,
+      "sourceSHA256": "f7d841c815dfbf85b48b7e61a06106b9edab195e7bfbd4d37b78d8b23e610ac1",
+      "referenceRole": "meeting and contextual conversation anatomy; alternate fenced map background",
+      "comparisonTargetRole": "PROVISIONAL_PRIMARY",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P02-meeting-conversation",
+      "sourcePhoto": 2,
+      "sourceSHA256": "f7d841c815dfbf85b48b7e61a06106b9edab195e7bfbd4d37b78d8b23e610ac1",
+      "referenceRole": "meeting and contextual conversation anatomy; alternate fenced map background",
+      "comparisonTargetRole": "PROVISIONAL_PRIMARY",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4",
+        "01a1a204-c583-7670-965a-4891b8b1289e"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P02-place-card",
+      "sourcePhoto": 2,
+      "sourceSHA256": "f7d841c815dfbf85b48b7e61a06106b9edab195e7bfbd4d37b78d8b23e610ac1",
+      "referenceRole": "meeting and contextual conversation anatomy; alternate fenced map background",
+      "comparisonTargetRole": "PROVISIONAL_PRIMARY",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P02-friend-freshness",
+      "sourcePhoto": 2,
+      "sourceSHA256": "f7d841c815dfbf85b48b7e61a06106b9edab195e7bfbd4d37b78d8b23e610ac1",
+      "referenceRole": "meeting and contextual conversation anatomy; alternate fenced map background",
+      "comparisonTargetRole": "PROVISIONAL_PRIMARY",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P02-fixed-vs-moving",
+      "sourcePhoto": 2,
+      "sourceSHA256": "f7d841c815dfbf85b48b7e61a06106b9edab195e7bfbd4d37b78d8b23e610ac1",
+      "referenceRole": "meeting and contextual conversation anatomy; alternate fenced map background",
+      "comparisonTargetRole": "PROVISIONAL_PRIMARY",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P02-pending-invite",
+      "sourcePhoto": 2,
+      "sourceSHA256": "f7d841c815dfbf85b48b7e61a06106b9edab195e7bfbd4d37b78d8b23e610ac1",
+      "referenceRole": "meeting and contextual conversation anatomy; alternate fenced map background",
+      "comparisonTargetRole": "PROVISIONAL_PRIMARY",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4",
+        "01a1a204-c583-7670-965a-4891b8b1289e"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P03-notes-map-list",
+      "sourcePhoto": 3,
+      "sourceSHA256": "ddaf9da28fc517eb01588f725678a20045b3d52f0ca71d24d38b194a8b269423",
+      "referenceRole": "notes alternative",
+      "comparisonTargetRole": "RETAINED_ALTERNATIVE",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P03-composer",
+      "sourcePhoto": 3,
+      "sourceSHA256": "ddaf9da28fc517eb01588f725678a20045b3d52f0ca71d24d38b194a8b269423",
+      "referenceRole": "notes alternative",
+      "comparisonTargetRole": "RETAINED_ALTERNATIVE",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P03-marker-taxonomy",
+      "sourcePhoto": 3,
+      "sourceSHA256": "ddaf9da28fc517eb01588f725678a20045b3d52f0ca71d24d38b194a8b269423",
+      "referenceRole": "notes alternative",
+      "comparisonTargetRole": "RETAINED_ALTERNATIVE",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P03-place-note-card",
+      "sourcePhoto": 3,
+      "sourceSHA256": "ddaf9da28fc517eb01588f725678a20045b3d52f0ca71d24d38b194a8b269423",
+      "referenceRole": "notes alternative",
+      "comparisonTargetRole": "RETAINED_ALTERNATIVE",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P03-audience-selector",
+      "sourcePhoto": 3,
+      "sourceSHA256": "ddaf9da28fc517eb01588f725678a20045b3d52f0ca71d24d38b194a8b269423",
+      "referenceRole": "notes alternative",
+      "comparisonTargetRole": "RETAINED_ALTERNATIVE",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P03-expiry-selector",
+      "sourcePhoto": 3,
+      "sourceSHA256": "ddaf9da28fc517eb01588f725678a20045b3d52f0ca71d24d38b194a8b269423",
+      "referenceRole": "notes alternative",
+      "comparisonTargetRole": "RETAINED_ALTERNATIVE",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P03-inline-reply",
+      "sourcePhoto": 3,
+      "sourceSHA256": "ddaf9da28fc517eb01588f725678a20045b3d52f0ca71d24d38b194a8b269423",
+      "referenceRole": "notes alternative",
+      "comparisonTargetRole": "RETAINED_ALTERNATIVE",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P06-notes-map-list",
+      "sourcePhoto": 6,
+      "sourceSHA256": "4a0e2229ce68d447f25656cab392d982822d868dfb1123caef28be82b16d07e3",
+      "referenceRole": "notes alternative",
+      "comparisonTargetRole": "RETAINED_ALTERNATIVE",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P06-composer",
+      "sourcePhoto": 6,
+      "sourceSHA256": "4a0e2229ce68d447f25656cab392d982822d868dfb1123caef28be82b16d07e3",
+      "referenceRole": "notes alternative",
+      "comparisonTargetRole": "RETAINED_ALTERNATIVE",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P06-marker-taxonomy",
+      "sourcePhoto": 6,
+      "sourceSHA256": "4a0e2229ce68d447f25656cab392d982822d868dfb1123caef28be82b16d07e3",
+      "referenceRole": "notes alternative",
+      "comparisonTargetRole": "RETAINED_ALTERNATIVE",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P06-place-note-card",
+      "sourcePhoto": 6,
+      "sourceSHA256": "4a0e2229ce68d447f25656cab392d982822d868dfb1123caef28be82b16d07e3",
+      "referenceRole": "notes alternative",
+      "comparisonTargetRole": "RETAINED_ALTERNATIVE",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P06-audience-selector",
+      "sourcePhoto": 6,
+      "sourceSHA256": "4a0e2229ce68d447f25656cab392d982822d868dfb1123caef28be82b16d07e3",
+      "referenceRole": "notes alternative",
+      "comparisonTargetRole": "RETAINED_ALTERNATIVE",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P06-expiry-selector",
+      "sourcePhoto": 6,
+      "sourceSHA256": "4a0e2229ce68d447f25656cab392d982822d868dfb1123caef28be82b16d07e3",
+      "referenceRole": "notes alternative",
+      "comparisonTargetRole": "RETAINED_ALTERNATIVE",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P06-inline-reply",
+      "sourcePhoto": 6,
+      "sourceSHA256": "4a0e2229ce68d447f25656cab392d982822d868dfb1123caef28be82b16d07e3",
+      "referenceRole": "notes alternative",
+      "comparisonTargetRole": "RETAINED_ALTERNATIVE",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P10-notes-map-list",
+      "sourcePhoto": 10,
+      "sourceSHA256": "1f0e133be3a4bf999fb7871188cce67086d09106a095c266b74e648a67777f63",
+      "referenceRole": "PROVISIONAL primary notes states",
+      "comparisonTargetRole": "PROVISIONAL_PRIMARY",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P10-composer",
+      "sourcePhoto": 10,
+      "sourceSHA256": "1f0e133be3a4bf999fb7871188cce67086d09106a095c266b74e648a67777f63",
+      "referenceRole": "PROVISIONAL primary notes states",
+      "comparisonTargetRole": "PROVISIONAL_PRIMARY",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P10-marker-taxonomy",
+      "sourcePhoto": 10,
+      "sourceSHA256": "1f0e133be3a4bf999fb7871188cce67086d09106a095c266b74e648a67777f63",
+      "referenceRole": "PROVISIONAL primary notes states",
+      "comparisonTargetRole": "PROVISIONAL_PRIMARY",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P10-place-note-card",
+      "sourcePhoto": 10,
+      "sourceSHA256": "1f0e133be3a4bf999fb7871188cce67086d09106a095c266b74e648a67777f63",
+      "referenceRole": "PROVISIONAL primary notes states",
+      "comparisonTargetRole": "PROVISIONAL_PRIMARY",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P10-audience-selector",
+      "sourcePhoto": 10,
+      "sourceSHA256": "1f0e133be3a4bf999fb7871188cce67086d09106a095c266b74e648a67777f63",
+      "referenceRole": "PROVISIONAL primary notes states",
+      "comparisonTargetRole": "PROVISIONAL_PRIMARY",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P10-expiry-selector",
+      "sourcePhoto": 10,
+      "sourceSHA256": "1f0e133be3a4bf999fb7871188cce67086d09106a095c266b74e648a67777f63",
+      "referenceRole": "PROVISIONAL primary notes states",
+      "comparisonTargetRole": "PROVISIONAL_PRIMARY",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P10-inline-reply",
+      "sourcePhoto": 10,
+      "sourceSHA256": "1f0e133be3a4bf999fb7871188cce67086d09106a095c266b74e648a67777f63",
+      "referenceRole": "PROVISIONAL primary notes states",
+      "comparisonTargetRole": "PROVISIONAL_PRIMARY",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P07-map-overview",
+      "sourcePhoto": 7,
+      "sourceSHA256": "6b1ecf2806588f29ad7e3f3da8e7a36fcfb392a2640be33ce6de006f8c8a13ce",
+      "referenceRole": "friends alternative",
+      "comparisonTargetRole": "RETAINED_ALTERNATIVE",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P07-friends-list",
+      "sourcePhoto": 7,
+      "sourceSHA256": "6b1ecf2806588f29ad7e3f3da8e7a36fcfb392a2640be33ce6de006f8c8a13ce",
+      "referenceRole": "friends alternative",
+      "comparisonTargetRole": "RETAINED_ALTERNATIVE",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P07-marker-taxonomy",
+      "sourcePhoto": 7,
+      "sourceSHA256": "6b1ecf2806588f29ad7e3f3da8e7a36fcfb392a2640be33ce6de006f8c8a13ce",
+      "referenceRole": "friends alternative",
+      "comparisonTargetRole": "RETAINED_ALTERNATIVE",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P07-freshness-formats",
+      "sourcePhoto": 7,
+      "sourceSHA256": "6b1ecf2806588f29ad7e3f3da8e7a36fcfb392a2640be33ce6de006f8c8a13ce",
+      "referenceRole": "friends alternative",
+      "comparisonTargetRole": "RETAINED_ALTERNATIVE",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P07-selected-friend",
+      "sourcePhoto": 7,
+      "sourceSHA256": "6b1ecf2806588f29ad7e3f3da8e7a36fcfb392a2640be33ce6de006f8c8a13ce",
+      "referenceRole": "friends alternative",
+      "comparisonTargetRole": "RETAINED_ALTERNATIVE",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P07-sharing-control",
+      "sourcePhoto": 7,
+      "sourceSHA256": "6b1ecf2806588f29ad7e3f3da8e7a36fcfb392a2640be33ce6de006f8c8a13ce",
+      "referenceRole": "friends alternative",
+      "comparisonTargetRole": "RETAINED_ALTERNATIVE",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P08-map-overview",
+      "sourcePhoto": 8,
+      "sourceSHA256": "2a35eacdfa5c23aaa159a866d1e8fae092ab1279a2a4a5bfa990bc7b1999531d",
+      "referenceRole": "friends alternative",
+      "comparisonTargetRole": "RETAINED_ALTERNATIVE",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P08-friends-list",
+      "sourcePhoto": 8,
+      "sourceSHA256": "2a35eacdfa5c23aaa159a866d1e8fae092ab1279a2a4a5bfa990bc7b1999531d",
+      "referenceRole": "friends alternative",
+      "comparisonTargetRole": "RETAINED_ALTERNATIVE",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P08-marker-taxonomy",
+      "sourcePhoto": 8,
+      "sourceSHA256": "2a35eacdfa5c23aaa159a866d1e8fae092ab1279a2a4a5bfa990bc7b1999531d",
+      "referenceRole": "friends alternative",
+      "comparisonTargetRole": "RETAINED_ALTERNATIVE",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P08-freshness-formats",
+      "sourcePhoto": 8,
+      "sourceSHA256": "2a35eacdfa5c23aaa159a866d1e8fae092ab1279a2a4a5bfa990bc7b1999531d",
+      "referenceRole": "friends alternative",
+      "comparisonTargetRole": "RETAINED_ALTERNATIVE",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P08-selected-friend",
+      "sourcePhoto": 8,
+      "sourceSHA256": "2a35eacdfa5c23aaa159a866d1e8fae092ab1279a2a4a5bfa990bc7b1999531d",
+      "referenceRole": "friends alternative",
+      "comparisonTargetRole": "RETAINED_ALTERNATIVE",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P08-sharing-control",
+      "sourcePhoto": 8,
+      "sourceSHA256": "2a35eacdfa5c23aaa159a866d1e8fae092ab1279a2a4a5bfa990bc7b1999531d",
+      "referenceRole": "friends alternative",
+      "comparisonTargetRole": "RETAINED_ALTERNATIVE",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P09-map-overview",
+      "sourcePhoto": 9,
+      "sourceSHA256": "2c9a8a240495467c9b03a0cce445515f3b879c6e2aef4bc0a366f1aa855051a9",
+      "referenceRole": "PROVISIONAL primary friends states",
+      "comparisonTargetRole": "PROVISIONAL_PRIMARY",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P09-friends-list",
+      "sourcePhoto": 9,
+      "sourceSHA256": "2c9a8a240495467c9b03a0cce445515f3b879c6e2aef4bc0a366f1aa855051a9",
+      "referenceRole": "PROVISIONAL primary friends states",
+      "comparisonTargetRole": "PROVISIONAL_PRIMARY",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P09-marker-taxonomy",
+      "sourcePhoto": 9,
+      "sourceSHA256": "2c9a8a240495467c9b03a0cce445515f3b879c6e2aef4bc0a366f1aa855051a9",
+      "referenceRole": "PROVISIONAL primary friends states",
+      "comparisonTargetRole": "PROVISIONAL_PRIMARY",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P09-freshness-formats",
+      "sourcePhoto": 9,
+      "sourceSHA256": "2c9a8a240495467c9b03a0cce445515f3b879c6e2aef4bc0a366f1aa855051a9",
+      "referenceRole": "PROVISIONAL primary friends states",
+      "comparisonTargetRole": "PROVISIONAL_PRIMARY",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P09-selected-friend",
+      "sourcePhoto": 9,
+      "sourceSHA256": "2c9a8a240495467c9b03a0cce445515f3b879c6e2aef4bc0a366f1aa855051a9",
+      "referenceRole": "PROVISIONAL primary friends states",
+      "comparisonTargetRole": "PROVISIONAL_PRIMARY",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    },
+    {
+      "caseId": "P09-sharing-control",
+      "sourcePhoto": 9,
+      "sourceSHA256": "2c9a8a240495467c9b03a0cce445515f3b879c6e2aef4bc0a366f1aa855051a9",
+      "referenceRole": "PROVISIONAL primary friends states",
+      "comparisonTargetRole": "PROVISIONAL_PRIMARY",
+      "responsibleOwnerThreadIds": [
+        "01a1a5d9-332b-7822-a8f7-40fde6c81bb4"
+      ],
+      "ownershipNote": "Existing grants govern; this record creates no new writer or verification assignment.",
+      "comparisonStatus": "NOT_RUN",
+      "sourceROI": null,
+      "actualViewport": null,
+      "pairedEvidence": [],
+      "materialDifferences": null,
+      "acceptance": "OPEN_NOT_MEASURED"
+    }
+  ],
+  "scopePreservation": {
+    "originalRequiredTaskIDs": 112,
+    "originalRequiredIAEntries": 61,
+    "additionalRequiredVenuDeliverables": 8,
+    "additionalVenuIAStates": 10,
+    "newVenuOutcomesClosedByThisDocument": 0,
+    "QA08": "DEFERRED_BY_USER retained; no change",
+    "centralCounters": "Read-only; no new completion or denominator reconciliation asserted.",
+    "preservedPacketPreimageSHA256": {
+      "docs/mcr/design/venue-redesign-2026-11-05/photo-02.jpg": "f7d841c815dfbf85b48b7e61a06106b9edab195e7bfbd4d37b78d8b23e610ac1",
+      "docs/mcr/design/venue-redesign-2026-11-05/photo-03.jpg": "ddaf9da28fc517eb01588f725678a20045b3d52f0ca71d24d38b194a8b269423",
+      "docs/mcr/design/venue-redesign-2026-11-05/photo-01.jpg": "2366e1ce7e76e3b5932879d0602a8642dc36775dbd41b4378945ed838a4aa9b3",
+      "docs/mcr/design/venue-redesign-2026-11-05/reference-state-map.json": "1245fb779a0a01611419b167f73db48ce1c37b69892c8b0a4a7dfbf159ed3e04",
+      "docs/mcr/design/venue-redesign-2026-11-05/photo-04.jpg": "4347ef9ba4f13c22e3575c80e9ff0eecd2aa569678e49223170a4b2491e589eb",
+      "docs/mcr/design/venue-redesign-2026-11-05/photo-10.jpg": "1f0e133be3a4bf999fb7871188cce67086d09106a095c266b74e648a67777f63",
+      "docs/mcr/design/venue-redesign-2026-11-05/photo-05.jpg": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+      "docs/mcr/design/venue-redesign-2026-11-05/photo-07.jpg": "6b1ecf2806588f29ad7e3f3da8e7a36fcfb392a2640be33ce6de006f8c8a13ce",
+      "docs/mcr/design/venue-redesign-2026-11-05/photo-06.jpg": "4a0e2229ce68d447f25656cab392d982822d868dfb1123caef28be82b16d07e3",
+      "docs/mcr/design/venue-redesign-2026-11-05/validation.json": "e659b086a24e7e6b1d9b8381bc5eccfcece1371e5c1545675cf2d0bd47e08562",
+      "docs/mcr/design/venue-redesign-2026-11-05/reference-manifest.json": "714155ac995da2a01edda5d6e318ca5d762e23036ccd5887035d16ea4b674309",
+      "docs/mcr/design/venue-redesign-2026-11-05/photo-08.jpg": "2a35eacdfa5c23aaa159a866d1e8fae092ab1279a2a4a5bfa990bc7b1999531d",
+      "docs/mcr/design/venue-redesign-2026-11-05/photo-09.jpg": "2c9a8a240495467c9b03a0cce445515f3b879c6e2aef4bc0a366f1aa855051a9"
+    }
+  },
+  "ownDocumentationValidation": {
+    "checkedAt": "2026-11-05T02:19:51.982007+00:00",
+    "exitCode": 0,
+    "preservedExistingPacketFiles": 13,
+    "originalJPEGCount": 10,
+    "stableCaseIDs": 48,
+    "allExistingPacketSHA256": "UNCHANGED",
+    "caseIdentityAndReferenceHashes": "PASS",
+    "allSourceROINull": "PASS",
+    "noPairedCaptureOrParityInvented": "PASS",
+    "documentLinks": "RESOLVE_LOCALLY_OR_AT_RECORDED_CANONICAL_HEAD",
+    "originalDocsSourceTrackedDiff": "EMPTY",
+    "scope": "Only Progressions and NEW comparison-tracking metadata; central five unchanged.",
+    "applicationOrImageValidation": "NOT_RUN"
+  }
+}
