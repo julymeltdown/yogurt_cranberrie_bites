@@ -1,0 +1,12 @@
+--- a/frontend/src/shared/api/http.ts
++++ b/frontend/src/shared/api/http.ts
+@@ -2 +2 @@
+-import { domainOperation, matchesDomainRequest } from './domain'
++import { domainOperation, matchesDomainRequest, matchesVenueLandmarkRequest } from './domain'
+@@ -136,2 +136,4 @@
+-  // Plain route segments only: no normalization, encoded traversal, query, fragment or old prefix.
+-  if (!/^\/api\/[A-Za-z0-9_-]+(?:\/[A-Za-z0-9_-]+)*$/.test(path)
++  // Preserve the legacy grammar; only exact registered landmark routes extend it.
++  const venuePath = access === 'protected' && request.errorFamily === 'domain'
++    && matchesVenueLandmarkRequest(request.domainOperation, method, path, request.query)
++  if ((!/^\/api\/[A-Za-z0-9_-]+(?:\/[A-Za-z0-9_-]+)*$/.test(path) && !venuePath)

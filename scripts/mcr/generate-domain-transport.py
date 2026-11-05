@@ -3,6 +3,8 @@
 import argparse
 import hashlib
 import json
+import runpy
+import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -52,6 +54,7 @@ def query_schema(schema):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--check", action="store_true")
+    parser.add_argument("--venue-only", action="store_true", help="Preserve the frozen existing registry; project only standalone venue additions")
     args = parser.parse_args()
     operations, queries, errors = {}, {}, {}
     for op in read(SOURCE / "operations.json"):
@@ -76,6 +79,24 @@ def main():
             **scalar(props["retry_after_ms"]),
             "required": "retry_after_ms" in branch["required"],
         } if "retry_after_ms" in props else None)
+    # The retained generated registry includes previously delivered mural metadata
+    # whose monolith inputs have not all been published together. Do not remove it.
+    if args.venue_only:
+        base = "217c52c25180217b9fd1264af9b8cae52ec88a1a"
+        path = "frontend/src/shared/api/domain-operations.generated.ts"
+        raw = subprocess.check_output(["git", "show", base + ":" + path], cwd=ROOT)
+        assert hashlib.sha256(raw).hexdigest() == "3610456a0925aee9c4e3a32564016ea6acc26b7ab01ce536659b7333a5ddd447"
+        text = raw.decode()
+        def retained(name):
+            block = text.split("export const " + name + " = {\n", 1)[1].split("\n} as const", 1)[0]
+            return json.loads("{" + block.rstrip().removesuffix(",") + "}")
+        operations, queries, errors = (retained(name) for name in ("DOMAIN_OPERATIONS", "DOMAIN_QUERIES", "DOMAIN_ERROR_RULES"))
+        inputs.clear()
+        inputs["git:" + base + ":" + path] = hashlib.sha256(raw).hexdigest()
+    # Standalone qualified venue inputs are additive; historical C04 files stay unchanged.
+    bridge = ROOT / "scripts/mcr/paradise-city-v1/place_notes_transport.py"
+    inputs[str(bridge.relative_to(ROOT))] = hashlib.sha256(bridge.read_bytes()).hexdigest()
+    runpy.run_path(str(bridge))["extend"](ROOT, inputs, operations, queries, errors)
     def emit(name, value):
         # One entry per line keeps repeated route metadata reviewable without inflating the bundle.
         rows = [f"  {json.dumps(k)}: {json.dumps(v, separators=(',', ':'))}," for k, v in value.items()]

@@ -9,6 +9,7 @@ interface ScalarRule {
   readonly maximum?: number
   readonly minLength?: number
   readonly maxLength?: number
+  readonly not?: { readonly const?: unknown; readonly enum?: readonly unknown[] }
 }
 export interface DomainOperation {
   readonly method: string
@@ -23,6 +24,8 @@ export function domainOperation(id: DomainOperationId | undefined): DomainOperat
   return id !== undefined && Object.hasOwn(DOMAIN_OPERATIONS, id) ? DOMAIN_OPERATIONS[id] : null
 }
 function validScalar(value: unknown, rule: ScalarRule): boolean {
+  if (rule.not && ((Object.hasOwn(rule.not, 'const') && value === rule.not.const)
+    || rule.not.enum?.includes(value))) return false
   if (rule.enum && !rule.enum.includes(value)) return false
   if (rule.type === 'boolean') return typeof value === 'boolean'
   if (rule.type === 'integer') return Number.isSafeInteger(value) && typeof value === 'number'
@@ -51,4 +54,15 @@ export function matchesDomainRequest(op: DomainOperation, method: string, path: 
   const schema: { readonly required: readonly string[]; readonly properties: Readonly<Record<string, ScalarRule>> } = DOMAIN_QUERIES[op.query]
   return schema.required.every(key => Object.hasOwn(query, key)) && Object.entries(query)
     .every(([key, value]) => Object.hasOwn(schema.properties, key) && validScalar(value, schema.properties[key]!))
+}
+
+const venueLandmarkOperations = new Set<string>(['getVenueLandmark', 'listVenuePlaceNotes', 'createVenuePlaceNote',
+  'getVenuePlaceNote', 'withdrawVenuePlaceNote', 'listVenuePlaceReplies', 'createVenuePlaceReply'])
+/** Only the named frozen landmark routes may extend the historical plain-segment grammar. */
+export function matchesVenueLandmarkRequest(id: DomainOperationId | undefined, method: string, path: string,
+  query?: Readonly<Record<string, string | number | boolean>>): boolean {
+  if (!id || !venueLandmarkOperations.has(id) || !/^\/api\/[A-Za-z0-9._~-]+(?:\/[A-Za-z0-9._~-]+)*$/.test(path)
+    || path.split('/').some(segment => segment === '.' || segment === '..')) return false
+  const operation = domainOperation(id)
+  return operation !== null && matchesDomainRequest(operation, method, path, query)
 }

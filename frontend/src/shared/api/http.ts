@@ -1,5 +1,5 @@
 import ky from 'ky'
-import { domainOperation, matchesDomainRequest } from './domain'
+import { domainOperation, matchesDomainRequest, matchesVenueLandmarkRequest } from './domain'
 import type { DomainOperationId } from './domain-operations.generated'
 import { parseRetryAfter, parseServerError, TransportError, type ErrorFamily, type JsonValue } from './errors'
 
@@ -133,8 +133,10 @@ const enrollmentOperations: Readonly<Record<string, readonly [HttpRequest<unknow
 
 function prepare<T>(request: HttpRequest<T>, snapshot: SessionSnapshot) {
   const { path, method, access } = request
-  // Plain route segments only: no normalization, encoded traversal, query, fragment or old prefix.
-  if (!/^\/api\/[A-Za-z0-9_-]+(?:\/[A-Za-z0-9_-]+)*$/.test(path)
+  // Preserve the legacy grammar; only exact registered landmark routes extend it.
+  const venuePath = access === 'protected' && request.errorFamily === 'domain'
+    && matchesVenueLandmarkRequest(request.domainOperation, method, path, request.query)
+  if ((!/^\/api\/[A-Za-z0-9_-]+(?:\/[A-Za-z0-9_-]+)*$/.test(path) && !venuePath)
     || path.split('/').includes('v1') || !['GET', 'POST', 'PUT', 'PATCH', 'DELETE'].includes(method)
     || !['public', 'protected'].includes(access) || !['auth', 'core', 'domain'].includes(request.errorFamily)
     || typeof request.decode !== 'function') throw new TransportError('invalid-request')
