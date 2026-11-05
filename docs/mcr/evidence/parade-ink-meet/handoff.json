@@ -1,0 +1,84 @@
+{
+  "status": "READY_FOR_DIRECT_MECHANICAL_PUBLICATION",
+  "base": "aac0d96d152e47150f4fac0f57b69659ad20a956",
+  "qualifiedPresentationHead": "9a9141f11fffb23cd777d22867c103a2142b30ab",
+  "productionPostimages": [
+    {
+      "path": "frontend/src/features/intro/IntroEditor.tsx",
+      "bytes": 4875,
+      "sha256": "aca6cd2fe5464bc9e2d2f18b43edc008bfedb6f1a3aa46bde85df821b56db295"
+    },
+    {
+      "path": "frontend/src/features/meet-beacon/ui/MeetingBeacon.tsx",
+      "bytes": 11757,
+      "sha256": "430e67d1c1558e8eb42122a673f90c63bc24e97d31e4963c1e50ced8c0584af7"
+    },
+    {
+      "path": "frontend/src/features/meet-beacon/ui/parade-ink-detail.css",
+      "bytes": 2583,
+      "sha256": "21e9b69bcd5c828da229d434192b7b87d144e4a3009ddc021aeb54cbe35992ab"
+    },
+    {
+      "path": "frontend/src/features/party-authoring/ui/PartyAuthoring.tsx",
+      "bytes": 5586,
+      "sha256": "f4ad3b4e6b9779e9b180f20fed3c76e2121b11cfb49072248b95690c21c18568"
+    },
+    {
+      "path": "frontend/src/features/party-authoring/ui/authoring.css",
+      "bytes": 2335,
+      "sha256": "31d009206fef76d855bb11c776d5a732a87cce3e19f8f1d1e5782163ae978005"
+    },
+    {
+      "path": "frontend/src/features/party-discovery/ui/PartyDiscovery.tsx",
+      "bytes": 19120,
+      "sha256": "9487bf6434da476ff9ed90c5b0ed37a54ed07b1faa747ce824a2d2a80b89d8a8"
+    },
+    {
+      "path": "frontend/src/features/party-discovery/ui/party-discovery.css",
+      "bytes": 9764,
+      "sha256": "7c5118f2edc956976fb48e7346104d8eb833286ebb8c10325adabb4f9f09d725"
+    },
+    {
+      "path": "frontend/src/features/party-management/ui/PartyManagement.tsx",
+      "bytes": 5913,
+      "sha256": "d7a7c19e2304b7cc35807cd0e0a824154a56c7be3c3f01fc3a39530db111bbbc"
+    },
+    {
+      "path": "frontend/src/features/party-management/ui/management.css",
+      "bytes": 2613,
+      "sha256": "b468fb52fca0c976bad60c216b1313d416e16919ee4421a7c5c60e2f190c0af8"
+    },
+    {
+      "path": "frontend/src/features/people/People.tsx",
+      "bytes": 2972,
+      "sha256": "34fe6f409f3cf695ff490479d1bdddbc596d68e03bfc40220e79aff2ba1dfe15"
+    },
+    {
+      "path": "frontend/src/features/people/people.css",
+      "bytes": 7738,
+      "sha256": "a58d842123aa912085a92bf24fdc8653f0f9715161adf459a014b843a315a95e"
+    }
+  ],
+  "scope": "11 production presentation paths plus owned parade-ink test/helpers and own docs/evidence prefix; no shared/controller/Auth/Root/art writes",
+  "composition": "Preserve canonical IN02 PartyDetail owner/ACTIVE-member links and qualified PartyRally beacon link exactly once, current selected-portrait signature and WorldTools. Apply only PI05 deltas to overlapping files.",
+  "validation": {
+    "source": "source-validation.json",
+    "native": "native-validation.json",
+    "assessment": "visual-assessment.md",
+    "nativeCases": 35,
+    "focusedSourceCases": 63,
+    "wholeFrontendTypes": "PASS_1111_SOURCE_FILES",
+    "scopedLintAndSyntax": "PASS"
+  },
+  "dependencies": {
+    "PI01": "056a8c48ff667134dee8e5e99710185294e4b898 with shell.css-only b5b44e47531e3b75febc5ee5cdd6a11b1648779c",
+    "IN02": "canonical d58d1b24de5bb2458fa1a479f266f7eb40234d23, corrected fixtures fa1e566673d61c071e2f6ce50b50a0f8a7a6d91a"
+  },
+  "openGates": [
+    "real default-App authority producer",
+    "production journey",
+    "physical device/arrival",
+    "two real clients"
+  ],
+  "publication": "Canonical receipt is required before declaring this scoped delivery published; no correctness-review gate."
+}

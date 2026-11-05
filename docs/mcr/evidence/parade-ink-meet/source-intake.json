@@ -1,0 +1,63 @@
+{
+  "task": "PI05",
+  "status": "IN_PROGRESS",
+  "goalBudget": "UNBUDGETED",
+  "persistentGoal": "Preserved original incomplete Meet foreground goal; actual API status BLOCKED; no reset/pause/false completion/new waiting goal",
+  "booking": {
+    "id": "PI05-PREP-20261104T2345Z",
+    "expiryUtc": "2026-11-05T00:15:00Z",
+    "positiveGrowthBytes": 335544320,
+    "checkoutReplacementUpperBytes": 219021312,
+    "gitReserveBytes": 33554432,
+    "sourceReserveBytes": 67108864,
+    "noExecutionAdmission": true,
+    "disposition": "RETURNED_AFTER_SOURCE_FREEZE",
+    "returnRecordedUtc": "2026-11-05T00:10:26.159629+00:00"
+  },
+  "checkout": "exclusive fe-ref-customize checkout (custody recorded in companion document)",
+  "oldHead": "df5f41f95e0d51f2af6f22b629a86b539e380b30",
+  "oldBranchPreserved": "codex/mcr-fe-FE18-client-completion",
+  "base": "aac0d96d152e47150f4fac0f57b69659ad20a956",
+  "branch": "codex/mcr-fe-PI05-parade-ink-meet",
+  "sparseSha256": "472f2b76c0cb6186f8199e24297fc103d90342866e640aac94a8ee537ca9b5f3",
+  "beforeKiB": {
+    "worktree": 666828,
+    "commonGit": 1149248
+  },
+  "afterCheckoutKiB": {
+    "worktree": 871300,
+    "commonGit": 1151812
+  },
+  "freeAfterCheckoutBytes": 14864150528,
+  "preimages": {
+    "frontend/src/features/party-discovery/ui/PartyDiscovery.tsx": "861171ee98ae3c25c4441de60527dc1507cb8e1d8d6dc348aed1693b9fa7e381",
+    "frontend/src/features/party-discovery/ui/party-discovery.css": "4bcd821855f976b558c5fd979ce759a97cbb1d4032fdf445dfdf3f468833b6db",
+    "frontend/src/features/party-authoring/ui/PartyAuthoring.tsx": "a36a41c1ac92f5bbc7a016a78251fe5f63645b23cd89c7a918ffacefdf7383a0",
+    "frontend/src/features/party-authoring/ui/authoring.css": "3eeb0acdc8eb64487724f3a7df64d9706672cc575ea7335fe03b5c561621f1d2",
+    "frontend/src/features/party-management/ui/PartyManagement.tsx": "9a7b47e97ae64cb29e7383b5707b02c4f24fca001bf3d73099272325a58a7b58",
+    "frontend/src/features/party-management/ui/management.css": "47c20e172adcd3e71ebd348155242677b3d234cab278f13bf25f5c23111ebb40",
+    "frontend/src/features/people/People.tsx": "6d95f84a9dfb985292af4d1caaa3f87670ca18e99974b114b50797a5649d62b9",
+    "frontend/src/features/people/people.css": "939c17cfae06880839f0b0133b1cdd0a16af4b74316dbfbc9c211edb46b3f7c8",
+    "frontend/src/features/intro/IntroEditor.tsx": "fdd45a21f21f3e4e4e20393a22de1d715142738832271cb9da1b6074c0045511",
+    "frontend/src/features/meet-beacon/ui/MeetingBeacon.tsx": "ccbc170ff1ade8193fc16667a48527241805f920b2b28acef9558c4392bb3871"
+  },
+  "protectedFunctionalSource": "780acd5038ba555265e35e9d044c685f3f4ded50",
+  "pi01Contract": "pi01-photo2-v1",
+  "execution": "NOT_RUN",
+  "pi01SourcePin": "056a8c48ff667134dee8e5e99710185294e4b898",
+  "pi01TokenSha256": "15b68ce29df755e81849d2bc359f2c2aaade9857d5e04c32692bf9aab4700556",
+  "functionalFixturePin": "fa1e566673d61c071e2f6ce50b50a0f8a7a6d91a",
+  "resourceObservation": {
+    "wholeAllocatedPriorMaxBytes": 2084712448,
+    "positiveGrowthBytes": 225050624,
+    "remainingGrowthReleasedBytes": 110493696,
+    "availableBytes": 15450980352,
+    "nonshrinkingCarry": true
+  },
+  "sourceValidationOffer": {
+    "id": "PI05-MEET-SOURCE01-20261105T0007Z",
+    "status": "UNACCEPTED_PENDING_PI09_LITERAL_FULL_OR_DECLINE",
+    "acceptByUtc": "2026-11-05T00:55:00Z"
+  },
+  "snapshotBoundary": "Historical pre-execution intake; later source/native qualification is recorded separately."
+}

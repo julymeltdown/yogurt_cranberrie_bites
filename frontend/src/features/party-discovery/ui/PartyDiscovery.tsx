@@ -28,11 +28,12 @@ export interface PartyDiscoveryPresentation {
   readonly canCreate?: boolean
 }
 export interface PartyDiscoveryProps { readonly controller: PartyController; readonly presentation?: PartyDiscoveryPresentation }
-function MeetGlyph({ kind }: { kind: 'place' | 'members' | 'plus' }) {
+function MeetGlyph({ kind }: { kind: 'place' | 'members' | 'plus' | 'refresh' }) {
   return <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false" fill="currentColor">
     {kind === 'place' ? <path d="M8 1a5 5 0 0 0-5 5c0 3.5 5 9 5 9s5-5.5 5-9a5 5 0 0 0-5-5m0 3a2 2 0 1 1 0 4 2 2 0 0 1 0-4" />
       : kind === 'members' ? <><circle cx="6" cy="4" r="2.5" /><path d="M1 13v-2a5 5 0 0 1 10 0v2zm10-7a2 2 0 1 0-1-4 4 4 0 0 1 1 4m1 2a4 4 0 0 1 3 4v1h-3z" /></>
-        : <path d="M7 1h2v6h6v2H9v6H7V9H1V7h6z" />}
+        : kind === 'plus' ? <path d="M7 1h2v6h6v2H9v6H7V9H1V7h6z" />
+        : <path d="M13 2v4H9l1.7-1.7a4.5 4.5 0 1 0 1.6 5.2l1.8.7A6.5 6.5 0 1 1 12 2.9z" />}
   </svg>
 }
 function DiscoveryRow({ party, presentation }: { party: Party; presentation?: PartyDiscoveryPresentation | undefined }) {
@@ -92,7 +93,7 @@ function ApplicationRow({ application: a, controller }: { application: Applicati
 }
 function MyPlan({ controller }: { controller: PartyController }) {
   const s = useParty(controller), a = s.activity.data
-  return <section aria-label="MY PLAN"><div className="party-heading"><h2>MY PLAN</h2><button type="button" onClick={() => void controller.loadActivity()} disabled={s.activity.phase === 'loading'}>Refresh MY PLAN</button></div>
+  return <section className="party-plan" aria-label="MY PLAN"><div className="party-heading"><h2>MY PLAN</h2><button type="button" onClick={() => void controller.loadActivity()} disabled={s.activity.phase === 'loading'}>Refresh MY PLAN</button></div>
     <p>Owned parties, memberships and applications are paged separately.</p><ReadState resource={s.activity} label="MY PLAN" retry={() => void controller.loadActivity()} />
     {a && <><section><h3>Your parties</h3>{!a.owned.items.length && <p>No owned parties on this page.</p>}<ul className="party-list">{a.owned.items.map(p => <PartyRow key={p.party_id} party={p} />)}</ul>
       {a.owned.next_cursor && <button type="button" disabled={s.activity.phase === 'loading'} onClick={() => void controller.loadActivity('owned')}>Load more owned parties</button>}</section>
@@ -123,7 +124,7 @@ function FilterForm({ controller }: { controller: PartyController }) {
 }
 export function PartyDiscovery({ controller, presentation }: PartyDiscoveryProps) {
   const s = useParty(controller)
-  return <div className="party-view party-browse">
+  return <div className="party-view party-browse" data-presentation="parade-ink-meet">
     <nav className="party-tabs" aria-label="Meet views"><button type="button" aria-pressed={s.view === 'parties'} onClick={() => controller.setView('parties')}>Parties</button><Link id="party-people" to="/meet/people">People</Link><button type="button" aria-pressed={s.view === 'plan'} onClick={() => controller.setView('plan')}>MY PLAN</button></nav>
     {!s.access && <ConcertState kind="unavailable" title="Event access required">Party information is unavailable until your current event access is verified.</ConcertState>}
     <CommandStatus controller={controller} />
@@ -133,10 +134,11 @@ export function PartyDiscovery({ controller, presentation }: PartyDiscoveryProps
       {s.access && s.list.data && <>{!s.list.data.items.length && <ConcertState title="No matching parties">No parties match this page. Try another filter{ s.list.data.next_cursor ? ' or load the next page' : '' }.</ConcertState>}
         <ul className="meet-parties">{s.list.data.items.map(p => <DiscoveryRow key={p.party_id} party={p} presentation={presentation} />)}</ul>
         {s.list.data.next_cursor && <ConcertAction tone="paper" pending={s.list.phase === 'loading'} onClick={() => void controller.loadList(true)}>Load more parties</ConcertAction>}</>}
-      <div className="meet-tools"><FilterForm controller={controller} /><button type="button" disabled={s.list.phase === 'loading'} onClick={() => void controller.loadList()} aria-label="Refresh parties">Refresh</button></div>
+      <div className="meet-tools"><FilterForm controller={controller} /></div>
       <p className="party-sr">JOIN opens party details. The host approves membership; a virtual position does not confirm arrival. Times are Korea Standard Time.</p>
     </section>}
     <footer className="meet-create">
+      {s.view === 'parties' && <button type="button" className="meet-create__refresh" disabled={s.list.phase === 'loading'} onClick={() => void controller.loadList()} aria-label="Refresh parties"><MeetGlyph kind="refresh" /></button>}
       {s.access && presentation?.canCreate ? <Link id="party-create" to="/meet/parties/new" className="meet-create__action"><MeetGlyph kind="plus" />Create party</Link>
         : <><button type="button" className="meet-create__action" disabled aria-describedby="meet-create-unavailable"><MeetGlyph kind="plus" />Create party</button><span id="meet-create-unavailable" className="meet-create__unavailable">Party creation is currently unavailable.</span></>}
     </footer>
@@ -150,15 +152,17 @@ export function PartyDetail({ controller, partyId, renderOwnerPortrait }: { cont
   const activity = s.access && s.activity.phase === 'ready' ? s.activity.data : null
   const owned = !!p && !!activity?.owned.items.some(item => item.party_id === p.party_id && item.owner.user_id === p.owner.user_id)
   const member = !!p && !!activity?.memberships.items.some(item => item.party_id === p.party_id && item.state === 'ACTIVE')
-  return <div className="party-view"><nav className="party-tabs" aria-label="Party navigation"><Link id="party-all" to="/meet" onClick={() => controller.setView('parties')}>All parties</Link><Link id="party-plan" to="/meet" onClick={() => controller.setView('plan')}>MY PLAN</Link></nav>
+  return <div className="party-view party-detail" data-presentation="parade-ink-meet"><nav className="party-tabs" aria-label="Party navigation"><Link id="party-all" to="/meet" onClick={() => controller.setView('parties')}>All parties</Link><Link id="party-plan" to="/meet" onClick={() => controller.setView('plan')}>MY PLAN</Link></nav>
     <CommandStatus controller={controller} />{!s.access && <p role="status">Party information is unavailable until your current event access is verified.</p>}<ReadState resource={s.detail} label="party" retry={() => void controller.loadDetail(partyId)} />
-    {p && <article><p className="party-meta">{p.ticket_section ?? 'Any ticket section'} · {p.state.toLowerCase()}</p><h2>{p.title}</h2><div aria-label={`Host: ${p.owner.display_name}`}>{renderOwnerPortrait?.(p.owner) ?? <span role="status" aria-label="Host portrait unavailable">Character unavailable</span>}</div><p>Hosted by {p.owner.display_name}</p>
+    {p && <article><p className="party-meta">{p.ticket_section ?? 'Any ticket section'} · {p.state.toLowerCase()}</p><h2>{p.title}</h2><div className="party-detail__portrait" aria-label={`Host: ${p.owner.display_name}`}>{renderOwnerPortrait?.(p.owner) ?? <span role="status" aria-label="Host portrait unavailable">Character unavailable</span>}</div><p>Hosted by {p.owner.display_name}</p>
       <dl className="party-facts"><div><dt>Members</dt><dd>{p.member_count} of {p.capacity}{p.member_count >= p.capacity ? ' · Full' : ''}</dd></div>
         <div><dt>Meeting time</dt><dd><time dateTime={p.meeting_starts_at}>{time(p.meeting_starts_at)}</time> to <time dateTime={p.meeting_ends_at}>{time(p.meeting_ends_at)}</time></dd></div></dl>
       <p className="party-prose">{p.description || 'No description supplied.'}</p><h3>Requirements</h3><p className="party-prose">{p.requirements || 'No additional requirements supplied.'}</p>
       <Link id={`party-place-${p.public_place_id}`} to={`/world/places/${p.public_place_id}`}>Review place information</Link><p className="party-hint">A place reference and virtual position do not confirm real arrival. Review the current place guidance before making physical plans.</p>
-      {owned && <Link id={`party-manage-${p.party_id}`} to={`${partyPath(p.party_id)}/manage`}>Manage party</Link>}
-      {(owned || member) && <Link id={`party-rally-${p.party_id}`} to={`${partyPath(p.party_id)}/rally`}>Open rendezvous</Link>}
+      <div className="party-detail__navigation">
+        {owned && <Link id={`party-manage-${p.party_id}`} to={`${partyPath(p.party_id)}/manage`}>Manage party</Link>}
+        {(owned || member) && <Link id={`party-rally-${p.party_id}`} to={`${partyPath(p.party_id)}/rally`}>Open rendezvous</Link>}
+      </div>
       <section className="party-apply" aria-label="Apply to party"><h3>Apply to this party</h3><p>The host reviews applications. Applying does not consume an available place.</p>
         <label>Note to the host <span className="party-hint">(optional, up to 500 characters)</span><textarea maxLength={500} value={s.note} onChange={e => controller.setNote(e.target.value)} disabled={!!reason && !['idle', 'succeeded', 'failed'].includes(s.command.phase)} /></label>
         <button type="button" disabled={!!reason} aria-describedby="party-apply-reason" onClick={() => void controller.apply()}>Apply to party</button>

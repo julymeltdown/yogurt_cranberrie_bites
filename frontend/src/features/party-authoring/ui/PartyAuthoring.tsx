@@ -8,7 +8,7 @@ import './authoring.css'
 export function PartyAuthoring({controller,editing=false}:{controller:PartyAuthoringController;editing?:boolean}) {
   const s=useSyncExternalStore(controller.subscribe,controller.read,controller.read)
   useEffect(()=>{if(editing) void controller.loadLatest()},[controller,editing])
-  if(!s.access || s.phase==='denied') return <section className="party-authoring"><h1>Party authoring unavailable</h1><p>Your current access does not allow this form.</p></section>
+  if(!s.access || s.phase==='denied') return <section className="party-authoring" data-presentation="parade-ink-meet"><h1>Party authoring unavailable</h1><p>Your current access does not allow this form.</p></section>
   return <PartyForm key={s.epoch} controller={controller} editing={editing}/>
 }
 function PartyForm({controller,editing}:{controller:PartyAuthoringController;editing:boolean}) {
@@ -19,7 +19,7 @@ function PartyForm({controller,editing}:{controller:PartyAuthoringController;edi
   const labels:Record<keyof PartyDraft,string>={title:'Party title',description:'Introduction',ticket_section:'Ticket section',capacity:'Capacity',meeting_starts_at:'Start time (KST)',meeting_ends_at:'End time (KST)',requirements:'Requirements',public_place_id:'Public meeting place',state:'Party state'}
   const timeField=(name:'meeting_starts_at'|'meeting_ends_at')=><label>{labels[name]}<Controller name={name} control={control} render={({field})=><input aria-label={labels[name]} type="datetime-local" step="1" value={kstInput(field.value)} onBlur={field.onBlur} ref={field.ref} onChange={e=>{field.onChange(utcFromKst(e.target.value));controller.edit(getValues())}}/>}/>{errors[name]&&<span role="alert">{errors[name].message}</span>}</label>
   const field=(name:keyof PartyDraft,type='text')=><label key={name} htmlFor={`party-${name}`}>{labels[name]}<input id={`party-${name}`} type={type} aria-label={labels[name]} {...register(name,type==='number'?{valueAsNumber:true}:{})} aria-invalid={!!errors[name]} aria-describedby={errors[name]?`party-error-${name}`:undefined}/>{errors[name]&&<span id={`party-error-${name}`} role="alert">{errors[name].message}</span>}</label>
-  return <section className="party-authoring" aria-labelledby="party-authoring-title"><header><p>MEET / YOUR PARTY</p><h1 id="party-authoring-title">{editing?'Edit your party':'Bring your people together'}</h1><p>Set a plan, leave room for others, and check the current venue guidance.</p></header>
+  return <section className="party-authoring" data-presentation="parade-ink-meet" aria-labelledby="party-authoring-title"><header><p>MEET / YOUR PARTY</p><h1 id="party-authoring-title">{editing?'Edit your party':'Bring your people together'}</h1><p>Set a plan, leave room for others, and check the current venue guidance.</p></header>
     <p>Times use Korea Standard Time (KST). A meeting place does not confirm physical arrival.</p>
     <form noValidate onChange={()=>controller.edit(getValues())} onSubmit={handleSubmit(draft=>controller.submit(draft))}><fieldset disabled={locked}><legend>Party details</legend>
       {field('title')}{field('ticket_section')}{field('capacity','number')}{field('description')}{timeField('meeting_starts_at')}{timeField('meeting_ends_at')}

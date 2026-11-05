@@ -1,0 +1,6902 @@
+{
+  "status": "DEVELOPER_VALIDATED",
+  "qualifiedPresentationHead": "9a9141f11fffb23cd777d22867c103a2142b30ab",
+  "defaultAppClassification": "Actual createAppRouter/createProductionPorts/Auth/bootstrap/selected-character renderer/Phaser, synthetic HTTP and TEST_ONLY clock policy",
+  "componentClassification": "M06 current/private/expired/long use the actual component/controller/Auth with synthetic qualified audience; NOT a default-App authority producer",
+  "sourceValidation": "source-validation.json",
+  "nativeFullSha256": "b1b2a202be0518ac3037df4ac47ed0e37f5fce652fe6066c3d4b9abaf25fdcef",
+  "acceptedEpoch": 1793838939.1320949,
+  "actualFullEpoch": 1793839160.374152,
+  "qualifiedCases": 35,
+  "widths": [
+    360,
+    390,
+    430
+  ],
+  "shortHeight": 420,
+  "cases": [
+    {
+      "caseIndex": 1,
+      "width": 360,
+      "height": 844,
+      "entry": "/meet",
+      "scenario": "normal",
+      "errors": [],
+      "resourceErrors": [],
+      "classification": "TEST_ONLY_DEFAULT_APP",
+      "initial": {
+        "overflow": false,
+        "feature": {
+          "x": 11,
+          "y": 59,
+          "width": 338,
+          "height": 717,
+          "right": 349,
+          "bottom": 776
+        },
+        "panel": {
+          "x": 4,
+          "y": 4,
+          "width": 352,
+          "height": 836,
+          "right": 356,
+          "bottom": 840
+        },
+        "rows": [
+          {
+            "x": 11,
+            "y": 111,
+            "width": 338,
+            "height": 128,
+            "right": 349,
+            "bottom": 239
+          },
+          {
+            "x": 11,
+            "y": 247,
+            "width": 338,
+            "height": 128,
+            "right": 349,
+            "bottom": 375
+          },
+          {
+            "x": 11,
+            "y": 383,
+            "width": 338,
+            "height": 128,
+            "right": 349,
+            "bottom": 511
+          }
+        ],
+        "appearance": {
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 249, 248)",
+          "selectedBackground": "rgb(23, 23, 23)",
+          "loadedFonts": [
+            "Parade Ink Text",
+            "Parade Ink Display"
+          ]
+        },
+        "controls": [
+          {
+            "label": "Parties",
+            "x": 11,
+            "y": 59,
+            "width": 110,
+            "height": 44,
+            "right": 121,
+            "bottom": 103
+          },
+          {
+            "label": "People",
+            "x": 125,
+            "y": 59,
+            "width": 110,
+            "height": 44,
+            "right": 235,
+            "bottom": 103
+          },
+          {
+            "label": "MY PLAN",
+            "x": 239,
+            "y": 59,
+            "width": 110,
+            "height": 44,
+            "right": 349,
+            "bottom": 103
+          },
+          {
+            "label": "Area A Queue Group",
+            "x": 84,
+            "y": 120,
+            "width": 180,
+            "height": 44,
+            "right": 264,
+            "bottom": 164
+          },
+          {
+            "label": "View details for Area A Queue Group",
+            "x": 272,
+            "y": 186,
+            "width": 68,
+            "height": 44,
+            "right": 340,
+            "bottom": 230
+          },
+          {
+            "label": "After Show Hangout",
+            "x": 84,
+            "y": 256,
+            "width": 180,
+            "height": 44,
+            "right": 264,
+            "bottom": 300
+          },
+          {
+            "label": "View details for After Show Hangout",
+            "x": 272,
+            "y": 322,
+            "width": 68,
+            "height": 44,
+            "right": 340,
+            "bottom": 366
+          },
+          {
+            "label": "Photo Walk (Parade ver.)",
+            "x": 84,
+            "y": 392,
+            "width": 180,
+            "height": 44,
+            "right": 264,
+            "bottom": 436
+          },
+          {
+            "label": "View details for Photo Walk (Parade ver.)",
+            "x": 272,
+            "y": 458,
+            "width": 68,
+            "height": 44,
+            "right": 340,
+            "bottom": 502
+          },
+          {
+            "label": "Filter parties",
+            "x": 11,
+            "y": 519,
+            "width": 338,
+            "height": 44,
+            "right": 349,
+            "bottom": 563
+          },
+          {
+            "label": "",
+            "x": 13,
+            "y": 599,
+            "width": 334,
+            "height": 44,
+            "right": 347,
+            "bottom": 643
+          },
+          {
+            "label": "All statesopenclosedcancelledcompleted",
+            "x": 13,
+            "y": 683,
+            "width": 334,
+            "height": 44,
+            "right": 347,
+            "bottom": 727
+          },
+          {
+            "label": "",
+            "x": 13,
+            "y": 767,
+            "width": 334,
+            "height": 44,
+            "right": 347,
+            "bottom": 811
+          },
+          {
+            "label": "",
+            "x": 13,
+            "y": 851,
+            "width": 334,
+            "height": 44,
+            "right": 347,
+            "bottom": 895
+          },
+          {
+            "label": "",
+            "x": 13,
+            "y": 979,
+            "width": 334,
+            "height": 44,
+            "right": 347,
+            "bottom": 1023
+          },
+          {
+            "label": "Show parties",
+            "x": 13,
+            "y": 1035,
+            "width": 334,
+            "height": 44,
+            "right": 347,
+            "bottom": 1079
+          },
+          {
+            "label": "Refresh parties",
+            "x": 305,
+            "y": 724,
+            "width": 44,
+            "height": 44,
+            "right": 349,
+            "bottom": 768
+          },
+          {
+            "label": "Create party",
+            "x": 65,
+            "y": 724,
+            "width": 230,
+            "height": 44,
+            "right": 295,
+            "bottom": 768
+          }
+        ],
+        "state": {
+          "scenario": "enabled",
+          "capabilityMode": "TEST_ONLY synthetic capabilities",
+          "classification": "TEST_ONLY",
+          "policy": {
+            "classification": "TEST_ONLY",
+            "evidence": "Synthetic native fixture, not measured platform guarantees",
+            "maxAgeMs": 30000,
+            "uncertaintyMs": 1000,
+            "maxElapsedRate": 1.01,
+            "maxObservationGapMs": 5000
+          },
+          "path": "/meet",
+          "published": true,
+          "theme": {
+            "selected": "REVENGE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 81.27999999999997,
+              "scrollY": 105,
+              "width": 352,
+              "height": 791
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "capture": "native/01-360x844-normal.png",
+      "focus": {
+        "tag": "BUTTON",
+        "outline": "solid"
+      },
+      "status": "PASS",
+      "attempt": 3,
+      "sha256": "1954a41e0cf2576cbbcbd2a212258ecc05d1c3d253e7b9e1d047cd2f552fd02d",
+      "bytes": 50541
+    },
+    {
+      "caseIndex": 2,
+      "width": 360,
+      "height": 844,
+      "entry": "/meet/parties/00000000-0000-4000-8000-000000000010",
+      "scenario": "normal",
+      "errors": [],
+      "resourceErrors": [],
+      "classification": "TEST_ONLY_DEFAULT_APP",
+      "initial": {
+        "overflow": false,
+        "feature": {
+          "x": 11,
+          "y": 59,
+          "width": 338,
+          "height": 1076,
+          "right": 349,
+          "bottom": 1135
+        },
+        "panel": {
+          "x": 4,
+          "y": 4,
+          "width": 352,
+          "height": 836,
+          "right": 356,
+          "bottom": 840
+        },
+        "rows": [],
+        "appearance": {
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 249, 248)",
+          "selectedBackground": null,
+          "loadedFonts": [
+            "Parade Ink Text",
+            "Parade Ink Display"
+          ]
+        },
+        "controls": [
+          {
+            "label": "All parties",
+            "x": 11,
+            "y": 59,
+            "width": 167,
+            "height": 44,
+            "right": 178,
+            "bottom": 103
+          },
+          {
+            "label": "MY PLAN",
+            "x": 182,
+            "y": 59,
+            "width": 167,
+            "height": 44,
+            "right": 349,
+            "bottom": 103
+          },
+          {
+            "label": "Review place information",
+            "x": 11,
+            "y": 587,
+            "width": 201.859375,
+            "height": 44,
+            "right": 212.859375,
+            "bottom": 631
+          },
+          {
+            "label": "",
+            "x": 11,
+            "y": 876,
+            "width": 338,
+            "height": 110,
+            "right": 349,
+            "bottom": 986
+          },
+          {
+            "label": "Apply to party",
+            "x": 11,
+            "y": 994,
+            "width": 129.96875,
+            "height": 44,
+            "right": 140.96875,
+            "bottom": 1038
+          }
+        ],
+        "state": {
+          "scenario": "enabled",
+          "capabilityMode": "TEST_ONLY synthetic capabilities",
+          "classification": "TEST_ONLY",
+          "policy": {
+            "classification": "TEST_ONLY",
+            "evidence": "Synthetic native fixture, not measured platform guarantees",
+            "maxAgeMs": 30000,
+            "uncertaintyMs": 1000,
+            "maxElapsedRate": 1.01,
+            "maxObservationGapMs": 5000
+          },
+          "path": "/meet/parties/00000000-0000-4000-8000-000000000010",
+          "published": true,
+          "theme": {
+            "selected": "REVENGE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 81.27999999999997,
+              "scrollY": 105,
+              "width": 352,
+              "height": 791
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "capture": "native/02-360x844-normal.png",
+      "status": "PASS",
+      "attempt": 2,
+      "sha256": "f2b1a2e7bd8acc6c008899cf15e5d00eeb4e0f01bc21c7ec07a178d2089b529c",
+      "bytes": 67085
+    },
+    {
+      "caseIndex": 3,
+      "width": 360,
+      "height": 844,
+      "entry": "/meet/parties/new",
+      "scenario": "normal",
+      "errors": [],
+      "resourceErrors": [],
+      "classification": "TEST_ONLY_DEFAULT_APP",
+      "initial": {
+        "overflow": false,
+        "feature": {
+          "x": 11,
+          "y": 59,
+          "width": 338,
+          "height": 1085,
+          "right": 349,
+          "bottom": 1144
+        },
+        "panel": {
+          "x": 4,
+          "y": 4,
+          "width": 352,
+          "height": 836,
+          "right": 356,
+          "bottom": 840
+        },
+        "rows": [],
+        "appearance": {
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 249, 248)",
+          "selectedBackground": null,
+          "loadedFonts": [
+            "Parade Ink Text",
+            "Parade Ink Display"
+          ]
+        },
+        "controls": [
+          {
+            "label": "Party title",
+            "x": 11,
+            "y": 315,
+            "width": 338,
+            "height": 44,
+            "right": 349,
+            "bottom": 359
+          },
+          {
+            "label": "Ticket section",
+            "x": 11,
+            "y": 399,
+            "width": 338,
+            "height": 44,
+            "right": 349,
+            "bottom": 443
+          },
+          {
+            "label": "Capacity",
+            "x": 11,
+            "y": 483,
+            "width": 338,
+            "height": 44,
+            "right": 349,
+            "bottom": 527
+          },
+          {
+            "label": "Introduction",
+            "x": 11,
+            "y": 567,
+            "width": 338,
+            "height": 44,
+            "right": 349,
+            "bottom": 611
+          },
+          {
+            "label": "Start time (KST)",
+            "x": 11,
+            "y": 651,
+            "width": 338,
+            "height": 44,
+            "right": 349,
+            "bottom": 695
+          },
+          {
+            "label": "End time (KST)",
+            "x": 11,
+            "y": 735,
+            "width": 338,
+            "height": 44,
+            "right": 349,
+            "bottom": 779
+          },
+          {
+            "label": "Choose a qualified placeVirtual Studio landmark",
+            "x": 11,
+            "y": 819,
+            "width": 338,
+            "height": 44,
+            "right": 349,
+            "bottom": 863
+          },
+          {
+            "label": "Requirements",
+            "x": 11,
+            "y": 903,
+            "width": 338,
+            "height": 44,
+            "right": 349,
+            "bottom": 947
+          },
+          {
+            "label": "Create party",
+            "x": 11,
+            "y": 972,
+            "width": 338,
+            "height": 44,
+            "right": 349,
+            "bottom": 1016
+          },
+          {
+            "label": "Save session draft",
+            "x": 11,
+            "y": 1024,
+            "width": 338,
+            "height": 44,
+            "right": 349,
+            "bottom": 1068
+          },
+          {
+            "label": "Restore draft",
+            "x": 11,
+            "y": 1076,
+            "width": 338,
+            "height": 44,
+            "right": 349,
+            "bottom": 1120
+          }
+        ],
+        "state": {
+          "scenario": "enabled",
+          "capabilityMode": "TEST_ONLY synthetic capabilities",
+          "classification": "TEST_ONLY",
+          "policy": {
+            "classification": "TEST_ONLY",
+            "evidence": "Synthetic native fixture, not measured platform guarantees",
+            "maxAgeMs": 30000,
+            "uncertaintyMs": 1000,
+            "maxElapsedRate": 1.01,
+            "maxObservationGapMs": 5000
+          },
+          "path": "/meet/parties/new",
+          "published": true,
+          "theme": {
+            "selected": "REVENGE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 81.27999999999997,
+              "scrollY": 105,
+              "width": 352,
+              "height": 791
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "capture": "native/03-360x844-normal.png",
+      "status": "PASS",
+      "attempt": 2,
+      "sha256": "b6632b6f7b27e7c63554e3359fe04093364ac785b8f259987c00952e54d51c90",
+      "bytes": 49192
+    },
+    {
+      "caseIndex": 4,
+      "width": 360,
+      "height": 844,
+      "entry": "/meet/parties/00000000-0000-4000-8000-000000000010/manage",
+      "scenario": "owner",
+      "errors": [],
+      "resourceErrors": [],
+      "classification": "TEST_ONLY_DEFAULT_APP",
+      "initial": {
+        "overflow": false,
+        "feature": {
+          "x": 11,
+          "y": 67,
+          "width": 338,
+          "height": 889,
+          "right": 349,
+          "bottom": 956
+        },
+        "panel": {
+          "x": 4,
+          "y": 4,
+          "width": 352,
+          "height": 836,
+          "right": 356,
+          "bottom": 840
+        },
+        "rows": [],
+        "appearance": {
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 249, 248)",
+          "selectedBackground": null,
+          "loadedFonts": [
+            "Parade Ink Text",
+            "Parade Ink Display"
+          ]
+        },
+        "controls": [
+          {
+            "label": "Read current party",
+            "x": 11,
+            "y": 137,
+            "width": 157.28125,
+            "height": 44,
+            "right": 168.28125,
+            "bottom": 181
+          },
+          {
+            "label": "Approve You \u00b7 fixture",
+            "x": 24,
+            "y": 626,
+            "width": 169.78125,
+            "height": 44,
+            "right": 193.78125,
+            "bottom": 670
+          },
+          {
+            "label": "Reject You \u00b7 fixture",
+            "x": 24,
+            "y": 678,
+            "width": 157,
+            "height": 44,
+            "right": 181,
+            "bottom": 722
+          },
+          {
+            "label": "Cancel party",
+            "x": 11,
+            "y": 900,
+            "width": 110.625,
+            "height": 44,
+            "right": 121.625,
+            "bottom": 944
+          }
+        ],
+        "state": {
+          "scenario": "enabled",
+          "capabilityMode": "TEST_ONLY synthetic capabilities",
+          "classification": "TEST_ONLY",
+          "policy": {
+            "classification": "TEST_ONLY",
+            "evidence": "Synthetic native fixture, not measured platform guarantees",
+            "maxAgeMs": 30000,
+            "uncertaintyMs": 1000,
+            "maxElapsedRate": 1.01,
+            "maxObservationGapMs": 5000
+          },
+          "path": "/meet/parties/00000000-0000-4000-8000-000000000010/manage",
+          "published": true,
+          "theme": {
+            "selected": "REVENGE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 81.27999999999997,
+              "scrollY": 105,
+              "width": 352,
+              "height": 791
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010/members",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010/applications",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "capture": "native/04-360x844-owner.png",
+      "status": "PASS",
+      "attempt": 2,
+      "sha256": "0b0828debf511a14634556bf94062972543bd5098dbd37ce23e8616402a38c7d",
+      "bytes": 54828
+    },
+    {
+      "caseIndex": 5,
+      "width": 360,
+      "height": 844,
+      "entry": "/meet/parties/00000000-0000-4000-8000-000000000010/rally",
+      "scenario": "owner",
+      "errors": [],
+      "resourceErrors": [],
+      "classification": "TEST_ONLY_DEFAULT_APP",
+      "initial": {
+        "overflow": false,
+        "feature": {
+          "x": 11,
+          "y": 65,
+          "width": 338,
+          "height": 372,
+          "right": 349,
+          "bottom": 437
+        },
+        "panel": {
+          "x": 4,
+          "y": 4,
+          "width": 352,
+          "height": 836,
+          "right": 356,
+          "bottom": 840
+        },
+        "rows": [],
+        "appearance": {
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 249, 248)",
+          "selectedBackground": null,
+          "loadedFonts": [
+            "Parade Ink Text",
+            "Parade Ink Display"
+          ]
+        },
+        "controls": [
+          {
+            "label": "Read current rally",
+            "x": 11,
+            "y": 209,
+            "width": 151.421875,
+            "height": 44,
+            "right": 162.421875,
+            "bottom": 253
+          },
+          {
+            "label": "",
+            "x": 11,
+            "y": 265,
+            "width": 338,
+            "height": 44,
+            "right": 349,
+            "bottom": 309
+          },
+          {
+            "label": "ON MY WAY",
+            "x": 11,
+            "y": 321,
+            "width": 99.453125,
+            "height": 44,
+            "right": 110.453125,
+            "bottom": 365
+          },
+          {
+            "label": "HERE",
+            "x": 118.453125,
+            "y": 321,
+            "width": 55.875,
+            "height": 44,
+            "right": 174.328125,
+            "bottom": 365
+          },
+          {
+            "label": "MET",
+            "x": 182.328125,
+            "y": 321,
+            "width": 46.734375,
+            "height": 44,
+            "right": 229.0625,
+            "bottom": 365
+          },
+          {
+            "label": "NEED HELP",
+            "x": 237.0625,
+            "y": 321,
+            "width": 96.625,
+            "height": 44,
+            "right": 333.6875,
+            "bottom": 365
+          },
+          {
+            "label": "LEFT",
+            "x": 11,
+            "y": 373,
+            "width": 49.84375,
+            "height": 44,
+            "right": 60.84375,
+            "bottom": 417
+          }
+        ],
+        "state": {
+          "scenario": "enabled",
+          "capabilityMode": "TEST_ONLY synthetic capabilities",
+          "classification": "TEST_ONLY",
+          "policy": {
+            "classification": "TEST_ONLY",
+            "evidence": "Synthetic native fixture, not measured platform guarantees",
+            "maxAgeMs": 30000,
+            "uncertaintyMs": 1000,
+            "maxElapsedRate": 1.01,
+            "maxObservationGapMs": 5000
+          },
+          "path": "/meet/parties/00000000-0000-4000-8000-000000000010/rally",
+          "published": true,
+          "theme": {
+            "selected": "REVENGE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 81.27999999999997,
+              "scrollY": 105,
+              "width": 352,
+              "height": 791
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010/members",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010/applications",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "capture": "native/05-360x844-owner.png",
+      "status": "PASS",
+      "attempt": 2,
+      "sha256": "bf89699fcd46a338e516f8fa813e13df51b4c6174004a677af35f31ae96df7e1",
+      "bytes": 33449
+    },
+    {
+      "caseIndex": 6,
+      "width": 360,
+      "height": 844,
+      "entry": "/meet/people",
+      "scenario": "normal",
+      "errors": [],
+      "resourceErrors": [],
+      "classification": "TEST_ONLY_DEFAULT_APP",
+      "initial": {
+        "overflow": false,
+        "feature": {
+          "x": 11,
+          "y": 67,
+          "width": 338,
+          "height": 432,
+          "right": 349,
+          "bottom": 499
+        },
+        "panel": {
+          "x": 4,
+          "y": 4,
+          "width": 352,
+          "height": 836,
+          "right": 356,
+          "bottom": 840
+        },
+        "rows": [],
+        "appearance": {
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 249, 248)",
+          "selectedBackground": null,
+          "loadedFonts": [
+            "Parade Ink Text",
+            "Parade Ink Display"
+          ]
+        },
+        "controls": [
+          {
+            "label": "Parties",
+            "x": 11,
+            "y": 185,
+            "width": 69.96875,
+            "height": 44,
+            "right": 80.96875,
+            "bottom": 229
+          },
+          {
+            "label": "Your introduction",
+            "x": 88.96875,
+            "y": 185,
+            "width": 146.3125,
+            "height": 44,
+            "right": 235.28125,
+            "bottom": 229
+          },
+          {
+            "label": "",
+            "x": 11,
+            "y": 271,
+            "width": 261.53125,
+            "height": 44,
+            "right": 272.53125,
+            "bottom": 315
+          },
+          {
+            "label": "Search",
+            "x": 280.53125,
+            "y": 271,
+            "width": 68.46875,
+            "height": 44,
+            "right": 349,
+            "bottom": 315
+          },
+          {
+            "label": "Fixture fan",
+            "x": 92,
+            "y": 388,
+            "width": 87.59375,
+            "height": 44,
+            "right": 179.59375,
+            "bottom": 432
+          }
+        ],
+        "state": {
+          "scenario": "enabled",
+          "capabilityMode": "TEST_ONLY synthetic capabilities",
+          "classification": "TEST_ONLY",
+          "policy": {
+            "classification": "TEST_ONLY",
+            "evidence": "Synthetic native fixture, not measured platform guarantees",
+            "maxAgeMs": 30000,
+            "uncertaintyMs": 1000,
+            "maxElapsedRate": 1.01,
+            "maxObservationGapMs": 5000
+          },
+          "path": "/meet/people",
+          "published": true,
+          "theme": {
+            "selected": "REVENGE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 81.27999999999997,
+              "scrollY": 105,
+              "width": 352,
+              "height": 791
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/intros",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "capture": "native/06-360x844-normal.png",
+      "status": "PASS",
+      "attempt": 4,
+      "sha256": "2a96578789ac064ca50898ac2bb4d16292d20f3d0b49428687381a1ee1cec5ea",
+      "bytes": 33698
+    },
+    {
+      "caseIndex": 7,
+      "width": 360,
+      "height": 844,
+      "entry": "/meet/intro/edit",
+      "scenario": "normal",
+      "errors": [],
+      "resourceErrors": [],
+      "classification": "TEST_ONLY_DEFAULT_APP",
+      "initial": {
+        "overflow": false,
+        "feature": {
+          "x": 11,
+          "y": 59,
+          "width": 338,
+          "height": 1200,
+          "right": 349,
+          "bottom": 1259
+        },
+        "panel": {
+          "x": 4,
+          "y": 4,
+          "width": 352,
+          "height": 836,
+          "right": 356,
+          "bottom": 840
+        },
+        "rows": [],
+        "appearance": {
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 249, 248)",
+          "selectedBackground": null,
+          "loadedFonts": [
+            "Parade Ink Text",
+            "Parade Ink Display"
+          ]
+        },
+        "controls": [
+          {
+            "label": "Back to people",
+            "x": 11,
+            "y": 59,
+            "width": 118.40625,
+            "height": 44,
+            "right": 129.40625,
+            "bottom": 103
+          },
+          {
+            "label": "Private owner draft",
+            "x": 11,
+            "y": 287,
+            "width": 338,
+            "height": 132,
+            "right": 349,
+            "bottom": 419
+          },
+          {
+            "label": "",
+            "x": 11,
+            "y": 658,
+            "width": 338,
+            "height": 44,
+            "right": 349,
+            "bottom": 702
+          },
+          {
+            "label": "",
+            "x": 11,
+            "y": 742,
+            "width": 338,
+            "height": 44,
+            "right": 349,
+            "bottom": 786
+          },
+          {
+            "label": "",
+            "x": 11,
+            "y": 921,
+            "width": 338,
+            "height": 44,
+            "right": 349,
+            "bottom": 965
+          },
+          {
+            "label": "Save introduction",
+            "x": 11,
+            "y": 973,
+            "width": 147.40625,
+            "height": 44,
+            "right": 158.40625,
+            "bottom": 1017
+          },
+          {
+            "label": "Cancel changes",
+            "x": 166.40625,
+            "y": 973,
+            "width": 132.078125,
+            "height": 44,
+            "right": 298.484375,
+            "bottom": 1017
+          },
+          {
+            "label": "Publish introduction",
+            "x": 11,
+            "y": 1025,
+            "width": 168.8125,
+            "height": 44,
+            "right": 179.8125,
+            "bottom": 1069
+          },
+          {
+            "label": "Close introduction",
+            "x": 187.8125,
+            "y": 1025,
+            "width": 153.703125,
+            "height": 44,
+            "right": 341.515625,
+            "bottom": 1069
+          },
+          {
+            "label": "Load latest introduction",
+            "x": 11,
+            "y": 1077,
+            "width": 194.390625,
+            "height": 44,
+            "right": 205.390625,
+            "bottom": 1121
+          },
+          {
+            "label": "Age & privacy",
+            "x": 11,
+            "y": 1203,
+            "width": 108.421875,
+            "height": 44,
+            "right": 119.421875,
+            "bottom": 1247
+          }
+        ],
+        "state": {
+          "scenario": "enabled",
+          "capabilityMode": "TEST_ONLY synthetic capabilities",
+          "classification": "TEST_ONLY",
+          "policy": {
+            "classification": "TEST_ONLY",
+            "evidence": "Synthetic native fixture, not measured platform guarantees",
+            "maxAgeMs": 30000,
+            "uncertaintyMs": 1000,
+            "maxElapsedRate": 1.01,
+            "maxObservationGapMs": 5000
+          },
+          "path": "/meet/intro/edit",
+          "published": true,
+          "theme": {
+            "selected": "REVENGE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 81.27999999999997,
+              "scrollY": 105,
+              "width": 352,
+              "height": 791
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/intro",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "capture": "native/07-360x844-normal.png",
+      "status": "PASS",
+      "attempt": 2,
+      "sha256": "86f5b9dc3c000b67cba7b6d946f49b513a282ed41c0c901bb0e272c39d8fe26b",
+      "bytes": 60419
+    },
+    {
+      "caseIndex": 8,
+      "width": 360,
+      "height": 844,
+      "entry": "M06_COMPONENT",
+      "scenario": "current",
+      "errors": [],
+      "resourceErrors": [],
+      "classification": "TEST_ONLY_COMPONENT_NOT_DEFAULT_APP",
+      "initial": {
+        "overflow": false,
+        "feature": {
+          "x": 16,
+          "y": 24,
+          "width": 328,
+          "height": 911.03125,
+          "right": 344,
+          "bottom": 935.03125
+        },
+        "panel": null,
+        "rows": [],
+        "appearance": {
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 249, 248)",
+          "selectedBackground": null,
+          "loadedFonts": [
+            "Parade Ink Text",
+            "Parade Ink Display"
+          ]
+        },
+        "controls": [
+          {
+            "label": "Reviewed place source (new tab)",
+            "x": 16,
+            "y": 586.46875,
+            "width": 263.09375,
+            "height": 44,
+            "right": 279.09375,
+            "bottom": 630.46875
+          },
+          {
+            "label": "Use current description in update form",
+            "x": 16,
+            "y": 815.03125,
+            "width": 305.28125,
+            "height": 44,
+            "right": 321.28125,
+            "bottom": 859.03125
+          },
+          {
+            "label": "Revoke meeting\u2026",
+            "x": 16,
+            "y": 867.03125,
+            "width": 146.8125,
+            "height": 44,
+            "right": 162.8125,
+            "bottom": 911.03125
+          }
+        ],
+        "state": {
+          "phase": "current",
+          "canRead": true,
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places"
+            },
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/beacons/00000000-0000-4000-8000-000000000015"
+            }
+          ]
+        }
+      },
+      "capture": "native/08-360x844-current.png",
+      "status": "PASS",
+      "attempt": 2,
+      "sha256": "15935b5b9ab3200dbcbda06b08a6a4df13eee7eb7f0c5d0fd4126614ca187d18",
+      "bytes": 69079
+    },
+    {
+      "caseIndex": 9,
+      "width": 360,
+      "height": 844,
+      "entry": "/meet/beacons/00000000-0000-4000-8000-000000000015",
+      "scenario": "private",
+      "errors": [],
+      "resourceErrors": [],
+      "classification": "TEST_ONLY_DEFAULT_APP",
+      "initial": {
+        "overflow": false,
+        "feature": null,
+        "panel": null,
+        "rows": [],
+        "appearance": null,
+        "controls": [],
+        "state": {
+          "scenario": "enabled",
+          "capabilityMode": "TEST_ONLY synthetic capabilities",
+          "classification": "TEST_ONLY",
+          "policy": {
+            "classification": "TEST_ONLY",
+            "evidence": "Synthetic native fixture, not measured platform guarantees",
+            "maxAgeMs": 30000,
+            "uncertaintyMs": 1000,
+            "maxElapsedRate": 1.01,
+            "maxObservationGapMs": 5000
+          },
+          "path": "/meet/beacons/00000000-0000-4000-8000-000000000015",
+          "published": true,
+          "theme": {
+            "selected": "REVENGE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 81.27999999999997,
+              "scrollY": 105,
+              "width": 352,
+              "height": 791
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "capture": "native/09-360x844-private.png",
+      "status": "PASS",
+      "attempt": 2,
+      "sha256": "74541e857f62a61270e86730bccf3531a4dae4eb635cc0903208f0baa5f17f91",
+      "bytes": 15996
+    },
+    {
+      "caseIndex": 10,
+      "width": 390,
+      "height": 844,
+      "entry": "/meet",
+      "scenario": "normal",
+      "errors": [],
+      "resourceErrors": [],
+      "classification": "TEST_ONLY_DEFAULT_APP",
+      "initial": {
+        "overflow": false,
+        "feature": {
+          "x": 11,
+          "y": 59,
+          "width": 368,
+          "height": 717,
+          "right": 379,
+          "bottom": 776
+        },
+        "panel": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "right": 386,
+          "bottom": 840
+        },
+        "rows": [
+          {
+            "x": 11,
+            "y": 111,
+            "width": 368,
+            "height": 128,
+            "right": 379,
+            "bottom": 239
+          },
+          {
+            "x": 11,
+            "y": 247,
+            "width": 368,
+            "height": 128,
+            "right": 379,
+            "bottom": 375
+          },
+          {
+            "x": 11,
+            "y": 383,
+            "width": 368,
+            "height": 128,
+            "right": 379,
+            "bottom": 511
+          }
+        ],
+        "appearance": {
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 249, 248)",
+          "selectedBackground": "rgb(23, 23, 23)",
+          "loadedFonts": [
+            "Parade Ink Text",
+            "Parade Ink Display"
+          ]
+        },
+        "controls": [
+          {
+            "label": "Parties",
+            "x": 11,
+            "y": 59,
+            "width": 120,
+            "height": 44,
+            "right": 131,
+            "bottom": 103
+          },
+          {
+            "label": "People",
+            "x": 135,
+            "y": 59,
+            "width": 120,
+            "height": 44,
+            "right": 255,
+            "bottom": 103
+          },
+          {
+            "label": "MY PLAN",
+            "x": 259,
+            "y": 59,
+            "width": 120,
+            "height": 44,
+            "right": 379,
+            "bottom": 103
+          },
+          {
+            "label": "Area A Queue Group",
+            "x": 94,
+            "y": 122,
+            "width": 188,
+            "height": 44,
+            "right": 282,
+            "bottom": 166
+          },
+          {
+            "label": "View details for Area A Queue Group",
+            "x": 292,
+            "y": 184,
+            "width": 76,
+            "height": 44,
+            "right": 368,
+            "bottom": 228
+          },
+          {
+            "label": "After Show Hangout",
+            "x": 94,
+            "y": 258,
+            "width": 188,
+            "height": 44,
+            "right": 282,
+            "bottom": 302
+          },
+          {
+            "label": "View details for After Show Hangout",
+            "x": 292,
+            "y": 320,
+            "width": 76,
+            "height": 44,
+            "right": 368,
+            "bottom": 364
+          },
+          {
+            "label": "Photo Walk (Parade ver.)",
+            "x": 94,
+            "y": 394,
+            "width": 188,
+            "height": 44,
+            "right": 282,
+            "bottom": 438
+          },
+          {
+            "label": "View details for Photo Walk (Parade ver.)",
+            "x": 292,
+            "y": 456,
+            "width": 76,
+            "height": 44,
+            "right": 368,
+            "bottom": 500
+          },
+          {
+            "label": "Filter parties",
+            "x": 11,
+            "y": 519,
+            "width": 368,
+            "height": 44,
+            "right": 379,
+            "bottom": 563
+          },
+          {
+            "label": "",
+            "x": 13,
+            "y": 599,
+            "width": 364,
+            "height": 44,
+            "right": 377,
+            "bottom": 643
+          },
+          {
+            "label": "All statesopenclosedcancelledcompleted",
+            "x": 13,
+            "y": 683,
+            "width": 364,
+            "height": 44,
+            "right": 377,
+            "bottom": 727
+          },
+          {
+            "label": "",
+            "x": 13,
+            "y": 767,
+            "width": 364,
+            "height": 44,
+            "right": 377,
+            "bottom": 811
+          },
+          {
+            "label": "",
+            "x": 13,
+            "y": 851,
+            "width": 364,
+            "height": 44,
+            "right": 377,
+            "bottom": 895
+          },
+          {
+            "label": "",
+            "x": 13,
+            "y": 979,
+            "width": 364,
+            "height": 44,
+            "right": 377,
+            "bottom": 1023
+          },
+          {
+            "label": "Show parties",
+            "x": 13,
+            "y": 1035,
+            "width": 364,
+            "height": 44,
+            "right": 377,
+            "bottom": 1079
+          },
+          {
+            "label": "Refresh parties",
+            "x": 335,
+            "y": 724,
+            "width": 44,
+            "height": 44,
+            "right": 379,
+            "bottom": 768
+          },
+          {
+            "label": "Create party",
+            "x": 80,
+            "y": 724,
+            "width": 230,
+            "height": 44,
+            "right": 310,
+            "bottom": 768
+          }
+        ],
+        "state": {
+          "scenario": "enabled",
+          "capabilityMode": "TEST_ONLY synthetic capabilities",
+          "classification": "TEST_ONLY",
+          "policy": {
+            "classification": "TEST_ONLY",
+            "evidence": "Synthetic native fixture, not measured platform guarantees",
+            "maxAgeMs": 30000,
+            "uncertaintyMs": 1000,
+            "maxElapsedRate": 1.01,
+            "maxObservationGapMs": 5000
+          },
+          "path": "/meet",
+          "published": true,
+          "theme": {
+            "selected": "REVENGE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 70.48000000000002,
+              "scrollY": 105,
+              "width": 382,
+              "height": 791
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "capture": "native/10-390x844-normal.png",
+      "focus": {
+        "tag": "BUTTON",
+        "outline": "solid"
+      },
+      "status": "PASS",
+      "attempt": 3,
+      "sha256": "3fe1f7cb4b5c0ffcf01310c2a6545137186a2cb9ff86c09371e5dcf7ec25467d",
+      "bytes": 50472
+    },
+    {
+      "caseIndex": 11,
+      "width": 390,
+      "height": 844,
+      "entry": "/meet/parties/00000000-0000-4000-8000-000000000010",
+      "scenario": "normal",
+      "errors": [],
+      "resourceErrors": [],
+      "classification": "TEST_ONLY_DEFAULT_APP",
+      "initial": {
+        "overflow": false,
+        "feature": {
+          "x": 11,
+          "y": 59,
+          "width": 368,
+          "height": 1076,
+          "right": 379,
+          "bottom": 1135
+        },
+        "panel": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "right": 386,
+          "bottom": 840
+        },
+        "rows": [],
+        "appearance": {
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 249, 248)",
+          "selectedBackground": null,
+          "loadedFonts": [
+            "Parade Ink Text",
+            "Parade Ink Display"
+          ]
+        },
+        "controls": [
+          {
+            "label": "All parties",
+            "x": 11,
+            "y": 59,
+            "width": 182,
+            "height": 44,
+            "right": 193,
+            "bottom": 103
+          },
+          {
+            "label": "MY PLAN",
+            "x": 197,
+            "y": 59,
+            "width": 182,
+            "height": 44,
+            "right": 379,
+            "bottom": 103
+          },
+          {
+            "label": "Review place information",
+            "x": 11,
+            "y": 587,
+            "width": 201.859375,
+            "height": 44,
+            "right": 212.859375,
+            "bottom": 631
+          },
+          {
+            "label": "",
+            "x": 11,
+            "y": 876,
+            "width": 368,
+            "height": 110,
+            "right": 379,
+            "bottom": 986
+          },
+          {
+            "label": "Apply to party",
+            "x": 11,
+            "y": 994,
+            "width": 129.96875,
+            "height": 44,
+            "right": 140.96875,
+            "bottom": 1038
+          }
+        ],
+        "state": {
+          "scenario": "enabled",
+          "capabilityMode": "TEST_ONLY synthetic capabilities",
+          "classification": "TEST_ONLY",
+          "policy": {
+            "classification": "TEST_ONLY",
+            "evidence": "Synthetic native fixture, not measured platform guarantees",
+            "maxAgeMs": 30000,
+            "uncertaintyMs": 1000,
+            "maxElapsedRate": 1.01,
+            "maxObservationGapMs": 5000
+          },
+          "path": "/meet/parties/00000000-0000-4000-8000-000000000010",
+          "published": true,
+          "theme": {
+            "selected": "REVENGE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 70.48000000000002,
+              "scrollY": 105,
+              "width": 382,
+              "height": 791
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "capture": "native/11-390x844-normal.png",
+      "status": "PASS",
+      "attempt": 2,
+      "sha256": "f084e15a834ecc0510b8f2d9a00561fa6c2622ac921d483d8663d996f94e7c06",
+      "bytes": 66953
+    },
+    {
+      "caseIndex": 12,
+      "width": 390,
+      "height": 844,
+      "entry": "/meet/parties/new",
+      "scenario": "normal",
+      "errors": [],
+      "resourceErrors": [],
+      "classification": "TEST_ONLY_DEFAULT_APP",
+      "initial": {
+        "overflow": false,
+        "feature": {
+          "x": 11,
+          "y": 59,
+          "width": 368,
+          "height": 1085,
+          "right": 379,
+          "bottom": 1144
+        },
+        "panel": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "right": 386,
+          "bottom": 840
+        },
+        "rows": [],
+        "appearance": {
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 249, 248)",
+          "selectedBackground": null,
+          "loadedFonts": [
+            "Parade Ink Text",
+            "Parade Ink Display"
+          ]
+        },
+        "controls": [
+          {
+            "label": "Party title",
+            "x": 11,
+            "y": 315,
+            "width": 368,
+            "height": 44,
+            "right": 379,
+            "bottom": 359
+          },
+          {
+            "label": "Ticket section",
+            "x": 11,
+            "y": 399,
+            "width": 368,
+            "height": 44,
+            "right": 379,
+            "bottom": 443
+          },
+          {
+            "label": "Capacity",
+            "x": 11,
+            "y": 483,
+            "width": 368,
+            "height": 44,
+            "right": 379,
+            "bottom": 527
+          },
+          {
+            "label": "Introduction",
+            "x": 11,
+            "y": 567,
+            "width": 368,
+            "height": 44,
+            "right": 379,
+            "bottom": 611
+          },
+          {
+            "label": "Start time (KST)",
+            "x": 11,
+            "y": 651,
+            "width": 368,
+            "height": 44,
+            "right": 379,
+            "bottom": 695
+          },
+          {
+            "label": "End time (KST)",
+            "x": 11,
+            "y": 735,
+            "width": 368,
+            "height": 44,
+            "right": 379,
+            "bottom": 779
+          },
+          {
+            "label": "Choose a qualified placeVirtual Studio landmark",
+            "x": 11,
+            "y": 819,
+            "width": 368,
+            "height": 44,
+            "right": 379,
+            "bottom": 863
+          },
+          {
+            "label": "Requirements",
+            "x": 11,
+            "y": 903,
+            "width": 368,
+            "height": 44,
+            "right": 379,
+            "bottom": 947
+          },
+          {
+            "label": "Create party",
+            "x": 11,
+            "y": 972,
+            "width": 368,
+            "height": 44,
+            "right": 379,
+            "bottom": 1016
+          },
+          {
+            "label": "Save session draft",
+            "x": 11,
+            "y": 1024,
+            "width": 368,
+            "height": 44,
+            "right": 379,
+            "bottom": 1068
+          },
+          {
+            "label": "Restore draft",
+            "x": 11,
+            "y": 1076,
+            "width": 368,
+            "height": 44,
+            "right": 379,
+            "bottom": 1120
+          }
+        ],
+        "state": {
+          "scenario": "enabled",
+          "capabilityMode": "TEST_ONLY synthetic capabilities",
+          "classification": "TEST_ONLY",
+          "policy": {
+            "classification": "TEST_ONLY",
+            "evidence": "Synthetic native fixture, not measured platform guarantees",
+            "maxAgeMs": 30000,
+            "uncertaintyMs": 1000,
+            "maxElapsedRate": 1.01,
+            "maxObservationGapMs": 5000
+          },
+          "path": "/meet/parties/new",
+          "published": true,
+          "theme": {
+            "selected": "REVENGE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 70.48000000000002,
+              "scrollY": 105,
+              "width": 382,
+              "height": 791
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "capture": "native/12-390x844-normal.png",
+      "status": "PASS",
+      "attempt": 2,
+      "sha256": "222cc6c2f9088b53b742d8b233a02c710b9b50c503a49ad04eb57428843345e9",
+      "bytes": 49976
+    },
+    {
+      "caseIndex": 13,
+      "width": 390,
+      "height": 844,
+      "entry": "/meet/parties/00000000-0000-4000-8000-000000000010/manage",
+      "scenario": "owner",
+      "errors": [],
+      "resourceErrors": [],
+      "classification": "TEST_ONLY_DEFAULT_APP",
+      "initial": {
+        "overflow": false,
+        "feature": {
+          "x": 11,
+          "y": 67,
+          "width": 368,
+          "height": 837,
+          "right": 379,
+          "bottom": 904
+        },
+        "panel": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "right": 386,
+          "bottom": 840
+        },
+        "rows": [],
+        "appearance": {
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 249, 248)",
+          "selectedBackground": null,
+          "loadedFonts": [
+            "Parade Ink Text",
+            "Parade Ink Display"
+          ]
+        },
+        "controls": [
+          {
+            "label": "Read current party",
+            "x": 11,
+            "y": 137,
+            "width": 157.28125,
+            "height": 44,
+            "right": 168.28125,
+            "bottom": 181
+          },
+          {
+            "label": "Approve You \u00b7 fixture",
+            "x": 24,
+            "y": 626,
+            "width": 169.78125,
+            "height": 44,
+            "right": 193.78125,
+            "bottom": 670
+          },
+          {
+            "label": "Reject You \u00b7 fixture",
+            "x": 201.78125,
+            "y": 626,
+            "width": 157,
+            "height": 44,
+            "right": 358.78125,
+            "bottom": 670
+          },
+          {
+            "label": "Cancel party",
+            "x": 11,
+            "y": 848,
+            "width": 110.625,
+            "height": 44,
+            "right": 121.625,
+            "bottom": 892
+          }
+        ],
+        "state": {
+          "scenario": "enabled",
+          "capabilityMode": "TEST_ONLY synthetic capabilities",
+          "classification": "TEST_ONLY",
+          "policy": {
+            "classification": "TEST_ONLY",
+            "evidence": "Synthetic native fixture, not measured platform guarantees",
+            "maxAgeMs": 30000,
+            "uncertaintyMs": 1000,
+            "maxElapsedRate": 1.01,
+            "maxObservationGapMs": 5000
+          },
+          "path": "/meet/parties/00000000-0000-4000-8000-000000000010/manage",
+          "published": true,
+          "theme": {
+            "selected": "REVENGE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 70.48000000000002,
+              "scrollY": 105,
+              "width": 382,
+              "height": 791
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010/members",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010/applications",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "capture": "native/13-390x844-owner.png",
+      "status": "PASS",
+      "attempt": 2,
+      "sha256": "f6db05b20424dd1bbbbba525d268110b26031a635c68d7360e86536778fbc70a",
+      "bytes": 58148
+    },
+    {
+      "caseIndex": 14,
+      "width": 390,
+      "height": 844,
+      "entry": "/meet/parties/00000000-0000-4000-8000-000000000010/rally",
+      "scenario": "owner",
+      "errors": [],
+      "resourceErrors": [],
+      "classification": "TEST_ONLY_DEFAULT_APP",
+      "initial": {
+        "overflow": false,
+        "feature": {
+          "x": 11,
+          "y": 65,
+          "width": 368,
+          "height": 372,
+          "right": 379,
+          "bottom": 437
+        },
+        "panel": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "right": 386,
+          "bottom": 840
+        },
+        "rows": [],
+        "appearance": {
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 249, 248)",
+          "selectedBackground": null,
+          "loadedFonts": [
+            "Parade Ink Text",
+            "Parade Ink Display"
+          ]
+        },
+        "controls": [
+          {
+            "label": "Read current rally",
+            "x": 11,
+            "y": 209,
+            "width": 151.421875,
+            "height": 44,
+            "right": 162.421875,
+            "bottom": 253
+          },
+          {
+            "label": "",
+            "x": 11,
+            "y": 265,
+            "width": 368,
+            "height": 44,
+            "right": 379,
+            "bottom": 309
+          },
+          {
+            "label": "ON MY WAY",
+            "x": 11,
+            "y": 321,
+            "width": 99.453125,
+            "height": 44,
+            "right": 110.453125,
+            "bottom": 365
+          },
+          {
+            "label": "HERE",
+            "x": 118.453125,
+            "y": 321,
+            "width": 55.875,
+            "height": 44,
+            "right": 174.328125,
+            "bottom": 365
+          },
+          {
+            "label": "MET",
+            "x": 182.328125,
+            "y": 321,
+            "width": 46.734375,
+            "height": 44,
+            "right": 229.0625,
+            "bottom": 365
+          },
+          {
+            "label": "NEED HELP",
+            "x": 237.0625,
+            "y": 321,
+            "width": 96.625,
+            "height": 44,
+            "right": 333.6875,
+            "bottom": 365
+          },
+          {
+            "label": "LEFT",
+            "x": 11,
+            "y": 373,
+            "width": 49.84375,
+            "height": 44,
+            "right": 60.84375,
+            "bottom": 417
+          }
+        ],
+        "state": {
+          "scenario": "enabled",
+          "capabilityMode": "TEST_ONLY synthetic capabilities",
+          "classification": "TEST_ONLY",
+          "policy": {
+            "classification": "TEST_ONLY",
+            "evidence": "Synthetic native fixture, not measured platform guarantees",
+            "maxAgeMs": 30000,
+            "uncertaintyMs": 1000,
+            "maxElapsedRate": 1.01,
+            "maxObservationGapMs": 5000
+          },
+          "path": "/meet/parties/00000000-0000-4000-8000-000000000010/rally",
+          "published": true,
+          "theme": {
+            "selected": "REVENGE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 70.48000000000002,
+              "scrollY": 105,
+              "width": 382,
+              "height": 791
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010/members",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010/applications",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "capture": "native/14-390x844-owner.png",
+      "status": "PASS",
+      "attempt": 2,
+      "sha256": "1416fc5745e2baebc6a948dfa38b1d0b58ef4cbbf3f8b1dc43b1661d1653b309",
+      "bytes": 34724
+    },
+    {
+      "caseIndex": 15,
+      "width": 390,
+      "height": 844,
+      "entry": "/meet/people",
+      "scenario": "normal",
+      "errors": [],
+      "resourceErrors": [],
+      "classification": "TEST_ONLY_DEFAULT_APP",
+      "initial": {
+        "overflow": false,
+        "feature": {
+          "x": 11,
+          "y": 67,
+          "width": 368,
+          "height": 412,
+          "right": 379,
+          "bottom": 479
+        },
+        "panel": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "right": 386,
+          "bottom": 840
+        },
+        "rows": [],
+        "appearance": {
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 249, 248)",
+          "selectedBackground": null,
+          "loadedFonts": [
+            "Parade Ink Text",
+            "Parade Ink Display"
+          ]
+        },
+        "controls": [
+          {
+            "label": "Parties",
+            "x": 11,
+            "y": 185,
+            "width": 69.96875,
+            "height": 44,
+            "right": 80.96875,
+            "bottom": 229
+          },
+          {
+            "label": "Your introduction",
+            "x": 88.96875,
+            "y": 185,
+            "width": 146.3125,
+            "height": 44,
+            "right": 235.28125,
+            "bottom": 229
+          },
+          {
+            "label": "",
+            "x": 11,
+            "y": 271,
+            "width": 291.53125,
+            "height": 44,
+            "right": 302.53125,
+            "bottom": 315
+          },
+          {
+            "label": "Search",
+            "x": 310.53125,
+            "y": 271,
+            "width": 68.46875,
+            "height": 44,
+            "right": 379,
+            "bottom": 315
+          },
+          {
+            "label": "Fixture fan",
+            "x": 100,
+            "y": 370,
+            "width": 87.59375,
+            "height": 44,
+            "right": 187.59375,
+            "bottom": 414
+          }
+        ],
+        "state": {
+          "scenario": "enabled",
+          "capabilityMode": "TEST_ONLY synthetic capabilities",
+          "classification": "TEST_ONLY",
+          "policy": {
+            "classification": "TEST_ONLY",
+            "evidence": "Synthetic native fixture, not measured platform guarantees",
+            "maxAgeMs": 30000,
+            "uncertaintyMs": 1000,
+            "maxElapsedRate": 1.01,
+            "maxObservationGapMs": 5000
+          },
+          "path": "/meet/people",
+          "published": true,
+          "theme": {
+            "selected": "REVENGE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 70.48000000000002,
+              "scrollY": 105,
+              "width": 382,
+              "height": 791
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/intros",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "capture": "native/15-390x844-normal.png",
+      "status": "PASS",
+      "attempt": 4,
+      "sha256": "38ddbe4e17e2bd2db7e144175117efa6d94592a50dc30c641e8a3d413a6b0735",
+      "bytes": 33964
+    },
+    {
+      "caseIndex": 16,
+      "width": 390,
+      "height": 844,
+      "entry": "/meet/intro/edit",
+      "scenario": "normal",
+      "errors": [],
+      "resourceErrors": [],
+      "classification": "TEST_ONLY_DEFAULT_APP",
+      "initial": {
+        "overflow": false,
+        "feature": {
+          "x": 11,
+          "y": 59,
+          "width": 368,
+          "height": 1156,
+          "right": 379,
+          "bottom": 1215
+        },
+        "panel": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "right": 386,
+          "bottom": 840
+        },
+        "rows": [],
+        "appearance": {
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 249, 248)",
+          "selectedBackground": null,
+          "loadedFonts": [
+            "Parade Ink Text",
+            "Parade Ink Display"
+          ]
+        },
+        "controls": [
+          {
+            "label": "Back to people",
+            "x": 11,
+            "y": 59,
+            "width": 118.40625,
+            "height": 44,
+            "right": 129.40625,
+            "bottom": 103
+          },
+          {
+            "label": "Private owner draft",
+            "x": 11,
+            "y": 265,
+            "width": 368,
+            "height": 132,
+            "right": 379,
+            "bottom": 397
+          },
+          {
+            "label": "",
+            "x": 11,
+            "y": 636,
+            "width": 368,
+            "height": 44,
+            "right": 379,
+            "bottom": 680
+          },
+          {
+            "label": "",
+            "x": 11,
+            "y": 720,
+            "width": 368,
+            "height": 44,
+            "right": 379,
+            "bottom": 764
+          },
+          {
+            "label": "",
+            "x": 11,
+            "y": 877,
+            "width": 368,
+            "height": 44,
+            "right": 379,
+            "bottom": 921
+          },
+          {
+            "label": "Save introduction",
+            "x": 11,
+            "y": 929,
+            "width": 147.40625,
+            "height": 44,
+            "right": 158.40625,
+            "bottom": 973
+          },
+          {
+            "label": "Cancel changes",
+            "x": 166.40625,
+            "y": 929,
+            "width": 132.078125,
+            "height": 44,
+            "right": 298.484375,
+            "bottom": 973
+          },
+          {
+            "label": "Publish introduction",
+            "x": 11,
+            "y": 981,
+            "width": 168.8125,
+            "height": 44,
+            "right": 179.8125,
+            "bottom": 1025
+          },
+          {
+            "label": "Close introduction",
+            "x": 187.8125,
+            "y": 981,
+            "width": 153.703125,
+            "height": 44,
+            "right": 341.515625,
+            "bottom": 1025
+          },
+          {
+            "label": "Load latest introduction",
+            "x": 11,
+            "y": 1033,
+            "width": 194.390625,
+            "height": 44,
+            "right": 205.390625,
+            "bottom": 1077
+          },
+          {
+            "label": "Age & privacy",
+            "x": 11,
+            "y": 1159,
+            "width": 108.421875,
+            "height": 44,
+            "right": 119.421875,
+            "bottom": 1203
+          }
+        ],
+        "state": {
+          "scenario": "enabled",
+          "capabilityMode": "TEST_ONLY synthetic capabilities",
+          "classification": "TEST_ONLY",
+          "policy": {
+            "classification": "TEST_ONLY",
+            "evidence": "Synthetic native fixture, not measured platform guarantees",
+            "maxAgeMs": 30000,
+            "uncertaintyMs": 1000,
+            "maxElapsedRate": 1.01,
+            "maxObservationGapMs": 5000
+          },
+          "path": "/meet/intro/edit",
+          "published": true,
+          "theme": {
+            "selected": "REVENGE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 70.48000000000002,
+              "scrollY": 105,
+              "width": 382,
+              "height": 791
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/intro",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "capture": "native/16-390x844-normal.png",
+      "status": "PASS",
+      "attempt": 2,
+      "sha256": "82d2991e235bdafc67212d64c3ad3e8912ab86109f3020e193bbcc6e66728ee2",
+      "bytes": 61639
+    },
+    {
+      "caseIndex": 17,
+      "width": 390,
+      "height": 844,
+      "entry": "M06_COMPONENT",
+      "scenario": "current",
+      "errors": [],
+      "resourceErrors": [],
+      "classification": "TEST_ONLY_COMPONENT_NOT_DEFAULT_APP",
+      "initial": {
+        "overflow": false,
+        "feature": {
+          "x": 16,
+          "y": 24,
+          "width": 358,
+          "height": 911.03125,
+          "right": 374,
+          "bottom": 935.03125
+        },
+        "panel": null,
+        "rows": [],
+        "appearance": {
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 249, 248)",
+          "selectedBackground": null,
+          "loadedFonts": [
+            "Parade Ink Text",
+            "Parade Ink Display"
+          ]
+        },
+        "controls": [
+          {
+            "label": "Reviewed place source (new tab)",
+            "x": 16,
+            "y": 586.46875,
+            "width": 263.09375,
+            "height": 44,
+            "right": 279.09375,
+            "bottom": 630.46875
+          },
+          {
+            "label": "Use current description in update form",
+            "x": 16,
+            "y": 815.03125,
+            "width": 305.28125,
+            "height": 44,
+            "right": 321.28125,
+            "bottom": 859.03125
+          },
+          {
+            "label": "Revoke meeting\u2026",
+            "x": 16,
+            "y": 867.03125,
+            "width": 146.8125,
+            "height": 44,
+            "right": 162.8125,
+            "bottom": 911.03125
+          }
+        ],
+        "state": {
+          "phase": "current",
+          "canRead": true,
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places"
+            },
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/beacons/00000000-0000-4000-8000-000000000015"
+            }
+          ]
+        }
+      },
+      "capture": "native/17-390x844-current.png",
+      "status": "PASS",
+      "attempt": 2,
+      "sha256": "3ba07f40bfa91fe8961e67d66c0577d2c0403ed8712976a2d49c7813d3f08c38",
+      "bytes": 69881
+    },
+    {
+      "caseIndex": 18,
+      "width": 390,
+      "height": 844,
+      "entry": "/meet/beacons/00000000-0000-4000-8000-000000000015",
+      "scenario": "private",
+      "errors": [],
+      "resourceErrors": [],
+      "classification": "TEST_ONLY_DEFAULT_APP",
+      "initial": {
+        "overflow": false,
+        "feature": null,
+        "panel": null,
+        "rows": [],
+        "appearance": null,
+        "controls": [],
+        "state": {
+          "scenario": "enabled",
+          "capabilityMode": "TEST_ONLY synthetic capabilities",
+          "classification": "TEST_ONLY",
+          "policy": {
+            "classification": "TEST_ONLY",
+            "evidence": "Synthetic native fixture, not measured platform guarantees",
+            "maxAgeMs": 30000,
+            "uncertaintyMs": 1000,
+            "maxElapsedRate": 1.01,
+            "maxObservationGapMs": 5000
+          },
+          "path": "/meet/beacons/00000000-0000-4000-8000-000000000015",
+          "published": true,
+          "theme": {
+            "selected": "REVENGE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 70.48000000000002,
+              "scrollY": 105,
+              "width": 382,
+              "height": 791
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "capture": "native/18-390x844-private.png",
+      "status": "PASS",
+      "attempt": 2,
+      "sha256": "0692f4c879cbd1d849b9875361ba3cb45dcd882fddb25f0223157800a64f98d1",
+      "bytes": 16434
+    },
+    {
+      "caseIndex": 19,
+      "width": 430,
+      "height": 844,
+      "entry": "/meet",
+      "scenario": "normal",
+      "errors": [],
+      "resourceErrors": [],
+      "classification": "TEST_ONLY_DEFAULT_APP",
+      "initial": {
+        "overflow": false,
+        "feature": {
+          "x": 11,
+          "y": 59,
+          "width": 408,
+          "height": 717,
+          "right": 419,
+          "bottom": 776
+        },
+        "panel": {
+          "x": 4,
+          "y": 4,
+          "width": 422,
+          "height": 836,
+          "right": 426,
+          "bottom": 840
+        },
+        "rows": [
+          {
+            "x": 11,
+            "y": 111,
+            "width": 408,
+            "height": 128,
+            "right": 419,
+            "bottom": 239
+          },
+          {
+            "x": 11,
+            "y": 247,
+            "width": 408,
+            "height": 128,
+            "right": 419,
+            "bottom": 375
+          },
+          {
+            "x": 11,
+            "y": 383,
+            "width": 408,
+            "height": 128,
+            "right": 419,
+            "bottom": 511
+          }
+        ],
+        "appearance": {
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 249, 248)",
+          "selectedBackground": "rgb(23, 23, 23)",
+          "loadedFonts": [
+            "Parade Ink Text",
+            "Parade Ink Display"
+          ]
+        },
+        "controls": [
+          {
+            "label": "Parties",
+            "x": 11,
+            "y": 59,
+            "width": 133.328125,
+            "height": 44,
+            "right": 144.328125,
+            "bottom": 103
+          },
+          {
+            "label": "People",
+            "x": 148.328125,
+            "y": 59,
+            "width": 133.328125,
+            "height": 44,
+            "right": 281.65625,
+            "bottom": 103
+          },
+          {
+            "label": "MY PLAN",
+            "x": 285.65625,
+            "y": 59,
+            "width": 133.328125,
+            "height": 44,
+            "right": 418.984375,
+            "bottom": 103
+          },
+          {
+            "label": "Area A Queue Group",
+            "x": 94,
+            "y": 122,
+            "width": 228,
+            "height": 44,
+            "right": 322,
+            "bottom": 166
+          },
+          {
+            "label": "View details for Area A Queue Group",
+            "x": 332,
+            "y": 184,
+            "width": 76,
+            "height": 44,
+            "right": 408,
+            "bottom": 228
+          },
+          {
+            "label": "After Show Hangout",
+            "x": 94,
+            "y": 258,
+            "width": 228,
+            "height": 44,
+            "right": 322,
+            "bottom": 302
+          },
+          {
+            "label": "View details for After Show Hangout",
+            "x": 332,
+            "y": 320,
+            "width": 76,
+            "height": 44,
+            "right": 408,
+            "bottom": 364
+          },
+          {
+            "label": "Photo Walk (Parade ver.)",
+            "x": 94,
+            "y": 394,
+            "width": 228,
+            "height": 44,
+            "right": 322,
+            "bottom": 438
+          },
+          {
+            "label": "View details for Photo Walk (Parade ver.)",
+            "x": 332,
+            "y": 456,
+            "width": 76,
+            "height": 44,
+            "right": 408,
+            "bottom": 500
+          },
+          {
+            "label": "Filter parties",
+            "x": 11,
+            "y": 519,
+            "width": 408,
+            "height": 44,
+            "right": 419,
+            "bottom": 563
+          },
+          {
+            "label": "",
+            "x": 13,
+            "y": 599,
+            "width": 404,
+            "height": 44,
+            "right": 417,
+            "bottom": 643
+          },
+          {
+            "label": "All statesopenclosedcancelledcompleted",
+            "x": 13,
+            "y": 683,
+            "width": 404,
+            "height": 44,
+            "right": 417,
+            "bottom": 727
+          },
+          {
+            "label": "",
+            "x": 13,
+            "y": 767,
+            "width": 404,
+            "height": 44,
+            "right": 417,
+            "bottom": 811
+          },
+          {
+            "label": "",
+            "x": 13,
+            "y": 851,
+            "width": 404,
+            "height": 44,
+            "right": 417,
+            "bottom": 895
+          },
+          {
+            "label": "",
+            "x": 13,
+            "y": 979,
+            "width": 404,
+            "height": 44,
+            "right": 417,
+            "bottom": 1023
+          },
+          {
+            "label": "Show parties",
+            "x": 13,
+            "y": 1035,
+            "width": 404,
+            "height": 44,
+            "right": 417,
+            "bottom": 1079
+          },
+          {
+            "label": "Refresh parties",
+            "x": 375,
+            "y": 724,
+            "width": 44,
+            "height": 44,
+            "right": 419,
+            "bottom": 768
+          },
+          {
+            "label": "Create party",
+            "x": 100,
+            "y": 724,
+            "width": 230,
+            "height": 44,
+            "right": 330,
+            "bottom": 768
+          }
+        ],
+        "state": {
+          "scenario": "enabled",
+          "capabilityMode": "TEST_ONLY synthetic capabilities",
+          "classification": "TEST_ONLY",
+          "policy": {
+            "classification": "TEST_ONLY",
+            "evidence": "Synthetic native fixture, not measured platform guarantees",
+            "maxAgeMs": 30000,
+            "uncertaintyMs": 1000,
+            "maxElapsedRate": 1.01,
+            "maxObservationGapMs": 5000
+          },
+          "path": "/meet",
+          "published": true,
+          "theme": {
+            "selected": "REVENGE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 56.079999999999984,
+              "scrollY": 105,
+              "width": 422,
+              "height": 791
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "capture": "native/19-430x844-normal.png",
+      "focus": {
+        "tag": "BUTTON",
+        "outline": "solid"
+      },
+      "status": "PASS",
+      "attempt": 3,
+      "sha256": "a07950b6b8bf824dde2074e8f0cecdcbb04180e246e70a5b8c742c8527d5cb18",
+      "bytes": 50555
+    },
+    {
+      "caseIndex": 20,
+      "width": 430,
+      "height": 844,
+      "entry": "/meet/parties/00000000-0000-4000-8000-000000000010",
+      "scenario": "normal",
+      "errors": [],
+      "resourceErrors": [],
+      "classification": "TEST_ONLY_DEFAULT_APP",
+      "initial": {
+        "overflow": false,
+        "feature": {
+          "x": 11,
+          "y": 59,
+          "width": 408,
+          "height": 1032,
+          "right": 419,
+          "bottom": 1091
+        },
+        "panel": {
+          "x": 4,
+          "y": 4,
+          "width": 422,
+          "height": 836,
+          "right": 426,
+          "bottom": 840
+        },
+        "rows": [],
+        "appearance": {
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 249, 248)",
+          "selectedBackground": null,
+          "loadedFonts": [
+            "Parade Ink Text",
+            "Parade Ink Display"
+          ]
+        },
+        "controls": [
+          {
+            "label": "All parties",
+            "x": 11,
+            "y": 59,
+            "width": 202,
+            "height": 44,
+            "right": 213,
+            "bottom": 103
+          },
+          {
+            "label": "MY PLAN",
+            "x": 217,
+            "y": 59,
+            "width": 202,
+            "height": 44,
+            "right": 419,
+            "bottom": 103
+          },
+          {
+            "label": "Review place information",
+            "x": 11,
+            "y": 565,
+            "width": 201.859375,
+            "height": 44,
+            "right": 212.859375,
+            "bottom": 609
+          },
+          {
+            "label": "",
+            "x": 11,
+            "y": 832,
+            "width": 408,
+            "height": 110,
+            "right": 419,
+            "bottom": 942
+          },
+          {
+            "label": "Apply to party",
+            "x": 11,
+            "y": 950,
+            "width": 129.96875,
+            "height": 44,
+            "right": 140.96875,
+            "bottom": 994
+          }
+        ],
+        "state": {
+          "scenario": "enabled",
+          "capabilityMode": "TEST_ONLY synthetic capabilities",
+          "classification": "TEST_ONLY",
+          "policy": {
+            "classification": "TEST_ONLY",
+            "evidence": "Synthetic native fixture, not measured platform guarantees",
+            "maxAgeMs": 30000,
+            "uncertaintyMs": 1000,
+            "maxElapsedRate": 1.01,
+            "maxObservationGapMs": 5000
+          },
+          "path": "/meet/parties/00000000-0000-4000-8000-000000000010",
+          "published": true,
+          "theme": {
+            "selected": "REVENGE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 56.079999999999984,
+              "scrollY": 105,
+              "width": 422,
+              "height": 791
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "capture": "native/20-430x844-normal.png",
+      "status": "PASS",
+      "attempt": 2,
+      "sha256": "8885ff318aaaf43b1ab82c8dec78cebc0993036d2f2ad26e92202e4267e0fcd5",
+      "bytes": 71376
+    },
+    {
+      "caseIndex": 21,
+      "width": 430,
+      "height": 844,
+      "entry": "/meet/parties/new",
+      "scenario": "normal",
+      "errors": [],
+      "resourceErrors": [],
+      "classification": "TEST_ONLY_DEFAULT_APP",
+      "initial": {
+        "overflow": false,
+        "feature": {
+          "x": 11,
+          "y": 59,
+          "width": 408,
+          "height": 1063,
+          "right": 419,
+          "bottom": 1122
+        },
+        "panel": {
+          "x": 4,
+          "y": 4,
+          "width": 422,
+          "height": 836,
+          "right": 426,
+          "bottom": 840
+        },
+        "rows": [],
+        "appearance": {
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 249, 248)",
+          "selectedBackground": null,
+          "loadedFonts": [
+            "Parade Ink Text",
+            "Parade Ink Display"
+          ]
+        },
+        "controls": [
+          {
+            "label": "Party title",
+            "x": 11,
+            "y": 293,
+            "width": 408,
+            "height": 44,
+            "right": 419,
+            "bottom": 337
+          },
+          {
+            "label": "Ticket section",
+            "x": 11,
+            "y": 377,
+            "width": 408,
+            "height": 44,
+            "right": 419,
+            "bottom": 421
+          },
+          {
+            "label": "Capacity",
+            "x": 11,
+            "y": 461,
+            "width": 408,
+            "height": 44,
+            "right": 419,
+            "bottom": 505
+          },
+          {
+            "label": "Introduction",
+            "x": 11,
+            "y": 545,
+            "width": 408,
+            "height": 44,
+            "right": 419,
+            "bottom": 589
+          },
+          {
+            "label": "Start time (KST)",
+            "x": 11,
+            "y": 629,
+            "width": 408,
+            "height": 44,
+            "right": 419,
+            "bottom": 673
+          },
+          {
+            "label": "End time (KST)",
+            "x": 11,
+            "y": 713,
+            "width": 408,
+            "height": 44,
+            "right": 419,
+            "bottom": 757
+          },
+          {
+            "label": "Choose a qualified placeVirtual Studio landmark",
+            "x": 11,
+            "y": 797,
+            "width": 408,
+            "height": 44,
+            "right": 419,
+            "bottom": 841
+          },
+          {
+            "label": "Requirements",
+            "x": 11,
+            "y": 881,
+            "width": 408,
+            "height": 44,
+            "right": 419,
+            "bottom": 925
+          },
+          {
+            "label": "Create party",
+            "x": 11,
+            "y": 950,
+            "width": 408,
+            "height": 44,
+            "right": 419,
+            "bottom": 994
+          },
+          {
+            "label": "Save session draft",
+            "x": 11,
+            "y": 1002,
+            "width": 408,
+            "height": 44,
+            "right": 419,
+            "bottom": 1046
+          },
+          {
+            "label": "Restore draft",
+            "x": 11,
+            "y": 1054,
+            "width": 408,
+            "height": 44,
+            "right": 419,
+            "bottom": 1098
+          }
+        ],
+        "state": {
+          "scenario": "enabled",
+          "capabilityMode": "TEST_ONLY synthetic capabilities",
+          "classification": "TEST_ONLY",
+          "policy": {
+            "classification": "TEST_ONLY",
+            "evidence": "Synthetic native fixture, not measured platform guarantees",
+            "maxAgeMs": 30000,
+            "uncertaintyMs": 1000,
+            "maxElapsedRate": 1.01,
+            "maxObservationGapMs": 5000
+          },
+          "path": "/meet/parties/new",
+          "published": true,
+          "theme": {
+            "selected": "REVENGE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 56.079999999999984,
+              "scrollY": 105,
+              "width": 422,
+              "height": 791
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "capture": "native/21-430x844-normal.png",
+      "status": "PASS",
+      "attempt": 2,
+      "sha256": "b71aed732fc5b81ad178db7f56b37b64d7a5eb593e4eecc4b497518a5c3c7d3e",
+      "bytes": 52934
+    },
+    {
+      "caseIndex": 22,
+      "width": 430,
+      "height": 844,
+      "entry": "/meet/parties/00000000-0000-4000-8000-000000000010/manage",
+      "scenario": "owner",
+      "errors": [],
+      "resourceErrors": [],
+      "classification": "TEST_ONLY_DEFAULT_APP",
+      "initial": {
+        "overflow": false,
+        "feature": {
+          "x": 11,
+          "y": 67,
+          "width": 408,
+          "height": 793,
+          "right": 419,
+          "bottom": 860
+        },
+        "panel": {
+          "x": 4,
+          "y": 4,
+          "width": 422,
+          "height": 836,
+          "right": 426,
+          "bottom": 840
+        },
+        "rows": [],
+        "appearance": {
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 249, 248)",
+          "selectedBackground": null,
+          "loadedFonts": [
+            "Parade Ink Text",
+            "Parade Ink Display"
+          ]
+        },
+        "controls": [
+          {
+            "label": "Read current party",
+            "x": 11,
+            "y": 137,
+            "width": 157.28125,
+            "height": 44,
+            "right": 168.28125,
+            "bottom": 181
+          },
+          {
+            "label": "Approve You \u00b7 fixture",
+            "x": 24,
+            "y": 582,
+            "width": 169.78125,
+            "height": 44,
+            "right": 193.78125,
+            "bottom": 626
+          },
+          {
+            "label": "Reject You \u00b7 fixture",
+            "x": 201.78125,
+            "y": 582,
+            "width": 157,
+            "height": 44,
+            "right": 358.78125,
+            "bottom": 626
+          },
+          {
+            "label": "Cancel party",
+            "x": 11,
+            "y": 804,
+            "width": 110.625,
+            "height": 44,
+            "right": 121.625,
+            "bottom": 848
+          }
+        ],
+        "state": {
+          "scenario": "enabled",
+          "capabilityMode": "TEST_ONLY synthetic capabilities",
+          "classification": "TEST_ONLY",
+          "policy": {
+            "classification": "TEST_ONLY",
+            "evidence": "Synthetic native fixture, not measured platform guarantees",
+            "maxAgeMs": 30000,
+            "uncertaintyMs": 1000,
+            "maxElapsedRate": 1.01,
+            "maxObservationGapMs": 5000
+          },
+          "path": "/meet/parties/00000000-0000-4000-8000-000000000010/manage",
+          "published": true,
+          "theme": {
+            "selected": "REVENGE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 56.079999999999984,
+              "scrollY": 105,
+              "width": 422,
+              "height": 791
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010/members",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010/applications",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "capture": "native/22-430x844-owner.png",
+      "status": "PASS",
+      "attempt": 2,
+      "sha256": "24f7357f20b7ab0d50b3639f28f5c697574d788a73be29567f5c1a1a0e209d39",
+      "bytes": 58477
+    },
+    {
+      "caseIndex": 23,
+      "width": 430,
+      "height": 844,
+      "entry": "/meet/parties/00000000-0000-4000-8000-000000000010/rally",
+      "scenario": "owner",
+      "errors": [],
+      "resourceErrors": [],
+      "classification": "TEST_ONLY_DEFAULT_APP",
+      "initial": {
+        "overflow": false,
+        "feature": {
+          "x": 11,
+          "y": 65,
+          "width": 408,
+          "height": 320,
+          "right": 419,
+          "bottom": 385
+        },
+        "panel": {
+          "x": 4,
+          "y": 4,
+          "width": 422,
+          "height": 836,
+          "right": 426,
+          "bottom": 840
+        },
+        "rows": [],
+        "appearance": {
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 249, 248)",
+          "selectedBackground": null,
+          "loadedFonts": [
+            "Parade Ink Text",
+            "Parade Ink Display"
+          ]
+        },
+        "controls": [
+          {
+            "label": "Read current rally",
+            "x": 11,
+            "y": 209,
+            "width": 151.421875,
+            "height": 44,
+            "right": 162.421875,
+            "bottom": 253
+          },
+          {
+            "label": "",
+            "x": 11,
+            "y": 265,
+            "width": 408,
+            "height": 44,
+            "right": 419,
+            "bottom": 309
+          },
+          {
+            "label": "ON MY WAY",
+            "x": 11,
+            "y": 321,
+            "width": 99.453125,
+            "height": 44,
+            "right": 110.453125,
+            "bottom": 365
+          },
+          {
+            "label": "HERE",
+            "x": 118.453125,
+            "y": 321,
+            "width": 55.875,
+            "height": 44,
+            "right": 174.328125,
+            "bottom": 365
+          },
+          {
+            "label": "MET",
+            "x": 182.328125,
+            "y": 321,
+            "width": 46.734375,
+            "height": 44,
+            "right": 229.0625,
+            "bottom": 365
+          },
+          {
+            "label": "NEED HELP",
+            "x": 237.0625,
+            "y": 321,
+            "width": 96.625,
+            "height": 44,
+            "right": 333.6875,
+            "bottom": 365
+          },
+          {
+            "label": "LEFT",
+            "x": 341.6875,
+            "y": 321,
+            "width": 49.84375,
+            "height": 44,
+            "right": 391.53125,
+            "bottom": 365
+          }
+        ],
+        "state": {
+          "scenario": "enabled",
+          "capabilityMode": "TEST_ONLY synthetic capabilities",
+          "classification": "TEST_ONLY",
+          "policy": {
+            "classification": "TEST_ONLY",
+            "evidence": "Synthetic native fixture, not measured platform guarantees",
+            "maxAgeMs": 30000,
+            "uncertaintyMs": 1000,
+            "maxElapsedRate": 1.01,
+            "maxObservationGapMs": 5000
+          },
+          "path": "/meet/parties/00000000-0000-4000-8000-000000000010/rally",
+          "published": true,
+          "theme": {
+            "selected": "REVENGE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 56.079999999999984,
+              "scrollY": 105,
+              "width": 422,
+              "height": 791
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010/members",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties/00000000-0000-4000-8000-000000000010/applications",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "capture": "native/23-430x844-owner.png",
+      "status": "PASS",
+      "attempt": 2,
+      "sha256": "44922ecfb55c250717944cf173fe503d43c49bcd27d20f9904a4f0117a7160ec",
+      "bytes": 34268
+    },
+    {
+      "caseIndex": 24,
+      "width": 430,
+      "height": 844,
+      "entry": "/meet/people",
+      "scenario": "normal",
+      "errors": [],
+      "resourceErrors": [],
+      "classification": "TEST_ONLY_DEFAULT_APP",
+      "initial": {
+        "overflow": false,
+        "feature": {
+          "x": 11,
+          "y": 67,
+          "width": 408,
+          "height": 412,
+          "right": 419,
+          "bottom": 479
+        },
+        "panel": {
+          "x": 4,
+          "y": 4,
+          "width": 422,
+          "height": 836,
+          "right": 426,
+          "bottom": 840
+        },
+        "rows": [],
+        "appearance": {
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 249, 248)",
+          "selectedBackground": null,
+          "loadedFonts": [
+            "Parade Ink Text",
+            "Parade Ink Display"
+          ]
+        },
+        "controls": [
+          {
+            "label": "Parties",
+            "x": 11,
+            "y": 185,
+            "width": 69.96875,
+            "height": 44,
+            "right": 80.96875,
+            "bottom": 229
+          },
+          {
+            "label": "Your introduction",
+            "x": 88.96875,
+            "y": 185,
+            "width": 146.3125,
+            "height": 44,
+            "right": 235.28125,
+            "bottom": 229
+          },
+          {
+            "label": "",
+            "x": 11,
+            "y": 271,
+            "width": 331.53125,
+            "height": 44,
+            "right": 342.53125,
+            "bottom": 315
+          },
+          {
+            "label": "Search",
+            "x": 350.53125,
+            "y": 271,
+            "width": 68.46875,
+            "height": 44,
+            "right": 419,
+            "bottom": 315
+          },
+          {
+            "label": "Fixture fan",
+            "x": 100,
+            "y": 370,
+            "width": 87.59375,
+            "height": 44,
+            "right": 187.59375,
+            "bottom": 414
+          }
+        ],
+        "state": {
+          "scenario": "enabled",
+          "capabilityMode": "TEST_ONLY synthetic capabilities",
+          "classification": "TEST_ONLY",
+          "policy": {
+            "classification": "TEST_ONLY",
+            "evidence": "Synthetic native fixture, not measured platform guarantees",
+            "maxAgeMs": 30000,
+            "uncertaintyMs": 1000,
+            "maxElapsedRate": 1.01,
+            "maxObservationGapMs": 5000
+          },
+          "path": "/meet/people",
+          "published": true,
+          "theme": {
+            "selected": "REVENGE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 56.079999999999984,
+              "scrollY": 105,
+              "width": 422,
+              "height": 791
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/intros",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "capture": "native/24-430x844-normal.png",
+      "status": "PASS",
+      "attempt": 4,
+      "sha256": "4707b66c907e9d359d2c430297c9c8779e1759483e688519e9b1be4db64db615",
+      "bytes": 33747
+    },
+    {
+      "caseIndex": 25,
+      "width": 430,
+      "height": 844,
+      "entry": "/meet/intro/edit",
+      "scenario": "normal",
+      "errors": [],
+      "resourceErrors": [],
+      "classification": "TEST_ONLY_DEFAULT_APP",
+      "initial": {
+        "overflow": false,
+        "feature": {
+          "x": 11,
+          "y": 59,
+          "width": 408,
+          "height": 1134,
+          "right": 419,
+          "bottom": 1193
+        },
+        "panel": {
+          "x": 4,
+          "y": 4,
+          "width": 422,
+          "height": 836,
+          "right": 426,
+          "bottom": 840
+        },
+        "rows": [],
+        "appearance": {
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 249, 248)",
+          "selectedBackground": null,
+          "loadedFonts": [
+            "Parade Ink Text",
+            "Parade Ink Display"
+          ]
+        },
+        "controls": [
+          {
+            "label": "Back to people",
+            "x": 11,
+            "y": 59,
+            "width": 118.40625,
+            "height": 44,
+            "right": 129.40625,
+            "bottom": 103
+          },
+          {
+            "label": "Private owner draft",
+            "x": 11,
+            "y": 265,
+            "width": 408,
+            "height": 132,
+            "right": 419,
+            "bottom": 397
+          },
+          {
+            "label": "",
+            "x": 11,
+            "y": 614,
+            "width": 408,
+            "height": 44,
+            "right": 419,
+            "bottom": 658
+          },
+          {
+            "label": "",
+            "x": 11,
+            "y": 698,
+            "width": 408,
+            "height": 44,
+            "right": 419,
+            "bottom": 742
+          },
+          {
+            "label": "",
+            "x": 11,
+            "y": 855,
+            "width": 408,
+            "height": 44,
+            "right": 419,
+            "bottom": 899
+          },
+          {
+            "label": "Save introduction",
+            "x": 11,
+            "y": 907,
+            "width": 147.40625,
+            "height": 44,
+            "right": 158.40625,
+            "bottom": 951
+          },
+          {
+            "label": "Cancel changes",
+            "x": 166.40625,
+            "y": 907,
+            "width": 132.078125,
+            "height": 44,
+            "right": 298.484375,
+            "bottom": 951
+          },
+          {
+            "label": "Publish introduction",
+            "x": 11,
+            "y": 959,
+            "width": 168.8125,
+            "height": 44,
+            "right": 179.8125,
+            "bottom": 1003
+          },
+          {
+            "label": "Close introduction",
+            "x": 187.8125,
+            "y": 959,
+            "width": 153.703125,
+            "height": 44,
+            "right": 341.515625,
+            "bottom": 1003
+          },
+          {
+            "label": "Load latest introduction",
+            "x": 11,
+            "y": 1011,
+            "width": 194.390625,
+            "height": 44,
+            "right": 205.390625,
+            "bottom": 1055
+          },
+          {
+            "label": "Age & privacy",
+            "x": 11,
+            "y": 1137,
+            "width": 108.421875,
+            "height": 44,
+            "right": 119.421875,
+            "bottom": 1181
+          }
+        ],
+        "state": {
+          "scenario": "enabled",
+          "capabilityMode": "TEST_ONLY synthetic capabilities",
+          "classification": "TEST_ONLY",
+          "policy": {
+            "classification": "TEST_ONLY",
+            "evidence": "Synthetic native fixture, not measured platform guarantees",
+            "maxAgeMs": 30000,
+            "uncertaintyMs": 1000,
+            "maxElapsedRate": 1.01,
+            "maxObservationGapMs": 5000
+          },
+          "path": "/meet/intro/edit",
+          "published": true,
+          "theme": {
+            "selected": "REVENGE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 56.079999999999984,
+              "scrollY": 105,
+              "width": 422,
+              "height": 791
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/intro",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "capture": "native/25-430x844-normal.png",
+      "status": "PASS",
+      "attempt": 2,
+      "sha256": "64d5a6189cfcedc31fa85e42e4bdcc5099c2276286a9eceab05b49afc8cdb624",
+      "bytes": 62107
+    },
+    {
+      "caseIndex": 26,
+      "width": 430,
+      "height": 844,
+      "entry": "M06_COMPONENT",
+      "scenario": "current",
+      "errors": [],
+      "resourceErrors": [],
+      "classification": "TEST_ONLY_COMPONENT_NOT_DEFAULT_APP",
+      "initial": {
+        "overflow": false,
+        "feature": {
+          "x": 16,
+          "y": 24,
+          "width": 398,
+          "height": 832.75,
+          "right": 414,
+          "bottom": 856.75
+        },
+        "panel": null,
+        "rows": [],
+        "appearance": {
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 249, 248)",
+          "selectedBackground": null,
+          "loadedFonts": [
+            "Parade Ink Text",
+            "Parade Ink Display"
+          ]
+        },
+        "controls": [
+          {
+            "label": "Reviewed place source (new tab)",
+            "x": 16,
+            "y": 560.375,
+            "width": 263.09375,
+            "height": 44,
+            "right": 279.09375,
+            "bottom": 604.375
+          },
+          {
+            "label": "Use current description in update form",
+            "x": 16,
+            "y": 736.75,
+            "width": 305.28125,
+            "height": 44,
+            "right": 321.28125,
+            "bottom": 780.75
+          },
+          {
+            "label": "Revoke meeting\u2026",
+            "x": 16,
+            "y": 788.75,
+            "width": 146.8125,
+            "height": 44,
+            "right": 162.8125,
+            "bottom": 832.75
+          }
+        ],
+        "state": {
+          "phase": "current",
+          "canRead": true,
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places"
+            },
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/beacons/00000000-0000-4000-8000-000000000015"
+            }
+          ]
+        }
+      },
+      "capture": "native/26-430x844-current.png",
+      "status": "PASS",
+      "attempt": 2,
+      "sha256": "b06aa04158c5902bab958ba05f660929d2f2c12ec2475d50089a493c1edce0d6",
+      "bytes": 74700
+    },
+    {
+      "caseIndex": 27,
+      "width": 430,
+      "height": 844,
+      "entry": "/meet/beacons/00000000-0000-4000-8000-000000000015",
+      "scenario": "private",
+      "errors": [],
+      "resourceErrors": [],
+      "classification": "TEST_ONLY_DEFAULT_APP",
+      "initial": {
+        "overflow": false,
+        "feature": null,
+        "panel": null,
+        "rows": [],
+        "appearance": null,
+        "controls": [],
+        "state": {
+          "scenario": "enabled",
+          "capabilityMode": "TEST_ONLY synthetic capabilities",
+          "classification": "TEST_ONLY",
+          "policy": {
+            "classification": "TEST_ONLY",
+            "evidence": "Synthetic native fixture, not measured platform guarantees",
+            "maxAgeMs": 30000,
+            "uncertaintyMs": 1000,
+            "maxElapsedRate": 1.01,
+            "maxObservationGapMs": 5000
+          },
+          "path": "/meet/beacons/00000000-0000-4000-8000-000000000015",
+          "published": true,
+          "theme": {
+            "selected": "REVENGE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 56.079999999999984,
+              "scrollY": 105,
+              "width": 422,
+              "height": 791
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "capture": "native/27-430x844-private.png",
+      "status": "PASS",
+      "attempt": 2,
+      "sha256": "84a9810c874beff20bdb827fe1ae647e7f98527151b02ddfea531f0530d76b15",
+      "bytes": 15233
+    },
+    {
+      "caseIndex": 28,
+      "width": 390,
+      "height": 420,
+      "entry": "/meet",
+      "scenario": "long",
+      "errors": [],
+      "resourceErrors": [],
+      "classification": "TEST_ONLY_DEFAULT_APP",
+      "initial": {
+        "overflow": false,
+        "feature": {
+          "x": 11,
+          "y": 59,
+          "width": 368,
+          "height": 293,
+          "right": 379,
+          "bottom": 352
+        },
+        "panel": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 412,
+          "right": 386,
+          "bottom": 416
+        },
+        "rows": [
+          {
+            "x": 11,
+            "y": 111,
+            "width": 368,
+            "height": 132,
+            "right": 379,
+            "bottom": 243
+          },
+          {
+            "x": 11,
+            "y": 251,
+            "width": 368,
+            "height": 128,
+            "right": 379,
+            "bottom": 379
+          },
+          {
+            "x": 11,
+            "y": 387,
+            "width": 368,
+            "height": 128,
+            "right": 379,
+            "bottom": 515
+          }
+        ],
+        "appearance": {
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 249, 248)",
+          "selectedBackground": "rgb(23, 23, 23)",
+          "loadedFonts": [
+            "Parade Ink Text",
+            "Parade Ink Display"
+          ]
+        },
+        "controls": [
+          {
+            "label": "Parties",
+            "x": 11,
+            "y": 59,
+            "width": 120,
+            "height": 44,
+            "right": 131,
+            "bottom": 103
+          },
+          {
+            "label": "People",
+            "x": 135,
+            "y": 59,
+            "width": 120,
+            "height": 44,
+            "right": 255,
+            "bottom": 103
+          },
+          {
+            "label": "MY PLAN",
+            "x": 259,
+            "y": 59,
+            "width": 120,
+            "height": 44,
+            "right": 379,
+            "bottom": 103
+          },
+          {
+            "label": "A long concert party title that must wrap without covering the Join control",
+            "x": 94,
+            "y": 122,
+            "width": 188,
+            "height": 66,
+            "right": 282,
+            "bottom": 188
+          },
+          {
+            "label": "View details for A long concert party title that must wrap without covering the Join control",
+            "x": 292,
+            "y": 188,
+            "width": 76,
+            "height": 44,
+            "right": 368,
+            "bottom": 232
+          },
+          {
+            "label": "After Show Hangout",
+            "x": 94,
+            "y": 262,
+            "width": 188,
+            "height": 44,
+            "right": 282,
+            "bottom": 306
+          },
+          {
+            "label": "View details for After Show Hangout",
+            "x": 292,
+            "y": 324,
+            "width": 76,
+            "height": 44,
+            "right": 368,
+            "bottom": 368
+          },
+          {
+            "label": "Photo Walk (Parade ver.)",
+            "x": 94,
+            "y": 398,
+            "width": 188,
+            "height": 44,
+            "right": 282,
+            "bottom": 442
+          },
+          {
+            "label": "View details for Photo Walk (Parade ver.)",
+            "x": 292,
+            "y": 460,
+            "width": 76,
+            "height": 44,
+            "right": 368,
+            "bottom": 504
+          },
+          {
+            "label": "Filter parties",
+            "x": 11,
+            "y": 523,
+            "width": 368,
+            "height": 44,
+            "right": 379,
+            "bottom": 567
+          },
+          {
+            "label": "",
+            "x": 13,
+            "y": 603,
+            "width": 364,
+            "height": 44,
+            "right": 377,
+            "bottom": 647
+          },
+          {
+            "label": "All statesopenclosedcancelledcompleted",
+            "x": 13,
+            "y": 687,
+            "width": 364,
+            "height": 44,
+            "right": 377,
+            "bottom": 731
+          },
+          {
+            "label": "",
+            "x": 13,
+            "y": 771,
+            "width": 364,
+            "height": 44,
+            "right": 377,
+            "bottom": 815
+          },
+          {
+            "label": "",
+            "x": 13,
+            "y": 855,
+            "width": 364,
+            "height": 44,
+            "right": 377,
+            "bottom": 899
+          },
+          {
+            "label": "",
+            "x": 13,
+            "y": 983,
+            "width": 364,
+            "height": 44,
+            "right": 377,
+            "bottom": 1027
+          },
+          {
+            "label": "Show parties",
+            "x": 13,
+            "y": 1039,
+            "width": 364,
+            "height": 44,
+            "right": 377,
+            "bottom": 1083
+          },
+          {
+            "label": "Refresh parties",
+            "x": 335,
+            "y": 300,
+            "width": 44,
+            "height": 44,
+            "right": 379,
+            "bottom": 344
+          },
+          {
+            "label": "Create party",
+            "x": 80,
+            "y": 300,
+            "width": 230,
+            "height": 44,
+            "right": 310,
+            "bottom": 344
+          }
+        ],
+        "state": {
+          "scenario": "enabled",
+          "capabilityMode": "TEST_ONLY synthetic capabilities",
+          "classification": "TEST_ONLY",
+          "policy": {
+            "classification": "TEST_ONLY",
+            "evidence": "Synthetic native fixture, not measured platform guarantees",
+            "maxAgeMs": 30000,
+            "uncertaintyMs": 1000,
+            "maxElapsedRate": 1.01,
+            "maxObservationGapMs": 5000
+          },
+          "path": "/meet",
+          "published": true,
+          "theme": {
+            "selected": "REVENGE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 70.48000000000002,
+              "scrollY": 338.44000000000005,
+              "width": 382,
+              "height": 367
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "capture": "native/28-390x420-long.png",
+      "status": "PASS",
+      "attempt": 3,
+      "sha256": "f63fe877d5af47c554ad9b7dbd8a94d5c08231e695d7a72153e0d752e357a939",
+      "bytes": 28129
+    },
+    {
+      "caseIndex": 29,
+      "width": 390,
+      "height": 844,
+      "entry": "/meet",
+      "scenario": "full",
+      "errors": [],
+      "resourceErrors": [],
+      "classification": "TEST_ONLY_DEFAULT_APP",
+      "initial": {
+        "overflow": false,
+        "feature": {
+          "x": 11,
+          "y": 59,
+          "width": 368,
+          "height": 717,
+          "right": 379,
+          "bottom": 776
+        },
+        "panel": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "right": 386,
+          "bottom": 840
+        },
+        "rows": [
+          {
+            "x": 11,
+            "y": 111,
+            "width": 368,
+            "height": 128,
+            "right": 379,
+            "bottom": 239
+          },
+          {
+            "x": 11,
+            "y": 247,
+            "width": 368,
+            "height": 128,
+            "right": 379,
+            "bottom": 375
+          },
+          {
+            "x": 11,
+            "y": 383,
+            "width": 368,
+            "height": 128,
+            "right": 379,
+            "bottom": 511
+          }
+        ],
+        "appearance": {
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 249, 248)",
+          "selectedBackground": "rgb(23, 23, 23)",
+          "loadedFonts": [
+            "Parade Ink Text",
+            "Parade Ink Display"
+          ]
+        },
+        "controls": [
+          {
+            "label": "Parties",
+            "x": 11,
+            "y": 59,
+            "width": 120,
+            "height": 44,
+            "right": 131,
+            "bottom": 103
+          },
+          {
+            "label": "People",
+            "x": 135,
+            "y": 59,
+            "width": 120,
+            "height": 44,
+            "right": 255,
+            "bottom": 103
+          },
+          {
+            "label": "MY PLAN",
+            "x": 259,
+            "y": 59,
+            "width": 120,
+            "height": 44,
+            "right": 379,
+            "bottom": 103
+          },
+          {
+            "label": "Area A Queue Group",
+            "x": 94,
+            "y": 122,
+            "width": 188,
+            "height": 44,
+            "right": 282,
+            "bottom": 166
+          },
+          {
+            "label": "View details for Area A Queue Group",
+            "x": 292,
+            "y": 184,
+            "width": 76,
+            "height": 44,
+            "right": 368,
+            "bottom": 228
+          },
+          {
+            "label": "After Show Hangout",
+            "x": 94,
+            "y": 258,
+            "width": 188,
+            "height": 44,
+            "right": 282,
+            "bottom": 302
+          },
+          {
+            "label": "View details for After Show Hangout",
+            "x": 292,
+            "y": 320,
+            "width": 76,
+            "height": 44,
+            "right": 368,
+            "bottom": 364
+          },
+          {
+            "label": "Photo Walk (Parade ver.)",
+            "x": 94,
+            "y": 394,
+            "width": 188,
+            "height": 44,
+            "right": 282,
+            "bottom": 438
+          },
+          {
+            "label": "View details for Photo Walk (Parade ver.)",
+            "x": 292,
+            "y": 456,
+            "width": 76,
+            "height": 44,
+            "right": 368,
+            "bottom": 500
+          },
+          {
+            "label": "Filter parties",
+            "x": 11,
+            "y": 519,
+            "width": 368,
+            "height": 44,
+            "right": 379,
+            "bottom": 563
+          },
+          {
+            "label": "",
+            "x": 13,
+            "y": 599,
+            "width": 364,
+            "height": 44,
+            "right": 377,
+            "bottom": 643
+          },
+          {
+            "label": "All statesopenclosedcancelledcompleted",
+            "x": 13,
+            "y": 683,
+            "width": 364,
+            "height": 44,
+            "right": 377,
+            "bottom": 727
+          },
+          {
+            "label": "",
+            "x": 13,
+            "y": 767,
+            "width": 364,
+            "height": 44,
+            "right": 377,
+            "bottom": 811
+          },
+          {
+            "label": "",
+            "x": 13,
+            "y": 851,
+            "width": 364,
+            "height": 44,
+            "right": 377,
+            "bottom": 895
+          },
+          {
+            "label": "",
+            "x": 13,
+            "y": 979,
+            "width": 364,
+            "height": 44,
+            "right": 377,
+            "bottom": 1023
+          },
+          {
+            "label": "Show parties",
+            "x": 13,
+            "y": 1035,
+            "width": 364,
+            "height": 44,
+            "right": 377,
+            "bottom": 1079
+          },
+          {
+            "label": "Refresh parties",
+            "x": 335,
+            "y": 724,
+            "width": 44,
+            "height": 44,
+            "right": 379,
+            "bottom": 768
+          },
+          {
+            "label": "Create party",
+            "x": 80,
+            "y": 724,
+            "width": 230,
+            "height": 44,
+            "right": 310,
+            "bottom": 768
+          }
+        ],
+        "state": {
+          "scenario": "enabled",
+          "capabilityMode": "TEST_ONLY synthetic capabilities",
+          "classification": "TEST_ONLY",
+          "policy": {
+            "classification": "TEST_ONLY",
+            "evidence": "Synthetic native fixture, not measured platform guarantees",
+            "maxAgeMs": 30000,
+            "uncertaintyMs": 1000,
+            "maxElapsedRate": 1.01,
+            "maxObservationGapMs": 5000
+          },
+          "path": "/meet",
+          "published": true,
+          "theme": {
+            "selected": "REVENGE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 70.48000000000002,
+              "scrollY": 105,
+              "width": 382,
+              "height": 791
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "capture": "native/29-390x844-full.png",
+      "status": "PASS",
+      "attempt": 3,
+      "sha256": "5bf2ed2f2d84cbd2cfa6aab18e0bc9caf98b6e7e22ad75baf78efa2c8f2eae60",
+      "bytes": 49779
+    },
+    {
+      "caseIndex": 30,
+      "width": 390,
+      "height": 844,
+      "entry": "/meet",
+      "scenario": "closed",
+      "errors": [],
+      "resourceErrors": [],
+      "classification": "TEST_ONLY_DEFAULT_APP",
+      "initial": {
+        "overflow": false,
+        "feature": {
+          "x": 11,
+          "y": 59,
+          "width": 368,
+          "height": 717,
+          "right": 379,
+          "bottom": 776
+        },
+        "panel": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "right": 386,
+          "bottom": 840
+        },
+        "rows": [
+          {
+            "x": 11,
+            "y": 111,
+            "width": 368,
+            "height": 128,
+            "right": 379,
+            "bottom": 239
+          },
+          {
+            "x": 11,
+            "y": 247,
+            "width": 368,
+            "height": 128,
+            "right": 379,
+            "bottom": 375
+          },
+          {
+            "x": 11,
+            "y": 383,
+            "width": 368,
+            "height": 128,
+            "right": 379,
+            "bottom": 511
+          }
+        ],
+        "appearance": {
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 249, 248)",
+          "selectedBackground": "rgb(23, 23, 23)",
+          "loadedFonts": [
+            "Parade Ink Text",
+            "Parade Ink Display"
+          ]
+        },
+        "controls": [
+          {
+            "label": "Parties",
+            "x": 11,
+            "y": 59,
+            "width": 120,
+            "height": 44,
+            "right": 131,
+            "bottom": 103
+          },
+          {
+            "label": "People",
+            "x": 135,
+            "y": 59,
+            "width": 120,
+            "height": 44,
+            "right": 255,
+            "bottom": 103
+          },
+          {
+            "label": "MY PLAN",
+            "x": 259,
+            "y": 59,
+            "width": 120,
+            "height": 44,
+            "right": 379,
+            "bottom": 103
+          },
+          {
+            "label": "Area A Queue Group",
+            "x": 94,
+            "y": 122,
+            "width": 188,
+            "height": 44,
+            "right": 282,
+            "bottom": 166
+          },
+          {
+            "label": "View details for Area A Queue Group",
+            "x": 292,
+            "y": 184,
+            "width": 76,
+            "height": 44,
+            "right": 368,
+            "bottom": 228
+          },
+          {
+            "label": "After Show Hangout",
+            "x": 94,
+            "y": 258,
+            "width": 188,
+            "height": 44,
+            "right": 282,
+            "bottom": 302
+          },
+          {
+            "label": "View details for After Show Hangout",
+            "x": 292,
+            "y": 320,
+            "width": 76,
+            "height": 44,
+            "right": 368,
+            "bottom": 364
+          },
+          {
+            "label": "Photo Walk (Parade ver.)",
+            "x": 94,
+            "y": 394,
+            "width": 188,
+            "height": 44,
+            "right": 282,
+            "bottom": 438
+          },
+          {
+            "label": "View details for Photo Walk (Parade ver.)",
+            "x": 292,
+            "y": 456,
+            "width": 76,
+            "height": 44,
+            "right": 368,
+            "bottom": 500
+          },
+          {
+            "label": "Filter parties",
+            "x": 11,
+            "y": 519,
+            "width": 368,
+            "height": 44,
+            "right": 379,
+            "bottom": 563
+          },
+          {
+            "label": "",
+            "x": 13,
+            "y": 599,
+            "width": 364,
+            "height": 44,
+            "right": 377,
+            "bottom": 643
+          },
+          {
+            "label": "All statesopenclosedcancelledcompleted",
+            "x": 13,
+            "y": 683,
+            "width": 364,
+            "height": 44,
+            "right": 377,
+            "bottom": 727
+          },
+          {
+            "label": "",
+            "x": 13,
+            "y": 767,
+            "width": 364,
+            "height": 44,
+            "right": 377,
+            "bottom": 811
+          },
+          {
+            "label": "",
+            "x": 13,
+            "y": 851,
+            "width": 364,
+            "height": 44,
+            "right": 377,
+            "bottom": 895
+          },
+          {
+            "label": "",
+            "x": 13,
+            "y": 979,
+            "width": 364,
+            "height": 44,
+            "right": 377,
+            "bottom": 1023
+          },
+          {
+            "label": "Show parties",
+            "x": 13,
+            "y": 1035,
+            "width": 364,
+            "height": 44,
+            "right": 377,
+            "bottom": 1079
+          },
+          {
+            "label": "Refresh parties",
+            "x": 335,
+            "y": 724,
+            "width": 44,
+            "height": 44,
+            "right": 379,
+            "bottom": 768
+          },
+          {
+            "label": "Create party",
+            "x": 80,
+            "y": 724,
+            "width": 230,
+            "height": 44,
+            "right": 310,
+            "bottom": 768
+          }
+        ],
+        "state": {
+          "scenario": "enabled",
+          "capabilityMode": "TEST_ONLY synthetic capabilities",
+          "classification": "TEST_ONLY",
+          "policy": {
+            "classification": "TEST_ONLY",
+            "evidence": "Synthetic native fixture, not measured platform guarantees",
+            "maxAgeMs": 30000,
+            "uncertaintyMs": 1000,
+            "maxElapsedRate": 1.01,
+            "maxObservationGapMs": 5000
+          },
+          "path": "/meet",
+          "published": true,
+          "theme": {
+            "selected": "REVENGE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 70.48000000000002,
+              "scrollY": 105,
+              "width": 382,
+              "height": 791
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "capture": "native/30-390x844-closed.png",
+      "status": "PASS",
+      "attempt": 3,
+      "sha256": "7fbf9ed85457cd1dd200b67fc65ebf5977be6097d3b27d7bcf232692bc4bef67",
+      "bytes": 51841
+    },
+    {
+      "caseIndex": 31,
+      "width": 390,
+      "height": 844,
+      "entry": "/meet",
+      "scenario": "empty",
+      "errors": [],
+      "resourceErrors": [],
+      "classification": "TEST_ONLY_DEFAULT_APP",
+      "initial": {
+        "overflow": false,
+        "feature": {
+          "x": 11,
+          "y": 59,
+          "width": 368,
+          "height": 717,
+          "right": 379,
+          "bottom": 776
+        },
+        "panel": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "right": 386,
+          "bottom": 840
+        },
+        "rows": [],
+        "appearance": {
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 249, 248)",
+          "selectedBackground": "rgb(23, 23, 23)",
+          "loadedFonts": [
+            "Parade Ink Text",
+            "Parade Ink Display"
+          ]
+        },
+        "controls": [
+          {
+            "label": "Parties",
+            "x": 11,
+            "y": 59,
+            "width": 120,
+            "height": 44,
+            "right": 131,
+            "bottom": 103
+          },
+          {
+            "label": "People",
+            "x": 135,
+            "y": 59,
+            "width": 120,
+            "height": 44,
+            "right": 255,
+            "bottom": 103
+          },
+          {
+            "label": "MY PLAN",
+            "x": 259,
+            "y": 59,
+            "width": 120,
+            "height": 44,
+            "right": 379,
+            "bottom": 103
+          },
+          {
+            "label": "Filter parties",
+            "x": 11,
+            "y": 193,
+            "width": 368,
+            "height": 44,
+            "right": 379,
+            "bottom": 237
+          },
+          {
+            "label": "",
+            "x": 13,
+            "y": 273,
+            "width": 364,
+            "height": 44,
+            "right": 377,
+            "bottom": 317
+          },
+          {
+            "label": "All statesopenclosedcancelledcompleted",
+            "x": 13,
+            "y": 357,
+            "width": 364,
+            "height": 44,
+            "right": 377,
+            "bottom": 401
+          },
+          {
+            "label": "",
+            "x": 13,
+            "y": 441,
+            "width": 364,
+            "height": 44,
+            "right": 377,
+            "bottom": 485
+          },
+          {
+            "label": "",
+            "x": 13,
+            "y": 525,
+            "width": 364,
+            "height": 44,
+            "right": 377,
+            "bottom": 569
+          },
+          {
+            "label": "",
+            "x": 13,
+            "y": 653,
+            "width": 364,
+            "height": 44,
+            "right": 377,
+            "bottom": 697
+          },
+          {
+            "label": "Show parties",
+            "x": 13,
+            "y": 709,
+            "width": 364,
+            "height": 44,
+            "right": 377,
+            "bottom": 753
+          },
+          {
+            "label": "Refresh parties",
+            "x": 335,
+            "y": 724,
+            "width": 44,
+            "height": 44,
+            "right": 379,
+            "bottom": 768
+          },
+          {
+            "label": "Create party",
+            "x": 80,
+            "y": 724,
+            "width": 230,
+            "height": 44,
+            "right": 310,
+            "bottom": 768
+          }
+        ],
+        "state": {
+          "scenario": "enabled",
+          "capabilityMode": "TEST_ONLY synthetic capabilities",
+          "classification": "TEST_ONLY",
+          "policy": {
+            "classification": "TEST_ONLY",
+            "evidence": "Synthetic native fixture, not measured platform guarantees",
+            "maxAgeMs": 30000,
+            "uncertaintyMs": 1000,
+            "maxElapsedRate": 1.01,
+            "maxObservationGapMs": 5000
+          },
+          "path": "/meet",
+          "published": true,
+          "theme": {
+            "selected": "REVENGE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 70.48000000000002,
+              "scrollY": 105,
+              "width": 382,
+              "height": 791
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "capture": "native/31-390x844-empty.png",
+      "status": "PASS",
+      "attempt": 3,
+      "sha256": "b5647f7fdb4bec3d51e4096d1d369b4eeb07ecc3208e5b8c548b3af5670bddc8",
+      "bytes": 20015
+    },
+    {
+      "caseIndex": 32,
+      "width": 390,
+      "height": 844,
+      "entry": "/meet",
+      "scenario": "error",
+      "errors": [],
+      "resourceErrors": [],
+      "classification": "TEST_ONLY_DEFAULT_APP",
+      "initial": {
+        "overflow": false,
+        "feature": {
+          "x": 11,
+          "y": 59,
+          "width": 368,
+          "height": 717,
+          "right": 379,
+          "bottom": 776
+        },
+        "panel": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 836,
+          "right": 386,
+          "bottom": 840
+        },
+        "rows": [],
+        "appearance": {
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 249, 248)",
+          "selectedBackground": "rgb(23, 23, 23)",
+          "loadedFonts": [
+            "Parade Ink Text",
+            "Parade Ink Display"
+          ]
+        },
+        "controls": [
+          {
+            "label": "Parties",
+            "x": 11,
+            "y": 59,
+            "width": 120,
+            "height": 44,
+            "right": 131,
+            "bottom": 103
+          },
+          {
+            "label": "People",
+            "x": 135,
+            "y": 59,
+            "width": 120,
+            "height": 44,
+            "right": 255,
+            "bottom": 103
+          },
+          {
+            "label": "MY PLAN",
+            "x": 259,
+            "y": 59,
+            "width": 120,
+            "height": 44,
+            "right": 379,
+            "bottom": 103
+          },
+          {
+            "label": "Read parties again",
+            "x": 11,
+            "y": 171,
+            "width": 162.21875,
+            "height": 44,
+            "right": 173.21875,
+            "bottom": 215
+          },
+          {
+            "label": "Filter parties",
+            "x": 11,
+            "y": 223,
+            "width": 368,
+            "height": 44,
+            "right": 379,
+            "bottom": 267
+          },
+          {
+            "label": "",
+            "x": 13,
+            "y": 303,
+            "width": 364,
+            "height": 44,
+            "right": 377,
+            "bottom": 347
+          },
+          {
+            "label": "All statesopenclosedcancelledcompleted",
+            "x": 13,
+            "y": 387,
+            "width": 364,
+            "height": 44,
+            "right": 377,
+            "bottom": 431
+          },
+          {
+            "label": "",
+            "x": 13,
+            "y": 471,
+            "width": 364,
+            "height": 44,
+            "right": 377,
+            "bottom": 515
+          },
+          {
+            "label": "",
+            "x": 13,
+            "y": 555,
+            "width": 364,
+            "height": 44,
+            "right": 377,
+            "bottom": 599
+          },
+          {
+            "label": "",
+            "x": 13,
+            "y": 683,
+            "width": 364,
+            "height": 44,
+            "right": 377,
+            "bottom": 727
+          },
+          {
+            "label": "Show parties",
+            "x": 13,
+            "y": 739,
+            "width": 364,
+            "height": 44,
+            "right": 377,
+            "bottom": 783
+          },
+          {
+            "label": "Refresh parties",
+            "x": 335,
+            "y": 724,
+            "width": 44,
+            "height": 44,
+            "right": 379,
+            "bottom": 768
+          },
+          {
+            "label": "Create party",
+            "x": 80,
+            "y": 724,
+            "width": 230,
+            "height": 44,
+            "right": 310,
+            "bottom": 768
+          }
+        ],
+        "state": {
+          "scenario": "enabled",
+          "capabilityMode": "TEST_ONLY synthetic capabilities",
+          "classification": "TEST_ONLY",
+          "policy": {
+            "classification": "TEST_ONLY",
+            "evidence": "Synthetic native fixture, not measured platform guarantees",
+            "maxAgeMs": 30000,
+            "uncertaintyMs": 1000,
+            "maxElapsedRate": 1.01,
+            "maxObservationGapMs": 5000
+          },
+          "path": "/meet",
+          "published": true,
+          "theme": {
+            "selected": "REVENGE",
+            "pending": null,
+            "phase": "ready",
+            "message": "",
+            "saved": false
+          },
+          "camera": {
+            "following": true,
+            "camera": {
+              "zoom": 1,
+              "scrollX": 70.48000000000002,
+              "scrollY": 105,
+              "width": 382,
+              "height": 791
+            }
+          },
+          "phase": "suspended",
+          "entities": 0,
+          "avatarPin": {
+            "manifest_id": "mcr_selected_static_20261103",
+            "manifest_version": 1,
+            "content_hash": "sha256:0627c7d178b22535a561e1270db6d8bf9e2383ba84d03a63962e48e565c59b2b"
+          },
+          "requests": [
+            {
+              "path": "/api/auth/capabilities",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/login",
+              "method": "POST"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/auth/enrollment/admission",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/bootstrap",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/parties",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/me/parties",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/rooms",
+              "method": "GET"
+            },
+            {
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places",
+              "method": "GET"
+            }
+          ],
+          "sockets": 0,
+          "activeSockets": 0,
+          "socketPeak": 0,
+          "canvases": 1,
+          "disposed": false
+        }
+      },
+      "capture": "native/32-390x844-error.png",
+      "status": "PASS",
+      "attempt": 3,
+      "sha256": "4ee002778b419808cd17471176e252e46852ccf85d539e9f7944fa029529c524",
+      "bytes": 20655
+    },
+    {
+      "caseIndex": 33,
+      "width": 390,
+      "height": 844,
+      "entry": "M06_COMPONENT",
+      "scenario": "private",
+      "errors": [],
+      "resourceErrors": [],
+      "classification": "TEST_ONLY_COMPONENT_NOT_DEFAULT_APP",
+      "initial": {
+        "overflow": false,
+        "feature": {
+          "x": 16,
+          "y": 24,
+          "width": 358,
+          "height": 268.5625,
+          "right": 374,
+          "bottom": 292.5625
+        },
+        "panel": null,
+        "rows": [],
+        "appearance": {
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 249, 248)",
+          "selectedBackground": null,
+          "loadedFonts": [
+            "Parade Ink Text",
+            "Parade Ink Display"
+          ]
+        },
+        "controls": [
+          {
+            "label": "Read latest meeting",
+            "x": 16,
+            "y": 236.5625,
+            "width": 165.125,
+            "height": 44,
+            "right": 181.125,
+            "bottom": 280.5625
+          }
+        ],
+        "state": {
+          "phase": "unavailable",
+          "canRead": false,
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places"
+            },
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/beacons/00000000-0000-4000-8000-000000000015"
+            }
+          ]
+        }
+      },
+      "capture": "native/33-390x844-private.png",
+      "status": "PASS",
+      "attempt": 2,
+      "sha256": "b4fb21e35e85d86a53b36cc545dd9c6d6c4567da4a048365b9880d9f814bd72f",
+      "bytes": 26537
+    },
+    {
+      "caseIndex": 34,
+      "width": 390,
+      "height": 844,
+      "entry": "M06_COMPONENT",
+      "scenario": "expired",
+      "errors": [],
+      "resourceErrors": [],
+      "classification": "TEST_ONLY_COMPONENT_NOT_DEFAULT_APP",
+      "initial": {
+        "overflow": false,
+        "feature": {
+          "x": 16,
+          "y": 24,
+          "width": 358,
+          "height": 224.5625,
+          "right": 374,
+          "bottom": 248.5625
+        },
+        "panel": null,
+        "rows": [],
+        "appearance": {
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 249, 248)",
+          "selectedBackground": null,
+          "loadedFonts": [
+            "Parade Ink Text",
+            "Parade Ink Display"
+          ]
+        },
+        "controls": [],
+        "state": {
+          "phase": "expired",
+          "canRead": true,
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places"
+            },
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/beacons/00000000-0000-4000-8000-000000000015"
+            }
+          ]
+        }
+      },
+      "capture": "native/34-390x844-expired.png",
+      "status": "PASS",
+      "attempt": 2,
+      "sha256": "dcceff06abc35e86adb0b9abf9eab111f21ad7d3be4bb0b9d9cf9264f564b082",
+      "bytes": 23738
+    },
+    {
+      "caseIndex": 35,
+      "width": 390,
+      "height": 420,
+      "entry": "M06_COMPONENT",
+      "scenario": "long",
+      "errors": [],
+      "resourceErrors": [],
+      "classification": "TEST_ONLY_COMPONENT_NOT_DEFAULT_APP",
+      "initial": {
+        "overflow": false,
+        "feature": {
+          "x": 16,
+          "y": 24,
+          "width": 358,
+          "height": 1250.25,
+          "right": 374,
+          "bottom": 1274.25
+        },
+        "panel": null,
+        "rows": [],
+        "appearance": {
+          "font": "\"Parade Ink Text\", Arial, sans-serif",
+          "background": "rgb(249, 249, 248)",
+          "selectedBackground": null,
+          "loadedFonts": [
+            "Parade Ink Text",
+            "Parade Ink Display"
+          ]
+        },
+        "controls": [
+          {
+            "label": "Reviewed place source (new tab)",
+            "x": 16,
+            "y": 925.6875,
+            "width": 263.09375,
+            "height": 44,
+            "right": 279.09375,
+            "bottom": 969.6875
+          },
+          {
+            "label": "Use current description in update form",
+            "x": 16,
+            "y": 1154.25,
+            "width": 305.28125,
+            "height": 44,
+            "right": 321.28125,
+            "bottom": 1198.25
+          },
+          {
+            "label": "Revoke meeting\u2026",
+            "x": 16,
+            "y": 1206.25,
+            "width": 146.8125,
+            "height": 44,
+            "right": 162.8125,
+            "bottom": 1250.25
+          }
+        ],
+        "state": {
+          "phase": "current",
+          "canRead": true,
+          "requests": [
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/places"
+            },
+            {
+              "method": "GET",
+              "path": "/api/concert/events/00000000-0000-4000-8000-000000000201/beacons/00000000-0000-4000-8000-000000000015"
+            }
+          ]
+        }
+      },
+      "capture": "native/35-390x420-long.png",
+      "status": "PASS",
+      "attempt": 2,
+      "sha256": "83cd82c0cded68edf1de80878d5e6f7d8fd005597d7f738219dc0a882d9610c7",
+      "bytes": 52128
+    }
+  ],
+  "dependencyRawPostimages": [
+    {
+      "path": "frontend/src/shared/styles/base.css",
+      "source": "056a8c48ff667134dee8e5e99710185294e4b898",
+      "sha256": "d9788ee432554115f802c9def0c90b4e657165571e3b7429ad2d596be86928d6",
+      "bytes": 8537
+    },
+    {
+      "path": "frontend/src/shared/styles/themes/themes.css",
+      "source": "056a8c48ff667134dee8e5e99710185294e4b898",
+      "sha256": "c7d8561ab09c4402812e0eacf72cc56b6cc2ce7a84449632e8054573d4802e4c",
+      "bytes": 1159
+    },
+    {
+      "path": "frontend/src/shared/ui/concert-window/index.tsx",
+      "source": "056a8c48ff667134dee8e5e99710185294e4b898",
+      "sha256": "0b532322426fd4f0aae0e2667cae80e2257917eda8cb1de6455ee3670025ae56",
+      "bytes": 6205
+    },
+    {
+      "path": "frontend/src/shared/ui/concert-window/concert-window.css",
+      "source": "056a8c48ff667134dee8e5e99710185294e4b898",
+      "sha256": "9b03795cc11ed06130ebdc2ec386948d91f0e9cbba592f876a82c72ef1014c92",
+      "bytes": 5848
+    },
+    {
+      "path": "frontend/src/app/shell.css",
+      "source": "b5b44e47531e3b75febc5ee5cdd6a11b1648779c",
+      "sha256": "b12f4bbddb55d144fb6da89ab2686e0225455ed3bedaff70ad8a34ef6a0161dc",
+      "bytes": 13201
+    },
+    {
+      "path": "frontend/src/app/shell-chrome/parade-footer.tsx",
+      "source": "056a8c48ff667134dee8e5e99710185294e4b898",
+      "sha256": "ecbb1b9f16a61315c7e63b3ba296e7d0977619fb0df899b950e3a41b8a1c6428",
+      "bytes": 130
+    },
+    {
+      "path": "frontend/src/app/shell-chrome/shell-chrome.css",
+      "source": "056a8c48ff667134dee8e5e99710185294e4b898",
+      "sha256": "264fa91f2b9d45f6d7756cfcde5fa0656d714e6c2190d325800d14c2f9639ea1",
+      "bytes": 6153
+    },
+    {
+      "path": "frontend/src/app/reference-chrome-v2/WindowInk.tsx",
+      "source": "056a8c48ff667134dee8e5e99710185294e4b898",
+      "sha256": "16ce865a27dea4e79e239a19bd9290120844aa7857925af4652d37582de78278",
+      "bytes": 916
+    },
+    {
+      "path": "frontend/src/app/reference-chrome-v2/chrome.css",
+      "source": "056a8c48ff667134dee8e5e99710185294e4b898",
+      "sha256": "857c14a183f4e008861ba119e65da490d52e6715ff5ca6b46b68b553f63f9c1e",
+      "bytes": 3451
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/fonts/Oswald.ttf",
+      "source": "056a8c48ff667134dee8e5e99710185294e4b898",
+      "sha256": "5b38c246e255a12f5712d640d56bcced0472466fc68983d2d0410ec0457c2817",
+      "bytes": 172088
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/fonts/Roboto.ttf",
+      "source": "056a8c48ff667134dee8e5e99710185294e4b898",
+      "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+      "bytes": 488584
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/fonts/oswald-METADATA.pb",
+      "source": "056a8c48ff667134dee8e5e99710185294e4b898",
+      "sha256": "3d5119d2e99a15e7c2973937d10a77e7aa1fc6a28fe173b02e059485aa596097",
+      "bytes": 4396
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/fonts/oswald-OFL.txt",
+      "source": "056a8c48ff667134dee8e5e99710185294e4b898",
+      "sha256": "0fd731a904b729a4e02eaf5e8ebd06783edd9abe400e8882760160230675b652",
+      "bytes": 4483
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/fonts/provenance.json",
+      "source": "056a8c48ff667134dee8e5e99710185294e4b898",
+      "sha256": "aded4b656522bd2c4de6cfd1be9e9a6cfcf96d94ecc61e3a2f36497a465574db",
+      "bytes": 3273
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/fonts/roboto-METADATA.pb",
+      "source": "056a8c48ff667134dee8e5e99710185294e4b898",
+      "sha256": "6fef19da54fb62d152f0c7b21710e6849950db7ecf852ea29511c593dad462f0",
+      "bytes": 1463
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/fonts/roboto-OFL.txt",
+      "source": "056a8c48ff667134dee8e5e99710185294e4b898",
+      "sha256": "061402327a96aadb0bfb694a960ed289ecd38d383e396243831ab81feb109c41",
+      "bytes": 4394
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/primitives.css",
+      "source": "056a8c48ff667134dee8e5e99710185294e4b898",
+      "sha256": "c5a327ec4e63407ea5119a48ab20632c63e81780a842b57c0bb5e856e7ca78e0",
+      "bytes": 6508
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/tokens.css",
+      "source": "056a8c48ff667134dee8e5e99710185294e4b898",
+      "sha256": "15b68ce29df755e81849d2bc359f2c2aaade9857d5e04c32692bf9aab4700556",
+      "bytes": 1334
+    }
+  ],
+  "cssReadClosure": [
+    {
+      "path": "frontend/src/shared/styles/base.css",
+      "sha256": "d9788ee432554115f802c9def0c90b4e657165571e3b7429ad2d596be86928d6",
+      "bytes": 8537,
+      "pinned": true
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/tokens.css",
+      "sha256": "15b68ce29df755e81849d2bc359f2c2aaade9857d5e04c32692bf9aab4700556",
+      "bytes": 1334,
+      "pinned": true
+    },
+    {
+      "path": "frontend/src/shared/styles/cozy-identity-backgrounds-v1.css",
+      "sha256": "77b25626d6c94f3f226e1ccc079a8b96d11d6a4873dfc6e20fcef174c49f5f6d",
+      "bytes": 3891,
+      "pinned": false
+    },
+    {
+      "path": "frontend/src/shared/styles/cozy-community-backgrounds-v1.css",
+      "sha256": "d26dd8fbee928539f2689ccd9bb6269e4cb964c58b78e8cc86afbd894f228504",
+      "bytes": 2260,
+      "pinned": false
+    },
+    {
+      "path": "frontend/src/shared/styles/parade-ink/primitives.css",
+      "sha256": "c5a327ec4e63407ea5119a48ab20632c63e81780a842b57c0bb5e856e7ca78e0",
+      "bytes": 6508,
+      "pinned": true
+    },
+    {
+      "path": "frontend/src/app/shell.css",
+      "sha256": "b12f4bbddb55d144fb6da89ab2686e0225455ed3bedaff70ad8a34ef6a0161dc",
+      "bytes": 13201,
+      "pinned": true
+    },
+    {
+      "path": "frontend/src/shared/ui/concert-window/concert-window.css",
+      "sha256": "9b03795cc11ed06130ebdc2ec386948d91f0e9cbba592f876a82c72ef1014c92",
+      "bytes": 5848,
+      "pinned": true
+    },
+    {
+      "path": "frontend/src/app/shell-chrome/shell-chrome.css",
+      "sha256": "264fa91f2b9d45f6d7756cfcde5fa0656d714e6c2190d325800d14c2f9639ea1",
+      "bytes": 6153,
+      "pinned": true
+    },
+    {
+      "path": "frontend/src/app/reference-chrome-v2/chrome.css",
+      "sha256": "857c14a183f4e008861ba119e65da490d52e6715ff5ca6b46b68b553f63f9c1e",
+      "bytes": 3451,
+      "pinned": true
+    },
+    {
+      "path": "frontend/src/shared/styles/themes/themes.css",
+      "sha256": "c7d8561ab09c4402812e0eacf72cc56b6cc2ce7a84449632e8054573d4802e4c",
+      "bytes": 1159,
+      "pinned": true
+    }
+  ],
+  "assetReads": [
+    {
+      "path": "frontend/public/world/maps/geometry.json",
+      "bytes": 29538,
+      "sha256": "fe8cb22822a00cccaf61125829f306b7049cef9dc46b7e0218bc4b21ee18d713"
+    },
+    {
+      "path": "frontend/public/world/maps/virtual-places.json",
+      "bytes": 4446,
+      "sha256": "0edef366bdfa7799d94312f479a539f3fffa9aad1c877c6f07e9fc2818535c83"
+    },
+    {
+      "path": "frontend/public/world/maps/binding-inputs.json",
+      "bytes": 1231,
+      "sha256": "cd37c2e5eb728049b0b4ad866d405c45bf1cb42d50418c806576b72d6f66bdeb"
+    },
+    {
+      "path": "frontend/public/world/themes/binding-inputs.json",
+      "bytes": 7736,
+      "sha256": "06c2a406b1a4c7628719651386188e79fc718cb54ae26b583ae7898e65fbb87f"
+    },
+    {
+      "path": "frontend/public/world/illustrated-runtime/bindings.json",
+      "bytes": 35434,
+      "sha256": "70a44abaa7ff2274d5d094a7a06156f4903030f6784fae53f08cd9afea9a2eba"
+    },
+    {
+      "path": "frontend/public/world/avatars/derived-v1/static-release.json",
+      "bytes": 1898,
+      "sha256": "cc53c6852742e9cbb9858a2d0961411e1a9e131d1e30c0f2b73b265e03f91677"
+    },
+    {
+      "path": "frontend/public/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+      "bytes": 36030,
+      "sha256": "e124c88815b22220df2f2dc59e2f26b3ceb845e57b77674fd8e55383116d7efe"
+    },
+    {
+      "path": "frontend/public/world/maps/courtyard-tiled.json",
+      "bytes": 34456,
+      "sha256": "a01d9b424a27eebd0ffe6ff051fde3597d618831e1921d27031792a989e2918d"
+    },
+    {
+      "path": "frontend/public/world/themes/revenge.png",
+      "bytes": 4975,
+      "sha256": "245049897f87ace9e82a7e2676654708ac3e4aa8a297d11dedbcb9275c064da6"
+    },
+    {
+      "path": "frontend/public/world/illustrated/revenge-ground.png",
+      "bytes": 96285,
+      "sha256": "aa889f913f8b518409529130fd6710f78f12cb40f28d746ce83c4a01a04aab8e"
+    },
+    {
+      "path": "frontend/public/world/illustrated/revenge-landmarks-atlas.png",
+      "bytes": 445101,
+      "sha256": "0c2ff90ddf18a61791ca2825a25361c536e5fd8d3a86f927aeea5150db292879"
+    },
+    {
+      "path": "frontend/public/world/illustrated-runtime/revenge-details.png",
+      "bytes": 10119,
+      "sha256": "84cd918700d99f1bfabcde38a7d48d43b51bf5ef19d431b50cc9c11e0c0a3bcd"
+    }
+  ],
+  "referenceComparison": {
+    "source": "docs/mcr/design/parade-ink-2026-11-05/bone-crimson.jpg",
+    "sourceSha256": "1b782e6b28128bdd877bc714b86dfa9fe9c1a2fc74b5ce77807dcf7cafd38217",
+    "crop": [
+      422,
+      70,
+      386,
+      773
+    ],
+    "normalizedWidth": 390,
+    "actualPanel": {
+      "x": 4,
+      "y": 4,
+      "width": 382,
+      "height": 836,
+      "right": 386,
+      "bottom": 840
+    },
+    "referenceHeight": 781,
+    "actualHeight": 854,
+    "side": "native/meet-390-reference-side.png",
+    "overlay": "native/meet-390-reference-overlay.png",
+    "adaptation": "Photo2 black selected tabs/light paper/crimson actions; Photo4 anatomy only; authorized content and unavailable member portraits remain truthful",
+    "developerAssessment": "PASS_WITH_RECORDED_TRUTHFUL_CONTENT_ADAPTATIONS"
+  },
+  "browser": "156.0.8078.80",
+  "node": "v24.22.2",
+  "resources": {
+    "peak": {
+      "processes": 13,
+      "rssBytes": 2786033664,
+      "wholeBytes": 5334413312,
+      "newBytes": 34631680
+    },
+    "conservativeProcessUpper": 17,
+    "pngAllAttemptsBytes": 3841621,
+    "ownedResources": {
+      "guards": 0,
+      "controllers": 0,
+      "node": 0,
+      "chrome": 0,
+      "port5368": 0,
+      "privateProfiles": 0,
+      "temporaryCaches": 0
+    },
+    "globalSamplingBoundary": "DefaultApp realrouter/Auth/ports/renderer with syntheticHTTP, explicitTEST_ONLYM06component positives. Globalguard rootmatcher/descendant sample follows allocator roster corrected by literal releases; no shared externalguard claimed."
+  },
+  "historicalAttempts": [
+    {
+      "attempt": 1,
+      "status": "FAIL",
+      "reason": "Driver awaited __PI05__ while adapted fixture still exported its historical API name; actual page rendered; preserved private screenshot/log/receipt"
+    },
+    {
+      "attempt": 2,
+      "status": "PASS_35_CASES",
+      "imageFinding": "Legacy :root .party-browse artwork outranked plain opaque background; People fallback label wrapped a final letter"
+    },
+    {
+      "attempt": 3,
+      "status": "PASS_8_AFFECTED_MEET_RECAPTURES",
+      "fix": "Owned higher-specificity background shorthand removes retained artwork; 230px centered CTA"
+    },
+    {
+      "attempt": 4,
+      "status": "PASS_3_AFFECTED_PEOPLE_RECAPTURES",
+      "fix": "12px unavailable portrait text fits compact cell"
+    }
+  ],
+  "notRun": [
+    "real default-App authority producer positive",
+    "production service journey",
+    "physical device or physical arrival",
+    "two real clients",
+    "whole PI01/shared-shell acceptance"
+  ]
+}

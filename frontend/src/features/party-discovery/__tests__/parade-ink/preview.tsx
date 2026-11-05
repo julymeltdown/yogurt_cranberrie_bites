@@ -1,0 +1,152 @@
+// PI05 TEST_ONLY adaptation of community-adoption native fixture SHA256 eccc3ffdeff2fa5a1ec6926958e89c5c1fe985d0c6cd95dff215d2435d2dbcdc.
+// TEST_ONLY: adapted byte-preserving application setup from Root32fed3 cozy-backgrounds-v1.
+// Synthetic HTTP/C05/clock policy; actual default router, providers, renderer and Phaser runtime.
+// Actual canonical Auth, browser router, default production loader and whole-character renderer.
+// Synthetic HTTP/C05 and isolated map admission. No product/source approval or physical arrival.
+import { party, profile, activity, ids, application } from '../fixtures/data'
+import original from '../../../../../../contracts/fixtures/core/bootstrap-open.json'
+import { contentHash } from '../../../../world/map/json'
+import type { CommunityClockProfile } from '../../../../app/community-adoption/bootstrap'
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import { RouterProvider } from 'react-router-dom'
+import { createAppRouter } from '../../../../app/router'
+import { createProductionPorts } from '../../../../app/ports'
+import { createSessionController } from '../../../../features/auth/model/session'
+import { isolatedCookiePolicy, capabilities, authResponse } from '../../../../features/auth/__tests__/fixtures/data'
+import { admission } from '../../../auth/__tests__/enrollment-consent/fixtures'
+import { wholeData, eventId, userId, frame, participant } from '../../../../../e2e/reference-integrated/whole/data'
+import { domainResponse } from '../../../../../e2e/reference-integrated/data'
+import { response as socialResponse } from '../../../../app/social-composition/__tests__/fixtures'
+import { rooms } from '../../../../app/world-entry/__tests__/data'
+import { ticket } from '../../../../world/composition/__tests__/fixtures/data'
+import { MockSocket } from '../../../../world/network/mock'
+import type { WorldTicketRequest } from '../../../../world/network/WorldTransport'
+import '../../../../shared/styles/base.css'
+import '../../../../app/shell.css'
+
+if (!import.meta.env.DEV) throw Error('PI05 fixture is development-only')
+const params = new URLSearchParams(location.search), data = await wholeData()
+const era = params.get('era'), authMode = params.get('authMode')
+const scenario = params.get('scenario') ?? 'enabled'
+const presentationCase = params.get('case') ?? 'normal'
+if (!['world-only', 'enabled', 'no-policy', 'virtual'].includes(scenario)) throw Error('Unknown TEST_ONLY scenario')
+document.title = `TEST_ONLY Community authority: ${scenario}`
+document.documentElement.dataset.mcrFixture = 'TEST_ONLY community authority'
+if (scenario === 'world-only') Object.assign(data.bootstrap.capabilities, structuredClone(original.capabilities))
+if (scenario === 'enabled' || scenario === 'no-policy') {
+  const place = data.bootstrap.map_manifest.places[0]!
+  Object.assign(place, { place_kind: 'PHYSICAL', verification_state: 'VERIFIED', closure_state: 'OPEN',
+    provenance: { ...place.provenance, source_kind: 'PLACE_REFERENCE', source_uri: 'https://fixture.example.invalid/venue',
+      review_state: 'REVIEWED', reviewed_by: 'TEST_ONLY synthetic reviewer', reviewed_at: data.bootstrap.server_time } })
+  data.bootstrap.map_manifest.content_hash = await contentHash(data.bootstrap.map_manifest)
+  for (const theme of data.bootstrap.theme_manifests) {
+    theme.map_content_hash = data.bootstrap.map_manifest.content_hash
+    theme.content_hash = await contentHash(theme)
+  }
+}
+const testProfile: CommunityClockProfile = Object.freeze({ classification: 'TEST_ONLY', evidence: 'Synthetic native fixture, not measured platform guarantees',
+  maxAgeMs: 30000, uncertaintyMs: 1000, maxElapsedRate: 1.01, maxObservationGapMs: 5000 })
+if (era === 'REVENGE' || era === 'PARADE' || era === 'DANGER') data.bootstrap.participant.preferences.theme = era
+const initial = params.get('entry') ?? '/world', signedIn = !['/', '/login'].includes(initial)
+const requests: { path: string; method: string }[] = [], sockets: Socket[] = []
+let serial = 0, socketPeak = 0, disposed = false
+// Project contract fixture identities/avatars to the current selected whole-character shape.
+// Never load or display the legacy fixture avatar assets.
+function bind(value: unknown): unknown {
+  if (Array.isArray(value)) return value.map(bind)
+  if (value && typeof value === 'object') return Object.fromEntries(Object.entries(value).map(([key, item]) =>
+    [key, key === 'event_id' ? eventId : ['owner_id', 'actor_id'].includes(key) ? userId : key === 'avatar' ? structuredClone(data.avatar) : bind(item)]))
+  return value
+}
+const auth = createSessionController({ eventId, cookiePolicy: isolatedCookiePolicy(), fetch: async input => {
+  const request = input as Request, path = new URL(request.url).pathname
+  requests.push({ path, method: request.method })
+  if (request.method === 'GET' && path === '/api/auth/enrollment/admission') return Response.json(admission())
+  if (path === '/api/auth/capabilities') return authMode === 'options-unavailable' ? new Response(null,{status:503}) : Response.json(capabilities())
+  if (path === '/api/auth/login') {
+    if (authMode === 'pending') return new Promise<Response>((_resolve,reject) => request.signal.addEventListener('abort', () => reject(new DOMException('Synthetic pending login aborted','AbortError')), { once:true }))
+    if (authMode === 'error') return Response.json({code:'UNAUTHENTICATED',message:'Synthetic denied credentials',details:{reason:'UNAUTHENTICATED'}},{status:401})
+    return Response.json(authResponse())
+  }
+  if (path === '/api/auth/logout') return new Response(null, { status: 204 })
+  if (path.endsWith('/bootstrap')) return Response.json(data.bootstrap)
+  if (path.endsWith('/rooms')) return Response.json(rooms())
+  if (path.endsWith('/world-tickets')) return Response.json(ticket(await request.json() as WorldTicketRequest, ++serial))
+  if (path.endsWith('/places')) return Response.json({ event_id: eventId, revision: 1, items: data.bootstrap.map_manifest.places })
+  if (path.includes('/places/')) return Response.json({ event_id: eventId, revision: 1, place: data.bootstrap.map_manifest.places.find(p => p.place_id === path.split('/').at(-1)) })
+  if (path.endsWith('/me')) return Response.json(participant(data, data.avatar))
+  // HTTP contract fixtures only. Capability, audience, place and clock qualification
+  // still pass through the actual application adapters; no local controller overrides.
+  const owned = presentationCase === 'owner'
+  const place = data.bootstrap.map_manifest.places[0]!
+  const current = party({ event_id: eventId, public_place_id: place.place_id,
+    owner: profile(owned ? userId : ids.other),
+    title: presentationCase === 'long' ? 'A long concert party title that must wrap without covering the Join control' : 'Area A Queue Group',
+    member_count: presentationCase === 'full' ? 5 : 2,
+    state: presentationCase === 'closed' ? 'CLOSED' : presentationCase === 'cancelled' ? 'CANCELLED' : 'OPEN' })
+  if (request.method === 'GET' && path.includes('/parties')) {
+    if (presentationCase === 'error') return Response.json({ code: 'UNAVAILABLE', message: 'Synthetic unavailable', details: { reason: 'DEPENDENCY_UNAVAILABLE' } }, { status: 503 })
+    if (path.endsWith('/me/parties')) { const plan = activity(); return Response.json(owned ? { ...plan, owned: { items: [current], next_cursor: null } } : plan) }
+    if (path.endsWith('/applications')) return Response.json({ items: owned ? [application({ event_id: eventId })] : [], next_cursor: null })
+    if (path.endsWith('/members')) return Response.json({ items: [{ event_id: eventId, party_id: ids.party, user_id: current.owner.user_id, role: 'OWNER', state: 'ACTIVE', revision: 1, joined_at: '2026-11-01T00:00:00Z' }], next_cursor: null })
+    if (path.endsWith('/rally')) return Response.json({ party_id: ids.party, event_id: eventId, meeting_revision: 1, beacon_id: null, entries: [] })
+    if (path.endsWith('/parties') && presentationCase === 'empty') return Response.json({ items: [], next_cursor: null })
+    if (!path.endsWith('/parties')) return Response.json(bind(current))
+  }
+  if (request.method === 'GET' && path.includes('/beacons/')) {
+    if (presentationCase === 'private') return Response.json({ code: 'DENIED', message: 'Synthetic private', details: { reason: 'PERMISSION_DENIED' } }, { status: 403 })
+    return Response.json({ code: 'UNAVAILABLE', message: 'Synthetic authority producer absent', details: { reason: 'RESOURCE_UNAVAILABLE' } }, { status: 404 })
+  }
+  const domain = domainResponse(request, eventId, userId, data.bootstrap.map_manifest.places[0]!.place_id)
+  const response = domain ?? await socialResponse(request)
+  const value = bind(await response.json()) as Record<string, unknown>
+  if (path.endsWith('/parties') && Array.isArray(value.items)) value.items = value.items.map((item, index) => ({ ...item as Record<string, unknown>,
+    ...(index === 0 ? current : {}), ...presentationCase === 'full' ? { member_count: 5, capacity: 5 } : {},
+    ...presentationCase === 'closed' ? { state: 'CLOSED' } : {} }))
+  // Public authors stay distinct from the actor. Private age status and a queried
+  // public-profile subject are explicitly bound to their requested fixture identity.
+  if (path.endsWith('/me/age-status')) value.user_id = userId
+  if (path.includes('/people/')) value.user_id = path.split('/').at(-1)
+  return Response.json(value, { status: response.status })
+} })
+class Socket extends MockSocket {
+  constructor() { super(); sockets.push(this); socketPeak = Math.max(socketPeak, sockets.filter(s => s.readyState < 2).length); queueMicrotask(() => this.open()) }
+  override send(text: string) {
+    super.send(text); const message = JSON.parse(text)
+    if (['authenticate', 'switchRoom', 'resync'].includes(message.type)) queueMicrotask(() => {
+      if (this.readyState === 1) this.receive(JSON.stringify(frame(data, message.roomId ?? rooms().default_room_id, data.avatar,
+        message.type === 'switchRoom' ? 'ROOM_SWITCH' : message.type === 'resync' ? 'RESYNC' : 'INITIAL', message.requestId ?? null)))
+    })
+  }
+}
+Object.defineProperty(window, 'WebSocket', { configurable: true, writable: true, value: Socket })
+auth.start(); while (auth.read().capabilities === 'loading') await new Promise(resolve => setTimeout(resolve, 5))
+if (signedIn && !await auth.login('fixture@example.test', 'fixture-password')) throw Error('Synthetic canonical login failed')
+history.replaceState(null, '', initial)
+// No loader/resolver/assetFetch/engine/renderer or panel override. Availability is TEST ONLY.
+const ports = createProductionPorts(auth, { origin: location.origin, localInput: {
+  revision: 'TEST_ONLY_QA06_not_C05_authority', reviewedBy: 'Synthetic visual fixture',
+  movementPolicy: { speedPxPerSecond: 96, footWidthPx: 12, footHeightPx: 8, interactionRadiusPx: 96 }, zoom: 1,
+} }, { availability(context) { const value = { bootstrap: context.bootstrap, scope: context.scope, services: { feed: true, people: true, intro: true, age: true, inbox: true } }; return { read: () => value, subscribe: () => () => {} } } })
+const configuredPorts = { ...ports, ...(scenario === 'no-policy' ? {} : { communityClock: testProfile }) }
+const router = createAppRouter(configuredPorts), root = createRoot(document.getElementById('root')!)
+root.render(<StrictMode><RouterProvider router={router} /></StrictMode>)
+const api = {
+  state() { const binding = ports.worldAccess?.read(), presentation = binding?.presentation?.read(), replication = binding?.replication.read()
+    return { scenario, capabilityMode: scenario === 'world-only' ? 'Exact committed C03 fixture: ALL capabilities disabled, including World' : 'TEST_ONLY synthetic capabilities', classification: 'TEST_ONLY', policy: scenario === 'no-policy' ? null : testProfile, path: router.state.location.pathname, published: !!presentation, theme: presentation?.theme.read(), camera: presentation?.camera.read(),
+      phase: replication?.phase, entities: replication?.entities.length, avatarPin: data.pin, requests,
+      sockets: sockets.length, activeSockets: sockets.filter(s => s.readyState < 2).length, socketPeak,
+      canvases: document.querySelectorAll('.shell-world-host canvas').length, disposed } },
+  navigate: (path: string) => router.navigate(path),
+  interruptClock() {
+    Object.defineProperty(document, 'visibilityState', { configurable: true, value: 'hidden' })
+    document.dispatchEvent(new Event('visibilitychange'))
+    Object.defineProperty(document, 'visibilityState', { configurable: true, value: 'visible' })
+    document.dispatchEvent(new Event('visibilitychange'))
+  },
+  suspendPrivacy() { auth.privacy.changePolicy(auth.privacy.capture(), 'suspended') },
+  async dispose() { if (disposed) return; disposed = true; root.unmount(); router.dispose(); ports.dispose?.(); auth.dispose() },
+}
+Object.assign(window, { __PI05__: api })
+declare global { interface Window { __PI05__: typeof api } }

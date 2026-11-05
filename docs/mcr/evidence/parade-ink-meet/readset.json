@@ -1,0 +1,352 @@
+{
+  "base": "aac0d96d152e47150f4fac0f57b69659ad20a956",
+  "status": "SOURCE_AND_NATIVE_DEVELOPER_VALIDATED",
+  "qualifiedPresentationHead": "9a9141f11fffb23cd777d22867c103a2142b30ab",
+  "files": [
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/handoff.json",
+      "bytes": 3496,
+      "sha256": "ed76aa0fdcebdfd7931625b07f57b55503ee223884565928626356e1ae1fcdd6"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/native-validation.json",
+      "bytes": 192978,
+      "sha256": "92f4db92a1bc20ba72017f50254f59c6663717866a3223e7bdae0b9aae82eaad"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/native/01-360x844-normal.png",
+      "bytes": 50541,
+      "sha256": "1954a41e0cf2576cbbcbd2a212258ecc05d1c3d253e7b9e1d047cd2f552fd02d"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/native/02-360x844-normal.png",
+      "bytes": 67085,
+      "sha256": "f2b1a2e7bd8acc6c008899cf15e5d00eeb4e0f01bc21c7ec07a178d2089b529c"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/native/03-360x844-normal.png",
+      "bytes": 49192,
+      "sha256": "b6632b6f7b27e7c63554e3359fe04093364ac785b8f259987c00952e54d51c90"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/native/04-360x844-owner.png",
+      "bytes": 54828,
+      "sha256": "0b0828debf511a14634556bf94062972543bd5098dbd37ce23e8616402a38c7d"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/native/05-360x844-owner.png",
+      "bytes": 33449,
+      "sha256": "bf89699fcd46a338e516f8fa813e13df51b4c6174004a677af35f31ae96df7e1"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/native/06-360x844-normal.png",
+      "bytes": 33698,
+      "sha256": "2a96578789ac064ca50898ac2bb4d16292d20f3d0b49428687381a1ee1cec5ea"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/native/07-360x844-normal.png",
+      "bytes": 60419,
+      "sha256": "86f5b9dc3c000b67cba7b6d946f49b513a282ed41c0c901bb0e272c39d8fe26b"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/native/08-360x844-current.png",
+      "bytes": 69079,
+      "sha256": "15935b5b9ab3200dbcbda06b08a6a4df13eee7eb7f0c5d0fd4126614ca187d18"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/native/09-360x844-private.png",
+      "bytes": 15996,
+      "sha256": "74541e857f62a61270e86730bccf3531a4dae4eb635cc0903208f0baa5f17f91"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/native/10-390x844-normal.png",
+      "bytes": 50472,
+      "sha256": "3fe1f7cb4b5c0ffcf01310c2a6545137186a2cb9ff86c09371e5dcf7ec25467d"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/native/11-390x844-normal.png",
+      "bytes": 66953,
+      "sha256": "f084e15a834ecc0510b8f2d9a00561fa6c2622ac921d483d8663d996f94e7c06"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/native/12-390x844-normal.png",
+      "bytes": 49976,
+      "sha256": "222cc6c2f9088b53b742d8b233a02c710b9b50c503a49ad04eb57428843345e9"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/native/13-390x844-owner.png",
+      "bytes": 58148,
+      "sha256": "f6db05b20424dd1bbbbba525d268110b26031a635c68d7360e86536778fbc70a"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/native/14-390x844-owner.png",
+      "bytes": 34724,
+      "sha256": "1416fc5745e2baebc6a948dfa38b1d0b58ef4cbbf3f8b1dc43b1661d1653b309"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/native/15-390x844-normal.png",
+      "bytes": 33964,
+      "sha256": "38ddbe4e17e2bd2db7e144175117efa6d94592a50dc30c641e8a3d413a6b0735"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/native/16-390x844-normal.png",
+      "bytes": 61639,
+      "sha256": "82d2991e235bdafc67212d64c3ad3e8912ab86109f3020e193bbcc6e66728ee2"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/native/17-390x844-current.png",
+      "bytes": 69881,
+      "sha256": "3ba07f40bfa91fe8961e67d66c0577d2c0403ed8712976a2d49c7813d3f08c38"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/native/18-390x844-private.png",
+      "bytes": 16434,
+      "sha256": "0692f4c879cbd1d849b9875361ba3cb45dcd882fddb25f0223157800a64f98d1"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/native/19-430x844-normal.png",
+      "bytes": 50555,
+      "sha256": "a07950b6b8bf824dde2074e8f0cecdcbb04180e246e70a5b8c742c8527d5cb18"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/native/20-430x844-normal.png",
+      "bytes": 71376,
+      "sha256": "8885ff318aaaf43b1ab82c8dec78cebc0993036d2f2ad26e92202e4267e0fcd5"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/native/21-430x844-normal.png",
+      "bytes": 52934,
+      "sha256": "b71aed732fc5b81ad178db7f56b37b64d7a5eb593e4eecc4b497518a5c3c7d3e"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/native/22-430x844-owner.png",
+      "bytes": 58477,
+      "sha256": "24f7357f20b7ab0d50b3639f28f5c697574d788a73be29567f5c1a1a0e209d39"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/native/23-430x844-owner.png",
+      "bytes": 34268,
+      "sha256": "44922ecfb55c250717944cf173fe503d43c49bcd27d20f9904a4f0117a7160ec"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/native/24-430x844-normal.png",
+      "bytes": 33747,
+      "sha256": "4707b66c907e9d359d2c430297c9c8779e1759483e688519e9b1be4db64db615"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/native/25-430x844-normal.png",
+      "bytes": 62107,
+      "sha256": "64d5a6189cfcedc31fa85e42e4bdcc5099c2276286a9eceab05b49afc8cdb624"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/native/26-430x844-current.png",
+      "bytes": 74700,
+      "sha256": "b06aa04158c5902bab958ba05f660929d2f2c12ec2475d50089a493c1edce0d6"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/native/27-430x844-private.png",
+      "bytes": 15233,
+      "sha256": "84a9810c874beff20bdb827fe1ae647e7f98527151b02ddfea531f0530d76b15"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/native/28-390x420-long.png",
+      "bytes": 28129,
+      "sha256": "f63fe877d5af47c554ad9b7dbd8a94d5c08231e695d7a72153e0d752e357a939"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/native/29-390x844-full.png",
+      "bytes": 49779,
+      "sha256": "5bf2ed2f2d84cbd2cfa6aab18e0bc9caf98b6e7e22ad75baf78efa2c8f2eae60"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/native/30-390x844-closed.png",
+      "bytes": 51841,
+      "sha256": "7fbf9ed85457cd1dd200b67fc65ebf5977be6097d3b27d7bcf232692bc4bef67"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/native/31-390x844-empty.png",
+      "bytes": 20015,
+      "sha256": "b5647f7fdb4bec3d51e4096d1d369b4eeb07ecc3208e5b8c548b3af5670bddc8"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/native/32-390x844-error.png",
+      "bytes": 20655,
+      "sha256": "4ee002778b419808cd17471176e252e46852ccf85d539e9f7944fa029529c524"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/native/33-390x844-private.png",
+      "bytes": 26537,
+      "sha256": "b4fb21e35e85d86a53b36cc545dd9c6d6c4567da4a048365b9880d9f814bd72f"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/native/34-390x844-expired.png",
+      "bytes": 23738,
+      "sha256": "dcceff06abc35e86adb0b9abf9eab111f21ad7d3be4bb0b9d9cf9264f564b082"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/native/35-390x420-long.png",
+      "bytes": 52128,
+      "sha256": "83cd82c0cded68edf1de80878d5e6f7d8fd005597d7f738219dc0a882d9610c7"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/native/meet-390-reference-overlay.png",
+      "bytes": 363300,
+      "sha256": "d5a8df71b9c8bf49579ed03da634d63ae98c5d458baf8c0a25efcfb3c47d0856"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/native/meet-390-reference-side.png",
+      "bytes": 506335,
+      "sha256": "3dbacd7242b28b6125d16db46131ab7b9ef2b1de42d0941351148a2ce9d4e05b"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/source-intake.json",
+      "bytes": 3418,
+      "sha256": "04ee3dd13c61d196817a061c38018b06c0d143e74afd64f9b5ca01455717e184"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/source-validation.json",
+      "bytes": 1169,
+      "sha256": "ddd4484b92eaa908f9c1e9648cec0bb65644dc20d9ca397dc31cd5aaeaa613fb"
+    },
+    {
+      "path": "docs/mcr/evidence/parade-ink-meet/visual-assessment.md",
+      "bytes": 3349,
+      "sha256": "d70c56a16858be870fc324db131d3a517d67d15c8980c6a0eee7976be8a0bbe8"
+    },
+    {
+      "path": "docs/mcr/frontend/parade-ink-meet.md",
+      "bytes": 15413,
+      "sha256": "142e96802196ae7e4e8556b8d5dbf6730cd2aeb89d5e8f23cd0cfc58728a5e3e"
+    },
+    {
+      "path": "frontend/src/features/intro/IntroEditor.tsx",
+      "bytes": 4875,
+      "sha256": "aca6cd2fe5464bc9e2d2f18b43edc008bfedb6f1a3aa46bde85df821b56db295"
+    },
+    {
+      "path": "frontend/src/features/meet-beacon/__tests__/parade-ink/harness.ts",
+      "bytes": 7096,
+      "sha256": "38df33c723bf975af8a585367b8d33c7f88056fcc9fc64d1220715a1f19834c7"
+    },
+    {
+      "path": "frontend/src/features/meet-beacon/__tests__/parade-ink/presentation.test.tsx",
+      "bytes": 1528,
+      "sha256": "4182264863c381eab7a2ead3543ea06e67dfad496a9e9a42b3abe58d632ed0db"
+    },
+    {
+      "path": "frontend/src/features/meet-beacon/__tests__/parade-ink/preview.html",
+      "bytes": 272,
+      "sha256": "0c7a8d53f2fe4b44bfb8d2be707e886bcba097aebfd4c710c18294c15280f7b7"
+    },
+    {
+      "path": "frontend/src/features/meet-beacon/__tests__/parade-ink/preview.tsx",
+      "bytes": 1397,
+      "sha256": "3dd8867f4af1b616458aace0529874691007727f2ff3b6ccc80af28644ffd1a0"
+    },
+    {
+      "path": "frontend/src/features/meet-beacon/ui/MeetingBeacon.tsx",
+      "bytes": 11757,
+      "sha256": "430e67d1c1558e8eb42122a673f90c63bc24e97d31e4963c1e50ced8c0584af7"
+    },
+    {
+      "path": "frontend/src/features/meet-beacon/ui/parade-ink-detail.css",
+      "bytes": 2583,
+      "sha256": "21e9b69bcd5c828da229d434192b7b87d144e4a3009ddc021aeb54cbe35992ab"
+    },
+    {
+      "path": "frontend/src/features/party-authoring/__tests__/parade-ink/harness.ts",
+      "bytes": 2380,
+      "sha256": "cf33099bac9792580e110675ec5f5388832b90204bf199d6ae40cecb43aeaea3"
+    },
+    {
+      "path": "frontend/src/features/party-authoring/__tests__/parade-ink/presentation.test.tsx",
+      "bytes": 2004,
+      "sha256": "88356c333c5db45fca3fcdc0f337dd7a9cd7f2e3ab6aecbcac24be364fdb0d85"
+    },
+    {
+      "path": "frontend/src/features/party-authoring/ui/PartyAuthoring.tsx",
+      "bytes": 5586,
+      "sha256": "f4ad3b4e6b9779e9b180f20fed3c76e2121b11cfb49072248b95690c21c18568"
+    },
+    {
+      "path": "frontend/src/features/party-authoring/ui/authoring.css",
+      "bytes": 2335,
+      "sha256": "31d009206fef76d855bb11c776d5a732a87cce3e19f8f1d1e5782163ae978005"
+    },
+    {
+      "path": "frontend/src/features/party-discovery/__tests__/parade-ink/finite-native.py",
+      "bytes": 10215,
+      "sha256": "af790d58f8ecf2db129d838afcbc2b33ca1771f2999fe0406233fadc7700c7f4"
+    },
+    {
+      "path": "frontend/src/features/party-discovery/__tests__/parade-ink/finite-source.py",
+      "bytes": 8147,
+      "sha256": "40e4bce5a419aa56815c12cb046c2802387501db00627ba50d6c4eb0ede6bcc9"
+    },
+    {
+      "path": "frontend/src/features/party-discovery/__tests__/parade-ink/native.mjs",
+      "bytes": 16828,
+      "sha256": "6a8f7bd773575db6f3e4b5da0ca21c693a69857555c3ee35891a83edd340f727"
+    },
+    {
+      "path": "frontend/src/features/party-discovery/__tests__/parade-ink/presentation.test.tsx",
+      "bytes": 4028,
+      "sha256": "b65f0e9219ca54b2a1a4ea82aab4ec1c7e4d4eb7649794a8ac253ae96b1c3aca"
+    },
+    {
+      "path": "frontend/src/features/party-discovery/__tests__/parade-ink/preview.html",
+      "bytes": 276,
+      "sha256": "9c3668cdb5c1517fddb653b4e478d0afb1b4bee87b1fd825dfe22964ddf9372f"
+    },
+    {
+      "path": "frontend/src/features/party-discovery/__tests__/parade-ink/preview.tsx",
+      "bytes": 12946,
+      "sha256": "f860cbbc2080e046a0d1d24ac827ac4412c1fe43d7f361fb145ca844521265ba"
+    },
+    {
+      "path": "frontend/src/features/party-discovery/__tests__/parade-ink/source-check.mjs",
+      "bytes": 2151,
+      "sha256": "1f6969db083397dcaa5fba35b2a1779f4bb08b742d230c69658e455f78c07ff4"
+    },
+    {
+      "path": "frontend/src/features/party-discovery/__tests__/parade-ink/vitest.config.mjs",
+      "bytes": 2594,
+      "sha256": "8fe89612bb8ec3e3ca1d86cd8e1965c3cd33122d55c40bcafcfaec61d3334b1d"
+    },
+    {
+      "path": "frontend/src/features/party-discovery/ui/PartyDiscovery.tsx",
+      "bytes": 19120,
+      "sha256": "9487bf6434da476ff9ed90c5b0ed37a54ed07b1faa747ce824a2d2a80b89d8a8"
+    },
+    {
+      "path": "frontend/src/features/party-discovery/ui/party-discovery.css",
+      "bytes": 9764,
+      "sha256": "7c5118f2edc956976fb48e7346104d8eb833286ebb8c10325adabb4f9f09d725"
+    },
+    {
+      "path": "frontend/src/features/party-management/ui/PartyManagement.tsx",
+      "bytes": 5913,
+      "sha256": "d7a7c19e2304b7cc35807cd0e0a824154a56c7be3c3f01fc3a39530db111bbbc"
+    },
+    {
+      "path": "frontend/src/features/party-management/ui/management.css",
+      "bytes": 2613,
+      "sha256": "b468fb52fca0c976bad60c216b1313d416e16919ee4421a7c5c60e2f190c0af8"
+    },
+    {
+      "path": "frontend/src/features/people/People.tsx",
+      "bytes": 2972,
+      "sha256": "34fe6f409f3cf695ff490479d1bdddbc596d68e03bfc40220e79aff2ba1dfe15"
+    },
+    {
+      "path": "frontend/src/features/people/__tests__/parade-ink/presentation.test.tsx",
+      "bytes": 2316,
+      "sha256": "00d4defbc05213256aa6e4521a5f78d212f2d88385742f67a3facfa0fc3065c6"
+    },
+    {
+      "path": "frontend/src/features/people/people.css",
+      "bytes": 7738,
+      "sha256": "a58d842123aa912085a92bf24fdc8653f0f9715161adf459a014b843a315a95e"
+    }
+  ]
+}

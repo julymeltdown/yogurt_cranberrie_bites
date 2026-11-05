@@ -2,6 +2,7 @@ import { useEffect, useId, useState, useSyncExternalStore } from 'react'
 import { sourceLink } from '../../places/model/contract'
 import { meetingNotice, type MeetingBeaconController } from '../model/controller'
 import './meeting-beacon.css'
+import './parade-ink-detail.css'
 
 function useMeeting(controller: MeetingBeaconController) {
   const state = useSyncExternalStore(controller.subscribe, controller.read, controller.read)
@@ -85,7 +86,7 @@ export function MeetingBeaconDetail({ controller, ownerActions = false }: { read
   useEffect(() => { setConfirmRevoke(false) }, [state.epoch, b?.revision, b?.beacon_id, state.phase])
   const current = state.phase === 'current', source = sourceLink(p?.provenance.source_uri ?? null)
   const blocked = !state.canWrite || ['sending', 'uncertain', 'pending', 'checking', 'retired'].includes(state.command.phase)
-  return <section className="meeting-beacon" aria-labelledby={`${id}-title`}>
+  return <section className="meeting-beacon meeting-beacon--parade-detail" data-presentation="parade-ink-meet" aria-labelledby={`${id}-title`}>
     <h2 id={`${id}-title`}>{title[state.phase]}</h2>
     <p>Real-world meeting guidance. Avatar position is virtual and does not confirm arrival.</p>
     {state.phase === 'moved' && <p role="status">Earlier guidance is superseded. Review this revision and explicitly confirm it before reporting arrival.</p>}

@@ -11,7 +11,7 @@ export function IntroEditor({ controller }: { controller: IntroController }) {
   function bound(field: 'minimum_age' | 'maximum_age_exclusive', value: string) {
     controller.edit({ ...draft, age_bounds: { ...draft.age_bounds, [field]: value === '' ? null : Number(value) } as typeof draft.age_bounds })
   }
-  return <section className="intro-surface" aria-labelledby={`${id}-title`}><Link to="/meet/people">Back to people</Link><h1 id={`${id}-title`}>YOUR INTRO</h1><p>Introduce yourself. Your audience conditions stay private and are enforced by the server.</p>
+  return <section className="intro-surface intro-editor" data-presentation="parade-ink-meet" aria-labelledby={`${id}-title`}><Link to="/meet/people">Back to people</Link><h1 id={`${id}-title`}>YOUR INTRO</h1><p>Introduce yourself. Your audience conditions stay private and are enforced by the server.</p>
     {state.readOnly && <p role="status">This event is read-only. You can keep editing a local draft; publishing and saving are unavailable.</p>}
     <p role="status" aria-live="polite">{state.load.phase === 'loading' ? 'Loading your introduction…' : state.command.message || state.message || (state.saved ? `Saved state: ${state.saved.state}` : 'Your introduction has not been verified by the server.')}</p>
     {['pending', 'uncertain', 'reconciling', 'failed'].includes(state.command.phase) && state.command.locked && <button onClick={() => void controller.checkStatus()}>Check original command</button>}

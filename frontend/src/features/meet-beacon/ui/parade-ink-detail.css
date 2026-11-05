@@ -1,0 +1,17 @@
+/* M06 only. Form, upload, explicit arrival and controller/time authority are untouched. */
+.meeting-beacon.meeting-beacon--parade-detail { box-sizing:border-box; min-width:0; margin:0; padding:0 0 max(12px,env(safe-area-inset-bottom)); color:var(--pi-ink,#171717); background:var(--pi-paper,#f9f9f8); font:400 var(--pi-body-size,18px)/var(--pi-body-leading,22px) var(--pi-font-body,Arial,sans-serif); overflow-wrap:anywhere; }
+.meeting-beacon.meeting-beacon--parade-detail * { box-sizing:border-box; }
+.meeting-beacon.meeting-beacon--parade-detail h2 { margin:8px 0; font:700 var(--pi-title-size,26px)/var(--pi-title-leading,32px) var(--pi-font-display,"Arial Narrow",Arial,sans-serif); }
+.meeting-beacon.meeting-beacon--parade-detail h3 { margin:12px 0 8px; font:700 22px/28px var(--pi-font-display,"Arial Narrow",Arial,sans-serif); }
+.meeting-beacon.meeting-beacon--parade-detail p { margin:8px 0; }
+.meeting-beacon.meeting-beacon--parade-detail dl { display:grid; gap:6px; margin:12px 0; padding:12px 0; border-block:1px solid var(--pi-soft-rule,#777774); }
+.meeting-beacon.meeting-beacon--parade-detail dt { margin:8px 0 0; color:var(--pi-muted,#545454); font-size:14px; line-height:18px; font-weight:700; }
+.meeting-beacon.meeting-beacon--parade-detail dd { margin:0; }
+.meeting-beacon.meeting-beacon--parade-detail a { min-width:44px; min-height:44px; color:inherit; text-underline-offset:3px; }
+.meeting-beacon.meeting-beacon--parade-detail button { min-width:44px; min-height:44px; max-width:100%; padding:8px; color:inherit; background:var(--pi-paper,#f9f9f8); border:1px solid var(--pi-rule,#3c3c3b); border-radius:var(--pi-radius,2px); font:700 var(--pi-control-size,18px)/var(--pi-control-leading,22px) var(--pi-font-display,"Arial Narrow",Arial,sans-serif); cursor:pointer; }
+.meeting-beacon.meeting-beacon--parade-detail button:disabled { opacity:1; color:var(--pi-muted,#545454); background:var(--pi-disabled,#e3e3e0); cursor:default; }
+.meeting-beacon.meeting-beacon--parade-detail :is(a,button):focus-visible { outline:3px solid var(--pi-focus,#922532); outline-offset:2px; }
+.meeting-beacon.meeting-beacon--parade-detail .meeting-actions { gap:8px; margin:12px 0; }
+.meeting-beacon.meeting-beacon--parade-detail figure { margin:12px 0; padding:4px; border:1px solid var(--pi-rule,#3c3c3b); }
+.meeting-beacon.meeting-beacon--parade-detail img { display:block; width:auto; max-width:100%; height:auto; object-fit:contain; }
+.meeting-beacon.meeting-beacon--parade-detail figcaption { margin-top:6px; font-size:14px; line-height:18px; color:var(--pi-muted,#545454); }

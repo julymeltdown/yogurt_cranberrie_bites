@@ -1,0 +1,36 @@
+{
+  "classification": "SOURCE_ONLY_NOT_RUNTIME",
+  "qualifiedSource": "1fad226799234a4c371a73d063356b1890dd0b7a",
+  "sourceOffer": "PI05-MEET-SOURCE01-20261105T0007Z",
+  "actualFullEpoch": 1793837954.1597052,
+  "privateFullSha256": "6d8bd175c3d20c4aead5b4e58ee45de303eec1df9a67cc92530c682fdf310b51",
+  "tests": {
+    "uniqueCases": 63,
+    "suites": 10,
+    "status": "PASS",
+    "retained": "run01 nine passing unchanged suites plus run02 corrected People suite; no blanket replay"
+  },
+  "wholeFrontendTypes": {
+    "status": "PASS",
+    "files": 1111,
+    "noEmit": true,
+    "incremental": false
+  },
+  "scopedLint": "PASS",
+  "helperSyntax": "PASS",
+  "historicalFailuresPreserved": [
+    "run01 incorrect People availability expectation and transient ps census",
+    "run02 1GiB Node heap exhausted",
+    "run03 unsupported capture-fixture map place.revision"
+  ],
+  "resourcePeaks": {
+    "processes": 6,
+    "rssBytes": 2113519616,
+    "wholeBytes": 3793235968,
+    "newBytes": 12910592,
+    "processesIncludingTransientHelperUpper": 7
+  },
+  "allOwnedResourcesReleased": true,
+  "nativeVisual": "NOT_RUN",
+  "physicalAndAuthorityProducerPositive": "NOT_RUN"
+}
