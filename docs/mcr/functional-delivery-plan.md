@@ -1,5 +1,31 @@
 # Revised functional delivery plan — 2026-11-05
 
+<!-- BEGIN MAIN_HOURLY_20261105_1432 -->
+## CURRENT — 2026-11-05 14:32 KST responsible-owner reconciliation
+
+**Original tasks:58/111 active DONE (52.3%),53 remaining; all112 original rows unchanged. Current original criteria61, frozen root39 and22 new original closures unchanged. Design10/12 ACCEPTED,2 IN_PROGRESS. Mandatory VENU0/8,10 extension IA and48 actual comparisons NOT_RUN. ProductNOT_READY; full112false; QA08DEFERRED_BY_USER.**
+
+PI07 is now ACCEPTED / OWNER_SATISFIED_CANONICAL from responsible534's literal all-assigned pure-client/design criteria SATISFIED disposition at canonicalecb2c4ade/source42aa843e. This Main transaction consumes it once; design accepts PI01–07/09/10/12, with PI08 andPI11 open. All12 family definitions, completion criteria, references and unrelated dispositions remain intact; previous snapshots remain historical.
+
+| Existing owner / stream | Current remainder and next responsible action |
+| --- | --- |
+| PI08 /2162, UI, Root andART231 | Narrow HUD/camera/short-viewport fix b4c81367 is qualified. Full Photo2 scenery remains materially different. Only two new descriptor/test paths were accepted after RootSTOP; the final22-object frame/foot-anchor/occlusion table and target-projection mesh are being prepared for ART231 readiness. Logical-zoom source regressions passed; real zoom-button range/return browser proof is pending. No broad rendering/art grant, frozen proposed image sizes or wait for later asset-consuming runtime proof. |
+| PI11 /26e | Strict source passed. Native UI remains unpassed while pinned-overlay CSS harness and cleanup repairs continue. |
+| Map /40fde; Community /204; default mount /1eed | Map overlap fix698db20a and compact layouta6720ffb are scoped qualified deliveries. Remaining owner measurements are Notes157vs122px, composer366vs356px and Friends79vs74px.204 label/heading correction is committed but Native14 control repair/validation is pending.1eed remains sole default-venue mount owner with unfinished browser/type proof. No whole parity,48-case, default production mount, live/device or whole VENU closure. |
+| OAuth /Root153 and12cc; provider plan /207; QA04 | The callback/admission lifecycle defect has an authored but unverified fix and boundary tests; owner/21d next validation is pending. Gateway/provider/SQL/public capabilityOFF remains open. Canonicaldaa879b4 is planning only;9c73133c is bounded QA04 fixture/MOCK_READY support. Its resource failures and seven-principal real HTTP/WS/cache privacy matrix remain open. |
+| QA06 /existing UI and physical-validation owners | Current records lack a named executor, device access, control session and reachable fixture. UI is checking an independent existing-owner fixture-preparation remainder and obtaining exact access inputs. No universal device gate is added to completed pure-client criteria, and no unapproved device job or physical-delivery claim follows. |
+| Backend /21d and existing producers | The05:02UTC digest reports no new whole backend original completion. Gift1c45a448 and membership51af7f7 remain scoped. RootBE42/source/provider work is assigned, with actual validation open. Current target/resource facts remain lead-owned; dated queue entries grant no future slot. |
+| W04 /controller40fde, producer6b5d, existing World/Root | Policy remains PENDING/UNFROZEN and implementationNOT_STARTED.3e063c98 is planning only. Coordinate through existing custody; Main's existing human question is not duplicated. FE18 chooser/membership closure is unchanged. |
+
+Actual Friends/viewer/location/event-clock authority and reviewed physical inputs stay fail-closed. TEST_ONLY actual-Phaser Map and sentinel-host captures retain separate evidence scope. Completed original/client criteria are not reopened for missing independent producer or device evidence, and those genuine integration duties remain required.
+
+The all112-row original register,61 original IA,8 mandatory VENU families,10 extension IA entries,48 comparison definitions and QA08 deferral below remain unchanged. Functional completion takes priority over the explicitly deferred200-user qualification; no original criterion or historical scope is removed.
+<!-- END MAIN_HOURLY_20261105_1432 -->
+
+## HISTORICAL — all preceding Markdown retained verbatim; earlier CURRENT labels are dated snapshots
+
+# Revised functional delivery plan — 2026-11-05
+
 <!-- BEGIN MAIN_HOURLY_20261105_1330 -->
 ## CURRENT — 2026-11-05 13:30 KST, including late PI12 publication
 

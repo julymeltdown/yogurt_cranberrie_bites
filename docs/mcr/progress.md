@@ -1,5 +1,34 @@
 # Execution record — functional delivery
 
+<!-- BEGIN MAIN_HOURLY_20261105_1432 -->
+## CURRENT — 2026-11-05 14:32 KST responsible-owner reconciliation
+
+**Original tasks:58/111 active DONE (52.3%),53 remaining; all112 original rows unchanged. Current original criteria61, frozen root39 and22 new original closures unchanged. Design10/12 ACCEPTED,2 IN_PROGRESS. Mandatory VENU0/8,10 extension IA and48 actual comparisons NOT_RUN. ProductNOT_READY; full112false; QA08DEFERRED_BY_USER.**
+
+PI07 is accepted once from the responsible owner after canonical publication. Owner01a1a534-4fcf-7291-abe3-a97ba2fcafcd states exactly: "Original PI07 assigned pure-client/design criteria: ALL SATISFIED. No remaining assigned fix." Canonical ecb2c4adeaed06bc5b7ceb1e1f21d6b9a97e19c5, source42aa843ec0bca9e6c0802247f9ff53ee2695fe58. This is the owner disposition for assigned pure-client/design criteria, not an inference from test totals or publication alone. The entire prior PI07 entry is archived in disposition history.
+
+Accepted design families are PI01–07/09/10/12; PI08 andPI11 remain open. Owner534 was actually archived after terminal checks, returned leases, all resources zero and no accepted next scope. The historical BLOCKED goal and work are unchanged. Native07 partial/raw FAIL, narrow Native10 qualification and390short NEVER_ADMITTED/NOT_RUN remain truthful. Broader native-matrix, live/device, QA06 and whole VENU duties are separate.
+
+| Current ORIGINAL task state | Count |
+| --- | ---: |
+| DONE | 58 |
+| IN_PROGRESS | 44 |
+| WAITING_INPUT | 3 |
+| REOPENED | 3 |
+| OPEN | 3 |
+| DEFERRED_BY_USER | 1 |
+
+No original closure or reopening is added. FE32/PI09/PI12 and prior closures were already consumed; FE19/FE24/FE33 remain the reopened originals. All112 original scopes, states, criteria and dependencies,61 original IA and all venue definitions are preserved as data.
+
+Qualified scoped deliveries include PI08 HUD/camera b4c81367, Map overlap698db20a and compact layouta6720ffb, QA04 fixture9c73133c, provider planningdaa879b4, Gift1c45a448 and membership51af7f7. Their original limits remain; they do not add original outcomes. Current major remainders and exact owner boundaries are recorded in the current functional plan and JSON checkpoint.
+
+This14:32 checkpoint uses the single Frontend38514:32KST digest and Backend21d05:02UTC lead digest. Prior design, checkpoint and staffing snapshots are retained once. Dated reused Map14:23–14:24 and HUD13:59 fixture images are not a new reporting-browser qualification. There is no blended readiness percentage.
+<!-- END MAIN_HOURLY_20261105_1432 -->
+
+## HISTORICAL — all preceding Markdown retained verbatim; earlier CURRENT labels are dated snapshots
+
+# Execution record — functional delivery
+
 <!-- BEGIN MAIN_HOURLY_20261105_1330 -->
 ## CURRENT — 2026-11-05 13:30 KST, including late PI12 publication
 
