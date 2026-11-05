@@ -1,5 +1,37 @@
 # Execution record — functional delivery
 
+<!-- BEGIN MAIN_HOURLY_20261105_1228 -->
+## CURRENT — 2026-11-05 12:28 KST responsible-owner reconciliation
+
+**Original functional tasks:57/111 DONE (51.4%),54 remaining. Current original criteria outcomes:61/112. Design families:7/12 owner-satisfied,5 in progress. Mandatory venue:0/8 complete;48 new venue comparisons NOT_RUN. Product readiness:NOT_READY; QA08 remains deferred, not passed.** These denominators remain separate.
+
+| Current original state | Count |
+| --- | ---: |
+| DONE |57 |
+| IN_PROGRESS |44 |
+| WAITING_INPUT |3 |
+| REOPENED |4 |
+| DEFERRED_BY_USER |1 |
+| OPEN |3 |
+
+FE38 and FE39 are the only two new original closures: FE38 is responsible1eed ACCEPTED through implementation`28fbfa28` and Community disposition`06a2ab90`, retaining its attributed original qualifications; FE39 is responsible53d SATISFIED/MOCK_READY at`7b81bf62`, with canonical terminal fix`3255aae`. FE21 was already historically credited: only its reopened current Meet presentation delta closes through the same original disposition, owner-satisfied PI05`16856024` and owner reconciliation`6d33eed9`; it adds zero new original outcomes. Frozen root outcomes remain39; new closures since replan are22. Reopened historical IDs are FE19/FE24/FE32/FE33. FE37/C04/QA01 are not counted again. Original112 task definitions,61IA, acceptance/amendment links and all integration duties are preserved.
+
+Current original pure client/design families accepted by their implementation owners are PI01/02/03/04/05/06/10, justified by the literal[owner criterion reconciliation](scrum/ui-background-integration.md) at`6d33eed9`, not test totals or source presence. Canonical dispositions are PI01`651159ec`, PI02+03`10b1afe6`, PI04`e74f5057`, PI05`16856024`, PI06`5cc57d64`, PI10`8b7ba097`. Five exact remainders stay open: PI07 owner534 editor/PartPreview consumer; PI08 receiving2162 accepted narrow finish, actual HUD **LOWER16.5px/WIDER2.65px**; PI09 current Wall6954 command/recovery/restored tools/cleanup/reference/publication; PI11 old rooms/nearby/help owner26e after40fdeSTOP, with affected-reference/width/focus work and disjoint new Paradise City40fde; PI12 private/archive213. PI12 pre-World21e is actually published`78886ffa`; report/error/network83 is now actually published`822b4d01`, bounded COMPOSITE_SOURCE_FIXTURE. These two receipts do not close whole PI12 or original QA05's seven real cases.
+
+Mandatory8VENU and10extensionIA remain separate. Bounded canonical source milestones are Notes`51514ca4`, Meeting client`81680fc8`, Location client`c40abc74`, primary Map`1c5c9916`, normalized Meeting`4e8d224e`, and subsequent source-qualified Meeting HTTP registration`25d94f86`; art`fcd07805` and spatial`d3dd189c` are scoped dependencies. Root153 shared registration/transport/provider seams,1eed venuehost,50a8 Notes factory,40fde L/aggregate/request and204 comparisons retain accepted grants and open qualification duties. VENU-ART01 displayed-landmark review-state remains with40fde; pure art gains no added App/GPS gate. Source delivery does not certify actual mount/GPS/backend/native/device/whole venue. Existing missing Friends/viewer authority, location accuracy/freshness/sharing/retention/check-in policy, venue timezone/end-of-day clock and reviewed physical inputs remain genuine inputs. MESSAGE requires authorized selected-friend/event context, without a landmark or invitation prerequisite; a reviewed landmark remains required for INVITE.
+
+**Original IA W04 virtual party-room invitations:OPEN/NOT_IMPLEMENTED.** FE18's closed chooser/membership criteria remain intact. Main's single existing human policy question is PENDING: host to accepted-party members/current virtual room, five-minute expiry/revoke, ordinary capacity-checked admission and no reservation is **proposal only, not frozen**. This is distinct from physical VENU-M/MEET HERE/MESSAGE. WorldSL resolves actual FE18 consumer custody; Root1fc owns future shared routing with20f natural handoff/6b5d interface and21d allocation. This snapshot grants no source custody, blanket reopening, new original ID or duplicate question.
+
+Actual two-track staffing occurred:12cc accepted/committed the BE03 two-emailcase harness;267 accepted Gift factory`422bf`;205 accepted the signed-notice/event_admin producer under exact export STOP/0106 reservation; Root1fc authored serving/deletion mount source with validation open;1eed venuehost and50a8 Notes were reused;40c accepted disjoint L transport with a new goal after published M;53d finished dispositions. The L transport four-file handoff is qualified and queued, not yet claimed canonical here. QA03 is not unstarted: original11PG/restart cases are canonical`be56`/`030744`; original Wall7 do not cover new forced quota/history/undo/fill races, now assigned to existing Wall202 in retainedqa-database-races. No overall QA03 completion or duplicate matrix. QA09 helper/source is archived with six real cases NOT_RUN and actual00c/Root dependencies; QA10 original6b5d checker remains distinct from ready BE10/11 fresh two-case lifecycle scope. Exact allocator queue remains21d authority; no future acceptance is inferred.
+
+`236d9dfa` Post publication is FAILED PARTIAL CONTROL EVIDENCE ONLY, not BE39 implementation/runtime readiness. All historical failures remain; later successful turns do not prove global quota restoration. Main could not mutate chat speed: FastOFF is not established, no model/reasoning override or new billing/permission question. This is the once-only Main/385/21d management reconciliation, using owner dispositions and actual publisher receipts, with no king/SL implementation/query/test/runtime/pixel review or ACK. Sole publisher composes only these four central files; temporary Main grant ends on the canonical transaction receipt. Main remains source-STOP until a fresh actual assignment.
+
+<!-- END MAIN_HOURLY_20261105_1228 -->
+
+## HISTORICAL — preceding checkpoints retained verbatim
+
+All text below, including the54/111 and53/111 checkpoints, design0/12 snapshots, earlier numeric prose/tables and staffing states, is dated historical context. The CURRENT section and current machine-register fields above govern present accounting. No earlier content has been deleted or silently recounted.
+
 ## C04 original accounting correction — 2026-11-05 11:22 hourly supplement
 
 **54/111 active original tasks complete (48.6%); 57 remain.** Current original criteria outcomes are **59/112**, with five reopened historical deltas. Original C04 offline command/transition definitions, including selected Wall B, were already explicitly closed alongside QA01 in the responsible owner's [canonical disposition](qa/qa01-original-completion.md) at `aac0d96d152e47150f4fac0f57b69659ad20a956`. Consume C04 once; QA01 is already closed and is not counted again. FE37's preceding53-task checkpoint remains historical below and in register history.
