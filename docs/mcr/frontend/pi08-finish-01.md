@@ -355,3 +355,31 @@ Qualified renderer SOURCE foundation is nowready for direct412e exactpostimage p
 Renderer source foundation published atcdba75d3c23ce28364563bd39b114d83db3b7ece, soleparent56a0cb7f0bdc4e4526c45bbc6258d38bc3a7077a. Independent owner verification matched all33 exact file bytes/modes/blobs and independent current ls-remote master, no private source ancestry. ART qualifiedpartial ebdda548 separately published62302f949ba567158b0aba3fc4444a80fb8929cb; neither admits a release. V3 lamp extent/packing correction authored in existing owned paths, pending NEW changed-case finite admission;204mesh/22nativefeet/physics/C03/boards remain unchanged. Full Photo2 remains ACTIVE: literal ART/BE tuple registration, actual defaultApp newprofile runtime/reference pairs and lamp fidelity are open. Native17 legacy host captures do not qualify the new profile; venue populated/selected-state differences stay separate Root/1eed responsibility, no sharedCSS cause inferred from pixels alone.
 
 Source09 PI08-LAMP-SOURCE09-0734 actualACCEPT1793864295.801688/FULL1793864299.537208/external0; one NEW changed lamp-extent/support/24packing/invariant casePASS, affected repository strict0/lint0. BothcompleteguardsLIVE beforework, actualPIDs absent afterexit, resources0/linkremoved/TMPabsent. Immutable v2 mesh/source/native22feet/physics/C03/boards exact; tree06 paint80x170/internalstem64/base154 and lowplanter support preserve same nativefoot; rear18x85 lowstone support no duplicate lamp. NEW09phasepositive1392640B/remaining2801664B of grantedNEW4MiBTOTAL09+necessarychanged10; no10needed, no oldgreens/restart/refund. Conservativecarry1826MiB distinct historicalactualNEW803647488. ActualWHOLEnewpeak5505421312 retained cumulatively with prior5498929152; P5/RSS249495552. Qualifiedv3producer interface now READY for ART231 under own current grant; no pixel/alpha/native/fullPhoto2 acceptance.
+
+## Authorized MapScene camera-cover postimage — 2026-11-06
+
+Task33 owner direction (2026-11-06) authorizes exactly one additional
+`refreshCamera` display-profile hunk in `frontend/src/world/scenes/MapScene.ts`
+and a re-pin of that single file's received-base assertion. No other MapScene
+hunk, renderer, runtime, actor, geometry or collision behavior changes.
+
+The received base `9185c99223bbf7437fff4346a7683dbb4187dfb0` already contains
+the Photo2 display branch delivered at `cdba75d3c`; this authorization is
+limited to replacing its inline ground-bounds/1x fit expression with the
+pinned `photo2CameraPresentation` call and its import. Base MapScene sha256
+`sha256:479f151394efd87a8f28ef5d0ed74b09b826bfb6c36fbcf9ebd92051b1c0619f`;
+authorized postimage sha256
+`sha256:05c369dc023edbedaad6258cb23bbcd088a6c4c77172f41eb330bdd138c3fe63`.
+
+Captured before/after rationale (`camera-before-after.json`): with the pinned
+display camera `0,-11.612903...,361.11,545.859478...` and ground
+`-112,-20,499,1200`, the received expression gives zoom 1.0 at 390x593,
+0.99693 at 360x618 and 1.0 at 430x750, leaving 28.89x47.14, 0x74.05 and
+68.89x204.14 CSS-pixel letterbox gutters. The authorized postimage covers the
+camera: zoom 1.08636, 1.13216 and 1.37398, zero gutters, center unchanged.
+Look-ahead clamps (±32px, ±160px) and all non-display profiles are unchanged.
+
+The guard in `src/app/world-entry/__tests__/map-presentation-v1/source.test.ts`
+still compares exact bytes; it pins only MapScene to this postimage and keeps
+`runtime.ts`, spatial-v3 inputs/model, whole-character, resolver and production
+byte-identical to `9185c992`. No assertion is removed, skipped or loosened.

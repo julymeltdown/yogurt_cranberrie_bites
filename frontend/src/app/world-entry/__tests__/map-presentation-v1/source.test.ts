@@ -28,13 +28,17 @@ it('reuses only immutable artist font/icon/style sources, independently of v5 co
   const p = JSON.parse(bytes.toString())
   expect(style).toEqual({ style: p.style, font: p.font, icons: p.icons, icon_cutouts: p.icon_cutouts })
 })
-it('keeps the World renderer/camera/actor/geometry/runtime implementation unchanged from the received base', async () => {
-  for (const path of ['frontend/src/world/runtime.ts', 'frontend/src/world/scenes/MapScene.ts',
+const authorizedMapScene = 'frontend/src/world/scenes/MapScene.ts'
+const authorizedMapScenePostimage = 'sha256:05c369dc023edbedaad6258cb23bbcd088a6c4c77172f41eb330bdd138c3fe63'
+it('keeps the World renderer/camera/actor/geometry/runtime implementation at its received base and the recorded PI08 MapScene postimage', async () => {
+  for (const path of ['frontend/src/world/runtime.ts', authorizedMapScene,
     'frontend/src/world/reference-scene/spatial-v3/source-inputs.json',
     'frontend/src/world/reference-scene/spatial-v3/model.ts',
     'frontend/src/world/avatar/whole-character.ts',
     'frontend/src/app/world-entry/resolver.ts', 'frontend/src/app/world-entry/production.ts']) {
     const current = await readFile(new URL(path, root))
-    expect(hash(current), path).toBe(hash(git(path)))
+    // docs/mcr/frontend/pi08-finish-01.md records this sole exact-byte MapScene re-pin.
+    expect(hash(current), path).toBe(path === authorizedMapScene ? authorizedMapScenePostimage : hash(git(path)))
   }
+  expect(hash(git(authorizedMapScene))).not.toBe(authorizedMapScenePostimage)
 })
