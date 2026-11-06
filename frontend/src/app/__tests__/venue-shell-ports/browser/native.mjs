@@ -24,18 +24,36 @@ try {
     const fallback = page.locator('.pc-portrait-fallback')
     await expect(fallback).toHaveCount(1)
     const fit = await fallback.evaluate(element => {
-      const frame = element.parentElement, box = frame?.getBoundingClientRect()
-      if (!frame || !box) return { clipped: true, reason: 'missing portrait frame' }
-      const style = getComputedStyle(frame)
-      const inner = { left: box.left + parseFloat(style.borderLeftWidth), right: box.right - parseFloat(style.borderRightWidth),
-        top: box.top + parseFloat(style.borderTopWidth), bottom: box.bottom - parseFloat(style.borderBottomWidth) }
-      const range = document.createRange(); range.selectNodeContents(element)
-      const text = range.getBoundingClientRect()
-      return { clipped: text.left < inner.left - 0.5 || text.right > inner.right + 0.5 || text.top < inner.top - 0.5 || text.bottom > inner.bottom + 0.5
-        || frame.scrollWidth > frame.clientWidth || frame.scrollHeight > frame.clientHeight,
-        text: { left: text.left, right: text.right, top: text.top, bottom: text.bottom }, inner }
+      const clippingAncestor = target => {
+        for (let node = target.parentElement; node && node !== document.body && node !== document.documentElement; node = node.parentElement) {
+          const style = getComputedStyle(node)
+          if (style.overflowX !== 'visible' || style.overflowY !== 'visible') return node
+        }
+        return document.documentElement
+      }
+      const report = target => {
+        const clip = clippingAncestor(target), box = clip.getBoundingClientRect(), style = getComputedStyle(clip)
+        const content = { left: box.left + parseFloat(style.borderLeftWidth) + parseFloat(style.paddingLeft),
+          right: box.right - parseFloat(style.borderRightWidth) - parseFloat(style.paddingRight),
+          top: box.top + parseFloat(style.borderTopWidth) + parseFloat(style.paddingTop),
+          bottom: box.bottom - parseFloat(style.borderBottomWidth) - parseFloat(style.paddingBottom) }
+        const range = document.createRange(); range.selectNodeContents(target)
+        const text = range.getBoundingClientRect()
+        return { clipped: text.left < content.left - 0.5 || text.right > content.right + 0.5 || text.top < content.top - 0.5 || text.bottom > content.bottom + 0.5,
+          clip: clip.className || clip.tagName, content, text: { left: text.left, right: text.right, top: text.top, bottom: text.bottom } }
+      }
+      const real = report(element)
+      const probe = document.createElement('div')
+      probe.className = 'pc-portrait'
+      probe.style.cssText = 'position:fixed;left:-200px;top:0;width:24px;height:24px'
+      probe.innerHTML = '<span class="pc-portrait-fallback">Character unavailable</span>'
+      document.body.append(probe)
+      const control = report(probe.firstElementChild)
+      probe.remove()
+      return { real, control }
     })
-    assert.equal(fit.clipped, false, `${width}: fallback label clipped ${JSON.stringify(fit)}`)
+    assert.equal(fit.real.clipped, false, `${width}: fallback text clipped ${JSON.stringify(fit.real)}`)
+    assert.equal(fit.control.clipped, true, `${width}: self-check missed a deliberately 24px portrait ${JSON.stringify(fit.control)}`)
     await page.screenshot({ path: resolve(evidence, `real-friends-${width}.png`), fullPage: true })
     await page.getByRole('tab', { name: 'MAP' }).click()
     await page.screenshot({ path: resolve(evidence, `real-capability-${width}.png`), fullPage: true })
