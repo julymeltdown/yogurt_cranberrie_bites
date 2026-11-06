@@ -7,6 +7,7 @@
 - Gate driver: `backend/scripts/mcr/in03_social_gate.py`
 - Machine report: `task-30-in03-report.json` (this directory)
 - Latest run report: `/tmp/in03-gate-30.json`
+- Delivered commit: `7b9c9b5a7` (`test(in03): pass the social and privacy gate`)
 - Result: **PASS** on every executed case, with **13 recorded NOT_RUN entries** named below.
   `result_scope = PASS_WITH_RECORDED_NOT_RUN`; `cleanup = PASS`; exit code 0.
 
