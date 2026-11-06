@@ -212,7 +212,10 @@ async fn prelocked_stored_in(
         )
         .await?;
     let locked = stored(c, context.event, id).await?;
-    let identity = |v: &Stored| (v.owner, v.purpose, v.target, v.revision);
+    // Revision is deliberately excluded: a competing same-key command may commit
+    // between the unlocked hint and the locked read. Its receipt is the replay
+    // authority, while `apply` still rechecks the expected revision/state.
+    let identity = |v: &Stored| (v.owner, v.purpose, v.target);
     if locked.as_ref().map(identity) != hint.as_ref().map(identity) {
         // Never follow a changed linkage while holding the media lock.
         return Err(CommandError::Denied);
