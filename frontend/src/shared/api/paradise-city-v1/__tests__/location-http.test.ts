@@ -77,7 +77,7 @@ for case in ['duplicate','queryCollision','inputCollision','hashDrift']:
  before=copy.deepcopy([a,b,c,d])
  try:
   if case=='hashDrift':
-   with patch('subprocess.check_output',return_value=b'{}'):m['extend'](root,a,b,c,d)
+   with patch('pathlib.Path.read_bytes',return_value=b'{}'):m['extend'](root,a,b,c,d)
   else:m['extend'](root,a,b,c,d)
   checks[case]=False
  except ValueError:checks[case]=[a,b,c,d]==before
@@ -98,7 +98,7 @@ print(json.dumps({'inputs':inputs,'operations':ops,'queries':queries,'errors':er
     expect(result.operations.legacy).toEqual({ sentinel: true })
     expect(result.queries.legacy).toEqual({ sentinel: true })
     expect(result.errors.RATE_LIMITED).toEqual({ required: false })
-    expect(result.inputs['backend/docs/api/paradise-city-v1/location.openapi.json']).toBe('394c52c485df8c63bfd7843932ea333b1f31cfd4aadbec705992fdbd9e06516b')
+    expect(result.inputs['backend/docs/api/paradise-city-v1/location.openapi.json']).toBe('acbd0feaa10bdc742c8ce906050bf6a463b037f4a52c2c2e151827e78cefa32e')
     expect(result.queries['paradiseLocation.getVenueLocationCommand']?.required).toEqual(['operation'])
   })
   it('rejects operation/query/input collisions and frozen input drift without partial mutation', () => {

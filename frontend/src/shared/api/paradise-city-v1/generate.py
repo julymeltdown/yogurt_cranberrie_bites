@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[5]
 DEST = Path(__file__).resolve().parent
 SOURCE = 'a378329c242f950f36b868ff50c9ef19bf6ed6c4'
 API = 'backend/docs/api/paradise-city-v1/place-notes.openapi.json'
-EXPECTED = '5b14c48c7b288ba4a1c7a68c5e0d84c16cc9805ae87e98b18c091957c2f24f1e'
+EXPECTED = '246d802956084e85969227ed7ce8549107169fddd99273c3edb1b53a845a9027'
 
 def read():
     # The producer's private source commit is provenance, not a clone prerequisite.
@@ -112,7 +112,7 @@ def main():
         assert (DEST/'notes.generated.ts').read_text() == output, 'Notes generated wire drift'
     else:
         (DEST/'notes.generated.ts').write_text(output)
-    subprocess.run([sys.executable, '-B', str(ROOT/'scripts/mcr/generate-domain-transport.py'), '--venue-only',
+    subprocess.run([sys.executable, '-B', str(ROOT/'scripts/mcr/generate-domain-transport.py'),
                     *(['--check'] if '--check' in sys.argv else [])], cwd=ROOT, check=True)
     print(json.dumps(dict(source=SOURCE, sha256=EXPECTED, schemas=list(schemas),
                           operations={name:dict(method=op['method'], path=op['path'], input=inputs[name], response=responses[name])

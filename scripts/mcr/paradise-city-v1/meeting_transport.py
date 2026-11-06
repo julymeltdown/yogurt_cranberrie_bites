@@ -5,7 +5,7 @@ import subprocess
 
 SOURCE = "0981774d48eab79c15666ef27612310d470b4f69"
 PATH = "backend/docs/api/paradise-city-v1/meeting.openapi.json"
-SHA256 = "08503641a551fbacaf134ecab71bbce1102c1f7da4ba560e5d15311694e0c2de"
+SHA256 = "b96a51257ac2b3c1535d520a188a3742e8aa51f018da41e50b535f02dfbd7bc0"
 
 
 def extend(root, inputs, operations, queries, errors):

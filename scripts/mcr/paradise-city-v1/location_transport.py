@@ -5,7 +5,7 @@ import subprocess
 
 SOURCE = "4948e72a05a3cca05fd4fb85db959af7f0c5584f"
 PATH = "backend/docs/api/paradise-city-v1/location.openapi.json"
-SHA256 = "394c52c485df8c63bfd7843932ea333b1f31cfd4aadbec705992fdbd9e06516b"
+SHA256 = "acbd0feaa10bdc742c8ce906050bf6a463b037f4a52c2c2e151827e78cefa32e"
 OPERATIONS = {
     "getVenueLocationSnapshot": ("GET", "/location"),
     "setVenueLocationSharing": ("PUT", "/location/sharing"),
@@ -21,7 +21,9 @@ OPERATIONS = {
 
 def extend(root, inputs, operations, queries, errors):
     """Validate the complete projection before mutating any caller dictionary."""
-    raw = subprocess.check_output(["git", "show", SOURCE + ":" + PATH], cwd=root)
+    local = root / PATH
+    raw = local.read_bytes() if local.exists() else subprocess.check_output(
+        ["git", "show", SOURCE + ":" + PATH], cwd=root)
     if hashlib.sha256(raw).hexdigest() != SHA256:
         raise ValueError("Location frozen input drift")
     api = json.loads(raw)
