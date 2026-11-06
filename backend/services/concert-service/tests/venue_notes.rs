@@ -190,6 +190,146 @@ fn note(audience: NoteAudience) -> CreatePlaceNote {
 }
 
 #[tokio::test]
+async fn note_receipts_replay_and_conflict_without_new_rows() -> anyhow::Result<()> {
+    let pool = pool().await?;
+    let event = Uuid::new_v4();
+    let author = Uuid::new_v4();
+    sqlx::query("truncate concert_place_notes, concert_place_note_receipts cascade")
+        .execute(&pool)
+        .await?;
+    sqlx::query("insert into concert_events(event_id,slug,title,phase) values($1,$2,$3,'OPEN')")
+        .bind(event)
+        .bind(format!("receipts-{}", event.simple()))
+        .bind("Place note receipt event")
+        .execute(&pool)
+        .await?;
+    sqlx::query(
+        "insert into concert_participants(event_id,user_id,theme,low_power,reduced_motion,sound_enabled)
+         values($1,$2,'PARADE',false,false,true)",
+    )
+    .bind(event)
+    .bind(author)
+    .execute(&pool)
+    .await?;
+    let notes = service(
+        pool.clone(),
+        Arc::new(Friends),
+        Arc::new(Meeting { recipient: author }),
+        Arc::new(Moderation),
+    );
+    let create_key = Uuid::new_v4();
+    let command = note(NoteAudience::Everyone);
+    let first = notes
+        .create_note_receipt(author, event, command.clone(), create_key)
+        .await?;
+    let replay = notes
+        .create_note_receipt(author, event, command.clone(), create_key)
+        .await?;
+    assert_eq!(first.id, replay.id);
+    assert_eq!(first.revision, replay.revision);
+    assert_eq!(
+        notes
+            .create_note_receipt(
+                author,
+                event,
+                CreatePlaceNote::new(
+                    "Different note",
+                    NoteAudience::Everyone,
+                    NoteExpiry::OneHour,
+                    LandmarkSelection::new("lm-main", 1, 1).unwrap(),
+                )
+                .unwrap(),
+                create_key,
+            )
+            .await,
+        Err(PlaceNoteError::Conflict)
+    );
+    let roots: i64 = sqlx::query_scalar(
+        "select count(*) from concert_place_notes where event_id=$1 and parent_id is null",
+    )
+    .bind(event)
+    .fetch_one(&pool)
+    .await?;
+    assert_eq!(roots, 1);
+
+    let reply_key = Uuid::new_v4();
+    let reply_command = CreatePlaceReply::new("Receipt reply", first.revision)?;
+    let reply = notes
+        .create_reply_receipt(
+            author,
+            event,
+            "lm-main",
+            first.id,
+            reply_command.clone(),
+            reply_key,
+        )
+        .await?;
+    let reply_replay = notes
+        .create_reply_receipt(
+            author,
+            event,
+            "lm-main",
+            first.id,
+            reply_command.clone(),
+            reply_key,
+        )
+        .await?;
+    assert_eq!(reply.id, reply_replay.id);
+    assert_eq!(
+        notes
+            .create_reply_receipt(
+                author,
+                event,
+                "lm-main",
+                first.id,
+                CreatePlaceReply::new("Changed reply", first.revision)?,
+                reply_key,
+            )
+            .await,
+        Err(PlaceNoteError::Conflict)
+    );
+    let replies: i64 = sqlx::query_scalar(
+        "select count(*) from concert_place_notes where event_id=$1 and parent_id is not null",
+    )
+    .bind(event)
+    .fetch_one(&pool)
+    .await?;
+    assert_eq!(replies, 1);
+
+    let withdraw_key = Uuid::new_v4();
+    let withdrawn = notes
+        .withdraw_note_receipt(author, event, "lm-main", first.id, 2, withdraw_key)
+        .await?;
+    let withdraw_replay = notes
+        .withdraw_note_receipt(author, event, "lm-main", first.id, 2, withdraw_key)
+        .await?;
+    assert_eq!(withdrawn.revision, withdraw_replay.revision);
+    assert_eq!(
+        notes
+            .withdraw_note_receipt(author, event, "lm-main", first.id, 1, withdraw_key)
+            .await,
+        Err(PlaceNoteError::Conflict)
+    );
+    let receipts: i64 =
+        sqlx::query_scalar("select count(*) from concert_place_note_receipts where event_id=$1")
+            .bind(event)
+            .fetch_one(&pool)
+            .await?;
+    assert_eq!(receipts, 3);
+    let rows: i64 =
+        sqlx::query_scalar("select count(*) from concert_place_notes where event_id=$1")
+            .bind(event)
+            .fetch_one(&pool)
+            .await?;
+    assert_eq!(rows, 2);
+    sqlx::query("delete from concert_events where event_id=$1")
+        .bind(event)
+        .execute(&pool)
+        .await?;
+    Ok(())
+}
+
+#[tokio::test]
 async fn place_notes_audience_expiry_reply_moderation_and_meeting() -> anyhow::Result<()> {
     let pool = pool().await?;
     let event = Uuid::new_v4();

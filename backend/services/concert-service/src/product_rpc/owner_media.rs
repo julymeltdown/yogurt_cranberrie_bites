@@ -63,6 +63,7 @@ impl ProductOwner for OwnerMediaRuntime {
             | Operation::Operations(_)
             | Operation::Wall(_)
             | Operation::Meeting(_)
+            | Operation::Venue(_)
             | Operation::Feed
             | Operation::FeedCommand(_)
             | Operation::Post(_)

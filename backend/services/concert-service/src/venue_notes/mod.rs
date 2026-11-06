@@ -3,7 +3,9 @@ use async_trait::async_trait;
 use chrono::{DateTime, Duration, Utc};
 use concert_application::venue_notes::*;
 use concert_domain::venue_notes::*;
-use sqlx::{PgConnection, PgPool, Row};
+use serde_json::{json, Value};
+use sha2::{Digest, Sha256};
+use sqlx::{PgConnection, PgPool, Postgres, Row, Transaction};
 use std::sync::Arc;
 use uuid::Uuid;
 
@@ -507,6 +509,395 @@ impl PgPlaceNotes {
             server_now: now,
             access_until,
         })
+    }
+}
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub struct NoteCommit {
+    pub id: Uuid,
+    pub revision: i64,
+    pub created_at: DateTime<Utc>,
+    pub expires_at: DateTime<Utc>,
+}
+
+impl PgPlaceNotes {
+    fn digest(
+        operation: &str,
+        event: Uuid,
+        payload: Value,
+    ) -> Result<Vec<u8>, PlaceNoteError> {
+        let mut digest = Sha256::new();
+        digest.update(operation.as_bytes());
+        digest.update(b"\0");
+        digest.update(event.as_bytes());
+        digest.update(b"\0");
+        digest.update(serde_json::to_vec(&payload).map_err(|_| PlaceNoteError::InvalidState)?);
+        Ok(digest.finalize().to_vec())
+    }
+    async fn replay(
+        &self,
+        tx: &mut Transaction<'_, Postgres>,
+        event: Uuid,
+        actor: Uuid,
+        key: Uuid,
+        operation: &str,
+        digest: &[u8],
+    ) -> Result<Option<NoteCommit>, PlaceNoteError> {
+        let row = sqlx::query(
+            "select operation,request_digest,result from concert_place_note_receipts
+             where event_id=$1 and actor_id=$2 and command_key=$3 for update",
+        )
+        .bind(event)
+        .bind(actor)
+        .bind(key)
+        .fetch_optional(&mut **tx)
+        .await
+        .map_err(db)?;
+        let Some(row) = row else {
+            return Ok(None);
+        };
+        let stored_operation: String = row
+            .try_get("operation")
+            .map_err(|_| PlaceNoteError::InvalidState)?;
+        let stored_digest: Vec<u8> = row
+            .try_get("request_digest")
+            .map_err(|_| PlaceNoteError::InvalidState)?;
+        if stored_operation != operation || stored_digest != digest {
+            return Err(PlaceNoteError::Conflict);
+        }
+        let result: Value = row
+            .try_get("result")
+            .map_err(|_| PlaceNoteError::InvalidState)?;
+        let id = result["id"]
+            .as_str()
+            .and_then(|value| Uuid::parse_str(value).ok())
+            .filter(|value| !value.is_nil())
+            .ok_or(PlaceNoteError::InvalidState)?;
+        let revision = result["revision"]
+            .as_i64()
+            .filter(|value| (1..=concert_domain::MAX_REVISION).contains(value))
+            .ok_or(PlaceNoteError::InvalidState)?;
+        let created_at: DateTime<Utc> = serde_json::from_value(result["created_at"].clone())
+            .map_err(|_| PlaceNoteError::InvalidState)?;
+        let expires_at: DateTime<Utc> = serde_json::from_value(result["expires_at"].clone())
+            .map_err(|_| PlaceNoteError::InvalidState)?;
+        Ok(Some(NoteCommit {
+            id,
+            revision,
+            created_at,
+            expires_at,
+        }))
+    }
+    async fn record(
+        &self,
+        tx: &mut Transaction<'_, Postgres>,
+        event: Uuid,
+        actor: Uuid,
+        key: Uuid,
+        operation: &str,
+        digest: &[u8],
+        commit: NoteCommit,
+    ) -> Result<(), PlaceNoteError> {
+        let expires_at = commit.expires_at.max(commit.created_at);
+        sqlx::query(
+            "insert into concert_place_note_receipts
+             (event_id,actor_id,command_key,operation,request_digest,result,expires_at)
+             values($1,$2,$3,$4,$5,$6::jsonb,$7)",
+        )
+        .bind(event)
+        .bind(actor)
+        .bind(key)
+        .bind(operation)
+        .bind(digest)
+        .bind(json!({
+            "id": commit.id,
+            "revision": commit.revision,
+            "created_at": commit.created_at,
+            "expires_at": commit.expires_at,
+        }))
+        .bind(expires_at)
+        .execute(&mut **tx)
+        .await
+        .map_err(db)?;
+        Ok(())
+    }
+    pub async fn create_note_receipt(
+        &self,
+        actor: Uuid,
+        event: Uuid,
+        command: CreatePlaceNote,
+        idempotency_key: Uuid,
+    ) -> Result<NoteCommit, PlaceNoteError> {
+        let payload = json!({
+            "text": command.text.as_str(),
+            "audience": command.audience.as_str(),
+            "expiry": command.expiry.as_str(),
+            "landmark_id": command.landmark_selection.landmark_id,
+            "catalog_revision": command.landmark_selection.catalog_revision,
+            "landmark_revision": command.landmark_selection.landmark_revision,
+        });
+        let digest = Self::digest("createVenuePlaceNote", event, payload)?;
+        let mut tx = self.pool.begin().await.map_err(db)?;
+        self.event_guard(&mut tx, event, actor, true).await?;
+        if let Some(replay) = self
+            .replay(
+                &mut tx,
+                event,
+                actor,
+                idempotency_key,
+                "createVenuePlaceNote",
+                &digest,
+            )
+            .await?
+        {
+            tx.commit().await.map_err(db)?;
+            return Ok(replay);
+        }
+        self.place
+            .review(&mut tx, event, &command.landmark_selection)
+            .await?;
+        if command.audience == NoteAudience::Friends {
+            self.friend.available(&mut tx).await?;
+        }
+        let now = self.now(&mut tx).await?;
+        let expires_at = match command.expiry {
+            NoteExpiry::OneHour => now + Duration::seconds(ONE_HOUR_SECONDS),
+            NoteExpiry::VenueEndDay => self.end_of_day(&mut tx, event, now).await?,
+        };
+        let id: Uuid = sqlx::query_scalar(
+            "insert into concert_place_notes
+             (event_id,landmark_id,catalog_revision,landmark_revision,author_id,audience,
+              expiry_kind,body,revision,created_at,expires_at)
+             values($1,$2,$3,$4,$5,$6,$7,$8,1,$9,$10) returning note_id",
+        )
+        .bind(event)
+        .bind(&command.landmark_selection.landmark_id)
+        .bind(command.landmark_selection.catalog_revision)
+        .bind(command.landmark_selection.landmark_revision)
+        .bind(actor)
+        .bind(command.audience.as_str())
+        .bind(command.expiry.as_str())
+        .bind(command.text.as_str())
+        .bind(now)
+        .bind(expires_at)
+        .fetch_one(&mut *tx)
+        .await
+        .map_err(db)?;
+        let commit = NoteCommit {
+            id,
+            revision: 1,
+            created_at: now,
+            expires_at,
+        };
+        self.record(
+            &mut tx,
+            event,
+            actor,
+            idempotency_key,
+            "createVenuePlaceNote",
+            &digest,
+            commit,
+        )
+        .await?;
+        tx.commit().await.map_err(db)?;
+        Ok(commit)
+    }
+    pub async fn create_reply_receipt(
+        &self,
+        actor: Uuid,
+        event: Uuid,
+        landmark_id: &str,
+        parent_id: Uuid,
+        command: CreatePlaceReply,
+        idempotency_key: Uuid,
+    ) -> Result<NoteCommit, PlaceNoteError> {
+        let payload = json!({
+            "parent_id": parent_id,
+            "text": command.text.as_str(),
+            "expected_parent_revision": command.expected_parent_revision,
+        });
+        let digest = Self::digest("createVenuePlaceReply", event, payload)?;
+        let mut tx = self.pool.begin().await.map_err(db)?;
+        self.event_guard(&mut tx, event, actor, true).await?;
+        if let Some(replay) = self
+            .replay(
+                &mut tx,
+                event,
+                actor,
+                idempotency_key,
+                "createVenuePlaceReply",
+                &digest,
+            )
+            .await?
+        {
+            tx.commit().await.map_err(db)?;
+            return Ok(replay);
+        }
+        self.place.current(&mut tx, event, landmark_id).await?;
+        let parent = sqlx::query(&format!(
+            "select {COLUMNS} from concert_place_notes
+             where note_id=$1 and event_id=$2 and landmark_id=$3 for share"
+        ))
+        .bind(parent_id)
+        .bind(event)
+        .bind(landmark_id)
+        .fetch_optional(&mut *tx)
+        .await
+        .map_err(db)?
+        .ok_or(PlaceNoteError::NotFound)?;
+        let parent = stored(&parent)?;
+        let now = self.now(&mut tx).await?;
+        if parent.parent_id.is_some()
+            || parent.withdrawn
+            || parent.hidden
+            || parent.expires_at <= now
+        {
+            return Err(PlaceNoteError::NotFound);
+        }
+        if parent.revision != command.expected_parent_revision {
+            return Err(PlaceNoteError::Conflict);
+        }
+        if parent.audience == NoteAudience::Friends {
+            self.friend.available(&mut tx).await?;
+            self.friend
+                .bilateral(&mut tx, event, parent.author_id, actor)
+                .await?;
+        }
+        let id: Uuid = sqlx::query_scalar(
+            "insert into concert_place_notes
+             (event_id,landmark_id,catalog_revision,landmark_revision,author_id,parent_id,
+              audience,expiry_kind,body,revision,created_at,expires_at)
+             select event_id,landmark_id,catalog_revision,landmark_revision,$3,note_id,
+                    audience,expiry_kind,$4,1,$5,expires_at
+             from concert_place_notes where note_id=$1 and event_id=$2
+             returning note_id",
+        )
+        .bind(parent_id)
+        .bind(event)
+        .bind(actor)
+        .bind(command.text.as_str())
+        .bind(now)
+        .fetch_one(&mut *tx)
+        .await
+        .map_err(db)?;
+        sqlx::query("update concert_place_notes set revision=revision+1 where note_id=$1")
+            .bind(parent_id)
+            .execute(&mut *tx)
+            .await
+            .map_err(db)?;
+        let commit = NoteCommit {
+            id,
+            revision: 1,
+            created_at: now,
+            expires_at: parent.expires_at,
+        };
+        self.record(
+            &mut tx,
+            event,
+            actor,
+            idempotency_key,
+            "createVenuePlaceReply",
+            &digest,
+            commit,
+        )
+        .await?;
+        tx.commit().await.map_err(db)?;
+        Ok(commit)
+    }
+    pub async fn withdraw_note_receipt(
+        &self,
+        actor: Uuid,
+        event: Uuid,
+        landmark_id: &str,
+        note_id: Uuid,
+        expected_revision: i64,
+        idempotency_key: Uuid,
+    ) -> Result<NoteCommit, PlaceNoteError> {
+        let payload = json!({
+            "note_id": note_id,
+            "expected_revision": expected_revision,
+        });
+        let digest = Self::digest("withdrawVenuePlaceNote", event, payload)?;
+        let mut tx = self.pool.begin().await.map_err(db)?;
+        self.event_guard(&mut tx, event, actor, true).await?;
+        if let Some(replay) = self
+            .replay(
+                &mut tx,
+                event,
+                actor,
+                idempotency_key,
+                "withdrawVenuePlaceNote",
+                &digest,
+            )
+            .await?
+        {
+            tx.commit().await.map_err(db)?;
+            return Ok(replay);
+        }
+        let note = sqlx::query(&format!(
+            "select {COLUMNS} from concert_place_notes
+             where note_id=$1 and event_id=$2 and landmark_id=$3 for update"
+        ))
+        .bind(note_id)
+        .bind(event)
+        .bind(landmark_id)
+        .fetch_optional(&mut *tx)
+        .await
+        .map_err(db)?
+        .ok_or(PlaceNoteError::NotFound)?;
+        let note = stored(&note)?;
+        if note.author_id != actor {
+            return Err(PlaceNoteError::Denied);
+        }
+        if note.revision != expected_revision && !note.withdrawn {
+            return Err(PlaceNoteError::Conflict);
+        }
+        let now = self.now(&mut tx).await?;
+        let revision = if note.withdrawn {
+            note.revision
+        } else {
+            let revision: i64 = sqlx::query_scalar(
+                "update concert_place_notes
+                 set withdrawn_at=$2,body='',revision=revision+1
+                 where note_id=$1 and withdrawn_at is null returning revision",
+            )
+            .bind(note_id)
+            .bind(now)
+            .fetch_one(&mut *tx)
+            .await
+            .map_err(db)?;
+            if note.parent_id.is_none() {
+                sqlx::query(
+                    "update concert_place_notes
+                     set withdrawn_at=$2,body='',revision=revision+1
+                     where parent_id=$1 and withdrawn_at is null",
+                )
+                .bind(note_id)
+                .bind(now)
+                .execute(&mut *tx)
+                .await
+                .map_err(db)?;
+            }
+            revision
+        };
+        let commit = NoteCommit {
+            id: note_id,
+            revision,
+            created_at: now,
+            expires_at: note.expires_at.max(now),
+        };
+        self.record(
+            &mut tx,
+            event,
+            actor,
+            idempotency_key,
+            "withdrawVenuePlaceNote",
+            &digest,
+            commit,
+        )
+        .await?;
+        tx.commit().await.map_err(db)?;
+        Ok(commit)
     }
 }
 
