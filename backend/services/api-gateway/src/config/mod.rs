@@ -523,6 +523,9 @@ pub struct AppConfig {
     /// How long the journal lets a caller wait before answering with the operation id.
     ///
     /// This must be strictly shorter than `request_timeout_ms`. The outer timeout
+    /// must also cover the internal two-second product authority ceiling; a
+    /// shorter outer window fails every product read that legitimately uses the
+    /// upper half of that ceiling before the product can answer.
     /// middleware returns a bare 504 when it fires, so a journal window at or above
     /// it would never be reached and a timed-out caller would lose the operation id
     /// it needs to check the outcome it just gave up on.
@@ -722,7 +725,7 @@ impl AppConfig {
             search_cursor_legacy_accept_until,
             request_timeout_ms: parse_u64_setting(
                 "GATEWAY_REQUEST_TIMEOUT_MS",
-                &env_or("GATEWAY_REQUEST_TIMEOUT_MS", "1000"),
+                &env_or("GATEWAY_REQUEST_TIMEOUT_MS", "2000"),
                 50,
                 60_000,
             )?,
