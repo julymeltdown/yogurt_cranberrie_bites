@@ -573,6 +573,83 @@ async fn private_rows_remaining(p: &PgPool, user: Uuid) -> anyhow::Result<i64> {
     Ok(core + avatars + age + media + intro + party + meeting)
 }
 
+/// Machine-readable before/after evidence for the QA09 row: per-table row
+/// counts plus the canonical Auth saga steps. The mounted composer proves the
+/// PrivateData owner only; these steps stay PENDING because no worker drives
+/// the other seven targets in this test.
+async fn deletion_probe(
+    phase: &str,
+    concert: &PgPool,
+    auth: &PgPool,
+    deleted: Uuid,
+    control: Uuid,
+) -> anyhow::Result<()> {
+    let deleted_rows: (i64, i64, i64) = sqlx::query_as(
+        "select (select count(*) from concert_participants where user_id=$1),\
+                (select count(*) from concert_avatar_settings where user_id=$1),\
+                (select count(*) from concert_age_owners where user_id=$1)",
+    )
+    .bind(deleted)
+    .fetch_one(concert)
+    .await?;
+    let control_rows: (i64, i64, i64) = sqlx::query_as(
+        "select (select count(*) from concert_participants where user_id=$1),\
+                (select count(*) from concert_avatar_settings where user_id=$1),\
+                (select count(*) from concert_age_owners where user_id=$1)",
+    )
+    .bind(control)
+    .fetch_one(concert)
+    .await?;
+    let (saga_status, saga_completed): (String, Option<chrono::DateTime<chrono::Utc>>) =
+        sqlx::query_as("select status, completed_at from user_deletion_sagas where user_id=$1")
+            .bind(deleted)
+            .fetch_one(auth)
+            .await?;
+    let steps: Vec<(String, String, i32)> = sqlx::query_as(
+        "select s.target, s.status, s.attempt_count from user_deletion_steps s \
+         join user_deletion_sagas g on g.id=s.saga_id where g.user_id=$1 order by s.target",
+    )
+    .bind(deleted)
+    .fetch_all(auth)
+    .await?;
+    let progress: i64 = sqlx::query_scalar(
+        "select count(*) from concert_private_data_owner_progress \
+         where user_id=$1 and completed_at is not null",
+    )
+    .bind(deleted)
+    .fetch_one(concert)
+    .await?;
+    let remaining = private_rows_remaining(concert, deleted).await?;
+    println!(
+        "QA09_DELETION_PROBE {}",
+        serde_json::json!({
+            "phase": phase,
+            "deleted_user": deleted.to_string(),
+            "control_user": control.to_string(),
+            "deleted": {
+                "participants": deleted_rows.0,
+                "avatar_settings": deleted_rows.1,
+                "age_owners": deleted_rows.2,
+            },
+            "control": {
+                "participants": control_rows.0,
+                "avatar_settings": control_rows.1,
+                "age_owners": control_rows.2,
+            },
+            "private_rows_remaining": remaining,
+            "saga_status": saga_status,
+            "saga_completed_at": saga_completed.map(|value| value.to_rfc3339()),
+            "private_data_progress_completed": progress,
+            "steps": steps.iter().map(|(target, status, attempts)| serde_json::json!({
+                "target": target,
+                "status": status,
+                "attempt_count": attempts,
+            })).collect::<Vec<_>>(),
+        })
+    );
+    Ok(())
+}
+
 /// Sharing runs before PrivateData in the canonical saga. Its durable terminal
 /// row for this saga is the only evidence the aggregate accepts; this fixture
 /// records that preceding step, never a fabricated PrivateData receipt.
@@ -672,6 +749,7 @@ async fn mounted_private_data_ack_restart_and_session_revocation_boundary() -> a
     let control = Uuid::new_v4();
     seed_private_rows(&concert, g.user_id, control).await?;
     assert!(private_rows_remaining(&concert, g.user_id).await? >= 3);
+    deletion_probe("before", &concert, &auth, g.user_id, control).await?;
     let command = private_command(&g);
     // A bounded round either seals the whole acknowledgement already or
     // establishes the common fence and stops incomplete. Only the latter needs
@@ -798,6 +876,7 @@ async fn mounted_private_data_ack_restart_and_session_revocation_boundary() -> a
         "restart rewrote the terminal receipt"
     );
     assert_eq!(private_rows_remaining(&concert, g.user_id).await?, 0);
+    deletion_probe("after", &concert, &auth, g.user_id, control).await?;
     restarted.finish().await?;
     source.finish().await?;
     auth.close().await;

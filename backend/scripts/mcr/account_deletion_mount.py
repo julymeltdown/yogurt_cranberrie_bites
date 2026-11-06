@@ -23,6 +23,7 @@ import subprocess
 import sys
 import time
 from pathlib import Path
+from uuid import UUID
 
 sys.dont_write_bytecode = True
 ROOT = Path(__file__).resolve().parents[3]
@@ -36,6 +37,14 @@ OWNERS = ("auth", "concert")
 
 def sha(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def probes(report: dict, phase: str) -> list[dict]:
+    values = []
+    for line in (report.get(phase) or {}).get("stdout", "").splitlines():
+        if "QA09_DELETION_PROBE " in line:
+            values.append(json.loads(line.split("QA09_DELETION_PROBE ", 1)[1]))
+    return values
 
 
 def run_case(binary: Path, env: dict, report: dict, phase: str, timeout: int) -> None:
@@ -129,6 +138,31 @@ def qualify(args, report: dict) -> None:
             raise RuntimeError("physical PG restart required")
         report["restart"] = {"before_pid": before, "after_pid": after}
         run_case(binary, env, report, "after_pg_restart", 240)
+        measured = {phase: probes(report, phase) for phase in ("source", "after_pg_restart")}
+        for phase, values in measured.items():
+            if len(values) != 2 or [value.get("phase") for value in values] != ["before", "after"]:
+                raise RuntimeError(f"{phase} deletion probe did not report before/after rows")
+        report["probes"] = measured
+        deleted = str(UUID(measured["source"][1]["deleted_user"]))
+        report["persisted_after_pg_restart"] = {
+            "deleted_user": deleted,
+            "private_rows": cluster.sql(
+                "mcr_canonical_concert",
+                "select (select count(*) from concert_participants where user_id='" + deleted + "')||'|'||"
+                "(select count(*) from concert_avatar_settings where user_id='" + deleted + "')||'|'||"
+                "(select count(*) from concert_age_owners where user_id='" + deleted + "')",
+            ),
+            "saga": cluster.sql(
+                "mcr_canonical_auth",
+                "select status||'|'||coalesce(completed_at::text,'') from user_deletion_sagas "
+                "where user_id='" + deleted + "'",
+            ),
+            "steps": cluster.sql(
+                "mcr_canonical_auth",
+                "select s.target||'|'||s.status||'|'||s.attempt_count from user_deletion_steps s "
+                "join user_deletion_sagas g on g.id=s.saga_id where g.user_id='" + deleted + "' order by s.target",
+            ),
+        }
         report["migration_receipts_after"] = {
             o: core.check_ledger(
                 cluster,
