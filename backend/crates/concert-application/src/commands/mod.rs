@@ -45,6 +45,10 @@ impl RegisteredOperation {
                 if !matches!(*value, "X" | "INSTAGRAM") {
                     return Err(CommandError::InvalidInput);
                 }
+            } else if *key == "landmarkId" {
+                if !concert_domain::venue_notes::valid_landmark_id(value) {
+                    return Err(CommandError::InvalidInput);
+                }
             } else if Uuid::parse_str(value)
                 .map(|id| id.to_string() != *value)
                 .unwrap_or(true)
