@@ -478,7 +478,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   Commit: Y | `docs(venue): register AR01 provenance and qualification`
   Gap (2026-11-06): no reviewed AR01 inputs supplied. Binding map and exact missing inputs recorded in .omo/evidence/mcr-finish-project/task-35-ar01.md; unverified/closed places stay refused at domain, DB, repository and application layers (fail-closed proven). Three schema gaps need a contract decision, not data: no place publication-expiry field, no closure-owner field, no event-day layout date.
 
-- [ ] 36. Pass QA06 mobile visual acceptance
+- [~] 36. Pass QA06 mobile visual acceptance
   What to do / Must NOT do: compare all 12 mapped families and all 61 retained IA entries at 360/390/430 plus iOS/Android devices where available; record PASS/FAIL per case. Do NOT accept a single surface as coverage.
   Closes: GAP-6
   Parallelization: Wave 6 | Blocked by: 4; 25–28, 33–34 | Blocks: 47
@@ -487,6 +487,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   QA scenarios: happy full matrix; failure an overlapping/blank capture -> FAIL. Evidence `.omo/evidence/mcr-finish-project/task-36-qa06/`.
   Recommended task executor category: deep-low
   Commit: Y | `test(visual): pass QA06 reference acceptance`
+  Gap (2026-11-06): the matrix is honest but incomplete - 206 desktop case-widths at 360/390/430 (95 PASS, 0 DIFFER, 111 NOT_REACHABLE, 0 FAIL) plus 36 Android-emulator captures from an earlier session (not re-run at the delivered commit; physical iOS/Android NOT_RUN with no simulator or device). Blocked families with named producers: reviewed siteplan/landmark (W02/W03/W07/M06), community clock/entry authority (G01-G07, M01-M05), world mural-scene release (R01, PI09), operator/moderator authority (O01-O09), safety service (U08/S01), requests/social provider (U04/U05), email/OAuth/legal/archive (A03/A04/A06/A07/X01). Family capture coverage is 8 distinct cases and 15 aliases (identical bytes to their IA base); only W01-parade, PI08-danger-era and the two PI01 chrome cases add pixels. Two 44px defects were fixed (profile back-world link 21px, admin check-access 25px).
 
 - [~] 37. Verify the character atlas production status
   What to do / Must NOT do: confirm the produced atlas/manifest matches the selected source pack and is actually served; if composition is only available through a reviewed derivative, document the admission path. Do NOT use legacy or synthetic character art.
