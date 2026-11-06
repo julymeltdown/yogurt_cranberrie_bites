@@ -53,3 +53,16 @@ Pinned input SHA-256:
 - `contracts/assets/v1/avatar-config.schema.json`: `37b9be22cff7cbde882ab144aec3b75b5edc24f70653f97c9dcec14e87c652bd`
 
 Unqualified gates: live authenticated GET/PATCH and canonical Profile composition; root route mounting; real runtime preference application; supplied-art reviewed binding/atlas; optional ticket-section/visibility contract and persistence; real devices and multiuser flows. None is silently removed from FE34 or IN05 acceptance. This handoff delivers the authorized bounded implementation with explicit ports and preserves those remaining integration/acceptance obligations.
+
+## 2026-11-06 producer-backed closure (task 43)
+
+**CLOSED for the current revised scope.** A real participant producer served
+`GET /me` at revision 1, accepted `PATCH /me` with `expected_revision: 1` and
+`preferences.low_power: true` at revision 2, and returned `409 / VERSION_CONFLICT`
+for the repeated stale revision. The actual `createMeController`, `SettingsPage`
+and `ProfileForm` rendered the saved state and the conflict state at 360/390/430,
+keeping the draft and offering explicit reload. No automatic replay or silent
+rebase occurred. Evidence: `.omo/evidence/mcr-finish-project/task-43-fe-closure.md`
+and `frontend/e2e/fe-closure/`. This is development-stack evidence, not release,
+device or QA08 qualification; runtime sound/motion/theme application remains a
+separate effect boundary.

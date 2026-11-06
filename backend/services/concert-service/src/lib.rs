@@ -5,6 +5,7 @@ pub mod config;
 pub mod health;
 pub mod media_runtime;
 pub mod product_rpc;
+pub mod service_policy;
 pub mod rpc;
 
 pub mod workers {
@@ -47,5 +48,6 @@ pub mod account_private_data;
 pub mod mural_tools_b;
 pub mod mural_seed;
 
+pub mod venue_authority;
 pub mod venue_location;
 pub mod venue_notes;

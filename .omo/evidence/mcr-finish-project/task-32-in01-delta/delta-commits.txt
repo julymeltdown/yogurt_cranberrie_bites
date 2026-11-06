@@ -1,0 +1,109 @@
+## admission-world
+c6051f812 2026-11-06 test(be37): add cfg(test) six-entry consumer visibility probes
+51af7f7a8 2026-11-05 Deliver qualified World ticket freshness and membership owner fences
+b966f0ff4 2026-11-05 Preserve exact World recovery controls during maintenance and stalled writes
+e10a40408 2026-11-05 feat(world): produce negotiated authoritative motion anchors
+b9244f869 2026-11-05 feat(world): define opt-in C05 motion profile and anchor vectors
+d78235639 2026-11-04 build(world): export Sessions leaf under exact shared delegation
+f77068252 2026-11-05 fix(world): bound discovery across all existing view maps
+c2544b69d 2026-11-04 fix(world): journal native session obligations before withdrawal
+5c3783ad1 2026-11-04 fix(world): bound session owner coverage observations
+8364b25cc 2026-11-04 feat(world): checkpoint BE42 session deletion owner effects
+8fa2db1c0 2026-11-04 fix(world): erase buffered reader lifetimes before admission awaits
+4bcb1d9eb 2026-11-04 fix(world): prevent disconnect grace from extending deleted-user membership
+4143e9494 2026-11-04 fix(world): fence preconsumed admission and room switch before event locks
+102380d20 2026-11-04 perf(world): bound ordered recipient observation concurrency
+856775650 2026-11-04 test(world): exercise ticket deletion with actual Auth repository source
+7a8f7d9d3 2026-11-04 feat(world): freeze shared account deletion fence contract
+fde7b6821 2026-11-04 fix(world): expose actual event scope to selective local delivery
+930380dee 2026-11-04 feat(contracts): define explicit Social policy baseline and invalidation frames
+COUNT 18
+
+## admission-enrollment
+a3d547f64 2026-11-06 refactor(gateway): move shared boundary types out of adapter modules
+2f7992d43 2026-11-05 fix(auth): resolve enrollment compilation at existing adapter seams
+c988365ca 2026-11-05 fix(auth): recover expired pending enrollment through canonical password proof
+c093d8a5c 2026-11-05 feat(auth): implement durable policy-bound MCR enrollment and admission
+COUNT 4
+
+## policy-frames
+b9244f869 2026-11-05 feat(world): define opt-in C05 motion profile and anchor vectors
+930380dee 2026-11-04 feat(contracts): define explicit Social policy baseline and invalidation frames
+COUNT 2
+
+## feed-server
+53d547059 2026-11-06 test(post): inspect the actual deletion cleanup owner
+675134b15 2026-11-05 feat(be42): add committed legacy-owner deletion providers and qualification fixtures
+11004823e 2026-11-04 fix(feed): reject raw fragments before URI normalization
+d4224d1ef 2026-11-04 feat(feed): add producer under the retained product scope
+c5fe8473e 2026-11-04 feat(post): mount explicit qualified Concert read and settlement services
+db25c4fa7 2026-11-04 test(feed): bind real parent admission and native cursor rejection
+03bb03802 2026-11-04 test(feed): stage real detail comments privacy outage and sealed-scope cases
+2ab8e50f5 2026-11-04 fix(feed): preserve Post authority denial as whole-read failure
+6c78e5648 2026-11-04 test(feed): distinguish actor policy from complete Post transport failure
+c45c2c7aa 2026-11-04 test(feed): expose qualified list denial in native diagnostics
+404499731 2026-11-04 test(feed): remove unused native fixture imports
+953a8407a 2026-11-04 test(feed): align native signed GET body and record fixed reader evidence
+729a5d0f3 2026-11-04 test(feed): add frozen owned controller for actual owner join
+635d7efe1 2026-11-04 test(feed): stage real five-owner native read join with product release
+a7a969a74 2026-11-04 fix(feed): preserve local policy dependency failures without filtering
+b14e57194 2026-11-04 fix(feed): infer raw client transport before applying interceptor
+5088d3173 2026-11-04 feat(feed): compose current scoped Post and public author readers
+4552ccf95 2026-11-04 fix(feed): isolate canonical authority generation from imported services
+3f31d2862 2026-11-04 wip(feed): preserve author-filter boundary and projection failure coverage
+a27d1cab6 2026-11-04 wip(feed): preserve frozen before semantics and comment boundary qualification
+63f0bb77e 2026-11-04 wip(feed): bind native storage checks to owned socket controller evidence
+bcc13595e 2026-11-04 wip(feed): preserve fail-closed dependency mapping and terminal evidence maintenance
+3dbb4d3d2 2026-11-04 wip(feed): preserve scoped Post transport and native storage qualification cases
+39b2d20d7 2026-11-04 wip(feed): preserve same-transaction producer and durable settlement integration
+161752277 2026-11-04 wip(feed): preserve qualified read protocol and request admission bindings
+06f07e2bc 2026-11-04 wip(feed): preserve guarded policy and transaction identity integration
+COUNT 26
+
+## feed-ui
+8e5cc757f 2026-11-06 fix(frontend): restore build and test suite at 9185c9922
+10b1afe68 2026-11-05 Publish qualified Parade Ink Feed and Thread presentation
+827877828 2026-11-05 Own Social availability through committed lifecycle and avoid production Feed probes
+7760efd0f 2026-11-05 Add bounded same-origin serving guards for the real social journey
+517f3125c 2026-11-05 Add source-qualified IN03 HTTP readiness and real journey hooks
+09c24adc1 2026-11-05 Record six qualified Feed and Thread media geometry journeys
+8fea3b43d 2026-11-05 fix(feed): render selected characters in Thread author slots
+7eac13ce3 2026-11-05 fix(feed): confine retro styling to posts and preserve authorized media geometry
+3107026f8 2026-11-05 test(feed): retain protected media fixture and observer geometry failure
+e56a14423 2026-11-04 feat(feed): publish qualified scoped readiness adapter and Auth provenance guards
+86c352f9c 2026-11-04 fix(feed): remove pastel shell edge with combined mobile evidence
+6a5ebca20 2026-11-04 style(feed): publish qualified compact retro imageboard design
+fc67cf5cd 2026-11-04 style(feed): publish qualified native reference sizing and column alignment
+1972ecb30 2026-11-04 style(feed): publish validated reference media and keyboard focus increment
+416051c98 2026-11-04 style(feed): preserve intrinsic media sizing and retry focus
+333767f38 2026-11-04 style(mcr/CSS-FEED): refine foreground typography and record browser evidence
+24fdc624f 2026-11-04 style(mcr/CSS-FEED): prepare scoped feed foreground parity
+COUNT 17
+
+## theme
+8e5cc757f 2026-11-06 fix(frontend): restore build and test suite at 9185c9922
+99b5bbf93 2026-11-05 Qualify original FE06 palettes in the actual default application
+eacbaab50 2026-11-05 Use incumbent accessible controls in FE06 qualification
+3321b3e19 2026-11-05 Bind committed era palettes to the existing production shell
+COUNT 4
+
+## panels
+09be648b8 2026-11-06 feat(venue): complete map and friends client states
+cb44bb77c 2026-11-06 feat(venue): wire production shell ports
+8e5cc757f 2026-11-06 fix(frontend): restore build and test suite at 9185c9922
+56a0cb7f0 2026-11-05 Mount qualified default venue host with preserved incumbent lifecycle and open visual limits
+78886ffa9 2026-11-05 Present pre-World policy and bootstrap states with Parade Ink frame
+0a27b70d7 2026-11-05 Integrate qualified Parade Ink World HUD with existing policy bootstrap
+651159ec7 2026-11-05 Correct shared Parade Ink foundation styles and header glyphs
+f70ad7eaf 2026-11-05 Publish pinned Parade Ink foundation dependency and source provenance
+6b6c94d24 2026-11-05 Publish qualified FE41 pre-world service policy with preserved Clock composition
+7ee21c586 2026-11-05 Pause World access until canonical admission permits continuation
+bf2ed2fa3 2026-11-05 Place supplemental panel actions after feature content
+79665f76a 2026-11-05 Align shared chrome and responsive content layout with the supplied reference
+3f81baea9 2026-11-05 Connect default Wall to fresh canonical Auth admission and incumbent World
+40a40c3ca 2026-11-05 fix(meet): fit complete CTA and approved print while preserving scrollable discovery
+5da644264 2026-11-05 feat(app): activate qualified reviewed characters, Community authority and default recovery
+c45ebce00 2026-11-05 feat(ui): adopt qualified reference window controls and footer flow
+2ea7fd4e0 2026-11-04 fix(frontend): back focused panel title ring with conditional paint
+COUNT 17
+

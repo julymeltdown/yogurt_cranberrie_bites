@@ -1,0 +1,130 @@
+{
+  "result": "PASS",
+  "qualification": "REAL_DEVELOPMENT_STACK",
+  "cases": [
+    {
+      "name": "mural-happy",
+      "width": 360,
+      "errors": [],
+      "overflow": true,
+      "smallTargets": [],
+      "accents": [],
+      "screenshot": "mural-happy-360.png"
+    },
+    {
+      "name": "mural-unavailable",
+      "width": 360,
+      "errors": [],
+      "overflow": true,
+      "smallTargets": [],
+      "accents": [],
+      "screenshot": "mural-unavailable-360.png"
+    },
+    {
+      "name": "profile-happy",
+      "width": 360,
+      "errors": [],
+      "overflow": true,
+      "smallTargets": [],
+      "accents": [],
+      "screenshot": "profile-happy-360.png"
+    },
+    {
+      "name": "profile-conflict",
+      "width": 360,
+      "errors": [],
+      "overflow": true,
+      "smallTargets": [],
+      "accents": [],
+      "screenshot": "profile-conflict-360.png"
+    },
+    {
+      "name": "mural-happy",
+      "width": 390,
+      "errors": [],
+      "overflow": true,
+      "smallTargets": [],
+      "accents": [],
+      "screenshot": "mural-happy-390.png"
+    },
+    {
+      "name": "mural-unavailable",
+      "width": 390,
+      "errors": [],
+      "overflow": true,
+      "smallTargets": [],
+      "accents": [],
+      "screenshot": "mural-unavailable-390.png"
+    },
+    {
+      "name": "profile-happy",
+      "width": 390,
+      "errors": [],
+      "overflow": true,
+      "smallTargets": [],
+      "accents": [],
+      "screenshot": "profile-happy-390.png"
+    },
+    {
+      "name": "profile-conflict",
+      "width": 390,
+      "errors": [],
+      "overflow": true,
+      "smallTargets": [],
+      "accents": [],
+      "screenshot": "profile-conflict-390.png"
+    },
+    {
+      "name": "mural-happy",
+      "width": 430,
+      "errors": [],
+      "overflow": true,
+      "smallTargets": [],
+      "accents": [],
+      "screenshot": "mural-happy-430.png"
+    },
+    {
+      "name": "mural-unavailable",
+      "width": 430,
+      "errors": [],
+      "overflow": true,
+      "smallTargets": [],
+      "accents": [],
+      "screenshot": "mural-unavailable-430.png"
+    },
+    {
+      "name": "profile-happy",
+      "width": 430,
+      "errors": [],
+      "overflow": true,
+      "smallTargets": [],
+      "accents": [],
+      "screenshot": "profile-happy-430.png"
+    },
+    {
+      "name": "profile-conflict",
+      "width": 430,
+      "errors": [],
+      "overflow": true,
+      "smallTargets": [],
+      "accents": [],
+      "screenshot": "profile-conflict-430.png"
+    }
+  ],
+  "errors": [],
+  "browser": "156.0.8078.80",
+  "screenshots": [
+    "mural-happy-360.png",
+    "mural-unavailable-360.png",
+    "profile-happy-360.png",
+    "profile-conflict-360.png",
+    "mural-happy-390.png",
+    "mural-unavailable-390.png",
+    "profile-happy-390.png",
+    "profile-conflict-390.png",
+    "mural-happy-430.png",
+    "mural-unavailable-430.png",
+    "profile-happy-430.png",
+    "profile-conflict-430.png"
+  ]
+}

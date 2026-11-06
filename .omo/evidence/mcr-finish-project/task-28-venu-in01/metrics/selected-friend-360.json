@@ -1,0 +1,107 @@
+{
+  "viewport": {
+    "width": 360,
+    "height": 800,
+    "dpr": 1
+  },
+  "overflowX": false,
+  "tabs": {
+    "x": 0,
+    "y": 0,
+    "width": 360,
+    "height": 55
+  },
+  "tab": {
+    "x": 4,
+    "y": 5,
+    "width": 116,
+    "height": 44
+  },
+  "map": {
+    "x": 0,
+    "y": 55,
+    "width": 360,
+    "height": 300
+  },
+  "sheet": {
+    "x": 0,
+    "y": 355,
+    "width": 360,
+    "height": 390
+  },
+  "sharing": {
+    "x": 0,
+    "y": 745,
+    "width": 360,
+    "height": 55
+  },
+  "friendRows": [],
+  "friendPortrait": null,
+  "noteCards": [],
+  "notePortrait": null,
+  "selectedPortrait": {
+    "x": 7,
+    "y": 368,
+    "width": 64,
+    "height": 64
+  },
+  "composer": null,
+  "primary": {
+    "x": 183.5,
+    "y": 495.1,
+    "width": 169.5,
+    "height": 44
+  },
+  "meeting": null,
+  "controls": 39,
+  "minHit": 44,
+  "regions": {
+    "map": {
+      "x": 0,
+      "y": 0,
+      "width": 360,
+      "height": 800
+    },
+    "tabPanel": {
+      "x": 0,
+      "y": 55,
+      "width": 360,
+      "height": 690
+    },
+    "canvas": {
+      "x": 0,
+      "y": 55,
+      "width": 360,
+      "height": 300
+    },
+    "friends": null,
+    "sheet": {
+      "x": 0,
+      "y": 355,
+      "width": 360,
+      "height": 390
+    },
+    "noteCard": null,
+    "composer": null,
+    "sharing": {
+      "x": 0,
+      "y": 745,
+      "width": 360,
+      "height": 55
+    },
+    "friendDetail": {
+      "x": 7,
+      "y": 363,
+      "width": 346,
+      "height": 74.1
+    }
+  },
+  "fonts": {
+    "name": null,
+    "place": null,
+    "source": null,
+    "body": null,
+    "noteMeta": null
+  },
+  "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nCharacter unavailable\nCharacter unavailable\n3 friends\nCharacter unavailable\nwaydown\nCharacter unavailable\nYou\n+\n−\n⌖\n↺\n◎\ninkparade\n×\nCharacter unavailable\ninkparade\n\n⌖ Near MAIN GATE\n\nCheck-in · 20s ago\nMeeting place\nChoose a fixed landmark\nMAIN GATE\nSUB GATE\nMESSAGE\nMEET HERE\nASK LOCATION\nSharing with friends\nPAUSE\nREVOKE"
+}

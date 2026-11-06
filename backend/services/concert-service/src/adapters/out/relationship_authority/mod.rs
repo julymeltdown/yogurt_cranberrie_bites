@@ -2,6 +2,7 @@
 //! does not implement FencedRelationshipAuthority or produce FreshAuthority.
 use chrono::{DateTime, Utc};
 use concert_domain::relationship::{Field, PolicyQuery, RelationshipError};
+use concert_domain::AuthUserId;
 use platform::actor_delegation::authority_deadline::AuthorityRpcDeadline;
 use std::{fmt, time::Duration};
 use uuid::Uuid;
@@ -45,6 +46,7 @@ impl fmt::Debug for RevisionVector {
 }
 /// Only constructed from an already sealed Gateway bootstrap authority. This
 /// boundary does not authenticate arbitrary caller-provided actor/family strings.
+#[derive(Clone, Copy)]
 pub struct RequestBinding {
     query: PolicyQuery,
     family: Uuid,
@@ -88,6 +90,45 @@ impl RequestBinding {
             deadline: authority.deadline(),
         })
     }
+    /// Rebuild the same actor/session/request/deadline binding for another
+    /// subject or field. Only the verified product/authority boundary may call
+    /// this; it never invents actor or session evidence.
+    pub(crate) fn from_verified_parts(
+        query: PolicyQuery,
+        family: Uuid,
+        request: Uuid,
+        deadline: AuthorityRpcDeadline,
+    ) -> Result<Self, RelationshipError> {
+        if query.event.uuid().is_nil()
+            || query.actor.uuid().is_nil()
+            || query.subject.uuid().is_nil()
+            || family.is_nil()
+            || request.is_nil()
+            || (query.field == Field::SafetySelf && query.actor != query.subject)
+        {
+            return Err(RelationshipError::Denied);
+        }
+        let binding = Self {
+            query,
+            family,
+            request,
+            deadline,
+        };
+        binding.check()?;
+        Ok(binding)
+    }
+    /// Keep the authenticated actor, family, request and deadline; replace only
+    /// the pair subject and field for another owner read in this request.
+    pub(crate) fn with_query(&self, subject: AuthUserId, field: Field) -> Self {
+        Self {
+            query: PolicyQuery {
+                subject,
+                field,
+                ..self.query
+            },
+            ..*self
+        }
+    }
     pub fn query(&self) -> PolicyQuery {
         self.query
     }
@@ -124,6 +165,7 @@ pub struct BoundedObservation {
     actor_allowed: bool,
     subject_allowed: bool,
     inherited_block: bool,
+    friend_mutual_follow: bool,
 }
 impl fmt::Debug for BoundedObservation {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
@@ -154,6 +196,11 @@ impl BoundedObservation {
     }
     pub fn inherited_block(&self) -> bool {
         self.inherited_block
+    }
+    /// The Friend owner's two live follow directions. One-way follows are not
+    /// friendship; callers must also require no block and current eligibility.
+    pub fn friend_mutual_follow(&self) -> bool {
+        self.friend_mutual_follow
     }
     /// A fresh read must supply `current`; comparing an old vector with itself
     /// does not observe revocation. This result is never mutation permission.

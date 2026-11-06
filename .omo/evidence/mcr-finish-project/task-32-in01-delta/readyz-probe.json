@@ -1,0 +1,85 @@
+{
+ "profile-service": {
+  "status": 200,
+  "checks": [
+   "database"
+  ],
+  "required": [
+   "database"
+  ]
+ },
+ "notification-service": {
+  "status": 200,
+  "checks": [
+   "database"
+  ],
+  "required": [
+   "database"
+  ]
+ },
+ "friend-service": {
+  "status": 200,
+  "checks": [
+   "concert-owner-authority",
+   "database",
+   "friend->profile"
+  ],
+  "required": [
+   "concert-owner-authority",
+   "database",
+   "friend->profile"
+  ]
+ },
+ "post-service": {
+  "status": 200,
+  "checks": [
+   "database",
+   "post->friend",
+   "post->gateway",
+   "post->notification",
+   "post->profile"
+  ],
+  "required": [
+   "database",
+   "post->friend",
+   "post->gateway"
+  ]
+ },
+ "auth-service": {
+  "status": 200,
+  "checks": [
+   "auth->friend",
+   "auth->notification",
+   "auth->post",
+   "auth->profile",
+   "concert-owner-authority",
+   "database"
+  ],
+  "required": [
+   "concert-owner-authority",
+   "database"
+  ]
+ },
+ "api-gateway": {
+  "status": 200,
+  "checks": [
+   "database",
+   "gateway->auth",
+   "gateway->friend",
+   "gateway->notification",
+   "gateway->post",
+   "gateway->profile",
+   "signing-keys"
+  ],
+  "required": [
+   "database",
+   "gateway->auth",
+   "gateway->friend",
+   "gateway->notification",
+   "gateway->post",
+   "gateway->profile",
+   "signing-keys"
+  ]
+ },
+ "cleanup": "PASS"
+}

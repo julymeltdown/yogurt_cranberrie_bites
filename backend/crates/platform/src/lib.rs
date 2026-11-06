@@ -1,4 +1,5 @@
 pub mod actor_delegation;
+pub mod concert_feed_command;
 pub mod call_deadline;
 pub mod config;
 pub mod correlation;

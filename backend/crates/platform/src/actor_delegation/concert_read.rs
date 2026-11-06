@@ -71,6 +71,10 @@ impl ConcertPostReadVerifier {
     pub fn into_inner(self) -> ActorDelegationVerifier {
         self.0
     }
+    /// Borrow the underlying verifier for key-independence checks only.
+    pub fn verifier(&self) -> &ActorDelegationVerifier {
+        &self.0
+    }
 }
 
 #[cfg(test)]

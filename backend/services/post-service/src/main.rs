@@ -27,10 +27,12 @@ async fn main() -> anyhow::Result<()> {
     let config = AppConfig::load()?;
     let concert_startup = post_service::config::concert_runtime::ReadStartup::load(&config)?;
     let pool = connect_pool(&config).await?;
-    let (concert_read, concert_settlement) = concert_startup
+    let (concert_read, concert_settlement, concert_command) = concert_startup
         .map(|startup| startup.compose(pool.clone()))
         .transpose()?
-        .map_or((None, None), |(read, settlement)| (Some(read), Some(settlement)));
+        .map_or((None, None, None), |(read, settlement, command)| {
+            (Some(read), Some(settlement), command)
+        });
     let readiness = readiness(pool.clone()).with_dependencies(vec![
         Probe::grpc(
             platform::edge::Edge::PostProfile,
@@ -141,6 +143,7 @@ async fn main() -> anyhow::Result<()> {
                 )?)
                 .add_optional_service(concert_read)
                 .add_optional_service(concert_settlement)
+                .add_optional_service(concert_command)
                 .serve_with_shutdown(config.grpc_addr, platform::shutdown::global().cancelled())
                 .await?;
             Ok::<(), anyhow::Error>(())

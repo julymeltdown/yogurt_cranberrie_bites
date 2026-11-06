@@ -6,6 +6,7 @@ use platform::{
     actor_delegation::{
         authority_deadline::AuthorityRpcDeadline, read_authority::VerifiedReadAuthority,
     },
+    concert_feed_command::FeedCommandRoute,
     grpc_auth::{VerifiedCaller, Workload},
 };
 use post_application::concert_feed::Context;
@@ -25,11 +26,24 @@ pub(crate) enum ReadOperation {
     Feed,
     Post,
     Comments,
+    Command(FeedCommandRoute),
 }
 impl ReadAdmission {
     /// Only the dedicated guarded server calls this after whole-envelope
     /// signature/replay/body/actor verification. A VerifiedCaller alone fails.
     pub(crate) fn from_verified(
+        caller: VerifiedCaller,
+        proof: VerifiedReadAuthority,
+        context: Context,
+        authority: proto::ReadAuthority,
+    ) -> Result<Self, Error> {
+        let admitted = Self::from_verified_owner(caller, proof, context, authority)?;
+        if matches!(admitted.operation, ReadOperation::Command(_)) {
+            return Err(Error::Authority);
+        }
+        Ok(admitted)
+    }
+    pub(crate) fn from_verified_owner(
         caller: VerifiedCaller,
         proof: VerifiedReadAuthority,
         context: Context,
@@ -50,7 +64,6 @@ impl ReadAdmission {
             || binding.request_id != context.request_id.to_string()
             || binding.parent_digest.as_slice() != context.original_authority
             || binding.expires_unix_micros != context.expires_at.timestamp_micros()
-            || binding.http_method != "GET"
             || root.binding.as_ref() != Some(binding)
             || scope.binding_digest != auth.binding_digest
             || auth.binding_digest != friend.binding_digest
@@ -86,6 +99,7 @@ impl ReadAdmission {
             binding.operation.as_str(),
             &binding.http_target,
             context.event_id,
+            &binding.http_method,
         )?;
         let proof_deadline = proof
             .deadline(Duration::from_secs(5))
@@ -139,7 +153,21 @@ fn target(
     operation: &str,
     target: &str,
     event: Uuid,
+    method: &str,
 ) -> Result<(ReadOperation, Option<Uuid>), Error> {
+    if method != "GET" {
+        let route = FeedCommandRoute::parse(event, method, target).map_err(|_| Error::Authority)?;
+        if route.operation() != operation {
+            return Err(Error::Authority);
+        }
+        let parent = match route {
+            FeedCommandRoute::CreatePost
+            | FeedCommandRoute::EditComment(_)
+            | FeedCommandRoute::DeleteComment(..) => None,
+            _ => route.target(),
+        };
+        return Ok((ReadOperation::Command(route), parent));
+    }
     if target.len() > 4096 || target.chars().any(char::is_control) || target.contains('#') {
         return Err(Error::Authority);
     }

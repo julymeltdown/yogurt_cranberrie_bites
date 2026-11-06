@@ -652,6 +652,22 @@ mod shutdown_result_tests {
     }
 
     #[test]
+    fn a_genuine_maintenance_failure_stays_fatal_and_visible() {
+        // Only a confirmed closed phase defers the tick; every other authority
+        // error still reaches the supervisor with its stage and original class.
+        let primary = anyhow::Error::new(concert_application::world_ticket::WorldError::Unavailable)
+            .context("World authority maintenance failed");
+        let result = finish_world_run(Err(primary), Ok(())).unwrap_err();
+        assert!(result
+            .downcast_ref::<concert_application::world_ticket::WorldError>()
+            .is_some_and(|error| matches!(
+                error,
+                concert_application::world_ticket::WorldError::Unavailable
+            )));
+        assert!(format!("{result:#}").contains("World authority maintenance failed"));
+    }
+
+    #[test]
     fn successful_runtime_still_reports_cleanup_failure() {
         assert_eq!(
             finish_world_run(Ok(()), Err(anyhow::anyhow!("cleanup unavailable")))

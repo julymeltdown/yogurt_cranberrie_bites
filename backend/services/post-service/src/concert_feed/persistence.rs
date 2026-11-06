@@ -6,14 +6,32 @@ use uuid::Uuid;
 
 impl Owner {
     pub async fn execute(&self, context: &Context, command: &Command) -> Result<Outcome, Error> {
+        let tx = self.pool.begin().await.map_err(storage)?;
+        self.execute_in(context, command, tx).await
+    }
+    pub(crate) async fn execute_in(
+        &self,
+        context: &Context,
+        command: &Command,
+        tx: Transaction<'_, Postgres>,
+    ) -> Result<Outcome, Error> {
+        let (outcome, guard, tx) = self.execute_effects_in(context, command, tx).await?;
+        checked_commit(tx, context, &[guard]).await?;
+        Ok(outcome)
+    }
+    async fn execute_effects_in<'a>(
+        &self,
+        context: &Context,
+        command: &Command,
+        mut tx: Transaction<'a, Postgres>,
+    ) -> Result<(Outcome, (Box<dyn Fence>, [u8; 32]), Transaction<'a, Postgres>), Error> {
         command.validate()?;
         context.binds(command)?;
         context.validate(Utc::now())?;
-        let mut tx = self.pool.begin().await.map_err(storage)?;
         // Two actor/key and operation locks precede the parent lock. Domain-tagged
         // hashes avoid ambiguous identities; collisions only serialize requests.
         let fingerprint = digest(command)?;
-        let key = digest(&command.idempotency_key)?;
+        let key = command_key(command)?;
         lock(&mut tx, "key", &(command.actor_id, command.event_id, key)).await?;
         lock(&mut tx, "operation", &command.operation_id).await?;
         lock(&mut tx, "post", &command.post_id).await?;
@@ -44,8 +62,7 @@ impl Owner {
             let guard = self.admit(context, &access, &mut tx).await?;
             let result: Outcome = serde_json::from_value(existing[0].get("outcome"))
                 .map_err(|_| Error::Unavailable)?;
-            checked_commit(tx, context, &[guard]).await?;
-            return Ok(result);
+            return Ok((result, guard, tx));
         }
         let mut parent = load_post(&mut tx, command.event_id, command.post_id).await?;
         let mut comment = if let Some(id) = command.mutation.comment_id() {
@@ -182,9 +199,77 @@ impl Owner {
             .bind(command.operation_id).bind(command.actor_id).bind(command.event_id).bind(command.post_id).bind(outcome.comment_id).bind(key.as_slice()).bind(fingerprint.as_slice()).bind(context.original_authority.as_slice()).bind(context.expires_at).bind(&json).bind(now).execute(&mut *tx).await.map_err(storage)?;
         sqlx::query("insert into post_concert_outbox(operation_id,event_id,post_id,post_revision,kind,payload,occurred_at) values($1,$2,$3,$4,$5,$6,$7)")
             .bind(command.operation_id).bind(command.event_id).bind(command.post_id).bind(p.revision).bind(command.mutation.name()).bind(json).bind(now).execute(&mut *tx).await.map_err(storage)?;
-        checked_commit(tx, context, &[guard]).await?;
-        Ok(outcome)
+        Ok((outcome, guard, tx))
     }
+    pub(crate) async fn receipt_in(
+        &self,
+        context: &Context,
+        command: &Command,
+        mut tx: Transaction<'_, Postgres>,
+    ) -> Result<Option<Outcome>, Error> {
+        command.validate()?;
+        context.binds(command)?;
+        context.validate(Utc::now())?;
+        let parent = load_post(&mut tx, command.event_id, command.post_id).await?;
+        let comment = if let Some(id) = command.mutation.comment_id() {
+            load_comment(&mut tx, command.event_id, command.post_id, id).await?
+        } else {
+            None
+        };
+        let guard = self
+            .admit(
+                context,
+                &Access::Receipt {
+                    command: command.clone(),
+                    parent: parent.clone(),
+                    comment: comment.clone(),
+                },
+                &mut tx,
+            )
+            .await?;
+        let row = sqlx::query(
+            "select command_digest,outcome from post_concert_receipts where operation_id=$1 and actor_id=$2 and event_id=$3",
+        )
+        .bind(command.operation_id)
+        .bind(command.actor_id)
+        .bind(command.event_id)
+        .fetch_optional(&mut *tx)
+        .await
+        .map_err(storage)?;
+        let result = if let Some(row) = row {
+            if row.get::<Vec<u8>, _>("command_digest") != digest(command)? {
+                return Err(Error::Idempotency);
+            }
+            validate_replay(command, parent.as_ref(), comment.as_ref())?;
+            Some(
+                serde_json::from_value(row.get("outcome"))
+                    .map_err(|_| Error::Unavailable)?,
+            )
+        } else {
+            None
+        };
+        checked_commit(tx, context, &[guard]).await?;
+        Ok(result)
+    }
+}
+fn command_operation(command: &Command) -> &'static str {
+    match &command.mutation {
+        Mutation::CreatePost { .. } => "createConcertPost",
+        Mutation::EditPost { .. } => "editConcertPost",
+        Mutation::DeletePost { .. } => "deleteConcertPost",
+        Mutation::CreateComment { .. } => "createConcertComment",
+        Mutation::EditComment { .. } => "editConcertComment",
+        Mutation::DeleteComment { .. } => "deleteConcertComment",
+        Mutation::SetReaction { active: true, .. } => "likeConcertPost",
+        Mutation::SetReaction { active: false, .. } => "unlikeConcertPost",
+    }
+}
+pub(super) fn command_key(command: &Command) -> Result<[u8; 32], Error> {
+    digest(&(
+        "mcr/feed/idempotency/v2",
+        command_operation(command),
+        &command.idempotency_key,
+    ))
 }
 pub(super) fn validate_replay(
     command: &Command,

@@ -1,4 +1,6 @@
 //! VENU-BE-M01 PostgreSQL adapter. Authority is evaluated in the effect transaction.
+use crate::adapters::out::relationship_authority::BoundedRelationshipAuthority;
+use crate::venue_authority::VenueFriendAuthority;
 use async_trait::async_trait;
 use chrono::{DateTime, Utc};
 use concert_application::venue_meeting::{
@@ -13,11 +15,28 @@ use concert_domain::venue_meeting::{
 use serde_json::{json, Value};
 use sha2::{Digest, Sha256};
 use sqlx::{PgConnection, PgPool, Postgres, Row, Transaction};
+use std::sync::Arc;
 use uuid::Uuid;
 
 pub struct PgVenueMeeting<A> {
     pool: PgPool,
     authority: A,
+}
+
+impl PgVenueMeeting<VenueFriendAuthority> {
+    /// Compose MESSAGE/invitation friendship from the same request-bound
+    /// VENUE_FRIEND_V1 authority as location. Meeting policy and landmark
+    /// review remain separate providers and stay fail-closed when absent.
+    pub fn production(
+        pool: PgPool,
+        relationships: Arc<dyn BoundedRelationshipAuthority>,
+        product: &crate::product_rpc::VerifiedProduct,
+        subject: concert_domain::AuthUserId,
+    ) -> Result<Self, concert_domain::venue_location::VenueLocationError> {
+        let authority =
+            VenueFriendAuthority::from_product(pool.clone(), relationships, product, subject)?;
+        Ok(Self::new(pool, authority))
+    }
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]

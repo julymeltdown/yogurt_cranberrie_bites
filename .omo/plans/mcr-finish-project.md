@@ -394,7 +394,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   Recommended task executor category: deep-low
   Commit: Y | `feat(venue): complete notes map, composer and replies`
 
-- [ ] 28. Execute VENU-IN01 with the 48 reference comparisons
+- [~] 28. Execute VENU-IN01 with the 48 reference comparisons
   What to do / Must NOT do: run the integrated venue flows and capture all 48 comparison cases plus the 10 extension IA states at 360/390/430; record PASS/FAIL per case against the supplied photographs. Do NOT substitute a static screenshot; do NOT claim approval of the provisional Photo5/P09/P10 variant.
   Closes: GAP-1, GAP-6
   Parallelization: Wave 4 | Blocked by: 25–27 | Blocks: 47
@@ -403,6 +403,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   QA scenarios: happy all flows complete on real services; failure one denied/expired case missing -> case FAIL and no VENU-IN01 acceptance. Evidence `.omo/evidence/mcr-finish-project/task-28-venu-in01/`.
   Recommended task executor category: deep-low
   Commit: Y | `test(venue): execute integrated flows and reference comparisons`
+  Gap (2026-11-06): 48/48 reference cases and 10/10 IA states have captures and verdicts (23 PASS / 2 DIFFER / 23 NOT_REACHABLE; 3 PASS / 7 NOT_REACHABLE), but 23 cases and 7 states are unreachable while PgVenueLocationAuthority::friend_in is a fail-closed stub returning VenueLocationError::PolicyUnavailable (503). The two DIFFER cases are genuine reference-base differences (provisional Photo 5 vs Photos 1 and 4) and remain unapproved. A bilateral friend authority is being implemented; the full matrix must be re-run against it to convert those families (friend location, sharing audience, meeting, invitation, conversation).
 
 - [ ] 29. Pass IN02 real meetup and pickup
   What to do / Must NOT do: two real clients complete party request/approval, authorized physical beacon/rally, giveaway reservation and one-time pickup against the real stack. Do NOT infer physical arrival from world movement; do NOT use mocks.
@@ -434,7 +435,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   Recommended task executor category: deep-low
   Commit: Y | `test(in04): pass multiuser mural and moderation gate`
 
-- [ ] 32. Re-run IN01 deltas for changed features
+- [~] 32. Re-run IN01 deltas for changed features
   What to do / Must NOT do: re-run the two-account world gate for features changed since the historical IN01 acceptance (admission, policy frames, feed, theme, panels). Do NOT re-claim unchanged history.
   Closes: GAP-2
   Parallelization: Wave 5 | Blocked by: 7, 8, 10, 12 | Blocks: 47
@@ -443,6 +444,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   QA scenarios: happy two clients join, move, open panels, keep one socket; failure reconnect after kill -> recovery. Evidence `.omo/evidence/mcr-finish-project/task-32-in01-delta.md`.
   Recommended task executor category: deep-low
   Commit: Y | `test(in01): re-run deltas for changed features`
+  Gap (2026-11-06): D1 admission, D3 panel, D4 theme, D5 panels and the socket-kill reconnect PASS on real browser evidence with one socket per client and zero invalid frames; D2 (policy frames) is NOT_RUN because the Social policy baseline transport is not composed in this gate (CONCERT_SOCIAL_MODE unset with no probe decoder), and feed CONTENT is NOT_RUN because the Feed product mode is off. Sustain refreshObservation was not observable inside the runtime window (900 s token TTL).
 
 - [x] 33. Finish PI08 Photo2 HUD and camera
   What to do / Must NOT do: close the remaining HUD/camera/Photo2 renderer and registry work against the reference; keep the qualified partial art tuple. Do NOT reopen AR02/AR04 criteria; do NOT admit unqualified pixels.
@@ -546,7 +548,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   Recommended task executor category: deep-low
   Commit: Y | `test(qa10): compose same-candidate release evidence`
 
-- [ ] 43. Close FE24, FE33 and FE34
+- [~] 43. Close FE24, FE33 and FE34
   What to do / Must NOT do: FE24 protected gift media/motif binding, FE33 authoritative mural serving/config/adapter, FE34 profile preferences and conflict behavior. Do NOT reopen historical closures without a changed criterion.
   Closes: GAP-1
   Parallelization: Wave 8 | Blocked by: 25–28, 31 | Blocks: 47
@@ -555,6 +557,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   QA scenarios: happy gift detail media + mural sync + profile save; failure unavailable producer -> truthful state. Evidence `.omo/evidence/mcr-finish-project/task-43-fe-closure.md`.
   Recommended task executor category: deep-low
   Commit: Y | `feat(frontend): close FE24, FE33 and FE34`
+  Gap (2026-11-06): FE33 (authoritative mural serving/config/adapter) and FE34 (profile preferences with 409 conflict) are closed against real producers with three-width browser evidence. FE24 (protected gift media/motif binding) remains open: BE24 Gateway HTTP media upload/finalize/authorized-read is not composition-qualified for a real caller (scripted probe: metadata 403 PERMISSION_DENIED, content 403, bytes 400 INVALID_INPUT), productionBinding is null and the motif mapping is NOT_READY; GiftDetail truthfully shows the unavailable state and invents nothing.
 
 - [x] 44. Document deployment and production inputs
   What to do / Must NOT do: write the staging/production runbook: mTLS material, TLS termination, provider endpoints, operator roles, limits, backup/restore and the deferred QA08 note. Do NOT claim production capacity or invent credentials.
@@ -608,7 +611,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   Recommended task executor category: quick
   Commit: Y | `ci: add blocking build, test and contract gates`
 
-- [ ] 49. Add the qualified post mutation envelope and event-scoped feed routes
+- [x] 49. Add the qualified post mutation envelope and event-scoped feed routes
   What to do / Must NOT do: design the qualified mutation envelope in `backend/proto` (shared contract), implement `PostTransport::execute`/`get_receipt` for create/edit/delete/comment/reaction, mount the event-scoped routes in the gateway, and prove them on the composed real stack. Do NOT open a route without authorization and idempotency; do NOT invent a private envelope.
   Closes: GAP-1
   Parallelization: Wave 2 | Blocked by: 12, 13 | Blocks: 30, 31

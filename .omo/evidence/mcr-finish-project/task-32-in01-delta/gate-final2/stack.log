@@ -1,0 +1,4 @@
+pre-world policy {"status": 200, "revision": "34e20f37-9783-45cd-a0ae-7d19867031cc", "documents": 1}
+pre-world admission {"status": 200, "decision": "ADMITTED", "accepted_revision": true}
+{"result": "PARTIAL", "private_inputs": "/private/tmp/mcr-pg-6s5sos5e/in01-live-inputs.json", "world_two_client": "PASS"}
+{"result": "PARTIAL", "cleanup": "PASS"}

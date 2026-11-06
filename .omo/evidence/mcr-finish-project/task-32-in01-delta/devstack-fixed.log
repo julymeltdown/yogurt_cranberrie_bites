@@ -1,0 +1,2 @@
+{"state": "READY", "ready_file": "/tmp/mcr-in01-delta/devstack-fixed-ready.json", "gateway_url": "http://127.0.0.1:50507"}
+{"result": "PASS", "cleanup": "PASS", "report": "/tmp/mcr-in01-delta/devstack-fixed-report.json"}

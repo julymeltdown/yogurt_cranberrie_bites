@@ -183,3 +183,18 @@ screen-reader hardware, load/FPS/memory qualification and IN04 are **NOT_RUN**.
 The committed handoff completes this bounded frontend implementation assignment;
 external live gates are tracked separately, without reducing their scope. Only
 delivery integrates and pushes validated commits to `julymeltdown/mcr/master`.
+
+## 2026-11-06 producer-backed closure (task 43)
+
+**CLOSED for the current revised scope.** The real development stack served the
+authoritative Wall at revision 1 (`GET /mural/snapshot` 200 `EDITABLE`, `GET
+/mural/operations` 200 from 1 to 1). The actual `createMuralHttp`,
+`createMuralSync` and `MuralSyncPanel` rendered `Wall synchronized at revision
+1.` at 360/390/430; an invalid bearer produced a real 401 and the panel reported
+`Wall synchronization unavailable. Reconnect the world and refresh before
+editing.` without a fabricated revision. The shipped placement pins match the
+authoritative server release map (`mcr_reference_scene_r3` r4, content
+`sha256:736afd27…`, geometry `sha256:899aca9b…`), so no configuration edit was
+needed. Evidence: `.omo/evidence/mcr-finish-project/task-43-fe-closure.md` and
+`frontend/e2e/fe-closure/`. This is development-stack evidence, not release,
+device, QA08 or a repeat of the IN04 multiuser gate.

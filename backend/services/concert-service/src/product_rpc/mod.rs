@@ -22,7 +22,7 @@ pub mod child_settlement;
 pub mod delivery;
 mod feature_admission;
 mod owner_media;
-mod query;
+pub(crate) mod query;
 pub mod report_admission;
 pub mod venue_meeting_admission;
 mod operations_admission;
@@ -49,6 +49,7 @@ pub const POLICY: MethodPolicy = MethodPolicy {
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Operation {
     Feed,
+    FeedCommand(platform::concert_feed_command::FeedCommandRoute),
     Post(Uuid),
     Comments(Uuid),
     ListParties,
@@ -65,6 +66,7 @@ pub enum Operation {
     FinalizeUpload(Uuid),
     PrivateContent(Uuid),
     CommandStatus,
+    ServicePolicy,
     Wall(crate::mural_tools_b::protocol::WallOperation),
     Social(crate::social_live::protocol::SocialOperation),
     Intro(IntroOperation),
@@ -79,6 +81,7 @@ impl Operation {
     pub fn contract_id(self) -> &'static str {
         match self {
             Self::Feed => "listConcertFeed",
+            Self::FeedCommand(route) => route.operation(),
             Self::Post(_) => "getConcertPost",
             Self::Comments(_) => "listConcertComments",
             Self::ListParties => "listConcertParties",
@@ -95,6 +98,7 @@ impl Operation {
             Self::FinalizeUpload(_) => "finalizeConcertUpload",
             Self::PrivateContent(_) => "readConcertMedia",
             Self::CommandStatus => "getConcertCommandStatus",
+            Self::ServicePolicy => "getConcertServicePolicy",
             Self::Wall(operation) => operation.id(),
             Self::Social(operation) => operation.id(),
             Self::Intro(operation) => operation.id(),
@@ -125,6 +129,12 @@ pub fn operation(event: Uuid, method: &str, target: &str) -> Result<Operation, S
     let suffix = path
         .strip_prefix(&prefix)
         .ok_or_else(|| Status::permission_denied("Product event mismatch"))?;
+    if matches!(method, "POST" | "PATCH" | "PUT" | "DELETE")
+        && matches!(suffix.split('/').next(), Some("posts" | "comments"))
+    {
+        return platform::concert_feed_command::FeedCommandRoute::parse(event, method, target)
+            .map(Operation::FeedCommand);
+    }
     if let Ok(wall) = crate::mural_tools_b::protocol::WallOperation::parse(event, method, target) {
         if wall != crate::mural_tools_b::protocol::WallOperation::Status {
             return Ok(Operation::Wall(wall));
@@ -160,6 +170,7 @@ pub fn operation(event: Uuid, method: &str, target: &str) -> Result<Operation, S
         ("GET", "parties") => Operation::ListParties,
         ("POST", "parties") => Operation::CreateParty,
         ("GET", "commands") => Operation::CommandStatus,
+        ("GET", "service-policy") => Operation::ServicePolicy,
         ("POST", "media/uploads") => Operation::InitializeUpload,
         ("POST", "admin/closure") => Operation::Closure,
         _ => {
@@ -205,6 +216,7 @@ pub fn operation(event: Uuid, method: &str, target: &str) -> Result<Operation, S
                 | Operation::CommandStatus
                 | Operation::CancelPartyApplication(_)
                 | Operation::RemovePartyMember(_, _)
+                | Operation::ServicePolicy
         )
     {
         return Err(Status::invalid_argument("Unexpected product query"));
@@ -227,6 +239,7 @@ pub struct VerifiedProduct {
     feed_query: Option<crate::feed::live_read::FeedQuery>,
     comments_query: Option<crate::feed::live_read::CommentsQuery>,
     command_query: Option<CommandStatusQuery>,
+    service_policy_query: Option<crate::service_policy::Query>,
 }
 impl VerifiedProduct {
     // Retain this already authenticated request for the owned producer future.
@@ -258,6 +271,7 @@ impl VerifiedProduct {
                 }
             }),
             command_query: self.command_query,
+            service_policy_query: self.service_policy_query,
         }
     }
     /// Only populated from the exact workload/actor-authenticated Gateway frame.
@@ -297,6 +311,9 @@ impl VerifiedProduct {
     }
     pub fn command_query(&self) -> Option<CommandStatusQuery> {
         self.command_query
+    }
+    pub fn service_policy_query(&self) -> Option<crate::service_policy::Query> {
+        self.service_policy_query
     }
     pub fn check(&self) -> Result<(), Status> {
         self.deadline
@@ -353,6 +370,9 @@ fn authorize(request: &Request<proto::ProductRequest>) -> Result<VerifiedProduct
     let command_query = matches!(operation, Operation::CommandStatus)
         .then(|| query::command_status(&m.http_target))
         .transpose()?;
+    let service_policy_query = matches!(operation, Operation::ServicePolicy)
+        .then(|| crate::service_policy::parse_query(&m.http_target))
+        .transpose()?;
     if m.http_body.len() > MAX_BODY {
         return Err(Status::resource_exhausted("Product body too large"));
     }
@@ -367,6 +387,11 @@ fn authorize(request: &Request<proto::ProductRequest>) -> Result<VerifiedProduct
     }
     if let Operation::Report(report) = operation {
         query::report_request(m, report)?;
+    }
+    if let Operation::FeedCommand(route) = operation {
+        canonical_uuid(&m.idempotency_key)?;
+        route.validate_body(&m.content_type, &m.http_body)?;
+        query::feed_command(m, route)?;
     }
     if let Operation::Meeting(_) = operation {
         venue_meeting_admission::request(m, operation)?;
@@ -399,7 +424,7 @@ fn authorize(request: &Request<proto::ProductRequest>) -> Result<VerifiedProduct
     );
     if matches!(
         operation,
-        Operation::Social(_) | Operation::Intro(_) | Operation::Notification(_) | Operation::Age(_) | Operation::Report(_) | Operation::Operations(_) | Operation::Wall(_) | Operation::Meeting(_)
+        Operation::Social(_) | Operation::Intro(_) | Operation::Notification(_) | Operation::Age(_) | Operation::Report(_) | Operation::Operations(_) | Operation::Wall(_) | Operation::Meeting(_) | Operation::FeedCommand(_)
     ) {
         // Each exact feature decoder validates its own read payload and keyed
         // command shape, including Intro PUT/POST and Notification PATCH writes.
@@ -464,6 +489,7 @@ fn authorize(request: &Request<proto::ProductRequest>) -> Result<VerifiedProduct
         feed_query,
         comments_query,
         command_query,
+        service_policy_query,
         deadline: AuthorityRpcDeadline::within_original(
             expires.min(original.expires_micros()),
             original.stop().into_std(),

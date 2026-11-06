@@ -1,0 +1,47 @@
+{
+  "viewport": {
+    "width": 430,
+    "height": 932,
+    "dpr": 1
+  },
+  "overflowX": false,
+  "tabs": null,
+  "tab": null,
+  "map": null,
+  "sheet": null,
+  "sharing": null,
+  "friendRows": [],
+  "friendPortrait": null,
+  "noteCards": [],
+  "notePortrait": null,
+  "selectedPortrait": null,
+  "composer": null,
+  "primary": null,
+  "meeting": {
+    "x": 0,
+    "y": 0,
+    "width": 430,
+    "height": 644.6
+  },
+  "controls": 6,
+  "minHit": 44,
+  "regions": {
+    "map": null,
+    "tabPanel": null,
+    "canvas": null,
+    "friends": null,
+    "sheet": null,
+    "noteCard": null,
+    "composer": null,
+    "sharing": null,
+    "friendDetail": null
+  },
+  "fonts": {
+    "name": null,
+    "place": null,
+    "source": null,
+    "body": null,
+    "noteMeta": null
+  },
+  "text": "REAL MEETING PLACE\nAll invitations\nClose\nMeet at MAIN GATE\n+\nYou + inkparade\n\nUse the shared place below to meet up.\n\nMessaging is authorized by your current friendship and event access. An invitation is optional context and never grants access.\n\nYou\n4:58 PM\n\nI am near Main Gate. Meet here?\n\nMAIN GATE\nView on map\ninkparade\n4:59 PM\n\nOn my way.\n\nMeeting accepted\n✓\nMessage\n\nUp to 2,000 characters.\n\nSend message\nINVITATION\n\nA shared place is fixed. A friend’s phone location or virtual position does not confirm arrival."
+}
