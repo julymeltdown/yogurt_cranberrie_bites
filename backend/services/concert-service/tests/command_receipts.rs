@@ -2,7 +2,7 @@
 use async_trait::async_trait;
 use concert_application::commands::*;
 use concert_service::adapters::out::repository::{
-    outbox::{DeliveryFailure, PgOutbox},
+    outbox::{Delivery, DeliveryFailure, PgOutbox},
     receipt::{CommandProducer, PgCommandRepository},
 };
 use sqlx::{
@@ -260,6 +260,36 @@ async fn simultaneous_changed_body_conflicts_without_double_effect() -> anyhow::
     p.close().await;
     Ok(())
 }
+#[tokio::test]
+async fn aborted_flight_leaves_no_receipt_and_retries_exactly_once() -> anyhow::Result<()> {
+    let (p, s, t, h) = fixture().await?;
+    let repo = PgCommandRepository::new(p.clone());
+    assert_eq!(
+        repo.execute(&h, t, keys(), &TestProducer { mode: Mode::Abort })
+            .await,
+        Err(CommandError::InvalidState)
+    );
+    assert_eq!(revision(&p, s, t).await, 0);
+    assert_eq!(count(&p, "concert_command_receipts", s).await, 0);
+    assert_eq!(count(&p, "concert_outbox", s).await, 0);
+    let retried = repo
+        .execute(
+            &h,
+            t,
+            keys(),
+            &TestProducer {
+                mode: Mode::Success,
+            },
+        )
+        .await?;
+    assert_eq!(retried.state, ReceiptState::Succeeded);
+    assert_eq!(revision(&p, s, t).await, 1);
+    assert_eq!(count(&p, "concert_command_receipts", s).await, 1);
+    assert_eq!(count(&p, "concert_outbox", s).await, 1);
+    p.close().await;
+    Ok(())
+}
+
 #[tokio::test]
 async fn rollback_has_no_orphan_and_failed_receipt_rolls_back_effects() -> anyhow::Result<()> {
     for failure in [
@@ -674,6 +704,110 @@ impl concert_service::workers::outbox::IdempotentInvalidationSink for TestSink {
         Ok(())
     }
 }
+#[tokio::test]
+async fn supervised_worker_resumes_after_midclaim_kill_without_duplicate_effect(
+) -> anyhow::Result<()> {
+    use concert_service::workers::outbox::{IdempotentInvalidationSink, OutboxWorker};
+    struct HangingSink {
+        pool: PgPool,
+        applied: std::sync::Arc<tokio::sync::Notify>,
+    }
+    #[async_trait]
+    impl IdempotentInvalidationSink for HangingSink {
+        async fn deliver(&self, d: &Delivery) -> Result<(), DeliveryFailure> {
+            consume_once(&self.pool, d.id, d.event)
+                .await
+                .map_err(|_| DeliveryFailure::Retryable)?;
+            self.applied.notify_one();
+            std::future::pending::<()>().await;
+            Ok(())
+        }
+    }
+    let (p, s, t, h) = fixture().await?;
+    PgCommandRepository::new(p.clone())
+        .execute(
+            &h,
+            t,
+            keys(),
+            &TestProducer {
+                mode: Mode::Success,
+            },
+        )
+        .await?;
+    sqlx::query("update concert_outbox set state='DEAD',lease_token=null,lease_until=null,terminal_at=clock_timestamp(),last_error='REJECTED' where event_id<>$1 and state in ('READY','LEASED')").bind(s.event).execute(&p).await?;
+    let out = PgOutbox::new(p.clone());
+    let applied = std::sync::Arc::new(tokio::sync::Notify::new());
+    let hanging = std::sync::Arc::new(HangingSink {
+        pool: p.clone(),
+        applied: applied.clone(),
+    });
+    let notified = applied.notified();
+    let killed = tokio::spawn(
+        OutboxWorker::new(out.clone(), hanging, 10)?.run_until(std::future::pending::<()>()),
+    );
+    tokio::time::timeout(std::time::Duration::from_secs(10), notified).await?;
+    killed.abort();
+    let _ = killed.await;
+    // The killed worker never acknowledged; only lease expiry may release it.
+    let leased: String = sqlx::query_scalar("select state from concert_outbox where event_id=$1")
+        .bind(s.event)
+        .fetch_one(&p)
+        .await?;
+    assert_eq!(leased, "LEASED");
+    sqlx::query("update concert_outbox set lease_until=clock_timestamp()-interval '1 second' where event_id=$1").bind(s.event).execute(&p).await?;
+    let restarted = OutboxWorker::new(out, std::sync::Arc::new(TestSink { pool: p.clone() }), 10)?;
+    let result = restarted.run_round().await?;
+    assert_eq!(result.acknowledged, 1);
+    let effects: i64 = sqlx::query_scalar("select coalesce(sum(effects),0)::bigint from be15_test_consumer c join concert_outbox o on o.outbox_id=c.delivery where o.event_id=$1")
+        .bind(s.event)
+        .fetch_one(&p)
+        .await?;
+    assert_eq!(effects, 1);
+    let applied_count: i32 =
+        sqlx::query_scalar("select applied from be15_test_consumer_effect where event=$1")
+            .bind(s.event)
+            .fetch_one(&p)
+            .await?;
+    assert_eq!(applied_count, 1);
+    p.close().await;
+    Ok(())
+}
+
+#[tokio::test]
+async fn production_maintenance_round_retires_expired_and_prunes_terminal_rows(
+) -> anyhow::Result<()> {
+    use concert_service::workers::receipts::ReceiptMaintenance;
+    let (p, s, t, h) = fixture().await?;
+    let expired = Uuid::new_v4();
+    sqlx::query("insert into concert_command_receipts(receipt_id,actor_id,event_id,operation_id,idempotency_key,request_hash,target_id,state,created_at,expires_at) values($1,$2,$3,$4,$5,$6,$7,'PENDING',clock_timestamp()-interval '2 days',clock_timestamp()-interval '1 day 1 second')")
+        .bind(expired).bind(s.actor).bind(s.event).bind(s.operation.id()).bind(Uuid::new_v4()).bind(keys().sign(&h)?.as_storage()).bind(t).execute(&p).await?;
+    PgCommandRepository::new(p.clone())
+        .execute(
+            &h,
+            t,
+            keys(),
+            &TestProducer {
+                mode: Mode::Success,
+            },
+        )
+        .await?;
+    sqlx::query("update concert_outbox set state='DELIVERED',lease_token=null,lease_until=null,terminal_at=clock_timestamp()-interval '8 days',last_error=null where event_id=$1")
+        .bind(s.event).execute(&p).await?;
+    let round = ReceiptMaintenance::new(p.clone()).run_round().await?;
+    assert!(round.retired >= 1);
+    assert!(round.pruned >= 1);
+    let state: String =
+        sqlx::query_scalar("select state from concert_command_receipts where receipt_id=$1")
+            .bind(expired)
+            .fetch_one(&p)
+            .await?;
+    assert_eq!(state, "RETIRED");
+    assert_eq!(count(&p, "concert_outbox", s).await, 0);
+    assert_eq!(count(&p, "concert_command_receipts", s).await, 2);
+    p.close().await;
+    Ok(())
+}
+
 #[tokio::test]
 async fn explicit_batch_runner_delivers_real_idempotent_consumer_effect() -> anyhow::Result<()> {
     let (p, s, t, h) = fixture().await?;

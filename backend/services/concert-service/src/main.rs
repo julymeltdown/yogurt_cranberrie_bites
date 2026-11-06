@@ -254,6 +254,8 @@ async fn main() -> anyhow::Result<()> {
         (None, None)
     };
     let _application = config::build_application(pool.clone());
+    let receipt_maintenance =
+        concert_service::workers::receipts::ReceiptMaintenance::new(pool.clone());
     let health = health::router(health::readiness(pool.clone()));
     let listener = tokio::net::TcpListener::bind(config.metrics_addr)
         .await
@@ -448,15 +450,22 @@ async fn main() -> anyhow::Result<()> {
                 None => platform::shutdown::idle().await,
             }
         };
+        let receipts = async move {
+            receipt_maintenance
+                .run_until(platform::shutdown::global().cancelled())
+                .await
+                .map_err(anyhow::Error::from)
+        };
         // Each component requests shared shutdown on failure. Join rather than
         // dropping peer futures so native replay, membership and recovery drain.
-        let (http, grpc, world, recovery, children, social) = tokio::join!(
+        let (http, grpc, world, recovery, children, social, receipts) = tokio::join!(
             component("health", http, platform::shutdown::global()),
             component("gRPC", grpc, platform::shutdown::global()),
             component("World", world, platform::shutdown::global()),
             component("Participant recovery", recovery, platform::shutdown::global()),
             component("canonical child recovery", children, platform::shutdown::global()),
             component("Social delivery", social, platform::shutdown::global()),
+            component("BE15 receipt maintenance", receipts, platform::shutdown::global()),
         );
         http?;
         grpc?;
@@ -464,6 +473,7 @@ async fn main() -> anyhow::Result<()> {
         recovery?;
         children?;
         social?;
+        receipts?;
         Ok(())
     })
     .await;
