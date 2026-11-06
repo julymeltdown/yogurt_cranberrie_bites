@@ -1,5 +1,13 @@
 # Revised functional delivery plan — 2026-11-05
 
+<!-- BEGIN ROW46_W04_20261106 -->
+## CURRENT — 2026-11-06 W04 party-invitation policy decision and extension IA owner map
+
+**W04 policy resolved by the user (2026-11-06).** The original W04 virtual party-room invitation policy is: invitee consent; exactly one inviter grant per party; party capacity 8; 24-hour expiry from the server-issued invitation time; the host can revoke before the server deadline. Provenance: **user decision, 2026-11-06**, recorded in the plan row 46 note. This is product policy only. It grants no route, producer, capability, migration or invitation authority, does not reopen FE18, and leaves W04 implementation `NOT_STARTED`. **W04 party invitations remain distinct from the VENU-BE-M01 fixed-landmark venue meeting invitations, MEET HERE and contextual MESSAGE**; no W04 invitation, party membership or virtual-room grant is venue authority.
+
+The ten extension IA states are mapped to existing components, already-granted routes and named state owners in `.omo/evidence/mcr-finish-project/task-46-w04.md`: **10/10 mapped, 0 UNMAPPED, no URL added**. They are panel states inside `/world/map` or the two previously granted `/meet/invitations/:invitationId` routes. This mapping does not change VENU-IN01: **10 extension IA and 48 reference comparisons remain NOT_RUN**; only the scoped component-level substituted-fixture captures from rows 25–27 exist. Counts stay 63/111 active DONE, design 10/12, VENU 1/8, QA08 `DEFERRED_BY_USER`.
+<!-- END ROW46_W04_20261106 -->
+
 <!-- BEGIN MAIN_AR02_AR04_20261105T150424Z -->
 ## CURRENT — 2026-11-06T00:04:24.864450+09:00 responsible-owner original-criteria reconciliation
 
