@@ -1,0 +1,87 @@
+{
+  "result": "PASS",
+  "steps": {
+    "provisioning": {
+      "event": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+      "users": {
+        "alice": "f14fbb9a-8ce9-4d9c-a736-c7adb24a65c5",
+        "bob": "e12dd92e-e511-4e96-94ac-c570aef34c67"
+      },
+      "mural_seed_sha256": "3f1aa318f0e4b7d8fa7f079b1101f7386619291a8dbb3bb04ef70820952f34ce"
+    },
+    "giveaways": {
+      "media": "da51b206-9adb-4e25-b05d-d95f06c2a0f5",
+      "empty": "66ffd62e-d095-4b67-bbb9-80997eda2f11",
+      "missing": "da5bb393-4d00-4426-b2a2-84d94bfa18a9",
+      "media_id": "102b22aa-5887-4d5b-9565-897cd4b67ac9",
+      "note": "media row and giveaway aggregates are seeded because the canonical owner-fence upload/link producer is not composed in this harness"
+    },
+    "profile_preferences": {
+      "initial_revision": 1,
+      "patch": 200,
+      "patch_body": {
+        "age_status": "UNKNOWN",
+        "event_id": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+        "preferences": {
+          "low_power": true,
+          "reduced_motion": false,
+          "sound_enabled": false,
+          "theme": "REVENGE"
+        },
+        "profile": {
+          "avatar": {
+            "config": {
+              "contract_version": "1.1.0",
+              "kind": "avatar_config",
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "preset_id": "photo01_front_01",
+              "representation": "whole_character"
+            },
+            "revision": 1
+          },
+          "bio": "Development closure participant",
+          "display_name": "Closure participant 1",
+          "user_id": "f14fbb9a-8ce9-4d9c-a736-c7adb24a65c5"
+        },
+        "revision": 2,
+        "user_id": "f14fbb9a-8ce9-4d9c-a736-c7adb24a65c5"
+      },
+      "saved_revision": 2,
+      "saved_low_power": true,
+      "stale": 409,
+      "stale_reason": "VERSION_CONFLICT"
+    },
+    "mural": {
+      "snapshot": 200,
+      "revision": 1,
+      "state": "EDITABLE",
+      "snapshot_id": "01253de6-7f9b-43d2-a83f-3d66a0c73b59",
+      "delta": 200,
+      "from_revision": 1,
+      "to_revision": 1
+    },
+    "runtime_packet": "frontend/e2e/fe-closure/runtime.json",
+    "browser_done": true
+  },
+  "banner": {
+    "scope": "development stack real-producer FE24/FE33/FE34 closure",
+    "release": "development stack, NOT release qualification",
+    "qa08": "NOT_RUN",
+    "device": "NOT_RUN",
+    "production": "NOT_CLAIMED"
+  },
+  "stack": {
+    "gateway_url": "http://127.0.0.1:55045",
+    "origin": "http://127.0.0.1:5391",
+    "event": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+    "users": {
+      "alice": "f14fbb9a-8ce9-4d9c-a736-c7adb24a65c5",
+      "bob": "e12dd92e-e511-4e96-94ac-c570aef34c67"
+    },
+    "release_digest": "adcec15987c40769d0b6082df676182b87c658c5037c5e758ed89868548ea245"
+  },
+  "cleanup": {
+    "result": "PASS"
+  }
+}
