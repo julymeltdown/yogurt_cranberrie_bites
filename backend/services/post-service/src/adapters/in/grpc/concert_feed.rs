@@ -9,6 +9,7 @@ use tonic::{Request, Response, Status};
 pub mod proto {
     tonic::include_proto!("post.concert.v1");
 }
+pub mod commands;
 /// The positive implementation has no public raw constructor. Root composition
 /// receives both generated services only behind their exact method policies.
 pub mod qualified {
@@ -22,6 +23,7 @@ pub mod qualified {
         actor_delegation::{
             concert_read::ConcertPostReadVerifier, read_authority::VerifiedReadAuthority,
         },
+        concert_feed_command::FeedCommandVerifier,
         grpc_auth::{CallerRegistry, VerifiedCaller, Workload},
         grpc_method_policy::{self, GuardedService},
     };
@@ -46,11 +48,13 @@ pub mod qualified {
                 PostReadSettlementGrpcServer,
             >,
         >,
+        Option<super::commands::Service>,
     );
     pub fn services(
         runtime: QualifiedReadRuntime,
         registry: CallerRegistry,
         verifier: ConcertPostReadVerifier,
+        command_verifier: Option<FeedCommandVerifier>,
     ) -> anyhow::Result<Services> {
         let read =
             proto::post_concert_feed_read_service_server::PostConcertFeedReadServiceServer::new(
@@ -62,7 +66,9 @@ pub mod qualified {
             .max_encoding_message_size(1048576);
         let settlement =
             wire::producer_settlement_service_server::ProducerSettlementServiceServer::new(
-                PostReadSettlementGrpcServer { runtime },
+                PostReadSettlementGrpcServer {
+                    runtime: runtime.clone(),
+                },
             )
             .max_decoding_message_size(65536)
             .max_encoding_message_size(65536);
@@ -76,8 +82,18 @@ pub mod qualified {
             grpc_method_policy::guard_without_delegation(
                 &POST_READ_SETTLEMENT_POLICY,
                 settlement,
-                registry,
+                registry.clone(),
             )?,
+            match command_verifier {
+                Some(verifier) => Some(super::commands::service(
+                    crate::concert_feed::command_runtime::QualifiedCommandRuntime::from_read(
+                        &runtime,
+                    ),
+                    registry,
+                    verifier,
+                )?),
+                None => None,
+            },
         ))
     }
     fn verified<T>(r: &Request<T>) -> Result<(VerifiedCaller, VerifiedReadAuthority), Status> {
@@ -384,7 +400,7 @@ pub mod read_wire {
             .map(|v| v.with_timezone(&Utc))
             .map_err(|_| Status::invalid_argument("invalid read timestamp"))
     }
-    fn context(value: Option<proto::Context>) -> Result<Context, Status> {
+    pub(crate) fn context(value: Option<proto::Context>) -> Result<Context, Status> {
         let c = value.ok_or_else(|| Status::invalid_argument("read context required"))?;
         let context = Context {
             actor_id: id(&c.actor_id)?,
@@ -574,30 +590,35 @@ pub mod read_wire {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use platform::grpc_method_policy::proto_rpc_names;
+    use platform::grpc_method_policy::proto_service_rpc_names;
     use std::collections::BTreeSet;
     #[test]
     fn isolated_method_table_matches_exact_proto_and_only_concert() {
-        let declared: BTreeSet<_> = proto_rpc_names(include_str!(concat!(
+        let proto = include_str!(concat!(
             env!("CARGO_MANIFEST_DIR"),
             "/../../proto/post/v1/concert_feed.proto"
-        )))
-        .into_iter()
-        .collect();
-        let listed: BTreeSet<_> = POST_CONCERT_FEED_POLICY
-            .method_names()
-            .map(str::to_owned)
-            .collect();
-        assert_eq!(declared, listed);
-        for method in POST_CONCERT_FEED_POLICY.method_names() {
-            for caller in Workload::ALL {
-                assert_eq!(
-                    POST_CONCERT_FEED_POLICY.allows(
-                        &format!("/post.concert.v1.PostConcertFeedService/{method}"),
-                        caller
-                    ),
-                    caller == Workload::Concert
-                );
+        ));
+        for (service, policy) in [
+            ("PostConcertFeedService", &POST_CONCERT_FEED_POLICY),
+            ("PostConcertFeedReadService", &POST_CONCERT_FEED_READ_POLICY),
+            ("PostConcertFeedCommandService", &super::commands::POLICY),
+        ] {
+            let declared: BTreeSet<_> = proto_service_rpc_names(proto, service)
+                .into_iter()
+                .collect();
+            let listed: BTreeSet<_> = policy.method_names().map(str::to_owned).collect();
+            assert_eq!(declared, listed, "{service}");
+            for method in policy.method_names() {
+                for caller in Workload::ALL {
+                    assert_eq!(
+                        policy.allows(
+                            &format!("/post.concert.v1.{service}/{method}"),
+                            caller
+                        ),
+                        caller == Workload::Concert,
+                        "{service}/{method} {caller:?}"
+                    );
+                }
             }
         }
     }

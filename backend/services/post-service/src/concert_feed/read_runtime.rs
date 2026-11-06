@@ -19,10 +19,10 @@ use uuid::Uuid;
 
 #[derive(Clone)]
 pub struct QualifiedReadRuntime {
-    pool: PgPool,
-    clients: ReadClients,
-    tracking: TrackingStore,
-    admission_slots: Arc<tokio::sync::Semaphore>,
+    pub(crate) pool: PgPool,
+    pub(crate) clients: ReadClients,
+    pub(crate) tracking: TrackingStore,
+    pub(crate) admission_slots: Arc<tokio::sync::Semaphore>,
 }
 pub(crate) enum ReadResult {
     Post(proto::GetPostResponse),

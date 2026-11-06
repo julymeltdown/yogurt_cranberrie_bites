@@ -54,6 +54,7 @@ fn parse(
         Some(tls),
         Some(&g),
         Some(keys(&g, 77)),
+        None,
     )
 }
 #[test]
@@ -62,6 +63,7 @@ fn off_does_not_inspect_unrelated_secrets_or_construct_owners() -> anyhow::Resul
         |_| anyhow::bail!("unexpected off-mode lookup"),
         false,
         false,
+        None,
         None,
         None,
         None
@@ -81,7 +83,8 @@ fn read_requires_shared_owners_tls_and_dedicated_keys() -> anyhow::Result<()> {
         false,
         Some(&tls),
         Some(&g),
-        Some(keys(&g, 77))
+        Some(keys(&g, 77)),
+        None
     )
     .is_err());
     assert!(FeedRuntimeSettings::from_values(
@@ -90,7 +93,8 @@ fn read_requires_shared_owners_tls_and_dedicated_keys() -> anyhow::Result<()> {
         true,
         None,
         Some(&g),
-        Some(keys(&g, 77))
+        Some(keys(&g, 77)),
+        None
     )
     .is_err());
     assert!(FeedRuntimeSettings::from_values(
@@ -99,7 +103,8 @@ fn read_requires_shared_owners_tls_and_dedicated_keys() -> anyhow::Result<()> {
         true,
         Some(&tls),
         None,
-        Some(keys(&g, 77))
+        Some(keys(&g, 77)),
+        None
     )
     .is_err());
     assert!(FeedRuntimeSettings::from_values(
@@ -108,6 +113,7 @@ fn read_requires_shared_owners_tls_and_dedicated_keys() -> anyhow::Result<()> {
         true,
         Some(&tls),
         Some(&g),
+        None,
         None
     )
     .is_err());
@@ -179,7 +185,8 @@ fn secrets_and_workload_rotation_cannot_collapse_identities() -> anyhow::Result<
         true,
         Some(&tls),
         Some(&g),
-        Some(keys(&g, 76))
+        Some(keys(&g, 76)),
+        None
     )
     .is_err());
     Ok(())

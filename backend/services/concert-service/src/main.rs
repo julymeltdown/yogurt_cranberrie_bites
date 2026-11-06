@@ -341,7 +341,8 @@ async fn main() -> anyhow::Result<()> {
                     };
                     let owners = match feed_settings {
                         Some(settings) => {
-                            let (owners, callback) = settings.compose(&shared.owners, owners)?;
+                            let (owners, callback) =
+                                settings.compose(pool.clone(), &shared.owners, owners)?;
                             feed_callback = Some(callback);
                             owners
                         }
