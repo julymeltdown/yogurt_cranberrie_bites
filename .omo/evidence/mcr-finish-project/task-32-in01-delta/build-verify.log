@@ -1,0 +1,9 @@
+$ cargo +1.88.0 build --locked -p api-gateway -p auth-service -p profile-service -p friend-service -p post-service -p notification-service -p concert-service
+CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/exec-w5-in01-target CARGO_BUILD_JOBS=3 CARGO_INCREMENTAL=0
+verification rerun 2026-11-06T10:19:13Z
+    |             ^ help: remove this semicolon
+
+warning: `concert-service` (bin "concert-service") generated 2 warnings
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.52s
+exit=0
+original compile: 2026-11-06T10:06:35Z -> 2026-11-06T10:07:48Z, Finished dev profile in 1m 13s, exit 0
