@@ -75,7 +75,12 @@ async fn authorize(
     RawQuery(raw): RawQuery,
     Query(params): Query<Vec<(String, String)>>,
 ) -> Result<Response, GatewayError> {
-    require_transport(&state, &provider)?;
+    // An unknown provider is an input error, while a known provider whose
+    // transport is not explicitly enabled stays indistinguishable from a
+    // missing route. Production leaves every provider disabled, so both the
+    // composed router and this gate hide it.
+    let provider = parse_provider(&provider)?;
+    require_transport(&state, super::provider_name(provider))?;
     if raw.as_ref().is_some_and(|value| value.len() > 8 * 1024) || params.len() > 8 {
         return Err(GatewayError::bad_request("OAuth query exceeds its limit"));
     }
@@ -86,7 +91,6 @@ async fn authorize(
     let target = super::oauth_return_target(if params.len() == 1 {
         Some(params[0].1.as_str())
     } else { None });
-    let provider = parse_provider(&provider)?;
     let authorization = state
         .auth_service
         .authorize(provider)

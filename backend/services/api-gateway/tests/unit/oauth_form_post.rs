@@ -15,7 +15,7 @@ fn form_request(path: &str, body: impl Into<Body>, cookie: Option<&str>) -> Requ
             "application/x-www-form-urlencoded"
         },
     );
-    if path.starts_with("/api/auth/") {
+    if path.starts_with("/api/auth/") || path.starts_with("/auth/oauth/") {
         request = request
             .header(header::ORIGIN, "http://localhost:3000")
             .header("x-mcr-intent", "browser");
@@ -157,7 +157,7 @@ async fn composed_browser_auth_quota_saturation_and_deadline_errors_keep_securit
 
 #[tokio::test]
 async fn staging_does_not_exchange_code_or_modify_cookies_and_escapes_attributes() {
-    let harness = RouteHarness::new().await;
+    let harness = RouteHarness::with_oauth_transport().await;
     let response = oauth_routes::router(harness.state.clone()).oneshot(form_request(
         "/auth/oauth/apple/callback",
         "code=%22%3E%3Cscript%3Eattack%3C%2Fscript%3E%26%27&state=apple-state&id_token=IGNORED_SECRET&user=IGNORED_PROFILE",
@@ -194,7 +194,7 @@ async fn staging_does_not_exchange_code_or_modify_cookies_and_escapes_attributes
 
 #[tokio::test]
 async fn invalid_forms_and_other_providers_never_reach_auth() {
-    let harness = RouteHarness::new().await;
+    let harness = RouteHarness::with_oauth_transport().await;
     let app = oauth_routes::router(harness.state.clone());
     let oversized = format!("code={}&state=apple-state", "x".repeat(32768));
     for (provider, body) in [
@@ -207,10 +207,6 @@ async fn invalid_forms_and_other_providers_never_reach_auth() {
         ("apple", "code=x&state=%00"),
         ("apple", "code=x&state="),
         ("apple", "code=x&state=y&extra=bad"),
-        (
-            "apple",
-            "error=access_denied&state=y&error_description=PRIVATE_PROVIDER_TEXT",
-        ),
         ("apple", "code=x&state=y&error=bad"),
         ("apple", oversized.as_str()),
     ] {
@@ -230,6 +226,28 @@ async fn invalid_forms_and_other_providers_never_reach_auth() {
         assert_eq!(value["code"], "GATEWAY_400");
         assert!(!value.to_string().contains("PRIVATE_PROVIDER_TEXT"));
     }
+    // A provider denial renders the protected handoff page without echoing
+    // provider text or exchanging a code.
+    let denial = app
+        .clone()
+        .oneshot(form_request(
+            "/auth/oauth/apple/callback",
+            "error=access_denied&state=y&error_description=PRIVATE_PROVIDER_TEXT",
+            None,
+        ))
+        .await
+        .unwrap();
+    assert_eq!(denial.status(), StatusCode::OK);
+    assert_eq!(denial.headers()[header::CACHE_CONTROL], "no-store");
+    assert!(!denial.headers().contains_key(header::SET_COOKIE));
+    assert!(!String::from_utf8_lossy(&to_bytes(denial.into_body(), 65536).await.unwrap())
+        .contains("PRIVATE_PROVIDER_TEXT"));
+    assert!(harness
+        .clients
+        .oauth_callback_calls
+        .lock()
+        .unwrap()
+        .is_empty());
     let request = Request::builder()
         .method("POST")
         .uri("/auth/oauth/apple/callback")
@@ -250,7 +268,7 @@ async fn invalid_forms_and_other_providers_never_reach_auth() {
 
 #[tokio::test]
 async fn completion_requires_exact_unambiguous_apple_cookie_before_auth() {
-    let harness = RouteHarness::new().await;
+    let harness = RouteHarness::with_oauth_transport().await;
     let app = oauth_routes::router(harness.state.clone());
     for cookie in [
         None,
@@ -276,15 +294,40 @@ async fn completion_requires_exact_unambiguous_apple_cookie_before_auth() {
         .lock()
         .unwrap()
         .is_empty());
+    // The completion step only accepts the HMAC-bound cookie issued by the
+    // authorize handoff, exactly as a browser receives it.
+    let authorize = app
+        .clone()
+        .oneshot(
+            Request::builder()
+                .method("GET")
+                .uri("/auth/oauth/apple/authorize")
+                .body(Body::empty())
+                .expect("authorize request"),
+        )
+        .await
+        .expect("authorize response");
+    assert_eq!(authorize.status(), StatusCode::FOUND);
+    let bound_cookie = authorize
+        .headers()
+        .get(header::SET_COOKIE)
+        .expect("bound state cookie")
+        .to_str()
+        .expect("cookie header")
+        .to_owned();
     let response = app
         .oneshot(form_request(
             "/auth/oauth/apple/callback/complete",
             "code=provider-code&state=apple-state",
-            Some("oauth_state_apple=apple-state"),
+            Some(&bound_cookie),
         ))
         .await
         .unwrap();
-    assert_eq!(response.status(), StatusCode::OK);
+    assert_eq!(response.status(), StatusCode::SEE_OTHER);
+    assert_eq!(
+        response.headers()[header::LOCATION],
+        "/auth/callback?status=success&returnTo=%2Fworld"
+    );
     let cookies: Vec<_> = response
         .headers()
         .get_all(header::SET_COOKIE)
@@ -297,7 +340,6 @@ async fn completion_requires_exact_unambiguous_apple_cookie_before_auth() {
     assert!(cookies
         .iter()
         .any(|cookie| cookie.starts_with("oauth_state_apple=;") && cookie.contains("Max-Age=0")));
-    assert_eq!(response_json(response).await["refreshToken"], "");
     assert_eq!(
         harness.clients.oauth_callback_calls.lock().unwrap().len(),
         1
