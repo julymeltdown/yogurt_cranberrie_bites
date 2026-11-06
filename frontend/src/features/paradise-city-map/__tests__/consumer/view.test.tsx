@@ -2,7 +2,7 @@
 import { afterEach, beforeAll, expect, it } from 'vitest'
 import { act, cleanup, fireEvent, render, screen, within } from '@testing-library/react'
 import { ParadiseCityMap } from '../../ui/ParadiseCityMap'
-import { harness, person } from './harness'
+import { harness, mainGate, person } from './harness'
 
 const owners: ReturnType<typeof harness>[] = []
 beforeAll(() => {
@@ -83,4 +83,50 @@ it('clusters real checked-in friends and lists exactly those actors', () => {
 it('keeps a readable unavailable state and non-writing siteplan controls without backend capability', () => {
   const h = setup(); act(() => h.publish(null)); expect(screen.getByText(/Live location, check-in, meetings and notes are unavailable/)).toBeTruthy()
   fireEvent.click(screen.getByRole('button', { name: 'Select Main Gate' })); expect(screen.getByRole('button', { name: 'CHECK IN' })).toHaveProperty('disabled', true); expect(h.calls).toHaveLength(0)
+})
+it('renders note markers and cluster rows from server counts even when no page rows are loaded', () => {
+  const h = setup(); act(() => h.publish({ ...h.snapshot, notes: [], noteClusters: [{ landmarkId: mainGate, count: 3 }], notesVisibleCount: null }))
+  fireEvent.click(screen.getByRole('tab', { name: 'NOTES' }))
+  expect(screen.getAllByRole('button', { name: 'Main Gate, 3 notes' })).toHaveLength(2)
+})
+const clusters = () => within(screen.getByLabelText('Places with notes'))
+it('loads the selected place when its cluster marker is chosen', async () => {
+  const h = setup(); fireEvent.click(screen.getByRole('tab', { name: 'NOTES' }))
+  await act(async () => { fireEvent.click(clusters().getByRole('button', { name: 'Main Gate, 1 note' })) })
+  expect(h.loads.at(-1)).toEqual({ name: 'loadNotes', input: 'test-main-gate' })
+})
+it('limits composer audience and expiry to current server rights', () => {
+  const h = setup(); act(() => h.publish({ ...h.snapshot, rights: { ...h.snapshot.rights, noteAudiences: ['FRIENDS'], noteExpiries: ['ONE_HOUR'] } }))
+  fireEvent.click(screen.getByRole('tab', { name: 'NOTES' })); fireEvent.click(screen.getByRole('button', { name: '+ NEW NOTE' }))
+  expect(screen.getByRole('button', { name: 'FRIENDS' })).toHaveProperty('disabled', false)
+  expect(screen.getByRole('button', { name: 'EVERYONE' })).toHaveProperty('disabled', true)
+  expect(screen.getByRole('button', { name: 'END OF DAY' })).toHaveProperty('disabled', true)
+})
+it('offers withdrawal only on the current author note and sends its exact revision', async () => {
+  const h = setup(), note = h.snapshot.notes[0]!
+  act(() => h.publish({ ...h.snapshot, notes: [{ ...note, canWithdraw: true }] }))
+  fireEvent.click(screen.getByRole('tab', { name: 'NOTES' }))
+  await act(async () => { fireEvent.click(clusters().getByRole('button', { name: 'Main Gate, 1 note' })) })
+  await act(async () => { fireEvent.click(screen.getByRole('button', { name: 'WITHDRAW' })) })
+  expect(h.calls[0]).toMatchObject({ name: 'withdraw', input: { noteId: note.id, expectedRevision: 4 } })
+})
+it('renders reply author identity from the producer reply row', async () => {
+  const h = setup(), note = h.snapshot.notes[0]!
+  act(() => h.publish({ ...h.snapshot, notes: [{ ...note, replyCount: 1, replies: [{ id: 'reply-1',
+    author: { ...person('reply-friend', 'Reply friend') }, body: 'Reply body', createdAtMs: h.snapshot.serverNowMs! - 1000 }] }] }))
+  fireEvent.click(screen.getByRole('tab', { name: 'NOTES' }))
+  await act(async () => { fireEvent.click(clusters().getByRole('button', { name: 'Main Gate, 1 note' })) })
+  expect(screen.getByText('Reply friend')).toBeTruthy(); expect(screen.queryByText('Reply to inkparade')).toBeNull()
+})
+it('withdraws an expired note from the rendered list at the server clock boundary', () => {
+  const h = setup(), note = h.snapshot.notes[0]!
+  act(() => h.publish({ ...h.snapshot, serverNowMs: note.expiresAtMs }))
+  fireEvent.click(screen.getByRole('tab', { name: 'NOTES' }))
+  expect(screen.queryByText(note.body)).toBeNull()
+})
+it('shows the server visible count rather than the loaded page length', async () => {
+  const h = setup(); act(() => h.publish({ ...h.snapshot, notesVisibleCount: 7 }))
+  fireEvent.click(screen.getByRole('tab', { name: 'NOTES' }))
+  await act(async () => { fireEvent.click(clusters().getByRole('button', { name: 'Main Gate, 1 note' })) })
+  expect(screen.getByRole('heading', { name: 'MAIN GATE / 7 NOTES' })).toBeTruthy(); expect(screen.getByText('Showing the latest 1 of 7.')).toBeTruthy()
 })

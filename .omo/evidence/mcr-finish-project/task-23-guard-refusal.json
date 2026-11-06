@@ -1,0 +1,65 @@
+{
+  "cleanup": "PASS",
+  "cluster_root": "/private/tmp/mcr-pg-qsrxyuqb",
+  "failure": {
+    "diagnostic": "\n154 |         })?;;\n    |             ^ help: remove this semicolon\n\nwarning: `concert-service` (bin \"concert-service\") generated 2 warnings\nwarning: struct `Fixture` is never constructed\n   --> services/concert-service/tests/support/meeting/mod.rs:140:12\n    |\n140 | pub struct Fixture {\n    |            ^^^^^^^\n    |\n    = note: `#[warn(dead_code)]` on by default\n\nwarning: method `actor` is never used\n   --> services/concert-service/tests/support/meeting/mod.rs:148:12\n    |\n147 | impl Fixture {\n    | ------------ method in this implementation\n148 |     pub fn actor(&self, id: Uuid) -> MeetingActor {\n    |            ^^^^^\n\nwarning: function `setup` is never used\n   --> services/concert-service/tests/support/meeting/mod.rs:155:14\n    |\n155 | pub async fn setup(pool: &PgPool) -> anyhow::Result<Fixture> {\n    |              ^^^^^\n\nwarning: `concert-service` (test \"venue_meeting\") generated 3 warnings\n    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.18s\n     Running tests/venue_authz_matrix.rs (/Users/lhs/Desktop/mcr-build/exec-w3-authz/debug/deps/venue_authz_matrix-0e3c6c2551861ee7)\nerror: test failed, to rerun pass `-p concert-service --test venue_authz_matrix`\n",
+    "exit_code": 101,
+    "phase": "cargo-venue-tests"
+  },
+  "finished_at_utc": "2026-11-06T06:58:37.657168+00:00",
+  "full_migration_count": 60,
+  "initdb_version": "initdb (PostgreSQL) 16.14 (Homebrew)",
+  "migrations": {
+    "full": {
+      "database": "mcr_concert_venue_full",
+      "label": "full",
+      "ledger_count": 60,
+      "migrate": "PASS",
+      "verify": "PASS"
+    },
+    "location": {
+      "database": "mcr_concert_venue_location",
+      "label": "location",
+      "ledger_versions": [
+        1,
+        73,
+        74,
+        75
+      ],
+      "migrate": "PASS",
+      "verify": "PASS"
+    },
+    "meeting": {
+      "database": "mcr_meeting",
+      "label": "meeting",
+      "ledger_versions": [
+        1,
+        73,
+        74,
+        75
+      ],
+      "migrate": "PASS",
+      "rename": "mcr_concert_meeting->mcr_meeting",
+      "verify": "PASS"
+    }
+  },
+  "normal_service_startup": "NOT_RUN",
+  "postgres_tools": {
+    "createdb": "/opt/homebrew/Cellar/postgresql@16/16.14/bin/createdb",
+    "initdb": "/opt/homebrew/Cellar/postgresql@16/16.14/bin/initdb",
+    "pg_ctl": "/opt/homebrew/Cellar/postgresql@16/16.14/bin/pg_ctl",
+    "psql": "/opt/homebrew/Cellar/postgresql@16/16.14/bin/psql"
+  },
+  "postgres_version": "16.14 (Homebrew)",
+  "result": "FAIL",
+  "scope": "VENU-BE L/M/N venue ledger, restart and route families on private PostgreSQL 16",
+  "service_binary_sha256": "13955a02a0ba42cd3de908fb8fa773dc4ca71005a70982f8c26d7fedaf482ce8",
+  "source_revision": "80de26a0c475bb74dbac62d59aa5bc439b28aa75",
+  "started_at_utc": "2026-11-06T06:58:34.407502+00:00",
+  "venue_migrations": [
+    1,
+    73,
+    74,
+    75
+  ]
+}

@@ -16,21 +16,21 @@ use uuid::Uuid;
 pub mod proto {
     tonic::include_proto!("concert.product.v1");
 }
-pub mod delivery;
+mod age_admission;
 pub mod child_recovery;
 pub mod child_settlement;
+pub mod delivery;
+mod feature_admission;
 mod owner_media;
 mod query;
-mod feature_admission;
-mod age_admission;
 pub mod report_admission;
 pub mod venue_meeting_admission;
 mod operations_admission;
 pub use age_admission::AgeOperation;
 pub use operations_admission::OperationsOperation;
-pub use report_admission::ReportOperation;
 pub use feature_admission::IntroOperation;
 pub use query::CommandStatusQuery;
+pub use report_admission::ReportOperation;
 pub mod root_read;
 pub mod scope_ledger;
 mod scope_lifecycle;
@@ -72,6 +72,7 @@ pub enum Operation {
     Notification(crate::notification_live::NotificationOperation),
     Age(AgeOperation),
     Report(ReportOperation),
+    Closure,
     Meeting(venue_meeting_admission::MeetingOperation),
     Operations(OperationsOperation),
 }
@@ -102,6 +103,7 @@ impl Operation {
             Self::Notification(operation) => operation.id(),
             Self::Age(operation) => operation.id(),
             Self::Report(operation) => operation.id(),
+            Self::Closure => "closeConcertEvent",
             Self::Meeting(operation) => operation.id(),
             Self::Operations(operation) => operation.id(),
         }
@@ -126,7 +128,9 @@ pub fn operation(event: Uuid, method: &str, target: &str) -> Result<Operation, S
         .strip_prefix(&prefix)
         .ok_or_else(|| Status::permission_denied("Product event mismatch"))?;
     if let Ok(wall) = crate::mural_tools_b::protocol::WallOperation::parse(event, method, target) {
-        if wall != crate::mural_tools_b::protocol::WallOperation::Status { return Ok(Operation::Wall(wall)); }
+        if wall != crate::mural_tools_b::protocol::WallOperation::Status {
+            return Ok(Operation::Wall(wall));
+        }
     }
     // The Social parser owns exactly thirteen frozen operations. No unknown
     // route, platform or method falls through to a generic producer.
@@ -160,6 +164,7 @@ pub fn operation(event: Uuid, method: &str, target: &str) -> Result<Operation, S
         ("GET", "commands") => Operation::CommandStatus,
         ("GET", "service-policy") => Operation::ServicePolicy,
         ("POST", "media/uploads") => Operation::InitializeUpload,
+        ("POST", "admin/closure") => Operation::Closure,
         _ => {
             let pieces: Vec<_> = suffix.split('/').collect();
             if !(1..=4).contains(&pieces.len()) {
@@ -263,8 +268,11 @@ impl VerifiedProduct {
     }
     /// Only populated from the exact workload/actor-authenticated Gateway frame.
     /// Absence is unavailable, never a shared/random/default network bucket.
-    pub fn trusted_pickup_context(&self) -> Option<crate::community::giveaway::TrustedPickupContext> {
-        self.trusted_network_bucket.map(crate::community::giveaway::TrustedPickupContext::from_trusted_keyed_ip_bucket)
+    pub fn trusted_pickup_context(
+        &self,
+    ) -> Option<crate::community::giveaway::TrustedPickupContext> {
+        self.trusted_network_bucket
+            .map(crate::community::giveaway::TrustedPickupContext::from_trusted_keyed_ip_bucket)
     }
     pub fn actor(&self) -> Uuid {
         self.actor
@@ -360,7 +368,9 @@ fn authorize(request: &Request<proto::ProductRequest>) -> Result<VerifiedProduct
     if m.http_body.len() > MAX_BODY {
         return Err(Status::resource_exhausted("Product body too large"));
     }
-    if let Operation::Wall(wall) = operation { query::wall_request(m, wall)?; }
+    if let Operation::Wall(wall) = operation {
+        query::wall_request(m, wall)?;
+    }
     if let Operation::Social(social) = operation {
         query::social_request(m, social)?;
     }
@@ -379,6 +389,11 @@ fn authorize(request: &Request<proto::ProductRequest>) -> Result<VerifiedProduct
     if matches!(operation, Operation::Intro(_) | Operation::Notification(_)) {
         feature_admission::request(m, operation)?;
     }
+    // The frozen START/RESUME union is parsed again by the lifecycle boundary;
+    // this only bounds the frame before any owner work is acquired.
+    if operation == Operation::Closure && m.http_body.len() > 8192 {
+        return Err(Status::invalid_argument("Invalid product content type"));
+    }
     let mutation = matches!(
         operation,
         Operation::InitializeUpload
@@ -391,6 +406,7 @@ fn authorize(request: &Request<proto::ProductRequest>) -> Result<VerifiedProduct
             | Operation::RemovePartyMember(_, _)
             | Operation::CancelParty(_)
             | Operation::Report(_)
+            | Operation::Closure
             | Operation::Operations(_)
     );
     if matches!(
@@ -446,7 +462,9 @@ fn authorize(request: &Request<proto::ProductRequest>) -> Result<VerifiedProduct
     let value = VerifiedProduct {
         trusted_network_bucket: match m.trusted_network_bucket.as_slice() {
             [] => None,
-            bytes if bytes.len() == 32 && bytes.iter().any(|b| *b != 0) => Some(bytes.try_into().expect("checked bucket size")),
+            bytes if bytes.len() == 32 && bytes.iter().any(|b| *b != 0) => {
+                Some(bytes.try_into().expect("checked bucket size"))
+            }
             _ => return Err(Status::invalid_argument("Invalid trusted network bucket")),
         },
         actor,
@@ -554,4 +572,6 @@ impl proto::product_service_server::ProductService for ProductRpcService {
 }
 
 /// Wall recovery uses the same closed canonical status parser as admission.
-pub(crate) fn wall_command_status_query(target: &str) -> Result<CommandStatusQuery, Status> { query::command_status(target) }
+pub(crate) fn wall_command_status_query(target: &str) -> Result<CommandStatusQuery, Status> {
+    query::command_status(target)
+}

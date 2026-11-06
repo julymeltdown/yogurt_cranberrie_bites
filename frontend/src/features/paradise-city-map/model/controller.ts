@@ -37,7 +37,9 @@ export function createVenueMapController({ venue, authority, capabilities, meeti
   let busy = false, notice = '', uncertainKey: string | null = null, operation = 0, uploadGeneration = 0, sharingFailure: SharingFailure = null
   let localPause = false, pauseKey: string | null = null, pauseCommand: AbortController | null = null
   let command: AbortController | null = null, uploading: AbortController | null = null
-  let noteRead: AbortController | null = null
+  let noteRead: AbortController | null = null, summaryRead: AbortController | null = null
+  // Place whose last refresh carried live note rows, and the re-read in flight.
+  let notesLive: LandmarkId | null = null, notesReloading = false
   let wake: ReturnType<typeof setTimeout> | undefined
   let state: MapState
   let focusRequest: MapState['focusRequest'] = null, focusSerial = 0
@@ -79,7 +81,7 @@ export function createVenueMapController({ venue, authority, capabilities, meeti
     if (!usable) {
       selection = current() && selection?.kind === 'landmark' && landmark(selection.id) ? selection : null
       if (!current()) focusRequest = null
-      draft = null; command?.abort(); pauseCommand?.abort(); uploading?.abort(); noteRead?.abort(); uploadGeneration++; phone.stop(); busy = false; uncertainKey = null; pauseKey = null
+      draft = null; command?.abort(); pauseCommand?.abort(); uploading?.abort(); noteRead?.abort(); summaryRead?.abort(); uploadGeneration++; phone.stop(); busy = false; uncertainKey = null; pauseKey = null
     } else {
       const friends = snapshot!
       const selectedFriend = selection?.kind === 'friend' ? selection.id : null
@@ -96,6 +98,15 @@ export function createVenueMapController({ venue, authority, capabilities, meeti
     try { if (snapshot) borrowed = meeting.read() } catch { /* Missing borrowed leaf is unavailable. */ }
     state = { tab, selection, draft, snapshot, people, notes, availability, sharingFailure, busy, uncertain: uncertainKey !== null || pauseKey !== null, notice, disposed: !active,
       meeting: borrowed, phone: phone.read(), focusRequest }
+    // A place page's read lease ends at its earliest row expiry. Re-read the place instead of
+    // presenting an ended disclosure as "no notes"; a failed re-read keeps its own notice.
+    const pageLive = snapshot !== null && (snapshot.notesVisibleCount !== null || snapshot.noteClusters.length > 0 || snapshot.notes.length > 0)
+    if (selection?.kind === 'notes' && notesLive === selection.id && !pageLive) {
+      if (!notesReloading && !busy && !uncertainKey && !pauseKey && current() && !state.meeting?.locked && capabilities.loadNotes) {
+        notesReloading = true
+        void loadNotes(selection.id).finally(() => { notesReloading = false })
+      }
+    } else notesLive = pageLive && selection?.kind === 'notes' ? selection.id : null
     if (snapshot && now !== null) {
       const deadlines = [snapshot.accessUntilMs, snapshot.self?.freshUntilMs, ...snapshot.friends.map(p => p.freshUntilMs), ...snapshot.notes.map(n => n.expiresAtMs),
         ...(snapshot.locationRequests?.incoming ?? []).map(r => r.expiresAtMs), ...(snapshot.locationRequests?.outgoing ?? []).map(r => r.expiresAtMs), availability.staleAtMs]
@@ -109,18 +120,43 @@ export function createVenueMapController({ venue, authority, capabilities, meeti
   async function run(work: (ctx: CommandContext) => Promise<CommandResult>, success: string, onApplied?: () => void): Promise<CommandResult | null> {
     if (busy || uncertainKey || pauseKey || !readSnapshot()) { if (!readSnapshot()) { notice = 'This action is unavailable until current access is verified.'; refresh() }; return null }
     const version = ++operation, key = crypto.randomUUID(), controller = new AbortController(); command = controller; busy = true; notice = ''; refresh()
-    let outcome: CommandResult | null = null
+    let result: CommandResult | null = null
     try {
-      const result = await work(context(key, controller.signal))
+      result = await work(context(key, controller.signal))
       if (!current() || controller.signal.aborted || version !== operation || !readSnapshot()) return null
-      outcome = result
       if (result.state === 'unknown') { uncertainKey = key; notice = 'The result is unknown. Check its status before another action.' }
       else if (result.state === 'rejected') notice = 'The current server permission did not allow this action.'
       else { notice = success; onApplied?.() }
+      return result
     } catch {
       if (current() && !controller.signal.aborted && version === operation) { uncertainKey = key; notice = 'The result is unknown. Check its status before another action.' }
+      return null
     } finally { if (version === operation) { busy = false; command = null; refresh() } }
-    return outcome
+  }
+  async function loadNotes(id: string, thread = false) {
+    const place = landmark(id), method = thread ? capabilities.loadNoteThread : capabilities.loadNotes
+    if (!current() || busy || uncertainKey || pauseKey || state.meeting?.locked || !method || (!thread && !place) || thread && !state.notes.some(n => n.id === id)) return false
+    noteRead?.abort(); const controller = new AbortController(); noteRead = controller
+    try {
+      const ctx = { scope: authority.scope, venue: venue.identity, signal: controller.signal }
+      const loaded = thread ? await capabilities.loadNoteThread!(id, ctx) : await capabilities.loadNotes!(place!.id, ctx)
+      if (current() && !controller.signal.aborted && noteRead === controller) { notice = loaded ? '' : 'Notes are unavailable for this place.'; refresh() }
+      return loaded
+    } catch { if (current() && !controller.signal.aborted) { notice = 'Notes could not be read. Try again.'; refresh() } return false }
+    finally { if (noteRead === controller) noteRead = null }
+  }
+  async function loadSummary() {
+    const method = capabilities.loadNoteSummary
+    if (!current() || busy || uncertainKey || pauseKey || state.meeting?.locked || !method) return false
+    summaryRead?.abort(); const controller = new AbortController(); summaryRead = controller
+    try {
+      const loaded = await method({ scope: authority.scope, venue: venue.identity, signal: controller.signal })
+      if (current() && !controller.signal.aborted && summaryRead === controller) {
+        notice = loaded ? '' : 'Note counts are unavailable for this place.'; refresh()
+      }
+      return loaded
+    } catch { if (current() && !controller.signal.aborted) { notice = 'Note counts are unavailable for this place.'; refresh() } return false }
+    finally { if (summaryRead === controller) summaryRead = null }
   }
   function stopPhone() { uploadGeneration++; uploading?.abort(); uploading = null; phone.stop() }
   async function pause(reason: 'user' | 'background' | 'withdrawal' = 'user') {
@@ -172,7 +208,7 @@ export function createVenueMapController({ venue, authority, capabilities, meeti
   }
   function dispose() {
     if (!active) return
-    active = false; clearTimeout(wake); operation++; command?.abort(); pauseCommand?.abort(); noteRead?.abort(); stopPhone(); selection = null; draft = null; busy = false; uncertainKey = null; pauseKey = null
+    active = false; clearTimeout(wake); operation++; command?.abort(); pauseCommand?.abort(); noteRead?.abort(); summaryRead?.abort(); stopPhone(); selection = null; draft = null; busy = false; uncertainKey = null; pauseKey = null
     for (const stop of stops.splice(0)) stop()
     authority.signal.removeEventListener('abort', invalidate); refresh(); listeners.clear()
   }
@@ -183,43 +219,43 @@ export function createVenueMapController({ venue, authority, capabilities, meeti
   return {
     venue, read: () => state, subscribe(listener: () => void) { listeners.add(listener); return () => { listeners.delete(listener) } }, dispose,
     canLoadNotes: !!capabilities.loadNotes, canLoadNoteThread: !!capabilities.loadNoteThread,
-    async loadNotes(id: string, thread = false) {
-      const place = landmark(id), method = thread ? capabilities.loadNoteThread : capabilities.loadNotes
-      if (!current() || busy || uncertainKey || pauseKey || state.meeting?.locked || !method || (!thread && !place) || thread && !state.notes.some(n => n.id === id)) return
-      noteRead?.abort(); const controller = new AbortController(); noteRead = controller
-      try {
-        const ctx = { scope: authority.scope, venue: venue.identity, signal: controller.signal }
-        const loaded = thread ? await capabilities.loadNoteThread!(id, ctx) : await capabilities.loadNotes!(place!.id, ctx)
-        if (current() && !controller.signal.aborted && noteRead === controller) { notice = loaded ? '' : 'Notes are unavailable for this place.'; refresh() }
-      } catch { if (current() && !controller.signal.aborted) { notice = 'Notes could not be read. Try again.'; refresh() } }
-      finally { if (noteRead === controller) noteRead = null }
-    },
+    canLoadNoteSummary: !!capabilities.loadNoteSummary, loadSummary, loadNotes,
     focus(intent: VenueMapFocusIntent) {
       const place = landmark(intent.landmarkId)
       if (!current() || !place || !sameScope(intent.scope, authority.scope) || !sameVenue(intent.venue, venue.identity) || state.meeting?.locked || busy || uncertainKey || pauseKey) return false
       tab = 'MAP'; selection = { kind: 'landmark', id: place.id }; draft = null; focusRequest = { id: place.id, serial: ++focusSerial }; refresh(); return true
     },
-    setTab(value: Tab) { if (state.meeting?.locked || busy || uncertainKey || pauseKey) return; tab = value; selection = null; draft = null; focusRequest = null; refresh() },
-    select(value: Selection | null) { if (busy || uncertainKey || pauseKey || state.meeting?.locked) return; selection = value; draft = null; focusRequest = null; refresh() },
+    setTab(value: Tab) { if (state.meeting?.locked || busy || uncertainKey || pauseKey) return; tab = value; selection = null; draft = null; focusRequest = null; refresh(); if (value === 'NOTES') void loadSummary() },
+    select(value: Selection | null) { if (busy || uncertainKey || pauseKey || state.meeting?.locked) return; selection = value; draft = null; focusRequest = null; refresh(); if (value?.kind === 'notes') void loadNotes(value.id) },
     edit(body: string) { if (draft && !busy && !uncertainKey) { draft = { ...draft, body: body.slice(0, 1000) }; refresh() } },
     setAudience(audience: NoteAudience) { if (draft && state.snapshot?.rights.noteAudiences.includes(audience) && !busy && !uncertainKey) { draft = { ...draft, audience }; refresh() } },
     setExpiry(expiry: NoteExpiry) { if (draft && state.snapshot?.rights.noteExpiries.includes(expiry) && !busy && !uncertainKey) { draft = { ...draft, expiry }; refresh() } },
     compose(id: string, replyTo: string | null = null) {
       const snap = readSnapshot(), note = state.notes.find(n => n.id === replyTo), place = landmark(id)
       if (!snap || !place || busy || uncertainKey || pauseKey || (replyTo ? !note?.canReply || note.landmarkId !== place.id : !snap.rights.postNote.includes(place.id))) return
-      tab = 'NOTES'; selection = null; draft = { landmarkId: place.id, replyTo, body: '', audience: snap.rights.noteAudiences[0] ?? 'FRIENDS', expiry: snap.rights.noteExpiries[0] ?? 'ONE_HOUR' }; refresh()
+      tab = 'NOTES'; selection = { kind: 'notes', id: place.id };
+      draft = { landmarkId: place.id, replyTo, body: '', audience: snap.rights.noteAudiences[0] ?? 'FRIENDS', expiry: snap.rights.noteExpiries[0] ?? 'ONE_HOUR' }; refresh()
     },
     changeDraftPlace(id: string) { const place = landmark(id); if (place && draft && !draft.replyTo && !busy && !uncertainKey && !pauseKey && state.snapshot?.rights.postNote.includes(place.id)) { draft = { ...draft, landmarkId: place.id }; refresh() } },
     cancelDraft() { if (!busy && !uncertainKey) { draft = null; refresh() } },
     async submit() {
       const captured = draft, snap = readSnapshot()
       if (!captured || !captured.body.trim() || !snap) return
+      let result: CommandResult | null = null
       if (captured.replyTo) {
         if (!state.notes.some(n => n.id === captured.replyTo && n.canReply)) return
-        await run(ctx => capabilities.reply({ noteId: captured.replyTo!, body: captured.body.trim() }, ctx), 'Reply posted.', () => { draft = null })
+        result = await run(ctx => capabilities.reply({ noteId: captured.replyTo!, body: captured.body.trim() }, ctx), 'Reply posted.', () => { draft = null })
+        if (result?.state === 'applied' && current()) { await loadNotes(captured.replyTo, true); await loadSummary() }
       } else if (snap.rights.postNote.includes(captured.landmarkId) && snap.rights.noteAudiences.includes(captured.audience) && snap.rights.noteExpiries.includes(captured.expiry)) {
-        await run(ctx => capabilities.postNote({ landmarkId: captured.landmarkId, body: captured.body.trim(), audience: captured.audience, expiry: captured.expiry }, ctx), 'Note posted.', () => { draft = null })
+        result = await run(ctx => capabilities.postNote({ landmarkId: captured.landmarkId, body: captured.body.trim(), audience: captured.audience, expiry: captured.expiry }, ctx), 'Note posted.', () => { draft = null })
+        if (result?.state === 'applied' && current()) { await loadNotes(captured.landmarkId); await loadSummary() }
       }
+    },
+    async withdraw(id: string) {
+      const note = state.notes.find(n => n.id === id)
+      if (!note || !note.canWithdraw || busy || uncertainKey || pauseKey || state.meeting?.locked) return
+      const result = await run(ctx => capabilities.withdraw({ noteId: note.id, expectedRevision: note.revision }, ctx), 'Note withdrawn.')
+      if (result?.state === 'applied' && current()) { await loadNotes(note.landmarkId); await loadSummary() }
     },
     pause,
     async startPhone(consented: boolean) {

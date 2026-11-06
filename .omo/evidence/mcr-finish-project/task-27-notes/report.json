@@ -1,0 +1,50 @@
+{
+  "result": "PASS",
+  "qualification": "SUBSTITUTED_FIXTURE",
+  "note": "Actual VenueShellFeatures production sources, siteplan loader and Map/Notes panel. Deterministic session, community clock, Location, landmark and Note producer rows; no live backend, device or physical venue.",
+  "cases": [
+    {
+      "width": 360,
+      "height": 800,
+      "clusters": true,
+      "selected": true,
+      "composer": true,
+      "replyThread": true,
+      "meetHere": true,
+      "created": true,
+      "expired": true,
+      "denied": true,
+      "unreviewedDenied": true,
+      "withdrawn": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "clusters": true,
+      "selected": true,
+      "composer": true,
+      "replyThread": true,
+      "meetHere": true,
+      "created": true,
+      "expired": true,
+      "denied": true,
+      "unreviewedDenied": true,
+      "withdrawn": true
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "clusters": true,
+      "selected": true,
+      "composer": true,
+      "replyThread": true,
+      "meetHere": true,
+      "created": true,
+      "expired": true,
+      "denied": true,
+      "unreviewedDenied": true,
+      "withdrawn": true
+    }
+  ],
+  "errors": []
+}

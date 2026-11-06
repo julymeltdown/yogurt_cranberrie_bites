@@ -16,7 +16,7 @@ export function ParadiseCityMap({ controller, renderPortrait }: { readonly contr
   const placeId = state.selection && 'id' in state.selection && state.selection.kind !== 'friend' ? state.selection.id : null
   const selectedPerson = personId ? state.people.find(p => p.userId === personId) : null
   const selectedPlace = placeId ? venue.landmarks.find(p => p.id === placeId) : null
-  const selectedNotes = state.notes.filter(n => selectedPlace ? n.landmarkId === selectedPlace.id : true)
+  const selectedNotes = selectedPlace ? state.notes.filter(n => n.landmarkId === selectedPlace.id) : []
   const hasSheet = Boolean(state.selection || state.draft), locked = state.busy || state.uncertain || state.meeting?.locked
   const now = state.snapshot?.serverNowMs ?? null
   const availability = state.availability, friendsUnavailable = availability.state === 'unavailable', friendsStale = availability.state === 'stale'
@@ -45,15 +45,26 @@ export function ParadiseCityMap({ controller, renderPortrait }: { readonly contr
     return <div className="pc-actions"><button type="button" disabled={locked || !canMessage} onClick={() => { void controller.openMeeting('MESSAGE', person, place, origin) }}>MESSAGE</button>
       <button type="button" className="pc-primary" disabled={locked || !canMeet || !place?.meetingContext} onClick={() => { if (place) void controller.openMeeting('INVITE', person, place, origin) }}>MEET HERE</button></div>
   }
+  function ageLabel(at: number) {
+    if (now === null || !Number.isFinite(at) || at < 0 || at > now) return null
+    const minutes = Math.floor((now - at) / 60000)
+    return minutes < 1 ? '<1m ago' : minutes >= 60 ? `${Math.floor(minutes / 60)}h ago` : `${minutes}m ago`
+  }
+  function expiryLabel(at: number) {
+    if (now === null || !Number.isFinite(at)) return 'Expiry unavailable'
+    const minutes = Math.max(0, Math.ceil((at - now) / 60000))
+    return minutes >= 60 ? `expires in ${Math.ceil(minutes / 60)}h` : `expires in ${minutes}m`
+  }
   function noteCard(note: PlaceNote) {
-    const place = venue.landmarks.find(p => p.id === note.landmarkId), remaining = now === null ? null : Math.max(0, Math.ceil((note.expiresAtMs - now) / 60000))
-    const age = now !== null && Number.isFinite(note.createdAtMs) && note.createdAtMs >= 0 && note.createdAtMs <= now ? Math.floor((now - note.createdAtMs) / 60000) : null
+    const place = venue.landmarks.find(p => p.id === note.landmarkId)
+    const canLoadThread = controller.canLoadNoteThread && note.replyCount > note.replies.length
     return <article className="pc-note-card" key={note.id}>
-      <div className="pc-note-heading"><div className="pc-portrait">{renderPortrait(note.author, 64)}</div><div><div className="pc-note-author"><strong className="pc-name">{note.author.displayName}</strong>{age !== null && <small>{age < 1 ? '<1m ago' : age >= 60 ? `${Math.floor(age / 60)}h ago` : `${age}m ago`}</small>}</div><p>{note.body}</p><small>{note.audience === 'FRIENDS' ? 'Friends' : 'Everyone'} · {remaining === null ? 'Expiry unavailable' : remaining >= 60 ? `expires in ${Math.ceil(remaining / 60)}h` : `expires in ${remaining}m`}</small></div></div>
+      <div className="pc-note-heading"><div className="pc-portrait">{renderPortrait(note.author, 64)}</div><div><div className="pc-note-author"><strong className="pc-name">{note.author.displayName}</strong>{ageLabel(note.createdAtMs) && <small>{ageLabel(note.createdAtMs)}</small>}</div><p>{note.body}</p><small>{note.audience === 'FRIENDS' ? 'Friends' : 'Everyone'} · {expiryLabel(note.expiresAtMs)} · {note.replyCount} {note.replyCount === 1 ? 'reply' : 'replies'}</small></div></div>
       <div className="pc-actions"><button type="button" disabled={locked || !note.canReply} onClick={() => controller.compose(note.landmarkId, note.id)}>REPLY</button>
-        <button type="button" className="pc-primary" disabled={locked || !note.canMeet || !place?.meetingContext} onClick={() => { if (place) void controller.openMeeting('INVITE', note.author, place, 'map-note') }}>MEET HERE</button></div>
-      {note.replies.map(reply => <div className="pc-note-reply" key={reply.id}><div className="pc-portrait">{renderPortrait(reply.author, 64)}</div><div><strong>Reply to {note.author.displayName}</strong><p>{reply.body}</p></div></div>)}
-      {controller.canLoadNoteThread && <button type="button" disabled={locked} onClick={() => { void controller.loadNotes(note.id, true) }}>READ REPLIES</button>}
+        <button type="button" className="pc-primary" disabled={locked || !note.canMeet || !place?.meetingContext} onClick={() => { if (place) void controller.openMeeting('INVITE', note.author, place, 'map-note') }}>MEET HERE</button>
+        {note.canWithdraw && <button type="button" disabled={locked} onClick={() => { void controller.withdraw(note.id) }}>WITHDRAW</button>}</div>
+      {note.replies.map(reply => <div className="pc-note-reply" key={reply.id}><div className="pc-portrait">{renderPortrait(reply.author, 64)}</div><div><div className="pc-note-author"><strong>{reply.author.displayName}</strong>{ageLabel(reply.createdAtMs) && <small>{ageLabel(reply.createdAtMs)}</small>}</div><p>{reply.body}</p></div></div>)}
+      {canLoadThread && <button type="button" disabled={locked} onClick={() => { void controller.loadNotes(note.id, true) }}>READ REPLIES</button>}
     </article>
   }
   return <div className="pc-map" ref={host} tabIndex={-1} aria-label="Paradise City map" onKeyDown={event => {
@@ -72,7 +83,7 @@ export function ParadiseCityMap({ controller, renderPortrait }: { readonly contr
       <button type="button" disabled={!availability.canRefresh || availability.refreshing} onClick={refreshFriends}>{availability.refreshing ? 'CHECKING…' : 'REFRESH'}</button>
     </section>}
     <div id="pc-tab-panel" role="tabpanel" aria-labelledby={`pc-tab-${state.tab}`} className="pc-tab-panel">
-      <MapCanvas venue={venue} people={state.people} self={controller.self()} notes={state.notes} selection={state.selection} onSelect={select} renderPortrait={renderPortrait} focusLandmark={state.focusRequest ?? focusLandmark}
+      <MapCanvas venue={venue} people={state.people} self={controller.self()} clusters={state.snapshot?.noteClusters ?? []} selection={state.selection} onSelect={select} renderPortrait={renderPortrait} focusLandmark={state.focusRequest ?? focusLandmark}
         compact={state.tab !== 'MAP' || hasSheet || Boolean(state.meeting?.active)} />
       {state.meeting?.active ? <div className="pc-meeting-slot">{state.meeting.content}</div> : state.draft ? <section className="pc-sheet pc-composer" aria-label={state.draft.replyTo ? 'Reply to place note' : 'Leave a note'}>
         <header><h2>{state.draft.replyTo ? 'Reply to note' : 'Leave a note'}</h2><button type="button" aria-label="Close note composer" disabled={locked} onClick={close}>×</button></header>
@@ -110,10 +121,14 @@ export function ParadiseCityMap({ controller, renderPortrait }: { readonly contr
           <button type="button" disabled={locked} onClick={() => { void controller.decideLocationRequest(request.id, 'DENY') }}>DENY</button></div></article>)}
         {outgoing.map(request => <article key={request.id}><p>Waiting for {state.people.find(p => p.userId === request.subjectId)?.displayName} to respond.</p><button type="button" disabled={locked} onClick={() => { void controller.decideLocationRequest(request.id, 'CANCEL') }}>CANCEL REQUEST</button></article>)}
       </section>}</div> : state.tab === 'NOTES' || state.selection?.kind === 'notes' ? <section className="pc-sheet pc-notes" aria-label="Place notes">
-        {controller.canLoadNotes && <><label className="pc-place-picker">Read notes at<select aria-label="Read notes at place" value={notesPlace || selectedPlace?.id || venue.landmarks[0]?.id || ''} disabled={locked} onChange={event => setNotesPlace(venue.landmarks.find(p => p.id === event.target.value)?.id ?? '')}>{venue.landmarks.map(p => <option key={p.id} value={p.id}>{p.label}</option>)}</select></label>
-        <button type="button" disabled={locked} onClick={() => { const id = notesPlace || selectedPlace?.id || venue.landmarks[0]?.id; if (id) void controller.loadNotes(id) }}>READ NOTES</button></>}
-        {selectedPlace && <header><h2>{selectedPlace.label.toUpperCase()} / {selectedNotes.length} NOTES</h2><button type="button" aria-label="Close selected notes" disabled={locked} onClick={close}>×</button></header>}
-        {selectedNotes.length ? selectedNotes.map(noteCard) : <p role="status">No current notes are available for this place.</p>}
+        {!selectedPlace && (state.snapshot?.noteClusters.length ?? 0) > 0 && <div className="pc-note-clusters" aria-label="Places with notes">
+          {state.snapshot!.noteClusters.map(cluster => { const place = venue.landmarks.find(p => p.id === cluster.landmarkId); return place
+            ? <button type="button" key={cluster.landmarkId} disabled={locked} aria-label={`${place.label}, ${cluster.count} ${cluster.count === 1 ? 'note' : 'notes'}`} onClick={() => controller.select({ kind: 'notes', id: cluster.landmarkId })}>{place.label} <strong>{cluster.count}</strong></button> : null })}</div>}
+        {controller.canLoadNotes && <><label className="pc-place-picker">Read notes at<select aria-label="Read notes at place" value={notesPlace || selectedPlace?.id || state.snapshot?.noteClusters[0]?.landmarkId || venue.landmarks[0]?.id || ''} disabled={locked} onChange={event => setNotesPlace(venue.landmarks.find(p => p.id === event.target.value)?.id ?? '')}>{venue.landmarks.map(p => <option key={p.id} value={p.id}>{p.label}</option>)}</select></label>
+        <button type="button" disabled={locked} onClick={() => { const id = notesPlace || selectedPlace?.id || state.snapshot?.noteClusters[0]?.landmarkId || venue.landmarks[0]?.id; if (id) void controller.loadNotes(id) }}>READ NOTES</button></>}
+        {selectedPlace && <header><h2>{selectedPlace.label.toUpperCase()} / {state.snapshot?.notesVisibleCount ?? '—'} {state.snapshot?.notesVisibleCount === 1 ? 'NOTE' : 'NOTES'}</h2><button type="button" aria-label="Close selected notes" disabled={locked} onClick={close}>×</button></header>}
+        {selectedPlace && state.snapshot?.notesVisibleCount != null && state.snapshot.notesVisibleCount > selectedNotes.length && <p className="pc-meta">Showing the latest {selectedNotes.length} of {state.snapshot.notesVisibleCount}.</p>}
+        {selectedNotes.length ? selectedNotes.map(noteCard) : <p role="status">{selectedPlace ? 'No current notes are available for this place.' : 'Choose a place to read current notes.'}</p>}
         <button type="button" className="pc-primary pc-full" disabled={locked || !state.snapshot?.rights.postNote.length} onClick={() => { const id = selectedPlace?.id ?? state.snapshot?.rights.postNote[0]; if (id) controller.compose(id) }}>+ NEW NOTE</button>
       </section> : null}
     </div>

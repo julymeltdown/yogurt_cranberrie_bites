@@ -13,7 +13,9 @@
     "frontend/src/features/parade-ink/world-hud/__tests__/finish-02/preview.tsx",
     "frontend/src/features/parade-ink/world-hud/__tests__/finish-02/capture.mjs",
     "frontend/src/world/reference-scene/photo2-world-display-v1/model.ts",
-    "frontend/src/world/scenes/MapScene.ts"
+    "frontend/src/world/scenes/MapScene.ts",
+    "frontend/src/app/world-entry/__tests__/map-presentation-v1/source.test.ts",
+    "docs/mcr/frontend/pi08-finish-01.md"
   ],
   "commands": [
     {
@@ -37,6 +39,16 @@
     {
       "command": "node src/features/parade-ink/world-hud/__tests__/finish-02/capture.mjs",
       "exit": 0
+    },
+    {
+      "command": "corepack pnpm@11.7.0 exec vitest run src/app/world-entry/__tests__/map-presentation-v1/source.test.ts",
+      "exit": 0,
+      "tests": "3 passed"
+    },
+    {
+      "command": "node src/features/parade-ink/world-hud/__tests__/finish-02/capture.mjs (re-run)",
+      "exit": 0,
+      "comparison": "hud-geometry.json cmp identical; world-360/390/430 sha256 identical"
     }
   ],
   "hud": {
@@ -240,7 +252,8 @@
   "limitations": [
     "Capture uses the actual HUD components, tokens and shell CSS in a controlled preview; it is not a live backend, Auth, Phaser, device or Photo2-pixel acceptance.",
     "Scenery composition is not claimed: the Photo2 registry stays empty because ART v3 pixels/alpha/focus clearance and C06 catalog coherence remain unqualified.",
-    "No AR02/AR04 criteria reopened; no character fallback used."
+    "No AR02/AR04 criteria reopened; no character fallback used.",
+    "The camera-cover path remains unreachable in production while the Photo2 admission registry is empty; the framing is pinned and unit-tested for the future qualified release."
   ],
   "files": {
     "screenshots": [
@@ -252,7 +265,19 @@
       "photo2-overlay.png",
       "photo2-diff.png"
     ],
-    "measurements": "hud-geometry.json"
+    "measurements": "hud-geometry.json",
+    "cameraRationale": "camera-before-after.json"
   },
-  "commit": "f949183836d942b4993fe225a94a4b75b40f11b1 feat(ui): finish PI08 Photo2 HUD and camera"
+  "commit": "dad8c9126 fix(ui): keep the renderer base pin with an authorized MapScene postimage (on top of f94918383 feat(ui): finish PI08 Photo2 HUD and camera)",
+  "mergeBase": "127c7406f",
+  "pinDecision": {
+    "ownerPath": "docs/mcr/frontend/pi08-finish-01.md#authorized-mapscene-camera-cover-postimage--2026-11-06",
+    "baseCommit": "9185c99223bbf7437fff4346a7683dbb4187dfb0",
+    "baseMapSceneSha256": "sha256:479f151394efd87a8f28ef5d0ed74b09b826bfb6c36fbcf9ebd92051b1c0619f",
+    "authorizedPostimageSha256": "sha256:05c369dc023edbedaad6258cb23bbcd088a6c4c77172f41eb330bdd138c3fe63",
+    "pinTest": "frontend/src/app/world-entry/__tests__/map-presentation-v1/source.test.ts",
+    "scope": "MapScene only; runtime.ts, spatial-v3 source-inputs/model, whole-character, resolver and production remain byte-identical to the received base",
+    "rationale": "The old inline fit used the 499x1200 ground bounds with a 1x cap, yielding zoom 1.0/0.99693/1.0 and 28.89x47.14, 0x74.05, 68.89x204.14 CSS-px gutters at 390x593/360x618/430x750; the authorized postimage covers the 361.11x545.86 camera at zoom 1.08636/1.13216/1.37398 with zero gutters.",
+    "guard": "Exact-byte assertion retained; no assertion deleted, skipped or loosened; only the single authorized file is re-pinned."
+  }
 }

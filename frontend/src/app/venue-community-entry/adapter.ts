@@ -3,15 +3,11 @@ import { createMeetingClient, meetingRequests, meetingSchemas, MeetingClientErro
   type MeetingMessage, type MeetingRequest, type MeetingDecision } from '../../shared/api/paradise-city-v1/meeting'
 import type { PrivacyScope } from '../../shared/query/privacy'
 import type { MeetingOpenIntent } from '../../features/paradise-city-map/ports'
-import type { InvitationView, MeetingContextView, LeafCommand } from '../../features/venue-invitations/model'
+import type { InboxDirection, InvitationDecision, InvitationInboxPage, InvitationStatus, InvitationView,
+  LeafCommand, MeetingContextView, MeetingPairPresentation } from '../../features/venue-invitations/model'
 import type { LeafRequest, LeafCommandResult, MeetingLeafAdapter } from './ports'
 
-export interface MeetingPresentation {
-  readonly self: MeetingContextView['self']
-  readonly friend: MeetingContextView['friend']
-  readonly landmarkLabel: string | null
-  readonly landmarkDescription: string | null
-}
+export type MeetingPresentation = MeetingPairPresentation
 export interface MeetingAdapterOptions {
   readonly client: ReturnType<typeof createMeetingClient> | null
   readonly scope: PrivacyScope
@@ -28,21 +24,30 @@ export interface MeetingAdapterOptions {
   /** Optional original authorized navigation target; a bare ID is insufficient. */
   invitationTarget?(id: string): MeetingOpenIntent | null
 }
-export interface MeetingInboxView {
-  readonly items: readonly { readonly invitation: InvitationView; readonly target: MeetingOpenIntent | null;
-    readonly presentation: MeetingPresentation | null }[]
-  readonly nextCursor: string | null
-}
+export type MeetingInboxView = InvitationInboxPage
 const equalScope = (a: PrivacyScope, b: PrivacyScope) => a.generation === b.generation && a.userId === b.userId
   && a.eventId === b.eventId && a.policyGeneration === b.policyGeneration && a.gate === b.gate
 const sameWire = (a: MeetingSelection, b: MeetingSelection) => a.selectedFriendId === b.selectedFriendId
   && (a.landmark == null ? b.landmark == null : b.landmark != null && a.landmark.landmarkId === b.landmark.landmarkId
     && a.landmark.catalogRevision === b.landmark.catalogRevision && a.landmark.landmarkRevision === b.landmark.landmarkRevision)
 const version = (dto: MeetingContext) => JSON.stringify([dto.relationshipRevision, dto.policyRevision])
-const viewInvitation = (dto: MeetingInvitation): InvitationView => ({ id: dto.id, version: String(dto.revision),
-  status: dto.state.toLowerCase() as InvitationView['status'], expiresAtMs: Date.parse(dto.expiresAt) })
+const statuses: readonly InvitationStatus[] = ['pending', 'accepted', 'declined', 'cancelled', 'expired']
+const viewInvitation = (dto: MeetingInvitation, nowMs: number): InvitationView => {
+  const status = dto.state.toLowerCase() as InvitationStatus, expiresAtMs = Date.parse(dto.expiresAt)
+  if (!statuses.includes(status) || !Number.isFinite(expiresAtMs)) throw new MeetingClientError('INVALID_RESPONSE')
+  const allowedActions = dto.allowedInvitationActions.map(action => action.toLowerCase() as InvitationDecision)
+  return { id: dto.id, version: String(dto.revision), status, expiresAtMs,
+    allowedActions: status === 'pending' && expiresAtMs <= nowMs ? [] : allowedActions }
+}
 const decisions: Readonly<Record<'accept' | 'decline' | 'cancel', MeetingDecision>> = { accept: 'ACCEPT', decline: 'DECLINE', cancel: 'CANCEL' }
 const MAX_WINDOW = 200
+function rejection(error: unknown): LeafCommandResult {
+  if (!(error instanceof MeetingClientError) || error.uncertain) return { state: 'unknown' }
+  if (error.code === 'PERMISSION_DENIED') return { state: 'rejected', reason: 'denied' }
+  if (error.code === 'REVISION_OR_KEY_CONFLICT') return { state: 'rejected', reason: 'conflict' }
+  if (error.code === 'RESOURCE_UNAVAILABLE') return { state: 'rejected', reason: 'unavailable' }
+  return { state: 'rejected' }
+}
 
 /** Own normalized projection only. Root's actual shared client owns all descriptors/decoding/transport. */
 export function createNormalizedMeetingAdapter(options: MeetingAdapterOptions) {
@@ -125,8 +130,8 @@ export function createNormalizedMeetingAdapter(options: MeetingAdapterOptions) {
       : dto.canInvite && dto.invitationExpiresAt !== null && Date.parse(dto.invitationExpiresAt) > now ? ['create' as const] : []
     return { contextId: dto.contextId, contextVersion: version(dto), selection: intent, ...presentation,
       validUntilMs: Math.min(Date.parse(dto.validUntil), Date.parse(dto.contentExpiresAt)), canRead: dto.canRead, canSend: dto.canSend,
-      invitationActions: invitation && Date.parse(invitation.expiresAt) <= now ? [] : actions,
-      invitation: invitation ? viewInvitation(invitation) : null,
+      invitationActions: invitation && invitation.state === 'PENDING' && Date.parse(invitation.expiresAt) <= now ? [] : actions,
+      invitation: invitation ? viewInvitation(invitation, now) : null,
       messages: messages.map(message => ({ id: message.id, authorId: message.senderId, body: message.body, timeLabel: format.format(Date.parse(message.createdAt)) })),
       sharedPlaceMessageId: invitation && selected.landmark ? messages.find(message => message.invitationId === invitation.id)?.id ?? null : null,
       conversation: page.conversationId === null ? null : { id: page.conversationId,
@@ -171,7 +176,9 @@ export function createNormalizedMeetingAdapter(options: MeetingAdapterOptions) {
             descriptor = meetingRequests.decideInvitation(scope.eventId!, current.id, command.key, { selection: required, expectedRevision: current.revision, decision: decisions[command.kind] })
           }
         }
-      } catch { return { state: 'rejected' } }
+      } catch (error) {
+        return error instanceof MeetingClientError ? rejection(error) : { state: 'rejected' }
+      }
       pending = { command, selected, operation: descriptor.operationId }
       try {
         const result = await executeRequest(descriptor, request)
@@ -181,7 +188,7 @@ export function createNormalizedMeetingAdapter(options: MeetingAdapterOptions) {
           return { state: 'applied' }
         }
         return { state: 'unknown' }
-      } catch (error) { return { state: error instanceof MeetingClientError && !error.uncertain ? 'rejected' : 'unknown' } }
+      } catch (error) { return rejection(error) }
     },
     async status(command, request) {
       const original = pending
@@ -197,24 +204,28 @@ export function createNormalizedMeetingAdapter(options: MeetingAdapterOptions) {
       } catch { return { state: 'unknown' } }
     },
     loadMore(context, request) { return guardedLoad(context.selection, request, context.invitation?.id ?? null) },
+    async listInvitations(direction, cursor, request) {
+      if (!live(request)) { clear(); return null }
+      const page = await executeRequest(meetingRequests.listInvitations(scope.eventId!, direction, cursor), request)
+      if (!live(request)) return null
+      const now = options.now()
+      if (now === null || !Number.isFinite(now)) return null
+      const items = page.items.map(row => {
+        const selected = meetingSchemas.InvitationSelection.parse(row.selection), intent = options.intentFor(selected)
+        const target = intent && select(intent) && sameWire(select(intent)!, selected) ? intent : null
+        if (target) { if (targets.size >= 100) targets.delete(targets.keys().next().value!); targets.set(row.invitation.id, target) }
+        return { invitation: viewInvitation(row.invitation, now), target, presentation: target ? options.presentationFor(target) : null }
+      })
+      if (!live(request)) { clear(); return null }
+      // VENU-BE-M01 carries no party capacity. The client must not invent it.
+      return { items, nextCursor: page.nextCursor, capacity: null }
+    },
   }
   const stopCleanup = options.registerCleanup(clear)
   signal.addEventListener('abort', clear, { once: true })
   return {
     adapter,
-    async listInvitations(direction: 'INCOMING' | 'OUTGOING', cursor: string | undefined, request: LeafRequest): Promise<MeetingInboxView | null> {
-      if (!live(request)) { clear(); return null }
-      const page = await executeRequest(meetingRequests.listInvitations(scope.eventId!, direction, cursor), request)
-      if (!live(request)) return null
-      const items = page.items.map(row => {
-        const selected = meetingSchemas.InvitationSelection.parse(row.selection), intent = options.intentFor(selected)
-        const target = intent && select(intent) && sameWire(select(intent)!, selected) ? intent : null
-        if (target) { if (targets.size >= 100) targets.delete(targets.keys().next().value!); targets.set(row.invitation.id, target) }
-        return { invitation: viewInvitation(row.invitation), target, presentation: target ? options.presentationFor(target) : null }
-      })
-      if (!live(request)) { clear(); return null }
-      return { items, nextCursor: page.nextCursor }
-    },
+    listInvitations: (direction: InboxDirection, cursor: string | undefined, request: LeafRequest) => adapter.listInvitations(direction, cursor, request),
     dispose() { if (disposed) return; disposed = true; clear(); stopCleanup(); signal.removeEventListener('abort', clear) },
   }
 }

@@ -31,7 +31,7 @@ it('renders the authorized friend conversation without a fake landmark', async (
   expect(f.writes).toHaveLength(0)
 })
 it('shows server recipient actions and explicit accept updates the view', async () => {
-  const f = fixture(); f.patch({ invitation: { id: fixtureIds.invitation, version: '1', status: 'pending', expiresAtMs: f.time() + 500_000 }, invitationActions: ['accept', 'decline'] })
+  const f = fixture(); f.patch({ invitation: { id: fixtureIds.invitation, version: '1', status: 'pending', expiresAtMs: f.time() + 500_000, allowedActions: ['accept', 'decline'] }, invitationActions: ['accept', 'decline'] })
   await f.owner.open(f.inviteIntent); render(<MeetingLeaf owner={f.owner} />)
   expect(screen.getByRole('button', { name: 'Decline' })).toBeTruthy(); expect(f.writes).toHaveLength(0)
   fireEvent.click(screen.getByRole('button', { name: 'Accept' })); await screen.findByText('Meeting accepted')
@@ -76,7 +76,7 @@ it('the retained host binds one consumer and releases it with its original subsc
 })
 
 it.each([true, false])('keeps current place outside unassociated messages and embeds only an associated message: %s', async associated => {
-  const f = fixture(); f.patch({ invitation: { id: fixtureIds.invitation, version: '1', status: 'accepted', expiresAtMs: f.time() + 50000 },
+  const f = fixture(); f.patch({ invitation: { id: fixtureIds.invitation, version: '1', status: 'accepted', expiresAtMs: f.time() + 50000, allowedActions: ['cancel'] },
     messages: [{ id: 'visible-message', authorId: fixtureIds.actor, body: 'Meet after the show.', timeLabel: 'Now' }],
     sharedPlaceMessageId: associated ? 'visible-message' : null })
   await f.owner.open(f.intent); const result = render(<MeetingLeaf owner={f.owner} />)

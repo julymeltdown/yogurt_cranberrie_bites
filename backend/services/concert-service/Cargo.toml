@@ -26,6 +26,7 @@ tokio.workspace = true
 tokio-tungstenite = "=0.24.0"
 tonic.workspace = true
 tonic-prost.workspace = true
+tower.workspace = true
 uuid.workspace = true
 
 [build-dependencies]

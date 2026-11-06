@@ -14,7 +14,7 @@ use crate::{
     world::{
         admission_bridge::AdmissionBridge,
         ingress::OriginPolicy,
-        invalidation::runtime::RemoteInvalidationRuntime,
+        invalidation::{runtime::RemoteInvalidationRuntime, ApplyError},
         membership::ClockAnchor,
         production_owners::ProductionOwners,
         recipient_owners::WorldRecipientReader,
@@ -215,8 +215,16 @@ impl WorldRuntimeSettings {
         pool: sqlx::PgPool,
         ports: WorldProductionPorts,
     ) -> anyhow::Result<()> {
-        self.serve_inner(pool, ports, None, SocketTransport::default(), None, None)
-            .await
+        self.serve_inner(
+            pool,
+            ports,
+            None,
+            SocketTransport::default(),
+            None,
+            None,
+            None,
+        )
+        .await
     }
     /// Startup barrier for a supervised C03 listener. Failure drops the sender;
     /// success is not a persistent authority grant or an ongoing health signal.
@@ -227,7 +235,13 @@ impl WorldRuntimeSettings {
         ready: tokio::sync::oneshot::Sender<()>,
     ) -> anyhow::Result<()> {
         self.serve_inner(
-            pool, ports, Some(ready), SocketTransport::default(), None, None,
+            pool,
+            ports,
+            Some(ready),
+            SocketTransport::default(),
+            None,
+            None,
+            None,
         )
         .await
     }
@@ -240,8 +254,26 @@ impl WorldRuntimeSettings {
         ready: tokio::sync::oneshot::Sender<()>,
         transport: SocketTransport,
     ) -> anyhow::Result<()> {
-        self.serve_inner(pool, ports, Some(ready), transport, None, None)
+        self.serve_inner(pool, ports, Some(ready), transport, None, None, None)
             .await
+    }
+    pub async fn serve_with_ready_and_bridge(
+        self,
+        pool: sqlx::PgPool,
+        ports: WorldProductionPorts,
+        ready: tokio::sync::oneshot::Sender<()>,
+        handoff: tokio::sync::watch::Sender<Option<Arc<AdmissionBridge>>>,
+    ) -> anyhow::Result<()> {
+        self.serve_inner(
+            pool,
+            ports,
+            Some(ready),
+            SocketTransport::default(),
+            None,
+            None,
+            Some(handoff),
+        )
+        .await
     }
     /// Publish this exact native owner's local invalidation leg only after the
     /// normal startup barrier succeeds. The receiver grants no queue-wide ACK.
@@ -255,18 +287,38 @@ impl WorldRuntimeSettings {
             Arc<crate::world::invalidation::WorldInvalidationConsumer>,
         >,
     ) -> anyhow::Result<()> {
-        self.serve_inner(pool, ports, Some(ready), transport, Some(local), None)
+        self.serve_inner(pool, ports, Some(ready), transport, Some(local), None, None)
             .await
     }
-    /// Deletion-only composition for a World without the Social publisher. It
-    /// still publishes the exact incumbent bridge/socket registry after the
-    /// normal startup checks and under the same serving task supervision.
-    pub async fn serve_with_ready_and_deletion(
+    pub async fn serve_with_ready_and_social_and_bridge(
+        self,
+        pool: sqlx::PgPool,
+        ports: WorldProductionPorts,
+        ready: tokio::sync::oneshot::Sender<()>,
+        transport: SocketTransport,
+        local: tokio::sync::oneshot::Sender<
+            Arc<crate::world::invalidation::WorldInvalidationConsumer>,
+        >,
+        handoff: tokio::sync::watch::Sender<Option<Arc<AdmissionBridge>>>,
+    ) -> anyhow::Result<()> {
+        self.serve_inner(
+            pool,
+            ports,
+            Some(ready),
+            transport,
+            Some(local),
+            None,
+            Some(handoff),
+        )
+        .await
+    }
+    pub async fn serve_with_ready_and_deletion_and_bridge(
         self,
         pool: sqlx::PgPool,
         ports: WorldProductionPorts,
         ready: tokio::sync::oneshot::Sender<()>,
         deletion: tokio::sync::oneshot::Sender<super::deletion_world_binding::ServingWorldBinding>,
+        handoff: tokio::sync::watch::Sender<Option<Arc<AdmissionBridge>>>,
     ) -> anyhow::Result<()> {
         self.serve_inner(
             pool,
@@ -275,6 +327,7 @@ impl WorldRuntimeSettings {
             SocketTransport::default(),
             None,
             Some(deletion),
+            Some(handoff),
         )
         .await
     }
@@ -294,7 +347,36 @@ impl WorldRuntimeSettings {
         deletion: tokio::sync::oneshot::Sender<super::deletion_world_binding::ServingWorldBinding>,
     ) -> anyhow::Result<()> {
         self.serve_inner(
-            pool, ports, Some(ready), transport, Some(local), Some(deletion),
+            pool,
+            ports,
+            Some(ready),
+            transport,
+            Some(local),
+            Some(deletion),
+            None,
+        )
+        .await
+    }
+    pub async fn serve_with_ready_social_and_deletion_and_bridge(
+        self,
+        pool: sqlx::PgPool,
+        ports: WorldProductionPorts,
+        ready: tokio::sync::oneshot::Sender<()>,
+        transport: SocketTransport,
+        local: tokio::sync::oneshot::Sender<
+            Arc<crate::world::invalidation::WorldInvalidationConsumer>,
+        >,
+        deletion: tokio::sync::oneshot::Sender<super::deletion_world_binding::ServingWorldBinding>,
+        handoff: tokio::sync::watch::Sender<Option<Arc<AdmissionBridge>>>,
+    ) -> anyhow::Result<()> {
+        self.serve_inner(
+            pool,
+            ports,
+            Some(ready),
+            transport,
+            Some(local),
+            Some(deletion),
+            Some(handoff),
         )
         .await
     }
@@ -312,6 +394,7 @@ impl WorldRuntimeSettings {
         deletion: Option<
             tokio::sync::oneshot::Sender<super::deletion_world_binding::ServingWorldBinding>,
         >,
+        handoff: Option<tokio::sync::watch::Sender<Option<Arc<AdmissionBridge>>>>,
     ) -> anyhow::Result<()> {
         let template: serde_json::Value =
             serde_json::from_slice(self.release.release().bootstrap_json())?;
@@ -381,6 +464,9 @@ impl WorldRuntimeSettings {
             anchor.clone(),
             started,
         )?;
+        if let Some(handoff) = handoff {
+            handoff.send_replace(Some(bridge.clone()));
+        }
         let mut remote = RemoteInvalidationRuntime::new(
             pool,
             self.consumer,
@@ -389,8 +475,8 @@ impl WorldRuntimeSettings {
             vec![bridge.clone()],
         )
         .map_err(|_| anyhow::anyhow!("World replay construction failed"))?;
-        remote
-            .bootstrap()
+        let mut replay = Replay(&mut remote);
+        retry_bootstrap(&mut replay, REPLAY_WINDOW, REPLAY_INTERVAL)
             .await
             .map_err(|_| anyhow::anyhow!("World replay bootstrap unavailable"))?;
         let mut runtime = WorldRuntime::new(
@@ -403,7 +489,8 @@ impl WorldRuntimeSettings {
             transport.clone(),
         )
         .map_err(|_| anyhow::anyhow!("World owner construction failed"))?;
-        runtime.configure_motion_profile(&map.geometry_hash)
+        runtime
+            .configure_motion_profile(&map.geometry_hash)
             .map_err(|_| anyhow::anyhow!("World motion geometry binding failed"))?;
         let (clock, origin_ms) = runtime.clock_origin();
         // Claim only after geometry/runtime construction, so startup's owning
@@ -678,5 +765,87 @@ mod tests {
         }
         assert!(endpoint("owner", "https://auth.mcr.internal:443", true).is_ok());
         assert!(endpoint("owner", "http://127.0.0.1:9000", false).is_ok());
+    }
+}
+
+const REPLAY_WINDOW: Duration = Duration::from_secs(10);
+const REPLAY_INTERVAL: Duration = Duration::from_millis(250);
+
+trait ReplayAttempt {
+    async fn attempt(&mut self) -> Result<(), ApplyError>;
+}
+
+struct Replay<'a>(&'a mut RemoteInvalidationRuntime);
+
+impl ReplayAttempt for Replay<'_> {
+    async fn attempt(&mut self) -> Result<(), ApplyError> {
+        self.0.bootstrap().await
+    }
+}
+
+async fn retry_bootstrap<A: ReplayAttempt>(
+    attempt: &mut A,
+    window: Duration,
+    interval: Duration,
+) -> Result<(), ApplyError> {
+    let deadline = Instant::now() + window;
+    let mut last = None;
+    loop {
+        match attempt.attempt().await {
+            Ok(()) => return Ok(()),
+            Err(ApplyError::Unavailable) => last = Some(ApplyError::Unavailable),
+            Err(error) => return Err(error),
+        }
+        let now = Instant::now();
+        if now >= deadline {
+            return Err(last.unwrap_or(ApplyError::Unavailable));
+        }
+        tokio::time::sleep(interval.min(deadline.saturating_duration_since(now))).await;
+    }
+}
+
+
+#[cfg(test)]
+mod startup_replay_retry_tests {
+    use super::*;
+
+    struct Fake {
+        calls: usize,
+        success_after: Option<usize>,
+        error: ApplyError,
+    }
+
+    impl ReplayAttempt for Fake {
+        async fn attempt(&mut self) -> Result<(), ApplyError> {
+            self.calls += 1;
+            if self.success_after.is_some_and(|limit| self.calls >= limit) {
+                Ok(())
+            } else {
+                Err(self.error)
+            }
+        }
+    }
+
+    #[tokio::test]
+    async fn late_invalidation_source_is_reached_within_the_window() {
+        let mut fake = Fake { calls: 0, success_after: Some(3), error: ApplyError::Unavailable };
+        assert!(retry_bootstrap(&mut fake, Duration::from_millis(200), Duration::from_millis(5)).await.is_ok());
+        assert_eq!(fake.calls, 3);
+    }
+
+    #[tokio::test]
+    async fn exhausted_window_returns_the_original_error_without_ready_state() {
+        let mut fake = Fake { calls: 0, success_after: None, error: ApplyError::Unavailable };
+        let result = retry_bootstrap(&mut fake, Duration::from_millis(20), Duration::from_millis(4)).await;
+        assert!(matches!(result, Err(ApplyError::Unavailable)));
+        assert!(fake.calls > 1);
+    }
+
+    #[tokio::test]
+    async fn definitive_refusal_fails_without_retrying() {
+        let mut fake = Fake { calls: 0, success_after: None, error: ApplyError::Unbound };
+        let result = retry_bootstrap(&mut fake, Duration::from_millis(200), Duration::from_millis(5)).await;
+        assert!(matches!(result, Err(ApplyError::Unbound)));
+        assert_eq!(fake.calls, 1);
     }
 }

@@ -1,0 +1,9 @@
+{
+  "result": "FAIL",
+  "qualification": "SUBSTITUTED_FIXTURE",
+  "note": "Actual VenueShellFeatures/production ports/siteplan loader/Map panel. Deterministic session, community clock, Location, landmark and reviewed friend inputs; no live backend, device or physical venue.",
+  "cases": [],
+  "errors": [
+    "360/real: 360: fallback text clipped {\"clipped\":true,\"clip\":\"pc-portrait\",\"content\":{\"left\":19,\"right\":69,\"top\":321,\"bottom\":371},\"text\":{\"left\":19,\"right\":74.65625,\"top\":332.25,\"bottom\":358}}\n\ntrue !== false\n"
+  ]
+}

@@ -193,8 +193,9 @@ class DevStack:
             self.report["owned_directory"] = str(self.cluster.root)
             migration.qualify(self.cluster, binaries, manifests, self.report)
         self.rows = {row["service"]: row for row in self.report["services"]}
-        for name in runtime.START_ORDER:
-            for kind in ("http", "grpc", "metrics"):
+        kinds = lambda name: ("http", "grpc", "metrics", *runtime.EXTRA_LISTENERS.get(name, ()))
+        for name in runtime.start_order():
+            for kind in kinds(name):
                 self.ports.reserve(f"{name}:{kind}")
         for name in ("redis", "disabled-egress", "mail"):
             self.ports.reserve(name)
@@ -213,13 +214,21 @@ class DevStack:
                                        self.ports, ("redis",), secret_values)
         self.redis.wait_listeners()
         runtime.redis_ping(self.redis, redis_password)
-        for name in runtime.START_ORDER:
+        order = runtime.start_order()
+        for name in order:
             with runtime.protected_signals():
                 child = runtime.Child(self.cluster, name, [str(binaries[name])], envs[name], self.ports,
-                                      tuple(f"{name}:{kind}" for kind in ("http", "metrics", "grpc")), secret_values)
+                                      tuple(f"{name}:{kind}" for kind in kinds(name)), secret_values)
                 self.children[name] = child
                 self.rows[name]["pid"] = child.process.pid
-            child.wait_listeners()
+        failures = []
+        for name in order:
+            try:
+                self.children[name].wait_listeners()
+            except migration.SmokeError as error:
+                failures.append({name: error.detail})
+        if failures:
+            raise migration.SmokeError("startup", {"children": failures})
         self.health()
         self.report["configuration"] = {"mode": "parity", "seed": False, "migration_mode": "external",
             "home": "OMITTED", "cookie_secure": False, "cookie_scope": "explicit local HTTP fixture only",
@@ -236,7 +245,7 @@ class DevStack:
                 "socket": str(self.cluster.root / "control.sock"),
                 "gateway_url": self.ports.url("api-gateway:http"),
                 "services": {name: {kind: self.ports.url(f"{name}:{kind}") for kind in ("http", "grpc", "metrics")}
-                             for name in runtime.START_ORDER},
+                             for name in runtime.start_order()},
                 "mail_directory": str(self.mail.directory), "auth_http": "Gateway /auth/*; no /api ingress adapter yet"}
 
     def health(self):

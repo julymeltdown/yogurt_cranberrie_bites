@@ -8,15 +8,21 @@ const noticeText = {
   changed: 'Meeting access changed. Open this place again from the map.',
   'invalid-message': 'Check the message requirements before sending.',
   rejected: 'The action was not applied. Current permissions and invitation details have been refreshed.',
+  denied: 'The server denied this action. Current permissions and invitation status have been refreshed.',
+  conflict: 'This invitation changed. The current server status is shown; check it before trying again.',
   unknown: 'The result is uncertain. Check the original action before starting another one.',
 } as const
-export function MeetingLeaf({ owner, onClose }: { readonly owner: MeetingLeafOwner; readonly onClose?: () => void }) {
+export function MeetingLeaf({ owner, onClose, onOpenInbox }: { readonly owner: MeetingLeafOwner;
+  readonly onClose?: () => void; readonly onOpenInbox?: () => void }) {
   const state = useSyncExternalStore(owner.subscribe, owner.read, owner.read)
   if (state.phase === 'withdrawn' || state.phase === 'idle') return <MeetingUnavailable />
   const command = state.command
   return <div className="venue-meeting">
     <header className="venue-meeting-header"><strong>{state.context?.landmarkLabel ? 'Real meeting place' : 'Event conversation'}</strong>
-      <button type="button" disabled={command?.phase === 'pending' || command?.phase === 'unknown' || command?.phase === 'checking'} onClick={() => { if (owner.close()) onClose?.() }}>Close</button></header>
+      <div className="venue-meeting-header-actions">
+        {onOpenInbox && <button type="button" onClick={onOpenInbox}>All invitations</button>}
+        <button type="button" disabled={command?.phase === 'pending' || command?.phase === 'unknown' || command?.phase === 'checking'} onClick={() => { if (owner.close()) onClose?.() }}>Close</button>
+      </div></header>
     {state.phase === 'loading' && <p role="status">Reading current meeting…</p>}
     {state.phase === 'error' && <div><p role="status">Meeting information is unavailable.</p>
       <button type="button" onClick={() => { void owner.refresh() }}>Refresh meeting</button></div>}
