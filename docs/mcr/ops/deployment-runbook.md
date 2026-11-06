@@ -165,12 +165,22 @@ Rules enforced by the code:
 
 - Production TLS is resolved by serving paths, not by every process. The six
   base services (Gateway, Auth, Profile, Friend, Post, Notification) always
-  resolve it. `concert-service` in health-only mode validates only
-  `CONCERT_METRICS_ADDR`, `CONCERT_RUNTIME_MODE` and `CONCERT_MIGRATION_MODE`,
-  so it needs no `CONCERT_GRPC_TLS_*` material. Concert resolves TLS only on an
-  enabled bootstrap, World, Participant or feed serving path. On any path that
-  starts a serving listener, all three files are required: a missing identity
-  fails startup and there is no plaintext production fallback.
+  resolve it. `concert-service` in health-only mode still runs
+  `AppConfig::load()` and therefore validates `CONCERT_DATABASE_URL` (explicit
+  PostgreSQL URL, host and database path, no server-option overrides, and a
+  dedicated `mcr_concert` database), `CONCERT_METRICS_ADDR`,
+  `CONCERT_RUNTIME_MODE` and `CONCERT_MIGRATION_MODE`. It also loads
+  `CONCERT_ACCOUNT_DELETION_MODE`, `CONCERT_PUBLIC_FEED_MODE`,
+  `CONCERT_OWNER_MEDIA_MODE` and the World switch set
+  (`CONCERT_WORLD_LISTEN_ADDR`, `CONCERT_WORLD_ALLOWED_ORIGINS`,
+  `CONCERT_WORLD_OWNER_ID`, `CONCERT_WORLD_EVENT_ID`,
+  `CONCERT_WORLD_ROOMS_JSON`, `CONCERT_WORLD_INVALIDATION_CONSUMER_ID`,
+  `CONCERT_WORLD_RESOURCE_ROOT`, `CONCERT_WORLD_SOURCE_BINDING_FILE`), so an
+  invalid mode or a partial World switch set fails even when the feature is off.
+  Concert resolves TLS material only on an enabled bootstrap, World, Participant
+  or feed serving path. On any path that starts a serving listener, all three
+  TLS files are required: a missing identity fails startup and there is no
+  plaintext production fallback.
 - Supplying only one or two of the three fails startup in every mode.
 - Certificates carry the workload identity; the CA verifies peers. Keep one
   directory per workload at mode 0750, certificate/CA at 0644 and key at 0600,
