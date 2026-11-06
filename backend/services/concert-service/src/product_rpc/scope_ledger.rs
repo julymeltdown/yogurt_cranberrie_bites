@@ -127,11 +127,36 @@ impl PgScopeLedger {
         tx: &mut Transaction<'_, Postgres>,
         key: &ScopeKey,
     ) -> Result<ScopePhase, Status> {
+        self.lock_mode(tx, key, true).await
+    }
+    /// Child intent admission only checks an active phase and must coexist with
+    /// the command's native-witness SHARE lock on the same scope row. Sealing
+    /// still takes `lock`, whose UPDATE conflicts with this SHARE.
+    async fn lock_shared(
+        &self,
+        tx: &mut Transaction<'_, Postgres>,
+        key: &ScopeKey,
+    ) -> Result<ScopePhase, Status> {
+        self.lock_mode(tx, key, false).await
+    }
+    async fn lock_mode(
+        &self,
+        tx: &mut Transaction<'_, Postgres>,
+        key: &ScopeKey,
+        exclusive: bool,
+    ) -> Result<ScopePhase, Status> {
         key.validate(self.instance)?;
-        let row: Option<(Vec<u8>, String)> = sqlx::query_as(
-            "SELECT binding_digest,phase FROM concert_product_owner_scopes WHERE instance_id=$1 AND scope_id=$2 FOR UPDATE",
-        )
-        .bind(key.instance).bind(key.scope).fetch_optional(&mut **tx).await.map_err(unavailable)?;
+        let query = if exclusive {
+            "SELECT binding_digest,phase FROM concert_product_owner_scopes WHERE instance_id=$1 AND scope_id=$2 FOR UPDATE"
+        } else {
+            "SELECT binding_digest,phase FROM concert_product_owner_scopes WHERE instance_id=$1 AND scope_id=$2 FOR SHARE"
+        };
+        let row: Option<(Vec<u8>, String)> = sqlx::query_as(query)
+            .bind(key.instance)
+            .bind(key.scope)
+            .fetch_optional(&mut **tx)
+            .await
+            .map_err(unavailable)?;
         let (digest, value) =
             row.ok_or_else(|| Status::failed_precondition("Unknown product scope"))?;
         if digest != key.binding_digest {

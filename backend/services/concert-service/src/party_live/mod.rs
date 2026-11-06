@@ -8,9 +8,10 @@
 //! revision, and finally the current subject pair before recording a BE15
 //! receipt. Approval capacity is checked by the same locked root transaction.
 //! No permissive authority or fixture implementation is installed here.
-mod cursor;
 pub mod account_deletion;
+mod cursor;
 mod product;
+pub mod resources;
 mod scope_guard;
 pub mod settlement;
 mod wire;
@@ -33,7 +34,6 @@ use crate::adapters::out::repository::receipt::{CommandProducer, PgCommandReposi
 use crate::community::{CommunityAccess, CommunityAuthority, CommunityError};
 use crate::product_rpc::proto::ProductRequest;
 use concert_application::commands::{Completion, Invalidation, SafeReference, Scope};
-use prost::Message;
 
 pub use cursor::{PartyCursorBinding, PartyCursorCodec, PartyPosition, PartyWindow};
 pub use product::PartyProductProducer;
@@ -43,6 +43,13 @@ pub use settlement::PartyNativeResolver;
 #[doc(hidden)]
 pub use wire::{operation_for_fixture, parse_verified_body_for_fixture};
 pub use wire::{PartyLiveAction, PartyLiveReply, PartyLiveRequest, PartyQuery, PARTY_OPERATIONS};
+
+/// The eight operations implemented by the Party producer. Other contract
+/// Party operations are classified by the Product router and deliberately
+/// remain unavailable until a producer exists.
+pub fn handles_operation(operation: &str) -> bool {
+    PARTY_OPERATIONS.contains(&operation)
+}
 
 pub const REQUEST_CEILING: Duration = Duration::from_secs(5);
 const MAX_SCAN: usize = 1000;
@@ -485,11 +492,6 @@ where
             .binding()
             .check()
             .map_err(|_| PartyLiveError::DependencyUnavailable)?;
-        if Sha256::digest(request.encode_to_vec()).as_slice()
-            != scope.binding().owner_binding().parent_body_digest
-        {
-            return Err(PartyLiveError::InvalidInput);
-        }
         let parsed = PartyLiveRequest::from_owner_scope(scope.binding(), &request)?;
         if guard.binding_digest() != parsed.binding.digest() {
             return Err(PartyLiveError::DependencyUnavailable);

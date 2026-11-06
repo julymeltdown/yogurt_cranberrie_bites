@@ -40,7 +40,7 @@ pub fn router(state: Arc<AppState>) -> Router {
         )
         .route(
             "/api/concert/events/:event_id/parties/:party_id/applications",
-            post(dispatch),
+            get(dispatch).post(dispatch),
         )
         .route(
             "/api/concert/events/:event_id/party-applications/:application_id/decision",
@@ -48,12 +48,21 @@ pub fn router(state: Arc<AppState>) -> Router {
         )
         .route(
             "/api/concert/events/:event_id/party-applications/:application_id",
-            delete(dispatch),
+            get(dispatch).delete(dispatch),
         )
         .route(
             "/api/concert/events/:event_id/parties/:party_id/members/:user_id",
             delete(dispatch),
         )
+        .route(
+            "/api/concert/events/:event_id/parties/:party_id/members",
+            get(dispatch),
+        )
+        .route(
+            "/api/concert/events/:event_id/parties/:party_id/rally",
+            get(dispatch),
+        )
+        .route("/api/concert/events/:event_id/me/parties", get(dispatch))
         .route(
             "/api/concert/events/:event_id/parties/:party_id/cancel",
             post(dispatch),
@@ -481,6 +490,7 @@ fn is_product(path: &str) -> bool {
         || tail.starts_with("posts/")
         || tail.starts_with("parties/")
         || tail.starts_with("party-applications/")
+        || tail == "me/parties"
         || tail == "me/social-handles"
         || tail.starts_with("me/social-handles/")
         || tail == "me/social-requests"

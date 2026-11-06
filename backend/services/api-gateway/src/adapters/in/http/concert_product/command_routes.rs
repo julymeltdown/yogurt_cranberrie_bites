@@ -21,11 +21,15 @@ pub(super) fn router() -> Router<Arc<AppState>> {
         )
         .route(
             "/api/concert/events/:event_id/giveaways",
-            post(dispatch),
+            get(dispatch).post(dispatch),
         )
         .route(
             "/api/concert/events/:event_id/giveaways/:giveaway_id",
-            axum::routing::patch(dispatch),
+            get(dispatch).patch(dispatch),
+        )
+        .route(
+            "/api/concert/events/:event_id/giveaways/:giveaway_id/management",
+            get(dispatch),
         )
         .route(
             "/api/concert/events/:event_id/giveaways/:giveaway_id/pickup-meeting",
@@ -37,8 +41,13 @@ pub(super) fn router() -> Router<Arc<AppState>> {
         )
         .route(
             "/api/concert/events/:event_id/reservations/:reservation_id",
-            delete(dispatch),
+            get(dispatch).delete(dispatch),
         )
+        .route(
+            "/api/concert/events/:event_id/reservations/:reservation_id/pickup",
+            get(dispatch),
+        )
+        .route("/api/concert/events/:event_id/me/giveaways", get(dispatch))
         .route(
             "/api/concert/events/:event_id/reservations/:reservation_id/pickup-code",
             post(dispatch),
@@ -109,6 +118,7 @@ pub(super) fn protects(path: &str) -> bool {
             || tail.starts_with("beacons/")
             || tail == "giveaways"
             || tail.starts_with("giveaways/")
+            || tail == "me/giveaways"
             || tail.starts_with("reservations/")
             || tail == "reports"
             || tail == "admin/settings"

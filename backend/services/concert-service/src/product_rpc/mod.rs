@@ -21,14 +21,14 @@ pub mod child_recovery;
 pub mod child_settlement;
 pub mod delivery;
 mod feature_admission;
+mod operations_admission;
 mod owner_media;
 mod query;
 pub mod report_admission;
 pub mod venue_meeting_admission;
-mod operations_admission;
 pub use age_admission::AgeOperation;
-pub use operations_admission::OperationsOperation;
 pub use feature_admission::IntroOperation;
+pub use operations_admission::OperationsOperation;
 pub use query::CommandStatusQuery;
 pub use report_admission::ReportOperation;
 pub mod root_read;
@@ -54,11 +54,20 @@ pub enum Operation {
     ListParties,
     GetParty(Uuid),
     CreateParty,
+    UpdateParty(Uuid),
+    TransferParty(Uuid),
+    ListPartyApplications(Uuid),
+    GetPartyApplication(Uuid),
+    ListPartyMembers(Uuid),
+    GetPartyRally(Uuid),
+    SetPartyRally(Uuid),
+    PartyActivity,
     ApplyParty(Uuid),
     DecidePartyApplication(Uuid),
     CancelPartyApplication(Uuid),
     RemovePartyMember(Uuid, Uuid),
     CancelParty(Uuid),
+    Gift(crate::gift_live::GiftOperation),
     InitializeUpload,
     MediaMetadata(Uuid),
     UploadBytes(Uuid),
@@ -84,11 +93,20 @@ impl Operation {
             Self::ListParties => "listConcertParties",
             Self::GetParty(_) => "getConcertParty",
             Self::CreateParty => "createConcertParty",
+            Self::UpdateParty(_) => "updateConcertParty",
+            Self::TransferParty(_) => "transferConcertParty",
+            Self::ListPartyApplications(_) => "listConcertPartyApplications",
+            Self::GetPartyApplication(_) => "getConcertApplication",
+            Self::ListPartyMembers(_) => "listConcertMembers",
+            Self::GetPartyRally(_) => "getConcertRally",
+            Self::SetPartyRally(_) => "setConcertRally",
+            Self::PartyActivity => "getConcertPartyActivity",
             Self::ApplyParty(_) => "applyConcertParty",
             Self::DecidePartyApplication(_) => "decideConcertApplication",
             Self::CancelPartyApplication(_) => "cancelConcertApplication",
             Self::RemovePartyMember(_, _) => "removeConcertMember",
             Self::CancelParty(_) => "cancelConcertParty",
+            Self::Gift(operation) => operation.id(),
             Self::InitializeUpload => "initConcertUpload",
             Self::MediaMetadata(_) => "getConcertMedia",
             Self::UploadBytes(_) => "putConcertUploadBytes",
@@ -155,6 +173,11 @@ pub fn operation(event: Uuid, method: &str, target: &str) -> Result<Operation, S
     if let Ok(meeting) = venue_meeting_admission::route(event, method, target) {
         return Ok(Operation::Meeting(meeting));
     }
+    // Gift owns exactly the frozen thirteen C04 operations. Shape only; the
+    // producer still validates body/query/media type and the idempotency key.
+    if let Ok(gift) = crate::gift_live::GiftOperation::route(event, method, target) {
+        return Ok(Operation::Gift(gift));
+    }
     let result = match (method, suffix) {
         ("GET", "feed") => Operation::Feed,
         ("GET", "parties") => Operation::ListParties,
@@ -186,6 +209,22 @@ pub fn operation(event: Uuid, method: &str, target: &str) -> Result<Operation, S
                 ("GET", ["posts", id]) => Operation::Post(canonical_uuid(id)?),
                 ("GET", ["posts", id, "comments"]) => Operation::Comments(canonical_uuid(id)?),
                 ("GET", ["parties", id]) => Operation::GetParty(canonical_uuid(id)?),
+                ("PATCH", ["parties", id]) => Operation::UpdateParty(canonical_uuid(id)?),
+                ("POST", ["parties", id, "owner"]) => Operation::TransferParty(canonical_uuid(id)?),
+                ("GET", ["parties", id, "applications"]) => {
+                    Operation::ListPartyApplications(canonical_uuid(id)?)
+                }
+                ("GET", ["party-applications", id]) => {
+                    Operation::GetPartyApplication(canonical_uuid(id)?)
+                }
+                ("GET", ["parties", id, "members"]) => {
+                    Operation::ListPartyMembers(canonical_uuid(id)?)
+                }
+                ("GET", ["parties", id, "rally"]) => Operation::GetPartyRally(canonical_uuid(id)?),
+                ("PUT", ["parties", id, "rally", "me"]) => {
+                    Operation::SetPartyRally(canonical_uuid(id)?)
+                }
+                ("GET", ["me", "parties"]) => Operation::PartyActivity,
                 ("GET", ["media", id]) => Operation::MediaMetadata(canonical_uuid(id)?),
                 ("GET", ["media", id, "content"]) => Operation::PrivateContent(canonical_uuid(id)?),
                 ("PUT", ["media", id, "bytes"]) => Operation::UploadBytes(canonical_uuid(id)?),
@@ -205,6 +244,12 @@ pub fn operation(event: Uuid, method: &str, target: &str) -> Result<Operation, S
                 | Operation::CommandStatus
                 | Operation::CancelPartyApplication(_)
                 | Operation::RemovePartyMember(_, _)
+                | Operation::ListPartyApplications(_)
+                | Operation::GetPartyApplication(_)
+                | Operation::ListPartyMembers(_)
+                | Operation::GetPartyRally(_)
+                | Operation::PartyActivity
+                | Operation::Gift(_)
         )
     {
         return Err(Status::invalid_argument("Unexpected product query"));
@@ -388,6 +433,9 @@ fn authorize(request: &Request<proto::ProductRequest>) -> Result<VerifiedProduct
             | Operation::UploadBytes(_)
             | Operation::FinalizeUpload(_)
             | Operation::CreateParty
+            | Operation::UpdateParty(_)
+            | Operation::TransferParty(_)
+            | Operation::SetPartyRally(_)
             | Operation::ApplyParty(_)
             | Operation::DecidePartyApplication(_)
             | Operation::CancelPartyApplication(_)
@@ -399,12 +447,22 @@ fn authorize(request: &Request<proto::ProductRequest>) -> Result<VerifiedProduct
     );
     if matches!(
         operation,
-        Operation::Social(_) | Operation::Intro(_) | Operation::Notification(_) | Operation::Age(_) | Operation::Report(_) | Operation::Operations(_) | Operation::Wall(_) | Operation::Meeting(_)
+        Operation::Social(_)
+            | Operation::Intro(_)
+            | Operation::Notification(_)
+            | Operation::Age(_)
+            | Operation::Report(_)
+            | Operation::Operations(_)
+            | Operation::Wall(_)
+            | Operation::Meeting(_)
+            | Operation::Gift(_)
     ) {
         // Each exact feature decoder validates its own read payload and keyed
         // command shape, including Intro PUT/POST and Notification PATCH writes.
         // Age owns its bodyless status and keyed POSTs. Social additionally owns
-        // keyed bodyless DELETE; none are generic reads.
+        // keyed bodyless DELETE; none are generic reads. Gift validates the
+        // complete thirteen-operation envelope in `GiftRequest::from_verified`
+        // after the canonical scope is acquired.
     } else if mutation {
         canonical_uuid(&m.idempotency_key)?;
         let bodyless = matches!(

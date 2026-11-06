@@ -374,14 +374,14 @@ async fn community_gift_code_rotation_throttle_and_one_time_pickup() -> anyhow::
         .execute(&pool)
         .await?;
     claim.key = Uuid::new_v4();
+    let replayed = service
+        .execute(&claim, &keys, &codes, Some(&context))
+        .await
+        .unwrap();
+    assert_eq!(replayed.receipt.state, ReceiptState::Failed);
     assert_eq!(
-        service
-            .execute(&claim, &keys, &codes, Some(&context))
-            .await
-            .unwrap()
-            .receipt
-            .reference,
-        receipt.reference
+        replayed.receipt.failure,
+        Some(SafeFailure::PickupCodeInvalid)
     );
     let r = service
         .reservation(user, event, gift, reservation)

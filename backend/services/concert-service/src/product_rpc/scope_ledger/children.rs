@@ -287,7 +287,7 @@ impl PgScopeLedger {
         reference: &ChildRecoveryReference,
     ) -> Result<(), Status> {
         let mut tx = self.transaction().await?;
-        if self.lock(&mut tx, scope).await? != ScopePhase::Active {
+        if self.lock_shared(&mut tx, scope).await? != ScopePhase::Active {
             return Err(Status::failed_precondition("Product scope is sealed"));
         }
         self.validate_child_in(&mut tx, scope, reference).await?;
