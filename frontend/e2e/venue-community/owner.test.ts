@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it } from 'vitest'
 import { createMeetingLeafOwner } from '../../src/app/venue-community-entry/owner'
 import { canonicalId, parentPath, resolvePanel, safeReturnTarget } from '../../src/app/routes'
-import { deferred, fixtureIds, meetingFixture } from './fixture'
+import { deferred, fixtureIds, invitationView, meetingFixture } from './fixture'
 import type { MeetingContextView } from '../../src/features/venue-invitations/model'
 import type { LeafCommandResult } from '../../src/app/venue-community-entry/ports'
 import type { MeetingOpenIntent } from '../../src/features/paradise-city-map/ports'
@@ -144,16 +144,16 @@ describe('original command identity and current permissions', () => {
     f.owner.setDraft('Still here?'); expect(await f.owner.execute('send')).toBe(true)
   })
   it.each(['accept', 'decline'] as const)('executes explicit recipient %s with server-granted capability', async action => {
-    const f = fixture(); f.patch({ invitation: { id: fixtureIds.invitation, version: '7', status: 'pending', expiresAtMs: f.time() + 50_000 }, invitationActions: [action] })
+    const f = fixture(); f.patch({ invitation: { id: fixtureIds.invitation, version: '7', status: 'pending', expiresAtMs: f.time() + 50_000, allowedActions: [action] }, invitationActions: [action] })
     await f.owner.openInvitation(fixtureIds.invitation, 'invitation'); expect(f.writes).toHaveLength(0)
     await f.owner.execute(action); expect(f.writes[0]?.command).toMatchObject({ kind: action, invitationVersion: '7' })
   })
   it('does not infer send rights from accepted invitation state', async () => {
-    const f = fixture(); f.patch({ canSend: false, invitation: { id: fixtureIds.invitation, version: '1', status: 'accepted', expiresAtMs: f.time() + 100_000 } })
+    const f = fixture(); f.patch({ canSend: false, invitation: { id: fixtureIds.invitation, version: '1', status: 'accepted', expiresAtMs: f.time() + 100_000, allowedActions: ['cancel'] } })
     await f.owner.open(f.intent); f.owner.setDraft('Hello'); expect(await f.owner.execute('send')).toBe(false); expect(f.writes).toHaveLength(0)
   })
   it('withdraws expired invitation actions without revoking conversation', async () => {
-    const f = fixture(); f.patch({ invitation: { id: fixtureIds.invitation, version: '1', status: 'pending', expiresAtMs: f.time() + 10 }, invitationActions: ['accept'] })
+    const f = fixture(); f.patch({ invitation: { id: fixtureIds.invitation, version: '1', status: 'pending', expiresAtMs: f.time() + 10, allowedActions: ['accept'] }, invitationActions: ['accept'] })
     await f.owner.open(f.intent); f.advance(11)
     expect(await f.owner.execute('accept')).toBe(false); expect(f.owner.read().context?.canSend).toBe(true)
     f.owner.setDraft('Still meeting?'); expect(await f.owner.execute('send')).toBe(true)
@@ -227,6 +227,114 @@ it('loads a further authorized message page without a command or a replacement l
 it.each(['dangling', 'no-invitation'] as const)('rejects an invalid shared-place message projection: %s', async reason => {
   const f = fixture(); f.patch({ sharedPlaceMessageId: 'message-linked',
     messages: [{ id: reason === 'dangling' ? 'another-message' : 'message-linked', authorId: fixtureIds.actor, body: 'Hello', timeLabel: 'Now' }],
-    invitation: reason === 'dangling' ? { id: fixtureIds.invitation, version: '1', status: 'accepted', expiresAtMs: f.time() + 50000 } : null })
+    invitation: reason === 'dangling' ? { id: fixtureIds.invitation, version: '1', status: 'accepted', expiresAtMs: f.time() + 50000, allowedActions: ['cancel'] } : null })
   expect((await f.owner.open(f.intent)).kind).toBe('unavailable'); expect(f.owner.read().context).toBeNull()
+})
+
+const DAY_MS = 24 * 60 * 60 * 1000
+function inboxFixture() {
+  const f = fixture(), now = f.time(), target = f.inviteIntent, presentation = f.presentation
+  f.setInbox({ INCOMING: [
+    { invitation: invitationView(fixtureIds.invitation, 'pending', now + DAY_MS, ['accept', 'decline']), target, presentation },
+    { invitation: invitationView(fixtureIds.invitation2, 'pending', now + DAY_MS, ['accept', 'decline']), target, presentation },
+    { invitation: invitationView(fixtureIds.invitation3, 'accepted', now + DAY_MS, []), target, presentation },
+    { invitation: invitationView(fixtureIds.invitation4, 'expired', now - 1, []), target, presentation },
+    { invitation: invitationView(fixtureIds.other, 'pending', now + DAY_MS, ['accept']), target: null, presentation: null },
+  ], OUTGOING: [
+    { invitation: invitationView(fixtureIds.invitation5, 'pending', now + DAY_MS, ['cancel']), target, presentation },
+    { invitation: invitationView(fixtureIds.invitation6, 'accepted', now + DAY_MS, ['cancel']), target, presentation },
+    { invitation: invitationView(fixtureIds.invitation7, 'cancelled', now + DAY_MS, []), target, presentation },
+  ] })
+  return f
+}
+
+describe('invitation inbox', () => {
+  it('reads both directions without issuing a mutation and reuses the ready page', async () => {
+    const f = inboxFixture()
+    expect(await f.owner.openInbox('INCOMING')).toBe(true)
+    expect(f.inboxReads).toHaveLength(1); expect(f.writes).toHaveLength(0)
+    expect(f.owner.read().inbox.items.map(item => item.invitation.status)).toEqual(['pending', 'pending', 'accepted', 'expired', 'pending'])
+    expect(await f.owner.openInbox('OUTGOING')).toBe(true)
+    expect(f.inboxReads).toHaveLength(2); expect(f.writes).toHaveLength(0)
+    await f.owner.openInbox('OUTGOING'); expect(f.inboxReads).toHaveLength(2)
+  })
+  it('accepts with the current server revision and reflects the refreshed producer status', async () => {
+    const f = inboxFixture(); await f.owner.openInbox('INCOMING')
+    expect(await f.owner.decideInbox(fixtureIds.invitation, 'accept')).toBe(true)
+    expect(f.writes).toHaveLength(1)
+    expect(f.writes[0]?.command).toMatchObject({ kind: 'accept', invitationId: fixtureIds.invitation, invitationVersion: '1' })
+    const row = f.owner.read().inbox.items.find(item => item.invitation.id === fixtureIds.invitation)
+    expect(row?.invitation).toMatchObject({ status: 'accepted', allowedActions: [] })
+    expect(f.owner.read().command?.phase).toBe('applied'); expect(f.owner.read().inbox.notice).toBeNull()
+  })
+  it('declines and cancels only through server-supplied decisions', async () => {
+    const f = inboxFixture(); await f.owner.openInbox('INCOMING')
+    expect(await f.owner.decideInbox(fixtureIds.invitation2, 'decline')).toBe(true)
+    expect(f.writes[0]?.command.kind).toBe('decline')
+    const incoming = f.owner.read().inbox.items.find(item => item.invitation.id === fixtureIds.invitation2)
+    expect(incoming?.invitation.status).toBe('declined')
+    await f.owner.openInbox('OUTGOING')
+    expect(await f.owner.decideInbox(fixtureIds.invitation6, 'cancel')).toBe(true)
+    expect(f.writes[1]?.command.kind).toBe('cancel')
+    const outgoing = f.owner.read().inbox.items.find(item => item.invitation.id === fixtureIds.invitation6)
+    expect(outgoing?.invitation.status).toBe('cancelled')
+  })
+  it('does not issue a write for an expired invitation', async () => {
+    const f = inboxFixture(); await f.owner.openInbox('INCOMING')
+    expect(await f.owner.decideInbox(fixtureIds.invitation4, 'accept')).toBe(false)
+    expect(f.writes).toHaveLength(0)
+    expect(f.owner.read().inbox.items.find(item => item.invitation.id === fixtureIds.invitation4)?.invitation.status).toBe('expired')
+  })
+  it('surfaces a producer denial without fabricating a transition', async () => {
+    const f = inboxFixture(); await f.owner.openInbox('INCOMING')
+    f.setWriteResult({ state: 'rejected', reason: 'denied' })
+    expect(await f.owner.decideInbox(fixtureIds.invitation, 'accept')).toBe(true)
+    expect(f.owner.read().notice).toBe('denied'); expect(f.owner.read().inbox.notice).toBe('denied')
+    expect(f.owner.read().inbox.items.find(item => item.invitation.id === fixtureIds.invitation)?.invitation.status).toBe('pending')
+  })
+  it('surfaces a denied host revoke without changing the accepted producer status', async () => {
+    const f = inboxFixture(); await f.owner.openInbox('OUTGOING')
+    f.setWriteResult({ state: 'rejected', reason: 'denied' })
+    expect(await f.owner.decideInbox(fixtureIds.invitation6, 'cancel')).toBe(true)
+    expect(f.owner.read().inbox.notice).toBe('denied')
+    expect(f.owner.read().inbox.items.find(item => item.invitation.id === fixtureIds.invitation6)?.invitation.status).toBe('accepted')
+  })
+  it('retains an uncertain action for original-status recovery rather than resending', async () => {
+    const f = inboxFixture(); await f.owner.openInbox('INCOMING')
+    f.setWriteResult({ state: 'unknown' })
+    expect(await f.owner.decideInbox(fixtureIds.invitation, 'accept')).toBe(true)
+    expect(f.owner.read().command?.phase).toBe('unknown'); expect(f.owner.read().inbox.notice).toBe('unknown')
+    expect(f.writes).toHaveLength(1); expect(await f.owner.decideInbox(fixtureIds.invitation, 'accept')).toBe(false)
+  })
+  it('fails closed when the producer denies the inbox read', async () => {
+    const f = inboxFixture(); f.denyInboxReads()
+    expect(await f.owner.openInbox('INCOMING')).toBe(false)
+    expect(f.owner.read().inbox).toMatchObject({ phase: 'error', items: [], notice: 'unavailable' })
+    expect(f.writes).toHaveLength(0)
+  })
+  it('scrubs private inbox rows before withdrawal subscribers run', async () => {
+    const f = inboxFixture(); await f.owner.openInbox('INCOMING')
+    let leaked = false
+    f.owner.subscribe(() => { if (f.owner.read().phase === 'withdrawn') leaked ||= f.owner.read().inbox.items.length > 0 })
+    f.owner.withdraw()
+    expect(f.owner.read().inbox.items).toEqual([]); expect(leaked).toBe(false)
+  })
+})
+
+describe('conversation permission is independent of an invitation', () => {
+  it('opens a friend-only conversation without an invitation and refuses a bare send', async () => {
+    const f = fixture(); f.patch({ canSend: false });
+    const { landmark: _association, ...noPlace } = f.intent
+    void _association
+    f.patch({ selection: noPlace, landmarkLabel: null, landmarkDescription: null, invitationActions: [] })
+    expect((await f.owner.open(noPlace)).kind).toBe('opened')
+    expect(f.owner.read().surface).toBe('conversation'); expect(f.owner.read().context?.invitation).toBeNull()
+    f.owner.setDraft('Hello'); expect(await f.owner.execute('send')).toBe(false); expect(f.writes).toHaveLength(0)
+  })
+  it('does not infer conversation permission from an accepted invitation id', async () => {
+    const f = fixture(); f.patch({ canSend: false, invitationActions: [],
+      invitation: invitationView(fixtureIds.invitation, 'accepted', f.time() + 600_000, ['cancel']) })
+    expect((await f.owner.openInvitation(fixtureIds.invitation, 'conversation')).kind).toBe('opened')
+    expect(f.owner.read().context?.canSend).toBe(false); expect(f.writes).toHaveLength(0)
+  })
 })

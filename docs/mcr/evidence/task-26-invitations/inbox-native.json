@@ -1,0 +1,317 @@
+{
+  "result": "PASS",
+  "classification": "CONTROLLED_COMPONENT_FIXTURE",
+  "limitation": "Real newly authored invitation list component with normalized adapter fixture. Not production shell/HTTP, backend, two-principal, device GPS or product acceptance.",
+  "sourceCommit": "16af5b18794f1cb7bd3085562606ddbbc169a391",
+  "fixtureClockMs": 1800000000000,
+  "widths": [
+    {
+      "width": 360,
+      "list": {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/exec-w4-inv/docs/mcr/evidence/task-26-invitations/list-360.png",
+        "capturedAt": "2026-11-06T07:24:50.264Z",
+        "viewport": {
+          "width": 360,
+          "height": 844
+        },
+        "dpr": 1,
+        "componentBounds": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 925.875
+        }
+      },
+      "accept": {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/exec-w4-inv/docs/mcr/evidence/task-26-invitations/accept-360.png",
+        "capturedAt": "2026-11-06T07:24:50.376Z",
+        "viewport": {
+          "width": 360,
+          "height": 844
+        },
+        "dpr": 1,
+        "componentBounds": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 965.0625
+        }
+      },
+      "decline": {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/exec-w4-inv/docs/mcr/evidence/task-26-invitations/decline-360.png",
+        "capturedAt": "2026-11-06T07:24:50.512Z",
+        "viewport": {
+          "width": 360,
+          "height": 844
+        },
+        "dpr": 1,
+        "componentBounds": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 965.0625
+        }
+      },
+      "expired": {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/exec-w4-inv/docs/mcr/evidence/task-26-invitations/expired-360.png",
+        "capturedAt": "2026-11-06T07:24:50.603Z",
+        "viewport": {
+          "width": 360,
+          "height": 844
+        },
+        "dpr": 1,
+        "componentBounds": {
+          "x": 27,
+          "y": 681.140625,
+          "width": 323,
+          "height": 162.734375
+        }
+      },
+      "full": {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/exec-w4-inv/docs/mcr/evidence/task-26-invitations/full-360.png",
+        "capturedAt": "2026-11-06T07:24:50.712Z",
+        "viewport": {
+          "width": 360,
+          "height": 844
+        },
+        "dpr": 1,
+        "componentBounds": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 964.421875
+        }
+      },
+      "denied": {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/exec-w4-inv/docs/mcr/evidence/task-26-invitations/denied-360.png",
+        "capturedAt": "2026-11-06T07:24:50.823Z",
+        "viewport": {
+          "width": 360,
+          "height": 844
+        },
+        "dpr": 1,
+        "componentBounds": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 857.703125
+        }
+      },
+      "openWrites": 0,
+      "acceptWrites": 1,
+      "declineWrites": 1,
+      "expiredWrites": 0,
+      "fullWrites": 0,
+      "deniedWrites": 1,
+      "deniedNotice": "denied",
+      "overflow": "PASS",
+      "minimumTouchTarget": 44
+    },
+    {
+      "width": 390,
+      "list": {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/exec-w4-inv/docs/mcr/evidence/task-26-invitations/list-390.png",
+        "capturedAt": "2026-11-06T07:24:51.133Z",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "dpr": 1,
+        "componentBounds": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 951.09375
+        }
+      },
+      "accept": {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/exec-w4-inv/docs/mcr/evidence/task-26-invitations/accept-390.png",
+        "capturedAt": "2026-11-06T07:24:51.233Z",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "dpr": 1,
+        "componentBounds": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 990.28125
+        }
+      },
+      "decline": {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/exec-w4-inv/docs/mcr/evidence/task-26-invitations/decline-390.png",
+        "capturedAt": "2026-11-06T07:24:51.366Z",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "dpr": 1,
+        "componentBounds": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 990.28125
+        }
+      },
+      "expired": {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/exec-w4-inv/docs/mcr/evidence/task-26-invitations/expired-390.png",
+        "capturedAt": "2026-11-06T07:24:51.461Z",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "dpr": 1,
+        "componentBounds": {
+          "x": 27,
+          "y": 675.359375,
+          "width": 353,
+          "height": 168.734375
+        }
+      },
+      "full": {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/exec-w4-inv/docs/mcr/evidence/task-26-invitations/full-390.png",
+        "capturedAt": "2026-11-06T07:24:51.567Z",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "dpr": 1,
+        "componentBounds": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 989.640625
+        }
+      },
+      "denied": {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/exec-w4-inv/docs/mcr/evidence/task-26-invitations/denied-390.png",
+        "capturedAt": "2026-11-06T07:24:51.667Z",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "dpr": 1,
+        "componentBounds": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 876.921875
+        }
+      },
+      "openWrites": 0,
+      "acceptWrites": 1,
+      "declineWrites": 1,
+      "expiredWrites": 0,
+      "fullWrites": 0,
+      "deniedWrites": 1,
+      "deniedNotice": "denied",
+      "overflow": "PASS",
+      "minimumTouchTarget": 44
+    },
+    {
+      "width": 430,
+      "list": {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/exec-w4-inv/docs/mcr/evidence/task-26-invitations/list-430.png",
+        "capturedAt": "2026-11-06T07:24:51.978Z",
+        "viewport": {
+          "width": 430,
+          "height": 844
+        },
+        "dpr": 1,
+        "componentBounds": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 948.375
+        }
+      },
+      "accept": {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/exec-w4-inv/docs/mcr/evidence/task-26-invitations/accept-430.png",
+        "capturedAt": "2026-11-06T07:24:52.078Z",
+        "viewport": {
+          "width": 430,
+          "height": 844
+        },
+        "dpr": 1,
+        "componentBounds": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 988.5625
+        }
+      },
+      "decline": {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/exec-w4-inv/docs/mcr/evidence/task-26-invitations/decline-430.png",
+        "capturedAt": "2026-11-06T07:24:52.211Z",
+        "viewport": {
+          "width": 430,
+          "height": 844
+        },
+        "dpr": 1,
+        "componentBounds": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 988.5625
+        }
+      },
+      "expired": {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/exec-w4-inv/docs/mcr/evidence/task-26-invitations/expired-430.png",
+        "capturedAt": "2026-11-06T07:24:52.303Z",
+        "viewport": {
+          "width": 430,
+          "height": 844
+        },
+        "dpr": 1,
+        "componentBounds": {
+          "x": 27,
+          "y": 673.640625,
+          "width": 393,
+          "height": 170.734375
+        }
+      },
+      "full": {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/exec-w4-inv/docs/mcr/evidence/task-26-invitations/full-430.png",
+        "capturedAt": "2026-11-06T07:24:52.410Z",
+        "viewport": {
+          "width": 430,
+          "height": 844
+        },
+        "dpr": 1,
+        "componentBounds": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 987.921875
+        }
+      },
+      "denied": {
+        "path": "/Users/lhs/Desktop/mcr-worktrees/exec-w4-inv/docs/mcr/evidence/task-26-invitations/denied-430.png",
+        "capturedAt": "2026-11-06T07:24:52.510Z",
+        "viewport": {
+          "width": 430,
+          "height": 844
+        },
+        "dpr": 1,
+        "componentBounds": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 874.203125
+        }
+      },
+      "openWrites": 0,
+      "acceptWrites": 1,
+      "declineWrites": 1,
+      "expiredWrites": 0,
+      "fullWrites": 0,
+      "deniedWrites": 1,
+      "deniedNotice": "denied",
+      "overflow": "PASS",
+      "minimumTouchTarget": 44
+    }
+  ],
+  "errors": [],
+  "browserVersion": "156.0.8078.80"
+}

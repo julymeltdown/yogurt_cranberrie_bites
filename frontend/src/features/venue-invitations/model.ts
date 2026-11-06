@@ -8,13 +8,50 @@ export interface MeetingParticipant {
   /** Approved, scope-qualified portrait supplied by the shell; never an arbitrary URL. */
   readonly portrait: ReactNode
 }
-export type InvitationAction = 'create' | 'accept' | 'decline' | 'cancel'
+export type InvitationDecision = 'accept' | 'decline' | 'cancel'
+export type InvitationAction = 'create' | InvitationDecision
+export type InvitationStatus = 'pending' | 'accepted' | 'declined' | 'cancelled' | 'expired'
 export interface InvitationView {
   readonly id: string
   readonly version: string
-  readonly status: 'pending' | 'accepted' | 'declined' | 'cancelled' | 'expired'
+  readonly status: InvitationStatus
   readonly expiresAtMs: number
+  /** Exact decision rights supplied by the producer for this revision. */
+  readonly allowedActions: readonly InvitationDecision[]
 }
+export interface MeetingPairPresentation {
+  readonly self: MeetingParticipant
+  readonly friend: MeetingParticipant
+  readonly landmarkLabel: string | null
+  readonly landmarkDescription: string | null
+}
+export type InboxDirection = 'INCOMING' | 'OUTGOING'
+export interface InvitationInboxItem {
+  readonly invitation: InvitationView
+  readonly target: MeetingOpenIntent | null
+  readonly presentation: MeetingPairPresentation | null
+}
+export interface InvitationInboxPage {
+  readonly items: readonly InvitationInboxItem[]
+  readonly nextCursor: string | null
+  /** Producer-supplied party capacity only. Null means the producer did not supply it. */
+  readonly capacity: { readonly limit: number; readonly joined: number } | null
+}
+export interface InvitationInboxView {
+  readonly direction: InboxDirection
+  readonly phase: 'idle' | 'loading' | 'ready' | 'error'
+  readonly items: readonly (InvitationInboxItem & { readonly direction: InboxDirection })[]
+  readonly nextCursor: string | null
+  readonly notice: 'rejected' | 'denied' | 'conflict' | 'unavailable' | 'unknown' | null
+  readonly capacity: { readonly limit: number; readonly joined: number } | null
+}
+export const emptyInvitationInbox: InvitationInboxView = Object.freeze({ direction: 'INCOMING', phase: 'idle',
+  items: [], nextCursor: null, notice: null, capacity: null })
+/** The approved W04 party-invitation policy this client surfaces. It is copy, not authority. */
+export const W04_INVITATION_POLICY = Object.freeze({ inviteeConsent: true, inviterGrantsPerParty: 1,
+  capacity: 8, expiryHours: 24, hostRevoke: true })
+export const invitationExpired = (invitation: InvitationView, nowMs: number | null) => nowMs !== null
+  && Number.isFinite(nowMs) && Number.isFinite(invitation.expiresAtMs) && invitation.expiresAtMs <= nowMs
 export interface MeetingMessage {
   readonly id: string
   readonly authorId: string
@@ -70,10 +107,14 @@ export interface MeetingLeafState {
   readonly context: MeetingContextView | null
   readonly draft: string
   readonly command: CommandView | null
-  readonly notice: 'unavailable' | 'changed' | 'invalid-message' | 'rejected' | 'unknown' | null
+  readonly notice: 'unavailable' | 'changed' | 'invalid-message' | 'rejected' | 'denied' | 'conflict' | 'unknown' | null
   readonly requestedInvitationId: string | null
+  /** Qualified server clock reading used for truthful expiry labels. */
+  readonly nowMs: number | null
+  readonly inbox: InvitationInboxView
 }
 export const emptyMeetingLeaf: MeetingLeafState = Object.freeze({ phase: 'idle', active: false,
-  surface: 'invitation', composerOpen: false, canViewOnMap: false, context: null, draft: '', command: null, notice: null, requestedInvitationId: null })
+  surface: 'invitation', composerOpen: false, canViewOnMap: false, context: null, draft: '', command: null, notice: null,
+  requestedInvitationId: null, nowMs: null, inbox: emptyInvitationInbox })
 export const commandUnresolved = (command: CommandView | null) => !!command
   && (command.phase === 'pending' || command.phase === 'unknown' || command.phase === 'checking')

@@ -19,6 +19,7 @@ export function MeetingConversation({ owner, state }: { readonly owner: MeetingL
     </div>
     <MeetingParticipants context={context} />
     <p className="venue-meeting-guidance">{context.landmarkLabel ? 'Use the shared place below to meet up.' : 'A conversation with your friend for this event.'}</p>
+    <p className="venue-meeting-explanation">Messaging is authorized by your current friendship and event access. An invitation is optional context and never grants access.</p>
     {!inlinePlace && <MeetingPlace context={context} {...(state.canViewOnMap ? { onView: () => { owner.viewOnMap() } } : {})} />}
     <ol className="venue-meeting-messages" aria-label="Messages about this place">
       {context.messages.map(message => {

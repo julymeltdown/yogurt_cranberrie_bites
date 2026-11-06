@@ -8,6 +8,8 @@ const noticeText = {
   changed: 'Meeting access changed. Open this place again from the map.',
   'invalid-message': 'Check the message requirements before sending.',
   rejected: 'The action was not applied. Current permissions and invitation details have been refreshed.',
+  denied: 'The server denied this action. Current permissions and invitation status have been refreshed.',
+  conflict: 'This invitation changed. The current server status is shown; check it before trying again.',
   unknown: 'The result is uncertain. Check the original action before starting another one.',
 } as const
 export function MeetingLeaf({ owner, onClose }: { readonly owner: MeetingLeafOwner; readonly onClose?: () => void }) {

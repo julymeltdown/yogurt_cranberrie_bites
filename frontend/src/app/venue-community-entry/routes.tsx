@@ -1,9 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useSyncExternalStore } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import type { LeafSurface } from '../../features/venue-invitations/model'
+import { InvitationInbox } from '../../features/venue-invitations/Inbox'
+import { emptyMeetingLeaf, type LeafSurface } from '../../features/venue-invitations/model'
 import { canonicalId } from '../routes'
 import { useMeetingLeafOwner } from './provider'
 import { MeetingLeaf, MeetingUnavailable } from './view'
+
+const noSubscribe = () => () => {}, empty = () => emptyMeetingLeaf
 
 function InvitationRoute({ surface }: { readonly surface: LeafSurface }) {
   const owner = useMeetingLeafOwner(), id = useParams().invitationId ?? ''
@@ -23,3 +26,13 @@ function InvitationRoute({ surface }: { readonly surface: LeafSurface }) {
 }
 export function VenueInvitationPanel() { return <InvitationRoute surface="invitation" /> }
 export function VenueConversationPanel() { return <InvitationRoute surface="conversation" /> }
+/** Extension IA "invitation decisions/status": a view state, not a bare-user DM entry. */
+export function VenueInvitationsPanel() {
+  const owner = useMeetingLeafOwner()
+  const state = useSyncExternalStore(owner?.subscribe ?? noSubscribe, owner?.read ?? empty, empty)
+  useEffect(() => { if (owner) void owner.openInbox('INCOMING') }, [owner])
+  if (!owner) return <MeetingUnavailable />
+  return <InvitationInbox owner={owner} state={state}
+    onDirection={direction => { void owner.openInbox(direction) }}
+    onRefresh={() => { void owner.refreshInbox() }} />
+}

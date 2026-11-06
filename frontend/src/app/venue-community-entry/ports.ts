@@ -1,5 +1,5 @@
 import type { MeetingOpenIntent, VenueMapFocusPort, VenueView } from '../../features/paradise-city-map/ports'
-import type { LeafCommand, MeetingContextView } from '../../features/venue-invitations/model'
+import type { InboxDirection, InvitationInboxPage, LeafCommand, MeetingContextView } from '../../features/venue-invitations/model'
 import type { PrivacyScope } from '../../shared/query/privacy'
 import type { MeetingClockPort, MeetingEntryAuth } from '../meeting-entry/ports'
 
@@ -8,14 +8,16 @@ export interface LeafRequest {
   /** The original shell-owned signal. Closing a route does not replace it. */
   readonly signal: AbortSignal
 }
+export type LeafRejection = 'denied' | 'conflict' | 'unavailable'
 export type LeafCommandResult =
   | { readonly state: 'unknown' }
-  | { readonly state: 'rejected' }
+  | { readonly state: 'rejected'; readonly reason?: LeafRejection }
   | { readonly state: 'applied' }
 /** Internal normalized adapter seam. No URLs, wire schema or transport implementation here. */
 export interface MeetingLeafAdapter {
   readSelection(intent: MeetingOpenIntent, request: LeafRequest): Promise<MeetingContextView | null>
   readInvitation(invitationId: string, request: LeafRequest): Promise<MeetingContextView | null>
+  listInvitations(direction: InboxDirection, cursor: string | undefined, request: LeafRequest): Promise<InvitationInboxPage | null>
   execute(command: LeafCommand, request: LeafRequest): Promise<LeafCommandResult>
   /** Read status only; MUST NOT re-execute an unknown command. */
   status(command: LeafCommand, request: LeafRequest): Promise<LeafCommandResult>
