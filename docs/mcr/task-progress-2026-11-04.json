@@ -17034,7 +17034,7 @@
       "title": "Shared relationship policy port",
       "lane": "BE-CORE",
       "coverage_bucket": "IMPLEMENTATION_EVIDENCED",
-      "recorded_state": "IN_PROGRESS",
+      "recorded_state": null,
       "evidence": [
         "docs/mcr/backend/relationship-authority-integration.md"
       ],
@@ -17099,36 +17099,7 @@
           "VENU-BE-M01",
           "VENU-BE-N01"
         ],
-        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria.",
-        "current_scope_evidence_2026_11_06": {
-          "branch": "codex/mcr-exec-w1-relationship",
-          "base": "501710d293e5309e862997a353714e5753a76da0",
-          "evidence": [
-            "docs/mcr/contracts/be37-relationship-consumers-2026-11-06.md"
-          ],
-          "verified": {
-            "world_ws": "exit 0; 20 passed, 0 failed, 4 ignored",
-            "relationship_smoke_pg16": "PASS; 22/22 producer tests, restart persistence, cleanup",
-            "relationship_authority": "exit 0; 3 passed, 1 ignored",
-            "social_live": "exit 0; 8 passed, 22 ignored",
-            "social_remaining_concert_pg16": "8 passed; QA04 real seven-principal matrix excluded by frozen runner and not run",
-            "friend_concert_social_remaining_pg16": "exit 0; 5 passed"
-          },
-          "remaining": [
-            "One real PostgreSQL test driving presence/party/gift/feed/intro/report read entry points after committed block and suspension, with cache invalidation",
-            "Registered-runtime route matrix returning 403/404 without private metadata for blocked actors",
-            "Two-client QA: A blocks B; B disappears from A nearby/party/feed within one invalidation while unblocked control stays visible",
-            "social_policy_runtime owned fixture schema (world memberships) for qualification"
-          ]
-        },
-        "execution_report_2026_11_06": {
-          "owner": "exec row 7 session",
-          "status": "IN_PROGRESS; base suites pass on private PG; cross-projection proof and route/QA matrix remain",
-          "completed": "World WS 20/20, relationship producer 22/22 real PG with restart, authority 3/3, social live 8/8, friend retained 5/5, concert retained 8/8 (QA04 excluded by runner)",
-          "remaining": "Unified real-PG projection/removal+cache test; 403/404 route matrix; two-client QA; policy runtime fixture schema",
-          "commitPush": "not published; branch only",
-          "source": "developer-owned validation on branch base 501710d"
-        }
+        "amendment_link_interpretation": "Additional mandatory venue scope, not old-task completion or an implicit source grant. Preserve original definitions; reopen only genuinely changed/failing original criteria."
       }
     },
     {
