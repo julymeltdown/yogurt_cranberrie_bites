@@ -1,3 +1,4 @@
+// @vitest-environment jsdom
 import { StrictMode, useSyncExternalStore, type ReactNode } from 'react'
 import { act, cleanup, render, screen } from '@testing-library/react'
 import { afterEach, expect, it, vi } from 'vitest'

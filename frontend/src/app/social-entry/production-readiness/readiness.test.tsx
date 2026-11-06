@@ -1,3 +1,4 @@
+// @vitest-environment jsdom
 import { StrictMode, act, useLayoutEffect } from 'react'
 import { createRoot } from 'react-dom/client'
 import { afterEach, beforeEach, expect, it, vi } from 'vitest'

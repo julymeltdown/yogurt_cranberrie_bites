@@ -11,6 +11,8 @@ import { createProductionPorts, type ShellPorts } from '../ports'
 import { createFixturePorts } from './fixtures/ports'
 import { createSessionController, type SessionController } from '../../features/auth/model/session'
 import { authResponse, capabilities, eventId, isolatedCookiePolicy } from '../../features/auth/__tests__/fixtures/data'
+import { withAdmission } from '../../features/auth/__tests__/fixtures/admission'
+import { servicePolicyFixture } from '../pre-world-policy/__tests__/fixtures'
 import { PublicDocumentsProvider } from '../../features/public/model/document-provider'
 import type { DocumentProvider } from '../../features/public/model/documents'
 import { deferred, syntheticDocument, syntheticDocuments } from '../../features/public/__tests__/fixtures/documents'
@@ -44,8 +46,9 @@ it('shows entry unavailable without production event/identity and links to actua
 })
 it('uses canonical FE09 ready identity for a replace to /world, preserving the prior history entry', async () => {
   const fetch = vi.fn<typeof globalThis.fetch>(async input => (input as Request).url.endsWith('/capabilities') ? Response.json(capabilities())
-    : (input as Request).url.endsWith('/login') ? Response.json(authResponse()) : new Response(null, { status: 503 }))
-  const auth = createSessionController({ eventId, fetch, cookiePolicy: isolatedCookiePolicy() }); controllers.push(auth); auth.start()
+    : (input as Request).url.endsWith('/login') ? Response.json(authResponse())
+      : (input as Request).url.endsWith('/service-policy') ? Response.json(servicePolicyFixture()) : new Response(null, { status: 503 }))
+  const auth = createSessionController({ eventId, fetch: withAdmission(fetch), cookiePolicy: isolatedCookiePolicy() }); controllers.push(auth); auth.start()
   await vi.waitFor(() => expect(auth.read().emailEnabled).toBe(true)); await auth.login('fan@example.com', 'test-password')
   const { router } = setup('/', undefined, createProductionPorts(auth), ['/legal/privacy', '/'])
   await waitFor(() => expect(router.state.location.pathname).toBe('/world'))

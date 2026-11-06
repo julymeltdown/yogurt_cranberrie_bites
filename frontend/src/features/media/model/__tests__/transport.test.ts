@@ -1,16 +1,17 @@
 import { afterEach, beforeEach, expect, it, vi } from 'vitest'
 import { isolatedCookiePolicy } from '../../../auth/__tests__/fixtures/data'
 import { createSessionController } from '../../../auth/model/session'
+import { withAdmission } from '../../../auth/__tests__/fixtures/admission'
 import { createMediaUploadTransport } from '../../../../shared/media/transport'
 import { createImageUploadController } from '../upload-controller'
-import { event, file, image, intent, mediaId, ready, receipt, uid, user } from './fixtures'
+import { event, file, image, intent, mediaId, now, ready, receipt, uid, user } from './fixtures'
 import type { CommandBinding } from '../../../../shared/media/contract'
 beforeEach(() => vi.stubGlobal('location', { origin:'https://mcr.example' }))
 afterEach(() => vi.unstubAllGlobals())
 function setup(handler: (r:Request) => Response|Promise<Response>) {
   const fetch = vi.fn<typeof globalThis.fetch>(async r => handler(r as Request))
   // Canonical FE09 controller is the only token/session owner.
-  const auth = createSessionController({eventId:event,fetch,cookiePolicy:isolatedCookiePolicy()})
+  const auth = createSessionController({eventId:event,fetch:withAdmission(fetch),cookiePolicy:isolatedCookiePolicy()})
   auth.session.replace(0,{userId:user,eventId:event,accessToken:'memory-token'})
   const transport=createMediaUploadTransport(auth.request)
   return {auth,transport,fetch}
@@ -26,7 +27,7 @@ it('runs exact C04 JSON/binary/finalize through canonical SessionController.requ
     expect(await r.json()).toEqual({expected_revision:2});return Response.json(ready())
   })
   let n=10
-  const controller=createImageUploadController({session:h.auth.session,transport:h.transport,purpose:'POST',prepare:async()=>image(),previews:{create:()=> 'blob:test',revoke:()=>{}},key:()=>uid(n++)})
+  const controller=createImageUploadController({session:h.auth.session,transport:h.transport,purpose:'POST',prepare:async()=>image(),previews:{create:()=> 'blob:test',revoke:()=>{}},key:()=>uid(n++),now:()=>now})
   await controller.select(file());await controller.upload();expect(controller.read().phase).toBe('ready');expect(calls).toHaveLength(3)
   expect(new Set(h.fetch.mock.calls.map(([r])=>(r as Request).headers.get('Idempotency-Key'))).size).toBe(3)
   controller.dispose();h.auth.dispose()

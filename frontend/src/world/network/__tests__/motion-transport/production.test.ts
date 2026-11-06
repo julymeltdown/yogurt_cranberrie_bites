@@ -3,12 +3,13 @@ import { afterEach, expect, it, vi } from 'vitest'
 import { createSessionController } from '../../../../features/auth/model/session'
 import { decodeBootstrap } from '../../../../features/auth/model/bootstrap'
 import { authResponse, capabilities, eventId, fixture, isolatedCookiePolicy } from '../../../../features/auth/__tests__/fixtures/data'
+import { withAdmission } from '../../../../features/auth/__tests__/fixtures/admission'
 import { createProductionWorld } from '../../../../app/world-entry/production'
 
 const composition = vi.hoisted(() => {
   const subscribe = () => () => {}
   const mount = vi.fn(() => ({ dispose() {}, setVisible() {}, setInputBlocked() {} }))
-  return { mount, create: vi.fn((_options: { motionProfileVersion?: string }) => ({ mount,
+  return { mount, create: vi.fn((_options: { motionProfileVersion?: string }) => ({ mount, subscribe: () => () => {},
     replication: { read: () => null, subscribe, switchRoom: async () => false, reconnect: async () => false },
     policy: { read: () => null, subscribe }, presentation: { read: () => null, subscribe }, dispose() {},
   })) }
@@ -23,12 +24,12 @@ const dispose: (() => void)[] = []
 afterEach(() => { dispose.splice(0).reverse().forEach(fn => fn()); vi.clearAllMocks(); document.body.replaceChildren() })
 
 it('the actual default production loader explicitly requests motion; the composition is the observed downstream boundary', async () => {
-  const auth = createSessionController({ eventId, qualifiedRefresh: true, cookiePolicy: isolatedCookiePolicy(), fetch: async input => {
+  const auth = createSessionController({ eventId, qualifiedRefresh: true, cookiePolicy: isolatedCookiePolicy(), fetch: withAdmission(async input => {
     const path = new URL((input as Request).url).pathname
     if (path === '/api/auth/capabilities') return Response.json(capabilities())
     if (path === '/api/auth/login') return Response.json(authResponse())
     return new Response(null, { status: 204 })
-  } })
+  }) })
   dispose.push(() => auth.dispose())
   auth.start(); await vi.waitFor(() => expect(auth.read().emailEnabled).toBe(true))
   expect(await auth.login('fixture@example.test', 'fixture-password')).toBe(true)
@@ -39,7 +40,8 @@ it('the actual default production loader explicitly requests motion; the composi
     movementPolicy: { speedPxPerSecond: 96, footWidthPx: 12, footHeightPx: 8, interactionRadiusPx: 96 } } })
   dispose.push(() => world.dispose())
   const host = document.createElement('div'); document.body.append(host)
-  world.world.mount(host, { scope, privacyScope: auth.privacy.capture(), bootstrap: await decodeBootstrap(fixture(), scope), signal: new AbortController().signal })
+  const bootstrap = await decodeBootstrap(fixture(), scope)
+  world.world.mount(host, { scope, privacyScope: auth.privacy.capture(), bootstrap, signal: new AbortController().signal })
   await vi.waitFor(() => expect(composition.mount).toHaveBeenCalledTimes(1), { timeout: 5000 })
   expect(composition.create).toHaveBeenCalledTimes(1)
   expect(composition.create.mock.calls[0]![0].motionProfileVersion).toBe('1.0.0')

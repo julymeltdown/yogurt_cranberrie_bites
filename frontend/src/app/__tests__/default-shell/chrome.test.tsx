@@ -21,17 +21,20 @@ it('actual default shell adopts one compact chrome set and truthful unavailable 
 })
 it('default six routes, Settings and Inbox preserve sole world and Back focus', async () => {
   const h = await setup()
-  for (const label of ['Feed', 'Meet', 'Gifts', 'Wall', 'Me']) {
+  for (const [label, title] of [['Feed', 'Feed'], ['Meet', 'Meet'], ['Gifts', 'Gifts'], ['Wall', 'Wall'], ['Me', 'My profile']] as const) {
     fireEvent.click(screen.getByRole('link', { name: label }))
-    await screen.findByRole('heading', { name: label, level: 1 })
+    await screen.findByRole('heading', { name: title, level: 1 })
     expect(screen.getByRole('link', { name: label }).getAttribute('aria-current')).toBe('page')
     expect(h.stats.mounts).toBe(1); expect(h.stats.connections).toBe(1)
   }
-  fireEvent.click(screen.getByRole('link', { name: 'World' })); await screen.findByRole('button', { name: 'World tools' })
-  fireEvent.click(screen.getByRole('link', { name: 'Inbox' })); await screen.findByRole('heading', { name: 'Inbox', level: 1 })
-  fireEvent.click(screen.getByRole('button', { name: 'Back to previous panel' })); await screen.findByRole('button', { name: 'World tools' })
-  await waitFor(() => expect(document.activeElement?.id).toBe('shell-inbox'))
-  fireEvent.click(screen.getByRole('link', { name: 'Settings' })); await screen.findByRole('heading', { name: 'Settings', level: 1 })
+  fireEvent.click(screen.getByRole('link', { name: 'World' })); await screen.findByRole('button', { name: 'World destinations' })
+  fireEvent.click(screen.getByRole('button', { name: 'World destinations' }))
+  fireEvent.click(await screen.findByRole('link', { name: 'Inbox' })); await screen.findByRole('heading', { name: 'Inbox', level: 1 })
+  fireEvent.click(screen.getByRole('button', { name: 'Back to previous panel' })); await screen.findByRole('button', { name: 'World destinations' })
+  await waitFor(() => expect(document.activeElement?.id).toBe('shell-inbox-pi08'))
+  const destinations = screen.getByRole('button', { name: 'World destinations' })
+  if (destinations.getAttribute('aria-expanded') !== 'true') fireEvent.click(destinations)
+  fireEvent.click(await screen.findByRole('link', { name: 'Settings' })); await screen.findByRole('heading', { name: 'Settings', level: 1 })
   expect(h.router.state.location.pathname).toBe('/me/settings'); expect(h.stats.mounts).toBe(1)
 })
 it('actual panel header preserves full/peek/half behavior and coverage input', async () => {

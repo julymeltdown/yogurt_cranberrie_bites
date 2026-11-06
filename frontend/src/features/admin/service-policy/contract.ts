@@ -1,5 +1,5 @@
-import { schema } from '../../../../../contracts/generated/api-client/runtime'
-import type { Schemas } from '../../../../../contracts/generated/api-client/types'
+import { schema } from '../../../generated/api-client/runtime'
+import type { Schemas } from '../../../generated/api-client/types'
 import { DOMAIN_OPERATIONS } from '../../../shared/api/domain-operations.generated'
 import { freeze, utc, uuid } from '../event/model/contract'
 

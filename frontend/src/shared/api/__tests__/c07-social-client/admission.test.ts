@@ -18,8 +18,18 @@ it.each([null, 'invalid', { principals: { requester: 1, recipient: 'bad', restri
 })
 it('well-shaped input means INPUTS_PRESENT, never runtime or full IN03 qualification', () => {
   const uuid = (tail: number) => `b0000000-0000-4000-8000-${String(tail).padStart(12, '0')}`
-  const result = admitHTTP({ mode: 'real', origin: 'https://mcr.internal', eventId: uuid(1), availabilityModule: '/src/app/social-production.ts', availabilityRevision: 'a'.repeat(40),
-    principals: Object.fromEntries(['requester', 'recipient', 'restricted'].map((role, index) => [role, { userId: uuid(index + 2), email: `${role}@mcr.internal`, password: 'shape-test-only' }])),
+  const origin = 'http://127.0.0.1:4319', eventId = uuid(1), controlOwner = 'c'.repeat(32)
+  const sourceRevision = 'd'.repeat(40), binaryRevision = 'e'.repeat(40), issuedAt = new Date(Date.now() - 1_000).toISOString(), expiresAt = new Date(Date.now() + 3_600_000).toISOString()
+  const principals = Object.fromEntries(['requester', 'recipient', 'restricted'].map((role, index) => [role,
+    { userId: uuid(index + 2), email: `${role}@example.test`, password: 'shape-test-only' }]))
+  const actors = Object.fromEntries(Object.entries(principals).map(([role, principal]) => [role, { userId: principal.userId, email: principal.email,
+    eventId, method: 'GATEWAY_SIGNUP_HTTP_MAIL_VERIFY_LOGIN', signupStatus: 200, verifyStatus: 200, loginStatus: 200, bootstrapStatus: 200 }]))
+  const result = admitHTTP({ mode: 'real', origin, eventId, availabilityModule: '/src/app/social-production.ts', availabilityRevision: 'a'.repeat(40),
+    source: { authProducerRevision: sourceRevision, authBinaryRevision: binaryRevision },
+    authProducer: { version: 'mcr-local-real-auth/v1', kind: 'CANONICAL_GATEWAY_PRIVATE_HTTP_MAIL', sourceRevision, binaryRevision,
+      tool: 'world_in01_prepare.py', mailOwner: controlOwner, controlOwner, origin, eventId, issuedAt, expiresAt,
+      custody: 'PRIVATE_MODE_0600', actors },
+    runtime: { controlOwner, origin, eventId, expiresAt, private: true }, principals,
     resources: { introId: uuid(6), postId: uuid(7), approvedRequestId: uuid(8) }, qualifiedRefresh: false })
   expect(result.status).toBe('INPUTS_PRESENT'); expect(result.IN03).toBe('NOT_RUN'); expect(result.unavailable).toHaveLength(2)
 })

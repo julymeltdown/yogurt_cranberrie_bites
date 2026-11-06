@@ -75,7 +75,7 @@ it('withdraws current UI and world synchronously on policy change, then uses fre
   await waitFor(() => expect(f.load).toHaveBeenCalledTimes(2))
   expect(f.requests).toHaveLength(before)
   const bootstrap = bootstrapFor(f.load.mock.calls[1]![0])
-  refreshed.resolve({ ...bootstrap, capabilities: { ...bootstrap.capabilities, gifts: { available: false, reason: 'FEATURE_DISABLED' } } })
+  refreshed.resolve(Object.freeze({ ...bootstrap, capabilities: Object.freeze({ ...bootstrap.capabilities, gifts: { available: false as const, reason: 'FEATURE_DISABLED' as const } }) }))
   expect(await screen.findByRole('heading', { name: 'Gifts are unavailable' })).toBeVisible()
   expect(f.requests).toHaveLength(before)
   expect(f.stats.peakGames).toBe(1)
@@ -101,9 +101,9 @@ it('keeps suspended access closed on retry without dispatching or inventing reva
   const f = setup()
   await listReady()
   act(() => { f.auth.privacy.changePolicy(f.auth.privacy.capture(), 'suspended') })
-  expect(await screen.findByRole('heading', { name: 'Your event is unavailable' })).toBeVisible()
-  fireEvent.click(screen.getByRole('button', { name: 'Try again' }))
-  await screen.findByRole('heading', { name: 'Your event is unavailable' })
+  expect(await screen.findByRole('heading', { name: 'Event availability could not be confirmed' })).toBeVisible()
+  fireEvent.click(screen.getByRole('button', { name: 'Check again' }))
+  await screen.findByRole('heading', { name: 'Event availability could not be confirmed' })
   expect(f.load).toHaveBeenCalledTimes(1)
   expect(f.requests).toHaveLength(1)
   expect(f.auth.privacy.capture().gate).toBe('suspended')
@@ -133,9 +133,9 @@ it('retains pending party commands across tabs and permits verified READ_ONLY sa
   let readOnly = false
   const f = setup({ path: '/meet', handler: data.handle, bootstrap: async scope => {
     const value = bootstrapFor(scope)
-    return readOnly ? { ...value, event: { ...value.event, phase: 'READ_ONLY' }, capabilities: {
-      ...value.capabilities, mutations: { available: false, reason: 'EVENT_READ_ONLY' },
-    } } : value
+    return readOnly ? Object.freeze({ ...value, event: Object.freeze({ ...value.event, phase: 'READ_ONLY' as const }), capabilities: Object.freeze({
+      ...value.capabilities, mutations: { available: false, reason: 'EVENT_READ_ONLY' } as const,
+    }) }) : value
   } })
   clickLink((await screen.findByRole('link', { name: 'Before the encore' })).textContent!)
   const apply = await screen.findByRole('button', { name: 'Apply to party' })

@@ -7,14 +7,15 @@ import { createAppRoutes } from '../../../../app/router'
 import { createProductionPorts } from '../../../../app/ports'
 import { createSessionController, type SessionController } from '../../model/session'
 import { capabilities, eventId, isolatedCookiePolicy } from '../fixtures/data'
+import { withAdmission } from '../fixtures/admission'
 const routers: ReturnType<typeof createMemoryRouter>[] = [], controllers: SessionController[] = []
 afterEach(() => { cleanup(); routers.splice(0).forEach(r => r.dispose()); controllers.splice(0).forEach(c => c.dispose()) })
 async function setup(path: string) {
   const requests: string[] = []
-  const auth = createSessionController({ eventId, cookiePolicy: isolatedCookiePolicy(), fetch: async input => {
+  const auth = createSessionController({ eventId, cookiePolicy: isolatedCookiePolicy(), fetch: withAdmission(async input => {
     const url = (input as Request).url; requests.push(url)
     return url.endsWith('/capabilities') ? Response.json(capabilities()) : Response.json({ code: 'UNAVAILABLE', message: 'Synthetic unavailable' }, { status: 503 })
-  } }); controllers.push(auth); auth.start()
+  }) }); controllers.push(auth); auth.start()
   await vi.waitFor(() => expect(auth.read().capabilities).toBe('ready'))
   const router = createMemoryRouter(createAppRoutes(createProductionPorts(auth)), { initialEntries: [path] }); routers.push(router)
   render(<RouterProvider router={router} />)

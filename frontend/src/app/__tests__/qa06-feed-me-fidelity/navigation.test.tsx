@@ -36,5 +36,6 @@ it.each(['/feed','/me'])('keeps all registered fallback destinations on %s witho
 it.each(['/meet','/gifts'])('keeps other feature supplementary navigation on %s',path=>{
  render(<MemoryRouter initialEntries={[path]}><PanelScreen route={route(path)}><p>Existing feature content</p></PanelScreen></MemoryRouter>)
  expect(screen.getByText('Existing feature content')).toBeVisible()
+ fireEvent.click(screen.getByText('More actions'))
  expect(screen.getByRole('navigation',{name:route(path).title+' sections'})).toBeVisible()
 })

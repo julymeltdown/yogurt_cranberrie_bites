@@ -1,6 +1,15 @@
 import { describe, expect, it } from 'vitest'
+import ia from '../../../../generated/IA_EN.json'
 import { adminPaths, panelRoutes, parentPath, publicPaths, resolvePanel, safeReturnTarget, tabs } from '../routes'
 import { giftPath, ids } from './fixtures/ports'
+
+const iaRoutes = ia.screens.map(screen => screen.route.replace(/\?.*$/, ''))
+const participantPrefixes = ['/world', '/feed', '/meet', '/gifts', '/wall', '/me', '/notices', '/people', '/notifications', '/report']
+const optionalIAPaths = new Set(['/meet/parties/:partyId/chat', '/wall/history'])
+// Authorized venue amendment beyond the planning IA baseline (commit 41d90738e).
+const authorizedPanelAdditions = ['/meet/invitations/:invitationId', '/meet/invitations/:invitationId/conversation']
+const requiredPanelPaths = iaRoutes.filter(route => participantPrefixes.some(prefix => route === prefix || route.startsWith(prefix + '/'))
+  && !optionalIAPaths.has(route))
 
 describe('frozen plan route composition', () => {
   it('uses the six actual top-level destinations and static siblings before identifiers', () => {
@@ -11,12 +20,13 @@ describe('frozen plan route composition', () => {
     expect(resolvePanel('/feed/new')?.route.title).toBe('New post')
   })
   it('registers every required shell/public/admin IA path without implementing optional enhancements', () => {
-    expect(panelRoutes).toHaveLength(41)
-    expect(publicPaths).toContain('/auth/callback')
+    const paths = panelRoutes.map(route => route.path)
+    expect(new Set(paths).size).toBe(paths.length)
+    expect(new Set(paths)).toEqual(new Set([...requiredPanelPaths, ...authorizedPanelAdditions]))
+    expect(new Set(publicPaths)).toEqual(new Set(ia.screens.filter(screen => /^A[0-9]+$/.test(screen.id) || screen.id === 'X01').map(screen => screen.route)))
+    expect(new Set(adminPaths)).toEqual(new Set(iaRoutes.filter(route => route.startsWith('/admin'))))
     expect(publicPaths).toContain('/archive')
-    expect(adminPaths).toHaveLength(9)
-    expect(panelRoutes.some(route => route.path === '/wall/history')).toBe(false)
-    expect(panelRoutes.some(route => route.path.endsWith('/chat'))).toBe(false)
+    for (const optional of optionalIAPaths) expect(paths).not.toContain(optional)
     for (const route of panelRoutes) {
       const path = route.path.replace(/:[A-Za-z]+/g, ids.gift)
       expect(resolvePanel(path)?.valid).toBe(true)

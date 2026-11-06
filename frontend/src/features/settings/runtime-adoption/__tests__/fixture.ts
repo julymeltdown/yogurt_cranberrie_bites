@@ -1,4 +1,5 @@
 import { createSessionController } from '../../../auth/model/session'
+import { withAdmission } from '../../../auth/__tests__/fixtures/admission'
 import { createMeController } from '../../../me'
 import { participant, eventId, userId } from '../../../me/__tests__/fixtures'
 import { createThemeController } from '../../../theme/model/controller'
@@ -8,14 +9,14 @@ import { MapError } from '../../../../world/map/json'
 /** Deterministic canonical-controller fixture. Effects are instrumented, not actual Phaser/audio. */
 export function fixture(motion?: MotionPreference) {
   let saved = participant(), effectCalls = 0, soundCalls = 0, activeEffects = 0, activeSound = 0, writes = 0
-  const auth = createSessionController({ eventId, fetch: async input => {
+  const auth = createSessionController({ eventId, fetch: withAdmission(async input => {
     const request = input as Request
     if (request.method === 'PATCH') {
       const body = await request.json()
       saved = { ...saved, revision: saved.revision + 1, preferences: body.preferences }; writes++
     }
     return new Response(JSON.stringify(saved), { headers: { 'Content-Type': 'application/json' } })
-  } })
+  }) })
   auth.session.replace(0, { userId, eventId, accessToken: 'FE34_RUNTIME_SYNTHETIC_ONLY' })
   const controller = createMeController(auth), scope = auth.privacy.capture(), lifetime = new AbortController()
   const theme = createThemeController({ initial: 'REVENGE', scope: { userId, eventId }, preferences: { read: () => null, write() {} },

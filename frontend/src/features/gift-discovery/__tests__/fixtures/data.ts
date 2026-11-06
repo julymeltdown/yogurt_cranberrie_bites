@@ -1,4 +1,5 @@
 import { admission } from '../../../auth/__tests__/enrollment-consent/fixtures'
+import { autoAdmit } from '../../../auth/__tests__/fixtures/admission'
 import management from '../../../../../../contracts/fixtures/domain/giveaway-management.json'
 import { createSessionController } from '../../../auth/model/session'
 import { CAPABILITIES, projectCapabilities } from '../../../../app/capabilities'
@@ -26,7 +27,7 @@ export function fixture(options: { handler?: (request: Request) => Response | Pr
       receiving: { items: [reservation({ recipient_id: auth.session.read().userId! })], next_cursor: null } }
       : path.endsWith('/giveaways') ? { items: [giveaway()], next_cursor: null } : giveaway())
   } })
-  auth.session.replace(0, { userId: actorId, eventId, accessToken: 'synthetic-memory-token' })
+  auth.session.replace(0, { userId: actorId, eventId, accessToken: 'synthetic-memory-token' }); autoAdmit(auth)
   let context: GiftContext | null = { scope: auth.privacy.capture(), capabilities: allCapabilities(), eventPhase: 'OPEN' }
   const listeners = new Set<() => void>()
   const controller = createGiftDiscoveryController({ auth, context: { read: () => context,

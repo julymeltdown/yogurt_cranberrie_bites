@@ -34,6 +34,7 @@ it.each([false, true])('retains one Places owner and world lease through map/det
   await screen.findByRole('heading', { name: 'MAP' })
   expect(h.current()).toBe(controller)
   fireEvent.click(screen.getByRole('button', { name: 'Back to previous panel' }))
+  fireEvent.click(await screen.findByRole('button', { name: 'World tools' }))
   await screen.findByRole('navigation', { name: 'World tools' })
   expect(h.router.state.location.pathname).toBe('/world')
   expect(h.current()).toBe(controller); expect(document.querySelector('[data-world-host]')).toBe(host)

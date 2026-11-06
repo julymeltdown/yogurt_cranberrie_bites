@@ -14,12 +14,12 @@ interface Candidate {
   boards: { id: string; interactionId: null; destination: string; atlasRect: Rect; displayRect: Rect }[]
   ground: { displayBounds: Rect }; atlas: { width: number; height: number }
 }
-const data = readFileSync(new URL('../../../../../../../docs/mcr/evidence/pi08-finish-01/photo2-world-contract/producer-input-candidate.json', import.meta.url))
+const data = readFileSync(new URL('../../../../../../../docs/mcr/evidence/pi08-finish-01/photo2-world-contract/producer-input-v2.json', import.meta.url))
 const candidate = JSON.parse(data.toString()) as Candidate
 const close = (a: Point | null, b: Point) => { expect(a).not.toBeNull(); expect(a!.x).toBeCloseTo(b.x, 7); expect(a!.y).toBeCloseTo(b.y, 7) }
 
 it('qualifies the new204-vertex producer layout and22 frame feet without admitting pixels or runtime', () => {
-  expect(createHash('sha256').update(data).digest('hex')).toBe('585c98691033c390ebe433217ee1b7fd646ac1fc5cbb3b39889b82c5434e37ed')
+  expect(createHash('sha256').update(data).digest('hex')).toBe('da87fef51caf2333e2fb9b05755efff0046c7254f0b399bc234b1308697c52fd')
   const p = createPhoto2Projection(candidate.mesh)
   expect(candidate.mesh.display).toHaveLength(204)
   expect(candidate.frames).toHaveLength(22)

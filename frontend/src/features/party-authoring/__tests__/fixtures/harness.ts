@@ -1,5 +1,6 @@
 import { CAPABILITIES, projectCapabilities } from '../../../../app/capabilities'
 import { createSessionController } from '../../../auth/model/session'
+import { withAdmission } from '../../../auth/__tests__/fixtures/admission'
 import { createPartyAuthoring } from '../../model/controller'
 import type { PartyAccess } from '../../../party-discovery/model/controller'
 import { ids, party, profile } from '../../../party-discovery/__tests__/fixtures/data'
@@ -7,7 +8,7 @@ export { ids, party, profile, errorResponse, pendingReceipt } from '../../../par
 export const draft = () => ({ title:'Encore friends',description:'Share a plan.',ticket_section:'A',capacity:5,meeting_starts_at:'2026-11-07T08:00:00Z',meeting_ends_at:'2026-11-07T09:00:00Z',requirements:'Be considerate',public_place_id:ids.place,state:'OPEN' as const })
 export function harness(handle?: (r:Request)=>Response|Promise<Response>, editing=false) {
   const requests:Request[]=[], listeners=new Set<()=>void>()
-  const auth=createSessionController({eventId:ids.event,cookiePolicy:{available:true,onInvalidate:()=>()=>{},run:(_k,w)=>w(),dispose(){}},fetch:async input=>{const r=input as Request;requests.push(r.clone());return handle ? handle(r):Response.json(party({owner:profile(ids.actor)}))}})
+  const auth=createSessionController({eventId:ids.event,cookiePolicy:{available:true,onInvalidate:()=>()=>{},run:(_k,w)=>w(),dispose(){}},fetch:withAdmission(async input=>{const r=input as Request;requests.push(r.clone());return handle ? handle(r):Response.json(party({owner:profile(ids.actor)}))})})
   auth.session.replace(0,{userId:ids.actor,eventId:ids.event,accessToken:'fixture-token'})
   let access:PartyAccess|null={scope:auth.privacy.capture(),phase:'OPEN',capabilities:projectCapabilities(Object.fromEntries(CAPABILITIES.map(k=>[k,{available:true,reason:null}])))}
   let key=50

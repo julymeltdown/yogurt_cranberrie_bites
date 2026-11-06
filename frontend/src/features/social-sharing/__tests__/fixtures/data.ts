@@ -1,5 +1,6 @@
 import approved from '../../../../../../contracts/fixtures/domain/approved-social-request.json'
 import { createSessionController } from '../../../auth/model/session'
+import { withAdmission } from '../../../auth/__tests__/fixtures/admission'
 import { createSocialSharingController } from '../../model/controller'
 import type { SocialAccess } from '../../model/runtime'
 import type { SocialRequest } from '../../model/contract'
@@ -11,7 +12,7 @@ export const handleStates = (userId = requesterId) => ({ items: [{ user_id: user
 export const pending = (): SocialRequest => ({ ...structuredClone(request), state: 'PENDING', revision: 1, approved_platforms: [] })
 export function deferred<T>() { let resolve!: (value: T) => void; const promise = new Promise<T>(r => { resolve = r }); return { promise, resolve } }
 export function setup(fetch: typeof globalThis.fetch, userId = requesterId, qualifiedRefresh = false) {
-  const auth = createSessionController({ eventId, fetch, qualifiedRefresh })
+  const auth = createSessionController({ eventId, fetch: withAdmission(fetch), qualifiedRefresh })
   auth.session.replace(0, { userId, eventId, accessToken: 'social-test-only-token' })
   const listeners = new Set<() => void>(); let access: SocialAccess = { available: true, readOnly: false }, clock = epoch
   const accessPort = { read: () => access, subscribe(fn: () => void) { listeners.add(fn); return () => { listeners.delete(fn) } } }

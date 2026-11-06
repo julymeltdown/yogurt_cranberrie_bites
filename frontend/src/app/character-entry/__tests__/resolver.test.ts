@@ -1,7 +1,8 @@
 // @vitest-environment jsdom
 import { afterEach, expect, it } from 'vitest'
 import selected from '../../../../../contracts/fixtures/assets/selected-static/avatar-manifest.json'
-import { bundle, authHarness, requestFor, inputConfiguration } from '../../world-entry/__tests__/data'
+import { authHarness } from '../../world-entry/__tests__/admitted-auth'
+import { bundle, requestFor, inputConfiguration } from '../../world-entry/__tests__/data'
 import { contentHash } from '../../../world/map/json'
 import { createWorldEntryResolver } from '../../world-entry/resolver'
 import { decodeBootstrap } from '../../../features/auth/model/bootstrap'

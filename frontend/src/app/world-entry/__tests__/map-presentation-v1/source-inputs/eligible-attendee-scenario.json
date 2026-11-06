@@ -1,13 +1,18 @@
 {
   "scenario": "eligible-attendee-contract-fixture",
   "qualification": "WORLD_POSITIVE_CONTRACT_FIXTURE_NOT_OPERATOR_OR_LIVE_ADMISSION",
-  "source_revision": "a5c6cad52e630d61aa4ce581e7230c13cc5feb25",
+  "source_revision": "9185c99223bbf7437fff4346a7683dbb4187dfb0",
   "sources": {
-    "contracts/core/v1/core.schema.json": "e9f9618548d255ba53ea9f46efe6fb52ede468acab636d43f0c487eeab779fba",
+    "contracts/core/v1/core.schema.json": "7760712818b399faf956b874565c080726f70913b6b4fc81e2236ab127332eaa",
     "frontend/src/app/world-entry/__tests__/data.ts": "d3034029dc3b78b1531bdbc701b26f9f03a42eb0348a5549d9d3063a9d330549",
     "backend/releases/operator-bundle/quality-v6/bootstrap.json": "11e25d9e692e224d35b91c0a77bf9e8da8dfa42ad3d8dbf650e281e905176b42"
   },
-  "projection": { "capabilities.world": { "available": true, "reason": null } },
+  "projection": {
+    "capabilities.world": {
+      "available": true,
+      "reason": null
+    }
+  },
   "limits": [
     "Only a controlled eligible-attendee capability scenario; not an actual operator response or admission receipt.",
     "Original map, theme, avatar and geometry manifests remain unmodified.",

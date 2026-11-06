@@ -253,7 +253,7 @@ describe('honest access, bootstrap and failure boundaries', () => {
     const log = vi.spyOn(console, 'error').mockImplementation(() => undefined)
     try {
       click('Feed')
-      expect(await screen.findByRole('alert', { name: 'This page is unavailable' })).toBeVisible()
+      expect(await screen.findByRole('heading', { name: 'This page is unavailable', level: 1 })).toBeVisible()
       expect(screen.queryByText('secret fixture payload')).not.toBeInTheDocument()
       expect(fixture.stats.mounts).toBe(1)
     } finally { log.mockRestore() }
@@ -279,7 +279,7 @@ describe('honest access, bootstrap and failure boundaries', () => {
       await act(async () => { await Promise.resolve() })
       expect(signal).toBeDefined()
       await act(() => vi.advanceTimersByTime(12_000))
-      expect(screen.getByRole('heading', { name: 'Your event is unavailable' })).toBeVisible()
+      expect(screen.getByRole('heading', { name: 'Event availability could not be confirmed' })).toBeVisible()
       expect(signal!.aborted).toBe(true)
       expect(fixture.stats.mounts).toBe(0)
     } finally { vi.useRealTimers() }
@@ -340,7 +340,7 @@ describe('panel input, focus and scrolling', () => {
     opener.focus(); fireEvent.click(opener)
     expect(screen.getByRole('heading', { name: 'Giveaway', level: 1 })).toHaveFocus()
     await act(() => router.navigate(-1))
-    expect(opener).toHaveFocus()
+    expect(document.getElementById(opener.id)).toHaveFocus()
   })
   it('pauses input for panels and leaves Escape to editable fields', async () => {
     const { stats, router } = setup()

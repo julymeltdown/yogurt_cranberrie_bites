@@ -1,6 +1,7 @@
 import { expect, it } from 'vitest'
 import { decodeBootstrap } from '../../../../features/auth/model/bootstrap'
-import { authHarness, bundle, seal } from '../../../../app/world-entry/__tests__/data'
+import { authHarness } from '../../../../app/world-entry/__tests__/admitted-auth'
+import { bundle, seal } from '../../../../app/world-entry/__tests__/data'
 import { referenceMapRelease } from './scene-data'
 
 it('keeps the coherent PARADE-only proposal outside actual bootstrap admission', async () => {

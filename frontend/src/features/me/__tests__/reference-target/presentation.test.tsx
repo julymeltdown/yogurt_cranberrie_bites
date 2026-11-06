@@ -20,7 +20,7 @@ it('shows two real-schema own posts only in the partial event-page view; does no
   expect(screen.getByText('12 reactions · 3 replies',{exact:false})).toBeVisible()
   expect(screen.queryByText(/Lv\.|Reserved MCR|Joined “/)).toBeNull()
   expect(view.container.querySelector('details')?.open).toBe(false)
-  expect(screen.getByRole('link',{name:'Manage private social links'})).toHaveAttribute('href','/me/social')
+  expect(screen.getByRole('link',{name:'Private social links'})).toHaveAttribute('href','/me/social')
   expect(screen.getByRole('link',{name:'Sharing requests'})).toHaveAttribute('href','/me/requests')
   expect(screen.getByRole('link',{name:'My gifts'})).toHaveAttribute('href','/gifts/mine')
   act(()=>h.auth.privacy.changePolicy(h.auth.privacy.capture(),'consent-revoked'))

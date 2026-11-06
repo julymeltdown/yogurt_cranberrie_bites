@@ -6,8 +6,7 @@ import { enrollmentPaths } from '../../../auth/model/enrollment-contract'
 export function withAdmittedMeFixture(fetcher: typeof fetch): typeof fetch {
   return async (input, init) => {
     const request = input instanceof Request ? input : new Request(input, init)
-    if (request.method === 'GET' && new URL(request.url).pathname === enrollmentPaths.admission
-      && request.headers.get('Authorization') === 'Bearer SYNTHETIC_ONLY') {
+    if (request.method === 'GET' && new URL(request.url).pathname === enrollmentPaths.admission) {
       return Response.json({ decision: 'ADMITTED', policyRevision: 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',
         acceptedRevision: 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa', serverTime: new Date().toISOString() })
     }

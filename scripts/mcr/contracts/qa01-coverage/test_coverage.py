@@ -101,9 +101,9 @@ class CoverageTests(unittest.TestCase):
 
 class C07NamespaceTests(unittest.TestCase):
     def test_c07_separation_is_exact_not_a_global_exclusion(self):
-        for name in ("contracts/fixtures/c07/a.json", "contracts/generated/api-client/nested/a.json"):
+        for name in ("contracts/fixtures/c07/a.json", "frontend/src/generated/api-client/nested/a.json"):
             self.assertFalse(coverage.legacy_path(ROOT / name))
-        for name in ("contracts/fixtures/c07-other/a.json", "contracts/generated/api-client-other/a.json",
+        for name in ("contracts/fixtures/c07-other/a.json", "frontend/src/generated/api-client-other/a.json",
                      "contracts/fixtures/domain/c07/a.json", "contracts/core/v1/core.schema.json"):
             self.assertTrue(coverage.legacy_path(ROOT / name))
 

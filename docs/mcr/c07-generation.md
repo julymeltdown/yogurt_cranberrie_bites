@@ -9,7 +9,7 @@ The generator consumes the canonical `contracts/generated/mcr-domain.openapi.jso
 and the existing contract/fixture corpus without changing those inputs. It emits
 all registered HTTP operation request/response types, public schemas, Zod adapters,
 a validated fetch client and deterministic test transport into
-`contracts/generated/api-client/` and the identical public TypeScript mirror at
+`frontend/src/generated/api-client/` and the identical public TypeScript mirror at
 `frontend/src/shared/api/generated/`. Application consumers are outside this grant.
 The manifest inventories source hashes and every generated file. The independent
 fixture namespace is `contracts/fixtures/c07/`; both namespaces are exhaustive:

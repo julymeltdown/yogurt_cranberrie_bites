@@ -30,7 +30,7 @@ it('keeps a session draft across route unmounts under StrictMode', async () => {
   await waitFor(() => expect((screen.getByLabelText('Party title') as HTMLInputElement).value).toBe('Retained party draft'))
 })
 it('does not replay unknown reservation across panel navigation, and exposes original status recovery', async () => {
-  const { f } = mount(`/gifts/${giftId}/reservation`); await screen.findByText('Reserve an item'); f.loseResponse()
+  const { f } = mount(`/gifts/${giftId}/reservation`); await screen.findByRole('button', { name: 'Confirm reservation' }); f.loseResponse()
   fireEvent.click(screen.getByRole('button', { name: 'Confirm reservation' })); await screen.findByText(/Outcome unknown/)
   fireEvent.click(screen.getByText('Pickup route')); await screen.findByRole('heading', { name: 'Finish the original pickup command' })
   fireEvent.click(screen.getByRole('button', { name: 'Check original command' })); await screen.findByText(/still pending/)

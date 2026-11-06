@@ -143,6 +143,7 @@ describe('FE33 shell mural entry', () => {
 
   it('uses epoch receipt expiry independently from the monotonic sync clock', async () => {
     const f = fixture(), r = f.release(), owner = f.create(r.value, () => Date.parse('2026-11-06T00:00:00Z')); await settle()
+    f.server.receiptExpiry('2026-11-05T00:00:00Z')
     const sync = owner.read().sync!; f.server.mode('lost'); sync.editor.select(1, 1); await sync.editor.confirm()
     const command = sync.editor.read().command; expect(f.clock.now()).toBe(0)
     f.server.mode('ack'); f.server.resultAvailable(true); await sync.editor.check()

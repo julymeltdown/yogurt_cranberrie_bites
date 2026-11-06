@@ -1,6 +1,7 @@
 import { expect, vi } from 'vitest'
 import { CAPABILITIES, projectCapabilities } from '../../../../app/capabilities'
 import { createSessionController } from '../../../auth/model/session'
+import { withAdmission } from '../../../auth/__tests__/fixtures/admission'
 import { createWorldReplication } from '../../../../world/network/replication'
 import { MockWorldClock, MockWorldTransport } from '../../../../world/network/mock'
 import type { Snapshot, WorldRooms, WorldTicketResponse } from '../../../../world/network/WorldTransport'
@@ -16,7 +17,7 @@ export const flush = async () => { for (let i = 0; i < 20; i++) await Promise.re
 export function harness(fetcher?: (r: Request) => Promise<Response> | Response, qualifiedRefresh = false, beforeTicket?: (roomId: string) => Promise<void>) {
   const requests: Request[] = [], worldListeners = new Set<() => void>(), clock = new MockWorldClock(Date.parse(ticket.server_time))
   const auth = createSessionController({ eventId: initial.eventId, qualifiedRefresh, cookiePolicy: { available: true, onInvalidate: () => () => {}, run: (_kind, work) => work(), dispose() {} },
-    fetch: async input => { const r = input as Request; requests.push(r); return fetcher ? fetcher(r) : Response.json(catalog()) } })
+    fetch: withAdmission(async input => { const r = input as Request; requests.push(r); return fetcher ? fetcher(r) : Response.json(catalog()) }) })
   auth.session.replace(0, { userId: initial.selfUserId, eventId: initial.eventId, accessToken: 'fixture-token-memory-only' })
   const resources = { eventId: initial.eventId, roomId: initial.roomId, mapId: initial.mapId, mapRevision: initial.mapRevision, avatarManifestId: initial.avatarManifestId, avatarManifestVersion: initial.avatarManifestVersion }
   let keys = 110, tickets = 0

@@ -70,13 +70,13 @@ it('keeps real profile content in its scroll owner and hides the entire flow in 
   try {
     render(<RouterProvider router={router} />)
     await screen.findByRole('heading', { name: 'My profile', level: 1 }, { timeout: 4000 })
-    await screen.findByText(/^Account access is unavailable until/, {}, { timeout: 4000 })
+    await screen.findAllByText(/^Could not load your profile/, {}, { timeout: 4000 })
     const body = document.getElementById('shell-panel-body')!
     const flow = body.querySelector('.mcr-reference-panel-flow')!
     const content = flow.querySelector('.mcr-reference-panel-content')!
     expect(body.querySelector('.mcr-chrome-parade-footer')).toBeNull()
     expect(content.parentElement).toBe(flow)
-    expect(content.querySelector('[role="status"]')).toHaveTextContent('Account access is unavailable')
+    expect(content.querySelector('[role="status"]')).toHaveTextContent('Could not load your profile')
     fireEvent.click(screen.getByRole('button', { name: 'Minimize panel' }))
     expect(body).not.toBeVisible()
     expect(content).not.toBeVisible()

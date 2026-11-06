@@ -1,7 +1,8 @@
 // @vitest-environment jsdom
 import { afterEach, expect, it } from 'vitest'
 import { createWorldEntryResolver } from '../../../app/world-entry/resolver'
-import { authHarness, assetBytes, bundle, inputConfiguration, requestFor, seal } from '../../../app/world-entry/__tests__/data'
+import { authHarness } from '../../../app/world-entry/__tests__/admitted-auth'
+import { assetBytes, bundle, inputConfiguration, requestFor, seal } from '../../../app/world-entry/__tests__/data'
 import { sha256 } from '../../map/json'
 import { sceneryResources, type Scenery } from '../../illustrated/model'
 const owners: ReturnType<typeof authHarness>[] = []

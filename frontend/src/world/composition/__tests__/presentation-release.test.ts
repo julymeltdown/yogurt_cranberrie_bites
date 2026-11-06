@@ -3,6 +3,7 @@ import { afterEach, expect, it, vi } from 'vitest'
 import { waitFor } from '@testing-library/react'
 import { createSessionController } from '../../../features/auth/model/session'
 import { isolatedCookiePolicy } from '../../../features/auth/__tests__/fixtures/data'
+import { withAdmission } from '../../../features/auth/__tests__/fixtures/admission'
 import { createWorldComposition } from '../index'
 import { currentScope, eventId, project, resolverFor, testData } from './fixtures/data'
 import type { WorldCamera } from '../../camera/port'
@@ -16,7 +17,7 @@ vi.mock('../../map/resources', async original => {
 const cleanup: (() => void)[] = []
 afterEach(() => {cleanup.splice(0).reverse().forEach(stop=>stop());document.body.replaceChildren()})
 async function setup() {
- const data = await testData(), auth = createSessionController({eventId,cookiePolicy:isolatedCookiePolicy(),fetch:async()=>new Response(null,{status:503})})
+ const data = await testData(), auth = createSessionController({eventId,cookiePolicy:isolatedCookiePolicy(),fetch:withAdmission(async()=>new Response(null,{status:503}))})
  auth.session.replace(0,{userId:data.bootstrap.participant.user_id,eventId,accessToken:'test-memory'})
  cleanup.push(()=>auth.dispose())
  const host=document.createElement('div');document.body.append(host)

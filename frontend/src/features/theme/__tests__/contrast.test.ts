@@ -1,6 +1,11 @@
 import { readFileSync } from 'node:fs'
 import { expect, it } from 'vitest'
 const css = readFileSync(new URL('../../../shared/styles/themes/themes.css', import.meta.url), 'utf8')
+const tokensCss = readFileSync(new URL('../../../shared/styles/parade-ink/tokens.css', import.meta.url), 'utf8')
+const resolve = (value: string) => {
+  const token = /var\((--pi-[a-z-]+)\)/.exec(value)?.[1]
+  return token ? new RegExp(token + ':\\s*(#[0-9a-f]{6})', 'i').exec(tokensCss)![1]! : value
+}
 function luminance(hex: string) {
   const channels = hex.slice(1).match(/../g)!.map(channel => {
     const s = Number.parseInt(channel, 16) / 255
@@ -10,8 +15,9 @@ function luminance(hex: string) {
 }
 function contrast(a: string, b: string) { const x = luminance(a), y = luminance(b); return (Math.max(x, y) + .05) / (Math.min(x, y) + .05) }
 it.each(['REVENGE', 'PARADE', 'DANGER'])('%s supports readable semantic text and visible control focus', theme => {
-  const body = new RegExp(`\\[data-mcr-theme="${theme}"\\] \\{([^}]+)`).exec(css)![1]!
-  const tokens = Object.fromEntries([...body.matchAll(/--mcr-([a-z]+): (#[0-9a-f]{6})/g)].map(match => [match[1]!, match[2]!]))
+  const body = /\[data-mcr-theme\][^{]*\{([^}]+)/.exec(css)![1]!
+  const tokens = Object.fromEntries([...body.matchAll(/--mcr-([a-z]+):\s*(var\([^)]+\)|#[0-9a-f]{6})/g)].map(match => [match[1]!, resolve(match[2]!)]))
+  expect(tokens.paper, `${theme} paper token`).toBeDefined()
   for (const color of ['ink', 'muted', 'red', 'success', 'warning']) expect(contrast(tokens[color]!, tokens.paper!), `${color} on paper`).toBeGreaterThanOrEqual(4.5)
   expect(contrast(tokens.ink!, tokens.cream!), 'ink on cream').toBeGreaterThanOrEqual(4.5)
   expect(contrast(tokens.focus!, tokens.paper!), 'focus on paper').toBeGreaterThanOrEqual(3)

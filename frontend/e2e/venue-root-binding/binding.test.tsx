@@ -1,3 +1,4 @@
+// @vitest-environment jsdom
 import { webcrypto } from 'node:crypto'
 import { afterEach, beforeAll, describe, expect, it, vi } from 'vitest'
 import { act, cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'

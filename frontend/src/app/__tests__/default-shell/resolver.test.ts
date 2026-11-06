@@ -1,7 +1,8 @@
 // @vitest-environment jsdom
 import { afterEach, expect, it } from 'vitest'
 import { createWorldEntryResolver } from '../../world-entry/resolver'
-import { assetBytes, authHarness, bundle, inputConfiguration, requestFor, seal } from '../../world-entry/__tests__/data'
+import { authHarness } from '../../world-entry/__tests__/admitted-auth'
+import { assetBytes, bundle, inputConfiguration, requestFor, seal } from '../../world-entry/__tests__/data'
 const owners: ReturnType<typeof authHarness>[] = []
 afterEach(() => owners.splice(0).forEach(owner => owner.auth.dispose()))
 it.each(['unreviewed', 'missing', 'foreign-hash'] as const)('does not admit optional %s theme bytes or authorize selection', async mode => {

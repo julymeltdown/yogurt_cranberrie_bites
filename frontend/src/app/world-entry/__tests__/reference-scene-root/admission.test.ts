@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import { afterEach, expect, it, vi } from 'vitest'
 import { sceneData, localInput, userId, eventId } from './data'
-import { authHarness } from '../data'
+import { authHarness } from '../admitted-auth'
 import { decodeBootstrap } from '../../../../features/auth/model/bootstrap'
 import { createWorldEntryResolver } from '../../resolver'
 import { preflightReferenceScene } from '../../reference-scene-overview'

@@ -1,6 +1,7 @@
 // TEST ONLY. Canonical Auth with deterministic HTTP candidate fixtures; no production role grant.
 import { createSessionController } from '../../../../auth/model/session';
 import { fixture, isolatedCookiePolicy, userId, eventId } from '../../../../auth/__tests__/fixtures/data';
+import { withAdmission } from '../../../../auth/__tests__/fixtures/admission';
 import { createModeration, type EvidencePort, type ModeratorLease } from '../../model/controller';
 import { operation, rowId, type Lane, type Row, type Report } from '../../model/contract';
 export const id = (n: number) => '00000000-0000-4000-8000-' + String(n).padStart(12, '0');
@@ -12,7 +13,7 @@ export function harness(lane: Lane = 'reports', evidence?: EvidencePort) {
     const requests: Request[] = [], listeners = new Set<() => void>();
     let keyCounter=799;
     let handler: ((r: Request) => Response | Promise<Response> | null) | null = null, data = rows(lane);
-    const auth = createSessionController({ eventId, cookiePolicy: isolatedCookiePolicy(), fetch: async (input) => {
+    const auth = createSessionController({ eventId, cookiePolicy: isolatedCookiePolicy(), fetch: withAdmission(async (input) => {
             const r = input as Request;
             requests.push(r.clone());
             const overridden = handler?.(r);
@@ -32,7 +33,7 @@ export function harness(lane: Lane = 'reports', evidence?: EvidencePort) {
             if (path.endsWith('/' + report.report_id))
                 return Response.json({ ...privateDetail, report: data[0] });
             return Response.json({ items: data, next_cursor: null });
-        } });
+        }) });
     auth.session.replace(0, { userId, eventId, accessToken: 'fixture-moderator-memory-only' });
     let grant: ModeratorLease | null = { scope: auth.privacy.capture(), role: 'MODERATOR', decisionId: 'test-only-server-decision', expiresAt: Date.now() + 60000 };
     const access = { read: () => grant, subscribe(fn: () => void) {

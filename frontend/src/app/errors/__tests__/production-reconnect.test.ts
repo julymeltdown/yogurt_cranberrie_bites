@@ -1,7 +1,8 @@
 // @vitest-environment jsdom
 import { afterEach, expect, it, vi } from 'vitest'
 import { createProductionWorld } from '../../world-entry/production'
-import { authHarness, requestFor, replicationPort, inputConfiguration } from '../../world-entry/__tests__/data'
+import { authHarness } from '../../world-entry/__tests__/admitted-auth'
+import { requestFor, replicationPort, inputConfiguration } from '../../world-entry/__tests__/data'
 import { deferred } from '../../../features/auth/__tests__/fixtures/data'
 import type { WorldComposition } from '../../../world/composition'
 

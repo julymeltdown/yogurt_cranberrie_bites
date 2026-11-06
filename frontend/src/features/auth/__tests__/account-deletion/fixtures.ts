@@ -1,5 +1,6 @@
 import { createSessionController } from '../../model/session'
 import { authResponse, capabilities, eventId, isolatedCookiePolicy, userId } from '../fixtures/data'
+import { withAdmission } from '../fixtures/admission'
 import { deletionSaga } from '../../../account/__tests__/deletion-fixtures'
 export { eventId, userId }
 export const otherId = '00000000-0000-4000-8000-000000000999'
@@ -14,13 +15,13 @@ export function accepted(s = saga()) { return { userId, deleted: true, sagaId: s
 export function fixtureAuth(handle: (request: Request) => Response | Promise<Response> = () => Response.json(accepted()), expiresIn = 300) {
   const requests: Request[] = []
   const auth = createSessionController({ eventId, cookiePolicy: isolatedCookiePolicy(), qualifiedRefresh: true, timeoutMs: 1000,
-    fetch: async input => {
+    fetch: withAdmission(async input => {
       const r = input as Request; requests.push(r.clone()); const path = new URL(r.url).pathname
       if (path.endsWith('/capabilities')) return Response.json(capabilities())
       if (path.endsWith('/login')) return Response.json({ ...authResponse(), expiresIn })
       if (path.endsWith('/logout')) return new Response(null, { status: 204 })
       return handle(r)
-    },
+    }),
   })
   return { auth, requests, async login() {
     auth.start()

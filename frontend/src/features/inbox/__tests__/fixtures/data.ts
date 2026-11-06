@@ -1,6 +1,7 @@
 import { vi } from 'vitest'
 import { createSessionController } from '../../../auth/model/session'
 import { isolatedCookiePolicy } from '../../../auth/__tests__/fixtures/data'
+import { withAdmission } from '../../../auth/__tests__/fixtures/admission'
 import { createInboxController } from '../../model/controller'
 import type { InboxNotification, Receipt } from '../../model/contract'
 export const uid = (n: number) => `00000000-0000-4000-8000-${n.toString().padStart(12, '0')}`
@@ -17,7 +18,7 @@ export function setup(handler: (request: Request) => Response | Promise<Response
   countHandler: (request: Request) => Response | Promise<Response> = () => Response.json({ actor_id: user, event_id: event, unread_total: 29, as_of: stamp })) {
   const fetch = vi.fn<typeof globalThis.fetch>(async r => handler(r as Request))
   const countFetch = vi.fn(countHandler)
-  const auth = createSessionController({ eventId: event, fetch: async r => new URL((r as Request).url).pathname.endsWith('/unread-count') ? countFetch(r as Request) : fetch(r), cookiePolicy: isolatedCookiePolicy() })
+  const auth = createSessionController({ eventId: event, fetch: withAdmission(async r => new URL((r as Request).url).pathname.endsWith('/unread-count') ? countFetch(r as Request) : fetch(r)), cookiePolicy: isolatedCookiePolicy() })
   auth.session.replace(0, { userId: user, eventId: event, accessToken: 'memory-only-token' })
   const listeners = new Set<() => void>()
   let enabled = available, key = 100

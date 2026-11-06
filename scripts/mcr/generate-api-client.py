@@ -13,7 +13,7 @@ import sys
 sys.dont_write_bytecode = True
 ROOT = Path(__file__).resolve().parents[2]
 HERE = ROOT / 'scripts/mcr/contracts/c07'
-CLIENTS = ('contracts/generated/api-client', 'frontend/src/shared/api/generated')
+CLIENTS = ('frontend/src/generated/api-client', 'frontend/src/shared/api/generated')
 SCHEMA_KEYS = {'$ref','type','properties','required','additionalProperties','items','const','enum','anyOf','oneOf','allOf','not','if','then','else','minimum','maximum','exclusiveMinimum','dependentRequired','minLength','maxLength','pattern','format','minItems','maxItems','minProperties','uniqueItems','description','default','example','readOnly','x-mcr-utf8-bytes'}
 
 def dump(v): return json.dumps(v, sort_keys=True, ensure_ascii=False, allow_nan=False, indent=2)+'\n'
@@ -156,7 +156,7 @@ def render(include_fixtures=True, probe=None):
         del source['paths'][path][method]
     doc=normalized(source)
     for s in source['components']['schemas'].values():check_schema(s)
-    inputs={str(p.relative_to(ROOT)):sha(p.read_bytes()) for p in sorted((ROOT/'contracts').rglob('*.json')) if not any(str(p.relative_to(ROOT)).startswith(q) for q in ('contracts/fixtures/c07/','contracts/generated/api-client/'))}
+    inputs={str(p.relative_to(ROOT)):sha(p.read_bytes()) for p in sorted((ROOT/'contracts').rglob('*.json')) if not str(p.relative_to(ROOT)).startswith('contracts/fixtures/c07/')}
     inputs.update({str(p.relative_to(ROOT)):sha(p.read_bytes()) for p in sorted((HERE/'templates').iterdir()) if p.is_file()})
     for name in ('scripts/mcr/contracts/qa01-coverage/witness.py','scripts/mcr/validate-core.py','scripts/mcr/requirements-contracts.txt','frontend/package.json','frontend/pnpm-lock.yaml'):
         inputs[name]=sha((ROOT/name).read_bytes())
@@ -227,7 +227,7 @@ def render(include_fixtures=True, probe=None):
         outputs['contracts/fixtures/c07/compatibility.json']=dump({'cases':compatibility})
         outputs['contracts/fixtures/c07/index.json']=dump({'files':['responses.json','compatibility.json'],'operations':len(doc['operations']),'responses':len(cases),'clock':'2030-01-01T00:00:00.000Z','seed':424242})
     manifest={'generator':'scripts/mcr/generate-api-client.py','source':'contracts/generated/mcr-domain.openapi.json','operations':len(doc['operations']),'components':len(doc['components']['schemas']),'inputs':inputs,'outputs':{k:sha(v.encode()) for k,v in sorted(outputs.items())}}
-    outputs['contracts/generated/api-client/manifest.json']=dump(manifest)
+    outputs['frontend/src/generated/api-client/manifest.json']=dump(manifest)
     return outputs
 
 def verify(expected, root=ROOT):
@@ -245,7 +245,7 @@ def main():
         if a.probe=='output-drift':expected['frontend/src/shared/api/generated/index.ts']='// drift\n'
     if a.check or a.probe:
         verify(expected)
-        print(dump({'result':'PASS','outputs':len(expected),'operations':json.loads(expected['contracts/generated/api-client/manifest.json'])['operations']}).strip())
+        print(dump({'result':'PASS','outputs':len(expected),'operations':json.loads(expected['frontend/src/generated/api-client/manifest.json'])['operations']}).strip())
     else:
         for name,value in expected.items():
             path=ROOT/name;path.parent.mkdir(parents=True,exist_ok=True);path.write_text(value,encoding='utf-8',newline='\n')

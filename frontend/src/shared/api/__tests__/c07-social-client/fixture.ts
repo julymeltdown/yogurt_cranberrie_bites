@@ -4,6 +4,7 @@ import intro from '../../../../../../contracts/fixtures/domain/public-intro.json
 import post from '../../../../../../contracts/fixtures/domain/public-post.json'
 import notification from '../../../../../../contracts/fixtures/domain/notification-safe.json'
 import { createSessionController } from '../../../../features/auth/model/session'
+import { withAdmission } from '../../../../features/auth/__tests__/fixtures/admission'
 import { createSocialSharingController } from '../../../../features/social-sharing/model/controller'
 import { createSocialOwner } from '../../../../app/social-composition/owner'
 import { canonicalSharingRequests } from '../../../../app/social-composition/sharing'
@@ -27,7 +28,7 @@ export function fixtureWorld(seed = 209) {
   function actor(user: string) {
     const auth = createSessionController({ eventId, qualifiedRefresh: false,
       cookiePolicy: { available: false, onInvalidate: () => () => {}, dispose() {}, async run() { throw new Error('Fixture mode never performs cookie login') } },
-      fetch: async input => {
+      fetch: withAdmission(async input => {
         const r = input as Request, path = new URL(r.url).pathname
         if (r.cache !== 'no-store' || r.credentials !== 'same-origin') throw new Error('Fixture privacy transport mismatch')
         calls.push({ user, method: r.method, path, body: ['GET', 'HEAD'].includes(r.method) ? null : await r.clone().json(), key: r.headers.get('Idempotency-Key') })
@@ -48,7 +49,7 @@ export function fixtureWorld(seed = 209) {
         if (path.endsWith('/comments') && r.method === 'POST') return Response.json({ comment_id: id(++sequence), post_id: post.post_id, author: { ...post.author, user_id: user }, text: 'C07 fixture reply', created_at: '2026-11-07T09:00:00Z', revision: 1 })
         if (path.includes('/posts/')) return Response.json({ post, comments: [], next_cursor: null })
         return Response.json({ code: 'RESOURCE_UNAVAILABLE', message: 'Unmodelled fixture route', details: { reason: 'RESOURCE_UNAVAILABLE' } }, { status: 404 })
-      },
+      }),
     })
     // This is the ONLY synthetic identity seam. Real admission imports neither this file nor replace().
     auth.session.replace(0, { userId: user, eventId, accessToken: 'C07_SYNTHETIC_ONLY' })

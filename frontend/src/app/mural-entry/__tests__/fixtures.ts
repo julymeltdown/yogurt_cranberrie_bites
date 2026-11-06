@@ -1,5 +1,6 @@
 import { createSessionController } from '../../../features/auth/model/session'
 import { isolatedCookiePolicy, deferred } from '../../../features/auth/__tests__/fixtures/data'
+import { autoAdmit, withAdmission } from '../../../features/auth/__tests__/fixtures/admission'
 import { authorityPort, ids, memoryScene, serverFixture, testClock, timestamp, drain } from '../../../features/mural/sync/__tests__/fixture'
 import { createMuralEntry } from '../owner'
 import type { MuralEntryRelease } from '../ports'
@@ -9,7 +10,7 @@ export { ids, deferred, drain }
 export function entryFixture() {
   const server = serverFixture(), clock = testClock(), requests: Request[] = []
   let hold: { match: (r: Request) => boolean; response: ReturnType<typeof deferred<Response>>; arrived: ReturnType<typeof deferred<Response>> } | null = null
-  const auth = createSessionController({ eventId: ids.event, cookiePolicy: isolatedCookiePolicy(), fetch: async input => {
+  const auth = createSessionController({ eventId: ids.event, cookiePolicy: isolatedCookiePolicy(), fetch: withAdmission(async input => {
     const req = input as Request; requests.push(req.clone())
     const result = new URL(req.url).pathname.endsWith('/mural/tools') ? Response.json({
       version: 1, event_id: ids.event, actor_id: ids.user, revision: server.read().revision, server_time: new Date(timestamp).toISOString(),
@@ -20,9 +21,9 @@ export function entryFixture() {
     }) : await server.fetch(input)
     if (hold?.match(req)) { hold.arrived.resolve(result); return hold.response.promise }
     return result
-  } })
+  }) })
   // Test setup installs a synthetic authenticated session in the actual canonical Auth owner.
-  auth.session.replace(0, { userId: ids.user, eventId: ids.event, accessToken: ids.user })
+  auth.session.replace(0, { userId: ids.user, eventId: ids.event, accessToken: ids.user }); autoAdmit(auth)
   const scope = auth.privacy.capture(), owners: ReturnType<typeof createMuralEntry>[] = []
   function release(faulty = false): ReturnType<typeof makeRelease> { return makeRelease(faulty) }
   function makeRelease(faulty: boolean) {

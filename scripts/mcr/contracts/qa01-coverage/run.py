@@ -70,7 +70,7 @@ def git(*args):
 def legacy_path(path):
     name = path.relative_to(ROOT).as_posix()
     return not any(name.startswith(prefix) for prefix in (
-        "contracts/fixtures/c07/", "contracts/generated/api-client/"))
+        "contracts/fixtures/c07/", "frontend/src/generated/api-client/"))
 
 
 def fixture_paths():

@@ -3,6 +3,7 @@ import { afterEach, expect, it, vi } from 'vitest'
 import { waitFor } from '@testing-library/react'
 import { createSessionController } from '../../../features/auth/model/session'
 import { capabilities, authResponse, isolatedCookiePolicy, deferred } from '../../../features/auth/__tests__/fixtures/data'
+import { withAdmission } from '../../../features/auth/__tests__/fixtures/admission'
 import { MockSocket } from '../../network/mock'
 import type { EngineFactory } from '../../runtime'
 import type { WorldCamera } from '../../camera/port'
@@ -27,7 +28,7 @@ async function fixture(options: { resolve?: WorldCompositionOptions['resolveRele
   handler?: (request: Request) => Promise<Response> | Response } = {}) {
   decoded.calls = decoded.releases = 0
   const data = await testData(), requests: Request[] = [], sockets: MockSocket[] = []
-  const auth = createSessionController({ eventId, qualifiedRefresh: true, cookiePolicy: isolatedCookiePolicy(), fetch: async input => {
+  const auth = createSessionController({ eventId, qualifiedRefresh: true, cookiePolicy: isolatedCookiePolicy(), fetch: withAdmission(async input => {
     const request = input as Request; requests.push(request.clone())
     const path = new URL(request.url).pathname
     if (path === '/api/auth/capabilities') return Response.json(capabilities())
@@ -35,7 +36,7 @@ async function fixture(options: { resolve?: WorldCompositionOptions['resolveRele
     if (options.handler) return options.handler(request)
     if (path.endsWith('/world-tickets')) return Response.json(ticket(await request.clone().json() as WorldTicketRequest, requests.length))
     return new Response(null, { status: 204 })
-  } })
+  }) })
   releases.push(() => auth.dispose())
   auth.start(); await waitFor(() => expect(auth.read().emailEnabled).toBe(true))
   expect(await auth.login('fixture@example.test', 'fixture-password')).toBe(true)

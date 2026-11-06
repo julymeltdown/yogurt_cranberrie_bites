@@ -5,6 +5,7 @@ import '@testing-library/jest-dom/vitest'
 import { createMemoryRouter, RouterProvider } from 'react-router-dom'
 import { createSessionController } from '../../../features/auth/model/session'
 import { isolatedCookiePolicy, deferred } from '../../../features/auth/__tests__/fixtures/data'
+import { withAdmission } from '../../../features/auth/__tests__/fixtures/admission'
 import { createAuthorityTimeline } from '../../community-authority/timeline'
 import { DOMAIN_OPERATIONS } from '../../../shared/api/domain-operations.generated'
 import registration from '../../operations-entry/__tests__/operation.fixture.json'
@@ -24,7 +25,7 @@ const owners: { dispose(): void }[] = []
 function setup() {
   const server = createControlledServer()
   const auth = createSessionController({ eventId: wire.event, cookiePolicy: isolatedCookiePolicy(), timeoutMs: 2000,
-    fetch: input => server.handle(input as Request) })
+    fetch: withAdmission(input => server.handle(input as Request)) })
   auth.session.replace(0, { userId: wire.actor, eventId: wire.event, accessToken: wire.auth.accessToken })
   let elapsed = 0, interrupt = () => {}
   const admin = createDefaultAdmin(auth, { timeline: signal => createAuthorityTimeline({ observe: () => ({ nowMs: elapsed, origin: 100 }), maxObservationGapMs: 120_000,
@@ -41,7 +42,7 @@ it('joins independent role/event revisions through registered canonical settings
   expect(state.phase).toBe('ready'); expect(state.decision?.roleRevision).toBe(7); expect(state.settings?.event.revision).toBe(8)
   expect(state.muralClosure?.closure.prepare('Reviewed event')).toBe(true)
   expect(state.muralClosure?.closure.read().draft?.expected_revision).toBe(8)
-  expect(h.admin.open(h.scope)).toBe(h.entry); await h.entry.start(); expect(h.server.requests).toHaveLength(3)
+  expect(h.admin.open(h.scope)).toBe(h.entry); await h.entry.start(); expect(h.server.requests).toHaveLength(2)
   expect(h.server.requests.every(r => r.headers.get('Authorization') === `Bearer ${wire.auth.accessToken}`)).toBe(true)
   expect(h.server.requests.every(r => r.method === 'GET' && r.cache === 'no-store')).toBe(true)
 })
@@ -59,7 +60,7 @@ it.each(['mismatch', 'foreign', '403', '503'] as const)('rejects %s settings ins
 it('does not turn MODERATOR into event/place/evidence authority', async () => {
   const h = setup(); h.server.state.role = 'MODERATOR'; await h.entry.start()
   expect(h.entry.read()).toMatchObject({ phase: 'unavailable', decision: { role: 'MODERATOR' }, operations: null, muralClosure: null })
-  expect(h.server.requests).toHaveLength(2)
+  expect(h.server.requests).toHaveLength(1)
 })
 it.each(['READ_ONLY', 'ARCHIVED'])('retains authorized closure observation in %s without a participant write grant', async phase => {
   const h = setup(); h.server.state.settings.event.phase = phase; await h.entry.start()
@@ -101,8 +102,8 @@ it.each(['actor', 'event', 'policy', 'clock', 'expiry', 'dispose'] as const)('wi
 it('aborts pending settings and ignores its late completion after canonical policy replacement', async () => {
   const h = setup(), delayed = deferred<Response>()
   h.server.state.intercept = request => new URL(request.url).pathname.endsWith('/settings') ? delayed.promise : null
-  const pending = h.entry.start(); await vi.waitFor(() => expect(h.server.requests).toHaveLength(3))
-  h.auth.privacy.changePolicy(h.auth.privacy.capture(), 'block'); expect(h.server.requests[2]!.signal.aborted).toBe(true)
+  const pending = h.entry.start(); await vi.waitFor(() => expect(h.server.requests).toHaveLength(2))
+  h.auth.privacy.changePolicy(h.auth.privacy.capture(), 'block'); expect(h.server.requests[1]!.signal.aborted).toBe(true)
   delayed.resolve(Response.json(wire.settings)); await pending; expect(h.entry.read().phase).toBe('disposed')
 })
 it('mounts the actual default Admin route through production ports and retains an unknown command across navigation', async () => {

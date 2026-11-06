@@ -3,7 +3,15 @@
 // backend/docs/api/paradise-city-v1/location.openapi.json: 394c52c485df8c63bfd7843932ea333b1f31cfd4aadbec705992fdbd9e06516b
 // backend/docs/api/paradise-city-v1/meeting.openapi.json: 08503641a551fbacaf134ecab71bbce1102c1f7da4ba560e5d15311694e0c2de
 // backend/docs/api/paradise-city-v1/place-notes.openapi.json: 5b14c48c7b288ba4a1c7a68c5e0d84c16cc9805ae87e98b18c091957c2f24f1e
-// git:217c52c25180217b9fd1264af9b8cae52ec88a1a:frontend/src/shared/api/domain-operations.generated.ts: 3610456a0925aee9c4e3a32564016ea6acc26b7ab01ce536659b7333a5ddd447
+// contracts/core/v1/core.schema.json: 7760712818b399faf956b874565c080726f70913b6b4fc81e2236ab127332eaa
+// contracts/domain/v1/admin.schema.json: 045af18ec63eceaf2198c1a11031b6c49abc0a6652a77a68d534b82a59bd0a3e
+// contracts/domain/v1/common.schema.json: cc34c0a16cff70f89a4779ebf6aa962a9009d7ffa7c3d84133d13c2dc159f258
+// contracts/domain/v1/feed.schema.json: f9b4b8912b2bf4513ab474ad690efdeaa23d64f97b220f9626c5b37c5e2e99ed
+// contracts/domain/v1/giveaway.schema.json: 3a5af6301bb9514623aa7d6e68b3ee27b4b89709836801f4c10741f149a7577d
+// contracts/domain/v1/mural.schema.json: 6ef0fea077a277d9029447ed60e6914a3665308969f91bf4ff4a93097e27d8a9
+// contracts/domain/v1/operations.json: e6fd3cb09b6660935102c25c76f8abbb709451dfc039aea4495037df0f5458fb
+// contracts/domain/v1/party.schema.json: 7cbea6af623668a36d641e7498bf52f4869b9bc44594b46e7f4a3806cc907d03
+// contracts/domain/v1/social.schema.json: b275b36f2ad8eee90922f7ad27cfcbece943773a94831720b6dfca588d0201d2
 // scripts/mcr/paradise-city-v1/location_transport.py: d5bf63068c78370763cfb1e7f564a266348350bd7e6581aa121fbc089e8a2bba
 // scripts/mcr/paradise-city-v1/meeting_transport.py: acad2201ec64c74f77fbc75109af8d3bcac53dcc6e01e82c3ae08552803b4ff8
 // scripts/mcr/paradise-city-v1/place_notes_transport.py: 47d811a2bf082bc0983b1b7e6c4431f068918e5772af66eaeb3808f8a9ef4e80

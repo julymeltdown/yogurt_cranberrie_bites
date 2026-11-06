@@ -1,5 +1,6 @@
 import { vi } from 'vitest'
 import { createSessionController } from '../../../features/auth/model/session'
+import { autoAdmit, withAdmission } from '../../../features/auth/__tests__/fixtures/admission'
 import { bootstrapFor, createFixturePorts } from '../../__tests__/fixtures/ports'
 import type { ShellPorts } from '../../ports'
 import type { PlaceMapRelease, PlaceCameraPort } from '../../../features/places'
@@ -12,15 +13,15 @@ export async function entryFixture(handler?: (request: Request) => Response | Pr
   let mode: 'ok' | 'mismatch' | 'removed' = 'ok'
   const auth = createSessionController({ eventId,
     cookiePolicy: { available: true, onInvalidate: () => () => {}, run: (_kind, work) => work(), dispose() {} },
-    fetch: async input => {
+    fetch: withAdmission(async input => {
       const request = input as Request; requests.push(request)
       if (handler) return handler(request)
       const id = new URL(request.url).pathname.split('/').at(-1)
       if (mode === 'mismatch') return Response.json({ code: 'FIXTURE', message: 'Never rendered', details: { reason: 'MAP_VERSION_MISMATCH' } }, { status: 409 })
       if (id !== 'places' && mode === 'removed') return Response.json({ code: 'FIXTURE', message: 'Never rendered', details: { reason: 'RESOURCE_UNAVAILABLE' } }, { status: 404 })
       return Response.json(id === 'places' ? catalog() : { event_id: eventId, revision: 7, place: places().find(place => place.place_id === id) })
-    } })
-  auth.session.replace(0, { userId, eventId, accessToken: 'synthetic-memory-token' })
+    }) })
+  auth.session.replace(0, { userId, eventId, accessToken: 'synthetic-memory-token' }); autoAdmit(auth)
   let map: PlaceMapRelease | null = await release()
   const camera = { lookAt: vi.fn(), recenter: vi.fn(), setZoom: vi.fn(), read: () => ({ following: true, camera: { zoom: 2, scrollX: 0, scrollY: 0, width: 390, height: 400 } }) }
   let currentCamera: ReturnType<PlaceCameraPort['read']> = camera

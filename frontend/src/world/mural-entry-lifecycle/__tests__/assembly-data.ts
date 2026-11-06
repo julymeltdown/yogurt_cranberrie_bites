@@ -1,5 +1,6 @@
 import { createSessionController } from '../../../features/auth/model/session'
 import { capabilities, authResponse, isolatedCookiePolicy } from '../../../features/auth/__tests__/fixtures/data'
+import { withAdmission } from '../../../features/auth/__tests__/fixtures/admission'
 import { serverFixture, ids } from '../../../features/mural/sync/__tests__/fixture'
 import { createWorldMuralAuthority } from '../../mural/authority'
 import { MockSocket } from '../../network/mock'
@@ -14,7 +15,7 @@ import type { MuralQualificationContext, MuralQualificationFactory } from '../so
 export async function assemblyData() {
   const data = await testData(), server = serverFixture(), requests: Request[] = [], sockets: Socket[] = []
   const translate = (value: unknown) => JSON.parse(JSON.stringify(value).replaceAll(ids.event, eventId).replaceAll(ids.user, userId)) as unknown
-  const auth = createSessionController({ eventId, qualifiedRefresh: true, cookiePolicy: isolatedCookiePolicy(), fetch: async input => {
+  const auth = createSessionController({ eventId, qualifiedRefresh: true, cookiePolicy: isolatedCookiePolicy(), fetch: withAdmission(async input => {
     const request = input as Request, path = new URL(request.url).pathname; requests.push(request.clone())
     if (path === '/api/auth/capabilities') return Response.json(capabilities())
     if (path === '/api/auth/login') return Response.json(authResponse())
@@ -34,7 +35,7 @@ export async function assemblyData() {
       return Response.json(translate(await response.json()), { status: response.status })
     }
     return new Response(null, { status: 404 })
-  } })
+  }) })
   class Socket extends MockSocket {
     readonly expiry = new Date(Date.now() + 60000).toISOString()
     constructor() { super(); sockets.push(this); queueMicrotask(() => { if (this.readyState === 0) this.open() }) }

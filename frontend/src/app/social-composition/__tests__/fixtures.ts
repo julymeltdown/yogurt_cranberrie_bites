@@ -1,5 +1,6 @@
 import { createSessionController } from '../../../features/auth/model/session'
 import { isolatedCookiePolicy } from '../../../features/auth/__tests__/fixtures/data'
+import { autoAdmit, withAdmission } from '../../../features/auth/__tests__/fixtures/admission'
 import { bootstrapFor, createFixturePorts } from '../../__tests__/fixtures/ports'
 import { post, notice, id } from '../../../features/event-feed/__tests__/fixtures'
 import introSource from '../../../../../contracts/fixtures/domain/public-intro.json'
@@ -24,8 +25,8 @@ export function response(r: Request) {
 }
 export function fixture(handler: (r: Request) => Response | Promise<Response> = response) {
   const requests: Request[] = [], navigations: string[] = []
-  const auth = createSessionController({ eventId: event, cookiePolicy: isolatedCookiePolicy(), fetch: async r => { requests.push((r as Request).clone()); return handler(r as Request) } })
-  auth.session.replace(0, { userId: user, eventId: event, accessToken: 'SYNTHETIC_SOCIAL' })
+  const auth = createSessionController({ eventId: event, cookiePolicy: isolatedCookiePolicy(), fetch: withAdmission(async r => { requests.push((r as Request).clone()); return handler(r as Request) }) })
+  auth.session.replace(0, { userId: user, eventId: event, accessToken: 'SYNTHETIC_SOCIAL' }); autoAdmit(auth)
   const scope = auth.privacy.capture(), bootstrap = bootstrapFor({ userId: user, eventId: event, generation: scope.generation })
   let lease: SocialAvailability | null = { scope, bootstrap, services: { feed: true, people: true, intro: true, age: true, inbox: true } }
   const listeners = new Set<() => void>()

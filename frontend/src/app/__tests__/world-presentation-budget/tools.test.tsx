@@ -39,7 +39,7 @@ it('closes with Escape and returns focus without navigating or remounting the wo
   const map = within(screen.getByRole('navigation', { name: 'World tools' })).getByRole('link', { name: 'Map' })
   map.focus()
   fireEvent.keyDown(map, { key: 'Escape' })
-  expect(toggle).toHaveFocus()
+  expect(screen.getByRole('button', { name: 'World destinations' })).toHaveFocus()
   expect(toggle).toHaveAttribute('aria-expanded', 'false')
   expect(router.state.location.pathname).toBe('/world')
   expect(fixture.stats.mounts).toBe(1)

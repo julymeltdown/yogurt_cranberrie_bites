@@ -4,6 +4,7 @@
 import { afterEach, expect, it, vi } from 'vitest'
 import { createSessionController } from '../../../../features/auth/model/session'
 import { authResponse, capabilities, eventId, isolatedCookiePolicy } from '../../../../features/auth/__tests__/fixtures/data'
+import { withAdmission } from '../../../../features/auth/__tests__/fixtures/admission'
 import { createWorldComposition } from '../../../composition'
 import { currentScope, project, resolverFor, snapshot, testData, ticket } from '../../../composition/__tests__/fixtures/data'
 import { MockSocket } from '../../mock'
@@ -23,13 +24,13 @@ afterEach(() => { dispose.splice(0).reverse().forEach(fn => fn()); vi.unstubAllG
 for (const optin of [false, true]) it(`actual composition qualifies one map and forwards matched optin/context: ${optin}`, async () => {
   const data = await testData(), sockets: MockSocket[] = []
   let issued = 0, engines = 0
-  const auth = createSessionController({ eventId, qualifiedRefresh: true, cookiePolicy: isolatedCookiePolicy(), fetch: async input => {
+  const auth = createSessionController({ eventId, qualifiedRefresh: true, cookiePolicy: isolatedCookiePolicy(), fetch: withAdmission(async input => {
     const request = input as Request, path = new URL(request.url).pathname
     if (path === '/api/auth/capabilities') return Response.json(capabilities())
     if (path === '/api/auth/login') return Response.json(authResponse())
     if (path.endsWith('/world-tickets')) return Response.json(ticket(await request.clone().json() as WorldTicketRequest, ++issued))
     return new Response(null, { status: 204 })
-  } })
+  }) })
   dispose.push(() => auth.dispose())
   auth.start(); await vi.waitFor(() => expect(auth.read().emailEnabled).toBe(true))
   expect(await auth.login('fixture@example.test', 'fixture-password')).toBe(true)

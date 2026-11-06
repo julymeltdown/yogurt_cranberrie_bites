@@ -5,7 +5,8 @@ import { StrictMode } from 'react'
 import { MemoryRouter } from 'react-router-dom'
 import { createWorldAccessBridge, type WorldAccessBridge } from '../bridge'
 import { WorldAccessFeatures, WorldNearbyPanel, WorldRoomsPanel } from '../routes'
-import { authHarness, eventId, replicationPort, requestFor, userId } from './data'
+import { authHarness } from './admitted-auth'
+import { eventId, replicationPort, requestFor, userId } from './data'
 import { deferred } from '../../../features/auth/__tests__/fixtures/data'
 const auths: ReturnType<typeof authHarness>[] = [], bridges: WorldAccessBridge[] = []
 const setup = async () => {

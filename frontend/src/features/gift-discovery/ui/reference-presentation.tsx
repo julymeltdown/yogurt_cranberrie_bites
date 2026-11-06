@@ -21,7 +21,7 @@ export function canReviewReservation(gift: Giveaway, state: GiftDiscoveryState) 
     && (context.eventPhase === 'OPEN' || context.eventPhase === 'LIVE') && gift.owner.user_id !== context.scope.userId
     && gift.state === 'OPEN' && gift.available > 0 && state.now < Date.parse(gift.pickup_ends_at)
 }
-export function ReferenceGiftRow({ gift, state, place, renderGiftImage, own = false }: {
+export function ReferenceGiftRow({ gift, state, place, renderGiftImage, renderOwnerPortrait, own = false }: {
   readonly gift: Giveaway; readonly state: GiftDiscoveryState; readonly place?: string
   readonly renderGiftImage?: RenderGiftImage | undefined; readonly own?: boolean
   readonly renderOwnerPortrait?: RenderGiftOwnerPortrait | undefined
@@ -39,6 +39,7 @@ export function ReferenceGiftRow({ gift, state, place, renderGiftImage, own = fa
       <h3>{published ? <ShellLink id={`gift-${gift.giveaway_id}`} to={`/gifts/${gift.giveaway_id}`}>{gift.title}</ShellLink> : gift.title}</h3>
       <p className="gift-reference-stock"><strong>{gift.available} left</strong><span className="gift-reference-sr"> of {gift.quantity_total}</span></p>
       <div className="gift-reference-owner">
+        {renderOwnerPortrait?.(gift.owner)}
         <p className="gift-reference-byline">{own ? 'Your giveaway' : <>by {gift.owner.display_name}</>}</p>
       </div>
       <div className="gift-reference-location"><p className="gift-reference-place"><svg viewBox="0 0 16 20" aria-hidden="true"><path d="M8 19S1 10 1 7a7 7 0 0 1 14 0c0 3-7 12-7 12Z" fill="currentColor"/><circle cx="8" cy="7" r="2.4" fill="var(--mcr-paper)"/></svg><span>{place ?? 'Event place reference'}</span></p>

@@ -33,8 +33,8 @@ describe('compact Customize presentation', () => {
   it('retains category keyboard navigation and disclosed native selections without changing the main preview merely by browsing', async () => {
     const h = await setup(), main = h.controller.read().preview.canvas
     fireEvent.click(screen.getByRole('tab', { name: 'Hair' })); expect(screen.getByRole('combobox')).not.toBeVisible()
-    for (const [previous, next] of [['Hair','Outfit'],['Outfit','Accessory'],['Accessory','Tones'],['Tones','Presets'],['Presets','Body'],['Body','Eyes']] as const) {
-      fireEvent.keyDown(screen.getByRole('tab', { name: previous }), { key: 'ArrowDown' })
+    for (const [previous, next] of [['Hair','Eyes'],['Eyes','Outfit'],['Outfit','Body'],['Body','Accessory'],['Accessory','Tones'],['Tones','Presets']] as const) {
+      fireEvent.keyDown(screen.getByRole('tab', { name: previous }), { key: 'ArrowRight' })
       expect(screen.getByRole('tab', { name: next })).toHaveAttribute('aria-selected', 'true')
       if (next !== 'Presets') expect(screen.getByRole('combobox')).not.toBeVisible()
     }

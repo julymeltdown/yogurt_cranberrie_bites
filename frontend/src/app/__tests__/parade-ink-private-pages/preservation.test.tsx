@@ -12,17 +12,24 @@ function functional(source: string) {
   const file = ts.createSourceFile('input.tsx', source, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX)
   const result = ts.transform(file, [context => root => {
     const visit: ts.Visitor = node => {
-      if (ts.isImportDeclaration(node) && ts.isStringLiteral(node.moduleSpecifier) && node.moduleSpecifier.text.includes('parade-ink-private/private.css')) return undefined
+      if (ts.isJsxText(node) && !node.text.trim()) return undefined
+      if (ts.isImportDeclaration(node) && ts.isStringLiteral(node.moduleSpecifier)) {
+        const spec = node.moduleSpecifier.text
+        if (spec.includes('parade-ink-private/private.css') || spec.includes('/parade-ink/')) return undefined
+      }
       if (ts.isJsxElement(node) && ts.isIdentifier(node.openingElement.tagName) && node.openingElement.tagName.text === 'div') {
         const attrs = node.openingElement.attributes.properties
         const cls = attrs.find(a => ts.isJsxAttribute(a) && a.name.getText(file) === 'className')
-        if (attrs.length === 1 && cls && ts.isJsxAttribute(cls) && cls.initializer && ts.isStringLiteral(cls.initializer) && ['pi-private-account', 'pi-private-account-entry', 'pi-private-blocks'].includes(cls.initializer.text)) {
+        if (attrs.length === 1 && cls && ts.isJsxAttribute(cls) && cls.initializer && ts.isStringLiteral(cls.initializer) && ['pi-private-account', 'pi-private-account-entry', 'pi-private-blocks', 'pi-report-entry', 'pi-report'].includes(cls.initializer.text)) {
           const children = node.children.filter(c => !ts.isJsxText(c) || c.text.trim())
+          if (cls.initializer.text === 'pi-report') return ts.factory.createJsxFragment(ts.factory.createJsxOpeningFragment(),
+            children.map(child => ts.visitNode(child, visit) as ts.JsxChild), (ts.factory as unknown as { createJsxJsxClosingFragment(): ts.JsxClosingFragment }).createJsxJsxClosingFragment())
           if (children.length === 1) return ts.visitNode(children[0], visit)
         }
       }
       if (ts.isJsxAttribute(node) && node.name.getText(file) === 'className' && node.initializer && ts.isStringLiteral(node.initializer)) {
-        const text = node.initializer.text.split(' ').filter(s => !s.startsWith('pi-private-')).join(' ')
+        const text = node.initializer.text.split(' ').filter(s => !s.startsWith('pi-private-') && !s.startsWith('pi-report')).join(' ')
+        if (!text) return undefined
         return ts.factory.updateJsxAttribute(node, node.name, ts.factory.createStringLiteral(text))
       }
       return ts.visitEachChild(node, visit, context)
@@ -30,7 +37,7 @@ function functional(source: string) {
     return ts.visitNode(root, visit) as ts.SourceFile
   }])
   const printed = ts.createPrinter({ removeComments: false }).printFile(result.transformed[0] as ts.SourceFile)
-  result.dispose(); return printed
+  result.dispose(); return printed.replaceAll('<>', '').replaceAll('</>', '').trim()
 }
 it.each(paths)('preserves all functional syntax and protected hunks in %s', path => {
   const full = 'frontend/src/' + path

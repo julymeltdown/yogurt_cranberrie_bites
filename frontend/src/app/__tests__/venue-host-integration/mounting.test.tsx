@@ -1,3 +1,4 @@
+// @vitest-environment jsdom
 // Controlled source tests of the actual mounting/providers; default-World proof is native-only.
 import { StrictMode } from 'react'
 import { webcrypto } from 'node:crypto'

@@ -7,10 +7,12 @@ import { createMemoryRouter, RouterProvider } from 'react-router-dom'
 import { createProductionWorld } from '../production'
 import { readLocalInputConfiguration, validateLocalInputConfiguration } from '../configuration'
 import { createProductionPorts } from '../../ports'
+import { testPreWorldPolicy } from '../../__tests__/fixtures/ports'
 import { createAppRoutes } from '../../router'
 import type { WorldComposition } from '../../../world/composition'
 import type { WorldEntryRequest } from '../authority'
-import { authHarness, requestFor, replicationPort, inputConfiguration, bundle } from './data'
+import { authHarness } from './admitted-auth'
+import { requestFor, replicationPort, inputConfiguration, bundle } from './data'
 import { deferred } from '../../../features/auth/__tests__/fixtures/data'
 
 const stops: (() => void)[] = []
@@ -115,7 +117,7 @@ async function routed(path = '/world', strict = false) {
   const h = await setup(), ports = createProductionPorts(h.auth, { localInput: inputConfiguration, load: h.load })
   stops.push(() => ports.dispose?.())
   // Use the actual root/router/WorldHost with a deterministic authenticated boundary.
-  const router = createMemoryRouter(createAppRoutes({ ...ports, readiness: { read: () => 'ready', subscribe: () => () => {} }, bootstrap: { load: async () => h.request.bootstrap } }), { initialEntries: [path] })
+  const router = createMemoryRouter(createAppRoutes({ ...ports, readiness: { read: () => 'ready', subscribe: () => () => {} }, preWorldPolicy: testPreWorldPolicy, bootstrap: { load: async () => h.request.bootstrap } }), { initialEntries: [path] })
   stops.push(() => router.dispose())
   const node = <RouterProvider router={router} />
   const view = render(strict ? <StrictMode>{node}</StrictMode> : node)

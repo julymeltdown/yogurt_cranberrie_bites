@@ -42,7 +42,7 @@ it('default Settings reaches account controls and Back restores opener without r
   const mounts = h.stats.mounts; fireEvent.click(opener)
   await screen.findByRole('heading', { name: 'Account controls' }); expect(h.router.state.location.pathname).toBe('/me/account')
   fireEvent.click(screen.getByRole('button', { name: /^Back$/ }))
-  await screen.findByRole('heading', { name: 'SETTINGS' }); await waitFor(() => expect(screen.getByRole('link', { name: 'Account controls' })).toHaveFocus())
+  await screen.findByRole('heading', { name: 'Settings', level: 1 }); await waitFor(() => expect(screen.getByRole('link', { name: 'Account controls' })).toHaveFocus())
   expect(document.querySelector('[data-world-host]')).toBe(host); expect(h.stats.mounts).toBe(mounts); expect(h.stats.peakConnections).toBe(1)
 })
 it.each(['pending', 'uncertain', 'legacy'] as const)('%s survives WorldShell disposal and manually recovers to all-eight completion', async mode => {

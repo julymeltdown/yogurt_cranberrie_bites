@@ -59,7 +59,7 @@ export function fixture(options: { reads?: { snapshot: () => Promise<unknown>; d
 /** In-process deterministic C04 HTTP server for tests only; no production import or listener/socket. */
 export function serverFixture() {
   let state = snapshot(), mode: 'ack' | 'lost' | 'pending' | 'rejected' = 'ack'
-  let resultAvailable = false
+  let resultAvailable = false, receiptExpiresAt = '2099-01-01T00:00:00Z'
   const operations: PublicPixel[] = [], commands = new Map<string, { command: PixelCommand; own: PixelOperation }>(), requests: Request[] = []
   const paint = (p: PublicPixel) => { const pixels = [...state.pixels]; pixels[p.y * 128 + p.x] = p.color_index; state = { ...state, revision: p.revision, pixels }; operations.push(p) }
   const receipt = (c: PixelCommand) => {
@@ -67,7 +67,7 @@ export function serverFixture() {
     return { receipt_id: ids.snapshot, event_id: ids.event, actor_id: c.scope.userId, operation_id: c.operation, idempotency_key: c.key,
       state: mode === 'pending' ? 'PENDING' : 'SUCCEEDED', resource_id: mode === 'pending' ? null : ids.event,
       resource_revision: mode === 'pending' ? null : stored?.own.revision ?? null, failure_reason: null, result_status: mode === 'pending' ? null : 200,
-      created_at: time, expires_at: '2026-11-05T00:00:00Z' }
+      created_at: time, expires_at: receiptExpiresAt }
   }
   const error = (reason: string, status: number) => Response.json({ code: `MCR_${status}`, message: 'Unavailable.', details: { reason } }, { status })
   const fetch: typeof globalThis.fetch = async input => {
@@ -100,7 +100,7 @@ export function serverFixture() {
     return error('RESOURCE_UNAVAILABLE', 404)
   }
   return { fetch, requests, read: () => structuredClone(state), paint, delta, operations, mode(value: typeof mode) { mode = value },
-    resultAvailable(value: boolean) { resultAvailable = value },
+    resultAvailable(value: boolean) { resultAvailable = value }, receiptExpiry(value: string) { receiptExpiresAt = value },
     restore(next: MuralSnapshot) { state = structuredClone(next); operations.length = 0 }, recover(command: PixelCommand) { return commands.get(command.key)?.own ?? null } }
 }
 export function httpClientFixture(server: ReturnType<typeof serverFixture>, actor: string = ids.user, authority: MuralAuthorityPort = authorityPort()) {

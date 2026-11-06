@@ -4,8 +4,10 @@ import { act, cleanup, render, screen, waitFor } from '@testing-library/react'
 import { afterEach, expect, it, vi } from 'vitest'
 import { createMemoryRouter, RouterProvider } from 'react-router-dom'
 import { createProductionPorts } from '../../../ports'
+import { testPreWorldPolicy } from '../../../__tests__/fixtures/ports'
 import { createAppRoutes } from '../../../router'
-import { authHarness, inputConfiguration, replicationPort, requestFor } from '../../__tests__/data'
+import { authHarness } from '../../__tests__/admitted-auth'
+import { inputConfiguration, replicationPort, requestFor } from '../../__tests__/data'
 import type { WorldComposition } from '../../../../world/composition'
 
 const stops: (() => void)[] = []
@@ -18,7 +20,7 @@ it('keeps the full Wall attached to the same World while blocking input, and sti
     subscribe: replication.subscribe, read: () => ({ phase: 'ready', runtime: null, renderer: 'unavailable', problem: null }),
     dispose: vi.fn(), settled: async () => {} }
   const ports = createProductionPorts(h.auth, { localInput: inputConfiguration, load: async () => composition })
-  const router = createMemoryRouter(createAppRoutes({ ...ports, readiness: { read: () => 'ready', subscribe: () => () => {} },
+  const router = createMemoryRouter(createAppRoutes({ ...ports, readiness: { read: () => 'ready', subscribe: () => () => {} }, preWorldPolicy: testPreWorldPolicy,
     bootstrap: { load: async () => request.bootstrap } }), { initialEntries: ['/wall'] })
   stops.push(() => h.auth.dispose(), () => ports.dispose?.(), () => router.dispose())
   vi.spyOn(document, 'hidden', 'get').mockReturnValue(false)

@@ -6,6 +6,7 @@ import { createDefaultConnectionStatus } from '../default-entry'
 import { createWorldComposition } from '../../../world/composition'
 import { createSessionController } from '../../../features/auth/model/session'
 import { isolatedCookiePolicy } from '../../../features/auth/__tests__/fixtures/data'
+import { withAdmission } from '../../../features/auth/__tests__/fixtures/admission'
 import { project, currentScope, eventId, userId, resolverFor, testData, ticket, snapshot } from '../../../world/composition/__tests__/fixtures/data'
 import { MockSocket } from '../../../world/network/mock'
 import type { WorldTicketRequest } from '../../../world/network/WorldTransport'
@@ -27,13 +28,13 @@ const stops: (() => void)[] = []
 afterEach(() => { stops.splice(0).reverse().forEach(stop => stop()); vi.unstubAllGlobals(); document.body.replaceChildren() })
 async function setup(failure?: { status: number; reason: string }) {
   const data = await testData(), requests: Request[] = [], sockets: Socket[] = []
-  const auth = createSessionController({ eventId, cookiePolicy: isolatedCookiePolicy(), fetch: async input => {
+  const auth = createSessionController({ eventId, cookiePolicy: isolatedCookiePolicy(), fetch: withAdmission(async input => {
     const request = input as Request; requests.push(request)
     if (!new URL(request.url).pathname.endsWith('/world-tickets')) throw new Error('Unexpected fixture request')
     if (failure) return Response.json({ code: `GATEWAY_${failure.status}`, message: 'private raw server text must never enter status',
       details: { reason: failure.reason } }, { status: failure.status })
     return Response.json(ticket(await request.json() as WorldTicketRequest, requests.length))
-  } })
+  }) })
   stops.push(auth.dispose)
   auth.session.replace(0, { userId, eventId, accessToken: 'memory-only-version-fixture' })
   class Socket extends MockSocket {

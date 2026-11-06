@@ -1,12 +1,13 @@
 import { createSessionController } from '../../../../features/auth/model/session'
 import { isolatedCookiePolicy } from '../../../../features/auth/__tests__/fixtures/data'
+import { withAdmission } from '../../../../features/auth/__tests__/fixtures/admission'
 import { createAuthorityTimeline } from '../../../community-authority/timeline'
 import { createDefaultAdmin } from '../../owner'
 import { createMemberContentServer, wire } from './server'
 export const owners: { dispose(): void }[] = []
 export function setup(role: 'MODERATOR' | 'OPERATOR' | null = 'MODERATOR') {
   const server = createMemberContentServer(); server.state.role = role
-  const auth = createSessionController({ eventId: wire.event, cookiePolicy: isolatedCookiePolicy(), timeoutMs: 1000, fetch: input => server.handle(input as Request) })
+  const auth = createSessionController({ eventId: wire.event, cookiePolicy: isolatedCookiePolicy(), timeoutMs: 1000, fetch: withAdmission(input => server.handle(input as Request)) })
   auth.session.replace(0, { userId: wire.actor, eventId: wire.event, accessToken: wire.auth.accessToken })
   let elapsed = 0
   const admin = createDefaultAdmin(auth, { timeline: signal => createAuthorityTimeline({ observe: () => ({ nowMs: elapsed, origin: 100 }), maxObservationGapMs: 120_000,

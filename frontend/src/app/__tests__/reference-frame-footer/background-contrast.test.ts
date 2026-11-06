@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs'
 import { expect, it } from 'vitest'
 
 const css = readFileSync(new URL('../../shell-chrome/shell-chrome.css', import.meta.url), 'utf8')
+const tokens = readFileSync(new URL('../../../shared/styles/parade-ink/tokens.css', import.meta.url), 'utf8')
 type RGB = readonly [number, number, number]
 function luminance(rgb: RGB) {
   const channel = (n: number) => n / 255 <= .04045 ? n / 255 / 12.92 : ((n / 255 + .055) / 1.055) ** 2.4
@@ -13,7 +14,9 @@ function contrast(a: RGB, b: RGB) {
 }
 function background(selector: string): RGB {
   const block = css.split('}').find(rule => rule.trim().startsWith(selector + ' {'))
-  const value = block?.match(/background:\s*#([0-9a-f]{6});/i)?.[1]
+  const literal = block?.match(/background:\s*#([0-9a-f]{6});/i)?.[1]
+  const token = /background:\s*var\((--pi-[a-z-]+)\)/i.exec(block ?? '')?.[1]
+  const value = literal ?? (token ? new RegExp(token + ':\\s*#([0-9a-f]{6})', 'i').exec(tokens)?.[1] : undefined)
   if (!value) throw new Error('Missing solid header background for ' + selector)
   return [parseInt(value.slice(0, 2), 16), parseInt(value.slice(2, 4), 16), parseInt(value.slice(4, 6), 16)]
 }

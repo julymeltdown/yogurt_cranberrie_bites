@@ -20,8 +20,8 @@ describe('reference Customize production presentation', () => {
     const h = await setup(), main = h.controller.read().preview.canvas
     expect(screen.getByRole('heading', { name: 'CUSTOMIZE' })).toBeVisible()
     expect(screen.getAllByRole('tab')).toHaveLength(7)
-    for (const [previous, next] of [['Hair','Outfit'], ['Outfit','Accessory'], ['Accessory','Tones'], ['Tones','Presets'], ['Presets','Body'], ['Body','Eyes']] as const) {
-      fireEvent.keyDown(screen.getByRole('tab', { name: previous }), { key: 'ArrowDown' })
+    for (const [previous, next] of [['Hair','Eyes'], ['Eyes','Outfit'], ['Outfit','Body'], ['Body','Accessory'], ['Accessory','Tones'], ['Tones','Presets']] as const) {
+      fireEvent.keyDown(screen.getByRole('tab', { name: previous }), { key: 'ArrowRight' })
       expect(screen.getByRole('tab', { name: next })).toHaveFocus()
       expect(screen.getAllByRole('group', { name: /full-outfit choices/ })).toHaveLength(1)
     }

@@ -3,6 +3,7 @@ import { StrictMode, useLayoutEffect } from 'react'
 import { cleanup, render, waitFor } from '@testing-library/react'
 import { afterEach, expect, it, vi } from 'vitest'
 import { createSessionController } from '../../../../features/auth/model/session'
+import { withAdmission } from '../../../../features/auth/__tests__/fixtures/admission'
 import { reviewedBundle } from '../../../../features/avatar/__tests__/reviewed-production/fixtures'
 import { decodeBootstrap } from '../../../../features/auth/model/bootstrap'
 import { object } from '../../../../features/auth/model/contract'
@@ -18,7 +19,7 @@ afterEach(() => { cleanup(); stops.splice(0).reverse().forEach(fn => fn()); vi.r
 async function fixture() {
   const bundle = await reviewedBundle(), eventId = String(object(bundle.event).event_id), userId = String(object(bundle.participant).user_id)
   const fetch = vi.fn(async () => Response.json(bundle))
-  const auth = createSessionController({ eventId, fetch }); auth.session.replace(0, { userId, eventId, accessToken: 'TEST_ONLY_reviewed_root' })
+  const auth = createSessionController({ eventId, fetch: withAdmission(fetch) }); auth.session.replace(0, { userId, eventId, accessToken: 'TEST_ONLY_reviewed_root' })
   const scope = auth.privacy.capture(), bootstrap = await decodeBootstrap(bundle, { generation: scope.generation, userId, eventId })
   const characters = createRootCharacterRegistry(auth, 'https://mcr.test'), fake = createFixturePorts()
   stops.push(() => { characters.dispose(); auth.dispose() })

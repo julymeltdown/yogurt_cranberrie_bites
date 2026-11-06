@@ -18,8 +18,8 @@ describe('UIV04 avatar category presentation', () => {
   it('keeps every layer and tone available through keyboard categories with bounded option previews and no draft change or save', async () => {
     const f = await setup(), main = f.controller.read().preview.canvas
     fireEvent.click(tab('Hair'))
-    for (const [index, name] of ['Hair', 'Outfit', 'Accessory', 'Tones', 'Presets', 'Body', 'Eyes'].entries()) {
-      if (index) fireEvent.keyDown(tab(['Hair', 'Outfit', 'Accessory', 'Tones', 'Presets', 'Body', 'Eyes'][index - 1]!), { key: 'ArrowDown' })
+    for (const [index, name] of ['Hair', 'Eyes', 'Outfit', 'Body', 'Accessory', 'Tones', 'Presets'].entries()) {
+      if (index) fireEvent.keyDown(tab(['Hair', 'Eyes', 'Outfit', 'Body', 'Accessory', 'Tones', 'Presets'][index - 1]!), { key: 'ArrowRight' })
       expect(tab(name)).toHaveAttribute('aria-selected', 'true')
       const details = screen.getByRole('tabpanel').querySelector('details')!
       if (!details.open) fireEvent.click(details.querySelector('summary')!)

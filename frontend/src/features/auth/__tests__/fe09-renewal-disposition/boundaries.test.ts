@@ -3,6 +3,7 @@ import { afterEach, beforeEach, expect, it, vi } from 'vitest'
 import { QueryObserver } from '@tanstack/react-query'
 import { createSessionController, type SessionController } from '../../model/session'
 import { authResponse, capabilities, deferred, eventId, fixture, isolatedCookiePolicy, userId } from '../fixtures/data'
+import { withAdmission } from '../fixtures/admission'
 
 const controllers: SessionController[] = []
 beforeEach(() => vi.stubGlobal('location', { origin: 'https://mcr.example' }))
@@ -16,7 +17,7 @@ function setup(handle: (request: Request) => Response | Promise<Response>) {
     if (request.url.endsWith('/login')) return Response.json(authResponse())
     return handle(request)
   })
-  const auth = createSessionController({ eventId, fetch, qualifiedRefresh: true, cookiePolicy: isolatedCookiePolicy() })
+  const auth = createSessionController({ eventId, fetch: withAdmission(fetch), qualifiedRefresh: true, cookiePolicy: isolatedCookiePolicy() })
   controllers.push(auth); auth.start()
   return { auth, fetch, calls: (suffix: string) => fetch.mock.calls.filter(([r]) => (r as Request).url.endsWith(suffix)) }
 }

@@ -1,5 +1,5 @@
 {
-  "base": "9e7952fcd89360f7b4fe43c69f22060b9aa55c74",
+  "base": "9185c99223bbf7437fff4346a7683dbb4187dfb0",
   "status": {
     "C07": "UNRECONCILED",
     "IN03": "NOT_RUN"
@@ -7,11 +7,11 @@
   "inputs": [
     {
       "path": "contracts/core/v1/core.schema.json",
-      "sha256": "e9f9618548d255ba53ea9f46efe6fb52ede468acab636d43f0c487eeab779fba"
+      "sha256": "7760712818b399faf956b874565c080726f70913b6b4fc81e2236ab127332eaa"
     },
     {
       "path": "contracts/domain/v1/common.schema.json",
-      "sha256": "65f2c2f19594942b89613e67b97bd3181e0889e7f47e4476cda752d9aab10584"
+      "sha256": "cc34c0a16cff70f89a4779ebf6aa962a9009d7ffa7c3d84133d13c2dc159f258"
     },
     {
       "path": "contracts/domain/v1/feed.schema.json",
@@ -19,7 +19,7 @@
     },
     {
       "path": "contracts/domain/v1/operations.json",
-      "sha256": "f801d703dfc5509bbe06a2f0fa07a170b6442a48b2204c7ead460fc9a3600112"
+      "sha256": "e6fd3cb09b6660935102c25c76f8abbb709451dfc039aea4495037df0f5458fb"
     },
     {
       "path": "contracts/domain/v1/social.schema.json",
@@ -235,7 +235,7 @@
     },
     {
       "path": "contracts/fixtures/domain/index.json",
-      "sha256": "0098bbe0d8a98a262e515eb5d3f9e07f9f85e3fe6839edc98e808295c9066729"
+      "sha256": "1ffba4696e8b49c1c69eb37a3728221c8625c4c7dfeff3c8a40a7ce11986e7d0"
     },
     {
       "path": "contracts/fixtures/domain/intro-age-leak.json",
@@ -354,12 +354,44 @@
       "sha256": "fa72e16a382973422172058a1c74361e87a7490911ac6c39e9d6583f1721b324"
     },
     {
+      "path": "contracts/fixtures/domain/wall-tools-b/budget-513.json",
+      "sha256": "3cd1a5138a2a8c76b2e296ea3839c5a6dbed7500b2b65954b2e5a91b9eb5243f"
+    },
+    {
+      "path": "contracts/fixtures/domain/wall-tools-b/false-pixel-delta.json",
+      "sha256": "0e892aed1e057cb030a4815d111cfe3758dc1b030649f49f35ec99e37009ab2f"
+    },
+    {
+      "path": "contracts/fixtures/domain/wall-tools-b/fill-257.json",
+      "sha256": "856e19cfe7b9bb6cf0f281adf19376db29fbc1d7fe397896654638b7a86700ac"
+    },
+    {
+      "path": "contracts/fixtures/domain/wall-tools-b/foreign-history.json",
+      "sha256": "9469daecb40417ba9736eabd6ea7aa894858289feb13872415989ca7cd4c7dbf"
+    },
+    {
+      "path": "contracts/fixtures/domain/wall-tools-b/own-fill-256.json",
+      "sha256": "d21a8014938fb7d8a3fbd3a9f747d97af0c1349e79903bf935f9e29b386dba3a"
+    },
+    {
+      "path": "contracts/fixtures/domain/wall-tools-b/private-history-leak.json",
+      "sha256": "b83ba3e91d874f377f5db9370a8a332d7869ce3ddf2f644db1a883dc0c67e46d"
+    },
+    {
+      "path": "contracts/fixtures/domain/wall-tools-b/tools-qualified.json",
+      "sha256": "929e6e0fbfd7c600fed6277f415a8b54a258d06d98a2fcda3e28e549a9bf8a93"
+    },
+    {
+      "path": "contracts/fixtures/domain/wall-tools-b/wrong-background.json",
+      "sha256": "69fdd4ba7b70ae6a5055afe556a78e3f891051e46f20d7775aad3992b8dbfd2d"
+    },
+    {
       "path": "contracts/generated/mcr-core.openapi.json",
-      "sha256": "5b62b6e545f2ac5c367bd189bed6c509b76b4383f47b016d7b075c88f2742978"
+      "sha256": "6e3b4d141d04b137579bf0436e93009e6c4b6a291a230049064d236d12db171d"
     },
     {
       "path": "contracts/generated/mcr-domain.openapi.json",
-      "sha256": "905d6f5b6f66f95cb68499a5fbfb32802539fce515f421226d79cb375ecfb887"
+      "sha256": "31a167fedd6b414a9d0b48df0f18644fcbd9f7a7a9bcef855265601e1401d634"
     },
     {
       "path": "contracts/realtime/v1/operations.json",
@@ -367,11 +399,11 @@
     },
     {
       "path": "contracts/realtime/v1/policy.json",
-      "sha256": "3e77e21b036386803c7d5bff0145c434f111ba51b861219a211e853a43d0628b"
+      "sha256": "6f79a6f79028d49c7e81a7ef18c82ba451af610dd5acb401293b6298a0645734"
     },
     {
       "path": "contracts/realtime/v1/world.schema.json",
-      "sha256": "1732e627037fe91533ac6f7fe74e36683ce9b846bfbfc020b3cce298ae84df36"
+      "sha256": "6ec593955a695656bcf5ec736e25fdf26593f1eff28bda657541779a1ec8cd85"
     },
     {
       "path": "frontend/pnpm-lock.yaml",
@@ -379,7 +411,7 @@
     },
     {
       "path": "frontend/src/shared/api/domain-operations.generated.ts",
-      "sha256": "2a956a59b0802498fb2a28c98babd86ea4d804afa80722dd75d6158b423714a2"
+      "sha256": "80905d6d46b61a73856cb529d2f5b93d26a4087569b7eccb28fd40a100225804"
     }
   ]
 }

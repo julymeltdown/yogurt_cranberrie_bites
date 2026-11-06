@@ -2,6 +2,7 @@ import { afterEach, beforeEach, expect, it, vi } from 'vitest'
 import { createSessionController, type SessionController } from '../model/session'
 import { createHttpClient, type HttpRequest } from '../../../shared/api/http'
 import { eventId, userId, isolatedCookiePolicy, deferred } from './fixtures/data'
+import { withAdmission } from './fixtures/admission'
 import { type DomainOperationId } from '../../../shared/api/domain-operations.generated'
 
 const key = '00000000-0000-4000-8000-000000000501', party = '00000000-0000-4000-8000-000000000601'
@@ -11,7 +12,7 @@ beforeEach(() => vi.stubGlobal('location', { origin: 'https://mcr.example' }))
 afterEach(() => { controllers.splice(0).forEach(c => c.dispose()); vi.unstubAllGlobals() })
 function setup(handler: (request: Request) => Response | Promise<Response> = () => Response.json({ ok: true })) {
   const fetch = vi.fn<typeof globalThis.fetch>(async input => handler(input as Request))
-  const auth = createSessionController({ eventId, fetch, cookiePolicy: isolatedCookiePolicy() })
+  const auth = createSessionController({ eventId, fetch: withAdmission(fetch), cookiePolicy: isolatedCookiePolicy() })
   controllers.push(auth)
   auth.session.replace(0, { userId, eventId, accessToken: 'memory-token' })
   return { auth, fetch }

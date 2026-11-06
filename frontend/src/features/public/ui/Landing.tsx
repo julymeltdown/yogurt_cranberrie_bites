@@ -15,7 +15,13 @@ export function Landing() {
     if (!scope || key === redirected.current || session.signal.aborted || !ports.session.isCurrent(scope)
       || ports.readiness.read() !== 'ready') return
     redirected.current = key
-    void navigate('/world', { replace: true })
+    // Dispatch after the current navigation commit; a nested navigate during a just-committed
+    // route change is ignored by the router on a warm module graph.
+    queueMicrotask(() => {
+      if (redirected.current !== key || session.signal.aborted || !ports.session.isCurrent(scope)
+        || ports.readiness.read() !== 'ready') return
+      void navigate('/world', { replace: true })
+    })
   }, [ports, key, scope, session.signal, navigate])
   const checking = readiness === 'unknown' || readiness === 'checking'
   const anonymous = readiness === 'anonymous'

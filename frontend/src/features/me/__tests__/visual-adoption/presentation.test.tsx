@@ -33,7 +33,7 @@ it('keeps saved identity separate from an unsaved public draft and uses only exi
   expect(screen.getByText(/Avatar preview unavailable/)).toBeTruthy()
   expect(screen.queryByRole('img')).toBeNull()
   fireEvent.click(screen.getByText('Profile options'))
-  expect(screen.getAllByRole('link').map(a => a.getAttribute('href'))).toEqual(['/me/profile', '/me/avatar', '/me/social', '/me/requests', '/meet', '/gifts/mine', '/feed', '/me/settings', '/me/age', '/me/blocks', '/me/account', '/world'])
+  expect(screen.getAllByRole('link').map(a => a.getAttribute('href'))).toEqual(['/me/avatar', '/meet', '/gifts/mine', '/feed', '/me/social', '/me/requests', '/me/settings', '/me/age', '/me/blocks', '/me/account', '/world', '/me/profile'])
   expect(screen.queryByRole('tab')).toBeNull()
   act(fixture.dispose)
 })

@@ -1,5 +1,6 @@
 import { createSessionController } from '../../../../features/auth/model/session'
 import { authResponse, capabilities, eventId, isolatedCookiePolicy, userId } from '../../../../features/auth/__tests__/fixtures/data'
+import { withAdmission } from '../../../../features/auth/__tests__/fixtures/admission'
 import type { MuralAdminState, OperatorContext } from '../../../../features/admin/mural/contract'
 import { stepNames, type ClosureJob } from '../../../../features/admin/closure/contract'
 import { createMuralClosureEntry } from '../index'
@@ -17,7 +18,7 @@ export function fixture() {
     job: partialJob(), mode: 'ack', operator: true, receipts: new Map<string, Record<string, unknown>>(), admissions: 0,
     intercept: null as null | ((request: Request) => Promise<Response> | null) }
   const error = (reason: string, status: number) => Response.json({ code: 'FIXTURE', message: 'Safe deterministic error', details: { reason } }, { status })
-  const auth = createSessionController({ eventId, cookiePolicy: isolatedCookiePolicy(), timeoutMs: 1000, fetch: async input => {
+  const auth = createSessionController({ eventId, cookiePolicy: isolatedCookiePolicy(), timeoutMs: 1000, fetch: withAdmission(async input => {
     const request = input as Request, url = new URL(request.url), path = url.pathname
     server.requests.push(request.clone())
     if (path === '/api/auth/capabilities') return Response.json(capabilities())
@@ -50,7 +51,7 @@ export function fixture() {
       result_status: 200, failure_reason: null, created_at: '2026-11-04T00:00:00Z', expires_at: '2026-11-06T00:00:00Z' })
     if (server.mode === 'lost') throw new TypeError('Synthetic response lost after admission')
     return Response.json(closure ? server.job : server.wall)
-  } })
+  }) })
   const update = (next: OperatorContext | null) => { current = next; for (const listener of Array.from(listeners)) listener() }
   let entry: ReturnType<typeof createMuralClosureEntry> | undefined
   async function open() {

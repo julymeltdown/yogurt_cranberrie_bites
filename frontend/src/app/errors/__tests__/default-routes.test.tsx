@@ -5,7 +5,7 @@ import { afterEach, expect, it, vi } from 'vitest'
 import { createMemoryRouter, RouterProvider } from 'react-router-dom'
 import { createAppRoutes } from '../../router'
 import { createProductionPorts } from '../../ports'
-import { authHarness } from '../../world-entry/__tests__/data'
+import { authHarness } from '../../world-entry/__tests__/admitted-auth'
 
 afterEach(cleanup)
 it('uses the default catchall with safe navigation and never renders the rejected URL', async () => {

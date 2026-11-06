@@ -1,4 +1,5 @@
 import { createSessionController } from '../../../../auth/model/session'
+import { withAdmission } from '../../../../auth/__tests__/fixtures/admission'
 import type { PrivacyScope } from '../../../../../shared/query/privacy'
 import { createOperationsController } from '../../model/controller'
 import { dataFromNotice } from '../../model/controller'
@@ -50,7 +51,7 @@ export function fixture(options: { role?: OperatorLease['role']; absent?: boolea
       result_status: state === 'SUCCEEDED' ? 200 : null, created_at: time(), expires_at: time(86400000) }
   }
   const auth = createSessionController({ eventId, timeoutMs: 2000, cookiePolicy: { available: true, onInvalidate: () => () => {}, run: (_kind, work) => work(), dispose() {} },
-    fetch: async input => {
+    fetch: withAdmission(async input => {
       const request = input as Request; requests.push(request.clone())
       const overridden = override?.(request); if (overridden) return overridden
       const url = new URL(request.url), path = url.pathname
@@ -78,7 +79,7 @@ export function fixture(options: { role?: OperatorLease['role']; absent?: boolea
       const value = apply(operation, body, target)
       if (mode === 'lost') { lastReceipt = receipt(operation, correlation, target ?? uid(40), 'SUCCEEDED', (value as { revision: number }).revision); throw new TypeError('SYNTHETIC lost response') }
       return Response.json(mode === 'bad-result' ? { ...(value as object), revision: 999 } : value)
-    } })
+    }) })
   auth.session.replace(0, { userId: actorId, eventId, accessToken: 'synthetic-memory-token' })
   const scope = auth.privacy.capture()
   lease = options.absent ? null : { scope, actorId, eventId, role: options.role ?? 'OPERATOR', revision: 1, checkedAt: time(), expiresAt: time(60000) }

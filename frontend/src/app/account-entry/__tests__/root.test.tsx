@@ -20,7 +20,7 @@ it('mounts the actual four lazy account routes while preserving one shell lease 
   const f=root();await screen.findByRole('heading',{name:'Synthetic listener'})
   const host=document.querySelector('[data-world-host]'),mounts=f.stats.mounts
   await act(()=>f.router.navigate('/me/profile'));fireEvent.change(await screen.findByLabelText('Bio (optional)'),{target:{value:'Keep across panels'}})
-  await act(()=>f.router.navigate('/me/settings'));await screen.findByRole('heading',{name:'SETTINGS'})
+  await act(()=>f.router.navigate('/me/settings'));await screen.findByRole('heading',{name:'Settings',level:1})
   expect(screen.getByLabelText('Enable sound')).not.toBeChecked()
   await act(()=>f.router.navigate('/me/avatar'));await screen.findByText(/Reviewed avatar artwork is unavailable/)
   expect(screen.getByRole('button',{name:'Save outfit'})).toBeDisabled();expect(document.querySelector('canvas')).toBeNull()
@@ -49,6 +49,6 @@ it('rebinds after policy-generation change and discards prior private drafts',as
   expect(f.stats.peakGames).toBe(1);expect(f.stats.peakConnections).toBe(1)
 })
 it('leaves public login outside account, participant and world allocation',async()=>{
-  const f=root('/login');await screen.findByRole('heading',{name:'Sign in'})
+  const f=root('/login');await screen.findByRole('heading',{name:'You’re signed in'})
   expect(f.fetcher).not.toHaveBeenCalled();expect(f.boot).not.toHaveBeenCalled();expect(f.stats.mounts).toBe(0)
 })

@@ -15,7 +15,7 @@ spec.loader.exec_module(generator)
 class InventoryTests(unittest.TestCase):
     def test_both_namespaces_reject_unknown_missing_malformed_and_nonjson_files(self):
         expected = {prefix + '/fixture.json': '{}\n' for prefix in
-                    ('contracts/generated/api-client', 'frontend/src/shared/api/generated', 'contracts/fixtures/c07')}
+                    ('frontend/src/generated/api-client', 'frontend/src/shared/api/generated', 'contracts/fixtures/c07')}
         with tempfile.TemporaryDirectory(prefix='mcr-c07-inventory-') as directory:
             root = Path(directory)
             for name, content in expected.items():

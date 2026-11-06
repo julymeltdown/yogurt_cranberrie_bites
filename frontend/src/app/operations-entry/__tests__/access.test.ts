@@ -3,6 +3,7 @@ import { afterEach, expect, it, vi } from 'vitest'
 import operation from './operation.fixture.json'
 import { createSessionController } from '../../../features/auth/model/session'
 import { isolatedCookiePolicy, deferred } from '../../../features/auth/__tests__/fixtures/data'
+import { withAdmission } from '../../../features/auth/__tests__/fixtures/admission'
 import { createReportReview } from '../../../features/admin/reports'
 import { createOperatorGuard } from '../../../features/admin/event/model/lease'
 import { createAuthorityTimeline } from '../../community-authority/timeline'
@@ -26,9 +27,9 @@ const owners: { dispose(): void }[] = []
 function setup() {
   let elapsed = 0, value: unknown = wire(), response: (() => Promise<Response>) | null = null, invalidClock = false
   const requests: Request[] = [], lifetime = new AbortController()
-  const auth = createSessionController({ eventId: id(2), cookiePolicy: isolatedCookiePolicy(), fetch: async input => {
+  const auth = createSessionController({ eventId: id(2), cookiePolicy: isolatedCookiePolicy(), fetch: withAdmission(async input => {
     requests.push(input as Request); return response ? response() : Response.json(value)
-  } })
+  }) })
   auth.session.replace(0, { userId: id(1), eventId: id(2), accessToken: 'TEST_ONLY_memory' })
   let interrupt = () => {}
   const entry = createOperationsEntry({ auth, signal: lifetime.signal, timeline: signal => {

@@ -10,7 +10,7 @@ export const bytes = () => Uint8Array.from(atob('iVBORw0KGgoAAAANSUhEUgAAAAEAAAA
 export const file = () => new File([bytes()], 'private-local-name.png', { type: 'image/png' })
 export const image = () => ({ blob: new Blob([bytes()], { type: 'image/png' }), width: 1, height: 1, sha256: 'a'.repeat(64) })
 export const intent = () => ({ media_id: mediaId, state: 'PENDING' as const, upload_path: `/api/concert/events/${event}/media/${mediaId}/bytes`, max_bytes: 10485760 as const,
-  expires_at: '2026-11-05T00:00:00Z', upload_method: 'PUT' as const, revision: 1 })
+  expires_at: '2099-01-01T00:00:00Z', upload_method: 'PUT' as const, revision: 1 })
 export const ready = () => ({ media_id: mediaId, state: 'READY' as const, revision: 3, width: 1, height: 1, content_type: 'image/png' as const,
   purpose: 'POST' as const, read_path: `/api/concert/events/${event}/media/${mediaId}/content` })
 export const receipt = (b: CommandBinding, patch: Partial<MediaReceipt> = {}): MediaReceipt => ({ receipt_id: uid(4), event_id: event, actor_id: user,

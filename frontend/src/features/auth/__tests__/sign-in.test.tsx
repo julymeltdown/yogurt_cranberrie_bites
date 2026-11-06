@@ -8,12 +8,15 @@ import { createAppRoutes } from '../../../app/router'
 import { createProductionPorts } from '../../../app/ports'
 import { createSessionController, type SessionController } from '../model/session'
 import { authResponse, capabilities, deferred, eventId, fixture, isolatedCookiePolicy } from './fixtures/data'
+import { withAdmission } from './fixtures/admission'
+import { servicePolicyFixture } from '../../../app/pre-world-policy/__tests__/fixtures'
+import { testPreWorldPolicy } from '../../../app/__tests__/fixtures/ports'
 const instances: SessionController[] = [], routers: ReturnType<typeof createMemoryRouter>[] = []
 afterEach(() => { cleanup(); routers.splice(0).forEach(r => r.dispose()); instances.splice(0).forEach(c => c.dispose()); vi.unstubAllGlobals() })
 function setup(response: () => Promise<Response> | Response, target = '/feed', providers = capabilities()) {
   const cookiePolicy = isolatedCookiePolicy()
   const fetch = vi.fn<typeof globalThis.fetch>(async input => (input as Request).url.endsWith('capabilities') ? Response.json(providers) : response())
-  const auth = createSessionController({ eventId, fetch, cookiePolicy }); instances.push(auth); auth.start()
+  const auth = createSessionController({ eventId, fetch: withAdmission(fetch), cookiePolicy }); instances.push(auth); auth.start()
   const router = createMemoryRouter(createAppRoutes(createProductionPorts(auth)), { initialEntries: [`/login?returnTo=${encodeURIComponent(target)}`] }); routers.push(router)
   render(<StrictMode><RouterProvider router={router} /></StrictMode>)
   return { auth, router, fetch, cookiePolicy }
@@ -80,9 +83,11 @@ it.each([403, 401])('keeps a mounted world for feature denial but revokes it for
       : path.endsWith('bootstrap') ? Response.json(bootstrap) : Response.json({ code: 'FAILURE', message: 'Safe envelope',
         details: { reason: status === 403 ? 'PERMISSION_DENIED' : 'AUTHENTICATION_REQUIRED' } }, { status })
   })
-  const auth = createSessionController({ eventId, fetch, cookiePolicy: isolatedCookiePolicy() }); instances.push(auth); auth.start()
+  const sessionFetch: typeof globalThis.fetch = withAdmission(async input => new URL((input as Request).url).pathname.endsWith('/service-policy')
+    ? Response.json(servicePolicyFixture()) : fetch(input))
+  const auth = createSessionController({ eventId, fetch: sessionFetch, cookiePolicy: isolatedCookiePolicy() }); instances.push(auth); auth.start()
   const world = { live: 0, disposed: 0 }
-  const router = createMemoryRouter(createAppRoutes({ ...createProductionPorts(auth), world: {
+  const router = createMemoryRouter(createAppRoutes({ ...createProductionPorts(auth), preWorldPolicy: testPreWorldPolicy, world: {
     mount(_host, context) {
       world.live++; let closed = false
       const dispose = () => { if (closed) return; closed = true; world.live--; world.disposed++ }

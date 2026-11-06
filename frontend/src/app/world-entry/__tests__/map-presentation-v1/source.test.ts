@@ -6,7 +6,7 @@ import bootstrap from './source-inputs/operator-bootstrap.json'
 import style from '../../../../world/reference-scene/map4-service-v1/style-source.json'
 import { map4ThemeHashes, map4Parade } from '../../map-presentation-v1/identity'
 
-const base = 'a5c6cad52e630d61aa4ce581e7230c13cc5feb25'
+const base = '9185c99223bbf7437fff4346a7683dbb4187dfb0'
 const root = new URL('../../../../../../', import.meta.url)
 const git = (path: string) => execFileSync('git', ['show', base + ':' + path], { cwd: root })
 const hash = (b: Uint8Array) => 'sha256:' + createHash('sha256').update(b).digest('hex')
