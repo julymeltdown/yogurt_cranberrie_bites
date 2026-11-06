@@ -520,7 +520,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   Recommended task executor category: deep-low
   Commit: Y | `test(qa04): pass privacy and authorization matrix`
 
-- [ ] 40. Pass QA05 realtime failure suite
+- [x] 40. Pass QA05 realtime failure suite
   What to do / Must NOT do: real pairs for delay/gap, slow client, foreground, ticket replay, restart and room switch. Do NOT simulate server frames in place of a real socket.
   Closes: GAP-3
   Parallelization: Wave 7 | Blocked by: 13, 29–32 | Blocks: 47
