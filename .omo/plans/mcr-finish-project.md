@@ -648,7 +648,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
 
 ## Final verification wave
 > Runs in parallel after ALL todos. ALL must APPROVE. Surface results and wait for the user's explicit okay before declaring complete.
-- [ ] F1. Plan compliance audit
+- [x] F1. Plan compliance audit
   What to do: verify every implementation row 1–48 is completed or explicitly dropped, every row's evidence file exists, and no row was silently narrowed. Evidence `.omo/evidence/mcr-finish-project/f1-compliance.md`.
   Recommended task executor category: unspecified-low
 
@@ -660,7 +660,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   What to do: execute the end-to-end scenarios for IS-1..IS-4 on the final SHA: two-client world + meetup + pickup, mural convergence, admin report/closure, venue invitation/notes, and the privacy matrix. Evidence `.omo/evidence/mcr-finish-project/f3-manual-qa/`.
   Recommended task executor category: deep-low
 
-- [ ] F4. Ideal-state fidelity check
+- [x] F4. Ideal-state fidelity check
   What to do: map each IS row to its delivering todos and captured QA artifact; a shortfall creates a new numbered task, never a note. Evidence `.omo/evidence/mcr-finish-project/f4-ideal-state.md`.
   Recommended task executor category: unspecified-low
 
