@@ -3,7 +3,7 @@ import { cleanup, fireEvent, render, screen, waitFor, within } from '@testing-li
 import { afterEach, describe, expect, it } from 'vitest'
 import { MemoryRouter, Route, Routes } from 'react-router-dom'
 import { VenueCommunityFeatures } from '../../src/app/venue-community-entry/provider'
-import { VenueConversationPanel, VenueInvitationPanel, VenueInvitationsPanel } from '../../src/app/venue-community-entry/routes'
+import { VenueConversationPanel, VenueInvitationPanel } from '../../src/app/venue-community-entry/routes'
 import { fixtureIds, invitationView, meetingFixture } from './fixture'
 
 const fixtures: ReturnType<typeof meetingFixture>[] = []
@@ -24,10 +24,9 @@ function inboxFixture() {
   ] })
   return f
 }
-function renderRoute(f: ReturnType<typeof meetingFixture>, path = '/meet/invitations') {
+function renderRoute(f: ReturnType<typeof meetingFixture>, path = `/meet/invitations/${fixtureIds.invitation}`) {
   let key = 0
   return render(<MemoryRouter initialEntries={[path]}><Routes>
-    <Route path="/meet/invitations" element={<VenueInvitationsPanel />} />
     <Route path="/meet/invitations/:invitationId" element={<VenueInvitationPanel />} />
     <Route path="/meet/invitations/:invitationId/conversation" element={<VenueConversationPanel />} />
   </Routes></MemoryRouter>, { wrapper: ({ children }) => <VenueCommunityFeatures auth={f.auth} release={f.release}
@@ -35,6 +34,7 @@ function renderRoute(f: ReturnType<typeof meetingFixture>, path = '/meet/invitat
 }
 const openList = async (f: ReturnType<typeof meetingFixture>) => {
   const rendered = renderRoute(f)
+  fireEvent.click(await screen.findByRole('button', { name: 'All invitations' }))
   await screen.findByRole('heading', { name: 'Invitations' })
   await waitFor(() => expect(f.inboxReads.length).toBeGreaterThan(0))
   await screen.findByText('Party invitation policy')
@@ -42,7 +42,7 @@ const openList = async (f: ReturnType<typeof meetingFixture>) => {
 }
 
 describe('invitation list screen', () => {
-  it('opens the inbox without issuing a mutating request', async () => {
+  it('opens the inbox from the granted detail route without issuing a mutating request', async () => {
     const f = inboxFixture(); await openList(f)
     expect(f.inboxReads[0]?.direction).toBe('INCOMING')
     expect(f.writes).toHaveLength(0)
@@ -122,6 +122,7 @@ describe('invitation list screen', () => {
   it('fails closed when the inbox read is denied', async () => {
     const f = inboxFixture(); f.denyInboxReads()
     renderRoute(f)
+    fireEvent.click(await screen.findByRole('button', { name: 'All invitations' }))
     await screen.findByText('Invitations are unavailable. The server did not authorize the current read.')
     expect(f.writes).toHaveLength(0)
   })

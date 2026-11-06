@@ -1,17 +1,6 @@
 {
   "task": "AM-FE-COMM-01",
   "scope": "SOURCE_QUALIFIED_FRONTEND_LEAF_ONLY",
-  "routeGrants": {
-    "state": "EXTENSION_IA_INVITATION_DECISIONS_STATUS",
-    "authority": "docs/mcr/venue/community/outcome.md#route-grant-provenance",
-    "amendment": "docs/mcr/venue-feature-amendment-2026-11-05.md (extension IA: invitation decisions/status)",
-    "plan": "mcr-finish-project row 26",
-    "paths": [
-      "/meet/invitations",
-      "/meet/invitations/:invitationId",
-      "/meet/invitations/:invitationId/conversation"
-    ]
-  },
   "sourceHead": "3cfb7cce391cd8e17974ce360dc70024c3a08620",
   "base": "5e28dc35dda0126ca5463f810f06eda8a56dc38f",
   "deliveryMode": "EXACT_PATH_POSTIMAGES_OR_SCOPED_PATCH; NEVER_WHOLE_PRIVATE_ANCESTRY",
@@ -98,7 +87,7 @@
     },
     {
       "path": "docs/mcr/venue/community/outcome.md",
-      "sha256": "4a4f2246cbed1408a1b9fc2376ae817e69b27006cc0743e845378b1100ee60d9"
+      "sha256": "4fa5bb528f2a7c72c32b64d2affb717babe2dd1b79aedb24479c325e77b0ec1b"
     },
     {
       "path": "docs/mcr/venue/community/source-validation.md",
@@ -125,5 +114,5 @@
     "native reference comparison/controlled HTTP/actual backend/two principals/device GPS NOT_RUN",
     "No original task closure or VENU product acceptance implied"
   ],
-  "existingFileHunks": "Only the granted invitation lazy imports+featurePanels keys in router.tsx and the granted invitation metadata rows plus the /meet link in routes.ts; preserve all concurrent rows/RouteFailure/LazyBoundary/UUID/safe-return/currentMap import."
+  "existingFileHunks": "Only two new lazy imports+featurePanels keys in router.tsx and two new metadata rows in routes.ts; preserve all concurrent rows/RouteFailure/LazyBoundary/UUID/safe-return/currentMap import."
 }
