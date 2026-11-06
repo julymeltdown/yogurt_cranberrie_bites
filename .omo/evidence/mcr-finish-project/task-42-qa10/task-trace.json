@@ -1,0 +1,3666 @@
+{
+  "candidate": {
+    "commit": "25b2d356fa036a6fb8c6f0d94796ac03bec730bf",
+    "dirty": false,
+    "tree": "e8023e2098a68f3f701ea7054a70459c166fb3d6"
+  },
+  "failures": [],
+  "ledger": {
+    "aggregate_counts": {
+      "DEFERRED_BY_USER": 1,
+      "DONE": 63,
+      "IN_PROGRESS": 40,
+      "OPEN": 3,
+      "REOPENED": 2,
+      "WAITING_INPUT": 3
+    },
+    "count_drift": {
+      "DONE": [
+        65,
+        63
+      ],
+      "IN_PROGRESS": [
+        39,
+        40
+      ],
+      "REOPENED": [
+        1,
+        2
+      ]
+    },
+    "path": "docs/mcr/task-progress-2026-11-04.json",
+    "row_level_counts": {
+      "DEFERRED_BY_USER": 1,
+      "DONE": 65,
+      "IN_PROGRESS": 39,
+      "OPEN": 3,
+      "REOPENED": 1,
+      "WAITING_INPUT": 3
+    },
+    "sha256": "409301299f6ce43552441b000d1a4e2e53edac5cd3f187f6dba2385908e603f5"
+  },
+  "plan": {
+    "path": ".omo/plans/mcr-finish-project.md",
+    "sha256": "da747e1979b8163b46b009b5983e7690470e5a42545de7da6d47666d2253c656"
+  },
+  "rows": [
+    {
+      "box": "x",
+      "catalog_task_ids": [],
+      "commit_flag": "Y",
+      "declared_commit_subject": "fix(frontend): restore build and test suite at 9185c9922",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "8e5cc757f3db2bc009709ed859f2e610398e1a20",
+          "method": "plan-commit-subject",
+          "subject": "fix(frontend): restore build and test suite at 9185c9922"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-1-frontend-commit.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "9185c99223bbf7437fff4346a7683dbb4187dfb0",
+          "delivering": false,
+          "mentioned_as": "9185c99223bbf7437fff4346a7683dbb4187dfb0",
+          "subject": "docs(progress): reconcile AR02 and AR04 original criteria once"
+        },
+        {
+          "ancestor": true,
+          "commit": "501710d293e5309e862997a353714e5753a76da0",
+          "delivering": false,
+          "mentioned_as": "501710d29",
+          "subject": "ci: remove contract-only workflow pending full gate"
+        },
+        {
+          "ancestor": true,
+          "commit": "8e5cc757f3db2bc009709ed859f2e610398e1a20",
+          "delivering": true,
+          "mentioned_as": "8e5cc757f",
+          "subject": "fix(frontend): restore build and test suite at 9185c9922"
+        }
+      ],
+      "plan_status": "CLOSED",
+      "resolution": "plan-commit-subject",
+      "row": 1,
+      "subject_drift": false,
+      "title": "Commit the frontend build and test repair",
+      "verdict": "CLOSED_COMMIT_ANCESTOR"
+    },
+    {
+      "box": "x",
+      "catalog_task_ids": [
+        "QA01"
+      ],
+      "commit_flag": "Y",
+      "declared_commit_subject": "fix(backend): register Concert workload and repin QA01 inputs",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "8fc507fe96586e50252e135dcfa66ee6c22faf51",
+          "method": "plan-commit-subject",
+          "subject": "fix(backend): register Concert workload and repin QA01 inputs"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-2-backend-commit.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "501710d293e5309e862997a353714e5753a76da0",
+          "delivering": false,
+          "mentioned_as": "501710d293e5309e862997a353714e5753a76da0",
+          "subject": "ci: remove contract-only workflow pending full gate"
+        },
+        {
+          "ancestor": false,
+          "commit": "7c563cf09fe971b904ac9549f5e3e8fe1391d94a",
+          "delivering": false,
+          "mentioned_as": "7c563cf09fe971b904ac9549f5e3e8fe1391d94a",
+          "subject": null
+        },
+        {
+          "ancestor": true,
+          "commit": "9185c99223bbf7437fff4346a7683dbb4187dfb0",
+          "delivering": false,
+          "mentioned_as": "9185c99223bbf7437fff4346a7683dbb4187dfb0",
+          "subject": "docs(progress): reconcile AR02 and AR04 original criteria once"
+        },
+        {
+          "ancestor": true,
+          "commit": "8e5cc757f3db2bc009709ed859f2e610398e1a20",
+          "delivering": false,
+          "mentioned_as": "8e5cc757f",
+          "subject": "fix(frontend): restore build and test suite at 9185c9922"
+        },
+        {
+          "ancestor": true,
+          "commit": "8fc507fe96586e50252e135dcfa66ee6c22faf51",
+          "delivering": true,
+          "mentioned_as": "8fc507fe9",
+          "subject": "fix(backend): register Concert workload and repin QA01 inputs"
+        }
+      ],
+      "plan_status": "CLOSED",
+      "resolution": "plan-commit-subject",
+      "row": 2,
+      "subject_drift": false,
+      "title": "Commit the backend compile fix and the QA01 re-pin",
+      "verdict": "CLOSED_COMMIT_ANCESTOR"
+    },
+    {
+      "box": "x",
+      "catalog_task_ids": [],
+      "commit_flag": "Y",
+      "declared_commit_subject": "ci: remove contract-only workflow pending full gate",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "501710d293e5309e862997a353714e5753a76da0",
+          "method": "plan-commit-subject",
+          "subject": "ci: remove contract-only workflow pending full gate"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-3-ci-removal.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "501710d293e5309e862997a353714e5753a76da0",
+          "delivering": true,
+          "mentioned_as": "501710d293e5309e862997a353714e5753a76da0",
+          "subject": "ci: remove contract-only workflow pending full gate"
+        },
+        {
+          "ancestor": true,
+          "commit": "9185c99223bbf7437fff4346a7683dbb4187dfb0",
+          "delivering": false,
+          "mentioned_as": "9185c99223bbf7437fff4346a7683dbb4187dfb0",
+          "subject": "docs(progress): reconcile AR02 and AR04 original criteria once"
+        },
+        {
+          "ancestor": true,
+          "commit": "8fc507fe96586e50252e135dcfa66ee6c22faf51",
+          "delivering": false,
+          "mentioned_as": "8fc507fe9",
+          "subject": "fix(backend): register Concert workload and repin QA01 inputs"
+        }
+      ],
+      "plan_status": "CLOSED",
+      "resolution": "plan-commit-subject",
+      "row": 3,
+      "subject_drift": false,
+      "title": "Commit the CI workflow removal",
+      "verdict": "CLOSED_COMMIT_ANCESTOR"
+    },
+    {
+      "box": "x",
+      "catalog_task_ids": [],
+      "commit_flag": "N",
+      "declared_commit_subject": null,
+      "delivering_commits": [],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-4-candidate.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "501710d293e5309e862997a353714e5753a76da0",
+          "delivering": false,
+          "mentioned_as": "501710d293e5309e862997a353714e5753a76da0",
+          "subject": "ci: remove contract-only workflow pending full gate"
+        },
+        {
+          "ancestor": true,
+          "commit": "9185c99223bbf7437fff4346a7683dbb4187dfb0",
+          "delivering": false,
+          "mentioned_as": "9185c99223bbf7437fff4346a7683dbb4187dfb0",
+          "subject": "docs(progress): reconcile AR02 and AR04 original criteria once"
+        },
+        {
+          "ancestor": true,
+          "commit": "8e5cc757f3db2bc009709ed859f2e610398e1a20",
+          "delivering": false,
+          "mentioned_as": "8e5cc757f",
+          "subject": "fix(frontend): restore build and test suite at 9185c9922"
+        },
+        {
+          "ancestor": true,
+          "commit": "8fc507fe96586e50252e135dcfa66ee6c22faf51",
+          "delivering": false,
+          "mentioned_as": "8fc507fe9",
+          "subject": "fix(backend): register Concert workload and repin QA01 inputs"
+        }
+      ],
+      "plan_status": "CLOSED",
+      "resolution": "no-commit-required",
+      "row": 4,
+      "subject_drift": false,
+      "title": "Verify the clean candidate end to end",
+      "verdict": "CLOSED_NO_COMMIT_REQUIRED"
+    },
+    {
+      "box": "x",
+      "catalog_task_ids": [],
+      "commit_flag": "Y",
+      "declared_commit_subject": "docs(mcr): record salvage recover-or-reimplement decisions",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "49ac04156f0832c67b5452fc6be83ed1235cc30d",
+          "method": "plan-commit-subject",
+          "subject": "docs(mcr): record salvage recover-or-reimplement decisions"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-5-salvage-table.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "49ac04156f0832c67b5452fc6be83ed1235cc30d",
+          "delivering": true,
+          "mentioned_as": "49ac04156f0832c67b5452fc6be83ed1235cc30d",
+          "subject": "docs(mcr): record salvage recover-or-reimplement decisions"
+        },
+        {
+          "ancestor": true,
+          "commit": "501710d293e5309e862997a353714e5753a76da0",
+          "delivering": false,
+          "mentioned_as": "501710d293e5309e862997a353714e5753a76da0",
+          "subject": "ci: remove contract-only workflow pending full gate"
+        },
+        {
+          "ancestor": false,
+          "commit": "5de898eb348be9199f7a0f114d831e2418d3eb41",
+          "delivering": false,
+          "mentioned_as": "5de898eb348be9199f7a0f114d831e2418d3eb41",
+          "subject": null
+        },
+        {
+          "ancestor": false,
+          "commit": "caee1a70f882abfaf7a4cb7f635847d4b9bcb1ed",
+          "delivering": false,
+          "mentioned_as": "caee1a70f882abfaf7a4cb7f635847d4b9bcb1ed",
+          "subject": null
+        },
+        {
+          "ancestor": false,
+          "commit": "5db23e373b5ee2fe5498922be72039e32bbda7f0",
+          "delivering": false,
+          "mentioned_as": "5db23e373b5e",
+          "subject": null
+        },
+        {
+          "ancestor": true,
+          "commit": "9185c99223bbf7437fff4346a7683dbb4187dfb0",
+          "delivering": false,
+          "mentioned_as": "9185c9922",
+          "subject": "docs(progress): reconcile AR02 and AR04 original criteria once"
+        }
+      ],
+      "plan_status": "CLOSED",
+      "resolution": "plan-commit-subject",
+      "row": 5,
+      "subject_drift": false,
+      "title": "Produce the salvage recover-or-reimplement decision table",
+      "verdict": "CLOSED_COMMIT_ANCESTOR"
+    },
+    {
+      "box": "x",
+      "catalog_task_ids": [],
+      "commit_flag": "Y",
+      "declared_commit_subject": "docs(mcr): inventory blocking CI gates",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "0dfbf3d8bd7c53cc43273a9f73d48a3ab502175e",
+          "method": "plan-commit-subject",
+          "subject": "docs(mcr): inventory blocking CI gates"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-6-ci-inventory.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "0dfbf3d8bd7c53cc43273a9f73d48a3ab502175e",
+          "delivering": true,
+          "mentioned_as": "0dfbf3d8bd7c53cc43273a9f73d48a3ab502175e",
+          "subject": "docs(mcr): inventory blocking CI gates"
+        },
+        {
+          "ancestor": true,
+          "commit": "501710d293e5309e862997a353714e5753a76da0",
+          "delivering": false,
+          "mentioned_as": "501710d293e5309e862997a353714e5753a76da0",
+          "subject": "ci: remove contract-only workflow pending full gate"
+        },
+        {
+          "ancestor": true,
+          "commit": "49ac04156f0832c67b5452fc6be83ed1235cc30d",
+          "delivering": false,
+          "mentioned_as": "49ac04156",
+          "subject": "docs(mcr): record salvage recover-or-reimplement decisions"
+        }
+      ],
+      "plan_status": "CLOSED",
+      "resolution": "plan-commit-subject",
+      "row": 6,
+      "subject_drift": false,
+      "title": "Inventory the CI gates to restore (write-only, no workflow change)",
+      "verdict": "CLOSED_COMMIT_ANCESTOR"
+    },
+    {
+      "box": "x",
+      "catalog_task_ids": [
+        "BE37"
+      ],
+      "commit_flag": "Y",
+      "declared_commit_subject": "feat(concert/relationship): adopt canonical block policy across consumers",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "5a5da504fc701d1cd3fc592b8d408efd34d29fb1",
+          "method": "identifier-subject",
+          "subject": "merge(relationship): BE37 six-entry consumer visibility probes"
+        },
+        {
+          "ancestor": true,
+          "commit": "c6051f812d2c5bce1e2374618d6bdc9b4f5ab3d6",
+          "method": "identifier-subject",
+          "subject": "test(be37): add cfg(test) six-entry consumer visibility probes"
+        },
+        {
+          "ancestor": true,
+          "commit": "d7519029d95e35f54f5357b182ba87d76f964be2",
+          "method": "identifier-subject",
+          "subject": "test(be37): prove canonical block and suspension removal in party and world sockets"
+        },
+        {
+          "ancestor": true,
+          "commit": "58bc4948e64b2c7a4edfb8c16369938738e161a0",
+          "method": "identifier-subject",
+          "subject": "docs(be37): record consumer adoption verification and remaining proof"
+        },
+        {
+          "ancestor": true,
+          "commit": "e1ce179b7c63e6f8c9d2d889fd7962dd093aeddf",
+          "method": "identifier-subject",
+          "subject": "feat(mcr): publish BE37 fail-closed relationship policy port"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-7-be37.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "501710d293e5309e862997a353714e5753a76da0",
+          "delivering": false,
+          "mentioned_as": "501710d293e5309e862997a353714e5753a76da0",
+          "subject": "ci: remove contract-only workflow pending full gate"
+        },
+        {
+          "ancestor": true,
+          "commit": "ab57da67ff00bae28a7a1eee88d27b042a7e5eee",
+          "delivering": false,
+          "mentioned_as": "ab57da67f",
+          "subject": "revert(be37): restore central register to task 47 ownership"
+        }
+      ],
+      "plan_status": "CLOSED",
+      "resolution": "identifier-subject",
+      "row": 7,
+      "subject_drift": true,
+      "title": "Adopt the BE37 relationship policy across real consumers",
+      "verdict": "CLOSED_COMMIT_ANCESTOR"
+    },
+    {
+      "box": "x",
+      "catalog_task_ids": [
+        "BE15"
+      ],
+      "commit_flag": "Y",
+      "declared_commit_subject": "feat(concert/receipts): enable production outbox and receipt consumers",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "004949bcfab93e7db86ffe7723dd66d610665433",
+          "method": "plan-commit-subject",
+          "subject": "feat(concert/receipts): enable production outbox and receipt consumers"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-8-be15.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "501710d293e5309e862997a353714e5753a76da0",
+          "delivering": false,
+          "mentioned_as": "501710d293e5309e862997a353714e5753a76da0",
+          "subject": "ci: remove contract-only workflow pending full gate"
+        }
+      ],
+      "plan_status": "CLOSED",
+      "resolution": "plan-commit-subject",
+      "row": 8,
+      "subject_drift": false,
+      "title": "Adopt the BE15 outbox and command receipt consumers in production",
+      "verdict": "CLOSED_COMMIT_ANCESTOR"
+    },
+    {
+      "box": "x",
+      "catalog_task_ids": [
+        "BE03"
+      ],
+      "commit_flag": "Y",
+      "declared_commit_subject": "feat(auth): complete browser auth contract leaves",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "2c1ed8fb22dfcfd24165388b8800fec656d9d5cf",
+          "method": "plan-commit-subject",
+          "subject": "feat(auth): complete browser auth contract leaves"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-9-be03.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "09c9b6b471bd53e6e739a58d00244133de63e418",
+          "delivering": false,
+          "mentioned_as": "09c9b6b471bd53e6e739a58d00244133de63e418",
+          "subject": "Record Post admission capacity refusal and prospective controls"
+        },
+        {
+          "ancestor": false,
+          "commit": "11be1d4395354b02c94211ed33f7992105750e42",
+          "delivering": false,
+          "mentioned_as": "11be1d4395354b02c94211ed33f7992105750e42",
+          "subject": null
+        },
+        {
+          "ancestor": true,
+          "commit": "2c1ed8fb22dfcfd24165388b8800fec656d9d5cf",
+          "delivering": true,
+          "mentioned_as": "2c1ed8fb2",
+          "subject": "feat(auth): complete browser auth contract leaves"
+        },
+        {
+          "ancestor": true,
+          "commit": "4f5d504c5fc3145306c1fc53a77252f03f89d904",
+          "delivering": false,
+          "mentioned_as": "4f5d504c5",
+          "subject": "fix(auth/test): derive migration counts and seed the isolated policy fixture"
+        },
+        {
+          "ancestor": true,
+          "commit": "501710d293e5309e862997a353714e5753a76da0",
+          "delivering": false,
+          "mentioned_as": "501710d29",
+          "subject": "ci: remove contract-only workflow pending full gate"
+        },
+        {
+          "ancestor": true,
+          "commit": "a3d547f640f2e908fd7834affa3b27a3ab84df41",
+          "delivering": false,
+          "mentioned_as": "a3d547f64",
+          "subject": "refactor(gateway): move shared boundary types out of adapter modules"
+        },
+        {
+          "ancestor": true,
+          "commit": "d12cfc9944ff5636864a96df3c73f1653453628f",
+          "delivering": false,
+          "mentioned_as": "d12cfc994",
+          "subject": "refactor(gateway): move concert access context to a neutral module"
+        },
+        {
+          "ancestor": true,
+          "commit": "d19b04455b3031d1d01915bfa0011c531726bd73",
+          "delivering": false,
+          "mentioned_as": "d19b04455",
+          "subject": "fix(gateway/test): derive the retained Profile migration set"
+        }
+      ],
+      "plan_status": "CLOSED",
+      "resolution": "plan-commit-subject",
+      "row": 9,
+      "subject_drift": false,
+      "title": "Publish the BE03 application leaves and finish the OAuth boundary",
+      "verdict": "CLOSED_COMMIT_ANCESTOR"
+    },
+    {
+      "box": "x",
+      "catalog_task_ids": [
+        "BE10",
+        "BE11"
+      ],
+      "commit_flag": "Y",
+      "declared_commit_subject": "feat(world): complete one-use admission and room leases",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "1980fb0c7d6e1900d461b9d8ab4ef3ee7d3beefa",
+          "method": "plan-commit-subject",
+          "subject": "feat(world): complete one-use admission and room leases"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-10-admission.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "1980fb0c7d6e1900d461b9d8ab4ef3ee7d3beefa",
+          "delivering": true,
+          "mentioned_as": "1980fb0c7",
+          "subject": "feat(world): complete one-use admission and room leases"
+        },
+        {
+          "ancestor": true,
+          "commit": "501710d293e5309e862997a353714e5753a76da0",
+          "delivering": false,
+          "mentioned_as": "501710d29",
+          "subject": "ci: remove contract-only workflow pending full gate"
+        }
+      ],
+      "plan_status": "CLOSED",
+      "resolution": "plan-commit-subject",
+      "row": 10,
+      "subject_drift": false,
+      "title": "Complete BE10/BE11 admission and room leases in production",
+      "verdict": "CLOSED_COMMIT_ANCESTOR"
+    },
+    {
+      "box": "~",
+      "catalog_task_ids": [
+        "BE24",
+        "BE31",
+        "BE32"
+      ],
+      "commit_flag": "Y",
+      "declared_commit_subject": "feat(feed): complete media, post and comment composition",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "17adc599302109a3e9a44fb114c44663fed4c9d4",
+          "method": "identifier-subject",
+          "subject": "feat(mcr/BE24): deliver qualified image pipeline and restart evidence"
+        },
+        {
+          "ancestor": true,
+          "commit": "5faa42ff4bd400393b4bfe850b512f0e64cbb892",
+          "method": "identifier-subject",
+          "subject": "docs(mcr/BE24): qualify combined build and native restart"
+        },
+        {
+          "ancestor": true,
+          "commit": "7ce2be56afde88538d44ffbd01e90b9cd77edd0b",
+          "method": "identifier-subject",
+          "subject": "Implement BE24 private image processing and durable media producer"
+        },
+        {
+          "ancestor": true,
+          "commit": "bd391ac27a1e072d89c331780f933df52e111df5",
+          "method": "identifier-subject",
+          "subject": "Register BE24 media modules and retained image dependency"
+        },
+        {
+          "ancestor": true,
+          "commit": "58282b4cf3c995e3051c1f5ecf79407bda6b25ab",
+          "method": "identifier-subject",
+          "subject": "docs(mcr/BE24): qualify final media producer on owned PostgreSQL restart"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-11-media-feed.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "501710d293e5309e862997a353714e5753a76da0",
+          "delivering": false,
+          "mentioned_as": "501710d293e5309e862997a353714e5753a76da0",
+          "subject": "ci: remove contract-only workflow pending full gate"
+        },
+        {
+          "ancestor": true,
+          "commit": "39512c69abce632c50af7058c6b57a203305ff1c",
+          "delivering": false,
+          "mentioned_as": "39512c69a",
+          "subject": "fix(media): converge competing same-key finalize on its receipt"
+        },
+        {
+          "ancestor": true,
+          "commit": "53d547059dd7e68485ded0158ea9a07556c06ecb",
+          "delivering": false,
+          "mentioned_as": "53d547059",
+          "subject": "test(post): inspect the actual deletion cleanup owner"
+        },
+        {
+          "ancestor": true,
+          "commit": "d962c7d2f9e88f038c2d3f97d010159926524fe6",
+          "delivering": false,
+          "mentioned_as": "d962c7d2f",
+          "subject": "feat(media): compose uploader media over the canonical owner scope"
+        }
+      ],
+      "plan_status": "PARTIAL",
+      "resolution": "identifier-subject",
+      "row": 11,
+      "subject_drift": true,
+      "title": "Complete BE24/BE31/BE32 media, feed and post composition (media delivered; feed mutation transport gated on the shared proto envelope)",
+      "verdict": "PARTIAL_WITH_COMMIT"
+    },
+    {
+      "box": "x",
+      "catalog_task_ids": [],
+      "commit_flag": "Y",
+      "declared_commit_subject": "feat(gateway): mount every registered concert command route",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "4465e3f6f6a9ae39aa5894e7e4fa58d523cfbd6a",
+          "method": "plan-commit-subject",
+          "subject": "feat(gateway): mount every registered concert command route"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-12-parity.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "4465e3f6f6a9ae39aa5894e7e4fa58d523cfbd6a",
+          "delivering": true,
+          "mentioned_as": "4465e3f6f",
+          "subject": "feat(gateway): mount every registered concert command route"
+        },
+        {
+          "ancestor": true,
+          "commit": "5a5da504fc701d1cd3fc592b8d408efd34d29fb1",
+          "delivering": false,
+          "mentioned_as": "5a5da504f",
+          "subject": "merge(relationship): BE37 six-entry consumer visibility probes"
+        }
+      ],
+      "plan_status": "CLOSED",
+      "resolution": "plan-commit-subject",
+      "row": 12,
+      "subject_drift": false,
+      "title": "Add the route-parity test and close missing public templates",
+      "verdict": "CLOSED_COMMIT_ANCESTOR"
+    },
+    {
+      "box": "x",
+      "catalog_task_ids": [
+        "BE44"
+      ],
+      "commit_flag": "Y",
+      "declared_commit_subject": "feat(infra): add reproducible real-stack composition and smoke",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "127c7406fb46727752413071d71a9d049042be2b",
+          "method": "evidence-bundle-merge",
+          "subject": "merge(operations): qualify BE38 settings, notices and read routes"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-13-stack.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "f75ec4238262b2345c8403137afda030fb6570e8",
+          "delivering": false,
+          "mentioned_as": "f75ec4238262b2345c8403137afda030fb6570e8",
+          "subject": "merge(gateway): route-parity gate and mounted command families"
+        }
+      ],
+      "plan_status": "CLOSED",
+      "resolution": "evidence-bundle-merge",
+      "row": 13,
+      "subject_drift": true,
+      "title": "Compose the real stack: BE44 compose, smoke script, restart proof",
+      "verdict": "CLOSED_COMMIT_ANCESTOR"
+    },
+    {
+      "box": "~",
+      "catalog_task_ids": [
+        "BE42"
+      ],
+      "commit_flag": "Y",
+      "declared_commit_subject": "feat(account): complete sealed account deletion apply",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "3f3c6331fdc2430ec7f5043d05783149b304d7d8",
+          "method": "plan-commit-subject",
+          "subject": "feat(account): complete sealed account deletion apply"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-14-be42.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "3f3c6331fdc2430ec7f5043d05783149b304d7d8",
+          "delivering": true,
+          "mentioned_as": "3f3c6331f",
+          "subject": "feat(account): complete sealed account deletion apply"
+        },
+        {
+          "ancestor": true,
+          "commit": "5a5da504fc701d1cd3fc592b8d408efd34d29fb1",
+          "delivering": false,
+          "mentioned_as": "5a5da504f",
+          "subject": "merge(relationship): BE37 six-entry consumer visibility probes"
+        },
+        {
+          "ancestor": true,
+          "commit": "80de53f327c90db21955eb63d3b74aa41ec62514",
+          "delivering": false,
+          "mentioned_as": "80de53f32",
+          "subject": "Record actual Enrollment browser retry PASS and preserved prior failure"
+        },
+        {
+          "ancestor": false,
+          "commit": "e682b50346d5a5f3e96839ef745284d6db1f9577",
+          "delivering": false,
+          "mentioned_as": "e682b5034",
+          "subject": null
+        }
+      ],
+      "plan_status": "PARTIAL",
+      "resolution": "plan-commit-subject",
+      "row": 14,
+      "subject_drift": false,
+      "title": "Complete BE42 sealed account-deletion apply (coordinator + sealed apply delivered; serving binary does not yet mount it)",
+      "verdict": "PARTIAL_WITH_COMMIT"
+    },
+    {
+      "box": "x",
+      "catalog_task_ids": [
+        "BE38"
+      ],
+      "commit_flag": "Y",
+      "declared_commit_subject": "feat(operations): complete settings, notices and flags",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "7bed8f78ba21a3b0aae14db1e0908ffd7779d7d0",
+          "method": "plan-commit-subject",
+          "subject": "feat(operations): complete settings, notices and flags"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-15-be38.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "7bed8f78ba21a3b0aae14db1e0908ffd7779d7d0",
+          "delivering": true,
+          "mentioned_as": "7bed8f78b",
+          "subject": "feat(operations): complete settings, notices and flags"
+        },
+        {
+          "ancestor": true,
+          "commit": "ccfc9fc0e647d38d55af5c777677b433e9cda6b5",
+          "delivering": false,
+          "mentioned_as": "ccfc9fc0e",
+          "subject": "fix(operations): qualify BE38 migration and read routes"
+        },
+        {
+          "ancestor": true,
+          "commit": "f75ec4238262b2345c8403137afda030fb6570e8",
+          "delivering": false,
+          "mentioned_as": "f75ec4238",
+          "subject": "merge(gateway): route-parity gate and mounted command families"
+        }
+      ],
+      "plan_status": "CLOSED",
+      "resolution": "plan-commit-subject",
+      "row": 15,
+      "subject_drift": false,
+      "title": "Complete BE38 event settings, notices and flags",
+      "verdict": "CLOSED_COMMIT_ANCESTOR"
+    },
+    {
+      "box": "~",
+      "catalog_task_ids": [
+        "BE41"
+      ],
+      "commit_flag": "Y",
+      "declared_commit_subject": "feat(lifecycle): complete closure, archive and cleanup",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "550fba0542d0be46521e8cefd22c1e170c7c86e4",
+          "method": "identifier-subject",
+          "subject": "Merge qualified BE41 local Beacon and private retention owners"
+        },
+        {
+          "ancestor": true,
+          "commit": "0f02f1b17d174fdd2e6c09518567beb3618a164a",
+          "method": "identifier-subject",
+          "subject": "feat(concert): implement native BE41 mural freeze owner"
+        },
+        {
+          "ancestor": true,
+          "commit": "b837e81eab0caa03b3f4c85b6e7fa6f3276432fa",
+          "method": "identifier-subject",
+          "subject": "docs(mcr/BE41): record verified owner-handoff blocker"
+        },
+        {
+          "ancestor": true,
+          "commit": "afd3a7aca345ca2cc774c90e45e26cd5e5520828",
+          "method": "identifier-subject",
+          "subject": "fix(mcr/BE41): preserve server failure semantics and event retention deadline"
+        },
+        {
+          "ancestor": true,
+          "commit": "2770dc1f1986947b4a0824a586b1251a155c8fd5",
+          "method": "identifier-subject",
+          "subject": "feat(mcr/BE41): add owned privacy expiry and source-bound recovery fixtures"
+        },
+        {
+          "ancestor": true,
+          "commit": "81c23ad6fb84e1fd61bdece626ed26f6c2964dfd",
+          "method": "identifier-subject",
+          "subject": "feat(mcr/BE41): persist fenced closure progress and anonymous archive reads"
+        },
+        {
+          "ancestor": true,
+          "commit": "2389857b6aa74b0bfdcf165be969198736097949",
+          "method": "identifier-subject",
+          "subject": "feat(mcr/BE41): model resumable closure steps and explicit retry input"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-16-be41.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "4465e3f6f6a9ae39aa5894e7e4fa58d523cfbd6a",
+          "delivering": false,
+          "mentioned_as": "4465e3f6f",
+          "subject": "feat(gateway): mount every registered concert command route"
+        },
+        {
+          "ancestor": true,
+          "commit": "f75ec4238262b2345c8403137afda030fb6570e8",
+          "delivering": false,
+          "mentioned_as": "f75ec4238",
+          "subject": "merge(gateway): route-parity gate and mounted command families"
+        }
+      ],
+      "plan_status": "PARTIAL",
+      "resolution": "identifier-subject",
+      "row": 16,
+      "subject_drift": true,
+      "title": "Complete BE41 event closure and archive (route + read-only proofs delivered; closure producer and archive HTTP endpoint unmounted)",
+      "verdict": "PARTIAL_WITH_COMMIT"
+    },
+    {
+      "box": "x",
+      "catalog_task_ids": [
+        "BE43"
+      ],
+      "commit_flag": "Y",
+      "declared_commit_subject": "feat(gateway): harden public boundaries against abuse",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "800c830a65620c15cb6b9ae71f651715e7c9c730",
+          "method": "evidence-labeled-commit",
+          "subject": "feat(mcr/BE43): harden body, rate, ticket, upload and WS boundaries"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-17-be43.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "113e994740985dcfdcb1fd8e82cce54c39d136a4",
+          "delivering": false,
+          "mentioned_as": "113e99474",
+          "subject": "merge(infra): seven-service compose stack and lifecycle smoke"
+        },
+        {
+          "ancestor": true,
+          "commit": "800c830a65620c15cb6b9ae71f651715e7c9c730",
+          "delivering": true,
+          "mentioned_as": "800c830a6",
+          "subject": "feat(mcr/BE43): harden body, rate, ticket, upload and WS boundaries"
+        }
+      ],
+      "plan_status": "CLOSED",
+      "resolution": "evidence-labeled-commit",
+      "row": 17,
+      "subject_drift": true,
+      "title": "Complete BE43 boundary and abuse hardening",
+      "verdict": "CLOSED_COMMIT_ANCESTOR"
+    },
+    {
+      "box": "x",
+      "catalog_task_ids": [],
+      "commit_flag": "Y",
+      "declared_commit_subject": "docs(venue): freeze location, invitation and notes policy",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "0a08d55a5432b4924710267eb2b27ed9fc45c2e8",
+          "method": "plan-commit-subject",
+          "subject": "docs(venue): freeze location, invitation and notes policy"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-18-venue-policy.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "0a08d55a5432b4924710267eb2b27ed9fc45c2e8",
+          "delivering": true,
+          "mentioned_as": "0a08d55a5432b4924710267eb2b27ed9fc45c2e8",
+          "subject": "docs(venue): freeze location, invitation and notes policy"
+        },
+        {
+          "ancestor": true,
+          "commit": "29c448edbfbbc06b5e81e68e98602925356f5797",
+          "delivering": false,
+          "mentioned_as": "29c448edbfbbc06b5e81e68e98602925356f5797",
+          "subject": "fix(venue): refresh adapter pins and local drift probe"
+        },
+        {
+          "ancestor": true,
+          "commit": "bc452a9cfdf14f9f6024fed572f0c2450d5c585e",
+          "delivering": false,
+          "mentioned_as": "bc452a9cfdf14f9f6024fed572f0c2450d5c585e",
+          "subject": "docs(venue): align adapter README with canonical drift check"
+        },
+        {
+          "ancestor": true,
+          "commit": "0dfbf3d8bd7c53cc43273a9f73d48a3ab502175e",
+          "delivering": false,
+          "mentioned_as": "0dfbf3d8b",
+          "subject": "docs(mcr): inventory blocking CI gates"
+        },
+        {
+          "ancestor": true,
+          "commit": "0981774d48eab79c15666ef27612310d470b4f69",
+          "delivering": false,
+          "mentioned_as": "0981774d",
+          "subject": "Correct published meeting error envelope and invitation query contract"
+        }
+      ],
+      "plan_status": "CLOSED",
+      "resolution": "plan-commit-subject",
+      "row": 18,
+      "subject_drift": false,
+      "title": "Freeze the venue policy inputs before any venue code",
+      "verdict": "CLOSED_COMMIT_ANCESTOR"
+    },
+    {
+      "box": "x",
+      "catalog_task_ids": [],
+      "commit_flag": "Y",
+      "declared_commit_subject": "feat(venue/location): implement consent and freshness",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "1650a6fc210efeaa435f97a07d27b2df54c719d6",
+          "method": "plan-commit-subject",
+          "subject": "feat(venue/location): implement consent and freshness"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-19-venu-l01.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "1650a6fc210efeaa435f97a07d27b2df54c719d6",
+          "delivering": true,
+          "mentioned_as": "1650a6fc210efeaa435f97a07d27b2df54c719d6",
+          "subject": "feat(venue/location): implement consent and freshness"
+        },
+        {
+          "ancestor": true,
+          "commit": "47478ed51213bfd1c939df69968d3f3cce78ef43",
+          "delivering": false,
+          "mentioned_as": "47478ed51",
+          "subject": "test(venue/location): self-provision bilateral friend fixtures"
+        },
+        {
+          "ancestor": true,
+          "commit": "5b2b4329d68891405cc7524d3d7c6db3c9a2e229",
+          "delivering": false,
+          "mentioned_as": "5b2b4329d",
+          "subject": "merge(venue): freeze location, invitation and notes policy"
+        }
+      ],
+      "plan_status": "CLOSED",
+      "resolution": "plan-commit-subject",
+      "row": 19,
+      "subject_drift": false,
+      "title": "Implement VENU-BE-L01 location consent and friend freshness",
+      "verdict": "CLOSED_COMMIT_ANCESTOR"
+    },
+    {
+      "box": "x",
+      "catalog_task_ids": [],
+      "commit_flag": "Y",
+      "declared_commit_subject": "feat(venue/meeting): implement invitations and conversation",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "1285633cabae269cd9622494ad12272fb39d281d",
+          "method": "evidence-labeled-commit",
+          "subject": "feat(venue/meeting): implement landmark invitations and conversation"
+        },
+        {
+          "ancestor": true,
+          "commit": "181e13da5163c272110d4dd92ceec48f2720fce3",
+          "method": "evidence-labeled-commit",
+          "subject": "fix(venue/meeting): decode context route and bind receipts to the body"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-20-venu-m01.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "1285633cabae269cd9622494ad12272fb39d281d",
+          "delivering": true,
+          "mentioned_as": "1285633ca",
+          "subject": "feat(venue/meeting): implement landmark invitations and conversation"
+        },
+        {
+          "ancestor": true,
+          "commit": "181e13da5163c272110d4dd92ceec48f2720fce3",
+          "delivering": true,
+          "mentioned_as": "181e13da5",
+          "subject": "fix(venue/meeting): decode context route and bind receipts to the body"
+        },
+        {
+          "ancestor": true,
+          "commit": "5b2b4329d68891405cc7524d3d7c6db3c9a2e229",
+          "delivering": false,
+          "mentioned_as": "5b2b4329d",
+          "subject": "merge(venue): freeze location, invitation and notes policy"
+        }
+      ],
+      "plan_status": "CLOSED",
+      "resolution": "evidence-labeled-commit",
+      "row": 20,
+      "subject_drift": true,
+      "title": "Implement VENU-BE-M01 landmark invitations and conversation",
+      "verdict": "CLOSED_COMMIT_ANCESTOR"
+    },
+    {
+      "box": "x",
+      "catalog_task_ids": [],
+      "commit_flag": "Y",
+      "declared_commit_subject": "feat(venue/notes): implement place notes and replies",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "ea63964b8c2c471d438797e056bf85fdf8434fc6",
+          "method": "plan-commit-subject",
+          "subject": "feat(venue/notes): implement place notes and replies"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-21-venu-n01.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "3489b69343547715f5d40e95947c337f27d195d3",
+          "delivering": false,
+          "mentioned_as": "3489b6934",
+          "subject": "fix(venue/notes): renumber place notes migration to 0075"
+        },
+        {
+          "ancestor": true,
+          "commit": "5b2b4329d68891405cc7524d3d7c6db3c9a2e229",
+          "delivering": false,
+          "mentioned_as": "5b2b4329d",
+          "subject": "merge(venue): freeze location, invitation and notes policy"
+        },
+        {
+          "ancestor": true,
+          "commit": "ea63964b8c2c471d438797e056bf85fdf8434fc6",
+          "delivering": true,
+          "mentioned_as": "ea63964b8",
+          "subject": "feat(venue/notes): implement place notes and replies"
+        }
+      ],
+      "plan_status": "CLOSED",
+      "resolution": "plan-commit-subject",
+      "row": 21,
+      "subject_drift": false,
+      "title": "Implement VENU-BE-N01 place notes and replies",
+      "verdict": "CLOSED_COMMIT_ANCESTOR"
+    },
+    {
+      "box": "x",
+      "catalog_task_ids": [],
+      "commit_flag": "Y",
+      "declared_commit_subject": "test(venue): prove L/M/N on real PostgreSQL and route parity",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "3fa4f939aa414b68a88a7974d4b12fa2d59a426c",
+          "method": "plan-commit-subject",
+          "subject": "test(venue): prove L/M/N on real PostgreSQL and route parity"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-22-venue-tests.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "cc8ad1b5bbdca9f4af40a05ca92331328b13ebac",
+          "delivering": false,
+          "mentioned_as": "cc8ad1b5b",
+          "subject": "merge(ui): PI11 responsive rooms, nearby and help"
+        }
+      ],
+      "plan_status": "CLOSED",
+      "resolution": "plan-commit-subject",
+      "row": 22,
+      "subject_drift": false,
+      "title": "Prove the venue backend on real PostgreSQL and route parity",
+      "verdict": "CLOSED_COMMIT_ANCESTOR"
+    },
+    {
+      "box": "x",
+      "catalog_task_ids": [],
+      "commit_flag": "Y",
+      "declared_commit_subject": "test(venue): cover the authorization and privacy matrix",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "08bcfba8d4c11877b84ba17eb4df6889c5a21017",
+          "method": "plan-commit-subject",
+          "subject": "test(venue): cover the authorization and privacy matrix"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-23-venue-authz.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "08bcfba8d4c11877b84ba17eb4df6889c5a21017",
+          "delivering": true,
+          "mentioned_as": "08bcfba8d",
+          "subject": "test(venue): cover the authorization and privacy matrix"
+        },
+        {
+          "ancestor": true,
+          "commit": "cc8ad1b5bbdca9f4af40a05ca92331328b13ebac",
+          "delivering": false,
+          "mentioned_as": "cc8ad1b5b",
+          "subject": "merge(ui): PI11 responsive rooms, nearby and help"
+        }
+      ],
+      "plan_status": "CLOSED",
+      "resolution": "plan-commit-subject",
+      "row": 23,
+      "subject_drift": false,
+      "title": "Prove the venue authorization and privacy matrix",
+      "verdict": "CLOSED_COMMIT_ANCESTOR"
+    },
+    {
+      "box": "x",
+      "catalog_task_ids": [],
+      "commit_flag": "Y",
+      "declared_commit_subject": "feat(venue): wire production shell ports",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "cb44bb77cb35fd0efc0760033e45432579e29d71",
+          "method": "plan-commit-subject",
+          "subject": "feat(venue): wire production shell ports"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-24-shell-ports.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "627f62b753f822ea68e501427ffc8e59b0a6c2e2",
+          "delivering": false,
+          "mentioned_as": "627f62b75",
+          "subject": "fix(ui): make the portrait clip assertion detect the regression"
+        },
+        {
+          "ancestor": true,
+          "commit": "6f98473fed47e382314747aaad4f0cda97b6167f",
+          "delivering": false,
+          "mentioned_as": "6f98473fe",
+          "subject": "fix(venue): fix the 360 friend fallback and align the landmark gate"
+        },
+        {
+          "ancestor": true,
+          "commit": "cb44bb77cb35fd0efc0760033e45432579e29d71",
+          "delivering": true,
+          "mentioned_as": "cb44bb77c",
+          "subject": "feat(venue): wire production shell ports"
+        },
+        {
+          "ancestor": true,
+          "commit": "cc8ad1b5bbdca9f4af40a05ca92331328b13ebac",
+          "delivering": false,
+          "mentioned_as": "cc8ad1b5b",
+          "subject": "merge(ui): PI11 responsive rooms, nearby and help"
+        },
+        {
+          "ancestor": true,
+          "commit": "d890b7755df9499cf93049ac2f23a3a59e672327",
+          "delivering": false,
+          "mentioned_as": "d890b7755",
+          "subject": "fix(venue): fix the 360 friend fallback and align the landmark gate"
+        }
+      ],
+      "plan_status": "CLOSED",
+      "resolution": "plan-commit-subject",
+      "row": 24,
+      "subject_drift": false,
+      "title": "Wire the production shell to the venue ports",
+      "verdict": "CLOSED_COMMIT_ANCESTOR"
+    },
+    {
+      "box": "x",
+      "catalog_task_ids": [],
+      "commit_flag": "Y",
+      "declared_commit_subject": "feat(venue): complete map and friends states",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "6cb31ca709a0717d61d82e3308060049889ce3db",
+          "method": "title-phrase",
+          "subject": "merge(venue): complete map and friends client states"
+        },
+        {
+          "ancestor": true,
+          "commit": "09be648b8bd878a0c45b3bfb8fd8c2624ee501ac",
+          "method": "title-phrase",
+          "subject": "feat(venue): complete map and friends client states"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-25-map-friends.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "cb44bb77cb35fd0efc0760033e45432579e29d71",
+          "delivering": false,
+          "mentioned_as": "cb44bb77c",
+          "subject": "feat(venue): wire production shell ports"
+        },
+        {
+          "ancestor": true,
+          "commit": "d890b7755df9499cf93049ac2f23a3a59e672327",
+          "delivering": false,
+          "mentioned_as": "d890b7755",
+          "subject": "fix(venue): fix the 360 friend fallback and align the landmark gate"
+        }
+      ],
+      "plan_status": "CLOSED",
+      "resolution": "title-phrase",
+      "row": 25,
+      "subject_drift": true,
+      "title": "Complete the venue Map/Friends client states",
+      "verdict": "CLOSED_COMMIT_ANCESTOR"
+    },
+    {
+      "box": "x",
+      "catalog_task_ids": [],
+      "commit_flag": "Y",
+      "declared_commit_subject": "feat(venue): complete invitations and conversation UI",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "fd98f7efb800c1362beb4d00922e3759608f1330",
+          "method": "title-phrase",
+          "subject": "merge(venue): complete the invitation and conversation client"
+        },
+        {
+          "ancestor": true,
+          "commit": "c6185025a3db3fd31296b2270c90f98303ea74df",
+          "method": "title-phrase",
+          "subject": "feat(venue): complete the invitation and conversation client"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-26-invitations.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "c30978adcdcbe0fc1ca48c1f578c6867f0f4be17",
+          "delivering": false,
+          "mentioned_as": "c30978adcdcbe0fc1ca48c1f578c6867f0f4be17",
+          "subject": "fix(venue): keep the inbox on a granted route and correct the failure record"
+        },
+        {
+          "ancestor": true,
+          "commit": "c6185025a3db3fd31296b2270c90f98303ea74df",
+          "delivering": true,
+          "mentioned_as": "c6185025a3db3fd31296b2270c90f98303ea74df",
+          "subject": "feat(venue): complete the invitation and conversation client"
+        },
+        {
+          "ancestor": true,
+          "commit": "cb44bb77cb35fd0efc0760033e45432579e29d71",
+          "delivering": false,
+          "mentioned_as": "cb44bb77cb35fd0efc0760033e45432579e29d71",
+          "subject": "feat(venue): wire production shell ports"
+        },
+        {
+          "ancestor": true,
+          "commit": "41d90738e3941cdfc663d00551e0f7db2cd3aa4f",
+          "delivering": false,
+          "mentioned_as": "41d90738e",
+          "subject": "Publish source-qualified venue invitations and contextual conversation leaf"
+        },
+        {
+          "ancestor": true,
+          "commit": "6cb31ca709a0717d61d82e3308060049889ce3db",
+          "delivering": false,
+          "mentioned_as": "6cb31ca70",
+          "subject": "merge(venue): complete map and friends client states"
+        },
+        {
+          "ancestor": true,
+          "commit": "937ab6699167735995661d91329a238797096ea5",
+          "delivering": false,
+          "mentioned_as": "937ab6699",
+          "subject": "merge(venue): wire production shell ports and harden the portrait check"
+        },
+        {
+          "ancestor": true,
+          "commit": "ee8bb30219dee1a97392d43604766f7acc728545",
+          "delivering": false,
+          "mentioned_as": "ee8bb3021",
+          "subject": "test(venue): refresh inbox evidence at the granted-route fix"
+        }
+      ],
+      "plan_status": "CLOSED",
+      "resolution": "title-phrase",
+      "row": 26,
+      "subject_drift": true,
+      "title": "Complete the invitation and conversation client",
+      "verdict": "CLOSED_COMMIT_ANCESTOR"
+    },
+    {
+      "box": "x",
+      "catalog_task_ids": [],
+      "commit_flag": "Y",
+      "declared_commit_subject": "feat(venue): complete notes map, composer and replies",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "6cb31ca709a0717d61d82e3308060049889ce3db",
+          "method": "evidence-labeled-commit",
+          "subject": "merge(venue): complete map and friends client states"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-27-notes.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "09be648b8bd878a0c45b3bfb8fd8c2624ee501ac",
+          "delivering": false,
+          "mentioned_as": "09be648b8",
+          "subject": "feat(venue): complete map and friends client states"
+        },
+        {
+          "ancestor": true,
+          "commit": "6cb31ca709a0717d61d82e3308060049889ce3db",
+          "delivering": true,
+          "mentioned_as": "6cb31ca70",
+          "subject": "merge(venue): complete map and friends client states"
+        },
+        {
+          "ancestor": true,
+          "commit": "937ab6699167735995661d91329a238797096ea5",
+          "delivering": false,
+          "mentioned_as": "937ab6699",
+          "subject": "merge(venue): wire production shell ports and harden the portrait check"
+        },
+        {
+          "ancestor": true,
+          "commit": "d890b7755df9499cf93049ac2f23a3a59e672327",
+          "delivering": false,
+          "mentioned_as": "d890b7755",
+          "subject": "fix(venue): fix the 360 friend fallback and align the landmark gate"
+        },
+        {
+          "ancestor": true,
+          "commit": "e61dd7f98135c656c6fb1fbad3337d0ccd5bdde5",
+          "delivering": false,
+          "mentioned_as": "e61dd7f98",
+          "subject": "fix(venue): project check-in freshness from the contract fields"
+        }
+      ],
+      "plan_status": "CLOSED",
+      "resolution": "evidence-labeled-commit",
+      "row": 27,
+      "subject_drift": true,
+      "title": "Complete the place notes client",
+      "verdict": "CLOSED_COMMIT_ANCESTOR"
+    },
+    {
+      "box": "~",
+      "catalog_task_ids": [
+        "IN01"
+      ],
+      "commit_flag": "Y",
+      "declared_commit_subject": "test(venue): execute integrated flows and reference comparisons",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "9143e2489d8068c8cf5d956c265dd4cb9db4e62b",
+          "method": "plan-commit-subject",
+          "subject": "test(venue): execute integrated flows and reference comparisons"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-28-venu-in01/",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "25b2d356fa036a6fb8c6f0d94796ac03bec730bf",
+          "delivering": false,
+          "mentioned_as": "25b2d356fa036a6fb8c6f0d94796ac03bec730bf",
+          "subject": "chore(plan): close the IN02 meetup and pickup gate"
+        }
+      ],
+      "plan_status": "PARTIAL",
+      "resolution": "plan-commit-subject",
+      "row": 28,
+      "subject_drift": false,
+      "title": "Execute VENU-IN01 with the 48 reference comparisons",
+      "verdict": "PARTIAL_WITH_COMMIT"
+    },
+    {
+      "box": "x",
+      "catalog_task_ids": [
+        "IN02"
+      ],
+      "commit_flag": "Y",
+      "declared_commit_subject": "test(in02): pass real meetup and pickup gate",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "d21de138af6e81c3c4e2c104ac1e20ad7a744ef5",
+          "method": "evidence-labeled-commit",
+          "subject": "merge(venue): dispatch venue product operations with durable note receipts"
+        },
+        {
+          "ancestor": true,
+          "commit": "cb3929e1711f0c44b3c18ff9324e0e5947ff39bb",
+          "method": "evidence-labeled-commit",
+          "subject": "Merge branch 'master' into codex/mcr-exec-w5-in02"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-29-in02.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "2f2f11b61ee2f33812ea848ba21c890d529e10b9",
+          "delivering": false,
+          "mentioned_as": "2f2f11b61",
+          "subject": "chore(plan): close the W04 policy and extension IA row"
+        },
+        {
+          "ancestor": true,
+          "commit": "6e0d9e2524f6545d4d6ebae48d1e0ef08cff5b4a",
+          "delivering": false,
+          "mentioned_as": "6e0d9e252",
+          "subject": "test(in02): prove meetup and pickup invariants"
+        },
+        {
+          "ancestor": true,
+          "commit": "cb3929e1711f0c44b3c18ff9324e0e5947ff39bb",
+          "delivering": true,
+          "mentioned_as": "cb3929e17",
+          "subject": "Merge branch 'master' into codex/mcr-exec-w5-in02"
+        },
+        {
+          "ancestor": true,
+          "commit": "d21de138af6e81c3c4e2c104ac1e20ad7a744ef5",
+          "delivering": true,
+          "mentioned_as": "d21de138a",
+          "subject": "merge(venue): dispatch venue product operations with durable note receipts"
+        }
+      ],
+      "plan_status": "CLOSED",
+      "resolution": "evidence-labeled-commit",
+      "row": 29,
+      "subject_drift": true,
+      "title": "Pass IN02 real meetup and pickup",
+      "verdict": "CLOSED_COMMIT_ANCESTOR"
+    },
+    {
+      "box": "~",
+      "catalog_task_ids": [
+        "IN03"
+      ],
+      "commit_flag": "Y",
+      "declared_commit_subject": "test(in03): pass the social privacy gate where inputs exist",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "f0d1f21aea6ff7c5471e892d70feeae46b35c381",
+          "method": "evidence-labeled-commit",
+          "subject": "fix(social): retain read children before the effect witness"
+        },
+        {
+          "ancestor": true,
+          "commit": "4ec06d5adef5d1458db112213acfc6d946847ad8",
+          "method": "evidence-labeled-commit",
+          "subject": "fix(gateway): raise the outer request timeout to the two-second ceiling"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-30-in03.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "c35076243aa651db77c7bf60ca0df4e68ab8aa39",
+          "delivering": false,
+          "mentioned_as": "c35076243aa651db77c7bf60ca0df4e68ab8aa39",
+          "subject": "docs(in03): record the delivered gate commit"
+        },
+        {
+          "ancestor": true,
+          "commit": "3653cd462509d7d6e5368f6c289fc2a2d336aa08",
+          "delivering": false,
+          "mentioned_as": "3653cd462",
+          "subject": "merge(master): take the blocked-author feed filter for the IN03 gate"
+        },
+        {
+          "ancestor": true,
+          "commit": "3aa7661789f821a6c925d2c338177a837f41bc26",
+          "delivering": false,
+          "mentioned_as": "3aa766178",
+          "subject": "merge(feed): exclude blocked authors without failing the reader feed"
+        },
+        {
+          "ancestor": true,
+          "commit": "4ec06d5adef5d1458db112213acfc6d946847ad8",
+          "delivering": true,
+          "mentioned_as": "4ec06d5ad",
+          "subject": "fix(gateway): raise the outer request timeout to the two-second ceiling"
+        },
+        {
+          "ancestor": true,
+          "commit": "d020a46d173aeb4707b61acc0064b66d45cc42e9",
+          "delivering": false,
+          "mentioned_as": "d020a46d1",
+          "subject": "fix(feed): exclude blocked authors without failing the reader's feed"
+        },
+        {
+          "ancestor": true,
+          "commit": "f0d1f21aea6ff7c5471e892d70feeae46b35c381",
+          "delivering": true,
+          "mentioned_as": "f0d1f21ae",
+          "subject": "fix(social): retain read children before the effect witness"
+        }
+      ],
+      "plan_status": "PARTIAL",
+      "resolution": "evidence-labeled-commit",
+      "row": 30,
+      "subject_drift": true,
+      "title": "Pass IN03 social and privacy gate (external input dependent)",
+      "verdict": "PARTIAL_WITH_COMMIT"
+    },
+    {
+      "box": "x",
+      "catalog_task_ids": [
+        "IN04"
+      ],
+      "commit_flag": "Y",
+      "declared_commit_subject": "test(in04): pass multiuser mural and moderation gate",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "fa4fbeda554bdf81f6ab46247c40a242ad117a7a",
+          "method": "identifier-subject",
+          "subject": "chore(plan): close the IN04 mural gate"
+        },
+        {
+          "ancestor": true,
+          "commit": "076f9c3d8915c5133b6f60a87ff475cf77114db6",
+          "method": "identifier-subject",
+          "subject": "merge(in04): prove the multiuser mural and moderation gate"
+        },
+        {
+          "ancestor": true,
+          "commit": "be15c23ef3efe28318e1693612bb6c3f202bd99b",
+          "method": "identifier-subject",
+          "subject": "test(in04): prove restore from the advertised admin snapshot"
+        },
+        {
+          "ancestor": true,
+          "commit": "d5d69403409d0ce2de249f47f76092456b375cf5",
+          "method": "identifier-subject",
+          "subject": "test(in04): prove the multiuser mural and moderation gate"
+        },
+        {
+          "ancestor": true,
+          "commit": "11473eaadce225a59770cb9bb599d5aab8947da7",
+          "method": "identifier-subject",
+          "subject": "Qualify same-server QA05 assembly and restart-aware IN04 adapter"
+        },
+        {
+          "ancestor": true,
+          "commit": "bd087fde2c67933b53d1666d3656af5ac98a7c19",
+          "method": "identifier-subject",
+          "subject": "Publish source-qualified IN04 managed profile and Enrollment helper"
+        },
+        {
+          "ancestor": true,
+          "commit": "af85fd352acbfe605796d65e723b048c1faad7ac",
+          "method": "identifier-subject",
+          "subject": "Publish qualified IN04 explicit reconnect source handoff"
+        },
+        {
+          "ancestor": true,
+          "commit": "f897ef3ada6528bee6e2193f3aae6af5fb660329",
+          "method": "identifier-subject",
+          "subject": "Deliver the qualified concrete IN04 runtime adapter and browser optimizer fix"
+        },
+        {
+          "ancestor": true,
+          "commit": "3491e9c77e9747f48b4dfd109f3c107d703c1e86",
+          "method": "identifier-subject",
+          "subject": "Bind IN04 observation to the exact same-origin versioned Phaser module"
+        },
+        {
+          "ancestor": true,
+          "commit": "d0f27b108b1ab8e9d66afdb1faf0b6826dc0dff7",
+          "method": "identifier-subject",
+          "subject": "Qualify canonical IN04 frontend runtime-adapter source and retain live boundary"
+        },
+        {
+          "ancestor": true,
+          "commit": "2b2d4de6f4c6948f606e0cbdc7b62445ca9aa585",
+          "method": "identifier-subject",
+          "subject": "Qualify real IN04 Wall B runner source and preserve unavailable live gate"
+        },
+        {
+          "ancestor": true,
+          "commit": "9a1d19994921e143b135b28f58d6078430f38035",
+          "method": "identifier-subject",
+          "subject": "docs(mcr): reconcile IN04 staffing and Party producer ownership"
+        },
+        {
+          "ancestor": true,
+          "commit": "7f43c272e745a6dcbe35485e9cf54596828509e1",
+          "method": "identifier-subject",
+          "subject": "test(mcr): deliver guarded IN04 real mural harness"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-31-in04.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "13d2ee25fcfc60ac02ae91efe8c21649d920091f",
+          "delivering": false,
+          "mentioned_as": "13d2ee25f",
+          "subject": "chore(plan): close the invitation client"
+        },
+        {
+          "ancestor": true,
+          "commit": "61e577d2299b95556c9c7fa0cb67695089e4aa3a",
+          "delivering": false,
+          "mentioned_as": "61e577d22",
+          "subject": "fix(mural): make the advertised snapshot restorable"
+        },
+        {
+          "ancestor": true,
+          "commit": "fc0a150d455e2b3b5b2092a439aa5d5146c4a23a",
+          "delivering": false,
+          "mentioned_as": "fc0a150d4",
+          "subject": "fix(mural): compose the operator admin producer"
+        }
+      ],
+      "plan_status": "CLOSED",
+      "resolution": "identifier-subject",
+      "row": 31,
+      "subject_drift": true,
+      "title": "Pass IN04 multiuser mural and moderation gate",
+      "verdict": "CLOSED_COMMIT_ANCESTOR"
+    },
+    {
+      "box": "~",
+      "catalog_task_ids": [
+        "IN01"
+      ],
+      "commit_flag": "Y",
+      "declared_commit_subject": "test(in01): re-run deltas for changed features",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "f1f244b4d7f12986de40b2cddcf7e71332303bba",
+          "method": "plan-commit-subject",
+          "subject": "test(in01): re-run deltas for changed features"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-32-in01-delta.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "1cabdb2aa54050b59ac4e651d0660134b7077c4a",
+          "delivering": false,
+          "mentioned_as": "1cabdb2aa54050b59ac4e651d0660134b7077c4a",
+          "subject": "test(in01): record final gate delta statuses"
+        },
+        {
+          "ancestor": true,
+          "commit": "937ab6699167735995661d91329a238797096ea5",
+          "delivering": false,
+          "mentioned_as": "937ab6699167735995661d91329a238797096ea5",
+          "subject": "merge(venue): wire production shell ports and harden the portrait check"
+        },
+        {
+          "ancestor": true,
+          "commit": "cf574eadf175b0283418ba730bf0a64801ceaef1",
+          "delivering": false,
+          "mentioned_as": "cf574eadf175b0283418ba730bf0a64801ceaef1",
+          "subject": "fix(world): defer a closing publication window"
+        },
+        {
+          "ancestor": true,
+          "commit": "dee64fd1ac868f4dffbea49c0e75ca8e98727f3a",
+          "delivering": false,
+          "mentioned_as": "dee64fd1ac868f4dffbea49c0e75ca8e98727f3a",
+          "subject": "Add finite existing-stack Enrollment policy operator and HTTP adapter"
+        },
+        {
+          "ancestor": true,
+          "commit": "02d22cc5e989b39c1c18148ff8fcadde81c37e2a",
+          "delivering": false,
+          "mentioned_as": "02d22cc5e",
+          "subject": "Merge branch 'master' into codex/mcr-exec-w5-in01"
+        },
+        {
+          "ancestor": true,
+          "commit": "09be648b8bd878a0c45b3bfb8fd8c2624ee501ac",
+          "delivering": false,
+          "mentioned_as": "09be648b8",
+          "subject": "feat(venue): complete map and friends client states"
+        },
+        {
+          "ancestor": true,
+          "commit": "0a27b70d7f782f6d63bf5a0904c10915c5fbd073",
+          "delivering": false,
+          "mentioned_as": "0a27b70d7",
+          "subject": "Integrate qualified Parade Ink World HUD with existing policy bootstrap"
+        },
+        {
+          "ancestor": true,
+          "commit": "10b1afe68d3c36dd7b3bb0f881d1cb225fdcd9dd",
+          "delivering": false,
+          "mentioned_as": "10b1afe68",
+          "subject": "Publish qualified Parade Ink Feed and Thread presentation"
+        },
+        {
+          "ancestor": true,
+          "commit": "1bb911c3c8594a997e7a309d86b823d906198b95",
+          "delivering": false,
+          "mentioned_as": "1bb911c3c",
+          "subject": "test(in01): qualify real customization persistence and full world journey"
+        },
+        {
+          "ancestor": true,
+          "commit": "1bc74e3b87d35162bbd279751e9fb683e2364fb8",
+          "delivering": false,
+          "mentioned_as": "1bc74e3b8",
+          "subject": "feat(lifecycle): compose operator closure producer and public archive route"
+        },
+        {
+          "ancestor": true,
+          "commit": "2bb9e5e9e3e1e9e519f5a4be6a3f02ce855bd4cd",
+          "delivering": false,
+          "mentioned_as": "2bb9e5e9e",
+          "subject": "Merge branch 'master' into codex/mcr-exec-w5-in01"
+        },
+        {
+          "ancestor": true,
+          "commit": "2f2f11b61ee2f33812ea848ba21c890d529e10b9",
+          "delivering": false,
+          "mentioned_as": "2f2f11b61",
+          "subject": "chore(plan): close the W04 policy and extension IA row"
+        },
+        {
+          "ancestor": true,
+          "commit": "2f7992d43ed266f863d6622a20d2974740908316",
+          "delivering": false,
+          "mentioned_as": "2f7992d43",
+          "subject": "fix(auth): resolve enrollment compilation at existing adapter seams"
+        },
+        {
+          "ancestor": true,
+          "commit": "3321b3e19c0cfb5fa4e55289a18757bac3863f37",
+          "delivering": false,
+          "mentioned_as": "3321b3e19",
+          "subject": "Bind committed era palettes to the existing production shell"
+        },
+        {
+          "ancestor": true,
+          "commit": "4143e9494c46c8ae900d4ce372b96104c300420c",
+          "delivering": false,
+          "mentioned_as": "4143e9494",
+          "subject": "fix(world): fence preconsumed admission and room switch before event locks"
+        },
+        {
+          "ancestor": true,
+          "commit": "417c3cc3dff30e9c8c1c3e9f86c999eeb7a95a01",
+          "delivering": false,
+          "mentioned_as": "417c3cc3d",
+          "subject": "test(in01): record post-publication delta rerun"
+        },
+        {
+          "ancestor": true,
+          "commit": "51af7f7a8fdcfe80e0b292b87f4b156864ff776e",
+          "delivering": false,
+          "mentioned_as": "51af7f7a8",
+          "subject": "Deliver qualified World ticket freshness and membership owner fences"
+        },
+        {
+          "ancestor": true,
+          "commit": "56a0cb7f0bdc4e4526c45bbc6258d38bc3a7077a",
+          "delivering": false,
+          "mentioned_as": "56a0cb7f0",
+          "subject": "Mount qualified default venue host with preserved incumbent lifecycle and open visual limits"
+        },
+        {
+          "ancestor": true,
+          "commit": "6cf2c268595c76e2d1c8757da72810b15d5e9787",
+          "delivering": false,
+          "mentioned_as": "6cf2c2685",
+          "subject": "fix(concert): accept the archive method in the dispatch gate expectation"
+        },
+        {
+          "ancestor": true,
+          "commit": "761b53444a459a189dcc51261b1f82c467984fb4",
+          "delivering": false,
+          "mentioned_as": "761b53444",
+          "subject": "fix(product): compose the service-policy read with Intro/Social"
+        },
+        {
+          "ancestor": true,
+          "commit": "78886ffa9c0dc4b7246c293660f32a4f70d60015",
+          "delivering": false,
+          "mentioned_as": "78886ffa9",
+          "subject": "Present pre-World policy and bootstrap states with Parade Ink frame"
+        },
+        {
+          "ancestor": true,
+          "commit": "7eac13ce30d6dd6be4df30727f75d5df90d3489d",
+          "delivering": false,
+          "mentioned_as": "7eac13ce3",
+          "subject": "fix(feed): confine retro styling to posts and preserve authorized media geometry"
+        },
+        {
+          "ancestor": true,
+          "commit": "827877828684fdd5e6cda56a85fd11f6f526daf7",
+          "delivering": false,
+          "mentioned_as": "827877828",
+          "subject": "Own Social availability through committed lifecycle and avoid production Feed probes"
+        },
+        {
+          "ancestor": true,
+          "commit": "8364b25ccebac45cf6d80b79c8c71ace997fb9cc",
+          "delivering": false,
+          "mentioned_as": "8364b25cc",
+          "subject": "feat(world): checkpoint BE42 session deletion owner effects"
+        },
+        {
+          "ancestor": true,
+          "commit": "83eb8c965d9748b6f1208d91a6eea1be718b831d",
+          "delivering": false,
+          "mentioned_as": "83eb8c965",
+          "subject": "test(in01): define the application release for the browser gate"
+        },
+        {
+          "ancestor": true,
+          "commit": "8e5cc757f3db2bc009709ed859f2e610398e1a20",
+          "delivering": false,
+          "mentioned_as": "8e5cc757f",
+          "subject": "fix(frontend): restore build and test suite at 9185c9922"
+        },
+        {
+          "ancestor": true,
+          "commit": "8fea3b43dfef2859e144e7aead4739a1834cd6c6",
+          "delivering": false,
+          "mentioned_as": "8fea3b43d",
+          "subject": "fix(feed): render selected characters in Thread author slots"
+        },
+        {
+          "ancestor": true,
+          "commit": "930380deed5c47b4c9eed920a8d9352278f0e90e",
+          "delivering": false,
+          "mentioned_as": "930380dee",
+          "subject": "feat(contracts): define explicit Social policy baseline and invalidation frames"
+        },
+        {
+          "ancestor": true,
+          "commit": "99b5bbf9392b903afeac3ba435d77feb077a1bb6",
+          "delivering": false,
+          "mentioned_as": "99b5bbf93",
+          "subject": "Qualify original FE06 palettes in the actual default application"
+        },
+        {
+          "ancestor": true,
+          "commit": "a3d547f640f2e908fd7834affa3b27a3ab84df41",
+          "delivering": false,
+          "mentioned_as": "a3d547f64",
+          "subject": "refactor(gateway): move shared boundary types out of adapter modules"
+        },
+        {
+          "ancestor": true,
+          "commit": "ae20927053e957134987e662284b8e40e356d9c9",
+          "delivering": false,
+          "mentioned_as": "ae2092705",
+          "subject": "fix(devstack): require the owner-authority readiness check"
+        },
+        {
+          "ancestor": true,
+          "commit": "b9244f869e69a2a7d7929c030790a9623904c904",
+          "delivering": false,
+          "mentioned_as": "b9244f869",
+          "subject": "feat(world): define opt-in C05 motion profile and anchor vectors"
+        },
+        {
+          "ancestor": true,
+          "commit": "c093d8a5ca7af1eb3319a88cb188f74e0f862416",
+          "delivering": false,
+          "mentioned_as": "c093d8a5c",
+          "subject": "feat(auth): implement durable policy-bound MCR enrollment and admission"
+        },
+        {
+          "ancestor": true,
+          "commit": "c2544b69d9e96b6216c8179e78755de2be76e8cc",
+          "delivering": false,
+          "mentioned_as": "c2544b69d",
+          "subject": "fix(world): journal native session obligations before withdrawal"
+        },
+        {
+          "ancestor": true,
+          "commit": "c988365ca71c2e867ca3870a24b78c94ec97c7a1",
+          "delivering": false,
+          "mentioned_as": "c988365ca",
+          "subject": "fix(auth): recover expired pending enrollment through canonical password proof"
+        },
+        {
+          "ancestor": true,
+          "commit": "cb44bb77cb35fd0efc0760033e45432579e29d71",
+          "delivering": false,
+          "mentioned_as": "cb44bb77c",
+          "subject": "feat(venue): wire production shell ports"
+        },
+        {
+          "ancestor": true,
+          "commit": "eacbaab508400f881447f8c7d89f65ba50f36e93",
+          "delivering": false,
+          "mentioned_as": "eacbaab50",
+          "subject": "Use incumbent accessible controls in FE06 qualification"
+        },
+        {
+          "ancestor": true,
+          "commit": "fbdd678232feafff8ea1b61ec14373ec587e0cd9",
+          "delivering": false,
+          "mentioned_as": "fbdd67823",
+          "subject": "fix(product): mount the service-policy read"
+        },
+        {
+          "ancestor": true,
+          "commit": "fce130fc8138d1da83d7a885da81668a93890c8f",
+          "delivering": false,
+          "mentioned_as": "fce130fc8",
+          "subject": "chore(plan): close the AR01 and FE10 rows as named gaps"
+        }
+      ],
+      "plan_status": "PARTIAL",
+      "resolution": "plan-commit-subject",
+      "row": 32,
+      "subject_drift": false,
+      "title": "Re-run IN01 deltas for changed features",
+      "verdict": "PARTIAL_WITH_COMMIT"
+    },
+    {
+      "box": "x",
+      "catalog_task_ids": [],
+      "commit_flag": "Y",
+      "declared_commit_subject": "feat(ui): finish PI08 Photo2 HUD and camera",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "f949183836d942b4993fe225a94a4b75b40f11b1",
+          "method": "plan-commit-subject",
+          "subject": "feat(ui): finish PI08 Photo2 HUD and camera"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-33-pi08/",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "25b2d356fa036a6fb8c6f0d94796ac03bec730bf",
+          "delivering": false,
+          "mentioned_as": "25b2d356fa036a6fb8c6f0d94796ac03bec730bf",
+          "subject": "chore(plan): close the IN02 meetup and pickup gate"
+        }
+      ],
+      "plan_status": "CLOSED",
+      "resolution": "plan-commit-subject",
+      "row": 33,
+      "subject_drift": false,
+      "title": "Finish PI08 Photo2 HUD and camera",
+      "verdict": "CLOSED_COMMIT_ANCESTOR"
+    },
+    {
+      "box": "x",
+      "catalog_task_ids": [],
+      "commit_flag": "Y",
+      "declared_commit_subject": "feat(ui): finish PI11 rooms, nearby and help",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "600a8f809cde0543b7724b0b9ce551f209e8951c",
+          "method": "plan-commit-subject",
+          "subject": "feat(ui): finish PI11 rooms, nearby and help"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-34-pi11/",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "25b2d356fa036a6fb8c6f0d94796ac03bec730bf",
+          "delivering": false,
+          "mentioned_as": "25b2d356fa036a6fb8c6f0d94796ac03bec730bf",
+          "subject": "chore(plan): close the IN02 meetup and pickup gate"
+        }
+      ],
+      "plan_status": "CLOSED",
+      "resolution": "plan-commit-subject",
+      "row": 34,
+      "subject_drift": false,
+      "title": "Finish PI11 rooms, nearby and help",
+      "verdict": "CLOSED_COMMIT_ANCESTOR"
+    },
+    {
+      "box": "~",
+      "catalog_task_ids": [
+        "AR01"
+      ],
+      "commit_flag": "Y",
+      "declared_commit_subject": "docs(venue): register AR01 provenance and qualification",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "fce130fc8138d1da83d7a885da81668a93890c8f",
+          "method": "identifier-subject",
+          "subject": "chore(plan): close the AR01 and FE10 rows as named gaps"
+        },
+        {
+          "ancestor": true,
+          "commit": "7952a551987ce1eac7045d67160e062d04e6694c",
+          "method": "identifier-subject",
+          "subject": "merge(docs): record the AR01 and FE10 external input gaps"
+        },
+        {
+          "ancestor": true,
+          "commit": "39a1b4e047e7383cfe2f6eba1f8eccd919ee40af",
+          "method": "identifier-subject",
+          "subject": "docs(venue): record the AR01 and FE10 input gaps"
+        },
+        {
+          "ancestor": true,
+          "commit": "7811f667ec172657305edf7e6d5761281ca76503",
+          "method": "identifier-subject",
+          "subject": "docs(art): qualify AR01 official venue sources and physical gaps"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-35-ar01.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "13d2ee25fcfc60ac02ae91efe8c21649d920091f",
+          "delivering": false,
+          "mentioned_as": "13d2ee25f",
+          "subject": "chore(plan): close the invitation client"
+        },
+        {
+          "ancestor": false,
+          "commit": "a91ed08668aa8aca53200f94d3c25ae0162c2a85",
+          "delivering": false,
+          "mentioned_as": "a91ed08",
+          "subject": null
+        }
+      ],
+      "plan_status": "PARTIAL",
+      "resolution": "identifier-subject",
+      "row": 35,
+      "subject_drift": true,
+      "title": "Obtain and integrate AR01 venue provenance inputs",
+      "verdict": "PARTIAL_WITH_COMMIT"
+    },
+    {
+      "box": " ",
+      "catalog_task_ids": [
+        "QA06"
+      ],
+      "commit_flag": "Y",
+      "context_commits": [
+        {
+          "commit": "eae3f3319ded3cd9a62480d31d8004bf166682a6",
+          "method": "identifier-subject",
+          "subject": "Publish QA06 remaining era Wall software observations"
+        },
+        {
+          "commit": "2cc7f5ded62491fc5d5b9d17dd5cb0691bc10d0c",
+          "method": "identifier-subject",
+          "subject": "Retain two qualified QA06 Help software states with original evidence"
+        },
+        {
+          "commit": "dc713e65cf9bb01817be8f42641d348de8f73846",
+          "method": "identifier-subject",
+          "subject": "Retain five qualified QA06 settings and empty gift software states"
+        },
+        {
+          "commit": "fcac0bed033b3f0bca336df6417d3ff617ffb637",
+          "method": "identifier-subject",
+          "subject": "Qualify nine uncovered QA06 software states and retain remaining prepared cases"
+        },
+        {
+          "commit": "ba314a2c96639b05b6c15c1ead57353719004ffa",
+          "method": "identifier-subject",
+          "subject": "Record QA06 comparisons for all ten retained mobile reference surfaces"
+        },
+        {
+          "commit": "7c6d3bcc2ee571af61b3d1b8464ce9833d183649",
+          "method": "identifier-subject",
+          "subject": "docs(qa06): retain source-pinned original and cozy visual comparisons"
+        },
+        {
+          "commit": "a8fd53c11f40687d9c8053404116c8c40c7e4dfc",
+          "method": "identifier-subject",
+          "subject": "docs(mcr/QA06): seal Meet typography qualification"
+        },
+        {
+          "commit": "1b94fcb8018638b4223ffcc23e6f708c9b513853",
+          "method": "identifier-subject",
+          "subject": "fix(mcr/QA06): strengthen Meet title and place hierarchy"
+        },
+        {
+          "commit": "8acf6a7a145841678aba67e74c8d4b91f037aea8",
+          "method": "identifier-subject",
+          "subject": "docs(mcr): record delivered QA06 comparison and passing real IN01 cohort"
+        },
+        {
+          "commit": "d72041e5e1a5c8753014843287e01111bd30059e",
+          "method": "identifier-subject",
+          "subject": "docs(qa06): record separate published FE32 component qualification"
+        },
+        {
+          "commit": "ed5c905db0081c799371195eec5598e46d352d90",
+          "method": "identifier-subject",
+          "subject": "docs(qa06): retain exact qualified comparison image blobs"
+        },
+        {
+          "commit": "a4534ffadd0cab161d7aa3fff1ade1fdfb33c2d3",
+          "method": "identifier-subject",
+          "subject": "docs(qa06): compare all ten screens with actual reattached reference"
+        },
+        {
+          "commit": "48950163c4fce9bc9120169a4d9ca46c01007c62",
+          "method": "identifier-subject",
+          "subject": "docs(qa06): route required human-reference frame and footer correction"
+        },
+        {
+          "commit": "4cb537288c1702e103e3ad6f6140c1a8d4039fab",
+          "method": "identifier-subject",
+          "subject": "Review QA06 portrait scale and bounded component repair"
+        },
+        {
+          "commit": "5f0b06e6a97f247bd3696c39ca830460d41c867f",
+          "method": "identifier-subject",
+          "subject": "docs(mcr): allocate exact World test sentinels and reconcile QA06 readback"
+        },
+        {
+          "commit": "fa78c0650a78de998ad661c5fd05b5562aba3000",
+          "method": "identifier-subject",
+          "subject": "docs(qa06): pin World budget and portrait presentation packets"
+        },
+        {
+          "commit": "55c104ca77d67aa1f87c05502c331c8ac8f25550",
+          "method": "identifier-subject",
+          "subject": "docs(mcr): record committed QA06 reference disposition and source dependency"
+        },
+        {
+          "commit": "1c11cb83c6c68f144bfe1c7a0657d55398cb9ed1",
+          "method": "identifier-subject",
+          "subject": "docs(mcr): record focused QA06 capture results and released allocation"
+        },
+        {
+          "commit": "ed31185885a3bc904f9a4bedf1bb821dbd11c8f2",
+          "method": "identifier-subject",
+          "subject": "test(qa06): qualify published visual repairs and preserve reference disposition"
+        },
+        {
+          "commit": "e449890ad62e57f6708c69c9f76dc2f6f5ee5269",
+          "method": "identifier-subject",
+          "subject": "docs(mcr): close bounded worker goals and verify QA06 capture acceptance"
+        },
+        {
+          "commit": "f00c237c2ba1b7540c084917993c01c4eb66f5b7",
+          "method": "identifier-subject",
+          "subject": "docs(mcr): record named QA06 second allocation and actual resumption turn"
+        },
+        {
+          "commit": "a60faa73d07fa65bb698d4bf54e7127fc06bfcd1",
+          "method": "identifier-subject",
+          "subject": "docs(mcr): record published v10 delivery and ready QA06 allocation dependency"
+        },
+        {
+          "commit": "28627f751d9eddcbd219b5cb8cab6e031f7c8f17",
+          "method": "identifier-subject",
+          "subject": "docs(mcr): reconcile publisher receipt for canonical and QA06 sources"
+        },
+        {
+          "commit": "dfa8659a2d3efb4294ddf567e285c29c550a4c6f",
+          "method": "identifier-subject",
+          "subject": "docs(mcr): record actual QA06 blocked goal and retained ownership"
+        },
+        {
+          "commit": "14f04a12edad80149740055a11740a1a55e40507",
+          "method": "identifier-subject",
+          "subject": "docs(qa06): record repeated external capture and device blockers"
+        },
+        {
+          "commit": "ab5475dd622aba88458175c39ae72f5022d71584",
+          "method": "identifier-subject",
+          "subject": "test(qa06): guard focused capture output and assert cleanup"
+        },
+        {
+          "commit": "d750f738033c1150c8b4b2231894799a2d8b99d3",
+          "method": "identifier-subject",
+          "subject": "test(qa06): prepare frozen published repair checks and verify checkpoint"
+        },
+        {
+          "commit": "6f5a5bc3a5fea4de588738d27fab4c9ff0ba8696",
+          "method": "identifier-subject",
+          "subject": "docs(mcr): narrow canonical boundary ownership and record corrected QA06 checkpoint"
+        },
+        {
+          "commit": "54e1325fce20e3abc98da50c68de0bd72dfd1a33",
+          "method": "identifier-subject",
+          "subject": "test(qa06): include exact sparse visual capture artifacts"
+        },
+        {
+          "commit": "dded7fe19dca366a699b243a638832a5158a4d04",
+          "method": "identifier-subject",
+          "subject": "docs(qa06): preserve corrected visual evidence and bounded repair findings"
+        },
+        {
+          "commit": "c2df465abf7811c9e24dfec84ca0c30787eaef23",
+          "method": "identifier-subject",
+          "subject": "test(qa06): add scoped mobile visual and fidelity harnesses"
+        },
+        {
+          "commit": "ddd279e48e4ea7fefd94ddcf008e1939946e42fb",
+          "method": "identifier-subject",
+          "subject": "fix(frontend): repair Feed and Me QA06 fidelity"
+        },
+        {
+          "commit": "30e52fac097611fa3fc0a60d933657e7c260e175",
+          "method": "identifier-subject",
+          "subject": "fix(mcr/QA06): keep Meet creation action visible in short panels"
+        },
+        {
+          "commit": "6518d793921bf86854837a5d81cf174f01b5d969",
+          "method": "identifier-subject",
+          "subject": "fix(mcr/AR03): align motion controls with QA06 category rail"
+        },
+        {
+          "commit": "e6860113bd18bbffccc08d037169bd31981f08c5",
+          "method": "identifier-subject",
+          "subject": "docs(mcr): narrow Feed Me grant and record QA06 resource guard"
+        },
+        {
+          "commit": "c99f6c74863316f5923ac7b63c5baa787fa332e9",
+          "method": "identifier-subject",
+          "subject": "docs(mcr): correct QA06 Party and Gifts defect attribution"
+        },
+        {
+          "commit": "5845098724219532c8e4a3d0dd8cb67e999cc350",
+          "method": "identifier-subject",
+          "subject": "docs(mcr): preserve QA06 reference fidelity and adopted baseline claims"
+        },
+        {
+          "commit": "29b1779e84106fcbe1c59f973cb5992d83c4fc00",
+          "method": "identifier-subject",
+          "subject": "docs(mcr): record QA06 Party and Gifts source-owner gap"
+        },
+        {
+          "commit": "29576045f1358ad6fb99b421703fa86ff10c2ec3",
+          "method": "identifier-subject",
+          "subject": "docs(mcr): confirm active v10 consumer and qualified QA06 input routing"
+        },
+        {
+          "commit": "0dc1dc9490760ab180f0f936a3b6620c9404406b",
+          "method": "identifier-subject",
+          "subject": "docs(mcr): reconcile published lane work and accepted QA06 ownership"
+        }
+      ],
+      "declared_commit_subject": "test(visual): pass QA06 reference acceptance",
+      "delivering_commits": [],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-36-qa06/",
+      "evidence_present": false,
+      "evidence_tracked": false,
+      "named_commits": [],
+      "plan_status": "OPEN",
+      "resolution": "open",
+      "row": 36,
+      "subject_drift": true,
+      "title": "Pass QA06 mobile visual acceptance",
+      "verdict": "OPEN"
+    },
+    {
+      "box": "~",
+      "catalog_task_ids": [],
+      "commit_flag": "Y",
+      "declared_commit_subject": "test(avatar): verify production atlas admission",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "cc9691cec5e3f0eaa0ebfd049c56ac9d7a3cfbb7",
+          "method": "title-phrase",
+          "subject": "test(avatar): verify character atlas production status"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-37-atlas.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "cc8ad1b5bbdca9f4af40a05ca92331328b13ebac",
+          "delivering": false,
+          "mentioned_as": "cc8ad1b5bbdca9f4af40a05ca92331328b13ebac",
+          "subject": "merge(ui): PI11 responsive rooms, nearby and help"
+        }
+      ],
+      "plan_status": "PARTIAL",
+      "resolution": "title-phrase",
+      "row": 37,
+      "subject_drift": true,
+      "title": "Verify the character atlas production status",
+      "verdict": "PARTIAL_WITH_COMMIT"
+    },
+    {
+      "box": " ",
+      "catalog_task_ids": [
+        "QA03"
+      ],
+      "commit_flag": "Y",
+      "context_commits": [
+        {
+          "commit": "2be56ec6bbc894985785a87b87b7b51ceb1f18fc",
+          "method": "identifier-subject",
+          "subject": "Integrate qualified QA03 PostgreSQL race and restart evidence"
+        },
+        {
+          "commit": "be56bbbc9b97ea7eed60fec483310e790f3cab89",
+          "method": "identifier-subject",
+          "subject": "test(mcr/QA03): record eleven PostgreSQL race and restart passes"
+        },
+        {
+          "commit": "d8379b6ec7c8fa08df235f23a344085a8bc4dd67",
+          "method": "identifier-subject",
+          "subject": "docs(mcr/QA03): record build evidence and preserved namespace refusal"
+        },
+        {
+          "commit": "bbcfe1f36eebd9b30bb87fa3bdca40cc83cbcab2",
+          "method": "identifier-subject",
+          "subject": "test(mcr/QA03): use guarded database namespace and retain native refusal"
+        },
+        {
+          "commit": "65cef6d88561b7c4447b27c491362a3674c10342",
+          "method": "identifier-subject",
+          "subject": "test(mcr/QA03): disambiguate isolated community authority dispatch"
+        },
+        {
+          "commit": "e09e1d49be3bdaf52fe333c8d7f400e280b85672",
+          "method": "identifier-subject",
+          "subject": "test(mcr/QA03): reject fresh approval and replay at full capacity"
+        },
+        {
+          "commit": "f3bab3332ff9f80957527c8c7f74ec967247ec59",
+          "method": "identifier-subject",
+          "subject": "test(mcr/QA03): align expiry precision and strengthen pickup replay checks"
+        },
+        {
+          "commit": "7c7731278fd68d1b07e3a9d878019a4ab3ff0b86",
+          "method": "identifier-subject",
+          "subject": "test(mcr/QA03): add forced PostgreSQL race qualification harness"
+        },
+        {
+          "commit": "b1a4bc82956b3f1150ff8fbdc559d9039193b9bb",
+          "method": "identifier-subject",
+          "subject": "test(mcr/QA03): record eleven PostgreSQL race and restart passes"
+        },
+        {
+          "commit": "47fb4a771430a995749a87a21d805f753fc74630",
+          "method": "identifier-subject",
+          "subject": "docs(mcr/QA03): record build evidence and preserved namespace refusal"
+        },
+        {
+          "commit": "eb9bb664bda8a9541419368dc5f064b317af0f94",
+          "method": "identifier-subject",
+          "subject": "test(mcr/QA03): use guarded database namespace and retain native refusal"
+        },
+        {
+          "commit": "e62a7025ea1e873d2df9eac2777da73597c87c55",
+          "method": "identifier-subject",
+          "subject": "test(mcr/QA03): disambiguate isolated community authority dispatch"
+        },
+        {
+          "commit": "f73d93827f9bc55f2d8043c36610a819bd504dfe",
+          "method": "identifier-subject",
+          "subject": "test(mcr/QA03): reject fresh approval and replay at full capacity"
+        },
+        {
+          "commit": "1ef7bbbb1d76107ff02a77f1c968578dd2e33116",
+          "method": "identifier-subject",
+          "subject": "test(mcr/QA03): align expiry precision and strengthen pickup replay checks"
+        },
+        {
+          "commit": "493292f9074cbd9a116524d83ae448aecf312c22",
+          "method": "identifier-subject",
+          "subject": "test(mcr/QA03): add forced PostgreSQL race qualification harness"
+        }
+      ],
+      "declared_commit_subject": "test(qa03): pass database race suite",
+      "delivering_commits": [],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-38-qa03.md",
+      "evidence_present": false,
+      "evidence_tracked": false,
+      "named_commits": [],
+      "plan_status": "OPEN",
+      "resolution": "open",
+      "row": 38,
+      "subject_drift": true,
+      "title": "Pass QA03 database race suite",
+      "verdict": "OPEN"
+    },
+    {
+      "box": " ",
+      "catalog_task_ids": [
+        "QA04"
+      ],
+      "commit_flag": "Y",
+      "context_commits": [
+        {
+          "commit": "9c73133cf45697ad5edfcd23bd48ae500cd80866",
+          "method": "identifier-subject",
+          "subject": "Deliver bounded QA04 admission fixture compatibility"
+        },
+        {
+          "commit": "f2ab50a57076fadf53a5278ee73be2e26bc43442",
+          "method": "identifier-subject",
+          "subject": "Merge remote-tracking branch 'origin/master' into codex/mcr-qa-QA04-privacy"
+        },
+        {
+          "commit": "207ed10922c59082d6830052fc2fda985b15badb",
+          "method": "identifier-subject",
+          "subject": "Merge remote-tracking branch 'origin/master' into codex/mcr-qa-QA04-privacy"
+        },
+        {
+          "commit": "330ca3375b16acca3a3055ed01cb281a345ae3c0",
+          "method": "identifier-subject",
+          "subject": "Merge remote-tracking branch 'origin/master' into codex/mcr-qa-QA04-privacy"
+        },
+        {
+          "commit": "b2caa5c04b43b2252ea693afbf7f2a81564ddaa5",
+          "method": "identifier-subject",
+          "subject": "docs(privacy): record expanded QA04 feature lifetime qualification"
+        },
+        {
+          "commit": "e251a5af2845b990dce07820fd4971422d5fb80f",
+          "method": "identifier-subject",
+          "subject": "Merge remote-tracking branch 'origin/master' into codex/mcr-qa-QA04-privacy"
+        },
+        {
+          "commit": "7cd242c17fd4d05d20324541babaa8600a43fd8e",
+          "method": "identifier-subject",
+          "subject": "Merge remote-tracking branch 'origin/master' into codex/mcr-qa-QA04-privacy"
+        },
+        {
+          "commit": "f026013893f6d069d7eca439d688d62d1c6e3686",
+          "method": "identifier-subject",
+          "subject": "docs(privacy): record QA04 fixture qualification and named live dependencies"
+        },
+        {
+          "commit": "56f514f247e6b2d6b769ecca1aa84b5ef2f057e2",
+          "method": "identifier-subject",
+          "subject": "Merge remote-tracking branch 'origin/master' into codex/mcr-qa-QA04-privacy"
+        },
+        {
+          "commit": "3b462de2d6cf4235b3cfca879343c93e5005aaef",
+          "method": "identifier-subject",
+          "subject": "Merge remote-tracking branch 'origin/master' into codex/mcr-qa-QA04-privacy"
+        },
+        {
+          "commit": "7172657da2ff8b79284494cdba74f4acbf9a3914",
+          "method": "identifier-subject",
+          "subject": "test(privacy): pin actual imported client graph in QA04 evidence"
+        },
+        {
+          "commit": "83f3ca88651287695c41b036af8a430c5dd30192",
+          "method": "identifier-subject",
+          "subject": "test(privacy): implement QA04 client matrix and guarded real-service entry"
+        }
+      ],
+      "declared_commit_subject": "test(qa04): pass privacy and authorization matrix",
+      "delivering_commits": [],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-39-qa04.md",
+      "evidence_present": false,
+      "evidence_tracked": false,
+      "named_commits": [],
+      "plan_status": "OPEN",
+      "resolution": "open",
+      "row": 39,
+      "subject_drift": true,
+      "title": "Pass QA04 privacy and authorization matrix",
+      "verdict": "OPEN"
+    },
+    {
+      "box": " ",
+      "catalog_task_ids": [
+        "QA05"
+      ],
+      "commit_flag": "Y",
+      "context_commits": [
+        {
+          "commit": "11473eaadce225a59770cb9bb599d5aab8947da7",
+          "method": "identifier-subject",
+          "subject": "Qualify same-server QA05 assembly and restart-aware IN04 adapter"
+        },
+        {
+          "commit": "f0f2e2187de8eb60f11b350890c6139758cfdb91",
+          "method": "identifier-subject",
+          "subject": "Qualify private consumed-ticket custody and single raw QA05 replay probe"
+        },
+        {
+          "commit": "5dd97dbdefd9edcf16c0b2806d4a353e917e796c",
+          "method": "identifier-subject",
+          "subject": "Attach bounded QA05 owner checkpoints to actual managed control interfaces"
+        },
+        {
+          "commit": "60831ca3b05cc698973c6296b2722b14cfde9d25",
+          "method": "identifier-subject",
+          "subject": "Publish qualified complete QA05 session cleanup after failures"
+        },
+        {
+          "commit": "4f32121dec01fdbf1af21b69d2cc055052fa358f",
+          "method": "identifier-subject",
+          "subject": "Publish qualified QA05 raw relay attachment and source boundaries"
+        },
+        {
+          "commit": "fe7310cdb926a36abf93cf5dd1fe7e04960cfdf2",
+          "method": "identifier-subject",
+          "subject": "Record bounded QA05 control source checks and runtime limits"
+        },
+        {
+          "commit": "af625380cfc4629552a645c69453c2beefd5dac8",
+          "method": "identifier-subject",
+          "subject": "Prepare the qualified QA05 application recovery driver and checkpoint ABI"
+        },
+        {
+          "commit": "3bacfe03472a41a641ddaaa9a15c314f9171953c",
+          "method": "identifier-subject",
+          "subject": "Record QA05 changed-source qualification and live recovery remainder"
+        },
+        {
+          "commit": "20965b19b1a0f9318ee26e6880a17f3936426861",
+          "method": "identifier-subject",
+          "subject": "Add bounded owner-bound QA05 restart controls and source cases"
+        },
+        {
+          "commit": "0de2faa3f7977a1a60981b5ae7c1208675680abf",
+          "method": "identifier-subject",
+          "subject": "Prepare QA05 actual App recovery driver and bounded owner checkpoints"
+        },
+        {
+          "commit": "2fc302f0ce876e62efbf9932f7d96d100fd2333f",
+          "method": "identifier-subject",
+          "subject": "docs: bind next QA05 probe source to published migration 51"
+        },
+        {
+          "commit": "1ea43864569eec87932a89262142da3648df3475",
+          "method": "identifier-subject",
+          "subject": "docs: record QA05 failure custody and accepted report production ownership"
+        },
+        {
+          "commit": "891216e3ab6ec0250180b3704b1a77a1cb7cbd05",
+          "method": "identifier-subject",
+          "subject": "docs(social): record qualified source intake after QA05 input release"
+        },
+        {
+          "commit": "a4c5fad15dc80c21ca988b7446150987440bae16",
+          "method": "identifier-subject",
+          "subject": "docs(mcr): close published mural contribution and preserve QA05 remainder"
+        },
+        {
+          "commit": "83d3df861a737e01eb8383b96012a5a5729ee33e",
+          "method": "identifier-subject",
+          "subject": "docs(mcr/QA05): retain exact native mural captures"
+        },
+        {
+          "commit": "3bc7dd4bd64c1a544f5abca3da2d6fe476c7bbe6",
+          "method": "identifier-subject",
+          "subject": "docs(mcr/QA05): record qualified native mural failure journey"
+        },
+        {
+          "commit": "c23937d39ba19c44f3f68a96b2396c8721b866d5",
+          "method": "identifier-subject",
+          "subject": "test(mcr/QA05): preserve separate immutable native run directories"
+        },
+        {
+          "commit": "1ccb116bf75f5adbe9596046f088be8f941b0be8",
+          "method": "identifier-subject",
+          "subject": "test(mcr/QA05): add native mural fault and convergence journey"
+        },
+        {
+          "commit": "f4715fc08264849a0069258c2c1e4631f931871a",
+          "method": "identifier-subject",
+          "subject": "docs(mcr): track mural QA05 source and disk dependency"
+        },
+        {
+          "commit": "2301a44441d1932a91247fdad4f8075d7e5ee823",
+          "method": "identifier-subject",
+          "subject": "docs(mcr): confirm actual QA05 mural goal and isolated ownership"
+        },
+        {
+          "commit": "b77359cd1406af85170eba660a24b2b6ec37b318",
+          "method": "identifier-subject",
+          "subject": "docs(mcr): reconcile community tasks and accept mural QA05 scope"
+        }
+      ],
+      "declared_commit_subject": "test(qa05): pass realtime failure suite",
+      "delivering_commits": [],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-40-qa05.md",
+      "evidence_present": false,
+      "evidence_tracked": false,
+      "named_commits": [],
+      "plan_status": "OPEN",
+      "resolution": "open",
+      "row": 40,
+      "subject_drift": true,
+      "title": "Pass QA05 realtime failure suite",
+      "verdict": "OPEN"
+    },
+    {
+      "box": " ",
+      "catalog_task_ids": [
+        "QA09"
+      ],
+      "commit_flag": "Y",
+      "context_commits": [
+        {
+          "commit": "860ec8380e3de686d2334b00df4227aa0e4d69ae",
+          "method": "identifier-subject",
+          "subject": "Publish source-qualified QA09 managed admission and lifecycle integration limitations"
+        },
+        {
+          "commit": "41cac6645d1e7c3bcbb0aa175520f5107b0809a3",
+          "method": "identifier-subject",
+          "subject": "docs(qa09): retain independent source publication proof"
+        },
+        {
+          "commit": "ffa60ba79dd15dc3ce22fe66509274e08efa912c",
+          "method": "identifier-subject",
+          "subject": "docs(qa09): record verified supporting publication"
+        },
+        {
+          "commit": "da9b8a98377c4ba7b0f44b7e8f62d8174901d02d",
+          "method": "identifier-subject",
+          "subject": "test(qa09): publish qualified recovery source guards and bounded evidence"
+        },
+        {
+          "commit": "e966739bb03c577a9a8549b8fc562927e96e3ab9",
+          "method": "identifier-subject",
+          "subject": "docs(mcr/QA09-BE): record physical recovery and observer qualification"
+        },
+        {
+          "commit": "d9db21df5f3c46451a71fa4765cdf2c9a2ff8512",
+          "method": "identifier-subject",
+          "subject": "feat(mcr/QA09-BE): orchestrate owned restart without settling quarantine"
+        },
+        {
+          "commit": "38cc31f85ac13d1693cc18a573342537ab86937c",
+          "method": "identifier-subject",
+          "subject": "fix(mcr/QA09-BE): unwind owned recovery cleanup on termination"
+        },
+        {
+          "commit": "b0851d5530efbe495f93d35a89f1a74852f79609",
+          "method": "identifier-subject",
+          "subject": "feat(mcr/QA09-BE): add recovery orchestration and owner observers"
+        },
+        {
+          "commit": "763594ef1ce1c92c754de20b7657f299d3f11565",
+          "method": "identifier-subject",
+          "subject": "docs(mcr/QA09-BE): record physical recovery and observer qualification"
+        },
+        {
+          "commit": "e7d1f06bbb2a335f4b0c99d8d4cb2f94f40a0d8a",
+          "method": "identifier-subject",
+          "subject": "feat(mcr/QA09-BE): orchestrate owned restart without settling quarantine"
+        },
+        {
+          "commit": "fef65f8e5171479d3dbc8b04fb76021042d91630",
+          "method": "identifier-subject",
+          "subject": "fix(mcr/QA09-BE): unwind owned recovery cleanup on termination"
+        },
+        {
+          "commit": "3c65b3fbb824e7a894c4aa83f533ad923f6e8c1f",
+          "method": "identifier-subject",
+          "subject": "feat(mcr/QA09-BE): add recovery orchestration and owner observers"
+        }
+      ],
+      "declared_commit_subject": "test(qa09): pass recovery and lifecycle rehearsal",
+      "delivering_commits": [],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-41-qa09.md",
+      "evidence_present": false,
+      "evidence_tracked": false,
+      "named_commits": [],
+      "plan_status": "OPEN",
+      "resolution": "open",
+      "row": 41,
+      "subject_drift": true,
+      "title": "Pass QA09 recovery and lifecycle rehearsal",
+      "verdict": "OPEN"
+    },
+    {
+      "box": " ",
+      "catalog_task_ids": [
+        "QA10"
+      ],
+      "commit_flag": "Y",
+      "context_commits": [
+        {
+          "commit": "923609a197f4ef7e4c00df11df92aa2e52cb4d99",
+          "method": "identifier-subject",
+          "subject": "Record actual QA10 candidate incompleteness and stale-receipt rejection"
+        },
+        {
+          "commit": "21dabbc41de09371fec03be4705c89b8d0a7e091",
+          "method": "identifier-subject",
+          "subject": "docs(qa10): retain actual published-candidate composition result"
+        },
+        {
+          "commit": "6d351502bcee839e0836955edbf5eff61ab9b0b7",
+          "method": "identifier-subject",
+          "subject": "Add candidate-bound QA10 release composition checks"
+        },
+        {
+          "commit": "007527a5a455340fb27080070c4fe1b34ab6a8f3",
+          "method": "identifier-subject",
+          "subject": "docs(qa10): retain bounded parser validation and publication handoff"
+        },
+        {
+          "commit": "b30749b2e039152c82c9a8472dc4e7964fb61788",
+          "method": "identifier-subject",
+          "subject": "test(qa10): include original catalog test paths in frontend fixture inventory"
+        },
+        {
+          "commit": "b460882a35d1300738d6b124f8337dabe17b47da",
+          "method": "identifier-subject",
+          "subject": "test(qa10): bind conservative twelve GiB continuity admission"
+        },
+        {
+          "commit": "e6bfa21636e218a85508f8b51cf03fe711a2b30c",
+          "method": "identifier-subject",
+          "subject": "test(qa10): prevent nested Git maintenance in bounded fixtures"
+        },
+        {
+          "commit": "47e99921de6f209fd596c6bbfd013f0802d2252f",
+          "method": "identifier-subject",
+          "subject": "test(qa10): isolate miniature Git fixtures from global hooks"
+        },
+        {
+          "commit": "5bb374baafcceea4fba0e986b99990bd57463dd4",
+          "method": "identifier-subject",
+          "subject": "feat(qa10): bind actor fingerprints to retained owner observations"
+        },
+        {
+          "commit": "43943bf998c49d4fb91e4b271c3315ca07a45683",
+          "method": "identifier-subject",
+          "subject": "fix(qa10): keep Rust case parsing within each log line"
+        },
+        {
+          "commit": "59c10ac2c7288938bc5fcfd6b6d25a8ae6bb7ca9",
+          "method": "identifier-subject",
+          "subject": "test(qa10): establish guardian probe before admitting worker"
+        },
+        {
+          "commit": "d8e41b511c9dfac9d42dc947f0d16b1964d37fc8",
+          "method": "identifier-subject",
+          "subject": "fix(qa10): bind runtime level to the receipt covering each criterion"
+        },
+        {
+          "commit": "37b5208a3b07a0d1092cfaca9bbc93b2f955c7bb",
+          "method": "identifier-subject",
+          "subject": "test(qa10): declare native guardian process probe ABI"
+        },
+        {
+          "commit": "e66c06b3ab554ebe46a9c827ed88b5f793b5f26a",
+          "method": "identifier-subject",
+          "subject": "test(qa10): add independent bounded SOURCE controller"
+        },
+        {
+          "commit": "82e85620da14185b58cf8946e0b27667f495da39",
+          "method": "identifier-subject",
+          "subject": "test(qa10): keep entrypoint probes inside bounded worker process"
+        },
+        {
+          "commit": "dec21ba790894c3cff49552cc58f73c7ac2c2a55",
+          "method": "identifier-subject",
+          "subject": "test(qa10): fence source changes and forbid receipt command execution"
+        },
+        {
+          "commit": "1b45a14d80b02746ad575960f55ae31c23f498c2",
+          "method": "identifier-subject",
+          "subject": "feat(qa10): validate verbose Python unit report provenance"
+        },
+        {
+          "commit": "c3cf129945debde7c2956ad717adc792f966b5a3",
+          "method": "identifier-subject",
+          "subject": "test(qa10): isolate legacy frontend fixture artifacts"
+        },
+        {
+          "commit": "31c1651aab525fe406dca14a9fcccfb58ba8ea17",
+          "method": "identifier-subject",
+          "subject": "fix(qa10): bind owner coverage and retained runtime observations"
+        },
+        {
+          "commit": "36e27bebf851881d89f0f3fa0da0b015915bc27d",
+          "method": "identifier-subject",
+          "subject": "feat(qa10): compose candidate-bound functional release evidence"
+        },
+        {
+          "commit": "54c08628074182ec64e1421d5df638e18b383e63",
+          "method": "identifier-subject",
+          "subject": "docs(qa10): seal source checker validation and release limits"
+        },
+        {
+          "commit": "cbb05bc586424a4b47c393463d1362627acfe907",
+          "method": "identifier-subject",
+          "subject": "test(qa10): cover quoted credential and named mock exclusion"
+        },
+        {
+          "commit": "ae0a7260398d9c086044355829fecb5a8f6c695e",
+          "method": "identifier-subject",
+          "subject": "fix(qa10): consume bounded archived frontend reports and retain validation"
+        },
+        {
+          "commit": "7526e0a750d9e683fbc61abb087dc90c83725309",
+          "method": "identifier-subject",
+          "subject": "feat(qa10): check exact candidate evidence and release source truth"
+        },
+        {
+          "commit": "45466a447ae8d692706c5e9d35954283f591a95b",
+          "method": "identifier-subject",
+          "subject": "docs(mcr): close QA10 frontend contribution and batch reporting cadence"
+        },
+        {
+          "commit": "3793555d327e21846ae642d517f431268e89d0c4",
+          "method": "identifier-subject",
+          "subject": "docs(mcr): record hourly QA10 candidate result and QA08 lifecycle closure"
+        },
+        {
+          "commit": "d165dd7a9be217dfd69469c2d502bb7adb785629",
+          "method": "identifier-subject",
+          "subject": "docs(mcr/QA10): qualify published frontend candidate 980fc4d8"
+        },
+        {
+          "commit": "9e535ef7d45d065df7e52de7d80b62ce30e15406",
+          "method": "identifier-subject",
+          "subject": "docs(mcr): record integrator QA10 and QA08 publication boundaries"
+        },
+        {
+          "commit": "6d1a7829d0909f41d7651408ccf40a9769e012e6",
+          "method": "identifier-subject",
+          "subject": "docs(mcr): track QA10 committed handoff and preserve active QA08 ownership"
+        },
+        {
+          "commit": "4505971aaffc833c0b825ddb734af1f3cf617601",
+          "method": "identifier-subject",
+          "subject": "docs(mcr/QA10): retain exact candidate runs and refusal probes"
+        },
+        {
+          "commit": "c338b86f2b9e02e84590562fc7714a2e4d6d7b80",
+          "method": "identifier-subject",
+          "subject": "fix(mcr/QA10): verify existing large source blobs"
+        },
+        {
+          "commit": "ec84cfbb433d9abf0abd4acd55fb736e6c1ef0cd",
+          "method": "identifier-subject",
+          "subject": "test(mcr/QA10): archive raw runner reports losslessly"
+        },
+        {
+          "commit": "976508a87a71f5daf88e5b06fb99a09934791815",
+          "method": "identifier-subject",
+          "subject": "test(mcr/QA10): add exact-candidate frontend receipt harness"
+        },
+        {
+          "commit": "4052d709fef976d14653351cd8bf78ef85bd1579",
+          "method": "identifier-subject",
+          "subject": "docs(mcr): record exact QA10 shared fixture loader transfer"
+        },
+        {
+          "commit": "2f67b5e14d74a9db76a98224e24bf37eb8370156",
+          "method": "identifier-subject",
+          "subject": "docs(mcr): route new QA10 publication through designated integrator"
+        },
+        {
+          "commit": "6a73eff54035a4bf6f3e1ef5b0b53ea7be79bebd",
+          "method": "identifier-subject",
+          "subject": "docs(mcr): confirm QA10 frontend candidate contribution startup"
+        }
+      ],
+      "declared_commit_subject": "test(qa10): compose same-candidate release evidence",
+      "delivering_commits": [],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-42-qa10.md",
+      "evidence_present": false,
+      "evidence_tracked": false,
+      "named_commits": [],
+      "plan_status": "OPEN",
+      "resolution": "open",
+      "row": 42,
+      "subject_drift": true,
+      "title": "Pass QA10 candidate provenance and release checks",
+      "verdict": "OPEN"
+    },
+    {
+      "box": "~",
+      "catalog_task_ids": [
+        "FE24",
+        "FE33",
+        "FE34"
+      ],
+      "commit_flag": "Y",
+      "declared_commit_subject": "feat(frontend): close FE24, FE33 and FE34",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "93e63def4e4008fc456a904b2a55401ebcd6b395",
+          "method": "identifier-subject",
+          "subject": "chore(plan): close FE33/FE34 with the FE24 gap recorded"
+        },
+        {
+          "ancestor": true,
+          "commit": "d3586c35ee7155fbb4d20e5a23d9dbcab36c9eb4",
+          "method": "identifier-subject",
+          "subject": "merge(fe): close FE33 and FE34 with the FE24 producer block recorded"
+        },
+        {
+          "ancestor": true,
+          "commit": "8983271a9caf5f4b3ec27d46024d543b8501b0b2",
+          "method": "identifier-subject",
+          "subject": "docs(fe): cite the delivery commit and script the FE24 media probe"
+        },
+        {
+          "ancestor": true,
+          "commit": "e2856a7cad8d8b15afb0174ef121d468d5b7c765",
+          "method": "identifier-subject",
+          "subject": "feat(frontend): close FE33 and FE34; record FE24 producer block"
+        },
+        {
+          "ancestor": true,
+          "commit": "5b263dc218eb965a47ce660e32b808813080028e",
+          "method": "identifier-subject",
+          "subject": "feat(mcr/FE27/FE21/FE24): add cute community background asset pack"
+        },
+        {
+          "ancestor": true,
+          "commit": "3d965242925db4911a05b79b73e1c0f2bb2a09fa",
+          "method": "identifier-subject",
+          "subject": "docs(mcr): record original FE21 and FE24 client criterion receipts"
+        },
+        {
+          "ancestor": true,
+          "commit": "4bf9022f943e601c0f876d7ca7e5fdc54036b8e6",
+          "method": "identifier-subject",
+          "subject": "docs(mcr/FE21-FE24): seal original client criteria and native delivery evidence"
+        },
+        {
+          "ancestor": true,
+          "commit": "d7a8f74adcf47d21553e91df151dddd454085fb9",
+          "method": "identifier-subject",
+          "subject": "test(mcr/FE21-FE24): qualify native fixtures against frozen gift contracts"
+        },
+        {
+          "ancestor": true,
+          "commit": "2fc01813936ac101af1c5cad6477f3ec340d36f7",
+          "method": "identifier-subject",
+          "subject": "fix(mcr/FE24): refresh gift activity after current access changes"
+        },
+        {
+          "ancestor": true,
+          "commit": "ba0351e44200acf19a5fbe8311a87fa90bf17490",
+          "method": "identifier-subject",
+          "subject": "docs(mcr): staff original FE21 and FE24 client completion"
+        },
+        {
+          "ancestor": true,
+          "commit": "9921759c8769323500dce4317d0d22a53fe69749",
+          "method": "identifier-subject",
+          "subject": "Correct runtime environment attribution in FE24 QA review"
+        },
+        {
+          "ancestor": true,
+          "commit": "fe2caab4ba0ccfe6c84684af5878231a22e9695b",
+          "method": "identifier-subject",
+          "subject": "Independent QA review for FE24 giveaway discovery"
+        },
+        {
+          "ancestor": true,
+          "commit": "8c33ba318376f2550b2b7de1bef7061cbb54d0df",
+          "method": "identifier-subject",
+          "subject": "Record FE24 delivery hashes and validation receipt"
+        },
+        {
+          "ancestor": true,
+          "commit": "3cb3f9c19856e0eee0c542be981a19217f8684df",
+          "method": "identifier-subject",
+          "subject": "Implement FE24 giveaway discovery and scoped own activity"
+        },
+        {
+          "ancestor": true,
+          "commit": "cf5f0e44ff1034c3dedd5c9234e7136d271e01a1",
+          "method": "identifier-subject",
+          "subject": "Merge remote-tracking branch 'origin/master' into codex/mcr-fe-FE33-mural-caller-assembly"
+        },
+        {
+          "ancestor": true,
+          "commit": "0d03e7a87ac38078ce1277ef64d6a87c056911a6",
+          "method": "identifier-subject",
+          "subject": "docs(mcr): reconcile reported FE33 ledger disposition"
+        },
+        {
+          "ancestor": true,
+          "commit": "3da28fcbe50859f2ecba3b0368c14ff57a1f936b",
+          "method": "identifier-subject",
+          "subject": "docs(mcr): record active FE33 caller lease and original criterion receipt"
+        },
+        {
+          "ancestor": true,
+          "commit": "d8b41aecb4fa9aec139d474aef7fb15eeb6f91ea",
+          "method": "identifier-subject",
+          "subject": "docs(mcr): record original FE33 client criteria completion"
+        },
+        {
+          "ancestor": true,
+          "commit": "2db32fdf274bee227533774930e8b7207e29e95e",
+          "method": "identifier-subject",
+          "subject": "docs(mcr): clarify FE33 caller lease activation boundary"
+        },
+        {
+          "ancestor": true,
+          "commit": "e9d0e81fa9529ebdca0b6b2d4f348e8bda2ddc3a",
+          "method": "identifier-subject",
+          "subject": "docs(mcr): record exact FE33 caller hunk transfer"
+        },
+        {
+          "ancestor": true,
+          "commit": "aedbb020e637993fe9ef1831e31bd6ae5316ae0c",
+          "method": "identifier-subject",
+          "subject": "feat(mcr/FE33): deliver shell-owned Wall entry adapter"
+        },
+        {
+          "ancestor": true,
+          "commit": "6240ea72f078fb235c4fb947b50bd3264c4f7bfd",
+          "method": "identifier-subject",
+          "subject": "docs(mcr): record verified FE33 FE36 FE37 integration checkpoint"
+        },
+        {
+          "ancestor": true,
+          "commit": "36d703d825d3bdafe244442c00be96f77fce4a4a",
+          "method": "identifier-subject",
+          "subject": "feat(mcr/FE33): reconcile mural revisions and recover own results"
+        },
+        {
+          "ancestor": true,
+          "commit": "a4197421a9022c7f9693dfe0fa7addec54434acb",
+          "method": "identifier-subject",
+          "subject": "docs(settings): record composed evidence and remaining FE34 proof"
+        },
+        {
+          "ancestor": true,
+          "commit": "5ef20bb4d296362de9ed052f8435f7590bb7f15e",
+          "method": "identifier-subject",
+          "subject": "docs(settings): pin FE34 handoff and exact root wiring proposal"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-43-fe-closure.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "1c8d9d9e18fe6804b79cf5099d8764c8154eabdd",
+          "delivering": false,
+          "mentioned_as": "1c8d9d9e1",
+          "subject": "chore(plan): close VENU-IN01 with its named gap"
+        }
+      ],
+      "plan_status": "PARTIAL",
+      "resolution": "identifier-subject",
+      "row": 43,
+      "subject_drift": true,
+      "title": "Close FE24, FE33 and FE34",
+      "verdict": "PARTIAL_WITH_COMMIT"
+    },
+    {
+      "box": "x",
+      "catalog_task_ids": [],
+      "commit_flag": "Y",
+      "declared_commit_subject": "docs(ops): add staging and production runbook",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "243a1f2d1eb6d2ebd0d3f47b2b4fa229bcec34c8",
+          "method": "evidence-labeled-commit",
+          "subject": "docs(ops): finish the runbook environment and OAuth accuracy"
+        },
+        {
+          "ancestor": true,
+          "commit": "ffbc5f70b3f719fc6bd46c24c4299bb123e54fff",
+          "method": "evidence-labeled-commit",
+          "subject": "docs(ops): correct the credential table and scope the env count"
+        },
+        {
+          "ancestor": true,
+          "commit": "0c265916a2e62692fcd04099b548d38a74534e78",
+          "method": "evidence-labeled-commit",
+          "subject": "docs(ops): correct the env recipe and production-mode claim"
+        },
+        {
+          "ancestor": true,
+          "commit": "847c75b6b7a1636055f2794f558c6092f09ac2e1",
+          "method": "evidence-labeled-commit",
+          "subject": "docs(ops): state the health-only Concert validation set precisely"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-44-deployment.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "06ef5f8b848b10658b5729b41883451ee2879f07",
+          "delivering": false,
+          "mentioned_as": "06ef5f8b8",
+          "subject": "Merge remote-tracking branch 'origin/master' into codex/mcr-exec-w8-deploy"
+        },
+        {
+          "ancestor": true,
+          "commit": "0c265916a2e62692fcd04099b548d38a74534e78",
+          "delivering": true,
+          "mentioned_as": "0c265916a",
+          "subject": "docs(ops): correct the env recipe and production-mode claim"
+        },
+        {
+          "ancestor": true,
+          "commit": "127c7406fb46727752413071d71a9d049042be2b",
+          "delivering": false,
+          "mentioned_as": "127c7406f",
+          "subject": "merge(operations): qualify BE38 settings, notices and read routes"
+        },
+        {
+          "ancestor": true,
+          "commit": "243a1f2d1eb6d2ebd0d3f47b2b4fa229bcec34c8",
+          "delivering": true,
+          "mentioned_as": "243a1f2d1",
+          "subject": "docs(ops): finish the runbook environment and OAuth accuracy"
+        },
+        {
+          "ancestor": true,
+          "commit": "847c75b6b7a1636055f2794f558c6092f09ac2e1",
+          "delivering": true,
+          "mentioned_as": "847c75b6b",
+          "subject": "docs(ops): state the health-only Concert validation set precisely"
+        },
+        {
+          "ancestor": true,
+          "commit": "b2676f68ccd33fac1e619aba8fc29446bf6ed15d",
+          "delivering": false,
+          "mentioned_as": "b2676f68c",
+          "subject": "merge(lifecycle): qualify closure route and read-only proofs"
+        },
+        {
+          "ancestor": true,
+          "commit": "d45f433132e58e02b1b11c4a6fa0067750114e35",
+          "delivering": false,
+          "mentioned_as": "d45f43313",
+          "subject": "docs(ops): correct runbook environment and OAuth surfaces"
+        },
+        {
+          "ancestor": true,
+          "commit": "ffbc5f70b3f719fc6bd46c24c4299bb123e54fff",
+          "delivering": true,
+          "mentioned_as": "ffbc5f70b",
+          "subject": "docs(ops): correct the credential table and scope the env count"
+        }
+      ],
+      "plan_status": "CLOSED",
+      "resolution": "evidence-labeled-commit",
+      "row": 44,
+      "subject_drift": true,
+      "title": "Document deployment and production inputs",
+      "verdict": "CLOSED_COMMIT_ANCESTOR"
+    },
+    {
+      "box": "~",
+      "catalog_task_ids": [
+        "FE10"
+      ],
+      "commit_flag": "Y",
+      "declared_commit_subject": "feat(auth): bind approved eligibility and consent publication",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "fce130fc8138d1da83d7a885da81668a93890c8f",
+          "method": "identifier-subject",
+          "subject": "chore(plan): close the AR01 and FE10 rows as named gaps"
+        },
+        {
+          "ancestor": true,
+          "commit": "7952a551987ce1eac7045d67160e062d04e6694c",
+          "method": "identifier-subject",
+          "subject": "merge(docs): record the AR01 and FE10 external input gaps"
+        },
+        {
+          "ancestor": true,
+          "commit": "39a1b4e047e7383cfe2f6eba1f8eccd919ee40af",
+          "method": "identifier-subject",
+          "subject": "docs(venue): record the AR01 and FE10 input gaps"
+        },
+        {
+          "ancestor": true,
+          "commit": "f4981947310f1192bbb9547458cc02952091f146",
+          "method": "identifier-subject",
+          "subject": "docs(auth): record FE10 qualification and policy gaps"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-45-fe10.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "13d2ee25fcfc60ac02ae91efe8c21649d920091f",
+          "delivering": false,
+          "mentioned_as": "13d2ee25f",
+          "subject": "chore(plan): close the invitation client"
+        },
+        {
+          "ancestor": true,
+          "commit": "dee64fd1ac868f4dffbea49c0e75ca8e98727f3a",
+          "delivering": false,
+          "mentioned_as": "dee64fd1a",
+          "subject": "Add finite existing-stack Enrollment policy operator and HTTP adapter"
+        }
+      ],
+      "plan_status": "PARTIAL",
+      "resolution": "identifier-subject",
+      "row": 45,
+      "subject_drift": true,
+      "title": "Obtain FE10 eligibility/legal publication and bind it",
+      "verdict": "PARTIAL_WITH_COMMIT"
+    },
+    {
+      "box": "x",
+      "catalog_task_ids": [],
+      "commit_flag": "Y",
+      "declared_commit_subject": "docs(venue): resolve W04 policy and map extension IA",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "2f2f11b61ee2f33812ea848ba21c890d529e10b9",
+          "method": "title-phrase",
+          "subject": "chore(plan): close the W04 policy and extension IA row"
+        },
+        {
+          "ancestor": true,
+          "commit": "31aa963e43964279757bf169ed91ecdb2154cc7c",
+          "method": "title-phrase",
+          "subject": "merge(docs): resolve the W04 policy and map the extension IA"
+        },
+        {
+          "ancestor": true,
+          "commit": "bddec43aae7e9858355480954c858f1622beb7f9",
+          "method": "title-phrase",
+          "subject": "docs(venue): resolve the W04 policy and map the extension IA"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-46-w04.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "41d90738e3941cdfc663d00551e0f7db2cd3aa4f",
+          "delivering": false,
+          "mentioned_as": "41d90738e",
+          "subject": "Publish source-qualified venue invitations and contextual conversation leaf"
+        },
+        {
+          "ancestor": true,
+          "commit": "fce130fc8138d1da83d7a885da81668a93890c8f",
+          "delivering": false,
+          "mentioned_as": "fce130fc8",
+          "subject": "chore(plan): close the AR01 and FE10 rows as named gaps"
+        }
+      ],
+      "plan_status": "CLOSED",
+      "resolution": "title-phrase",
+      "row": 46,
+      "subject_drift": true,
+      "title": "Resolve the W04 invitation policy and close the 10 extension IA states",
+      "verdict": "CLOSED_COMMIT_ANCESTOR"
+    },
+    {
+      "box": " ",
+      "catalog_task_ids": [
+        "IN05"
+      ],
+      "commit_flag": "Y",
+      "context_commits": [],
+      "declared_commit_subject": "docs(release): publish IN05 reconciliation",
+      "delivering_commits": [],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-47-in05.md",
+      "evidence_present": false,
+      "evidence_tracked": false,
+      "named_commits": [],
+      "plan_status": "OPEN",
+      "resolution": "open",
+      "row": 47,
+      "subject_drift": true,
+      "title": "Reconcile IN05 and publish the release decision",
+      "verdict": "OPEN"
+    },
+    {
+      "box": " ",
+      "catalog_task_ids": [],
+      "commit_flag": "Y",
+      "context_commits": [],
+      "declared_commit_subject": "ci: add blocking build, test and contract gates",
+      "delivering_commits": [],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-48-ci.md",
+      "evidence_present": false,
+      "evidence_tracked": false,
+      "named_commits": [],
+      "plan_status": "OPEN",
+      "resolution": "open",
+      "row": 48,
+      "subject_drift": true,
+      "title": "Restore blocking CI last",
+      "verdict": "OPEN"
+    },
+    {
+      "box": "x",
+      "catalog_task_ids": [],
+      "commit_flag": "Y",
+      "declared_commit_subject": "feat(feed): add qualified post mutation envelope and routes",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "d51f08d3b93167f763078ef2e824f4c91e882423",
+          "method": "title-phrase",
+          "subject": "feat(feed): add qualified post mutation envelope and event-scoped routes"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-49-feed-mutations.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "13d2ee25fcfc60ac02ae91efe8c21649d920091f",
+          "delivering": false,
+          "mentioned_as": "13d2ee25fcfc60ac02ae91efe8c21649d920091f",
+          "subject": "chore(plan): close the invitation client"
+        },
+        {
+          "ancestor": true,
+          "commit": "6cb31ca709a0717d61d82e3308060049889ce3db",
+          "delivering": false,
+          "mentioned_as": "6cb31ca709a0717d61d82e3308060049889ce3db",
+          "subject": "merge(venue): complete map and friends client states"
+        },
+        {
+          "ancestor": true,
+          "commit": "7b378f8fa1688368f7922e86228f118c8bf5df07",
+          "delivering": false,
+          "mentioned_as": "7b378f8fa1688368f7922e86228f118c8bf5df07",
+          "subject": "fix(feed): complete command replay and preview lookups"
+        },
+        {
+          "ancestor": true,
+          "commit": "d51f08d3b93167f763078ef2e824f4c91e882423",
+          "delivering": true,
+          "mentioned_as": "d51f08d3b93167f763078ef2e824f4c91e882423",
+          "subject": "feat(feed): add qualified post mutation envelope and event-scoped routes"
+        },
+        {
+          "ancestor": true,
+          "commit": "eb3491dccf1a59c8094c47f00dc057e805f8e76b",
+          "delivering": false,
+          "mentioned_as": "eb3491dcc",
+          "subject": "Merge commit '13d2ee25f' into codex/mcr-exec-w2-feed"
+        }
+      ],
+      "plan_status": "CLOSED",
+      "resolution": "title-phrase",
+      "row": 49,
+      "subject_drift": true,
+      "title": "Add the qualified post mutation envelope and event-scoped feed routes",
+      "verdict": "CLOSED_COMMIT_ANCESTOR"
+    },
+    {
+      "box": "x",
+      "catalog_task_ids": [],
+      "commit_flag": "Y",
+      "declared_commit_subject": "feat(account): mount the sealed deletion coordinator in serving",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "79d18315e4b07f07e41f10cbdace8267f453fdf9",
+          "method": "evidence-labeled-commit",
+          "subject": "feat(account): mount the account-deletion runtime on the serving listener"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-50-deletion-mount.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "1234ae7c61d2bff84aa83de4325daf3e5977bb1e",
+          "delivering": false,
+          "mentioned_as": "1234ae7c6",
+          "subject": "merge(account): mount sealed deletion runtime on serving listener"
+        },
+        {
+          "ancestor": true,
+          "commit": "79d18315e4b07f07e41f10cbdace8267f453fdf9",
+          "delivering": true,
+          "mentioned_as": "79d18315e",
+          "subject": "feat(account): mount the account-deletion runtime on the serving listener"
+        }
+      ],
+      "plan_status": "CLOSED",
+      "resolution": "evidence-labeled-commit",
+      "row": 50,
+      "subject_drift": true,
+      "title": "Mount the account-deletion runtime and prove the end-to-end request",
+      "verdict": "CLOSED_COMMIT_ANCESTOR"
+    },
+    {
+      "box": "~",
+      "catalog_task_ids": [],
+      "commit_flag": "Y",
+      "declared_commit_subject": "feat(lifecycle): compose closure producer and archive endpoint",
+      "delivering_commits": [
+        {
+          "ancestor": true,
+          "commit": "b2676f68ccd33fac1e619aba8fc29446bf6ed15d",
+          "method": "evidence-labeled-commit",
+          "subject": "merge(lifecycle): qualify closure route and read-only proofs"
+        },
+        {
+          "ancestor": true,
+          "commit": "1bc74e3b87d35162bbd279751e9fb683e2364fb8",
+          "method": "evidence-labeled-commit",
+          "subject": "feat(lifecycle): compose operator closure producer and public archive route"
+        }
+      ],
+      "evidence_path": ".omo/evidence/mcr-finish-project/task-51-closure-producer.md",
+      "evidence_present": true,
+      "evidence_tracked": true,
+      "named_commits": [
+        {
+          "ancestor": true,
+          "commit": "127c7406fb46727752413071d71a9d049042be2b",
+          "delivering": false,
+          "mentioned_as": "127c7406f",
+          "subject": "merge(operations): qualify BE38 settings, notices and read routes"
+        },
+        {
+          "ancestor": true,
+          "commit": "1bc74e3b87d35162bbd279751e9fb683e2364fb8",
+          "delivering": true,
+          "mentioned_as": "1bc74e3b8",
+          "subject": "feat(lifecycle): compose operator closure producer and public archive route"
+        },
+        {
+          "ancestor": true,
+          "commit": "1def9496a81960f9d3da93e6ac84892b9d93ca43",
+          "delivering": false,
+          "mentioned_as": "1def9496a",
+          "subject": "Merge remote-tracking branch 'origin/master' into codex/mcr-exec-w2-closure-producer"
+        },
+        {
+          "ancestor": true,
+          "commit": "31ded59e720544ad641437905ca1293b77921f78",
+          "delivering": false,
+          "mentioned_as": "31ded59e7",
+          "subject": "fix(lifecycle): gate operator closure on the participant canonical composition"
+        },
+        {
+          "ancestor": true,
+          "commit": "3fb133512c875836cdca86302f975c0f1bdfb14e",
+          "delivering": false,
+          "mentioned_as": "3fb133512",
+          "subject": "test(lifecycle): prove the closure flow on a real development stack"
+        },
+        {
+          "ancestor": true,
+          "commit": "40f85ad5f6c405844d2a64f4c6c31a91098986f3",
+          "delivering": false,
+          "mentioned_as": "40f85ad5f",
+          "subject": "fix(startup): serve settlement before World readiness with gated capabilities\\n\\nThe gRPC listener waited for the supervised World startup barrier before it\\nserved, while the World replay bootstrap needs the Auth/Friend invalidation\\nsources whose own startup verifies owner-authority settlement against this same\\nendpoint. Neither side could finish, so the dev stack stopped with \"Owner\\nauthority unavailable\" and \"World replay bootstrap unavailable\".\\n\\nThe listener now binds immediately behind a deny-by-default gate. Only\\nauthority.lease.v1.ProducerSettlementService answers while the gate is closed;\\nevery other mounted capability returns UNAVAILABLE \"World not ready\": the\\nConcertService bootstrap, WorldService, both participant services, the product,\\ndelivery and archive services, the feed-callback root read, the notification\\ntarget authority and the deferred account-deletion slot. A concurrent component\\nawaits the World barrier and flips the gate; a dropped barrier requests shared\\nshutdown and preserves the original error. serve_with_shutdown is unchanged.\\n\\nThe closure driver now projects its receipt through the driver's own prepared\\ncommand instead of the inner lifecycle service, which bypassed the ephemeral\\nfence permission that START requires. The shared projection keeps the exact\\nclosed receipt statuses for the close route.\\n\\nCargo: tower.workspace (already a workspace dependency and a dev-dependency;\\nthe layer needs the real Layer/Service traits, so no new crate or lock change).\\n\\nTests: the allowlist is exactly the settlement service; a closed gate answers\\nsettlement and refuses every gated service without reaching the owner; opening\\nthe gate after readiness serves them; a dropped World barrier requests shutdown\\nwith the original error and never opens the gate. All 9 binary tests pass.\\n"
+        },
+        {
+          "ancestor": true,
+          "commit": "4cbf52bbd9703c3d2ae7af3f17001f5d7348b8d4",
+          "delivering": false,
+          "mentioned_as": "4cbf52bbd",
+          "subject": "fix(devstack): start the settlement owner before its dependents"
+        },
+        {
+          "ancestor": true,
+          "commit": "517b1ffbd3329d59bbb66bd8adfeecca7b78d105",
+          "delivering": false,
+          "mentioned_as": "517b1ffbd",
+          "subject": "fix(lifecycle): surface the replay status and classify it for retry"
+        },
+        {
+          "ancestor": true,
+          "commit": "76c5be63f1e5a9561c6907ab1d1fbb7cea0f1730",
+          "delivering": false,
+          "mentioned_as": "76c5be63f",
+          "subject": "fix(startup): break the settlement/replay startup cycle with bounded retries"
+        },
+        {
+          "ancestor": true,
+          "commit": "b2676f68ccd33fac1e619aba8fc29446bf6ed15d",
+          "delivering": true,
+          "mentioned_as": "b2676f68c",
+          "subject": "merge(lifecycle): qualify closure route and read-only proofs"
+        }
+      ],
+      "plan_status": "PARTIAL",
+      "resolution": "evidence-labeled-commit",
+      "row": 51,
+      "subject_drift": true,
+      "title": "Compose the closure producer and the archive HTTP endpoint",
+      "verdict": "PARTIAL_WITH_COMMIT"
+    }
+  ],
+  "schema": "mcr.qa10.task-trace.v1",
+  "summary": {
+    "closed": 32,
+    "closed_with_delivering_commit": 32,
+    "open": 8,
+    "partial": 11,
+    "rows": 51
+  }
+}
