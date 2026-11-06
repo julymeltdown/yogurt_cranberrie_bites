@@ -201,3 +201,16 @@ No broad unchanged suite was rerun after final focused/build/lint success. Backe
 database races, real multiuser pickup/reservation, device and release gates are
 **NOT_RUN**. Native deterministic fetch evidence is not backend integration or
 full feature/project acceptance.
+
+## 2026-11-06 producer check (task 43)
+
+**FE24 remains open.** The BE24 delivery record states end-to-end Gateway HTTP
+upload/read with a real canonical Auth/Friend stack is `NOT_RUN`; a probe against
+the real development stack returned `403 PERMISSION_DENIED` for the media
+metadata and content reads. The approved production media/motif mapping also
+remains absent (`productionBinding: null`). `GiftDetail` therefore keeps its
+truthful states: `No photo` for a null `image_media_id` and `Image access
+unavailable.` when no usable authorized port exists; it never invents a URL or
+substitutes fixture artwork. Closing FE24 requires the media owner fence to be
+HTTP-composed and an approved production media/motif mapping. Evidence:
+`.omo/evidence/mcr-finish-project/task-43-fe-closure.md`.
