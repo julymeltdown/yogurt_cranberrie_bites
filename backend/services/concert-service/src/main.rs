@@ -2,6 +2,7 @@ use concert_service::{
     bootstrap::{BootstrapFeatures, BootstrapService, ProductReleaseBundle},
     config, health, rpc, world_rpc,
 };
+use std::sync::Arc;
 mod in01_catalog;
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
@@ -243,6 +244,26 @@ async fn main() -> anyhow::Result<()> {
             }
         })
         .transpose()?;
+    if product_owner.is_none() && config::product_runtime::service_policy_read()? {
+        let runtime = participant_runtime.as_ref().ok_or_else(|| {
+            anyhow::anyhow!("Service policy read requires the shared participant composition")
+        })?;
+        let producer: Arc<dyn concert_service::product_rpc::scoped::ScopedProductProducer> =
+            Arc::new(concert_service::service_policy::ServicePolicyProducer::new(
+                pool.clone(),
+            ));
+        let policy = concert_service::product_rpc::scoped::ScopedProductOwner::new(
+            runtime.fence.clone(),
+            runtime.delivery.clone(),
+            producer,
+        );
+        product_owner = Some(config::product_runtime::ProductOwners {
+            product: Arc::new(concert_service::service_policy::ServicePolicyOwners::new(
+                policy, None,
+            )),
+            delivery: runtime.delivery.clone(),
+        });
+    }
     let (participant_owners, participant_recovery) = match participant_runtime {
         Some(config::participant_runtime::ParticipantRuntime {
             participant,

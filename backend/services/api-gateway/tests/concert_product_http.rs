@@ -55,6 +55,35 @@ async fn actual_transport_keeps_product_reads_authenticated_and_closed_without_p
 }
 
 #[tokio::test]
+async fn service_policy_read_is_mounted_authenticated_and_reaches_the_concert_boundary() {
+    let harness = RouteHarness::new().await;
+    let uri = format!(
+        "/api/concert/events/{EVENT}/service-policy?client_version=0.1.0&client_release={}",
+        "a".repeat(64)
+    );
+    let router = harness.transport_router();
+    let request = Request::builder().uri(&uri).body(Body::empty()).unwrap();
+    let value = json(
+        router.clone().oneshot(request).await.unwrap(),
+        StatusCode::UNAUTHORIZED,
+    )
+    .await;
+    assert_eq!(value["details"]["reason"], "AUTHENTICATION_REQUIRED");
+    let request = Request::builder()
+        .uri(&uri)
+        .header(header::AUTHORIZATION, harness.bearer_token(USER_ID))
+        .body(Body::empty())
+        .unwrap();
+    let value = json(
+        router.oneshot(request).await.unwrap(),
+        StatusCode::SERVICE_UNAVAILABLE,
+    )
+    .await;
+    assert_eq!(value["details"]["reason"], "DEPENDENCY_UNAVAILABLE");
+    harness.pool.close().await;
+}
+
+#[tokio::test]
 async fn upload_uses_concert_receipts_without_gateway_two_megabyte_journaling() {
     let harness = RouteHarness::new().await;
     let router = harness.transport_router();

@@ -5,6 +5,7 @@ pub mod config;
 pub mod health;
 pub mod media_runtime;
 pub mod product_rpc;
+pub mod service_policy;
 pub mod rpc;
 
 pub mod workers {

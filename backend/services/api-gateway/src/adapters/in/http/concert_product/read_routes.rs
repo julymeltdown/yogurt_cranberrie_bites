@@ -4,6 +4,10 @@ use super::*;
 
 pub(super) fn router() -> Router<Arc<AppState>> {
     Router::new()
+        .route(
+            "/api/concert/events/:event_id/service-policy",
+            get(dispatch),
+        )
         .route("/api/concert/events/:event_id/notices", get(dispatch))
         .route(
             "/api/concert/events/:event_id/notices/:notice_id",
@@ -30,6 +34,7 @@ pub(super) fn protects(path: &str) -> bool {
     tail(path).is_some_and(|(_, tail)| {
         tail == "notices"
             || tail.starts_with("notices/")
+            || tail == "service-policy"
             || tail == "admin/settings"
             || tail.starts_with("admin/settings/")
             || tail == "admin/places"
@@ -51,6 +56,7 @@ mod tests {
         let id = Uuid::new_v4();
         let root = format!("/api/concert/events/{event}");
         for suffix in [
+            "service-policy".to_owned(),
             "notices".to_owned(),
             format!("notices/{id}"),
             "admin/settings".to_owned(),
