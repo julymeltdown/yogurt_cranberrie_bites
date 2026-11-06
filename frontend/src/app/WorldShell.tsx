@@ -205,7 +205,7 @@ export function VenueShellFeatures({ auth, scope, community, participant = null,
           const venue = projectVenueRootView(siteplan, venueSources.meetingPlaces)
           production = createVenueProduction({ venue, sources: venueSources })
           const opened = await production.start(signal)
-          if (!current() || !opened || production.capabilities.read() === null) {
+          if (!current() || !opened) {
             production.dispose(); production = null; siteplan.dispose(); return
           }
           const input = createVenueRootInput({ auth, scope, signal, community, siteplan, meetingPlaces: venueSources.meetingPlaces,

@@ -102,7 +102,7 @@ describe('default venue mount lifetime', () => {
     expect(calls.filter(p => p.endsWith('asset-interface.json'))).toHaveLength(1)
     expect(calls.filter(p => p.endsWith('siteplan-photo-5.jpg'))).toHaveLength(1)
     expect(document.querySelector('img')?.src).toBe(resources[0])
-    expect(screen.getByRole('button', { name: 'Share location' }).hasAttribute('disabled')).toBe(true)
+    expect(screen.getByRole('button', { name: 'SHARE LOCATION' }).hasAttribute('disabled')).toBe(true)
     fireEvent.click(screen.getByRole('tab', { name: 'FRIENDS' }))
     expect(screen.getByRole('tab', { name: 'FRIENDS' }).getAttribute('aria-selected')).toBe('true')
   })

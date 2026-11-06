@@ -35,6 +35,21 @@ export interface PlaceNote extends PlaceReply {
   readonly canReply: boolean; readonly canMeet: boolean; readonly replies: readonly PlaceReply[]
 }
 export type SharingState = 'off' | 'active' | 'paused' | 'revoked'
+/** Why the current authoritative friends snapshot cannot be shown as current. */
+export type VenueUnavailableReason = 'friend-gate-unavailable' | 'producer-refused' | 'offline' | 'access-unavailable'
+export interface VenueAvailability {
+  readonly state: 'ready' | 'stale' | 'unavailable'
+  /** Non-null when the last read failed or the snapshot outlived policy freshness. */
+  readonly reason: VenueUnavailableReason | null
+  /** Server-clock instant of the last successful snapshot read. */
+  readonly readAtMs: number | null
+  /** Server-clock age of that snapshot; never computed from the device clock. */
+  readonly ageMs: number | null
+  /** Server-clock instant at which the snapshot stops being current. */
+  readonly staleAtMs: number | null
+  readonly refreshing: boolean
+  readonly canRefresh: boolean
+}
 export interface VenueLocationRequest {
   readonly id: string; readonly requesterId: string; readonly subjectId: string
   readonly revision: number; readonly expiresAtMs: number
@@ -49,7 +64,7 @@ export interface CapabilitySnapshot {
   /** Current pending requests only, independently withdrawn with their L lease. */
   readonly locationRequests?: { readonly incoming: readonly VenueLocationRequest[]; readonly outgoing: readonly VenueLocationRequest[] }
   readonly rights: {
-    readonly sharePhone: boolean; readonly pause: boolean
+    readonly sharePhone: boolean; readonly pause: boolean; readonly revoke: boolean
     readonly checkIn: readonly LandmarkId[]; readonly postNote: readonly LandmarkId[]
     readonly noteAudiences: readonly NoteAudience[]; readonly noteExpiries: readonly NoteExpiry[]
   }
@@ -63,9 +78,14 @@ export type VenueReadContext = Omit<CommandContext, 'key'>
 export interface VenueCapabilities extends ReadPort<CapabilitySnapshot | null> {
   loadNotes?(landmarkId: LandmarkId, context: VenueReadContext): Promise<boolean>
   loadNoteThread?(noteId: string, context: VenueReadContext): Promise<boolean>
+  /** Truthful freshness/availability of the Location owner; absent means unavailable. */
+  availability?(): VenueAvailability
+  /** Re-reads the authoritative snapshot; never reuses a prior disclosure. */
+  refresh?(): Promise<boolean>
   beginPhoneSharing(context: CommandContext): Promise<CommandResult>
   publishPhoneFix(fix: GeoFix, context: CommandContext): Promise<CommandResult>
   pause(reason: 'user' | 'background' | 'withdrawal', context: CommandContext): Promise<CommandResult>
+  revoke?(context: CommandContext): Promise<CommandResult>
   requestLocation(userId: string, context: CommandContext): Promise<CommandResult>
   decideLocationRequest?(id: string, decision: 'APPROVE' | 'DENY' | 'CANCEL', context: CommandContext): Promise<CommandResult>
   checkIn(landmarkId: LandmarkId, context: CommandContext): Promise<CommandResult>

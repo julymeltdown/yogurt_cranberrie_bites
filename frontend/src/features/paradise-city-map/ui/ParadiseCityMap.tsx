@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, useSyncExternalStore, type ReactNode } from 'react'
 import type { LandmarkId } from '../spatial/contract'
-import type { LandmarkView, PersonView, PlaceNote } from '../ports'
+import type { LandmarkView, PersonView, PlaceNote, VenueUnavailableReason } from '../ports'
 import { locationLabel, type Selection, type VenueMapController } from '../model/controller'
 import { MapCanvas } from './MapCanvas'
 import './paradise-city-map.css'
@@ -9,7 +9,7 @@ export function ParadiseCityMap({ controller, renderPortrait }: { readonly contr
   readonly renderPortrait: (person: Pick<PersonView, 'displayName' | 'avatar'>, size: 64 | 128) => ReactNode }) {
   const state = useSyncExternalStore(controller.subscribe, controller.read, controller.read)
   const { venue } = controller, host = useRef<HTMLDivElement>(null), returnTo = useRef<HTMLElement | null>(null), wasOpen = useRef(false)
-  const [consented, setConsented] = useState(false), [showSharing, setShowSharing] = useState(false), [focusLandmark, setFocusLandmark] = useState<{ readonly id: LandmarkId; readonly serial: number } | null>(null)
+  const [consented, setConsented] = useState(false), [showSharing, setShowSharing] = useState(false), [confirmRevoke, setConfirmRevoke] = useState(false), [focusLandmark, setFocusLandmark] = useState<{ readonly id: LandmarkId; readonly serial: number } | null>(null)
   const [meetingPlace, setMeetingPlace] = useState<LandmarkId | ''>(''), [meetingTarget, setMeetingTarget] = useState('')
   const [notesPlace, setNotesPlace] = useState<LandmarkId | ''>('')
   const personId = state.selection?.kind === 'friend' ? state.selection.id : null
@@ -19,6 +19,16 @@ export function ParadiseCityMap({ controller, renderPortrait }: { readonly contr
   const selectedNotes = state.notes.filter(n => selectedPlace ? n.landmarkId === selectedPlace.id : true)
   const hasSheet = Boolean(state.selection || state.draft), locked = state.busy || state.uncertain || state.meeting?.locked
   const now = state.snapshot?.serverNowMs ?? null
+  const availability = state.availability, friendsUnavailable = availability.state === 'unavailable', friendsStale = availability.state === 'stale'
+  const snapshotAge = availability.ageMs === null ? 'unknown age' : availability.ageMs < 1000 ? 'just now'
+    : availability.ageMs < 60000 ? `${Math.floor(availability.ageMs / 1000)}s ago` : `${Math.floor(availability.ageMs / 60000)}m ago`
+  function unavailableText(reason: VenueUnavailableReason | null) {
+    if (reason === 'friend-gate-unavailable') return 'The venue friendship authority is unavailable (503). Friend locations cannot be verified, so none are shown.'
+    if (reason === 'offline') return 'This device is offline. Friend locations cannot be verified until the connection recovers.'
+    if (reason === 'access-unavailable') return 'Current venue access has ended. Friend locations stay hidden until access is restored.'
+    return 'Live location, check-in, meetings and notes are unavailable until current venue capabilities are supplied.'
+  }
+  const refreshFriends = () => { void controller.refreshAuthority() }
   const incoming = (state.snapshot?.locationRequests?.incoming ?? []).filter(r => r.subjectId === state.snapshot?.scope.userId && now !== null && r.expiresAtMs > now && state.people.some(p => p.userId === r.requesterId))
   const outgoing = (state.snapshot?.locationRequests?.outgoing ?? []).filter(r => r.requesterId === state.snapshot?.scope.userId && now !== null && r.expiresAtMs > now && state.people.some(p => p.userId === r.subjectId))
   useEffect(() => {
@@ -26,7 +36,8 @@ export function ParadiseCityMap({ controller, renderPortrait }: { readonly contr
     if (!hasSheet && wasOpen.current) (returnTo.current?.isConnected ? returnTo.current : host.current)?.focus({ preventScroll: true })
     wasOpen.current = hasSheet
   }, [hasSheet])
-  useEffect(() => { if (!state.snapshot || state.snapshot.sharing === 'revoked') { setConsented(false); setShowSharing(false); setMeetingPlace(''); setMeetingTarget('') } }, [state.snapshot])
+  useEffect(() => { if (!state.snapshot || state.snapshot.sharing === 'revoked') { setConsented(false); setShowSharing(false); setConfirmRevoke(false); setMeetingPlace(''); setMeetingTarget('') } }, [state.snapshot])
+  useEffect(() => { if (state.snapshot?.sharing === 'active') setConfirmRevoke(false) }, [state.snapshot?.sharing])
   function select(value: Selection) { returnTo.current = document.activeElement instanceof HTMLElement ? document.activeElement : null; controller.select(value); setMeetingPlace(''); setMeetingTarget('') }
   function close() { controller.cancelDraft(); controller.select(null) }
   function placeLabel(person: PersonView) { const name = venue.landmarks.find(p => p.id === person.landmarkId)?.label; return name ? `${person.locationSource === 'last-known' ? 'Last known near' : 'Near'} ${name}` : 'Location unavailable' }
@@ -52,6 +63,14 @@ export function ParadiseCityMap({ controller, renderPortrait }: { readonly contr
       onKeyDown={event => { if (['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) { event.preventDefault(); const tabs = ['MAP', 'FRIENDS', 'NOTES'] as const; const target = event.key === 'Home' ? 0 : event.key === 'End' ? 2 : (index + (event.key === 'ArrowRight' ? 1 : 2)) % 3; controller.setTab(tabs[target]!); document.getElementById(`pc-tab-${tabs[target]}`)?.focus() } }}
       onClick={() => controller.setTab(tab)}>{tab}</button>)}</div>
     {state.snapshot?.classification === 'CONTROLLED_FIXTURE' && <p className="pc-fixture-notice">SYNTHETIC EXAMPLE · positions, people and times are not live.</p>}
+    {friendsUnavailable && state.tab !== 'FRIENDS' && <section className="pc-availability pc-availability--unavailable" role="status" aria-label="Venue friends unavailable">
+      <strong>Friends unavailable</strong><p>{unavailableText(availability.reason)}</p>
+      <button type="button" disabled={!availability.canRefresh || availability.refreshing} onClick={refreshFriends}>{availability.refreshing ? 'CHECKING…' : 'TRY AGAIN'}</button>
+    </section>}
+    {friendsStale && <section className="pc-availability pc-availability--stale" role="status" aria-label="Location snapshot status">
+      <strong>Snapshot {snapshotAge}</strong><p>{availability.reason === 'offline' ? 'Offline. Showing last-known information, not current locations.' : 'Older than the venue freshness policy. Locations are shown as last-known.'}</p>
+      <button type="button" disabled={!availability.canRefresh || availability.refreshing} onClick={refreshFriends}>{availability.refreshing ? 'CHECKING…' : 'REFRESH'}</button>
+    </section>}
     <div id="pc-tab-panel" role="tabpanel" aria-labelledby={`pc-tab-${state.tab}`} className="pc-tab-panel">
       <MapCanvas venue={venue} people={state.people} self={controller.self()} notes={state.notes} selection={state.selection} onSelect={select} renderPortrait={renderPortrait} focusLandmark={state.focusRequest ?? focusLandmark}
         compact={state.tab !== 'MAP' || hasSheet || Boolean(state.meeting?.active)} />
@@ -78,10 +97,13 @@ export function ParadiseCityMap({ controller, renderPortrait }: { readonly contr
         <label>Meet with<select aria-label="Meeting friend" value={meetingTarget} onChange={event => setMeetingTarget(event.target.value)}><option value="">Choose a friend</option>{state.people.filter(p => p.canMeet || p.canMessage).map(p => <option key={p.userId} value={p.userId}>{p.displayName}</option>)}</select></label>
         {meetingButtons({ userId: meetingTarget }, selectedPlace, Boolean(state.people.find(p => p.userId === meetingTarget)?.canMessage), Boolean(state.people.find(p => p.userId === meetingTarget)?.canMeet), 'map-landmark')}
         <button type="button" className="pc-full" disabled={locked || !state.snapshot?.rights.postNote.includes(selectedPlace.id)} onClick={() => controller.compose(selectedPlace.id)}>+ LEAVE A NOTE</button>
-      </section> : state.tab === 'FRIENDS' ? <div className="pc-friends" aria-label="Friends at the venue">{state.people.length ? state.people.map(person => <article className="pc-friend-row" key={person.userId}>
+      </section> : state.tab === 'FRIENDS' ? <div className="pc-friends" aria-label="Friends at the venue">{friendsUnavailable ? <section className="pc-unavailable" role="status" aria-label="Friends unavailable">
+        <h2>Friends unavailable</h2><p>{unavailableText(availability.reason)}</p>
+        <button type="button" disabled={!availability.canRefresh || availability.refreshing} onClick={refreshFriends}>{availability.refreshing ? 'CHECKING…' : 'TRY AGAIN'}</button>
+      </section> : state.people.length ? state.people.map(person => <article className="pc-friend-row" key={person.userId}>
         <div className="pc-portrait">{renderPortrait(person, 64)}</div><div className="pc-friend-copy"><button type="button" className="pc-name-button" aria-label={person.displayName} onClick={() => select({ kind: 'friend', id: person.userId })}><strong className="pc-name">{person.displayName}</strong><span className="pc-friend-place">⌖ {placeLabel(person)}</span><small>{locationLabel(person, now)}</small></button></div>
         <button type="button" disabled={locked} onClick={() => { if (person.canRequest && (person.locationSource === 'last-known' || person.locationSource === 'unavailable')) void controller.requestLocation(person.userId); else select({ kind: 'friend', id: person.userId }) }}>{person.canRequest && (person.locationSource === 'last-known' || person.locationSource === 'unavailable') ? 'ASK LOCATION' : 'VIEW'}</button>
-      </article>) : <p role="status">Friends are unavailable until current location visibility is authorized.</p>}
+      </article>) : <p role="status">No friend location is currently authorized. A friendship alone does not share location.</p>}
       {(incoming.length > 0 || outgoing.length > 0) && <section className="pc-location-requests" aria-label="Location requests"><h2>Location requests</h2>
         {incoming.map(request => <article key={request.id}><p>{state.people.find(p => p.userId === request.requesterId)?.displayName} asked for your location.</p><div className="pc-actions">
           <button type="button" disabled={locked} onClick={() => { void controller.decideLocationRequest(request.id, 'APPROVE') }}>APPROVE</button>
@@ -96,11 +118,17 @@ export function ParadiseCityMap({ controller, renderPortrait }: { readonly contr
       </section> : null}
     </div>
     <div className="pc-sharing"><strong>{state.snapshot?.sharing === 'active' ? '♟ Sharing with friends' : state.snapshot?.sharing === 'paused' ? 'Location sharing paused' : state.snapshot?.sharing === 'revoked' ? 'Location sharing revoked' : 'Phone location is off'}</strong>
-      {state.snapshot?.sharing === 'active' ? <button type="button" onClick={() => { void controller.pause() }}>Pause</button> : <button type="button" disabled={!state.snapshot?.rights.sharePhone || locked} onClick={() => setShowSharing(value => !value)}>Share location</button>}</div>
-    {showSharing && <section className="pc-sharing-consent" aria-label="Phone location sharing"><p>Share real phone location with authorized friends. This is separate from your virtual World position.</p><label><input type="checkbox" checked={consented} onChange={event => setConsented(event.target.checked)} /> I want to share my phone location.</label>
+      <div className="pc-sharing-actions">{state.snapshot?.sharing === 'active'
+        ? <><button type="button" onClick={() => { void controller.pause() }}>PAUSE</button>
+          <button type="button" className="pc-danger" disabled={!state.snapshot?.rights.revoke || locked} onClick={() => setConfirmRevoke(true)}>REVOKE</button></>
+        : <button type="button" disabled={!state.snapshot?.rights.sharePhone || locked} onClick={() => setShowSharing(value => !value)}>SHARE LOCATION</button>}</div></div>
+    {showSharing && <section className="pc-sharing-consent" aria-label="Phone location sharing"><p>Share real phone location with authorized friends. This is separate from your virtual World position and from device permission. Your browser asks for permission only after you continue.</p><label><input type="checkbox" checked={consented} onChange={event => setConsented(event.target.checked)} /> I want to share my phone location.</label>
       <button type="button" className="pc-primary" disabled={!consented || locked} onClick={() => { void controller.startPhone(consented); setShowSharing(false) }}>Allow phone location</button></section>}
-    {state.phone === 'denied' && <p role="status" className="pc-notice">Phone permission denied. Change browser permission before trying again.</p>}
-    {!state.snapshot && <p role="status" className="pc-notice">Live location, check-in, meetings and notes are unavailable until current venue capabilities are supplied.</p>}
+    {confirmRevoke && <section className="pc-sharing-consent" role="alertdialog" aria-label="Stop sharing location"><p>Revoke location sharing? Your selected audience and any current phone or check-in location are removed immediately.</p>
+      <div className="pc-actions"><button type="button" onClick={() => setConfirmRevoke(false)}>KEEP SHARING</button><button type="button" className="pc-danger" disabled={locked} onClick={() => { setConfirmRevoke(false); void controller.revoke() }}>STOP SHARING</button></div></section>}
+    {state.sharingFailure && <section className="pc-permission" role="status" aria-label="Phone location unavailable"><strong>{state.sharingFailure === 'permission-denied' ? 'Phone permission denied' : state.sharingFailure === 'server-refused' ? 'Sharing not authorized' : 'Phone location unavailable'}</strong>
+      <p>{state.sharingFailure === 'permission-denied' ? 'No location is being requested or shared. Enable location for this site in browser settings, then review sharing again.' : state.sharingFailure === 'server-refused' ? 'The server did not authorize phone sharing. Nothing is being shared; review the audience before trying again.' : 'This browser or device cannot provide a phone location. Check-in remains available only where the venue permits it.'}</p>
+      {state.sharingFailure !== 'device-unavailable' && <button type="button" disabled={locked} onClick={() => setShowSharing(true)}>REVIEW SHARING</button>}</section>}
     {state.notice && <p role="status" className="pc-notice">{state.notice}</p>}
     {state.uncertain && <button type="button" disabled={state.busy} onClick={() => { void controller.resolve() }}>Check action status</button>}
   </div>

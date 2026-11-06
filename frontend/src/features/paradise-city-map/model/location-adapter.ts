@@ -1,7 +1,7 @@
-import type { createLocationClient, LandmarkGrant, LandmarkSelection, LocationCommandReceipt, LocationRequest, LocationSnapshot, LocationWriteOperation, VisibleLocation } from '../../../shared/api/paradise-city-v1/location'
+import { LocationUnavailableError, type createLocationClient, type LandmarkGrant, type LandmarkSelection, type LocationCommandReceipt, type LocationRequest, type LocationSnapshot, type LocationWriteOperation, type VisibleLocation } from '../../../shared/api/paradise-city-v1/location'
 import { TransportError } from '../../../shared/api/errors'
 import type { MeetingClockPort } from '../../../app/meeting-entry/ports'
-import type { CapabilitySnapshot, CommandContext, CommandResult, PersonView, ReadPort, VenueAuthority, VenueCapabilities, VenueView } from '../ports'
+import type { CapabilitySnapshot, CommandContext, CommandResult, PersonView, ReadPort, VenueAuthority, VenueAvailability, VenueCapabilities, VenueUnavailableReason, VenueView } from '../ports'
 import type { LandmarkId } from '../spatial/contract'
 
 type Identity = Pick<PersonView, 'userId' | 'displayName' | 'avatar' | 'canMessage' | 'canMeet'>
@@ -34,6 +34,8 @@ export function createVenueLocationAdapter(options: VenueLocationAdapterOptions)
   type Binding = { operation: LocationWriteOperation; intent: string; result: CommandResult; pending: boolean; expiresAt: number }
   const commands = new Map<string, Binding>()
   let active = true, raw: LocationSnapshot | null = null, loadVersion = 0, revision = 0
+  let lastReadAtMs: number | null = null, lastFailure: VenueUnavailableReason | null = null, refreshing = false
+  let loading: Promise<boolean> | null = null
   function time() {
     if (!active || authority.signal.aborted || !authority.isCurrent()) return null
     const value = clock.read()
@@ -49,7 +51,32 @@ export function createVenueLocationAdapter(options: VenueLocationAdapterOptions)
       && value.policy.venue_key === value.clock.venue_key && value.policy.revision === value.clock.policy_revision ? value : null
   }
   function notify() { revision++; for (const listener of Array.from(listeners)) listener() }
-  function changed() { if (time() === null) { raw = null; loadVersion++; commands.clear() }; notify() }
+  function changed() {
+    if (time() === null) { raw = null; loadVersion++; commands.clear(); lastReadAtMs = null; lastFailure = 'access-unavailable' }
+    notify()
+  }
+  /** Distinguishes a denied friendship gate (503) from transport loss without guessing. */
+  function classify(error: unknown): { reason: VenueUnavailableReason; clear: boolean } | null {
+    if (error instanceof LocationUnavailableError) return { reason: 'friend-gate-unavailable', clear: true }
+    if (error instanceof TransportError) {
+      if (error.kind === 'aborted' || error.kind === 'session-changed' || error.kind === 'authentication-required') return { reason: 'access-unavailable', clear: true }
+      if (error.kind === 'network' || error.kind === 'timeout') return { reason: 'offline', clear: false }
+      if (error.status === 503) return { reason: 'friend-gate-unavailable', clear: true }
+      return { reason: 'producer-refused', clear: true }
+    }
+    return { reason: 'producer-refused', clear: true }
+  }
+  function availability(): VenueAvailability {
+    const now = time(), value = now === null ? null : currentRaw(now)
+    const age = now === null || lastReadAtMs === null ? null : Math.max(0, now - lastReadAtMs)
+    if (now === null) return { state: 'unavailable', reason: 'access-unavailable', readAtMs: lastReadAtMs, ageMs: age, staleAtMs: null, refreshing, canRefresh: false }
+    if (!value) return { state: 'unavailable',
+      reason: raw ? 'access-unavailable' : lastFailure ?? (lastReadAtMs === null ? 'producer-refused' : 'offline'),
+      readAtMs: lastReadAtMs, ageMs: age, staleAtMs: null, refreshing, canRefresh: !!client }
+    const staleAtMs = lastReadAtMs === null ? null : lastReadAtMs + value.policy.fresh_ms
+    const stale = lastFailure !== null || staleAtMs !== null && now >= staleAtMs
+    return { state: stale ? 'stale' : 'ready', reason: lastFailure, readAtMs: lastReadAtMs, ageMs: age, staleAtMs, refreshing, canRefresh: !!client }
+  }
   function roster(now: number) {
     const value = lease(people.read(), now)
     if (!value || value.self.userId !== authority.scope.userId || new Set(value.friends.map(p => p.userId)).size !== value.friends.length
@@ -85,6 +112,8 @@ export function createVenueLocationAdapter(options: VenueLocationAdapterOptions)
       canRequest: identity.userId !== authority.scope.userId && visible && location.can_request_location }
   }
   function read(): CapabilitySnapshot | null {
+    // A failed owner read is never reconstructed as a friend roster.
+    if (!raw && lastFailure !== null) return null
     const stamp = revision
     const now = time(); if (now === null) return null
     const currentPeople = roster(now); if (!currentPeople) return null
@@ -97,23 +126,44 @@ export function createVenueLocationAdapter(options: VenueLocationAdapterOptions)
       notes: [], locationRequests: { incoming: requests().incoming.map(requestView), outgoing: requests().outgoing.map(requestView) },
       sharing: value?.sharing.state === 'ACTIVE' && ms(value.sharing.expires_at)! > now ? 'active'
         : value?.sharing.state === 'PAUSED' ? 'paused' : value?.sharing.state === 'REVOKED' ? 'revoked' : 'off',
-      rights: { sharePhone: !!value?.capabilities.can_share_phone, pause: !!value?.capabilities.can_pause,
+      rights: { sharePhone: !!value?.capabilities.can_share_phone, pause: !!value?.capabilities.can_pause, revoke: !!value?.capabilities.can_revoke,
         checkIn: rights.filter(p => p.grant.can_check_in && value!.capabilities.check_in_landmark_ids.includes(p.grant.selection.landmark_id)).map(p => p.landmarkId),
         postNote: [], noteAudiences: [], noteExpiries: [] } }
     return time() !== null && revision === stamp ? snapshot : null
   }
   function valid(context: CommandContext) { return !context.signal.aborted && sameScope(context.scope, authority.scope) && sameVenue(context.venue, venue.identity) && time() !== null }
   async function load(signal: AbortSignal): Promise<boolean> {
+    if (loading) return loading
     const version = ++loadVersion
-    if (!client || signal.aborted || time() === null) return false
-    raw = null; notify()
-    try {
-      const response = await client.getSnapshot()
-      if (version !== loadVersion || signal.aborted || time() === null) return false
-      raw = response.data
-      if (!currentRaw(time()!)) { raw = null; notify(); return false }
-      notify(); return true
-    } catch { if (version === loadVersion) { raw = null; notify() }; return false }
+    if (!client || signal.aborted || time() === null) {
+      if (!client) lastFailure = 'producer-refused'
+      else if (time() === null) lastFailure = 'access-unavailable'
+      notify(); return false
+    }
+    // Keep the last authoritative read visible only as stale while the re-read is in flight.
+    refreshing = true; notify()
+    loading = (async () => {
+      try {
+        const response = await client.getSnapshot()
+        if (version !== loadVersion || signal.aborted || time() === null) return false
+        const now = time()!
+        raw = response.data
+        if (!currentRaw(now)) { raw = null; lastFailure = 'access-unavailable'; lastReadAtMs = null; notify(); return false }
+        lastReadAtMs = now; lastFailure = null
+        notify(); return true
+      } catch (error) {
+        if (version !== loadVersion) return false
+        const failure = classify(error)
+        if (!failure || failure.reason === 'access-unavailable' && error instanceof TransportError && error.kind === 'aborted') return false
+        if (failure.clear) { raw = null; lastReadAtMs = null }
+        lastFailure = failure.reason
+        notify(); return false
+      } finally {
+        if (version === loadVersion) { refreshing = false; notify() }
+        loading = null
+      }
+    })()
+    return loading
   }
   async function write(operation: LocationWriteOperation, context: CommandContext, intent: string, dispatch: () => Promise<{ data: LocationCommandReceipt }>): Promise<CommandResult> {
     const now = time()
@@ -166,7 +216,13 @@ export function createVenueLocationAdapter(options: VenueLocationAdapterOptions)
     async pause(_reason: 'user' | 'background' | 'withdrawal', context: CommandContext) {
       const now = time(), value = now === null ? null : currentRaw(now)
       if (!value?.capabilities.can_pause) return rejected()
-      return write('setVenueLocationSharing', context, 'PAUSED', () => client!.setSharing({ expected_revision: value.sharing.revision, state: 'PAUSED', viewer_ids: [...value.sharing.viewer_ids] }, context.key))
+      // L9: PAUSED/REVOKED require an empty audience and remove all current grants.
+      return write('setVenueLocationSharing', context, 'PAUSED', () => client!.setSharing({ expected_revision: value.sharing.revision, state: 'PAUSED', viewer_ids: [] }, context.key))
+    },
+    async revoke(context: CommandContext) {
+      const now = time(), value = now === null ? null : currentRaw(now)
+      if (!value?.capabilities.can_revoke) return rejected()
+      return write('setVenueLocationSharing', context, 'REVOKED', () => client!.setSharing({ expected_revision: value.sharing.revision, state: 'REVOKED', viewer_ids: [] }, context.key))
     },
     async requestLocation(userId: string, context: CommandContext) {
       if (!read()?.friends.some(p => p.userId === userId && p.canRequest) || requests().outgoing.some(r => r.subject_id === userId)) return rejected()
@@ -195,7 +251,8 @@ export function createVenueLocationAdapter(options: VenueLocationAdapterOptions)
         await load(context.signal); return binding.result
       } catch { return unknown() }
     },
-    dispose() { if (!active) return; active = false; loadVersion++; raw = null; commands.clear(); for (const stop of stops.splice(0)) stop(); authority.signal.removeEventListener('abort', changed); notify(); listeners.clear() },
+    availability, refresh() { return load(authority.signal) },
+    dispose() { if (!active) return; active = false; loadVersion++; raw = null; lastReadAtMs = null; lastFailure = 'access-unavailable'; commands.clear(); for (const stop of stops.splice(0)) stop(); authority.signal.removeEventListener('abort', changed); notify(); listeners.clear() },
   }
   stops.push(authority.subscribe(changed), clock.subscribe(changed), people.subscribe(() => { raw = null; loadVersion++; changed() }), associations.subscribe(changed), sharingAudience.subscribe(changed))
   authority.signal.addEventListener('abort', changed, { once: true })

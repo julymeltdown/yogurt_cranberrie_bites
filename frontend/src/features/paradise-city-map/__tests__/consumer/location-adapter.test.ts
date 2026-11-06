@@ -1,5 +1,5 @@
 import { afterEach, expect, it, vi } from 'vitest'
-import type { createLocationClient, LandmarkGrant, LocationCommandReceipt, LocationSnapshot, LocationWriteOperation, SharingInput, PhoneFixInput, LocationRequestInput, LocationRequestDecisionInput, CheckInInput } from '../../../../shared/api/paradise-city-v1/location'
+import { LocationUnavailableError, type createLocationClient, type LandmarkGrant, type LocationCommandReceipt, type LocationSnapshot, type LocationWriteOperation, type SharingInput, type PhoneFixInput, type LocationRequestInput, type LocationRequestDecisionInput, type CheckInInput } from '../../../../shared/api/paradise-city-v1/location'
 import type { CommandContext, ReadPort, VenueAuthority } from '../../ports'
 import type { LocationAssociations, LocationPeople, LocationSharingAudience } from '../../model/location-adapter'
 import { createVenueLocationAdapter } from '../../model/location-adapter'
@@ -38,11 +38,11 @@ function setup() {
   const audience = port<LocationSharingAudience | null>({ ...lease, viewerIds: ['friend-test'] })
   const clock = port<{ scope: typeof scope; nowMs: number } | null>({ scope, nowMs: at }), authorityChanges = port(true)
   const authority: VenueAuthority = { scope, signal: abort.signal, isCurrent: authorityChanges.read, subscribe: authorityChanges.subscribe }
-  let value = snapshot(), failWrites = false, deferred: Promise<{ data: LocationSnapshot; scope: typeof scope }> | null = null
+  let value = snapshot(), failWrites = false, readError: unknown = null, deferred: Promise<{ data: LocationSnapshot; scope: typeof scope }> | null = null
   const receipt = (operation: LocationWriteOperation, key: string): LocationCommandReceipt => ({ command_key: key, operation, state: 'SUCCEEDED', resource_kind: operation === 'setVenueLocationCheckIn' ? 'CHECK_IN' : operation === 'publishVenueLocationFix' ? 'PHONE_FIX' : operation === 'setVenueLocationSharing' ? 'SHARING' : 'LOCATION_REQUEST', resource_id: 'resource-test', revision: 13, created_at: iso(), expires_at: iso(60000) })
   const write = (operation: LocationWriteOperation, key: string) => failWrites ? Promise.reject(new TransportError('http', { status: 503 })) : Promise.resolve({ data: receipt(operation, key), scope })
   const client = {
-    getSnapshot: vi.fn(() => deferred ?? Promise.resolve({ data: value, scope })), listLandmarks: vi.fn(async () => ({ data: { event_id: scope.eventId!, server_time: iso(), access_until: iso(60000), items: [grant] }, scope })),
+    getSnapshot: vi.fn(() => readError ? Promise.reject(readError) : deferred ?? Promise.resolve({ data: value, scope })), listLandmarks: vi.fn(async () => ({ data: { event_id: scope.eventId!, server_time: iso(), access_until: iso(60000), items: [grant] }, scope })),
     getLandmark: vi.fn(async () => ({ data: grant, scope })),
     setSharing: vi.fn((body: SharingInput, key: string) => { if (!failWrites) value = { ...value, sharing: { ...value.sharing, state: body.state, viewer_ids: body.viewer_ids, expires_at: iso(60000) } }; return write('setVenueLocationSharing', key) }),
     publishFix: vi.fn((_body: PhoneFixInput, key: string) => write('publishVenueLocationFix', key)), requestLocation: vi.fn((_body: LocationRequestInput, key: string) => write('requestVenueLocation', key)),
@@ -53,6 +53,7 @@ function setup() {
   const context = (key = 'original-key'): CommandContext => ({ key, scope, venue: testVenue.identity, signal: abort.signal })
   return { owner, client, authority, clock, people, associations, audience, abort, context, authorityChanges,
     setRaw(next: LocationSnapshot) { value = next }, get raw() { return value }, fail() { failWrites = true },
+    failRead(error: unknown) { readError = error }, recoverRead() { readError = null },
     defer(promise: NonNullable<typeof deferred>) { deferred = promise } }
 }
 it('constructs and reads without fetching, watching, mutating or losing current MESSAGE access', () => {
@@ -146,4 +147,37 @@ it('forwards explicit Notes reads with the original signal and no command dispat
 it('cannot reuse a sharing command key for Pause after a different sharing intent', async () => {
   const h = setup(); await h.owner.load(h.abort.signal); await h.owner.beginPhoneSharing(h.context())
   expect(await h.owner.pause('user', h.context())).toEqual({ state: 'rejected' }); expect(h.client.setSharing).toHaveBeenCalledTimes(1)
+})
+it('sends contract-valid empty audiences for PAUSED and REVOKED and re-reads authority', async () => {
+  const h = setup(); await h.owner.load(h.abort.signal); await h.owner.beginPhoneSharing(h.context('share-key'))
+  expect(await h.owner.pause('user', h.context('pause-key'))).toEqual({ state: 'applied' })
+  expect(h.client.setSharing).toHaveBeenLastCalledWith({ expected_revision: 12, state: 'PAUSED', viewer_ids: [] }, 'pause-key')
+  h.setRaw({ ...h.raw, sharing: { ...h.raw.sharing, state: 'ACTIVE', viewer_ids: ['friend-test'], expires_at: iso(60000) } }); await h.owner.load(h.abort.signal)
+  expect(await h.owner.revoke(h.context('revoke-key'))).toEqual({ state: 'applied' })
+  expect(h.client.setSharing).toHaveBeenLastCalledWith({ expected_revision: 12, state: 'REVOKED', viewer_ids: [] }, 'revoke-key')
+  expect(h.owner.read()?.rights.revoke).toBe(true); expect(h.owner.read()?.sharing).toBe('revoked')
+})
+it('fails closed on a denied friend gate and exposes the reason without a roster', async () => {
+  const h = setup(); h.failRead(new LocationUnavailableError())
+  expect(await h.owner.load(h.abort.signal)).toBe(false); expect(h.owner.read()).toBeNull()
+  expect(h.owner.availability()).toMatchObject({ state: 'unavailable', reason: 'friend-gate-unavailable', canRefresh: true })
+  h.recoverRead(); expect(await h.owner.refresh()).toBe(true)
+  expect(h.owner.availability()).toMatchObject({ state: 'ready', reason: null, ageMs: 0 })
+  expect(h.owner.read()?.friends).toHaveLength(1)
+})
+it('keeps a stale offline snapshot only as last-known and recovers without duplicate actors', async () => {
+  const h = setup(); await h.owner.load(h.abort.signal)
+  h.clock.set({ scope: testScope, nowMs: at + 20000 }); h.failRead(new TransportError('network'))
+  expect(await h.owner.refresh()).toBe(false)
+  expect(h.owner.read()?.friends).toHaveLength(1); expect(h.owner.read()?.friends[0]).toMatchObject({ locationSource: 'last-known' })
+  expect(h.owner.availability()).toMatchObject({ state: 'stale', reason: 'offline' })
+  h.recoverRead(); expect(await h.owner.refresh()).toBe(true)
+  expect(h.owner.read()?.friends).toHaveLength(1); expect(h.owner.availability()).toMatchObject({ state: 'ready', reason: null })
+})
+it('removes a peer position after server revocation while preserving independent friend identity', async () => {
+  const h = setup(); await h.owner.load(h.abort.signal); const before = h.owner.read()?.friends[0]
+  expect(before).toMatchObject({ visible: true, locationSource: 'phone' })
+  h.setRaw({ ...h.raw, friends: [] }); h.people.set({ ...h.people.read()!, friends: [{ userId: 'friend-test', displayName: 'Current friend', avatar: null, canMessage: true, canMeet: true }] })
+  expect(h.owner.read()?.friends[0]).toMatchObject({ visible: true, locationSource: 'unavailable', canRequest: false })
+  expect(h.owner.read()?.friends[0]?.point).toBeNull()
 })

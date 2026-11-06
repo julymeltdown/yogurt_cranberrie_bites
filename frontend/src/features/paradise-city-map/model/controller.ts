@@ -1,14 +1,16 @@
 import type { LandmarkId } from '../spatial/contract'
 import type { CapabilitySnapshot, CommandContext, CommandResult, LandmarkView, MeetingConsumerPort, NoteAudience, NoteExpiry,
-  PersonView, PhoneLocationPort, PlaceNote, VenueAuthority, VenueCapabilities, VenueMapFocusIntent, VenueView } from '../ports'
+  PersonView, PhoneLocationPort, PlaceNote, VenueAuthority, VenueAvailability, VenueCapabilities, VenueMapFocusIntent, VenueView } from '../ports'
 
 export type Tab = 'MAP' | 'FRIENDS' | 'NOTES'
 export type Selection = { readonly kind: 'friend'; readonly id: string } | { readonly kind: 'landmark'; readonly id: LandmarkId }
   | { readonly kind: 'notes'; readonly id: LandmarkId } | { readonly kind: 'cluster'; readonly ids: readonly string[] }
 export interface Draft { readonly landmarkId: LandmarkId; readonly replyTo: string | null; readonly body: string; readonly audience: NoteAudience; readonly expiry: NoteExpiry }
+export type SharingFailure = 'permission-denied' | 'server-refused' | 'device-unavailable' | null
 export interface MapState {
   readonly tab: Tab; readonly selection: Selection | null; readonly draft: Draft | null
   readonly snapshot: CapabilitySnapshot | null; readonly people: readonly PersonView[]; readonly notes: readonly PlaceNote[]
+  readonly availability: VenueAvailability; readonly sharingFailure: SharingFailure
   readonly busy: boolean; readonly uncertain: boolean; readonly notice: string; readonly disposed: boolean
   readonly meeting: ReturnType<MeetingConsumerPort['read']>; readonly phone: ReturnType<PhoneLocationPort['read']>
   readonly focusRequest: { readonly id: LandmarkId; readonly serial: number } | null
@@ -16,6 +18,8 @@ export interface MapState {
 const sameVenue = (a: VenueView['identity'], b: VenueView['identity']) => a.venueId === b.venueId && a.siteplanId === b.siteplanId && a.revision === b.revision && a.variantId === b.variantId
 const sameScope = (a: VenueAuthority['scope'], b: VenueAuthority['scope']) => a.userId === b.userId && a.eventId === b.eventId && a.generation === b.generation && a.policyGeneration === b.policyGeneration && a.gate === b.gate
 const noPosition = (p: PersonView): PersonView => ({ ...p, point: null, landmarkId: null, updatedAtMs: null, freshUntilMs: null, locationSource: 'unavailable' })
+const missingAvailability = (reason: VenueAvailability['reason'] = 'producer-refused'): VenueAvailability =>
+  ({ state: 'unavailable', reason, readAtMs: null, ageMs: null, staleAtMs: null, refreshing: false, canRefresh: false })
 export function locationLabel(person: PersonView, serverNowMs: number | null) {
   if (person.locationSource === 'unavailable' || person.updatedAtMs === null || serverNowMs === null) return 'Location unavailable'
   const elapsed = Math.max(0, Math.floor((serverNowMs - person.updatedAtMs) / 1000))
@@ -30,7 +34,7 @@ export function createVenueMapController({ venue, authority, capabilities, meeti
 }) {
   const listeners = new Set<() => void>(), stops: (() => void)[] = []
   let active = true, tab: Tab = 'MAP', selection: Selection | null = null, draft: Draft | null = null
-  let busy = false, notice = '', uncertainKey: string | null = null, operation = 0, uploadGeneration = 0
+  let busy = false, notice = '', uncertainKey: string | null = null, operation = 0, uploadGeneration = 0, sharingFailure: SharingFailure = null
   let localPause = false, pauseKey: string | null = null, pauseCommand: AbortController | null = null
   let command: AbortController | null = null, uploading: AbortController | null = null
   let noteRead: AbortController | null = null
@@ -48,17 +52,36 @@ export function createVenueMapController({ venue, authority, capabilities, meeti
         && value.accessUntilMs !== null && value.serverNowMs < value.accessUntilMs ? value : null
     } catch { return null }
   }
+  function currentAvailability(snapshot: CapabilitySnapshot | null): VenueAvailability {
+    try {
+      const owned = capabilities.availability?.()
+      if (owned) {
+        // A missing snapshot can never be presented as ready, even if the owner's flag lags.
+        if (snapshot || owned.state === 'unavailable') return owned
+        return { ...owned, state: 'unavailable', reason: owned.reason ?? 'producer-refused', ageMs: null, staleAtMs: null }
+      }
+    } catch { /* Fall through to unavailable. */ }
+    return missingAvailability(snapshot ? 'producer-refused' : 'friend-gate-unavailable')
+  }
   function refresh() {
     clearTimeout(wake)
     const snapshot = readSnapshot(), now = snapshot?.serverNowMs ?? null
-    const people = (snapshot?.friends ?? []).filter(p => p.visible).map(p =>
-      now === null || p.updatedAtMs === null || p.updatedAtMs > now || p.freshUntilMs === null || p.freshUntilMs <= now ? { ...p, point: null, locationSource: p.updatedAtMs === null ? 'unavailable' as const : 'last-known' as const } : p)
+    const availability = currentAvailability(snapshot)
+    // A 503 gate or an unreadable owner is not an empty friend list.
+    const usable = snapshot !== null && availability.state !== 'unavailable'
+    const seen = new Set<string>()
+    const people = (usable ? snapshot!.friends : []).filter(p => p.visible && !seen.has(p.userId) && (seen.add(p.userId), true)).map(p =>
+      availability.state === 'stale' || now === null || p.updatedAtMs === null || p.updatedAtMs > now || p.freshUntilMs === null || p.freshUntilMs <= now
+        ? { ...p, locationSource: p.locationSource === 'unavailable' ? 'unavailable' as const : 'last-known' as const, freshUntilMs: null,
+          ...(availability.state === 'stale' ? {} : { point: null, landmarkId: null }) }
+        : p)
     const notes = (snapshot?.notes ?? []).filter(n => landmark(n.landmarkId) && now !== null && n.createdAtMs <= now && n.expiresAtMs > now)
-    if (!snapshot) {
+    if (!usable) {
       selection = current() && selection?.kind === 'landmark' && landmark(selection.id) ? selection : null
       if (!current()) focusRequest = null
       draft = null; command?.abort(); pauseCommand?.abort(); uploading?.abort(); noteRead?.abort(); uploadGeneration++; phone.stop(); busy = false; uncertainKey = null; pauseKey = null
     } else {
+      const friends = snapshot!
       const selectedFriend = selection?.kind === 'friend' ? selection.id : null
       if (selectedFriend && !people.some(p => p.userId === selectedFriend)) selection = null
       if (selection?.kind === 'cluster') {
@@ -66,16 +89,16 @@ export function createVenueMapController({ venue, authority, capabilities, meeti
         selection = ids.length ? { kind: 'cluster', ids } : null
       }
       if (draft && (!landmark(draft.landmarkId) || draft.replyTo && !notes.some(n => n.id === draft!.replyTo && n.canReply)
-        || !draft.replyTo && !snapshot.rights.postNote.includes(draft.landmarkId))) draft = null
-      if (snapshot.sharing !== 'active') { uploadGeneration++; uploading?.abort(); phone.stop() }
+        || !draft.replyTo && !friends.rights.postNote.includes(draft.landmarkId))) draft = null
+      if (friends.sharing !== 'active') { uploadGeneration++; uploading?.abort(); phone.stop() }
     }
     let borrowed: ReturnType<MeetingConsumerPort['read']> = null
     try { if (snapshot) borrowed = meeting.read() } catch { /* Missing borrowed leaf is unavailable. */ }
-    state = { tab, selection, draft, snapshot, people, notes, busy, uncertain: uncertainKey !== null || pauseKey !== null, notice, disposed: !active,
+    state = { tab, selection, draft, snapshot, people, notes, availability, sharingFailure, busy, uncertain: uncertainKey !== null || pauseKey !== null, notice, disposed: !active,
       meeting: borrowed, phone: phone.read(), focusRequest }
     if (snapshot && now !== null) {
       const deadlines = [snapshot.accessUntilMs, snapshot.self?.freshUntilMs, ...snapshot.friends.map(p => p.freshUntilMs), ...snapshot.notes.map(n => n.expiresAtMs),
-        ...(snapshot.locationRequests?.incoming ?? []).map(r => r.expiresAtMs), ...(snapshot.locationRequests?.outgoing ?? []).map(r => r.expiresAtMs)]
+        ...(snapshot.locationRequests?.incoming ?? []).map(r => r.expiresAtMs), ...(snapshot.locationRequests?.outgoing ?? []).map(r => r.expiresAtMs), availability.staleAtMs]
         .filter((value): value is number => value !== null && value !== undefined && Number.isFinite(value) && value > now)
       if (deadlines.length) wake = setTimeout(refresh, Math.min(2147483647, Math.max(1, Math.min(...deadlines) - now)))
     }
@@ -83,22 +106,25 @@ export function createVenueMapController({ venue, authority, capabilities, meeti
   }
   function invalidate() { if (!current()) { notice = 'Current venue access is unavailable.'; refresh() } else refresh() }
   function context(key: string, signal: AbortSignal): CommandContext { return { key, scope: authority.scope, venue: venue.identity, signal } }
-  async function run(work: (ctx: CommandContext) => Promise<CommandResult>, success: string, onApplied?: () => void) {
-    if (busy || uncertainKey || pauseKey || !readSnapshot()) { if (!readSnapshot()) { notice = 'This action is unavailable until current access is verified.'; refresh() }; return }
+  async function run(work: (ctx: CommandContext) => Promise<CommandResult>, success: string, onApplied?: () => void): Promise<CommandResult | null> {
+    if (busy || uncertainKey || pauseKey || !readSnapshot()) { if (!readSnapshot()) { notice = 'This action is unavailable until current access is verified.'; refresh() }; return null }
     const version = ++operation, key = crypto.randomUUID(), controller = new AbortController(); command = controller; busy = true; notice = ''; refresh()
+    let outcome: CommandResult | null = null
     try {
       const result = await work(context(key, controller.signal))
-      if (!current() || controller.signal.aborted || version !== operation || !readSnapshot()) return
+      if (!current() || controller.signal.aborted || version !== operation || !readSnapshot()) return null
+      outcome = result
       if (result.state === 'unknown') { uncertainKey = key; notice = 'The result is unknown. Check its status before another action.' }
       else if (result.state === 'rejected') notice = 'The current server permission did not allow this action.'
       else { notice = success; onApplied?.() }
     } catch {
       if (current() && !controller.signal.aborted && version === operation) { uncertainKey = key; notice = 'The result is unknown. Check its status before another action.' }
     } finally { if (version === operation) { busy = false; command = null; refresh() } }
+    return outcome
   }
   function stopPhone() { uploadGeneration++; uploading?.abort(); uploading = null; phone.stop() }
   async function pause(reason: 'user' | 'background' | 'withdrawal' = 'user') {
-    localPause = true; stopPhone(); refresh()
+    localPause = true; stopPhone(); if (reason !== 'withdrawal') sharingFailure = null; refresh()
     if (!readSnapshot()?.rights.pause) { notice = 'Phone location is stopped on this device.'; refresh(); return }
     if (pauseCommand) return
     const controller = new AbortController(), key = crypto.randomUUID(); pauseCommand = controller
@@ -108,6 +134,20 @@ export function createVenueMapController({ venue, authority, capabilities, meeti
       if (result.state === 'unknown') pauseKey = key
       notice = result.state === 'applied' ? 'Location sharing paused.' : 'Phone location stopped on this device. Server pause is unconfirmed.'
     } catch { if (current() && !controller.signal.aborted) { pauseKey = key; notice = 'Phone location stopped on this device. Check the server pause status.' } }
+    finally { if (pauseCommand === controller) pauseCommand = null; refresh() }
+  }
+  async function revoke() {
+    localPause = true; stopPhone(); refresh()
+    const snapshot = readSnapshot()
+    if (!snapshot?.rights.revoke || !capabilities.revoke) { notice = 'Location sharing is already stopped on this device.'; refresh(); return }
+    if (pauseCommand) return
+    const controller = new AbortController(), key = crypto.randomUUID(); pauseCommand = controller
+    try {
+      const result = await capabilities.revoke(context(key, controller.signal))
+      if (!current() || controller.signal.aborted) return
+      if (result.state === 'unknown') pauseKey = key
+      notice = result.state === 'applied' ? 'Location sharing revoked. Your audience was removed.' : 'Location sharing stopped on this device. Server revocation is unconfirmed.'
+    } catch { if (current() && !controller.signal.aborted) { pauseKey = key; notice = 'Location sharing stopped on this device. Check the server revocation status.' } }
     finally { if (pauseCommand === controller) pauseCommand = null; refresh() }
   }
   function watch() {
@@ -120,7 +160,14 @@ export function createVenueMapController({ venue, authority, capabilities, meeti
         if (!controller.signal.aborted && generation === uploadGeneration && result.state !== 'applied') { stopPhone(); notice = 'Location upload is unavailable. Sharing stopped on this device.'; refresh() }
       }).catch(() => { if (!controller.signal.aborted && generation === uploadGeneration) { stopPhone(); notice = 'Location upload is unavailable. Sharing stopped on this device.'; refresh() } })
         .finally(() => { if (uploading === controller) uploading = null })
-    }, reason => { stopPhone(); notice = reason === 'denied' ? 'Phone location permission was denied.' : 'Phone location stopped.'; refresh(); if (reason === 'background') void pause('background') })
+    }, reason => {
+      stopPhone()
+      sharingFailure = reason === 'denied' ? 'permission-denied' : reason === 'unavailable' ? 'device-unavailable' : sharingFailure
+      notice = reason === 'denied' ? 'Phone location permission was denied. Nothing is shared from this device.'
+        : reason === 'unavailable' ? 'Phone location is unavailable on this device.' : 'Phone location stopped.'
+      if (reason === 'denied') void pause('withdrawal')
+      refresh(); if (reason === 'background') void pause('background')
+    })
     refresh()
   }
   function dispose() {
@@ -177,7 +224,23 @@ export function createVenueMapController({ venue, authority, capabilities, meeti
     pause,
     async startPhone(consented: boolean) {
       if (!consented || !readSnapshot()?.rights.sharePhone) return
-      await run(ctx => capabilities.beginPhoneSharing(ctx), 'Sharing permission confirmed.', () => { if (readSnapshot()?.sharing === 'active') { localPause = false; watch() } })
+      sharingFailure = null; refresh()
+      const result = await run(ctx => capabilities.beginPhoneSharing(ctx), 'Sharing permission confirmed.', () => { if (readSnapshot()?.sharing === 'active') { localPause = false; watch() } })
+      if (result?.state === 'rejected') { sharingFailure = 'server-refused'; notice = 'The server did not authorize phone sharing. Nothing is being shared.' }
+      else if (result?.state === 'applied' && phone.read() === 'unavailable') { sharingFailure = 'device-unavailable'; notice = 'This browser cannot provide phone location.' }
+      refresh()
+    },
+    revoke,
+    async refreshAuthority() {
+      if (!current() || busy || uncertainKey || pauseKey) return
+      const reload = capabilities.refresh
+      if (!reload) { notice = 'Friend locations are unavailable.'; refresh(); return }
+      try {
+        const fresh = await reload()
+        if (!current()) return
+        notice = fresh ? 'Friend locations refreshed.' : 'Friend locations are unavailable. No location is shown as current.'
+      } catch { if (current()) notice = 'Friend locations are unavailable. No location is shown as current.' }
+      refresh()
     },
     async checkIn(id: string) { const place = landmark(id); if (place && readSnapshot()?.rights.checkIn.includes(place.id)) await run(ctx => capabilities.checkIn(place.id, ctx), 'Check-in confirmed.') },
     async requestLocation(id: string) { if (state.people.some(p => p.userId === id && p.canRequest)) await run(ctx => capabilities.requestLocation(id, ctx), 'Location request sent.') },

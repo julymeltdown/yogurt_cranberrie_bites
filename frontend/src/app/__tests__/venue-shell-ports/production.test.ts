@@ -4,7 +4,7 @@ import { afterEach, beforeEach, expect, it, vi } from 'vitest'
 import type { CommunityBootstrapBinding } from '../../community-adoption/bootstrap'
 import type { MeetingClockPort } from '../../meeting-entry/ports'
 import type { HttpRequest, HttpResult } from '../../../shared/api/http'
-import type { LocationSnapshot } from '../../../shared/api/paradise-city-v1/location'
+import { LocationUnavailableError, type LocationSnapshot } from '../../../shared/api/paradise-city-v1/location'
 import type { LocationPeople } from '../../../features/paradise-city-map/model/location-adapter'
 import type { LandmarkId } from '../../../features/paradise-city-map/spatial/contract'
 import type { ReadPort, VenueView } from '../../../features/paradise-city-map/ports'
@@ -45,7 +45,7 @@ const stops: (() => void)[] = []
 beforeEach(() => { vi.stubGlobal('crypto', webcrypto) })
 afterEach(() => { for (const stop of stops.splice(0).reverse()) stop(); vi.restoreAllMocks(); vi.unstubAllGlobals() })
 
-async function fixture(options: { omitPeople?: boolean; denyLandmarks?: boolean } = {}) {
+async function fixture(options: { omitPeople?: boolean; denyLandmarks?: boolean; locationUnavailable?: boolean } = {}) {
   const bootstrap = await checkedBootstrap()
   const participant = (bootstrap.document as { participant?: { profile?: { avatar?: unknown } } } | undefined)?.participant
   const auth = createSessionController({ eventId, fetch: async () => { throw Error('No live transport') },
@@ -58,6 +58,7 @@ async function fixture(options: { omitPeople?: boolean; denyLandmarks?: boolean 
   const calls: string[] = []
   const http = { async request<T>(input: HttpRequest<T>): Promise<HttpResult<T>> {
     calls.push(input.path)
+    if (options.locationUnavailable && input.path.endsWith('/venue/location')) throw new LocationUnavailableError()
     const value = input.path.endsWith('/venue/location') ? snapshot()
       : input.path.endsWith('/venue/landmarks') ? (() => { if (options.denyLandmarks) throw Error('Reviewed landmark authority denied'); return landmarkList() })()
         : input.path.includes('/people/') ? { user_id: input.path.split('/').at(-1), display_name: 'Fixture friend', bio: null, avatar: participant?.profile?.avatar }
@@ -128,6 +129,14 @@ it('fails closed when no reviewed friend identity source is available', async ()
   expect(ports.phone.read()).toBe('idle')
 })
 
+it('mounts a truthful unavailable panel when the friend gate refuses with 503', async () => {
+  const f = await fixture({ locationUnavailable: true })
+  expect(await f.sources.loadLandmarks(f.lifetime.signal)).toBe(true)
+  const ports = production(f.sources); stops.push(() => ports.dispose())
+  expect(await ports.start(f.lifetime.signal)).toBe(true)
+  expect(ports.capabilities.read()).toBeNull()
+  expect(ports.capabilities.availability?.()).toMatchObject({ state: 'unavailable', reason: 'friend-gate-unavailable', canRefresh: true })
+})
 it('fails closed before any request when the qualified clock is unavailable', async () => {
   const f = await fixture()
   const sources = createVenueSources({ auth: f.auth, scope: f.scope, signal: f.lifetime.signal, identity, community: null, http: f.sources.http, participant: null })

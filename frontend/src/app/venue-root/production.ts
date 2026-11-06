@@ -307,7 +307,15 @@ export function createVenueProduction({ venue, sources }: VenueProductionOptions
     get meetingPlaces() { return sources.meetingPlaces },
     async start(signal: AbortSignal) {
       if (disposed || signal.aborted) return false
-      try { return await location.load(signal) } catch { return false }
+      try {
+        const loaded = await location.load(signal)
+        if (loaded) return true
+        // A denied friend gate or offline producer still yields a truthful unavailable
+        // panel. A missing clock/access (access-unavailable) keeps the shell closed.
+        const status = location.availability()
+        return status.state === 'unavailable'
+          && (status.reason === 'friend-gate-unavailable' || status.reason === 'offline' || status.reason === 'producer-refused')
+      } catch { return false }
     },
     dispose() {
       if (disposed) return
