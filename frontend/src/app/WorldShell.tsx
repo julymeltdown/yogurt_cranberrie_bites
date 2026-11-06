@@ -23,7 +23,11 @@ import { WorldHudHeaderSlot, WorldHudLayout, WorldHudToolsSlot, WorldHudViewport
 import type { SessionController } from '../features/auth/model/session'
 import { createSiteplanLoader } from '../features/paradise-city-map/spatial/image-resource'
 import { productionSiteplanRegistration } from '../features/paradise-city-map/spatial/registration'
-import { createVenueRootInput, sameVenueRootScope, VenueRootFeatures, type VenueRootInput } from './venue-root'
+import { createVenueRootInput, projectVenueRootView, sameVenueRootScope, VenueRootFeatures, type VenueRootInput } from './venue-root'
+import { createVenueProduction, createVenueSources, type VenueProduction, type VenueSourcesOptions } from './venue-root/production'
+import type { LocationPeople, LocationSharingAudience } from '../features/paradise-city-map/model/location-adapter'
+import type { HttpClient } from '../shared/api/http'
+import type { ReadPort } from '../features/paradise-city-map/ports'
 
 const SessionShellHeader = lazy(() => import('./shell-chrome/identity').then(module => ({ default: module.SessionShellHeader })))
 const RootSocialFeatures = lazy(() => import('./world-panels/social').then(module => ({ default: module.RootSocialFeatures })))
@@ -127,7 +131,7 @@ export function WorldShell({ scope, bootstrap, privacyScope = null, community = 
     return () => { viewport?.removeEventListener('resize', update); window.removeEventListener('resize', update) }
   }, [])
   return <Suspense fallback={<p role="status">Opening your event…</p>}><CharacterProvider bootstrap={bootstrap} scope={privacyScope}><RootMediaProvider auth={auth} scope={privacyScope}><CommunityFeatures bootstrap={bootstrap} privacyScope={privacyScope} binding={community}><ProductionWorldFeatures privacyScope={privacyScope}><AccountProvider auth={auth} bootstrap={bootstrap} privacyScope={privacyScope} assets={accountAssets}><MeetingEntryFeatures auth={auth ?? null} release={null}>
-    <VenueShellFeatures auth={auth ?? null} scope={privacyScope} community={community}><RootSocialFeatures bootstrap={bootstrap} scope={privacyScope}><NavigationMemory>
+    <VenueShellFeatures auth={auth ?? null} scope={privacyScope} community={community} participant={bootstrap.document?.participant}><RootSocialFeatures bootstrap={bootstrap} scope={privacyScope}><NavigationMemory>
     {connectionStatus && <ConnectionStatus controller={connectionStatus.controller} reload={connectionStatus.reload} />}
     <WorldHudLayout active={!panelOpen} toolsOpen={worldToolsOpen} onToolsChange={setWorldToolsOpen}>
     <div className="world-shell pi08-world-shell" data-mcr-shell="" data-panel-size={panelOpen ? size : 'closed'} ref={root}
@@ -147,10 +151,17 @@ export function WorldShell({ scope, bootstrap, privacyScope = null, community = 
   </div></WorldHudLayout></NavigationMemory></RootSocialFeatures></VenueShellFeatures></MeetingEntryFeatures></AccountProvider></ProductionWorldFeatures></CommunityFeatures></RootMediaProvider></CharacterProvider></Suspense>
 }
 
+export interface VenueShellSources {
+  readonly http?: Pick<HttpClient, 'request'>
+  readonly people?: ReadPort<LocationPeople | null>
+  readonly sharingAudience?: ReadPort<LocationSharingAudience | null>
+}
+
 /** One verified public image lease for the original shell, independent of Outlet. */
-export function VenueShellFeatures({ auth, scope, community, children }: {
+export function VenueShellFeatures({ auth, scope, community, participant = null, sources, children }: {
   readonly auth: SessionController | null; readonly scope: PrivacyScope | null
-  readonly community: CommunityBootstrapBinding | null; readonly children: ReactNode
+  readonly community: CommunityBootstrapBinding | null; readonly participant?: unknown
+  readonly sources?: VenueShellSources; readonly children: ReactNode
 }) {
   const navigate = useNavigate(), navigation = useRef(navigate)
   navigation.current = navigate
@@ -162,7 +173,7 @@ export function VenueShellFeatures({ auth, scope, community, children }: {
       || !auth.session.isCurrent(scope) || !auth.privacy.isCurrent(scope)) return
     const signal = community.signal
     const loader = createSiteplanLoader(productionSiteplanRegistration, { origin: window.location.origin })
-    let active = true
+    let active = true, production: VenueProduction | null = null
     const current = () => {
       try { return active && !signal.aborted && auth.session.isCurrent(scope) && auth.privacy.isCurrent(scope) }
       catch { return false }
@@ -172,6 +183,8 @@ export function VenueShellFeatures({ auth, scope, community, children }: {
       active = false
       // Withdraw publication before image disposal or borrower cleanup can re-enter.
       setBound(value => value?.scope === scope && value.community === community ? null : value)
+      try { production?.dispose() } catch { /* Ports own independent cleanup. */ }
+      production = null
       try { loader.dispose() } catch { /* A failed borrowed decoder cannot retain publication. */ }
     }
     signal.addEventListener('abort', withdraw, { once: true })
@@ -180,13 +193,27 @@ export function VenueShellFeatures({ auth, scope, community, children }: {
       const cleanup = auth.privacy.registerCleanup(withdraw)
       if (active) stop = cleanup
       else cleanup()
-      if (current()) void Promise.resolve().then(() => current() ? loader.load(signal) : null).then(siteplan => {
+      if (current()) void Promise.resolve().then(() => current() ? loader.load(signal) : null).then(async siteplan => {
         if (!siteplan) return
         if (!current()) { siteplan.dispose(); return }
-        const input = createVenueRootInput({ auth, scope, signal, community, siteplan,
-          meeting: null, newCommandKey: () => crypto.randomUUID(), navigateToMap })
-        if (current()) setBound({ auth, scope, community, input })
-        else siteplan.dispose()
+        const identity = projectVenueRootView(siteplan, new Map()).identity
+        const options: VenueSourcesOptions = { auth, scope, signal, identity, community, participant, ...sources }
+        const venueSources = createVenueSources(options)
+        try {
+          await venueSources.loadLandmarks(signal)
+          if (!current()) { venueSources.dispose(); siteplan.dispose(); return }
+          const venue = projectVenueRootView(siteplan, venueSources.meetingPlaces)
+          production = createVenueProduction({ venue, sources: venueSources })
+          const opened = await production.start(signal)
+          if (!current() || !opened || production.capabilities.read() === null) {
+            production.dispose(); production = null; siteplan.dispose(); return
+          }
+          const input = createVenueRootInput({ auth, scope, signal, community, siteplan, meetingPlaces: venueSources.meetingPlaces,
+            capabilities: production.capabilities, meeting: production.meeting, phone: production.phone,
+            newCommandKey: () => crypto.randomUUID(), navigateToMap })
+          if (current()) setBound({ auth, scope, community, input })
+          else { production.dispose(); production = null; siteplan.dispose() }
+        } catch (error) { venueSources.dispose(); throw error }
       }).catch(withdraw)
       else withdraw()
     } catch { withdraw() }
@@ -194,7 +221,7 @@ export function VenueShellFeatures({ auth, scope, community, children }: {
       withdraw(); signal.removeEventListener('abort', withdraw)
       try { stop() } catch { /* Release the loader even when the observer rejects cleanup. */ }
     }
-  }, [auth, scope, community, navigateToMap])
+  }, [auth, scope, community, navigateToMap, participant, sources])
   const input = bound?.auth === auth && bound.scope === scope && bound.community === community
     && !bound.input.signal.aborted && auth?.privacy.isCurrent(bound.input.scope) ? bound.input : null
   return <VenueRootFeatures borrowed={input}>{children}</VenueRootFeatures>

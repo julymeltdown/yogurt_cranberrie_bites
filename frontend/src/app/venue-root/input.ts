@@ -16,9 +16,9 @@ export interface VenueRootBorrowed {
   readonly siteplan: LoadedSiteplan
   /** Explicit current real-provider associations, never derived from ART IDs. */
   readonly meetingPlaces?: ReadonlyMap<LandmarkId, MeetingLandmarkContext>
-  readonly capabilities?: VenueCapabilities
+  readonly capabilities: VenueCapabilities
   readonly meeting: MeetingLeafRelease | null
-  readonly phone?: PhoneLocationPort
+  readonly phone: PhoneLocationPort
   readonly newCommandKey: () => string
   /** Root retains the router and actual /world/map destination. */
   readonly navigateToMap: () => void
@@ -29,16 +29,21 @@ export interface VenueRootInput extends Omit<VenueRootBorrowed, 'meetingPlaces'>
 
 /** Call once per actual shell/image/provider release, outside Outlet rendering.
  * Pure projection: no fetch, controller, subscription, key, clock or resource. */
-export function createVenueRootInput(borrowed: VenueRootBorrowed): VenueRootInput {
-  const { siteplan } = borrowed, registered = productionSiteplanRegistration
-  const actual = siteplan.snapshot.siteplan
+export function projectVenueRootView(siteplan: LoadedSiteplan, meetingPlaces: ReadonlyMap<LandmarkId, MeetingLandmarkContext> = new Map()): VenueView {
+  const registered = productionSiteplanRegistration, actual = siteplan.snapshot.siteplan
   if (siteplan.model.snapshot !== siteplan.snapshot || !sameSiteplanIdentity(actual, registered)
     || siteplan.producer.kind !== registered.producer.kind || siteplan.producer.sourceRevision !== registered.producer.sourceRevision
     || actual.image.path !== registered.image.path || actual.image.sha256 !== registered.image.sha256
     || actual.image.width !== registered.image.width || actual.image.height !== registered.image.height
     || actual.image.bytes !== registered.image.bytes) throw Error('The registered verified venue image lease is required')
-  const venue = projectLoadedSiteplan(siteplan, borrowed.meetingPlaces)
+  return projectLoadedSiteplan(siteplan, meetingPlaces)
+}
+
+/** Call once per actual shell/image/provider release, outside Outlet rendering.
+ * Pure projection: no fetch, controller, subscription, key, clock or resource. */
+export function createVenueRootInput(borrowed: VenueRootBorrowed): VenueRootInput {
+  const venue = projectVenueRootView(borrowed.siteplan, borrowed.meetingPlaces)
   return Object.freeze({ auth: borrowed.auth, scope: Object.freeze({ ...borrowed.scope }), signal: borrowed.signal,
-    community: borrowed.community, siteplan, venue, ...(borrowed.capabilities ? { capabilities: borrowed.capabilities } : {}),
-    meeting: borrowed.meeting, ...(borrowed.phone ? { phone: borrowed.phone } : {}), newCommandKey: borrowed.newCommandKey, navigateToMap: borrowed.navigateToMap })
+    community: borrowed.community, siteplan: borrowed.siteplan, venue, capabilities: borrowed.capabilities,
+    meeting: borrowed.meeting, phone: borrowed.phone, newCommandKey: borrowed.newCommandKey, navigateToMap: borrowed.navigateToMap })
 }

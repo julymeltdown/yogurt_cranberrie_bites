@@ -1,0 +1,26 @@
+{
+  "result": "PASS",
+  "qualification": "SUBSTITUTED_FIXTURE",
+  "note": "Actual VenueShellFeatures/production ports/siteplan loader/Map panel. Deterministic session, community clock, Location, landmark and reviewed friend inputs; no live backend, device or physical venue.",
+  "cases": [
+    {
+      "width": 360,
+      "height": 800,
+      "realCapability": true,
+      "removedPortUnavailable": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "realCapability": true,
+      "removedPortUnavailable": true
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "realCapability": true,
+      "removedPortUnavailable": true
+    }
+  ],
+  "errors": []
+}
