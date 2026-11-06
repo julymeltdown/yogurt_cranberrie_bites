@@ -131,3 +131,140 @@ dispatch; it was left untouched.
 The IN03 stack closed its owned cluster, Redis and seven processes after the run;
 `route-parity.py` and the venue matrix used separate owned PostgreSQL 16
 resources under `/private/tmp/qa04-pg`, removed after validation.
+
+## 2026-11-06 — world ticket/subscription authorization correction
+
+Status: **PASS for the 110-cell QA04 matrix** on the real seven-service stack
+(87 PASS, 23 NOT_RUN, 0 FAIL). The four failing cells were not a missing ticket
+gate. The probe itself admitted the stranger and the unadmitted operator to the
+event before issuing their tickets.
+
+### Measured root cause
+
+The matrix's `GET .../bootstrap` is the canonical event-join write. On OPEN/LIVE
+events `BootstrapService::bootstrap` -> `BootstrapPostgresRepository::bootstrap_with_checks`
+inserts the ACTIVE admission, participant and avatar defaults; the native
+`bootstrap.rs` suite asserts that exact creation. `PgWorldCanonicalAuthority::subject`
+in `world_rpc.rs` calls `BootstrapService::world_admission`, which reads both the
+admission and participant rows and denies when either is absent. The prior
+candidate checks in `world_rpc.rs` and `world/mod.rs` were therefore redundant
+and changed nothing: by ticket time the probe's own bootstrap had created the rows
+they checked.
+
+An instrumented run recorded direct `mcr_concert` reads at the start of the
+websocket phase (`/private/tmp/qa04-run42.json`, `world_probe`):
+
+| Role | Before bootstrap | After bootstrap | Bootstrap | Rooms | Ticket |
+| --- | --- | --- | --- | --- | --- |
+| stranger | admission ABSENT, no participant, no avatar | ACTIVE, participant, avatar | 200 | 200 | 200 |
+| admin (OPERATOR) | admission ABSENT, no participant, no avatar | ACTIVE, participant, avatar | 200 | 200 | 200 |
+| owner | ACTIVE, participant, avatar | unchanged | 200 | 200 | 200 |
+
+After the probe stopped bootstrapping the two unadmitted roles, the same ticket
+call returned 403 through the existing gate. That exposed a second defect in the
+C05 gateway error rewriter: it emitted only `{code,message,details}`, so the
+matrix failed its documented five-key denial envelope (`qa04-error-envelope` at
+98 cells in `/private/tmp/qa04-run43.json`).
+
+### Delivered changes
+
+| Path | Change |
+| --- | --- |
+| `backend/services/concert-service/tests/authorization/qa04_matrix.py` | Derives release pins from the admitted owner; never calls bootstrap for `stranger`/`admin`; records per-role admission state; attempts the ticket with canonical pins; presents a well-formed but never-issued ticket to `/world-ws` and requires close 4401; restores the owner block and both visibility values for later IN03 checks. |
+| `backend/services/api-gateway/src/adapters/in/http/concert_world.rs` | C05 denial responses now contain `code,message,traceId,timestamp,details`; added a unit test for the exact key set and parseable trace/time. |
+| `backend/services/concert-service/tests/world_admission.rs` | Native owned-PostgreSQL gate test: stranger, event OPERATOR without admission, admission-without-participant and participant-without-admission are denied; owner/member with both are admitted; SUSPENDED admission is denied. |
+| `backend/services/concert-service/tests/world_ws.rs` | Native well-formed-but-unissued ticket is closed with 4401 and receives no snapshot. |
+
+`world_rpc.rs` and `world/mod.rs` are unchanged. The previous candidate checks
+would not have altered the observed rows.
+
+### Matrix result, before and after
+
+| Cell | Pre-fix `/private/tmp/qa04-run41.json` | Post-fix `/private/tmp/qa04-run45.json` |
+| --- | --- | --- |
+| stranger ticket issuance | 200, FAIL | 403, PASS |
+| admin ticket issuance | 200, FAIL | 403, PASS |
+| stranger subscription | `["snapshot"]`, FAIL | `["rejected:4401"]`, PASS |
+| admin subscription | `["snapshot"]`, FAIL | `["rejected:4401"]`, PASS |
+| owner/member/blocked subscription | `["snapshot"]`, PASS | `["snapshot"]`, PASS |
+| owner ticket replay | closed, PASS | closed, PASS |
+
+Counts: pre-fix 83 PASS / 23 NOT_RUN / 4 FAIL; post-fix **87 PASS / 23 NOT_RUN /
+0 FAIL**. The post-fix report records `stranger` and `admin` with admission
+ABSENT before and after the skipped bootstrap, `rooms=403`, and no ticket.
+
+### Mutation proof
+
+Reverting only the probe precondition (`unadmitted = set()`, restoring the
+bootstrap call) and rebuilding nothing else reproduced the four failures:
+`83 PASS / 23 NOT_RUN / 4 FAIL`, with the same 200/`snapshot` observations
+(`/private/tmp/qa04-mutation.json`). The check was restored before the final
+commit; `/private/tmp/qa04-run45.json` is the final-code run.
+
+The gateway-envelope mutation is `/private/tmp/qa04-run43.json`: with the
+corrected probe and the pre-fix gateway binary, the first unadmitted ticket was
+403 but the run aborted at 98 cells with `qa04-error-envelope`, because the body
+had only `code/message/details`.
+
+### Verification commands
+
+```sh
+cd /Users/lhs/Desktop/mcr-worktrees/exec-w7-qa04
+python3 -B backend/scripts/mcr/in03_social_gate.py \
+  --bin-dir /Users/lhs/Desktop/mcr-build/exec-w7-qa04-bins \
+  --qa04-report /private/tmp/qa04-run45.json \
+  --report /private/tmp/in03-qa04-run45.json
+# QA04 report: PASS, 110 cells, 87 PASS / 23 NOT_RUN / 0 FAIL
+# wrapper exit 1 at the later IN03 check feed-carol-503 (CONCERT_503
+# DEPENDENCY_UNAVAILABLE); that check is after QA04 and is not claimed PASS
+
+cd backend
+CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/exec-w7-qa04 \
+  cargo test -j 3 -p concert-service --test world_rpc_authority \
+  -- --test-threads=1
+# exit 0: 4 passed
+
+CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/exec-w7-qa04 \
+  cargo test -j 3 -p concert-service --test world_ws -- --test-threads=1
+# exit 0: 21 passed; 5 ignored
+
+python3 -B backend/scripts/mcr/world_admission_smoke.py \
+  --binary /Users/lhs/Desktop/mcr-build/exec-w7-qa04/debug/deps/world_admission-d44391759398674a \
+  --report /private/tmp/world-admission-run3.json
+# exit 0: PASS, 7 tests, restart persistence PASS, cleanup PASS
+
+CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/exec-w7-qa04 \
+  cargo test -j 3 -p api-gateway --lib 'concert_world::'
+# exit 0: 4 passed (147 filtered), including the denial-envelope shape test
+
+cd /Users/lhs/Desktop/mcr-worktrees/exec-w7-qa04
+python3 scripts/mcr/contracts/route-parity.py
+# exit 0: registry=69 contract_commands=63 templates=245 commands=70 missing=0
+```
+
+### Stale venue test (recorded, not changed here)
+
+`backend/services/concert-service/tests/venue_authz_matrix.rs:2107`
+(`meeting_route_admission_is_exact_and_closed`) still expects
+`operation(event, "GET", "/venue/location")` to return `PermissionDenied`.
+The current product dispatch classifies `GET /venue/location` as
+`Operation::Venue(VenueOperation::LocationSnapshot)` in
+`backend/services/concert-service/src/product_rpc/venue_admission.rs:159`.
+The owner of that suite should update the assertion to the dispatched
+`Venue(LocationSnapshot)` operation (or remove the stale negative if the HTTP
+application-layer authorization test is the intended proof). It is a stale test,
+not a product refusal, and was left untouched for its owner.
+
+### Limits
+
+- The native `world_admission` gate test is a regression guard for the gate that
+already existed; it passes on the pre-fix source. The failures that prove the
+change are the QA04 cells (probe admitted its own stranger) and the pre-fix C05
+envelope (run43). No new product admission check was claimed.
+- The combined IN03 runner still exits 1 after QA04 at `feed-carol-503`; the QA04
+report itself is PASS. That later feed check was not diagnosed here.
+- The binaries used by the real stack were rebuilt under
+`/Users/lhs/Desktop/mcr-build/exec-w7-qa04-bins`; they are outside the checkout
+and are not part of the commit. This remains development-stack evidence, not
+release qualification or a browser claim.
+- No push was performed.

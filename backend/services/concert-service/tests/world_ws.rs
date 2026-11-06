@@ -527,6 +527,16 @@ async fn unknown_ticket_and_replay_never_receive_a_world_snapshot() {
     h.close().await;
 }
 #[tokio::test]
+async fn well_formed_unissued_ticket_is_refused_without_a_snapshot() {
+    let h = Harness::start().await;
+    let mut socket = h.connect().await;
+    // Canonical 43-character shape, but absent from the canonical ticket set.
+    socket.send(h.auth('Q')).await.unwrap();
+    assert_eq!(close_code(&mut socket).await, 4401);
+    h.close().await;
+}
+
+#[tokio::test]
 async fn three_second_auth_deadline_is_per_connection_even_after_server_uptime() {
     let h = Harness::start().await;
     tokio::time::sleep(Duration::from_millis(3100)).await;

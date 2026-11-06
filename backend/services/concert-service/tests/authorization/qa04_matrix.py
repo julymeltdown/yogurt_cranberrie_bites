@@ -583,34 +583,82 @@ class Matrix:
                       forbidden=forbidden)
 
     def websocket(self):
-        from world_capacity_support.transport import Network, WebSocket
-        event = self.event
+        from world_capacity_support.transport import Closed, Network, WebSocket
         roles = ("owner", "member", "stranger", "blocked", "suspended", "expired", "admin")
         expect = {"owner": 200, "member": 200, "stranger": 403, "blocked": 200,
                   "suspended": 403, "expired": 503, "admin": 403}
+        # Bootstrap is the canonical event-join write. A caller that has never
+        # bootstrapped is unadmitted; bootstrapping it here would manufacture
+        # the admission whose absence these cells assert.
+        unadmitted = {"stranger", "admin"}
         tickets = {}
+        base_request = None
+        base_target = None
+
+        def admission_state(role, target):
+            user = self.users.get(role) or self.role_users[role]
+            return json.loads(self.sql(
+                "mcr_concert",
+                "SELECT jsonb_build_object("
+                "'admission',coalesce((SELECT state FROM concert_event_admissions "
+                "WHERE event_id=" + self.prep.quote(target) + " AND user_id="
+                + self.prep.quote(user) + "),'ABSENT'),"
+                "'participant',exists(SELECT 1 FROM concert_participants WHERE event_id="
+                + self.prep.quote(target) + " AND user_id=" + self.prep.quote(user) + "),"
+                "'avatar',exists(SELECT 1 FROM concert_avatar_settings WHERE event_id="
+                + self.prep.quote(target) + " AND user_id=" + self.prep.quote(user) + "))"))
+
         for role in roles:
             target = self.path_event(role)
-            status, body, _ = self.api.request(role, "GET", f"/api/concert/events/{target}/bootstrap")
-            rooms_status, rooms, _ = self.api.request(role, "GET", f"/api/concert/events/{target}/rooms")
-            if status != 200 or rooms_status != 200:
+            probe = self.report.setdefault("world_probe", {}).setdefault(role, {})
+            probe["before"] = admission_state(role, target)
+            status = None
+            if role not in unadmitted:
+                status, body, _ = self.api.request(
+                    role, "GET", f"/api/concert/events/{target}/bootstrap")
+                probe["bootstrap_status"] = status
+                probe["after_bootstrap"] = admission_state(role, target)
+                rooms_status, rooms, _ = self.api.request(
+                    role, "GET", f"/api/concert/events/{target}/rooms")
+                probe["rooms_status"] = rooms_status
+                if status == 200 and rooms_status == 200 and base_request is None:
+                    mapped, avatar = body["map_manifest"], body["avatar_manifest"]
+                    base_request = {
+                        "room_id": rooms["default_room_id"], "map_id": mapped["map_id"],
+                        "map_revision": mapped["map_revision"],
+                        "avatar_manifest_id": avatar["manifest_id"],
+                        "avatar_manifest_version": avatar["manifest_version"]}
+                    base_target = target
+            else:
+                # Read the room catalog only to observe the admission refusal;
+                # never call bootstrap for a caller this cell requires to stay
+                # unadmitted.
+                rooms_status, _, _ = self.api.request(
+                    role, "GET", f"/api/concert/events/{target}/rooms")
+                probe["bootstrap_status"] = "SKIPPED"
+                probe["after_bootstrap"] = admission_state(role, target)
+                probe["rooms_status"] = rooms_status
+                require(probe["after_bootstrap"]["admission"] == "ABSENT"
+                        and not probe["after_bootstrap"]["participant"],
+                        f"qa04-ws-unadmitted-{role}")
+            if role in ("suspended", "expired"):
+                # Suspended Auth and the archived event fail before a ticket
+                # exists; keep the documented bootstrap status as this cell's
+                # observation instead of asking a producer that cannot serve.
+                actual = status
                 self.cells.append({"role": role, "surface": "ws_ticket", "method": "POST",
-                                   "path": f"/world-tickets", "expected": expect[role],
-                                   "actual": status,
-                                   "result": "PASS" if status == expect[role] else "FAIL"})
-                if status != expect[role]:
-                    self.notes[f"ws_ticket:{role}"] = {"expected": expect[role], "actual": status}
+                                   "path": "/world-tickets", "expected": expect[role],
+                                   "actual": actual,
+                                   "result": "PASS" if actual == expect[role] else "FAIL"})
+                if actual != expect[role]:
+                    self.notes[f"ws_ticket:{role}"] = {"expected": expect[role], "actual": actual}
                 continue
-            require(status == 200 and rooms_status == 200, f"qa04-ws-bootstrap-{role}-{status}")
-            mapped, avatar = body["map_manifest"], body["avatar_manifest"]
-            request = {"room_id": rooms["default_room_id"], "map_id": mapped["map_id"],
-                       "map_revision": mapped["map_revision"],
-                       "avatar_manifest_id": avatar["manifest_id"],
-                       "avatar_manifest_version": avatar["manifest_version"]}
+            require(base_request is not None and base_target is not None,
+                    f"qa04-ws-release-pins-{role}")
             status, ticket, _ = self.api.request(
-                role, "POST", f"/api/concert/events/{target}/world-tickets", request)
+                role, "POST", f"/api/concert/events/{target}/world-tickets", base_request)
             if status == 200:
-                tickets[role] = (ticket, target, request)
+                tickets[role] = (ticket, target, base_request)
             elif status >= 400:
                 assert_denial(ticket, status, self.forbidden_for())
             self.cells.append({"role": role, "surface": "ws_ticket", "method": "POST",
@@ -623,17 +671,19 @@ class Matrix:
                            "ws_url": "ws://" + self.stack.ports.address("concert-service:world")
                            + "/world-ws", "browser_origin": self.origin})
 
+        def auth_frame(ticket, target, request):
+            return {"protocolVersion": "1.0.0", "type": "authenticate",
+                    "ticket": ticket, "eventId": target,
+                    "roomId": request["room_id"], "mapId": request["map_id"],
+                    "mapRevision": request["map_revision"],
+                    "avatarManifestId": request["avatar_manifest_id"],
+                    "avatarManifestVersion": request["avatar_manifest_version"]}
+
         async def subscribe(role):
             ticket, target, request = tickets[role]
             websocket = await WebSocket.open(network.ws_target, network.origin)
             try:
-                await websocket.send({
-                    "protocolVersion": "1.0.0", "type": "authenticate",
-                    "ticket": ticket["ticket"], "eventId": target,
-                    "roomId": request["room_id"], "mapId": request["map_id"],
-                    "mapRevision": request["map_revision"],
-                    "avatarManifestId": request["avatar_manifest_id"],
-                    "avatarManifestVersion": request["avatar_manifest_version"]})
+                await websocket.send(auth_frame(ticket["ticket"], target, request))
                 frames = []
                 deadline = time.monotonic() + 6
                 while time.monotonic() < deadline and len(frames) < 8:
@@ -645,19 +695,41 @@ class Matrix:
             finally:
                 await websocket.abort()
 
+        async def reject_unissued(role, target, request):
+            """Open the socket and present a well-formed but never-issued ticket."""
+            websocket = await WebSocket.open(network.ws_target, network.origin)
+            try:
+                await websocket.send(auth_frame(secrets.token_urlsafe(32), target, request))
+                try:
+                    frame = await asyncio.wait_for(websocket.receive(), 6)
+                    return {"frames": [frame.get("type")], "close": None}
+                except Closed as close:
+                    return {"frames": [], "close": close.code}
+            except BaseException as failure:  # noqa: BLE001 - owned probe
+                return {"frames": [type(failure).__name__], "close": None}
+            finally:
+                await websocket.abort()
+
         for role, want_snapshot in (("owner", True), ("member", True),
                                     ("blocked", True), ("stranger", False),
                                     ("admin", False)):
-            if role not in tickets:
-                continue
-            try:
-                frames = asyncio.run(asyncio.wait_for(subscribe(role), 12))
-                passed = ("snapshot" in frames) == want_snapshot
-            except BaseException as failure:  # noqa: BLE001 - owned probe
-                frames, passed = [type(failure).__name__], not want_snapshot
+            if role in tickets:
+                try:
+                    frames = asyncio.run(asyncio.wait_for(subscribe(role), 12))
+                    passed = ("snapshot" in frames) == want_snapshot
+                except BaseException as failure:  # noqa: BLE001 - owned probe
+                    frames, passed = [type(failure).__name__], not want_snapshot
+                actual = frames
+            else:
+                require(role in unadmitted, f"qa04-ws-subscription-ticket-{role}")
+                result = asyncio.run(asyncio.wait_for(
+                    reject_unissued(role, base_target, base_request), 12))
+                passed = result["close"] == 4401 and "snapshot" not in result["frames"]
+                actual = (["rejected:" + str(result["close"])] if result["close"]
+                          else result["frames"])
             self.cells.append({"role": role, "surface": "ws_subscription", "method": "WS",
                                "path": "/world-ws", "expected": 200 if want_snapshot else 403,
-                               "actual": frames, "result": "PASS" if passed else "FAIL"})
+                               "actual": actual, "result": "PASS" if passed else "FAIL"})
         if "owner" in tickets:
             try:
                 asyncio.run(asyncio.wait_for(subscribe("owner"), 12))
@@ -700,6 +772,18 @@ class Matrix:
         public = self.api.request("blocked", "PUT", "/api/profile/privacy",
                                   {"accountVisibility": "PUBLIC"}, str(uuid4()))
         require(public[0] == 200, f"qa04-eviction-public-{public[0]}")
+        # The matrix created an owner block and private owner profile for its
+        # denied cells. Restore the pre-matrix social state so later IN03 checks
+        # observe the same principals they provisioned.
+        owner_public = self.api.request("owner", "PUT", "/api/profile/privacy",
+                                        {"accountVisibility": "PUBLIC"}, str(uuid4()))
+        require(owner_public[0] == 200, f"qa04-restore-owner-public-{owner_public[0]}")
+        unblocked = self.api.request(
+            "owner", "DELETE", f"/api/relationships/blocks/{blocked}")
+        require(unblocked[0] in (200, 204), f"qa04-restore-unblock-{unblocked[0]}")
+        self.report["restored_state"] = {
+            "owner_block": "REMOVED", "owner_visibility": "PUBLIC",
+            "blocked_visibility": "PUBLIC"}
 
 
 def run(context):
