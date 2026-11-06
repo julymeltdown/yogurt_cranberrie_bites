@@ -652,7 +652,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   What to do: verify every implementation row 1–48 is completed or explicitly dropped, every row's evidence file exists, and no row was silently narrowed. Evidence `.omo/evidence/mcr-finish-project/f1-compliance.md`.
   Recommended task executor category: unspecified-low
 
-- [ ] F2. Code quality review
+- [x] F2. Code quality review
   What to do: run LSP diagnostics on every changed file, confirm no skipped/disabled tests and no suppressed errors, and review the diff for scope creep. Evidence `.omo/evidence/mcr-finish-project/f2-quality.md`.
   Recommended task executor category: deep-low
 
