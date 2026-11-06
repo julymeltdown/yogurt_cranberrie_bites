@@ -310,11 +310,12 @@ pub(crate) async fn local_pair_and_members_in(
     let pair=sqlx::query("select revision,low_blocks_high,high_blocks_low from public.concert_relationship_pairs where event_id=$1 and low_user=$2 and high_user=$3 for share")
         .bind(event).bind(low).bind(high).fetch_optional(&mut *c).await.map_err(dependency_error)?.ok_or_else(unavailable)?;
     let pair_revision: i64 = pair.try_get("revision").map_err(dependency_error)?;
-    if pair.try_get::<bool, _>("low_blocks_high").map_err(dependency_error)?
-        || pair.try_get::<bool, _>("high_blocks_low").map_err(dependency_error)?
-    {
-        return Err(unavailable());
-    }
+    pair_visibility(
+        pair.try_get::<bool, _>("low_blocks_high")
+            .map_err(dependency_error)?,
+        pair.try_get::<bool, _>("high_blocks_low")
+            .map_err(dependency_error)?,
+    )?;
     // Sorted local order: event, normalized pair, admission, participant, avatar.
     let mut users = vec![actor, subject];
     users.sort();
@@ -354,6 +355,14 @@ fn dependency_error_status() -> Status {
     Status::unavailable("Current public Profile unavailable")
 }
 
+fn pair_visibility(low_blocks_high: bool, high_blocks_low: bool) -> Result<(), Status> {
+    if low_blocks_high || high_blocks_low {
+        Err(Status::not_found("Public Profile unavailable"))
+    } else {
+        Ok(())
+    }
+}
+
 pub fn validate(value: &Value) -> Result<(), Status> {
     static VALIDATOR: OnceLock<Result<jsonschema::Validator, ()>> = OnceLock::new();
     let validator=VALIDATOR.get_or_init(||{
@@ -391,9 +400,20 @@ fn feed_error(status: Status) -> concert_domain::feed::FeedError {
 
 #[cfg(test)]
 mod tests {
-    use super::feed_error;
+    use super::{feed_error, pair_visibility, unavailable};
     use concert_domain::feed::FeedError;
     use tonic::{Code, Status};
+
+    #[test]
+    fn blocked_pair_is_skippable_while_an_owner_outage_stays_closed() {
+        for (low_blocks_high, high_blocks_low) in [(true, false), (false, true)] {
+            let denied = pair_visibility(low_blocks_high, high_blocks_low).unwrap_err();
+            assert_eq!(denied.code(), Code::NotFound);
+            assert_eq!(feed_error(denied), FeedError::ResourceUnavailable);
+        }
+        assert!(pair_visibility(false, false).is_ok());
+        assert_eq!(feed_error(unavailable()), FeedError::DependencyUnavailable);
+    }
 
     #[test]
     fn guard_or_transport_failure_cannot_become_a_skippable_author() {
