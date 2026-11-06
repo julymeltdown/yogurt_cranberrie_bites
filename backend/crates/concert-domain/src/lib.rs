@@ -2,6 +2,7 @@
 pub mod avatar_motion_v2;
 pub mod report;
 pub mod place;
+pub mod venue_meeting;
 use chrono::{DateTime, Utc};
 use std::str::FromStr;
 use uuid::Uuid;

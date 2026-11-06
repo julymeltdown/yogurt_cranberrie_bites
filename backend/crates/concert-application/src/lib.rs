@@ -2,6 +2,7 @@
 pub mod report;
 pub mod admin;
 pub mod commands;
+pub mod venue_meeting;
 
 use async_trait::async_trait;
 use chrono::{DateTime, Utc};

@@ -16,6 +16,7 @@ pub mod workers {
 pub mod community;
 pub mod feed;
 pub mod meeting;
+pub mod venue_meeting;
 pub mod relationship;
 pub mod world;
 pub mod world_rpc;
