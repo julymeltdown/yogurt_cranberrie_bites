@@ -137,6 +137,13 @@ impl InMemoryRateLimiter {
         &self.policies
     }
 
+    /// Length of one admission window. A refused client cannot be admitted
+    /// again until the window it is spending resets, so this is the honest
+    /// `Retry-After` hint for a quota rejection.
+    pub fn window_seconds(&self) -> u64 {
+        self.window.as_secs().max(1)
+    }
+
     /// Acquire a non-queuing, per-class request permit for this Gateway process.
     pub fn try_acquire_in_flight(
         &self,

@@ -47,7 +47,10 @@ async fn neutral_post_failures_preserve_http_categories_and_drop_private_context
         (F::Unexpected, 500, "Internal error"),
     ];
     for (failure, status, message) in cases {
-        let busy = failure == F::Busy;
+        let busy = matches!(failure, F::Busy);
+        // Both a saturated owner and a refused admission budget tell the client
+        // when a retry can succeed; no other category carries a retry hint.
+        let retry_hint = (busy || status == 429).then_some("1");
         let response =
             map_service_error(anyhow::Error::new(failure).context("PRIVATE_POST_CONTEXT"))
                 .into_response();
@@ -57,7 +60,7 @@ async fn neutral_post_failures_preserve_http_categories_and_drop_private_context
                 .headers()
                 .get(axum::http::header::RETRY_AFTER)
                 .map(|v| v.to_str().unwrap()),
-            if busy { Some("1") } else { None }
+            retry_hint
         );
         let body = response_json(response).await;
         assert_eq!(body["message"], message);
@@ -158,14 +161,26 @@ fn post_adapter_classifies_status_and_owner_metadata_without_diagnostic_guessing
 
 #[tokio::test]
 async fn gateway_error_response_preserves_client_messages_and_metadata() {
-    let response = GatewayError::too_many_requests("Rate Limit").into_response();
+    let response = GatewayError::rate_limited("Rate Limit", 60).into_response();
 
     assert_eq!(response.status(), StatusCode::TOO_MANY_REQUESTS);
+    assert_eq!(response.headers()["retry-after"], "60");
     let body = response_json(response).await;
     assert_eq!(body["code"], "GATEWAY_429");
     assert_eq!(body["message"], "Rate Limit");
     assert!(body["traceId"].is_string());
     assert!(body["timestamp"].is_string());
+}
+
+#[tokio::test]
+async fn oversized_payload_has_its_own_status_and_no_retry_hint() {
+    let response =
+        GatewayError::payload_too_large("Avatar image must be <= 1048576 bytes").into_response();
+
+    assert_eq!(response.status(), StatusCode::PAYLOAD_TOO_LARGE);
+    assert!(!response.headers().contains_key("retry-after"));
+    let body = response_json(response).await;
+    assert_eq!(body["code"], "GATEWAY_413");
 }
 
 #[tokio::test]
@@ -648,7 +663,7 @@ async fn service_error_envelopes_preserve_all_http_meanings_and_only_controlled_
                 .headers()
                 .get(axum::http::header::RETRY_AFTER)
                 .map(|value| value.to_str().unwrap()),
-            busy.then_some("1")
+            (busy || status == 429).then_some("1")
         );
         let correlation = response.headers()["x-correlation-id"]
             .to_str()

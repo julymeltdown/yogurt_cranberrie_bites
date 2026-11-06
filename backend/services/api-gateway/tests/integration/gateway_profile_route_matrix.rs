@@ -166,7 +166,7 @@ async fn profile_routes_cover_lookup_search_update_delete_and_avatar_upload() {
     let oversized_payload = vec![0u8; MAX_AVATAR_BYTES + 1];
     let (oversized_status, _, oversized_body) =
         multipart_avatar_upload_with_content(&app, &token, &oversized_payload).await;
-    assert_eq!(oversized_status, StatusCode::BAD_REQUEST);
+    assert_eq!(oversized_status, StatusCode::PAYLOAD_TOO_LARGE);
     assert_eq!(
         oversized_body["message"],
         format!("Avatar image must be <= {MAX_AVATAR_BYTES} bytes")

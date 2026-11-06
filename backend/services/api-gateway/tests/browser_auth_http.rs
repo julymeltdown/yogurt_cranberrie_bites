@@ -480,6 +480,67 @@ async fn capabilities_quota_errors_use_the_core_reason_envelope() {
 }
 
 #[tokio::test]
+async fn throttled_login_is_429_with_the_admission_window_as_retry_after() {
+    let mut h = harness().await;
+    Arc::make_mut(&mut h.state).rate_limiter =
+        api_gateway::config::InMemoryRateLimiter::new(1, std::time::Duration::from_secs(60));
+    let app = h.transport_router();
+    let payload = r#"{"email":"user@example.test","password":"password"}"#;
+    let login = || {
+        request(
+            "POST",
+            "/api/auth/login",
+            Some(ORIGIN),
+            Some("browser"),
+            payload,
+        )
+    };
+
+    let first = app.clone().oneshot(login()).await.unwrap();
+    assert_eq!(first.status(), StatusCode::OK);
+    assert_eq!(h.clients.login_calls.lock().unwrap().len(), 1);
+
+    let throttled = app.oneshot(login()).await.unwrap();
+    assert_eq!(throttled.headers()[header::RETRY_AFTER], "60");
+    let value = body(throttled, StatusCode::TOO_MANY_REQUESTS).await;
+    // The admission middleware answers with the neutral Gateway envelope: the
+    // refusal names no account, credential, route internals or owner metadata.
+    assert_eq!(value["code"], "GATEWAY_429");
+    assert_eq!(value["message"], "Rate limit exceeded");
+    assert!(value["details"].is_null());
+    let rendered = value.to_string();
+    assert!(!rendered.contains("user@example.test"));
+    assert!(!rendered.contains("password"));
+    assert_eq!(
+        h.clients.login_calls.lock().unwrap().len(),
+        1,
+        "a throttled login must never reach password verification"
+    );
+}
+
+#[tokio::test]
+async fn login_body_beyond_the_public_bound_is_413_before_auth_dispatch() {
+    let h = harness().await;
+    let app = h.transport_router();
+    // Axum's public JSON bound is 2 MiB; the login handler must never see the
+    // payload and the Auth port must never be called.
+    let oversized = "x".repeat(2 * 1024 * 1024 + 1);
+    let response = app
+        .oneshot(request(
+            "POST",
+            "/api/auth/login",
+            Some(ORIGIN),
+            Some("browser"),
+            &oversized,
+        ))
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::PAYLOAD_TOO_LARGE);
+    assert!(h.clients.login_calls.lock().unwrap().is_empty());
+    assert!(h.clients.auth_calls.lock().unwrap().is_empty());
+}
+
+#[tokio::test]
 async fn secure_cookie_and_clear_attributes_match_when_explicitly_configured() {
     let mut h = harness().await;
     let state = Arc::make_mut(&mut h.state);
