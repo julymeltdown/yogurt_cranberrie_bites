@@ -220,8 +220,14 @@ class DevStack:
                                       tuple(f"{name}:{kind}" for kind in ("http", "metrics", "grpc")), secret_values)
                 self.children[name] = child
                 self.rows[name]["pid"] = child.process.pid
+        failures = []
         for name in order:
-            self.children[name].wait_listeners()
+            try:
+                self.children[name].wait_listeners()
+            except migration.SmokeError as error:
+                failures.append({name: error.detail})
+        if failures:
+            raise migration.SmokeError("startup", {"children": failures})
         self.health()
         self.report["configuration"] = {"mode": "parity", "seed": False, "migration_mode": "external",
             "home": "OMITTED", "cookie_secure": False, "cookie_scope": "explicit local HTTP fixture only",
