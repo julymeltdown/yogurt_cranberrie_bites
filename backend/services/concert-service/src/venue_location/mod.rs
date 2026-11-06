@@ -1,5 +1,7 @@
 //! VENU-BE-L01 PostgreSQL adapter. The VENUE_FRIEND_V1 port fails closed until the
 //! bilateral Friend read exists; this module never reconstructs it from a directional flag.
+use crate::adapters::out::relationship_authority::{BoundedRelationshipAuthority, RequestBinding};
+use crate::venue_authority::VenueFriendAuthority;
 use async_trait::async_trait;
 use chrono::{DateTime, Utc};
 use concert_application::venue_location::{
@@ -8,7 +10,7 @@ use concert_application::venue_location::{
 use concert_domain::venue_location::*;
 use concert_domain::{AuthUserId, EventId, EventPhase, ParticipantKey, MAX_REVISION};
 use sqlx::{PgConnection, PgPool, Row};
-use std::str::FromStr;
+use std::{str::FromStr, sync::Arc};
 use uuid::Uuid;
 
 #[async_trait]
@@ -19,17 +21,51 @@ pub trait VenueLocationAuthority: Send + Sync {
         actor: ParticipantKey,
         now: DateTime<Utc>,
     ) -> Result<(), VenueLocationError>;
+    /// actor is the authenticated requesting user; peer is the other member
+    /// of the pair. VENUE_FRIEND_V1 is symmetric, but the signed owner read
+    /// must be bound to the actual request actor.
     async fn friend_in(
         &self,
         connection: &mut PgConnection,
         event: EventId,
-        viewer: AuthUserId,
-        owner: AuthUserId,
+        actor: AuthUserId,
+        peer: AuthUserId,
         now: DateTime<Utc>,
     ) -> Result<bool, VenueLocationError>;
 }
 
-pub struct PgVenueLocationAuthority;
+/// Production VENUE_FRIEND_V1 composition. None is an explicit fail-closed
+/// authority for callers that have not composed the Friend owner read.
+#[derive(Clone, Default)]
+pub struct PgVenueLocationAuthority {
+    friend: Option<VenueFriendAuthority>,
+}
+impl PgVenueLocationAuthority {
+    pub fn from_binding(
+        pool: PgPool,
+        relationships: Arc<dyn BoundedRelationshipAuthority>,
+        binding: RequestBinding,
+    ) -> Self {
+        Self {
+            friend: Some(VenueFriendAuthority::new(pool, relationships, binding)),
+        }
+    }
+    pub fn from_product(
+        pool: PgPool,
+        relationships: Arc<dyn BoundedRelationshipAuthority>,
+        product: &crate::product_rpc::VerifiedProduct,
+        subject: AuthUserId,
+    ) -> Result<Self, VenueLocationError> {
+        Ok(Self {
+            friend: Some(VenueFriendAuthority::from_product(
+                pool,
+                relationships,
+                product,
+                subject,
+            )?),
+        })
+    }
+}
 #[async_trait]
 impl VenueLocationAuthority for PgVenueLocationAuthority {
     async fn actor_in(
@@ -38,17 +74,24 @@ impl VenueLocationAuthority for PgVenueLocationAuthority {
         actor: ParticipantKey,
         _: DateTime<Utc>,
     ) -> Result<(), VenueLocationError> {
-        require_actor(c, actor).await
+        require_actor(c, actor).await?;
+        match self.friend.as_ref() {
+            Some(friend) => friend.actor(actor.event_id, actor.user_id).await,
+            None => Err(VenueLocationError::PolicyUnavailable),
+        }
     }
     async fn friend_in(
         &self,
-        _: &mut PgConnection,
-        _: EventId,
-        _: AuthUserId,
-        _: AuthUserId,
-        _: DateTime<Utc>,
+        c: &mut PgConnection,
+        event: EventId,
+        actor: AuthUserId,
+        peer: AuthUserId,
+        now: DateTime<Utc>,
     ) -> Result<bool, VenueLocationError> {
-        Err(VenueLocationError::PolicyUnavailable)
+        match self.friend.as_ref() {
+            Some(friend) => Ok(friend.pair_in(c, event, actor, peer, now).await?.allowed),
+            None => Err(VenueLocationError::PolicyUnavailable),
+        }
     }
 }
 
@@ -75,6 +118,23 @@ impl<P: VenueLocationPolicyProvider, A: VenueLocationAuthority> PgVenueLocation<
         policy.validate(now)?;
         self.authority.actor_in(c, actor, now).await?;
         Ok((now, policy))
+    }
+}
+
+impl<P: VenueLocationPolicyProvider> PgVenueLocation<P, PgVenueLocationAuthority> {
+    /// Compose the location service for one verified product request. The
+    /// authority is request-bound: it can only ask the Friend/Auth owners about
+    /// this actor/session/deadline, and local event scope is checked separately.
+    pub fn production(
+        pool: PgPool,
+        policy: P,
+        relationships: Arc<dyn BoundedRelationshipAuthority>,
+        product: &crate::product_rpc::VerifiedProduct,
+        subject: AuthUserId,
+    ) -> Result<Self, VenueLocationError> {
+        let authority =
+            PgVenueLocationAuthority::from_product(pool.clone(), relationships, product, subject)?;
+        Ok(Self::new(pool, policy, authority))
     }
 }
 
@@ -111,7 +171,7 @@ impl<P: VenueLocationPolicyProvider, A: VenueLocationAuthority> VenueLocation
                 if viewer == actor.user_id
                     || !self
                         .authority
-                        .friend_in(&mut tx, actor.event_id, viewer, actor.user_id, now)
+                        .friend_in(&mut tx, actor.event_id, actor.user_id, viewer, now)
                         .await?
                 {
                     return Err(VenueLocationError::Denied);
@@ -391,7 +451,7 @@ impl<P: VenueLocationPolicyProvider, A: VenueLocationAuthority> VenueLocation
     }
 }
 
-async fn require_actor(
+pub(crate) async fn require_actor(
     c: &mut PgConnection,
     actor: ParticipantKey,
 ) -> Result<(), VenueLocationError> {

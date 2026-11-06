@@ -38,7 +38,9 @@ SELECT r.owner_epoch,r.revision,c.observed_at,
   EXISTS(SELECT 1 FROM public.user_blocks WHERE blocker_id=$1 AND blocked_id=$2 AND deleted_at IS NULL) AS actor_blocks_subject,
   EXISTS(SELECT 1 FROM public.user_blocks WHERE blocker_id=$2 AND blocked_id=$1 AND deleted_at IS NULL) AS subject_blocks_actor,
   EXISTS(SELECT 1 FROM public.friend_user_deletion_tombstones WHERE user_id=$1) AS actor_deleted,
-  EXISTS(SELECT 1 FROM public.friend_user_deletion_tombstones WHERE user_id=$2) AS subject_deleted
+  EXISTS(SELECT 1 FROM public.friend_user_deletion_tombstones WHERE user_id=$2) AS subject_deleted,
+  EXISTS(SELECT 1 FROM public.follows WHERE follower_id=$1 AND followee_id=$2 AND deleted_at IS NULL) AS actor_follows_subject,
+  EXISTS(SELECT 1 FROM public.follows WHERE follower_id=$2 AND followee_id=$1 AND deleted_at IS NULL) AS subject_follows_actor
 FROM public.friend_concert_relationship_revision r CROSS JOIN owner_clock c WHERE r.singleton"#).bind(request.actor_id()).bind(request.subject_id()).fetch_optional(&mut *tx).await.map_err(unavailable)?.ok_or(ReadError::Unavailable)?;
         budget.check()?;
         let observed_at: DateTime<Utc> = row.try_get("observed_at").map_err(unavailable)?;
@@ -56,6 +58,8 @@ FROM public.friend_concert_relationship_revision r CROSS JOIN owner_clock c WHER
             subject_blocks_actor: row.try_get("subject_blocks_actor").map_err(unavailable)?,
             actor_deleted: row.try_get("actor_deleted").map_err(unavailable)?,
             subject_deleted: row.try_get("subject_deleted").map_err(unavailable)?,
+            actor_follows_subject: row.try_get("actor_follows_subject").map_err(unavailable)?,
+            subject_follows_actor: row.try_get("subject_follows_actor").map_err(unavailable)?,
         };
         let result = result.validate(request, Utc::now())?;
         tx.commit().await.map_err(unavailable)?;

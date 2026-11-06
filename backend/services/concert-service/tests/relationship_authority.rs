@@ -290,6 +290,8 @@ impl wire::friend_concert_relationship_service_server::FriendConcertRelationship
                 subject_blocks_actor: self.0 == "reverse",
                 actor_deleted: self.0 == "actor-deleted",
                 subject_deleted: self.0 == "subject-deleted",
+                actor_follows_subject: self.0 != "one-way",
+                subject_follows_actor: self.0 != "reverse-one-way",
             },
             self.0,
         ))
