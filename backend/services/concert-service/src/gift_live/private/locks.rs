@@ -121,43 +121,10 @@ pub(super) async fn metadata_in(
     issued: Option<&IssuedCode>,
 ) -> Result<Header, Status> {
     let i = request.identity;
-    let (low, high) = if i.actor < root.owner {
-        (i.actor, root.owner)
-    } else {
-        (root.owner, i.actor)
-    };
     // A real reservation's mutation policy has already materialized this pair.
     // Missing metadata fails closed; a prepared read must not create pair state
     // or enter a generic mutation/deferred-commit authority path.
-    let pair=sqlx::query("select revision,low_blocks_high,high_blocks_low from concert_relationship_pairs where event_id=$1 and low_user=$2 and high_user=$3 for share")
-        .bind(i.event).bind(low).bind(high).fetch_one(&mut *c).await.map_err(db)?;
-    if pair.try_get::<i64, _>("revision").map_err(db)? < 1
-        || pair.try_get::<bool, _>("low_blocks_high").map_err(db)?
-        || pair.try_get::<bool, _>("high_blocks_low").map_err(db)?
-    {
-        return Err(denied());
-    }
-    for user in [low, high] {
-        let state: Option<String> = sqlx::query_scalar(
-            "select state from concert_event_admissions where event_id=$1 and user_id=$2 for share",
-        )
-        .bind(i.event)
-        .bind(user)
-        .fetch_optional(&mut *c)
-        .await
-        .map_err(db)?;
-        let member: Option<Uuid> = sqlx::query_scalar(
-            "select user_id from concert_participants where event_id=$1 and user_id=$2 for share",
-        )
-        .bind(i.event)
-        .bind(user)
-        .fetch_optional(&mut *c)
-        .await
-        .map_err(db)?;
-        if state.as_deref() != Some("ACTIVE") || member != Some(user) {
-            return Err(denied());
-        }
-    }
+    local_visibility_in(c, i.event, i.actor, root.owner).await?;
     let r=sqlx::query("select recipient_id,state,revision,expires_at from concert_community_reservations where event_id=$1 and giveaway_id=$2 and reservation_id=$3 for share")
         .bind(i.event).bind(giveaway).bind(request.reservation).fetch_optional(&mut *c).await.map_err(db)?.ok_or_else(denied)?;
     let state: String = r.try_get("state").map_err(db)?;
@@ -232,6 +199,61 @@ pub(super) async fn metadata_in(
         code_generation: generation,
     })
 }
+/// Actual pair + admission visibility used by the Gift-private metadata read.
+pub(super) async fn local_visibility_in(
+    c: &mut PgConnection,
+    event: Uuid,
+    actor: Uuid,
+    owner: Uuid,
+) -> Result<(), Status> {
+    let (low, high) = if actor < owner {
+        (actor, owner)
+    } else {
+        (owner, actor)
+    };
+    let pair=sqlx::query("select revision,low_blocks_high,high_blocks_low from concert_relationship_pairs where event_id=$1 and low_user=$2 and high_user=$3 for share")
+        .bind(event).bind(low).bind(high).fetch_one(&mut *c).await.map_err(db)?;
+    if pair.try_get::<i64, _>("revision").map_err(db)? < 1
+        || pair.try_get::<bool, _>("low_blocks_high").map_err(db)?
+        || pair.try_get::<bool, _>("high_blocks_low").map_err(db)?
+    {
+        return Err(denied());
+    }
+    for user in [low, high] {
+        let state: Option<String> = sqlx::query_scalar(
+            "select state from concert_event_admissions where event_id=$1 and user_id=$2 for share",
+        )
+        .bind(event)
+        .bind(user)
+        .fetch_optional(&mut *c)
+        .await
+        .map_err(db)?;
+        let member: Option<Uuid> = sqlx::query_scalar(
+            "select user_id from concert_participants where event_id=$1 and user_id=$2 for share",
+        )
+        .bind(event)
+        .bind(user)
+        .fetch_optional(&mut *c)
+        .await
+        .map_err(db)?;
+        if state.as_deref() != Some("ACTIVE") || member != Some(user) {
+            return Err(denied());
+        }
+    }
+    Ok(())
+}
+
+#[cfg(test)]
+pub(crate) async fn probe_visible_in(
+    c: &mut PgConnection,
+    event: Uuid,
+    actor: Uuid,
+    owner: Uuid,
+) -> bool {
+    let _ = sqlx::query("select set_config('mcr.relationship_authority_until',(clock_timestamp()+interval '1 minute')::text,false)").execute(&mut *c).await;
+    local_visibility_in(c, event, actor, owner).await.is_ok()
+}
+
 /// Called only AFTER durable SDK register_child_intent has acknowledged. Every
 /// row was already locked; this is the first private content/secret SELECT.
 pub(super) async fn content_in(

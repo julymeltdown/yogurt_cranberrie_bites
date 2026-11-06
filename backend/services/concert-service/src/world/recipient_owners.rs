@@ -10,6 +10,8 @@ use chrono::{DateTime, Utc};
 use concert_application::world_ticket::WorldError;
 use concert_domain::relationship::{PolicyQuery, RelationshipError};
 pub(crate) use local::LocalRevision;
+#[cfg(test)]
+pub(crate) use local::probe_visible_in as probe_presence_visible_in;
 use sqlx::PgPool;
 use uuid::Uuid;
 

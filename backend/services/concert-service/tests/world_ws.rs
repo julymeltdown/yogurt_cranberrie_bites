@@ -737,6 +737,29 @@ async fn recipient_block_removes_the_subject_from_actual_socket_deltas() {
         }
     }
     assert!(removed);
+    // Unblocked control: clearing the same block restores the peer in the
+    // actual socket projection within one further invalidation.
+    {
+        let _f = h.authority.fence.lock().unwrap();
+        h.authority
+            .records
+            .lock()
+            .unwrap()
+            .blocked
+            .remove(&(id(1), id(2)));
+    }
+    let mut restored = false;
+    for _ in 0..8 {
+        let frame = value(&mut a).await;
+        if frame["upserts"]
+            .as_array()
+            .is_some_and(|v| v.iter().any(|p| p["userId"] == id(2).to_string()))
+        {
+            restored = true;
+            break;
+        }
+    }
+    assert!(restored, "unblocked peer must remain visible to the control client");
     h.close().await;
 }
 #[tokio::test]

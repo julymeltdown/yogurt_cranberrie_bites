@@ -138,9 +138,8 @@ impl ScopedIntroExecutor {
         // outage. A positive observation grants nothing: the actual current
         // owner enrollment and held PublicProfile child below remain mandatory.
         // Do not turn a generic Profile/guard failure into a skippable candidate.
-        let visible_locally: bool = sqlx::query_scalar("select exists(select 1 from public.concert_event_admissions a join public.concert_participants p using(event_id,user_id) where a.event_id=$1 and a.user_id=$2 and a.state='ACTIVE') and not exists(select 1 from public.concert_relationship_pairs where event_id=$1 and low_user=least($2,$3) and high_user=greatest($2,$3) and (low_blocks_high or high_blocks_low))")
-            .bind(context.event.uuid()).bind(expected.author.uuid()).bind(context.actor.uuid())
-            .fetch_one(&mut *c).await.map_err(|_| intro::IntroError::Unavailable)?;
+        let visible_locally =
+            local_visible_in(c, context.event, expected.author, context.actor).await?;
         if !visible_locally {
             return Err(intro::IntroError::NotFound);
         }
@@ -206,6 +205,28 @@ impl ScopedIntroExecutor {
         .map_err(|_| intro::IntroError::Unavailable)
     }
 }
+/// Actual local Intro visibility: active author admission and no pair block.
+pub(super) async fn local_visible_in(
+    c: &mut PgConnection,
+    event: concert_domain::EventId,
+    author: concert_domain::AuthUserId,
+    actor: concert_domain::AuthUserId,
+) -> Result<bool, intro::IntroError> {
+    sqlx::query_scalar("select exists(select 1 from public.concert_event_admissions a join public.concert_participants p using(event_id,user_id) where a.event_id=$1 and a.user_id=$2 and a.state='ACTIVE') and not exists(select 1 from public.concert_relationship_pairs where event_id=$1 and low_user=least($2,$3) and high_user=greatest($2,$3) and (low_blocks_high or high_blocks_low))")
+        .bind(event.uuid()).bind(author.uuid()).bind(actor.uuid())
+        .fetch_one(&mut *c).await.map_err(|_| intro::IntroError::Unavailable)
+}
+
+#[cfg(test)]
+pub(crate) async fn probe_visible_in(
+    c: &mut PgConnection,
+    event: concert_domain::EventId,
+    author: concert_domain::AuthUserId,
+    actor: concert_domain::AuthUserId,
+) -> bool {
+    local_visible_in(c, event, author, actor).await.unwrap_or(false)
+}
+
 fn relationship_error(error: concert_domain::relationship::RelationshipError) -> intro::IntroError {
     match error {
         concert_domain::relationship::RelationshipError::Denied => intro::IntroError::Denied,

@@ -1680,6 +1680,18 @@ async fn local_pair_in(
     }
 }
 
+#[cfg(test)]
+pub(crate) async fn probe_visible_in(
+    c: &mut PgConnection,
+    event: Uuid,
+    actor: Uuid,
+    subject: Uuid,
+) -> bool {
+    let _ = sqlx::query("select set_config('mcr.relationship_authority_until',(clock_timestamp()+interval '1 minute')::text,false)").execute(&mut *c).await;
+    local_subject_in(c, event, subject).await.is_ok()
+        && local_pair_in(c, event, actor, subject).await.is_ok()
+}
+
 fn guard_ready(
     guard: &Arc<dyn PartyLiveOwnerGuard>,
     binding: &PartyLiveBinding,

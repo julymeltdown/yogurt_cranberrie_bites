@@ -1,5 +1,7 @@
 //! SDK3 Gift-private child producer. Root owns route activation and settlement.
 mod locks;
+#[cfg(test)]
+pub(crate) use locks::probe_visible_in as probe_gift_visible_in;
 mod native;
 #[cfg(test)]
 mod native_tests;
