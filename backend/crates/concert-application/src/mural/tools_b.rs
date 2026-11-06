@@ -56,6 +56,10 @@ pub enum ToolError {
     UndoNotLatest,
     #[error("Recover the original unresolved action before another mutation")]
     Unresolved,
+    #[error("Wall moderation transition is not permitted")]
+    InvalidTransition,
+    #[error("Wall moderation is operator-only")]
+    Forbidden,
 }
 
 #[async_trait::async_trait]

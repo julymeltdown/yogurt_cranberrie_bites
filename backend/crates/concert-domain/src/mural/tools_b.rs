@@ -32,6 +32,103 @@ pub struct UndoAction {
     pub expected_revision: i64,
     pub target_action_id: Uuid,
 }
+
+/// Operator control actions on the incumbent Wall. The wire value is the exact
+/// frozen C04 vocabulary; no client invents another transition.
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "SCREAMING_SNAKE_CASE")]
+pub enum AdminAction {
+    Pause,
+    Resume,
+    Freeze,
+}
+
+fn reason_valid(reason: &str) -> bool {
+    (1..=500).contains(&reason.chars().count())
+        && !reason.trim().is_empty()
+        && !reason.chars().any(char::is_control)
+}
+
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct AdminControl {
+    pub expected_revision: i64,
+    pub action: AdminAction,
+    pub reason: String,
+}
+impl AdminControl {
+    pub fn valid(&self) -> bool {
+        (1..=crate::MAX_REVISION).contains(&self.expected_revision) && reason_valid(&self.reason)
+    }
+}
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct RegionBounds {
+    pub x_min: i32,
+    pub y_min: i32,
+    pub x_max_exclusive: i32,
+    pub y_max_exclusive: i32,
+}
+impl RegionBounds {
+    pub fn valid(self) -> bool {
+        (0..SIDE as i32).contains(&self.x_min)
+            && (0..SIDE as i32).contains(&self.y_min)
+            && (1..=SIDE as i32).contains(&self.x_max_exclusive)
+            && (1..=SIDE as i32).contains(&self.y_max_exclusive)
+            && self.x_min < self.x_max_exclusive
+            && self.y_min < self.y_max_exclusive
+    }
+}
+
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct AdminLock {
+    pub expected_revision: i64,
+    #[serde(flatten)]
+    pub region: RegionBounds,
+    pub locked: bool,
+    pub reason: String,
+}
+impl AdminLock {
+    pub fn valid(&self) -> bool {
+        (1..=crate::MAX_REVISION).contains(&self.expected_revision)
+            && self.region.valid()
+            && reason_valid(&self.reason)
+    }
+}
+
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(deny_unknown_fields)]
+pub struct AdminRestore {
+    pub expected_revision: i64,
+    pub snapshot_id: Uuid,
+    pub reason: String,
+}
+impl AdminRestore {
+    pub fn valid(&self) -> bool {
+        (1..=crate::MAX_REVISION).contains(&self.expected_revision)
+            && !self.snapshot_id.is_nil()
+            && reason_valid(&self.reason)
+    }
+}
+
+/// Closed transition table. Frozen is terminal; restore content is only applied
+/// while paused and leaves the Wall paused for an explicit operator resume.
+pub fn control_transition(
+    state: super::MuralState,
+    action: AdminAction,
+) -> Option<super::MuralState> {
+    use super::MuralState;
+    match (state, action) {
+        (MuralState::Editable, AdminAction::Pause) => Some(MuralState::Paused),
+        (MuralState::Paused, AdminAction::Resume) => Some(MuralState::Editable),
+        (MuralState::Editable | MuralState::Paused, AdminAction::Freeze) => {
+            Some(MuralState::Frozen)
+        }
+        _ => None,
+    }
+}
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum ActionKind {

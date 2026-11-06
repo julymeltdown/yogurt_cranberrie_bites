@@ -16,6 +16,10 @@ pub enum WallOperation {
     Erase,
     Fill,
     Undo,
+    AdminState,
+    AdminControl,
+    AdminLocks,
+    AdminRestore,
 }
 impl WallOperation {
     pub fn id(self) -> &'static str {
@@ -30,14 +34,44 @@ impl WallOperation {
             Self::Erase => "eraseConcertMuralPixel",
             Self::Fill => "fillConcertMuralRegion",
             Self::Undo => "undoConcertMuralAction",
+            Self::AdminState => "getConcertAdminMural",
+            Self::AdminControl => "controlConcertMural",
+            Self::AdminLocks => "lockConcertMuralRegion",
+            Self::AdminRestore => "restoreConcertMural",
         }
     }
     pub fn mutation(self) -> bool {
-        matches!(self, Self::Pixel | Self::Erase | Self::Fill | Self::Undo)
+        matches!(
+            self,
+            Self::Pixel
+                | Self::Erase
+                | Self::Fill
+                | Self::Undo
+                | Self::AdminControl
+                | Self::AdminLocks
+                | Self::AdminRestore
+        )
+    }
+    pub fn admin(self) -> bool {
+        matches!(
+            self,
+            Self::AdminState | Self::AdminControl | Self::AdminLocks | Self::AdminRestore
+        )
     }
     pub fn parse(event: Uuid, method: &str, target: &str) -> Result<Self, Status> {
         if method == "GET" && status_query(event, target).is_ok() {
             return Ok(Self::Status);
+        }
+        if let Some(suffix) =
+            target.strip_prefix(&format!("/api/concert/events/{event}/admin/mural"))
+        {
+            return match (method, suffix) {
+                ("GET", "") => Ok(Self::AdminState),
+                ("POST", "/control") => Ok(Self::AdminControl),
+                ("POST", "/locks") => Ok(Self::AdminLocks),
+                ("POST", "/restore") => Ok(Self::AdminRestore),
+                _ => Err(invalid()),
+            };
         }
         let prefix = format!("/api/concert/events/{event}/mural/");
         let suffix = target.strip_prefix(&prefix).ok_or_else(invalid)?;
@@ -137,6 +171,9 @@ pub fn status_query(
             | "eraseConcertMuralPixel"
             | "fillConcertMuralRegion"
             | "undoConcertMuralAction"
+            | "controlConcertMural"
+            | "lockConcertMuralRegion"
+            | "restoreConcertMural"
     ) {
         return Err(invalid());
     }
