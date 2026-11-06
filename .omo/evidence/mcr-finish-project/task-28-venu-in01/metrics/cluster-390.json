@@ -1,0 +1,92 @@
+{
+  "viewport": {
+    "width": 390,
+    "height": 844,
+    "dpr": 1
+  },
+  "overflowX": false,
+  "tabs": {
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 55
+  },
+  "tab": {
+    "x": 4,
+    "y": 5,
+    "width": 126,
+    "height": 44
+  },
+  "map": {
+    "x": 0,
+    "y": 55,
+    "width": 390,
+    "height": 300
+  },
+  "sheet": {
+    "x": 0,
+    "y": 355,
+    "width": 390,
+    "height": 434
+  },
+  "sharing": {
+    "x": 0,
+    "y": 789,
+    "width": 390,
+    "height": 55
+  },
+  "friendRows": [],
+  "friendPortrait": null,
+  "noteCards": [],
+  "notePortrait": null,
+  "selectedPortrait": null,
+  "composer": null,
+  "primary": null,
+  "meeting": null,
+  "controls": 38,
+  "minHit": 44,
+  "regions": {
+    "map": {
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 844
+    },
+    "tabPanel": {
+      "x": 0,
+      "y": 55,
+      "width": 390,
+      "height": 734
+    },
+    "canvas": {
+      "x": 0,
+      "y": 55,
+      "width": 390,
+      "height": 300
+    },
+    "friends": null,
+    "sheet": {
+      "x": 0,
+      "y": 355,
+      "width": 390,
+      "height": 434
+    },
+    "noteCard": null,
+    "composer": null,
+    "sharing": {
+      "x": 0,
+      "y": 789,
+      "width": 390,
+      "height": 55
+    },
+    "friendDetail": null
+  },
+  "fonts": {
+    "name": null,
+    "place": null,
+    "source": null,
+    "body": null,
+    "noteMeta": null
+  },
+  "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nCharacter unavailable\nCharacter unavailable\n3 friends\nCharacter unavailable\nwaydown\nCharacter unavailable\nYou\n+\n−\n⌖\n↺\n◎\n3 friends\n×\nCharacter unavailable\ninkparade\nCharacter unavailable\nhelena\nCharacter unavailable\nbulletxs\nSharing with friends\nPAUSE\nREVOKE"
+}

@@ -1,0 +1,5150 @@
+{
+  "result": "PASS",
+  "qualification": "CONTROLLED_FIXTURE",
+  "generatedAt": "2026-11-06T11:32:38.543Z",
+  "note": "Actual VenueShellFeatures production sources, frozen clients, siteplan loader and Map/Notes/Meeting panels. Deterministic session, community clock, Location, landmark, Note and Meeting transport rows. No live backend, device, physical venue or character runtime.",
+  "widths": [
+    {
+      "width": 360,
+      "height": 800
+    },
+    {
+      "width": 390,
+      "height": 844
+    },
+    {
+      "width": 430,
+      "height": 932
+    }
+  ],
+  "states": {
+    "whole-plan-360": {
+      "viewport": {
+        "width": 360,
+        "height": 800,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 116,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 360,
+        "height": 690
+      },
+      "sheet": null,
+      "sharing": {
+        "x": 0,
+        "y": 745,
+        "width": 360,
+        "height": 55
+      },
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": null,
+      "meeting": null,
+      "controls": 31,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 800
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 360,
+          "height": 690
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 360,
+          "height": 690
+        },
+        "friends": null,
+        "sheet": null,
+        "noteCard": null,
+        "composer": null,
+        "sharing": {
+          "x": 0,
+          "y": 745,
+          "width": 360,
+          "height": 55
+        },
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nhelena\n+\n−\n⌖\n↺\nPhone location is off\nSHARE LOCATION"
+    },
+    "selected-friend-360": {
+      "viewport": {
+        "width": 360,
+        "height": 800,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 116,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 360,
+        "height": 300
+      },
+      "sheet": {
+        "x": 0,
+        "y": 355,
+        "width": 360,
+        "height": 390
+      },
+      "sharing": {
+        "x": 0,
+        "y": 745,
+        "width": 360,
+        "height": 55
+      },
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": {
+        "x": 7,
+        "y": 368,
+        "width": 64,
+        "height": 64
+      },
+      "composer": null,
+      "primary": {
+        "x": 183.5,
+        "y": 495.1,
+        "width": 169.5,
+        "height": 44
+      },
+      "meeting": null,
+      "controls": 39,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 800
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 360,
+          "height": 690
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 360,
+          "height": 300
+        },
+        "friends": null,
+        "sheet": {
+          "x": 0,
+          "y": 355,
+          "width": 360,
+          "height": 390
+        },
+        "noteCard": null,
+        "composer": null,
+        "sharing": {
+          "x": 0,
+          "y": 745,
+          "width": 360,
+          "height": 55
+        },
+        "friendDetail": {
+          "x": 7,
+          "y": 363,
+          "width": 346,
+          "height": 74.1
+        }
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nCharacter unavailable\nCharacter unavailable\n3 friends\nCharacter unavailable\nwaydown\nCharacter unavailable\nYou\n+\n−\n⌖\n↺\n◎\ninkparade\n×\nCharacter unavailable\ninkparade\n\n⌖ Near MAIN GATE\n\nCheck-in · 20s ago\nMeeting place\nChoose a fixed landmark\nMAIN GATE\nSUB GATE\nMESSAGE\nMEET HERE\nASK LOCATION\nSharing with friends\nPAUSE\nREVOKE"
+    },
+    "conversation-360": {
+      "viewport": {
+        "width": 360,
+        "height": 800,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": null,
+      "tab": null,
+      "map": null,
+      "sheet": null,
+      "sharing": null,
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": null,
+      "meeting": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 607
+      },
+      "controls": 6,
+      "minHit": 44,
+      "regions": {
+        "map": null,
+        "tabPanel": null,
+        "canvas": null,
+        "friends": null,
+        "sheet": null,
+        "noteCard": null,
+        "composer": null,
+        "sharing": null,
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "REAL MEETING PLACE\nAll invitations\nClose\nMeet at MAIN GATE\n+\nYou + inkparade\n\nUse the shared place below to meet up.\n\nMessaging is authorized by your current friendship and event access. An invitation is optional context and never grants access.\n\nYou\n4:58 PM\n\nI am near Main Gate. Meet here?\n\nMAIN GATE\nView on map\ninkparade\n4:59 PM\n\nOn my way.\n\nMeeting accepted\n✓\nMessage\n\nUp to 2,000 characters.\n\nSend message\nINVITATION\n\nA shared place is fixed. A friend’s phone location or virtual position does not confirm arrival."
+    },
+    "place-card-360": {
+      "viewport": {
+        "width": 360,
+        "height": 800,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 116,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 360,
+        "height": 300
+      },
+      "sheet": {
+        "x": 0,
+        "y": 355,
+        "width": 360,
+        "height": 390
+      },
+      "sharing": {
+        "x": 0,
+        "y": 745,
+        "width": 360,
+        "height": 55
+      },
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": {
+        "x": 183.5,
+        "y": 621,
+        "width": 169.5,
+        "height": 44
+      },
+      "meeting": null,
+      "controls": 41,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 800
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 360,
+          "height": 690
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 360,
+          "height": 300
+        },
+        "friends": null,
+        "sheet": {
+          "x": 0,
+          "y": 355,
+          "width": 360,
+          "height": 390
+        },
+        "noteCard": null,
+        "composer": null,
+        "sharing": {
+          "x": 0,
+          "y": 745,
+          "width": 360,
+          "height": 55
+        },
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nCharacter unavailable\nCharacter unavailable\n3 friends\nCharacter unavailable\nwaydown\nCharacter unavailable\nYou\n+\n−\n⌖\n↺\n◎\n⌖ MAIN GATE\n×\n\nFixed landmark on the illustrated Paradise City siteplan.\n\nCurrent meeting context supplied by the venue adapter.\n\nIllustration source: Photo 5. Uncalibrated illustration; physical placement unverified.\n\nView on map\nCHECK IN\nMeet with\nChoose a friend\ninkparade\nhelena\nbulletxs\nwaydown\nMESSAGE\nMEET HERE\n+ LEAVE A NOTE\nSharing with friends\nPAUSE\nREVOKE"
+    },
+    "friends-360": {
+      "viewport": {
+        "width": 360,
+        "height": 800,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 116,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 360,
+        "height": 260
+      },
+      "sheet": null,
+      "sharing": {
+        "x": 0,
+        "y": 745,
+        "width": 360,
+        "height": 55
+      },
+      "friendRows": [
+        {
+          "x": 5,
+          "y": 321,
+          "width": 350,
+          "height": 74
+        },
+        {
+          "x": 5,
+          "y": 399,
+          "width": 350,
+          "height": 74
+        },
+        {
+          "x": 5,
+          "y": 477,
+          "width": 350,
+          "height": 74
+        },
+        {
+          "x": 5,
+          "y": 555,
+          "width": 350,
+          "height": 74
+        }
+      ],
+      "friendPortrait": {
+        "x": 10,
+        "y": 330,
+        "width": 56,
+        "height": 56
+      },
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": null,
+      "meeting": null,
+      "controls": 39,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 800
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 360,
+          "height": 690
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 360,
+          "height": 260
+        },
+        "friends": {
+          "x": 0,
+          "y": 315,
+          "width": 360,
+          "height": 324
+        },
+        "sheet": null,
+        "noteCard": null,
+        "composer": null,
+        "sharing": {
+          "x": 0,
+          "y": 745,
+          "width": 360,
+          "height": 55
+        },
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": "18px",
+        "place": "14px",
+        "source": "10px",
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nhelena\n+\n−\n⌖\n↺\nCharacter unavailable\ninkparade\n⌖ Location unavailable\nPhone location · updated 20s ago\nVIEW\nCharacter unavailable\nhelena\n⌖ Near SUB GATE\nCheck-in · 8m ago\nVIEW\nCharacter unavailable\nbulletxs\n⌖ Location unavailable\nLast update · 12m ago\nASK LOCATION\nCharacter unavailable\nwaydown\n⌖ Location unavailable\nLocation unavailable\nASK LOCATION\nPhone location is off\nSHARE LOCATION"
+    },
+    "map-markers-360": {
+      "viewport": {
+        "width": 360,
+        "height": 800,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 116,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 360,
+        "height": 690
+      },
+      "sheet": null,
+      "sharing": {
+        "x": 0,
+        "y": 745,
+        "width": 360,
+        "height": 55
+      },
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": null,
+      "meeting": null,
+      "controls": 34,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 800
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 360,
+          "height": 690
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 360,
+          "height": 690
+        },
+        "friends": null,
+        "sheet": null,
+        "noteCard": null,
+        "composer": null,
+        "sharing": {
+          "x": 0,
+          "y": 745,
+          "width": 360,
+          "height": 55
+        },
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nCharacter unavailable\nCharacter unavailable\n3 friends\nCharacter unavailable\nwaydown\nCharacter unavailable\nYou\n+\n−\n⌖\n↺\n◎\nSharing with friends\nPAUSE\nREVOKE"
+    },
+    "invitation-pending-360": {
+      "viewport": {
+        "width": 360,
+        "height": 800,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": null,
+      "tab": null,
+      "map": null,
+      "sheet": null,
+      "sharing": null,
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": null,
+      "meeting": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 420.8
+      },
+      "controls": 6,
+      "minHit": 44,
+      "regions": {
+        "map": null,
+        "tabPanel": null,
+        "canvas": null,
+        "friends": null,
+        "sheet": null,
+        "noteCard": null,
+        "composer": null,
+        "sharing": null,
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "REAL MEETING PLACE\nAll invitations\nClose\nMeet at MAIN GATE?\n\nYou + inkparade\n\nDECLINE\nACCEPT\n\nInvitation pending\n\nInvitee consent · 24-hour expiry · Host revoke\n\nMAIN GATE\nView on map\nMessage about this place\n\nA shared place is fixed. A friend’s phone location or virtual position does not confirm arrival."
+    },
+    "notes-selected-360": {
+      "viewport": {
+        "width": 360,
+        "height": 800,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 116,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 360,
+        "height": 260
+      },
+      "sheet": {
+        "x": 0,
+        "y": 315,
+        "width": 360,
+        "height": 485
+      },
+      "sharing": null,
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [
+        {
+          "x": 7,
+          "y": 473,
+          "width": 346,
+          "height": 116.6
+        },
+        {
+          "x": 7,
+          "y": 595.6,
+          "width": 346,
+          "height": 116.6
+        }
+      ],
+      "notePortrait": {
+        "x": 12,
+        "y": 478,
+        "width": 48,
+        "height": 48
+      },
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": {
+        "x": 126.3,
+        "y": 540.6,
+        "width": 108.3,
+        "height": 44
+      },
+      "meeting": null,
+      "controls": 41,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 800
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 360,
+          "height": 745
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 360,
+          "height": 260
+        },
+        "friends": null,
+        "sheet": {
+          "x": 0,
+          "y": 315,
+          "width": 360,
+          "height": 485
+        },
+        "noteCard": {
+          "x": 7,
+          "y": 473,
+          "width": 346,
+          "height": 116.6
+        },
+        "composer": null,
+        "sharing": null,
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": "16px",
+        "place": null,
+        "source": null,
+        "body": "14px",
+        "noteMeta": "13px"
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nhelena\nMAIN GATE\n✉ 2\n+\n−\n⌖\n↺\nRead notes at\nSTAGE\nSTANDING A\nSTANDING B\nFOH\nMAIN GATE\nSUB GATE\nPARADISE CITY STATION\nCHROMA\nSTUDIO PARADISE\nSPA CIMER\nWONDERBOX\nART PARADISO / PLAZA\nPHOTO ZONE\nA QUEUE 1~3000\nB QUEUE 1~3000\nA+B QUEUE 3001+\nP1\nP2\nR1\nR2\nTOILETS\nMedical cross symbol\nREAD NOTES\nMAIN GATE / 2 NOTES\n×\nCharacter unavailable\ninkparade\n5m ago\n\nTrading stickers here until 18:30.\n\nFriends · expires in 1h · 1 reply\nREPLY\nMEET HERE\nREAD REPLIES\nCharacter unavailable\nFixture fan\n41m ago\n\nThis"
+    },
+    "composer-friends-360": {
+      "viewport": {
+        "width": 360,
+        "height": 800,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 116,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 360,
+        "height": 260
+      },
+      "sheet": {
+        "x": 0,
+        "y": 315,
+        "width": 360,
+        "height": 485
+      },
+      "sharing": null,
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": {
+        "x": 0,
+        "y": 315,
+        "width": 360,
+        "height": 485
+      },
+      "primary": {
+        "x": 7,
+        "y": 620,
+        "width": 346,
+        "height": 44
+      },
+      "meeting": null,
+      "controls": 38,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 800
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 360,
+          "height": 745
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 360,
+          "height": 260
+        },
+        "friends": null,
+        "sheet": {
+          "x": 0,
+          "y": 315,
+          "width": 360,
+          "height": 485
+        },
+        "noteCard": null,
+        "composer": {
+          "x": 0,
+          "y": 315,
+          "width": 360,
+          "height": 485
+        },
+        "sharing": null,
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nhelena\nMAIN GATE\n✉ 2\n+\n−\n⌖\n↺\nLeave a note\n×\nPlace\nMAIN GATE\nSUB GATE\nPARADISE CITY STATION\nART PARADISO / PLAZA\nNote text\nVisible to\nFRIENDS\nEVERYONE\nExpires after\n1 HOUR\nEND OF DAY\n+ POST NOTE"
+    },
+    "markers-360": {
+      "viewport": {
+        "width": 360,
+        "height": 800,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 116,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 360,
+        "height": 260
+      },
+      "sheet": {
+        "x": 0,
+        "y": 315,
+        "width": 360,
+        "height": 485
+      },
+      "sharing": null,
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": {
+        "x": 7,
+        "y": 504.5,
+        "width": 346,
+        "height": 44
+      },
+      "meeting": null,
+      "controls": 37,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 800
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 360,
+          "height": 745
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 360,
+          "height": 260
+        },
+        "friends": null,
+        "sheet": {
+          "x": 0,
+          "y": 315,
+          "width": 360,
+          "height": 485
+        },
+        "noteCard": null,
+        "composer": null,
+        "sharing": null,
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nCharacter unavailable\nCharacter unavailable\n3 friends\nCharacter unavailable\nwaydown\nCharacter unavailable\nYou\nMAIN GATE\n✉ 2\n+\n−\n⌖\n↺\n◎\nMAIN GATE\n2\nRead notes at\nSTAGE\nSTANDING A\nSTANDING B\nFOH\nMAIN GATE\nSUB GATE\nPARADISE CITY STATION\nCHROMA\nSTUDIO PARADISE\nSPA CIMER\nWONDERBOX\nART PARADISO / PLAZA\nPHOTO ZONE\nA QUEUE 1~3000\nB QUEUE 1~3000\nA+B QUEUE 3001+\nP1\nP2\nR1\nR2\nTOILETS\nMedical cross symbol\nREAD NOTES\n\nChoose a place to read current notes.\n\n+ NEW NOTE"
+    },
+    "composer-everyone-360": {
+      "viewport": {
+        "width": 360,
+        "height": 800,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 116,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 360,
+        "height": 260
+      },
+      "sheet": {
+        "x": 0,
+        "y": 315,
+        "width": 360,
+        "height": 485
+      },
+      "sharing": null,
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": {
+        "x": 0,
+        "y": 315,
+        "width": 360,
+        "height": 485
+      },
+      "primary": {
+        "x": 7,
+        "y": 620,
+        "width": 346,
+        "height": 44
+      },
+      "meeting": null,
+      "controls": 38,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 800
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 360,
+          "height": 745
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 360,
+          "height": 260
+        },
+        "friends": null,
+        "sheet": {
+          "x": 0,
+          "y": 315,
+          "width": 360,
+          "height": 485
+        },
+        "noteCard": null,
+        "composer": {
+          "x": 0,
+          "y": 315,
+          "width": 360,
+          "height": 485
+        },
+        "sharing": null,
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nhelena\nMAIN GATE\n✉ 2\n+\n−\n⌖\n↺\nLeave a note\n×\nPlace\nMAIN GATE\nSUB GATE\nPARADISE CITY STATION\nART PARADISO / PLAZA\nNote text\nVisible to\nFRIENDS\nEVERYONE\nExpires after\n1 HOUR\nEND OF DAY\n+ POST NOTE"
+    },
+    "reply-360": {
+      "viewport": {
+        "width": 360,
+        "height": 800,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 116,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 360,
+        "height": 260
+      },
+      "sheet": {
+        "x": 0,
+        "y": 315,
+        "width": 360,
+        "height": 525.2
+      },
+      "sharing": null,
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [
+        {
+          "x": 7,
+          "y": 473,
+          "width": 346,
+          "height": 116.6
+        },
+        {
+          "x": 7,
+          "y": 595.6,
+          "width": 346,
+          "height": 180.6
+        }
+      ],
+      "notePortrait": {
+        "x": 12,
+        "y": 478,
+        "width": 48,
+        "height": 48
+      },
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": {
+        "x": 126,
+        "y": 540.6,
+        "width": 108,
+        "height": 44
+      },
+      "meeting": null,
+      "controls": 40,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 800
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 360,
+          "height": 785.2
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 360,
+          "height": 260
+        },
+        "friends": null,
+        "sheet": {
+          "x": 0,
+          "y": 315,
+          "width": 360,
+          "height": 525.2
+        },
+        "noteCard": {
+          "x": 7,
+          "y": 473,
+          "width": 346,
+          "height": 116.6
+        },
+        "composer": null,
+        "sharing": null,
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": "16px",
+        "place": null,
+        "source": null,
+        "body": "14px",
+        "noteMeta": "13px"
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nhelena\nMAIN GATE\n✉ 2\n+\n−\n⌖\n↺\nRead notes at\nSTAGE\nSTANDING A\nSTANDING B\nFOH\nMAIN GATE\nSUB GATE\nPARADISE CITY STATION\nCHROMA\nSTUDIO PARADISE\nSPA CIMER\nWONDERBOX\nART PARADISO / PLAZA\nPHOTO ZONE\nA QUEUE 1~3000\nB QUEUE 1~3000\nA+B QUEUE 3001+\nP1\nP2\nR1\nR2\nTOILETS\nMedical cross symbol\nREAD NOTES\nMAIN GATE / 2 NOTES\n×\nCharacter unavailable\nFixture fan\n41m ago\n\nThis notice expires shortly.\n\nEveryone · expires in 1h · 0 replies\nREPLY\nMEET HERE\nWITHDRAW\nCharacter unavailable\ninkparade\n5m ago\n\nTrading sti"
+    },
+    "cluster-360": {
+      "viewport": {
+        "width": 360,
+        "height": 800,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 116,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 360,
+        "height": 300
+      },
+      "sheet": {
+        "x": 0,
+        "y": 355,
+        "width": 360,
+        "height": 390
+      },
+      "sharing": {
+        "x": 0,
+        "y": 745,
+        "width": 360,
+        "height": 55
+      },
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": null,
+      "meeting": null,
+      "controls": 38,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 800
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 360,
+          "height": 690
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 360,
+          "height": 300
+        },
+        "friends": null,
+        "sheet": {
+          "x": 0,
+          "y": 355,
+          "width": 360,
+          "height": 390
+        },
+        "noteCard": null,
+        "composer": null,
+        "sharing": {
+          "x": 0,
+          "y": 745,
+          "width": 360,
+          "height": 55
+        },
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nCharacter unavailable\nCharacter unavailable\n3 friends\nCharacter unavailable\nwaydown\nCharacter unavailable\nYou\n+\n−\n⌖\n↺\n◎\n3 friends\n×\nCharacter unavailable\ninkparade\nCharacter unavailable\nhelena\nCharacter unavailable\nbulletxs\nSharing with friends\nPAUSE\nREVOKE"
+    },
+    "sharing-active-360": {
+      "viewport": {
+        "width": 360,
+        "height": 800,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 116,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 360,
+        "height": 690
+      },
+      "sheet": null,
+      "sharing": {
+        "x": 0,
+        "y": 745,
+        "width": 360,
+        "height": 55
+      },
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": null,
+      "meeting": null,
+      "controls": 34,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 800
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 360,
+          "height": 690
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 360,
+          "height": 690
+        },
+        "friends": null,
+        "sheet": null,
+        "noteCard": null,
+        "composer": null,
+        "sharing": {
+          "x": 0,
+          "y": 745,
+          "width": 360,
+          "height": 55
+        },
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nCharacter unavailable\nCharacter unavailable\n3 friends\nCharacter unavailable\nwaydown\nCharacter unavailable\nYou\n+\n−\n⌖\n↺\n◎\nSharing with friends\nPAUSE\nREVOKE"
+    },
+    "sharing-consent-360": {
+      "viewport": {
+        "width": 360,
+        "height": 800,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 116,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 360,
+        "height": 465
+      },
+      "sheet": null,
+      "sharing": {
+        "x": 0,
+        "y": 520,
+        "width": 360,
+        "height": 55
+      },
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": {
+        "x": 10,
+        "y": 746,
+        "width": 154,
+        "height": 44
+      },
+      "meeting": null,
+      "controls": 32,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 800
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 360,
+          "height": 465
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 360,
+          "height": 465
+        },
+        "friends": null,
+        "sheet": null,
+        "noteCard": null,
+        "composer": null,
+        "sharing": {
+          "x": 0,
+          "y": 520,
+          "width": 360,
+          "height": 55
+        },
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nhelena\n+\n−\n⌖\n↺\nPhone location is off\nSHARE LOCATION\n\nShare real phone location with authorized friends. This is separate from your virtual World position and from device permission. Your browser asks for permission only after you continue.\n\nI want to share my phone location.\nAllow phone location"
+    },
+    "selected-phone-360": {
+      "viewport": {
+        "width": 360,
+        "height": 800,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 116,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 360,
+        "height": 260
+      },
+      "sheet": {
+        "x": 0,
+        "y": 315,
+        "width": 360,
+        "height": 430
+      },
+      "sharing": {
+        "x": 0,
+        "y": 745,
+        "width": 360,
+        "height": 55
+      },
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": {
+        "x": 7,
+        "y": 328,
+        "width": 64,
+        "height": 64
+      },
+      "composer": null,
+      "primary": {
+        "x": 183.5,
+        "y": 455.1,
+        "width": 169.5,
+        "height": 44
+      },
+      "meeting": null,
+      "controls": 36,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 800
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 360,
+          "height": 690
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 360,
+          "height": 260
+        },
+        "friends": null,
+        "sheet": {
+          "x": 0,
+          "y": 315,
+          "width": 360,
+          "height": 430
+        },
+        "noteCard": null,
+        "composer": null,
+        "sharing": {
+          "x": 0,
+          "y": 745,
+          "width": 360,
+          "height": 55
+        },
+        "friendDetail": {
+          "x": 7,
+          "y": 323,
+          "width": 346,
+          "height": 74.1
+        }
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nhelena\n+\n−\n⌖\n↺\ninkparade\n×\nCharacter unavailable\ninkparade\n\n⌖ Location unavailable\n\nPhone location · updated 20s ago\nMeeting place\nChoose a fixed landmark\nMAIN GATE\nSUB GATE\nMESSAGE\nMEET HERE\nASK LOCATION\nPhone location is off\nSHARE LOCATION"
+    },
+    "invite-360": {
+      "viewport": {
+        "width": 360,
+        "height": 800,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 116,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 360,
+        "height": 260
+      },
+      "sheet": null,
+      "sharing": {
+        "x": 0,
+        "y": 745,
+        "width": 360,
+        "height": 55
+      },
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": null,
+      "meeting": {
+        "x": 0,
+        "y": 315,
+        "width": 360,
+        "height": 412.8
+      },
+      "controls": 38,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 800
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 360,
+          "height": 690
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 360,
+          "height": 260
+        },
+        "friends": null,
+        "sheet": null,
+        "noteCard": null,
+        "composer": null,
+        "sharing": {
+          "x": 0,
+          "y": 745,
+          "width": 360,
+          "height": 55
+        },
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nCharacter unavailable\nCharacter unavailable\n3 friends\nCharacter unavailable\nwaydown\nCharacter unavailable\nYou\n+\n−\n⌖\n↺\n◎\nREAL MEETING PLACE\nClose\nMeet at MAIN GATE?\n\nYou + inkparade\n\nSEND INVITATION\n\nInvite your friend to this fixed meeting place.\n\nInvitee consent · 24-hour expiry · Host revoke\n\nMAIN GATE\nView on map\nMessage about this place\n\nA shared place is fixed. A friend’s phone location or virtual position does not confirm arrival.\n\nSharing with friends\nPAUSE\nREVOKE"
+    },
+    "notes-360": {
+      "viewport": {
+        "width": 360,
+        "height": 800,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 116,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 360,
+        "height": 260
+      },
+      "sheet": {
+        "x": 0,
+        "y": 315,
+        "width": 360,
+        "height": 485
+      },
+      "sharing": null,
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": {
+        "x": 7,
+        "y": 504.5,
+        "width": 346,
+        "height": 44
+      },
+      "meeting": null,
+      "controls": 35,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 800
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 360,
+          "height": 745
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 360,
+          "height": 260
+        },
+        "friends": null,
+        "sheet": {
+          "x": 0,
+          "y": 315,
+          "width": 360,
+          "height": 485
+        },
+        "noteCard": null,
+        "composer": null,
+        "sharing": null,
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nhelena\nMAIN GATE\n✉ 2\n+\n−\n⌖\n↺\nMAIN GATE\n2\nRead notes at\nSTAGE\nSTANDING A\nSTANDING B\nFOH\nMAIN GATE\nSUB GATE\nPARADISE CITY STATION\nCHROMA\nSTUDIO PARADISE\nSPA CIMER\nWONDERBOX\nART PARADISO / PLAZA\nPHOTO ZONE\nA QUEUE 1~3000\nB QUEUE 1~3000\nA+B QUEUE 3001+\nP1\nP2\nR1\nR2\nTOILETS\nMedical cross symbol\nREAD NOTES\n\nChoose a place to read current notes.\n\n+ NEW NOTE"
+    },
+    "unavailable-360": {
+      "viewport": {
+        "width": 360,
+        "height": 800,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 360,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 116,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 172,
+        "width": 360,
+        "height": 573
+      },
+      "sheet": null,
+      "sharing": {
+        "x": 0,
+        "y": 745,
+        "width": 360,
+        "height": 55
+      },
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": null,
+      "meeting": null,
+      "controls": 31,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 800
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 172,
+          "width": 360,
+          "height": 573
+        },
+        "canvas": {
+          "x": 0,
+          "y": 172,
+          "width": 360,
+          "height": 573
+        },
+        "friends": null,
+        "sheet": null,
+        "noteCard": null,
+        "composer": null,
+        "sharing": {
+          "x": 0,
+          "y": 745,
+          "width": 360,
+          "height": 55
+        },
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\nFriends unavailable\n\nThe venue friendship authority is unavailable (503). Friend locations cannot be verified, so none are shown.\n\nTRY AGAIN\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n+\n−\n⌖\n↺\nPhone location is off\nSHARE LOCATION"
+    },
+    "whole-plan-390": {
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 126,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 390,
+        "height": 734
+      },
+      "sheet": null,
+      "sharing": {
+        "x": 0,
+        "y": 789,
+        "width": 390,
+        "height": 55
+      },
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": null,
+      "meeting": null,
+      "controls": 31,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 390,
+          "height": 734
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 390,
+          "height": 734
+        },
+        "friends": null,
+        "sheet": null,
+        "noteCard": null,
+        "composer": null,
+        "sharing": {
+          "x": 0,
+          "y": 789,
+          "width": 390,
+          "height": 55
+        },
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nhelena\n+\n−\n⌖\n↺\nPhone location is off\nSHARE LOCATION"
+    },
+    "selected-friend-390": {
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 126,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 390,
+        "height": 300
+      },
+      "sheet": {
+        "x": 0,
+        "y": 355,
+        "width": 390,
+        "height": 434
+      },
+      "sharing": {
+        "x": 0,
+        "y": 789,
+        "width": 390,
+        "height": 55
+      },
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": {
+        "x": 7,
+        "y": 368,
+        "width": 64,
+        "height": 64
+      },
+      "composer": null,
+      "primary": {
+        "x": 200,
+        "y": 495.1,
+        "width": 183,
+        "height": 44
+      },
+      "meeting": null,
+      "controls": 39,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 390,
+          "height": 734
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 390,
+          "height": 300
+        },
+        "friends": null,
+        "sheet": {
+          "x": 0,
+          "y": 355,
+          "width": 390,
+          "height": 434
+        },
+        "noteCard": null,
+        "composer": null,
+        "sharing": {
+          "x": 0,
+          "y": 789,
+          "width": 390,
+          "height": 55
+        },
+        "friendDetail": {
+          "x": 7,
+          "y": 363,
+          "width": 376,
+          "height": 74.1
+        }
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nCharacter unavailable\nCharacter unavailable\n3 friends\nCharacter unavailable\nwaydown\nCharacter unavailable\nYou\n+\n−\n⌖\n↺\n◎\ninkparade\n×\nCharacter unavailable\ninkparade\n\n⌖ Near MAIN GATE\n\nCheck-in · 20s ago\nMeeting place\nChoose a fixed landmark\nMAIN GATE\nSUB GATE\nMESSAGE\nMEET HERE\nASK LOCATION\nSharing with friends\nPAUSE\nREVOKE"
+    },
+    "conversation-390": {
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": null,
+      "tab": null,
+      "map": null,
+      "sheet": null,
+      "sharing": null,
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": null,
+      "meeting": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 614.3
+      },
+      "controls": 6,
+      "minHit": 44,
+      "regions": {
+        "map": null,
+        "tabPanel": null,
+        "canvas": null,
+        "friends": null,
+        "sheet": null,
+        "noteCard": null,
+        "composer": null,
+        "sharing": null,
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "REAL MEETING PLACE\nAll invitations\nClose\nMeet at MAIN GATE\n+\nYou + inkparade\n\nUse the shared place below to meet up.\n\nMessaging is authorized by your current friendship and event access. An invitation is optional context and never grants access.\n\nYou\n4:58 PM\n\nI am near Main Gate. Meet here?\n\nMAIN GATE\nView on map\ninkparade\n4:59 PM\n\nOn my way.\n\nMeeting accepted\n✓\nMessage\n\nUp to 2,000 characters.\n\nSend message\nINVITATION\n\nA shared place is fixed. A friend’s phone location or virtual position does not confirm arrival."
+    },
+    "place-card-390": {
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 126,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 390,
+        "height": 300
+      },
+      "sheet": {
+        "x": 0,
+        "y": 355,
+        "width": 390,
+        "height": 434
+      },
+      "sharing": {
+        "x": 0,
+        "y": 789,
+        "width": 390,
+        "height": 55
+      },
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": {
+        "x": 200,
+        "y": 621,
+        "width": 183,
+        "height": 44
+      },
+      "meeting": null,
+      "controls": 41,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 390,
+          "height": 734
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 390,
+          "height": 300
+        },
+        "friends": null,
+        "sheet": {
+          "x": 0,
+          "y": 355,
+          "width": 390,
+          "height": 434
+        },
+        "noteCard": null,
+        "composer": null,
+        "sharing": {
+          "x": 0,
+          "y": 789,
+          "width": 390,
+          "height": 55
+        },
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nCharacter unavailable\nCharacter unavailable\n3 friends\nCharacter unavailable\nwaydown\nCharacter unavailable\nYou\n+\n−\n⌖\n↺\n◎\n⌖ MAIN GATE\n×\n\nFixed landmark on the illustrated Paradise City siteplan.\n\nCurrent meeting context supplied by the venue adapter.\n\nIllustration source: Photo 5. Uncalibrated illustration; physical placement unverified.\n\nView on map\nCHECK IN\nMeet with\nChoose a friend\ninkparade\nhelena\nbulletxs\nwaydown\nMESSAGE\nMEET HERE\n+ LEAVE A NOTE\nSharing with friends\nPAUSE\nREVOKE"
+    },
+    "friends-390": {
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 126,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 390,
+        "height": 260
+      },
+      "sheet": null,
+      "sharing": {
+        "x": 0,
+        "y": 789,
+        "width": 390,
+        "height": 55
+      },
+      "friendRows": [
+        {
+          "x": 5,
+          "y": 321,
+          "width": 380,
+          "height": 74
+        },
+        {
+          "x": 5,
+          "y": 399,
+          "width": 380,
+          "height": 74
+        },
+        {
+          "x": 5,
+          "y": 477,
+          "width": 380,
+          "height": 74
+        },
+        {
+          "x": 5,
+          "y": 555,
+          "width": 380,
+          "height": 74
+        }
+      ],
+      "friendPortrait": {
+        "x": 12,
+        "y": 330,
+        "width": 56,
+        "height": 56
+      },
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": null,
+      "meeting": null,
+      "controls": 39,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 390,
+          "height": 734
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 390,
+          "height": 260
+        },
+        "friends": {
+          "x": 0,
+          "y": 315,
+          "width": 390,
+          "height": 324
+        },
+        "sheet": null,
+        "noteCard": null,
+        "composer": null,
+        "sharing": {
+          "x": 0,
+          "y": 789,
+          "width": 390,
+          "height": 55
+        },
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": "18px",
+        "place": "14px",
+        "source": "11px",
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nhelena\n+\n−\n⌖\n↺\nCharacter unavailable\ninkparade\n⌖ Location unavailable\nPhone location · updated 20s ago\nVIEW\nCharacter unavailable\nhelena\n⌖ Near SUB GATE\nCheck-in · 8m ago\nVIEW\nCharacter unavailable\nbulletxs\n⌖ Location unavailable\nLast update · 12m ago\nASK LOCATION\nCharacter unavailable\nwaydown\n⌖ Location unavailable\nLocation unavailable\nASK LOCATION\nPhone location is off\nSHARE LOCATION"
+    },
+    "map-markers-390": {
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 126,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 390,
+        "height": 734
+      },
+      "sheet": null,
+      "sharing": {
+        "x": 0,
+        "y": 789,
+        "width": 390,
+        "height": 55
+      },
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": null,
+      "meeting": null,
+      "controls": 34,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 390,
+          "height": 734
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 390,
+          "height": 734
+        },
+        "friends": null,
+        "sheet": null,
+        "noteCard": null,
+        "composer": null,
+        "sharing": {
+          "x": 0,
+          "y": 789,
+          "width": 390,
+          "height": 55
+        },
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nCharacter unavailable\nCharacter unavailable\n3 friends\nCharacter unavailable\nwaydown\nCharacter unavailable\nYou\n+\n−\n⌖\n↺\n◎\nSharing with friends\nPAUSE\nREVOKE"
+    },
+    "invitation-pending-390": {
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": null,
+      "tab": null,
+      "map": null,
+      "sheet": null,
+      "sharing": null,
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": null,
+      "meeting": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 434.4
+      },
+      "controls": 6,
+      "minHit": 44,
+      "regions": {
+        "map": null,
+        "tabPanel": null,
+        "canvas": null,
+        "friends": null,
+        "sheet": null,
+        "noteCard": null,
+        "composer": null,
+        "sharing": null,
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "REAL MEETING PLACE\nAll invitations\nClose\nMeet at MAIN GATE?\n\nYou + inkparade\n\nDECLINE\nACCEPT\n\nInvitation pending\n\nInvitee consent · 24-hour expiry · Host revoke\n\nMAIN GATE\nView on map\nMessage about this place\n\nA shared place is fixed. A friend’s phone location or virtual position does not confirm arrival."
+    },
+    "notes-selected-390": {
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 126,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 390,
+        "height": 260
+      },
+      "sheet": {
+        "x": 0,
+        "y": 315,
+        "width": 390,
+        "height": 529
+      },
+      "sharing": null,
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [
+        {
+          "x": 7,
+          "y": 473,
+          "width": 376,
+          "height": 116.6
+        },
+        {
+          "x": 7,
+          "y": 595.6,
+          "width": 376,
+          "height": 116.6
+        }
+      ],
+      "notePortrait": {
+        "x": 12,
+        "y": 478,
+        "width": 48,
+        "height": 48
+      },
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": {
+        "x": 136.3,
+        "y": 540.6,
+        "width": 118.3,
+        "height": 44
+      },
+      "meeting": null,
+      "controls": 41,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 390,
+          "height": 789
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 390,
+          "height": 260
+        },
+        "friends": null,
+        "sheet": {
+          "x": 0,
+          "y": 315,
+          "width": 390,
+          "height": 529
+        },
+        "noteCard": {
+          "x": 7,
+          "y": 473,
+          "width": 376,
+          "height": 116.6
+        },
+        "composer": null,
+        "sharing": null,
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": "16px",
+        "place": null,
+        "source": null,
+        "body": "14px",
+        "noteMeta": "13px"
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nhelena\nMAIN GATE\n✉ 2\n+\n−\n⌖\n↺\nRead notes at\nSTAGE\nSTANDING A\nSTANDING B\nFOH\nMAIN GATE\nSUB GATE\nPARADISE CITY STATION\nCHROMA\nSTUDIO PARADISE\nSPA CIMER\nWONDERBOX\nART PARADISO / PLAZA\nPHOTO ZONE\nA QUEUE 1~3000\nB QUEUE 1~3000\nA+B QUEUE 3001+\nP1\nP2\nR1\nR2\nTOILETS\nMedical cross symbol\nREAD NOTES\nMAIN GATE / 2 NOTES\n×\nCharacter unavailable\ninkparade\n5m ago\n\nTrading stickers here until 18:30.\n\nFriends · expires in 1h · 1 reply\nREPLY\nMEET HERE\nREAD REPLIES\nCharacter unavailable\nFixture fan\n41m ago\n\nThis"
+    },
+    "composer-friends-390": {
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 126,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 390,
+        "height": 260
+      },
+      "sheet": {
+        "x": 0,
+        "y": 315,
+        "width": 390,
+        "height": 529
+      },
+      "sharing": null,
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": {
+        "x": 0,
+        "y": 315,
+        "width": 390,
+        "height": 529
+      },
+      "primary": {
+        "x": 7,
+        "y": 620,
+        "width": 376,
+        "height": 44
+      },
+      "meeting": null,
+      "controls": 38,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 390,
+          "height": 789
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 390,
+          "height": 260
+        },
+        "friends": null,
+        "sheet": {
+          "x": 0,
+          "y": 315,
+          "width": 390,
+          "height": 529
+        },
+        "noteCard": null,
+        "composer": {
+          "x": 0,
+          "y": 315,
+          "width": 390,
+          "height": 529
+        },
+        "sharing": null,
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nhelena\nMAIN GATE\n✉ 2\n+\n−\n⌖\n↺\nLeave a note\n×\nPlace\nMAIN GATE\nSUB GATE\nPARADISE CITY STATION\nART PARADISO / PLAZA\nNote text\nVisible to\nFRIENDS\nEVERYONE\nExpires after\n1 HOUR\nEND OF DAY\n+ POST NOTE"
+    },
+    "markers-390": {
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 126,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 390,
+        "height": 260
+      },
+      "sheet": {
+        "x": 0,
+        "y": 315,
+        "width": 390,
+        "height": 529
+      },
+      "sharing": null,
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": {
+        "x": 7,
+        "y": 504.5,
+        "width": 376,
+        "height": 44
+      },
+      "meeting": null,
+      "controls": 37,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 390,
+          "height": 789
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 390,
+          "height": 260
+        },
+        "friends": null,
+        "sheet": {
+          "x": 0,
+          "y": 315,
+          "width": 390,
+          "height": 529
+        },
+        "noteCard": null,
+        "composer": null,
+        "sharing": null,
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nCharacter unavailable\nCharacter unavailable\n3 friends\nCharacter unavailable\nwaydown\nCharacter unavailable\nYou\nMAIN GATE\n✉ 2\n+\n−\n⌖\n↺\n◎\nMAIN GATE\n2\nRead notes at\nSTAGE\nSTANDING A\nSTANDING B\nFOH\nMAIN GATE\nSUB GATE\nPARADISE CITY STATION\nCHROMA\nSTUDIO PARADISE\nSPA CIMER\nWONDERBOX\nART PARADISO / PLAZA\nPHOTO ZONE\nA QUEUE 1~3000\nB QUEUE 1~3000\nA+B QUEUE 3001+\nP1\nP2\nR1\nR2\nTOILETS\nMedical cross symbol\nREAD NOTES\n\nChoose a place to read current notes.\n\n+ NEW NOTE"
+    },
+    "composer-everyone-390": {
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 126,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 390,
+        "height": 260
+      },
+      "sheet": {
+        "x": 0,
+        "y": 315,
+        "width": 390,
+        "height": 529
+      },
+      "sharing": null,
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": {
+        "x": 0,
+        "y": 315,
+        "width": 390,
+        "height": 529
+      },
+      "primary": {
+        "x": 7,
+        "y": 620,
+        "width": 376,
+        "height": 44
+      },
+      "meeting": null,
+      "controls": 38,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 390,
+          "height": 789
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 390,
+          "height": 260
+        },
+        "friends": null,
+        "sheet": {
+          "x": 0,
+          "y": 315,
+          "width": 390,
+          "height": 529
+        },
+        "noteCard": null,
+        "composer": {
+          "x": 0,
+          "y": 315,
+          "width": 390,
+          "height": 529
+        },
+        "sharing": null,
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nhelena\nMAIN GATE\n✉ 2\n+\n−\n⌖\n↺\nLeave a note\n×\nPlace\nMAIN GATE\nSUB GATE\nPARADISE CITY STATION\nART PARADISO / PLAZA\nNote text\nVisible to\nFRIENDS\nEVERYONE\nExpires after\n1 HOUR\nEND OF DAY\n+ POST NOTE"
+    },
+    "reply-390": {
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 126,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 390,
+        "height": 260
+      },
+      "sheet": {
+        "x": 0,
+        "y": 315,
+        "width": 390,
+        "height": 529
+      },
+      "sharing": null,
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [
+        {
+          "x": 7,
+          "y": 473,
+          "width": 376,
+          "height": 116.6
+        },
+        {
+          "x": 7,
+          "y": 595.6,
+          "width": 376,
+          "height": 180.6
+        }
+      ],
+      "notePortrait": {
+        "x": 12,
+        "y": 478,
+        "width": 48,
+        "height": 48
+      },
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": {
+        "x": 136,
+        "y": 540.6,
+        "width": 118,
+        "height": 44
+      },
+      "meeting": null,
+      "controls": 40,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 390,
+          "height": 789
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 390,
+          "height": 260
+        },
+        "friends": null,
+        "sheet": {
+          "x": 0,
+          "y": 315,
+          "width": 390,
+          "height": 529
+        },
+        "noteCard": {
+          "x": 7,
+          "y": 473,
+          "width": 376,
+          "height": 116.6
+        },
+        "composer": null,
+        "sharing": null,
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": "16px",
+        "place": null,
+        "source": null,
+        "body": "14px",
+        "noteMeta": "13px"
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nhelena\nMAIN GATE\n✉ 2\n+\n−\n⌖\n↺\nRead notes at\nSTAGE\nSTANDING A\nSTANDING B\nFOH\nMAIN GATE\nSUB GATE\nPARADISE CITY STATION\nCHROMA\nSTUDIO PARADISE\nSPA CIMER\nWONDERBOX\nART PARADISO / PLAZA\nPHOTO ZONE\nA QUEUE 1~3000\nB QUEUE 1~3000\nA+B QUEUE 3001+\nP1\nP2\nR1\nR2\nTOILETS\nMedical cross symbol\nREAD NOTES\nMAIN GATE / 2 NOTES\n×\nCharacter unavailable\nFixture fan\n41m ago\n\nThis notice expires shortly.\n\nEveryone · expires in 1h · 0 replies\nREPLY\nMEET HERE\nWITHDRAW\nCharacter unavailable\ninkparade\n5m ago\n\nTrading sti"
+    },
+    "cluster-390": {
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 126,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 390,
+        "height": 300
+      },
+      "sheet": {
+        "x": 0,
+        "y": 355,
+        "width": 390,
+        "height": 434
+      },
+      "sharing": {
+        "x": 0,
+        "y": 789,
+        "width": 390,
+        "height": 55
+      },
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": null,
+      "meeting": null,
+      "controls": 38,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 390,
+          "height": 734
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 390,
+          "height": 300
+        },
+        "friends": null,
+        "sheet": {
+          "x": 0,
+          "y": 355,
+          "width": 390,
+          "height": 434
+        },
+        "noteCard": null,
+        "composer": null,
+        "sharing": {
+          "x": 0,
+          "y": 789,
+          "width": 390,
+          "height": 55
+        },
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nCharacter unavailable\nCharacter unavailable\n3 friends\nCharacter unavailable\nwaydown\nCharacter unavailable\nYou\n+\n−\n⌖\n↺\n◎\n3 friends\n×\nCharacter unavailable\ninkparade\nCharacter unavailable\nhelena\nCharacter unavailable\nbulletxs\nSharing with friends\nPAUSE\nREVOKE"
+    },
+    "sharing-active-390": {
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 126,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 390,
+        "height": 734
+      },
+      "sheet": null,
+      "sharing": {
+        "x": 0,
+        "y": 789,
+        "width": 390,
+        "height": 55
+      },
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": null,
+      "meeting": null,
+      "controls": 34,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 390,
+          "height": 734
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 390,
+          "height": 734
+        },
+        "friends": null,
+        "sheet": null,
+        "noteCard": null,
+        "composer": null,
+        "sharing": {
+          "x": 0,
+          "y": 789,
+          "width": 390,
+          "height": 55
+        },
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nCharacter unavailable\nCharacter unavailable\n3 friends\nCharacter unavailable\nwaydown\nCharacter unavailable\nYou\n+\n−\n⌖\n↺\n◎\nSharing with friends\nPAUSE\nREVOKE"
+    },
+    "sharing-consent-390": {
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 126,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 390,
+        "height": 529
+      },
+      "sheet": null,
+      "sharing": {
+        "x": 0,
+        "y": 584,
+        "width": 390,
+        "height": 55
+      },
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": {
+        "x": 10,
+        "y": 790,
+        "width": 154,
+        "height": 44
+      },
+      "meeting": null,
+      "controls": 32,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 390,
+          "height": 529
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 390,
+          "height": 529
+        },
+        "friends": null,
+        "sheet": null,
+        "noteCard": null,
+        "composer": null,
+        "sharing": {
+          "x": 0,
+          "y": 584,
+          "width": 390,
+          "height": 55
+        },
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nhelena\n+\n−\n⌖\n↺\nPhone location is off\nSHARE LOCATION\n\nShare real phone location with authorized friends. This is separate from your virtual World position and from device permission. Your browser asks for permission only after you continue.\n\nI want to share my phone location.\nAllow phone location"
+    },
+    "selected-phone-390": {
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 126,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 390,
+        "height": 260
+      },
+      "sheet": {
+        "x": 0,
+        "y": 315,
+        "width": 390,
+        "height": 474
+      },
+      "sharing": {
+        "x": 0,
+        "y": 789,
+        "width": 390,
+        "height": 55
+      },
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": {
+        "x": 7,
+        "y": 328,
+        "width": 64,
+        "height": 64
+      },
+      "composer": null,
+      "primary": {
+        "x": 200,
+        "y": 455.1,
+        "width": 183,
+        "height": 44
+      },
+      "meeting": null,
+      "controls": 36,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 390,
+          "height": 734
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 390,
+          "height": 260
+        },
+        "friends": null,
+        "sheet": {
+          "x": 0,
+          "y": 315,
+          "width": 390,
+          "height": 474
+        },
+        "noteCard": null,
+        "composer": null,
+        "sharing": {
+          "x": 0,
+          "y": 789,
+          "width": 390,
+          "height": 55
+        },
+        "friendDetail": {
+          "x": 7,
+          "y": 323,
+          "width": 376,
+          "height": 74.1
+        }
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nhelena\n+\n−\n⌖\n↺\ninkparade\n×\nCharacter unavailable\ninkparade\n\n⌖ Location unavailable\n\nPhone location · updated 20s ago\nMeeting place\nChoose a fixed landmark\nMAIN GATE\nSUB GATE\nMESSAGE\nMEET HERE\nASK LOCATION\nPhone location is off\nSHARE LOCATION"
+    },
+    "invite-390": {
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 126,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 390,
+        "height": 260
+      },
+      "sheet": null,
+      "sharing": {
+        "x": 0,
+        "y": 789,
+        "width": 390,
+        "height": 55
+      },
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": null,
+      "meeting": {
+        "x": 0,
+        "y": 315,
+        "width": 390,
+        "height": 424.2
+      },
+      "controls": 38,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 390,
+          "height": 734
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 390,
+          "height": 260
+        },
+        "friends": null,
+        "sheet": null,
+        "noteCard": null,
+        "composer": null,
+        "sharing": {
+          "x": 0,
+          "y": 789,
+          "width": 390,
+          "height": 55
+        },
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nCharacter unavailable\nCharacter unavailable\n3 friends\nCharacter unavailable\nwaydown\nCharacter unavailable\nYou\n+\n−\n⌖\n↺\n◎\nREAL MEETING PLACE\nClose\nMeet at MAIN GATE?\n\nYou + inkparade\n\nSEND INVITATION\n\nInvite your friend to this fixed meeting place.\n\nInvitee consent · 24-hour expiry · Host revoke\n\nMAIN GATE\nView on map\nMessage about this place\n\nA shared place is fixed. A friend’s phone location or virtual position does not confirm arrival.\n\nSharing with friends\nPAUSE\nREVOKE"
+    },
+    "notes-390": {
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 126,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 390,
+        "height": 260
+      },
+      "sheet": {
+        "x": 0,
+        "y": 315,
+        "width": 390,
+        "height": 529
+      },
+      "sharing": null,
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": {
+        "x": 7,
+        "y": 504.5,
+        "width": 376,
+        "height": 44
+      },
+      "meeting": null,
+      "controls": 35,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 390,
+          "height": 789
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 390,
+          "height": 260
+        },
+        "friends": null,
+        "sheet": {
+          "x": 0,
+          "y": 315,
+          "width": 390,
+          "height": 529
+        },
+        "noteCard": null,
+        "composer": null,
+        "sharing": null,
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nhelena\nMAIN GATE\n✉ 2\n+\n−\n⌖\n↺\nMAIN GATE\n2\nRead notes at\nSTAGE\nSTANDING A\nSTANDING B\nFOH\nMAIN GATE\nSUB GATE\nPARADISE CITY STATION\nCHROMA\nSTUDIO PARADISE\nSPA CIMER\nWONDERBOX\nART PARADISO / PLAZA\nPHOTO ZONE\nA QUEUE 1~3000\nB QUEUE 1~3000\nA+B QUEUE 3001+\nP1\nP2\nR1\nR2\nTOILETS\nMedical cross symbol\nREAD NOTES\n\nChoose a place to read current notes.\n\n+ NEW NOTE"
+    },
+    "unavailable-390": {
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 390,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 126,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 141,
+        "width": 390,
+        "height": 648
+      },
+      "sheet": null,
+      "sharing": {
+        "x": 0,
+        "y": 789,
+        "width": 390,
+        "height": 55
+      },
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": null,
+      "meeting": null,
+      "controls": 31,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 141,
+          "width": 390,
+          "height": 648
+        },
+        "canvas": {
+          "x": 0,
+          "y": 141,
+          "width": 390,
+          "height": 648
+        },
+        "friends": null,
+        "sheet": null,
+        "noteCard": null,
+        "composer": null,
+        "sharing": {
+          "x": 0,
+          "y": 789,
+          "width": 390,
+          "height": 55
+        },
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\nFriends unavailable\n\nThe venue friendship authority is unavailable (503). Friend locations cannot be verified, so none are shown.\n\nTRY AGAIN\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n+\n−\n⌖\n↺\nPhone location is off\nSHARE LOCATION"
+    },
+    "whole-plan-430": {
+      "viewport": {
+        "width": 430,
+        "height": 932,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 139.3,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 430,
+        "height": 822
+      },
+      "sheet": null,
+      "sharing": {
+        "x": 0,
+        "y": 877,
+        "width": 430,
+        "height": 55
+      },
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": null,
+      "meeting": null,
+      "controls": 31,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 932
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 430,
+          "height": 822
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 430,
+          "height": 822
+        },
+        "friends": null,
+        "sheet": null,
+        "noteCard": null,
+        "composer": null,
+        "sharing": {
+          "x": 0,
+          "y": 877,
+          "width": 430,
+          "height": 55
+        },
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nhelena\n+\n−\n⌖\n↺\nPhone location is off\nSHARE LOCATION"
+    },
+    "selected-friend-430": {
+      "viewport": {
+        "width": 430,
+        "height": 932,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 139.3,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 430,
+        "height": 300
+      },
+      "sheet": {
+        "x": 0,
+        "y": 355,
+        "width": 430,
+        "height": 522
+      },
+      "sharing": {
+        "x": 0,
+        "y": 877,
+        "width": 430,
+        "height": 55
+      },
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": {
+        "x": 7,
+        "y": 368,
+        "width": 64,
+        "height": 64
+      },
+      "composer": null,
+      "primary": {
+        "x": 220,
+        "y": 495.1,
+        "width": 203,
+        "height": 44
+      },
+      "meeting": null,
+      "controls": 39,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 932
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 430,
+          "height": 822
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 430,
+          "height": 300
+        },
+        "friends": null,
+        "sheet": {
+          "x": 0,
+          "y": 355,
+          "width": 430,
+          "height": 522
+        },
+        "noteCard": null,
+        "composer": null,
+        "sharing": {
+          "x": 0,
+          "y": 877,
+          "width": 430,
+          "height": 55
+        },
+        "friendDetail": {
+          "x": 7,
+          "y": 363,
+          "width": 416,
+          "height": 74.1
+        }
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nCharacter unavailable\nCharacter unavailable\n3 friends\nCharacter unavailable\nwaydown\nCharacter unavailable\nYou\n+\n−\n⌖\n↺\n◎\ninkparade\n×\nCharacter unavailable\ninkparade\n\n⌖ Near MAIN GATE\n\nCheck-in · 20s ago\nMeeting place\nChoose a fixed landmark\nMAIN GATE\nSUB GATE\nMESSAGE\nMEET HERE\nASK LOCATION\nSharing with friends\nPAUSE\nREVOKE"
+    },
+    "conversation-430": {
+      "viewport": {
+        "width": 430,
+        "height": 932,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": null,
+      "tab": null,
+      "map": null,
+      "sheet": null,
+      "sharing": null,
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": null,
+      "meeting": {
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 644.6
+      },
+      "controls": 6,
+      "minHit": 44,
+      "regions": {
+        "map": null,
+        "tabPanel": null,
+        "canvas": null,
+        "friends": null,
+        "sheet": null,
+        "noteCard": null,
+        "composer": null,
+        "sharing": null,
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "REAL MEETING PLACE\nAll invitations\nClose\nMeet at MAIN GATE\n+\nYou + inkparade\n\nUse the shared place below to meet up.\n\nMessaging is authorized by your current friendship and event access. An invitation is optional context and never grants access.\n\nYou\n4:58 PM\n\nI am near Main Gate. Meet here?\n\nMAIN GATE\nView on map\ninkparade\n4:59 PM\n\nOn my way.\n\nMeeting accepted\n✓\nMessage\n\nUp to 2,000 characters.\n\nSend message\nINVITATION\n\nA shared place is fixed. A friend’s phone location or virtual position does not confirm arrival."
+    },
+    "place-card-430": {
+      "viewport": {
+        "width": 430,
+        "height": 932,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 139.3,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 430,
+        "height": 300
+      },
+      "sheet": {
+        "x": 0,
+        "y": 355,
+        "width": 430,
+        "height": 522
+      },
+      "sharing": {
+        "x": 0,
+        "y": 877,
+        "width": 430,
+        "height": 55
+      },
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": {
+        "x": 220,
+        "y": 621,
+        "width": 203,
+        "height": 44
+      },
+      "meeting": null,
+      "controls": 41,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 932
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 430,
+          "height": 822
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 430,
+          "height": 300
+        },
+        "friends": null,
+        "sheet": {
+          "x": 0,
+          "y": 355,
+          "width": 430,
+          "height": 522
+        },
+        "noteCard": null,
+        "composer": null,
+        "sharing": {
+          "x": 0,
+          "y": 877,
+          "width": 430,
+          "height": 55
+        },
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nCharacter unavailable\nCharacter unavailable\n3 friends\nCharacter unavailable\nwaydown\nCharacter unavailable\nYou\n+\n−\n⌖\n↺\n◎\n⌖ MAIN GATE\n×\n\nFixed landmark on the illustrated Paradise City siteplan.\n\nCurrent meeting context supplied by the venue adapter.\n\nIllustration source: Photo 5. Uncalibrated illustration; physical placement unverified.\n\nView on map\nCHECK IN\nMeet with\nChoose a friend\ninkparade\nhelena\nbulletxs\nwaydown\nMESSAGE\nMEET HERE\n+ LEAVE A NOTE\nSharing with friends\nPAUSE\nREVOKE"
+    },
+    "friends-430": {
+      "viewport": {
+        "width": 430,
+        "height": 932,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 139.3,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 430,
+        "height": 260
+      },
+      "sheet": null,
+      "sharing": {
+        "x": 0,
+        "y": 877,
+        "width": 430,
+        "height": 55
+      },
+      "friendRows": [
+        {
+          "x": 5,
+          "y": 321,
+          "width": 420,
+          "height": 74
+        },
+        {
+          "x": 5,
+          "y": 399,
+          "width": 420,
+          "height": 74
+        },
+        {
+          "x": 5,
+          "y": 477,
+          "width": 420,
+          "height": 74
+        },
+        {
+          "x": 5,
+          "y": 555,
+          "width": 420,
+          "height": 74
+        }
+      ],
+      "friendPortrait": {
+        "x": 12,
+        "y": 330,
+        "width": 56,
+        "height": 56
+      },
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": null,
+      "meeting": null,
+      "controls": 39,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 932
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 430,
+          "height": 822
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 430,
+          "height": 260
+        },
+        "friends": {
+          "x": 0,
+          "y": 315,
+          "width": 430,
+          "height": 324
+        },
+        "sheet": null,
+        "noteCard": null,
+        "composer": null,
+        "sharing": {
+          "x": 0,
+          "y": 877,
+          "width": 430,
+          "height": 55
+        },
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": "18px",
+        "place": "14px",
+        "source": "11px",
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nhelena\n+\n−\n⌖\n↺\nCharacter unavailable\ninkparade\n⌖ Location unavailable\nPhone location · updated 20s ago\nVIEW\nCharacter unavailable\nhelena\n⌖ Near SUB GATE\nCheck-in · 8m ago\nVIEW\nCharacter unavailable\nbulletxs\n⌖ Location unavailable\nLast update · 12m ago\nASK LOCATION\nCharacter unavailable\nwaydown\n⌖ Location unavailable\nLocation unavailable\nASK LOCATION\nPhone location is off\nSHARE LOCATION"
+    },
+    "map-markers-430": {
+      "viewport": {
+        "width": 430,
+        "height": 932,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 139.3,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 430,
+        "height": 822
+      },
+      "sheet": null,
+      "sharing": {
+        "x": 0,
+        "y": 877,
+        "width": 430,
+        "height": 55
+      },
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": null,
+      "meeting": null,
+      "controls": 34,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 932
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 430,
+          "height": 822
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 430,
+          "height": 822
+        },
+        "friends": null,
+        "sheet": null,
+        "noteCard": null,
+        "composer": null,
+        "sharing": {
+          "x": 0,
+          "y": 877,
+          "width": 430,
+          "height": 55
+        },
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nCharacter unavailable\nCharacter unavailable\n3 friends\nCharacter unavailable\nwaydown\nCharacter unavailable\nYou\n+\n−\n⌖\n↺\n◎\nSharing with friends\nPAUSE\nREVOKE"
+    },
+    "invitation-pending-430": {
+      "viewport": {
+        "width": 430,
+        "height": 932,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": null,
+      "tab": null,
+      "map": null,
+      "sheet": null,
+      "sharing": null,
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": null,
+      "meeting": {
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 455.9
+      },
+      "controls": 6,
+      "minHit": 44,
+      "regions": {
+        "map": null,
+        "tabPanel": null,
+        "canvas": null,
+        "friends": null,
+        "sheet": null,
+        "noteCard": null,
+        "composer": null,
+        "sharing": null,
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "REAL MEETING PLACE\nAll invitations\nClose\nMeet at MAIN GATE?\n\nYou + inkparade\n\nDECLINE\nACCEPT\n\nInvitation pending\n\nInvitee consent · 24-hour expiry · Host revoke\n\nMAIN GATE\nView on map\nMessage about this place\n\nA shared place is fixed. A friend’s phone location or virtual position does not confirm arrival."
+    },
+    "notes-selected-430": {
+      "viewport": {
+        "width": 430,
+        "height": 932,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 139.3,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 430,
+        "height": 260
+      },
+      "sheet": {
+        "x": 0,
+        "y": 315,
+        "width": 430,
+        "height": 617
+      },
+      "sharing": null,
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [
+        {
+          "x": 7,
+          "y": 473,
+          "width": 416,
+          "height": 116.6
+        },
+        {
+          "x": 7,
+          "y": 595.6,
+          "width": 416,
+          "height": 116.6
+        }
+      ],
+      "notePortrait": {
+        "x": 12,
+        "y": 478,
+        "width": 48,
+        "height": 48
+      },
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": {
+        "x": 149.7,
+        "y": 540.6,
+        "width": 131.7,
+        "height": 44
+      },
+      "meeting": null,
+      "controls": 41,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 932
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 430,
+          "height": 877
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 430,
+          "height": 260
+        },
+        "friends": null,
+        "sheet": {
+          "x": 0,
+          "y": 315,
+          "width": 430,
+          "height": 617
+        },
+        "noteCard": {
+          "x": 7,
+          "y": 473,
+          "width": 416,
+          "height": 116.6
+        },
+        "composer": null,
+        "sharing": null,
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": "16px",
+        "place": null,
+        "source": null,
+        "body": "14px",
+        "noteMeta": "13px"
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nhelena\nMAIN GATE\n✉ 2\n+\n−\n⌖\n↺\nRead notes at\nSTAGE\nSTANDING A\nSTANDING B\nFOH\nMAIN GATE\nSUB GATE\nPARADISE CITY STATION\nCHROMA\nSTUDIO PARADISE\nSPA CIMER\nWONDERBOX\nART PARADISO / PLAZA\nPHOTO ZONE\nA QUEUE 1~3000\nB QUEUE 1~3000\nA+B QUEUE 3001+\nP1\nP2\nR1\nR2\nTOILETS\nMedical cross symbol\nREAD NOTES\nMAIN GATE / 2 NOTES\n×\nCharacter unavailable\ninkparade\n5m ago\n\nTrading stickers here until 18:30.\n\nFriends · expires in 1h · 1 reply\nREPLY\nMEET HERE\nREAD REPLIES\nCharacter unavailable\nFixture fan\n41m ago\n\nThis"
+    },
+    "composer-friends-430": {
+      "viewport": {
+        "width": 430,
+        "height": 932,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 139.3,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 430,
+        "height": 260
+      },
+      "sheet": {
+        "x": 0,
+        "y": 315,
+        "width": 430,
+        "height": 617
+      },
+      "sharing": null,
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": {
+        "x": 0,
+        "y": 315,
+        "width": 430,
+        "height": 617
+      },
+      "primary": {
+        "x": 7,
+        "y": 620,
+        "width": 416,
+        "height": 44
+      },
+      "meeting": null,
+      "controls": 38,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 932
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 430,
+          "height": 877
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 430,
+          "height": 260
+        },
+        "friends": null,
+        "sheet": {
+          "x": 0,
+          "y": 315,
+          "width": 430,
+          "height": 617
+        },
+        "noteCard": null,
+        "composer": {
+          "x": 0,
+          "y": 315,
+          "width": 430,
+          "height": 617
+        },
+        "sharing": null,
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nhelena\nMAIN GATE\n✉ 2\n+\n−\n⌖\n↺\nLeave a note\n×\nPlace\nMAIN GATE\nSUB GATE\nPARADISE CITY STATION\nART PARADISO / PLAZA\nNote text\nVisible to\nFRIENDS\nEVERYONE\nExpires after\n1 HOUR\nEND OF DAY\n+ POST NOTE"
+    },
+    "markers-430": {
+      "viewport": {
+        "width": 430,
+        "height": 932,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 139.3,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 430,
+        "height": 260
+      },
+      "sheet": {
+        "x": 0,
+        "y": 315,
+        "width": 430,
+        "height": 617
+      },
+      "sharing": null,
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": {
+        "x": 7,
+        "y": 504.5,
+        "width": 416,
+        "height": 44
+      },
+      "meeting": null,
+      "controls": 37,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 932
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 430,
+          "height": 877
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 430,
+          "height": 260
+        },
+        "friends": null,
+        "sheet": {
+          "x": 0,
+          "y": 315,
+          "width": 430,
+          "height": 617
+        },
+        "noteCard": null,
+        "composer": null,
+        "sharing": null,
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nCharacter unavailable\nCharacter unavailable\n3 friends\nCharacter unavailable\nwaydown\nCharacter unavailable\nYou\nMAIN GATE\n✉ 2\n+\n−\n⌖\n↺\n◎\nMAIN GATE\n2\nRead notes at\nSTAGE\nSTANDING A\nSTANDING B\nFOH\nMAIN GATE\nSUB GATE\nPARADISE CITY STATION\nCHROMA\nSTUDIO PARADISE\nSPA CIMER\nWONDERBOX\nART PARADISO / PLAZA\nPHOTO ZONE\nA QUEUE 1~3000\nB QUEUE 1~3000\nA+B QUEUE 3001+\nP1\nP2\nR1\nR2\nTOILETS\nMedical cross symbol\nREAD NOTES\n\nChoose a place to read current notes.\n\n+ NEW NOTE"
+    },
+    "composer-everyone-430": {
+      "viewport": {
+        "width": 430,
+        "height": 932,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 139.3,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 430,
+        "height": 260
+      },
+      "sheet": {
+        "x": 0,
+        "y": 315,
+        "width": 430,
+        "height": 617
+      },
+      "sharing": null,
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": {
+        "x": 0,
+        "y": 315,
+        "width": 430,
+        "height": 617
+      },
+      "primary": {
+        "x": 7,
+        "y": 620,
+        "width": 416,
+        "height": 44
+      },
+      "meeting": null,
+      "controls": 38,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 932
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 430,
+          "height": 877
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 430,
+          "height": 260
+        },
+        "friends": null,
+        "sheet": {
+          "x": 0,
+          "y": 315,
+          "width": 430,
+          "height": 617
+        },
+        "noteCard": null,
+        "composer": {
+          "x": 0,
+          "y": 315,
+          "width": 430,
+          "height": 617
+        },
+        "sharing": null,
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nhelena\nMAIN GATE\n✉ 2\n+\n−\n⌖\n↺\nLeave a note\n×\nPlace\nMAIN GATE\nSUB GATE\nPARADISE CITY STATION\nART PARADISO / PLAZA\nNote text\nVisible to\nFRIENDS\nEVERYONE\nExpires after\n1 HOUR\nEND OF DAY\n+ POST NOTE"
+    },
+    "reply-430": {
+      "viewport": {
+        "width": 430,
+        "height": 932,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 139.3,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 430,
+        "height": 260
+      },
+      "sheet": {
+        "x": 0,
+        "y": 315,
+        "width": 430,
+        "height": 617
+      },
+      "sharing": null,
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [
+        {
+          "x": 7,
+          "y": 473,
+          "width": 416,
+          "height": 116.6
+        },
+        {
+          "x": 7,
+          "y": 595.6,
+          "width": 416,
+          "height": 180.6
+        }
+      ],
+      "notePortrait": {
+        "x": 12,
+        "y": 478,
+        "width": 48,
+        "height": 48
+      },
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": {
+        "x": 149.3,
+        "y": 540.6,
+        "width": 131.3,
+        "height": 44
+      },
+      "meeting": null,
+      "controls": 40,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 932
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 430,
+          "height": 877
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 430,
+          "height": 260
+        },
+        "friends": null,
+        "sheet": {
+          "x": 0,
+          "y": 315,
+          "width": 430,
+          "height": 617
+        },
+        "noteCard": {
+          "x": 7,
+          "y": 473,
+          "width": 416,
+          "height": 116.6
+        },
+        "composer": null,
+        "sharing": null,
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": "16px",
+        "place": null,
+        "source": null,
+        "body": "14px",
+        "noteMeta": "13px"
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nhelena\nMAIN GATE\n✉ 2\n+\n−\n⌖\n↺\nRead notes at\nSTAGE\nSTANDING A\nSTANDING B\nFOH\nMAIN GATE\nSUB GATE\nPARADISE CITY STATION\nCHROMA\nSTUDIO PARADISE\nSPA CIMER\nWONDERBOX\nART PARADISO / PLAZA\nPHOTO ZONE\nA QUEUE 1~3000\nB QUEUE 1~3000\nA+B QUEUE 3001+\nP1\nP2\nR1\nR2\nTOILETS\nMedical cross symbol\nREAD NOTES\nMAIN GATE / 2 NOTES\n×\nCharacter unavailable\nFixture fan\n41m ago\n\nThis notice expires shortly.\n\nEveryone · expires in 1h · 0 replies\nREPLY\nMEET HERE\nWITHDRAW\nCharacter unavailable\ninkparade\n5m ago\n\nTrading sti"
+    },
+    "cluster-430": {
+      "viewport": {
+        "width": 430,
+        "height": 932,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 139.3,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 430,
+        "height": 308
+      },
+      "sheet": {
+        "x": 0,
+        "y": 363,
+        "width": 430,
+        "height": 514
+      },
+      "sharing": {
+        "x": 0,
+        "y": 877,
+        "width": 430,
+        "height": 55
+      },
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": null,
+      "meeting": null,
+      "controls": 38,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 932
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 430,
+          "height": 822
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 430,
+          "height": 308
+        },
+        "friends": null,
+        "sheet": {
+          "x": 0,
+          "y": 363,
+          "width": 430,
+          "height": 514
+        },
+        "noteCard": null,
+        "composer": null,
+        "sharing": {
+          "x": 0,
+          "y": 877,
+          "width": 430,
+          "height": 55
+        },
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nCharacter unavailable\nCharacter unavailable\n3 friends\nCharacter unavailable\nwaydown\nCharacter unavailable\nYou\n+\n−\n⌖\n↺\n◎\n3 friends\n×\nCharacter unavailable\ninkparade\nCharacter unavailable\nhelena\nCharacter unavailable\nbulletxs\nSharing with friends\nPAUSE\nREVOKE"
+    },
+    "sharing-active-430": {
+      "viewport": {
+        "width": 430,
+        "height": 932,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 139.3,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 430,
+        "height": 822
+      },
+      "sheet": null,
+      "sharing": {
+        "x": 0,
+        "y": 877,
+        "width": 430,
+        "height": 55
+      },
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": null,
+      "meeting": null,
+      "controls": 34,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 932
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 430,
+          "height": 822
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 430,
+          "height": 822
+        },
+        "friends": null,
+        "sheet": null,
+        "noteCard": null,
+        "composer": null,
+        "sharing": {
+          "x": 0,
+          "y": 877,
+          "width": 430,
+          "height": 55
+        },
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nCharacter unavailable\nCharacter unavailable\n3 friends\nCharacter unavailable\nwaydown\nCharacter unavailable\nYou\n+\n−\n⌖\n↺\n◎\nSharing with friends\nPAUSE\nREVOKE"
+    },
+    "sharing-consent-430": {
+      "viewport": {
+        "width": 430,
+        "height": 932,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 139.3,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 430,
+        "height": 617
+      },
+      "sheet": null,
+      "sharing": {
+        "x": 0,
+        "y": 672,
+        "width": 430,
+        "height": 55
+      },
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": {
+        "x": 10,
+        "y": 878,
+        "width": 154,
+        "height": 44
+      },
+      "meeting": null,
+      "controls": 32,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 932
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 430,
+          "height": 617
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 430,
+          "height": 617
+        },
+        "friends": null,
+        "sheet": null,
+        "noteCard": null,
+        "composer": null,
+        "sharing": {
+          "x": 0,
+          "y": 672,
+          "width": 430,
+          "height": 55
+        },
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nhelena\n+\n−\n⌖\n↺\nPhone location is off\nSHARE LOCATION\n\nShare real phone location with authorized friends. This is separate from your virtual World position and from device permission. Your browser asks for permission only after you continue.\n\nI want to share my phone location.\nAllow phone location"
+    },
+    "selected-phone-430": {
+      "viewport": {
+        "width": 430,
+        "height": 932,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 139.3,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 430,
+        "height": 260
+      },
+      "sheet": {
+        "x": 0,
+        "y": 315,
+        "width": 430,
+        "height": 562
+      },
+      "sharing": {
+        "x": 0,
+        "y": 877,
+        "width": 430,
+        "height": 55
+      },
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": {
+        "x": 7,
+        "y": 328,
+        "width": 64,
+        "height": 64
+      },
+      "composer": null,
+      "primary": {
+        "x": 220,
+        "y": 455.1,
+        "width": 203,
+        "height": 44
+      },
+      "meeting": null,
+      "controls": 36,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 932
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 430,
+          "height": 822
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 430,
+          "height": 260
+        },
+        "friends": null,
+        "sheet": {
+          "x": 0,
+          "y": 315,
+          "width": 430,
+          "height": 562
+        },
+        "noteCard": null,
+        "composer": null,
+        "sharing": {
+          "x": 0,
+          "y": 877,
+          "width": 430,
+          "height": 55
+        },
+        "friendDetail": {
+          "x": 7,
+          "y": 323,
+          "width": 416,
+          "height": 74.1
+        }
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nhelena\n+\n−\n⌖\n↺\ninkparade\n×\nCharacter unavailable\ninkparade\n\n⌖ Location unavailable\n\nPhone location · updated 20s ago\nMeeting place\nChoose a fixed landmark\nMAIN GATE\nSUB GATE\nMESSAGE\nMEET HERE\nASK LOCATION\nPhone location is off\nSHARE LOCATION"
+    },
+    "invite-430": {
+      "viewport": {
+        "width": 430,
+        "height": 932,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 139.3,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 430,
+        "height": 260
+      },
+      "sheet": null,
+      "sharing": {
+        "x": 0,
+        "y": 877,
+        "width": 430,
+        "height": 55
+      },
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": null,
+      "meeting": {
+        "x": 0,
+        "y": 315,
+        "width": 430,
+        "height": 442.8
+      },
+      "controls": 38,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 932
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 430,
+          "height": 822
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 430,
+          "height": 260
+        },
+        "friends": null,
+        "sheet": null,
+        "noteCard": null,
+        "composer": null,
+        "sharing": {
+          "x": 0,
+          "y": 877,
+          "width": 430,
+          "height": 55
+        },
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nCharacter unavailable\nCharacter unavailable\n3 friends\nCharacter unavailable\nwaydown\nCharacter unavailable\nYou\n+\n−\n⌖\n↺\n◎\nREAL MEETING PLACE\nClose\nMeet at MAIN GATE?\n\nYou + inkparade\n\nSEND INVITATION\n\nInvite your friend to this fixed meeting place.\n\nInvitee consent · 24-hour expiry · Host revoke\n\nMAIN GATE\nView on map\nMessage about this place\n\nA shared place is fixed. A friend’s phone location or virtual position does not confirm arrival.\n\nSharing with friends\nPAUSE\nREVOKE"
+    },
+    "notes-430": {
+      "viewport": {
+        "width": 430,
+        "height": 932,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 139.3,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 55,
+        "width": 430,
+        "height": 260
+      },
+      "sheet": {
+        "x": 0,
+        "y": 315,
+        "width": 430,
+        "height": 617
+      },
+      "sharing": null,
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": {
+        "x": 7,
+        "y": 504.5,
+        "width": 416,
+        "height": 44
+      },
+      "meeting": null,
+      "controls": 35,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 932
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 55,
+          "width": 430,
+          "height": 877
+        },
+        "canvas": {
+          "x": 0,
+          "y": 55,
+          "width": 430,
+          "height": 260
+        },
+        "friends": null,
+        "sheet": {
+          "x": 0,
+          "y": 315,
+          "width": 430,
+          "height": 617
+        },
+        "noteCard": null,
+        "composer": null,
+        "sharing": null,
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nhelena\nMAIN GATE\n✉ 2\n+\n−\n⌖\n↺\nMAIN GATE\n2\nRead notes at\nSTAGE\nSTANDING A\nSTANDING B\nFOH\nMAIN GATE\nSUB GATE\nPARADISE CITY STATION\nCHROMA\nSTUDIO PARADISE\nSPA CIMER\nWONDERBOX\nART PARADISO / PLAZA\nPHOTO ZONE\nA QUEUE 1~3000\nB QUEUE 1~3000\nA+B QUEUE 3001+\nP1\nP2\nR1\nR2\nTOILETS\nMedical cross symbol\nREAD NOTES\n\nChoose a place to read current notes.\n\n+ NEW NOTE"
+    },
+    "unavailable-430": {
+      "viewport": {
+        "width": 430,
+        "height": 932,
+        "dpr": 1
+      },
+      "overflowX": false,
+      "tabs": {
+        "x": 0,
+        "y": 0,
+        "width": 430,
+        "height": 55
+      },
+      "tab": {
+        "x": 4,
+        "y": 5,
+        "width": 139.3,
+        "height": 44
+      },
+      "map": {
+        "x": 0,
+        "y": 124,
+        "width": 430,
+        "height": 753
+      },
+      "sheet": null,
+      "sharing": {
+        "x": 0,
+        "y": 877,
+        "width": 430,
+        "height": 55
+      },
+      "friendRows": [],
+      "friendPortrait": null,
+      "noteCards": [],
+      "notePortrait": null,
+      "selectedPortrait": null,
+      "composer": null,
+      "primary": null,
+      "meeting": null,
+      "controls": 31,
+      "minHit": 44,
+      "regions": {
+        "map": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 932
+        },
+        "tabPanel": {
+          "x": 0,
+          "y": 124,
+          "width": 430,
+          "height": 753
+        },
+        "canvas": {
+          "x": 0,
+          "y": 124,
+          "width": 430,
+          "height": 753
+        },
+        "friends": null,
+        "sheet": null,
+        "noteCard": null,
+        "composer": null,
+        "sharing": {
+          "x": 0,
+          "y": 877,
+          "width": 430,
+          "height": 55
+        },
+        "friendDetail": null
+      },
+      "fonts": {
+        "name": null,
+        "place": null,
+        "source": null,
+        "body": null,
+        "noteMeta": null
+      },
+      "text": "MAP\nFRIENDS\nNOTES\nFriends unavailable\n\nThe venue friendship authority is unavailable (503). Friend locations cannot be verified, so none are shown.\n\nTRY AGAIN\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n+\n−\n⌖\n↺\nPhone location is off\nSHARE LOCATION"
+    }
+  },
+  "cases": [
+    {
+      "width": 360,
+      "height": 800
+    },
+    {
+      "width": 390,
+      "height": 844
+    },
+    {
+      "width": 430,
+      "height": 932
+    }
+  ],
+  "ia": [],
+  "errors": []
+}

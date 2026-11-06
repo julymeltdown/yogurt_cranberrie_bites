@@ -77,7 +77,7 @@ export function MapCanvas({ venue, people, self, clusters, selection, onSelect, 
       onPointerUp={() => { drag.current = null }} onPointerCancel={() => { drag.current = null }}>
       <div className="pc-map-plane" style={{ width, height }}>
         <img src={venue.image.src} width={venue.image.width} height={venue.image.height} alt={venue.image.description} draggable={false} />
-        {venue.landmarks.map(place => <button key={place.id} type="button" className={`pc-landmark${selection?.kind === 'landmark' && selection.id === place.id ? ' is-selected' : ''}`}
+        {venue.landmarks.map(place => <button key={place.id} type="button" className={`pc-landmark${place.meetingContext ? ' pc-landmark--meeting' : ''}${selection?.kind === 'landmark' && selection.id === place.id ? ' is-selected' : ''}`}
           data-landmark-id={place.id} aria-label={`Select ${place.label}`} style={{ left: place.point.x * scale, top: place.point.y * scale }} onClick={() => onSelect({ kind: 'landmark', id: place.id })}>
           <span aria-hidden="true">⚑</span><span className="pc-marker-label">{place.label}</span>
         </button>)}
@@ -93,8 +93,8 @@ export function MapCanvas({ venue, people, self, clusters, selection, onSelect, 
           <span className="pc-marker-portraits">{renderPortrait(self, 64)}</span><span className="pc-marker-label">You</span>
         </div>}
         {noteGroups.map(({ place, count }) => <button type="button" className={`pc-note-marker${selection?.kind === 'notes' && selection.id === place.id ? ' is-selected' : ''}`} key={place.id}
-          aria-label={`${place.label}, ${count} ${count === 1 ? 'note' : 'notes'}`} style={{ left: place.point.x * scale + 28, top: place.point.y * scale + 40 }} onClick={() => onSelect({ kind: 'notes', id: place.id })}>
-          <span aria-hidden="true">✉</span> {count}<span className="pc-sr-only"> notes</span>
+          aria-label={`${place.label}, ${count} ${count === 1 ? 'note' : 'notes'}`} style={{ left: place.point.x * scale + 36, top: place.point.y * scale + 58 }} onClick={() => onSelect({ kind: 'notes', id: place.id })}>
+          <span className="pc-note-marker-place">{place.label}</span><span className="pc-note-marker-count"><span aria-hidden="true">✉</span> {count}</span>
         </button>)}
       </div>
     </div>
