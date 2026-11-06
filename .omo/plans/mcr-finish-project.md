@@ -384,13 +384,13 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   Recommended task executor category: deep-low
   Commit: Y | `feat(venue): complete invitations and conversation UI`
 
-- [ ] 27. Complete the place notes client
+- [x] 27. Complete the place notes client
   What to do / Must NOT do: notes map clusters, list, selection, composer with audience/expiry, replies and Meet Here. Do NOT fabricate timestamps; do NOT allow an audience the server rejects.
   Closes: GAP-1
   Parallelization: Wave 4 | Blocked by: 24 | Blocks: 28
   References: `frontend/src/app/venue-notes-adapter/`, `frontend/src/features/community/` (existing note surfaces), `backend/docs/api/paradise-city-v1/place-notes.openapi.json`
   Acceptance criteria: create note with audience + expiry; replies render; expired notes vanish; Meet Here starts the invitation flow; browser run.
-  QA scenarios: happy create -> reply -> Meet Here; failure expired note -> removed from list. Evidence `.omo/evidence/mcr-finish-project/task-27-venue-notes-ui.md`.
+  QA scenarios: happy create -> reply -> Meet Here; failure expired note -> removed from list. Evidence `.omo/evidence/mcr-finish-project/task-27-notes.md`.
   Recommended task executor category: deep-low
   Commit: Y | `feat(venue): complete notes map, composer and replies`
 
