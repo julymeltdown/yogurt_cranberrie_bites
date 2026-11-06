@@ -434,7 +434,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   Recommended task executor category: deep-low
   Commit: Y | `test(in04): pass multiuser mural and moderation gate`
 
-- [ ] 32. Re-run IN01 deltas for changed features
+- [~] 32. Re-run IN01 deltas for changed features
   What to do / Must NOT do: re-run the two-account world gate for features changed since the historical IN01 acceptance (admission, policy frames, feed, theme, panels). Do NOT re-claim unchanged history.
   Closes: GAP-2
   Parallelization: Wave 5 | Blocked by: 7, 8, 10, 12 | Blocks: 47
@@ -443,6 +443,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   QA scenarios: happy two clients join, move, open panels, keep one socket; failure reconnect after kill -> recovery. Evidence `.omo/evidence/mcr-finish-project/task-32-in01-delta.md`.
   Recommended task executor category: deep-low
   Commit: Y | `test(in01): re-run deltas for changed features`
+  Gap (2026-11-06): D1 admission, D3 panel, D4 theme, D5 panels and the socket-kill reconnect PASS on real browser evidence with one socket per client and zero invalid frames; D2 (policy frames) is NOT_RUN because the Social policy baseline transport is not composed in this gate (CONCERT_SOCIAL_MODE unset with no probe decoder), and feed CONTENT is NOT_RUN because the Feed product mode is off. Sustain refreshObservation was not observable inside the runtime window (900 s token TTL).
 
 - [x] 33. Finish PI08 Photo2 HUD and camera
   What to do / Must NOT do: close the remaining HUD/camera/Photo2 renderer and registry work against the reference; keep the qualified partial art tuple. Do NOT reopen AR02/AR04 criteria; do NOT admit unqualified pixels.
