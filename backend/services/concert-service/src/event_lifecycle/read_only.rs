@@ -8,6 +8,7 @@ use crate::{
         invalidation::{Removal, Scope as RemovalScope},
     },
 };
+use concert_application::commands::FingerprintKeys;
 use sqlx::{postgres::PgTransactionManager, TransactionManager};
 use std::sync::{Arc, Mutex};
 
@@ -325,6 +326,18 @@ impl<A: FencedLifecycleAuthority, N: LifecycleOwners> ReadOnlyCommandDriver<A, N
             return Err(CommandError::Denied);
         }
         self.service.job(actor, job).await
+    }
+    pub async fn close_response(
+        &self,
+        actor: Actor,
+        key: Uuid,
+        body: &[u8],
+        keys: &FingerprintKeys,
+    ) -> axum::response::Response {
+        if actor.event != self.event {
+            return crate::event_lifecycle::http::denied_response();
+        }
+        super::http::close_response(&self.service, actor, key, body, keys).await
     }
     pub async fn run_next(&self, actor: Actor, job: Uuid) -> Result<Job, CommandError> {
         if actor.event != self.event {

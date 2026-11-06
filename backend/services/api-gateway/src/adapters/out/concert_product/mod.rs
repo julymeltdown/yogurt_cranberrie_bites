@@ -42,6 +42,9 @@ pub struct GrpcConcertProductClient {
     delivery: proto::product_delivery_service_client::ProductDeliveryServiceClient<
         InterceptedService<Channel, ServiceIdentityClientInterceptor>,
     >,
+    archive: proto::product_archive_service_client::ProductArchiveServiceClient<
+        InterceptedService<Channel, ServiceIdentityClientInterceptor>,
+    >,
 }
 impl GrpcConcertProductClient {
     pub fn connect(
@@ -65,11 +68,17 @@ impl GrpcConcertProductClient {
             .max_decoding_message_size(MAX_BODY + 16 * 1024)
             .max_encoding_message_size(MAX_BODY + 16 * 1024),
             delivery: proto::product_delivery_service_client::ProductDeliveryServiceClient::with_interceptor(
-                channel,
+                channel.clone(),
                 ServiceIdentityClientInterceptor::new(Workload::Gateway, token)?,
             )
             .max_decoding_message_size(4096)
             .max_encoding_message_size(4096),
+            archive: proto::product_archive_service_client::ProductArchiveServiceClient::with_interceptor(
+                channel,
+                ServiceIdentityClientInterceptor::new(Workload::Gateway, token)?,
+            )
+            .max_decoding_message_size(MAX_BODY + 16 * 1024)
+            .max_encoding_message_size(MAX_BODY + 16 * 1024),
         })
     }
     pub async fn dispatch(
@@ -128,8 +137,12 @@ impl GrpcConcertProductClient {
                 return Err(Status::deadline_exceeded("Product deadline expired"));
             }
             let message = proto::ProductRequest {
-                trusted_network_bucket: self.network_key.as_ref()
-                    .zip(http.client_address).map(|(key, address)| key.bucket(address)).unwrap_or_default(),
+                trusted_network_bucket: self
+                    .network_key
+                    .as_ref()
+                    .zip(http.client_address)
+                    .map(|(key, address)| key.bucket(address))
+                    .unwrap_or_default(),
                 user_id: actor.to_string(),
                 event_id: http.event.to_string(),
                 session_family_id: context
@@ -178,6 +191,42 @@ impl GrpcConcertProductClient {
             tokio::time::timeout_at(stop, Box::pin(work))
                 .await
                 .map_err(|_| Status::deadline_exceeded("Product deadline expired"))?
+        })
+        .await
+    }
+
+    /// Frozen anonymous archive read. No actor delegation, session or identity
+    /// capability is sent; the Concert owner still decides what is permitted.
+    pub async fn archive(
+        &self,
+        event: Uuid,
+        limit: u32,
+        cursor: &str,
+    ) -> Result<proto::ArchiveResponse, Status> {
+        if event.is_nil() || limit > 100 || cursor.len() > 1024 {
+            return Err(Status::invalid_argument("Invalid archive page"));
+        }
+        let stop = tokio::time::Instant::now() + BUDGET;
+        platform::call_deadline::scope(stop.into_std(), async {
+            let mut request = tonic::Request::new(proto::ArchiveRequest {
+                event_id: event.to_string(),
+                limit,
+                cursor: cursor.to_owned(),
+            });
+            request.set_timeout(BUDGET);
+            let mut client = self.archive.clone();
+            let response = tokio::time::timeout_at(stop, client.get_archive(request))
+                .await
+                .map_err(|_| Status::deadline_exceeded("Archive deadline expired"))??;
+            if response
+                .metadata()
+                .get("cache-control")
+                .and_then(|value| value.to_str().ok())
+                != Some("no-store")
+            {
+                return Err(Status::internal("Invalid archive response"));
+            }
+            Ok(response.into_inner())
         })
         .await
     }

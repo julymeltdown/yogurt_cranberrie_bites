@@ -102,12 +102,17 @@ async fn main() -> anyhow::Result<()> {
     anyhow::ensure!(
         !product_settings.owner_media || owner_media_settings.is_some(),
         "Uploader media mode requires the shared canonical composition"
-    );;
+    );
     let social_settings = config::social_startup::SocialStartupSettings::load(
         intro_settings.is_some(),
         world_settings.is_some(),
         inbox_settings.enabled() && target_settings.is_some(),
         runtime.as_ref().and_then(|runtime| runtime.tls.as_ref()),
+    )?;
+    let closure_settings = config::closure_runtime::ClosureSettings::load(
+        world_settings.is_some(),
+        intro_settings.is_some(),
+        runtime.is_some(),
     )?;
     let features = config::bootstrap_features::ConfiguredBootstrapFeatures::from_settings(
         runtime.as_ref(),
@@ -142,7 +147,7 @@ async fn main() -> anyhow::Result<()> {
         config::product_runtime::production_owners(config::product_runtime::ProductSettings {
             public_feed_read: false,
             owner_media: false,
-        })?;;
+        })?;
     anyhow::ensure!(
         product_owner.is_none() || participant_settings.is_none(),
         "Product and Participant require a shared canonical scope composition"
@@ -152,6 +157,8 @@ async fn main() -> anyhow::Result<()> {
         .map(|_| config::world_runtime::production_owners())
         .transpose()?;
     let pool = config::connect_pool(&config).await?;
+    let (closure_handoff, closure_bridge) = config::closure_runtime::BridgeHandoff::channel();
+    let mut archive_service = None;
     let mut child_recovery = None;
     let mut notification_target = None;
     let mut feed_callback = None;
@@ -186,7 +193,10 @@ async fn main() -> anyhow::Result<()> {
                         .map(|settings| settings.compose(pool.clone(), &shared.owners.core));
                     let intro_owner = intro.compose(pool.clone(), &shared.owners);
                     let owners = inbox_settings.compose(&shared.owners, intro_owner);
-                    let owners = match wall_b_settings { Some(settings) => settings.compose(pool.clone(), &shared.owners, owners), None => owners };
+                    let owners = match wall_b_settings {
+                        Some(settings) => settings.compose(pool.clone(), &shared.owners, owners),
+                        None => owners,
+                    };
                     let owners = match feed_settings {
                         Some(settings) => {
                             let (owners, callback) = settings.compose(&shared.owners, owners)?;
@@ -228,6 +238,18 @@ async fn main() -> anyhow::Result<()> {
                         }
                         None => owners,
                     });
+                    if let Some(settings) = closure_settings {
+                        let (owners, archive) = settings.compose(
+                            pool.clone(),
+                            closure_handoff.clone(),
+                            &shared.owners,
+                            product_owner.take().ok_or_else(|| {
+                                anyhow::anyhow!("Closure composition is unavailable")
+                            })?,
+                        )?;
+                        product_owner = Some(owners);
+                        archive_service = Some(archive);
+                    }
                     Ok(shared.participant)
                 }
                 None => settings.compose(pool.clone(), release),
@@ -396,6 +418,13 @@ async fn main() -> anyhow::Result<()> {
                             callback.verifier,
                         )
                     }).transpose()?;
+                    let archive = archive_service.map(|service| {
+                        platform::grpc_method_policy::guard_without_delegation(
+                            &config::closure_runtime::ARCHIVE_POLICY,
+                            concert_service::product_rpc::proto::product_archive_service_server::ProductArchiveServiceServer::new(service),
+                            runtime.callers.clone(),
+                        )
+                    }).transpose()?;
                     server
                         .add_service(bootstrap)
                         .add_service(world)
@@ -405,6 +434,7 @@ async fn main() -> anyhow::Result<()> {
                         .add_optional_service(product)
                         .add_optional_service(notification_target)
                         .add_optional_service(feed_callback)
+                        .add_optional_service(archive)
                         .add_optional_service(delivery)
                         .serve_with_shutdown(
                             runtime.address,
@@ -421,9 +451,9 @@ async fn main() -> anyhow::Result<()> {
                 (Some(settings), Some(owners), Some(ready)) => {
                     match (world_transport, world_local) {
                         (Some(transport), Some(local)) => settings
-                            .serve_with_ready_and_social(world_pool, owners, ready, transport, local)
+                            .serve_with_ready_and_social_and_bridge(world_pool, owners, ready, transport, local, closure_bridge)
                             .await,
-                        (None, None) => settings.serve_with_ready(world_pool, owners, ready).await,
+                        (None, None) => settings.serve_with_ready_and_bridge(world_pool, owners, ready, closure_bridge).await,
                         _ => anyhow::bail!("World Social policy composition is incomplete"),
                     }
                 }

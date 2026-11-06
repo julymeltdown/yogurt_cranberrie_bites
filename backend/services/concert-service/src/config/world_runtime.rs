@@ -215,8 +215,16 @@ impl WorldRuntimeSettings {
         pool: sqlx::PgPool,
         ports: WorldProductionPorts,
     ) -> anyhow::Result<()> {
-        self.serve_inner(pool, ports, None, SocketTransport::default(), None, None)
-            .await
+        self.serve_inner(
+            pool,
+            ports,
+            None,
+            SocketTransport::default(),
+            None,
+            None,
+            None,
+        )
+        .await
     }
     /// Startup barrier for a supervised C03 listener. Failure drops the sender;
     /// success is not a persistent authority grant or an ongoing health signal.
@@ -227,7 +235,13 @@ impl WorldRuntimeSettings {
         ready: tokio::sync::oneshot::Sender<()>,
     ) -> anyhow::Result<()> {
         self.serve_inner(
-            pool, ports, Some(ready), SocketTransport::default(), None, None,
+            pool,
+            ports,
+            Some(ready),
+            SocketTransport::default(),
+            None,
+            None,
+            None,
         )
         .await
     }
@@ -240,8 +254,26 @@ impl WorldRuntimeSettings {
         ready: tokio::sync::oneshot::Sender<()>,
         transport: SocketTransport,
     ) -> anyhow::Result<()> {
-        self.serve_inner(pool, ports, Some(ready), transport, None, None)
+        self.serve_inner(pool, ports, Some(ready), transport, None, None, None)
             .await
+    }
+    pub async fn serve_with_ready_and_bridge(
+        self,
+        pool: sqlx::PgPool,
+        ports: WorldProductionPorts,
+        ready: tokio::sync::oneshot::Sender<()>,
+        handoff: tokio::sync::watch::Sender<Option<Arc<AdmissionBridge>>>,
+    ) -> anyhow::Result<()> {
+        self.serve_inner(
+            pool,
+            ports,
+            Some(ready),
+            SocketTransport::default(),
+            None,
+            None,
+            Some(handoff),
+        )
+        .await
     }
     /// Publish this exact native owner's local invalidation leg only after the
     /// normal startup barrier succeeds. The receiver grants no queue-wide ACK.
@@ -255,8 +287,30 @@ impl WorldRuntimeSettings {
             Arc<crate::world::invalidation::WorldInvalidationConsumer>,
         >,
     ) -> anyhow::Result<()> {
-        self.serve_inner(pool, ports, Some(ready), transport, Some(local), None)
+        self.serve_inner(pool, ports, Some(ready), transport, Some(local), None, None)
             .await
+    }
+    pub async fn serve_with_ready_and_social_and_bridge(
+        self,
+        pool: sqlx::PgPool,
+        ports: WorldProductionPorts,
+        ready: tokio::sync::oneshot::Sender<()>,
+        transport: SocketTransport,
+        local: tokio::sync::oneshot::Sender<
+            Arc<crate::world::invalidation::WorldInvalidationConsumer>,
+        >,
+        handoff: tokio::sync::watch::Sender<Option<Arc<AdmissionBridge>>>,
+    ) -> anyhow::Result<()> {
+        self.serve_inner(
+            pool,
+            ports,
+            Some(ready),
+            transport,
+            Some(local),
+            None,
+            Some(handoff),
+        )
+        .await
     }
     /// Opt-in account deletion composition receives the exact incumbent bridge
     /// and socket registry after the normal startup checks. The receiver must
@@ -274,7 +328,13 @@ impl WorldRuntimeSettings {
         deletion: tokio::sync::oneshot::Sender<super::deletion_world_binding::ServingWorldBinding>,
     ) -> anyhow::Result<()> {
         self.serve_inner(
-            pool, ports, Some(ready), transport, Some(local), Some(deletion),
+            pool,
+            ports,
+            Some(ready),
+            transport,
+            Some(local),
+            Some(deletion),
+            None,
         )
         .await
     }
@@ -292,6 +352,7 @@ impl WorldRuntimeSettings {
         deletion: Option<
             tokio::sync::oneshot::Sender<super::deletion_world_binding::ServingWorldBinding>,
         >,
+        handoff: Option<tokio::sync::watch::Sender<Option<Arc<AdmissionBridge>>>>,
     ) -> anyhow::Result<()> {
         let template: serde_json::Value =
             serde_json::from_slice(self.release.release().bootstrap_json())?;
@@ -361,6 +422,9 @@ impl WorldRuntimeSettings {
             anchor.clone(),
             started,
         )?;
+        if let Some(handoff) = handoff {
+            handoff.send_replace(Some(bridge.clone()));
+        }
         let mut remote = RemoteInvalidationRuntime::new(
             pool,
             self.consumer,
@@ -383,7 +447,8 @@ impl WorldRuntimeSettings {
             transport.clone(),
         )
         .map_err(|_| anyhow::anyhow!("World owner construction failed"))?;
-        runtime.configure_motion_profile(&map.geometry_hash)
+        runtime
+            .configure_motion_profile(&map.geometry_hash)
             .map_err(|_| anyhow::anyhow!("World motion geometry binding failed"))?;
         let (clock, origin_ms) = runtime.clock_origin();
         // Claim only after geometry/runtime construction, so startup's owning

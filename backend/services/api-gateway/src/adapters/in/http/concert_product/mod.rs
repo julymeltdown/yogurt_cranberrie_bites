@@ -117,6 +117,10 @@ pub fn router(state: Arc<AppState>) -> Router {
         )
         .merge(feature_routes::router())
         .merge(command_routes::router())
+        .route(
+            "/api/concert/events/:event_id/archive",
+            get(archive_dispatch),
+        )
         .with_state(state)
 }
 
@@ -444,6 +448,7 @@ fn is_product(path: &str) -> bool {
         || command_routes::protects(path)
         || tail == "feed"
         || tail == "commands"
+        || tail == "archive"
         || tail == "parties"
         || tail.starts_with("media/")
         || tail.starts_with("posts/")
@@ -579,6 +584,90 @@ fn request_metadata(
         return Err((StatusCode::BAD_REQUEST, "INVALID_INPUT"));
     }
     Ok((content_type, idempotency_key))
+}
+
+fn archive_query(query: &str) -> Option<(u32, String)> {
+    let mut limit = 0u32;
+    let mut cursor = String::new();
+    let mut seen = 0u8;
+    if query.is_empty() {
+        return Some((limit, cursor));
+    }
+    for pair in query.split('&') {
+        let (name, value) = pair.split_once('=')?;
+        if name.len() > 16 || value.len() > 1024 {
+            return None;
+        }
+        let bit = match name {
+            "limit" => 1u8,
+            "cursor" => 2u8,
+            _ => return None,
+        };
+        if seen & bit != 0 {
+            return None;
+        }
+        seen |= bit;
+        match name {
+            "limit" => {
+                if value.is_empty()
+                    || value.len() > 3
+                    || !value.bytes().all(|byte| byte.is_ascii_digit())
+                {
+                    return None;
+                }
+                limit = value
+                    .parse::<u32>()
+                    .ok()
+                    .filter(|limit| (1..=100).contains(limit))?;
+            }
+            "cursor" => {
+                if value.is_empty() || !value.bytes().all(|byte| byte.is_ascii_hexdigit()) {
+                    return None;
+                }
+                cursor = value.to_owned();
+            }
+            _ => unreachable!("closed archive query"),
+        }
+    }
+    Some((limit, cursor))
+}
+
+async fn archive_dispatch(
+    State(state): State<Arc<AppState>>,
+    OriginalUri(uri): OriginalUri,
+) -> Response {
+    let Some(event) = uri.path().split('/').nth(4).and_then(uuid) else {
+        return error(StatusCode::BAD_REQUEST, "INVALID_INPUT");
+    };
+    let Some((limit, cursor)) = archive_query(uri.query().unwrap_or("")) else {
+        return error(StatusCode::BAD_REQUEST, "INVALID_INPUT");
+    };
+    let Some(client) = &state.concert_product_client else {
+        return error(StatusCode::SERVICE_UNAVAILABLE, "DEPENDENCY_UNAVAILABLE");
+    };
+    let result = match client.archive(event, limit, &cursor).await {
+        Ok(result) => result,
+        Err(status) => return rpc_error(status),
+    };
+    let status = match result.status {
+        200 | 400 | 404 | 409 | 429 | 500 | 503 | 504 => {
+            StatusCode::from_u16(result.status as u16).expect("closed status")
+        }
+        _ => return error(StatusCode::SERVICE_UNAVAILABLE, "DEPENDENCY_UNAVAILABLE"),
+    };
+    if result.content_type != "application/json"
+        || serde_json::from_slice::<serde_json::Value>(&result.body).is_err()
+    {
+        return error(StatusCode::SERVICE_UNAVAILABLE, "DEPENDENCY_UNAVAILABLE");
+    }
+    let mut response = Response::new(Body::from(result.body));
+    *response.status_mut() = status;
+    response.headers_mut().insert(
+        header::CONTENT_TYPE,
+        HeaderValue::from_static("application/json"),
+    );
+    protect(&mut response);
+    response
 }
 
 async fn dispatch(

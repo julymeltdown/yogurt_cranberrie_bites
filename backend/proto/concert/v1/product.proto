@@ -45,8 +45,24 @@ message ResponseDelivery {
 }
 message CompleteResponseResult { bool completed = 1; }
 
+// The frozen public archive read. No actor delegation, session, identity or
+// private media/handle projection is accepted; only permitted archived data.
+message ArchiveRequest {
+  string event_id = 1;
+  uint32 limit = 2;
+  string cursor = 3;
+}
+message ArchiveResponse {
+  uint32 status = 1;
+  string content_type = 2;
+  bytes body = 3;
+}
+
 service ProductService {
   rpc Dispatch(ProductRequest) returns (ProductResponse);
+}
+service ProductArchiveService {
+  rpc GetArchive(ArchiveRequest) returns (ArchiveResponse);
 }
 service ProductDeliveryService {
   rpc CompleteResponse(ResponseDelivery) returns (CompleteResponseResult);

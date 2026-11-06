@@ -146,6 +146,9 @@ fn output_response<T: serde::Serialize>(status: StatusCode, name: &str, value: T
         Err(_) => error("INTERNAL_ERROR", StatusCode::INTERNAL_SERVER_ERROR),
     }
 }
+pub fn denied_response() -> Response {
+    command_error(CommandError::Denied)
+}
 pub async fn close_response<A: FencedLifecycleAuthority, O: LifecycleOwners>(
     service: &PgEventLifecycle<A, O>,
     actor: Actor,

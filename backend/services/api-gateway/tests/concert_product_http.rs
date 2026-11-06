@@ -208,6 +208,38 @@ async fn every_mounted_command_family_reaches_the_concert_boundary_behind_authen
 }
 
 #[tokio::test]
+async fn public_archive_is_unauthenticated_and_closed_without_a_producer() {
+    let harness = RouteHarness::new().await;
+    let router = harness.transport_router();
+    let uri = format!("/api/concert/events/{EVENT}/archive");
+    let value = json(
+        router
+            .clone()
+            .oneshot(Request::builder().uri(&uri).body(Body::empty()).unwrap())
+            .await
+            .unwrap(),
+        StatusCode::SERVICE_UNAVAILABLE,
+    )
+    .await;
+    assert_eq!(value["details"]["reason"], "DEPENDENCY_UNAVAILABLE");
+    let value = json(
+        router
+            .oneshot(
+                Request::builder()
+                    .uri(format!("{uri}?limit=0"))
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap(),
+        StatusCode::BAD_REQUEST,
+    )
+    .await;
+    assert_eq!(value["details"]["reason"], "INVALID_INPUT");
+    harness.pool.close().await;
+}
+
+#[tokio::test]
 async fn unknown_command_suffix_under_a_mounted_family_is_a_closed_concert_404() {
     let harness = RouteHarness::new().await;
     let router = harness.transport_router();
