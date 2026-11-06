@@ -879,8 +879,21 @@ def main(argv=None):
                 + prep.quote(event),
             ),
         }
-        phase = report["steps"]["closure_rows"]["event"].split("|")[0]
+        # Post-probe liveness: the authority tick can land after every HTTP probe.
+        # A crash there must fail the run, not disappear into teardown.
+        concert_child = stack.children.get("concert-service")
+        concert_alive_after = concert_child is not None and concert_child.process.poll() is None
+        whole_run = ""
+        if concert_child is not None and not concert_child.log.is_symlink():
+            whole_run = concert_child.log.read_bytes().decode("utf-8", errors="replace")
+        record("post_probe_liveness", {"concert_alive": concert_alive_after})
         checks = report["checks"]
+        checks["concert_alive_after_probes"] = concert_alive_after
+        # Whole-run stderr scan, not just the post-closure interval.
+        checks["no_component_failure"] = (
+            "CONCERT_COMPONENT_FAILURE" not in whole_run
+            and "World authority maintenance failed" not in whole_run)
+        phase = report["steps"]["closure_rows"]["event"].split("|")[0]
         checks["operator_closure_ack"] = (
             report["steps"]["operator_closure"]["status"] == 200
             and isinstance(report["steps"]["operator_closure"]["body"], dict))
@@ -900,10 +913,25 @@ def main(argv=None):
             and feed_post["rows_before"] == feed_post["rows_after"])
         checks["forged_token_401"] = report["steps"]["forged_closure"]["status"] == 401
         checks["expired_token_401"] = report["steps"]["expired_closure"]["status"] == 401
-        archive_status = report["steps"]["archive"]["status"]
+        archive = report["steps"]["archive"]
+        archive_anonymous = report["steps"]["archive_anonymous"]
+
+        def archive_status_matches(status, body):
+            reason = (body.get("details") or {}).get("reason")
+            if phase == "ARCHIVED":
+                return status == 200
+            if phase == "READ_ONLY":
+                return status == 404 and reason == "RESOURCE_UNAVAILABLE"
+            return False
+
+        # Every phase constrains the observed archive status. The `None` projection
+        # checks below only cover the ARCHIVED-only 200 body, never the status.
+        checks["archive_status_matches_phase"] = (
+            archive_status_matches(archive["status"], archive["body"])
+            and archive_status_matches(archive_anonymous["status"], archive_anonymous["body"]))
         if phase == "ARCHIVED":
-            checks["archive_public_200"] = archive_status == 200
-            shape = report["steps"]["archive"]["shape"]
+            checks["archive_public_200"] = archive["status"] == 200
+            shape = archive["shape"]
             checks["archive_public_fields"] = (
                 shape.get("shape") == "projection"
                 and set(shape.get("fields") or []) <= PUBLIC_ARCHIVE_POST_FIELDS
@@ -917,7 +945,8 @@ def main(argv=None):
                 "Archive PUBLIC 200 NOT_REACHED: event phase is " + phase
                 + "; PgPublicArchive::page refuses non-ARCHIVED events with 404 and the later"
                 " closure steps (FREEZE_MURAL..CLEANUP) have no composed LifecycleOwners"
-                " (ClosureProducer uses UnavailableLater).",
+                " (ClosureProducer uses UnavailableLater). The observed archive status is"
+                " asserted by archive_status_matches_phase.",
             ]
         failed = {name: value for name, value in checks.items() if value is False}
         report["result"] = "PASS" if not failed and all(v is not None for v in checks.values()) else (

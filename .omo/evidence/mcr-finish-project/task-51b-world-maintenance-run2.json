@@ -1,0 +1,842 @@
+{
+  "banner": {
+    "scope": "development vertical flow",
+    "release": "development release bundle, NOT_ADMITTED",
+    "qa08": "NOT_RUN",
+    "in03_cohort": "NOT_CLAIMED",
+    "release_qualification": "NOT_CLAIMED"
+  },
+  "steps": {
+    "operator_role": "OPERATOR|1|",
+    "feed_admissions": "0327c653-a8b3-499a-a818-366b65393ea7|ACTIVE\n61daff06-9a17-48d2-8813-bfe52f6abefc|ACTIVE",
+    "feed_create": {
+      "status": 200,
+      "body": {
+        "author": {
+          "avatar": {
+            "config": {
+              "contract_version": "1.1.0",
+              "kind": "avatar_config",
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "preset_id": "photo01_front_01",
+              "representation": "whole_character"
+            },
+            "revision": 1
+          },
+          "bio": "Development closure participant",
+          "display_name": "Closure participant 2",
+          "user_id": "0327c653-a8b3-499a-a818-366b65393ea7"
+        },
+        "comment_count": 0,
+        "created_at": "2026-11-06T12:42:31.707030Z",
+        "edited_at": null,
+        "event_id": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+        "links": [],
+        "media_ids": [],
+        "post_id": "022d41e7-3e9b-8e88-a0a2-d7740094f213",
+        "reacted_by_me": false,
+        "reaction_count": 0,
+        "revision": 1,
+        "state": "PUBLISHED",
+        "text": "feed proof post"
+      },
+      "rows_before": {
+        "concert_command_receipts": 0,
+        "concert_feed_owner_work": 0,
+        "concert_outbox": 0,
+        "post_posts": 0,
+        "post_receipts": 0,
+        "post_outbox": 0
+      },
+      "rows_after": {
+        "concert_command_receipts": 1,
+        "concert_feed_owner_work": 1,
+        "concert_outbox": 1,
+        "post_posts": 1,
+        "post_receipts": 1,
+        "post_outbox": 1
+      },
+      "log": {
+        "api-gateway": "{\"timestamp\":\"2026-11-06T12:42:22.326047Z\",\"level\":\"WARN\",\"fields\":{\"message\":\"signing key fetch failed; keeping the installed keys\",\"trigger\":\"scheduled\",\"error\":\"Service unavailable\"},\"target\":\"api_gateway::adapters::out::signing_keys\"}",
+        "concert-service": "CONCERT_HEALTH_LISTENER=127.0.0.1:63901\nCONCERT_WORLD_LISTENER=127.0.0.1:63902\nchild_recovery attempted=2 completed=2 pending=0 timed_out=0",
+        "post-service": "{\"timestamp\":\"2026-11-06T12:42:22.270612Z\",\"level\":\"WARN\",\"fields\":{\"message\":\"POST_EXTERNAL_PUBLISHER is `disabled`; events retain their registered destination requirements\"},\"target\":\"post_service::config\"}"
+      }
+    },
+    "feed_create_replay": {
+      "status": 200,
+      "body": {
+        "author": {
+          "avatar": {
+            "config": {
+              "contract_version": "1.1.0",
+              "kind": "avatar_config",
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "preset_id": "photo01_front_01",
+              "representation": "whole_character"
+            },
+            "revision": 1
+          },
+          "bio": "Development closure participant",
+          "display_name": "Closure participant 2",
+          "user_id": "0327c653-a8b3-499a-a818-366b65393ea7"
+        },
+        "comment_count": 0,
+        "created_at": "2026-11-06T12:42:31.707030Z",
+        "edited_at": null,
+        "event_id": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+        "links": [],
+        "media_ids": [],
+        "post_id": "022d41e7-3e9b-8e88-a0a2-d7740094f213",
+        "reacted_by_me": false,
+        "reaction_count": 0,
+        "revision": 1,
+        "state": "PUBLISHED",
+        "text": "feed proof post"
+      },
+      "rows_before": {
+        "concert_command_receipts": 1,
+        "concert_feed_owner_work": 1,
+        "concert_outbox": 1,
+        "post_posts": 1,
+        "post_receipts": 1,
+        "post_outbox": 1
+      },
+      "rows_after": {
+        "concert_command_receipts": 1,
+        "concert_feed_owner_work": 1,
+        "concert_outbox": 1,
+        "post_posts": 1,
+        "post_receipts": 1,
+        "post_outbox": 1
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "feed_conflict": {
+      "status": 409,
+      "body": {
+        "code": "CONCERT_409",
+        "details": {
+          "reason": "IDEMPOTENCY_CONFLICT"
+        },
+        "message": "Concert request unavailable",
+        "timestamp": "2026-11-06T12:42:32.879Z",
+        "traceId": "6d19812f-8ffd-452f-b0cb-301b69d7248e"
+      },
+      "rows_before": {
+        "concert_command_receipts": 1,
+        "concert_feed_owner_work": 1,
+        "concert_outbox": 1,
+        "post_posts": 1,
+        "post_receipts": 1,
+        "post_outbox": 1
+      },
+      "rows_after": {
+        "concert_command_receipts": 1,
+        "concert_feed_owner_work": 1,
+        "concert_outbox": 1,
+        "post_posts": 1,
+        "post_receipts": 1,
+        "post_outbox": 1
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "feed_edit": {
+      "status": 504,
+      "body": {
+        "code": "CONCERT_504",
+        "details": {
+          "reason": "DEADLINE_EXCEEDED"
+        },
+        "message": "Concert request unavailable",
+        "timestamp": "2026-11-06T12:42:34.120Z",
+        "traceId": "32b2ae41-bc47-446f-ae23-b6de3b4ff120"
+      },
+      "rows_before": {
+        "concert_command_receipts": 1,
+        "concert_feed_owner_work": 1,
+        "concert_outbox": 1,
+        "post_posts": 1,
+        "post_receipts": 1,
+        "post_outbox": 1
+      },
+      "rows_after": {
+        "concert_command_receipts": 2,
+        "concert_feed_owner_work": 2,
+        "concert_outbox": 2,
+        "post_posts": 1,
+        "post_receipts": 2,
+        "post_outbox": 2
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "feed_edit_retry": {
+      "status": 200,
+      "body": {
+        "author": {
+          "avatar": {
+            "config": {
+              "contract_version": "1.1.0",
+              "kind": "avatar_config",
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "preset_id": "photo01_front_01",
+              "representation": "whole_character"
+            },
+            "revision": 1
+          },
+          "bio": "Development closure participant",
+          "display_name": "Closure participant 2",
+          "user_id": "0327c653-a8b3-499a-a818-366b65393ea7"
+        },
+        "comment_count": 0,
+        "created_at": "2026-11-06T12:42:31.707030Z",
+        "edited_at": "2026-11-06T12:42:34.030820Z",
+        "event_id": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+        "links": [],
+        "media_ids": [],
+        "post_id": "022d41e7-3e9b-8e88-a0a2-d7740094f213",
+        "reacted_by_me": false,
+        "reaction_count": 0,
+        "revision": 2,
+        "state": "PUBLISHED",
+        "text": "feed proof edited"
+      },
+      "rows_before": {
+        "concert_command_receipts": 2,
+        "concert_feed_owner_work": 2,
+        "concert_outbox": 2,
+        "post_posts": 1,
+        "post_receipts": 2,
+        "post_outbox": 2
+      },
+      "rows_after": {
+        "concert_command_receipts": 2,
+        "concert_feed_owner_work": 2,
+        "concert_outbox": 2,
+        "post_posts": 1,
+        "post_receipts": 2,
+        "post_outbox": 2
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "feed_delete": {
+      "status": 200,
+      "body": {
+        "resource_id": "022d41e7-3e9b-8e88-a0a2-d7740094f213",
+        "revision": 3,
+        "state": "DELETED"
+      },
+      "rows_before": {
+        "concert_command_receipts": 2,
+        "concert_feed_owner_work": 2,
+        "concert_outbox": 2,
+        "post_posts": 1,
+        "post_receipts": 2,
+        "post_outbox": 2
+      },
+      "rows_after": {
+        "concert_command_receipts": 3,
+        "concert_feed_owner_work": 3,
+        "concert_outbox": 3,
+        "post_posts": 1,
+        "post_receipts": 3,
+        "post_outbox": 3
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "feed_second_create": {
+      "status": 200,
+      "body": {
+        "author": {
+          "avatar": {
+            "config": {
+              "contract_version": "1.1.0",
+              "kind": "avatar_config",
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "preset_id": "photo01_front_01",
+              "representation": "whole_character"
+            },
+            "revision": 1
+          },
+          "bio": "Development closure participant",
+          "display_name": "Closure participant 2",
+          "user_id": "0327c653-a8b3-499a-a818-366b65393ea7"
+        },
+        "comment_count": 0,
+        "created_at": "2026-11-06T12:42:36.471998Z",
+        "edited_at": null,
+        "event_id": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+        "links": [],
+        "media_ids": [],
+        "post_id": "d9d81b38-1741-805e-b19d-438f025b83b3",
+        "reacted_by_me": false,
+        "reaction_count": 0,
+        "revision": 1,
+        "state": "PUBLISHED",
+        "text": "feed proof second"
+      },
+      "rows_before": {
+        "concert_command_receipts": 3,
+        "concert_feed_owner_work": 3,
+        "concert_outbox": 3,
+        "post_posts": 1,
+        "post_receipts": 3,
+        "post_outbox": 3
+      },
+      "rows_after": {
+        "concert_command_receipts": 4,
+        "concert_feed_owner_work": 4,
+        "concert_outbox": 4,
+        "post_posts": 2,
+        "post_receipts": 4,
+        "post_outbox": 4
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "feed_comment": {
+      "status": 504,
+      "body": {
+        "code": "CONCERT_504",
+        "details": {
+          "reason": "DEADLINE_EXCEEDED"
+        },
+        "message": "Concert request unavailable",
+        "timestamp": "2026-11-06T12:42:37.959Z",
+        "traceId": "6a416a89-d131-41c0-905a-97470c5d2a8e"
+      },
+      "rows_before": {
+        "concert_command_receipts": 4,
+        "concert_feed_owner_work": 4,
+        "concert_outbox": 4,
+        "post_posts": 2,
+        "post_receipts": 4,
+        "post_outbox": 4
+      },
+      "rows_after": {
+        "concert_command_receipts": 5,
+        "concert_feed_owner_work": 5,
+        "concert_outbox": 5,
+        "post_posts": 2,
+        "post_receipts": 5,
+        "post_outbox": 5
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "feed_comment_retry": {
+      "status": 200,
+      "body": {
+        "author": {
+          "avatar": {
+            "config": {
+              "contract_version": "1.1.0",
+              "kind": "avatar_config",
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "preset_id": "photo01_front_01",
+              "representation": "whole_character"
+            },
+            "revision": 1
+          },
+          "bio": "Development closure participant",
+          "display_name": "Closure participant 2",
+          "user_id": "0327c653-a8b3-499a-a818-366b65393ea7"
+        },
+        "comment_id": "27fee628-c0a7-83f2-84b4-a4d0ba68013a",
+        "created_at": "2026-11-06T12:42:37.834773Z",
+        "post_id": "d9d81b38-1741-805e-b19d-438f025b83b3",
+        "revision": 1,
+        "text": "feed proof comment"
+      },
+      "rows_before": {
+        "concert_command_receipts": 5,
+        "concert_feed_owner_work": 5,
+        "concert_outbox": 5,
+        "post_posts": 2,
+        "post_receipts": 5,
+        "post_outbox": 5
+      },
+      "rows_after": {
+        "concert_command_receipts": 5,
+        "concert_feed_owner_work": 5,
+        "concert_outbox": 5,
+        "post_posts": 2,
+        "post_receipts": 5,
+        "post_outbox": 5
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "feed_reaction": {
+      "status": 504,
+      "body": {
+        "code": "CONCERT_504",
+        "details": {
+          "reason": "DEADLINE_EXCEEDED"
+        },
+        "message": "Concert request unavailable",
+        "timestamp": "2026-11-06T12:42:40.042Z",
+        "traceId": "23cb70bd-c36e-4040-b25b-7c09d2068af7"
+      },
+      "rows_before": {
+        "concert_command_receipts": 5,
+        "concert_feed_owner_work": 5,
+        "concert_outbox": 5,
+        "post_posts": 2,
+        "post_receipts": 5,
+        "post_outbox": 5
+      },
+      "rows_after": {
+        "concert_command_receipts": 6,
+        "concert_feed_owner_work": 6,
+        "concert_outbox": 6,
+        "post_posts": 2,
+        "post_receipts": 6,
+        "post_outbox": 6
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "feed_reaction_retry": {
+      "status": 200,
+      "body": {
+        "post_id": "d9d81b38-1741-805e-b19d-438f025b83b3",
+        "reacted_by_me": true,
+        "reaction_count": 1,
+        "revision": 3
+      },
+      "rows_before": {
+        "concert_command_receipts": 6,
+        "concert_feed_owner_work": 6,
+        "concert_outbox": 6,
+        "post_posts": 2,
+        "post_receipts": 6,
+        "post_outbox": 6
+      },
+      "rows_after": {
+        "concert_command_receipts": 6,
+        "concert_feed_owner_work": 6,
+        "concert_outbox": 6,
+        "post_posts": 2,
+        "post_receipts": 6,
+        "post_outbox": 6
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "feed_unauthorized": {
+      "status": 403,
+      "body": {
+        "code": "CONCERT_403",
+        "details": {
+          "reason": "PERMISSION_DENIED"
+        },
+        "message": "Concert request unavailable",
+        "timestamp": "2026-11-06T12:42:41.314Z",
+        "traceId": "8b1aa1d2-4376-4031-8632-dfcf77bb3cbc"
+      },
+      "rows_before": {
+        "concert_command_receipts": 6,
+        "concert_feed_owner_work": 6,
+        "concert_outbox": 6,
+        "post_posts": 2,
+        "post_receipts": 6,
+        "post_outbox": 6
+      },
+      "rows_after": {
+        "concert_command_receipts": 6,
+        "concert_feed_owner_work": 6,
+        "concert_outbox": 6,
+        "post_posts": 2,
+        "post_receipts": 6,
+        "post_outbox": 6
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "feed_missing": {
+      "status": 404,
+      "body": {
+        "code": "CONCERT_404",
+        "details": {
+          "reason": "RESOURCE_UNAVAILABLE"
+        },
+        "message": "Concert request unavailable",
+        "timestamp": "2026-11-06T12:42:41.822Z",
+        "traceId": "388d4dcb-435d-405d-9dcf-66810575ca69"
+      },
+      "rows_before": {
+        "concert_command_receipts": 6,
+        "concert_feed_owner_work": 6,
+        "concert_outbox": 6,
+        "post_posts": 2,
+        "post_receipts": 6,
+        "post_outbox": 6
+      },
+      "rows_after": {
+        "concert_command_receipts": 6,
+        "concert_feed_owner_work": 6,
+        "concert_outbox": 6,
+        "post_posts": 2,
+        "post_receipts": 6,
+        "post_outbox": 6
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "feed_blocked": {
+      "status": 404,
+      "body": {
+        "code": "CONCERT_404",
+        "details": {
+          "reason": "RESOURCE_UNAVAILABLE"
+        },
+        "message": "Concert request unavailable",
+        "timestamp": "2026-11-06T12:42:42.437Z",
+        "traceId": "d9c43fd4-6dfe-4b41-bba5-75913015d944"
+      },
+      "rows_before": {
+        "concert_command_receipts": 6,
+        "concert_feed_owner_work": 6,
+        "concert_outbox": 6,
+        "post_posts": 2,
+        "post_receipts": 6,
+        "post_outbox": 6
+      },
+      "rows_after": {
+        "concert_command_receipts": 6,
+        "concert_feed_owner_work": 6,
+        "concert_outbox": 6,
+        "post_posts": 2,
+        "post_receipts": 6,
+        "post_outbox": 6
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "feed_block_cleared": {
+      "blocks": "0",
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "operator_closure": {
+      "status": 200,
+      "body": {
+        "event_id": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+        "job_id": "5776551c-c27e-5cf5-aa24-493b1e16a470",
+        "revision": 1,
+        "state": "PENDING",
+        "steps": [
+          {
+            "name": "READ_ONLY",
+            "state": "SUCCEEDED"
+          },
+          {
+            "name": "FREEZE_MURAL",
+            "state": "PENDING"
+          },
+          {
+            "name": "SNAPSHOT",
+            "state": "PENDING"
+          },
+          {
+            "name": "EXPIRE_GRANTS",
+            "state": "PENDING"
+          },
+          {
+            "name": "EXPIRE_BEACONS",
+            "state": "PENDING"
+          },
+          {
+            "name": "EXPORT",
+            "state": "PENDING"
+          },
+          {
+            "name": "CLEANUP",
+            "state": "PENDING"
+          }
+        ]
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "member_closure": {
+      "status": 403,
+      "body": {
+        "code": "CONCERT_403",
+        "details": {
+          "reason": "PERMISSION_DENIED"
+        },
+        "message": "Concert request unavailable",
+        "timestamp": "2026-11-06T12:42:43.037Z",
+        "traceId": "a5b38254-ba1d-47a9-ae4d-e6be21fb3ea2"
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "post_closure_settle": {
+      "waited_seconds": 2.023,
+      "concert_alive": true,
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "feed_post_write": {
+      "status": 409,
+      "body": {
+        "code": "CONCERT_409",
+        "details": {
+          "reason": "EVENT_READ_ONLY"
+        },
+        "message": "Concert request unavailable",
+        "timestamp": "2026-11-06T12:42:45.298Z",
+        "traceId": "3c7e8c2e-36e6-4e7e-adf8-4b7c2cb72800"
+      },
+      "rows_before": {
+        "concert_command_receipts": 7,
+        "concert_feed_owner_work": 6,
+        "concert_outbox": 7,
+        "post_posts": 2,
+        "post_receipts": 6,
+        "post_outbox": 6
+      },
+      "rows_after": {
+        "concert_command_receipts": 7,
+        "concert_feed_owner_work": 6,
+        "concert_outbox": 7,
+        "post_posts": 2,
+        "post_receipts": 6,
+        "post_outbox": 6
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "post_closure_write": {
+      "status": 409,
+      "body": {
+        "code": "GATEWAY_409",
+        "details": {
+          "reason": "INVALID_TRANSITION"
+        },
+        "message": "The requested action is unavailable.",
+        "timestamp": "2026-11-06T12:42:45.611Z",
+        "traceId": "68cf4736-af03-447f-bf34-793175908953"
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "archive": {
+      "status": 404,
+      "body": {
+        "code": "GATEWAY_404",
+        "details": {
+          "reason": "RESOURCE_UNAVAILABLE"
+        },
+        "message": "The requested action is unavailable.",
+        "timestamp": "2026-11-06T12:42:45.629Z",
+        "traceId": "81dd2336-b7ff-4d28-950d-844281b75586"
+      },
+      "shape": {
+        "shape": "error",
+        "fields": [
+          "code",
+          "details",
+          "message",
+          "timestamp",
+          "traceId"
+        ]
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "archive_anonymous": {
+      "status": 404,
+      "body": {
+        "code": "GATEWAY_404",
+        "details": {
+          "reason": "RESOURCE_UNAVAILABLE"
+        },
+        "message": "The requested action is unavailable.",
+        "timestamp": "2026-11-06T12:42:45.632Z",
+        "traceId": "7cea31ed-9756-4e76-a536-d1ddd89ed124"
+      },
+      "shape": {
+        "shape": "error",
+        "fields": [
+          "code",
+          "details",
+          "message",
+          "timestamp",
+          "traceId"
+        ]
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "forged_closure": {
+      "status": 401,
+      "body": {
+        "code": "CONCERT_401",
+        "details": {
+          "reason": "AUTHENTICATION_REQUIRED"
+        },
+        "message": "Concert request unavailable",
+        "timestamp": "2026-11-06T12:42:45.633Z",
+        "traceId": "8aafb3c8-c70e-4fce-b53b-f6cb500747c8"
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "expired_closure": {
+      "status": 401,
+      "body": {
+        "code": "CONCERT_401",
+        "details": {
+          "reason": "AUTHENTICATION_REQUIRED"
+        },
+        "message": "Concert request unavailable",
+        "timestamp": "2026-11-06T12:42:45.641Z",
+        "traceId": "c857d2a1-0098-4a68-9fa1-55a1daca21fd"
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "closure_rows": {
+      "event": "READ_ONLY|2",
+      "job": "5776551c-c27e-5cf5-aa24-493b1e16a470|61daff06-9a17-48d2-8813-bfe52f6abefc|1|PENDING",
+      "receipt": "SUCCEEDED|200\nFAILED|",
+      "effects": "READ_ONLY|1",
+      "archive_rows": "0",
+      "public_post_rows": "2"
+    },
+    "post_probe_liveness": {
+      "concert_alive": true,
+      "log": {
+        "note": "no new child log bytes"
+      }
+    }
+  },
+  "checks": {
+    "feed_create_200": true,
+    "feed_replay_stored": true,
+    "feed_conflict_409": true,
+    "feed_edit_200": true,
+    "feed_delete_200": true,
+    "feed_second_create_200": true,
+    "feed_comment_200": true,
+    "feed_reaction_200": true,
+    "feed_unauthorized_403_zero_rows": true,
+    "feed_missing_404_zero_rows": true,
+    "feed_blocked_403_or_404_zero_rows": true,
+    "feed_post_closure_409": true,
+    "world_survives_closure": true,
+    "concert_alive_after_probes": true,
+    "no_component_failure": true,
+    "operator_closure_ack": true,
+    "closure_job_persisted": true,
+    "event_read_only": true,
+    "member_closure_forbidden": true,
+    "post_closure_conflict": true,
+    "forged_token_401": true,
+    "expired_token_401": true,
+    "archive_status_matches_phase": true,
+    "archive_public_200": null,
+    "archive_public_fields": null
+  },
+  "event": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+  "stack": {
+    "kind": "mcr-owned-dev-stack-v1",
+    "pid": 22621,
+    "uid": 501,
+    "root": "/private/tmp/mcr-pg-w8tg7kxp",
+    "root_identity": [
+      16777229,
+      557855889
+    ],
+    "socket": "/private/tmp/mcr-pg-w8tg7kxp/control.sock",
+    "gateway_url": "http://127.0.0.1:63913",
+    "services": {
+      "profile-service": {
+        "http": "http://127.0.0.1:63893",
+        "grpc": "http://127.0.0.1:63894",
+        "metrics": "http://127.0.0.1:63895"
+      },
+      "notification-service": {
+        "http": "http://127.0.0.1:63896",
+        "grpc": "http://127.0.0.1:63897",
+        "metrics": "http://127.0.0.1:63898"
+      },
+      "concert-service": {
+        "http": "http://127.0.0.1:63899",
+        "grpc": "http://127.0.0.1:63900",
+        "metrics": "http://127.0.0.1:63901"
+      },
+      "friend-service": {
+        "http": "http://127.0.0.1:63903",
+        "grpc": "http://127.0.0.1:63904",
+        "metrics": "http://127.0.0.1:63906"
+      },
+      "post-service": {
+        "http": "http://127.0.0.1:63907",
+        "grpc": "http://127.0.0.1:63908",
+        "metrics": "http://127.0.0.1:63909"
+      },
+      "auth-service": {
+        "http": "http://127.0.0.1:63910",
+        "grpc": "http://127.0.0.1:63911",
+        "metrics": "http://127.0.0.1:63912"
+      },
+      "api-gateway": {
+        "http": "http://127.0.0.1:63913",
+        "grpc": "http://127.0.0.1:63914",
+        "metrics": "http://127.0.0.1:63915"
+      }
+    },
+    "mail_directory": "/private/tmp/mcr-pg-w8tg7kxp/mail",
+    "auth_http": "Gateway /auth/*; no /api ingress adapter yet"
+  },
+  "enrollment_policy_revision": "092b3dce-8e5a-44f9-98e3-bc2c38cd6cf2",
+  "limitations": [
+    "Archive PUBLIC 200 NOT_REACHED: event phase is READ_ONLY; PgPublicArchive::page refuses non-ARCHIVED events with 404 and the later closure steps (FREEZE_MURAL..CLEANUP) have no composed LifecycleOwners (ClosureProducer uses UnavailableLater). The observed archive status is asserted by archive_status_matches_phase."
+  ],
+  "result": "PARTIAL",
+  "logs": {
+    "concert-service": "CONCERT_HEALTH_LISTENER=127.0.0.1:63901\nCONCERT_WORLD_LISTENER=127.0.0.1:63902\nchild_recovery attempted=2 completed=2 pending=0 timed_out=0\n",
+    "post-service": "{\"timestamp\":\"2026-11-06T12:42:22.270612Z\",\"level\":\"WARN\",\"fields\":{\"message\":\"POST_EXTERNAL_PUBLISHER is `disabled`; events retain their registered destination requirements\"},\"target\":\"post_service::config\"}\n",
+    "auth-service": "",
+    "friend-service": "",
+    "api-gateway": "{\"timestamp\":\"2026-11-06T12:42:22.326047Z\",\"level\":\"WARN\",\"fields\":{\"message\":\"signing key fetch failed; keeping the installed keys\",\"trigger\":\"scheduled\",\"error\":\"Service unavailable\"},\"target\":\"api_gateway::adapters::out::signing_keys\"}\n"
+  },
+  "cleanup": "PASS"
+}
