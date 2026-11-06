@@ -6,9 +6,31 @@ use uuid::Uuid;
 pub async fn qualify(server: &PgPool) -> anyhow::Result<()> {
     let directory = Path::new(env!("CARGO_MANIFEST_DIR")).join("migrations");
     let full = Migrator::new(directory.clone()).await?;
+    // The ledger is every assigned migration file, exactly once, in version
+    // order. Derive the expected set from the directory so newly assigned
+    // migrations are covered instead of silently failing this qualification.
+    let mut expected = Vec::new();
+    for entry in std::fs::read_dir(&directory)? {
+        let path = entry?.path();
+        if path.extension().and_then(|e| e.to_str()) != Some("sql") {
+            continue;
+        }
+        let name = path.file_name().unwrap().to_string_lossy().into_owned();
+        let version: i64 = name
+            .split('_')
+            .next()
+            .and_then(|value| value.parse().ok())
+            .ok_or_else(|| anyhow::anyhow!("migration {name} has no numeric version"))?;
+        anyhow::ensure!(
+            !expected.contains(&version),
+            "duplicate migration version {version}"
+        );
+        expected.push(version);
+    }
+    expected.sort_unstable();
     assert_eq!(
         full.iter().map(|m| m.version).collect::<Vec<_>>(),
-        vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 16, 18, 19, 20, 21, 22, 23, 24, 25],
+        expected,
         "every assigned migration must be present exactly once and ordered"
     );
     use sha2::{Digest, Sha256};
