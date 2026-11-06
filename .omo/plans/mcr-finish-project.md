@@ -539,7 +539,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   Recommended task executor category: deep-low
   Commit: Y | `test(qa09): pass recovery and lifecycle rehearsal`
 
-- [ ] 42. Pass QA10 candidate provenance and release checks
+- [~] 42. Pass QA10 candidate provenance and release checks
   What to do / Must NOT do: produce the same-candidate task-to-commit trace, frontend/backend/device evidence and release-check composition for the final SHA. Do NOT reuse evidence from another candidate.
   Closes: GAP-3
   Parallelization: Wave 7 | Blocked by: 13, 29–32 | Blocks: 47
@@ -548,6 +548,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   QA scenarios: happy composition passes for the candidate; failure a stale receipt -> exit 1. Evidence `.omo/evidence/mcr-finish-project/task-42-qa10.md`.
   Recommended task executor category: deep-low
   Commit: Y | `test(qa10): compose same-candidate release evidence`
+  Gap (2026-11-06): the composition checker and a 51-row task-to-commit trace are delivered for candidate 25b2d356f (109 resolved commits, all ancestors; seven SHAs mentioned in evidence are unmerged and never used as delivering). release-check reports release_decision NOT_ASSESSED with composition_checks INCOMPLETE because no same-candidate owner receipts exist for backend/frontend/service/device/operator/source, the gates BE43/QA01-07/QA09/IN01/IN02/IN04 are NOT_RUN and IN03 BLOCKED, and all 112 task and 61 IA bindings are unbound. The run must be refreshed against the final release SHA; IN05 owns the decision.
 
 - [~] 43. Close FE24, FE33 and FE34
   What to do / Must NOT do: FE24 protected gift media/motif binding, FE33 authoritative mural serving/config/adapter, FE34 profile preferences and conflict behavior. Do NOT reopen historical closures without a changed criterion.
