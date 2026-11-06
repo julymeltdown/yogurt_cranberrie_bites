@@ -210,6 +210,7 @@ def expect_verify_failure(
 
 
 def run_venue_tests(cluster: Cluster, target_dir: Path, cargo: str, toolchain: str) -> dict[str, object]:
+    # New venue suites must opt in with their own owned database; never sweep a venue_* glob.
     command = [
         cargo,
         toolchain,
@@ -217,7 +218,11 @@ def run_venue_tests(cluster: Cluster, target_dir: Path, cargo: str, toolchain: s
         "-p",
         "concert-service",
         "--test",
-        "venue_*",
+        "venue_location",
+        "--test",
+        "venue_meeting",
+        "--test",
+        "venue_notes",
         "--",
         "--test-threads=1",
     ]
