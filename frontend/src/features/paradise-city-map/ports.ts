@@ -32,8 +32,12 @@ export interface PlaceReply {
 }
 export interface PlaceNote extends PlaceReply {
   readonly landmarkId: LandmarkId; readonly audience: NoteAudience; readonly expiresAtMs: number
-  readonly canReply: boolean; readonly canMeet: boolean; readonly replies: readonly PlaceReply[]
+  readonly revision: number; readonly replyCount: number
+  readonly canReply: boolean; readonly canMeet: boolean; readonly canWithdraw: boolean
+  readonly replies: readonly PlaceReply[]
 }
+/** Current authorized server count for one place. Geometry never invents a marker. */
+export interface NoteCluster { readonly landmarkId: LandmarkId; readonly count: number }
 export type SharingState = 'off' | 'active' | 'paused' | 'revoked'
 /** Why the current authoritative friends snapshot cannot be shown as current. */
 export type VenueUnavailableReason = 'friend-gate-unavailable' | 'producer-refused' | 'offline' | 'access-unavailable'
@@ -60,6 +64,8 @@ export interface CapabilitySnapshot {
   /** Qualified server clock and current access expiry; never filled from Date.now(). */
   readonly serverNowMs: number | null; readonly accessUntilMs: number | null
   readonly self: PersonView | null; readonly friends: readonly PersonView[]; readonly notes: readonly PlaceNote[]
+  /** Server-authorized per-landmark counts; absent rows are not guessed from loaded pages. */
+  readonly noteClusters: readonly NoteCluster[]; readonly notesVisibleCount: number | null
   readonly sharing: SharingState
   /** Current pending requests only, independently withdrawn with their L lease. */
   readonly locationRequests?: { readonly incoming: readonly VenueLocationRequest[]; readonly outgoing: readonly VenueLocationRequest[] }
@@ -82,6 +88,7 @@ export interface VenueCapabilities extends ReadPort<CapabilitySnapshot | null> {
   availability?(): VenueAvailability
   /** Re-reads the authoritative snapshot; never reuses a prior disclosure. */
   refresh?(): Promise<boolean>
+  loadNoteSummary?(context: VenueReadContext): Promise<boolean>
   beginPhoneSharing(context: CommandContext): Promise<CommandResult>
   publishPhoneFix(fix: GeoFix, context: CommandContext): Promise<CommandResult>
   pause(reason: 'user' | 'background' | 'withdrawal', context: CommandContext): Promise<CommandResult>
@@ -91,6 +98,7 @@ export interface VenueCapabilities extends ReadPort<CapabilitySnapshot | null> {
   checkIn(landmarkId: LandmarkId, context: CommandContext): Promise<CommandResult>
   postNote(input: { readonly landmarkId: LandmarkId; readonly body: string; readonly audience: NoteAudience; readonly expiry: NoteExpiry }, context: CommandContext): Promise<CommandResult>
   reply(input: { readonly noteId: string; readonly body: string }, context: CommandContext): Promise<CommandResult>
+  withdraw(input: { readonly noteId: string; readonly expectedRevision: number }, context: CommandContext): Promise<CommandResult>
   resolve(key: string, context: CommandContext): Promise<CommandResult>
 }
 /** SINGLE primary-surface meeting entry contract. Developer204 borrows these types. */

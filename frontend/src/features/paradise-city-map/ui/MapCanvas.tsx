@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef, useState, type ReactNode } from 'react'
 import type { LandmarkId } from '../spatial/contract'
-import type { PersonView, PlaceNote, VenueView } from '../ports'
+import type { NoteCluster, PersonView, VenueView } from '../ports'
 import type { Selection } from '../model/controller'
 
 export function clusterPeople(people: readonly PersonView[], scale: number) {
@@ -11,9 +11,9 @@ export function clusterPeople(people: readonly PersonView[], scale: number) {
   }
   return groups
 }
-export function MapCanvas({ venue, people, self, notes, selection, onSelect, renderPortrait, focusLandmark, compact }: {
+export function MapCanvas({ venue, people, self, clusters, selection, onSelect, renderPortrait, focusLandmark, compact }: {
   readonly venue: VenueView; readonly people: readonly PersonView[]; readonly self: PersonView | null
-  readonly notes: readonly PlaceNote[]; readonly selection: Selection | null; readonly compact: boolean
+  readonly clusters: readonly NoteCluster[]; readonly selection: Selection | null; readonly compact: boolean
   readonly onSelect: (selection: Selection) => void
   readonly renderPortrait: (person: Pick<PersonView, 'displayName' | 'avatar'>, size: 64 | 128) => ReactNode
   readonly focusLandmark: { readonly id: LandmarkId; readonly serial: number } | null
@@ -53,7 +53,11 @@ export function MapCanvas({ venue, people, self, notes, selection, onSelect, ren
     else if (r.bottom > v.bottom - margin) host.scrollTop += r.bottom - v.bottom + margin
   }
   const groups = clusterPeople(people, scale)
-  const noteGroups = venue.landmarks.map(place => ({ place, notes: notes.filter(note => note.landmarkId === place.id) })).filter(group => group.notes.length)
+  // Server-authorized counts only; a loaded page never becomes a place total.
+  const noteGroups = venue.landmarks.flatMap(place => {
+    const row = clusters.find(cluster => cluster.landmarkId === place.id)
+    return row && row.count > 0 ? [{ place, count: row.count }] : []
+  })
   return <div className={`pc-map-canvas${compact ? ' pc-map-canvas--compact' : ''}`}>
     <div className="pc-map-viewport" ref={scroller} tabIndex={0} role="region" aria-label="Paradise City siteplan; arrow keys or drag to pan"
       onScroll={event => { if (previous.current) { previous.current.left = event.currentTarget.scrollLeft; previous.current.top = event.currentTarget.scrollTop } }}
@@ -88,9 +92,9 @@ export function MapCanvas({ venue, people, self, notes, selection, onSelect, ren
         {self?.point && <div className="pc-person-marker pc-self-marker" style={{ left: self.point.x * scale, top: self.point.y * scale }} aria-label="Your current shared position">
           <span className="pc-marker-portraits">{renderPortrait(self, 64)}</span><span className="pc-marker-label">You</span>
         </div>}
-        {noteGroups.map(({ place, notes: values }) => <button type="button" className={`pc-note-marker${selection?.kind === 'notes' && selection.id === place.id ? ' is-selected' : ''}`} key={place.id}
-          aria-label={`${place.label}, ${values.length} ${values.length === 1 ? 'note' : 'notes'}`} style={{ left: place.point.x * scale + 28, top: place.point.y * scale + 40 }} onClick={() => onSelect({ kind: 'notes', id: place.id })}>
-          <span aria-hidden="true">✉</span> {values.length}<span className="pc-sr-only"> notes</span>
+        {noteGroups.map(({ place, count }) => <button type="button" className={`pc-note-marker${selection?.kind === 'notes' && selection.id === place.id ? ' is-selected' : ''}`} key={place.id}
+          aria-label={`${place.label}, ${count} ${count === 1 ? 'note' : 'notes'}`} style={{ left: place.point.x * scale + 28, top: place.point.y * scale + 40 }} onClick={() => onSelect({ kind: 'notes', id: place.id })}>
+          <span aria-hidden="true">✉</span> {count}<span className="pc-sr-only"> notes</span>
         </button>)}
       </div>
     </div>
