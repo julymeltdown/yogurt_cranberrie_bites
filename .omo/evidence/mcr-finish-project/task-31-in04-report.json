@@ -1,0 +1,1120 @@
+{
+  "banner": {
+    "scope": "development stack multiuser Wall B and moderation gate",
+    "release": "development stack, NOT IN03/release qualification",
+    "qa08": "NOT_RUN",
+    "production": "NOT_CLAIMED",
+    "device": "NOT_RUN"
+  },
+  "steps": {
+    "initial_snapshots": {
+      "alice": {
+        "status": 200,
+        "revision": 1,
+        "state": "EDITABLE",
+        "snapshot_id": "22368cf5-c71e-4a0e-8bbb-1303ef49cee3",
+        "pixels_sha256": "f29eaf4ea632e2a34b6dd4fdfdc6f8a3d07ab780af96e19c2a64c28faf42c721"
+      },
+      "bob": {
+        "status": 200,
+        "revision": 1,
+        "state": "EDITABLE",
+        "snapshot_id": "22368cf5-c71e-4a0e-8bbb-1303ef49cee3",
+        "pixels_sha256": "f29eaf4ea632e2a34b6dd4fdfdc6f8a3d07ab780af96e19c2a64c28faf42c721"
+      },
+      "converged": true,
+      "log": {
+        "api-gateway": "{\"timestamp\":\"2026-11-06T10:52:03.471037Z\",\"level\":\"WARN\",\"fields\":{\"message\":\"signing key fetch failed; keeping the installed keys\",\"trigger\":\"scheduled\",\"error\":\"Service unavailable\"},\"target\":\"api_gateway::adapters::out::signing_keys\"}",
+        "concert-service": "CONCERT_HEALTH_LISTENER=127.0.0.1:60148\nCONCERT_WORLD_LISTENER=127.0.0.1:60149"
+      }
+    },
+    "pencil_and_convergence": {
+      "alice": {
+        "status": 200,
+        "revision": 2,
+        "operation_id": "c4d487c9-0baf-4aaa-9592-9b80b0c3937c"
+      },
+      "bob_frame": {
+        "actor": "bob",
+        "after_revision": 1,
+        "status": 200,
+        "delta": {
+          "from_revision": 1,
+          "to_revision": 2,
+          "reset_required": false,
+          "operations": 1
+        },
+        "snapshot": {
+          "revision": 2,
+          "state": "EDITABLE",
+          "snapshot_id": "78a49847-2a92-4ea5-bbbd-db705cb4050b",
+          "pixels_sha256": "502b8737abbbc934104ae878f40835e444f3864837b90c4ec3b4d6e9445eadf4"
+        }
+      },
+      "converged": true,
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "opaque_erase_and_convergence": {
+      "bob": {
+        "status": 200,
+        "revision": 3,
+        "action_id": "b6b5ed08-417b-4c62-9d17-245bd5a19b41",
+        "kind": "ERASE",
+        "changed_cells": 1
+      },
+      "alice_frame": {
+        "actor": "alice",
+        "after_revision": 2,
+        "status": 200,
+        "delta": {
+          "from_revision": 2,
+          "to_revision": 3,
+          "reset_required": true,
+          "operations": 0
+        },
+        "snapshot": {
+          "revision": 3,
+          "state": "EDITABLE",
+          "snapshot_id": "fd84a5fd-8b47-4411-abae-8bf15b723dc6",
+          "pixels_sha256": "f93cf959073ae310b1f183c3c5012a446a142e4a0be094c38197ff76fd922019"
+        }
+      },
+      "converged": true,
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "bounded_fill_and_convergence": {
+      "bob": {
+        "status": 200,
+        "revision": 4,
+        "action_id": "0bb65f2b-513c-4385-89b8-3d89c89e7c08",
+        "changed_cells": 244,
+        "kind": "FILL"
+      },
+      "alice_frame": {
+        "actor": "alice",
+        "after_revision": 3,
+        "status": 200,
+        "delta": {
+          "from_revision": 3,
+          "to_revision": 4,
+          "reset_required": true,
+          "operations": 0
+        },
+        "snapshot": {
+          "revision": 4,
+          "state": "EDITABLE",
+          "snapshot_id": "15c4da97-86e6-48f2-bc10-63c850d0e2ba",
+          "pixels_sha256": "bd073ac098251fb02d4a166ca628a9c20dbbfd7796ea0ab5e8df8ce49c90266e"
+        }
+      },
+      "component_cells": 244,
+      "changed_cells_actual": 244,
+      "converged": true,
+      "exact_component": true,
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "cooldown_rejection": {
+      "first": {
+        "status": 200,
+        "revision": 5
+      },
+      "second": {
+        "status": 429,
+        "reason": "MURAL_COOLDOWN"
+      },
+      "revision_unchanged": true,
+      "charges": "2",
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "fill_too_large_rejection": {
+      "request_cells": 11616,
+      "status": 409,
+      "reason": "MURAL_FILL_TOO_LARGE",
+      "revision_unchanged": true,
+      "state_sha256_equal": true,
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "undo_revision_guard": {
+      "fill": {
+        "status": 200,
+        "revision": 6
+      },
+      "foreign_write": {
+        "status": 200,
+        "revision": 7
+      },
+      "undo": {
+        "status": 409,
+        "reason": "MURAL_UNDO_NOT_LATEST"
+      },
+      "revision_unchanged": true,
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "undo_latest_own_action": {
+      "source": {
+        "status": 200,
+        "revision": 8,
+        "kind": "ERASE"
+      },
+      "undo": {
+        "status": 200,
+        "revision": 9,
+        "kind": "UNDO",
+        "target_action_id": "133a184c-5a1f-4b73-a93d-589e5999fdf9"
+      },
+      "restored_exact_grid": true,
+      "revision_advanced": true,
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "shared_cell_budget_rejection": {
+      "before_revision": 12,
+      "status": 429,
+      "reason": "MURAL_BUDGET_EXCEEDED",
+      "revision_unchanged": true,
+      "state_sha256_equal": true,
+      "alice_allowance": 20,
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "uncertain_outcome_recovery": {
+      "lost_request": {
+        "key": "28565eef-69e5-44c5-be4f-62f3bdb27412",
+        "body": {
+          "expected_revision": 12,
+          "x": 124,
+          "y": 127,
+          "color_index": 7
+        },
+        "response": "DISCARDED_AFTER_SEND"
+      },
+      "status": {
+        "http": 200,
+        "state": "SUCCEEDED",
+        "resource_revision": 13
+      },
+      "own_result": {
+        "http": 200,
+        "revision": 13,
+        "operation_id": "15039352-e206-4c17-95eb-8e160bee61bb"
+      },
+      "authoritative_snapshot_revision": 13,
+      "same_key_replay": {
+        "http": 200,
+        "revision": 13
+      },
+      "uncommitted_replay": null,
+      "no_duplicate_after_replay": true,
+      "charges_before_replay": "6|492",
+      "charges_after_replay": "6|492",
+      "same_receipt": true,
+      "reposted_with_new_key": false,
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "moderation_pause_resume_lock_restore_freeze": {
+      "operator_state": {
+        "http": 200,
+        "state": "EDITABLE",
+        "revision": 13
+      },
+      "member_admin_read": {
+        "http": 403,
+        "reason": "PERMISSION_DENIED"
+      },
+      "member_pause": {
+        "http": 403,
+        "reason": "PERMISSION_DENIED"
+      },
+      "pause": {
+        "http": 200,
+        "state": "PAUSED",
+        "revision": 14
+      },
+      "write_while_paused": {
+        "http": 409,
+        "reason": "MURAL_PAUSED"
+      },
+      "resume": {
+        "http": 200,
+        "state": "EDITABLE"
+      },
+      "write_after_resume": {
+        "http": 200,
+        "revision": 16
+      },
+      "lock": {
+        "http": 200,
+        "locks": [
+          {
+            "x_max_exclusive": 67,
+            "x_min": 66,
+            "y_max_exclusive": 19,
+            "y_min": 18
+          }
+        ]
+      },
+      "write_in_locked_region": {
+        "http": 409,
+        "reason": "MURAL_REGION_LOCKED"
+      },
+      "unlock": {
+        "http": 200,
+        "locks": []
+      },
+      "restore": {
+        "http": 200,
+        "state": "PAUSED",
+        "revision": 20,
+        "snapshot_id": "62ee2a71-ee51-41ec-85b9-a7d79e7ed3a1",
+        "target_snapshot_id": "3a471884-edd9-4e3e-80fb-15fd7380112a",
+        "restored_exact_grid": true
+      },
+      "resume_after_restore": {
+        "http": 200,
+        "state": "EDITABLE"
+      },
+      "freeze": {
+        "http": 200,
+        "state": "FROZEN",
+        "revision": 22
+      },
+      "write_while_frozen": {
+        "http": 409,
+        "reason": "MURAL_FROZEN"
+      },
+      "terminal_frozen_transition": {
+        "http": 409,
+        "reason": "INVALID_TRANSITION"
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "world_socket_frames": {
+      "status": "PASS",
+      "observation": {
+        "alice": {
+          "status": "PASS",
+          "frames": [
+            {
+              "type": "snapshot",
+              "streamId": "f7e161f4-c319-42c5-81a1-b32aaa1824a7",
+              "roomEpoch": "f10e4cbb-5091-4a28-be3f-f099b18e930a"
+            }
+          ],
+          "counters": {
+            "frames_in": 1,
+            "bytes_in": 928,
+            "frames_out": 1,
+            "bytes_out": 326,
+            "max_message_bytes": 928,
+            "max_buffered_bytes": 0,
+            "max_write_buffer_bytes": 0
+          }
+        },
+        "bob": {
+          "status": "PASS",
+          "frames": [
+            {
+              "type": "snapshot",
+              "streamId": "a0c33822-8379-4071-8890-46d06a291e9c",
+              "roomEpoch": "f10e4cbb-5091-4a28-be3f-f099b18e930a"
+            }
+          ],
+          "counters": {
+            "frames_in": 1,
+            "bytes_in": 928,
+            "frames_out": 1,
+            "bytes_out": 326,
+            "max_message_bytes": 928,
+            "max_buffered_bytes": 0,
+            "max_write_buffer_bytes": 0
+          }
+        }
+      },
+      "mural_transport": "HTTP snapshot/delta frames (per-step sync_frames above); the world socket carries avatar/position replication only",
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "privacy_and_final_convergence": {
+      "foreign_action_read": {
+        "http": 404,
+        "reason": "RESOURCE_UNAVAILABLE"
+      },
+      "foreign_pixel_result_read": {
+        "http": 404
+      },
+      "snapshot_forbidden_keys": [],
+      "delta_forbidden_keys": [],
+      "alice": {
+        "revision": 22,
+        "state": "FROZEN",
+        "pixels_sha256": "f8afbf43ff8775315c5fbb8bf9834994ebe2b7a8f92d399361ba97335a903e2e"
+      },
+      "bob": {
+        "revision": 22,
+        "state": "FROZEN",
+        "pixels_sha256": "f8afbf43ff8775315c5fbb8bf9834994ebe2b7a8f92d399361ba97335a903e2e"
+      },
+      "converged": true,
+      "delta_reset_after_moderation": true,
+      "log": {
+        "note": "no new child log bytes"
+      }
+    }
+  },
+  "checks": {
+    "initial_convergence": true,
+    "pencil_bob_convergence": true,
+    "erase_convergence": true,
+    "fill_convergence": true,
+    "fill_256_or_less": true,
+    "fill_exact_component": true,
+    "cooldown_429": true,
+    "cooldown_reason": true,
+    "cooldown_no_state_change": true,
+    "fill_too_large_409": true,
+    "fill_too_large_reason": true,
+    "fill_too_large_no_state_change": true,
+    "undo_guard_409": true,
+    "undo_guard_reason": true,
+    "undo_success": true,
+    "undo_restores_grid": true,
+    "budget_429": true,
+    "budget_reason": true,
+    "budget_no_state_change": true,
+    "recovery_succeeded": true,
+    "recovery_no_duplicate": true,
+    "recovery_charges_unchanged": true,
+    "recovery_same_receipt": true,
+    "member_admin_denied": true,
+    "member_pause_denied": true,
+    "pause_blocks_write": true,
+    "pause_reason": true,
+    "resume_allows_write": true,
+    "lock_blocks_write": true,
+    "lock_reason": true,
+    "restore_exact": true,
+    "freeze_blocks_write": true,
+    "freeze_reason": true,
+    "frozen_terminal": true,
+    "foreign_action_denied": true,
+    "no_private_keys": true,
+    "final_convergence": true,
+    "world_socket_frames": true
+  },
+  "not_run": {
+    "undo_wall_clock_expiry": {
+      "status": "NOT_RUN",
+      "reason": "A real >600 s wait was not performed in this round; the positive in-window undo and the revision guard executed. Expiry remains proven by the existing native unit cases and is recorded here as not re-run.",
+      "consumer": "backend/services/concert-service/src/mural_tools_b/repository.rs undo guard"
+    },
+    "device_and_visual": {
+      "status": "NOT_RUN",
+      "reason": "No browser/device surface was exercised; this is a backend multiuser gate.",
+      "consumer": "IN04 frontend runner in docs/mcr/qa/in04-wall-b.md"
+    }
+  },
+  "scenario": {
+    "pack_manifest_sha256": "3f1aa318f0e4b7d8fa7f079b1101f7386619291a8dbb3bb04ef70820952f34ce",
+    "fill_seed": 2361,
+    "fill_cells": 244,
+    "background_cells": 11616,
+    "cooldown_ms": 1200,
+    "run_colors": [
+      3,
+      7,
+      8,
+      10,
+      11,
+      12
+    ]
+  },
+  "stack": {
+    "gateway_url": "http://127.0.0.1:60160",
+    "services": {
+      "profile-service": {
+        "http": "http://127.0.0.1:60140",
+        "grpc": "http://127.0.0.1:60141",
+        "metrics": "http://127.0.0.1:60142"
+      },
+      "notification-service": {
+        "http": "http://127.0.0.1:60143",
+        "grpc": "http://127.0.0.1:60144",
+        "metrics": "http://127.0.0.1:60145"
+      },
+      "concert-service": {
+        "http": "http://127.0.0.1:60146",
+        "grpc": "http://127.0.0.1:60147",
+        "metrics": "http://127.0.0.1:60148"
+      },
+      "friend-service": {
+        "http": "http://127.0.0.1:60150",
+        "grpc": "http://127.0.0.1:60151",
+        "metrics": "http://127.0.0.1:60152"
+      },
+      "post-service": {
+        "http": "http://127.0.0.1:60153",
+        "grpc": "http://127.0.0.1:60154",
+        "metrics": "http://127.0.0.1:60155"
+      },
+      "auth-service": {
+        "http": "http://127.0.0.1:60156",
+        "grpc": "http://127.0.0.1:60157",
+        "metrics": "http://127.0.0.1:60159"
+      },
+      "api-gateway": {
+        "http": "http://127.0.0.1:60160",
+        "grpc": "http://127.0.0.1:60161",
+        "metrics": "http://127.0.0.1:60162"
+      }
+    },
+    "event": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+    "release_digest": "adcec15987c40769d0b6082df676182b87c658c5037c5e758ed89868548ea245",
+    "readiness": {
+      "api-gateway": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "database": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->auth": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->friend": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->notification": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->post": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->profile": {
+            "required": true,
+            "status": "up"
+          },
+          "signing-keys": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      },
+      "auth-service": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "auth->friend": {
+            "required": false,
+            "status": "up"
+          },
+          "auth->notification": {
+            "required": false,
+            "status": "up"
+          },
+          "auth->post": {
+            "required": false,
+            "status": "up"
+          },
+          "auth->profile": {
+            "required": false,
+            "status": "up"
+          },
+          "concert-owner-authority": {
+            "required": true,
+            "status": "up"
+          },
+          "database": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      },
+      "profile-service": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "database": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      },
+      "friend-service": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "concert-owner-authority": {
+            "required": true,
+            "status": "up"
+          },
+          "database": {
+            "required": true,
+            "status": "up"
+          },
+          "friend->profile": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      },
+      "post-service": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "database": {
+            "required": true,
+            "status": "up"
+          },
+          "post->friend": {
+            "required": true,
+            "status": "up"
+          },
+          "post->gateway": {
+            "required": true,
+            "status": "up"
+          },
+          "post->notification": {
+            "required": false,
+            "status": "up"
+          },
+          "post->profile": {
+            "required": false,
+            "status": "up"
+          }
+        }
+      },
+      "notification-service": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "database": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      },
+      "concert-service": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "database": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      }
+    },
+    "owned_root": "/private/tmp/mcr-pg-tpwh4iy7",
+    "mail": "private local HTTP capture"
+  },
+  "principal_attempts": {
+    "operator": 1,
+    "alice": 1,
+    "bob": 1
+  },
+  "provisioning": {
+    "mode": "direct owned-PG insert of the qualified six-file pack bytes",
+    "pack_manifest_sha256": "3f1aa318f0e4b7d8fa7f079b1101f7386619291a8dbb3bb04ef70820952f34ce",
+    "seed_snapshot_id": "22368cf5-c71e-4a0e-8bbb-1303ef49cee3",
+    "mural_seed_producer": "NOT_RUN: mural_seed::provision has no CLI/HTTP entry; the actual pack pixels/palette are inserted into the owned disposable cluster",
+    "operator_role": "OPERATOR|1|"
+  },
+  "db": {
+    "state": "{\"state\": \"FROZEN\", \"revision\": 22, \"snapshot_id\": \"5c44f0a5-90f1-477c-99ed-aa45f3281147\", \"pixels_sha256\": \"f8afbf43ff8775315c5fbb8bf9834994ebe2b7a8f92d399361ba97335a903e2e\", \"reset_revision\": 22}",
+    "revisions": "[{\"state\": \"EDITABLE\", \"revision\": 1, \"snapshot_id\": \"22368cf5-c71e-4a0e-8bbb-1303ef49cee3\", \"pixels_sha256\": \"f29eaf4ea632e2a34b6dd4fdfdc6f8a3d07ab780af96e19c2a64c28faf42c721\"}, {\"state\": \"EDITABLE\", \"revision\": 2, \"snapshot_id\": \"78a49847-2a92-4ea5-bbbd-db705cb4050b\", \"pixels_sha256\": \"502b8737abbbc934104ae878f40835e444f3864837b90c4ec3b4d6e9445eadf4\"}, {\"state\": \"EDITABLE\", \"revision\": 3, \"snapshot_id\": \"fd84a5fd-8b47-4411-abae-8bf15b723dc6\", \"pixels_sha256\": \"f93cf959073ae310b1f183c3c5012a446a142e4a0be094c38197ff76fd922019\"}, {\"state\": \"EDITABLE\", \"revision\": 4, \"snapshot_id\": \"15c4da97-86e6-48f2-bc10-63c850d0e2ba\", \"pixels_sha256\": \"bd073ac098251fb02d4a166ca628a9c20dbbfd7796ea0ab5e8df8ce49c90266e\"}, {\"state\": \"EDITABLE\", \"revision\": 5, \"snapshot_id\": \"430f3bc9-137d-443e-a2d5-0843690d850d\", \"pixels_sha256\": \"8da956353655d02060f31c67913d69c887de253faec1625db2b58b9214757fa4\"}, {\"state\": \"EDITABLE\", \"revision\": 7, \"snapshot_id\": \"439320f9-def6-4c08-824f-925c934b415f\", \"pixels_sha256\": \"de4e3828b992e55d60e8d7a676b4b892d749a01fe1a0f0f0ea05496be99cadfd\"}, {\"state\": \"EDITABLE\", \"revision\": 9, \"snapshot_id\": \"3fca9d66-2dc7-477f-abc9-d78578808c7f\", \"pixels_sha256\": \"de4e3828b992e55d60e8d7a676b4b892d749a01fe1a0f0f0ea05496be99cadfd\"}, {\"state\": \"EDITABLE\", \"revision\": 10, \"snapshot_id\": \"2b13c2be-24db-44ba-8bfb-ff38a928a625\", \"pixels_sha256\": \"0e11af8af5c79ba8009a9ef1f1cf1aee78c17be7d85b02eb0be0d14a1839affc\"}, {\"state\": \"EDITABLE\", \"revision\": 11, \"snapshot_id\": \"10556681-cc2b-41e6-9afb-17d897f44c7f\", \"pixels_sha256\": \"0ae26b5398f335635f24dc9e8fd5d1b4681262314cd527ab6360c63acc71de82\"}, {\"state\": \"EDITABLE\", \"revision\": 12, \"snapshot_id\": \"fc8030da-4cb5-4e3a-b6d0-9aea5cac8303\", \"pixels_sha256\": \"2ed5a3f2ad1986243a92b8d91b3aacea54be57f20a3d493c4e00ecc787503ab6\"}, {\"state\": \"EDITABLE\", \"revision\": 13, \"snapshot_id\": \"db36f1b8-f17e-4da8-97f0-51038520742f\", \"pixels_sha256\": \"d2bdb0ba72b5987b92fab246c448854b88f115f82fbd1d1ef202af2b77f3cb0e\"}, {\"state\": \"PAUSED\", \"revision\": 14, \"snapshot_id\": \"cd5e171c-00fa-4970-9cf5-19cc58356153\", \"pixels_sha256\": \"d2bdb0ba72b5987b92fab246c448854b88f115f82fbd1d1ef202af2b77f3cb0e\"}, {\"state\": \"EDITABLE\", \"revision\": 15, \"snapshot_id\": \"f47dd8c0-319f-4330-b659-9ea1eee30cb2\", \"pixels_sha256\": \"d2bdb0ba72b5987b92fab246c448854b88f115f82fbd1d1ef202af2b77f3cb0e\"}, {\"state\": \"EDITABLE\", \"revision\": 17, \"snapshot_id\": \"1f7feff0-3b69-4ced-b62f-cb99998a25a3\", \"pixels_sha256\": \"f8afbf43ff8775315c5fbb8bf9834994ebe2b7a8f92d399361ba97335a903e2e\"}, {\"state\": \"EDITABLE\", \"revision\": 18, \"snapshot_id\": \"3a471884-edd9-4e3e-80fb-15fd7380112a\", \"pixels_sha256\": \"f8afbf43ff8775315c5fbb8bf9834994ebe2b7a8f92d399361ba97335a903e2e\"}, {\"state\": \"PAUSED\", \"revision\": 19, \"snapshot_id\": \"27d2b67e-078e-4359-b1a4-cb93b69a8d7b\", \"pixels_sha256\": \"f8afbf43ff8775315c5fbb8bf9834994ebe2b7a8f92d399361ba97335a903e2e\"}, {\"state\": \"PAUSED\", \"revision\": 20, \"snapshot_id\": \"62ee2a71-ee51-41ec-85b9-a7d79e7ed3a1\", \"pixels_sha256\": \"f8afbf43ff8775315c5fbb8bf9834994ebe2b7a8f92d399361ba97335a903e2e\"}, {\"state\": \"EDITABLE\", \"revision\": 21, \"snapshot_id\": \"f10d5586-feb6-494e-8127-b6bb6835f7b2\", \"pixels_sha256\": \"f8afbf43ff8775315c5fbb8bf9834994ebe2b7a8f92d399361ba97335a903e2e\"}, {\"state\": \"FROZEN\", \"revision\": 22, \"snapshot_id\": \"5c44f0a5-90f1-477c-99ed-aa45f3281147\", \"pixels_sha256\": \"f8afbf43ff8775315c5fbb8bf9834994ebe2b7a8f92d399361ba97335a903e2e\"}]",
+    "tool_actions": "[{\"kind\": \"PENCIL\", \"undoes\": null, \"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"revision\": 2, \"changed_cells\": 1, \"undo_expires_at\": \"2026-11-06T20:02:14.999671+09:00\"}, {\"kind\": \"ERASE\", \"undoes\": null, \"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"revision\": 3, \"changed_cells\": 1, \"undo_expires_at\": \"2026-11-06T20:02:15.847508+09:00\"}, {\"kind\": \"FILL\", \"undoes\": null, \"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"revision\": 4, \"changed_cells\": 244, \"undo_expires_at\": \"2026-11-06T20:02:17.297814+09:00\"}, {\"kind\": \"PENCIL\", \"undoes\": null, \"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"revision\": 5, \"changed_cells\": 1, \"undo_expires_at\": \"2026-11-06T20:02:18.060604+09:00\"}, {\"kind\": \"FILL\", \"undoes\": null, \"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"revision\": 6, \"changed_cells\": 244, \"undo_expires_at\": \"2026-11-06T20:02:19.768666+09:00\"}, {\"kind\": \"PENCIL\", \"undoes\": null, \"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"revision\": 7, \"changed_cells\": 1, \"undo_expires_at\": \"2026-11-06T20:02:20.09438+09:00\"}, {\"kind\": \"ERASE\", \"undoes\": null, \"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"revision\": 8, \"changed_cells\": 1, \"undo_expires_at\": \"2026-11-06T20:02:22.112389+09:00\"}, {\"kind\": \"UNDO\", \"undoes\": \"133a184c-5a1f-4b73-a93d-589e5999fdf9\", \"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"revision\": 9, \"changed_cells\": 1, \"undo_expires_at\": \"2026-11-06T20:02:23.54355+09:00\"}, {\"kind\": \"FILL\", \"undoes\": null, \"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"revision\": 10, \"changed_cells\": 244, \"undo_expires_at\": \"2026-11-06T20:02:24.26638+09:00\"}, {\"kind\": \"FILL\", \"undoes\": null, \"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"revision\": 11, \"changed_cells\": 244, \"undo_expires_at\": \"2026-11-06T20:02:25.714057+09:00\"}, {\"kind\": \"PENCIL\", \"undoes\": null, \"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"revision\": 12, \"changed_cells\": 1, \"undo_expires_at\": \"2026-11-06T20:02:27.34801+09:00\"}, {\"kind\": \"PENCIL\", \"undoes\": null, \"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"revision\": 13, \"changed_cells\": 1, \"undo_expires_at\": \"2026-11-06T20:02:29.702193+09:00\"}, {\"kind\": \"PENCIL\", \"undoes\": null, \"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"revision\": 16, \"changed_cells\": 1, \"undo_expires_at\": \"2026-11-06T20:02:32.478606+09:00\"}]",
+    "charges": "[{\"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"revision\": 2, \"committed_at\": \"2026-11-06T19:52:14.999671+09:00\", \"changed_cells\": 1}, {\"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"revision\": 3, \"committed_at\": \"2026-11-06T19:52:15.847508+09:00\", \"changed_cells\": 1}, {\"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"revision\": 4, \"committed_at\": \"2026-11-06T19:52:17.297814+09:00\", \"changed_cells\": 244}, {\"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"revision\": 5, \"committed_at\": \"2026-11-06T19:52:18.060604+09:00\", \"changed_cells\": 1}, {\"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"revision\": 6, \"committed_at\": \"2026-11-06T19:52:19.768666+09:00\", \"changed_cells\": 244}, {\"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"revision\": 7, \"committed_at\": \"2026-11-06T19:52:20.09438+09:00\", \"changed_cells\": 1}, {\"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"revision\": 8, \"committed_at\": \"2026-11-06T19:52:22.112389+09:00\", \"changed_cells\": 1}, {\"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"revision\": 9, \"committed_at\": \"2026-11-06T19:52:23.54355+09:00\", \"changed_cells\": 1}, {\"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"revision\": 10, \"committed_at\": \"2026-11-06T19:52:24.26638+09:00\", \"changed_cells\": 244}, {\"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"revision\": 11, \"committed_at\": \"2026-11-06T19:52:25.714057+09:00\", \"changed_cells\": 244}, {\"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"revision\": 12, \"committed_at\": \"2026-11-06T19:52:27.34801+09:00\", \"changed_cells\": 1}, {\"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"revision\": 13, \"committed_at\": \"2026-11-06T19:52:29.702193+09:00\", \"changed_cells\": 1}, {\"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"revision\": 16, \"committed_at\": \"2026-11-06T19:52:32.478606+09:00\", \"changed_cells\": 1}]",
+    "correlations": "20",
+    "receipts": "[{\"state\": \"SUCCEEDED\", \"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"operation_id\": \"placeConcertPixel\", \"failure_reason\": null, \"resource_revision\": 2}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"operation_id\": \"eraseConcertMuralPixel\", \"failure_reason\": null, \"resource_revision\": 3}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"operation_id\": \"fillConcertMuralRegion\", \"failure_reason\": null, \"resource_revision\": 4}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"operation_id\": \"placeConcertPixel\", \"failure_reason\": null, \"resource_revision\": 5}, {\"state\": \"FAILED\", \"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"operation_id\": \"placeConcertPixel\", \"failure_reason\": \"MURAL_COOLDOWN\", \"resource_revision\": null}, {\"state\": \"FAILED\", \"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"operation_id\": \"fillConcertMuralRegion\", \"failure_reason\": \"MURAL_FILL_TOO_LARGE\", \"resource_revision\": null}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"operation_id\": \"fillConcertMuralRegion\", \"failure_reason\": null, \"resource_revision\": 6}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"operation_id\": \"placeConcertPixel\", \"failure_reason\": null, \"resource_revision\": 7}, {\"state\": \"FAILED\", \"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"operation_id\": \"undoConcertMuralAction\", \"failure_reason\": \"MURAL_UNDO_NOT_LATEST\", \"resource_revision\": null}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"operation_id\": \"eraseConcertMuralPixel\", \"failure_reason\": null, \"resource_revision\": 8}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"operation_id\": \"undoConcertMuralAction\", \"failure_reason\": null, \"resource_revision\": 9}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"operation_id\": \"fillConcertMuralRegion\", \"failure_reason\": null, \"resource_revision\": 10}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"operation_id\": \"fillConcertMuralRegion\", \"failure_reason\": null, \"resource_revision\": 11}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"operation_id\": \"placeConcertPixel\", \"failure_reason\": null, \"resource_revision\": 12}, {\"state\": \"FAILED\", \"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"operation_id\": \"fillConcertMuralRegion\", \"failure_reason\": \"MURAL_BUDGET_EXCEEDED\", \"resource_revision\": null}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"operation_id\": \"placeConcertPixel\", \"failure_reason\": null, \"resource_revision\": 13}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"06c6f14c-fce3-4b0f-884f-53f810504a1f\", \"operation_id\": \"controlConcertMural\", \"failure_reason\": null, \"resource_revision\": 14}, {\"state\": \"FAILED\", \"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"operation_id\": \"placeConcertPixel\", \"failure_reason\": \"MURAL_PAUSED\", \"resource_revision\": null}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"06c6f14c-fce3-4b0f-884f-53f810504a1f\", \"operation_id\": \"controlConcertMural\", \"failure_reason\": null, \"resource_revision\": 15}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"operation_id\": \"placeConcertPixel\", \"failure_reason\": null, \"resource_revision\": 16}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"06c6f14c-fce3-4b0f-884f-53f810504a1f\", \"operation_id\": \"lockConcertMuralRegion\", \"failure_reason\": null, \"resource_revision\": 17}, {\"state\": \"FAILED\", \"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"operation_id\": \"placeConcertPixel\", \"failure_reason\": \"MURAL_REGION_LOCKED\", \"resource_revision\": null}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"06c6f14c-fce3-4b0f-884f-53f810504a1f\", \"operation_id\": \"lockConcertMuralRegion\", \"failure_reason\": null, \"resource_revision\": 18}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"06c6f14c-fce3-4b0f-884f-53f810504a1f\", \"operation_id\": \"controlConcertMural\", \"failure_reason\": null, \"resource_revision\": 19}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"06c6f14c-fce3-4b0f-884f-53f810504a1f\", \"operation_id\": \"restoreConcertMural\", \"failure_reason\": null, \"resource_revision\": 20}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"06c6f14c-fce3-4b0f-884f-53f810504a1f\", \"operation_id\": \"controlConcertMural\", \"failure_reason\": null, \"resource_revision\": 21}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"06c6f14c-fce3-4b0f-884f-53f810504a1f\", \"operation_id\": \"controlConcertMural\", \"failure_reason\": null, \"resource_revision\": 22}, {\"state\": \"FAILED\", \"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"operation_id\": \"placeConcertPixel\", \"failure_reason\": \"MURAL_FROZEN\", \"resource_revision\": null}, {\"state\": \"FAILED\", \"actor_id\": \"06c6f14c-fce3-4b0f-884f-53f810504a1f\", \"operation_id\": \"controlConcertMural\", \"failure_reason\": \"INVALID_TRANSITION\", \"resource_revision\": null}]",
+    "outbox": "[{\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 2}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 3}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 4}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 5}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 6}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 7}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 8}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 9}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 10}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 11}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 12}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 13}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 14}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 15}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 16}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 17}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 18}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 19}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 20}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 21}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 22}]",
+    "locks": "0"
+  },
+  "result": "PASS",
+  "failed_checks": {},
+  "cleanup": "PASS",
+  "http_requests": [
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "bob",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools"
+    },
+    {
+      "role": "alice",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/pixels"
+    },
+    {
+      "role": "bob",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "bob",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/operations?after_revision=1"
+    },
+    {
+      "role": "bob",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools"
+    },
+    {
+      "role": "bob",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/erase"
+    },
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/operations?after_revision=2"
+    },
+    {
+      "role": "bob",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools"
+    },
+    {
+      "role": "bob",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/fill"
+    },
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/operations?after_revision=3"
+    },
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools"
+    },
+    {
+      "role": "alice",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/pixels"
+    },
+    {
+      "role": "alice",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/pixels"
+    },
+    {
+      "role": "bob",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "bob",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools"
+    },
+    {
+      "role": "bob",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "bob",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools"
+    },
+    {
+      "role": "bob",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/fill"
+    },
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "bob",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools"
+    },
+    {
+      "role": "bob",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/fill"
+    },
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools"
+    },
+    {
+      "role": "alice",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/pixels"
+    },
+    {
+      "role": "bob",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools"
+    },
+    {
+      "role": "bob",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/undo"
+    },
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "bob",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools"
+    },
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "bob",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools"
+    },
+    {
+      "role": "bob",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/erase"
+    },
+    {
+      "role": "bob",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools"
+    },
+    {
+      "role": "bob",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/undo"
+    },
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools"
+    },
+    {
+      "role": "alice",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/fill"
+    },
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools"
+    },
+    {
+      "role": "alice",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/fill"
+    },
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools"
+    },
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "alice",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/pixels"
+    },
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools"
+    },
+    {
+      "role": "alice",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/fill"
+    },
+    {
+      "role": "bob",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools"
+    },
+    {
+      "role": "bob",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools"
+    },
+    {
+      "role": "bob",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "bob",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/commands?operation_id=placeConcertPixel&idempotency_key=28565eef-69e5-44c5-be4f-62f3bdb27412"
+    },
+    {
+      "role": "bob",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/commands/28565eef-69e5-44c5-be4f-62f3bdb27412/result"
+    },
+    {
+      "role": "bob",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "bob",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/pixels"
+    },
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "operator",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/admin/mural"
+    },
+    {
+      "role": "bob",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/admin/mural"
+    },
+    {
+      "role": "bob",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/admin/mural/control"
+    },
+    {
+      "role": "operator",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/admin/mural/control"
+    },
+    {
+      "role": "bob",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/pixels"
+    },
+    {
+      "role": "operator",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/admin/mural/control"
+    },
+    {
+      "role": "bob",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools"
+    },
+    {
+      "role": "bob",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/pixels"
+    },
+    {
+      "role": "operator",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/admin/mural/locks"
+    },
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools"
+    },
+    {
+      "role": "alice",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/pixels"
+    },
+    {
+      "role": "operator",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/admin/mural/locks"
+    },
+    {
+      "role": "operator",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "operator",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/admin/mural/control"
+    },
+    {
+      "role": "operator",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/admin/mural/restore"
+    },
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "operator",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/admin/mural/control"
+    },
+    {
+      "role": "operator",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/admin/mural/control"
+    },
+    {
+      "role": "bob",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/pixels"
+    },
+    {
+      "role": "operator",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/admin/mural/control"
+    },
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap"
+    },
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms"
+    },
+    {
+      "role": "alice",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets"
+    },
+    {
+      "role": "bob",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap"
+    },
+    {
+      "role": "bob",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/rooms"
+    },
+    {
+      "role": "bob",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/world-tickets"
+    },
+    {
+      "role": "bob",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/actions/770c8b65-63e4-4d3b-a9f5-dbe2c4c8ad20"
+    },
+    {
+      "role": "bob",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/commands/770c8b65-63e4-4d3b-a9f5-dbe2c4c8ad20/result"
+    },
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "bob",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "bob",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/operations?after_revision=1"
+    }
+  ]
+}
