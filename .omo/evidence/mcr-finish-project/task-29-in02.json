@@ -1,0 +1,138 @@
+{
+  "banner": {
+    "scope": "development vertical flow",
+    "release": "development release bundle, NOT_ADMITTED",
+    "qa08": "NOT_RUN",
+    "in03_cohort": "NOT_CLAIMED",
+    "release_qualification": "NOT_CLAIMED"
+  },
+  "steps": {
+    "operator_role": "OPERATOR|1|",
+    "party_warmup": {
+      "runs": [
+        {
+          "status": 503,
+          "body": {
+            "code": "CONCERT_503",
+            "details": {
+              "reason": "DEPENDENCY_UNAVAILABLE"
+            },
+            "message": "Concert request unavailable",
+            "timestamp": "2026-11-06T13:02:33.825Z",
+            "traceId": "d44754e9-15c4-4e2c-8493-40b9ad54732f"
+          }
+        },
+        {
+          "status": 503,
+          "body": {
+            "code": "CONCERT_503",
+            "details": {
+              "reason": "DEPENDENCY_UNAVAILABLE"
+            },
+            "message": "Concert request unavailable",
+            "timestamp": "2026-11-06T13:02:33.833Z",
+            "traceId": "337339d0-af99-4297-bd68-84eec4f5aa77"
+          }
+        }
+      ],
+      "log": {
+        "api-gateway": "{\"timestamp\":\"2026-11-06T13:02:21.015820Z\",\"level\":\"WARN\",\"fields\":{\"message\":\"signing key fetch failed; keeping the installed keys\",\"trigger\":\"scheduled\",\"error\":\"Service unavailable\"},\"target\":\"api_gateway::adapters::out::signing_keys\"}",
+        "concert-service": "CONCERT_HEALTH_LISTENER=127.0.0.1:56721\nCONCERT_WORLD_LISTENER=127.0.0.1:56722"
+      }
+    },
+    "in02_provision_rows": {
+      "event": "OPEN",
+      "participants": "3",
+      "admissions": "3",
+      "settings": "t|t",
+      "places": "1",
+      "parties": "0",
+      "giveaways": "0",
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "party_create": {
+      "status": 503,
+      "body": {
+        "code": "CONCERT_503",
+        "details": {
+          "reason": "DEPENDENCY_UNAVAILABLE"
+        },
+        "message": "Concert request unavailable",
+        "timestamp": "2026-11-06T13:02:33.980Z",
+        "traceId": "3c326945-d00e-416d-97c3-a6a3de3e22d9"
+      },
+      "log": {
+        "note": "no new child log bytes"
+      },
+      "receipts": "",
+      "event_rows": "OPEN"
+    }
+  },
+  "checks": {
+    "party_create_200": false
+  },
+  "event": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+  "stack": {
+    "kind": "mcr-owned-dev-stack-v1",
+    "pid": 29482,
+    "uid": 501,
+    "root": "/private/tmp/mcr-pg-1cyk1xjs",
+    "root_identity": [
+      16777229,
+      558129182
+    ],
+    "socket": "/private/tmp/mcr-pg-1cyk1xjs/control.sock",
+    "gateway_url": "http://127.0.0.1:56732",
+    "services": {
+      "profile-service": {
+        "http": "http://127.0.0.1:56713",
+        "grpc": "http://127.0.0.1:56714",
+        "metrics": "http://127.0.0.1:56715"
+      },
+      "notification-service": {
+        "http": "http://127.0.0.1:56716",
+        "grpc": "http://127.0.0.1:56717",
+        "metrics": "http://127.0.0.1:56718"
+      },
+      "concert-service": {
+        "http": "http://127.0.0.1:56719",
+        "grpc": "http://127.0.0.1:56720",
+        "metrics": "http://127.0.0.1:56721"
+      },
+      "friend-service": {
+        "http": "http://127.0.0.1:56723",
+        "grpc": "http://127.0.0.1:56724",
+        "metrics": "http://127.0.0.1:56725"
+      },
+      "post-service": {
+        "http": "http://127.0.0.1:56726",
+        "grpc": "http://127.0.0.1:56727",
+        "metrics": "http://127.0.0.1:56728"
+      },
+      "auth-service": {
+        "http": "http://127.0.0.1:56729",
+        "grpc": "http://127.0.0.1:56730",
+        "metrics": "http://127.0.0.1:56731"
+      },
+      "api-gateway": {
+        "http": "http://127.0.0.1:56732",
+        "grpc": "http://127.0.0.1:56733",
+        "metrics": "http://127.0.0.1:56734"
+      }
+    },
+    "mail_directory": "/private/tmp/mcr-pg-1cyk1xjs/mail",
+    "auth_http": "Gateway /auth/*; no /api ingress adapter yet"
+  },
+  "enrollment_policy_revision": "cfe428c1-5a0e-4f7a-921c-7df8ba2a4edb",
+  "in02_blocker": "party creation did not reach the Party producer",
+  "result": "FAIL",
+  "logs": {
+    "concert-service": "CONCERT_HEALTH_LISTENER=127.0.0.1:56721\nCONCERT_WORLD_LISTENER=127.0.0.1:56722\n",
+    "auth-service": "",
+    "friend-service": "",
+    "api-gateway": "{\"timestamp\":\"2026-11-06T13:02:21.015820Z\",\"level\":\"WARN\",\"fields\":{\"message\":\"signing key fetch failed; keeping the installed keys\",\"trigger\":\"scheduled\",\"error\":\"Service unavailable\"},\"target\":\"api_gateway::adapters::out::signing_keys\"}\n"
+  },
+  "cleanup": "PASS"
+}

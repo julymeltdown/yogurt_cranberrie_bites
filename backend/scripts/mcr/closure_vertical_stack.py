@@ -15,9 +15,11 @@ import json
 import secrets
 import subprocess
 import sys
+import threading
 import time
 import urllib.error
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from unittest.mock import patch
@@ -214,6 +216,332 @@ def principal(gateway, mail, policy, ordinal, origin):
     return user, token
 
 
+IN02_PLACE = "11111111-1111-4111-8111-111111111111"
+
+
+def in02_provision(cluster, event, users):
+    """Development-only event policy and a synthetic reviewed physical place."""
+    now = datetime.now(timezone.utc)
+    admissions = []
+    for user in users:
+        admissions += [
+            "INSERT INTO concert_event_admissions(event_id,user_id,state) VALUES("
+            + ",".join(map(prep.quote, [event, user, "ACTIVE"])) + ") ON CONFLICT DO NOTHING",
+            "INSERT INTO concert_participants(event_id,user_id,theme,low_power,reduced_motion,sound_enabled) VALUES("
+            + ",".join(map(prep.quote, [event, user, "REVENGE"])) + ",false,false,false) ON CONFLICT DO NOTHING",
+            "INSERT INTO concert_avatar_settings(event_id,user_id,contract_version,representation,preset_id,manifest_id,manifest_version) VALUES("
+            + ",".join(map(prep.quote, [event, user, "1.1.0", "whole_character",
+                                        "photo01_front_01", "mcr_selected_static_20261103"]))
+            + ",1) ON CONFLICT DO NOTHING",
+        ]
+    cluster.sql(
+        "mcr_concert",
+        "SELECT set_config('mcr.operations_authority_until',(clock_timestamp()+interval '1 hour')::text,false);"
+        + ";".join(admissions) + ";"
+        "INSERT INTO concert_event_settings(event_id,parties,giveaways,intros,social,mural,"
+        "beacon_ttl_seconds,pickup_grace_seconds,social_grant_ttl_seconds,mural_cooldown_ms) VALUES("
+        + prep.quote(event) + ",true,true,false,false,false,900,0,3600,1200) ON CONFLICT(event_id) DO NOTHING;"
+        "INSERT INTO concert_meeting_settings(event_id,beacon_ttl_seconds,event_cutoff) VALUES("
+        + prep.quote(event) + ",900,clock_timestamp()+interval '2 days') ON CONFLICT(event_id) DO NOTHING;",
+    )
+    provenance = {
+        "source_id": "mcr_in02_dev",
+        "source_kind": "PLACE_REFERENCE",
+        "source_revision": "in02-development-v1",
+        "source_uri": "https://example.test/in02-development-place",
+        "author": "MCR development gate",
+        "license": "Synthetic development metadata only; not a venue claim",
+        "review_state": "REVIEWED",
+        "reviewed_by": "development-operator",
+        "reviewed_at": now.isoformat(),
+        "photo_permission": "NOT_APPLICABLE",
+    }
+    canonical = json.dumps({"map_id": "map_in02_dev", "map_revision": 1},
+                           separators=(",", ":")).encode()
+    import hashlib
+    digest = "sha256:" + hashlib.sha256(canonical).hexdigest()
+    cluster.sql(
+        "mcr_concert",
+        "INSERT INTO concert_map_releases(map_id,map_revision,content_hash,geometry_hash,canonical_bytes) VALUES("
+        "'map_in02_dev',1," + prep.quote(digest) + "," + prep.quote(digest)
+        + ",decode('" + canonical.hex() + "','hex')) ON CONFLICT DO NOTHING;"
+        "INSERT INTO concert_map_release_places(map_id,map_revision,place_id,label,place_kind,"
+        "verification_state,accessibility_notes,source_kind,source_uri,review_state,provenance) VALUES("
+        "'map_in02_dev',1," + prep.quote(IN02_PLACE)
+        + ",'Development meeting point','PHYSICAL','VERIFIED','Step-free development fixture',"
+        "'PLACE_REFERENCE'," + prep.quote(provenance["source_uri"]) + ",'REVIEWED',"
+        + prep.quote(json.dumps(provenance, separators=(",", ":"))) + ") ON CONFLICT DO NOTHING;"
+        "INSERT INTO concert_events_map_releases(event_id,catalog_revision,map_id,map_revision) VALUES("
+        + prep.quote(event) + ",1,'map_in02_dev',1) ON CONFLICT(event_id) DO NOTHING;"
+        "INSERT INTO concert_place_current_state(map_id,map_revision,place_id,closure_state) VALUES("
+        "'map_in02_dev',1," + prep.quote(IN02_PLACE) + ",'OPEN') ON CONFLICT DO NOTHING;",
+    )
+    return IN02_PLACE
+
+
+def in02_gate(stack, gateway, origin, event, host, alice, bob, report, record):
+    """Drive the real meetup capacity and gift stock/pickup invariants over HTTP."""
+    base = f"{gateway}/api/concert/events/{event}"
+    checks = {}
+
+    def call(method, path, payload, token, key=None):
+        extra = None if method == "GET" else {"Idempotency-Key": key or str(uuid4())}
+        status, body, _ = request(base + path, method, payload, token, origin, True, extra)
+        return status, body
+
+    def concurrent(first, second):
+        barrier = threading.Barrier(2)
+
+        def run(fn):
+            barrier.wait()
+            return fn()
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            futures = [pool.submit(run, first), pool.submit(run, second)]
+            return [future.result() for future in futures]
+
+    now = datetime.now(timezone.utc)
+    def stamp(value):
+        return value.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.%fZ")
+    starts = stamp(now - timedelta(minutes=1))
+    ends = stamp(now + timedelta(hours=2))
+    meeting_starts = stamp(now + timedelta(minutes=5))
+    meeting_ends = stamp(now + timedelta(hours=4))
+
+    warm = []
+    for _ in range(2):
+        status, body = call("GET", "/parties", None, host[1])
+        warm.append({"status": status, "body": body})
+    record("party_warmup", {"runs": warm})
+
+    party_payload = {
+        "title": "IN02 development meetup",
+        "description": "Capacity and pickup invariant gate",
+        "ticket_section": "A",
+        "capacity": 2,
+        "meeting_starts_at": meeting_starts,
+        "meeting_ends_at": meeting_ends,
+        "requirements": "Development fixture only",
+        "public_place_id": IN02_PLACE,
+    }
+    party_key = str(uuid4())
+    record("in02_provision_rows", {
+        "event": stack.cluster.sql("mcr_concert", "SELECT phase FROM concert_events WHERE event_id=" + prep.quote(event)),
+        "participants": stack.cluster.sql("mcr_concert", "SELECT count(*) FROM concert_participants WHERE event_id=" + prep.quote(event)),
+        "admissions": stack.cluster.sql("mcr_concert", "SELECT count(*) FROM concert_event_admissions WHERE event_id=" + prep.quote(event) + " AND state='ACTIVE'"),
+        "settings": stack.cluster.sql("mcr_concert", "SELECT parties,giveaways FROM concert_event_settings WHERE event_id=" + prep.quote(event)),
+        "places": stack.cluster.sql("mcr_concert", "SELECT count(*) FROM concert_map_release_places WHERE map_id='map_in02_dev' AND map_revision=1"),
+        "parties": stack.cluster.sql("mcr_concert", "SELECT count(*) FROM concert_community_parties WHERE event_id=" + prep.quote(event)),
+        "giveaways": stack.cluster.sql("mcr_concert", "SELECT count(*) FROM concert_community_giveaways WHERE event_id=" + prep.quote(event)),
+    })
+    for attempt in range(4):
+        status, party = call("POST", "/parties", party_payload, host[1], party_key)
+        if status != 504:
+            break
+        time.sleep(1)
+    record("party_create", {"status": status, "body": party})
+    report["steps"]["party_create"]["receipts"] = stack.cluster.sql(
+        "mcr_concert",
+        "SELECT operation_id,state,failure_reason,result_status FROM concert_command_receipts WHERE event_id="
+        + prep.quote(event) + " ORDER BY created_at",
+    )
+    report["steps"]["party_create"]["event_rows"] = stack.cluster.sql(
+        "mcr_concert",
+        "SELECT phase FROM concert_events WHERE event_id=" + prep.quote(event),
+    )
+    checks["party_create_200"] = status == 200 and isinstance(party.get("party_id"), str)
+    if not checks["party_create_200"]:
+        return checks, "party creation did not reach the Party producer"
+    party_id, party_revision = party["party_id"], party["revision"]
+
+    status, alice_apply = call("POST", f"/parties/{party_id}/applications",
+                               {"party_revision": party_revision, "note": "alice"}, alice[1])
+    record("party_apply_alice", {"status": status, "body": alice_apply})
+    status2, bob_apply = call("POST", f"/parties/{party_id}/applications",
+                              {"party_revision": party_revision, "note": "bob"}, bob[1])
+    record("party_apply_bob", {"status": status2, "body": bob_apply})
+    checks["party_applies_200"] = status == 200 and status2 == 200
+    if not checks["party_applies_200"]:
+        return checks, "party applications were refused"
+
+    def approve(application):
+        return call("POST", f"/party-applications/{application}/decision",
+                    {"expected_revision": 1, "party_revision": party_revision,
+                     "decision": "APPROVED"}, host[1])
+
+    outcomes = concurrent(lambda: approve(alice_apply["application_id"]),
+                          lambda: approve(bob_apply["application_id"]))
+    record("party_decisions_concurrent", {
+        "alice": {"status": outcomes[0][0], "body": outcomes[0][1]},
+        "bob": {"status": outcomes[1][0], "body": outcomes[1][1]},
+    })
+    winners = [index for index, outcome in enumerate(outcomes) if outcome[0] == 200]
+    checks["party_one_concurrent_approval"] = len(winners) == 1
+    if not checks["party_one_concurrent_approval"]:
+        return checks, "capacity did not admit exactly one concurrent applicant"
+    loser = 1 - winners[0]
+    loser_app = (alice_apply if loser == 0 else bob_apply)["application_id"]
+    status, rejected = call("POST", f"/party-applications/{loser_app}/decision",
+                            {"expected_revision": 1, "party_revision": 2,
+                             "decision": "APPROVED"}, host[1])
+    record("party_second_approval", {"status": status, "body": rejected})
+    checks["party_capacity_rejected"] = status == 409 and \
+        (rejected.get("details") or {}).get("reason") == "PARTY_FULL"
+
+    status, party_after = call("GET", f"/parties/{party_id}", None, host[1])
+    record("party_read", {"status": status, "body": party_after})
+    checks["party_member_count_two"] = status == 200 and party_after.get("member_count") == 2
+    report["steps"]["party_rows"] = {
+        "party": stack.cluster.sql("mcr_concert",
+            "SELECT state,revision,aggregate->>'fields'->>'capacity' FROM concert_community_parties WHERE event_id="
+            + prep.quote(event) + " AND party_id=" + prep.quote(party_id)),
+        "members": stack.cluster.sql("mcr_concert",
+            "SELECT user_id,role,state FROM concert_community_members WHERE event_id="
+            + prep.quote(event) + " AND party_id=" + prep.quote(party_id) + " ORDER BY role,user_id"),
+        "applications": stack.cluster.sql("mcr_concert",
+            "SELECT application_id,state,revision FROM concert_community_applications WHERE event_id="
+            + prep.quote(event) + " AND party_id=" + prep.quote(party_id) + " ORDER BY application_id"),
+    }
+
+    status, giveaway = call("POST", "/giveaways", {
+        "title": "IN02 development giveaway",
+        "description": "One unit stock gate",
+        "image_media_id": None,
+        "quantity_total": 1,
+        "pickup_starts_at": starts,
+        "pickup_ends_at": ends,
+        "public_place_id": IN02_PLACE,
+    }, host[1])
+    record("giveaway_create", {"status": status, "body": giveaway})
+    checks["giveaway_create_200"] = status == 200 and isinstance(giveaway.get("giveaway_id"), str)
+    if not checks["giveaway_create_200"]:
+        return checks, "giveaway creation did not reach the Gift producer"
+    giveaway_id, gift_revision = giveaway["giveaway_id"], giveaway["revision"]
+
+    status, meeting = call("PUT", f"/giveaways/{giveaway_id}/pickup-meeting", {
+        "expected_revision": gift_revision,
+        "physical_presence_acknowledged": True,
+        "meeting": {
+            "place_id": IN02_PLACE,
+            "map_revision": 1,
+            "place_revision": 1,
+            "instructions": "Development collection point",
+            "identification": "Show the six digit code",
+            "expires_at": stamp(now + timedelta(hours=3)),
+        },
+    }, host[1])
+    record("giveaway_meeting", {"status": status, "body": meeting})
+    checks["giveaway_meeting_200"] = status == 200
+    if not checks["giveaway_meeting_200"]:
+        return checks, "pickup meeting was refused"
+    gift_revision = meeting.get("revision", gift_revision + 1)
+
+    status, opened = call("PATCH", f"/giveaways/{giveaway_id}", {
+        "expected_revision": gift_revision,
+        "title": "IN02 development giveaway",
+        "description": "One unit stock gate",
+        "image_media_id": None,
+        "quantity_total": 1,
+        "pickup_starts_at": starts,
+        "pickup_ends_at": ends,
+        "public_place_id": IN02_PLACE,
+        "state": "OPEN",
+    }, host[1])
+    record("giveaway_open", {"status": status, "body": opened})
+    checks["giveaway_open_200"] = status == 200
+    if not checks["giveaway_open_200"]:
+        return checks, "giveaway could not be opened"
+    gift_revision = opened["revision"]
+
+    def reserve(token):
+        return call("POST", f"/giveaways/{giveaway_id}/reservations",
+                    {"giveaway_revision": gift_revision}, token)
+
+    outcomes = concurrent(lambda: reserve(alice[1]), lambda: reserve(bob[1]))
+    record("reservations_concurrent", {
+        "alice": {"status": outcomes[0][0], "body": outcomes[0][1]},
+        "bob": {"status": outcomes[1][0], "body": outcomes[1][1]},
+    })
+    winners = [index for index, outcome in enumerate(outcomes) if outcome[0] == 200]
+    checks["stock_one_concurrent_reservation"] = len(winners) == 1
+    if not checks["stock_one_concurrent_reservation"]:
+        return checks, "stock did not admit exactly one concurrent reservation"
+    winner = winners[0]
+    reservation_id = outcomes[winner][1]["reservation_id"]
+    latest = int(stack.cluster.sql(
+        "mcr_concert", "SELECT revision FROM concert_community_giveaways WHERE event_id="
+        + prep.quote(event) + " AND giveaway_id=" + prep.quote(giveaway_id)))
+    status, sold_out = call("POST", f"/giveaways/{giveaway_id}/reservations",
+                            {"giveaway_revision": latest},
+                            (alice if winner == 1 else bob)[1])
+    record("stock_second_attempt", {"status": status, "body": sold_out, "revision": latest})
+    checks["stock_sold_out"] = status == 409 and \
+        (sold_out.get("details") or {}).get("reason") == "GIVEAWAY_SOLD_OUT"
+    report["steps"]["stock_rows"] = {
+        "giveaway": stack.cluster.sql("mcr_concert",
+            "SELECT state,revision,quantity_total,reserved_unclaimed,quantity_claimed FROM concert_community_giveaways WHERE event_id="
+            + prep.quote(event) + " AND giveaway_id=" + prep.quote(giveaway_id)),
+        "reservations": stack.cluster.sql("mcr_concert",
+            "SELECT reservation_id,recipient_id,state,revision FROM concert_community_reservations WHERE event_id="
+            + prep.quote(event) + " AND giveaway_id=" + prep.quote(giveaway_id) + " ORDER BY reservation_id"),
+    }
+
+    winner_token = (alice if winner == 0 else bob)[1]
+    status, issued = call("POST", f"/reservations/{reservation_id}/pickup-code",
+                           {"expected_revision": 1}, winner_token)
+    record("pickup_code_issue", {"status": status, "body": issued})
+    checks["pickup_code_issued"] = status == 200 and isinstance(issued.get("confirmation_code"), str)
+    if not checks["pickup_code_issued"]:
+        return checks, "pickup code was not issued"
+    code = issued["confirmation_code"]
+    reservation_revision = issued["reservation_revision"]
+
+    wrong = f"{(int(code) + 1) % 1000000:06d}"
+    status, wrong_body = call("POST", f"/reservations/{reservation_id}/claim",
+                              {"expected_revision": reservation_revision,
+                               "confirmation_code": wrong}, host[1])
+    record("pickup_wrong_code", {"status": status, "body": wrong_body})
+    checks["wrong_code_403"] = status == 403 and \
+        (wrong_body.get("details") or {}).get("reason") == "PICKUP_CODE_INVALID"
+
+    claim_key = str(uuid4())
+    claim_payload = {"expected_revision": reservation_revision, "confirmation_code": code}
+    status, claimed = call("POST", f"/reservations/{reservation_id}/claim", claim_payload,
+                           host[1], claim_key)
+    record("pickup_claim", {"status": status, "body": claimed})
+    checks["pickup_claim_200"] = status == 200 and claimed.get("state") == "CLAIMED"
+    if not checks["pickup_claim_200"]:
+        return checks, "valid pickup code was refused"
+    claim_receipt = claimed["receipt_id"]
+
+    status, same_key = call("POST", f"/reservations/{reservation_id}/claim", claim_payload,
+                            host[1], claim_key)
+    record("pickup_claim_same_key_replay", {"status": status, "body": same_key})
+    checks["same_key_replay_same_receipt"] = status == 200 and same_key.get("receipt_id") == claim_receipt
+
+    status, replay = call("POST", f"/reservations/{reservation_id}/claim", claim_payload, host[1])
+    record("pickup_claim_new_key_replay", {"status": status, "body": replay})
+    checks["same_code_new_key_replay_fails"] = status == 403 and \
+        (replay.get("details") or {}).get("reason") == "PICKUP_CODE_INVALID"
+
+    report["steps"]["pickup_rows"] = {
+        "giveaway": stack.cluster.sql("mcr_concert",
+            "SELECT state,revision,quantity_total,reserved_unclaimed,quantity_claimed FROM concert_community_giveaways WHERE event_id="
+            + prep.quote(event) + " AND giveaway_id=" + prep.quote(giveaway_id)),
+        "reservation": stack.cluster.sql("mcr_concert",
+            "SELECT state,revision,claim_receipt_id,claimed_at FROM concert_community_reservations WHERE event_id="
+            + prep.quote(event) + " AND reservation_id=" + prep.quote(reservation_id)),
+        "pickup_secret": stack.cluster.sql("mcr_concert",
+            "SELECT generation,expires_at,length(keyed_hash) FROM concert_community_pickup_secrets WHERE event_id="
+            + prep.quote(event) + " AND reservation_id=" + prep.quote(reservation_id)),
+        "receipts": stack.cluster.sql("mcr_concert",
+            "SELECT operation_id,state,failure_reason,resource_revision FROM concert_command_receipts WHERE event_id="
+            + prep.quote(event) + " ORDER BY created_at"),
+        "outbox": stack.cluster.sql("mcr_concert",
+            "SELECT count(*) FROM concert_outbox WHERE event_id=" + prep.quote(event)),
+    }
+    return checks, None
+
+
 def b64url(raw):
     return base64.urlsafe_b64encode(raw).rstrip(b"=").decode()
 
@@ -356,6 +684,7 @@ def main(argv=None):
     parser.add_argument("--redis-binary", type=Path, default=Path("/opt/homebrew/bin/redis-server"))
     parser.add_argument("--openssl-binary", type=Path, default=Path("/opt/homebrew/bin/openssl"))
     parser.add_argument("--hold-on-failure-seconds", type=int, default=0)
+    parser.add_argument("--in02", action="store_true")
     args = parser.parse_args(argv)
     migration.SERVICES["concert-service"] = "CONCERT_DATABASE_URL"
     runtime.PREFIX.update({name: variable.removesuffix("_DATABASE_URL")
@@ -491,7 +820,18 @@ def main(argv=None):
             CONCERT_PICKUP_KEYS_JSON=json.dumps(
                 [{"id": "closure_dev", "secret_hex": secrets.token_hex(32)}]
             ),
+            CONCERT_PARTY_MODE="live",
+            CONCERT_PARTY_CURSOR_KEY_HEX=secrets.token_hex(32),
+            CONCERT_PARTY_RECEIPT_KEYS_JSON=json.dumps(
+                [{"id": "closure_dev", "secret_hex": secrets.token_hex(32)}]
+            ),
+            CONCERT_GIFT_MODE="live",
+            CONCERT_GIFT_CURSOR_KEY_HEX=secrets.token_hex(32),
+            CONCERT_GIFT_RECEIPT_KEYS_JSON=json.dumps(
+                [{"id": "closure_dev", "secret_hex": secrets.token_hex(32)}]
+            ),
         )
+        envs["api-gateway"]["MCR_GIFT_NETWORK_BUCKET_KEY"] = secrets.token_hex(32)
         inspected = migration.execute(
             [str(args.bin_dir / "concert-service"), "--inspect-product-release"],
             env=envs["concert-service"], cwd=cluster.root, phase="closure-release-inspection",
@@ -514,10 +854,25 @@ def main(argv=None):
         gateway = stack.ports.url("api-gateway:http")
         policy = publish_enrollment_policy(stack.cluster)
         report["enrollment_policy_revision"] = policy["revision"]
-        operator = principal(gateway, stack.mail, policy, 1, origin)
-        member = principal(gateway, stack.mail, policy, 2, origin)
+        def enroll(ordinal):
+            last = None
+            for attempt in range(4):
+                try:
+                    return principal(gateway, stack.mail, policy, ordinal, origin)
+                except StepFailure as failure:
+                    last = failure
+                    if attempt == 3:
+                        raise
+                    time.sleep(1)
+            raise last
+
+        operator = enroll(1)
+        member = enroll(2)
         initialize_profile(gateway, operator[0], operator[1], 1, origin)
         initialize_profile(gateway, member[0], member[1], 2, origin)
+        third = enroll(3) if args.in02 else None
+        if third is not None:
+            initialize_profile(gateway, third[0], third[1], 3, origin)
         event = report["event"]
         stack.cluster.sql(
             "mcr_concert",
@@ -537,6 +892,22 @@ def main(argv=None):
             value["log"] = new_log(stack, log_offsets)
             report["steps"][name] = value
             return value
+        if args.in02:
+            in02_provision(stack.cluster, event, (operator[0], member[0], third[0]))
+            checks, blocker = in02_gate(stack, gateway, origin, event, operator, member,
+                                        third, report, record)
+            report["checks"] = checks
+            if blocker:
+                report["in02_blocker"] = blocker
+                report["result"] = "FAIL"
+            else:
+                failed = {name: value for name, value in checks.items() if value is not True}
+                report["result"] = "PASS" if not failed else "FAIL"
+                if failed:
+                    report["failed_checks"] = failed
+            if stack.cluster is not None:
+                report["logs"] = log_excerpts(stack)
+            return {"PASS": 0}.get(report.get("result"), 1)
         closure = {"confirmation": "CLOSE_EVENT", "expected_revision": 1,
                    "reason": "Development closure proof"}
         closure_url = f"{gateway}/api/concert/events/{event}/admin/closure"
