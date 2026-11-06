@@ -41,6 +41,8 @@ impl CurrentRelationshipPort for Owner {
             subject_blocks_actor: false,
             actor_deleted: false,
             subject_deleted: false,
+            actor_follows_subject: true,
+            subject_follows_actor: true,
         })
     }
 }

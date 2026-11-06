@@ -1,5 +1,7 @@
-//! Friend-owned bidirectional block observations. Absence of a tombstone is
-//! not Auth account eligibility and these observations are not mutation fences.
+//! Friend-owned bilateral relationship facts: both live follow directions,
+//! blocks and deletion tombstones, from one MVCC statement snapshot. Absence of
+//! a tombstone is not Auth account eligibility and these observations are not
+//! mutation fences.
 use async_trait::async_trait;
 use chrono::{DateTime, Utc};
 use std::fmt;
@@ -212,6 +214,8 @@ pub struct CurrentRelationship {
     pub subject_blocks_actor: bool,
     pub actor_deleted: bool,
     pub subject_deleted: bool,
+    pub actor_follows_subject: bool,
+    pub subject_follows_actor: bool,
 }
 impl fmt::Debug for CurrentRelationship {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
@@ -238,6 +242,11 @@ impl CurrentRelationship {
     }
     pub fn subjects_present(self) -> bool {
         !self.actor_deleted && !self.subject_deleted
+    }
+    /// Friendship requires both live follow directions. One-way follows,
+    /// pending requests and cached flags are not friendship.
+    pub fn mutual_follow(self) -> bool {
+        self.actor_follows_subject && self.subject_follows_actor
     }
 }
 #[async_trait]

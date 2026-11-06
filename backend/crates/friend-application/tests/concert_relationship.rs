@@ -97,6 +97,8 @@ fn snapshot(q: RelationshipRead) -> CurrentRelationship {
         subject_blocks_actor: false,
         actor_deleted: false,
         subject_deleted: false,
+        actor_follows_subject: false,
+        subject_follows_actor: false,
     }
 }
 #[test]
@@ -159,6 +161,24 @@ fn diagnostics_contain_no_query_identity_or_owner_state() {
     }
 }
 #[test]
+fn mutual_follow_requires_both_live_directions() {
+    let q = query();
+    for (actor_follows_subject, subject_follows_actor) in
+        [(true, true), (true, false), (false, true), (false, false)]
+    {
+        let s = CurrentRelationship {
+            actor_follows_subject,
+            subject_follows_actor,
+            ..snapshot(q)
+        };
+        assert_eq!(
+            s.mutual_follow(),
+            actor_follows_subject && subject_follows_actor
+        );
+    }
+}
+
+#[test]
 fn both_directions_and_tombstones_are_independent() {
     let q = query();
     for actor_blocks_subject in [true, false] {
@@ -174,6 +194,8 @@ fn both_directions_and_tombstones_are_independent() {
                     };
                     assert_eq!(s.blocked(), actor_blocks_subject || subject_blocks_actor);
                     assert_eq!(s.subjects_present(), !actor_deleted && !subject_deleted);
+                    // Independent of blocks: one-way follows are never mutual.
+                    assert!(!s.mutual_follow());
                 }
             }
         }
