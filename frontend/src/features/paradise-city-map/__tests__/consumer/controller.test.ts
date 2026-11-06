@@ -107,6 +107,50 @@ it('never renders a future-dated self fix as a current shared position', () => {
 it('locked borrowed leaf prevents primary tab changes and close', () => {
   const h = setup(); h.publishLeaf({ active: true, locked: true, content: null }); h.controller.setTab('NOTES'); expect(h.controller.read().tab).toBe('MAP'); expect(h.controller.closeMeeting()).toBe(false)
 })
+it('renders a failed friend gate as unavailable instead of an empty roster', () => {
+  const h = setup(); h.controller.select({ kind: 'friend', id: 'friend-test' })
+  h.setAvailability({ state: 'unavailable', reason: 'friend-gate-unavailable', readAtMs: null, ageMs: null, staleAtMs: null, refreshing: false, canRefresh: true })
+  const state = h.controller.read(); expect(state.people).toEqual([]); expect(state.selection).toBeNull()
+  expect(state.availability).toMatchObject({ state: 'unavailable', reason: 'friend-gate-unavailable' })
+})
+it('never labels an aged snapshot as current and keeps only its last-known markers', () => {
+  const h = setup()
+  h.setAvailability({ state: 'stale', reason: null, readAtMs: h.snapshot.serverNowMs!, ageMs: 20000, staleAtMs: h.snapshot.serverNowMs! + 10000, refreshing: false, canRefresh: true })
+  const state = h.controller.read(), person = state.people[0]!
+  expect(person.locationSource).toBe('last-known'); expect(person.freshUntilMs).toBeNull(); expect(person.point).not.toBeNull()
+  expect(locationLabel(person, h.snapshot.serverNowMs!)).toContain('Last update')
+})
+it('refetches on demand, recovers to a fresh snapshot and never duplicates actors', async () => {
+  const h = setup(); h.publish({ ...h.snapshot, friends: [person(), person()] })
+  expect(h.controller.read().people).toHaveLength(1)
+  h.setAvailability({ state: 'stale', reason: 'offline', readAtMs: h.snapshot.serverNowMs!, ageMs: 30000, staleAtMs: h.snapshot.serverNowMs! + 10000, refreshing: false, canRefresh: true })
+  await h.controller.refreshAuthority(); expect(h.refreshes).toBe(1)
+  expect(h.controller.read().availability.state).toBe('ready'); expect(h.controller.read().people).toHaveLength(1)
+  expect(h.controller.read().notice).toContain('refreshed')
+  h.setRefreshResult(false); await h.controller.refreshAuthority(); expect(h.controller.read().notice).toContain('unavailable')
+})
+it('reports denied device permission, clears current position and asks the server to stop sharing', async () => {
+  const h = setup(); await h.controller.startPhone(true); expect(h.controller.self()?.point).not.toBeNull()
+  h.deny(); await Promise.resolve(); await Promise.resolve()
+  expect(h.controller.read().sharingFailure).toBe('permission-denied'); expect(h.controller.self()?.point).toBeNull()
+  expect(h.calls.some(call => call.name === 'pause')).toBe(true)
+})
+it('reports a server refusal without starting a phone watch or sharing', async () => {
+  const h = setup(); h.setResult(async () => ({ state: 'rejected' }))
+  await h.controller.startPhone(true); expect(h.watches).toBe(0); expect(h.controller.read().sharingFailure).toBe('server-refused')
+  expect(h.controller.read().notice).toContain('did not authorize')
+})
+it('revokes sharing explicitly and removes current access immediately', async () => {
+  const h = setup(); await h.controller.startPhone(true); const before = h.calls.length
+  await h.controller.revoke()
+  expect(h.calls.slice(before).map(call => call.name)).toEqual(['revoke']); expect(h.controller.self()?.point).toBeNull()
+  expect(h.controller.read().snapshot?.sharing).toBe('revoked'); expect(h.controller.read().notice).toContain('revoked')
+})
+it('requesting a friend location never grants sharing consent', async () => {
+  const h = setup(); await h.controller.requestLocation('friend-test')
+  expect(h.calls.map(call => call.name)).toEqual(['requestLocation']); expect(h.controller.read().snapshot?.sharing).toBe('off')
+  expect(h.watches).toBe(0)
+})
 it('aborts a pending mutation on scope withdrawal and ignores its late completion', async () => {
   const h = setup(); let finish!: (value: { state: 'applied' }) => void
   h.setResult(async () => new Promise(resolve => { finish = resolve })); h.controller.compose('test-main-gate'); h.controller.edit('Secret'); const action = h.controller.submit()

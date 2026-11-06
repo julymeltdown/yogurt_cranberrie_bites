@@ -1,0 +1,41 @@
+{
+  "result": "PASS",
+  "qualification": "SUBSTITUTED_FIXTURE",
+  "note": "Actual VenueShellFeatures, production L01 adapter, controller and Map panel. Deterministic session/community clock/Location/landmark/friend inputs; no live backend, device GPS or physical venue.",
+  "cases": [
+    {
+      "width": 360,
+      "height": 800,
+      "cluster": true,
+      "permissionDenied": true,
+      "paused": true,
+      "revoked": true,
+      "stale": true,
+      "staleRecovered": true,
+      "unavailable503": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "cluster": true,
+      "permissionDenied": true,
+      "paused": true,
+      "revoked": true,
+      "stale": true,
+      "staleRecovered": true,
+      "unavailable503": true
+    },
+    {
+      "width": 430,
+      "height": 932,
+      "cluster": true,
+      "permissionDenied": true,
+      "paused": true,
+      "revoked": true,
+      "stale": true,
+      "staleRecovered": true,
+      "unavailable503": true
+    }
+  ],
+  "errors": []
+}

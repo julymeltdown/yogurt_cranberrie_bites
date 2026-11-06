@@ -1,14 +1,17 @@
-import type { CapabilitySnapshot, MeetingConsumerPort, ReadPort, VenueAuthority, VenueCapabilities, VenueView, VenueReadContext } from '../../features/paradise-city-map/ports'
+import type { CapabilitySnapshot, MeetingConsumerPort, ReadPort, VenueAuthority, VenueAvailability, VenueCapabilities, VenueView, VenueReadContext } from '../../features/paradise-city-map/ports'
 import type { MeetingClockPort } from '../meeting-entry/ports'
 import type { createVenueLocationAdapter } from '../../features/paradise-city-map/model/location-adapter'
 import type { CommunityBootstrapBinding } from '../community-adoption/bootstrap'
 import type { PrivacyScope } from '../../shared/query/privacy'
 
 const reject = async () => ({ state: 'rejected' as const })
+const unavailableAvailability = (reason: VenueAvailability['reason'] = 'producer-refused'): VenueAvailability =>
+  ({ state: 'unavailable', reason, readAtMs: null, ageMs: null, staleAtMs: null, refreshing: false, canRefresh: false })
 /** No guessed transport or endpoint. Root injects frozen wire-backed producers later. */
 export const unavailableVenueCapabilities: VenueCapabilities = Object.freeze({
-  read: () => null, subscribe: () => () => {}, beginPhoneSharing: reject, publishPhoneFix: reject,
-  pause: reject, requestLocation: reject, checkIn: reject, postNote: reject, reply: reject, resolve: reject,
+  read: () => null, subscribe: () => () => {}, availability: () => unavailableAvailability(), refresh: async () => false,
+  beginPhoneSharing: reject, publishPhoneFix: reject,
+  pause: reject, revoke: reject, requestLocation: reject, checkIn: reject, postNote: reject, reply: reject, resolve: reject,
 })
 export const unavailableMeetingConsumer: MeetingConsumerPort = Object.freeze({
   read: () => null, subscribe: () => () => {}, open: async () => ({ kind: 'unavailable' as const }), close: () => true,
@@ -28,11 +31,14 @@ export function bindCapabilitiesToCommunity(source: VenueCapabilities, binding: 
   return {
     read() { const now = clock(), value = now ? source.read() : null; return value && now ? { ...value, serverNowMs: now.nowMs } : null },
     subscribe(listener) { const stops = [source.subscribe(listener), binding?.read()?.clock.subscribe(listener)]; return () => stops.forEach(stop => stop?.()) },
+    availability() { return clock() === null ? unavailableAvailability('access-unavailable') : source.availability?.() ?? unavailableAvailability() },
+    refresh: () => clock() === null ? Promise.resolve(false) : source.refresh ? source.refresh() : Promise.resolve(false),
     loadNotes: (id, ctx) => !ctx.signal.aborted && sameScope(ctx.scope, scope) && clock() !== null && source.loadNotes ? source.loadNotes(id, ctx) : Promise.resolve(false),
     loadNoteThread: (id, ctx) => !ctx.signal.aborted && sameScope(ctx.scope, scope) && clock() !== null && source.loadNoteThread ? source.loadNoteThread(id, ctx) : Promise.resolve(false),
     beginPhoneSharing: ctx => guarded(ctx) ? source.beginPhoneSharing(ctx) : reject(),
     publishPhoneFix: (fix, ctx) => guarded(ctx) ? source.publishPhoneFix(fix, ctx) : reject(),
     pause: (reason, ctx) => guarded(ctx) ? source.pause(reason, ctx) : reject(),
+    revoke: ctx => guarded(ctx) && source.revoke ? source.revoke(ctx) : reject(),
     requestLocation: (id, ctx) => guarded(ctx) ? source.requestLocation(id, ctx) : reject(),
     decideLocationRequest: (id, decision, ctx) => guarded(ctx) && source.decideLocationRequest ? source.decideLocationRequest(id, decision, ctx) : reject(),
     checkIn: (id, ctx) => guarded(ctx) ? source.checkIn(id, ctx) : reject(),
@@ -50,7 +56,7 @@ export type VenueNotesSource = ReadPort<NotesProjection | null> & Pick<VenueCapa
   load?(id: VenueView['landmarks'][number]['id'], signal: AbortSignal): Promise<boolean>
   loadThread?(id: string, signal: AbortSignal): Promise<boolean>
 }
-type LocationSource = Pick<ReturnType<typeof createVenueLocationAdapter>, 'read' | 'subscribe' | 'beginPhoneSharing' | 'publishPhoneFix' | 'pause' | 'requestLocation' | 'decideRequest' | 'checkIn' | 'resolve' | 'ownsCommand'>
+type LocationSource = Pick<ReturnType<typeof createVenueLocationAdapter>, 'read' | 'subscribe' | 'availability' | 'refresh' | 'beginPhoneSharing' | 'publishPhoneFix' | 'pause' | 'revoke' | 'requestLocation' | 'decideRequest' | 'checkIn' | 'resolve' | 'ownsCommand'>
 const sameScope = (a: PrivacyScope, b: PrivacyScope) => a.userId === b.userId && a.eventId === b.eventId && a.generation === b.generation && a.policyGeneration === b.policyGeneration && a.gate === b.gate
 const sameVenue = (a: VenueView['identity'], b: VenueView['identity']) => a.venueId === b.venueId && a.siteplanId === b.siteplanId && a.revision === b.revision && a.variantId === b.variantId
 
@@ -78,7 +84,7 @@ export function aggregateVenueCapabilities({ authority, venue, clock, location, 
         serverNowMs: time, accessUntilMs: Math.min(l?.accessUntilMs ?? Infinity, n?.accessUntilMs ?? Infinity),
         self: l?.self ?? null, friends: l?.friends ?? [], notes: n?.notes ?? [], sharing: l?.sharing ?? 'off',
         locationRequests: l?.locationRequests ?? { incoming: [], outgoing: [] },
-        rights: { sharePhone: l?.rights.sharePhone ?? false, pause: l?.rights.pause ?? false, checkIn: l?.rights.checkIn ?? [],
+        rights: { sharePhone: l?.rights.sharePhone ?? false, pause: l?.rights.pause ?? false, revoke: l?.rights.revoke ?? false, checkIn: l?.rights.checkIn ?? [],
           postNote: n?.rights.postNote ?? [], noteAudiences: n?.rights.noteAudiences ?? [], noteExpiries: n?.rights.noteExpiries ?? [] } }
     },
     subscribe(listener) {
@@ -86,11 +92,17 @@ export function aggregateVenueCapabilities({ authority, venue, clock, location, 
       authority.signal.addEventListener('abort', listener, { once: true })
       return () => { for (const stop of stops) stop?.(); authority.signal.removeEventListener('abort', listener) }
     },
+    availability() {
+      if (!authority.isCurrent() || now() === null) return unavailableAvailability('access-unavailable')
+      return location?.availability?.() ?? unavailableAvailability()
+    },
+    refresh() { return now() === null || !location?.refresh ? Promise.resolve(false) : location.refresh() },
     loadNotes: (id, context) => valid(context) && venue.landmarks.some(p => p.id === id) && notes?.load ? notes.load(id, context.signal) : Promise.resolve(false),
     loadNoteThread: (id, context) => valid(context) && notes?.loadThread ? notes.loadThread(id, context.signal) : Promise.resolve(false),
     beginPhoneSharing: context => valid(context) && location ? location.beginPhoneSharing(context) : reject(),
     publishPhoneFix: (fix, context) => valid(context) && location ? location.publishPhoneFix(fix, context) : reject(),
     pause: (reason, context) => valid(context) && location ? location.pause(reason, context) : reject(),
+    revoke: context => valid(context) && location?.revoke ? location.revoke(context) : reject(),
     requestLocation: (id, context) => valid(context) && location ? location.requestLocation(id, context) : reject(),
     decideLocationRequest: (id, decision, context) => valid(context) && location ? location.decideRequest(id, decision, context) : reject(),
     checkIn: (id, context) => valid(context) && location ? location.checkIn(id, context) : reject(),
