@@ -1,0 +1,1390 @@
+{
+  "banner": {
+    "client": "server-side HTTP/WS/cache evidence only; no browser claim",
+    "enrollment": "explicit nonproduction enrollment policy; no legal approval",
+    "qa08": "NOT_RUN",
+    "release": "development stack, NOT release qualification",
+    "scope": "privacy and authorization matrix on the development stack"
+  },
+  "cells": [
+    {
+      "actual": 200,
+      "expected": 200,
+      "method": "GET",
+      "ms": 313.2,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed?limit=20",
+      "result": "PASS",
+      "role": "owner",
+      "surface": "feed"
+    },
+    {
+      "actual": 200,
+      "expected": 200,
+      "method": "GET",
+      "ms": 228.2,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed?limit=20",
+      "result": "PASS",
+      "role": "member",
+      "surface": "feed"
+    },
+    {
+      "actual": 503,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 503,
+      "method": "GET",
+      "ms": 125.0,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed?limit=20",
+      "reason": "DEPENDENCY_UNAVAILABLE",
+      "result": "PASS",
+      "role": "stranger",
+      "surface": "feed"
+    },
+    {
+      "actual": 503,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 503,
+      "method": "GET",
+      "ms": 4.2,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed?limit=20",
+      "reason": "DEPENDENCY_UNAVAILABLE",
+      "result": "PASS",
+      "role": "suspended",
+      "surface": "feed"
+    },
+    {
+      "actual": 503,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 503,
+      "method": "GET",
+      "ms": 166.4,
+      "path": "/api/concert/events/8ab6ee3a-3317-4c4e-b970-71278988208a/feed?limit=20",
+      "reason": "DEPENDENCY_UNAVAILABLE",
+      "result": "PASS",
+      "role": "expired",
+      "surface": "feed"
+    },
+    {
+      "actual": 503,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 503,
+      "method": "GET",
+      "ms": 179.4,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed?limit=20",
+      "reason": "DEPENDENCY_UNAVAILABLE",
+      "result": "PASS",
+      "role": "admin",
+      "surface": "feed"
+    },
+    {
+      "actual": 200,
+      "expected": 200,
+      "method": "GET",
+      "ms": 258.3,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed?limit=20",
+      "reader": "owner-after-blocking-bob",
+      "result": "PASS",
+      "role": "blocked",
+      "surface": "feed"
+    },
+    {
+      "actual": 200,
+      "after_ids": [],
+      "expected": 200,
+      "journal_after": 1,
+      "journal_before": 0,
+      "method": "GET",
+      "reason": "The warm owner feed had no removable blocked-author post; the durable journal growth is recorded.",
+      "result": "NOT_RUN",
+      "role": "owner",
+      "surface": "feed_cache_eviction",
+      "warm_ids": []
+    },
+    {
+      "actual": 200,
+      "expected": 200,
+      "method": "GET",
+      "ms": 159.2,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot",
+      "result": "PASS",
+      "role": "owner",
+      "surface": "wall_snapshot"
+    },
+    {
+      "actual": 200,
+      "expected": 200,
+      "method": "GET",
+      "ms": 181.6,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/operations?after_revision=1",
+      "result": "PASS",
+      "role": "owner",
+      "surface": "wall_history"
+    },
+    {
+      "actual": 200,
+      "expected": 200,
+      "method": "GET",
+      "ms": 147.2,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot",
+      "result": "PASS",
+      "role": "member",
+      "surface": "wall_snapshot"
+    },
+    {
+      "actual": 200,
+      "expected": 200,
+      "method": "GET",
+      "ms": 136.3,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/operations?after_revision=1",
+      "result": "PASS",
+      "role": "member",
+      "surface": "wall_history"
+    },
+    {
+      "actual": 404,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 404,
+      "method": "GET",
+      "ms": 190.8,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot",
+      "reason": "RESOURCE_UNAVAILABLE",
+      "result": "PASS",
+      "role": "stranger",
+      "surface": "wall_snapshot"
+    },
+    {
+      "actual": 404,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 404,
+      "method": "GET",
+      "ms": 136.8,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/operations?after_revision=1",
+      "reason": "RESOURCE_UNAVAILABLE",
+      "result": "PASS",
+      "role": "stranger",
+      "surface": "wall_history"
+    },
+    {
+      "actual": 200,
+      "expected": 200,
+      "method": "GET",
+      "ms": 141.1,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot",
+      "result": "PASS",
+      "role": "blocked",
+      "surface": "wall_snapshot"
+    },
+    {
+      "actual": 200,
+      "expected": 200,
+      "method": "GET",
+      "ms": 157.5,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/operations?after_revision=1",
+      "result": "PASS",
+      "role": "blocked",
+      "surface": "wall_history"
+    },
+    {
+      "actual": 503,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 503,
+      "method": "GET",
+      "ms": 5.4,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot",
+      "reason": "DEPENDENCY_UNAVAILABLE",
+      "result": "PASS",
+      "role": "suspended",
+      "surface": "wall_snapshot"
+    },
+    {
+      "actual": 503,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 503,
+      "method": "GET",
+      "ms": 4.9,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/operations?after_revision=1",
+      "reason": "DEPENDENCY_UNAVAILABLE",
+      "result": "PASS",
+      "role": "suspended",
+      "surface": "wall_history"
+    },
+    {
+      "actual": 404,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 404,
+      "method": "GET",
+      "ms": 119.2,
+      "path": "/api/concert/events/8ab6ee3a-3317-4c4e-b970-71278988208a/mural/snapshot",
+      "reason": "RESOURCE_UNAVAILABLE",
+      "result": "PASS",
+      "role": "expired",
+      "surface": "wall_snapshot"
+    },
+    {
+      "actual": 404,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 404,
+      "method": "GET",
+      "ms": 131.0,
+      "path": "/api/concert/events/8ab6ee3a-3317-4c4e-b970-71278988208a/mural/operations?after_revision=1",
+      "reason": "RESOURCE_UNAVAILABLE",
+      "result": "PASS",
+      "role": "expired",
+      "surface": "wall_history"
+    },
+    {
+      "actual": 404,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 404,
+      "method": "GET",
+      "ms": 155.3,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot",
+      "reason": "RESOURCE_UNAVAILABLE",
+      "result": "PASS",
+      "role": "admin",
+      "surface": "wall_snapshot"
+    },
+    {
+      "actual": 404,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 404,
+      "method": "GET",
+      "ms": 134.3,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/operations?after_revision=1",
+      "reason": "RESOURCE_UNAVAILABLE",
+      "result": "PASS",
+      "role": "admin",
+      "surface": "wall_history"
+    },
+    {
+      "actual": null,
+      "expected": 403,
+      "method": "GET",
+      "path": "/media/cb863760-2c1c-4612-9858-ed3b83ea5c3d",
+      "reason": "The composed media read path closes with a truncated Gateway body (IncompleteRead); no media metadata/content authorization can be claimed. The upload mutation route is also closed with CONCERT_403 PERMISSION_DENIED.",
+      "result": "NOT_RUN",
+      "role": "owner",
+      "surface": "media_metadata"
+    },
+    {
+      "actual": null,
+      "expected": 403,
+      "method": "GET",
+      "path": "/media/cb863760-2c1c-4612-9858-ed3b83ea5c3d",
+      "reason": "The composed media read path closes with a truncated Gateway body (IncompleteRead); no media metadata/content authorization can be claimed. The upload mutation route is also closed with CONCERT_403 PERMISSION_DENIED.",
+      "result": "NOT_RUN",
+      "role": "owner",
+      "surface": "media_content"
+    },
+    {
+      "actual": null,
+      "expected": 403,
+      "method": "GET",
+      "path": "/media/cb863760-2c1c-4612-9858-ed3b83ea5c3d",
+      "reason": "The composed media read path closes with a truncated Gateway body (IncompleteRead); no media metadata/content authorization can be claimed. The upload mutation route is also closed with CONCERT_403 PERMISSION_DENIED.",
+      "result": "NOT_RUN",
+      "role": "member",
+      "surface": "media_metadata"
+    },
+    {
+      "actual": null,
+      "expected": 403,
+      "method": "GET",
+      "path": "/media/cb863760-2c1c-4612-9858-ed3b83ea5c3d",
+      "reason": "The composed media read path closes with a truncated Gateway body (IncompleteRead); no media metadata/content authorization can be claimed. The upload mutation route is also closed with CONCERT_403 PERMISSION_DENIED.",
+      "result": "NOT_RUN",
+      "role": "member",
+      "surface": "media_content"
+    },
+    {
+      "actual": null,
+      "expected": 403,
+      "method": "GET",
+      "path": "/media/cb863760-2c1c-4612-9858-ed3b83ea5c3d",
+      "reason": "The composed media read path closes with a truncated Gateway body (IncompleteRead); no media metadata/content authorization can be claimed. The upload mutation route is also closed with CONCERT_403 PERMISSION_DENIED.",
+      "result": "NOT_RUN",
+      "role": "stranger",
+      "surface": "media_metadata"
+    },
+    {
+      "actual": null,
+      "expected": 403,
+      "method": "GET",
+      "path": "/media/cb863760-2c1c-4612-9858-ed3b83ea5c3d",
+      "reason": "The composed media read path closes with a truncated Gateway body (IncompleteRead); no media metadata/content authorization can be claimed. The upload mutation route is also closed with CONCERT_403 PERMISSION_DENIED.",
+      "result": "NOT_RUN",
+      "role": "stranger",
+      "surface": "media_content"
+    },
+    {
+      "actual": null,
+      "expected": 403,
+      "method": "GET",
+      "path": "/media/cb863760-2c1c-4612-9858-ed3b83ea5c3d",
+      "reason": "The composed media read path closes with a truncated Gateway body (IncompleteRead); no media metadata/content authorization can be claimed. The upload mutation route is also closed with CONCERT_403 PERMISSION_DENIED.",
+      "result": "NOT_RUN",
+      "role": "blocked",
+      "surface": "media_metadata"
+    },
+    {
+      "actual": null,
+      "expected": 403,
+      "method": "GET",
+      "path": "/media/cb863760-2c1c-4612-9858-ed3b83ea5c3d",
+      "reason": "The composed media read path closes with a truncated Gateway body (IncompleteRead); no media metadata/content authorization can be claimed. The upload mutation route is also closed with CONCERT_403 PERMISSION_DENIED.",
+      "result": "NOT_RUN",
+      "role": "blocked",
+      "surface": "media_content"
+    },
+    {
+      "actual": null,
+      "expected": 403,
+      "method": "GET",
+      "path": "/media/cb863760-2c1c-4612-9858-ed3b83ea5c3d",
+      "reason": "The composed media read path closes with a truncated Gateway body (IncompleteRead); no media metadata/content authorization can be claimed. The upload mutation route is also closed with CONCERT_403 PERMISSION_DENIED.",
+      "result": "NOT_RUN",
+      "role": "suspended",
+      "surface": "media_metadata"
+    },
+    {
+      "actual": null,
+      "expected": 403,
+      "method": "GET",
+      "path": "/media/cb863760-2c1c-4612-9858-ed3b83ea5c3d",
+      "reason": "The composed media read path closes with a truncated Gateway body (IncompleteRead); no media metadata/content authorization can be claimed. The upload mutation route is also closed with CONCERT_403 PERMISSION_DENIED.",
+      "result": "NOT_RUN",
+      "role": "suspended",
+      "surface": "media_content"
+    },
+    {
+      "actual": null,
+      "expected": 403,
+      "method": "GET",
+      "path": "/media/cb863760-2c1c-4612-9858-ed3b83ea5c3d",
+      "reason": "The composed media read path closes with a truncated Gateway body (IncompleteRead); no media metadata/content authorization can be claimed. The upload mutation route is also closed with CONCERT_403 PERMISSION_DENIED.",
+      "result": "NOT_RUN",
+      "role": "expired",
+      "surface": "media_metadata"
+    },
+    {
+      "actual": null,
+      "expected": 403,
+      "method": "GET",
+      "path": "/media/cb863760-2c1c-4612-9858-ed3b83ea5c3d",
+      "reason": "The composed media read path closes with a truncated Gateway body (IncompleteRead); no media metadata/content authorization can be claimed. The upload mutation route is also closed with CONCERT_403 PERMISSION_DENIED.",
+      "result": "NOT_RUN",
+      "role": "expired",
+      "surface": "media_content"
+    },
+    {
+      "actual": null,
+      "expected": 403,
+      "method": "GET",
+      "path": "/media/cb863760-2c1c-4612-9858-ed3b83ea5c3d",
+      "reason": "The composed media read path closes with a truncated Gateway body (IncompleteRead); no media metadata/content authorization can be claimed. The upload mutation route is also closed with CONCERT_403 PERMISSION_DENIED.",
+      "result": "NOT_RUN",
+      "role": "admin",
+      "surface": "media_metadata"
+    },
+    {
+      "actual": null,
+      "expected": 403,
+      "method": "GET",
+      "path": "/media/cb863760-2c1c-4612-9858-ed3b83ea5c3d",
+      "reason": "The composed media read path closes with a truncated Gateway body (IncompleteRead); no media metadata/content authorization can be claimed. The upload mutation route is also closed with CONCERT_403 PERMISSION_DENIED.",
+      "result": "NOT_RUN",
+      "role": "admin",
+      "surface": "media_content"
+    },
+    {
+      "actual": 200,
+      "expected": 200,
+      "method": "GET",
+      "ms": 4.6,
+      "path": "/api/profile/6de836f3-2974-4029-bc06-bc9816e5b303",
+      "result": "PASS",
+      "role": "owner",
+      "surface": "profile"
+    },
+    {
+      "actual": 200,
+      "expected": 200,
+      "method": "GET",
+      "ms": 5.1,
+      "path": "/api/profile/6de836f3-2974-4029-bc06-bc9816e5b303",
+      "result": "PASS",
+      "role": "member",
+      "surface": "profile"
+    },
+    {
+      "actual": 404,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 404,
+      "method": "GET",
+      "ms": 2.8,
+      "path": "/api/profile/6de836f3-2974-4029-bc06-bc9816e5b303",
+      "reason": null,
+      "result": "PASS",
+      "role": "stranger",
+      "surface": "profile"
+    },
+    {
+      "actual": 404,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 404,
+      "method": "GET",
+      "ms": 2.4,
+      "path": "/api/profile/6de836f3-2974-4029-bc06-bc9816e5b303",
+      "reason": null,
+      "result": "PASS",
+      "role": "blocked",
+      "surface": "profile"
+    },
+    {
+      "actual": 404,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 404,
+      "method": "GET",
+      "ms": 2.3,
+      "path": "/api/profile/6de836f3-2974-4029-bc06-bc9816e5b303",
+      "reason": null,
+      "result": "PASS",
+      "role": "suspended",
+      "surface": "profile"
+    },
+    {
+      "actual": 404,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 404,
+      "method": "GET",
+      "ms": 2.2,
+      "path": "/api/profile/6de836f3-2974-4029-bc06-bc9816e5b303",
+      "reason": null,
+      "result": "PASS",
+      "role": "expired",
+      "surface": "profile"
+    },
+    {
+      "actual": 404,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 404,
+      "method": "GET",
+      "ms": 2.4,
+      "path": "/api/profile/6de836f3-2974-4029-bc06-bc9816e5b303",
+      "reason": null,
+      "result": "PASS",
+      "role": "admin",
+      "surface": "profile"
+    },
+    {
+      "actual": 200,
+      "expected": 200,
+      "method": "GET",
+      "ms": 277.1,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue/location",
+      "result": "PASS",
+      "role": "owner",
+      "surface": "venue_location"
+    },
+    {
+      "actual": 200,
+      "expected": 200,
+      "method": "GET",
+      "ms": 132.3,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue/location",
+      "result": "PASS",
+      "role": "member",
+      "surface": "venue_location"
+    },
+    {
+      "actual": 404,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 404,
+      "method": "GET",
+      "ms": 141.6,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue/location",
+      "reason": "RESOURCE_UNAVAILABLE",
+      "result": "PASS",
+      "role": "stranger",
+      "surface": "venue_location"
+    },
+    {
+      "actual": 200,
+      "expected": 200,
+      "method": "GET",
+      "ms": 128.4,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue/location",
+      "result": "PASS",
+      "role": "blocked",
+      "surface": "venue_location"
+    },
+    {
+      "actual": 503,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 503,
+      "method": "GET",
+      "ms": 3.6,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue/location",
+      "reason": "DEPENDENCY_UNAVAILABLE",
+      "result": "PASS",
+      "role": "suspended",
+      "surface": "venue_location"
+    },
+    {
+      "actual": 503,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 503,
+      "method": "GET",
+      "ms": 143.5,
+      "path": "/api/concert/events/8ab6ee3a-3317-4c4e-b970-71278988208a/venue/location",
+      "reason": "DEPENDENCY_UNAVAILABLE",
+      "result": "PASS",
+      "role": "expired",
+      "surface": "venue_location"
+    },
+    {
+      "actual": 404,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 404,
+      "method": "GET",
+      "ms": 127.2,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue/location",
+      "reason": "RESOURCE_UNAVAILABLE",
+      "result": "PASS",
+      "role": "admin",
+      "surface": "venue_location"
+    },
+    {
+      "actual": 503,
+      "expected": 503,
+      "method": "GET",
+      "ms": 97.6,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue/landmarks/b38c1930-9e8e-4d61-a0a9-326368fb72ac/notes?limit=10",
+      "reason": "Place-note reads fail closed at the venue producer because the N01 prepared native read-retention path is not composed (product_rpc/venue_product.rs ListNotes/GetNote -> 503).",
+      "result": "NOT_RUN",
+      "role": "owner",
+      "surface": "venue_notes_read"
+    },
+    {
+      "actual": 503,
+      "expected": 503,
+      "method": "GET",
+      "ms": 118.5,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue/landmarks/b38c1930-9e8e-4d61-a0a9-326368fb72ac/notes?limit=10",
+      "reason": "Place-note reads fail closed at the venue producer because the N01 prepared native read-retention path is not composed (product_rpc/venue_product.rs ListNotes/GetNote -> 503).",
+      "result": "NOT_RUN",
+      "role": "member",
+      "surface": "venue_notes_read"
+    },
+    {
+      "actual": 503,
+      "expected": 503,
+      "method": "GET",
+      "ms": 142.0,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue/landmarks/b38c1930-9e8e-4d61-a0a9-326368fb72ac/notes?limit=10",
+      "reason": "Place-note reads fail closed at the venue producer because the N01 prepared native read-retention path is not composed (product_rpc/venue_product.rs ListNotes/GetNote -> 503).",
+      "result": "NOT_RUN",
+      "role": "stranger",
+      "surface": "venue_notes_read"
+    },
+    {
+      "actual": 503,
+      "expected": 503,
+      "method": "GET",
+      "ms": 188.4,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue/landmarks/b38c1930-9e8e-4d61-a0a9-326368fb72ac/notes?limit=10",
+      "reason": "Place-note reads fail closed at the venue producer because the N01 prepared native read-retention path is not composed (product_rpc/venue_product.rs ListNotes/GetNote -> 503).",
+      "result": "NOT_RUN",
+      "role": "blocked",
+      "surface": "venue_notes_read"
+    },
+    {
+      "actual": 503,
+      "expected": 503,
+      "method": "GET",
+      "ms": 3.9,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue/landmarks/b38c1930-9e8e-4d61-a0a9-326368fb72ac/notes?limit=10",
+      "reason": "Place-note reads fail closed at the venue producer because the N01 prepared native read-retention path is not composed (product_rpc/venue_product.rs ListNotes/GetNote -> 503).",
+      "result": "NOT_RUN",
+      "role": "suspended",
+      "surface": "venue_notes_read"
+    },
+    {
+      "actual": 503,
+      "expected": 503,
+      "method": "GET",
+      "ms": 73.9,
+      "path": "/api/concert/events/8ab6ee3a-3317-4c4e-b970-71278988208a/venue/landmarks/b38c1930-9e8e-4d61-a0a9-326368fb72ac/notes?limit=10",
+      "reason": "Place-note reads fail closed at the venue producer because the N01 prepared native read-retention path is not composed (product_rpc/venue_product.rs ListNotes/GetNote -> 503).",
+      "result": "NOT_RUN",
+      "role": "expired",
+      "surface": "venue_notes_read"
+    },
+    {
+      "actual": 503,
+      "expected": 503,
+      "method": "GET",
+      "ms": 123.0,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue/landmarks/b38c1930-9e8e-4d61-a0a9-326368fb72ac/notes?limit=10",
+      "reason": "Place-note reads fail closed at the venue producer because the N01 prepared native read-retention path is not composed (product_rpc/venue_product.rs ListNotes/GetNote -> 503).",
+      "result": "NOT_RUN",
+      "role": "admin",
+      "surface": "venue_notes_read"
+    },
+    {
+      "actual": 201,
+      "expected": 201,
+      "method": "POST",
+      "ms": 99.0,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue/landmarks/b38c1930-9e8e-4d61-a0a9-326368fb72ac/notes",
+      "result": "PASS",
+      "role": "owner",
+      "surface": "venue_note_create"
+    },
+    {
+      "actual": 201,
+      "expected": 201,
+      "method": "POST",
+      "ms": 125.2,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue/landmarks/b38c1930-9e8e-4d61-a0a9-326368fb72ac/notes",
+      "result": "PASS",
+      "role": "member",
+      "surface": "venue_note_create"
+    },
+    {
+      "actual": 403,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 403,
+      "method": "POST",
+      "ms": 100.7,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue/landmarks/b38c1930-9e8e-4d61-a0a9-326368fb72ac/notes",
+      "reason": "PERMISSION_DENIED",
+      "result": "PASS",
+      "role": "stranger",
+      "surface": "venue_note_create"
+    },
+    {
+      "actual": 201,
+      "expected": 201,
+      "method": "POST",
+      "ms": 145.7,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue/landmarks/b38c1930-9e8e-4d61-a0a9-326368fb72ac/notes",
+      "result": "PASS",
+      "role": "blocked",
+      "surface": "venue_note_create"
+    },
+    {
+      "actual": 503,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 503,
+      "method": "POST",
+      "ms": 3.7,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue/landmarks/b38c1930-9e8e-4d61-a0a9-326368fb72ac/notes",
+      "reason": "DEPENDENCY_UNAVAILABLE",
+      "result": "PASS",
+      "role": "suspended",
+      "surface": "venue_note_create"
+    },
+    {
+      "actual": 409,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 409,
+      "method": "POST",
+      "ms": 130.3,
+      "path": "/api/concert/events/8ab6ee3a-3317-4c4e-b970-71278988208a/venue/landmarks/b38c1930-9e8e-4d61-a0a9-326368fb72ac/notes",
+      "reason": "EVENT_READ_ONLY",
+      "result": "PASS",
+      "role": "expired",
+      "surface": "venue_note_create"
+    },
+    {
+      "actual": 403,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 403,
+      "method": "POST",
+      "ms": 136.0,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue/landmarks/b38c1930-9e8e-4d61-a0a9-326368fb72ac/notes",
+      "reason": "PERMISSION_DENIED",
+      "result": "PASS",
+      "role": "admin",
+      "surface": "venue_note_create"
+    },
+    {
+      "actual": 200,
+      "expected": 200,
+      "method": "GET",
+      "ms": 114.9,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue-meeting/context?selectedFriendId=22900306-5493-426a-b212-e8afa2ed55a4",
+      "result": "PASS",
+      "role": "owner",
+      "surface": "venue_meeting"
+    },
+    {
+      "actual": 200,
+      "expected": 200,
+      "method": "GET",
+      "ms": 134.8,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue-meeting/context?selectedFriendId=6de836f3-2974-4029-bc06-bc9816e5b303",
+      "result": "PASS",
+      "role": "member",
+      "surface": "venue_meeting"
+    },
+    {
+      "actual": 404,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 404,
+      "method": "GET",
+      "ms": 98.4,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue-meeting/context?selectedFriendId=6de836f3-2974-4029-bc06-bc9816e5b303",
+      "reason": "RESOURCE_UNAVAILABLE",
+      "result": "PASS",
+      "role": "stranger",
+      "surface": "venue_meeting"
+    },
+    {
+      "actual": 404,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 404,
+      "method": "GET",
+      "ms": 151.9,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue-meeting/context?selectedFriendId=6de836f3-2974-4029-bc06-bc9816e5b303",
+      "reason": "RESOURCE_UNAVAILABLE",
+      "result": "PASS",
+      "role": "blocked",
+      "surface": "venue_meeting"
+    },
+    {
+      "actual": 503,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 503,
+      "method": "GET",
+      "ms": 3.7,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue-meeting/context?selectedFriendId=6de836f3-2974-4029-bc06-bc9816e5b303",
+      "reason": "DEPENDENCY_UNAVAILABLE",
+      "result": "PASS",
+      "role": "suspended",
+      "surface": "venue_meeting"
+    },
+    {
+      "actual": 503,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 503,
+      "method": "GET",
+      "ms": 78.2,
+      "path": "/api/concert/events/8ab6ee3a-3317-4c4e-b970-71278988208a/venue-meeting/context?selectedFriendId=6de836f3-2974-4029-bc06-bc9816e5b303",
+      "reason": "DEPENDENCY_UNAVAILABLE",
+      "result": "PASS",
+      "role": "expired",
+      "surface": "venue_meeting"
+    },
+    {
+      "actual": 404,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 404,
+      "method": "GET",
+      "ms": 105.1,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue-meeting/context?selectedFriendId=6de836f3-2974-4029-bc06-bc9816e5b303",
+      "reason": "RESOURCE_UNAVAILABLE",
+      "result": "PASS",
+      "role": "admin",
+      "surface": "venue_meeting"
+    },
+    {
+      "actual": 200,
+      "expected": 200,
+      "method": "GET",
+      "ms": 77.8,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/admin/mural",
+      "result": "PASS",
+      "role": "admin",
+      "surface": "admin_mural_positive"
+    },
+    {
+      "actual": 403,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 403,
+      "method": "GET",
+      "ms": 196.6,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/admin/mural",
+      "reason": "PERMISSION_DENIED",
+      "result": "PASS",
+      "role": "member",
+      "surface": "admin_mural_denied"
+    },
+    {
+      "actual": 200,
+      "expected": 200,
+      "method": "POST",
+      "ms": 303.8,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/giveaways",
+      "result": "PASS",
+      "role": "owner",
+      "surface": "gift_create"
+    },
+    {
+      "actual": 200,
+      "expected": 200,
+      "method": "GET",
+      "ms": 217.1,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/giveaways?limit=10",
+      "result": "PASS",
+      "role": "owner",
+      "surface": "gift_list"
+    },
+    {
+      "actual": 200,
+      "expected": 200,
+      "method": "GET",
+      "ms": 177.6,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/giveaways/a49a73a7-39df-4575-982d-627bda3ea121",
+      "result": "PASS",
+      "role": "owner",
+      "surface": "gift_detail"
+    },
+    {
+      "actual": 200,
+      "expected": 200,
+      "method": "GET",
+      "ms": 222.1,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/giveaways/a49a73a7-39df-4575-982d-627bda3ea121/management?limit=10",
+      "result": "PASS",
+      "role": "owner",
+      "surface": "gift_management"
+    },
+    {
+      "actual": 200,
+      "expected": 200,
+      "method": "GET",
+      "ms": 156.1,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/giveaways?limit=10",
+      "result": "PASS",
+      "role": "member",
+      "surface": "gift_list"
+    },
+    {
+      "actual": 200,
+      "expected": 200,
+      "method": "GET",
+      "ms": 177.5,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/giveaways/a49a73a7-39df-4575-982d-627bda3ea121",
+      "result": "PASS",
+      "role": "member",
+      "surface": "gift_detail"
+    },
+    {
+      "actual": 404,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 404,
+      "method": "GET",
+      "ms": 187.3,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/giveaways/a49a73a7-39df-4575-982d-627bda3ea121/management?limit=10",
+      "reason": "RESOURCE_UNAVAILABLE",
+      "result": "PASS",
+      "role": "member",
+      "surface": "gift_management"
+    },
+    {
+      "actual": 404,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 404,
+      "method": "GET",
+      "ms": 88.9,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/giveaways?limit=10",
+      "reason": "RESOURCE_UNAVAILABLE",
+      "result": "PASS",
+      "role": "stranger",
+      "surface": "gift_list"
+    },
+    {
+      "actual": 404,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 404,
+      "method": "GET",
+      "ms": 148.1,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/giveaways/a49a73a7-39df-4575-982d-627bda3ea121",
+      "reason": "RESOURCE_UNAVAILABLE",
+      "result": "PASS",
+      "role": "stranger",
+      "surface": "gift_detail"
+    },
+    {
+      "actual": 404,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 404,
+      "method": "GET",
+      "ms": 115.2,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/giveaways/a49a73a7-39df-4575-982d-627bda3ea121/management?limit=10",
+      "reason": "RESOURCE_UNAVAILABLE",
+      "result": "PASS",
+      "role": "stranger",
+      "surface": "gift_management"
+    },
+    {
+      "actual": 200,
+      "expected": 200,
+      "method": "GET",
+      "ms": 150.5,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/giveaways?limit=10",
+      "result": "PASS",
+      "role": "blocked",
+      "surface": "gift_list"
+    },
+    {
+      "actual": 404,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 404,
+      "method": "GET",
+      "ms": 124.7,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/giveaways/a49a73a7-39df-4575-982d-627bda3ea121",
+      "reason": "RESOURCE_UNAVAILABLE",
+      "result": "PASS",
+      "role": "blocked",
+      "surface": "gift_detail"
+    },
+    {
+      "actual": 404,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 404,
+      "method": "GET",
+      "ms": 156.3,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/giveaways/a49a73a7-39df-4575-982d-627bda3ea121/management?limit=10",
+      "reason": "RESOURCE_UNAVAILABLE",
+      "result": "PASS",
+      "role": "blocked",
+      "surface": "gift_management"
+    },
+    {
+      "actual": 503,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 503,
+      "method": "GET",
+      "ms": 3.6,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/giveaways?limit=10",
+      "reason": "DEPENDENCY_UNAVAILABLE",
+      "result": "PASS",
+      "role": "suspended",
+      "surface": "gift_list"
+    },
+    {
+      "actual": 503,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 503,
+      "method": "GET",
+      "ms": 2.3,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/giveaways/a49a73a7-39df-4575-982d-627bda3ea121",
+      "reason": "DEPENDENCY_UNAVAILABLE",
+      "result": "PASS",
+      "role": "suspended",
+      "surface": "gift_detail"
+    },
+    {
+      "actual": 503,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 503,
+      "method": "GET",
+      "ms": 2.3,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/giveaways/a49a73a7-39df-4575-982d-627bda3ea121/management?limit=10",
+      "reason": "DEPENDENCY_UNAVAILABLE",
+      "result": "PASS",
+      "role": "suspended",
+      "surface": "gift_management"
+    },
+    {
+      "actual": 404,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 404,
+      "method": "GET",
+      "ms": 120.5,
+      "path": "/api/concert/events/8ab6ee3a-3317-4c4e-b970-71278988208a/giveaways?limit=10",
+      "reason": "RESOURCE_UNAVAILABLE",
+      "result": "PASS",
+      "role": "expired",
+      "surface": "gift_list"
+    },
+    {
+      "actual": 404,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 404,
+      "method": "GET",
+      "ms": 127.1,
+      "path": "/api/concert/events/8ab6ee3a-3317-4c4e-b970-71278988208a/giveaways/a49a73a7-39df-4575-982d-627bda3ea121",
+      "reason": "RESOURCE_UNAVAILABLE",
+      "result": "PASS",
+      "role": "expired",
+      "surface": "gift_detail"
+    },
+    {
+      "actual": 404,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 404,
+      "method": "GET",
+      "ms": 99.9,
+      "path": "/api/concert/events/8ab6ee3a-3317-4c4e-b970-71278988208a/giveaways/a49a73a7-39df-4575-982d-627bda3ea121/management?limit=10",
+      "reason": "RESOURCE_UNAVAILABLE",
+      "result": "PASS",
+      "role": "expired",
+      "surface": "gift_management"
+    },
+    {
+      "actual": 404,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 404,
+      "method": "GET",
+      "ms": 159.9,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/giveaways?limit=10",
+      "reason": "RESOURCE_UNAVAILABLE",
+      "result": "PASS",
+      "role": "admin",
+      "surface": "gift_list"
+    },
+    {
+      "actual": 404,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 404,
+      "method": "GET",
+      "ms": 123.0,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/giveaways/a49a73a7-39df-4575-982d-627bda3ea121",
+      "reason": "RESOURCE_UNAVAILABLE",
+      "result": "PASS",
+      "role": "admin",
+      "surface": "gift_detail"
+    },
+    {
+      "actual": 404,
+      "envelope": [
+        "code",
+        "details",
+        "message",
+        "timestamp",
+        "traceId"
+      ],
+      "expected": 404,
+      "method": "GET",
+      "ms": 118.9,
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/giveaways/a49a73a7-39df-4575-982d-627bda3ea121/management?limit=10",
+      "reason": "RESOURCE_UNAVAILABLE",
+      "result": "PASS",
+      "role": "admin",
+      "surface": "gift_management"
+    },
+    {
+      "actual": 404,
+      "expected": 404,
+      "journal_rows": [
+        {
+          "peer_id": "f8551b82-500e-4043-8d75-901f42d7cfaa",
+          "reason": "FRIEND_RELATIONSHIP_CHANGED",
+          "user_id": "6de836f3-2974-4029-bc06-bc9816e5b303"
+        }
+      ],
+      "method": "GET",
+      "result": "PASS",
+      "role": "member",
+      "surface": "profile_cache_eviction"
+    }
+  ],
+  "failure": "Qa04Failure: qa04-restore-unblock-504",
+  "finished_at_utc": "2026-11-06T18:41:11.238082+00:00",
+  "gift_create": {
+    "body_keys": [
+      "available",
+      "created_at",
+      "description",
+      "event_id",
+      "giveaway_id",
+      "image_media_id",
+      "owner",
+      "pickup_ends_at",
+      "pickup_grace_seconds",
+      "pickup_starts_at",
+      "public_place_id",
+      "quantity_total",
+      "revision",
+      "state",
+      "title"
+    ],
+    "db_rows": 1,
+    "giveaway_id": "a49a73a7-39df-4575-982d-627bda3ea121",
+    "http": 200
+  },
+  "gift_row": {
+    "event_id": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+    "giveaway_id": "a49a73a7-39df-4575-982d-627bda3ea121",
+    "owner_id": "6de836f3-2974-4029-bc06-bc9816e5b303",
+    "state": "OPEN"
+  },
+  "limitations": [],
+  "not_run": {},
+  "notes": {},
+  "result": "FAIL",
+  "task": "QA04"
+}

@@ -1,0 +1,908 @@
+{
+  "banner": {
+    "scope": "development stack social and privacy gate",
+    "release": "development stack, NOT release qualification",
+    "qa08": "NOT_RUN",
+    "production": "NOT_CLAIMED",
+    "authorization": "development enrollment policy; never legal approval",
+    "client": "no browser cache claim in this backend gate"
+  },
+  "steps": {},
+  "checks": {},
+  "not_run": {},
+  "candidate": {
+    "worktree": "/Users/lhs/Desktop/mcr-worktrees/exec-f3",
+    "revision": "71e54aa735e6fbd7c51f0c7b6115fa71a9704048"
+  },
+  "started_at_utc": "2026-11-06T18:42:32.679492+00:00",
+  "scenario": {
+    "wall_pack_manifest_sha256": "3f1aa318f0e4b7d8fa7f079b1101f7386619291a8dbb3bb04ef70820952f34ce"
+  },
+  "stack": {
+    "gateway_url": "http://127.0.0.1:49907",
+    "services": {
+      "profile-service": {
+        "http": "http://127.0.0.1:49888",
+        "grpc": "http://127.0.0.1:49889",
+        "metrics": "http://127.0.0.1:49890"
+      },
+      "notification-service": {
+        "http": "http://127.0.0.1:49891",
+        "grpc": "http://127.0.0.1:49892",
+        "metrics": "http://127.0.0.1:49893"
+      },
+      "concert-service": {
+        "http": "http://127.0.0.1:49894",
+        "grpc": "http://127.0.0.1:49895",
+        "metrics": "http://127.0.0.1:49896"
+      },
+      "friend-service": {
+        "http": "http://127.0.0.1:49898",
+        "grpc": "http://127.0.0.1:49899",
+        "metrics": "http://127.0.0.1:49900"
+      },
+      "post-service": {
+        "http": "http://127.0.0.1:49901",
+        "grpc": "http://127.0.0.1:49902",
+        "metrics": "http://127.0.0.1:49903"
+      },
+      "auth-service": {
+        "http": "http://127.0.0.1:49904",
+        "grpc": "http://127.0.0.1:49905",
+        "metrics": "http://127.0.0.1:49906"
+      },
+      "api-gateway": {
+        "http": "http://127.0.0.1:49907",
+        "grpc": "http://127.0.0.1:49908",
+        "metrics": "http://127.0.0.1:49909"
+      }
+    },
+    "event": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+    "release_digest": "5a51442b4b4c62d99c329f39aafbf277b4a37a384efc3fdfd1f5c219997bec3b",
+    "readiness": {
+      "api-gateway": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "database": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->auth": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->friend": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->notification": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->post": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->profile": {
+            "required": true,
+            "status": "up"
+          },
+          "signing-keys": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      },
+      "auth-service": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "auth->friend": {
+            "required": false,
+            "status": "up"
+          },
+          "auth->notification": {
+            "required": false,
+            "status": "up"
+          },
+          "auth->post": {
+            "required": false,
+            "status": "up"
+          },
+          "auth->profile": {
+            "required": false,
+            "status": "up"
+          },
+          "concert-owner-authority": {
+            "required": true,
+            "status": "up"
+          },
+          "database": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      },
+      "profile-service": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "database": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      },
+      "friend-service": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "concert-owner-authority": {
+            "required": true,
+            "status": "up"
+          },
+          "database": {
+            "required": true,
+            "status": "up"
+          },
+          "friend->profile": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      },
+      "post-service": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "database": {
+            "required": true,
+            "status": "up"
+          },
+          "post->friend": {
+            "required": true,
+            "status": "up"
+          },
+          "post->gateway": {
+            "required": true,
+            "status": "up"
+          },
+          "post->notification": {
+            "required": false,
+            "status": "up"
+          },
+          "post->profile": {
+            "required": false,
+            "status": "up"
+          }
+        }
+      },
+      "notification-service": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "database": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      },
+      "concert-service": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "database": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      }
+    },
+    "owned_root": "/private/tmp/mcr-pg-zghyouq_",
+    "mail": "private local HTTP capture"
+  },
+  "enrollment_policy": {
+    "revision": "065e134d-3fa3-4df0-949d-66b4086c15b4",
+    "approval_reference": "development-not-admitted",
+    "production_approval": "NOT_PRESENT_IN_CHECKOUT_SCHEMA",
+    "note": "The checkout's enrollment schema has no productionApproval field; approvalReference=development-not-admitted is the explicit nonproduction label. No legal approval is claimed."
+  },
+  "principal_attempts": {
+    "alice": 1,
+    "bob": 1,
+    "carol": 1,
+    "outsider": 1
+  },
+  "principals": {
+    "alice": "8de47248-ed4f-446d-93b0-308f4966924d",
+    "bob": "77708103-a94a-4c52-8720-a3b18c474bc5",
+    "carol": "cbab82f4-60e9-482b-8e22-37cdb63ab3d5"
+  },
+  "outsider": "created but not admitted to the event",
+  "provisioning": {
+    "mode": "owned disposable PG rows provisioned directly; no external data",
+    "event": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+    "participants": [
+      "alice",
+      "bob",
+      "carol"
+    ],
+    "outsider": "authenticated principal without event admission or participant row",
+    "wall_pack_manifest_sha256": "3f1aa318f0e4b7d8fa7f079b1101f7386619291a8dbb3bb04ef70820952f34ce",
+    "wall_seed_snapshot_id": "9d708d57-808a-42e5-a52c-720e37c87e48"
+  },
+  "result": "FAIL",
+  "failure": "Qa04Failure: qa04-restore-unblock-504",
+  "failure_detail": null,
+  "logs": {
+    "concert-service": "CONCERT_HEALTH_LISTENER=127.0.0.1:49896\nCONCERT_WORLD_LISTENER=127.0.0.1:49897\nchild_recovery attempted=1 completed=1 pending=0 timed_out=0\n",
+    "post-service": "{\"timestamp\":\"2026-11-06T18:42:38.031424Z\",\"level\":\"INFO\",\"fields\":{\"message\":\"telemetry initialized\",\"service\":\"post-service\",\"otlp_enabled\":false},\"target\":\"platform::telemetry\"}\n{\"timestamp\":\"2026-11-06T18:42:38.070447Z\",\"level\":\"WARN\",\"fields\":{\"message\":\"POST_EXTERNAL_PUBLISHER is `disabled`; events retain their registered destination requirements\"},\"target\":\"post_service::config\"}\n",
+    "auth-service": "",
+    "friend-service": "",
+    "api-gateway": "{\"timestamp\":\"2026-11-06T18:42:38.124003Z\",\"level\":\"WARN\",\"fields\":{\"message\":\"signing key fetch failed; keeping the installed keys\",\"trigger\":\"scheduled\",\"error\":\"Service unavailable\"},\"target\":\"api_gateway::adapters::out::signing_keys\"}\n{\"timestamp\":\"2026-11-06T18:43:36.786475Z\",\"level\":\"ERROR\",\"fields\":{\"message\":\"downstream request timed out\",\"error\":\"Downstream request timed out\\n\\nCaused by:\\n    Downstream request timed out\"},\"target\":\"api_gateway::adapters::r#in::http\"}\n"
+  },
+  "cleanup": "PASS",
+  "finished_at_utc": "2026-11-06T18:43:37.313133+00:00",
+  "http_requests": [
+    {
+      "role": "blocked",
+      "method": "PUT",
+      "path": "/api/profile/privacy"
+    },
+    {
+      "role": "owner",
+      "method": "PUT",
+      "path": "/api/profile/privacy"
+    },
+    {
+      "role": "owner",
+      "method": "POST",
+      "path": "/api/follows"
+    },
+    {
+      "role": "owner",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed?limit=20"
+    },
+    {
+      "role": "member",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed?limit=20"
+    },
+    {
+      "role": "stranger",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed?limit=20"
+    },
+    {
+      "role": "stranger",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed?limit=20"
+    },
+    {
+      "role": "stranger",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed?limit=20"
+    },
+    {
+      "role": "stranger",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed?limit=20"
+    },
+    {
+      "role": "stranger",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed?limit=20"
+    },
+    {
+      "role": "stranger",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed?limit=20"
+    },
+    {
+      "role": "suspended",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed?limit=20"
+    },
+    {
+      "role": "suspended",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed?limit=20"
+    },
+    {
+      "role": "suspended",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed?limit=20"
+    },
+    {
+      "role": "suspended",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed?limit=20"
+    },
+    {
+      "role": "suspended",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed?limit=20"
+    },
+    {
+      "role": "suspended",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed?limit=20"
+    },
+    {
+      "role": "expired",
+      "method": "GET",
+      "path": "/api/concert/events/fce42c37-bec1-4bb5-a896-811bcb1877ec/feed?limit=20"
+    },
+    {
+      "role": "expired",
+      "method": "GET",
+      "path": "/api/concert/events/fce42c37-bec1-4bb5-a896-811bcb1877ec/feed?limit=20"
+    },
+    {
+      "role": "expired",
+      "method": "GET",
+      "path": "/api/concert/events/fce42c37-bec1-4bb5-a896-811bcb1877ec/feed?limit=20"
+    },
+    {
+      "role": "expired",
+      "method": "GET",
+      "path": "/api/concert/events/fce42c37-bec1-4bb5-a896-811bcb1877ec/feed?limit=20"
+    },
+    {
+      "role": "expired",
+      "method": "GET",
+      "path": "/api/concert/events/fce42c37-bec1-4bb5-a896-811bcb1877ec/feed?limit=20"
+    },
+    {
+      "role": "expired",
+      "method": "GET",
+      "path": "/api/concert/events/fce42c37-bec1-4bb5-a896-811bcb1877ec/feed?limit=20"
+    },
+    {
+      "role": "admin",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed?limit=20"
+    },
+    {
+      "role": "admin",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed?limit=20"
+    },
+    {
+      "role": "admin",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed?limit=20"
+    },
+    {
+      "role": "admin",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed?limit=20"
+    },
+    {
+      "role": "admin",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed?limit=20"
+    },
+    {
+      "role": "admin",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed?limit=20"
+    },
+    {
+      "role": "owner",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed?limit=20"
+    },
+    {
+      "role": "owner",
+      "method": "POST",
+      "path": "/api/relationships/blocks/77708103-a94a-4c52-8720-a3b18c474bc5"
+    },
+    {
+      "role": "owner",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed?limit=20"
+    },
+    {
+      "role": "owner",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "owner",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/operations?after_revision=1"
+    },
+    {
+      "role": "member",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "member",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/operations?after_revision=1"
+    },
+    {
+      "role": "stranger",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "stranger",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/operations?after_revision=1"
+    },
+    {
+      "role": "blocked",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "blocked",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/operations?after_revision=1"
+    },
+    {
+      "role": "suspended",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "suspended",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "suspended",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "suspended",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "suspended",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "suspended",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "suspended",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/operations?after_revision=1"
+    },
+    {
+      "role": "suspended",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/operations?after_revision=1"
+    },
+    {
+      "role": "suspended",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/operations?after_revision=1"
+    },
+    {
+      "role": "suspended",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/operations?after_revision=1"
+    },
+    {
+      "role": "suspended",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/operations?after_revision=1"
+    },
+    {
+      "role": "suspended",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/operations?after_revision=1"
+    },
+    {
+      "role": "expired",
+      "method": "GET",
+      "path": "/api/concert/events/fce42c37-bec1-4bb5-a896-811bcb1877ec/mural/snapshot"
+    },
+    {
+      "role": "expired",
+      "method": "GET",
+      "path": "/api/concert/events/fce42c37-bec1-4bb5-a896-811bcb1877ec/mural/operations?after_revision=1"
+    },
+    {
+      "role": "admin",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "admin",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/operations?after_revision=1"
+    },
+    {
+      "role": "owner",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/c4eeed38-400f-4045-9406-d7f8140135fa"
+    },
+    {
+      "transport_retry": "IncompleteRead",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/c4eeed38-400f-4045-9406-d7f8140135fa"
+    },
+    {
+      "role": "owner",
+      "method": "GET",
+      "path": "/api/profile/8de47248-ed4f-446d-93b0-308f4966924d"
+    },
+    {
+      "role": "member",
+      "method": "GET",
+      "path": "/api/profile/8de47248-ed4f-446d-93b0-308f4966924d"
+    },
+    {
+      "role": "stranger",
+      "method": "GET",
+      "path": "/api/profile/8de47248-ed4f-446d-93b0-308f4966924d"
+    },
+    {
+      "role": "blocked",
+      "method": "GET",
+      "path": "/api/profile/8de47248-ed4f-446d-93b0-308f4966924d"
+    },
+    {
+      "role": "suspended",
+      "method": "GET",
+      "path": "/api/profile/8de47248-ed4f-446d-93b0-308f4966924d"
+    },
+    {
+      "role": "expired",
+      "method": "GET",
+      "path": "/api/profile/8de47248-ed4f-446d-93b0-308f4966924d"
+    },
+    {
+      "role": "admin",
+      "method": "GET",
+      "path": "/api/profile/8de47248-ed4f-446d-93b0-308f4966924d"
+    },
+    {
+      "role": "owner",
+      "method": "PUT",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue/location/sharing"
+    },
+    {
+      "role": "owner",
+      "method": "PUT",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue/location/fix"
+    },
+    {
+      "role": "owner",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue/location"
+    },
+    {
+      "role": "member",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue/location"
+    },
+    {
+      "role": "stranger",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue/location"
+    },
+    {
+      "role": "blocked",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue/location"
+    },
+    {
+      "role": "suspended",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue/location"
+    },
+    {
+      "role": "expired",
+      "method": "GET",
+      "path": "/api/concert/events/fce42c37-bec1-4bb5-a896-811bcb1877ec/venue/location"
+    },
+    {
+      "role": "admin",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue/location"
+    },
+    {
+      "role": "owner",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue/landmarks/b9618137-080f-44ab-9f8a-bd1b5eb90ffa/notes?limit=10"
+    },
+    {
+      "role": "member",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue/landmarks/b9618137-080f-44ab-9f8a-bd1b5eb90ffa/notes?limit=10"
+    },
+    {
+      "role": "stranger",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue/landmarks/b9618137-080f-44ab-9f8a-bd1b5eb90ffa/notes?limit=10"
+    },
+    {
+      "role": "blocked",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue/landmarks/b9618137-080f-44ab-9f8a-bd1b5eb90ffa/notes?limit=10"
+    },
+    {
+      "role": "suspended",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue/landmarks/b9618137-080f-44ab-9f8a-bd1b5eb90ffa/notes?limit=10"
+    },
+    {
+      "role": "expired",
+      "method": "GET",
+      "path": "/api/concert/events/fce42c37-bec1-4bb5-a896-811bcb1877ec/venue/landmarks/b9618137-080f-44ab-9f8a-bd1b5eb90ffa/notes?limit=10"
+    },
+    {
+      "role": "admin",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue/landmarks/b9618137-080f-44ab-9f8a-bd1b5eb90ffa/notes?limit=10"
+    },
+    {
+      "role": "owner",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue/landmarks/b9618137-080f-44ab-9f8a-bd1b5eb90ffa/notes"
+    },
+    {
+      "role": "member",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue/landmarks/b9618137-080f-44ab-9f8a-bd1b5eb90ffa/notes"
+    },
+    {
+      "role": "stranger",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue/landmarks/b9618137-080f-44ab-9f8a-bd1b5eb90ffa/notes"
+    },
+    {
+      "role": "blocked",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue/landmarks/b9618137-080f-44ab-9f8a-bd1b5eb90ffa/notes"
+    },
+    {
+      "role": "suspended",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue/landmarks/b9618137-080f-44ab-9f8a-bd1b5eb90ffa/notes"
+    },
+    {
+      "role": "expired",
+      "method": "POST",
+      "path": "/api/concert/events/fce42c37-bec1-4bb5-a896-811bcb1877ec/venue/landmarks/b9618137-080f-44ab-9f8a-bd1b5eb90ffa/notes"
+    },
+    {
+      "role": "admin",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue/landmarks/b9618137-080f-44ab-9f8a-bd1b5eb90ffa/notes"
+    },
+    {
+      "role": "owner",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue-meeting/context?selectedFriendId=cbab82f4-60e9-482b-8e22-37cdb63ab3d5"
+    },
+    {
+      "role": "member",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue-meeting/context?selectedFriendId=8de47248-ed4f-446d-93b0-308f4966924d"
+    },
+    {
+      "role": "stranger",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue-meeting/context?selectedFriendId=8de47248-ed4f-446d-93b0-308f4966924d"
+    },
+    {
+      "role": "blocked",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue-meeting/context?selectedFriendId=8de47248-ed4f-446d-93b0-308f4966924d"
+    },
+    {
+      "role": "suspended",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue-meeting/context?selectedFriendId=8de47248-ed4f-446d-93b0-308f4966924d"
+    },
+    {
+      "role": "expired",
+      "method": "GET",
+      "path": "/api/concert/events/fce42c37-bec1-4bb5-a896-811bcb1877ec/venue-meeting/context?selectedFriendId=8de47248-ed4f-446d-93b0-308f4966924d"
+    },
+    {
+      "role": "admin",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/venue-meeting/context?selectedFriendId=8de47248-ed4f-446d-93b0-308f4966924d"
+    },
+    {
+      "role": "admin",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/admin/mural"
+    },
+    {
+      "role": "member",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/admin/mural"
+    },
+    {
+      "role": "owner",
+      "method": "PUT",
+      "path": "/api/profile/privacy"
+    },
+    {
+      "role": "owner",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/giveaways"
+    },
+    {
+      "role": "owner",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/giveaways?limit=10"
+    },
+    {
+      "role": "owner",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/giveaways/9fe9b4fe-14d8-4f40-8470-d559b03ae8db"
+    },
+    {
+      "role": "owner",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/giveaways/9fe9b4fe-14d8-4f40-8470-d559b03ae8db/management?limit=10"
+    },
+    {
+      "role": "member",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/giveaways?limit=10"
+    },
+    {
+      "role": "member",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/giveaways/9fe9b4fe-14d8-4f40-8470-d559b03ae8db"
+    },
+    {
+      "role": "member",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/giveaways/9fe9b4fe-14d8-4f40-8470-d559b03ae8db/management?limit=10"
+    },
+    {
+      "role": "stranger",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/giveaways?limit=10"
+    },
+    {
+      "role": "stranger",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/giveaways/9fe9b4fe-14d8-4f40-8470-d559b03ae8db"
+    },
+    {
+      "role": "stranger",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/giveaways/9fe9b4fe-14d8-4f40-8470-d559b03ae8db/management?limit=10"
+    },
+    {
+      "role": "blocked",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/giveaways?limit=10"
+    },
+    {
+      "role": "blocked",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/giveaways/9fe9b4fe-14d8-4f40-8470-d559b03ae8db"
+    },
+    {
+      "role": "blocked",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/giveaways/9fe9b4fe-14d8-4f40-8470-d559b03ae8db/management?limit=10"
+    },
+    {
+      "role": "suspended",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/giveaways?limit=10"
+    },
+    {
+      "role": "suspended",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/giveaways/9fe9b4fe-14d8-4f40-8470-d559b03ae8db"
+    },
+    {
+      "role": "suspended",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/giveaways/9fe9b4fe-14d8-4f40-8470-d559b03ae8db/management?limit=10"
+    },
+    {
+      "role": "expired",
+      "method": "GET",
+      "path": "/api/concert/events/fce42c37-bec1-4bb5-a896-811bcb1877ec/giveaways?limit=10"
+    },
+    {
+      "role": "expired",
+      "method": "GET",
+      "path": "/api/concert/events/fce42c37-bec1-4bb5-a896-811bcb1877ec/giveaways/9fe9b4fe-14d8-4f40-8470-d559b03ae8db"
+    },
+    {
+      "role": "expired",
+      "method": "GET",
+      "path": "/api/concert/events/fce42c37-bec1-4bb5-a896-811bcb1877ec/giveaways/9fe9b4fe-14d8-4f40-8470-d559b03ae8db/management?limit=10"
+    },
+    {
+      "role": "admin",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/giveaways?limit=10"
+    },
+    {
+      "role": "admin",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/giveaways/9fe9b4fe-14d8-4f40-8470-d559b03ae8db"
+    },
+    {
+      "role": "admin",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/giveaways/9fe9b4fe-14d8-4f40-8470-d559b03ae8db/management?limit=10"
+    },
+    {
+      "role": "blocked",
+      "method": "PUT",
+      "path": "/api/profile/privacy"
+    },
+    {
+      "role": "member",
+      "method": "POST",
+      "path": "/api/follows"
+    },
+    {
+      "role": "blocked",
+      "method": "POST",
+      "path": "/api/follows/requests/ef059ff8-9446-4c9e-acb5-0d88d04c8a17/accept"
+    },
+    {
+      "role": "member",
+      "method": "GET",
+      "path": "/api/profile/77708103-a94a-4c52-8720-a3b18c474bc5"
+    },
+    {
+      "role": "member",
+      "method": "DELETE",
+      "path": "/api/follows/77708103-a94a-4c52-8720-a3b18c474bc5"
+    },
+    {
+      "role": "member",
+      "method": "GET",
+      "path": "/api/profile/77708103-a94a-4c52-8720-a3b18c474bc5"
+    },
+    {
+      "role": "blocked",
+      "method": "PUT",
+      "path": "/api/profile/privacy"
+    },
+    {
+      "role": "owner",
+      "method": "PUT",
+      "path": "/api/profile/privacy"
+    },
+    {
+      "role": "owner",
+      "method": "DELETE",
+      "path": "/api/relationships/blocks/77708103-a94a-4c52-8720-a3b18c474bc5"
+    }
+  ]
+}
