@@ -728,7 +728,64 @@ def main(argv=None):
             "reposted_with_new_key": False,
         })
 
-        # Step 8: moderation pause/resume/lock/restore/freeze through the real OPERATOR.
+        # Step 8: restore the snapshot id that the admin read advertises.
+        advertised_revision = current_grid("bob")["revision"]
+        wait_allowed("alice")
+        advertised_index = background_component[-5]
+        advertised_pencil_status, advertised_pencil, _ = api.request(
+            "alice", "POST", f"/api/concert/events/{event}/mural/pixels",
+            {"expected_revision": advertised_revision, "x": advertised_index % 128,
+             "y": advertised_index // 128, "color_index": 9}, str(uuid4()))
+        require(advertised_pencil_status == 200, f"advertised-pencil-{advertised_pencil_status}")
+        advertised_revision = advertised_pencil["revision"]
+        advertised_expected_sha = sql(
+            "mcr_concert", "SELECT encode(sha256(pixels),'hex') FROM concert_mural_state WHERE event_id="
+            + prep.quote(event))
+        advertised_status, advertised_state, _ = api.request(
+            "operator", "GET", f"/api/concert/events/{event}/admin/mural")
+        require(advertised_status == 200, f"advertised-admin-{advertised_status}")
+        advertised_pause_status, advertised_pause, _ = api.request(
+            "operator", "POST", f"/api/concert/events/{event}/admin/mural/control",
+            {"expected_revision": advertised_state["revision"], "action": "PAUSE",
+             "reason": "advertised restore precondition"}, str(uuid4()))
+        advertise_restore_status, advertise_restore, _ = api.request(
+            "operator", "POST", f"/api/concert/events/{event}/admin/mural/restore",
+            {"expected_revision": advertised_pause["revision"],
+             "snapshot_id": advertised_state["snapshot_id"],
+             "reason": "restore advertised snapshot"}, str(uuid4()))
+        advertised_restored = current_grid("alice") if advertise_restore_status == 200 else None
+        record("restore_advertised_snapshot", {
+            "pencil": {"status": advertised_pencil_status, "revision": advertised_revision},
+            "admin_read": {"http": advertised_status,
+                           "revision": advertised_state.get("revision"),
+                           "snapshot_id": advertised_state.get("snapshot_id")},
+            "pause": {"http": advertised_pause_status,
+                      "state": advertised_pause.get("state"),
+                      "revision": advertised_pause.get("revision")},
+            "restore": {"http": advertise_restore_status,
+                        "state": advertise_restore.get("state"),
+                        "revision": advertise_restore.get("revision"),
+                        "reason": advertise_restore.get("details", {}).get("reason"),
+                        "target_snapshot_id": advertised_state.get("snapshot_id")},
+            "expected_pixels_sha256": advertised_expected_sha,
+            "restored_pixels_sha256": None if advertised_restored is None
+            else advertised_restored["pixels_sha256"],
+            "restored_exact_grid": advertised_restored is not None
+            and advertised_restored["pixels_sha256"] == advertised_expected_sha,
+        })
+        require(advertise_restore_status == 200
+                and advertise_restore.get("state") == "PAUSED"
+                and advertise_restore.get("revision") == advertised_pause["revision"] + 1
+                and advertised_restored is not None
+                and advertised_restored["pixels_sha256"] == advertised_expected_sha,
+                f"restore-advertised-{advertise_restore_status}")
+        advertised_resume_status, advertised_resume, _ = api.request(
+            "operator", "POST", f"/api/concert/events/{event}/admin/mural/control",
+            {"expected_revision": advertise_restore["revision"], "action": "RESUME",
+             "reason": "resume after advertised restore"}, str(uuid4()))
+        require(advertised_resume_status == 200, f"advertised-resume-{advertised_resume_status}")
+
+        # Step 9: moderation pause/resume/lock/restore/freeze through the real OPERATOR.
         admin_status, admin_state, _ = api.request(
             "operator", "GET", f"/api/concert/events/{event}/admin/mural")
         require(admin_status == 200, f"admin-state-{admin_status}")
@@ -1010,6 +1067,7 @@ def main(argv=None):
         checks["lock_blocks_write"] = pause["write_in_locked_region"]["http"] == 409
         checks["lock_reason"] = pause["write_in_locked_region"]["reason"] == "MURAL_REGION_LOCKED"
         checks["restore_exact"] = pause["restore"]["restored_exact_grid"]
+        checks["restore_advertised_snapshot"] = report["steps"]["restore_advertised_snapshot"]["restore"]["http"] == 200 and report["steps"]["restore_advertised_snapshot"]["restored_exact_grid"]
         checks["freeze_blocks_write"] = pause["write_while_frozen"]["http"] == 409
         checks["freeze_reason"] = pause["write_while_frozen"]["reason"] == "MURAL_FROZEN"
         checks["frozen_terminal"] = pause["terminal_frozen_transition"]["http"] == 409

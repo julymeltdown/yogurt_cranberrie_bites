@@ -12,27 +12,27 @@
         "status": 200,
         "revision": 1,
         "state": "EDITABLE",
-        "snapshot_id": "22368cf5-c71e-4a0e-8bbb-1303ef49cee3",
+        "snapshot_id": "15ebd457-fdea-42ba-8dbb-2a0e4782a612",
         "pixels_sha256": "f29eaf4ea632e2a34b6dd4fdfdc6f8a3d07ab780af96e19c2a64c28faf42c721"
       },
       "bob": {
         "status": 200,
         "revision": 1,
         "state": "EDITABLE",
-        "snapshot_id": "22368cf5-c71e-4a0e-8bbb-1303ef49cee3",
+        "snapshot_id": "15ebd457-fdea-42ba-8dbb-2a0e4782a612",
         "pixels_sha256": "f29eaf4ea632e2a34b6dd4fdfdc6f8a3d07ab780af96e19c2a64c28faf42c721"
       },
       "converged": true,
       "log": {
-        "api-gateway": "{\"timestamp\":\"2026-11-06T10:52:03.471037Z\",\"level\":\"WARN\",\"fields\":{\"message\":\"signing key fetch failed; keeping the installed keys\",\"trigger\":\"scheduled\",\"error\":\"Service unavailable\"},\"target\":\"api_gateway::adapters::out::signing_keys\"}",
-        "concert-service": "CONCERT_HEALTH_LISTENER=127.0.0.1:60148\nCONCERT_WORLD_LISTENER=127.0.0.1:60149"
+        "api-gateway": "{\"timestamp\":\"2026-11-06T11:14:56.817575Z\",\"level\":\"WARN\",\"fields\":{\"message\":\"signing key fetch failed; keeping the installed keys\",\"trigger\":\"scheduled\",\"error\":\"Service unavailable\"},\"target\":\"api_gateway::adapters::out::signing_keys\"}",
+        "concert-service": "CONCERT_HEALTH_LISTENER=127.0.0.1:56162\nCONCERT_WORLD_LISTENER=127.0.0.1:56163"
       }
     },
     "pencil_and_convergence": {
       "alice": {
         "status": 200,
         "revision": 2,
-        "operation_id": "c4d487c9-0baf-4aaa-9592-9b80b0c3937c"
+        "operation_id": "55d6047a-01b6-4972-ac7b-7e7761ed3745"
       },
       "bob_frame": {
         "actor": "bob",
@@ -47,7 +47,7 @@
         "snapshot": {
           "revision": 2,
           "state": "EDITABLE",
-          "snapshot_id": "78a49847-2a92-4ea5-bbbd-db705cb4050b",
+          "snapshot_id": "53a2a37c-ab91-4e66-9b2d-eec2c0b81ba9",
           "pixels_sha256": "502b8737abbbc934104ae878f40835e444f3864837b90c4ec3b4d6e9445eadf4"
         }
       },
@@ -60,7 +60,7 @@
       "bob": {
         "status": 200,
         "revision": 3,
-        "action_id": "b6b5ed08-417b-4c62-9d17-245bd5a19b41",
+        "action_id": "fe650a99-df7e-492c-a690-707528301d95",
         "kind": "ERASE",
         "changed_cells": 1
       },
@@ -77,7 +77,7 @@
         "snapshot": {
           "revision": 3,
           "state": "EDITABLE",
-          "snapshot_id": "fd84a5fd-8b47-4411-abae-8bf15b723dc6",
+          "snapshot_id": "4e15b249-d084-44c0-a513-94be190c9209",
           "pixels_sha256": "f93cf959073ae310b1f183c3c5012a446a142e4a0be094c38197ff76fd922019"
         }
       },
@@ -90,7 +90,7 @@
       "bob": {
         "status": 200,
         "revision": 4,
-        "action_id": "0bb65f2b-513c-4385-89b8-3d89c89e7c08",
+        "action_id": "b80f0e04-dc57-4b2a-8783-f541e70339b0",
         "changed_cells": 244,
         "kind": "FILL"
       },
@@ -107,7 +107,7 @@
         "snapshot": {
           "revision": 4,
           "state": "EDITABLE",
-          "snapshot_id": "15c4da97-86e6-48f2-bc10-63c850d0e2ba",
+          "snapshot_id": "cb7791db-6afa-41f4-8113-9e4d664162b7",
           "pixels_sha256": "bd073ac098251fb02d4a166ca628a9c20dbbfd7796ea0ab5e8df8ce49c90266e"
         }
       },
@@ -172,7 +172,7 @@
         "status": 200,
         "revision": 9,
         "kind": "UNDO",
-        "target_action_id": "133a184c-5a1f-4b73-a93d-589e5999fdf9"
+        "target_action_id": "70bc8333-aed8-4809-8487-c123174b0140"
       },
       "restored_exact_grid": true,
       "revision_advanced": true,
@@ -193,7 +193,7 @@
     },
     "uncertain_outcome_recovery": {
       "lost_request": {
-        "key": "28565eef-69e5-44c5-be4f-62f3bdb27412",
+        "key": "8d494bf5-7b48-41c2-b52c-ed99155af075",
         "body": {
           "expected_revision": 12,
           "x": 124,
@@ -210,7 +210,7 @@
       "own_result": {
         "http": 200,
         "revision": 13,
-        "operation_id": "15039352-e206-4c17-95eb-8e160bee61bb"
+        "operation_id": "80caf579-5390-48f2-ad39-edc9c0d0e3bb"
       },
       "authoritative_snapshot_revision": 13,
       "same_key_replay": {
@@ -227,11 +227,40 @@
         "note": "no new child log bytes"
       }
     },
+    "restore_advertised_snapshot": {
+      "pencil": {
+        "status": 200,
+        "revision": 14
+      },
+      "admin_read": {
+        "http": 200,
+        "revision": 14,
+        "snapshot_id": "a45b1333-baeb-4e33-9322-01be3d7d221b"
+      },
+      "pause": {
+        "http": 200,
+        "state": "PAUSED",
+        "revision": 15
+      },
+      "restore": {
+        "http": 200,
+        "state": "PAUSED",
+        "revision": 16,
+        "reason": null,
+        "target_snapshot_id": "a45b1333-baeb-4e33-9322-01be3d7d221b"
+      },
+      "expected_pixels_sha256": "c24c5eeed04d290afcfc407cf326f64539a7ec059987d4009b04726ceef7dfac",
+      "restored_pixels_sha256": "c24c5eeed04d290afcfc407cf326f64539a7ec059987d4009b04726ceef7dfac",
+      "restored_exact_grid": true,
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
     "moderation_pause_resume_lock_restore_freeze": {
       "operator_state": {
         "http": 200,
         "state": "EDITABLE",
-        "revision": 13
+        "revision": 17
       },
       "member_admin_read": {
         "http": 403,
@@ -244,7 +273,7 @@
       "pause": {
         "http": 200,
         "state": "PAUSED",
-        "revision": 14
+        "revision": 18
       },
       "write_while_paused": {
         "http": 409,
@@ -256,7 +285,7 @@
       },
       "write_after_resume": {
         "http": 200,
-        "revision": 16
+        "revision": 20
       },
       "lock": {
         "http": 200,
@@ -280,9 +309,9 @@
       "restore": {
         "http": 200,
         "state": "PAUSED",
-        "revision": 20,
-        "snapshot_id": "62ee2a71-ee51-41ec-85b9-a7d79e7ed3a1",
-        "target_snapshot_id": "3a471884-edd9-4e3e-80fb-15fd7380112a",
+        "revision": 24,
+        "snapshot_id": "edab857d-013b-47e5-946a-8142408075e1",
+        "target_snapshot_id": "88f0591c-614d-4c7e-bb48-d6ffe5e8094e",
         "restored_exact_grid": true
       },
       "resume_after_restore": {
@@ -292,7 +321,7 @@
       "freeze": {
         "http": 200,
         "state": "FROZEN",
-        "revision": 22
+        "revision": 26
       },
       "write_while_frozen": {
         "http": 409,
@@ -314,8 +343,8 @@
           "frames": [
             {
               "type": "snapshot",
-              "streamId": "f7e161f4-c319-42c5-81a1-b32aaa1824a7",
-              "roomEpoch": "f10e4cbb-5091-4a28-be3f-f099b18e930a"
+              "streamId": "63ec0cab-f7da-45c3-83cc-d666c5b1d02f",
+              "roomEpoch": "5e0f3a47-282c-4702-b35b-150f8a652768"
             }
           ],
           "counters": {
@@ -333,8 +362,8 @@
           "frames": [
             {
               "type": "snapshot",
-              "streamId": "a0c33822-8379-4071-8890-46d06a291e9c",
-              "roomEpoch": "f10e4cbb-5091-4a28-be3f-f099b18e930a"
+              "streamId": "5e4b437e-7b17-4f94-b2aa-551c81f62d18",
+              "roomEpoch": "5e0f3a47-282c-4702-b35b-150f8a652768"
             }
           ],
           "counters": {
@@ -364,14 +393,14 @@
       "snapshot_forbidden_keys": [],
       "delta_forbidden_keys": [],
       "alice": {
-        "revision": 22,
+        "revision": 26,
         "state": "FROZEN",
-        "pixels_sha256": "f8afbf43ff8775315c5fbb8bf9834994ebe2b7a8f92d399361ba97335a903e2e"
+        "pixels_sha256": "a37b94f03495a83b993271c416a2bd1017be8fb5a126dd93059216e1ea912129"
       },
       "bob": {
-        "revision": 22,
+        "revision": 26,
         "state": "FROZEN",
-        "pixels_sha256": "f8afbf43ff8775315c5fbb8bf9834994ebe2b7a8f92d399361ba97335a903e2e"
+        "pixels_sha256": "a37b94f03495a83b993271c416a2bd1017be8fb5a126dd93059216e1ea912129"
       },
       "converged": true,
       "delta_reset_after_moderation": true,
@@ -412,6 +441,7 @@
     "lock_blocks_write": true,
     "lock_reason": true,
     "restore_exact": true,
+    "restore_advertised_snapshot": true,
     "freeze_blocks_write": true,
     "freeze_reason": true,
     "frozen_terminal": true,
@@ -448,42 +478,42 @@
     ]
   },
   "stack": {
-    "gateway_url": "http://127.0.0.1:60160",
+    "gateway_url": "http://127.0.0.1:56173",
     "services": {
       "profile-service": {
-        "http": "http://127.0.0.1:60140",
-        "grpc": "http://127.0.0.1:60141",
-        "metrics": "http://127.0.0.1:60142"
+        "http": "http://127.0.0.1:56154",
+        "grpc": "http://127.0.0.1:56155",
+        "metrics": "http://127.0.0.1:56156"
       },
       "notification-service": {
-        "http": "http://127.0.0.1:60143",
-        "grpc": "http://127.0.0.1:60144",
-        "metrics": "http://127.0.0.1:60145"
+        "http": "http://127.0.0.1:56157",
+        "grpc": "http://127.0.0.1:56158",
+        "metrics": "http://127.0.0.1:56159"
       },
       "concert-service": {
-        "http": "http://127.0.0.1:60146",
-        "grpc": "http://127.0.0.1:60147",
-        "metrics": "http://127.0.0.1:60148"
+        "http": "http://127.0.0.1:56160",
+        "grpc": "http://127.0.0.1:56161",
+        "metrics": "http://127.0.0.1:56162"
       },
       "friend-service": {
-        "http": "http://127.0.0.1:60150",
-        "grpc": "http://127.0.0.1:60151",
-        "metrics": "http://127.0.0.1:60152"
+        "http": "http://127.0.0.1:56164",
+        "grpc": "http://127.0.0.1:56165",
+        "metrics": "http://127.0.0.1:56166"
       },
       "post-service": {
-        "http": "http://127.0.0.1:60153",
-        "grpc": "http://127.0.0.1:60154",
-        "metrics": "http://127.0.0.1:60155"
+        "http": "http://127.0.0.1:56167",
+        "grpc": "http://127.0.0.1:56168",
+        "metrics": "http://127.0.0.1:56169"
       },
       "auth-service": {
-        "http": "http://127.0.0.1:60156",
-        "grpc": "http://127.0.0.1:60157",
-        "metrics": "http://127.0.0.1:60159"
+        "http": "http://127.0.0.1:56170",
+        "grpc": "http://127.0.0.1:56171",
+        "metrics": "http://127.0.0.1:56172"
       },
       "api-gateway": {
-        "http": "http://127.0.0.1:60160",
-        "grpc": "http://127.0.0.1:60161",
-        "metrics": "http://127.0.0.1:60162"
+        "http": "http://127.0.0.1:56173",
+        "grpc": "http://127.0.0.1:56174",
+        "metrics": "http://127.0.0.1:56175"
       }
     },
     "event": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
@@ -642,7 +672,7 @@
         }
       }
     },
-    "owned_root": "/private/tmp/mcr-pg-tpwh4iy7",
+    "owned_root": "/private/tmp/mcr-pg-apr2m4k6",
     "mail": "private local HTTP capture"
   },
   "principal_attempts": {
@@ -653,18 +683,18 @@
   "provisioning": {
     "mode": "direct owned-PG insert of the qualified six-file pack bytes",
     "pack_manifest_sha256": "3f1aa318f0e4b7d8fa7f079b1101f7386619291a8dbb3bb04ef70820952f34ce",
-    "seed_snapshot_id": "22368cf5-c71e-4a0e-8bbb-1303ef49cee3",
+    "seed_snapshot_id": "15ebd457-fdea-42ba-8dbb-2a0e4782a612",
     "mural_seed_producer": "NOT_RUN: mural_seed::provision has no CLI/HTTP entry; the actual pack pixels/palette are inserted into the owned disposable cluster",
     "operator_role": "OPERATOR|1|"
   },
   "db": {
-    "state": "{\"state\": \"FROZEN\", \"revision\": 22, \"snapshot_id\": \"5c44f0a5-90f1-477c-99ed-aa45f3281147\", \"pixels_sha256\": \"f8afbf43ff8775315c5fbb8bf9834994ebe2b7a8f92d399361ba97335a903e2e\", \"reset_revision\": 22}",
-    "revisions": "[{\"state\": \"EDITABLE\", \"revision\": 1, \"snapshot_id\": \"22368cf5-c71e-4a0e-8bbb-1303ef49cee3\", \"pixels_sha256\": \"f29eaf4ea632e2a34b6dd4fdfdc6f8a3d07ab780af96e19c2a64c28faf42c721\"}, {\"state\": \"EDITABLE\", \"revision\": 2, \"snapshot_id\": \"78a49847-2a92-4ea5-bbbd-db705cb4050b\", \"pixels_sha256\": \"502b8737abbbc934104ae878f40835e444f3864837b90c4ec3b4d6e9445eadf4\"}, {\"state\": \"EDITABLE\", \"revision\": 3, \"snapshot_id\": \"fd84a5fd-8b47-4411-abae-8bf15b723dc6\", \"pixels_sha256\": \"f93cf959073ae310b1f183c3c5012a446a142e4a0be094c38197ff76fd922019\"}, {\"state\": \"EDITABLE\", \"revision\": 4, \"snapshot_id\": \"15c4da97-86e6-48f2-bc10-63c850d0e2ba\", \"pixels_sha256\": \"bd073ac098251fb02d4a166ca628a9c20dbbfd7796ea0ab5e8df8ce49c90266e\"}, {\"state\": \"EDITABLE\", \"revision\": 5, \"snapshot_id\": \"430f3bc9-137d-443e-a2d5-0843690d850d\", \"pixels_sha256\": \"8da956353655d02060f31c67913d69c887de253faec1625db2b58b9214757fa4\"}, {\"state\": \"EDITABLE\", \"revision\": 7, \"snapshot_id\": \"439320f9-def6-4c08-824f-925c934b415f\", \"pixels_sha256\": \"de4e3828b992e55d60e8d7a676b4b892d749a01fe1a0f0f0ea05496be99cadfd\"}, {\"state\": \"EDITABLE\", \"revision\": 9, \"snapshot_id\": \"3fca9d66-2dc7-477f-abc9-d78578808c7f\", \"pixels_sha256\": \"de4e3828b992e55d60e8d7a676b4b892d749a01fe1a0f0f0ea05496be99cadfd\"}, {\"state\": \"EDITABLE\", \"revision\": 10, \"snapshot_id\": \"2b13c2be-24db-44ba-8bfb-ff38a928a625\", \"pixels_sha256\": \"0e11af8af5c79ba8009a9ef1f1cf1aee78c17be7d85b02eb0be0d14a1839affc\"}, {\"state\": \"EDITABLE\", \"revision\": 11, \"snapshot_id\": \"10556681-cc2b-41e6-9afb-17d897f44c7f\", \"pixels_sha256\": \"0ae26b5398f335635f24dc9e8fd5d1b4681262314cd527ab6360c63acc71de82\"}, {\"state\": \"EDITABLE\", \"revision\": 12, \"snapshot_id\": \"fc8030da-4cb5-4e3a-b6d0-9aea5cac8303\", \"pixels_sha256\": \"2ed5a3f2ad1986243a92b8d91b3aacea54be57f20a3d493c4e00ecc787503ab6\"}, {\"state\": \"EDITABLE\", \"revision\": 13, \"snapshot_id\": \"db36f1b8-f17e-4da8-97f0-51038520742f\", \"pixels_sha256\": \"d2bdb0ba72b5987b92fab246c448854b88f115f82fbd1d1ef202af2b77f3cb0e\"}, {\"state\": \"PAUSED\", \"revision\": 14, \"snapshot_id\": \"cd5e171c-00fa-4970-9cf5-19cc58356153\", \"pixels_sha256\": \"d2bdb0ba72b5987b92fab246c448854b88f115f82fbd1d1ef202af2b77f3cb0e\"}, {\"state\": \"EDITABLE\", \"revision\": 15, \"snapshot_id\": \"f47dd8c0-319f-4330-b659-9ea1eee30cb2\", \"pixels_sha256\": \"d2bdb0ba72b5987b92fab246c448854b88f115f82fbd1d1ef202af2b77f3cb0e\"}, {\"state\": \"EDITABLE\", \"revision\": 17, \"snapshot_id\": \"1f7feff0-3b69-4ced-b62f-cb99998a25a3\", \"pixels_sha256\": \"f8afbf43ff8775315c5fbb8bf9834994ebe2b7a8f92d399361ba97335a903e2e\"}, {\"state\": \"EDITABLE\", \"revision\": 18, \"snapshot_id\": \"3a471884-edd9-4e3e-80fb-15fd7380112a\", \"pixels_sha256\": \"f8afbf43ff8775315c5fbb8bf9834994ebe2b7a8f92d399361ba97335a903e2e\"}, {\"state\": \"PAUSED\", \"revision\": 19, \"snapshot_id\": \"27d2b67e-078e-4359-b1a4-cb93b69a8d7b\", \"pixels_sha256\": \"f8afbf43ff8775315c5fbb8bf9834994ebe2b7a8f92d399361ba97335a903e2e\"}, {\"state\": \"PAUSED\", \"revision\": 20, \"snapshot_id\": \"62ee2a71-ee51-41ec-85b9-a7d79e7ed3a1\", \"pixels_sha256\": \"f8afbf43ff8775315c5fbb8bf9834994ebe2b7a8f92d399361ba97335a903e2e\"}, {\"state\": \"EDITABLE\", \"revision\": 21, \"snapshot_id\": \"f10d5586-feb6-494e-8127-b6bb6835f7b2\", \"pixels_sha256\": \"f8afbf43ff8775315c5fbb8bf9834994ebe2b7a8f92d399361ba97335a903e2e\"}, {\"state\": \"FROZEN\", \"revision\": 22, \"snapshot_id\": \"5c44f0a5-90f1-477c-99ed-aa45f3281147\", \"pixels_sha256\": \"f8afbf43ff8775315c5fbb8bf9834994ebe2b7a8f92d399361ba97335a903e2e\"}]",
-    "tool_actions": "[{\"kind\": \"PENCIL\", \"undoes\": null, \"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"revision\": 2, \"changed_cells\": 1, \"undo_expires_at\": \"2026-11-06T20:02:14.999671+09:00\"}, {\"kind\": \"ERASE\", \"undoes\": null, \"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"revision\": 3, \"changed_cells\": 1, \"undo_expires_at\": \"2026-11-06T20:02:15.847508+09:00\"}, {\"kind\": \"FILL\", \"undoes\": null, \"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"revision\": 4, \"changed_cells\": 244, \"undo_expires_at\": \"2026-11-06T20:02:17.297814+09:00\"}, {\"kind\": \"PENCIL\", \"undoes\": null, \"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"revision\": 5, \"changed_cells\": 1, \"undo_expires_at\": \"2026-11-06T20:02:18.060604+09:00\"}, {\"kind\": \"FILL\", \"undoes\": null, \"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"revision\": 6, \"changed_cells\": 244, \"undo_expires_at\": \"2026-11-06T20:02:19.768666+09:00\"}, {\"kind\": \"PENCIL\", \"undoes\": null, \"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"revision\": 7, \"changed_cells\": 1, \"undo_expires_at\": \"2026-11-06T20:02:20.09438+09:00\"}, {\"kind\": \"ERASE\", \"undoes\": null, \"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"revision\": 8, \"changed_cells\": 1, \"undo_expires_at\": \"2026-11-06T20:02:22.112389+09:00\"}, {\"kind\": \"UNDO\", \"undoes\": \"133a184c-5a1f-4b73-a93d-589e5999fdf9\", \"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"revision\": 9, \"changed_cells\": 1, \"undo_expires_at\": \"2026-11-06T20:02:23.54355+09:00\"}, {\"kind\": \"FILL\", \"undoes\": null, \"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"revision\": 10, \"changed_cells\": 244, \"undo_expires_at\": \"2026-11-06T20:02:24.26638+09:00\"}, {\"kind\": \"FILL\", \"undoes\": null, \"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"revision\": 11, \"changed_cells\": 244, \"undo_expires_at\": \"2026-11-06T20:02:25.714057+09:00\"}, {\"kind\": \"PENCIL\", \"undoes\": null, \"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"revision\": 12, \"changed_cells\": 1, \"undo_expires_at\": \"2026-11-06T20:02:27.34801+09:00\"}, {\"kind\": \"PENCIL\", \"undoes\": null, \"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"revision\": 13, \"changed_cells\": 1, \"undo_expires_at\": \"2026-11-06T20:02:29.702193+09:00\"}, {\"kind\": \"PENCIL\", \"undoes\": null, \"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"revision\": 16, \"changed_cells\": 1, \"undo_expires_at\": \"2026-11-06T20:02:32.478606+09:00\"}]",
-    "charges": "[{\"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"revision\": 2, \"committed_at\": \"2026-11-06T19:52:14.999671+09:00\", \"changed_cells\": 1}, {\"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"revision\": 3, \"committed_at\": \"2026-11-06T19:52:15.847508+09:00\", \"changed_cells\": 1}, {\"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"revision\": 4, \"committed_at\": \"2026-11-06T19:52:17.297814+09:00\", \"changed_cells\": 244}, {\"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"revision\": 5, \"committed_at\": \"2026-11-06T19:52:18.060604+09:00\", \"changed_cells\": 1}, {\"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"revision\": 6, \"committed_at\": \"2026-11-06T19:52:19.768666+09:00\", \"changed_cells\": 244}, {\"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"revision\": 7, \"committed_at\": \"2026-11-06T19:52:20.09438+09:00\", \"changed_cells\": 1}, {\"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"revision\": 8, \"committed_at\": \"2026-11-06T19:52:22.112389+09:00\", \"changed_cells\": 1}, {\"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"revision\": 9, \"committed_at\": \"2026-11-06T19:52:23.54355+09:00\", \"changed_cells\": 1}, {\"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"revision\": 10, \"committed_at\": \"2026-11-06T19:52:24.26638+09:00\", \"changed_cells\": 244}, {\"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"revision\": 11, \"committed_at\": \"2026-11-06T19:52:25.714057+09:00\", \"changed_cells\": 244}, {\"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"revision\": 12, \"committed_at\": \"2026-11-06T19:52:27.34801+09:00\", \"changed_cells\": 1}, {\"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"revision\": 13, \"committed_at\": \"2026-11-06T19:52:29.702193+09:00\", \"changed_cells\": 1}, {\"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"revision\": 16, \"committed_at\": \"2026-11-06T19:52:32.478606+09:00\", \"changed_cells\": 1}]",
-    "correlations": "20",
-    "receipts": "[{\"state\": \"SUCCEEDED\", \"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"operation_id\": \"placeConcertPixel\", \"failure_reason\": null, \"resource_revision\": 2}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"operation_id\": \"eraseConcertMuralPixel\", \"failure_reason\": null, \"resource_revision\": 3}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"operation_id\": \"fillConcertMuralRegion\", \"failure_reason\": null, \"resource_revision\": 4}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"operation_id\": \"placeConcertPixel\", \"failure_reason\": null, \"resource_revision\": 5}, {\"state\": \"FAILED\", \"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"operation_id\": \"placeConcertPixel\", \"failure_reason\": \"MURAL_COOLDOWN\", \"resource_revision\": null}, {\"state\": \"FAILED\", \"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"operation_id\": \"fillConcertMuralRegion\", \"failure_reason\": \"MURAL_FILL_TOO_LARGE\", \"resource_revision\": null}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"operation_id\": \"fillConcertMuralRegion\", \"failure_reason\": null, \"resource_revision\": 6}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"operation_id\": \"placeConcertPixel\", \"failure_reason\": null, \"resource_revision\": 7}, {\"state\": \"FAILED\", \"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"operation_id\": \"undoConcertMuralAction\", \"failure_reason\": \"MURAL_UNDO_NOT_LATEST\", \"resource_revision\": null}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"operation_id\": \"eraseConcertMuralPixel\", \"failure_reason\": null, \"resource_revision\": 8}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"operation_id\": \"undoConcertMuralAction\", \"failure_reason\": null, \"resource_revision\": 9}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"operation_id\": \"fillConcertMuralRegion\", \"failure_reason\": null, \"resource_revision\": 10}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"operation_id\": \"fillConcertMuralRegion\", \"failure_reason\": null, \"resource_revision\": 11}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"operation_id\": \"placeConcertPixel\", \"failure_reason\": null, \"resource_revision\": 12}, {\"state\": \"FAILED\", \"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"operation_id\": \"fillConcertMuralRegion\", \"failure_reason\": \"MURAL_BUDGET_EXCEEDED\", \"resource_revision\": null}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"operation_id\": \"placeConcertPixel\", \"failure_reason\": null, \"resource_revision\": 13}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"06c6f14c-fce3-4b0f-884f-53f810504a1f\", \"operation_id\": \"controlConcertMural\", \"failure_reason\": null, \"resource_revision\": 14}, {\"state\": \"FAILED\", \"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"operation_id\": \"placeConcertPixel\", \"failure_reason\": \"MURAL_PAUSED\", \"resource_revision\": null}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"06c6f14c-fce3-4b0f-884f-53f810504a1f\", \"operation_id\": \"controlConcertMural\", \"failure_reason\": null, \"resource_revision\": 15}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"operation_id\": \"placeConcertPixel\", \"failure_reason\": null, \"resource_revision\": 16}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"06c6f14c-fce3-4b0f-884f-53f810504a1f\", \"operation_id\": \"lockConcertMuralRegion\", \"failure_reason\": null, \"resource_revision\": 17}, {\"state\": \"FAILED\", \"actor_id\": \"28ffedb6-e1ed-43db-8162-c79bd2be2c59\", \"operation_id\": \"placeConcertPixel\", \"failure_reason\": \"MURAL_REGION_LOCKED\", \"resource_revision\": null}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"06c6f14c-fce3-4b0f-884f-53f810504a1f\", \"operation_id\": \"lockConcertMuralRegion\", \"failure_reason\": null, \"resource_revision\": 18}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"06c6f14c-fce3-4b0f-884f-53f810504a1f\", \"operation_id\": \"controlConcertMural\", \"failure_reason\": null, \"resource_revision\": 19}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"06c6f14c-fce3-4b0f-884f-53f810504a1f\", \"operation_id\": \"restoreConcertMural\", \"failure_reason\": null, \"resource_revision\": 20}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"06c6f14c-fce3-4b0f-884f-53f810504a1f\", \"operation_id\": \"controlConcertMural\", \"failure_reason\": null, \"resource_revision\": 21}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"06c6f14c-fce3-4b0f-884f-53f810504a1f\", \"operation_id\": \"controlConcertMural\", \"failure_reason\": null, \"resource_revision\": 22}, {\"state\": \"FAILED\", \"actor_id\": \"8bf68150-5d84-4480-bf36-49f054b68e08\", \"operation_id\": \"placeConcertPixel\", \"failure_reason\": \"MURAL_FROZEN\", \"resource_revision\": null}, {\"state\": \"FAILED\", \"actor_id\": \"06c6f14c-fce3-4b0f-884f-53f810504a1f\", \"operation_id\": \"controlConcertMural\", \"failure_reason\": \"INVALID_TRANSITION\", \"resource_revision\": null}]",
-    "outbox": "[{\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 2}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 3}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 4}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 5}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 6}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 7}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 8}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 9}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 10}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 11}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 12}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 13}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 14}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 15}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 16}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 17}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 18}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 19}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 20}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 21}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 22}]",
+    "state": "{\"state\": \"FROZEN\", \"revision\": 26, \"snapshot_id\": \"7d79b82e-6dd2-4ade-b42d-f5ee0e0a33c7\", \"pixels_sha256\": \"a37b94f03495a83b993271c416a2bd1017be8fb5a126dd93059216e1ea912129\", \"reset_revision\": 26}",
+    "revisions": "[{\"state\": \"EDITABLE\", \"revision\": 1, \"snapshot_id\": \"15ebd457-fdea-42ba-8dbb-2a0e4782a612\", \"pixels_sha256\": \"f29eaf4ea632e2a34b6dd4fdfdc6f8a3d07ab780af96e19c2a64c28faf42c721\"}, {\"state\": \"EDITABLE\", \"revision\": 2, \"snapshot_id\": \"53a2a37c-ab91-4e66-9b2d-eec2c0b81ba9\", \"pixels_sha256\": \"502b8737abbbc934104ae878f40835e444f3864837b90c4ec3b4d6e9445eadf4\"}, {\"state\": \"EDITABLE\", \"revision\": 3, \"snapshot_id\": \"4e15b249-d084-44c0-a513-94be190c9209\", \"pixels_sha256\": \"f93cf959073ae310b1f183c3c5012a446a142e4a0be094c38197ff76fd922019\"}, {\"state\": \"EDITABLE\", \"revision\": 4, \"snapshot_id\": \"cb7791db-6afa-41f4-8113-9e4d664162b7\", \"pixels_sha256\": \"bd073ac098251fb02d4a166ca628a9c20dbbfd7796ea0ab5e8df8ce49c90266e\"}, {\"state\": \"EDITABLE\", \"revision\": 5, \"snapshot_id\": \"5396dcc9-790d-47af-a3d9-0f408fc23da7\", \"pixels_sha256\": \"8da956353655d02060f31c67913d69c887de253faec1625db2b58b9214757fa4\"}, {\"state\": \"EDITABLE\", \"revision\": 7, \"snapshot_id\": \"082fb1c0-d543-4119-8e0f-92c17db9ff57\", \"pixels_sha256\": \"de4e3828b992e55d60e8d7a676b4b892d749a01fe1a0f0f0ea05496be99cadfd\"}, {\"state\": \"EDITABLE\", \"revision\": 9, \"snapshot_id\": \"863cc932-fe37-4183-819a-de7ff61e400e\", \"pixels_sha256\": \"de4e3828b992e55d60e8d7a676b4b892d749a01fe1a0f0f0ea05496be99cadfd\"}, {\"state\": \"EDITABLE\", \"revision\": 10, \"snapshot_id\": \"19149c13-5bef-45f3-81cf-fd904c9c5d6a\", \"pixels_sha256\": \"0e11af8af5c79ba8009a9ef1f1cf1aee78c17be7d85b02eb0be0d14a1839affc\"}, {\"state\": \"EDITABLE\", \"revision\": 11, \"snapshot_id\": \"d87d3274-c0a1-48e1-9e4c-63d8e7cfe69e\", \"pixels_sha256\": \"0ae26b5398f335635f24dc9e8fd5d1b4681262314cd527ab6360c63acc71de82\"}, {\"state\": \"EDITABLE\", \"revision\": 12, \"snapshot_id\": \"0017c2f7-f29a-494c-b1bf-686026413f88\", \"pixels_sha256\": \"2ed5a3f2ad1986243a92b8d91b3aacea54be57f20a3d493c4e00ecc787503ab6\"}, {\"state\": \"EDITABLE\", \"revision\": 13, \"snapshot_id\": \"b1759c2d-f765-4b2c-8f68-111921e5936f\", \"pixels_sha256\": \"d2bdb0ba72b5987b92fab246c448854b88f115f82fbd1d1ef202af2b77f3cb0e\"}, {\"state\": \"EDITABLE\", \"revision\": 14, \"snapshot_id\": \"a45b1333-baeb-4e33-9322-01be3d7d221b\", \"pixels_sha256\": \"c24c5eeed04d290afcfc407cf326f64539a7ec059987d4009b04726ceef7dfac\"}, {\"state\": \"PAUSED\", \"revision\": 15, \"snapshot_id\": \"ecdfef85-06f5-4aff-8975-9f4185f234ea\", \"pixels_sha256\": \"c24c5eeed04d290afcfc407cf326f64539a7ec059987d4009b04726ceef7dfac\"}, {\"state\": \"PAUSED\", \"revision\": 16, \"snapshot_id\": \"770253cc-6f3a-4971-ad0c-b987d59381d8\", \"pixels_sha256\": \"c24c5eeed04d290afcfc407cf326f64539a7ec059987d4009b04726ceef7dfac\"}, {\"state\": \"EDITABLE\", \"revision\": 17, \"snapshot_id\": \"96fc169c-c943-4e25-bf11-1f176bb148fd\", \"pixels_sha256\": \"c24c5eeed04d290afcfc407cf326f64539a7ec059987d4009b04726ceef7dfac\"}, {\"state\": \"PAUSED\", \"revision\": 18, \"snapshot_id\": \"e9457265-9696-4907-8aa9-f3a3d902103f\", \"pixels_sha256\": \"c24c5eeed04d290afcfc407cf326f64539a7ec059987d4009b04726ceef7dfac\"}, {\"state\": \"EDITABLE\", \"revision\": 19, \"snapshot_id\": \"79fe563c-d92d-46c1-99e5-f7e408502c12\", \"pixels_sha256\": \"c24c5eeed04d290afcfc407cf326f64539a7ec059987d4009b04726ceef7dfac\"}, {\"state\": \"EDITABLE\", \"revision\": 21, \"snapshot_id\": \"2ddba6fd-8fa8-4192-84f8-efd9e22be61d\", \"pixels_sha256\": \"a37b94f03495a83b993271c416a2bd1017be8fb5a126dd93059216e1ea912129\"}, {\"state\": \"EDITABLE\", \"revision\": 22, \"snapshot_id\": \"88f0591c-614d-4c7e-bb48-d6ffe5e8094e\", \"pixels_sha256\": \"a37b94f03495a83b993271c416a2bd1017be8fb5a126dd93059216e1ea912129\"}, {\"state\": \"PAUSED\", \"revision\": 23, \"snapshot_id\": \"25b41fd6-b7d7-4605-83f9-f8dd38990610\", \"pixels_sha256\": \"a37b94f03495a83b993271c416a2bd1017be8fb5a126dd93059216e1ea912129\"}, {\"state\": \"PAUSED\", \"revision\": 24, \"snapshot_id\": \"edab857d-013b-47e5-946a-8142408075e1\", \"pixels_sha256\": \"a37b94f03495a83b993271c416a2bd1017be8fb5a126dd93059216e1ea912129\"}, {\"state\": \"EDITABLE\", \"revision\": 25, \"snapshot_id\": \"d8c2c01f-d6ab-40fc-8bf7-ac9a7c901261\", \"pixels_sha256\": \"a37b94f03495a83b993271c416a2bd1017be8fb5a126dd93059216e1ea912129\"}, {\"state\": \"FROZEN\", \"revision\": 26, \"snapshot_id\": \"7d79b82e-6dd2-4ade-b42d-f5ee0e0a33c7\", \"pixels_sha256\": \"a37b94f03495a83b993271c416a2bd1017be8fb5a126dd93059216e1ea912129\"}]",
+    "tool_actions": "[{\"kind\": \"PENCIL\", \"undoes\": null, \"actor_id\": \"d8cde18e-34ef-44fb-9251-b8d1333f34d7\", \"revision\": 2, \"changed_cells\": 1, \"undo_expires_at\": \"2026-11-06T20:25:10.251888+09:00\"}, {\"kind\": \"ERASE\", \"undoes\": null, \"actor_id\": \"ffdd1643-a517-445b-8f6d-0f969454d18c\", \"revision\": 3, \"changed_cells\": 1, \"undo_expires_at\": \"2026-11-06T20:25:11.02466+09:00\"}, {\"kind\": \"FILL\", \"undoes\": null, \"actor_id\": \"ffdd1643-a517-445b-8f6d-0f969454d18c\", \"revision\": 4, \"changed_cells\": 244, \"undo_expires_at\": \"2026-11-06T20:25:12.518226+09:00\"}, {\"kind\": \"PENCIL\", \"undoes\": null, \"actor_id\": \"d8cde18e-34ef-44fb-9251-b8d1333f34d7\", \"revision\": 5, \"changed_cells\": 1, \"undo_expires_at\": \"2026-11-06T20:25:13.225058+09:00\"}, {\"kind\": \"FILL\", \"undoes\": null, \"actor_id\": \"ffdd1643-a517-445b-8f6d-0f969454d18c\", \"revision\": 6, \"changed_cells\": 244, \"undo_expires_at\": \"2026-11-06T20:25:14.814231+09:00\"}, {\"kind\": \"PENCIL\", \"undoes\": null, \"actor_id\": \"d8cde18e-34ef-44fb-9251-b8d1333f34d7\", \"revision\": 7, \"changed_cells\": 1, \"undo_expires_at\": \"2026-11-06T20:25:15.162252+09:00\"}, {\"kind\": \"ERASE\", \"undoes\": null, \"actor_id\": \"ffdd1643-a517-445b-8f6d-0f969454d18c\", \"revision\": 8, \"changed_cells\": 1, \"undo_expires_at\": \"2026-11-06T20:25:17.144525+09:00\"}, {\"kind\": \"UNDO\", \"undoes\": \"70bc8333-aed8-4809-8487-c123174b0140\", \"actor_id\": \"ffdd1643-a517-445b-8f6d-0f969454d18c\", \"revision\": 9, \"changed_cells\": 1, \"undo_expires_at\": \"2026-11-06T20:25:18.603925+09:00\"}, {\"kind\": \"FILL\", \"undoes\": null, \"actor_id\": \"d8cde18e-34ef-44fb-9251-b8d1333f34d7\", \"revision\": 10, \"changed_cells\": 244, \"undo_expires_at\": \"2026-11-06T20:25:19.26754+09:00\"}, {\"kind\": \"FILL\", \"undoes\": null, \"actor_id\": \"d8cde18e-34ef-44fb-9251-b8d1333f34d7\", \"revision\": 11, \"changed_cells\": 244, \"undo_expires_at\": \"2026-11-06T20:25:20.735765+09:00\"}, {\"kind\": \"PENCIL\", \"undoes\": null, \"actor_id\": \"d8cde18e-34ef-44fb-9251-b8d1333f34d7\", \"revision\": 12, \"changed_cells\": 1, \"undo_expires_at\": \"2026-11-06T20:25:22.395815+09:00\"}, {\"kind\": \"PENCIL\", \"undoes\": null, \"actor_id\": \"ffdd1643-a517-445b-8f6d-0f969454d18c\", \"revision\": 13, \"changed_cells\": 1, \"undo_expires_at\": \"2026-11-06T20:25:24.734932+09:00\"}, {\"kind\": \"PENCIL\", \"undoes\": null, \"actor_id\": \"d8cde18e-34ef-44fb-9251-b8d1333f34d7\", \"revision\": 14, \"changed_cells\": 1, \"undo_expires_at\": \"2026-11-06T20:25:26.529058+09:00\"}, {\"kind\": \"PENCIL\", \"undoes\": null, \"actor_id\": \"ffdd1643-a517-445b-8f6d-0f969454d18c\", \"revision\": 20, \"changed_cells\": 1, \"undo_expires_at\": \"2026-11-06T20:25:29.001605+09:00\"}]",
+    "charges": "[{\"actor_id\": \"d8cde18e-34ef-44fb-9251-b8d1333f34d7\", \"revision\": 2, \"committed_at\": \"2026-11-06T20:15:10.251888+09:00\", \"changed_cells\": 1}, {\"actor_id\": \"ffdd1643-a517-445b-8f6d-0f969454d18c\", \"revision\": 3, \"committed_at\": \"2026-11-06T20:15:11.02466+09:00\", \"changed_cells\": 1}, {\"actor_id\": \"ffdd1643-a517-445b-8f6d-0f969454d18c\", \"revision\": 4, \"committed_at\": \"2026-11-06T20:15:12.518226+09:00\", \"changed_cells\": 244}, {\"actor_id\": \"d8cde18e-34ef-44fb-9251-b8d1333f34d7\", \"revision\": 5, \"committed_at\": \"2026-11-06T20:15:13.225058+09:00\", \"changed_cells\": 1}, {\"actor_id\": \"ffdd1643-a517-445b-8f6d-0f969454d18c\", \"revision\": 6, \"committed_at\": \"2026-11-06T20:15:14.814231+09:00\", \"changed_cells\": 244}, {\"actor_id\": \"d8cde18e-34ef-44fb-9251-b8d1333f34d7\", \"revision\": 7, \"committed_at\": \"2026-11-06T20:15:15.162252+09:00\", \"changed_cells\": 1}, {\"actor_id\": \"ffdd1643-a517-445b-8f6d-0f969454d18c\", \"revision\": 8, \"committed_at\": \"2026-11-06T20:15:17.144525+09:00\", \"changed_cells\": 1}, {\"actor_id\": \"ffdd1643-a517-445b-8f6d-0f969454d18c\", \"revision\": 9, \"committed_at\": \"2026-11-06T20:15:18.603925+09:00\", \"changed_cells\": 1}, {\"actor_id\": \"d8cde18e-34ef-44fb-9251-b8d1333f34d7\", \"revision\": 10, \"committed_at\": \"2026-11-06T20:15:19.26754+09:00\", \"changed_cells\": 244}, {\"actor_id\": \"d8cde18e-34ef-44fb-9251-b8d1333f34d7\", \"revision\": 11, \"committed_at\": \"2026-11-06T20:15:20.735765+09:00\", \"changed_cells\": 244}, {\"actor_id\": \"d8cde18e-34ef-44fb-9251-b8d1333f34d7\", \"revision\": 12, \"committed_at\": \"2026-11-06T20:15:22.395815+09:00\", \"changed_cells\": 1}, {\"actor_id\": \"ffdd1643-a517-445b-8f6d-0f969454d18c\", \"revision\": 13, \"committed_at\": \"2026-11-06T20:15:24.734932+09:00\", \"changed_cells\": 1}, {\"actor_id\": \"d8cde18e-34ef-44fb-9251-b8d1333f34d7\", \"revision\": 14, \"committed_at\": \"2026-11-06T20:15:26.529058+09:00\", \"changed_cells\": 1}, {\"actor_id\": \"ffdd1643-a517-445b-8f6d-0f969454d18c\", \"revision\": 20, \"committed_at\": \"2026-11-06T20:15:29.001605+09:00\", \"changed_cells\": 1}]",
+    "correlations": "21",
+    "receipts": "[{\"state\": \"SUCCEEDED\", \"actor_id\": \"d8cde18e-34ef-44fb-9251-b8d1333f34d7\", \"operation_id\": \"placeConcertPixel\", \"failure_reason\": null, \"resource_revision\": 2}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"ffdd1643-a517-445b-8f6d-0f969454d18c\", \"operation_id\": \"eraseConcertMuralPixel\", \"failure_reason\": null, \"resource_revision\": 3}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"ffdd1643-a517-445b-8f6d-0f969454d18c\", \"operation_id\": \"fillConcertMuralRegion\", \"failure_reason\": null, \"resource_revision\": 4}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"d8cde18e-34ef-44fb-9251-b8d1333f34d7\", \"operation_id\": \"placeConcertPixel\", \"failure_reason\": null, \"resource_revision\": 5}, {\"state\": \"FAILED\", \"actor_id\": \"d8cde18e-34ef-44fb-9251-b8d1333f34d7\", \"operation_id\": \"placeConcertPixel\", \"failure_reason\": \"MURAL_COOLDOWN\", \"resource_revision\": null}, {\"state\": \"FAILED\", \"actor_id\": \"ffdd1643-a517-445b-8f6d-0f969454d18c\", \"operation_id\": \"fillConcertMuralRegion\", \"failure_reason\": \"MURAL_FILL_TOO_LARGE\", \"resource_revision\": null}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"ffdd1643-a517-445b-8f6d-0f969454d18c\", \"operation_id\": \"fillConcertMuralRegion\", \"failure_reason\": null, \"resource_revision\": 6}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"d8cde18e-34ef-44fb-9251-b8d1333f34d7\", \"operation_id\": \"placeConcertPixel\", \"failure_reason\": null, \"resource_revision\": 7}, {\"state\": \"FAILED\", \"actor_id\": \"ffdd1643-a517-445b-8f6d-0f969454d18c\", \"operation_id\": \"undoConcertMuralAction\", \"failure_reason\": \"MURAL_UNDO_NOT_LATEST\", \"resource_revision\": null}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"ffdd1643-a517-445b-8f6d-0f969454d18c\", \"operation_id\": \"eraseConcertMuralPixel\", \"failure_reason\": null, \"resource_revision\": 8}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"ffdd1643-a517-445b-8f6d-0f969454d18c\", \"operation_id\": \"undoConcertMuralAction\", \"failure_reason\": null, \"resource_revision\": 9}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"d8cde18e-34ef-44fb-9251-b8d1333f34d7\", \"operation_id\": \"fillConcertMuralRegion\", \"failure_reason\": null, \"resource_revision\": 10}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"d8cde18e-34ef-44fb-9251-b8d1333f34d7\", \"operation_id\": \"fillConcertMuralRegion\", \"failure_reason\": null, \"resource_revision\": 11}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"d8cde18e-34ef-44fb-9251-b8d1333f34d7\", \"operation_id\": \"placeConcertPixel\", \"failure_reason\": null, \"resource_revision\": 12}, {\"state\": \"FAILED\", \"actor_id\": \"d8cde18e-34ef-44fb-9251-b8d1333f34d7\", \"operation_id\": \"fillConcertMuralRegion\", \"failure_reason\": \"MURAL_BUDGET_EXCEEDED\", \"resource_revision\": null}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"ffdd1643-a517-445b-8f6d-0f969454d18c\", \"operation_id\": \"placeConcertPixel\", \"failure_reason\": null, \"resource_revision\": 13}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"d8cde18e-34ef-44fb-9251-b8d1333f34d7\", \"operation_id\": \"placeConcertPixel\", \"failure_reason\": null, \"resource_revision\": 14}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"ccd67a0e-aa34-4909-a1f5-df2b0ed15957\", \"operation_id\": \"controlConcertMural\", \"failure_reason\": null, \"resource_revision\": 15}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"ccd67a0e-aa34-4909-a1f5-df2b0ed15957\", \"operation_id\": \"restoreConcertMural\", \"failure_reason\": null, \"resource_revision\": 16}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"ccd67a0e-aa34-4909-a1f5-df2b0ed15957\", \"operation_id\": \"controlConcertMural\", \"failure_reason\": null, \"resource_revision\": 17}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"ccd67a0e-aa34-4909-a1f5-df2b0ed15957\", \"operation_id\": \"controlConcertMural\", \"failure_reason\": null, \"resource_revision\": 18}, {\"state\": \"FAILED\", \"actor_id\": \"ffdd1643-a517-445b-8f6d-0f969454d18c\", \"operation_id\": \"placeConcertPixel\", \"failure_reason\": \"MURAL_PAUSED\", \"resource_revision\": null}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"ccd67a0e-aa34-4909-a1f5-df2b0ed15957\", \"operation_id\": \"controlConcertMural\", \"failure_reason\": null, \"resource_revision\": 19}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"ffdd1643-a517-445b-8f6d-0f969454d18c\", \"operation_id\": \"placeConcertPixel\", \"failure_reason\": null, \"resource_revision\": 20}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"ccd67a0e-aa34-4909-a1f5-df2b0ed15957\", \"operation_id\": \"lockConcertMuralRegion\", \"failure_reason\": null, \"resource_revision\": 21}, {\"state\": \"FAILED\", \"actor_id\": \"d8cde18e-34ef-44fb-9251-b8d1333f34d7\", \"operation_id\": \"placeConcertPixel\", \"failure_reason\": \"MURAL_REGION_LOCKED\", \"resource_revision\": null}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"ccd67a0e-aa34-4909-a1f5-df2b0ed15957\", \"operation_id\": \"lockConcertMuralRegion\", \"failure_reason\": null, \"resource_revision\": 22}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"ccd67a0e-aa34-4909-a1f5-df2b0ed15957\", \"operation_id\": \"controlConcertMural\", \"failure_reason\": null, \"resource_revision\": 23}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"ccd67a0e-aa34-4909-a1f5-df2b0ed15957\", \"operation_id\": \"restoreConcertMural\", \"failure_reason\": null, \"resource_revision\": 24}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"ccd67a0e-aa34-4909-a1f5-df2b0ed15957\", \"operation_id\": \"controlConcertMural\", \"failure_reason\": null, \"resource_revision\": 25}, {\"state\": \"SUCCEEDED\", \"actor_id\": \"ccd67a0e-aa34-4909-a1f5-df2b0ed15957\", \"operation_id\": \"controlConcertMural\", \"failure_reason\": null, \"resource_revision\": 26}, {\"state\": \"FAILED\", \"actor_id\": \"ffdd1643-a517-445b-8f6d-0f969454d18c\", \"operation_id\": \"placeConcertPixel\", \"failure_reason\": \"MURAL_FROZEN\", \"resource_revision\": null}, {\"state\": \"FAILED\", \"actor_id\": \"ccd67a0e-aa34-4909-a1f5-df2b0ed15957\", \"operation_id\": \"controlConcertMural\", \"failure_reason\": \"INVALID_TRANSITION\", \"resource_revision\": null}]",
+    "outbox": "[{\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 2}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 3}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 4}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 5}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 6}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 7}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 8}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 9}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 10}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 11}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 12}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 13}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 14}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 15}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 16}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 17}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 18}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 19}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 20}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 21}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 22}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 23}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 24}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 25}, {\"kind\": \"RESOURCE_INVALIDATED\", \"state\": \"READY\", \"resource_revision\": 26}]",
     "locks": "0"
   },
   "result": "PASS",
@@ -939,12 +969,12 @@
     {
       "role": "bob",
       "method": "GET",
-      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/commands?operation_id=placeConcertPixel&idempotency_key=28565eef-69e5-44c5-be4f-62f3bdb27412"
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/commands?operation_id=placeConcertPixel&idempotency_key=8d494bf5-7b48-41c2-b52c-ed99155af075"
     },
     {
       "role": "bob",
       "method": "GET",
-      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/commands/28565eef-69e5-44c5-be4f-62f3bdb27412/result"
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/commands/8d494bf5-7b48-41c2-b52c-ed99155af075/result"
     },
     {
       "role": "bob",
@@ -960,6 +990,46 @@
       "role": "alice",
       "method": "GET",
       "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "bob",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/tools"
+    },
+    {
+      "role": "alice",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/pixels"
+    },
+    {
+      "role": "operator",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/admin/mural"
+    },
+    {
+      "role": "operator",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/admin/mural/control"
+    },
+    {
+      "role": "operator",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/admin/mural/restore"
+    },
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "operator",
+      "method": "POST",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/admin/mural/control"
     },
     {
       "role": "operator",
@@ -1094,12 +1164,12 @@
     {
       "role": "bob",
       "method": "GET",
-      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/actions/770c8b65-63e4-4d3b-a9f5-dbe2c4c8ad20"
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/actions/0d637dd5-e888-427c-a176-a600824311fa"
     },
     {
       "role": "bob",
       "method": "GET",
-      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/commands/770c8b65-63e4-4d3b-a9f5-dbe2c4c8ad20/result"
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/commands/0d637dd5-e888-427c-a176-a600824311fa/result"
     },
     {
       "role": "alice",
