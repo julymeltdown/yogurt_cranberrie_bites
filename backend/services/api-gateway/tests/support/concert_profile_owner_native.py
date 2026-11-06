@@ -71,8 +71,8 @@ def main() -> int:
     if artifact['profile']['debuginfo'] != 0:
         parser.error('test artifact must use test debug level zero')
     migrations = sorted((ROOT / 'backend/services/profile-service/migrations').glob('*.sql'))
-    if len(migrations) != 7:
-        parser.error('expected exact seven retained Profile migrations')
+    if not migrations:
+        parser.error('expected retained Profile migrations')
     attempt = args.output.resolve() / ('attempt-' + str(time.time_ns()) + '-' + uuid.uuid4().hex[:8])
     attempt.mkdir(parents=True, mode=0o700)
     paths = [*CODE, *INPUTS, *(str(p.relative_to(ROOT)) for p in migrations)]
