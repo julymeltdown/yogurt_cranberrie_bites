@@ -86,8 +86,18 @@ impl MuralToolsRuntime {
             ScopedMuralAuthority::new(self.pool.clone(), scope.clone()),
             self.keys.clone(),
         );
+        let admin = super::admin::MuralAdmin::new(self.pool.clone(), self.keys.clone());
         let outcome: Result<Value, ToolError> = async {
-            if op.mutation() {
+            if op.admin() && op.mutation() {
+                if request.content_type != "application/json" {
+                    return Err(MuralError::InvalidInput.into());
+                }
+                let key = crate::product_rpc::canonical_uuid(&request.idempotency_key)
+                    .map_err(|_| ToolError::Mural(MuralError::InvalidInput))?;
+                let body = super::admin::body(op, &request.http_body)
+                    .map_err(|_| ToolError::Mural(MuralError::InvalidInput))?;
+                admin.execute(actor, op, key, body).await
+            } else if op.mutation() {
                 if request.content_type != "application/json" {
                     return Err(MuralError::InvalidInput.into());
                 }
@@ -123,9 +133,18 @@ impl MuralToolsRuntime {
                     WallOperation::Status => {
                         let q = protocol::status_query(actor.event, &request.http_target)
                             .map_err(|_| MuralError::InvalidInput)?;
+                        if matches!(
+                            q.operation.id(),
+                            "controlConcertMural"
+                                | "lockConcertMuralRegion"
+                                | "restoreConcertMural"
+                        ) {
+                            return admin.status(actor, q.operation, q.key).await;
+                        }
                         return tools.command_status(actor, q.operation, q.key).await;
                     }
                     WallOperation::Snapshot => serde_json::to_value(legacy.snapshot(actor).await?),
+                    WallOperation::AdminState => return admin.state(actor).await,
                     WallOperation::Delta => {
                         let after = protocol::delta_after(actor.event, &request.http_target)
                             .map_err(|_| MuralError::InvalidInput)?;
@@ -199,6 +218,8 @@ fn error(error: ToolError, request: Uuid) -> (u32, Value) {
         ToolError::UndoUnavailable => (409, "MURAL_UNDO_UNAVAILABLE"),
         ToolError::Unavailable => (503, "MURAL_TOOL_UNAVAILABLE"),
         ToolError::Unresolved => (409, "MURAL_ACTION_UNRESOLVED"),
+        ToolError::InvalidTransition => (409, "INVALID_TRANSITION"),
+        ToolError::Forbidden => (403, "PERMISSION_DENIED"),
         ToolError::Mural(e) => match e {
             MuralError::InvalidInput => (400, "INVALID_INPUT"),
             MuralError::Denied => (404, "RESOURCE_UNAVAILABLE"),
