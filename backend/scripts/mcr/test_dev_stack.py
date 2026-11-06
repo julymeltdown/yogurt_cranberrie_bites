@@ -176,6 +176,46 @@ class DevTests(unittest.TestCase):
         self.assertEqual(envs["api-gateway"]["GATEWAY_CORS_ALLOWED_ORIGINS"], origin)
         self.assertEqual(envs["auth-service"]["AUTH_PASSWORD_RESET_MAILER_ENDPOINT"], self.ports.url("mail") + "/reset")
 
+    def readyz(self, checks, *, ready=True, degraded=False, draining=False, status=None):
+        body = {"ready": ready, "degraded": degraded, "draining": draining,
+                "checks": {name: {"required": required, "status": state} for name, (required, state) in checks.items()}}
+        return (status if status is not None else (200 if ready else 503), json.dumps(body).encode())
+
+    def owner_authority_checks(self):
+        return {
+            "friend-service": {"database": (True, "up"), "friend->profile": (True, "up"),
+                               "concert-owner-authority": (True, "up")},
+            "auth-service": {"database": (True, "up"), "auth->profile": (False, "up"),
+                             "auth->friend": (False, "up"), "auth->post": (False, "up"),
+                             "auth->notification": (False, "up"),
+                             "concert-owner-authority": (True, "up")}}
+
+    def test_readiness_requires_the_owner_authority_check_for_auth_and_friend(self):
+        for service, checks in self.owner_authority_checks().items():
+            with self.subTest(service=service, schema="current"):
+                value = runtime.readiness_value(*self.readyz(checks), service)
+                self.assertTrue(value["ready"])
+                self.assertEqual(value["checks"]["concert-owner-authority"], {"required": True, "status": "up"})
+            with self.subTest(service=service, schema="retained-without-owner-authority"):
+                retained = {name: entry for name, entry in checks.items() if name != "concert-owner-authority"}
+                with self.assertRaises(runtime.SmokeError):
+                    runtime.readiness_value(*self.readyz(retained), service)
+
+    def test_readiness_reports_ready_only_with_a_green_required_owner_authority_check(self):
+        checks = dict(self.owner_authority_checks()["friend-service"])
+        checks["concert-owner-authority"] = (True, "down")
+        with self.assertRaises(runtime.SmokeError):
+            runtime.readiness_value(*self.readyz(checks), "friend-service")
+        optional = dict(self.owner_authority_checks()["friend-service"])
+        optional["concert-owner-authority"] = (False, "up")
+        with self.assertRaises(runtime.SmokeError):
+            runtime.readiness_value(*self.readyz(optional), "friend-service")
+        honest = dict(self.owner_authority_checks()["friend-service"])
+        honest["concert-owner-authority"] = (True, "down")
+        value = runtime.readiness_value(*self.readyz(honest, ready=False, degraded=True), "friend-service")
+        self.assertFalse(value["ready"])
+        self.assertEqual(value["checks"]["concert-owner-authority"]["status"], "down")
+
     def control(self):
         stack = Mock()
         stack.cluster = self.cluster

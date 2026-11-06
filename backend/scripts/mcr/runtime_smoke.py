@@ -321,6 +321,8 @@ def readiness_value(status, body, service):
             for peer in PEERS[service]}}
         if service == "api-gateway":
             expected["signing-keys"] = True
+        if service in ("auth-service", "friend-service"):
+            expected["concert-owner-authority"] = True
         if not all(type(value[k]) is bool for k in ("ready", "degraded", "draining")):
             raise ValueError
         if not isinstance(value["checks"], dict) or set(value["checks"]) != set(expected):
