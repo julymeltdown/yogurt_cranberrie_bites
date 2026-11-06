@@ -1,6 +1,7 @@
 //! Composition only. Root mounts the service on its existing mTLS listener and
 //! supplies the actual serving World/socket and Sharing publication handles.
 use crate::{
+    account_private_data::PrivateDataAggregateCoordinator,
     adapters::{
         out::relationship_authority::deletion_source::AuthDeletionSource,
         r#in::{
@@ -156,12 +157,18 @@ impl AccountDeletionRuntime {
                 SocialInvalidationSink::new(pool.clone(), publisher),
             )) as Arc<dyn DeletionOwner>
         });
+        // PrivateData composes every closed category through its production
+        // factory on the canonical Auth authority. The adapter only converts a
+        // verified whole acknowledgement; it never fabricates one.
+        let private_data: Arc<dyn DeletionOwner> = Arc::new(PrivateDataDeletionAdapter::new(
+            super::private_data_runtime::production_coordinator(pool.clone(), authority.clone()),
+        ));
         Ok(Some(Self {
             owners: DeletionOwners {
                 tickets: Some(tickets),
                 sessions,
                 sharing,
-                private_data: None,
+                private_data: Some(private_data),
             },
             authority,
             callers: callers.0,
@@ -169,6 +176,29 @@ impl AccountDeletionRuntime {
     }
     pub fn service(self) -> anyhow::Result<AccountDeletionService> {
         deletion_rpc::guarded_server(self.owners, self.authority, self.callers)
+    }
+}
+struct PrivateDataDeletionAdapter(PrivateDataAggregateCoordinator);
+impl PrivateDataDeletionAdapter {
+    fn new(coordinator: PrivateDataAggregateCoordinator) -> Self {
+        Self(coordinator)
+    }
+}
+#[async_trait::async_trait]
+impl DeletionOwner for PrivateDataDeletionAdapter {
+    async fn apply(
+        &self,
+        command: WorldDeletionCommand,
+        original_deadline: tokio::time::Instant,
+    ) -> Result<DeletionAcknowledgement, DeletionFailure> {
+        let ack = self.0.apply(command.clone(), original_deadline).await?;
+        if !ack.verifies(&command) {
+            return Err(DeletionFailure::InvalidCommand);
+        }
+        Ok(DeletionAcknowledgement {
+            command,
+            fence_revision: ack.fence_revision,
+        })
     }
 }
 struct SessionAdapter(SessionDeletion);

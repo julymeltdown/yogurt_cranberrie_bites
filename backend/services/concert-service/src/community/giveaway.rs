@@ -752,6 +752,77 @@ pub(super) async fn save(c: &mut PgConnection, g: &Giveaway) -> Result<(), Comma
     Ok(())
 }
 
+/// Privileged owning-store port; the caller holds the exact common user fence
+/// and commits effects together with its immutable command/source progress.
+pub(crate) async fn withdraw_private_input_in(
+    c: &mut PgConnection,
+    command: &crate::world::account_deletion::WorldDeletionCommand,
+    source: &crate::world::account_deletion::VerifiedDeletionSource,
+    deadline: tokio::time::Instant,
+    limit: i64,
+) -> Result<bool, CommandError> {
+    source.check(command, deadline).map_err(|_| CommandError::Denied)?;
+    if command.target != crate::world::account_deletion::WorldDeletionTarget::PrivateData
+        || !(1..=32).contains(&limit) { return Err(CommandError::Denied); }
+    let user = command.user_id;
+    let rows: Vec<serde_json::Value> = sqlx::query_scalar("select aggregate from concert_community_giveaways g where owner_id=$1 or exists(select 1 from concert_community_reservations r where r.event_id=g.event_id and r.giveaway_id=g.giveaway_id and r.recipient_id=$1) or aggregate->'reservations' @> jsonb_build_array(jsonb_build_object('recipient',$1::uuid)) order by event_id,giveaway_id limit $2 for update")
+        .bind(user).bind(limit).fetch_all(&mut *c).await.map_err(db)?;
+    for value in rows {
+        source.check(command, deadline).map_err(|_| CommandError::Denied)?;
+        let mut gift: Giveaway = serde_json::from_value(value).map_err(|_| CommandError::InvalidState)?;
+        gift.validate().map_err(|_| CommandError::InvalidState)?;
+        let owner_withdrawn = gift.owner == user;
+        let mut affected = Vec::new();
+        let mut released = 0i32;
+        for reservation in &mut gift.reservations {
+            if owner_withdrawn || reservation.recipient == user {
+                affected.push(reservation.id);
+                if reservation.state.active() {
+                    reservation.state = ReservationState::Cancelled;
+                    reservation.revision = reservation.revision.checked_add(1).ok_or(CommandError::InvalidState)?;
+                    reservation.code_expires_at = None;
+                    released += 1;
+                }
+                if reservation.recipient == user {
+                    reservation.recipient = Uuid::new_v4();
+                    sqlx::query("insert into concert_gift_withdrawn_reservations(event_id,reservation_id) values($1,$2) on conflict do nothing")
+                        .bind(gift.event).bind(reservation.id).execute(&mut *c).await.map_err(db)?;
+                }
+            }
+        }
+        gift.reserved_unclaimed = gift.reserved_unclaimed.checked_sub(released).ok_or(CommandError::InvalidState)?;
+        // Claimed rows, quantity_claimed and terminal receipt references remain
+        // unchanged. Withdrawing identity never returns an already claimed unit.
+        if owner_withdrawn {
+            gift.owner = Uuid::new_v4();
+            gift.state = GiftState::Cancelled;
+            gift.fields.title = "Removed giveaway".into();
+            gift.fields.description.clear();
+            gift.fields.image_media_id = None;
+            gift.meeting = None;
+            gift.meeting_revision = gift.meeting_revision.checked_add(1).ok_or(CommandError::InvalidState)?;
+            sqlx::query("insert into concert_gift_withdrawn_roots(event_id,giveaway_id) values($1,$2) on conflict do nothing")
+                .bind(gift.event).bind(gift.id).execute(&mut *c).await.map_err(db)?;
+        }
+        gift.revision = gift.revision.checked_add(1).ok_or(CommandError::InvalidState)?;
+        gift.validate().map_err(|_| CommandError::InvalidState)?;
+        sqlx::query("delete from concert_community_pickup_admissions where event_id=$1 and (actor_id=$2 or reservation_id=any($3))")
+            .bind(gift.event).bind(user).bind(&affected).execute(&mut *c).await.map_err(db)?;
+        sqlx::query("delete from concert_community_pickup_secrets where event_id=$1 and reservation_id=any($2)")
+            .bind(gift.event).bind(&affected).execute(&mut *c).await.map_err(db)?;
+        save(c, &gift).await?;
+        for reservation in &gift.reservations {
+            sqlx::query("update concert_community_reservations set recipient_id=$3 where event_id=$1 and reservation_id=$2")
+                .bind(gift.event).bind(reservation.id).bind(reservation.recipient).execute(&mut *c).await.map_err(db)?;
+        }
+    }
+    sqlx::query("delete from concert_community_pickup_admissions where actor_id=$1")
+        .bind(user).execute(&mut *c).await.map_err(db)?;
+    let remaining: bool = sqlx::query_scalar("select exists(select 1 from concert_community_giveaways g where owner_id=$1 or exists(select 1 from concert_community_reservations r where r.event_id=g.event_id and r.giveaway_id=g.giveaway_id and r.recipient_id=$1) or aggregate->'reservations' @> jsonb_build_array(jsonb_build_object('recipient',$1::uuid)))")
+        .bind(user).fetch_one(c).await.map_err(db)?;
+    Ok(!remaining)
+}
+
 pub struct GiftFilter {
     pub state: Option<GiftState>,
     pub in_stock: Option<bool>,

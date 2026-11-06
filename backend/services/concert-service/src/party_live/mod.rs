@@ -9,6 +9,7 @@
 //! receipt. Approval capacity is checked by the same locked root transaction.
 //! No permissive authority or fixture implementation is installed here.
 mod cursor;
+pub mod account_deletion;
 mod product;
 mod scope_guard;
 pub mod settlement;
@@ -1527,7 +1528,7 @@ fn party_safe_failure(error: PartyError) -> Option<concert_application::commands
     }
 }
 
-async fn save_party(connection: &mut PgConnection, party: &Party) -> Result<(), CommandError> {
+pub(crate) async fn save_party(connection: &mut PgConnection, party: &Party) -> Result<(), CommandError> {
     let aggregate = serde_json::to_value(party).map_err(|_| CommandError::InvalidState)?;
     sqlx::query("insert into public.concert_community_parties(event_id,party_id,owner_id,revision,state,member_count,capacity,meeting_revision,audience_revision,aggregate) values($1,$2,$3,$4,$5,$6,$7,$8,$9,$10) on conflict(event_id,party_id) do update set owner_id=excluded.owner_id,revision=excluded.revision,state=excluded.state,member_count=excluded.member_count,capacity=excluded.capacity,meeting_revision=excluded.meeting_revision,audience_revision=excluded.audience_revision,aggregate=excluded.aggregate")
         .bind(party.event).bind(party.id).bind(party.owner).bind(party.revision)

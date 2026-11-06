@@ -348,15 +348,28 @@ impl PrivateDataAggregateCoordinator {
             });
         }
         let completed = completed_categories(&mut tx, &command, &source).await?;
-        let categories = PrivateDataCategory::ALL
-            .iter()
+        let stored_cursor: i32 = row.get("next_category");
+        if !(0..=PrivateDataCategory::ALL.len() as i32).contains(&stored_cursor) {
+            return Err(DeletionFailure::InvalidCommand);
+        }
+        // Advance through every not-yet-observed category once. A bounded
+        // provider page leaves its category INCOMPLETE, then the cursor moves
+        // beyond it; once no new category remains, earliest incomplete work is
+        // retried in closed ordinal order. A nonterminal page therefore cannot
+        // monopolize later categories or falsely complete a category.
+        let selected = PrivateDataCategory::ALL
+            .get(stored_cursor as usize)
             .copied()
-            // The cursor records bounded forward progress, but it is never a
-            // tombstone for a missing owner. Every incomplete category remains
-            // eligible on a later round so a real owner configured after the
-            // first attempt can supply its one terminal receipt.
             .filter(|category| !completed.contains(category))
-            .take(CATEGORY_PAGE)
+            .or_else(|| {
+                PrivateDataCategory::ALL
+                    .iter()
+                    .copied()
+                    .find(|category| !completed.contains(category))
+            });
+        let categories = PrivateDataCategory::ALL
+            .into_iter()
+            .filter(|category| Some(*category) == selected)
             .collect::<Vec<_>>();
         // Do not hold a receipt lock across owner calls or a shared core lock.
         tx.commit().await.map_err(db)?;
@@ -430,6 +443,9 @@ impl PrivateDataAggregateCoordinator {
         user_fence(&mut tx, command, source).await?;
         exact_aggregate(&mut tx, command, source).await?;
         source.check(command, deadline)?;
+        // Once the cursor reaches the end, terminal recovery revisits the
+        // earliest retained incomplete category without moving progress
+        // backward. The database guard rejects such a regression.
         sqlx::query("update public.concert_private_data_owner_progress set next_category=greatest(next_category,$2),progress_revision=progress_revision+1,updated_at=clock_timestamp() where user_id=$1")
             .bind(command.user_id).bind(ordinal(category)+1)
             .execute(&mut *tx).await.map_err(db)?;

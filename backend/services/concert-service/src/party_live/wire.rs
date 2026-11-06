@@ -865,7 +865,7 @@ pub async fn load(
 
 /// Mutations lock the same aggregate row used by community audience reads.
 /// Keep this lock until BE15 commits both the aggregate and its receipt.
-pub(super) async fn load_for_update(
+pub(crate) async fn load_for_update(
     connection: &mut PgConnection,
     event: Uuid,
     party: Uuid,
