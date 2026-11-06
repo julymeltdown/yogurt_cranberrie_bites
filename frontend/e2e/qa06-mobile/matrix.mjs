@@ -38,7 +38,7 @@ export const IA = [
   { id: 'A06', label: 'CONNECTING', family: 'PI10', route: '/auth/callback', public: true, state: 'default callback' },
   { id: 'A07', label: 'TERMS / PRIVACY / SAFETY', family: 'PI10', route: '/legal/privacy', public: true, state: 'privacy document' },
   { id: 'A08', label: 'ACCOUNT DELETED', family: 'PI10', route: '/account/deleted', public: true, state: 'default deleted' },
-  { id: 'W01', label: 'WORLD', family: 'PI08', route: '/world', state: 'live PARADE world' },
+  { id: 'W01', label: 'WORLD', family: 'PI08', route: '/world', state: 'live world (default saved era)' },
   { id: 'W02', label: 'MAP', family: 'PI11', route: '/world/map', state: 'default map' },
   { id: 'W03', label: 'PLACE', family: 'PI11', route: `/world/places/${PLACE}`, state: 'place detail' },
   { id: 'W04', label: 'ROOMS', family: 'PI11', route: '/world/rooms', state: 'room list' },
@@ -95,6 +95,7 @@ export const IA = [
 
 // Additional family states not expressed by one IA route alone.
 export const FAMILY_CASES = [
+  { id: 'W01-parade', family: 'PI08', route: '/world', era: 'PARADE', state: 'PARADE era world' },
   { id: 'PI08-revenge-era', family: 'PI08', route: '/world', era: 'REVENGE', state: 'REVENGE era HUD' },
   { id: 'PI08-danger-era', family: 'PI08', route: '/world', era: 'DANGER', state: 'DANGER era HUD' },
   { id: 'PI02-text-only', family: 'PI02', route: '/feed', state: 'feed text-only card' },

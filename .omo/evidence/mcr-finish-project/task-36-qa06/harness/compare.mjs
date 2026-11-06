@@ -31,12 +31,12 @@ for (const [name, path] of paradeCrops) execFileSync('cp', [path, resolve(out, '
 const esc = value => String(value).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]))
 const shot = (c, w = 270) => `<figure><figcaption>${esc(c.caseId)} ${esc(c.verdict)} · ${c.width}×${c.height}</figcaption><a href="${esc(c.capture)}"><img src="${esc(c.capture)}" style="width:${w}px"></a>${c.blocker ? `<p class="blocker">${esc(c.blocker)}</p>` : ''}</figure>`
 const ten = targetCrops.map(([id, name, rect]) => {
-  const shots = report.cases.filter(c => c.caseId === id && c.width === 390 && c.capture)
+  const shots = report.cases.filter(c => (c.caseId === id || (id === 'W01' && c.caseId === 'W01-parade')) && c.width === 390 && c.capture)
   const w = 270, h = Math.round(w * rect.height / rect.width)
   return `<article id="target-${esc(id)}"><h2>${esc(id)} ${esc(name)}</h2><div class="row"><figure><figcaption>Supplied reference ${rect.width}×${rect.height}</figcaption><div class="crop" style="width:${w}px;height:${h}px"><img alt="reference" src="reference-crops/${esc(id)}.png" style="width:${w}px"></div></figure>${shots.map(c => shot(c)).join('')}</div></article>`
 }).join('')
 const parade = paradeCrops.map(([name]) => {
-  const map = { feed: 'F01', world: 'W01', 'avatar-panel': 'U02', 'wall-editor': 'R01', 'tabs-toolbar': 'F01', 'text-only-card': 'PI02-text-only' }
+  const map = { feed: 'F01', world: 'W01-parade', 'avatar-panel': 'U02', 'wall-editor': 'R01', 'tabs-toolbar': 'F01', 'text-only-card': 'PI02-text-only' }
   const id = map[name], shots = report.cases.filter(c => c.caseId === id && c.width === 390 && c.capture)
   return `<article><h2>Parade Ink component · ${esc(name)} → ${esc(id)}</h2><div class="row"><figure><figcaption>Developer-measured crop of the unchanged Photo 2</figcaption><img alt="reference" src="reference-crops/parade-${esc(name)}.png" style="width:270px"></figure>${shots.map(c => shot(c)).join('')}</div></article>`
 }).join('')

@@ -1,6 +1,6 @@
 # QA06 mobile visual acceptance — task 36
 
-Candidate `7562f3b96347fe441843b876db66855c877a3bba` on `codex/mcr-exec-w6-qa06`, base `7562f3b96`. Harness: `frontend/e2e/qa06-mobile/` drives the actual default router, production ports, canonical Auth, Phaser world and the selected whole-character renderer through `e2e/visual/qa06/preview.html`. HTTP/C05 are deterministic synthetic fixtures; map/theme admission is TEST ONLY. This is desktop Chrome touch-viewport and Android-emulator evidence, not physical-device acceptance.
+Candidate `65b70a1e8cdd1d9a406b89efa9e10b77df5a2f93` on `codex/mcr-exec-w6-qa06`, base `7562f3b96`. Harness: `frontend/e2e/qa06-mobile/` drives the actual default router, production ports, canonical Auth, Phaser world and the selected whole-character renderer through `e2e/visual/qa06/preview.html`. HTTP/C05 are deterministic synthetic fixtures; map/theme admission is TEST ONLY. This is desktop Chrome touch-viewport and Android-emulator evidence, not physical-device acceptance.
 
 ## Counts
 
@@ -8,15 +8,20 @@ Desktop Chrome 156.0.8078.80, viewports 360/390/430 CSS px, height 844 (one 420 
 
 | Verdict | Cases |
 | --- | --- |
-| PASS | 92 |
+| PASS | 95 |
 | DIFFER | 0 |
 | NOT_REACHABLE | 111 |
 | FAIL | 0 |
-| **Total** | **203** |
+| **Total** | **206** |
 
-Case matrix: 61 retained IA entries (M10/R02/X02 are the optional P1 rows outside the required 61) at three widths, plus nine family-state cases (REVENGE/DANGER era HUDs, text-only feed, thread reply composer, admin status chrome, wall grid, short-height and keyboard-focus chrome) and one synthetic route-error-boundary case per width.
+Case matrix: 61 retained IA entries (M10/R02/X02 are the optional P1 rows outside the required 61) at three widths, plus nine family-state cases (PARADE/REVENGE/DANGER era worlds, text-only feed, thread reply composer, admin status chrome, wall grid, short-height and keyboard-focus chrome) and one synthetic route-error-boundary case per width.
 
-Android sdk_gphone64_arm64, Android 15 (SDK 35), Chrome 124.0.6367.219: 36 captures, 36 captured, 0 failed. Qualification: `ANDROID_15_EMULATOR_CHROME_NOT_PHYSICAL`.
+Android sdk_gphone64_arm64, Android 15 (SDK 35), Chrome 124.0.6367.219: 36 captures, 36 captured, 0 failed. Qualification: `ANDROID_15_EMULATOR_CHROME_NOT_PHYSICAL`. These emulator captures are from the earlier capture session and were not re-run here because no emulator was attached; the desktop matrix above was re-produced at the candidate shown.
+
+## Checks
+
+- Vitest, changed-file scope for the delivered source diff (`npx vitest run --changed 7562f3b96` from `frontend/`): 50 test files, 464 tests, all passed (exit 0). The earlier handoff note's 549-test figure was not reproduced; 464 is the measured count.
+- `tsc -b`: exit 0. `python3 scripts/mcr/check-plan.py`: PASS, exit 0.
 
 ## 12 design families
 
@@ -29,7 +34,7 @@ Android sdk_gphone64_arm64, Android 15 (SDK 35), Chrome 124.0.6367.219: 36 captu
 | PI05 | Meet discovery, applications, create/manage/rally, People, introductions | PARTIAL | NOT_REACHABLE 18 · PASS 6 |
 | PI06 | Own/public Profile, profile edit, activity and preferences | PASS | PASS 12 |
 | PI07 | Portrait framing, avatar popover, complete avatar-editor controls | PASS | PASS 3 |
-| PI08 | World HUD, viewport/context strip, six-tab navigation, eras | PASS | PASS 12 |
+| PI08 | World HUD, viewport/context strip, six-tab navigation, eras | PASS | PASS 15 |
 | PI09 | Working Wall B editor/palette/tools/confirmation, sync, degraded states | NOT_REACHABLE | NOT_REACHABLE 6 |
 | PI10 | Landing, sign-in/signup/verification/reset/callback/legal/deleted | PARTIAL | PASS 12 · NOT_REACHABLE 12 |
 | PI11 | Map/place/rooms/nearby/check-in/help presentation | PARTIAL | NOT_REACHABLE 9 · PASS 9 |
@@ -158,7 +163,7 @@ The Android pass additionally requires a booted emulator, `adb reverse tcp:5319 
 ## Evidence files
 
 - `report.json` — every case with case id, family/IA, width, capture path, verdict, measurements, blocking producer and material difference where applicable.
-- `captures/` — 203 desktop PNGs + 36 Android PNGs.
+- `captures/` — 206 desktop PNGs + 36 Android PNGs.
 - `sha256.txt` — capture hashes.
 - `comparison.html` — same-aspect target crops, Parade Ink component crops, family and IA tables.
 - `reference-crops/` — developer-measured crops of the unchanged references.

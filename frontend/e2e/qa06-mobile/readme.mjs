@@ -42,9 +42,14 @@ Desktop Chrome ${report.browser}, viewports 360/390/430 CSS px, height 844 (one 
 | FAIL | ${counts.FAIL ?? 0} |
 | **Total** | **${report.cases.length}** |
 
-Case matrix: 61 retained IA entries (M10/R02/X02 are the optional P1 rows outside the required 61) at three widths, plus nine family-state cases (REVENGE/DANGER era HUDs, text-only feed, thread reply composer, admin status chrome, wall grid, short-height and keyboard-focus chrome) and one synthetic route-error-boundary case per width.
+Case matrix: 61 retained IA entries (M10/R02/X02 are the optional P1 rows outside the required 61) at three widths, plus nine family-state cases (PARADE/REVENGE/DANGER era worlds, text-only feed, thread reply composer, admin status chrome, wall grid, short-height and keyboard-focus chrome) and one synthetic route-error-boundary case per width.
 
-${android ? `Android ${android.device.model}, Android ${android.device.android} (SDK ${android.device.sdk}), Chrome ${android.chromeVersion}: ${android.cases.length} captures, ${androidCounts.CAPTURED ?? 0} captured, ${androidCounts.FAIL ?? 0} failed. Qualification: \`ANDROID_15_EMULATOR_CHROME_NOT_PHYSICAL\`.` : 'Android Chrome: NOT_RUN (see below).'}
+${android ? `Android ${android.device.model}, Android ${android.device.android} (SDK ${android.device.sdk}), Chrome ${android.chromeVersion}: ${android.cases.length} captures, ${androidCounts.CAPTURED ?? 0} captured, ${androidCounts.FAIL ?? 0} failed. Qualification: \`ANDROID_15_EMULATOR_CHROME_NOT_PHYSICAL\`. These emulator captures are from the earlier capture session and were not re-run here because no emulator was attached; the desktop matrix above was re-produced at the candidate shown.` : 'Android Chrome: NOT_RUN (see below).'}
+
+## Checks
+
+- Vitest, changed-file scope for the delivered source diff (\`npx vitest run --changed 7562f3b96\` from \`frontend/\`): 50 test files, 464 tests, all passed (exit 0). The earlier handoff note's 549-test figure was not reproduced; 464 is the measured count.
+- \`tsc -b\`: exit 0. \`python3 scripts/mcr/check-plan.py\`: PASS, exit 0.
 
 ## 12 design families
 

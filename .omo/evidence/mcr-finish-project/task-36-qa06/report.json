@@ -1,28 +1,14 @@
 {
   "task": "QA06",
   "kind": "mcr-qa06-mobile-visual-v1",
-  "startedAt": "2026-11-06T14:15:01.234Z",
-  "candidate": "7562f3b96347fe441843b876db66855c877a3bba",
+  "startedAt": "2026-11-06T14:58:46.773Z",
+  "candidate": "65b70a1e8cdd1d9a406b89efa9e10b77df5a2f93",
   "base": "7562f3b96",
   "branch": "codex/mcr-exec-w6-qa06",
   "qualification": "DESKTOP_CHROME_TOUCH_VIEWPORTS_ONLY",
   "physicalIOS": "NOT_RUN",
   "physicalAndroid": "NOT_RUN",
-  "androidEmulator": {
-    "status": "CAPTURED",
-    "qualification": "ANDROID_15_EMULATOR_CHROME_NOT_PHYSICAL",
-    "device": {
-      "model": "sdk_gphone64_arm64",
-      "sdk": "35",
-      "android": "15",
-      "boot": "1",
-      "qualification": "ANDROID_15_EMULATOR_CHROME_NOT_PHYSICAL"
-    },
-    "chromeVersion": "124.0.6367.219",
-    "cases": 36,
-    "captured": 36,
-    "failed": 0
-  },
+  "androidEmulator": "PENDING",
   "softwareKeyboard": "NOT_RUN",
   "hardwareSafeArea": "NOT_RUN",
   "reference": {
@@ -154,8 +140,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Reference band wordmark/rose/moon/skyline art is not reproduced; independent fan-project poster with selected source-pack characters keeps the title/character/action hierarchy. Public document ends mid-viewport."
+      "verdict": "PASS"
     },
     {
       "caseId": "A02",
@@ -221,8 +206,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Reference Remember me control is absent; provider controls are present but explicitly unavailable. Email sign-in layout and action match."
+      "verdict": "PASS"
     },
     {
       "caseId": "A03",
@@ -369,8 +353,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Reset request is a real form; delivery depends on the unavailable email account provider."
+      "verdict": "PASS"
     },
     {
       "caseId": "A06",
@@ -527,15 +510,14 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Deletion status copy is present; retained recovery and completion actions stay unavailable after expiry/sign-out."
+      "verdict": "PASS"
     },
     {
       "caseId": "W01",
       "family": "PI08",
       "ia": "W01",
       "route": "/world",
-      "state": "live PARADE world",
+      "state": "live world (default saved era)",
       "width": 360,
       "height": 844,
       "devicePixelRatio": 1,
@@ -596,8 +578,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Reviewed studio scene is used instead of the reference festival imagery; HUD frame, era tabs, context strip and six-tab navigation match. No level/points chip is fabricated."
+      "verdict": "PASS"
     },
     {
       "caseId": "W02",
@@ -842,8 +823,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Room switch actions are disabled while the covered panel suspends the world connection; row layout and copy are truthful."
+      "verdict": "PASS"
     },
     {
       "caseId": "W05",
@@ -924,8 +904,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "People list is empty while the world is paused; visibility/empty-state copy is truthful, no physical distance is implied."
+      "verdict": "PASS"
     },
     {
       "caseId": "W06",
@@ -1005,8 +984,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Era selection is local; server preference synchronization is explicitly unavailable."
+      "verdict": "PASS"
     },
     {
       "caseId": "W07",
@@ -1256,8 +1234,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "The reference illustrated media post cannot render without a media provider; text-only cards, author row, reactions/share and bottom composer match. The second post is deterministic fixture content."
+      "verdict": "PASS"
     },
     {
       "caseId": "F02",
@@ -1337,8 +1314,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Image upload is explicitly unavailable; text composer and publish action match the shared control system."
+      "verdict": "PASS"
     },
     {
       "caseId": "F03",
@@ -1419,8 +1395,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Reply composer and thread chrome match; comments are empty fixture data, not a layout difference."
+      "verdict": "PASS"
     },
     {
       "caseId": "F04",
@@ -1500,8 +1475,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Image upload unavailable; save/discard/reload actions match, save label wraps at 360."
+      "verdict": "PASS"
     },
     {
       "caseId": "F05",
@@ -2148,8 +2122,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Other members' portraits are unavailable without an authorized avatar provider; rows and search match."
+      "verdict": "PASS"
     },
     {
       "caseId": "M08",
@@ -2230,8 +2203,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Introduction editor layout matches; audience/expiry capabilities are server-enforced."
+      "verdict": "PASS"
     },
     {
       "caseId": "M09",
@@ -2312,8 +2284,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Recent activity rows require an activity provider and stay unavailable; profile framing and tabs match."
+      "verdict": "PASS"
     },
     {
       "caseId": "G01",
@@ -3041,8 +3012,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Recent activity rows require an activity provider and stay unavailable; profile header, tabs and footer match."
+      "verdict": "PASS"
     },
     {
       "caseId": "U02",
@@ -3123,8 +3093,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "The selected whole-character producer exposes a preset carousel, not the reference layered category rail and hair palette."
+      "verdict": "PASS"
     },
     {
       "caseId": "U03",
@@ -3204,8 +3173,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Profile form matches; optional ticket section/visibility controls are unavailable in this connection."
+      "verdict": "PASS"
     },
     {
       "caseId": "U04",
@@ -3447,8 +3415,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Age and privacy copy matches; verification provider is unavailable and status is honest."
+      "verdict": "PASS"
     },
     {
       "caseId": "U07",
@@ -3529,8 +3496,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Settings layout matches; sound applies only on explicit action."
+      "verdict": "PASS"
     },
     {
       "caseId": "U08",
@@ -3611,8 +3577,7 @@
       "pageErrors": [],
       "blocker": "safety service producer (blocks/report transport) not composed in this fixture",
       "findings": [],
-      "verdict": "NOT_REACHABLE",
-      "materialDifference": "Safety service unavailable notice is shown instead of the blocked list; no action is sent."
+      "verdict": "NOT_REACHABLE"
     },
     {
       "caseId": "U09",
@@ -3694,8 +3659,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Account controls match; deletion is a real request flow and remains pending/recoverable."
+      "verdict": "PASS"
     },
     {
       "caseId": "U10",
@@ -3777,8 +3741,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Inbox rows and unread state match; refresh/mark-read are real actions."
+      "verdict": "PASS"
     },
     {
       "caseId": "X01",
@@ -3908,8 +3871,7 @@
       "pageErrors": [],
       "blocker": "safety service producer (blocks/report transport) not composed in this fixture",
       "findings": [],
-      "verdict": "NOT_REACHABLE",
-      "materialDifference": "Report form cannot start because the safety service producer is unavailable; no action is sent."
+      "verdict": "NOT_REACHABLE"
     },
     {
       "caseId": "S02",
@@ -3990,8 +3952,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Synthetic test-only route failure exercises the published unavailable boundary; no product data lost."
+      "verdict": "PASS"
     },
     {
       "caseId": "S03",
@@ -4059,8 +4020,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Disconnected socket produces the reconnect state and clears presence."
+      "verdict": "PASS"
     },
     {
       "caseId": "O01",
@@ -4511,6 +4471,74 @@
       "blocker": "operator role/event settings server authority not available to a participant fixture",
       "findings": [],
       "verdict": "NOT_REACHABLE"
+    },
+    {
+      "caseId": "W01-parade",
+      "family": "PI08",
+      "ia": null,
+      "route": "/world",
+      "state": "PARADE era world",
+      "width": 360,
+      "height": 844,
+      "devicePixelRatio": 1,
+      "browser": "156.0.8078.80",
+      "status": "IN_PROGRESS",
+      "capture": "captures/W01-parade-360.png",
+      "captureSha256": "6d99e22692fbf863317cd3f652eef8b0d422fdbe673752ecbed8fd94f575e758",
+      "stateObserved": {
+        "path": "/world",
+        "published": true,
+        "theme": "PARADE",
+        "entities": 6,
+        "canvases": 1
+      },
+      "measurements": {
+        "viewport": {
+          "width": 360,
+          "height": 844
+        },
+        "document": {
+          "width": 360,
+          "height": 844
+        },
+        "overflow": false,
+        "text": "World",
+        "headings": [],
+        "smallControls": [],
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "width": 360,
+          "height": 844
+        },
+        "panel": null,
+        "titlebar": null,
+        "tabs": {
+          "x": 4,
+          "y": 52,
+          "width": 352,
+          "height": 57
+        },
+        "footer": null,
+        "navigation": {
+          "x": 4,
+          "y": 771,
+          "width": 352,
+          "height": 61
+        },
+        "world": {
+          "x": 4,
+          "y": 109,
+          "width": 352,
+          "height": 570
+        },
+        "images": []
+      },
+      "requests": [],
+      "pageErrors": [],
+      "blocker": null,
+      "findings": [],
+      "verdict": "PASS"
     },
     {
       "caseId": "PI08-revenge-era",
@@ -5006,8 +5034,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Reference band wordmark/rose/moon/skyline art is not reproduced; independent fan-project poster with selected source-pack characters keeps the title/character/action hierarchy. Public document ends mid-viewport."
+      "verdict": "PASS"
     },
     {
       "caseId": "A02",
@@ -5073,8 +5100,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Reference Remember me control is absent; provider controls are present but explicitly unavailable. Email sign-in layout and action match."
+      "verdict": "PASS"
     },
     {
       "caseId": "A03",
@@ -5221,8 +5247,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Reset request is a real form; delivery depends on the unavailable email account provider."
+      "verdict": "PASS"
     },
     {
       "caseId": "A06",
@@ -5379,22 +5404,21 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Deletion status copy is present; retained recovery and completion actions stay unavailable after expiry/sign-out."
+      "verdict": "PASS"
     },
     {
       "caseId": "W01",
       "family": "PI08",
       "ia": "W01",
       "route": "/world",
-      "state": "live PARADE world",
+      "state": "live world (default saved era)",
       "width": 390,
       "height": 844,
       "devicePixelRatio": 1,
       "browser": "156.0.8078.80",
       "status": "IN_PROGRESS",
       "capture": "captures/W01-390.png",
-      "captureSha256": "b574e4fe1adacddba701868c4f4a80e127b6dd9e017b7420939d84c6ec3c9a6b",
+      "captureSha256": "792c0997b83bdc435707824bcb1b5143c92bffd737838516c3b3d0e2de29703f",
       "stateObserved": {
         "path": "/world",
         "published": true,
@@ -5448,8 +5472,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Reviewed studio scene is used instead of the reference festival imagery; HUD frame, era tabs, context strip and six-tab navigation match. No level/points chip is fabricated."
+      "verdict": "PASS"
     },
     {
       "caseId": "W02",
@@ -5694,8 +5717,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Room switch actions are disabled while the covered panel suspends the world connection; row layout and copy are truthful."
+      "verdict": "PASS"
     },
     {
       "caseId": "W05",
@@ -5776,8 +5798,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "People list is empty while the world is paused; visibility/empty-state copy is truthful, no physical distance is implied."
+      "verdict": "PASS"
     },
     {
       "caseId": "W06",
@@ -5857,8 +5878,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Era selection is local; server preference synchronization is explicitly unavailable."
+      "verdict": "PASS"
     },
     {
       "caseId": "W07",
@@ -6108,8 +6128,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "The reference illustrated media post cannot render without a media provider; text-only cards, author row, reactions/share and bottom composer match. The second post is deterministic fixture content."
+      "verdict": "PASS"
     },
     {
       "caseId": "F02",
@@ -6189,8 +6208,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Image upload is explicitly unavailable; text composer and publish action match the shared control system."
+      "verdict": "PASS"
     },
     {
       "caseId": "F03",
@@ -6271,8 +6289,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Reply composer and thread chrome match; comments are empty fixture data, not a layout difference."
+      "verdict": "PASS"
     },
     {
       "caseId": "F04",
@@ -6352,8 +6369,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Image upload unavailable; save/discard/reload actions match, save label wraps at 360."
+      "verdict": "PASS"
     },
     {
       "caseId": "F05",
@@ -7000,8 +7016,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Other members' portraits are unavailable without an authorized avatar provider; rows and search match."
+      "verdict": "PASS"
     },
     {
       "caseId": "M08",
@@ -7082,8 +7097,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Introduction editor layout matches; audience/expiry capabilities are server-enforced."
+      "verdict": "PASS"
     },
     {
       "caseId": "M09",
@@ -7164,8 +7178,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Recent activity rows require an activity provider and stay unavailable; profile framing and tabs match."
+      "verdict": "PASS"
     },
     {
       "caseId": "G01",
@@ -7893,8 +7906,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Recent activity rows require an activity provider and stay unavailable; profile header, tabs and footer match."
+      "verdict": "PASS"
     },
     {
       "caseId": "U02",
@@ -7975,8 +7987,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "The selected whole-character producer exposes a preset carousel, not the reference layered category rail and hair palette."
+      "verdict": "PASS"
     },
     {
       "caseId": "U03",
@@ -8056,8 +8067,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Profile form matches; optional ticket section/visibility controls are unavailable in this connection."
+      "verdict": "PASS"
     },
     {
       "caseId": "U04",
@@ -8299,8 +8309,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Age and privacy copy matches; verification provider is unavailable and status is honest."
+      "verdict": "PASS"
     },
     {
       "caseId": "U07",
@@ -8381,8 +8390,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Settings layout matches; sound applies only on explicit action."
+      "verdict": "PASS"
     },
     {
       "caseId": "U08",
@@ -8463,8 +8471,7 @@
       "pageErrors": [],
       "blocker": "safety service producer (blocks/report transport) not composed in this fixture",
       "findings": [],
-      "verdict": "NOT_REACHABLE",
-      "materialDifference": "Safety service unavailable notice is shown instead of the blocked list; no action is sent."
+      "verdict": "NOT_REACHABLE"
     },
     {
       "caseId": "U09",
@@ -8546,8 +8553,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Account controls match; deletion is a real request flow and remains pending/recoverable."
+      "verdict": "PASS"
     },
     {
       "caseId": "U10",
@@ -8629,8 +8635,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Inbox rows and unread state match; refresh/mark-read are real actions."
+      "verdict": "PASS"
     },
     {
       "caseId": "X01",
@@ -8760,8 +8765,7 @@
       "pageErrors": [],
       "blocker": "safety service producer (blocks/report transport) not composed in this fixture",
       "findings": [],
-      "verdict": "NOT_REACHABLE",
-      "materialDifference": "Report form cannot start because the safety service producer is unavailable; no action is sent."
+      "verdict": "NOT_REACHABLE"
     },
     {
       "caseId": "S02",
@@ -8842,8 +8846,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Synthetic test-only route failure exercises the published unavailable boundary; no product data lost."
+      "verdict": "PASS"
     },
     {
       "caseId": "S03",
@@ -8911,8 +8914,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Disconnected socket produces the reconnect state and clears presence."
+      "verdict": "PASS"
     },
     {
       "caseId": "O01",
@@ -9365,6 +9367,74 @@
       "verdict": "NOT_REACHABLE"
     },
     {
+      "caseId": "W01-parade",
+      "family": "PI08",
+      "ia": null,
+      "route": "/world",
+      "state": "PARADE era world",
+      "width": 390,
+      "height": 844,
+      "devicePixelRatio": 1,
+      "browser": "156.0.8078.80",
+      "status": "IN_PROGRESS",
+      "capture": "captures/W01-parade-390.png",
+      "captureSha256": "167c19e5b2ec770e21da9ef69914cfffa6c75836d185fdf2a1bc4a11d48d28c3",
+      "stateObserved": {
+        "path": "/world",
+        "published": true,
+        "theme": "PARADE",
+        "entities": 6,
+        "canvases": 1
+      },
+      "measurements": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "document": {
+          "width": 390,
+          "height": 844
+        },
+        "overflow": false,
+        "text": "World",
+        "headings": [],
+        "smallControls": [],
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "width": 390,
+          "height": 844
+        },
+        "panel": null,
+        "titlebar": null,
+        "tabs": {
+          "x": 4,
+          "y": 52,
+          "width": 382,
+          "height": 57
+        },
+        "footer": null,
+        "navigation": {
+          "x": 4,
+          "y": 771,
+          "width": 382,
+          "height": 61
+        },
+        "world": {
+          "x": 4,
+          "y": 109,
+          "width": 382,
+          "height": 571
+        },
+        "images": []
+      },
+      "requests": [],
+      "pageErrors": [],
+      "blocker": null,
+      "findings": [],
+      "verdict": "PASS"
+    },
+    {
       "caseId": "PI08-revenge-era",
       "family": "PI08",
       "ia": null,
@@ -9376,7 +9446,7 @@
       "browser": "156.0.8078.80",
       "status": "IN_PROGRESS",
       "capture": "captures/PI08-revenge-era-390.png",
-      "captureSha256": "b574e4fe1adacddba701868c4f4a80e127b6dd9e017b7420939d84c6ec3c9a6b",
+      "captureSha256": "792c0997b83bdc435707824bcb1b5143c92bffd737838516c3b3d0e2de29703f",
       "stateObserved": {
         "path": "/world",
         "published": true,
@@ -9858,8 +9928,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Reference band wordmark/rose/moon/skyline art is not reproduced; independent fan-project poster with selected source-pack characters keeps the title/character/action hierarchy. Public document ends mid-viewport."
+      "verdict": "PASS"
     },
     {
       "caseId": "A02",
@@ -9925,8 +9994,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Reference Remember me control is absent; provider controls are present but explicitly unavailable. Email sign-in layout and action match."
+      "verdict": "PASS"
     },
     {
       "caseId": "A03",
@@ -10073,8 +10141,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Reset request is a real form; delivery depends on the unavailable email account provider."
+      "verdict": "PASS"
     },
     {
       "caseId": "A06",
@@ -10231,15 +10298,14 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Deletion status copy is present; retained recovery and completion actions stay unavailable after expiry/sign-out."
+      "verdict": "PASS"
     },
     {
       "caseId": "W01",
       "family": "PI08",
       "ia": "W01",
       "route": "/world",
-      "state": "live PARADE world",
+      "state": "live world (default saved era)",
       "width": 430,
       "height": 844,
       "devicePixelRatio": 1,
@@ -10300,8 +10366,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Reviewed studio scene is used instead of the reference festival imagery; HUD frame, era tabs, context strip and six-tab navigation match. No level/points chip is fabricated."
+      "verdict": "PASS"
     },
     {
       "caseId": "W02",
@@ -10546,8 +10611,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Room switch actions are disabled while the covered panel suspends the world connection; row layout and copy are truthful."
+      "verdict": "PASS"
     },
     {
       "caseId": "W05",
@@ -10628,8 +10692,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "People list is empty while the world is paused; visibility/empty-state copy is truthful, no physical distance is implied."
+      "verdict": "PASS"
     },
     {
       "caseId": "W06",
@@ -10709,8 +10772,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Era selection is local; server preference synchronization is explicitly unavailable."
+      "verdict": "PASS"
     },
     {
       "caseId": "W07",
@@ -10960,8 +11022,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "The reference illustrated media post cannot render without a media provider; text-only cards, author row, reactions/share and bottom composer match. The second post is deterministic fixture content."
+      "verdict": "PASS"
     },
     {
       "caseId": "F02",
@@ -11041,8 +11102,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Image upload is explicitly unavailable; text composer and publish action match the shared control system."
+      "verdict": "PASS"
     },
     {
       "caseId": "F03",
@@ -11123,8 +11183,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Reply composer and thread chrome match; comments are empty fixture data, not a layout difference."
+      "verdict": "PASS"
     },
     {
       "caseId": "F04",
@@ -11204,8 +11263,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Image upload unavailable; save/discard/reload actions match, save label wraps at 360."
+      "verdict": "PASS"
     },
     {
       "caseId": "F05",
@@ -11852,8 +11910,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Other members' portraits are unavailable without an authorized avatar provider; rows and search match."
+      "verdict": "PASS"
     },
     {
       "caseId": "M08",
@@ -11934,8 +11991,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Introduction editor layout matches; audience/expiry capabilities are server-enforced."
+      "verdict": "PASS"
     },
     {
       "caseId": "M09",
@@ -12016,8 +12072,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Recent activity rows require an activity provider and stay unavailable; profile framing and tabs match."
+      "verdict": "PASS"
     },
     {
       "caseId": "G01",
@@ -12745,8 +12800,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Recent activity rows require an activity provider and stay unavailable; profile header, tabs and footer match."
+      "verdict": "PASS"
     },
     {
       "caseId": "U02",
@@ -12827,8 +12881,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "The selected whole-character producer exposes a preset carousel, not the reference layered category rail and hair palette."
+      "verdict": "PASS"
     },
     {
       "caseId": "U03",
@@ -12908,8 +12961,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Profile form matches; optional ticket section/visibility controls are unavailable in this connection."
+      "verdict": "PASS"
     },
     {
       "caseId": "U04",
@@ -13151,8 +13203,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Age and privacy copy matches; verification provider is unavailable and status is honest."
+      "verdict": "PASS"
     },
     {
       "caseId": "U07",
@@ -13233,8 +13284,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Settings layout matches; sound applies only on explicit action."
+      "verdict": "PASS"
     },
     {
       "caseId": "U08",
@@ -13315,8 +13365,7 @@
       "pageErrors": [],
       "blocker": "safety service producer (blocks/report transport) not composed in this fixture",
       "findings": [],
-      "verdict": "NOT_REACHABLE",
-      "materialDifference": "Safety service unavailable notice is shown instead of the blocked list; no action is sent."
+      "verdict": "NOT_REACHABLE"
     },
     {
       "caseId": "U09",
@@ -13398,8 +13447,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Account controls match; deletion is a real request flow and remains pending/recoverable."
+      "verdict": "PASS"
     },
     {
       "caseId": "U10",
@@ -13481,8 +13529,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Inbox rows and unread state match; refresh/mark-read are real actions."
+      "verdict": "PASS"
     },
     {
       "caseId": "X01",
@@ -13612,8 +13659,7 @@
       "pageErrors": [],
       "blocker": "safety service producer (blocks/report transport) not composed in this fixture",
       "findings": [],
-      "verdict": "NOT_REACHABLE",
-      "materialDifference": "Report form cannot start because the safety service producer is unavailable; no action is sent."
+      "verdict": "NOT_REACHABLE"
     },
     {
       "caseId": "S02",
@@ -13694,8 +13740,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Synthetic test-only route failure exercises the published unavailable boundary; no product data lost."
+      "verdict": "PASS"
     },
     {
       "caseId": "S03",
@@ -13763,8 +13808,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Disconnected socket produces the reconnect state and clears presence."
+      "verdict": "PASS"
     },
     {
       "caseId": "O01",
@@ -14215,6 +14259,74 @@
       "blocker": "operator role/event settings server authority not available to a participant fixture",
       "findings": [],
       "verdict": "NOT_REACHABLE"
+    },
+    {
+      "caseId": "W01-parade",
+      "family": "PI08",
+      "ia": null,
+      "route": "/world",
+      "state": "PARADE era world",
+      "width": 430,
+      "height": 844,
+      "devicePixelRatio": 1,
+      "browser": "156.0.8078.80",
+      "status": "IN_PROGRESS",
+      "capture": "captures/W01-parade-430.png",
+      "captureSha256": "cf365715c38a7bce685c43ed88bc66b1b0870901e9332c1733cb3f77c25428ed",
+      "stateObserved": {
+        "path": "/world",
+        "published": true,
+        "theme": "PARADE",
+        "entities": 6,
+        "canvases": 1
+      },
+      "measurements": {
+        "viewport": {
+          "width": 430,
+          "height": 844
+        },
+        "document": {
+          "width": 430,
+          "height": 844
+        },
+        "overflow": false,
+        "text": "World",
+        "headings": [],
+        "smallControls": [],
+        "frame": {
+          "x": 0,
+          "y": 0,
+          "width": 430,
+          "height": 844
+        },
+        "panel": null,
+        "titlebar": null,
+        "tabs": {
+          "x": 4,
+          "y": 52,
+          "width": 422,
+          "height": 57
+        },
+        "footer": null,
+        "navigation": {
+          "x": 4,
+          "y": 771,
+          "width": 422,
+          "height": 61
+        },
+        "world": {
+          "x": 4,
+          "y": 109,
+          "width": 422,
+          "height": 571
+        },
+        "images": []
+      },
+      "requests": [],
+      "pageErrors": [],
+      "blocker": null,
+      "findings": [],
+      "verdict": "PASS"
     },
     {
       "caseId": "PI08-revenge-era",
@@ -14731,8 +14843,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "At 420px the feed keeps title, tabs and footer visible; the list scrolls without clipping."
+      "verdict": "PASS"
     },
     {
       "caseId": "PI01-focus",
@@ -14817,8 +14928,7 @@
       "pageErrors": [],
       "blocker": null,
       "findings": [],
-      "verdict": "PASS",
-      "materialDifference": "Keyboard focus outline is present on the first feed control (crimson 3px ring)."
+      "verdict": "PASS"
     }
   ],
   "findings": [],
@@ -14833,6 +14943,5 @@
     390,
     430
   ],
-  "finishedAt": "2026-11-06T14:24:51.689Z",
-  "materialDifferenceCount": 80
+  "finishedAt": "2026-11-06T15:08:30.816Z"
 }
