@@ -1,0 +1,1101 @@
+{
+  "task": "47",
+  "id": "IN05",
+  "candidate": "7d14251bb3ddd6a2edbaa2abaa6673b8ac872364",
+  "branch": "codex/mcr-exec-w8-in05-final",
+  "generated_at": "2026-11-06T18:17:43Z",
+  "release_decision": "NOT_RELEASE_READY",
+  "counts": {
+    "plan_rows": {
+      "DONE": 35,
+      "GAP": 14,
+      "OPEN": 7
+    },
+    "register_task_rows": {
+      "DEFERRED_BY_USER": 1,
+      "DONE": 65,
+      "IN_PROGRESS": 39,
+      "OPEN": 3,
+      "REOPENED": 1,
+      "WAITING_INPUT": 3
+    },
+    "closed_rows_passed": 35,
+    "closed_rows_failed": 0
+  },
+  "rows": [
+    {
+      "row": "1",
+      "title": "Commit the frontend build and test repair",
+      "state": "DONE",
+      "plan_state": "x",
+      "evidence": ".omo/evidence/mcr-finish-project/task-1-frontend-commit.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-1-frontend-commit.md",
+      "evidence_substituted": false,
+      "commit": "fix(frontend): restore build and test suite at 9185c9922",
+      "delivering_commit": "8e5cc757f3db2bc009709ed859f2e610398e1a20",
+      "verifier": "PASS",
+      "verifier_reason": "evidence .omo/evidence/mcr-finish-project/task-1-frontend-commit.md exists; ledger-recorded delivering commit 8e5cc757f is an ancestor of the candidate",
+      "gap": null
+    },
+    {
+      "row": "2",
+      "title": "Commit the backend compile fix and the QA01 re-pin",
+      "state": "DONE",
+      "plan_state": "x",
+      "evidence": ".omo/evidence/mcr-finish-project/task-2-backend-commit.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-2-backend-commit.md",
+      "evidence_substituted": false,
+      "commit": "fix(backend): register Concert workload and repin QA01 inputs",
+      "delivering_commit": "8fc507fe96586e50252e135dcfa66ee6c22faf51",
+      "verifier": "PASS",
+      "verifier_reason": "evidence .omo/evidence/mcr-finish-project/task-2-backend-commit.md exists; ledger-recorded delivering commit 8fc507fe9 is an ancestor of the candidate",
+      "gap": null
+    },
+    {
+      "row": "3",
+      "title": "Commit the CI workflow removal",
+      "state": "DONE",
+      "plan_state": "x",
+      "evidence": ".omo/evidence/mcr-finish-project/task-3-ci-removal.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-3-ci-removal.md",
+      "evidence_substituted": false,
+      "commit": "ci: remove contract-only workflow pending full gate",
+      "delivering_commit": "501710d293e5309e862997a353714e5753a76da0",
+      "verifier": "PASS",
+      "verifier_reason": "evidence .omo/evidence/mcr-finish-project/task-3-ci-removal.md exists; ledger-recorded delivering commit 501710d29 is an ancestor of the candidate",
+      "gap": null
+    },
+    {
+      "row": "4",
+      "title": "Verify the clean candidate end to end",
+      "state": "DONE",
+      "plan_state": "x",
+      "evidence": ".omo/evidence/mcr-finish-project/task-4-candidate.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-4-candidate.md",
+      "evidence_substituted": false,
+      "commit": null,
+      "delivering_commit": "",
+      "verifier": "PASS",
+      "verifier_reason": "evidence .omo/evidence/mcr-finish-project/task-4-candidate.md exists; plan row declares Commit: N; verification-only row, evidence artifact is the delivery",
+      "gap": null
+    },
+    {
+      "row": "5",
+      "title": "Produce the salvage recover-or-reimplement decision table",
+      "state": "DONE",
+      "plan_state": "x",
+      "evidence": ".omo/evidence/mcr-finish-project/task-5-salvage-table.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-5-salvage-table.md",
+      "evidence_substituted": false,
+      "commit": "docs(mcr): record salvage recover-or-reimplement decisions",
+      "delivering_commit": "49ac04156f0832c67b5452fc6be83ed1235cc30d",
+      "verifier": "PASS",
+      "verifier_reason": "evidence .omo/evidence/mcr-finish-project/task-5-salvage-table.md exists; ledger-recorded delivering commit 49ac04156 is an ancestor of the candidate",
+      "gap": null
+    },
+    {
+      "row": "6",
+      "title": "Inventory the CI gates to restore (write-only, no workflow change)",
+      "state": "DONE",
+      "plan_state": "x",
+      "evidence": ".omo/evidence/mcr-finish-project/task-6-ci-inventory.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-6-ci-inventory.md",
+      "evidence_substituted": false,
+      "commit": "docs(mcr): inventory blocking CI gates",
+      "delivering_commit": "0dfbf3d8bd7c53cc43273a9f73d48a3ab502175e",
+      "verifier": "PASS",
+      "verifier_reason": "evidence .omo/evidence/mcr-finish-project/task-6-ci-inventory.md exists; ledger-recorded delivering commit 0dfbf3d8b is an ancestor of the candidate",
+      "gap": null
+    },
+    {
+      "row": "7",
+      "title": "Adopt the BE37 relationship policy across real consumers",
+      "state": "DONE",
+      "plan_state": "x",
+      "evidence": ".omo/evidence/mcr-finish-project/task-7-be37.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-7-be37.md",
+      "evidence_substituted": false,
+      "commit": "feat(concert/relationship): adopt canonical block policy across consumers",
+      "delivering_commit": "c6051f812d2c5bce1e2374618d6bdc9b4f5ab3d6",
+      "verifier": "PASS",
+      "verifier_reason": "evidence .omo/evidence/mcr-finish-project/task-7-be37.md exists; ledger-recorded delivering commit c6051f812 is an ancestor of the candidate",
+      "gap": null
+    },
+    {
+      "row": "8",
+      "title": "Adopt the BE15 outbox and command receipt consumers in production",
+      "state": "DONE",
+      "plan_state": "x",
+      "evidence": ".omo/evidence/mcr-finish-project/task-8-be15.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-8-be15.md",
+      "evidence_substituted": false,
+      "commit": "feat(concert/receipts): enable production outbox and receipt consumers",
+      "delivering_commit": "004949bcfab93e7db86ffe7723dd66d610665433",
+      "verifier": "PASS",
+      "verifier_reason": "evidence .omo/evidence/mcr-finish-project/task-8-be15.md exists; ledger-recorded delivering commit 004949bcf is an ancestor of the candidate",
+      "gap": null
+    },
+    {
+      "row": "9",
+      "title": "Publish the BE03 application leaves and finish the OAuth boundary",
+      "state": "DONE",
+      "plan_state": "x",
+      "evidence": ".omo/evidence/mcr-finish-project/task-9-be03.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-9-be03.md",
+      "evidence_substituted": false,
+      "commit": "feat(auth): complete browser auth contract leaves",
+      "delivering_commit": "81dfe8df15d37820aaa14bc94c8838edadcf95bc",
+      "verifier": "PASS",
+      "verifier_reason": "evidence .omo/evidence/mcr-finish-project/task-9-be03.md exists; ledger-recorded delivering commit 81dfe8df1 is an ancestor of the candidate",
+      "gap": null
+    },
+    {
+      "row": "10",
+      "title": "Complete BE10/BE11 admission and room leases in production",
+      "state": "DONE",
+      "plan_state": "x",
+      "evidence": ".omo/evidence/mcr-finish-project/task-10-admission.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-10-admission.md",
+      "evidence_substituted": false,
+      "commit": "feat(world): complete one-use admission and room leases",
+      "delivering_commit": "1980fb0c7d6e1900d461b9d8ab4ef3ee7d3beefa",
+      "verifier": "PASS",
+      "verifier_reason": "evidence .omo/evidence/mcr-finish-project/task-10-admission.md exists; ledger-recorded delivering commit 1980fb0c7 is an ancestor of the candidate",
+      "gap": null
+    },
+    {
+      "row": "11",
+      "title": "Complete BE24/BE31/BE32 media, feed and post composition (media delivered; feed mutation transport gated on the shared proto envelope)",
+      "state": "GAP",
+      "plan_state": "~",
+      "evidence": ".omo/evidence/mcr-finish-project/task-11-media-feed.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-11-media-feed.md",
+      "evidence_substituted": false,
+      "commit": "feat(feed): complete media, post and comment composition",
+      "delivering_commit": null,
+      "verifier": "GAP",
+      "verifier_reason": "state [~] without quoted gap text",
+      "gap": null
+    },
+    {
+      "row": "12",
+      "title": "Add the route-parity test and close missing public templates",
+      "state": "DONE",
+      "plan_state": "x",
+      "evidence": ".omo/evidence/mcr-finish-project/task-12-parity.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-12-parity.md",
+      "evidence_substituted": false,
+      "commit": "feat(gateway): mount every registered concert command route",
+      "delivering_commit": "4465e3f6f6a9ae39aa5894e7e4fa58d523cfbd6a",
+      "verifier": "PASS",
+      "verifier_reason": "evidence .omo/evidence/mcr-finish-project/task-12-parity.md exists; ledger-recorded delivering commit 4465e3f6f is an ancestor of the candidate",
+      "gap": null
+    },
+    {
+      "row": "13",
+      "title": "Compose the real stack: BE44 compose, smoke script, restart proof",
+      "state": "DONE",
+      "plan_state": "x",
+      "evidence": ".omo/evidence/mcr-finish-project/task-13-stack.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-13-stack.md",
+      "evidence_substituted": false,
+      "commit": "feat(infra): add reproducible real-stack composition and smoke",
+      "delivering_commit": "d6de9bae6e08a6d7f7b0f4824435591cb3c11fde",
+      "verifier": "PASS",
+      "verifier_reason": "evidence .omo/evidence/mcr-finish-project/task-13-stack.md exists; ledger-recorded delivering commit d6de9bae6 is an ancestor of the candidate",
+      "gap": null
+    },
+    {
+      "row": "14",
+      "title": "Complete BE42 sealed account-deletion apply (coordinator + sealed apply delivered; serving binary does not yet mount it)",
+      "state": "GAP",
+      "plan_state": "~",
+      "evidence": ".omo/evidence/mcr-finish-project/task-14-be42.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-14-be42.md",
+      "evidence_substituted": false,
+      "commit": "feat(account): complete sealed account deletion apply",
+      "delivering_commit": "3f3c6331fdc2430ec7f5043d05783149b304d7d8",
+      "verifier": "GAP",
+      "verifier_reason": "state [~] without quoted gap text",
+      "gap": null
+    },
+    {
+      "row": "15",
+      "title": "Complete BE38 event settings, notices and flags",
+      "state": "DONE",
+      "plan_state": "x",
+      "evidence": ".omo/evidence/mcr-finish-project/task-15-be38.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-15-be38.md",
+      "evidence_substituted": false,
+      "commit": "feat(operations): complete settings, notices and flags",
+      "delivering_commit": "ccfc9fc0e647d38d55af5c777677b433e9cda6b5",
+      "verifier": "PASS",
+      "verifier_reason": "evidence .omo/evidence/mcr-finish-project/task-15-be38.md exists; ledger-recorded delivering commit ccfc9fc0e is an ancestor of the candidate",
+      "gap": null
+    },
+    {
+      "row": "16",
+      "title": "Complete BE41 event closure and archive (route + read-only proofs delivered; closure producer and archive HTTP endpoint unmounted)",
+      "state": "GAP",
+      "plan_state": "~",
+      "evidence": ".omo/evidence/mcr-finish-project/task-16-be41.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-16-be41.md",
+      "evidence_substituted": false,
+      "commit": "feat(lifecycle): complete closure, archive and cleanup",
+      "delivering_commit": "1bc74e3b87d35162bbd279751e9fb683e2364fb8",
+      "verifier": "GAP",
+      "verifier_reason": "state [~] without quoted gap text",
+      "gap": null
+    },
+    {
+      "row": "17",
+      "title": "Complete BE43 boundary and abuse hardening",
+      "state": "DONE",
+      "plan_state": "x",
+      "evidence": ".omo/evidence/mcr-finish-project/task-17-be43.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-17-be43.md",
+      "evidence_substituted": false,
+      "commit": "feat(gateway): harden public boundaries against abuse",
+      "delivering_commit": "800c830a65620c15cb6b9ae71f651715e7c9c730",
+      "verifier": "PASS",
+      "verifier_reason": "evidence .omo/evidence/mcr-finish-project/task-17-be43.md exists; ledger-recorded delivering commit 800c830a6 is an ancestor of the candidate",
+      "gap": null
+    },
+    {
+      "row": "18",
+      "title": "Freeze the venue policy inputs before any venue code",
+      "state": "DONE",
+      "plan_state": "x",
+      "evidence": ".omo/evidence/mcr-finish-project/task-18-venue-policy.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-18-venue-policy.md",
+      "evidence_substituted": false,
+      "commit": "docs(venue): freeze location, invitation and notes policy",
+      "delivering_commit": "bc452a9cfdf14f9f6024fed572f0c2450d5c585e",
+      "verifier": "PASS",
+      "verifier_reason": "evidence .omo/evidence/mcr-finish-project/task-18-venue-policy.md exists; ledger-recorded delivering commit bc452a9cf is an ancestor of the candidate",
+      "gap": null
+    },
+    {
+      "row": "19",
+      "title": "Implement VENU-BE-L01 location consent and friend freshness",
+      "state": "DONE",
+      "plan_state": "x",
+      "evidence": ".omo/evidence/mcr-finish-project/task-19-venu-l01.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-19-venu-l01.md",
+      "evidence_substituted": false,
+      "commit": "feat(venue/location): implement consent and freshness",
+      "delivering_commit": "47478ed51213bfd1c939df69968d3f3cce78ef43",
+      "verifier": "PASS",
+      "verifier_reason": "evidence .omo/evidence/mcr-finish-project/task-19-venu-l01.md exists; ledger-recorded delivering commit 47478ed51 is an ancestor of the candidate",
+      "gap": null
+    },
+    {
+      "row": "20",
+      "title": "Implement VENU-BE-M01 landmark invitations and conversation",
+      "state": "DONE",
+      "plan_state": "x",
+      "evidence": ".omo/evidence/mcr-finish-project/task-20-venu-m01.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-20-venu-m01.md",
+      "evidence_substituted": false,
+      "commit": "feat(venue/meeting): implement invitations and conversation",
+      "delivering_commit": "181e13da5163c272110d4dd92ceec48f2720fce3",
+      "verifier": "PASS",
+      "verifier_reason": "evidence .omo/evidence/mcr-finish-project/task-20-venu-m01.md exists; ledger-recorded delivering commit 181e13da5 is an ancestor of the candidate",
+      "gap": null
+    },
+    {
+      "row": "21",
+      "title": "Implement VENU-BE-N01 place notes and replies",
+      "state": "DONE",
+      "plan_state": "x",
+      "evidence": ".omo/evidence/mcr-finish-project/task-21-venu-n01.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-21-venu-n01.md",
+      "evidence_substituted": false,
+      "commit": "feat(venue/notes): implement place notes and replies",
+      "delivering_commit": "3489b69343547715f5d40e95947c337f27d195d3",
+      "verifier": "PASS",
+      "verifier_reason": "evidence .omo/evidence/mcr-finish-project/task-21-venu-n01.md exists; ledger-recorded delivering commit 3489b6934 is an ancestor of the candidate",
+      "gap": null
+    },
+    {
+      "row": "22",
+      "title": "Prove the venue backend on real PostgreSQL and route parity",
+      "state": "DONE",
+      "plan_state": "x",
+      "evidence": ".omo/evidence/mcr-finish-project/task-22-venue-tests.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-22-venue-tests.md",
+      "evidence_substituted": false,
+      "commit": "test(venue): prove L/M/N on real PostgreSQL and route parity",
+      "delivering_commit": "3fa4f939aa414b68a88a7974d4b12fa2d59a426c",
+      "verifier": "PASS",
+      "verifier_reason": "evidence .omo/evidence/mcr-finish-project/task-22-venue-tests.md exists; ledger-recorded delivering commit 3fa4f939a is an ancestor of the candidate",
+      "gap": null
+    },
+    {
+      "row": "23",
+      "title": "Prove the venue authorization and privacy matrix",
+      "state": "DONE",
+      "plan_state": "x",
+      "evidence": ".omo/evidence/mcr-finish-project/task-23-venue-authz.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-23-venue-authz.md",
+      "evidence_substituted": false,
+      "commit": "test(venue): cover the authorization and privacy matrix",
+      "delivering_commit": "42b48301e659aef1c3171620e0e3a1eb3c783e60",
+      "verifier": "PASS",
+      "verifier_reason": "evidence .omo/evidence/mcr-finish-project/task-23-venue-authz.md exists; ledger-recorded delivering commit 42b48301e is an ancestor of the candidate",
+      "gap": null
+    },
+    {
+      "row": "24",
+      "title": "Wire the production shell to the venue ports",
+      "state": "DONE",
+      "plan_state": "x",
+      "evidence": ".omo/evidence/mcr-finish-project/task-24-shell-ports.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-24-shell-ports.md",
+      "evidence_substituted": false,
+      "commit": "feat(venue): wire production shell ports",
+      "delivering_commit": "627f62b753f822ea68e501427ffc8e59b0a6c2e2",
+      "verifier": "PASS",
+      "verifier_reason": "evidence .omo/evidence/mcr-finish-project/task-24-shell-ports.md exists; ledger-recorded delivering commit 627f62b75 is an ancestor of the candidate",
+      "gap": null
+    },
+    {
+      "row": "25",
+      "title": "Complete the venue Map/Friends client states",
+      "state": "DONE",
+      "plan_state": "x",
+      "evidence": ".omo/evidence/mcr-finish-project/task-25-map-friends.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-25-map-friends.md",
+      "evidence_substituted": false,
+      "commit": "feat(venue): complete map and friends states",
+      "delivering_commit": "e61dd7f98135c656c6fb1fbad3337d0ccd5bdde5",
+      "verifier": "PASS",
+      "verifier_reason": "evidence .omo/evidence/mcr-finish-project/task-25-map-friends.md exists; ledger-recorded delivering commit e61dd7f98 is an ancestor of the candidate",
+      "gap": null
+    },
+    {
+      "row": "26",
+      "title": "Complete the invitation and conversation client",
+      "state": "DONE",
+      "plan_state": "x",
+      "evidence": ".omo/evidence/mcr-finish-project/task-26-invitations.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-26-invitations.md",
+      "evidence_substituted": false,
+      "commit": "feat(venue): complete invitations and conversation UI",
+      "delivering_commit": "1e590013ecf5c2a16b814f76a63527f86968f1c8",
+      "verifier": "PASS",
+      "verifier_reason": "evidence .omo/evidence/mcr-finish-project/task-26-invitations.md exists; ledger-recorded delivering commit 1e590013e is an ancestor of the candidate",
+      "gap": null
+    },
+    {
+      "row": "27",
+      "title": "Complete the place notes client",
+      "state": "DONE",
+      "plan_state": "x",
+      "evidence": ".omo/evidence/mcr-finish-project/task-27-notes.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-27-notes.md",
+      "evidence_substituted": false,
+      "commit": "feat(venue): complete notes map, composer and replies",
+      "delivering_commit": "330853af59e02706d6ce225dfcbde5a34729ba28",
+      "verifier": "PASS",
+      "verifier_reason": "evidence .omo/evidence/mcr-finish-project/task-27-notes.md exists; ledger-recorded delivering commit 330853af5 is an ancestor of the candidate",
+      "gap": null
+    },
+    {
+      "row": "28",
+      "title": "Execute VENU-IN01 with the 48 reference comparisons",
+      "state": "GAP",
+      "plan_state": "~",
+      "evidence": ".omo/evidence/mcr-finish-project/task-28-venu-in01/",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-28-venu-in01",
+      "evidence_substituted": false,
+      "commit": "test(venue): execute integrated flows and reference comparisons",
+      "delivering_commit": "a9dc07eabec72d287ce8d657564bf2e4c5eaf89a",
+      "verifier": "GAP",
+      "verifier_reason": "state [~] without quoted gap text",
+      "gap": null
+    },
+    {
+      "row": "29",
+      "title": "Pass IN02 real meetup and pickup",
+      "state": "DONE",
+      "plan_state": "x",
+      "evidence": ".omo/evidence/mcr-finish-project/task-29-in02.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-29-in02.md",
+      "evidence_substituted": false,
+      "commit": "test(in02): pass real meetup and pickup gate",
+      "delivering_commit": "f9f833d6e29b6adf2c84ab0c2605040bfb8315ae",
+      "verifier": "PASS",
+      "verifier_reason": "evidence .omo/evidence/mcr-finish-project/task-29-in02.md exists; ledger-recorded delivering commit f9f833d6e is an ancestor of the candidate",
+      "gap": null
+    },
+    {
+      "row": "30",
+      "title": "Pass IN03 social and privacy gate (external input dependent)",
+      "state": "GAP",
+      "plan_state": "~",
+      "evidence": ".omo/evidence/mcr-finish-project/task-30-in03.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-30-in03.md",
+      "evidence_substituted": false,
+      "commit": "test(in03): pass the social privacy gate where inputs exist",
+      "delivering_commit": "0e5ba4df17d0572c67ff0c63f87cdb0307e6430a",
+      "verifier": "GAP",
+      "verifier_reason": "state [~] without quoted gap text",
+      "gap": null
+    },
+    {
+      "row": "31",
+      "title": "Pass IN04 multiuser mural and moderation gate",
+      "state": "DONE",
+      "plan_state": "x",
+      "evidence": ".omo/evidence/mcr-finish-project/task-31-in04.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-31-in04.md",
+      "evidence_substituted": false,
+      "commit": "test(in04): pass multiuser mural and moderation gate",
+      "delivering_commit": "be15c23ef3efe28318e1693612bb6c3f202bd99b",
+      "verifier": "PASS",
+      "verifier_reason": "evidence .omo/evidence/mcr-finish-project/task-31-in04.md exists; ledger-recorded delivering commit be15c23ef is an ancestor of the candidate",
+      "gap": null
+    },
+    {
+      "row": "32",
+      "title": "Re-run IN01 deltas for changed features",
+      "state": "GAP",
+      "plan_state": "~",
+      "evidence": ".omo/evidence/mcr-finish-project/task-32-in01-delta.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-32-in01-delta.md",
+      "evidence_substituted": false,
+      "commit": "test(in01): re-run deltas for changed features",
+      "delivering_commit": "52b1e4542c20393dbfaec3c514674a0b83d366ec",
+      "verifier": "GAP",
+      "verifier_reason": "state [~] without quoted gap text",
+      "gap": null
+    },
+    {
+      "row": "33",
+      "title": "Finish PI08 Photo2 HUD and camera",
+      "state": "DONE",
+      "plan_state": "x",
+      "evidence": ".omo/evidence/mcr-finish-project/task-33-pi08/",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-33-pi08",
+      "evidence_substituted": false,
+      "commit": "feat(ui): finish PI08 Photo2 HUD and camera",
+      "delivering_commit": "dad8c9126ad7d69173762c18a9653a96969ead0c",
+      "verifier": "PASS",
+      "verifier_reason": "evidence .omo/evidence/mcr-finish-project/task-33-pi08 exists; ledger-recorded delivering commit dad8c9126 is an ancestor of the candidate",
+      "gap": null
+    },
+    {
+      "row": "34",
+      "title": "Finish PI11 rooms, nearby and help",
+      "state": "DONE",
+      "plan_state": "x",
+      "evidence": ".omo/evidence/mcr-finish-project/task-34-pi11/",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-34-pi11",
+      "evidence_substituted": false,
+      "commit": "feat(ui): finish PI11 rooms, nearby and help",
+      "delivering_commit": "600a8f809cde0543b7724b0b9ce551f209e8951c",
+      "verifier": "PASS",
+      "verifier_reason": "evidence .omo/evidence/mcr-finish-project/task-34-pi11 exists; ledger-recorded delivering commit 600a8f809 is an ancestor of the candidate",
+      "gap": null
+    },
+    {
+      "row": "35",
+      "title": "Obtain and integrate AR01 venue provenance inputs",
+      "state": "GAP",
+      "plan_state": "~",
+      "evidence": ".omo/evidence/mcr-finish-project/task-35-ar01.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-35-ar01.md",
+      "evidence_substituted": false,
+      "commit": "docs(venue): register AR01 provenance and qualification",
+      "delivering_commit": "39a1b4e047e7383cfe2f6eba1f8eccd919ee40af",
+      "verifier": "GAP",
+      "verifier_reason": "state [~] without quoted gap text",
+      "gap": null
+    },
+    {
+      "row": "36",
+      "title": "Pass QA06 mobile visual acceptance",
+      "state": "GAP",
+      "plan_state": "~",
+      "evidence": ".omo/evidence/mcr-finish-project/task-36-qa06/",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-36-qa06",
+      "evidence_substituted": false,
+      "commit": "test(visual): pass QA06 reference acceptance",
+      "delivering_commit": "ebab719741c36d618431ad3eca3703d095146fa3",
+      "verifier": "GAP",
+      "verifier_reason": "state [~] without quoted gap text",
+      "gap": null
+    },
+    {
+      "row": "37",
+      "title": "Verify the character atlas production status",
+      "state": "GAP",
+      "plan_state": "~",
+      "evidence": ".omo/evidence/mcr-finish-project/task-37-atlas.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-37-atlas.md",
+      "evidence_substituted": false,
+      "commit": "test(avatar): verify production atlas admission",
+      "delivering_commit": "cc9691cec5e3f0eaa0ebfd049c56ac9d7a3cfbb7",
+      "verifier": "GAP",
+      "verifier_reason": "state [~] without quoted gap text",
+      "gap": null
+    },
+    {
+      "row": "38",
+      "title": "Pass QA03 database race suite",
+      "state": "DONE",
+      "plan_state": "x",
+      "evidence": ".omo/evidence/mcr-finish-project/task-38-qa03.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-38-qa03.md",
+      "evidence_substituted": false,
+      "commit": "test(qa03): pass database race suite",
+      "delivering_commit": "5c592ea56d8e8a87914557e1febdb0fba16e3c24",
+      "verifier": "PASS",
+      "verifier_reason": "evidence .omo/evidence/mcr-finish-project/task-38-qa03.md exists; ledger-recorded delivering commit 5c592ea56 is an ancestor of the candidate",
+      "gap": null
+    },
+    {
+      "row": "39",
+      "title": "Pass QA04 privacy and authorization matrix",
+      "state": "DONE",
+      "plan_state": "x",
+      "evidence": ".omo/evidence/mcr-finish-project/task-39-qa04.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-39-qa04.md",
+      "evidence_substituted": false,
+      "commit": "test(qa04): pass privacy and authorization matrix",
+      "delivering_commit": "ff835cd32530efbc3eff83e9ef246fbf2e7d5c5e",
+      "verifier": "PASS",
+      "verifier_reason": "evidence .omo/evidence/mcr-finish-project/task-39-qa04.md exists; ledger-recorded delivering commit ff835cd32 is an ancestor of the candidate",
+      "gap": null
+    },
+    {
+      "row": "40",
+      "title": "Pass QA05 realtime failure suite",
+      "state": "DONE",
+      "plan_state": "x",
+      "evidence": ".omo/evidence/mcr-finish-project/task-40-qa05.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-40-qa05.md",
+      "evidence_substituted": false,
+      "commit": "test(qa05): pass realtime failure suite",
+      "delivering_commit": "d37025cb3f46915ef7589bda560f209103b02f37",
+      "verifier": "PASS",
+      "verifier_reason": "evidence .omo/evidence/mcr-finish-project/task-40-qa05.md exists; ledger-recorded delivering commit d37025cb3 is an ancestor of the candidate",
+      "gap": null
+    },
+    {
+      "row": "41",
+      "title": "Pass QA09 recovery and lifecycle rehearsal",
+      "state": "GAP",
+      "plan_state": "~",
+      "evidence": ".omo/evidence/mcr-finish-project/task-41-qa09.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-41-qa09.md",
+      "evidence_substituted": false,
+      "commit": "test(qa09): pass recovery and lifecycle rehearsal",
+      "delivering_commit": "593ea89767acd43c6e0c8c991f4ebbc180b65e12",
+      "verifier": "GAP",
+      "verifier_reason": "state [~] without quoted gap text",
+      "gap": null
+    },
+    {
+      "row": "42",
+      "title": "Pass QA10 candidate provenance and release checks",
+      "state": "GAP",
+      "plan_state": "~",
+      "evidence": ".omo/evidence/mcr-finish-project/task-42-qa10.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-42-qa10.md",
+      "evidence_substituted": false,
+      "commit": "test(qa10): compose same-candidate release evidence",
+      "delivering_commit": "a9bbedbecf93337164040a65e8a7235b5fda5a6b",
+      "verifier": "GAP",
+      "verifier_reason": "state [~] without quoted gap text",
+      "gap": null
+    },
+    {
+      "row": "43",
+      "title": "Close FE24, FE33 and FE34",
+      "state": "GAP",
+      "plan_state": "~",
+      "evidence": ".omo/evidence/mcr-finish-project/task-43-fe-closure.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-43-fe-closure.md",
+      "evidence_substituted": false,
+      "commit": "feat(frontend): close FE24, FE33 and FE34",
+      "delivering_commit": "8983271a9caf5f4b3ec27d46024d543b8501b0b2",
+      "verifier": "GAP",
+      "verifier_reason": "state [~] without quoted gap text",
+      "gap": null
+    },
+    {
+      "row": "44",
+      "title": "Document deployment and production inputs",
+      "state": "DONE",
+      "plan_state": "x",
+      "evidence": ".omo/evidence/mcr-finish-project/task-44-deployment.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-44-deployment.md",
+      "evidence_substituted": false,
+      "commit": "docs(ops): add staging and production runbook",
+      "delivering_commit": "847c75b6b7a1636055f2794f558c6092f09ac2e1",
+      "verifier": "PASS",
+      "verifier_reason": "evidence .omo/evidence/mcr-finish-project/task-44-deployment.md exists; ledger-recorded delivering commit 847c75b6b is an ancestor of the candidate",
+      "gap": null
+    },
+    {
+      "row": "45",
+      "title": "Obtain FE10 eligibility/legal publication and bind it",
+      "state": "GAP",
+      "plan_state": "~",
+      "evidence": ".omo/evidence/mcr-finish-project/task-45-fe10.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-45-fe10.md",
+      "evidence_substituted": false,
+      "commit": "feat(auth): bind approved eligibility and consent publication",
+      "delivering_commit": "39a1b4e047e7383cfe2f6eba1f8eccd919ee40af",
+      "verifier": "GAP",
+      "verifier_reason": "state [~] without quoted gap text",
+      "gap": null
+    },
+    {
+      "row": "46",
+      "title": "Resolve the W04 invitation policy and close the 10 extension IA states",
+      "state": "DONE",
+      "plan_state": "x",
+      "evidence": ".omo/evidence/mcr-finish-project/task-46-w04.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-46-w04.md",
+      "evidence_substituted": false,
+      "commit": "docs(venue): resolve W04 policy and map extension IA",
+      "delivering_commit": "9aefc3b14205e076c673db1add285b188422b3b3",
+      "verifier": "PASS",
+      "verifier_reason": "evidence .omo/evidence/mcr-finish-project/task-46-w04.md exists; ledger-recorded delivering commit 9aefc3b14 is an ancestor of the candidate",
+      "gap": null
+    },
+    {
+      "row": "47",
+      "title": "Reconcile IN05 and publish the release decision",
+      "state": "OPEN",
+      "plan_state": " ",
+      "evidence": ".omo/evidence/mcr-finish-project/task-47-in05.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-47-in05.md",
+      "evidence_substituted": false,
+      "commit": "docs(release): publish IN05 reconciliation",
+      "delivering_commit": null,
+      "verifier": "OPEN",
+      "verifier_reason": "row not closed",
+      "gap": null
+    },
+    {
+      "row": "48",
+      "title": "Restore blocking CI last",
+      "state": "OPEN",
+      "plan_state": " ",
+      "evidence": ".omo/evidence/mcr-finish-project/task-48-ci.md",
+      "evidence_resolved": null,
+      "evidence_substituted": false,
+      "commit": "ci: add blocking build, test and contract gates",
+      "delivering_commit": null,
+      "verifier": "OPEN",
+      "verifier_reason": "row not closed",
+      "gap": null
+    },
+    {
+      "row": "49",
+      "title": "Add the qualified post mutation envelope and event-scoped feed routes",
+      "state": "DONE",
+      "plan_state": "x",
+      "evidence": ".omo/evidence/mcr-finish-project/task-49-feed-mutations.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-49-feed-mutations.md",
+      "evidence_substituted": false,
+      "commit": "feat(feed): add qualified post mutation envelope and routes",
+      "delivering_commit": "a5389a857bf3c094083edd18b0af4a5e0a43facc",
+      "verifier": "PASS",
+      "verifier_reason": "evidence .omo/evidence/mcr-finish-project/task-49-feed-mutations.md exists; ledger-recorded delivering commit a5389a857 is an ancestor of the candidate",
+      "gap": null
+    },
+    {
+      "row": "50",
+      "title": "Mount the account-deletion runtime and prove the end-to-end request",
+      "state": "DONE",
+      "plan_state": "x",
+      "evidence": ".omo/evidence/mcr-finish-project/task-50-deletion-mount.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-50-deletion-mount.md",
+      "evidence_substituted": false,
+      "commit": "feat(account): mount the sealed deletion coordinator in serving",
+      "delivering_commit": "79d18315e4b07f07e41f10cbdace8267f453fdf9",
+      "verifier": "PASS",
+      "verifier_reason": "evidence .omo/evidence/mcr-finish-project/task-50-deletion-mount.md exists; ledger-recorded delivering commit 79d18315e is an ancestor of the candidate",
+      "gap": null
+    },
+    {
+      "row": "51",
+      "title": "Compose the closure producer and the archive HTTP endpoint",
+      "state": "GAP",
+      "plan_state": "~",
+      "evidence": ".omo/evidence/mcr-finish-project/task-51-closure-producer.md",
+      "evidence_resolved": ".omo/evidence/mcr-finish-project/task-51-closure-producer.md",
+      "evidence_substituted": false,
+      "commit": "feat(lifecycle): compose closure producer and archive endpoint",
+      "delivering_commit": "2e4d7fc90efc0e967fba74a2f8c5b94b338900d6",
+      "verifier": "GAP",
+      "verifier_reason": "state [~] without quoted gap text",
+      "gap": null
+    },
+    {
+      "row": "F1",
+      "title": "Plan compliance audit",
+      "state": "OPEN",
+      "plan_state": " ",
+      "evidence": ".omo/evidence/mcr-finish-project/f1-compliance.md",
+      "evidence_resolved": null,
+      "evidence_substituted": false,
+      "commit": null,
+      "delivering_commit": "8352b988af3665b55c4036967ef891d6fc459286",
+      "verifier": "OPEN",
+      "verifier_reason": "row not closed",
+      "gap": null
+    },
+    {
+      "row": "F2",
+      "title": "Code quality review",
+      "state": "OPEN",
+      "plan_state": " ",
+      "evidence": ".omo/evidence/mcr-finish-project/f2-quality.md",
+      "evidence_resolved": null,
+      "evidence_substituted": false,
+      "commit": null,
+      "delivering_commit": null,
+      "verifier": "OPEN",
+      "verifier_reason": "row not closed",
+      "gap": null
+    },
+    {
+      "row": "F3",
+      "title": "Real manual QA on the final candidate",
+      "state": "OPEN",
+      "plan_state": " ",
+      "evidence": ".omo/evidence/mcr-finish-project/f3-manual-qa/",
+      "evidence_resolved": null,
+      "evidence_substituted": false,
+      "commit": null,
+      "delivering_commit": null,
+      "verifier": "OPEN",
+      "verifier_reason": "row not closed",
+      "gap": null
+    },
+    {
+      "row": "F4",
+      "title": "Ideal-state fidelity check",
+      "state": "OPEN",
+      "plan_state": " ",
+      "evidence": ".omo/evidence/mcr-finish-project/f4-ideal-state.md",
+      "evidence_resolved": null,
+      "evidence_substituted": false,
+      "commit": null,
+      "delivering_commit": null,
+      "verifier": "OPEN",
+      "verifier_reason": "row not closed",
+      "gap": null
+    },
+    {
+      "row": "F5",
+      "title": "Release audit",
+      "state": "OPEN",
+      "plan_state": " ",
+      "evidence": ".omo/evidence/mcr-finish-project/f5-release.md",
+      "evidence_resolved": null,
+      "evidence_substituted": false,
+      "commit": null,
+      "delivering_commit": null,
+      "verifier": "OPEN",
+      "verifier_reason": "row not closed",
+      "gap": null
+    }
+  ],
+  "closed_row_failures": [],
+  "name_checks": {
+    "original_112": {
+      "status": "PASS",
+      "register_ids": 112,
+      "generated_ids": 118,
+      "generated_original_ids": 112,
+      "generated_extension_ids": [
+        "EX01",
+        "EX02",
+        "EX03",
+        "EX04",
+        "EX05",
+        "EX06"
+      ],
+      "deferred": [
+        "QA08"
+      ],
+      "reopen_names": [
+        "FE24",
+        "FE33"
+      ]
+    },
+    "ia_61": {
+      "status": "PASS",
+      "required": 61,
+      "generated_p0": 61,
+      "generated_p1_excluded": [
+        "M10",
+        "R02",
+        "X02"
+      ]
+    },
+    "design_12": {
+      "status": "PASS",
+      "families": [
+        "PI01",
+        "PI02",
+        "PI03",
+        "PI04",
+        "PI05",
+        "PI06",
+        "PI07",
+        "PI08",
+        "PI09",
+        "PI10",
+        "PI11",
+        "PI12"
+      ],
+      "ia_family_count": 11,
+      "families_without_ia_rows": [
+        "PI01"
+      ]
+    },
+    "venue_8": {
+      "status": "PASS",
+      "deliverables": [
+        "VENU-ART01",
+        "VENU-BE-L01",
+        "VENU-FE-L01",
+        "VENU-BE-M01",
+        "VENU-FE-M01",
+        "VENU-BE-N01",
+        "VENU-FE-N01",
+        "VENU-IN01"
+      ]
+    },
+    "extension_ia_10": {
+      "status": "PASS",
+      "states": [
+        "Venue overview",
+        "Friends list/clusters",
+        "Location consent/status controls",
+        "Selected friend/request",
+        "Fixed-place invitation composer",
+        "Invitation decisions/status",
+        "Meeting conversation",
+        "Notes map/list",
+        "Note composer/audience/expiry",
+        "Note/replies/Meet Here"
+      ],
+      "source": ".omo/evidence/mcr-finish-project/task-46-w04.md#Source of the ten extension IA states"
+    },
+    "gap_14": {
+      "status": "PASS",
+      "expected": [
+        "11",
+        "14",
+        "16",
+        "28",
+        "30",
+        "32",
+        "35",
+        "36",
+        "37",
+        "41",
+        "42",
+        "43",
+        "45",
+        "51"
+      ],
+      "found": [
+        "11",
+        "14",
+        "16",
+        "28",
+        "30",
+        "32",
+        "35",
+        "36",
+        "37",
+        "41",
+        "42",
+        "43",
+        "45",
+        "51"
+      ]
+    }
+  },
+  "gaps": [
+    {
+      "row": "11",
+      "title": "Complete BE24/BE31/BE32 media, feed and post composition (media delivered; feed mutation transport gated on the shared proto envelope)",
+      "owner": "Feed/Post owner (task 49 envelope landed; media pipeline qualified, feed mutation transport deliberately closed)",
+      "gap": ""
+    },
+    {
+      "row": "14",
+      "title": "Complete BE42 sealed account-deletion apply (coordinator + sealed apply delivered; serving binary does not yet mount it)",
+      "owner": "Account/Concert deletion owner (task 50 mounted the coordinator; serving convergence unproven)",
+      "gap": ""
+    },
+    {
+      "row": "16",
+      "title": "Complete BE41 event closure and archive (route + read-only proofs delivered; closure producer and archive HTTP endpoint unmounted)",
+      "owner": "Concert lifecycle owner (task 51 producer gap)",
+      "gap": ""
+    },
+    {
+      "row": "28",
+      "title": "Execute VENU-IN01 with the 48 reference comparisons",
+      "owner": "Venue Map/Friends authority owner (bilateral friend authority; reference-base Photo 5 approval is a product decision)",
+      "gap": ""
+    },
+    {
+      "row": "30",
+      "title": "Pass IN03 social and privacy gate (external input dependent)",
+      "owner": "IN03 social owner + external provider/claims/mail provenance requester",
+      "gap": ""
+    },
+    {
+      "row": "32",
+      "title": "Re-run IN01 deltas for changed features",
+      "owner": "World/Feed composition owner (Social policy transport and Feed product mode)",
+      "gap": ""
+    },
+    {
+      "row": "35",
+      "title": "Obtain and integrate AR01 venue provenance inputs",
+      "owner": "AR01 venue-provenance owner + external venue operator input",
+      "gap": ""
+    },
+    {
+      "row": "36",
+      "title": "Pass QA06 mobile visual acceptance",
+      "owner": "QA06 visual owner; blocked producers named in the gap (siteplan, operator, safety, providers, legal/archive)",
+      "gap": ""
+    },
+    {
+      "row": "37",
+      "title": "Verify the character atlas production status",
+      "owner": "World release/atlas activation owner (tracked with task 51)",
+      "gap": ""
+    },
+    {
+      "row": "41",
+      "title": "Pass QA09 recovery and lifecycle rehearsal",
+      "owner": "QA09 recovery owner (deletion saga convergence)",
+      "gap": ""
+    },
+    {
+      "row": "42",
+      "title": "Pass QA10 candidate provenance and release checks",
+      "owner": "QA10 release-composition publisher (must re-run against the final release SHA)",
+      "gap": ""
+    },
+    {
+      "row": "43",
+      "title": "Close FE24, FE33 and FE34",
+      "owner": "Frontend gift owner + BE24 Gateway media composition owner",
+      "gap": ""
+    },
+    {
+      "row": "45",
+      "title": "Obtain FE10 eligibility/legal publication and bind it",
+      "owner": "FE10 legal/eligibility owner + external approved-publication requester",
+      "gap": ""
+    },
+    {
+      "row": "51",
+      "title": "Compose the closure producer and the archive HTTP endpoint",
+      "owner": "Event lifecycle owner (LifecycleOwners for FREEZE_MURAL..CLEANUP)",
+      "gap": ""
+    }
+  ],
+  "register_drift": {
+    "row_level_counts": {
+      "DEFERRED_BY_USER": 1,
+      "DONE": 65,
+      "IN_PROGRESS": 39,
+      "OPEN": 3,
+      "REOPENED": 1,
+      "WAITING_INPUT": 3
+    },
+    "declared_counts": {
+      "DONE": 65,
+      "WAITING_INPUT": 3,
+      "IN_PROGRESS": 39,
+      "REOPENED": 1,
+      "DEFERRED_BY_USER": 1,
+      "OPEN": 3
+    },
+    "counts_match": true,
+    "done_tasks": 65,
+    "remaining_active_tasks": 46,
+    "fe33_row_state": "DONE",
+    "fe24_row_state": "REOPENED",
+    "reopened_historical_tasks": [
+      "FE24",
+      "FE33"
+    ],
+    "c07": {
+      "recorded_state": null,
+      "state": "DONE",
+      "evidence": []
+    },
+    "qa08": {
+      "recorded_state": "IN_PROGRESS",
+      "state": "DEFERRED_BY_USER",
+      "evidence": []
+    },
+    "narrative_stale": [
+      "The ten extension IA states are mapped to existing components, already-granted routes and named state owners in `.omo/evidence/mcr-finish-project/task-46-w04.md`: **10/10 mapped, 0 UNMAPPED, no URL added**. They are panel states inside `/world/map` or the two previously granted `/meet/invitations/:invitationId` routes. This mapping does not change VENU-IN01: **10 extension IA and 48 reference comparisons remain NOT_RUN**; only the scoped component-level substituted-fixture captures from rows 25\u201327 exist. Counts stay 63/111 active DONE, design 10/12, VENU 1/8, QA08 `DEFERRED_BY_USER`.",
+      "**Original tasks:63/111 active DONE (56.8%),48 remaining;112 original IDs and61 original IA preserved. Current original criteria outcomes65; frozen historical39;26 new original closures since replan. Design10/12, PI08/PI11 open. VENU1/8, seven remaining;10 extension IA and48 comparisons NOT_RUN. QA08 DEFERRED_BY_USER/nonpass. Product NOT_READY; full112false.**"
+    ]
+  },
+  "qa08": {
+    "status": "PASS",
+    "state": "DEFERRED_BY_USER",
+    "recorded_state": "IN_PROGRESS",
+    "evidence": [],
+    "reopen_when": "A named user decision re-authorizes performance qualification; then re-run the QA08 capacity/soak suite (including the 200-concurrent-user scenario) on a fresh candidate with measured reports and publish the result as a new task delta. Until then no capacity claim is permitted."
+  },
+  "not_run_inventory": [
+    {
+      "source": "register AR01",
+      "item": "WAITING_INPUT",
+      "detail": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "source": "register FE10",
+      "item": "WAITING_INPUT",
+      "detail": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task."
+    },
+    {
+      "source": "register IN02",
+      "item": "OPEN",
+      "detail": "No completed original integration/release gate is established by the current delivery receipts."
+    },
+    {
+      "source": "register IN03",
+      "item": "WAITING_INPUT",
+      "detail": "No completed original integration/release gate is established by the current delivery receipts."
+    },
+    {
+      "source": "register IN04",
+      "item": "OPEN",
+      "detail": "No completed original integration/release gate is established by the current delivery receipts."
+    },
+    {
+      "source": "register IN05",
+      "item": "OPEN",
+      "detail": "No completed original integration/release gate is established by the current delivery receipts."
+    },
+    {
+      "source": "register QA08",
+      "item": "DEFERRED_BY_USER / NOT_RUN",
+      "detail": "Performance qualification including 200 concurrent users is deferred; it is not passed or completed and gates no current functional delivery."
+    }
+  ]
+}
