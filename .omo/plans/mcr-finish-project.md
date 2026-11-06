@@ -370,7 +370,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   Parallelization: Wave 4 | Blocked by: 24 | Blocks: 28
   References: `frontend/src/features/paradise-city-map/`, `frontend/src/app/venue-root/`, `docs/mcr/venue-feature-amendment-2026-11-05.md` Friends flows
   Acceptance criteria: denied permission shows a safe state; paused/stale labels are truthful; revoke removes the peer; browser run at 360/390/430.
-  QA scenarios: happy share -> friend sees the cluster; failure deny permission -> no location request and a clear message. Evidence `.omo/evidence/mcr-finish-project/task-25-venue-friends.md`.
+  QA scenarios: happy share -> friend sees the cluster; failure deny permission -> no location request and a clear message. Evidence `.omo/evidence/mcr-finish-project/task-25-map-friends.md`.
   Recommended task executor category: deep-low
   Commit: Y | `feat(venue): complete map and friends states`
 
@@ -380,7 +380,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   Parallelization: Wave 4 | Blocked by: 24 | Blocks: 28
   References: `frontend/src/features/venue-invitations/`, `frontend/src/features/meeting-conversation/`, `frontend/src/app/venue-community-entry/`
   Acceptance criteria: accept/decline update the producer; cancel respects producer rights; conversation opens only for authorized friends; browser run at three widths.
-  QA scenarios: happy invite -> accept -> message round trip; failure blocked friend -> conversation unavailable. Evidence `.omo/evidence/mcr-finish-project/task-26-venue-invites.md`.
+  QA scenarios: happy invite -> accept -> message round trip; failure blocked friend -> conversation unavailable. Evidence `.omo/evidence/mcr-finish-project/task-26-invitations.md`.
   Recommended task executor category: deep-low
   Commit: Y | `feat(venue): complete invitations and conversation UI`
 
@@ -493,7 +493,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   Parallelization: Wave 6 | Blocked by: 4 | Blocks: 47
   References: `frontend/src/entities/avatar/character-source-pack.json`, `docs/mcr/character-art.md`, `frontend/public/world/avatars/`
   Acceptance criteria: atlas manifest serves and renders in world/profile/gift surfaces; fallback remains prohibited; source hashes match.
-  QA scenarios: happy avatar renders in three surfaces; failure missing manifest -> truthful unavailable. Evidence `.omo/evidence/mcr-finish-project/task-37-character.md`.
+  QA scenarios: happy avatar renders in three surfaces; failure missing manifest -> truthful unavailable. Evidence `.omo/evidence/mcr-finish-project/task-37-atlas.md`.
   Recommended task executor category: deep-low
   Commit: Y | `test(avatar): verify production atlas admission`
   Gap (2026-11-06): reviewed motion manifest mcr_selected_motion_reviewed_20261104 and its 1280x1856/576-cell atlas are produced, hash-pinned, guarded and loader-wired, but are NOT served: compose sets no CONCERT_GRPC_ADDR and none of the six CONCERT_* release settings, the reviewed bootstrap exists only as a runtime test fixture, and reviewed-handoff.json records production_activation NOT_RUN. Production activation and a served-renderer capture remain open with the World release path (row 51). Evidence: .omo/evidence/mcr-finish-project/task-37-atlas.md; guard commit cc9691cec.
