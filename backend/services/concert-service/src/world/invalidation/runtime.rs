@@ -131,7 +131,20 @@ impl RemoteInvalidationRuntime {
                 let head = self.sources[i]
                     .read_head(self.consumer, &budget)
                     .await
-                    .map_err(|_| ApplyError::UnqualifiedSource)?;
+                    .map_err(|error| {
+                        eprintln!(
+                            "World replay bootstrap unavailable: {:?} from source {} as consumer {}",
+                            error, i, self.consumer
+                        );
+                        match error {
+                            crate::adapters::out::relationship_authority::invalidation::ReadError::Unauthenticated
+                            | crate::adapters::out::relationship_authority::invalidation::ReadError::PermissionDenied
+                            | crate::adapters::out::relationship_authority::invalidation::ReadError::InvalidConfiguration => {
+                                ApplyError::UnqualifiedSource
+                            }
+                            _ => ApplyError::Unavailable,
+                        }
+                    })?;
                 self.cursors[i] =
                     Some(checkpoint::baseline(&self.pool, self.consumer, self.run, &head).await?);
             }

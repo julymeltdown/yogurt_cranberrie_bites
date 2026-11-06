@@ -8,6 +8,7 @@ use crate::{
         invalidation::{Removal, Scope as RemovalScope},
     },
 };
+use concert_application::commands::FingerprintKeys;
 use sqlx::{postgres::PgTransactionManager, TransactionManager};
 use std::sync::{Arc, Mutex};
 
@@ -325,6 +326,29 @@ impl<A: FencedLifecycleAuthority, N: LifecycleOwners> ReadOnlyCommandDriver<A, N
             return Err(CommandError::Denied);
         }
         self.service.job(actor, job).await
+    }
+    pub async fn close_response(
+        &self,
+        actor: Actor,
+        key: Uuid,
+        body: &[u8],
+        keys: &FingerprintKeys,
+    ) -> axum::response::Response {
+        if actor.event != self.event {
+            return crate::event_lifecycle::http::denied_response();
+        }
+        // The driver's command installs its ephemeral fence permission before the
+        // durable command. Projecting through the inner service would bypass that
+        // preparation and always refuse START as unavailable.
+        let command = match crate::event_lifecycle::http::parse(body) {
+            Ok(v) => v,
+            Err(e) => return crate::event_lifecycle::http::command_error(e),
+        };
+        let receipt = match self.command(actor, key, command, keys).await {
+            Ok(v) => v,
+            Err(e) => return crate::event_lifecycle::http::command_error(e),
+        };
+        crate::event_lifecycle::http::receipt_response(&self.service, actor, receipt).await
     }
     pub async fn run_next(&self, actor: Actor, job: Uuid) -> Result<Job, CommandError> {
         if actor.event != self.event {

@@ -51,11 +51,8 @@ pub async fn configured_store(
         pool,
         Arc::new(RpcSettlementResolver::new(tls, credential, &endpoints)?),
     )?;
-    store
-        .verify_ready(&OperationBudget::new(
-            Instant::now() + Duration::from_secs(2),
-        )?)
-        .await?;
+    // Verification is supervised after the listener binds so settlement dependents
+    // can reach this service; readiness stays false until it succeeds.
     // Unknown producer outcomes stay quarantined. Recovery never guesses abort.
     if let Err(status) = store
         .recover(&OperationBudget::new(
@@ -67,6 +64,59 @@ pub async fn configured_store(
     }
     Ok(Some(store))
 }
+
+const READY_WINDOW: Duration = Duration::from_secs(10);
+const READY_INTERVAL: Duration = Duration::from_millis(250);
+const READY_ATTEMPT: Duration = Duration::from_secs(2);
+
+fn retryable(status: &tonic::Status) -> bool {
+    matches!(
+        status.code(),
+        tonic::Code::Unavailable
+            | tonic::Code::DeadlineExceeded
+            | tonic::Code::Aborted
+            | tonic::Code::ResourceExhausted
+    )
+}
+
+async fn retry_ready<'a, F>(window: Duration, interval: Duration, mut attempt: F) -> Result<(), tonic::Status>
+where
+    F: FnMut(Duration) -> std::pin::Pin<Box<dyn std::future::Future<Output = Result<(), tonic::Status>> + Send + 'a>>,
+{
+    let deadline = Instant::now() + window;
+    let mut last = None;
+    loop {
+        let now = Instant::now();
+        let remaining = deadline.saturating_duration_since(now);
+        if remaining.is_zero() {
+            return Err(last.unwrap_or_else(|| {
+                tonic::Status::unavailable("Owner authority unavailable")
+            }));
+        }
+        match attempt(remaining.min(READY_ATTEMPT)).await {
+            Ok(()) => return Ok(()),
+            Err(status) if !retryable(&status) => return Err(status),
+            Err(status) => last = Some(status),
+        }
+        let now = Instant::now();
+        if now >= deadline {
+            return Err(last.expect("one attempt completed"));
+        }
+        tokio::time::sleep(interval.min(deadline.saturating_duration_since(now))).await;
+    }
+}
+
+pub async fn verify_ready_bounded(store: &PgOwnerAuthority) -> Result<(), tonic::Status> {
+    retry_ready(READY_WINDOW, READY_INTERVAL, |remaining| {
+        Box::pin(async move {
+            let budget = OperationBudget::new(Instant::now() + remaining)
+                .map_err(|_| tonic::Status::unavailable("Owner authority unavailable"))?;
+            store.verify_ready(&budget).await
+        })
+    })
+    .await
+}
+
 pub fn readiness_probe(store: Option<PgOwnerAuthority>) -> Probe {
     Probe::new(
         "concert-owner-authority",
@@ -125,4 +175,54 @@ pub fn owner_caller_registry() -> anyhow::Result<platform::grpc_auth::CallerRegi
         ],
         &[Workload::Concert],
     )
+}
+
+#[cfg(test)]
+mod startup_retry_tests {
+    use super::*;
+
+    #[tokio::test]
+    async fn late_settlement_owner_is_reached_within_the_window() {
+        let mut calls = 0;
+        let result = retry_ready(Duration::from_millis(200), Duration::from_millis(5), |_| {
+            calls += 1;
+            let pending = calls < 3;
+            Box::pin(async move {
+                if pending {
+                    Err(tonic::Status::unavailable("Owner authority unavailable"))
+                } else {
+                    Ok(())
+                }
+            })
+        })
+        .await;
+        assert!(result.is_ok());
+        assert_eq!(calls, 3);
+    }
+
+    #[tokio::test]
+    async fn exhausted_window_returns_the_original_error_without_ready_state() {
+        let mut calls = 0;
+        let result = retry_ready(Duration::from_millis(20), Duration::from_millis(4), |_| {
+            calls += 1;
+            Box::pin(async { Err(tonic::Status::unavailable("Owner authority unavailable")) })
+        })
+        .await;
+        let status = result.expect_err("exhaustion must fail");
+        assert_eq!(status.code(), tonic::Code::Unavailable);
+        assert_eq!(status.message(), "Owner authority unavailable");
+        assert!(calls > 1);
+    }
+
+    #[tokio::test]
+    async fn definitive_refusal_fails_without_retrying() {
+        let mut calls = 0;
+        let result = retry_ready(Duration::from_millis(200), Duration::from_millis(5), |_| {
+            calls += 1;
+            Box::pin(async { Err(tonic::Status::permission_denied("Owner authority denied")) })
+        })
+        .await;
+        assert_eq!(result.expect_err("refusal").code(), tonic::Code::PermissionDenied);
+        assert_eq!(calls, 1);
+    }
 }

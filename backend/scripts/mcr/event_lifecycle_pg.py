@@ -173,7 +173,7 @@ def main():
             evidence['native_adapter_suite']='NOT_RUN'
             if args.native_binary:
                 if len(args.native_binary)!=3:raise AssertionError('Provide event_lifecycle, event_lifecycle_archive and event_lifecycle_read_only native binaries')
-                expected={'event_lifecycle_full_migration_ledger_and_reapply','event_lifecycle_idempotent_start_receipt_is_admission_only','event_lifecycle_partial_failure_rolls_back_and_explicit_resume_skips_success','event_lifecycle_retention_wait_and_current_authority_fail_closed','event_lifecycle_concurrent_workers_and_wrong_receipt','event_lifecycle_archive_deletion_invalidates_cursor_and_never_reintroduces_content','event_lifecycle_restart_seed','event_lifecycle_restart_resume','event_lifecycle_actual_privacy_sql_expires_and_cleans_only_owned_event','event_lifecycle_admin_closure_route_admits_read_only_and_refuses_rewrite'}
+                expected={'event_lifecycle_full_migration_ledger_and_reapply','event_lifecycle_idempotent_start_receipt_is_admission_only','event_lifecycle_partial_failure_rolls_back_and_explicit_resume_skips_success','event_lifecycle_retention_wait_and_current_authority_fail_closed','event_lifecycle_concurrent_workers_and_wrong_receipt','event_lifecycle_archive_deletion_invalidates_cursor_and_never_reintroduces_content','event_lifecycle_restart_seed','event_lifecycle_restart_resume','event_lifecycle_actual_privacy_sql_expires_and_cleans_only_owned_event','event_lifecycle_admin_closure_route_admits_read_only_and_refuses_rewrite','operator_role_fence_is_event_scoped_revisioned_and_revocation_aware','public_post_archive_projects_only_current_permitted_content'}
                 expected.update({'event_lifecycle_read_only_actual_components_replay_and_foreign_isolation', 'event_lifecycle_read_only_concurrent_start_single_component_receipt', 'event_lifecycle_read_only_owner_failure_rolls_back_every_sql_effect', 'event_lifecycle_read_only_preconsumed_claim_and_new_lease_are_denied', 'event_lifecycle_read_only_publication_share_lock_blocks_start', 'event_lifecycle_read_only_restart_resume', 'event_lifecycle_read_only_invalid_scope_and_receipt_immutability', 'event_lifecycle_read_only_restart_seed'})
                 expected.update({'event_lifecycle_read_only_community_failure_rolls_back_world','event_lifecycle_read_only_commit_deadline_rolls_back_components'})
                 sources=[ROOT/p for p in [
@@ -190,6 +190,7 @@ def main():
                     'backend/services/concert-service/tests/support/event_lifecycle/mod.rs',
                     'backend/services/concert-service/tests/event_lifecycle_support/migrations.rs',
                     'backend/services/concert-service/src/event_lifecycle/read_only.rs',
+                    'backend/services/concert-service/src/config/closure_runtime.rs',
                     'backend/services/concert-service/src/community/closure.rs',
                     'backend/services/concert-service/src/community/mod.rs',
                     'backend/services/concert-service/src/community/giveaway.rs',
