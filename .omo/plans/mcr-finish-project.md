@@ -405,7 +405,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   Commit: Y | `test(venue): execute integrated flows and reference comparisons`
   Gap (2026-11-06): 48/48 reference cases and 10/10 IA states have captures and verdicts (23 PASS / 2 DIFFER / 23 NOT_REACHABLE; 3 PASS / 7 NOT_REACHABLE), but 23 cases and 7 states are unreachable while PgVenueLocationAuthority::friend_in is a fail-closed stub returning VenueLocationError::PolicyUnavailable (503). The two DIFFER cases are genuine reference-base differences (provisional Photo 5 vs Photos 1 and 4) and remain unapproved. A bilateral friend authority is being implemented; the full matrix must be re-run against it to convert those families (friend location, sharing audience, meeting, invitation, conversation).
 
-- [ ] 29. Pass IN02 real meetup and pickup
+- [x] 29. Pass IN02 real meetup and pickup
   What to do / Must NOT do: two real clients complete party request/approval, authorized physical beacon/rally, giveaway reservation and one-time pickup against the real stack. Do NOT infer physical arrival from world movement; do NOT use mocks.
   Closes: GAP-2
   Parallelization: Wave 5 | Blocked by: 10, 11, 13, 14, 19–22 | Blocks: 47
