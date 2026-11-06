@@ -365,13 +365,27 @@ mod tests {
 }
 
 /// Wall admission parses closed original bytes; scope acquisition remains Root-owned.
-pub(super) fn wall_request(m: &super::proto::ProductRequest, op: crate::mural_tools_b::protocol::WallOperation) -> Result<(), tonic::Status> {
-    if op.mutation() {
+pub(super) fn wall_request(
+    m: &super::proto::ProductRequest,
+    op: crate::mural_tools_b::protocol::WallOperation,
+) -> Result<(), tonic::Status> {
+    if op.admin() && op.mutation() {
         super::canonical_uuid(&m.idempotency_key)?;
-        if m.content_type != "application/json" { return Err(tonic::Status::invalid_argument("Invalid Wall media type")); }
+        if m.content_type != "application/json" {
+            return Err(tonic::Status::invalid_argument("Invalid Wall media type"));
+        }
+        crate::mural_tools_b::admin::body(op, &m.http_body)?;
+    } else if op.mutation() {
+        super::canonical_uuid(&m.idempotency_key)?;
+        if m.content_type != "application/json" {
+            return Err(tonic::Status::invalid_argument("Invalid Wall media type"));
+        }
         crate::mural_tools_b::protocol::body(op, &m.http_body)?;
-    } else if !m.http_body.is_empty() || !m.content_type.is_empty() || !m.idempotency_key.is_empty() {
-        return Err(tonic::Status::invalid_argument("Unexpected Wall read payload"));
+    } else if !m.http_body.is_empty() || !m.content_type.is_empty() || !m.idempotency_key.is_empty()
+    {
+        return Err(tonic::Status::invalid_argument(
+            "Unexpected Wall read payload",
+        ));
     }
     Ok(())
 }

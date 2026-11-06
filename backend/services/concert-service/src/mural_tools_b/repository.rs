@@ -640,6 +640,7 @@ pub(crate) fn safe_failure(e: &ToolError) -> Option<SafeFailure> {
         ToolError::UndoNotLatest => SafeFailure::MuralUndoNotLatest,
         ToolError::Unavailable => SafeFailure::MuralToolUnavailable,
         ToolError::Unresolved => SafeFailure::MuralActionUnresolved,
+        ToolError::InvalidTransition => SafeFailure::InvalidTransition,
         ToolError::Mural(MuralError::Paused) => SafeFailure::MuralPaused,
         ToolError::Mural(MuralError::Frozen) => SafeFailure::MuralFrozen,
         ToolError::Mural(MuralError::Cooldown(_)) => SafeFailure::MuralCooldown,
@@ -665,6 +666,7 @@ fn failure(f: SafeFailure) -> ToolError {
         SafeFailure::MuralRegionLocked => MuralError::RegionLocked.into(),
         SafeFailure::VersionConflict => MuralError::RevisionConflict.into(),
         SafeFailure::EventReadOnly => MuralError::EventReadOnly.into(),
+        SafeFailure::InvalidTransition => ToolError::InvalidTransition,
         _ => invalid(),
     }
 }

@@ -119,6 +119,9 @@ impl ProductOwner for WallProductOwner {
                             | "eraseConcertMuralPixel"
                             | "fillConcertMuralRegion"
                             | "undoConcertMuralAction"
+                            | "controlConcertMural"
+                            | "lockConcertMuralRegion"
+                            | "restoreConcertMural"
                     )
                 }) =>
             {
