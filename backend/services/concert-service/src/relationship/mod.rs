@@ -161,6 +161,9 @@ impl<A: FencedRelationshipAuthority> RelationshipPolicy for PgRelationshipPolicy
         Ok(decision)
     }
 }
+#[cfg(test)]
+mod consumer_probes;
+
 pub(crate) async fn lock_state(
     c: &mut PgConnection,
     query: PolicyQuery,

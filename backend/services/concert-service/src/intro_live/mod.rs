@@ -1,6 +1,8 @@
 //! Original BE27 product facade. Root alone acquires and settles owner scopes.
 pub mod account_deletion;
 mod authority;
+#[cfg(test)]
+pub(crate) use authority::probe_visible_in as probe_intro_visible_in;
 mod cursor;
 mod profile;
 pub mod protocol;

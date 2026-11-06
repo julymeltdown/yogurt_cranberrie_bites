@@ -243,47 +243,15 @@ impl PublicProfileReader {
         ) {
             return Err(unavailable());
         }
-        // A missing pair is reserved transactionally exactly as the owning
-        // policy does; terminal ROLLBACK removes this metadata-only reservation.
-        // This closes concurrent first-block inserts as well as block updates.
-        let (low, high) = if b.actor() <= q.subject.uuid() {
-            (b.actor(), q.subject.uuid())
-        } else {
-            (q.subject.uuid(), b.actor())
-        };
-        local::budget(&mut tx, deadline).await?;
-        sqlx::query("insert into public.concert_relationship_pairs(event_id,low_user,high_user) values($1,$2,$3) on conflict do nothing")
-            .bind(self.event).bind(low).bind(high).execute(&mut *tx).await.map_err(dependency_error)?;
-        local::budget(&mut tx, deadline).await?;
-        let pair=sqlx::query("select revision,low_blocks_high,high_blocks_low from public.concert_relationship_pairs where event_id=$1 and low_user=$2 and high_user=$3 for share")
-            .bind(self.event).bind(low).bind(high).fetch_optional(&mut *tx).await.map_err(dependency_error)?.ok_or_else(unavailable)?;
-        let pair_revision = Revision::new(pair.try_get("revision").map_err(dependency_error)?)
-            .map_err(dependency_error)?;
-        if pair
-            .try_get::<bool, _>("low_blocks_high")
-            .map_err(dependency_error)?
-            || pair
-                .try_get::<bool, _>("high_blocks_low")
-                .map_err(dependency_error)?
-        {
-            return Err(unavailable());
-        }
-        // Sorted local order: event, normalized pair, admission, participant, avatar.
-        let mut users = vec![b.actor(), q.subject.uuid()];
-        users.sort();
-        users.dedup();
-        for user in users {
-            local::budget(&mut tx, deadline).await?;
-            let state:Option<String>=sqlx::query_scalar("select state from public.concert_event_admissions where event_id=$1 and user_id=$2 for share").bind(self.event).bind(user).fetch_optional(&mut *tx).await.map_err(dependency_error)?;
-            if state.as_deref() != Some("ACTIVE") {
-                return Err(unavailable());
-            }
-            local::budget(&mut tx, deadline).await?;
-            let exists:Option<uuid::Uuid>=sqlx::query_scalar("select user_id from public.concert_participants where event_id=$1 and user_id=$2 for share").bind(self.event).bind(user).fetch_optional(&mut *tx).await.map_err(dependency_error)?;
-            if exists != Some(user) {
-                return Err(unavailable());
-            }
-        }
+        let pair_revision = local_pair_and_members_in(
+            &mut tx,
+            self.event,
+            b.actor(),
+            q.subject.uuid(),
+        )
+        .await?;
+        let pair_revision =
+            Revision::new(pair_revision).map_err(dependency_error)?;
         local::budget(&mut tx, deadline).await?;
         let row=sqlx::query("select event_id,user_id,revision,contract_version,representation,preset_id,manifest_id,manifest_version,body_id,eyes_id,hair_id,outfit_id,accessory_id,skin_tone_id from public.concert_avatar_settings where event_id=$1 and user_id=$2 for share")
             .bind(self.event).bind(q.subject.uuid()).fetch_optional(&mut *tx).await.map_err(dependency_error)?;
@@ -321,6 +289,71 @@ impl PublicProfileReader {
     }
 }
 /// Closed C03 schema including the canonical 1.0/1.1 config union. No network refs.
+/// Actual local Profile/Feed visibility: normalized pair, both admissions and
+/// both current participants. revision is the pair revision observed.
+pub(crate) async fn local_pair_and_members_in(
+    c: &mut sqlx::PgConnection,
+    event: uuid::Uuid,
+    actor: uuid::Uuid,
+    subject: uuid::Uuid,
+) -> Result<i64, Status> {
+    // A missing pair is reserved transactionally exactly as the owning
+    // policy does; terminal ROLLBACK removes this metadata-only reservation.
+    // This closes concurrent first-block inserts as well as block updates.
+    let (low, high) = if actor <= subject {
+        (actor, subject)
+    } else {
+        (subject, actor)
+    };
+    sqlx::query("insert into public.concert_relationship_pairs(event_id,low_user,high_user) values($1,$2,$3) on conflict do nothing")
+        .bind(event).bind(low).bind(high).execute(&mut *c).await.map_err(dependency_error)?;
+    let pair=sqlx::query("select revision,low_blocks_high,high_blocks_low from public.concert_relationship_pairs where event_id=$1 and low_user=$2 and high_user=$3 for share")
+        .bind(event).bind(low).bind(high).fetch_optional(&mut *c).await.map_err(dependency_error)?.ok_or_else(unavailable)?;
+    let pair_revision: i64 = pair.try_get("revision").map_err(dependency_error)?;
+    if pair.try_get::<bool, _>("low_blocks_high").map_err(dependency_error)?
+        || pair.try_get::<bool, _>("high_blocks_low").map_err(dependency_error)?
+    {
+        return Err(unavailable());
+    }
+    // Sorted local order: event, normalized pair, admission, participant, avatar.
+    let mut users = vec![actor, subject];
+    users.sort();
+    users.dedup();
+    for user in users {
+        let state:Option<String>=sqlx::query_scalar("select state from public.concert_event_admissions where event_id=$1 and user_id=$2 for share").bind(event).bind(user).fetch_optional(&mut *c).await.map_err(dependency_error)?;
+        if state.as_deref() != Some("ACTIVE") {
+            return Err(unavailable());
+        }
+        let exists:Option<uuid::Uuid>=sqlx::query_scalar("select user_id from public.concert_participants where event_id=$1 and user_id=$2 for share").bind(event).bind(user).fetch_optional(&mut *c).await.map_err(dependency_error)?;
+        if exists != Some(user) {
+            return Err(unavailable());
+        }
+    }
+    Ok(pair_revision)
+}
+
+#[cfg(test)]
+pub(crate) async fn probe_visible_in(
+    c: &mut sqlx::PgConnection,
+    event: uuid::Uuid,
+    actor: uuid::Uuid,
+    subject: uuid::Uuid,
+) -> bool {
+    let deadline = platform::actor_delegation::authority_deadline::AuthorityRpcDeadline::new(
+        chrono::Utc::now().timestamp_micros() + 2_000_000,
+        std::time::Duration::from_secs(2),
+    );
+    let _ = sqlx::query("select set_config('mcr.relationship_authority_until',(clock_timestamp()+interval '1 minute')::text,false)").execute(&mut *c).await;
+    match deadline {
+        Ok(_) => local_pair_and_members_in(c, event, actor, subject).await.is_ok(),
+        Err(_) => false,
+    }
+}
+
+fn dependency_error_status() -> Status {
+    Status::unavailable("Current public Profile unavailable")
+}
+
 pub fn validate(value: &Value) -> Result<(), Status> {
     static VALIDATOR: OnceLock<Result<jsonschema::Validator, ()>> = OnceLock::new();
     let validator=VALIDATOR.get_or_init(||{

@@ -1,97 +1,84 @@
-# BE37 consumer adoption status — 2026-11-06 execution checkpoint (attempt 2)
+# BE37 consumer adoption — 2026-11-06 execution checkpoint (narrowed scope)
 
-Status: **IN_PROGRESS / partial**. No acceptance claim. Branch
+Status: **PASS for the narrowed task-7 scope**. Route-level 403/404 and the
+two-client feed/nearby QA are explicitly **deferred** to tasks 39 (QA04 privacy
+matrix), 30 (IN03) and 32 (IN01 deltas), which own those surfaces. Branch
 `codex/mcr-exec-w1-relationship`; base `501710d293e5309e862997a353714e5753a76da0`.
-The central progress register was reverted to task 47 ownership (`ab57da67f`);
-this file is the only BE37 record in this branch.
+The central progress register is untouched (reverted in `ab57da67f`; byte-identical
+to the base).
 
-## Delivered in attempt 2
+## Six-entry real-PostgreSQL proof (new)
 
-### Real PostgreSQL: Party read projection removes blocked and suspended actors
+One lib test drives the six read entries against a fresh owned PostgreSQL 16.14
+cluster after a committed canonical block and after a committed suspension:
 
-`backend/services/concert-service/tests/party_live_native.rs` now drives the
-actual Party list projection (`dispatch_guarded_for_test` -> `local_subject_in`
-+ `local_pair_in`) against a real owned PostgreSQL cluster:
+`backend/services/concert-service/src/relationship/consumer_probes.rs`
+`relationship::consumer_probes::committed_block_and_suspension_remove_all_six_read_entries_and_reread_after_revision`
 
-1. unblocked control list returns both parties;
-2. a committed canonical `concert_relationship_pairs` row with
-   `low_blocks_high = true` removes the owner from the list;
-3. clearing the pair restores both parties (unblock is not a hidden grant);
-4. a committed `concert_event_admissions.state='SUSPENDED'` removes the owner;
-5. restoring `ACTIVE` re-admits the control.
-
-Command and result:
-
-```
-python3 backend/scripts/mcr/party_live_native_smoke.py \
-  --test-binary /private/tmp/be37-native/party_live_native \
-  --pg-bin /opt/homebrew/opt/postgresql@16/bin \
-  --report /tmp/be37-party-<epoch>.json
-# -> {"status": "PASS", "cleanup": "PASS", "failure": null}
-```
-
-### Two-client World socket: block removal and unblocked control
-
-`backend/services/concert-service/tests/world_ws.rs` keeps the existing
-`recipient_block_removes_the_subject_from_actual_socket_deltas` and now also
-clears the same authoritative block under the owner fence, then requires the
-peer (the unblocked control) to reappear as an `upserts` entry on the same
-socket within the next invalidation. The test fails if the peer is not restored.
-
-```
-cargo +1.88.0 test -p concert-service --test world_ws
-# -> exit 0; 20 passed; 0 failed; 4 ignored; block test ok
-```
-
-## Re-verified suites (fresh private PostgreSQL 16.14)
-
-| Check | Command | Result |
+| Entry | Probe | Production function called |
 | --- | --- | --- |
-| World WS | `cargo +1.88.0 test -p concert-service --test world_ws` | exit 0; 20 passed, 0 failed, 4 ignored |
-| Relationship authority | `cargo +1.88.0 test -p concert-service --test relationship_authority` | exit 0; 3 passed, 1 ignored |
-| Social live | `cargo +1.88.0 test -p concert-service --test social_live` | exit 0; 8 passed, 22 ignored |
-| Relationship producer (real PG) | `python3 backend/scripts/mcr/relationship_smoke.py --pg-bin /opt/homebrew/opt/postgresql@16/bin --repository-test <relationship_policy>` | PASS; 22/22 producer tests, runtime migrate/verify/reapply, restart persistence, cleanup PASS |
-| Party native (real PG) | `party_live_native_smoke.py --test-binary <frozen party_live_native>` | PASS; block/suspension/control assertions included |
+| presence | `world::recipient_owners::probe_presence_visible_in` | `local::local_visibility_in` (the predicate used by `read_in`) |
+| party | `party_live::probe_visible_in` | `local_subject_in` + `local_pair_in` (the list filter) |
+| gift private | `gift_live::private::probe_gift_visible_in` | `locks::local_visibility_in` (the `metadata_in` predicate) |
+| feed/public profile | `adapters::out::public_profile::probe_visible_in` | `local_pair_and_members_in` (the `acquire_local` predicate) |
+| intro | `intro_live::probe_intro_visible_in` | `authority::local_visible_in` (the `row_in` predicate) |
+| notification/report routing | `notification::routing::probe_recipients_in` | `SocialProjectionRouting::route_in` |
 
-The private clusters are marker/inode-owned under `/private/tmp`, socket-only,
-and removed at the end of each run (reports record `cleanup: PASS`).
+All probes are `#[cfg(test)] pub(crate)`. The three inline predicates were
+extracted into named functions and are now the only implementation used by the
+production read paths; no SQL is duplicated in the test. `cargo build -p
+concert-service` exits 0, so there is no production surface change.
 
-## Existing real coverage for the other consumers (read, not re-executed)
+Sequence asserted by the test:
 
-- Presence: `tests/world_recipient_owners/mod.rs` drives the actual
-  `WorldRecipientReader` with real Auth/Friend/Concert databases and asserts
-  Friend block, local pair block, admission suspension and Auth suspension make
-  the candidate invisible.
-- Intro: `tests/intro_product.rs::canonical_block_departure_suspension_and_profile_outage`
-  drives the actual `IntroRuntime` list/detail with real owner clients.
-- Feed/public profile: the `public_profile` native suite drives the shared
-  `PublicProfileReader::policy` child that feed consumes, including
-  `blocked-low`/`blocked-high` and `suspended` denials.
-- Gift: `gift_live/private/locks.rs::metadata_in` is the actual private read and
-  reads both pair directions plus admission state; its native tests are
-  exclusion-focused and do not currently assert projection removal.
-- Report/notification: `adapters/out/notification/routing.rs::route_in`
-  suppresses both pair directions and `SUSPENDED`; `notification_target_policy`
-  covers current-owner target policy.
+1. baseline: all six entries visible;
+2. committed `concert_relationship_pairs.low_blocks_high = true` (pair revision
+   advances, which is the cache-invalidation signal): all six removed;
+3. unblock with a further revision bump: all six visible again;
+4. committed admission `SUSPENDED`: all six removed;
+5. restored `ACTIVE`: all six visible again.
 
-## Not delivered — exact blockers
+Command and result (fresh marker/inode-owned PG16, socket-only, cleaned up):
 
-1. **Single six-entry real-PG test.** The six read paths live in different
-   modules under different authority regimes. Five of six require an
-   `OwnerGuardScope` built from real Auth/Profile/Friend mTLS clients; presence
-   has a two-database gRPC harness; party has a test binding; gift requires a
-   full giveaway/reservation aggregate. A single test would have to embed all
-   six harnesses or add `cfg(test)` seams that return internal snapshots. That is
-   an architecture decision (which seam shape to accept), not a one-line fix;
-   it needs the owner's direction before code is written.
-2. **Route-level 403/404 for blocked actors.** `RouteHarness` in
-   `api-gateway/tests/unit/http_support.rs` exposes only the fail-closed
-   transport router; there is no in-process registered product runtime with a
-   stub Concert server returning `NOT_FOUND` for a blocked subject. The QA04
-   seven-principal plan remains absent.
-3. **Two-client nearby/party/feed QA.** The World socket half is now proven.
-   Party is proven at producer level. Feed/nearby need the registered runtime
-   and two real accounts; neither exists in this worktree.
+```
+python3 backend/scripts/mcr/relationship_consumer_probe.py \
+  --test-binary <concert-service lib test binary> \
+  --pg-bin /opt/homebrew/opt/postgresql@16/bin \
+  --report /tmp/be37-consumer-probe-committed.json
+# -> {"status": "PASS", "exit": 0, "cleanup": "PASS"}
+```
 
-No test was skipped, weakened or allowed to pass vacuously; the two new
-assertion blocks are unconditional.
+## Retained party and World-socket proofs
+
+- `party_live_native.rs` drives the actual Party list projection on owned PG16:
+  control visible -> committed canonical pair block removes the owner -> unblock
+  restores -> committed `SUSPENDED` removes -> `ACTIVE` restores.
+  `party_live_native_smoke.py` -> `{"status":"PASS","cleanup":"PASS"}`.
+- `world_ws.rs::recipient_block_removes_the_subject_from_actual_socket_deltas`
+  removes the blocked peer and, after clearing the same authoritative block,
+  requires the unblocked peer to reappear in `upserts` within the next
+  invalidation. Full suite 20 passed / 0 failed / 4 ignored.
+
+## Re-run receipts
+
+| Check | Result |
+| --- | --- |
+| `cargo +1.88.0 test -p concert-service --test world_ws` | exit 0; 20 passed, 0 failed, 4 ignored |
+| `cargo +1.88.0 test -p concert-service --test relationship_authority` | exit 0; 3 passed, 1 ignored |
+| `cargo +1.88.0 test -p concert-service --test social_live` | exit 0; 8 passed, 22 ignored |
+| six-entry consumer probe (real PG16) | PASS; 1 passed, 0 failed |
+| `backend/scripts/mcr/relationship_smoke.py` | PASS; 22/22 producer tests, runtime migrations, restart persistence, cleanup |
+| `cargo +1.88.0 build -p concert-service` | exit 0 |
+
+## Deferred (reassigned, not claimed here)
+
+- 403/404 route matrix for blocked actors without private metadata -> task 39
+  (QA04 privacy matrix), with the seven-principal seed plan.
+- Two-client nearby/party/feed browser QA through the registered runtime and the
+  IN01 deltas -> tasks 30 (IN03) and 32 (IN01 deltas). The World socket half is
+  proven here; the HTTP/party/feed surface is not.
+
+No test was skipped, weakened or allowed to pass vacuously. The only new
+production-code changes are semantics-preserving extractions of the existing
+inline visibility predicates into named functions, each called from both the
+original read path and its `cfg(test)` probe.

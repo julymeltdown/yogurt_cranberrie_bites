@@ -55,6 +55,35 @@ pub(super) async fn read_in(
     {
         return Err(RelationshipError::Denied);
     }
+    let (stamp, visible) = local_visibility_in(c, q).await?;
+    let actor_until = current_membership(c, actor).await?;
+    let subject_until = if actor.membership.key == subject.membership.key {
+        actor_until
+    } else {
+        current_membership(c, subject).await?
+    };
+    let now: DateTime<Utc> = sqlx::query_scalar("select clock_timestamp()")
+        .fetch_one(&mut *c)
+        .await
+        .map_err(unavailable)?;
+    let until = actor_until.min(subject_until);
+    if until <= now {
+        return Err(RelationshipError::Stale);
+    }
+    Ok(LocalRead {
+        revision: stamp,
+        checked_at: now,
+        valid_until: until,
+        visible,
+    })
+}
+
+/// Actual block/suspension predicate used by the Presence read. Membership
+/// liveness and owner leases are validated separately by the caller.
+pub(super) async fn local_visibility_in(
+    c: &mut PgConnection,
+    q: PolicyQuery,
+) -> Result<(LocalRevision, bool), RelationshipError> {
     let state = crate::relationship::lock_state(c, q).await?;
     if matches!(state.phase, EventPhase::Draft | EventPhase::Archived)
         || !state.actor_member
@@ -83,26 +112,29 @@ pub(super) async fn read_in(
         actor_restriction: revision(a.try_get("restriction_revision").map_err(unavailable)?)?,
         subject_restriction: revision(s.try_get("restriction_revision").map_err(unavailable)?)?,
     };
-    let actor_until = current_membership(c, actor).await?;
-    let subject_until = if actor.membership.key == subject.membership.key {
-        actor_until
-    } else {
-        current_membership(c, subject).await?
-    };
-    let now: DateTime<Utc> = sqlx::query_scalar("select clock_timestamp()")
-        .fetch_one(&mut *c)
-        .await
-        .map_err(unavailable)?;
-    let until = actor_until.min(subject_until);
-    if until <= now {
-        return Err(RelationshipError::Stale);
-    }
-    Ok(LocalRead {
-        revision: stamp,
-        checked_at: now,
-        valid_until: until,
-        visible: subject_active && !state.blocked,
-    })
+    Ok((stamp, subject_active && !state.blocked))
+}
+
+#[cfg(test)]
+pub(crate) async fn probe_visible_in(
+    c: &mut PgConnection,
+    event: concert_domain::EventId,
+    actor: concert_domain::AuthUserId,
+    subject: concert_domain::AuthUserId,
+) -> bool {
+    let _ = sqlx::query("select set_config('mcr.relationship_authority_until',(clock_timestamp()+interval '1 minute')::text,false)").execute(&mut *c).await;
+    local_visibility_in(
+        c,
+        PolicyQuery {
+            event,
+            actor,
+            subject,
+            field: Field::Presence,
+        },
+    )
+    .await
+    .map(|(_, visible)| visible)
+    .unwrap_or(false)
 }
 /// Validate exact current owner, session, connection and resource identity. Unlike a
 /// user-only lookup this cannot label another room/epoch's membership as the candidate.

@@ -148,6 +148,18 @@ impl ProjectionRouting for SocialProjectionRouting {
         }])
     }
 }
+#[cfg(test)]
+pub(crate) async fn probe_recipients_in(
+    c: &mut PgConnection,
+    source: &Source,
+) -> usize {
+    SocialProjectionRouting
+        .route_in(c, source, Utc::now())
+        .await
+        .map(|r| r.len())
+        .unwrap_or(0)
+}
+
 fn revision(value: i64) -> Result<()> {
     if (1..=concert_domain::MAX_REVISION).contains(&value) {
         Ok(())
