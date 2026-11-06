@@ -212,11 +212,18 @@ Those blockers are now resolved or superseded as described above.
   `fce130fc8` (the branch was 27 behind; no rebase). The only conflict was the
   `concert-service/src/main.rs` import block; it was resolved by keeping both sides -
   master's `Future`/`Pin`/`AtomicBool`/`Ordering`/`Context`/`Poll`/`tonic`/`tower`
-  imports plus the single `std::sync::Arc` the policy composition needs. Master advanced
-  to `2f2f11b61` (10 commits) in a concurrent worktree after this merge; those later
-  commits are not part of this branch and are not claimed here.
+  imports plus the single `std::sync::Arc` the policy composition needs.
+- `02d22cc5e Merge branch 'master' into codex/mcr-exec-w5-in01`: merge of the current
+  master `2f2f11b61` (the row 31 and row 46 merges plus the W04 policy row). No
+  conflicts; the merge brings the archive/closure transport files and their evidence.
+- `6cf2c2685 fix(concert): accept the archive method in the dispatch gate expectation`:
+  master `1bc74e3b8` added `rpc GetArchive` to `product.proto`, which made the dispatch
+  gate test's RPC list stale. The expectation now lists all three RPCs and asserts the
+  archive method's gate: `ProductArchiveService/GetArchive` is allowed for the Gateway
+  workload only and is not reachable through the ProductService dispatch policy.
 
-### Observed test counts (after the merge, `cargo +1.88.0`, `CARGO_BUILD_JOBS=3`)
+### Observed test counts (final tree after merging master `2f2f11b61`, `cargo +1.88.0`,
+`CARGO_BUILD_JOBS=3`)
 
 - `cargo test -p concert-service --lib service_policy`: 5 passed, 0 failed. The three
   original tests plus `the_policy_read_composes_over_an_intro_social_surface` and
@@ -229,13 +236,11 @@ Those blockers are now resolved or superseded as described above.
 - `cargo test -p api-gateway --test concert_product_http`: 8 passed, 0 failed (7 before
   the merge; master's `public_archive_is_unauthenticated_and_closed_without_a_producer`
   merged in).
-- `cargo test -p concert-service --test product_runtime`: 5 passed, 1 failed. The failure
-  is `only_gateway_may_dispatch_with_a_signed_field_one_actor`: master `1bc74e3b8` added
-  `rpc GetArchive` to `backend/proto/concert/v1/product.proto`, while that test still
-  expects `["Dispatch", "CompleteResponse"]` (observed
-  `["Dispatch", "GetArchive", "CompleteResponse"]`). This is a pre-existing master-side
-  failure introduced by the merge, not a regression from this task; the suite passed 6/6
-  before the merge.
+- `cargo test -p concert-service --test product_runtime`: 6 passed, 0 failed. The
+  dispatch-gate test now expects `["Dispatch", "GetArchive", "CompleteResponse"]` and
+  asserts the archive method is Gateway-only under `ARCHIVE_POLICY` and unreachable
+  through `POLICY`; `1bc74e3b8`'s new RPC had left the old two-name list stale and the
+  suite failing.
 - `cargo check -p concert-service --bin concert-service`: exit 0 after the merge
   resolution.
 - `python3 scripts/mcr/contracts/test_route_parity.py`: `Ran 5 tests ... OK`.
@@ -420,7 +425,7 @@ BOUNDARIES PASS: frontend, 1 changes vs cf574eadf175b0283418ba730bf0a64801ceaef1
 ```
 
 Full-branch run against the original base `937ab6699` exits 1. That range now also spans
-the master merge and every earlier commit on this branch, so the output lists every path
+the master merges and every earlier commit on this branch, so the output lists every path
 changed since that base and does not isolate this task. Inside it, the paths this task
 itself writes are exactly the four in the scoped backend run, the frontend driver change
 above, and the assigned evidence:
@@ -437,8 +442,9 @@ Everything else in that range is master's own work between `937ab6699` and the m
 `backend/proto/concert/v1/product.proto`, `backend/scripts/mcr/dev_stack.py`) or the
 branch's earlier commits, and is not a write of this task.
 
-A run against the current master (`2f2f11b61`, 10 commits past the merged `fce130fc8`)
-reports those newer master-only files (for example
-`.omo/evidence/mcr-finish-project/task-31-in04.md` and
-`backend/scripts/mcr/in04_wall_b_gate.py`) as deletions. They are newer master commits not
-merged into this branch, not deletions by this task.
+The merged master commits (`fce130fc8`, then `2f2f11b61`) add their own files in that
+range: for example `docs/mcr/functional-delivery-plan.md`,
+`backend/proto/concert/v1/product.proto` and `backend/scripts/mcr/dev_stack.py` from the
+first merge, and `.omo/evidence/mcr-finish-project/task-31-in04.md`,
+`task-46-w04.md` and `backend/scripts/mcr/in04_wall_b_gate.py` from the second. They are
+not writes of this task.
