@@ -3,7 +3,7 @@
   "info": {
     "title": "MCR Paradise City Place Notes",
     "version": "1.0.0",
-    "description": "N01 additive source contract. Actual current Auth/Friend/L/retained native/M providers and Root integration required; absent authority fails closed. No physical or service acceptance."
+    "description": "N01 additive source contract. Policy is frozen in docs/mcr/contracts/paradise-city-v1/policy-freeze.md. FRIENDS means current VENUE_FRIEND_V1 (both live follow edges, both current event participants, no live block, OPEN/LIVE event); it is not a one-way follow. EVERYONE means current authenticated eligible participants in the same event, never the public Internet. 1h and endday expiries are absolute and immutable; endday uses the authoritative Asia/Seoul venue clock. Actual current Auth/Friend/L/retained native/M providers and Root integration required; absent authority fails closed. No physical or service acceptance."
   },
   "x-mcr-scope": "VENU-BE-N01",
   "x-mcr-source-base": "ba99630a2d256c9b493348b3e5dfadae460cb636",
@@ -1561,6 +1561,7 @@
     "schemas": {
       "NoteAudience": {
         "type": "string",
+        "description": "FRIENDS: current VENUE_FRIEND_V1 readers of the author in the same OPEN/LIVE event, with no live block in either direction. EVERYONE: currently authenticated, currently eligible participants in the same event; never anonymous, cross-event or public Internet. Both are re-evaluated on every read and are unrelated to location sharing.",
         "enum": [
           "FRIENDS",
           "EVERYONE"
@@ -1568,6 +1569,7 @@
       },
       "NoteExpiry": {
         "type": "string",
+        "description": "ONE_HOUR = database created_at + exactly 3600 seconds. VENUE_END_DAY = the venue clock's end_of_day (next 00:00 Asia/Seoul, capped by an earlier approved event cutoff/access deadline). The resulting expires_at is immutable and a reply cannot outlive its parent. Missing clock/policy is 503.",
         "enum": [
           "ONE_HOUR",
           "VENUE_END_DAY"
@@ -1575,6 +1577,7 @@
       },
       "NoteLandmarkSelection": {
         "type": "object",
+        "description": "The reviewed L-owned landmark tuple. Every id/revision must still be current at the effect; an unknown, unreviewed, closed or stale landmark is 404/403, never a fabricated arrival or free-moving position.",
         "additionalProperties": false,
         "properties": {
           "landmark_id": {
@@ -1608,6 +1611,7 @@
       },
       "CreatePlaceNote": {
         "type": "object",
+        "description": "Creates a note only at a current reviewed fixed landmark with an explicit FRIENDS/EVERYONE audience and ONE_HOUR/VENUE_END_DAY expiry. Selected expiry is server-computed; client expiry/count/profile fields are invalid. A note grants no location, invitation or conversation permission.",
         "additionalProperties": false,
         "properties": {
           "text": {
@@ -1702,6 +1706,7 @@
       },
       "PlaceNote": {
         "type": "object",
+        "description": "Current-viewer projection of a place note. author, body, counts, can_reply/can_withdraw and meet_here are recomputed for the current viewer; expired, withdrawn, moderated or unauthorized content is absent.",
         "additionalProperties": false,
         "properties": {
           "id": {
@@ -1748,7 +1753,8 @@
           "expires_at": {
             "type": "string",
             "format": "date-time",
-            "pattern": "Z$"
+            "pattern": "Z$",
+            "description": "Immutable absolute expiry. ONE_HOUR is created_at + 1h; VENUE_END_DAY is the venue end_of_day capped by an earlier approved cutoff/access deadline. Replies inherit this exact instant."
           },
           "revision": {
             "type": "integer",
@@ -1779,7 +1785,8 @@
           "reply_count": {
             "type": "integer",
             "minimum": 0,
-            "maximum": 1000
+            "maximum": 1000,
+            "description": "Exact count of replies the CURRENT viewer may read; expired, withdrawn, moderated or unauthorized replies are excluded. Never a global total."
           },
           "can_reply": {
             "type": "boolean"
@@ -1795,7 +1802,8 @@
               {
                 "type": "null"
               }
-            ]
+            ],
+            "description": "Actual M-authorized composer entry, or null when M cannot authorize the selected landmark/recipient. It never writes an invitation, asserts acceptance/arrival or grants location."
           }
         },
         "required": [
@@ -1967,6 +1975,7 @@
       },
       "NotePage": {
         "type": "object",
+        "description": "A viewer-filtered page. Items and visible_count are limited to content the current viewer may read; the cursor is an ordering position, never authority.",
         "additionalProperties": false,
         "properties": {
           "items": {
@@ -1979,7 +1988,8 @@
           "visible_count": {
             "type": "integer",
             "minimum": 0,
-            "maximum": 1000
+            "maximum": 1000,
+            "description": "Current exact visible root count. No unfiltered total and no hidden/expired/moderated inclusion."
           },
           "parent": {
             "anyOf": [
@@ -2006,12 +2016,14 @@
           "server_now": {
             "type": "string",
             "format": "date-time",
-            "pattern": "Z$"
+            "pattern": "Z$",
+            "description": "Authoritative database/server time used for expiry evaluation. Never a client or device clock."
           },
           "access_until": {
             "type": "string",
             "format": "date-time",
-            "pattern": "Z$"
+            "pattern": "Z$",
+            "description": "Earliest disclosure ceiling for this page (authority, landmark, note and meeting-entry expiry)."
           }
         },
         "required": [
@@ -2052,12 +2064,14 @@
           "server_now": {
             "type": "string",
             "format": "date-time",
-            "pattern": "Z$"
+            "pattern": "Z$",
+            "description": "Authoritative database/server time used for expiry evaluation. Never a client or device clock."
           },
           "access_until": {
             "type": "string",
             "format": "date-time",
-            "pattern": "Z$"
+            "pattern": "Z$",
+            "description": "Earliest disclosure ceiling for this thread (authority, parent/reply expiry and meeting-entry expiry)."
           }
         },
         "required": [

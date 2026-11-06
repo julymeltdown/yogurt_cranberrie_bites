@@ -59,11 +59,14 @@ representations are clipped by current actual owner/disclosure/consent expiry.
 | GET `/landmarks` | listVenueLandmarks | Up to50 actually reviewed provider grants |
 | GET `/landmarks/{landmarkId}` | getVenueLandmark | Current reviewed provider grant |
 
-A real injected accepted-Friends authority must define the actual relationship
-and fence both participants' current Auth/event eligibility, suspension/deletion,
-both block directions and friendship revocation. The retained Friend proto has
-following/block/mute only; following or mutual following is not this predicate.
-A location sharing grant never grants invitation, MESSAGE, note or reply access.
+The frozen relationship is [`VENUE_FRIEND_V1`](policy-freeze.md): both live
+follow edges, both current Auth/event-eligible participants, no live block in
+either direction and an OPEN/LIVE event, fenced through the protected effect and
+re-evaluated at every read. The retained Friend proto exposes only a directional
+following flag plus block/mute metadata; that single flag is not the predicate.
+One-way following, a pending request, a shared handle and party membership are
+also not friendship. A location sharing grant never grants invitation, MESSAGE,
+note or reply access.
 M selected-friend MESSAGE requires its own context authority; no invitation or
 fixed-landmark prerequisite is imposed by L. A fixed reviewed landmark is required
 for MEET HERE. N Everyone remains its event-scoped

@@ -3,13 +3,13 @@
   "info": {
     "title": "Paradise City location and reviewed landmark contract",
     "version": "1.0.1",
-    "description": "VENU-BE-L01 source contract. Actual authorities/configuration required; no fabricated runtime defaults or physical acceptance. Independent additive family; does not silently register old operations."
+    "description": "VENU-BE-L01 source contract. Policy is frozen in docs/mcr/contracts/paradise-city-v1/policy-freeze.md. Friend means VENUE_FRIEND_V1: both live follow edges, both current event participants, no live block either way, and an OPEN/LIVE event. Friendship alone grants no location. Missing/stale/invalid authority or policy fails closed (503) with no coordinate. Actual authorities/configuration required; no fabricated runtime defaults or physical acceptance. Independent additive family; does not silently register old operations."
   },
   "paths": {
     "/api/concert/events/{eventId}/venue/location": {
       "get": {
         "operationId": "getVenueLocationSnapshot",
-        "description": "Only current accepted friends plus explicit selected-viewer consent; bounded50; no raw clusters. Client may cluster only returned authorized locations. No physical projection is inferred.",
+        "description": "Only current VENUE_FRIEND_V1 viewers explicitly selected by the owner in an ACTIVE, unexpired sharing lease; bounded50; no raw clusters. Friendship alone grants no coordinate, and an ineligible viewer is omitted even if its ID remains stored. PAUSED/REVOKED/EXPIRED returns no position. Client may cluster only returned authorized locations. No physical projection is inferred.",
         "parameters": [
           {
             "name": "eventId",
@@ -111,7 +111,7 @@
     "/api/concert/events/{eventId}/venue/location/sharing": {
       "put": {
         "operationId": "setVenueLocationSharing",
-        "description": "Explicit service consent. ACTIVE replaces selected current-friend viewers and starts a configured finite lease; PAUSED/REVOKED require empty viewer_ids, remove all visibility and delete precise fix/check-in. Resume requires fresh publication; never starts device GPS.",
+        "description": "Explicit service consent. ACTIVE replaces the selected viewers, each of whom must satisfy VENUE_FRIEND_V1 at the effect, and starts a finite lease of min(now + policy.sharing_lease_ms, policy.valid_until, access deadline). PAUSED/REVOKED require empty viewer_ids, remove all visibility and delete precise fix/check-in in the same transaction. A pause is immediate; a cached or in-flight fix is rejected after the revision changes. Resume requires fresh publication; never starts device GPS.",
         "parameters": [
           {
             "name": "eventId",
@@ -232,7 +232,7 @@
     "/api/concert/events/{eventId}/venue/location/fix": {
       "put": {
         "operationId": "publishVenueLocationFix",
-        "description": "Current actor only, active unexpired sharing/current revision; reported finite WGS84 and accuracy/time checked against actual server policy. Provider is device-reported, never attested GPS or physical arrival.",
+        "description": "Current actor only, active unexpired sharing/current revision; reported finite WGS84 and accuracy/time checked against policy.fix_max_age_ms, policy.future_skew_ms and policy.max_accuracy_m. Only a fix within policy.fresh_ms is current; within policy.last_known_ms it is LAST_KNOWN; older is omitted. Provider is device-reported, never attested GPS or physical arrival.",
         "parameters": [
           {
             "name": "eventId",
@@ -353,7 +353,7 @@
     "/api/concert/events/{eventId}/venue/location/requests": {
       "post": {
         "operationId": "requestVenueLocation",
-        "description": "Current accepted friend only. Creates bounded pending request, never device permission/consent/sharing. Existing live pair request is reused without extending expiry.",
+        "description": "Current VENUE_FRIEND_V1 friend only. Creates bounded pending request metadata; it never grants access, device permission, consent or sharing. Existing live pair request is reused without extending expiry. Expiry is created_at + policy.request_ttl_ms.",
         "parameters": [
           {
             "name": "eventId",
@@ -474,7 +474,7 @@
     "/api/concert/events/{eventId}/venue/location/requests/{requestId}/decision": {
       "post": {
         "operationId": "decideVenueLocationRequest",
-        "description": "Subject APPROVE/DENY, requester CANCEL. APPROVE explicitly adds requester to an already active selected-viewer sharing lease after fresh friendship checks; it never enables GPS or revives paused sharing. Terminal and expired states do not transition again.",
+        "description": "Subject APPROVE/DENY, requester CANCEL. APPROVE adds the requester only to an already ACTIVE, unexpired selected-viewer lease after fresh VENUE_FRIEND_V1 checks; it never enables GPS, revives paused/revoked sharing or extends the lease. Terminal and expired states do not transition again.",
         "parameters": [
           {
             "name": "eventId",
@@ -604,7 +604,7 @@
     "/api/concert/events/{eventId}/venue/location/check-in": {
       "put": {
         "operationId": "setVenueLocationCheckIn",
-        "description": "Explicit self-reported current reviewed fixed landmark. No position fabricated from artwork, no physical-arrival claim, no invitation/message authorization.",
+        "description": "Explicit self-reported check-in at a current reviewed fixed landmark with can_check_in=true; expires at checked_in_at + policy.check_in_ttl_ms and does not degrade to LAST_KNOWN. No position is fabricated from artwork, no physical-arrival claim is made, and check-in grants no invitation, message or location authority.",
         "parameters": [
           {
             "name": "eventId",
@@ -1237,6 +1237,7 @@
       },
       "VenueClock": {
         "type": "object",
+        "description": "Authoritative server clock for the venue. timezone is concert_events.timezone (currently Asia/Seoul only); end_of_day is the next 00:00:00 in that zone strictly after server_time, capped by an earlier approved event cutoff or access deadline. Missing/invalid clock is 503; no browser or device timezone fallback.",
         "additionalProperties": false,
         "properties": {
           "event_id": {
@@ -1256,7 +1257,8 @@
           "timezone": {
             "type": "string",
             "minLength": 1,
-            "maxLength": 128
+            "maxLength": 128,
+            "description": "concert_events.timezone; the current schema constrains this to Asia/Seoul. Never a client-supplied or device timezone."
           },
           "server_time": {
             "type": "string",
@@ -1264,7 +1266,8 @@
           },
           "end_of_day": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "Next 00:00:00 in timezone strictly after server_time, capped by an earlier approved event cutoff or access deadline. Used unchanged by VENUE_END_DAY notes."
           },
           "valid_until": {
             "type": "string",
@@ -1283,6 +1286,7 @@
       },
       "VenueLocationPolicy": {
         "type": "object",
+        "description": "Source-identified, revisioned, currently valid venue/event policy. No production default exists: missing, stale or invalid policy is 503 before any disclosure. Invariants: 0 < fresh_ms <= last_known_ms <= coordinate_retention_ms; 0 < fix_max_age_ms <= last_known_ms; 0 <= future_skew_ms; 0 < max_accuracy_m; 1 <= max_viewers <= 50.",
         "additionalProperties": false,
         "properties": {
           "event_id": {
@@ -1321,56 +1325,67 @@
           "fresh_ms": {
             "type": "integer",
             "minimum": 1,
-            "maximum": 9007199254740991
+            "maximum": 9007199254740991,
+            "description": "PHONE freshness. fresh_until = observed_at + fresh_ms. Older than this is LAST_KNOWN (within last_known_ms), never current."
           },
           "last_known_ms": {
             "type": "integer",
             "minimum": 1,
-            "maximum": 9007199254740991
+            "maximum": 9007199254740991,
+            "description": "Maximum age at which a PHONE fix may still be returned as LAST_KNOWN. Older values are omitted, not fabricated."
           },
           "fix_max_age_ms": {
             "type": "integer",
             "minimum": 1,
-            "maximum": 9007199254740991
+            "maximum": 9007199254740991,
+            "description": "Reject a reported fix older than this at publication. Must be <= last_known_ms."
           },
           "future_skew_ms": {
             "type": "integer",
             "minimum": 0,
-            "maximum": 9007199254740991
+            "maximum": 9007199254740991,
+            "description": "Maximum accepted future offset for captured_at; a later sample is invalid input."
           },
           "sharing_lease_ms": {
             "type": "integer",
             "minimum": 1,
-            "maximum": 9007199254740991
+            "maximum": 9007199254740991,
+            "description": "ACTIVE sharing lease. expires_at = min(now + sharing_lease_ms, policy.valid_until, access deadline); no default."
           },
           "request_ttl_ms": {
             "type": "integer",
             "minimum": 1,
-            "maximum": 9007199254740991
+            "maximum": 9007199254740991,
+            "description": "ASK LOCATION request lifetime: created_at + request_ttl_ms. Repeating a live pair request does not extend it."
           },
           "check_in_ttl_ms": {
             "type": "integer",
             "minimum": 1,
-            "maximum": 9007199254740991
+            "maximum": 9007199254740991,
+            "description": "Self-reported check-in lifetime: checked_in_at + check_in_ttl_ms. Check-ins do not become LAST_KNOWN."
           },
           "coordinate_retention_ms": {
             "type": "integer",
             "minimum": 1,
-            "maximum": 9007199254740991
+            "maximum": 9007199254740991,
+            "description": "Maximum persistence of a phone fix/check-in after observation. Capped by sharing expiry, event close and account deletion; no movement history."
           },
           "command_retention_ms": {
             "type": "integer",
             "minimum": 1,
-            "maximum": 9007199254740991
+            "maximum": 9007199254740991,
+            "description": "L receipt/status metadata retention. Never stores or replays coordinates or request bodies."
           },
           "max_accuracy_m": {
             "type": "number",
-            "exclusiveMinimum": 0
+            "exclusiveMinimum": 0,
+            "description": "Reject a reported accuracy above this bound. A device-reported accuracy is not a verified measured accuracy."
           },
           "max_viewers": {
             "type": "integer",
             "minimum": 1,
-            "maximum": 50
+            "maximum": 50,
+            "description": "Maximum explicit viewers per ACTIVE lease; also bounded by the wire's 50. Never expanded automatically."
           }
         },
         "required": [
@@ -1496,7 +1511,8 @@
               "format": "uuid"
             },
             "maxItems": 50,
-            "uniqueItems": true
+            "uniqueItems": true,
+            "description": "Explicit selected viewers. Every ID must satisfy VENUE_FRIEND_V1 at the effect; ACTIVE requires 1..max_viewers, PAUSED/REVOKED require an empty array. The list never auto-expands to future friends or followers."
           }
         },
         "required": [
@@ -1507,6 +1523,7 @@
       },
       "SharingState": {
         "type": "object",
+        "description": "Owner's current sharing state. OFF is the initial state; ACTIVE ends at expires_at; PAUSED/REVOKED are terminal until a new explicit ACTIVE publication; EXPIRED is derived from now >= expires_at and a read never mutates it.",
         "additionalProperties": false,
         "properties": {
           "state": {
@@ -1542,7 +1559,8 @@
               {
                 "type": "null"
               }
-            ]
+            ],
+            "description": "ACTIVE lease expiry = min(now + policy.sharing_lease_ms, policy.valid_until, access deadline). Null when not ACTIVE. Never extended by a read, request approval or retry."
           },
           "updated_at": {
             "oneOf": [
@@ -1601,6 +1619,7 @@
       },
       "VisibleLocation": {
         "type": "object",
+        "description": "A viewer-specific projection. It is returned only when the owner has an ACTIVE unexpired lease selecting this viewer and the viewer still satisfies VENUE_FRIEND_V1. Friendship alone never produces this object.",
         "additionalProperties": false,
         "properties": {
           "user_id": {
@@ -1614,7 +1633,8 @@
               "SELF_REPORTED_CHECK_IN",
               "LAST_KNOWN",
               "UNAVAILABLE"
-            ]
+            ],
+            "description": "PHONE only while observed_at + policy.fresh_ms has not passed. LAST_KNOWN only within policy.last_known_ms and never labelled current. SELF_REPORTED_CHECK_IN is an assertion, not GPS. UNAVAILABLE carries no position."
           },
           "position": {
             "oneOf": [
@@ -1656,7 +1676,8 @@
               {
                 "type": "null"
               }
-            ]
+            ],
+            "description": "observed_at + policy.fresh_ms for a PHONE fix; null for check-in/LAST_KNOWN/UNAVAILABLE. A read never extends it."
           },
           "expires_at": {
             "oneOf": [
@@ -1671,7 +1692,8 @@
           },
           "access_until": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "Earliest current disclosure ceiling: lease, policy, landmark/request expiry and the original access deadline."
           },
           "visibility_revision": {
             "type": "integer",
@@ -1680,7 +1702,8 @@
           },
           "physical_arrival_verified": {
             "type": "boolean",
-            "const": false
+            "const": false,
+            "description": "Always false. Check-in and invitation acceptance are self-reported and never physical-arrival proof."
           },
           "can_request_location": {
             "type": "boolean"
@@ -1718,7 +1741,8 @@
           },
           "access_until": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "Earliest of policy.valid_until, sharing.expires_at, each returned grant/request expiry and the original access deadline."
           },
           "policy": {
             "$ref": "#/components/schemas/VenueLocationPolicy"
@@ -1837,6 +1861,7 @@
       },
       "LocationRequest": {
         "type": "object",
+        "description": "Metadata for ASK LOCATION between current VENUE_FRIEND_V1 participants. Creating, reading or approving a request never grants a coordinate, device permission or sharing state by itself.",
         "additionalProperties": false,
         "properties": {
           "request_id": {
@@ -1876,7 +1901,8 @@
           },
           "expires_at": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "created_at + policy.request_ttl_ms. A repeated live pair request reuses the row without extending this instant."
           }
         },
         "required": [
