@@ -286,15 +286,17 @@ impl ChildIntentSettler for RecordChildRecovery {
     }
 }
 #[tokio::test]
-async fn child_intent_registration_must_precede_an_effect_witness_sharing_the_scope_row() {
+async fn child_intent_registration_blocks_behind_a_held_scope_share_lock() {
     use concert_service::adapters::out::relationship_authority::guarded::{
         ChildQuery, ChildRecoveryReference,
     };
+    use std::time::{Duration, Instant};
     // An effect witness takes FOR SHARE on its root scope row and holds it until
-    // the projecting transaction commits. Child-intent registration needs the
-    // exclusive lifecycle lock, so it must be issued first: a social read that
-    // witnesses before retaining waits on its own request's share lock until
-    // the 250ms ledger lock timeout fails the whole read (503).
+    // the projecting transaction commits. Child-intent registration needs FOR
+    // UPDATE on that same row, so registering afterwards waits on the ledger's
+    // 250 ms lock timeout and fails the whole read (503). The write order that
+    // satisfies this constraint is executed by
+    // `social_live::producer::read_order_tests::projecting_writes_retain_the_child_before_the_effect_witness`.
     let pool = pool().await;
     let ledger = new_ledger(&pool, Uuid::new_v4());
     let binding = binding();
@@ -321,15 +323,25 @@ async fn child_intent_registration_must_precede_an_effect_witness_sharing_the_sc
     };
     // Same row lock an effect witness holds for its projecting transaction.
     let mut projecting = pool.begin().await.unwrap();
-    sqlx::query("SELECT 1 FROM concert_product_owner_scopes WHERE instance_id=$1 AND scope_id=$2 FOR SHARE")
-        .bind(key.instance)
-        .bind(key.scope)
-        .execute(&mut *projecting)
+    sqlx::query(
+        "SELECT 1 FROM concert_product_owner_scopes WHERE instance_id=$1 AND scope_id=$2 FOR SHARE",
+    )
+    .bind(key.instance)
+    .bind(key.scope)
+    .execute(&mut *projecting)
+    .await
+    .unwrap();
+    let started = Instant::now();
+    let error = ledger
+        .register_child_intent(&key, &reference)
         .await
-        .unwrap();
+        .unwrap_err();
+    let waited = started.elapsed();
+    assert_eq!(error.code(), tonic::Code::Unavailable);
+    // A refusal that returns without waiting did not hit the lock at all.
     assert!(
-        ledger.register_child_intent(&key, &reference).await.is_err(),
-        "lifecycle registration must stay serialized against the witness share lock"
+        waited >= Duration::from_millis(150),
+        "registration must wait on the held share lock, not fail fast: {waited:?}"
     );
     projecting.rollback().await.unwrap();
     // With the share lock released (the supported order: intent first), the

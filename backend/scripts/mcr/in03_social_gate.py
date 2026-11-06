@@ -160,6 +160,14 @@ def assert_concert_error(status, body, expected_status, expected_reason, forbid=
         require(token not in rendered, f"denied-body-leaked-{token}")
 
 
+def binary_hashes(directory):
+    if directory is None:
+        return {}
+    return {path.name: hashlib.sha256(path.read_bytes()).hexdigest()
+            for path in sorted(directory.iterdir())
+            if path.is_file() and path.stat().st_mode & 0o111}
+
+
 def load_pack(root):
     directory = root / PACK
     require(directory.is_dir(), "wall-pack-missing")
@@ -180,6 +188,8 @@ def main(argv=None):
     parser.add_argument("--redis-binary", type=Path, default=Path("/opt/homebrew/bin/redis-server"))
     parser.add_argument("--openssl-binary", type=Path, default=Path("/opt/homebrew/bin/openssl"))
     parser.add_argument("--hold-on-failure-seconds", type=int, default=0)
+    parser.add_argument("--head-build", type=Path)
+    parser.add_argument("--ceiling-observation", type=Path)
     args = parser.parse_args(argv)
 
     root = Path(__file__).resolve().parents[3]
@@ -770,34 +780,23 @@ def main(argv=None):
                 "carol", "GET", f"/api/concert/events/{event}/feed?limit=1")
             feed_ms = round((time.monotonic() - feed_started) * 1000, 1)
             carol_feed_ids = [item["post_id"] for item in body.get("items", [])]
-            # Executed observation, not a privacy pass. U08 /me/blocks specifies
-            # list/unblock and prior sharing revocation; the concert feed reads the
-            # Friend block authority and fails closed with DEPENDENCY_UNAVAILABLE
-            # while a Concert social pair is blocked. Recorded as a blocker.
+            rendered = json.dumps(body)
+            leaks = [token for token in (users["bob"], "bob@example.test") if token in rendered]
             record("feed_carol_blocked_author_state", {
                 "http": status,
                 "ms": feed_ms,
-                "body": None if status == 200 else body,
+                "items": len(body.get("items", [])),
                 "post_ids": carol_feed_ids,
                 "bob_post_visible": bob_post in carol_feed_ids,
-                "spec_basis": "U08 /me/blocks: list and unblock; no feed-hiding contract"
-                               " (a 503 for the blocker's own feed is still a defect)",
-                "consumer": "backend/services/post-service/src/concert_feed read admission "
-                            "(Friend block view only); backend/services/concert-service/src/feed "
-                            "policy/author fence",
+                "blocked_author_metadata_leaks": leaks,
+                "spec_basis": "U08 /me/blocks lists the author and revokes prior sharing; the "
+                               "feed filters the blocked author instead of failing the reader",
+                "consumer": "backend/services/concert-service/src/adapters/out/public_profile "
+                            "local_pair_and_members_in -> feed_error -> ResourceUnavailable",
             })
-            if status != 200 and carol_feed_ids == []:
-                report["not_run"]["concert_block_feed_read"] = {
-                    "status": "BLOCKED",
-                    "reason": "After carol blocks bob through /me/blocks, her own feed read "
-                              "returned CONCERT_503 DEPENDENCY_UNAVAILABLE in " + str(feed_ms) + " ms; "
-                              "the same read returned 200 with bob's post present before the "
-                              "block and after the unblock. The feeder fails closed instead of "
-                              "filtering, so no feed-filter privacy pass is claimed for the "
-                              "Concert block surface.",
-                    "consumer": "backend/services/post-service/src/concert_feed read admission; "
-                                "backend/services/concert-service/src/feed policy/author fence",
-                }
+            require(status == 200 and bob_post not in carol_feed_ids,
+                    f"social-block-feed-{status}:{json.dumps(body)[:400]}")
+            require(not leaks, "social-block-feed-private-metadata")
 
             status, body, _ = api.request("carol", "GET",
                                           f"/api/concert/events/{event}/me/blocks")
@@ -811,6 +810,20 @@ def main(argv=None):
                 None, str(uuid4()))
             require(status == 200 and body.get("blocked_by_me") is False, f"social-unblock-{status}")
             record("social_unblock", {"http": status, "body": body})
+
+            feed_started = time.monotonic()
+            status, body, _ = api.request(
+                "carol", "GET", f"/api/concert/events/{event}/feed?limit=1")
+            after_unblock_ms = round((time.monotonic() - feed_started) * 1000, 1)
+            after_unblock_ids = [item["post_id"] for item in body.get("items", [])]
+            record("feed_carol_after_social_unblock", {
+                "http": status,
+                "ms": after_unblock_ms,
+                "post_ids": after_unblock_ids,
+                "bob_post_visible": bob_post in after_unblock_ids,
+            })
+            require(status == 200 and bob_post in after_unblock_ids,
+                    f"feed-after-social-unblock-{status}:{json.dumps(body)[:400]}")
 
             status, body, _ = api.request(
                 "alice", "POST", f"/api/concert/events/{event}/social-requests",
@@ -925,15 +938,22 @@ def main(argv=None):
                 "consumer": "backend/services/auth-service mailer configuration",
             },
             "comments_read": {
-                "status": "NOT_RUN" if report["steps"].get("comments_self_read", {}).get("http") != 200 else "EXECUTED",
-                "reason": "Observed " + str(report["steps"].get("comments_self_read", {}).get("http"))
-                          + ": the self-authored comments route did not return data. The composed "
-                          "read needs about 1.3-1.5 s on this stack (post owner read, per-comment "
-                          "admission, then one guarded public-author read per comment), longer than "
-                          "the gateway's outer request timeout, which fails the caller before the "
-                          "product's own two-second ceiling. It returns no data and no private "
-                          "metadata. The seed row is present in post_concert_comments. Not claimed "
-                          "as a comment-read pass.",
+                "status": "EXECUTED" if comments_readable else "NOT_RUN",
+                "reason": (
+                    "Observed " + str(report["steps"].get("comments_self_read", {}).get("http"))
+                    + " in " + str(report["steps"].get("comments_self_read", {}).get("ms"))
+                    + " ms with the seeded comment author present: the self-authored comments read "
+                    "returned its data. The millisecond figure is the client-measured wall time "
+                    "around the HTTP request; provenance.comments_ceiling compares it with the "
+                    "2000 ms gateway budget. Server-side read evidence only; no client-cache, "
+                    "provider or release claim."
+                    if comments_readable else
+                    "Observed " + str(report["steps"].get("comments_self_read", {}).get("http"))
+                    + " in " + str(report["steps"].get("comments_self_read", {}).get("ms"))
+                    + " ms without returning the seeded author: this run did not complete the "
+                    "self-authored comments read. The seed row remains in post_concert_comments. "
+                    "Not claimed as a comment-read pass."
+                ),
                 "consumer": "backend/services/api-gateway/src/config/mod.rs GATEWAY_REQUEST_TIMEOUT_MS; "
                             "backend/services/concert-service/src/feed/author_filter.rs comments()",
             },
@@ -985,12 +1005,66 @@ def main(argv=None):
             report["steps"].get("social_block_listed", {}).get("http") == 200)
         checks["social_unblock"] = (
             report["steps"].get("social_unblock", {}).get("body", {}).get("blocked_by_me") is False)
+        checks["feed_carol_after_social_unblock"] = (
+            report["steps"].get("feed_carol_after_social_unblock", {}).get("http") == 200
+            and report["steps"].get("feed_carol_after_social_unblock", {}).get("bob_post_visible") is True)
+        checks["feed_carol_blocked_author_filtered"] = (
+            report["steps"].get("feed_carol_blocked_author_state", {}).get("http") == 200
+            and report["steps"].get("feed_carol_blocked_author_state", {}).get("bob_post_visible") is False
+            and report["steps"].get("feed_carol_blocked_author_state", {})
+                .get("blocked_author_metadata_leaks") == [])
         checks["unverified_age_denied"] = (
             report["steps"].get("unverified_age_request_denied", {}).get("http") == 404)
         checks["no_denied_private_metadata"] = report["steps"]["denied_payload_audit"]["private_metadata_leaks"] == {}
         checks["unblock_restores_profile"] = report["steps"]["profile_after_unblock"]["http"] == 200
         checks["invalidation_journal_grew"] = (
             report["steps"]["block"]["db"]["journal_after"] > report["steps"]["block"]["db"]["journal_before"])
+        executed = binary_hashes(args.bin_dir)
+        comparison = binary_hashes(args.head_build)
+        report["provenance"] = {
+            "executed_binaries": executed,
+            "comparison_build": comparison,
+            "differing_binaries": sorted(name for name in executed
+                                         if name in comparison and executed[name] != comparison[name]),
+            "comments_ceiling": {
+                "gateway_budget_ms": 2000,
+                "client_wall_ms": comments_ms,
+                "margin_ms": round(2000 - comments_ms, 1),
+                "note": "client-measured wall time includes local socket/HTTP overhead and is not the "
+                        "gateway's upstream deadline; a positive margin is not proof of headroom",
+            },
+        }
+        if args.ceiling_observation is not None and args.ceiling_observation.is_file():
+            prior = json.loads(args.ceiling_observation.read_bytes())
+            observed = prior.get("steps", {}).get("comments_self_read", {}).get("ms")
+            report["provenance"]["ceiling_observation"] = {
+                "comments_ms": observed,
+                "margin_ms": round(2000 - observed, 1) if isinstance(observed, (int, float)) else None,
+                "prior_result": prior.get("result"),
+                "prior_failed_checks": prior.get("failed_checks"),
+                "prior_checks": len(prior.get("checks", {})),
+                "prior_revision": (prior.get("candidate") or {}).get("revision"),
+                "source": str(args.ceiling_observation),
+                "source_sha256": hashlib.sha256(args.ceiling_observation.read_bytes()).hexdigest(),
+                "note": "prior run of this driver on the same host; the user reported concurrent "
+                        "compilation for that run",
+            }
+        report["known_runner_defects"] = {
+            "product_scope_ledger_smoke": {
+                "status": "KNOWN_DEFECT_NOT_FIXED",
+                "runner": "backend/scripts/mcr/product_scope_ledger_smoke.py",
+                "reason": "The runner applies only 0028_product_owner_scope_lifecycle.sql, "
+                          "0037_gift_private_child_intents.sql and 0042_social_read_child_intents.sql. "
+                          "The current ledger's durable-capacity query reads "
+                          "concert_product_owner_scopes.cancellation_settled_at, which "
+                          "0048_root_response_cancellation.sql adds, so every register fails and the "
+                          "6-test suite cannot pass against that schema.",
+                "evidence": "backend/services/concert-service/src/product_rpc/scope_ledger.rs:170; "
+                            "backend/services/concert-service/migrations/0048_root_response_cancellation.sql:5",
+                "observed": "0 passed; 6 failed against only 0028/0037/0042, each Unavailable "
+                            "'Product scope lifecycle unavailable' at ledger register",
+            },
+        }
         failed = {name: value for name, value in checks.items() if value is False}
         report["result"] = "PASS" if not failed else "FAIL"
         report["result_scope"] = ("PASS_WITH_RECORDED_NOT_RUN" if not failed and report["not_run"]
