@@ -510,7 +510,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   Recommended task executor category: deep-low
   Commit: Y | `test(qa03): pass database race suite`
 
-- [ ] 39. Pass QA04 privacy and authorization matrix
+- [x] 39. Pass QA04 privacy and authorization matrix
   What to do / Must NOT do: cover owner/member/stranger/blocked/suspended/expired/admin across HTTP, WebSocket and caches, including Wall history and Gifts media. Do NOT rely on client checks.
   Closes: GAP-3
   Parallelization: Wave 7 | Blocked by: 13, 29–32 | Blocks: 47
