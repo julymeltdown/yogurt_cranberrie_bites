@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import base64
+import http.client
 import json
 import secrets
 import subprocess
@@ -73,11 +74,18 @@ def request(url, method="GET", payload=None, token=None, origin=None, intent=Tru
         with urllib.request.urlopen(req, timeout=30) as response:
             return response.status, json.loads(response.read() or b"{}"), dict(response.headers)
     except urllib.error.HTTPError as failure:
-        raw = failure.read()
+        try:
+            raw = failure.read()
+        except http.client.IncompleteRead as error:
+            raw = error.partial
         try:
             return failure.code, json.loads(raw or b"{}"), dict(failure.headers)
         except ValueError:
             return failure.code, {"raw": raw[:200].decode("utf-8", "replace")}, dict(failure.headers)
+    except http.client.IncompleteRead as failure:
+        return 0, {"raw": failure.partial[:200].decode("utf-8", "replace")}, {}
+    except Exception as failure:  # noqa: BLE001 - transport failure is a recorded status
+        return 0, {"raw": type(failure).__name__}, {}
 
 
 def cookie_pair(headers, name):
@@ -277,7 +285,7 @@ def readiness(status, body, service):
     return browser_refresh.current_readiness(status, body, service)
 
 
-def log_excerpts(stack, names=("concert-service", "auth-service", "friend-service", "api-gateway")):
+def log_excerpts(stack, names=("concert-service", "post-service", "auth-service", "friend-service", "api-gateway")):
     excerpts = {}
     for name in names:
         child = stack.children.get(name)
@@ -290,7 +298,7 @@ def log_excerpts(stack, names=("concert-service", "auth-service", "friend-servic
     return excerpts
 
 
-def new_log(stack, offsets, names=("api-gateway", "concert-service"), limit=1200):
+def new_log(stack, offsets, names=("api-gateway", "concert-service", "post-service"), limit=1200):
     """Bytes each owned child logged since the previous step, redacted.
 
     A step that produced no line reports that fact instead of a fabricated
@@ -328,6 +336,191 @@ def archive_shape(body):
                 "items": len(items),
                 "media_ids_empty": all(not item.get("media_ids") for item in items if isinstance(item, dict))}
     return {"shape": "error", "fields": sorted(body)}
+
+
+def feed_rows(cluster, event):
+    """Durable feed receipt/work/outbox and Post owner rows for one event."""
+    e = prep.quote(event)
+
+    def count(database, sql):
+        return int(cluster.sql(database, sql))
+
+    return {
+        "concert_command_receipts": count(
+            "mcr_concert",
+            f"SELECT count(*) FROM concert_command_receipts WHERE event_id={e}",
+        ),
+        "concert_feed_owner_work": count(
+            "mcr_concert",
+            f"SELECT count(*) FROM concert_feed_owner_work WHERE event_id={e}",
+        ),
+        "concert_outbox": count(
+            "mcr_concert", f"SELECT count(*) FROM concert_outbox WHERE event_id={e}"
+        ),
+        "post_posts": count(
+            "mcr_post", f"SELECT count(*) FROM post_concert_posts WHERE event_id={e}"
+        ),
+        "post_receipts": count(
+            "mcr_post", f"SELECT count(*) FROM post_concert_receipts WHERE event_id={e}"
+        ),
+        "post_outbox": count(
+            "mcr_post", f"SELECT count(*) FROM post_concert_outbox WHERE event_id={e}"
+        ),
+    }
+
+
+def feed_proof(stack, gateway, origin, event, operator, member, record, checks):
+    """Authenticated C04 feed mutations through the real Gateway/Concert/Post path."""
+    base = f"{gateway}/api/concert/events/{event}/posts"
+
+    def call(name, method, url, payload, token, key):
+        before = feed_rows(stack.cluster, event)
+        status, body, _ = request(
+            url, method, payload, token, origin, True,
+            {"Idempotency-Key": key} if key else None,
+        )
+        after = feed_rows(stack.cluster, event)
+        record(name, {"status": status, "body": body,
+                      "rows_before": before, "rows_after": after})
+        return status, body, before, after
+
+    def unchanged(before, after):
+        return before == after
+
+    def call_retry(name, method, url, payload, token, key):
+        status, body, before, after = call(name, method, url, payload, token, key)
+        if status in (0, 502, 503, 504):
+            status, body, before, after = call(
+                name + "_retry", method, url, payload, token, key
+            )
+        return status, body, before, after
+
+    create = {"text": "feed proof post", "media_ids": [], "links": []}
+    create_key = str(uuid4())
+    status, body, before, after = call_retry(
+        "feed_create", "POST", base, create, member[1], create_key
+    )
+    post = body.get("post_id")
+    revision = body.get("revision")
+    checks["feed_create_200"] = status == 200 and isinstance(post, str) and revision == 1
+    if not checks["feed_create_200"]:
+        return
+
+    status, replay, _, replay_after = call_retry(
+        "feed_create_replay", "POST", base, create, member[1], create_key
+    )
+    checks["feed_replay_stored"] = (
+        status == 200
+        and replay.get("post_id") == post
+        and replay.get("revision") == revision
+        and replay.get("text") == create["text"]
+        and replay_after == after
+    )
+
+    conflict = {"text": "feed proof conflict", "media_ids": [], "links": []}
+    status, conflict_body, conflict_before, conflict_after = call(
+        "feed_conflict", "POST", base, conflict, member[1], create_key
+    )
+    checks["feed_conflict_409"] = (
+        status == 409
+        and (conflict_body.get("details") or {}).get("reason") == "IDEMPOTENCY_CONFLICT"
+        and unchanged(conflict_before, conflict_after)
+    )
+
+    edit = {"expected_revision": revision, "text": "feed proof edited",
+            "media_ids": [], "links": []}
+    status, edited, _, _ = call_retry(
+        "feed_edit", "PATCH", f"{base}/{post}", edit, member[1], str(uuid4())
+    )
+    edited_revision = edited.get("revision")
+    checks["feed_edit_200"] = (
+        status == 200
+        and edited.get("post_id") == post
+        and edited.get("text") == edit["text"]
+        and edited_revision == revision + 1
+    )
+
+    status, deleted, _, _ = call_retry(
+        "feed_delete", "DELETE", f"{base}/{post}?expected_revision={edited_revision}",
+        None, member[1], str(uuid4()),
+    )
+    checks["feed_delete_200"] = (
+        status == 200 and deleted.get("resource_id") == post
+        and deleted.get("state") == "DELETED"
+    )
+
+    status, second, _, _ = call_retry(
+        "feed_second_create", "POST", base,
+        {"text": "feed proof second", "media_ids": [], "links": []}, member[1], str(uuid4()),
+    )
+    second_post = second.get("post_id")
+    second_revision = second.get("revision")
+    checks["feed_second_create_200"] = (
+        status == 200 and isinstance(second_post, str) and second_revision == 1
+    )
+    if not checks["feed_second_create_200"]:
+        return
+
+    comment = {"text": "feed proof comment", "post_revision": second_revision}
+    status, comment_body, _, _ = call_retry(
+        "feed_comment", "POST", f"{base}/{second_post}/comments", comment,
+        member[1], str(uuid4()),
+    )
+    checks["feed_comment_200"] = (
+        status == 200 and isinstance(comment_body.get("comment_id"), str)
+        and comment_body.get("post_id") == second_post
+    )
+
+    status, reaction, _, _ = call_retry(
+        "feed_reaction", "PUT", f"{base}/{second_post}/reaction", {},
+        member[1], str(uuid4()),
+    )
+    checks["feed_reaction_200"] = (
+        status == 200 and reaction.get("post_id") == second_post
+        and reaction.get("reacted_by_me") is True
+        and reaction.get("reaction_count") == 1
+    )
+
+    status, unauthorized, before, after = call(
+        "feed_unauthorized", "PATCH", f"{base}/{second_post}", edit, operator[1], str(uuid4())
+    )
+    checks["feed_unauthorized_403_zero_rows"] = (
+        status == 403 and unchanged(before, after)
+    )
+
+    status, missing, before, after = call(
+        "feed_missing", "PATCH", f"{base}/{uuid4()}", edit, operator[1], str(uuid4())
+    )
+    checks["feed_missing_404_zero_rows"] = (
+        status == 404 and unchanged(before, after)
+    )
+
+    stack.cluster.sql(
+        "mcr_friend",
+        "INSERT INTO user_blocks(blocker_id,blocked_id,created_at) VALUES("
+        + prep.quote(member[0]) + "," + prep.quote(operator[0]) + ",clock_timestamp())"
+        + " ON CONFLICT (blocker_id,blocked_id) DO UPDATE SET deleted_at=NULL,created_at=clock_timestamp()",
+    )
+    status, blocked, before, after = call(
+        "feed_blocked", "POST", f"{base}/{second_post}/comments",
+        {"text": "feed proof blocked", "post_revision": second_revision},
+        operator[1], str(uuid4()),
+    )
+    checks["feed_blocked_403_or_404_zero_rows"] = (
+        status in (403, 404) and unchanged(before, after)
+    )
+    stack.cluster.sql(
+        "mcr_friend",
+        "UPDATE user_blocks SET deleted_at=clock_timestamp() WHERE blocker_id="
+        + prep.quote(member[0]) + " AND blocked_id=" + prep.quote(operator[0]),
+    )
+    record("feed_block_cleared", {
+        "blocks": stack.cluster.sql(
+            "mcr_friend",
+            "SELECT count(*) FROM user_blocks WHERE blocker_id=" + prep.quote(member[0])
+            + " AND blocked_id=" + prep.quote(operator[0]) + " AND deleted_at IS NULL",
+        ),
+    })
 
 
 def hold(stack, seconds):
@@ -447,7 +640,7 @@ def main(argv=None):
             }
         )
 
-        relationship, self_profile, decision, _post_read, _post_callback = world.joined.keys(cluster, 5)
+        relationship, self_profile, decision, post_read, post_callback, feed_command = world.joined.keys(cluster, 6)
         urls = {role: "https://" + ports.address(role + "-service:grpc")
                 for role in ("auth", "friend", "profile", "concert", "notification", "post")}
         for env in envs.values():
@@ -483,6 +676,7 @@ def main(argv=None):
             envs["concert-service"]["CONCERT_" + role.upper() + "_GRPC_ENDPOINT"] = urls[role]
         envs["concert-service"].update(
             CONCERT_INTRO_MODE="live",
+            CONCERT_PUBLIC_FEED_MODE="read",
             CONCERT_NOTIFICATION_GRPC_ENDPOINT=urls["notification"],
             CONCERT_INTRO_CURSOR_KEY_HEX=secrets.token_hex(32),
             CONCERT_INTRO_RECEIPT_KEYS_JSON=json.dumps(
@@ -491,6 +685,25 @@ def main(argv=None):
             CONCERT_PICKUP_KEYS_JSON=json.dumps(
                 [{"id": "closure_dev", "secret_hex": secrets.token_hex(32)}]
             ),
+            CONCERT_POST_GRPC_ENDPOINT=urls["post"],
+            CONCERT_POST_READ_SIGNING_SEED=post_read[0],
+            POST_CONCERT_ROOT_READ_VERIFYING_KEYS=post_callback[1],
+            CONCERT_FEED_CURSOR_KEY_HEX=secrets.token_hex(32),
+            CONCERT_FEED_COMMAND_MODE="on",
+            CONCERT_POST_COMMAND_SIGNING_SEED=feed_command[0],
+            CONCERT_FEED_COMMAND_KEYS_JSON=json.dumps(
+                [{"id": "closure_feed", "secret_hex": secrets.token_hex(32)}]
+            ),
+        )
+        envs["post-service"].update(
+            POST_CONCERT_READ_MODE="read",
+            POST_CONCERT_READ_AUTH_GRPC_ENDPOINT=urls["auth"],
+            POST_FRIEND_GRPC_ENDPOINT=urls["friend"],
+            POST_CONCERT_ROOT_GRPC_ENDPOINT=urls["concert"],
+            CONCERT_POST_READ_VERIFYING_KEYS=post_read[1],
+            POST_CONCERT_ROOT_READ_SIGNING_SEED=post_callback[0],
+            POST_CONCERT_COMMAND_MODE="on",
+            CONCERT_POST_COMMAND_VERIFYING_KEYS=feed_command[1],
         )
         inspected = migration.execute(
             [str(args.bin_dir / "concert-service"), "--inspect-product-release"],
@@ -537,6 +750,40 @@ def main(argv=None):
             value["log"] = new_log(stack, log_offsets)
             report["steps"][name] = value
             return value
+
+        checks = report["checks"]
+        for user in (operator[0], member[0]):
+            stack.cluster.sql(
+                "mcr_concert",
+                "INSERT INTO concert_event_admissions(event_id,user_id,state) VALUES("
+                + prep.quote(event) + "," + prep.quote(user) + ",'ACTIVE') ON CONFLICT DO NOTHING",
+            )
+            stack.cluster.sql(
+                "mcr_concert",
+                "INSERT INTO concert_participants(event_id,user_id,theme,low_power,reduced_motion,sound_enabled) VALUES("
+                + prep.quote(event) + "," + prep.quote(user)
+                + ",'REVENGE',false,false,false) ON CONFLICT DO NOTHING",
+            )
+            stack.cluster.sql(
+                "mcr_concert",
+                "INSERT INTO concert_avatar_settings(event_id,user_id,contract_version,representation,preset_id,manifest_id,manifest_version) VALUES("
+                + prep.quote(event) + "," + prep.quote(user)
+                + ",'1.1.0','whole_character','photo01_front_01','mcr_selected_static_20261103',1) ON CONFLICT DO NOTHING",
+            )
+        report["steps"]["feed_admissions"] = stack.cluster.sql(
+            "mcr_concert",
+            "SELECT user_id,state FROM concert_event_admissions WHERE event_id="
+            + prep.quote(event) + " ORDER BY user_id",
+        )
+        for name in (
+            "feed_create_200", "feed_replay_stored", "feed_conflict_409",
+            "feed_edit_200", "feed_delete_200", "feed_second_create_200",
+            "feed_comment_200", "feed_reaction_200",
+            "feed_unauthorized_403_zero_rows", "feed_missing_404_zero_rows",
+            "feed_blocked_403_or_404_zero_rows", "feed_post_closure_409",
+        ):
+            checks[name] = False
+        feed_proof(stack, gateway, origin, event, operator, member, record, checks)
         closure = {"confirmation": "CLOSE_EVENT", "expected_revision": 1,
                    "reason": "Development closure proof"}
         closure_url = f"{gateway}/api/concert/events/{event}/admin/closure"
@@ -546,16 +793,22 @@ def main(argv=None):
         status, body, _ = request(closure_url, "POST", closure, member[1], origin, True,
                                   {"Idempotency-Key": str(uuid4())})
         record("member_closure", {"status": status, "body": body})
-        # The feed-post route is mounted by the Gateway but no Product operation
-        # classifies it (`product_rpc::operation` refuses it as "Unsupported
-        # product operation"), so it is recorded as an observation and never
-        # used as the 409 proof.
+        # The Gateway mount and the Concert product classifier now both resolve
+        # this route. READ_ONLY must refuse it with 409 and leave no feed rows.
+        before = feed_rows(stack.cluster, event)
         status, body, _ = request(
             f"{gateway}/api/concert/events/{event}/posts", "POST",
-            {"text": "post-closure feed write must be refused", "mediaIds": []},
-            operator[1], origin, True, {"Idempotency-Key": str(uuid4())},
+            {"text": "post-closure feed write must be refused", "media_ids": [], "links": []},
+            member[1], origin, True, {"Idempotency-Key": str(uuid4())},
         )
-        record("feed_post_write", {"status": status, "body": body})
+        after = feed_rows(stack.cluster, event)
+        record("feed_post_write", {"status": status, "body": body,
+                                   "rows_before": before, "rows_after": after})
+        feed_post = report["steps"]["feed_post_write"]
+        checks["feed_post_closure_409"] = (
+            feed_post["status"] == 409
+            and (feed_post["body"].get("details") or {}).get("reason") == "EVENT_READ_ONLY"
+            and feed_post["rows_before"] == feed_post["rows_after"])
         # A supported Product write after READ_ONLY must be refused with 409, not
         # accepted or silently dropped. The same closure command under a fresh
         # idempotency key is the exact transition probe for that contract.
@@ -615,6 +868,11 @@ def main(argv=None):
             post_closure["status"] == 409
             and (post_closure["body"].get("details") or {}).get("reason")
             == "INVALID_TRANSITION")
+        feed_post = report["steps"]["feed_post_write"]
+        checks["feed_post_closure_409"] = (
+            feed_post["status"] == 409
+            and (feed_post["body"].get("details") or {}).get("reason") == "EVENT_READ_ONLY"
+            and feed_post["rows_before"] == feed_post["rows_after"])
         checks["forged_token_401"] = report["steps"]["forged_closure"]["status"] == 401
         checks["expired_token_401"] = report["steps"]["expired_closure"]["status"] == 401
         archive_status = report["steps"]["archive"]["status"]
