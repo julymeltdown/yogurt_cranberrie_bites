@@ -35,11 +35,16 @@ volumes are `postgres-data` and `redis-data`. The stack uses one database owner
 (`mcr_owner`) for every database; per-service least-privilege runtime roles are a
 production gap (section 12).
 
-The stack runs in parity mode with plaintext internal gRPC. It intentionally
-does not exercise mTLS, does not mount a Concert product release, and points
-provider egress at `127.0.0.1:9/disabled` in the smoke-generated environment.
-Concert migrations, health and readiness are real; its product RPCs are absent
-and are never simulated as success. Treat this stack as staging/reference only.
+Runtime modes are service-specific. Six services run `parity`
+(`GATEWAY_RUNTIME_MODE`, `AUTH_RUNTIME_MODE`, `PROFILE_RUNTIME_MODE`,
+`FRIEND_RUNTIME_MODE`, `POST_RUNTIME_MODE`, `NOTIFICATION_RUNTIME_MODE`).
+`concert-service` runs `CONCERT_RUNTIME_MODE=production` with
+`CONCERT_MIGRATION_MODE=external` in its health-only mode. Internal gRPC is
+plaintext because no TLS paths are set. The stack intentionally does not
+exercise mTLS, does not mount a Concert product release, and points provider
+egress at `127.0.0.1:9/disabled` in the smoke-generated environment. Concert
+migrations, health and readiness are real; its product RPCs are absent and are
+never simulated as success. Treat this stack as staging/reference only.
 
 ### Loopback-only native profile
 
@@ -239,17 +244,50 @@ through one of two modes:
 The HTTP mailer receives one delivery per outbox row and must be idempotent on
 its `Idempotency-Key`. No mail destination, token or body belongs in logs.
 
-### 5.2 OAuth (publicly OFF)
+### 5.2 OAuth (public OFF, controlled parity transport only)
 
-At this source revision the Gateway does not mount OAuth authorize/callback
-routes; `GET /api/auth/capabilities` reports EMAIL enabled and
-GOOGLE/APPLE/X disabled with `HANDOFF_NOT_QUALIFIED`. The `GATEWAY_OAUTH_*`
-settings named in the boundary record are not present in the current Gateway
-source and are not part of this deployment.
+`GET /api/auth/capabilities` always reports GOOGLE/APPLE/X disabled with
+`HANDOFF_NOT_QUALIFIED`: `OAuthExposurePolicy::public_enabled` is hard-coded
+false, and a non-empty `GATEWAY_OAUTH_ENABLED_PROVIDERS` fails startup with
+`Public OAuth HANDOFF_NOT_QUALIFIED`. Leave it empty.
 
-Production Auth still constructs an HTTP OAuth provider client at startup, so
-these names must be configured even while public OAuth stays off. Missing values
-fail Auth startup:
+The Gateway does mount the OAuth surface, but only when controlled transport is
+configured. `browser_auth.rs` merges `oauth_routes` when the exposure policy has
+transport, exposing:
+
+```text
+GET  /auth/oauth/:provider/authorize
+GET  /auth/oauth/:provider/callback
+POST /auth/oauth/:provider/callback
+POST /auth/oauth/:provider/callback/complete
+```
+
+Controlled transport settings (all read in
+`api-gateway/src/config/mod.rs:299-302`):
+
+| Variable | Rule |
+| --- | --- |
+| `GATEWAY_OAUTH_ENABLED_PROVIDERS` | Must be empty. Any value fails startup with `HANDOFF_NOT_QUALIFIED`. |
+| `GATEWAY_OAUTH_CONTROLLED_PROVIDERS` | Comma list of `google`, `apple`, `x`; empty/absent means the OAuth router is not merged. Duplicates or unknown names fail startup. |
+| `GATEWAY_OAUTH_HANDOFF_HMAC_KEY` | 32-4096 byte key, independent of `GATEWAY_ADMISSION_HMAC_KEY`; missing or the same key fails startup. |
+| `GATEWAY_OAUTH_BROWSER_ORIGIN` | Exact HTTPS origin (HTTP only for loopback); no path, query, trailing slash or userinfo. It must also appear in `GATEWAY_CORS_ALLOWED_ORIGINS`. |
+
+Policy rules enforced by the code:
+
+- Controlled transport is parity-only. `GATEWAY_RUNTIME_MODE=production` with a
+  non-empty controlled list fails startup.
+- Controlled transport also requires `GATEWAY_REFRESH_COOKIE_SECURE=true` and an
+  empty `GATEWAY_REFRESH_COOKIE_DOMAIN`; the OAuth handoff key must differ from
+  the admission key.
+- Unknown provider: HTTP 400 (`OAuth provider is invalid`). Known provider whose
+  transport is not enabled: HTTP 404 (`OAuth provider unavailable`). With no
+  controlled list, the whole router is absent and all OAuth paths return 404.
+- Capabilities remain disabled even when controlled transport serves real
+  handlers; this is a private qualification surface, not a public login toggle.
+
+Production Auth separately constructs an HTTP OAuth provider client at startup,
+so these provider names must be configured even while public OAuth stays off.
+Missing values fail Auth startup:
 
 | Provider | Required names |
 | --- | --- |
@@ -276,9 +314,16 @@ maps Notification to 50055).
 | Gateway | `GATEWAY_AUTH_GRPC_ENDPOINT`, `GATEWAY_PROFILE_GRPC_ENDPOINT`, `GATEWAY_FRIEND_GRPC_ENDPOINT`, `GATEWAY_POST_GRPC_ENDPOINT`, `GATEWAY_NOTIFICATION_GRPC_ENDPOINT`, `GATEWAY_CONCERT_GRPC_ENDPOINT` (optional; product routes stay unavailable when absent), `GATEWAY_CONCERT_RELEASE_DIGEST` (optional, exact 64-hex release digest) |
 | Auth | `AUTH_PROFILE_GRPC_ENDPOINT`, `AUTH_FRIEND_GRPC_ENDPOINT`, `AUTH_POST_GRPC_ENDPOINT`, `AUTH_NOTIFICATION_GRPC_ENDPOINT`; `AUTH_CONCERT_GRPC_ENDPOINT` + `AUTH_CONCERT_DELETION_MODE=managed` + `AUTH_CONCERT_DELETION_DEADLINE_MS` when managed deletion is enabled |
 | Friend | `FRIEND_PROFILE_GRPC_ENDPOINT` |
-| Post | `POST_PROFILE_GRPC_ENDPOINT`, `POST_FRIEND_GRPC_ENDPOINT`, `POST_NOTIFICATION_GRPC_ENDPOINT`, `POST_GATEWAY_GRPC_ENDPOINT`; `POST_CONCERT_READ_MODE`, `POST_CONCERT_READ_AUTH_GRPC_ENDPOINT`, `POST_CONCERT_ROOT_GRPC_ENDPOINT`, `POST_READ_SIGNING_SEED`, `POST_READ_VERIFYING_KEYS` when Concert reads are enabled |
+| Post | `POST_PROFILE_GRPC_ENDPOINT`, `POST_FRIEND_GRPC_ENDPOINT`, `POST_NOTIFICATION_GRPC_ENDPOINT`, `POST_GATEWAY_GRPC_ENDPOINT`; `POST_CONCERT_READ_MODE`, `POST_CONCERT_READ_AUTH_GRPC_ENDPOINT`, `POST_CONCERT_ROOT_GRPC_ENDPOINT`, `CONCERT_POST_READ_VERIFYING_KEYS`, `POST_CONCERT_ROOT_READ_SIGNING_SEED` when Concert feed reads are enabled |
 | Notification | `NOTIFICATION_CONCERT_MODE=live` plus `NOTIFICATION_CONCERT_AUTH_GRPC_ENDPOINT`, `NOTIFICATION_CONCERT_FRIEND_GRPC_ENDPOINT`, `NOTIFICATION_CONCERT_ROOT_GRPC_ENDPOINT` |
-| Concert | `CONCERT_AUTH_GRPC_ENDPOINT`, `CONCERT_FRIEND_GRPC_ENDPOINT`, `CONCERT_PROFILE_GRPC_ENDPOINT`, `CONCERT_POST_GRPC_ENDPOINT`, `CONCERT_NOTIFICATION_GRPC_ENDPOINT`; `CONCERT_PARTICIPANT_MODE=live` adds `CONCERT_PARTICIPANT_AUTH_GRPC_ENDPOINT`, `CONCERT_PARTICIPANT_FRIEND_GRPC_ENDPOINT`, `CONCERT_PARTICIPANT_PROFILE_GRPC_ENDPOINT`, `CONCERT_PRODUCER_INSTANCE_ID`, `CONCERT_PARTICIPANT_RELEASE_DIGEST`, `CONCERT_PARTICIPANT_RECOVERY_KEYS_JSON`, `CONCERT_RELATIONSHIP_SIGNING_SEED`, `CONCERT_PROFILE_SELF_SIGNING_SEED`, `PROFILE_PARTICIPANT_DECISION_VERIFYING_KEYS` |
+| Concert | `CONCERT_AUTH_GRPC_ENDPOINT`, `CONCERT_FRIEND_GRPC_ENDPOINT`, `CONCERT_PROFILE_GRPC_ENDPOINT`, `CONCERT_POST_GRPC_ENDPOINT`, `CONCERT_NOTIFICATION_GRPC_ENDPOINT`; `CONCERT_POST_READ_SIGNING_SEED`, `POST_CONCERT_ROOT_READ_VERIFYING_KEYS` when feed reads are enabled; `CONCERT_PARTICIPANT_MODE=live` adds `CONCERT_PARTICIPANT_AUTH_GRPC_ENDPOINT`, `CONCERT_PARTICIPANT_FRIEND_GRPC_ENDPOINT`, `CONCERT_PARTICIPANT_PROFILE_GRPC_ENDPOINT`, `CONCERT_PRODUCER_INSTANCE_ID`, `CONCERT_PARTICIPANT_RELEASE_DIGEST`, `CONCERT_PARTICIPANT_RECOVERY_KEYS_JSON`, `CONCERT_RELATIONSHIP_SIGNING_SEED`, `CONCERT_PROFILE_SELF_SIGNING_SEED`, `PROFILE_PARTICIPANT_DECISION_VERIFYING_KEYS` |
+
+The Concert-to-Post read edge uses two independent Ed25519 pairs. Concert signs
+with `CONCERT_POST_READ_SIGNING_SEED`; Post verifies with
+`CONCERT_POST_READ_VERIFYING_KEYS`. The Post-to-Concert root-read callback is
+signed with `POST_CONCERT_ROOT_READ_SIGNING_SEED` and verified with
+`POST_CONCERT_ROOT_READ_VERIFYING_KEYS`. These keys must be distinct from
+Gateway and parity keys; a partial or shared-key configuration fails startup.
 
 ### 5.4 Post external publisher
 
@@ -615,7 +660,7 @@ Do not treat `GET /livez` as readiness. A gateway that reports
 | Device / browser acceptance | **NOT_RUN** | No iOS/Android or real-device claim |
 | Backup schedule and restore drill | **NOT_RUN** | Procedures above are unexercised |
 | Per-service least-privilege database roles | absent | All services share `mcr_owner` in this stack |
-| Public OAuth | OFF; Gateway routes unmounted | Provider configuration is still a production Auth startup requirement (section 5.2) |
+| Public OAuth | OFF; controlled parity transport only | Gateway mounts OAuth only with `GATEWAY_OAUTH_CONTROLLED_PROVIDERS` in parity mode; public capabilities stay disabled. Provider configuration is still a production Auth startup requirement (section 5.2) |
 | Email delivery provider | absent (staging uses `logging`) | Production requires an HTTPS mailer endpoint and bearer token |
 | Approved eligibility/legal/consent publication (FE10) | absent | Signup verification links have no approved policy text |
 | Operator role application | source/helper only | Production role publication and Admin observation are **NOT_RUN** |
@@ -688,8 +733,8 @@ Compose project cover the values that differ):
   `AUTH_USER_DELETION_WORKER_BATCH_SIZE`,
   `AUTH_USER_DELETION_WORKER_MAX_ATTEMPTS`,
   `AUTH_USER_DELETION_WORKER_LEASE_TIMEOUT_MS`,
-  `AUTH_USER_DELETION_WORKER_BASE_RETRY_MS`, `AUTH_PASSWORD_QUEUE`,
-  `AUTH_PASSWORD_WORKERS`, `AUTH_PASSWORD_LOGIN_QUEUE`,
+  `AUTH_USER_DELETION_WORKER_BASE_RETRY_MS`, `AUTH_PASSWORD_WORKERS`,
+  `AUTH_PASSWORD_LOGIN_QUEUE`,
   `AUTH_PASSWORD_RESET_QUEUE`, `AUTH_PASSWORD_RESET_WORKERS`,
   `AUTH_PASSWORD_SIGNUP_QUEUE`, `AUTH_PASSWORD_SIGNUP_WORKERS`.
 - Gateway: `GATEWAY_ADMISSION_MODE`, `GATEWAY_ADMISSION_BUDGETS`,
@@ -703,7 +748,9 @@ Compose project cover the values that differ):
   `GATEWAY_TELEMETRY_QUEUE_CAPACITY`, `GATEWAY_TELEMETRY_RETENTION_DAYS`,
   `GATEWAY_DOCS_GRAFANA_URL`, `GATEWAY_DOCS_PROFILES_URL`,
   `GATEWAY_DOCS_PROMETHEUS_URL`, `GATEWAY_DOCS_PYROSCOPE_URL`,
-  `GATEWAY_DOCS_SWAGGER_URL`, `GATEWAY_SERVICE_CREDENTIAL_PREVIOUS`.
+  `GATEWAY_DOCS_SWAGGER_URL`, `GATEWAY_SERVICE_CREDENTIAL_PREVIOUS`,
+  `GATEWAY_OAUTH_ENABLED_PROVIDERS`, `GATEWAY_OAUTH_CONTROLLED_PROVIDERS`,
+  `GATEWAY_OAUTH_HANDOFF_HMAC_KEY`, `GATEWAY_OAUTH_BROWSER_ORIGIN`.
 - Post: `POST_OUTBOX_WORKER_ENABLED`, `POST_OUTBOX_WORKER_INTERVAL_MS`,
   `POST_OUTBOX_WORKER_BATCH_SIZE`, `POST_OUTBOX_WORKER_MIN_EVENT_AGE_MS`,
   `POST_OUTBOX_DELIVERY_LEASE_MS`, `POST_OUTBOX_DELIVERY_MAX_ATTEMPTS`,
