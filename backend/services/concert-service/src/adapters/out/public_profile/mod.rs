@@ -310,11 +310,12 @@ pub(crate) async fn local_pair_and_members_in(
     let pair=sqlx::query("select revision,low_blocks_high,high_blocks_low from public.concert_relationship_pairs where event_id=$1 and low_user=$2 and high_user=$3 for share")
         .bind(event).bind(low).bind(high).fetch_optional(&mut *c).await.map_err(dependency_error)?.ok_or_else(unavailable)?;
     let pair_revision: i64 = pair.try_get("revision").map_err(dependency_error)?;
-    if pair.try_get::<bool, _>("low_blocks_high").map_err(dependency_error)?
-        || pair.try_get::<bool, _>("high_blocks_low").map_err(dependency_error)?
-    {
-        return Err(unavailable());
-    }
+    pair_visibility(
+        pair.try_get::<bool, _>("low_blocks_high")
+            .map_err(dependency_error)?,
+        pair.try_get::<bool, _>("high_blocks_low")
+            .map_err(dependency_error)?,
+    )?;
     // Sorted local order: event, normalized pair, admission, participant, avatar.
     let mut users = vec![actor, subject];
     users.sort();
@@ -354,6 +355,14 @@ fn dependency_error_status() -> Status {
     Status::unavailable("Current public Profile unavailable")
 }
 
+fn pair_visibility(low_blocks_high: bool, high_blocks_low: bool) -> Result<(), Status> {
+    if low_blocks_high || high_blocks_low {
+        Err(Status::not_found("Public Profile unavailable"))
+    } else {
+        Ok(())
+    }
+}
+
 pub fn validate(value: &Value) -> Result<(), Status> {
     static VALIDATOR: OnceLock<Result<jsonschema::Validator, ()>> = OnceLock::new();
     let validator=VALIDATOR.get_or_init(||{
@@ -391,9 +400,125 @@ fn feed_error(status: Status) -> concert_domain::feed::FeedError {
 
 #[cfg(test)]
 mod tests {
-    use super::feed_error;
+    use super::{feed_error, pair_visibility, unavailable};
     use concert_domain::feed::FeedError;
     use tonic::{Code, Status};
+
+    #[test]
+    fn blocked_pair_is_skippable_while_an_owner_outage_stays_closed() {
+        for (low_blocks_high, high_blocks_low) in [(true, false), (false, true)] {
+            let denied = pair_visibility(low_blocks_high, high_blocks_low).unwrap_err();
+            assert_eq!(denied.code(), Code::NotFound);
+            assert_eq!(feed_error(denied), FeedError::ResourceUnavailable);
+        }
+        assert!(pair_visibility(false, false).is_ok());
+        assert_eq!(feed_error(unavailable()), FeedError::DependencyUnavailable);
+    }
+
+    #[tokio::test]
+    async fn blocked_pair_row_at_the_call_site_is_a_not_found_denial() {
+        let url = std::env::var("CONCERT_CONSUMER_TEST_URL")
+            .expect("owned public-profile test database required");
+        let pool = sqlx::postgres::PgPoolOptions::new()
+            .max_connections(2)
+            .connect(&url)
+            .await
+            .expect("owned public-profile test database");
+        let event = uuid::Uuid::new_v4();
+        let actor = uuid::Uuid::new_v4();
+        let subject = uuid::Uuid::new_v4();
+        let (low, high) = if actor <= subject {
+            (actor, subject)
+        } else {
+            (subject, actor)
+        };
+        sqlx::query(
+            "insert into concert_events(event_id,slug,title,phase) values($1,$2,'Blocked pair test','OPEN')",
+        )
+        .bind(event)
+        .bind(format!("blocked-{event}"))
+        .execute(&pool)
+        .await
+        .unwrap();
+        for user in [actor, subject] {
+            sqlx::query(
+                "insert into concert_event_admissions(event_id,user_id,state) values($1,$2,'ACTIVE')",
+            )
+            .bind(event)
+            .bind(user)
+            .execute(&pool)
+            .await
+            .unwrap();
+            sqlx::query(
+                "insert into concert_participants(event_id,user_id,theme,low_power,reduced_motion,sound_enabled) values($1,$2,'REVENGE',false,false,false)",
+            )
+            .bind(event)
+            .bind(user)
+            .execute(&pool)
+            .await
+            .unwrap();
+        }
+        let mut tx = pool.begin().await.unwrap();
+        sqlx::query("select set_config('mcr.relationship_authority_until',(clock_timestamp()+interval '1 minute')::text,true)")
+            .execute(&mut *tx)
+            .await
+            .unwrap();
+        sqlx::query(
+            "insert into concert_relationship_pairs(event_id,low_user,high_user,low_blocks_high) values($1,$2,$3,true)",
+        )
+        .bind(event)
+        .bind(low)
+        .bind(high)
+        .execute(&mut *tx)
+        .await
+        .unwrap();
+        tx.commit().await.unwrap();
+
+        let mut tx = pool.begin().await.unwrap();
+        let denied = super::local_pair_and_members_in(&mut tx, event, actor, subject)
+            .await
+            .unwrap_err();
+        tx.rollback().await.unwrap();
+        assert_eq!(denied.code(), Code::NotFound);
+        assert_eq!(feed_error(denied), FeedError::ResourceUnavailable);
+
+        let mut tx = pool.begin().await.unwrap();
+        sqlx::query("select set_config('mcr.relationship_authority_until',(clock_timestamp()+interval '1 minute')::text,true)")
+            .execute(&mut *tx)
+            .await
+            .unwrap();
+        sqlx::query(
+            "update concert_relationship_pairs set low_blocks_high=false,revision=revision+1 where event_id=$1 and low_user=$2 and high_user=$3",
+        )
+        .bind(event)
+        .bind(low)
+        .bind(high)
+        .execute(&mut *tx)
+        .await
+        .unwrap();
+        tx.commit().await.unwrap();
+
+        let mut tx = pool.begin().await.unwrap();
+        assert!(
+            super::local_pair_and_members_in(&mut tx, event, actor, subject)
+                .await
+                .is_ok()
+        );
+        tx.rollback().await.unwrap();
+
+        for statement in [
+            "delete from concert_relationship_pairs where event_id=$1",
+            "delete from concert_participants where event_id=$1",
+            "delete from concert_event_admissions where event_id=$1",
+            "delete from concert_events where event_id=$1",
+        ] {
+            sqlx::query(statement)
+                .bind(event)
+                .execute(&pool)
+                .await
+                .unwrap();
+        }
+    }
 
     #[test]
     fn guard_or_transport_failure_cannot_become_a_skippable_author() {

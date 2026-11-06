@@ -16,7 +16,21 @@ function InvitationRoute({ surface }: { readonly surface: LeafSurface }) {
   const [selected, setSelected] = useState<{ owner: typeof owner; id: string; surface: LeafSurface } | null>(null)
   const valid = canonicalId(id), inboxOpen = inboxId === id
   useEffect(() => {
-    if (owner && valid) { void owner.openInvitation(id, surface); setSelected({ owner, id, surface }) }
+    if (!owner || !valid) return
+    let active = true
+    setSelected({ owner, id, surface })
+    void (async () => {
+      const opened = await owner.openInvitation(id, surface)
+      if (!active || opened.kind === 'opened') return
+      // A direct canonical link has no prior inbox target. Read both authoritative
+      // directions once, then retry the exact linked ID; never invent a recipient.
+      await owner.openInbox('INCOMING')
+      if (!active) return
+      await owner.openInbox('OUTGOING')
+      if (!active) return
+      await owner.openInvitation(id, surface)
+    })()
+    return () => { active = false }
   }, [owner, id, valid, surface])
   useEffect(() => { if (owner && inboxOpen) void owner.openInbox('INCOMING') }, [owner, inboxOpen])
   if (!owner || !valid) return <MeetingUnavailable />

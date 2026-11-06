@@ -197,6 +197,7 @@ impl BoundedRelationshipAuthority for GrpcRelationshipAuthority {
                 actor_allowed: auth.actor_active && auth.session_live && !friend.actor_deleted,
                 subject_allowed: auth.subject_active && !friend.subject_deleted,
                 inherited_block: friend.actor_blocks_subject || friend.subject_blocks_actor,
+                friend_mutual_follow: friend.actor_follows_subject && friend.subject_follows_actor,
             };
             observation.ensure_current(binding, observation.revision, Utc::now())?;
             Ok(observation)

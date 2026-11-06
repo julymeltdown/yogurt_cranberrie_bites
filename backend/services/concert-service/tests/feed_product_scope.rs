@@ -72,7 +72,7 @@ fn cursor_secret_is_explicit_and_not_a_zero_default() {
 }
 
 #[test]
-fn producer_is_scoped_and_handles_only_the_three_read_operations() {
+fn producer_is_scoped_and_handles_only_feed_reads_and_commands() {
     fn scoped<T: ScopedProductProducer>() {}
     scoped::<FeedProductProducer<SystemClock>>();
     let post = Uuid::from_u128(17);
@@ -80,6 +80,9 @@ fn producer_is_scoped_and_handles_only_the_three_read_operations() {
         Operation::Feed,
         Operation::Post(post),
         Operation::Comments(post),
+        Operation::FeedCommand(
+            platform::concert_feed_command::FeedCommandRoute::EditPost(post),
+        ),
     ] {
         assert!(FeedProductProducer::<SystemClock>::handles(operation));
     }

@@ -1,0 +1,82 @@
+{
+  "viewport": {
+    "width": 360,
+    "height": 800,
+    "dpr": 1
+  },
+  "overflowX": false,
+  "tabs": {
+    "x": 0,
+    "y": 0,
+    "width": 360,
+    "height": 55
+  },
+  "tab": {
+    "x": 4,
+    "y": 5,
+    "width": 116,
+    "height": 44
+  },
+  "map": {
+    "x": 0,
+    "y": 172,
+    "width": 360,
+    "height": 573
+  },
+  "sheet": null,
+  "sharing": {
+    "x": 0,
+    "y": 745,
+    "width": 360,
+    "height": 55
+  },
+  "friendRows": [],
+  "friendPortrait": null,
+  "noteCards": [],
+  "notePortrait": null,
+  "selectedPortrait": null,
+  "composer": null,
+  "primary": null,
+  "meeting": null,
+  "controls": 31,
+  "minHit": 44,
+  "regions": {
+    "map": {
+      "x": 0,
+      "y": 0,
+      "width": 360,
+      "height": 800
+    },
+    "tabPanel": {
+      "x": 0,
+      "y": 172,
+      "width": 360,
+      "height": 573
+    },
+    "canvas": {
+      "x": 0,
+      "y": 172,
+      "width": 360,
+      "height": 573
+    },
+    "friends": null,
+    "sheet": null,
+    "noteCard": null,
+    "composer": null,
+    "sharing": {
+      "x": 0,
+      "y": 745,
+      "width": 360,
+      "height": 55
+    },
+    "friendDetail": null
+  },
+  "fonts": {
+    "name": null,
+    "place": null,
+    "source": null,
+    "body": null,
+    "noteMeta": null
+  },
+  "text": "MAP\nFRIENDS\nNOTES\nFriends unavailable\n\nThe venue friendship authority is unavailable (503). Friend locations cannot be verified, so none are shown.\n\nTRY AGAIN\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n+\n−\n⌖\n↺\nPhone location is off\nSHARE LOCATION"
+}

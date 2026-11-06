@@ -7,6 +7,7 @@ use async_trait::async_trait;
 use chrono::{DateTime, Utc};
 use concert_application::feed::{Action, Context, FeedPolicy, Observation};
 use concert_domain::feed::FeedError;
+use platform::concert_feed_command::FeedCommandRoute;
 use std::sync::Arc;
 use uuid::Uuid;
 
@@ -48,8 +49,19 @@ impl FeedPolicy for GuardedPolicy {
         action: Action,
     ) -> Result<Observation, FeedError> {
         self.check(c)?;
-        if action != Action::Read || subject.is_nil() {
+        if subject.is_nil() {
             return Err(FeedError::PermissionDenied);
+        }
+        if action != Action::Read {
+            let b = self.scope.binding();
+            let route = FeedCommandRoute::parse(b.event(), b.http_method(), b.http_target())
+                .map_err(|_| FeedError::PermissionDenied)?;
+            if route.operation() != b.operation()
+                || (action == Action::SafetySelf && !route.safety())
+                || (action == Action::Write && route.safety())
+            {
+                return Err(FeedError::PermissionDenied);
+            }
         }
         let guarded = self
             .scope
@@ -70,6 +82,9 @@ impl FeedPolicy for GuardedPolicy {
         // policy and author read share this exact retained local child. policy
         // does not require the viewing actor's own profile to be PUBLIC.
         let local = self.profiles.policy(&guarded).await?;
+        if action == Action::Write && !local.phase.permits_participant_writes() {
+            return Err(FeedError::EventReadOnly);
+        }
         let owners = guarded.revision_vector();
         let (actor_security, subject_security) = guarded
             .security_revisions()

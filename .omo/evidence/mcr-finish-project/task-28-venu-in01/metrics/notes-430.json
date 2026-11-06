@@ -1,0 +1,87 @@
+{
+  "viewport": {
+    "width": 430,
+    "height": 932,
+    "dpr": 1
+  },
+  "overflowX": false,
+  "tabs": {
+    "x": 0,
+    "y": 0,
+    "width": 430,
+    "height": 55
+  },
+  "tab": {
+    "x": 4,
+    "y": 5,
+    "width": 139.3,
+    "height": 44
+  },
+  "map": {
+    "x": 0,
+    "y": 55,
+    "width": 430,
+    "height": 260
+  },
+  "sheet": {
+    "x": 0,
+    "y": 315,
+    "width": 430,
+    "height": 617
+  },
+  "sharing": null,
+  "friendRows": [],
+  "friendPortrait": null,
+  "noteCards": [],
+  "notePortrait": null,
+  "selectedPortrait": null,
+  "composer": null,
+  "primary": {
+    "x": 7,
+    "y": 504.5,
+    "width": 416,
+    "height": 44
+  },
+  "meeting": null,
+  "controls": 35,
+  "minHit": 44,
+  "regions": {
+    "map": {
+      "x": 0,
+      "y": 0,
+      "width": 430,
+      "height": 932
+    },
+    "tabPanel": {
+      "x": 0,
+      "y": 55,
+      "width": 430,
+      "height": 877
+    },
+    "canvas": {
+      "x": 0,
+      "y": 55,
+      "width": 430,
+      "height": 260
+    },
+    "friends": null,
+    "sheet": {
+      "x": 0,
+      "y": 315,
+      "width": 430,
+      "height": 617
+    },
+    "noteCard": null,
+    "composer": null,
+    "sharing": null,
+    "friendDetail": null
+  },
+  "fonts": {
+    "name": null,
+    "place": null,
+    "source": null,
+    "body": null,
+    "noteMeta": null
+  },
+  "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nhelena\nMAIN GATE\n✉ 2\n+\n−\n⌖\n↺\nMAIN GATE\n2\nRead notes at\nSTAGE\nSTANDING A\nSTANDING B\nFOH\nMAIN GATE\nSUB GATE\nPARADISE CITY STATION\nCHROMA\nSTUDIO PARADISE\nSPA CIMER\nWONDERBOX\nART PARADISO / PLAZA\nPHOTO ZONE\nA QUEUE 1~3000\nB QUEUE 1~3000\nA+B QUEUE 3001+\nP1\nP2\nR1\nR2\nTOILETS\nMedical cross symbol\nREAD NOTES\n\nChoose a place to read current notes.\n\n+ NEW NOTE"
+}

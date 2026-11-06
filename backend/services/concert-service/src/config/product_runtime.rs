@@ -17,6 +17,16 @@ pub struct ProductOwners {
 /// Production constructor, deliberately without a successful fallback. Owner
 /// adapters are attached here only after their canonical fences are available.
 /// An explicit unsupported opt-in fails before database/listener composition.
+/// Optional operational service-policy read. Off unless explicitly requested.
+pub fn service_policy_read() -> anyhow::Result<bool> {
+    match std::env::var("CONCERT_SERVICE_POLICY_MODE") {
+        Ok(value) if value == "read" => Ok(true),
+        Ok(value) if value == "off" => Ok(false),
+        Err(std::env::VarError::NotPresent) => Ok(false),
+        _ => anyhow::bail!("CONCERT_SERVICE_POLICY_MODE must be off or read"),
+    }
+}
+
 pub fn production_owners(settings: ProductSettings) -> anyhow::Result<Option<ProductOwners>> {
     anyhow::ensure!(
         !settings.public_feed_read,

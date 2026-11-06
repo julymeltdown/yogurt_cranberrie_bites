@@ -1,0 +1,438 @@
+{
+  "result": "FAIL",
+  "scope": "actual real-Auth mTLS C03/World startup",
+  "statuses": {
+    "principal-1-signup": 422
+  },
+  "world_two_client": "NOT_RUN",
+  "browser_in01": "NOT_RUN",
+  "driver_sha256": "3c88af02a0e62e60da55b2f9286250e594cfbd3717fbc303470dafeb8bebaa07",
+  "producer_profile": "in01",
+  "gateway_admission": {
+    "mode": "enforce",
+    "provisioning_budget": "UNCHANGED_DEFAULTS"
+  },
+  "concert_seed": {
+    "result": "PARTIAL",
+    "migration_commands_exit": [
+      0,
+      0
+    ],
+    "producer_profile": "in01",
+    "principal_target": 2,
+    "registered_room_capacities": [
+      2
+    ],
+    "ledger_count": 60,
+    "binary_sha256": "98c501aac9e378a8e407a2a15a7e752891f87494a431f1d7f912d18e8210eb8e",
+    "migration_sha384": {
+      "1": "bf3d01697c1c6167fd999a92aa4323297f0e9c8b063176e2938f78dec8d1278f06cd84469d583a76314ac8aa520d8a5f",
+      "2": "6eae0492a1aedf4b2eaf30b44761a853376623d9cc65cc268941e416882998b40c46ff61f0acb8bd285be33a936f2e6b",
+      "3": "cbf152183fd2bddecfdc5c15ffbcb94b70ae86bb94fe28cc5e6acbefd836dd74b4379b6ab1ccc0992217542b4020205a",
+      "4": "cb60d4fbd67462ec3f6a899148dbcb6cf6d855171b6c1787f06c9e5274923b58b2fc7298c87353d8f513e85bf571d8dd",
+      "5": "185a8f46a6defbc3a46f1c9495c857c32a3eec9faeaf6dae1c8e0c0592e88648d8b43d57020a84fc9fb99674d05494f6",
+      "6": "be4ca65f89626dc0d6007a64dd151784800b3a47945e5b8bb3cd90e100904dd7c76bc95dbb32b0b63e7f391a64f040df",
+      "7": "bfa9a46d76f127d3b7fe6ff381608bec2dedefc7405f7de735f01d9f7e104a267eef1f6e7102f3dc1abc41b6aec88c4b",
+      "8": "f09cfb2513ae016ed0b08ed2193f0d548c9cebe2199429486a51375f6b4e5fb94fc3d73acf4b052737a213e432b7c2fc",
+      "9": "cd7c84b6a0b64af165ae82d77e8e9734c6180e4e77f1d517043d1bf54d0df612a483e82e187a20a39be0694f390e5ec7",
+      "10": "38cae9daee3e3cf739e231073b1dba3f3c7b5e7d1df5368aadbf0f98449dbf2d2b5c19012b660025fbd7c2215a6fd37c",
+      "11": "f3d87a48a52e31d9da776de4bec34457b84c470488fc2ec7a78329c59442d7c57c9b70215413ca75d11008275551c779",
+      "12": "26574dbb7376705544f63aaa0d0cf55e9208d6246217be62538b17588a9c6dbad95904adc69d3cc5fe338be10fba43cd",
+      "16": "1f1828ec4601d862ad66738ffb2abe78b05b502930ef76e7449abf5fb1817cf245113385b3310690e1ef96f6ff23e3bc",
+      "18": "194b87fd628249ea8be4c972c634857a8e266b8b9bc3f10cd3aa5ea6642f46dc2fcf0ac84c00127024b8514049f6b863",
+      "19": "188f99ab9b21a516143afdc5bb7c81a77bb20571031635fbe2067a92586652ed9a6a0c9a6c326188a2c529210e7e4f67",
+      "20": "b373bb67fe454a8ea3283e5ed66a2c3c201ebce1227b6493666b2858447c940d539a92910f79dbcafe77b2e276e27c36",
+      "21": "ad14a764e258c16dcdc59e2ad7815ba38dd653f0710b1de2185cc624e277bc7eb22e56836b828100d618f43eacecda45",
+      "22": "ff5b8a3141737b2f76f986018030d38c0e5550e4f835ca4568b98385f78c363c5731e0c9def50daa3e529165566602d4",
+      "23": "ce5d6c8ef9f16b0d32ebb636573e58f7669742cf0176167ae2a2a86d8f5bd1b0898bd77d5c72e3e1cc610bfe89fb0953",
+      "24": "49b0a5f4c09127bb8746218ecd237f70ac6e7d785fe96f986fc00add0e1e69810b7c14c95086719889ddafe069c6b506",
+      "25": "74923ba426bff066811b0236f4efb9111f6df4a4594b310724697795ce60737ee9b93ce7d2a4ae37163ab34bac46ebbc",
+      "26": "d9511d77ae810f58993e0beeab345cfe961ab11d84466058414a0df5a84b9b946931f10df91468002f4fccb881c697c5",
+      "27": "47144ab2d7109bcae0887f349bbc3aefbc726220573b51f9ca5b85547a1b9259c96755d6a9f86f4b8cba82c998a6fbe7",
+      "28": "8c53a3160e22ecfa618cf5aa846a5481ae36fdffa15650bda03d2c3300e6b0d2c6b02e87b8fc65ac845eabaf6c56b5ee",
+      "29": "a2af7f018d3ec03539a74cb8e9a31fda3ca3d2bd161064f7e1b0d95dbe65b8b6102fcc5d318c4196e67135a77420ce5f",
+      "33": "e786de6b76e615ff0df33ed40d00e3180570aedfae2a3206b6eb08a456407c6ca7c992e7d212acab3eb0e6e687dae927",
+      "35": "4c34e92c417a85760d3c79d9937d0e79496abd25e1ab18734fb9b6a5be44612c6021e1c8c745d4d3feb45af3098d7663",
+      "36": "2b09b75f6d2e538d925ea78dcb3283e172b0e83449a7054a426857f0a79868e5365650990b0f43e49bcc0135e1121aee",
+      "37": "198a733ca1374435e4a26b5eb770ee75a4caa9fa213930dd77cc38a89efd254463a8633977e4e11187e968915518c6fc",
+      "38": "5a38c84c4cbc73bda827a2a488fc40276e26987a97ce085901b20ffe62e139ef0e1399f4ecd7c2bff21785cbd848f362",
+      "42": "4d09541234e44f86cc2867d05e931aeab18a22b0dbe3b0bf135a4c121ed44496f48028ee764fb78bb86f0994860fdb8b",
+      "43": "77664f31a832eb3717a2da64cfab7c6dca681e54eb959fb91eb435ab70edcd48f827cb840b684c24484b3d5db37e6468",
+      "44": "b877d7f878126b6ef32d9d7eeebbaf6f6af88c55ed73296d9e947eb7aad759f5cd0b0c33569fe5d61875925bfb93a802",
+      "45": "639a006256bdf674c79df442a67110ed6353100626a939722932791b1807ca5a725afa8acab641380683025529cbbada",
+      "46": "de9a6022325137cf9b7fcc94050f613a61a775562ba37f58f526856c275ae0d7112999e15243a6480bd698419df80d09",
+      "47": "1f7997a4328e686ab7dda648c7c546f84efc50ff46d5a3292e09ff7602026e55a3e56338ae54972b30bde1de76831d39",
+      "48": "a13da371dddafc63fe06fc40d9f54f04042347cf039fbe25e4f7e4561343d6d5662a6fb4584b18d01e938d981cbf9cfb",
+      "49": "2c292352935615e7569206712ff88c001e6a64e35d32ac135b26b86999d710468492248df2a3338c08bbe2811bc05bca",
+      "50": "5b1d2e9830dfc946cd591e3498555fb7e2d5ffcf27242c06cae2d84c862cd33ce65ef3c0688cbd8bc78ca57caf0199d4",
+      "51": "d9672f6fbdbfc363a1624b69f3e26e7dd260b5d1426a9e674983ab8157c2ef7b3253ff13c63864a8bf64c4ebaadc5091",
+      "52": "89631a9b0b85c3a2d72df3e8a68e498241f2224e2750a5ca76c4e99b7bd4c75d13622ca5dd912adf38798f3c28afae08",
+      "53": "1d54bf9127a5f24ee9bdba10000f0fff73770115d2ab8d3bb36161b64da5fb72390ec2917908c1e796d949640d723264",
+      "54": "0db1c34fd95874ee1d6f90b8adacdc557119a4307c2b54b75490a776790950a366262db7d68b42ac68861f584941fa13",
+      "55": "5a5689f30815728dc2a8d16dc674524c87d94f7311b0b8acd45a14ecdd466423e9e1ceab7f256e8d9fac3d46cc1e5f68",
+      "56": "c3206e29d9652dc2efb4eddfb1c0c714fe53e95f5bcbac9fd1dd3da11bbfcb012e7d8bd3944cbb0493acb7af7eafb225",
+      "57": "3fc3cb1f1d418bf7d75f8a7db89035f9cf3fd3523951a1aaec145f5922e52207f900c7c6e117be17cc0d7e15360695b9",
+      "58": "358fc668adb6d0ada291161894f0685baeec6fcd4670253dbb399707e1cd961b3baa87e43d239411c5ba265f0109b651",
+      "60": "d6487df2c49abbb85a9c64f04a65b7337d565e27cdf886a36fc2e50afdfad9e527c16f5d05b3a139c0f32e6c973f851a",
+      "63": "2f48af4071d44d00bf72f5fca567c8b31ef4adb581d711341d9782382115d0f7edf96e5b41c91cf3dac8ccf453aec15d",
+      "65": "d30168fea6171709a1ddc177697b839ed352c797d34a94d72d4ce0660850f3381298495bacc58f6892f97e2c935117d1",
+      "66": "1f61afbaf8ed665de6a70764ae3d4626711ffbdb4c91ef57b5e22400b616bc6ffa38e6eec74906e53148fa9677a440be",
+      "67": "76fef34321186ed2984d5062f7b3047276ea6c2d6b218c64810d3642a62511e887bd4d2d578859009d672536ec6d2cde",
+      "68": "e7119ab792d8545c8d5a3f5939d2cece3e41ded2ae27af620d63d046b9ccc7a41e3bbbf35f41fcbd44a8d1643c728b3c",
+      "70": "39fc27a23e6a0c44c4dd7e15eaf8b1a7ee5771128b56d413bf056728be7b02d01e0cf1f6aabfa0548195c0ccd914ad6c",
+      "71": "532d232140f6251d56107d7bb7a87d8242bc84a2f3fdda8c292821172108c687214cbe0e10ae548505524cb72f1f57dc",
+      "72": "3acc7068d294c94da3fbbdac08ae45b0ece5f8890292792bb1d3b92efa869c751f5a24714c97ad6f581f5a17974abf81",
+      "73": "fac491459d9403cf5f88c5ca832bf483608772ec5c8b6a9aecb4af290a9144b10dba36a95cd72f9e6f898fc484872095",
+      "74": "56fe91af6b07bd4fd98c30cdde9ea81eeee9ebaf0531b317021574dd65d7c05a2f1b9af46e32f81b2fa3dfb3f7d491b1",
+      "75": "3e6c21aed995b0d67403bb690ef290551b10c5a9f757503a5851669d29853d33b1ad946461954d6a926b97846295c876",
+      "76": "8f7cfa5ef5269899c43f5717caa9f260989d9d589fc593b54d2df0095e8804eaa81a7c9c2077a55e80c238b976d0ee04"
+    },
+    "schema_probe": "PASS; missing avatar representation constraint refused",
+    "source_bound_catalog_publication": "PASS",
+    "limits": [
+      "Owner runtime registration pending.",
+      "Participants, admissions and avatars await real authenticated bootstrap.",
+      "No World listener, ticket, or connection has been started."
+    ]
+  },
+  "principal_provisioning": {
+    "concurrency": 1,
+    "started": 1,
+    "completed": 0
+  },
+  "failure": "principal-1-signup:status",
+  "owned_stack": {
+    "scope": "BE02 foreground native local development",
+    "result": "PASS",
+    "cleanup": "PASS",
+    "started_at_utc": "2026-11-06T10:08:45.451374+00:00",
+    "services": [
+      {
+        "service": "api-gateway",
+        "database": "mcr_api_gateway",
+        "expected_migrations": 17,
+        "binary_sha256": "69aa66f36b3c132c670996fdfee5bba48ca55e96e08926b50a791ff98e104fef",
+        "migration_manifest_sha256": "1bea1d8e70e1c6490f554a07780945e5087445033b957b319285a31c899921b7",
+        "migrate": "PASS",
+        "verify": "PASS",
+        "restart_persistence": "PASS",
+        "verify_after_restart": "PASS",
+        "migrate_exit_code": 0,
+        "verify_exit_code": 0,
+        "ledger_before": 17,
+        "ledger_after": 17,
+        "verify_after_restart_exit_code": 0,
+        "pid": 97305,
+        "readiness": {
+          "http_status": 200,
+          "ready": true,
+          "degraded": false,
+          "draining": false,
+          "checks": {
+            "database": {
+              "required": true,
+              "status": "up"
+            },
+            "gateway->auth": {
+              "required": true,
+              "status": "up"
+            },
+            "gateway->friend": {
+              "required": true,
+              "status": "up"
+            },
+            "gateway->notification": {
+              "required": true,
+              "status": "up"
+            },
+            "gateway->post": {
+              "required": true,
+              "status": "up"
+            },
+            "gateway->profile": {
+              "required": true,
+              "status": "up"
+            },
+            "signing-keys": {
+              "required": true,
+              "status": "up"
+            }
+          }
+        },
+        "livez_status": 200
+      },
+      {
+        "service": "auth-service",
+        "database": "mcr_auth",
+        "expected_migrations": 19,
+        "binary_sha256": "07ba7313fb11ccedf335ba71baf9f7d6eab4963c5463b7590ad50135bad41dd3",
+        "migration_manifest_sha256": "c5f2c017256255a63bf32e17763fa8ba81310176bff4116ee70e01439d6cf106",
+        "migrate": "PASS",
+        "verify": "PASS",
+        "restart_persistence": "PASS",
+        "verify_after_restart": "PASS",
+        "migrate_exit_code": 0,
+        "verify_exit_code": 0,
+        "ledger_before": 19,
+        "ledger_after": 19,
+        "verify_after_restart_exit_code": 0,
+        "pid": 97288,
+        "readiness": {
+          "http_status": 200,
+          "ready": true,
+          "degraded": false,
+          "draining": false,
+          "checks": {
+            "auth->friend": {
+              "required": false,
+              "status": "up"
+            },
+            "auth->notification": {
+              "required": false,
+              "status": "up"
+            },
+            "auth->post": {
+              "required": false,
+              "status": "up"
+            },
+            "auth->profile": {
+              "required": false,
+              "status": "up"
+            },
+            "concert-owner-authority": {
+              "required": true,
+              "status": "up"
+            },
+            "database": {
+              "required": true,
+              "status": "up"
+            }
+          }
+        },
+        "livez_status": 200
+      },
+      {
+        "service": "profile-service",
+        "database": "mcr_profile",
+        "expected_migrations": 10,
+        "binary_sha256": "55f96b2f15e3e05da9dd268b241543dfc864bc41c60c112c14f99b6e58826730",
+        "migration_manifest_sha256": "52989969f58e220e6eb8f827095b61c13a0b2ef89f85fbd11b96ea7e5ec43323",
+        "migrate": "PASS",
+        "verify": "PASS",
+        "restart_persistence": "PASS",
+        "verify_after_restart": "PASS",
+        "migrate_exit_code": 0,
+        "verify_exit_code": 0,
+        "ledger_before": 10,
+        "ledger_after": 10,
+        "verify_after_restart_exit_code": 0,
+        "pid": 97241,
+        "readiness": {
+          "http_status": 200,
+          "ready": true,
+          "degraded": false,
+          "draining": false,
+          "checks": {
+            "database": {
+              "required": true,
+              "status": "up"
+            }
+          }
+        },
+        "livez_status": 200
+      },
+      {
+        "service": "friend-service",
+        "database": "mcr_friend",
+        "expected_migrations": 19,
+        "binary_sha256": "f7d6dcb89bfb8528db02be9ae56cc321c558687972f9582503047cfa8e8f8882",
+        "migration_manifest_sha256": "a28c9ce6e25095aacc0f10695348d92a7d5143cc9866d492ab6cb837f3138a0c",
+        "migrate": "PASS",
+        "verify": "PASS",
+        "restart_persistence": "PASS",
+        "verify_after_restart": "PASS",
+        "migrate_exit_code": 0,
+        "verify_exit_code": 0,
+        "ledger_before": 19,
+        "ledger_after": 19,
+        "verify_after_restart_exit_code": 0,
+        "pid": 97261,
+        "readiness": {
+          "http_status": 200,
+          "ready": true,
+          "degraded": false,
+          "draining": false,
+          "checks": {
+            "concert-owner-authority": {
+              "required": true,
+              "status": "up"
+            },
+            "database": {
+              "required": true,
+              "status": "up"
+            },
+            "friend->profile": {
+              "required": true,
+              "status": "up"
+            }
+          }
+        },
+        "livez_status": 200
+      },
+      {
+        "service": "post-service",
+        "database": "mcr_post",
+        "expected_migrations": 33,
+        "binary_sha256": "508c162b96e2065153ece46bbdf153028b43150258df0b592afcd64c08b3db6e",
+        "migration_manifest_sha256": "35e99bf0d463c2dd18a2bbe7aa178edfcbbd97905713e21fd1dcacb2df9a0dae",
+        "migrate": "PASS",
+        "verify": "PASS",
+        "restart_persistence": "PASS",
+        "verify_after_restart": "PASS",
+        "migrate_exit_code": 0,
+        "verify_exit_code": 0,
+        "ledger_before": 33,
+        "ledger_after": 33,
+        "verify_after_restart_exit_code": 0,
+        "pid": 97272,
+        "readiness": {
+          "http_status": 200,
+          "ready": true,
+          "degraded": false,
+          "draining": false,
+          "checks": {
+            "database": {
+              "required": true,
+              "status": "up"
+            },
+            "post->friend": {
+              "required": true,
+              "status": "up"
+            },
+            "post->gateway": {
+              "required": true,
+              "status": "up"
+            },
+            "post->notification": {
+              "required": false,
+              "status": "up"
+            },
+            "post->profile": {
+              "required": false,
+              "status": "up"
+            }
+          }
+        },
+        "livez_status": 200
+      },
+      {
+        "service": "notification-service",
+        "database": "mcr_notification",
+        "expected_migrations": 7,
+        "binary_sha256": "e783d45db589c1bb4a70cff4bdd54fa9cf3929b8aeb6c8d6b34a231319428193",
+        "migration_manifest_sha256": "6048bf246cd90bca61c0ae6ebb612904b4be73a83021284eb352d8f9c4640f34",
+        "migrate": "PASS",
+        "verify": "PASS",
+        "restart_persistence": "PASS",
+        "verify_after_restart": "PASS",
+        "migrate_exit_code": 0,
+        "verify_exit_code": 0,
+        "ledger_before": 7,
+        "ledger_after": 7,
+        "verify_after_restart_exit_code": 0,
+        "pid": 97255,
+        "readiness": {
+          "http_status": 200,
+          "ready": true,
+          "degraded": false,
+          "draining": false,
+          "checks": {
+            "database": {
+              "required": true,
+              "status": "up"
+            }
+          }
+        },
+        "livez_status": 200
+      }
+    ],
+    "process_stops": [
+      {
+        "service": "local-mail",
+        "resource": "in_process_mail_sink",
+        "exit_code": 0,
+        "forced": false
+      },
+      {
+        "service": "api-gateway",
+        "pid": 97305,
+        "forced": false,
+        "exit_code": 0
+      },
+      {
+        "service": "auth-service",
+        "pid": 97288,
+        "forced": false,
+        "exit_code": 0
+      },
+      {
+        "service": "post-service",
+        "pid": 97272,
+        "forced": false,
+        "exit_code": 0
+      },
+      {
+        "service": "friend-service",
+        "pid": 97261,
+        "forced": false,
+        "exit_code": 0
+      },
+      {
+        "service": "notification-service",
+        "pid": 97255,
+        "forced": false,
+        "exit_code": 0
+      },
+      {
+        "service": "profile-service",
+        "pid": 97241,
+        "forced": false,
+        "exit_code": 0
+      },
+      {
+        "service": "redis",
+        "pid": 97236,
+        "forced": false,
+        "exit_code": 0
+      }
+    ],
+    "script_sha256": "4a29da16d91a8747e6e1b9d69d94eea16e760e02241cd53b660d46a10907ac47",
+    "runtime_helper_sha256": "da2ac13ca1502e80a2528c982bf28b61c06707b4018c2a436e7f8bf41512e7a8",
+    "migration_helper_sha256": "a46f2dc3a6dcab9310230cd75997dfcd86571c88fd066a973a8a0c3b1a8c6eb8",
+    "auth_acceptance": "NOT_RUN",
+    "image_build": "NOT_RUN",
+    "production": "NOT_RUN",
+    "source_revision": "937ab6699167735995661d91329a238797096ea5",
+    "owned_directory": "/private/tmp/mcr-pg-f8ggztfg",
+    "postgres_version": "16.14 (Homebrew)",
+    "restart": {
+      "status": "PASS",
+      "before_pid": 95881,
+      "after_pid": 96584
+    },
+    "configuration": {
+      "mode": "parity",
+      "seed": false,
+      "migration_mode": "external",
+      "home": "OMITTED",
+      "cookie_secure": false,
+      "cookie_scope": "explicit local HTTP fixture only",
+      "browser_origin": "http://127.0.0.1:5173",
+      "mail": "private local HTTP capture",
+      "kafka": "DISABLED",
+      "oauth": "NOT_EXERCISED; inherited parity routes are not C03 provider qualification"
+    },
+    "captured_mail_count": 0,
+    "finished_at_utc": "2026-11-06T10:09:02.005913+00:00"
+  }
+}

@@ -5,6 +5,7 @@ use crate::{
 };
 use platform::{
     actor_delegation::concert_read::{ConcertPostReadVerifier, PostConcertRootReadSigner},
+    concert_feed_command::FeedCommandVerifier,
     grpc_auth::{CallerRegistry, Workload},
     grpc_tls::TlsMaterial,
 };
@@ -64,6 +65,7 @@ pub struct ReadStartup {
     tls: TlsMaterial,
     callers: CallerRegistry,
     verifier: ConcertPostReadVerifier,
+    command_verifier: Option<FeedCommandVerifier>,
     signer: PostConcertRootReadSigner,
 }
 impl ReadStartup {
@@ -103,12 +105,27 @@ impl ReadStartup {
         let verifier = ConcertPostReadVerifier::configured_from_env(&config.actor_delegation)?
             .ok_or_else(|| anyhow::anyhow!("Concert Post read verifying keys are required"))?;
         let signer = PostConcertRootReadSigner::from_env(&config.actor_delegation)?;
+        let command_verifier = match std::env::var("POST_CONCERT_COMMAND_MODE") {
+            Err(std::env::VarError::NotPresent) => None,
+            Err(_) => anyhow::bail!("POST_CONCERT_COMMAND_MODE must contain valid Unicode"),
+            Ok(value) => match value.as_str() {
+                "off" => None,
+                "on" => {
+                    let command = FeedCommandVerifier::from_env(&config.actor_delegation)?;
+                    command.require_independent(verifier.verifier())?;
+                    command.require_independent_key(&signer.public_key())?;
+                    Some(command)
+                }
+                _ => anyhow::bail!("POST_CONCERT_COMMAND_MODE must be off or on"),
+            },
+        };
         Ok(Some(Self {
             settings,
             token,
             tls,
             callers,
             verifier,
+            command_verifier,
             signer,
         }))
     }
@@ -122,6 +139,6 @@ impl ReadStartup {
             &self.tls,
             self.signer,
         )?;
-        qualified::services(runtime, self.callers, self.verifier)
+        qualified::services(runtime, self.callers, self.verifier, self.command_verifier)
     }
 }

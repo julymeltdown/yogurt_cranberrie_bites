@@ -2,6 +2,9 @@
 //! fail-closed until a real cross-owner authority fence is qualified.
 mod persistence;
 mod query;
+pub(crate) mod command_admission;
+pub(crate) mod command_runtime;
+mod command_wire;
 pub(crate) mod read_admission;
 mod read_authority;
 mod read_clients;

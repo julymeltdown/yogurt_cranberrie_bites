@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import base64
+import http.client
 import json
 import secrets
 import subprocess
@@ -75,11 +76,18 @@ def request(url, method="GET", payload=None, token=None, origin=None, intent=Tru
         with urllib.request.urlopen(req, timeout=30) as response:
             return response.status, json.loads(response.read() or b"{}"), dict(response.headers)
     except urllib.error.HTTPError as failure:
-        raw = failure.read()
+        try:
+            raw = failure.read()
+        except http.client.IncompleteRead as error:
+            raw = error.partial
         try:
             return failure.code, json.loads(raw or b"{}"), dict(failure.headers)
         except ValueError:
             return failure.code, {"raw": raw[:200].decode("utf-8", "replace")}, dict(failure.headers)
+    except http.client.IncompleteRead as failure:
+        return 0, {"raw": failure.partial[:200].decode("utf-8", "replace")}, {}
+    except Exception as failure:  # noqa: BLE001 - transport failure is a recorded status
+        return 0, {"raw": type(failure).__name__}, {}
 
 
 def cookie_pair(headers, name):
@@ -256,25 +264,44 @@ def in02_provision(cluster, event, users):
         "reviewed_at": now.isoformat(),
         "photo_permission": "NOT_APPLICABLE",
     }
-    canonical = json.dumps({"map_id": "map_in02_dev", "map_revision": 1},
-                           separators=(",", ":")).encode()
-    import hashlib
-    digest = "sha256:" + hashlib.sha256(canonical).hexdigest()
+    # One event has exactly one map binding, and the merged venue seed reviews
+    # and binds its own map before this runs. Publish the IN02 fixture place into
+    # that bound map instead of competing for the event binding; a standalone
+    # run without a venue seed still creates and binds map_in02_dev.
+    bound = cluster.sql(
+        "mcr_concert",
+        "SELECT map_id||'|'||map_revision FROM concert_events_map_releases WHERE event_id="
+        + prep.quote(event) + " LIMIT 1",
+    ).strip()
+    if bound:
+        place_map, place_revision = bound.rsplit("|", 1)
+    else:
+        place_map, place_revision = "map_in02_dev", "1"
+        canonical = json.dumps({"map_id": place_map, "map_revision": int(place_revision)},
+                               separators=(",", ":")).encode()
+        import hashlib
+        digest = "sha256:" + hashlib.sha256(canonical).hexdigest()
+        cluster.sql(
+            "mcr_concert",
+            "INSERT INTO concert_map_releases(map_id,map_revision,content_hash,geometry_hash,canonical_bytes) VALUES("
+            + ",".join(map(prep.quote, [place_map, place_revision, digest, digest]))
+            + ",decode('" + canonical.hex() + "','hex')) ON CONFLICT DO NOTHING;",
+        )
     cluster.sql(
         "mcr_concert",
-        "INSERT INTO concert_map_releases(map_id,map_revision,content_hash,geometry_hash,canonical_bytes) VALUES("
-        "'map_in02_dev',1," + prep.quote(digest) + "," + prep.quote(digest)
-        + ",decode('" + canonical.hex() + "','hex')) ON CONFLICT DO NOTHING;"
         "INSERT INTO concert_map_release_places(map_id,map_revision,place_id,label,place_kind,"
         "verification_state,accessibility_notes,source_kind,source_uri,review_state,provenance) VALUES("
-        "'map_in02_dev',1," + prep.quote(IN02_PLACE)
-        + ",'Development meeting point','PHYSICAL','VERIFIED','Step-free development fixture',"
-        "'PLACE_REFERENCE'," + prep.quote(provenance["source_uri"]) + ",'REVIEWED',"
-        + prep.quote(json.dumps(provenance, separators=(",", ":"))) + ") ON CONFLICT DO NOTHING;"
+        + ",".join(map(prep.quote, [place_map, place_revision, IN02_PLACE,
+                                    "Development meeting point", "PHYSICAL", "VERIFIED",
+                                    "Step-free development fixture", "PLACE_REFERENCE",
+                                    provenance["source_uri"], "REVIEWED"]))
+        + "," + prep.quote(json.dumps(provenance, separators=(",", ":"))) + ") ON CONFLICT DO NOTHING;"
         "INSERT INTO concert_events_map_releases(event_id,catalog_revision,map_id,map_revision) VALUES("
-        + prep.quote(event) + ",1,'map_in02_dev',1) ON CONFLICT(event_id) DO NOTHING;"
+        + ",".join(map(prep.quote, [event, "1", place_map, place_revision]))
+        + ") ON CONFLICT(event_id) DO NOTHING;"
         "INSERT INTO concert_place_current_state(map_id,map_revision,place_id,closure_state) VALUES("
-        "'map_in02_dev',1," + prep.quote(IN02_PLACE) + ",'OPEN') ON CONFLICT DO NOTHING;",
+        + ",".join(map(prep.quote, [place_map, place_revision, IN02_PLACE, "OPEN"]))
+        + ") ON CONFLICT DO NOTHING;",
     )
     return IN02_PLACE
 
@@ -329,7 +356,7 @@ def in02_gate(stack, gateway, origin, event, host, alice, bob, report, record):
         "participants": stack.cluster.sql("mcr_concert", "SELECT count(*) FROM concert_participants WHERE event_id=" + prep.quote(event)),
         "admissions": stack.cluster.sql("mcr_concert", "SELECT count(*) FROM concert_event_admissions WHERE event_id=" + prep.quote(event) + " AND state='ACTIVE'"),
         "settings": stack.cluster.sql("mcr_concert", "SELECT parties,giveaways FROM concert_event_settings WHERE event_id=" + prep.quote(event)),
-        "places": stack.cluster.sql("mcr_concert", "SELECT count(*) FROM concert_map_release_places WHERE map_id='map_in02_dev' AND map_revision=1"),
+        "places": stack.cluster.sql("mcr_concert", "SELECT count(*) FROM concert_map_release_places WHERE place_id=" + prep.quote(IN02_PLACE)),
         "parties": stack.cluster.sql("mcr_concert", "SELECT count(*) FROM concert_community_parties WHERE event_id=" + prep.quote(event)),
         "giveaways": stack.cluster.sql("mcr_concert", "SELECT count(*) FROM concert_community_giveaways WHERE event_id=" + prep.quote(event)),
     })
@@ -613,7 +640,7 @@ def readiness(status, body, service):
     return browser_refresh.current_readiness(status, body, service)
 
 
-def log_excerpts(stack, names=("concert-service", "auth-service", "friend-service", "api-gateway")):
+def log_excerpts(stack, names=("concert-service", "post-service", "auth-service", "friend-service", "api-gateway")):
     excerpts = {}
     for name in names:
         child = stack.children.get(name)
@@ -626,7 +653,7 @@ def log_excerpts(stack, names=("concert-service", "auth-service", "friend-servic
     return excerpts
 
 
-def new_log(stack, offsets, names=("api-gateway", "concert-service"), limit=1200):
+def new_log(stack, offsets, names=("api-gateway", "concert-service", "post-service"), limit=1200):
     """Bytes each owned child logged since the previous step, redacted.
 
     A step that produced no line reports that fact instead of a fabricated
@@ -666,6 +693,540 @@ def archive_shape(body):
     return {"shape": "error", "fields": sorted(body)}
 
 
+def feed_rows(cluster, event):
+    """Durable feed receipt/work/outbox and Post owner rows for one event."""
+    e = prep.quote(event)
+
+    def count(database, sql):
+        return int(cluster.sql(database, sql))
+
+    return {
+        "concert_command_receipts": count(
+            "mcr_concert",
+            f"SELECT count(*) FROM concert_command_receipts WHERE event_id={e}",
+        ),
+        "concert_feed_owner_work": count(
+            "mcr_concert",
+            f"SELECT count(*) FROM concert_feed_owner_work WHERE event_id={e}",
+        ),
+        "concert_outbox": count(
+            "mcr_concert", f"SELECT count(*) FROM concert_outbox WHERE event_id={e}"
+        ),
+        "post_posts": count(
+            "mcr_post", f"SELECT count(*) FROM post_concert_posts WHERE event_id={e}"
+        ),
+        "post_receipts": count(
+            "mcr_post", f"SELECT count(*) FROM post_concert_receipts WHERE event_id={e}"
+        ),
+        "post_outbox": count(
+            "mcr_post", f"SELECT count(*) FROM post_concert_outbox WHERE event_id={e}"
+        ),
+    }
+
+
+def feed_proof(stack, gateway, origin, event, operator, member, record, checks):
+    """Authenticated C04 feed mutations through the real Gateway/Concert/Post path."""
+    base = f"{gateway}/api/concert/events/{event}/posts"
+
+    def call(name, method, url, payload, token, key):
+        before = feed_rows(stack.cluster, event)
+        status, body, _ = request(
+            url, method, payload, token, origin, True,
+            {"Idempotency-Key": key} if key else None,
+        )
+        after = feed_rows(stack.cluster, event)
+        record(name, {"status": status, "body": body,
+                      "rows_before": before, "rows_after": after})
+        return status, body, before, after
+
+    def unchanged(before, after):
+        return before == after
+
+    def call_retry(name, method, url, payload, token, key):
+        status, body, before, after = call(name, method, url, payload, token, key)
+        if status in (0, 502, 503, 504):
+            status, body, before, after = call(
+                name + "_retry", method, url, payload, token, key
+            )
+        return status, body, before, after
+
+    create = {"text": "feed proof post", "media_ids": [], "links": []}
+    create_key = str(uuid4())
+    status, body, before, after = call_retry(
+        "feed_create", "POST", base, create, member[1], create_key
+    )
+    post = body.get("post_id")
+    revision = body.get("revision")
+    checks["feed_create_200"] = status == 200 and isinstance(post, str) and revision == 1
+    if not checks["feed_create_200"]:
+        return
+
+    status, replay, _, replay_after = call_retry(
+        "feed_create_replay", "POST", base, create, member[1], create_key
+    )
+    checks["feed_replay_stored"] = (
+        status == 200
+        and replay.get("post_id") == post
+        and replay.get("revision") == revision
+        and replay.get("text") == create["text"]
+        and replay_after == after
+    )
+
+    conflict = {"text": "feed proof conflict", "media_ids": [], "links": []}
+    status, conflict_body, conflict_before, conflict_after = call(
+        "feed_conflict", "POST", base, conflict, member[1], create_key
+    )
+    checks["feed_conflict_409"] = (
+        status == 409
+        and (conflict_body.get("details") or {}).get("reason") == "IDEMPOTENCY_CONFLICT"
+        and unchanged(conflict_before, conflict_after)
+    )
+
+    edit = {"expected_revision": revision, "text": "feed proof edited",
+            "media_ids": [], "links": []}
+    status, edited, _, _ = call_retry(
+        "feed_edit", "PATCH", f"{base}/{post}", edit, member[1], str(uuid4())
+    )
+    edited_revision = edited.get("revision")
+    checks["feed_edit_200"] = (
+        status == 200
+        and edited.get("post_id") == post
+        and edited.get("text") == edit["text"]
+        and edited_revision == revision + 1
+    )
+
+    status, deleted, _, _ = call_retry(
+        "feed_delete", "DELETE", f"{base}/{post}?expected_revision={edited_revision}",
+        None, member[1], str(uuid4()),
+    )
+    checks["feed_delete_200"] = (
+        status == 200 and deleted.get("resource_id") == post
+        and deleted.get("state") == "DELETED"
+    )
+
+    status, second, _, _ = call_retry(
+        "feed_second_create", "POST", base,
+        {"text": "feed proof second", "media_ids": [], "links": []}, member[1], str(uuid4()),
+    )
+    second_post = second.get("post_id")
+    second_revision = second.get("revision")
+    checks["feed_second_create_200"] = (
+        status == 200 and isinstance(second_post, str) and second_revision == 1
+    )
+    if not checks["feed_second_create_200"]:
+        return
+
+    comment = {"text": "feed proof comment", "post_revision": second_revision}
+    status, comment_body, _, _ = call_retry(
+        "feed_comment", "POST", f"{base}/{second_post}/comments", comment,
+        member[1], str(uuid4()),
+    )
+    checks["feed_comment_200"] = (
+        status == 200 and isinstance(comment_body.get("comment_id"), str)
+        and comment_body.get("post_id") == second_post
+    )
+
+    status, reaction, _, _ = call_retry(
+        "feed_reaction", "PUT", f"{base}/{second_post}/reaction", {},
+        member[1], str(uuid4()),
+    )
+    checks["feed_reaction_200"] = (
+        status == 200 and reaction.get("post_id") == second_post
+        and reaction.get("reacted_by_me") is True
+        and reaction.get("reaction_count") == 1
+    )
+
+    status, unauthorized, before, after = call(
+        "feed_unauthorized", "PATCH", f"{base}/{second_post}", edit, operator[1], str(uuid4())
+    )
+    checks["feed_unauthorized_403_zero_rows"] = (
+        status == 403 and unchanged(before, after)
+    )
+
+    status, missing, before, after = call(
+        "feed_missing", "PATCH", f"{base}/{uuid4()}", edit, operator[1], str(uuid4())
+    )
+    checks["feed_missing_404_zero_rows"] = (
+        status == 404 and unchanged(before, after)
+    )
+
+    stack.cluster.sql(
+        "mcr_friend",
+        "INSERT INTO user_blocks(blocker_id,blocked_id,created_at) VALUES("
+        + prep.quote(member[0]) + "," + prep.quote(operator[0]) + ",clock_timestamp())"
+        + " ON CONFLICT (blocker_id,blocked_id) DO UPDATE SET deleted_at=NULL,created_at=clock_timestamp()",
+    )
+    status, blocked, before, after = call(
+        "feed_blocked", "POST", f"{base}/{second_post}/comments",
+        {"text": "feed proof blocked", "post_revision": second_revision},
+        operator[1], str(uuid4()),
+    )
+    checks["feed_blocked_403_or_404_zero_rows"] = (
+        status in (403, 404) and unchanged(before, after)
+    )
+    stack.cluster.sql(
+        "mcr_friend",
+        "UPDATE user_blocks SET deleted_at=clock_timestamp() WHERE blocker_id="
+        + prep.quote(member[0]) + " AND blocked_id=" + prep.quote(operator[0]),
+    )
+    record("feed_block_cleared", {
+        "blocks": stack.cluster.sql(
+            "mcr_friend",
+            "SELECT count(*) FROM user_blocks WHERE blocker_id=" + prep.quote(member[0])
+            + " AND blocked_id=" + prep.quote(operator[0]) + " AND deleted_at IS NULL",
+        ),
+    })
+
+
+def venue_seed(event):
+    place_id = str(uuid4())
+    map_id = "closure_dev_map"
+    cutoff = (datetime.now(timezone.utc) + timedelta(hours=24)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    provenance = {
+        "source_id": "closure_dev",
+        "source_kind": "PLACE_REFERENCE",
+        "source_revision": "closure-dev-1",
+        "source_uri": "https://development.invalid/venue-place",
+        "author": "development fixture",
+        "license": "development only",
+        "review_state": "REVIEWED",
+        "reviewed_by": "development reviewer",
+        "reviewed_at": "2026-11-06T00:00:00Z",
+        "photo_permission": "NOT_APPLICABLE",
+    }
+    statements = [
+        "INSERT INTO concert_meeting_settings(event_id,event_cutoff) VALUES("
+        + prep.quote(event) + "," + prep.quote(cutoff) + ")",
+        "INSERT INTO concert_map_releases(map_id,map_revision,content_hash,geometry_hash,canonical_bytes) VALUES("
+        + prep.quote(map_id) + ",1,'sha256:" + "0" * 64 + "','sha256:" + "0" * 64
+        + "',decode('00','hex'))",
+        "INSERT INTO concert_map_release_places(map_id,map_revision,place_id,label,place_kind,"
+        "verification_state,accessibility_notes,source_kind,source_uri,review_state,provenance) VALUES("
+        + ",".join(map(prep.quote, [map_id, "1", place_id, "Closure development place", "PHYSICAL",
+                                    "VERIFIED", "Development-only reviewed place", "PLACE_REFERENCE",
+                                    "https://development.invalid/venue-place", "REVIEWED"]))
+        + "," + prep.quote(json.dumps(provenance)) + "::jsonb)",
+        "INSERT INTO concert_place_current_state(map_id,map_revision,place_id,closure_state) VALUES("
+        + ",".join(map(prep.quote, [map_id, "1", place_id, "OPEN"])) + ")",
+        "INSERT INTO concert_events_map_releases(event_id,catalog_revision,map_id,map_revision) VALUES("
+        + ",".join(map(prep.quote, [event, "1", map_id, "1"])) + ")",
+    ]
+    return place_id, statements
+
+
+def venue_friend_pair(gateway, origin, first, second, record):
+    for follower, target, target_token in ((first, second[0], second[1]), (second, first[0], first[1])):
+        status, body, _ = request(
+            f"{gateway}/api/follows", "POST", {"targetUserId": target}, follower[1], origin, True
+        )
+        record("venue_follow", {"status": status, "body": body})
+        require(status == 200, f"venue friendship follow failed: {status} {body}")
+        if body.get("following") is not True and body.get("requestId"):
+            accepted, accepted_body, _ = request(
+                f"{gateway}/api/follows/requests/{body['requestId']}/accept",
+                "POST", None, target_token, origin, True,
+            )
+            record("venue_follow_accept", {"status": accepted, "body": accepted_body})
+            require(accepted == 200, f"venue follow accept failed: {accepted} {accepted_body}")
+
+
+def venue_proof(stack, gateway, origin, event, place_id, member, operator, stranger, record, checks):
+    base = f"{gateway}/api/concert/events/{event}/venue"
+    now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.%fZ")
+
+    def call(name, method, path, payload, token, key=None, auth=True):
+        extra = {"Idempotency-Key": key} if key else None
+        status, body, _ = request(
+            f"{base}{path}", method, payload, token if auth else None, origin, True, extra
+        )
+        record(name, {"status": status, "body": body})
+        return status, body
+
+    status, sharing = call(
+        "venue_sharing", "PUT", "/location/sharing",
+        {"expected_revision": 0, "state": "ACTIVE", "viewer_ids": [operator[0]]},
+        member[1], str(uuid4()),
+    )
+    checks["venue_sharing_200"] = status == 200 and sharing.get("operation") == "setVenueLocationSharing"
+    status, fix = call(
+        "venue_fix", "PUT", "/location/fix",
+        {"expected_sharing_revision": 1, "source": "DEVICE_GEOLOCATION_REPORTED",
+         "latitude": 37.5665, "longitude": 126.9780, "accuracy_m": 12.0,
+         "captured_at": now},
+        member[1], str(uuid4()),
+    )
+    checks["venue_fix_200"] = status == 200 and fix.get("resource_kind") == "PHONE_FIX"
+    status, snapshot = call("venue_location_friend", "GET", "/location", None, operator[1])
+    friends = snapshot.get("friends") if isinstance(snapshot, dict) else None
+    checks["venue_location_friend_200"] = (
+        status == 200 and isinstance(friends, list) and len(friends) == 1
+        and friends[0].get("user_id") == member[0]
+        and (friends[0].get("position") or {}).get("latitude") == 37.5665
+    )
+    status, own = call("venue_location_no_consent", "GET", "/location", None, member[1])
+    checks["venue_location_no_consent_empty"] = (
+        status == 200 and isinstance(own, dict) and own.get("friends") == []
+        and own.get("self_location", {}).get("position", {}).get("latitude") == 37.5665
+    )
+    status, block_body, _ = request(
+        f"{gateway}/api/relationships/blocks/{operator[0]}", "POST", None, member[1], origin, True
+    )
+    record("venue_block_create", {"status": status, "body": block_body})
+    require(status == 200, f"venue block failed: {status} {block_body}")
+    status, blocked = call("venue_location_blocked", "GET", "/location", None, operator[1])
+    checks["venue_location_blocked_no_location"] = (
+        status == 200 and isinstance(blocked, dict) and blocked.get("friends") == []
+    )
+    status, unblock_body, _ = request(
+        f"{gateway}/api/relationships/blocks/{operator[0]}", "DELETE", None, member[1], origin, True
+    )
+    record("venue_block_delete", {"status": status, "body": unblock_body})
+    require(status == 200, f"venue unblock failed: {status} {unblock_body}")
+    venue_friend_pair(gateway, origin, member, operator, record)
+    status, _ = call("venue_location_unauth", "GET", "/location", None, None, auth=False)
+    checks["venue_location_unauth_401"] = status == 401
+
+    note_body = {
+        "text": "Development venue note",
+        "audience": "FRIENDS",
+        "expiry": "ONE_HOUR",
+        "landmark_selection": {
+            "landmark_id": place_id, "catalog_revision": 1, "landmark_revision": 1
+        },
+    }
+    note_key = str(uuid4())
+    status, created = call(
+        "venue_note_create", "POST", f"/landmarks/{place_id}/notes",
+        note_body, member[1], note_key,
+    )
+    note_id = ((created.get("resource") or {}).get("id") if isinstance(created, dict) else None)
+    note_revision = ((created.get("resource") or {}).get("revision") if isinstance(created, dict) else None)
+    checks["venue_note_create_201"] = (
+        status == 201 and created.get("state") == "SUCCEEDED"
+        and isinstance(note_id, str) and created.get("operation_id") == "createVenuePlaceNote"
+    )
+    status, replay = call(
+        "venue_note_create_replay", "POST", f"/landmarks/{place_id}/notes",
+        note_body, member[1], note_key,
+    )
+    checks["venue_note_create_replay_stable"] = (
+        status == 201 and (replay.get("resource") or {}).get("id") == note_id
+        and (replay.get("resource") or {}).get("revision") == note_revision
+    )
+    changed_note = dict(note_body)
+    changed_note["text"] = "Development venue note changed"
+    status, conflict = call(
+        "venue_note_create_conflict", "POST", f"/landmarks/{place_id}/notes",
+        changed_note, member[1], note_key,
+    )
+    checks["venue_note_create_conflict_409"] = (
+        status == 409
+        and (conflict.get("details") or {}).get("reason") == "VERSION_CONFLICT"
+    )
+    status_list, _ = call(
+        "venue_note_read_list_retention", "GET", f"/landmarks/{place_id}/notes", None, operator[1]
+    )
+    status_thread, _ = call(
+        "venue_note_read_thread_retention", "GET",
+        f"/landmarks/{place_id}/notes/{note_id}", None, operator[1],
+    )
+    status_replies, _ = call(
+        "venue_note_read_replies_retention", "GET",
+        f"/landmarks/{place_id}/notes/{note_id}/replies", None, operator[1],
+    )
+    checks["venue_note_reads_503"] = (
+        status_list == 503 and status_thread == 503 and status_replies == 503
+    )
+    reply_key = str(uuid4())
+    reply_body = {"text": "Development reply", "expected_parent_revision": note_revision}
+    status, reply = call(
+        "venue_note_reply", "POST", f"/landmarks/{place_id}/notes/{note_id}/replies",
+        reply_body, operator[1], reply_key,
+    )
+    reply_id = ((reply.get("resource") or {}).get("id") if isinstance(reply, dict) else None)
+    checks["venue_note_reply_201"] = (
+        status == 201 and reply.get("operation_id") == "createVenuePlaceReply"
+        and isinstance(reply_id, str)
+    )
+    status, reply_replay = call(
+        "venue_note_reply_replay", "POST", f"/landmarks/{place_id}/notes/{note_id}/replies",
+        reply_body, operator[1], reply_key,
+    )
+    checks["venue_note_reply_replay_stable"] = (
+        status == 201 and (reply_replay.get("resource") or {}).get("id") == reply_id
+    )
+    changed_reply = dict(reply_body)
+    changed_reply["text"] = "Development reply changed"
+    status, reply_conflict = call(
+        "venue_note_reply_conflict", "POST", f"/landmarks/{place_id}/notes/{note_id}/replies",
+        changed_reply, operator[1], reply_key,
+    )
+    checks["venue_note_reply_conflict_409"] = (
+        status == 409
+        and (reply_conflict.get("details") or {}).get("reason") == "VERSION_CONFLICT"
+    )
+    status, _ = call(
+        "venue_note_stranger_reply", "POST", f"/landmarks/{place_id}/notes/{note_id}/replies",
+        {"text": "Denied reply", "expected_parent_revision": 2}, stranger[1], str(uuid4()),
+    )
+    checks["venue_note_stranger_reply_403"] = status == 403
+    status, _ = call(
+        "venue_note_foreign_withdraw", "DELETE",
+        f"/landmarks/{place_id}/notes/{note_id}?expected_revision=2", None, operator[1], str(uuid4()),
+    )
+    checks["venue_note_foreign_withdraw_403"] = status == 403
+    withdraw_key = str(uuid4())
+    status, withdrawn = call(
+        "venue_note_withdraw", "DELETE",
+        f"/landmarks/{place_id}/notes/{note_id}?expected_revision=2", None, member[1], withdraw_key,
+    )
+    withdraw_revision = ((withdrawn.get("resource") or {}).get("revision") if isinstance(withdrawn, dict) else None)
+    checks["venue_note_withdraw_200"] = (
+        status == 200 and withdrawn.get("operation_id") == "withdrawVenuePlaceNote"
+    )
+    status, withdraw_replay = call(
+        "venue_note_withdraw_replay", "DELETE",
+        f"/landmarks/{place_id}/notes/{note_id}?expected_revision=2", None, member[1], withdraw_key,
+    )
+    checks["venue_note_withdraw_replay_stable"] = (
+        status == 200
+        and (withdraw_replay.get("resource") or {}).get("revision") == withdraw_revision
+    )
+    status, withdraw_conflict = call(
+        "venue_note_withdraw_conflict", "DELETE",
+        f"/landmarks/{place_id}/notes/{note_id}?expected_revision=1", None, member[1], withdraw_key,
+    )
+    checks["venue_note_withdraw_conflict_409"] = (
+        status == 409
+        and (withdraw_conflict.get("details") or {}).get("reason") == "VERSION_CONFLICT"
+    )
+
+    context_path = f"{gateway}/api/concert/events/{event}/venue-meeting/context?selectedFriendId={{}}"
+    status, context, _ = request(context_path.format(member[0]), "GET", None, operator[1], origin)
+    record("venue_meeting_context_friend", {"status": status, "body": context})
+    checks["venue_meeting_context_friend_200"] = (
+        status == 200 and isinstance(context, dict) and context.get("canRead") is True
+    )
+    status, context, _ = request(context_path.format(member[0]), "GET", None, stranger[1], origin)
+    record("venue_meeting_context_stranger", {"status": status, "body": context})
+    checks["venue_meeting_context_stranger_404"] = status == 404
+    status, sent, _ = request(
+        f"{gateway}/api/concert/events/{event}/venue-meeting/messages", "POST",
+        {"selection": {"selectedFriendId": member[0]}, "body": "Development venue message"},
+        operator[1], origin, True, {"Idempotency-Key": str(uuid4())},
+    )
+    record("venue_meeting_send", {"status": status, "body": sent})
+    checks["venue_meeting_send_200"] = (
+        status == 200 and sent.get("state") == "APPLIED"
+        and (sent.get("result") or {}).get("kind") == "MESSAGE"
+    )
+    status, messages, _ = request(
+        f"{gateway}/api/concert/events/{event}/venue-meeting/messages?selectedFriendId={operator[0]}",
+        "GET", None, member[1], origin,
+    )
+    record("venue_meeting_messages", {"status": status, "body": messages})
+    checks["venue_meeting_messages_200"] = (
+        status == 200 and isinstance(messages, dict) and any(
+            item.get("body") == "Development venue message" for item in messages.get("items", [])
+        )
+    )
+    meeting_base = f"{gateway}/api/concert/events/{event}/venue-meeting"
+    status, invitations, _ = request(
+        f"{meeting_base}/invitations?direction=OUTGOING", "GET", None, operator[1], origin
+    )
+    record("venue_meeting_invitations", {"status": status, "body": invitations})
+    checks["venue_meeting_invitation_list_200"] = status == 200 and isinstance(invitations, dict)
+    invitation_body = {
+        "selection": {
+            "selectedFriendId": member[0],
+            "landmark": {"landmarkId": place_id, "catalogRevision": 1, "landmarkRevision": 1},
+        }
+    }
+    status, created_invitation, _ = request(
+        f"{meeting_base}/invitations", "POST", invitation_body, operator[1], origin, True,
+        {"Idempotency-Key": str(uuid4())},
+    )
+    record("venue_meeting_invitation_create", {"status": status, "body": created_invitation})
+    invitation = ((created_invitation.get("result") or {}).get("invitation") or {})
+    invitation_id = invitation.get("id")
+    checks["venue_meeting_invitation_create_200"] = (
+        status == 200 and created_invitation.get("state") == "APPLIED"
+        and isinstance(invitation_id, str)
+    )
+    if invitation_id:
+        detail = (
+            f"{meeting_base}/invitations/{invitation_id}?selectedFriendId={member[0]}"
+            f"&landmarkId={place_id}&catalogRevision=1&landmarkRevision=1"
+        )
+        status, detail_body, _ = request(detail, "GET", None, operator[1], origin)
+        record("venue_meeting_invitation_detail", {"status": status, "body": detail_body})
+        checks["venue_meeting_invitation_get_200"] = status == 200 and detail_body.get("id") == invitation_id
+        decision = {
+            "selection": {
+                "selectedFriendId": operator[0],
+                "landmark": {"landmarkId": place_id, "catalogRevision": 1, "landmarkRevision": 1},
+            },
+            "expectedRevision": 1,
+            "decision": "ACCEPT",
+        }
+        status, decided, _ = request(
+            f"{meeting_base}/invitations/{invitation_id}/decision", "POST", decision,
+            member[1], origin, True, {"Idempotency-Key": str(uuid4())},
+        )
+        record("venue_meeting_invitation_decide", {"status": status, "body": decided})
+        checks["venue_meeting_invitation_decide_200"] = (
+            status == 200 and decided.get("state") == "APPLIED"
+        )
+        status, stranger_detail, _ = request(detail, "GET", None, stranger[1], origin)
+        record("venue_meeting_invitation_stranger_detail", {"status": status, "body": stranger_detail})
+        checks["venue_meeting_stranger_denied"] = status == 404
+        status, _, _ = request(
+            f"{meeting_base}/invitations", "POST", invitation_body, stranger[1], origin, True,
+            {"Idempotency-Key": str(uuid4())},
+        )
+        checks["venue_meeting_stranger_denied"] = checks["venue_meeting_stranger_denied"] and status == 404
+        status, _, _ = request(
+            f"{meeting_base}/invitations/{invitation_id}/decision", "POST", decision,
+            stranger[1], origin, True, {"Idempotency-Key": str(uuid4())},
+        )
+        checks["venue_meeting_stranger_denied"] = checks["venue_meeting_stranger_denied"] and status == 404
+        status, _, _ = request(
+            f"{meeting_base}/messages", "POST",
+            {"selection": {"selectedFriendId": member[0]}, "body": "Denied message"},
+            stranger[1], origin, True, {"Idempotency-Key": str(uuid4())},
+        )
+        checks["venue_meeting_stranger_denied"] = checks["venue_meeting_stranger_denied"] and status == 404
+        status, _, _ = request(
+            f"{meeting_base}/commands/{uuid4()}?selectedFriendId={member[0]}",
+            "GET", None, stranger[1], origin,
+        )
+        checks["venue_meeting_stranger_denied"] = checks["venue_meeting_stranger_denied"] and status == 404
+        status, command, _ = request(
+            f"{meeting_base}/commands/{uuid4()}?selectedFriendId={member[0]}",
+            "GET", None, operator[1], origin,
+        )
+        record("venue_meeting_command", {"status": status, "body": command})
+        checks["venue_meeting_command_200"] = (
+            status == 200 and command.get("state") == "UNKNOWN"
+        )
+    else:
+        checks["venue_meeting_invitation_get_200"] = False
+        checks["venue_meeting_invitation_decide_200"] = False
+        checks["venue_meeting_stranger_denied"] = False
+        checks["venue_meeting_command_200"] = False
+    report_rows = stack.cluster.sql(
+        "mcr_concert",
+        "SELECT (SELECT count(*) FROM concert_venue_location_sharing WHERE event_id="
+        + prep.quote(event) + "),(SELECT count(*) FROM concert_venue_location_fixes WHERE event_id="
+        + prep.quote(event) + "),(SELECT count(*) FROM concert_place_notes WHERE event_id="
+        + prep.quote(event) + "),(SELECT count(*) FROM concert_place_notes WHERE event_id="
+        + prep.quote(event) + " AND parent_id IS NOT NULL),(SELECT count(*) FROM concert_venue_meeting_messages WHERE event_id="
+        + prep.quote(event) + "),(SELECT count(*) FROM concert_place_note_receipts WHERE event_id="
+        + prep.quote(event) + ")",
+    )
+    record("venue_rows", {"sharing|fixes|notes|replies|messages|receipts": report_rows})
+
+
 def hold(stack, seconds):
     print("HOLD_BEGIN", flush=True)
     for name in sorted(stack.children):
@@ -693,6 +1254,7 @@ def main(argv=None):
     parser.add_argument("--openssl-binary", type=Path, default=Path("/opt/homebrew/bin/openssl"))
     parser.add_argument("--hold-on-failure-seconds", type=int, default=0)
     parser.add_argument("--in02", action="store_true")
+    parser.add_argument("--venue-only", action="store_true")
     args = parser.parse_args(argv)
     migration.SERVICES["concert-service"] = "CONCERT_DATABASE_URL"
     runtime.PREFIX.update({name: variable.removesuffix("_DATABASE_URL")
@@ -748,6 +1310,9 @@ def main(argv=None):
         statements = ["INSERT INTO concert_events(event_id,slug,title,phase) VALUES("
                       + ",".join(map(prep.quote, [event, "closure-dev-" + secrets.token_hex(8),
                                                   "Closure development flow", "OPEN"])) + ")"]
+        venue_place, venue_statements = venue_seed(event)
+        statements.extend(venue_statements)
+        report["venue_place"] = venue_place
         for room in rooms:
             statements.append(
                 "INSERT INTO concert_world_rooms(event_id,room_id,label,capacity,map_id,map_revision,"
@@ -784,7 +1349,7 @@ def main(argv=None):
             }
         )
 
-        relationship, self_profile, decision, _post_read, _post_callback = world.joined.keys(cluster, 5)
+        relationship, self_profile, decision, post_read, post_callback, feed_command = world.joined.keys(cluster, 6)
         urls = {role: "https://" + ports.address(role + "-service:grpc")
                 for role in ("auth", "friend", "profile", "concert", "notification", "post")}
         for env in envs.values():
@@ -820,6 +1385,7 @@ def main(argv=None):
             envs["concert-service"]["CONCERT_" + role.upper() + "_GRPC_ENDPOINT"] = urls[role]
         envs["concert-service"].update(
             CONCERT_INTRO_MODE="live",
+            CONCERT_PUBLIC_FEED_MODE="read",
             CONCERT_NOTIFICATION_GRPC_ENDPOINT=urls["notification"],
             CONCERT_INTRO_CURSOR_KEY_HEX=secrets.token_hex(32),
             CONCERT_INTRO_RECEIPT_KEYS_JSON=json.dumps(
@@ -838,6 +1404,47 @@ def main(argv=None):
             CONCERT_GIFT_RECEIPT_KEYS_JSON=json.dumps(
                 [{"id": "closure_dev", "secret_hex": secrets.token_hex(32)}]
             ),
+            CONCERT_VENUE_MODE="live",
+            CONCERT_VENUE_POLICY_JSON=json.dumps({
+                "venue_key": "closure-dev-venue",
+                "provider_id": "closure-dev-provider",
+                "source_revision": "closure-dev-1",
+                "location_revision": 1,
+                "meeting_revision": 1,
+                "fresh_ms": 30000,
+                "last_known_ms": 120000,
+                "fix_max_age_ms": 120000,
+                "future_skew_ms": 5000,
+                "sharing_lease_ms": 3600000,
+                "request_ttl_ms": 60000,
+                "check_in_ttl_ms": 60000,
+                "coordinate_retention_ms": 300000,
+                "command_retention_ms": 60000,
+                "max_accuracy_m": 50.0,
+                "max_viewers": 10,
+                "invitation_ms": 86400000,
+                "content_ms": 3600000,
+                "purge_ms": 604800000,
+            }),
+            CONCERT_POST_GRPC_ENDPOINT=urls["post"],
+            CONCERT_POST_READ_SIGNING_SEED=post_read[0],
+            POST_CONCERT_ROOT_READ_VERIFYING_KEYS=post_callback[1],
+            CONCERT_FEED_CURSOR_KEY_HEX=secrets.token_hex(32),
+            CONCERT_FEED_COMMAND_MODE="on",
+            CONCERT_POST_COMMAND_SIGNING_SEED=feed_command[0],
+            CONCERT_FEED_COMMAND_KEYS_JSON=json.dumps(
+                [{"id": "closure_feed", "secret_hex": secrets.token_hex(32)}]
+            ),
+        )
+        envs["post-service"].update(
+            POST_CONCERT_READ_MODE="read",
+            POST_CONCERT_READ_AUTH_GRPC_ENDPOINT=urls["auth"],
+            POST_FRIEND_GRPC_ENDPOINT=urls["friend"],
+            POST_CONCERT_ROOT_GRPC_ENDPOINT=urls["concert"],
+            CONCERT_POST_READ_VERIFYING_KEYS=post_read[1],
+            POST_CONCERT_ROOT_READ_SIGNING_SEED=post_callback[0],
+            POST_CONCERT_COMMAND_MODE="on",
+            CONCERT_POST_COMMAND_VERIFYING_KEYS=feed_command[1],
         )
         envs["api-gateway"]["MCR_GIFT_NETWORK_BUCKET_KEY"] = secrets.token_hex(32)
         inspected = migration.execute(
@@ -877,11 +1484,11 @@ def main(argv=None):
 
         operator = enroll(1)
         member = enroll(2)
+        third = enroll(3)
+        stranger = third
         initialize_profile(gateway, operator[0], operator[1], 1, origin)
         initialize_profile(gateway, member[0], member[1], 2, origin)
-        third = enroll(3) if args.in02 else None
-        if third is not None:
-            initialize_profile(gateway, third[0], third[1], 3, origin)
+        initialize_profile(gateway, stranger[0], stranger[1], 3, origin)
         event = report["event"]
         stack.cluster.sql(
             "mcr_concert",
@@ -917,6 +1524,72 @@ def main(argv=None):
             if stack.cluster is not None:
                 report["logs"] = log_excerpts(stack)
             return {"PASS": 0}.get(report.get("result"), 1)
+
+        checks = report["checks"]
+        for user in (operator[0], member[0], stranger[0]):
+            stack.cluster.sql(
+                "mcr_concert",
+                "INSERT INTO concert_event_admissions(event_id,user_id,state) VALUES("
+                + prep.quote(event) + "," + prep.quote(user) + ",'ACTIVE') ON CONFLICT DO NOTHING",
+            )
+            stack.cluster.sql(
+                "mcr_concert",
+                "INSERT INTO concert_participants(event_id,user_id,theme,low_power,reduced_motion,sound_enabled) VALUES("
+                + prep.quote(event) + "," + prep.quote(user)
+                + ",'REVENGE',false,false,false) ON CONFLICT DO NOTHING",
+            )
+            stack.cluster.sql(
+                "mcr_concert",
+                "INSERT INTO concert_avatar_settings(event_id,user_id,contract_version,representation,preset_id,manifest_id,manifest_version) VALUES("
+                + prep.quote(event) + "," + prep.quote(user)
+                + ",'1.1.0','whole_character','photo01_front_01','mcr_selected_static_20261103',1) ON CONFLICT DO NOTHING",
+            )
+        report["steps"]["feed_admissions"] = stack.cluster.sql(
+            "mcr_concert",
+            "SELECT user_id,state FROM concert_event_admissions WHERE event_id="
+            + prep.quote(event) + " ORDER BY user_id",
+        )
+        for name in (
+            "feed_create_200", "feed_replay_stored", "feed_conflict_409",
+            "feed_edit_200", "feed_delete_200", "feed_second_create_200",
+            "feed_comment_200", "feed_reaction_200",
+            "feed_unauthorized_403_zero_rows", "feed_missing_404_zero_rows",
+            "feed_blocked_403_or_404_zero_rows", "feed_post_closure_409",
+        ):
+            checks[name] = False
+        venue_place = report["venue_place"]
+        venue_friend_pair(gateway, origin, member, operator, record)
+        for name in (
+            "venue_sharing_200", "venue_fix_200", "venue_location_friend_200",
+            "venue_location_no_consent_empty", "venue_location_blocked_no_location",
+            "venue_location_unauth_401", "venue_note_create_201",
+            "venue_note_create_replay_stable", "venue_note_create_conflict_409",
+            "venue_note_reads_503", "venue_note_reply_201",
+            "venue_note_reply_replay_stable", "venue_note_reply_conflict_409",
+            "venue_note_stranger_reply_403", "venue_note_foreign_withdraw_403",
+            "venue_note_withdraw_200", "venue_note_withdraw_replay_stable",
+            "venue_note_withdraw_conflict_409", "venue_meeting_context_friend_200",
+            "venue_meeting_context_stranger_404", "venue_meeting_send_200",
+            "venue_meeting_messages_200", "venue_meeting_invitation_list_200",
+            "venue_meeting_invitation_create_200", "venue_meeting_invitation_get_200",
+            "venue_meeting_invitation_decide_200", "venue_meeting_command_200",
+            "venue_meeting_stranger_denied",
+        ):
+            checks[name] = False
+        venue_proof(
+            stack, gateway, origin, event, venue_place, member, operator, stranger,
+            record, checks,
+        )
+        if args.venue_only:
+            venue_checks = {name: value for name, value in checks.items() if name.startswith("venue_")}
+            failed = {name: value for name, value in venue_checks.items() if value is not True}
+            report["result"] = "PASS" if not failed else "FAIL"
+            report["checks"] = venue_checks
+            report["venue_only"] = True
+            if failed:
+                report["failed_checks"] = failed
+            return {"PASS": 0}.get(report["result"], 1)
+        feed_proof(stack, gateway, origin, event, operator, member, record, checks)
         closure = {"confirmation": "CLOSE_EVENT", "expected_revision": 1,
                    "reason": "Development closure proof"}
         closure_url = f"{gateway}/api/concert/events/{event}/admin/closure"
@@ -926,16 +1599,47 @@ def main(argv=None):
         status, body, _ = request(closure_url, "POST", closure, member[1], origin, True,
                                   {"Idempotency-Key": str(uuid4())})
         record("member_closure", {"status": status, "body": body})
-        # The feed-post route is mounted by the Gateway but no Product operation
-        # classifies it (`product_rpc::operation` refuses it as "Unsupported
-        # product operation"), so it is recorded as an observation and never
-        # used as the 409 proof.
+        # The World authority task renews room leases on a 1 s supervised tick.
+        # The closure retired those leases and closed the phase, so one tick
+        # must pass with the service still up before the post-closure probes.
+        # Time is the behavior here: wait past a full interval, bounded.
+        settle_started = time.monotonic()
+        while time.monotonic() - settle_started < 2.0:
+            time.sleep(0.05)
+        concert_child = stack.children.get("concert-service")
+        concert_alive = concert_child is not None and concert_child.process.poll() is None
+        settle_offset = log_offsets.get("concert-service", 0)
+        record("post_closure_settle", {
+            "waited_seconds": round(time.monotonic() - settle_started, 3),
+            "concert_alive": concert_alive,
+        })
+        # Scan the whole post-closure byte range, not the truncated step excerpt.
+        settle_bytes = ""
+        if concert_child is not None and not concert_child.log.is_symlink():
+            with concert_child.log.open("rb") as stream:
+                stream.seek(settle_offset)
+                settle_bytes = stream.read(65536).decode("utf-8", errors="replace")
+        checks["world_survives_closure"] = (
+            concert_alive
+            and "World authority maintenance failed" not in settle_bytes
+            and "CONCERT_COMPONENT_FAILURE" not in settle_bytes
+        )
+        # The Gateway mount and the Concert product classifier now both resolve
+        # this route. READ_ONLY must refuse it with 409 and leave no feed rows.
+        before = feed_rows(stack.cluster, event)
         status, body, _ = request(
             f"{gateway}/api/concert/events/{event}/posts", "POST",
-            {"text": "post-closure feed write must be refused", "mediaIds": []},
-            operator[1], origin, True, {"Idempotency-Key": str(uuid4())},
+            {"text": "post-closure feed write must be refused", "media_ids": [], "links": []},
+            member[1], origin, True, {"Idempotency-Key": str(uuid4())},
         )
-        record("feed_post_write", {"status": status, "body": body})
+        after = feed_rows(stack.cluster, event)
+        record("feed_post_write", {"status": status, "body": body,
+                                   "rows_before": before, "rows_after": after})
+        feed_post = report["steps"]["feed_post_write"]
+        checks["feed_post_closure_409"] = (
+            feed_post["status"] == 409
+            and (feed_post["body"].get("details") or {}).get("reason") == "EVENT_READ_ONLY"
+            and feed_post["rows_before"] == feed_post["rows_after"])
         # A supported Product write after READ_ONLY must be refused with 409, not
         # accepted or silently dropped. The same closure command under a fresh
         # idempotency key is the exact transition probe for that contract.
@@ -981,8 +1685,21 @@ def main(argv=None):
                 + prep.quote(event),
             ),
         }
-        phase = report["steps"]["closure_rows"]["event"].split("|")[0]
+        # Post-probe liveness: the authority tick can land after every HTTP probe.
+        # A crash there must fail the run, not disappear into teardown.
+        concert_child = stack.children.get("concert-service")
+        concert_alive_after = concert_child is not None and concert_child.process.poll() is None
+        whole_run = ""
+        if concert_child is not None and not concert_child.log.is_symlink():
+            whole_run = concert_child.log.read_bytes().decode("utf-8", errors="replace")
+        record("post_probe_liveness", {"concert_alive": concert_alive_after})
         checks = report["checks"]
+        checks["concert_alive_after_probes"] = concert_alive_after
+        # Whole-run stderr scan, not just the post-closure interval.
+        checks["no_component_failure"] = (
+            "CONCERT_COMPONENT_FAILURE" not in whole_run
+            and "World authority maintenance failed" not in whole_run)
+        phase = report["steps"]["closure_rows"]["event"].split("|")[0]
         checks["operator_closure_ack"] = (
             report["steps"]["operator_closure"]["status"] == 200
             and isinstance(report["steps"]["operator_closure"]["body"], dict))
@@ -995,12 +1712,32 @@ def main(argv=None):
             post_closure["status"] == 409
             and (post_closure["body"].get("details") or {}).get("reason")
             == "INVALID_TRANSITION")
+        feed_post = report["steps"]["feed_post_write"]
+        checks["feed_post_closure_409"] = (
+            feed_post["status"] == 409
+            and (feed_post["body"].get("details") or {}).get("reason") == "EVENT_READ_ONLY"
+            and feed_post["rows_before"] == feed_post["rows_after"])
         checks["forged_token_401"] = report["steps"]["forged_closure"]["status"] == 401
         checks["expired_token_401"] = report["steps"]["expired_closure"]["status"] == 401
-        archive_status = report["steps"]["archive"]["status"]
+        archive = report["steps"]["archive"]
+        archive_anonymous = report["steps"]["archive_anonymous"]
+
+        def archive_status_matches(status, body):
+            reason = (body.get("details") or {}).get("reason")
+            if phase == "ARCHIVED":
+                return status == 200
+            if phase == "READ_ONLY":
+                return status == 404 and reason == "RESOURCE_UNAVAILABLE"
+            return False
+
+        # Every phase constrains the observed archive status. The `None` projection
+        # checks below only cover the ARCHIVED-only 200 body, never the status.
+        checks["archive_status_matches_phase"] = (
+            archive_status_matches(archive["status"], archive["body"])
+            and archive_status_matches(archive_anonymous["status"], archive_anonymous["body"]))
         if phase == "ARCHIVED":
-            checks["archive_public_200"] = archive_status == 200
-            shape = report["steps"]["archive"]["shape"]
+            checks["archive_public_200"] = archive["status"] == 200
+            shape = archive["shape"]
             checks["archive_public_fields"] = (
                 shape.get("shape") == "projection"
                 and set(shape.get("fields") or []) <= PUBLIC_ARCHIVE_POST_FIELDS
@@ -1014,7 +1751,8 @@ def main(argv=None):
                 "Archive PUBLIC 200 NOT_REACHED: event phase is " + phase
                 + "; PgPublicArchive::page refuses non-ARCHIVED events with 404 and the later"
                 " closure steps (FREEZE_MURAL..CLEANUP) have no composed LifecycleOwners"
-                " (ClosureProducer uses UnavailableLater).",
+                " (ClosureProducer uses UnavailableLater). The observed archive status is"
+                " asserted by archive_status_matches_phase.",
             ]
         failed = {name: value for name, value in checks.items() if value is False}
         report["result"] = "PASS" if not failed and all(v is not None for v in checks.values()) else (

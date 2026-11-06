@@ -295,6 +295,14 @@ fn authority_failure(stage: &'static str) -> impl FnOnce(WorldError) -> WorldErr
         error
     }
 }
+/// A closure's READ_ONLY transition permanently closes authority creation and
+/// retires room owner leases. A denial confirmed against the committed event
+/// phase defers this tick: the World stays up, and the phase gate still refuses
+/// every write. A denial while the event is still open, or any other authority
+/// error, remains a fatal supervised failure.
+fn maintenance_defers(error: &WorldError, event_open: bool) -> bool {
+    matches!(error, WorldError::Denied) && !event_open
+}
 /// Real production bridge once a qualified live-owner implementation is supplied.
 /// All I/O occurs outside the shared publication fence; only bounded snapshots are read at 20Hz.
 pub struct AdmissionBridge {
@@ -1125,7 +1133,7 @@ impl AdmissionBridge {
             .map_err(authority_failure("maintenance-publication-pause"))?;
         let mut until = Utc::now() + TimeDelta::milliseconds(5000);
         for room in self.rooms.keys() {
-            let lease = self
+            let lease = match self
                 .service
                 .renew_owner(
                     self.event,
@@ -1134,7 +1142,21 @@ impl AdmissionBridge {
                     TimeDelta::milliseconds(5000),
                 )
                 .await
-                .map_err(authority_failure("maintenance-room-renewal"))?;
+            {
+                Ok(lease) => lease,
+                Err(error) => {
+                    // Closure may have retired this lease after the tick began.
+                    // Classify against the committed phase before deciding fatal.
+                    let event_open = self
+                        .event_open()
+                        .await
+                        .map_err(authority_failure("maintenance-event-phase"))?;
+                    if maintenance_defers(&error, event_open) {
+                        return Ok(());
+                    }
+                    return Err(authority_failure("maintenance-room-renewal")(error));
+                }
+            };
             until = until.min(lease.expires_at);
         }
         *self
@@ -1193,6 +1215,19 @@ impl AdmissionBridge {
                 .map_err(authority_failure("maintenance-publication-activation"))?;
         }
         Ok(())
+    }
+    /// Independent phase read used only to classify a renewal denial. It takes
+    /// the same event SHARE lock as the authority gate, so it observes the
+    /// closure's committed phase rather than racing an uncommitted update.
+    async fn event_open(&self) -> Result<bool, WorldError> {
+        let phase: Option<String> = sqlx::query_scalar(
+            "select phase from public.concert_events where event_id=$1 for share",
+        )
+        .bind(self.event.uuid())
+        .fetch_optional(&self.pool)
+        .await
+        .map_err(|_| WorldError::Unavailable)?;
+        Ok(phase.is_some_and(|phase| matches!(phase.as_str(), "OPEN" | "LIVE")))
     }
     fn request_cleanup(&self, b: &Binding) -> Result<(), AuthorityError> {
         let mut views = self.views.lock().map_err(|_| AuthorityError::Unavailable)?;
@@ -1715,6 +1750,32 @@ impl AdmissionPort for AdmissionBridge {
         self.invalidate(current);
         let _ = self.request_cleanup(current);
         let _ = self.cleanup().await;
+    }
+}
+
+#[cfg(test)]
+mod maintenance_tests {
+    use super::*;
+
+    #[test]
+    fn a_closed_event_defers_the_maintenance_tick() {
+        assert!(maintenance_defers(&WorldError::Denied, false));
+    }
+
+    #[test]
+    fn a_genuine_authority_failure_remains_fatal() {
+        for error in [
+            WorldError::Unavailable,
+            WorldError::OwnerFenced,
+            WorldError::Invalid,
+            WorldError::MembershipMissing,
+            WorldError::Conflict,
+        ] {
+            assert!(!maintenance_defers(&error, false), "{error:?}");
+            assert!(!maintenance_defers(&error, true), "{error:?}");
+        }
+        // A denial while the event is still open is not a closure.
+        assert!(!maintenance_defers(&WorldError::Denied, true));
     }
 }
 

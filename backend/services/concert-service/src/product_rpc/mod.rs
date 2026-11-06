@@ -23,9 +23,12 @@ pub mod delivery;
 mod feature_admission;
 mod operations_admission;
 mod owner_media;
-mod query;
+pub(crate) mod query;
 pub mod report_admission;
+pub mod venue_admission;
 pub mod venue_meeting_admission;
+pub mod venue_product;
+pub use venue_admission::VenueOperation;
 pub use age_admission::AgeOperation;
 pub use feature_admission::IntroOperation;
 pub use operations_admission::OperationsOperation;
@@ -49,6 +52,7 @@ pub const POLICY: MethodPolicy = MethodPolicy {
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Operation {
     Feed,
+    FeedCommand(platform::concert_feed_command::FeedCommandRoute),
     Post(Uuid),
     Comments(Uuid),
     ListParties,
@@ -74,6 +78,7 @@ pub enum Operation {
     FinalizeUpload(Uuid),
     PrivateContent(Uuid),
     CommandStatus,
+    ServicePolicy,
     Wall(crate::mural_tools_b::protocol::WallOperation),
     Social(crate::social_live::protocol::SocialOperation),
     Intro(IntroOperation),
@@ -82,12 +87,14 @@ pub enum Operation {
     Report(ReportOperation),
     Closure,
     Meeting(venue_meeting_admission::MeetingOperation),
+    Venue(venue_admission::VenueOperation),
     Operations(OperationsOperation),
 }
 impl Operation {
     pub fn contract_id(self) -> &'static str {
         match self {
             Self::Feed => "listConcertFeed",
+            Self::FeedCommand(route) => route.operation(),
             Self::Post(_) => "getConcertPost",
             Self::Comments(_) => "listConcertComments",
             Self::ListParties => "listConcertParties",
@@ -113,6 +120,7 @@ impl Operation {
             Self::FinalizeUpload(_) => "finalizeConcertUpload",
             Self::PrivateContent(_) => "readConcertMedia",
             Self::CommandStatus => "getConcertCommandStatus",
+            Self::ServicePolicy => "getConcertServicePolicy",
             Self::Wall(operation) => operation.id(),
             Self::Social(operation) => operation.id(),
             Self::Intro(operation) => operation.id(),
@@ -121,6 +129,7 @@ impl Operation {
             Self::Report(operation) => operation.id(),
             Self::Closure => "closeConcertEvent",
             Self::Meeting(operation) => operation.id(),
+            Self::Venue(operation) => operation.id(),
             Self::Operations(operation) => operation.id(),
         }
     }
@@ -143,6 +152,12 @@ pub fn operation(event: Uuid, method: &str, target: &str) -> Result<Operation, S
     let suffix = path
         .strip_prefix(&prefix)
         .ok_or_else(|| Status::permission_denied("Product event mismatch"))?;
+    if matches!(method, "POST" | "PATCH" | "PUT" | "DELETE")
+        && matches!(suffix.split('/').next(), Some("posts" | "comments"))
+    {
+        return platform::concert_feed_command::FeedCommandRoute::parse(event, method, target)
+            .map(Operation::FeedCommand);
+    }
     if let Ok(wall) = crate::mural_tools_b::protocol::WallOperation::parse(event, method, target) {
         if wall != crate::mural_tools_b::protocol::WallOperation::Status {
             return Ok(Operation::Wall(wall));
@@ -178,11 +193,16 @@ pub fn operation(event: Uuid, method: &str, target: &str) -> Result<Operation, S
     if let Ok(gift) = crate::gift_live::GiftOperation::route(event, method, target) {
         return Ok(Operation::Gift(gift));
     }
+    // Venue L/N owns its own closed prefix and disjoint route set.
+    if let Ok(venue) = venue_admission::route(event, method, target) {
+        return Ok(Operation::Venue(venue));
+    }
     let result = match (method, suffix) {
         ("GET", "feed") => Operation::Feed,
         ("GET", "parties") => Operation::ListParties,
         ("POST", "parties") => Operation::CreateParty,
         ("GET", "commands") => Operation::CommandStatus,
+        ("GET", "service-policy") => Operation::ServicePolicy,
         ("POST", "media/uploads") => Operation::InitializeUpload,
         ("POST", "admin/closure") => Operation::Closure,
         _ => {
@@ -250,6 +270,9 @@ pub fn operation(event: Uuid, method: &str, target: &str) -> Result<Operation, S
                 | Operation::GetPartyRally(_)
                 | Operation::PartyActivity
                 | Operation::Gift(_)
+                | Operation::ServicePolicy
+                | Operation::Meeting(_)
+                | Operation::Venue(_)
         )
     {
         return Err(Status::invalid_argument("Unexpected product query"));
@@ -272,6 +295,7 @@ pub struct VerifiedProduct {
     feed_query: Option<crate::feed::live_read::FeedQuery>,
     comments_query: Option<crate::feed::live_read::CommentsQuery>,
     command_query: Option<CommandStatusQuery>,
+    service_policy_query: Option<crate::service_policy::Query>,
 }
 impl VerifiedProduct {
     // Retain this already authenticated request for the owned producer future.
@@ -303,6 +327,7 @@ impl VerifiedProduct {
                 }
             }),
             command_query: self.command_query,
+            service_policy_query: self.service_policy_query,
         }
     }
     /// Only populated from the exact workload/actor-authenticated Gateway frame.
@@ -342,6 +367,9 @@ impl VerifiedProduct {
     }
     pub fn command_query(&self) -> Option<CommandStatusQuery> {
         self.command_query
+    }
+    pub fn service_policy_query(&self) -> Option<crate::service_policy::Query> {
+        self.service_policy_query
     }
     pub fn check(&self) -> Result<(), Status> {
         self.deadline
@@ -398,6 +426,9 @@ fn authorize(request: &Request<proto::ProductRequest>) -> Result<VerifiedProduct
     let command_query = matches!(operation, Operation::CommandStatus)
         .then(|| query::command_status(&m.http_target))
         .transpose()?;
+    let service_policy_query = matches!(operation, Operation::ServicePolicy)
+        .then(|| crate::service_policy::parse_query(&m.http_target))
+        .transpose()?;
     if m.http_body.len() > MAX_BODY {
         return Err(Status::resource_exhausted("Product body too large"));
     }
@@ -413,8 +444,16 @@ fn authorize(request: &Request<proto::ProductRequest>) -> Result<VerifiedProduct
     if let Operation::Report(report) = operation {
         query::report_request(m, report)?;
     }
+    if let Operation::FeedCommand(route) = operation {
+        canonical_uuid(&m.idempotency_key)?;
+        route.validate_body(&m.content_type, &m.http_body)?;
+        query::feed_command(m, route)?;
+    }
     if let Operation::Meeting(_) = operation {
         venue_meeting_admission::request(m, operation)?;
+    }
+    if let Operation::Venue(_) = operation {
+        venue_admission::request(m, operation)?;
     }
     if let Operation::Operations(operations) = operation {
         query::operations_request(m, operations)?;
@@ -456,6 +495,8 @@ fn authorize(request: &Request<proto::ProductRequest>) -> Result<VerifiedProduct
             | Operation::Wall(_)
             | Operation::Meeting(_)
             | Operation::Gift(_)
+            | Operation::Venue(_)
+            | Operation::FeedCommand(_)
     ) {
         // Each exact feature decoder validates its own read payload and keyed
         // command shape, including Intro PUT/POST and Notification PATCH writes.
@@ -522,6 +563,7 @@ fn authorize(request: &Request<proto::ProductRequest>) -> Result<VerifiedProduct
         feed_query,
         comments_query,
         command_query,
+        service_policy_query,
         deadline: AuthorityRpcDeadline::within_original(
             expires.min(original.expires_micros()),
             original.stop().into_std(),
@@ -586,7 +628,7 @@ impl proto::product_service_server::ProductService for ProductRpcService {
             || result.body.len() > MAX_BODY
             || !matches!(
                 result.status,
-                200 | 202 | 400 | 401 | 403 | 404 | 409 | 413 | 415 | 429 | 500 | 503 | 504
+                200 | 201 | 202 | 400 | 401 | 403 | 404 | 409 | 413 | 415 | 429 | 500 | 503 | 504
             )
             || !matches!(
                 result.content_type.as_str(),

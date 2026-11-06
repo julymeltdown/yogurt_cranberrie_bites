@@ -5,6 +5,18 @@ import { locationLabel, type Selection, type VenueMapController } from '../model
 import { MapCanvas } from './MapCanvas'
 import './paradise-city-map.css'
 
+/** Semantic source glyphs; the reference distinguishes phone, check-in and last-known. */
+function SourceIcon({ source }: { readonly source: PersonView['locationSource'] }) {
+  const path = source === 'phone' ? 'M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z'
+    : source === 'check-in' ? 'M7 2v2H4v18h16V4h-3V2h-2v2H9V2H7Zm11 8v10H6V10h12Zm-2-4H8V8h8V6Z'
+      : 'M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm1 5v5.4l4 2.3-1 1.7-5-2.9V7h2Z'
+  return <svg className="pc-source-icon" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d={path} /></svg>
+}
+
+function SharingIcon() {
+  return <svg className="pc-sharing-icon" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 12.75c1.63 0 3.07.39 4.24.9 1.08.48 1.76 1.56 1.76 2.73V18H6v-1.61c0-1.18.68-2.26 1.76-2.73 1.17-.52 2.61-.91 4.24-.91ZM4 13c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2Zm1.13 1.1c-.37-.06-.74-.1-1.13-.1-.99 0-1.93.21-2.78.58A2.01 2.01 0 0 0 0 16.43V18h4.5v-1.61c0-.83.23-1.61.63-2.29ZM20 13c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2Zm4 3.43c0-.81-.48-1.53-1.22-1.85A6.95 6.95 0 0 0 20 14c-.39 0-.76.04-1.13.1.4.68.63 1.46.63 2.29V18H24v-1.57ZM15.75 6c0 1.24-.5 2.36-1.3 3.18.42.05.85.07 1.3.07 1.1 0 2.12-.29 2.97-.78A4.99 4.99 0 0 0 15.75 6ZM12 6a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z" /></svg>
+}
+
 export function ParadiseCityMap({ controller, renderPortrait }: { readonly controller: VenueMapController
   readonly renderPortrait: (person: Pick<PersonView, 'displayName' | 'avatar'>, size: 64 | 128) => ReactNode }) {
   const state = useSyncExternalStore(controller.subscribe, controller.read, controller.read)
@@ -38,6 +50,7 @@ export function ParadiseCityMap({ controller, renderPortrait }: { readonly contr
   }, [hasSheet])
   useEffect(() => { if (!state.snapshot || state.snapshot.sharing === 'revoked') { setConsented(false); setShowSharing(false); setConfirmRevoke(false); setMeetingPlace(''); setMeetingTarget('') } }, [state.snapshot])
   useEffect(() => { if (state.snapshot?.sharing === 'active') setConfirmRevoke(false) }, [state.snapshot?.sharing])
+  useEffect(() => { if (state.tab === 'NOTES') { setShowSharing(false); setConfirmRevoke(false) } }, [state.tab])
   function select(value: Selection) { returnTo.current = document.activeElement instanceof HTMLElement ? document.activeElement : null; controller.select(value); setMeetingPlace(''); setMeetingTarget('') }
   function close() { controller.cancelDraft(); controller.select(null) }
   function placeLabel(person: PersonView) { const name = venue.landmarks.find(p => p.id === person.landmarkId)?.label; return name ? `${person.locationSource === 'last-known' ? 'Last known near' : 'Near'} ${name}` : 'Location unavailable' }
@@ -84,7 +97,7 @@ export function ParadiseCityMap({ controller, renderPortrait }: { readonly contr
     </section>}
     <div id="pc-tab-panel" role="tabpanel" aria-labelledby={`pc-tab-${state.tab}`} className="pc-tab-panel">
       <MapCanvas venue={venue} people={state.people} self={controller.self()} clusters={state.snapshot?.noteClusters ?? []} selection={state.selection} onSelect={select} renderPortrait={renderPortrait} focusLandmark={state.focusRequest ?? focusLandmark}
-        compact={state.tab !== 'MAP' || hasSheet || Boolean(state.meeting?.active)} />
+        compact={state.tab !== 'MAP' || Boolean(state.meeting?.active)} />
       {state.meeting?.active ? <div className="pc-meeting-slot">{state.meeting.content}</div> : state.draft ? <section className="pc-sheet pc-composer" aria-label={state.draft.replyTo ? 'Reply to place note' : 'Leave a note'}>
         <header><h2>{state.draft.replyTo ? 'Reply to note' : 'Leave a note'}</h2><button type="button" aria-label="Close note composer" disabled={locked} onClick={close}>×</button></header>
         <label className="pc-place-picker">Place<select aria-label="Note place" disabled={locked || Boolean(state.draft.replyTo)} value={state.draft.landmarkId} onChange={event => controller.changeDraftPlace(event.target.value)}>
@@ -112,7 +125,7 @@ export function ParadiseCityMap({ controller, renderPortrait }: { readonly contr
         <h2>Friends unavailable</h2><p>{unavailableText(availability.reason)}</p>
         <button type="button" disabled={!availability.canRefresh || availability.refreshing} onClick={refreshFriends}>{availability.refreshing ? 'CHECKING…' : 'TRY AGAIN'}</button>
       </section> : state.people.length ? state.people.map(person => <article className="pc-friend-row" key={person.userId}>
-        <div className="pc-portrait">{renderPortrait(person, 64)}</div><div className="pc-friend-copy"><button type="button" className="pc-name-button" aria-label={person.displayName} onClick={() => select({ kind: 'friend', id: person.userId })}><strong className="pc-name">{person.displayName}</strong><span className="pc-friend-place">⌖ {placeLabel(person)}</span><small>{locationLabel(person, now)}</small></button></div>
+        <div className="pc-portrait">{renderPortrait(person, 64)}</div><div className="pc-friend-copy"><button type="button" className="pc-name-button" aria-label={person.displayName} onClick={() => select({ kind: 'friend', id: person.userId })}><strong className="pc-name">{person.displayName}</strong><span className="pc-friend-place">⌖ {placeLabel(person)}</span><small className="pc-friend-source"><SourceIcon source={person.locationSource} />{locationLabel(person, now)}</small></button></div>
         <button type="button" disabled={locked} onClick={() => { if (person.canRequest && (person.locationSource === 'last-known' || person.locationSource === 'unavailable')) void controller.requestLocation(person.userId); else select({ kind: 'friend', id: person.userId }) }}>{person.canRequest && (person.locationSource === 'last-known' || person.locationSource === 'unavailable') ? 'ASK LOCATION' : 'VIEW'}</button>
       </article>) : <p role="status">No friend location is currently authorized. A friendship alone does not share location.</p>}
       {(incoming.length > 0 || outgoing.length > 0) && <section className="pc-location-requests" aria-label="Location requests"><h2>Location requests</h2>
@@ -132,11 +145,11 @@ export function ParadiseCityMap({ controller, renderPortrait }: { readonly contr
         <button type="button" className="pc-primary pc-full" disabled={locked || !state.snapshot?.rights.postNote.length} onClick={() => { const id = selectedPlace?.id ?? state.snapshot?.rights.postNote[0]; if (id) controller.compose(id) }}>+ NEW NOTE</button>
       </section> : null}
     </div>
-    <div className="pc-sharing"><strong>{state.snapshot?.sharing === 'active' ? '♟ Sharing with friends' : state.snapshot?.sharing === 'paused' ? 'Location sharing paused' : state.snapshot?.sharing === 'revoked' ? 'Location sharing revoked' : 'Phone location is off'}</strong>
+    {state.tab !== 'NOTES' && <div className="pc-sharing"><strong><SharingIcon />{state.snapshot?.sharing === 'active' ? 'Sharing with friends' : state.snapshot?.sharing === 'paused' ? 'Location sharing paused' : state.snapshot?.sharing === 'revoked' ? 'Location sharing revoked' : 'Phone location is off'}</strong>
       <div className="pc-sharing-actions">{state.snapshot?.sharing === 'active'
         ? <><button type="button" onClick={() => { void controller.pause() }}>PAUSE</button>
           <button type="button" className="pc-danger" disabled={!state.snapshot?.rights.revoke || locked} onClick={() => setConfirmRevoke(true)}>REVOKE</button></>
-        : <button type="button" disabled={!state.snapshot?.rights.sharePhone || locked} onClick={() => setShowSharing(value => !value)}>SHARE LOCATION</button>}</div></div>
+        : <button type="button" disabled={!state.snapshot?.rights.sharePhone || locked} onClick={() => setShowSharing(value => !value)}>SHARE LOCATION</button>}</div></div>}
     {showSharing && <section className="pc-sharing-consent" aria-label="Phone location sharing"><p>Share real phone location with authorized friends. This is separate from your virtual World position and from device permission. Your browser asks for permission only after you continue.</p><label><input type="checkbox" checked={consented} onChange={event => setConsented(event.target.checked)} /> I want to share my phone location.</label>
       <button type="button" className="pc-primary" disabled={!consented || locked} onClick={() => { void controller.startPhone(consented); setShowSharing(false) }}>Allow phone location</button></section>}
     {confirmRevoke && <section className="pc-sharing-consent" role="alertdialog" aria-label="Stop sharing location"><p>Revoke location sharing? Your selected audience and any current phone or check-in location are removed immediately.</p>

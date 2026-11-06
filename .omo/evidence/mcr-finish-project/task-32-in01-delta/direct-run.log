@@ -1,0 +1,9 @@
+auth-http principal-1-signup status=200 code=None
+auth-http principal-1-login status=200 code=None
+auth-http principal-2-signup status=200 code=None
+auth-http principal-2-login status=200 code=None
+gateway admission status=200 envelope={"code": null, "reason": null, "message": null}
+gateway rooms status=503 envelope={"code": "GATEWAY_503", "reason": "POLICY_UNAVAILABLE", "message": "Global enrollment policy unavailable"}
+gateway bootstrap status=503 envelope={"code": "GATEWAY_503", "reason": "DEPENDENCY_UNAVAILABLE", "message": "The request could not be completed."}
+gateway principal-1-bootstrap status=503 envelope={"code": "GATEWAY_503", "reason": "DEPENDENCY_UNAVAILABLE", "message": "The request could not be completed."}
+{"result": "FAIL", "cleanup": "PASS"}

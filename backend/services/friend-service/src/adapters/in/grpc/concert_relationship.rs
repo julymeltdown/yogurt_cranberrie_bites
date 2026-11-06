@@ -130,6 +130,8 @@ impl proto::friend_concert_relationship_service_server::FriendConcertRelationshi
             subject_blocks_actor: facts.subject_blocks_actor,
             actor_deleted: facts.actor_deleted,
             subject_deleted: facts.subject_deleted,
+            actor_follows_subject: facts.actor_follows_subject,
+            subject_follows_actor: facts.subject_follows_actor,
         });
         response.metadata_mut().insert(
             "cache-control",

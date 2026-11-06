@@ -29,6 +29,7 @@ pub mod social_delivery;
 pub mod social_policy_runtime;
 pub mod social_runtime;
 pub mod social_startup;
+pub mod venue_runtime;
 
 pub struct AppConfig {
     pub database: PgConnectOptions,

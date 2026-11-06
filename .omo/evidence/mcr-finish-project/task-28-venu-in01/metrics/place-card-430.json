@@ -1,0 +1,97 @@
+{
+  "viewport": {
+    "width": 430,
+    "height": 932,
+    "dpr": 1
+  },
+  "overflowX": false,
+  "tabs": {
+    "x": 0,
+    "y": 0,
+    "width": 430,
+    "height": 55
+  },
+  "tab": {
+    "x": 4,
+    "y": 5,
+    "width": 139.3,
+    "height": 44
+  },
+  "map": {
+    "x": 0,
+    "y": 55,
+    "width": 430,
+    "height": 300
+  },
+  "sheet": {
+    "x": 0,
+    "y": 355,
+    "width": 430,
+    "height": 522
+  },
+  "sharing": {
+    "x": 0,
+    "y": 877,
+    "width": 430,
+    "height": 55
+  },
+  "friendRows": [],
+  "friendPortrait": null,
+  "noteCards": [],
+  "notePortrait": null,
+  "selectedPortrait": null,
+  "composer": null,
+  "primary": {
+    "x": 220,
+    "y": 621,
+    "width": 203,
+    "height": 44
+  },
+  "meeting": null,
+  "controls": 41,
+  "minHit": 44,
+  "regions": {
+    "map": {
+      "x": 0,
+      "y": 0,
+      "width": 430,
+      "height": 932
+    },
+    "tabPanel": {
+      "x": 0,
+      "y": 55,
+      "width": 430,
+      "height": 822
+    },
+    "canvas": {
+      "x": 0,
+      "y": 55,
+      "width": 430,
+      "height": 300
+    },
+    "friends": null,
+    "sheet": {
+      "x": 0,
+      "y": 355,
+      "width": 430,
+      "height": 522
+    },
+    "noteCard": null,
+    "composer": null,
+    "sharing": {
+      "x": 0,
+      "y": 877,
+      "width": 430,
+      "height": 55
+    },
+    "friendDetail": null
+  },
+  "fonts": {
+    "name": null,
+    "place": null,
+    "source": null,
+    "body": null,
+    "noteMeta": null
+  },
+  "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nCharacter unavailable\nCharacter unavailable\n3 friends\nCharacter unavailable\nwaydown\nCharacter unavailable\nYou\n+\n−\n⌖\n↺\n◎\n⌖ MAIN GATE\n×\n\nFixed landmark on the illustrated Paradise City siteplan.\n\nCurrent meeting context supplied by the venue adapter.\n\nIllustration source: Photo 5. Uncalibrated illustration; physical placement unverified.\n\nView on map\nCHECK IN\nMeet with\nChoose a friend\ninkparade\nhelena\nbulletxs\nwaydown\nMESSAGE\nMEET HERE\n+ LEAVE A NOTE\nSharing with friends\nPAUSE\nREVOKE"
+}

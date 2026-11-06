@@ -1,0 +1,122 @@
+{
+  "result": "PASS",
+  "steps": {
+    "provisioning": {
+      "event": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+      "users": {
+        "alice": "f76a7f0f-db95-4fe1-9622-54e4a417eb19",
+        "bob": "758975c8-96b7-4534-8f41-59988748cf23"
+      },
+      "mural_seed_sha256": "3f1aa318f0e4b7d8fa7f079b1101f7386619291a8dbb3bb04ef70820952f34ce"
+    },
+    "giveaways": {
+      "media": "a13230c4-db06-46b4-b695-cbc2d7ef80d5",
+      "empty": "a67342ab-475a-4655-b37f-8e6127c729c1",
+      "missing": "0d585aec-1dd2-4ce2-82af-8cfd7d64c4e9",
+      "media_id": "77950892-3f73-449f-8168-162e379ed5e2",
+      "note": "media row and giveaway aggregates are seeded because the canonical owner-fence upload/link producer is not composed in this harness"
+    },
+    "profile_preferences": {
+      "initial_revision": 1,
+      "patch": 200,
+      "patch_body": {
+        "age_status": "UNKNOWN",
+        "event_id": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+        "preferences": {
+          "low_power": true,
+          "reduced_motion": false,
+          "sound_enabled": false,
+          "theme": "REVENGE"
+        },
+        "profile": {
+          "avatar": {
+            "config": {
+              "contract_version": "1.1.0",
+              "kind": "avatar_config",
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "preset_id": "photo01_front_01",
+              "representation": "whole_character"
+            },
+            "revision": 1
+          },
+          "bio": "Development closure participant",
+          "display_name": "Closure participant 1",
+          "user_id": "f76a7f0f-db95-4fe1-9622-54e4a417eb19"
+        },
+        "revision": 2,
+        "user_id": "f76a7f0f-db95-4fe1-9622-54e4a417eb19"
+      },
+      "saved_revision": 2,
+      "saved_low_power": true,
+      "stale": 409,
+      "stale_reason": "VERSION_CONFLICT"
+    },
+    "mural": {
+      "snapshot": 200,
+      "revision": 1,
+      "state": "EDITABLE",
+      "snapshot_id": "2a94091c-d17d-4d10-83d3-0a3058d06561",
+      "delta": 200,
+      "from_revision": 1,
+      "to_revision": 1
+    },
+    "runtime_packet": "/Users/lhs/Desktop/mcr-worktrees/exec-w8-fe/frontend/e2e/fe-closure/runtime.json",
+    "browser_done": true
+  },
+  "banner": {
+    "scope": "development stack real-producer FE24/FE33/FE34 closure",
+    "release": "development stack, NOT release qualification",
+    "qa08": "NOT_RUN",
+    "device": "NOT_RUN",
+    "production": "NOT_CLAIMED"
+  },
+  "stack": {
+    "gateway_url": "http://127.0.0.1:62884",
+    "origin": "http://127.0.0.1:5391",
+    "event": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+    "users": {
+      "alice": "f76a7f0f-db95-4fe1-9622-54e4a417eb19",
+      "bob": "758975c8-96b7-4534-8f41-59988748cf23"
+    },
+    "release_digest": "adcec15987c40769d0b6082df676182b87c658c5037c5e758ed89868548ea245"
+  },
+  "fe24_media_probe": {
+    "media_id": "77950892-3f73-449f-8168-162e379ed5e2",
+    "role": "alice",
+    "bearer": "owner",
+    "metadata": {
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/77950892-3f73-449f-8168-162e379ed5e2",
+      "body_bytes": 0,
+      "status": 403,
+      "body_truncated": true,
+      "reason": "PERMISSION_DENIED"
+    },
+    "content": {
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/77950892-3f73-449f-8168-162e379ed5e2/content",
+      "body_bytes": 0,
+      "status": 403,
+      "body_truncated": false,
+      "reason": "PERMISSION_DENIED"
+    },
+    "bytes": {
+      "method": "PUT",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/77950892-3f73-449f-8168-162e379ed5e2/bytes",
+      "body_bytes": 0,
+      "status": 400,
+      "body_truncated": false,
+      "reason": "INVALID_INPUT"
+    },
+    "expected": {
+      "metadata": "403 PERMISSION_DENIED",
+      "content": "403 PERMISSION_DENIED",
+      "bytes": "400 INVALID_INPUT"
+    },
+    "matches_expected": true
+  },
+  "cleanup": {
+    "result": "PASS"
+  }
+}

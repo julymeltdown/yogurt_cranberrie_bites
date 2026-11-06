@@ -19144,6 +19144,12 @@
         "docs/mcr/frontend/gift-discovery.md",
         "docs/mcr/frontend/fe21-fe24-client-delivery.md"
       ],
+      "producer_evidence": {
+        "recorded_at": "2026-11-06",
+        "status": "BLOCKED",
+        "basis": "BE24 records end-to-end Gateway HTTP upload/read with real canonical Auth/Friend as NOT_RUN; a probe against the real development stack returned 403 PERMISSION_DENIED for media metadata/content. No approved production media/motif mapping exists (productionBinding null). The client keeps its truthful No photo / Image access unavailable states.",
+        "evidence": "docs/mcr/frontend/gift-discovery.md; .omo/evidence/mcr-finish-project/task-43-fe-closure.md"
+      },
       "note": "The implementation owner explicitly closes all original FE24 client criteria as SATISFIED at MOCK_READY, using the actual default application with frozen-contract synthetic HTTP/C05. Published 4bf9022f seals the original criteria and delivery evidence; Frontend KING confirms owner verification of the complete delivered payload in the 05:35 UTC hourly digest. No king/SL technical review or additional original prerequisite is introduced.",
       "known_followup": "Real backend producers, authority/capacity/stock, two-account IN02, physical devices, full QA06 and release acceptance remain separate. These client closures do not accept those integration boundaries.",
       "published_integration_commits": [
@@ -19738,11 +19744,16 @@
       ],
       "note": "The implementation owner explicitly declares original FE33 frontend criteria SATISFIED under the frozen-contract/fixture scope in published 7c2f3af7: convergence, rejected-preview rollback and restore invalidation. MOCK_READY describes the environment; it does not withhold the reported task-local criteria outcome. No king or SL technical review was performed.",
       "known_followup": "Separate production integration: actual anchor/source/server eligibility, Gateway admission/mappings/fence and real IN04 remain open with implementation owners. The subsequently assigned frontend caller assembly was delivered in eeae69be with its goal complete and clean STOP; it adds no new original task ID.",
+      "producer_evidence": {
+        "recorded_at": "2026-11-06",
+        "basis": "Real development stack served the authoritative snapshot/delta at revision 1; actual createMuralHttp/createMuralSync/MuralSyncPanel rendered synchronized and 401-unavailable states at 360/390/430. Shipped placement pins match the server release map.",
+        "evidence": "docs/mcr/frontend/mural-sync.md; .omo/evidence/mcr-finish-project/task-43-fe-closure.md; frontend/e2e/fe-closure/"
+      },
       "published_integration_commits": [
         "7c2f3af7b9fd7bab2ed2d863cc2262527cc8553e"
       ],
       "revised_plan": {
-        "state": "REOPENED",
+        "state": "DONE",
         "package": "WALL",
         "priority": 1,
         "original_scope": "Snapshot/delta reconciliation, commit receipts, pause/freeze/restore reset and world-wall texture update.",
@@ -19801,9 +19812,14 @@
       "evidence": [
         "docs/mcr/frontend/profile-preferences.md"
       ],
+      "producer_evidence": {
+        "recorded_at": "2026-11-06",
+        "basis": "Real development stack GET /me revision 1; PATCH preferences 200 revision 2; stale PATCH 409 VERSION_CONFLICT. Actual createMeController/SettingsPage/ProfileForm rendered saved and conflict states at 360/390/430.",
+        "evidence": "docs/mcr/frontend/profile-preferences.md; .omo/evidence/mcr-finish-project/task-43-fe-closure.md; frontend/e2e/fe-closure/"
+      },
       "note": "Published receipt or owner report records bounded implementation/fixture/component work. Whole original-task completion is partial or not yet reconciled; no additional live/device gate is imposed on a pure task.",
       "revised_plan": {
-        "state": "IN_PROGRESS",
+        "state": "DONE",
         "package": "SOCIAL",
         "priority": 1,
         "original_scope": "New ME hub, profile form and low-power/motion/sound/theme preferences; links to party and gift activity.",
@@ -25441,6 +25457,24 @@
       "state": "DONE",
       "commit": "df244a715a7a7d109282029dee78df4bf65de10d",
       "basis": "The responsible persistence developer explicitly accepts all original BE07 criteria in the published completion record: bounded asset/layer/version validation, invalid URL/item rejection, avatar/theme optimistic concurrency and other-user/event isolation. The developer reconciled current sources with retained layered/selected/reviewed-motion native CAS/restart and actual Auth/Profile/Participant save/reload evidence. Canonical publication is complete. Separate art, frontend, live integration, device and release requirements remain open."
+    },
+    {
+      "task": "FE33",
+      "state": "DONE",
+      "commit": "e2856a7ca",
+      "basis": "Current revised scope closed on the real development stack: authoritative snapshot/delta at revision 1, actual sync adapter and panel synchronized at 360/390/430, real 401 unavailable state, and shipped placement pins matching the server release map. IN04 multiuser gate remains its own evidence."
+    },
+    {
+      "task": "FE34",
+      "state": "DONE",
+      "commit": "e2856a7ca",
+      "basis": "Current revised scope closed on the real development stack: GET /me revision 1, preferences PATCH 200 revision 2, stale PATCH 409 VERSION_CONFLICT, and actual Settings/Profile saved and conflict states at 360/390/430."
+    },
+    {
+      "task": "FE24",
+      "state": "BLOCKED",
+      "commit": "pending-task-43",
+      "basis": "Producer block recorded: BE24 HTTP media owner fence is not composed/qualified (403 on real stack) and no approved production media/motif mapping exists. Client keeps truthful No photo / Image access unavailable states; FE24 stays open."
     }
   ]
 }

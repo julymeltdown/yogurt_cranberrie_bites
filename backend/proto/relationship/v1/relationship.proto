@@ -31,6 +31,11 @@ message FriendRelationshipObservation {
   bool subject_blocks_actor = 7;
   bool actor_deleted = 8;
   bool subject_deleted = 9;
+  // Live follow edges from the owner's public.follows rows in the same MVCC
+  // snapshot as the block/deletion facts. A one-way follow is not friendship:
+  // consumers must require both booleans, no live block and no deleted subject.
+  bool actor_follows_subject = 10;
+  bool subject_follows_actor = 11;
 }
 service AuthConcertRelationshipService {
   rpc ReadCurrent(RelationshipRead) returns (AuthRelationshipObservation);

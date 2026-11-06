@@ -2,6 +2,7 @@
 //! friend read does not exist yet, so production composition refuses these
 //! operations with 503 rather than reconstructing friendship locally.
 use super::{canonical_uuid, proto::ProductRequest, Operation};
+use crate::venue_meeting::Direction;
 use concert_application::venue_meeting::{CreateInvitation, DecideInvitation, SendMessage};
 use concert_domain::venue_meeting::{
     Decision, LandmarkSelection, MeetingSelection, MAX_REQUEST_BYTES,
@@ -154,6 +155,68 @@ fn selection_query(
     MeetingSelection::new(friend, landmark).map_err(|_| invalid())
 }
 
+pub(super) fn create_command(body: &[u8]) -> Result<CreateInvitation, Status> {
+    let body: CreateBody = serde_json::from_slice(body).map_err(|_| invalid())?;
+    CreateInvitation::new(selection(body.selection)?).map_err(|_| invalid())
+}
+
+pub(super) fn decide_command(body: &[u8]) -> Result<DecideInvitation, Status> {
+    let body: DecideBody = serde_json::from_slice(body).map_err(|_| invalid())?;
+    let decision = Decision::parse(&body.decision).map_err(|_| invalid())?;
+    DecideInvitation::new(selection(body.selection)?, body.expected_revision, decision)
+        .map_err(|_| invalid())
+}
+
+pub(super) fn send_command(body: &[u8]) -> Result<SendMessage, Status> {
+    let body: SendBody = serde_json::from_slice(body).map_err(|_| invalid())?;
+    let invitation = body
+        .invitation_id
+        .map(|value| canonical_uuid(&value))
+        .transpose()?;
+    SendMessage::new(selection(body.selection)?, body.body, invitation)
+        .map_err(|_| invalid())
+}
+
+pub(super) fn read_selection(
+    target: &str,
+    landmark_required: bool,
+) -> Result<MeetingSelection, Status> {
+    let mut fields = query(target)?;
+    let selection = selection_query(&mut fields, landmark_required)?;
+    if !fields.is_empty() {
+        return Err(invalid());
+    }
+    Ok(selection)
+}
+
+pub(super) fn read_direction_cursor(target: &str) -> Result<(Direction, i64), Status> {
+    let mut fields = query(target)?;
+    let direction = fields.remove("direction").ok_or_else(invalid)?;
+    let direction = match direction.as_str() {
+        "INCOMING" => Direction::Incoming,
+        "OUTGOING" => Direction::Outgoing,
+        _ => return Err(invalid()),
+    };
+    let cursor = fields.remove("cursor").map_or(Ok(0), |value| decimal(&value, 0))?;
+    if !fields.is_empty() {
+        return Err(invalid());
+    }
+    Ok((direction, cursor))
+}
+
+pub(super) fn read_selection_cursor(
+    target: &str,
+    landmark_required: bool,
+) -> Result<(MeetingSelection, i64), Status> {
+    let mut fields = query(target)?;
+    let selection = selection_query(&mut fields, landmark_required)?;
+    let cursor = fields.remove("cursor").map_or(Ok(0), |value| decimal(&value, 0))?;
+    if !fields.is_empty() {
+        return Err(invalid());
+    }
+    Ok((selection, cursor))
+}
+
 pub(super) fn route(
     event: Uuid,
     method: &str,
@@ -251,8 +314,13 @@ pub(super) fn request(
                 decimal(&cursor, 0)?;
             }
         }
-        MeetingOperation::GetInvitation(_) | MeetingOperation::DecideInvitation(_) => {
+        MeetingOperation::GetInvitation(_) => {
             selection_query(&mut fields, true)?;
+        }
+        MeetingOperation::DecideInvitation(_) => {
+            if !fields.is_empty() {
+                return Err(invalid());
+            }
         }
         MeetingOperation::Messages | MeetingOperation::Status(_) => {
             selection_query(&mut fields, false)?;

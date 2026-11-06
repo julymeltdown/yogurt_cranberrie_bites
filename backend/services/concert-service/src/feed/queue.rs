@@ -6,6 +6,7 @@ use concert_application::{
     commands::*,
     feed::{Context, PreparedCommand},
 };
+use concert_domain::feed::FeedCommand;
 use sqlx::{PgConnection, PgPool, Row};
 use uuid::Uuid;
 
@@ -148,9 +149,75 @@ pub struct OwnerCommit {
 pub struct FeedQueue {
     pool: PgPool,
 }
+pub struct StoredFeedWork {
+    pub receipt: SafeReceipt,
+    pub target: Uuid,
+    pub command: FeedCommand,
+    pub parent: Option<Uuid>,
+    pub parent_revision: Option<i64>,
+}
 impl FeedQueue {
     pub fn new(pool: PgPool) -> Self {
         Self { pool }
+    }
+    /// Loads protected intent for an idempotent replay. A missing row is not
+    /// authority; the caller still reauthorizes the stored target and key.
+    pub async fn load(&self, scope: Scope) -> Result<Option<StoredFeedWork>, CommandError> {
+        let row = sqlx::query(
+            "select r.receipt_id,r.state,r.resource_id,r.resource_revision,r.result_status,r.failure_reason,r.created_at,r.expires_at,w.target_id,w.payload,w.parent_id,w.parent_revision from public.concert_command_receipts r join public.concert_feed_owner_work w using(receipt_id) where r.actor_id=$1 and r.event_id=$2 and r.operation_id=$3 and r.idempotency_key=$4 for share of r,w",
+        )
+        .bind(scope.actor)
+        .bind(scope.event)
+        .bind(scope.operation.id())
+        .bind(scope.key)
+        .fetch_optional(&self.pool)
+        .await
+        .map_err(unavailable)?;
+        let Some(row) = row else {
+            return Ok(None);
+        };
+        let expires: chrono::DateTime<chrono::Utc> = row.try_get("expires_at").map_err(unavailable)?;
+        let expired: bool = sqlx::query_scalar("select clock_timestamp()>=$1")
+            .bind(expires)
+            .fetch_one(&self.pool)
+            .await
+            .map_err(unavailable)?;
+        if expired {
+            return Err(CommandError::Expired);
+        }
+        let resource: Option<Uuid> = row.try_get("resource_id").map_err(unavailable)?;
+        let revision: Option<i64> = row.try_get("resource_revision").map_err(unavailable)?;
+        let reference = match (resource, revision) {
+            (Some(resource), Some(revision)) => {
+                Some(SafeReference { resource, revision }.validate()?)
+            }
+            (None, None) => None,
+            _ => return Err(CommandError::InvalidState),
+        };
+        let failure: Option<String> = row.try_get("failure_reason").map_err(unavailable)?;
+        let receipt = SafeReceipt {
+            id: row.try_get("receipt_id").map_err(unavailable)?,
+            scope,
+            state: ReceiptState::parse(&row.try_get::<String, _>("state").map_err(unavailable)?)?,
+            reference,
+            failure: failure
+                .as_deref()
+                .map(SafeFailure::parse)
+                .transpose()?,
+            result_status: row.try_get("result_status").map_err(unavailable)?,
+            created_at: row.try_get("created_at").map_err(unavailable)?,
+            expires_at: expires,
+        };
+        let payload: serde_json::Value = row.try_get("payload").map_err(unavailable)?;
+        let command: FeedCommand = serde_json::from_value(payload)
+            .map_err(|_| CommandError::Unavailable)?;
+        Ok(Some(StoredFeedWork {
+            receipt,
+            target: row.try_get("target_id").map_err(unavailable)?,
+            command,
+            parent: row.try_get("parent_id").map_err(unavailable)?,
+            parent_revision: row.try_get("parent_revision").map_err(unavailable)?,
+        }))
     }
     pub async fn enqueue<A: FencedFeedAuthority>(
         &self,

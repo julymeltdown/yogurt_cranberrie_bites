@@ -24,6 +24,57 @@ fn get(h: &RouteHarness, user: &str, tail: &str) -> Request<Body> {
         .unwrap()
 }
 
+fn venue_get(h: &RouteHarness, user: Option<&str>, path: &str) -> Request<Body> {
+    let mut request = Request::builder()
+        .method("GET")
+        .uri(path);
+    if let Some(user) = user {
+        request = request.header(header::AUTHORIZATION, h.bearer_token(user));
+    }
+    request.body(Body::empty()).unwrap()
+}
+
+fn venue_note_mutation(
+    h: &RouteHarness,
+    method: &str,
+    path: &str,
+    origin: bool,
+    key: bool,
+) -> Request<Body> {
+    let body = if method == "POST" {
+        json!({
+            "text": "venue boundary note",
+            "audience": "EVERYONE",
+            "expiry": "ONE_HOUR",
+            "landmark_selection": {
+                "landmark_id": PEER,
+                "catalog_revision": 1,
+                "landmark_revision": 1
+            }
+        })
+        .to_string()
+    } else {
+        String::new()
+    };
+    let mut request = Request::builder()
+        .method(method)
+        .uri(path)
+        .header(header::AUTHORIZATION, h.bearer_token(http_support::USER_ID));
+    if method == "POST" {
+        request = request.header(header::CONTENT_TYPE, "application/json");
+    }
+    if origin {
+        request = request.header(header::ORIGIN, ORIGIN);
+    }
+    if method == "POST" || origin {
+        request = request.header("x-mcr-intent", "browser");
+    }
+    if key {
+        request = request.header("idempotency-key", KEY);
+    }
+    request.body(Body::from(body)).unwrap()
+}
+
 fn invitation(
     h: &RouteHarness,
     user: &str,
@@ -96,6 +147,142 @@ fn assert_error(value: &Value, text: &str, status: u16, reason: &str) {
     for secret in [PEER, KEY, PRIVATE_BODY, "gate-a", "selectedFriendId"] {
         assert!(!text.contains(secret), "error leaked {secret}: {text}");
     }
+}
+
+#[tokio::test]
+async fn every_venue_meeting_row_has_an_authenticated_boundary_cell() {
+    let h = RouteHarness::new().await;
+    let root = format!("/api/concert/events/{EVENT}/venue-meeting");
+    let selection = json!({
+        "selection": {
+            "selectedFriendId": PEER,
+            "landmark": {"landmarkId": "gate-a", "catalogRevision": 3, "landmarkRevision": 4}
+        }
+    });
+    let decision = json!({
+        "selection": {
+            "selectedFriendId": PEER,
+            "landmark": {"landmarkId": "gate-a", "catalogRevision": 3, "landmarkRevision": 4}
+        },
+        "expectedRevision": 1,
+        "decision": "ACCEPT"
+    });
+    let message = json!({"selection": {"selectedFriendId": PEER}, "body": "hello"});
+    let get = |path: String| {
+        venue_get(&h, Some(http_support::USER_ID), &format!("{root}{path}"))
+    };
+    let post = |path: String, body: Value| {
+        let mut request = Request::builder()
+            .method("POST")
+            .uri(format!("{root}{path}"))
+            .header(header::AUTHORIZATION, h.bearer_token(http_support::USER_ID))
+            .header(header::CONTENT_TYPE, "application/json")
+            .header(header::ORIGIN, ORIGIN)
+            .header("x-mcr-intent", "browser")
+            .header("idempotency-key", KEY);
+        request = request.header(header::CONTENT_LENGTH, body.to_string().len());
+        request.body(Body::from(body.to_string())).unwrap()
+    };
+    for request in [
+        get(format!("/context?selectedFriendId={PEER}")),
+        get("/invitations?direction=INCOMING".to_owned()),
+        post("/invitations".to_owned(), selection.clone()),
+        get(format!(
+            "/invitations/{KEY}?selectedFriendId={PEER}&landmarkId=gate-a&catalogRevision=3&landmarkRevision=4"
+        )),
+        post(format!("/invitations/{KEY}/decision"), decision),
+        get(format!("/messages?selectedFriendId={PEER}")),
+        post("/messages".to_owned(), message),
+        get(format!("/commands/{KEY}?selectedFriendId={PEER}")),
+    ] {
+        let (status, _headers, value, text) = call(&h, request).await;
+        assert_eq!(status, StatusCode::SERVICE_UNAVAILABLE);
+        assert_error(&value, &text, 503, "DEPENDENCY_UNAVAILABLE");
+    }
+    let (status, _headers, value, text) = call(
+        &h,
+        venue_get(
+            &h,
+            None,
+            &format!("{root}/messages?selectedFriendId={PEER}"),
+        ),
+    )
+    .await;
+    assert_eq!(status, StatusCode::UNAUTHORIZED);
+    assert_error(&value, &text, 401, "AUTHENTICATION_REQUIRED");
+    h.pool.close().await;
+}
+
+#[tokio::test]
+async fn venue_notes_and_location_http_are_mounted_and_fail_closed() {
+    let h = RouteHarness::new().await;
+    let base = format!("/api/concert/events/{EVENT}/venue");
+    let note = format!("{base}/landmarks/{PEER}/notes");
+    let note_id = format!("{note}/00000000-0000-4000-8000-000000000301");
+    for path in [
+        format!("{base}/location"),
+        note.clone(),
+        note_id.clone(),
+        format!("{note_id}/replies"),
+    ] {
+        let (status, _headers, value, text) =
+            call(&h, venue_get(&h, None, &path)).await;
+        assert_eq!(status, StatusCode::UNAUTHORIZED, "{path}");
+        assert_error(&value, &text, 401, "AUTHENTICATION_REQUIRED");
+        let (status, _headers, value, text) =
+            call(&h, venue_get(&h, Some(http_support::USER_ID), &path)).await;
+        assert_eq!(status, StatusCode::SERVICE_UNAVAILABLE, "{path}");
+        assert_error(&value, &text, 503, "DEPENDENCY_UNAVAILABLE");
+    }
+    for path in [
+        format!("{note}?limit=0"),
+        format!("{note}?limit=1&limit=2"),
+        format!("{note}?before=0.00000000-0000-0000-0000-000000000000"),
+    ] {
+        let (status, _headers, value, text) =
+            call(&h, venue_get(&h, Some(http_support::USER_ID), &path)).await;
+        assert_eq!(status, StatusCode::BAD_REQUEST, "{path}");
+        assert_error(&value, &text, 400, "INVALID_INPUT");
+    }
+    h.pool.close().await;
+}
+
+#[tokio::test]
+async fn venue_note_mutations_require_exact_transport_headers() {
+    let h = RouteHarness::new().await;
+    let path = format!("/api/concert/events/{EVENT}/venue/landmarks/{PEER}/notes");
+    for (request, status, reason) in [
+        (
+            venue_note_mutation(&h, "POST", &path, false, true),
+            403,
+            "ORIGIN_NOT_ALLOWED",
+        ),
+        (
+            venue_note_mutation(&h, "POST", &path, true, false),
+            400,
+            "INVALID_INPUT",
+        ),
+        (
+            venue_note_mutation(&h, "POST", &path, true, true),
+            503,
+            "DEPENDENCY_UNAVAILABLE",
+        ),
+    ] {
+        let (actual, _headers, value, text) = call(&h, request).await;
+        assert_eq!(actual.as_u16(), status, "{reason}");
+        assert_error(&value, &text, status, reason);
+    }
+    let delete = format!(
+        "/api/concert/events/{EVENT}/venue/landmarks/{PEER}/notes/00000000-0000-4000-8000-000000000301?expected_revision=1"
+    );
+    let (status, _headers, value, text) = call(
+        &h,
+        venue_note_mutation(&h, "DELETE", &delete, true, true),
+    )
+    .await;
+    assert_eq!(status, StatusCode::SERVICE_UNAVAILABLE, "delete");
+    assert_error(&value, &text, 503, "DEPENDENCY_UNAVAILABLE");
+    h.pool.close().await;
 }
 
 #[tokio::test]

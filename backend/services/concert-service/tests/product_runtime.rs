@@ -107,8 +107,19 @@ fn only_gateway_may_dispatch_with_a_signed_field_one_actor() {
         platform::grpc_method_policy::proto_rpc_names(include_str!(
             "../../../proto/concert/v1/product.proto"
         )),
-        ["Dispatch", "CompleteResponse"]
+        ["Dispatch", "GetArchive", "CompleteResponse"]
     );
+    // The archive read is a separate gRPC service. Presence in the proto is not
+    // a gate: it must be Gateway-only under its own method policy and must not
+    // be reachable through the ProductService dispatch policy.
+    let archive = "/concert.product.v1.ProductArchiveService/GetArchive";
+    for caller in Workload::ALL {
+        assert_eq!(
+            concert_service::config::closure_runtime::ARCHIVE_POLICY.allows(archive, caller),
+            caller == Workload::Gateway
+        );
+    }
+    assert!(!POLICY.allows(archive, Workload::Gateway));
 }
 
 #[test]

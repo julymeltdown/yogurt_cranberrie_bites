@@ -306,6 +306,17 @@ async fn pending_work_replay_conflict_fences_owner_ack_outbox_and_rollback() -> 
     assert_eq!(replay.state, ReceiptState::Succeeded);
     assert_eq!(replay.result_status, Some(200));
     assert_eq!(replay.reference.unwrap().resource, command.target());
+    let stored = queue
+        .load(command.scope()?)
+        .await?
+        .ok_or_else(|| anyhow::anyhow!("acknowledged work must remain reloadable"))?;
+    assert_eq!(stored.target, command.target());
+    assert!(stored.command == *command.command());
+    assert_eq!(stored.receipt.state, ReceiptState::Succeeded);
+    assert_eq!(stored.receipt.result_status, Some(200));
+    assert_eq!(stored.receipt.reference.unwrap().resource, command.target());
+    assert_eq!(stored.parent, command.parent());
+    assert_eq!(stored.parent_revision, command.parent_revision());
     let outbox: i64 = sqlx::query_scalar("select count(*) from concert_outbox")
         .fetch_one(&pool)
         .await?;

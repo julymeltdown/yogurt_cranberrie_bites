@@ -127,15 +127,15 @@ pub(super) fn router() -> Router<Arc<AppState>> {
         )
         .route(
             "/api/concert/events/:event_id/venue/landmarks/:landmark_id/notes",
-            post(dispatch),
+            get(dispatch).post(dispatch),
         )
         .route(
             "/api/concert/events/:event_id/venue/landmarks/:landmark_id/notes/:note_id/replies",
-            post(dispatch),
+            get(dispatch).post(dispatch),
         )
         .route(
             "/api/concert/events/:event_id/venue/landmarks/:landmark_id/notes/:note_id",
-            delete(dispatch),
+            get(dispatch).delete(dispatch),
         )
 }
 
@@ -180,6 +180,9 @@ pub(super) enum FeatureRoute {
     SetVenueLocationSharing,
     PublishVenueLocationFix,
     VenueLocationCommand(Uuid),
+    ListVenuePlaceNotes,
+    GetVenuePlaceNote(Uuid),
+    ListVenuePlaceReplies(Uuid),
     CreateVenuePlaceNote,
     CreateVenuePlaceReply,
     WithdrawVenuePlaceNote,
@@ -269,6 +272,9 @@ impl FeatureRoute {
             Self::SetVenueLocationSharing => "setVenueLocationSharing",
             Self::PublishVenueLocationFix => "publishVenueLocationFix",
             Self::VenueLocationCommand(_) => "getVenueLocationCommand",
+            Self::ListVenuePlaceNotes => "listVenuePlaceNotes",
+            Self::GetVenuePlaceNote(_) => "getVenuePlaceNote",
+            Self::ListVenuePlaceReplies(_) => "listVenuePlaceReplies",
             Self::CreateVenuePlaceNote => "createVenuePlaceNote",
             Self::CreateVenuePlaceReply => "createVenuePlaceReply",
             Self::WithdrawVenuePlaceNote => "withdrawVenuePlaceNote",
@@ -362,6 +368,19 @@ pub(super) fn route(method: &Method, path: &str) -> Option<FeatureRoute> {
         }
         ("POST", ["venue", "landmarks", landmark, "notes"]) if landmark_id(landmark) => {
             Some(CreateVenuePlaceNote)
+        }
+        ("GET", ["venue", "landmarks", landmark, "notes"]) if landmark_id(landmark) => {
+            Some(ListVenuePlaceNotes)
+        }
+        ("GET", ["venue", "landmarks", landmark, "notes", note])
+            if landmark_id(landmark) && uuid(note).is_some() =>
+        {
+            Some(GetVenuePlaceNote(Uuid::parse_str(note).ok()?))
+        }
+        ("GET", ["venue", "landmarks", landmark, "notes", note, "replies"])
+            if landmark_id(landmark) && uuid(note).is_some() =>
+        {
+            Some(ListVenuePlaceReplies(Uuid::parse_str(note).ok()?))
         }
         ("POST", ["venue", "landmarks", landmark, "notes", note, "replies"])
             if landmark_id(landmark) && uuid(note).is_some() =>
@@ -492,6 +511,21 @@ pub(super) fn valid_target(route: FeatureRoute, target: &str) -> bool {
     if target.len() > 4096 || target.contains('#') || target.chars().any(char::is_control) {
         return false;
     }
+    if matches!(
+        route,
+        FeatureRoute::VenueLocationSnapshot
+            | FeatureRoute::SetVenueLocationSharing
+            | FeatureRoute::PublishVenueLocationFix
+            | FeatureRoute::VenueLocationCommand(_)
+            | FeatureRoute::ListVenuePlaceNotes
+            | FeatureRoute::GetVenuePlaceNote(_)
+            | FeatureRoute::ListVenuePlaceReplies(_)
+            | FeatureRoute::CreateVenuePlaceNote
+            | FeatureRoute::CreateVenuePlaceReply
+            | FeatureRoute::WithdrawVenuePlaceNote
+    ) {
+        return venue_target(route, target);
+    }
     if let Some(route) = meeting_read(route) {
         return meeting_target(route, target);
     }
@@ -553,6 +587,74 @@ pub(super) fn valid_target(route: FeatureRoute, target: &str) -> bool {
         _ => false,
     })
 }
+fn venue_target(route: FeatureRoute, target: &str) -> bool {
+    let query = target.split_once('?').map(|(_, query)| query);
+    let mut fields = BTreeMap::new();
+    if let Some(query) = query {
+        if query.is_empty() || query.contains('%') || query.contains('+') {
+            return false;
+        }
+        for pair in query.split('&') {
+            let Some((name, value)) = pair.split_once('=') else {
+                return false;
+            };
+            if name.is_empty()
+                || value.is_empty()
+                || fields.insert(name.to_owned(), value.to_owned()).is_some()
+            {
+                return false;
+            }
+        }
+    }
+    let note_cursor = |value: &str| {
+        let Some((micros, id)) = value.split_once('.') else {
+            return false;
+        };
+        !micros.is_empty()
+            && micros.len() <= 19
+            && !micros.starts_with('0')
+            && micros.bytes().all(|byte| byte.is_ascii_digit())
+            && value.len() <= 56
+            && uuid(id).is_some()
+            && id == id.to_ascii_lowercase()
+    };
+    match route {
+        FeatureRoute::VenueLocationSnapshot
+        | FeatureRoute::SetVenueLocationSharing
+        | FeatureRoute::PublishVenueLocationFix
+        | FeatureRoute::CreateVenuePlaceNote
+        | FeatureRoute::CreateVenuePlaceReply => fields.is_empty(),
+        FeatureRoute::VenueLocationCommand(_) => {
+            fields.remove("operation").is_some_and(|value| {
+                matches!(
+                    value.as_str(),
+                    "setVenueLocationSharing"
+                        | "publishVenueLocationFix"
+                        | "requestVenueLocation"
+                        | "decideVenueLocationRequest"
+                        | "setVenueLocationCheckIn"
+                )
+            }) && fields.is_empty()
+        }
+        FeatureRoute::WithdrawVenuePlaceNote => fields
+            .remove("expected_revision")
+            .is_some_and(|value| meeting_decimal(&value, 1))
+            && fields.is_empty(),
+        FeatureRoute::ListVenuePlaceNotes
+        | FeatureRoute::GetVenuePlaceNote(_)
+        | FeatureRoute::ListVenuePlaceReplies(_) => {
+            fields
+                .remove("limit")
+                .is_none_or(|value| meeting_decimal(&value, 1) && value.parse::<i64>().is_ok_and(|n| n <= 50))
+                && fields
+                    .remove("before")
+                    .is_none_or(|value| note_cursor(&value))
+                && fields.is_empty()
+        }
+        _ => false,
+    }
+}
+
 #[derive(Deserialize)]
 #[serde(deny_unknown_fields)]
 struct AgeStart {
@@ -731,6 +833,24 @@ mod tests {
                 false,
             ),
             (
+                Method::GET,
+                format!("{base}/landmarks/lm-main/notes"),
+                ListVenuePlaceNotes,
+                false,
+            ),
+            (
+                Method::GET,
+                format!("{note}"),
+                GetVenuePlaceNote(id),
+                false,
+            ),
+            (
+                Method::GET,
+                format!("{note}/replies"),
+                ListVenuePlaceReplies(id),
+                false,
+            ),
+            (
                 Method::POST,
                 format!("{base}/landmarks/lm-main/notes"),
                 CreateVenuePlaceNote,
@@ -759,6 +879,27 @@ mod tests {
         .is_none());
         assert!(route(&Method::POST, &format!("{base}/landmarks/bad%2Fid/notes")).is_none());
         assert!(route(&Method::GET, &format!("{base}/location/requests")).is_none());
+        let cursor = format!("{}.{}", chrono::Utc::now().timestamp_micros(), id);
+        assert!(valid_target(
+            ListVenuePlaceNotes,
+            &format!("{base}/landmarks/lm-main/notes?limit=20&before={cursor}")
+        ));
+        assert!(!valid_target(
+            ListVenuePlaceNotes,
+            &format!("{base}/landmarks/lm-main/notes?limit=51")
+        ));
+        assert!(valid_target(
+            WithdrawVenuePlaceNote,
+            &format!("{note}?expected_revision=2")
+        ));
+        assert!(!valid_target(
+            WithdrawVenuePlaceNote,
+            &format!("{note}?expected_revision=0")
+        ));
+        assert!(valid_target(
+            VenueLocationCommand(id),
+            &format!("{base}/location/commands/{id}?operation=publishVenueLocationFix")
+        ));
     }
 }
 

@@ -570,7 +570,7 @@ async fn missing_bilateral_friend_read_fails_closed() {
     let unavailable = PgVenueLocation::new(
         pool,
         FixturePolicy { event: f.event },
-        PgVenueLocationAuthority,
+        PgVenueLocationAuthority::default(),
     );
     assert_eq!(
         unavailable.snapshot(f.key(f.b)).await,

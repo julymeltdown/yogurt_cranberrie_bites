@@ -142,3 +142,44 @@ service PostConcertFeedReadService {
   rpc GetComment(QualifiedGetCommentRequest) returns (GetCommentResponse);
   rpc ListComments(QualifiedListCommentsRequest) returns (ListCommentsResponse);
 }
+
+// A dedicated Concert-to-Post mutation envelope. The whole-envelope delegation
+// signs the read authority, the exact original HTTP intent and the typed command.
+// Post still checks current owner views and registers its effects transaction;
+// this message is a transport binding, never a mutation capability. The original
+// body is needed because the typed command must be proven to mean the admitted
+// HTTP request rather than a second caller-selected command.
+message CommandAuthority {
+  ReadAuthority owners = 1;
+  bytes original_body = 2;
+  string content_type = 3;
+  string idempotency_key = 4;
+  string original_http_method = 5;
+  string original_http_target = 6;
+}
+message QualifiedExecuteCommandRequest {
+  ExecuteCommandRequest query = 1;
+  CommandAuthority authority = 2;
+}
+message QualifiedGetReceiptRequest {
+  GetReceiptRequest query = 1;
+  CommandAuthority authority = 2;
+}
+message QualifiedPreviewCommandRequest {
+  ExecuteCommandRequest query = 1;
+  CommandAuthority authority = 2;
+}
+message PreviewCommandResponse {
+  PostRecord post = 1;
+  CommentRecord comment = 2;
+}
+
+// Separate from the legacy workload-only service, whose methods stay unavailable.
+// ExecuteCommand returns the committed receipt or the stored replay result;
+// GetReceipt never executes a missing command. PreviewCommand reads the exact
+// authorized target and parent before/after a command and never mutates.
+service PostConcertFeedCommandService {
+  rpc ExecuteCommand(QualifiedExecuteCommandRequest) returns (Receipt);
+  rpc GetReceipt(QualifiedGetReceiptRequest) returns (GetReceiptResponse);
+  rpc PreviewCommand(QualifiedPreviewCommandRequest) returns (PreviewCommandResponse);
+}

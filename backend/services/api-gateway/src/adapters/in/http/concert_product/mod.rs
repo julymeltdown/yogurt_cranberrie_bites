@@ -835,7 +835,7 @@ async fn dispatch(
         return error(StatusCode::UNAUTHORIZED, "AUTHENTICATION_REQUIRED");
     }
     let status = match result.status {
-        200 | 202 | 400 | 401 | 403 | 404 | 409 | 413 | 415 | 429 | 500 | 503 | 504 => {
+        200 | 201 | 202 | 400 | 401 | 403 | 404 | 409 | 413 | 415 | 429 | 500 | 503 | 504 => {
             StatusCode::from_u16(result.status as u16).expect("closed status")
         }
         _ => return error(StatusCode::SERVICE_UNAVAILABLE, "DEPENDENCY_UNAVAILABLE"),
