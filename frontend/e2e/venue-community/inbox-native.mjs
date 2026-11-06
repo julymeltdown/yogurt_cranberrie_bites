@@ -40,6 +40,9 @@ try {
     const port = address.port
     await open(page, port)
     assert.equal((await page.evaluate(() => window.__VENUE_INBOX_FIXTURE__.state())).writes, 0)
+    await expect(page.locator('[data-invitation-id="00000000-0000-4000-8000-000000000007"]')).toHaveAttribute('data-display-status', 'accepted')
+    await expect(page.locator('[data-invitation-id="00000000-0000-4000-8000-000000000012"]')).toHaveAttribute('data-display-status', 'declined')
+    await expect(page.locator('[data-invitation-id="00000000-0000-4000-8000-000000000008"]')).toHaveAttribute('data-display-status', 'expired')
     assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth))
     const list = await capture(page, `list-${width}`, page.locator('.venue-invitation-inbox'))
     await page.locator('[data-invitation-id="00000000-0000-4000-8000-000000000005"]').getByRole('button', { name: 'Accept', exact: true }).click()

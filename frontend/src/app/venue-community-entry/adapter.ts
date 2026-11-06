@@ -37,7 +37,7 @@ const viewInvitation = (dto: MeetingInvitation, nowMs: number): InvitationView =
   if (!statuses.includes(status) || !Number.isFinite(expiresAtMs)) throw new MeetingClientError('INVALID_RESPONSE')
   const allowedActions = dto.allowedInvitationActions.map(action => action.toLowerCase() as InvitationDecision)
   return { id: dto.id, version: String(dto.revision), status, expiresAtMs,
-    allowedActions: expiresAtMs <= nowMs ? [] : allowedActions }
+    allowedActions: status === 'pending' && expiresAtMs <= nowMs ? [] : allowedActions }
 }
 const decisions: Readonly<Record<'accept' | 'decline' | 'cancel', MeetingDecision>> = { accept: 'ACCEPT', decline: 'DECLINE', cancel: 'CANCEL' }
 const MAX_WINDOW = 200
@@ -130,7 +130,7 @@ export function createNormalizedMeetingAdapter(options: MeetingAdapterOptions) {
       : dto.canInvite && dto.invitationExpiresAt !== null && Date.parse(dto.invitationExpiresAt) > now ? ['create' as const] : []
     return { contextId: dto.contextId, contextVersion: version(dto), selection: intent, ...presentation,
       validUntilMs: Math.min(Date.parse(dto.validUntil), Date.parse(dto.contentExpiresAt)), canRead: dto.canRead, canSend: dto.canSend,
-      invitationActions: invitation && Date.parse(invitation.expiresAt) <= now ? [] : actions,
+      invitationActions: invitation && invitation.state === 'PENDING' && Date.parse(invitation.expiresAt) <= now ? [] : actions,
       invitation: invitation ? viewInvitation(invitation, now) : null,
       messages: messages.map(message => ({ id: message.id, authorId: message.senderId, body: message.body, timeLabel: format.format(Date.parse(message.createdAt)) })),
       sharedPlaceMessageId: invitation && selected.landmark ? messages.find(message => message.invitationId === invitation.id)?.id ?? null : null,

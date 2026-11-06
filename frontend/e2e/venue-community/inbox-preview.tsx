@@ -12,12 +12,13 @@ const DAY_MS = 24 * 60 * 60 * 1000
 fixture.setInbox({ INCOMING: [
   { invitation: invitationView(fixtureIds.invitation, 'pending', now + DAY_MS, ['accept', 'decline']), target, presentation },
   { invitation: invitationView(fixtureIds.invitation2, 'pending', now + DAY_MS, ['accept', 'decline']), target, presentation },
-  { invitation: invitationView(fixtureIds.invitation3, 'accepted', now + DAY_MS, []), target, presentation },
+  { invitation: invitationView(fixtureIds.invitation3, 'accepted', now - 1, []), target, presentation },
+  { invitation: invitationView(fixtureIds.invitation8, 'declined', now - 1, []), target, presentation },
   { invitation: invitationView(fixtureIds.invitation4, 'expired', now - 1, []), target, presentation },
 ], OUTGOING: [
   { invitation: invitationView(fixtureIds.invitation5, 'pending', now + DAY_MS, ['cancel']), target, presentation },
   { invitation: invitationView(fixtureIds.invitation6, 'accepted', now + DAY_MS, ['cancel']), target, presentation },
-  { invitation: invitationView(fixtureIds.invitation7, 'cancelled', now + DAY_MS, []), target, presentation },
+  { invitation: invitationView(fixtureIds.invitation7, 'cancelled', now - 1, []), target, presentation },
 ] })
 function App() {
   const state = useSyncExternalStore(fixture.owner.subscribe, fixture.owner.read, fixture.owner.read)

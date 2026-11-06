@@ -292,6 +292,13 @@ describe('invitation inbox', () => {
     expect(f.owner.read().notice).toBe('denied'); expect(f.owner.read().inbox.notice).toBe('denied')
     expect(f.owner.read().inbox.items.find(item => item.invitation.id === fixtureIds.invitation)?.invitation.status).toBe('pending')
   })
+  it('does not apply expiry to a terminal producer action', async () => {
+    const f = inboxFixture(), past = f.time() - 1, target = f.inviteIntent, presentation = f.presentation
+    f.setInbox({ OUTGOING: [{ invitation: invitationView(fixtureIds.invitation6, 'accepted', past, ['cancel']), target, presentation }] })
+    await f.owner.openInbox('OUTGOING')
+    expect(await f.owner.decideInbox(fixtureIds.invitation6, 'cancel')).toBe(true)
+    expect(f.writes[0]?.command.kind).toBe('cancel')
+  })
   it('surfaces a denied host revoke without changing the accepted producer status', async () => {
     const f = inboxFixture(); await f.owner.openInbox('OUTGOING')
     f.setWriteResult({ state: 'rejected', reason: 'denied' })

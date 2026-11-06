@@ -61,6 +61,21 @@ describe('invitation list screen', () => {
     expect(rendered.container.querySelectorAll('[data-display-status="pending"]')).toHaveLength(1)
     expect(rendered.container.querySelectorAll('[data-display-status="accepted"]')).toHaveLength(1)
   })
+  it('never relabels a terminal producer state as expired', async () => {
+    const f = inboxFixture(), past = f.time() - 1, target = f.inviteIntent, presentation = f.presentation
+    f.setInbox({ INCOMING: [
+      { invitation: invitationView(fixtureIds.invitation, 'accepted', past, ['cancel']), target, presentation },
+      { invitation: invitationView(fixtureIds.invitation2, 'declined', past, []), target, presentation },
+      { invitation: invitationView(fixtureIds.invitation3, 'cancelled', past, []), target, presentation },
+      { invitation: invitationView(fixtureIds.invitation4, 'pending', past, ['accept']), target, presentation },
+    ] })
+    const rendered = await openList(f)
+    expect(rendered.container.querySelector(`[data-invitation-id="${fixtureIds.invitation}"]`)?.getAttribute('data-display-status')).toBe('accepted')
+    expect(rendered.container.querySelector(`[data-invitation-id="${fixtureIds.invitation2}"]`)?.getAttribute('data-display-status')).toBe('declined')
+    expect(rendered.container.querySelector(`[data-invitation-id="${fixtureIds.invitation3}"]`)?.getAttribute('data-display-status')).toBe('cancelled')
+    expect(rendered.container.querySelector(`[data-invitation-id="${fixtureIds.invitation4}"]`)?.getAttribute('data-display-status')).toBe('expired')
+    expect(rendered.container.querySelector(`[data-invitation-id="${fixtureIds.invitation}"]`)?.textContent).toContain('Expiry no longer applies.')
+  })
   it('accepts and declines only through the explicit row actions', async () => {
     const f = inboxFixture(); await openList(f)
     fireEvent.click(screen.getAllByRole('button', { name: 'Accept' })[0]!)

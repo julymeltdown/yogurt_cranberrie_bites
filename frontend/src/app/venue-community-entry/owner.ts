@@ -73,7 +73,7 @@ export function createMeetingLeafOwner({ auth, release, newCommandKey }: Meeting
     if (!state.context || !usable()) return
     // Scheduling is only a wakeup. Authority comes from the borrowed qualified clock.
     const invitation = state.context.invitation
-    if (invitation && now()! >= invitation.expiresAtMs && state.context.invitationActions.length) {
+    if (invitation?.status === 'pending' && now()! >= invitation.expiresAtMs && state.context.invitationActions.length) {
       // Withdraw expired action capabilities; keep independent conversation permission.
       publish({ context: Object.freeze({ ...state.context, invitationActions: [] }) })
       if (!usable() || !state.context) return
@@ -188,7 +188,8 @@ export function createMeetingLeafOwner({ auth, release, newCommandKey }: Meeting
     if (!usable() || locked() || !request || now() === null || !isDecision(action)) return false
     const item = state.inbox.items.find(entry => entry.invitation.id === id)
     if (!item || item.direction !== state.inbox.direction || !item.target || !item.presentation
-      || !item.invitation.allowedActions.includes(action) || item.invitation.expiresAtMs <= now()!) {
+      || !item.invitation.allowedActions.includes(action)
+      || (item.invitation.status === 'pending' && item.invitation.expiresAtMs <= now()!)) {
       if (item && state.inbox.phase === 'ready') publish({ inbox: Object.freeze({ ...state.inbox, notice: 'conflict' }) })
       return false
     }
@@ -201,7 +202,8 @@ export function createMeetingLeafOwner({ auth, release, newCommandKey }: Meeting
       }
     }
     const context = state.context
-    if (!context?.invitation || context.invitation.id !== id || context.invitation.expiresAtMs <= now()!
+    if (!context?.invitation || context.invitation.id !== id
+      || (context.invitation.status === 'pending' && context.invitation.expiresAtMs <= now()!)
       || !context.canRead || !context.invitationActions.includes(action)) {
       if (state.inbox.phase === 'ready') publish({ inbox: Object.freeze({ ...state.inbox, notice: 'conflict' }) })
       return false
@@ -309,7 +311,7 @@ export function createMeetingLeafOwner({ auth, release, newCommandKey }: Meeting
       try { accepts = context.canSend && context.messagePolicy.accepts(state.draft) } catch { /* Fail closed. */ }
       if (!accepts) { publish({ notice: 'invalid-message' }); return false }
     } else if (!context.invitationActions.includes(kind) || (kind === 'create' && !association(context.selection))
-      || (context.invitation && now()! >= context.invitation.expiresAtMs)) return false
+      || (context.invitation?.status === 'pending' && now()! >= context.invitation.expiresAtMs)) return false
     let key: string
     try { key = newCommandKey() } catch { return false }
     if (!canonicalId(key)) return false

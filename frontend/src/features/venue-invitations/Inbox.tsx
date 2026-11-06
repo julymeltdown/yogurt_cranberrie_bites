@@ -9,6 +9,8 @@ const statusLabel: Readonly<Record<InvitationStatus, string>> = Object.freeze({ 
   accepted: 'Accepted', declined: 'Declined', cancelled: 'Cancelled', expired: 'Expired' })
 
 function expiryLabel(invitation: InvitationView, nowMs: number | null): string {
+  if (invitation.status !== 'pending') return invitation.status === 'expired'
+    ? `Expired after ${W04_INVITATION_POLICY.expiryHours} hours` : 'Expiry no longer applies.'
   if (nowMs === null) return 'Expiry unavailable'
   const remaining = invitation.expiresAtMs - nowMs
   if (remaining <= 0) return `Expired after ${W04_INVITATION_POLICY.expiryHours} hours`

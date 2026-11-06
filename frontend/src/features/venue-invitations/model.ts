@@ -50,8 +50,8 @@ export const emptyInvitationInbox: InvitationInboxView = Object.freeze({ directi
 /** The approved W04 party-invitation policy this client surfaces. It is copy, not authority. */
 export const W04_INVITATION_POLICY = Object.freeze({ inviteeConsent: true, inviterGrantsPerParty: 1,
   capacity: 8, expiryHours: 24, hostRevoke: true })
-export const invitationExpired = (invitation: InvitationView, nowMs: number | null) => nowMs !== null
-  && Number.isFinite(nowMs) && Number.isFinite(invitation.expiresAtMs) && invitation.expiresAtMs <= nowMs
+export const invitationExpired = (invitation: InvitationView, nowMs: number | null) => invitation.status === 'pending'
+  && nowMs !== null && Number.isFinite(nowMs) && Number.isFinite(invitation.expiresAtMs) && invitation.expiresAtMs <= nowMs
 export interface MeetingMessage {
   readonly id: string
   readonly authorId: string

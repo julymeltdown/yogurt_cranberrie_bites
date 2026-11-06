@@ -1,13 +1,14 @@
 import { describe, expect, it } from 'vitest'
 import ia from '../../../../generated/IA_EN.json'
+import venueHandoff from '../../../../docs/mcr/venue/community/source-handoff.json'
 import { adminPaths, panelRoutes, parentPath, publicPaths, resolvePanel, safeReturnTarget, tabs } from '../routes'
 import { giftPath, ids } from './fixtures/ports'
 
 const iaRoutes = ia.screens.map(screen => screen.route.replace(/\?.*$/, ''))
 const participantPrefixes = ['/world', '/feed', '/meet', '/gifts', '/wall', '/me', '/notices', '/people', '/notifications', '/report']
 const optionalIAPaths = new Set(['/meet/parties/:partyId/chat', '/wall/history'])
-// Authorized venue amendment beyond the planning IA baseline (commit 41d90738e).
-const authorizedPanelAdditions = ['/meet/invitations', '/meet/invitations/:invitationId', '/meet/invitations/:invitationId/conversation']
+const routeGrant = (venueHandoff as { routeGrants?: { authority?: string; paths?: readonly string[] } }).routeGrants
+const authorizedPanelAdditions = routeGrant?.paths ?? []
 const requiredPanelPaths = iaRoutes.filter(route => participantPrefixes.some(prefix => route === prefix || route.startsWith(prefix + '/'))
   && !optionalIAPaths.has(route))
 
@@ -18,6 +19,11 @@ describe('frozen plan route composition', () => {
     expect(resolvePanel('/gifts/new')?.route.title).toBe('Create giveaway')
     expect(resolvePanel(`/gifts/pickups/${ids.gift}`)?.route.title).toBe('My pickup')
     expect(resolvePanel('/feed/new')?.route.title).toBe('New post')
+  })
+  it('consumes the recorded venue extension-IA route grant instead of a private allowlist', () => {
+    expect(routeGrant?.authority).toBe('docs/mcr/venue/community/outcome.md#route-grant-provenance')
+    expect(authorizedPanelAdditions).toEqual(['/meet/invitations',
+      '/meet/invitations/:invitationId', '/meet/invitations/:invitationId/conversation'])
   })
   it('registers every required shell/public/admin IA path without implementing optional enhancements', () => {
     const paths = panelRoutes.map(route => route.path)

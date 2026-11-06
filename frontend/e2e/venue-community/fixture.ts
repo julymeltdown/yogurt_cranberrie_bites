@@ -15,7 +15,7 @@ export const fixtureIds = {
   invitation: '00000000-0000-4000-8000-000000000005', invitation2: '00000000-0000-4000-8000-000000000006',
   invitation3: '00000000-0000-4000-8000-000000000007', invitation4: '00000000-0000-4000-8000-000000000008',
   invitation5: '00000000-0000-4000-8000-000000000009', invitation6: '00000000-0000-4000-8000-000000000010',
-  invitation7: '00000000-0000-4000-8000-000000000011',
+  invitation7: '00000000-0000-4000-8000-000000000011', invitation8: '00000000-0000-4000-8000-000000000012',
 } as const
 export const invitationView = (id: string, status: InvitationStatus, expiresAtMs: number,
   allowedActions: readonly InvitationDecision[] = [], version = '1'): InvitationView => ({ id, version, status, expiresAtMs, allowedActions })
