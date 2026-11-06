@@ -79,7 +79,7 @@ Search scope: added lines of `9185c9922..33141de3f` plus whole-tree counts for `
 
 | Pattern | Added in delivery | Per-pattern verdict |
 | --- | --- | --- |
-| `#[ignore]` | 21 attributes / 19 tests in 9 files | Justified with a named reason on every attribute; all attach to test functions **added in the same hunk** (no previously-enabled test was disabled). Execution evidence exists for each group (see below). |
+| `#[ignore]` | 21 attributes on 21 newly added tests in 10 files | Justified with a named reason on every attribute; all attach to test functions **added in the same hunk** (no previously-enabled test was disabled). Execution evidence exists for each group (see below). |
 | `.skip(`, `it.skip`, `xit(`, `.todo(`, `.only(`, `fdescribe(`, `fit(` | 0 | PASS |
 | `@ts-ignore` / `@ts-expect-error` | 0 added (9 pre-existing) | PASS. Pre-existing sites are test-only JS-oracle imports with explanatory comments. |
 | `eslint-disable` / `oxlint-disable` | 0 added (8 pre-existing) | PASS. Pre-existing `react-hooks/exhaustive-deps` sites; oxlint is the actual linter. |
@@ -98,7 +98,7 @@ Search scope: added lines of `9185c9922..33141de3f` plus whole-tree counts for `
 | `tests/authorization/qa04_matrix.rs` (1) | seven-service stack + owned PG16 | `backend/scripts/mcr/in03_social_gate.py` (`qa04_matrix.py` spec) |
 | `tests/private_data_production_native.rs` (1) | marker-owned PostgreSQL fixture | task-14 evidence (`.omo/evidence/mcr-finish-project/task-14-be42.md`) |
 | `tests/social_live_support/read_order.rs` (2) | owned native database connection | task-30 evidence (`.omo/evidence/mcr-finish-project/task-30-in03.md`, manual `--ignored --exact` command) |
-| `tests/world_runtime_support/postgres.rs` (5) | `world_runtime_support/bridge_native.py` fixture | task-10 evidence (`task-10-admission.md`, all five listed `... ok`) |
+| `tests/world_runtime_support/postgres.rs` (5 in file, 1 added) | `world_runtime_support/bridge_native.py` fixture | task-10 evidence (`task-10-admission.md`, all five listed `... ok`) |
 | `tests/be03_oauth_boundary.rs` (3) | qualified candidate / provider / controller | `backend/scripts/mcr/be03_original_completion.py` (`--ignored`) |
 
 Verdict: **no unjustified skip**. The weekly cost is that none of these runs in CI (they need runner-owned databases/stacks); that is a coverage-wiring limitation recorded here, not a hidden skip.
@@ -139,7 +139,7 @@ Verdict: **no unjustified skip**. The weekly cost is that none of these runs in 
 | F2-06 | Duplicate identical assertion in `crates/concert-application/tests/commands.rs:31-32`. | Introduced | Cosmetic; remove one line. |
 | F2-07 | 4 `#[cfg(test)] probe_visible_in` helpers ignore the `set_config` result; a failed authority grant silently makes the probe's observation meaningless. 3 production `OnceLock::set` / 1 teardown `pool.close` ignores are intentional. | Introduced | Minor; make the test helper fail loudly. |
 | F2-08 | New `#[allow(clippy::too_many_arguments)]` on `venue_meeting::record` suppresses a warning inconsistent with the rest of the crate. | Introduced | Minor; restructure or document the seam exemption. |
-| F2-09 | 21 `#[ignore]` attributes are added; all attach to newly added tests with named fixtures and all have recorded execution evidence. No `.skip`/`xit`/`.todo`/`.only`/`@ts-ignore`/`eslint-disable` additions. | Introduced, justified | PASS |
+| F2-09 | 21 `#[ignore]` attributes on 21 newly added tests across 10 files; all attach to newly added tests with named fixtures and all have recorded execution evidence. No `.skip`/`xit`/`.todo`/`.only`/`@ts-ignore`/`eslint-disable` additions. | Introduced, justified | PASS |
 | F2-10 | Contract/manifest/lockfile edits: proto additions only; no root manifest or lockfile change; the one cross-lane commit and the generated registry change are covered by recorded single-writer grants; guards and contract drift checks pass. | Delivery-wide | PASS (no scope creep) |
 
 ## 6. Commands run (exit codes)
