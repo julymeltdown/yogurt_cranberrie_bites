@@ -14,6 +14,13 @@ pub(super) fn report_request(
     expected.validate(request)
 }
 
+pub(super) fn operations_request(
+    request: &super::proto::ProductRequest,
+    expected: super::OperationsOperation,
+) -> Result<(), Status> {
+    expected.validate(request)
+}
+
 pub(super) fn age_request(
     request: &super::proto::ProductRequest,
     expected: super::AgeOperation,

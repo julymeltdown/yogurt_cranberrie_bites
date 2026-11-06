@@ -31,19 +31,28 @@ impl ScopedProductProducer for ReportProduct {
         frame: ProductRequest,
     ) -> Result<ProductRepresentation, Status> {
         context.check()?;
-        let Operation::Report(operation) = context.operation() else {
-            return Err(Status::unavailable(
-                "Report producer unavailable for operation",
-            ));
+        let operation = match context.operation() {
+            Operation::Report(operation) => {
+                operation.validate(&frame)?;
+                operation.id()
+            }
+            Operation::Operations(operation) => {
+                operation.validate(&frame)?;
+                operation.id()
+            }
+            _ => {
+                return Err(Status::unavailable(
+                    "Report producer unavailable for operation",
+                ));
+            }
         };
-        operation.validate(&frame)?;
         let expected = GuardBinding::from_parent(
             context.parent_authority(),
             context.actor(),
             context.event(),
             context.session(),
             context.request(),
-            operation.id(),
+            operation,
             &frame.http_method,
             &frame.http_target,
             Sha256::digest(&frame.http_body).into(),
