@@ -358,4 +358,28 @@ pub const OPERATIONS: &[RegisteredOperation] = &[
         path: "/api/concert/events/{eventId}/admin/closure",
         binary: false,
     },
+    RegisteredOperation {
+        id: "getVenueLocationSnapshot",
+        method: "GET",
+        path: "/api/concert/events/{eventId}/venue/location",
+        binary: false,
+    },
+    RegisteredOperation {
+        id: "setVenueLocationSharing",
+        method: "PUT",
+        path: "/api/concert/events/{eventId}/venue/location/sharing",
+        binary: false,
+    },
+    RegisteredOperation {
+        id: "publishVenueLocationFix",
+        method: "PUT",
+        path: "/api/concert/events/{eventId}/venue/location/fix",
+        binary: false,
+    },
+    RegisteredOperation {
+        id: "getVenueLocationCommand",
+        method: "GET",
+        path: "/api/concert/events/{eventId}/venue/location/commands/{key}",
+        binary: false,
+    },
 ];
