@@ -211,6 +211,30 @@ fn require_owner(c: Context, author: Uuid) -> Result<(), FeedError> {
     }
     Ok(())
 }
+fn target(actor: Uuid, event: Uuid, key: Uuid, command: &FeedCommand) -> Uuid {
+    match command {
+        FeedCommand::CreatePost { .. } | FeedCommand::CreateComment { .. } => {
+            let mut hash = Sha256::new();
+            hash.update(b"mcr/feed/target/v1");
+            for id in [actor, event, key] {
+                hash.update(id.as_bytes());
+            }
+            hash.update(command.operation().as_bytes());
+            let digest = hash.finalize();
+            let mut bytes = [0; 16];
+            bytes.copy_from_slice(&digest[..16]);
+            bytes[6] = (bytes[6] & 0x0f) | 0x80;
+            bytes[8] = (bytes[8] & 0x3f) | 0x80;
+            Uuid::from_bytes(bytes)
+        }
+        FeedCommand::EditPost { post, .. }
+        | FeedCommand::DeletePost { post, .. }
+        | FeedCommand::SetReaction { post, .. } => *post,
+        FeedCommand::EditComment { comment, .. } | FeedCommand::DeleteComment { comment, .. } => {
+            *comment
+        }
+    }
+}
 
 /// Validated intent only, NOT a grant. Any sink must recheck current phase, policy,
 /// content, media/linked visibility and CAS inside its qualified commit fence.
@@ -231,27 +255,7 @@ impl PreparedCommand {
         parent: Option<Uuid>,
         parent_revision: Option<i64>,
     ) -> Result<Self, FeedError> {
-        let target = match command {
-            FeedCommand::CreatePost { .. } | FeedCommand::CreateComment { .. } => {
-                let mut hash = Sha256::new();
-                hash.update(b"mcr/feed/target/v1");
-                for id in [context.actor, context.event, key] {
-                    hash.update(id.as_bytes());
-                }
-                hash.update(command.operation().as_bytes());
-                let digest = hash.finalize();
-                let mut bytes = [0; 16];
-                bytes.copy_from_slice(&digest[..16]);
-                bytes[6] = (bytes[6] & 0x0f) | 0x80;
-                bytes[8] = (bytes[8] & 0x3f) | 0x80;
-                Uuid::from_bytes(bytes)
-            }
-            FeedCommand::EditPost { post, .. }
-            | FeedCommand::DeletePost { post, .. }
-            | FeedCommand::SetReaction { post, .. } => post,
-            FeedCommand::EditComment { comment, .. }
-            | FeedCommand::DeleteComment { comment, .. } => comment,
-        };
+        let target = target(context.actor, context.event, key, &command);
         Ok(Self {
             context,
             key,
@@ -260,6 +264,33 @@ impl PreparedCommand {
             parent,
             parent_revision,
         })
+    }
+    /// Rehydrate the exact stored intent for an idempotent replay. The caller
+    /// still reauthorizes it; restoring is not a grant and cannot change the key.
+    pub fn restore(
+        context: Context,
+        key: Uuid,
+        command: FeedCommand,
+        parent: Option<Uuid>,
+        parent_revision: Option<i64>,
+    ) -> Result<Self, FeedError> {
+        context.check(chrono::Utc::now())?;
+        command.validate()?;
+        if key.is_nil() || parent.is_some() != parent_revision.is_some() {
+            return Err(FeedError::InvalidInput);
+        }
+        Self::new(context, key, command, parent, parent_revision)
+    }
+    pub fn target_for(
+        context: Context,
+        key: Uuid,
+        command: &FeedCommand,
+    ) -> Result<Uuid, FeedError> {
+        if key.is_nil() {
+            return Err(FeedError::InvalidInput);
+        }
+        command.validate()?;
+        Ok(target(context.actor, context.event, key, command))
     }
     pub fn parent(&self) -> Option<Uuid> {
         self.parent

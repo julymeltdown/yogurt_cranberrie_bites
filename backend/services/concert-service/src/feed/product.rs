@@ -31,9 +31,10 @@ use tonic::Status;
 
 /// Explicit operator inputs only. No environment lookup, default credential,
 /// generated cursor key, Debug or serialization of retained secrets.
+#[derive(Clone)]
 pub struct FeedProductConfig {
-    endpoint: String,
-    credential: String,
+    pub(super) endpoint: String,
+    pub(super) credential: String,
     cursor_key: [u8; 32],
 }
 impl FeedProductConfig {
@@ -83,6 +84,7 @@ pub struct FeedProductProducer<C> {
     signer: ConcertPostReadSigner,
     profiles: Arc<PublicProfileReader>,
     clock: Arc<C>,
+    commands: Option<Arc<super::command_product::FeedCommandProducer>>,
 }
 impl<C: Clock> FeedProductProducer<C> {
     pub fn new(
@@ -101,14 +103,27 @@ impl<C: Clock> FeedProductProducer<C> {
             signer,
             profiles,
             clock: Arc::new(clock),
+            commands: None,
         })
+    }
+    pub fn with_commands(
+        mut self,
+        commands: Arc<super::command_product::FeedCommandProducer>,
+    ) -> Self {
+        self.commands = Some(commands);
+        self
     }
 
     /// Root may use this closed set when composing Intro and Feed producers.
+    /// Qualified command envelopes share this owner; the producer refuses them
+    /// unless its command runtime was composed.
     pub fn handles(operation: Operation) -> bool {
         matches!(
             operation,
-            Operation::Feed | Operation::Post(_) | Operation::Comments(_)
+            Operation::Feed
+                | Operation::Post(_)
+                | Operation::Comments(_)
+                | Operation::FeedCommand(_)
         )
     }
 }
@@ -129,6 +144,13 @@ impl<C: Clock> ScopedProductProducer for FeedProductProducer<C> {
         request: proto::ProductRequest,
     ) -> Result<ProductRepresentation, Status> {
         verified.check()?;
+        if super::command_product::FeedCommandProducer::handles(verified) {
+            let commands = self
+                .commands
+                .as_ref()
+                .ok_or_else(|| Status::unavailable("Feed command unavailable"))?;
+            return commands.dispatch(verified, scope, request).await;
+        }
         if !Self::handles(verified.operation()) {
             return Err(Status::permission_denied(
                 "Unsupported Feed product operation",
@@ -190,7 +212,7 @@ impl<C: Clock> ScopedProductProducer for FeedProductProducer<C> {
     }
 }
 
-fn bound_context(
+pub(super) fn bound_context(
     verified: &VerifiedProduct,
     scope: &OwnerGuardScope,
     request: &proto::ProductRequest,

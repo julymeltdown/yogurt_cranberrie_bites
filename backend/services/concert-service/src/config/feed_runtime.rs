@@ -2,7 +2,10 @@
 use crate::config::{canonical_runtime::CanonicalOwnerComposition, product_runtime::ProductOwners};
 use crate::{
     adapters::out::SystemClock,
-    feed::product::{FeedProductConfig, FeedProductProducer},
+    feed::{
+        command_product::FeedCommandProducer,
+        product::{FeedProductConfig, FeedProductProducer},
+    },
     product_rpc::{
         proto, root_read::ConcertRootReadService, scoped::ScopedProductOwner, ProductOwner,
         VerifiedProduct,
@@ -13,6 +16,7 @@ use platform::{
         concert_read::{ConcertPostReadSigner, PostConcertRootReadVerifier},
         ActorDelegationVerifier,
     },
+    concert_feed_command::FeedCommandSigner,
     grpc_auth::{CallerRegistry, ServiceIdentityClientInterceptor, Workload},
     grpc_tls::TlsMaterial,
 };
@@ -23,6 +27,8 @@ pub struct FeedRuntimeSettings {
     config: FeedProductConfig,
     tls: TlsMaterial,
     signer: ConcertPostReadSigner,
+    command_signer: Option<FeedCommandSigner>,
+    commands: Option<Arc<concert_application::commands::FingerprintKeys>>,
     callback_verifier: ActorDelegationVerifier,
     callers: CallerRegistry,
 }
@@ -62,6 +68,55 @@ impl FeedReadKeys {
         }
     }
 }
+#[derive(serde::Deserialize)]
+#[serde(deny_unknown_fields)]
+struct ManagedKey {
+    id: String,
+    secret_hex: String,
+}
+fn hex32(value: &str) -> anyhow::Result<[u8; 32]> {
+    anyhow::ensure!(
+        value.len() == 64
+            && value
+                .bytes()
+                .all(|b| b.is_ascii_digit() || (b'a'..=b'f').contains(&b)),
+        "Feed command secrets require 32-byte lowercase hexadecimal values"
+    );
+    let mut key = [0; 32];
+    for (out, pair) in key.iter_mut().zip(value.as_bytes().chunks_exact(2)) {
+        let digit = |b| if b <= b'9' { b - b'0' } else { b - b'a' + 10 };
+        *out = digit(pair[0]) * 16 + digit(pair[1]);
+    }
+    anyhow::ensure!(key != [0; 32], "Feed command secrets must be nonzero");
+    Ok(key)
+}
+fn command_keys(
+    raw: &str,
+) -> anyhow::Result<Arc<concert_application::commands::FingerprintKeys>> {
+    anyhow::ensure!(
+        raw.len() <= 16 * 1024,
+        "Feed command key configuration is too large"
+    );
+    let parsed: Vec<ManagedKey> = serde_json::from_str(raw)
+        .map_err(|_| anyhow::anyhow!("Feed command keys require a closed JSON array"))?;
+    anyhow::ensure!(
+        (1..=32).contains(&parsed.len()),
+        "Feed command keys require one active and at most 31 retained versions"
+    );
+    let mut material = Vec::new();
+    for key in parsed {
+        let secret = hex32(&key.secret_hex)?;
+        material.push(
+            concert_application::commands::SigningKey::new(&key.id, &secret)
+                .map_err(|_| anyhow::anyhow!("Invalid Feed command key"))?,
+        );
+    }
+    let active = material.remove(0);
+    Ok(Arc::new(
+        concert_application::commands::FingerprintKeys::new(active, material)
+            .map_err(|_| anyhow::anyhow!("Invalid Feed command key set"))?,
+    ))
+}
 
 impl FeedRuntimeSettings {
     pub fn from_values(
@@ -71,6 +126,7 @@ impl FeedRuntimeSettings {
         tls: Option<&TlsMaterial>,
         gateway: Option<&ActorDelegationVerifier>,
         keys: Option<FeedReadKeys>,
+        command_signer: Option<FeedCommandSigner>,
     ) -> anyhow::Result<Option<Self>> {
         if !enabled {
             return Ok(None);
@@ -149,10 +205,24 @@ impl FeedRuntimeSettings {
             !keys.callback.trusts(&keys.signer.public_key()),
             "Feed callback keys must be independent of outbound keys"
         );
+        let (command_signer, commands) = match command_signer {
+            Some(signer) => {
+                anyhow::ensure!(
+                    signer.public_key() != keys.signer.public_key()
+                        && !keys.callback.trusts(&signer.public_key()),
+                    "Feed command signing keys must be independent of read and callback keys"
+                );
+                let raw = required(&mut read, "CONCERT_FEED_COMMAND_KEYS_JSON")?;
+                (Some(signer), Some(command_keys(&raw)?))
+            }
+            None => (None, None),
+        };
         Ok(Some(Self {
             config: FeedProductConfig::new(&endpoint, &concert, &cursor)?,
             tls,
             signer: keys.signer,
+            command_signer,
+            commands,
             callback_verifier: keys.callback,
             callers,
         }))
@@ -175,6 +245,15 @@ impl FeedRuntimeSettings {
                 anyhow::anyhow!("POST_CONCERT_ROOT_READ_VERIFYING_KEYS is required")
             })?,
         );
+        let command_signer = match std::env::var("CONCERT_FEED_COMMAND_MODE") {
+            Err(std::env::VarError::NotPresent) => None,
+            Err(_) => anyhow::bail!("CONCERT_FEED_COMMAND_MODE must contain valid Unicode"),
+            Ok(value) => match value.as_str() {
+                "off" => None,
+                "on" => Some(FeedCommandSigner::from_env(gateway_keys)?),
+                _ => anyhow::bail!("CONCERT_FEED_COMMAND_MODE must be off or on"),
+            },
+        };
         Self::from_values(
             |name| match std::env::var(name) {
                 Ok(value) => Ok(Some(value)),
@@ -186,14 +265,18 @@ impl FeedRuntimeSettings {
             tls,
             gateway,
             Some(keys),
+            command_signer,
         )
     }
     /// No second scope registry, ledger, delivery publisher or pool is created.
     pub fn compose(
         self,
+        pool: sqlx::PgPool,
         owners: &CanonicalOwnerComposition,
         base: ProductOwners,
     ) -> anyhow::Result<(ProductOwners, FeedCallback)> {
+        let config = self.config.clone();
+        let tls = self.tls.clone();
         let producer = FeedProductProducer::new(
             self.config,
             self.tls,
@@ -201,6 +284,19 @@ impl FeedRuntimeSettings {
             owners.public_profile.clone(),
             SystemClock,
         )?;
+        let producer = match (self.command_signer, self.commands) {
+            (Some(signer), Some(keys)) => producer.with_commands(Arc::new(
+                FeedCommandProducer::new(
+                    pool,
+                    config,
+                    tls,
+                    signer,
+                    owners.public_profile.clone(),
+                    keys,
+                )?,
+            )),
+            _ => producer,
+        };
         let delivery = owners.core.delivery();
         let feed =
             ScopedProductOwner::new(owners.fence.clone(), delivery.clone(), Arc::new(producer));
@@ -244,6 +340,36 @@ impl ProductOwner for FeedProductOwner {
             self.feed.dispatch(context, request).await
         } else {
             self.base.dispatch(context, request).await
+        }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn command_keys_require_closed_lowercase_nonzero_secrets() {
+        let valid = format!(
+            r#"[{{"id":"primary-v1","secret_hex":"{}"}}]"#,
+            "11".repeat(32)
+        );
+        assert!(command_keys(&valid).is_ok());
+        for raw in [
+            String::new(),
+            "not-json".into(),
+            "[]".into(),
+            format!(
+                r#"[{{"id":"primary-v1","secret_hex":"{}"}}]"#,
+                "AA".repeat(32)
+            ),
+            format!(
+                r#"[{{"id":"primary-v1","secret_hex":"{}"}}]"#,
+                "00".repeat(32)
+            ),
+            r#"[{"id":"primary-v1","secret_hex":"1111","extra":1}]"#.into(),
+        ] {
+            assert!(command_keys(&raw).is_err(), "accepted {raw}");
         }
     }
 }

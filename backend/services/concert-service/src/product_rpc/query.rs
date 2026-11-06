@@ -7,6 +7,26 @@ use concert_domain::feed::Filter;
 use tonic::Status;
 use uuid::Uuid;
 
+/// The signed DELETE body stays empty. Only its closed revision query is mapped
+/// to the application DTO; the original target/body remain the guard binding.
+pub(crate) fn feed_command(
+    request: &super::proto::ProductRequest,
+    route: platform::concert_feed_command::FeedCommandRoute,
+) -> Result<concert_domain::feed::FeedCommand, Status> {
+    route.validate_body(&request.content_type, &request.http_body)?;
+    let mapped;
+    let bytes = if let Some(revision) = route.revision() {
+        mapped = serde_json::to_vec(&serde_json::json!({"expected_revision": revision}))
+            .map_err(|_| invalid())?;
+        mapped.as_slice()
+    } else if route.bodyless() {
+        b"{}"
+    } else {
+        request.http_body.as_slice()
+    };
+    crate::feed::wire::command(route.operation(), route.target(), bytes).map_err(|_| invalid())
+}
+
 pub(super) fn report_request(
     request: &super::proto::ProductRequest,
     expected: super::ReportOperation,

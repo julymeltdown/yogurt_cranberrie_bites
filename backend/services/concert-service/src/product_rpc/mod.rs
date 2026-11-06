@@ -20,7 +20,7 @@ pub mod delivery;
 pub mod child_recovery;
 pub mod child_settlement;
 mod owner_media;
-mod query;
+pub(crate) mod query;
 mod feature_admission;
 mod age_admission;
 pub mod report_admission;
@@ -49,6 +49,7 @@ pub const POLICY: MethodPolicy = MethodPolicy {
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Operation {
     Feed,
+    FeedCommand(platform::concert_feed_command::FeedCommandRoute),
     Post(Uuid),
     Comments(Uuid),
     ListParties,
@@ -78,6 +79,7 @@ impl Operation {
     pub fn contract_id(self) -> &'static str {
         match self {
             Self::Feed => "listConcertFeed",
+            Self::FeedCommand(route) => route.operation(),
             Self::Post(_) => "getConcertPost",
             Self::Comments(_) => "listConcertComments",
             Self::ListParties => "listConcertParties",
@@ -123,6 +125,12 @@ pub fn operation(event: Uuid, method: &str, target: &str) -> Result<Operation, S
     let suffix = path
         .strip_prefix(&prefix)
         .ok_or_else(|| Status::permission_denied("Product event mismatch"))?;
+    if matches!(method, "POST" | "PATCH" | "PUT" | "DELETE")
+        && matches!(suffix.split('/').next(), Some("posts" | "comments"))
+    {
+        return platform::concert_feed_command::FeedCommandRoute::parse(event, method, target)
+            .map(Operation::FeedCommand);
+    }
     if let Ok(wall) = crate::mural_tools_b::protocol::WallOperation::parse(event, method, target) {
         if wall != crate::mural_tools_b::protocol::WallOperation::Status { return Ok(Operation::Wall(wall)); }
     }
@@ -358,6 +366,11 @@ fn authorize(request: &Request<proto::ProductRequest>) -> Result<VerifiedProduct
     if let Operation::Report(report) = operation {
         query::report_request(m, report)?;
     }
+    if let Operation::FeedCommand(route) = operation {
+        canonical_uuid(&m.idempotency_key)?;
+        route.validate_body(&m.content_type, &m.http_body)?;
+        query::feed_command(m, route)?;
+    }
     if let Operation::Meeting(_) = operation {
         venue_meeting_admission::request(m, operation)?;
     }
@@ -383,7 +396,7 @@ fn authorize(request: &Request<proto::ProductRequest>) -> Result<VerifiedProduct
     );
     if matches!(
         operation,
-        Operation::Social(_) | Operation::Intro(_) | Operation::Notification(_) | Operation::Age(_) | Operation::Report(_) | Operation::Operations(_) | Operation::Wall(_) | Operation::Meeting(_)
+        Operation::Social(_) | Operation::Intro(_) | Operation::Notification(_) | Operation::Age(_) | Operation::Report(_) | Operation::Operations(_) | Operation::Wall(_) | Operation::Meeting(_) | Operation::FeedCommand(_)
     ) {
         // Each exact feature decoder validates its own read payload and keyed
         // command shape, including Intro PUT/POST and Notification PATCH writes.

@@ -16,6 +16,7 @@ use platform::actor_delegation::concert_read::{
     ConcertPostReadSigner, ConcertPostReadVerifier, PostConcertRootReadSigner,
     PostConcertRootReadVerifier,
 };
+use platform::concert_feed_command::{FeedCommandSigner, FeedCommandVerifier};
 use serde_json::Value;
 use sqlx::PgPool;
 use std::sync::Arc;
@@ -204,6 +205,9 @@ impl Fixture {
             ActorDelegationVerifier::new(Workload::Post, &[capture::gateway()?.public_key()])?;
         let post_signer = PostConcertRootReadSigner::from_seed(&[77; 32], &gateway_concert)?;
         let read_signer = ConcertPostReadSigner::from_seed(&[76; 32], &gateway_post)?;
+        let command_signer = FeedCommandSigner::from_seed(&[78; 32], &gateway_post)?;
+        let command_verifier =
+            FeedCommandVerifier::new(&[command_signer.public_key()], &gateway_post)?;
         let callback = guard(
             &root_read::POLICY,
             root_read::ConcertRootReadService::new(registry.clone(), reader.clone()).server(),
@@ -229,7 +233,7 @@ impl Fixture {
             &post_tls,
             post_signer,
         )?;
-        let (post_read, post_settlement) =
+        let (post_read, post_settlement, post_command) =
             post_service::adapters::r#in::grpc::concert_feed::qualified::services(
                 runtime,
                 CallerRegistry::new()
@@ -237,6 +241,7 @@ impl Fixture {
                     .register(Workload::Auth, "auth-fixture")?
                     .register(Workload::Friend, "friend-fixture")?,
                 ConcertPostReadVerifier::new(&[read_signer.public_key()], &gateway_post)?,
+                Some(command_verifier),
             )?;
         let post_task = spawn(
             tonic::transport::Server::builder()
@@ -244,6 +249,7 @@ impl Fixture {
                 .layer(CallDeadlineLayer)
                 .add_service(post_read)
                 .add_service(post_settlement)
+                .add_optional_service(post_command)
                 .serve_with_incoming(incoming(post_listener)),
         );
         let fence = CanonicalOwnerFence::connect(

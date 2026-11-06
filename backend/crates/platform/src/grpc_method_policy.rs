@@ -318,6 +318,33 @@ impl MethodPolicy {
                 });
         anyhow::ensure!(!reserved_post_read || qualified_post_read,
             "reserved qualified Post read policy must match exact owner, methods, caller and actor fields");
+        let reserved_feed_commands =
+            self.service == "post.concert.v1.PostConcertFeedCommandService";
+        let feed_commands = reserved_feed_commands
+            && self.workload == Some(Workload::Post)
+            && self.methods
+                == [
+                    ("ExecuteCommand", &[Workload::Concert][..]),
+                    ("GetReceipt", &[Workload::Concert][..]),
+                    ("PreviewCommand", &[Workload::Concert][..]),
+                ]
+            && self.actor_fields
+                == [
+                    (
+                        "ExecuteCommand",
+                        &[&[1, 1, 1][..], &[1, 2, 2][..], &[2, 1, 1, 1][..]][..],
+                    ),
+                    (
+                        "GetReceipt",
+                        &[&[1, 1, 1][..], &[1, 2, 2][..], &[2, 1, 1, 1][..]][..],
+                    ),
+                    (
+                        "PreviewCommand",
+                        &[&[1, 1, 1][..], &[1, 2, 2][..], &[2, 1, 1, 1][..]][..],
+                    ),
+                ];
+        anyhow::ensure!(!reserved_feed_commands || feed_commands,
+            "reserved Feed command policy requires exact Post owner, Concert caller, methods and whole-envelope actor fields");
         let reserved_owner = matches!(
             self.service,
             "authority.lease.v1.AuthOwnerAuthorityService"
@@ -460,6 +487,7 @@ impl MethodPolicy {
                     || world_profile_read
                     || public_profile_read
                     || qualified_post_read
+                    || feed_commands
                     || owner_authority
                     || decision
                     || root_read
@@ -608,6 +636,19 @@ pub fn proto_rpc_names(proto_source: &str) -> Vec<String> {
         .filter(|name| !name.is_empty())
         .map(str::to_owned)
         .collect()
+}
+
+/// RPC names declared inside one exact proto service block. A file that hosts
+/// several closely related policies must not let one service's methods satisfy
+/// another service's table check.
+pub fn proto_service_rpc_names(proto_source: &str, service: &str) -> Vec<String> {
+    let header = format!("service {service} {{");
+    let Some(start) = proto_source.find(&header) else {
+        return Vec::new();
+    };
+    let body = &proto_source[start + header.len()..];
+    let end = body.find('}').unwrap_or(body.len());
+    proto_rpc_names(&body[..end])
 }
 
 /// Check a policy's actor fields against encoded sample requests built from
@@ -934,6 +975,14 @@ mod tests {
     fn proto_rpc_names_reads_service_methods() {
         let proto = "service DemoService {\n  rpc Read(ReadRequest) returns (ReadResponse);\n  rpc Write (WriteRequest) returns (WriteResponse) {}\n  // rpc Commented(X) returns (Y);\n}";
         assert_eq!(proto_rpc_names(proto), vec!["Read", "Write"]);
+    }
+
+    #[test]
+    fn proto_service_rpc_names_is_scoped_to_the_named_service() {
+        let proto = "service First {\n  rpc Read(ReadRequest) returns (ReadResponse);\n}\nservice Second {\n  rpc Write(WriteRequest) returns (WriteResponse);\n}";
+        assert_eq!(proto_service_rpc_names(proto, "First"), vec!["Read"]);
+        assert_eq!(proto_service_rpc_names(proto, "Second"), vec!["Write"]);
+        assert!(proto_service_rpc_names(proto, "Missing").is_empty());
     }
 }
 

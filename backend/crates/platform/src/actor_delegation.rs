@@ -143,7 +143,7 @@ fn signed_bytes(payload: &str) -> Vec<u8> {
     [SIGNATURE_CONTEXT, payload.as_bytes()].concat()
 }
 
-fn decode_key<const N: usize>(name: &str, value: &str) -> anyhow::Result<[u8; N]> {
+pub(crate) fn decode_key<const N: usize>(name: &str, value: &str) -> anyhow::Result<[u8; N]> {
     let bytes = Base64::decode_vec(value.trim())
         .map_err(|_| anyhow::anyhow!("{name} must be standard Base64"))?;
     bytes

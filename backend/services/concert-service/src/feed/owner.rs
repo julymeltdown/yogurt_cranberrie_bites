@@ -47,6 +47,14 @@ pub trait PostTransport: Send + Sync {
     ) -> Result<proto::GetReceiptResponse, Status> {
         Err(Status::unavailable("Post authority unavailable"))
     }
+    /// Read the exact authorized command target/parent without mutating. This is
+    /// bound to the same whole-envelope authority as execute.
+    async fn preview(
+        &self,
+        _: proto::ExecuteCommandRequest,
+    ) -> Result<proto::PreviewCommandResponse, Status> {
+        Err(Status::unavailable("Post authority unavailable"))
+    }
 }
 pub struct UnavailablePostTransport;
 #[async_trait]
@@ -54,7 +62,7 @@ impl PostTransport for UnavailablePostTransport {}
 pub struct PostOwner<T> {
     pub transport: T,
 }
-fn wire_context(c: Context) -> Result<proto::Context, FeedError> {
+pub(super) fn wire_context(c: Context) -> Result<proto::Context, FeedError> {
     c.check(Utc::now())?;
     Ok(proto::Context {
         actor_id: c.actor.to_string(),
@@ -125,7 +133,7 @@ fn content(c: proto::Content) -> Result<Content, FeedError> {
         .map_err(|_| FeedError::DependencyUnavailable)?;
     Ok(value)
 }
-fn post(c: Context, p: proto::PostRecord) -> Result<Post, FeedError> {
+pub(super) fn post(c: Context, p: proto::PostRecord) -> Result<Post, FeedError> {
     let value = Post {
         id: id(&p.post_id)?,
         event: id(&p.event_id)?,
@@ -154,7 +162,7 @@ fn post(c: Context, p: proto::PostRecord) -> Result<Post, FeedError> {
     }
     Ok(value)
 }
-fn comment(c: Context, p: proto::CommentRecord) -> Result<Comment, FeedError> {
+pub(super) fn comment(c: Context, p: proto::CommentRecord) -> Result<Comment, FeedError> {
     let value = Comment {
         id: id(&p.comment_id)?,
         event: id(&p.event_id)?,
@@ -173,7 +181,7 @@ fn comment(c: Context, p: proto::CommentRecord) -> Result<Comment, FeedError> {
     }
     Ok(value)
 }
-fn failure(s: Status) -> FeedError {
+pub(super) fn failure(s: Status) -> FeedError {
     match s.code() {
         Code::NotFound => FeedError::ResourceUnavailable,
         Code::Aborted | Code::AlreadyExists => FeedError::VersionConflict,
@@ -319,15 +327,66 @@ fn wire_content(c: &Content) -> proto::Content {
     }
 }
 fn wire_command(p: &PreparedCommand, r: &SafeReceipt) -> Result<proto::Command, FeedError> {
-    use proto::command::Mutation;
     if p.scope()? != r.scope
         || !matches!(r.state, ReceiptState::Pending | ReceiptState::Succeeded)
         || r.id.is_nil()
     {
         return Err(FeedError::PermissionDenied);
     }
-    let mut post_id = p.target();
-    let mutation = match p.command() {
+    let post_id = match p.command() {
+        FeedCommand::CreateComment { post, .. } => *post,
+        FeedCommand::EditComment { .. } | FeedCommand::DeleteComment { .. } => {
+            p.parent().ok_or(FeedError::DependencyUnavailable)?
+        }
+        _ => p.target(),
+    };
+    let reaction_revision = if matches!(p.command(), FeedCommand::SetReaction { .. }) {
+        p.parent_revision()
+            .ok_or(FeedError::DependencyUnavailable)?
+    } else {
+        1
+    };
+    let mutation = mutation(p.command(), p.target(), reaction_revision)?;
+    // Post's internal operation UUID is BE15 receipt identity, distinct from public
+    // operation name. The name remains in receipt scope and canonical fingerprint.
+    Ok(proto::Command {
+        operation_id: r.id.to_string(),
+        actor_id: r.scope.actor.to_string(),
+        event_id: r.scope.event.to_string(),
+        post_id: post_id.to_string(),
+        idempotency_key: r.scope.key.to_string(),
+        mutation: Some(mutation),
+    })
+}
+/// Build the pre-execution typed command used only by the read-only preview RPC.
+/// The Post owner resolves a comment's parent; the placeholder post id here is
+/// never used for a mutation because this message never reaches ExecuteCommand.
+pub(super) fn preview_command_message(
+    context: Context,
+    key: Uuid,
+    target: Uuid,
+    command: &FeedCommand,
+) -> Result<proto::Command, FeedError> {
+    let post_id = match command {
+        FeedCommand::CreateComment { post, .. } => *post,
+        _ => target,
+    };
+    Ok(proto::Command {
+        operation_id: context.request.to_string(),
+        actor_id: context.actor.to_string(),
+        event_id: context.event.to_string(),
+        post_id: post_id.to_string(),
+        idempotency_key: key.to_string(),
+        mutation: Some(mutation(command, target, 1)?),
+    })
+}
+fn mutation(
+    command: &FeedCommand,
+    target: Uuid,
+    reaction_revision: i64,
+) -> Result<proto::command::Mutation, FeedError> {
+    use proto::command::Mutation;
+    Ok(match command {
         FeedCommand::CreatePost { content } => Mutation::CreatePost(proto::CreatePost {
             content: Some(wire_content(content)),
         }),
@@ -345,54 +404,33 @@ fn wire_command(p: &PreparedCommand, r: &SafeReceipt) -> Result<proto::Command, 
             expected_revision: *expected_revision,
         }),
         FeedCommand::CreateComment {
-            post,
             post_revision,
             text,
-        } => {
-            post_id = *post;
-            Mutation::CreateComment(proto::CreateComment {
-                comment_id: p.target().to_string(),
-                post_revision: *post_revision,
-                text: text.clone(),
-            })
-        }
+            ..
+        } => Mutation::CreateComment(proto::CreateComment {
+            comment_id: target.to_string(),
+            post_revision: *post_revision,
+            text: text.clone(),
+        }),
         FeedCommand::EditComment {
             expected_revision,
             text,
             ..
-        } => {
-            post_id = p.parent().ok_or(FeedError::DependencyUnavailable)?;
-            Mutation::EditComment(proto::EditComment {
-                comment_id: p.target().to_string(),
-                expected_revision: *expected_revision,
-                text: text.clone(),
-            })
-        }
+        } => Mutation::EditComment(proto::EditComment {
+            comment_id: target.to_string(),
+            expected_revision: *expected_revision,
+            text: text.clone(),
+        }),
         FeedCommand::DeleteComment {
             expected_revision, ..
-        } => {
-            post_id = p.parent().ok_or(FeedError::DependencyUnavailable)?;
-            Mutation::DeleteComment(proto::DeleteComment {
-                comment_id: p.target().to_string(),
-                expected_revision: *expected_revision,
-            })
-        }
+        } => Mutation::DeleteComment(proto::DeleteComment {
+            comment_id: target.to_string(),
+            expected_revision: *expected_revision,
+        }),
         FeedCommand::SetReaction { present, .. } => Mutation::SetReaction(proto::SetReaction {
-            expected_revision: p
-                .parent_revision()
-                .ok_or(FeedError::DependencyUnavailable)?,
+            expected_revision: reaction_revision,
             active: *present,
         }),
-    };
-    // Post's internal operation UUID is BE15 receipt identity, distinct from public
-    // operation name. The name remains in receipt scope and canonical fingerprint.
-    Ok(proto::Command {
-        operation_id: r.id.to_string(),
-        actor_id: r.scope.actor.to_string(),
-        event_id: r.scope.event.to_string(),
-        post_id: post_id.to_string(),
-        idempotency_key: r.scope.key.to_string(),
-        mutation: Some(mutation),
     })
 }
 fn committed(
