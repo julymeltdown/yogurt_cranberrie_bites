@@ -14,6 +14,7 @@ use axum::{
 };
 use std::sync::{Arc, OnceLock};
 use uuid::Uuid;
+mod command_routes;
 mod disclosure;
 mod feature_routes;
 
@@ -22,11 +23,11 @@ pub fn router(state: Arc<AppState>) -> Router {
         .route("/api/concert/events/:event_id/feed", get(dispatch))
         .route(
             "/api/concert/events/:event_id/posts/:post_id",
-            get(dispatch),
+            get(dispatch).patch(dispatch).delete(dispatch),
         )
         .route(
             "/api/concert/events/:event_id/posts/:post_id/comments",
-            get(dispatch),
+            get(dispatch).post(dispatch),
         )
         .route(
             "/api/concert/events/:event_id/parties",
@@ -34,7 +35,7 @@ pub fn router(state: Arc<AppState>) -> Router {
         )
         .route(
             "/api/concert/events/:event_id/parties/:party_id",
-            get(dispatch),
+            get(dispatch).patch(dispatch),
         )
         .route(
             "/api/concert/events/:event_id/parties/:party_id/applications",
@@ -115,6 +116,7 @@ pub fn router(state: Arc<AppState>) -> Router {
             post(dispatch),
         )
         .merge(feature_routes::router())
+        .merge(command_routes::router())
         .with_state(state)
 }
 
@@ -132,6 +134,9 @@ pub(super) fn owns_receipt(method: &Method, path: &str) -> bool {
     }
     if let Some(route) = feature_routes::route(method, path) {
         return route.mutation();
+    }
+    if command_routes::owns(method, path) {
+        return true;
     }
     if social_route(method, path).is_some() {
         return *method != Method::GET;
@@ -436,6 +441,7 @@ fn is_product(path: &str) -> bool {
         return false;
     };
     feature_routes::protects(path)
+        || command_routes::protects(path)
         || tail == "feed"
         || tail == "commands"
         || tail == "parties"
@@ -455,7 +461,8 @@ fn is_product(path: &str) -> bool {
 pub async fn protect_response(request: Request, next: axum::middleware::Next) -> Response {
     // Router::layer also wraps the shared fallback. Keep unmounted feature
     // suffixes out of unrelated service middleware and return a closed C04 error.
-    if feature_routes::protects(request.uri().path())
+    if (feature_routes::protects(request.uri().path())
+        || command_routes::protects(request.uri().path()))
         && request
             .extensions()
             .get::<axum::extract::MatchedPath>()
