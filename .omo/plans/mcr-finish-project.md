@@ -664,7 +664,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   What to do: map each IS row to its delivering todos and captured QA artifact; a shortfall creates a new numbered task, never a note. Evidence `.omo/evidence/mcr-finish-project/f4-ideal-state.md`.
   Recommended task executor category: unspecified-low
 
-- [ ] F5. Release audit
+- [x] F5. Release audit
   What to do: reconcile 111/111 active tasks, 112 original IDs, 61/61 IA, 12/12 design, 8/8 venue, 10/10 extension IA, QA08 deferred, CI green on the same candidate. Evidence `.omo/evidence/mcr-finish-project/f5-release.md`.
   Recommended task executor category: ultrabrain
 
