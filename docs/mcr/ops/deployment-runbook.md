@@ -175,38 +175,61 @@ Rules enforced by the code:
   `POST_SERVICE_CREDENTIAL`, `NOTIFICATION_SERVICE_CREDENTIAL` and
   `CONCERT_SERVICE_CREDENTIAL`; the rotation names are the same prefixes with
   `_PREVIOUS` (for example `GATEWAY_SERVICE_CREDENTIAL_PREVIOUS`).
-- Rotation semantics: the current value is required in production for every
-  accepted caller; `_PREVIOUS` is optional. A previous value without a current
-  value fails startup, blank values fail, and current and previous must differ.
-  Both are accepted during the rotation window; remove the previous value after
-  every sender presents the current one. Participant mode additionally rejects
-  duplicate tokens across workloads.
+- Rotation semantics: the current value is required in production only for
+  callers in that registry's `required` set; accepted-optional callers may be
+  omitted and are then not registered. `_PREVIOUS` is optional. A previous value
+  without a current value fails startup, blank values fail, and current and
+  previous must differ. Both are accepted during the rotation window; remove the
+  previous value after every sender presents the current one. Participant mode
+  additionally rejects duplicate tokens across workloads.
 
-Inbound caller requirements from source (production):
+Accepted versus required credentials (`platform/src/config.rs:264-289`):
+`build_caller_registry(is_production, accepted, required)` reads the current
+value for every accepted caller, but in production it fails startup only when a
+caller in the `required` subset has no current value. An accepted-but-optional
+caller with no value is simply not registered. Profile, for example, accepts
+Gateway, Post, Friend, Auth and Concert but requires only Gateway
+(`profile-service/src/config/mod.rs:83-93`).
 
-| Receiving service | Must configure |
+Base registries (always loaded):
+
+| Registry | Accepted callers | Required current in production |
+| --- | --- | --- |
+| Gateway | Post | Post |
+| Auth | Gateway, Concert | Gateway |
+| Profile | Gateway, Post, Friend, Auth, Concert | Gateway |
+| Friend | Concert, Gateway, Post, Auth | Gateway |
+| Post | Gateway, Auth, Concert | Gateway |
+| Notification | Gateway, Post, Auth | Gateway |
+
+Feature-gated manual registries (current values are required for every accepted
+caller listed unless the row says otherwise):
+
+| Registry and gate | Accepted callers |
 | --- | --- |
-| Gateway | `POST_SERVICE_CREDENTIAL` |
-| Auth | `GATEWAY_SERVICE_CREDENTIAL`; `CONCERT_SERVICE_CREDENTIAL` when Concert reads Auth |
-| Profile | `GATEWAY_SERVICE_CREDENTIAL` |
-| Friend | `GATEWAY_SERVICE_CREDENTIAL` |
-| Post | `GATEWAY_SERVICE_CREDENTIAL` |
-| Notification | `GATEWAY_SERVICE_CREDENTIAL` |
-| Concert | `GATEWAY_SERVICE_CREDENTIAL`; `AUTH_SERVICE_CREDENTIAL`, `FRIEND_SERVICE_CREDENTIAL`, `PROFILE_SERVICE_CREDENTIAL` and its own credential when Participant mode is enabled |
+| Concert bootstrap (product serving configured with `CONCERT_GRPC_ADDR` and the release files) | Gateway |
+| Concert Participant (`CONCERT_PARTICIPANT_MODE=live`) | Gateway, Auth, Friend, Profile; own Concert current is also required |
+| Post feed-read server (`POST_CONCERT_READ_MODE=read`) | Concert, Auth, Friend |
+| Notification Concert mode (`NOTIFICATION_CONCERT_MODE=live`) | Concert, Auth, Friend |
+| Concert feed callback (feed reads enabled) | Post |
+| Concert notification target (`CONCERT_NOTIFICATION_TARGET_MODE=live`) | Notification |
+| Concert account deletion (`CONCERT_ACCOUNT_DELETION_MODE=managed`) | Auth |
+| Auth concert deletion source (`AUTH_CONCERT_DELETION_SOURCE_ENABLED=true`) and managed deletion (`AUTH_CONCERT_DELETION_MODE=managed`) | Concert |
+| Auth/Friend owner authority (`CONCERT_OWNER_AUTHORITY_ENABLED=true`) | Concert, Post, Profile, Notification; Concert is required |
 
 Present the matching `<PREFIX>_SERVICE_CREDENTIAL` on outbound calls; each
-service does so from its own prefix. The `_PREVIOUS` names actually read by the
-current inbound registries are:
+service does so from its own prefix. The `_PREVIOUS` names and their actual
+readers are:
 
-| Previous name | Read by |
-| --- | --- |
-| `GATEWAY_SERVICE_CREDENTIAL_PREVIOUS` | Auth, Profile, Friend, Post, Notification, Concert |
-| `AUTH_SERVICE_CREDENTIAL_PREVIOUS` | Profile, Friend, Post, Notification, Concert Participant |
-| `FRIEND_SERVICE_CREDENTIAL_PREVIOUS` | Profile, Concert Participant |
-| `PROFILE_SERVICE_CREDENTIAL_PREVIOUS` | Concert Participant |
-| `POST_SERVICE_CREDENTIAL_PREVIOUS` | Gateway, Profile, Notification |
-| `CONCERT_SERVICE_CREDENTIAL_PREVIOUS` | Auth, Profile, Friend, Post |
-| `NOTIFICATION_SERVICE_CREDENTIAL_PREVIOUS` | No current inbound registry; reserve only for a future caller that accepts Notification |
+| Previous name | Base registry readers | Feature-gated readers |
+| --- | --- | --- |
+| `GATEWAY_SERVICE_CREDENTIAL_PREVIOUS` | Auth, Profile, Friend, Post, Notification | Concert bootstrap; Concert Participant |
+| `AUTH_SERVICE_CREDENTIAL_PREVIOUS` | Profile, Friend, Post, Notification | Concert Participant; Post feed-read server; Notification Concert mode; Concert account deletion |
+| `PROFILE_SERVICE_CREDENTIAL_PREVIOUS` | None | Concert Participant; Auth/Friend owner authority |
+| `FRIEND_SERVICE_CREDENTIAL_PREVIOUS` | Profile | Concert Participant; Post feed-read server; Notification Concert mode |
+| `POST_SERVICE_CREDENTIAL_PREVIOUS` | Gateway, Profile, Friend, Notification | Concert feed callback; Auth/Friend owner authority |
+| `NOTIFICATION_SERVICE_CREDENTIAL_PREVIOUS` | None | Concert notification target; Auth/Friend owner authority |
+| `CONCERT_SERVICE_CREDENTIAL_PREVIOUS` | Auth, Profile, Friend, Post | Post feed-read server; Notification Concert mode; Auth/Friend owner authority; Auth concert deletion source/managed deletion |
 
 ### 4.2 Public edge
 
@@ -758,19 +781,80 @@ Use this when reviewing or executing the runbook:
 
 ## Appendix A. Environment surface (scoped extraction)
 
-Extraction method: every literal name passed to a backend environment accessor
-(`env_or`, `optional_env`, `std::env::var`, `read`, `required`, `value`,
-`count`), every `*_ENV` constant, and every `configured_destination` prefix
-expanded to its `_ENDPOINT` and `_BEARER_TOKEN` names, across non-test backend
-Rust source at this revision. Raw matches: 332. Excluded: 35 total (two bare
-destination prefixes and 33 test/fixture-only names). **Runtime literal names:
-297; all 297 appear in this document.**
+Recipe (rerun from the repository root):
 
-The count excludes dynamic families that are documented as rules rather than
-literal strings: 21 per-workload TLS paths (section 4.1), 14 current/previous
-workload credentials (section 4.1), and four authority settlement endpoints
-(section 5.8). The completeness claim is scoped to the literal extraction above;
-it does not claim that every string constant in the repository is an env name.
+- Paths: tracked `backend/services/**/src/**/*.rs` and
+  `backend/crates/**/src/**/*.rs`, excluding any path containing `/tests/`.
+  `build.rs` and `backend/tools/` are outside the scope.
+- Test hooks: truncate each file at its first `#[cfg(test)]` block.
+- Names: literals passed to `env_or`, `optional_env`, `env_or_default`,
+  `std::env::var`, `std::env::var_os`, `read`, `required`, `value`, `count`;
+  every `*_ENV` constant; and every `configured_destination` prefix expanded to
+  `_ENDPOINT`/`_BEARER_TOKEN`.
+- Prefix filter: `GATEWAY_`, `AUTH_`, `PROFILE_`, `FRIEND_`, `POST_`,
+  `NOTIFICATION_`, `CONCERT_`, `ACTOR_`, `RESOURCE_`, `MCR_`, `OTEL_`.
+- Exclusions: the two bare destination prefixes and 33 test/fixture-only
+  names (`MCR_CANONICAL_*`, `MCR_FEED_NATIVE_*`, `MCR_PARTICIPANT_*`,
+  `MCR_PROFILE_RPC_*`, `MCR_SELF_PROFILE_*`, `MCR_WORLD_AUTH_*`,
+  `*_TEST_*`, `POST_CONCERT_TEST_*`, `CONCERT_CONSUMER_TEST*`,
+  `FRIEND_PROCESS_STACK_RELATIONSHIP_GATE_DIR`).
+
+```sh
+python3 - <<'PY'
+import pathlib, re, subprocess
+TRACKED = subprocess.check_output(
+    ["git", "ls-tree", "-r", "--name-only", "HEAD"], text=True
+).splitlines()
+FILES = [p for p in TRACKED
+         if (p.startswith("backend/services/") or p.startswith("backend/crates/"))
+         and "/src/" in p and p.endswith(".rs") and "/tests/" not in p]
+CALL = re.compile(
+    r'(?:env_or|optional_env|env_or_default|std::env::var|env::var|'
+    r'std::env::var_os|env::var_os|read|required|value|count)'
+    r'\s*\(\s*"([A-Z][A-Z0-9_]{2,})"'
+)
+CONST = re.compile(r'const\s+[A-Z0-9_]*ENV[A-Z0-9_]*\s*:\s*&str\s*=\s*"([A-Z][A-Z0-9_]{2,})"')
+DEST = re.compile(r'configured_destination\s*\(\s*"([A-Z][A-Z0-9_]{2,})"')
+PREFIX = re.compile(r'^(GATEWAY|AUTH|PROFILE|FRIEND|POST|NOTIFICATION|CONCERT|ACTOR|RESOURCE|MCR|OTEL)_')
+def test_fixture(name):
+    return ("_TEST_" in name or name.endswith("_TEST_URL")
+            or name.startswith(("MCR_CANONICAL_", "MCR_FEED_NATIVE_", "MCR_PARTICIPANT_",
+                                "MCR_PROFILE_RPC_", "MCR_SELF_PROFILE_", "MCR_WORLD_AUTH_",
+                                "CONCERT_TEST_", "POST_CONCERT_TEST_", "CONCERT_CONSUMER_TEST"))
+            or name == "FRIEND_PROCESS_STACK_RELATIONSHIP_GATE_DIR")
+names, prefixes = set(), set()
+for path in FILES:
+    text = subprocess.check_output(["git", "show", f"HEAD:{path}"], text=True)
+    text = text.split("#[cfg(test)]", 1)[0]
+    names.update(CALL.findall(text)); names.update(CONST.findall(text))
+    prefixes.update(DEST.findall(text))
+for p in prefixes:
+    names.update({p + "_ENDPOINT", p + "_BEARER_TOKEN"})
+names = {n for n in names if PREFIX.match(n)}
+excluded = sorted(n for n in names if n in prefixes or test_fixture(n))
+runtime = sorted(n for n in names if n not in excluded)
+doc = pathlib.Path("docs/mcr/ops/deployment-runbook.md").read_text()
+documented = set(re.findall(r"\b[A-Z][A-Z0-9_]{2,}\b", doc))
+missing = [n for n in runtime if n not in documented]
+print(f"files={len(FILES)} raw={len(names)} excluded={len(excluded)} "
+      f"runtime={len(runtime)} missing={len(missing)}")
+for n in missing:
+    print("MISSING", n)
+PY
+```
+
+At this revision the recipe prints:
+
+```text
+files=1081 raw=281 excluded=35 runtime=246 missing=0
+```
+
+So **246 runtime literal names under this recipe, all 246 present**. This does
+not claim that the repository contains no other env-like strings: a broader
+all-uppercase scan also sees internal enums, error codes and event names. The count also
+excludes dynamic families documented as rules: 21 per-workload TLS paths
+(section 4.1), 14 current/previous workload credentials (section 4.1), and four
+authority settlement endpoints (section 5.8).
 
 Names below have code defaults unless marked; set them explicitly in production
 so the deployment does not inherit a development default. Feature and worker
