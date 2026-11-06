@@ -314,8 +314,13 @@ pub(super) fn request(
                 decimal(&cursor, 0)?;
             }
         }
-        MeetingOperation::GetInvitation(_) | MeetingOperation::DecideInvitation(_) => {
+        MeetingOperation::GetInvitation(_) => {
             selection_query(&mut fields, true)?;
+        }
+        MeetingOperation::DecideInvitation(_) => {
+            if !fields.is_empty() {
+                return Err(invalid());
+            }
         }
         MeetingOperation::Messages | MeetingOperation::Status(_) => {
             selection_query(&mut fields, false)?;

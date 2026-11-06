@@ -41,10 +41,15 @@ L/M/N application adapters existed, but:
   `place_kind='PHYSICAL'` and current `closure_state='OPEN'`.
 - `config/canonical_runtime.rs`: the shared composition retains one
   `GrpcRelationshipAuthority` for request-bound venue friend reads.
-- `venue_notes`: added receipt-only create/reply paths that perform the same
-  event/place/friend guards and insert, but skip the author-profile projection
-  the command receipt does not need.
-- `product_rpc/mod.rs` + Gateway: `201` is now an admitted product status.
+- `venue_notes`: durable BE15-style keyed receipts for note create/reply/withdraw
+  (`0078_place_note_receipts.sql`); same key + same canonical payload replays the
+  stored resource, same key + changed payload returns 409 `VERSION_CONFLICT`, and
+  no receipt/body snapshot is stored. Receipt-only create/reply paths perform the
+  same event/place/friend guards without projecting the author profile.
+- Place-note reads now fail closed with 503 `DEPENDENCY_UNAVAILABLE`: the N01
+  prepared native read-retention path does not exist (see Limits).
+- `product_rpc/mod.rs` + Gateway: `201` is an admitted product status so a
+  committed place-note create/reply is not converted to 503 after its effect.
 - Gateway `feature_routes.rs`: mounted `GET` list/thread/replies for place
   notes and closed their `limit`/`before`, `expected_revision` and location
   command query validation.
@@ -86,8 +91,8 @@ python3 backend/scripts/mcr/closure_vertical_stack.py \
   --report /Users/lhs/Desktop/mcr-build/exec-w3-venue-live.json --venue-only
 ```
 
-Report: `/Users/lhs/Desktop/mcr-build/exec-w3-venue-live.json` -
-`result=PASS`, `cleanup=PASS`, 20/20 venue checks true. The stack uses its own
+Report: `/Users/lhs/Desktop/mcr-build/exec-w3-venue-live-receipts.json` -
+`result=PASS`, `cleanup=PASS`, 28/28 venue checks true. The stack uses its own
 private PostgreSQL 16 cluster, ephemeral loopback ports and an owned temporary
 root; the enrollment policy and reviewed place are explicitly nonproduction
 development fixtures. The run is labelled `NOT_ADMITTED`; it claims no IN03
@@ -98,39 +103,56 @@ cohort or QA08 qualification.
 | member `PUT /venue/location/sharing` ACTIVE to operator | 200 | `setVenueLocationSharing` receipt |
 | member `PUT /venue/location/fix` | 200 | `publishVenueLocationFix` PHONE_FIX receipt |
 | operator `GET /venue/location` | 200 | one friend row for member with latitude 37.5665 |
-| member `GET /venue/location` without a reciprocal grant | 200 | `friends=[]`, own position only (missing consent yields no location) |
-| member blocks operator through the Friend API, operator reads | 200 | `friends=[]` (no coordinates) |
+| member `GET /venue/location` without a reciprocal grant | 200 | `friends=[]`, own position only |
+| blocked friend `GET /venue/location` | 200 | `friends=[]` (no coordinates) |
 | unauthenticated `GET /venue/location` | 401 | `AUTHENTICATION_REQUIRED` |
-| member `POST .../notes` FRIENDS | 201 | `SUCCEEDED` `createVenuePlaceNote` receipt |
-| operator `GET .../notes` | 200 | note visible with exact text |
-| stranger `GET .../notes` | 200 | `items=[]` |
-| stranger `GET .../notes/{note}` | 404 | `RESOURCE_UNAVAILABLE` |
-| operator `POST .../notes/{note}/replies` | 201 | `SUCCEEDED` `createVenuePlaceReply` receipt |
-| member `GET .../notes/{note}` | 200 | one reply with exact text |
+| member `POST .../notes` FRIENDS | 201 | `SUCCEEDED` receipt, resource id/revision |
+| same key/body `POST .../notes` | 201 | same resource id/revision, no new row |
+| same key/changed body `POST .../notes` | 409 | `VERSION_CONFLICT` |
+| friend `GET .../notes`, thread, replies | 503 | `DEPENDENCY_UNAVAILABLE` (missing prepared read retention) |
+| operator reply / same-key replay | 201 / 201 | same reply id; changed body 409 |
 | stranger reply | 403 | `PERMISSION_DENIED` |
 | non-author withdraw | 403 | `PERMISSION_DENIED` |
-| author `DELETE .../notes/{note}?expected_revision=2` | 200 | `SUCCEEDED` `withdrawVenuePlaceNote` receipt |
-| `GET .../notes` after withdrawal | 200 | withdrawn note absent |
-| friend `GET /venue-meeting/context?selectedFriendId=` | 200 | `canRead=true`, `canSend=true` |
-| stranger context | 404 | `RESOURCE_UNAVAILABLE` |
-| operator `POST /venue-meeting/messages` | 200 | `state=APPLIED`, `kind=MESSAGE` |
-| member `GET /venue-meeting/messages` | 200 | exact message body present |
+| author withdraw / same-key replay | 200 / 200 | same revision; changed expected revision 409 |
+| friend `GET /venue-meeting/context` | 200 | `canRead=true`, `canSend=true` |
+| stranger context / create invitation / detail / decision / send / status | 404 | `RESOURCE_UNAVAILABLE` |
+| friend list invitations | 200 | page (empty or bounded) |
+| friend create invitation | 200 | `APPLIED` invitation with id |
+| friend invitation detail | 200 | exact invitation id |
+| recipient decide invitation | 200 | `APPLIED` |
+| friend send message / list messages | 200 / 200 | `APPLIED` / exact body |
+| friend command status | 200 | `UNKNOWN` for an unused key |
 
-Database rows after withdrawal:
-`sharing|fixes|notes|replies|messages = 1|1|2|1|1` (one root note row retained
-with scrubbed body, one reply row retained with scrubbed body, one meeting
-message).
+Database rows after the run:
+`sharing|fixes|notes|replies|messages|receipts = 1|1|2|1|1|3` (one root note row
+and one reply row remain, bodies scrubbed by withdrawal; three receipts remain:
+create, reply, withdraw).
 
 ## Tests
 
 | Command | Exit | Result |
 | --- | --- | --- |
-| `cargo +1.88.0 test -p concert-service --test venue_product_routes` | 0 | 2 passed |
-| `cargo +1.88.0 test -p api-gateway --test venue_authz_http` | 0 | 6 passed, including the new notes/location mount and note-mutation transport cells |
+| `cargo +1.88.0 test -p concert-service --test venue_product_routes` | 0 | 2 passed; all 18 mounted venue rows asserted |
+| `cargo +1.88.0 test -p api-gateway --test venue_authz_http` | 0 | 7 passed, including the six missing meeting rows and their authenticated 503 cells |
+| `python3 backend/scripts/mcr/venue_postgres_smoke.py --target-dir ...` | 0 | venue L/M/N migrations, restart, full ledger and 4+3+2 venue tests pass (receipt replay/conflict included) |
 | `python3 scripts/mcr/contracts/route-parity.py` | 0 | `registry=69 contract_commands=63 templates=234 commands=70 missing=0` |
-| `python3 backend/scripts/mcr/venue_postgres_smoke.py --target-dir ...` | 0 | venue L/M/N migrations, restart, full ledger and 4+3+1 venue tests pass |
 | `cargo +1.88.0 check -p concert-service -p api-gateway --all-targets` | 0 | all targets typecheck |
 | Mutation oracle (one classification arm altered) | 101 | route test fails on the altered row; restored and re-run 0 |
+
+### Durable receipt proof
+
+The real-PostgreSQL test
+`note_receipts_replay_and_conflict_without_new_rows` creates a root, replies,
+and withdraws with fixed keys. Same key + same payload returns the original
+id/revision (root, reply, withdrawal); same key + changed text (root/reply) or
+changed `expected_revision` (withdraw) returns `PlaceNoteError::Conflict`. After
+the three commands the database still holds exactly one root, one reply and
+three receipt rows. Over HTTP the same-key replay returns 201/201/200 with the
+identical resource id/revision and the conflicts return 409
+`VERSION_CONFLICT`.
+
+Note reads (list, thread, replies) return 503 `DEPENDENCY_UNAVAILABLE` before
+any content because the prepared read-retention path is absent (see Limits).
 
 Mutation oracle: changing only the `GET /venue/landmarks/{id}/notes` arm from
 `VenueOperation::ListNotes` to `VenueOperation::GetNote(Uuid::nil())` makes
@@ -142,28 +164,28 @@ could not reuse the mutated artifact.
 ## Limits
 
 - `getVenueLocationCommand` is classified but the producer returns 503: migration
-  `0073_venue_location.sql` has no location receipt table, and no adapter can
-  read `?operation=` receipts. No fake success is returned.
-- `requestVenueLocation`, `decideVenueLocationRequest` and
-  `setVenueLocationCheckIn` remain unmounted and unclassified: the L adapter
-  implements no request inbox or check-in persistence.
-- `listVenueLandmarks` and `getVenueLandmark` remain unmounted and unclassified:
-  no `LandmarkGrant`/list projection is implemented. The reviewed place catalog
-  is used internally for note/meeting landmark review only.
-- Place-note idempotency is not durable. The adapter still discards the
-  `Idempotency-Key`; the producer returns a synthesized `NoteCommand` receipt
-  with `state=SUCCEEDED` and the resource id/revision. Same-key replay and
-  changed-body 409, and the contract's BE15 receipt/outbox, are not implemented.
-- Place-note reads do not provide the contract's prepared native read retention;
-  list/thread/replies use ordinary read transactions.
-- Meeting invitation create/detail/decision are classified and wired through the
-  same friend/policy/landmark authorities, but this run proves context and
-  message read/send over HTTP only.
-- The live policy and reviewed place are operator-supplied development inputs
-  (`CONCERT_VENUE_POLICY_JSON`, seeded map release). With `CONCERT_VENUE_MODE`
-  unset/off, every venue operation remains unavailable (503) and no default
-  policy, place, friend or landmark is invented.
-- The full closure/feed portion of the same driver was not part of the
-  `--venue-only` PASS verdict. Earlier full runs on this loaded host hit
-  PostgreSQL statement timeouts in feed queries; those are outside this task's
-  venue scope and are not claimed as passing here.
+  `0073_venue_location.sql` has no location receipt table, and the note receipt
+  table is keyed to the three note operations. VENU-BE-L01 must supply the
+  location command receipt/read adapter; this row records it as mandatory.
+- `requestVenueLocation`, `decideVenueLocationRequest`,
+  `setVenueLocationCheckIn`, `listVenueLandmarks` and `getVenueLandmark` remain
+  unmounted and unclassified: no request/check-in persistence and no
+  `LandmarkGrant` list/detail projection exist. VENU-BE-L01 owns these five.
+- Place-note reads deliberately return 503. The frozen N01 contract requires
+  prepared native read retention through an `Arc<OwnerGuardScope>`, event,
+  landmark and database time, with durable child intent/ACK/rollback and a
+  disclosure ceiling through HTTP EOF. That infrastructure does not exist for
+  notes: `ChildRecoveryReference` has no Notes kind; `CompositeChildIntentSettler`,
+  `NativeResolverUnion`, `VenueFriendAuthority` and `PgPlaceNotes` have no note-read
+  child/settler/resolver; and the current list/thread/replies use ordinary read
+  transactions that release locks at commit. Returning 200 would silently
+  violate the contract, so the producer refuses with 503 before any content.
+- The note receipt is a durable keyed actor/event/operation/digest/result row,
+  but it is not the BE15 outbox/audit transport; no outbox publication or
+  background receipt retirement exists. Receipt `expires_at` is the note/parent
+  expiry, never an extension.
+- Meeting invitation create/detail/decision and message send/status are
+  classified and exercised over HTTP; the stack's reviewed place/policy are
+  explicitly nonproduction development fixtures.
+- With `CONCERT_VENUE_MODE` unset/off, every venue operation remains unavailable
+  (503); no default policy, place, friend or landmark is invented.

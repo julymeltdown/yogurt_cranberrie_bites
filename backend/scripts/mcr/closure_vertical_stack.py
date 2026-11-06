@@ -639,59 +639,76 @@ def venue_proof(stack, gateway, origin, event, place_id, member, operator, stran
             "landmark_id": place_id, "catalog_revision": 1, "landmark_revision": 1
         },
     }
+    note_key = str(uuid4())
     status, created = call(
         "venue_note_create", "POST", f"/landmarks/{place_id}/notes",
-        note_body, member[1], str(uuid4()),
+        note_body, member[1], note_key,
     )
     note_id = ((created.get("resource") or {}).get("id") if isinstance(created, dict) else None)
-    if status != 201:
-        for attempt in range(1, 5):
-            measured = dict(note_body)
-            measured["text"] = f"Development venue note measured {attempt}"
-            status, created = call(
-                f"venue_note_create_measured_{attempt}", "POST",
-                f"/landmarks/{place_id}/notes", measured, member[1], str(uuid4()),
-            )
-            note_body = measured
-            note_id = ((created.get("resource") or {}).get("id") if isinstance(created, dict) else None)
-            if status == 201 and note_id:
-                break
+    note_revision = ((created.get("resource") or {}).get("revision") if isinstance(created, dict) else None)
     checks["venue_note_create_201"] = (
         status == 201 and created.get("state") == "SUCCEEDED"
         and isinstance(note_id, str) and created.get("operation_id") == "createVenuePlaceNote"
     )
-    status, page = call("venue_note_friend_list", "GET", f"/landmarks/{place_id}/notes", None, operator[1])
-    items = page.get("items") if isinstance(page, dict) else None
-    checks["venue_note_friend_visible"] = (
-        status == 200 and isinstance(items, list) and any(
-            item.get("id") == note_id and item.get("text") == note_body["text"] for item in items
-        )
+    status, replay = call(
+        "venue_note_create_replay", "POST", f"/landmarks/{place_id}/notes",
+        note_body, member[1], note_key,
     )
-    status, stranger_page = call(
-        "venue_note_stranger_list", "GET", f"/landmarks/{place_id}/notes", None, stranger[1]
+    checks["venue_note_create_replay_stable"] = (
+        status == 201 and (replay.get("resource") or {}).get("id") == note_id
+        and (replay.get("resource") or {}).get("revision") == note_revision
     )
-    checks["venue_note_stranger_omitted"] = (
-        status == 200 and isinstance(stranger_page, dict) and stranger_page.get("items") == []
+    changed_note = dict(note_body)
+    changed_note["text"] = "Development venue note changed"
+    status, conflict = call(
+        "venue_note_create_conflict", "POST", f"/landmarks/{place_id}/notes",
+        changed_note, member[1], note_key,
     )
-    status, missing = call(
-        "venue_note_stranger_thread", "GET", f"/landmarks/{place_id}/notes/{note_id}", None, stranger[1]
+    checks["venue_note_create_conflict_409"] = (
+        status == 409
+        and (conflict.get("details") or {}).get("reason") == "VERSION_CONFLICT"
     )
-    checks["venue_note_stranger_thread_404"] = status == 404
+    status_list, _ = call(
+        "venue_note_read_list_retention", "GET", f"/landmarks/{place_id}/notes", None, operator[1]
+    )
+    status_thread, _ = call(
+        "venue_note_read_thread_retention", "GET",
+        f"/landmarks/{place_id}/notes/{note_id}", None, operator[1],
+    )
+    status_replies, _ = call(
+        "venue_note_read_replies_retention", "GET",
+        f"/landmarks/{place_id}/notes/{note_id}/replies", None, operator[1],
+    )
+    checks["venue_note_reads_503"] = (
+        status_list == 503 and status_thread == 503 and status_replies == 503
+    )
+    reply_key = str(uuid4())
+    reply_body = {"text": "Development reply", "expected_parent_revision": note_revision}
     status, reply = call(
         "venue_note_reply", "POST", f"/landmarks/{place_id}/notes/{note_id}/replies",
-        {"text": "Development reply", "expected_parent_revision": 1}, operator[1], str(uuid4()),
+        reply_body, operator[1], reply_key,
     )
+    reply_id = ((reply.get("resource") or {}).get("id") if isinstance(reply, dict) else None)
     checks["venue_note_reply_201"] = (
         status == 201 and reply.get("operation_id") == "createVenuePlaceReply"
-        and isinstance((reply.get("resource") or {}).get("id"), str)
+        and isinstance(reply_id, str)
     )
-    status, thread = call(
-        "venue_note_thread", "GET", f"/landmarks/{place_id}/notes/{note_id}", None, member[1]
+    status, reply_replay = call(
+        "venue_note_reply_replay", "POST", f"/landmarks/{place_id}/notes/{note_id}/replies",
+        reply_body, operator[1], reply_key,
     )
-    replies = thread.get("replies") if isinstance(thread, dict) else None
-    checks["venue_note_thread_reply_visible"] = (
-        status == 200 and isinstance(replies, list) and len(replies) == 1
-        and replies[0].get("text") == "Development reply"
+    checks["venue_note_reply_replay_stable"] = (
+        status == 201 and (reply_replay.get("resource") or {}).get("id") == reply_id
+    )
+    changed_reply = dict(reply_body)
+    changed_reply["text"] = "Development reply changed"
+    status, reply_conflict = call(
+        "venue_note_reply_conflict", "POST", f"/landmarks/{place_id}/notes/{note_id}/replies",
+        changed_reply, operator[1], reply_key,
+    )
+    checks["venue_note_reply_conflict_409"] = (
+        status == 409
+        and (reply_conflict.get("details") or {}).get("reason") == "VERSION_CONFLICT"
     )
     status, _ = call(
         "venue_note_stranger_reply", "POST", f"/landmarks/{place_id}/notes/{note_id}/replies",
@@ -703,19 +720,30 @@ def venue_proof(stack, gateway, origin, event, place_id, member, operator, stran
         f"/landmarks/{place_id}/notes/{note_id}?expected_revision=2", None, operator[1], str(uuid4()),
     )
     checks["venue_note_foreign_withdraw_403"] = status == 403
+    withdraw_key = str(uuid4())
     status, withdrawn = call(
         "venue_note_withdraw", "DELETE",
-        f"/landmarks/{place_id}/notes/{note_id}?expected_revision=2", None, member[1], str(uuid4()),
+        f"/landmarks/{place_id}/notes/{note_id}?expected_revision=2", None, member[1], withdraw_key,
     )
+    withdraw_revision = ((withdrawn.get("resource") or {}).get("revision") if isinstance(withdrawn, dict) else None)
     checks["venue_note_withdraw_200"] = (
         status == 200 and withdrawn.get("operation_id") == "withdrawVenuePlaceNote"
     )
-    status, after = call(
-        "venue_note_after_withdraw", "GET", f"/landmarks/{place_id}/notes", None, member[1]
+    status, withdraw_replay = call(
+        "venue_note_withdraw_replay", "DELETE",
+        f"/landmarks/{place_id}/notes/{note_id}?expected_revision=2", None, member[1], withdraw_key,
     )
-    checks["venue_note_withdraw_hidden"] = (
-        status == 200 and isinstance(after, dict)
-        and all(item.get("id") != note_id for item in after.get("items", []))
+    checks["venue_note_withdraw_replay_stable"] = (
+        status == 200
+        and (withdraw_replay.get("resource") or {}).get("revision") == withdraw_revision
+    )
+    status, withdraw_conflict = call(
+        "venue_note_withdraw_conflict", "DELETE",
+        f"/landmarks/{place_id}/notes/{note_id}?expected_revision=1", None, member[1], withdraw_key,
+    )
+    checks["venue_note_withdraw_conflict_409"] = (
+        status == 409
+        and (withdraw_conflict.get("details") or {}).get("reason") == "VERSION_CONFLICT"
     )
 
     context_path = f"{gateway}/api/concert/events/{event}/venue-meeting/context?selectedFriendId={{}}"
@@ -747,6 +775,90 @@ def venue_proof(stack, gateway, origin, event, place_id, member, operator, stran
             item.get("body") == "Development venue message" for item in messages.get("items", [])
         )
     )
+    meeting_base = f"{gateway}/api/concert/events/{event}/venue-meeting"
+    status, invitations, _ = request(
+        f"{meeting_base}/invitations?direction=OUTGOING", "GET", None, operator[1], origin
+    )
+    record("venue_meeting_invitations", {"status": status, "body": invitations})
+    checks["venue_meeting_invitation_list_200"] = status == 200 and isinstance(invitations, dict)
+    invitation_body = {
+        "selection": {
+            "selectedFriendId": member[0],
+            "landmark": {"landmarkId": place_id, "catalogRevision": 1, "landmarkRevision": 1},
+        }
+    }
+    status, created_invitation, _ = request(
+        f"{meeting_base}/invitations", "POST", invitation_body, operator[1], origin, True,
+        {"Idempotency-Key": str(uuid4())},
+    )
+    record("venue_meeting_invitation_create", {"status": status, "body": created_invitation})
+    invitation = ((created_invitation.get("result") or {}).get("invitation") or {})
+    invitation_id = invitation.get("id")
+    checks["venue_meeting_invitation_create_200"] = (
+        status == 200 and created_invitation.get("state") == "APPLIED"
+        and isinstance(invitation_id, str)
+    )
+    if invitation_id:
+        detail = (
+            f"{meeting_base}/invitations/{invitation_id}?selectedFriendId={member[0]}"
+            f"&landmarkId={place_id}&catalogRevision=1&landmarkRevision=1"
+        )
+        status, detail_body, _ = request(detail, "GET", None, operator[1], origin)
+        record("venue_meeting_invitation_detail", {"status": status, "body": detail_body})
+        checks["venue_meeting_invitation_get_200"] = status == 200 and detail_body.get("id") == invitation_id
+        decision = {
+            "selection": {
+                "selectedFriendId": operator[0],
+                "landmark": {"landmarkId": place_id, "catalogRevision": 1, "landmarkRevision": 1},
+            },
+            "expectedRevision": 1,
+            "decision": "ACCEPT",
+        }
+        status, decided, _ = request(
+            f"{meeting_base}/invitations/{invitation_id}/decision", "POST", decision,
+            member[1], origin, True, {"Idempotency-Key": str(uuid4())},
+        )
+        record("venue_meeting_invitation_decide", {"status": status, "body": decided})
+        checks["venue_meeting_invitation_decide_200"] = (
+            status == 200 and decided.get("state") == "APPLIED"
+        )
+        status, stranger_detail, _ = request(detail, "GET", None, stranger[1], origin)
+        record("venue_meeting_invitation_stranger_detail", {"status": status, "body": stranger_detail})
+        checks["venue_meeting_stranger_denied"] = status == 404
+        status, _, _ = request(
+            f"{meeting_base}/invitations", "POST", invitation_body, stranger[1], origin, True,
+            {"Idempotency-Key": str(uuid4())},
+        )
+        checks["venue_meeting_stranger_denied"] = checks["venue_meeting_stranger_denied"] and status == 404
+        status, _, _ = request(
+            f"{meeting_base}/invitations/{invitation_id}/decision", "POST", decision,
+            stranger[1], origin, True, {"Idempotency-Key": str(uuid4())},
+        )
+        checks["venue_meeting_stranger_denied"] = checks["venue_meeting_stranger_denied"] and status == 404
+        status, _, _ = request(
+            f"{meeting_base}/messages", "POST",
+            {"selection": {"selectedFriendId": member[0]}, "body": "Denied message"},
+            stranger[1], origin, True, {"Idempotency-Key": str(uuid4())},
+        )
+        checks["venue_meeting_stranger_denied"] = checks["venue_meeting_stranger_denied"] and status == 404
+        status, _, _ = request(
+            f"{meeting_base}/commands/{uuid4()}?selectedFriendId={member[0]}",
+            "GET", None, stranger[1], origin,
+        )
+        checks["venue_meeting_stranger_denied"] = checks["venue_meeting_stranger_denied"] and status == 404
+        status, command, _ = request(
+            f"{meeting_base}/commands/{uuid4()}?selectedFriendId={member[0]}",
+            "GET", None, operator[1], origin,
+        )
+        record("venue_meeting_command", {"status": status, "body": command})
+        checks["venue_meeting_command_200"] = (
+            status == 200 and command.get("state") == "UNKNOWN"
+        )
+    else:
+        checks["venue_meeting_invitation_get_200"] = False
+        checks["venue_meeting_invitation_decide_200"] = False
+        checks["venue_meeting_stranger_denied"] = False
+        checks["venue_meeting_command_200"] = False
     report_rows = stack.cluster.sql(
         "mcr_concert",
         "SELECT (SELECT count(*) FROM concert_venue_location_sharing WHERE event_id="
@@ -754,9 +866,10 @@ def venue_proof(stack, gateway, origin, event, place_id, member, operator, stran
         + prep.quote(event) + "),(SELECT count(*) FROM concert_place_notes WHERE event_id="
         + prep.quote(event) + "),(SELECT count(*) FROM concert_place_notes WHERE event_id="
         + prep.quote(event) + " AND parent_id IS NOT NULL),(SELECT count(*) FROM concert_venue_meeting_messages WHERE event_id="
+        + prep.quote(event) + "),(SELECT count(*) FROM concert_place_note_receipts WHERE event_id="
         + prep.quote(event) + ")",
     )
-    record("venue_rows", {"sharing|fixes|notes|replies|messages": report_rows})
+    record("venue_rows", {"sharing|fixes|notes|replies|messages|receipts": report_rows})
 
 
 def hold(stack, seconds):
@@ -1053,13 +1166,17 @@ def main(argv=None):
             "venue_sharing_200", "venue_fix_200", "venue_location_friend_200",
             "venue_location_no_consent_empty", "venue_location_blocked_no_location",
             "venue_location_unauth_401", "venue_note_create_201",
-            "venue_note_friend_visible", "venue_note_stranger_omitted",
-            "venue_note_stranger_thread_404", "venue_note_reply_201",
-            "venue_note_thread_reply_visible", "venue_note_stranger_reply_403",
-            "venue_note_foreign_withdraw_403", "venue_note_withdraw_200",
-            "venue_note_withdraw_hidden", "venue_meeting_context_friend_200",
+            "venue_note_create_replay_stable", "venue_note_create_conflict_409",
+            "venue_note_reads_503", "venue_note_reply_201",
+            "venue_note_reply_replay_stable", "venue_note_reply_conflict_409",
+            "venue_note_stranger_reply_403", "venue_note_foreign_withdraw_403",
+            "venue_note_withdraw_200", "venue_note_withdraw_replay_stable",
+            "venue_note_withdraw_conflict_409", "venue_meeting_context_friend_200",
             "venue_meeting_context_stranger_404", "venue_meeting_send_200",
-            "venue_meeting_messages_200",
+            "venue_meeting_messages_200", "venue_meeting_invitation_list_200",
+            "venue_meeting_invitation_create_200", "venue_meeting_invitation_get_200",
+            "venue_meeting_invitation_decide_200", "venue_meeting_command_200",
+            "venue_meeting_stranger_denied",
         ):
             checks[name] = False
         venue_proof(

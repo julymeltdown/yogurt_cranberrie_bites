@@ -67,6 +67,38 @@ fn every_mounted_venue_request_is_classified_instead_of_unsupported() {
             format!("venue-meeting/messages?selectedFriendId={id}"),
             "listVenueMeetingMessages",
         ),
+        (
+            "GET",
+            "venue-meeting/invitations?direction=INCOMING".to_owned(),
+            "listVenueMeetingInvitations",
+        ),
+        (
+            "POST",
+            "venue-meeting/invitations".to_owned(),
+            "createVenueMeetingInvitation",
+        ),
+        (
+            "GET",
+            format!(
+                "venue-meeting/invitations/{id}?selectedFriendId={id}&landmarkId=lm-main&catalogRevision=1&landmarkRevision=1"
+            ),
+            "getVenueMeetingInvitation",
+        ),
+        (
+            "POST",
+            format!("venue-meeting/invitations/{id}/decision"),
+            "decideVenueMeetingInvitation",
+        ),
+        (
+            "POST",
+            "venue-meeting/messages".to_owned(),
+            "sendVenueMeetingMessage",
+        ),
+        (
+            "GET",
+            format!("venue-meeting/commands/{id}?selectedFriendId={id}"),
+            "getVenueMeetingCommand",
+        ),
     ] {
         let target = format!("{base}/{tail}");
         let operation = operation(event, method, &target)

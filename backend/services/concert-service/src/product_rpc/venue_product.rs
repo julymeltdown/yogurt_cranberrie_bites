@@ -24,7 +24,6 @@ use async_trait::async_trait;
 use chrono::{DateTime, SecondsFormat, Utc};
 use concert_application::venue_location::{VenueLocation, VenueLocationPolicyProvider};
 use concert_application::venue_meeting::{LandmarkReview, PairFacts, VenueMeetingAuthority};
-use concert_application::venue_notes::{NoteThread, PlaceNoteUseCases};
 use concert_domain::venue_location::{
     CommandReceipt, LocationSnapshot, SharingProjection, VenueLocationError, VenueLocationPolicy,
     VisibleLocation,
@@ -33,7 +32,7 @@ use concert_domain::venue_meeting::{
     LandmarkSelection, MeetingError, MeetingPolicy, MeetingSelection,
 };
 use concert_domain::venue_notes::{
-    LandmarkSelection as NoteLandmarkSelection, NoteAuthor, NotePage, PlaceNote, PlaceNoteError,
+    LandmarkSelection as NoteLandmarkSelection, NoteAuthor, PlaceNoteError,
 };
 use concert_domain::{AuthUserId, EventId, ParticipantKey};
 use serde::Deserialize;
@@ -636,17 +635,8 @@ impl VenueProductProducer {
             VenueRequest::LocationCommand { .. } => {
                 Ok(error_response(context, 503, "DEPENDENCY_UNAVAILABLE"))
             }
-            VenueRequest::ListNotes { landmark, query } => {
-                let friend = self.friend(context)?;
-                let places = PgReviewedPlace::new(self.pool.clone());
-                let notes = self.notes(context, friend, places, scope);
-                match notes.list_notes(actor, event, query).await {
-                    Ok(page) => {
-                        let _ = landmark;
-                        Ok(json_response(200, page_json(page)))
-                    }
-                    Err(error) => Ok(contextual_error(context, error)),
-                }
+            VenueRequest::ListNotes { .. } => {
+                Ok(error_response(context, 503, "DEPENDENCY_UNAVAILABLE"))
             }
             VenueRequest::CreateNote { landmark, command } => {
                 let friend = self.friend(context)?;
@@ -672,35 +662,8 @@ impl VenueProductProducer {
                     }
                 }
             }
-            VenueRequest::GetNote {
-                landmark,
-                id,
-                limit,
-                before,
-            } => {
-                let friend = self.friend(context)?;
-                let places = PgReviewedPlace::new(self.pool.clone());
-                let notes = self.notes(context, friend, places, scope);
-                match notes
-                    .note_thread(actor, event, &landmark, id, limit, before.as_deref())
-                    .await
-                {
-                    Ok(thread) => Ok(json_response(200, thread_json(thread))),
-                    Err(error) => Ok(contextual_error(context, error)),
-                }
-            }
-            VenueRequest::ListReplies {
-                landmark,
-                id,
-                query,
-            } => {
-                let friend = self.friend(context)?;
-                let places = PgReviewedPlace::new(self.pool.clone());
-                let notes = self.notes(context, friend, places, scope);
-                match notes.list_replies(actor, event, &landmark, id, query).await {
-                    Ok(page) => Ok(json_response(200, page_json(page))),
-                    Err(error) => Ok(contextual_error(context, error)),
-                }
+            VenueRequest::GetNote { .. } | VenueRequest::ListReplies { .. } => {
+                Ok(error_response(context, 503, "DEPENDENCY_UNAVAILABLE"))
             }
             VenueRequest::CreateReply {
                 landmark,
@@ -741,23 +704,20 @@ impl VenueProductProducer {
                 let key =
                     key.ok_or_else(|| Status::invalid_argument("Invalid Venue command key"))?;
                 match notes
-                    .withdraw_note(actor, event, &landmark, id, expected_revision, key)
+                    .withdraw_note_receipt(actor, event, &landmark, id, expected_revision, key)
                     .await
                 {
-                    Ok(mutation) => {
-                        let now = Utc::now();
-                        Ok(json_response(
-                            200,
-                            note_command_json(
-                                key,
-                                "withdrawVenuePlaceNote",
-                                mutation.resource_id,
-                                mutation.revision,
-                                now,
-                                now,
-                            ),
-                        ))
-                    }
+                    Ok(mutation) => Ok(json_response(
+                        200,
+                        note_command_json(
+                            key,
+                            "withdrawVenuePlaceNote",
+                            mutation.id,
+                            mutation.revision,
+                            mutation.created_at,
+                            mutation.expires_at,
+                        ),
+                    )),
                     Err(error) => Ok(contextual_error(context, error)),
                 }
             }
@@ -1075,54 +1035,6 @@ fn note_command_json(
         "failure_reason": Value::Null,
         "created_at": ts(created_at),
         "expires_at": ts(expires_at),
-    })
-}
-fn page_json(value: NotePage) -> Value {
-    json!({
-        "items": value.items.iter().map(note_json).collect::<Vec<_>>(),
-        "visible_count": value.visible_count,
-        "parent": value.parent.as_ref().map(note_json),
-        "next_before": value.next_before,
-        "server_now": ts(value.server_now),
-        "access_until": ts(value.access_until),
-    })
-}
-fn thread_json(value: NoteThread) -> Value {
-    json!({
-        "note": note_json(&value.note),
-        "replies": value.replies.iter().map(note_json).collect::<Vec<_>>(),
-        "next_before": value.next_before,
-        "server_now": ts(value.server_now),
-        "access_until": ts(value.access_until),
-    })
-}
-fn note_json(value: &PlaceNote) -> Value {
-    json!({
-        "id": value.id,
-        "landmark_id": value.landmark_id,
-        "landmark_revision": value.landmark_revision,
-        "author": {
-            "user_id": value.author.user_id,
-            "display_name": value.author.display_name,
-            "bio": value.author.bio,
-            "avatar": value.author.avatar,
-        },
-        "text": value.text,
-        "created_at": ts(value.created_at),
-        "expires_at": ts(value.expires_at),
-        "revision": value.revision,
-        "audience": value.audience.as_str(),
-        "expiry": value.expiry.as_str(),
-        "parent_id": value.parent_id,
-        "reply_count": value.reply_count,
-        "can_reply": value.can_reply,
-        "can_withdraw": value.can_withdraw,
-        "meet_here": value.meet_here.as_ref().map(|entry| json!({
-            "landmark_id": entry.landmark_id,
-            "recipient_user_id": entry.recipient_user_id,
-            "landmark_revision": entry.landmark_revision,
-            "access_until": ts(entry.access_until),
-        })),
     })
 }
 

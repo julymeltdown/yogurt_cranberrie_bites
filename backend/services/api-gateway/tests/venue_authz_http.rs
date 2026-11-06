@@ -150,6 +150,70 @@ fn assert_error(value: &Value, text: &str, status: u16, reason: &str) {
 }
 
 #[tokio::test]
+async fn every_venue_meeting_row_has_an_authenticated_boundary_cell() {
+    let h = RouteHarness::new().await;
+    let root = format!("/api/concert/events/{EVENT}/venue-meeting");
+    let selection = json!({
+        "selection": {
+            "selectedFriendId": PEER,
+            "landmark": {"landmarkId": "gate-a", "catalogRevision": 3, "landmarkRevision": 4}
+        }
+    });
+    let decision = json!({
+        "selection": {
+            "selectedFriendId": PEER,
+            "landmark": {"landmarkId": "gate-a", "catalogRevision": 3, "landmarkRevision": 4}
+        },
+        "expectedRevision": 1,
+        "decision": "ACCEPT"
+    });
+    let message = json!({"selection": {"selectedFriendId": PEER}, "body": "hello"});
+    let get = |path: String| {
+        venue_get(&h, Some(http_support::USER_ID), &format!("{root}{path}"))
+    };
+    let post = |path: String, body: Value| {
+        let mut request = Request::builder()
+            .method("POST")
+            .uri(format!("{root}{path}"))
+            .header(header::AUTHORIZATION, h.bearer_token(http_support::USER_ID))
+            .header(header::CONTENT_TYPE, "application/json")
+            .header(header::ORIGIN, ORIGIN)
+            .header("x-mcr-intent", "browser")
+            .header("idempotency-key", KEY);
+        request = request.header(header::CONTENT_LENGTH, body.to_string().len());
+        request.body(Body::from(body.to_string())).unwrap()
+    };
+    for request in [
+        get(format!("/context?selectedFriendId={PEER}")),
+        get("/invitations?direction=INCOMING".to_owned()),
+        post("/invitations".to_owned(), selection.clone()),
+        get(format!(
+            "/invitations/{KEY}?selectedFriendId={PEER}&landmarkId=gate-a&catalogRevision=3&landmarkRevision=4"
+        )),
+        post(format!("/invitations/{KEY}/decision"), decision),
+        get(format!("/messages?selectedFriendId={PEER}")),
+        post("/messages".to_owned(), message),
+        get(format!("/commands/{KEY}?selectedFriendId={PEER}")),
+    ] {
+        let (status, _headers, value, text) = call(&h, request).await;
+        assert_eq!(status, StatusCode::SERVICE_UNAVAILABLE);
+        assert_error(&value, &text, 503, "DEPENDENCY_UNAVAILABLE");
+    }
+    let (status, _headers, value, text) = call(
+        &h,
+        venue_get(
+            &h,
+            None,
+            &format!("{root}/messages?selectedFriendId={PEER}"),
+        ),
+    )
+    .await;
+    assert_eq!(status, StatusCode::UNAUTHORIZED);
+    assert_error(&value, &text, 401, "AUTHENTICATION_REQUIRED");
+    h.pool.close().await;
+}
+
+#[tokio::test]
 async fn venue_notes_and_location_http_are_mounted_and_fail_closed() {
     let h = RouteHarness::new().await;
     let base = format!("/api/concert/events/{EVENT}/venue");
