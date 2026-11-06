@@ -123,3 +123,109 @@ async fn product_mutations_reject_missing_origin_bad_key_and_oversize_before_rpc
     }
     harness.pool.close().await;
 }
+
+fn command_families() -> Vec<(&'static str, String, bool)> {
+    let event = "bb0f404c-61ce-4840-a907-e34788566425";
+    let id = "c2c3dd2f-30ec-48af-9220-794b6fe090b4";
+    vec![
+        ("PATCH", format!("/api/concert/events/{event}/parties/{id}"), true),
+        ("POST", format!("/api/concert/events/{event}/parties/{id}/owner"), true),
+        ("PUT", format!("/api/concert/events/{event}/parties/{id}/rally/me"), true),
+        ("POST", format!("/api/concert/events/{event}/beacons"), true),
+        ("PATCH", format!("/api/concert/events/{event}/beacons/{id}"), true),
+        ("DELETE", format!("/api/concert/events/{event}/beacons/{id}"), false),
+        ("POST", format!("/api/concert/events/{event}/giveaways"), true),
+        ("PATCH", format!("/api/concert/events/{event}/giveaways/{id}"), true),
+        ("PUT", format!("/api/concert/events/{event}/giveaways/{id}/pickup-meeting"), true),
+        ("POST", format!("/api/concert/events/{event}/giveaways/{id}/reservations"), true),
+        ("DELETE", format!("/api/concert/events/{event}/reservations/{id}"), false),
+        ("POST", format!("/api/concert/events/{event}/reservations/{id}/pickup-code"), true),
+        ("POST", format!("/api/concert/events/{event}/reservations/{id}/claim"), true),
+        ("POST", format!("/api/concert/events/{event}/posts"), true),
+        ("PATCH", format!("/api/concert/events/{event}/posts/{id}"), true),
+        ("DELETE", format!("/api/concert/events/{event}/posts/{id}"), false),
+        ("POST", format!("/api/concert/events/{event}/posts/{id}/comments"), true),
+        ("PATCH", format!("/api/concert/events/{event}/comments/{id}"), true),
+        ("DELETE", format!("/api/concert/events/{event}/comments/{id}"), false),
+        ("PUT", format!("/api/concert/events/{event}/posts/{id}/reaction"), true),
+        ("DELETE", format!("/api/concert/events/{event}/posts/{id}/reaction"), false),
+        ("POST", format!("/api/concert/events/{event}/reports"), true),
+        ("PUT", format!("/api/concert/events/{event}/admin/settings"), true),
+        ("POST", format!("/api/concert/events/{event}/admin/phase"), true),
+        ("PUT", format!("/api/concert/events/{event}/admin/service-policy"), true),
+        ("PUT", format!("/api/concert/events/{event}/admin/places/{id}"), true),
+        ("POST", format!("/api/concert/events/{event}/admin/notices"), true),
+        ("PUT", format!("/api/concert/events/{event}/admin/notices/{id}"), true),
+        ("POST", format!("/api/concert/events/{event}/admin/reports/{id}/decision"), true),
+        ("POST", format!("/api/concert/events/{event}/admin/users/{id}/moderation"), true),
+        ("POST", format!("/api/concert/events/{event}/admin/content/moderation"), true),
+        ("POST", format!("/api/concert/events/{event}/admin/closure"), true),
+    ]
+}
+
+fn command_request(method: &str, uri: &str, authenticated: bool, harness: &RouteHarness) -> Request<Body> {
+    let mut builder = Request::builder()
+        .method(method)
+        .uri(uri)
+        .header(header::ORIGIN, "http://localhost:3000")
+        .header("x-mcr-intent", "browser");
+    if authenticated {
+        builder = builder
+            .header(header::AUTHORIZATION, harness.bearer_token(USER_ID))
+            .header("idempotency-key", KEY);
+        if method != "DELETE" {
+            builder = builder.header(header::CONTENT_TYPE, "application/json");
+        }
+    }
+    let body = if authenticated && method != "DELETE" {
+        Body::from("{}")
+    } else {
+        Body::empty()
+    };
+    builder.body(body).unwrap()
+}
+
+#[tokio::test]
+async fn every_mounted_command_family_reaches_the_concert_boundary_behind_authentication() {
+    let harness = RouteHarness::new().await;
+    let router = harness.transport_router();
+    for (method, uri, mutation) in command_families() {
+        let value = json(
+            router
+                .clone()
+                .oneshot(command_request(method, &uri, false, &harness))
+                .await
+                .unwrap(),
+            StatusCode::UNAUTHORIZED,
+        )
+        .await;
+        assert_eq!(value["details"]["reason"], "AUTHENTICATION_REQUIRED", "{method} {uri}");
+        let request = command_request(method, &uri, true, &harness);
+        let status = router.clone().oneshot(request).await.unwrap().status();
+        assert_eq!(status, StatusCode::SERVICE_UNAVAILABLE, "{method} {uri} mutation={mutation}");
+    }
+    harness.pool.close().await;
+}
+
+#[tokio::test]
+async fn unknown_command_suffix_under_a_mounted_family_is_a_closed_concert_404() {
+    let harness = RouteHarness::new().await;
+    let router = harness.transport_router();
+    let uri = format!("/api/concert/events/{EVENT}/beacons/{MEDIA}/unknown");
+    let value = json(
+        router
+            .oneshot(
+                Request::builder()
+                    .uri(uri)
+                    .header(header::AUTHORIZATION, harness.bearer_token(USER_ID))
+                    .body(Body::empty())
+                    .unwrap(),
+            )
+            .await
+            .unwrap(),
+        StatusCode::NOT_FOUND,
+    )
+    .await;
+    assert_eq!(value["details"]["reason"], "RESOURCE_UNAVAILABLE");
+    harness.pool.close().await;
+}
