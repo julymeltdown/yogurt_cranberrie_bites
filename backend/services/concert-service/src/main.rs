@@ -600,6 +600,9 @@ async fn component(
     shutdown: platform::shutdown::Shutdown,
 ) -> anyhow::Result<()> {
     let result = future.await;
+    if let Err(error) = &result {
+        eprintln!("CONCERT_COMPONENT_FAILURE={name} {error:?}");
+    }
     let result = if result.is_ok() && !shutdown.is_requested() {
         Err(anyhow::anyhow!("{name} stopped unexpectedly"))
     } else {

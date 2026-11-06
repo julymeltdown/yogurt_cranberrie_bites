@@ -14,7 +14,7 @@ use crate::{
     world::{
         admission_bridge::AdmissionBridge,
         ingress::OriginPolicy,
-        invalidation::runtime::RemoteInvalidationRuntime,
+        invalidation::{runtime::RemoteInvalidationRuntime, ApplyError},
         membership::ClockAnchor,
         production_owners::ProductionOwners,
         recipient_owners::WorldRecipientReader,
@@ -475,8 +475,8 @@ impl WorldRuntimeSettings {
             vec![bridge.clone()],
         )
         .map_err(|_| anyhow::anyhow!("World replay construction failed"))?;
-        remote
-            .bootstrap()
+        let mut replay = Replay(&mut remote);
+        retry_bootstrap(&mut replay, REPLAY_WINDOW, REPLAY_INTERVAL)
             .await
             .map_err(|_| anyhow::anyhow!("World replay bootstrap unavailable"))?;
         let mut runtime = WorldRuntime::new(
@@ -765,5 +765,87 @@ mod tests {
         }
         assert!(endpoint("owner", "https://auth.mcr.internal:443", true).is_ok());
         assert!(endpoint("owner", "http://127.0.0.1:9000", false).is_ok());
+    }
+}
+
+const REPLAY_WINDOW: Duration = Duration::from_secs(10);
+const REPLAY_INTERVAL: Duration = Duration::from_millis(250);
+
+trait ReplayAttempt {
+    async fn attempt(&mut self) -> Result<(), ApplyError>;
+}
+
+struct Replay<'a>(&'a mut RemoteInvalidationRuntime);
+
+impl ReplayAttempt for Replay<'_> {
+    async fn attempt(&mut self) -> Result<(), ApplyError> {
+        self.0.bootstrap().await
+    }
+}
+
+async fn retry_bootstrap<A: ReplayAttempt>(
+    attempt: &mut A,
+    window: Duration,
+    interval: Duration,
+) -> Result<(), ApplyError> {
+    let deadline = Instant::now() + window;
+    let mut last = None;
+    loop {
+        match attempt.attempt().await {
+            Ok(()) => return Ok(()),
+            Err(ApplyError::Unavailable) => last = Some(ApplyError::Unavailable),
+            Err(error) => return Err(error),
+        }
+        let now = Instant::now();
+        if now >= deadline {
+            return Err(last.unwrap_or(ApplyError::Unavailable));
+        }
+        tokio::time::sleep(interval.min(deadline.saturating_duration_since(now))).await;
+    }
+}
+
+
+#[cfg(test)]
+mod startup_replay_retry_tests {
+    use super::*;
+
+    struct Fake {
+        calls: usize,
+        success_after: Option<usize>,
+        error: ApplyError,
+    }
+
+    impl ReplayAttempt for Fake {
+        async fn attempt(&mut self) -> Result<(), ApplyError> {
+            self.calls += 1;
+            if self.success_after.is_some_and(|limit| self.calls >= limit) {
+                Ok(())
+            } else {
+                Err(self.error)
+            }
+        }
+    }
+
+    #[tokio::test]
+    async fn late_invalidation_source_is_reached_within_the_window() {
+        let mut fake = Fake { calls: 0, success_after: Some(3), error: ApplyError::Unavailable };
+        assert!(retry_bootstrap(&mut fake, Duration::from_millis(200), Duration::from_millis(5)).await.is_ok());
+        assert_eq!(fake.calls, 3);
+    }
+
+    #[tokio::test]
+    async fn exhausted_window_returns_the_original_error_without_ready_state() {
+        let mut fake = Fake { calls: 0, success_after: None, error: ApplyError::Unavailable };
+        let result = retry_bootstrap(&mut fake, Duration::from_millis(20), Duration::from_millis(4)).await;
+        assert!(matches!(result, Err(ApplyError::Unavailable)));
+        assert!(fake.calls > 1);
+    }
+
+    #[tokio::test]
+    async fn definitive_refusal_fails_without_retrying() {
+        let mut fake = Fake { calls: 0, success_after: None, error: ApplyError::Unbound };
+        let result = retry_bootstrap(&mut fake, Duration::from_millis(200), Duration::from_millis(5)).await;
+        assert!(matches!(result, Err(ApplyError::Unbound)));
+        assert_eq!(fake.calls, 1);
     }
 }

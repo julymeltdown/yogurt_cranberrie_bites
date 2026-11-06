@@ -213,13 +213,15 @@ class DevStack:
                                        self.ports, ("redis",), secret_values)
         self.redis.wait_listeners()
         runtime.redis_ping(self.redis, redis_password)
-        for name in runtime.start_order():
+        order = runtime.start_order()
+        for name in order:
             with runtime.protected_signals():
                 child = runtime.Child(self.cluster, name, [str(binaries[name])], envs[name], self.ports,
                                       tuple(f"{name}:{kind}" for kind in ("http", "metrics", "grpc")), secret_values)
                 self.children[name] = child
                 self.rows[name]["pid"] = child.process.pid
-            child.wait_listeners()
+        for name in order:
+            self.children[name].wait_listeners()
         self.health()
         self.report["configuration"] = {"mode": "parity", "seed": False, "migration_mode": "external",
             "home": "OMITTED", "cookie_secure": False, "cookie_scope": "explicit local HTTP fixture only",
