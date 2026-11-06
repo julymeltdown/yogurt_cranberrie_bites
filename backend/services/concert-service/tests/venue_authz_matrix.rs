@@ -2088,7 +2088,8 @@ fn matrix_statuses_are_declared_by_frozen_contracts() {
 #[test]
 fn meeting_route_admission_is_exact_and_closed() {
     use concert_service::product_rpc::{
-        operation, venue_meeting_admission::MeetingOperation, Operation,
+        operation, venue_admission::VenueOperation, venue_meeting_admission::MeetingOperation,
+        Operation,
     };
     let event = Uuid::new_v4();
     let friend = Uuid::new_v4();
@@ -2103,11 +2104,19 @@ fn meeting_route_admission_is_exact_and_closed() {
         Operation::Meeting(MeetingOperation::Context)
     );
     assert_eq!(
-        operation(event, "GET", &format!("{base}/venue/location"))
-            .unwrap_err()
-            .code(),
-        Code::PermissionDenied,
-        "product RPC refuses venue location/notes; HTTP authorization is proven at the application layer only"
+        operation(event, "GET", &format!("{base}/venue/location")).unwrap(),
+        Operation::Venue(VenueOperation::LocationSnapshot),
+        "frozen GET /venue/location (200) is dispatched to the venue producer"
+    );
+    assert_eq!(
+        operation(
+            event,
+            "GET",
+            &format!("{base}/venue/landmarks/{LANDMARK}/notes")
+        )
+        .unwrap(),
+        Operation::Venue(VenueOperation::ListNotes),
+        "frozen GET /venue/landmarks/:landmark/notes is dispatched to the venue producer"
     );
     assert_eq!(
         operation(
