@@ -793,6 +793,31 @@ def main(argv=None):
         status, body, _ = request(closure_url, "POST", closure, member[1], origin, True,
                                   {"Idempotency-Key": str(uuid4())})
         record("member_closure", {"status": status, "body": body})
+        # The World authority task renews room leases on a 1 s supervised tick.
+        # The closure retired those leases and closed the phase, so one tick
+        # must pass with the service still up before the post-closure probes.
+        # Time is the behavior here: wait past a full interval, bounded.
+        settle_started = time.monotonic()
+        while time.monotonic() - settle_started < 2.0:
+            time.sleep(0.05)
+        concert_child = stack.children.get("concert-service")
+        concert_alive = concert_child is not None and concert_child.process.poll() is None
+        settle_offset = log_offsets.get("concert-service", 0)
+        record("post_closure_settle", {
+            "waited_seconds": round(time.monotonic() - settle_started, 3),
+            "concert_alive": concert_alive,
+        })
+        # Scan the whole post-closure byte range, not the truncated step excerpt.
+        settle_bytes = ""
+        if concert_child is not None and not concert_child.log.is_symlink():
+            with concert_child.log.open("rb") as stream:
+                stream.seek(settle_offset)
+                settle_bytes = stream.read(65536).decode("utf-8", errors="replace")
+        checks["world_survives_closure"] = (
+            concert_alive
+            and "World authority maintenance failed" not in settle_bytes
+            and "CONCERT_COMPONENT_FAILURE" not in settle_bytes
+        )
         # The Gateway mount and the Concert product classifier now both resolve
         # this route. READ_ONLY must refuse it with 409 and leave no feed rows.
         before = feed_rows(stack.cluster, event)
