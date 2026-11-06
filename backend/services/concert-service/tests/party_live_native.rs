@@ -686,6 +686,99 @@ async fn party_live_native() -> anyhow::Result<()> {
         .bind(event)
         .execute(&pool)
         .await?;
+    // Unblocked control: the same actor still sees both parties after the
+    // synthetic authority restriction is cleared.
+    let control = request(
+        &service(pool.clone(), false, false),
+        binding(
+            other,
+            event,
+            Uuid::new_v4(),
+            "listConcertParties",
+            format!("/api/concert/events/{event}/parties"),
+            &[],
+            None,
+        ),
+        PartyLiveAction::List(PartyQuery::default()),
+    )
+    .await?;
+    anyhow::ensure!(
+        control.status == 200 && control.body["items"].as_array().unwrap().len() == 2,
+        "unblocked control lost the visible parties"
+    );
+    // A committed canonical pair block removes the owner from the actual list
+    // projection even when every synthetic authority flag stays permissive.
+    let (low, high) = (other.min(owner), other.max(owner));
+    let mut block = pool.begin().await?;
+    sqlx::query("select set_config('mcr.relationship_authority_until',(clock_timestamp()+interval '1 minute')::text,true)").execute(&mut *block).await?;
+    sqlx::query("insert into concert_relationship_pairs(event_id,low_user,high_user,low_blocks_high) values($1,$2,$3,true) on conflict(event_id,low_user,high_user) do update set low_blocks_high=true,revision=concert_relationship_pairs.revision+1")
+        .bind(event).bind(low).bind(high).execute(&mut *block).await?;
+    block.commit().await?;
+    let canonical_block = request(
+        &service(pool.clone(), false, false),
+        binding(
+            other,
+            event,
+            Uuid::new_v4(),
+            "listConcertParties",
+            format!("/api/concert/events/{event}/parties"),
+            &[],
+            None,
+        ),
+        PartyLiveAction::List(PartyQuery::default()),
+    )
+    .await?;
+    anyhow::ensure!(
+        canonical_block.status == 200
+            && canonical_block.body["items"].as_array().unwrap().is_empty(),
+        "canonical block left the owner visible"
+    );
+    let mut block = pool.begin().await?;
+    sqlx::query("select set_config('mcr.relationship_authority_until',(clock_timestamp()+interval '1 minute')::text,true)").execute(&mut *block).await?;
+    sqlx::query("update concert_relationship_pairs set low_blocks_high=false,revision=revision+1 where event_id=$1 and low_user=$2 and high_user=$3")
+        .bind(event).bind(low).bind(high).execute(&mut *block).await?;
+    block.commit().await?;
+    let restored = request(
+        &service(pool.clone(), false, false),
+        binding(
+            other,
+            event,
+            Uuid::new_v4(),
+            "listConcertParties",
+            format!("/api/concert/events/{event}/parties"),
+            &[],
+            None,
+        ),
+        PartyLiveAction::List(PartyQuery::default()),
+    )
+    .await?;
+    anyhow::ensure!(
+        restored.status == 200 && restored.body["items"].as_array().unwrap().len() == 2,
+        "unblock did not restore the list projection"
+    );
+    // Suspension is a separate local admission fact and removes the owner too.
+    sqlx::query("update concert_event_admissions set state='SUSPENDED',restriction_revision=restriction_revision+1 where event_id=$1 and user_id=$2")
+        .bind(event).bind(owner).execute(&pool).await?;
+    let suspended = request(
+        &service(pool.clone(), false, false),
+        binding(
+            other,
+            event,
+            Uuid::new_v4(),
+            "listConcertParties",
+            format!("/api/concert/events/{event}/parties"),
+            &[],
+            None,
+        ),
+        PartyLiveAction::List(PartyQuery::default()),
+    )
+    .await?;
+    anyhow::ensure!(
+        suspended.status == 200 && suspended.body["items"].as_array().unwrap().is_empty(),
+        "suspended owner remained visible"
+    );
+    sqlx::query("update concert_event_admissions set state='ACTIVE',restriction_revision=restriction_revision+1 where event_id=$1 and user_id=$2")
+        .bind(event).bind(owner).execute(&pool).await?;
     let profile_failure = service(pool.clone(), true, false);
     let denied = request(
         &profile_failure,
