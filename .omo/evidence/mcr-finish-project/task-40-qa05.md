@@ -32,15 +32,26 @@ External Auth/Profile/owner observations are the existing synthetic
 | # | Case | Fault injection | Server close | Recovery path | Assertions |
 | --- | --- | --- | --- | --- | --- |
 | 1 | `qa05_delayed_and_gapped_frames_recover_to_a_fresh_snapshot` | Client stops reading 400 ms while a peer moves; then the client discards one delta and observes the next sequence number | none for the delay; `4409 RESYNC_REQUIRED` only for a deliberately stale stream in case 2 | Correlated `resync` from the last good `streamSeq` | Delayed frames stay monotonic; `snapshot cause=RESYNC`, `streamSeq=0`, new `streamId`, same `roomEpoch`, two unique players, two active memberships, one row per actor |
-| 2 | `qa05_foreground_background_resync_is_fresh_and_uncorrupted` | Native client sends `FOREGROUND` and `PROTOCOL_RECOVERY` resyncs 1050 ms apart, then input on an archived stream | `4409 RESYNC_REQUIRED` on archived stream | Two correlated resyncs on the same socket | Each resync returns `cause=RESYNC`, `requestId` echo, `streamSeq=0`, new `streamId`, unchanged `accessExpiresAt`, two unique actors |
-| 3 | `qa05_slow_consumer_backpressure_recovers_without_ghost` | Per-binding transport readiness gate emulates a saturated send buffer; peer keeps moving for the 5000 ms slow-consumer window | `4409 BACKPRESSURE` | Close, membership release, fresh-ticket reconnect | Close arrives inside the asserted 4.9–9.0 s window; only the peer remains active; reconnect `cause=INITIAL`, `streamSeq=0`, two unique players, exactly one membership row for the recovered actor |
-| 4 | `qa05_ticket_replay_is_rejected_without_a_second_membership` | Consumed ticket replayed on a second real socket | `4401 AUTH_REQUIRED` | Original socket keeps streaming; no admission for the replay | One active membership before and after, one row for the actor, replay inserts nothing, original client still receives a delta |
+| 2 | `qa05_foreground_background_resync_is_fresh_and_uncorrupted` | Native client sends `FOREGROUND` and `PROTOCOL_RECOVERY` resyncs 1050 ms apart, then input on an archived stream | `4409 RESYNC_REQUIRED` on archived stream | Two correlated resyncs on the same socket | Each resync returns `cause=RESYNC`, `requestId` echo, `streamSeq=0`, new `streamId`, unchanged `accessExpiresAt`, `roomEpoch` equal to the observed stream and to the room epoch, two unique actors |
+| 3 | `qa05_slow_consumer_backpressure_recovers_without_ghost` | Per-binding transport readiness gate emulates a saturated send buffer; peer keeps moving for the 5000 ms slow-consumer window | `4409 BACKPRESSURE` | Close, membership release, fresh-ticket reconnect | Close arrives inside the asserted 4.9–9.0 s window; only the peer remains active; reconnect `cause=INITIAL`, `streamSeq=0`, `roomEpoch` equal to the room epoch, `roomId` equal to the claimed room, two unique players, exactly one membership row for the recovered actor |
+| 4 | `qa05_ticket_replay_is_rejected_without_a_second_membership` | Consumed ticket replayed on a second real socket | `4401 AUTH_REQUIRED` | Original socket keeps streaming; no admission for the replay | One active membership before and after, one row for the actor, replay inserts nothing, the surviving delta keeps the original `roomEpoch` and the room epoch |
 | 5 | `qa05_server_restart_mid_session_recovers_with_a_new_epoch` | Stop the World socket server/runtime mid-session, then restart with new room epochs on the same owned PG | `4500 SERVER_UNAVAILABLE` to both clients | Fresh tickets, two reconnect snapshots | New `roomEpoch`, new `streamId`, `cause=INITIAL`, `streamSeq=0`, exactly two unique players after both rejoin, one membership row, two active members, pre-restart ticket still `4401 AUTH_REQUIRED` |
-| 6 | `qa05_room_switch_is_atomic_and_replay_safe` | Successful `switchRoom` with a fresh ticket; then replay of the consumed switch ticket; then a full target room | Consumed switch ticket replay `4401 AUTH_REQUIRED`; capacity refusal is `switchRejected ROOM_FULL` | `ROOM_SWITCH` snapshot on the moving stream; old room publishes `removes` | `cause=ROOM_SWITCH`, request echo, new `streamId`, `streamSeq=0`, target `roomId`, only the actor; old room drops the actor once; one membership row in the target; full-room rejection keeps the current stream and membership |
+| 6 | `qa05_room_switch_is_atomic_and_replay_safe` | Successful `switchRoom` with a fresh ticket; then replay of the consumed switch ticket; then a full target room | Consumed switch ticket replay `4401 AUTH_REQUIRED`; capacity refusal is `switchRejected ROOM_FULL` | `ROOM_SWITCH` snapshot on the moving stream; old room publishes `removes` | `cause=ROOM_SWITCH`, request echo, new `streamId`, `streamSeq=0`, target `roomId`, `roomEpoch` equal to the target room epoch and different from the old room's, only the actor; old room drops the actor once; one membership row in the target; full-room rejection keeps the current stream and membership |
 
-Snapshot coherence assertions on every recovery: unique `userId` set, numeric
-`position.x/y`, `roomEpoch` equality with the observed stream, `streamSeq=0`,
-and the expected actor set. No case produces a duplicate actor entry.
+Epoch assertions are explicit in every case that recovers a snapshot. Cases 1, 2, 3, 5 and 6 compare the recovered snapshot's `roomEpoch` with `World::epoch(room)` for the room the snapshot claims to be in; case 1 also compares it with the gapped stream, case 2 with the previous snapshot on the same socket, and case 6 with the target epoch while asserting it differs from the old room's. Case 4 produces no recovery snapshot: the replay is rejected and the surviving stream continues, so it asserts that the continuing delta's `roomEpoch` equals both the original snapshot epoch and the room epoch. No case is left without an epoch check.
+
+Committed assertion lines in
+`backend/services/concert-service/tests/qa05_realtime_relay.rs`:
+
+| Case | Lines | Assertion |
+| --- | --- | --- |
+| helper | 438 | `World::epoch(room)` resolves the configured epoch |
+| 1 | 838–840 | recovered `roomEpoch` = gapped stream = room epoch; recovered `roomId` = room |
+| 2 | 950–955 | each resync's `roomEpoch` = previous snapshot epoch = room epoch |
+| 3 | 900–901 | reconnect `roomEpoch` = room epoch; `roomId` = room |
+| 4 | 1012–1017 | surviving delta `roomEpoch` = original snapshot = room epoch (no recovery snapshot) |
+| 5 | 1066, 1072 | both post-restart snapshots use the new room epoch |
+| 6 | 1156–1157 | `ROOM_SWITCH` snapshot uses the target room epoch and differs from the old room |
 
 ## Commands and results
 

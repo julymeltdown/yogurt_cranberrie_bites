@@ -435,6 +435,10 @@ impl World {
         self.order[index]
     }
 
+    fn epoch(&self, room: Uuid) -> String {
+        self.epochs[&room].to_string()
+    }
+
     fn block(&self, user: Uuid) {
         *self.generation.blocked.lock().unwrap() = Some(user);
     }
@@ -832,6 +836,8 @@ async fn qa05_delayed_and_gapped_frames_recover_to_a_fresh_snapshot() -> anyhow:
     assert_eq!(fresh["streamSeq"], 0);
     assert_ne!(fresh["streamId"], gap["streamId"]);
     assert_eq!(fresh["roomEpoch"], gap["roomEpoch"]);
+    assert_eq!(fresh["roomEpoch"], world.epoch(room));
+    assert_eq!(fresh["roomId"], room.to_string());
     assert_unique_players(&fresh);
     assert_eq!(player_ids(&fresh).len(), 2, "fresh snapshot keeps both actors once");
     let active = world.active_members(None).await;
@@ -891,6 +897,8 @@ async fn qa05_slow_consumer_backpressure_recovers_without_ghost() -> anyhow::Res
     let (_, fresh) = world.authenticate(&mut again, room, a_user).await;
     assert_eq!(fresh["cause"], "INITIAL");
     assert_eq!(fresh["streamSeq"], 0);
+    assert_eq!(fresh["roomEpoch"], world.epoch(room), "recovered stream keeps the room epoch");
+    assert_eq!(fresh["roomId"], room.to_string());
     assert_unique_players(&fresh);
     assert_eq!(player_ids(&fresh).len(), 2);
     let active = world.active_members(Some(a_user)).await;
@@ -939,6 +947,12 @@ async fn qa05_foreground_background_resync_is_fresh_and_uncorrupted() -> anyhow:
         assert_eq!(fresh["requestId"], request.to_string(), "{reason}");
         assert_eq!(fresh["streamSeq"], 0);
         assert_ne!(fresh["streamId"], snapshot["streamId"]);
+        assert_eq!(
+            fresh["roomEpoch"],
+            snapshot["roomEpoch"],
+            "{reason} must keep the observed room epoch"
+        );
+        assert_eq!(fresh["roomEpoch"], world.epoch(room), "{reason} epoch is the room epoch");
         assert_eq!(fresh["accessExpiresAt"], access, "{reason} must not extend access");
         assert_unique_players(&fresh);
         assert_eq!(player_ids(&fresh).len(), 2, "{reason}: one entry per actor");
@@ -995,6 +1009,12 @@ async fn qa05_ticket_replay_is_rejected_without_a_second_membership() -> anyhow:
     input(&mut b, &b_snapshot, 1, 1).await;
     let delta = until(&mut a, |v| v["type"] == "delta").await;
     assert!(delta["streamSeq"].as_u64().unwrap() >= 1);
+    assert_eq!(
+        delta["roomEpoch"],
+        a_snapshot["roomEpoch"],
+        "surviving stream keeps its room epoch"
+    );
+    assert_eq!(delta["roomEpoch"], world.epoch(room));
     assert_eq!(a_snapshot["streamSeq"], 0);
     a.close(None).await.ok();
     b.close(None).await.ok();
@@ -1133,6 +1153,8 @@ async fn qa05_room_switch_is_atomic_and_replay_safe() -> anyhow::Result<()> {
     assert_eq!(switched["roomId"], target.to_string());
     assert_eq!(switched["streamSeq"], 0);
     assert_ne!(switched["streamId"], a_snapshot["streamId"]);
+    assert_eq!(switched["roomEpoch"], world.epoch(target));
+    assert_ne!(switched["roomEpoch"], a_snapshot["roomEpoch"]);
     assert_unique_players(&switched);
     assert_eq!(player_ids(&switched), BTreeSet::from([a_user.to_string()]));
     let _ = until(&mut b, |v| {
