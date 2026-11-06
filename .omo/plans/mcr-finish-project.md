@@ -374,7 +374,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   Recommended task executor category: deep-low
   Commit: Y | `feat(venue): complete map and friends states`
 
-- [ ] 26. Complete the invitation and conversation client
+- [x] 26. Complete the invitation and conversation client
   What to do / Must NOT do: incoming/outgoing invitations, accept/decline/cancel and the event-scoped conversation, with no bare-user DM entry. Do NOT let opening a screen perform a write; do NOT show invitation context as a conversation permission.
   Closes: GAP-1
   Parallelization: Wave 4 | Blocked by: 24 | Blocks: 28

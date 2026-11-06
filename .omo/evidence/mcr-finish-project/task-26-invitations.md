@@ -43,8 +43,7 @@ to Pending rows. Adversarial tests that failed on the old behavior:
 
 ## Corrected pre-existing failure record
 
-The scratch-master failure record at `6cb31ca70` names exactly three, all pre-existing and out of
-scope:
+The named pre-existing failures are exactly three, all out of scope:
 
 1. `src/shared/api/__tests__/c07-social-client/compatibility.test.ts` —
    "pins the exact public cohort without claiming all indexed fixtures are qualified" (C07
@@ -55,8 +54,13 @@ scope:
    "aborts a pending list read and rejects its late completion across policy change" (the `list`
    parameterized case).
 
-The two sharing-safety tests previously misrecorded in this evidence are **not** failures. They pass
-on scratch master; the full sharing-safety file is 9/9 on this checkout.
+The two abort tests in (2) and (3) are pre-existing timing flakes. The operations-composition suite
+is flaky in isolation: 53/54 then 54/54 across repeated runs.
+
+Scratch-master observations:
+
+- `6cb31ca70`: 2 failed / 5712 passed / 14 skipped.
+- `937ab6699`: 3 failed / 5711 passed / 14 skipped (C07 plus the two operations-composition aborts).
 
 ### Scratch-master commands
 
@@ -68,19 +72,10 @@ cd /tmp/mcr-scratch-6cb31ca70/frontend
 node /Users/lhs/Desktop/mcr-worktrees/exec-w4-inv/frontend/node_modules/vitest/vitest.mjs run
 node /Users/lhs/Desktop/mcr-worktrees/exec-w4-inv/frontend/node_modules/vitest/vitest.mjs run \
   src/app/operations-composition/__tests__/composition.test.tsx \
-  src/app/operations-composition/__tests__/reports-production/composition.test.tsx \
-  src/app/social-composition/__tests__/sharing-safety-default/entry.test.tsx
+  src/app/operations-composition/__tests__/reports-production/composition.test.tsx
 ```
 
-Observed on this host:
-
-- Scratch-master full suite: 5713 passed, 14 skipped, 1 failed (C07).
-- Combined operations/social files: 54/54 passed.
-- Sharing-safety file alone: 9/9 passed.
-- The operations-composition two are therefore recorded from the supplied scratch-master
-  full-suite review as order/timing-dependent; they remain the named pre-existing failures and are
-  out of scope. No C07 pin, operations-composition, social-composition or generated contract was
-  modified.
+No C07 pin, operations-composition or generated contract was modified.
 
 ## Implemented surface
 
