@@ -286,6 +286,62 @@ impl ChildIntentSettler for RecordChildRecovery {
     }
 }
 #[tokio::test]
+async fn child_intent_registration_must_precede_an_effect_witness_sharing_the_scope_row() {
+    use concert_service::adapters::out::relationship_authority::guarded::{
+        ChildQuery, ChildRecoveryReference,
+    };
+    // An effect witness takes FOR SHARE on its root scope row and holds it until
+    // the projecting transaction commits. Child-intent registration needs the
+    // exclusive lifecycle lock, so it must be issued first: a social read that
+    // witnesses before retaining waits on its own request's share lock until
+    // the 250ms ledger lock timeout fails the whole read (503).
+    let pool = pool().await;
+    let ledger = new_ledger(&pool, Uuid::new_v4());
+    let binding = binding();
+    let key = ScopeKey {
+        instance: ledger.instance(),
+        scope: Uuid::new_v4(),
+        binding_digest: binding.digest().unwrap(),
+    };
+    ledger.register(&key, &binding).await.unwrap();
+    let query = ChildQuery {
+        actor: binding.actor_id,
+        event: binding.event_id,
+        subject: binding.actor_id,
+        family: binding.session_family_id,
+        request: binding.request_id,
+        expires_unix_micros: binding.expires_unix_micros,
+        binding_digest: key.binding_digest,
+    };
+    let intent = Uuid::new_v4();
+    let reference = ChildRecoveryReference::ProfilePublic {
+        child_id: query.profile_child_id(intent).unwrap(),
+        query,
+        completion_secret: Uuid::new_v4().simple().to_string(),
+    };
+    // Same row lock an effect witness holds for its projecting transaction.
+    let mut projecting = pool.begin().await.unwrap();
+    sqlx::query("SELECT 1 FROM concert_product_owner_scopes WHERE instance_id=$1 AND scope_id=$2 FOR SHARE")
+        .bind(key.instance)
+        .bind(key.scope)
+        .execute(&mut *projecting)
+        .await
+        .unwrap();
+    assert!(
+        ledger.register_child_intent(&key, &reference).await.is_err(),
+        "lifecycle registration must stay serialized against the witness share lock"
+    );
+    projecting.rollback().await.unwrap();
+    // With the share lock released (the supported order: intent first), the
+    // identical registration succeeds.
+    ledger
+        .register_child_intent(&key, &reference)
+        .await
+        .unwrap();
+    pool.close().await;
+}
+
+#[tokio::test]
 async fn encrypted_predispatch_intent_survives_lost_handles_and_requires_actual_recovery_success() {
     use concert_service::adapters::out::relationship_authority::guarded::{
         ChildQuery, ChildRecoveryReference,

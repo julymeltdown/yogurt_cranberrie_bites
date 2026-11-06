@@ -434,6 +434,16 @@ impl SocialRuntime {
                 .map_err(rel)?;
         }
         let (value, until) = request_value(&mut tx, &row).await?;
+        let subjects = if matches!(op, SocialOperation::Cancel(_) | SocialOperation::Revoke(_)) {
+            vec![]
+        } else {
+            vec![peer]
+        };
+        // Retain the source exclusion before the witness takes its scope FOR
+        // SHARE lock; see RuntimeHooks::succeeded.
+        hooks
+            .retain(&mut tx, SocialReadSources::Metadata { subjects }, until)
+            .await?;
         hooks
             .succeeded(
                 &mut tx,
@@ -446,14 +456,6 @@ impl SocialRuntime {
             )
             .await
             .map_err(rel)?;
-        let subjects = if matches!(op, SocialOperation::Cancel(_) | SocialOperation::Revoke(_)) {
-            vec![]
-        } else {
-            vec![peer]
-        };
-        hooks
-            .retain(&mut tx, SocialReadSources::Metadata { subjects }, until)
-            .await?;
         tx.commit().await.map_err(|_| unavailable())?;
         Ok(value)
     }
@@ -481,6 +483,13 @@ impl SocialRuntime {
         }
         let value = json!({"user_id":actor.user_id.uuid(),"platform":platform.as_str(),"version":expected,"configured":row.get::<bool,_>("configured")});
         hooks
+            .retain(
+                &mut tx,
+                SocialReadSources::Metadata { subjects: vec![] },
+                None,
+            )
+            .await?;
+        hooks
             .succeeded(
                 &mut tx,
                 SocialEffect {
@@ -492,13 +501,6 @@ impl SocialRuntime {
             )
             .await
             .map_err(rel)?;
-        hooks
-            .retain(
-                &mut tx,
-                SocialReadSources::Metadata { subjects: vec![] },
-                None,
-            )
-            .await?;
         tx.commit().await.map_err(|_| unavailable())?;
         Ok(value)
     }
@@ -524,6 +526,13 @@ impl SocialRuntime {
         }
         let value = json!({"target_user_id":id,"blocked_by_me":row.get::<bool,_>("blocked"),"revision":expected});
         hooks
+            .retain(
+                &mut tx,
+                SocialReadSources::Metadata { subjects: vec![] },
+                None,
+            )
+            .await?;
+        hooks
             .succeeded(
                 &mut tx,
                 SocialEffect {
@@ -535,13 +544,6 @@ impl SocialRuntime {
             )
             .await
             .map_err(rel)?;
-        hooks
-            .retain(
-                &mut tx,
-                SocialReadSources::Metadata { subjects: vec![] },
-                None,
-            )
-            .await?;
         tx.commit().await.map_err(|_| unavailable())?;
         Ok(value)
     }
@@ -628,6 +630,9 @@ impl SocialRuntime {
         };
         let value = json!({"items":items,"next_cursor":next});
         hooks
+            .retain(&mut tx, SocialReadSources::Metadata { subjects }, until)
+            .await?;
+        hooks
             .succeeded(
                 &mut tx,
                 SocialEffect {
@@ -639,9 +644,6 @@ impl SocialRuntime {
             )
             .await
             .map_err(rel)?;
-        hooks
-            .retain(&mut tx, SocialReadSources::Metadata { subjects }, until)
-            .await?;
         tx.commit().await.map_err(|_| unavailable())?;
         Ok(value)
     }
@@ -792,7 +794,11 @@ impl SocialTransactionHooks for RuntimeHooks {
         c: &mut PgConnection,
         effect: SocialEffect,
     ) -> Result<(), RelationshipError> {
-        self.witness.succeeded(c, effect).await?;
+        // Retain the response's source exclusion BEFORE recording the effect
+        // witness. The witness insert takes a FOR SHARE lock on the scope row
+        // for the rest of this transaction, and child-intent registration takes
+        // FOR UPDATE on that same row; registering afterwards would wait on our
+        // own lock and fail the read. Both still commit with this transaction.
         if effect.projection {
             if let Some(sources) = self.retained.clone() {
                 self.retain(c, sources, None)
@@ -800,6 +806,7 @@ impl SocialTransactionHooks for RuntimeHooks {
                     .map_err(|_| RelationshipError::Unavailable)?;
             }
         }
+        self.witness.succeeded(c, effect).await?;
         Ok(())
     }
 }
