@@ -36,7 +36,10 @@ fn registry_accepts_only_the_matching_caller_credential() {
             Workload::Auth => AUTH_TOKEN,
             Workload::Post => POST_TOKEN,
             // Unregistered workloads have no accepted credential.
-            Workload::Profile | Workload::Friend | Workload::Notification => continue,
+            Workload::Profile
+            | Workload::Friend
+            | Workload::Notification
+            | Workload::Concert => continue,
         };
         let request = authenticated_request(workload, token);
         assert_eq!(

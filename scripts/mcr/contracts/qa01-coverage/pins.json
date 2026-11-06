@@ -1,5 +1,5 @@
 {
-  "canonical_candidate": "7c563cf09fe971b904ac9549f5e3e8fe1391d94a",
+  "canonical_candidate": "9185c99223bbf7437fff4346a7683dbb4187dfb0",
   "inputs": {
     "backend/docs/api/mcr-core.openapi.json": "6e3b4d141d04b137579bf0436e93009e6c4b6a291a230049064d236d12db171d",
     "backend/docs/api/mcr-domain.openapi.json": "31a167fedd6b414a9d0b48df0f18644fcbd9f7a7a9bcef855265601e1401d634",
@@ -237,10 +237,10 @@
     "contracts/realtime/v1/operations.json": "400d28e861ca5a87c54fde447f77b1680f7ea58e3047ee43b46db25816af6da0",
     "contracts/realtime/v1/policy.json": "6f79a6f79028d49c7e81a7ef18c82ba451af610dd5acb401293b6298a0645734",
     "contracts/realtime/v1/world.schema.json": "6ec593955a695656bcf5ec736e25fdf26593f1eff28bda657541779a1ec8cd85",
-    "frontend/src/shared/api/domain-operations.generated.ts": "3610456a0925aee9c4e3a32564016ea6acc26b7ab01ce536659b7333a5ddd447",
-    "scripts/mcr/generate-domain-transport.py": "77c34bca7951c83dca20be6680c0125e349ea0ab0abf8b50b782e0379a24d33f",
+    "frontend/src/shared/api/domain-operations.generated.ts": "80905d6d46b61a73856cb529d2f5b93d26a4087569b7eccb28fd40a100225804",
+    "scripts/mcr/generate-domain-transport.py": "d6b544ad23ea1409b45eb47cefd00b12860555e1973d1a920072f15d60ce3635",
     "scripts/mcr/requirements-contracts.txt": "fc6c67bbfd66de4a6fa8e5521823a733cedff5ea56657cbd49ca03a619504782",
-    "scripts/mcr/validate-assets.py": "a4fb1f8cd579031c585f458fe7eb6607116afdc41c90113007ab60de3ccb023c",
+    "scripts/mcr/validate-assets.py": "b87ce968351a3732f9a5fc98d76ab269919d73f84fe66a4d64e10a03a3dd6e47",
     "scripts/mcr/validate-core.py": "69e29751133b16e1e226593d79c008cbd7586e10ca0b93442126f7ffac536954",
     "scripts/mcr/validate-domain.py": "6da2c573127d8dda9a7dfb80840abf72ac1ea4c67757b1dea29a06c978701cb0",
     "scripts/mcr/validate-realtime.py": "f16597d77d7110c417dc610b54aa8a40951da7ad656198139df4770e60c1be09"
