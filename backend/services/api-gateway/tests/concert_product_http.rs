@@ -55,7 +55,7 @@ async fn actual_transport_keeps_product_reads_authenticated_and_closed_without_p
 }
 
 #[tokio::test]
-async fn service_policy_read_is_mounted_authenticated_and_reaches_the_concert_boundary() {
+async fn service_policy_read_is_mounted_authenticated_and_fails_closed_without_a_producer() {
     let harness = RouteHarness::new().await;
     let uri = format!(
         "/api/concert/events/{EVENT}/service-policy?client_version=0.1.0&client_release={}",
@@ -74,6 +74,12 @@ async fn service_policy_read_is_mounted_authenticated_and_reaches_the_concert_bo
         .header(header::AUTHORIZATION, harness.bearer_token(USER_ID))
         .body(Body::empty())
         .unwrap();
+    // This harness configures no Concert product client, so the authenticated
+    // request is admitted past the route's own authentication and then refused
+    // at the unconfigured producer guard. It proves the exact route is mounted
+    // and protected, and that the guard fails closed; it does not reach the
+    // Concert gRPC boundary. That boundary is proven by the concert-service
+    // product_rpc/service_policy suites, not by this transport test.
     let value = json(
         router.oneshot(request).await.unwrap(),
         StatusCode::SERVICE_UNAVAILABLE,

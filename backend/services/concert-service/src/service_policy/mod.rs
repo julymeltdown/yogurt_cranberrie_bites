@@ -6,7 +6,7 @@
 //! operator authority is inferred from the client's release claim.
 use crate::product_rpc::{
     proto,
-    scoped::{ProductRepresentation, ScopedProductOwner, ScopedProductProducer},
+    scoped::{ProductRepresentation, ScopedProductProducer},
     Operation, ProductOwner, VerifiedProduct,
 };
 use async_trait::async_trait;
@@ -243,13 +243,23 @@ impl ScopedProductProducer for ServicePolicyProducer {
 /// operation keeps the retained product dispatch (or stays refused when the
 /// configuration composes no other owner).
 pub struct ServicePolicyOwners {
-    policy: ScopedProductOwner,
+    policy: Arc<dyn ProductOwner>,
     base: Option<Arc<dyn ProductOwner>>,
 }
 
 impl ServicePolicyOwners {
-    pub fn new(policy: ScopedProductOwner, base: Option<Arc<dyn ProductOwner>>) -> Self {
+    pub fn new(policy: Arc<dyn ProductOwner>, base: Option<Arc<dyn ProductOwner>>) -> Self {
         Self { policy, base }
+    }
+
+    /// The exact owner for one already authenticated operation. The policy
+    /// read owns its own operation; everything else keeps the retained base.
+    fn owner(&self, operation: &Operation) -> Option<&Arc<dyn ProductOwner>> {
+        if *operation == Operation::ServicePolicy {
+            Some(&self.policy)
+        } else {
+            self.base.as_ref()
+        }
     }
 }
 
@@ -260,14 +270,23 @@ impl ProductOwner for ServicePolicyOwners {
         context: &VerifiedProduct,
         request: proto::ProductRequest,
     ) -> Result<tonic::Response<proto::ProductResponse>, Status> {
-        if context.operation() == Operation::ServicePolicy {
-            self.policy.dispatch(context, request).await
-        } else if let Some(base) = &self.base {
-            base.dispatch(context, request).await
-        } else {
-            Err(Status::permission_denied("Unsupported product operation"))
+        match self.owner(&context.operation()) {
+            Some(owner) => owner.dispatch(context, request).await,
+            None => Err(Status::permission_denied("Unsupported product operation")),
         }
     }
+}
+
+/// Compose the optional operational policy read independently of every other
+/// product mode. An Intro/Social/Report/Closure surface the shared participant
+/// runtime already composed is retained as this layer's base; it is never
+/// replaced or skipped merely because another owner exists.
+pub fn compose(
+    read: bool,
+    base: Option<Arc<dyn ProductOwner>>,
+    policy: Arc<dyn ProductOwner>,
+) -> Option<Arc<ServicePolicyOwners>> {
+    read.then(|| Arc::new(ServicePolicyOwners::new(policy, base)))
 }
 
 #[cfg(test)]
@@ -333,6 +352,50 @@ mod tests {
             "/api/concert/events/{event}/service-policy?client_version=1.2"
         ))
         .is_err());
+    }
+
+    struct Retained(&'static str);
+
+    #[async_trait]
+    impl ProductOwner for Retained {
+        async fn dispatch(
+            &self,
+            _: &VerifiedProduct,
+            _: proto::ProductRequest,
+        ) -> Result<tonic::Response<proto::ProductResponse>, Status> {
+            Err(Status::unimplemented(self.0))
+        }
+    }
+
+    #[test]
+    fn the_policy_read_composes_over_an_intro_social_surface() {
+        let intro: Arc<dyn ProductOwner> = Arc::new(Retained("intro/social"));
+        let policy: Arc<dyn ProductOwner> = Arc::new(Retained("policy"));
+        // Intro or Social already composed a product owner. The read must
+        // still compose, keeping that owner as its base.
+        let composed = compose(true, Some(intro.clone()), policy.clone()).expect("composes");
+        let base = composed.base.as_ref().expect("retained Intro/Social base");
+        assert!(Arc::ptr_eq(base, &intro));
+        assert!(Arc::ptr_eq(&composed.policy, &policy));
+        assert!(Arc::ptr_eq(
+            composed.owner(&Operation::ServicePolicy).expect("policy owns"),
+            &policy
+        ));
+        assert!(Arc::ptr_eq(
+            composed.owner(&Operation::ListParties).expect("base owns"),
+            &intro
+        ));
+    }
+
+    #[test]
+    fn the_policy_read_stands_alone_and_respects_the_opt_out() {
+        let policy: Arc<dyn ProductOwner> = Arc::new(Retained("policy"));
+        assert!(compose(false, None, policy.clone()).is_none());
+        let composed = compose(true, None, policy.clone()).expect("composes");
+        assert!(Arc::ptr_eq(&composed.policy, &policy));
+        assert!(composed.base.is_none());
+        assert!(composed.owner(&Operation::ServicePolicy).is_some());
+        assert!(composed.owner(&Operation::ListParties).is_none());
     }
 
     #[test]

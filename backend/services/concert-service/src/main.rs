@@ -244,7 +244,8 @@ async fn main() -> anyhow::Result<()> {
             }
         })
         .transpose()?;
-    if product_owner.is_none() && config::product_runtime::service_policy_read()? {
+    let read_service_policy = config::product_runtime::service_policy_read()?;
+    if read_service_policy {
         let runtime = participant_runtime.as_ref().ok_or_else(|| {
             anyhow::anyhow!("Service policy read requires the shared participant composition")
         })?;
@@ -252,17 +253,28 @@ async fn main() -> anyhow::Result<()> {
             Arc::new(concert_service::service_policy::ServicePolicyProducer::new(
                 pool.clone(),
             ));
-        let policy = concert_service::product_rpc::scoped::ScopedProductOwner::new(
-            runtime.fence.clone(),
-            runtime.delivery.clone(),
-            producer,
+        let policy: Arc<dyn concert_service::product_rpc::ProductOwner> = Arc::new(
+            concert_service::product_rpc::scoped::ScopedProductOwner::new(
+                runtime.fence.clone(),
+                runtime.delivery.clone(),
+                producer,
+            ),
         );
-        product_owner = Some(config::product_runtime::ProductOwners {
-            product: Arc::new(concert_service::service_policy::ServicePolicyOwners::new(
-                policy, None,
-            )),
-            delivery: runtime.delivery.clone(),
-        });
+        // The read is independent of the other product modes: an Intro,
+        // Social, Report or Closure surface already composed above is retained
+        // as this layer's base instead of suppressing the policy read.
+        let delivery = product_owner
+            .as_ref()
+            .map(|owners| owners.delivery.clone())
+            .unwrap_or_else(|| runtime.delivery.clone());
+        let product: Arc<dyn concert_service::product_rpc::ProductOwner> =
+            concert_service::service_policy::compose(
+                read_service_policy,
+                product_owner.take().map(|owners| owners.product),
+                policy,
+            )
+            .ok_or_else(|| anyhow::anyhow!("Service policy surface composition is unavailable"))?;
+        product_owner = Some(config::product_runtime::ProductOwners { product, delivery });
     }
     let (participant_owners, participant_recovery) = match participant_runtime {
         Some(config::participant_runtime::ParticipantRuntime {

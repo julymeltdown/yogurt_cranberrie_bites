@@ -35,6 +35,19 @@ fn unavailable(_: impl std::fmt::Debug) -> WorldError {
 fn window_open(until: DateTime<Utc>, now: DateTime<Utc>) -> bool {
     until > now
 }
+/// Open the activation transaction within the original stop. Waiting past the
+/// stop defers the tick (the window closed while the pool was busy); a pool
+/// error is a genuine failure and aborts the supervised world.
+async fn within_start<T, E, F>(stop: tokio::time::Instant, begin: F) -> Result<Option<T>, WorldError>
+where
+    F: std::future::Future<Output = Result<T, E>>,
+{
+    match tokio::time::timeout_at(stop, begin).await {
+        Ok(Ok(value)) => Ok(Some(value)),
+        Ok(Err(_)) => Err(WorldError::Unavailable),
+        Err(_) => Ok(None),
+    }
+}
 fn avatar(row: &PgRow) -> Result<(Revision, AvatarSelection), WorldError> {
     Ok((
         Revision::new(row.try_get("revision").map_err(unavailable)?).map_err(unavailable)?,
@@ -300,10 +313,8 @@ impl ProductionOwners {
             .map(|p| p.parent.deadline().stop())
             .min()
             .ok_or(WorldError::Unavailable)?;
-        let mut tx = match tokio::time::timeout_at(stop, self.pool.begin()).await {
-            Ok(Ok(tx)) => tx,
-            Ok(Err(_)) => return Err(WorldError::Unavailable),
-            Err(_) => return Ok(()),
+        let Some(mut tx) = within_start(stop, self.pool.begin()).await? else {
+            return Ok(());
         };
         sqlx::query("set local lock_timeout='200ms'")
             .execute(&mut *tx)
@@ -587,5 +598,25 @@ mod visibility_pipeline_tests {
         assert!(super::window_open(now + chrono::Duration::milliseconds(1), now));
         assert!(!super::window_open(now, now));
         assert!(!super::window_open(now - chrono::Duration::seconds(1), now));
+    }
+
+    #[tokio::test]
+    async fn a_pool_wait_past_the_window_defers_the_tick() {
+        let tick = within_start(
+            tokio::time::Instant::now() + Duration::from_millis(5),
+            std::future::pending::<Result<(), sqlx::Error>>(),
+        )
+        .await;
+        assert!(matches!(tick, Ok(None)));
+    }
+
+    #[tokio::test]
+    async fn a_pool_failure_before_the_window_still_aborts() {
+        let tick = within_start(
+            tokio::time::Instant::now() + Duration::from_secs(5),
+            async { Err::<(), _>(sqlx::Error::PoolClosed) },
+        )
+        .await;
+        assert!(matches!(tick, Err(WorldError::Unavailable)));
     }
 }
