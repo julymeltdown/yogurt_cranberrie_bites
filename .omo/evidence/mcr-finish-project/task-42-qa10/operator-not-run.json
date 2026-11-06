@@ -1,0 +1,12 @@
+{
+  "candidate": {
+    "commit": "25b2d356fa036a6fb8c6f0d94796ac03bec730bf",
+    "dirty": false,
+    "tree": "e8023e2098a68f3f701ea7054a70459c166fb3d6"
+  },
+  "id": "operator-candidate",
+  "owner": "Operator/moderation owner (deployment, retention, provenance)",
+  "reason": "CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+  "schema": "mcr.qa10.composition-evidence.v1",
+  "status": "NOT_RUN"
+}

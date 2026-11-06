@@ -1,0 +1,31 @@
+{
+  "schema": "mcr.qa10.task-42-run.v1",
+  "candidate": {
+    "commit": "25b2d356fa036a6fb8c6f0d94796ac03bec730bf",
+    "dirty": false,
+    "tree": "e8023e2098a68f3f701ea7054a70459c166fb3d6"
+  },
+  "argv": [
+    "scripts/mcr/release-check.sh",
+    "--candidate",
+    "25b2d356fa036a6fb8c6f0d94796ac03bec730bf",
+    "--mode",
+    "composition",
+    "--manifest",
+    ".omo/evidence/mcr-finish-project/task-42-qa10/input.json"
+  ],
+  "exit_code": 2,
+  "captured_stdout": "release-check.log",
+  "artifacts": {
+    "input.json": "dd58dd7965a23359c912121251917e5912c0066596a2b33f5e04fa091b002e34",
+    "task-trace.json": "32c22548c3467d9917e7e002d84eba0bcbcefedd58400690f3fe25e0014fb622",
+    "release-check.log": "986e6982673f585e40d9921397fcdc80280584fb3a88e45f9c922c2b64386061",
+    "compose.py": "968b00e67607014975b15eb0dae80194678514879869503b9c7bc2cc329bf9d4"
+  },
+  "generated_at": "2026-11-06T15:12:45.743Z",
+  "notes": [
+    "Exit 2 = INCOMPLETE evidence, not a malformed input.",
+    "release_decision is always NOT_ASSESSED; IN05 owns the release decision.",
+    "The run is bound to this candidate SHA and must be refreshed against the final release SHA."
+  ]
+}

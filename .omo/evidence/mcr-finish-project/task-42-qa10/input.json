@@ -1,0 +1,1732 @@
+{
+  "candidate": {
+    "commit": "25b2d356fa036a6fb8c6f0d94796ac03bec730bf",
+    "dirty": false,
+    "tree": "e8023e2098a68f3f701ea7054a70459c166fb3d6"
+  },
+  "deferrals": [
+    {
+      "authority": {
+        "git_blob": "93744b531207c29d9dd8f760f6a593e46d0c43d7",
+        "path": "docs/mcr/functional-delivery-plan.md",
+        "sha256": "5aeeeb0e436b701c6baedb34cb0914bbd8a6f6222316b25b9414cfa1c3b11324"
+      },
+      "blocking": false,
+      "status": "DEFERRED_BY_USER",
+      "task_id": "QA08"
+    }
+  ],
+  "gates": [
+    {
+      "commit": "",
+      "id": "BE43",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "QA01",
+      "owner": "QA implementation owner",
+      "paths": [],
+      "reason": "CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "QA02",
+      "owner": "QA implementation owner",
+      "paths": [],
+      "reason": "CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "QA03",
+      "owner": "QA implementation owner",
+      "paths": [],
+      "reason": "CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "QA04",
+      "owner": "QA implementation owner",
+      "paths": [],
+      "reason": "CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "QA05",
+      "owner": "QA implementation owner",
+      "paths": [],
+      "reason": "CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "QA06",
+      "owner": "QA implementation owner",
+      "paths": [],
+      "reason": "CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "QA07",
+      "owner": "QA implementation owner",
+      "paths": [],
+      "reason": "CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "QA09",
+      "owner": "QA implementation owner",
+      "paths": [],
+      "reason": "CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "IN01",
+      "owner": "INTEGRATOR implementation owner",
+      "paths": [],
+      "reason": "CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "IN02",
+      "owner": "INTEGRATOR implementation owner",
+      "paths": [],
+      "reason": "CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "IN03",
+      "owner": "INTEGRATOR implementation owner",
+      "paths": [],
+      "reason": "CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "BLOCKED"
+    },
+    {
+      "commit": "",
+      "id": "IN04",
+      "owner": "INTEGRATOR implementation owner",
+      "paths": [],
+      "reason": "CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "QA08",
+      "owner": "QA implementation owner",
+      "paths": [],
+      "reason": "CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "DEFERRED_BY_USER"
+    }
+  ],
+  "ia": [
+    {
+      "commit": "",
+      "id": "A01",
+      "owner": "FE-APP implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "A02",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "A03",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "A04",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "A05",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "A06",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "A07",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "A08",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "W01",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "W02",
+      "owner": "ART implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "W03",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "W04",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "W05",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "W06",
+      "owner": "ART implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "W07",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "W08",
+      "owner": "FE-APP implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "F01",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "F02",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "F03",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "F04",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "F05",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "M01",
+      "owner": "FE-APP implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "M02",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "M03",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "M04",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "M05",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "M06",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "M07",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "M08",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "M09",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "G01",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "G02",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "G03",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "G04",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "G05",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "G06",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "G07",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "R01",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "U01",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "U02",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "U03",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "U04",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "U05",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "U06",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "U07",
+      "owner": "FE-APP implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "U08",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "U09",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "U10",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "X01",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "S01",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "S02",
+      "owner": "FE-APP implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "S03",
+      "owner": "FE-APP implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "O01",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "O02",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "O03",
+      "owner": "ART implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "O04",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "O05",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "O06",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "O07",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "O08",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "O09",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_TASK_BINDINGS_PENDING; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    }
+  ],
+  "receipts": [
+    {
+      "path": ".omo/evidence/mcr-finish-project/task-42-qa10/backend-not-run.json",
+      "sha256": "49ee870b0bfd1b0c17966c6a8140208551b1bfe77b7cd5816a31d88fc9d8d9d7"
+    },
+    {
+      "path": ".omo/evidence/mcr-finish-project/task-42-qa10/frontend-not-run.json",
+      "sha256": "ea43551b64f392b324881a9a7fe1333f9ea5304959e7912be2256ba741fb320b"
+    },
+    {
+      "path": ".omo/evidence/mcr-finish-project/task-42-qa10/service-not-run.json",
+      "sha256": "49795645226ec4ca10a212a5914dd263857988db3e4be92bf7d9e66678eebbf2"
+    },
+    {
+      "path": ".omo/evidence/mcr-finish-project/task-42-qa10/device-not-run.json",
+      "sha256": "f537dd8eba0844e002637a1415f64392e629ebbdd9886c7276e3723648e98977"
+    },
+    {
+      "path": ".omo/evidence/mcr-finish-project/task-42-qa10/operator-not-run.json",
+      "sha256": "32e6f66294765740ce12fbe04b5799cc5f68a79ea7c3c8aa3bff2c9495d620dd"
+    }
+  ],
+  "schema": "mcr.qa10.release-composition.v1",
+  "source_manifest": null,
+  "tasks": [
+    {
+      "commit": "",
+      "id": "C01",
+      "owner": "LEAD implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "C02",
+      "owner": "LEAD implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "C03",
+      "owner": "LEAD implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "C04",
+      "owner": "LEAD implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "C05",
+      "owner": "LEAD implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "C06",
+      "owner": "LEAD implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "C07",
+      "owner": "LEAD implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "C08",
+      "owner": "LEAD implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "AR01",
+      "owner": "ART implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=WAITING_INPUT; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "BLOCKED"
+    },
+    {
+      "commit": "",
+      "id": "AR02",
+      "owner": "ART implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "AR03",
+      "owner": "ART implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "AR04",
+      "owner": "ART implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "BE01",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "BE02",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "BE03",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=IN_PROGRESS; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "BE04",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "BE05",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "BE06",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "BE07",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "BE08",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=IN_PROGRESS; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "BE09",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=IN_PROGRESS; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "BE10",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=IN_PROGRESS; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "BE11",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=IN_PROGRESS; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "BE12",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "BE13",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "BE14",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "BE15",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=IN_PROGRESS; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "BE16",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=IN_PROGRESS; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "BE17",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=IN_PROGRESS; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "BE18",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=IN_PROGRESS; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "BE19",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=IN_PROGRESS; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "BE20",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=IN_PROGRESS; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "BE21",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=IN_PROGRESS; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "BE22",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=IN_PROGRESS; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "BE23",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=IN_PROGRESS; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "BE24",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=IN_PROGRESS; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "BE25",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "BE26",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "BE27",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=IN_PROGRESS; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "BE28",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=IN_PROGRESS; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "BE29",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=IN_PROGRESS; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "BE30",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=IN_PROGRESS; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "BE31",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=IN_PROGRESS; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "BE32",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=IN_PROGRESS; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "BE33",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=IN_PROGRESS; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "BE34",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=IN_PROGRESS; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "BE35",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=IN_PROGRESS; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "BE36",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=IN_PROGRESS; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "BE37",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=IN_PROGRESS; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "BE38",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=IN_PROGRESS; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "BE39",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=IN_PROGRESS; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "BE40",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=IN_PROGRESS; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "BE41",
+      "owner": "BE-CONCERT implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=IN_PROGRESS; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "BE42",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=IN_PROGRESS; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "BE43",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=IN_PROGRESS; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "BE44",
+      "owner": "BE-CORE implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=IN_PROGRESS; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "FE01",
+      "owner": "FE-APP implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "FE02",
+      "owner": "FE-APP implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "FE03",
+      "owner": "FE-APP implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "FE04",
+      "owner": "FE-APP implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "FE05",
+      "owner": "FE-APP implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "FE06",
+      "owner": "FE-APP implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "FE07",
+      "owner": "FE-APP implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "FE08",
+      "owner": "FE-APP implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "FE09",
+      "owner": "FE-APP implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "FE10",
+      "owner": "FE-APP implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=WAITING_INPUT; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "BLOCKED"
+    },
+    {
+      "commit": "",
+      "id": "FE11",
+      "owner": "FE-APP implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "FE12",
+      "owner": "FE-WORLD implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "FE13",
+      "owner": "FE-WORLD implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "FE14",
+      "owner": "FE-WORLD implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "FE15",
+      "owner": "FE-WORLD implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "FE16",
+      "owner": "FE-WORLD implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "FE17",
+      "owner": "FE-WORLD implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "FE18",
+      "owner": "FE-WORLD implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "FE19",
+      "owner": "FE-APP implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "FE20",
+      "owner": "FE-APP implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "FE21",
+      "owner": "FE-APP implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "FE22",
+      "owner": "FE-APP implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "FE23",
+      "owner": "FE-APP implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "FE24",
+      "owner": "FE-APP implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=REOPENED; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "FE25",
+      "owner": "FE-APP implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "FE26",
+      "owner": "FE-APP implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "FE27",
+      "owner": "FE-APP implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "FE28",
+      "owner": "FE-APP implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "FE29",
+      "owner": "FE-APP implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "FE30",
+      "owner": "FE-APP implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "FE31",
+      "owner": "FE-APP implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "FE32",
+      "owner": "FE-WORLD implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "FE33",
+      "owner": "FE-WORLD implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "FE34",
+      "owner": "FE-APP implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "FE35",
+      "owner": "FE-APP implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "FE36",
+      "owner": "FE-APP implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "FE37",
+      "owner": "FE-APP implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "FE38",
+      "owner": "FE-APP implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "FE39",
+      "owner": "FE-APP implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "FE40",
+      "owner": "FE-APP implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "FE41",
+      "owner": "FE-APP implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "QA01",
+      "owner": "QA implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "QA02",
+      "owner": "QA implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "QA03",
+      "owner": "QA implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=IN_PROGRESS; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "QA04",
+      "owner": "QA implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=IN_PROGRESS; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "QA05",
+      "owner": "QA implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=IN_PROGRESS; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "QA06",
+      "owner": "QA implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=IN_PROGRESS; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "QA07",
+      "owner": "QA implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "QA08",
+      "owner": "QA implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DEFERRED_BY_USER; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "DEFERRED_BY_USER"
+    },
+    {
+      "commit": "",
+      "id": "QA09",
+      "owner": "QA implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=IN_PROGRESS; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "QA10",
+      "owner": "QA implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=IN_PROGRESS; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "IN_PROGRESS"
+    },
+    {
+      "commit": "",
+      "id": "IN01",
+      "owner": "INTEGRATOR implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=DONE; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "IN02",
+      "owner": "INTEGRATOR implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=OPEN; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "IN03",
+      "owner": "INTEGRATOR implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=WAITING_INPUT; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "BLOCKED"
+    },
+    {
+      "commit": "",
+      "id": "IN04",
+      "owner": "INTEGRATOR implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=OPEN; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    },
+    {
+      "commit": "",
+      "id": "IN05",
+      "owner": "INTEGRATOR implementation owner",
+      "paths": [],
+      "reason": "LEDGER_STATE=OPEN; CURRENT_CANDIDATE_OWNER_RECEIPT_NOT_SUPPLIED",
+      "receipt_ids": [],
+      "status": "NOT_RUN"
+    }
+  ]
+}
