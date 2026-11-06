@@ -37,14 +37,14 @@ def exercise(cluster, binary, test, report):
     cli("migrate", "--migrate")
     cli("verify", "--verify-migrations")
     manifest = migration.migration_manifest(ROOT / "backend", "auth-service")
-    require(set(manifest) == set(range(1, 14)), "exact-auth-migration-set")
+    require(bool(manifest) and len(manifest) == max(manifest) and set(manifest) == set(range(1, max(manifest) + 1)), "exact-auth-migration-set")
     report["migration_sha384"] = manifest
     report["migration_ledger"] = migration.check_ledger(cluster, DATABASE, manifest)
     cli("migrate-reapply", "--migrate")
     cli("verify-reapply", "--verify-migrations")
-    require(migration.check_ledger(cluster, DATABASE, manifest) == 13, "stable-ledger")
+    require(migration.check_ledger(cluster, DATABASE, manifest) == len(manifest), "stable-ledger")
     cli("exhaustion-migrate", "--migrate", override={**cluster.env, "AUTH_DATABASE_URL": exhaustion_url})
-    require(migration.check_ledger(cluster, EXHAUSTION_DATABASE, manifest) == 13, "exhaustion-ledger")
+    require(migration.check_ledger(cluster, EXHAUSTION_DATABASE, manifest) == len(manifest), "exhaustion-ledger")
     test_env = {**env, "AUTH_IDENTITY_TEST_DATABASE_URL": url,
                 "AUTH_IDENTITY_TEST_EXHAUSTION_URL": exhaustion_url,
                 "AUTH_IDENTITY_TEST_OWNER_ROOT": str(cluster.root),

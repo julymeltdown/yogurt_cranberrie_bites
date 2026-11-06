@@ -1,8 +1,8 @@
 //! Frozen C04 product routes. Browser input never supplies canonical identity.
 use super::{concert_access::HttpConcertAccess, GatewayError};
 use crate::{
-    adapters::out::concert_product::{ProductHttpRequest, MAX_BODY},
     config::AppState,
+    product_http::{ProductHttpRequest, MAX_BODY},
 };
 use axum::{
     body::{to_bytes, Body},

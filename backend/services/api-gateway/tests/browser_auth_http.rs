@@ -233,13 +233,6 @@ async fn every_qualified_email_and_account_path_dispatches_to_its_owning_port() 
     for (method, path, payload, status, operation) in [
         (
             "POST",
-            "/api/auth/email/signup",
-            r#"{"email":"synthetic@example.test","password":"password"}"#,
-            StatusCode::OK,
-            "signup",
-        ),
-        (
-            "POST",
             "/api/auth/email/verify",
             r#"{"email":"synthetic@example.test","code":"123456"}"#,
             StatusCode::OK,
@@ -300,6 +293,22 @@ async fn every_qualified_email_and_account_path_dispatches_to_its_owning_port() 
             "{method} {path}"
         );
     }
+    // The legacy bare email-signup path is retired by the canonical enrollment
+    // contract: it fails closed without dispatching to the Auth signup port.
+    h.clients.auth_calls.lock().unwrap().clear();
+    let mut retired = request(
+        "POST",
+        "/api/auth/email/signup",
+        Some(ORIGIN),
+        Some("browser"),
+        r#"{"email":"synthetic@example.test","password":"password"}"#,
+    );
+    retired.headers_mut().insert(
+        header::AUTHORIZATION,
+        h.bearer_token(USER_ID).parse().unwrap(),
+    );
+    body(app.clone().oneshot(retired).await.unwrap(), StatusCode::UNPROCESSABLE_ENTITY).await;
+    assert!(h.clients.auth_calls.lock().unwrap().is_empty());
 }
 
 #[tokio::test]

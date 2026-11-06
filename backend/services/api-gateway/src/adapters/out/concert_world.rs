@@ -27,23 +27,7 @@ const EDGE: EdgeBudget = EdgeBudget {
     failure_policy: FailurePolicy::FailRequest,
 };
 
-#[derive(Clone, Copy, Debug, PartialEq, Eq, thiserror::Error)]
-pub enum WorldClientError {
-    #[error("World access expired")]
-    Expired,
-    #[error("World request denied")]
-    Denied,
-    #[error("World room is unavailable")]
-    NotFound,
-    #[error("World room is full")]
-    Full,
-    #[error("World release does not match")]
-    VersionMismatch,
-    #[error("World dependency is unavailable")]
-    Unavailable,
-    #[error("World response is invalid")]
-    InvalidResponse,
-}
+pub use crate::domain::concert_identity::WorldClientError;
 
 #[derive(Clone)]
 pub struct GrpcConcertWorldClient {

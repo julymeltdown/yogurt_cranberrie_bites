@@ -14,23 +14,29 @@ use std::sync::Arc;
 use uuid::Uuid;
 
 pub fn router(state: Arc<AppState>) -> Router {
-    // OAuth, availability and parity/shadow routes are deliberately not composed.
-    auth_routes::browser_router(state.clone())
+    // Controlled OAuth uses the real handlers but never advertises public
+    // readiness. Availability and parity/shadow routes remain uncomposed.
+    let mut router = auth_routes::browser_router(state.clone())
         .merge(refresh_routes::browser_router(state.clone()))
         .merge(super::enrollment_policy::router(state.clone()))
-        .merge(verification_routes::browser_router(state))
-        .route("/api/auth/capabilities", get(capabilities))
+        .merge(verification_routes::browser_router(state.clone()));
+    if state.oauth_exposure.has_transport() {
+        router = router.merge(super::oauth_routes::router(state.clone()));
+    }
+    router.merge(Router::new().route("/api/auth/capabilities", get(capabilities)).with_state(state))
 }
 
-async fn capabilities() -> Json<serde_json::Value> {
+async fn capabilities(State(state): State<Arc<AppState>>) -> Json<serde_json::Value> {
+    let optional: Vec<_> = ["google", "apple", "x"].into_iter().map(|provider| {
+        let enabled = state.oauth_exposure.public_enabled(provider);
+        json!({"provider": provider.to_ascii_uppercase(), "enabled": enabled,
+               "disabled_reason": if enabled { None } else { Some("HANDOFF_NOT_QUALIFIED") }})
+    }).collect();
+    let mut providers = vec![json!({"provider": "EMAIL", "enabled": true, "disabled_reason": null})];
+    providers.extend(optional);
     Json(json!({
         "contract_version": "0.1.0",
-        "providers": [
-            {"provider": "EMAIL", "enabled": true, "disabled_reason": null},
-            {"provider": "GOOGLE", "enabled": false, "disabled_reason": "HANDOFF_NOT_QUALIFIED"},
-            {"provider": "APPLE", "enabled": false, "disabled_reason": "HANDOFF_NOT_QUALIFIED"},
-            {"provider": "X", "enabled": false, "disabled_reason": "HANDOFF_NOT_QUALIFIED"}
-        ],
+        "providers": providers,
         "server_time": Utc::now().to_rfc3339_opts(SecondsFormat::Millis, true)
     }))
 }
@@ -66,8 +72,14 @@ fn denial(reason: &'static str, correlation: &str) -> Response {
 
 /// Run outside admission, telemetry, JSON extraction, cookies and downstream calls.
 /// Installed at both composed-router and executable-transport boundaries; idempotent.
+#[derive(Clone)]
+pub struct BrowserBoundaryState {
+    pub origins: Vec<String>,
+    pub oauth: crate::config::OAuthExposurePolicy,
+}
+
 pub async fn boundary(
-    State(origins): State<Vec<String>>,
+    State(policy): State<BrowserBoundaryState>,
     mut request: Request<Body>,
     next: Next,
 ) -> Response {
@@ -89,10 +101,20 @@ pub async fn boundary(
         "x-correlation-id",
         HeaderValue::from_str(&correlation).expect("normalized correlation"),
     );
-    let rejection = if mutation {
+    // The provider POST only renders a bounded inert/self-origin form; its
+    // handler must first require the configured controlled Apple transport.
+    // Completion separately requires exact configured Origin and signed state.
+    // No other route gains an Origin or browser-intent exception.
+    let apple_receive = request.method() == Method::POST
+        && request.uri().path() == "/auth/oauth/apple/callback"
+        && policy.oauth.transport_enabled("apple");
+    let apple_complete = request.method() == Method::POST
+        && request.uri().path() == "/auth/oauth/apple/callback/complete"
+        && policy.oauth.transport_enabled("apple");
+    let rejection = if mutation && !apple_receive {
         match exactly_one(request.headers(), "origin") {
-            Some(origin) if origins.iter().any(|allowed| allowed == &origin) => {
-                (exactly_one(request.headers(), "x-mcr-intent").as_deref() != Some("browser"))
+            Some(origin) if policy.origins.iter().any(|allowed| allowed == &origin) => {
+                (exactly_one(request.headers(), "x-mcr-intent").as_deref() != Some("browser") && !apple_complete)
                     .then_some("BROWSER_INTENT_REQUIRED")
             }
             _ => Some("ORIGIN_NOT_ALLOWED"),

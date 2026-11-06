@@ -39,7 +39,7 @@ impl EnrollmentFailure {
 }
 #[async_trait]
 pub trait EnrollmentPolicyPort: Send + Sync {
-    async fn execute(
+    async fn dispatch(
         &self,
         operation: EnrollmentOperation,
         binding: Option<&str>,

@@ -6,7 +6,7 @@
 //! decision. An unknown-key refresh may await; strict verification runs again
 //! afterward against the same original stop.
 use super::{parse_bearer_token, GatewayError, RequestDeadline, AUTHORIZATION};
-use crate::adapters::out::jwt::concert_access::{ConcertAccessContext, ConcertAccessRejection};
+use crate::concert_access::{ConcertAccessContext, ConcertAccessRejection};
 use crate::config::AppState;
 use crate::domain::access_token::TokenRejection;
 use async_trait::async_trait;
