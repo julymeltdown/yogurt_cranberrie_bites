@@ -289,3 +289,4 @@ pub mod event_lifecycle;
 pub mod mural;
 
 pub mod notification;
+pub mod venue_location;
