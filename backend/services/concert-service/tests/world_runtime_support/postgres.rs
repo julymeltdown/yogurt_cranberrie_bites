@@ -363,6 +363,67 @@ async fn native_database_bridge_cancelled_postcommit_admission_retains_cleanup(
 }
 #[tokio::test]
 #[ignore = "requires world_runtime_support/bridge_native.py marker-owned PostgreSQL"]
+async fn native_database_bridge_two_tickets_one_room_and_replay_refusal() -> anyhow::Result<()> {
+    let f = DatabaseFixture::new(false).await?;
+    let other = AuthUserId::from_uuid(Uuid::new_v4());
+    sqlx::query(
+        "insert into concert_event_admissions(event_id,user_id,state) values($1,$2,'ACTIVE')",
+    )
+    .bind(f.event.uuid())
+    .bind(other.uuid())
+    .execute(&f.pool)
+    .await?;
+    sqlx::query("insert into concert_participants(event_id,user_id,theme,low_power,reduced_motion,sound_enabled) values($1,$2,'REVENGE',false,false,false)")
+        .bind(f.event.uuid())
+        .bind(other.uuid())
+        .execute(&f.pool)
+        .await?;
+    sqlx::query("update concert_world_rooms set capacity=2 where event_id=$1 and room_id=$2")
+        .bind(f.event.uuid())
+        .bind(f.room)
+        .execute(&f.pool)
+        .await?;
+    let (_, first) = f.ticket(f.room, f.user).await?;
+    let (_, second) = f.ticket(f.room, other).await?;
+    let first_connection = Uuid::new_v4();
+    let second_connection = Uuid::new_v4();
+    let a = f
+        .bridge
+        .admit(first.clone(), first_connection)
+        .await
+        .map_err(|_| anyhow::anyhow!("first admission failed"))?;
+    let b = f
+        .bridge
+        .admit(second, second_connection)
+        .await
+        .map_err(|_| anyhow::anyhow!("second admission failed"))?;
+    assert_eq!(a.room_id, f.room);
+    assert_eq!(b.room_id, f.room);
+    assert_ne!(a.key, b.key);
+    assert_ne!(a.connection_id, b.connection_id);
+    let mut adapter = MembershipAdapter::new(f.bridge.clone(), f.anchor.clone(), 50).unwrap();
+    adapter.install(&a, f.now()).unwrap();
+    adapter.install(&b, f.now()).unwrap();
+    assert!(CanonicalAuthorityPort::current(&f.bridge, &a, f.now()).is_ok());
+    assert!(CanonicalAuthorityPort::current(&f.bridge, &b, f.now()).is_ok());
+    let rows: i64 = sqlx::query_scalar(
+        "select count(*) from public.concert_world_memberships where event_id=$1 and room_id=$2 and not disconnected and lease_until>clock_timestamp()",
+    )
+    .bind(f.event.uuid())
+    .bind(f.room)
+    .fetch_one(&f.pool)
+    .await?;
+    assert_eq!(rows, 2, "both distinct tickets occupy the same room");
+    // The same secret used again is refused before any new binding is created.
+    let replay = f.bridge.admit(first, Uuid::new_v4()).await;
+    assert!(matches!(replay, Err(close) if close.code == 4401));
+    f.bridge.disconnected(&a).await;
+    f.bridge.disconnected(&b).await;
+    f.pool.close().await;
+    Ok(())
+}
+#[tokio::test]
+#[ignore = "requires world_runtime_support/bridge_native.py marker-owned PostgreSQL"]
 async fn native_database_bridge_full_target_rejection_preserves_current_membership(
 ) -> anyhow::Result<()> {
     let f = DatabaseFixture::new(false).await?;

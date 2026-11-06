@@ -31,8 +31,12 @@ try:
     cluster.start()
     report["postgres"] = cluster.sql("postgres", "show server_version;")
     cluster.sql("postgres", "create database mcr_world template template0;")
-    for name in ["0001_concert_core.sql", "0002_command_receipts_outbox.sql", "0003_places_map_releases.sql", "0004_bootstrap_admission.sql", "0005_world_admission.sql"]:
-        cluster.sql("mcr_world", (ROOT / "backend/services/concert-service/migrations" / name).read_text())
+    # The bridge fixtures depend on the full production schema (not only 0001-0005):
+    # account-deletion fences, sessions and later admission tables are real inputs.
+    for path in sorted((ROOT / "backend/services/concert-service/migrations").glob("*.sql")):
+        if path.name.endswith(".down.sql"):
+            continue
+        cluster.sql("mcr_world", path.read_text())
     env = {**cluster.env, "WORLD_TEST_DATABASE_URL": cluster.url("mcr_world"), "WORLD_TEST_OWNER_ROOT": str(cluster.root), "WORLD_TEST_OWNER_TOKEN": cluster.token, "WORLD_TEST_OWNER_IDENTITY": f"{cluster.identity[0]}:{cluster.identity[1]}"}
     result = subprocess.run([str(binary), "--ignored", "native_database_bridge", "--test-threads=1", "--nocapture"], env=env, cwd=cluster.root, capture_output=True, text=True, timeout=45)
     log = args.report.with_suffix(".log")

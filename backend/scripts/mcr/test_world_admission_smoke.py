@@ -13,7 +13,9 @@ import world_admission_smoke as smoke
 
 class GuardChecks(unittest.TestCase):
     def test_migration_reservation_and_tables_are_exact(self):
-        self.assertEqual(smoke.MIGRATIONS[-1], "0005_world_admission.sql")
+        names = [path.name for path in smoke.migration_paths()]
+        self.assertIn("0005_world_admission.sql", names)
+        self.assertGreater(len(names), 5, "full production schema is required")
         self.assertEqual(
             set(smoke.TABLES),
             {
