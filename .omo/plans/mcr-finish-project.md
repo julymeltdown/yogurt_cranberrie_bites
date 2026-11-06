@@ -499,7 +499,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   Commit: Y | `test(avatar): verify production atlas admission`
   Gap (2026-11-06): reviewed motion manifest mcr_selected_motion_reviewed_20261104 and its 1280x1856/576-cell atlas are produced, hash-pinned, guarded and loader-wired, but are NOT served: compose sets no CONCERT_GRPC_ADDR and none of the six CONCERT_* release settings, the reviewed bootstrap exists only as a runtime test fixture, and reviewed-handoff.json records production_activation NOT_RUN. Production activation and a served-renderer capture remain open with the World release path (row 51). Evidence: .omo/evidence/mcr-finish-project/task-37-atlas.md; guard commit cc9691cec.
 
-- [ ] 38. Pass QA03 database race suite
+- [x] 38. Pass QA03 database race suite
   What to do / Must NOT do: run real PostgreSQL interleavings for party capacity, stock reservation/release/claim, idempotent receipts and restart. Do NOT use sleeps as synchronization; use barriers and db constraints.
   Closes: GAP-3
   Parallelization: Wave 7 | Blocked by: 13, 29–32 | Blocks: 47
