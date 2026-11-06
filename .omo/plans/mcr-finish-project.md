@@ -464,7 +464,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   Recommended task executor category: deep-low
   Commit: Y | `feat(ui): finish PI11 rooms, nearby and help`
 
-- [ ] 35. Obtain and integrate AR01 venue provenance inputs
+- [~] 35. Obtain and integrate AR01 venue provenance inputs
   What to do / Must NOT do: request the dated event-day layout, meeting/accessibility review, named operator, publication expiry and closure responsibility; publish only qualified place records and keep unknown ones unavailable. Do NOT fabricate venue data.
   Closes: GAP-5
   Parallelization: Wave 6 | Blocked by: external input | Blocks: 47
@@ -473,6 +473,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   QA scenarios: happy reviewed place shows verified state; failure missing review -> unavailable. Evidence `.omo/evidence/mcr-finish-project/task-35-ar01.md`.
   Recommended task executor category: deep-low
   Commit: Y | `docs(venue): register AR01 provenance and qualification`
+  Gap (2026-11-06): no reviewed AR01 inputs supplied. Binding map and exact missing inputs recorded in .omo/evidence/mcr-finish-project/task-35-ar01.md; unverified/closed places stay refused at domain, DB, repository and application layers (fail-closed proven). Three schema gaps need a contract decision, not data: no place publication-expiry field, no closure-owner field, no event-day layout date.
 
 - [ ] 36. Pass QA06 mobile visual acceptance
   What to do / Must NOT do: compare all 12 mapped families and all 61 retained IA entries at 360/390/430 plus iOS/Android devices where available; record PASS/FAIL per case. Do NOT accept a single surface as coverage.
@@ -565,7 +566,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   Recommended task executor category: unspecified-low
   Commit: Y | `docs(ops): add staging and production runbook`
 
-- [ ] 45. Obtain FE10 eligibility/legal publication and bind it
+- [~] 45. Obtain FE10 eligibility/legal publication and bind it
   What to do / Must NOT do: request the approved eligibility/legal/consent text and version, then bind signup and verification to the persisted policy. Do NOT ship fixture acknowledgements.
   Closes: GAP-5
   Parallelization: Wave 8 | Blocked by: external input | Blocks: 47
@@ -574,6 +575,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   QA scenarios: happy real signup; failure duplicate email -> neutral response. Evidence `.omo/evidence/mcr-finish-project/task-45-fe10.md`.
   Recommended task executor category: deep-low
   Commit: Y | `feat(auth): bind approved eligibility and consent publication`
+  Gap (2026-11-06): no approved FE10 eligibility/legal text supplied. Corrected behaviour: the enrollment endpoint returns 503 POLICY_UNAVAILABLE without a publication, while 422 ACKNOWLEDGEMENTS_REQUIRED applies to the retired signup route and to missing/extra acknowledgements once a policy exists. Binding map and exact missing inputs in .omo/evidence/mcr-finish-project/task-45-fe10.md; only a productionApproval=false dev publication exists and it is never legal approval.
 
 - [ ] 46. Resolve the W04 invitation policy and close the 10 extension IA states
   What to do / Must NOT do: obtain the undecided W04 policy answer, then verify the 10 extension IA states have a route/state owner. Do NOT invent an invitation authority.
