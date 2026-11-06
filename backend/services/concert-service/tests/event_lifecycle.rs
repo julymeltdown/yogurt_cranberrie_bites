@@ -436,3 +436,167 @@ async fn event_lifecycle_full_migration_ledger_and_reapply() -> anyhow::Result<(
     let pool = pool().await;
     migrations::qualify(&pool).await
 }
+
+/// Route-level proof over the published admin/closure template: the real HTTP
+/// handler admits one durable job, an identical same-key request is transport
+/// replay, every later closure write is refused, and ARCHIVED is only reached
+/// after each required step commits.
+#[tokio::test]
+#[ignore = "requires event_lifecycle_pg.py owned fixture"]
+async fn event_lifecycle_admin_closure_route_admits_read_only_and_refuses_rewrite() {
+    use axum::{
+        body::{to_bytes, Bytes},
+        extract::{Path, State},
+        http::{header, HeaderMap, StatusCode},
+        response::{IntoResponse, Response},
+        routing::post,
+        Router,
+    };
+    use concert_application::event_lifecycle::Actor;
+    use concert_service::event_lifecycle::http::{close_response, job_response};
+    use std::sync::Arc;
+    use tower::ServiceExt;
+
+    #[derive(Clone)]
+    struct Route {
+        service: Arc<PgEventLifecycle<Authority, Owners>>,
+        actor: Actor,
+        keys: Arc<FingerprintKeys>,
+    }
+    async fn post_closure(
+        State(route): State<Route>,
+        _: Path<Uuid>,
+        headers: HeaderMap,
+        body: Bytes,
+    ) -> Response {
+        let Some(key) = headers
+            .get("idempotency-key")
+            .and_then(|value| value.to_str().ok())
+            .and_then(|value| Uuid::parse_str(value).ok())
+        else {
+            return (StatusCode::BAD_REQUEST, "missing idempotency key").into_response();
+        };
+        close_response(&route.service, route.actor, key, &body, &route.keys).await
+    }
+    async fn get_job(State(route): State<Route>, Path((_, job_id)): Path<(Uuid, Uuid)>) -> Response {
+        job_response(&route.service, route.actor, job_id).await
+    }
+    let pool = pool().await;
+    let actor = actor(&pool).await;
+    let service = Arc::new(PgEventLifecycle::new(
+        pool.clone(),
+        Authority {
+            delay: Duration::zero(),
+        },
+        Owners::healthy(),
+    ));
+    let keys = Arc::new(keys());
+    let route = Route {
+        service: service.clone(),
+        actor,
+        keys: keys.clone(),
+    };
+    async fn fetch_job(route: &Route, job: Uuid) -> Response {
+        job_response(&route.service, route.actor, job).await
+    }
+    let router = Router::new()
+        .route(
+            "/api/concert/events/:event_id/admin/closure",
+            post(post_closure),
+        )
+        .route(
+            "/api/concert/events/:event_id/admin/closure/:job_id",
+            axum::routing::get(get_job),
+        )
+        .with_state(route.clone());
+    let body = serde_json::json!({
+        "confirmation": "CLOSE_EVENT",
+        "expected_revision": 1,
+        "reason": "Route proof closure"
+    })
+    .to_string();
+    let call = |key: Uuid, body: String| {
+        axum::http::Request::builder()
+            .method("POST")
+            .uri(format!("/api/concert/events/{}/admin/closure", actor.event))
+            .header(header::CONTENT_TYPE, "application/json")
+            .header("idempotency-key", key.to_string())
+            .body(axum::body::Body::from(body))
+            .unwrap()
+    };
+    let key = Uuid::new_v4();
+    let admitted = router
+        .clone()
+        .oneshot(call(key, body.clone()))
+        .await
+        .unwrap();
+    assert_eq!(admitted.status(), StatusCode::OK);
+    assert_eq!(admitted.headers()[header::CACHE_CONTROL], "no-store");
+    let admitted = to_bytes(admitted.into_body(), usize::MAX).await.unwrap();
+    let job: serde_json::Value = serde_json::from_slice(&admitted).unwrap();
+    let job_id: Uuid = job["job_id"].as_str().unwrap().parse().unwrap();
+    assert_eq!(job["job_id"], serde_json::json!(start_job_id(actor, key)));
+    assert_eq!(job["state"], "PENDING");
+    let phase: String = sqlx::query_scalar("select phase from concert_events where event_id=$1")
+        .bind(actor.event)
+        .fetch_one(&pool)
+        .await
+        .unwrap();
+    assert_eq!(phase, "READ_ONLY");
+
+    // Identical same-key request is transport replay of the admission.
+    let replay = router
+        .clone()
+        .oneshot(call(key, body.clone()))
+        .await
+        .unwrap();
+    assert_eq!(replay.status(), StatusCode::OK);
+    let replay = to_bytes(replay.into_body(), usize::MAX).await.unwrap();
+    assert_eq!(admitted, replay);
+
+    // A second closure write after READ_ONLY must be refused.
+    let refused = router
+        .clone()
+        .oneshot(call(Uuid::new_v4(), body.clone()))
+        .await
+        .unwrap();
+    assert_eq!(refused.status(), StatusCode::CONFLICT);
+
+    // Status reads stay available and never execute a step.
+    let status = fetch_job(&route, job_id).await;
+    assert_eq!(status.status(), StatusCode::OK);
+    let status = to_bytes(status.into_body(), usize::MAX).await.unwrap();
+    let status: serde_json::Value = serde_json::from_slice(&status).unwrap();
+    assert_eq!(status["state"], "PENDING");
+    assert_eq!(
+        fetch_job(&route, Uuid::new_v4()).await.status(),
+        StatusCode::NOT_FOUND
+    );
+
+    // Every required step commits before ARCHIVED; the route then refuses.
+    let mut job = service.job(actor, job_id).await.unwrap();
+    for _ in 0..7 {
+        if job.state == JobState::Completed {
+            break;
+        }
+        job = service.run_next(actor, job_id).await.unwrap();
+        assert_ne!(job.state, JobState::PartialFailure);
+    }
+    assert_eq!(job.state, JobState::Completed);
+    let phase: String = sqlx::query_scalar("select phase from concert_events where event_id=$1")
+        .bind(actor.event)
+        .fetch_one(&pool)
+        .await
+        .unwrap();
+    assert_eq!(phase, "ARCHIVED");
+    assert_eq!(
+        router
+            .clone()
+            .oneshot(call(Uuid::new_v4(), body))
+            .await
+            .unwrap()
+            .status(),
+        StatusCode::CONFLICT
+    );
+}
+
