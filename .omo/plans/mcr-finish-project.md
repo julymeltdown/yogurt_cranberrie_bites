@@ -595,7 +595,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   Commit: Y | `docs(venue): resolve W04 policy and map extension IA`
   W04 decision (user, 2026-11-06): use the plan proposal - invitee consent, exactly one inviter grant per party, capacity 8, 24-hour expiry, host can revoke. Recorded as the W04 policy for row 46.
 
-- [ ] 47. Reconcile IN05 and publish the release decision
+- [x] 47. Reconcile IN05 and publish the release decision
   What to do / Must NOT do: reconcile 111/111 active tasks, 112 original IDs, 61/61 IA, 12/12 design families, 8/8 venue deliverables and 10/10 extension IA on the final candidate; record QA08 `DEFERRED_BY_USER/NOT_RUN`, operators, limits and known gaps. Do NOT claim full 112 or 200-user capacity.
   Closes: GAP-7
   Parallelization: Wave 8 | Blocked by: all | Blocks: 48
