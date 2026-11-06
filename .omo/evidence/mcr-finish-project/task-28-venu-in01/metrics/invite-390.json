@@ -1,0 +1,87 @@
+{
+  "viewport": {
+    "width": 390,
+    "height": 844,
+    "dpr": 1
+  },
+  "overflowX": false,
+  "tabs": {
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 55
+  },
+  "tab": {
+    "x": 4,
+    "y": 5,
+    "width": 126,
+    "height": 44
+  },
+  "map": {
+    "x": 0,
+    "y": 55,
+    "width": 390,
+    "height": 260
+  },
+  "sheet": null,
+  "sharing": {
+    "x": 0,
+    "y": 789,
+    "width": 390,
+    "height": 55
+  },
+  "friendRows": [],
+  "friendPortrait": null,
+  "noteCards": [],
+  "notePortrait": null,
+  "selectedPortrait": null,
+  "composer": null,
+  "primary": null,
+  "meeting": {
+    "x": 0,
+    "y": 315,
+    "width": 390,
+    "height": 424.2
+  },
+  "controls": 38,
+  "minHit": 44,
+  "regions": {
+    "map": {
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 844
+    },
+    "tabPanel": {
+      "x": 0,
+      "y": 55,
+      "width": 390,
+      "height": 734
+    },
+    "canvas": {
+      "x": 0,
+      "y": 55,
+      "width": 390,
+      "height": 260
+    },
+    "friends": null,
+    "sheet": null,
+    "noteCard": null,
+    "composer": null,
+    "sharing": {
+      "x": 0,
+      "y": 789,
+      "width": 390,
+      "height": 55
+    },
+    "friendDetail": null
+  },
+  "fonts": {
+    "name": null,
+    "place": null,
+    "source": null,
+    "body": null,
+    "noteMeta": null
+  },
+  "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nCharacter unavailable\nCharacter unavailable\n3 friends\nCharacter unavailable\nwaydown\nCharacter unavailable\nYou\n+\n−\n⌖\n↺\n◎\nREAL MEETING PLACE\nClose\nMeet at MAIN GATE?\n\nYou + inkparade\n\nSEND INVITATION\n\nInvite your friend to this fixed meeting place.\n\nInvitee consent · 24-hour expiry · Host revoke\n\nMAIN GATE\nView on map\nMessage about this place\n\nA shared place is fixed. A friend’s phone location or virtual position does not confirm arrival.\n\nSharing with friends\nPAUSE\nREVOKE"
+}

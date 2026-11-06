@@ -1,0 +1,117 @@
+{
+  "viewport": {
+    "width": 360,
+    "height": 800,
+    "dpr": 1
+  },
+  "overflowX": false,
+  "tabs": {
+    "x": 0,
+    "y": 0,
+    "width": 360,
+    "height": 55
+  },
+  "tab": {
+    "x": 4,
+    "y": 5,
+    "width": 116,
+    "height": 44
+  },
+  "map": {
+    "x": 0,
+    "y": 55,
+    "width": 360,
+    "height": 260
+  },
+  "sheet": null,
+  "sharing": {
+    "x": 0,
+    "y": 745,
+    "width": 360,
+    "height": 55
+  },
+  "friendRows": [
+    {
+      "x": 5,
+      "y": 321,
+      "width": 350,
+      "height": 74
+    },
+    {
+      "x": 5,
+      "y": 399,
+      "width": 350,
+      "height": 74
+    },
+    {
+      "x": 5,
+      "y": 477,
+      "width": 350,
+      "height": 74
+    },
+    {
+      "x": 5,
+      "y": 555,
+      "width": 350,
+      "height": 74
+    }
+  ],
+  "friendPortrait": {
+    "x": 10,
+    "y": 330,
+    "width": 56,
+    "height": 56
+  },
+  "noteCards": [],
+  "notePortrait": null,
+  "selectedPortrait": null,
+  "composer": null,
+  "primary": null,
+  "meeting": null,
+  "controls": 39,
+  "minHit": 44,
+  "regions": {
+    "map": {
+      "x": 0,
+      "y": 0,
+      "width": 360,
+      "height": 800
+    },
+    "tabPanel": {
+      "x": 0,
+      "y": 55,
+      "width": 360,
+      "height": 690
+    },
+    "canvas": {
+      "x": 0,
+      "y": 55,
+      "width": 360,
+      "height": 260
+    },
+    "friends": {
+      "x": 0,
+      "y": 315,
+      "width": 360,
+      "height": 324
+    },
+    "sheet": null,
+    "noteCard": null,
+    "composer": null,
+    "sharing": {
+      "x": 0,
+      "y": 745,
+      "width": 360,
+      "height": 55
+    },
+    "friendDetail": null
+  },
+  "fonts": {
+    "name": "18px",
+    "place": "14px",
+    "source": "10px",
+    "body": null,
+    "noteMeta": null
+  },
+  "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nhelena\n+\n−\n⌖\n↺\nCharacter unavailable\ninkparade\n⌖ Location unavailable\nPhone location · updated 20s ago\nVIEW\nCharacter unavailable\nhelena\n⌖ Near SUB GATE\nCheck-in · 8m ago\nVIEW\nCharacter unavailable\nbulletxs\n⌖ Location unavailable\nLast update · 12m ago\nASK LOCATION\nCharacter unavailable\nwaydown\n⌖ Location unavailable\nLocation unavailable\nASK LOCATION\nPhone location is off\nSHARE LOCATION"
+}

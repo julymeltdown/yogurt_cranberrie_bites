@@ -1,0 +1,1236 @@
+{
+  "generatedAt": "2026-11-06T11:31:05.825Z",
+  "widths": [
+    360,
+    390,
+    430
+  ],
+  "cases": [
+    {
+      "caseId": "P01-whole-plan",
+      "photo": 1,
+      "sourcePath": "photo-01.jpg",
+      "sourceSHA256": "2366e1ce7e76e3b5932879d0602a8642dc36775dbd41b4378945ed838a4aa9b3",
+      "referenceRole": "whole-site fenced alternative",
+      "targetState": "Full venue extent, named landmarks and queue zones; pan, zoom and recenter",
+      "state": "whole-plan",
+      "roi": [
+        0,
+        0,
+        1024,
+        1280
+      ],
+      "verdict": "DIFFER",
+      "differences": [
+        "Alternative whole-site illustration (Photo 1) is not the selected base; the app renders the provisional Photo 5 siteplan."
+      ],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P04-whole-plan",
+      "photo": 4,
+      "sourcePath": "photo-04.jpg",
+      "sourceSHA256": "4347ef9ba4f13c22e3575c80e9ff0eecd2aa569678e49223170a4b2491e589eb",
+      "referenceRole": "whole-site fenced alternative",
+      "targetState": "Full venue extent, named landmarks and queue zones; pan, zoom and recenter",
+      "state": "whole-plan",
+      "roi": [
+        0,
+        0,
+        1024,
+        1280
+      ],
+      "verdict": "DIFFER",
+      "differences": [
+        "Alternative whole-site illustration (Photo 4) is not the selected base; the app renders the provisional Photo 5 siteplan."
+      ],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P05-whole-plan",
+      "photo": 5,
+      "sourcePath": "photo-05.jpg",
+      "sourceSHA256": "d0713633289f87fc98603927f7cbc02df2054e989f6360332a93476d6c9da4e0",
+      "referenceRole": "PROVISIONAL primary base map",
+      "targetState": "Full venue extent, named landmarks and queue zones; pan, zoom and recenter",
+      "state": "whole-plan",
+      "roi": [
+        0,
+        0,
+        1024,
+        1280
+      ],
+      "verdict": "PASS",
+      "differences": [],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P02-selected-friend",
+      "photo": 2,
+      "sourcePath": "photo-02.jpg",
+      "sourceSHA256": "f7d841c815dfbf85b48b7e61a06106b9edab195e7bfbd4d37b78d8b23e610ac1",
+      "referenceRole": "meeting and contextual conversation anatomy; alternate fenced map background",
+      "targetState": "Selected physical friend; MESSAGE and MEET HERE",
+      "state": "selected-friend",
+      "roi": [
+        25,
+        108,
+        435,
+        835
+      ],
+      "verdict": "NOT_REACHABLE",
+      "differences": [
+        "VENUE_FRIEND_V1 bilateral friend authority returns 503: PgVenueLocationAuthority::friend_in returns VenueLocationError::PolicyUnavailable (backend/services/concert-service/src/venue_location/mod.rs). No live friend rows can be read."
+      ],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P02-meeting-conversation",
+      "photo": 2,
+      "sourcePath": "photo-02.jpg",
+      "sourceSHA256": "f7d841c815dfbf85b48b7e61a06106b9edab195e7bfbd4d37b78d8b23e610ac1",
+      "referenceRole": "meeting and contextual conversation anatomy; alternate fenced map background",
+      "targetState": "Contextual conversation with accepted meeting; MESSAGE and CANCEL MEETUP",
+      "state": "conversation",
+      "roi": [
+        450,
+        108,
+        860,
+        835
+      ],
+      "verdict": "NOT_REACHABLE",
+      "differences": [
+        "VENUE_FRIEND_V1 bilateral friend authority returns 503: PgVenueLocationAuthority::friend_in returns VenueLocationError::PolicyUnavailable (backend/services/concert-service/src/venue_location/mod.rs). No live friend rows can be read."
+      ],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P02-place-card",
+      "photo": 2,
+      "sourcePath": "photo-02.jpg",
+      "sourceSHA256": "f7d841c815dfbf85b48b7e61a06106b9edab195e7bfbd4d37b78d8b23e610ac1",
+      "referenceRole": "meeting and contextual conversation anatomy; alternate fenced map background",
+      "targetState": "Fixed real-landmark card",
+      "state": "place-card",
+      "roi": [
+        870,
+        95,
+        1265,
+        215
+      ],
+      "verdict": "PASS",
+      "differences": [],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P02-friend-freshness",
+      "photo": 2,
+      "sourcePath": "photo-02.jpg",
+      "sourceSHA256": "f7d841c815dfbf85b48b7e61a06106b9edab195e7bfbd4d37b78d8b23e610ac1",
+      "referenceRole": "meeting and contextual conversation anatomy; alternate fenced map background",
+      "targetState": "Friend location freshness and request action",
+      "state": "friends",
+      "roi": [
+        870,
+        250,
+        1265,
+        430
+      ],
+      "verdict": "NOT_REACHABLE",
+      "differences": [
+        "VENUE_FRIEND_V1 bilateral friend authority returns 503: PgVenueLocationAuthority::friend_in returns VenueLocationError::PolicyUnavailable (backend/services/concert-service/src/venue_location/mod.rs). No live friend rows can be read."
+      ],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P02-fixed-vs-moving",
+      "photo": 2,
+      "sourcePath": "photo-02.jpg",
+      "sourceSHA256": "f7d841c815dfbf85b48b7e61a06106b9edab195e7bfbd4d37b78d8b23e610ac1",
+      "referenceRole": "meeting and contextual conversation anatomy; alternate fenced map background",
+      "targetState": "Fixed meeting anchor distinct from moving friend",
+      "state": "map-markers",
+      "roi": [
+        870,
+        440,
+        1265,
+        570
+      ],
+      "verdict": "NOT_REACHABLE",
+      "differences": [
+        "VENUE_FRIEND_V1 bilateral friend authority returns 503: PgVenueLocationAuthority::friend_in returns VenueLocationError::PolicyUnavailable (backend/services/concert-service/src/venue_location/mod.rs). No live friend rows can be read."
+      ],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P02-pending-invite",
+      "photo": 2,
+      "sourcePath": "photo-02.jpg",
+      "sourceSHA256": "f7d841c815dfbf85b48b7e61a06106b9edab195e7bfbd4d37b78d8b23e610ac1",
+      "referenceRole": "meeting and contextual conversation anatomy; alternate fenced map background",
+      "targetState": "Pending meeting invitation",
+      "state": "invitation-pending",
+      "roi": [
+        870,
+        580,
+        1265,
+        740
+      ],
+      "verdict": "NOT_REACHABLE",
+      "differences": [
+        "VENUE_FRIEND_V1 bilateral friend authority returns 503: PgVenueLocationAuthority::friend_in returns VenueLocationError::PolicyUnavailable (backend/services/concert-service/src/venue_location/mod.rs). No live friend rows can be read."
+      ],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P03-notes-map-list",
+      "photo": 3,
+      "sourcePath": "photo-03.jpg",
+      "sourceSHA256": "ddaf9da28fc517eb01588f725678a20045b3d52f0ca71d24d38b194a8b269423",
+      "referenceRole": "notes alternative",
+      "targetState": "Notes map/list with close, reply, MEET HERE and new note",
+      "state": "notes-selected",
+      "roi": [
+        29,
+        110,
+        423,
+        700
+      ],
+      "verdict": "PASS",
+      "differences": [],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P03-composer",
+      "photo": 3,
+      "sourcePath": "photo-03.jpg",
+      "sourceSHA256": "ddaf9da28fc517eb01588f725678a20045b3d52f0ca71d24d38b194a8b269423",
+      "referenceRole": "notes alternative",
+      "targetState": "Place-anchored note composer",
+      "state": "composer-friends",
+      "roi": [
+        444,
+        110,
+        835,
+        700
+      ],
+      "verdict": "PASS",
+      "differences": [],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P03-marker-taxonomy",
+      "photo": 3,
+      "sourcePath": "photo-03.jpg",
+      "sourceSHA256": "ddaf9da28fc517eb01588f725678a20045b3d52f0ca71d24d38b194a8b269423",
+      "referenceRole": "notes alternative",
+      "targetState": "Note marker taxonomy",
+      "state": "markers",
+      "roi": [
+        865,
+        115,
+        1265,
+        255
+      ],
+      "verdict": "PASS",
+      "differences": [],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P03-place-note-card",
+      "photo": 3,
+      "sourcePath": "photo-03.jpg",
+      "sourceSHA256": "ddaf9da28fc517eb01588f725678a20045b3d52f0ca71d24d38b194a8b269423",
+      "referenceRole": "notes alternative",
+      "targetState": "Selected note card",
+      "state": "notes-selected",
+      "roi": [
+        865,
+        255,
+        1265,
+        430
+      ],
+      "verdict": "PASS",
+      "differences": [],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P03-audience-selector",
+      "photo": 3,
+      "sourcePath": "photo-03.jpg",
+      "sourceSHA256": "ddaf9da28fc517eb01588f725678a20045b3d52f0ca71d24d38b194a8b269423",
+      "referenceRole": "notes alternative",
+      "targetState": "Audience selector with black selected state",
+      "state": "composer-everyone",
+      "roi": [
+        865,
+        430,
+        1265,
+        610
+      ],
+      "verdict": "PASS",
+      "differences": [],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P03-expiry-selector",
+      "photo": 3,
+      "sourcePath": "photo-03.jpg",
+      "sourceSHA256": "ddaf9da28fc517eb01588f725678a20045b3d52f0ca71d24d38b194a8b269423",
+      "referenceRole": "notes alternative",
+      "targetState": "Expiry selector with black selected state",
+      "state": "composer-everyone",
+      "roi": [
+        865,
+        430,
+        1265,
+        610
+      ],
+      "verdict": "PASS",
+      "differences": [],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P03-inline-reply",
+      "photo": 3,
+      "sourcePath": "photo-03.jpg",
+      "sourceSHA256": "ddaf9da28fc517eb01588f725678a20045b3d52f0ca71d24d38b194a8b269423",
+      "referenceRole": "notes alternative",
+      "targetState": "Authorized note reply",
+      "state": "reply",
+      "roi": [
+        865,
+        620,
+        1265,
+        740
+      ],
+      "verdict": "PASS",
+      "differences": [],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P06-notes-map-list",
+      "photo": 6,
+      "sourcePath": "photo-06.jpg",
+      "sourceSHA256": "4a0e2229ce68d447f25656cab392d982822d868dfb1123caef28be82b16d07e3",
+      "referenceRole": "notes alternative",
+      "targetState": "Notes map/list with close, reply, MEET HERE and new note",
+      "state": "notes-selected",
+      "roi": [
+        29,
+        110,
+        423,
+        700
+      ],
+      "verdict": "PASS",
+      "differences": [],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P06-composer",
+      "photo": 6,
+      "sourcePath": "photo-06.jpg",
+      "sourceSHA256": "4a0e2229ce68d447f25656cab392d982822d868dfb1123caef28be82b16d07e3",
+      "referenceRole": "notes alternative",
+      "targetState": "Place-anchored note composer",
+      "state": "composer-friends",
+      "roi": [
+        444,
+        110,
+        835,
+        700
+      ],
+      "verdict": "PASS",
+      "differences": [],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P06-marker-taxonomy",
+      "photo": 6,
+      "sourcePath": "photo-06.jpg",
+      "sourceSHA256": "4a0e2229ce68d447f25656cab392d982822d868dfb1123caef28be82b16d07e3",
+      "referenceRole": "notes alternative",
+      "targetState": "Note marker taxonomy",
+      "state": "markers",
+      "roi": [
+        865,
+        115,
+        1265,
+        255
+      ],
+      "verdict": "PASS",
+      "differences": [],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P06-place-note-card",
+      "photo": 6,
+      "sourcePath": "photo-06.jpg",
+      "sourceSHA256": "4a0e2229ce68d447f25656cab392d982822d868dfb1123caef28be82b16d07e3",
+      "referenceRole": "notes alternative",
+      "targetState": "Selected note card",
+      "state": "notes-selected",
+      "roi": [
+        865,
+        255,
+        1265,
+        430
+      ],
+      "verdict": "PASS",
+      "differences": [],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P06-audience-selector",
+      "photo": 6,
+      "sourcePath": "photo-06.jpg",
+      "sourceSHA256": "4a0e2229ce68d447f25656cab392d982822d868dfb1123caef28be82b16d07e3",
+      "referenceRole": "notes alternative",
+      "targetState": "Audience selector with black selected state",
+      "state": "composer-everyone",
+      "roi": [
+        865,
+        430,
+        1265,
+        610
+      ],
+      "verdict": "PASS",
+      "differences": [],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P06-expiry-selector",
+      "photo": 6,
+      "sourcePath": "photo-06.jpg",
+      "sourceSHA256": "4a0e2229ce68d447f25656cab392d982822d868dfb1123caef28be82b16d07e3",
+      "referenceRole": "notes alternative",
+      "targetState": "Expiry selector with black selected state",
+      "state": "composer-everyone",
+      "roi": [
+        865,
+        430,
+        1265,
+        610
+      ],
+      "verdict": "PASS",
+      "differences": [],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P06-inline-reply",
+      "photo": 6,
+      "sourcePath": "photo-06.jpg",
+      "sourceSHA256": "4a0e2229ce68d447f25656cab392d982822d868dfb1123caef28be82b16d07e3",
+      "referenceRole": "notes alternative",
+      "targetState": "Authorized note reply",
+      "state": "reply",
+      "roi": [
+        865,
+        620,
+        1265,
+        740
+      ],
+      "verdict": "PASS",
+      "differences": [],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P10-notes-map-list",
+      "photo": 10,
+      "sourcePath": "photo-10.jpg",
+      "sourceSHA256": "1f0e133be3a4bf999fb7871188cce67086d09106a095c266b74e648a67777f63",
+      "referenceRole": "PROVISIONAL primary notes states",
+      "targetState": "Notes map/list with close, reply, MEET HERE and new note",
+      "state": "notes-selected",
+      "roi": [
+        26,
+        110,
+        423,
+        700
+      ],
+      "verdict": "PASS",
+      "differences": [],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P10-composer",
+      "photo": 10,
+      "sourcePath": "photo-10.jpg",
+      "sourceSHA256": "1f0e133be3a4bf999fb7871188cce67086d09106a095c266b74e648a67777f63",
+      "referenceRole": "PROVISIONAL primary notes states",
+      "targetState": "Place-anchored note composer",
+      "state": "composer-friends",
+      "roi": [
+        441,
+        110,
+        835,
+        700
+      ],
+      "verdict": "PASS",
+      "differences": [],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P10-marker-taxonomy",
+      "photo": 10,
+      "sourcePath": "photo-10.jpg",
+      "sourceSHA256": "1f0e133be3a4bf999fb7871188cce67086d09106a095c266b74e648a67777f63",
+      "referenceRole": "PROVISIONAL primary notes states",
+      "targetState": "Note marker taxonomy",
+      "state": "markers",
+      "roi": [
+        865,
+        115,
+        1265,
+        255
+      ],
+      "verdict": "PASS",
+      "differences": [],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P10-place-note-card",
+      "photo": 10,
+      "sourcePath": "photo-10.jpg",
+      "sourceSHA256": "1f0e133be3a4bf999fb7871188cce67086d09106a095c266b74e648a67777f63",
+      "referenceRole": "PROVISIONAL primary notes states",
+      "targetState": "Selected note card",
+      "state": "notes-selected",
+      "roi": [
+        865,
+        255,
+        1265,
+        430
+      ],
+      "verdict": "PASS",
+      "differences": [],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P10-audience-selector",
+      "photo": 10,
+      "sourcePath": "photo-10.jpg",
+      "sourceSHA256": "1f0e133be3a4bf999fb7871188cce67086d09106a095c266b74e648a67777f63",
+      "referenceRole": "PROVISIONAL primary notes states",
+      "targetState": "Audience selector with black selected state",
+      "state": "composer-everyone",
+      "roi": [
+        865,
+        430,
+        1265,
+        610
+      ],
+      "verdict": "PASS",
+      "differences": [],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P10-expiry-selector",
+      "photo": 10,
+      "sourcePath": "photo-10.jpg",
+      "sourceSHA256": "1f0e133be3a4bf999fb7871188cce67086d09106a095c266b74e648a67777f63",
+      "referenceRole": "PROVISIONAL primary notes states",
+      "targetState": "Expiry selector with black selected state",
+      "state": "composer-everyone",
+      "roi": [
+        865,
+        430,
+        1265,
+        610
+      ],
+      "verdict": "PASS",
+      "differences": [],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P10-inline-reply",
+      "photo": 10,
+      "sourcePath": "photo-10.jpg",
+      "sourceSHA256": "1f0e133be3a4bf999fb7871188cce67086d09106a095c266b74e648a67777f63",
+      "referenceRole": "PROVISIONAL primary notes states",
+      "targetState": "Authorized note reply",
+      "state": "reply",
+      "roi": [
+        865,
+        620,
+        1265,
+        740
+      ],
+      "verdict": "PASS",
+      "differences": [],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P07-map-overview",
+      "photo": 7,
+      "sourcePath": "photo-07.jpg",
+      "sourceSHA256": "6b1ecf2806588f29ad7e3f3da8e7a36fcfb392a2640be33ce6de006f8c8a13ce",
+      "referenceRole": "friends alternative",
+      "targetState": "Map overview with zoom, recenter and sharing/Pause",
+      "state": "whole-plan",
+      "roi": [
+        15,
+        108,
+        433,
+        725
+      ],
+      "verdict": "NOT_REACHABLE",
+      "differences": [
+        "VENUE_FRIEND_V1 bilateral friend authority returns 503: PgVenueLocationAuthority::friend_in returns VenueLocationError::PolicyUnavailable (backend/services/concert-service/src/venue_location/mod.rs). No live friend rows can be read."
+      ],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P07-friends-list",
+      "photo": 7,
+      "sourcePath": "photo-07.jpg",
+      "sourceSHA256": "6b1ecf2806588f29ad7e3f3da8e7a36fcfb392a2640be33ce6de006f8c8a13ce",
+      "referenceRole": "friends alternative",
+      "targetState": "Friends list with current/check-in/stale rows and VIEW/ASK LOCATION",
+      "state": "friends",
+      "roi": [
+        455,
+        108,
+        859,
+        725
+      ],
+      "verdict": "NOT_REACHABLE",
+      "differences": [
+        "VENUE_FRIEND_V1 bilateral friend authority returns 503: PgVenueLocationAuthority::friend_in returns VenueLocationError::PolicyUnavailable (backend/services/concert-service/src/venue_location/mod.rs). No live friend rows can be read."
+      ],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P07-marker-taxonomy",
+      "photo": 7,
+      "sourcePath": "photo-07.jpg",
+      "sourceSHA256": "6b1ecf2806588f29ad7e3f3da8e7a36fcfb392a2640be33ce6de006f8c8a13ce",
+      "referenceRole": "friends alternative",
+      "targetState": "Overlay marker taxonomy",
+      "state": "markers",
+      "roi": [
+        870,
+        95,
+        1265,
+        235
+      ],
+      "verdict": "NOT_REACHABLE",
+      "differences": [
+        "VENUE_FRIEND_V1 bilateral friend authority returns 503: PgVenueLocationAuthority::friend_in returns VenueLocationError::PolicyUnavailable (backend/services/concert-service/src/venue_location/mod.rs). No live friend rows can be read."
+      ],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P07-freshness-formats",
+      "photo": 7,
+      "sourcePath": "photo-07.jpg",
+      "sourceSHA256": "6b1ecf2806588f29ad7e3f3da8e7a36fcfb392a2640be33ce6de006f8c8a13ce",
+      "referenceRole": "friends alternative",
+      "targetState": "Distinct source and freshness labels",
+      "state": "friends",
+      "roi": [
+        870,
+        255,
+        1265,
+        425
+      ],
+      "verdict": "NOT_REACHABLE",
+      "differences": [
+        "VENUE_FRIEND_V1 bilateral friend authority returns 503: PgVenueLocationAuthority::friend_in returns VenueLocationError::PolicyUnavailable (backend/services/concert-service/src/venue_location/mod.rs). No live friend rows can be read."
+      ],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P07-selected-friend",
+      "photo": 7,
+      "sourcePath": "photo-07.jpg",
+      "sourceSHA256": "6b1ecf2806588f29ad7e3f3da8e7a36fcfb392a2640be33ce6de006f8c8a13ce",
+      "referenceRole": "friends alternative",
+      "targetState": "Selected physical friend card",
+      "state": "selected-friend",
+      "roi": [
+        870,
+        480,
+        1265,
+        680
+      ],
+      "verdict": "NOT_REACHABLE",
+      "differences": [
+        "VENUE_FRIEND_V1 bilateral friend authority returns 503: PgVenueLocationAuthority::friend_in returns VenueLocationError::PolicyUnavailable (backend/services/concert-service/src/venue_location/mod.rs). No live friend rows can be read."
+      ],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P07-sharing-control",
+      "photo": 7,
+      "sourcePath": "photo-07.jpg",
+      "sourceSHA256": "6b1ecf2806588f29ad7e3f3da8e7a36fcfb392a2640be33ce6de006f8c8a13ce",
+      "referenceRole": "friends alternative",
+      "targetState": "Opt-in sharing, pause and revoke states",
+      "state": "sharing-active",
+      "roi": [
+        870,
+        685,
+        1265,
+        820
+      ],
+      "verdict": "NOT_REACHABLE",
+      "differences": [
+        "VENUE_FRIEND_V1 bilateral friend authority returns 503: PgVenueLocationAuthority::friend_in returns VenueLocationError::PolicyUnavailable (backend/services/concert-service/src/venue_location/mod.rs). No live friend rows can be read."
+      ],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P08-map-overview",
+      "photo": 8,
+      "sourcePath": "photo-08.jpg",
+      "sourceSHA256": "2a35eacdfa5c23aaa159a866d1e8fae092ab1279a2a4a5bfa990bc7b1999531d",
+      "referenceRole": "friends alternative",
+      "targetState": "Map overview with zoom, recenter and sharing/Pause",
+      "state": "whole-plan",
+      "roi": [
+        15,
+        108,
+        433,
+        725
+      ],
+      "verdict": "NOT_REACHABLE",
+      "differences": [
+        "VENUE_FRIEND_V1 bilateral friend authority returns 503: PgVenueLocationAuthority::friend_in returns VenueLocationError::PolicyUnavailable (backend/services/concert-service/src/venue_location/mod.rs). No live friend rows can be read."
+      ],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P08-friends-list",
+      "photo": 8,
+      "sourcePath": "photo-08.jpg",
+      "sourceSHA256": "2a35eacdfa5c23aaa159a866d1e8fae092ab1279a2a4a5bfa990bc7b1999531d",
+      "referenceRole": "friends alternative",
+      "targetState": "Friends list with current/check-in/stale rows and VIEW/ASK LOCATION",
+      "state": "friends",
+      "roi": [
+        455,
+        108,
+        859,
+        725
+      ],
+      "verdict": "NOT_REACHABLE",
+      "differences": [
+        "VENUE_FRIEND_V1 bilateral friend authority returns 503: PgVenueLocationAuthority::friend_in returns VenueLocationError::PolicyUnavailable (backend/services/concert-service/src/venue_location/mod.rs). No live friend rows can be read."
+      ],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P08-marker-taxonomy",
+      "photo": 8,
+      "sourcePath": "photo-08.jpg",
+      "sourceSHA256": "2a35eacdfa5c23aaa159a866d1e8fae092ab1279a2a4a5bfa990bc7b1999531d",
+      "referenceRole": "friends alternative",
+      "targetState": "Overlay marker taxonomy",
+      "state": "markers",
+      "roi": [
+        870,
+        95,
+        1265,
+        235
+      ],
+      "verdict": "NOT_REACHABLE",
+      "differences": [
+        "VENUE_FRIEND_V1 bilateral friend authority returns 503: PgVenueLocationAuthority::friend_in returns VenueLocationError::PolicyUnavailable (backend/services/concert-service/src/venue_location/mod.rs). No live friend rows can be read."
+      ],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P08-freshness-formats",
+      "photo": 8,
+      "sourcePath": "photo-08.jpg",
+      "sourceSHA256": "2a35eacdfa5c23aaa159a866d1e8fae092ab1279a2a4a5bfa990bc7b1999531d",
+      "referenceRole": "friends alternative",
+      "targetState": "Distinct source and freshness labels",
+      "state": "friends",
+      "roi": [
+        870,
+        255,
+        1265,
+        425
+      ],
+      "verdict": "NOT_REACHABLE",
+      "differences": [
+        "VENUE_FRIEND_V1 bilateral friend authority returns 503: PgVenueLocationAuthority::friend_in returns VenueLocationError::PolicyUnavailable (backend/services/concert-service/src/venue_location/mod.rs). No live friend rows can be read."
+      ],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P08-selected-friend",
+      "photo": 8,
+      "sourcePath": "photo-08.jpg",
+      "sourceSHA256": "2a35eacdfa5c23aaa159a866d1e8fae092ab1279a2a4a5bfa990bc7b1999531d",
+      "referenceRole": "friends alternative",
+      "targetState": "Selected physical friend card",
+      "state": "selected-friend",
+      "roi": [
+        870,
+        480,
+        1265,
+        680
+      ],
+      "verdict": "NOT_REACHABLE",
+      "differences": [
+        "VENUE_FRIEND_V1 bilateral friend authority returns 503: PgVenueLocationAuthority::friend_in returns VenueLocationError::PolicyUnavailable (backend/services/concert-service/src/venue_location/mod.rs). No live friend rows can be read."
+      ],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P08-sharing-control",
+      "photo": 8,
+      "sourcePath": "photo-08.jpg",
+      "sourceSHA256": "2a35eacdfa5c23aaa159a866d1e8fae092ab1279a2a4a5bfa990bc7b1999531d",
+      "referenceRole": "friends alternative",
+      "targetState": "Opt-in sharing, pause and revoke states",
+      "state": "sharing-active",
+      "roi": [
+        870,
+        685,
+        1265,
+        820
+      ],
+      "verdict": "NOT_REACHABLE",
+      "differences": [
+        "VENUE_FRIEND_V1 bilateral friend authority returns 503: PgVenueLocationAuthority::friend_in returns VenueLocationError::PolicyUnavailable (backend/services/concert-service/src/venue_location/mod.rs). No live friend rows can be read."
+      ],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P09-map-overview",
+      "photo": 9,
+      "sourcePath": "photo-09.jpg",
+      "sourceSHA256": "2c9a8a240495467c9b03a0cce445515f3b879c6e2aef4bc0a366f1aa855051a9",
+      "referenceRole": "PROVISIONAL primary friends states",
+      "targetState": "Map overview with zoom, recenter and sharing/Pause",
+      "state": "whole-plan",
+      "roi": [
+        15,
+        108,
+        433,
+        725
+      ],
+      "verdict": "NOT_REACHABLE",
+      "differences": [
+        "VENUE_FRIEND_V1 bilateral friend authority returns 503: PgVenueLocationAuthority::friend_in returns VenueLocationError::PolicyUnavailable (backend/services/concert-service/src/venue_location/mod.rs). No live friend rows can be read."
+      ],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P09-friends-list",
+      "photo": 9,
+      "sourcePath": "photo-09.jpg",
+      "sourceSHA256": "2c9a8a240495467c9b03a0cce445515f3b879c6e2aef4bc0a366f1aa855051a9",
+      "referenceRole": "PROVISIONAL primary friends states",
+      "targetState": "Friends list with current/check-in/stale rows and VIEW/ASK LOCATION",
+      "state": "friends",
+      "roi": [
+        455,
+        108,
+        859,
+        725
+      ],
+      "verdict": "NOT_REACHABLE",
+      "differences": [
+        "VENUE_FRIEND_V1 bilateral friend authority returns 503: PgVenueLocationAuthority::friend_in returns VenueLocationError::PolicyUnavailable (backend/services/concert-service/src/venue_location/mod.rs). No live friend rows can be read."
+      ],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P09-marker-taxonomy",
+      "photo": 9,
+      "sourcePath": "photo-09.jpg",
+      "sourceSHA256": "2c9a8a240495467c9b03a0cce445515f3b879c6e2aef4bc0a366f1aa855051a9",
+      "referenceRole": "PROVISIONAL primary friends states",
+      "targetState": "Overlay marker taxonomy",
+      "state": "markers",
+      "roi": [
+        870,
+        95,
+        1265,
+        235
+      ],
+      "verdict": "NOT_REACHABLE",
+      "differences": [
+        "VENUE_FRIEND_V1 bilateral friend authority returns 503: PgVenueLocationAuthority::friend_in returns VenueLocationError::PolicyUnavailable (backend/services/concert-service/src/venue_location/mod.rs). No live friend rows can be read."
+      ],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P09-freshness-formats",
+      "photo": 9,
+      "sourcePath": "photo-09.jpg",
+      "sourceSHA256": "2c9a8a240495467c9b03a0cce445515f3b879c6e2aef4bc0a366f1aa855051a9",
+      "referenceRole": "PROVISIONAL primary friends states",
+      "targetState": "Distinct source and freshness labels",
+      "state": "friends",
+      "roi": [
+        870,
+        255,
+        1265,
+        425
+      ],
+      "verdict": "NOT_REACHABLE",
+      "differences": [
+        "VENUE_FRIEND_V1 bilateral friend authority returns 503: PgVenueLocationAuthority::friend_in returns VenueLocationError::PolicyUnavailable (backend/services/concert-service/src/venue_location/mod.rs). No live friend rows can be read."
+      ],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P09-selected-friend",
+      "photo": 9,
+      "sourcePath": "photo-09.jpg",
+      "sourceSHA256": "2c9a8a240495467c9b03a0cce445515f3b879c6e2aef4bc0a366f1aa855051a9",
+      "referenceRole": "PROVISIONAL primary friends states",
+      "targetState": "Selected physical friend card",
+      "state": "selected-friend",
+      "roi": [
+        870,
+        480,
+        1265,
+        680
+      ],
+      "verdict": "NOT_REACHABLE",
+      "differences": [
+        "VENUE_FRIEND_V1 bilateral friend authority returns 503: PgVenueLocationAuthority::friend_in returns VenueLocationError::PolicyUnavailable (backend/services/concert-service/src/venue_location/mod.rs). No live friend rows can be read."
+      ],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    },
+    {
+      "caseId": "P09-sharing-control",
+      "photo": 9,
+      "sourcePath": "photo-09.jpg",
+      "sourceSHA256": "2c9a8a240495467c9b03a0cce445515f3b879c6e2aef4bc0a366f1aa855051a9",
+      "referenceRole": "PROVISIONAL primary friends states",
+      "targetState": "Opt-in sharing, pause and revoke states",
+      "state": "sharing-active",
+      "roi": [
+        870,
+        685,
+        1265,
+        820
+      ],
+      "verdict": "NOT_REACHABLE",
+      "differences": [
+        "VENUE_FRIEND_V1 bilateral friend authority returns 503: PgVenueLocationAuthority::friend_in returns VenueLocationError::PolicyUnavailable (backend/services/concert-service/src/venue_location/mod.rs). No live friend rows can be read."
+      ],
+      "masks": [
+        "friend display names",
+        "note authors and bodies",
+        "ages and expiry labels",
+        "invitation identifiers"
+      ]
+    }
+  ],
+  "ia": [
+    {
+      "iaId": "venue-overview",
+      "state": "whole-plan",
+      "verdict": "PASS",
+      "live": "reachable",
+      "note": "Map overview with pan, zoom, fit and recenter over the reviewed Photo 5 siteplan."
+    },
+    {
+      "iaId": "friends-list-clusters",
+      "state": "cluster",
+      "verdict": "NOT_REACHABLE",
+      "live": "blocked",
+      "blocker": "VENUE_FRIEND_V1 bilateral friend authority returns 503: PgVenueLocationAuthority::friend_in returns VenueLocationError::PolicyUnavailable (backend/services/concert-service/src/venue_location/mod.rs). No live friend rows can be read."
+    },
+    {
+      "iaId": "location-consent-status",
+      "state": "sharing-consent",
+      "verdict": "NOT_REACHABLE",
+      "live": "blocked",
+      "blocker": "No LocationSharingAudience provider exists in the production composition, and VENUE_FRIEND_V1 returns 503; the consent panel renders but sharing cannot start."
+    },
+    {
+      "iaId": "selected-friend-request",
+      "state": "selected-phone",
+      "verdict": "NOT_REACHABLE",
+      "live": "blocked",
+      "blocker": "VENUE_FRIEND_V1 bilateral friend authority returns 503: PgVenueLocationAuthority::friend_in returns VenueLocationError::PolicyUnavailable (backend/services/concert-service/src/venue_location/mod.rs). No live friend rows can be read."
+    },
+    {
+      "iaId": "fixed-place-invitation-composer",
+      "state": "invite",
+      "verdict": "NOT_REACHABLE",
+      "live": "blocked",
+      "blocker": "VENUE_FRIEND_V1 bilateral friend authority returns 503: PgVenueLocationAuthority::friend_in returns VenueLocationError::PolicyUnavailable (backend/services/concert-service/src/venue_location/mod.rs). No live friend rows can be read."
+    },
+    {
+      "iaId": "invitation-decisions-status",
+      "state": "invitation-pending",
+      "verdict": "NOT_REACHABLE",
+      "live": "blocked",
+      "blocker": "VENUE_FRIEND_V1 bilateral friend authority returns 503: PgVenueLocationAuthority::friend_in returns VenueLocationError::PolicyUnavailable (backend/services/concert-service/src/venue_location/mod.rs). No live friend rows can be read."
+    },
+    {
+      "iaId": "meeting-conversation",
+      "state": "conversation",
+      "verdict": "NOT_REACHABLE",
+      "live": "blocked",
+      "blocker": "VENUE_FRIEND_V1 bilateral friend authority returns 503: PgVenueLocationAuthority::friend_in returns VenueLocationError::PolicyUnavailable (backend/services/concert-service/src/venue_location/mod.rs). No live friend rows can be read."
+    },
+    {
+      "iaId": "notes-map-list",
+      "state": "notes",
+      "verdict": "PASS",
+      "live": "reachable",
+      "note": "Notes map/list renders current authorized note counts and rows."
+    },
+    {
+      "iaId": "note-composer-audience-expiry",
+      "state": "composer-everyone",
+      "verdict": "PASS",
+      "live": "reachable",
+      "note": "Composer exposes the authorized FRIENDS/EVERYONE and 1 HOUR/END OF DAY selectors."
+    },
+    {
+      "iaId": "note-replies-meet-here",
+      "state": "reply",
+      "verdict": "NOT_REACHABLE",
+      "live": "blocked",
+      "blocker": "Replies render; MEET HERE enters the invitation flow, which is blocked by the VENUE_FRIEND_V1 503."
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "viewport": {
+    "width": 390,
+    "height": 844,
+    "dpr": 1
+  },
+  "overflowX": false,
+  "tabs": {
+    "x": 0,
+    "y": 0,
+    "width": 390,
+    "height": 55
+  },
+  "tab": {
+    "x": 4,
+    "y": 5,
+    "width": 126,
+    "height": 44
+  },
+  "map": {
+    "x": 0,
+    "y": 55,
+    "width": 390,
+    "height": 529
+  },
+  "sheet": null,
+  "sharing": {
+    "x": 0,
+    "y": 584,
+    "width": 390,
+    "height": 55
+  },
+  "friendRows": [],
+  "friendPortrait": null,
+  "noteCards": [],
+  "notePortrait": null,
+  "selectedPortrait": null,
+  "composer": null,
+  "primary": {
+    "x": 10,
+    "y": 790,
+    "width": 154,
+    "height": 44
+  },
+  "meeting": null,
+  "controls": 32,
+  "minHit": 44,
+  "regions": {
+    "map": {
+      "x": 0,
+      "y": 0,
+      "width": 390,
+      "height": 844
+    },
+    "tabPanel": {
+      "x": 0,
+      "y": 55,
+      "width": 390,
+      "height": 529
+    },
+    "canvas": {
+      "x": 0,
+      "y": 55,
+      "width": 390,
+      "height": 529
+    },
+    "friends": null,
+    "sheet": null,
+    "noteCard": null,
+    "composer": null,
+    "sharing": {
+      "x": 0,
+      "y": 584,
+      "width": 390,
+      "height": 55
+    },
+    "friendDetail": null
+  },
+  "fonts": {
+    "name": null,
+    "place": null,
+    "source": null,
+    "body": null,
+    "noteMeta": null
+  },
+  "text": "MAP\nFRIENDS\nNOTES\n⚑\n⚑\n⚑\n⚑\n⚑\nMAIN GATE\n⚑\nSUB GATE\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\n⚑\nCharacter unavailable\nhelena\n+\n−\n⌖\n↺\nPhone location is off\nSHARE LOCATION\n\nShare real phone location with authorized friends. This is separate from your virtual World position and from device permission. Your browser asks for permission only after you continue.\n\nI want to share my phone location.\nAllow phone location"
+}
