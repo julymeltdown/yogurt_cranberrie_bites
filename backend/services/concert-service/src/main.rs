@@ -120,7 +120,7 @@ async fn main() -> anyhow::Result<()> {
     )?;
     let closure_settings = config::closure_runtime::ClosureSettings::load(
         world_settings.is_some(),
-        intro_settings.is_some(),
+        participant_settings.is_some(),
         runtime.is_some(),
     )?;
     let features = config::bootstrap_features::ConfiguredBootstrapFeatures::from_settings(
