@@ -2107,7 +2107,7 @@ fn meeting_route_admission_is_exact_and_closed() {
             .unwrap_err()
             .code(),
         Code::PermissionDenied,
-        "location HTTP is not composed; it must not be silently accepted"
+        "product RPC refuses venue location/notes; HTTP authorization is proven at the application layer only"
     );
     assert_eq!(
         operation(
