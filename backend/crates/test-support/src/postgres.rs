@@ -42,10 +42,15 @@ pub async fn start_postgres_with_url_or_native() -> Result<(Option<PostgresConta
                 "native fixture URL must not carry options or fragments"
             );
             let admin = sqlx::PgPool::connect(&url).await?;
+            static FIXTURE_SEQUENCE: std::sync::atomic::AtomicU64 =
+                std::sync::atomic::AtomicU64::new(0);
             let nanos = std::time::SystemTime::now()
                 .duration_since(std::time::UNIX_EPOCH)?
                 .as_nanos();
-            let database = format!("mcr_fixture_{}_{nanos}", std::process::id());
+            let sequence =
+                FIXTURE_SEQUENCE.fetch_add(1, std::sync::atomic::Ordering::Relaxed);
+            let database =
+                format!("mcr_fixture_{}_{nanos}_{sequence}", std::process::id());
             sqlx::query(&format!("create database {database} template template0"))
                 .execute(&admin)
                 .await?;
