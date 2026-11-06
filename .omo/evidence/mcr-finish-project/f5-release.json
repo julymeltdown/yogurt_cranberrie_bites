@@ -1,0 +1,336 @@
+{
+  "task": "F5",
+  "id": "F5-release-audit",
+  "candidate": "dcac6b20d05c3aff8ab5bea6516d22a1c59fc972",
+  "branch": "codex/mcr-exec-f5",
+  "base": "dcac6b20d05c3aff8ab5bea6516d22a1c59fc972",
+  "generated_at": "2026-11-06T19:04:10Z",
+  "audit_window": "2026-11-06T18:52Z-19:04Z",
+  "release_decision": "NOT_RELEASE_READY",
+  "decision_reasons": [
+    "14 implementation rows remain recorded gaps with named open work",
+    "F3 privacy matrix FAILED: QA04 aborted twice with 504 at DELETE /api/relationships/blocks while IN03 standalone returns 200",
+    "F2-02 open: clippy red (pre-existing eq_op plus 26 delivery warnings) and no clippy step in CI",
+    "F4: 10 of 20 ideal-state elements delivered, 10 partial, 0 not delivered; no IS row wholly delivered",
+    "NOT_RUN inventory covers venue reachability, mobile/device, QA04 cells and WS phase, deletion saga, QA10 composition, QA08 capacity and compose/restore",
+    "Hosted mcr-ci is red: the backend intro cursor test fails on Linux clock precision (F5-CI-01) and the frontend job fails 33 tests on shallow-history git show plus missing Python referencing (F5-CI-02)"
+  ],
+  "plan_rows": {
+    "rows_1_51": { "done": 37, "gap": 14, "open": 0, "total": 51 },
+    "audit_rows": {
+      "done": ["F1", "F2", "F4"],
+      "gap": ["F3"],
+      "open": ["F5"],
+      "total": 5
+    },
+    "whole_plan": { "done": 40, "gap": 15, "open": 1, "total": 56 },
+    "gap_rows": [11, 14, 16, 28, 30, 32, 35, 36, 37, 41, 42, 43, 45, 51],
+    "closed_rows_passed": 40,
+    "closed_rows_failed": 0,
+    "rows_47_48": {
+      "47": {
+        "state": "DONE",
+        "delivering_commit": "7bbcba8365a6375ddca8bc92d1ff158e0ab746f9",
+        "evidence": ".omo/evidence/mcr-finish-project/task-47-in05.md"
+      },
+      "48": {
+        "state": "DONE",
+        "delivering_commit": "bbf9da478934ab7d624c87bb55076c37b8a024d8",
+        "evidence": ".omo/evidence/mcr-finish-project/task-48-ci.md",
+        "plan_closure_commit": "33141de3ff25bccab0275b796197fb13e9fa879f"
+      }
+    }
+  },
+  "expected_count_check": {
+    "expected": { "done": 41, "gap": 14 },
+    "measured_rows_1_51": { "done": 37, "gap": 14, "open": 0 },
+    "measured_all_56": { "done": 40, "gap": 15, "open": 1 },
+    "match": false,
+    "explanation": "Rows 1-51 are 37/14; all 56 rows are 40/15/1. Closing F5 would give 41/15/0, not 41/14. F3 is the 15th gap row after dcac6b20d."
+  },
+  "obligations": {
+    "original_112": {
+      "required": 112,
+      "accounted": 112,
+      "active": 111,
+      "deferred": ["QA08"],
+      "generated_originals": 112,
+      "generated_extension_ids": ["EX01", "EX02", "EX03", "EX04", "EX05", "EX06"],
+      "status": "PASS"
+    },
+    "ia_61": {
+      "required": 61,
+      "accounted": 61,
+      "p1_excluded": ["M10", "R02", "X02"],
+      "status": "PASS"
+    },
+    "design_12": {
+      "required": 12,
+      "families": ["PI01", "PI02", "PI03", "PI04", "PI05", "PI06", "PI07", "PI08", "PI09", "PI10", "PI11", "PI12"],
+      "ia_family_count": 11,
+      "families_without_ia_rows": ["PI01"],
+      "status": "PASS"
+    },
+    "venue_8": {
+      "required": 8,
+      "deliverables": ["VENU-ART01", "VENU-BE-L01", "VENU-FE-L01", "VENU-BE-M01", "VENU-FE-M01", "VENU-BE-N01", "VENU-FE-N01", "VENU-IN01"],
+      "status": "PASS"
+    },
+    "extension_ia_10": {
+      "required": 10,
+      "accounted": 10,
+      "mapped": 10,
+      "unmapped": 0,
+      "source": ".omo/evidence/mcr-finish-project/task-46-w04.md#Source of the ten extension IA states",
+      "status": "PASS"
+    },
+    "gap_14": {
+      "required": 14,
+      "found": 14,
+      "status": "PASS",
+      "checker_note": "The refreshed IN05 checker's own gap_14 assertion is FAIL because it expects exactly 14 gap rows in the 56-row plan and F3 is a 15th audit gap row; the implementation gap set is exactly 14."
+    }
+  },
+  "completion": {
+    "active_done": 65,
+    "active_total": 111,
+    "active_percent": 58.6,
+    "active_remaining": 46,
+    "register_counts": {
+      "DONE": 65,
+      "IN_PROGRESS": 39,
+      "OPEN": 3,
+      "WAITING_INPUT": 3,
+      "REOPENED": 1,
+      "DEFERRED_BY_USER": 1
+    },
+    "register_counts_total": 112,
+    "register_counts_match_declared": true,
+    "design": { "done": 10, "total": 12, "open": ["PI08", "PI11"] },
+    "venue": { "done": 1, "total": 8 },
+    "extension_ia": { "mapped": 10, "total": 10, "captures_not_run": 10 },
+    "venu_in01": {
+      "cases": 48,
+      "pass": 23,
+      "differ": 2,
+      "not_reachable": 23,
+      "ia_pass": 3,
+      "ia_differ": 0,
+      "ia_not_reachable": 7
+    }
+  },
+  "in05_refresh": {
+    "original_snapshot": ".omo/evidence/mcr-finish-project/task-47-in05.json",
+    "original_candidate": "7d14251bb3ddd6a2edbaa2abaa6673b8ac872364",
+    "original_counts": { "DONE": 35, "GAP": 14, "OPEN": 7 },
+    "refresh_snapshot": ".omo/evidence/mcr-finish-project/task-47-in05-refresh.json",
+    "refresh_candidate": "dcac6b20d05c3aff8ab5bea6516d22a1c59fc972",
+    "refresh_counts": { "DONE": 40, "GAP": 15, "OPEN": 1 },
+    "refresh_release_decision": "NOT_RELEASE_READY",
+    "rows_47_48_refreshed": "DONE / DONE",
+    "qa08_status_note": "The refresh's qa08.status PASS is the deferral predicate; QA08 itself is DEFERRED_BY_USER / NOT_RUN."
+  },
+  "qa08": {
+    "state": "DEFERRED_BY_USER",
+    "run_state": "NOT_RUN",
+    "recorded_state": "IN_PROGRESS",
+    "evidence": [],
+    "capacity_claim": false,
+    "reopen_when": "A named user decision re-authorizes performance qualification; then re-run the QA08 capacity/soak suite (including the 200-concurrent-user scenario) on a fresh candidate with measured reports and publish the result as a new task delta. Until then no capacity claim is permitted."
+  },
+  "ci": {
+    "workflow": ".github/workflows/mcr-ci.yml",
+    "jobs": ["guards", "frontend", "backend", "release"],
+    "blocking": true,
+    "continue_on_error": false,
+    "c07_qa01_blocking_commit": "71e54aa735e6fbd7c51f0c7b6115fa71a9704048",
+    "c07_qa01_pin_reconciliation_commits": ["2bf45d2e10a395f6cbda134ebffb9af11f75b004", "d2f8bcd36"],
+    "documented_exclusions": [
+      {
+        "file": "src/app/operations-composition/__tests__/composition.test.tsx",
+        "test": "aborts pending settings and ignores its late completion after canonical policy replacement",
+        "reason": "pre-existing timing flake; excluded rather than retried"
+      },
+      {
+        "file": "src/app/operations-composition/__tests__/reports-production/composition.test.tsx",
+        "test": "aborts a pending list read and rejects its late completion across policy change",
+        "reason": "pre-existing timing flake; excluded rather than retried"
+      }
+    ],
+    "backend_env_gated_exclusions": [
+      "services/concert-service notification_binding tests require NB01_OWNER_ROOT",
+      "services/concert-service consumer probe requires CONCERT_CONSUMER_TEST_URL"
+    ],
+    "backend_job_crates": 16,
+    "backend_concert_service_tests": "NOT_IN_CI",
+    "release_incomplete_path": "exit 2 with status INCOMPLETE is a notice, not a failure, until a QA10 manifest exists",
+    "hosted_runs": {
+      "mcr_ci_total": 8,
+      "completed_cancelled": 7,
+      "completed_failure": 1,
+      "in_progress": 0,
+      "completed_green": 0,
+      "live_run_id": "42274582726",
+      "live_run_head": "dcac6b20d05c3aff8ab5bea6516d22a1c59fc972",
+      "live_run_started": "2026-11-06T18:52:14Z",
+      "live_run_state_at_audit": "completed failure at 2026-11-06T19:02:46Z",
+      "run_conclusion": "failure",
+      "guards_job": "success at 2026-11-06T18:54:30Z",
+      "release_job": "success at 2026-11-06T18:53:09Z",
+      "frontend_job": "failure at 2026-11-06T19:02:46Z",
+      "backend_job": "failure at 2026-11-06T18:58:49Z",
+      "frontend_failure": {
+        "step": "Test (documented exclusions only)",
+        "test_files": "16 failed | 397 passed (413)",
+        "tests": "33 failed | 5679 passed | 14 skipped (5726)",
+        "classes": [
+          "26 provenance/preservation tests fail because the shallow checkout lacks historical commits for git show <sha>:path",
+          "8 Python-oracle tests fail with ModuleNotFoundError: No module named 'referencing'"
+        ],
+        "passed_before_test": ["typecheck", "lint", "build", "collected-file floor 413 >= 409"],
+        "release_gap_id": "F5-CI-02"
+      },
+      "backend_failure": {
+        "step": "Cargo test (core crates)",
+        "test": "crates/concert-application/tests/intro.rs::authenticated_cursor_binds_request_position_and_lifetime",
+        "assertion_line": 193,
+        "error": "assertion left == right failed",
+        "cause": "the test uses nanosecond Utc::now() while the cursor codec round-trips timestamp_micros(); Linux runner clocks have sub-microsecond precision, macOS local evidence passed",
+        "release_gap_id": "F5-CI-01"
+      },
+      "other_workflow_successes": 46,
+      "other_workflow": "MCR contract generation"
+    },
+    "task_48_local_exits_carried": true,
+    "task_48_no_hosted_runner_statement": "stale at this candidate; hosted runs now exist but none completed green"
+  },
+  "final_wave": {
+    "f1": {
+      "artifact": ".omo/evidence/mcr-finish-project/f1-compliance.md",
+      "verdict": "COMPLIANT-WITH-RECORDED-GAPS",
+      "evidence_present": "51/51",
+      "substitutions": 0,
+      "ancestry_checks": 54,
+      "ancestry_failures": 0,
+      "gaps_named": "14/14"
+    },
+    "f2": {
+      "artifact": ".omo/evidence/mcr-finish-project/f2-quality.md",
+      "verdict": "NOT APPROVED as-is",
+      "findings_total": 10,
+      "f2_01": "resolved on the shipped product receipt path; legacy PlaceNoteUseCases methods still discard the key and are not the HTTP dispatch path",
+      "f2_02": "OPEN: clippy eq_op plus 26 delivery warnings; no clippy in CI",
+      "f2_03": "resolved by 2bf45d2e1/d2f8bcd36 and blocking after 71e54aa73",
+      "f2_04_to_f2_08": "open non-blocking quality debt",
+      "f2_09_f2_10": "PASS"
+    },
+    "f3": {
+      "artifact": ".omo/evidence/mcr-finish-project/f3-manual-qa/README.md",
+      "candidate": "71e54aa735e6fbd7c51f0c7b6115fa71a9704048",
+      "scenarios": {
+        "IS-1": { "verdict": "PASS", "measured": "15/15" },
+        "IS-2": { "verdict": "PASS", "measured": "39/39", "not_run": 2 },
+        "IS-3": { "verdict": "PASS at READ_ONLY", "true": 51, "null": 2 },
+        "IS-4": { "verdict": "PASS", "measured": "28/28" },
+        "privacy": { "verdict": "FAIL", "in03": "27/27 PASS", "qa04": "aborted twice" }
+      },
+      "privacy_failure": {
+        "route": "DELETE /api/relationships/blocks/{target_user_id}",
+        "status": 504,
+        "cells_before_abort": 96,
+        "pass": 74,
+        "not_run": 22,
+        "fail": 0,
+        "in03_standalone": 200,
+        "first_attempt": "2026-11-06T18:41:11.236692Z",
+        "second_attempt": "2026-11-06T18:43:36.786475Z"
+      },
+      "qa08_claim": false
+    },
+    "f4": {
+      "artifact": ".omo/evidence/mcr-finish-project/f4-ideal-state.md",
+      "is_rows": 4,
+      "elements": 20,
+      "delivered": 10,
+      "partial": 10,
+      "not_delivered": 0,
+      "rows_wholly_delivered": 0,
+      "followups": "52-66"
+    }
+  },
+  "gaps": [
+    { "id": "11", "summary": "feed mutation transport gated on the shared proto envelope", "owner": "Feed/Post owner" },
+    { "id": "14", "summary": "BE42 serving binary mount; live deletion convergence unproven", "owner": "Account/Concert deletion owner" },
+    { "id": "16", "summary": "closure producer and archive HTTP endpoint unmounted", "owner": "Concert lifecycle owner" },
+    { "id": "28", "summary": "VENU-IN01 friend_in 503; 23/48 cases and 7/10 IA states NOT_REACHABLE", "owner": "Venue Map/Friends authority owner" },
+    { "id": "30", "summary": "IN03 provider, reveal/revoke, venue and client-cache cases NOT_RUN", "owner": "IN03 social owner + external provider owner" },
+    { "id": "32", "summary": "IN01 D2 policy frames and feed CONTENT NOT_RUN", "owner": "World/Feed composition owner" },
+    { "id": "35", "summary": "AR01 venue provenance inputs not supplied", "owner": "AR01 venue-provenance owner + external venue operator" },
+    { "id": "36", "summary": "QA06 111/206 NOT_REACHABLE; physical devices NOT_RUN", "owner": "QA06 visual owner" },
+    { "id": "37", "summary": "reviewed character atlas not served; production activation NOT_RUN", "owner": "World release/atlas activation owner" },
+    { "id": "41", "summary": "QA09 deletion saga NOT_RUN; four steps RETRY", "owner": "QA09 recovery owner" },
+    { "id": "42", "summary": "QA10 composition INCOMPLETE; all 112 task and 61 IA bindings unbound", "owner": "QA10 release-composition publisher" },
+    { "id": "43", "summary": "FE24 gift media/motif producer not composed", "owner": "Frontend gift owner + BE24 Gateway media owner" },
+    { "id": "45", "summary": "no approved FE10 eligibility/legal publication", "owner": "FE10 legal/eligibility owner + external publication requester" },
+    { "id": "51", "summary": "closure stops at READ_ONLY; /archive 404; lifecycle owners absent", "owner": "Event lifecycle owner" },
+    { "id": "F3", "summary": "privacy matrix FAIL: QA04 504 abort at relationship unblock while IN03 returns 200", "owner": "Relationship-authority owner + QA04 matrix owner" },
+    { "id": "F2-02", "summary": "clippy red; eq_op plus 26 delivery warnings; no clippy in CI", "owner": "Backend lint owner + CI gate owner" },
+    { "id": "F5-CI-01", "summary": "hosted backend test red: intro authenticated cursor test compares nanosecond Utc::now() with the microsecond-truncated codec round trip", "owner": "BE27 intro test owner (concert-application)" },
+    { "id": "F5-CI-02", "summary": "hosted frontend test red: 33 tests in 16 files; shallow checkout breaks git show provenance and missing Python referencing breaks contract oracles", "owner": "CI workflow owner (frontend job) + provenance/oracle test owners" }
+  ],
+  "not_run": [
+    { "area": "QA08", "state": "DEFERRED_BY_USER / NOT_RUN", "detail": "200-socket/four-room, mobile FPS/bundle/memory, slow network, reconnect storms; no capacity claim" },
+    { "area": "VENU-IN01", "state": "NOT_RUN / NOT_REACHABLE", "detail": "23 NOT_REACHABLE + 2 DIFFER of 48 cases; 7 NOT_REACHABLE of 10 IA states; friend_in 503" },
+    { "area": "QA06 mobile visual", "state": "NOT_RUN / NOT_REACHABLE", "detail": "111 NOT_REACHABLE of 206; physical iOS and Android NOT_RUN; earlier Android captures not re-run" },
+    { "area": "IN03", "state": "NOT_RUN", "detail": "9 items: four provider cases, age positive, reveal/revoke, comments read, blocked-comment filter, client-cache/WS frames" },
+    { "area": "IN01 deltas", "state": "NOT_RUN", "detail": "D2 policy frames and feed CONTENT; refreshObservation unobservable in 900 s" },
+    { "area": "QA04 privacy", "state": "NOT_RUN", "detail": "22 cells before abort; WS ticket/subscription/replay and denial audit unreached; media 15, venue note reads 7, feed eviction 1" },
+    { "area": "IS-2 mural", "state": "NOT_RUN", "detail": "wall-clock undo expiry >600 s; device/visual" },
+    { "area": "IS-3 closure", "state": "NOT_RUN", "detail": "archive 200 unreachable; job stops at READ_ONLY" },
+    { "area": "IS-4 venue notes", "state": "NOT_RUN", "detail": "blocked note-read denial; reads 503 for every role" },
+    { "area": "QA09 deletion saga", "state": "NOT_RUN", "detail": "four steps RETRY attempt 3 with Dependency unavailable" },
+    { "area": "QA10", "state": "NOT_ASSESSED / INCOMPLETE", "detail": "no same-candidate receipts; gates NOT_RUN/BLOCKED; 112 task and 61 IA bindings unbound" },
+    { "area": "CI", "state": "NOT_GREEN", "detail": "hosted run 42274582726 completed failure: guards/release success, backend failed on the intro cursor test (F5-CI-01), frontend failed 33/5726 tests on shallow-history git show and missing Python referencing (F5-CI-02); full frontend suite and 16-crate backend test job unrun locally; release PASS path unexecuted" },
+    { "area": "F2-04", "state": "NOT_RUN", "detail": "6 node:test qualifier suites wired to no runner" },
+    { "area": "Compose/deployment", "state": "NOT_RUN", "detail": "compose execution and restore drill; no Docker daemon" },
+    { "area": "Register gates", "state": "OPEN / WAITING_INPUT", "detail": "IN02 OPEN, IN03 WAITING_INPUT, IN04 OPEN, IN05 OPEN, AR01/FE10 WAITING_INPUT" }
+  ],
+  "followups": [
+    { "id": 52, "title": "Compose and authorize the BE24 gift media and motif producer end to end" },
+    { "id": 53, "title": "Prove authorized feed content in the shipped shell" },
+    { "id": 54, "title": "Prove the Wall B editor tools surface and close PI09" },
+    { "id": 55, "title": "Close the QA06 mobile visual acceptance residual and physical devices" },
+    { "id": 56, "title": "Complete the bilateral venue friend authority and re-run VENU-IN01" },
+    { "id": 57, "title": "Activate the reviewed character atlas in the served runtime" },
+    { "id": 58, "title": "Compose the operator report-decision and moderation commands" },
+    { "id": 59, "title": "Compose the lifecycle owners so closure reaches ARCHIVED and /archive serves 200" },
+    { "id": 60, "title": "Add one full-suite entry point and run it from a clean clone" },
+    { "id": 61, "title": "Wire the excluded CI gates and prove a hosted blocking run" },
+    { "id": 62, "title": "Bind the approved FE10 eligibility and legal publication" },
+    { "id": 63, "title": "Compose the place-note read path and drive QA04 to zero NOT_RUN" },
+    { "id": 64, "title": "Complete IN03's provider-dependent, client-cache and WS-frame checks" },
+    { "id": 65, "title": "Converge the live seven-service account-deletion saga" },
+    { "id": 66, "title": "Re-run QA10 composition against the final release SHA" }
+  ],
+  "unverified": [
+    "Expected plan counts 41 [x] / 14 [~] do not match any measured reading: rows 1-51 are 37/14, all 56 rows are 40/15/1",
+    "F2-01 is resolved on the product path but the legacy PlaceNoteUseCases methods still discard idempotency keys; no post-range code fix removed them",
+    "Design 10/12 comes from the latest checkpoint; the plan's design table still says all 12 IN_PROGRESS",
+    "No completed green hosted mcr-ci run existed at audit time; frontend and backend jobs were still in progress",
+    "QA10 was not re-run at this candidate",
+    "F5 did not re-execute F2's toolchain runs, F3's scenarios, QA08, the compose/restore drill or physical devices",
+    "The hosted frontend and backend jobs both failed on CI wiring/portability (F5-CI-01, F5-CI-02); their failing assertions never reached product behavior, so F5 claims no product health from the 5679 passing frontend tests"
+  ],
+  "evidence": {
+    "f1": ".omo/evidence/mcr-finish-project/f1-compliance.md",
+    "f2": ".omo/evidence/mcr-finish-project/f2-quality.md",
+    "f3": ".omo/evidence/mcr-finish-project/f3-manual-qa/README.md",
+    "f4": ".omo/evidence/mcr-finish-project/f4-ideal-state.md",
+    "in05": ".omo/evidence/mcr-finish-project/task-47-in05.json",
+    "in05_refresh": ".omo/evidence/mcr-finish-project/task-47-in05-refresh.json",
+    "ci": ".github/workflows/mcr-ci.yml",
+    "ci_task": ".omo/evidence/mcr-finish-project/task-48-ci.md",
+    "plan": ".omo/plans/mcr-finish-project.md",
+    "register": "docs/mcr/task-progress-2026-11-04.json"
+  }
+}
