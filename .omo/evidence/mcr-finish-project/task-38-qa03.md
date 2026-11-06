@@ -131,21 +131,22 @@ python3 backend/scripts/mcr/community_smoke.py --repository-test <community_part
 exit 0, result PASS, restart_replay PASS, cleanup PASS
 
 python3 backend/scripts/mcr/community_smoke.py --repository-test <community_giveaway> --giveaway ...
-exit 1, 5/6 cases pass
+exit 0, result PASS, 6/6 cases pass; restart exact 1 passed; cleanup PASS
 
 python3 scripts/mcr/contracts/route-parity.py
 exit 0: registry=69 contract_commands=63 templates=245 commands=70 missing=0
 ```
 
-The existing gift suite failure is pre-existing on base `25b2d356f` and is not
-caused by this task's test-only change: `community_gift_code_rotation_throttle_and_one_time_pickup`
-panics at `community_giveaway.rs:380` because a distinct-key claim after a
-successful claim now returns `Gift(CodeInvalid)` instead of a `Failed` receipt
-object. The five other gift cases pass, including five-buyers, claim/expiry
-release, restart expiry, draft privacy and fractional claim. The QA03 suite
-asserts the current intended behavior directly (one SUCCEEDED receipt; a
-distinct claim key cannot mint a second). This evidence leaves the stale
-feature test unreconciled rather than editing another suite's expectation.
+The initial gift smoke run exposed a stale expectation, not a product failure:
+`community_gift_code_rotation_throttle_and_one_time_pickup` expected a
+distinct-key claim after success to return `Ok` with a `Failed` receipt object.
+The current contract is `Err(Gift(CodeInvalid))` / 403 `PICKUP_CODE_INVALID`
+while persisting the FAILED receipt row. The test now asserts that error and
+queries `concert_command_receipts` for `state='FAILED'` and
+`failure_reason='PICKUP_CODE_INVALID'`. Re-run: 6/6 pass, restart replay passes,
+cleanup PASS (report SHA-256
+`1ed2039f0bb80c3eb372247f16878ac2130cb8cdc0dd80f18bd4290e47caae91`). The
+expectation, not the product, was stale; production code was unchanged.
 
 ## Honest limits
 

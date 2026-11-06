@@ -161,7 +161,7 @@ replay. Observed blocking graphs recorded the
 required contender counts, including five buyers at stock 1, two party approvals
 at the last slot, two release/re-reservation contenders, and one interrupted
 claim backend. PostgreSQL postmaster PID changed `63956` → `64110`.
-Both SQLx ledgers matched all 27 migration SHA-384 values; prepared
+Both SQLx ledgers matched all 63 migration SHA-384 values; prepared
 transactions and PENDING receipts were ZERO; cleanup PASS. QA03_STATE rows in
 the native report record party, giveaway, reservation, receipt and outbox rows
 before and after each asserted case.

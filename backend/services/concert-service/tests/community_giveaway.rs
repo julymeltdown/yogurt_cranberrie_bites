@@ -374,15 +374,27 @@ async fn community_gift_code_rotation_throttle_and_one_time_pickup() -> anyhow::
         .execute(&pool)
         .await?;
     claim.key = Uuid::new_v4();
-    let replayed = service
-        .execute(&claim, &keys, &codes, Some(&context))
+    assert!(matches!(
+        service.execute(&claim, &keys, &codes, Some(&context)).await,
+        Err(GiftServiceError::Gift(GiftError::CodeInvalid))
+    ));
+    let failed = service
+        .status(&claim, &codes)
         .await
-        .unwrap();
-    assert_eq!(replayed.receipt.state, ReceiptState::Failed);
-    assert_eq!(
-        replayed.receipt.failure,
-        Some(SafeFailure::PickupCodeInvalid)
-    );
+        .unwrap()
+        .expect("failed claim receipt persists");
+    assert_eq!(failed.state, ReceiptState::Failed);
+    assert_eq!(failed.failure, Some(SafeFailure::PickupCodeInvalid));
+    let persisted: (String, Option<String>) = sqlx::query_as(
+        "select state,failure_reason from concert_command_receipts where actor_id=$1 and event_id=$2 and operation_id='claimConcertReservation' and idempotency_key=$3",
+    )
+    .bind(owner)
+    .bind(event)
+    .bind(claim.key)
+    .fetch_one(&pool)
+    .await?;
+    assert_eq!(persisted.0, "FAILED");
+    assert_eq!(persisted.1.as_deref(), Some("PICKUP_CODE_INVALID"));
     let r = service
         .reservation(user, event, gift, reservation)
         .await
