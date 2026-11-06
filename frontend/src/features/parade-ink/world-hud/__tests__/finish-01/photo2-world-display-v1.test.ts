@@ -1,17 +1,20 @@
 import { describe, expect, it } from 'vitest'
-import { createPhoto2Projection, PHOTO2_INITIAL_MESH, PHOTO2_NATIVE_ANCHORS, PHOTO2_NATIVE,
-  PHOTO2_REFERENCE, PHOTO2_VERSION, photo2Shortcut, admitPhoto2Display,
-  type DisplayBinding } from '../../photo2-world-display-v1'
+import { createPhoto2Projection, PHOTO2_DISPLAY, PHOTO2_NATIVE_ANCHORS, PHOTO2_NATIVE,
+  PHOTO2_QUALIFIED, PHOTO2_REFERENCE, PHOTO2_SOURCE_MESH, PHOTO2_VERSION, photo2CameraPresentation,
+  photo2Shortcut, admitPhoto2Display, type DisplayBinding, type Rect } from '../../photo2-world-display-v1'
 import { execFileSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
 
 // Independent frozen authoritative input; no copied fixture can hide drift.
 const frozen = execFileSync('git', ['show', '8dee1335a79f831e6a29f005a50f2c0f65777d46:frontend/src/world/reference-scene/spatial-v3/source-inputs.json'])
 const source = JSON.parse(frozen.toString()) as { scenes: { PARADE: { scenery: { objects: Record<string, unknown>[] } } } }
+const gitShow = (revision: string, path: string) => execFileSync('git', ['show', `${revision}:${path}`])
+const producer = JSON.parse(gitShow('3d256d4216327a59dce96e550e4feb355e55b18a',
+  'docs/mcr/evidence/pi08-finish-01/photo2-world-contract/producer-input-v3.json').toString())
 const hash = (label: string) => 'sha256:' + createHash('sha256').update(label).digest('hex')
 const cloneMesh = (): { columns: number[]; rows: number[]; display: { x: number; y: number }[] } => ({
-  columns: [...PHOTO2_INITIAL_MESH.columns], rows: [...PHOTO2_INITIAL_MESH.rows],
-  display: PHOTO2_INITIAL_MESH.display.map(p => ({ ...p })),
+  columns: [...PHOTO2_SOURCE_MESH.columns], rows: [...PHOTO2_SOURCE_MESH.rows],
+  display: PHOTO2_SOURCE_MESH.display.map(p => ({ ...p })),
 })
 const close = (actual: { x: number; y: number } | null, expected: { x: number; y: number }) => {
   expect(actual).not.toBeNull(); expect(actual!.x).toBeCloseTo(expected.x, 7); expect(actual!.y).toBeCloseTo(expected.y, 7)
@@ -39,18 +42,66 @@ describe('Photo2 authoritative/display contract', () => {
       Object.fromEntries(['id', 'x', 'y', 'width', 'height', 'depth_y'].map(k => [k, o[k]]))))
     expect(Object.isFrozen(PHOTO2_NATIVE_ANCHORS)).toBe(true)
   })
-  it('maps protected camera corners to measured source-scene units without prescribing output textures', () => {
-    const p = createPhoto2Projection(PHOTO2_INITIAL_MESH)
-    close(p.forward({ x: 160, y: 13 }), { x: 0, y: 0 })
-    close(p.forward({ x: 744, y: 597 }), { x: 384, y: 504 })
-    close(p.inverse({ x: 0, y: 0 }), { x: 160, y: 13 })
-    close(p.inverse({ x: 384, y: 504 }), { x: 744, y: 597 })
+  it('keeps renderer mesh, display frame and released ART pins on the same qualified tuple', () => {
+    expect(PHOTO2_REFERENCE.sha256).toBe(producer.referenceSha256)
+    expect(PHOTO2_NATIVE).toMatchObject({ inputSha256: producer.nativeSource.sha256, geometryHash: producer.nativeSource.geometryHash,
+      width: producer.nativeSource.width, height: producer.nativeSource.height })
+    expect(PHOTO2_SOURCE_MESH).toEqual(producer.mesh)
+    expect(PHOTO2_DISPLAY.groundBounds).toEqual(producer.ground.displayBounds)
+    const release = JSON.parse(gitShow('dbc2b43a4', 'backend/releases/photo2-world-display-v1/qualified-inputs.json').toString())
+    const binding = JSON.parse(gitShow('dbc2b43a4', 'backend/releases/photo2-world-display-v1/source-binding.json').toString())
+    expect(release.art_commit).toBe(PHOTO2_QUALIFIED.artCommit)
+    expect(release.interface.sha256).toBe(PHOTO2_QUALIFIED.interface.sha256)
+    expect(release.interface.bytes).toBe(PHOTO2_QUALIFIED.interface.bytes)
+    expect(release.provenance.sha256).toBe(PHOTO2_QUALIFIED.provenance.sha256)
+    expect(release.qualification_sha256).toBe(PHOTO2_QUALIFIED.qualificationSha256)
+    expect(release.scenery_hash).toBe(PHOTO2_QUALIFIED.sceneryHash)
+    expect(release.theme_hash).toBe(PHOTO2_QUALIFIED.themeHash)
+    const parade = binding.scenes.find((scene: { theme_id: string }) => scene.theme_id === 'PARADE')
+    const asset = (path: string) => parade.runtime_resources.find((value: { path: string }) => value.path === path)
+    expect(asset(PHOTO2_QUALIFIED.ground.path)).toEqual({ bytes: PHOTO2_QUALIFIED.ground.bytes, height_px: PHOTO2_QUALIFIED.ground.height,
+      path: PHOTO2_QUALIFIED.ground.path, sha256: PHOTO2_QUALIFIED.ground.sha256, width_px: PHOTO2_QUALIFIED.ground.width })
+    expect(asset(PHOTO2_QUALIFIED.atlas.path)).toEqual({ bytes: PHOTO2_QUALIFIED.atlas.bytes, height_px: PHOTO2_QUALIFIED.atlas.height,
+      path: PHOTO2_QUALIFIED.atlas.path, sha256: PHOTO2_QUALIFIED.atlas.sha256, width_px: PHOTO2_QUALIFIED.atlas.width })
+    const contract = JSON.parse(gitShow('3d256d421', PHOTO2_QUALIFIED.producerContract.path).toString())
+    expect(contract.candidateSHA256).toBe(PHOTO2_QUALIFIED.candidate.sha256)
+    expect(contract.paintRevision).toBe(PHOTO2_QUALIFIED.paintRevision)
+    expect(createHash('sha256').update(gitShow('3d256d421', PHOTO2_QUALIFIED.candidate.path)).digest('hex')).toBe(PHOTO2_QUALIFIED.candidate.sha256)
+    expect(createHash('sha256').update(gitShow('3d256d421', PHOTO2_QUALIFIED.producerContract.path)).digest('hex')).toBe(PHOTO2_QUALIFIED.producerContract.sha256)
+  })
+  it('maps the protected camera into the pinned display frame without prescribing output textures', () => {
+    const p = createPhoto2Projection(PHOTO2_SOURCE_MESH)
+    const a = p.forward({ x: 160, y: 13 }), b = p.forward({ x: 744, y: 597 })
+    const c = p.forward({ x: 160, y: 597 }), d = p.forward({ x: 744, y: 13 })
+    expect(Math.min(a!.x, b!.x, c!.x, d!.x)).toBe(PHOTO2_DISPLAY.camera.x)
+    expect(Math.max(a!.y, b!.y, c!.y, d!.y)).toBeCloseTo(PHOTO2_DISPLAY.camera.y + PHOTO2_DISPLAY.camera.height, 9)
+    expect(Math.max(a!.x, b!.x, c!.x, d!.x) - Math.min(a!.x, b!.x, c!.x, d!.x)).toBeCloseTo(PHOTO2_DISPLAY.camera.width, 9)
+    close(p.inverse({ x: PHOTO2_DISPLAY.camera.x, y: a!.y }), { x: 160, y: 13 })
+    close(p.inverse({ x: b!.x, y: b!.y }), { x: 744, y: 597 })
+  })
+  it('frames the admitted camera without letterbox gutters at every supported width', () => {
+    for (const [width, height] of [[390, 593], [360, 583], [430, 731], [390, 373]] as const) {
+      const view = photo2CameraPresentation(PHOTO2_DISPLAY.camera, { width, height }, 1)
+      expect(view.zoom).toBeCloseTo(Math.max(width / PHOTO2_DISPLAY.camera.width, height / PHOTO2_DISPLAY.camera.height), 12)
+      expect(width / view.zoom).toBeLessThanOrEqual(PHOTO2_DISPLAY.camera.width + 1e-9)
+      expect(height / view.zoom).toBeLessThanOrEqual(PHOTO2_DISPLAY.camera.height + 1e-9)
+      expect(view.center).toEqual({ x: PHOTO2_DISPLAY.camera.x + PHOTO2_DISPLAY.camera.width / 2,
+        y: PHOTO2_DISPLAY.camera.y + PHOTO2_DISPLAY.camera.height / 2 })
+      expect(photo2CameraPresentation(PHOTO2_DISPLAY.camera, { width, height }, 2).zoom).toBeCloseTo(view.zoom * 2, 12)
+    }
+    const invalid: readonly [Rect, { readonly width: number; readonly height: number }, number][] = [
+      [{ ...PHOTO2_DISPLAY.camera, width: 0 }, { width: 390, height: 593 }, 1],
+      [PHOTO2_DISPLAY.camera, { width: 0, height: 593 }, 1], [PHOTO2_DISPLAY.camera, { width: 390, height: 593 }, 0.5],
+      [PHOTO2_DISPLAY.camera, { width: 390, height: 593 }, 9]]
+    for (const [camera, viewport, zoom] of invalid) {
+      expect(() => photo2CameraPresentation(camera, viewport, zoom)).toThrow('Invalid Photo2 camera viewport')
+    }
   })
   it('round trips every native anchor corner, actor foot, spawn and mesh seam', () => {
-    const p = createPhoto2Projection(PHOTO2_INITIAL_MESH)
+    const p = createPhoto2Projection(PHOTO2_SOURCE_MESH)
     const points = PHOTO2_NATIVE_ANCHORS.flatMap(a => [{ x: a.x, y: a.y }, { x: a.x + a.width, y: a.y + a.height }])
     points.push({ x: 472, y: 424 }, { x: 504, y: 760 })
-    for (const y of PHOTO2_INITIAL_MESH.rows) for (const x of PHOTO2_INITIAL_MESH.columns) points.push({ x, y })
+    for (const y of PHOTO2_SOURCE_MESH.rows) for (const x of PHOTO2_SOURCE_MESH.columns) points.push({ x, y })
     for (const point of points) close(p.inverse(p.forward(point)!), point)
     expect(p.forward({ x: NaN, y: 0 })).toBeNull()
     expect(p.forward({ x: 10000, y: 0 })).toBeNull()

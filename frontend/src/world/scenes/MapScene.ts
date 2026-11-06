@@ -14,6 +14,7 @@ import { referenceSceneFor } from '../reference-scene/model'
 import { spatialV5CameraPresentation } from '../reference-scene/spatial-v5/camera'
 import { prepareReferenceSceneSkin } from '../reference-scene/phaser'
 import { photo2DisplayDepth } from '../reference-scene/photo2-world-display-v1/model'
+import { photo2CameraPresentation } from '../../features/parade-ink/world-hud/photo2-world-display-v1'
 /** Phaser is evaluated only after an explicitly started owner has loaded and verified resources. */
 export async function loadPhaserEngine(): Promise<EngineFactory> {
   const Phaser = (await import('phaser')).default
@@ -160,16 +161,15 @@ export async function loadPhaserEngine(): Promise<EngineFactory> {
       const camera = game.scene.getScene('mcr-map').cameras.main
       const display = activeReference?.display
       if (display) {
-        const view = display.camera, bounds = display.groundBounds
-        const fit = Math.max(Math.min(1, game.scale.width / view.width, game.scale.height / view.height),
-          game.scale.width / bounds.width, game.scale.height / bounds.height)
+        const presentation = photo2CameraPresentation(display.camera,
+          { width: game.scale.width, height: game.scale.height }, cameraZoom ?? 1)
         const projected = cameraFoot ? display.projection.forward(cameraFoot) : null
-        const center = { x: view.x + view.width / 2, y: view.y + view.height / 2 }
+        const center = { ...presentation.center }
         if (projected) {
           center.x = projected.x - Math.max(-32, Math.min(32, projected.x - center.x))
           center.y = projected.y - Math.max(-160, Math.min(160, projected.y - center.y))
         }
-        camera.setSize(game.scale.width, game.scale.height).setZoom((cameraZoom ?? 1) * fit).centerOn(center.x, center.y)
+        camera.setSize(game.scale.width, game.scale.height).setZoom(presentation.zoom).centerOn(center.x, center.y)
         camera.preRender(); return
       }
       const reference = activeReference
