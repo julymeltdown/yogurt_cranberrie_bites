@@ -59,6 +59,40 @@ New unit test:
 `FeedError::ResourceUnavailable` and that `unavailable()` still maps to
 `FeedError::DependencyUnavailable`.
 
+## Call-site regression test
+
+`blocked_pair_row_at_the_call_site_is_a_not_found_denial` drives
+`local_pair_and_members_in` itself against an owned PG16 database through
+`CONCERT_CONSUMER_TEST_URL` (concert migrations 0001-0004 and 0006, plus the
+`concert_event_settings` table used by the existing consumer probe). It inserts
+one blocked `concert_relationship_pairs` row for a fresh event with two active
+admitted participants, then asserts the call returns `Code::NotFound` and
+`feed_error(...) == ResourceUnavailable`; it unblocks the pair and asserts the
+same call returns `Ok`.
+
+Real run against the fixed source: 1 passed, 0 failed (`finished in 0.06s`).
+
+Mutation proof: a throwaway detached worktree at `3aa766178` received the same
+source and a revert of the call site to the pre-fix
+`if low_blocks_high || high_blocks_low { return Err(unavailable()); }`. The
+mutant test binary produced:
+
+```
+running 1 test
+test adapters::out::public_profile::tests::blocked_pair_row_at_the_call_site_is_a_not_found_denial ... FAILED
+
+thread 'adapters::out::public_profile::tests::blocked_pair_row_at_the_call_site_is_a_not_found_denial' panicked at services/concert-service/src/adapters/out/public_profile/mod.rs:481:9:
+assertion `left == right` failed
+  left: Unavailable
+ right: NotFound
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 195 filtered out; finished in 0.06s
+```
+
+The consumer probe in the same mutant binary still passed, so the failure is
+specific to the reverted call site. The throwaway worktree and its source were
+removed after the run; the delivery worktree was never reverted.
+
 ## Real-stack reproduction and proof
 
 Driver: `backend/scripts/mcr/feed_blocked_author_probe.py` (new). It reuses the
@@ -87,7 +121,8 @@ Exit 1. The probe stops at `feed-blocked-503`, which is the expected failure:
 
 The 307.9 ms failure matches the reported 294.5 ms symptom.
 
-Run against the fixed binaries:
+Run against the fixed binaries with the gateway default of 1000 ms and two
+warm-up reads (original `probe-after.json`):
 
 ```
 python3 -B backend/scripts/mcr/feed_blocked_author_probe.py \
@@ -120,18 +155,64 @@ Raw receipts:
 | `cargo +1.88.0 build --manifest-path backend/Cargo.toml --locked --offline -j 3 -p api-gateway -p auth-service -p friend-service -p profile-service -p post-service -p concert-service -p notification-service --message-format=json` | 0 | all seven binaries built |
 | `cargo +1.88.0 build ... -p concert-service --message-format=json` (after fix) | 0 | rebuilt concert-service |
 | `cargo +1.88.0 test ... -p concert-service --lib` | 101 | 131 passed, 4 failed, 60 ignored; `blocked_pair_is_skippable_while_an_owner_outage_stays_closed` passed |
+| `cargo +1.88.0 test ... -p concert-service --lib` with `CONCERT_CONSUMER_TEST_URL` from an owned PG16 cluster | 101 | 133 passed, 3 failed, 60 ignored; both blocked-pair tests and the consumer probe passed |
 | `cargo +1.88.0 test ... -p concert-service --test feed_live_read` | 0 | 9 passed |
 | `cargo +1.88.0 test ... -p concert-application --test feed` | 0 | 18 passed |
 | `python3 -B scripts/mcr/contracts/route-parity.py --root <worktree>` | 0 | registry=69, contract_commands=63, templates=231, commands=70, missing=0 |
 
-The four lib failures are environment-gated tests, not assertions about this
-change:
-`notification_root_binding_support::pool` panics with
-`owned root required: NotPresent` (`NB01_OWNER_ROOT`) in three
-`product_rpc::scope_ledger::notification_binding` tests, and
-`relationship::consumer_probes::pool` panics with
-`owned consumer probe database required: NotPresent`
-(`CONCERT_CONSUMER_TEST_URL`). They fail before reaching product code.
+The lib failures are environment-gated tests, not assertions about this
+change. With `CONCERT_CONSUMER_TEST_URL` supplied, 133 passed and 3 failed: the
+three `product_rpc::scope_ledger::notification_binding` tests panic in
+`notification_root_binding_support::pool` with `owned root required:
+NotPresent` (`NB01_OWNER_ROOT`). Without that env, the consumer probe test also
+panics with `owned consumer probe database required: NotPresent`; that is the
+fourth failure in the unfurnished run. They fail before reaching product code.
+
+## Build provenance and gateway configuration
+
+The original receipts `/Users/lhs/Desktop/mcr-build/exec-w3-blockfeed/probe-before.json`
+and `probe-after.json` record `candidate.revision` but no binary digest, and
+they ran with the gateway default `GATEWAY_REQUEST_TIMEOUT_MS=1000` after two
+warm-up reads. That default flaked under load: a two-author `limit=3` feed read
+exceeded 1 s and returned 504/503 before the product answered, so those
+receipts are not a default-configuration proof of a cold multi-author read.
+
+The A/B verification run (fixed and mutant peers, same pair row) used
+`GATEWAY_REQUEST_TIMEOUT_MS=5000` because of that flake; its fixed peer produced
+the PASS sequence above and its mutant peer failed `feed-blocked-503` on the
+same pair row.
+
+The probe now records `candidate.script_sha256`, the effective
+`candidate.gateway_request_timeout_ms`, and SHA-256 plus byte size for all seven
+binaries under `candidate.binaries`, and it sets the gateway override
+explicitly. The fresh 5 s receipt is
+`/Users/lhs/Desktop/mcr-build/exec-w3-blockfeed/probe-after-5s.json`:
+
+| Field | Value |
+| --- | --- |
+| result / cleanup | PASS / PASS |
+| candidate revision | `3aa7661789f821a6c925d2c338177a837f41bc26` |
+| probe script SHA-256 | `64422c6706952c3ff477225c00481e5f5e7fda4a9f28198f5df5869281702c3f` |
+| gateway request timeout | 5000 ms |
+| carol feed before block | 200, bob's post `f66827f8-80fc-49cb-b40d-a08fdaca9cfb` (802.0 ms) |
+| pair after block | low_user=carol `69bb99b3-...`, high_user=bob `794c8fed-...`, `low_blocks_high=true`, revision 2 |
+| carol feed after block | 200, `items=[]`, cursor returned (232.3 ms) |
+| pair after unblock | both block flags false, revision 3 |
+| carol feed after unblock | 200, `f66827f8-80fc-49cb-b40d-a08fdaca9cfb` restored (643.9 ms) |
+| profile-service stopped | pid 98346, exit 0 |
+| carol feed owner down | 503, `DEPENDENCY_UNAVAILABLE` (4.6 ms) |
+| api-gateway | `ec250de8cc4ee8bfe3c8f2cf2ec546d8cd77cfe3427c132a18f2206088defbdb`, 59,163,440 bytes |
+| auth-service | `3f4d3b601a62e339eadf2d7efb53eb19b9626cf52e1d801cd3c56703b10d403e`, 48,336,192 bytes |
+| concert-service | `45c7a5dfaab296eb305160af00ce51ed634a156c8770ad27de0622a01f855975`, 76,419,392 bytes |
+| friend-service | `5a36186f96b65419aa00b8205ddf3262705c0dd4ebcbd9270f884a2081579245`, 38,350,832 bytes |
+| notification-service | `45d216ffb9ae53f0be83549d4e978d3ad136ae18ea8aca3a7b9ac171b2c6a392`, 34,930,720 bytes |
+| post-service | `7e4a7800b4ce777bb15cbdb314ffd487d6355b747b4b69376f2297a4c4b60c2a`, 50,074,528 bytes |
+| profile-service | `dde7b374a682d50a8567b5131a2084fb4e0fee123e844ca83d745af6fb0bf4eb`, 40,253,472 bytes |
+
+The receipt was produced at `3aa766178` with the follow-up test and probe edits
+present in the worktree. The follow-up commit changes only `#[cfg(test)]` code,
+the probe and this evidence, not the service binary, so the digests above remain
+the binary under test.
 
 ## Limits
 
