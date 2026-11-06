@@ -548,7 +548,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   Recommended task executor category: deep-low
   Commit: Y | `test(qa10): compose same-candidate release evidence`
 
-- [ ] 43. Close FE24, FE33 and FE34
+- [~] 43. Close FE24, FE33 and FE34
   What to do / Must NOT do: FE24 protected gift media/motif binding, FE33 authoritative mural serving/config/adapter, FE34 profile preferences and conflict behavior. Do NOT reopen historical closures without a changed criterion.
   Closes: GAP-1
   Parallelization: Wave 8 | Blocked by: 25–28, 31 | Blocks: 47
@@ -557,6 +557,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   QA scenarios: happy gift detail media + mural sync + profile save; failure unavailable producer -> truthful state. Evidence `.omo/evidence/mcr-finish-project/task-43-fe-closure.md`.
   Recommended task executor category: deep-low
   Commit: Y | `feat(frontend): close FE24, FE33 and FE34`
+  Gap (2026-11-06): FE33 (authoritative mural serving/config/adapter) and FE34 (profile preferences with 409 conflict) are closed against real producers with three-width browser evidence. FE24 (protected gift media/motif binding) remains open: BE24 Gateway HTTP media upload/finalize/authorized-read is not composition-qualified for a real caller (scripted probe: metadata 403 PERMISSION_DENIED, content 403, bytes 400 INVALID_INPUT), productionBinding is null and the motif mapping is NOT_READY; GiftDetail truthfully shows the unavailable state and invents nothing.
 
 - [x] 44. Document deployment and production inputs
   What to do / Must NOT do: write the staging/production runbook: mTLS material, TLS termination, provider endpoints, operator roles, limits, backup/restore and the deferred QA08 note. Do NOT claim production capacity or invent credentials.
