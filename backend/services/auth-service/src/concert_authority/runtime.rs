@@ -51,7 +51,8 @@ pub async fn configured_store(
         pool,
         Arc::new(RpcSettlementResolver::new(tls, credential, &endpoints)?),
     )?;
-    verify_ready_bounded(&store).await?;
+    // Verification is supervised after the listener binds so settlement dependents
+    // can reach this service; readiness stays false until it succeeds.
     // Unknown producer outcomes stay quarantined. Recovery never guesses abort.
     if let Err(status) = store
         .recover(&OperationBudget::new(
@@ -80,7 +81,7 @@ fn retryable(status: &tonic::Status) -> bool {
 
 async fn retry_ready<'a, F>(window: Duration, interval: Duration, mut attempt: F) -> Result<(), tonic::Status>
 where
-    F: FnMut(Duration) -> std::pin::Pin<Box<dyn std::future::Future<Output = Result<(), tonic::Status>> + 'a>>,
+    F: FnMut(Duration) -> std::pin::Pin<Box<dyn std::future::Future<Output = Result<(), tonic::Status>> + Send + 'a>>,
 {
     let deadline = Instant::now() + window;
     let mut last = None;
@@ -105,7 +106,7 @@ where
     }
 }
 
-async fn verify_ready_bounded(store: &PgOwnerAuthority) -> Result<(), tonic::Status> {
+pub async fn verify_ready_bounded(store: &PgOwnerAuthority) -> Result<(), tonic::Status> {
     retry_ready(READY_WINDOW, READY_INTERVAL, |remaining| {
         Box::pin(async move {
             let budget = OperationBudget::new(Instant::now() + remaining)
