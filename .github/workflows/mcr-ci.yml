@@ -24,15 +24,6 @@
 #
 # Deliberate exclusions, each with its reason:
 #
-#   * C07 pin (frontend/src/shared/api/__tests__/c07-social-client/):
-#     "pins the exact public cohort without claiming all indexed fixtures are
-#     qualified" compares docs/mcr/evidence/c07-social-client-in03/inputs.json
-#     against the current generated client hash. The recorded pin still names
-#     the hash from before frontend/src/shared/api/domain-operations.generated.ts
-#     moved, so the test is red for an unreconciled record, not for a code
-#     regression. It is excluded from the frontend job until the C07 owner
-#     reconciles the manifest; it is not a warning-only pass.
-#
 #   * Two operations-composition abort tests (timing-sensitive):
 #       src/app/operations-composition/__tests__/composition.test.tsx
 #         "aborts pending settings and ignores its late completion after
@@ -46,6 +37,11 @@
 #     excluded rather than retried, so an unrelated flake cannot mask a real
 #     failure in the same job.
 #
+#     The C07 pin and QA01 coverage are NOT excluded: their recorded hashes
+#     were reconciled to the verified generator output in 2bf45d2e1
+#     (docs/mcr/evidence/contracts/qa01-coverage/pin-update-2026-11-06.json),
+#     so both run blocking here.
+#
 #   * Environment-gated concert-service tests needing NB01_OWNER_ROOT and
 #     CONCERT_CONSUMER_TEST_URL (services/concert-service):
 #     the notification_binding tests and the consumer probe panic before
@@ -53,12 +49,6 @@
 #     (.omo/evidence/mcr-finish-project/task-blocked-feed.md). The backend test
 #     job therefore runs the core crates only; concert-service coverage stays
 #     with the owning task that provides its own roots.
-#
-#   * QA01 coverage (scripts/mcr/contracts/qa01-coverage/run.py) is not wired
-#     yet: its pins.json pins canonical candidate 9185c9922 and reports pinned
-#     input drift on frontend/src/shared/api/domain-operations.generated.ts at
-#     the current candidate. It becomes a blocking step once that pin is
-#     reconciled; it is red today for the same stale record as the C07 pin.
 
 name: mcr-ci
 
@@ -101,11 +91,15 @@ jobs:
         run: python3 scripts/mcr/check-plan.py
       - name: Architecture and boundary guards
         run: bash scripts/mcr/check.sh guards
+      - name: Contract tooling dependencies
+        run: pip install -r scripts/mcr/requirements-contracts.txt
       - name: Generated contract drift
         run: |
           python3 scripts/mcr/generate-api-client.py --check
           python3 scripts/mcr/generate-domain-transport.py --check
           python3 scripts/mcr/contracts/c07/test_inventory.py
+      - name: QA01 contract coverage
+        run: python3 scripts/mcr/contracts/qa01-coverage/run.py
       - name: Concert route parity
         run: python3 scripts/mcr/contracts/route-parity.py
       - name: Whitespace errors
@@ -152,21 +146,20 @@ jobs:
         working-directory: frontend
         run: |
           set -o pipefail
-          corepack pnpm@$PNPM_VERSION exec vitest run \
-            --exclude 'src/shared/api/__tests__/c07-social-client/**' \
+          corepack pnpm@${{ env.PNPM_VERSION }} exec vitest run \
             --exclude 'src/app/operations-composition/__tests__/composition.test.tsx' \
             --exclude 'src/app/operations-composition/__tests__/reports-production/composition.test.tsx' \
             | tee "$RUNNER_TEMP/vitest.log"
       - name: Collected test-file count floor
         working-directory: frontend
         # Inventory row 11: fail when the collected-file count drops below the
-        # recorded baseline. The floor is 408 = the recorded 411 files minus
-        # the three excluded files; raise it when the suite grows.
+        # recorded baseline. The floor is 409 = the recorded 411 files minus
+        # the two excluded timing-sensitive files; raise it when the suite grows.
         run: |
           files=$(grep -E '^ *Test Files ' "$RUNNER_TEMP/vitest.log" | tail -1 | grep -oE '\([0-9]+\)' | tr -d '()')
           echo "collected test files: ${files:-unknown}"
-          if [ -z "$files" ] || [ "$files" -lt 408 ]; then
-            echo "::error::collected test files below the recorded floor of 408"
+          if [ -z "$files" ] || [ "$files" -lt 409 ]; then
+            echo "::error::collected test files below the recorded floor of 409"
             exit 1
           fi
       - name: Tracked tree unchanged
