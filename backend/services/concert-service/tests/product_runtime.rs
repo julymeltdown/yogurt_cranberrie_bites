@@ -169,6 +169,77 @@ fn closed_routes_reject_cross_event_forwarding_and_noncanonical_media_ids() {
 }
 
 #[test]
+fn every_party_and_gift_contract_path_resolves_to_a_known_operation() {
+    use concert_service::gift_live::GiftOperation;
+    let event = Uuid::new_v4();
+    let party = Uuid::new_v4();
+    let application = Uuid::new_v4();
+    let user = Uuid::new_v4();
+    let giveaway = Uuid::new_v4();
+    let reservation = Uuid::new_v4();
+    let prefix = format!("/api/concert/events/{event}");
+    let cases = vec![
+        ("GET", format!("{prefix}/parties"), Operation::ListParties),
+        ("POST", format!("{prefix}/parties"), Operation::CreateParty),
+        ("GET", format!("{prefix}/parties/{party}"), Operation::GetParty(party)),
+        ("PATCH", format!("{prefix}/parties/{party}"), Operation::UpdateParty(party)),
+        ("POST", format!("{prefix}/parties/{party}/cancel"), Operation::CancelParty(party)),
+        ("POST", format!("{prefix}/parties/{party}/owner"), Operation::TransferParty(party)),
+        ("GET", format!("{prefix}/parties/{party}/applications"), Operation::ListPartyApplications(party)),
+        ("POST", format!("{prefix}/parties/{party}/applications"), Operation::ApplyParty(party)),
+        ("GET", format!("{prefix}/party-applications/{application}"), Operation::GetPartyApplication(application)),
+        ("POST", format!("{prefix}/party-applications/{application}/decision"), Operation::DecidePartyApplication(application)),
+        ("DELETE", format!("{prefix}/party-applications/{application}?expected_revision=2"), Operation::CancelPartyApplication(application)),
+        ("GET", format!("{prefix}/parties/{party}/members"), Operation::ListPartyMembers(party)),
+        ("DELETE", format!("{prefix}/parties/{party}/members/{user}?expected_revision=1&party_revision=3"), Operation::RemovePartyMember(party, user)),
+        ("GET", format!("{prefix}/parties/{party}/rally"), Operation::GetPartyRally(party)),
+        ("PUT", format!("{prefix}/parties/{party}/rally/me"), Operation::SetPartyRally(party)),
+        ("GET", format!("{prefix}/me/parties"), Operation::PartyActivity),
+        ("GET", format!("{prefix}/giveaways"), Operation::Gift(GiftOperation::List)),
+        ("GET", format!("{prefix}/giveaways/{giveaway}"), Operation::Gift(GiftOperation::Detail)),
+        ("POST", format!("{prefix}/giveaways"), Operation::Gift(GiftOperation::Create)),
+        ("PATCH", format!("{prefix}/giveaways/{giveaway}"), Operation::Gift(GiftOperation::Update)),
+        ("GET", format!("{prefix}/giveaways/{giveaway}/management"), Operation::Gift(GiftOperation::Management)),
+        ("PUT", format!("{prefix}/giveaways/{giveaway}/pickup-meeting"), Operation::Gift(GiftOperation::SetMeeting)),
+        ("GET", format!("{prefix}/me/giveaways"), Operation::Gift(GiftOperation::Activity)),
+        ("POST", format!("{prefix}/giveaways/{giveaway}/reservations"), Operation::Gift(GiftOperation::Reserve)),
+        ("GET", format!("{prefix}/reservations/{reservation}"), Operation::Gift(GiftOperation::Reservation)),
+        ("DELETE", format!("{prefix}/reservations/{reservation}?expected_revision=1"), Operation::Gift(GiftOperation::Cancel)),
+        ("GET", format!("{prefix}/reservations/{reservation}/pickup"), Operation::Gift(GiftOperation::Pickup)),
+        ("POST", format!("{prefix}/reservations/{reservation}/pickup-code"), Operation::Gift(GiftOperation::IssueCode)),
+        ("POST", format!("{prefix}/reservations/{reservation}/claim"), Operation::Gift(GiftOperation::Claim)),
+    ];
+    for (method, target, expected) in cases {
+        assert_eq!(operation(event, method, &target).unwrap(), expected, "{method} {target}");
+    }
+}
+
+#[test]
+fn party_and_gift_route_classification_rejects_wrong_methods_and_noncanonical_ids() {
+    use concert_service::gift_live::GiftOperation;
+    let event = Uuid::new_v4();
+    let party = Uuid::new_v4();
+    let giveaway = Uuid::new_v4();
+    let reservation = Uuid::new_v4();
+    let prefix = format!("/api/concert/events/{event}");
+    for (method, target) in [
+        ("GET", format!("{prefix}/giveaways/{giveaway}/reservations")),
+        ("POST", format!("{prefix}/giveaways/{giveaway}/management")),
+        ("GET", format!("{prefix}/giveaways/{}", giveaway.to_string().to_uppercase())),
+        ("GET", format!("{prefix}/reservations/{}", Uuid::nil())),
+        ("GET", format!("{prefix}/parties/{party}/owner")),
+        ("PUT", format!("{prefix}/parties/{party}/applications")),
+        ("PATCH", format!("{prefix}/reservations/{reservation}")),
+    ] {
+        assert!(
+            operation(event, method, &target).is_err(),
+            "{method} {target}"
+        );
+    }
+    assert!(GiftOperation::route(event, "GET", &format!("{prefix}/me/giveaways")).is_ok());
+}
+
+#[test]
 fn five_party_mutation_routes_bind_exact_c04_targets_and_queries() {
     let event = Uuid::new_v4();
     let party = Uuid::new_v4();
@@ -219,7 +290,6 @@ fn five_party_mutation_routes_bind_exact_c04_targets_and_queries() {
     );
     for (method, target) in [
         ("POST", format!("{prefix}/parties/{party}/applications?extra=true")),
-        ("GET", format!("{prefix}/parties/{party}/applications")),
         ("DELETE", format!("{prefix}/party-applications/{application}")),
         (
             "DELETE",
@@ -248,10 +318,6 @@ fn five_party_mutation_routes_bind_exact_c04_targets_and_queries() {
         (
             "POST",
             format!("{prefix}/party-applications/{application}/decision?extra=true"),
-        ),
-        (
-            "GET",
-            format!("{prefix}/party-applications/{application}"),
         ),
     ] {
         assert!(

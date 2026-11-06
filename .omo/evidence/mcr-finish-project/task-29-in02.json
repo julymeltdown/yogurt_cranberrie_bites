@@ -1,0 +1,602 @@
+{
+  "banner": {
+    "scope": "development vertical flow",
+    "release": "development release bundle, NOT_ADMITTED",
+    "qa08": "NOT_RUN",
+    "in03_cohort": "NOT_CLAIMED",
+    "release_qualification": "NOT_CLAIMED"
+  },
+  "steps": {
+    "operator_role": "OPERATOR|1|",
+    "party_warmup": {
+      "runs": [
+        {
+          "status": 200,
+          "body": {
+            "items": [],
+            "next_cursor": null
+          }
+        },
+        {
+          "status": 200,
+          "body": {
+            "items": [],
+            "next_cursor": null
+          }
+        }
+      ],
+      "log": {
+        "api-gateway": "{\"timestamp\":\"2026-11-06T14:48:05.237660Z\",\"level\":\"WARN\",\"fields\":{\"message\":\"signing key fetch failed; keeping the installed keys\",\"trigger\":\"scheduled\",\"error\":\"Service unavailable\"},\"target\":\"api_gateway::adapters::out::signing_keys\"}",
+        "concert-service": "CONCERT_HEALTH_LISTENER=127.0.0.1:61805\nCONCERT_WORLD_LISTENER=127.0.0.1:61806",
+        "post-service": "{\"timestamp\":\"2026-11-06T14:48:05.184866Z\",\"level\":\"WARN\",\"fields\":{\"message\":\"POST_EXTERNAL_PUBLISHER is `disabled`; events retain their registered destination requirements\"},\"target\":\"post_service::config\"}"
+      }
+    },
+    "in02_provision_rows": {
+      "event": "OPEN",
+      "participants": "3",
+      "admissions": "3",
+      "settings": "t|t",
+      "places": "1",
+      "parties": "0",
+      "giveaways": "0",
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "party_create": {
+      "status": 200,
+      "body": {
+        "capacity": 2,
+        "created_at": "2026-11-06T14:48:18.734439Z",
+        "description": "Capacity and pickup invariant gate",
+        "event_id": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+        "meeting_ends_at": "2026-11-06T18:48:17.993463Z",
+        "meeting_revision": 1,
+        "meeting_starts_at": "2026-11-06T14:53:17.993463Z",
+        "member_count": 1,
+        "owner": {
+          "avatar": {
+            "config": {
+              "contract_version": "1.1.0",
+              "kind": "avatar_config",
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "preset_id": "photo01_front_01",
+              "representation": "whole_character"
+            },
+            "revision": 1
+          },
+          "bio": "Development closure participant",
+          "display_name": "Closure participant 1",
+          "user_id": "48e4fb69-2d65-436d-abb1-b1c917cd8fb1"
+        },
+        "party_id": "d75ff4fc-6b58-4a67-b894-87f71d643fc9",
+        "public_place_id": "11111111-1111-4111-8111-111111111111",
+        "requirements": "Development fixture only",
+        "revision": 1,
+        "state": "OPEN",
+        "ticket_section": "A",
+        "title": "IN02 development meetup"
+      },
+      "log": {
+        "note": "no new child log bytes"
+      },
+      "receipts": "createConcertParty|SUCCEEDED||200",
+      "event_rows": "OPEN"
+    },
+    "party_apply_alice": {
+      "status": 200,
+      "body": {
+        "applicant": {
+          "avatar": {
+            "config": {
+              "contract_version": "1.1.0",
+              "kind": "avatar_config",
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "preset_id": "photo01_front_01",
+              "representation": "whole_character"
+            },
+            "revision": 1
+          },
+          "bio": "Development closure participant",
+          "display_name": "Closure participant 2",
+          "user_id": "0dbd566c-6b85-4cec-8ffb-318173067556"
+        },
+        "application_id": "a00129fd-9806-40ef-83a4-ae2f4a7b552d",
+        "created_at": "2026-11-06T14:48:19.348213Z",
+        "event_id": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+        "note": "alice",
+        "party_id": "d75ff4fc-6b58-4a67-b894-87f71d643fc9",
+        "revision": 1,
+        "state": "PENDING"
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "party_apply_bob": {
+      "status": 200,
+      "body": {
+        "applicant": {
+          "avatar": {
+            "config": {
+              "contract_version": "1.1.0",
+              "kind": "avatar_config",
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "preset_id": "photo01_front_01",
+              "representation": "whole_character"
+            },
+            "revision": 1
+          },
+          "bio": "Development closure participant",
+          "display_name": "Closure participant 3",
+          "user_id": "a04f301c-7b10-47cc-b13c-a8e2e9520156"
+        },
+        "application_id": "bbcb7296-c4d7-46f4-854c-e6516fb083b5",
+        "created_at": "2026-11-06T14:48:19.745680Z",
+        "event_id": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+        "note": "bob",
+        "party_id": "d75ff4fc-6b58-4a67-b894-87f71d643fc9",
+        "revision": 1,
+        "state": "PENDING"
+      },
+      "log": {
+        "concert-service": "child_recovery attempted=3 completed=3 pending=0 timed_out=0"
+      }
+    },
+    "party_decisions_concurrent": {
+      "alice": {
+        "status": 409,
+        "body": {
+          "code": "CONCERT_409",
+          "details": {
+            "reason": "VERSION_CONFLICT"
+          },
+          "message": "Concert request unavailable",
+          "timestamp": "2026-11-06T14:48:20.392Z",
+          "traceId": "045b26fe-be28-4bf8-bf1b-010962d54923"
+        }
+      },
+      "bob": {
+        "status": 200,
+        "body": {
+          "applicant": {
+            "avatar": {
+              "config": {
+                "contract_version": "1.1.0",
+                "kind": "avatar_config",
+                "manifest_id": "mcr_selected_static_20261103",
+                "manifest_version": 1,
+                "preset_id": "photo01_front_01",
+                "representation": "whole_character"
+              },
+              "revision": 1
+            },
+            "bio": "Development closure participant",
+            "display_name": "Closure participant 3",
+            "user_id": "a04f301c-7b10-47cc-b13c-a8e2e9520156"
+          },
+          "application_id": "bbcb7296-c4d7-46f4-854c-e6516fb083b5",
+          "created_at": "2026-11-06T14:48:19.745680Z",
+          "event_id": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+          "note": "bob",
+          "party_id": "d75ff4fc-6b58-4a67-b894-87f71d643fc9",
+          "revision": 2,
+          "state": "APPROVED"
+        }
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "party_second_approval": {
+      "status": 409,
+      "body": {
+        "code": "CONCERT_409",
+        "details": {
+          "reason": "PARTY_FULL"
+        },
+        "message": "Concert request unavailable",
+        "timestamp": "2026-11-06T14:48:20.759Z",
+        "traceId": "ff5881f6-b759-4c4b-823a-ddf49b7dffe5"
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "party_read": {
+      "status": 200,
+      "body": {
+        "capacity": 2,
+        "created_at": "2026-11-06T14:48:18.734439Z",
+        "description": "Capacity and pickup invariant gate",
+        "event_id": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+        "meeting_ends_at": "2026-11-06T18:48:17.993463Z",
+        "meeting_revision": 1,
+        "meeting_starts_at": "2026-11-06T14:53:17.993463Z",
+        "member_count": 2,
+        "owner": {
+          "avatar": {
+            "config": {
+              "contract_version": "1.1.0",
+              "kind": "avatar_config",
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "preset_id": "photo01_front_01",
+              "representation": "whole_character"
+            },
+            "revision": 1
+          },
+          "bio": "Development closure participant",
+          "display_name": "Closure participant 1",
+          "user_id": "48e4fb69-2d65-436d-abb1-b1c917cd8fb1"
+        },
+        "party_id": "d75ff4fc-6b58-4a67-b894-87f71d643fc9",
+        "public_place_id": "11111111-1111-4111-8111-111111111111",
+        "requirements": "Development fixture only",
+        "revision": 2,
+        "state": "OPEN",
+        "ticket_section": "A",
+        "title": "IN02 development meetup"
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "party_rows": {
+      "party": "OPEN|2|2",
+      "members": "48e4fb69-2d65-436d-abb1-b1c917cd8fb1|t|ACTIVE\na04f301c-7b10-47cc-b13c-a8e2e9520156|f|ACTIVE",
+      "applications": "a00129fd-9806-40ef-83a4-ae2f4a7b552d|PENDING|1\nbbcb7296-c4d7-46f4-854c-e6516fb083b5|APPROVED|2"
+    },
+    "giveaway_create": {
+      "status": 200,
+      "body": {
+        "available": 1,
+        "created_at": "2026-11-06T14:48:21.290198Z",
+        "description": "One unit stock gate",
+        "event_id": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+        "giveaway_id": "5b20aec2-6c91-4cae-b316-7e36ecc7e149",
+        "image_media_id": null,
+        "owner": {
+          "avatar": {
+            "config": {
+              "contract_version": "1.1.0",
+              "kind": "avatar_config",
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "preset_id": "photo01_front_01",
+              "representation": "whole_character"
+            },
+            "revision": 1
+          },
+          "bio": "Development closure participant",
+          "display_name": "Closure participant 1",
+          "user_id": "48e4fb69-2d65-436d-abb1-b1c917cd8fb1"
+        },
+        "pickup_ends_at": "2026-11-06T16:48:17.993463Z",
+        "pickup_grace_seconds": 0,
+        "pickup_starts_at": "2026-11-06T14:47:17.993463Z",
+        "public_place_id": "11111111-1111-4111-8111-111111111111",
+        "quantity_total": 1,
+        "revision": 1,
+        "state": "DRAFT",
+        "title": "IN02 development giveaway"
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "giveaway_meeting": {
+      "status": 200,
+      "body": {
+        "giveaway_id": "5b20aec2-6c91-4cae-b316-7e36ecc7e149",
+        "meeting": {
+          "expires_at": "2026-11-06T17:48:17.993463Z",
+          "identification": "Show the six digit code",
+          "instructions": "Development collection point",
+          "map_revision": 1,
+          "place_id": "11111111-1111-4111-8111-111111111111",
+          "place_revision": 1
+        },
+        "revision": 2
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "giveaway_open": {
+      "status": 200,
+      "body": {
+        "available": 1,
+        "created_at": "2026-11-06T14:48:21.290198Z",
+        "description": "One unit stock gate",
+        "event_id": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+        "giveaway_id": "5b20aec2-6c91-4cae-b316-7e36ecc7e149",
+        "image_media_id": null,
+        "owner": {
+          "avatar": {
+            "config": {
+              "contract_version": "1.1.0",
+              "kind": "avatar_config",
+              "manifest_id": "mcr_selected_static_20261103",
+              "manifest_version": 1,
+              "preset_id": "photo01_front_01",
+              "representation": "whole_character"
+            },
+            "revision": 1
+          },
+          "bio": "Development closure participant",
+          "display_name": "Closure participant 1",
+          "user_id": "48e4fb69-2d65-436d-abb1-b1c917cd8fb1"
+        },
+        "pickup_ends_at": "2026-11-06T16:48:17.993463Z",
+        "pickup_grace_seconds": 0,
+        "pickup_starts_at": "2026-11-06T14:47:17.993463Z",
+        "public_place_id": "11111111-1111-4111-8111-111111111111",
+        "quantity_total": 1,
+        "revision": 3,
+        "state": "OPEN",
+        "title": "IN02 development giveaway"
+      },
+      "log": {
+        "concert-service": "child_recovery attempted=2 completed=2 pending=0 timed_out=0"
+      }
+    },
+    "reservations_concurrent": {
+      "alice": {
+        "status": 200,
+        "body": {
+          "claim_receipt_id": null,
+          "created_at": "2026-11-06T14:48:22.085460Z",
+          "event_id": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+          "expires_at": "2026-11-06T16:48:17.993463Z",
+          "giveaway_id": "5b20aec2-6c91-4cae-b316-7e36ecc7e149",
+          "recipient_id": "0dbd566c-6b85-4cec-8ffb-318173067556",
+          "reservation_id": "7365b040-3d5c-48fa-bc1f-f45b6541f1f4",
+          "revision": 1,
+          "state": "READY"
+        }
+      },
+      "bob": {
+        "status": 409,
+        "body": {
+          "code": "GATEWAY_409",
+          "details": {
+            "reason": "VERSION_CONFLICT"
+          },
+          "message": "The requested action is unavailable.",
+          "timestamp": "2026-11-06T14:48:22.109Z",
+          "traceId": "e52b4ba3-0ff6-4e5e-b82b-605b9a6f68f4"
+        }
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "stock_second_attempt": {
+      "status": 409,
+      "body": {
+        "code": "GATEWAY_409",
+        "details": {
+          "reason": "GIVEAWAY_SOLD_OUT"
+        },
+        "message": "The requested action is unavailable.",
+        "timestamp": "2026-11-06T14:48:22.341Z",
+        "traceId": "7fc39751-7d0d-4e0f-8fab-e9b723d43a68"
+      },
+      "revision": 4,
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "stock_rows": {
+      "giveaway": "OPEN|4|1|1|0",
+      "reservations": "7365b040-3d5c-48fa-bc1f-f45b6541f1f4|0dbd566c-6b85-4cec-8ffb-318173067556|READY|1"
+    },
+    "pickup_code_issue": {
+      "status": 200,
+      "body": {
+        "confirmation_code": "063349",
+        "expires_at": "2026-11-06T14:53:22.595246Z",
+        "reservation_id": "7365b040-3d5c-48fa-bc1f-f45b6541f1f4",
+        "reservation_revision": 2
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "pickup_secret_issued": {
+      "secret": "1|2026-11-06 23:53:22.595246+09|32",
+      "reservation": "READY|2"
+    },
+    "pickup_wrong_code": {
+      "status": 403,
+      "body": {
+        "code": "GATEWAY_403",
+        "details": {
+          "reason": "PICKUP_CODE_INVALID"
+        },
+        "message": "The requested action is unavailable.",
+        "timestamp": "2026-11-06T14:48:22.880Z",
+        "traceId": "e7fac542-0164-43a9-8b42-585965be1c24"
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "pickup_claim": {
+      "status": 200,
+      "body": {
+        "claimed_at": "2026-11-06T14:48:23.121319Z",
+        "giveaway_id": "5b20aec2-6c91-4cae-b316-7e36ecc7e149",
+        "receipt_id": "759f024f-57e4-4996-afe2-dd44dabf1cdf",
+        "reservation_id": "7365b040-3d5c-48fa-bc1f-f45b6541f1f4",
+        "revision": 3,
+        "state": "CLAIMED"
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "pickup_claim_same_key_replay": {
+      "status": 200,
+      "body": {
+        "claimed_at": "2026-11-06T14:48:23.121319Z",
+        "giveaway_id": "5b20aec2-6c91-4cae-b316-7e36ecc7e149",
+        "receipt_id": "759f024f-57e4-4996-afe2-dd44dabf1cdf",
+        "reservation_id": "7365b040-3d5c-48fa-bc1f-f45b6541f1f4",
+        "revision": 3,
+        "state": "CLAIMED"
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "pickup_claim_new_key_replay": {
+      "status": 403,
+      "body": {
+        "code": "GATEWAY_403",
+        "details": {
+          "reason": "PICKUP_CODE_INVALID"
+        },
+        "message": "The requested action is unavailable.",
+        "timestamp": "2026-11-06T14:48:23.602Z",
+        "traceId": "7b388de7-a2ca-422a-a70a-d87d1e919ab6"
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "pickup_rows": {
+      "giveaway": "OPEN|5|1|0|1",
+      "reservation": "CLAIMED|3|2026-11-07 01:48:17.993463+09",
+      "pickup_secret": "",
+      "receipts": "createConcertParty|SUCCEEDED||1\napplyConcertParty|SUCCEEDED||1\napplyConcertParty|SUCCEEDED||1\ndecideConcertApplication|SUCCEEDED||2\ndecideConcertApplication|FAILED|VERSION_CONFLICT|\ndecideConcertApplication|FAILED|PARTY_FULL|\ncreateConcertGiveaway|SUCCEEDED||1\nsetConcertPickupMeeting|SUCCEEDED||2\nupdateConcertGiveaway|SUCCEEDED||3\nreserveConcertGiveaway|SUCCEEDED||1\nreserveConcertGiveaway|FAILED|VERSION_CONFLICT|\nreserveConcertGiveaway|FAILED|GIVEAWAY_SOLD_OUT|\nissueConcertPickupCode|SUCCEEDED||2\nclaimConcertReservation|FAILED|PICKUP_CODE_INVALID|\nclaimConcertReservation|SUCCEEDED||3\nclaimConcertReservation|FAILED|PICKUP_CODE_INVALID|",
+      "outbox": "10"
+    }
+  },
+  "checks": {
+    "party_create_200": true,
+    "party_applies_200": true,
+    "party_one_concurrent_approval": true,
+    "party_capacity_rejected": true,
+    "party_member_count_two": true,
+    "giveaway_create_200": true,
+    "giveaway_meeting_200": true,
+    "giveaway_open_200": true,
+    "stock_one_concurrent_reservation": true,
+    "stock_sold_out": true,
+    "pickup_code_issued": true,
+    "wrong_code_403": true,
+    "pickup_claim_200": true,
+    "same_key_replay_same_receipt": true,
+    "same_code_new_key_replay_fails": true
+  },
+  "venue_place": "0f208cf0-062c-41ee-a315-23435d5f7be3",
+  "event": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+  "stack": {
+    "kind": "mcr-owned-dev-stack-v1",
+    "pid": 7729,
+    "uid": 501,
+    "root": "/private/tmp/mcr-pg-wxvkk38h",
+    "root_identity": [
+      16777229,
+      559184402
+    ],
+    "socket": "/private/tmp/mcr-pg-wxvkk38h/control.sock",
+    "gateway_url": "http://127.0.0.1:61816",
+    "services": {
+      "profile-service": {
+        "http": "http://127.0.0.1:61797",
+        "grpc": "http://127.0.0.1:61798",
+        "metrics": "http://127.0.0.1:61799"
+      },
+      "notification-service": {
+        "http": "http://127.0.0.1:61800",
+        "grpc": "http://127.0.0.1:61801",
+        "metrics": "http://127.0.0.1:61802"
+      },
+      "concert-service": {
+        "http": "http://127.0.0.1:61803",
+        "grpc": "http://127.0.0.1:61804",
+        "metrics": "http://127.0.0.1:61805"
+      },
+      "friend-service": {
+        "http": "http://127.0.0.1:61807",
+        "grpc": "http://127.0.0.1:61808",
+        "metrics": "http://127.0.0.1:61809"
+      },
+      "post-service": {
+        "http": "http://127.0.0.1:61810",
+        "grpc": "http://127.0.0.1:61811",
+        "metrics": "http://127.0.0.1:61812"
+      },
+      "auth-service": {
+        "http": "http://127.0.0.1:61813",
+        "grpc": "http://127.0.0.1:61814",
+        "metrics": "http://127.0.0.1:61815"
+      },
+      "api-gateway": {
+        "http": "http://127.0.0.1:61816",
+        "grpc": "http://127.0.0.1:61817",
+        "metrics": "http://127.0.0.1:61818"
+      }
+    },
+    "mail_directory": "/private/tmp/mcr-pg-wxvkk38h/mail",
+    "auth_http": "Gateway /auth/*; no /api ingress adapter yet"
+  },
+  "enrollment_policy_revision": "793cdeb4-1122-4db7-b473-11696aee245e",
+  "result": "PASS",
+  "logs": {
+    "concert-service": "CONCERT_HEALTH_LISTENER=127.0.0.1:61805\nCONCERT_WORLD_LISTENER=127.0.0.1:61806\nchild_recovery attempted=3 completed=3 pending=0 timed_out=0\nchild_recovery attempted=2 completed=2 pending=0 timed_out=0\n",
+    "post-service": "{\"timestamp\":\"2026-11-06T14:48:05.184866Z\",\"level\":\"WARN\",\"fields\":{\"message\":\"POST_EXTERNAL_PUBLISHER is `disabled`; events retain their registered destination requirements\"},\"target\":\"post_service::config\"}\n",
+    "auth-service": "",
+    "friend-service": "",
+    "api-gateway": "{\"timestamp\":\"2026-11-06T14:48:05.237660Z\",\"level\":\"WARN\",\"fields\":{\"message\":\"signing key fetch failed; keeping the installed keys\",\"trigger\":\"scheduled\",\"error\":\"Service unavailable\"},\"target\":\"api_gateway::adapters::out::signing_keys\"}\n"
+  },
+  "cleanup": "PASS",
+  "gift_surface": {
+    "frozen_operations": 13,
+    "classified": 13,
+    "served_by_composed_producer": 13,
+    "producer_unavailable": 0,
+    "observed_statuses": [
+      200,
+      400,
+      404,
+      409
+    ],
+    "operations": [
+      "listConcertGiveaways",
+      "getConcertGiveaway",
+      "createConcertGiveaway",
+      "updateConcertGiveaway",
+      "getConcertGiveawayManagement",
+      "setConcertPickupMeeting",
+      "reserveConcertGiveaway",
+      "getConcertGiftActivity",
+      "getConcertReservation",
+      "cancelConcertReservation",
+      "claimConcertReservation",
+      "getConcertPickup",
+      "issueConcertPickupCode"
+    ],
+    "correction": "Retracts any five-Gift-path 503 claim. GiftOperation::route, GiftRequest::from_verified and the composed GiftRuntime cover all thirteen operations; verification observed 200/400/404/409 and no 503. The eight 503 producer-unavailable paths are Party operations."
+  },
+  "not_run": [
+    {
+      "id": "beacon",
+      "state": "NOT_RUN",
+      "scope": "C04 beacon create/update/revoke",
+      "reason": "The gateway mounts the beacon routes, but the Concert product router has no beacon arm (refused as an unsupported product operation) and no beacon producer is composed."
+    },
+    {
+      "id": "rally",
+      "state": "NOT_RUN",
+      "scope": "Concert Party rally get/set",
+      "reason": "GetPartyRally and SetPartyRally are classified, but the Party producer refuses them with 503 Party operation producer unavailable; no rally producer is composed."
+    }
+  ]
+}

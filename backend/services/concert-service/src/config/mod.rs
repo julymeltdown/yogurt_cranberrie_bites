@@ -21,6 +21,7 @@ pub mod owner_media_runtime;
 pub mod mural_tools_b;
 pub mod notification_target_runtime;
 pub mod participant_runtime;
+pub mod party_runtime;
 pub mod private_data_runtime;
 pub mod product_runtime;
 pub mod report_runtime;

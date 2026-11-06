@@ -481,10 +481,14 @@ impl Giveaway {
                     .find(|r| r.id == *reservation)
                     .ok_or(GiftError::Unavailable)?;
                 if r.state == ReservationState::Claimed {
-                    return Ok(GiftChange {
-                        resource: r.id,
-                        revision: r.revision,
-                    });
+                    return if r.claim_receipt_id == Some(new_id) {
+                        Ok(GiftChange {
+                            resource: r.id,
+                            revision: r.revision,
+                        })
+                    } else {
+                        Err(GiftError::CodeInvalid)
+                    };
                 }
                 revision(r.revision, *expected)?;
                 if now >= r.expires_at {

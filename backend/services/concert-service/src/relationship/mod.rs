@@ -131,7 +131,7 @@ impl<A: FencedRelationshipAuthority> PgRelationshipPolicy<A> {
         c: &mut PgConnection,
         query: PolicyQuery,
     ) -> Result<PolicySnapshot, RelationshipError> {
-        let mut state = lock_state(c, query).await?;
+        let mut state = lock_state_exclusive(c, query).await?;
         state.authority = self.authority.check_in(c, query, state.now).await?;
         let a = state.authority;
         let finished: DateTime<Utc> = sqlx::query_scalar("select clock_timestamp()")
@@ -168,6 +168,25 @@ pub(crate) async fn lock_state(
     c: &mut PgConnection,
     query: PolicyQuery,
 ) -> Result<PolicySnapshot, RelationshipError> {
+    lock_state_mode(c, query, false).await
+}
+
+/// Safety mutations update the pair and must be serialized before the update;
+/// ordinary authorization only reads the pair and retains SHARE through commit.
+/// Taking UPDATE in every authorization would conflict with the held public
+/// Profile child SHARE lock of the same request.
+pub(crate) async fn lock_state_exclusive(
+    c: &mut PgConnection,
+    query: PolicyQuery,
+) -> Result<PolicySnapshot, RelationshipError> {
+    lock_state_mode(c, query, true).await
+}
+
+async fn lock_state_mode(
+    c: &mut PgConnection,
+    query: PolicyQuery,
+    exclusive: bool,
+) -> Result<PolicySnapshot, RelationshipError> {
     let event =
         sqlx::query("select phase,revision from public.concert_events where event_id=$1 for share")
             .bind(query.event.uuid())
@@ -178,8 +197,18 @@ pub(crate) async fn lock_state(
     let (low, high) = ordered(query);
     sqlx::query("insert into public.concert_relationship_pairs(event_id,low_user,high_user) values($1,$2,$3) on conflict do nothing")
         .bind(query.event.uuid()).bind(low).bind(high).execute(&mut *c).await.map_err(unavailable)?;
-    let pair = sqlx::query("select revision,low_blocks_high,high_blocks_low from public.concert_relationship_pairs where event_id=$1 and low_user=$2 and high_user=$3 for update")
-        .bind(query.event.uuid()).bind(low).bind(high).fetch_one(&mut *c).await.map_err(unavailable)?;
+    let pair_query = if exclusive {
+        "select revision,low_blocks_high,high_blocks_low from public.concert_relationship_pairs where event_id=$1 and low_user=$2 and high_user=$3 for update"
+    } else {
+        "select revision,low_blocks_high,high_blocks_low from public.concert_relationship_pairs where event_id=$1 and low_user=$2 and high_user=$3 for share"
+    };
+    let pair = sqlx::query(pair_query)
+        .bind(query.event.uuid())
+        .bind(low)
+        .bind(high)
+        .fetch_one(&mut *c)
+        .await
+        .map_err(unavailable)?;
     let members: Vec<uuid::Uuid> = sqlx::query_scalar("select user_id from public.concert_participants where event_id=$1 and user_id in ($2,$3) order by user_id for share")
         .bind(query.event.uuid()).bind(low).bind(high).fetch_all(&mut *c).await.map_err(unavailable)?;
     let now: DateTime<Utc> = sqlx::query_scalar("select clock_timestamp()")

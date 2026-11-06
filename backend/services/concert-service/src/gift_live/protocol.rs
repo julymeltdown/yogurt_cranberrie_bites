@@ -100,6 +100,46 @@ impl GiftOperation {
             _ => "GET",
         }
     }
+    /// Exact route classification for the frozen thirteen Gift operations.
+    /// This parses shape only; `GiftRequest::from_verified` still validates the
+    /// body, query, media type and keyed mutation envelope.
+    pub fn route(event: Uuid, method: &str, target: &str) -> Result<Self, InputError> {
+        if event.is_nil() || target.len() > 4096 || target.chars().any(char::is_control) {
+            return Err(InputError::Invalid);
+        }
+        let (path, _) = target
+            .split_once('?')
+            .map_or((target, None), |(a, b)| (a, Some(b)));
+        let suffix = path
+            .strip_prefix(&format!("/api/concert/events/{event}/"))
+            .ok_or(InputError::Invalid)?;
+        let pieces: Vec<_> = suffix.split('/').collect();
+        let uuid = |value: &str| {
+            Uuid::parse_str(value)
+                .ok()
+                .filter(|id| !id.is_nil() && id.to_string() == value)
+        };
+        let operation = match (method, pieces.as_slice()) {
+            ("GET", ["giveaways"]) => Self::List,
+            ("POST", ["giveaways"]) => Self::Create,
+            ("GET", ["giveaways", _]) => Self::Detail,
+            ("PATCH", ["giveaways", _]) => Self::Update,
+            ("GET", ["giveaways", _, "management"]) => Self::Management,
+            ("PUT", ["giveaways", _, "pickup-meeting"]) => Self::SetMeeting,
+            ("POST", ["giveaways", _, "reservations"]) => Self::Reserve,
+            ("GET", ["me", "giveaways"]) => Self::Activity,
+            ("GET", ["reservations", _]) => Self::Reservation,
+            ("DELETE", ["reservations", _]) => Self::Cancel,
+            ("POST", ["reservations", _, "pickup-code"]) => Self::IssueCode,
+            ("POST", ["reservations", _, "claim"]) => Self::Claim,
+            ("GET", ["reservations", _, "pickup"]) => Self::Pickup,
+            _ => return Err(InputError::Invalid),
+        };
+        if pieces.len() >= 2 && pieces[0] != "me" && uuid(pieces[1]).is_none() {
+            return Err(InputError::Invalid);
+        }
+        Ok(operation)
+    }
     pub(crate) fn parse(id: &str) -> Result<Self, InputError> {
         [
             Self::List,

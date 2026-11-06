@@ -218,6 +218,24 @@ async fn main() -> anyhow::Result<()> {
         runtime.is_some(),
         participant_settings.is_some(),
     )?;
+    let party_settings = config::party_runtime::PartyRuntimeSettings::load(
+        runtime.is_some(),
+        intro_settings.is_some(),
+    )?;
+    let gift_settings = config::gift_runtime::GiftRuntimeSettings::load(
+        runtime.is_some(),
+        intro_settings.is_some(),
+    )?;
+    let gift_sanitizer = if gift_settings.is_some() {
+        let workers = platform::cpu::WorkerPool::new(2)?;
+        Some(Arc::new(
+            concert_service::adapters::out::media::codec::BoundedImageSanitizer::new(
+                workers.class(16)?,
+            ),
+        ))
+    } else {
+        None
+    };
     let wall_b_settings = config::mural_tools_b::WallBSettings::load(intro_settings.is_some())?;
     let report_settings = config::report_runtime::ReportStartupSettings::load(
         runtime.is_some(),
@@ -338,7 +356,24 @@ async fn main() -> anyhow::Result<()> {
                     notification_target = target_settings
                         .map(|settings| settings.compose(pool.clone(), &shared.owners.core));
                     let intro_owner = intro.compose(pool.clone(), &shared.owners);
-                    let owners = inbox_settings.compose(&shared.owners, intro_owner);
+                    let owners = match party_settings {
+                        Some(settings) => {
+                            settings.compose(pool.clone(), &shared.owners, intro_owner)?
+                        }
+                        None => intro_owner,
+                    };
+                    let owners = match gift_settings {
+                        Some(settings) => settings.compose(
+                            pool.clone(),
+                            &shared.owners,
+                            gift_sanitizer.clone().ok_or_else(|| {
+                                anyhow::anyhow!("Gift sanitizer composition is unavailable")
+                            })?,
+                            owners,
+                        )?,
+                        None => owners,
+                    };
+                    let owners = inbox_settings.compose(&shared.owners, owners);
                     let owners = match wall_b_settings {
                         Some(settings) => settings.compose(pool.clone(), &shared.owners, owners),
                         None => owners,

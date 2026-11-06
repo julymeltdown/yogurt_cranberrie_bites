@@ -2,9 +2,11 @@
 //! no authority and does not activate any handler, listener or recovery worker.
 use crate::{
     adapters::out::age_provider::settlement::AgeTransactionResolver,
+    gift_live::{product::handles as handles_gift, settlement::GiftNativeResolver},
     intro_live::{protocol as intro_protocol, IntroNativeResolver},
     operations_live::settlement::OperationsNativeResolver,
     participant::live::settlement::ParticipantNativeResolver,
+    party_live::{self, PartyNativeResolver},
     product_rpc::{
         scope_ledger::ProducerTransaction,
         settlement::{
@@ -30,6 +32,8 @@ pub enum NativeResolverDomain {
     Operations,
     Age,
     Wall,
+    Party,
+    Gift,
     AbortOnly,
 }
 
@@ -43,6 +47,8 @@ pub struct NativeResolverUnion {
     operations: OperationsNativeResolver,
     age: AgeTransactionResolver,
     wall: crate::mural_tools_b::MuralToolsNativeResolver,
+    party: PartyNativeResolver,
+    gift: GiftNativeResolver,
     aborts: PgNativeAbortResolver,
 }
 impl NativeResolverUnion {
@@ -69,6 +75,8 @@ impl NativeResolverUnion {
             operations: OperationsNativeResolver::new(pool.clone(), instance)?,
             age: AgeTransactionResolver::new(pool.clone(), instance)?,
             wall: crate::mural_tools_b::MuralToolsNativeResolver::new(pool.clone(), instance)?,
+            party: PartyNativeResolver::new(pool.clone(), instance)?,
+            gift: GiftNativeResolver::new(pool.clone(), instance)?,
             aborts: PgNativeAbortResolver::new(pool, instance)?,
         })
     }
@@ -147,6 +155,17 @@ impl NativeResolverUnion {
             {
                 NativeResolverDomain::Age
             }
+            _ if party_live::handles_operation(operation) => NativeResolverDomain::Party,
+            _ if handles_gift(operation)
+                && crate::gift_live::GiftOperation::route(
+                    binding.event_id,
+                    method,
+                    &binding.http_target,
+                )
+                .is_ok_and(|route| route.id() == operation) =>
+            {
+                NativeResolverDomain::Gift
+            }
             _ if operations_route(operation, method, path, query) => {
                 NativeResolverDomain::Operations
             }
@@ -201,6 +220,8 @@ impl NativeTransactionResolver for NativeResolverUnion {
             NativeResolverDomain::Operations => &self.operations,
             NativeResolverDomain::Age => &self.age,
             NativeResolverDomain::Wall => &self.wall,
+            NativeResolverDomain::Party => &self.party,
+            NativeResolverDomain::Gift => &self.gift,
             NativeResolverDomain::AbortOnly => &self.aborts,
         };
         selected.resolve(binding, identity).await

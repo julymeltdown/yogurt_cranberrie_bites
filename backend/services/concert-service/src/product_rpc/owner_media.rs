@@ -70,7 +70,16 @@ impl ProductOwner for OwnerMediaRuntime {
             | Operation::Comments(_)
             | Operation::ListParties
             | Operation::GetParty(_)
-            | Operation::CreateParty => {
+            | Operation::CreateParty
+            | Operation::UpdateParty(_)
+            | Operation::TransferParty(_)
+            | Operation::ListPartyApplications(_)
+            | Operation::GetPartyApplication(_)
+            | Operation::ListPartyMembers(_)
+            | Operation::GetPartyRally(_)
+            | Operation::SetPartyRally(_)
+            | Operation::PartyActivity
+            | Operation::Gift(_) => {
                 return Err(Status::unavailable("Product producer unavailable"));
             }
             Operation::ApplyParty(_)
