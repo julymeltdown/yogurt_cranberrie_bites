@@ -29,12 +29,15 @@ BEFORE = (
     "gifts::duplicate_claim_and_negative_actors_codes",
     "gifts::expiry_cancel_claim_release_once",
     "gifts::expiry_skip_locked_pending_worker_restart_seed",
+    "gifts::reservation_release_and_re_reservation_forced",
+    "gifts::interrupted_claim_rolls_back_receipt_survives_restart",
     "wall::identical_idempotency_and_cooldown_wait_on_real_lock",
     "wall::storage_failure_rolls_back_all_effects_then_same_key_recovers",
 )
 AFTER = (
     "party::restart_preserves_approval_receipt",
     "gifts::restarted_worker_drains_expiry_exactly_once",
+    "gifts::restarted_claim_completes_once",
     "wall::restart_retains_operation_receipt_and_cooldown",
 )
 DATABASE = "mcr_qa_races"
@@ -130,7 +133,8 @@ def run(args) -> dict:
             if cluster.password in output or cluster.url(DATABASE) in output:
                 raise RuntimeError("database secret in test output")
             row = {"case": name, "phase": phase, "exit_code": result.returncode, "output_sha256": hashlib.sha256(output.encode()).hexdigest(),
-                   "interleavings": re.findall(r"QA03_INTERLEAVING holder=\d+ blocked=\d+ required=\d+", output)}
+                   "interleavings": re.findall(r"QA03_INTERLEAVING holder=\d+ blocked=\d+ required=\d+", output),
+                   "states": re.findall(r"QA03_STATE .*", output)}
             report["tests"].append(row)
             if result.returncode != 0 or not re.search(r"test result: ok\. 1 passed; 0 failed; 0 ignored;", result.stdout):
                 row["failure_output"] = re.sub(r"(?:postgres(?:ql)?|redis)://[^\s]+", "[redacted-url]", output)[-8000:]

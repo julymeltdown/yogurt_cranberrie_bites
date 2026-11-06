@@ -144,6 +144,31 @@ async fn root(pool: &PgPool, event: Uuid, gift: Uuid) -> anyhow::Result<Giveaway
     terminal(pool).await?;
     Ok(g)
 }
+async fn rows(pool: &PgPool, event: Uuid, gift: Uuid) -> anyhow::Result<serde_json::Value> {
+    let row=sqlx::query("select revision,state,quantity_total,reserved_unclaimed,quantity_claimed,next_action_at from concert_community_giveaways where event_id=$1 and giveaway_id=$2").bind(event).bind(gift).fetch_one(pool).await?;
+    let active:i64=sqlx::query_scalar("select count(*) from concert_community_reservations where event_id=$1 and giveaway_id=$2 and state in ('HELD','READY')").bind(event).bind(gift).fetch_one(pool).await?;
+    let receipts: i64 = sqlx::query_scalar(
+        "select count(*) from concert_command_receipts where event_id=$1 and state='SUCCEEDED'",
+    )
+    .bind(event)
+    .fetch_one(pool)
+    .await?;
+    let outbox: i64 = sqlx::query_scalar("select count(*) from concert_outbox where event_id=$1")
+        .bind(event)
+        .fetch_one(pool)
+        .await?;
+    Ok(serde_json::json!({
+        "revision": row.get::<i64, _>("revision"),
+        "state": row.get::<String, _>("state"),
+        "quantity_total": row.get::<i32, _>("quantity_total"),
+        "reserved_unclaimed": row.get::<i32, _>("reserved_unclaimed"),
+        "quantity_claimed": row.get::<i32, _>("quantity_claimed"),
+        "next_action_at": row.get::<Option<chrono::DateTime<Utc>>, _>("next_action_at"),
+        "active_reservations": active,
+        "succeeded_receipts": receipts,
+        "outbox_rows": outbox,
+    }))
+}
 async fn lock(
     pool: &PgPool,
     gift: Uuid,
@@ -179,6 +204,7 @@ async fn five_buyers_forced_one_unit_and_duplicate_replay() -> anyhow::Result<()
         ));
     }
     let (held, pid) = lock(&pool, gift).await?;
+    state("gift_stock_before", rows(&pool, event, gift).await?);
     let mut jobs = Vec::new();
     for c in cmds {
         let p = pool.clone();
@@ -232,6 +258,7 @@ async fn five_buyers_forced_one_unit_and_duplicate_replay() -> anyhow::Result<()
     ));
     let g = root(&pool, event, gift).await?;
     assert_eq!((g.reserved_unclaimed, g.quantity_claimed), (1, 0));
+    state("gift_stock_after", rows(&pool, event, gift).await?);
     let retry = command(
         results.iter().find(|(_, r)| r.is_err()).unwrap().0.actor,
         event,
@@ -308,6 +335,7 @@ async fn claim_cancel_forced_terminal_transition_once() -> anyhow::Result<()> {
         },
     );
     let (held, pid) = lock(&pool, gift).await?;
+    state("gift_terminal_before", rows(&pool, event, gift).await?);
     let p = pool.clone();
     let a = tokio::spawn(async move {
         let r = execute(&p, &claim).await;
@@ -325,19 +353,19 @@ async fn claim_cancel_forced_terminal_transition_once() -> anyhow::Result<()> {
     assert_eq!(usize::from(ra.is_ok()) + usize::from(rb.is_ok()), 1);
     let g = root(&pool, event, gift).await?;
     assert_eq!(g.reserved_unclaimed, 0);
-    let state = g
+    let terminal_state = g
         .reservations
         .iter()
         .find(|r| r.id == reservation)
         .unwrap()
         .state;
     assert!(matches!(
-        state,
+        terminal_state,
         ReservationState::Claimed | ReservationState::Cancelled
     ));
     assert_eq!(
         g.quantity_claimed,
-        i32::from(state == ReservationState::Claimed)
+        i32::from(terminal_state == ReservationState::Claimed)
     );
     let secrets: i64 = sqlx::query_scalar(
         "select count(*) from concert_community_pickup_secrets where event_id=$1",
@@ -352,6 +380,7 @@ async fn claim_cancel_forced_terminal_transition_once() -> anyhow::Result<()> {
         (&cb, rb.unwrap())
     };
     assert_eq!(execute(&pool, c).await.unwrap().receipt, r.receipt);
+    state("gift_terminal_after", rows(&pool, event, gift).await?);
     Ok(())
 }
 #[tokio::test]
@@ -458,8 +487,291 @@ async fn duplicate_claim_and_negative_actors_codes() -> anyhow::Result<()> {
     assert_eq!((g.reserved_unclaimed, g.quantity_claimed), (0, 1));
     let count:i64=sqlx::query_scalar("select count(*) from concert_command_receipts where event_id=$1 and operation_id='claimConcertReservation' and state='SUCCEEDED'").bind(event).fetch_one(&pool).await?;
     assert_eq!(count, 1);
+    let mut second = command(
+        owner,
+        event,
+        gift,
+        GiftAction::Claim {
+            reservation,
+            expected: 2,
+        },
+    );
+    second.key = Uuid::new_v4();
+    second.code = Some(PickupCode::parse(code.expose().into()).unwrap());
+    assert!(matches!(
+        execute(&pool, &second).await,
+        Err(GiftServiceError::Gift(GiftError::CodeInvalid))
+    ));
+    let count:i64=sqlx::query_scalar("select count(*) from concert_command_receipts where event_id=$1 and operation_id='claimConcertReservation' and state='SUCCEEDED'").bind(event).fetch_one(&pool).await?;
+    assert_eq!(
+        count, 1,
+        "a distinct claim key cannot mint a second receipt"
+    );
+    state("gift_claim_replay_after", rows(&pool, event, gift).await?);
     Ok(())
 }
+#[tokio::test]
+#[ignore = "requires owned QA03 PostgreSQL controller"]
+async fn reservation_release_and_re_reservation_forced() -> anyhow::Result<()> {
+    let pool = pool().await?;
+    let (event, _, gift) = fixture(&pool, 1).await?;
+    let first = Uuid::new_v4();
+    allow(&pool, event, first).await?;
+    let reserve = command(
+        first,
+        event,
+        gift,
+        GiftAction::Reserve {
+            giveaway_revision: 3,
+        },
+    );
+    let reservation = reserve.target();
+    execute(&pool, &reserve)
+        .await
+        .map_err(|e| anyhow::anyhow!("{e:?}"))?;
+    state("gift_release_before", rows(&pool, event, gift).await?);
+    let before = root(&pool, event, gift).await?;
+    assert_eq!((before.reserved_unclaimed, before.quantity_claimed), (1, 0));
+
+    let second = Uuid::new_v4();
+    allow(&pool, event, second).await?;
+    let cancel = command(
+        first,
+        event,
+        gift,
+        GiftAction::Cancel {
+            reservation,
+            expected: 1,
+        },
+    );
+    // Both contenders hold the same pre-release revision. The reservation may
+    // take the released unit only through a fresh revision after the release
+    // commits; neither the loss of the unit nor a stale write may pass silently.
+    let contender = command(
+        second,
+        event,
+        gift,
+        GiftAction::Reserve {
+            giveaway_revision: 4,
+        },
+    );
+    let (held, pid) = lock(&pool, gift).await?;
+    let p = pool.clone();
+    let release = tokio::spawn(async move { execute(&p, &cancel).await });
+    let p = pool.clone();
+    let stale = tokio::spawn(async move { execute(&p, &contender).await });
+    waiting(&pool, pid, 2).await?;
+    held.commit().await?;
+    let released = release.await?;
+    let stale = stale.await?;
+    assert!(released.is_ok(), "the valid release must commit");
+    assert!(
+        matches!(
+            stale,
+            Err(GiftServiceError::Gift(
+                GiftError::VersionConflict | GiftError::SoldOut
+            ))
+        ),
+        "stale reservation must not take the unit"
+    );
+    let released_root = root(&pool, event, gift).await?;
+    assert_eq!(
+        (
+            released_root.reserved_unclaimed,
+            released_root.quantity_claimed
+        ),
+        (0, 0)
+    );
+    assert_eq!(
+        released_root
+            .reservations
+            .iter()
+            .find(|r| r.id == reservation)
+            .unwrap()
+            .state,
+        ReservationState::Cancelled
+    );
+
+    let retry = command(
+        second,
+        event,
+        gift,
+        GiftAction::Reserve {
+            giveaway_revision: released_root.revision,
+        },
+    );
+    execute(&pool, &retry)
+        .await
+        .map_err(|e| anyhow::anyhow!("re-reservation failed: {e:?}"))?;
+    let after = root(&pool, event, gift).await?;
+    assert_eq!((after.reserved_unclaimed, after.quantity_claimed), (1, 0));
+    assert_eq!(after.fields.quantity_total, 1);
+    assert_eq!(
+        after
+            .reservations
+            .iter()
+            .filter(|r| r.state.active())
+            .count(),
+        1
+    );
+    assert_eq!(
+        after
+            .reservations
+            .iter()
+            .filter(|r| r.recipient == second)
+            .count(),
+        1
+    );
+    state("gift_release_after", rows(&pool, event, gift).await?);
+    Ok(())
+}
+
+#[tokio::test]
+#[ignore = "requires owned QA03 PostgreSQL controller before restart"]
+async fn interrupted_claim_rolls_back_receipt_survives_restart() -> anyhow::Result<()> {
+    let pool = pool().await?;
+    let (event, owner, gift, _, reservation, code) = reserved(&pool).await?;
+    let key = Uuid::new_v4();
+    let raw = code.expose().to_owned();
+    state(
+        "gift_claim_interrupted_before",
+        rows(&pool, event, gift).await?,
+    );
+
+    // Hold the pickup secret, not the giveaway root, so admission and the
+    // PENDING receipt insert have already started when the claim blocks in the
+    // production secret lock. Terminating that backend is a mid-flight crash.
+    let mut held = pool.begin().await?;
+    let pid: i32 = sqlx::query_scalar("select pg_backend_pid()")
+        .fetch_one(&mut *held)
+        .await?;
+    sqlx::query("select reservation_id from concert_community_pickup_secrets where event_id=$1 and reservation_id=$2 for update")
+        .bind(event)
+        .bind(reservation)
+        .fetch_one(&mut *held)
+        .await?;
+    let p = pool.clone();
+    let job = tokio::spawn(async move {
+        let mut c = command(
+            owner,
+            event,
+            gift,
+            GiftAction::Claim {
+                reservation,
+                expected: 2,
+            },
+        );
+        c.key = key;
+        c.code = Some(PickupCode::parse(raw).unwrap());
+        execute(&p, &c).await
+    });
+    waiting(&pool, pid, 1).await?;
+    let blocked = blocked_backend(&pool, pid).await?;
+    let write_locks: (bool, bool) = sqlx::query_as(
+        "select exists(select 1 from pg_locks where pid=$1 and locktype='transactionid' and granted), exists(select 1 from pg_locks where pid=$1 and relation='concert_command_receipts'::regclass and mode='RowExclusiveLock')",
+    )
+    .bind(blocked)
+    .fetch_one(&pool)
+    .await?;
+    assert!(
+        write_locks.0 && write_locks.1,
+        "claim must already hold its write transaction and receipt relation lock"
+    );
+    state(
+        "gift_claim_blocked_locks",
+        serde_json::json!({"backend_pid": blocked, "write_transaction": write_locks.0, "receipt_relation_row_exclusive": write_locks.1}),
+    );
+    let terminated: bool = sqlx::query_scalar("select pg_terminate_backend($1)")
+        .bind(blocked)
+        .fetch_one(&pool)
+        .await?;
+    assert!(terminated, "blocked claim backend must terminate");
+    assert!(
+        job.await?.is_err(),
+        "interrupted claim cannot report success"
+    );
+    held.rollback().await?;
+
+    terminal(&pool).await?;
+    let receipt: i64 = sqlx::query_scalar(
+        "select count(*) from concert_command_receipts where actor_id=$1 and event_id=$2 and idempotency_key=$3",
+    )
+    .bind(owner)
+    .bind(event)
+    .bind(key)
+    .fetch_one(&pool)
+    .await?;
+    assert_eq!(receipt, 0, "uncommitted receipt must roll back");
+    let admission: i64 = sqlx::query_scalar(
+        "select count(*) from concert_community_pickup_admissions where actor_id=$1 and event_id=$2 and idempotency_key=$3",
+    )
+    .bind(owner)
+    .bind(event)
+    .bind(key)
+    .fetch_one(&pool)
+    .await?;
+    assert_eq!(
+        admission, 1,
+        "admission is durable before the interrupted receipt"
+    );
+    let root = root(&pool, event, gift).await?;
+    assert_eq!((root.reserved_unclaimed, root.quantity_claimed), (1, 0));
+    state(
+        "gift_claim_interrupted_after",
+        rows(&pool, event, gift).await?,
+    );
+    sqlx::query("insert into qa03_restart values('gift_claim',$1) on conflict(kind) do update set payload=excluded.payload")
+        .bind(serde_json::json!({"actor":owner,"event":event,"gift":gift,"reservation":reservation,"key":key,"code":code.expose()}))
+        .execute(&pool)
+        .await?;
+    Ok(())
+}
+
+#[tokio::test]
+#[ignore = "requires actual server restart phase of owned QA03 controller"]
+async fn restarted_claim_completes_once() -> anyhow::Result<()> {
+    let pool = pool().await?;
+    let v: serde_json::Value =
+        sqlx::query_scalar("select payload from qa03_restart where kind='gift_claim'")
+            .fetch_one(&pool)
+            .await?;
+    let id = |k: &str| -> Uuid { serde_json::from_value(v[k].clone()).unwrap() };
+    let (event, owner, gift, reservation) =
+        (id("event"), id("actor"), id("gift"), id("reservation"));
+    let code = PickupCode::parse(v["code"].as_str().unwrap().into()).unwrap();
+    let mut claim = command(
+        owner,
+        event,
+        gift,
+        GiftAction::Claim {
+            reservation,
+            expected: 2,
+        },
+    );
+    claim.key = id("key");
+    claim.code = Some(code);
+    let first = execute(&pool, &claim)
+        .await
+        .map_err(|e| anyhow::anyhow!("post-restart claim failed: {e:?}"))?;
+    assert_eq!(execute(&pool, &claim).await.unwrap().receipt, first.receipt);
+    let receipts: i64 = sqlx::query_scalar(
+        "select count(*) from concert_command_receipts where actor_id=$1 and event_id=$2 and operation_id='claimConcertReservation' and idempotency_key=$3 and state='SUCCEEDED'",
+    )
+    .bind(owner)
+    .bind(event)
+    .bind(claim.key)
+    .fetch_one(&pool)
+    .await?;
+    assert_eq!(receipts, 1);
+    let root = root(&pool, event, gift).await?;
+    assert_eq!((root.reserved_unclaimed, root.quantity_claimed), (0, 1));
+    state(
+        "gift_claim_restarted_after",
+        rows(&pool, event, gift).await?,
+    );
+    Ok(())
+}
+
 async fn expire(pool: &PgPool, event: Uuid, gift: Uuid) -> anyhow::Result<()> {
     // Fixture-only clock injection updates the aggregate and indexed deadline
     // together; it never changes application code or attaches an ambient store.

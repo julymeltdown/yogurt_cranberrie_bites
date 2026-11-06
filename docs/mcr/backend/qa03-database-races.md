@@ -1,10 +1,12 @@
 # QA03 database race qualification
 
-Status: ACCEPTED for the original QA03 database race criteria. All 11 native
-cases passed against PostgreSQL 16.14 from runtime source `eb9bb664`, built at
-clean source commit `47fb4a771430a995749a87a21d805f753fc74630`. This is task-local
-database evidence, not acceptance of canonical owner RPC, public HTTP, IN02,
-IN04, or the release. The earlier compilation/native failures remain retained.
+Status: ACCEPTED for the original QA03 database race criteria and PASS for
+the current master re-run. Fourteen native cases pass against PostgreSQL 16.14
+from base commit `25b2d356f` plus this task's QA03-only changes. The earlier
+eleven-case run below remains retained as historical evidence for source
+`eb9bb664`; it is not the current candidate. This is task-local database
+evidence, not acceptance of canonical owner RPC, public HTTP, IN02, IN04, or the
+release. Earlier compilation/native failures remain retained.
 
 The original QA03 row in `MCR_IMPLEMENTATION_PLAN_V2_EN.md` requires parallel
 capacity, reservation, cancellation, expiry, claim, idempotency, and mural cooldown
@@ -62,6 +64,8 @@ IN04. Those joins remain owned by Root and the corresponding feature owners.
 | BE17 last slot | Two approval transactions blocked behind held party row | Lock graph proves both contenders; one success, one version conflict; active members at capacity with owner retained |
 | Approval idempotency | Two exact replay transactions blocked behind root | Same receipt, no added outbox; changed body/key conflicts |
 | BE21 stock | Five buyers blocked behind one-unit giveaway | Exactly one hold; aggregate/index counters agree and never negative; exact replay stable; no-stock retry fails |
+| Release and re-reservation | Cancel and a stale-revision reservation both blocked behind held giveaway | Valid release commits; stale reservation cannot take the held unit; a fresh-revision reservation takes the released unit exactly once; counters return to one active unit |
+| Receipt insertion interruption | Claim blocked on the pickup-secret row after admission and receipt insert, backend terminated, PostgreSQL restarted | Uncommitted receipt disappears, admission remains durable, post-restart replay completes exactly one claim |
 | BE22/23 terminal race | Claim and cancel blocked behind held giveaway | Exactly one terminal transition; one stock disposition; no retained secret; successful replay stable |
 | BE23 positive/negative | Duplicate same-key claims, wrong code, wrong actor | One claim receipt and consumed unit; wrong code/actor rejected; code issuance replay never regenerates plaintext |
 | Expiry competition | Expired claim/cancel wait behind held root while sweep skips it | Expired pickup cannot succeed; cancellation/expiry release once; repeat sweep emits nothing |
@@ -90,8 +94,8 @@ must be skipped rather than blocked or falsely counted as drained.
 
 The controller refuses target executables, mismatched binaries/sources, and an
 empty or altered test inventory. Each exact ignored test must actually report
-one passed/zero failed. It runs eight cases, performs an actual owned PostgreSQL
-restart, then runs three cases in fresh processes. Failure reports use new
+one passed/zero failed. It runs ten cases, performs an actual owned PostgreSQL
+restart, then runs four cases in fresh processes. Failure reports use new
 exclusive files and preserve previous failures; they are never overwritten by
 a later success. Cleanup runs on success, failure, timeout, or termination.
 
@@ -150,6 +154,17 @@ a later success. Cleanup runs on success, failure, timeout, or termination.
   No target access was performed afterward. These are allocation checkpoints;
   the private PostgreSQL peak was not sampled before teardown, so no measured
   whole-workflow peak is claimed.
+- Native re-run on current master (2026-11-06): fourteen exact cases PASS,
+each exit 0. The ten pre-restart cases include two new release/re-reservation
+and interrupted-receipt cases; four post-restart cases include the new claim
+replay. Observed blocking graphs recorded the
+required contender counts, including five buyers at stock 1, two party approvals
+at the last slot, two release/re-reservation contenders, and one interrupted
+claim backend. PostgreSQL postmaster PID changed `63956` → `64110`.
+Both SQLx ledgers matched all 27 migration SHA-384 values; prepared
+transactions and PENDING receipts were ZERO; cleanup PASS. QA03_STATE rows in
+the native report record party, giveaway, reservation, receipt and outbox rows
+before and after each asserted case.
 - Native attempt 2: controller exit 0; **11/11 exact cases PASS**, each exit 0.
   Nine observed barriers recorded the required contender counts
   `2,2,5,2,2,2,2,2,3` through actual PostgreSQL blocking graphs. Eight cases ran
@@ -161,6 +176,14 @@ a later success. Cleanup runs on success, failure, timeout, or termination.
   `2b4591f978af05fdf9155411b4227b48305b110bec14b61d35f6eddac78556e8`.
   The interrupted-command seed proves interruption before admission and durable
   pending expiry recovery; it does not claim interruption inside a sweep commit.
+- Mutation check: the receipt request digest comparison
+  (`Ok(false) => return Err(CommandError::Conflict)`) was weakened to accept the
+  changed request in a temporary edit. The suite then failed in
+  `party::last_slot_and_identical_replay_are_forced` at
+  `qa03_races_support/party.rs:251`: the changed decision returned
+  `Ok(SafeReceipt …)` where the invariant requires `Err(Command(Conflict))`.
+  Controller exit 1, cleanup PASS. The guard was restored and all fourteen
+  cases passed again.
 - Canonical owner/public HTTP and same-release integration gates: NOT_RUN;
   Root/feature owners supply those scopes. QA03 has no application/shared-file
   grant and does not mint an OwnerGuardScope from IDs or a fixture allow flag.
