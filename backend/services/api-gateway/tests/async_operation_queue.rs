@@ -541,6 +541,8 @@ async fn timed_out_owner_mutation_is_accepted_then_completed_by_the_worker() -> 
                 .header("authorization", format!("Bearer {token}"))
                 .header("idempotency-key", &idempotency_key)
                 .header("content-type", "application/json")
+                .header("origin", "http://localhost:3000")
+                .header("x-mcr-intent", "browser")
                 .header("traceparent", incoming_traceparent)
                 .header("tracestate", "vendor=value")
                 .body(Body::from(body))
@@ -669,6 +671,8 @@ async fn timed_out_moderation_report_is_accepted_and_completed_by_the_worker() -
                 .header("authorization", format!("Bearer {token}"))
                 .header("idempotency-key", &idempotency_key)
                 .header("content-type", "application/json")
+                .header("origin", "http://localhost:3000")
+                .header("x-mcr-intent", "browser")
                 .body(Body::from(body.clone()))
                 .expect("request")
         };

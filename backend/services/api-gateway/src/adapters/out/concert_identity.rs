@@ -14,41 +14,7 @@ use chrono::{DateTime, Utc};
 use std::fmt;
 use uuid::Uuid;
 
-/// Safe composition failures. Child classes remain explicit and fixed.
-#[derive(Clone, Copy, Debug, PartialEq, Eq, thiserror::Error)]
-pub enum ConcertIdentityReadError {
-    #[error("Concert identity access context expired or invalid")]
-    AccessExpired,
-    #[error("Concert identity read deadline exceeded")]
-    DeadlineExceeded,
-    #[error("Concert identity is not currently eligible")]
-    NotEligible,
-    #[error("Canonical Auth read failed: {0}")]
-    Auth(AdmissionReadError),
-    #[error("Canonical Profile read failed: {0}")]
-    Profile(super::profile_client::concert_identity::ConcertProfileReadError),
-}
-impl From<AdmissionReadError> for ConcertIdentityReadError {
-    fn from(error: AdmissionReadError) -> Self {
-        match error {
-            AdmissionReadError::AccessExpired => Self::AccessExpired,
-            AdmissionReadError::DeadlineExceeded => Self::DeadlineExceeded,
-            other => Self::Auth(other),
-        }
-    }
-}
-impl From<super::profile_client::concert_identity::ConcertProfileReadError>
-    for ConcertIdentityReadError
-{
-    fn from(error: super::profile_client::concert_identity::ConcertProfileReadError) -> Self {
-        use super::profile_client::concert_identity::ConcertProfileReadError;
-        match error {
-            ConcertProfileReadError::AccessExpired => Self::AccessExpired,
-            ConcertProfileReadError::DeadlineExceeded => Self::DeadlineExceeded,
-            other => Self::Profile(other),
-        }
-    }
-}
+pub use crate::domain::concert_identity::ConcertIdentityReadError;
 
 /// Two configured, already signed clients. The future caller owns AppState
 /// construction; this value introduces no endpoint, signer or channel policy.

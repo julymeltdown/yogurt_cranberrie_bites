@@ -10,24 +10,7 @@ use uuid::Uuid;
 /// Parse/decode bound, not a content freshness or cache lifetime.
 pub const MAX_CONCERT_PROFILE_RESPONSE_BYTES: usize = 1024;
 
-/// Safe, stable failures; peer messages and details are never propagated.
-#[derive(Clone, Copy, Debug, PartialEq, Eq, thiserror::Error)]
-pub enum ConcertProfileReadError {
-    #[error("Concert Profile access context expired or invalid")]
-    AccessExpired,
-    #[error("Concert Profile content unavailable")]
-    NotFound,
-    #[error("Concert Profile read denied")]
-    Denied,
-    #[error("Concert Profile read deadline exceeded")]
-    DeadlineExceeded,
-    #[error("Concert Profile capacity unavailable")]
-    CapacityExhausted,
-    #[error("Concert Profile owner unavailable")]
-    Unavailable,
-    #[error("Invalid Concert Profile owner response")]
-    InvalidResponse,
-}
+pub use crate::domain::concert_identity::ConcertProfileReadError;
 
 /// Borrowed, request-bound current content. No constructor, Clone, conversion
 /// to a broader Profile DTO, or serialization is exposed.
