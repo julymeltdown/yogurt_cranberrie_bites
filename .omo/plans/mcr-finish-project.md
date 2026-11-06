@@ -424,7 +424,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   Recommended task executor category: deep-low
   Commit: Y | `test(in03): pass the social privacy gate where inputs exist`
 
-- [ ] 31. Pass IN04 multiuser mural and moderation gate
+- [x] 31. Pass IN04 multiuser mural and moderation gate
   What to do / Must NOT do: multiple real clients edit the Wall B surface (opaque erase, four-connected fill ≤256, eligible undo), with cooldown, shared 512-cell budget, moderation pause/restore/freeze and convergence. Do NOT allow private history leakage; do NOT skip the uncertain-outcome recovery case.
   Closes: GAP-2
   Parallelization: Wave 5 | Blocked by: 13, 15–17, 19–23 | Blocks: 47
