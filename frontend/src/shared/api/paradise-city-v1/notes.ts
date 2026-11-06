@@ -73,12 +73,15 @@ function responseContext(value: unknown, expected: Readonly<Record<string, unkno
   const response = record(value)
   if ('server_now' in response) {
     const now = utcMilliseconds(response.server_now as string)
-    if (utcMilliseconds(response.access_until as string) <= now) throw new Error('Expired read lease')
     const notes: PlaceNote[] = []
     if (Array.isArray(response.items)) notes.push(...response.items as PlaceNote[])
     if (Array.isArray(response.replies)) notes.push(...response.replies as PlaceNote[])
     if (response.note) notes.push(response.note as PlaceNote)
     if (response.parent) notes.push(response.parent as PlaceNote)
+    // The producer reports access_until === server_now for an empty authorized page;
+    // an empty page carries no disclosure ceiling and still needs its place lease.
+    if (utcMilliseconds(response.access_until as string) < now
+      || (notes.length > 0 && utcMilliseconds(response.access_until as string) <= now)) throw new Error('Expired read lease')
     if (new Set(notes.map(n => n.id)).size !== notes.length) throw new Error('Duplicate note identity')
     for (const note of notes) {
       if (note.landmark_id !== expected.landmarkId || utcMilliseconds(note.expires_at) <= now

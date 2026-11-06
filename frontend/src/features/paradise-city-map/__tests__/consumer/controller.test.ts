@@ -157,3 +157,46 @@ it('aborts a pending mutation on scope withdrawal and ignores its late completio
   h.setCurrent(false); expect(h.calls[0]?.context.signal.aborted).toBe(true); finish({ state: 'applied' }); await action
   expect(h.controller.read().draft).toBeNull(); expect(h.controller.read().notice).not.toContain('Note posted')
 })
+it('loads server note counts only when the Notes tab is explicitly opened', async () => {
+  const h = setup(); await Promise.resolve(); expect(h.loads).toEqual([])
+  h.controller.setTab('NOTES'); await Promise.resolve(); expect(h.loads).toEqual([{ name: 'loadNoteSummary', input: null }])
+})
+it('loads a selected place through the real notes read port', async () => {
+  const h = setup(); h.controller.select({ kind: 'notes', id: mainGate }); await Promise.resolve()
+  expect(h.loads.at(-1)).toEqual({ name: 'loadNotes', input: 'test-main-gate' })
+})
+it('re-reads the place when its disclosure lease ends instead of reporting no notes', async () => {
+  const h = setup(); h.controller.select({ kind: 'notes', id: mainGate }); await Promise.resolve(); await Promise.resolve()
+  expect(h.loads).toEqual([{ name: 'loadNotes', input: 'test-main-gate' }])
+  h.publish({ ...h.snapshot, notes: [], noteClusters: [], notesVisibleCount: null }); await Promise.resolve(); await Promise.resolve()
+  expect(h.loads).toEqual([{ name: 'loadNotes', input: 'test-main-gate' }, { name: 'loadNotes', input: 'test-main-gate' }])
+  expect(h.controller.read().notice).toBe('')
+})
+it('keeps one failed lease re-read without looping or inventing rows', async () => {
+  const h = setup(); h.controller.select({ kind: 'notes', id: mainGate }); await Promise.resolve(); await Promise.resolve()
+  h.setNotesRead(false); h.publish({ ...h.snapshot, notes: [], noteClusters: [], notesVisibleCount: null })
+  await Promise.resolve(); await Promise.resolve(); await Promise.resolve()
+  expect(h.loads).toHaveLength(2); expect(h.controller.read().notice).toBe('Notes are unavailable for this place.')
+})
+it('withdraws only an author-authorized note with its exact server revision', async () => {
+  const h = setup(), note = h.snapshot.notes[0]!
+  h.publish({ ...h.snapshot, notes: [{ ...note, canWithdraw: true }] }); await h.controller.withdraw(note.id)
+  expect(h.calls[0]).toMatchObject({ name: 'withdraw', input: { noteId: note.id, expectedRevision: 4 } })
+  expect(h.loads.map(row => row.name)).toEqual(['loadNotes', 'loadNoteSummary'])
+})
+it('does not send a withdrawal for a note the server did not mark withdrawable', async () => {
+  const h = setup(); await h.controller.withdraw('note-test'); expect(h.calls).toEqual([])
+})
+it('reloads the producer page and summary after a note is applied', async () => {
+  const h = setup(); h.controller.compose('test-main-gate'); h.controller.edit('Fresh note'); await h.controller.submit()
+  expect(h.calls[0]?.name).toBe('postNote'); expect(h.loads.map(row => row.name)).toEqual(['loadNotes', 'loadNoteSummary'])
+})
+it('reloads the exact reply thread after a reply is applied', async () => {
+  const h = setup(); h.controller.compose('test-main-gate', 'note-test'); h.controller.edit('Fresh reply'); await h.controller.submit()
+  expect(h.calls[0]?.name).toBe('reply')
+  expect(h.loads.map(row => row.name)).toEqual(['loadNoteThread', 'loadNoteSummary']); expect(h.loads[0]?.input).toBe('note-test')
+})
+it('renders a truthful unavailable notice when the note read is denied', async () => {
+  const h = setup(); h.setNotesRead(false); h.controller.select({ kind: 'notes', id: mainGate }); await Promise.resolve(); await Promise.resolve()
+  expect(h.controller.read().notice).toBe('Notes are unavailable for this place.')
+})

@@ -113,6 +113,11 @@ describe('private N01 response boundaries', () => {
     expect(() => roots().decode(page({items:[note({expires_at:time})]}),200)).toThrow(VenueContractError)
     expect(() => roots().decode(page({server_now:'2026-02-30T01:00:00Z'}),200)).toThrow(VenueContractError)
   })
+  it('accepts an empty authorized page at access_until === server_now but not before it', () => {
+    const decoded = roots().decode(page({ items: [], visible_count: 0, access_until: time }), 200)
+    expect(decoded.items).toEqual([]); expect(decoded.visible_count).toBe(0)
+    expect(() => roots().decode(page({ items: [], visible_count: 0, access_until: '2026-11-05T00:59:59Z' }), 200)).toThrow(VenueContractError)
+  })
   it('binds a thread and all replies to the requested root and inherited expiry/audience', () => {
     const request = buildNotesRequest('getVenuePlaceNote',{...base,noteId})
     const thread: NoteThread = {note:note(),replies:[note({id:replyId,parent_id:noteId})],next_before:null,server_now:time,access_until:'2026-11-05T01:00:05Z'}
