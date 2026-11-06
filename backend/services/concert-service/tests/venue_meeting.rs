@@ -268,6 +268,62 @@ async fn invitation_accept_message_round_trip_and_idempotent_replay() -> anyhow:
 }
 
 #[tokio::test]
+async fn reusing_a_command_key_with_different_request_body_conflicts() -> anyhow::Result<()> {
+    let pool = support::owned_pool().await?;
+    let f = setup(&pool).await?;
+    let client = PgVenueMeeting::new(pool.clone(), FixtureAuthority { pool: pool.clone() });
+
+    let send_key = Uuid::new_v4();
+    let first = SendMessage::new(actor_selection(&f, f.alice, None), "first", None)?;
+    let receipt = client.send(f.event, f.alice, send_key, &first).await?;
+    assert_eq!(receipt["state"], "APPLIED");
+    let second = SendMessage::new(actor_selection(&f, f.alice, None), "second", None)?;
+    assert_eq!(
+        client.send(f.event, f.alice, send_key, &second).await,
+        Err(MeetingError::RevisionConflict)
+    );
+    let replay = client.send(f.event, f.alice, send_key, &first).await?;
+    assert_eq!(replay["result"], receipt["result"]);
+    assert_eq!(replay["replayed"], true);
+
+    let create = CreateInvitation::new(actor_selection(&f, f.alice, Some(f.landmark.clone())))?;
+    let invitation_id = client
+        .create_invitation(f.event, f.alice, Uuid::new_v4(), &create)
+        .await?["result"]["invitation"]["id"]
+        .as_str()
+        .map(Uuid::parse_str)
+        .transpose()?
+        .ok_or_else(|| anyhow::anyhow!("conflict invitation id"))?;
+    let decide_key = Uuid::new_v4();
+    let accept = DecideInvitation::new(
+        actor_selection(&f, f.bob, Some(f.landmark.clone())),
+        1,
+        Decision::Accept,
+    )?;
+    let accepted = client
+        .decide(f.event, f.bob, invitation_id, decide_key, &accept)
+        .await?;
+    assert_eq!(accepted["result"]["invitation"]["state"], "ACCEPTED");
+    let decline = DecideInvitation::new(
+        actor_selection(&f, f.bob, Some(f.landmark.clone())),
+        1,
+        Decision::Decline,
+    )?;
+    assert_eq!(
+        client
+            .decide(f.event, f.bob, invitation_id, decide_key, &decline)
+            .await,
+        Err(MeetingError::RevisionConflict)
+    );
+    let replay = client
+        .decide(f.event, f.bob, invitation_id, decide_key, &accept)
+        .await?;
+    assert_eq!(replay["result"], accepted["result"]);
+    assert_eq!(replay["replayed"], true);
+    Ok(())
+}
+
+#[tokio::test]
 async fn decisions_follow_producer_and_revision_and_stale_landmarks_fail_closed() -> anyhow::Result<()> {
     let pool = support::owned_pool().await?;
     let f = setup(&pool).await?;

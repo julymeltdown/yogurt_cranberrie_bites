@@ -164,7 +164,7 @@ pub(super) fn route(
     let suffix = path.strip_prefix(&prefix).ok_or_else(invalid)?;
     let pieces: Vec<_> = suffix.trim_start_matches('/').split('/').collect();
     match (method, suffix, pieces.as_slice()) {
-        ("GET", "", [""]) => Ok(MeetingOperation::Context),
+        ("GET", "/context", ["context"]) => Ok(MeetingOperation::Context),
         ("GET", "/invitations", ["invitations"]) => Ok(MeetingOperation::Invitations),
         ("POST", "/invitations", ["invitations"]) => Ok(MeetingOperation::CreateInvitation),
         ("GET", _, ["invitations", id]) => Ok(MeetingOperation::GetInvitation(
@@ -285,8 +285,18 @@ mod tests {
         let event = Uuid::new_v4();
         let id = Uuid::new_v4();
         assert_eq!(
-            route(event, "GET", &target(event, "context?selectedFriendId=1")).is_err(),
-            true
+            route(
+                event,
+                "GET",
+                &target(event, &format!("context?selectedFriendId={}", Uuid::new_v4())),
+            )
+            .unwrap(),
+            MeetingOperation::Context
+        );
+        assert!(route(event, "GET", &format!("/api/concert/events/{event}/venue-meeting")).is_err());
+        assert_eq!(
+            route(event, "GET", &target(event, "context")).unwrap(),
+            MeetingOperation::Context
         );
         assert_eq!(
             route(event, "GET", &target(event, "invitations")).unwrap(),
@@ -363,6 +373,28 @@ mod tests {
             (),
         );
         assert!(request_checked(&send, MeetingOperation::SendMessage));
+    }
+
+    #[test]
+    fn context_contract_path_reaches_the_meeting_admission_branch() {
+        let event = Uuid::new_v4();
+        let actor = Uuid::new_v4();
+        let friend = Uuid::new_v4();
+        let context = ProductRequest {
+            user_id: actor.to_string(),
+            event_id: event.to_string(),
+            session_family_id: Uuid::new_v4().to_string(),
+            request_id: Uuid::new_v4().to_string(),
+            http_method: "GET".into(),
+            http_target: target(event, &format!("context?selectedFriendId={friend}")),
+            ..Default::default()
+        };
+        assert!(request_checked(&context, MeetingOperation::Context));
+        let bare = ProductRequest {
+            http_target: target(event, ""),
+            ..context
+        };
+        assert!(!request_checked(&bare, MeetingOperation::Context));
     }
 
     fn request_checked(request: &ProductRequest, operation: MeetingOperation) -> bool {

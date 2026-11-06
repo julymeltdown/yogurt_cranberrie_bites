@@ -183,7 +183,13 @@ impl<A: VenueMeetingAuthority> PgVenueMeeting<A> {
     ) -> Result<Value, MeetingError> {
         let mut tx = self.pool.begin().await.map_err(storage)?;
         let now = database_now(&mut tx).await?;
-        let digest = digest("createVenueMeetingInvitation", event, None, &command.selection)?;
+        let digest = digest(
+            "createVenueMeetingInvitation",
+            event,
+            None,
+            &command.selection,
+            &json!({"selection": &command.selection}),
+        )?;
         if let Some(replayed) = replay(&mut tx, event, actor, key, &digest).await? {
             require_policy(&self.authority, event).await?;
             require_selection_friend(&self.authority, event, actor, &command.selection).await?;
@@ -262,7 +268,17 @@ impl<A: VenueMeetingAuthority> PgVenueMeeting<A> {
     ) -> Result<Value, MeetingError> {
         let mut tx = self.pool.begin().await.map_err(storage)?;
         let now = database_now(&mut tx).await?;
-        let digest = digest("decideVenueMeetingInvitation", event, Some(id), &command.selection)?;
+        let digest = digest(
+            "decideVenueMeetingInvitation",
+            event,
+            Some(id),
+            &command.selection,
+            &json!({
+                "selection": &command.selection,
+                "expectedRevision": command.expected_revision,
+                "decision": command.decision,
+            }),
+        )?;
         if let Some(replayed) = replay(&mut tx, event, actor, key, &digest).await? {
             require_policy(&self.authority, event).await?;
             let invitation = load_invitation(&mut tx, event, id).await?;
@@ -408,7 +424,17 @@ impl<A: VenueMeetingAuthority> PgVenueMeeting<A> {
     ) -> Result<Value, MeetingError> {
         let mut tx = self.pool.begin().await.map_err(storage)?;
         let now = database_now(&mut tx).await?;
-        let digest = digest("sendVenueMeetingMessage", event, None, &command.selection)?;
+        let digest = digest(
+            "sendVenueMeetingMessage",
+            event,
+            None,
+            &command.selection,
+            &json!({
+                "selection": &command.selection,
+                "body": &command.body,
+                "invitationId": command.invitation_id,
+            }),
+        )?;
         if let Some(replayed) = replay(&mut tx, event, actor, key, &digest).await? {
             require_policy(&self.authority, event).await?;
             require_selection_friend(&self.authority, event, actor, &command.selection).await?;
@@ -575,6 +601,7 @@ fn digest(
     event: Uuid,
     target: Option<Uuid>,
     selection: &MeetingSelection,
+    body: &Value,
 ) -> Result<Vec<u8>, MeetingError> {
     let mut value = Sha256::new();
     value.update(operation.as_bytes());
@@ -584,6 +611,8 @@ fn digest(
     value.update(target.map_or([0; 16], |id| *id.as_bytes()));
     value.update(b"\0");
     value.update(serde_json::to_vec(selection).map_err(|_| storage_err())?);
+    value.update(b"\0");
+    value.update(serde_json::to_vec(body).map_err(|_| storage_err())?);
     Ok(value.finalize().to_vec())
 }
 

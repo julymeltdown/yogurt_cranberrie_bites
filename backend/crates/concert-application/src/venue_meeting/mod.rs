@@ -203,3 +203,104 @@ pub fn decision_transition(
 ) -> Result<InvitationState, MeetingError> {
     invitation.decision_state(actor, decision, now)
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    struct StubReview(Result<LandmarkReview, MeetingError>);
+
+    #[async_trait]
+    impl VenueMeetingAuthority for StubReview {
+        async fn friend(
+            &self,
+            _: Uuid,
+            _: Uuid,
+            _: Uuid,
+        ) -> Result<PairFacts, MeetingError> {
+            Err(MeetingError::PolicyUnavailable)
+        }
+        async fn reviewed_landmark(
+            &self,
+            _: Uuid,
+            _: &LandmarkSelection,
+        ) -> Result<LandmarkReview, MeetingError> {
+            self.0.clone()
+        }
+        async fn policy(&self, _: Uuid) -> Result<MeetingPolicy, MeetingError> {
+            Err(MeetingError::PolicyUnavailable)
+        }
+    }
+
+    fn selection() -> MeetingSelection {
+        MeetingSelection::new(
+            Uuid::new_v4(),
+            Some(LandmarkSelection::new("gate-a", 3, 4).unwrap()),
+        )
+        .unwrap()
+    }
+
+    fn review(can_meet: bool, valid_until: DateTime<Utc>) -> LandmarkReview {
+        LandmarkReview {
+            catalog_revision: 3,
+            landmark_revision: 4,
+            can_meet,
+            valid_until,
+        }
+    }
+
+    async fn denied(review: LandmarkReview) {
+        let now = Utc::now();
+        let result = require_invitation_landmark(
+            &StubReview(Ok(review)),
+            Uuid::new_v4(),
+            &selection(),
+            now,
+        )
+        .await;
+        assert_eq!(result, Err(MeetingError::ResourceUnavailable));
+    }
+
+    #[tokio::test]
+    async fn landmark_guard_denies_unreviewed_or_closed_or_stale_reviews() {
+        let now = Utc::now();
+        let current = review(true, now + chrono::Duration::minutes(5));
+        assert_eq!(
+            require_invitation_landmark(
+                &StubReview(Ok(current.clone())),
+                Uuid::new_v4(),
+                &selection(),
+                now,
+            )
+            .await,
+            Ok(current)
+        );
+        denied(LandmarkReview {
+            catalog_revision: 2,
+            ..review(true, now + chrono::Duration::minutes(5))
+        })
+        .await;
+        denied(LandmarkReview {
+            landmark_revision: 5,
+            ..review(true, now + chrono::Duration::minutes(5))
+        })
+        .await;
+        denied(review(false, now + chrono::Duration::minutes(5))).await;
+        denied(review(true, now)).await;
+        denied(review(true, now - chrono::Duration::minutes(1))).await;
+    }
+
+    #[tokio::test]
+    async fn landmark_guard_propagates_an_unavailable_review() {
+        assert_eq!(
+            require_invitation_landmark(
+                &StubReview(Err(MeetingError::PolicyUnavailable)),
+                Uuid::new_v4(),
+                &selection(),
+                Utc::now(),
+            )
+            .await,
+            Err(MeetingError::PolicyUnavailable)
+        );
+    }
+}
