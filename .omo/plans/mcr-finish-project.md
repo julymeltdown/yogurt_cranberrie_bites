@@ -530,7 +530,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   Recommended task executor category: deep-low
   Commit: Y | `test(qa05): pass realtime failure suite`
 
-- [ ] 41. Pass QA09 recovery and lifecycle rehearsal
+- [~] 41. Pass QA09 recovery and lifecycle rehearsal
   What to do / Must NOT do: six real recovery scenarios: DB restart/backup restore, outbox replay, pending pickup, deletion convergence, partial event closure, and service restart. Do NOT accept a plan-only rehearsal.
   Closes: GAP-3
   Parallelization: Wave 7 | Blocked by: 13, 14–17, 29–32 | Blocks: 47
@@ -539,6 +539,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   QA scenarios: happy restore -> data consistent; failure kill mid-outbox -> replay completes. Evidence `.omo/evidence/mcr-finish-project/task-41-qa09.md`.
   Recommended task executor category: deep-low
   Commit: Y | `test(qa09): pass recovery and lifecycle rehearsal`
+  Gap (2026-11-06): seven scenarios are measured and pass - outbox replay (READY|1 to DELIVERED|2 with one consumer receipt), baseline pickup, gateway restart (event/giveaways/reservations/outbox ids/receipts/closure rows unchanged), pending pickup under a terminated lock backend, immediate postmaster stop with new PID and intact committed rows, logical backup (783,491 bytes, sha256 bdcf7958...) restored with a post-backup mutation table absent, and partial closure resumed atomically to READ_ONLY|2 with 409 on post-closure writes. Deletion convergence is NOT_RUN as a live saga: with managed deletion configured on both sides, CONCERT_PRIVATE_DATA/SESSIONS/SHARING/TICKETS stay RETRY attempt 3 with last_error Dependency unavailable while FRIEND/NOTIFICATION/POST/PROFILE succeed, so the isolated owner mount PASS is not convergence and is labelled as such.
 
 - [~] 42. Pass QA10 candidate provenance and release checks
   What to do / Must NOT do: produce the same-candidate task-to-commit trace, frontend/backend/device evidence and release-check composition for the final SHA. Do NOT reuse evidence from another candidate.
