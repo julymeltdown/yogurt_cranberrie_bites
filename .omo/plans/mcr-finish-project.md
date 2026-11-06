@@ -605,7 +605,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   Recommended task executor category: ultrabrain
   Commit: Y | `docs(release): publish IN05 reconciliation`
 
-- [ ] 48. Restore blocking CI last
+- [x] 48. Restore blocking CI last
   What to do / Must NOT do: add `.github/workflows/mcr-ci.yml` with the gates inventoried in task 6, make them blocking, and prove a green run on the final candidate. Do NOT reintroduce contract-only CI.
   Closes: GAP-4
   Parallelization: Wave 8 | Blocked by: 6, 47 | Blocks: none
