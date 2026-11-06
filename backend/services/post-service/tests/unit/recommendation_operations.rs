@@ -103,7 +103,9 @@ async fn feed_retention_worker_records_failure_counter() {
 
 #[test]
 fn account_deletion_repository_cleans_feed_recommendation_subject_tables() {
-    let source = include_str!("../../src/adapters/out/persistence/user_lifecycle_repository.rs");
+    // Cleanup lives in the deletion-receipt owner; the lifecycle repository
+    // delegates to it. Inspect the actual implementation, not the delegator.
+    let source = include_str!("../../src/deletion_receipt/mod.rs");
     for table in [
         "home_timeline_entries",
         "high_fanout_posts",
