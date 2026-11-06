@@ -1,15 +1,16 @@
 use super::{
-    append_set_cookie, build_oauth_state_cookie, build_refresh_cookie, clear_oauth_state_cookie,
-    client_ip, extract_query_param, map_service_error, parse_provider, resolve_cookie,
-    strip_refresh_token, user_agent, CurrentUser, GatewayError,
+    append_set_cookie, build_bound_oauth_state_cookie, build_refresh_cookie, clear_oauth_state_cookie,
+    client_ip, extract_query_param, map_service_error, parse_provider,
+    user_agent, CurrentUser, GatewayError,
 };
 use crate::application::dto::auth_dto::OAuthLinkRequest;
 use crate::config::AppState;
-use axum::extract::{Path, Query, State};
+use axum::extract::{Path, Query, RawQuery, State};
 use axum::http::{HeaderMap, StatusCode};
 use axum::response::{IntoResponse, Response};
 use axum::routing::{get, post};
 use axum::{Json, Router};
+#[cfg(test)]
 use serde::Deserialize;
 use std::collections::HashMap;
 use std::sync::Arc;
@@ -35,12 +36,14 @@ pub(super) async fn protect_form_post_response(
     response
 }
 
+#[cfg(test)]
 #[derive(Deserialize)]
 struct OAuthCallbackQuery {
     code: String,
     state: String,
 }
 
+#[cfg(test)]
 impl std::fmt::Debug for OAuthCallbackQuery {
     fn fmt(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         formatter
@@ -62,14 +65,27 @@ pub fn router(state: Arc<AppState>) -> Router {
             "/auth/oauth/:provider/callback/complete",
             post(form_post::complete),
         )
-        .route("/auth/oauth/:provider/link", post(link))
+        // Account linking has a separate, still-unqualified binding contract.
         .with_state(state)
 }
 
 async fn authorize(
     State(state): State<Arc<AppState>>,
     Path(provider): Path<String>,
+    RawQuery(raw): RawQuery,
+    Query(params): Query<Vec<(String, String)>>,
 ) -> Result<Response, GatewayError> {
+    require_transport(&state, &provider)?;
+    if raw.as_ref().is_some_and(|value| value.len() > 8 * 1024) || params.len() > 8 {
+        return Err(GatewayError::bad_request("OAuth query exceeds its limit"));
+    }
+    form_post::validate_encoding(raw.as_deref().unwrap_or_default().as_bytes())?;
+    if params.iter().any(|(key, _)| key != "returnTo") {
+        return Err(GatewayError::bad_request("Unknown OAuth authorization field"));
+    }
+    let target = super::oauth_return_target(if params.len() == 1 {
+        Some(params[0].1.as_str())
+    } else { None });
     let provider = parse_provider(&provider)?;
     let authorization = state
         .auth_service
@@ -80,6 +96,11 @@ async fn authorize(
         .authorization_uri
         .parse()
         .map_err(|error: http::uri::InvalidUri| map_service_error(error))?;
+    if location.authority().is_none()
+        || !matches!(location.scheme_str(), Some("https" | "http"))
+        || location.authority().is_some_and(|value| value.as_str().contains('@'))
+        || location.query().unwrap_or_default().split('&').filter(|value| value.starts_with("state=")).count() != 1
+    { return Err(GatewayError::bad_request("Invalid provider authorization URI")); }
     let oauth_state = extract_query_param(&location, "state")
         .ok_or_else(|| GatewayError::bad_request("OAuth state missing from authorization URI"))?;
     let mut headers = HeaderMap::new();
@@ -89,7 +110,7 @@ async fn authorize(
     );
     append_set_cookie(
         &mut headers,
-        build_oauth_state_cookie(&state, provider, &oauth_state),
+        build_bound_oauth_state_cookie(&state, provider, &oauth_state, target)?,
     )?;
     Ok((StatusCode::FOUND, headers).into_response())
 }
@@ -97,37 +118,80 @@ async fn authorize(
 async fn callback(
     State(state): State<Arc<AppState>>,
     Path(provider): Path<String>,
-    Query(query): Query<OAuthCallbackQuery>,
+    RawQuery(raw): RawQuery,
+    Query(params): Query<Vec<(String, String)>>,
     headers: HeaderMap,
 ) -> Result<Response, GatewayError> {
+    require_transport(&state, &provider)?;
+    if raw.as_ref().is_some_and(|value| value.len() > 8 * 1024) || params.len() > 8 {
+        return Err(GatewayError::bad_request("OAuth query exceeds its limit"));
+    }
+    form_post::validate_encoding(raw.as_deref().unwrap_or_default().as_bytes())?;
+    let mut query = HashMap::new();
+    for (key, value) in params {
+        if !matches!(key.as_str(), "state" | "code" | "error" | "error_description" | "error_uri" | "returnTo")
+            || query.insert(key, value).is_some()
+        { return Err(GatewayError::bad_request("Unknown or duplicate OAuth callback field")); }
+    }
     let provider = parse_provider(&provider)?;
-    verify_oauth_state(&state, provider, &query.state, &headers)?;
+    let query_state = query.remove("state").unwrap_or_default();
+    let target = super::verify_bound_oauth_state(&state, provider, &query_state, &headers)?;
+    if let Some(error) = query.remove("error") {
+        if query.contains_key("code") || error.is_empty() {
+            return Err(GatewayError::bad_request("Ambiguous OAuth callback"));
+        }
+        return browser_handoff(&state, provider, &target,
+            if error == "access_denied" { "denied" } else { "error" }, None);
+    }
+    let code = query.remove("code").unwrap_or_default();
+    if code.trim().is_empty() || code.len() > 4096 || code.chars().any(char::is_control)
+        || query.contains_key("error_description") || query.contains_key("error_uri")
+    { return Err(GatewayError::bad_request("Invalid OAuth callback code")); }
+    // callback returnTo is deliberately unused: only signed state owns target.
     let response = state
         .auth_service
         .oauth_callback(
             provider,
-            query.code,
-            query.state,
+            code,
+            query_state,
             client_ip(&headers),
             user_agent(&headers),
         )
-        .await
-        .map_err(map_service_error)?;
-    let mut response_headers = HeaderMap::new();
-    append_set_cookie(
-        &mut response_headers,
-        build_refresh_cookie(&state, &response.refresh_token),
-    )?;
-    append_set_cookie(
-        &mut response_headers,
-        clear_oauth_state_cookie(&state, provider),
-    )?;
-    Ok((
-        StatusCode::OK,
-        response_headers,
-        Json(strip_refresh_token(response)),
-    )
-        .into_response())
+        .await;
+    match response {
+        Ok(response) => browser_handoff(&state, provider, &target, "success", Some(&response.refresh_token)),
+        Err(_) => browser_handoff(&state, provider, &target, "error", None),
+    }
+}
+
+pub(super) fn require_transport(state: &AppState, provider: &str) -> Result<(), GatewayError> {
+    if !state.oauth_exposure.transport_enabled(provider) {
+        return Err(GatewayError::not_found("OAuth provider unavailable"));
+    }
+    Ok(())
+}
+
+pub(super) fn browser_handoff(
+    state: &AppState,
+    provider: crate::application::dto::facade_dto::IdentityProviderDto,
+    target: &str, status: &str, refresh: Option<&str>,
+) -> Result<Response, GatewayError> {
+    if !matches!(status, "success" | "denied" | "error")
+        || super::oauth_return_target(Some(target)) != target
+        || (status == "success") != refresh.is_some()
+    { return Err(GatewayError::Internal(anyhow::anyhow!("Invalid OAuth handoff"))); }
+    let mut headers = HeaderMap::new();
+    if let Some(refresh) = refresh {
+        append_set_cookie(&mut headers, build_refresh_cookie(state, refresh))?;
+    }
+    append_set_cookie(&mut headers, super::clear_bound_oauth_state_cookie(provider))?;
+    // The fixed finite target set needs no URL normalization or arbitrary
+    // escaping. Encode slashes for a literal, credential-free query value.
+    let location = format!("/auth/callback?status={status}&returnTo={}", target.replace('/', "%2F"));
+    headers.insert(axum::http::header::LOCATION, super::header_value(&location)?);
+    let mut response = (StatusCode::SEE_OTHER, headers).into_response();
+    form_post::protect_response(&mut response);
+    Ok(response)
 }
 
 async fn link(
@@ -155,22 +219,12 @@ async fn link(
 }
 
 fn verify_oauth_state(
-    _state: &AppState,
+    state: &AppState,
     provider: crate::application::dto::facade_dto::IdentityProviderDto,
     state_value: &str,
     headers: &HeaderMap,
 ) -> Result<(), GatewayError> {
-    if state_value.trim().is_empty() {
-        return Err(GatewayError::bad_request("OAuth state is required"));
-    }
-    let cookie_name = super::oauth_state_cookie_name(provider);
-    let Some(cookie_value) = resolve_cookie(headers, &cookie_name) else {
-        return Err(GatewayError::bad_request("Invalid OAuth state"));
-    };
-    if cookie_value != state_value {
-        return Err(GatewayError::bad_request("Invalid OAuth state"));
-    }
-    Ok(())
+    super::verify_bound_oauth_state(state, provider, state_value, headers).map(|_| ())
 }
 
 fn reject_query_access_token(params: &HashMap<String, String>) -> Result<(), GatewayError> {

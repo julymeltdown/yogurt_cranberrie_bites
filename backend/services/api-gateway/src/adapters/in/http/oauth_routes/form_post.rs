@@ -18,15 +18,17 @@ const MAX_STATE_BYTES: usize = 512;
 struct CallbackForm {
     code: String,
     state: String,
+    error: Option<&'static str>,
 }
 
-pub(super) async fn receive(Path(provider): Path<String>, request: Request) -> Response {
-    let mut response = receive_inner(provider, request).await.into_response();
+pub(super) async fn receive(State(state): State<Arc<AppState>>, Path(provider): Path<String>, request: Request) -> Response {
+    let mut response = receive_inner(state, provider, request).await.into_response();
     protect_response(&mut response);
     response
 }
 
-async fn receive_inner(provider: String, request: Request) -> Result<Response, GatewayError> {
+async fn receive_inner(state: Arc<AppState>, provider: String, request: Request) -> Result<Response, GatewayError> {
+    require_transport(&state, &provider)?;
     require_apple(&provider)?;
     let form = read_form(request, true).await?;
     let mut random = [0_u8; 24];
@@ -34,16 +36,20 @@ async fn receive_inner(provider: String, request: Request) -> Result<Response, G
         .fill(&mut random)
         .map_err(|_| GatewayError::Internal(anyhow::anyhow!("OAuth page nonce unavailable")))?;
     let nonce = Base64UrlUnpadded::encode_string(&random);
+    let credential_field = if let Some(error) = form.error {
+        format!("<input type=\"hidden\" name=\"error\" value=\"{}\">", error)
+    } else {
+        format!("<input type=\"hidden\" name=\"code\" value=\"{}\">", escape_attribute(&form.code))
+    };
     let page = format!(
         "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\">\
          <title>Complete sign-in</title></head><body>\
          <form id=\"oauth-completion\" method=\"post\" action=\"/auth/oauth/apple/callback/complete\">\
-         <input type=\"hidden\" name=\"code\" value=\"{}\">\
+         {credential_field}\
          <input type=\"hidden\" name=\"state\" value=\"{}\">\
          <button type=\"submit\">Continue sign-in</button></form>\
          <script nonce=\"{nonce}\">document.getElementById('oauth-completion').submit();</script>\
          </body></html>",
-        escape_attribute(&form.code),
         escape_attribute(&form.state),
     );
     let mut response = Html(page).into_response();
@@ -74,11 +80,20 @@ async fn complete_inner(
     provider: String,
     request: Request,
 ) -> Result<Response, GatewayError> {
+    require_transport(&state, &provider)?;
     let provider = require_apple(&provider)?;
     let headers = request.headers().clone();
+    let origins: Vec<_> = headers.get_all(header::ORIGIN).iter().collect();
+    if origins.len() != 1 || origins[0].to_str().ok() != state.oauth_exposure.browser_origin()
+        || request.uri().query().is_some()
+    { return Err(GatewayError::forbidden("Invalid OAuth completion origin")); }
     reject_ambiguous_state_cookie(&headers)?;
     let form = read_form(request, false).await?;
-    verify_oauth_state(&state, provider, &form.state, &headers)?;
+    let target = super::super::verify_bound_oauth_state(&state, provider, &form.state, &headers)?;
+    if let Some(error) = form.error {
+        return browser_handoff(&state, provider, &target,
+            if error == "access_denied" { "denied" } else { "error" }, None);
+    }
     // The owning Auth service consumes provider/state atomically before code
     // exchange. A timeout is uncertain and must not trigger an automatic retry.
     let response = state
@@ -90,25 +105,11 @@ async fn complete_inner(
             client_ip(&headers),
             user_agent(&headers),
         )
-        .await
-        .map_err(map_service_error)?;
-    let mut response_headers = HeaderMap::new();
-    append_set_cookie(
-        &mut response_headers,
-        build_refresh_cookie(&state, &response.refresh_token),
-    )?;
-    append_set_cookie(
-        &mut response_headers,
-        clear_oauth_state_cookie(&state, provider),
-    )?;
-    let mut response = (
-        StatusCode::OK,
-        response_headers,
-        Json(strip_refresh_token(response)),
-    )
-        .into_response();
-    protect_response(&mut response);
-    Ok(response)
+        .await;
+    match response {
+        Ok(response) => browser_handoff(&state, provider, &target, "success", Some(&response.refresh_token)),
+        Err(_) => browser_handoff(&state, provider, &target, "error", None),
+    }
 }
 
 fn require_apple(provider: &str) -> Result<IdentityProviderDto, GatewayError> {
@@ -137,7 +138,7 @@ async fn read_form(
         .map_err(|_| GatewayError::bad_request("Expected a URL-encoded OAuth form"))?;
     let mut values = HashMap::new();
     for (name, value) in fields {
-        let allowed = matches!(name.as_str(), "code" | "state")
+        let allowed = matches!(name.as_str(), "code" | "state" | "error")
             || (provider_response
                 && matches!(
                     name.as_str(),
@@ -149,24 +150,24 @@ async fn read_form(
             ));
         }
     }
-    if values.contains_key("error") || values.contains_key("error_description") {
-        // Do not reflect arbitrary provider error text, consume state, or alter
-        // the browser's cookie when authorization was cancelled or denied.
-        return Err(GatewayError::bad_request(
-            "OAuth authorization was not completed",
-        ));
-    }
+    let error = values.remove("error").map(|value| if value == "access_denied" {
+        "access_denied"
+    } else { "provider_error" });
+    if error.is_some() && values.contains_key("code")
+        || error.is_none() && values.contains_key("error_description")
+    { return Err(GatewayError::bad_request("Ambiguous OAuth callback form")); }
     let code = values.remove("code").unwrap_or_default();
     let state = values.remove("state").unwrap_or_default();
     for (value, limit) in [(&code, MAX_CODE_BYTES), (&state, MAX_STATE_BYTES)] {
-        if value.trim().is_empty() || value.len() > limit || value.chars().any(char::is_control) {
+        if (value.trim().is_empty() && !(error.is_some() && limit == MAX_CODE_BYTES))
+            || value.len() > limit || value.chars().any(char::is_control) {
             return Err(GatewayError::bad_request("Invalid OAuth code or state"));
         }
     }
-    Ok(CallbackForm { code, state })
+    Ok(CallbackForm { code, state, error })
 }
 
-fn validate_encoding(bytes: &[u8]) -> Result<(), GatewayError> {
+pub(super) fn validate_encoding(bytes: &[u8]) -> Result<(), GatewayError> {
     // URL form decoders may tolerate invalid percent escapes or replace invalid
     // UTF-8. Reject both instead of accepting an altered credential.
     let mut decoded = Vec::with_capacity(bytes.len());

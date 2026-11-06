@@ -26,6 +26,7 @@ fn config(origins: Vec<String>) -> AppConfig {
         notification_grpc_endpoint: "http://127.0.0.1:50054".into(),
         post_grpc_endpoint: "http://127.0.0.1:50055".into(),
         refresh_cookie_domain: String::new(),
+        oauth_exposure: crate::config::OAuthExposurePolicy::default(),
         refresh_cookie_secure: false,
         refresh_cookie_max_age_seconds: 1209600,
         aggregation_cache_ttl_seconds: 30,
@@ -288,9 +289,9 @@ async fn external_quota_pool_preserves_restricted_shared_budgets_and_timeouts() 
 {
     use crate::domain::admission::AdmissionOutcome;
 
-    let (pg, owner_url) = test_support::postgres::start_postgres_with_url().await?;
+    let (pg, owner_url) = test_support::postgres::start_postgres_with_url_or_native().await?;
     let owner = test_support::postgres::with_startup_diagnostics(
-        Some(&pg),
+        pg.as_ref(),
         "Gateway quota acceptance owner",
         async {
             Ok(PgPoolOptions::new()
@@ -420,6 +421,8 @@ async fn external_quota_pool_preserves_restricted_shared_budgets_and_timeouts() 
     quota.close().await;
     peer.close().await;
     owner.close().await;
-    pg.rm().await?;
+    if let Some(container) = pg {
+        container.rm().await?;
+    }
     Ok(())
 }

@@ -343,6 +343,7 @@ fn test_config(jwks_json: &str) -> AppConfig {
         notification_grpc_endpoint: "http://127.0.0.1:50054".into(),
         post_grpc_endpoint: "http://127.0.0.1:50055".into(),
         refresh_cookie_domain: String::new(),
+        oauth_exposure: api_gateway::config::OAuthExposurePolicy::default(),
         refresh_cookie_secure: false,
         refresh_cookie_max_age_seconds: 1209600,
         aggregation_cache_ttl_seconds: 30,

@@ -290,7 +290,10 @@ pub fn router(state: Arc<AppState>) -> Router {
             oauth_routes::protect_form_post_response,
         ))
         .layer(from_fn_with_state(
-            state.browser_auth_origins.clone(),
+            browser_auth::BrowserBoundaryState {
+                origins: state.browser_auth_origins.clone(),
+                oauth: state.oauth_exposure.clone(),
+            },
             browser_auth::boundary,
         ))
         .layer(axum::middleware::from_fn(concert_bootstrap::protect_response))
@@ -607,6 +610,91 @@ pub fn resolve_cookie(headers: &HeaderMap, name: &str) -> Option<String> {
         .filter_map(|segment| segment.trim().split_once('='))
         .find(|(key, _)| *key == name)
         .map(|(_, value)| value.to_owned())
+}
+
+/// OAuth-only destination contract; other authentication return policies are
+/// intentionally independent. Never normalize an untrusted URL into this set.
+pub fn oauth_return_target(value: Option<&str>) -> &'static str {
+    match value {
+        Some("/feed") => "/feed",
+        Some("/me") => "/me",
+        Some("/meet/people") => "/meet/people",
+        _ => "/world",
+    }
+}
+
+pub fn build_bound_oauth_state_cookie(
+    state: &AppState, provider: IdentityProvider, value: &str, target: &str,
+) -> Result<String, GatewayError> {
+    use base64ct::{Base64UrlUnpadded, Encoding};
+    if value.is_empty() || value.len() > 512
+        || !value.bytes().all(|b| b.is_ascii_alphanumeric() || b == b'_' || b == b'-')
+        || oauth_return_target(Some(target)) != target
+    {
+        return Err(GatewayError::bad_request("Invalid OAuth authorization state"));
+    }
+    let secret = state.oauth_exposure.signing_key()
+        .ok_or_else(|| GatewayError::not_found("OAuth transport unavailable"))?;
+    let key = ring::hmac::Key::new(ring::hmac::HMAC_SHA256, secret);
+    let payload = format!("v1.{}.{}.{}", Utc::now().timestamp(),
+        Base64UrlUnpadded::encode_string(value.as_bytes()),
+        Base64UrlUnpadded::encode_string(target.as_bytes()));
+    let message = format!("mcr.oauth.state-return.v1\0{}\0{}", provider_name(provider), payload);
+    let signature = ring::hmac::sign(&key, message.as_bytes());
+    Ok(format!("{}={}.{}; HttpOnly; Secure; Path=/; SameSite=Lax; Max-Age=600",
+        oauth_state_cookie_name(provider), payload,
+        Base64UrlUnpadded::encode_string(signature.as_ref())))
+}
+
+pub fn clear_bound_oauth_state_cookie(provider: IdentityProvider) -> String {
+    format!("{}=; HttpOnly; Secure; Path=/; SameSite=Lax; Max-Age=0",
+        oauth_state_cookie_name(provider))
+}
+
+/// One provider cookie across every Cookie field, authenticated before its
+/// state/return metadata is used. General refresh-cookie parsing is unchanged.
+pub fn verify_bound_oauth_state(
+    state: &AppState, provider: IdentityProvider, query_state: &str, headers: &HeaderMap,
+) -> Result<String, GatewayError> {
+    use base64ct::{Base64UrlUnpadded, Encoding};
+    let invalid = || GatewayError::bad_request("Invalid OAuth state");
+    if query_state.is_empty() || query_state.len() > 512
+        || !query_state.bytes().all(|b| b.is_ascii_alphanumeric() || b == b'_' || b == b'-')
+    { return Err(invalid()); }
+    let name = oauth_state_cookie_name(provider);
+    let mut found = None;
+    for header in headers.get_all(COOKIE) {
+        let header = header.to_str().map_err(|_| invalid())?;
+        if header.len() > 16 * 1024 { return Err(invalid()); }
+        for segment in header.split(';') {
+            if let Some((key, value)) = segment.trim().split_once('=') {
+                if key == name {
+                    if found.is_some() || value.is_empty() || value.len() > 2048 {
+                        return Err(invalid());
+                    }
+                    found = Some(value);
+                }
+            }
+        }
+    }
+    let value = found.ok_or_else(invalid)?;
+    let (payload, signature) = value.rsplit_once('.').ok_or_else(invalid)?;
+    let secret = state.oauth_exposure.signing_key().ok_or_else(invalid)?;
+    let key = ring::hmac::Key::new(ring::hmac::HMAC_SHA256, secret);
+    let signature = Base64UrlUnpadded::decode_vec(signature).map_err(|_| invalid())?;
+    let message = format!("mcr.oauth.state-return.v1\0{}\0{}", provider_name(provider), payload);
+    ring::hmac::verify(&key, message.as_bytes(), &signature).map_err(|_| invalid())?;
+    let fields: Vec<_> = payload.split('.').collect();
+    if fields.len() != 4 || fields[0] != "v1" { return Err(invalid()); }
+    let issued: i64 = fields[1].parse().map_err(|_| invalid())?;
+    let now = Utc::now().timestamp();
+    if issued > now || issued < now.saturating_sub(600) { return Err(invalid()); }
+    let actual_state = Base64UrlUnpadded::decode_vec(fields[2]).map_err(|_| invalid())?;
+    if actual_state.as_slice() != query_state.as_bytes() { return Err(invalid()); }
+    let target = String::from_utf8(Base64UrlUnpadded::decode_vec(fields[3]).map_err(|_| invalid())?)
+        .map_err(|_| invalid())?;
+    if oauth_return_target(Some(&target)) != target { return Err(invalid()); }
+    Ok(target)
 }
 
 const MAX_QUERY_STRING_BYTES: usize = 8 * 1024;

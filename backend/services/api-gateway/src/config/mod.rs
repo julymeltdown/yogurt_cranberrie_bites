@@ -276,6 +276,151 @@ fn validate_portal_url(name: &str, value: &str, production: bool) -> anyhow::Res
     Ok(uri.to_string())
 }
 
+/// OAuth transport is off unless a complete, explicitly private fixture is
+/// configured. Public exposure remains closed until joint browser qualification.
+#[derive(Clone, Default)]
+pub struct OAuthExposurePolicy {
+    providers: Vec<String>,
+    signing_key: Option<Arc<[u8]>>,
+    browser_origin: Option<String>,
+}
+
+impl std::fmt::Debug for OAuthExposurePolicy {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("OAuthExposurePolicy")
+            .field("controlled_provider_count", &self.providers.len())
+            .field("public_handoff_qualified", &false)
+            .finish_non_exhaustive()
+    }
+}
+
+impl OAuthExposurePolicy {
+    fn from_env(mode: RuntimeMode) -> anyhow::Result<Self> {
+        let public = env_or("GATEWAY_OAUTH_ENABLED_PROVIDERS", "");
+        let controlled = env_or("GATEWAY_OAUTH_CONTROLLED_PROVIDERS", "");
+        let key = std::env::var("GATEWAY_OAUTH_HANDOFF_HMAC_KEY").ok();
+        let origin = std::env::var("GATEWAY_OAUTH_BROWSER_ORIGIN").ok();
+        Self::from_settings(mode, &public, &controlled, key, origin)
+    }
+
+    /// Parse the same bounded settings used by startup. This never enables a
+    /// public provider or permits controlled transport in production.
+    pub fn from_settings(mode: RuntimeMode, public: &str, controlled: &str,
+        key: Option<String>, origin: Option<String>) -> anyhow::Result<Self> {
+        // A provider secret, requested provider name or claimed profile is not
+        // evidence that the matching frontend handoff has been qualified.
+        if !public.trim().is_empty() {
+            anyhow::bail!("Public OAuth HANDOFF_NOT_QUALIFIED");
+        }
+        if controlled.trim().is_empty() {
+            if key.is_some() || origin.is_some() {
+                anyhow::bail!("Incomplete OAuth transport configuration");
+            }
+            return Ok(Self::default());
+        }
+        if mode != RuntimeMode::Parity {
+            anyhow::bail!("Controlled OAuth transport is forbidden in production");
+        }
+        let mut providers = Vec::new();
+        for provider in controlled.split(',') {
+            let provider = provider.trim().to_ascii_lowercase();
+            if !matches!(provider.as_str(), "google" | "apple" | "x")
+                || providers.contains(&provider)
+            {
+                anyhow::bail!("Unknown or duplicate controlled OAuth provider");
+            }
+            providers.push(provider);
+        }
+        let key = key.filter(|value| value.len() >= 32 && value.len() <= 4096)
+            .ok_or_else(|| anyhow::anyhow!("OAuth signing key must contain 32 to 4096 bytes"))?;
+        let origin = origin.ok_or_else(|| anyhow::anyhow!("OAuth browser origin required"))?;
+        let parsed: axum::http::Uri = origin.parse()
+            .map_err(|_| anyhow::anyhow!("Invalid OAuth browser origin"))?;
+        let loopback = matches!(parsed.host(), Some("localhost" | "127.0.0.1" | "[::1]" | "::1"));
+        if parsed.authority().is_none() || origin.contains('@') || origin.ends_with('/')
+            || parsed.query().is_some() || parsed.path() != "/"
+            || !(parsed.scheme_str() == Some("https")
+                || (parsed.scheme_str() == Some("http") && loopback))
+        {
+            anyhow::bail!("OAuth origin must be an exact HTTPS origin or controlled loopback origin");
+        }
+        Ok(Self { providers, signing_key: Some(Arc::from(key.into_bytes())), browser_origin: Some(origin) })
+    }
+
+    pub fn has_transport(&self) -> bool { !self.providers.is_empty() }
+
+    pub fn transport_enabled(&self, provider: &str) -> bool {
+        self.providers.iter().any(|value| value == provider)
+    }
+
+    pub fn public_enabled(&self, _provider: &str) -> bool {
+        // Unfinished joint FE/backend qualification is an explicit release
+        // prerequisite. There is deliberately no operator boolean bypass.
+        false
+    }
+
+    pub(crate) fn signing_key(&self) -> Option<&[u8]> { self.signing_key.as_deref() }
+    pub(crate) fn browser_origin(&self) -> Option<&str> { self.browser_origin.as_deref() }
+
+    fn validate_settings(&self, secure: bool, domain: &str, origins: &[String], admission_key: &str) -> anyhow::Result<()> {
+        if self.has_transport() {
+            if !secure || !domain.is_empty() || !origins.iter().any(|origin| Some(origin.as_str()) == self.browser_origin()) {
+                anyhow::bail!("OAuth requires Secure cookies and its exact configured browser origin");
+            }
+            if self.signing_key() == Some(admission_key.as_bytes()) {
+                anyhow::bail!("OAuth signing key must be independent of the admission key");
+            }
+        }
+        Ok(())
+    }
+}
+
+#[cfg(test)]
+mod oauth_exposure_tests {
+    use super::{OAuthExposurePolicy, RuntimeMode};
+
+    fn controlled(mode: RuntimeMode, providers: &str) -> anyhow::Result<OAuthExposurePolicy> {
+        OAuthExposurePolicy::from_settings(mode, "", providers,
+            Some("unit-only-independent-handoff-key-32bytes".into()),
+            Some("https://mcr.example.test".into()))
+    }
+
+    #[test]
+    fn absent_settings_keep_every_transport_and_capability_off() {
+        let policy = OAuthExposurePolicy::from_settings(RuntimeMode::Production, "", "", None, None).unwrap();
+        assert!(!policy.has_transport());
+        for provider in ["google", "apple", "x"] {
+            assert!(!policy.transport_enabled(provider));
+            assert!(!policy.public_enabled(provider));
+        }
+    }
+
+    #[test]
+    fn public_or_incomplete_or_production_fixture_settings_fail_closed() {
+        assert!(OAuthExposurePolicy::from_settings(RuntimeMode::Production, "google", "", None, None).is_err());
+        assert!(controlled(RuntimeMode::Production, "google").is_err());
+        assert!(controlled(RuntimeMode::Parity, "google,google").is_err());
+        assert!(controlled(RuntimeMode::Parity, "naver").is_err());
+        assert!(OAuthExposurePolicy::from_settings(RuntimeMode::Parity, "", "google", None, None).is_err());
+        assert!(OAuthExposurePolicy::from_settings(RuntimeMode::Parity, "", "", Some("unused".into()), None).is_err());
+    }
+
+    #[test]
+    fn controlled_transport_never_advertises_public_readiness_and_requires_cookie_origin_policy() {
+        let policy = controlled(RuntimeMode::Parity, "google,apple").unwrap();
+        assert!(policy.transport_enabled("google"));
+        assert!(!policy.transport_enabled("x"));
+        assert!(!policy.public_enabled("google"));
+        let origins = vec!["https://mcr.example.test".to_owned()];
+        assert!(policy.validate_settings(true, "", &origins, "different-admission-key").is_ok());
+        assert!(policy.validate_settings(false, "", &origins, "different").is_err());
+        assert!(policy.validate_settings(true, ".example.test", &origins, "different").is_err());
+        assert!(policy.validate_settings(true, "", &[], "different").is_err());
+        assert!(policy.validate_settings(true, "", &origins, "unit-only-independent-handoff-key-32bytes").is_err());
+        assert!(!format!("{policy:?}").contains("unit-only-independent"));
+    }
+}
+
 #[derive(Clone)]
 pub struct AppConfig {
     pub http_addr: SocketAddr,
@@ -315,6 +460,7 @@ pub struct AppConfig {
     pub notification_grpc_endpoint: String,
     pub post_grpc_endpoint: String,
     pub refresh_cookie_domain: String,
+    pub oauth_exposure: OAuthExposurePolicy,
     pub refresh_cookie_secure: bool,
     pub refresh_cookie_max_age_seconds: i64,
     pub aggregation_cache_ttl_seconds: u64,
@@ -502,6 +648,7 @@ impl AppConfig {
             ),
             post_grpc_endpoint: env_or("GATEWAY_POST_GRPC_ENDPOINT", "http://127.0.0.1:50055"),
             refresh_cookie_domain: env_or("GATEWAY_REFRESH_COOKIE_DOMAIN", ""),
+            oauth_exposure: OAuthExposurePolicy::from_env(runtime_mode)?,
             refresh_cookie_secure: parse_bool_setting(
                 "GATEWAY_REFRESH_COOKIE_SECURE",
                 &env_or("GATEWAY_REFRESH_COOKIE_SECURE", "false"),
@@ -617,6 +764,8 @@ impl AppConfig {
     }
 
     pub fn validate(&self) -> anyhow::Result<()> {
+        self.oauth_exposure.validate_settings(self.refresh_cookie_secure, &self.refresh_cookie_domain,
+            &self.cors_allowed_origins, &self.admission_hmac_key)?;
         let production = matches!(self.runtime_mode, RuntimeMode::Production);
         if !self.admission_hmac_key.is_empty()
             && !(32..=4096).contains(&self.admission_hmac_key.len())
@@ -835,6 +984,7 @@ pub struct AppState {
     pub concert_participant_client:
         Option<Arc<crate::adapters::out::concert_participant::GrpcConcertParticipantClient>>,
     pub auth_service: AuthGatewayService,
+    pub oauth_exposure: OAuthExposurePolicy,
     pub enrollment_policy: Arc<dyn crate::application::enrollment_policy::EnrollmentPolicyPort>,
     pub profile_service: ProfileGatewayService,
     pub friend_service: FriendGatewayService,
@@ -1859,6 +2009,7 @@ async fn build_state_with_clients_and_moderation_with_metrics(
             runtime.clone(),
         ),
         auth_service: AuthGatewayService::new(auth_client),
+        oauth_exposure: config.oauth_exposure.clone(),
         enrollment_policy: Arc::new(crate::adapters::out::enrollment_policy::GrpcEnrollmentClient::connect(
             &config.auth_grpc_endpoint, &config.outbound_identity, config.tls_material.as_ref(),
             config.actor_delegation_signer.clone(), metrics.clone(),

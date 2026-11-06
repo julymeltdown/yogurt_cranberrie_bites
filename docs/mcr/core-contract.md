@@ -122,12 +122,32 @@ configuration may override this policy. This allows the required email flow and
 core consumers to implement against a frozen contract without inventing OAuth
 behavior. It is not a permanent removal of optional configured providers.
 
-OAuth navigation currently returns JSON, and Apple's intermediate form posts to
-absolute `/auth/oauth/apple/callback/complete`. A same-origin edge must preserve
-that callback route or adapt its form action. Choose and qualify the SPA callback
-handoff, explicit allowed return targets, account-link binding and error recovery
-before enabling providers. Never put bearer tokens in a redirect URL. The draft
-retains exact source callback schemas and marks their browser exposure disabled.
+The BE03/FE OAuth owners selected a cookie-only same-origin browser handoff:
+303 to relative `/auth/callback` with exactly one `status` in
+`success|denied|error` and at most one `returnTo`. No fragment, extra/duplicate
+keys, bearer, code, state or provider text enters that redirect. The OAuth-only
+return set is exactly `/world`, `/feed`, `/me`, `/meet/people`; absent or unsafe
+input falls back to `/world`. The backend authenticates the sanitized target,
+provider, issue time and actual Auth state in one host-only Secure HttpOnly
+SameSite=Lax ten-minute cookie before exchange. Callback return parameters never
+override it. Verified denial clears state without exchange or identity change;
+uncertain exchange yields error and clears state without automatic retry.
+
+Apple's bounded intermediate form retains absolute self-origin
+`/auth/oauth/apple/callback/complete`; only its configured, Origin-checked and
+signed-state-checked completion may exchange. Successful completion sets the
+existing protected refresh cookie and clears state before 303. The frontend
+scrubs the callback first; only success may trigger one canonical cookie
+`POST /api/auth/refresh`. Status is untrusted presentation: actual decoded Auth
+identity, generation fencing, memory/privacy cleanup and canonical admission
+determine authority. Denied/error and malformed callback fields never refresh
+or adopt identity. Linking remains unmounted pending its separate contract.
+
+This is a selected wire contract, not qualification evidence. Production/public
+OAuth remains disabled until the matching frontend/backend flow is genuinely
+qualified. An explicitly configured parity-only controlled transport may exercise
+the same handlers with capabilities still false; it does not qualify public
+exposure, real external-provider sign-in or the complete original BE03 task.
 
 The new schemas are target obligations. Source auth response caching, origin
 checks, actual MCR ingress and producer schema corrections remain unimplemented.
