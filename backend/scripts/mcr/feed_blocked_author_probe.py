@@ -13,7 +13,8 @@ enrollment HTTP used by the IN03 social gate, then drives only:
   profile owner stopped
   carol feed -> 503, so a real owner outage still fails closed
 
-The report records every status, body and durable row actually observed.
+The report records every status, body and durable row actually observed, plus
+the gateway request timeout and the SHA-256 of every binary it exercised.
 
 On a base without the Social retain-order fix, the block and unblock HTTP
 projections return 503 while still committing the pair row. This probe therefore
@@ -23,6 +24,7 @@ the feed; the feed itself is the subject under test.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import http.client
 import json
 import secrets
@@ -42,6 +44,16 @@ import world_in01_live as world  # noqa: E402
 import world_in01_prepare as prep  # noqa: E402
 
 ROLES = ("alice", "bob", "carol")
+BINARIES = ("api-gateway", "auth-service", "concert-service", "friend-service",
+            "notification-service", "post-service", "profile-service")
+
+
+def file_digest(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as stream:
+        for chunk in iter(lambda: stream.read(1 << 20), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
 
 
 class ProbeFailure(RuntimeError):
@@ -103,6 +115,9 @@ def main(argv=None):
                         default=Path("/opt/homebrew/bin/redis-server"))
     parser.add_argument("--openssl-binary", type=Path,
                         default=Path("/opt/homebrew/bin/openssl"))
+    parser.add_argument("--gateway-timeout-ms", type=int, default=5000,
+                        help="gateway outer request timeout; the 1 s default "
+                             "flakes on multi-author reads")
     args = parser.parse_args(argv)
 
     root = Path(__file__).resolve().parents[3]
@@ -116,6 +131,13 @@ def main(argv=None):
             "revision": migration.execute(
                 ["/usr/bin/git", "rev-parse", "HEAD"],
                 env={"PATH": "/usr/bin:/bin"}, cwd=root, phase="revision").stdout.strip(),
+            "script_sha256": file_digest(Path(__file__)),
+            "gateway_request_timeout_ms": args.gateway_timeout_ms,
+            "binaries": {
+                name: {"sha256": file_digest(args.bin_dir / name),
+                       "bytes": (args.bin_dir / name).stat().st_size}
+                for name in BINARIES
+            },
         },
         "started_at_utc": datetime.now(timezone.utc).isoformat(),
         "steps": {},
@@ -267,6 +289,7 @@ def main(argv=None):
             CONCERT_POST_READ_VERIFYING_KEYS=post_read[1],
             POST_CONCERT_ROOT_READ_SIGNING_SEED=post_callback[0],
         )
+        envs["api-gateway"]["GATEWAY_REQUEST_TIMEOUT_MS"] = str(args.gateway_timeout_ms)
         inspected = migration.execute(
             [str(args.bin_dir / "concert-service"), "--inspect-product-release"],
             env=envs["concert-service"], cwd=cluster.root, phase="probe-release-inspection",
@@ -291,6 +314,7 @@ def main(argv=None):
             "services": descriptor["services"],
             "event": event,
             "release_digest": state["digest"],
+            "gateway_request_timeout_ms": args.gateway_timeout_ms,
             "readiness": {name: stack.rows[name].get("readiness") for name in stack.rows},
             "owned_root": descriptor["root"],
             "mail": "private local HTTP capture",

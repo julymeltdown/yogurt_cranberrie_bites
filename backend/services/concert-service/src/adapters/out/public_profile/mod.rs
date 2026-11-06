@@ -415,6 +415,111 @@ mod tests {
         assert_eq!(feed_error(unavailable()), FeedError::DependencyUnavailable);
     }
 
+    #[tokio::test]
+    async fn blocked_pair_row_at_the_call_site_is_a_not_found_denial() {
+        let url = std::env::var("CONCERT_CONSUMER_TEST_URL")
+            .expect("owned public-profile test database required");
+        let pool = sqlx::postgres::PgPoolOptions::new()
+            .max_connections(2)
+            .connect(&url)
+            .await
+            .expect("owned public-profile test database");
+        let event = uuid::Uuid::new_v4();
+        let actor = uuid::Uuid::new_v4();
+        let subject = uuid::Uuid::new_v4();
+        let (low, high) = if actor <= subject {
+            (actor, subject)
+        } else {
+            (subject, actor)
+        };
+        sqlx::query(
+            "insert into concert_events(event_id,slug,title,phase) values($1,$2,'Blocked pair test','OPEN')",
+        )
+        .bind(event)
+        .bind(format!("blocked-{event}"))
+        .execute(&pool)
+        .await
+        .unwrap();
+        for user in [actor, subject] {
+            sqlx::query(
+                "insert into concert_event_admissions(event_id,user_id,state) values($1,$2,'ACTIVE')",
+            )
+            .bind(event)
+            .bind(user)
+            .execute(&pool)
+            .await
+            .unwrap();
+            sqlx::query(
+                "insert into concert_participants(event_id,user_id,theme,low_power,reduced_motion,sound_enabled) values($1,$2,'REVENGE',false,false,false)",
+            )
+            .bind(event)
+            .bind(user)
+            .execute(&pool)
+            .await
+            .unwrap();
+        }
+        let mut tx = pool.begin().await.unwrap();
+        sqlx::query("select set_config('mcr.relationship_authority_until',(clock_timestamp()+interval '1 minute')::text,true)")
+            .execute(&mut *tx)
+            .await
+            .unwrap();
+        sqlx::query(
+            "insert into concert_relationship_pairs(event_id,low_user,high_user,low_blocks_high) values($1,$2,$3,true)",
+        )
+        .bind(event)
+        .bind(low)
+        .bind(high)
+        .execute(&mut *tx)
+        .await
+        .unwrap();
+        tx.commit().await.unwrap();
+
+        let mut tx = pool.begin().await.unwrap();
+        let denied = super::local_pair_and_members_in(&mut tx, event, actor, subject)
+            .await
+            .unwrap_err();
+        tx.rollback().await.unwrap();
+        assert_eq!(denied.code(), Code::NotFound);
+        assert_eq!(feed_error(denied), FeedError::ResourceUnavailable);
+
+        let mut tx = pool.begin().await.unwrap();
+        sqlx::query("select set_config('mcr.relationship_authority_until',(clock_timestamp()+interval '1 minute')::text,true)")
+            .execute(&mut *tx)
+            .await
+            .unwrap();
+        sqlx::query(
+            "update concert_relationship_pairs set low_blocks_high=false,revision=revision+1 where event_id=$1 and low_user=$2 and high_user=$3",
+        )
+        .bind(event)
+        .bind(low)
+        .bind(high)
+        .execute(&mut *tx)
+        .await
+        .unwrap();
+        tx.commit().await.unwrap();
+
+        let mut tx = pool.begin().await.unwrap();
+        assert!(
+            super::local_pair_and_members_in(&mut tx, event, actor, subject)
+                .await
+                .is_ok()
+        );
+        tx.rollback().await.unwrap();
+
+        for statement in [
+            "delete from concert_relationship_pairs where event_id=$1",
+            "delete from concert_participants where event_id=$1",
+            "delete from concert_event_admissions where event_id=$1",
+            "delete from concert_events where event_id=$1",
+        ] {
+            sqlx::query(statement)
+                .bind(event)
+                .execute(&pool)
+                .await
+                .unwrap();
+        }
+    }
+
     #[test]
     fn guard_or_transport_failure_cannot_become_a_skippable_author() {
         for code in [
