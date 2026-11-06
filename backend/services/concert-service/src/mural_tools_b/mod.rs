@@ -1,5 +1,6 @@
 //! Wall B extends the incumbent PostgreSQL mural and the original canonical scope.
 mod authority;
+pub mod deletion;
 pub mod protocol;
 mod repository;
 mod runtime;

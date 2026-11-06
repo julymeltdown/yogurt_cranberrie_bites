@@ -1,4 +1,5 @@
 //! BE24 durable producer adapter. HTTP composition and real fenced authority are injected.
+pub mod account_private_data;
 pub mod body;
 pub mod codec;
 use super::repository::receipt::{CommandProducer, PgCommandRepository};

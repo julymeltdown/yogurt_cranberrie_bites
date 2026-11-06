@@ -157,10 +157,19 @@ async fn aggregate_native() -> Result<()> {
     // the sole owner round. The restart process opens a fresh pool and only
     // projects/replays the durable receipt; it must not invoke the owner again.
     if !fenced {
-        let result = coordinator
-            .apply(c.clone(), Instant::now() + WallDuration::from_secs(4))
-            .await;
-        anyhow::ensure!(matches!(result, Err(DeletionFailure::Incomplete)));
+        for expected_cursor in 0..PrivateDataCategory::ALL.len() {
+            let result = coordinator
+                .apply(c.clone(), Instant::now() + WallDuration::from_secs(4))
+                .await;
+            anyhow::ensure!(matches!(result, Err(DeletionFailure::Incomplete)));
+            let cursor: i32 = sqlx::query_scalar(
+                "select next_category from concert_private_data_owner_progress where user_id=$1",
+            )
+            .bind(user)
+            .fetch_one(&p)
+            .await?;
+            anyhow::ensure!(cursor == expected_cursor as i32 + 1);
+        }
     }
     let common_fence_count: i64 = sqlx::query_scalar(
         "select count(*) from concert_world_account_deletion_fences where user_id=$1 and saga_id=$2",
@@ -385,6 +394,18 @@ async fn aggregate_native() -> Result<()> {
         let core: Arc<dyn PrivateDataCategoryOwner> = Arc::new(CorePrivateDataOwner::new(
             PrivateDataCoreDeletion::new(p.clone(), cancel_authority.clone()),
         ));
+        let core_only = PrivateDataAggregateCoordinator::new(
+            p.clone(),
+            cancel_authority.clone(),
+            PrivateDataCategoryOwners::core_only(core.clone()),
+        );
+        let core_result = core_only
+            .apply(
+                cancel_command.clone(),
+                Instant::now() + WallDuration::from_secs(4),
+            )
+            .await;
+        anyhow::ensure!(matches!(core_result, Err(DeletionFailure::Incomplete)));
         let cancel: Arc<dyn PrivateDataCategoryOwner> = Arc::new(CancelOwner { pool: p.clone() });
         let owners = PrivateDataCategoryOwners::new([
             (PrivateDataCategory::CorePreferencesAndAvatar, core),

@@ -1,5 +1,6 @@
 //! BE09/BE19 internal adapters. Public routing and production authority composition are separate.
 pub mod beacon;
+pub mod account_deletion;
 pub mod commands;
 
 use async_trait::async_trait;

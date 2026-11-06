@@ -271,6 +271,12 @@ pub(crate) async fn gate<A: MuralAuthority>(
     if !actor.valid() {
         return Err(MuralError::InvalidInput);
     }
+    if !crate::mural_tools_b::deletion::fence_writer_in(c, actor.actor)
+        .await
+        .map_err(storage)?
+    {
+        return Err(MuralError::Denied);
+    }
     let phase: Option<String> =
         sqlx::query_scalar("select phase from public.concert_events where event_id=$1 for share")
             .bind(actor.event)
