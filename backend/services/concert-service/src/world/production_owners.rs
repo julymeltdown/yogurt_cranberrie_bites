@@ -29,6 +29,12 @@ use uuid::Uuid;
 fn unavailable(_: impl std::fmt::Debug) -> WorldError {
     WorldError::Unavailable
 }
+/// A publication window that closes during a tick defers that tick. It is not a
+/// service failure: the previous lease is already paused and no authority is
+/// published, so the next presence read establishes a fresh window.
+fn window_open(until: DateTime<Utc>, now: DateTime<Utc>) -> bool {
+    until > now
+}
 fn avatar(row: &PgRow) -> Result<(Revision, AvatarSelection), WorldError> {
     Ok((
         Revision::new(row.try_get("revision").map_err(unavailable)?).map_err(unavailable)?,
@@ -283,7 +289,7 @@ impl ProductionOwners {
         self.pause().await?;
         let plans: Vec<_> = {
             let mut plans = self.plans.lock().map_err(unavailable)?;
-            plans.retain(|_, p| p.parent.check().is_ok() && p.until > Utc::now());
+            plans.retain(|_, p| p.parent.check().is_ok() && window_open(p.until, Utc::now()));
             plans.values().cloned().collect()
         };
         if plans.is_empty() {
@@ -294,10 +300,11 @@ impl ProductionOwners {
             .map(|p| p.parent.deadline().stop())
             .min()
             .ok_or(WorldError::Unavailable)?;
-        let mut tx = tokio::time::timeout_at(stop, self.pool.begin())
-            .await
-            .map_err(unavailable)?
-            .map_err(unavailable)?;
+        let mut tx = match tokio::time::timeout_at(stop, self.pool.begin()).await {
+            Ok(Ok(tx)) => tx,
+            Ok(Err(_)) => return Err(WorldError::Unavailable),
+            Err(_) => return Ok(()),
+        };
         sqlx::query("set local lock_timeout='200ms'")
             .execute(&mut *tx)
             .await
@@ -309,9 +316,14 @@ impl ProductionOwners {
         let mut requests = BTreeSet::new();
         let mut until: Option<DateTime<Utc>> = None;
         for plan in &plans {
-            let valid = tokio::time::timeout_at(stop, Box::pin(self.hold_plan(&mut tx, plan)))
-                .await
-                .map_err(|_| WorldError::Unavailable)??;
+            let valid = match tokio::time::timeout_at(stop, Box::pin(self.hold_plan(&mut tx, plan))).await {
+                Ok(Ok(value)) => value,
+                Ok(Err(_)) => return Err(WorldError::Unavailable),
+                Err(_) => {
+                    tx.rollback().await.ok();
+                    return Ok(());
+                }
+            };
             if valid {
                 requests.insert(plan.parent.request_id());
                 until = Some(until.map_or(plan.until, |u| u.min(plan.until)));
@@ -321,7 +333,13 @@ impl ProductionOwners {
             tx.rollback().await.map_err(unavailable)?;
             return Ok(());
         };
-        let remaining = (until - Utc::now()).to_std().map_err(unavailable)?;
+        let remaining = match until.signed_duration_since(Utc::now()).to_std() {
+            Ok(value) => value,
+            Err(_) => {
+                tx.rollback().await.ok();
+                return Ok(());
+            }
+        };
         let stop = stop.min(tokio::time::Instant::now() + remaining);
         let (sender, receiver) = oneshot::channel();
         let lease = Arc::new(Lease {
@@ -333,12 +351,18 @@ impl ProductionOwners {
             rollback_ok: AtomicBool::new(false),
             done: Notify::new(),
         });
-        {
+        let closed = {
             let _f = self.fence.lock().map_err(unavailable)?;
-            if until <= Utc::now() {
-                return Err(WorldError::Unavailable);
+            if window_open(until, Utc::now()) {
+                *self.lease.lock().map_err(unavailable)? = Some(lease.clone());
+                false
+            } else {
+                true
             }
-            *self.lease.lock().map_err(unavailable)? = Some(lease.clone());
+        };
+        if closed {
+            tx.rollback().await.ok();
+            return Ok(());
         }
         let fence = self.fence.clone();
         tokio::spawn(async move {
@@ -555,5 +579,13 @@ mod visibility_pipeline_tests {
         }));
         assert!(tokio::time::timeout_at(original, reads).await.is_err());
         assert_eq!(active.load(Ordering::SeqCst), 0);
+    }
+
+    #[test]
+    fn a_closing_publication_window_defers_instead_of_failing_the_service() {
+        let now = chrono::Utc::now();
+        assert!(super::window_open(now + chrono::Duration::milliseconds(1), now));
+        assert!(!super::window_open(now, now));
+        assert!(!super::window_open(now - chrono::Duration::seconds(1), now));
     }
 }
