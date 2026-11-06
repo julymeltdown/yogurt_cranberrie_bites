@@ -193,8 +193,9 @@ class DevStack:
             self.report["owned_directory"] = str(self.cluster.root)
             migration.qualify(self.cluster, binaries, manifests, self.report)
         self.rows = {row["service"]: row for row in self.report["services"]}
+        kinds = lambda name: ("http", "grpc", "metrics", *runtime.EXTRA_LISTENERS.get(name, ()))
         for name in runtime.start_order():
-            for kind in ("http", "grpc", "metrics"):
+            for kind in kinds(name):
                 self.ports.reserve(f"{name}:{kind}")
         for name in ("redis", "disabled-egress", "mail"):
             self.ports.reserve(name)
@@ -217,7 +218,7 @@ class DevStack:
         for name in order:
             with runtime.protected_signals():
                 child = runtime.Child(self.cluster, name, [str(binaries[name])], envs[name], self.ports,
-                                      tuple(f"{name}:{kind}" for kind in ("http", "metrics", "grpc")), secret_values)
+                                      tuple(f"{name}:{kind}" for kind in kinds(name)), secret_values)
                 self.children[name] = child
                 self.rows[name]["pid"] = child.process.pid
         failures = []

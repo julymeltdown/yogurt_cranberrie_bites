@@ -24,6 +24,7 @@ SmokeError = migration.SmokeError
 START_ORDER = ("profile-service", "notification-service", "friend-service", "post-service",
                "auth-service", "api-gateway")
 SETTLEMENT_DEPENDENT_SERVICES = ("auth-service", "friend-service")
+EXTRA_LISTENERS: dict[str, tuple[str, ...]] = {}
 
 
 def start_order(order=None):
