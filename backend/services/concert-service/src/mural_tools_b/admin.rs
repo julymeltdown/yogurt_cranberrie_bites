@@ -536,6 +536,15 @@ async fn state_in(
     if !(1..=current).contains(&revision) {
         return Err(invalid_state());
     }
+    if revision == current {
+        sqlx::query("insert into public.concert_mural_snapshots(snapshot_id,event_id,revision,state,pixels,palette,created_at) select snapshot_id,event_id,revision,state,pixels,palette,snapshot_created_at from public.concert_mural_state where event_id=$1 on conflict(snapshot_id) do nothing")
+            .bind(event).execute(&mut *c).await.map_err(storage)?;
+        let matches: bool = sqlx::query_scalar("select exists(select 1 from public.concert_mural_snapshots s join public.concert_mural_state m on m.snapshot_id=s.snapshot_id where m.event_id=$1 and (s.event_id,s.revision,s.state,s.pixels,s.palette,s.created_at)=(m.event_id,m.revision,m.state,m.pixels,m.palette,m.snapshot_created_at))")
+            .bind(event).fetch_one(&mut *c).await.map_err(storage)?;
+        if !matches {
+            return Err(invalid_state());
+        }
+    }
     let (state, snapshot_id, revision): (String, Uuid, i64) = if revision == current {
         let row = sqlx::query(
             "select state,snapshot_id,revision from public.concert_mural_state where event_id=$1",
