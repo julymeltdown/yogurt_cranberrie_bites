@@ -35,15 +35,15 @@
 | `corepack pnpm@11.7.0 install --frozen-lockfile --offline` | 0 | 199 packages reused from the shared store |
 | `corepack pnpm@11.7.0 run typecheck` | 0 | `tsc -b` clean |
 | `corepack pnpm@11.7.0 exec vitest run` (10 targeted files) | 0 | 10 files, 239 tests passed |
-| `corepack pnpm@11.7.0 run test` (full suite) | 1 | 5715 passed, 14 skipped; the pre-existing failures are named below |
+| `corepack pnpm@11.7.0 run test` (full suite) | 1 | 5715 passed, 14 skipped, 1 failed (C07) in this checkout; scratch-master observations are below |
 | `corepack pnpm@11.7.0 run lint` | 0 | no warnings in changed files; pre-existing warnings remain |
 | `corepack pnpm@11.7.0 run build` | 0 | Vite build complete |
 | `node e2e/venue-community/inbox-native.mjs` | 0 | PASS at 360/390/430; the fix source commit is recorded in `inbox-native.json` |
 
 ### Pre-existing full-suite failures (out of scope)
 
-The scratch-master failure record at `6cb31ca70` names exactly these three; none is caused by this
-task and none was fixed or suppressed:
+The named pre-existing failures are exactly these three; none is caused by this task and none was
+fixed or suppressed:
 
 1. `src/shared/api/__tests__/c07-social-client/compatibility.test.ts` —
    "pins the exact public cohort without claiming all indexed fixtures are qualified" (C07
@@ -55,10 +55,17 @@ task and none was fixed or suppressed:
    "aborts a pending list read and rejects its late completion across policy change" (the `list`
    parameterized case).
 
-The two sharing-safety tests previously named in this README are **not** in the failure record.
-They pass on scratch master; the full sharing-safety file is 9/9 on this checkout.
+The two abort tests in (2) and (3) are pre-existing timing flakes. The operations-composition suite
+is flaky in isolation: 53/54 then 54/54 across repeated runs.
 
-Scratch-master commands used to check the record:
+Scratch-master observations:
+
+| Checkout | Full suite |
+| --- | --- |
+| `6cb31ca70` | 2 failed / 5712 passed / 14 skipped |
+| `937ab6699` | 3 failed / 5711 passed / 14 skipped (C07 plus the two operations-composition aborts) |
+
+Scratch-master commands used on this host:
 
 ```
 git worktree add --detach /tmp/mcr-scratch-6cb31ca70 6cb31ca70
@@ -68,15 +75,10 @@ cd /tmp/mcr-scratch-6cb31ca70/frontend
 node /Users/lhs/Desktop/mcr-worktrees/exec-w4-inv/frontend/node_modules/vitest/vitest.mjs run
 node /Users/lhs/Desktop/mcr-worktrees/exec-w4-inv/frontend/node_modules/vitest/vitest.mjs run \
   src/app/operations-composition/__tests__/composition.test.tsx \
-  src/app/operations-composition/__tests__/reports-production/composition.test.tsx \
-  src/app/social-composition/__tests__/sharing-safety-default/entry.test.tsx
+  src/app/operations-composition/__tests__/reports-production/composition.test.tsx
 ```
 
-Observed on this host: the scratch-master full suite was 5713 passed, 14 skipped, 1 failed (C07);
-the combined operations/social file run was 54/54, and the sharing-safety file alone was 9/9. The
-operations-composition failures are therefore recorded from the supplied scratch-master full-suite
-review as order/timing-dependent; they are named, reproduced in the record context, and kept out of
-scope. No operations-composition, social-composition, C07 pin or generated contract was modified.
+No operations-composition code, C07 pin or generated contract was modified.
 
 The new tests prove:
 
