@@ -656,7 +656,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   What to do: run LSP diagnostics on every changed file, confirm no skipped/disabled tests and no suppressed errors, and review the diff for scope creep. Evidence `.omo/evidence/mcr-finish-project/f2-quality.md`.
   Recommended task executor category: deep-low
 
-- [ ] F3. Real manual QA on the final candidate
+- [~] F3. Real manual QA on the final candidate
   What to do: execute the end-to-end scenarios for IS-1..IS-4 on the final SHA: two-client world + meetup + pickup, mural convergence, admin report/closure, venue invitation/notes, and the privacy matrix. Evidence `.omo/evidence/mcr-finish-project/f3-manual-qa/`.
   Recommended task executor category: deep-low
 
