@@ -6,7 +6,7 @@ import type {
 import { sameSiteplanIdentity, type LandmarkId } from '../../features/paradise-city-map/spatial/contract'
 import type { PrivacyScope } from '../../shared/query/privacy'
 import {
-  buildNotesRequest, type createNotesClient, type NoteCommand, type NoteLandmarkSelection,
+  buildNotesRequest, NotesApiError, type createNotesClient, type NoteCommand, type NoteLandmarkSelection,
   type NotePage, type NoteThread, type PlaceNote,
 } from '../../shared/api/paradise-city-v1/notes'
 import { notesSchemas } from '../../shared/api/paradise-city-v1/notes.generated'
@@ -14,7 +14,7 @@ import { decodeWire, utcMilliseconds } from '../../shared/api/paradise-city-v1/s
 
 /** A projection of the existing primary port, suitable for the aggregate owner's merge. */
 export type VenueNotesSnapshot = Pick<CapabilitySnapshot,
-  'scope' | 'venue' | 'classification' | 'serverNowMs' | 'accessUntilMs' | 'notes'> & {
+  'scope' | 'venue' | 'classification' | 'serverNowMs' | 'accessUntilMs' | 'notes' | 'noteClusters' | 'notesVisibleCount'> & {
   readonly rights: Pick<CapabilitySnapshot['rights'], 'postNote' | 'noteAudiences' | 'noteExpiries'>
 }
 type Lease = Pick<CapabilitySnapshot, 'scope' | 'venue' | 'accessUntilMs'>
@@ -49,13 +49,16 @@ export interface VenueNotesOptions {
   readonly status: NoteStatusProducer | null
   readonly classification: CapabilitySnapshot['classification']
 }
-type Commands = Pick<VenueCapabilities, 'postNote' | 'reply' | 'resolve'>
+type Commands = Pick<VenueCapabilities, 'postNote' | 'reply' | 'withdraw' | 'resolve'>
 export interface VenueNotesAdapter extends Commands, ReadPort<VenueNotesSnapshot | null> {
   ownsCommand(key: string): boolean
   load(landmarkId: LandmarkId, signal: AbortSignal): Promise<boolean>
   loadThread(noteId: string, signal: AbortSignal): Promise<boolean>
+  loadSummary(signal: AbortSignal): Promise<boolean>
   dispose(): void
 }
+interface ClusterRow { readonly landmarkId: LandmarkId; readonly selection: NoteLandmarkSelection
+  readonly count: number; readonly readAtMs: number; readonly refreshAtMs: number | null }
 const unknown: CommandResult = Object.freeze({ state: 'unknown' })
 const rejected: CommandResult = Object.freeze({ state: 'rejected' })
 const applied: CommandResult = Object.freeze({ state: 'applied' })
@@ -78,10 +81,12 @@ export function createVenueNotesAdapter(options: VenueNotesOptions): VenueNotesA
   const eventId = scope.eventId
   const listeners = new Set<() => void>()
   const ledger = new Map<string, { binding: NoteStatusBinding; result: CommandResult; signal: AbortSignal; landmarkId: LandmarkId }>()
-  let disposed = false, withdrawn = false, epoch = 0, readEpoch = 0
+  let disposed = false, withdrawn = false, epoch = 0, readEpoch = 0, summaryEpoch = 0
   let selected: { landmarkId: LandmarkId; selection: NoteLandmarkSelection } | null = null
-  let leaseUntil: number | null = null
+  let leaseUntil: number | null = null, visibleCount: number | null = null
   let roots: readonly PlaceNote[] = []
+  let clusters = new Map<LandmarkId, ClusterRow>()
+  let summaryFlight: Promise<boolean> | null = null
   const threads = new Map<string, readonly PlaceNote[]>()
   const now = () => {
     const value = clock.read()
@@ -107,7 +112,8 @@ export function createVenueNotesAdapter(options: VenueNotesOptions): VenueNotesA
   }
   const notify = () => { for (const listener of Array.from(listeners)) { try { listener() } catch { /* isolate consumers */ } } }
   function scrub(permanent: boolean) {
-    epoch++; readEpoch++; roots = []; threads.clear(); selected = null; leaseUntil = null
+    epoch++; readEpoch++; summaryEpoch++; roots = []; threads.clear(); selected = null; leaseUntil = null
+    visibleCount = null; clusters = new Map(); summaryFlight = null
     if (permanent) { withdrawn = true; ledger.clear() }
     notify()
   }
@@ -115,10 +121,11 @@ export function createVenueNotesAdapter(options: VenueNotesOptions): VenueNotesA
     && note.landmark_id === selected.selection.landmark_id && note.landmark_revision === selected.selection.landmark_revision
     && utcMilliseconds(note.created_at) <= time && utcMilliseconds(note.expires_at) > time
   function snapshot(): VenueNotesSnapshot | null {
-    const time = now()
-    if (!current() || !client || time === null || !selected || leaseUntil === null || leaseUntil <= time) return null
-    const binding = association(selected.landmarkId), provider = options.associations.read()
-    if (!binding || !selectionEqual(binding.selection, selected.selection) || !provider || provider.accessUntilMs === null) return null
+    const time = now(), provider = options.associations.read()
+    if (!current() || !client || time === null || leaseUntil === null || leaseUntil <= time
+      || !provider || provider.accessUntilMs === null || provider.accessUntilMs <= time) return null
+    const binding = selected ? association(selected.landmarkId) : null
+    if (selected && (!binding || !selectionEqual(binding.selection, selected.selection))) return null
     const policy = options.creationRights?.read() ?? null
     const rights = validLease(policy, time) && policy ? {
       postNote: policy.rights.postNote.filter(id => association(id) !== null),
@@ -127,36 +134,67 @@ export function createVenueNotesAdapter(options: VenueNotesOptions): VenueNotesA
     } : { postNote: [], noteAudiences: [], noteExpiries: [] }
     const projectReply = (note: PlaceNote) => ({ id: note.id, body: note.text, createdAtMs: utcMilliseconds(note.created_at),
       author: { userId: note.author.user_id, displayName: note.author.display_name, avatar: note.author.avatar } })
-    const notes: ViewNote[] = roots.filter(note => eligible(note, time)).map(note => ({ ...projectReply(note),
+    const visibleRoots = selected ? roots.filter(note => eligible(note, time)) : []
+    const notes: ViewNote[] = !selected || !binding ? [] : visibleRoots.map(note => ({ ...projectReply(note),
       landmarkId: binding.landmarkId, audience: note.audience, expiresAtMs: utcMilliseconds(note.expires_at),
-      canReply: note.can_reply, canMeet: note.meet_here !== null && note.meet_here.landmark_id === note.landmark_id
+      revision: note.revision, replyCount: note.reply_count, canReply: note.can_reply, canWithdraw: note.can_withdraw,
+      canMeet: note.meet_here !== null && note.meet_here.landmark_id === note.landmark_id
         && note.meet_here.landmark_revision === note.landmark_revision
         && note.meet_here.recipient_user_id === note.author.user_id && utcMilliseconds(note.meet_here.access_until) > time,
       replies: (threads.get(note.id) ?? []).filter(reply => eligible(reply, time)).map(projectReply),
     }))
+    // Only current server counts become markers; no page length stands in for a place total.
+    const liveClusters = options.venue.landmarks.flatMap(place => {
+      const row = clusters.get(place.id), actual = association(place.id)
+      if (!row || !actual || row.count < 1 || !selectionEqual(row.selection, actual.selection)
+        || (row.refreshAtMs !== null && row.refreshAtMs <= time)) return []
+      return [{ landmarkId: place.id, count: row.count }]
+    })
     return detached({ scope, venue, classification: options.classification, serverNowMs: time,
       accessUntilMs: Math.min(leaseUntil, provider.accessUntilMs,
-        validLease(policy, time) && policy?.accessUntilMs !== null && policy?.accessUntilMs !== undefined ? policy.accessUntilMs : Infinity), notes, rights })
+        validLease(policy, time) && policy?.accessUntilMs !== null && policy?.accessUntilMs !== undefined ? policy.accessUntilMs : Infinity),
+      notes, noteClusters: liveClusters,
+      // A total that no longer matches the still-visible producer rows is unavailable, not guessed.
+      notesVisibleCount: selected && visibleRoots.length === roots.length ? visibleCount : null, rights })
   }
   function contextValid(context: CommandContext) {
     return current() && !context.signal.aborted && sameScope(context.scope, scope)
       && sameSiteplanIdentity(context.venue, venue) && now() !== null
   }
   function acceptRead(value: NotePage | NoteThread, binding: NonNullable<typeof selected>, token: number, signal: AbortSignal) {
-    const time = now(), actual = association(binding.landmarkId)
+    const time = now(), actual = association(binding.landmarkId), provider = options.associations.read()
     if (!current() || signal.aborted || token !== readEpoch || time === null || !actual
-      || !selectionEqual(binding.selection, actual.selection) || utcMilliseconds(value.server_now) > time
-      || utcMilliseconds(value.access_until) <= time) return false
+      || !selectionEqual(binding.selection, actual.selection) || utcMilliseconds(value.server_now) > time) return false
     const notes = 'items' in value ? value.items : [value.note, ...value.replies]
     if (notes.some(note => note.landmark_revision !== binding.selection.landmark_revision || utcMilliseconds(note.created_at) > time
       || utcMilliseconds(note.expires_at) <= time)) return false
-    selected = binding; leaseUntil = utcMilliseconds(value.access_until)
-    if ('items' in value) { roots = detached(value.items); threads.clear() }
-    else {
+    const until = utcMilliseconds(value.access_until)
+    // An empty authorized page legitimately reports access_until === server_now; the
+    // place lease still comes from the reviewed provider, never from a fabricated clock.
+    const lease = notes.length ? (until > time ? until : null) : provider && provider.accessUntilMs !== null && provider.accessUntilMs > time ? provider.accessUntilMs : null
+    if (lease === null) return false
+    selected = binding; leaseUntil = lease
+    if ('items' in value) {
+      roots = detached(value.items); threads.clear(); visibleCount = value.visible_count
+      clusters = new Map(clusters).set(binding.landmarkId, { landmarkId: binding.landmarkId, selection: binding.selection,
+        count: value.visible_count, readAtMs: time, refreshAtMs: utcMilliseconds(value.access_until) > time ? utcMilliseconds(value.access_until) : null })
+    } else {
       roots = detached([...roots.filter(note => note.id !== value.note.id), value.note])
       threads.set(value.note.id, detached(value.replies))
     }
     notify(); return true
+  }
+  function acceptSummary(value: NotePage, landmarkId: LandmarkId, binding: NonNullable<ReturnType<typeof association>>, token: number, signal: AbortSignal, target: Map<LandmarkId, ClusterRow>) {
+    const time = now(), actual = association(landmarkId)
+    if (!current() || signal.aborted || token !== summaryEpoch || time === null || !actual
+      || !selectionEqual(binding.selection, actual.selection) || utcMilliseconds(value.server_now) > time
+      || value.items.some(note => note.landmark_id !== binding.selection.landmark_id || note.landmark_revision !== binding.selection.landmark_revision
+        || utcMilliseconds(note.created_at) > time || utcMilliseconds(note.expires_at) <= time)
+      || !Number.isSafeInteger(value.visible_count) || value.visible_count < value.items.length) return false
+    const until = utcMilliseconds(value.access_until)
+    if (value.items.length > 0 && until <= time) return false
+    target.set(landmarkId, { landmarkId, selection: binding.selection, count: value.visible_count, readAtMs: time, refreshAtMs: until > time ? until : null })
+    return true
   }
   function bindCommand(key: string, operationId: NoteCommand['operation_id'], binding: NonNullable<typeof selected>,
     context: CommandContext, parent: PlaceNote | null) {
@@ -185,7 +223,10 @@ export function createVenueNotesAdapter(options: VenueNotesOptions): VenueNotesA
       const value = await perform()
       if (token !== epoch || !contextValid(context) || entry.signal.aborted || ledger.get(context.key) !== entry) return unknown
       return receiptResult(entry, value)
-    } catch { return unknown }
+    } catch (error) {
+      // A decoded 4xx is a definitive server decision, never an uncertain outcome.
+      return error instanceof NotesApiError && [400, 401, 403, 404, 409, 422].includes(error.status) ? rejected : unknown
+    }
   }
   const unsubscribers = [authority.subscribe(() => scrub(true)), clock.subscribe(() => {
     if (!current() || now() === null) scrub(true)
@@ -203,11 +244,49 @@ export function createVenueNotesAdapter(options: VenueNotesOptions): VenueNotesA
     async load(landmarkId: LandmarkId, signal: AbortSignal) {
       const binding = association(landmarkId)
       if (!client || !eventId || !binding || signal.aborted) return false
-      scrub(false); const token = readEpoch
+      readEpoch++; roots = []; threads.clear(); selected = null; visibleCount = null; leaseUntil = null
+      const token = readEpoch
       try {
         const value = await client.request('listVenuePlaceNotes', { eventId, landmarkId: binding.selection.landmark_id }, { scope, signal })
         return acceptRead(value, binding, token, signal)
       } catch { return false }
+    },
+    async loadSummary(signal: AbortSignal) {
+      if (summaryFlight) return summaryFlight
+      const time = now(), provider = options.associations.read()
+      if (!client || !eventId || !current() || time === null || signal.aborted || !validLease(provider, time)) return false
+      const entries = options.venue.landmarks.flatMap(place => {
+        const binding = association(place.id)
+        return binding ? [{ landmarkId: place.id, binding }] : []
+      })
+      if (!entries.length) return false
+      const token = ++summaryEpoch, collected = new Map<LandmarkId, ClusterRow>(), providerUntil = provider!.accessUntilMs!
+      const run = async () => {
+        let accepted = 0
+        let cursor = 0
+        const worker = async () => {
+          while (cursor < entries.length) {
+            const entry = entries[cursor++]
+            if (!entry || token !== summaryEpoch || signal.aborted) return
+            try {
+              const value = await client.request('listVenuePlaceNotes', { eventId, landmarkId: entry.binding.selection.landmark_id, limit: 1 }, { scope, signal })
+              if (token === summaryEpoch && !signal.aborted && acceptSummary(value, entry.landmarkId, entry.binding, token, signal, collected)) accepted++
+            } catch { /* Denied or unavailable places contribute no marker or count. */ }
+          }
+        }
+        await Promise.all(Array.from({ length: Math.min(3, entries.length) }, worker))
+        if (token !== summaryEpoch || signal.aborted || !current()) return false
+        if (!accepted) {
+          // A total denial is a withdrawn read lease, not an empty successful summary.
+          clusters = new Map(); roots = []; threads.clear(); selected = null; visibleCount = null; leaseUntil = null; notify(); return false
+        }
+        clusters = collected; leaseUntil = providerUntil
+        notify(); return true
+      }
+      const promise = run()
+      const flight = promise.finally(() => { if (summaryFlight === flight) summaryFlight = null })
+      summaryFlight = flight
+      return promise
     },
     async loadThread(noteId: string, signal: AbortSignal) {
       const binding = selected && association(selected.landmarkId)
@@ -240,6 +319,18 @@ export function createVenueNotesAdapter(options: VenueNotesOptions): VenueNotesA
       try { buildNotesRequest('createVenuePlaceReply', request) } catch { return rejected }
       const entry = bindCommand(context.key, 'createVenuePlaceReply', binding, context, parent)
       return entry ? write(entry, context, () => client.request('createVenuePlaceReply', request, { scope: context.scope, signal: context.signal })) : unknown
+    },
+    async withdraw(input: Parameters<Commands['withdraw']>[0], context: CommandContext) {
+      if (ledger.has(context.key)) return unknown
+      const time = now(), binding = selected && association(selected.landmarkId)
+      const note = roots.find(row => row.id === input.noteId)
+      if (!client || !eventId || !contextValid(context) || !snapshot() || !binding || !note || !note.can_withdraw
+        || note.revision !== input.expectedRevision || time === null || !eligible(note, time)) return rejected
+      const request = { eventId, landmarkId: binding.selection.landmark_id, noteId: note.id,
+        expected_revision: note.revision, idempotencyKey: context.key }
+      try { buildNotesRequest('withdrawVenuePlaceNote', request) } catch { return rejected }
+      const entry = bindCommand(context.key, 'withdrawVenuePlaceNote', binding, context, note)
+      return entry ? write(entry, context, () => client.request('withdrawVenuePlaceNote', request, { scope: context.scope, signal: context.signal })) : unknown
     },
     async resolve(key: string, context: CommandContext) {
       const entry = ledger.get(key)

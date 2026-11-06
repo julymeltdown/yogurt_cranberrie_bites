@@ -2,7 +2,140 @@ use concert_service::{
     bootstrap::{BootstrapFeatures, BootstrapService, ProductReleaseBundle},
     config, health, rpc, world_rpc,
 };
+use std::future::Future;
+use std::pin::Pin;
+use std::sync::atomic::{AtomicBool, Ordering};
+use std::sync::Arc;
+use std::task::{Context, Poll};
+use tonic::body::Body;
+use tonic::codegen::http::{Request, Response};
+use tower::{Layer, Service};
 mod in01_catalog;
+
+/// The only service this listener answers before World readiness. Auth and
+/// Friend settle owner-authority scopes against it during their own startup,
+/// so refusing it would keep both sides from ever reaching World readiness.
+const EARLY_SERVICES: &[&str] = &["authority.lease.v1.ProducerSettlementService"];
+const WORLD_NOT_READY: &str = "World not ready";
+
+/// Deny-by-default gate over the whole served gRPC router. The server binds
+/// immediately so Auth/Friend can settle, while every capability that reads or
+/// writes World-owned state refuses with `UNAVAILABLE` until the supervised
+/// World publishes its startup barrier. Allowing the settlement service by
+/// exact gRPC service name keeps the exception one operation family wide.
+#[derive(Clone)]
+struct WorldReadinessGate {
+    ready: Arc<AtomicBool>,
+}
+
+impl WorldReadinessGate {
+    /// Without a configured World there is no readiness to wait for.
+    fn new(world_configured: bool) -> Self {
+        Self {
+            ready: Arc::new(AtomicBool::new(!world_configured)),
+        }
+    }
+
+    fn state(&self) -> Arc<AtomicBool> {
+        self.ready.clone()
+    }
+}
+
+#[derive(Clone)]
+struct WorldReadinessGateService<S> {
+    inner: S,
+    ready: Arc<AtomicBool>,
+}
+
+impl<S> Layer<S> for WorldReadinessGate {
+    type Service = WorldReadinessGateService<S>;
+
+    fn layer(&self, inner: S) -> Self::Service {
+        WorldReadinessGateService {
+            inner,
+            ready: self.ready.clone(),
+        }
+    }
+}
+
+impl<S> Service<Request<Body>> for WorldReadinessGateService<S>
+where
+    S: Service<Request<Body>, Response = Response<Body>> + Clone + Send + 'static,
+    S::Future: Send + 'static,
+{
+    type Response = Response<Body>;
+    type Error = S::Error;
+    type Future = Pin<Box<dyn Future<Output = Result<Self::Response, Self::Error>> + Send>>;
+
+    fn poll_ready(&mut self, cx: &mut Context<'_>) -> Poll<Result<(), Self::Error>> {
+        self.inner.poll_ready(cx)
+    }
+
+    fn call(&mut self, request: Request<Body>) -> Self::Future {
+        let early = request
+            .uri()
+            .path()
+            .strip_prefix('/')
+            .and_then(|rest| rest.split_once('/'))
+            .is_some_and(|(service, method)| {
+                !method.is_empty() && EARLY_SERVICES.contains(&service)
+            });
+        if self.ready.load(Ordering::Acquire) || early {
+            Box::pin(self.inner.call(request))
+        } else {
+            Box::pin(async { Ok(tonic::Status::unavailable(WORLD_NOT_READY).into_http::<Body>()) })
+        }
+    }
+}
+
+/// Account deletion can only be composed from the World's serving binding,
+/// which the supervised World publishes during its own startup. The listener
+/// mounts this slot immediately and refuses with `UNAVAILABLE` until that exact
+/// binding arrives, so the early settlement path never waits on it.
+#[derive(Clone)]
+struct DeferredAccountDeletion {
+    service: Arc<tokio::sync::OnceCell<config::account_deletion_runtime::AccountDeletionService>>,
+}
+
+impl tonic::server::NamedService for DeferredAccountDeletion {
+    const NAME: &'static str = "concert.account_deletion.v1.AccountDeletionService";
+}
+
+impl Service<Request<Body>> for DeferredAccountDeletion {
+    type Response = Response<Body>;
+    type Error = std::convert::Infallible;
+    type Future = Pin<Box<dyn Future<Output = Result<Self::Response, Self::Error>> + Send>>;
+
+    fn poll_ready(&mut self, _: &mut Context<'_>) -> Poll<Result<(), Self::Error>> {
+        Poll::Ready(Ok(()))
+    }
+
+    fn call(&mut self, request: Request<Body>) -> Self::Future {
+        match self.service.get() {
+            Some(service) => {
+                let mut service = service.clone();
+                Box::pin(async move { service.call(request).await })
+            }
+            None => Box::pin(async {
+                Ok(tonic::Status::unavailable("Account deletion is starting").into_http::<Body>())
+            }),
+        }
+    }
+}
+
+/// Wait for the supervised World to publish its startup barrier. A dropped
+/// sender is a startup failure: the process must exit instead of half-serving
+/// with every capability gated forever.
+async fn await_world_ready(
+    ready: tokio::sync::oneshot::Receiver<()>,
+    gate: Arc<AtomicBool>,
+) -> anyhow::Result<()> {
+    ready
+        .await
+        .map_err(|_| anyhow::anyhow!("World startup readiness failed"))?;
+    gate.store(true, Ordering::Release);
+    Ok(())
+}
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
     let arguments: Vec<_> = std::env::args_os().skip(1).collect();
@@ -111,12 +244,17 @@ async fn main() -> anyhow::Result<()> {
     anyhow::ensure!(
         !product_settings.owner_media || owner_media_settings.is_some(),
         "Uploader media mode requires the shared canonical composition"
-    );;
+    );
     let social_settings = config::social_startup::SocialStartupSettings::load(
         intro_settings.is_some(),
         world_settings.is_some(),
         inbox_settings.enabled() && target_settings.is_some(),
         runtime.as_ref().and_then(|runtime| runtime.tls.as_ref()),
+    )?;
+    let closure_settings = config::closure_runtime::ClosureSettings::load(
+        world_settings.is_some(),
+        participant_settings.is_some(),
+        runtime.is_some(),
     )?;
     let features = config::bootstrap_features::ConfiguredBootstrapFeatures::from_settings(
         runtime.as_ref(),
@@ -151,7 +289,7 @@ async fn main() -> anyhow::Result<()> {
         config::product_runtime::production_owners(config::product_runtime::ProductSettings {
             public_feed_read: false,
             owner_media: false,
-        })?;;
+        })?;
     anyhow::ensure!(
         product_owner.is_none() || participant_settings.is_none(),
         "Product and Participant require a shared canonical scope composition"
@@ -161,6 +299,8 @@ async fn main() -> anyhow::Result<()> {
         .map(|_| config::world_runtime::production_owners())
         .transpose()?;
     let pool = config::connect_pool(&config).await?;
+    let (closure_handoff, closure_bridge) = config::closure_runtime::BridgeHandoff::channel();
+    let mut archive_service = None;
     let mut child_recovery = None;
     let mut notification_target = None;
     let mut feed_callback = None;
@@ -195,7 +335,10 @@ async fn main() -> anyhow::Result<()> {
                         .map(|settings| settings.compose(pool.clone(), &shared.owners.core));
                     let intro_owner = intro.compose(pool.clone(), &shared.owners);
                     let owners = inbox_settings.compose(&shared.owners, intro_owner);
-                    let owners = match wall_b_settings { Some(settings) => settings.compose(pool.clone(), &shared.owners, owners), None => owners };
+                    let owners = match wall_b_settings {
+                        Some(settings) => settings.compose(pool.clone(), &shared.owners, owners),
+                        None => owners,
+                    };
                     let owners = match feed_settings {
                         Some(settings) => {
                             let (owners, callback) =
@@ -238,6 +381,18 @@ async fn main() -> anyhow::Result<()> {
                         }
                         None => owners,
                     });
+                    if let Some(settings) = closure_settings {
+                        let (owners, archive) = settings.compose(
+                            pool.clone(),
+                            closure_handoff.clone(),
+                            &shared.owners,
+                            product_owner.take().ok_or_else(|| {
+                                anyhow::anyhow!("Closure composition is unavailable")
+                            })?,
+                        )?;
+                        product_owner = Some(owners);
+                        archive_service = Some(archive);
+                    }
                     Ok(shared.participant)
                 }
                 None => settings.compose(pool.clone(), release),
@@ -269,21 +424,25 @@ async fn main() -> anyhow::Result<()> {
         ),
         None => (None, None),
     };
-    let (world_ready_tx, world_ready_rx) = if world_settings.is_some() {
+    let world_configured = world_settings.is_some();
+    let (world_ready_tx, world_ready_rx) = if world_configured {
         let (tx, rx) = tokio::sync::oneshot::channel();
         (Some(tx), Some(rx))
     } else {
         (None, None)
     };
+    // Built before the server so the listener starts closed and opens exactly
+    // once, from the supervised World barrier.
+    let world_gate = WorldReadinessGate::new(world_configured);
+    let world_ready_gate = world_gate.state();
     // The deletion composer borrows the exact supervised World bridge/socket
     // registry. It is only requested when a World is actually served.
     let (deletion_world_tx, deletion_world_rx) = if deletion_settings
         != config::account_deletion_runtime::AccountDeletionSettings::Off
         && world_settings.is_some()
     {
-        let (sender, receiver) = tokio::sync::oneshot::channel::<
-            config::deletion_world_binding::ServingWorldBinding,
-        >();
+        let (sender, receiver) =
+            tokio::sync::oneshot::channel::<config::deletion_world_binding::ServingWorldBinding>();
         (Some(sender), Some(receiver))
     } else {
         (None, None)
@@ -306,20 +465,6 @@ async fn main() -> anyhow::Result<()> {
             Ok::<(), anyhow::Error>(())
         };
         let grpc = async move {
-            if let Some(ready) = world_ready_rx {
-                tokio::select! {
-                    result = ready => result.map_err(|_| anyhow::anyhow!("World startup readiness failed"))?,
-                    _ = platform::shutdown::global().cancelled() => return Ok(()),
-                }
-            }
-            let deletion_world = match deletion_world_rx {
-                Some(binding) => Some(tokio::select! {
-                    result = binding => result
-                        .map_err(|_| anyhow::anyhow!("World deletion binding failed"))?,
-                    _ = platform::shutdown::global().cancelled() => return Ok(()),
-                }),
-                None => None,
-            };
             match (runtime, bootstrap) {
                 (Some(runtime), Some(release)) => {
                     // Compose on the actual serving pool, canonical Auth endpoint,
@@ -332,33 +477,63 @@ async fn main() -> anyhow::Result<()> {
                                 .map_err(|_| anyhow::anyhow!("CONCERT_AUTH_GRPC_ENDPOINT is required for managed account deletion"))?;
                             let credential = std::env::var("CONCERT_SERVICE_CREDENTIAL")
                                 .map_err(|_| anyhow::anyhow!("CONCERT_SERVICE_CREDENTIAL is required for managed account deletion"))?;
-                            Some(
-                                config::account_deletion_runtime::AccountDeletionRuntime::compose(
-                                    deletion_settings,
-                                    grpc_pool.clone(),
+                            let callers = config::account_deletion_runtime::AuthDeletionCallers::configured()?;
+                            let tls = runtime.tls.clone();
+                            let pool = grpc_pool.clone();
+                            let sharing_publisher = deletion_sharing_publisher.take();
+                            let cell = Arc::new(tokio::sync::OnceCell::new());
+                            let managed = cell.clone();
+                            tokio::spawn(async move {
+                                let binding = match deletion_world_rx {
+                                    Some(binding) => binding.await,
+                                    None => return,
+                                };
+                                let Ok(binding) = binding else {
+                                    if !platform::shutdown::global().is_requested() {
+                                        eprintln!("CONCERT_COMPONENT_FAILURE=account deletion World binding failed");
+                                        platform::shutdown::global().request();
+                                    }
+                                    return;
+                                };
+                                let composed = config::account_deletion_runtime::AccountDeletionRuntime::compose(
+                                    config::account_deletion_runtime::AccountDeletionSettings::Managed,
+                                    pool,
                                     &endpoint,
-                                    runtime.tls.as_ref(),
+                                    tls.as_ref(),
                                     &credential,
-                                    config::account_deletion_runtime::AuthDeletionCallers::configured()?,
+                                    callers,
                                     config::account_deletion_runtime::LiveDeletionOwners {
-                                        worlds: deletion_world
-                                            .as_ref()
-                                            .map(|world| vec![world.as_serving_world()]),
-                                        sharing_publisher: deletion_sharing_publisher,
+                                        worlds: Some(vec![binding.as_serving_world()]),
+                                        sharing_publisher,
                                     },
-                                )?
-                                .ok_or_else(|| {
-                                    anyhow::anyhow!("Managed account deletion composer is unavailable")
-                                })?
-                                .service()?,
-                            )
+                                )
+                                .and_then(|runtime| {
+                                    runtime.ok_or_else(|| {
+                                        anyhow::anyhow!("Managed account deletion composer is unavailable")
+                                    })
+                                })
+                                .and_then(|runtime| runtime.service());
+                                match composed {
+                                    Ok(service) => {
+                                        let _ = managed.set(service);
+                                    }
+                                    Err(error) => {
+                                        eprintln!("CONCERT_COMPONENT_FAILURE=account deletion composition {error:?}");
+                                        platform::shutdown::global().request();
+                                    }
+                                }
+                            });
+                            Some(DeferredAccountDeletion { service: cell })
                         }
                     };
                     let mut server = tonic::transport::Server::builder()
                         .layer(platform::actor_delegation::response_scope::RetainedScopeLayer)
                         .layer(platform::correlation::CorrelationLayer)
                         .layer(platform::call_deadline::CallDeadlineLayer)
-                        .layer(platform::trace_context::TraceContextLayer);
+                        .layer(platform::trace_context::TraceContextLayer)
+                        // Outermost: a closed gate answers every non-settlement
+                        // service without composing or touching any owner.
+                        .layer(world_gate);
                     if let Some(tls) = runtime.tls {
                         server = server.tls_config(tls.server_config()?)?;
                     }
@@ -459,6 +634,13 @@ async fn main() -> anyhow::Result<()> {
                             callback.verifier,
                         )
                     }).transpose()?;
+                    let archive = archive_service.map(|service| {
+                        platform::grpc_method_policy::guard_without_delegation(
+                            &config::closure_runtime::ARCHIVE_POLICY,
+                            concert_service::product_rpc::proto::product_archive_service_server::ProductArchiveServiceServer::new(service),
+                            runtime.callers.clone(),
+                        )
+                    }).transpose()?;
                     server
                         .add_service(bootstrap)
                         .add_service(world)
@@ -468,6 +650,7 @@ async fn main() -> anyhow::Result<()> {
                         .add_optional_service(product)
                         .add_optional_service(notification_target)
                         .add_optional_service(feed_callback)
+                        .add_optional_service(archive)
                         .add_optional_service(delivery)
                         .add_optional_service(deletion)
                         .serve_with_shutdown(
@@ -480,22 +663,34 @@ async fn main() -> anyhow::Result<()> {
             }
             Ok::<(), anyhow::Error>(())
         };
+        // The barrier is awaited beside the serving listener rather than before
+        // it. Success opens the gate; failure requests shared shutdown with the
+        // original error through the component supervisor below.
+        let readiness = async move {
+            match world_ready_rx {
+                Some(ready) => {
+                    await_world_ready(ready, world_ready_gate).await?;
+                    platform::shutdown::idle().await
+                }
+                None => platform::shutdown::idle().await,
+            }
+        };
         let world = async move {
             match (world_settings, world_owners, world_ready_tx) {
                 (Some(settings), Some(owners), Some(ready)) => {
                     match (world_transport, world_local, deletion_world_tx) {
                         (Some(transport), Some(local), Some(deletion)) => settings
-                            .serve_with_ready_social_and_deletion(
-                                world_pool, owners, ready, transport, local, deletion,
+                            .serve_with_ready_social_and_deletion_and_bridge(
+                                world_pool, owners, ready, transport, local, deletion, closure_bridge,
                             )
                             .await,
                         (None, None, Some(deletion)) => settings
-                            .serve_with_ready_and_deletion(world_pool, owners, ready, deletion)
+                            .serve_with_ready_and_deletion_and_bridge(world_pool, owners, ready, deletion, closure_bridge)
                             .await,
                         (Some(transport), Some(local), None) => settings
-                            .serve_with_ready_and_social(world_pool, owners, ready, transport, local)
+                            .serve_with_ready_and_social_and_bridge(world_pool, owners, ready, transport, local, closure_bridge)
                             .await,
-                        (None, None, None) => settings.serve_with_ready(world_pool, owners, ready).await,
+                        (None, None, None) => settings.serve_with_ready_and_bridge(world_pool, owners, ready, closure_bridge).await,
                         _ => anyhow::bail!("World Social policy composition is incomplete"),
                     }
                 }
@@ -542,9 +737,10 @@ async fn main() -> anyhow::Result<()> {
         };
         // Each component requests shared shutdown on failure. Join rather than
         // dropping peer futures so native replay, membership and recovery drain.
-        let (http, grpc, world, recovery, children, social, receipts) = tokio::join!(
+        let (http, grpc, readiness, world, recovery, children, social, receipts) = tokio::join!(
             component("health", http, platform::shutdown::global()),
             component("gRPC", grpc, platform::shutdown::global()),
+            component("World readiness", readiness, platform::shutdown::global()),
             component("World", world, platform::shutdown::global()),
             component("Participant recovery", recovery, platform::shutdown::global()),
             component("canonical child recovery", children, platform::shutdown::global()),
@@ -553,6 +749,7 @@ async fn main() -> anyhow::Result<()> {
         );
         http?;
         grpc?;
+        readiness?;
         world?;
         recovery?;
         children?;
@@ -571,6 +768,9 @@ async fn component(
     shutdown: platform::shutdown::Shutdown,
 ) -> anyhow::Result<()> {
     let result = future.await;
+    if let Err(error) = &result {
+        eprintln!("CONCERT_COMPONENT_FAILURE={name} {error:?}");
+    }
     let result = if result.is_ok() && !shutdown.is_requested() {
         Err(anyhow::anyhow!("{name} stopped unexpectedly"))
     } else {
@@ -584,9 +784,184 @@ async fn component(
 
 #[cfg(test)]
 mod tests {
-    use super::component;
+    use super::{
+        await_world_ready, component, WorldReadinessGate, EARLY_SERVICES, WORLD_NOT_READY,
+    };
     use platform::shutdown::Shutdown;
-    use std::sync::atomic::{AtomicBool, Ordering};
+    use std::future::Ready;
+    use std::sync::atomic::{AtomicBool, AtomicUsize, Ordering};
+    use std::sync::Arc;
+    use std::task::{Context, Poll};
+    use tonic::body::Body;
+    use tonic::codegen::http::{Request, Response};
+    use tower::{Layer, Service};
+
+    /// Every service this binary mounts except owner-authority settlement.
+    /// The gate is deny-by-default; this list documents and exercises the
+    /// registration list without turning it into a second allowlist.
+    const GATED_SERVICES: &[&str] = &[
+        "concert.v1.ConcertService",
+        "concert.world.v1.WorldService",
+        "concert.participant.v1.ConcertParticipantService",
+        "concert.participant.v1.ConcertParticipantDecisionService",
+        "concert.product.v1.ProductService",
+        "concert.product.v1.ProductDeliveryService",
+        "concert.product.v1.ProductArchiveService",
+        "authority.lease.v1.ConcertRootReadService",
+        "notification.concert.v1.ConcertNotificationTargetAuthority",
+        "concert.account_deletion.v1.AccountDeletionService",
+    ];
+
+    #[derive(Clone)]
+    struct PassThrough {
+        calls: Arc<AtomicUsize>,
+    }
+
+    impl Service<Request<Body>> for PassThrough {
+        type Response = Response<Body>;
+        type Error = std::convert::Infallible;
+        type Future = Ready<Result<Self::Response, Self::Error>>;
+
+        fn poll_ready(&mut self, _: &mut Context<'_>) -> Poll<Result<(), Self::Error>> {
+            Poll::Ready(Ok(()))
+        }
+
+        fn call(&mut self, _: Request<Body>) -> Self::Future {
+            self.calls.fetch_add(1, Ordering::SeqCst);
+            std::future::ready(Ok(Response::new(Body::empty())))
+        }
+    }
+
+    fn rpc(path: &str) -> Request<Body> {
+        Request::builder()
+            .uri(format!("/{path}/Probe"))
+            .body(Body::empty())
+            .unwrap()
+    }
+
+    fn status_of(response: &Response<Body>) -> Option<&str> {
+        response
+            .headers()
+            .get(tonic::Status::GRPC_STATUS)
+            .and_then(|value| value.to_str().ok())
+    }
+
+    #[test]
+    fn early_allowlist_is_exactly_owner_authority_settlement() {
+        assert_eq!(
+            EARLY_SERVICES,
+            ["authority.lease.v1.ProducerSettlementService"]
+        );
+        for service in GATED_SERVICES {
+            assert!(
+                !EARLY_SERVICES.contains(service),
+                "{service} must stay gated"
+            );
+        }
+    }
+
+    #[tokio::test]
+    async fn closed_gate_serves_settlement_and_refuses_every_gated_service() {
+        let calls = Arc::new(AtomicUsize::new(0));
+        let gate = WorldReadinessGate::new(true);
+        let mut service = gate.layer(PassThrough {
+            calls: calls.clone(),
+        });
+        // The settlement service is the one early answer.
+        service
+            .call(rpc("authority.lease.v1.ProducerSettlementService"))
+            .await
+            .unwrap();
+        assert_eq!(calls.load(Ordering::SeqCst), 1);
+        // Every other mounted capability is refused without reaching the owner.
+        for name in GATED_SERVICES {
+            let response = service.call(rpc(name)).await.unwrap();
+            assert_eq!(status_of(&response), Some("14"), "{name} was not gated");
+            let status = response
+                .extensions()
+                .get::<tonic::Status>()
+                .expect("trailers-only status");
+            assert_eq!(status.code(), tonic::Code::Unavailable);
+            assert_eq!(status.message(), WORLD_NOT_READY);
+        }
+        assert_eq!(calls.load(Ordering::SeqCst), 1);
+        // Removing the gate would let the gated services reach the owner, so
+        // this count is what fails when the gate stops short-circuiting.
+    }
+
+    #[tokio::test]
+    async fn opening_the_gate_after_world_readiness_serves_gated_services() {
+        let calls = Arc::new(AtomicUsize::new(0));
+        let gate = WorldReadinessGate::new(true);
+        let state = gate.state();
+        let mut service = gate.layer(PassThrough {
+            calls: calls.clone(),
+        });
+        let refused = service
+            .call(rpc("concert.v1.ConcertService"))
+            .await
+            .unwrap();
+        assert_eq!(status_of(&refused), Some("14"));
+        state.store(true, Ordering::Release);
+        let served = service
+            .call(rpc("concert.v1.ConcertService"))
+            .await
+            .unwrap();
+        assert_eq!(status_of(&served), None);
+        assert_eq!(calls.load(Ordering::SeqCst), 1);
+    }
+
+    #[tokio::test]
+    async fn a_configured_world_starts_closed_and_an_absent_world_serves() {
+        assert!(!WorldReadinessGate::new(true)
+            .state()
+            .load(Ordering::Acquire));
+        assert!(WorldReadinessGate::new(false)
+            .state()
+            .load(Ordering::Acquire));
+    }
+
+    #[tokio::test]
+    async fn world_failure_requests_shutdown_with_the_original_error() {
+        let (sender, receiver) = tokio::sync::oneshot::channel();
+        drop(sender);
+        let gate = Arc::new(AtomicBool::new(false));
+        let stop = Shutdown::new();
+        let result = component(
+            "World readiness",
+            await_world_ready(receiver, gate.clone()),
+            stop.clone(),
+        )
+        .await;
+        assert!(stop.is_requested());
+        let error = result.unwrap_err().to_string();
+        assert!(error.contains("World startup readiness failed"), "{error}");
+        assert!(!gate.load(Ordering::Acquire));
+    }
+
+    /// The serving binary, not only the test fixture, must build the listener
+    /// behind the gate and await World readiness beside it, never before it.
+    #[test]
+    fn serving_binary_builds_the_listener_behind_the_world_gate() {
+        let source = include_str!("main.rs");
+        for required in [
+            "WorldReadinessGate::new(world_configured)",
+            ".layer(world_gate)",
+            "await_world_ready(ready, world_ready_gate)",
+            "component(\"World readiness\", readiness",
+        ] {
+            assert!(source.contains(required), "serving binary omits {required}");
+        }
+        let grpc = source
+            .split("let grpc = async move {")
+            .nth(1)
+            .and_then(|rest| rest.split("let readiness = async move {").next())
+            .expect("gRPC component is present");
+        assert!(
+            !grpc.contains("world_ready_rx"),
+            "the gRPC listener must not await World readiness before serving"
+        );
+    }
 
     /// The serving binary, not only a test fixture, must compose the account
     /// deletion coordinator on the incumbent listener behind the Auth-only

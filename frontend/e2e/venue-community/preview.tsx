@@ -7,7 +7,7 @@ import './preview.css'
 // Exact reviewed static derivative of the user's selected source pack. Not C06/synthetic art.
 const portrait = (frame: number) => <span className="fixture-approved-portrait" style={{ backgroundPosition: `${frame * 20}% center` }} />
 const fixture = meetingFixture([portrait(0), portrait(3)], true)
-fixture.patch({ invitation: { id: fixtureIds.invitation, version: '1', status: 'pending', expiresAtMs: fixture.time() + 600_000 }, invitationActions: ['decline', 'accept'] })
+fixture.patch({ invitation: { id: fixtureIds.invitation, version: '1', status: 'pending', expiresAtMs: fixture.time() + 600_000, allowedActions: ['decline', 'accept'] }, invitationActions: ['decline', 'accept'] })
 await fixture.owner.open(fixture.inviteIntent)
 function FixtureApp() {
   const [, redraw] = useState(0)
@@ -28,7 +28,7 @@ declare global { interface Window { __VENUE_MEETING_FIXTURE__: {
 window.__VENUE_MEETING_FIXTURE__ = {
   state: () => ({ writes: fixture.writes.length, statuses: fixture.statuses.length, reads: fixture.reads.length,
     phase: fixture.owner.read().phase, focuses: fixture.focuses.length, time: fixture.time(), subscriptions: fixture.subscriptions() }),
-  conversation() { fixture.patch({ invitation: { id: fixtureIds.invitation, version: '2', status: 'accepted', expiresAtMs: fixture.time() + 500_000 }, invitationActions: ['cancel'],
+  conversation() { fixture.patch({ invitation: { id: fixtureIds.invitation, version: '2', status: 'accepted', expiresAtMs: fixture.time() + 500_000, allowedActions: ['cancel'] }, invitationActions: ['cancel'],
     sharedPlaceMessageId: 'fixture-1', conversation: { id: 'fixture-conversation', earlierCursor: null }, messages: [
       { id: 'fixture-1', authorId: fixtureIds.actor, body: 'I’m near Main Gate. Meet here?', timeLabel: '8m ago' },
       { id: 'fixture-2', authorId: fixtureIds.friend, body: 'On my way.', timeLabel: '2m ago' },

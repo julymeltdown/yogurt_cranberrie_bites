@@ -124,7 +124,7 @@ it('decides only current pending incoming/outgoing requests with the authoritati
 function notesSource() {
   const base = initialSnapshot(), state = port<VenueNotesSource extends ReadPort<infer T> ? T : never>({ ...base, rights: base.rights })
   const load = vi.fn(async () => true), loadThread = vi.fn(async () => true)
-  const source: VenueNotesSource = { ...state, load, loadThread, postNote: vi.fn(async () => ({ state: 'applied' as const })), reply: vi.fn(async () => ({ state: 'applied' as const })), resolve: vi.fn(async () => ({ state: 'applied' as const })), ownsCommand: vi.fn((key: string) => key === 'note-key') }
+  const source: VenueNotesSource = { ...state, load, loadThread, postNote: vi.fn(async () => ({ state: 'applied' as const })), reply: vi.fn(async () => ({ state: 'applied' as const })), withdraw: vi.fn(async () => ({ state: 'applied' as const })), resolve: vi.fn(async () => ({ state: 'applied' as const })), ownsCommand: vi.fn((key: string) => key === 'note-key') }
   return { source, state, load, loadThread }
 }
 it('aggregates Notes independently when Location is absent and vice versa', () => {

@@ -55,7 +55,19 @@ async fn main() -> anyhow::Result<()> {
         relationship_verifier.as_ref(),
     )
     .await?;
-    let authority_service = authority_store
+   
+    if let Some(store) = authority_store.clone() {
+        tokio::spawn(async move {
+            if let Err(status) = auth_service::concert_authority::verify_ready_bounded(&store).await {
+                eprintln!(
+                    "SETTLEMENT_VERIFY_FAILED={:?}: {}",
+                    status.code(),
+                    status.message()
+                );
+                platform::shutdown::global().request();
+            }
+        });
+    } let authority_service = authority_store
         .clone()
         .map(|store| {
             auth_service::adapters::r#in::grpc::concert_authority::guarded_server(

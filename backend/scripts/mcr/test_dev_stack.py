@@ -18,6 +18,16 @@ import runtime_smoke as runtime
 
 
 class DevTests(unittest.TestCase):
+    def test_settlement_owner_starts_before_its_authority_dependents(self):
+        order = runtime.start_order(("profile-service", "notification-service", "friend-service",
+                                     "post-service", "concert-service", "auth-service", "api-gateway"))
+        self.assertLess(order.index("concert-service"), order.index("auth-service"))
+        self.assertLess(order.index("concert-service"), order.index("friend-service"))
+
+    def test_start_order_without_a_settlement_owner_is_unchanged(self):
+        self.assertEqual(runtime.start_order(), runtime.START_ORDER)
+        self.assertEqual(runtime.start_order(("post-service", "api-gateway")), ("post-service", "api-gateway"))
+
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory(prefix="mcr-dev-test-")
         self.addCleanup(self.temp.cleanup)

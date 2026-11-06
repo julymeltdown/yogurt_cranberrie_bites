@@ -74,6 +74,10 @@ pub fn owned_source_pin() -> String {
             include_str!("read_only.rs"),
         ),
         (
+            "backend/services/concert-service/src/config/closure_runtime.rs",
+            include_str!("../config/closure_runtime.rs"),
+        ),
+        (
             "backend/services/concert-service/src/community/closure.rs",
             include_str!("../community/closure.rs"),
         ),

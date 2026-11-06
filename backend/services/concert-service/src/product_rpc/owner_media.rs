@@ -56,6 +56,7 @@ impl ProductOwner for OwnerMediaRuntime {
             | Operation::Notification(_)
             | Operation::Age(_)
             | Operation::Report(_)
+            | Operation::Closure
             | Operation::Operations(_)
             | Operation::Wall(_)
             | Operation::Meeting(_)

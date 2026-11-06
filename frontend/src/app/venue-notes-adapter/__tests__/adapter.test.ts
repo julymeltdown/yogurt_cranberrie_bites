@@ -2,7 +2,7 @@ import { afterEach, describe, expect, it, vi } from 'vitest'
 import { QueryClient } from '@tanstack/react-query'
 import { createMemorySession } from '../../../shared/api/http'
 import { createQueryPrivacy, type PrivacyScope } from '../../../shared/query/privacy'
-import { createNotesClient, type NoteCommand, type NotesTransport, type NotePage, type PlaceNote } from '../../../shared/api/paradise-city-v1/notes'
+import { createNotesClient, NotesApiError, type NoteCommand, type NotesTransport, type NotePage, type PlaceNote } from '../../../shared/api/paradise-city-v1/notes'
 import { landmarkId } from '../../../features/paradise-city-map/spatial/contract'
 import type { CommandContext, ReadPort, VenueView } from '../../../features/paradise-city-map/ports'
 import { createVenueNotesAdapter, type NoteCreationRights, type ReviewedNoteAssociations, type NoteStatusProducer } from '..'
@@ -11,11 +11,14 @@ const eventId = '00000000-0000-4000-8000-000000000201', userId = '00000000-0000-
 const noteId = '00000000-0000-4000-8000-000000000301', replyId = '00000000-0000-4000-8000-000000000302'
 const key = '00000000-0000-4000-8000-000000000401', otherKey = '00000000-0000-4000-8000-000000000402'
 const physicalId = 'reviewed.main-gate~v1', artId = landmarkId('main-gate')
+const otherArtId = landmarkId('other-gate'), otherPhysicalId = 'reviewed.other-gate~v1'
+const otherSelection = { landmark_id: otherPhysicalId, catalog_revision: 2, landmark_revision: 9 }
 const time = '2026-11-05T01:00:00Z', expiry = '2026-11-05T02:00:00Z'
 const selection = { landmark_id: physicalId, catalog_revision: 2, landmark_revision: 7 }
 const venue: VenueView = { identity: { venueId: 'paradise-city', siteplanId: 'main', revision: 1, variantId: 'day' },
   title: 'Venue', image: { src: '/fixture.jpg', width: 100, height: 100, description: 'Fixture' },
-  landmarks: [{ id: artId, label: 'Gate', point: { x: 1, y: 1 }, meetingContext: null }], classification: 'ILLUSTRATED_UNCALIBRATED' }
+  landmarks: [{ id: artId, label: 'Gate', point: { x: 1, y: 1 }, meetingContext: null },
+    { id: otherArtId, label: 'Other Gate', point: { x: 2, y: 2 }, meetingContext: null }], classification: 'ILLUSTRATED_UNCALIBRATED' }
 function note(patch: Partial<PlaceNote> = {}): PlaceNote {
   return { id: noteId, landmark_id: physicalId, landmark_revision: 7,
     author: { user_id: userId, display_name: 'Fixture friend', bio: null, avatar: { revision: 1, config: {
@@ -86,6 +89,12 @@ describe('actual raw N client to primary Notes partial', () => {
     expect(f.send.mock.calls[1]?.[0]).toMatchObject({ idempotencyKey: key, body: { text: 'Beside the gate', audience,
       expiry: 'VENUE_END_DAY', landmark_selection: selection } })
     expect(f.requestContexts[1]?.signal).toBe(f.signal.signal)
+  })
+  it('rejects an audience or expiry outside the contract before any write', async () => {
+    const f = fixture(); await f.load()
+    expect(await f.post({ audience: 'PUBLIC' as never })).toEqual({ state: 'rejected' })
+    expect(await f.post({ expiry: 'FOREVER' as never })).toEqual({ state: 'rejected' })
+    expect(f.send).toHaveBeenCalledTimes(1)
   })
   it('does not infer creation rights from visible reply rights', async () => {
     const f = fixture({ rights: false }); await f.load()
@@ -203,5 +212,67 @@ describe('actual raw N client to primary Notes partial', () => {
     expect(await f.post()).toEqual({ state: 'unknown' }); f.signal.abort()
     expect(await f.adapter.resolve(key, f.context())).toEqual({ state: 'unknown' }); expect(read).not.toHaveBeenCalled()
     expect(f.send).toHaveBeenCalledTimes(2)
+  })
+  it('builds map clusters only from server visible_count rows, one bounded read per place', async () => {
+    const f = fixture()
+    f.associations.set({ ...f.associations.read()!, bindings: [{ landmarkId: artId, selection }, { landmarkId: otherArtId, selection: otherSelection }] })
+    f.rights.set({ ...f.rights.read()!, rights: { ...f.rights.read()!.rights, postNote: [artId, otherArtId] } })
+    f.send.mockImplementation(async request => request.path.includes(encodeURIComponent(otherPhysicalId))
+      ? { status: 200, data: page({ items: [note({ landmark_id: otherPhysicalId, landmark_revision: 9 })], visible_count: 2 }) }
+      : { status: 200, data: page({ visible_count: 3 }) })
+    expect(await f.adapter.loadSummary(f.signal.signal)).toBe(true)
+    expect(f.send.mock.calls.map(call => call[0].query)).toEqual([{ limit: 1 }, { limit: 1 }])
+    const view = f.adapter.read()!
+    expect(view.noteClusters).toEqual([{ landmarkId: artId, count: 3 }, { landmarkId: otherArtId, count: 2 }])
+    expect(view.notes).toEqual([]); expect(view.notesVisibleCount).toBeNull()
+    expect(view.rights.postNote).toEqual([artId, otherArtId])
+  })
+  it('accepts an empty authorized page without inventing a lease from its now-valued access_until', async () => {
+    const f = fixture(); f.respond(page({ items: [], visible_count: 0, access_until: time }))
+    expect(await f.load()).toBe(true)
+    expect(f.adapter.read()).toMatchObject({ notes: [], notesVisibleCount: 0, noteClusters: [], rights: { postNote: [artId] } })
+  })
+  it('keeps a place total distinct from the loaded page and updates it from the list row count', async () => {
+    const f = fixture(); f.respond(page({ visible_count: 7 }))
+    expect(await f.load()).toBe(true)
+    const view = f.adapter.read()!
+    expect(view.notes).toHaveLength(1); expect(view.notesVisibleCount).toBe(7)
+    expect(view.noteClusters).toEqual([{ landmarkId: artId, count: 7 }])
+  })
+  it('omits a denied place from the summary while preserving authorized server counts', async () => {
+    const f = fixture()
+    f.associations.set({ ...f.associations.read()!, bindings: [{ landmarkId: artId, selection }, { landmarkId: otherArtId, selection: otherSelection }] })
+    f.send.mockImplementation(async request => request.path.includes(encodeURIComponent(otherPhysicalId))
+      ? Promise.reject(new NotesApiError(403, 'PERMISSION_DENIED', 'PERMISSION_DENIED'))
+      : { status: 200, data: page({ visible_count: 1 }) })
+    expect(await f.adapter.loadSummary(f.signal.signal)).toBe(true)
+    expect(f.adapter.read()!.noteClusters).toEqual([{ landmarkId: artId, count: 1 }])
+  })
+  it('reports a definitive non-author withdrawal denial as rejected without an effect', async () => {
+    const f = fixture(); await f.load(); f.respond(receipt({ operation_id: 'withdrawVenuePlaceNote' }), 200)
+    f.send.mockRejectedValueOnce(new NotesApiError(403, 'PERMISSION_DENIED', 'PERMISSION_DENIED'))
+    expect(await f.adapter.withdraw({ noteId, expectedRevision: 4 }, f.context())).toEqual({ state: 'rejected' })
+    expect(f.adapter.read()!.notes[0]!.canWithdraw).toBe(true)
+  })
+  it('refuses a client-side withdrawal when the server did not grant it', async () => {
+    const f = fixture(); f.respond(page({ items: [note({ can_withdraw: false })] })); await f.load()
+    expect(await f.adapter.withdraw({ noteId, expectedRevision: 4 }, f.context())).toEqual({ state: 'rejected' })
+    expect(f.send).toHaveBeenCalledTimes(1)
+  })
+  it('binds withdrawal to the exact server revision and idempotency key', async () => {
+    const f = fixture(); await f.load()
+    f.respond(receipt({ operation_id: 'withdrawVenuePlaceNote', state: 'SUCCEEDED', resource: { id: noteId, revision: 5 } }), 200)
+    expect(await f.adapter.withdraw({ noteId, expectedRevision: 4 }, f.context())).toEqual({ state: 'applied' })
+    const request = f.send.mock.calls[1]![0]
+    expect(request).toMatchObject({ method: 'DELETE', path: expect.stringContaining(`/notes/${noteId}`), idempotencyKey: key, query: { expected_revision: 4 } })
+    expect(f.adapter.read()!.notes[0]).toMatchObject({ revision: 4, replyCount: 0, canWithdraw: true })
+  })
+  it('projects reply authors from producer rows rather than the root author', async () => {
+    const f = fixture(); await f.load()
+    f.respond({ note: note(), replies: [note({ id: replyId, parent_id: noteId, text: 'Here',
+      author: { ...note().author, user_id: '00000000-0000-4000-8000-000000000909', display_name: 'Reply author' } })],
+      next_before: null, server_now: time, access_until: '2026-11-05T01:00:04Z' })
+    expect(await f.adapter.loadThread(noteId, f.signal.signal)).toBe(true)
+    expect(f.adapter.read()!.notes[0]!.replies[0]).toMatchObject({ body: 'Here', author: { displayName: 'Reply author' } })
   })
 })

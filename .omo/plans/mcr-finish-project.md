@@ -264,7 +264,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   Recommended task executor category: deep-low
   Commit: Y | `feat(account): complete sealed account deletion apply`
 
-- [ ] 15. Complete BE38 event settings, notices and flags
+- [x] 15. Complete BE38 event settings, notices and flags
   What to do / Must NOT do: finish operator-role checks, reviewed-place binding, notice publication and feature flags through the public gateway; prove a non-operator is rejected. Do NOT allow a client to set flags without role evidence.
   Closes: GAP-1
   Parallelization: Wave 2 | Blocked by: 7, 12 | Blocks: 31, 42
@@ -334,7 +334,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   Recommended task executor category: deep-low
   Commit: Y | `feat(venue/notes): implement place notes and replies`
 
-- [ ] 22. Prove the venue backend on real PostgreSQL and route parity
+- [x] 22. Prove the venue backend on real PostgreSQL and route parity
   What to do / Must NOT do: add venue families to the route-parity test, run L/M/N against a private PostgreSQL cluster, and prove migrations apply from an empty database and after restart. Do NOT use fixtures as producers; do NOT skip the migration ledger.
   Closes: GAP-1
   Parallelization: Wave 3 | Blocked by: 19–21 | Blocks: 24, 29, 31
@@ -344,7 +344,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   Recommended task executor category: deep-low
   Commit: Y | `test(venue): prove L/M/N on real PostgreSQL and route parity`
 
-- [ ] 23. Prove the venue authorization and privacy matrix
+- [x] 23. Prove the venue authorization and privacy matrix
   What to do / Must NOT do: test owner/friend/stranger/blocked/suspended/expired/admin across location, invitations, conversation and notes on HTTP and caches; prove no private metadata leaks. Do NOT accept client-side hiding as evidence.
   Closes: GAP-5, GAP-3
   Parallelization: Wave 3 | Blocked by: 19–21 | Blocks: 31, 39
@@ -354,7 +354,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   Recommended task executor category: deep-low
   Commit: Y | `test(venue): cover the authorization and privacy matrix`
 
-- [ ] 24. Wire the production shell to the venue ports
+- [x] 24. Wire the production shell to the venue ports
   What to do / Must NOT do: replace `meeting: null` and the omitted `capabilities`/`phone` ports in `WorldShell` and `venue-root/input.ts` with real adapters that fail closed. Do NOT change route ownership; do NOT invent a second protocol.
   Closes: GAP-1, GAP-6
   Parallelization: Wave 4 | Blocked by: 18, 22 | Blocks: 25–28
@@ -364,7 +364,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   Recommended task executor category: deep-low
   Commit: Y | `feat(venue): wire production shell ports`
 
-- [ ] 25. Complete the venue Map/Friends client states
+- [x] 25. Complete the venue Map/Friends client states
   What to do / Must NOT do: implement permission request/denial, friend clusters, selection, request/pause/revoke, stale/offline recovery against the L01 producer. Do NOT show current without freshness; do NOT treat a friendship as location consent.
   Closes: GAP-1
   Parallelization: Wave 4 | Blocked by: 24 | Blocks: 28
@@ -374,7 +374,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   Recommended task executor category: deep-low
   Commit: Y | `feat(venue): complete map and friends states`
 
-- [ ] 26. Complete the invitation and conversation client
+- [x] 26. Complete the invitation and conversation client
   What to do / Must NOT do: incoming/outgoing invitations, accept/decline/cancel and the event-scoped conversation, with no bare-user DM entry. Do NOT let opening a screen perform a write; do NOT show invitation context as a conversation permission.
   Closes: GAP-1
   Parallelization: Wave 4 | Blocked by: 24 | Blocks: 28
@@ -384,13 +384,13 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   Recommended task executor category: deep-low
   Commit: Y | `feat(venue): complete invitations and conversation UI`
 
-- [ ] 27. Complete the place notes client
+- [x] 27. Complete the place notes client
   What to do / Must NOT do: notes map clusters, list, selection, composer with audience/expiry, replies and Meet Here. Do NOT fabricate timestamps; do NOT allow an audience the server rejects.
   Closes: GAP-1
   Parallelization: Wave 4 | Blocked by: 24 | Blocks: 28
   References: `frontend/src/app/venue-notes-adapter/`, `frontend/src/features/community/` (existing note surfaces), `backend/docs/api/paradise-city-v1/place-notes.openapi.json`
   Acceptance criteria: create note with audience + expiry; replies render; expired notes vanish; Meet Here starts the invitation flow; browser run.
-  QA scenarios: happy create -> reply -> Meet Here; failure expired note -> removed from list. Evidence `.omo/evidence/mcr-finish-project/task-27-venue-notes-ui.md`.
+  QA scenarios: happy create -> reply -> Meet Here; failure expired note -> removed from list. Evidence `.omo/evidence/mcr-finish-project/task-27-notes.md`.
   Recommended task executor category: deep-low
   Commit: Y | `feat(venue): complete notes map, composer and replies`
 
@@ -444,7 +444,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   Recommended task executor category: deep-low
   Commit: Y | `test(in01): re-run deltas for changed features`
 
-- [ ] 33. Finish PI08 Photo2 HUD and camera
+- [x] 33. Finish PI08 Photo2 HUD and camera
   What to do / Must NOT do: close the remaining HUD/camera/Photo2 renderer and registry work against the reference; keep the qualified partial art tuple. Do NOT reopen AR02/AR04 criteria; do NOT admit unqualified pixels.
   Closes: GAP-6
   Parallelization: Wave 6 | Blocked by: 4; 24–28 for venue visuals | Blocks: 47
@@ -484,7 +484,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   Recommended task executor category: deep-low
   Commit: Y | `test(visual): pass QA06 reference acceptance`
 
-- [ ] 37. Verify the character atlas production status
+- [~] 37. Verify the character atlas production status
   What to do / Must NOT do: confirm the produced atlas/manifest matches the selected source pack and is actually served; if composition is only available through a reviewed derivative, document the admission path. Do NOT use legacy or synthetic character art.
   Closes: GAP-6
   Parallelization: Wave 6 | Blocked by: 4 | Blocks: 47
@@ -493,6 +493,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   QA scenarios: happy avatar renders in three surfaces; failure missing manifest -> truthful unavailable. Evidence `.omo/evidence/mcr-finish-project/task-37-character.md`.
   Recommended task executor category: deep-low
   Commit: Y | `test(avatar): verify production atlas admission`
+  Gap (2026-11-06): reviewed motion manifest mcr_selected_motion_reviewed_20261104 and its 1280x1856/576-cell atlas are produced, hash-pinned, guarded and loader-wired, but are NOT served: compose sets no CONCERT_GRPC_ADDR and none of the six CONCERT_* release settings, the reviewed bootstrap exists only as a runtime test fixture, and reviewed-handoff.json records production_activation NOT_RUN. Production activation and a served-renderer capture remain open with the World release path (row 51). Evidence: .omo/evidence/mcr-finish-project/task-37-atlas.md; guard commit cc9691cec.
 
 - [ ] 38. Pass QA03 database race suite
   What to do / Must NOT do: run real PostgreSQL interleavings for party capacity, stock reservation/release/claim, idempotent receipts and restart. Do NOT use sleeps as synchronization; use barriers and db constraints.
@@ -554,7 +555,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   Recommended task executor category: deep-low
   Commit: Y | `feat(frontend): close FE24, FE33 and FE34`
 
-- [ ] 44. Document deployment and production inputs
+- [x] 44. Document deployment and production inputs
   What to do / Must NOT do: write the staging/production runbook: mTLS material, TLS termination, provider endpoints, operator roles, limits, backup/restore and the deferred QA08 note. Do NOT claim production capacity or invent credentials.
   Closes: GAP-5, GAP-7
   Parallelization: Wave 8 | Blocked by: 13 | Blocks: 47
@@ -583,6 +584,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   QA scenarios: happy each extension state reachable in the app; failure an unmapped state -> FAIL. Evidence `.omo/evidence/mcr-finish-project/task-46-w04.md`.
   Recommended task executor category: deep-low
   Commit: Y | `docs(venue): resolve W04 policy and map extension IA`
+  W04 decision (user, 2026-11-06): use the plan proposal - invitee consent, exactly one inviter grant per party, capacity 8, 24-hour expiry, host can revoke. Recorded as the W04 policy for row 46.
 
 - [ ] 47. Reconcile IN05 and publish the release decision
   What to do / Must NOT do: reconcile 111/111 active tasks, 112 original IDs, 61/61 IA, 12/12 design families, 8/8 venue deliverables and 10/10 extension IA on the final candidate; record QA08 `DEFERRED_BY_USER/NOT_RUN`, operators, limits and known gaps. Do NOT claim full 112 or 200-user capacity.
@@ -624,7 +626,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   Recommended task executor category: deep-low
   Commit: Y | `feat(account): mount the sealed deletion coordinator in serving`
 
-- [ ] 51. Compose the closure producer and the archive HTTP endpoint
+- [~] 51. Compose the closure producer and the archive HTTP endpoint
   What to do / Must NOT do: add `Operation::Closure` to `product_rpc` using the Ops-lane `concert_event_operator_roles` schema (migration 0076, single source; no duplicate role migration or config allowlist) and the reviewed-retention provider, thread the World `AdmissionBridge` (single-bridge rule), and mount the `/archive` read endpoint. SCOPE CLARIFICATION (2026-11-06): the frozen contract declares `getConcertArchive` PUBLIC, so the archive is public and refuses only before the archived phase (404/409); private fields and deleted content are never returned. Authorization applies to the admin closure command only.
   Closes: GAP-1
   Parallelization: Wave 2 | Blocked by: 16, 13 | Blocks: 47
@@ -633,6 +635,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   QA scenarios: happy close -> archive fetch 200 with permitted fields; failure member closure -> 403. Evidence `.omo/evidence/mcr-finish-project/task-51-closure-producer.md`.
   Recommended task executor category: deep-low
   Commit: Y | `feat(lifecycle): compose closure producer and archive endpoint`
+  Gap (2026-11-06): live close -> /archive 200 is unreachable because FREEZE_MURAL..CLEANUP have no composed LifecycleOwners, so a closure job stops at READ_ONLY and both authenticated and anonymous /archive reads truthfully return 404 RESOURCE_UNAVAILABLE (PgPublicArchive::page requires ARCHIVED). Proven live: operator closure 200, member 403 PERMISSION_DENIED, post-closure write 409 INVALID_TRANSITION, forged/expired 401, OPERATOR|1| and READ_ONLY|2 persisted, deny-by-default settlement gate with exactly one early service, nine gate tests, merged-tree PG lifecycle PASS with the PUBLIC projection proven on real PostgreSQL.
 
 ## Final verification wave
 > Runs in parallel after ALL todos. ALL must APPROVE. Surface results and wait for the user's explicit okay before declaring complete.

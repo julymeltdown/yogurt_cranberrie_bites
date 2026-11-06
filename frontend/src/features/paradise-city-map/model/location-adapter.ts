@@ -128,7 +128,7 @@ export function createVenueLocationAdapter(options: VenueLocationAdapterOptions)
     const snapshot: CapabilitySnapshot = { scope: authority.scope, venue: venue.identity, classification: options.classification,
       serverNowMs: now, accessUntilMs, self: person(currentPeople.self, value?.self_location ?? null, now, value),
       friends: currentPeople.friends.map(p => person(p, value?.friends.find(f => f.user_id === p.userId) ?? null, now, value)),
-      notes: [], locationRequests: { incoming: requests().incoming.map(requestView), outgoing: requests().outgoing.map(requestView) },
+      notes: [], noteClusters: [], notesVisibleCount: null, locationRequests: { incoming: requests().incoming.map(requestView), outgoing: requests().outgoing.map(requestView) },
       sharing: value?.sharing.state === 'ACTIVE' && ms(value.sharing.expires_at)! > now ? 'active'
         : value?.sharing.state === 'PAUSED' ? 'paused' : value?.sharing.state === 'REVOKED' ? 'revoked' : 'off',
       rights: { sharePhone: !!value?.capabilities.can_share_phone, pause: !!value?.capabilities.can_pause, revoke: !!value?.capabilities.can_revoke,

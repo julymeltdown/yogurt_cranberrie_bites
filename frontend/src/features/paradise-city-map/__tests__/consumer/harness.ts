@@ -28,7 +28,8 @@ export function initialSnapshot(): CapabilitySnapshot {
   return { scope: testScope, venue: testVenue.identity, classification: 'CONTROLLED_FIXTURE', serverNowMs: at, accessUntilMs: at + 7200000,
     self: person('actor-test', 'You'), friends: [friend], sharing: 'off',
     rights: { sharePhone: true, pause: true, revoke: true, checkIn: [mainGate], postNote: [mainGate, subGate], noteAudiences: ['FRIENDS', 'EVERYONE'], noteExpiries: ['ONE_HOUR', 'END_OF_DAY'] },
-    notes: [{ id: 'note-test', landmarkId: mainGate, author: friend, body: 'Synthetic place note for a controlled fixture.', createdAtMs: at - 300000, expiresAtMs: at + 3600000, audience: 'FRIENDS', canReply: true, canMeet: true, replies: [] }] }
+    noteClusters: [{ landmarkId: mainGate, count: 1 }], notesVisibleCount: 1,
+    notes: [{ id: 'note-test', landmarkId: mainGate, author: friend, body: 'Synthetic place note for a controlled fixture.', createdAtMs: at - 300000, expiresAtMs: at + 3600000, audience: 'FRIENDS', revision: 4, replyCount: 0, canReply: true, canMeet: true, canWithdraw: false, replies: [] }] }
 }
 export function harness() {
   let snapshot: CapabilitySnapshot | null = initialSnapshot(), current = true, phoneStatus: PhoneStatus = 'idle'
@@ -37,6 +38,8 @@ export function harness() {
   const abort = new AbortController(), calls: { name: string; input: unknown; context: CommandContext }[] = [], opens: MeetingOpenIntent[] = []
   let next: ((name: string, context: CommandContext) => Promise<CommandResult>) | null = null, watches = 0, stops = 0, refreshes = 0, refreshResult = true
   let availability: VenueAvailability = { state: 'ready', reason: null, readAtMs: at, ageMs: 0, staleAtMs: at + 10000, refreshing: false, canRefresh: true }
+  let notesRead = true
+  const loads: { name: string; input: unknown }[] = []
   function publish(value: CapabilitySnapshot | null) { snapshot = value; for (const listener of listeners) listener() }
   const result = async (name: string, input: unknown, context: CommandContext): Promise<CommandResult> => {
     calls.push({ name, input, context }); if (next) return next(name, context)
@@ -49,7 +52,9 @@ export function harness() {
     availability: () => availability, async refresh() { refreshes++; if (refreshResult) availability = { ...availability, state: 'ready', reason: null, ageMs: 0 }; for (const listener of listeners) listener(); return refreshResult },
     beginPhoneSharing: ctx => result('beginPhoneSharing', null, ctx), publishPhoneFix: (value, ctx) => result('publishPhoneFix', value, ctx),
     pause: (value, ctx) => result('pause', value, ctx), revoke: ctx => result('revoke', null, ctx), requestLocation: (value, ctx) => result('requestLocation', value, ctx), checkIn: (value, ctx) => result('checkIn', value, ctx),
-    postNote: (value, ctx) => result('postNote', value, ctx), reply: (value, ctx) => result('reply', value, ctx), resolve: (value, ctx) => result('resolve', value, ctx) }
+    postNote: (value, ctx) => result('postNote', value, ctx), reply: (value, ctx) => result('reply', value, ctx), withdraw: (value, ctx) => result('withdraw', value, ctx), resolve: (value, ctx) => result('resolve', value, ctx),
+    loadNotes: async id => { loads.push({ name: 'loadNotes', input: id }); return notesRead }, loadNoteThread: async id => { loads.push({ name: 'loadNoteThread', input: id }); return notesRead },
+    loadNoteSummary: async () => { loads.push({ name: 'loadNoteSummary', input: null }); return notesRead } }
   const phone: PhoneLocationPort = { read: () => phoneStatus, subscribe(listener) { phoneListeners.add(listener); return () => { phoneListeners.delete(listener) } },
     start(onFix, onWithdraw) { watches++; fix = onFix; withdraw = onWithdraw; phoneStatus = 'watching'; for (const listener of phoneListeners) listener() },
     stop() { stops++; if (phoneStatus === 'watching') { phoneStatus = 'paused'; for (const listener of phoneListeners) listener() } }, dispose() { phone.stop() } }
@@ -57,9 +62,9 @@ export function harness() {
     async open(intent) { opens.push(intent); return { kind: 'opened' } }, close() { if (leaf?.locked) return false; leaf = null; for (const listener of meetingListeners) listener(); return true } }
   const authority = { scope: testScope, signal: abort.signal, isCurrent: () => current, subscribe(listener: () => void) { scopeListeners.add(listener); return () => { scopeListeners.delete(listener) } } }
   const controller = createVenueMapController({ venue: testVenue, authority, capabilities, meeting, phone })
-  return { controller, capabilities, phone, authority, meeting, calls, opens, publish, get snapshot() { return snapshot! }, get watches() { return watches }, get stops() { return stops }, get refreshes() { return refreshes },
+  return { controller, capabilities, phone, authority, meeting, calls, opens, loads, publish, get snapshot() { return snapshot! }, get watches() { return watches }, get stops() { return stops }, get refreshes() { return refreshes },
     setAvailability(value: VenueAvailability) { availability = value; for (const listener of listeners) listener() }, setRefreshResult(value: boolean) { refreshResult = value },
-    setResult(handler: typeof next) { next = handler }, setCurrent(value: boolean) { current = value; for (const listener of scopeListeners) listener() },
+    setResult(handler: typeof next) { next = handler }, setNotesRead(value: boolean) { notesRead = value }, setCurrent(value: boolean) { current = value; for (const listener of scopeListeners) listener() },
     emitFix(value: GeoFix) { fix?.(value) }, background() { withdraw?.('background') }, deny() { withdraw?.('denied') }, noDevice() { withdraw?.('unavailable') },
     publishLeaf(value: MeetingLeafSnapshot | null) { leaf = value; for (const listener of meetingListeners) listener() },
     dispose() { controller.dispose(); abort.abort() } }
