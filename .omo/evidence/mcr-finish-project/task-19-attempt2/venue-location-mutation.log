@@ -1,0 +1,343 @@
+   Compiling concert-service v0.1.0 (/Users/lhs/Desktop/mcr-worktrees/exec-w3-loc/backend/services/concert-service)
+warning: unused variable: `now`
+   --> services/concert-service/src/world/admission_bridge.rs:877:13
+    |
+877 |         let now = Utc::now();
+    |             ^^^ help: if this is intentional, prefix it with an underscore: `_now`
+    |
+    = note: `#[warn(unused_variables)]` on by default
+
+warning: value assigned to `receipt` is never read
+   --> services/concert-service/src/social_live/producer.rs:190:17
+    |
+190 |         let mut receipt = None;
+    |                 ^^^^^^^
+    |
+    = help: maybe it is overwritten before being read?
+    = note: `#[warn(unused_assignments)]` on by default
+
+warning: value assigned to `result` is never read
+   --> services/concert-service/src/account_private_data/core.rs:109:17
+    |
+109 |         let mut result = None;
+    |                 ^^^^^^
+    |
+    = help: maybe it is overwritten before being read?
+
+warning: unused variable: `fence`
+   --> services/concert-service/src/account_private_data/aggregate.rs:392:13
+    |
+392 |         let fence = user_fence(&mut tx, &command, &source).await?;
+    |             ^^^^^ help: if this is intentional, prefix it with an underscore: `_fence`
+
+warning: unused import: `crate::product_rpc::settlement::NativeTransactionResolver`
+ --> services/concert-service/src/mural_tools_b/witness.rs:5:5
+  |
+5 | use crate::product_rpc::settlement::NativeTransactionResolver;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` on by default
+
+warning: unused import: `crate::product_rpc::settlement::NativeTransactionResolver`
+ --> services/concert-service/src/intro_live/witness.rs:4:5
+  |
+4 | use crate::product_rpc::settlement::NativeTransactionResolver;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: unused import: `crate::product_rpc::ProductOwner`
+   --> services/concert-service/src/config/social_runtime.rs:115:13
+    |
+115 |         use crate::product_rpc::ProductOwner;
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: methods `request_id` and `cancel` are never used
+   --> services/concert-service/src/adapters/out/relationship_authority/world_auth.rs:205:19
+    |
+49  | impl WorldOwnerRequest {
+    | ---------------------- methods in this implementation
+...
+205 |     pub(crate) fn request_id(&self) -> Uuid {
+    |                   ^^^^^^^^^^
+...
+208 |     pub(crate) fn cancel(&self) {
+    |                   ^^^^^^
+    |
+    = note: `#[warn(dead_code)]` on by default
+
+warning: methods `observed_at` and `revision` are never used
+   --> services/concert-service/src/adapters/out/relationship_authority/world_auth.rs:254:19
+    |
+247 | impl WorldAuthObservation {
+    | ------------------------- methods in this implementation
+...
+254 |     pub(crate) fn observed_at(&self) -> DateTime<Utc> {
+    |                   ^^^^^^^^^^^
+...
+260 |     pub(crate) fn revision(&self) -> OwnerRevision {
+    |                   ^^^^^^^^
+
+warning: field `0` is never read
+  --> services/concert-service/src/adapters/out/relationship_authority/world_projection.rs:30:14
+   |
+30 |     Consumed(TicketClaim),
+   |     -------- ^^^^^^^^^^^
+   |     |
+   |     field in this variant
+   |
+   = note: `ProjectionSource` has a derived impl for the trait `Clone`, but this is intentionally ignored during dead code analysis
+help: consider changing the field to be of unit type to suppress this warning while preserving the field numbering, or remove the field
+   |
+30 -     Consumed(TicketClaim),
+30 +     Consumed(()),
+   |
+
+warning: field `original` is never read
+  --> services/concert-service/src/adapters/out/relationship_authority/world_projection.rs:71:5
+   |
+65 | pub(crate) struct WorldProjectionParent {
+   |                   --------------------- field in this struct
+...
+71 |     original: AuthorityRpcDeadline,
+   |     ^^^^^^^^
+   |
+   = note: `WorldProjectionParent` has a derived impl for the trait `Clone`, but this is intentionally ignored during dead code analysis
+
+warning: methods `original_deadline`, `consumed_ticket`, `pin`, `room_id`, and `connection_id` are never used
+   --> services/concert-service/src/adapters/out/relationship_authority/world_projection.rs:122:19
+    |
+76  | impl WorldProjectionParent {
+    | -------------------------- methods in this implementation
+...
+122 |     pub(crate) fn original_deadline(&self) -> AuthorityRpcDeadline {
+    |                   ^^^^^^^^^^^^^^^^^
+...
+131 |     pub(crate) fn consumed_ticket(&self) -> Option<&TicketClaim> {
+    |                   ^^^^^^^^^^^^^^^
+...
+137 |     pub(crate) fn pin(&self) -> &ResourcePin {
+    |                   ^^^
+...
+143 |     pub(crate) fn room_id(&self) -> RoomId {
+    |                   ^^^^^^^
+...
+146 |     pub(crate) fn connection_id(&self) -> ConnectionId {
+    |                   ^^^^^^^^^^^^^
+
+warning: methods `credential_expires_at`, `source_expires_at`, `original_deadline`, `cancel`, and `purpose` are never used
+   --> services/concert-service/src/adapters/out/relationship_authority/world_projection.rs:258:23
+    |
+258 |         pub(crate) fn credential_expires_at(&self) -> DateTime<Utc> {
+    |                       ^^^^^^^^^^^^^^^^^^^^^
+...
+261 |         pub(crate) fn source_expires_at(&self) -> DateTime<Utc> {
+    |                       ^^^^^^^^^^^^^^^^^
+...
+264 |         pub(crate) fn original_deadline(&self) -> AuthorityRpcDeadline {
+    |                       ^^^^^^^^^^^^^^^^^
+...
+267 |         pub(crate) fn cancel(&self) {
+    |                       ^^^^^^
+...
+272 | impl WorldProfileProjection {
+    | --------------------------- methods in this implementation
+273 |     scope_getters!();
+    |     ---------------- in this macro invocation
+...
+277 |     pub(crate) fn purpose(&self) -> &'static str {
+    |                   ^^^^^^^
+    |
+    = note: this warning originates in the macro `scope_getters` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: multiple methods are never used
+   --> services/concert-service/src/adapters/out/relationship_authority/world_projection.rs:246:23
+    |
+246 |         pub(crate) fn actor(&self) -> Uuid {
+    |                       ^^^^^
+...
+249 |         pub(crate) fn event_id(&self) -> Uuid {
+    |                       ^^^^^^^^
+...
+264 |         pub(crate) fn original_deadline(&self) -> AuthorityRpcDeadline {
+    |                       ^^^^^^^^^^^^^^^^^
+...
+267 |         pub(crate) fn cancel(&self) {
+    |                       ^^^^^^
+...
+293 | impl WorldPresenceProjection {
+    | ---------------------------- methods in this implementation
+294 |     scope_getters!();
+    |     ---------------- in this macro invocation
+...
+304 |     pub(crate) fn purpose(&self) -> &'static str {
+    |                   ^^^^^^^
+...
+315 |     pub(crate) fn candidate_credential_expires_at(&self) -> DateTime<Utc> {
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+...
+318 |     pub(crate) fn candidate_source_expires_at(&self) -> DateTime<Utc> {
+    |                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: this warning originates in the macro `scope_getters` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: field `subject` is never read
+   --> services/concert-service/src/adapters/out/relationship_authority/world_projection.rs:365:5
+    |
+361 | pub(crate) struct WorldProjectionAttempt {
+    |                   ---------------------- field in this struct
+...
+365 |     subject: Uuid,
+    |     ^^^^^^^
+
+warning: multiple methods are never used
+   --> services/concert-service/src/adapters/out/relationship_authority/world_projection.rs:246:23
+    |
+246 |         pub(crate) fn actor(&self) -> Uuid {
+    |                       ^^^^^
+...
+249 |         pub(crate) fn event_id(&self) -> Uuid {
+    |                       ^^^^^^^^
+...
+252 |         pub(crate) fn session_family_id(&self) -> Uuid {
+    |                       ^^^^^^^^^^^^^^^^^
+...
+255 |         pub(crate) fn request_id(&self) -> Uuid {
+    |                       ^^^^^^^^^^
+...
+258 |         pub(crate) fn credential_expires_at(&self) -> DateTime<Utc> {
+    |                       ^^^^^^^^^^^^^^^^^^^^^
+...
+261 |         pub(crate) fn source_expires_at(&self) -> DateTime<Utc> {
+    |                       ^^^^^^^^^^^^^^^^^
+...
+264 |         pub(crate) fn original_deadline(&self) -> AuthorityRpcDeadline {
+    |                       ^^^^^^^^^^^^^^^^^
+...
+267 |         pub(crate) fn cancel(&self) {
+    |                       ^^^^^^
+...
+367 | impl WorldProjectionAttempt {
+    | --------------------------- methods in this implementation
+368 |     scope_getters!();
+    |     ---------------- in this macro invocation
+...
+390 |     pub(crate) fn subject(&self) -> Uuid {
+    |                   ^^^^^^^
+...
+393 |     pub(crate) fn deadline(&self) -> AuthorityRpcDeadline {
+    |                   ^^^^^^^^
+    |
+    = note: this warning originates in the macro `scope_getters` (in Nightly builds, run with -Z macro-backtrace for more info)
+
+warning: methods `subject` and `observed_at` are never used
+  --> services/concert-service/src/adapters/out/world_profile.rs:44:19
+   |
+43 | impl WorldProfileObservation {
+   | ---------------------------- methods in this implementation
+44 |     pub(crate) fn subject(&self) -> Uuid {
+   |                   ^^^^^^^
+...
+50 |     pub(crate) fn observed_at(&self) -> DateTime<Utc> {
+   |                   ^^^^^^^^^^^
+
+warning: function `dependency_error_status` is never used
+   --> services/concert-service/src/adapters/out/public_profile/mod.rs:353:4
+    |
+353 | fn dependency_error_status() -> Status {
+    |    ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: field `owners` is never read
+   --> services/concert-service/src/world/recipient_owners.rs:135:5
+    |
+129 | pub(crate) struct RecipientObservation {
+    |                   -------------------- field in this struct
+...
+135 |     owners: RevisionVector,
+    |     ^^^^^^
+
+warning: methods `owner_revisions` and `checked_at` are never used
+   --> services/concert-service/src/world/recipient_owners.rs:167:19
+    |
+146 | impl RecipientObservation {
+    | ------------------------- methods in this implementation
+...
+167 |     pub(crate) fn owner_revisions(&self) -> RevisionVector {
+    |                   ^^^^^^^^^^^^^^^
+...
+173 |     pub(crate) fn checked_at(&self) -> DateTime<Utc> {
+    |                   ^^^^^^^^^^
+
+warning: associated function `new_auth_fixture` is never used
+   --> services/concert-service/src/world/admission_bridge.rs:621:19
+    |
+337 | impl AdmissionBridge {
+    | -------------------- associated function in this implementation
+...
+621 |     pub(crate) fn new_auth_fixture(
+    |                   ^^^^^^^^^^^^^^^^
+
+warning: function `visible_in` is never used
+  --> services/concert-service/src/gift_live/moderation.rs:77:21
+   |
+77 | pub(crate) async fn visible_in(c: &mut PgConnection, event: Uuid, gift: Uuid) -> Result<(), CommandError> {
+   |                     ^^^^^^^^^^
+
+warning: function `retain_representation` is never used
+  --> services/concert-service/src/gift_live/moderation.rs:88:21
+   |
+88 | pub(crate) async fn retain_representation(pool: &PgPool, scope: &Arc<OwnerGuardScope>, request: &GiftRequest) -> Result<(), Status> {
+   |                     ^^^^^^^^^^^^^^^^^^^^^
+
+warning: associated function `from_checked_fields` is never used
+    --> services/concert-service/src/party_live/mod.rs:1748:19
+     |
+1716 | impl PartyLiveBinding {
+     | --------------------- associated function in this implementation
+...
+1748 |     pub(super) fn from_checked_fields(
+     |                   ^^^^^^^^^^^^^^^^^^^
+
+warning: function `error` is never used
+    --> services/concert-service/src/party_live/wire.rs:1024:8
+     |
+1024 | pub fn error(error: PartyLiveError, trace: Uuid) -> PartyLiveReply {
+     |        ^^^^^
+
+warning: `concert-service` (lib) generated 25 warnings
+warning: unnecessary trailing semicolon
+   --> services/concert-service/src/main.rs:105:7
+    |
+105 |     );;
+    |       ^ help: remove this semicolon
+    |
+    = note: `#[warn(redundant_semicolons)]` on by default
+
+warning: unnecessary trailing semicolon
+   --> services/concert-service/src/main.rs:145:13
+    |
+145 |         })?;;
+    |             ^ help: remove this semicolon
+
+warning: `concert-service` (bin "concert-service") generated 2 warnings
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 30.99s
+     Running tests/venue_location.rs (/Users/lhs/Desktop/mcr-build/exec-w3-loc/debug/deps/venue_location-5f9edbc88f9577a6)
+
+running 1 test
+test missing_bilateral_friend_read_fails_closed ... FAILED
+
+failures:
+
+---- missing_bilateral_friend_read_fails_closed stdout ----
+
+thread 'missing_bilateral_friend_read_fails_closed' panicked at services/concert-service/tests/venue_location.rs:575:5:
+assertion `left == right` failed
+  left: Ok(LocationSnapshot { event_id: 3c2143b7-fadf-4fdc-a3a9-a0b795105b99, actor_id: bddb722a-faaa-472b-9c3b-6cdc4b0c77eb, server_time: 2026-11-06T05:05:54.042855Z, access_until: 2026-11-06T05:06:54.039822Z, policy: VenueLocationPolicy { event_id: EventId(3c2143b7-fadf-4fdc-a3a9-a0b795105b99), venue_key: "venue-test", revision: 1, timezone: "Asia/Seoul", valid_until: 2026-11-06T06:05:54.042869Z, fresh_ms: 30000, last_known_ms: 120000, fix_max_age_ms: 120000, future_skew_ms: 5000, sharing_lease_ms: 60000, request_ttl_ms: 60000, check_in_ttl_ms: 60000, coordinate_retention_ms: 300000, command_retention_ms: 60000, max_accuracy_m: 50.0, max_viewers: 10 }, clock: VenueClock { event_id: 3c2143b7-fadf-4fdc-a3a9-a0b795105b99, venue_key: "venue-test", policy_revision: 1, timezone: "Asia/Seoul", server_time: 2026-11-06T05:05:54.042855Z, end_of_day: 2026-11-06T15:00:00Z, valid_until: 2026-11-06T06:05:54.042869Z }, sharing: SharingProjection { state: Off, revision: 0, viewer_ids: [], expires_at: None, updated_at: None }, self_location: None, friends: [VisibleLocation { user_id: ec1712cf-1bde-44a5-9907-24579cae2d88, source: Phone, position: PhonePosition { latitude: 37.5665, longitude: 126.978, accuracy_m: 8.0, captured_at: 2026-11-06T05:05:54.041469Z, received_at: 2026-11-06T05:05:54.042578Z }, observed_at: 2026-11-06T05:05:54.041469Z, fresh_until: Some(2026-11-06T05:06:24.041469Z), expires_at: 2026-11-06T05:06:54.039822Z, access_until: 2026-11-06T05:06:54.039822Z, visibility_revision: 1, physical_arrival_verified: false, can_request_location: true }], capabilities: LocationCapabilities { can_share_phone: true, can_pause: false, can_revoke: false, check_in_landmark_ids: [], geographic_projection: "UNAVAILABLE" }, incoming_requests: [], outgoing_requests: [] })
+ right: Err(PolicyUnavailable)
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    missing_bilateral_friend_read_fails_closed
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.02s
+
+error: test failed, to rerun pass `-p concert-service --test venue_location`

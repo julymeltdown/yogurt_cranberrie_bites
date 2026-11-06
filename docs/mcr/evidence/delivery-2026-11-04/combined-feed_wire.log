@@ -1,0 +1,8 @@
+
+running 3 tests
+test actual_public_fixture_passes_and_private_author_field_is_rejected ... ok
+test closed_create_schema_rejects_private_fields_duplicates_and_noncanonical_ids ... ok
+test command_decoders_preserve_c04_shapes_and_reject_actor_injection ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s
+

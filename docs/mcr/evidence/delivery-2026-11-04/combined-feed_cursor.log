@@ -1,0 +1,7 @@
+
+running 2 tests
+test aead_cursor_binds_context_filter_collection_and_window ... ok
+test cursor_tamper_truncation_padding_and_noncanonical_input_fail ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

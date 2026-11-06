@@ -1,0 +1,26 @@
+{
+  "scope": "BE10/BE11 application contracts and durable PostgreSQL admission",
+  "result": "PASS",
+  "cleanup": "PASS",
+  "production": "NOT_RUN",
+  "http_ingress": "NOT_IMPLEMENTED",
+  "websocket_ingress": "NOT_IMPLEMENTED",
+  "be12_simulation": "NOT_IMPLEMENTED",
+  "be13_privacy_projection": "NOT_IMPLEMENTED",
+  "source_revision": "279aad1b391df8fa6589e2f69d6bf3cdf6c6b255",
+  "source_sha256": {
+    "backend/crates/concert-application/src/world_ticket/mod.rs": "508da356cfa8aa35258c55347607396682185ed1e56a88ae29b8968cfc65cda3",
+    "backend/services/concert-service/src/world/mod.rs": "b3bc062c7d18149309eb22656cbc613d8d763ceab1e1c309e5e372a273f36063",
+    "backend/services/concert-service/migrations/0005_world_admission.sql": "100e8de5a8392a4cd11e83337303e44e9ef79cee7c6f3c7547e333bcd9c7b761"
+  },
+  "script_sha256": "8993172321db18a15253e9f16f4136005e62f8bde44fb4f84a85043d8be8aeb5",
+  "owned_directory": "/private/tmp/mcr-pg-fgrdpb2y",
+  "binary_sha256": "2ebc105bef0ebbf7b21af8fdd86d7e7eac30f4c850d9a8a204dcb44101db10fb",
+  "postgres_version": "16.14 (Homebrew)",
+  "direct_sql_migrations": "PASS",
+  "schema_constraints": "PASS",
+  "native_test_exit": 0,
+  "native_test_output_sha256": "17be0e47d7c95be66ad091f51b314f4dab3fd58fccc892764a72774aa22aeaf7",
+  "restart_persistence": "PASS",
+  "direct_sql_reapply": "EXPECTED_REFUSED"
+}

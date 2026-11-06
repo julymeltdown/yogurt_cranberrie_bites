@@ -1,0 +1,38 @@
+{
+  "scope": "BE10/BE11 application contracts and durable PostgreSQL admission",
+  "result": "PASS",
+  "cleanup": "PASS",
+  "production": "NOT_RUN",
+  "http_ingress": "IMPLEMENTED_NOT_RUN_BY_THIS_REPORT",
+  "websocket_ingress": "IMPLEMENTED_NOT_RUN_BY_THIS_REPORT",
+  "be12_simulation": "NOT_IMPLEMENTED",
+  "be13_privacy_projection": "NOT_IMPLEMENTED",
+  "source_revision": "501710d293e5309e862997a353714e5753a76da0",
+  "source_sha256": {
+    "backend/crates/concert-application/src/world_ticket/mod.rs": "d591fb564a3c28440749d5e8175daa379cbb0c8e88046fe9796ea3de2058da70",
+    "backend/services/concert-service/src/world/mod.rs": "dd3962147909c65f41a675cb3063b30f8e1a9df12d1e99d63a0e59be11f12721",
+    "backend/services/concert-service/migrations/0005_world_admission.sql": "100e8de5a8392a4cd11e83337303e44e9ef79cee7c6f3c7547e333bcd9c7b761"
+  },
+  "gateway_http_source_sha256": {
+    "backend/services/api-gateway/src/adapters/in/http/concert_world.rs": "01eca9e4922a336de33b86c857d677bfd5ef6e7a8ee761018c1ac0d183e59785",
+    "backend/services/api-gateway/src/adapters/out/concert_world.rs": "c0ef583a8f383897abae39470dee34681b9cd54d3d89637b3657432184772868",
+    "backend/services/api-gateway/tests/concert_identity_composition.rs": "3476db087cc7c338d247c0de61d8b87174673273f69ac2937420d57ec82b8cfd",
+    "backend/services/api-gateway/tests/support/concert_world_client.rs": "a95c752a8ef59e19a8394d0f074e43288287ebc3244c854b1cddcfe0d78ea734",
+    "backend/services/api-gateway/tests/support/concert_world_http.rs": "6452371a027166194387669325eeea83ad9e86242ff56824b1bcf8048aa9a2ed",
+    "backend/services/concert-service/src/bootstrap/mod.rs": "440aeecc832b469a0921a9bfdad7ab6499bf38188dd23e7dbf8fa96dfa19a44c",
+    "backend/services/concert-service/src/main.rs": "63b4a0e3abd63afcf90a2d400f6b1d2b902800d5ca3d9d3a4fff740024641956",
+    "backend/services/concert-service/src/world/rpc.rs": "67e1419231ca138aad4b330c70a55f1efa1500087d1055ca623ff37a4026c8fd",
+    "backend/services/concert-service/src/world_rpc.rs": "2a31a36f6c77de3bb408d1cb21be01baca5b471c1acb614c06051d7dddf6ea98",
+    "backend/services/concert-service/tests/world_rpc_authority.rs": "43063e9fbe3d4eabdd9a3565eb3773bca4098da2e34276073d0a1c6d3d08bae4"
+  },
+  "script_sha256": "3d87ec45ef4bb515309666555bf673f0ca17e8be607b9d4a758bdeaf8051b6b3",
+  "owned_directory": "/private/tmp/mcr-pg-l1nx62h0",
+  "binary_sha256": "3b5ac1fd338b947860fb6c6aa7e64da5fd48c2500c381e6737c6d952a159034d",
+  "postgres_version": "16.14 (Homebrew)",
+  "direct_sql_migrations": "PASS",
+  "schema_constraints": "PASS",
+  "native_test_exit": 0,
+  "native_test_output_sha256": "d7b3fcb92331d3c192f39d9621a3c42060e8efe2485c2383fe4d97ca2b32f7d0",
+  "restart_persistence": "PASS",
+  "direct_sql_reapply": "EXPECTED_REFUSED"
+}

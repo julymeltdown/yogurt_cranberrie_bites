@@ -1,0 +1,31 @@
+
+running 26 tests
+test accepted_interaction_survives_a_later_motion_packet_and_repeated_buttons_are_explicitly_throttled ... ok
+test accepted_stop_is_not_erased_by_a_later_input_during_catchup ... ok
+test authoritative_takeover_fences_old_connection_and_resets_held_input ... ok
+test corner_cutting_grid_edge_skimming_and_out_of_bounds_are_blocked ... ok
+test expired_input_denied_without_extending_authority ... ok
+test expired_or_unavailable_authority_removes_player_even_without_due_tick ... ok
+test explicit_limits_bound_configuration_and_workload_at_fifty_players ... ok
+test fixed_step_and_diagonal_never_exceed_configured_speed ... ok
+test frozen_c06_synthetic_geometry_has_expected_spawn_and_collision ... ok
+test gaps_are_accepted_replays_rejected_ack_only_after_consumption ... ok
+test intent_wire_rejects_teleport_speed_duration_identity_and_unknown_buttons ... ok
+test invalid_axes_and_sequences_are_rejected_before_simulation ... ok
+test lag_has_bounded_catchup_and_new_input_is_not_backdated ... ok
+test maximum_range_interaction_on_one_pixel_grid_is_not_truncated ... ok
+test movement_history_is_bounded_when_ticks_are_not_serviced ... ok
+test one_shot_interaction_is_consumed_once_and_not_replayed_by_held_motion ... ok
+test packet_flood_cannot_accelerate_and_bucket_refills_at_thirty_per_second ... ok
+test range_requires_known_interaction_distance_and_clear_virtual_path ... ok
+test resync_cannot_cycle_back_to_an_old_stream_and_replay_its_input ... ok
+test resync_history_is_bounded_and_new_connection_can_start_fresh ... ok
+test same_connection_resync_cannot_extend_captured_access_expiry_or_reset_rate_bucket ... ok
+test spawn_is_cell_centered_and_mutated_or_malformed_geometry_is_rejected ... ok
+test stale_stream_epoch_connection_owner_and_resource_pin_never_mutate_position ... ok
+test stop_input_and_hold_timeout_prevent_stuck_movement ... ok
+test swept_collision_blocks_wall_tunneling_even_when_destination_is_walkable ... ok
+test wall_boundary_endpoints_are_symmetric_and_include_all_incident_cells ... ok
+
+test result: ok. 26 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+

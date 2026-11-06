@@ -17,6 +17,7 @@ use uuid::Uuid;
 mod command_routes;
 mod disclosure;
 mod feature_routes;
+mod read_routes;
 
 pub fn router(state: Arc<AppState>) -> Router {
     Router::new()
@@ -117,6 +118,7 @@ pub fn router(state: Arc<AppState>) -> Router {
         )
         .merge(feature_routes::router())
         .merge(command_routes::router())
+        .merge(read_routes::router())
         .with_state(state)
 }
 
@@ -466,6 +468,7 @@ fn is_product(path: &str) -> bool {
     };
     feature_routes::protects(path)
         || command_routes::protects(path)
+        || read_routes::protects(path)
         || tail == "feed"
         || tail == "commands"
         || tail == "parties"
@@ -486,7 +489,8 @@ pub async fn protect_response(request: Request, next: axum::middleware::Next) ->
     // Router::layer also wraps the shared fallback. Keep unmounted feature
     // suffixes out of unrelated service middleware and return a closed C04 error.
     if (feature_routes::protects(request.uri().path())
-        || command_routes::protects(request.uri().path()))
+        || command_routes::protects(request.uri().path())
+        || read_routes::protects(request.uri().path()))
         && request
             .extensions()
             .get::<axum::extract::MatchedPath>()

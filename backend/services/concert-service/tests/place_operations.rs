@@ -632,3 +632,101 @@ async fn held_selection_lock_prevents_racing_closure_until_commit() -> anyhow::R
     p.close().await;
     Ok(())
 }
+
+#[tokio::test]
+async fn unreviewed_place_cannot_be_published_and_closure_preserves_provenance(
+) -> anyhow::Result<()> {
+    let (p, a) = fixture().await?;
+    let place = Place::new(
+        PlaceId::from_uuid(Uuid::new_v4())?,
+        "Unreviewed physical reference".into(),
+        PlaceKind::Physical,
+        VerificationState::Unverified,
+        ClosureState::Open,
+        "Accessibility note pending review".into(),
+        Provenance::new(
+            "be38_unreviewed_place".into(),
+            SourceKind::PlaceReference,
+            "unreviewed-1".into(),
+            Some("https://example.org/unreviewed-place".into()),
+            "Unreviewed author".into(),
+            "Metadata only".into(),
+            ReviewState::Unreviewed,
+            None,
+            None,
+            PhotoPermission::NotApplicable,
+        )?,
+    )?;
+    let bytes = release_bytes(1, &place)?;
+    let release = CatalogRelease::new(parse_stored_release(&bytes)?, bytes)?;
+    PgPlaceRepository::new(p.clone())
+        .publish_release(EventId::from_uuid(a.event), release)
+        .await?;
+    let repo = PgEventOperations::new(
+        p.clone(),
+        authority(Role::Operator),
+        UnavailableReview,
+        PgPlaceOperations::new(authority(Role::Operator)),
+    );
+    let keys = keys();
+    let mut claimed = place.clone();
+    claimed.verification = VerificationState::Verified;
+    claimed.provenance = Provenance::new(
+        "be38_unreviewed_place".into(),
+        SourceKind::PlaceReference,
+        "unreviewed-1".into(),
+        Some("https://example.org/unreviewed-place".into()),
+        "Unreviewed author".into(),
+        "Metadata only".into(),
+        ReviewState::Reviewed,
+        Some("late reviewer".into()),
+        Some(Utc::now() - chrono::Duration::seconds(1)),
+        PhotoPermission::NotApplicable,
+    )?;
+    let response = repo
+        .execute(
+            a,
+            Uuid::new_v4(),
+            Some(place.id.uuid()),
+            EventCommand::Place(PlaceChange {
+                place: claimed,
+                expected: Revision::new(1)?,
+                reason: "Unreviewed claim".into(),
+            }),
+            &keys,
+        )
+        .await?;
+    assert_eq!(response.failure, Some(SafeFailure::MapVersionMismatch));
+    assert_eq!(
+        sqlx::query_scalar::<_, i64>(
+            "select revision from concert_place_current_state where place_id=$1"
+        )
+        .bind(place.id.uuid())
+        .fetch_one(&p)
+        .await?,
+        1
+    );
+    let mut closed = place.clone();
+    closed.closure = ClosureState::Closed;
+    let receipt = repo
+        .execute(
+            a,
+            Uuid::new_v4(),
+            Some(place.id.uuid()),
+            EventCommand::Place(PlaceChange {
+                place: closed,
+                expected: Revision::new(1)?,
+                reason: "Close unreviewed reference for the event".into(),
+            }),
+            &keys,
+        )
+        .await?;
+    assert_eq!(receipt.state, ReceiptState::Succeeded);
+    let rows = repo.places(a, None, Some(true), 20).await?;
+    assert_eq!(rows.len(), 1);
+    assert_eq!(rows[0].revision.get(), 2);
+    assert_eq!(rows[0].place.provenance, place.provenance);
+    assert_eq!(rows[0].place.provenance.review_state, ReviewState::Unreviewed);
+    p.close().await;
+    Ok(())
+}

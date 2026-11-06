@@ -1,0 +1,258 @@
+{
+  "task": "33",
+  "title": "Finish PI08 Photo2 HUD and camera",
+  "branch": "codex/mcr-exec-w6-pi08",
+  "base": "ea5a8b746",
+  "recordedAt": "2026-11-06T05:58:00Z",
+  "scope": "HUD fixed-region proof at 360/390/430; pinned source mesh/display frame/ART tuple; Photo2 camera cover presentation; fail-closed registry reason.",
+  "changedFiles": [
+    "frontend/src/features/parade-ink/world-hud/photo2-world-display-v1.ts",
+    "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/photo2-world-display-v1.test.ts",
+    "frontend/src/features/parade-ink/world-hud/__tests__/finish-01/photo2-mural-projection.test.ts",
+    "frontend/src/features/parade-ink/world-hud/__tests__/finish-02/preview.html",
+    "frontend/src/features/parade-ink/world-hud/__tests__/finish-02/preview.tsx",
+    "frontend/src/features/parade-ink/world-hud/__tests__/finish-02/capture.mjs",
+    "frontend/src/world/reference-scene/photo2-world-display-v1/model.ts",
+    "frontend/src/world/scenes/MapScene.ts"
+  ],
+  "commands": [
+    {
+      "command": "corepack pnpm@11.7.0 install --frozen-lockfile --offline",
+      "exit": 0
+    },
+    {
+      "command": "corepack pnpm@11.7.0 run typecheck",
+      "exit": 0
+    },
+    {
+      "command": "corepack pnpm@11.7.0 exec vitest run src/features/parade-ink/world-hud (pinned producer-input-v2/v3 materialized from Git for the sparse checkout)",
+      "exit": 0,
+      "tests": "7 files / 31 tests"
+    },
+    {
+      "command": "corepack pnpm@11.7.0 exec vitest run src/world/__tests__/runtime.test.ts src/world/__tests__/controls-layout.test.ts src/world/reference-scene/__tests__/model.test.ts src/world/reference-scene/__tests__/phaser.test.ts",
+      "exit": 0,
+      "tests": "4 files / 145 passed, 13 skipped"
+    },
+    {
+      "command": "node src/features/parade-ink/world-hud/__tests__/finish-02/capture.mjs",
+      "exit": 0
+    }
+  ],
+  "hud": {
+    "reference": {
+      "crop": [
+        436,
+        60,
+        832,
+        847
+      ],
+      "normalization": 0.9848484848484849,
+      "sha256": "9e7f17a666e1ecfc738a14b75bb3a166235a05c401f206aa24f26cf7463cbc27"
+    },
+    "captures": {
+      "world-390": {
+        "viewport": [
+          390,
+          775
+        ],
+        "DPR": 1,
+        "overflow": false,
+        "title": {
+          "x": 4,
+          "y": 4,
+          "width": 382,
+          "height": 48
+        },
+        "context": {
+          "x": 11,
+          "y": 617,
+          "width": 368,
+          "height": 73
+        },
+        "navigation": {
+          "x": 4,
+          "y": 702,
+          "width": 382,
+          "height": 61
+        },
+        "action": {
+          "x": 280.15625,
+          "y": 631.5,
+          "width": 87.84375,
+          "height": 44
+        },
+        "stage": {
+          "x": 4,
+          "y": 109,
+          "width": 382,
+          "height": 593
+        },
+        "bottomPadding": "10px",
+        "faces": [
+          {
+            "family": "Parade Ink Text",
+            "status": "loaded"
+          },
+          {
+            "family": "Parade Ink Display",
+            "status": "loaded"
+          }
+        ]
+      },
+      "world-360": {
+        "viewport": [
+          360,
+          800
+        ],
+        "DPR": 1,
+        "overflow": false,
+        "title": {
+          "x": 4,
+          "y": 4,
+          "width": 352,
+          "height": 48
+        },
+        "context": {
+          "x": 11,
+          "y": 641,
+          "width": 338,
+          "height": 74
+        },
+        "navigation": {
+          "x": 4,
+          "y": 727,
+          "width": 352,
+          "height": 61
+        },
+        "action": {
+          "x": 250.15625,
+          "y": 656,
+          "width": 87.84375,
+          "height": 44
+        },
+        "stage": {
+          "x": 4,
+          "y": 109,
+          "width": 352,
+          "height": 618
+        },
+        "bottomPadding": "10px",
+        "faces": [
+          {
+            "family": "Parade Ink Text",
+            "status": "loaded"
+          },
+          {
+            "family": "Parade Ink Display",
+            "status": "loaded"
+          }
+        ]
+      },
+      "world-430": {
+        "viewport": [
+          430,
+          932
+        ],
+        "DPR": 1,
+        "overflow": false,
+        "title": {
+          "x": 4,
+          "y": 4,
+          "width": 422,
+          "height": 48
+        },
+        "context": {
+          "x": 11,
+          "y": 774,
+          "width": 408,
+          "height": 73
+        },
+        "navigation": {
+          "x": 4,
+          "y": 859,
+          "width": 422,
+          "height": 61
+        },
+        "action": {
+          "x": 320.15625,
+          "y": 788.5,
+          "width": 87.84375,
+          "height": 44
+        },
+        "stage": {
+          "x": 4,
+          "y": 109,
+          "width": 422,
+          "height": 750
+        },
+        "bottomPadding": "10px",
+        "faces": [
+          {
+            "family": "Parade Ink Text",
+            "status": "loaded"
+          },
+          {
+            "family": "Parade Ink Display",
+            "status": "loaded"
+          }
+        ]
+      }
+    },
+    "deltas": {
+      "title": {
+        "x": 0.06060606060606055,
+        "y": -0.9242424242424239,
+        "width": 0.863636363636374,
+        "height": 1.712121212121211
+      },
+      "context": {
+        "x": 0.16666666666666607,
+        "y": -0.5,
+        "width": 0.6515151515151274,
+        "height": 0.12121212121212466
+      },
+      "navigation": {
+        "x": -0.9242424242424239,
+        "y": -1.1818181818181301,
+        "width": 1.8484848484848726,
+        "height": 0.9242424242424292
+      }
+    },
+    "disposition": "390 context x11/y617/w368/h73 vs normalized reference x10.833/y617.5/w367.348/h72.879; all four deltas <=0.66px. Title 48px token vs 46.29px crop (1.71px) and navigation top rule (1.18px) are documented published-token/border deltas. 360/430 keep the 7px side inset, 12px context-to-navigation gap, 73px strip, 61px navigation and no horizontal overflow."
+  },
+  "camera": {
+    "pinnedSourceMesh": "204 vertices / 12 columns x 17 rows from producer-input-v3.json (3d256d421)",
+    "camera": "projected native 160,13,584,584 -> display 0,-11.612903225806452,361.11,545.8594785682723",
+    "presentation": "cover max(viewport/camera) removes the previous ground-bounds term and 1x cap that produced gutters",
+    "tests": "photo2CameraPresentation at 390x593, 360x583, 430x731, 390x373; invalid camera/viewport/zoom rejected"
+  },
+  "pins": {
+    "producer": "3d256d421 producer-input-v3 / producer-contract-v3",
+    "release": "a8027217e art; dbc2b43a4 backend qualified-inputs/source-binding",
+    "checked": "reference sha, native input/geometry/width/height, exact mesh, ground bounds, interface/provenance/qualification/scenery/theme hashes, ground/atlas bytes+sha+dimensions"
+  },
+  "registry": {
+    "state": "EMPTY_FAIL_CLOSED",
+    "behavior": "absent/unqualified Photo2 artifact throws MapError('unavailable') rather than MapError('invalid'); no legacy character or scenery fallback",
+    "admissionGate": "future release must match the pinned mesh, camera, ground frame and exact asset tuple"
+  },
+  "limitations": [
+    "Capture uses the actual HUD components, tokens and shell CSS in a controlled preview; it is not a live backend, Auth, Phaser, device or Photo2-pixel acceptance.",
+    "Scenery composition is not claimed: the Photo2 registry stays empty because ART v3 pixels/alpha/focus clearance and C06 catalog coherence remain unqualified.",
+    "No AR02/AR04 criteria reopened; no character fallback used."
+  ],
+  "files": {
+    "screenshots": [
+      "world-360.png",
+      "world-390.png",
+      "world-430.png",
+      "photo2-reference.png",
+      "photo2-pair.png",
+      "photo2-overlay.png",
+      "photo2-diff.png"
+    ],
+    "measurements": "hud-geometry.json"
+  },
+  "commit": "f949183836d942b4993fe225a94a4b75b40f11b1 feat(ui): finish PI08 Photo2 HUD and camera"
+}
