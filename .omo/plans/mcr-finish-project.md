@@ -415,7 +415,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   Recommended task executor category: deep-low
   Commit: Y | `test(in02): pass real meetup and pickup gate`
 
-- [ ] 30. Pass IN03 social and privacy gate (external input dependent)
+- [~] 30. Pass IN03 social and privacy gate (external input dependent)
   What to do / Must NOT do: complete real intro discovery, feed/comment, mutual consent/reveal/revoke, notifications and block propagation; run the authorized age-provider positive cases only when provenance exists. Do NOT invent provider provenance; do NOT substitute fixtures for restricted/revoked/blocked cases.
   Closes: GAP-2, GAP-5
   Parallelization: Wave 5 | Blocked by: 9, 11, 12, 14, 23 | Blocks: 47
@@ -424,6 +424,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   QA scenarios: happy reveal/revoke round trip; failure expired/blocked reveal -> 403/404. Evidence `.omo/evidence/mcr-finish-project/task-30-in03.md`.
   Recommended task executor category: deep-low
   Commit: Y | `test(in03): pass the social privacy gate where inputs exist`
+  Gap (2026-11-06): 27/27 executed checks pass on a real stack with exact envelopes (follow/request/decline/accept, private-profile fence and invalidation, block/unblock with journal rows, blocked follow 403, feed excluding deleted and blocked authors, wall outsider 404, 11-denial payload audit with zero private-metadata leaks, and the blocked-read feed now 200 with items=[] instead of 503). NOT_RUN with named blockers: four provider cases (age provider/claims, OAuth provider, external mail/SMS), age-provider positive and social reveal/revoke, venue meeting/location cases (the branch predates the venue dispatch merge and must be re-run), no blocked-comment seed for blocked_comment_author_filter, and no browser/WS client for client_cache_and_ws_frames.
 
 - [x] 31. Pass IN04 multiuser mural and moderation gate
   What to do / Must NOT do: multiple real clients edit the Wall B surface (opaque erase, four-connected fill ≤256, eligible undo), with cooldown, shared 512-cell budget, moderation pause/restore/freeze and convergence. Do NOT allow private history leakage; do NOT skip the uncertain-outcome recovery case.
