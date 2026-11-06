@@ -96,7 +96,11 @@ export function createVenueLocationAdapter(options: VenueLocationAdapterOptions)
   function person(identity: Identity, location: VisibleLocation | null, now: number, value: LocationSnapshot | null): PersonView {
     const visible = !!location && location.user_id === identity.userId && ms(location.access_until)! > now
     const observation = visible ? ms(location.observed_at) : null
-    const fresh = visible ? Math.min(ms(location.fresh_until) ?? -Infinity, ms(location.expires_at) ?? -Infinity, ms(location.access_until) ?? -Infinity) : null
+    // The frozen wire supplies fresh_until only for PHONE. Check-in and LAST_KNOWN
+    // are current no longer than expires_at; UNAVAILABLE has no current horizon.
+    const horizon = !location ? null : location.source === 'PHONE' ? location.fresh_until
+      : location.source === 'SELF_REPORTED_CHECK_IN' || location.source === 'LAST_KNOWN' ? location.expires_at : null
+    const fresh = visible && horizon !== null ? Math.min(ms(horizon) ?? -Infinity, ms(location.expires_at) ?? -Infinity, ms(location.access_until) ?? -Infinity) : null
     const mapped = visible && value && location.source === 'SELF_REPORTED_CHECK_IN' && location.landmark
       ? reviewed(now, value).find(p => sameSelection(p.grant.selection, location.landmark!.selection)
         && p.grant.provider_id === location.landmark!.provider_id && p.grant.source_revision === location.landmark!.source_revision
@@ -107,7 +111,8 @@ export function createVenueLocationAdapter(options: VenueLocationAdapterOptions)
     const place = mapped && current ? venue.landmarks.find(p => p.id === mapped.landmarkId) : undefined
     return { ...identity, visible: true, point: place?.point ?? null, landmarkId: place?.id ?? null,
       locationSource: !visible || location.source === 'UNAVAILABLE' || observation === null ? 'unavailable'
-        : !current || location.source === 'LAST_KNOWN' ? 'last-known' : location.source === 'PHONE' ? 'phone' : 'check-in',
+        : location.source === 'SELF_REPORTED_CHECK_IN' && !current ? 'unavailable'
+          : !current || location.source === 'LAST_KNOWN' ? 'last-known' : location.source === 'PHONE' ? 'phone' : 'check-in',
       updatedAtMs: observation, freshUntilMs: fresh !== null && Number.isFinite(fresh) ? fresh : null,
       canRequest: identity.userId !== authority.scope.userId && visible && location.can_request_location }
   }

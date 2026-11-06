@@ -68,6 +68,10 @@ try {
 
     stage = `${width}/paused`
     context = await open(width, height, 'paused', false)
+    await expect(page.locator('[aria-label="Your current shared position"]')).toBeVisible()
+    assert.equal(await noOverflow(page), true)
+    assert.deepEqual(await targets(page), [])
+    await page.screenshot({ path: resolve(evidence, `self-marker-${width}.png`), fullPage: true })
     await page.getByRole('button', { name: 'PAUSE' }).click()
     await expect(page.getByText('Location sharing paused', { exact: true })).toBeVisible()
     assert.equal(await page.locator('[aria-label="Your current shared position"]').count(), 0)

@@ -63,10 +63,18 @@ it('keeps WGS84 phone positions off the illustrated map', async () => {
   const h = setup(); await h.owner.load(h.abort.signal); expect(h.owner.read()?.friends[0]).toMatchObject({ point: null, landmarkId: null, locationSource: 'phone' })
 })
 it('projects only the exact reviewed self-reported selection onto its explicit ART anchor', async () => {
-  const h = setup(); h.setRaw({ ...h.raw, friends: [{ ...h.raw.friends[0]!, source: 'SELF_REPORTED_CHECK_IN', position: null, landmark: grant }] }); await h.owner.load(h.abort.signal)
+  const h = setup(); h.setRaw({ ...h.raw, friends: [{ ...h.raw.friends[0]!, source: 'SELF_REPORTED_CHECK_IN', position: null, landmark: grant, fresh_until: null }] }); await h.owner.load(h.abort.signal)
   expect(h.owner.read()?.friends[0]?.point).toEqual(testVenue.landmarks[0]!.point); expect(h.owner.read()?.rights.checkIn).toEqual([mainGate])
   h.associations.set({ ...h.associations.read()!, items: [{ landmarkId: mainGate, grant: { ...grant, review_reference: 'different-review' } }] })
   expect(h.owner.read()?.friends[0]?.point).toBeNull()
+})
+it('treats a contract-valid check-in with null fresh_until as current until expires_at', async () => {
+  const h = setup(), checkIn = { ...h.raw.friends[0]!, source: 'SELF_REPORTED_CHECK_IN' as const, position: null, landmark: grant, fresh_until: null }
+  h.setRaw({ ...h.raw, self_location: { ...checkIn, user_id: testScope.userId! }, friends: [checkIn] }); await h.owner.load(h.abort.signal)
+  const friend = h.owner.read()?.friends[0], self = h.owner.read()?.self
+  expect(friend).toMatchObject({ locationSource: 'check-in', point: testVenue.landmarks[0]!.point, freshUntilMs: Date.parse(iso(30000)) })
+  expect(self).toMatchObject({ locationSource: 'check-in', point: testVenue.landmarks[0]!.point, freshUntilMs: Date.parse(iso(30000)) })
+  h.clock.set({ scope: testScope, nowMs: at + 30000 }); expect(h.owner.read()?.friends[0]).toMatchObject({ point: null, locationSource: 'unavailable' }); expect(h.owner.read()?.self?.point).toBeNull()
 })
 it('drops foreign, expired and ambiguous reviewed mappings', async () => {
   const h = setup(); await h.owner.load(h.abort.signal)

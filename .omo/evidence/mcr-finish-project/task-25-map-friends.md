@@ -1,8 +1,10 @@
 # Task 25 — Complete the venue Map/Friends client states
 
-Status: **IMPLEMENTED / DEVELOPER-VALIDATED**. Base `cb44bb77c`
-(`feat(venue): wire production shell ports`), branch `codex/mcr-exec-w4-map`.
-No backend, protocol, lockfile or generated-contract change. No push/merge.
+Status: **IMPLEMENTED / DEVELOPER-VALIDATED**. Initial base `cb44bb77c`
+(`feat(venue): wire production shell ports`); rebased onto the updated row 24 tip
+`d890b7755` (`fix(venue): fix the 360 friend fallback and align the landmark gate`).
+Branch `codex/mcr-exec-w4-map`. No backend, protocol, lockfile or generated-contract
+change. No push/merge.
 
 ## Delivered behavior
 
@@ -35,6 +37,27 @@ No backend, protocol, lockfile or generated-contract change. No push/merge.
   normal friend list. The shell now mounts this truthful unavailable panel
   (`production.start` returns true for a denied/offline producer; only a missing
   clock/access keeps the shell closed).
+
+## Check-in freshness correction (post-review)
+
+**Before:** `person()` computed `min(fresh_until, expires_at, access_until)` for every
+source. The frozen producer sets `fresh_until` only for `PHONE`
+(`backend/crates/concert-domain/src/venue_location.rs:373`) and the frozen OpenAPI
+states it is null for check-in/LAST_KNOWN/UNAVAILABLE. A contract-valid check-in
+therefore produced `-Infinity`, `current=false`, and lost its map point: checked-in
+friends never clustered and the self marker never appeared. The first fixture gave
+check-ins a non-null `fresh_until`, masking the defect.
+
+**After:** the client projects the horizon per source: `PHONE` uses `fresh_until`;
+`SELF_REPORTED_CHECK_IN` and `LAST_KNOWN` use `expires_at`; `UNAVAILABLE` has no
+current horizon. An expired check-in becomes `unavailable` (never downgraded to
+last-known), and a stale snapshot still cannot render a current point. Fixtures and
+the adapter test now use contract-valid `fresh_until: null` check-in rows. New
+regressions assert a contract-valid friend and self check-in project onto the
+reviewed anchor until `expires_at`, then disappear, and the browser driver asserts
+the real self marker before pause. After the row 24 rebase, the 360 friend-row
+portrait width changed (48→52px); the three affected 360 captures were regenerated
+and re-inspected, and `sha256.txt` was refreshed.
 
 ## W04 assumption
 
@@ -71,8 +94,8 @@ second consent protocol was invented.
 | --- | --- | --- |
 | `corepack pnpm@11.7.0 install --frozen-lockfile --offline` (Node 24.22.2, shared read-only store) | 0 | 199 packages reused, 0 downloaded; no manifest/lock change |
 | `corepack pnpm@11.7.0 run typecheck` | 0 | `tsc -b --pretty false` |
-| `MCR_VENU_TMP=<private> corepack pnpm@11.7.0 exec vitest run --config src/features/paradise-city-map/__tests__/consumer/vitest.config.ts` | 0 | 5 files, 79 tests passed |
-| `corepack pnpm@11.7.0 exec vitest run src/app/__tests__/venue-shell-ports src/app/__tests__/venue-host-integration --maxWorkers=2` | 0 | 2 files, 13 tests passed (includes the 503-mount case) |
+| `MCR_VENU_TMP=<private> corepack pnpm@11.7.0 exec vitest run --config src/features/paradise-city-map/__tests__/consumer/vitest.config.ts` | 0 | 5 files, 80 tests passed (includes contract-valid check-in self/friend projection) |
+| `corepack pnpm@11.7.0 exec vitest run src/app/__tests__/venue-shell-ports src/app/__tests__/venue-host-integration --maxWorkers=2` | 0 | 2 files, 14 tests passed on the rebased base (includes the 503-mount case) |
 | `corepack pnpm@11.7.0 exec oxlint <changed paths>` | 0 | no errors; one pre-existing `no-control-regex` warning in untouched `art-source/qualify.ts` |
 | `node src/features/paradise-city-map/__tests__/browser/native.mjs` | 0 | PASS, 3 widths × 7 states, 0 page errors, 0 horizontal overflow, 0 sub-44px targets |
 
@@ -86,7 +109,9 @@ report: `task-25-map-friends/report.json` — `result: PASS`,
 
 Captured at 360×800, 390×844, 430×932:
 
-- `clustered-friends-{360,390,430}.png` — three checked-in friends in one cluster.
+- `clustered-friends-{360,390,430}.png` — three contract-valid check-ins in one cluster.
+- `self-marker-{360,390,430}.png` — contract-valid self check-in rendered as “You”
+  with “Sharing with friends”, before pause.
 - `permission-denied-{360,390,430}.png` — denied device permission, no self marker,
   server lease paused, reviewed retry.
 - `paused-{360,390,430}.png` — paused status, self marker removed.
@@ -96,15 +121,17 @@ Captured at 360×800, 390×844, 430×932:
 - `unavailable-503-{360,390,430}.png` — Friends unavailable with the 503 reason,
   never an empty normal list.
 
-Inspection: reviewed every scenario; no overlapping labels, no decorative left
-accents, visible labels legible, all visible buttons ≥44px, no horizontal overflow.
+Inspection: reviewed every scenario, including the contract-valid clustered friends
+and self marker; no overlapping labels, no decorative left accents, visible labels
+legible, all visible buttons ≥44px, no horizontal overflow. `sha256.txt` in this
+directory records the hash of every capture.
 The initial capture exposed the default "Character unavailable" fallback clipping
 inside cluster portraits; the fallback was constrained and the fixture now renders
 deterministic initials. Re-captured after the fix.
 
 ## Limitations / risks
 
-- Browser evidence is a controlled fixture: no live backend, real two-client
+- Browser evidence is a controlled fixture with contract-valid rows: no live backend, real two-client
   revocation transport, device GPS, or physical venue. The server remains the
   authority; the client reflects denials.
 - Cross-client revocation currently arrives through the next authoritative read

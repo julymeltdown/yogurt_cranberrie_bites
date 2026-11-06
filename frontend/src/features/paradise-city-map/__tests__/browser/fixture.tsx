@@ -32,7 +32,7 @@ const mode = (query.get('mode') ?? 'cluster') as Mode
 function visible(user: string, source: 'PHONE' | 'SELF_REPORTED_CHECK_IN' | 'LAST_KNOWN' | 'UNAVAILABLE', checkIn = false) {
   return { user_id: user, source,
     position: source === 'PHONE' ? { latitude: 37, longitude: 126, accuracy_m: 10, captured_at: iso(-1000), received_at: iso(-500) } : null,
-    landmark: checkIn ? { ...grant } : null, observed_at: iso(-1000), fresh_until: iso(source === 'SELF_REPORTED_CHECK_IN' ? 30000 : 10000),
+    landmark: checkIn ? { ...grant } : null, observed_at: iso(-1000), fresh_until: source === 'PHONE' ? iso(10000) : null,
     expires_at: iso(30000), access_until: iso(60000), visibility_revision: 8, physical_arrival_verified: false as const, can_request_location: true }
 }
 let sharing: 'OFF' | 'ACTIVE' | 'PAUSED' | 'REVOKED' = mode === 'paused' || mode === 'revoked' ? 'ACTIVE' : 'OFF'
