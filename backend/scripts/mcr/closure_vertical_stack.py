@@ -392,11 +392,11 @@ def in02_gate(stack, gateway, origin, event, host, alice, bob, report, record):
     checks["party_member_count_two"] = status == 200 and party_after.get("member_count") == 2
     report["steps"]["party_rows"] = {
         "party": stack.cluster.sql("mcr_concert",
-            "SELECT state,revision,aggregate->>'fields'->>'capacity' FROM concert_community_parties WHERE event_id="
+            "SELECT state,revision,(aggregate->'fields'->>'capacity') FROM concert_community_parties WHERE event_id="
             + prep.quote(event) + " AND party_id=" + prep.quote(party_id)),
         "members": stack.cluster.sql("mcr_concert",
-            "SELECT user_id,role,state FROM concert_community_members WHERE event_id="
-            + prep.quote(event) + " AND party_id=" + prep.quote(party_id) + " ORDER BY role,user_id"),
+            "SELECT user_id,is_owner,state FROM concert_community_members WHERE event_id="
+            + prep.quote(event) + " AND party_id=" + prep.quote(party_id) + " ORDER BY is_owner DESC,user_id"),
         "applications": stack.cluster.sql("mcr_concert",
             "SELECT application_id,state,revision FROM concert_community_applications WHERE event_id="
             + prep.quote(event) + " AND party_id=" + prep.quote(party_id) + " ORDER BY application_id"),
@@ -494,6 +494,14 @@ def in02_gate(stack, gateway, origin, event, host, alice, bob, report, record):
         return checks, "pickup code was not issued"
     code = issued["confirmation_code"]
     reservation_revision = issued["reservation_revision"]
+    report["steps"]["pickup_secret_issued"] = {
+        "secret": stack.cluster.sql("mcr_concert",
+            "SELECT generation,expires_at,length(keyed_hash) FROM concert_community_pickup_secrets WHERE event_id="
+            + prep.quote(event) + " AND reservation_id=" + prep.quote(reservation_id)),
+        "reservation": stack.cluster.sql("mcr_concert",
+            "SELECT state,revision FROM concert_community_reservations WHERE event_id="
+            + prep.quote(event) + " AND reservation_id=" + prep.quote(reservation_id)),
+    }
 
     wrong = f"{(int(code) + 1) % 1000000:06d}"
     status, wrong_body = call("POST", f"/reservations/{reservation_id}/claim",
@@ -528,7 +536,7 @@ def in02_gate(stack, gateway, origin, event, host, alice, bob, report, record):
             "SELECT state,revision,quantity_total,reserved_unclaimed,quantity_claimed FROM concert_community_giveaways WHERE event_id="
             + prep.quote(event) + " AND giveaway_id=" + prep.quote(giveaway_id)),
         "reservation": stack.cluster.sql("mcr_concert",
-            "SELECT state,revision,claim_receipt_id,claimed_at FROM concert_community_reservations WHERE event_id="
+            "SELECT state,revision,expires_at FROM concert_community_reservations WHERE event_id="
             + prep.quote(event) + " AND reservation_id=" + prep.quote(reservation_id)),
         "pickup_secret": stack.cluster.sql("mcr_concert",
             "SELECT generation,expires_at,length(keyed_hash) FROM concert_community_pickup_secrets WHERE event_id="
@@ -839,6 +847,7 @@ def main(argv=None):
         digest = inspected.stdout.strip().split("=", 1)[1]
         envs["concert-service"]["CONCERT_PARTICIPANT_RELEASE_DIGEST"] = digest
         envs["api-gateway"]["GATEWAY_CONCERT_GRPC_ENDPOINT"] = urls["concert"]
+        envs["api-gateway"]["GATEWAY_REQUEST_TIMEOUT_MS"] = "5000"
         envs["api-gateway"]["GATEWAY_CONCERT_RELEASE_DIGEST"] = digest
         report["event"] = event
         return envs
