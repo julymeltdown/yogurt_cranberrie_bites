@@ -1,8 +1,8 @@
 //! Frozen C04 product routes. Browser input never supplies canonical identity.
 use super::{concert_access::HttpConcertAccess, GatewayError};
 use crate::{
-    adapters::out::concert_product::{ProductHttpRequest, MAX_BODY},
     config::AppState,
+    product_http::{ProductHttpRequest, MAX_BODY},
 };
 use axum::{
     body::{to_bytes, Body},
@@ -17,6 +17,7 @@ use uuid::Uuid;
 mod command_routes;
 mod disclosure;
 mod feature_routes;
+mod read_routes;
 
 pub fn router(state: Arc<AppState>) -> Router {
     Router::new()
@@ -117,6 +118,7 @@ pub fn router(state: Arc<AppState>) -> Router {
         )
         .merge(feature_routes::router())
         .merge(command_routes::router())
+        .merge(read_routes::router())
         .with_state(state)
 }
 
@@ -206,6 +208,30 @@ fn social_route(method: &Method, path: &str) -> Option<&'static str> {
 #[cfg(test)]
 mod social_route_tests {
     use super::*;
+
+    #[test]
+    fn reveal_and_every_product_representation_are_never_storeable() {
+        // A reveal carries a private handle. The consumer may cache by default
+        // unless the boundary says otherwise, and a stale validator would keep
+        // serving it after the grant was revoked.
+        let mut response = Response::new(Body::from(
+            serde_json::json!({"handle": "private.handle"}).to_string(),
+        ));
+        response
+            .headers_mut()
+            .insert(header::ETAG, HeaderValue::from_static("\"stale\""));
+        response
+            .headers_mut()
+            .insert(header::LAST_MODIFIED, HeaderValue::from_static("today"));
+        protect(&mut response);
+        let headers = response.headers();
+        assert_eq!(headers[header::CACHE_CONTROL], "no-store");
+        assert_eq!(headers[header::PRAGMA], "no-cache");
+        assert_eq!(headers[header::X_CONTENT_TYPE_OPTIONS], "nosniff");
+        assert!(!headers.contains_key(header::ETAG));
+        assert!(!headers.contains_key(header::LAST_MODIFIED));
+    }
+
     #[test]
     fn social_frozen_paths_have_exact_receipt_ownership_and_private_error_protection() {
         let root = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
@@ -442,6 +468,7 @@ fn is_product(path: &str) -> bool {
     };
     feature_routes::protects(path)
         || command_routes::protects(path)
+        || read_routes::protects(path)
         || tail == "feed"
         || tail == "commands"
         || tail == "parties"
@@ -462,7 +489,8 @@ pub async fn protect_response(request: Request, next: axum::middleware::Next) ->
     // Router::layer also wraps the shared fallback. Keep unmounted feature
     // suffixes out of unrelated service middleware and return a closed C04 error.
     if (feature_routes::protects(request.uri().path())
-        || command_routes::protects(request.uri().path()))
+        || command_routes::protects(request.uri().path())
+        || read_routes::protects(request.uri().path()))
         && request
             .extensions()
             .get::<axum::extract::MatchedPath>()

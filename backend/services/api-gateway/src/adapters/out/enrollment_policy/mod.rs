@@ -44,7 +44,7 @@ impl GrpcEnrollmentClient {
 }
 #[async_trait]
 impl EnrollmentPolicyPort for GrpcEnrollmentClient {
-    async fn execute(
+    async fn dispatch(
         &self,
         operation: EnrollmentOperation,
         binding: Option<&str>,

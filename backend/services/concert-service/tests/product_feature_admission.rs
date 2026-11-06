@@ -224,6 +224,32 @@ async fn refused(request: ProductRequest) {
 }
 
 #[tokio::test]
+async fn venue_meeting_context_reaches_the_fail_closed_admission_instead_of_unsupported_403() {
+    use concert_service::product_rpc::venue_meeting_admission::MeetingOperation;
+    let owner = Recorder::new(Mode::Refuse);
+    let service = server(owner.clone());
+    let friend = Uuid::new_v4();
+    let request = input(
+        "GET",
+        &format!("venue-meeting/context?selectedFriendId={friend}"),
+        "",
+    );
+    let operation = operation(
+        Uuid::parse_str(&request.event_id).unwrap(),
+        &request.http_method,
+        &request.http_target,
+    )
+    .unwrap();
+    assert_eq!(operation, Operation::Meeting(MeetingOperation::Context));
+    assert_eq!(
+        call(service, wire(&request)).await,
+        (Code::Unavailable, REFUSAL.into())
+    );
+    assert_eq!(owner.len(), 1);
+    assert_eq!(owner.admitted.lock().unwrap()[0].operation, operation);
+}
+
+#[tokio::test]
 async fn all_ten_frozen_operations_reach_producer_with_exact_signed_context() {
     let owner = Recorder::new(Mode::Refuse);
     let service = server(owner.clone());

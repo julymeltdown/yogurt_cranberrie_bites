@@ -1,0 +1,7 @@
+
+running 2 tests
+test bootstrap_listener_requires_an_explicit_safe_opt_in ... ok
+test every_product_file_is_required_without_echoing_values ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

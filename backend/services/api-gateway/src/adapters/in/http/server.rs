@@ -64,7 +64,10 @@ pub fn with_transport_layers(
         .layer(from_fn(super::oauth_routes::protect_form_post_response))
         // Also cover transport rejections/preflights before the application router.
         .layer(from_fn_with_state(
-            config.cors_allowed_origins.clone(),
+            super::browser_auth::BrowserBoundaryState {
+                origins: config.cors_allowed_origins.clone(),
+                oauth: config.oauth_exposure.clone(),
+            },
             super::browser_auth::boundary,
         ))
         .layer(from_fn(super::concert_bootstrap::protect_response))

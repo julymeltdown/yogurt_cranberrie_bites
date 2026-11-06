@@ -9,6 +9,9 @@ use auth_service::adapters::out::{
     persistence::{concert_identity::PgCurrentAdmission, user_repository::PgUserRepository},
     runtime::SystemAuthRuntime,
 };
+use auth_service::enrollment_policy::{
+    ApprovedPublication, ConsentRequest, EnrollmentStore, PolicyDocument,
+};
 use chrono::{DateTime, Utc};
 use sqlx::{
     postgres::{PgConnectOptions, PgPoolOptions},
@@ -97,6 +100,41 @@ fn budget() -> ReadBudget {
     )
     .unwrap()
 }
+
+const FIXTURE_POLICY_REVISION: &str = "3a1f4c62-9b7e-4f0d-8a52-6c1d2e3f4a5b";
+const FIXTURE_ACKNOWLEDGEMENT: &str = "rpc-fixture-terms-v1";
+
+async fn seed_fixture_policy(pool: &PgPool, user: Uuid) -> anyhow::Result<()> {
+    let publication = ApprovedPublication {
+        revision: Uuid::parse_str(FIXTURE_POLICY_REVISION)?,
+        documents: vec![PolicyDocument {
+            id: "rpc-fixture-terms".into(),
+            title: "Synthetic admission RPC fixture terms".into(),
+            url: "https://fixture.example.test/rpc-terms".into(),
+            sha256: "ab".repeat(32),
+            required_acknowledgement_id: FIXTURE_ACKNOWLEDGEMENT.into(),
+        }],
+        approval_reference: "SYNTHETIC_TEST_FIXTURE_NOT_PRODUCTION_APPROVAL".into(),
+        published_at: chrono::DateTime::from_timestamp(1_577_836_800, 0)
+            .ok_or_else(|| anyhow::anyhow!("fixture policy publish time"))?,
+        expires_at: chrono::DateTime::from_timestamp(4_102_444_800, 0)
+            .ok_or_else(|| anyhow::anyhow!("fixture policy expiry"))?,
+    };
+    let store = EnrollmentStore::new(pool.clone());
+    store.publish(&publication).await?;
+    store
+        .consent(
+            user,
+            ConsentRequest {
+                policy_revision: publication.revision,
+                acknowledgement_ids: vec![FIXTURE_ACKNOWLEDGEMENT.into()],
+                idempotency_key: Uuid::new_v4(),
+            },
+        )
+        .await?;
+    Ok(())
+}
+
 async fn fixture() -> anyhow::Result<(PgPool, AdmissionRead)> {
     let pool = owned_pool("mcr_auth_identity").await?;
     let user = Uuid::new_v4();
@@ -105,6 +143,7 @@ async fn fixture() -> anyhow::Result<(PgPool, AdmissionRead)> {
         .bind(user).bind(format!("{user}@private.invalid")).execute(&pool).await?;
     sqlx::query("insert into refresh_tokens(jti,token_hash,user_id,family_id,expires_at) values($1,'private-token-hash',$2,$3,statement_timestamp()+interval '1 hour')")
         .bind(Uuid::new_v4().to_string()).bind(user).bind(family).execute(&pool).await?;
+    seed_fixture_policy(&pool, user).await?;
     Ok((pool, AdmissionRead::new(user, family, None)?))
 }
 async fn read(pool: &PgPool, request: AdmissionRead) -> Result<CurrentAdmission, ReadError> {
@@ -146,9 +185,11 @@ async fn email_only_requires_no_provider_relation_access() -> anyhow::Result<()>
 async fn missing_pending_deleted_and_unknown_accounts_fail_closed() -> anyhow::Result<()> {
     let (pool, request) = fixture().await?;
     let missing = AdmissionRead::new(Uuid::new_v4(), request.family_id(), None)?;
+    // Consent is global: an identity without an acceptance is refused before
+    // account facts, including an account that does not exist.
     assert_eq!(
-        read(&pool, missing).await?.account,
-        AccountEligibility::Ineligible
+        read(&pool, missing).await.unwrap_err(),
+        ReadError::ConsentRequired
     );
     for status in [
         "PENDING_VERIFICATION",
@@ -170,7 +211,11 @@ async fn missing_pending_deleted_and_unknown_accounts_fail_closed() -> anyhow::R
         .bind(request.user_id())
         .execute(&pool)
         .await?;
-    assert!(!read(&pool, request).await?.eligible());
+    // Deleting the account cascades its acceptance; consent precedes facts.
+    assert_eq!(
+        read(&pool, request).await.unwrap_err(),
+        ReadError::ConsentRequired
+    );
     Ok(())
 }
 #[tokio::test]
@@ -525,6 +570,14 @@ async fn deactivation_and_deletion_snapshots_are_coherent_then_fresh() -> anyhow
         let before = read(&pool, request).await?;
         assert!(before.eligible());
         writer.commit().await?;
+        if change.starts_with("delete") {
+            // Account deletion cascades the acceptance; consent is enforced first.
+            assert_eq!(
+                read(&pool, request).await.unwrap_err(),
+                ReadError::ConsentRequired
+            );
+            continue;
+        }
         let after = read(&pool, request).await?;
         assert_eq!(after.account, AccountEligibility::Ineligible);
         assert_eq!(after.session, SessionEligibility::Ended);

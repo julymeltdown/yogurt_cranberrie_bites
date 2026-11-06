@@ -429,6 +429,7 @@ fn production_config() -> AppConfig {
         notification_grpc_endpoint: "http://notification.internal:50054".into(),
         post_grpc_endpoint: "http://post.internal:50055".into(),
         refresh_cookie_domain: ".company.com".into(),
+        oauth_exposure: api_gateway::config::OAuthExposurePolicy::default(),
         refresh_cookie_secure: true,
         refresh_cookie_max_age_seconds: 1_209_600,
         aggregation_cache_ttl_seconds: 30,

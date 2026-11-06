@@ -427,12 +427,15 @@ async fn value(client: &mut Client) -> Value {
     }
 }
 async fn close_code(client: &mut Client) -> u16 {
+    close_frame(client).await.code.into()
+}
+async fn close_frame(client: &mut Client) -> tokio_tungstenite::tungstenite::protocol::CloseFrame {
     loop {
         match tokio::time::timeout(Duration::from_secs(4), client.next())
             .await
             .unwrap()
         {
-            Some(Ok(Message::Close(Some(close)))) => return close.code.into(),
+            Some(Ok(Message::Close(Some(close)))) => return close,
             Some(Ok(_)) => {}
             value => panic!("expected safe close, got {value:?}"),
         }
@@ -515,7 +518,12 @@ async fn unknown_ticket_and_replay_never_receive_a_world_snapshot() {
     assert_eq!(value(&mut a).await["type"], "snapshot");
     let mut replay = h.connect().await;
     replay.send(h.auth('A')).await.unwrap();
-    assert_eq!(close_code(&mut replay).await, 4401);
+    let close = close_frame(&mut replay).await;
+    assert_eq!(u16::from(close.code), 4401);
+    // The replay is refused as an authentication failure and the close reason
+    // is the fixed label: it never echoes the consumed ticket or any room data.
+    assert_eq!(close.reason.as_ref(), "AUTH_REQUIRED");
+    assert!(!close.reason.contains("AAAA"));
     h.close().await;
 }
 #[tokio::test]
@@ -582,7 +590,12 @@ async fn native_oversize_and_fragment_aggregate_close_with_1009() {
     let h = Harness::start().await;
     let mut direct = h.connect().await;
     direct.send(Message::Text("x".repeat(4097))).await.unwrap();
-    assert_eq!(close_code(&mut direct).await, 1009);
+    let close = close_frame(&mut direct).await;
+    assert_eq!(u16::from(close.code), 1009);
+    // The refusal is labelled with a fixed reason and never echoes the abusive
+    // frame, a ticket, an actor or any room metadata back to the sender.
+    assert_eq!(close.reason.as_ref(), "MESSAGE_TOO_BIG");
+    assert!(!close.reason.contains("xxxx"));
     let mut fragments = h.connect().await;
     fragments
         .send(Message::Frame(Frame::message(
@@ -600,7 +613,9 @@ async fn native_oversize_and_fragment_aggregate_close_with_1009() {
         )))
         .await
         .unwrap();
-    assert_eq!(close_code(&mut fragments).await, 1009);
+    let close = close_frame(&mut fragments).await;
+    assert_eq!(u16::from(close.code), 1009);
+    assert_eq!(close.reason.as_ref(), "MESSAGE_TOO_BIG");
     h.close().await;
 }
 #[tokio::test]

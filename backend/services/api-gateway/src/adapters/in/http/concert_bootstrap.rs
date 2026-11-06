@@ -1,7 +1,7 @@
 //! Public C03 bootstrap ingress. Identity comes only from the strict access
 //! extractor and fresh signed owner reads; no browser field selects the actor.
 use super::{concert_access::HttpConcertAccess, GatewayError};
-use crate::{adapters::out::concert_client::BootstrapError, config::AppState};
+use crate::{config::AppState, domain::concert_identity::BootstrapError};
 use axum::{
     body::Bytes,
     extract::{DefaultBodyLimit, OriginalUri, Path, Request, State},

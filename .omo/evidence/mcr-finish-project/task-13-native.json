@@ -1,0 +1,1085 @@
+{
+  "mode": "native",
+  "result": "PASS",
+  "cleanup": "PASS",
+  "services": [
+    {
+      "service": "api-gateway",
+      "database": "mcr_api_gateway",
+      "expected_migrations": 17,
+      "binary_sha256": "ac41a3a2154716601d8a87a7a6094ac06501547ae65dae225a65fda4bb861c3b",
+      "migration_manifest_sha256": "1bea1d8e70e1c6490f554a07780945e5087445033b957b319285a31c899921b7",
+      "migrate": "PASS",
+      "verify": "PASS",
+      "restart_persistence": "PASS",
+      "verify_after_restart": "PASS",
+      "migrate_exit_code": 0,
+      "verify_exit_code": 0,
+      "ledger_before": 17,
+      "_token": "b2f5c41cae355f587d2e188ccd199954dc97e0089dec2542",
+      "ledger_after": 17,
+      "verify_after_restart_exit_code": 0,
+      "initial_livez": 200,
+      "initial_readiness": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "database": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->auth": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->friend": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->notification": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->post": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->profile": {
+            "required": true,
+            "status": "up"
+          },
+          "signing-keys": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      },
+      "initial_gateway_readyz": {
+        "http_status": 200,
+        "body": {
+          "ready": true,
+          "degraded": false,
+          "draining": false,
+          "checks": {
+            "database": {
+              "required": true,
+              "status": "up"
+            },
+            "gateway->auth": {
+              "required": true,
+              "status": "up"
+            },
+            "gateway->friend": {
+              "required": true,
+              "status": "up"
+            },
+            "gateway->notification": {
+              "required": true,
+              "status": "up"
+            },
+            "gateway->post": {
+              "required": true,
+              "status": "up"
+            },
+            "gateway->profile": {
+              "required": true,
+              "status": "up"
+            },
+            "signing-keys": {
+              "required": true,
+              "status": "up"
+            }
+          }
+        }
+      },
+      "restarted_livez": 200,
+      "restarted_readiness": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "database": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->auth": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->friend": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->notification": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->post": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->profile": {
+            "required": true,
+            "status": "up"
+          },
+          "signing-keys": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      },
+      "restarted_gateway_readyz": {
+        "http_status": 200,
+        "body": {
+          "ready": true,
+          "degraded": false,
+          "draining": false,
+          "checks": {
+            "database": {
+              "required": true,
+              "status": "up"
+            },
+            "gateway->auth": {
+              "required": true,
+              "status": "up"
+            },
+            "gateway->friend": {
+              "required": true,
+              "status": "up"
+            },
+            "gateway->notification": {
+              "required": true,
+              "status": "up"
+            },
+            "gateway->post": {
+              "required": true,
+              "status": "up"
+            },
+            "gateway->profile": {
+              "required": true,
+              "status": "up"
+            },
+            "signing-keys": {
+              "required": true,
+              "status": "up"
+            }
+          }
+        }
+      }
+    },
+    {
+      "service": "auth-service",
+      "database": "mcr_auth",
+      "expected_migrations": 19,
+      "binary_sha256": "8197d7a99ff76a1fae91b8318dc7d30950c7932806793b22614581bbe47dd4f6",
+      "migration_manifest_sha256": "c5f2c017256255a63bf32e17763fa8ba81310176bff4116ee70e01439d6cf106",
+      "migrate": "PASS",
+      "verify": "PASS",
+      "restart_persistence": "PASS",
+      "verify_after_restart": "PASS",
+      "migrate_exit_code": 0,
+      "verify_exit_code": 0,
+      "ledger_before": 19,
+      "_token": "99316afcebdb2e6642da0b3e2511cca0388624fee6e55f7a",
+      "ledger_after": 19,
+      "verify_after_restart_exit_code": 0,
+      "initial_livez": 200,
+      "initial_readiness": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "auth->friend": {
+            "required": false,
+            "status": "up"
+          },
+          "auth->notification": {
+            "required": false,
+            "status": "up"
+          },
+          "auth->post": {
+            "required": false,
+            "status": "up"
+          },
+          "auth->profile": {
+            "required": false,
+            "status": "up"
+          },
+          "concert-owner-authority": {
+            "required": true,
+            "status": "up"
+          },
+          "database": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      },
+      "restarted_livez": 200,
+      "restarted_readiness": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "auth->friend": {
+            "required": false,
+            "status": "up"
+          },
+          "auth->notification": {
+            "required": false,
+            "status": "up"
+          },
+          "auth->post": {
+            "required": false,
+            "status": "up"
+          },
+          "auth->profile": {
+            "required": false,
+            "status": "up"
+          },
+          "concert-owner-authority": {
+            "required": true,
+            "status": "up"
+          },
+          "database": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      }
+    },
+    {
+      "service": "profile-service",
+      "database": "mcr_profile",
+      "expected_migrations": 10,
+      "binary_sha256": "70d8bd03f914cbb4b6af30372937e6dd2de11048cb47f4458ffc96659d53eea6",
+      "migration_manifest_sha256": "52989969f58e220e6eb8f827095b61c13a0b2ef89f85fbd11b96ea7e5ec43323",
+      "migrate": "PASS",
+      "verify": "PASS",
+      "restart_persistence": "PASS",
+      "verify_after_restart": "PASS",
+      "migrate_exit_code": 0,
+      "verify_exit_code": 0,
+      "ledger_before": 10,
+      "_token": "9e8e3eae6b597fa3b81bb76ab3a223788b98b5cebdb04159",
+      "ledger_after": 10,
+      "verify_after_restart_exit_code": 0,
+      "initial_livez": 200,
+      "initial_readiness": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "database": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      },
+      "restarted_livez": 200,
+      "restarted_readiness": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "database": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      }
+    },
+    {
+      "service": "friend-service",
+      "database": "mcr_friend",
+      "expected_migrations": 19,
+      "binary_sha256": "038160f349d382032fb9b229b94c6dfedcfd41dbd2f2343d3723915a9960d01a",
+      "migration_manifest_sha256": "a28c9ce6e25095aacc0f10695348d92a7d5143cc9866d492ab6cb837f3138a0c",
+      "migrate": "PASS",
+      "verify": "PASS",
+      "restart_persistence": "PASS",
+      "verify_after_restart": "PASS",
+      "migrate_exit_code": 0,
+      "verify_exit_code": 0,
+      "ledger_before": 19,
+      "_token": "522f2d3ea665e7962f48ae902230b9ddf94cf09d417aec5e",
+      "ledger_after": 19,
+      "verify_after_restart_exit_code": 0,
+      "initial_livez": 200,
+      "initial_readiness": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "concert-owner-authority": {
+            "required": true,
+            "status": "up"
+          },
+          "database": {
+            "required": true,
+            "status": "up"
+          },
+          "friend->profile": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      },
+      "restarted_livez": 200,
+      "restarted_readiness": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "concert-owner-authority": {
+            "required": true,
+            "status": "up"
+          },
+          "database": {
+            "required": true,
+            "status": "up"
+          },
+          "friend->profile": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      }
+    },
+    {
+      "service": "post-service",
+      "database": "mcr_post",
+      "expected_migrations": 33,
+      "binary_sha256": "c9da947aff42997ca8f20601c6e96038cad3954ea797916bc395b764ceae8af8",
+      "migration_manifest_sha256": "35e99bf0d463c2dd18a2bbe7aa178edfcbbd97905713e21fd1dcacb2df9a0dae",
+      "migrate": "PASS",
+      "verify": "PASS",
+      "restart_persistence": "PASS",
+      "verify_after_restart": "PASS",
+      "migrate_exit_code": 0,
+      "verify_exit_code": 0,
+      "ledger_before": 33,
+      "_token": "0e90cc502cfb7df1b5fc6160c176997a4c44ead31fdfa62d",
+      "ledger_after": 33,
+      "verify_after_restart_exit_code": 0,
+      "initial_livez": 200,
+      "initial_readiness": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "database": {
+            "required": true,
+            "status": "up"
+          },
+          "post->friend": {
+            "required": true,
+            "status": "up"
+          },
+          "post->gateway": {
+            "required": true,
+            "status": "up"
+          },
+          "post->notification": {
+            "required": false,
+            "status": "up"
+          },
+          "post->profile": {
+            "required": false,
+            "status": "up"
+          }
+        }
+      },
+      "restarted_livez": 200,
+      "restarted_readiness": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "database": {
+            "required": true,
+            "status": "up"
+          },
+          "post->friend": {
+            "required": true,
+            "status": "up"
+          },
+          "post->gateway": {
+            "required": true,
+            "status": "up"
+          },
+          "post->notification": {
+            "required": false,
+            "status": "up"
+          },
+          "post->profile": {
+            "required": false,
+            "status": "up"
+          }
+        }
+      }
+    },
+    {
+      "service": "notification-service",
+      "database": "mcr_notification",
+      "expected_migrations": 7,
+      "binary_sha256": "bbd022c402dbc7eeaa39a610430bdb246043a6c54acf17e7c44ca729fae284d9",
+      "migration_manifest_sha256": "6048bf246cd90bca61c0ae6ebb612904b4be73a83021284eb352d8f9c4640f34",
+      "migrate": "PASS",
+      "verify": "PASS",
+      "restart_persistence": "PASS",
+      "verify_after_restart": "PASS",
+      "migrate_exit_code": 0,
+      "verify_exit_code": 0,
+      "ledger_before": 7,
+      "_token": "8df5d09861f95e69441875bba62987d2a9324b177efe29a2",
+      "ledger_after": 7,
+      "verify_after_restart_exit_code": 0,
+      "initial_livez": 200,
+      "initial_readiness": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "database": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      },
+      "restarted_livez": 200,
+      "restarted_readiness": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "database": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      }
+    },
+    {
+      "service": "concert-service",
+      "database": "mcr_concert",
+      "expected_migrations": 52,
+      "binary_sha256": "53d8b7abca1d49793935881c3e6994044b8614aab0291d40cb288d417e58c1a0",
+      "migration_manifest_sha256": "480d7a227fc118000495f0c3e3e781bf23e527651d23c2e015a73776f5ab317c",
+      "migrate": "PASS",
+      "verify": "PASS",
+      "restart_persistence": "PASS",
+      "verify_after_restart": "PASS",
+      "migrate_exit_code": 0,
+      "verify_exit_code": 0,
+      "ledger_before": 52,
+      "_token": "d88d8f06a67285a7d00769fbb52b6fdf0166ec77e5a5d998",
+      "ledger_after": 52,
+      "verify_after_restart_exit_code": 0,
+      "initial_livez": 200,
+      "initial_readyz": {
+        "http_status": 200,
+        "body": {
+          "ready": true,
+          "degraded": false,
+          "draining": false,
+          "checks": {
+            "database": {
+              "required": true,
+              "status": "up"
+            }
+          }
+        }
+      },
+      "restarted_livez": 200,
+      "restarted_readyz": {
+        "http_status": 200,
+        "body": {
+          "ready": true,
+          "degraded": false,
+          "draining": false,
+          "checks": {
+            "database": {
+              "required": true,
+              "status": "up"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "started_at_utc": "2026-11-06T05:06:14Z",
+  "source_revision": "f75ec4238262b2345c8403137afda030fb6570e8",
+  "binaries": {
+    "api-gateway": "/Users/lhs/Desktop/mcr-build/exec-w2-compose/debug/api-gateway",
+    "auth-service": "/Users/lhs/Desktop/mcr-build/exec-w2-compose/debug/auth-service",
+    "profile-service": "/Users/lhs/Desktop/mcr-build/exec-w2-compose/debug/profile-service",
+    "friend-service": "/Users/lhs/Desktop/mcr-build/exec-w2-compose/debug/friend-service",
+    "post-service": "/Users/lhs/Desktop/mcr-build/exec-w2-compose/debug/post-service",
+    "notification-service": "/Users/lhs/Desktop/mcr-build/exec-w2-compose/debug/notification-service",
+    "concert-service": "/Users/lhs/Desktop/mcr-build/exec-w2-compose/debug/concert-service"
+  },
+  "owned_directory": "/private/tmp/mcr-pg-lc52kpk7",
+  "postgres_version": "16.14 (Homebrew)",
+  "restart": {
+    "before_pid": 9092,
+    "after_pid": 9422,
+    "row_survived": {
+      "api-gateway": true,
+      "auth-service": true,
+      "profile-service": true,
+      "friend-service": true,
+      "post-service": true,
+      "notification-service": true,
+      "concert-service": true
+    },
+    "status": "PASS"
+  },
+  "configuration": {
+    "runtime_mode": "parity",
+    "migration_mode": "external",
+    "concert": "health-only operational mode",
+    "ports": {
+      "profile-service:http": 55894,
+      "profile-service:metrics": 55895,
+      "profile-service:grpc": 55896,
+      "notification-service:http": 55897,
+      "notification-service:metrics": 55898,
+      "notification-service:grpc": 55899,
+      "friend-service:http": 55900,
+      "friend-service:metrics": 55901,
+      "friend-service:grpc": 55902,
+      "post-service:http": 55903,
+      "post-service:metrics": 55904,
+      "post-service:grpc": 55905,
+      "auth-service:http": 55906,
+      "auth-service:metrics": 55907,
+      "auth-service:grpc": 55908,
+      "api-gateway:http": 55909,
+      "api-gateway:metrics": 55910,
+      "api-gateway:grpc": 55911,
+      "concert-service:metrics": 55912,
+      "redis": 55913,
+      "disabled-egress": 55914
+    }
+  },
+  "readiness_probe": {
+    "initial": {
+      "profile-service": {
+        "status": 200,
+        "body": {
+          "ready": true,
+          "degraded": false,
+          "draining": false,
+          "checks": {
+            "database": {
+              "required": true,
+              "status": "up"
+            }
+          }
+        }
+      },
+      "notification-service": {
+        "status": 200,
+        "body": {
+          "ready": true,
+          "degraded": false,
+          "draining": false,
+          "checks": {
+            "database": {
+              "required": true,
+              "status": "up"
+            }
+          }
+        }
+      },
+      "friend-service": {
+        "status": 200,
+        "body": {
+          "ready": true,
+          "degraded": false,
+          "draining": false,
+          "checks": {
+            "concert-owner-authority": {
+              "required": true,
+              "status": "up"
+            },
+            "database": {
+              "required": true,
+              "status": "up"
+            },
+            "friend->profile": {
+              "required": true,
+              "status": "up"
+            }
+          }
+        }
+      },
+      "post-service": {
+        "status": 200,
+        "body": {
+          "ready": true,
+          "degraded": false,
+          "draining": false,
+          "checks": {
+            "database": {
+              "required": true,
+              "status": "up"
+            },
+            "post->friend": {
+              "required": true,
+              "status": "up"
+            },
+            "post->gateway": {
+              "required": true,
+              "status": "up"
+            },
+            "post->notification": {
+              "required": false,
+              "status": "up"
+            },
+            "post->profile": {
+              "required": false,
+              "status": "up"
+            }
+          }
+        }
+      },
+      "auth-service": {
+        "status": 200,
+        "body": {
+          "ready": true,
+          "degraded": false,
+          "draining": false,
+          "checks": {
+            "auth->friend": {
+              "required": false,
+              "status": "up"
+            },
+            "auth->notification": {
+              "required": false,
+              "status": "up"
+            },
+            "auth->post": {
+              "required": false,
+              "status": "up"
+            },
+            "auth->profile": {
+              "required": false,
+              "status": "up"
+            },
+            "concert-owner-authority": {
+              "required": true,
+              "status": "up"
+            },
+            "database": {
+              "required": true,
+              "status": "up"
+            }
+          }
+        }
+      },
+      "api-gateway": {
+        "status": 200,
+        "body": {
+          "ready": true,
+          "degraded": false,
+          "draining": false,
+          "checks": {
+            "database": {
+              "required": true,
+              "status": "up"
+            },
+            "gateway->auth": {
+              "required": true,
+              "status": "up"
+            },
+            "gateway->friend": {
+              "required": true,
+              "status": "up"
+            },
+            "gateway->notification": {
+              "required": true,
+              "status": "up"
+            },
+            "gateway->post": {
+              "required": true,
+              "status": "up"
+            },
+            "gateway->profile": {
+              "required": true,
+              "status": "up"
+            },
+            "signing-keys": {
+              "required": true,
+              "status": "up"
+            }
+          }
+        }
+      }
+    },
+    "restarted": {
+      "profile-service": {
+        "status": 200,
+        "body": {
+          "ready": true,
+          "degraded": false,
+          "draining": false,
+          "checks": {
+            "database": {
+              "required": true,
+              "status": "up"
+            }
+          }
+        }
+      },
+      "notification-service": {
+        "status": 200,
+        "body": {
+          "ready": true,
+          "degraded": false,
+          "draining": false,
+          "checks": {
+            "database": {
+              "required": true,
+              "status": "up"
+            }
+          }
+        }
+      },
+      "friend-service": {
+        "status": 200,
+        "body": {
+          "ready": true,
+          "degraded": false,
+          "draining": false,
+          "checks": {
+            "concert-owner-authority": {
+              "required": true,
+              "status": "up"
+            },
+            "database": {
+              "required": true,
+              "status": "up"
+            },
+            "friend->profile": {
+              "required": true,
+              "status": "up"
+            }
+          }
+        }
+      },
+      "post-service": {
+        "status": 200,
+        "body": {
+          "ready": true,
+          "degraded": false,
+          "draining": false,
+          "checks": {
+            "database": {
+              "required": true,
+              "status": "up"
+            },
+            "post->friend": {
+              "required": true,
+              "status": "up"
+            },
+            "post->gateway": {
+              "required": true,
+              "status": "up"
+            },
+            "post->notification": {
+              "required": false,
+              "status": "up"
+            },
+            "post->profile": {
+              "required": false,
+              "status": "up"
+            }
+          }
+        }
+      },
+      "auth-service": {
+        "status": 200,
+        "body": {
+          "ready": true,
+          "degraded": false,
+          "draining": false,
+          "checks": {
+            "auth->friend": {
+              "required": false,
+              "status": "up"
+            },
+            "auth->notification": {
+              "required": false,
+              "status": "up"
+            },
+            "auth->post": {
+              "required": false,
+              "status": "up"
+            },
+            "auth->profile": {
+              "required": false,
+              "status": "up"
+            },
+            "concert-owner-authority": {
+              "required": true,
+              "status": "up"
+            },
+            "database": {
+              "required": true,
+              "status": "up"
+            }
+          }
+        }
+      },
+      "api-gateway": {
+        "status": 200,
+        "body": {
+          "ready": true,
+          "degraded": false,
+          "draining": false,
+          "checks": {
+            "database": {
+              "required": true,
+              "status": "up"
+            },
+            "gateway->auth": {
+              "required": true,
+              "status": "up"
+            },
+            "gateway->friend": {
+              "required": true,
+              "status": "up"
+            },
+            "gateway->notification": {
+              "required": true,
+              "status": "up"
+            },
+            "gateway->post": {
+              "required": true,
+              "status": "up"
+            },
+            "gateway->profile": {
+              "required": true,
+              "status": "up"
+            },
+            "signing-keys": {
+              "required": true,
+              "status": "up"
+            }
+          }
+        }
+      }
+    }
+  },
+  "initial_gateway_readyz": {
+    "http_status": 200,
+    "body": {
+      "ready": true,
+      "degraded": false,
+      "draining": false,
+      "checks": {
+        "database": {
+          "required": true,
+          "status": "up"
+        },
+        "gateway->auth": {
+          "required": true,
+          "status": "up"
+        },
+        "gateway->friend": {
+          "required": true,
+          "status": "up"
+        },
+        "gateway->notification": {
+          "required": true,
+          "status": "up"
+        },
+        "gateway->post": {
+          "required": true,
+          "status": "up"
+        },
+        "gateway->profile": {
+          "required": true,
+          "status": "up"
+        },
+        "signing-keys": {
+          "required": true,
+          "status": "up"
+        }
+      }
+    }
+  },
+  "public_route": {
+    "method": "GET",
+    "path": "/api/concert/events/{event}/bootstrap",
+    "http_status": 401,
+    "body": {
+      "code": "GATEWAY_401",
+      "details": {
+        "reason": "AUTHENTICATION_REQUIRED"
+      },
+      "message": "The request could not be completed."
+    },
+    "scope": "unauthenticated 401 envelope; account provisioning is out of scope"
+  },
+  "process_stops": [
+    {
+      "service": "friend-service",
+      "pid": 9193,
+      "forced": false,
+      "exit_code": 0
+    },
+    {
+      "service": "api-gateway",
+      "pid": 9309,
+      "forced": false,
+      "exit_code": 0
+    },
+    {
+      "service": "concert-service",
+      "pid": 9264,
+      "forced": false,
+      "exit_code": 0
+    },
+    {
+      "service": "auth-service",
+      "pid": 9238,
+      "forced": false,
+      "exit_code": 0
+    },
+    {
+      "service": "post-service",
+      "pid": 9214,
+      "forced": false,
+      "exit_code": 0
+    },
+    {
+      "service": "notification-service",
+      "pid": 9178,
+      "forced": false,
+      "exit_code": 0
+    },
+    {
+      "service": "profile-service",
+      "pid": 9166,
+      "forced": false,
+      "exit_code": 0
+    },
+    {
+      "service": "redis",
+      "pid": 9158,
+      "forced": false,
+      "exit_code": 0
+    },
+    {
+      "service": "api-gateway",
+      "pid": 9570,
+      "forced": false,
+      "exit_code": 0
+    },
+    {
+      "service": "concert-service",
+      "pid": 9542,
+      "forced": false,
+      "exit_code": 0
+    },
+    {
+      "service": "auth-service",
+      "pid": 9516,
+      "forced": false,
+      "exit_code": 0
+    },
+    {
+      "service": "post-service",
+      "pid": 9493,
+      "forced": false,
+      "exit_code": 0
+    },
+    {
+      "service": "friend-service",
+      "pid": 9474,
+      "forced": false,
+      "exit_code": 0
+    },
+    {
+      "service": "notification-service",
+      "pid": 9458,
+      "forced": false,
+      "exit_code": 0
+    },
+    {
+      "service": "profile-service",
+      "pid": 9443,
+      "forced": false,
+      "exit_code": 0
+    },
+    {
+      "service": "redis",
+      "pid": 9434,
+      "forced": false,
+      "exit_code": 0
+    }
+  ],
+  "peer_outage": {
+    "stopped": "friend-service",
+    "http_status": 503,
+    "ready": false,
+    "friend_check": {
+      "required": true,
+      "status": "down"
+    }
+  },
+  "restarted_gateway_readyz": {
+    "http_status": 200,
+    "body": {
+      "ready": true,
+      "degraded": false,
+      "draining": false,
+      "checks": {
+        "database": {
+          "required": true,
+          "status": "up"
+        },
+        "gateway->auth": {
+          "required": true,
+          "status": "up"
+        },
+        "gateway->friend": {
+          "required": true,
+          "status": "up"
+        },
+        "gateway->notification": {
+          "required": true,
+          "status": "up"
+        },
+        "gateway->post": {
+          "required": true,
+          "status": "up"
+        },
+        "gateway->profile": {
+          "required": true,
+          "status": "up"
+        },
+        "signing-keys": {
+          "required": true,
+          "status": "up"
+        }
+      }
+    }
+  }
+}

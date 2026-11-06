@@ -1,6 +1,6 @@
 //! Public C05 room/ticket ingress. Identity is strict Access plus fresh owners.
 use super::{concert_access::HttpConcertAccess, GatewayError};
-use crate::{adapters::out::concert_world::WorldClientError, config::AppState};
+use crate::{config::AppState, domain::concert_identity::WorldClientError};
 use axum::{
     body::Bytes,
     extract::{DefaultBodyLimit, OriginalUri, Path, Request, State},
@@ -425,15 +425,15 @@ fn c05_invalid_response() -> Response {
 }
 
 fn concert_identity_error(
-    error: crate::adapters::out::concert_identity::ConcertIdentityReadError,
+    error: crate::domain::concert_identity::ConcertIdentityReadError,
 ) -> GatewayError {
-    use crate::adapters::out::concert_identity::ConcertIdentityReadError;
+    use crate::domain::concert_identity::ConcertIdentityReadError;
     match error {
         ConcertIdentityReadError::AccessExpired | ConcertIdentityReadError::DeadlineExceeded => {
             GatewayError::gateway_timeout("Request timed out")
         }
-        ConcertIdentityReadError::Auth(crate::adapters::out::auth_client::concert_admission::AdmissionReadError::ConsentRequired) => GatewayError::ConsentRequired,
-        ConcertIdentityReadError::Auth(crate::adapters::out::auth_client::concert_admission::AdmissionReadError::PolicyUnavailable) => GatewayError::PolicyUnavailable,
+        ConcertIdentityReadError::Auth(crate::domain::concert_identity::AdmissionReadError::ConsentRequired) => GatewayError::ConsentRequired,
+        ConcertIdentityReadError::Auth(crate::domain::concert_identity::AdmissionReadError::PolicyUnavailable) => GatewayError::PolicyUnavailable,
         ConcertIdentityReadError::NotEligible => GatewayError::forbidden("Access is not permitted"),
         _ => GatewayError::ServiceBusy,
     }

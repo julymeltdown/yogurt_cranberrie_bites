@@ -1,0 +1,185 @@
+{
+  "status": "PASS_HUD_GEOMETRY_AND_COMPONENTS",
+  "classification": "ACTUAL_HUD_COMPONENTS_CONTROLLED_FIXTURE_NOT_LIVE",
+  "reference": {
+    "sha256": "9e7f17a666e1ecfc738a14b75bb3a166235a05c401f206aa24f26cf7463cbc27",
+    "crop": [
+      436,
+      60,
+      832,
+      847
+    ],
+    "normalization": 0.9848484848484849
+  },
+  "captures": {
+    "world-390": {
+      "viewport": [
+        390,
+        775
+      ],
+      "DPR": 1,
+      "overflow": false,
+      "title": {
+        "x": 4,
+        "y": 4,
+        "width": 382,
+        "height": 48
+      },
+      "context": {
+        "x": 11,
+        "y": 617,
+        "width": 368,
+        "height": 73
+      },
+      "navigation": {
+        "x": 4,
+        "y": 702,
+        "width": 382,
+        "height": 61
+      },
+      "action": {
+        "x": 280.15625,
+        "y": 631.5,
+        "width": 87.84375,
+        "height": 44
+      },
+      "stage": {
+        "x": 4,
+        "y": 109,
+        "width": 382,
+        "height": 593
+      },
+      "bottomPadding": "10px",
+      "faces": [
+        {
+          "family": "Parade Ink Text",
+          "status": "loaded"
+        },
+        {
+          "family": "Parade Ink Display",
+          "status": "loaded"
+        }
+      ]
+    },
+    "world-360": {
+      "viewport": [
+        360,
+        800
+      ],
+      "DPR": 1,
+      "overflow": false,
+      "title": {
+        "x": 4,
+        "y": 4,
+        "width": 352,
+        "height": 48
+      },
+      "context": {
+        "x": 11,
+        "y": 641,
+        "width": 338,
+        "height": 74
+      },
+      "navigation": {
+        "x": 4,
+        "y": 727,
+        "width": 352,
+        "height": 61
+      },
+      "action": {
+        "x": 250.15625,
+        "y": 656,
+        "width": 87.84375,
+        "height": 44
+      },
+      "stage": {
+        "x": 4,
+        "y": 109,
+        "width": 352,
+        "height": 618
+      },
+      "bottomPadding": "10px",
+      "faces": [
+        {
+          "family": "Parade Ink Text",
+          "status": "loaded"
+        },
+        {
+          "family": "Parade Ink Display",
+          "status": "loaded"
+        }
+      ]
+    },
+    "world-430": {
+      "viewport": [
+        430,
+        932
+      ],
+      "DPR": 1,
+      "overflow": false,
+      "title": {
+        "x": 4,
+        "y": 4,
+        "width": 422,
+        "height": 48
+      },
+      "context": {
+        "x": 11,
+        "y": 774,
+        "width": 408,
+        "height": 73
+      },
+      "navigation": {
+        "x": 4,
+        "y": 859,
+        "width": 422,
+        "height": 61
+      },
+      "action": {
+        "x": 320.15625,
+        "y": 788.5,
+        "width": 87.84375,
+        "height": 44
+      },
+      "stage": {
+        "x": 4,
+        "y": 109,
+        "width": 422,
+        "height": 750
+      },
+      "bottomPadding": "10px",
+      "faces": [
+        {
+          "family": "Parade Ink Text",
+          "status": "loaded"
+        },
+        {
+          "family": "Parade Ink Display",
+          "status": "loaded"
+        }
+      ]
+    }
+  },
+  "deltas": {
+    "title": {
+      "x": 0.06060606060606055,
+      "y": -0.9242424242424239,
+      "width": 0.863636363636374,
+      "height": 1.712121212121211
+    },
+    "context": {
+      "x": 0.16666666666666607,
+      "y": -0.5,
+      "width": 0.6515151515151274,
+      "height": 0.12121212121212466
+    },
+    "navigation": {
+      "x": -0.9242424242424239,
+      "y": -1.1818181818181301,
+      "width": 1.8484848484848726,
+      "height": 0.9242424242424292
+    }
+  },
+  "errors": [],
+  "browser": "156.0.8078.80"
+}

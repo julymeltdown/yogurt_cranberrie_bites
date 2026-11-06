@@ -76,27 +76,7 @@ pub enum BindingState {
     NotBound,
 }
 
-#[derive(Clone, Copy, Debug, PartialEq, Eq, thiserror::Error)]
-pub enum AdmissionReadError {
-    #[error("Admission access context expired or invalid")]
-    AccessExpired,
-    #[error("Invalid admission binding reference")]
-    InvalidBinding,
-    #[error("Admission read deadline exceeded")]
-    DeadlineExceeded,
-    #[error("Admission read denied")]
-    Denied,
-    #[error("Admission read capacity unavailable")]
-    CapacityExhausted,
-    #[error("Global service consent required")]
-    ConsentRequired,
-    #[error("Global enrollment policy unavailable")]
-    PolicyUnavailable,
-    #[error("Admission owner unavailable")]
-    Unavailable,
-    #[error("Invalid admission owner response")]
-    InvalidResponse,
-}
+pub use crate::domain::concert_identity::AdmissionReadError;
 
 /// Request-bound observation; no constructor, Clone, serialization or rebind API.
 /// Each accessor rechecks the borrowed context. Negative facts remain explicit.

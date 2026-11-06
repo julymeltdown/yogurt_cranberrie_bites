@@ -258,6 +258,26 @@ impl WorldRuntimeSettings {
         self.serve_inner(pool, ports, Some(ready), transport, Some(local), None)
             .await
     }
+    /// Deletion-only composition for a World without the Social publisher. It
+    /// still publishes the exact incumbent bridge/socket registry after the
+    /// normal startup checks and under the same serving task supervision.
+    pub async fn serve_with_ready_and_deletion(
+        self,
+        pool: sqlx::PgPool,
+        ports: WorldProductionPorts,
+        ready: tokio::sync::oneshot::Sender<()>,
+        deletion: tokio::sync::oneshot::Sender<super::deletion_world_binding::ServingWorldBinding>,
+    ) -> anyhow::Result<()> {
+        self.serve_inner(
+            pool,
+            ports,
+            Some(ready),
+            SocketTransport::default(),
+            None,
+            Some(deletion),
+        )
+        .await
+    }
     /// Opt-in account deletion composition receives the exact incumbent bridge
     /// and socket registry after the normal startup checks. The receiver must
     /// also await `ready` and retain the original serving task's supervision.

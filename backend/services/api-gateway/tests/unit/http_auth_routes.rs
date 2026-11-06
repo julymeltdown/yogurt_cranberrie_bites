@@ -393,8 +393,25 @@ async fn oauth_authorize_rejects_unsupported_provider() {
 }
 
 #[tokio::test]
-async fn oauth_authorize_accepts_x_provider_and_sets_x_state_cookie() {
+async fn oauth_transport_stays_hidden_under_the_default_policy() {
     let harness = RouteHarness::new().await;
+    let app = oauth_routes::router(harness.state.clone());
+    for provider in ["google", "apple", "x"] {
+        let request = Request::builder()
+            .method(Method::GET)
+            .uri(format!("/auth/oauth/{provider}/authorize"))
+            .body(Body::empty())
+            .expect("request");
+
+        let response = app.clone().oneshot(request).await.expect("response");
+
+        assert_eq!(response.status(), StatusCode::NOT_FOUND, "{provider}");
+    }
+}
+
+#[tokio::test]
+async fn oauth_authorize_accepts_x_provider_and_sets_x_state_cookie() {
+    let harness = RouteHarness::with_oauth_transport().await;
     let app = oauth_routes::router(harness.state.clone());
     let request = Request::builder()
         .method(Method::GET)
@@ -418,7 +435,7 @@ async fn oauth_authorize_accepts_x_provider_and_sets_x_state_cookie() {
         .expect("state cookie")
         .to_str()
         .expect("cookie header");
-    assert!(cookie.contains("oauth_state_x=x-state"));
+    assert!(cookie.starts_with("oauth_state_x=v1."), "{cookie}");
     assert!(cookie.contains("HttpOnly"));
 }
 
@@ -429,7 +446,7 @@ async fn oauth_authorize_and_callback_round_trip_each_provider_state_cookie() {
         ("apple", "oauth_state_apple", "apple-state"),
         ("x", "oauth_state_x", "x-state"),
     ] {
-        let harness = RouteHarness::new().await;
+        let harness = RouteHarness::with_oauth_transport().await;
         let app = oauth_routes::router(harness.state.clone());
         let authorize_request = Request::builder()
             .method(Method::GET)
@@ -456,7 +473,7 @@ async fn oauth_authorize_and_callback_round_trip_each_provider_state_cookie() {
             .expect("cookie header")
             .to_owned();
         assert!(
-            cookie.starts_with(&format!("{state_cookie}={state_value};")),
+            cookie.starts_with(&format!("{state_cookie}=v1.")),
             "provider {provider}"
         );
         let callback_request = Request::builder()
@@ -473,7 +490,16 @@ async fn oauth_authorize_and_callback_round_trip_each_provider_state_cookie() {
             .await
             .expect("callback response");
 
-        assert_eq!(response.status(), StatusCode::OK, "provider {provider}");
+        assert_eq!(
+            response.status(),
+            StatusCode::SEE_OTHER,
+            "provider {provider}"
+        );
+        assert_eq!(
+            response.headers()[header::LOCATION],
+            "/auth/callback?status=success&returnTo=%2Fworld",
+            "provider {provider}"
+        );
         assert_eq!(
             harness
                 .clients
@@ -490,7 +516,7 @@ async fn oauth_authorize_and_callback_round_trip_each_provider_state_cookie() {
 #[tokio::test]
 async fn google_callback_rejects_wrong_provider_state_cookies_without_downstream_call() {
     for wrong_cookie in ["oauth_state_apple", "oauth_state_x"] {
-        let harness = RouteHarness::new().await;
+        let harness = RouteHarness::with_oauth_transport().await;
         let app = oauth_routes::router(harness.state.clone());
         let request = Request::builder()
             .method(Method::GET)

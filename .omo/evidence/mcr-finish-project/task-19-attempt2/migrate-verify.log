@@ -1,0 +1,6 @@
+$ CONCERT_DATABASE_URL=<private> /Users/lhs/Desktop/mcr-build/exec-w3-loc/debug/concert-service --migrate
+database command completed: Migrate
+exit=0
+$ CONCERT_DATABASE_URL=<private> /Users/lhs/Desktop/mcr-build/exec-w3-loc/debug/concert-service --verify-migrations
+database command completed: Verify
+exit=0
