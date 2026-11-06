@@ -22,7 +22,7 @@ use crate::{
 use async_trait::async_trait;
 use chrono::Utc;
 use concert_application::{
-    commands::{CommandError, FingerprintKeys, RegisteredOperation, Scope},
+    commands::{CommandError, FingerprintKeys, ReceiptState, RegisteredOperation, Scope},
     feed::{
         CommentReader, Context, Feed, FeedResources, PostReader, PreparedCommand, ProjectedComment,
         ProjectedPost, ScannedComments, ScannedPosts,
@@ -145,14 +145,30 @@ impl FeedCommandProducer {
                         Status::already_exists("Feed idempotency conflict").code(),
                     ));
                 }
-                PreparedCommand::restore(
+                let revision = stored.receipt.reference.map(|reference| reference.revision);
+                let prepared = PreparedCommand::restore(
                     context,
                     key,
                     stored.command,
                     stored.parent,
                     stored.parent_revision,
                 )
-                .map_err(feed_status)?
+                .map_err(feed_status)?;
+                if stored.receipt.state == ReceiptState::Succeeded {
+                    let revision = revision.ok_or_else(|| {
+                        Status::unavailable("Feed receipt unavailable")
+                    })?;
+                    let value = self
+                        .project(context, scope.clone(), route, &reader, target, revision)
+                        .await?;
+                    return Ok(ProductRepresentation {
+                        status: 200,
+                        content_type: "application/json".into(),
+                        body: serde_json::to_vec(&value)
+                            .map_err(|_| Status::unavailable("Feed representation unavailable"))?,
+                    });
+                }
+                prepared
             }
             None => {
                 let resources = GuardedResources::new(scope.clone(), self.profiles.clone())

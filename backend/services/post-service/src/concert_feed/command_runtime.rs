@@ -4,8 +4,7 @@ use super::{
     command_admission::CommandAdmission,
     read_clients::ReadClients,
     read_runtime::QualifiedReadRuntime,
-    read_tracking::{RegisteredRead, TrackingStore},
-    read_transaction::CapturedReadTransaction,
+    read_tracking::RegisteredRead,
     storage, Owner,
 };
 use crate::adapters::r#in::grpc::concert_feed::proto;
@@ -21,7 +20,6 @@ use uuid::Uuid;
 pub struct QualifiedCommandRuntime {
     pool: PgPool,
     clients: ReadClients,
-    tracking: TrackingStore,
     slots: Arc<tokio::sync::Semaphore>,
 }
 impl QualifiedCommandRuntime {
@@ -29,12 +27,8 @@ impl QualifiedCommandRuntime {
         Self {
             pool: read.pool.clone(),
             clients: read.clients.clone(),
-            tracking: read.tracking.clone(),
             slots: read.admission_slots.clone(),
         }
-    }
-    pub(crate) fn tracking(&self) -> &TrackingStore {
-        &self.tracking
     }
     pub(crate) async fn run(&self, a: CommandAdmission) -> Result<proto::Receipt, Error> {
         let stop = a.owners.deadline.stop();
@@ -45,22 +39,12 @@ impl QualifiedCommandRuntime {
                 .subject(&a.owners, a.owners.context.actor_id)
                 .await?;
             let mut tx = self.pool.begin().await.map_err(storage)?;
-            let identity = CapturedReadTransaction::capture(
-                &mut tx,
-                self.tracking.instance(),
-                super::digest(&(&a.owners.context, &a.command))?,
-                super::digest(&(Uuid::new_v4(), Uuid::new_v4()))?,
-            )
-            .await?;
-            let tracked = self.tracking.begin(&a.owners, identity).await?;
-            let registered = Arc::new(tracked.register(&self.clients, &a.owners).await?);
-            registered.witness(&mut tx).await?;
             let a = Arc::new(a);
             let owner = Owner {
                 pool: self.pool.clone(),
                 authority: Arc::new(CommandAuthority {
                     a: a.clone(),
-                    registered,
+                    registered: None,
                     clients: self.clients.clone(),
                 }),
             };
@@ -87,22 +71,12 @@ impl QualifiedCommandRuntime {
                 .subject(&a.owners, a.owners.context.actor_id)
                 .await?;
             let mut tx = self.pool.begin().await.map_err(storage)?;
-            let identity = CapturedReadTransaction::capture(
-                &mut tx,
-                self.tracking.instance(),
-                super::digest(&(&a.owners.context, &a.command, "receipt"))?,
-                super::digest(&(Uuid::new_v4(), Uuid::new_v4()))?,
-            )
-            .await?;
-            let tracked = self.tracking.begin(&a.owners, identity).await?;
-            let registered = Arc::new(tracked.register(&self.clients, &a.owners).await?);
-            registered.witness(&mut tx).await?;
             let a = Arc::new(a);
             let owner = Owner {
                 pool: self.pool.clone(),
                 authority: Arc::new(CommandAuthority {
                     a: a.clone(),
-                    registered,
+                    registered: None,
                     clients: self.clients.clone(),
                 }),
             };
@@ -128,18 +102,20 @@ impl QualifiedCommandRuntime {
             let context = a.owners.context.clone();
             let mut command = a.command.clone();
             if let Some(id) = command.mutation.comment_id() {
-                let parent: Option<Uuid> = sqlx::query_scalar(
-                    "select post_id from post_concert_comments where event_id=$1 and comment_id=$2",
-                )
-                .bind(command.event_id)
-                .bind(id)
-                .fetch_optional(&self.pool)
-                .await
-                .map_err(storage)?;
-                let Some(parent) = parent else {
-                    return Ok((None, None));
-                };
-                command.post_id = parent;
+                if !matches!(command.mutation, Mutation::CreateComment { .. }) {
+                    let parent: Option<Uuid> = sqlx::query_scalar(
+                        "select post_id from post_concert_comments where event_id=$1 and comment_id=$2",
+                    )
+                    .bind(command.event_id)
+                    .bind(id)
+                    .fetch_optional(&self.pool)
+                    .await
+                    .map_err(storage)?;
+                    let Some(parent) = parent else {
+                        return Ok((None, None));
+                    };
+                    command.post_id = parent;
+                }
             }
             let admission = Arc::new(a);
             let owner = Owner {
@@ -223,7 +199,7 @@ impl Authority for PreviewAuthority {
 }
 struct CommandAuthority {
     a: Arc<CommandAdmission>,
-    registered: Arc<RegisteredRead>,
+    registered: Option<Arc<RegisteredRead>>,
     clients: ReadClients,
 }
 #[async_trait]
@@ -278,7 +254,7 @@ impl Authority for CommandAuthority {
             .min(context.expires_at);
         let fence = CommandFence {
             a: self.a.clone(),
-            _registered: Some(self.registered.clone()),
+            _registered: self.registered.clone(),
             binding,
             expires,
             subjects,
