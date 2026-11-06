@@ -107,8 +107,16 @@ pub enum GatewayError {
     NotFound(String),
     #[error("{0}")]
     Conflict(String),
+    #[error("{message}")]
+    TooManyRequests {
+        message: String,
+        /// Seconds until the refused budget can reset. Present on the wire as
+        /// `Retry-After` so a throttled client backs off instead of retrying
+        /// into the same full window.
+        retry_after_seconds: u64,
+    },
     #[error("{0}")]
-    TooManyRequests(String),
+    PayloadTooLarge(String),
     #[error("{0}")]
     GatewayTimeout(String),
     #[error("friend service unavailable")]
@@ -143,7 +151,18 @@ impl GatewayError {
         Self::Conflict(message.into())
     }
     pub fn too_many_requests(message: impl Into<String>) -> Self {
-        Self::TooManyRequests(message.into())
+        Self::rate_limited(message, BUSY_RETRY_AFTER_SECONDS)
+    }
+    /// A refused admission budget. `retry_after_seconds` is the admission
+    /// window, the longest wait before the same client can be admitted again.
+    pub fn rate_limited(message: impl Into<String>, retry_after_seconds: u64) -> Self {
+        Self::TooManyRequests {
+            message: message.into(),
+            retry_after_seconds: retry_after_seconds.max(1),
+        }
+    }
+    pub fn payload_too_large(message: impl Into<String>) -> Self {
+        Self::PayloadTooLarge(message.into())
     }
     pub fn gateway_timeout(message: impl Into<String>) -> Self {
         Self::GatewayTimeout(message.into())
@@ -163,8 +182,14 @@ impl IntoResponse for GatewayError {
             Self::PolicyUnavailable => Some("POLICY_UNAVAILABLE"),
             _ => None,
         };
-        let retry_after = matches!(self, Self::ServiceBusy | Self::AdmissionSaturated)
-            .then_some(BUSY_RETRY_AFTER_SECONDS);
+        let retry_after = match &self {
+            Self::ServiceBusy | Self::AdmissionSaturated => Some(BUSY_RETRY_AFTER_SECONDS),
+            Self::TooManyRequests {
+                retry_after_seconds,
+                ..
+            } => Some(*retry_after_seconds),
+            _ => None,
+        };
         let (status, message) = match self {
             Self::ConsentRequired => (StatusCode::FORBIDDEN, "Global service consent required".into()),
             Self::PolicyUnavailable => (StatusCode::SERVICE_UNAVAILABLE, "Global enrollment policy unavailable".into()),
@@ -173,7 +198,8 @@ impl IntoResponse for GatewayError {
             Self::Forbidden(message) => (StatusCode::FORBIDDEN, message),
             Self::NotFound(message) => (StatusCode::NOT_FOUND, message),
             Self::Conflict(message) => (StatusCode::CONFLICT, message),
-            Self::TooManyRequests(message) => (StatusCode::TOO_MANY_REQUESTS, message),
+            Self::TooManyRequests { message, .. } => (StatusCode::TOO_MANY_REQUESTS, message),
+            Self::PayloadTooLarge(message) => (StatusCode::PAYLOAD_TOO_LARGE, message),
             Self::GatewayTimeout(message) => (StatusCode::GATEWAY_TIMEOUT, message),
             Self::ServiceUnavailable(error) => {
                 tracing::error!(error = ?error, "downstream service unavailable");
@@ -747,7 +773,10 @@ async fn rate_limit_middleware(
             );
         } else {
             state.metrics.inc_rate_limit_rejection(&route);
-            return Err(GatewayError::too_many_requests("Rate limit exceeded"));
+            return Err(GatewayError::rate_limited(
+                "Rate limit exceeded",
+                state.rate_limiter.window_seconds(),
+            ));
         }
     }
 
@@ -813,7 +842,10 @@ async fn rate_limit_middleware(
                         state
                             .metrics
                             .inc_rate_limit_rejection(&format!("principal:{}", class.as_str()));
-                        return Err(GatewayError::too_many_requests("Rate limit exceeded"));
+                        return Err(GatewayError::rate_limited(
+                            "Rate limit exceeded",
+                            state.rate_limiter.window_seconds(),
+                        ));
                     }
                 }
                 request.extensions_mut().insert(claims);
@@ -879,7 +911,10 @@ pub(crate) async fn admit_anonymous_identity(
         state
             .metrics
             .inc_rate_limit_rejection(&format!("identity:{}", class.as_str()));
-        return Err(GatewayError::too_many_requests("Rate limit exceeded"));
+        return Err(GatewayError::rate_limited(
+            "Rate limit exceeded",
+            state.rate_limiter.window_seconds(),
+        ));
     }
     Ok(())
 }

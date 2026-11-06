@@ -144,7 +144,7 @@ async fn collect_avatar_bytes(
     let mut bytes = Vec::new();
     while let Some(chunk) = field.chunk().await? {
         if chunk.len() > MAX_AVATAR_UPLOAD_BYTES.saturating_sub(bytes.len()) {
-            return Err(GatewayError::bad_request(format!(
+            return Err(GatewayError::payload_too_large(format!(
                 "Avatar image must be <= {MAX_AVATAR_UPLOAD_BYTES} bytes"
             )));
         }
@@ -304,5 +304,8 @@ mod tests {
             error.to_string(),
             format!("Avatar image must be <= {MAX_AVATAR_UPLOAD_BYTES} bytes")
         );
+        // The upload bound is a body-size refusal, not a malformed request.
+        let response = axum::response::IntoResponse::into_response(error);
+        assert_eq!(response.status(), axum::http::StatusCode::PAYLOAD_TOO_LARGE);
     }
 }
