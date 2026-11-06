@@ -4,7 +4,20 @@ Date: 2026-11-06
 Worktree: `/Users/lhs/Desktop/mcr-worktrees/exec-w4-in01`
 Branch: `codex/mcr-exec-w4-in01`
 Base: `13d2ee25f` (`master`, venue backend plus the four venue clients: shell ports, map/friends, invitations/conversation, place notes)
+Captured commit: `9143e2489` (`test(venue): execute integrated flows and reference comparisons`). The captures were generated from that commit's working tree, not from the base commit.
 Commit: local only; no push or merge. Plan row: `.omo/plans/mcr-finish-project.md` item 28.
+
+## Disposition
+
+Plan row 28 closes as `[~]`, not `[x]`. The evidence is complete for what the current
+producer can answer, but it is not a full pass: 23 of 48 stable reference cases and
+7 of 10 extension IA states are `NOT_REACHABLE` while
+`PgVenueLocationAuthority::friend_in` is a fail-closed stub returning
+`VenueLocationError::PolicyUnavailable` (HTTP 503). A bilateral friend authority is
+being implemented. Once it lands, the full matrix must be re-run against it; that
+rerun covers the friend location, sharing audience, meeting, invitation and
+conversation case families. Until then row 28 is partial, and no friend-dependent
+row is accepted.
 
 ## Outcome
 
@@ -151,7 +164,9 @@ Toolchain: Node `v24.22.2` (`/tmp/mcr-node24/bin`), `corepack pnpm@11.7.0`.
   reviewed character presentation is plumbed into the meeting leaf.
 - The friend, meeting and invitation families remain live-blocked by the 503
   bilateral friend authority. Their visual captures are supplementary, not
-  acceptance.
+  acceptance. The full matrix is re-run once the bilateral friend authority lands
+  (case families: friend location, sharing audience, meeting, invitation,
+  conversation).
 - Location sharing cannot start because the production composition has no
   `LocationSharingAudience` provider; the consent UI and truthful refusal are
   captured, but opt-in sharing remains blocked.
@@ -159,7 +174,11 @@ Toolchain: Node `v24.22.2` (`/tmp/mcr-node24/bin`), `corepack pnpm@11.7.0`.
   arrival and IN01 acceptance remain open. QA08 (200 concurrent users) remains
   `DEFERRED_BY_USER` and is not claimed.
 - The worktree was removed by an external cleanup during the first capture run;
-  the branch was recreated at `13d2ee25f`, all source changes were re-applied
+  the branch was recreated from `13d2ee25f`, all source changes were re-applied
   from the session record, dependencies were reinstalled and the full capture
-  matrix was regenerated before this report was written. The surviving partial
-  run was discarded.
+  matrix was regenerated from the `9143e2489` working tree before this report was
+  written. The surviving partial run was discarded. An earlier revision of the
+  report pinned those captures to `13d2ee25f`; that provenance was wrong for
+  `MapCanvas.tsx` (`7ea57b56…` here vs `8d631bc2…` at that commit) and for the
+  test-only `venue-in01/fixture.tsx` and `browser/native.mjs`, which do not exist
+  at `13d2ee25f`. Only the recorded commit changed; capture bytes did not.
