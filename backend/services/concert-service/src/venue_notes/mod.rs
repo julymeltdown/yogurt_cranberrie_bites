@@ -510,6 +510,137 @@ impl PgPlaceNotes {
     }
 }
 
+#[derive(Clone, Copy, Debug)]
+pub struct NoteCommit {
+    pub id: Uuid,
+    pub revision: i64,
+    pub created_at: DateTime<Utc>,
+    pub expires_at: DateTime<Utc>,
+}
+
+impl PgPlaceNotes {
+    pub async fn create_note_receipt(
+        &self,
+        actor: Uuid,
+        event: Uuid,
+        command: CreatePlaceNote,
+        idempotency_key: Uuid,
+    ) -> Result<NoteCommit, PlaceNoteError> {
+        let _ = idempotency_key;
+        let mut tx = self.pool.begin().await.map_err(db)?;
+        self.event_guard(&mut tx, event, actor, true).await?;
+        self.place
+            .review(&mut tx, event, &command.landmark_selection)
+            .await?;
+        if command.audience == NoteAudience::Friends {
+            self.friend.available(&mut tx).await?;
+        }
+        let now = self.now(&mut tx).await?;
+        let expires_at = match command.expiry {
+            NoteExpiry::OneHour => now + Duration::seconds(ONE_HOUR_SECONDS),
+            NoteExpiry::VenueEndDay => self.end_of_day(&mut tx, event, now).await?,
+        };
+        let id: Uuid = sqlx::query_scalar(
+            "insert into concert_place_notes
+             (event_id,landmark_id,catalog_revision,landmark_revision,author_id,audience,
+              expiry_kind,body,revision,created_at,expires_at)
+             values($1,$2,$3,$4,$5,$6,$7,$8,1,$9,$10) returning note_id",
+        )
+        .bind(event)
+        .bind(&command.landmark_selection.landmark_id)
+        .bind(command.landmark_selection.catalog_revision)
+        .bind(command.landmark_selection.landmark_revision)
+        .bind(actor)
+        .bind(command.audience.as_str())
+        .bind(command.expiry.as_str())
+        .bind(command.text.as_str())
+        .bind(now)
+        .bind(expires_at)
+        .fetch_one(&mut *tx)
+        .await
+        .map_err(db)?;
+        tx.commit().await.map_err(db)?;
+        Ok(NoteCommit {
+            id,
+            revision: 1,
+            created_at: now,
+            expires_at,
+        })
+    }
+    pub async fn create_reply_receipt(
+        &self,
+        actor: Uuid,
+        event: Uuid,
+        landmark_id: &str,
+        parent_id: Uuid,
+        command: CreatePlaceReply,
+        idempotency_key: Uuid,
+    ) -> Result<NoteCommit, PlaceNoteError> {
+        let _ = idempotency_key;
+        let mut tx = self.pool.begin().await.map_err(db)?;
+        self.event_guard(&mut tx, event, actor, true).await?;
+        self.place.current(&mut tx, event, landmark_id).await?;
+        let parent = sqlx::query(&format!(
+            "select {COLUMNS} from concert_place_notes
+             where note_id=$1 and event_id=$2 and landmark_id=$3 for share"
+        ))
+        .bind(parent_id)
+        .bind(event)
+        .bind(landmark_id)
+        .fetch_optional(&mut *tx)
+        .await
+        .map_err(db)?
+        .ok_or(PlaceNoteError::NotFound)?;
+        let parent = stored(&parent)?;
+        let now = self.now(&mut tx).await?;
+        if parent.parent_id.is_some()
+            || parent.withdrawn
+            || parent.hidden
+            || parent.expires_at <= now
+        {
+            return Err(PlaceNoteError::NotFound);
+        }
+        if parent.revision != command.expected_parent_revision {
+            return Err(PlaceNoteError::Conflict);
+        }
+        if parent.audience == NoteAudience::Friends {
+            self.friend.available(&mut tx).await?;
+            self.friend
+                .bilateral(&mut tx, event, parent.author_id, actor)
+                .await?;
+        }
+        let id: Uuid = sqlx::query_scalar(
+            "insert into concert_place_notes
+             (event_id,landmark_id,catalog_revision,landmark_revision,author_id,parent_id,
+              audience,expiry_kind,body,revision,created_at,expires_at)
+             select event_id,landmark_id,catalog_revision,landmark_revision,$3,note_id,
+                    audience,expiry_kind,$4,1,$5,expires_at
+             from concert_place_notes where note_id=$1 and event_id=$2
+             returning note_id",
+        )
+        .bind(parent_id)
+        .bind(event)
+        .bind(actor)
+        .bind(command.text.as_str())
+        .bind(now)
+        .fetch_one(&mut *tx)
+        .await
+        .map_err(db)?;
+        sqlx::query("update concert_place_notes set revision=revision+1 where note_id=$1")
+            .bind(parent_id)
+            .execute(&mut *tx)
+            .await
+            .map_err(db)?;
+        tx.commit().await.map_err(db)?;
+        Ok(NoteCommit {
+            id,
+            revision: 1,
+            created_at: now,
+            expires_at: parent.expires_at,
+        })
+    }
+}
+
 #[async_trait]
 impl PlaceNoteUseCases for PgPlaceNotes {
     async fn create_note(

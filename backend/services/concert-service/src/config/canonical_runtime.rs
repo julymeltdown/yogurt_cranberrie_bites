@@ -6,7 +6,10 @@
 use crate::{
     adapters::out::{
         public_profile::PublicProfileReader,
-        relationship_authority::guarded::{CanonicalOwnerFence, ScopeRegistry},
+        relationship_authority::{
+            grpc::GrpcRelationshipAuthority,
+            guarded::{CanonicalOwnerFence, ScopeRegistry},
+        },
     },
     gift_live::private::GiftPrivateRuntime,
     notification_live::{target_authority::TargetReadSettler, NotificationClient},
@@ -59,6 +62,7 @@ pub struct CanonicalOwnerComposition {
     pub core: CanonicalRuntimeCore,
     pub fence: Arc<CanonicalOwnerFence>,
     pub public_profile: Arc<PublicProfileReader>,
+    pub relationship: Arc<GrpcRelationshipAuthority>,
     pub gift_private: Arc<GiftPrivateRuntime>,
     pub social_read: Arc<SocialReadSettler>,
     pub notification: Arc<NotificationClient>,
@@ -86,6 +90,13 @@ impl CanonicalOwnerComposition {
         )?);
         let gift_private = Arc::new(GiftPrivateRuntime::new(pool.clone(), config.pickup_keys));
         let social_read = Arc::new(SocialReadSettler::new(pool.clone()));
+        let relationship = Arc::new(GrpcRelationshipAuthority::connect(
+            &config.endpoints.auth,
+            &config.endpoints.friend,
+            &config.credential,
+            Some(&config.tls),
+            config.relationship_signer.clone(),
+        )?);
         let notification = Arc::new(NotificationClient::connect(
             &config.endpoints.notification,
             &config.credential,
@@ -111,6 +122,7 @@ impl CanonicalOwnerComposition {
             core,
             fence,
             public_profile,
+            relationship,
             gift_private,
             social_read,
             notification,

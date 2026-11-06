@@ -523,6 +523,242 @@ def feed_proof(stack, gateway, origin, event, operator, member, record, checks):
     })
 
 
+def venue_seed(event):
+    place_id = str(uuid4())
+    map_id = "closure_dev_map"
+    cutoff = (datetime.now(timezone.utc) + timedelta(hours=24)).strftime("%Y-%m-%dT%H:%M:%SZ")
+    provenance = {
+        "source_id": "closure_dev",
+        "source_kind": "PLACE_REFERENCE",
+        "source_revision": "closure-dev-1",
+        "source_uri": "https://development.invalid/venue-place",
+        "author": "development fixture",
+        "license": "development only",
+        "review_state": "REVIEWED",
+        "reviewed_by": "development reviewer",
+        "reviewed_at": "2026-11-06T00:00:00Z",
+        "photo_permission": "NOT_APPLICABLE",
+    }
+    statements = [
+        "INSERT INTO concert_meeting_settings(event_id,event_cutoff) VALUES("
+        + prep.quote(event) + "," + prep.quote(cutoff) + ")",
+        "INSERT INTO concert_map_releases(map_id,map_revision,content_hash,geometry_hash,canonical_bytes) VALUES("
+        + prep.quote(map_id) + ",1,'sha256:" + "0" * 64 + "','sha256:" + "0" * 64
+        + "',decode('00','hex'))",
+        "INSERT INTO concert_map_release_places(map_id,map_revision,place_id,label,place_kind,"
+        "verification_state,accessibility_notes,source_kind,source_uri,review_state,provenance) VALUES("
+        + ",".join(map(prep.quote, [map_id, "1", place_id, "Closure development place", "PHYSICAL",
+                                    "VERIFIED", "Development-only reviewed place", "PLACE_REFERENCE",
+                                    "https://development.invalid/venue-place", "REVIEWED"]))
+        + "," + prep.quote(json.dumps(provenance)) + "::jsonb)",
+        "INSERT INTO concert_place_current_state(map_id,map_revision,place_id,closure_state) VALUES("
+        + ",".join(map(prep.quote, [map_id, "1", place_id, "OPEN"])) + ")",
+        "INSERT INTO concert_events_map_releases(event_id,catalog_revision,map_id,map_revision) VALUES("
+        + ",".join(map(prep.quote, [event, "1", map_id, "1"])) + ")",
+    ]
+    return place_id, statements
+
+
+def venue_friend_pair(gateway, origin, first, second, record):
+    for follower, target, target_token in ((first, second[0], second[1]), (second, first[0], first[1])):
+        status, body, _ = request(
+            f"{gateway}/api/follows", "POST", {"targetUserId": target}, follower[1], origin, True
+        )
+        record("venue_follow", {"status": status, "body": body})
+        require(status == 200, f"venue friendship follow failed: {status} {body}")
+        if body.get("following") is not True and body.get("requestId"):
+            accepted, accepted_body, _ = request(
+                f"{gateway}/api/follows/requests/{body['requestId']}/accept",
+                "POST", None, target_token, origin, True,
+            )
+            record("venue_follow_accept", {"status": accepted, "body": accepted_body})
+            require(accepted == 200, f"venue follow accept failed: {accepted} {accepted_body}")
+
+
+def venue_proof(stack, gateway, origin, event, place_id, member, operator, stranger, record, checks):
+    base = f"{gateway}/api/concert/events/{event}/venue"
+    now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.%fZ")
+
+    def call(name, method, path, payload, token, key=None, auth=True):
+        extra = {"Idempotency-Key": key} if key else None
+        status, body, _ = request(
+            f"{base}{path}", method, payload, token if auth else None, origin, True, extra
+        )
+        record(name, {"status": status, "body": body})
+        return status, body
+
+    status, sharing = call(
+        "venue_sharing", "PUT", "/location/sharing",
+        {"expected_revision": 0, "state": "ACTIVE", "viewer_ids": [operator[0]]},
+        member[1], str(uuid4()),
+    )
+    checks["venue_sharing_200"] = status == 200 and sharing.get("operation") == "setVenueLocationSharing"
+    status, fix = call(
+        "venue_fix", "PUT", "/location/fix",
+        {"expected_sharing_revision": 1, "source": "DEVICE_GEOLOCATION_REPORTED",
+         "latitude": 37.5665, "longitude": 126.9780, "accuracy_m": 12.0,
+         "captured_at": now},
+        member[1], str(uuid4()),
+    )
+    checks["venue_fix_200"] = status == 200 and fix.get("resource_kind") == "PHONE_FIX"
+    status, snapshot = call("venue_location_friend", "GET", "/location", None, operator[1])
+    friends = snapshot.get("friends") if isinstance(snapshot, dict) else None
+    checks["venue_location_friend_200"] = (
+        status == 200 and isinstance(friends, list) and len(friends) == 1
+        and friends[0].get("user_id") == member[0]
+        and (friends[0].get("position") or {}).get("latitude") == 37.5665
+    )
+    status, own = call("venue_location_no_consent", "GET", "/location", None, member[1])
+    checks["venue_location_no_consent_empty"] = (
+        status == 200 and isinstance(own, dict) and own.get("friends") == []
+        and own.get("self_location", {}).get("position", {}).get("latitude") == 37.5665
+    )
+    status, block_body, _ = request(
+        f"{gateway}/api/relationships/blocks/{operator[0]}", "POST", None, member[1], origin, True
+    )
+    record("venue_block_create", {"status": status, "body": block_body})
+    require(status == 200, f"venue block failed: {status} {block_body}")
+    status, blocked = call("venue_location_blocked", "GET", "/location", None, operator[1])
+    checks["venue_location_blocked_no_location"] = (
+        status == 200 and isinstance(blocked, dict) and blocked.get("friends") == []
+    )
+    status, unblock_body, _ = request(
+        f"{gateway}/api/relationships/blocks/{operator[0]}", "DELETE", None, member[1], origin, True
+    )
+    record("venue_block_delete", {"status": status, "body": unblock_body})
+    require(status == 200, f"venue unblock failed: {status} {unblock_body}")
+    venue_friend_pair(gateway, origin, member, operator, record)
+    status, _ = call("venue_location_unauth", "GET", "/location", None, None, auth=False)
+    checks["venue_location_unauth_401"] = status == 401
+
+    note_body = {
+        "text": "Development venue note",
+        "audience": "FRIENDS",
+        "expiry": "ONE_HOUR",
+        "landmark_selection": {
+            "landmark_id": place_id, "catalog_revision": 1, "landmark_revision": 1
+        },
+    }
+    status, created = call(
+        "venue_note_create", "POST", f"/landmarks/{place_id}/notes",
+        note_body, member[1], str(uuid4()),
+    )
+    note_id = ((created.get("resource") or {}).get("id") if isinstance(created, dict) else None)
+    if status != 201:
+        for attempt in range(1, 5):
+            measured = dict(note_body)
+            measured["text"] = f"Development venue note measured {attempt}"
+            status, created = call(
+                f"venue_note_create_measured_{attempt}", "POST",
+                f"/landmarks/{place_id}/notes", measured, member[1], str(uuid4()),
+            )
+            note_body = measured
+            note_id = ((created.get("resource") or {}).get("id") if isinstance(created, dict) else None)
+            if status == 201 and note_id:
+                break
+    checks["venue_note_create_201"] = (
+        status == 201 and created.get("state") == "SUCCEEDED"
+        and isinstance(note_id, str) and created.get("operation_id") == "createVenuePlaceNote"
+    )
+    status, page = call("venue_note_friend_list", "GET", f"/landmarks/{place_id}/notes", None, operator[1])
+    items = page.get("items") if isinstance(page, dict) else None
+    checks["venue_note_friend_visible"] = (
+        status == 200 and isinstance(items, list) and any(
+            item.get("id") == note_id and item.get("text") == note_body["text"] for item in items
+        )
+    )
+    status, stranger_page = call(
+        "venue_note_stranger_list", "GET", f"/landmarks/{place_id}/notes", None, stranger[1]
+    )
+    checks["venue_note_stranger_omitted"] = (
+        status == 200 and isinstance(stranger_page, dict) and stranger_page.get("items") == []
+    )
+    status, missing = call(
+        "venue_note_stranger_thread", "GET", f"/landmarks/{place_id}/notes/{note_id}", None, stranger[1]
+    )
+    checks["venue_note_stranger_thread_404"] = status == 404
+    status, reply = call(
+        "venue_note_reply", "POST", f"/landmarks/{place_id}/notes/{note_id}/replies",
+        {"text": "Development reply", "expected_parent_revision": 1}, operator[1], str(uuid4()),
+    )
+    checks["venue_note_reply_201"] = (
+        status == 201 and reply.get("operation_id") == "createVenuePlaceReply"
+        and isinstance((reply.get("resource") or {}).get("id"), str)
+    )
+    status, thread = call(
+        "venue_note_thread", "GET", f"/landmarks/{place_id}/notes/{note_id}", None, member[1]
+    )
+    replies = thread.get("replies") if isinstance(thread, dict) else None
+    checks["venue_note_thread_reply_visible"] = (
+        status == 200 and isinstance(replies, list) and len(replies) == 1
+        and replies[0].get("text") == "Development reply"
+    )
+    status, _ = call(
+        "venue_note_stranger_reply", "POST", f"/landmarks/{place_id}/notes/{note_id}/replies",
+        {"text": "Denied reply", "expected_parent_revision": 2}, stranger[1], str(uuid4()),
+    )
+    checks["venue_note_stranger_reply_403"] = status == 403
+    status, _ = call(
+        "venue_note_foreign_withdraw", "DELETE",
+        f"/landmarks/{place_id}/notes/{note_id}?expected_revision=2", None, operator[1], str(uuid4()),
+    )
+    checks["venue_note_foreign_withdraw_403"] = status == 403
+    status, withdrawn = call(
+        "venue_note_withdraw", "DELETE",
+        f"/landmarks/{place_id}/notes/{note_id}?expected_revision=2", None, member[1], str(uuid4()),
+    )
+    checks["venue_note_withdraw_200"] = (
+        status == 200 and withdrawn.get("operation_id") == "withdrawVenuePlaceNote"
+    )
+    status, after = call(
+        "venue_note_after_withdraw", "GET", f"/landmarks/{place_id}/notes", None, member[1]
+    )
+    checks["venue_note_withdraw_hidden"] = (
+        status == 200 and isinstance(after, dict)
+        and all(item.get("id") != note_id for item in after.get("items", []))
+    )
+
+    context_path = f"{gateway}/api/concert/events/{event}/venue-meeting/context?selectedFriendId={{}}"
+    status, context, _ = request(context_path.format(member[0]), "GET", None, operator[1], origin)
+    record("venue_meeting_context_friend", {"status": status, "body": context})
+    checks["venue_meeting_context_friend_200"] = (
+        status == 200 and isinstance(context, dict) and context.get("canRead") is True
+    )
+    status, context, _ = request(context_path.format(member[0]), "GET", None, stranger[1], origin)
+    record("venue_meeting_context_stranger", {"status": status, "body": context})
+    checks["venue_meeting_context_stranger_404"] = status == 404
+    status, sent, _ = request(
+        f"{gateway}/api/concert/events/{event}/venue-meeting/messages", "POST",
+        {"selection": {"selectedFriendId": member[0]}, "body": "Development venue message"},
+        operator[1], origin, True, {"Idempotency-Key": str(uuid4())},
+    )
+    record("venue_meeting_send", {"status": status, "body": sent})
+    checks["venue_meeting_send_200"] = (
+        status == 200 and sent.get("state") == "APPLIED"
+        and (sent.get("result") or {}).get("kind") == "MESSAGE"
+    )
+    status, messages, _ = request(
+        f"{gateway}/api/concert/events/{event}/venue-meeting/messages?selectedFriendId={operator[0]}",
+        "GET", None, member[1], origin,
+    )
+    record("venue_meeting_messages", {"status": status, "body": messages})
+    checks["venue_meeting_messages_200"] = (
+        status == 200 and isinstance(messages, dict) and any(
+            item.get("body") == "Development venue message" for item in messages.get("items", [])
+        )
+    )
+    report_rows = stack.cluster.sql(
+        "mcr_concert",
+        "SELECT (SELECT count(*) FROM concert_venue_location_sharing WHERE event_id="
+        + prep.quote(event) + "),(SELECT count(*) FROM concert_venue_location_fixes WHERE event_id="
+        + prep.quote(event) + "),(SELECT count(*) FROM concert_place_notes WHERE event_id="
+        + prep.quote(event) + "),(SELECT count(*) FROM concert_place_notes WHERE event_id="
+        + prep.quote(event) + " AND parent_id IS NOT NULL),(SELECT count(*) FROM concert_venue_meeting_messages WHERE event_id="
+        + prep.quote(event) + ")",
+    )
+    record("venue_rows", {"sharing|fixes|notes|replies|messages": report_rows})
+
+
 def hold(stack, seconds):
     print("HOLD_BEGIN", flush=True)
     for name in sorted(stack.children):
@@ -549,6 +785,7 @@ def main(argv=None):
     parser.add_argument("--redis-binary", type=Path, default=Path("/opt/homebrew/bin/redis-server"))
     parser.add_argument("--openssl-binary", type=Path, default=Path("/opt/homebrew/bin/openssl"))
     parser.add_argument("--hold-on-failure-seconds", type=int, default=0)
+    parser.add_argument("--venue-only", action="store_true")
     args = parser.parse_args(argv)
     migration.SERVICES["concert-service"] = "CONCERT_DATABASE_URL"
     runtime.PREFIX.update({name: variable.removesuffix("_DATABASE_URL")
@@ -604,6 +841,9 @@ def main(argv=None):
         statements = ["INSERT INTO concert_events(event_id,slug,title,phase) VALUES("
                       + ",".join(map(prep.quote, [event, "closure-dev-" + secrets.token_hex(8),
                                                   "Closure development flow", "OPEN"])) + ")"]
+        venue_place, venue_statements = venue_seed(event)
+        statements.extend(venue_statements)
+        report["venue_place"] = venue_place
         for room in rooms:
             statements.append(
                 "INSERT INTO concert_world_rooms(event_id,room_id,label,capacity,map_id,map_revision,"
@@ -685,6 +925,28 @@ def main(argv=None):
             CONCERT_PICKUP_KEYS_JSON=json.dumps(
                 [{"id": "closure_dev", "secret_hex": secrets.token_hex(32)}]
             ),
+            CONCERT_VENUE_MODE="live",
+            CONCERT_VENUE_POLICY_JSON=json.dumps({
+                "venue_key": "closure-dev-venue",
+                "provider_id": "closure-dev-provider",
+                "source_revision": "closure-dev-1",
+                "location_revision": 1,
+                "meeting_revision": 1,
+                "fresh_ms": 30000,
+                "last_known_ms": 120000,
+                "fix_max_age_ms": 120000,
+                "future_skew_ms": 5000,
+                "sharing_lease_ms": 3600000,
+                "request_ttl_ms": 60000,
+                "check_in_ttl_ms": 60000,
+                "coordinate_retention_ms": 300000,
+                "command_retention_ms": 60000,
+                "max_accuracy_m": 50.0,
+                "max_viewers": 10,
+                "invitation_ms": 86400000,
+                "content_ms": 3600000,
+                "purge_ms": 604800000,
+            }),
             CONCERT_POST_GRPC_ENDPOINT=urls["post"],
             CONCERT_POST_READ_SIGNING_SEED=post_read[0],
             POST_CONCERT_ROOT_READ_VERIFYING_KEYS=post_callback[1],
@@ -729,8 +991,10 @@ def main(argv=None):
         report["enrollment_policy_revision"] = policy["revision"]
         operator = principal(gateway, stack.mail, policy, 1, origin)
         member = principal(gateway, stack.mail, policy, 2, origin)
+        stranger = principal(gateway, stack.mail, policy, 3, origin)
         initialize_profile(gateway, operator[0], operator[1], 1, origin)
         initialize_profile(gateway, member[0], member[1], 2, origin)
+        initialize_profile(gateway, stranger[0], stranger[1], 3, origin)
         event = report["event"]
         stack.cluster.sql(
             "mcr_concert",
@@ -752,7 +1016,7 @@ def main(argv=None):
             return value
 
         checks = report["checks"]
-        for user in (operator[0], member[0]):
+        for user in (operator[0], member[0], stranger[0]):
             stack.cluster.sql(
                 "mcr_concert",
                 "INSERT INTO concert_event_admissions(event_id,user_id,state) VALUES("
@@ -783,6 +1047,34 @@ def main(argv=None):
             "feed_blocked_403_or_404_zero_rows", "feed_post_closure_409",
         ):
             checks[name] = False
+        venue_place = report["venue_place"]
+        venue_friend_pair(gateway, origin, member, operator, record)
+        for name in (
+            "venue_sharing_200", "venue_fix_200", "venue_location_friend_200",
+            "venue_location_no_consent_empty", "venue_location_blocked_no_location",
+            "venue_location_unauth_401", "venue_note_create_201",
+            "venue_note_friend_visible", "venue_note_stranger_omitted",
+            "venue_note_stranger_thread_404", "venue_note_reply_201",
+            "venue_note_thread_reply_visible", "venue_note_stranger_reply_403",
+            "venue_note_foreign_withdraw_403", "venue_note_withdraw_200",
+            "venue_note_withdraw_hidden", "venue_meeting_context_friend_200",
+            "venue_meeting_context_stranger_404", "venue_meeting_send_200",
+            "venue_meeting_messages_200",
+        ):
+            checks[name] = False
+        venue_proof(
+            stack, gateway, origin, event, venue_place, member, operator, stranger,
+            record, checks,
+        )
+        if args.venue_only:
+            venue_checks = {name: value for name, value in checks.items() if name.startswith("venue_")}
+            failed = {name: value for name, value in venue_checks.items() if value is not True}
+            report["result"] = "PASS" if not failed else "FAIL"
+            report["checks"] = venue_checks
+            report["venue_only"] = True
+            if failed:
+                report["failed_checks"] = failed
+            return {"PASS": 0}.get(report["result"], 1)
         feed_proof(stack, gateway, origin, event, operator, member, record, checks)
         closure = {"confirmation": "CLOSE_EVENT", "expected_revision": 1,
                    "reason": "Development closure proof"}

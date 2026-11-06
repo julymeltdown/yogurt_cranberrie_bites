@@ -223,6 +223,10 @@ async fn main() -> anyhow::Result<()> {
         runtime.is_some(),
         intro_settings.is_some(),
     )?;
+    let venue_settings = config::venue_runtime::VenueRuntimeSettings::load(
+        runtime.is_some(),
+        intro_settings.is_some(),
+    )?;
     let inbox_settings =
         config::inbox_runtime::InboxRuntimeSettings::load(intro_settings.is_some())?;
     let target_settings =
@@ -373,6 +377,10 @@ async fn main() -> anyhow::Result<()> {
                                 .config
                                 .compose_shared(pool.clone(), &shared.owners, owners)?
                         }
+                        None => owners,
+                    };
+                    let owners = match venue_settings {
+                        Some(settings) => settings.compose(pool.clone(), &shared.owners, owners)?,
                         None => owners,
                     };
                     product_owner = Some(match report_settings {

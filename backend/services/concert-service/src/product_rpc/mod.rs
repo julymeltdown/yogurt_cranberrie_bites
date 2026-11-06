@@ -24,7 +24,10 @@ mod feature_admission;
 mod owner_media;
 pub(crate) mod query;
 pub mod report_admission;
+pub mod venue_admission;
 pub mod venue_meeting_admission;
+pub mod venue_product;
+pub use venue_admission::VenueOperation;
 mod operations_admission;
 pub use age_admission::AgeOperation;
 pub use operations_admission::OperationsOperation;
@@ -75,6 +78,7 @@ pub enum Operation {
     Report(ReportOperation),
     Closure,
     Meeting(venue_meeting_admission::MeetingOperation),
+    Venue(venue_admission::VenueOperation),
     Operations(OperationsOperation),
 }
 impl Operation {
@@ -107,6 +111,7 @@ impl Operation {
             Self::Report(operation) => operation.id(),
             Self::Closure => "closeConcertEvent",
             Self::Meeting(operation) => operation.id(),
+            Self::Venue(operation) => operation.id(),
             Self::Operations(operation) => operation.id(),
         }
     }
@@ -165,6 +170,9 @@ pub fn operation(event: Uuid, method: &str, target: &str) -> Result<Operation, S
     if let Ok(meeting) = venue_meeting_admission::route(event, method, target) {
         return Ok(Operation::Meeting(meeting));
     }
+    if let Ok(venue) = venue_admission::route(event, method, target) {
+        return Ok(Operation::Venue(venue));
+    }
     let result = match (method, suffix) {
         ("GET", "feed") => Operation::Feed,
         ("GET", "parties") => Operation::ListParties,
@@ -217,6 +225,8 @@ pub fn operation(event: Uuid, method: &str, target: &str) -> Result<Operation, S
                 | Operation::CancelPartyApplication(_)
                 | Operation::RemovePartyMember(_, _)
                 | Operation::ServicePolicy
+                | Operation::Meeting(_)
+                | Operation::Venue(_)
         )
     {
         return Err(Status::invalid_argument("Unexpected product query"));
@@ -396,6 +406,9 @@ fn authorize(request: &Request<proto::ProductRequest>) -> Result<VerifiedProduct
     if let Operation::Meeting(_) = operation {
         venue_meeting_admission::request(m, operation)?;
     }
+    if let Operation::Venue(_) = operation {
+        venue_admission::request(m, operation)?;
+    }
     if let Operation::Operations(operations) = operation {
         query::operations_request(m, operations)?;
     }
@@ -424,7 +437,7 @@ fn authorize(request: &Request<proto::ProductRequest>) -> Result<VerifiedProduct
     );
     if matches!(
         operation,
-        Operation::Social(_) | Operation::Intro(_) | Operation::Notification(_) | Operation::Age(_) | Operation::Report(_) | Operation::Operations(_) | Operation::Wall(_) | Operation::Meeting(_) | Operation::FeedCommand(_)
+        Operation::Social(_) | Operation::Intro(_) | Operation::Notification(_) | Operation::Age(_) | Operation::Report(_) | Operation::Operations(_) | Operation::Wall(_) | Operation::Meeting(_) | Operation::Venue(_) | Operation::FeedCommand(_)
     ) {
         // Each exact feature decoder validates its own read payload and keyed
         // command shape, including Intro PUT/POST and Notification PATCH writes.
@@ -554,7 +567,7 @@ impl proto::product_service_server::ProductService for ProductRpcService {
             || result.body.len() > MAX_BODY
             || !matches!(
                 result.status,
-                200 | 202 | 400 | 401 | 403 | 404 | 409 | 413 | 415 | 429 | 500 | 503 | 504
+                200 | 201 | 202 | 400 | 401 | 403 | 404 | 409 | 413 | 415 | 429 | 500 | 503 | 504
             )
             || !matches!(
                 result.content_type.as_str(),
