@@ -5,7 +5,8 @@
 - Branch: `codex/mcr-exec-w5-in03`
 - Base: `c35076243aa651db77c7bf60ca0df4e68ab8aa39`
 - Gate driver: `backend/scripts/mcr/in03_social_gate.py`
-- Machine report: `task-30-in03-report.json` (this directory)
+- Machine report: `task-30-in03-report.json` (this directory), generated at the
+  delivered source revision `6b824c4f0`.
 - Delivered commits: `f0d1f21ae` (`fix(social): retain read children before the effect
   witness`), `4ec06d5ad` (`fix(gateway): raise the outer request timeout to the
   two-second ceiling`), and this evidence commit (`test(in03): remove vacuous checks
@@ -171,7 +172,7 @@ cargo test -p api-gateway --test unit
 | Deleted post read | carol | `GET …/posts/{deleted}` | 404 exact `CONCERT_404 RESOURCE_UNAVAILABLE` |
 | Blocked author disappears from feed (Friend block) | alice after friend block | `GET …/feed?limit=1` | 200; Bob's post absent |
 | Blocked post read | alice | `GET …/posts/{bob_post}` | 404 exact `CONCERT_404` |
-| Comments self-read | bob | `GET …/posts/{bob_post}/comments?limit=10` | 200 in **1399.9 ms**; seeded comment author present; DB `PUBLISHED` |
+| Comments self-read | bob | `GET …/posts/{bob_post}/comments?limit=10` | 200 in **1591.0 ms**; seeded comment author present; DB `PUBLISHED` |
 | Deleted post absent | carol | `GET …/posts/{alice_post}` | 404 exact `CONCERT_404` |
 | Wall member read | alice | `GET …/mural/snapshot` | 200 revision 1 |
 | Wall non-participant read | outsider | `GET …/mural/snapshot` | 404 exact `CONCERT_404` |
@@ -180,7 +181,7 @@ cargo test -p api-gateway --test unit
 | Block listing | carol | `GET …/me/blocks` | 200; target bob present |
 | Social unblock | carol → bob | `DELETE …/me/blocks/{bob}` | 200 `{"blocked_by_me":false,"revision":3,…}` |
 | Unverified age social request denied | alice → bob | `POST …/social-requests` | 404 exact `CONCERT_404 RESOURCE_UNAVAILABLE` (SocialRuntime envelope) |
-| Feed after Concert social block | carol | `GET …/feed?limit=1` | **503 `CONCERT_503 DEPENDENCY_UNAVAILABLE` in 331.2 ms** — recorded as BLOCKED (see below) |
+| Feed after Concert social block | carol | `GET …/feed?limit=1` | **503 `CONCERT_503 DEPENDENCY_UNAVAILABLE` in 294.5 ms** — recorded as BLOCKED (see below) |
 | Unblock (friend surface) | alice → bob | `DELETE /api/relationships/blocks/bob` | 200; `user_blocks.deleted_at` set |
 | Profile after unblock | alice → bob | `GET /api/profile/bob` | 200 (public profile restored) |
 | Denied payload audit | all denials | exact key set `{code,message,traceId,timestamp,details}` | 0 private metadata leaks across user ids, emails, handles, tokens and passwords |
@@ -192,7 +193,7 @@ from the owned PostgreSQL databases (`mcr_friend`, `mcr_profile`, `mcr_post`,
 ## Blocked observation (executed, not a pass)
 
 `concert_block_feed_read` — after carol blocks bob through `/me/blocks`, carol's own
-`GET …/feed?limit=1` returns `CONCERT_503 DEPENDENCY_UNAVAILABLE` in **331.2 ms**
+`GET …/feed?limit=1` returns `CONCERT_503 DEPENDENCY_UNAVAILABLE` in **294.5 ms**
 (not a timeout). The identical read returned 200 with Bob's post present immediately
 before the block and 200 again after the unblock, so the blocked
 `concert_relationship_pairs` row is what fails the read. The Concert feed fence
@@ -220,7 +221,7 @@ feed-filter privacy pass is claimed for the Concert block surface.
 
 1. Social `/me/blocks` list/block/list-after-block/unblock now execute and pass;
    the previous "budget" explanation was a lock-order defect that is fixed.
-2. Comments read completes in 1399.9 ms inside the two-second ceiling with the
+2. Comments read completes in 1591.0 ms inside the two-second ceiling with the
    gateway outer timeout aligned to that ceiling.
 3. A Concert social block makes the blocker's own feed read fail closed with 503;
    this is recorded as a blocker, not a pass.
