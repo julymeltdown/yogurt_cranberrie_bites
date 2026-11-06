@@ -116,7 +116,7 @@ fn error(reason: &str, status: StatusCode) -> Response {
         json!({"code":format!("GATEWAY_{}",status.as_u16()),"message":"The requested action is unavailable.","traceId":Uuid::new_v4(),"timestamp":Utc::now().to_rfc3339_opts(SecondsFormat::Millis,true),"details":{"reason":reason}}),
     )
 }
-fn command_error(e: CommandError) -> Response {
+pub(crate) fn command_error(e: CommandError) -> Response {
     let (status, reason) = match e {
         CommandError::InvalidInput => (StatusCode::BAD_REQUEST, "INVALID_INPUT"),
         CommandError::Denied => (StatusCode::NOT_FOUND, "RESOURCE_UNAVAILABLE"),
@@ -164,6 +164,15 @@ pub async fn close_response<A: FencedLifecycleAuthority, O: LifecycleOwners>(
         Ok(v) => v,
         Err(e) => return command_error(e),
     };
+    receipt_response(service, actor, receipt).await
+}
+/// Projects one committed/known command receipt. The driver-owned admission path
+/// shares this exact boundary instead of re-implementing the closed statuses.
+pub(crate) async fn receipt_response<A: FencedLifecycleAuthority, O: LifecycleOwners>(
+    service: &PgEventLifecycle<A, O>,
+    actor: Actor,
+    receipt: SafeReceipt,
+) -> Response {
     match receipt.state {
         ReceiptState::Succeeded => {
             let Some(reference) = receipt.reference else {
