@@ -118,6 +118,20 @@ class Api:
             connection.close()
 
 
+def assert_social_error(status, body, expected_status, expected_reason, forbid=()):
+    """Exact closed SocialRuntime envelope (its own message, never the generic one)."""
+    require(status == expected_status, f"social-expected-{expected_status}-got-{status}")
+    require(isinstance(body, dict) and set(body) == ERROR_KEYS, "social-error-envelope")
+    require(body["code"] == f"CONCERT_{expected_status}", "social-error-code")
+    require(body["message"] == "The requested action is unavailable.", "social-error-message")
+    require(body["details"] == {"reason": expected_reason}, "social-error-details")
+    UUID(body["traceId"])
+    snapshot_time(body["timestamp"])
+    rendered = json.dumps(body)
+    for token in forbid:
+        require(token not in rendered, f"social-denied-body-leaked-{token}")
+
+
 def assert_gateway_error(status, body, expected_status, expected_message, forbid=()):
     require(status == expected_status, f"expected-status-{expected_status}-got-{status}")
     require(isinstance(body, dict) and set(body) == ERROR_KEYS, "gateway-error-envelope")
@@ -684,13 +698,16 @@ def main(argv=None):
         assert_concert_error(status, body, 404, "RESOURCE_UNAVAILABLE")
         record("blocked_post_read_denied", {"http": status, "body": body})
 
+        comments_started = time.monotonic()
         status, body, _ = api.request(
             "bob", "GET", f"/api/concert/events/{event}/posts/{bob_post}/comments?limit=10")
+        comments_ms = round((time.monotonic() - comments_started) * 1000, 1)
         comment_items = body.get("items", [])
         comments_readable = status == 200 and any(
             item.get("author", {}).get("user_id") == users["bob"] for item in comment_items)
         record("comments_self_read", {
             "http": status,
+            "ms": comments_ms,
             "body": None if status == 200 else body,
             "author_ids": [i.get("author", {}).get("user_id") for i in comment_items],
             "db": query("mcr_post", "SELECT jsonb_agg(jsonb_build_object('comment_id',comment_id,"
@@ -725,18 +742,19 @@ def main(argv=None):
             require(status == 503 and body.get("details", {}).get("reason") == "DEPENDENCY_UNAVAILABLE",
                     f"social-blocks-unexpected-{status}:{json.dumps(body)[:400]}")
             for name, consumer in (
-                ("social_block_list", "backend/services/concert-service/src/social_live/producer.rs list() -> RuntimeHooks::register -> CanonicalOwnerFence::track_transaction"),
-                ("social_block", "same SocialRuntime command transaction registration"),
-                ("social_unblock", "same SocialRuntime command transaction registration"),
-                ("unverified_age_denial", "same SocialRuntime command transaction registration before PgSocialEligibility::check_in"),
+                ("social_block_list", "backend/services/concert-service/src/social_live/producer.rs list() -> RuntimeHooks::retain -> social_live/read_child.rs register_child_intent -> product_rpc/scope_ledger.rs lock"),
+                ("social_block", "backend/services/concert-service/src/social_live/producer.rs block_state() -> RuntimeHooks::succeeded -> retain"),
+                ("social_unblock", "backend/services/concert-service/src/social_live/producer.rs block_state() -> RuntimeHooks::succeeded -> retain"),
+                ("unverified_age_denial", "backend/services/concert-service/src/social_live/producer.rs command transaction -> retain before the effect witness"),
             ):
                 report["not_run"][name] = {
                     "status": "NOT_RUN",
-                    "reason": "The composed Social transaction registration does not complete inside "
-                              "the 2 s product budget on this stack; the surface returns CONCERT_503 "
-                              "DEPENDENCY_UNAVAILABLE and grants no access. This is a runtime budget "
-                              "limitation, not a provider input. Friend block/unblock and the "
-                              "concert profile/feed block fences did execute.",
+                    "reason": "The Social read could not retain its source-exclusion child: the "
+                              "effect witness holds FOR SHARE on the root scope row for the rest of "
+                              "the projecting transaction, so a child intent registered afterwards "
+                              "waits on the ledger's 250 ms lock timeout and the surface returns "
+                              "CONCERT_503 DEPENDENCY_UNAVAILABLE before any result is projected. "
+                              "This is a lock-order defect, not a budget or provider input.",
                     "consumer": consumer,
                 }
         else:
@@ -747,13 +765,39 @@ def main(argv=None):
             require(status == 200 and body.get("blocked_by_me") is True, f"social-block-{status}")
             record("social_block", {"http": status, "body": body})
 
-            status, body, _ = feed("carol")
-            require(status == 200 and bob_post not in [item["post_id"] for item in body.get("items", [])],
-                    "feed-carol-blocked-author-visible")
-            record("feed_carol_blocked_author_absent", {
+            feed_started = time.monotonic()
+            status, body, _ = api.request(
+                "carol", "GET", f"/api/concert/events/{event}/feed?limit=1")
+            feed_ms = round((time.monotonic() - feed_started) * 1000, 1)
+            carol_feed_ids = [item["post_id"] for item in body.get("items", [])]
+            # Executed observation, not a privacy pass. U08 /me/blocks specifies
+            # list/unblock and prior sharing revocation; the concert feed reads the
+            # Friend block authority and fails closed with DEPENDENCY_UNAVAILABLE
+            # while a Concert social pair is blocked. Recorded as a blocker.
+            record("feed_carol_blocked_author_state", {
                 "http": status,
-                "post_ids": [item["post_id"] for item in body.get("items", [])],
+                "ms": feed_ms,
+                "body": None if status == 200 else body,
+                "post_ids": carol_feed_ids,
+                "bob_post_visible": bob_post in carol_feed_ids,
+                "spec_basis": "U08 /me/blocks: list and unblock; no feed-hiding contract"
+                               " (a 503 for the blocker's own feed is still a defect)",
+                "consumer": "backend/services/post-service/src/concert_feed read admission "
+                            "(Friend block view only); backend/services/concert-service/src/feed "
+                            "policy/author fence",
             })
+            if status != 200 and carol_feed_ids == []:
+                report["not_run"]["concert_block_feed_read"] = {
+                    "status": "BLOCKED",
+                    "reason": "After carol blocks bob through /me/blocks, her own feed read "
+                              "returned CONCERT_503 DEPENDENCY_UNAVAILABLE in " + str(feed_ms) + " ms; "
+                              "the same read returned 200 with bob's post present before the "
+                              "block and after the unblock. The feeder fails closed instead of "
+                              "filtering, so no feed-filter privacy pass is claimed for the "
+                              "Concert block surface.",
+                    "consumer": "backend/services/post-service/src/concert_feed read admission; "
+                                "backend/services/concert-service/src/feed policy/author fence",
+                }
 
             status, body, _ = api.request("carol", "GET",
                                           f"/api/concert/events/{event}/me/blocks")
@@ -774,7 +818,7 @@ def main(argv=None):
                  "consents": [{"platform": "INSTAGRAM", "requester_handle_version": 1,
                                "recipient_handle_version": 1, "requester_consents": True}]},
                 str(uuid4()))
-            assert_concert_error(status, body, 404, "RESOURCE_UNAVAILABLE", forbid=PRIVATE_TOKENS)
+            assert_social_error(status, body, 404, "RESOURCE_UNAVAILABLE", forbid=PRIVATE_TOKENS)
             record("unverified_age_request_denied", {"http": status, "body": body})
 
         denied = {name: step["body"] for name, step in report["steps"].items()
@@ -883,27 +927,25 @@ def main(argv=None):
             "comments_read": {
                 "status": "NOT_RUN" if report["steps"].get("comments_self_read", {}).get("http") != 200 else "EXECUTED",
                 "reason": "Observed " + str(report["steps"].get("comments_self_read", {}).get("http"))
-                          + ": the self-authored comments route does not return data within the "
-                          "composed authority window on this stack (observed CONCERT_504 "
-                          "DEADLINE_EXCEEDED, CONCERT_503 DEPENDENCY_UNAVAILABLE or CONCERT_401 "
-                          "AUTHENTICATION_REQUIRED as the signed parent authority ages out). It returns no "
-                          "data and no private metadata. The seed row is present in "
-                          "post_concert_comments and is recorded in the step. This is a runtime "
-                          "budget limitation, not a provider input and not claimed as a comment-read pass.",
-                "consumer": "backend/services/concert-service/src/feed/content.rs comments(); "
-                            "backend/services/concert-service/src/product_rpc/mod.rs BUDGET",
+                          + ": the self-authored comments route did not return data. The composed "
+                          "read needs about 1.3-1.5 s on this stack (post owner read, per-comment "
+                          "admission, then one guarded public-author read per comment), longer than "
+                          "the gateway's outer request timeout, which fails the caller before the "
+                          "product's own two-second ceiling. It returns no data and no private "
+                          "metadata. The seed row is present in post_concert_comments. Not claimed "
+                          "as a comment-read pass.",
+                "consumer": "backend/services/api-gateway/src/config/mod.rs GATEWAY_REQUEST_TIMEOUT_MS; "
+                            "backend/services/concert-service/src/feed/author_filter.rs comments()",
             },
             "blocked_comment_author_filter": {
                 "status": "NOT_RUN",
                 "reason": "The blocked-author comment filter requires a parent author and a "
-                          "blocked comment author in one read. In the observed run the "
-                          "comments response exceeded the composed 2 s product budget "
-                          "(CONCERT_504 DEADLINE_EXCEEDED); the thread returns no data rather "
-                          "than leaked data. The blocked event feed, blocked post detail and "
-                          "blocked profile denials did execute. This is a runtime budget "
-                          "limitation, not a provider input and not a privacy pass.",
-                "consumer": "backend/services/concert-service/src/feed/content.rs comments "
-                            "author filter; backend/services/concert-service/src/product_rpc/mod.rs BUDGET",
+                          "blocked comment author in one read; this run seeds one comment by the "
+                          "parent author, so no blocked comment row exists to filter. The blocked "
+                          "event feed, blocked post detail and blocked profile denials did execute. "
+                          "Not claimed as a privacy pass.",
+                "consumer": "backend/services/concert-service/src/feed/author_filter.rs comments "
+                            "author filter",
             },
             "client_cache_and_ws_frames": {
                 "status": "NOT_RUN",
@@ -933,15 +975,18 @@ def main(argv=None):
         checks["feed_deleted_post_404"] = report["steps"]["feed_deleted_post_denied"]["http"] == 404
         checks["feed_blocked_author_absent"] = report["steps"]["feed_blocked_author_absent"]["http"] == 200
         checks["blocked_post_denied_404"] = report["steps"]["blocked_post_read_denied"]["http"] == 404
-        checks["comments_self_read_or_fail_closed"] = report["steps"]["comments_self_read"]["http"] in (200, 401, 503, 504)
+        checks["comments_self_read"] = comments_readable
         checks["deleted_post_absent"] = report["steps"]["deleted_post_absent"]["http"] == 404
         checks["wall_member_read"] = report["steps"]["wall_member_read"]["http"] == 200
         checks["wall_outsider_denied_404"] = report["steps"]["wall_outsider_denied"]["http"] == 404
-        checks["social_block_listed"] = report["steps"].get("social_block", {}).get("http") == 200 or not social_available
-        checks["social_unblock"] = (report["steps"].get("social_unblock", {}).get("body", {}).get("blocked_by_me") is False
-            or not social_available)
-        checks["unverified_age_denied"] = (report["steps"].get("unverified_age_request_denied", {}).get("http") == 404
-            or not social_available)
+        # A step that never ran cannot pass: each check reads the recorded step
+        # and is false when the branch that executes it was skipped.
+        checks["social_block_listed"] = (
+            report["steps"].get("social_block_listed", {}).get("http") == 200)
+        checks["social_unblock"] = (
+            report["steps"].get("social_unblock", {}).get("body", {}).get("blocked_by_me") is False)
+        checks["unverified_age_denied"] = (
+            report["steps"].get("unverified_age_request_denied", {}).get("http") == 404)
         checks["no_denied_private_metadata"] = report["steps"]["denied_payload_audit"]["private_metadata_leaks"] == {}
         checks["unblock_restores_profile"] = report["steps"]["profile_after_unblock"]["http"] == 200
         checks["invalidation_journal_grew"] = (
