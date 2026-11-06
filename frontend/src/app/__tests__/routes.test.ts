@@ -6,7 +6,7 @@ import { giftPath, ids } from './fixtures/ports'
 const iaRoutes = ia.screens.map(screen => screen.route.replace(/\?.*$/, ''))
 const participantPrefixes = ['/world', '/feed', '/meet', '/gifts', '/wall', '/me', '/notices', '/people', '/notifications', '/report']
 const optionalIAPaths = new Set(['/meet/parties/:partyId/chat', '/wall/history'])
-// Authorized venue amendment beyond the planning IA baseline (commit 41d90738e).
+// The two routes granted by 41d90738e; the inbox is an in-panel state of the detail route.
 const authorizedPanelAdditions = ['/meet/invitations/:invitationId', '/meet/invitations/:invitationId/conversation']
 const requiredPanelPaths = iaRoutes.filter(route => participantPrefixes.some(prefix => route === prefix || route.startsWith(prefix + '/'))
   && !optionalIAPaths.has(route))
@@ -18,6 +18,12 @@ describe('frozen plan route composition', () => {
     expect(resolvePanel('/gifts/new')?.route.title).toBe('Create giveaway')
     expect(resolvePanel(`/gifts/pickups/${ids.gift}`)?.route.title).toBe('My pickup')
     expect(resolvePanel('/feed/new')?.route.title).toBe('New post')
+  })
+  it('keeps the two granted invitation routes and adds no parent list URL', () => {
+    expect(authorizedPanelAdditions).toEqual(['/meet/invitations/:invitationId',
+      '/meet/invitations/:invitationId/conversation'])
+    expect(panelRoutes.map(route => route.path)).not.toContain('/meet/invitations')
+    expect(panelRoutes.filter(route => route.path.startsWith('/meet/invitations'))).toHaveLength(2)
   })
   it('registers every required shell/public/admin IA path without implementing optional enhancements', () => {
     const paths = panelRoutes.map(route => route.path)

@@ -43,8 +43,11 @@ export function Invitation({ owner, state }: { readonly owner: MeetingLeafOwner;
       {invitation.status === 'accepted' && <span aria-hidden="true">✓</span>}
     </p>}
     {!invitation && <p className="venue-meeting-explanation">Invite your friend to this fixed meeting place.</p>}
+    <p className="venue-meeting-policy">Invitee consent · 24-hour expiry · Host revoke</p>
     <MeetingPlace context={context} {...(state.canViewOnMap ? { onView: () => { owner.viewOnMap() } } : {})} />
     {actions.length === 0 && <p className="venue-meeting-explanation">No invitation action is currently available.</p>}
-    <button type="button" className="venue-meeting-text-button" onClick={() => owner.surface('conversation')}>Message about this place</button>
+    {context.canSend
+      ? <button type="button" className="venue-meeting-text-button" onClick={() => owner.surface('conversation')}>Message about this place</button>
+      : <p className="venue-meeting-explanation">Messaging is unavailable for this friend in the current event. An invitation does not grant messaging access.</p>}
   </section>
 }

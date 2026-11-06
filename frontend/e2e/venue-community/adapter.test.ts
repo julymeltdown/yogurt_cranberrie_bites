@@ -116,6 +116,28 @@ describe('actual shared-client normalized adapter', () => {
   it('does not infer detail authority from a bare invitation UUID', async () => {
     const h = setup(); expect(await h.factory.adapter.readInvitation(ids.invitation, h.request)).toBeNull(); expect(h.calls).toHaveLength(0)
   })
+  it('maps a producer permission denial to a truthful rejected reason', async () => {
+    const h = setup(); await h.factory.listInvitations('INCOMING', undefined, h.request)
+    const view = (await h.factory.adapter.readInvitation(ids.invitation, h.request))!, command = h.command(view, 'cancel')
+    h.override(() => { throw new MeetingClientError('PERMISSION_DENIED') })
+    expect(await h.factory.adapter.execute(command, h.request)).toEqual({ state: 'rejected', reason: 'denied' })
+  })
+  it('keeps terminal producer status past the original deadline and never invents producer capacity', async () => {
+    const h = setup(), expiresAt = new Date(h.f.time() - 1).toISOString()
+    h.override(() => ({ items: [{ selection: h.selected, invitation: { ...h.invitation, state: 'ACCEPTED', expiresAt,
+      allowedInvitationActions: [] } }], nextCursor: null, serverTime: h.context().serverTime }))
+    const page = await h.factory.listInvitations('INCOMING', undefined, h.request)
+    expect(page?.items[0]?.invitation.status).toBe('accepted')
+    expect(page?.items[0]?.invitation.allowedActions).toEqual([])
+    expect(page?.capacity).toBeNull()
+  })
+  it('keeps terminal producer status and granted actions past the original deadline', async () => {
+    const h = setup(), expiresAt = new Date(h.f.time() - 1).toISOString()
+    h.override(() => ({ items: [{ selection: h.selected, invitation: { ...h.invitation, state: 'ACCEPTED', expiresAt,
+      allowedInvitationActions: ['CANCEL'] } }], nextCursor: null, serverTime: h.context().serverTime }))
+    const page = await h.factory.listInvitations('INCOMING', undefined, h.request)
+    expect(page?.items[0]?.invitation).toMatchObject({ status: 'accepted', allowedActions: ['cancel'] })
+  })
   it('supports both inbox directions and their actual continuation cursors', async () => {
     const h = setup(); expect((await h.factory.listInvitations('INCOMING', '5', h.request))?.items[0]?.target?.targetUserId).toBe(ids.friend)
     expect(h.calls.at(-1)?.query).toEqual({ direction: 'INCOMING', cursor: '5' })
