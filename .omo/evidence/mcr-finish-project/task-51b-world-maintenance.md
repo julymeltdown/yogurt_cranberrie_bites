@@ -148,6 +148,57 @@ Exit 2 is the driver's truthful `PARTIAL`: `archive_public_200` and
 `archive_public_fields` are `null` because the event is `READ_ONLY`, not `ARCHIVED`, and
 the later closure owners are not composed. Every non-null check passed.
 
+## Follow-up hardening (verifier residual)
+
+After merge `a68edaadf`, the verifier named one residual hole: `world_survives_closure`
+sampled liveness only before the post-closure probes, and archive status was unconstrained
+when the phase was not `ARCHIVED` (both projection checks were `null`). A maintenance tick
+delayed past the 2 s settle could crash after the probes and still pass.
+
+`backend/scripts/mcr/closure_vertical_stack.py` now adds:
+
+- `post_probe_liveness` plus `concert_alive_after_probes`: the `concert-service` process
+  must still be running after the final probe and the closure-row reads.
+- `no_component_failure`: the whole `concert-service` stderr for the run must contain no
+  `CONCERT_COMPONENT_FAILURE` and no `World authority maintenance failed` line, not just
+  the post-closure byte range.
+- `archive_status_matches_phase`: authenticated and anonymous archive reads must both
+  return `404 RESOURCE_UNAVAILABLE` at `READ_ONLY`, and `200` if the phase is `ARCHIVED`.
+  The `archive_public_200`/`archive_public_fields` projection checks stay `null` only for
+  the ARCHIVED-only 200 body, so `null` now means "projection not applicable", never
+  "status not observed".
+
+Two runs on the same merged source:
+
+| Run | Exit | Result | `concert_alive_after_probes` | `no_component_failure` | `archive_status_matches_phase` | `world_survives_closure` | 409 / 503 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | 2 (`PARTIAL`) | 23 true / 0 false / 2 `null` | true | true | true (both 404 `RESOURCE_UNAVAILABLE`) | true | `409 EVENT_READ_ONLY` / `409 INVALID_TRANSITION`; no 503 |
+| 2 | 2 (`PARTIAL`) | 23 true / 0 false / 2 `null` | true | true | true (both 404 `RESOURCE_UNAVAILABLE`) | true | `409 EVENT_READ_ONLY` / `409 INVALID_TRANSITION`; no 503 |
+
+Settle waits 2.046 s and 2.023 s; `post_probe_liveness` recorded `concert_alive = true`
+after the final step; cleanup `PASS`. Report sha256 prefixes `a81f5d4334f0f24f` and
+`21394872e2dd19d2`. Reports committed beside this file:
+`task-51b-world-maintenance-run1.json` and `task-51b-world-maintenance-run2.json`.
+The two `null` checks remain the ARCHIVED-only `archive_public_200`/`archive_public_fields`
+projection; `archive_status_matches_phase` is the observed-status assertion.
+
+### Attempts not used
+
+Four further attempts on the same hardened driver and merged source are disclosed, not
+reported as passes:
+
+- Three attempts at load average ~19-22 from concurrent sessions failed pre-closure feed
+  steps with `503 DEPENDENCY_UNAVAILABLE` / `504 DEADLINE_EXCEEDED` (`feed_edit`,
+  `feed_delete`, `feed_comment`, `feed_reaction`; retries returned 403/400 on the already-
+  mutated state). Every new closure check that could run was true; the closure was never
+  reached in two of them, so its checks were false.
+- One attempt after load dropped below 8 failed **before** closure with
+  `World supervised failure before cleanup: World replay readiness lost`
+  (`CONCERT_COMPONENT_FAILURE=World World replay readiness lost`). The new post-probe
+  checks correctly reported `concert_alive_after_probes = false` and
+  `no_component_failure = false`; this is the replay stage, not the maintenance path, and
+  remains recorded rather than attributed to this hardening.
+
 ## Limitations
 
 - Development vertical stack, not IN03 cohort admission, QA08 capacity or release
