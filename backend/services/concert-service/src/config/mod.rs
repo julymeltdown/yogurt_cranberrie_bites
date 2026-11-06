@@ -16,6 +16,7 @@ pub mod gift_runtime;
 pub mod inbox_runtime;
 pub mod intro_runtime;
 pub mod native_resolver;
+pub mod owner_media_runtime;
 pub mod mural_tools_b;
 pub mod notification_target_runtime;
 pub mod participant_runtime;

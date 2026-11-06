@@ -95,6 +95,14 @@ async fn main() -> anyhow::Result<()> {
         runtime.as_ref().and_then(|runtime| runtime.tls.as_ref()),
         runtime.as_ref().map(|runtime| &runtime.actors),
     )?;
+    let owner_media_settings = config::owner_media_runtime::OwnerMediaSettings::load(
+        runtime.is_some(),
+        intro_settings.is_some(),
+    )?;
+    anyhow::ensure!(
+        !product_settings.owner_media || owner_media_settings.is_some(),
+        "Uploader media mode requires the shared canonical composition"
+    );;
     let social_settings = config::social_startup::SocialStartupSettings::load(
         intro_settings.is_some(),
         world_settings.is_some(),
@@ -133,8 +141,8 @@ async fn main() -> anyhow::Result<()> {
     let mut product_owner =
         config::product_runtime::production_owners(config::product_runtime::ProductSettings {
             public_feed_read: false,
-            ..product_settings
-        })?;
+            owner_media: false,
+        })?;;
     anyhow::ensure!(
         product_owner.is_none() || participant_settings.is_none(),
         "Product and Participant require a shared canonical scope composition"
@@ -185,6 +193,10 @@ async fn main() -> anyhow::Result<()> {
                             feed_callback = Some(callback);
                             owners
                         }
+                        None => owners,
+                    };
+                    let owners = match owner_media_settings {
+                        Some(settings) => settings.compose(pool.clone(), &shared.owners, owners)?,
                         None => owners,
                     };
                     let owners = match social_settings {
