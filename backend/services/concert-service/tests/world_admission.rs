@@ -454,7 +454,9 @@ async fn owner_lease_fencing_and_ghost_prune_are_persisted() -> anyhow::Result<(
         .event_id,
         other.event
     );
-    let pruned = repo.prune(Utc::now() + Duration::seconds(120)).await?;
+    // Shared fixture database: other tests' live tickets expire later than this
+    // instant. Pruning at the current instant proves nothing stale is collected.
+    let pruned = repo.prune(Utc::now()).await?;
     assert_eq!(pruned.tickets, 0);
     let now = Utc::now();
     let (rec, ticket) = record(f, f.room_a, 3, now);

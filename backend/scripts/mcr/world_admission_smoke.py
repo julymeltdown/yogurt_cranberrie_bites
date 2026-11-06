@@ -15,12 +15,24 @@ import migration_smoke as migration
 
 ROOT = Path(__file__).resolve().parents[3]
 DATABASE = "mcr_world"
-MIGRATIONS = (
-    "0001_concert_core.sql",
-    "0002_command_receipts_outbox.sql",
-    "0003_places_map_releases.sql",
-    "0005_world_admission.sql",
-)
+# World admission composes with later owner schema (account-deletion fences,
+# sessions). Apply the full production set instead of a frozen 0001-0005 slice.
+def migration_paths() -> list[Path]:
+    directory = ROOT / "backend/services/concert-service/migrations"
+    paths = sorted(
+        path
+        for path in directory.glob("*.sql")
+        if not path.name.endswith(".down.sql")
+    )
+    names = [path.name for path in paths]
+    require(names[:4] == [
+        "0001_concert_core.sql",
+        "0002_command_receipts_outbox.sql",
+        "0003_places_map_releases.sql",
+        "0004_bootstrap_admission.sql",
+    ], "migration-reservation")
+    require("0005_world_admission.sql" in names, "world-migration-missing")
+    return paths
 TABLES = (
     "concert_world_rooms",
     "concert_world_owner_leases",
@@ -60,8 +72,7 @@ def digest(path: Path) -> str:
 
 
 def apply_files(cluster: migration.Cluster) -> None:
-    for name in MIGRATIONS:
-        path = ROOT / "backend/services/concert-service/migrations" / name
+    for path in migration_paths():
         require(path.is_file(), "migration-missing")
         cluster.sql(DATABASE, path.read_text())
 
@@ -278,8 +289,8 @@ def main(argv: list[str] | None = None) -> int:
         "result": "FAIL",
         "cleanup": "NOT_RUN",
         "production": "NOT_RUN",
-        "http_ingress": "NOT_IMPLEMENTED",
-        "websocket_ingress": "NOT_IMPLEMENTED",
+        "http_ingress": "IMPLEMENTED_NOT_RUN_BY_THIS_REPORT",
+        "websocket_ingress": "IMPLEMENTED_NOT_RUN_BY_THIS_REPORT",
         "be12_simulation": "NOT_IMPLEMENTED",
         "be13_privacy_projection": "NOT_IMPLEMENTED",
         "source_revision": subprocess.check_output(
