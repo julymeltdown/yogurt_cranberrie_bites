@@ -1,0 +1,51 @@
+{
+  "task": "pin reconciliation for frontend/src/shared/api/domain-operations.generated.ts",
+  "date": "2026-11-06",
+  "recorded_by": "codex/mcr-exec-w8-pins at base 33141de3ff25bccab0275b796197fb13e9fa879f",
+  "pin": "frontend/src/shared/api/domain-operations.generated.ts",
+  "old_sha256": "80905d6d46b61a73856cb529d2f5b93d26a4087569b7eccb28fd40a100225804",
+  "new_sha256": "2c45873e033ddfc2eb61ffb6b5d32c5796508f1c0caefc13f2ed39926c67e523",
+  "generator_command": "python3 -B scripts/mcr/generate-domain-transport.py",
+  "reproduce_check": "python3 -B scripts/mcr/generate-domain-transport.py --check",
+  "reproduce_exit": 0,
+  "bytes_reproduced_from_generator": true,
+  "drift_origin": {
+    "commit": "0a08d55a5432b4924710267eb2b27ed9fc45c2e8",
+    "subject": "docs(venue): freeze location, invitation and notes policy",
+    "change": "Regenerated transport projection after the venue policy freeze: only the 6 embedded input-hash header lines changed (location/meeting/place-notes OpenAPI plus their transport scripts); DOMAIN_OPERATIONS, DOMAIN_QUERIES and DOMAIN_ERROR_RULES are unchanged, so no route identity moved."
+  },
+  "records_updated": [
+    {
+      "path": "scripts/mcr/contracts/qa01-coverage/pins.json",
+      "changes": [
+        "inputs[\"frontend/src/shared/api/domain-operations.generated.ts\"]: 80905d6d... -> 2c45873e...",
+        "canonical_candidate: 9185c99223bbf7437fff4346a7683dbb4187dfb0 -> 33141de3ff25bccab0275b796197fb13e9fa879f"
+      ],
+      "previous_sha256": "1d02bdf7bf1bc5c521886d095d610e9b6786669c49312886b2cfc1916d001cf5",
+      "previous_canonical_candidate": "9185c99223bbf7437fff4346a7683dbb4187dfb0",
+      "previous_bytes_preserved_at": "git show 33141de3ff25bccab0275b796197fb13e9fa879f:scripts/mcr/contracts/qa01-coverage/pins.json"
+    },
+    {
+      "path": "docs/mcr/evidence/c07-social-client-in03/inputs.json",
+      "changes": [
+        "inputs[frontend/src/shared/api/domain-operations.generated.ts].sha256: 80905d6d... -> 2c45873e..."
+      ],
+      "previous_sha256": "e3cdd0cffc1a7ddb5228830c42a3753fc7cecb53565902476264da53478b87c5",
+      "previous_bytes_preserved_at": "git show 33141de3ff25bccab0275b796197fb13e9fa879f:docs/mcr/evidence/c07-social-client-in03/inputs.json",
+      "note": "Only the generated-client hash was stale; the manifest base stays 9185c992 (the cohort comparison base recorded identically in frontend/e2e/real/social/cohort.mjs) and every other listed input already matched."
+    }
+  ],
+  "generators_checked": [
+    {
+      "command": "python3 -B scripts/mcr/generate-api-client.py --check",
+      "exit": 0,
+      "result": "PASS"
+    },
+    {
+      "command": "python3 -B scripts/mcr/generate-domain-transport.py --check",
+      "exit": 0,
+      "result": "Domain transport metadata current: 140 operations"
+    }
+  ],
+  "no_hand_edit": "The checked-in file is byte-identical to fresh generator output at this candidate; see git diff 0a08d55a5^ 0a08d55a5 -- frontend/src/shared/api/domain-operations.generated.ts for the regeneration diff."
+}
