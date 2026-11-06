@@ -17,16 +17,42 @@
     "required_ia_entries": 61,
     "optional_excluded": 6,
     "counts": {
-      "DONE": 63,
+      "DONE": 65,
       "WAITING_INPUT": 3,
-      "IN_PROGRESS": 40,
-      "REOPENED": 2,
+      "IN_PROGRESS": 39,
+      "REOPENED": 1,
       "DEFERRED_BY_USER": 1,
       "OPEN": 3
     },
-    "done_tasks": 63,
-    "remaining_active_tasks": 48,
-    "task_completion_percentage": 56.8,
+    "done_tasks": 65,
+    "remaining_active_tasks": 46,
+    "task_completion_percentage": 58.6,
+    "counts_reconciliation": {
+      "recorded_at": "2026-11-06",
+      "scope": "IN05 task 47 mechanical correction of the aggregate state counts to the tasks[] row-level states",
+      "prior_counts": {
+        "DONE": 63,
+        "WAITING_INPUT": 3,
+        "IN_PROGRESS": 40,
+        "REOPENED": 2,
+        "DEFERRED_BY_USER": 1,
+        "OPEN": 3
+      },
+      "row_level_counts": {
+        "DONE": 65,
+        "WAITING_INPUT": 3,
+        "IN_PROGRESS": 39,
+        "REOPENED": 1,
+        "DEFERRED_BY_USER": 1,
+        "OPEN": 3
+      },
+      "changed_rows": [
+        "FE33",
+        "FE24"
+      ],
+      "explanation": "FE33 is row-level DONE but the aggregate counted it as REOPENED; FE24 is row-level REOPENED but the aggregate counted it as IN_PROGRESS. No task state, evidence, scope, acceptance, owner or historical checkpoint was edited. The dated current_delivery_checkpoint and current_staffing_snapshot retain their historical 63/48 wording. C07 remains row-level DONE with an empty evidence array; IN05 records it as GAP.",
+      "source": "IN05 task 47 reconciliation; see .omo/evidence/mcr-finish-project/task-47-in05.md"
+    },
     "historical_original_outcomes": 39,
     "reopened_historical_tasks": [
       "FE24",
