@@ -51,6 +51,9 @@ impl ProductOwner for OwnerMediaRuntime {
             Operation::MediaMetadata(_) => "getConcertMedia",
             Operation::PrivateContent(_) => "readConcertMedia",
             Operation::CommandStatus => "getConcertCommandStatus",
+            Operation::ServicePolicy => {
+                return Err(Status::unavailable("Product producer unavailable"));
+            }
             Operation::Social(_)
             | Operation::Intro(_)
             | Operation::Notification(_)

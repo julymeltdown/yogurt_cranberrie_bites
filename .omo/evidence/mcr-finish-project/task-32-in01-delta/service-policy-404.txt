@@ -1,0 +1,4 @@
+GET /api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/service-policy 404
+GET /api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/service-policy 404
+GET /api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/bootstrap 200 application/json
+Requests sent with the admitted principal's bearer, Origin http://127.0.0.1:5173 and X-MCR-Intent: browser on the held candidate stack.
