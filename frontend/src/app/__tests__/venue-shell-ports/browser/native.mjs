@@ -23,7 +23,19 @@ try {
     await expect(page.getByRole('button', { name: 'Fixture friend' })).toBeVisible()
     const fallback = page.locator('.pc-portrait-fallback')
     await expect(fallback).toHaveCount(1)
-    assert.equal(await fallback.evaluate(element => element.scrollHeight <= element.clientHeight + 1 && element.scrollWidth <= element.clientWidth + 1), true)
+    const fit = await fallback.evaluate(element => {
+      const frame = element.parentElement, box = frame?.getBoundingClientRect()
+      if (!frame || !box) return { clipped: true, reason: 'missing portrait frame' }
+      const style = getComputedStyle(frame)
+      const inner = { left: box.left + parseFloat(style.borderLeftWidth), right: box.right - parseFloat(style.borderRightWidth),
+        top: box.top + parseFloat(style.borderTopWidth), bottom: box.bottom - parseFloat(style.borderBottomWidth) }
+      const range = document.createRange(); range.selectNodeContents(element)
+      const text = range.getBoundingClientRect()
+      return { clipped: text.left < inner.left - 0.5 || text.right > inner.right + 0.5 || text.top < inner.top - 0.5 || text.bottom > inner.bottom + 0.5
+        || frame.scrollWidth > frame.clientWidth || frame.scrollHeight > frame.clientHeight,
+        text: { left: text.left, right: text.right, top: text.top, bottom: text.bottom }, inner }
+    })
+    assert.equal(fit.clipped, false, `${width}: fallback label clipped ${JSON.stringify(fit)}`)
     await page.screenshot({ path: resolve(evidence, `real-friends-${width}.png`), fullPage: true })
     await page.getByRole('tab', { name: 'MAP' }).click()
     await page.screenshot({ path: resolve(evidence, `real-capability-${width}.png`), fullPage: true })
