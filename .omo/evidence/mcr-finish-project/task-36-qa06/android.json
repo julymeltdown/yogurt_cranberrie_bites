@@ -1,0 +1,924 @@
+{
+  "kind": "mcr-qa06-android",
+  "device": {
+    "model": "sdk_gphone64_arm64",
+    "sdk": "35",
+    "android": "15",
+    "boot": "1",
+    "qualification": "ANDROID_15_EMULATOR_CHROME_NOT_PHYSICAL"
+  },
+  "chromeVersion": "124.0.6367.219",
+  "provenance": {
+    "session": "earlier capture session",
+    "run": "android.mjs",
+    "capturedAt": "2026-11-06T14:17:29.444Z",
+    "recapturedAtThisCommit": false,
+    "candidate": "UNRECORDED",
+    "candidateClaim": "NONE",
+    "note": "Emulator captures from an earlier session. They were not re-produced at candidate 65b70a1e8 because no emulator was attached, and they are not a claim about that candidate build. Emulator evidence only; not physical-device acceptance."
+  },
+  "cases": [
+    {
+      "caseId": "W01",
+      "route": "/world",
+      "width": 360,
+      "height": 844,
+      "devicePixelRatio": 2,
+      "state": "android chrome",
+      "stateObserved": {
+        "path": "/world",
+        "published": true,
+        "canvases": 1
+      },
+      "metrics": {
+        "viewport": {
+          "width": 360,
+          "height": 844
+        },
+        "dpr": 2.000000037252903,
+        "overflow": false,
+        "text": "World"
+      },
+      "capture": "captures/android-W01-360.png",
+      "captureSha256": "971a73fcd9c12c294d6e5247f0c8976baf3b66cadd21449e0e43022d961679b4",
+      "verdict": "CAPTURED"
+    },
+    {
+      "caseId": "F01",
+      "route": "/feed",
+      "width": 360,
+      "height": 844,
+      "devicePixelRatio": 2,
+      "state": "android chrome",
+      "stateObserved": {
+        "path": "/feed",
+        "published": true,
+        "canvases": 1
+      },
+      "metrics": {
+        "viewport": {
+          "width": 360,
+          "height": 844
+        },
+        "dpr": 2.000000037252903,
+        "overflow": false,
+        "text": "FEED\nALL\nMEETUP\nGIVEAWAY\nNOTICE\nFixture fan\nJust now\n\nSee you at the show\n\n0\n0\nSelected fixture fan\nJust now\n\nTrading stickers at the merch booth. Anyone else collecting tonight?\n\n0\n0\nNEW POST"
+      },
+      "capture": "captures/android-F01-360.png",
+      "captureSha256": "0cec298f771599e315e330892fb4699613172358243c70c2d4cc07b1ab403ff3",
+      "verdict": "CAPTURED"
+    },
+    {
+      "caseId": "M07",
+      "route": "/meet/people",
+      "width": 360,
+      "height": 844,
+      "devicePixelRatio": 2,
+      "state": "android chrome",
+      "stateObserved": {
+        "path": "/meet/people",
+        "published": true,
+        "canvases": 1
+      },
+      "metrics": {
+        "viewport": {
+          "width": 360,
+          "height": 844
+        },
+        "dpr": 2.000000037252903,
+        "overflow": false,
+        "text": "PEOPLE\n\nMEET THE COMMUNITY\n\nPEOPLE\n\nDiscover introductions shared with you. No social account is required.\n\nParties\nYour introduction\nFind introductions\nSearch\n\n0 / 100 Unicode code points after trimming.\n\nAvatar unavailable\nFixture fan\n\nLooking forward to the show"
+      },
+      "capture": "captures/android-M07-360.png",
+      "captureSha256": "dd43abf17059237e18f25c833975f34c0416860e15dadd007c90a0016bd22b5c",
+      "verdict": "CAPTURED"
+    },
+    {
+      "caseId": "U01",
+      "route": "/me",
+      "width": 360,
+      "height": 844,
+      "devicePixelRatio": 2,
+      "state": "android chrome",
+      "stateObserved": {
+        "path": "/me",
+        "published": true,
+        "canvases": 1
+      },
+      "metrics": {
+        "viewport": {
+          "width": 360,
+          "height": 844
+        },
+        "dpr": 2.000000037252903,
+        "overflow": false,
+        "text": "MY PROFILE\nMY PROFILE\nSelected fixture fan\n\nNo bio yet. Add one whenever you like.\n\nPreferred era · REVENGE\n\nCUSTOMIZE\nACTIVITY\nPARTIES\nGIFTS\n\nRecent activity is unavailable in this connection.\n\nOpen feed\nProfile options\nBack to world\n+\nEDIT PROFILE"
+      },
+      "capture": "captures/android-U01-360.png",
+      "captureSha256": "cfc3c715b34500d6f4e9fb9faac7a38a0a7e9c1db21ea4edb1c84f10a2714c56",
+      "verdict": "CAPTURED"
+    },
+    {
+      "caseId": "U02",
+      "route": "/me/avatar",
+      "width": 360,
+      "height": 844,
+      "devicePixelRatio": 2,
+      "state": "android chrome",
+      "stateObserved": {
+        "path": "/me/avatar",
+        "published": true,
+        "canvases": 1
+      },
+      "metrics": {
+        "viewport": {
+          "width": 360,
+          "height": 844
+        },
+        "dpr": 2.000000037252903,
+        "overflow": false,
+        "text": "CUSTOMIZE\nCUSTOMIZE\nCharacters\n1–3 / 6\n‹\nBlack hair / red tie\nPale hair / parade jacket\nRed hair / goggles\n›\n\nChanges are a draft until you save.\n\nRANDOM\nRESET\nSAVE"
+      },
+      "capture": "captures/android-U02-360.png",
+      "captureSha256": "500c5fd467e5ce7941d9111756732258bc38a981dd0415d3ecfbef051ade7792",
+      "verdict": "CAPTURED"
+    },
+    {
+      "caseId": "W04",
+      "route": "/world/rooms",
+      "width": 360,
+      "height": 844,
+      "devicePixelRatio": 2,
+      "state": "android chrome",
+      "stateObserved": {
+        "path": "/world/rooms",
+        "published": true,
+        "canvases": 1
+      },
+      "metrics": {
+        "viewport": {
+          "width": 360,
+          "height": 844
+        },
+        "dpr": 2.000000037252903,
+        "overflow": false,
+        "text": "ROOMS\nNearby in world\nBack to world\nChoose your room\nRefresh rooms\n\nRooms are shared virtual spaces. Switching does not confirm physical arrival.\n\nThe world is paused while this page is hidden.\n\nMAIN STAGE\n\nCapacity 50 · Available\n\nSwitch to MAIN STAGE\n\nRoom switching needs a current live world conn"
+      },
+      "capture": "captures/android-W04-360.png",
+      "captureSha256": "4a92991912c4cec07c4171ee97761d1602413253ed1905b8b7771e5c90ef3bf4",
+      "verdict": "CAPTURED"
+    },
+    {
+      "caseId": "U07",
+      "route": "/me/settings",
+      "width": 360,
+      "height": 844,
+      "devicePixelRatio": 2,
+      "state": "android chrome",
+      "stateObserved": {
+        "path": "/me/settings",
+        "published": true,
+        "canvases": 1
+      },
+      "metrics": {
+        "viewport": {
+          "width": 360,
+          "height": 844
+        },
+        "dpr": 2.000000037252903,
+        "overflow": false,
+        "text": "SETTINGS\nSETTINGS\n\nSaved for your account and this event. Sound stays off until you explicitly apply it in this session.\n\nYour profile is up to date.\n\nDiscard drafts and reload saved version\nSAVED PREFERENCES\nPreferred era\nREVENGE\nPARADE\nDANGER\nLow power\nReduced motion\nEnable sound\n\nSound is off by "
+      },
+      "capture": "captures/android-U07-360.png",
+      "captureSha256": "fbf8c166fb7a1ff44192b47b1e4e4b38d99878645f435154eb00adeff6c92a30",
+      "verdict": "CAPTURED"
+    },
+    {
+      "caseId": "U10",
+      "route": "/notifications",
+      "width": 360,
+      "height": 844,
+      "devicePixelRatio": 2,
+      "state": "android chrome",
+      "stateObserved": {
+        "path": "/notifications",
+        "published": true,
+        "canvases": 1
+      },
+      "metrics": {
+        "viewport": {
+          "width": 360,
+          "height": 844
+        },
+        "dpr": 2.000000037252903,
+        "overflow": false,
+        "text": "INBOX\n\nYour event updates\n\nINBOX\n\nPrivate updates for your current account and event.\n\n Unread only\nRefresh inbox\nMark all as read\n\n37 unread in this event\n\nChecked 11/4/2026, 9:00:00 AM\n\n1 unread shown\n\nThe list shows loaded updates. Mark all as read applies to updates already received by the serve"
+      },
+      "capture": "captures/android-U10-360.png",
+      "captureSha256": "d6c771b3140e07fb1aff96e249826d0585e205fc2cb2aff46add85952605efb0",
+      "verdict": "CAPTURED"
+    },
+    {
+      "caseId": "A01",
+      "route": "/",
+      "width": 360,
+      "height": 844,
+      "devicePixelRatio": 2,
+      "state": "android chrome",
+      "stateObserved": {
+        "path": "/",
+        "published": false,
+        "canvases": 0
+      },
+      "metrics": {
+        "viewport": {
+          "width": 360,
+          "height": 844
+        },
+        "dpr": 2.000000037252903,
+        "overflow": false,
+        "text": "ONE WORLD. EVERY ERA.\n\nThe MCR\nfan social world.\n\nMeet · Trade · Hang out\n\nAt the show.\n\nENTER THE WORLD\n→\n\nSign in to check entry to the world.\n\nAbout this space"
+      },
+      "capture": "captures/android-A01-360.png",
+      "captureSha256": "2ef756ac31c32c1677e544e38dcfd8e61a954428b455856e57d1b4742301a8e6",
+      "verdict": "CAPTURED"
+    },
+    {
+      "caseId": "A02",
+      "route": "/login",
+      "width": 360,
+      "height": 844,
+      "devicePixelRatio": 2,
+      "state": "android chrome",
+      "stateObserved": {
+        "path": "/login",
+        "published": false,
+        "canvases": 0
+      },
+      "metrics": {
+        "viewport": {
+          "width": 360,
+          "height": 844
+        },
+        "dpr": 2.000000037252903,
+        "overflow": false,
+        "text": "SIGN IN\nEmail\nPassword\nSIGN IN\nForgot password?\n\nOr continue with\n\nProvider sign-in is not available yet.\n\nNo account? Create an account"
+      },
+      "capture": "captures/android-A02-360.png",
+      "captureSha256": "49232f41dd967fbd54db7e5bd8b81524c68dd220f048164cefb16891d45d47e6",
+      "verdict": "CAPTURED"
+    },
+    {
+      "caseId": "W06",
+      "route": "/world/theme",
+      "width": 360,
+      "height": 844,
+      "devicePixelRatio": 2,
+      "state": "android chrome",
+      "stateObserved": {
+        "path": "/world/theme",
+        "published": true,
+        "canvases": 1
+      },
+      "metrics": {
+        "viewport": {
+          "width": 360,
+          "height": 844
+        },
+        "dpr": 2.000000037252903,
+        "overflow": false,
+        "text": "CHOOSE AN ERA\nREVENGE\nPARADE\nDANGER\n\nRevenge selected.\n\nEra preferences are saved on this device for this account and event. Server preference synchronization is unavailable."
+      },
+      "capture": "captures/android-W06-360.png",
+      "captureSha256": "8d4aea77ac565bd86b9df11f9471d235b562b252a6234bc063dd7bef643e6527",
+      "verdict": "CAPTURED"
+    },
+    {
+      "caseId": "M09",
+      "route": "/people/00000000-0000-4000-8000-000000000002",
+      "width": 360,
+      "height": 844,
+      "devicePixelRatio": 2,
+      "state": "android chrome",
+      "stateObserved": {
+        "path": "/people/00000000-0000-4000-8000-000000000002",
+        "published": true,
+        "canvases": 1
+      },
+      "metrics": {
+        "viewport": {
+          "width": 360,
+          "height": 844
+        },
+        "dpr": 2.000000037252903,
+        "overflow": false,
+        "text": "PROFILE\nPROFILE\nFixture fan\n\nNo bio shared.\n\nACTIVITY\nPARTIES\nGIFTS\n\nRecent activity is unavailable in this connection.\n\nSocial handles and verified age are private. Sharing requires mutual consent.\n\nSome account actions are currently unavailable.\n\nManage blocks\nBack to people"
+      },
+      "capture": "captures/android-M09-360.png",
+      "captureSha256": "ce801636ddc1964644bc292f9b1c605f864201ac4a3734784e0ae9a291e051b9",
+      "verdict": "CAPTURED"
+    },
+    {
+      "caseId": "W01",
+      "route": "/world",
+      "width": 390,
+      "height": 844,
+      "devicePixelRatio": 2,
+      "state": "android chrome",
+      "stateObserved": {
+        "path": "/world",
+        "published": true,
+        "canvases": 1
+      },
+      "metrics": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "dpr": 2.000000037252903,
+        "overflow": false,
+        "text": "World"
+      },
+      "capture": "captures/android-W01-390.png",
+      "captureSha256": "1e99a2f460ae899fcfb51fac8a8ee0b79d02f53eb4604d870d7eeff9ecc7d408",
+      "verdict": "CAPTURED"
+    },
+    {
+      "caseId": "F01",
+      "route": "/feed",
+      "width": 390,
+      "height": 844,
+      "devicePixelRatio": 2,
+      "state": "android chrome",
+      "stateObserved": {
+        "path": "/feed",
+        "published": true,
+        "canvases": 1
+      },
+      "metrics": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "dpr": 2.000000037252903,
+        "overflow": false,
+        "text": "FEED\nALL\nMEETUP\nGIVEAWAY\nNOTICE\nFixture fan\nJust now\n\nSee you at the show\n\n0\n0\nSelected fixture fan\nJust now\n\nTrading stickers at the merch booth. Anyone else collecting tonight?\n\n0\n0\nNEW POST"
+      },
+      "capture": "captures/android-F01-390.png",
+      "captureSha256": "ec1e270fa573f67bf19a84f17b54796fc23f730d3fb9f53ac2198541c7c29bea",
+      "verdict": "CAPTURED"
+    },
+    {
+      "caseId": "M07",
+      "route": "/meet/people",
+      "width": 390,
+      "height": 844,
+      "devicePixelRatio": 2,
+      "state": "android chrome",
+      "stateObserved": {
+        "path": "/meet/people",
+        "published": true,
+        "canvases": 1
+      },
+      "metrics": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "dpr": 2.000000037252903,
+        "overflow": false,
+        "text": "PEOPLE\n\nMEET THE COMMUNITY\n\nPEOPLE\n\nDiscover introductions shared with you. No social account is required.\n\nParties\nYour introduction\nFind introductions\nSearch\n\n0 / 100 Unicode code points after trimming.\n\nAvatar unavailable\nFixture fan\n\nLooking forward to the show"
+      },
+      "capture": "captures/android-M07-390.png",
+      "captureSha256": "b7ba2ef186e765f67a595501a1d52900e62aeda0a948d0f641fb2af0509e5b07",
+      "verdict": "CAPTURED"
+    },
+    {
+      "caseId": "U01",
+      "route": "/me",
+      "width": 390,
+      "height": 844,
+      "devicePixelRatio": 2,
+      "state": "android chrome",
+      "stateObserved": {
+        "path": "/me",
+        "published": true,
+        "canvases": 1
+      },
+      "metrics": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "dpr": 2.000000037252903,
+        "overflow": false,
+        "text": "MY PROFILE\nMY PROFILE\nSelected fixture fan\n\nNo bio yet. Add one whenever you like.\n\nPreferred era · REVENGE\n\nCUSTOMIZE\nACTIVITY\nPARTIES\nGIFTS\n\nRecent activity is unavailable in this connection.\n\nOpen feed\nProfile options\nBack to world\n+\nEDIT PROFILE"
+      },
+      "capture": "captures/android-U01-390.png",
+      "captureSha256": "a241ea5ee50ab46c7d197a1297932d5217e44556413aaa0be0936501c254400e",
+      "verdict": "CAPTURED"
+    },
+    {
+      "caseId": "U02",
+      "route": "/me/avatar",
+      "width": 390,
+      "height": 844,
+      "devicePixelRatio": 2,
+      "state": "android chrome",
+      "stateObserved": {
+        "path": "/me/avatar",
+        "published": true,
+        "canvases": 1
+      },
+      "metrics": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "dpr": 2.000000037252903,
+        "overflow": false,
+        "text": "CUSTOMIZE\nCUSTOMIZE\nCharacters\n1–3 / 6\n‹\nBlack hair / red tie\nPale hair / parade jacket\nRed hair / goggles\n›\n\nChanges are a draft until you save.\n\nRANDOM\nRESET\nSAVE"
+      },
+      "capture": "captures/android-U02-390.png",
+      "captureSha256": "563760aba9c5b04a925ce8e46c76271d50c293d4e91d05e5a82052470e9c6516",
+      "verdict": "CAPTURED"
+    },
+    {
+      "caseId": "W04",
+      "route": "/world/rooms",
+      "width": 390,
+      "height": 844,
+      "devicePixelRatio": 2,
+      "state": "android chrome",
+      "stateObserved": {
+        "path": "/world/rooms",
+        "published": true,
+        "canvases": 1
+      },
+      "metrics": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "dpr": 2.000000037252903,
+        "overflow": false,
+        "text": "ROOMS\nNearby in world\nBack to world\nChoose your room\nRefresh rooms\n\nRooms are shared virtual spaces. Switching does not confirm physical arrival.\n\nThe world is paused while this page is hidden.\n\nMAIN STAGE\n\nCapacity 50 · Available\n\nSwitch to MAIN STAGE\n\nRoom switching needs a current live world conn"
+      },
+      "capture": "captures/android-W04-390.png",
+      "captureSha256": "01ae4cee86b56c742229facb3598f60b033ab8c97209607054c535d09b1a7549",
+      "verdict": "CAPTURED"
+    },
+    {
+      "caseId": "U07",
+      "route": "/me/settings",
+      "width": 390,
+      "height": 844,
+      "devicePixelRatio": 2,
+      "state": "android chrome",
+      "stateObserved": {
+        "path": "/me/settings",
+        "published": true,
+        "canvases": 1
+      },
+      "metrics": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "dpr": 2.000000037252903,
+        "overflow": false,
+        "text": "SETTINGS\nSETTINGS\n\nSaved for your account and this event. Sound stays off until you explicitly apply it in this session.\n\nYour profile is up to date.\n\nDiscard drafts and reload saved version\nSAVED PREFERENCES\nPreferred era\nREVENGE\nPARADE\nDANGER\nLow power\nReduced motion\nEnable sound\n\nSound is off by "
+      },
+      "capture": "captures/android-U07-390.png",
+      "captureSha256": "50e623bd07a2a226bf34cf13e491b8f55f880a990ae1a373d8e00b20a84377ac",
+      "verdict": "CAPTURED"
+    },
+    {
+      "caseId": "U10",
+      "route": "/notifications",
+      "width": 390,
+      "height": 844,
+      "devicePixelRatio": 2,
+      "state": "android chrome",
+      "stateObserved": {
+        "path": "/notifications",
+        "published": true,
+        "canvases": 1
+      },
+      "metrics": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "dpr": 2.000000037252903,
+        "overflow": false,
+        "text": "INBOX\n\nYour event updates\n\nINBOX\n\nPrivate updates for your current account and event.\n\n Unread only\nRefresh inbox\nMark all as read\n\n37 unread in this event\n\nChecked 11/4/2026, 9:00:00 AM\n\n1 unread shown\n\nThe list shows loaded updates. Mark all as read applies to updates already received by the serve"
+      },
+      "capture": "captures/android-U10-390.png",
+      "captureSha256": "769826f62e4b10e353ee401b7817dd421eeab24d11985d198843be7d7e3084c0",
+      "verdict": "CAPTURED"
+    },
+    {
+      "caseId": "A01",
+      "route": "/",
+      "width": 390,
+      "height": 844,
+      "devicePixelRatio": 2,
+      "state": "android chrome",
+      "stateObserved": {
+        "path": "/",
+        "published": false,
+        "canvases": 0
+      },
+      "metrics": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "dpr": 2.000000037252903,
+        "overflow": false,
+        "text": "ONE WORLD. EVERY ERA.\n\nThe MCR\nfan social world.\n\nMeet · Trade · Hang out\n\nAt the show.\n\nENTER THE WORLD\n→\n\nSign in to check entry to the world.\n\nAbout this space"
+      },
+      "capture": "captures/android-A01-390.png",
+      "captureSha256": "75e0c85f07adc73f5b96e64a8101d5db21fe1167293084ffb095d0762946cb6a",
+      "verdict": "CAPTURED"
+    },
+    {
+      "caseId": "A02",
+      "route": "/login",
+      "width": 390,
+      "height": 844,
+      "devicePixelRatio": 2,
+      "state": "android chrome",
+      "stateObserved": {
+        "path": "/login",
+        "published": false,
+        "canvases": 0
+      },
+      "metrics": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "dpr": 2.000000037252903,
+        "overflow": false,
+        "text": "SIGN IN\nEmail\nPassword\nSIGN IN\nForgot password?\n\nOr continue with\n\nProvider sign-in is not available yet.\n\nNo account? Create an account"
+      },
+      "capture": "captures/android-A02-390.png",
+      "captureSha256": "9769a2d3f52a179be5a528301d56d99e26c05156f2d0b344da054e6b8a44fff4",
+      "verdict": "CAPTURED"
+    },
+    {
+      "caseId": "W06",
+      "route": "/world/theme",
+      "width": 390,
+      "height": 844,
+      "devicePixelRatio": 2,
+      "state": "android chrome",
+      "stateObserved": {
+        "path": "/world/theme",
+        "published": false,
+        "canvases": 0
+      },
+      "metrics": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "dpr": 2.000000037252903,
+        "overflow": false,
+        "text": "CHOOSE AN ERA\nREVENGE\nPARADE\nDANGER\n\nEras unavailable.\n\nEra preferences are saved on this device for this account and event. Server preference synchronization is unavailable."
+      },
+      "capture": "captures/android-W06-390.png",
+      "captureSha256": "6f08c2a10a09f10a70e421c15fc30cefa5f0e90b7226fd4453dc98328abdb36b",
+      "verdict": "CAPTURED"
+    },
+    {
+      "caseId": "M09",
+      "route": "/people/00000000-0000-4000-8000-000000000002",
+      "width": 390,
+      "height": 844,
+      "devicePixelRatio": 2,
+      "state": "android chrome",
+      "stateObserved": {
+        "path": "/people/00000000-0000-4000-8000-000000000002",
+        "published": false,
+        "canvases": 0
+      },
+      "metrics": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "dpr": 2.000000037252903,
+        "overflow": false,
+        "text": "PROFILE\nPROFILE\nFixture fan\n\nNo bio shared.\n\nACTIVITY\nPARTIES\nGIFTS\n\nRecent activity is unavailable in this connection.\n\nSocial handles and verified age are private. Sharing requires mutual consent.\n\nSome account actions are currently unavailable.\n\nManage blocks\nBack to people"
+      },
+      "capture": "captures/android-M09-390.png",
+      "captureSha256": "bcda11eaca8b788b274ec12cc9fb2320de7ca8ed3195688e3170bda423faf6dd",
+      "verdict": "CAPTURED"
+    },
+    {
+      "caseId": "W01",
+      "route": "/world",
+      "width": 430,
+      "height": 844,
+      "devicePixelRatio": 2,
+      "state": "android chrome",
+      "stateObserved": {
+        "path": "/world",
+        "published": true,
+        "canvases": 1
+      },
+      "metrics": {
+        "viewport": {
+          "width": 430,
+          "height": 844
+        },
+        "dpr": 2.000000037252903,
+        "overflow": false,
+        "text": "World"
+      },
+      "capture": "captures/android-W01-430.png",
+      "captureSha256": "6a76f081a1141861c6eca762952a1dbef7bfed2bf08cb095a61b4b8c88e0e066",
+      "verdict": "CAPTURED"
+    },
+    {
+      "caseId": "F01",
+      "route": "/feed",
+      "width": 430,
+      "height": 844,
+      "devicePixelRatio": 2,
+      "state": "android chrome",
+      "stateObserved": {
+        "path": "/feed",
+        "published": true,
+        "canvases": 1
+      },
+      "metrics": {
+        "viewport": {
+          "width": 430,
+          "height": 844
+        },
+        "dpr": 2.000000037252903,
+        "overflow": false,
+        "text": "FEED\nALL\nMEETUP\nGIVEAWAY\nNOTICE\nFixture fan\nJust now\n\nSee you at the show\n\n0\n0\nSelected fixture fan\nJust now\n\nTrading stickers at the merch booth. Anyone else collecting tonight?\n\n0\n0\nNEW POST"
+      },
+      "capture": "captures/android-F01-430.png",
+      "captureSha256": "b8518151d3035d267a105119e6af3d01dce4bc40c9c28516d0b4b2bdc35bb392",
+      "verdict": "CAPTURED"
+    },
+    {
+      "caseId": "M07",
+      "route": "/meet/people",
+      "width": 430,
+      "height": 844,
+      "devicePixelRatio": 2,
+      "state": "android chrome",
+      "stateObserved": {
+        "path": "/meet/people",
+        "published": true,
+        "canvases": 1
+      },
+      "metrics": {
+        "viewport": {
+          "width": 430,
+          "height": 844
+        },
+        "dpr": 2.000000037252903,
+        "overflow": false,
+        "text": "PEOPLE\n\nMEET THE COMMUNITY\n\nPEOPLE\n\nDiscover introductions shared with you. No social account is required.\n\nParties\nYour introduction\nFind introductions\nSearch\n\n0 / 100 Unicode code points after trimming.\n\nAvatar unavailable\nFixture fan\n\nLooking forward to the show"
+      },
+      "capture": "captures/android-M07-430.png",
+      "captureSha256": "ffa5225a8f3d2c0a647f57901814710aca65448621977059206560018129b3d6",
+      "verdict": "CAPTURED"
+    },
+    {
+      "caseId": "U01",
+      "route": "/me",
+      "width": 430,
+      "height": 844,
+      "devicePixelRatio": 2,
+      "state": "android chrome",
+      "stateObserved": {
+        "path": "/me",
+        "published": true,
+        "canvases": 1
+      },
+      "metrics": {
+        "viewport": {
+          "width": 430,
+          "height": 844
+        },
+        "dpr": 2.000000037252903,
+        "overflow": false,
+        "text": "MY PROFILE\nMY PROFILE\nSelected fixture fan\n\nNo bio yet. Add one whenever you like.\n\nPreferred era · REVENGE\n\nCUSTOMIZE\nACTIVITY\nPARTIES\nGIFTS\n\nRecent activity is unavailable in this connection.\n\nOpen feed\nProfile options\nBack to world\n+\nEDIT PROFILE"
+      },
+      "capture": "captures/android-U01-430.png",
+      "captureSha256": "e773bc1b27986273954990ee04c88df0218b09067f9373c2ed999d352a38c5c5",
+      "verdict": "CAPTURED"
+    },
+    {
+      "caseId": "U02",
+      "route": "/me/avatar",
+      "width": 430,
+      "height": 844,
+      "devicePixelRatio": 2,
+      "state": "android chrome",
+      "stateObserved": {
+        "path": "/me/avatar",
+        "published": true,
+        "canvases": 1
+      },
+      "metrics": {
+        "viewport": {
+          "width": 430,
+          "height": 844
+        },
+        "dpr": 2.000000037252903,
+        "overflow": false,
+        "text": "CUSTOMIZE\nCUSTOMIZE\nCharacters\n1–3 / 6\n‹\nBlack hair / red tie\nPale hair / parade jacket\nRed hair / goggles\n›\n\nChanges are a draft until you save.\n\nRANDOM\nRESET\nSAVE"
+      },
+      "capture": "captures/android-U02-430.png",
+      "captureSha256": "af5bc3845ccfa65eeb6c2b6636643958d4ea7a8fb7ff6d2e0752fde412f3675f",
+      "verdict": "CAPTURED"
+    },
+    {
+      "caseId": "W04",
+      "route": "/world/rooms",
+      "width": 430,
+      "height": 844,
+      "devicePixelRatio": 2,
+      "state": "android chrome",
+      "stateObserved": {
+        "path": "/world/rooms",
+        "published": false,
+        "canvases": 0
+      },
+      "metrics": {
+        "viewport": {
+          "width": 430,
+          "height": 844
+        },
+        "dpr": 2.000000037252903,
+        "overflow": false,
+        "text": "ROOMS\nNearby in world\nBack to world\nChoose your room\nRefresh rooms\n\nRooms are shared virtual spaces. Switching does not confirm physical arrival.\n\nRoom access is unavailable until your current world access is verified."
+      },
+      "capture": "captures/android-W04-430.png",
+      "captureSha256": "687204f510a9184710a656be0db0f593ed08b7b469b55e0fd1c4cea2cb47c6e7",
+      "verdict": "CAPTURED"
+    },
+    {
+      "caseId": "U07",
+      "route": "/me/settings",
+      "width": 430,
+      "height": 844,
+      "devicePixelRatio": 2,
+      "state": "android chrome",
+      "stateObserved": {
+        "path": "/me/settings",
+        "published": false,
+        "canvases": 1
+      },
+      "metrics": {
+        "viewport": {
+          "width": 430,
+          "height": 844
+        },
+        "dpr": 2.000000037252903,
+        "overflow": false,
+        "text": "SETTINGS\nSETTINGS\n\nSaved for your account and this event. Sound stays off until you explicitly apply it in this session.\n\nYour profile is up to date.\n\nDiscard drafts and reload saved version\nSAVED PREFERENCES\nPreferred era\nREVENGE\nPARADE\nDANGER\nLow power\nReduced motion\nEnable sound\n\nSound is off by "
+      },
+      "capture": "captures/android-U07-430.png",
+      "captureSha256": "c9f2528f1d008c29c890329b93c38244c5b8e9441200c8526eecd466de02a5d4",
+      "verdict": "CAPTURED"
+    },
+    {
+      "caseId": "U10",
+      "route": "/notifications",
+      "width": 430,
+      "height": 844,
+      "devicePixelRatio": 2,
+      "state": "android chrome",
+      "stateObserved": {
+        "path": "/notifications",
+        "published": true,
+        "canvases": 1
+      },
+      "metrics": {
+        "viewport": {
+          "width": 430,
+          "height": 844
+        },
+        "dpr": 2.000000037252903,
+        "overflow": false,
+        "text": "INBOX\n\nYour event updates\n\nINBOX\n\nPrivate updates for your current account and event.\n\n Unread only\nRefresh inbox\nMark all as read\n\n37 unread in this event\n\nChecked 11/4/2026, 9:00:00 AM\n\n1 unread shown\n\nThe list shows loaded updates. Mark all as read applies to updates already received by the serve"
+      },
+      "capture": "captures/android-U10-430.png",
+      "captureSha256": "7b4ac6731c0dc8df28730ae72e1c58868d927752ad160adc54e0735217b9429d",
+      "verdict": "CAPTURED"
+    },
+    {
+      "caseId": "A01",
+      "route": "/",
+      "width": 430,
+      "height": 844,
+      "devicePixelRatio": 2,
+      "state": "android chrome",
+      "stateObserved": {
+        "path": "/",
+        "published": false,
+        "canvases": 0
+      },
+      "metrics": {
+        "viewport": {
+          "width": 430,
+          "height": 844
+        },
+        "dpr": 2.000000037252903,
+        "overflow": false,
+        "text": "ONE WORLD. EVERY ERA.\n\nThe MCR\nfan social world.\n\nMeet · Trade · Hang out\n\nAt the show.\n\nENTER THE WORLD\n→\n\nSign in to check entry to the world.\n\nAbout this space"
+      },
+      "capture": "captures/android-A01-430.png",
+      "captureSha256": "fbae8735fdcca4ab458d7d63156087b3ca7fe644c6db6aa737777942a4e4957d",
+      "verdict": "CAPTURED"
+    },
+    {
+      "caseId": "A02",
+      "route": "/login",
+      "width": 430,
+      "height": 844,
+      "devicePixelRatio": 2,
+      "state": "android chrome",
+      "stateObserved": {
+        "path": "/login",
+        "published": false,
+        "canvases": 0
+      },
+      "metrics": {
+        "viewport": {
+          "width": 430,
+          "height": 844
+        },
+        "dpr": 2.000000037252903,
+        "overflow": false,
+        "text": "SIGN IN\nEmail\nPassword\nSIGN IN\nForgot password?\n\nOr continue with\n\nProvider sign-in is not available yet.\n\nNo account? Create an account"
+      },
+      "capture": "captures/android-A02-430.png",
+      "captureSha256": "a6d02f482ead39fd61358abea19526fcedd57d49f52f79bfacfd3742a222671c",
+      "verdict": "CAPTURED"
+    },
+    {
+      "caseId": "W06",
+      "route": "/world/theme",
+      "width": 430,
+      "height": 844,
+      "devicePixelRatio": 2,
+      "state": "android chrome",
+      "stateObserved": {
+        "path": "/world/theme",
+        "published": true,
+        "canvases": 1
+      },
+      "metrics": {
+        "viewport": {
+          "width": 430,
+          "height": 844
+        },
+        "dpr": 2.000000037252903,
+        "overflow": false,
+        "text": "CHOOSE AN ERA\nREVENGE\nPARADE\nDANGER\n\nRevenge selected.\n\nEra preferences are saved on this device for this account and event. Server preference synchronization is unavailable."
+      },
+      "capture": "captures/android-W06-430.png",
+      "captureSha256": "58ef2a759f5b73f003d3a2bbc5120df01b4db3c342841e096625a396ffeb73d9",
+      "verdict": "CAPTURED"
+    },
+    {
+      "caseId": "M09",
+      "route": "/people/00000000-0000-4000-8000-000000000002",
+      "width": 430,
+      "height": 844,
+      "devicePixelRatio": 2,
+      "state": "android chrome",
+      "stateObserved": {
+        "path": "/people/00000000-0000-4000-8000-000000000002",
+        "published": true,
+        "canvases": 1
+      },
+      "metrics": {
+        "viewport": {
+          "width": 430,
+          "height": 844
+        },
+        "dpr": 2.000000037252903,
+        "overflow": false,
+        "text": "PROFILE\nPROFILE\nFixture fan\n\nNo bio shared.\n\nACTIVITY\nPARTIES\nGIFTS\n\nRecent activity is unavailable in this connection.\n\nSocial handles and verified age are private. Sharing requires mutual consent.\n\nSome account actions are currently unavailable.\n\nManage blocks\nBack to people"
+      },
+      "capture": "captures/android-M09-430.png",
+      "captureSha256": "ac5f826f66c02cbca0fc16cba814d01c4189cde67fe57652848713fbb1677e29",
+      "verdict": "CAPTURED"
+    }
+  ],
+  "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36",
+  "finishedAt": "2026-11-06T14:17:29.444Z"
+}

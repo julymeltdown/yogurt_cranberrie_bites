@@ -1,0 +1,440 @@
+{
+  "kind": "mcr-qa06-venue-state-supplement",
+  "sourceMap": "docs/mcr/design/venue-redesign-2026-11-05/reference-state-map.json",
+  "referenceSet": "venue-redesign-2026-11-05",
+  "disposition": "All 48 venue state cases remain NOT_REACHABLE for QA06 mobile visual acceptance because the reviewed-landmark/siteplan provider, reviewed place provenance, friend-location freshness producer and community clock qualification are not composed in this fixture. The venue friend authority is composed separately; it does not supply reviewed landmarks, map viewport/camera or physical projection.",
+  "cases": [
+    {
+      "caseId": "P01-whole-plan",
+      "photo": 1,
+      "targetState": "Full venue extent, named landmarks and queue zones; pan, zoom and recenter",
+      "referenceRole": "whole-site fenced alternative",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark/siteplan provider and map viewport/camera",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P04-whole-plan",
+      "photo": 4,
+      "targetState": "Full venue extent, named landmarks and queue zones; pan, zoom and recenter",
+      "referenceRole": "whole-site fenced alternative",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark/siteplan provider and map viewport/camera",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P05-whole-plan",
+      "photo": 5,
+      "targetState": "Full venue extent, named landmarks and queue zones; pan, zoom and recenter",
+      "referenceRole": "PROVISIONAL primary base map",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark/siteplan provider and map viewport/camera",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P02-selected-friend",
+      "photo": 2,
+      "targetState": "Selected physical friend; MESSAGE and MEET HERE",
+      "referenceRole": "meeting and contextual conversation anatomy; alternate fenced map background",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark + friend location/notes authority (audience, expiry, revision)",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P02-meeting-conversation",
+      "photo": 2,
+      "targetState": "Contextual conversation with accepted meeting; MESSAGE and CANCEL MEETUP",
+      "referenceRole": "meeting and contextual conversation anatomy; alternate fenced map background",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark + friend location/notes authority (audience, expiry, revision)",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P02-place-card",
+      "photo": 2,
+      "targetState": "Fixed real-landmark card",
+      "referenceRole": "meeting and contextual conversation anatomy; alternate fenced map background",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark + friend location/notes authority (audience, expiry, revision)",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P02-friend-freshness",
+      "photo": 2,
+      "targetState": "Friend location freshness and request action",
+      "referenceRole": "meeting and contextual conversation anatomy; alternate fenced map background",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark + friend location/notes authority (audience, expiry, revision)",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P02-fixed-vs-moving",
+      "photo": 2,
+      "targetState": "Fixed meeting anchor distinct from moving friend",
+      "referenceRole": "meeting and contextual conversation anatomy; alternate fenced map background",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark + friend location/notes authority (audience, expiry, revision)",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P02-pending-invite",
+      "photo": 2,
+      "targetState": "Pending meeting invitation",
+      "referenceRole": "meeting and contextual conversation anatomy; alternate fenced map background",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark + friend location/notes authority (audience, expiry, revision)",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P03-notes-map-list",
+      "photo": 3,
+      "targetState": "Notes map/list with close, reply, MEET HERE and new note",
+      "referenceRole": "notes alternative",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark + friend location/notes authority (audience, expiry, revision)",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P03-composer",
+      "photo": 3,
+      "targetState": "Place-anchored note composer",
+      "referenceRole": "notes alternative",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark + friend location/notes authority (audience, expiry, revision)",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P03-marker-taxonomy",
+      "photo": 3,
+      "targetState": "Note marker taxonomy",
+      "referenceRole": "notes alternative",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark + friend location/notes authority (audience, expiry, revision)",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P03-place-note-card",
+      "photo": 3,
+      "targetState": "Selected note card",
+      "referenceRole": "notes alternative",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark + friend location/notes authority (audience, expiry, revision)",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P03-audience-selector",
+      "photo": 3,
+      "targetState": "Audience selector with black selected state",
+      "referenceRole": "notes alternative",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark + friend location/notes authority (audience, expiry, revision)",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P03-expiry-selector",
+      "photo": 3,
+      "targetState": "Expiry selector with black selected state",
+      "referenceRole": "notes alternative",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark + friend location/notes authority (audience, expiry, revision)",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P03-inline-reply",
+      "photo": 3,
+      "targetState": "Authorized note reply",
+      "referenceRole": "notes alternative",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark + friend location/notes authority (audience, expiry, revision)",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P06-notes-map-list",
+      "photo": 6,
+      "targetState": "Notes map/list with close, reply, MEET HERE and new note",
+      "referenceRole": "notes alternative",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark + friend location/notes authority (audience, expiry, revision)",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P06-composer",
+      "photo": 6,
+      "targetState": "Place-anchored note composer",
+      "referenceRole": "notes alternative",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark + friend location/notes authority (audience, expiry, revision)",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P06-marker-taxonomy",
+      "photo": 6,
+      "targetState": "Note marker taxonomy",
+      "referenceRole": "notes alternative",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark + friend location/notes authority (audience, expiry, revision)",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P06-place-note-card",
+      "photo": 6,
+      "targetState": "Selected note card",
+      "referenceRole": "notes alternative",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark + friend location/notes authority (audience, expiry, revision)",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P06-audience-selector",
+      "photo": 6,
+      "targetState": "Audience selector with black selected state",
+      "referenceRole": "notes alternative",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark + friend location/notes authority (audience, expiry, revision)",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P06-expiry-selector",
+      "photo": 6,
+      "targetState": "Expiry selector with black selected state",
+      "referenceRole": "notes alternative",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark + friend location/notes authority (audience, expiry, revision)",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P06-inline-reply",
+      "photo": 6,
+      "targetState": "Authorized note reply",
+      "referenceRole": "notes alternative",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark + friend location/notes authority (audience, expiry, revision)",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P10-notes-map-list",
+      "photo": 10,
+      "targetState": "Notes map/list with close, reply, MEET HERE and new note",
+      "referenceRole": "PROVISIONAL primary notes states",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark + friend location/notes authority (audience, expiry, revision)",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P10-composer",
+      "photo": 10,
+      "targetState": "Place-anchored note composer",
+      "referenceRole": "PROVISIONAL primary notes states",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark + friend location/notes authority (audience, expiry, revision)",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P10-marker-taxonomy",
+      "photo": 10,
+      "targetState": "Note marker taxonomy",
+      "referenceRole": "PROVISIONAL primary notes states",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark + friend location/notes authority (audience, expiry, revision)",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P10-place-note-card",
+      "photo": 10,
+      "targetState": "Selected note card",
+      "referenceRole": "PROVISIONAL primary notes states",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark + friend location/notes authority (audience, expiry, revision)",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P10-audience-selector",
+      "photo": 10,
+      "targetState": "Audience selector with black selected state",
+      "referenceRole": "PROVISIONAL primary notes states",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark + friend location/notes authority (audience, expiry, revision)",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P10-expiry-selector",
+      "photo": 10,
+      "targetState": "Expiry selector with black selected state",
+      "referenceRole": "PROVISIONAL primary notes states",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark + friend location/notes authority (audience, expiry, revision)",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P10-inline-reply",
+      "photo": 10,
+      "targetState": "Authorized note reply",
+      "referenceRole": "PROVISIONAL primary notes states",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark + friend location/notes authority (audience, expiry, revision)",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P07-map-overview",
+      "photo": 7,
+      "targetState": "Map overview with zoom, recenter and sharing/Pause",
+      "referenceRole": "friends alternative",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark/siteplan provider and map viewport/camera",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P07-friends-list",
+      "photo": 7,
+      "targetState": "Friends list with current/check-in/stale rows and VIEW/ASK LOCATION",
+      "referenceRole": "friends alternative",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark/siteplan provider and map viewport/camera",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P07-marker-taxonomy",
+      "photo": 7,
+      "targetState": "Overlay marker taxonomy",
+      "referenceRole": "friends alternative",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark/siteplan provider and map viewport/camera",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P07-freshness-formats",
+      "photo": 7,
+      "targetState": "Distinct source and freshness labels",
+      "referenceRole": "friends alternative",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark/siteplan provider and map viewport/camera",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P07-selected-friend",
+      "photo": 7,
+      "targetState": "Selected physical friend card",
+      "referenceRole": "friends alternative",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark/siteplan provider and map viewport/camera",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P07-sharing-control",
+      "photo": 7,
+      "targetState": "Opt-in sharing, pause and revoke states",
+      "referenceRole": "friends alternative",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark/siteplan provider and map viewport/camera",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P08-map-overview",
+      "photo": 8,
+      "targetState": "Map overview with zoom, recenter and sharing/Pause",
+      "referenceRole": "friends alternative",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark/siteplan provider and map viewport/camera",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P08-friends-list",
+      "photo": 8,
+      "targetState": "Friends list with current/check-in/stale rows and VIEW/ASK LOCATION",
+      "referenceRole": "friends alternative",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark/siteplan provider and map viewport/camera",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P08-marker-taxonomy",
+      "photo": 8,
+      "targetState": "Overlay marker taxonomy",
+      "referenceRole": "friends alternative",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark/siteplan provider and map viewport/camera",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P08-freshness-formats",
+      "photo": 8,
+      "targetState": "Distinct source and freshness labels",
+      "referenceRole": "friends alternative",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark/siteplan provider and map viewport/camera",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P08-selected-friend",
+      "photo": 8,
+      "targetState": "Selected physical friend card",
+      "referenceRole": "friends alternative",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark/siteplan provider and map viewport/camera",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P08-sharing-control",
+      "photo": 8,
+      "targetState": "Opt-in sharing, pause and revoke states",
+      "referenceRole": "friends alternative",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark/siteplan provider and map viewport/camera",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P09-map-overview",
+      "photo": 9,
+      "targetState": "Map overview with zoom, recenter and sharing/Pause",
+      "referenceRole": "PROVISIONAL primary friends states",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark/siteplan provider and map viewport/camera",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P09-friends-list",
+      "photo": 9,
+      "targetState": "Friends list with current/check-in/stale rows and VIEW/ASK LOCATION",
+      "referenceRole": "PROVISIONAL primary friends states",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark/siteplan provider and map viewport/camera",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P09-marker-taxonomy",
+      "photo": 9,
+      "targetState": "Overlay marker taxonomy",
+      "referenceRole": "PROVISIONAL primary friends states",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark/siteplan provider and map viewport/camera",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P09-freshness-formats",
+      "photo": 9,
+      "targetState": "Distinct source and freshness labels",
+      "referenceRole": "PROVISIONAL primary friends states",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark/siteplan provider and map viewport/camera",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P09-selected-friend",
+      "photo": 9,
+      "targetState": "Selected physical friend card",
+      "referenceRole": "PROVISIONAL primary friends states",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark/siteplan provider and map viewport/camera",
+      "sourceComparisonStatus": "NOT_RUN"
+    },
+    {
+      "caseId": "P09-sharing-control",
+      "photo": 9,
+      "targetState": "Opt-in sharing, pause and revoke states",
+      "referenceRole": "PROVISIONAL primary friends states",
+      "status": "NOT_REACHABLE",
+      "blocker": "reviewed landmark/siteplan provider and map viewport/camera",
+      "sourceComparisonStatus": "NOT_RUN"
+    }
+  ]
+}

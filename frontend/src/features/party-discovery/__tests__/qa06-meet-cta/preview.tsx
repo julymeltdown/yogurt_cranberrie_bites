@@ -1,4 +1,6 @@
-// QA06-MEET-CTA adaptation of QA06 preview.tsx SHA256 1c59c73e787566dbedea0e876bbf282b897bb1bf161ad41e6040ca20b492a2bd; read-only fixture imports.
+// QA06-MEET-CTA adaptation of QA06 preview.tsx at SHA256 1c59c73e787566dbedea0e876bbf282b897bb1bf161ad41e6040ca20b492a2bd; read-only fixture imports.
+// Historical base intentionally kept: the current QA06 preview.tsx is SHA256 1eff7d145202ce4a4bdd7348d3edf835f0b33befc8877163fb00294e43d863d5.
+// QA06 later added admission/service-policy responses, a self-authored edit fixture and error/offline modes; this meet-CTA fixture does not need them and is not re-synced.
 // TEST ONLY: adapted from FE07/default-root fixture at 980fc4d8.
 // Actual canonical Auth, browser router, default production loader and whole-character renderer.
 // Synthetic HTTP/C05 and isolated map admission. No product/source approval or physical arrival.
