@@ -8,6 +8,15 @@
     "qualification": "ANDROID_15_EMULATOR_CHROME_NOT_PHYSICAL"
   },
   "chromeVersion": "124.0.6367.219",
+  "provenance": {
+    "session": "earlier capture session",
+    "run": "android.mjs",
+    "capturedAt": "2026-11-06T14:17:29.444Z",
+    "recapturedAtThisCommit": false,
+    "candidate": "UNRECORDED",
+    "candidateClaim": "NONE",
+    "note": "Emulator captures from an earlier session. They were not re-produced at candidate 65b70a1e8 because no emulator was attached, and they are not a claim about that candidate build. Emulator evidence only; not physical-device acceptance."
+  },
   "cases": [
     {
       "caseId": "W01",

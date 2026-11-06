@@ -14,13 +14,29 @@ Desktop Chrome 156.0.8078.80, viewports 360/390/430 CSS px, height 844 (one 420 
 | FAIL | 0 |
 | **Total** | **206** |
 
-Case matrix: 61 retained IA entries (M10/R02/X02 are the optional P1 rows outside the required 61) at three widths, plus nine family-state cases (PARADE/REVENGE/DANGER era worlds, text-only feed, thread reply composer, admin status chrome, wall grid, short-height and keyboard-focus chrome) and one synthetic route-error-boundary case per width.
+Case matrix: 61 retained IA entries (M10/R02/X02 are the optional P1 rows outside the required 61) at three widths = 183 captures, plus nine family-state cases totalling 23 captures = 206. `S02` (route error boundary) is one of the 61 IA entries, not an extra case.
 
-Android sdk_gphone64_arm64, Android 15 (SDK 35), Chrome 124.0.6367.219: 36 captures, 36 captured, 0 failed. Qualification: `ANDROID_15_EMULATOR_CHROME_NOT_PHYSICAL`. These emulator captures are from the earlier capture session and were not re-run here because no emulator was attached; the desktop matrix above was re-produced at the candidate shown.
+Of those nine family-state cases only four add pixels. The other five are byte-identical to an IA capture at every width and are recorded as aliases with `additionalCoverage: false`, both per case and in `report.json` `familyCaptureCoverage`:
+
+| Family state | Capture ids | Widths | Coverage |
+| --- | --- | --- | --- |
+| PARADE era world | W01-parade | 360/390/430 | DISTINCT — differs from `W01` at every width |
+| REVENGE era HUD | PI08-revenge-era | 360/390/430 | ALIAS of `W01` — same hash at every width, no additional coverage |
+| DANGER era HUD | PI08-danger-era | 360/390/430 | DISTINCT — differs from `W01` at every width |
+| Feed text-only card | PI02-text-only | 360/390/430 | ALIAS of `F01` — same hash at every width, no additional coverage |
+| Thread reply composer | PI03-inline-reply | 360/390/430 | ALIAS of `F03` — same hash at every width, no additional coverage |
+| Shared unavailable/status chrome | PI01-status | 360/390/430 | ALIAS of `O01` — same hash at every width, no additional coverage |
+| Wall grid and palette | PI09-grid | 360/390/430 | ALIAS of `R01` — same hash at every width, no additional coverage |
+| Short height (420px) | PI01-short | 390 | DISTINCT — no IA capture uses 420px |
+| Keyboard focus | PI01-focus | 390 | DISTINCT — no IA capture holds focus |
+
+Only the IA captures and the four distinct family states (`W01-parade`, `PI08-danger-era`, `PI01-short`, `PI01-focus`) add pixels; `F02` and the other IA routes are already counted as IA captures. The 23 family captures therefore reduce to 8 distinct + 15 alias captures, and the five alias states (retained, not deleted) certify that the named state renders the same geometry as the IA capture it repeats. The per-family case-verdict counts below include those alias captures.
+
+Android sdk_gphone64_arm64, Android 15 (SDK 35), Chrome 124.0.6367.219: 36 captures, 36 captured, 0 failed. Qualification: `ANDROID_15_EMULATOR_CHROME_NOT_PHYSICAL`. The same 36 entries are recorded in `report.json` under `androidEmulator.cases` with totals `36 captured / 0 failed`, so the report and this README agree. These emulator captures are from the earlier capture session (provenance block: earlier-session, candidate not claimed) and were not re-run here because no emulator was attached; the desktop matrix above was re-produced at the candidate shown. The Android captures are not a claim about candidate `65b70a1e8`.
 
 ## Checks
 
-- Vitest, changed-file scope for the delivered source diff (`npx vitest run --changed 7562f3b96` from `frontend/`): 50 test files, 464 tests, all passed (exit 0). The earlier handoff note's 549-test figure was not reproduced; 464 is the measured count.
+- Vitest, changed-file scope for the delivered source diff (`npx vitest run --changed 7562f3b96` from `frontend/`): 50 test files, 464 tests, all passed (exit 0). The earlier handoff note's 549-test figure was not reproduced; 464 is the measured count. **This count requires pinned Node v24.22.2** (`/tmp/mcr-node24/bin/node --version` → `v24.22.2`, the `node` field in `report.json`). Under system Node 26.7.0 the same command does not reproduce it: the operations-composition abort assertions fail — `aborts pending settings and ignores its late completion after canonical policy replacement` (`src/app/operations-composition/__tests__/composition.test.tsx`) and, in a separate multi-file run, `aborts a pending list read and rejects its late completion across policy change` (`src/app/operations-composition/__tests__/reports-production/composition.test.tsx`); the 87-test operations-composition directory reported 86 passed / 1 failed per run. Under v24.22.2 the whole directory reported 87 passed on repeated runs, and the full changed-file scope reported 50 files / 464 tests passed.
 - `tsc -b`: exit 0. `python3 scripts/mcr/check-plan.py`: PASS, exit 0.
 
 ## 12 design families
@@ -151,7 +167,9 @@ Both were the only automated target-size findings; after the fixes the audited s
 ## Reproduction
 
 ```sh
-# from the worktree root with the retained dependency tree linked into frontend/node_modules
+# from the worktree root with the retained dependency tree linked into frontend/node_modules.
+# Pinned Node v24.22.2 only: `node --version` must print v24.22.2.
+# System Node 26.7.0 changes the operations-composition abort results (see Checks).
 PATH=/tmp/mcr-node24/bin:$PATH QA06_MOBILE_OUTPUT=$PWD/.omo/evidence/mcr-finish-project/task-36-qa06 \
   node frontend/e2e/qa06-mobile/native.mjs
 PATH=/tmp/mcr-node24/bin:$PATH QA06_MOBILE_OUTPUT=$PWD/.omo/evidence/mcr-finish-project/task-36-qa06 \
@@ -162,12 +180,12 @@ The Android pass additionally requires a booted emulator, `adb reverse tcp:5319 
 
 ## Evidence files
 
-- `report.json` — every case with case id, family/IA, width, capture path, verdict, measurements, blocking producer and material difference where applicable.
+- `report.json` — 206 desktop cases with case id, family/IA, width, capture path, terminal `status` and `verdict`, measurements, blocking producer and material difference where applicable; plus `familyCaptureCoverage` (distinct vs alias family captures) and `androidEmulator` with the 36 Android entries and their own earlier-session provenance block.
 - `captures/` — 206 desktop PNGs + 36 Android PNGs.
-- `sha256.txt` — capture hashes.
+- `sha256.txt` — capture hashes for all 242 PNGs.
 - `comparison.html` — same-aspect target crops, Parade Ink component crops, family and IA tables.
 - `reference-crops/` — developer-measured crops of the unchanged references.
 - `audit-pass/` — the pre-fix audit run (U03/O05 target-size findings) retained for provenance.
-- `android.json` — emulator device, Chrome version and per-case captures.
+- `android.json` — emulator device, Chrome version, per-case captures and an earlier-session provenance block (`candidateClaim: NONE`).
 - `venue-state-map.json` — the 48 venue state-map cases with their QA06 NOT_REACHABLE disposition and blocking inputs.
 - `harness/` and `harness-sha256.txt` — frozen copies and hashes of the capture harness used for this run.
