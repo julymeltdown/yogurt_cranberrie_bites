@@ -163,8 +163,14 @@ prefix:
 
 Rules enforced by the code:
 
-- Production runtime mode requires all three files for every started service.
-  A missing identity fails startup; there is no plaintext production fallback.
+- Production TLS is resolved by serving paths, not by every process. The six
+  base services (Gateway, Auth, Profile, Friend, Post, Notification) always
+  resolve it. `concert-service` in health-only mode validates only
+  `CONCERT_METRICS_ADDR`, `CONCERT_RUNTIME_MODE` and `CONCERT_MIGRATION_MODE`,
+  so it needs no `CONCERT_GRPC_TLS_*` material. Concert resolves TLS only on an
+  enabled bootstrap, World, Participant or feed serving path. On any path that
+  starts a serving listener, all three files are required: a missing identity
+  fails startup and there is no plaintext production fallback.
 - Supplying only one or two of the three fails startup in every mode.
 - Certificates carry the workload identity; the CA verifies peers. Keep one
   directory per workload at mode 0750, certificate/CA at 0644 and key at 0600,
@@ -786,33 +792,88 @@ Recipe (rerun from the repository root):
 - Paths: tracked `backend/services/**/src/**/*.rs` and
   `backend/crates/**/src/**/*.rs`, excluding any path containing `/tests/`.
   `build.rs` and `backend/tools/` are outside the scope.
-- Test hooks: truncate each file at its first `#[cfg(test)]` block.
+- Test hooks: remove only the brace-matched `#[cfg(test)]` module or item,
+  preserving production code later in the same file. Do not truncate at the
+  first marker: `api-gateway/src/config/mod.rs` has an inline test module before
+  `AppConfig::load()`, so truncation would delete production configuration.
 - Names: literals passed to `env_or`, `optional_env`, `env_or_default`,
   `std::env::var`, `std::env::var_os`, `read`, `required`, `value`, `count`;
   every `*_ENV` constant; and every `configured_destination` prefix expanded to
   `_ENDPOINT`/`_BEARER_TOKEN`.
 - Prefix filter: `GATEWAY_`, `AUTH_`, `PROFILE_`, `FRIEND_`, `POST_`,
   `NOTIFICATION_`, `CONCERT_`, `ACTOR_`, `RESOURCE_`, `MCR_`, `OTEL_`.
-- Exclusions: the two bare destination prefixes and 33 test/fixture-only
-  names (`MCR_CANONICAL_*`, `MCR_FEED_NATIVE_*`, `MCR_PARTICIPANT_*`,
-  `MCR_PROFILE_RPC_*`, `MCR_SELF_PROFILE_*`, `MCR_WORLD_AUTH_*`,
-  `*_TEST_*`, `POST_CONCERT_TEST_*`, `CONCERT_CONSUMER_TEST*`,
-  `FRIEND_PROCESS_STACK_RELATIONSHIP_GATE_DIR`).
+- Exclusions: 35 test/fixture-only names (`MCR_CANONICAL_*`,
+  `MCR_FEED_NATIVE_*`, `MCR_PARTICIPANT_*`, `MCR_PROFILE_RPC_*`,
+  `MCR_SELF_PROFILE_*`, `MCR_WORLD_AUTH_*`, `*_TEST_*`, `POST_CONCERT_TEST_*`,
+  `CONCERT_CONSUMER_TEST*`, `FRIEND_PROCESS_STACK_RELATIONSHIP_GATE_DIR`). No
+  bare-prefix entries are excluded because the destination prefixes never enter
+  the candidate set.
 
 ```sh
 python3 - <<'PY'
 import pathlib, re, subprocess
-TRACKED = subprocess.check_output(
-    ["git", "ls-tree", "-r", "--name-only", "HEAD"], text=True
-).splitlines()
-FILES = [p for p in TRACKED
-         if (p.startswith("backend/services/") or p.startswith("backend/crates/"))
+
+def mask(text):
+    out = list(text); i, n = 0, len(text)
+    while i < n:
+        if text.startswith("//", i):
+            j = text.find("\n", i); j = n if j < 0 else j
+            for k in range(i, j): out[k] = " "
+            i = j
+        elif text.startswith("/*", i):
+            depth, j = 0, i
+            while j < n:
+                if text.startswith("/*", j): depth += 1; j += 2
+                elif text.startswith("*/", j):
+                    depth -= 1; j += 2
+                    if depth == 0: break
+                else: j += 1
+            for k in range(i, min(j, n)): out[k] = " "
+            i = j
+        elif text[i] == '"' or (text[i] == "r" and i + 1 < n and text[i+1] in '#"') or (text[i] == "b" and i + 1 < n and text[i+1] in '"r'):
+            start = i
+            if text[i] in "rb":
+                i += 1
+                if text[i] == "r": i += 1
+            if text[i] == "r":
+                i += 1; hashes = 0
+                while i < n and text[i] == "#": hashes += 1; i += 1
+                if i < n and text[i] == '"':
+                    i += 1; close = '"' + "#" * hashes; j = text.find(close, i)
+                    j = n if j < 0 else j + len(close)
+                    for k in range(start, j): out[k] = " "
+                    i = j; continue
+            if i < n and text[i] == '"':
+                i += 1
+                while i < n:
+                    if text[i] == "\\": i += 2
+                    elif text[i] == '"': i += 1; break
+                    else: i += 1
+                for k in range(start, min(i, n)): out[k] = " "
+                continue
+            i = start + 1
+        else: i += 1
+    return "".join(out)
+
+def strip_cfg_test(text):
+    while True:
+        m = text.find("#[cfg(test)]")
+        if m < 0: return text
+        masked = mask(text); brace = masked.find("{", m + 12)
+        if brace < 0: return text
+        depth = 0; end = None
+        for i in range(brace, len(masked)):
+            if masked[i] == "{": depth += 1
+            elif masked[i] == "}":
+                depth -= 1
+                if depth == 0: end = i; break
+        if end is None: return text
+        text = text[:m] + text[end + 1:]
+
+TRACKED = subprocess.check_output(["git", "ls-tree", "-r", "--name-only", "HEAD"], text=True).splitlines()
+FILES = [p for p in TRACKED if (p.startswith("backend/services/") or p.startswith("backend/crates/"))
          and "/src/" in p and p.endswith(".rs") and "/tests/" not in p]
-CALL = re.compile(
-    r'(?:env_or|optional_env|env_or_default|std::env::var|env::var|'
-    r'std::env::var_os|env::var_os|read|required|value|count)'
-    r'\s*\(\s*"([A-Z][A-Z0-9_]{2,})"'
-)
+CALL = re.compile(r'(?:env_or|optional_env|env_or_default|std::env::var|env::var|std::env::var_os|env::var_os|read|required|value|count)\s*\(\s*"([A-Z][A-Z0-9_]{2,})"')
 CONST = re.compile(r'const\s+[A-Z0-9_]*ENV[A-Z0-9_]*\s*:\s*&str\s*=\s*"([A-Z][A-Z0-9_]{2,})"')
 DEST = re.compile(r'configured_destination\s*\(\s*"([A-Z][A-Z0-9_]{2,})"')
 PREFIX = re.compile(r'^(GATEWAY|AUTH|PROFILE|FRIEND|POST|NOTIFICATION|CONCERT|ACTOR|RESOURCE|MCR|OTEL)_')
@@ -824,14 +885,12 @@ def test_fixture(name):
             or name == "FRIEND_PROCESS_STACK_RELATIONSHIP_GATE_DIR")
 names, prefixes = set(), set()
 for path in FILES:
-    text = subprocess.check_output(["git", "show", f"HEAD:{path}"], text=True)
-    text = text.split("#[cfg(test)]", 1)[0]
-    names.update(CALL.findall(text)); names.update(CONST.findall(text))
-    prefixes.update(DEST.findall(text))
+    text = strip_cfg_test(subprocess.check_output(["git", "show", f"HEAD:{path}"], text=True))
+    names.update(CALL.findall(text)); names.update(CONST.findall(text)); prefixes.update(DEST.findall(text))
 for p in prefixes:
     names.update({p + "_ENDPOINT", p + "_BEARER_TOKEN"})
 names = {n for n in names if PREFIX.match(n)}
-excluded = sorted(n for n in names if n in prefixes or test_fixture(n))
+excluded = sorted(n for n in names if test_fixture(n))
 runtime = sorted(n for n in names if n not in excluded)
 doc = pathlib.Path("docs/mcr/ops/deployment-runbook.md").read_text()
 documented = set(re.findall(r"\b[A-Z][A-Z0-9_]{2,}\b", doc))
@@ -846,15 +905,15 @@ PY
 At this revision the recipe prints:
 
 ```text
-files=1081 raw=281 excluded=35 runtime=246 missing=0
+files=1081 raw=332 excluded=35 runtime=297 missing=0
 ```
 
-So **246 runtime literal names under this recipe, all 246 present**. This does
+So **297 runtime literal names under this recipe, all 297 present**. This does
 not claim that the repository contains no other env-like strings: a broader
-all-uppercase scan also sees internal enums, error codes and event names. The count also
-excludes dynamic families documented as rules: 21 per-workload TLS paths
-(section 4.1), 14 current/previous workload credentials (section 4.1), and four
-authority settlement endpoints (section 5.8).
+all-uppercase scan also sees internal enums, error codes and event names. The
+count also excludes dynamic families documented as rules: 21 per-workload TLS
+paths (section 4.1), 14 current/previous workload credentials (section 4.1),
+and four authority settlement endpoints (section 5.8).
 
 Names below have code defaults unless marked; set them explicitly in production
 so the deployment does not inherit a development default. Feature and worker
