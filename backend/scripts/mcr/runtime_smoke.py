@@ -23,6 +23,19 @@ import migration_smoke as migration
 SmokeError = migration.SmokeError
 START_ORDER = ("profile-service", "notification-service", "friend-service", "post-service",
                "auth-service", "api-gateway")
+SETTLEMENT_DEPENDENT_SERVICES = ("auth-service", "friend-service")
+
+
+def start_order(order=None):
+    """Concert owns the settlement endpoints its dependents verify at startup."""
+    ordered = list(START_ORDER if order is None else order)
+    if "concert-service" not in ordered:
+        return tuple(ordered)
+    dependents = [ordered.index(name) for name in SETTLEMENT_DEPENDENT_SERVICES if name in ordered]
+    if dependents and ordered.index("concert-service") > min(dependents):
+        ordered.remove("concert-service")
+        ordered.insert(min(dependents), "concert-service")
+    return tuple(ordered)
 PREFIX = {name: variable.removesuffix("_DATABASE_URL")
           for name, variable in migration.SERVICES.items()}
 PEERS = {"api-gateway": ("auth-service", "profile-service", "friend-service", "post-service",

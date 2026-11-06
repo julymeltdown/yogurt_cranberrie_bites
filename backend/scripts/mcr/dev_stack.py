@@ -193,7 +193,7 @@ class DevStack:
             self.report["owned_directory"] = str(self.cluster.root)
             migration.qualify(self.cluster, binaries, manifests, self.report)
         self.rows = {row["service"]: row for row in self.report["services"]}
-        for name in runtime.START_ORDER:
+        for name in runtime.start_order():
             for kind in ("http", "grpc", "metrics"):
                 self.ports.reserve(f"{name}:{kind}")
         for name in ("redis", "disabled-egress", "mail"):
@@ -213,7 +213,7 @@ class DevStack:
                                        self.ports, ("redis",), secret_values)
         self.redis.wait_listeners()
         runtime.redis_ping(self.redis, redis_password)
-        for name in runtime.START_ORDER:
+        for name in runtime.start_order():
             with runtime.protected_signals():
                 child = runtime.Child(self.cluster, name, [str(binaries[name])], envs[name], self.ports,
                                       tuple(f"{name}:{kind}" for kind in ("http", "metrics", "grpc")), secret_values)
@@ -236,7 +236,7 @@ class DevStack:
                 "socket": str(self.cluster.root / "control.sock"),
                 "gateway_url": self.ports.url("api-gateway:http"),
                 "services": {name: {kind: self.ports.url(f"{name}:{kind}") for kind in ("http", "grpc", "metrics")}
-                             for name in runtime.START_ORDER},
+                             for name in runtime.start_order()},
                 "mail_directory": str(self.mail.directory), "auth_http": "Gateway /auth/*; no /api ingress adapter yet"}
 
     def health(self):
