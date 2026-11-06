@@ -1,0 +1,1719 @@
+{
+  "status": "PASS",
+  "source": "ea5a8b7465328a4cadedd7f0c01523f6adb15dc7",
+  "cases": [
+    {
+      "label": "rooms-390x844-full",
+      "screen": "rooms",
+      "width": 390,
+      "height": 844,
+      "panel": "full",
+      "errors": [],
+      "layout": {
+        "overflow": 0,
+        "controls": [
+          {
+            "name": "Reduce panel",
+            "left": 251,
+            "top": 7,
+            "right": 295,
+            "bottom": 51,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Minimize panel",
+            "left": 295,
+            "top": 7,
+            "right": 339,
+            "bottom": 51,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Back to previous panel",
+            "left": 339,
+            "top": 7,
+            "right": 383,
+            "bottom": 51,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Nearby in world",
+            "left": 11,
+            "top": 63,
+            "right": 119.21875,
+            "bottom": 107,
+            "width": 108.21875,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Back to world",
+            "left": 131.21875,
+            "top": 63,
+            "right": 226.640625,
+            "bottom": 107,
+            "width": 95.421875,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Refresh rooms",
+            "left": 258.3125,
+            "top": 115,
+            "right": 379,
+            "bottom": 159,
+            "width": 120.6875,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Switch to MAIN STAGE",
+            "left": 11,
+            "top": 401,
+            "right": 184.078125,
+            "bottom": 445,
+            "width": 173.078125,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Find a party",
+            "left": 11,
+            "top": 645,
+            "right": 92.828125,
+            "bottom": 689,
+            "width": 81.828125,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          }
+        ],
+        "overlaps": [],
+        "panel": {
+          "top": 4,
+          "bottom": 840,
+          "height": 836
+        }
+      },
+      "mandatorySwitch": true,
+      "status": "PASS"
+    },
+    {
+      "label": "nearby-390x844-full",
+      "screen": "nearby",
+      "width": 390,
+      "height": 844,
+      "panel": "full",
+      "errors": [],
+      "layout": {
+        "overflow": 0,
+        "controls": [
+          {
+            "name": "Reduce panel",
+            "left": 251,
+            "top": 7,
+            "right": 295,
+            "bottom": 51,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Minimize panel",
+            "left": 295,
+            "top": 7,
+            "right": 339,
+            "bottom": 51,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Back to previous panel",
+            "left": 339,
+            "top": 7,
+            "right": 383,
+            "bottom": 51,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Choose a room",
+            "left": 11,
+            "top": 63,
+            "right": 113.125,
+            "bottom": 107,
+            "width": 102.125,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Back to world",
+            "left": 125.125,
+            "top": 63,
+            "right": 220.546875,
+            "bottom": 107,
+            "width": 95.421875,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "View Ghost avatar",
+            "left": 11,
+            "top": 342,
+            "right": 79,
+            "bottom": 410,
+            "width": 68,
+            "height": 68,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Ghost",
+            "left": 87,
+            "top": 337,
+            "right": 131,
+            "bottom": 381,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "View Jet avatar",
+            "left": 11,
+            "top": 438,
+            "right": 79,
+            "bottom": 506,
+            "width": 68,
+            "height": 68,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Jet",
+            "left": 87,
+            "top": 433,
+            "right": 131,
+            "bottom": 477,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "View Kite avatar",
+            "left": 11,
+            "top": 534,
+            "right": 79,
+            "bottom": 602,
+            "width": 68,
+            "height": 68,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Kite",
+            "left": 87,
+            "top": 529,
+            "right": 131,
+            "bottom": 573,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "View Lumen avatar",
+            "left": 11,
+            "top": 630,
+            "right": 79,
+            "bottom": 698,
+            "width": 68,
+            "height": 68,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Lumen",
+            "left": 87,
+            "top": 625,
+            "right": 132.578125,
+            "bottom": 669,
+            "width": 45.578125,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "View Moss avatar",
+            "left": 11,
+            "top": 726,
+            "right": 79,
+            "bottom": 794,
+            "width": 68,
+            "height": 68,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Moss",
+            "left": 87,
+            "top": 721,
+            "right": 131,
+            "bottom": 765,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "View profile",
+            "left": 146,
+            "top": 757,
+            "right": 268.015625,
+            "bottom": 801,
+            "width": 122.015625,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Close avatar details",
+            "left": 334,
+            "top": 686,
+            "right": 378,
+            "bottom": 730,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          }
+        ],
+        "overlaps": [],
+        "panel": {
+          "top": 4,
+          "bottom": 840,
+          "height": 836
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "help-390x844-full",
+      "screen": "help",
+      "width": 390,
+      "height": 844,
+      "panel": "full",
+      "errors": [],
+      "layout": {
+        "overflow": 0,
+        "controls": [
+          {
+            "name": "Reduce panel",
+            "left": 251,
+            "top": 7,
+            "right": 295,
+            "bottom": 51,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Minimize panel",
+            "left": 295,
+            "top": 7,
+            "right": 339,
+            "bottom": 51,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Back to previous panel",
+            "left": 339,
+            "top": 7,
+            "right": 383,
+            "bottom": 51,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Browse places",
+            "left": 11,
+            "top": 1465,
+            "right": 109.875,
+            "bottom": 1509,
+            "width": 98.875,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Return to world",
+            "left": 121.875,
+            "top": 1465,
+            "right": 230.25,
+            "bottom": 1509,
+            "width": 108.375,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          }
+        ],
+        "overlaps": [],
+        "panel": {
+          "top": 4,
+          "bottom": 840,
+          "height": 836
+        }
+      },
+      "lastVisible": true,
+      "status": "PASS"
+    },
+    {
+      "label": "rooms-430x844-full",
+      "screen": "rooms",
+      "width": 430,
+      "height": 844,
+      "panel": "full",
+      "errors": [],
+      "layout": {
+        "overflow": 0,
+        "controls": [
+          {
+            "name": "Reduce panel",
+            "left": 291,
+            "top": 7,
+            "right": 335,
+            "bottom": 51,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Minimize panel",
+            "left": 335,
+            "top": 7,
+            "right": 379,
+            "bottom": 51,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Back to previous panel",
+            "left": 379,
+            "top": 7,
+            "right": 423,
+            "bottom": 51,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Nearby in world",
+            "left": 11,
+            "top": 63,
+            "right": 119.21875,
+            "bottom": 107,
+            "width": 108.21875,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Back to world",
+            "left": 131.21875,
+            "top": 63,
+            "right": 226.640625,
+            "bottom": 107,
+            "width": 95.421875,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Refresh rooms",
+            "left": 298.3125,
+            "top": 115,
+            "right": 419,
+            "bottom": 159,
+            "width": 120.6875,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Switch to SECOND ROOM",
+            "left": 11,
+            "top": 423,
+            "right": 203.609375,
+            "bottom": 467,
+            "width": 192.609375,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Find a party",
+            "left": 11,
+            "top": 557,
+            "right": 92.828125,
+            "bottom": 601,
+            "width": 81.828125,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          }
+        ],
+        "overlaps": [],
+        "panel": {
+          "top": 4,
+          "bottom": 840,
+          "height": 836
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "nearby-430x844-full",
+      "screen": "nearby",
+      "width": 430,
+      "height": 844,
+      "panel": "full",
+      "errors": [],
+      "layout": {
+        "overflow": 0,
+        "controls": [
+          {
+            "name": "Reduce panel",
+            "left": 291,
+            "top": 7,
+            "right": 335,
+            "bottom": 51,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Minimize panel",
+            "left": 335,
+            "top": 7,
+            "right": 379,
+            "bottom": 51,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Back to previous panel",
+            "left": 379,
+            "top": 7,
+            "right": 423,
+            "bottom": 51,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Choose a room",
+            "left": 11,
+            "top": 63,
+            "right": 113.125,
+            "bottom": 107,
+            "width": 102.125,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Back to world",
+            "left": 125.125,
+            "top": 63,
+            "right": 220.546875,
+            "bottom": 107,
+            "width": 95.421875,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "View Ghost avatar",
+            "left": 11,
+            "top": 342,
+            "right": 79,
+            "bottom": 410,
+            "width": 68,
+            "height": 68,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Ghost",
+            "left": 87,
+            "top": 337,
+            "right": 131,
+            "bottom": 381,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "View Jet avatar",
+            "left": 11,
+            "top": 438,
+            "right": 79,
+            "bottom": 506,
+            "width": 68,
+            "height": 68,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Jet",
+            "left": 87,
+            "top": 433,
+            "right": 131,
+            "bottom": 477,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "View Kite avatar",
+            "left": 11,
+            "top": 534,
+            "right": 79,
+            "bottom": 602,
+            "width": 68,
+            "height": 68,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Kite",
+            "left": 87,
+            "top": 529,
+            "right": 131,
+            "bottom": 573,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "View Lumen avatar",
+            "left": 11,
+            "top": 630,
+            "right": 79,
+            "bottom": 698,
+            "width": 68,
+            "height": 68,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Lumen",
+            "left": 87,
+            "top": 625,
+            "right": 132.578125,
+            "bottom": 669,
+            "width": 45.578125,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "View Moss avatar",
+            "left": 11,
+            "top": 726,
+            "right": 79,
+            "bottom": 794,
+            "width": 68,
+            "height": 68,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Moss",
+            "left": 87,
+            "top": 721,
+            "right": 131,
+            "bottom": 765,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "View profile",
+            "left": 146,
+            "top": 757,
+            "right": 268.015625,
+            "bottom": 801,
+            "width": 122.015625,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Close avatar details",
+            "left": 356,
+            "top": 686,
+            "right": 400,
+            "bottom": 730,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          }
+        ],
+        "overlaps": [],
+        "panel": {
+          "top": 4,
+          "bottom": 840,
+          "height": 836
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "help-430x844-full",
+      "screen": "help",
+      "width": 430,
+      "height": 844,
+      "panel": "full",
+      "errors": [],
+      "layout": {
+        "overflow": 0,
+        "controls": [
+          {
+            "name": "Reduce panel",
+            "left": 291,
+            "top": 7,
+            "right": 335,
+            "bottom": 51,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Minimize panel",
+            "left": 335,
+            "top": 7,
+            "right": 379,
+            "bottom": 51,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Back to previous panel",
+            "left": 379,
+            "top": 7,
+            "right": 423,
+            "bottom": 51,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Browse places",
+            "left": 11,
+            "top": 1421,
+            "right": 109.875,
+            "bottom": 1465,
+            "width": 98.875,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Return to world",
+            "left": 121.875,
+            "top": 1421,
+            "right": 230.25,
+            "bottom": 1465,
+            "width": 108.375,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          }
+        ],
+        "overlaps": [],
+        "panel": {
+          "top": 4,
+          "bottom": 840,
+          "height": 836
+        }
+      },
+      "lastVisible": true,
+      "status": "PASS"
+    },
+    {
+      "label": "rooms-390x420-full",
+      "screen": "rooms",
+      "width": 390,
+      "height": 420,
+      "panel": "full",
+      "errors": [],
+      "layout": {
+        "overflow": 0,
+        "controls": [
+          {
+            "name": "Reduce panel",
+            "left": 251,
+            "top": 7,
+            "right": 295,
+            "bottom": 51,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Minimize panel",
+            "left": 295,
+            "top": 7,
+            "right": 339,
+            "bottom": 51,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Back to previous panel",
+            "left": 339,
+            "top": 7,
+            "right": 383,
+            "bottom": 51,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Nearby in world",
+            "left": 11,
+            "top": 63,
+            "right": 119.21875,
+            "bottom": 107,
+            "width": 108.21875,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Back to world",
+            "left": 131.21875,
+            "top": 63,
+            "right": 226.640625,
+            "bottom": 107,
+            "width": 95.421875,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Refresh rooms",
+            "left": 258.3125,
+            "top": 113,
+            "right": 379,
+            "bottom": 157,
+            "width": 120.6875,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Switch to SECOND ROOM",
+            "left": 11,
+            "top": 409,
+            "right": 203.609375,
+            "bottom": 453,
+            "width": 192.609375,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Find a party",
+            "left": 11,
+            "top": 533,
+            "right": 92.828125,
+            "bottom": 577,
+            "width": 81.828125,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          }
+        ],
+        "overlaps": [],
+        "panel": {
+          "top": 4,
+          "bottom": 416,
+          "height": 412
+        }
+      },
+      "focusChecks": [
+        "Reduce panel",
+        "Minimize panel",
+        "Back to previous panel",
+        "Nearby in world",
+        "Back to world",
+        "Refresh rooms",
+        "Switch to SECOND ROOM",
+        "Find a party"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "nearby-390x420-full",
+      "screen": "nearby",
+      "width": 390,
+      "height": 420,
+      "panel": "full",
+      "errors": [],
+      "layout": {
+        "overflow": 0,
+        "controls": [
+          {
+            "name": "Reduce panel",
+            "left": 251,
+            "top": 7,
+            "right": 295,
+            "bottom": 51,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Minimize panel",
+            "left": 295,
+            "top": 7,
+            "right": 339,
+            "bottom": 51,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Back to previous panel",
+            "left": 339,
+            "top": 7,
+            "right": 383,
+            "bottom": 51,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Choose a room",
+            "left": 11,
+            "top": 63,
+            "right": 113.125,
+            "bottom": 107,
+            "width": 102.125,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Back to world",
+            "left": 125.125,
+            "top": 63,
+            "right": 220.546875,
+            "bottom": 107,
+            "width": 95.421875,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "View Ghost avatar",
+            "left": 11,
+            "top": 320,
+            "right": 79,
+            "bottom": 388,
+            "width": 68,
+            "height": 68,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Ghost",
+            "left": 87,
+            "top": 315,
+            "right": 131,
+            "bottom": 359,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "View Jet avatar",
+            "left": 11,
+            "top": 412,
+            "right": 79,
+            "bottom": 480,
+            "width": 68,
+            "height": 68,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Jet",
+            "left": 87,
+            "top": 407,
+            "right": 131,
+            "bottom": 451,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "View Kite avatar",
+            "left": 11,
+            "top": 504,
+            "right": 79,
+            "bottom": 572,
+            "width": 68,
+            "height": 68,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Kite",
+            "left": 87,
+            "top": 499,
+            "right": 131,
+            "bottom": 543,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "View Lumen avatar",
+            "left": 11,
+            "top": 596,
+            "right": 79,
+            "bottom": 664,
+            "width": 68,
+            "height": 68,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Lumen",
+            "left": 87,
+            "top": 591,
+            "right": 132.578125,
+            "bottom": 635,
+            "width": 45.578125,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "View Moss avatar",
+            "left": 11,
+            "top": 688,
+            "right": 79,
+            "bottom": 756,
+            "width": 68,
+            "height": 68,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Moss",
+            "left": 87,
+            "top": 683,
+            "right": 131,
+            "bottom": 727,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "View profile",
+            "left": 146,
+            "top": 333,
+            "right": 268.015625,
+            "bottom": 377,
+            "width": 122.015625,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Close avatar details",
+            "left": 334,
+            "top": 262,
+            "right": 378,
+            "bottom": 306,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          }
+        ],
+        "overlaps": [],
+        "panel": {
+          "top": 4,
+          "bottom": 416,
+          "height": 412
+        }
+      },
+      "focusChecks": [
+        "Reduce panel",
+        "Minimize panel",
+        "Back to previous panel",
+        "Choose a room",
+        "Back to world",
+        "View Ghost avatar",
+        "Ghost",
+        "View Jet avatar",
+        "Jet",
+        "View Kite avatar",
+        "Kite",
+        "View Lumen avatar",
+        "Lumen",
+        "View Moss avatar",
+        "Moss"
+      ],
+      "status": "PASS"
+    },
+    {
+      "label": "help-390x420-full",
+      "screen": "help",
+      "width": 390,
+      "height": 420,
+      "panel": "full",
+      "errors": [],
+      "layout": {
+        "overflow": 0,
+        "controls": [
+          {
+            "name": "Reduce panel",
+            "left": 251,
+            "top": 7,
+            "right": 295,
+            "bottom": 51,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Minimize panel",
+            "left": 295,
+            "top": 7,
+            "right": 339,
+            "bottom": 51,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Back to previous panel",
+            "left": 339,
+            "top": 7,
+            "right": 383,
+            "bottom": 51,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Browse places",
+            "left": 11,
+            "top": 1465,
+            "right": 109.875,
+            "bottom": 1509,
+            "width": 98.875,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Return to world",
+            "left": 121.875,
+            "top": 1465,
+            "right": 230.25,
+            "bottom": 1509,
+            "width": 108.375,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          }
+        ],
+        "overlaps": [],
+        "panel": {
+          "top": 4,
+          "bottom": 416,
+          "height": 412
+        }
+      },
+      "focusChecks": [
+        "Reduce panel",
+        "Minimize panel",
+        "Back to previous panel",
+        "Browse places",
+        "Return to world"
+      ],
+      "lastVisible": true,
+      "status": "PASS"
+    },
+    {
+      "label": "rooms-360x844-full",
+      "screen": "rooms",
+      "width": 360,
+      "height": 844,
+      "panel": "full",
+      "errors": [],
+      "layout": {
+        "overflow": 0,
+        "controls": [
+          {
+            "name": "Reduce panel",
+            "left": 221,
+            "top": 7,
+            "right": 265,
+            "bottom": 51,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Minimize panel",
+            "left": 265,
+            "top": 7,
+            "right": 309,
+            "bottom": 51,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Back to previous panel",
+            "left": 309,
+            "top": 7,
+            "right": 353,
+            "bottom": 51,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Nearby in world",
+            "left": 11,
+            "top": 63,
+            "right": 119.21875,
+            "bottom": 107,
+            "width": 108.21875,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Back to world",
+            "left": 131.21875,
+            "top": 63,
+            "right": 226.640625,
+            "bottom": 107,
+            "width": 95.421875,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Refresh rooms",
+            "left": 228.3125,
+            "top": 115,
+            "right": 349,
+            "bottom": 159,
+            "width": 120.6875,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Switch to SECOND ROOM",
+            "left": 11,
+            "top": 445,
+            "right": 203.609375,
+            "bottom": 489,
+            "width": 192.609375,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Find a party",
+            "left": 11,
+            "top": 601,
+            "right": 92.828125,
+            "bottom": 645,
+            "width": 81.828125,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          }
+        ],
+        "overlaps": [],
+        "panel": {
+          "top": 4,
+          "bottom": 840,
+          "height": 836
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "nearby-360x844-full",
+      "screen": "nearby",
+      "width": 360,
+      "height": 844,
+      "panel": "full",
+      "errors": [],
+      "layout": {
+        "overflow": 0,
+        "controls": [
+          {
+            "name": "Reduce panel",
+            "left": 221,
+            "top": 7,
+            "right": 265,
+            "bottom": 51,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Minimize panel",
+            "left": 265,
+            "top": 7,
+            "right": 309,
+            "bottom": 51,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Back to previous panel",
+            "left": 309,
+            "top": 7,
+            "right": 353,
+            "bottom": 51,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Choose a room",
+            "left": 11,
+            "top": 63,
+            "right": 113.125,
+            "bottom": 107,
+            "width": 102.125,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Back to world",
+            "left": 125.125,
+            "top": 63,
+            "right": 220.546875,
+            "bottom": 107,
+            "width": 95.421875,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "View Ghost avatar",
+            "left": 11,
+            "top": 342,
+            "right": 79,
+            "bottom": 410,
+            "width": 68,
+            "height": 68,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Ghost",
+            "left": 87,
+            "top": 337,
+            "right": 131,
+            "bottom": 381,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "View Jet avatar",
+            "left": 11,
+            "top": 438,
+            "right": 79,
+            "bottom": 506,
+            "width": 68,
+            "height": 68,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Jet",
+            "left": 87,
+            "top": 433,
+            "right": 131,
+            "bottom": 477,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "View Kite avatar",
+            "left": 11,
+            "top": 534,
+            "right": 79,
+            "bottom": 602,
+            "width": 68,
+            "height": 68,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Kite",
+            "left": 87,
+            "top": 529,
+            "right": 131,
+            "bottom": 573,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "View Lumen avatar",
+            "left": 11,
+            "top": 630,
+            "right": 79,
+            "bottom": 698,
+            "width": 68,
+            "height": 68,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Lumen",
+            "left": 87,
+            "top": 625,
+            "right": 132.578125,
+            "bottom": 669,
+            "width": 45.578125,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "View Moss avatar",
+            "left": 11,
+            "top": 726,
+            "right": 79,
+            "bottom": 794,
+            "width": 68,
+            "height": 68,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Moss",
+            "left": 87,
+            "top": 721,
+            "right": 131,
+            "bottom": 765,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          }
+        ],
+        "overlaps": [],
+        "panel": {
+          "top": 4,
+          "bottom": 840,
+          "height": 836
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "label": "help-360x844-full",
+      "screen": "help",
+      "width": 360,
+      "height": 844,
+      "panel": "full",
+      "errors": [],
+      "layout": {
+        "overflow": 0,
+        "controls": [
+          {
+            "name": "Reduce panel",
+            "left": 221,
+            "top": 7,
+            "right": 265,
+            "bottom": 51,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Minimize panel",
+            "left": 265,
+            "top": 7,
+            "right": 309,
+            "bottom": 51,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Back to previous panel",
+            "left": 309,
+            "top": 7,
+            "right": 353,
+            "bottom": 51,
+            "width": 44,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Browse places",
+            "left": 11,
+            "top": 1597,
+            "right": 109.875,
+            "bottom": 1641,
+            "width": 98.875,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          },
+          {
+            "name": "Return to world",
+            "left": 121.875,
+            "top": 1597,
+            "right": 230.25,
+            "bottom": 1641,
+            "width": 108.375,
+            "height": 44,
+            "clippedX": 0,
+            "clippedY": 0,
+            "outline": "none"
+          }
+        ],
+        "overlaps": [],
+        "panel": {
+          "top": 4,
+          "bottom": 840,
+          "height": 836
+        }
+      },
+      "lastVisible": true,
+      "status": "PASS"
+    }
+  ],
+  "captures": [
+    "rooms-390x844-full.png",
+    "nearby-390x844-full-popover.png",
+    "nearby-390x844-full.png",
+    "help-390x844-full.png",
+    "rooms-430x844-full.png",
+    "nearby-430x844-full-popover.png",
+    "nearby-430x844-full.png",
+    "help-430x844-full.png",
+    "rooms-390x420-full.png",
+    "nearby-390x420-full-popover.png",
+    "nearby-390x420-full.png",
+    "help-390x420-full.png",
+    "rooms-360x844-full.png",
+    "nearby-360x844-full.png",
+    "help-360x844-full.png"
+  ],
+  "browser": "156.0.8078.80"
+}

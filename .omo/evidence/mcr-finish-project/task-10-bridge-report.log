@@ -1,0 +1,10 @@
+
+running 5 tests
+test postgres::native_database_bridge_cancelled_postcommit_admission_retains_cleanup ... ok
+test postgres::native_database_bridge_consumption_atomic_resync_owner_fences_and_cleanup ... ok
+test postgres::native_database_bridge_full_target_rejection_preserves_current_membership ... ok
+test postgres::native_database_bridge_successful_socket_switch_spans_owner_ticks ... ok
+test postgres::native_database_bridge_two_tickets_one_room_and_replay_refusal ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 20 filtered out; finished in 1.13s
+

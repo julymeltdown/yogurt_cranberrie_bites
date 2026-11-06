@@ -5,12 +5,14 @@ pub mod audience;
 mod authority;
 pub mod cursor;
 mod owners;
+mod roles;
 mod runtime;
 pub mod settlement;
 pub mod report_product;
 pub mod wire;
 
 pub use owners::{OperationsOwners, ScopedOperationsRoles, ScopedReportEvidence};
+pub use roles::{PgOperationsReview, PgOperationsRoles};
 pub use runtime::{OperationsError, OperationsRuntime};
 pub use wire::{OperationsReply, OperationsRequest};
 

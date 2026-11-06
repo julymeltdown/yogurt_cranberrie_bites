@@ -1,9 +1,9 @@
 import native from '../spatial-v3/source-inputs.json'
 import tile from '../spatial-v3/tile-pin.json'
-import { canonicalJson, requireMap } from '../../map/json'
+import { canonicalJson, MapError, requireMap } from '../../map/json'
 import type { LoadedMap } from '../../map/resources'
 import type { LoadedScenery, Scenery } from '../../illustrated/model'
-import { admitPhoto2Display, PHOTO2_NATIVE, PHOTO2_VERSION,
+import { admitPhoto2Display, PHOTO2_DISPLAY, PHOTO2_NATIVE, PHOTO2_SOURCE_MESH, PHOTO2_VERSION,
   type DisplayBinding, type DisplayMesh, type Point, type Projection, type Rect } from '../../../features/parade-ink/world-hud/photo2-world-display-v1'
 
 export interface Photo2PaintFrame {
@@ -63,7 +63,8 @@ const registered: readonly Photo2RegisteredRelease[] = Object.freeze([])
 export function registeredPhoto2Release(map: Pick<LoadedMap, 'map' | 'theme'>): Photo2RegisteredRelease {
   const release = registered.find(r => r.mapHash === map.map.content_hash && r.pins.themeHash === map.theme.content_hash
     && r.pins.themeRevision === map.theme.theme_revision && map.theme.theme_id === 'PARADE')
-  requireMap(release)
+  // An absent or unqualified artifact is unavailable, never a fabricated legacy fallback.
+  if (!release) throw new MapError('unavailable')
   return release
 }
 /** Exact registered scenery bytes and frozen native dimensions, never a prefix-only exception. */
@@ -80,6 +81,8 @@ export function isPhoto2ReferenceClaim(value: Pick<LoadedMap, 'theme'>) {
 const near = (a: Point | null, b: Point) => a !== null && Math.abs(a.x - b.x) <= 1e-7 && Math.abs(a.y - b.y) <= 1e-7
 const rect = (r: Rect) => [r.x, r.y, r.width, r.height].every(Number.isFinite) && r.width > 0 && r.height > 0
 const copyRect = (r: Rect): Rect => Object.freeze({ x: r.x, y: r.y, width: r.width, height: r.height })
+const sameRect = (a: Rect, b: Rect) => a.x === b.x && a.y === b.y && a.width === b.width && a.height === b.height
+const meshKey = (m: DisplayMesh) => JSON.stringify([m.columns, m.rows, m.display.map(point => [point.x, point.y])])
 /** Strict version dispatch must reach this fence before legacy geometry aliases.
  * Existing C03/C06 hashing, schema and asset loading remain prerequisites.
  */
@@ -102,6 +105,9 @@ export function validatePhoto2Metadata(map: Pick<LoadedMap, 'map' | 'theme' | 'w
     && theme.texture.width_px === PHOTO2_NATIVE.width && theme.texture.height_px === PHOTO2_NATIVE.height
     && canonicalJson(theme.scenery) === canonicalJson(release.scenery))
   const s = release.scenery, bounds = release.groundBounds
+  // Renderer source and release pins must name the same mesh, camera and ground frame.
+  requireMap(sameRect(release.groundBounds, PHOTO2_DISPLAY.groundBounds) && sameRect(release.camera, PHOTO2_DISPLAY.camera)
+    && meshKey(release.display.mesh) === meshKey(PHOTO2_SOURCE_MESH))
   requireMap(s.objects.length === release.display.anchors.length && release.display.anchors.every(anchor => {
     const matches = s.objects.filter(object => object.id === anchor.id)
     return matches.length === 1 && ['x', 'y', 'width', 'height', 'depth_y'].every(key => matches[0]![key as 'x'] === anchor[key as 'x'])

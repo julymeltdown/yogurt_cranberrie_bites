@@ -1,0 +1,40 @@
+{
+  "task": "34",
+  "status": "PASS",
+  "commit": "600a8f809 feat(ui): finish PI11 rooms, nearby and help",
+  "base": "ea5a8b746",
+  "changed_files": [
+    "frontend/src/features/world-nearby/WorldNearby.tsx",
+    "frontend/src/features/world-rooms/ui/world-access.css",
+    "frontend/src/features/world-help/__tests__/world-help.test.tsx"
+  ],
+  "tests": [
+    "corepack pnpm@11.7.0 exec vitest run <targeted> -> 84 passed, exit 0",
+    "corepack pnpm@11.7.0 run typecheck -> exit 0",
+    "oxlint changed files -> exit 0"
+  ],
+  "layout": {
+    "status": "PASS",
+    "cases": 12,
+    "captures": 15,
+    "viewports": [
+      "390x844",
+      "430x844",
+      "390x420",
+      "360x844"
+    ],
+    "mandatorySwitch": true
+  },
+  "map_geometry": "unchanged: no reference-scene/map/camera path in the commit",
+  "cleanup": [
+    "temporary frontend harness page removed",
+    "Vite and Chrome closed",
+    "temporary directories removed",
+    "worktree clean",
+    "branch-only commit; no merge or push"
+  ],
+  "limitations": [
+    "synthetic controller/roster in retained shell frame; no live backend socket, device or production art",
+    "pinned canonical app fixture stops before layout at this HEAD; diagnosis retained in fixture-drift/native-report.json"
+  ]
+}

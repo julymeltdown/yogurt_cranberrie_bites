@@ -1,0 +1,84 @@
+{
+  "cleanup": "PASS",
+  "cluster_root": "/private/tmp/mcr-pg-7q6rrjk4",
+  "failure_oracle": {
+    "dropped": {
+      "diagnostic": "Error: database command: receipt verification failed\n",
+      "exit_code": 1,
+      "phase": "oracle:dropped-0075"
+    },
+    "mutated": {
+      "diagnostic": "Error: database command: receipt verification failed\n",
+      "exit_code": 1,
+      "phase": "oracle:mutated-0075"
+    }
+  },
+  "finished_at_utc": "2026-11-06T06:25:48.810274+00:00",
+  "full_migration_count": 59,
+  "initdb_version": "initdb (PostgreSQL) 16.14 (Homebrew)",
+  "migrations": {
+    "full": {
+      "database": "mcr_concert_venue_full",
+      "label": "full",
+      "ledger_count": 59,
+      "migrate": "PASS",
+      "verify": "PASS"
+    },
+    "location": {
+      "database": "mcr_concert_venue_location",
+      "label": "location",
+      "ledger_versions": [
+        1,
+        73,
+        74,
+        75
+      ],
+      "migrate": "PASS",
+      "verify": "PASS"
+    },
+    "meeting": {
+      "database": "mcr_meeting",
+      "label": "meeting",
+      "ledger_versions": [
+        1,
+        73,
+        74,
+        75
+      ],
+      "migrate": "PASS",
+      "rename": "mcr_concert_meeting->mcr_meeting",
+      "verify": "PASS"
+    }
+  },
+  "normal_service_startup": "NOT_RUN",
+  "notes_ledger_count": 59,
+  "postgres_tools": {
+    "createdb": "/opt/homebrew/Cellar/postgresql@16/16.14/bin/createdb",
+    "initdb": "/opt/homebrew/Cellar/postgresql@16/16.14/bin/initdb",
+    "pg_ctl": "/opt/homebrew/Cellar/postgresql@16/16.14/bin/pg_ctl",
+    "psql": "/opt/homebrew/Cellar/postgresql@16/16.14/bin/psql"
+  },
+  "postgres_version": "16.14 (Homebrew)",
+  "restart": {
+    "after_pid": 65168,
+    "before_pid": 65063,
+    "sentinel": "ACTIVE|1",
+    "status": "PASS"
+  },
+  "result": "PASS",
+  "scope": "VENU-BE L/M/N venue ledger, restart and route families on private PostgreSQL 16",
+  "service_binary_sha256": "aba19a30dd68ceff88201664274a86c9c126f2766e9b599da375d1d3d9df10c4",
+  "source_revision": "cc8ad1b5bbdca9f4af40a05ca92331328b13ebac",
+  "started_at_utc": "2026-11-06T06:25:43.347468+00:00",
+  "tests": {
+    "command": "cargo +1.88.0 test -p concert-service --test venue_* -- --test-threads=1",
+    "exit_code": 0,
+    "output_tail": "\nrunning 4 tests\ntest consent_viewer_scope_freshness_and_revocation ... ok\ntest missing_bilateral_friend_read_fails_closed ... ok\ntest public_operation_registration_is_exact ... ok\ntest stale_fix_is_last_known_and_invalid_input_fails ... ok\n\ntest result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.19s\n\n\nrunning 3 tests\ntest decisions_follow_producer_and_revision_and_stale_landmarks_fail_closed ... ok\ntest invitation_accept_message_round_trip_and_idempotent_replay ... ok\ntest reusing_a_command_key_with_different_request_body_conflicts ... ok\n\ntest result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.27s\n\n\nrunning 1 test\ntest place_notes_audience_expiry_reply_moderation_and_meeting ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.24s\n\n"
+  },
+  "venue_migrations": [
+    1,
+    73,
+    74,
+    75
+  ]
+}

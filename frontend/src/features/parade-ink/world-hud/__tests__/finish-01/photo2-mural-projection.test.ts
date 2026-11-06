@@ -96,7 +96,7 @@ it('recognizes new and mixed Photo2 namespace claims but refuses unregistered th
   const map = { map: { content_hash: 'sha256:' + 'a'.repeat(64) }, theme: { theme_id: 'PARADE', theme_revision: 2, content_hash: 'sha256:' + 'b'.repeat(64),
     scenery: { ground: { path: 'world/legacy.png' }, atlases: [{ path: 'world/reference-scene-v2/photo2-world-display-v1/parade/atlas.png' }] } } } as unknown as LoadedMap
   expect(isPhoto2ReferenceClaim(map)).toBe(true)
-  expect(() => registeredPhoto2Release(map)).toThrow('Map resource invalid')
+  expect(() => registeredPhoto2Release(map)).toThrow('Map resource unavailable')
   const objects = [{ id: 'stage', x: 10, y: 20, width: 100, height: 80, depth_y: 100 },
     { id: 'wall', x: 200, y: 240, width: 90, height: 60, depth_y: 300 }]
   const incumbent = { map: { map_id: 'frozen-map', map_revision: 4 }, widthPx: 768, heightPx: 1296, spawn: { cell_x: 29, cell_y: 26 },

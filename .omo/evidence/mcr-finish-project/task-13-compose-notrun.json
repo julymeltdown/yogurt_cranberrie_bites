@@ -1,0 +1,7 @@
+{
+  "mode": "compose",
+  "result": "NOT_RUN",
+  "cleanup": "NOT_RUN",
+  "reason": "docker daemon is unavailable",
+  "diagnostic": "Cannot connect to the Docker daemon at unix:///Users/lhs/.docker/run/docker.sock. Is the docker daemon running?"
+}

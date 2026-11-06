@@ -28,6 +28,36 @@ export const PHOTO2_NATIVE = Object.freeze({
   referenceCamera: Object.freeze({ x: 160, y: 13, width: 584, height: 584 }),
   spawns: Object.freeze({ courtyard_entry: Object.freeze({ x: 29, y: 26 }), community_entry: Object.freeze({ x: 31, y: 47 }) }),
 })
+/** Display-side source pins for the qualified paint revision 3 producer contract.
+ * These are literal source comparisons only; they admit no pixels and no release.
+ */
+export const PHOTO2_DISPLAY = Object.freeze({
+  groundBounds: Object.freeze({ x: -112, y: -20, width: 499, height: 1200 }),
+  // Bounding box of the protected native camera rectangle through the pinned mesh.
+  camera: Object.freeze({ x: 0, y: -11.612903225806452, width: 361.11, height: 545.8594785682723 }),
+})
+/** Qualified ART tuple mirrored from the release catalog. Registry admission stays closed.
+ * Renderer source and release pins must describe the same bytes before any future release.
+ */
+export const PHOTO2_QUALIFIED = Object.freeze({
+  paintRevision: 3,
+  artCommit: 'a8027217ec9bc5b33a9219b74726ea707f33e0cc',
+  producerContract: Object.freeze({ path: 'docs/mcr/evidence/pi08-finish-01/photo2-world-contract/producer-contract-v3.json',
+    sha256: 'cc12d028b4615246ea457722d13af6d35fc505e44b6d1946adcf1811a37ab98e', bytes: 39962 }),
+  candidate: Object.freeze({ path: 'docs/mcr/evidence/pi08-finish-01/photo2-world-contract/producer-input-v3.json',
+    sha256: '4a41acdb1f331c668e2a9b017d1627d0aa970258aa2c5abbae893b2baa9e1f0d', bytes: 38938 }),
+  interface: Object.freeze({ path: 'world/reference-scene-v2/photo2-world-display-v1/parade/asset-interface.json',
+    sha256: 'sha256:dd2d09f2aebe3c631fcd0eed8cc09e11df8661550a38fa214ee50e6c39b81600', bytes: 46552 }),
+  provenance: Object.freeze({ path: 'world/reference-scene-v2/photo2-world-display-v1/parade/source-provenance.json',
+    sha256: 'sha256:8cebea0e8f5adcb9fa479b01936e89e65fa15a1a625f5afc47bd0a898e9ed465', bytes: 3469 }),
+  ground: Object.freeze({ path: 'world/reference-scene-v2/photo2-world-display-v1/parade/ground.png',
+    sha256: 'sha256:5d4c6c56186088fd86de836dc0c66a9aff7df1cf373615f070e2a63b9272d9c0', bytes: 61501, width: 499, height: 1200 }),
+  atlas: Object.freeze({ path: 'world/reference-scene-v2/photo2-world-display-v1/parade/atlas.png',
+    sha256: 'sha256:cb4eb5dab44b925dd71bec7a5821d9e607d74f4078679b2bb982644a7b32fb8a', bytes: 27372, width: 512, height: 1024 }),
+  qualificationSha256: 'sha256:7ef35cbbbff44ae3fe0a0681f984f611fb1d9f744d2432145ff0ec245164894f',
+  sceneryHash: 'sha256:d714d971dc45ea2d191552db9ccdad0c8a62441f3962b161301686c9584aeef6',
+  themeHash: 'sha256:146d1fdc816052d3a78ef7b8c90d7cb1a6eeaff29c7dec9a1be458c0b377508f',
+})
 export const PHOTO2_NATIVE_ANCHORS = Object.freeze((
 [
   {
@@ -285,16 +315,44 @@ export function createPhoto2Projection(mesh: DisplayMesh): Projection {
     inverse: (p: Point) => project(p, 'display', 'native') })
 }
 
-/** Concrete initial mapping: protected native camera rectangle -> source scene.
- * It is useful for contract/runtime integration, but is NOT Photo2 art readiness.
- * A later reviewed non-affine mesh needs a new descriptor hash and qualification.
+/** Exact reviewed producer mesh (paint revision 3) as source pins, not admission.
+ * Pixel/alpha/focus clearance and catalog release remain with the literal registry.
  */
-export const PHOTO2_INITIAL_MESH: DisplayMesh = Object.freeze({
-  columns: Object.freeze([-128, 160, 310, 472, 665, 896]),
-  rows: Object.freeze([-128, 137, 360, 424, 530, 985, 1424]),
-  display: Object.freeze([-128, 137, 360, 424, 530, 985, 1424].flatMap(y =>
-    [-128, 160, 310, 472, 665, 896].map(x => Object.freeze({ x: (x - 160) * 384 / 584, y: (y - 13) * 504 / 584 })))),
+const PHOTO2_SOURCE_DISPLAY_ROWS = [
+  [[-180, -128], [-112, -128], [0, -128], [36, -128], [105.5, -128], [211, -128], [270, -128], [275, -128], [329.5, -128], [384, -128], [387, -128], [480, -128]],
+  [[-180, -20], [-112, -20], [0, -20], [36, -20], [105.5, -20], [211, -20], [270, -4.7560975609756095], [275, 5], [329.5, 5], [384, 5], [387, 5], [480, 5]],
+  [[-180, 0], [-112, 0], [0, 0], [36, 0], [105.5, 0], [211, 0], [270, 25.609756097560975], [275, 42], [329.5, 42], [384, 42], [387, 42], [480, 42]],
+  [[-180, 4], [-112, 4], [0, 4], [36, 4], [105.5, 4], [211, 4], [270, 31.439024390243905], [275, 49], [329.5, 49], [384, 49], [387, 49], [480, 49]],
+  [[-180, 81.3157894736842], [-112, 81.3157894736842], [0, 81.3157894736842], [36, 81.3157894736842], [105.5, 81.3157894736842], [211, 81.3157894736842], [270, 143.3183568677792], [275, 183], [329.5, 183], [384, 183], [387, 183], [480, 183]],
+  [[-180, 82], [-112, 82], [0, 82], [36, 82], [105.5, 82], [211, 82], [270, 144.1951219512195], [275, 184], [329.5, 184], [384, 184], [387, 184], [480, 184]],
+  [[-180, 180], [-112, 180], [0, 180], [36, 180], [105.5, 180], [211, 180], [270, 217.8048780487805], [275, 242], [329.5, 242], [384, 242], [387, 242], [480, 242]],
+  [[-180, 190], [-112, 190], [0, 190], [36, 190], [105.5, 190], [211, 190], [270, 226.58536585365854], [275, 250], [329.5, 250], [384, 250], [387, 250], [480, 250]],
+  [[-180, 215], [-112, 215], [0, 215], [36, 215], [105.5, 215], [211, 215], [270, 246.70731707317074], [275, 267], [329.5, 267], [384, 267], [387, 267], [480, 267]],
+  [[-180, 223], [-112, 223], [0, 223], [36, 223], [105.5, 223], [211, 223], [270, 254.70731707317074], [275, 275], [329.5, 275], [384, 275], [387, 275], [480, 275]],
+  [[-180, 300], [-112, 300], [0, 300], [36, 300], [105.5, 300], [211, 300], [270, 300], [275, 300], [329.5, 300], [384, 300], [387, 300], [480, 300]],
+  [[-180, 335], [-112, 335], [0, 335], [36, 335], [105.5, 335], [211, 335], [270, 344.1463414634146], [275, 350], [329.5, 350], [384, 350], [387, 350], [480, 350]],
+  [[-180, 344], [-112, 344], [0, 344], [36, 344], [105.5, 344], [211, 344], [270, 353.7560975609756], [275, 360], [329.5, 360], [384, 360], [387, 360], [480, 360]],
+  [[-180, 600], [-112, 600], [0, 600], [36, 600], [105.5, 600], [211, 600], [270, 600], [275, 600], [329.5, 600], [384, 600], [387, 600], [480, 600]],
+  [[-180, 860], [-112, 860], [0, 860], [36, 860], [105.5, 860], [211, 860], [270, 860], [275, 860], [329.5, 860], [384, 860], [387, 860], [480, 860]],
+  [[-180, 1180], [-112, 1180], [0, 1180], [36, 1180], [105.5, 1180], [211, 1180], [270, 1180], [275, 1180], [329.5, 1180], [384, 1180], [387, 1180], [480, 1180]],
+  [[-180, 1308], [-112, 1308], [0, 1308], [36, 1308], [105.5, 1308], [211, 1308], [270, 1308], [275, 1308], [329.5, 1308], [384, 1308], [387, 1308], [480, 1308]],
+] as const
+export const PHOTO2_SOURCE_MESH: DisplayMesh = Object.freeze({
+  columns: Object.freeze([-128, 0, 160, 226, 310, 460, 585, 665, 715, 765, 768, 896]),
+  rows: Object.freeze([-128, 0, 31, 37, 150, 151, 319, 336, 360, 373, 424, 530, 544, 617, 985, 1296, 1424]),
+  display: Object.freeze(PHOTO2_SOURCE_DISPLAY_ROWS.flat().map(([x, y]) => Object.freeze({ x, y }))),
 })
+
+/** Cover the admitted camera rectangle exactly: no letterbox gutters and no art
+ * beyond the qualified camera frame. The caller still owns local zoom and look-ahead.
+ */
+export function photo2CameraPresentation(camera: Rect, viewport: { readonly width: number; readonly height: number }, zoom: number) {
+  if (![camera.x, camera.y, camera.width, camera.height, viewport.width, viewport.height].every(Number.isFinite)
+    || camera.width <= 0 || camera.height <= 0 || viewport.width <= 0 || viewport.height <= 0
+    || !Number.isFinite(zoom) || zoom < 1 || zoom > 8) throw new Error('Invalid Photo2 camera viewport')
+  return Object.freeze({ zoom: zoom * Math.max(viewport.width / camera.width, viewport.height / camera.height),
+    center: Object.freeze({ x: camera.x + camera.width / 2, y: camera.y + camera.height / 2 }) })
+}
 
 export interface ShortcutPermission {
   readonly available: boolean
