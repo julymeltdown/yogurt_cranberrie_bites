@@ -1,0 +1,123 @@
+{
+  "recordedAt": "2026-11-06T06:12:00Z",
+  "authorization": "docs/mcr/frontend/pi08-finish-01.md#authorized-mapscene-camera-cover-postimage--2026-11-06",
+  "base": {
+    "commit": "9185c99223bbf7437fff4346a7683dbb4187dfb0",
+    "mapSceneSha256": "sha256:479f151394efd87a8f28ef5d0ed74b09b826bfb6c36fbcf9ebd92051b1c0619f"
+  },
+  "postimage": {
+    "mapSceneSha256": "sha256:05c369dc023edbedaad6258cb23bbcd088a6c4c77172f41eb330bdd138c3fe63",
+    "hunk": "import photo2CameraPresentation; replace the inline min(1,...)+ground-bounds fit with photo2CameraPresentation(display.camera, viewport, cameraZoom ?? 1) in the display branch of refreshCamera"
+  },
+  "camera": {
+    "x": 0,
+    "y": -11.612903225806452,
+    "width": 361.11,
+    "height": 545.8594785682723
+  },
+  "groundBounds": {
+    "x": -112,
+    "y": -20,
+    "width": 499,
+    "height": 1200
+  },
+  "cases": [
+    {
+      "viewport": {
+        "width": 390,
+        "height": 593
+      },
+      "before": {
+        "zoom": 1,
+        "visible": {
+          "width": 390,
+          "height": 593
+        },
+        "letterbox": {
+          "width": 28.889999999999986,
+          "height": 47.140521431727734
+        }
+      },
+      "after": {
+        "zoom": 1.086360177449647,
+        "visible": {
+          "width": 358.99695892348427,
+          "height": 545.8594785682723
+        },
+        "letterbox": {
+          "width": 0,
+          "height": 0
+        },
+        "center": {
+          "x": 180.555,
+          "y": 261.31683605832967
+        }
+      }
+    },
+    {
+      "viewport": {
+        "width": 360,
+        "height": 618
+      },
+      "before": {
+        "zoom": 0.9969261443881365,
+        "visible": {
+          "width": 361.11,
+          "height": 619.9055000000001
+        },
+        "letterbox": {
+          "width": 0,
+          "height": 74.04602143172781
+        }
+      },
+      "after": {
+        "zoom": 1.1321595103944044,
+        "visible": {
+          "width": 317.9763952824887,
+          "height": 545.8594785682723
+        },
+        "letterbox": {
+          "width": 0,
+          "height": 0
+        },
+        "center": {
+          "x": 180.555,
+          "y": 261.31683605832967
+        }
+      }
+    },
+    {
+      "viewport": {
+        "width": 430,
+        "height": 750
+      },
+      "before": {
+        "zoom": 1,
+        "visible": {
+          "width": 430,
+          "height": 750
+        },
+        "letterbox": {
+          "width": 68.88999999999999,
+          "height": 204.14052143172773
+        }
+      },
+      "after": {
+        "zoom": 1.3739799883427237,
+        "visible": {
+          "width": 312.95943437914275,
+          "height": 545.8594785682723
+        },
+        "letterbox": {
+          "width": 0,
+          "height": 0
+        },
+        "center": {
+          "x": 180.555,
+          "y": 261.31683605832967
+        }
+      }
+    }
+  ],
+  "nonDisplayProfiles": "unchanged; look-ahead clamps +/-32px x and +/-160px y unchanged"
+}
