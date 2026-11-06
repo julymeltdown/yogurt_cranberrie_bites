@@ -190,6 +190,7 @@ def main(argv=None):
     parser.add_argument("--hold-on-failure-seconds", type=int, default=0)
     parser.add_argument("--head-build", type=Path)
     parser.add_argument("--ceiling-observation", type=Path)
+    parser.add_argument("--qa04-report", type=Path)
     args = parser.parse_args(argv)
 
     root = Path(__file__).resolve().parents[3]
@@ -331,6 +332,35 @@ def main(argv=None):
             CONCERT_POST_READ_SIGNING_SEED=post_read[0],
             CONCERT_FEED_CURSOR_KEY_HEX=secrets.token_hex(32),
             POST_CONCERT_ROOT_READ_VERIFYING_KEYS=post_callback[1],
+            CONCERT_GIFT_MODE="live",
+            CONCERT_GIFT_CURSOR_KEY_HEX=secrets.token_hex(32),
+            CONCERT_GIFT_RECEIPT_KEYS_JSON=json.dumps([{"id": "qa04_gift", "secret_hex": secrets.token_hex(32)}]),
+            CONCERT_OWNER_MEDIA_MODE="uploader",
+            CONCERT_MEDIA_SANITIZER_WORKERS="2",
+            CONCERT_MEDIA_SANITIZER_QUEUE="8",
+            CONCERT_MEDIA_RECEIPT_KEYS_JSON=json.dumps([{"id": "qa04_media", "secret_hex": secrets.token_hex(32)}]),
+            CONCERT_VENUE_MODE="live",
+            CONCERT_VENUE_POLICY_JSON=json.dumps({
+                "venue_key": "qa04-dev-venue",
+                "provider_id": "qa04-dev-provider",
+                "source_revision": "qa04-dev-1",
+                "location_revision": 1,
+                "meeting_revision": 1,
+                "fresh_ms": 30000,
+                "last_known_ms": 120000,
+                "fix_max_age_ms": 120000,
+                "future_skew_ms": 5000,
+                "sharing_lease_ms": 3600000,
+                "request_ttl_ms": 60000,
+                "check_in_ttl_ms": 60000,
+                "coordinate_retention_ms": 300000,
+                "command_retention_ms": 60000,
+                "max_accuracy_m": 50.0,
+                "max_viewers": 10,
+                "invitation_ms": 86400000,
+                "content_ms": 3600000,
+                "purge_ms": 604800000,
+            }),
         )
         for role in ("auth", "friend", "profile"):
             envs["concert-service"]["CONCERT_PARTICIPANT_" + role.upper() + "_GRPC_ENDPOINT"] = urls[role]
@@ -445,6 +475,38 @@ def main(argv=None):
             "wall_pack_manifest_sha256": manifest_sha,
             "wall_seed_snapshot_id": mural_snapshot,
         }
+
+        if args.qa04_report is not None:
+            import importlib.util
+            require(args.qa04_report.is_absolute() and not args.qa04_report.exists(),
+                    "qa04-new-absolute-report")
+            extra_users, extra_tokens = {}, {}
+            for ordinal, role in enumerate(("suspended", "expired", "admin"), 5):
+                extra_users[role], extra_tokens[role] = closure.principal(
+                    gateway, stack.mail, policy, ordinal, origin)
+            api.tokens.update(extra_tokens)
+            api.tokens.update({"owner": tokens["alice"], "member": tokens["carol"],
+                               "stranger": tokens["outsider"], "blocked": tokens["bob"]})
+            module_path = (root / "backend/services/concert-service/tests/authorization"
+                           / "qa04_matrix.py")
+            spec = importlib.util.spec_from_file_location("qa04_matrix", module_path)
+            module = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(module)
+            module.run({
+                "api": api,
+                "users": {"owner": users["alice"], "member": users["carol"],
+                          "stranger": users["outsider"], "blocked": users["bob"]},
+                "tokens": {"owner": tokens["alice"], "member": tokens["carol"],
+                           "stranger": tokens["outsider"], "blocked": tokens["bob"]},
+                "extra_users": extra_users, "extra_tokens": extra_tokens,
+                "event": event, "archived": str(uuid4()), "gateway": gateway,
+                "origin": origin, "stack": stack, "sql": sql,
+                "query": lambda db, statement: (lambda raw: json.loads(raw) if raw else None)(
+                    stack.cluster.sql(db, statement)),
+                "policy": policy, "closure": closure, "prep": prep,
+                "report_path": args.qa04_report,
+            })
+            report["qa04"] = json.loads(args.qa04_report.read_bytes())
 
         log_offsets = {}
 

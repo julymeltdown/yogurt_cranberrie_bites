@@ -1,7 +1,11 @@
 //! Run only through world_admission_smoke.py against a marker/inode-owned PostgreSQL cluster.
 use chrono::{DateTime, Duration, Utc};
+use concert_application::bootstrap::{
+    BootstrapDefaults, BootstrapError, BootstrapRelease, ValidatedProductRelease,
+};
 use concert_application::world_ticket::*;
-use concert_domain::{AssetId, AuthUserId, EventId, ParticipantKey, Revision};
+use concert_domain::{AssetId, AuthUserId, EventId, ParticipantKey, Revision, Theme};
+use concert_service::bootstrap::BootstrapService;
 use concert_service::world::PgWorldRepository;
 use sqlx::{
     postgres::{PgConnectOptions, PgPoolOptions},
@@ -11,6 +15,7 @@ use std::{
     os::unix::fs::{MetadataExt, PermissionsExt},
     path::PathBuf,
     str::FromStr,
+    sync::Arc,
     time::Duration as StdDuration,
 };
 use uuid::Uuid;
@@ -614,5 +619,147 @@ async fn catalog_is_bounded_and_redacts_exact_occupancy() -> anyhow::Result<()> 
         room.availability,
         RoomAvailability::Available | RoomAvailability::Full | RoomAvailability::Unavailable
     )));
+    Ok(())
+}
+
+fn admission_release() -> Arc<ValidatedProductRelease> {
+    use concert_domain::avatar::SetAvatar;
+    let document: serde_json::Value = serde_json::from_str(include_str!(
+        "../../../../contracts/fixtures/core/bootstrap-open.json"
+    ))
+    .unwrap();
+    let raw = serde_json::to_vec(&serde_json::json!({
+        "expected_revision": 1,
+        "config": document["avatar"]["config"].clone()
+    }))
+    .unwrap();
+    let avatar = SetAvatar::parse(&raw).unwrap();
+    Arc::new(
+        ValidatedProductRelease::from_validated(
+            BootstrapRelease::new(
+                BootstrapDefaults {
+                    theme: Theme::Revenge,
+                    avatar: avatar.selection,
+                },
+                serde_json::to_vec(&document).unwrap(),
+            )
+            .unwrap(),
+            "a".repeat(64),
+        )
+        .unwrap(),
+    )
+}
+
+/// The ticket producer reaches event admission through
+/// `BootstrapService::world_admission`; this native check keeps the gate
+/// load-bearing against a future permissive subject adapter.
+#[tokio::test]
+async fn world_admission_refuses_unadmitted_and_suspended_callers() -> anyhow::Result<()> {
+    let pool = owned_pool().await?;
+    let f = fixture(&pool, 2).await?;
+    let bootstrap = BootstrapService::new(pool.clone(), admission_release());
+    let session = session();
+    let session = Uuid::parse_str(session.as_str()).unwrap();
+    let request = || Uuid::new_v4();
+
+    // An event OPERATOR is an administrative role, not event admission.
+    let operator = AuthUserId::from_uuid(Uuid::new_v4());
+    sqlx::query(
+        "insert into concert_event_operator_roles(event_id,user_id,role,granted_by) values($1,$2,'OPERATOR',$2)",
+    )
+    .bind(f.event.uuid())
+    .bind(operator.uuid())
+    .execute(&pool)
+    .await?;
+    assert!(matches!(
+        bootstrap
+            .world_admission(operator, f.event, session, request())
+            .await,
+        Err(BootstrapError::Denied)
+    ));
+
+    // A stranger with neither admission nor participant row is refused.
+    assert!(matches!(
+        bootstrap
+            .world_admission(f.user, f.event, session, request())
+            .await,
+        Err(BootstrapError::Denied)
+    ));
+
+    sqlx::query(
+        "insert into concert_event_admissions(event_id,user_id,state) values($1,$2,'ACTIVE')",
+    )
+    .bind(f.event.uuid())
+    .bind(f.user.uuid())
+    .execute(&pool)
+    .await?;
+    // Admission without a participant row is still not a world participant.
+    assert!(matches!(
+        bootstrap
+            .world_admission(f.user, f.event, session, request())
+            .await,
+        Err(BootstrapError::Denied)
+    ));
+
+    sqlx::query("delete from concert_event_admissions where event_id=$1 and user_id=$2")
+        .bind(f.event.uuid())
+        .bind(f.user.uuid())
+        .execute(&pool)
+        .await?;
+    sqlx::query(
+        "insert into concert_participants(event_id,user_id,theme,low_power,reduced_motion,sound_enabled) values($1,$2,'REVENGE',false,false,false)",
+    )
+    .bind(f.event.uuid())
+    .bind(f.user.uuid())
+    .execute(&pool)
+    .await?;
+    // A participant row without an active admission is refused too.
+    assert!(matches!(
+        bootstrap
+            .world_admission(f.user, f.event, session, request())
+            .await,
+        Err(BootstrapError::Denied)
+    ));
+
+    let member = AuthUserId::from_uuid(Uuid::new_v4());
+    for user in [f.user, member] {
+        sqlx::query(
+            "insert into concert_event_admissions(event_id,user_id,state) values($1,$2,'ACTIVE') on conflict(event_id,user_id) do nothing",
+        )
+        .bind(f.event.uuid())
+        .bind(user.uuid())
+        .execute(&pool)
+        .await?;
+        sqlx::query(
+            "insert into concert_participants(event_id,user_id,theme,low_power,reduced_motion,sound_enabled) values($1,$2,'REVENGE',false,false,false) on conflict(event_id,user_id) do nothing",
+        )
+        .bind(f.event.uuid())
+        .bind(user.uuid())
+        .execute(&pool)
+        .await?;
+        let admitted = match bootstrap
+            .world_admission(user, f.event, session, request())
+            .await
+        {
+            Ok(value) => value,
+            Err(error) => anyhow::bail!("world admission denied: {error:?}"),
+        };
+        assert_eq!(admitted.key.user_id, user);
+        assert_eq!(admitted.event_id, f.event);
+    }
+
+    sqlx::query(
+        "update concert_event_admissions set state='SUSPENDED',restriction_revision=restriction_revision+1 where event_id=$1 and user_id=$2",
+    )
+    .bind(f.event.uuid())
+    .bind(member.uuid())
+    .execute(&pool)
+    .await?;
+    assert!(matches!(
+        bootstrap
+            .world_admission(member, f.event, session, request())
+            .await,
+        Err(BootstrapError::Denied)
+    ));
     Ok(())
 }

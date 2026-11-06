@@ -456,6 +456,51 @@ mod error_tests {
     }
 }
 
+fn denial_envelope(status: StatusCode, reason: &str, correlation: String) -> serde_json::Value {
+    serde_json::json!({
+        "code": format!("GATEWAY_{}", status.as_u16()),
+        "message": "The request could not be completed.",
+        "traceId": correlation,
+        "timestamp": chrono::Utc::now().to_rfc3339_opts(chrono::SecondsFormat::Millis, true),
+        "details": {"reason": reason}
+    })
+}
+
+#[cfg(test)]
+mod denial_envelope_tests {
+    use super::*;
+
+    #[test]
+    fn denied_world_envelope_has_the_documented_core_shape() {
+        let correlation = Uuid::new_v4().to_string();
+        let value = denial_envelope(
+            StatusCode::FORBIDDEN,
+            "PERMISSION_DENIED",
+            correlation.clone(),
+        );
+        let object = value.as_object().unwrap();
+        let keys: std::collections::BTreeSet<_> = object.keys().map(String::as_str).collect();
+        assert_eq!(
+            keys,
+            ["code", "details", "message", "timestamp", "traceId"]
+                .into_iter()
+                .collect()
+        );
+        assert_eq!(object["traceId"], correlation);
+        Uuid::parse_str(object["traceId"].as_str().unwrap()).unwrap();
+        chrono::DateTime::parse_from_rfc3339(object["timestamp"].as_str().unwrap()).unwrap();
+        assert_eq!(
+            object["details"]
+                .as_object()
+                .unwrap()
+                .keys()
+                .map(String::as_str)
+                .collect::<Vec<_>>(),
+            ["reason"]
+        );
+    }
+}
+
 pub async fn protect_response(request: Request, next: Next) -> Response {
     let protected = request.uri().path().contains("/world-tickets")
         || (request.uri().path().contains("/events/") && request.uri().path().ends_with("/rooms"));
@@ -476,6 +521,12 @@ pub async fn protect_response(request: Request, next: Next) -> Response {
 pub async fn protect_error_response(request: Request, next: Next) -> Response {
     let protected = request.uri().path().contains("/world-tickets")
         || (request.uri().path().contains("/events/") && request.uri().path().ends_with("/rooms"));
+    let correlation = request
+        .headers()
+        .get("x-correlation-id")
+        .and_then(|value| value.to_str().ok())
+        .and_then(platform::correlation::normalize)
+        .unwrap_or_else(|| Uuid::new_v4().to_string());
     let response = next.run(request).await;
     if response.extensions().get::<super::enrollment_policy::PolicyDenial>().is_some() { return response; }
     if !protected || (!response.status().is_client_error() && !response.status().is_server_error())
@@ -509,12 +560,7 @@ pub async fn protect_error_response(request: Request, next: Next) -> Response {
     } else {
         status
     };
-    let mut safe = Json(serde_json::json!({
-        "code": format!("GATEWAY_{}", status.as_u16()),
-        "message": "The request could not be completed.",
-        "details": {"reason": reason}
-    }))
-    .into_response();
+    let mut safe = Json(denial_envelope(status, reason, correlation)).into_response();
     *safe.status_mut() = status;
     safe.headers_mut()
         .insert(header::CACHE_CONTROL, HeaderValue::from_static("no-store"));
