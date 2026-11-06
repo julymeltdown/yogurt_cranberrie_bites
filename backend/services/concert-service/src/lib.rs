@@ -10,6 +10,7 @@ pub mod rpc;
 pub mod workers {
     pub mod cleanup;
     pub mod outbox;
+    pub mod receipts;
 }
 
 pub mod community;

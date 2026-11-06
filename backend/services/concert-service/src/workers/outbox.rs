@@ -1,7 +1,9 @@
-//! Explicit one-batch runner; composition does not start this automatically.
+//! Bounded outbox runner and supervised production loop.
 use crate::adapters::out::repository::outbox::{Delivery, DeliveryFailure, PgOutbox};
 use async_trait::async_trait;
 use concert_application::commands::CommandError;
+use std::sync::Arc;
+use std::time::Duration;
 /// Port accepts only safe invalidation metadata. Implementations must durably
 /// deduplicate delivery.id atomically with their own local effect, reauthorize
 /// before any sensitive projection, and bound network deadlines below the lease.
@@ -20,7 +22,7 @@ pub struct BatchResult {
 }
 pub async fn run_batch<S: IdempotentInvalidationSink + 'static>(
     outbox: &PgOutbox,
-    sink: std::sync::Arc<S>,
+    sink: Arc<S>,
     limit: i64,
 ) -> Result<BatchResult, CommandError> {
     let deliveries = outbox.claim(limit).await?;
@@ -56,6 +58,51 @@ pub async fn run_batch<S: IdempotentInvalidationSink + 'static>(
         }
     }
     Ok(result)
+}
+
+/// Supervised production worker. The retained repository enforces the database
+/// clock, 30-second leases, attempt ceiling and bounded retries; this loop only
+/// re-runs the same bounded batch. Cancellation drops in-flight transactions and
+/// leaves claimed rows to lease expiry, so a killed worker resumes without a
+/// second effect for any consumer that deduplicates by outbox UUID.
+pub struct OutboxWorker<S> {
+    outbox: PgOutbox,
+    sink: Arc<S>,
+    limit: i64,
+}
+impl<S: IdempotentInvalidationSink + 'static> OutboxWorker<S> {
+    pub fn new(outbox: PgOutbox, sink: Arc<S>, limit: i64) -> Result<Self, CommandError> {
+        if !(1..=100).contains(&limit) {
+            return Err(CommandError::InvalidInput);
+        }
+        Ok(Self {
+            outbox,
+            sink,
+            limit,
+        })
+    }
+    pub async fn run_round(&self) -> Result<BatchResult, CommandError> {
+        run_batch(&self.outbox, self.sink.clone(), self.limit).await
+    }
+    /// Ticks are skipped while a round is overdue. A storage failure stops the
+    /// worker instead of being converted into a successful delivery.
+    pub async fn run_until(
+        self,
+        stop: impl std::future::Future<Output = ()>,
+    ) -> Result<(), CommandError> {
+        tokio::pin!(stop);
+        let mut tick = tokio::time::interval(Duration::from_millis(500));
+        tick.set_missed_tick_behavior(tokio::time::MissedTickBehavior::Skip);
+        loop {
+            tokio::select! {
+                biased;
+                _ = &mut stop => return Ok(()),
+                _ = tick.tick() => {
+                    self.run_round().await?;
+                }
+            }
+        }
+    }
 }
 
 /// Opt-in only: World application is one fanout leg, never a global queue ack.
