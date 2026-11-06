@@ -28,7 +28,8 @@ fn fingerprint(body: &CanonicalValue, query: &[(&str, &str)]) -> Fingerprint {
 }
 #[test]
 fn registry_rejects_arbitrary_reads_and_operations() {
-    assert_eq!(OPERATIONS.len(), 66);
+    assert_eq!(OPERATIONS.len(), 69);
+    assert_eq!(OPERATIONS.len(), 69);
     for (id, tool) in [
         ("eraseConcertMuralPixel", "erase"),
         ("fillConcertMuralRegion", "fill"),

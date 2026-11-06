@@ -47,3 +47,4 @@ pub mod mural_tools_b;
 pub mod mural_seed;
 
 pub mod venue_location;
+pub mod venue_notes;

@@ -290,3 +290,4 @@ pub mod mural;
 
 pub mod notification;
 pub mod venue_location;
+pub mod venue_notes;

@@ -382,4 +382,22 @@ pub const OPERATIONS: &[RegisteredOperation] = &[
         path: "/api/concert/events/{eventId}/venue/location/commands/{key}",
         binary: false,
     },
+    RegisteredOperation {
+        id: "createVenuePlaceNote",
+        method: "POST",
+        path: "/api/concert/events/{eventId}/venue/landmarks/{landmarkId}/notes",
+        binary: false,
+    },
+    RegisteredOperation {
+        id: "createVenuePlaceReply",
+        method: "POST",
+        path: "/api/concert/events/{eventId}/venue/landmarks/{landmarkId}/notes/{noteId}/replies",
+        binary: false,
+    },
+    RegisteredOperation {
+        id: "withdrawVenuePlaceNote",
+        method: "DELETE",
+        path: "/api/concert/events/{eventId}/venue/landmarks/{landmarkId}/notes/{noteId}",
+        binary: false,
+    },
 ];
