@@ -41,6 +41,32 @@ async fn owned_pool() -> anyhow::Result<PgPool> {
     Ok(pool)
 }
 
+/// Test-only owner tables standing in for the synthetic Friend/Auth fixture.
+/// They are created here, never in a service migration, and are serialized so
+/// parallel test binaries cannot race the catalog.
+const FIXTURE_DDL: &str = "
+create table if not exists public.venue_test_follows(
+    event_id uuid not null,
+    a uuid not null,
+    b uuid not null,
+    primary key(event_id,a,b));
+create table if not exists public.venue_test_restrictions(
+    event_id uuid not null,
+    user_id uuid not null,
+    blocked boolean not null default false,
+    suspended boolean not null default false,
+    primary key(event_id,user_id));";
+
+async fn provision(pool: &PgPool) -> anyhow::Result<()> {
+    let mut tx = pool.begin().await?;
+    sqlx::query("select pg_advisory_xact_lock(7613023461094200116)")
+        .execute(&mut *tx)
+        .await?;
+    sqlx::raw_sql(FIXTURE_DDL).execute(&mut *tx).await?;
+    tx.commit().await?;
+    Ok(())
+}
+
 struct FixtureAuthority;
 #[async_trait]
 impl VenueLocationAuthority for FixtureAuthority {
@@ -168,9 +194,30 @@ impl Fixture {
             FixtureAuthority,
         )
     }
+    /// Removes this test's rows in dependency order. The empty shared fixture
+    /// tables stay: they are idempotent test scaffolding, not product data.
+    async fn cleanup(&self) -> anyhow::Result<()> {
+        let event = self.event.uuid();
+        for statement in [
+            "delete from public.venue_test_follows where event_id=$1",
+            "delete from public.venue_test_restrictions where event_id=$1",
+            "delete from public.concert_venue_location_viewers where event_id=$1",
+            "delete from public.concert_venue_location_fixes where event_id=$1",
+            "delete from public.concert_venue_location_sharing where event_id=$1",
+            "delete from public.concert_participants where event_id=$1",
+            "delete from public.concert_events where event_id=$1",
+        ] {
+            sqlx::query(statement)
+                .bind(event)
+                .execute(&self.pool)
+                .await?;
+        }
+        Ok(())
+    }
 }
 
 async fn fixture(pool: PgPool) -> anyhow::Result<Fixture> {
+    provision(&pool).await?;
     let event = Uuid::new_v4();
     let a = Uuid::new_v4();
     let b = Uuid::new_v4();
@@ -414,6 +461,7 @@ async fn consent_viewer_scope_freshness_and_revocation() {
         location.visible_for(f.key(f.b), f.a).await,
         Err(VenueLocationError::NotFound)
     );
+    f.cleanup().await.unwrap();
 }
 
 #[tokio::test]
@@ -498,6 +546,7 @@ async fn stale_fix_is_last_known_and_invalid_input_fails() {
             .is_ok(),
         true
     );
+    f.cleanup().await.unwrap();
 }
 
 #[tokio::test]
@@ -527,6 +576,7 @@ async fn missing_bilateral_friend_read_fails_closed() {
         unavailable.snapshot(f.key(f.b)).await,
         Err(VenueLocationError::PolicyUnavailable)
     );
+    f.cleanup().await.unwrap();
 }
 
 #[test]
