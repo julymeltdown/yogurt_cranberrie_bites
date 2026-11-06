@@ -1,0 +1,335 @@
+{
+  "scope": "BE02 foreground native local development",
+  "result": "PASS",
+  "cleanup": "PASS",
+  "started_at_utc": "2026-11-06T10:23:45.350021+00:00",
+  "services": [
+    {
+      "service": "api-gateway",
+      "database": "mcr_api_gateway",
+      "expected_migrations": 17,
+      "binary_sha256": "69aa66f36b3c132c670996fdfee5bba48ca55e96e08926b50a791ff98e104fef",
+      "migration_manifest_sha256": "1bea1d8e70e1c6490f554a07780945e5087445033b957b319285a31c899921b7",
+      "migrate": "PASS",
+      "verify": "PASS",
+      "restart_persistence": "PASS",
+      "verify_after_restart": "PASS",
+      "migrate_exit_code": 0,
+      "verify_exit_code": 0,
+      "ledger_before": 17,
+      "ledger_after": 17,
+      "verify_after_restart_exit_code": 0,
+      "pid": 35787,
+      "readiness": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "database": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->auth": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->friend": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->notification": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->post": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->profile": {
+            "required": true,
+            "status": "up"
+          },
+          "signing-keys": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      },
+      "livez_status": 200
+    },
+    {
+      "service": "auth-service",
+      "database": "mcr_auth",
+      "expected_migrations": 19,
+      "binary_sha256": "07ba7313fb11ccedf335ba71baf9f7d6eab4963c5463b7590ad50135bad41dd3",
+      "migration_manifest_sha256": "c5f2c017256255a63bf32e17763fa8ba81310176bff4116ee70e01439d6cf106",
+      "migrate": "PASS",
+      "verify": "PASS",
+      "restart_persistence": "PASS",
+      "verify_after_restart": "PASS",
+      "migrate_exit_code": 0,
+      "verify_exit_code": 0,
+      "ledger_before": 19,
+      "ledger_after": 19,
+      "verify_after_restart_exit_code": 0,
+      "pid": 35777,
+      "readiness": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "auth->friend": {
+            "required": false,
+            "status": "up"
+          },
+          "auth->notification": {
+            "required": false,
+            "status": "up"
+          },
+          "auth->post": {
+            "required": false,
+            "status": "up"
+          },
+          "auth->profile": {
+            "required": false,
+            "status": "up"
+          },
+          "concert-owner-authority": {
+            "required": true,
+            "status": "up"
+          },
+          "database": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      },
+      "livez_status": 200
+    },
+    {
+      "service": "profile-service",
+      "database": "mcr_profile",
+      "expected_migrations": 10,
+      "binary_sha256": "55f96b2f15e3e05da9dd268b241543dfc864bc41c60c112c14f99b6e58826730",
+      "migration_manifest_sha256": "52989969f58e220e6eb8f827095b61c13a0b2ef89f85fbd11b96ea7e5ec43323",
+      "migrate": "PASS",
+      "verify": "PASS",
+      "restart_persistence": "PASS",
+      "verify_after_restart": "PASS",
+      "migrate_exit_code": 0,
+      "verify_exit_code": 0,
+      "ledger_before": 10,
+      "ledger_after": 10,
+      "verify_after_restart_exit_code": 0,
+      "pid": 35737,
+      "readiness": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "database": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      },
+      "livez_status": 200
+    },
+    {
+      "service": "friend-service",
+      "database": "mcr_friend",
+      "expected_migrations": 19,
+      "binary_sha256": "f7d6dcb89bfb8528db02be9ae56cc321c558687972f9582503047cfa8e8f8882",
+      "migration_manifest_sha256": "a28c9ce6e25095aacc0f10695348d92a7d5143cc9866d492ab6cb837f3138a0c",
+      "migrate": "PASS",
+      "verify": "PASS",
+      "restart_persistence": "PASS",
+      "verify_after_restart": "PASS",
+      "migrate_exit_code": 0,
+      "verify_exit_code": 0,
+      "ledger_before": 19,
+      "ledger_after": 19,
+      "verify_after_restart_exit_code": 0,
+      "pid": 35757,
+      "readiness": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "concert-owner-authority": {
+            "required": true,
+            "status": "up"
+          },
+          "database": {
+            "required": true,
+            "status": "up"
+          },
+          "friend->profile": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      },
+      "livez_status": 200
+    },
+    {
+      "service": "post-service",
+      "database": "mcr_post",
+      "expected_migrations": 33,
+      "binary_sha256": "508c162b96e2065153ece46bbdf153028b43150258df0b592afcd64c08b3db6e",
+      "migration_manifest_sha256": "35e99bf0d463c2dd18a2bbe7aa178edfcbbd97905713e21fd1dcacb2df9a0dae",
+      "migrate": "PASS",
+      "verify": "PASS",
+      "restart_persistence": "PASS",
+      "verify_after_restart": "PASS",
+      "migrate_exit_code": 0,
+      "verify_exit_code": 0,
+      "ledger_before": 33,
+      "ledger_after": 33,
+      "verify_after_restart_exit_code": 0,
+      "pid": 35767,
+      "readiness": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "database": {
+            "required": true,
+            "status": "up"
+          },
+          "post->friend": {
+            "required": true,
+            "status": "up"
+          },
+          "post->gateway": {
+            "required": true,
+            "status": "up"
+          },
+          "post->notification": {
+            "required": false,
+            "status": "up"
+          },
+          "post->profile": {
+            "required": false,
+            "status": "up"
+          }
+        }
+      },
+      "livez_status": 200
+    },
+    {
+      "service": "notification-service",
+      "database": "mcr_notification",
+      "expected_migrations": 7,
+      "binary_sha256": "e783d45db589c1bb4a70cff4bdd54fa9cf3929b8aeb6c8d6b34a231319428193",
+      "migration_manifest_sha256": "6048bf246cd90bca61c0ae6ebb612904b4be73a83021284eb352d8f9c4640f34",
+      "migrate": "PASS",
+      "verify": "PASS",
+      "restart_persistence": "PASS",
+      "verify_after_restart": "PASS",
+      "migrate_exit_code": 0,
+      "verify_exit_code": 0,
+      "ledger_before": 7,
+      "ledger_after": 7,
+      "verify_after_restart_exit_code": 0,
+      "pid": 35747,
+      "readiness": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "database": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      },
+      "livez_status": 200
+    }
+  ],
+  "process_stops": [
+    {
+      "service": "local-mail",
+      "resource": "in_process_mail_sink",
+      "exit_code": 0,
+      "forced": false
+    },
+    {
+      "service": "api-gateway",
+      "pid": 35787,
+      "forced": false,
+      "exit_code": 0
+    },
+    {
+      "service": "auth-service",
+      "pid": 35777,
+      "forced": false,
+      "exit_code": 0
+    },
+    {
+      "service": "post-service",
+      "pid": 35767,
+      "forced": false,
+      "exit_code": 0
+    },
+    {
+      "service": "friend-service",
+      "pid": 35757,
+      "forced": false,
+      "exit_code": 0
+    },
+    {
+      "service": "notification-service",
+      "pid": 35747,
+      "forced": false,
+      "exit_code": 0
+    },
+    {
+      "service": "profile-service",
+      "pid": 35737,
+      "forced": false,
+      "exit_code": 0
+    },
+    {
+      "service": "redis",
+      "pid": 35731,
+      "forced": false,
+      "exit_code": 0
+    }
+  ],
+  "script_sha256": "4a29da16d91a8747e6e1b9d69d94eea16e760e02241cd53b660d46a10907ac47",
+  "runtime_helper_sha256": "b361a39c786c49219992b27b0f9c5be5c61b1dd8cf4519336e47f8b5192c4c7c",
+  "migration_helper_sha256": "a46f2dc3a6dcab9310230cd75997dfcd86571c88fd066a973a8a0c3b1a8c6eb8",
+  "auth_acceptance": "NOT_RUN",
+  "image_build": "NOT_RUN",
+  "production": "NOT_RUN",
+  "source_revision": "f1f244b4d7f12986de40b2cddcf7e71332303bba",
+  "owned_directory": "/private/tmp/mcr-pg-6nfkmbov",
+  "postgres_version": "16.14 (Homebrew)",
+  "restart": {
+    "status": "PASS",
+    "before_pid": 35423,
+    "after_pid": 35672
+  },
+  "configuration": {
+    "mode": "parity",
+    "seed": false,
+    "migration_mode": "external",
+    "home": "OMITTED",
+    "cookie_secure": false,
+    "cookie_scope": "explicit local HTTP fixture only",
+    "browser_origin": "http://127.0.0.1:5173",
+    "mail": "private local HTTP capture",
+    "kafka": "DISABLED",
+    "oauth": "NOT_EXERCISED; inherited parity routes are not C03 provider qualification"
+  },
+  "end_reason": "duration_elapsed",
+  "captured_mail_count": 0,
+  "finished_at_utc": "2026-11-06T10:24:00.814569+00:00"
+}
