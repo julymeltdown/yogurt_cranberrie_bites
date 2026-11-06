@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import http.client
 import json
 import secrets
 import sys
@@ -45,6 +46,44 @@ PNG = bytes.fromhex(
 def require(condition, label):
     if not condition:
         raise in04.GateFailure(label)
+
+
+class MediaProbe:
+    """Direct media probe that records the status even when a body stream truncates."""
+
+    def __init__(self, gateway, origin, token):
+        self.gateway, self.origin, self.token = gateway, origin, token
+
+    def send(self, method, path, body=None, content_type=None):
+        host, port = self.gateway.split("//", 1)[1].rsplit(":", 1)
+        connection = http.client.HTTPConnection(host, int(port), timeout=30)
+        headers = {"X-MCR-Intent": "browser", "Origin": self.origin,
+                   "Authorization": "Bearer " + self.token}
+        if content_type:
+            headers["Content-Type"] = content_type
+        if method != "GET":
+            headers["Idempotency-Key"] = str(uuid4())
+        result = {"method": method, "path": path, "body_bytes": len(body or b"")}
+        try:
+            connection.request(method, path, body=body, headers=headers)
+            response = connection.getresponse()
+            result["status"] = response.status
+            try:
+                payload, truncated = response.read(), False
+            except http.client.IncompleteRead as failure:
+                payload, truncated = failure.partial, True
+            result["body_truncated"] = truncated
+            try:
+                parsed = json.loads(payload or b"{}")
+            except ValueError:
+                parsed = {}
+            result["reason"] = (parsed.get("details") or {}).get("reason") or parsed.get("code")
+        except (OSError, http.client.HTTPException) as failure:
+            result.setdefault("status", None)
+            result["transport_error"] = type(failure).__name__
+        finally:
+            connection.close()
+        return result
 
 
 def main() -> int:
@@ -298,6 +337,23 @@ def main() -> int:
         report["steps"]["giveaways"] = {"media": gift_id, "empty": empty_id, "missing": missing_id,
                                         "media_id": media,
                                         "note": "media row and giveaway aggregates are seeded because the canonical owner-fence upload/link producer is not composed in this harness"}
+
+        # FE24 media probe: the owner bearer's protected read/upload access is recorded from
+        # the real stack instead of being asserted only in prose. Empty upload bytes are the
+        # invalid input the producer rejects before admitting the owner fence.
+        media_base = f"/api/concert/events/{event}/media/{media}"
+        probe = MediaProbe(gateway, origin, tokens["alice"])
+        metadata_probe = probe.send("GET", media_base)
+        content_probe = probe.send("GET", media_base + "/content")
+        bytes_probe = probe.send("PUT", media_base + "/bytes", b"", "image/png")
+        report["fe24_media_probe"] = {
+            "media_id": media, "role": "alice", "bearer": "owner",
+            "metadata": metadata_probe, "content": content_probe, "bytes": bytes_probe,
+            "expected": {"metadata": "403 PERMISSION_DENIED", "content": "403 PERMISSION_DENIED",
+                         "bytes": "400 INVALID_INPUT"},
+            "matches_expected": (metadata_probe.get("status"), content_probe.get("status"),
+                                 bytes_probe.get("status")) == (403, 403, 400),
+        }
 
         # Profile preferences: canonical PATCH, then a stale expected revision -> 409.
         prefs_status = 0

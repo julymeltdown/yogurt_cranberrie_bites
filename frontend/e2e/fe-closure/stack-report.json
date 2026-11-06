@@ -4,16 +4,16 @@
     "provisioning": {
       "event": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
       "users": {
-        "alice": "f14fbb9a-8ce9-4d9c-a736-c7adb24a65c5",
-        "bob": "e12dd92e-e511-4e96-94ac-c570aef34c67"
+        "alice": "f76a7f0f-db95-4fe1-9622-54e4a417eb19",
+        "bob": "758975c8-96b7-4534-8f41-59988748cf23"
       },
       "mural_seed_sha256": "3f1aa318f0e4b7d8fa7f079b1101f7386619291a8dbb3bb04ef70820952f34ce"
     },
     "giveaways": {
-      "media": "da51b206-9adb-4e25-b05d-d95f06c2a0f5",
-      "empty": "66ffd62e-d095-4b67-bbb9-80997eda2f11",
-      "missing": "da5bb393-4d00-4426-b2a2-84d94bfa18a9",
-      "media_id": "102b22aa-5887-4d5b-9565-897cd4b67ac9",
+      "media": "a13230c4-db06-46b4-b695-cbc2d7ef80d5",
+      "empty": "a67342ab-475a-4655-b37f-8e6127c729c1",
+      "missing": "0d585aec-1dd2-4ce2-82af-8cfd7d64c4e9",
+      "media_id": "77950892-3f73-449f-8168-162e379ed5e2",
       "note": "media row and giveaway aggregates are seeded because the canonical owner-fence upload/link producer is not composed in this harness"
     },
     "profile_preferences": {
@@ -42,10 +42,10 @@
           },
           "bio": "Development closure participant",
           "display_name": "Closure participant 1",
-          "user_id": "f14fbb9a-8ce9-4d9c-a736-c7adb24a65c5"
+          "user_id": "f76a7f0f-db95-4fe1-9622-54e4a417eb19"
         },
         "revision": 2,
-        "user_id": "f14fbb9a-8ce9-4d9c-a736-c7adb24a65c5"
+        "user_id": "f76a7f0f-db95-4fe1-9622-54e4a417eb19"
       },
       "saved_revision": 2,
       "saved_low_power": true,
@@ -56,12 +56,12 @@
       "snapshot": 200,
       "revision": 1,
       "state": "EDITABLE",
-      "snapshot_id": "01253de6-7f9b-43d2-a83f-3d66a0c73b59",
+      "snapshot_id": "2a94091c-d17d-4d10-83d3-0a3058d06561",
       "delta": 200,
       "from_revision": 1,
       "to_revision": 1
     },
-    "runtime_packet": "frontend/e2e/fe-closure/runtime.json",
+    "runtime_packet": "/Users/lhs/Desktop/mcr-worktrees/exec-w8-fe/frontend/e2e/fe-closure/runtime.json",
     "browser_done": true
   },
   "banner": {
@@ -72,14 +72,49 @@
     "production": "NOT_CLAIMED"
   },
   "stack": {
-    "gateway_url": "http://127.0.0.1:55045",
+    "gateway_url": "http://127.0.0.1:62884",
     "origin": "http://127.0.0.1:5391",
     "event": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
     "users": {
-      "alice": "f14fbb9a-8ce9-4d9c-a736-c7adb24a65c5",
-      "bob": "e12dd92e-e511-4e96-94ac-c570aef34c67"
+      "alice": "f76a7f0f-db95-4fe1-9622-54e4a417eb19",
+      "bob": "758975c8-96b7-4534-8f41-59988748cf23"
     },
     "release_digest": "adcec15987c40769d0b6082df676182b87c658c5037c5e758ed89868548ea245"
+  },
+  "fe24_media_probe": {
+    "media_id": "77950892-3f73-449f-8168-162e379ed5e2",
+    "role": "alice",
+    "bearer": "owner",
+    "metadata": {
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/77950892-3f73-449f-8168-162e379ed5e2",
+      "body_bytes": 0,
+      "status": 403,
+      "body_truncated": true,
+      "reason": "PERMISSION_DENIED"
+    },
+    "content": {
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/77950892-3f73-449f-8168-162e379ed5e2/content",
+      "body_bytes": 0,
+      "status": 403,
+      "body_truncated": false,
+      "reason": "PERMISSION_DENIED"
+    },
+    "bytes": {
+      "method": "PUT",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/media/77950892-3f73-449f-8168-162e379ed5e2/bytes",
+      "body_bytes": 0,
+      "status": 400,
+      "body_truncated": false,
+      "reason": "INVALID_INPUT"
+    },
+    "expected": {
+      "metadata": "403 PERMISSION_DENIED",
+      "content": "403 PERMISSION_DENIED",
+      "bytes": "400 INVALID_INPUT"
+    },
+    "matches_expected": true
   },
   "cleanup": {
     "result": "PASS"

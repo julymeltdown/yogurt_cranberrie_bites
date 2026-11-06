@@ -25461,13 +25461,13 @@
     {
       "task": "FE33",
       "state": "DONE",
-      "commit": "pending-task-43",
+      "commit": "e2856a7ca",
       "basis": "Current revised scope closed on the real development stack: authoritative snapshot/delta at revision 1, actual sync adapter and panel synchronized at 360/390/430, real 401 unavailable state, and shipped placement pins matching the server release map. IN04 multiuser gate remains its own evidence."
     },
     {
       "task": "FE34",
       "state": "DONE",
-      "commit": "pending-task-43",
+      "commit": "e2856a7ca",
       "basis": "Current revised scope closed on the real development stack: GET /me revision 1, preferences PATCH 200 revision 2, stale PATCH 409 VERSION_CONFLICT, and actual Settings/Profile saved and conflict states at 360/390/430."
     },
     {
