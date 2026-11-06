@@ -169,11 +169,18 @@ Rules enforced by the code:
 - Certificates carry the workload identity; the CA verifies peers. Keep one
   directory per workload at mode 0750, certificate/CA at 0644 and key at 0600,
   and mount them read-only at the paths you set.
-- Workload credentials (`<PREFIX>_SERVICE_CREDENTIAL`) are a second, independent
-  control. Production requires the Gateway credential for every receiving
-  service. During rotation, set `<PREFIX>_SERVICE_CREDENTIAL_PREVIOUS`; a
-  previous value without a current value fails startup, and overlapping
-  workload credentials are rejected.
+- Workload credentials are a second, independent control. The seven current
+  names are `GATEWAY_SERVICE_CREDENTIAL`, `AUTH_SERVICE_CREDENTIAL`,
+  `PROFILE_SERVICE_CREDENTIAL`, `FRIEND_SERVICE_CREDENTIAL`,
+  `POST_SERVICE_CREDENTIAL`, `NOTIFICATION_SERVICE_CREDENTIAL` and
+  `CONCERT_SERVICE_CREDENTIAL`; the rotation names are the same prefixes with
+  `_PREVIOUS` (for example `GATEWAY_SERVICE_CREDENTIAL_PREVIOUS`).
+- Rotation semantics: the current value is required in production for every
+  accepted caller; `_PREVIOUS` is optional. A previous value without a current
+  value fails startup, blank values fail, and current and previous must differ.
+  Both are accepted during the rotation window; remove the previous value after
+  every sender presents the current one. Participant mode additionally rejects
+  duplicate tokens across workloads.
 
 Inbound caller requirements from source (production):
 
@@ -188,7 +195,18 @@ Inbound caller requirements from source (production):
 | Concert | `GATEWAY_SERVICE_CREDENTIAL`; `AUTH_SERVICE_CREDENTIAL`, `FRIEND_SERVICE_CREDENTIAL`, `PROFILE_SERVICE_CREDENTIAL` and its own credential when Participant mode is enabled |
 
 Present the matching `<PREFIX>_SERVICE_CREDENTIAL` on outbound calls; each
-service does so from its own prefix.
+service does so from its own prefix. The `_PREVIOUS` names actually read by the
+current inbound registries are:
+
+| Previous name | Read by |
+| --- | --- |
+| `GATEWAY_SERVICE_CREDENTIAL_PREVIOUS` | Auth, Profile, Friend, Post, Notification, Concert |
+| `AUTH_SERVICE_CREDENTIAL_PREVIOUS` | Profile, Friend, Post, Notification, Concert Participant |
+| `FRIEND_SERVICE_CREDENTIAL_PREVIOUS` | Profile, Concert Participant |
+| `PROFILE_SERVICE_CREDENTIAL_PREVIOUS` | Concert Participant |
+| `POST_SERVICE_CREDENTIAL_PREVIOUS` | Gateway, Profile, Notification |
+| `CONCERT_SERVICE_CREDENTIAL_PREVIOUS` | Auth, Profile, Friend, Post |
+| `NOTIFICATION_SERVICE_CREDENTIAL_PREVIOUS` | No current inbound registry; reserve only for a future caller that accepts Notification |
 
 ### 4.2 Public edge
 
@@ -252,8 +270,8 @@ false, and a non-empty `GATEWAY_OAUTH_ENABLED_PROVIDERS` fails startup with
 `Public OAuth HANDOFF_NOT_QUALIFIED`. Leave it empty.
 
 The Gateway does mount the OAuth surface, but only when controlled transport is
-configured. `browser_auth.rs` merges `oauth_routes` when the exposure policy has
-transport, exposing:
+configured. `browser_auth.rs:23` merges `oauth_routes` when the exposure policy
+has transport, exposing:
 
 ```text
 GET  /auth/oauth/:provider/authorize
@@ -279,9 +297,20 @@ Policy rules enforced by the code:
 - Controlled transport also requires `GATEWAY_REFRESH_COOKIE_SECURE=true` and an
   empty `GATEWAY_REFRESH_COOKIE_DOMAIN`; the OAuth handoff key must differ from
   the admission key.
-- Unknown provider: HTTP 400 (`OAuth provider is invalid`). Known provider whose
-  transport is not enabled: HTTP 404 (`OAuth provider unavailable`). With no
-  controlled list, the whole router is absent and all OAuth paths return 404.
+- With no controlled list, `browser_auth.rs:23` does not merge the router, so
+  every OAuth path returns 404 before provider parsing. The default-policy test
+  asserts this and that the OAuth callback never reaches Auth
+  (`oauth_form_post_browser.rs:89`, `unit/http_auth_routes.rs:400-410`).
+- When the router is mounted, handler order differs. `authorize` parses the
+  provider first (`oauth_routes.rs:82-83`): an unknown provider returns 400 with
+  the exact message `Unsupported identity provider`
+  (`unit/http_auth_routes.rs:392`), while a known provider without enabled
+  transport returns 404 `OAuth provider unavailable` (the same test's
+  default-policy cases). `callback` checks transport first
+  (`oauth_routes.rs:129`), then parses the provider
+  (`oauth_routes.rs:140`), so it returns 404 even for an unknown provider when
+  that provider has no transport. The Apple form-post handlers also check
+  transport first (`form_post.rs:31,83`).
 - Capabilities remain disabled even when controlled transport serves real
   handlers; this is a private qualification surface, not a public login toggle.
 
@@ -421,6 +450,47 @@ Event time and venue expiry:
 - Invitation and message content TTLs and purge deadlines are operator policy
   inputs; the code has no fallback and the repository does not ship values.
   Automatic expiry/purge scheduling for venue content is **NOT_RUN**.
+
+### 5.8 Additional runtime inputs and observability
+
+These names are read outside the main per-service config modules. They are
+first-class deployment inputs, not test fixtures:
+
+| Setting | Consumer | Default / requirement |
+| --- | --- | --- |
+| `CONCERT_ASSET_ROOT` | `concert-service --prepare-in01-catalog` | No default; absolute asset directory required with the release files |
+| `CONCERT_SOURCE_BINDING_FILE` | `concert-service --prepare-in01-catalog` | No default; absolute source-binding file required with the release files |
+| `CONCERT_OWNER_AUTHORITY_ENABLED` | Auth and Friend `concert_authority` runtime | Absent or `false` disables owner authority; `true` requires `CONCERT_RELATIONSHIP_VERIFYING_KEYS` and internal mTLS |
+| `CONCERT_CHILD_RECOVERY_BATCH_SIZE` | Concert product child-recovery worker | 16 |
+| `CONCERT_CHILD_RECOVERY_CHILD_TIMEOUT_MS` | Same worker | 500 ms |
+| `CONCERT_CHILD_RECOVERY_BATCH_BUDGET_MS` | Same worker | 2,000 ms |
+| `CONCERT_CHILD_RECOVERY_INTERVAL_MS` | Same worker | 1,000 ms |
+| `CONCERT_PROFILE_SELF_VERIFYING_KEYS` | Profile self-profile verifier | No default; absent disables the self-profile read service; comma-separated Ed25519 public keys |
+| `CONCERT_RELATIONSHIP_VERIFYING_KEYS` | Auth, Friend and Profile relationship-read verifiers | No default; absent disables that read service; comma-separated Ed25519 public keys |
+| `PROFILE_PARTICIPANT_DECISION_SIGNING_SEED` | Profile participant-decision signer | No default; required when the self-profile server is composed; Base64 Ed25519 seed |
+| `MCR_GIFT_NETWORK_BUCKET_KEY` | Gateway gift trusted-network bucket | Optional; absent disables bucketing; exactly 64 lowercase hex characters, nonzero |
+| `OTEL_EXPORTER_OTLP_ENDPOINT` | Every service via `platform::telemetry` | Optional; absent disables OTLP export; generic fallback for the traces endpoint |
+| `OTEL_EXPORTER_OTLP_PROTOCOL` | Every service | Optional; absent means gRPC; any value other than `grpc` fails startup |
+| `OTEL_EXPORTER_OTLP_TRACES_ENDPOINT` | Every service | Optional; takes precedence over the generic endpoint |
+| `OTEL_EXPORTER_OTLP_TRACES_PROTOCOL` | Every service | Optional; takes precedence over the generic protocol; must be `grpc` |
+| `OTEL_TRACES_SAMPLER` | Every service | `parentbased_always_on`; accepts the OTel sampler names or fails startup |
+| `OTEL_TRACES_SAMPLER_ARG` | Every service | `1.0`; must be finite and between 0 and 1 |
+| `AUTH_VERIFICATION_MAILER_ENDPOINT` | Auth email outbox worker | No default; required together with the bearer token; HTTPS in production |
+| `AUTH_VERIFICATION_MAILER_BEARER_TOKEN` | Auth email outbox worker | No default; required together with the endpoint |
+| `PROFILE_SELF_AUTH_GRPC_ENDPOINT` | Profile self-profile server | No default; required when the self-profile server is composed |
+| `PROFILE_SELF_CONCERT_GRPC_ENDPOINT` | Profile self-profile server | No default; required when the self-profile server is composed |
+| `PROFILE_SELF_FRIEND_GRPC_ENDPOINT` | Profile self-profile server | No default; required when the self-profile server is composed |
+
+Two names from the verification note are abbreviations, not source names:
+`CONCERT_CHILD_TIMEOUT_MS` is `CONCERT_CHILD_RECOVERY_CHILD_TIMEOUT_MS`, and
+`CONCERT_BATCH_BUDGET_MS` is `CONCERT_CHILD_RECOVERY_BATCH_BUDGET_MS`. The table
+uses the names actually read by the source.
+
+When `CONCERT_OWNER_AUTHORITY_ENABLED=true`, Auth and Friend also read the
+settlement endpoints `AUTHORITY_CONCERT_SETTLEMENT_ENDPOINT` (required),
+`AUTHORITY_POST_SETTLEMENT_ENDPOINT`, `AUTHORITY_PROFILE_SETTLEMENT_ENDPOINT`
+and `AUTHORITY_NOTIFICATION_SETTLEMENT_ENDPOINT` (optional). Missing required or
+invalid values fail startup.
 
 ## 6. Start the staging stack
 
@@ -686,12 +756,25 @@ Use this when reviewing or executing the runbook:
 - [ ] A backup and a restore into a fresh stack both succeed (NOT_RUN until drilled).
 - [ ] No step claims QA08, capacity, device or release acceptance.
 
-## Appendix A. Complete environment surface
+## Appendix A. Environment surface (scoped extraction)
 
-Names below are read by the current source. They have code defaults unless
-marked; set them explicitly in production so the deployment does not inherit a
-development default. Feature and worker rows apply only when that feature is
-enabled.
+Extraction method: every literal name passed to a backend environment accessor
+(`env_or`, `optional_env`, `std::env::var`, `read`, `required`, `value`,
+`count`), every `*_ENV` constant, and every `configured_destination` prefix
+expanded to its `_ENDPOINT` and `_BEARER_TOKEN` names, across non-test backend
+Rust source at this revision. Raw matches: 332. Excluded: 35 total (two bare
+destination prefixes and 33 test/fixture-only names). **Runtime literal names:
+297; all 297 appear in this document.**
+
+The count excludes dynamic families that are documented as rules rather than
+literal strings: 21 per-workload TLS paths (section 4.1), 14 current/previous
+workload credentials (section 4.1), and four authority settlement endpoints
+(section 5.8). The completeness claim is scoped to the literal extraction above;
+it does not claim that every string constant in the repository is an env name.
+
+Names below have code defaults unless marked; set them explicitly in production
+so the deployment does not inherit a development default. Feature and worker
+rows apply only when that feature is enabled.
 
 **Per-service startup names** (set every one explicitly; the staging env file and
 Compose project cover the values that differ):
