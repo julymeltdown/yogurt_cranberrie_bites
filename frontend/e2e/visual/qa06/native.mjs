@@ -20,6 +20,7 @@ const tracked=new Set(git('ls-files','frontend/public').toString().trim().split(
 const assets=new Map(),assetReads=[]
 const cacheDir=temporaryCache('matrix'),port=await reservePort()
 const server=await createServer({root:frontend,configLoader:'runner',cacheDir,logLevel:'error',
+ define:{'import.meta.env.VITE_MCR_APPLICATION_RELEASE':JSON.stringify({version:1,applicationVersion:'0.1.0',buildId:'a'.repeat(64),sourceRevision:'b'.repeat(40)})},
  plugins:[{name:'qa06-readonly-sparse-assets',configureServer(s){s.middlewares.use((req,res,next)=>{
  const url=new URL(req.url,'http://localhost'), path='frontend/public'+decodeURIComponent(url.pathname)
  if(!tracked.has(path)||!['.png','.jpg','.webp','.ttf'].includes(extname(path)))return next()

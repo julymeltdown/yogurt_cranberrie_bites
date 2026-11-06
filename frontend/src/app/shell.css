@@ -51,6 +51,7 @@ body:has([data-mcr-shell]) { padding: 0; }
 .shell-gate { max-inline-size: 44rem; margin: clamp(1rem, 5vh, 3rem) auto; }
 .shell-gate h1 { font-size: clamp(1.8rem, 6vw, 3rem); margin-block: 1.5rem; }
 .shell-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem; margin-block-start: 1rem; }
+.shell-actions > button { min-inline-size: 44px; min-block-size: 44px; padding-inline: .75rem; }
 .shell-panel .shell-gate { margin: 0; }
 .shell-panel .shell-gate h1 { font-size: 1.5rem; }
 .world-shell :focus-visible { outline-offset: -3px; }
