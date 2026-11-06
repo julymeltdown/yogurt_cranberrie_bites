@@ -51,6 +51,14 @@ The machine register adds ten **extension IA states**, separate from the61 origi
 
 Additive public-wire/schema/generated-type changes belong to the actual contract owner through explicit Root1fc/Root153 transfers. Freeze enough interface shape and deterministic fixtures for independent frontend work; actual integration requires actual producers. Do not use the existing beacon states, catalog revision, handle-sharing grant or generic post endpoint as an undocumented substitute.
 
+## W04 party-invitation policy decision — 2026-11-06
+
+The user resolved the original W04 virtual party-room invitation policy on **2026-11-06**: invitee consent; exactly one inviter grant per party; party capacity 8; 24-hour expiry from the server-issued invitation time; the host can revoke before the server deadline. Provenance: **user decision, 2026-11-06** (plan row 46; also recorded in [the functional delivery plan](functional-delivery-plan.md)).
+
+This is policy for the original W04 virtual party-room invitation only. It does not add a route, producer, capability, migration or invitation authority; it does not reopen FE18's closed chooser/membership criteria; and it does not change the eight VENU deliverables or the ten extension IA states. **W04 party invitations remain distinct from VENU-BE-M01 venue meeting invitations, MEET HERE and contextual MESSAGE.** The venue invitation client's policy copy is presentation only: it does not make a venue meeting invitation a W04 party invitation, and no W04 membership or invitation is venue authority. Placement risk: the W04 policy block currently renders inside the VENU-BE-M01 meeting inbox, so it could be misread as governing MEET HERE invitations; it does not, and its placement should be reviewed separately from this policy record.
+
+The 2026-11-05 [policy freeze](contracts/paradise-city-v1/policy-freeze.md) retains its W04 `PENDING / do not implement` section as a dated input. The freeze owner must reconcile that section with this decision before any W04 implementation is authorized; this amendment records the product decision, not an implementation grant.
+
 ## Literal technical custody
 
 Frontend King385 returned any retained additive venue protocol custody before writes. Root1fc now coordinates only these NEW disjoint families: `backend/proto/venue/v1/**`, `backend/docs/api/paradise-city-v1/**`, and `docs/mcr/contracts/paradise-city-v1/**`. It may delegate exact L/M/N child files after actual former-owner STOP, receiving acceptance and current resource booking.
