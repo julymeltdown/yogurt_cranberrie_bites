@@ -394,7 +394,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   Recommended task executor category: deep-low
   Commit: Y | `feat(venue): complete notes map, composer and replies`
 
-- [ ] 28. Execute VENU-IN01 with the 48 reference comparisons
+- [~] 28. Execute VENU-IN01 with the 48 reference comparisons
   What to do / Must NOT do: run the integrated venue flows and capture all 48 comparison cases plus the 10 extension IA states at 360/390/430; record PASS/FAIL per case against the supplied photographs. Do NOT substitute a static screenshot; do NOT claim approval of the provisional Photo5/P09/P10 variant.
   Closes: GAP-1, GAP-6
   Parallelization: Wave 4 | Blocked by: 25–27 | Blocks: 47
@@ -403,6 +403,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   QA scenarios: happy all flows complete on real services; failure one denied/expired case missing -> case FAIL and no VENU-IN01 acceptance. Evidence `.omo/evidence/mcr-finish-project/task-28-venu-in01/`.
   Recommended task executor category: deep-low
   Commit: Y | `test(venue): execute integrated flows and reference comparisons`
+  Gap (2026-11-06): 48/48 reference cases and 10/10 IA states have captures and verdicts (23 PASS / 2 DIFFER / 23 NOT_REACHABLE; 3 PASS / 7 NOT_REACHABLE), but 23 cases and 7 states are unreachable while PgVenueLocationAuthority::friend_in is a fail-closed stub returning VenueLocationError::PolicyUnavailable (503). The two DIFFER cases are genuine reference-base differences (provisional Photo 5 vs Photos 1 and 4) and remain unapproved. A bilateral friend authority is being implemented; the full matrix must be re-run against it to convert those families (friend location, sharing audience, meeting, invitation, conversation).
 
 - [ ] 29. Pass IN02 real meetup and pickup
   What to do / Must NOT do: two real clients complete party request/approval, authorized physical beacon/rally, giveaway reservation and one-time pickup against the real stack. Do NOT infer physical arrival from world movement; do NOT use mocks.
