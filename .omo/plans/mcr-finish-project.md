@@ -609,7 +609,7 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
   Recommended task executor category: quick
   Commit: Y | `ci: add blocking build, test and contract gates`
 
-- [ ] 49. Add the qualified post mutation envelope and event-scoped feed routes
+- [x] 49. Add the qualified post mutation envelope and event-scoped feed routes
   What to do / Must NOT do: design the qualified mutation envelope in `backend/proto` (shared contract), implement `PostTransport::execute`/`get_receipt` for create/edit/delete/comment/reaction, mount the event-scoped routes in the gateway, and prove them on the composed real stack. Do NOT open a route without authorization and idempotency; do NOT invent a private envelope.
   Closes: GAP-1
   Parallelization: Wave 2 | Blocked by: 12, 13 | Blocks: 30, 31
