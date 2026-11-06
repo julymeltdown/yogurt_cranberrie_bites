@@ -59,6 +59,35 @@ async fn apply(pool: &PgPool, event: Uuid, party: Uuid) -> anyhow::Result<(Uuid,
         .map_err(|e| anyhow::anyhow!("{e:?}"))?;
     Ok((user, id))
 }
+async fn snapshot(pool: &PgPool, event: Uuid, party: Uuid) -> anyhow::Result<serde_json::Value> {
+    let row = sqlx::query(
+        "select party_id,revision,state,member_count,capacity from concert_community_parties where party_id=$1",
+    )
+    .bind(party)
+    .fetch_one(pool)
+    .await?;
+    let active: i64 = sqlx::query_scalar(
+        "select count(*) from concert_community_members where party_id=$1 and state='ACTIVE'",
+    )
+    .bind(party)
+    .fetch_one(pool)
+    .await?;
+    let receipts: i64 = sqlx::query_scalar(
+        "select count(*) from concert_command_receipts where event_id=$1 and state='SUCCEEDED'",
+    )
+    .bind(event)
+    .fetch_one(pool)
+    .await?;
+    Ok(serde_json::json!({
+        "party_id": row.get::<Uuid, _>("party_id"),
+        "revision": row.get::<i64, _>("revision"),
+        "state": row.get::<String, _>("state"),
+        "indexed_member_count": row.get::<i32, _>("member_count"),
+        "capacity": row.get::<i32, _>("capacity"),
+        "active_members": active,
+        "succeeded_receipts": receipts,
+    }))
+}
 async fn check(pool: &PgPool, party: Uuid) -> anyhow::Result<()> {
     let value: serde_json::Value =
         sqlx::query_scalar("select aggregate from concert_community_parties where party_id=$1")
@@ -101,6 +130,10 @@ async fn last_slot_and_identical_replay_are_forced() -> anyhow::Result<()> {
     let (event, owner, party) = create(&pool).await?;
     let (_, a) = apply(&pool, event, party).await?;
     let (_, b) = apply(&pool, event, party).await?;
+    state(
+        "party_capacity_before",
+        snapshot(&pool, event, party).await?,
+    );
     let mut held = pool.begin().await?;
     let pid: i32 = sqlx::query_scalar("select pg_backend_pid()")
         .fetch_one(&mut *held)
@@ -239,6 +272,7 @@ async fn last_slot_and_identical_replay_are_forced() -> anyhow::Result<()> {
         .await
         .is_err());
     check(&pool, party).await?;
+    state("party_capacity_after", snapshot(&pool, event, party).await?);
     // Durable replay identity survives a fresh process and actual server restart.
     sqlx::query("insert into qa03_restart values('party',$1)").bind(serde_json::json!({"actor":winner.actor,"event":winner.event,"key":winner.key,"party":winner.party,"application":match winner.action{PartyAction::Decide{application,..}=>application,_=>unreachable!()},"receipt":result.as_ref().unwrap().id})).execute(&pool).await?;
     Ok(())

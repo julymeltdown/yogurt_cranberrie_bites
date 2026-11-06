@@ -222,6 +222,22 @@ pub async fn waiting(pool: &PgPool, holder: i32, count: i64) -> anyhow::Result<(
         tokio::time::sleep(std::time::Duration::from_millis(10)).await;
     }
 }
+/// Record the exact rows a case observed. This is evidence output, never a
+/// synchronization primitive.
+pub fn state(tag: &str, value: serde_json::Value) {
+    println!("QA03_STATE {tag} {value}");
+}
+/// The backend currently waiting behind the held root, once `waiting` has
+/// proven the lock graph contains it.
+pub async fn blocked_backend(pool: &PgPool, holder: i32) -> anyhow::Result<i32> {
+    let pid: Option<i32> = sqlx::query_scalar(
+        "select pid from pg_stat_activity where application_name='qa03-races' and pid<>$1 and $1=any(pg_blocking_pids(pid)) order by pid limit 1",
+    )
+    .bind(holder)
+    .fetch_optional(pool)
+    .await?;
+    pid.ok_or_else(|| anyhow::anyhow!("no blocked backend behind holder {holder}"))
+}
 pub async fn terminal(pool: &PgPool) -> anyhow::Result<()> {
     let pending: i64 =
         sqlx::query_scalar("select count(*) from concert_command_receipts where state='PENDING'")
