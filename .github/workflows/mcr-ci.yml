@@ -110,6 +110,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Provenance tests read historical blobs with `git show <sha>:path`,
+          # which a shallow clone cannot serve (F5-CI-02).
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Contract tooling dependencies
+        # Contract oracles inside vitest import jsonschema/referencing.
+        run: pip install -r scripts/mcr/requirements-contracts.txt
       - uses: actions/setup-node@v4
         with:
           # Pinned, not a floating major: the collected test count depends on it.
@@ -187,6 +197,8 @@ jobs:
       MCR_TEST_POSTGRES_DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: dtolnay/rust-toolchain@master
         with:
           toolchain: ${{ env.CARGO_TOOLCHAIN }}

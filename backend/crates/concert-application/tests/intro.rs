@@ -1,5 +1,5 @@
 //! BE27 pure command, serialization-boundary and cursor contracts.
-use chrono::{Duration, Utc};
+use chrono::{DateTime, Duration, Utc};
 use concert_application::intro::{self, cursor, *};
 use concert_domain::intro_policy::IntroState;
 use concert_domain::{AuthUserId, EventId, Revision};
@@ -164,7 +164,10 @@ fn query_and_request_context_are_closed_and_bounded() {
 
 #[test]
 fn authenticated_cursor_binds_request_position_and_lifetime() {
-    let now = Utc::now();
+    // Cursor positions round-trip through microsecond encoding, so build the
+    // fixture at that precision; on a nanosecond-precision clock the raw
+    // Utc::now() value would differ after encode/decode.
+    let now = DateTime::from_timestamp_micros(Utc::now().timestamp_micros()).unwrap();
     let decode_at = now;
     let actor = Uuid::new_v4();
     let event = Uuid::new_v4();
