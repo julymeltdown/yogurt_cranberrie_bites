@@ -286,6 +286,74 @@ impl ChildIntentSettler for RecordChildRecovery {
     }
 }
 #[tokio::test]
+async fn child_intent_registration_blocks_behind_a_held_scope_share_lock() {
+    use concert_service::adapters::out::relationship_authority::guarded::{
+        ChildQuery, ChildRecoveryReference,
+    };
+    use std::time::{Duration, Instant};
+    // An effect witness takes FOR SHARE on its root scope row and holds it until
+    // the projecting transaction commits. Child-intent registration needs FOR
+    // UPDATE on that same row, so registering afterwards waits on the ledger's
+    // 250 ms lock timeout and fails the whole read (503). The write order that
+    // satisfies this constraint is executed by
+    // `social_live::producer::read_order_tests::projecting_writes_retain_the_child_before_the_effect_witness`.
+    let pool = pool().await;
+    let ledger = new_ledger(&pool, Uuid::new_v4());
+    let binding = binding();
+    let key = ScopeKey {
+        instance: ledger.instance(),
+        scope: Uuid::new_v4(),
+        binding_digest: binding.digest().unwrap(),
+    };
+    ledger.register(&key, &binding).await.unwrap();
+    let query = ChildQuery {
+        actor: binding.actor_id,
+        event: binding.event_id,
+        subject: binding.actor_id,
+        family: binding.session_family_id,
+        request: binding.request_id,
+        expires_unix_micros: binding.expires_unix_micros,
+        binding_digest: key.binding_digest,
+    };
+    let intent = Uuid::new_v4();
+    let reference = ChildRecoveryReference::ProfilePublic {
+        child_id: query.profile_child_id(intent).unwrap(),
+        query,
+        completion_secret: Uuid::new_v4().simple().to_string(),
+    };
+    // Same row lock an effect witness holds for its projecting transaction.
+    let mut projecting = pool.begin().await.unwrap();
+    sqlx::query(
+        "SELECT 1 FROM concert_product_owner_scopes WHERE instance_id=$1 AND scope_id=$2 FOR SHARE",
+    )
+    .bind(key.instance)
+    .bind(key.scope)
+    .execute(&mut *projecting)
+    .await
+    .unwrap();
+    let started = Instant::now();
+    let error = ledger
+        .register_child_intent(&key, &reference)
+        .await
+        .unwrap_err();
+    let waited = started.elapsed();
+    assert_eq!(error.code(), tonic::Code::Unavailable);
+    // A refusal that returns without waiting did not hit the lock at all.
+    assert!(
+        waited >= Duration::from_millis(150),
+        "registration must wait on the held share lock, not fail fast: {waited:?}"
+    );
+    projecting.rollback().await.unwrap();
+    // With the share lock released (the supported order: intent first), the
+    // identical registration succeeds.
+    ledger
+        .register_child_intent(&key, &reference)
+        .await
+        .unwrap();
+    pool.close().await;
+}
+
+#[tokio::test]
 async fn encrypted_predispatch_intent_survives_lost_handles_and_requires_actual_recovery_success() {
     use concert_service::adapters::out::relationship_authority::guarded::{
         ChildQuery, ChildRecoveryReference,

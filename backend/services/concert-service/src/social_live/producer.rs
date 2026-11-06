@@ -165,15 +165,29 @@ impl SocialRuntime {
         }
         deletion_subjects.sort();
         deletion_subjects.dedup();
-        let hooks = Arc::new(RuntimeHooks {
-            witness: Arc::new(SocialWitness::new(scope.clone(), input.key)),
-            write_gate: Arc::new(ReadOnlyGate::default()),
+        let write_gate = Arc::new(ReadOnlyGate::default());
+        let witness: Arc<dyn SocialTransactionHooks> =
+            Arc::new(SocialWitness::new(scope.clone(), input.key));
+        let retention: Arc<dyn SourceRetention> = Arc::new(ScopedRetention {
+            pool: self.pool.clone(),
+            scope: scope.clone(),
+            operation: op,
+        });
+        let registration: Arc<dyn TransactionRegistration> = Arc::new(ScopedRegistration {
+            witness: witness.clone(),
+            write_gate: write_gate.clone(),
             command_transaction: true,
             scope: scope.clone(),
             pool: self.pool.clone(),
             operation: op,
-            retained,
             deletion_subjects,
+        });
+        let hooks = Arc::new(RuntimeHooks {
+            witness,
+            retention,
+            registration,
+            write_gate,
+            retained,
         });
         let service = SocialService::new(
             self.pool.clone(),
@@ -434,6 +448,16 @@ impl SocialRuntime {
                 .map_err(rel)?;
         }
         let (value, until) = request_value(&mut tx, &row).await?;
+        let subjects = if matches!(op, SocialOperation::Cancel(_) | SocialOperation::Revoke(_)) {
+            vec![]
+        } else {
+            vec![peer]
+        };
+        // Retain the source exclusion before the witness takes its scope FOR
+        // SHARE lock; see RuntimeHooks::succeeded.
+        hooks
+            .retain(&mut tx, SocialReadSources::Metadata { subjects }, until)
+            .await?;
         hooks
             .succeeded(
                 &mut tx,
@@ -446,14 +470,6 @@ impl SocialRuntime {
             )
             .await
             .map_err(rel)?;
-        let subjects = if matches!(op, SocialOperation::Cancel(_) | SocialOperation::Revoke(_)) {
-            vec![]
-        } else {
-            vec![peer]
-        };
-        hooks
-            .retain(&mut tx, SocialReadSources::Metadata { subjects }, until)
-            .await?;
         tx.commit().await.map_err(|_| unavailable())?;
         Ok(value)
     }
@@ -481,6 +497,13 @@ impl SocialRuntime {
         }
         let value = json!({"user_id":actor.user_id.uuid(),"platform":platform.as_str(),"version":expected,"configured":row.get::<bool,_>("configured")});
         hooks
+            .retain(
+                &mut tx,
+                SocialReadSources::Metadata { subjects: vec![] },
+                None,
+            )
+            .await?;
+        hooks
             .succeeded(
                 &mut tx,
                 SocialEffect {
@@ -492,13 +515,6 @@ impl SocialRuntime {
             )
             .await
             .map_err(rel)?;
-        hooks
-            .retain(
-                &mut tx,
-                SocialReadSources::Metadata { subjects: vec![] },
-                None,
-            )
-            .await?;
         tx.commit().await.map_err(|_| unavailable())?;
         Ok(value)
     }
@@ -524,6 +540,13 @@ impl SocialRuntime {
         }
         let value = json!({"target_user_id":id,"blocked_by_me":row.get::<bool,_>("blocked"),"revision":expected});
         hooks
+            .retain(
+                &mut tx,
+                SocialReadSources::Metadata { subjects: vec![] },
+                None,
+            )
+            .await?;
+        hooks
             .succeeded(
                 &mut tx,
                 SocialEffect {
@@ -535,13 +558,6 @@ impl SocialRuntime {
             )
             .await
             .map_err(rel)?;
-        hooks
-            .retain(
-                &mut tx,
-                SocialReadSources::Metadata { subjects: vec![] },
-                None,
-            )
-            .await?;
         tx.commit().await.map_err(|_| unavailable())?;
         Ok(value)
     }
@@ -628,6 +644,9 @@ impl SocialRuntime {
         };
         let value = json!({"items":items,"next_cursor":next});
         hooks
+            .retain(&mut tx, SocialReadSources::Metadata { subjects }, until)
+            .await?;
+        hooks
             .succeeded(
                 &mut tx,
                 SocialEffect {
@@ -639,9 +658,6 @@ impl SocialRuntime {
             )
             .await
             .map_err(rel)?;
-        hooks
-            .retain(&mut tx, SocialReadSources::Metadata { subjects }, until)
-            .await?;
         tx.commit().await.map_err(|_| unavailable())?;
         Ok(value)
     }
@@ -677,36 +693,27 @@ impl SharingVerifierStatus for Verifier {
         self.0.current_in(c, request).await
     }
 }
-/// Service-internal read projections retain their child before the service
-/// commits. Command hooks only record effects; their separately authorized
-/// post-command projection retains the child after the write transaction ends.
-struct RuntimeHooks {
-    witness: Arc<SocialWitness>,
-    write_gate: Arc<ReadOnlyGate>,
-    command_transaction: bool,
-    scope: Arc<OwnerGuardScope>,
-    pool: PgPool,
-    operation: SocialOperation,
-    retained: Option<SocialReadSources>,
-    deletion_subjects: Vec<Uuid>,
+/// The response's retained source-exclusion child for one projection. Production
+/// always uses `ScopedRetention`; the split keeps the write order in
+/// `RuntimeHooks::succeeded` executable with recording steps and no acquired
+/// owner authority.
+#[async_trait::async_trait]
+trait SourceRetention: Send + Sync {
+    async fn retain_sources(
+        &self,
+        c: &mut PgConnection,
+        sources: SocialReadSources,
+        until: Option<DateTime<Utc>>,
+    ) -> Result<(), Status>;
 }
-impl RuntimeHooks {
-    fn for_projection(&self) -> Arc<Self> {
-        Arc::new(Self {
-            witness: self.witness.clone(),
-            write_gate: self.write_gate.clone(),
-            command_transaction: false,
-            scope: self.scope.clone(),
-            pool: self.pool.clone(),
-            operation: self.operation,
-            retained: self.retained.clone(),
-            deletion_subjects: self.deletion_subjects.clone(),
-        })
-    }
-    fn command(&self, error: CommandError) -> Status {
-        command_rejection(error, &self.write_gate)
-    }
-    async fn retain(
+struct ScopedRetention {
+    pool: PgPool,
+    scope: Arc<OwnerGuardScope>,
+    operation: SocialOperation,
+}
+#[async_trait::async_trait]
+impl SourceRetention for ScopedRetention {
+    async fn retain_sources(
         &self,
         c: &mut PgConnection,
         sources: SocialReadSources,
@@ -715,8 +722,35 @@ impl RuntimeHooks {
         retain_projected_in(&self.pool, &self.scope, c, self.operation, sources, until).await
     }
 }
+/// Durable admission issued before the service runs. `for_projection` drops only
+/// the NORMAL write gate, exactly as the previous hook copy did.
 #[async_trait::async_trait]
-impl SocialTransactionHooks for RuntimeHooks {
+trait TransactionRegistration: Send + Sync {
+    async fn register(&self, c: &mut PgConnection) -> Result<(), RelationshipError>;
+    fn for_projection(&self) -> Arc<dyn TransactionRegistration>;
+}
+struct ScopedRegistration {
+    witness: Arc<dyn SocialTransactionHooks>,
+    write_gate: Arc<ReadOnlyGate>,
+    command_transaction: bool,
+    scope: Arc<OwnerGuardScope>,
+    pool: PgPool,
+    operation: SocialOperation,
+    deletion_subjects: Vec<Uuid>,
+}
+#[async_trait::async_trait]
+impl TransactionRegistration for ScopedRegistration {
+    fn for_projection(&self) -> Arc<dyn TransactionRegistration> {
+        Arc::new(Self {
+            witness: self.witness.clone(),
+            write_gate: self.write_gate.clone(),
+            command_transaction: false,
+            scope: self.scope.clone(),
+            pool: self.pool.clone(),
+            operation: self.operation,
+            deletion_subjects: self.deletion_subjects.clone(),
+        })
+    }
     async fn register(&self, c: &mut PgConnection) -> Result<(), RelationshipError> {
         let binding = self.scope.binding();
         let milliseconds = binding
@@ -787,12 +821,54 @@ impl SocialTransactionHooks for RuntimeHooks {
         }
         Ok(())
     }
+}
+/// Service-internal read projections retain their child before the service
+/// commits. Command hooks only record effects; their separately authorized
+/// post-command projection retains the child after the write transaction ends.
+struct RuntimeHooks {
+    witness: Arc<dyn SocialTransactionHooks>,
+    retention: Arc<dyn SourceRetention>,
+    registration: Arc<dyn TransactionRegistration>,
+    write_gate: Arc<ReadOnlyGate>,
+    retained: Option<SocialReadSources>,
+}
+impl RuntimeHooks {
+    fn for_projection(&self) -> Arc<Self> {
+        Arc::new(Self {
+            witness: self.witness.clone(),
+            retention: self.retention.clone(),
+            registration: self.registration.for_projection(),
+            write_gate: self.write_gate.clone(),
+            retained: self.retained.clone(),
+        })
+    }
+    fn command(&self, error: CommandError) -> Status {
+        command_rejection(error, &self.write_gate)
+    }
+    async fn retain(
+        &self,
+        c: &mut PgConnection,
+        sources: SocialReadSources,
+        until: Option<DateTime<Utc>>,
+    ) -> Result<(), Status> {
+        self.retention.retain_sources(c, sources, until).await
+    }
+}
+#[async_trait::async_trait]
+impl SocialTransactionHooks for RuntimeHooks {
+    async fn register(&self, c: &mut PgConnection) -> Result<(), RelationshipError> {
+        self.registration.register(c).await
+    }
     async fn succeeded(
         &self,
         c: &mut PgConnection,
         effect: SocialEffect,
     ) -> Result<(), RelationshipError> {
-        self.witness.succeeded(c, effect).await?;
+        // Retain the response's source exclusion BEFORE recording the effect
+        // witness. The witness insert takes a FOR SHARE lock on the scope row
+        // for the rest of this transaction, and child-intent registration takes
+        // FOR UPDATE on that same row; registering afterwards would wait on our
+        // own lock and fail the read. Both still commit with this transaction.
         if effect.projection {
             if let Some(sources) = self.retained.clone() {
                 self.retain(c, sources, None)
@@ -800,6 +876,7 @@ impl SocialTransactionHooks for RuntimeHooks {
                     .map_err(|_| RelationshipError::Unavailable)?;
             }
         }
+        self.witness.succeeded(c, effect).await?;
         Ok(())
     }
 }
@@ -1028,3 +1105,7 @@ fn representation(status: u32, value: Value) -> Result<ProductRepresentation, St
 #[cfg(test)]
 #[path = "../../tests/social_live_support/write_policy.rs"]
 mod write_policy_tests;
+
+#[cfg(test)]
+#[path = "../../tests/social_live_support/read_order.rs"]
+mod read_order_tests;

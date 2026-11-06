@@ -461,7 +461,7 @@ Operational defaults (env-tunable unless noted):
 | Login lockout | 5 failures / 900 s | `AUTH_LOGIN_LOCKOUT_MAX_FAILURES`, `AUTH_LOGIN_LOCKOUT_WINDOW_SECONDS` |
 | Gateway rate limit | 600 requests/minute | `GATEWAY_RATE_LIMIT_PER_MINUTE` |
 | Search cursor TTL | 900 s (60-3600) | `GATEWAY_SEARCH_CURSOR_TTL_SECONDS` |
-| Request timeout | 1000 ms; journal client timeout must be lower | `GATEWAY_REQUEST_TIMEOUT_MS`, `GATEWAY_JOURNAL_CLIENT_TIMEOUT_MS` |
+| Request timeout | 2000 ms (the two-second product/authority ceiling); journal client timeout must be lower | `GATEWAY_REQUEST_TIMEOUT_MS`, `GATEWAY_JOURNAL_CLIENT_TIMEOUT_MS` |
 
 Production requires a UUID in `PROFILE_RETENTION_PURGE_ACTOR_ID`,
 `POST_RETENTION_PURGE_ACTOR_ID` and
