@@ -1,0 +1,9 @@
+
+running 4 tests
+test bootstrap::release::tests::canonical_ascii_and_surrogates_match_c06_python ... ok
+test relationship::crypto::tests::aad_binds_every_context_field_and_key_id ... ok
+test relationship::crypto::tests::nonce_randomization_and_tamper_denial ... ok
+test rpc::tests::bootstrap_requires_gateway_and_the_signed_actor ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

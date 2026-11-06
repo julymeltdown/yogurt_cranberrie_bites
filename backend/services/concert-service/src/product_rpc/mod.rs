@@ -24,7 +24,10 @@ mod feature_admission;
 mod owner_media;
 mod query;
 pub mod report_admission;
+pub mod venue_meeting_admission;
+mod operations_admission;
 pub use age_admission::AgeOperation;
+pub use operations_admission::OperationsOperation;
 pub use feature_admission::IntroOperation;
 pub use query::CommandStatusQuery;
 pub use report_admission::ReportOperation;
@@ -69,6 +72,8 @@ pub enum Operation {
     Age(AgeOperation),
     Report(ReportOperation),
     Closure,
+    Meeting(venue_meeting_admission::MeetingOperation),
+    Operations(OperationsOperation),
 }
 impl Operation {
     pub fn contract_id(self) -> &'static str {
@@ -97,6 +102,8 @@ impl Operation {
             Self::Age(operation) => operation.id(),
             Self::Report(operation) => operation.id(),
             Self::Closure => "closeConcertEvent",
+            Self::Meeting(operation) => operation.id(),
+            Self::Operations(operation) => operation.id(),
         }
     }
 }
@@ -137,10 +144,16 @@ pub fn operation(event: Uuid, method: &str, target: &str) -> Result<Operation, S
     if let Ok(report) = ReportOperation::route(event, method, target) {
         return Ok(Operation::Report(report));
     }
+    if let Ok(operations) = OperationsOperation::route(event, method, target) {
+        return Ok(Operation::Operations(operations));
+    }
     if let Ok(notification) =
         crate::notification_live::NotificationOperation::route(event, method, target)
     {
         return Ok(Operation::Notification(notification));
+    }
+    if let Ok(meeting) = venue_meeting_admission::route(event, method, target) {
+        return Ok(Operation::Meeting(meeting));
     }
     let result = match (method, suffix) {
         ("GET", "feed") => Operation::Feed,
@@ -355,6 +368,12 @@ fn authorize(request: &Request<proto::ProductRequest>) -> Result<VerifiedProduct
     if let Operation::Report(report) = operation {
         query::report_request(m, report)?;
     }
+    if let Operation::Meeting(_) = operation {
+        venue_meeting_admission::request(m, operation)?;
+    }
+    if let Operation::Operations(operations) = operation {
+        query::operations_request(m, operations)?;
+    }
     if matches!(operation, Operation::Intro(_) | Operation::Notification(_)) {
         feature_admission::request(m, operation)?;
     }
@@ -376,15 +395,11 @@ fn authorize(request: &Request<proto::ProductRequest>) -> Result<VerifiedProduct
             | Operation::CancelParty(_)
             | Operation::Report(_)
             | Operation::Closure
+            | Operation::Operations(_)
     );
     if matches!(
         operation,
-        Operation::Social(_)
-            | Operation::Intro(_)
-            | Operation::Notification(_)
-            | Operation::Age(_)
-            | Operation::Report(_)
-            | Operation::Wall(_)
+        Operation::Social(_) | Operation::Intro(_) | Operation::Notification(_) | Operation::Age(_) | Operation::Report(_) | Operation::Operations(_) | Operation::Wall(_) | Operation::Meeting(_)
     ) {
         // Each exact feature decoder validates its own read payload and keyed
         // command shape, including Intro PUT/POST and Notification PATCH writes.

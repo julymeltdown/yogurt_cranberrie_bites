@@ -85,6 +85,30 @@ pub(super) fn router() -> Router<Arc<AppState>> {
             "/api/concert/events/:event_id/me/notifications/read-all",
             axum::routing::patch(dispatch),
         )
+        .route(
+            "/api/concert/events/:event_id/venue-meeting/context",
+            get(dispatch),
+        )
+        .route(
+            "/api/concert/events/:event_id/venue-meeting/invitations",
+            get(dispatch).post(dispatch),
+        )
+        .route(
+            "/api/concert/events/:event_id/venue-meeting/invitations/:invitation_id",
+            get(dispatch),
+        )
+        .route(
+            "/api/concert/events/:event_id/venue-meeting/invitations/:invitation_id/decision",
+            post(dispatch),
+        )
+        .route(
+            "/api/concert/events/:event_id/venue-meeting/messages",
+            get(dispatch).post(dispatch),
+        )
+        .route(
+            "/api/concert/events/:event_id/venue-meeting/commands/:command_key",
+            get(dispatch),
+        )
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
@@ -116,6 +140,14 @@ pub(super) enum FeatureRoute {
     UnreadCount,
     MarkRead,
     MarkAllRead,
+    MeetingContext,
+    ListInvitations,
+    CreateInvitation,
+    GetInvitation(Uuid),
+    DecideInvitation(Uuid),
+    ListMessages,
+    SendMessage,
+    MeetingCommand(Uuid),
 }
 impl FeatureRoute {
     pub(super) fn mutation(self) -> bool {
@@ -135,6 +167,9 @@ impl FeatureRoute {
                 | Self::CloseIntro
                 | Self::MarkRead
                 | Self::MarkAllRead
+                | Self::CreateInvitation
+                | Self::DecideInvitation(_)
+                | Self::SendMessage
         )
     }
     pub(super) fn body_limit(self) -> usize {
@@ -146,6 +181,7 @@ impl FeatureRoute {
             | Self::MarkAllRead
             | Self::StartAgeVerification
             | Self::CompleteAgeVerification => 8192,
+            Self::CreateInvitation | Self::DecideInvitation(_) | Self::SendMessage => 12_000,
             _ => 0,
         }
     }
@@ -179,6 +215,14 @@ impl FeatureRoute {
             Self::UnreadCount => "getConcertNotificationUnreadCount",
             Self::MarkRead => "markConcertNotification",
             Self::MarkAllRead => "markAllConcertNotifications",
+            Self::MeetingContext => "resolveVenueMeetingContext",
+            Self::ListInvitations => "listVenueMeetingInvitations",
+            Self::CreateInvitation => "createVenueMeetingInvitation",
+            Self::GetInvitation(_) => "getVenueMeetingInvitation",
+            Self::DecideInvitation(_) => "decideVenueMeetingInvitation",
+            Self::ListMessages => "listVenueMeetingMessages",
+            Self::SendMessage => "sendVenueMeetingMessage",
+            Self::MeetingCommand(_) => "getVenueMeetingCommand",
         }
     }
 }
@@ -204,6 +248,8 @@ pub(super) fn protects(path: &str) -> bool {
             || tail.starts_with("me/intro/")
             || tail == "me/notifications"
             || tail.starts_with("me/notifications/")
+            || tail == "venue-meeting"
+            || tail.starts_with("venue-meeting/")
     })
 }
 pub(super) fn route(method: &Method, path: &str) -> Option<FeatureRoute> {
@@ -243,8 +289,121 @@ pub(super) fn route(method: &Method, path: &str) -> Option<FeatureRoute> {
         ("GET", ["me", "notifications", "unread-count"]) => Some(UnreadCount),
         ("PATCH", ["me", "notifications", id, "read"]) if uuid(id).is_some() => Some(MarkRead),
         ("PATCH", ["me", "notifications", "read-all"]) => Some(MarkAllRead),
+        ("GET", ["venue-meeting", "context"]) => Some(MeetingContext),
+        ("GET", ["venue-meeting", "invitations"]) => Some(ListInvitations),
+        ("POST", ["venue-meeting", "invitations"]) => Some(CreateInvitation),
+        ("GET", ["venue-meeting", "invitations", id]) if uuid(id).is_some() => {
+            Some(GetInvitation(Uuid::parse_str(id).ok()?))
+        }
+        ("POST", ["venue-meeting", "invitations", id, "decision"]) if uuid(id).is_some() => {
+            Some(DecideInvitation(Uuid::parse_str(id).ok()?))
+        }
+        ("GET", ["venue-meeting", "messages"]) => Some(ListMessages),
+        ("POST", ["venue-meeting", "messages"]) => Some(SendMessage),
+        ("GET", ["venue-meeting", "commands", key]) if uuid(key).is_some() => {
+            Some(MeetingCommand(Uuid::parse_str(key).ok()?))
+        }
         _ => None,
     }
+}
+
+fn meeting_read(route: FeatureRoute) -> Option<u8> {
+    match route {
+        FeatureRoute::MeetingContext => Some(0),
+        FeatureRoute::ListInvitations => Some(1),
+        FeatureRoute::GetInvitation(_) => Some(2),
+        FeatureRoute::ListMessages => Some(3),
+        FeatureRoute::MeetingCommand(_) => Some(4),
+        _ => None,
+    }
+}
+
+fn canonical_uuid(value: &str) -> bool {
+    Uuid::parse_str(value)
+        .ok()
+        .is_some_and(|id| !id.is_nil() && id.to_string() == value)
+}
+
+fn meeting_decimal(value: &str, minimum: i64) -> bool {
+    !value.is_empty()
+        && (value.len() == 1 || !value.starts_with('0'))
+        && value.bytes().all(|b| b.is_ascii_digit())
+        && value
+            .parse::<i64>()
+            .is_ok_and(|number| (minimum..=9_007_199_254_740_991).contains(&number))
+}
+
+fn meeting_target(kind: u8, target: &str) -> bool {
+    if kind == 1 {
+        let Some((_, query)) = target.split_once('?') else {
+            return false;
+        };
+        let mut fields = BTreeMap::new();
+        for pair in query.split('&') {
+            let Some((key, value)) = pair.split_once('=') else {
+                return false;
+            };
+            let (Some(key), Some(value)) = (decode(key), decode(value)) else {
+                return false;
+            };
+            if fields.insert(key, value).is_some() {
+                return false;
+            }
+        }
+        return fields.remove("direction").is_some_and(|value| {
+            matches!(value.as_str(), "INCOMING" | "OUTGOING")
+        }) && fields
+            .remove("cursor")
+            .is_none_or(|value| meeting_decimal(&value, 0))
+            && fields.is_empty();
+    }
+    let Some((_, query)) = target.split_once('?') else {
+        return false;
+    };
+    let mut fields = BTreeMap::new();
+    for pair in query.split('&') {
+        let Some((key, value)) = pair.split_once('=') else {
+            return false;
+        };
+        let (Some(key), Some(value)) = (decode(key), decode(value)) else {
+            return false;
+        };
+        if fields.insert(key, value).is_some() {
+            return false;
+        }
+    }
+    if !fields
+        .remove("selectedFriendId")
+        .is_some_and(|value| canonical_uuid(&value))
+    {
+        return false;
+    }
+    if kind == 3
+        && fields
+            .remove("cursor")
+            .is_some_and(|value| !meeting_decimal(&value, 0))
+    {
+        return false;
+    }
+    let landmark_id = fields.remove("landmarkId");
+    let catalog = fields.remove("catalogRevision");
+    let revision = fields.remove("landmarkRevision");
+    let landmark = match (landmark_id, catalog, revision) {
+        (None, None, None) => kind != 2,
+        (Some(id), Some(catalog), Some(revision)) => {
+            !id.is_empty()
+                && id.len() <= 128
+                && id
+                    .bytes()
+                    .all(|b| b.is_ascii_alphanumeric() || matches!(b, b'-' | b'.' | b'_' | b'~'))
+                && id != "."
+                && id != ".."
+                && meeting_decimal(&catalog, 1)
+                && meeting_decimal(&revision, 1)
+        }
+        _ => false,
+    };
+    landmark && fields.is_empty()
 }
 
 /// Validate the frozen query without normalizing the signed target or body.
@@ -252,6 +411,9 @@ pub(super) fn route(method: &Method, path: &str) -> Option<FeatureRoute> {
 pub(super) fn valid_target(route: FeatureRoute, target: &str) -> bool {
     if target.len() > 4096 || target.contains('#') || target.chars().any(char::is_control) {
         return false;
+    }
+    if let Some(route) = meeting_read(route) {
+        return meeting_target(route, target);
     }
     if route == FeatureRoute::MuralDelta {
         return target

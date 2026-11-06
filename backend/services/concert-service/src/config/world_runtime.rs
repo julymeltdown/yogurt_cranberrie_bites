@@ -312,6 +312,25 @@ impl WorldRuntimeSettings {
         )
         .await
     }
+    pub async fn serve_with_ready_and_deletion_and_bridge(
+        self,
+        pool: sqlx::PgPool,
+        ports: WorldProductionPorts,
+        ready: tokio::sync::oneshot::Sender<()>,
+        deletion: tokio::sync::oneshot::Sender<super::deletion_world_binding::ServingWorldBinding>,
+        handoff: tokio::sync::watch::Sender<Option<Arc<AdmissionBridge>>>,
+    ) -> anyhow::Result<()> {
+        self.serve_inner(
+            pool,
+            ports,
+            Some(ready),
+            SocketTransport::default(),
+            None,
+            Some(deletion),
+            Some(handoff),
+        )
+        .await
+    }
     /// Opt-in account deletion composition receives the exact incumbent bridge
     /// and socket registry after the normal startup checks. The receiver must
     /// also await `ready` and retain the original serving task's supervision.
@@ -335,6 +354,29 @@ impl WorldRuntimeSettings {
             Some(local),
             Some(deletion),
             None,
+        )
+        .await
+    }
+    pub async fn serve_with_ready_social_and_deletion_and_bridge(
+        self,
+        pool: sqlx::PgPool,
+        ports: WorldProductionPorts,
+        ready: tokio::sync::oneshot::Sender<()>,
+        transport: SocketTransport,
+        local: tokio::sync::oneshot::Sender<
+            Arc<crate::world::invalidation::WorldInvalidationConsumer>,
+        >,
+        deletion: tokio::sync::oneshot::Sender<super::deletion_world_binding::ServingWorldBinding>,
+        handoff: tokio::sync::watch::Sender<Option<Arc<AdmissionBridge>>>,
+    ) -> anyhow::Result<()> {
+        self.serve_inner(
+            pool,
+            ports,
+            Some(ready),
+            transport,
+            Some(local),
+            Some(deletion),
+            Some(handoff),
         )
         .await
     }

@@ -8,9 +8,13 @@ where
     F: Fn(String, MigrationMode) -> Fut,
     Fut: Future<Output = Result<PgPool>>,
 {
-    let (container, url) = test_support::postgres::start_postgres_with_url()
+    let (container, url) = test_support::postgres::start_postgres_with_url_or_native()
         .await
         .context("external schema fixture acquisition")?;
+    let container_id = container
+        .as_ref()
+        .map(|value| value.id().to_owned())
+        .unwrap_or_else(|| "native".to_owned());
     let timestamp = std::time::SystemTime::now()
         .duration_since(std::time::UNIX_EPOCH)
         .map(|value| value.as_millis())
@@ -24,7 +28,7 @@ where
     use std::io::Write;
     let _ = writeln!(std::io::stderr().lock(),
         "EXTERNAL_SCHEMA_FIXTURE test={:?} table={table} timestamp_ms={timestamp} container_id={} endpoint={endpoint}",
-        std::thread::current().name(), container.id());
+        std::thread::current().name(), container_id);
     let mut phase = "initial owner connection";
     let outcome: Result<()> = async {
         let mut owner = PgConnection::connect(&url).await?;
@@ -41,8 +45,27 @@ where
         let startup = connect(url.clone(), MigrationMode::Startup).await?;
         startup.close().await;
         phase = "reader role setup";
-        owner.execute("create role migration_reader login password 'fixture-password' nosuperuser nocreatedb nocreaterole; revoke create on schema public from public; grant usage on schema public to migration_reader; grant select on public._sqlx_migrations to migration_reader; create schema shadow; grant usage on schema shadow to migration_reader").await?;
-        let reader_url = url.replace("postgres:postgres@", "migration_reader:fixture-password@");
+        let reader_role = format!(
+            "migration_reader_{}_{}",
+            std::process::id(),
+            std::time::SystemTime::now()
+                .duration_since(std::time::UNIX_EPOCH)
+                .map(|value| value.as_nanos())
+                .unwrap_or_default()
+        );
+        owner.execute(format!("create role {reader_role} login password 'fixture-password' nosuperuser nocreatedb nocreaterole; revoke create on schema public from public; grant usage on schema public to {reader_role}; grant select on public._sqlx_migrations to {reader_role}; create schema shadow; grant usage on schema shadow to {reader_role}").as_str()).await?;
+        let (scheme, authority_and_path) = url
+            .split_once("://")
+            .ok_or_else(|| anyhow::anyhow!("fixture URL scheme"))?;
+        let (_, authority_and_path) = authority_and_path
+            .split_once('@')
+            .ok_or_else(|| anyhow::anyhow!("fixture URL credentials"))?;
+        let (host_port, path) = authority_and_path
+            .split_once('/')
+            .ok_or_else(|| anyhow::anyhow!("fixture URL database"))?;
+        let reader_url = format!(
+            "{scheme}://{reader_role}:fixture-password@{host_port}/{path}"
+        );
         ensure!(reader_url != url, "fixture credentials were not replaced");
         // An actual URL option must not divert external mode away from public.
         let redirected = format!("{reader_url}?options=-csearch_path%3Dshadow");
@@ -91,11 +114,13 @@ where
         Ok(())
     }.await;
     if outcome.is_err() {
-        let observed = test_support::postgres::startup_failure_diagnostics(&container).await;
-        let _ = writeln!(
-            std::io::stderr().lock(),
-            "EXTERNAL_SCHEMA_FIXTURE_FAILURE table={table} phase={phase:?} {observed:?}"
-        );
+        if let Some(container) = container.as_ref() {
+            let observed = test_support::postgres::startup_failure_diagnostics(container).await;
+            let _ = writeln!(
+                std::io::stderr().lock(),
+                "EXTERNAL_SCHEMA_FIXTURE_FAILURE table={table} phase={phase:?} {observed:?}"
+            );
+        }
     }
     outcome.with_context(|| format!("external schema pool acceptance: {phase}"))
 }

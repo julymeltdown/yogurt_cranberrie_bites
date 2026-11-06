@@ -7,6 +7,9 @@ use auth_service::adapters::r#in::grpc::{
     server::{proto, AuthGrpcServer},
 };
 use auth_service::config::{build_state, AppState};
+use auth_service::enrollment_policy::{
+    ApprovedPublication, ConsentRequest, EnrollmentStore, PolicyDocument,
+};
 use platform::actor_delegation::{
     ActorDelegationSigner, ActorDelegationVerifier, HEADER, LIFETIME_SECONDS,
 };
@@ -121,12 +124,49 @@ async fn state(
     }
     Ok(state)
 }
+
+const FIXTURE_POLICY_REVISION: &str = "3a1f4c62-9b7e-4f0d-8a52-6c1d2e3f4a5b";
+const FIXTURE_ACKNOWLEDGEMENT: &str = "rpc-fixture-terms-v1";
+
+/// Synthetic isolated-fixture policy. Never a production or legal approval.
+async fn seed_fixture_policy(pool: &PgPool, user: Uuid) -> anyhow::Result<()> {
+    let publication = ApprovedPublication {
+        revision: Uuid::parse_str(FIXTURE_POLICY_REVISION)?,
+        documents: vec![PolicyDocument {
+            id: "rpc-fixture-terms".into(),
+            title: "Synthetic admission RPC fixture terms".into(),
+            url: "https://fixture.example.test/rpc-terms".into(),
+            sha256: "ab".repeat(32),
+            required_acknowledgement_id: FIXTURE_ACKNOWLEDGEMENT.into(),
+        }],
+        approval_reference: "SYNTHETIC_TEST_FIXTURE_NOT_PRODUCTION_APPROVAL".into(),
+        published_at: chrono::DateTime::from_timestamp(1_577_836_800, 0)
+            .ok_or_else(|| anyhow::anyhow!("fixture policy publish time"))?,
+        expires_at: chrono::DateTime::from_timestamp(4_102_444_800, 0)
+            .ok_or_else(|| anyhow::anyhow!("fixture policy expiry"))?,
+    };
+    let store = EnrollmentStore::new(pool.clone());
+    store.publish(&publication).await?;
+    store
+        .consent(
+            user,
+            ConsentRequest {
+                policy_revision: publication.revision,
+                acknowledgement_ids: vec![FIXTURE_ACKNOWLEDGEMENT.into()],
+                idempotency_key: Uuid::new_v4(),
+            },
+        )
+        .await?;
+    Ok(())
+}
+
 async fn native_fixture() -> anyhow::Result<(PgPool, proto::ReadConcertAdmissionRequest)> {
     let pool = owned_pool().await?;
     let user = Uuid::new_v4();
     let family = Uuid::new_v4();
     sqlx::query("insert into users(id,primary_email,password_hash,status) values($1,$2,'private-rpc-password-hash','ACTIVE')").bind(user).bind(format!("{user}@private-rpc.invalid")).execute(&pool).await?;
     sqlx::query("insert into refresh_tokens(jti,token_hash,user_id,family_id,expires_at) values($1,'private-rpc-token-hash',$2,$3,clock_timestamp()+interval '1 hour')").bind(Uuid::new_v4().to_string()).bind(user).bind(family).execute(&pool).await?;
+    seed_fixture_policy(&pool, user).await?;
     Ok((
         pool,
         proto::ReadConcertAdmissionRequest {
@@ -183,8 +223,11 @@ async fn native_current_account_and_session_negatives_are_honest_rpc_facts() -> 
         .bind(user)
         .execute(&pool)
         .await?;
-    let facts = call(&mut server, msg).await?.into_inner();
-    assert!(!facts.account_active && !facts.session_live);
+    // Deleting the account cascades its acceptance; the canonical consent gate
+    // precedes account facts, so a deleted identity is refused, not observed.
+    let refused = call(&mut server, msg).await.unwrap_err();
+    assert_eq!(refused.code(), Code::FailedPrecondition);
+    assert_eq!(refused.message(), "CONSENT_REQUIRED");
     server.stop().await
 }
 #[tokio::test]

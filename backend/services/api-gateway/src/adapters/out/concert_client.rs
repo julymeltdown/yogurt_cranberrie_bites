@@ -26,31 +26,7 @@ const EDGE: EdgeBudget = EdgeBudget {
     failure_policy: FailurePolicy::FailRequest,
 };
 
-#[derive(Clone, Copy, Debug, PartialEq, Eq, thiserror::Error)]
-pub enum BootstrapError {
-    #[error("Bootstrap identity is unavailable")]
-    Identity,
-    #[error("Bootstrap is not permitted")]
-    Denied,
-    #[error("Bootstrap resource is unavailable")]
-    NotFound,
-    #[error("Bootstrap authority expired")]
-    Expired,
-    #[error("Bootstrap dependency is unavailable")]
-    Unavailable,
-    #[error("Bootstrap dependency response is invalid")]
-    InvalidResponse,
-}
-impl From<ConcertIdentityReadError> for BootstrapError {
-    fn from(error: ConcertIdentityReadError) -> Self {
-        match error {
-            ConcertIdentityReadError::AccessExpired
-            | ConcertIdentityReadError::DeadlineExceeded => Self::Expired,
-            ConcertIdentityReadError::NotEligible => Self::Denied,
-            _ => Self::Identity,
-        }
-    }
-}
+pub use crate::domain::concert_identity::BootstrapError;
 #[derive(Clone)]
 pub struct GrpcConcertClient {
     client: proto::concert_service_client::ConcertServiceClient<

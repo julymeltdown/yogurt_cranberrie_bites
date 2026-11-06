@@ -109,7 +109,7 @@ async fn policy(State(state): State<Arc<AppState>>) -> Response {
         EnrollmentOperation::Policy,
         state
             .enrollment_policy
-            .execute(EnrollmentOperation::Policy, None, None, Value::Null)
+            .dispatch(EnrollmentOperation::Policy, None, None, Value::Null)
             .await,
     )
 }
@@ -138,7 +138,7 @@ async fn begin(
         EnrollmentOperation::Begin,
         state
             .enrollment_policy
-            .execute(EnrollmentOperation::Begin, Some(&binding), None, body)
+            .dispatch(EnrollmentOperation::Begin, Some(&binding), None, body)
             .await,
     );
     if reply.status() == StatusCode::CREATED {
@@ -187,7 +187,7 @@ async fn anonymous(
         operation,
         state
             .enrollment_policy
-            .execute(operation, Some(&binding), None, body)
+            .dispatch(operation, Some(&binding), None, body)
             .await,
     )
 }
@@ -251,7 +251,7 @@ async fn authenticated(
         operation,
         state
             .enrollment_policy
-            .execute(operation, None, Some(actor), body)
+            .dispatch(operation, None, Some(actor), body)
             .await,
     )
 }

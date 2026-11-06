@@ -498,3 +498,310 @@ async fn cancellation(
     park(auth, g.id).await?;
     Ok(())
 }
+
+/// Real Auth source -> mounted factory Apply over mTLS HTTP/2 -> production
+/// PrivateData coordinator. Proves the composed serving service seals the whole
+/// acknowledgement, refuses a caller before the deleter, and replays after a
+/// service restart without duplicating effects.
+async fn seed_private_rows(p: &PgPool, user: Uuid, control: Uuid) -> anyhow::Result<()> {
+    let event = Uuid::new_v4();
+    sqlx::query("insert into concert_events(event_id,slug,title,phase) values($1,$2,$3,'OPEN')")
+        .bind(event)
+        .bind(format!("mount-{event}"))
+        .bind("Deletion mount")
+        .execute(p)
+        .await?;
+    for id in [user, control] {
+        sqlx::query("insert into concert_participants(event_id,user_id,theme,low_power,reduced_motion,sound_enabled) values($1,$2,'DANGER',true,true,true)")
+            .bind(event)
+            .bind(id)
+            .execute(p)
+            .await?;
+    }
+    sqlx::query("insert into concert_avatar_settings(event_id,user_id,contract_version,representation,preset_id,manifest_id,manifest_version) values($1,$2,'1.1.0','whole_character','photo01_front_01','mcr_selected_static_20261103',1)")
+        .bind(event)
+        .bind(user)
+        .execute(p)
+        .await?;
+    sqlx::query("insert into concert_age_owners(user_id) values($1)")
+        .bind(user)
+        .execute(p)
+        .await?;
+    Ok(())
+}
+
+async fn private_rows_remaining(p: &PgPool, user: Uuid) -> anyhow::Result<i64> {
+    let core: i64 = sqlx::query_scalar(
+        "select count(*) from concert_participants where user_id=$1 and (theme<>'PARADE' or low_power or reduced_motion or sound_enabled)",
+    )
+    .bind(user)
+    .fetch_one(p)
+    .await?;
+    let avatars: i64 =
+        sqlx::query_scalar("select count(*) from concert_avatar_settings where user_id=$1")
+            .bind(user)
+            .fetch_one(p)
+            .await?;
+    let age: i64 = sqlx::query_scalar(
+        "select (select count(*) from concert_age_verifications where user_id=$1)+(select count(*) from concert_age_claims where user_id=$1)+(select count(*) from concert_age_owners where user_id=$1)",
+    )
+    .bind(user)
+    .fetch_one(p)
+    .await?;
+    let media: i64 = sqlx::query_scalar(
+        "select count(*) from concert_media where owner_id=$1 and state<>'DELETED'",
+    )
+    .bind(user)
+    .fetch_one(p)
+    .await?;
+    let intro: i64 = sqlx::query_scalar("select count(*) from concert_intros where owner_id=$1")
+        .bind(user)
+        .fetch_one(p)
+        .await?;
+    let party: i64 = sqlx::query_scalar(
+        "select case when concert_party_has_private_input($1) then 1::bigint else 0::bigint end",
+    )
+    .bind(user)
+    .fetch_one(p)
+    .await?;
+    let meeting: i64 = sqlx::query_scalar(
+        "select case when concert_meeting_has_private_input($1) then 1::bigint else 0::bigint end",
+    )
+    .bind(user)
+    .fetch_one(p)
+    .await?;
+    Ok(core + avatars + age + media + intro + party + meeting)
+}
+
+/// Sharing runs before PrivateData in the canonical saga. Its durable terminal
+/// row for this saga is the only evidence the aggregate accepts; this fixture
+/// records that preceding step, never a fabricated PrivateData receipt.
+async fn record_sharing_terminal(
+    p: &PgPool,
+    c: &common::WorldDeletionCommand,
+) -> anyhow::Result<()> {
+    let mut sharing = c.clone();
+    sharing.target = common::WorldDeletionTarget::Sharing;
+    let source = [0x42u8; 32];
+    sqlx::query("insert into concert_social_account_deletions(saga_id,user_id,actor_id,retention_seconds,retention_nanos,identity_binding,command_binding,source_binding,fence_revision) values($1,$2,$3,$4,$5,$6,$7,$8,1)")
+        .bind(c.saga_id)
+        .bind(c.user_id)
+        .bind(c.actor_id)
+        .bind(c.retention_until.timestamp())
+        .bind(c.retention_until.timestamp_subsec_nanos() as i32)
+        .bind(sharing.identity_binding().map_err(|e| anyhow::anyhow!("{e:?}"))?.as_slice())
+        .bind(sharing.binding().map_err(|e| anyhow::anyhow!("{e:?}"))?.as_slice())
+        .bind(source.as_slice())
+        .execute(p)
+        .await?;
+    let hex: String = source.iter().map(|x| format!("{x:02x}")).collect();
+    let mut tx = p.begin().await?;
+    sqlx::query("select set_config('mcr.social_deletion_saga',$1,true),set_config('mcr.social_deletion_source',$2,true),set_config('mcr.social_deletion_until',(clock_timestamp()+interval '4 seconds')::text,true)")
+        .bind(c.saga_id.to_string())
+        .bind(hex)
+        .execute(&mut *tx)
+        .await?;
+    sqlx::query("update concert_social_account_deletions set completed_at=clock_timestamp(),progress_revision=progress_revision+1 where saga_id=$1 and completed_at is null")
+        .bind(c.saga_id)
+        .execute(&mut *tx)
+        .await?;
+    tx.commit().await?;
+    Ok(())
+}
+
+fn private_command(
+    g: &UserDeletionSaga,
+) -> auth_service::application::concert_deletion::ConcertDeletionCommand {
+    auth_service::application::concert_deletion::ConcertDeletionCommand {
+        key: auth_service::application::concert_deletion::ConcertDeletionKey {
+            saga_id: g.id,
+            user_id: g.user_id,
+            target: auth_service::application::concert_deletion::ConcertDeletionTarget::PrivateData,
+        },
+        actor_id: g.actor_id,
+        retention_until: g.retention_until,
+    }
+}
+
+async fn private_rounds(
+    client: &ConcertDeletionClient,
+    command: &auth_service::application::concert_deletion::ConcertDeletionCommand,
+) -> anyhow::Result<Option<auth_service::application::concert_deletion::ConcertDeletionAcknowledgement>>
+{
+    use auth_service::application::concert_deletion::ConcertDeletionFailure;
+    let mut ack = None;
+    for _ in 0..=8 {
+        match client
+            .apply_with_deadline(
+                command.clone(),
+                tokio::time::Instant::now() + Duration::from_secs(4),
+            )
+            .await
+        {
+            Ok(whole) => {
+                ack = Some(whole);
+                break;
+            }
+            Err(ConcertDeletionFailure::Incomplete) => continue,
+            Err(other) => anyhow::bail!("PrivateData apply failed before completion: {other:?}"),
+        }
+    }
+    Ok(ack)
+}
+
+#[tokio::test]
+#[ignore = "fresh PG16/PKI allocation; mounted mTLS factory, PrivateData ACK, restart and caller refusal"]
+async fn mounted_private_data_ack_restart_and_session_revocation_boundary() -> anyhow::Result<()> {
+    let auth = environment::pool("auth").await?;
+    let concert = environment::pool("concert").await?;
+    let source = source_server(auth.clone()).await?;
+    let rpc = factory_server(
+        concert.clone(),
+        &source.url,
+        Workload::Concert,
+        LiveDeletionOwners::default(),
+    )
+    .await?;
+    let s = state(auth.clone(), &rpc.url, "https://127.0.0.1:1", 5000).await?;
+    // Auth workload material authenticates the caller; the endpoint check still
+    // requires the Concert server identity.
+    let tls = environment::tls(Workload::Auth)?;
+    let client = ConcertDeletionClient::connect(&rpc.url, &tls, AUTH)?;
+
+    let g = begin(&s, &auth).await?;
+    let control = Uuid::new_v4();
+    seed_private_rows(&concert, g.user_id, control).await?;
+    assert!(private_rows_remaining(&concert, g.user_id).await? >= 3);
+    let command = private_command(&g);
+    // A bounded round either seals the whole acknowledgement already or
+    // establishes the common fence and stops incomplete. Only the latter needs
+    // the preceding Sharing terminal, which the canonical saga records first.
+    let mut whole = match client
+        .apply_with_deadline(
+            command.clone(),
+            tokio::time::Instant::now() + Duration::from_secs(4),
+        )
+        .await
+    {
+        Ok(whole) => Some(whole),
+        Err(auth_service::application::concert_deletion::ConcertDeletionFailure::Incomplete) => {
+            None
+        }
+        Err(other) => anyhow::bail!("first bounded PrivateData round failed: {other:?}"),
+    };
+    if whole.is_none() {
+        record_sharing_terminal(
+            &concert,
+            &common::WorldDeletionCommand {
+                saga_id: g.id,
+                user_id: g.user_id,
+                actor_id: g.actor_id,
+                target: common::WorldDeletionTarget::PrivateData,
+                retention_until: g.retention_until,
+            },
+        )
+        .await?;
+        whole = private_rounds(&client, &command).await?;
+    }
+    let ack = whole.ok_or_else(|| anyhow::anyhow!("mounted PrivateData Apply never sealed an ACK"))?;
+    assert_eq!(ack.command, command);
+    assert!(ack.fence_revision > 0);
+    assert_eq!(private_rows_remaining(&concert, g.user_id).await?, 0);
+    let control_theme: String =
+        sqlx::query_scalar("select theme from concert_participants where user_id=$1")
+            .bind(control)
+            .fetch_one(&concert)
+            .await?;
+    assert_eq!(control_theme, "DANGER");
+
+    // A caller whose credential is not the configured Auth workload is rejected
+    // before the source or any deleter is reached.
+    let revoked = begin(&s, &auth).await?;
+    let revoked_control = Uuid::new_v4();
+    seed_private_rows(&concert, revoked.user_id, revoked_control).await?;
+    let rejected = ConcertDeletionClient::connect(&rpc.url, &tls, "revoked-auth")?;
+    assert!(rejected
+        .apply_with_deadline(
+            private_command(&revoked),
+            tokio::time::Instant::now() + Duration::from_secs(4)
+        )
+        .await
+        .is_err());
+    let reached: i64 = sqlx::query_scalar(
+        "select (select count(*) from concert_private_data_owner_progress where user_id=$1)+(select count(*) from concert_world_account_deletion_fences where user_id=$1)",
+    )
+    .bind(revoked.user_id)
+    .fetch_one(&concert)
+    .await?;
+    assert_eq!(reached, 0, "rejected caller reached the deleter");
+    assert!(private_rows_remaining(&concert, revoked.user_id).await? >= 3);
+
+    // The schema and the canonical Auth source require every session to be
+    // revoked before a deletion source is granted; no live token may exist.
+    let live_tokens: i64 = sqlx::query_scalar(
+        "select count(*) from refresh_tokens where user_id=$1 and revoked_at is null",
+    )
+    .bind(revoked.user_id)
+    .fetch_one(&auth)
+    .await?;
+    assert_eq!(live_tokens, 0, "deleted user retains a live session");
+    // A tampered retention is refused by the canonical Auth source before any
+    // deleter runs.
+    let mut tampered = private_command(&revoked);
+    tampered.retention_until += chrono::Duration::microseconds(1);
+    assert!(client
+        .apply_with_deadline(
+            tampered,
+            tokio::time::Instant::now() + Duration::from_secs(4)
+        )
+        .await
+        .is_err());
+    let reached: i64 = sqlx::query_scalar(
+        "select (select count(*) from concert_private_data_owner_progress where user_id=$1)+(select count(*) from concert_world_account_deletion_fences where user_id=$1)",
+    )
+    .bind(revoked.user_id)
+    .fetch_one(&concert)
+    .await?;
+    assert_eq!(reached, 0, "source-refused request reached the deleter");
+
+    // Service restart: a fresh composed factory replays the committed receipt.
+    let receipt_before: Option<chrono::DateTime<chrono::Utc>> = sqlx::query_scalar(
+        "select completed_at from concert_private_data_owner_progress where user_id=$1",
+    )
+    .bind(g.user_id)
+    .fetch_one(&concert)
+    .await?;
+    rpc.finish().await?;
+    let restarted = factory_server(
+        concert.clone(),
+        &source.url,
+        Workload::Concert,
+        LiveDeletionOwners::default(),
+    )
+    .await?;
+    let replay = ConcertDeletionClient::connect(&restarted.url, &tls, AUTH)?;
+    let again = replay
+        .apply_with_deadline(
+            command.clone(),
+            tokio::time::Instant::now() + Duration::from_secs(4),
+        )
+        .await?;
+    assert_eq!(again, ack);
+    let receipt_after: Option<chrono::DateTime<chrono::Utc>> = sqlx::query_scalar(
+        "select completed_at from concert_private_data_owner_progress where user_id=$1",
+    )
+    .bind(g.user_id)
+    .fetch_one(&concert)
+    .await?;
+    assert_eq!(
+        receipt_before, receipt_after,
+        "restart rewrote the terminal receipt"
+    );
+    assert_eq!(private_rows_remaining(&concert, g.user_id).await?, 0);
+    restarted.finish().await?;
+    source.finish().await?;
+    auth.close().await;
+    concert.close().await;
+    println!("MOUNTED DELETION PASS: sealed PrivateData ACK over mTLS, caller refusal before deleter, zero unrevoked sessions, tampered source refusal, restart replay without duplicate effects, zero private rows, control intact");
+    Ok(())
+}

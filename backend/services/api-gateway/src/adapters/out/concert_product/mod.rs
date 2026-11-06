@@ -12,7 +12,7 @@ mod network;
 pub mod proto {
     tonic::include_proto!("concert.product.v1");
 }
-pub const MAX_BODY: usize = 10 * 1024 * 1024;
+pub use crate::product_http::{ProductHttpRequest, MAX_BODY};
 const BUDGET: Duration = Duration::from_secs(2);
 const EDGE: EdgeBudget = EdgeBudget {
     edge: "gateway.concert.product",
@@ -22,17 +22,6 @@ const EDGE: EdgeBudget = EdgeBudget {
     retry: RetryClass::Never,
     failure_policy: FailurePolicy::FailRequest,
 };
-/// Captured by the HTTP route. Raw uploads and idempotency keys are not logged.
-pub struct ProductHttpRequest {
-    pub client_address: Option<crate::adapters::r#in::http::client_identity::VerifiedClientAddress>,
-    pub event: Uuid,
-    pub request_id: Uuid,
-    pub method: String,
-    pub target: String,
-    pub body: Vec<u8>,
-    pub content_type: String,
-    pub idempotency_key: String,
-}
 #[derive(Clone)]
 pub struct GrpcConcertProductClient {
     network_key: Option<std::sync::Arc<network::NetworkBucketKey>>,

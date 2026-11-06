@@ -1,0 +1,61 @@
+{
+  "source_revision": "64b25dc16fba66959213dc901b760b73cc7a02bc",
+  "pending_fixture_sha256": "1485906d9f79b0cd1653d98f2f2a1d953345ce4a95c7fc96fc996fc80234fc77",
+  "artifacts": [
+    {
+      "name": "concert_service",
+      "path": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-delivery-combined-64b25dc-3cwrmf9c/concert_service",
+      "sha256": "c3c06ca365890335c80bdca3f1758c80e98f3d9accacf76b87f3ed140d9f4c3d"
+    },
+    {
+      "name": "config",
+      "path": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-delivery-combined-64b25dc-3cwrmf9c/config",
+      "sha256": "52f45976fea65e483e72b0ae2ca1e6ed3a6d99139937f44b7f41523cfeb969be"
+    },
+    {
+      "name": "meeting_rally",
+      "path": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-delivery-combined-64b25dc-3cwrmf9c/meeting_rally",
+      "sha256": "f4d4810da3d908ab1801396df252c4c1b1c3f6498ef60d3876b05e01da21c64b"
+    },
+    {
+      "name": "bootstrap_runtime_config",
+      "path": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-delivery-combined-64b25dc-3cwrmf9c/bootstrap_runtime_config",
+      "sha256": "7ccd67196fbe6f926ecf4c22d906d72bed2dec638f46b9f8a8a47f989f64ce91"
+    },
+    {
+      "name": "bootstrap_authority",
+      "path": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-delivery-combined-64b25dc-3cwrmf9c/bootstrap_authority",
+      "sha256": "29ab226735cc7fca68eac7df0ecdb319dde13a068c100ef73a460182c62c91c4"
+    },
+    {
+      "name": "feed_wire",
+      "path": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-delivery-combined-64b25dc-3cwrmf9c/feed_wire",
+      "sha256": "f45a933fbaa165c95f569ab50a507a0e15ce412c3e593456c308cee2df3b88e9"
+    },
+    {
+      "name": "meeting_beacons",
+      "path": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-delivery-combined-64b25dc-3cwrmf9c/meeting_beacons",
+      "sha256": "3558a1d4d3429056ab91197e81e5ce8078875d32c339a36fffa59d7c7a32e497"
+    },
+    {
+      "name": "meeting_migrations",
+      "path": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-delivery-combined-64b25dc-3cwrmf9c/meeting_migrations",
+      "sha256": "bbbe2e3dfe2742ebef621c5b05c1ba417dc3d88e35f8e084c0f9f2528603d85a"
+    },
+    {
+      "name": "world_simulation",
+      "path": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-delivery-combined-64b25dc-3cwrmf9c/world_simulation",
+      "sha256": "a71b3cff130e882019b60b450be0fca3aad79fa90d31ebbb965e00fe0e97cb36"
+    },
+    {
+      "name": "feed_cursor",
+      "path": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-delivery-combined-64b25dc-3cwrmf9c/feed_cursor",
+      "sha256": "3f07d31a8b7f1a288e83009407ac12b5aac1d2e9cbeb36a621eebc3a4979dac9"
+    },
+    {
+      "name": "meeting_authority",
+      "path": "/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/mcr-delivery-combined-64b25dc-3cwrmf9c/meeting_authority",
+      "sha256": "b69e27555bb6de00bf2d798842a720c8e103febf462cc2f05627774309ace89f"
+    }
+  ]
+}

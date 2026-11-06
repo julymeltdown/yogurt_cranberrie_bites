@@ -79,6 +79,22 @@ impl RouteHarness {
         Self::with_config(config).await
     }
 
+    /// A harness whose Gateway has one controlled OAuth transport enabled.
+    /// Public OAuth stays unqualified; this only exercises the explicit
+    /// parity/controlled path the routes gate on.
+    pub async fn with_oauth_transport() -> Self {
+        let mut config = test_config(shared_test_jwt_key().jwks_json.as_str());
+        config.oauth_exposure = api_gateway::config::OAuthExposurePolicy::from_settings(
+            RuntimeMode::Parity,
+            "",
+            "google,apple,x",
+            Some("unit-oauth-handoff-key-contains-32-bytes".into()),
+            Some("http://localhost:3000".into()),
+        )
+        .expect("controlled OAuth policy");
+        Self::with_config(config).await.expect("state")
+    }
+
     pub async fn with_admission(policies: AdmissionPolicies) -> anyhow::Result<Self> {
         let mut config = test_config(shared_test_jwt_key().jwks_json.as_str());
         config.admission = policies;
@@ -343,6 +359,7 @@ fn test_config(jwks_json: &str) -> AppConfig {
         notification_grpc_endpoint: "http://127.0.0.1:50054".into(),
         post_grpc_endpoint: "http://127.0.0.1:50055".into(),
         refresh_cookie_domain: String::new(),
+        oauth_exposure: api_gateway::config::OAuthExposurePolicy::default(),
         refresh_cookie_secure: false,
         refresh_cookie_max_age_seconds: 1209600,
         aggregation_cache_ttl_seconds: 30,

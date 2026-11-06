@@ -1,9 +1,8 @@
 //! C03 public routes. Root supplies the actual client and outer transport layers.
 use super::{concert_access::HttpConcertAccess, GatewayError};
 use crate::{
-    adapters::out::concert_participant::{
-        failure_status, GrpcConcertParticipantClient, Operation, ParticipantHttpRequest, MAX_BODY,
-    },
+    concert_participant_client::{failure_status, GrpcConcertParticipantClient},
+    concert_participant_http::{Operation, ParticipantHttpRequest, MAX_BODY},
     config::AppState,
 };
 use axum::{

@@ -1,0 +1,10 @@
+{
+  "scope": "Actual isolated PostgreSQL bridge; synthetic external authority, NOT IN01",
+  "binary_sha256": "3ee5fe7cb5692cb58e1a7f76de23511c1804497c859f196bab7e4db4ab8f02f4",
+  "owned_root": "/private/tmp/mcr-pg-acc5di6c",
+  "postgres": "16.14 (Homebrew)",
+  "native_exit": 0,
+  "log_sha256": "bfee51787a23e18c0712c5611c73d8fd457562edfd7bca6e035642528b1d05d4",
+  "result": "PASS",
+  "cleanup": "PASS"
+}

@@ -58,9 +58,17 @@ fn request(
 }
 
 async fn json(response: axum::response::Response, status: StatusCode) -> Value {
-    assert_eq!(response.status(), status);
-    assert_eq!(response.headers()[header::CACHE_CONTROL], "no-store");
-    serde_json::from_slice(&to_bytes(response.into_body(), 65_536).await.unwrap()).unwrap()
+    let actual = response.status();
+    let cache_control = response.headers()[header::CACHE_CONTROL].clone();
+    let bytes = to_bytes(response.into_body(), 65_536).await.unwrap();
+    assert_eq!(
+        actual,
+        status,
+        "unexpected boundary response: {}",
+        String::from_utf8_lossy(&bytes)
+    );
+    assert_eq!(cache_control, "no-store");
+    serde_json::from_slice(&bytes).unwrap()
 }
 
 fn ticket_body() -> String {
@@ -138,6 +146,36 @@ async fn public_room_catalog_is_bound_to_event_and_signed_chain() {
     assert_eq!(owners.profile.calls.load(Ordering::SeqCst), 1);
     assert_eq!(world.service.seen.lock().unwrap().len(), 1);
     h.pool.close().await;
+    world.close().await;
+    owners.close().await;
+}
+
+#[tokio::test]
+async fn oversized_ticket_body_is_413_before_any_owner_read() {
+    let owners = Running::start().await;
+    let world = RunningWorld::start().await;
+    let h = harness(&owners, &world).await;
+    let path = format!("/api/concert/events/{}/world-tickets", Uuid::new_v4());
+    let mut body = ticket_body().into_bytes();
+    body.resize(4097, b' ');
+    // The C05 router owns the 4096-byte ticket bound. The same router is
+    // mounted under the composed Gateway, whose journal/admission layers need
+    // the live stack; exercise the boundary that actually enforces the bound.
+    let response =
+        api_gateway::adapters::r#in::http::concert_world::router_with_boundary(h.state.clone())
+            .oneshot(request(
+                &path,
+                true,
+                std::str::from_utf8(&body).unwrap(),
+                Some("http://localhost:3000"),
+                Some("browser"),
+            ))
+            .await
+            .unwrap();
+    let value = json(response, StatusCode::PAYLOAD_TOO_LARGE).await;
+    assert_eq!(value["details"]["reason"], "PAYLOAD_TOO_LARGE");
+    assert!(world.service.seen.lock().unwrap().is_empty());
+    assert_eq!(owners.auth.calls.load(Ordering::SeqCst), 0);
     world.close().await;
     owners.close().await;
 }

@@ -38,6 +38,15 @@ async fn main() -> anyhow::Result<()> {
     // Validate all security and product inputs before opening the database or
     // listeners. Absence retains the explicit health-only operational mode.
     let runtime = config::bootstrap_runtime::BootstrapRuntime::load()?;
+    // Account deletion serving is an explicit opt-in. It reuses the incumbent
+    // guarded listener, its mTLS material and the canonical Auth endpoint and
+    // credential; it never opens a second registry or listener.
+    let deletion_settings = config::account_deletion_runtime::AccountDeletionSettings::load()?;
+    anyhow::ensure!(
+        deletion_settings == config::account_deletion_runtime::AccountDeletionSettings::Off
+            || runtime.is_some(),
+        "Managed account deletion requires the guarded Concert bootstrap listener"
+    );
     let product_settings = config::product_runtime::ProductSettings::load(runtime.is_some())?;
     let mut world_settings = config::world_runtime::WorldRuntimeSettings::load()?;
     anyhow::ensure!(
@@ -287,6 +296,19 @@ async fn main() -> anyhow::Result<()> {
     } else {
         (None, None)
     };
+    // The deletion composer borrows the exact supervised World bridge/socket
+    // registry. It is only requested when a World is actually served.
+    let (deletion_world_tx, deletion_world_rx) = if deletion_settings
+        != config::account_deletion_runtime::AccountDeletionSettings::Off
+        && world_settings.is_some()
+    {
+        let (sender, receiver) = tokio::sync::oneshot::channel::<
+            config::deletion_world_binding::ServingWorldBinding,
+        >();
+        (Some(sender), Some(receiver))
+    } else {
+        (None, None)
+    };
     let _application = config::build_application(pool.clone());
     let receipt_maintenance =
         concert_service::workers::receipts::ReceiptMaintenance::new(pool.clone());
@@ -311,8 +333,48 @@ async fn main() -> anyhow::Result<()> {
                     _ = platform::shutdown::global().cancelled() => return Ok(()),
                 }
             }
+            let deletion_world = match deletion_world_rx {
+                Some(binding) => Some(tokio::select! {
+                    result = binding => result
+                        .map_err(|_| anyhow::anyhow!("World deletion binding failed"))?,
+                    _ = platform::shutdown::global().cancelled() => return Ok(()),
+                }),
+                None => None,
+            };
             match (runtime, bootstrap) {
                 (Some(runtime), Some(release)) => {
+                    // Compose on the actual serving pool, canonical Auth endpoint,
+                    // listener mTLS and the exact supervised World objects. Missing
+                    // optional owners stay unavailable for their own target.
+                    let deletion = match deletion_settings {
+                        config::account_deletion_runtime::AccountDeletionSettings::Off => None,
+                        config::account_deletion_runtime::AccountDeletionSettings::Managed => {
+                            let endpoint = std::env::var("CONCERT_AUTH_GRPC_ENDPOINT")
+                                .map_err(|_| anyhow::anyhow!("CONCERT_AUTH_GRPC_ENDPOINT is required for managed account deletion"))?;
+                            let credential = std::env::var("CONCERT_SERVICE_CREDENTIAL")
+                                .map_err(|_| anyhow::anyhow!("CONCERT_SERVICE_CREDENTIAL is required for managed account deletion"))?;
+                            Some(
+                                config::account_deletion_runtime::AccountDeletionRuntime::compose(
+                                    deletion_settings,
+                                    grpc_pool.clone(),
+                                    &endpoint,
+                                    runtime.tls.as_ref(),
+                                    &credential,
+                                    config::account_deletion_runtime::AuthDeletionCallers::configured()?,
+                                    config::account_deletion_runtime::LiveDeletionOwners {
+                                        worlds: deletion_world
+                                            .as_ref()
+                                            .map(|world| vec![world.as_serving_world()]),
+                                        sharing_publisher: deletion_sharing_publisher,
+                                    },
+                                )?
+                                .ok_or_else(|| {
+                                    anyhow::anyhow!("Managed account deletion composer is unavailable")
+                                })?
+                                .service()?,
+                            )
+                        }
+                    };
                     let mut server = tonic::transport::Server::builder()
                         .layer(platform::actor_delegation::response_scope::RetainedScopeLayer)
                         .layer(platform::correlation::CorrelationLayer)
@@ -436,6 +498,7 @@ async fn main() -> anyhow::Result<()> {
                         .add_optional_service(feed_callback)
                         .add_optional_service(archive)
                         .add_optional_service(delivery)
+                        .add_optional_service(deletion)
                         .serve_with_shutdown(
                             runtime.address,
                             platform::shutdown::global().cancelled(),
@@ -449,11 +512,19 @@ async fn main() -> anyhow::Result<()> {
         let world = async move {
             match (world_settings, world_owners, world_ready_tx) {
                 (Some(settings), Some(owners), Some(ready)) => {
-                    match (world_transport, world_local) {
-                        (Some(transport), Some(local)) => settings
+                    match (world_transport, world_local, deletion_world_tx) {
+                        (Some(transport), Some(local), Some(deletion)) => settings
+                            .serve_with_ready_social_and_deletion_and_bridge(
+                                world_pool, owners, ready, transport, local, deletion, closure_bridge,
+                            )
+                            .await,
+                        (None, None, Some(deletion)) => settings
+                            .serve_with_ready_and_deletion_and_bridge(world_pool, owners, ready, deletion, closure_bridge)
+                            .await,
+                        (Some(transport), Some(local), None) => settings
                             .serve_with_ready_and_social_and_bridge(world_pool, owners, ready, transport, local, closure_bridge)
                             .await,
-                        (None, None) => settings.serve_with_ready_and_bridge(world_pool, owners, ready, closure_bridge).await,
+                        (None, None, None) => settings.serve_with_ready_and_bridge(world_pool, owners, ready, closure_bridge).await,
                         _ => anyhow::bail!("World Social policy composition is incomplete"),
                     }
                 }
@@ -545,6 +616,26 @@ mod tests {
     use super::component;
     use platform::shutdown::Shutdown;
     use std::sync::atomic::{AtomicBool, Ordering};
+
+    /// The serving binary, not only a test fixture, must compose the account
+    /// deletion coordinator on the incumbent listener behind the Auth-only
+    /// caller registry and mount the composed service.
+    #[test]
+    fn serving_binary_composes_and_mounts_account_deletion() {
+        let source = include_str!("main.rs");
+        for required in [
+            "AccountDeletionSettings::load",
+            "AccountDeletionRuntime::compose",
+            "AuthDeletionCallers::configured",
+            "LiveDeletionOwners",
+            "as_serving_world",
+            ".add_optional_service(deletion)",
+            "serve_with_ready_social_and_deletion",
+            "serve_with_ready_and_deletion",
+        ] {
+            assert!(source.contains(required), "serving binary omits {required}");
+        }
+    }
 
     #[tokio::test]
     async fn component_failure_requests_stop_and_allows_peer_cleanup_to_finish() {

@@ -331,7 +331,7 @@ async fn native_policy_signup_atomicity_guarded_rpc_gateway_and_restart() -> any
                 )?;
             assert_eq!(
                 denied_client
-                    .execute(EnrollmentOperation::Policy, None, None, Value::Null)
+                    .dispatch(EnrollmentOperation::Policy, None, None, Value::Null)
                     .await
                     .unwrap_err()
                     .status,

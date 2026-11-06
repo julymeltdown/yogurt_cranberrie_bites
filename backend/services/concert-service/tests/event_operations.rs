@@ -4,6 +4,7 @@ use chrono::{DateTime, Utc};
 use concert_application::{admin::event::*, admin::notices::*, admin::*, commands::*};
 use concert_domain::{EventPhase, Revision};
 use concert_service::adapters::out::repository::{event_operations::*, report::*};
+use concert_service::operations_live::{PgOperationsReview, PgOperationsRoles};
 use sqlx::{
     postgres::{PgConnectOptions, PgPoolOptions},
     PgConnection, PgPool, Row,
@@ -644,6 +645,116 @@ async fn expired_receipt_retirement_needs_no_user_role_lease() -> anyhow::Result
             .await?;
     assert_eq!(row.try_get::<String, _>("state")?, "RETIRED");
     assert_eq!(row.try_get::<Option<Uuid>, _>("resource_id")?, None);
+    p.close().await;
+    Ok(())
+}
+#[tokio::test]
+async fn production_operator_role_and_reviewed_notice_are_required_and_persisted(
+) -> anyhow::Result<()> {
+    struct ProductionAuthority;
+    #[async_trait]
+    impl FencedOperationsAuthority for ProductionAuthority {
+        async fn check_in(
+            &self,
+            c: &mut PgConnection,
+            q: AuthorityQuery,
+            now: DateTime<Utc>,
+        ) -> Result<RoleLease, CommandError> {
+            PgOperationsRoles::role_in(c, q.actor, q, now, now + chrono::Duration::seconds(30))
+                .await
+        }
+    }
+    let (p, a) = fixture().await?;
+    let keys = keys();
+    let repo = PgEventOperations::new(
+        p.clone(),
+        ProductionAuthority,
+        PgOperationsReview,
+        UnavailablePlaces,
+    );
+    assert_eq!(
+        repo.execute(a, Uuid::new_v4(), None, command(1, true), &keys)
+            .await
+            .unwrap_err(),
+        CommandError::Denied
+    );
+    sqlx::query("insert into concert_event_operator_roles(event_id,user_id,role,granted_by) values($1,$2,'OPERATOR',$2)")
+        .bind(a.event)
+        .bind(a.actor)
+        .execute(&p)
+        .await?;
+    let receipt = repo
+        .execute(a, Uuid::new_v4(), None, command(1, true), &keys)
+        .await?;
+    assert_eq!(receipt.state, ReceiptState::Succeeded);
+    let read = repo.settings(a).await?;
+    assert!(read.settings.features.parties && read.settings.features.social);
+    let phase = repo
+        .execute(
+            a,
+            Uuid::new_v4(),
+            None,
+            EventCommand::Phase {
+                expected: Revision::new(2)?,
+                phase: EventPhase::Live,
+                reason: "Operator opens the live phase".into(),
+            },
+            &keys,
+        )
+        .await?;
+    assert_eq!(phase.reference.unwrap().revision, 3);
+    let phase_row: String =
+        sqlx::query_scalar("select phase from concert_events where event_id=$1")
+            .bind(a.event)
+            .fetch_one(&p)
+            .await?;
+    assert_eq!(phase_row, "LIVE");
+    let input = notice_input();
+    assert_eq!(
+        repo.execute(a, Uuid::new_v4(), None, EventCommand::NoticeCreate(input.clone()), &keys)
+            .await
+            .unwrap_err(),
+        CommandError::Unavailable,
+        "an operator role alone is not a reviewed notice"
+    );
+    sqlx::query("insert into concert_operation_notice_reviews(event_id,input_digest,source_uri,reviewed_by) values($1,$2,$3,$4)")
+        .bind(a.event)
+        .bind(notice_review_digest(&input).as_slice())
+        .bind(&input.source_uri)
+        .bind(a.actor)
+        .execute(&p)
+        .await?;
+    let published = repo
+        .execute(a, Uuid::new_v4(), None, EventCommand::NoticeCreate(input.clone()), &keys)
+        .await?;
+    assert_eq!(published.state, ReceiptState::Succeeded);
+    let notices = repo.notices(a, None, 20).await?;
+    assert_eq!(notices.len(), 1);
+    assert_eq!(notices[0].title, input.title);
+    assert_eq!(notices[0].state, "PUBLISHED");
+    let member = Actor {
+        actor: Uuid::new_v4(),
+        event: a.event,
+    };
+    assert_eq!(
+        repo.execute(member, Uuid::new_v4(), None, command(3, true), &keys)
+            .await
+            .unwrap_err(),
+        CommandError::Denied,
+        "a non-operator cannot mutate settings"
+    );
+    sqlx::query("update concert_event_operator_roles set revoked_at=clock_timestamp() where event_id=$1 and user_id=$2")
+        .bind(a.event)
+        .bind(a.actor)
+        .execute(&p)
+        .await?;
+    assert_eq!(
+        repo.execute(a, Uuid::new_v4(), None, command(3, true), &keys)
+            .await
+            .unwrap_err(),
+        CommandError::Denied,
+        "a revoked operator loses current authority"
+    );
     p.close().await;
     Ok(())
 }

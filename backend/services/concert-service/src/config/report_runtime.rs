@@ -1,8 +1,13 @@
-//! Explicit USER/no-media report startup over Root's existing canonical owners.
+//! Explicit USER/no-media report and event-administration startup over Root's
+//! existing canonical owners. The operator role and reviewed-notice owners lock
+//! their durable rows on each command transaction; neither has a positive default.
 //! No listener, fallback key, operator grant or second owner lifecycle is created.
 use crate::{
     config::{canonical_runtime::CanonicalOwnerComposition, product_runtime::ProductOwners},
-    operations_live::{report_product::ReportProduct, OperationsOwners, OperationsRuntime},
+    operations_live::{
+        report_product::ReportProduct, OperationsOwners, OperationsRuntime, PgOperationsReview,
+        PgOperationsRoles,
+    },
     product_rpc::{proto, scoped::ScopedProductOwner, Operation, ProductOwner, VerifiedProduct},
 };
 use concert_application::commands::{FingerprintKeys, SigningKey};
@@ -133,9 +138,12 @@ impl ReportStartupSettings {
         owners: &CanonicalOwnerComposition,
         base: ProductOwners,
     ) -> anyhow::Result<ProductOwners> {
+        let mut operations_owners = OperationsOwners::default();
+        operations_owners.roles = Some(Arc::new(PgOperationsRoles));
+        operations_owners.review = Arc::new(PgOperationsReview);
         let runtime = Arc::new(OperationsRuntime::new(
             pool,
-            OperationsOwners::default(),
+            operations_owners,
             self.receipts,
             &self.cursor,
         )?);
@@ -171,7 +179,9 @@ impl ProductOwner for ReportOverlay {
         request: proto::ProductRequest,
     ) -> Result<tonic::Response<proto::ProductResponse>, tonic::Status> {
         match context.operation() {
-            Operation::Report(_) => self.report.dispatch(context, request).await,
+            Operation::Report(_) | Operation::Operations(_) => {
+                self.report.dispatch(context, request).await
+            }
             _ => self.base.dispatch(context, request).await,
         }
     }
