@@ -87,7 +87,7 @@ behavior.
 | `corepack pnpm@11.7.0 install --frozen-lockfile --offline` | 0 | `Already up to date` |
 | `corepack pnpm@11.7.0 run typecheck` | 0 | `tsc -b` clean |
 | `corepack pnpm@11.7.0 exec vitest run src/features/paradise-city-map src/app/venue-notes-adapter src/shared/api/paradise-city-v1/__tests__/notes.test.ts src/app/venue-entry src/app/venue-root src/app/__tests__/shell.test.tsx src/app/__tests__/venue-shell-ports src/app/__tests__/venue-host-integration` | 0 | 14 files, 273 tests passed |
-| `corepack pnpm@11.7.0 exec vitest run` (whole suite) | 1 | 413 files / 5739 tests passed, 14 skipped, **1 pre-existing failure** (below) |
+| `corepack pnpm@11.7.0 exec vitest run` (whole suite) | 1 | 414 files / 5754 tests passed, 14 skipped, **3 pre-existing failures** (below) |
 | `corepack pnpm@11.7.0 exec oxlint <16 changed files>` | 0 | No findings |
 | `node src/app/__tests__/venue-notes-ui/native.mjs` | 0 | `result: PASS`, no console/page errors |
 
@@ -100,12 +100,18 @@ view tests for server-count markers, cluster selection, right-limited composer,
 withdraw revision, reply author identity, expiry at the clock boundary and the server
 total heading.
 
-Pre-existing failure observed and **not** caused by this task:
-`src/shared/api/__tests__/c07-social-client/compatibility.test.ts` — "pins the exact
-public cohort" compares `frontend/src/shared/api/domain-operations.generated.ts`
-(`80905d6d…` pinned vs `2c45873e…` computed). It fails identically on the main
-checkout at master `937ab6699` (`/Users/lhs/Desktop/mcr/frontend`), which this branch
-does not touch.
+Pre-existing failures observed and **not** caused by this task:
+
+1. `src/shared/api/__tests__/c07-social-client/compatibility.test.ts` — "pins the
+   exact public cohort" compares `frontend/src/shared/api/domain-operations.generated.ts`
+   (`80905d6d…` pinned vs `2c45873e…` computed). It fails identically on the main
+   checkout at master `937ab6699` (`/Users/lhs/Desktop/mcr/frontend`), which this
+   branch does not touch.
+2. `src/app/operations-composition/__tests__/composition.test.tsx` and
+   `src/app/operations-composition/__tests__/reports-production/composition.test.tsx`
+   — two operations-composition abort tests that are pre-existing timing flakes.
+   They fail intermittently on unmodified master (4/6 failing runs on the base tree
+   and 3/4 on the merged tree) and are not caused by this branch.
 
 ## Browser evidence
 
