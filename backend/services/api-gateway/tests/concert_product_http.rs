@@ -160,6 +160,13 @@ fn command_families() -> Vec<(&'static str, String, bool)> {
         ("POST", format!("/api/concert/events/{event}/admin/users/{id}/moderation"), true),
         ("POST", format!("/api/concert/events/{event}/admin/content/moderation"), true),
         ("POST", format!("/api/concert/events/{event}/admin/closure"), true),
+        ("GET", format!("/api/concert/events/{event}/venue/location"), false),
+        ("PUT", format!("/api/concert/events/{event}/venue/location/sharing"), true),
+        ("PUT", format!("/api/concert/events/{event}/venue/location/fix"), true),
+        ("GET", format!("/api/concert/events/{event}/venue/location/commands/{id}"), false),
+        ("POST", format!("/api/concert/events/{event}/venue/landmarks/lm-main/notes"), true),
+        ("POST", format!("/api/concert/events/{event}/venue/landmarks/lm-main/notes/{id}/replies"), true),
+        ("DELETE", format!("/api/concert/events/{event}/venue/landmarks/lm-main/notes/{id}"), false),
     ]
 }
 
@@ -170,14 +177,16 @@ fn command_request(method: &str, uri: &str, authenticated: bool, harness: &Route
         .header(header::ORIGIN, "http://localhost:3000")
         .header("x-mcr-intent", "browser");
     if authenticated {
-        builder = builder
-            .header(header::AUTHORIZATION, harness.bearer_token(USER_ID))
-            .header("idempotency-key", KEY);
-        if method != "DELETE" {
-            builder = builder.header(header::CONTENT_TYPE, "application/json");
+        builder = builder.header(header::AUTHORIZATION, harness.bearer_token(USER_ID));
+        if matches!(method, "POST" | "PUT" | "PATCH") {
+            builder = builder
+                .header("idempotency-key", KEY)
+                .header(header::CONTENT_TYPE, "application/json");
+        } else if method == "DELETE" {
+            builder = builder.header("idempotency-key", KEY);
         }
     }
-    let body = if authenticated && method != "DELETE" {
+    let body = if authenticated && matches!(method, "POST" | "PUT" | "PATCH") {
         Body::from("{}")
     } else {
         Body::empty()

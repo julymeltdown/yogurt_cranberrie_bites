@@ -109,6 +109,34 @@ pub(super) fn router() -> Router<Arc<AppState>> {
             "/api/concert/events/:event_id/venue-meeting/commands/:command_key",
             get(dispatch),
         )
+        .route(
+            "/api/concert/events/:event_id/venue/location",
+            get(dispatch),
+        )
+        .route(
+            "/api/concert/events/:event_id/venue/location/sharing",
+            put(dispatch),
+        )
+        .route(
+            "/api/concert/events/:event_id/venue/location/fix",
+            put(dispatch),
+        )
+        .route(
+            "/api/concert/events/:event_id/venue/location/commands/:key",
+            get(dispatch),
+        )
+        .route(
+            "/api/concert/events/:event_id/venue/landmarks/:landmark_id/notes",
+            post(dispatch),
+        )
+        .route(
+            "/api/concert/events/:event_id/venue/landmarks/:landmark_id/notes/:note_id/replies",
+            post(dispatch),
+        )
+        .route(
+            "/api/concert/events/:event_id/venue/landmarks/:landmark_id/notes/:note_id",
+            delete(dispatch),
+        )
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
@@ -148,6 +176,13 @@ pub(super) enum FeatureRoute {
     ListMessages,
     SendMessage,
     MeetingCommand(Uuid),
+    VenueLocationSnapshot,
+    SetVenueLocationSharing,
+    PublishVenueLocationFix,
+    VenueLocationCommand(Uuid),
+    CreateVenuePlaceNote,
+    CreateVenuePlaceReply,
+    WithdrawVenuePlaceNote,
 }
 impl FeatureRoute {
     pub(super) fn mutation(self) -> bool {
@@ -170,6 +205,11 @@ impl FeatureRoute {
                 | Self::CreateInvitation
                 | Self::DecideInvitation(_)
                 | Self::SendMessage
+                | Self::SetVenueLocationSharing
+                | Self::PublishVenueLocationFix
+                | Self::CreateVenuePlaceNote
+                | Self::CreateVenuePlaceReply
+                | Self::WithdrawVenuePlaceNote
         )
     }
     pub(super) fn body_limit(self) -> usize {
@@ -182,6 +222,8 @@ impl FeatureRoute {
             | Self::StartAgeVerification
             | Self::CompleteAgeVerification => 8192,
             Self::CreateInvitation | Self::DecideInvitation(_) | Self::SendMessage => 12_000,
+            Self::SetVenueLocationSharing | Self::PublishVenueLocationFix => 8192,
+            Self::CreateVenuePlaceNote | Self::CreateVenuePlaceReply => 8192,
             _ => 0,
         }
     }
@@ -223,6 +265,13 @@ impl FeatureRoute {
             Self::ListMessages => "listVenueMeetingMessages",
             Self::SendMessage => "sendVenueMeetingMessage",
             Self::MeetingCommand(_) => "getVenueMeetingCommand",
+            Self::VenueLocationSnapshot => "getVenueLocationSnapshot",
+            Self::SetVenueLocationSharing => "setVenueLocationSharing",
+            Self::PublishVenueLocationFix => "publishVenueLocationFix",
+            Self::VenueLocationCommand(_) => "getVenueLocationCommand",
+            Self::CreateVenuePlaceNote => "createVenuePlaceNote",
+            Self::CreateVenuePlaceReply => "createVenuePlaceReply",
+            Self::WithdrawVenuePlaceNote => "withdrawVenuePlaceNote",
         }
     }
 }
@@ -250,6 +299,8 @@ pub(super) fn protects(path: &str) -> bool {
             || tail.starts_with("me/notifications/")
             || tail == "venue-meeting"
             || tail.starts_with("venue-meeting/")
+            || tail == "venue"
+            || tail.starts_with("venue/")
     })
 }
 pub(super) fn route(method: &Method, path: &str) -> Option<FeatureRoute> {
@@ -303,8 +354,36 @@ pub(super) fn route(method: &Method, path: &str) -> Option<FeatureRoute> {
         ("GET", ["venue-meeting", "commands", key]) if uuid(key).is_some() => {
             Some(MeetingCommand(Uuid::parse_str(key).ok()?))
         }
+        ("GET", ["venue", "location"]) => Some(VenueLocationSnapshot),
+        ("PUT", ["venue", "location", "sharing"]) => Some(SetVenueLocationSharing),
+        ("PUT", ["venue", "location", "fix"]) => Some(PublishVenueLocationFix),
+        ("GET", ["venue", "location", "commands", key]) if uuid(key).is_some() => {
+            Some(VenueLocationCommand(Uuid::parse_str(key).ok()?))
+        }
+        ("POST", ["venue", "landmarks", landmark, "notes"]) if landmark_id(landmark) => {
+            Some(CreateVenuePlaceNote)
+        }
+        ("POST", ["venue", "landmarks", landmark, "notes", note, "replies"])
+            if landmark_id(landmark) && uuid(note).is_some() =>
+        {
+            Some(CreateVenuePlaceReply)
+        }
+        ("DELETE", ["venue", "landmarks", landmark, "notes", note])
+            if landmark_id(landmark) && uuid(note).is_some() =>
+        {
+            Some(WithdrawVenuePlaceNote)
+        }
         _ => None,
     }
+}
+
+fn landmark_id(value: &str) -> bool {
+    (1..=128).contains(&value.len())
+        && value
+            .bytes()
+            .all(|b| b.is_ascii_alphanumeric() || matches!(b, b'-' | b'.' | b'_' | b'~'))
+        && value != "."
+        && value != ".."
 }
 
 fn meeting_read(route: FeatureRoute) -> Option<u8> {
@@ -350,11 +429,12 @@ fn meeting_target(kind: u8, target: &str) -> bool {
                 return false;
             }
         }
-        return fields.remove("direction").is_some_and(|value| {
-            matches!(value.as_str(), "INCOMING" | "OUTGOING")
-        }) && fields
-            .remove("cursor")
-            .is_none_or(|value| meeting_decimal(&value, 0))
+        return fields
+            .remove("direction")
+            .is_some_and(|value| matches!(value.as_str(), "INCOMING" | "OUTGOING"))
+            && fields
+                .remove("cursor")
+                .is_none_or(|value| meeting_decimal(&value, 0))
             && fields.is_empty();
     }
     let Some((_, query)) = target.split_once('?') else {
@@ -616,6 +696,69 @@ mod tests {
             }
         }
         assert_eq!(count, 27);
+    }
+
+    #[test]
+    fn venue_location_and_place_notes_families_are_exact_and_closed() {
+        use FeatureRoute::*;
+        let event = Uuid::new_v4();
+        let id = Uuid::new_v4();
+        let base = format!("/api/concert/events/{event}/venue");
+        let note = format!("{base}/landmarks/lm-main/notes/{id}");
+        for (method, path, expected, mutation) in [
+            (
+                Method::GET,
+                format!("{base}/location"),
+                VenueLocationSnapshot,
+                false,
+            ),
+            (
+                Method::PUT,
+                format!("{base}/location/sharing"),
+                SetVenueLocationSharing,
+                true,
+            ),
+            (
+                Method::PUT,
+                format!("{base}/location/fix"),
+                PublishVenueLocationFix,
+                true,
+            ),
+            (
+                Method::GET,
+                format!("{base}/location/commands/{id}"),
+                VenueLocationCommand(id),
+                false,
+            ),
+            (
+                Method::POST,
+                format!("{base}/landmarks/lm-main/notes"),
+                CreateVenuePlaceNote,
+                true,
+            ),
+            (
+                Method::POST,
+                format!("{note}/replies"),
+                CreateVenuePlaceReply,
+                true,
+            ),
+            (Method::DELETE, note.clone(), WithdrawVenuePlaceNote, true),
+        ] {
+            let matched = route(&method, &path).expect("venue family route");
+            assert_eq!(matched, expected);
+            assert!(protects(&path));
+            assert_eq!(super::super::owns_receipt(&method, &path), mutation);
+            assert!(valid_target(matched, &path));
+            assert!(route(&method, &format!("{path}/extra")).is_none());
+            assert!(!valid_target(matched, &format!("{path}?role=OPERATOR")));
+        }
+        assert!(route(
+            &Method::DELETE,
+            &format!("{base}/landmarks/lm-main/notes/not-a-uuid")
+        )
+        .is_none());
+        assert!(route(&Method::POST, &format!("{base}/landmarks/bad%2Fid/notes")).is_none());
+        assert!(route(&Method::GET, &format!("{base}/location/requests")).is_none());
     }
 }
 

@@ -115,6 +115,84 @@ class RouteParityTest(unittest.TestCase):
             )
             self.assertEqual(route_parity.missing_templates(root), [])
 
+    def test_venue_location_and_notes_families_require_exact_templates(self):
+        registry = """
+        pub const OPERATIONS: &[RegisteredOperation] = &[
+            RegisteredOperation { id: "getVenueLocationSnapshot", method: "GET", path: "/api/concert/events/{eventId}/venue/location", binary: false },
+            RegisteredOperation { id: "setVenueLocationSharing", method: "PUT", path: "/api/concert/events/{eventId}/venue/location/sharing", binary: false },
+            RegisteredOperation { id: "publishVenueLocationFix", method: "PUT", path: "/api/concert/events/{eventId}/venue/location/fix", binary: false },
+            RegisteredOperation { id: "getVenueLocationCommand", method: "GET", path: "/api/concert/events/{eventId}/venue/location/commands/{key}", binary: false },
+            RegisteredOperation { id: "createVenuePlaceNote", method: "POST", path: "/api/concert/events/{eventId}/venue/landmarks/{landmarkId}/notes", binary: false },
+            RegisteredOperation { id: "createVenuePlaceReply", method: "POST", path: "/api/concert/events/{eventId}/venue/landmarks/{landmarkId}/notes/{noteId}/replies", binary: false },
+            RegisteredOperation { id: "withdrawVenuePlaceNote", method: "DELETE", path: "/api/concert/events/{eventId}/venue/landmarks/{landmarkId}/notes/{noteId}", binary: false },
+        ];
+        """
+        templates = [
+            '        .route("/api/concert/events/:event_id/venue/location", get(dispatch))',
+            '        .route("/api/concert/events/:event_id/venue/location/sharing", put(dispatch))',
+            '        .route("/api/concert/events/:event_id/venue/location/fix", put(dispatch))',
+            '        .route("/api/concert/events/:event_id/venue/location/commands/:key", get(dispatch))',
+            '        .route("/api/concert/events/:event_id/venue/landmarks/:landmark_id/notes", post(dispatch))',
+            '        .route("/api/concert/events/:event_id/venue/landmarks/:landmark_id/notes/:note_id/replies", post(dispatch))',
+            '        .route("/api/concert/events/:event_id/venue/landmarks/:landmark_id/notes/:note_id", delete(dispatch))',
+        ]
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            make_tree(root, "\n".join(templates))
+            (root / "backend/crates/concert-application/src/commands/registry.rs").write_text(
+                registry
+            )
+            (root / "contracts/domain/v1/operations.json").write_text(
+                json.dumps(
+                    [
+                        {
+                            "operationId": "getVenueLocationSnapshot",
+                            "method": "get",
+                            "path": "/api/concert/events/{eventId}/venue/location",
+                            "write_policy": "READ",
+                        },
+                        {
+                            "operationId": "listVenuePlaceNotes",
+                            "method": "get",
+                            "path": "/api/concert/events/{eventId}/venue/landmarks/{landmarkId}/notes",
+                            "write_policy": "READ",
+                        },
+                    ]
+                )
+            )
+            self.assertEqual(route_parity.missing_templates(root), [])
+            self.assertEqual(route_parity.main(["--root", str(root)]), 0)
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            make_tree(root, "\n".join(templates[:-1]))
+            (root / "backend/crates/concert-application/src/commands/registry.rs").write_text(
+                registry
+            )
+            (root / "contracts/domain/v1/operations.json").write_text(
+                json.dumps(
+                    [
+                        {
+                            "operationId": "getVenueLocationSnapshot",
+                            "method": "get",
+                            "path": "/api/concert/events/{eventId}/venue/location",
+                            "write_policy": "READ",
+                        }
+                    ]
+                )
+            )
+            self.assertEqual(
+                route_parity.missing_templates(root),
+                [
+                    (
+                        "withdrawVenuePlaceNote",
+                        "DELETE",
+                        "/api/concert/events/:event_id/venue/landmarks/:landmark_id/notes/:note_id",
+                    )
+                ],
+            )
+            self.assertEqual(route_parity.main(["--root", str(root)]), 1)
+
 
 if __name__ == "__main__":
     unittest.main()
