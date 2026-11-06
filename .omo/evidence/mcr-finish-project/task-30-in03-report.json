@@ -1,0 +1,1274 @@
+{
+  "banner": {
+    "scope": "development stack social and privacy gate",
+    "release": "development stack, NOT release qualification",
+    "qa08": "NOT_RUN",
+    "production": "NOT_CLAIMED",
+    "authorization": "development enrollment policy; never legal approval",
+    "client": "no browser cache claim in this backend gate"
+  },
+  "steps": {
+    "follow_public": {
+      "http": 200,
+      "body": {
+        "followedAt": "2026-11-06T12:32:41.157446+00:00",
+        "following": true,
+        "requestId": null,
+        "status": "ACTIVE"
+      },
+      "db": [
+        {
+          "deleted_at": null,
+          "followee_id": "f3908312-e13b-42fc-8d31-d27ddc5aa7b6",
+          "follower_id": "f1818835-7613-4850-8f3f-826ae02ef566"
+        }
+      ],
+      "log": {
+        "api-gateway": "{\"timestamp\":\"2026-11-06T12:32:26.379890Z\",\"level\":\"WARN\",\"fields\":{\"message\":\"signing key fetch failed; keeping the installed keys\",\"trigger\":\"scheduled\",\"error\":\"Service unavailable\"},\"target\":\"api_gateway::adapters::out::signing_keys\"}",
+        "concert-service": "CONCERT_HEALTH_LISTENER=127.0.0.1:59496\nCONCERT_WORLD_LISTENER=127.0.0.1:59497"
+      }
+    },
+    "profile_private": {
+      "http": 200,
+      "body": {
+        "accountVisibility": "PRIVATE",
+        "avatarUrl": "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+        "bio": "Development closure participant",
+        "followerCount": 1,
+        "followingCount": 0,
+        "lifecycleStatus": "ACTIVE",
+        "nickname": "Closure participant 2",
+        "postCount": 0,
+        "userId": "f3908312-e13b-42fc-8d31-d27ddc5aa7b6",
+        "username": "closure_621881c9963a"
+      },
+      "db": "PRIVATE",
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "unfollow_remove": {
+      "http": 200,
+      "body": {
+        "followedAt": null,
+        "following": false,
+        "requestId": null,
+        "status": "INACTIVE"
+      },
+      "db": "0",
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "follow_request_pending": {
+      "http": 200,
+      "body": {
+        "followedAt": null,
+        "following": false,
+        "requestId": "6576753a-c5c7-4096-a8e2-a4640893ca03",
+        "status": "PENDING"
+      },
+      "db": {
+        "status": "PENDING",
+        "decided_at": null
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "incoming_request_visible": {
+      "http": 200,
+      "request_ids": [
+        "6576753a-c5c7-4096-a8e2-a4640893ca03"
+      ],
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "request_declined": {
+      "http": 200,
+      "body": {
+        "id": "6576753a-c5c7-4096-a8e2-a4640893ca03",
+        "status": "REJECTED"
+      },
+      "db": {
+        "status": "REJECTED"
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "request_accepted": {
+      "http": 200,
+      "body": {
+        "followedAt": "2026-11-06T12:32:41.313655+00:00",
+        "following": true,
+        "requestId": null,
+        "status": "ACTIVE"
+      },
+      "db": {
+        "edge": 1,
+        "request": "ACCEPTED"
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "private_profile_denied": {
+      "http": 404,
+      "body": {
+        "code": "GATEWAY_404",
+        "message": "Not found",
+        "traceId": "6b3efda5-7041-4b83-86ec-df89501ec098",
+        "timestamp": "2026-11-06T12:32:41.337436Z",
+        "details": null
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "private_profile_visible_to_friend": {
+      "http": 200,
+      "body": {
+        "userId": "f3908312-e13b-42fc-8d31-d27ddc5aa7b6",
+        "accountVisibility": "PRIVATE",
+        "lifecycleStatus": "ACTIVE"
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "private_profile_invalidated_after_unfollow": {
+      "http": 404,
+      "body": {
+        "code": "GATEWAY_404",
+        "message": "Not found",
+        "traceId": "6b18f952-315d-4d10-8072-55de7eff5a90",
+        "timestamp": "2026-11-06T12:32:41.348311Z",
+        "details": null
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "public_restored": {
+      "http": 200,
+      "body": {
+        "accountVisibility": "PUBLIC",
+        "avatarUrl": "/world/avatars/derived-v1/photo01-front-idle-64-e124c88815b22220.png",
+        "bio": "Development closure participant",
+        "followerCount": 1,
+        "followingCount": 0,
+        "lifecycleStatus": "ACTIVE",
+        "nickname": "Closure participant 2",
+        "postCount": 0,
+        "userId": "f3908312-e13b-42fc-8d31-d27ddc5aa7b6",
+        "username": "closure_621881c9963a"
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "block": {
+      "http": 200,
+      "body": {
+        "blockedByViewer": true,
+        "blockedViewer": false,
+        "following": false,
+        "mutedByViewer": false
+      },
+      "db": {
+        "blocks": [
+          {
+            "blocked_id": "f3908312-e13b-42fc-8d31-d27ddc5aa7b6",
+            "blocker_id": "f1818835-7613-4850-8f3f-826ae02ef566",
+            "deleted_at": null
+          }
+        ],
+        "journal_before": 0,
+        "journal_after": 1
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "block_observed_by_target": {
+      "http": 200,
+      "body": {
+        "blockedByViewer": false,
+        "blockedViewer": true,
+        "following": false,
+        "mutedByViewer": false
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "blocked_follow_denied": {
+      "http": 403,
+      "body": {
+        "code": "GATEWAY_403",
+        "message": "Forbidden",
+        "traceId": "235c8270-f8b8-4118-8efd-05abfd15f0ee",
+        "timestamp": "2026-11-06T12:32:41.453081Z",
+        "details": null
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "blocked_profile_denied_alice": {
+      "http": 404,
+      "body": {
+        "code": "GATEWAY_404",
+        "message": "Not found",
+        "traceId": "319da01a-b9dc-4da0-81f6-1ad78c45da44",
+        "timestamp": "2026-11-06T12:32:41.456538Z",
+        "details": null
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "blocked_profile_denied_bob": {
+      "http": 404,
+      "body": {
+        "code": "GATEWAY_404",
+        "message": "Not found",
+        "traceId": "c3b68f63-c540-4e0a-802c-2da5b3ba2bf5",
+        "timestamp": "2026-11-06T12:32:41.459122Z",
+        "details": null
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "product_warmup": {
+      "http": [
+        200,
+        200,
+        200,
+        200
+      ],
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "feed_probe": {
+      "http": 200,
+      "body": {
+        "items": [
+          {
+            "author": {
+              "avatar": {
+                "config": {
+                  "contract_version": "1.1.0",
+                  "kind": "avatar_config",
+                  "manifest_id": "mcr_selected_static_20261103",
+                  "manifest_version": 1,
+                  "preset_id": "photo01_front_01",
+                  "representation": "whole_character"
+                },
+                "revision": 1
+              },
+              "bio": "Development closure participant",
+              "display_name": "Closure participant 2",
+              "user_id": "f3908312-e13b-42fc-8d31-d27ddc5aa7b6"
+            },
+            "comment_count": 1,
+            "created_at": "2026-11-06T12:32:41.477868Z",
+            "edited_at": null,
+            "event_id": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+            "links": [],
+            "media_ids": [],
+            "post_id": "a5190bae-a18a-4066-bca9-e970445d0b81",
+            "reacted_by_me": false,
+            "reaction_count": 0,
+            "revision": 1,
+            "state": "PUBLISHED",
+            "text": "bob public post"
+          }
+        ],
+        "next_cursor": "Tn1V1N37upK1aVDJ2rUOvxipaJeeqhVnA9zb8nodb8aLISe1koYvAAlbAuMK9_zb1NdsV45L7MHiIGzEqQNtezoFqkQxcdwY2i56HGHQjFZff-SpnOQC9oiNFDiuf0pqRlNLpR9YTH-Jmm0Xyboi4HBQCbVtyJEnXEQxC5tMdGgsjLCuovceqDaZQ9qLvtJNT6AZR18YhszpVCQdmk2YjqUpwjMA_Q332D2tvKdNEsp6tTJhSp5vP2SkNBnAwb6ZBST5nkHLroXaaaaYhK-P66kRUKqI85PBIdqS7LJpuzW7FJc"
+      },
+      "db": {
+        "concert_scopes": [
+          {
+            "phase": "ROOT_FINISHED",
+            "delivery_completed": true
+          },
+          {
+            "phase": "ROOT_FINISHED",
+            "delivery_completed": true
+          },
+          {
+            "phase": "ROOT_FINISHED",
+            "delivery_completed": true
+          },
+          {
+            "phase": "ROOT_FINISHED",
+            "delivery_completed": true
+          },
+          {
+            "phase": "ROOT_FINISHED",
+            "delivery_completed": true
+          }
+        ],
+        "post_tracking": [
+          {
+            "auth_attempted": true,
+            "terminal_status": "COMMITTED",
+            "friend_attempted": true
+          },
+          {
+            "auth_attempted": true,
+            "terminal_status": "COMMITTED",
+            "friend_attempted": true
+          },
+          {
+            "auth_attempted": true,
+            "terminal_status": "COMMITTED",
+            "friend_attempted": true
+          },
+          {
+            "auth_attempted": true,
+            "terminal_status": "COMMITTED",
+            "friend_attempted": true
+          },
+          {
+            "auth_attempted": true,
+            "terminal_status": "COMMITTED",
+            "friend_attempted": true
+          },
+          {
+            "auth_attempted": true,
+            "terminal_status": "COMMITTED",
+            "friend_attempted": true
+          },
+          {
+            "auth_attempted": true,
+            "terminal_status": "COMMITTED",
+            "friend_attempted": true
+          },
+          {
+            "auth_attempted": true,
+            "terminal_status": "COMMITTED",
+            "friend_attempted": true
+          },
+          {
+            "auth_attempted": true,
+            "terminal_status": "COMMITTED",
+            "friend_attempted": true
+          }
+        ],
+        "post_rows": [
+          {
+            "state": "PUBLISHED",
+            "content": {
+              "text": "alice public post",
+              "links": [],
+              "media_ids": []
+            },
+            "post_id": "dcb29a25-3ce4-4b49-9c8a-9e5f26ec40a3",
+            "event_id": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+            "created_at": "2026-11-06T21:32:41.476113+09:00"
+          },
+          {
+            "state": "PUBLISHED",
+            "content": {
+              "text": "bob public post",
+              "links": [],
+              "media_ids": []
+            },
+            "post_id": "a5190bae-a18a-4066-bca9-e970445d0b81",
+            "event_id": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+            "created_at": "2026-11-06T21:32:41.477868+09:00"
+          },
+          {
+            "state": "DELETED",
+            "content": {
+              "text": "deleted post",
+              "links": [],
+              "media_ids": []
+            },
+            "post_id": "79a94bc8-18c2-4173-8a17-ab0acaa92303",
+            "event_id": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+            "created_at": "2026-11-06T21:32:41.47794+09:00"
+          }
+        ],
+        "pairs": null
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "feed_baseline": {
+      "http": 200,
+      "post_ids": [
+        "a5190bae-a18a-4066-bca9-e970445d0b81"
+      ],
+      "deleted_absent": true,
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "feed_deleted_post_denied": {
+      "http": 404,
+      "body": {
+        "code": "CONCERT_404",
+        "details": {
+          "reason": "RESOURCE_UNAVAILABLE"
+        },
+        "message": "Concert request unavailable",
+        "timestamp": "2026-11-06T12:32:43.901Z",
+        "traceId": "2a415672-bfa1-4ead-b0b3-91a04117abd7"
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "feed_before_block": {
+      "http": 200,
+      "contains_bob_post": true,
+      "viewer": "carol",
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "feed_blocked_author_absent": {
+      "http": 200,
+      "post_ids": [],
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "blocked_post_read_denied": {
+      "http": 404,
+      "body": {
+        "code": "CONCERT_404",
+        "details": {
+          "reason": "RESOURCE_UNAVAILABLE"
+        },
+        "message": "Concert request unavailable",
+        "timestamp": "2026-11-06T12:32:44.467Z",
+        "traceId": "92c439c5-9f3d-495c-a679-e80017afca97"
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "comments_self_read": {
+      "http": 504,
+      "body": {
+        "code": "CONCERT_504",
+        "details": {
+          "reason": "DEADLINE_EXCEEDED"
+        },
+        "message": "Concert request unavailable",
+        "timestamp": "2026-11-06T12:32:45.540Z",
+        "traceId": "4c69c1fb-3c85-4827-958a-13bc7a6d752d"
+      },
+      "author_ids": [],
+      "db": [
+        {
+          "state": "PUBLISHED",
+          "author_id": "f3908312-e13b-42fc-8d31-d27ddc5aa7b6",
+          "comment_id": "509963a2-040d-439b-8229-da6a6aaadaff"
+        }
+      ],
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "deleted_post_absent": {
+      "http": 404,
+      "body": {
+        "code": "CONCERT_404",
+        "details": {
+          "reason": "RESOURCE_UNAVAILABLE"
+        },
+        "message": "Concert request unavailable",
+        "timestamp": "2026-11-06T12:32:45.719Z",
+        "traceId": "d97c8dd9-c433-4224-b1d2-ae47618cb549"
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "wall_member_read": {
+      "http": 200,
+      "revision": 1,
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "wall_outsider_denied": {
+      "http": 404,
+      "body": {
+        "code": "CONCERT_404",
+        "details": {
+          "reason": "RESOURCE_UNAVAILABLE"
+        },
+        "message": "Concert request unavailable",
+        "timestamp": "2026-11-06T12:32:46.045Z",
+        "traceId": "13f55787-7f2c-4183-b2d8-b6830951fd8f"
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "social_blocks_probe": {
+      "http": 503,
+      "body": {
+        "code": "CONCERT_503",
+        "details": {
+          "reason": "DEPENDENCY_UNAVAILABLE"
+        },
+        "message": "The requested action is unavailable.",
+        "timestamp": "2026-11-06T12:32:46.468Z",
+        "traceId": "c524376e-b891-4311-8579-0159f0737be1"
+      },
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "denied_payload_audit": {
+      "cases": 11,
+      "envelopes": {
+        "private_profile_denied": [
+          "code",
+          "details",
+          "message",
+          "timestamp",
+          "traceId"
+        ],
+        "private_profile_invalidated_after_unfollow": [
+          "code",
+          "details",
+          "message",
+          "timestamp",
+          "traceId"
+        ],
+        "blocked_follow_denied": [
+          "code",
+          "details",
+          "message",
+          "timestamp",
+          "traceId"
+        ],
+        "blocked_profile_denied_alice": [
+          "code",
+          "details",
+          "message",
+          "timestamp",
+          "traceId"
+        ],
+        "blocked_profile_denied_bob": [
+          "code",
+          "details",
+          "message",
+          "timestamp",
+          "traceId"
+        ],
+        "feed_deleted_post_denied": [
+          "code",
+          "details",
+          "message",
+          "timestamp",
+          "traceId"
+        ],
+        "blocked_post_read_denied": [
+          "code",
+          "details",
+          "message",
+          "timestamp",
+          "traceId"
+        ],
+        "comments_self_read": [
+          "code",
+          "details",
+          "message",
+          "timestamp",
+          "traceId"
+        ],
+        "deleted_post_absent": [
+          "code",
+          "details",
+          "message",
+          "timestamp",
+          "traceId"
+        ],
+        "wall_outsider_denied": [
+          "code",
+          "details",
+          "message",
+          "timestamp",
+          "traceId"
+        ],
+        "social_blocks_probe": [
+          "code",
+          "details",
+          "message",
+          "timestamp",
+          "traceId"
+        ]
+      },
+      "private_metadata_leaks": {},
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "unblock": {
+      "http": 200,
+      "body": {
+        "blockedByViewer": false,
+        "blockedViewer": false,
+        "following": false,
+        "mutedByViewer": false
+      },
+      "attempts": [
+        {
+          "http": 200,
+          "reason": null
+        }
+      ],
+      "log": {
+        "note": "no new child log bytes"
+      }
+    },
+    "profile_after_unblock": {
+      "http": 200,
+      "accountVisibility": "PUBLIC",
+      "log": {
+        "note": "no new child log bytes"
+      }
+    }
+  },
+  "checks": {
+    "follow_public": true,
+    "follow_request_pending": true,
+    "request_declined": true,
+    "request_accepted": true,
+    "unfollow_removed": true,
+    "private_profile_denied_404": true,
+    "private_profile_invalidated": true,
+    "block_persisted": true,
+    "block_observed": true,
+    "blocked_follow_denied_403": true,
+    "blocked_profiles_denied": true,
+    "feed_baseline": true,
+    "feed_deleted_post_404": true,
+    "feed_blocked_author_absent": true,
+    "blocked_post_denied_404": true,
+    "comments_self_read_or_fail_closed": true,
+    "deleted_post_absent": true,
+    "wall_member_read": true,
+    "wall_outsider_denied_404": true,
+    "social_block_listed": true,
+    "social_unblock": true,
+    "unverified_age_denied": true,
+    "no_denied_private_metadata": true,
+    "unblock_restores_profile": true,
+    "invalidation_journal_grew": true
+  },
+  "not_run": {
+    "social_block_list": {
+      "status": "NOT_RUN",
+      "reason": "The composed Social transaction registration does not complete inside the 2 s product budget on this stack; the surface returns CONCERT_503 DEPENDENCY_UNAVAILABLE and grants no access. This is a runtime budget limitation, not a provider input. Friend block/unblock and the concert profile/feed block fences did execute.",
+      "consumer": "backend/services/concert-service/src/social_live/producer.rs list() -> RuntimeHooks::register -> CanonicalOwnerFence::track_transaction"
+    },
+    "social_block": {
+      "status": "NOT_RUN",
+      "reason": "The composed Social transaction registration does not complete inside the 2 s product budget on this stack; the surface returns CONCERT_503 DEPENDENCY_UNAVAILABLE and grants no access. This is a runtime budget limitation, not a provider input. Friend block/unblock and the concert profile/feed block fences did execute.",
+      "consumer": "same SocialRuntime command transaction registration"
+    },
+    "social_unblock": {
+      "status": "NOT_RUN",
+      "reason": "The composed Social transaction registration does not complete inside the 2 s product budget on this stack; the surface returns CONCERT_503 DEPENDENCY_UNAVAILABLE and grants no access. This is a runtime budget limitation, not a provider input. Friend block/unblock and the concert profile/feed block fences did execute.",
+      "consumer": "same SocialRuntime command transaction registration"
+    },
+    "unverified_age_denial": {
+      "status": "NOT_RUN",
+      "reason": "The composed Social transaction registration does not complete inside the 2 s product budget on this stack; the surface returns CONCERT_503 DEPENDENCY_UNAVAILABLE and grants no access. This is a runtime budget limitation, not a provider input. Friend block/unblock and the concert profile/feed block fences did execute.",
+      "consumer": "same SocialRuntime command transaction registration before PgSocialEligibility::check_in"
+    },
+    "venue_meeting_reads": {
+      "status": "NOT_RUN",
+      "reason": "The composed Concert product has no Meeting ProductOwner: ProductOwner dispatch mounts Wall/Social/Intro/Notification/Age/Report/Operations/OwnerMedia/Feed but no Operation::Meeting, and venue_meeting_admission states the bilateral friend read does not exist yet, so every venue-meeting route fails closed with 503. No venue privacy result is claimed.",
+      "consumer": "backend/services/concert-service/src/product_rpc/venue_meeting_admission.rs; backend/services/concert-service/src/product_rpc/mod.rs Operation::Meeting"
+    },
+    "venue_location_snapshot": {
+      "status": "NOT_RUN",
+      "reason": "PgVenueLocationAuthority::friend_in returns PolicyUnavailable and no VenueLocation product producer is composed, so the /venue/location route has no owner to read.",
+      "consumer": "backend/services/concert-service/src/venue_location/mod.rs; backend/services/concert-service/src/product_rpc/mod.rs Operation enum"
+    },
+    "age_provider_positive": {
+      "status": "NOT_RUN",
+      "reason": "Missing input: an authorized age-verification provider and its signed verified claims. Social consent requires concert_age_owners rows plus verified concert_age_claims for both participants and a configured sharing verifier; no provider credentials, source revision, or claim provenance exist in this checkout.",
+      "consumer": "backend/services/concert-service/src/relationship/eligibility.rs"
+    },
+    "social_reveal_revoke": {
+      "status": "NOT_RUN",
+      "reason": "Depends on the same authorized age provider/claim input: a create or reveal cannot succeed without verified claims, so the approved/unrelated/expired/revoked/blocked reveal denials cannot be executed against a real grant.",
+      "consumer": "backend/services/concert-service/src/relationship/eligibility.rs; backend/services/concert-service/src/social_live/producer.rs"
+    },
+    "external_oauth_provider": {
+      "status": "NOT_RUN",
+      "reason": "Missing input: external OAuth/social provider client credentials, callback registration and provider test account.",
+      "consumer": "backend/services/api-gateway/src/adapters/in/http/oauth_routes.rs"
+    },
+    "external_mail_or_sms": {
+      "status": "NOT_RUN",
+      "reason": "Missing input: an external mail/SMS delivery provider. Only the owned local HTTP mail sink was exercised for enrollment.",
+      "consumer": "backend/services/auth-service mailer configuration"
+    },
+    "comments_read": {
+      "status": "NOT_RUN",
+      "reason": "Observed 504: the self-authored comments route does not return data within the composed authority window on this stack (observed CONCERT_504 DEADLINE_EXCEEDED, CONCERT_503 DEPENDENCY_UNAVAILABLE or CONCERT_401 AUTHENTICATION_REQUIRED as the signed parent authority ages out). It returns no data and no private metadata. The seed row is present in post_concert_comments and is recorded in the step. This is a runtime budget limitation, not a provider input and not claimed as a comment-read pass.",
+      "consumer": "backend/services/concert-service/src/feed/content.rs comments(); backend/services/concert-service/src/product_rpc/mod.rs BUDGET"
+    },
+    "blocked_comment_author_filter": {
+      "status": "NOT_RUN",
+      "reason": "The blocked-author comment filter requires a parent author and a blocked comment author in one read. In the observed run the comments response exceeded the composed 2 s product budget (CONCERT_504 DEADLINE_EXCEEDED); the thread returns no data rather than leaked data. The blocked event feed, blocked post detail and blocked profile denials did execute. This is a runtime budget limitation, not a provider input and not a privacy pass.",
+      "consumer": "backend/services/concert-service/src/feed/content.rs comments author filter; backend/services/concert-service/src/product_rpc/mod.rs BUDGET"
+    },
+    "client_cache_and_ws_frames": {
+      "status": "NOT_RUN",
+      "reason": "No browser client was run in this backend gate; no client-cache or world-socket frame claim is made. The friend-block invalidation journal rows and the server-side read-time fences are the evidence.",
+      "consumer": "frontend/src/features/** privacy consumers; backend/services/concert-service/src/world/invalidation"
+    }
+  },
+  "candidate": {
+    "worktree": "/Users/lhs/Desktop/mcr-worktrees/exec-w5-in03",
+    "revision": "2f2f11b61ee2f33812ea848ba21c890d529e10b9"
+  },
+  "started_at_utc": "2026-11-06T12:32:20.916316+00:00",
+  "scenario": {
+    "wall_pack_manifest_sha256": "3f1aa318f0e4b7d8fa7f079b1101f7386619291a8dbb3bb04ef70820952f34ce"
+  },
+  "stack": {
+    "gateway_url": "http://127.0.0.1:59507",
+    "services": {
+      "profile-service": {
+        "http": "http://127.0.0.1:59488",
+        "grpc": "http://127.0.0.1:59489",
+        "metrics": "http://127.0.0.1:59490"
+      },
+      "notification-service": {
+        "http": "http://127.0.0.1:59491",
+        "grpc": "http://127.0.0.1:59492",
+        "metrics": "http://127.0.0.1:59493"
+      },
+      "concert-service": {
+        "http": "http://127.0.0.1:59494",
+        "grpc": "http://127.0.0.1:59495",
+        "metrics": "http://127.0.0.1:59496"
+      },
+      "friend-service": {
+        "http": "http://127.0.0.1:59498",
+        "grpc": "http://127.0.0.1:59499",
+        "metrics": "http://127.0.0.1:59500"
+      },
+      "post-service": {
+        "http": "http://127.0.0.1:59501",
+        "grpc": "http://127.0.0.1:59502",
+        "metrics": "http://127.0.0.1:59503"
+      },
+      "auth-service": {
+        "http": "http://127.0.0.1:59504",
+        "grpc": "http://127.0.0.1:59505",
+        "metrics": "http://127.0.0.1:59506"
+      },
+      "api-gateway": {
+        "http": "http://127.0.0.1:59507",
+        "grpc": "http://127.0.0.1:59508",
+        "metrics": "http://127.0.0.1:59509"
+      }
+    },
+    "event": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+    "release_digest": "5a51442b4b4c62d99c329f39aafbf277b4a37a384efc3fdfd1f5c219997bec3b",
+    "readiness": {
+      "api-gateway": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "database": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->auth": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->friend": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->notification": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->post": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->profile": {
+            "required": true,
+            "status": "up"
+          },
+          "signing-keys": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      },
+      "auth-service": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "auth->friend": {
+            "required": false,
+            "status": "up"
+          },
+          "auth->notification": {
+            "required": false,
+            "status": "up"
+          },
+          "auth->post": {
+            "required": false,
+            "status": "up"
+          },
+          "auth->profile": {
+            "required": false,
+            "status": "up"
+          },
+          "concert-owner-authority": {
+            "required": true,
+            "status": "up"
+          },
+          "database": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      },
+      "profile-service": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "database": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      },
+      "friend-service": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "concert-owner-authority": {
+            "required": true,
+            "status": "up"
+          },
+          "database": {
+            "required": true,
+            "status": "up"
+          },
+          "friend->profile": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      },
+      "post-service": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "database": {
+            "required": true,
+            "status": "up"
+          },
+          "post->friend": {
+            "required": true,
+            "status": "up"
+          },
+          "post->gateway": {
+            "required": true,
+            "status": "up"
+          },
+          "post->notification": {
+            "required": false,
+            "status": "up"
+          },
+          "post->profile": {
+            "required": false,
+            "status": "up"
+          }
+        }
+      },
+      "notification-service": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "database": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      },
+      "concert-service": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "database": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      }
+    },
+    "owned_root": "/private/tmp/mcr-pg-ldow6aub",
+    "mail": "private local HTTP capture"
+  },
+  "enrollment_policy": {
+    "revision": "6e8d17f2-21f0-4239-b29e-87ccd56f1bfb",
+    "approval_reference": "development-not-admitted",
+    "production_approval": "NOT_PRESENT_IN_CHECKOUT_SCHEMA",
+    "note": "The checkout's enrollment schema has no productionApproval field; approvalReference=development-not-admitted is the explicit nonproduction label. No legal approval is claimed."
+  },
+  "principal_attempts": {
+    "alice": 1,
+    "bob": 1,
+    "carol": 1,
+    "outsider": 1
+  },
+  "principals": {
+    "alice": "f1818835-7613-4850-8f3f-826ae02ef566",
+    "bob": "f3908312-e13b-42fc-8d31-d27ddc5aa7b6",
+    "carol": "ec5b9eeb-5a68-47e7-80d8-e42dcebdab7a"
+  },
+  "outsider": "created but not admitted to the event",
+  "provisioning": {
+    "mode": "owned disposable PG rows provisioned directly; no external data",
+    "event": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+    "participants": [
+      "alice",
+      "bob",
+      "carol"
+    ],
+    "outsider": "authenticated principal without event admission or participant row",
+    "wall_pack_manifest_sha256": "3f1aa318f0e4b7d8fa7f079b1101f7386619291a8dbb3bb04ef70820952f34ce",
+    "wall_seed_snapshot_id": "5fb7a80e-57a9-4afb-a20a-9f1bafcb0eea"
+  },
+  "feed_timings_ms": [
+    517.3,
+    331.4
+  ],
+  "feed_attempts": [
+    {
+      "role": "carol",
+      "attempts": [
+        {
+          "http": 200,
+          "reason": null
+        }
+      ]
+    },
+    {
+      "role": "alice",
+      "attempts": [
+        {
+          "http": 200,
+          "reason": null
+        }
+      ]
+    }
+  ],
+  "db": {
+    "follows": [
+      {
+        "deleted_at": "2026-11-06T21:32:41.409823+09:00",
+        "followee_id": "f3908312-e13b-42fc-8d31-d27ddc5aa7b6",
+        "follower_id": "f1818835-7613-4850-8f3f-826ae02ef566",
+        "delete_reason": "block"
+      }
+    ],
+    "follow_requests": [
+      {
+        "id": "6576753a-c5c7-4096-a8e2-a4640893ca03",
+        "status": "REJECTED",
+        "decided_at": "2026-11-06T21:32:41.286205+09:00"
+      },
+      {
+        "id": "869f37dd-94fb-4143-8d7b-85e80aeef145",
+        "status": "ACCEPTED",
+        "decided_at": "2026-11-06T21:32:41.313655+09:00"
+      },
+      {
+        "id": "977c399e-565b-449c-913f-23217d389f5d",
+        "status": "ACCEPTED",
+        "decided_at": "2026-11-06T21:32:41.379032+09:00"
+      }
+    ],
+    "user_blocks": [
+      {
+        "blocked_id": "f3908312-e13b-42fc-8d31-d27ddc5aa7b6",
+        "blocker_id": "f1818835-7613-4850-8f3f-826ae02ef566",
+        "deleted_at": "2026-11-06T21:32:46.51397+09:00"
+      }
+    ],
+    "invalidation_journal": [
+      {
+        "reason": "FRIEND_RELATIONSHIP_CHANGED",
+        "peer_id": "f3908312-e13b-42fc-8d31-d27ddc5aa7b6",
+        "user_id": "f1818835-7613-4850-8f3f-826ae02ef566"
+      },
+      {
+        "reason": "FRIEND_RELATIONSHIP_CHANGED",
+        "peer_id": "f3908312-e13b-42fc-8d31-d27ddc5aa7b6",
+        "user_id": "f1818835-7613-4850-8f3f-826ae02ef566"
+      }
+    ],
+    "profiles": [
+      {
+        "user_id": "f1818835-7613-4850-8f3f-826ae02ef566",
+        "account_visibility": "PUBLIC"
+      },
+      {
+        "user_id": "ec5b9eeb-5a68-47e7-80d8-e42dcebdab7a",
+        "account_visibility": "PUBLIC"
+      },
+      {
+        "user_id": "51dd7e3a-c082-4e05-a7fd-2e9c8742e747",
+        "account_visibility": "PUBLIC"
+      },
+      {
+        "user_id": "f3908312-e13b-42fc-8d31-d27ddc5aa7b6",
+        "account_visibility": "PUBLIC"
+      }
+    ],
+    "concert_posts": [
+      {
+        "state": "DELETED",
+        "post_id": "dcb29a25-3ce4-4b49-9c8a-9e5f26ec40a3",
+        "author_id": "f1818835-7613-4850-8f3f-826ae02ef566"
+      },
+      {
+        "state": "PUBLISHED",
+        "post_id": "a5190bae-a18a-4066-bca9-e970445d0b81",
+        "author_id": "f3908312-e13b-42fc-8d31-d27ddc5aa7b6"
+      },
+      {
+        "state": "DELETED",
+        "post_id": "79a94bc8-18c2-4173-8a17-ab0acaa92303",
+        "author_id": "f3908312-e13b-42fc-8d31-d27ddc5aa7b6"
+      }
+    ]
+  },
+  "result": "PASS",
+  "result_scope": "PASS_WITH_RECORDED_NOT_RUN",
+  "failed_checks": {},
+  "cleanup": "PASS",
+  "finished_at_utc": "2026-11-06T12:32:47.103150+00:00",
+  "http_requests": [
+    {
+      "role": "alice",
+      "method": "POST",
+      "path": "/api/follows"
+    },
+    {
+      "role": "bob",
+      "method": "PUT",
+      "path": "/api/profile/privacy"
+    },
+    {
+      "role": "alice",
+      "method": "DELETE",
+      "path": "/api/follows/f3908312-e13b-42fc-8d31-d27ddc5aa7b6"
+    },
+    {
+      "role": "alice",
+      "method": "POST",
+      "path": "/api/follows"
+    },
+    {
+      "role": "bob",
+      "method": "GET",
+      "path": "/api/follows/requests/incoming"
+    },
+    {
+      "role": "bob",
+      "method": "POST",
+      "path": "/api/follows/requests/6576753a-c5c7-4096-a8e2-a4640893ca03/reject"
+    },
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/follows/status?target_user_id=f3908312-e13b-42fc-8d31-d27ddc5aa7b6"
+    },
+    {
+      "role": "alice",
+      "method": "POST",
+      "path": "/api/follows"
+    },
+    {
+      "role": "bob",
+      "method": "POST",
+      "path": "/api/follows/requests/869f37dd-94fb-4143-8d7b-85e80aeef145/accept"
+    },
+    {
+      "role": "carol",
+      "method": "GET",
+      "path": "/api/profile/f3908312-e13b-42fc-8d31-d27ddc5aa7b6"
+    },
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/profile/f3908312-e13b-42fc-8d31-d27ddc5aa7b6"
+    },
+    {
+      "role": "alice",
+      "method": "DELETE",
+      "path": "/api/follows/f3908312-e13b-42fc-8d31-d27ddc5aa7b6"
+    },
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/profile/f3908312-e13b-42fc-8d31-d27ddc5aa7b6"
+    },
+    {
+      "role": "alice",
+      "method": "POST",
+      "path": "/api/follows"
+    },
+    {
+      "role": "bob",
+      "method": "POST",
+      "path": "/api/follows/requests/977c399e-565b-449c-913f-23217d389f5d/accept"
+    },
+    {
+      "role": "bob",
+      "method": "PUT",
+      "path": "/api/profile/privacy"
+    },
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/relationships/f3908312-e13b-42fc-8d31-d27ddc5aa7b6"
+    },
+    {
+      "role": "alice",
+      "method": "POST",
+      "path": "/api/relationships/blocks/f3908312-e13b-42fc-8d31-d27ddc5aa7b6"
+    },
+    {
+      "role": "bob",
+      "method": "GET",
+      "path": "/api/relationships/f1818835-7613-4850-8f3f-826ae02ef566"
+    },
+    {
+      "role": "alice",
+      "method": "POST",
+      "path": "/api/follows"
+    },
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/profile/f3908312-e13b-42fc-8d31-d27ddc5aa7b6"
+    },
+    {
+      "role": "bob",
+      "method": "GET",
+      "path": "/api/profile/f1818835-7613-4850-8f3f-826ae02ef566"
+    },
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "carol",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed?limit=1"
+    },
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "carol",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed?limit=1"
+    },
+    {
+      "role": "carol",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed?limit=1"
+    },
+    {
+      "role": "carol",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/posts/79a94bc8-18c2-4173-8a17-ab0acaa92303"
+    },
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/feed?limit=1"
+    },
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/posts/a5190bae-a18a-4066-bca9-e970445d0b81"
+    },
+    {
+      "role": "bob",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/posts/a5190bae-a18a-4066-bca9-e970445d0b81/comments?limit=10"
+    },
+    {
+      "role": "carol",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/posts/dcb29a25-3ce4-4b49-9c8a-9e5f26ec40a3"
+    },
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "outsider",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/mural/snapshot"
+    },
+    {
+      "role": "bob",
+      "method": "GET",
+      "path": "/api/concert/events/f1fd7b85-d393-5410-8bc3-5ea6b71aeb77/me/blocks"
+    },
+    {
+      "role": "alice",
+      "method": "DELETE",
+      "path": "/api/relationships/blocks/f3908312-e13b-42fc-8d31-d27ddc5aa7b6"
+    },
+    {
+      "role": "alice",
+      "method": "GET",
+      "path": "/api/profile/f3908312-e13b-42fc-8d31-d27ddc5aa7b6"
+    }
+  ]
+}
