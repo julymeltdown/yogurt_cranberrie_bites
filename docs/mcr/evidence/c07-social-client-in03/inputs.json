@@ -411,7 +411,7 @@
     },
     {
       "path": "frontend/src/shared/api/domain-operations.generated.ts",
-      "sha256": "80905d6d46b61a73856cb529d2f5b93d26a4087569b7eccb28fd40a100225804"
+      "sha256": "2c45873e033ddfc2eb61ffb6b5d32c5796508f1c0caefc13f2ed39926c67e523"
     }
   ]
 }
