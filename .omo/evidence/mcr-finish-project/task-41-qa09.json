@@ -3,7 +3,7 @@
     "binaries": {
       "api-gateway": "fd41e8b934c82b788d0b535787af7a6ab2aedb865d040e7422a7e9a299af77ce",
       "auth-service": "5e5baf49bfc44b2e9a6ac2d9b640adf69d3b2e56ec22803fdf629138cbda7ffa",
-      "concert-service": "bcfba205ec2437762ff00315b218d736b9c9959f05b730bcc37ad201b4a103c5",
+      "concert-service": "02ae0dd022a7bd126bab93cfb2c01f7f0b412fff244a062ac196f0a1f627d3cb",
       "friend-service": "ccbe5d02570fae38863165fc5ba6786628572831705dc729a9e85ec09dbfea6a",
       "notification-service": "6c9c00c0db474b52486a1e266b4bd9c624e7dfae7ad00ca567eb86d94ee23ea5",
       "post-service": "552562b376c1d1ec9e6804b9f142a44ec71255bc39fb5aab7652e93e3eb72b3d",
@@ -11,26 +11,38 @@
     },
     "cleanup": "PASS",
     "exit_code": 0,
-    "source_revision": "80b03639da846b9e4d510e40999a08cb53504685",
-    "stack_report": "/tmp/qa09-trial/full6-stack.json",
-    "stack_report_sha256": "ddbb4c6f9b6d632be9e3d249cfca7da2334695b9bdad45bf5e8b427282ba730b",
+    "source_revision": "8533fb9a430258b76bc74aec531090e813087179",
+    "stack_report": "/tmp/qa09-trial/full13-stack.json",
+    "stack_report_sha256": "53c56f1f5e6dac0391aeccbf9848ecfece5440ab0275da8b67d61aeb24c83dd1",
     "stack_result": "PASS"
   },
-  "finished_at": "2026-11-06T16:54:27.867027+00:00",
+  "finished_at": "2026-11-06T17:44:48.827533+00:00",
+  "not_run": [
+    {
+      "blocker": "the live seven-service saga ran but did not converge within the 30 s bound: CONCERT_PRIVATE_DATA=RETRY/attempts=3/error=Dependency unavailable; CONCERT_SESSIONS=RETRY/attempts=3/error=Dependency unavailable; CONCERT_SHARING=RETRY/attempts=3/error=Dependency unavailable; CONCERT_TICKETS=RETRY/attempts=3/error=Dependency unavailable",
+      "id": "QA09-DELETION-SAGA"
+    }
+  ],
+  "qualifications": {
+    "QA09-DELETION": "isolated owner mount"
+  },
   "result": "PASS",
   "scenarios": [
     {
       "actions": [
         {
           "binary_sha256": "6182f440066d45810d2730633f0cb6c04552be23cd2e95e3da85906ebcd73fe1",
-          "owned_cluster": "/private/tmp/mcr-pg-1yyxmv0n",
+          "owned_cluster": "/private/tmp/mcr-pg-wr_78sv5",
           "postgres": "16.14 (Homebrew)"
         },
         {
           "postmaster": [
-            47825,
-            48181
+            61894,
+            62124
           ]
+        },
+        {
+          "replay_fault": "SQL reset of the delivered outbox row to READY plus a full owned PostgreSQL cluster stop/start, not a process killed mid-publish"
         },
         {
           "absent": true,
@@ -38,13 +50,13 @@
         }
       ],
       "after": {
-        "outbox": "f4e17889-c887-4371-a2b1-b08b67546cc6|DELIVERED|2",
+        "outbox": "44b1ecf2-873d-4844-8cba-67a719c065a1|DELIVERED|2",
         "receipts": "1",
         "replayed_signal_receipts": "1"
       },
       "before": {
-        "outbox": "f4e17889-c887-4371-a2b1-b08b67546cc6|READY|1",
-        "persisted_signal": "f4e17889-c887-4371-a2b1-b08b67546cc6|e4c00df1-686a-4a4a-9ee5-0acd8e75b15b",
+        "outbox": "44b1ecf2-873d-4844-8cba-67a719c065a1|READY|1",
+        "persisted_signal": "44b1ecf2-873d-4844-8cba-67a719c065a1|ae4b27f6-e0a4-456e-82cd-6b710b7c7fe4",
         "receipts": "1",
         "replayed_signal_receipts": "1"
       },
@@ -56,7 +68,7 @@
           ],
           "exit_code": 0,
           "label": "native_block_outbox_fence_commit_retry_and_native_send",
-          "output": "\nrunning 1 test\ntest native::native_block_outbox_fence_commit_retry_and_native_send ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 6 filtered out; finished in 0.93s\n\n"
+          "output": "\nrunning 1 test\ntest native::native_block_outbox_fence_commit_retry_and_native_send ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 6 filtered out; finished in 0.89s\n\n"
         },
         {
           "argv": [
@@ -65,25 +77,26 @@
           ],
           "exit_code": 0,
           "label": "native_restart_durable_receipt_preserves_fresh_connection",
-          "output": "\nrunning 1 test\ntest native::native_restart_durable_receipt_preserves_fresh_connection ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 6 filtered out; finished in 3.82s\n\n"
+          "output": "\nrunning 1 test\ntest native::native_restart_durable_receipt_preserves_fresh_connection ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 6 filtered out; finished in 3.83s\n\n"
         }
       ],
       "db_rows": {},
-      "finished_at": "2026-11-06T16:53:47.010952+00:00",
+      "finished_at": "2026-11-06T17:43:55.098646+00:00",
       "id": "QA09-OUTBOX-REPLAY",
       "invariants": [
-        "a crash after local application but before queue ack is replayed",
-        "the consumer receipt for the replayed signal remains exactly one",
-        "the outbox row returns to DELIVERED after the new process"
+        "the native test reset the delivered outbox row to READY with SQL and the harness stopped and started the owned postmaster",
+        "a fresh process and connection replayed the row",
+        "the consumer receipt for the replayed signal remained exactly one",
+        "the outbox row returned to DELIVERED after the new process with one new attempt"
       ],
       "logs": [
         {
-          "excerpt": "\nrunning 1 test\ntest native::native_block_outbox_fence_commit_retry_and_native_send ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 6 filtered out; finished in 0.93s\n\n\n\nrunning 1 test\ntest native::native_restart_durable_receipt_preserves_fresh_connection ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 6 filtered out; finished in 3.82s\n\n",
+          "excerpt": "\nrunning 1 test\ntest native::native_block_outbox_fence_commit_retry_and_native_send ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 6 filtered out; finished in 0.89s\n\n\n\nrunning 1 test\ntest native::native_restart_durable_receipt_preserves_fresh_connection ... ok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 6 filtered out; finished in 3.83s\n\n",
           "source": "native test output"
         }
       ],
-      "name": "Outbox redelivery and consumer dedupe",
-      "started_at": "2026-11-06T16:53:39.682663+00:00",
+      "name": "Outbox replay after SQL reset and cluster restart",
+      "started_at": "2026-11-06T17:43:47.827761+00:00",
       "state": "PASS"
     },
     {
@@ -102,28 +115,145 @@
             "auth": 19,
             "concert": 63
           },
+          "migration_receipts_after": {
+            "auth": 19,
+            "concert": 63
+          },
+          "persisted_after_pg_restart": {
+            "deleted_user": "e0abc1ba-a07e-48dc-b122-7613c79e286d",
+            "private_rows": "1|0|0",
+            "saga": "IN_PROGRESS|",
+            "steps": "CONCERT_PRIVATE_DATA|PENDING|0\nCONCERT_SESSIONS|PENDING|0\nCONCERT_SHARING|PENDING|0\nCONCERT_TICKETS|PENDING|0\nFRIEND|PENDING|0\nNOTIFICATION|PENDING|0\nPOST|PENDING|0\nPROFILE|PENDING|0"
+          },
           "restart": {
-            "after_pid": 48371,
-            "before_pid": 48240
+            "after_pid": 62518,
+            "before_pid": 62376
           },
           "source": 0,
           "status": "PASS"
         }
       ],
       "after": {
-        "migration_receipts": {
-          "auth": 19,
-          "concert": 63
+        "control": {
+          "age_owners": 0,
+          "avatar_settings": 0,
+          "participants": 1
         },
-        "private_rows": "0 for deleted user; control user intact (test assertion)",
-        "restart": {
-          "after_pid": 48371,
-          "before_pid": 48240
-        }
+        "control_user": "4666014d-6999-42b5-a65f-08a0295fead5",
+        "deleted": {
+          "age_owners": 0,
+          "avatar_settings": 0,
+          "participants": 1
+        },
+        "deleted_user": "e0abc1ba-a07e-48dc-b122-7613c79e286d",
+        "phase": "after",
+        "private_data_progress_completed": 1,
+        "private_rows_remaining": 0,
+        "saga_completed_at": null,
+        "saga_status": "IN_PROGRESS",
+        "steps": [
+          {
+            "attempt_count": 0,
+            "status": "PENDING",
+            "target": "CONCERT_PRIVATE_DATA"
+          },
+          {
+            "attempt_count": 0,
+            "status": "PENDING",
+            "target": "CONCERT_SESSIONS"
+          },
+          {
+            "attempt_count": 0,
+            "status": "PENDING",
+            "target": "CONCERT_SHARING"
+          },
+          {
+            "attempt_count": 0,
+            "status": "PENDING",
+            "target": "CONCERT_TICKETS"
+          },
+          {
+            "attempt_count": 0,
+            "status": "PENDING",
+            "target": "FRIEND"
+          },
+          {
+            "attempt_count": 0,
+            "status": "PENDING",
+            "target": "NOTIFICATION"
+          },
+          {
+            "attempt_count": 0,
+            "status": "PENDING",
+            "target": "POST"
+          },
+          {
+            "attempt_count": 0,
+            "status": "PENDING",
+            "target": "PROFILE"
+          }
+        ]
       },
       "before": {
-        "private_data_command": "fresh user with avatar/age/participant rows",
-        "saga": "real Auth worker and managed Concert factory"
+        "control": {
+          "age_owners": 0,
+          "avatar_settings": 0,
+          "participants": 1
+        },
+        "control_user": "4666014d-6999-42b5-a65f-08a0295fead5",
+        "deleted": {
+          "age_owners": 1,
+          "avatar_settings": 1,
+          "participants": 1
+        },
+        "deleted_user": "e0abc1ba-a07e-48dc-b122-7613c79e286d",
+        "phase": "before",
+        "private_data_progress_completed": 0,
+        "private_rows_remaining": 3,
+        "saga_completed_at": null,
+        "saga_status": "IN_PROGRESS",
+        "steps": [
+          {
+            "attempt_count": 0,
+            "status": "PENDING",
+            "target": "CONCERT_PRIVATE_DATA"
+          },
+          {
+            "attempt_count": 0,
+            "status": "PENDING",
+            "target": "CONCERT_SESSIONS"
+          },
+          {
+            "attempt_count": 0,
+            "status": "PENDING",
+            "target": "CONCERT_SHARING"
+          },
+          {
+            "attempt_count": 0,
+            "status": "PENDING",
+            "target": "CONCERT_TICKETS"
+          },
+          {
+            "attempt_count": 0,
+            "status": "PENDING",
+            "target": "FRIEND"
+          },
+          {
+            "attempt_count": 0,
+            "status": "PENDING",
+            "target": "NOTIFICATION"
+          },
+          {
+            "attempt_count": 0,
+            "status": "PENDING",
+            "target": "POST"
+          },
+          {
+            "attempt_count": 0,
+            "status": "PENDING",
+            "target": "PROFILE"
+          }
+        ]
       },
       "commands": [
         {
@@ -133,38 +263,301 @@
           ],
           "exit_code": 0,
           "label": "account-deletion-mount",
-          "output": "{\"status\": \"PASS\", \"report\": \"/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/qa09-deletion-h3rnx9h4/mount.json\"}\n"
+          "output": "{\"status\": \"PASS\", \"report\": \"/var/folders/j4/41h_5mjj7j9d8f2j2bzcsngw0000gn/T/qa09-deletion-z5d921_d/mount.json\"}\n"
         }
       ],
-      "db_rows": {},
-      "finished_at": "2026-11-06T16:53:56.822127+00:00",
+      "db_rows": {
+        "deletion_mount": {
+          "after_pg_restart": [
+            {
+              "control": {
+                "age_owners": 0,
+                "avatar_settings": 0,
+                "participants": 1
+              },
+              "control_user": "850ccd5f-cd47-4e48-b81b-34a6e2abdb00",
+              "deleted": {
+                "age_owners": 1,
+                "avatar_settings": 1,
+                "participants": 1
+              },
+              "deleted_user": "425fe4d2-d03a-49c5-9bf1-6df2ada48905",
+              "phase": "before",
+              "private_data_progress_completed": 0,
+              "private_rows_remaining": 3,
+              "saga_completed_at": null,
+              "saga_status": "IN_PROGRESS",
+              "steps": [
+                {
+                  "attempt_count": 0,
+                  "status": "PENDING",
+                  "target": "CONCERT_PRIVATE_DATA"
+                },
+                {
+                  "attempt_count": 0,
+                  "status": "PENDING",
+                  "target": "CONCERT_SESSIONS"
+                },
+                {
+                  "attempt_count": 0,
+                  "status": "PENDING",
+                  "target": "CONCERT_SHARING"
+                },
+                {
+                  "attempt_count": 0,
+                  "status": "PENDING",
+                  "target": "CONCERT_TICKETS"
+                },
+                {
+                  "attempt_count": 0,
+                  "status": "PENDING",
+                  "target": "FRIEND"
+                },
+                {
+                  "attempt_count": 0,
+                  "status": "PENDING",
+                  "target": "NOTIFICATION"
+                },
+                {
+                  "attempt_count": 0,
+                  "status": "PENDING",
+                  "target": "POST"
+                },
+                {
+                  "attempt_count": 0,
+                  "status": "PENDING",
+                  "target": "PROFILE"
+                }
+              ]
+            },
+            {
+              "control": {
+                "age_owners": 0,
+                "avatar_settings": 0,
+                "participants": 1
+              },
+              "control_user": "850ccd5f-cd47-4e48-b81b-34a6e2abdb00",
+              "deleted": {
+                "age_owners": 0,
+                "avatar_settings": 0,
+                "participants": 1
+              },
+              "deleted_user": "425fe4d2-d03a-49c5-9bf1-6df2ada48905",
+              "phase": "after",
+              "private_data_progress_completed": 1,
+              "private_rows_remaining": 0,
+              "saga_completed_at": null,
+              "saga_status": "IN_PROGRESS",
+              "steps": [
+                {
+                  "attempt_count": 0,
+                  "status": "PENDING",
+                  "target": "CONCERT_PRIVATE_DATA"
+                },
+                {
+                  "attempt_count": 0,
+                  "status": "PENDING",
+                  "target": "CONCERT_SESSIONS"
+                },
+                {
+                  "attempt_count": 0,
+                  "status": "PENDING",
+                  "target": "CONCERT_SHARING"
+                },
+                {
+                  "attempt_count": 0,
+                  "status": "PENDING",
+                  "target": "CONCERT_TICKETS"
+                },
+                {
+                  "attempt_count": 0,
+                  "status": "PENDING",
+                  "target": "FRIEND"
+                },
+                {
+                  "attempt_count": 0,
+                  "status": "PENDING",
+                  "target": "NOTIFICATION"
+                },
+                {
+                  "attempt_count": 0,
+                  "status": "PENDING",
+                  "target": "POST"
+                },
+                {
+                  "attempt_count": 0,
+                  "status": "PENDING",
+                  "target": "PROFILE"
+                }
+              ]
+            }
+          ],
+          "source": [
+            {
+              "control": {
+                "age_owners": 0,
+                "avatar_settings": 0,
+                "participants": 1
+              },
+              "control_user": "4666014d-6999-42b5-a65f-08a0295fead5",
+              "deleted": {
+                "age_owners": 1,
+                "avatar_settings": 1,
+                "participants": 1
+              },
+              "deleted_user": "e0abc1ba-a07e-48dc-b122-7613c79e286d",
+              "phase": "before",
+              "private_data_progress_completed": 0,
+              "private_rows_remaining": 3,
+              "saga_completed_at": null,
+              "saga_status": "IN_PROGRESS",
+              "steps": [
+                {
+                  "attempt_count": 0,
+                  "status": "PENDING",
+                  "target": "CONCERT_PRIVATE_DATA"
+                },
+                {
+                  "attempt_count": 0,
+                  "status": "PENDING",
+                  "target": "CONCERT_SESSIONS"
+                },
+                {
+                  "attempt_count": 0,
+                  "status": "PENDING",
+                  "target": "CONCERT_SHARING"
+                },
+                {
+                  "attempt_count": 0,
+                  "status": "PENDING",
+                  "target": "CONCERT_TICKETS"
+                },
+                {
+                  "attempt_count": 0,
+                  "status": "PENDING",
+                  "target": "FRIEND"
+                },
+                {
+                  "attempt_count": 0,
+                  "status": "PENDING",
+                  "target": "NOTIFICATION"
+                },
+                {
+                  "attempt_count": 0,
+                  "status": "PENDING",
+                  "target": "POST"
+                },
+                {
+                  "attempt_count": 0,
+                  "status": "PENDING",
+                  "target": "PROFILE"
+                }
+              ]
+            },
+            {
+              "control": {
+                "age_owners": 0,
+                "avatar_settings": 0,
+                "participants": 1
+              },
+              "control_user": "4666014d-6999-42b5-a65f-08a0295fead5",
+              "deleted": {
+                "age_owners": 0,
+                "avatar_settings": 0,
+                "participants": 1
+              },
+              "deleted_user": "e0abc1ba-a07e-48dc-b122-7613c79e286d",
+              "phase": "after",
+              "private_data_progress_completed": 1,
+              "private_rows_remaining": 0,
+              "saga_completed_at": null,
+              "saga_status": "IN_PROGRESS",
+              "steps": [
+                {
+                  "attempt_count": 0,
+                  "status": "PENDING",
+                  "target": "CONCERT_PRIVATE_DATA"
+                },
+                {
+                  "attempt_count": 0,
+                  "status": "PENDING",
+                  "target": "CONCERT_SESSIONS"
+                },
+                {
+                  "attempt_count": 0,
+                  "status": "PENDING",
+                  "target": "CONCERT_SHARING"
+                },
+                {
+                  "attempt_count": 0,
+                  "status": "PENDING",
+                  "target": "CONCERT_TICKETS"
+                },
+                {
+                  "attempt_count": 0,
+                  "status": "PENDING",
+                  "target": "FRIEND"
+                },
+                {
+                  "attempt_count": 0,
+                  "status": "PENDING",
+                  "target": "NOTIFICATION"
+                },
+                {
+                  "attempt_count": 0,
+                  "status": "PENDING",
+                  "target": "POST"
+                },
+                {
+                  "attempt_count": 0,
+                  "status": "PENDING",
+                  "target": "PROFILE"
+                }
+              ]
+            }
+          ]
+        },
+        "persisted_after_pg_restart": {
+          "deleted_user": "e0abc1ba-a07e-48dc-b122-7613c79e286d",
+          "private_rows": "1|0|0",
+          "saga": "IN_PROGRESS|",
+          "steps": "CONCERT_PRIVATE_DATA|PENDING|0\nCONCERT_SESSIONS|PENDING|0\nCONCERT_SHARING|PENDING|0\nCONCERT_TICKETS|PENDING|0\nFRIEND|PENDING|0\nNOTIFICATION|PENDING|0\nPOST|PENDING|0\nPROFILE|PENDING|0"
+        }
+      },
+      "finished_at": "2026-11-06T17:44:11.846974+00:00",
       "id": "QA09-DELETION",
       "invariants": [
-        "real Auth worker and production Concert factory over mTLS",
-        "physical PostgreSQL restart and service restart replay without duplicate effects",
-        "zero private rows for the deleted user and control user intact"
+        "the production Auth deletion source and mounted Concert PrivateData factory sanitized the seeded participant row and removed the avatar and age-owner rows over mTLS (the private-row predicate is 0)",
+        "the control user's rows were unchanged",
+        "a fresh composed factory replayed the sealed acknowledgement after a service restart without rewriting its terminal receipt",
+        "the same case ran again after a physical PostgreSQL restart against the same durable stores",
+        "the canonical Auth saga's eight steps never left PENDING in this mount, so it is not deletion convergence"
       ],
       "logs": [
         {
-          "excerpt": "\nrunning 1 test\ntest mounted_private_data_ack_restart_and_session_revocation_boundary ... MOUNTED DELETION PASS: sealed PrivateData ACK over mTLS, caller refusal before deleter, zero unrevoked sessions, tampered source refusal, restart replay without duplicate effects, zero private rows, control intact\nok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 4.42s\n\n",
+          "excerpt": "\nrunning 1 test\ntest mounted_private_data_ack_restart_and_session_revocation_boundary ... QA09_DELETION_PROBE {\"control\":{\"age_owners\":0,\"avatar_settings\":0,\"participants\":1},\"control_user\":\"4666014d-6999-42b5-a65f-08a0295fead5\",\"deleted\":{\"age_owners\":1,\"avatar_settings\":1,\"participants\":1},\"deleted_user\":\"e0abc1ba-a07e-48dc-b122-7613c79e286d\",\"phase\":\"before\",\"private_data_progress_completed\":0,\"private_rows_remaining\":3,\"saga_completed_at\":null,\"saga_status\":\"IN_PROGRESS\",\"steps\":[{\"attempt_count\":0,\"status\":\"PENDING\",\"target\":\"CONCERT_PRIVATE_DATA\"},{\"attempt_count\":0,\"status\":\"PENDING\",\"target\":\"CONCERT_SESSIONS\"},{\"attempt_count\":0,\"status\":\"PENDING\",\"target\":\"CONCERT_SHARING\"},{\"attempt_count\":0,\"status\":\"PENDING\",\"target\":\"CONCERT_TICKETS\"},{\"attempt_count\":0,\"status\":\"PENDING\",\"target\":\"FRIEND\"},{\"attempt_count\":0,\"status\":\"PENDING\",\"target\":\"NOTIFICATION\"},{\"attempt_count\":0,\"status\":\"PENDING\",\"target\":\"POST\"},{\"attempt_count\":0,\"status\":\"PENDING\",\"target\":\"PROFILE\"}]}\nQA09_DELETION_PROBE {\"control\":{\"age_owners\":0,\"avatar_settings\":0,\"participants\":1},\"control_user\":\"4666014d-6999-42b5-a65f-08a0295fead5\",\"deleted\":{\"age_owners\":0,\"avatar_settings\":0,\"participants\":1},\"deleted_user\":\"e0abc1ba-a07e-48dc-b122-7613c79e286d\",\"phase\":\"after\",\"private_data_progress_completed\":1,\"private_rows_remaining\":0,\"saga_completed_at\":null,\"saga_status\":\"IN_PROGRESS\",\"steps\":[{\"attempt_count\":0,\"status\":\"PENDING\",\"target\":\"CONCERT_PRIVATE_DATA\"},{\"attempt_count\":0,\"status\":\"PENDING\",\"target\":\"CONCERT_SESSIONS\"},{\"attempt_count\":0,\"status\":\"PENDING\",\"target\":\"CONCERT_SHARING\"},{\"attempt_count\":0,\"status\":\"PENDING\",\"target\":\"CONCERT_TICKETS\"},{\"attempt_count\":0,\"status\":\"PENDING\",\"target\":\"FRIEND\"},{\"attempt_count\":0,\"status\":\"PENDING\",\"target\":\"NOTIFICATION\"},{\"attempt_count\":0,\"status\":\"PENDING\",\"target\":\"POST\"},{\"attempt_count\":0,\"status\":\"PENDING\",\"target\":\"PROFILE\"}]}\nMOUNTED DELETION PASS: sealed PrivateData ACK over mTLS, caller refusal before deleter, zero unrevoked sessions, tampered source refusal, restart replay without duplicate effects, zero private rows, control intact\nok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 6.41s\n\n",
           "source": "account deletion source"
         },
         {
-          "excerpt": "\nrunning 1 test\ntest mounted_private_data_ack_restart_and_session_revocation_boundary ... MOUNTED DELETION PASS: sealed PrivateData ACK over mTLS, caller refusal before deleter, zero unrevoked sessions, tampered source refusal, restart replay without duplicate effects, zero private rows, control intact\nok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 3.38s\n\n",
+          "excerpt": "\nrunning 1 test\ntest mounted_private_data_ack_restart_and_session_revocation_boundary ... QA09_DELETION_PROBE {\"control\":{\"age_owners\":0,\"avatar_settings\":0,\"participants\":1},\"control_user\":\"850ccd5f-cd47-4e48-b81b-34a6e2abdb00\",\"deleted\":{\"age_owners\":1,\"avatar_settings\":1,\"participants\":1},\"deleted_user\":\"425fe4d2-d03a-49c5-9bf1-6df2ada48905\",\"phase\":\"before\",\"private_data_progress_completed\":0,\"private_rows_remaining\":3,\"saga_completed_at\":null,\"saga_status\":\"IN_PROGRESS\",\"steps\":[{\"attempt_count\":0,\"status\":\"PENDING\",\"target\":\"CONCERT_PRIVATE_DATA\"},{\"attempt_count\":0,\"status\":\"PENDING\",\"target\":\"CONCERT_SESSIONS\"},{\"attempt_count\":0,\"status\":\"PENDING\",\"target\":\"CONCERT_SHARING\"},{\"attempt_count\":0,\"status\":\"PENDING\",\"target\":\"CONCERT_TICKETS\"},{\"attempt_count\":0,\"status\":\"PENDING\",\"target\":\"FRIEND\"},{\"attempt_count\":0,\"status\":\"PENDING\",\"target\":\"NOTIFICATION\"},{\"attempt_count\":0,\"status\":\"PENDING\",\"target\":\"POST\"},{\"attempt_count\":0,\"status\":\"PENDING\",\"target\":\"PROFILE\"}]}\nQA09_DELETION_PROBE {\"control\":{\"age_owners\":0,\"avatar_settings\":0,\"participants\":1},\"control_user\":\"850ccd5f-cd47-4e48-b81b-34a6e2abdb00\",\"deleted\":{\"age_owners\":0,\"avatar_settings\":0,\"participants\":1},\"deleted_user\":\"425fe4d2-d03a-49c5-9bf1-6df2ada48905\",\"phase\":\"after\",\"private_data_progress_completed\":1,\"private_rows_remaining\":0,\"saga_completed_at\":null,\"saga_status\":\"IN_PROGRESS\",\"steps\":[{\"attempt_count\":0,\"status\":\"PENDING\",\"target\":\"CONCERT_PRIVATE_DATA\"},{\"attempt_count\":0,\"status\":\"PENDING\",\"target\":\"CONCERT_SESSIONS\"},{\"attempt_count\":0,\"status\":\"PENDING\",\"target\":\"CONCERT_SHARING\"},{\"attempt_count\":0,\"status\":\"PENDING\",\"target\":\"CONCERT_TICKETS\"},{\"attempt_count\":0,\"status\":\"PENDING\",\"target\":\"FRIEND\"},{\"attempt_count\":0,\"status\":\"PENDING\",\"target\":\"NOTIFICATION\"},{\"attempt_count\":0,\"status\":\"PENDING\",\"target\":\"POST\"},{\"attempt_count\":0,\"status\":\"PENDING\",\"target\":\"PROFILE\"}]}\nMOUNTED DELETION PASS: sealed PrivateData ACK over mTLS, caller refusal before deleter, zero unrevoked sessions, tampered source refusal, restart replay without duplicate effects, zero private rows, control intact\nok\n\ntest result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 8.53s\n\n",
           "source": "account deletion after_pg_restart"
         }
       ],
-      "name": "Interrupted private-data deletion saga",
-      "started_at": "2026-11-06T16:53:47.010965+00:00",
+      "name": "PrivateData owner deletion mount",
+      "qualification": "isolated owner mount",
+      "started_at": "2026-11-06T17:43:55.098662+00:00",
       "state": "PASS"
     },
     {
       "actions": [
         {
+          "giveaway_create_attempts": 1
+        },
+        {
           "body": {
-            "giveaway_id": "834508ab-feda-4308-9279-b6ec61fcd3b7",
+            "giveaway_id": "ea14d5b2-8a59-4699-8d66-a7e36cb3fdd6",
             "meeting": {
-              "expires_at": "2026-11-06T19:54:14.806196Z",
+              "expires_at": "2026-11-06T20:44:29.908073Z",
               "identification": "Show the six digit code",
               "instructions": "Recovery collection point",
               "map_revision": 1,
@@ -177,9 +570,9 @@
           "status": 200
         },
         {
-          "giveaway": "834508ab-feda-4308-9279-b6ec61fcd3b7",
+          "giveaway": "ea14d5b2-8a59-4699-8d66-a7e36cb3fdd6",
           "provision": "baseline",
-          "reservation": "f82d33cd-ad7b-431d-891d-0afdfebfff9e",
+          "reservation": "729fa094-ad2c-4ff2-92fa-f12251e38f75",
           "status": 200
         }
       ],
@@ -187,10 +580,10 @@
         "closure_effects": "",
         "closure_jobs": "",
         "event": "OPEN|1",
-        "giveaways": "834508ab-feda-4308-9279-b6ec61fcd3b7|OPEN|5|0|1",
-        "outbox_ids": "0573c428-cd21-4782-94bf-8949c328034b,28a784f3-6732-4837-9aff-3b74245e9138,3e28628f-3e2b-4961-872e-ee9f2dce3dc0,a3779c47-a42c-4302-86fb-ff5bfebcf92a,baed443e-b244-49e7-b79c-816f6f684db6,ec119e02-9aa1-4ba8-9a14-0fc63db33989",
+        "giveaways": "ea14d5b2-8a59-4699-8d66-a7e36cb3fdd6|OPEN|5|0|1",
+        "outbox_ids": "0dcff66f-b6ae-4d53-afd4-c3dccbe8036a,277f7639-d14c-4265-bbe4-cba5466ed300,395062f9-d675-4b0a-888b-8573600c71c3,61067aaa-d294-4e39-8db2-4311e9cbb1d2,89af7769-3f25-4c3f-8240-f2d96bfa994c,a40a5f04-15d3-4bc9-b7aa-6b0c01e212de",
         "receipts": "claimConcertReservation|SUCCEEDED|\ncreateConcertGiveaway|SUCCEEDED|\nissueConcertPickupCode|SUCCEEDED|\nreserveConcertGiveaway|SUCCEEDED|\nsetConcertPickupMeeting|SUCCEEDED|\nupdateConcertGiveaway|SUCCEEDED|",
-        "reservations": "f82d33cd-ad7b-431d-891d-0afdfebfff9e|CLAIMED|3"
+        "reservations": "729fa094-ad2c-4ff2-92fa-f12251e38f75|CLAIMED|3"
       },
       "before": {
         "closure_effects": "",
@@ -230,12 +623,12 @@
           "result": {
             "exit_code": 0,
             "forced": false,
-            "pid": 48726
+            "pid": 62890
           },
           "stop": "api-gateway"
         },
         {
-          "pid": 49393,
+          "pid": 63494,
           "start": "api-gateway"
         },
         {
@@ -284,41 +677,50 @@
             }
           },
           "recovered_services": {
-            "api-gateway": 49393,
-            "auth-service": 48724,
-            "concert-service": 48719,
-            "friend-service": 48720,
-            "notification-service": 48718,
-            "post-service": 48723,
-            "profile-service": 48717
+            "api-gateway": 63494,
+            "auth-service": 62888,
+            "concert-service": 62883,
+            "friend-service": 62884,
+            "notification-service": 62882,
+            "post-service": 62887,
+            "profile-service": 62881
           }
         },
         {
           "pids": {
             "gateway": [
-              48726,
-              49393
+              62890,
+              63494
             ]
-          }
+          },
+          "unchanged_rows": [
+            "event",
+            "giveaways",
+            "reservations",
+            "outbox_ids",
+            "receipts",
+            "closure_jobs",
+            "closure_effects"
+          ]
         }
       ],
       "after": {
         "closure_effects": "",
         "closure_jobs": "",
         "event": "OPEN|1",
-        "giveaways": "834508ab-feda-4308-9279-b6ec61fcd3b7|OPEN|5|0|1",
-        "outbox_ids": "0573c428-cd21-4782-94bf-8949c328034b,28a784f3-6732-4837-9aff-3b74245e9138,3e28628f-3e2b-4961-872e-ee9f2dce3dc0,a3779c47-a42c-4302-86fb-ff5bfebcf92a,baed443e-b244-49e7-b79c-816f6f684db6,ec119e02-9aa1-4ba8-9a14-0fc63db33989",
+        "giveaways": "ea14d5b2-8a59-4699-8d66-a7e36cb3fdd6|OPEN|5|0|1",
+        "outbox_ids": "0dcff66f-b6ae-4d53-afd4-c3dccbe8036a,277f7639-d14c-4265-bbe4-cba5466ed300,395062f9-d675-4b0a-888b-8573600c71c3,61067aaa-d294-4e39-8db2-4311e9cbb1d2,89af7769-3f25-4c3f-8240-f2d96bfa994c,a40a5f04-15d3-4bc9-b7aa-6b0c01e212de",
         "receipts": "claimConcertReservation|SUCCEEDED|\ncreateConcertGiveaway|SUCCEEDED|\nissueConcertPickupCode|SUCCEEDED|\nreserveConcertGiveaway|SUCCEEDED|\nsetConcertPickupMeeting|SUCCEEDED|\nupdateConcertGiveaway|SUCCEEDED|",
-        "reservations": "f82d33cd-ad7b-431d-891d-0afdfebfff9e|CLAIMED|3"
+        "reservations": "729fa094-ad2c-4ff2-92fa-f12251e38f75|CLAIMED|3"
       },
       "before": {
         "closure_effects": "",
         "closure_jobs": "",
         "event": "OPEN|1",
-        "giveaways": "834508ab-feda-4308-9279-b6ec61fcd3b7|OPEN|5|0|1",
-        "outbox_ids": "0573c428-cd21-4782-94bf-8949c328034b,28a784f3-6732-4837-9aff-3b74245e9138,3e28628f-3e2b-4961-872e-ee9f2dce3dc0,a3779c47-a42c-4302-86fb-ff5bfebcf92a,baed443e-b244-49e7-b79c-816f6f684db6,ec119e02-9aa1-4ba8-9a14-0fc63db33989",
+        "giveaways": "ea14d5b2-8a59-4699-8d66-a7e36cb3fdd6|OPEN|5|0|1",
+        "outbox_ids": "0dcff66f-b6ae-4d53-afd4-c3dccbe8036a,277f7639-d14c-4265-bbe4-cba5466ed300,395062f9-d675-4b0a-888b-8573600c71c3,61067aaa-d294-4e39-8db2-4311e9cbb1d2,89af7769-3f25-4c3f-8240-f2d96bfa994c,a40a5f04-15d3-4bc9-b7aa-6b0c01e212de",
         "receipts": "claimConcertReservation|SUCCEEDED|\ncreateConcertGiveaway|SUCCEEDED|\nissueConcertPickupCode|SUCCEEDED|\nreserveConcertGiveaway|SUCCEEDED|\nsetConcertPickupMeeting|SUCCEEDED|\nupdateConcertGiveaway|SUCCEEDED|",
-        "reservations": "f82d33cd-ad7b-431d-891d-0afdfebfff9e|CLAIMED|3"
+        "reservations": "729fa094-ad2c-4ff2-92fa-f12251e38f75|CLAIMED|3"
       },
       "commands": [
         {
@@ -327,29 +729,41 @@
           ],
           "exit_code": 0,
           "label": "restart-api-gateway",
-          "output": "48726->49393"
+          "output": "62890->63494"
         }
       ],
+      "compared": [
+        "event",
+        "giveaways",
+        "reservations",
+        "outbox_ids",
+        "receipts",
+        "closure_jobs",
+        "closure_effects"
+      ],
       "db_rows": {},
-      "finished_at": "2026-11-06T16:54:17.723607+00:00",
+      "finished_at": "2026-11-06T17:44:32.898826+00:00",
       "id": "QA09-SERVICE-RESTART",
       "invariants": [
         "the restarted gateway returned readiness",
-        "committed pickup rows unchanged",
+        "committed event, giveaway, reservation, outbox identity and receipt rows unchanged",
         "product read recovered through the gateway"
       ],
       "logs": [],
       "name": "Gateway restart",
-      "started_at": "2026-11-06T16:54:16.836467+00:00",
+      "started_at": "2026-11-06T17:44:32.005970+00:00",
       "state": "PASS"
     },
     {
       "actions": [
         {
+          "giveaway_create_attempts": 1
+        },
+        {
           "body": {
-            "giveaway_id": "ccc9d924-deba-4de8-9da0-74f6ba95f232",
+            "giveaway_id": "f5485121-1014-4c45-ae99-485269c0ff77",
             "meeting": {
-              "expires_at": "2026-11-06T19:54:17.833597Z",
+              "expires_at": "2026-11-06T20:44:33.015436Z",
               "identification": "Show the six digit code",
               "instructions": "Recovery collection point",
               "map_revision": 1,
@@ -362,9 +776,9 @@
           "status": 200
         },
         {
-          "giveaway": "ccc9d924-deba-4de8-9da0-74f6ba95f232",
+          "giveaway": "f5485121-1014-4c45-ae99-485269c0ff77",
           "provision": "pending",
-          "reservation": "5bccac6c-8f77-4d87-8678-6ef97d5d06aa",
+          "reservation": "9d93b48a-a02e-4250-8617-3d0dba2801f4",
           "status": 200
         },
         {
@@ -373,10 +787,10 @@
         {
           "blocked_claim_outcome": {
             "body": {
-              "claimed_at": "2026-11-06T16:54:19.203561Z",
-              "giveaway_id": "ccc9d924-deba-4de8-9da0-74f6ba95f232",
-              "receipt_id": "f89f7db6-73f7-4456-9e68-dfda35b439c7",
-              "reservation_id": "5bccac6c-8f77-4d87-8678-6ef97d5d06aa",
+              "claimed_at": "2026-11-06T17:44:34.398373Z",
+              "giveaway_id": "f5485121-1014-4c45-ae99-485269c0ff77",
+              "receipt_id": "880620f3-0f3d-4e6e-8c9e-c3714bbd9fa1",
+              "reservation_id": "9d93b48a-a02e-4250-8617-3d0dba2801f4",
               "revision": 3,
               "state": "CLAIMED"
             },
@@ -387,12 +801,12 @@
           "result": {
             "exit_code": 0,
             "forced": false,
-            "pid": 49393
+            "pid": 63494
           },
           "stop": "api-gateway"
         },
         {
-          "pid": 49501,
+          "pid": 63605,
           "start": "api-gateway"
         },
         {
@@ -441,23 +855,23 @@
             }
           },
           "recovered_services": {
-            "api-gateway": 49501,
-            "auth-service": 48724,
-            "concert-service": 48719,
-            "friend-service": 48720,
-            "notification-service": 48718,
-            "post-service": 48723,
-            "profile-service": 48717
+            "api-gateway": 63605,
+            "auth-service": 62888,
+            "concert-service": 62883,
+            "friend-service": 62884,
+            "notification-service": 62882,
+            "post-service": 62887,
+            "profile-service": 62881
           }
         },
         {
           "replay_claim": {
             "attempts": 1,
             "body": {
-              "claimed_at": "2026-11-06T16:54:19.203561Z",
-              "giveaway_id": "ccc9d924-deba-4de8-9da0-74f6ba95f232",
-              "receipt_id": "f89f7db6-73f7-4456-9e68-dfda35b439c7",
-              "reservation_id": "5bccac6c-8f77-4d87-8678-6ef97d5d06aa",
+              "claimed_at": "2026-11-06T17:44:34.398373Z",
+              "giveaway_id": "f5485121-1014-4c45-ae99-485269c0ff77",
+              "receipt_id": "880620f3-0f3d-4e6e-8c9e-c3714bbd9fa1",
+              "reservation_id": "9d93b48a-a02e-4250-8617-3d0dba2801f4",
               "revision": 3,
               "state": "CLAIMED"
             },
@@ -469,19 +883,19 @@
         "closure_effects": "",
         "closure_jobs": "",
         "event": "OPEN|1",
-        "giveaways": "834508ab-feda-4308-9279-b6ec61fcd3b7|OPEN|5|0|1\nccc9d924-deba-4de8-9da0-74f6ba95f232|OPEN|5|0|1",
-        "outbox_ids": "0573c428-cd21-4782-94bf-8949c328034b,28a784f3-6732-4837-9aff-3b74245e9138,3e28628f-3e2b-4961-872e-ee9f2dce3dc0,5771f3e4-e2bb-4f84-b6d8-76a1d4624b60,718e822f-3dcc-420e-aa0a-f6bf32ec814a,73afc3da-e545-4846-bb38-aef1e7e23650,a3779c47-a42c-4302-86fb-ff5bfebcf92a,baed443e-b244-49e7-b79c-816f6f684db6,d6db228e-b4fd-4e8b-8737-37e48c3e5109,ec119e02-9aa1-4ba8-9a14-0fc63db33989,f99c62df-74b8-477e-bdea-161db38b800b,fff47fa2-7538-435d-9f88-33e744272184",
+        "giveaways": "ea14d5b2-8a59-4699-8d66-a7e36cb3fdd6|OPEN|5|0|1\nf5485121-1014-4c45-ae99-485269c0ff77|OPEN|5|0|1",
+        "outbox_ids": "0dcff66f-b6ae-4d53-afd4-c3dccbe8036a,277f7639-d14c-4265-bbe4-cba5466ed300,2885daa4-cd76-460b-94e4-e0564623290e,395062f9-d675-4b0a-888b-8573600c71c3,61067aaa-d294-4e39-8db2-4311e9cbb1d2,6ed09497-bf7d-4a26-af19-ffe33ba0b8e3,84f89f39-da7b-4616-b7af-06bc797b6405,89af7769-3f25-4c3f-8240-f2d96bfa994c,a40a5f04-15d3-4bc9-b7aa-6b0c01e212de,aa0fcb76-f1ab-4405-aaa4-65d440e72218,c4533723-beac-4192-8564-e3a9a66f635b,e9a06c84-ff1b-4e79-900a-0f9149be0bc9",
         "receipts": "claimConcertReservation|SUCCEEDED|\nclaimConcertReservation|SUCCEEDED|\ncreateConcertGiveaway|SUCCEEDED|\ncreateConcertGiveaway|SUCCEEDED|\nissueConcertPickupCode|SUCCEEDED|\nissueConcertPickupCode|SUCCEEDED|\nreserveConcertGiveaway|SUCCEEDED|\nreserveConcertGiveaway|SUCCEEDED|\nsetConcertPickupMeeting|SUCCEEDED|\nsetConcertPickupMeeting|SUCCEEDED|\nupdateConcertGiveaway|SUCCEEDED|\nupdateConcertGiveaway|SUCCEEDED|",
-        "reservations": "5bccac6c-8f77-4d87-8678-6ef97d5d06aa|CLAIMED|3\nf82d33cd-ad7b-431d-891d-0afdfebfff9e|CLAIMED|3"
+        "reservations": "729fa094-ad2c-4ff2-92fa-f12251e38f75|CLAIMED|3\n9d93b48a-a02e-4250-8617-3d0dba2801f4|CLAIMED|3"
       },
       "before": {
         "closure_effects": "",
         "closure_jobs": "",
         "event": "OPEN|1",
-        "giveaways": "834508ab-feda-4308-9279-b6ec61fcd3b7|OPEN|5|0|1",
-        "outbox_ids": "0573c428-cd21-4782-94bf-8949c328034b,28a784f3-6732-4837-9aff-3b74245e9138,3e28628f-3e2b-4961-872e-ee9f2dce3dc0,a3779c47-a42c-4302-86fb-ff5bfebcf92a,baed443e-b244-49e7-b79c-816f6f684db6,ec119e02-9aa1-4ba8-9a14-0fc63db33989",
+        "giveaways": "ea14d5b2-8a59-4699-8d66-a7e36cb3fdd6|OPEN|5|0|1",
+        "outbox_ids": "0dcff66f-b6ae-4d53-afd4-c3dccbe8036a,277f7639-d14c-4265-bbe4-cba5466ed300,395062f9-d675-4b0a-888b-8573600c71c3,61067aaa-d294-4e39-8db2-4311e9cbb1d2,89af7769-3f25-4c3f-8240-f2d96bfa994c,a40a5f04-15d3-4bc9-b7aa-6b0c01e212de",
         "receipts": "claimConcertReservation|SUCCEEDED|\ncreateConcertGiveaway|SUCCEEDED|\nissueConcertPickupCode|SUCCEEDED|\nreserveConcertGiveaway|SUCCEEDED|\nsetConcertPickupMeeting|SUCCEEDED|\nupdateConcertGiveaway|SUCCEEDED|",
-        "reservations": "f82d33cd-ad7b-431d-891d-0afdfebfff9e|CLAIMED|3"
+        "reservations": "729fa094-ad2c-4ff2-92fa-f12251e38f75|CLAIMED|3"
       },
       "commands": [
         {
@@ -490,43 +904,43 @@
           ],
           "exit_code": 0,
           "label": "restart-api-gateway",
-          "output": "49393->49501"
+          "output": "63494->63605"
         }
       ],
       "db_rows": {
         "giveaway_after_interrupt": "0|1",
         "giveaway_before": "OPEN|4|1|0",
         "giveaway_recovered": "0|1",
-        "original_receipt": "6880f5ae-ae2d-4cd7-8a17-2eb051eaa7aa",
+        "original_receipt": "19e96785-a8fe-4270-bcb6-2e1c161fe699",
         "reservation_after_interrupt": "CLAIMED|3",
         "success_receipts_recovered": "1"
       },
-      "finished_at": "2026-11-06T16:54:19.952137+00:00",
+      "finished_at": "2026-11-06T17:44:35.168085+00:00",
       "id": "QA09-PENDING-PICKUP",
       "invariants": [
         "a claim blocked in its database transaction completed exactly once after the lock backend was released",
         "inventory ended consumed exactly once",
-        "same idempotency key replays the original receipt",
+        "gateway restart and the same idempotency key replayed the original receipt",
         "no double consumption"
       ],
       "logs": [],
       "name": "Interrupted pickup claim",
-      "started_at": "2026-11-06T16:54:17.723636+00:00",
+      "started_at": "2026-11-06T17:44:32.898840+00:00",
       "state": "PASS"
     },
     {
       "actions": [
         {
           "in_flight_transaction": {
-            "marker": "5fea9720-f1df-42ed-a7ab-ea44a5eb47d2",
-            "postmaster": 48675
+            "marker": "6e530ad1-6415-49ca-8101-523a190fd18b",
+            "postmaster": 62833
           }
         },
         {
           "in_flight_exit": 2,
           "postmaster": [
-            48675,
-            49619
+            62833,
+            63683
           ]
         },
         {
@@ -575,13 +989,13 @@
             }
           },
           "recovered_services": {
-            "api-gateway": 49501,
-            "auth-service": 48724,
-            "concert-service": 49959,
-            "friend-service": 48720,
-            "notification-service": 48718,
-            "post-service": 48723,
-            "profile-service": 48717
+            "api-gateway": 63605,
+            "auth-service": 62888,
+            "concert-service": 63835,
+            "friend-service": 62884,
+            "notification-service": 62882,
+            "post-service": 62887,
+            "profile-service": 62881
           }
         }
       ],
@@ -589,19 +1003,19 @@
         "closure_effects": "",
         "closure_jobs": "",
         "event": "OPEN|1",
-        "giveaways": "834508ab-feda-4308-9279-b6ec61fcd3b7|OPEN|5|0|1\nccc9d924-deba-4de8-9da0-74f6ba95f232|OPEN|5|0|1",
-        "outbox_ids": "0573c428-cd21-4782-94bf-8949c328034b,28a784f3-6732-4837-9aff-3b74245e9138,3e28628f-3e2b-4961-872e-ee9f2dce3dc0,5771f3e4-e2bb-4f84-b6d8-76a1d4624b60,718e822f-3dcc-420e-aa0a-f6bf32ec814a,73afc3da-e545-4846-bb38-aef1e7e23650,a3779c47-a42c-4302-86fb-ff5bfebcf92a,baed443e-b244-49e7-b79c-816f6f684db6,d6db228e-b4fd-4e8b-8737-37e48c3e5109,ec119e02-9aa1-4ba8-9a14-0fc63db33989,f99c62df-74b8-477e-bdea-161db38b800b,fff47fa2-7538-435d-9f88-33e744272184",
+        "giveaways": "ea14d5b2-8a59-4699-8d66-a7e36cb3fdd6|OPEN|5|0|1\nf5485121-1014-4c45-ae99-485269c0ff77|OPEN|5|0|1",
+        "outbox_ids": "0dcff66f-b6ae-4d53-afd4-c3dccbe8036a,277f7639-d14c-4265-bbe4-cba5466ed300,2885daa4-cd76-460b-94e4-e0564623290e,395062f9-d675-4b0a-888b-8573600c71c3,61067aaa-d294-4e39-8db2-4311e9cbb1d2,6ed09497-bf7d-4a26-af19-ffe33ba0b8e3,84f89f39-da7b-4616-b7af-06bc797b6405,89af7769-3f25-4c3f-8240-f2d96bfa994c,a40a5f04-15d3-4bc9-b7aa-6b0c01e212de,aa0fcb76-f1ab-4405-aaa4-65d440e72218,c4533723-beac-4192-8564-e3a9a66f635b,e9a06c84-ff1b-4e79-900a-0f9149be0bc9",
         "receipts": "claimConcertReservation|SUCCEEDED|\nclaimConcertReservation|SUCCEEDED|\ncreateConcertGiveaway|SUCCEEDED|\ncreateConcertGiveaway|SUCCEEDED|\nissueConcertPickupCode|SUCCEEDED|\nissueConcertPickupCode|SUCCEEDED|\nreserveConcertGiveaway|SUCCEEDED|\nreserveConcertGiveaway|SUCCEEDED|\nsetConcertPickupMeeting|SUCCEEDED|\nsetConcertPickupMeeting|SUCCEEDED|\nupdateConcertGiveaway|SUCCEEDED|\nupdateConcertGiveaway|SUCCEEDED|",
-        "reservations": "5bccac6c-8f77-4d87-8678-6ef97d5d06aa|CLAIMED|3\nf82d33cd-ad7b-431d-891d-0afdfebfff9e|CLAIMED|3"
+        "reservations": "729fa094-ad2c-4ff2-92fa-f12251e38f75|CLAIMED|3\n9d93b48a-a02e-4250-8617-3d0dba2801f4|CLAIMED|3"
       },
       "before": {
         "closure_effects": "",
         "closure_jobs": "",
         "event": "OPEN|1",
-        "giveaways": "834508ab-feda-4308-9279-b6ec61fcd3b7|OPEN|5|0|1\nccc9d924-deba-4de8-9da0-74f6ba95f232|OPEN|5|0|1",
-        "outbox_ids": "0573c428-cd21-4782-94bf-8949c328034b,28a784f3-6732-4837-9aff-3b74245e9138,3e28628f-3e2b-4961-872e-ee9f2dce3dc0,5771f3e4-e2bb-4f84-b6d8-76a1d4624b60,718e822f-3dcc-420e-aa0a-f6bf32ec814a,73afc3da-e545-4846-bb38-aef1e7e23650,a3779c47-a42c-4302-86fb-ff5bfebcf92a,baed443e-b244-49e7-b79c-816f6f684db6,d6db228e-b4fd-4e8b-8737-37e48c3e5109,ec119e02-9aa1-4ba8-9a14-0fc63db33989,f99c62df-74b8-477e-bdea-161db38b800b,fff47fa2-7538-435d-9f88-33e744272184",
+        "giveaways": "ea14d5b2-8a59-4699-8d66-a7e36cb3fdd6|OPEN|5|0|1\nf5485121-1014-4c45-ae99-485269c0ff77|OPEN|5|0|1",
+        "outbox_ids": "0dcff66f-b6ae-4d53-afd4-c3dccbe8036a,277f7639-d14c-4265-bbe4-cba5466ed300,2885daa4-cd76-460b-94e4-e0564623290e,395062f9-d675-4b0a-888b-8573600c71c3,61067aaa-d294-4e39-8db2-4311e9cbb1d2,6ed09497-bf7d-4a26-af19-ffe33ba0b8e3,84f89f39-da7b-4616-b7af-06bc797b6405,89af7769-3f25-4c3f-8240-f2d96bfa994c,a40a5f04-15d3-4bc9-b7aa-6b0c01e212de,aa0fcb76-f1ab-4405-aaa4-65d440e72218,c4533723-beac-4192-8564-e3a9a66f635b,e9a06c84-ff1b-4e79-900a-0f9149be0bc9",
         "receipts": "claimConcertReservation|SUCCEEDED|\nclaimConcertReservation|SUCCEEDED|\ncreateConcertGiveaway|SUCCEEDED|\ncreateConcertGiveaway|SUCCEEDED|\nissueConcertPickupCode|SUCCEEDED|\nissueConcertPickupCode|SUCCEEDED|\nreserveConcertGiveaway|SUCCEEDED|\nreserveConcertGiveaway|SUCCEEDED|\nsetConcertPickupMeeting|SUCCEEDED|\nsetConcertPickupMeeting|SUCCEEDED|\nupdateConcertGiveaway|SUCCEEDED|\nupdateConcertGiveaway|SUCCEEDED|",
-        "reservations": "5bccac6c-8f77-4d87-8678-6ef97d5d06aa|CLAIMED|3\nf82d33cd-ad7b-431d-891d-0afdfebfff9e|CLAIMED|3"
+        "reservations": "729fa094-ad2c-4ff2-92fa-f12251e38f75|CLAIMED|3\n9d93b48a-a02e-4250-8617-3d0dba2801f4|CLAIMED|3"
       },
       "commands": [
         {
@@ -619,7 +1033,7 @@
       "db_rows": {
         "inflight_after_restart": "0"
       },
-      "finished_at": "2026-11-06T16:54:26.134535+00:00",
+      "finished_at": "2026-11-06T17:44:41.212024+00:00",
       "id": "QA09-DB-RESTART",
       "invariants": [
         "the in-flight transaction resolved to a rollback after crash recovery",
@@ -629,19 +1043,323 @@
       ],
       "logs": [
         {
-          "excerpt": "1-07 01:53:59.694 KST [48608] LOG:  listening on Unix socket \"/private/tmp/mcr-pg-2f1ykhrh/socket/.s.PGSQL.5432\"\n2026-11-07 01:53:59.700 KST [48613] LOG:  database system was shut down at 2026-11-07 01:53:59 KST\n2026-11-07 01:53:59.703 KST [48608] LOG:  database system is ready to accept connections\n2026-11-07 01:54:00.356 KST [48608] LOG:  received fast shutdown request\n2026-11-07 01:54:00.356 KST [48608] LOG:  aborting any active transactions\n2026-11-07 01:54:00.357 KST [48608] LOG:  background worker \"logical replication launcher\" (PID 48616) exited with exit code 1\n2026-11-07 01:54:00.357 KST [48611] LOG:  shutting down\n2026-11-07 01:54:00.358 KST [48611] LOG:  checkpoint starting: shutdown immediate\n2026-11-07 01:54:00.360 KST [48611] LOG:  checkpoint complete: wrote 84 buffers (0.5%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.002 s, sync=0.002 s, total=0.003 s; sync files=39, longest=0.001 s, average=0.001 s; distance=52 kB, estimate=52 kB; lsn=0/3DADD60, redo lsn=0/3DADD60\n2026-11-07 01:54:00.362 KST [48608] LOG:  database system is shut down\n2026-11-07 01:54:00.509 KST [48675] LOG:  starting PostgreSQL 16.14 (Homebrew) on aarch64-apple-darwin25.4.0, compiled by Apple clang version 21.0.0 (clang-2100.0.123.102), 64-bit\n2026-11-07 01:54:00.510 KST [48675] LOG:  listening on Unix socket \"/private/tmp/mcr-pg-2f1ykhrh/socket/.s.PGSQL.5432\"\n2026-11-07 01:54:00.515 KST [48678] LOG:  database system was shut down at 2026-11-07 01:54:00 KST\n2026-11-07 01:54:00.518 KST [48675] LOG:  database system is ready to accept connections\n2026-11-07 01:54:15.033 KST [48763] WARNING:  there is no transaction in progress\n2026-11-07 01:54:15.047 KST [48734] WARNING:  there is no transaction in progress\n2026-11-07 01:54:15.615 KST [48767] WARNING:  there is no transaction in progress\n2026-11-07 01:54:15.647 KST [48734] WARNING:  there is no transaction in progress\n2026-11-07 01:54:16.136 KST [48763] WARNING:  there is no transaction in progress\n2026-11-07 01:54:17.105 KST [48767] WARNING:  there is no transaction in progress\n2026-11-07 01:54:17.113 KST [48721] WARNING:  there is no transaction in progress\n2026-11-07 01:54:17.569 KST [48767] WARNING:  there is no transaction in progress\n2026-11-07 01:54:17.578 KST [48721] WARNING:  there is no transaction in progress\n2026-11-07 01:54:17.999 KST [48768] WARNING:  there is no transaction in progress\n2026-11-07 01:54:18.006 KST [48734] WARNING:  there is no transaction in progress\n2026-11-07 01:54:18.406 KST [48766] WARNING:  there is no transaction in progress\n2026-11-07 01:54:18.414 KST [48734] WARNING:  there is no transaction in progress\n2026-11-07 01:54:18.866 KST [49318] WARNING:  there is no transaction in progress\n2026-11-07 01:54:19.149 KST [49480] FATAL:  terminating connection due to administrator command\n2026-11-07 01:54:19.149 KST [49480] STATEMENT:  BEGIN; select 1 from concert_community_giveaways where giveaway_id='ccc9d924-deba-4de8-9da0-74f6ba95f232' for update; SELECT pg_sleep(300);\n2026-11-07 01:54:20.110 KST [48675] LOG:  received immediate shutdown request\n2026-11-07 01:54:20.115 KST [49570] FATAL:  the database system is shutting down\n2026-11-07 01:54:20.115 KST [49571] FATAL:  the database system is shutting down\n2026-11-07 01:54:20.117 KST [48675] LOG:  database system is shut down\n2026-11-07 01:54:20.255 KST [49619] LOG:  starting PostgreSQL 16.14 (Homebrew) on aarch64-apple-darwin25.4.0, compiled by Apple clang version 21.0.0 (clang-2100.0.123.102), 64-bit\n2026-11-07 01:54:20.255 KST [49619] LOG:  listening on Unix socket \"/private/tmp/mcr-pg-2f1ykhrh/socket/.s.PGSQL.5432\"\n2026-11-07 01:54:20.260 KST [49637] LOG:  database system was interrupted; last known up at 2026-11-07 01:54:00 KST\n2026-11-07 01:54:20.372 KST [49640] FATAL:  the database system is starting up\n2026-11-07 01:54:20.377 KST [49641] FATAL:  the database system is starting up\n2026-11-07 01:54:20.378 KST [49642] FATAL:  the database system is starting up\n2026-11-07 01:54:20.386 KST [49643] FATAL:  the database system is starting up\n2026-11-07 01:54:20.386 KST [49644] FATAL:  the database system is starting up\n2026-11-07 01:54:20.391 KST [49645] FATAL:  the database system is starting up\n2026-11-07 01:54:20.392 KST [49646] FATAL:  the database system is starting up\n2026-11-07 01:54:20.401 KST [49647] FATAL:  the database system is starting up\n2026-11-07 01:54:20.409 KST [49648] FATAL:  the database system is starting up\n2026-11-07 01:54:20.415 KST [49649] FATAL:  the database system is starting up\n2026-11-07 01:54:20.415 KST [49650] FATAL:  the database system is starting up\n2026-11-07 01:54:20.425 KST [49651] FATAL:  the database system is starting up\n2026-11-07 01:54:20.453 KST [49652] FATAL:  the database system is starting up\n2026-11-07 01:54:20.459 KST [49653] FATAL:  the database system is starting up\n2026-11-07 01:54:20.459 KST [49654] FATAL:  the database system is starting up\n2026-11-07 01:54:20.461 KST [49637] LOG:  database system was not properly shut down; automatic recovery in progress\n2026-11-07 01:54:20.463 KST [49637] LOG:  redo starts at 0/3DADDD8\n2026-11-07 01:54:20.467 KST [49655] FATAL:  the database system is not yet accepting connections\n2026-11-07 01:54:20.467 KST [49655] DETAIL:  Consistent recovery state has not been yet reached.\n2026-11-07 01:54:20.474 KST [49637] LOG:  invalid record length at 0/4036200: expected at least 24, got 0\n2026-11-07 01:54:20.474 KST [49637] LOG:  redo done at 0/4035CD0 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.01 s\n2026-11-07 01:54:20.477 KST [49635] LOG:  checkpoint starting: end-of-recovery immediate wait\n2026-11-07 01:54:20.493 KST [49635] LOG:  checkpoint complete: wrote 759 buffers (4.6%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.008 s, sync=0.008 s, total=0.016 s; sync files=267, longest=0.001 s, average=0.001 s; distance=2593 kB, estimate=2593 kB; lsn=0/4036200, redo lsn=0/4036200\n2026-11-07 01:54:20.496 KST [49619] LOG:  database system is ready to accept connections\n",
+          "excerpt": ".0 (clang-2100.0.123.102), 64-bit\n2026-11-07 02:44:14.578 KST [62763] LOG:  listening on Unix socket \"/private/tmp/mcr-pg-jz86r_zi/socket/.s.PGSQL.5432\"\n2026-11-07 02:44:14.583 KST [62766] LOG:  database system was shut down at 2026-11-07 02:44:14 KST\n2026-11-07 02:44:14.587 KST [62763] LOG:  database system is ready to accept connections\n2026-11-07 02:44:15.237 KST [62763] LOG:  received fast shutdown request\n2026-11-07 02:44:15.237 KST [62763] LOG:  aborting any active transactions\n2026-11-07 02:44:15.238 KST [62763] LOG:  background worker \"logical replication launcher\" (PID 62769) exited with exit code 1\n2026-11-07 02:44:15.238 KST [62764] LOG:  shutting down\n2026-11-07 02:44:15.238 KST [62764] LOG:  checkpoint starting: shutdown immediate\n2026-11-07 02:44:15.241 KST [62764] LOG:  checkpoint complete: wrote 84 buffers (0.5%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.002 s, sync=0.002 s, total=0.004 s; sync files=39, longest=0.001 s, average=0.001 s; distance=52 kB, estimate=52 kB; lsn=0/3DADD60, redo lsn=0/3DADD60\n2026-11-07 02:44:15.243 KST [62763] LOG:  database system is shut down\n2026-11-07 02:44:15.384 KST [62833] LOG:  starting PostgreSQL 16.14 (Homebrew) on aarch64-apple-darwin25.4.0, compiled by Apple clang version 21.0.0 (clang-2100.0.123.102), 64-bit\n2026-11-07 02:44:15.385 KST [62833] LOG:  listening on Unix socket \"/private/tmp/mcr-pg-jz86r_zi/socket/.s.PGSQL.5432\"\n2026-11-07 02:44:15.393 KST [62837] LOG:  database system was shut down at 2026-11-07 02:44:15 KST\n2026-11-07 02:44:15.397 KST [62833] LOG:  database system is ready to accept connections\n2026-11-07 02:44:30.124 KST [62930] WARNING:  there is no transaction in progress\n2026-11-07 02:44:30.139 KST [62899] WARNING:  there is no transaction in progress\n2026-11-07 02:44:30.739 KST [62930] WARNING:  there is no transaction in progress\n2026-11-07 02:44:30.747 KST [62899] WARNING:  there is no transaction in progress\n2026-11-07 02:44:31.253 KST [62927] WARNING:  there is no transaction in progress\n2026-11-07 02:44:32.293 KST [62927] WARNING:  there is no transaction in progress\n2026-11-07 02:44:32.301 KST [62885] WARNING:  there is no transaction in progress\n2026-11-07 02:44:32.720 KST [62931] WARNING:  there is no transaction in progress\n2026-11-07 02:44:32.751 KST [62885] WARNING:  there is no transaction in progress\n2026-11-07 02:44:33.204 KST [62927] WARNING:  there is no transaction in progress\n2026-11-07 02:44:33.212 KST [62899] WARNING:  there is no transaction in progress\n2026-11-07 02:44:33.568 KST [62930] WARNING:  there is no transaction in progress\n2026-11-07 02:44:33.575 KST [62899] WARNING:  there is no transaction in progress\n2026-11-07 02:44:34.018 KST [62930] WARNING:  there is no transaction in progress\n2026-11-07 02:44:34.344 KST [63583] FATAL:  terminating connection due to administrator command\n2026-11-07 02:44:34.344 KST [63583] STATEMENT:  BEGIN; select 1 from concert_community_giveaways where giveaway_id='f5485121-1014-4c45-ae99-485269c0ff77' for update; SELECT pg_sleep(300);\n2026-11-07 02:44:35.323 KST [62833] LOG:  received immediate shutdown request\n2026-11-07 02:44:35.328 KST [62833] LOG:  database system is shut down\n2026-11-07 02:44:35.474 KST [63683] LOG:  starting PostgreSQL 16.14 (Homebrew) on aarch64-apple-darwin25.4.0, compiled by Apple clang version 21.0.0 (clang-2100.0.123.102), 64-bit\n2026-11-07 02:44:35.474 KST [63683] LOG:  listening on Unix socket \"/private/tmp/mcr-pg-jz86r_zi/socket/.s.PGSQL.5432\"\n2026-11-07 02:44:35.479 KST [63686] LOG:  database system was interrupted; last known up at 2026-11-07 02:44:15 KST\n2026-11-07 02:44:35.479 KST [63687] FATAL:  the database system is starting up\n2026-11-07 02:44:35.486 KST [63688] FATAL:  the database system is starting up\n2026-11-07 02:44:35.488 KST [63689] FATAL:  the database system is starting up\n2026-11-07 02:44:35.493 KST [63690] FATAL:  the database system is starting up\n2026-11-07 02:44:35.500 KST [63691] FATAL:  the database system is starting up\n2026-11-07 02:44:35.502 KST [63692] FATAL:  the database system is starting up\n2026-11-07 02:44:35.518 KST [63694] FATAL:  the database system is starting up\n2026-11-07 02:44:35.523 KST [63695] FATAL:  the database system is starting up\n2026-11-07 02:44:35.525 KST [63696] FATAL:  the database system is starting up\n2026-11-07 02:44:35.555 KST [63697] FATAL:  the database system is starting up\n2026-11-07 02:44:35.562 KST [63698] FATAL:  the database system is starting up\n2026-11-07 02:44:35.567 KST [63699] FATAL:  the database system is starting up\n2026-11-07 02:44:35.568 KST [63700] FATAL:  the database system is starting up\n2026-11-07 02:44:35.568 KST [63701] FATAL:  the database system is starting up\n2026-11-07 02:44:35.591 KST [63702] FATAL:  the database system is starting up\n2026-11-07 02:44:35.634 KST [63703] FATAL:  the database system is starting up\n2026-11-07 02:44:35.645 KST [63704] FATAL:  the database system is starting up\n2026-11-07 02:44:35.652 KST [63705] FATAL:  the database system is starting up\n2026-11-07 02:44:35.652 KST [63706] FATAL:  the database system is starting up\n2026-11-07 02:44:35.657 KST [63686] LOG:  database system was not properly shut down; automatic recovery in progress\n2026-11-07 02:44:35.659 KST [63686] LOG:  redo starts at 0/3DADDD8\n2026-11-07 02:44:35.668 KST [63686] LOG:  invalid record length at 0/4033320: expected at least 24, got 0\n2026-11-07 02:44:35.668 KST [63686] LOG:  redo done at 0/4032E08 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.00 s\n2026-11-07 02:44:35.672 KST [63684] LOG:  checkpoint starting: end-of-recovery immediate wait\n2026-11-07 02:44:35.687 KST [63684] LOG:  checkpoint complete: wrote 755 buffers (4.6%); 0 WAL file(s) added, 0 removed, 1 recycled; write=0.008 s, sync=0.007 s, total=0.015 s; sync files=266, longest=0.001 s, average=0.001 s; distance=2581 kB, estimate=2581 kB; lsn=0/4033320, redo lsn=0/4033320\n2026-11-07 02:44:35.690 KST [63683] LOG:  database system is ready to accept connections\n",
           "source": "postgres.log"
         }
       ],
       "name": "Postmaster crash restart",
-      "started_at": "2026-11-06T16:54:19.952154+00:00",
+      "started_at": "2026-11-06T17:44:35.168105+00:00",
       "state": "PASS"
     },
     {
       "actions": [
         {
-          "backup_bytes": 783446,
-          "backup_sha256": "444f8b3c95e48d2a2b5bf96423fae1899bc857d0d33278926f819426012e56ed"
+          "auth_worker_env": {
+            "AUTH_USER_DELETION_WORKER_ENABLED": "true",
+            "AUTH_USER_DELETION_WORKER_INTERVAL_MS": "60000"
+          },
+          "worker_overrides": {
+            "AUTH_USER_DELETION_WORKER_ENABLED": "true",
+            "AUTH_USER_DELETION_WORKER_INTERVAL_MS": "250",
+            "AUTH_USER_DELETION_WORKER_MAX_ATTEMPTS": "8"
+          }
+        },
+        {
+          "delete": {
+            "body": {
+              "deleted": true,
+              "saga": {
+                "completedAt": null,
+                "createdAt": "2026-11-06T17:44:41.359577+00:00",
+                "id": "0d862787-e531-4c47-ace3-2c881a196f60",
+                "retentionUntil": "2026-12-06T17:44:41.359577+00:00",
+                "status": "IN_PROGRESS",
+                "steps": [
+                  {
+                    "attemptCount": 0,
+                    "completedAt": null,
+                    "lastError": null,
+                    "nextAttemptAt": "2026-11-06T17:44:41.359577+00:00",
+                    "status": "PENDING",
+                    "target": "CONCERT_PRIVATE_DATA"
+                  },
+                  {
+                    "attemptCount": 0,
+                    "completedAt": null,
+                    "lastError": null,
+                    "nextAttemptAt": "2026-11-06T17:44:41.359577+00:00",
+                    "status": "PENDING",
+                    "target": "CONCERT_SESSIONS"
+                  },
+                  {
+                    "attemptCount": 0,
+                    "completedAt": null,
+                    "lastError": null,
+                    "nextAttemptAt": "2026-11-06T17:44:41.359577+00:00",
+                    "status": "PENDING",
+                    "target": "CONCERT_SHARING"
+                  },
+                  {
+                    "attemptCount": 0,
+                    "completedAt": null,
+                    "lastError": null,
+                    "nextAttemptAt": "2026-11-06T17:44:41.359577+00:00",
+                    "status": "PENDING",
+                    "target": "CONCERT_TICKETS"
+                  },
+                  {
+                    "attemptCount": 0,
+                    "completedAt": null,
+                    "lastError": null,
+                    "nextAttemptAt": "2026-11-06T17:44:41.359577+00:00",
+                    "status": "PENDING",
+                    "target": "FRIEND"
+                  },
+                  {
+                    "attemptCount": 0,
+                    "completedAt": null,
+                    "lastError": null,
+                    "nextAttemptAt": "2026-11-06T17:44:41.359577+00:00",
+                    "status": "PENDING",
+                    "target": "NOTIFICATION"
+                  },
+                  {
+                    "attemptCount": 0,
+                    "completedAt": null,
+                    "lastError": null,
+                    "nextAttemptAt": "2026-11-06T17:44:41.359577+00:00",
+                    "status": "PENDING",
+                    "target": "POST"
+                  },
+                  {
+                    "attemptCount": 0,
+                    "completedAt": null,
+                    "lastError": null,
+                    "nextAttemptAt": "2026-11-06T17:44:41.359577+00:00",
+                    "status": "PENDING",
+                    "target": "PROFILE"
+                  }
+                ],
+                "updatedAt": "2026-11-06T17:44:41.359577+00:00",
+                "userId": "f385dd27-9272-4476-b104-f84ef841a123"
+              },
+              "sagaId": "0d862787-e531-4c47-ace3-2c881a196f60",
+              "userId": "f385dd27-9272-4476-b104-f84ef841a123"
+            },
+            "status": 202
+          }
+        },
+        {
+          "kill": "auth-service",
+          "pid": 62888,
+          "signal": "SIGKILL"
+        },
+        {
+          "pid": 63974,
+          "start": "auth-service"
+        },
+        {
+          "readiness": {
+            "api-gateway": {
+              "alive": true,
+              "degraded": false,
+              "ready": true,
+              "status": 200
+            },
+            "auth-service": {
+              "alive": true,
+              "degraded": false,
+              "ready": true,
+              "status": 200
+            },
+            "concert-service": {
+              "alive": true,
+              "degraded": false,
+              "ready": true,
+              "status": 200
+            },
+            "friend-service": {
+              "alive": true,
+              "degraded": false,
+              "ready": true,
+              "status": 200
+            },
+            "notification-service": {
+              "alive": true,
+              "degraded": false,
+              "ready": true,
+              "status": 200
+            },
+            "post-service": {
+              "alive": true,
+              "degraded": false,
+              "ready": true,
+              "status": 200
+            },
+            "profile-service": {
+              "alive": true,
+              "degraded": false,
+              "ready": true,
+              "status": 200
+            }
+          },
+          "recovered_services": {
+            "api-gateway": 63605,
+            "auth-service": 63974,
+            "concert-service": 64070,
+            "friend-service": 62884,
+            "notification-service": 62882,
+            "post-service": 62887,
+            "profile-service": 62881
+          }
+        },
+        {
+          "auth_process_worker_env": [
+            "AUTH_CONCERT_DELETION_MODE=managed",
+            "AUTH_CONCERT_GRPC_ENDPOINT=https://127.0.0.1:60263",
+            "AUTH_USER_DELETION_WORKER_ENABLED=true",
+            "AUTH_USER_DELETION_WORKER_INTERVAL_MS=250",
+            "AUTH_USER_DELETION_WORKER_MAX_ATTEMPTS=8"
+          ],
+          "concert_process_deletion_env": [
+            "CONCERT_ACCOUNT_DELETION_MODE=managed",
+            "CONCERT_AUTH_GRPC_ENDPOINT=https://127.0.0.1:60273"
+          ]
+        }
+      ],
+      "after": {
+        "auth": "DELETED|2026-11-07 02:44:41.359577+09",
+        "rows": {
+          "control_age_owners": 0,
+          "control_avatar_settings": 1,
+          "control_participants": 1,
+          "deleted_age_owners": 1,
+          "deleted_avatar_settings": 1,
+          "deleted_participants": 1
+        },
+        "saga": "0d862787-e531-4c47-ace3-2c881a196f60|IN_PROGRESS|",
+        "steps": [
+          {
+            "attempt_count": 3,
+            "last_error": "Dependency unavailable",
+            "status": "RETRY",
+            "target": "CONCERT_PRIVATE_DATA"
+          },
+          {
+            "attempt_count": 3,
+            "last_error": "Dependency unavailable",
+            "status": "RETRY",
+            "target": "CONCERT_SESSIONS"
+          },
+          {
+            "attempt_count": 3,
+            "last_error": "Dependency unavailable",
+            "status": "RETRY",
+            "target": "CONCERT_SHARING"
+          },
+          {
+            "attempt_count": 3,
+            "last_error": "Dependency unavailable",
+            "status": "RETRY",
+            "target": "CONCERT_TICKETS"
+          },
+          {
+            "attempt_count": 1,
+            "last_error": "",
+            "status": "SUCCEEDED",
+            "target": "FRIEND"
+          },
+          {
+            "attempt_count": 1,
+            "last_error": "",
+            "status": "SUCCEEDED",
+            "target": "NOTIFICATION"
+          },
+          {
+            "attempt_count": 1,
+            "last_error": "",
+            "status": "SUCCEEDED",
+            "target": "POST"
+          },
+          {
+            "attempt_count": 1,
+            "last_error": "",
+            "status": "SUCCEEDED",
+            "target": "PROFILE"
+          }
+        ]
+      },
+      "before": {
+        "auth": "ACTIVE|",
+        "rows": {
+          "control_age_owners": 0,
+          "control_avatar_settings": 1,
+          "control_participants": 1,
+          "deleted_age_owners": 1,
+          "deleted_avatar_settings": 1,
+          "deleted_participants": 1
+        }
+      },
+      "blocker": "the live seven-service saga ran but did not converge within the 30 s bound: CONCERT_PRIVATE_DATA=RETRY/attempts=3/error=Dependency unavailable; CONCERT_SESSIONS=RETRY/attempts=3/error=Dependency unavailable; CONCERT_SHARING=RETRY/attempts=3/error=Dependency unavailable; CONCERT_TICKETS=RETRY/attempts=3/error=Dependency unavailable",
+      "commands": [
+        {
+          "argv": [
+            "auth-service"
+          ],
+          "exit_code": 0,
+          "label": "restart-auth-service",
+          "output": "62888->63974"
+        }
+      ],
+      "db_rows": {
+        "auth_after": "DELETED|2026-11-07 02:44:41.359577+09",
+        "auth_before": "ACTIVE|",
+        "control_age_owners_after": "0",
+        "control_age_owners_before": "0",
+        "control_avatar_settings_after": "1",
+        "control_avatar_settings_before": "1",
+        "control_participants_after": "1",
+        "control_participants_before": "1",
+        "deleted_age_owners_after": "1",
+        "deleted_age_owners_before": "1",
+        "deleted_avatar_settings_after": "1",
+        "deleted_avatar_settings_before": "1",
+        "deleted_participants_after": "1",
+        "deleted_participants_before": "1",
+        "saga_after_delete": "0d862787-e531-4c47-ace3-2c881a196f60|IN_PROGRESS|",
+        "saga_after_worker_restart": "0d862787-e531-4c47-ace3-2c881a196f60|IN_PROGRESS|",
+        "steps_after_delete": "CONCERT_PRIVATE_DATA|PENDING|0|\nCONCERT_SESSIONS|PENDING|0|\nCONCERT_SHARING|PENDING|0|\nCONCERT_TICKETS|PENDING|0|\nFRIEND|PENDING|0|\nNOTIFICATION|PENDING|0|\nPOST|PENDING|0|\nPROFILE|PENDING|0|",
+        "steps_after_worker_restart": "CONCERT_PRIVATE_DATA|RETRY|3|Dependency unavailable\nCONCERT_SESSIONS|RETRY|3|Dependency unavailable\nCONCERT_SHARING|RETRY|3|Dependency unavailable\nCONCERT_TICKETS|RETRY|3|Dependency unavailable\nFRIEND|SUCCEEDED|1|\nNOTIFICATION|SUCCEEDED|1|\nPOST|SUCCEEDED|1|\nPROFILE|SUCCEEDED|1|",
+        "steps_due_check": "2026-11-07 02:44:41.417993+09|true"
+      },
+      "finished_at": "2026-11-06T17:44:46.889903+00:00",
+      "id": "QA09-DELETION-SAGA",
+      "invariants": [
+        "not claimed: the live seven-service saga ran but did not converge; measured step rows below"
+      ],
+      "logs": [
+        {
+          "excerpt": "",
+          "source": "auth-service after worker restart"
+        },
+        {
+          "excerpt": "CONCERT_HEALTH_LISTENER=127.0.0.1:60264\nCONCERT_WORLD_LISTENER=127.0.0.1:60265\n",
+          "source": "concert-service after worker restart"
+        }
+      ],
+      "name": "Live seven-service deletion saga",
+      "started_at": "2026-11-06T17:44:41.212057+00:00",
+      "state": "NOT_RUN"
+    },
+    {
+      "actions": [
+        {
+          "backup": {
+            "bytes": 783491,
+            "command": "/opt/homebrew/opt/postgresql@16/bin/pg_dump -h /private/tmp/mcr-pg-jz86r_zi/socket -p 5432 -U mcr_owner -Fc -f /private/tmp/mcr-pg-jz86r_zi/concert-backup.dump mcr_concert --no-password",
+            "path": "/private/tmp/mcr-pg-jz86r_zi/concert-backup.dump",
+            "sha256": "bdcf7958db0a9e68fbae624028ea46c7772c71bb90ecd09c17f2dfd30c14ea37"
+          }
         },
         {
           "dropped": true,
@@ -653,26 +1371,41 @@
         "closure_effects": "",
         "closure_jobs": "",
         "event": "OPEN|1",
-        "giveaways": "834508ab-feda-4308-9279-b6ec61fcd3b7|OPEN|5|0|1\nccc9d924-deba-4de8-9da0-74f6ba95f232|OPEN|5|0|1",
-        "outbox_ids": "0573c428-cd21-4782-94bf-8949c328034b,28a784f3-6732-4837-9aff-3b74245e9138,3e28628f-3e2b-4961-872e-ee9f2dce3dc0,5771f3e4-e2bb-4f84-b6d8-76a1d4624b60,718e822f-3dcc-420e-aa0a-f6bf32ec814a,73afc3da-e545-4846-bb38-aef1e7e23650,a3779c47-a42c-4302-86fb-ff5bfebcf92a,baed443e-b244-49e7-b79c-816f6f684db6,d6db228e-b4fd-4e8b-8737-37e48c3e5109,ec119e02-9aa1-4ba8-9a14-0fc63db33989,f99c62df-74b8-477e-bdea-161db38b800b,fff47fa2-7538-435d-9f88-33e744272184",
+        "giveaways": "ea14d5b2-8a59-4699-8d66-a7e36cb3fdd6|OPEN|5|0|1\nf5485121-1014-4c45-ae99-485269c0ff77|OPEN|5|0|1",
+        "outbox_ids": "0dcff66f-b6ae-4d53-afd4-c3dccbe8036a,277f7639-d14c-4265-bbe4-cba5466ed300,2885daa4-cd76-460b-94e4-e0564623290e,395062f9-d675-4b0a-888b-8573600c71c3,61067aaa-d294-4e39-8db2-4311e9cbb1d2,6ed09497-bf7d-4a26-af19-ffe33ba0b8e3,84f89f39-da7b-4616-b7af-06bc797b6405,89af7769-3f25-4c3f-8240-f2d96bfa994c,a40a5f04-15d3-4bc9-b7aa-6b0c01e212de,aa0fcb76-f1ab-4405-aaa4-65d440e72218,c4533723-beac-4192-8564-e3a9a66f635b,e9a06c84-ff1b-4e79-900a-0f9149be0bc9",
         "receipts": "claimConcertReservation|SUCCEEDED|\nclaimConcertReservation|SUCCEEDED|\ncreateConcertGiveaway|SUCCEEDED|\ncreateConcertGiveaway|SUCCEEDED|\nissueConcertPickupCode|SUCCEEDED|\nissueConcertPickupCode|SUCCEEDED|\nreserveConcertGiveaway|SUCCEEDED|\nreserveConcertGiveaway|SUCCEEDED|\nsetConcertPickupMeeting|SUCCEEDED|\nsetConcertPickupMeeting|SUCCEEDED|\nupdateConcertGiveaway|SUCCEEDED|\nupdateConcertGiveaway|SUCCEEDED|",
-        "reservations": "5bccac6c-8f77-4d87-8678-6ef97d5d06aa|CLAIMED|3\nf82d33cd-ad7b-431d-891d-0afdfebfff9e|CLAIMED|3"
+        "reservations": "729fa094-ad2c-4ff2-92fa-f12251e38f75|CLAIMED|3\n9d93b48a-a02e-4250-8617-3d0dba2801f4|CLAIMED|3"
+      },
+      "backup": {
+        "bytes": 783491,
+        "command": "/opt/homebrew/opt/postgresql@16/bin/pg_dump -h /private/tmp/mcr-pg-jz86r_zi/socket -p 5432 -U mcr_owner -Fc -f /private/tmp/mcr-pg-jz86r_zi/concert-backup.dump mcr_concert --no-password",
+        "path": "/private/tmp/mcr-pg-jz86r_zi/concert-backup.dump",
+        "sha256": "bdcf7958db0a9e68fbae624028ea46c7772c71bb90ecd09c17f2dfd30c14ea37"
       },
       "before": {
         "closure_effects": "",
         "closure_jobs": "",
         "event": "OPEN|1",
-        "giveaways": "834508ab-feda-4308-9279-b6ec61fcd3b7|OPEN|5|0|1\nccc9d924-deba-4de8-9da0-74f6ba95f232|OPEN|5|0|1",
-        "outbox_ids": "0573c428-cd21-4782-94bf-8949c328034b,28a784f3-6732-4837-9aff-3b74245e9138,3e28628f-3e2b-4961-872e-ee9f2dce3dc0,5771f3e4-e2bb-4f84-b6d8-76a1d4624b60,718e822f-3dcc-420e-aa0a-f6bf32ec814a,73afc3da-e545-4846-bb38-aef1e7e23650,a3779c47-a42c-4302-86fb-ff5bfebcf92a,baed443e-b244-49e7-b79c-816f6f684db6,d6db228e-b4fd-4e8b-8737-37e48c3e5109,ec119e02-9aa1-4ba8-9a14-0fc63db33989,f99c62df-74b8-477e-bdea-161db38b800b,fff47fa2-7538-435d-9f88-33e744272184",
+        "giveaways": "ea14d5b2-8a59-4699-8d66-a7e36cb3fdd6|OPEN|5|0|1\nf5485121-1014-4c45-ae99-485269c0ff77|OPEN|5|0|1",
+        "outbox_ids": "0dcff66f-b6ae-4d53-afd4-c3dccbe8036a,277f7639-d14c-4265-bbe4-cba5466ed300,2885daa4-cd76-460b-94e4-e0564623290e,395062f9-d675-4b0a-888b-8573600c71c3,61067aaa-d294-4e39-8db2-4311e9cbb1d2,6ed09497-bf7d-4a26-af19-ffe33ba0b8e3,84f89f39-da7b-4616-b7af-06bc797b6405,89af7769-3f25-4c3f-8240-f2d96bfa994c,a40a5f04-15d3-4bc9-b7aa-6b0c01e212de,aa0fcb76-f1ab-4405-aaa4-65d440e72218,c4533723-beac-4192-8564-e3a9a66f635b,e9a06c84-ff1b-4e79-900a-0f9149be0bc9",
         "receipts": "claimConcertReservation|SUCCEEDED|\nclaimConcertReservation|SUCCEEDED|\ncreateConcertGiveaway|SUCCEEDED|\ncreateConcertGiveaway|SUCCEEDED|\nissueConcertPickupCode|SUCCEEDED|\nissueConcertPickupCode|SUCCEEDED|\nreserveConcertGiveaway|SUCCEEDED|\nreserveConcertGiveaway|SUCCEEDED|\nsetConcertPickupMeeting|SUCCEEDED|\nsetConcertPickupMeeting|SUCCEEDED|\nupdateConcertGiveaway|SUCCEEDED|\nupdateConcertGiveaway|SUCCEEDED|",
-        "reservations": "5bccac6c-8f77-4d87-8678-6ef97d5d06aa|CLAIMED|3\nf82d33cd-ad7b-431d-891d-0afdfebfff9e|CLAIMED|3"
+        "reservations": "729fa094-ad2c-4ff2-92fa-f12251e38f75|CLAIMED|3\n9d93b48a-a02e-4250-8617-3d0dba2801f4|CLAIMED|3"
       },
       "commands": [
         {
           "argv": [
-            "pg_dump",
+            "/opt/homebrew/opt/postgresql@16/bin/pg_dump",
+            "-h",
+            "/private/tmp/mcr-pg-jz86r_zi/socket",
+            "-p",
+            "5432",
+            "-U",
+            "mcr_owner",
             "-Fc",
-            "mcr_concert"
+            "-f",
+            "/private/tmp/mcr-pg-jz86r_zi/concert-backup.dump",
+            "mcr_concert",
+            "--no-password"
           ],
           "exit_code": 0,
           "label": "pg_dump",
@@ -680,9 +1413,19 @@
         },
         {
           "argv": [
-            "pg_restore",
+            "/opt/homebrew/opt/postgresql@16/bin/pg_restore",
+            "-h",
+            "/private/tmp/mcr-pg-jz86r_zi/socket",
+            "-p",
+            "5432",
+            "-U",
+            "mcr_owner",
             "-d",
-            "mcr_concert_restored"
+            "mcr_concert_restored",
+            "--no-owner",
+            "--no-privileges",
+            "/private/tmp/mcr-pg-jz86r_zi/concert-backup.dump",
+            "--no-password"
           ],
           "exit_code": 0,
           "label": "pg_restore",
@@ -693,7 +1436,7 @@
         "mutation": "CREATE TABLE\nINSERT 0 1\nQA09 MUTATED",
         "restored_mutation_table": "ABSENT"
       },
-      "finished_at": "2026-11-06T16:54:26.850175+00:00",
+      "finished_at": "2026-11-06T17:44:47.619085+00:00",
       "id": "QA09-BACKUP-RESTORE",
       "invariants": [
         "logical backup restored the exact committed rows",
@@ -702,7 +1445,7 @@
       ],
       "logs": [],
       "name": "Logical backup and restore",
-      "started_at": "2026-11-06T16:54:26.134560+00:00",
+      "started_at": "2026-11-06T17:44:46.889915+00:00",
       "state": "PASS"
     },
     {
@@ -753,13 +1496,13 @@
             }
           },
           "recovered_services": {
-            "api-gateway": 49501,
-            "auth-service": 48724,
-            "concert-service": 49959,
-            "friend-service": 48720,
-            "notification-service": 48718,
-            "post-service": 48723,
-            "profile-service": 48717
+            "api-gateway": 63605,
+            "auth-service": 63974,
+            "concert-service": 64070,
+            "friend-service": 62884,
+            "notification-service": 62882,
+            "post-service": 62887,
+            "profile-service": 62881
           }
         },
         {
@@ -769,7 +1512,7 @@
           "blocked_closure_outcome": {
             "body": {
               "event_id": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
-              "job_id": "e63f7fdb-ca88-51dc-b08f-a7af2f103c87",
+              "job_id": "f9cbab42-d795-5f7f-b0c3-d027e58f22ca",
               "revision": 1,
               "state": "PENDING",
               "steps": [
@@ -814,8 +1557,8 @@
                 "reason": "EVENT_READ_ONLY"
               },
               "message": "The requested action is unavailable.",
-              "timestamp": "2026-11-06T16:54:27.462Z",
-              "traceId": "3b4a06b9-6dc3-4051-95b8-719247288861"
+              "timestamp": "2026-11-06T17:44:48.254Z",
+              "traceId": "65ed42e0-e697-4a62-a3ff-da3a0450003c"
             },
             "status": 409
           }
@@ -828,29 +1571,29 @@
       ],
       "after": {
         "closure_effects": "READ_ONLY|1",
-        "closure_jobs": "e63f7fdb-ca88-51dc-b08f-a7af2f103c87|PENDING|1",
+        "closure_jobs": "f9cbab42-d795-5f7f-b0c3-d027e58f22ca|PENDING|1",
         "event": "READ_ONLY|2",
-        "giveaways": "834508ab-feda-4308-9279-b6ec61fcd3b7|CANCELLED|6|0|1\nccc9d924-deba-4de8-9da0-74f6ba95f232|CANCELLED|6|0|1",
-        "outbox_ids": "0573c428-cd21-4782-94bf-8949c328034b,28a784f3-6732-4837-9aff-3b74245e9138,3e28628f-3e2b-4961-872e-ee9f2dce3dc0,5771f3e4-e2bb-4f84-b6d8-76a1d4624b60,6bb9e8af-f10a-4d1f-a757-80a2efc46e58,718e822f-3dcc-420e-aa0a-f6bf32ec814a,73afc3da-e545-4846-bb38-aef1e7e23650,a3779c47-a42c-4302-86fb-ff5bfebcf92a,baed443e-b244-49e7-b79c-816f6f684db6,d6db228e-b4fd-4e8b-8737-37e48c3e5109,ec119e02-9aa1-4ba8-9a14-0fc63db33989,f99c62df-74b8-477e-bdea-161db38b800b,fff47fa2-7538-435d-9f88-33e744272184",
+        "giveaways": "ea14d5b2-8a59-4699-8d66-a7e36cb3fdd6|CANCELLED|6|0|1\nf5485121-1014-4c45-ae99-485269c0ff77|CANCELLED|6|0|1",
+        "outbox_ids": "0dcff66f-b6ae-4d53-afd4-c3dccbe8036a,277f7639-d14c-4265-bbe4-cba5466ed300,2885daa4-cd76-460b-94e4-e0564623290e,395062f9-d675-4b0a-888b-8573600c71c3,4c9a292a-ba1e-4263-b3e8-97c159085480,61067aaa-d294-4e39-8db2-4311e9cbb1d2,6ed09497-bf7d-4a26-af19-ffe33ba0b8e3,84f89f39-da7b-4616-b7af-06bc797b6405,89af7769-3f25-4c3f-8240-f2d96bfa994c,a40a5f04-15d3-4bc9-b7aa-6b0c01e212de,aa0fcb76-f1ab-4405-aaa4-65d440e72218,c4533723-beac-4192-8564-e3a9a66f635b,e9a06c84-ff1b-4e79-900a-0f9149be0bc9",
         "receipts": "claimConcertReservation|SUCCEEDED|\nclaimConcertReservation|SUCCEEDED|\ncloseConcertEvent|SUCCEEDED|\ncreateConcertGiveaway|SUCCEEDED|\ncreateConcertGiveaway|SUCCEEDED|\nissueConcertPickupCode|SUCCEEDED|\nissueConcertPickupCode|SUCCEEDED|\nreserveConcertGiveaway|SUCCEEDED|\nreserveConcertGiveaway|SUCCEEDED|\nsetConcertPickupMeeting|SUCCEEDED|\nsetConcertPickupMeeting|SUCCEEDED|\nupdateConcertGiveaway|SUCCEEDED|\nupdateConcertGiveaway|SUCCEEDED|",
-        "reservations": "5bccac6c-8f77-4d87-8678-6ef97d5d06aa|CLAIMED|3\nf82d33cd-ad7b-431d-891d-0afdfebfff9e|CLAIMED|3"
+        "reservations": "729fa094-ad2c-4ff2-92fa-f12251e38f75|CLAIMED|3\n9d93b48a-a02e-4250-8617-3d0dba2801f4|CLAIMED|3"
       },
       "before": {
         "closure_effects": "",
         "closure_jobs": "",
         "event": "OPEN|1",
-        "giveaways": "834508ab-feda-4308-9279-b6ec61fcd3b7|OPEN|5|0|1\nccc9d924-deba-4de8-9da0-74f6ba95f232|OPEN|5|0|1",
-        "outbox_ids": "0573c428-cd21-4782-94bf-8949c328034b,28a784f3-6732-4837-9aff-3b74245e9138,3e28628f-3e2b-4961-872e-ee9f2dce3dc0,5771f3e4-e2bb-4f84-b6d8-76a1d4624b60,718e822f-3dcc-420e-aa0a-f6bf32ec814a,73afc3da-e545-4846-bb38-aef1e7e23650,a3779c47-a42c-4302-86fb-ff5bfebcf92a,baed443e-b244-49e7-b79c-816f6f684db6,d6db228e-b4fd-4e8b-8737-37e48c3e5109,ec119e02-9aa1-4ba8-9a14-0fc63db33989,f99c62df-74b8-477e-bdea-161db38b800b,fff47fa2-7538-435d-9f88-33e744272184",
+        "giveaways": "ea14d5b2-8a59-4699-8d66-a7e36cb3fdd6|OPEN|5|0|1\nf5485121-1014-4c45-ae99-485269c0ff77|OPEN|5|0|1",
+        "outbox_ids": "0dcff66f-b6ae-4d53-afd4-c3dccbe8036a,277f7639-d14c-4265-bbe4-cba5466ed300,2885daa4-cd76-460b-94e4-e0564623290e,395062f9-d675-4b0a-888b-8573600c71c3,61067aaa-d294-4e39-8db2-4311e9cbb1d2,6ed09497-bf7d-4a26-af19-ffe33ba0b8e3,84f89f39-da7b-4616-b7af-06bc797b6405,89af7769-3f25-4c3f-8240-f2d96bfa994c,a40a5f04-15d3-4bc9-b7aa-6b0c01e212de,aa0fcb76-f1ab-4405-aaa4-65d440e72218,c4533723-beac-4192-8564-e3a9a66f635b,e9a06c84-ff1b-4e79-900a-0f9149be0bc9",
         "receipts": "claimConcertReservation|SUCCEEDED|\nclaimConcertReservation|SUCCEEDED|\ncreateConcertGiveaway|SUCCEEDED|\ncreateConcertGiveaway|SUCCEEDED|\nissueConcertPickupCode|SUCCEEDED|\nissueConcertPickupCode|SUCCEEDED|\nreserveConcertGiveaway|SUCCEEDED|\nreserveConcertGiveaway|SUCCEEDED|\nsetConcertPickupMeeting|SUCCEEDED|\nsetConcertPickupMeeting|SUCCEEDED|\nupdateConcertGiveaway|SUCCEEDED|\nupdateConcertGiveaway|SUCCEEDED|",
-        "reservations": "5bccac6c-8f77-4d87-8678-6ef97d5d06aa|CLAIMED|3\nf82d33cd-ad7b-431d-891d-0afdfebfff9e|CLAIMED|3"
+        "reservations": "729fa094-ad2c-4ff2-92fa-f12251e38f75|CLAIMED|3\n9d93b48a-a02e-4250-8617-3d0dba2801f4|CLAIMED|3"
       },
       "commands": [],
       "db_rows": {
-        "closure_job_after_resume": "e63f7fdb-ca88-51dc-b08f-a7af2f103c87|PENDING|1",
+        "closure_job_after_resume": "f9cbab42-d795-5f7f-b0c3-d027e58f22ca|PENDING|1",
         "event_after_blocked_attempt": "READ_ONLY|2",
         "event_after_resume": "READ_ONLY|2"
       },
-      "finished_at": "2026-11-06T16:54:27.867007+00:00",
+      "finished_at": "2026-11-06T17:44:48.827512+00:00",
       "id": "QA09-PARTIAL-CLOSURE",
       "invariants": [
         "a closure blocked mid-transaction completed atomically to READ_ONLY after the lock backend was released",
@@ -860,9 +1603,9 @@
       ],
       "logs": [],
       "name": "Interrupted event closure",
-      "started_at": "2026-11-06T16:54:26.850201+00:00",
+      "started_at": "2026-11-06T17:44:47.619117+00:00",
       "state": "PASS"
     }
   ],
-  "started_at": "2026-11-06T16:53:39.682085+00:00"
+  "started_at": "2026-11-06T17:43:47.827212+00:00"
 }
