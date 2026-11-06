@@ -682,3 +682,24 @@ Your next move: run `/ulw-execute` on this plan. Full execution detail follows b
 | IS-2 | 15, 16, 38–42 | Admin report/closure API + browser run on the same candidate | `task-15-be38.md`, `task-42-qa10.md` |
 | IS-3 | 1–6, 44, 48 | Clean clone check suite + CI green + deployment doc review | `task-4-candidate.md`, `task-48-ci.md` |
 | IS-4 | 7, 14, 23, 31, 39 | Privacy matrix over HTTP/WS/cache with blocked/suspended/expired actors | `task-23-venue-authz.md`, `task-39-qa04.md` |
+
+## Proposed follow-up tasks (F4, numbered, not part of this delivery set)
+
+F4 (ideal-state fidelity) requires every shortfall to become a numbered task rather than a note. These 15 rows are recorded with their lanes and evidence expectations in `.omo/evidence/mcr-finish-project/f4-ideal-state.md`. They are deliberately outside the checkbox set above so the completed delivery is not restated as unfinished; the release decision stays NOT_RELEASE_READY until they are scheduled and delivered.
+
+- [ ] 52. Compose the BE24 gift media upload/finalize/authorized read and bind the approved motif mapping (lane: backend)
+- [ ] 53. Prove authorized feed content and the full post lifecycle with CONCERT_PUBLIC_FEED_MODE=read (lane: frontend + backend)
+- [ ] 54. Prove GET mural/tools reachability and close the PI09 Wall B editor states (lane: backend + frontend + QA)
+- [ ] 55. Close QA06 to zero NOT_REACHABLE and capture physical iOS/Android (lane: QA/visual)
+- [ ] 56. Re-run all 48 VENU-IN01 comparisons now that the bilateral friend authority landed (lane: backend venue)
+- [ ] 57. Serve the reviewed character atlas from the production runtime (lane: world/atlas)
+- [ ] 58. Compose decideConcertReport and the user/content moderation commands (lane: backend)
+- [ ] 59. Compose FREEZE_MURAL..CLEANUP owners so closure reaches ARCHIVED and /archive serves 200 (lane: backend lifecycle)
+- [ ] 60. Add a single full-suite check entry point and record a clean-clone run (lane: CI/infra)
+- [ ] 61. Remove the remaining CI exclusions and record a hosted blocking run (lane: CI/infra)
+- [ ] 62. Bind the approved FE10 eligibility/legal publication (lane: external + auth)
+- [ ] 63. Compose the N01 place-note read path and drive QA04 to zero NOT_RUN (lane: backend venue)
+- [ ] 64. Complete IN03 provider, client-cache and WS-frame checks (lane: external + backend + frontend)
+- [ ] 65. Converge the live seven-service account-deletion saga and re-run QA09-DELETION-SAGA (lane: account deletion)
+- [ ] 66. Re-run the QA10 composition against the final release SHA (lane: release publisher)
+
