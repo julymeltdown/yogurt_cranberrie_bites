@@ -28,7 +28,7 @@ export function ParadiseCityMapPanel({ renderPortrait }: {
   const current = useContext(Context), owner = useReviewedCharacterOwner()
   const portrait = renderPortrait ?? ((person, size) => owner?.isCurrent()
     ? <ReviewedCharacterView owner={owner} config={person.avatar} label={`${person.displayName}'s character`} size={size} />
-    : <span role="img" aria-label={`${person.displayName}'s character unavailable`}>Character unavailable</span>)
+    : <span role="img" aria-label={`${person.displayName}'s character unavailable`} className="pc-portrait-fallback">Character unavailable</span>)
   return current ? <ParadiseCityMap controller={current.controller} renderPortrait={portrait} />
     : <p role="status">The venue map is unavailable until current access and siteplan inputs are supplied.</p>
 }

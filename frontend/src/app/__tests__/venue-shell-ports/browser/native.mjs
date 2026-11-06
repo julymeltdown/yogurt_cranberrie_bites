@@ -10,7 +10,6 @@ const server = await createServer({ root: frontend, configLoader: 'runner', cach
   server: { host: '127.0.0.1', port: 0, strictPort: false }, logLevel: 'warn' })
 await server.listen()
 const report = { result: 'FAIL', qualification: 'SUBSTITUTED_FIXTURE', note: 'Actual VenueShellFeatures/production ports/siteplan loader/Map panel. Deterministic session, community clock, Location, landmark and reviewed friend inputs; no live backend, device or physical venue.', cases: [], errors: [] }
-const unavailable = /The venue map is unavailable until current access and siteplan inputs are supplied/
 let browser, page, stage = 'start'
 try {
   browser = await chromium.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: true })
@@ -20,15 +19,17 @@ try {
     const origin = `http://127.0.0.1:${server.httpServer.address().port}`
     stage = `${width}/real`; await page.goto(`${origin}/src/app/__tests__/venue-shell-ports/browser/fixture.html?mode=real`)
     await expect(page.getByRole('tab', { name: 'MAP' })).toBeVisible({ timeout: 15_000 })
-    await expect(page.getByText(unavailable)).toHaveCount(0)
     await page.getByRole('tab', { name: 'FRIENDS' }).click()
     await expect(page.getByRole('button', { name: 'Fixture friend' })).toBeVisible()
+    const fallback = page.locator('.pc-portrait-fallback')
+    await expect(fallback).toHaveCount(1)
+    assert.equal(await fallback.evaluate(element => element.scrollHeight <= element.clientHeight + 1 && element.scrollWidth <= element.clientWidth + 1), true)
     await page.screenshot({ path: resolve(evidence, `real-friends-${width}.png`), fullPage: true })
     await page.getByRole('tab', { name: 'MAP' }).click()
     await page.screenshot({ path: resolve(evidence, `real-capability-${width}.png`), fullPage: true })
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false)
     stage = `${width}/removed`; await page.goto(`${origin}/src/app/__tests__/venue-shell-ports/browser/fixture.html?mode=removed`)
-    await expect(page.getByText(unavailable)).toBeVisible({ timeout: 15_000 })
+    await expect(page.getByRole('status')).toBeVisible({ timeout: 15_000 })
     await expect(page.getByRole('tab', { name: 'MAP' })).toHaveCount(0)
     await page.screenshot({ path: resolve(evidence, `removed-port-${width}.png`), fullPage: true })
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false)

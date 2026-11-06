@@ -45,7 +45,7 @@ const stops: (() => void)[] = []
 beforeEach(() => { vi.stubGlobal('crypto', webcrypto) })
 afterEach(() => { for (const stop of stops.splice(0).reverse()) stop(); vi.restoreAllMocks(); vi.unstubAllGlobals() })
 
-async function fixture(options: { omitPeople?: boolean } = {}) {
+async function fixture(options: { omitPeople?: boolean; denyLandmarks?: boolean } = {}) {
   const bootstrap = await checkedBootstrap()
   const participant = (bootstrap.document as { participant?: { profile?: { avatar?: unknown } } } | undefined)?.participant
   const auth = createSessionController({ eventId, fetch: async () => { throw Error('No live transport') },
@@ -59,7 +59,7 @@ async function fixture(options: { omitPeople?: boolean } = {}) {
   const http = { async request<T>(input: HttpRequest<T>): Promise<HttpResult<T>> {
     calls.push(input.path)
     const value = input.path.endsWith('/venue/location') ? snapshot()
-      : input.path.endsWith('/venue/landmarks') ? landmarkList()
+      : input.path.endsWith('/venue/landmarks') ? (() => { if (options.denyLandmarks) throw Error('Reviewed landmark authority denied'); return landmarkList() })()
         : input.path.includes('/people/') ? { user_id: input.path.split('/').at(-1), display_name: 'Fixture friend', bio: null, avatar: participant?.profile?.avatar }
           : (() => { throw Error(`Unexpected request ${input.path}`) })()
     return { data: input.decode(value, { scope, status: 200, path: input.path }), scope }
@@ -100,6 +100,19 @@ it('names friends only from the actor snapshot and an authorized public profile'
   expect(await ports.start(f.lifetime.signal)).toBe(true)
   await vi.waitFor(() => expect(ports.capabilities.read()?.friends[0]?.displayName).toBe('Fixture friend'))
   expect(ports.capabilities.read()?.friends[0]?.userId).toBe(friendId)
+})
+
+it('keeps the independent location capability when reviewed landmark authority is denied', async () => {
+  const f = await fixture({ denyLandmarks: true })
+  expect(await f.sources.loadLandmarks(f.lifetime.signal)).toBe(false)
+  expect(f.sources.meetingPlaces.size).toBe(0)
+  const ports = production(f.sources)
+  stops.push(() => ports.dispose())
+  expect(await ports.start(f.lifetime.signal)).toBe(true)
+  const state = ports.capabilities.read()
+  expect(state).not.toBeNull()
+  expect(state?.rights.checkIn).toEqual([])
+  expect(state?.rights.postNote).toEqual([])
 })
 
 it('fails closed when no reviewed friend identity source is available', async () => {
