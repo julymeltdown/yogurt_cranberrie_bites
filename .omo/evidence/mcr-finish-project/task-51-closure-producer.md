@@ -223,8 +223,10 @@ This section supersedes the earlier "Live flow NOT RUN" and "Driver remains unco
 notes in this file. Those earlier notes record the diagnosis path; they are not the
 final state.
 Product commit: `40f85ad5f` `fix(startup): serve settlement before World readiness with
-gated capabilities`. The driver and this evidence are the second commit on
-`codex/mcr-exec-w2-closure-producer`.
+gated capabilities`. Driver commit: `3fb133512` `test(lifecycle): prove the closure flow
+on a real development stack`. The worktree's sparse-checkout cone excludes `.omo/evidence`,
+so git refused this path in the same index update as the driver; the evidence follows as a
+separate commit instead of rewriting the driver commit.
 
 ### Mechanism
 
