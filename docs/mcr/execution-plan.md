@@ -274,3 +274,36 @@ Each SL reconciles individual task progress hourly from existing records: state,
 IN05 accounts for all 112 original IDs and 61 required IA entries. Current functional delivery requires 111 active tasks; QA08 remains explicitly deferred with its original scope/history retained and no capacity claim. Actual devices, provider/product inputs, functional safety/privacy/integrity/recovery and reference fidelity remain requirements. The original source and historical records stay available; the revised plan governs current ordering and approved scope changes.
 
 The physical-place input question is now owned by Main and pending: approved real event/venue, official map/location source, permitted spots, audience and validity window. Only the affected physical-location checks await that answer; independent development continues.
+
+## CI gate inventory (task 6, write-only)
+
+This section is the authoritative job list that task 48 restores. Task 6 changes no workflow file: `.github/workflows` does not exist at `501710d29`, and the contract-only workflow deleted at task 3 is not coming back. Task 48 creates `.github/workflows/mcr-ci.yml` from these rows, and later tasks append their own gates to the same workflow when those gates come into existence.
+
+Reference candidate: `501710d29` (`origin/master`). Commands, exit codes and decisive output below come from `.omo/evidence/mcr-finish-project/task-4-candidate.md`, executed on that commit. Node runtime for frontend steps: `v24.22.2`, pinned through `corepack pnpm@11.7.0`. Backend uses `CARGO_TARGET_DIR=/Users/lhs/Desktop/mcr-build/dev-target` locally; CI uses its own cache keyed on `backend/Cargo.lock`.
+
+### Jobs and steps
+
+| # | Job | Exact command | Working dir | Blocking condition | State at `501710d29` |
+| --- | --- | --- | --- | --- | --- |
+| 1 | plan | `python3 scripts/mcr/check-plan.py` | `mcr` | Any non-zero exit. The checker's own `NOT_RUN` sub-obligations (`application_build`, `application_tests`, `deployment`) are reported values, not failures of this job. | exit 0 |
+| 2 | guards | `bash scripts/mcr/check.sh guards` | `mcr` | Any non-zero exit or any entry in `violations`. | exit 0, `result: PASS`, 5863 files scanned |
+| 3 | generated drift | `python3 scripts/mcr/generate-api-client.py --check` | `mcr` | Any non-zero exit; a stale generated client must fail the job. | exit 0, `result: PASS`, 150 operations / 18 outputs |
+| 4 | generated drift | `python3 scripts/mcr/generate-domain-transport.py --check` | `mcr` | Any non-zero exit. | exit 0, `Domain transport metadata current: 140 operations` |
+| 5 | contracts | `python3 scripts/mcr/contracts/c07/test_inventory.py` | `mcr` | Any non-zero exit. | exit 0, 4 tests OK |
+| 6 | contracts | `python3 scripts/mcr/contracts/qa01-coverage/run.py` | `mcr` | Any non-zero exit, or `result` other than `PASS`, or `candidate` not equal to the checked-out SHA. | exit 0, `result: PASS`, 198 fixtures / 1727 responses / 150 operations |
+| 7 | frontend install | `corepack pnpm@11.7.0 install --frozen-lockfile` | `frontend` | Any non-zero exit; a lockfile edit must fail the job. | NOT_RUN at task 4 (dependencies were preinstalled): task 48 must prove this step before the job becomes blocking |
+| 8 | frontend typecheck | `corepack pnpm@11.7.0 run typecheck` | `frontend` | Any non-zero exit or any emitted diagnostic. | exit 0, `tsc -b --pretty false` clean |
+| 9 | frontend build | `corepack pnpm@11.7.0 run build` | `frontend` | Any non-zero exit. | exit 0, `built in 1.19s` |
+| 10 | frontend lint | `corepack pnpm@11.7.0 run lint` | `frontend` | Any non-zero exit. Warning-level findings on generated files alone do not fail the job; a new error-level finding does. | exit 0, warning-level `unicorn(no-thenable)` on generated `src/generated/api-client/document.ts` only |
+| 11 | frontend test | `corepack pnpm@11.7.0 run test` | `frontend` | Any non-zero exit, any failed test, or a collected-file count below the recorded 411. | exit 0, `Test Files 411 passed (411)`, `Tests 5683 passed \| 14 skipped (5697)` |
+| 12 | backend check | `CARGO_TARGET_DIR=<ci-target> cargo +1.88.0 check --locked --workspace --all-targets` | `backend` | Any non-zero exit. Warnings do not fail the job. | exit 0 |
+| 13 | backend test | `CARGO_TARGET_DIR=<ci-target> cargo +1.88.0 test --locked --workspace` | `backend` | Any non-zero exit or any failed test target. | NOT_RUN at task 4 (task 4 ran `check` only): task 48 must capture the first full run and mark the step blocking only if that run is green |
+| 14 | release checks | `python3 scripts/mcr/release_checks/check.py --candidate <40-hex-sha>` | `mcr` | Blocking once task 47 publishes QA10 receipts: any non-zero exit, any missing binding for an in-scope item, or a receipt whose candidate differs from the checked-out SHA. Before task 47 it reports `INCOMPLETE` by design and must not gate merges. | exit 2, `status INCOMPLETE`, `receipts []` (expected: no QA10 bundle yet). Non-blocking with that reason. |
+| 15 | dirty tree | `git status --porcelain --untracked-files=no` | `mcr` | Any non-empty output. CI additionally refuses a job that rewrites tracked files during checks. | empty |
+
+### Gate rules
+
+- Every row above is blocking on the stated condition once its prerequisite evidence exists; rows 7, 13 and 14 carry an explicit non-blocking state until task 48 (rows 7 and 13) and task 47 (row 14) produce the evidence named in the table. No row may be downgraded to warning-only to make a red candidate green.
+- Later tasks add their own blocking gates to the same workflow: `python3 scripts/mcr/contracts/route-parity.py` (task 12, blocking when the route families land), the venue suites from tasks 22 and 23, the IN02/IN04 real-stack gates from tasks 29 and 31, and the QA suites from tasks 38-42. Each owning task commits the workflow step with its implementation, not this inventory.
+- CI must use isolated volumes and loopback services for any real-stack step, never shared databases or production credentials.
+- Task 48 acceptance is a green run on the final candidate plus a deliberately broken probe that turns the same workflow red.
