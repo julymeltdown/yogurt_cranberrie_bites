@@ -1,28 +1,29 @@
 {
-  "schema_version": 2,
-  "active_work_id": "mcr-finish-project-20261106",
-  "works": {
-    "mcr-finish-project-20261106": {
-      "work_id": "mcr-finish-project-20261106",
-      "active_plan": ".omo/plans/mcr-finish-project.md",
-      "plan_name": "mcr-finish-project",
-      "session_ids": [
-        "senpi:01a1ab8b-a3fe-7000-906e-4909ec5e9d74"
-      ],
-      "status": "paused",
-      "worktree_path": null,
-      "session_origins": {},
-      "stale_since": "2026-11-06T01:03:35.485Z",
-      "task_sessions": {}
-    }
-  },
-  "session_ids": [
+ "schema_version": 2,
+ "active_work_id": null,
+ "works": {
+  "mcr-finish-project-20261106": {
+   "work_id": "mcr-finish-project-20261106",
+   "active_plan": ".omo/plans/mcr-finish-project.md",
+   "plan_name": "mcr-finish-project",
+   "session_ids": [
     "senpi:01a1ab8b-a3fe-7000-906e-4909ec5e9d74"
-  ],
-  "session_origins": {},
-  "task_sessions": {},
-  "active_plan": ".omo/plans/mcr-finish-project.md",
-  "plan_name": "mcr-finish-project",
-  "status": "paused",
-  "worktree_path": null
+   ],
+   "status": "completed",
+   "worktree_path": null,
+   "session_origins": {},
+   "stale_since": "2026-11-06T01:03:35.485Z",
+   "task_sessions": {},
+   "completed_at": "2026-11-07T04:35:45.349235+00:00"
+  }
+ },
+ "session_ids": [
+  "senpi:01a1ab8b-a3fe-7000-906e-4909ec5e9d74"
+ ],
+ "session_origins": {},
+ "task_sessions": {},
+ "active_plan": ".omo/plans/mcr-finish-project.md",
+ "plan_name": "mcr-finish-project",
+ "status": "completed",
+ "worktree_path": null
 }
