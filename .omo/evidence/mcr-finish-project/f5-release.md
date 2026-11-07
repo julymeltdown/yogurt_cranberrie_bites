@@ -416,3 +416,6 @@ clippy gate, zero wholly delivered ideal-state rows, a substantial NOT_RUN
 inventory, and no completed green CI run. No recorded evidence supports a
 release claim, and no user decision in this delivery authorizes a scope cut
 beyond the QA08 deferral.
+## CI hosted run (closure of F5-CI-01/F5-CI-02)
+
+Run `42339152026` on `993cc2b9c` (which contains the fixes in `7945d0324`) completed **success**: guards, frontend, backend and release jobs all passed, and C07 + QA01 are blocking steps. Earlier runs failed on a nanosecond/microsecond cursor fixture, a shallow checkout with missing `referencing`, an ANSI-coloured vitest summary defeating the file-count floor, and a stale distinct-key pickup-code expectation; all four are fixed in-tree.
