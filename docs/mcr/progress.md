@@ -1,5 +1,27 @@
 # Execution record — functional delivery
 
+<!-- BEGIN FINISH_PLAN_20261107 -->
+## CURRENT — 2026-11-07T14:09:10.237631+09:00 finish-plan completion checkpoint
+
+**Plan rows: 41 [x], 15 [~] with named gaps, 0 open across all 56 top-level checkboxes; boulder work completed; master `1a7373ec7` in sync with origin. Release decision NOT_RELEASE_READY. QA08 DEFERRED_BY_USER / NOT_RUN and never claimed. Hosted CI run 42339152026 on `993cc2b9c`: guards, frontend (413 files), backend (workspace check plus core-crate tests on PostgreSQL 16) and release all success.**
+
+This checkpoint supersedes the current-count interpretation of every dated block below; those snapshots remain byte-preserved as history.
+
+| Area | Delivered and verified | Remaining gap |
+| --- | --- | --- |
+| Venue backend and clients | Location, invitations/conversation, place notes with 46-cell authorization matrix; 18 venue operations classified and dispatched with durable `concert_place_note_receipts` replay/conflict; bilateral VENU_FRIEND_V1 authority composed (mutual-only, block/suspend/archive denied, owner outage 503) | VENU-IN01 23/48 cases and 7/10 IA states unreachable at capture time; the matrix must be re-run against the composed authority |
+| Party and gift | Producers composed; capacity, stock, one-time pickup and same-key replay proven; lock-order defects fixed (child intent before witness, pairs before command, FOR SHARE vs FOR UPDATE) | Beacon/rally producer absent; eight Party paths classify but return 503 |
+| Feed | Qualified mutation envelope with preview read boundary; create/edit/delete/comment/reaction proven live, idempotent replay, 409 conflict, blocked author filtered with the reader feed still 200 | Media/link payloads refused; compose mode NOT_RUN (no Docker) |
+| Lifecycle | Settlement served before World readiness behind a deny-by-default gate; closure ACK, member 403, post-closure 409, archive PUBLIC projection on real PostgreSQL; maintenance survives a closure transition | `/archive` 200 needs ARCHIVED, so FREEZE_MURAL..CLEANUP owners are still uncomposed |
+| Gates | IN02 15/15, IN03 27/27, IN04 39/39, IN01 deltas D1/D3/D4/D5/R1; QA03 14/14 races, QA04 87/0, QA05 six real-socket failures, QA09 seven recovery scenarios, QA06 206 cases | IN01 D2 policy frames NOT_RUN; IN03 venue cells predate dispatch; QA09 live deletion saga NOT_RUN (four Concert RPCs Dependency unavailable); QA06 111 NOT_REACHABLE and physical devices NOT_RUN |
+| External inputs | AR01 and FE10 recorded as named gaps with binding maps and exact missing inputs | User-supplied venue provenance and legal/eligibility text still absent |
+| Release | IN05 reconciliation 112 IDs / 61 IA / 12 design / 8 venue / 10 extension IA accounted; F1 compliant; F2 quality review; F3 four IS scenarios pass, privacy matrix FAIL on a repeatable 504; F4 10 delivered / 10 partial, follow-ups 52–66 logged; F5 decision NOT_RELEASE_READY; CI blocking with C07 and QA01 gates | Clippy absent from CI (F2-02); QA10 composition not re-run at the final SHA; 15 numbered follow-ups open |
+
+Fixes worth recording because they were defects rather than test noise: social effect-witness lock order (55P03), the gateway outer timeout halved under the product ceiling, the blocked-pair projection that failed the reader's feed, the World maintenance denial that killed the service after closure, the participant-canonical closure gate, an unframed-digest comparison that rejected every Party request, and the advertised mural snapshot that `RESTORE` refused.
+
+<!-- END FINISH_PLAN_20261107 -->
+
+
 <!-- BEGIN MAIN_AR02_AR04_20261105T150424Z -->
 ## CURRENT — 2026-11-06T00:04:24.864450+09:00 responsible-owner original-criteria reconciliation
 
