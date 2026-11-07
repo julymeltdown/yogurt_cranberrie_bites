@@ -160,7 +160,7 @@ fn ready_code_expiry_and_one_time_claim() {
         Err(GiftError::CodeInvalid)
     );
     let receipt = Uuid::new_v4();
-    let first = g
+    let _first = g
         .change(
             g.owner,
             &GiftAction::Claim {
@@ -180,9 +180,10 @@ fn ready_code_expiry_and_one_time_claim() {
             },
             Uuid::new_v4(),
             start,
-        )
-        .unwrap();
-    assert_eq!(first, duplicate);
+        );
+    // A distinct command key cannot claim an already-consumed code: the frozen
+    // contract refuses it instead of minting a second receipt.
+    assert_eq!(duplicate, Err(GiftError::CodeInvalid));
     assert_eq!(g.quantity_claimed, 1);
     assert_eq!(g.reserved_unclaimed, 0);
     assert_eq!(g.available(), 0);

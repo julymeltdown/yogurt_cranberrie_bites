@@ -166,7 +166,9 @@ jobs:
         # recorded baseline. The floor is 409 = the recorded 411 files minus
         # the two excluded timing-sensitive files; raise it when the suite grows.
         run: |
-          files=$(grep -E '^ *Test Files ' "$RUNNER_TEMP/vitest.log" | tail -1 | grep -oE '\([0-9]+\)' | tr -d '()')
+          # Vitest colours its summary; strip ANSI before parsing or the count
+          # reads as empty and the floor fails on a green suite (F5-CI-02).
+          files=$(sed -e 's/\x1b\[[0-9;]*m//g' "$RUNNER_TEMP/vitest.log" | grep -E '^ *Test Files ' | tail -1 | grep -oE '\([0-9]+\)' | tr -d '()')
           echo "collected test files: ${files:-unknown}"
           if [ -z "$files" ] || [ "$files" -lt 409 ]; then
             echo "::error::collected test files below the recorded floor of 409"
