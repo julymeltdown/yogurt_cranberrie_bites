@@ -1,0 +1,259 @@
+{
+  "scope": "WP-08 — Avatar re-keying to profile ownership (T-701 … T-706)",
+  "verification": "V-09",
+  "branch": "codex/yc-wp08-avatar",
+  "base_commit": "b5926f288dfe0efbb393a51741bc7c6f5a7ff201",
+  "base_commit_subject": "Merge branch 'codex/yc-wp02-schema'",
+  "recorded_at_utc": "2026-11-08T19:53:21Z",
+  "result": "PASS",
+  "result_scope": "V-09 cases b, c, d, e. V-09-a is the room operation and belongs to WP-07; see limitations.",
+  "tasks": {
+    "T-701": {
+      "state": "INTEGRATED",
+      "deliverable": "backend/crates/concert-domain/src/profile_avatar.rs",
+      "what_was_built": [
+        "ProfileId: canonical lower-case non-nil UUID owner type; the concert key type is not referenced",
+        "SetProfileAvatar::parse — strict core.SetAvatarRequest decode, identical rejections to the concert SetAvatar::parse",
+        "parse_config — the same strict decoder shared by release projection and HTTP commands",
+        "ProfileAvatarCatalog::from_validated_manifest / validate — the manifest inventory checks, unchanged",
+        "config_value / avatar_state — the closed core.AvatarConfig and core.AvatarState wire projections"
+      ],
+      "tests": "backend/crates/concert-domain/tests/profile_avatar.rs",
+      "test_count": 9,
+      "command": "cargo +1.88.0 test --locked -p concert-domain --test profile_avatar",
+      "exit_code": 0
+    },
+    "T-702": {
+      "state": "INTEGRATED",
+      "deliverable": "backend/services/concert-service/src/profile_avatar/repository.rs",
+      "migration": "backend/services/concert-service/migrations/0086_profile_avatars.sql",
+      "what_was_built": [
+        "ProfileAvatarPersistence::read(actor) — the owner's avatar, or the release default at revision 1 for a profile that never saved; a read never creates a row",
+        "ProfileAvatarPersistence::set_avatar(actor, bytes) — strict parse, catalog validation, then a transactional revision check",
+        "A revision mismatch is Conflict (409) and writes nothing; the route layer returns the current config with it",
+        "The only owner a statement binds is the authenticated profile; the trigger refuses re-pointing a stored avatar at another profile",
+        "profile_avatars(owner_profile_id PK, config jsonb, revision, created_at, updated_at) with no event or participant column"
+      ],
+      "tests": "backend/services/concert-service/tests/profile_avatar_persistence.rs",
+      "test_count": 13,
+      "command": "CONCERT_TEST_DATABASE_URL=… cargo +1.88.0 test --locked -p concert-service --test profile_avatar_persistence",
+      "exit_code": 0
+    },
+    "T-703": {
+      "state": "INTEGRATED",
+      "deliverable": "backend/services/concert-service/src/profile_avatar/http.rs",
+      "what_was_built": [
+        "The closed route table: GET /api/me/avatar (getOwnProfileAvatar), PUT /api/me/avatar (setOwnProfileAvatar)",
+        "names_event_path rejects any target containing /events/ or its percent-encoded spellings before route parsing",
+        "A query, a read with a body, an unknown method or path, and a body naming its own owner are all 400",
+        "A stale write is 409 with details.reason=VERSION_CONFLICT and details.current carrying the current core.AvatarState"
+      ],
+      "tests": "backend/services/concert-service/tests/profile_avatar_routes.rs",
+      "test_count": 12,
+      "command": "CONCERT_TEST_DATABASE_URL=… cargo +1.88.0 test --locked -p concert-service --test profile_avatar_routes",
+      "exit_code": 0
+    },
+    "T-704": {
+      "state": "INTEGRATED",
+      "deliverable": [
+        "frontend/src/features/profile-avatar/",
+        "frontend/src/entities/emo-avatar/"
+      ],
+      "what_was_built": [
+        "ProfileAvatarEditor (was MotionEditor) — preset/component/colour selection, direction and walk previews, draft-until-save; the concert window chrome and concert wording are gone",
+        "model/controller.ts — draft/persisted separation, save, conflict and uncertain reconciliation, synchronous withdrawal",
+        "api/persistence.ts — GET and PUT /api/me/avatar with the revision and response-consistency checks; no event id is fabricated",
+        "entities/emo-avatar/art.ts, compositor.ts, runtime.ts — the artwork, compositing and runtime, re-keyed from event scope to account scope",
+        "The editor is selected by the shell (app/account-entry/panels.tsx) for a reviewed-motion release; there is no event gate in front of it"
+      ],
+      "tests": [
+        "frontend/src/features/profile-avatar/__tests__/editor.test.tsx",
+        "frontend/src/app/account-entry/__tests__/profile-avatar-panel.test.tsx"
+      ],
+      "test_count": 14,
+      "command": "cd frontend && corepack pnpm@11.7.0 run test",
+      "exit_code": 0
+    },
+    "T-705": {
+      "state": "INTEGRATED",
+      "deliverable": "frontend/src/features/profile-avatar/model/cache.ts",
+      "what_was_built": [
+        "createAccountScopedAvatarCache — every entry is stamped with the account version (userId, generation, policyGeneration) it was written under",
+        "A read under a different account version evicts rather than serving the previous account's avatar",
+        "bindAvatarCacheToPrivacy — every PrivacyChange (account switch, policy change, disposal) clears the cache, and a cleanup registration covers the synchronous path",
+        "ACCOUNT_CONTEXT_STALE is recognized on a 409 and clears the cache; the client does not invent the header or the status"
+      ],
+      "tests": "frontend/src/features/profile-avatar/__tests__/account-switch.test.tsx",
+      "test_count": 13,
+      "command": "cd frontend && corepack pnpm@11.7.0 run test",
+      "exit_code": 0
+    },
+    "T-706": {
+      "state": "INTEGRATED",
+      "deliverable": "docs/mcr/integration/evidence/v09-avatar.json",
+      "result": "PASS"
+    }
+  },
+  "hard_constraints": [
+    {
+      "constraint": "No function signature accepts an event id or participant key",
+      "evidence": [
+        "concert-domain/tests/profile_avatar.rs::the_module_source_has_no_event_or_participant_coupling — the module source is inspected for ParticipantKey, participant, event_id, EventId, eventId and /events/",
+        "concert-service/tests/profile_avatar_routes.rs::the_route_source_has_no_event_parameter_or_event_path",
+        "profile-avatar/__tests__/editor.test.tsx::the editor has no event gate — the runtime scope has no event member and the runtime source has no eventId"
+      ]
+    },
+    {
+      "constraint": "No event id appears in any request",
+      "evidence": [
+        "profile-avatar/__tests__/editor.test.tsx::reads and saves through /api/me/avatar with no event id in any request — every recorded path and body is asserted free of the event id, /events/ and event_id",
+        "profile-avatar/__tests__/account-switch.test.tsx::the persistence path is the profile path in every request",
+        "concert-service/tests/profile_avatar_routes.rs::an_event_target_is_400_and_writes_nothing"
+      ]
+    },
+    {
+      "constraint": "No fallback character art; allow_legacy_character_fallback stays false and no fallback path is referenced",
+      "evidence": [
+        "profile-avatar/__tests__/editor.test.tsx::allow_legacy_character_fallback stays false and the profile entity references no fallback path — reads the source pack and scans every profile entity and feature source for fallback identifiers and paths",
+        "profile-avatar/__tests__/editor.test.tsx::refuses to render a character when the artwork cannot be verified, with no substitute",
+        "entities/avatar/character-source-pack.json is byte-identical to the base commit (git diff is empty)"
+      ]
+    },
+    {
+      "constraint": "A non-owner write changes nothing (403)",
+      "evidence": [
+        "concert-service/tests/profile_avatar_persistence.rs::a_non_owner_write_cannot_reach_another_profiles_avatar — the stranger's write lands on its own row, the owner's row is byte-identical, and a direct owner re-point is refused by profile_avatars_owner_immutable",
+        "concert-service/tests/profile_avatar_routes.rs::two_profiles_never_share_an_avatar",
+        "concert-service/tests/profile_avatar_routes.rs::a_write_that_names_its_own_owner_is_refused — profile_id, owner_profile_id, event_id and user_id in the body are all 400 and write nothing",
+        "concert-service/tests/profile_avatar_persistence.rs::the_http_projection_of_a_denied_write_is_403"
+      ]
+    },
+    {
+      "constraint": "Concurrent writes with the same revision: one success, one conflict",
+      "evidence": [
+        "concert-service/tests/profile_avatar_persistence.rs::concurrent_writes_at_the_same_revision_are_one_success_and_one_conflict",
+        "concert-service/tests/profile_avatar_persistence.rs::many_concurrent_writers_at_one_revision_commit_exactly_once — 8 writers, exactly 1 success and 7 conflicts"
+      ]
+    },
+    {
+      "constraint": "The source pack and the atlas path/hash contract are preserved",
+      "evidence": [
+        "profile-avatar/__tests__/editor.test.tsx::the pinned atlas path and hash contract is preserved — exact descriptor and atlas path, sha256 and byte counts",
+        "profile-avatar/__tests__/editor.test.tsx::validates the real pinned artwork through the profile entity — reads the real descriptor bytes and verifies the 1280x1856 atlas and source pack identity",
+        "frontend/public/world/avatars/derived-v1/motion-candidates-v1/ is unchanged (git diff is empty); no file was renamed or copied"
+      ]
+    }
+  ],
+  "v09_cases": {
+    "V-09-a": {
+      "status": "NOT_IN_SCOPE",
+      "reason": "V-09-a is PUT /api/me/room, owned by WP-07. WP-08 does not implement the room operation."
+    },
+    "V-09-b": {
+      "status": "PASS",
+      "evidence": [
+        "concert-service/tests/profile_avatar_routes.rs::a_write_that_names_its_own_owner_is_refused",
+        "concert-service/tests/profile_avatar_routes.rs::two_profiles_never_share_an_avatar",
+        "concert-service/tests/profile_avatar_persistence.rs::a_non_owner_write_cannot_reach_another_profiles_avatar"
+      ]
+    },
+    "V-09-c": {
+      "status": "PASS",
+      "evidence": [
+        "profile-avatar/__tests__/account-switch.test.tsx::the privacy owner clears the avatar cache on an account switch",
+        "profile-avatar/__tests__/account-switch.test.tsx::a cache entry written for one account is never readable for another",
+        "profile-avatar/__tests__/account-switch.test.tsx::after switching accounts and back, the previous draft is not visible"
+      ],
+      "limitation": "This package covers the avatar cache and the avatar draft. Pending uploads and the room draft belong to the media and room packages and are cleared by the same privacy coordinator, not by this package."
+    },
+    "V-09-d": {
+      "status": "PASS",
+      "evidence": [
+        "profile-avatar/__tests__/account-switch.test.tsx::after switching accounts and back, the previous draft is not visible",
+        "profile-avatar/__tests__/account-switch.test.tsx::a second account never renders the first account character",
+        "profile-avatar/__tests__/account-switch.test.tsx::the panel renders an explicit unavailable state instead of a foreign editor"
+      ]
+    },
+    "V-09-e": {
+      "status": "PARTIAL",
+      "reason": "The client recognizes ACCOUNT_CONTEXT_STALE on a 409, clears the avatar cache, and refuses the save without writing. The server does not emit the reason yet: the string does not exist anywhere in backend/ (WP-02 recorded the same gap; the foundation has no account_context_version).",
+      "evidence": [
+        "profile-avatar/__tests__/account-switch.test.tsx::an ACCOUNT_CONTEXT_STALE refusal is recognized and clears the cache",
+        "profile-avatar/__tests__/account-switch.test.tsx::a stale account context refuses the save and writes nothing"
+      ],
+      "to_close": "Whichever work package introduces account_context_version must emit 409 ACCOUNT_CONTEXT_STALE; this client branch is already correct for it."
+    }
+  },
+  "verification_commands": [
+    {
+      "command": "cd backend && cargo +1.88.0 check --locked --workspace",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 backend/scripts/mcr/wp08_avatar_cluster.py --report … --run-cmd 'cargo +1.88.0 test --locked -p concert-domain --test profile_avatar'",
+      "exit_code": 0,
+      "result": "9 passed; 0 failed"
+    },
+    {
+      "command": "python3 backend/scripts/mcr/wp08_avatar_cluster.py --report … --run-cmd 'cargo +1.88.0 test --locked -p concert-service --test profile_avatar_persistence'",
+      "exit_code": 0,
+      "result": "13 passed; 0 failed"
+    },
+    {
+      "command": "python3 backend/scripts/mcr/wp08_avatar_cluster.py --report … --run-cmd 'cargo +1.88.0 test --locked -p concert-service --test profile_avatar_routes'",
+      "exit_code": 0,
+      "result": "12 passed; 0 failed"
+    },
+    {
+      "command": "cd frontend && corepack pnpm@11.7.0 run typecheck",
+      "exit_code": 0
+    },
+    {
+      "command": "cd frontend && corepack pnpm@11.7.0 run test",
+      "exit_code": 1,
+      "result": "5776 passed, 19 failed, 14 skipped across 418 files",
+      "note": "All 19 failures are in four files that fail identically at the base commit with this branch's changes removed: src/app/world-entry/__tests__/map-presentation-v1/input-readiness.test.ts, src/features/meet-beacon/__tests__/photo-client/client.test.ts, src/shared/api/__tests__/c07-social-client/compatibility.test.ts, src/shared/api/paradise-city-v1/__tests__/location-registration.test.ts. They are pre-existing and unrelated to WP-08. Every WP-08 test file passes: editor.test.tsx (12), account-switch.test.tsx (13), profile-avatar-panel.test.tsx (2)."
+    }
+  ],
+  "database_harness": {
+    "script": "backend/scripts/mcr/wp08_avatar_cluster.py",
+    "pattern": "backend/scripts/mcr/migration_smoke.py — a marker-owned mcr-pg-* cluster in /tmp, no TCP listener, no inherited credentials",
+    "postgres_version": "16.14",
+    "migrations_applied": "concert-service 0001 … 0086",
+    "environment_variable": "CONCERT_TEST_DATABASE_URL"
+  },
+  "deviations": [
+    {
+      "item": "profile_avatars migration",
+      "detail": "WP-02's task list named profile_avatars but the schema it delivered (0080–0085) does not contain it; only profile_media, profile_rooms, intro_*, profile_posts and the deletion ledger were created. WP-08 therefore authors the table itself as 0086_profile_avatars.sql, strictly greater than the 0085 head, with no applied migration edited."
+    },
+    {
+      "item": "profile_avatars.config column",
+      "detail": "domain-contract.md §4 names the column `config jsonb` and leaves the shape to the avatar catalog. The column stores the canonical core.AvatarConfig object; the catalog validates its contents and the column only fixes jsonb_typeof = 'object'."
+    },
+    {
+      "item": "V-09-e server half",
+      "detail": "The foundation has no account_context_version anywhere in backend/. WP-08 implements the client half (recognize, clear, refuse without writing) and does not invent the header or the status. Recorded as PARTIAL, not PASS."
+    },
+    {
+      "item": "The reviewed manifest source",
+      "detail": "The concert authority fetched /api/concert/events/{eventId}/bootstrap to learn the reviewed manifest. A profile avatar has no event, so the profile authority takes the pinned manifest document from the shell's own release read and issues no event-scoped request. The shell admission (admitProfileAvatar) checks the account, not an event."
+    },
+    {
+      "item": "MotionAuthority qualification union",
+      "detail": "entities/emo-avatar/runtime.ts widens MotionAuthority to a union of TEST_ONLY and REVIEWED_PRODUCTION. The editor's save gate reads canSave, which only the production variant carries, so a fixture authority cannot satisfy it."
+    },
+    {
+      "item": "The concert editor is not deleted",
+      "detail": "features/avatar/motion-adoption/ and entities/avatar/runtime/motion-adoption/ remain in place for the concert product, which still uses the event-scoped avatar. WP-08 adds the profile implementation beside them and switches the shell's avatar view to it. The task's Writes scope is features/profile-avatar/ and entities/emo-avatar/; deleting the concert implementation would break the concert routes and is not in this scope."
+    },
+    {
+      "item": "Whole-character and layered editors",
+      "detail": "The shell still falls back to WholeCharacterEditor or AvatarEditor when the release is not the reviewed motion character. Those are not character fallbacks: they are different admitted representations of the same profile avatar, and the reviewed-motion path never substitutes one for a failed art load."
+    }
+  ],
+  "limitations": [
+    "No live HTTP server was started: the route layer is exercised through its pure parser and its handler against a real database, not over a socket. Gateway dispatch for /api/me/avatar already exists in the frozen profile route table (WP-02), but the profile producer does not yet serve the avatar operation; wiring it is a gateway/profile-service composition change outside this package's Writes scope.",
+    "V-09-a (room) and the media/room halves of V-09-c belong to other packages."
+  ]
+}

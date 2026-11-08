@@ -9,6 +9,7 @@ import type { WholeCharacterRuntime } from '../../entities/avatar/whole-characte
 import { createWholeCharacterEditorController } from '../../features/avatar/whole-character/controller'
 import type { ReviewedCharacterOwner } from '../character-entry/reviewed-registry'
 import { createReviewedMotionEditorOwner } from '../../features/avatar/motion-adoption/production-owner'
+import { admitProfileAvatar, isReviewedMotionRelease, type ProfileAvatarEditorOwner } from '../../features/profile-avatar'
 
 export interface AccountOwnerOptions {
   readonly auth: SessionController
@@ -50,9 +51,23 @@ export function createAccountOwner({ auth, bootstrap, scope, assets, characters 
       if (!disposed && auth.privacy.isCurrent(scope) && auth.privacy.isCurrent(expected)) void me.refreshAfterAvatar(expected, verifiedAvatar.revision)
     },
   }) : null
+  // WP-08: the profile-owned avatar owner. It is admitted from the shell release
+  // without an event gate, and it is disposed with the account.
+  let profileAvatar: ProfileAvatarEditorOwner | null = null
+  const avatarAdmission = new AbortController()
+  if (isReviewedMotionRelease(bootstrap.document?.avatar_manifest)) {
+    void admitProfileAvatar({ auth, scope, manifest: bootstrap.document?.avatar_manifest,
+      canSave: bootstrap.capabilities?.mutations?.available === true,
+      origin: globalThis.location?.origin ?? '', signal: avatarAdmission.signal,
+    }).then(owner => {
+      if (disposed || !auth.privacy.isCurrent(scope)) { owner?.dispose(); return }
+      profileAvatar = owner
+    }).catch(() => { profileAvatar = null })
+  }
   let unregister = () => {}
-  const dispose = () => { if (disposed) return; disposed = true; unregister(); motionAvatar?.dispose(); wholeAvatar?.dispose(); avatar.dispose(); me.dispose(); leases.dispose() }
+  const dispose = () => { if (disposed) return; disposed = true; avatarAdmission.abort(); profileAvatar?.dispose(); unregister(); motionAvatar?.dispose(); wholeAvatar?.dispose(); avatar.dispose(); me.dispose(); leases.dispose() }
   unregister = auth.privacy.registerCleanup(dispose)
-  return Object.freeze({ auth, bootstrap, scope, assets, characters, reviewed, me, avatar, wholeAvatar, motionAvatar, source, dispose, isDisposed: () => disposed })
+  return Object.freeze({ auth, bootstrap, scope, assets, characters, reviewed, me, avatar, wholeAvatar, motionAvatar, source,
+    get profileAvatar() { return profileAvatar }, dispose, isDisposed: () => disposed })
 }
 export type AccountOwner = ReturnType<typeof createAccountOwner>

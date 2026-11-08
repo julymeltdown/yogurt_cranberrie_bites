@@ -42,6 +42,9 @@ pub mod event_cleanup_social_owner;
 
 pub mod intro_live;
 
+/// WP-08: the profile-owned avatar (`GET`/`PUT /api/me/avatar`).
+pub mod profile_avatar;
+
 pub mod notification_target_policy;
 pub mod account_private_data;
 
