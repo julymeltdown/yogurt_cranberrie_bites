@@ -1,0 +1,132 @@
+# Integration charter
+
+Status: **PLANNING_COMPLETE / IMPLEMENTATION_NOT_STARTED**.
+
+## 1. Authority and routing
+
+| Question | Answer |
+| --- | --- |
+| Who decides? | The user. No king, scrum lead, or reviewer gate exists for this integration. The user's 2026-11-04 direction removed manager review and approval stages; implementation owners validate their own code, queries, tests, runtime evidence and fixes. |
+| Where does code land? | `julymeltdown/yogurt_cranberrie_bites`, branch `master`. |
+| Where does the foundation come from? | `julymeltdown/mcr`, branch `master`, commit `a2b10bf92d716bdb5d0ca85b481de6265b466bf7`. |
+| Where does reused social logic come from? | `julymeltdown/bigyeting`, pinned at `dd47ed502edd5d4f9bc4b726e9088b1ee0f0547b` for the documents in this set; the local audit checkout is `5eecdcaffd1a9d505b9ab2a974f8d5623217e90a`. See [source-register.md](source-register.md) for the reconciliation rule. |
+| Is MCR still a delivery target? | No. MCR `master` stays as published history. New work goes to the yogurt repository. Do not push integration work to MCR. |
+
+The MCR working agreement in [AGENTS.md](../../../AGENTS.md) still governs
+language, evidence truthfulness, frontend/backend separation, worktree isolation,
+and the prohibition on decorative left accent bars. Where it says "delivery
+repository is `julymeltdown/mcr`", this charter supersedes that single sentence
+for the integration: the delivery repository is
+`julymeltdown/yogurt_cranberrie_bites`. Every other clause remains in force.
+
+## 2. Language and naming
+
+- All chat, commits, documentation, code identifiers, UI copy, and test names are
+  English.
+- The Korean term 트친소 is a user-facing concept name. In code and documents it is
+  `mutuals-intro post` (entity `intro_post`). Do not introduce a second name.
+- The repository name is `yogurt_cranberrie_bites`; the product name in planning
+  text is "Yogurt Cranberrie Bites". Neither appears in product UI.
+
+## 3. Baselines
+
+| Role | Repository | Revision |
+| --- | --- | --- |
+| Integration foundation | `julymeltdown/mcr` | `a2b10bf92d716bdb5d0ca85b481de6265b466bf7` |
+| Seed commit on delivery | `julymeltdown/yogurt_cranberrie_bites` | `03b673224aaa77842d763f817a660eb2d6f634d6` (empty commit) |
+| Social logic donor | `julymeltdown/bigyeting` | `dd47ed502edd5d4f9bc4b726e9088b1ee0f0547b` (documented), `5eecdcaffd1a9d505b9ab2a974f8d5623217e90a` (audited checkout) |
+| Rust service foundation | `julymeltdown/port-rust` | `704f42149d5e8e35e1d578676d8ae2dac4f0f9c2` (already imported into MCR) |
+
+Reused source is never copied wholesale. Each reused symbol is named in
+[migration-plan.md](migration-plan.md), rewritten to the destination's identity
+model, and covered by a destination test. The C08 guard
+(`scripts/mcr/check-ui-origin.mjs`) rejects exact unreviewed copies of Bigyeting
+frontend files and rejects Bigyeting-only rendering dependencies.
+
+## 4. What the foundation already provides
+
+Verified by reading the seed tree, not assumed:
+
+| Capability | Where it lives today | Integration consequence |
+| --- | --- | --- |
+| React 19 + Vite + Phaser 3.90 frontend, one router, one shell | `frontend/src/app/`, `frontend/src/world/` | Add profile/social/room screens into the existing router and shell. Do not mount a second root. |
+| Six-service Rust backend (auth, profile, friend, post, notification, gateway) plus a concert service | `backend/services/` | New social/profile/room data belongs to the concert service and the profile service, not to a new service. |
+| Canonical identity: one Auth UUID, session context version, CSRF, browser-origin checks | `backend/services/api-gateway/src/adapters/in/http/` | Reuse the existing session/CSRF/context validation. Do not add a second login. |
+| Mutuals-intro post entity with paired age bounds (no gender) | `contracts/domain/v1/social.schema.json`, `concert-service/migrations/0049_intro_native_witness.sql`, `concert-domain/src/intro_policy/` | Extend with gender + audience summary; keep the existing paired-bounds and fail-closed semantics. |
+| Age verification claims, canonical claim ordering, Seoul-date birthday arithmetic | `concert-domain/src/age_policy/`, `concert-application/src/intro_policy/` | Reuse as the age source for `IdentityClaimsPort`. Gender has no source; see §6. |
+| Media upload with normalization, dimension and pixel limits, owner-scoped read | `concert-application/src/media/`, `concert-service/src/media_runtime/`, `contracts/domain/v1/operations.json` media operations | Reuse for profile photo/artwork posts and mutuals-intro attachments. |
+| Feed posts with `media_ids`, comments, reactions | `post-service/` (`post_concert_posts`, `post_concert_comments`) | Reference implementation for independent profile posts; do not overload event feed semantics. |
+| Notifications with deduplicated delivery | `notification-service/`, `concert-service/src/notification_live/` | Add an `INTRO_LIKED` kind through the existing pipeline. |
+| Avatar persistence keyed by `(event_id, user_id)` | `backend/services/concert-service/src/adapters/out/repository/avatar.rs`, `concert-domain/src/avatar/mod.rs` | Must be re-keyed to profile ownership. This is a real migration, not a rename. |
+| Pixel-art world rendering (Phaser scene, illustrated scenery, depth ordering) | `frontend/src/world/`, `frontend/src/entities/avatar/runtime/motion-adoption/` | Reuse rendering primitives for a personal room; do not reuse concert maps or murals. |
+| Relationship blocks and moderation | `concert-service/src/relationship/`, `moderation` migrations | Apply to every new visibility decision. |
+
+## 5. Scope boundary
+
+### In scope for the integrated release
+
+1. Profile: nickname, public introduction, profile image, emo character, favorites
+   across three categories (bands/artists excluding K-pop, anime, games).
+2. Personal room belonging to a profile: fixed room, furniture placement, up to
+   four pixel-art posters converted from user images, saved layout.
+3. Independent mutuals-intro posts with heart likes, author-only liker list,
+   notifications, comments and replies, and author-configured age/gender audience.
+4. Independent profile photo/artwork posts with their own visibility.
+5. People discovery by genuinely overlapping catalog items, separate from the
+   mutuals-intro list.
+6. Activity: likes received, comments, replies, follow notifications.
+7. Blocking, reporting, content deletion, and account deletion for the new entities.
+
+### Explicitly excluded from the integrated release
+
+| Excluded | Source | Reason |
+| --- | --- | --- |
+| Daily matching, application/acceptance flows, external-account reveal approval, interest scores, event rewards | Bigyeting | The user's product plan excludes them; they contradict the heart-only interaction model. |
+| Concert schedules, event participation gates, gifts and pickup, shared mural | MCR | Event-specific; the concert is over and the profile product must outlive it. |
+| Direct messaging, real-time room visiting, voice chat | Both | Not in the initial release; adding them beside comments would fragment the first-conversation path. |
+| Multiple rooms per user, furniture trading, automatic music recommendation, collaborative streaming | Product plan | Out of initial scope. |
+| Video attachments | Bigyeting | Only still images are required; do not port the video pipeline. |
+| A second authentication system, a second router root, a second Phaser instance | MCR rule | One canonical identity, one shell, one world connection. |
+
+Excluding a feature means **not integrating it**, not deleting it from MCR's
+history. MCR's 112-task register keeps its own status; this charter does not
+change it.
+
+## 6. Decisions that must be recorded before coding
+
+These are the points where the source code does not already answer the question.
+Each becomes a dated entry in §7 once the user decides. Until then the stated
+default applies.
+
+| ID | Question | Default until decided | Why it blocks work |
+| --- | --- | --- | --- |
+| D-01 | Where does gender come from? MCR has **no** gender field anywhere in contracts, schema, or services; Bigyeting's `allowed_gender` has no verified source. | `IdentityClaimsPort` returns `Unspecified` for every user, so `allowed_gender = any` is the only usable setting. Any other value fails closed. | A gender-restricted post would be invisible to everyone, which is correct but makes the feature unusable. A source of truth must be chosen: self-declared at profile setup, or verified by an identity provider. |
+| D-02 | Is self-declared gender acceptable for an access-control decision? | No. Self-declared attributes must be labelled unverified and must not be presented as verified. | The product plan requires age/gender restrictions to be server-side access control. An unverified self-declaration weakens that guarantee and must be a recorded product decision. |
+| D-03 | Does the global NAVER-linking requirement remain? | Removed for posts **without** age or gender restrictions; retained only as one possible identity provider for restricted posts. | Bigyeting's current policy requires a NAVER claim for every post. The product plan explicitly removes that for unrestricted posts. |
+| D-04 | Are rooms public, followers-only, or private by default? | `public` with an explicit owner toggle to `private`. | Room visibility is independent of intro audience; a default must be stated so the independence test is meaningful. |
+| D-05 | Are ordinary profile photo posts public by default? | `public`, owner-adjustable to `private`. | Same reason; also required for verification V-06. |
+| D-06 | Do events remain at all? | Yes, as an optional grouping for MCR's existing world, not as a prerequisite for profile, room, or intro features. | The MCR schema keys many tables by `event_id`. New profile-owned tables must not. |
+| D-07 | Is following in scope? | Yes, as an independent relationship with no approval step and no effect on likes. | The product plan lists "follow a profile" as an action; it must not become a friend request. |
+| D-08 | Age range limits | Keep the existing `14..=100` minimum and `15..=101` exclusive maximum as *configuration*, exposed as inclusive `18–29` style input. | The product plan warns these are product configuration, not a finalized global policy. |
+
+## 7. Decision log
+
+| Date | ID | Decision | Decided by |
+| --- | --- | --- | --- |
+| 2026-11-08 | — | Delivery repository is `yogurt_cranberrie_bites`; foundation is MCR `a2b10bf9`; seed is an empty commit on top of it. | User instruction |
+| 2026-11-08 | — | All work is document-driven; documents precede code. | User instruction |
+
+## 8. Delivery discipline
+
+- One writer per file scope. Backend writers own `backend/`, frontend writers own
+  `frontend/`, contract writers own `contracts/` and `backend/docs/api/`. A
+  shared-file change (root router, lockfile, workspace manifest, contract
+  registry) needs an explicit transfer recorded in the work package.
+- Each work package lands as its own commit or commit series on `master`, with
+  the verification evidence named in [verification-plan.md](verification-plan.md).
+- Never force-push. Reconcile remote history normally.
+- Status vocabulary is exactly `NOT_STARTED`, `IN_PROGRESS`, `CONTRACT_READY`,
+  `INTEGRATED`, `ACCEPTED`, `BLOCKED`, `NOT_RUN`. A unit test never certifies a
+  real multiuser flow.
+- A document that describes intent is marked `PLANNING_COMPLETE`; only a document
+  that cites executed commands with exit codes may claim a task is `ACCEPTED`.

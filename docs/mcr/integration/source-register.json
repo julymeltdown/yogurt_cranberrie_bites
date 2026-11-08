@@ -1,0 +1,437 @@
+{
+  "schema_version": 1,
+  "status": "PLANNING_COMPLETE",
+  "implementation_status": "NOT_STARTED",
+  "recorded_date": "2026-11-08",
+  "timezone": "Asia/Seoul",
+  "delivery": {
+    "repository": "julymeltdown/yogurt_cranberrie_bites",
+    "branch": "master",
+    "seed_commit": "03b673224aaa77842d763f817a660eb2d6f634d6",
+    "seed_commit_kind": "empty",
+    "seed_parent": "a2b10bf92d716bdb5d0ca85b481de6265b466bf7",
+    "remote_default_branch_at_creation": "main",
+    "remote_default_branch_required": "master",
+    "default_branch_action": "REQUIRED_BEFORE_FIRST_FEATURE_PUSH"
+  },
+  "sources": [
+    {
+      "repository": "julymeltdown/mcr",
+      "revision": "a2b10bf92d716bdb5d0ca85b481de6265b466bf7",
+      "role": "integration_foundation",
+      "checkout": "/Users/lhs/Desktop/mcr",
+      "verified": true,
+      "verification": "git rev-parse HEAD and git ls-remote origin master both returned this revision"
+    },
+    {
+      "repository": "julymeltdown/bigyeting",
+      "revision": "dd47ed502edd5d4f9bc4b726e9088b1ee0f0547b",
+      "role": "documented_baseline",
+      "checkout": null,
+      "verified": false,
+      "verification": "cited by the supplied product plan; not checked out locally"
+    },
+    {
+      "repository": "julymeltdown/bigyeting",
+      "revision": "5eecdcaffd1a9d505b9ab2a974f8d5623217e90a",
+      "role": "audited_checkout",
+      "checkout": "/Users/lhs/Desktop/mcr-sources/bigyeting",
+      "verified": true,
+      "verification": "git log -1 returned this revision; every cited file exists and every cited symbol was found by grep"
+    },
+    {
+      "repository": "julymeltdown/port-rust",
+      "revision": "704f42149d5e8e35e1d578676d8ae2dac4f0f9c2",
+      "role": "rust_foundation_already_imported_into_mcr",
+      "checkout": "/Users/lhs/Desktop/mcr-sources/port-rust",
+      "verified": true,
+      "verification": "git log -1 returned this revision"
+    }
+  ],
+  "reconciliation_rule": "Adapt from the documented baseline dd47ed5; compare with the audited checkout 5ee; if the file is absent at dd47ed5 it is not a valid source and must be re-authored.",
+  "bigyeting_candidates": [
+    {
+      "source_path": "frontend/src/features/write/AudienceStep.tsx",
+      "symbols": ["AudienceStep"],
+      "destination": "frontend/src/features/intros/IntroAudienceFields.tsx",
+      "work_package": "WP-05",
+      "decision": "ADAPT"
+    },
+    {
+      "source_path": "frontend/src/features/write/WritePostAgeRangeControl.tsx",
+      "symbols": ["WritePostAgeRangeControl"],
+      "destination": "frontend/src/features/intros/IntroAgeRangeControl.tsx",
+      "work_package": "WP-05",
+      "decision": "ADAPT_REPLACE_MANTINE_SLIDER"
+    },
+    {
+      "source_path": "frontend/src/features/write/post-draft.ts",
+      "symbols": ["validateAgeAuthoring", "ageRangeSummary", "visibilityRequest"],
+      "destination": "frontend/src/features/intros/intro-audience.ts",
+      "work_package": "WP-05",
+      "decision": "ADAPT_SELECTED_SYMBOLS"
+    },
+    {
+      "source_path": "frontend/src/lib/api/canonical-response-contract.ts",
+      "symbols": ["introVisibilitySchema"],
+      "destination": "frontend/src/lib/api/intro-audience-contract.ts",
+      "work_package": "WP-05",
+      "decision": "ADAPT_SELECTED_SYMBOLS"
+    },
+    {
+      "source_path": "backend/services/bigyeting-api/src/application/dto/api/intro_visibility.rs",
+      "symbols": ["IntroVisibilityRequest", "GenderCondition"],
+      "destination": "backend/crates/concert-domain/src/intro_audience.rs",
+      "work_package": "WP-04",
+      "decision": "ADAPT"
+    },
+    {
+      "source_path": "backend/services/bigyeting-api/src/application/dto/api/exact_age_values.rs",
+      "symbols": ["ExactAge", "MaximumAgeExclusive"],
+      "destination": "backend/crates/concert-domain/src/intro_audience.rs",
+      "work_package": "WP-04",
+      "decision": "ADAPT_MERGE_WITH_EXISTING_AGE_BOUNDS"
+    },
+    {
+      "source_path": "backend/services/bigyeting-api/migrations/0019_intro_drafts.sql",
+      "symbols": ["audience columns and CHECK constraints"],
+      "destination": "backend/services/concert-service/migrations/0080_profile_social.sql",
+      "work_package": "WP-02",
+      "decision": "ADAPT_INTO_NEW_TABLE"
+    },
+    {
+      "source_path": "backend/services/bigyeting-api/src/adapters/out/repository/intro_policy.rs",
+      "symbols": ["exposed_intro_policy_sql_at", "exposed_intro_detail_policy_sql_at", "exposed_external_intro_link_policy_sql_at"],
+      "destination": "backend/services/concert-service/src/intro_posts/visibility_sql.rs",
+      "work_package": "WP-04",
+      "decision": "ADAPT_SHAPE_ONLY"
+    },
+    {
+      "source_path": "backend/services/bigyeting-api/migrations/0062_provider_neutral_intros.sql",
+      "symbols": ["bigyeting_social_intro_policy_allows", "bigyeting_social_intro_is_eligible"],
+      "destination": null,
+      "work_package": "WP-04",
+      "decision": "DO_NOT_MIGRATE"
+    },
+    {
+      "source_path": "frontend/src/features/write/ContentStep.tsx",
+      "symbols": ["ContentStep"],
+      "destination": "frontend/src/features/intros/IntroComposer.tsx",
+      "work_package": "WP-05",
+      "decision": "ADAPT"
+    },
+    {
+      "source_path": "frontend/src/features/write/publish-intro-with-media.ts",
+      "symbols": ["ensureUploadedMedia", "saveIntroDraft", "publishSavedIntro"],
+      "destination": "frontend/src/features/intros/publish-intro.ts",
+      "work_package": "WP-05",
+      "decision": "ADAPT"
+    },
+    {
+      "source_path": "frontend/src/features/write/intro-composer-reducer.ts",
+      "symbols": ["introComposerSteps", "IntroComposerState", "IntroComposerAction"],
+      "destination": "frontend/src/features/intros/composer-reducer.ts",
+      "work_package": "WP-05",
+      "decision": "ADAPT"
+    },
+    {
+      "source_path": "frontend/src/features/write/write-draft-recovery.ts",
+      "symbols": ["WriteDraftRecovery", "PendingPublishRecovery"],
+      "destination": "frontend/src/features/intros/draft-recovery.ts",
+      "work_package": "WP-05",
+      "decision": "ADAPT"
+    },
+    {
+      "source_path": "frontend/src/features/post/PostDetailPage.tsx",
+      "symbols": ["heart button aria-pressed state", "in-flight guard", "like cache update"],
+      "destination": "frontend/src/features/intros/IntroLikeButton.tsx",
+      "work_package": "WP-05",
+      "decision": "EXTRACT_BUTTON_ONLY"
+    },
+    {
+      "source_path": "frontend/src/lib/api/real/canonical-music-taste-event-client.ts",
+      "symbols": ["setIntroLiked"],
+      "destination": "frontend/src/features/intros/api/intro-likes.ts",
+      "work_package": "WP-05",
+      "decision": "ADAPT_RENAME"
+    },
+    {
+      "source_path": "backend/services/bigyeting-api/src/application/use_cases/intro_likes.rs",
+      "symbols": ["change_intro_like", "SetIntroLikeCommand", "SetIntroLikeOutcome"],
+      "destination": "backend/crates/concert-application/src/intro_likes.rs",
+      "work_package": "WP-05",
+      "decision": "ADAPT"
+    },
+    {
+      "source_path": "backend/services/bigyeting-api/src/application/ports/intro_likes.rs",
+      "symbols": ["IntroLikeActor", "SetIntroLikeWrite", "IntroLikePort"],
+      "destination": "backend/crates/concert-application/src/ports/intro_likes.rs",
+      "work_package": "WP-05",
+      "decision": "ADAPT"
+    },
+    {
+      "source_path": "backend/services/bigyeting-api/src/adapters/out/repository/intro_likes.rs",
+      "symbols": ["set_intro_like", "intro_like_count"],
+      "destination": "backend/services/concert-service/src/intro_posts/likes.rs",
+      "work_package": "WP-05",
+      "decision": "ADAPT"
+    },
+    {
+      "source_path": "backend/services/bigyeting-api/src/adapters/in/http/music_taste_event.rs",
+      "symbols": ["like_intro", "unlike_intro", "set_intro_like"],
+      "destination": "backend/services/concert-service/src/intro_posts/http_likes.rs",
+      "work_package": "WP-05",
+      "decision": "ADAPT_HANDLERS_ONLY"
+    },
+    {
+      "source_path": "backend/services/bigyeting-api/migrations/0046_music_taste_event.sql",
+      "symbols": ["intro_likes table", "intro_likes_music_event_reward trigger"],
+      "destination": "backend/services/concert-service/migrations/0080_profile_social.sql",
+      "work_package": "WP-02",
+      "decision": "ADAPT_TABLE_ONLY_DROP_TRIGGER"
+    },
+    {
+      "source_path": "frontend/src/features/gate/ApplicationPhotoPicker.tsx",
+      "symbols": ["ApplicationPhotoPicker"],
+      "destination": "frontend/src/features/media/MediaPicker.tsx",
+      "work_package": "WP-06",
+      "decision": "ADAPT"
+    },
+    {
+      "source_path": "frontend/src/features/gate/application-photo-processing.ts",
+      "symbols": ["processAttachment", "updateAttachment", "selectionError"],
+      "destination": "frontend/src/features/media/preparation.ts",
+      "work_package": "WP-06",
+      "decision": "ADAPT"
+    },
+    {
+      "source_path": "frontend/src/features/media/media-policy.ts",
+      "symbols": ["mediaPolicy", "planMediaPreparation"],
+      "destination": "frontend/src/features/media/media-policy.ts",
+      "work_package": "WP-06",
+      "decision": "ADAPT"
+    },
+    {
+      "source_path": "frontend/src/features/media/media-preparation.ts",
+      "symbols": ["createMediaPreparer"],
+      "destination": "frontend/src/features/media/media-preparation.ts",
+      "work_package": "WP-06",
+      "decision": "ADAPT"
+    },
+    {
+      "source_path": "frontend/src/features/media/static-image-compressor.ts",
+      "symbols": ["compressStaticImage"],
+      "destination": "frontend/src/features/media/static-image-compressor.ts",
+      "work_package": "WP-06",
+      "decision": "ADAPT"
+    },
+    {
+      "source_path": "frontend/src/features/media/SortableMediaTile.tsx",
+      "symbols": ["SortableMediaTile"],
+      "destination": "frontend/src/features/media/MediaTile.tsx",
+      "work_package": "WP-06",
+      "decision": "ADAPT_REPLACE_DND_KIT"
+    },
+    {
+      "source_path": "frontend/src/features/post/PostMediaGrid.tsx",
+      "symbols": ["PostMediaGrid"],
+      "destination": "frontend/src/features/media/MediaGrid.tsx",
+      "work_package": "WP-06",
+      "decision": "ADAPT"
+    },
+    {
+      "source_path": "frontend/src/lib/api/real/canonical-intro-write-client.ts",
+      "symbols": ["uploadIntroMedia", "deleteIntroMedia", "createIntroDraft", "updateIntroDraft", "publishIntro"],
+      "destination": "frontend/src/features/media/api/profile-media.ts",
+      "work_package": "WP-06",
+      "decision": "ADAPT_SPLIT"
+    },
+    {
+      "source_path": "frontend/src/features/account/AccountPostGallery.tsx",
+      "symbols": [],
+      "destination": null,
+      "work_package": "WP-06",
+      "decision": "DO_NOT_MIGRATE"
+    },
+    {
+      "source_path": "backend/services/bigyeting-api/src/application/use_cases/media_uploads.rs",
+      "symbols": ["start_media_upload", "complete_media_upload", "delete_media"],
+      "destination": "backend/crates/concert-application/src/media/mod.rs",
+      "work_package": "WP-06",
+      "decision": "EXTEND_EXISTING_DESTINATION_MEDIA"
+    },
+    {
+      "source_path": "backend/services/bigyeting-api/src/domain/intro_media.rs",
+      "symbols": ["attachment count", "duplicate asset", "alt text validation"],
+      "destination": "backend/crates/concert-application/src/intro_posts/media_rules.rs",
+      "work_package": "WP-06",
+      "decision": "ADAPT"
+    },
+    {
+      "source_path": "backend/services/bigyeting-api/src/adapters/out/repository/media_content.rs",
+      "symbols": ["authorized_media_sql"],
+      "destination": "backend/services/concert-service/src/profile_media/authorization.rs",
+      "work_package": "WP-06",
+      "decision": "ADAPT_REFERENCE_ONLY"
+    },
+    {
+      "source_path": "backend/services/bigyeting-api/src/adapters/in/http/media_redirect.rs",
+      "symbols": ["get_media"],
+      "destination": "backend/services/api-gateway/src/adapters/in/http/profile_media_routes.rs",
+      "work_package": "WP-06",
+      "decision": "ADAPT"
+    },
+    {
+      "source_path": "frontend/src/features/taste-profile/TasteCatalogSearchPanel.tsx",
+      "symbols": ["TasteCatalogSearchPanel"],
+      "destination": "frontend/src/features/favorites/FavoritePicker.tsx",
+      "work_package": "WP-03",
+      "decision": "ADAPT"
+    },
+    {
+      "source_path": "frontend/src/features/taste-profile/catalog-provider.ts",
+      "symbols": ["provider labeling", "provenance", "external-link validation"],
+      "destination": "frontend/src/features/favorites/catalog-provider.ts",
+      "work_package": "WP-03",
+      "decision": "ADAPT"
+    },
+    {
+      "source_path": "frontend/src/lib/api/real/canonical-explicit-taste-client.ts",
+      "symbols": ["catalog search", "favorite read/write"],
+      "destination": "frontend/src/features/favorites/api/favorites.ts",
+      "work_package": "WP-03",
+      "decision": "ADAPT_SELECTED_SYMBOLS"
+    },
+    {
+      "source_path": "backend/services/bigyeting-api/src/adapters/out/repository/explicit_taste_matches.rs",
+      "symbols": ["explicit_taste_matches"],
+      "destination": "backend/services/concert-service/src/discovery/repository.rs",
+      "work_package": "WP-03",
+      "decision": "ADAPT_REFERENCE_ONLY"
+    },
+    {
+      "source_path": "frontend/src/lib/query/intro-visibility-cache.ts",
+      "symbols": ["invalidateIntroVisibilityQueries"],
+      "destination": "frontend/src/lib/query/intro-visibility-cache.ts",
+      "work_package": "WP-05",
+      "decision": "ADAPT_EXTEND_KEYS"
+    }
+  ],
+  "bigyeting_exclusions": [
+    "frontend/src/features/social-intro/**",
+    "frontend/src/features/daily-match/**",
+    "frontend/src/features/event/**",
+    "frontend/src/features/billing/**",
+    "frontend/src/features/admin/**",
+    "frontend/src/features/analytics/**",
+    "backend/services/bigyeting-api/src/adapters/out/repository/social_intro_*.rs",
+    "backend/services/bigyeting-api/src/domain/media_mp4.rs",
+    "backend/services/bigyeting-api/src/domain/media_video.rs",
+    "backend/services/bigyeting-api/src/domain/media_webm.rs",
+    "backend/services/bigyeting-api/src/domain/media_webm_metadata.rs",
+    "backend/services/bigyeting-api/src/domain/media_gif_metadata.rs",
+    "dependencies: @mantine/*, @dnd-kit/*, gsap, motion, three, @ffmpeg/*, @phosphor-icons/react"
+  ],
+  "mcr_candidates": [
+    {
+      "source_path": "frontend/src/features/avatar/motion-adoption/MotionEditor.tsx",
+      "symbols": ["MotionEditor"],
+      "destination": "frontend/src/features/profile-avatar/ProfileAvatarEditor.tsx",
+      "work_package": "WP-08"
+    },
+    {
+      "source_path": "frontend/src/features/avatar/motion-adoption/controller.ts",
+      "symbols": ["createMotionEditorController", "MotionPersistence"],
+      "destination": "frontend/src/features/profile-avatar/model/controller.ts",
+      "work_package": "WP-08"
+    },
+    {
+      "source_path": "frontend/src/features/avatar/motion-adoption/production-persistence.ts",
+      "symbols": ["createReviewedMotionPersistence"],
+      "destination": "frontend/src/features/profile-avatar/api/persistence.ts",
+      "work_package": "WP-08"
+    },
+    {
+      "source_path": "frontend/src/entities/avatar/runtime/motion-adoption/art.ts",
+      "symbols": ["validateMotionSelection", "motionFrame", "loadMotionArtwork", "validateMotionArt"],
+      "destination": "frontend/src/entities/emo-avatar/art.ts",
+      "work_package": "WP-08"
+    },
+    {
+      "source_path": "frontend/src/entities/avatar/runtime/motion-adoption/compositor.ts",
+      "symbols": ["createMotionCompositor"],
+      "destination": "frontend/src/entities/emo-avatar/compositor.ts",
+      "work_package": "WP-08"
+    },
+    {
+      "source_path": "frontend/src/entities/avatar/runtime/motion-adoption/runtime.ts",
+      "symbols": ["createMotionRuntime"],
+      "destination": "frontend/src/entities/emo-avatar/runtime.ts",
+      "work_package": "WP-08"
+    },
+    {
+      "source_path": "frontend/src/app/account-entry/panels.tsx",
+      "symbols": ["MotionEditor selection order"],
+      "destination": "frontend/src/features/profile-avatar/ProfileAvatarEditor.tsx",
+      "work_package": "WP-08"
+    },
+    {
+      "source_path": "backend/crates/concert-domain/src/avatar/mod.rs",
+      "symbols": ["SetAvatar::parse", "parse_config", "AvatarCatalog::validate"],
+      "destination": "backend/crates/concert-domain/src/profile_avatar.rs",
+      "work_package": "WP-08"
+    },
+    {
+      "source_path": "backend/services/concert-service/src/adapters/out/repository/avatar.rs",
+      "symbols": ["AvatarPersistence", "set_avatar", "selection_from_row"],
+      "destination": "backend/services/concert-service/src/profile_avatar/repository.rs",
+      "work_package": "WP-08"
+    },
+    {
+      "source_path": "frontend/src/world/illustrated/model.ts",
+      "symbols": ["SceneryTexture", "SceneryObject", "sceneryDepth", "sceneryLimits"],
+      "destination": "frontend/src/features/profile-room/model/layout.ts",
+      "work_package": "WP-07"
+    },
+    {
+      "source_path": "frontend/src/world/illustrated/phaser.ts",
+      "symbols": ["prepareIllustratedSkin"],
+      "destination": "frontend/src/features/profile-room/scene/objects.ts",
+      "work_package": "WP-07"
+    },
+    {
+      "source_path": "frontend/src/world/runtime.ts",
+      "symbols": ["createWorldRuntime", "EngineLease"],
+      "destination": "frontend/src/features/profile-room/scene/runtime.ts",
+      "work_package": "WP-07"
+    },
+    {
+      "source_path": "frontend/src/world/scenes/MapScene.ts",
+      "symbols": ["loadPhaserEngine", "character texture and sprite handling"],
+      "destination": "frontend/src/features/profile-room/scene/RoomScene.ts",
+      "work_package": "WP-07"
+    },
+    {
+      "source_path": "frontend/src/features/world-rooms/model/contract.ts",
+      "symbols": ["listConcertRooms"],
+      "destination": null,
+      "work_package": "WP-07",
+      "decision": "DO_NOT_MIGRATE"
+    }
+  ],
+  "preserved_artifacts": [
+    "docs/source/",
+    "MCR_IMPLEMENTATION_PLAN_V2_EN.md",
+    "PLAN_TABLES_EN.md",
+    "MCR_EXPORT_PLAN_EN.py",
+    "TEST_PLAN_EXPORT_EN.py",
+    "docs/mcr/source-provenance.json",
+    "frontend/src/entities/avatar/character-source-pack.json",
+    "frontend/public/world/avatars/derived-v1/motion-candidates-v1/",
+    "docs/mcr/design/reference-target-2026-11-04.png"
+  ],
+  "licensing": {
+    "status": "UNRESOLVED",
+    "note": "No tracked LICENSE/COPYING/NOTICE in MCR or Bigyeting; user authorization covers internal reuse only. Resolve before public release."
+  }
+}

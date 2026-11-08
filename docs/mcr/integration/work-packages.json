@@ -1,0 +1,271 @@
+{
+  "schema_version": 1,
+  "status": "PLANNING_COMPLETE",
+  "implementation_status": "NOT_STARTED",
+  "recorded_date": "2026-11-08",
+  "waves": [
+    { "wave": 0, "packages": ["WP-01"] },
+    { "wave": 1, "packages": ["WP-02"] },
+    { "wave": 2, "packages": ["WP-03", "WP-04", "WP-08"] },
+    { "wave": 3, "packages": ["WP-05", "WP-06", "WP-07"] },
+    { "wave": 4, "packages": ["WP-09"] },
+    { "wave": 5, "packages": ["WP-10"] }
+  ],
+  "work_packages": [
+    {
+      "id": "WP-01",
+      "title": "Freeze the HTTP contract, schemas, and notification kinds",
+      "owner_lane": "CONTRACT",
+      "status": "NOT_STARTED",
+      "depends_on": [],
+      "write_scopes": [
+        "contracts/core/v1/",
+        "contracts/domain/v1/",
+        "contracts/generated/",
+        "frontend/src/generated/api-client/",
+        "backend/scripts/docs/",
+        "backend/proto/notification/v1/"
+      ],
+      "deliverables": [
+        "Every operation in http-contract.md section 2 declared with request/response schemas",
+        "Kind::INTRO_LIKED and TargetType::INTRO_POST added additively",
+        "Generators run and generated artifacts committed",
+        "scripts/mcr/check.sh contracts passes"
+      ],
+      "verification": ["CONTRACT-CHECK"],
+      "blocks": ["WP-02", "WP-03", "WP-04", "WP-05", "WP-06", "WP-07", "WP-08", "WP-09", "WP-10"],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "WP-02",
+      "title": "Profile, room, intro post, like, comment, and profile post schema",
+      "owner_lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": ["WP-01"],
+      "write_scopes": [
+        "backend/services/concert-service/migrations/0080_profile_social.sql",
+        "backend/services/profile-service/migrations/",
+        "backend/crates/concert-domain/src/intro_audience.rs"
+      ],
+      "deliverables": [
+        "profiles and profile_favorites in the profile service",
+        "profile_rooms, profile_avatars, intro_posts, intro_attachments, intro_likes, intro_comments, profile_posts, profile_post_attachments, media_assets in the concert service",
+        "CHECK constraints for paired bounds, audience gender enum, revision ranges, unique like key",
+        "No reward trigger"
+      ],
+      "verification": ["MIGRATION-LEDGER"],
+      "blocks": ["WP-03", "WP-04", "WP-05", "WP-06", "WP-07", "WP-08"],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "WP-03",
+      "title": "Favorites across three categories and shared-interest discovery",
+      "owner_lane": "FULLSTACK",
+      "status": "NOT_STARTED",
+      "depends_on": ["WP-02"],
+      "write_scopes": [
+        "backend/services/concert-service/src/discovery/",
+        "backend/services/profile-service/src/favorites/",
+        "frontend/src/features/favorites/"
+      ],
+      "deliverables": [
+        "Catalog search for music, anime, games with K-pop excluded from music",
+        "At most five favorites per category",
+        "discoverProfiles with genuine overlaps computed from catalog IDs",
+        "No score or ranking field"
+      ],
+      "verification": ["V-03", "DISCOVERY-NO-INTRO"],
+      "blocks": ["WP-09"],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "WP-04",
+      "title": "IdentityClaimsPort, IntroAudience, and the visibility policy",
+      "owner_lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": ["WP-02"],
+      "write_scopes": [
+        "backend/crates/concert-application/src/identity_claims.rs",
+        "backend/crates/concert-application/src/intro_visibility.rs",
+        "backend/services/concert-service/src/intro_posts/visibility_sql.rs",
+        "backend/services/concert-service/tests/intro_visibility_contract.rs"
+      ],
+      "deliverables": [
+        "IdentityClaimsPort with an age adapter over the existing claim store",
+        "Gender adapter returning Unspecified until decision D-01",
+        "can_view_intro pure decision function",
+        "SQL predicate builder for list and detail",
+        "One case table executed against both implementations"
+      ],
+      "verification": ["V-01", "V-02", "V-03"],
+      "blocks": ["WP-05", "WP-06", "WP-07"],
+      "blocking_decision": "D-01 for the gender-restricted subset only; the any-only path can ship without it",
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "WP-05",
+      "title": "Mutuals-intro posts, hearts, likers, notifications, comments",
+      "owner_lane": "FULLSTACK",
+      "status": "NOT_STARTED",
+      "depends_on": ["WP-01", "WP-04"],
+      "write_scopes": [
+        "backend/services/concert-service/src/intro_posts/",
+        "backend/services/concert-service/src/notification_live/",
+        "backend/crates/concert-application/src/intro_likes.rs",
+        "backend/crates/concert-application/src/ports/intro_likes.rs",
+        "frontend/src/features/intros/"
+      ],
+      "deliverables": [
+        "Draft, save, publish, delete",
+        "Audience fields with the Who can view my mutuals-intro post heading",
+        "Up to four attachments",
+        "Heart toggle with in-flight guard and aria-pressed",
+        "Author-only paginated liker list",
+        "INTRO_LIKED notification with dedupe",
+        "Comments and replies inside the post audience",
+        "Composer, likers panel, notification navigation"
+      ],
+      "verification": ["V-03", "V-04", "V-05", "V-08", "V-10"],
+      "blocks": ["WP-10"],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "WP-06",
+      "title": "Profile photo and artwork posts with profile-scoped media",
+      "owner_lane": "FULLSTACK",
+      "status": "NOT_STARTED",
+      "depends_on": ["WP-01", "WP-04"],
+      "write_scopes": [
+        "backend/services/concert-service/src/profile_posts/",
+        "backend/services/concert-service/src/profile_media/",
+        "backend/services/api-gateway/src/adapters/in/http/profile_media_routes.rs",
+        "frontend/src/features/profile-media/",
+        "frontend/src/features/media/"
+      ],
+      "deliverables": [
+        "Profile-scoped upload, normalization, owner-scoped read",
+        "Ordinary posts with independent visibility",
+        "Visitor-facing gallery",
+        "Composer with description and alt text",
+        "No pixel conversion in this path"
+      ],
+      "verification": ["V-06", "V-07", "V-10"],
+      "blocks": ["WP-09", "WP-10"],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "WP-07",
+      "title": "Personal room, furniture placement, and pixel-art posters",
+      "owner_lane": "FULLSTACK",
+      "status": "NOT_STARTED",
+      "depends_on": ["WP-01", "WP-04"],
+      "write_scopes": [
+        "backend/services/concert-service/src/profile_room/",
+        "backend/crates/concert-domain/src/profile_room.rs",
+        "frontend/src/features/profile-room/"
+      ],
+      "deliverables": [
+        "Room layout persistence with revision conflict handling",
+        "Grid-aligned furniture placement",
+        "Wall and floor styles",
+        "Poster import, crop, pixel preview, place",
+        "At most four posters",
+        "Room visibility independent of intro audience",
+        "Scene runtime with cleanup"
+      ],
+      "verification": ["V-06", "V-08", "V-10"],
+      "blocks": ["WP-09"],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "WP-08",
+      "title": "Re-key avatar from event participant to profile ownership",
+      "owner_lane": "FULLSTACK",
+      "status": "NOT_STARTED",
+      "depends_on": ["WP-01", "WP-02"],
+      "write_scopes": [
+        "backend/crates/concert-domain/src/profile_avatar.rs",
+        "backend/services/concert-service/src/profile_avatar/",
+        "frontend/src/features/profile-avatar/",
+        "frontend/src/entities/emo-avatar/"
+      ],
+      "deliverables": [
+        "GET and PUT /api/me/avatar keyed by owner_profile_id",
+        "Editor migrated from MotionEditor",
+        "Persistence without an event ID",
+        "Source pack and atlas hashes preserved",
+        "No test-only authority reachable in production"
+      ],
+      "verification": ["V-09"],
+      "blocks": ["WP-09"],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "WP-09",
+      "title": "Three-section navigation and profile screens",
+      "owner_lane": "FRONTEND",
+      "status": "NOT_STARTED",
+      "depends_on": ["WP-03", "WP-06", "WP-07", "WP-08"],
+      "write_scopes": [
+        "frontend/src/app/router.tsx",
+        "frontend/src/app/routes.ts",
+        "frontend/src/app/navigation.tsx",
+        "frontend/src/features/profile/",
+        "frontend/src/shared/ui/"
+      ],
+      "deliverables": [
+        "Discover, Activity, My Profile primary navigation",
+        "Profile page composing introduction, favorites, posts, room entry",
+        "Visitor profile page",
+        "Room as a subordinate screen",
+        "Intro composer as an independent screen",
+        "Concert screens reachable from a secondary menu"
+      ],
+      "verification": ["V-08", "V-09", "UI-360-390-430"],
+      "blocks": ["WP-10"],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "WP-10",
+      "title": "End-to-end integration and release evidence",
+      "owner_lane": "INTEGRATOR",
+      "status": "NOT_STARTED",
+      "depends_on": ["WP-05", "WP-06", "WP-09"],
+      "write_scopes": [
+        "frontend/e2e/",
+        "docs/mcr/integration/evidence/"
+      ],
+      "deliverables": [
+        "The product-plan section 9 scenario executed with three real identities",
+        "Every verification recorded with commands and exit codes",
+        "Explicit BLOCKED entries naming the blocking condition"
+      ],
+      "verification": ["V-01", "V-02", "V-03", "V-04", "V-05", "V-06", "V-07", "V-08", "V-09", "V-10", "V-11"],
+      "blocks": [],
+      "commit": null,
+      "evidence": null
+    }
+  ],
+  "open_decisions": [
+    { "id": "D-01", "question": "Source of truth for gender", "default": "IdentityClaimsPort returns Unspecified; only allowed_gender=any is usable", "blocks": ["WP-04 gender subset", "WP-05 audience gender control"] },
+    { "id": "D-02", "question": "Is self-declared gender acceptable for access control", "default": "No; must be labelled unverified", "blocks": ["WP-04"] },
+    { "id": "D-03", "question": "Does the global NAVER-linking requirement remain", "default": "Removed for posts without age or gender restrictions", "blocks": ["WP-04"] },
+    { "id": "D-04", "question": "Room default visibility", "default": "public", "blocks": ["WP-07"] },
+    { "id": "D-05", "question": "Profile photo post default visibility", "default": "public", "blocks": ["WP-06"] },
+    { "id": "D-06", "question": "Do events remain as an optional grouping", "default": "Yes, optional; never required for profile, room, or intro features", "blocks": [] },
+    { "id": "D-07", "question": "Is following in scope", "default": "Yes, independent follow with no approval step", "blocks": ["WP-09"] },
+    { "id": "D-08", "question": "Age range limits", "default": "Keep 14..=100 and 15..=101 as configuration", "blocks": [] },
+    { "id": "P-02", "question": "Concert world in the primary navigation", "default": "Hidden from primary tabs, reachable from a secondary menu", "blocks": ["WP-09"] },
+    { "id": "P-06", "question": "Maximum favorites per category", "default": "5", "blocks": ["WP-03"] },
+    { "id": "P-07", "question": "Follow edge source", "default": "Existing friend-service follow exposed through a profile-shaped operation", "blocks": ["WP-09"] }
+  ]
+}

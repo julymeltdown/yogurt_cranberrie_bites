@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "status": "PLANNING_COMPLETE",
+  "implementation_status": "NOT_STARTED",
+  "recorded_date": "2026-11-08",
+  "evidence_root": "docs/mcr/integration/evidence/",
+  "verifications": [
+    {
+      "id": "V-01",
+      "title": "Age boundary allows 18 and 29, denies 17 and 30",
+      "owner": "WP-04",
+      "status": "NOT_RUN",
+      "cases": ["V-01-a", "V-01-b", "V-01-c", "V-01-d", "V-01-e", "V-01-f", "V-01-g"],
+      "test_paths": [
+        "backend/crates/concert-domain/tests/intro_audience.rs",
+        "backend/services/concert-service/tests/intro_visibility_contract.rs"
+      ],
+      "requires_real_services": false
+    },
+    {
+      "id": "V-02",
+      "title": "Unknown or unavailable attributes fail closed",
+      "owner": "WP-04",
+      "status": "NOT_RUN",
+      "cases": ["V-02-a", "V-02-b", "V-02-c", "V-02-d", "V-02-e", "V-02-f", "V-02-g"],
+      "test_paths": ["backend/services/concert-service/tests/intro_visibility_contract.rs"],
+      "requires_real_services": false
+    },
+    {
+      "id": "V-03",
+      "title": "One visibility decision across list, detail, attachment, thumbnail, link, and like",
+      "owner": "WP-04",
+      "status": "NOT_RUN",
+      "cases": ["V-03-a", "V-03-b", "V-03-c", "V-03-d", "V-03-e", "V-03-f", "V-03-g", "V-03-h", "V-03-i"],
+      "test_paths": ["backend/services/concert-service/tests/intro_visibility_contract.rs"],
+      "requires_real_services": true
+    },
+    {
+      "id": "V-04",
+      "title": "Like removal by an unauthorized viewer discloses nothing",
+      "owner": "WP-05",
+      "status": "NOT_RUN",
+      "cases": ["V-04-a", "V-04-b", "V-04-c", "V-04-d"],
+      "test_paths": ["backend/services/concert-service/tests/intro_likes_contract.rs"],
+      "requires_real_services": true
+    },
+    {
+      "id": "V-05",
+      "title": "Repeated likes produce one like and one notification with no side effects",
+      "owner": "WP-05",
+      "status": "NOT_RUN",
+      "cases": ["V-05-a", "V-05-b", "V-05-c", "V-05-d", "V-05-e", "V-05-f"],
+      "test_paths": ["backend/services/concert-service/tests/intro_likes_contract.rs"],
+      "requires_real_services": true
+    },
+    {
+      "id": "V-06",
+      "title": "Restricted intro attachments never leak into galleries or posters",
+      "owner": "WP-06",
+      "status": "NOT_RUN",
+      "cases": ["V-06-a", "V-06-b", "V-06-c", "V-06-d", "V-06-e", "V-06-f"],
+      "test_paths": ["backend/services/concert-service/tests/profile_media_authorization.rs"],
+      "requires_real_services": true
+    },
+    {
+      "id": "V-07",
+      "title": "Ordinary posts need no intro post or room and are never pixel converted",
+      "owner": "WP-06",
+      "status": "NOT_RUN",
+      "cases": ["V-07-a", "V-07-b", "V-07-c", "V-07-d", "V-07-e"],
+      "test_paths": [
+        "backend/services/concert-service/tests/profile_posts.rs",
+        "frontend/src/features/profile-media/__tests__/composer.test.tsx"
+      ],
+      "requires_real_services": true
+    },
+    {
+      "id": "V-08",
+      "title": "Intro post, room, and photo post lifecycles are independent",
+      "owner": "WP-05",
+      "status": "NOT_RUN",
+      "cases": ["V-08-a", "V-08-b", "V-08-c", "V-08-d", "V-08-e"],
+      "test_paths": ["backend/services/concert-service/tests/profile_room_lifecycle.rs"],
+      "requires_real_services": true
+    },
+    {
+      "id": "V-09",
+      "title": "Only the owning profile mutates its room and avatar; account switching leaks nothing",
+      "owner": "WP-08",
+      "status": "NOT_RUN",
+      "cases": ["V-09-a", "V-09-b", "V-09-c", "V-09-d", "V-09-e"],
+      "test_paths": [
+        "backend/services/concert-service/tests/profile_avatar_ownership.rs",
+        "frontend/src/features/profile-room/__tests__/account-switch.test.tsx"
+      ],
+      "requires_real_services": true
+    },
+    {
+      "id": "V-10",
+      "title": "Upload failure, cancellation, save conflict, and scene cleanup",
+      "owner": "WP-07",
+      "status": "NOT_RUN",
+      "cases": ["V-10-a", "V-10-b", "V-10-c", "V-10-d", "V-10-e"],
+      "test_paths": [
+        "frontend/src/features/media/__tests__/preparation.test.ts",
+        "frontend/src/features/profile-room/__tests__/scene-lifecycle.test.ts"
+      ],
+      "requires_real_services": false
+    },
+    {
+      "id": "V-11",
+      "title": "Full three-identity end-to-end scenario",
+      "owner": "WP-10",
+      "status": "NOT_RUN",
+      "cases": ["V-11-1", "V-11-2", "V-11-3", "V-11-4", "V-11-5", "V-11-6"],
+      "test_paths": ["frontend/e2e/real/profile-social.spec.ts"],
+      "requires_real_services": true
+    }
+  ],
+  "supporting_checks": [
+    { "id": "CONTRACT-CHECK", "command": "scripts/mcr/check.sh contracts", "owner": "WP-01", "status": "NOT_RUN" },
+    { "id": "MIGRATION-LEDGER", "command": "backend migration ledger test", "owner": "WP-02", "status": "NOT_RUN" },
+    { "id": "GUARDS", "command": "scripts/mcr/check.sh guards", "owner": "ALL", "status": "NOT_RUN" },
+    { "id": "DISCOVERY-NO-INTRO", "command": "discovery returns a profile with no intro post", "owner": "WP-03", "status": "NOT_RUN" },
+    { "id": "UI-360-390-430", "command": "capture comparison at 360, 390, and 430 px", "owner": "WP-09", "status": "NOT_RUN" }
+  ],
+  "evidence_format": {
+    "required_fields": ["verification", "status", "commit", "recorded_at", "commands", "cases", "artifacts", "limitations"],
+    "status_values": ["PASS", "FAIL", "NOT_RUN", "BLOCKED"]
+  }
+}
