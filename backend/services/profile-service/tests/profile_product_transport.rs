@@ -92,13 +92,18 @@ async fn profile_service_migrations(pool: &sqlx::PgPool) -> anyhow::Result<()> {
     Ok(())
 }
 
-/// Count the durable scope rows. Every test in this binary shares one fixture
-/// database, so a "no scope was opened" assertion compares against the count
-/// taken before the request rather than against zero.
-async fn scopes(pool: &sqlx::PgPool) -> anyhow::Result<i64> {
-    Ok(sqlx::query_scalar("select count(*) from profile_product_scopes")
-        .fetch_one(pool)
-        .await?)
+/// Count the durable scope rows written for one actor.
+///
+/// Every test in this binary shares one fixture database and runs concurrently,
+/// so a global count would observe other tests' scopes. Scoping by actor makes
+/// the "no scope was opened" assertion about this test's own request only.
+async fn scopes_for(pool: &sqlx::PgPool, actor: Uuid) -> anyhow::Result<i64> {
+    Ok(sqlx::query_scalar(
+        "select count(*) from profile_product_scopes where actor_id=$1",
+    )
+    .bind(actor)
+    .fetch_one(pool)
+    .await?)
 }
 
 /// Insert one account profile and return its canonical profile id.
@@ -263,9 +268,9 @@ impl Actor {
 async fn nil_profile_id_is_rejected_before_any_owner_work() -> anyhow::Result<()> {
     let pool = pool().await?;
     let harness = Harness::start(pool.clone()).await?;
-    let before = scopes(&pool).await?;
     let mut actor = actor(Uuid::new_v4());
     actor.profile = Uuid::nil();
+    let before = scopes_for(&pool, actor.user).await?;
     let request = actor.message("GET", "/api/me/profile");
     // The signed delegation names the actor, so the guard passes and the
     // handler's own profile check is what refuses this request.
@@ -280,7 +285,7 @@ async fn nil_profile_id_is_rejected_before_any_owner_work() -> anyhow::Result<()
     assert_eq!(status.code(), Code::InvalidArgument);
     // Nothing was registered: the refusal happens before acquisition.
     assert_eq!(
-        scopes(&pool).await?,
+        scopes_for(&pool, actor.user).await?,
         before,
         "a rejected request must not open a scope"
     );
@@ -316,9 +321,9 @@ async fn event_path_target_is_rejected_by_the_parser_and_the_binding() -> anyhow
     // The loopback path proves the same rejection survives the real guard.
     let pool = pool().await?;
     let harness = Harness::start(pool.clone()).await?;
-    let before = scopes(&pool).await?;
     let actor = actor(Uuid::new_v4());
     let event = Uuid::new_v4();
+    let before = scopes_for(&pool, actor.user).await?;
     let request = actor.message(
         "GET",
         &format!("/api/concert/events/{event}/feed"),
@@ -337,7 +342,7 @@ async fn event_path_target_is_rejected_by_the_parser_and_the_binding() -> anyhow
         status.message()
     );
     assert_eq!(
-        scopes(&pool).await?,
+        scopes_for(&pool, actor.user).await?,
         before,
         "an event target must never open a scope"
     );
@@ -469,8 +474,8 @@ async fn a_private_profile_is_unavailable_to_another_actor() -> anyhow::Result<(
 async fn an_unauthenticated_caller_never_reaches_the_producer() -> anyhow::Result<()> {
     let pool = pool().await?;
     let harness = Harness::start(pool.clone()).await?;
-    let before = scopes(&pool).await?;
     let actor = actor(Uuid::new_v4());
+    let before = scopes_for(&pool, actor.user).await?;
     // No delegation header at all: the method policy refuses before the handler.
     let mut request = Request::new(actor.message("GET", "/api/me/profile"));
     request.set_timeout(std::time::Duration::from_secs(2));
@@ -480,7 +485,76 @@ async fn an_unauthenticated_caller_never_reaches_the_producer() -> anyhow::Resul
         .await
         .expect_err("an unauthenticated call must be refused");
     assert_eq!(status.code(), Code::Unauthenticated);
-    assert_eq!(scopes(&pool).await?, before);
+    assert_eq!(scopes_for(&pool, actor.user).await?, before);
+    harness.close().await;
+    Ok(())
+}
+
+#[tokio::test]
+async fn the_catalog_producer_answers_search_catalog() -> anyhow::Result<()> {
+    let pool = pool().await?;
+    let harness = Harness::start(pool.clone()).await?;
+    // Two music rows and one anime row, so a category filter is observable.
+    // Every music row must carry an explicit review decision, and a music row
+    // can never be marked excluded: the K-pop exclusion is a catalog policy
+    // enforced by the schema, not a flag a writer sets.
+    for (category, label) in [
+        ("music", "My Chemical Romance"),
+        ("music", "NANA"),
+        ("anime", "NANA"),
+    ] {
+        // The fixture database is shared across runs, so the seed is idempotent.
+        sqlx::query(
+            "insert into catalog_items(category,label,excluded,exclusion_reason) \
+             values($1,$2,false,$3) on conflict do nothing",
+        )
+        .bind(category)
+        .bind(label)
+        .bind((category == "music").then_some("reviewed: not K-pop"))
+        .execute(&pool)
+        .await?;
+    }
+    let account = Uuid::new_v4();
+    let profile = seed_profile(&pool, account).await?;
+    let mut actor = actor(profile);
+    actor.user = account;
+    let request = actor.message("GET", "/api/catalog/music/search?q=NANA");
+    let mut signed = platform::actor_delegation::request_for(request, &actor.user.to_string())?;
+    signed.set_timeout(std::time::Duration::from_secs(2));
+    let response = harness.dispatch_client().dispatch(signed).await?.into_inner();
+    assert_eq!(response.status, 200, "catalog search must be served");
+    let body: serde_json::Value = serde_json::from_slice(&response.body)?;
+    assert_eq!(body["category"], "MUSIC");
+    let items = body["items"].as_array().expect("items");
+    assert_eq!(items.len(), 1, "only the music NANA row matches: {body}");
+    assert_eq!(items[0]["label"], "NANA");
+    assert_eq!(items[0]["category"], "MUSIC");
+    // The anime row of the same label is a different category and is excluded.
+    let request = actor.message("GET", "/api/catalog/anime/search?q=NANA");
+    let mut signed = platform::actor_delegation::request_for(request, &actor.user.to_string())?;
+    signed.set_timeout(std::time::Duration::from_secs(2));
+    let response = harness.dispatch_client().dispatch(signed).await?.into_inner();
+    let body: serde_json::Value = serde_json::from_slice(&response.body)?;
+    assert_eq!(body["category"], "ANIME");
+    assert_eq!(body["items"].as_array().expect("items").len(), 1);
+    // An unknown category is refused, not defaulted. The refusal is a closed
+    // product response (the producer's error projection), not a transport error.
+    let request = actor.message("GET", "/api/catalog/kpop/search?q=NANA");
+    let mut signed = platform::actor_delegation::request_for(request, &actor.user.to_string())?;
+    signed.set_timeout(std::time::Duration::from_secs(2));
+    let response = harness.dispatch_client().dispatch(signed).await?.into_inner();
+    assert_eq!(response.status, 404, "an unknown category must be unavailable");
+    let body: serde_json::Value = serde_json::from_slice(&response.body)?;
+    assert_eq!(body["details"]["reason"], "RESOURCE_UNAVAILABLE");
+    // An unknown query field is refused rather than ignored. Like every other
+    // producer refusal, it is a closed product response with the frozen status.
+    let request = actor.message("GET", "/api/catalog/music/search?score=1");
+    let mut signed = platform::actor_delegation::request_for(request, &actor.user.to_string())?;
+    signed.set_timeout(std::time::Duration::from_secs(2));
+    let response = harness.dispatch_client().dispatch(signed).await?.into_inner();
+    assert_eq!(response.status, 400, "an unknown query field must be refused");
+    let body: serde_json::Value = serde_json::from_slice(&response.body)?;
+    assert_eq!(body["details"]["reason"], "INVALID_INPUT");
     harness.close().await;
     Ok(())
 }
