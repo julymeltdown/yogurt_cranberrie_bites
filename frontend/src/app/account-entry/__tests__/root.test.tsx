@@ -16,8 +16,12 @@ function root(path='/me') {
   const view=render(<StrictMode><RouterProvider router={router}/></StrictMode>)
   return{...f,...world,...view,router,boot,fetcher}
 }
-it('mounts the actual four lazy account routes while preserving one shell lease and private draft',async()=>{
-  const f=root();await screen.findByRole('heading',{name:'Synthetic listener'})
+it('mounts the actual lazy account routes while preserving one shell lease and private draft',async()=>{
+  // WP-09: `/me` is now the My Profile section home (the owner profile page), so
+  // the shell lease assertion starts from `/me/profile`, which still mounts the
+  // concert account owner. The profile page itself is covered by
+  // `src/features/profile/__tests__/ProfilePage.test.tsx`.
+  const f=root('/me/profile');await screen.findByRole('heading',{name:'Edit profile'})
   const host=document.querySelector('[data-world-host]'),mounts=f.stats.mounts
   await act(()=>f.router.navigate('/me/profile'));fireEvent.change(await screen.findByLabelText('Bio (optional)'),{target:{value:'Keep across panels'}})
   await act(()=>f.router.navigate('/me/settings'));await screen.findByRole('heading',{name:'Settings',level:1})
@@ -30,7 +34,7 @@ it('mounts the actual four lazy account routes while preserving one shell lease 
   expect(f.stats.peakGames).toBe(1);expect(f.stats.peakConnections).toBe(1);expect(f.fetcher).toHaveBeenCalledTimes(1);expect(f.boot).toHaveBeenCalledTimes(1)
 })
 it('does not start account network work while viewing the world and releases all shell leases on exit',async()=>{
-  const f=root('/world');await screen.findByRole('navigation',{name:'Main navigation'})
+  const f=root('/world');await screen.findByRole('navigation',{name:'Sections'})
   expect(f.fetcher).not.toHaveBeenCalled();f.unmount();expect(f.stats.games).toBe(0);expect(f.stats.connections).toBe(0);expect(f.stats.mounts).toBe(f.stats.disposals)
 })
 it('clears the old profile draft across a canonical identity change without showing foreign responses',async()=>{

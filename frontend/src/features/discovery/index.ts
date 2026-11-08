@@ -8,6 +8,7 @@ export {
   PEOPLE_CATEGORY_LABEL,
   peopleCardSchema,
   peoplePageSchema,
+  profilePath,
   sharedInterestLine,
   type DiscoveryTab,
   type PeopleCard,

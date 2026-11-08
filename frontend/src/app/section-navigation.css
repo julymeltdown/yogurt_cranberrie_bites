@@ -1,0 +1,167 @@
+/* WP-09: the three-section tab bar and the concert secondary menu.
+ *
+ * Prohibited pattern: a decorative left accent bar (a coloured `border-left`, an
+ * inset left rail, or a `::before`/`::after` left bar) on any tab, card, notice
+ * or panel. This file uses none. Separation comes from spacing, weight, the
+ * existing rule colour and the active state's fill — nothing else.
+ *
+ * Focus: no rule here removes an outline. The shell's
+ * `a:focus-visible, button:focus-visible { outline: 3px solid var(--mcr-red) }`
+ * in `shared/styles/base.css` applies to every control in this file.
+ */
+
+.mcr-section-nav {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  padding: 0;
+  border: 0;
+  border-top: var(--pi-rule-width, 1px) solid var(--pi-rule, #1b1b1f);
+  background: var(--pi-paper, #f7f4ec);
+}
+
+.mcr-section-nav__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  min-width: var(--pi-hit, 44px);
+  min-height: 56px;
+  padding: 6px 4px;
+  border: 0;
+  border-right: var(--pi-rule-width, 1px) solid var(--pi-rule, #1b1b1f);
+  background: var(--pi-paper, #f7f4ec);
+  color: var(--pi-ink, #1b1b1f);
+  font: 700 0.72rem/1.15 var(--pi-font-display, system-ui, sans-serif);
+  letter-spacing: 0.02em;
+  text-align: center;
+  text-decoration: none;
+  /* A long label wraps rather than widening the grid past the viewport. */
+  overflow-wrap: anywhere;
+}
+
+.mcr-section-nav__link:last-child {
+  border-right: 0;
+}
+
+.mcr-section-nav__link[aria-current='page'] {
+  background: var(--pi-ink, #1b1b1f);
+  color: var(--pi-on-dark, #f7f4ec);
+  box-shadow: none;
+}
+
+.mcr-section-nav__glyph {
+  width: 22px;
+  height: 22px;
+  flex: 0 0 auto;
+}
+
+.mcr-section-nav__label {
+  display: block;
+}
+
+/* The concert secondary menu: one labelled disclosure, closed by default. */
+.mcr-secondary-menu {
+  border: 0;
+  border-top: var(--pi-rule-width, 1px) solid var(--pi-rule, #1b1b1f);
+  background: var(--pi-paper, #f7f4ec);
+}
+
+.mcr-secondary-menu__summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: var(--pi-hit, 44px);
+  padding: 8px 12px;
+  cursor: pointer;
+  font: 700 0.78rem/1.2 var(--pi-font-display, system-ui, sans-serif);
+  color: var(--pi-ink, #1b1b1f);
+  list-style: none;
+}
+
+/* Keep the native disclosure marker: it is the affordance, and removing it
+ * without a replacement would make the control look like plain text. */
+.mcr-secondary-menu__summary::-webkit-details-marker {
+  display: inline;
+}
+
+.mcr-secondary-menu__current {
+  margin-left: auto;
+  font-weight: 600;
+  color: var(--pi-ink-soft, #4a4a55);
+}
+
+.mcr-secondary-menu__nav ul {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: var(--pi-rule-width, 1px) solid var(--pi-rule, #1b1b1f);
+}
+
+.mcr-secondary-menu__nav a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-width: var(--pi-hit, 44px);
+  min-height: 48px;
+  padding: 6px 2px;
+  border: 0;
+  border-right: var(--pi-rule-width, 1px) solid var(--pi-rule, #1b1b1f);
+  color: var(--pi-ink, #1b1b1f);
+  font: 600 0.68rem/1.1 var(--pi-font-display, system-ui, sans-serif);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.mcr-secondary-menu__nav li:last-child a {
+  border-right: 0;
+}
+
+.mcr-secondary-menu__nav a[aria-current='page'] {
+  background: var(--pi-ink, #1b1b1f);
+  color: var(--pi-on-dark, #f7f4ec);
+}
+
+/* Narrow phones: the five concert destinations wrap to two rows rather than
+ * shrinking below a 44 px hit target. */
+@media (max-width: 380px) {
+  .mcr-secondary-menu__nav ul {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .mcr-secondary-menu__nav li:nth-child(3n) a {
+    border-right: 0;
+  }
+
+  .mcr-section-nav__link {
+    font-size: 0.68rem;
+  }
+}
+
+@media (forced-colors: active) {
+  .mcr-section-nav__link,
+  .mcr-secondary-menu__nav a,
+  .mcr-secondary-menu__summary {
+    border: 1px solid CanvasText;
+  }
+
+  .mcr-section-nav__link[aria-current='page'],
+  .mcr-secondary-menu__nav a[aria-current='page'] {
+    outline: 2px solid Highlight;
+    outline-offset: -3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mcr-section-nav *,
+  .mcr-secondary-menu * {
+    transition: none;
+    animation: none;
+  }
+}

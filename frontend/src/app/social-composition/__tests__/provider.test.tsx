@@ -43,7 +43,8 @@ it('StrictMode releases the discarded owner and retains one world and one active
   await act(() => f.router.navigate('/feed/new')); fireEvent.change(await screen.findByLabelText('Post text'), { target: { value: 'Keep safely across panels' } })
   await act(() => f.router.navigate('/notifications')); await screen.findByText('37 unread in this event')
   expect(screen.getByLabelText('Unread total')).toHaveTextContent('37')
-  await act(() => f.router.navigate('/meet/people')); await screen.findByRole('heading', { name: 'PEOPLE' })
+  // WP-09: the people list lives under Discover.
+  await act(() => f.router.navigate('/discover/people')); await screen.findByRole('heading', { name: 'PEOPLE' })
   await act(() => f.router.navigate('/feed/new')); expect(await screen.findByLabelText('Post text')).toHaveValue('Keep safely across panels')
   expect(f.owner()).toBe(owner); expect(document.querySelector('[data-world-host]')).toBe(host); expect(f.stats.mounts).toBe(mounts)
   expect(f.stats.peakGames).toBe(1); expect(f.stats.peakConnections).toBe(1)
@@ -67,9 +68,10 @@ it('profile direct link uses canonical authorization and leaves sharing/block/pr
   await act(() => f.router.navigate('/me/age')); expect(await screen.findByRole('button', { name: 'Start verification' })).toBeDisabled()
 })
 it('denied direct profile never shows the prior cached target and removes it from discovery', async () => {
-  const f = root('/meet/people', r => new URL(r.url).pathname.includes('/people/') ? Response.json({ code: 'RESOURCE_UNAVAILABLE', message: 'private target', details: { reason: 'RESOURCE_UNAVAILABLE' } }, { status: 404 }) : response(r))
+  const f = root('/discover/people', r => new URL(r.url).pathname.includes('/people/') ? Response.json({ code: 'RESOURCE_UNAVAILABLE', message: 'private target', details: { reason: 'RESOURCE_UNAVAILABLE' } }, { status: 404 }) : response(r))
   await screen.findByRole('heading', { name: 'PEOPLE' }); await waitFor(() => expect(f.owner().people.read().page.phase).toBe('ready'))
-  await act(() => f.router.navigate(`/people/${user}`)); await screen.findByText('This profile is unavailable.')
+  // WP-09: the visitor profile lives under Discover.
+  await act(() => f.router.navigate(`/discover/people/${user}`)); await screen.findByText('This profile is unavailable.')
   expect(f.owner().people.read().page.data?.items.some(row => row.author.user_id === user)).toBe(false)
 })
 it('route/back changes cannot replace an unresolved composer; original key/draft stay recoverable', async () => {

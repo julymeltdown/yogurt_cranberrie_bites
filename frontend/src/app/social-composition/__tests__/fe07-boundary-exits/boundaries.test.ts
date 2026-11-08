@@ -67,7 +67,7 @@ it('protects target-specific reply/edit drafts when the shell would be destroyed
 
 it('compares intro drafts to saved content and permits an exactly restored value', async () => {
   const f = setup()
-  f.owner.enter('/meet/intro/edit')
+  f.owner.enter('/discover/intro')
   await vi.waitFor(() => expect(f.owner.intro.read().saved).not.toBeNull())
   const initial = structuredClone(f.owner.intro.read().draft)
   expect(initial.text).toBe(ownIntro().text)
@@ -150,7 +150,7 @@ it('router-owner disposal clears private children/subscriptions without disposin
   const f = setup()
   f.owner.enter('/notifications')
   await vi.waitFor(() => expect(f.owner.inbox.read().count.total).toBe(37))
-  f.owner.enter('/meet/intro/edit')
+  f.owner.enter('/discover/intro')
   await vi.waitFor(() => expect(f.owner.intro.read().saved).not.toBeNull())
   expect(f.owner.canNavigate('/legal/privacy')).toBe(true)
   expect(f.listenerCount()).toBeGreaterThan(0)

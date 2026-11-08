@@ -1,4 +1,5 @@
 export { IdentityStatus } from './IdentityStatus'
+export { IdentitySettings, type IdentitySettingsProps } from './IdentitySettings'
 export { VerificationStart } from './VerificationStart'
 export { VerificationCallback } from './VerificationCallback'
 export { VerificationPrompt } from './VerificationPrompt'

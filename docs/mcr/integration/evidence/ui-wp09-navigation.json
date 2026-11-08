@@ -1,0 +1,183 @@
+{
+  "scope": "WP-09 — Three-section navigation and profile screens (T-901 … T-908)",
+  "verification": "UI-360-390-430, V-08, V-11, V-12",
+  "work_package": "WP-09",
+  "branch": "codex/yc-wp09-nav",
+  "base_commit": "02c0b3216",
+  "base_commit_subject": "Merge branch 'codex/yc-wp06-posts'",
+  "recorded_at_utc": "2026-11-08T23:55:00Z",
+  "result": "PASS",
+  "result_scope": "T-901 … T-908. The 360/390/430 layout is verified as a layout contract (single-column, wrapping, no fixed width over 360 px, 44 px hit targets, a narrow-phone breakpoint, forced-colors and reduced-motion blocks). A real pixel capture at the three widths needs a browser and is recorded as NOT_RUN in `limitations` rather than claimed here.",
+  "tasks": {
+    "T-901": {
+      "state": "INTEGRATED",
+      "deliverable": "frontend/src/app/sections.ts, frontend/src/app/section-navigation.tsx, frontend/src/app/routes.ts",
+      "what_was_built": [
+        "`sections`: exactly three primary sections in product order — Discover (/discover), Activity (/activity), My Profile (/me)",
+        "`secondaryDestinations`: the five concert screens (world, feed, meet, gifts, wall) in their old order, behind one labelled disclosure",
+        "`legacyRedirects`: a closed table of the paths whose meaning changed (/meet/people → /discover/people, /meet/intro/edit → /discover/intro, /people/* → /discover/people/*)",
+        "`sectionForPath` / `isPrimaryPath`: whole-segment matching, so /notifications activates Activity and /notifications-settings does not",
+        "`panelRoutes` gains the section routes; the old tab paths stay registered so every old URL still resolves"
+      ],
+      "tests": "frontend/src/app/__tests__/navigation.test.tsx",
+      "test_count": 19,
+      "command": "corepack pnpm@11.7.0 exec vitest run src/app/__tests__/navigation.test.tsx",
+      "exit_code": 0
+    },
+    "T-902": {
+      "state": "INTEGRATED",
+      "deliverable": "frontend/src/features/profile/ProfilePage.tsx, frontend/src/app/section-entry/MyProfilePanel.tsx",
+      "what_was_built": [
+        "One presentational component with an owner and a visitor variant: introduction, favorites, emo character, photos/artwork, room entry",
+        "The owner variant adds the owner-only settings links; the visitor variant adds follow and report and no owner-only control",
+        "No room preview inline: one RoomEntry link, no scene, thumbnail, poster or layout data",
+        "No age: the view model has no age field, so the page cannot render one"
+      ],
+      "tests": "frontend/src/features/profile/__tests__/ProfilePage.test.tsx",
+      "test_count": 10,
+      "command": "corepack pnpm@11.7.0 exec vitest run src/features/profile/__tests__/ProfilePage.test.tsx",
+      "exit_code": 0
+    },
+    "T-903": {
+      "state": "INTEGRATED",
+      "deliverable": "frontend/src/features/profile/PublicProfilePage.tsx, frontend/src/app/section-entry/VisitorProfilePanel.tsx",
+      "what_was_built": [
+        "The visitor page shows the introduction, the shared interests, the photos/artwork, the room entry and a follow action",
+        "`decodeVisitorProfile` is a closed schema: a payload carrying an `age` field is refused, not narrowed",
+        "`admitGenderBucket` accepts only female/male/unknown; anything else renders nothing",
+        "`sharedInterestLine` returns null for an empty or blank list, so the section is omitted entirely"
+      ],
+      "tests": "frontend/src/features/profile/__tests__/PublicProfilePage.test.tsx",
+      "test_count": 17,
+      "command": "corepack pnpm@11.7.0 exec vitest run src/features/profile/__tests__/PublicProfilePage.test.tsx",
+      "exit_code": 0
+    },
+    "T-904": {
+      "state": "INTEGRATED",
+      "deliverable": "frontend/src/app/router.tsx",
+      "what_was_built": [
+        "Every section screen registered: /discover, /discover/people, /discover/people/:profileId, /discover/people/:profileId/room, /discover/intro, /discover/intro/:introId, /activity, /notifications/:notificationId, /me/identity, /me/posts/new, /me/room",
+        "Each section screen is a `lazy` import; the build emits one chunk per screen (DiscoverPanel, ActivityPanel, MyProfilePanel, PhotoComposerPanel, IdentitySettingsPanel, IntroSlot)",
+        "`LegacyRedirect` is registered before the panel routes and renders a `replace` navigation that carries the query string",
+        "The not-found state renders no profile or post data: no field, no id, no user-entered segment"
+      ],
+      "tests": "frontend/src/app/__tests__/router.test.tsx",
+      "test_count": 19,
+      "command": "corepack pnpm@11.7.0 exec vitest run src/app/__tests__/router.test.tsx",
+      "exit_code": 0
+    },
+    "T-905": {
+      "state": "INTEGRATED",
+      "deliverable": "frontend/src/app/WorldShell.tsx, frontend/src/app/shell-chrome/index.tsx, frontend/src/app/section-navigation.css",
+      "what_was_built": [
+        "The bottom bar renders the three sections; the concert screens are in the SecondaryMenu disclosure above it",
+        "`panelKind` names the section presentation first, then the concert screens that still have one",
+        "No decorative left accent bar: the stylesheets declare none, the markup carries none, and a test reads every shell/section/shared stylesheet for one",
+        "Focus outlines preserved: no `outline: none` in the shell or section stylesheets; the base `:focus-visible` rule applies"
+      ],
+      "tests": "frontend/src/app/__tests__/shell-sections.test.tsx",
+      "test_count": 12,
+      "command": "corepack pnpm@11.7.0 exec vitest run src/app/__tests__/shell-sections.test.tsx",
+      "exit_code": 0
+    },
+    "T-906": {
+      "state": "INTEGRATED",
+      "deliverable": "frontend/src/features/identity/IdentitySettings.tsx, frontend/src/app/section-entry/IdentitySettingsPanel.tsx",
+      "what_was_built": [
+        "The identity settings screen composes WP-04b's IdentityStatus and states the purpose and the non-requirement in one sentence each",
+        "Reachable from My Profile via the owner profile page's 'Identity verification' link; not offered to a visitor",
+        "Disconnect goes through the confirmation dialog; reconnecting is the reverse action",
+        "This is the only screen that shows the owner's derived age"
+      ],
+      "tests": "frontend/src/features/identity/__tests__/IdentitySettings.test.tsx",
+      "test_count": 9,
+      "command": "corepack pnpm@11.7.0 exec vitest run src/features/identity/__tests__/IdentitySettings.test.tsx",
+      "exit_code": 0
+    },
+    "T-907": {
+      "state": "INTEGRATED",
+      "deliverable": "frontend/src/app/section-navigation.css, frontend/src/app/section-entry/section-entry.css",
+      "what_was_built": [
+        "Every interactive control on every new screen has an accessible name (explicit label, aria-label, labelledby, implicit label or title)",
+        "No keyboard trap: no aria-modal, no inert body, every control focusable and focus can leave the shell",
+        "aria-pressed on the follow toggle; aria-current on the section bar",
+        "Live regions for asynchronous results",
+        "360/390/430 layout contract: single-column pages, wrapping long words, no fixed width over 360 px, 44 px hit targets, a max-width 380 px breakpoint, forced-colors and reduced-motion blocks"
+      ],
+      "tests": "frontend/src/app/__tests__/accessibility.test.tsx",
+      "test_count": 26,
+      "command": "corepack pnpm@11.7.0 exec vitest run src/app/__tests__/accessibility.test.tsx",
+      "exit_code": 0
+    },
+    "T-908": {
+      "state": "INTEGRATED",
+      "deliverable": "docs/mcr/integration/evidence/ui-wp09-navigation.json",
+      "what_was_built": "This evidence document."
+    }
+  },
+  "hard_constraints": [
+    {
+      "constraint": "Every old path still resolves (directly or by redirect)",
+      "result": "PASS",
+      "evidence": "navigation.test.tsx::keeps_the_old_tab_paths_registered_as_live_routes, ::redirects_the_paths_whose_meaning_changed, ::navigating_to_%s_lands_on_%s, ::carries_the_query_string_across_a_redirect, ::redirects_a_visitor_profile_link_to_its_Discover_home, ::resolves_every_section_route_to_a_registered_panel"
+    },
+    {
+      "constraint": "Primary navigation has exactly three entries",
+      "result": "PASS",
+      "evidence": "navigation.test.tsx::declares_three_sections_in_product_order, ::renders_exactly_three_links_in_the_tab_bar_each_with_an_accessible_name, ::renders_three_entries_for_every_path; shell-sections.test.tsx::renders_three_labelled_links_and_no_concert_tab"
+    },
+    {
+      "constraint": "No age rendered for any visitor state",
+      "result": "PASS",
+      "evidence": "PublicProfilePage.test.tsx::renders_no_age_for_an_unverified_owner, ::renders_no_age_for_a_verified_owner_who_opted_in_to_showing_gender, ::renders_no_age_for_a_verified_owner_who_did_not_opt_in, ::renders_no_age_in_the_unavailable_state, ::drops_an_age_that_a_payload_tries_to_carry, ::admits_only_the_three_closed_gender_buckets"
+    },
+    {
+      "constraint": "Shared interests omitted when empty",
+      "result": "PASS",
+      "evidence": "PublicProfilePage.test.tsx::renders_no_shared_interest_section_for_an_empty_list, ::renders_no_shared_interest_section_for_a_list_of_blank_names, ::summarizes_more_than_three_shared_items_without_listing_them_all"
+    },
+    {
+      "constraint": "Room opens only from its entry point; no room preview inline",
+      "result": "PASS",
+      "evidence": "ProfilePage.test.tsx::offers_the_room_only_through_its_entry_with_no_inline_preview; PublicProfilePage.test.tsx::offers_no_room_preview_inline"
+    },
+    {
+      "constraint": "A not-found route renders no profile or post data",
+      "result": "PASS",
+      "evidence": "router.test.tsx::renders_no_profile_field_in_the_not-found_output, ::renders_no_profile_field_for_an_unknown_profile_path, ::renders_no_profile_data_for_an_invalid_profile_id, ::renders_no_post_data_for_an_unknown_post_path, ::renders_a_safe_error_state_that_does_not_leak_a_thrown_value"
+    },
+    {
+      "constraint": "Keyboard reachable, every control has an accessible name, no keyboard trap",
+      "result": "PASS",
+      "evidence": "accessibility.test.tsx::every_interactive_control_has_an_accessible_name (8 routes + 3 component variants), ::every_focusable_element_in_the_shell_is_reachable_and_leaves_on_Tab, ::the_secondary_menu_does_not_trap_focus_when_open, ::the_shell_offers_a_skip_link_to_the_content"
+    },
+    {
+      "constraint": "NO decorative left accent bars anywhere (explicit user prohibition)",
+      "result": "PASS",
+      "evidence": "shell-sections.test.tsx::declares_no_left_accent_bar_in_the_shell_and_section_stylesheets (reads every CSS file under src/app and src/shared/styles), ::renders_no_inline_left_border_on_the_shell_or_the_sections, ::does_not_mark_a_section_with_a_decorative_left_rail_class"
+    }
+  ],
+  "commands": [
+    {
+      "command": "cd frontend && corepack pnpm@11.7.0 run typecheck",
+      "exit_code": 0
+    },
+    {
+      "command": "cd frontend && corepack pnpm@11.7.0 exec vitest run src/app src/features/profile",
+      "exit_code": 1,
+      "note": "1617 passed, 1 failed. The single failure is `src/app/world-entry/__tests__/map-presentation-v1/input-readiness.test.ts::pins_the_frozen_public_capability_schema…`, which fails identically on the untouched base commit 02c0b3216 (a contract fixture drift unrelated to WP-09; verified by stashing this branch's changes and re-running)."
+    },
+    {
+      "command": "cd frontend && corepack pnpm@11.7.0 run build",
+      "exit_code": 0,
+      "note": "One chunk per section screen: DiscoverPanel, ActivityPanel, MyProfilePanel, PhotoComposerPanel, IdentitySettingsPanel, IntroSlot."
+    }
+  ],
+  "limitations": [
+    "UI-360-390-430 pixel captures are NOT_RUN. The layout contract is verified in the stylesheets (single column, wrapping, no fixed width over 360 px, 44 px hit targets, a max-width 380 px breakpoint, forced-colors and reduced-motion blocks), but a real capture at 360/390/430 needs a browser run that this environment does not provide.",
+    "The mutuals-intro screens are a reserved slot. WP-05 owns them; this package registers `/discover/intro` and `/discover/intro/:introId` and renders an explicit placeholder that says the screens are not part of this build yet. It does not depend on `features/intros`.",
+    "The visitor profile screen renders the presentational `PublicProfilePage` from a view model. The shell wiring that fills that model from a server read is the integration step; the route, the decoder and the page are in place.",
+    "The concert `PublicProfile` (the social owner's profile, with sharing and blocking) is still what `/discover/people/:profileId` mounts, because the concert profile owns the sharing and block flows the product still needs. The WP-09 visitor page is the product-shaped presentation and is asserted separately; switching the route to it is the integration step once the profile service read is wired.",
+    "`/me` is now the My Profile section home (the owner profile page). The concert MeHub it used to render moved to `/me/profile`, which the section links to."
+  ]
+}

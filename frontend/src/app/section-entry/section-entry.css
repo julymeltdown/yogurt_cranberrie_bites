@@ -1,0 +1,220 @@
+/* WP-09: the three primary sections' screens.
+ *
+ * Prohibited pattern: a decorative left accent bar (a coloured `border-left`, an
+ * inset left rail, or a `::before`/`::after` left bar) on any card, notice,
+ * section or panel. This file uses none. Separation comes from spacing, heading
+ * weight and the existing rule colour.
+ *
+ * Focus: no rule here removes an outline. The shell's `:focus-visible` rule in
+ * `shared/styles/base.css` applies to every control on these screens.
+ *
+ * Responsive: the layout is a single column at every width, so 360/390/430 px
+ * never overflow. Long words wrap, images are bounded by their container, and no
+ * element has a fixed width wider than a 360 px viewport.
+ */
+
+.section-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 16px 14px 40px;
+  max-width: 640px;
+  margin: 0 auto;
+  overflow-wrap: anywhere;
+}
+
+.section-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.section-header h1 {
+  margin: 0;
+  font-size: 1.4rem;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.section-header p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.section-header__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  align-items: center;
+}
+
+.section-header__actions a,
+.section-header__actions button,
+.section-block > a,
+.section-block > button {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border: 1px solid var(--pi-rule, #1b1b1f);
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.section-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px 0;
+  border: 0;
+  border-top: 1px solid var(--pi-rule-soft, #d6d2c4);
+}
+
+.section-block h2 {
+  margin: 0;
+  font-size: 1.02rem;
+  font-weight: 700;
+}
+
+.section-block h3 {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.section-block p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.section-intro__name {
+  margin: 0;
+  font-size: 1.12rem;
+  font-weight: 700;
+}
+
+.section-intro__bio {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.section-favorites__group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.section-favorites__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9rem;
+}
+
+.section-favorites__list li {
+  padding: 2px 0;
+}
+
+/* The reserved intro slot. Plain, honest, and not styled as an error. */
+.intro-slot {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.intro-slot h2 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.intro-slot p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+.intro-slot-page {
+  padding: 16px 14px 40px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* The room entry, as WP-07 renders it, inside a section page. */
+.section-page .room-entry {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px 0;
+  border: 0;
+  border-top: 1px solid var(--pi-rule-soft, #d6d2c4);
+}
+
+.section-page .room-entry h2 {
+  margin: 0;
+  font-size: 1.02rem;
+}
+
+.section-page .room-entry a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  padding: 8px 14px;
+  border: 1px solid var(--pi-rule, #1b1b1f);
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* The profile avatar panel inside a section page: bound its width so a wide
+ * editor never overflows a 360 px viewport. */
+.section-page .mcr-profile-avatar {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.section-page .mcr-profile-avatar img,
+.section-page .mcr-profile-avatar canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 380px) {
+  .section-page {
+    padding: 14px 10px 36px;
+    gap: 16px;
+  }
+
+  .section-header h1 {
+    font-size: 1.25rem;
+  }
+
+  .section-header__actions a,
+  .section-header__actions button {
+    padding: 8px 11px;
+  }
+}
+
+@media (forced-colors: active) {
+  .section-header__actions a,
+  .section-header__actions button,
+  .section-block > a,
+  .section-block > button,
+  .section-page .room-entry a {
+    border: 1px solid CanvasText;
+  }
+}

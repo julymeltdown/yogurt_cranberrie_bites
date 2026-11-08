@@ -25,21 +25,34 @@ function setup(path = '/world', fixture = createFixturePorts(), options: { stric
   const result = render(options.strict ? <StrictMode>{ui}</StrictMode> : ui)
   return { ...result, ...fixture, router }
 }
-const open = async () => { await screen.findByRole('navigation', { name: 'Main navigation' }) }
+const open = async () => { await screen.findByRole('navigation', { name: 'Sections' }) }
+/** WP-09: the concert screens are reached from the secondary menu disclosure. */
+const openConcertMenu = () => {
+  const summary = document.querySelector('.mcr-secondary-menu > summary')
+  if (summary instanceof HTMLElement && !(summary.parentElement as HTMLDetailsElement).open) fireEvent.click(summary)
+}
 const click = (name: string) => fireEvent.click(screen.getByRole('link', { name }))
 const back = () => fireEvent.click(screen.getByRole('button', { name: 'Back to previous panel' }))
 
 describe('persistent world ownership', () => {
-  it('keeps one identical host and lease through six tabs, details and history', async () => {
+  it('keeps one identical host and lease through the three sections, the concert menu, details and history', async () => {
     const { stats, router } = setup()
     await open()
     const host = document.querySelector('[data-world-host]')
-    for (const tab of ['Feed', 'Meet', 'Gifts', 'Wall', 'Me', 'World']) {
-      click(tab)
+    // WP-09: the tab bar is three sections; the concert screens are behind the
+    // secondary menu. The world host and its lease must survive both.
+    for (const section of ['Discover', 'Activity', 'My Profile']) {
+      click(section)
       expect(document.querySelector('[data-world-host]')).toBe(host)
       expect(stats.mounts).toBe(1)
     }
-    click('Gifts'); click('Open test giveaway'); click('Manage test giveaway')
+    for (const concert of ['Feed', 'Meet', 'Gifts', 'Wall', 'World']) {
+      openConcertMenu()
+      click(concert)
+      expect(document.querySelector('[data-world-host]')).toBe(host)
+      expect(stats.mounts).toBe(1)
+    }
+    openConcertMenu(); click('Gifts'); click('Open test giveaway'); click('Manage test giveaway')
     expect(router.state.location.pathname).toBe(`${giftPath}/manage`)
     back(); expect(router.state.location.pathname).toBe(giftPath)
     back(); expect(router.state.location.pathname).toBe('/gifts')

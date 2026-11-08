@@ -1,8 +1,7 @@
 import { useId, useSyncExternalStore, type ReactNode, type Ref } from 'react'
-import { useLocation } from 'react-router-dom'
 import { ShellLink } from '../navigation'
-import { resolvePanel, tabs, type TabPath } from '../routes'
-import { ConcertIcon, type ConcertIconName } from '../../shared/ui/concert-window'
+import { SectionNavigation } from '../section-navigation'
+import { ConcertIcon } from '../../shared/ui/concert-window'
 import type { ThemeController, ThemeState } from '../../features/theme/model/controller'
 import { themeIds, type ThemeId } from '../../features/theme/model/preferences'
 import { WindowInk } from '../reference-chrome-v2/WindowInk'
@@ -58,15 +57,19 @@ export function EraControls({ controller = null }: { controller?: EraPort | null
   </WorldEraView>
 }
 
-const icons: Record<TabPath, ConcertIconName> = { '/world': 'world', '/feed': 'feed', '/meet': 'meet', '/gifts': 'gifts', '/wall': 'wall', '/me': 'me' }
-/** Uses the incumbent router and caller's NavigationMemory; no plain-anchor reload. */
+/**
+ * WP-09 T-901/T-905: the bottom navigation is the three primary sections.
+ *
+ * The concert screens are no longer tabs. They live behind `SecondaryMenu`
+ * (`section-navigation.tsx`), which the shell renders above this bar. The bar
+ * itself is exactly three entries, always in product order, with the active one
+ * derived from the path.
+ *
+ * Uses the incumbent router and caller's NavigationMemory; no plain-anchor reload.
+ */
 export function BottomNavigation() {
-  const location = useLocation(), resolved = resolvePanel(location.pathname)
   return <WorldNavigationView>
-    {tabs.map(tab => <ShellLink key={tab.path} to={tab.path} id={`tab-${tab.label.toLowerCase()}`}
-      aria-current={resolved?.valid && resolved.route.tab === tab.path ? 'page' : undefined}>
-      <ConcertIcon name={icons[tab.path]} /><span>{tab.label}</span>
-    </ShellLink>)}
+    <SectionNavigation />
   </WorldNavigationView>
 }
 

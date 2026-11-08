@@ -164,7 +164,10 @@ export function createSocialOwner(options: SocialOptions) {
     canShare: (userId: string) => !!sharingIntro(userId),
     async openSharing(userId: string) {
       const candidate = sharingIntro(userId)
-      if (!candidate || locked() || socialRoute(view.path ?? '')?.kind !== 'profile' || view.path !== `/people/${userId}`) return false
+      // WP-09: the visitor profile lives under Discover. The legacy `/people/{id}`
+      // path is accepted here too, so a redirect in flight cannot cancel a share.
+      if (!candidate || locked() || socialRoute(view.path ?? '')?.kind !== 'profile'
+        || (view.path !== `/discover/people/${userId}` && view.path !== `/people/${userId}`)) return false
       const version = ++navigating; targetFlight?.abort(); const flight = new AbortController(); targetFlight = flight
       try {
         const result = await auth.privacy.run(scope, ({ signal }) => auth.request({ path: `/api/concert/events/${scope.eventId}/intros/${candidate.intro_id}`,
