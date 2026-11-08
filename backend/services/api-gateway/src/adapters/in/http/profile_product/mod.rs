@@ -10,9 +10,12 @@
 //! The closed route set below is the profile subset of the frozen operation
 //! register (`contracts/core/v1/operations.json`). A path outside it is not
 //! matched here at all, so it can never reach the profile producer.
-use super::{concert_access::HttpConcertAccess, GatewayError};
+use super::{concert_access::HttpConcertAccess, profile_owner::ProfileOwner, GatewayError};
 use crate::{
-    adapters::out::profile_product_client::{ProfileHttpRequest, MAX_BODY},
+    adapters::out::profile_product_client::{
+        concert_proto, proto, GrpcConcertProfileProductClient, GrpcProfileProductClient,
+        ProfileHttpRequest, MAX_BODY,
+    },
     config::AppState,
 };
 use axum::{
@@ -462,8 +465,15 @@ async fn dispatch(
             )
         }
     };
-    let Some(client) = &state.profile_product_client else {
-        return error(StatusCode::SERVICE_UNAVAILABLE, "DEPENDENCY_UNAVAILABLE");
+    // ── The routing rule ───────────────────────────────────────────────────
+    //
+    // A profile operation is served by the service that owns its tables.
+    // `profile_owner::owner_of` is that rule, as data. An operation with no
+    // owner is refused rather than defaulted: sending it to the wrong service
+    // would answer it from a database that does not hold its rows.
+    let owner = match super::profile_owner::owner_of(route.operation) {
+        Some(owner) => owner,
+        None => return error(StatusCode::SERVICE_UNAVAILABLE, "DEPENDENCY_UNAVAILABLE"),
     };
     let Some(reader) = &state.concert_identity else {
         return error(StatusCode::SERVICE_UNAVAILABLE, "DEPENDENCY_UNAVAILABLE");
@@ -472,48 +482,98 @@ async fn dispatch(
         Ok(context) => context,
         Err(_) => return error(StatusCode::UNAUTHORIZED, "AUTHENTICATION_REQUIRED"),
     };
-    let result = Box::pin(client.dispatch(
-        reader,
-        context,
-        ProfileHttpRequest {
-            request_id: Uuid::new_v4(),
-            method: method.to_string(),
-            target: uri
-                .path_and_query()
-                .map(|value| value.as_str())
-                .unwrap_or(uri.path())
-                .to_owned(),
-            body: body.to_vec(),
-            content_type,
-            idempotency_key,
-        },
-    ))
-    .await;
-    let result = match result {
-        Ok(result) => result,
-        Err(status) => return rpc_error(status),
+    let http = ProfileHttpRequest {
+        request_id: Uuid::new_v4(),
+        method: method.to_string(),
+        target: uri
+            .path_and_query()
+            .map(|value| value.as_str())
+            .unwrap_or(uri.path())
+            .to_owned(),
+        body: body.to_vec(),
+        content_type,
+        idempotency_key,
     };
-    let delivery = match result.delivery {
-        Some(capability) => match client.delivery_token(capability) {
-            Ok(token) => token,
-            Err(_) => return error(StatusCode::SERVICE_UNAVAILABLE, "DEPENDENCY_UNAVAILABLE"),
-        },
-        None => return error(StatusCode::SERVICE_UNAVAILABLE, "DEPENDENCY_UNAVAILABLE"),
+    // Both branches produce the same closed representation; only the serving
+    // workload and the message type differ.
+    let representation = match owner {
+        ProfileOwner::ProfileService => {
+            let Some(client) = &state.profile_product_client else {
+                return error(StatusCode::SERVICE_UNAVAILABLE, "DEPENDENCY_UNAVAILABLE");
+            };
+            match Box::pin(client.dispatch(reader, context, http)).await {
+                Ok(response) => {
+                    let delivery = match response.delivery {
+                        Some(capability) => match client.delivery_token(capability) {
+                            Ok(token) => token,
+                            Err(_) => {
+                                return error(
+                                    StatusCode::SERVICE_UNAVAILABLE,
+                                    "DEPENDENCY_UNAVAILABLE",
+                                )
+                            }
+                        },
+                        None => {
+                            return error(StatusCode::SERVICE_UNAVAILABLE, "DEPENDENCY_UNAVAILABLE")
+                        }
+                    };
+                    Representation {
+                        status: response.status,
+                        content_type: response.content_type,
+                        body: response.body,
+                        content_expires_unix_micros: response.content_expires_unix_micros,
+                        delivery,
+                    }
+                }
+                Err(status) => return rpc_error(status),
+            }
+        }
+        ProfileOwner::ConcertService => {
+            let Some(client) = &state.concert_profile_product_client else {
+                return error(StatusCode::SERVICE_UNAVAILABLE, "DEPENDENCY_UNAVAILABLE");
+            };
+            match Box::pin(client.dispatch(reader, context, http)).await {
+                Ok(response) => {
+                    let delivery = match response.delivery {
+                        Some(capability) => match client.delivery_token(capability) {
+                            Ok(token) => token,
+                            Err(_) => {
+                                return error(
+                                    StatusCode::SERVICE_UNAVAILABLE,
+                                    "DEPENDENCY_UNAVAILABLE",
+                                )
+                            }
+                        },
+                        None => {
+                            return error(StatusCode::SERVICE_UNAVAILABLE, "DEPENDENCY_UNAVAILABLE")
+                        }
+                    };
+                    Representation {
+                        status: response.status,
+                        content_type: response.content_type,
+                        body: response.body,
+                        content_expires_unix_micros: response.content_expires_unix_micros,
+                        delivery,
+                    }
+                }
+                Err(status) => return rpc_error(status),
+            }
+        }
     };
     if access.check().is_err() {
         return error(StatusCode::UNAUTHORIZED, "AUTHENTICATION_REQUIRED");
     }
-    let status = match result.status {
+    let status = match representation.status {
         200 | 201 | 202 | 400 | 401 | 403 | 404 | 409 | 413 | 415 | 429 | 500 | 503 | 504 => {
-            StatusCode::from_u16(result.status as u16).expect("closed status")
+            StatusCode::from_u16(representation.status as u16).expect("closed status")
         }
         _ => return error(StatusCode::SERVICE_UNAVAILABLE, "DEPENDENCY_UNAVAILABLE"),
     };
-    let image = is_image_type(&result.content_type);
+    let image = is_image_type(&representation.content_type);
     if image && (status != StatusCode::OK || !uri.path().ends_with("/content"))
         || (!image
-            && (result.content_type != "application/json"
-                || serde_json::from_slice::<serde_json::Value>(&result.body).is_err()))
+            && (representation.content_type != "application/json"
+                || serde_json::from_slice::<serde_json::Value>(&representation.body).is_err()))
     {
         return error(StatusCode::SERVICE_UNAVAILABLE, "DEPENDENCY_UNAVAILABLE");
     }
@@ -522,8 +582,8 @@ async fn dispatch(
         Err(_) => return error(StatusCode::UNAUTHORIZED, "AUTHENTICATION_REQUIRED"),
     };
     let body = match super::response_disclosure::DisclosureBody::new(
-        Body::from(result.body),
-        result.content_expires_unix_micros,
+        Body::from(representation.body),
+        representation.content_expires_unix_micros,
         original,
     ) {
         Ok(body) => Body::new(body),
@@ -531,10 +591,22 @@ async fn dispatch(
     };
     let mut response = Response::new(body);
     *response.status_mut() = status;
-    media_headers(&mut response, &result.content_type);
+    media_headers(&mut response, &representation.content_type);
     protect(&mut response);
-    response.extensions_mut().insert(delivery);
+    response.extensions_mut().insert(representation.delivery);
     response
+}
+
+/// One closed profile representation, whichever service produced it.
+///
+/// The two transports carry identical fields, so the framing below is shared:
+/// a browser cannot tell which service answered, and neither can a cache.
+struct Representation {
+    status: u32,
+    content_type: String,
+    body: Vec<u8>,
+    content_expires_unix_micros: i64,
+    delivery: platform::actor_delegation::response_scope::ResponseScopeToken,
 }
 
 /// The exact response framing of one profile representation.

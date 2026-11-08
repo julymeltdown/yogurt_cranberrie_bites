@@ -690,6 +690,19 @@ async fn main() -> anyhow::Result<()> {
                             runtime.actors.clone(),
                         )
                     }).transpose()?;
+                    // Fifteen frozen profile operations read tables that live in
+                    // THIS database (`profile_posts`, `profile_post_attachments`,
+                    // `profile_media`, `profile_rooms`, `profile_avatars`). The
+                    // profile service runs against `mcr_profile` and cannot reach
+                    // them, and a cross-database join is forbidden, so the
+                    // Gateway routes those operations here. This transport is the
+                    // event-free profile analogue of `concert.product.v1`: same
+                    // authority discipline, keyed by `profile_id`.
+                    let profile_product = concert_service::profile_product::runtime(
+                        grpc_pool.clone(),
+                        runtime.callers.clone(),
+                        runtime.actors.clone(),
+                    )?;
                     // This callback uses the original shared registry and the
                     // dedicated Notification workload identity. It accepts no
                     // Gateway actor delegation and shares this listener's TLS
@@ -727,6 +740,10 @@ async fn main() -> anyhow::Result<()> {
                         .add_optional_service(feed_callback)
                         .add_optional_service(archive)
                         .add_optional_service(delivery)
+                        .add_service(concert_service::profile_product::retain_scopes(
+                            profile_product.dispatch,
+                        ))
+                        .add_service(profile_product.settlement)
                         .add_optional_service(deletion)
                         .serve_with_shutdown(
                             runtime.address,

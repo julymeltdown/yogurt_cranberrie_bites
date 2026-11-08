@@ -22,6 +22,7 @@ pub mod operation_routes;
 pub mod operation_worker;
 pub mod owner_receipts;
 pub mod post_routes;
+pub mod profile_owner;
 pub mod profile_product;
 pub mod profile_routes;
 pub mod refresh_routes;

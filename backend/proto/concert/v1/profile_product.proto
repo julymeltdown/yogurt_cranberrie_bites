@@ -1,0 +1,83 @@
+syntax = "proto3";
+
+package concert.profile_product.v1;
+
+// Profile-owned product transport hosted by the CONCERT service.
+//
+// Why this exists
+// ---------------
+// Fifteen frozen profile operations read tables that live in the concert
+// database (`mcr_concert`): `profile_posts`, `profile_post_attachments`,
+// `profile_media`, `profile_rooms` and `profile_avatars`. The profile service
+// runs against `mcr_profile` and cannot reach them, and
+// `domain-contract.md` §1.1 forbids a cross-database join. The producers for
+// those operations already exist in this service.
+//
+// So the gateway routes each profile operation to the service that owns its
+// tables. This message is the concert-side counterpart of
+// `profile.product.v1.ProfileRequest`: the same fields, the same authority
+// discipline, the same delivery/settlement shape. The only difference is the
+// workload that serves it, which is exactly the point — the routing rule is
+// "who owns the tables", and the transport name makes that visible on the wire.
+//
+// There is deliberately NO `event_id`. A profile operation is not
+// event-scoped, and the concert product transport (`concert.product.v1`)
+// requires a non-nil event and an `/api/concert/events/{event}/` target. These
+// operations have neither, so they cannot travel through it.
+message ProfileRequest {
+  string user_id = 1;
+  // Canonical profile UUID. Never an event UUID, never nil.
+  string profile_id = 2;
+  string session_family_id = 3;
+  string request_id = 4;
+  string http_method = 5;
+  string http_target = 6;
+  bytes http_body = 7;
+  string content_type = 8;
+  string idempotency_key = 9;
+  int64 authority_expires_unix_micros = 10;
+  int64 auth_observed_at_unix_micros = 11;
+  int64 profile_observed_at_unix_micros = 12;
+  int64 access_expires_unix_micros = 13;
+  // Optional stable privacy HMAC, derived only from Gateway's typed actual
+  // transport address using a dedicated key. The exact signed request binds it.
+  // Empty means unavailable; raw IP and browser-selected buckets are forbidden.
+  bytes trusted_network_bucket = 14;
+}
+
+// Same delivery discipline as `profile.product.v1.ProfileResponse`: the body is
+// only readable under a published delivery capability, and completion is a
+// separate system operation after the Gateway's actual HTTP body terminal.
+message ProfileResponse {
+  uint32 status = 1;
+  string content_type = 2;
+  bytes body = 3;
+  // Internal only; NEVER serialize into HTTP JSON/headers.
+  ProfileResponseDelivery delivery = 4;
+  // Actual root-wide disclosure ceiling. Gateway checks it before each HTTP
+  // data frame, using the original access monotonic stop as an additional
+  // ceiling. Zero is not authority.
+  int64 content_expires_unix_micros = 5;
+}
+
+// Completion is a separate bounded system operation, never renewed content
+// authority. Only Gateway may report its actual HTTP body terminal. A missing
+// callback, cancellation or lost reply leaves the canonical scope quarantined.
+message ProfileResponseDelivery {
+  string instance_id = 1;
+  string scope_id = 2;
+  bytes binding_digest = 3;
+  bytes completion_secret = 4;
+}
+
+message CompleteProfileResponseResult {
+  bool completed = 1;
+}
+
+service ProfileProductService {
+  rpc Dispatch(ProfileRequest) returns (ProfileResponse);
+}
+
+service ProfileProductDeliveryService {
+  rpc CompleteResponse(ProfileResponseDelivery) returns (CompleteProfileResponseResult);
+}

@@ -1,8 +1,12 @@
 # Profile producer coverage
 
-Status: **PARTIAL — 6 of 43 operations served**. Every remaining operation is
-tracked with an owning work package and a concrete reason; none is silently
-missing.
+Status: **PARTIAL — 21 of 43 operations served** (6 by the profile service,
+15 by the concert service). Every remaining operation is tracked with an owning
+work package and a concrete reason; none is silently missing.
+
+The cross-database gap described in §2 is **closed**. The fifteen operations
+whose tables live in `mcr_concert` are now served by the concert service and
+routed there by the Gateway; see §2.1 and §5.
 
 The machine-readable source of this table is
 `backend/services/profile-service/src/profile_product/coverage.rs`
@@ -52,19 +56,33 @@ The integration assessment reached the same conclusion independently
 feature dispatch — Gateway forwards to a closed five-operation producer. Needed
 ownership clarification: **Cross-service adapter and authority scope**."*
 
-### What would close the gap
+### How the gap was closed
 
-Either of these, and both need an owner outside this work package:
+Option 1 from the original analysis, implemented:
 
-1. **A concert-service product transport.** The concert service already hosts
-   `profile_posts`, `profile_media`, `profile_room` and `profile_avatar` with
-   closed route parsers and `handle` entry points. Mounting them on a concert
-   product service and routing the gateway's profile routes there would serve 15
-   operations with no new producer code.
-2. **A documented cross-service call** from the profile producer to the concert
-   service's gRPC surface, with its own authority scope and child guard.
+1. **A concert-service profile product transport.**
+   `concert_service::profile_product` mounts the existing `profile_posts`,
+   `profile_media`, `profile_room` and `profile_avatar` producers on a dedicated
+   `concert.profile_product.v1` service. It is the event-free profile analogue of
+   `concert.product.v1`: the same message shape, the same parent-frame
+   comparison, the same owner scope and delivery/settlement discipline, keyed by
+   `profile_id` and refusing any event path. It could not reuse
+   `concert.product.v1` itself, because that transport requires a non-nil
+   `event_id` and an `/api/concert/events/{event}/` target, and inventing an
+   event for a profile operation is exactly the silent product decision the
+   integration forbids.
+2. **A routing rule in the Gateway.** `api_gateway::adapters::in::http::profile_owner`
+   is a `(operation, owner)` table, not a `match` arm. Every mounted profile
+   route is looked up in it, and an operation with no owner is refused rather
+   than defaulted to a service that cannot answer it.
+3. **No new producer code.** The transport parses the target with each module's
+   own closed parser and calls its own `handle`/command function. What it adds is
+   the authority discipline a bare persistence call does not supply.
 
-Option 1 is the smaller change and matches how `concert_product` already works.
+The rule is **which database holds the tables the operation reads**, not which
+service is named `profile`. That is why `getOwnRoom` routes to the concert
+service while `getOwnProfile` stays in the profile service, even though both are
+mounted under `/api/me/`.
 
 ## 3. Coverage table
 
@@ -115,41 +133,42 @@ Rows 2.2.12 and 2.2.13 were added by `c79ed25c1` after the freeze record.
 ### §2.3 Profile posts and media (domain)
 
 WP-06 built these producers. They read `profile_posts`,
-`profile_post_attachments` and `profile_media`, which live in `mcr_concert`.
+`profile_post_attachments` and `profile_media`, which live in `mcr_concert`, so
+they are **served by the concert service** and routed there by the Gateway.
 
 | # | operationId | Method | Path | Producer | Owner |
 | --- | --- | --- | --- | --- | --- |
-| 2.3.1 | `listProfilePosts` | GET | `/api/profiles/{profileId}/posts` | NOT_IMPLEMENTED | WP-06 `profile_posts` (concert-service) |
-| 2.3.2 | `createProfilePost` | POST | `/api/me/posts` | NOT_IMPLEMENTED | WP-06 `profile_posts` (concert-service) |
-| 2.3.3 | `deleteProfilePost` | DELETE | `/api/me/posts/{postId}` | NOT_IMPLEMENTED | WP-06 `profile_posts` (concert-service) |
-| 2.3.4 | `initProfileMediaUpload` | POST | `/api/me/media/uploads` | NOT_IMPLEMENTED | WP-06 `profile_media` (concert-service) |
-| 2.3.5 | `putProfileMediaBytes` | PUT | `/api/me/media/{mediaId}/bytes` | NOT_IMPLEMENTED | WP-06 `profile_media` (concert-service) |
-| 2.3.6 | `finalizeProfileMedia` | POST | `/api/me/media/{mediaId}/finalize` | NOT_IMPLEMENTED | WP-06 `profile_media` (concert-service) |
-| 2.3.7 | `getProfileMedia` | GET | `/api/media/{mediaId}` | NOT_IMPLEMENTED | WP-06 `profile_media` (concert-service) |
-| 2.3.8 | `readProfileMedia` | GET | `/api/media/{mediaId}/content` | NOT_IMPLEMENTED | WP-06 `profile_media` (concert-service) |
+| 2.3.1 | `listProfilePosts` | GET | `/api/profiles/{profileId}/posts` | **Served** (concert) | `concert_service::profile_product` |
+| 2.3.2 | `createProfilePost` | POST | `/api/me/posts` | **Served** (concert) | `concert_service::profile_product` |
+| 2.3.3 | `deleteProfilePost` | DELETE | `/api/me/posts/{postId}` | **Served** (concert) | `concert_service::profile_product` |
+| 2.3.4 | `initProfileMediaUpload` | POST | `/api/me/media/uploads` | **Served** (concert) | `concert_service::profile_product` |
+| 2.3.5 | `putProfileMediaBytes` | PUT | `/api/me/media/{mediaId}/bytes` | **Served** (concert) | `concert_service::profile_product` |
+| 2.3.6 | `finalizeProfileMedia` | POST | `/api/me/media/{mediaId}/finalize` | **Served** (concert) | `concert_service::profile_product` |
+| 2.3.7 | `getProfileMedia` | GET | `/api/media/{mediaId}` | **Served** (concert) | `concert_service::profile_product` |
+| 2.3.8 | `readProfileMedia` | GET | `/api/media/{mediaId}/content` | **Served** (concert) | `concert_service::profile_product` |
 
 ### §2.4 Room (domain)
 
 WP-07 built these producers. They read `profile_rooms` and `profile_media`, both
-in `mcr_concert`.
+in `mcr_concert`, so they are **served by the concert service**.
 
 | # | operationId | Method | Path | Producer | Owner |
 | --- | --- | --- | --- | --- | --- |
-| 2.4.1 | `getProfileRoom` | GET | `/api/profiles/{profileId}/room` | NOT_IMPLEMENTED | WP-07 `profile_room` (concert-service) |
-| 2.4.2 | `getOwnRoom` | GET | `/api/me/room` | NOT_IMPLEMENTED | WP-07 `profile_room` (concert-service) |
-| 2.4.3 | `saveOwnRoom` | PUT | `/api/me/room` | NOT_IMPLEMENTED | WP-07 `profile_room` (concert-service) |
-| 2.4.4 | `setOwnRoomVisibility` | PATCH | `/api/me/room/visibility` | NOT_IMPLEMENTED | WP-07 `profile_room` (concert-service) |
-| 2.4.5 | `uploadRoomPoster` | POST | `/api/me/room/posters` | NOT_IMPLEMENTED | WP-07 `profile_room` (concert-service) |
+| 2.4.1 | `getProfileRoom` | GET | `/api/profiles/{profileId}/room` | **Served** (concert) | `concert_service::profile_product` |
+| 2.4.2 | `getOwnRoom` | GET | `/api/me/room` | **Served** (concert) | `concert_service::profile_product` |
+| 2.4.3 | `saveOwnRoom` | PUT | `/api/me/room` | **Served** (concert) | `concert_service::profile_product` |
+| 2.4.4 | `setOwnRoomVisibility` | PATCH | `/api/me/room/visibility` | **Served** (concert) | `concert_service::profile_product` |
+| 2.4.5 | `uploadRoomPoster` | POST | `/api/me/room/posters` | **Served** (concert) | `concert_service::profile_product` |
 
 ### §2.5 Avatar (domain)
 
 WP-08 built these producers. They read `profile_avatars`, in `mcr_concert`
-(migration 0087).
+(migration 0087), so they are **served by the concert service**.
 
 | # | operationId | Method | Path | Producer | Owner |
 | --- | --- | --- | --- | --- | --- |
-| 2.5.1 | `getOwnProfileAvatar` | GET | `/api/me/avatar` | NOT_IMPLEMENTED | WP-08 `profile_avatar` (concert-service) |
-| 2.5.2 | `setOwnProfileAvatar` | PUT | `/api/me/avatar` | NOT_IMPLEMENTED | WP-08 `profile_avatar` (concert-service) |
+| 2.5.1 | `getOwnProfileAvatar` | GET | `/api/me/avatar` | **Served** (concert) | `concert_service::profile_product` |
+| 2.5.2 | `setOwnProfileAvatar` | PUT | `/api/me/avatar` | **Served** (concert) | `concert_service::profile_product` |
 
 ### §2.6 Activity and notifications (domain)
 
@@ -170,52 +189,85 @@ WP-08 built these producers. They read `profile_avatars`, in `mcr_concert`
 
 | Producer | Count | Operations |
 | --- | --- | --- |
-| **Served** | **6** | `getOwnProfile`, `getProfile`, `searchCatalog`, `getOwnIdentityVerification`, `startIdentityVerification`, `disconnectIdentityVerification` |
-| NOT_IMPLEMENTED | 37 | everything else |
+| **Served by the profile service** | **6** | `getOwnProfile`, `getProfile`, `searchCatalog`, `getOwnIdentityVerification`, `startIdentityVerification`, `disconnectIdentityVerification` |
+| **Served by the concert service** | **15** | the eight `profile_posts`/`profile_media` operations, the five room operations, and the two avatar operations |
+| NOT_IMPLEMENTED | 22 | everything else |
 | **Total** | **43** | |
 
 By blocker:
 
 | Blocker | Count |
 | --- | --- |
-| Cross-database (producer exists in the concert service) | 15 |
+| Cross-database (producer exists in the concert service) | **0 — closed** |
 | Feature not yet built (WP-04, WP-05, WP-03 gaps) | 22 |
 
 ## 5. What this change delivered
 
-1. **`searchCatalog` is now served.** The profile service's `catalog` module
-   (WP-03, `catalog_items` in `mcr_profile`) is wired into the profile producer
-   with a closed query parser (`q`, `cursor`, `limit`; unknown or repeated fields
-   refused) and validated bounds. Proven end to end against a real database by
-   `the_catalog_producer_answers_search_catalog`.
-2. **Both WP-03 routes are mounted.** `/api/catalog/{category}/search` and
-   `/api/discover/people` now exist in the gateway's closed route table.
-   `discoverProfiles` reaches dispatch and is refused by the producer, because
-   its tables are a concert-service projection; the route is mounted so the
-   frontend contract is stable while that composition is owned.
-3. **The register exists** (`coverage.rs`) and is enforced by eight tests.
-4. **The gap is documented** rather than rediscovered by the next work package.
+1. **The cross-database gap is closed.** Fifteen operations moved from
+   `NOT_IMPLEMENTED` to `ServedByConcertService`. The producers already existed;
+   what was missing was a transport home and a routing rule.
+2. **`concert_service::profile_product`** mounts them on
+   `concert.profile_product.v1`, with its own event-free profile owner guard,
+   durable scope ledger (`concert_profile_product_scopes`, migration 0088) and
+   delivery/settlement discipline. It reuses each module's closed parser and
+   `handle` entry point; it adds no product behaviour.
+3. **The routing rule is data.** `api_gateway::adapters::in::http::profile_owner`
+   holds the `(operation, owner)` table. `profile_product::dispatch` looks each
+   mounted route up in it and refuses an operation with no owner rather than
+   defaulting.
+4. **The register records the split.** `Producer` gained
+   `ServedByConcertService`, so the register states which database answers each
+   operation. `counts()` now returns `(served_here, served_by_concert, owed)`.
+5. **The gap is documented** rather than rediscovered by the next work package.
 
 ## 6. Verification
 
-| Command | Exit |
-| --- | --- |
-| `cargo +1.88.0 check --locked --workspace` | 0 |
-| `cargo +1.88.0 test --locked -p profile-service --test profile_producer_coverage` | 0 (8 passed) |
-| `cargo +1.88.0 test --locked -p profile-service --test profile_product_transport` | 0 (8 passed) |
-| `cargo +1.88.0 test --locked -p api-gateway --test profile_product_routes` | 0 (11 passed) |
-| `cargo +1.88.0 test --locked -p api-gateway --lib profile_product` | 0 (7 passed) |
-| `python3 backend/scripts/mcr/wp02_migration_ledger.py --report /tmp/coverage-ledger.json` | 0 |
+Run from `backend/`. The database is the private marker-owned `mcr-pg-*` cluster
+created by `backend/scripts/mcr/wp04b_identity_cluster.py`, which now creates
+both a profile database and a concert database so each service's suite runs
+against its own store, exactly as the compose topology separates them.
 
-No migration was added or edited by this change, so the ledger result is
-unchanged from WP-02: profile-service head 15, concert-service head 85 (plus the
-later 0086 and 0087 from WP-03 and WP-08, which this change does not touch).
+| Command | Exit | Result |
+| --- | --- | --- |
+| `cargo +1.88.0 check --locked --workspace` | **0** | compiles |
+| `cargo +1.88.0 test --locked -p profile-service --test profile_producer_coverage` | **0** | 8 passed |
+| `cargo +1.88.0 test --locked -p api-gateway --test profile_product_routes` | **0** | 11 passed |
+| `CONCERT_TEST_DATABASE_URL=… cargo +1.88.0 test --locked -p concert-service --test profile_post_routes` | **0** | 14 passed |
+| `CONCERT_TEST_DATABASE_URL=… cargo +1.88.0 test --locked -p concert-service --test profile_room_routes` | **0** | 12 passed |
+| `cargo +1.88.0 test --locked -p api-gateway --test profile_routing` | **0** | 7 passed (new) |
+| `cargo +1.88.0 test --locked -p concert-service --test concert_profile_product_routes` | **0** | 9 passed (new) |
+| `CONCERT_TEST_DATABASE_URL=… … --test profile_avatar_routes` | **0** | 12 passed |
+| `… --test profile_media_upload` | **0** | 16 passed |
+| `… --test profile_posts` | **0** | 16 passed |
+| `… --test profile_post_read` | **0** | 11 passed |
+| `… --test profile_room_persistence` | **0** | 15 passed |
+| `… --test profile_room_posters` | **0** | 10 passed |
+| `… --test profile_avatar_persistence` | **0** | 13 passed |
+| `cargo +1.88.0 test --locked -p api-gateway --test unit` | **0** | 218 passed |
+| `cargo +1.88.0 test --locked -p api-gateway --test identity_routes` | **0** | 12 passed |
+| `cargo +1.88.0 test --locked -p api-gateway --test browser_auth_http` | **0** | 14 passed |
+| `PROFILE_TEST_DATABASE_URL=… … -p profile-service --test unit` | **0** | 47 passed |
+| `… --test profile_product_transport` | **0** | 8 passed |
+| `python3 backend/scripts/mcr/wp02_migration_ledger.py --report …` | **0** | PASS |
+
+Migration numbering: concert-service gained **0088** (previous head 0087). No
+applied migration was edited, and the ledger check confirms the empty-database
+and previous-head runs still reach the same schema hash.
 
 ## 7. Constraints honoured
 
 - **No fabricated producer.** Every `NOT_IMPLEMENTED` row is refused by the
   route parser and asserted so by
-  `a_served_operation_parses_and_a_not_implemented_one_is_refused`.
+  `a_served_operation_parses_and_a_not_implemented_one_is_refused`. A
+  `ServedByConcertService` row is likewise asserted to be refused by the
+  *profile* parser, because its tables are not in that database.
+- **No cross-database join.** The concert service serves the concert-owned
+  operations from its own database; the profile service never queries
+  `mcr_concert`. `domain-contract.md` §1.1 is honoured by routing, not by a join.
+- **The routing rule is checked against the register.**
+  `profile_routing::the_owner_agrees_with_the_coverage_register` parses the
+  register and fails if the Gateway routes an operation to a different service
+  than the one the register names.
 - **No event path.** Every register row is asserted event-free, and the parser
   is asserted to refuse a mutated event target for all 43
   (`no_register_path_carries_an_event_segment`).

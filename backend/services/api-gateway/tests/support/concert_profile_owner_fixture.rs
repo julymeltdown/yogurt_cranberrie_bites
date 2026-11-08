@@ -111,6 +111,8 @@ pub async fn profile_state(pool: PgPool) -> anyhow::Result<AppState> {
         mutation_receipt_retention_worker_enabled: false,
         mutation_receipt_retention_worker_interval_ms: 3_600_000,
         mutation_receipt_retention_batch_size: 100,
+        naver_oauth: profile_service::identity::NaverOAuthConfig::local(),
+        identity_subject_salt: b"gateway-test-identity-subject-salt-0001".to_vec(),
     };
     build_state(&config, pool).await
 }

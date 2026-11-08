@@ -991,6 +991,12 @@ pub struct AppState {
     /// compositions, where the callback fails closed.
     pub identity_callback_client:
         Option<crate::adapters::out::identity_callback_client::GrpcIdentityCallbackClient>,
+    /// The concert-hosted profile transport. Fifteen profile operations read
+    /// concert-owned tables, so the Gateway dispatches those to the concert
+    /// service; see `adapters::in::http::profile_owner`. Absent in test-double
+    /// compositions, where those operations fail closed.
+    pub concert_profile_product_client:
+        Option<crate::adapters::out::profile_product_client::GrpcConcertProfileProductClient>,
     pub concert_world_client: Option<crate::adapters::out::concert_world::GrpcConcertWorldClient>,
     pub concert_participant_client:
         Option<Arc<crate::adapters::out::concert_participant::GrpcConcertParticipantClient>>,
@@ -1877,6 +1883,18 @@ pub async fn build_state(config: &AppConfig, pool: PgPool) -> anyhow::Result<App
             config.actor_delegation_signer.clone(),
         )?,
     );
+    state.concert_profile_product_client = config
+        .concert_grpc_endpoint
+        .as_ref()
+        .map(|endpoint| {
+            crate::adapters::out::profile_product_client::GrpcConcertProfileProductClient::connect(
+                endpoint,
+                &config.outbound_identity,
+                config.tls_material.as_ref(),
+                config.actor_delegation_signer.clone(),
+            )
+        })
+        .transpose()?;
     state.identity_callback_client = Some(
         crate::adapters::out::identity_callback_client::GrpcIdentityCallbackClient::connect(
             &config.profile_grpc_endpoint,
@@ -2029,6 +2047,7 @@ async fn build_state_with_clients_and_moderation_with_metrics(
         concert_product_client: None,
         profile_product_client: None,
         identity_callback_client: None,
+        concert_profile_product_client: None,
         concert_world_client: None,
         concert_participant_client: None,
         high_risk_sessions: HighRiskSessionGuard::over_auth_client(
