@@ -5,8 +5,10 @@ import { AccessNotice, scopeKey, useAccess, usePorts, useScopedLoad, validBootst
 import { MAX_SHELL_LOCATIONS, NavigationMemory, ShellLink, usePanelBack } from './navigation'
 import type { ActiveScope, ShellBootstrap } from './ports'
 import { resolvePanel, type PanelRoute } from './routes'
+import { sectionForPath } from './sections'
 import { WorldHost } from './WorldHost'
 import { BottomNavigation, PanelHeader } from './shell-chrome'
+import { SecondaryMenu } from './section-navigation'
 import { ParadeFooter } from './shell-chrome/parade-footer'
 import { ConcertWindowEmbedding } from '../shared/ui/concert-window'
 import { WorldTools } from './world-presentation/WorldTools'
@@ -147,6 +149,7 @@ export function WorldShell({ scope, bootstrap, privacyScope = null, community = 
       {panelOpen ? <PanelFrame size={size} onSize={setSize} positions={positions.current}><Outlet /></PanelFrame>
         : <WorldHudToolsSlot><WorldTools open={worldToolsOpen} onOpenChange={setWorldToolsOpen} /></WorldHudToolsSlot>}
     </div>
+    <SecondaryMenu />
     <BottomNavigation />
   </div></WorldHudLayout></NavigationMemory></RootSocialFeatures></VenueShellFeatures></MeetingEntryFeatures></AccountProvider></ProductionWorldFeatures></CommunityFeatures></RootMediaProvider></CharacterProvider></Suspense>
 }
@@ -227,6 +230,21 @@ export function VenueShellFeatures({ auth, scope, community, participant = null,
   return <VenueRootFeatures borrowed={input}>{children}</VenueRootFeatures>
 }
 
+/**
+ * The panel presentation kind for a path.
+ *
+ * The three sections win over the concert screens, so a `/me` panel is the
+ * profile presentation even though `/me` used to be a concert tab. A concert
+ * screen keeps its own kind so its existing styles still apply.
+ */
+export function panelKind(pathname: string): string | undefined {
+  const section = sectionForPath(pathname)
+  if (section === 'MY_PROFILE') return pathname === '/me/avatar' ? 'customize' : 'me'
+  if (section === 'DISCOVER') return 'discover'
+  if (section === 'ACTIVITY') return 'activity'
+  return pathname === '/wall' ? 'wall' : pathname === '/feed' ? 'feed' : pathname === '/gifts' ? 'gifts' : undefined
+}
+
 function PanelFrame({ size, onSize, positions, children }: { size: 'peek' | 'half' | 'full'; onSize: (size: 'peek' | 'half' | 'full') => void; positions: Map<string, number>; children: ReactNode }) {
   const location = useLocation()
   const navigation = useNavigationType()
@@ -257,7 +275,9 @@ function PanelFrame({ size, onSize, positions, children }: { size: 'peek' | 'hal
   }, [location.key, location.pathname, location.search, navigation])
   // A destination includes its query target. Reopen on navigation, not on a user size change.
   useLayoutEffect(() => { if (window.matchMedia?.('(max-width: 799px)').matches) onSize('full'); else if (size === 'peek') onSize('half') }, [location.key])
-  return <main id="shell-content" tabIndex={-1} className="shell-panel" data-mcr-panel={location.pathname === '/wall' ? 'wall' : location.pathname === '/me/avatar' ? 'customize' : location.pathname === '/feed' ? 'feed' : location.pathname === '/gifts' ? 'gifts' : location.pathname === '/me' ? 'me' : undefined} aria-labelledby="panel-title"
+  // WP-09: the panel's data attribute names the three sections first, then the
+  // concert screens that still have a distinct presentation.
+  return <main id="shell-content" tabIndex={-1} className="shell-panel" data-mcr-panel={panelKind(location.pathname)} aria-labelledby="panel-title"
     onKeyDown={event => {
       if (event.key === 'Escape' && !event.defaultPrevented && !typingTarget(event.target)) { event.preventDefault(); back() }
     }}>
@@ -265,7 +285,10 @@ function PanelFrame({ size, onSize, positions, children }: { size: 'peek' | 'hal
       toggleSize={() => onSize(size === 'full' ? 'half' : 'full')}
       toggleContent={() => onSize(size === 'peek' ? 'half' : 'peek')} />
     <div id="shell-panel-body" className="shell-panel-body" ref={scroll} hidden={size === 'peek'}>
-      {['/meet', '/gifts', '/me'].includes(location.pathname)
+      {/* WP-09: the reference flow wraps the section homes and the two concert
+          screens that use it. `/me/profile` keeps it because it is the concert
+          account panel the profile section links to. */}
+      {['/meet', '/gifts', '/me', '/me/profile'].includes(location.pathname)
         ? <div className="mcr-reference-panel-flow"><div className="mcr-reference-panel-content"><ConcertWindowEmbedding>{children}</ConcertWindowEmbedding></div><ParadeFooter /></div>
         : <ConcertWindowEmbedding>{children}</ConcertWindowEmbedding>}
     </div>

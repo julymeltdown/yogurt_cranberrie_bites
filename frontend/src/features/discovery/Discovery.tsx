@@ -1,6 +1,7 @@
 import { useEffect, useId, useSyncExternalStore } from 'react'
 import { Link } from 'react-router-dom'
 import type { DiscoveryController } from './controller'
+import { profilePath } from './contract'
 import {
   PEOPLE_CATEGORIES,
   PEOPLE_CATEGORY_LABEL,
@@ -169,7 +170,7 @@ function PeopleCardView({
           <p className="discovery-interaction">{card.interaction_style}</p>
         )}
         <div className="discovery-actions">
-          <Link to={`/profiles/${card.profile_id}`}>Open profile</Link>
+          <Link to={profilePath(card.profile_id)}>Open profile</Link>
           <button
             type="button"
             aria-pressed={following}

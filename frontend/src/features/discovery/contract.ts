@@ -34,6 +34,15 @@ export const peoplePageSchema = z.strictObject({
 })
 export type PeoplePage = z.infer<typeof peoplePageSchema>
 
+/**
+ * WP-09: the visitor profile path.
+ *
+ * A visitor profile lives under the Discover section, which is where a viewer
+ * finds people. The old `/people/:userId` and `/profiles/:profileId` spellings
+ * are legacy; this is the one the product links to.
+ */
+export const profilePath = (profileId: string): string => `/discover/people/${profileId}`
+
 /** The tabs of the discovery screen, in the product's order. */
 export const DISCOVERY_TABS = ['PEOPLE', 'MUTUALS_INTROS'] as const
 export type DiscoveryTab = (typeof DISCOVERY_TABS)[number]

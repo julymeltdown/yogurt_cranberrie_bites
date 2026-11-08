@@ -66,10 +66,13 @@ it('preserves the public window heading and the caller close action without inve
 
 it('keeps real profile content in its scroll owner and hides the entire flow in peek without an ornamental footer', async () => {
   vi.stubGlobal('matchMedia', () => ({ matches: true, addEventListener() {}, removeEventListener() {} }))
-  const fixture = createFixturePorts(), router = createMemoryRouter(createAppRoutes(fixture.ports), { initialEntries: ['/me'] })
+  // WP-09: `/me` is the My Profile section home (the owner profile page). The
+  // concert MeHub it used to render lives at `/me/profile`, which is where this
+  // scroll-owner assertion now points.
+  const fixture = createFixturePorts(), router = createMemoryRouter(createAppRoutes(fixture.ports), { initialEntries: ['/me/profile'] })
   try {
     render(<RouterProvider router={router} />)
-    await screen.findByRole('heading', { name: 'My profile', level: 1 }, { timeout: 4000 })
+    await screen.findByRole('heading', { name: 'Edit profile', level: 1 }, { timeout: 4000 })
     await screen.findAllByText(/^Could not load your profile/, {}, { timeout: 4000 })
     const body = document.getElementById('shell-panel-body')!
     const flow = body.querySelector('.mcr-reference-panel-flow')!

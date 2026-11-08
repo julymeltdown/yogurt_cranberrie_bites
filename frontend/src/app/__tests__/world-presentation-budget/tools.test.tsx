@@ -61,10 +61,17 @@ it.each(['Map', 'Rooms', 'Nearby', 'Help'])('returns from %s to the expanded ori
   expect(fixture.stats.mounts).toBe(1)
 })
 
-it('retains six primary destinations and panel full/half/peek behavior', async () => {
+it('retains three primary sections, the concert destinations and panel full/half/peek behavior', async () => {
   const { router, fixture } = await shell()
   const host = document.querySelector('[data-world-host]')
-  for (const name of ['World', 'Feed', 'Meet', 'Gifts', 'Wall', 'Me']) expect(screen.getByRole('link', { name })).toBeVisible()
+  // WP-09: the tab bar is three sections; the concert destinations are in the
+  // secondary menu, which is a disclosure the user opens.
+  const sections = screen.getByRole('navigation', { name: 'Sections' })
+  expect(sections.querySelectorAll('a')).toHaveLength(3)
+  for (const name of ['Discover', 'Activity', 'My Profile']) expect(screen.getByRole('link', { name })).toBeVisible()
+  const summary = document.querySelector('.mcr-secondary-menu > summary')
+  fireEvent.click(summary!)
+  for (const name of ['World', 'Feed', 'Meet', 'Gifts', 'Wall']) expect(screen.getByRole('link', { name })).toBeVisible()
   await act(() => router.navigate('/feed'))
   expect(document.querySelector('.world-shell')).toHaveAttribute('data-panel-size', 'full')
   fireEvent.click(screen.getByRole('button', { name: 'Reduce panel' }))

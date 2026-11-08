@@ -6,10 +6,15 @@ import { createAppRoutes } from '../../router'
 import { createFixturePorts } from '../fixtures/ports'
 const routers: ReturnType<typeof createMemoryRouter>[] = []
 afterEach(() => { cleanup(); routers.splice(0).forEach(router => router.dispose()) })
+/** WP-09: the concert screens are reached from the secondary menu disclosure. */
+function openConcertMenu() {
+  const summary = document.querySelector('.mcr-secondary-menu > summary')
+  if (summary instanceof HTMLElement && !(summary.parentElement as HTMLDetailsElement).open) fireEvent.click(summary)
+}
 async function setup(path = '/world') {
   const fixture = createFixturePorts(), router = createMemoryRouter(createAppRoutes(fixture.ports), { initialEntries: [path] })
   routers.push(router); render(<RouterProvider router={router} />)
-  await screen.findByRole('navigation', { name: 'Main navigation' }); return { ...fixture, router }
+  await screen.findByRole('navigation', { name: 'Sections' }); return { ...fixture, router }
 }
 it('actual default shell adopts one compact chrome set and truthful unavailable era', async () => {
   const h = await setup()
@@ -19,14 +24,23 @@ it('actual default shell adopts one compact chrome set and truthful unavailable 
   expect(screen.getByText('Eras unavailable.')).toBeTruthy(); expect(document.querySelector('[aria-pressed="true"]')).toBeNull()
   expect(h.stats.mounts).toBe(1); expect(h.stats.connections).toBe(1)
 })
-it('default six routes, Settings and Inbox preserve sole world and Back focus', async () => {
+it('default three sections, the concert menu, Settings and Inbox preserve sole world and Back focus', async () => {
   const h = await setup()
-  for (const [label, title] of [['Feed', 'Feed'], ['Meet', 'Meet'], ['Gifts', 'Gifts'], ['Wall', 'Wall'], ['Me', 'My profile']] as const) {
+  // WP-09: three primary sections. The concert screens are behind the secondary
+  // menu and are not tabs.
+  for (const [label, title] of [['Discover', 'Discover'], ['Activity', 'Activity'], ['My Profile', 'My Profile']] as const) {
     fireEvent.click(screen.getByRole('link', { name: label }))
     await screen.findByRole('heading', { name: title, level: 1 })
     expect(screen.getByRole('link', { name: label }).getAttribute('aria-current')).toBe('page')
     expect(h.stats.mounts).toBe(1); expect(h.stats.connections).toBe(1)
   }
+  for (const [label, title] of [['Feed', 'Feed'], ['Meet', 'Meet'], ['Gifts', 'Gifts'], ['Wall', 'Wall']] as const) {
+    openConcertMenu()
+    fireEvent.click(screen.getByRole('link', { name: label }))
+    await screen.findByRole('heading', { name: title, level: 1 })
+    expect(h.stats.mounts).toBe(1); expect(h.stats.connections).toBe(1)
+  }
+  openConcertMenu()
   fireEvent.click(screen.getByRole('link', { name: 'World' })); await screen.findByRole('button', { name: 'World destinations' })
   fireEvent.click(screen.getByRole('button', { name: 'World destinations' }))
   fireEvent.click(await screen.findByRole('link', { name: 'Inbox' })); await screen.findByRole('heading', { name: 'Inbox', level: 1 })

@@ -1,11 +1,30 @@
 import { matchPath } from 'react-router-dom'
+import { sectionForPath, type SectionId } from './sections'
 
+/**
+ * WP-09 T-901: the primary navigation is three sections, not six tabs.
+ *
+ * The concert screens keep their URLs but leave the primary navigation; they are
+ * reached from the secondary menu (`sections.ts`). `tabs` is retained as the
+ * *concert* destination list because the shell's secondary menu and several
+ * existing screens still speak in those terms; it is no longer the tab bar.
+ */
 export const tabs = [
   { path: '/world', label: 'World' }, { path: '/feed', label: 'Feed' },
   { path: '/meet', label: 'Meet' }, { path: '/gifts', label: 'Gifts' },
   { path: '/wall', label: 'Wall' }, { path: '/me', label: 'Me' },
 ] as const
 export type TabPath = typeof tabs[number]['path']
+
+/**
+ * The section a panel route belongs to, or `null` for a concert panel.
+ *
+ * A panel's `tab` field predates the three-section navigation and still names the
+ * concert tab it used to hang from. The section is derived from the path so the
+ * two can never disagree: `/me` is My Profile, `/discover/*` is Discover, and
+ * everything else is a concert panel reached from the secondary menu.
+ */
+export const sectionOf = (pathname: string): SectionId | null => sectionForPath(pathname)
 export interface PanelRoute {
   path: string
   title: string
@@ -39,6 +58,9 @@ export const panelRoutes: readonly PanelRoute[] = [
   { path: '/meet/invitations/:invitationId/conversation', title: 'Meeting conversation', tab: '/meet', parent: '/meet/invitations/:invitationId' },
   { path: '/meet/people', title: 'People', tab: '/meet', parent: '/meet' },
   { path: '/meet/intro/edit', title: 'Your intro', tab: '/meet', parent: '/meet' },
+  // WP-09: `/people/:userId` is a legacy path. It is kept registered so a direct
+  // link still resolves, and the router redirects it to
+  // `/discover/people/:profileId`; the panel is never rendered under the old URL.
   { path: '/people/:userId', title: 'Profile', tab: '/meet', parent: '/meet/people' },
   // WP-07: the personal room is a subordinate screen of the profile, opened only
   // from the profile's Room entry. It is never embedded in an intro post.
@@ -62,7 +84,28 @@ export const panelRoutes: readonly PanelRoute[] = [
     ['blocks', 'Blocked users'], ['account', 'Account'],
   ].map(([path, title]) => ({ path: `/me/${path}`, title: title!, tab: '/me' as const, parent: '/me' })),
   { path: '/notifications', title: 'Inbox', tab: '/me', parent: '/world' },
+  { path: '/notifications/:notificationId', title: 'Notification', tab: '/me', parent: '/notifications' },
   { path: '/report', title: 'Report', tab: '/me', parent: '/world' },
+  // --- WP-09: the three primary sections -----------------------------------
+  // Discover: people (shared interests) and mutuals-intro posts, plus the
+  // compose entry. The intro screens are a reserved slot: WP-05 owns their
+  // implementation and this package only registers the paths.
+  { path: '/discover', title: 'Discover', tab: '/meet', parent: '/world', links: links(
+    ['/discover/people', 'People'], ['/discover/intro', 'Mutuals-intro posts']) },
+  { path: '/discover/people', title: 'People', tab: '/meet', parent: '/discover' },
+  { path: '/discover/people/:profileId', title: 'Profile', tab: '/meet', parent: '/discover/people' },
+  // The room is a subordinate screen of a profile, opened only from the
+  // profile's Room entry (WP-07 T-610). It is never embedded in the profile.
+  { path: '/discover/people/:profileId/room', title: 'Room', tab: '/meet', parent: '/discover/people/:profileId' },
+  { path: '/discover/intro', title: 'Mutuals-intro posts', tab: '/meet', parent: '/discover' },
+  { path: '/discover/intro/:introId', title: 'Mutuals-intro post', tab: '/meet', parent: '/discover/intro' },
+  // Activity: likes received, comments, replies and follow notifications.
+  { path: '/activity', title: 'Activity', tab: '/me', parent: '/world' },
+  // My Profile: the owner's own profile, its settings, identity, character and
+  // photo composer. `/me` itself is the section home.
+  { path: '/me/identity', title: 'Identity verification', tab: '/me', parent: '/me' },
+  { path: '/me/posts/new', title: 'New photo post', tab: '/me', parent: '/me' },
+  { path: '/me/room', title: 'Room', tab: '/me', parent: '/me' },
 ]
 export const publicPaths = ['/', '/login', '/signup', '/verify-email', '/reset-password',
   '/auth/callback', '/legal/:document', '/account/deleted', '/archive'] as const

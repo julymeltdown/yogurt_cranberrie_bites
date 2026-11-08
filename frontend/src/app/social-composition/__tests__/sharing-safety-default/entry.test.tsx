@@ -10,7 +10,10 @@ import type { SocialContext } from '../../ports'
 configure({ asyncUtilTimeout: 1500 })
 const stops: (() => void)[] = []
 afterEach(() => { cleanup(); stops.splice(0).reverse().forEach(stop => stop()) })
-function setup(path = '/meet/people', mode = 'valid') {
+// WP-09: `/meet/people` now redirects to `/discover/people`, and a visitor profile
+// lives under Discover. The sharing flow itself is unchanged; only the paths it
+// is reached through moved.
+function setup(path = '/discover/people', mode = 'valid') {
   const service = scenarioService(user, event); service.mode(mode)
   const f = fixture(r => service.respond(r))
   const ports = { ...f.ports, bootstrap: { load: async () => f.bootstrap }, social: { availability(context: SocialContext) {
@@ -22,8 +25,10 @@ function setup(path = '/meet/people', mode = 'valid') {
 }
 const writes = (f: ReturnType<typeof setup>) => f.requests.filter(r => r.method !== 'GET')
 async function profile(f: ReturnType<typeof setup>) {
+  // The Discover people list is up before the visitor profile is opened. The
+  // list is the social owner's People panel, which renders inside the shell.
   await screen.findByRole('heading', { name: 'PEOPLE' })
-  await act(async () => { await f.router.navigate(`/people/${f.service.recipient}`) })
+  await act(async () => { await f.router.navigate(`/discover/people/${f.service.recipient}`) })
   return screen.findByRole('button', { name: 'Request sharing' })
 }
 it('opens actual default Profile → bound offer, requires explicit platform consent and dispatches one private request', async () => {
@@ -41,7 +46,7 @@ it('opens actual default Profile → bound offer, requires explicit platform con
   expect(f.auth.queryClient.getQueryCache().getAll()).toHaveLength(0)
 })
 it.each(['wrong-recipient', 'wrong-revision'])('does not expose an actionable %s offer', async mode => {
-  const f = setup('/meet/people', mode); fireEvent.click(await profile(f))
+  const f = setup('/discover/people', mode); fireEvent.click(await profile(f))
   await screen.findByText('This introduction changed. Return to the current profile before requesting sharing.')
   expect(screen.queryByRole('button', { name: 'Send sharing request' })).not.toBeInTheDocument(); expect(writes(f)).toHaveLength(0)
 })
@@ -57,7 +62,7 @@ it('retains the original uncertain sharing command across blocked navigation and
   expect(url.searchParams.get('idempotency_key')).toBe(key); expect(url.searchParams.get('operation_id')).toBe('createConcertSocialRequest'); expect(writes(f)).toHaveLength(1)
 })
 it('keeps sharing unavailable without a current introduction and fails closed on its fresh denial', async () => {
-  const f = setup('/meet/people', 'no-intro'), share = await profile(f); expect(share).toBeDisabled()
+  const f = setup('/discover/people', 'no-intro'), share = await profile(f); expect(share).toBeDisabled()
   expect(writes(f)).toHaveLength(0)
 })
 it('mounts actual USER report and blocks routes, rechecks target on submit, and retains the original report key across navigation', async () => {

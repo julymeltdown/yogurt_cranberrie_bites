@@ -10,12 +10,16 @@ it('creates no replacement Auth/cache/world or network work before entering a pa
   const f = setup(); expect(f.owner.auth).toBe(f.auth); expect(f.requests).toHaveLength(0); expect(f.stats.mounts).toBe(0)
   expect(f.owner.thread.read().selectedId).toBeNull(); expect(f.owner.inbox.read().count.total).toBeNull()
 })
-it.each(['/feed', '/feed/new', `/feed/${post.post_id}`, `/feed/${post.post_id}/edit`, '/meet/people', '/meet/intro/edit', `/people/${user}`, '/me/age', '/notifications', '/me/requests'])('recognizes only the frozen social destination %s', path => { expect(socialRoute(path)).not.toBeNull() })
+// WP-09: the people list and the intro composer moved under Discover. The legacy
+// `/people/{id}` spelling is still recognised; `/meet/people` and
+// `/meet/intro/edit` are now redirects, so the social owner does not claim them.
+it.each(['/feed', '/feed/new', `/feed/${post.post_id}`, `/feed/${post.post_id}/edit`, '/discover/people', '/discover/intro', `/people/${user}`, `/discover/people/${user}`, '/me/age', '/notifications', '/me/requests'])('recognizes only the frozen social destination %s', path => { expect(socialRoute(path)).not.toBeNull() })
+it.each(['/meet/people', '/meet/intro/edit'])('no longer claims the redirected legacy path %s', path => { expect(socialRoute(path)).toBeNull() })
 it.each(['/people', '/intro/abc', '/notifications?actor=someone', '//evil.example/feed', '/feed/%2e%2e', '/feed/not-a-uuid', '/admin', '/me/age/verify'])('rejects unknown/unsafe destination %s', path => { expect(socialRoute(path)).toBeNull() })
 it('retains exact controller identities and a safe composer draft across panels', async () => {
   const f = setup(), thread = f.owner.thread, inbox = f.owner.inbox
   f.owner.enter('/feed/new'); thread.setPostText('Keep this draft'); f.owner.enter('/notifications')
-  await vi.waitFor(() => expect(inbox.read().count.total).toBe(37)); f.owner.enter('/meet/people'); f.owner.enter('/feed/new')
+  await vi.waitFor(() => expect(inbox.read().count.total).toBe(37)); f.owner.enter('/discover/people'); f.owner.enter('/feed/new')
   expect(f.owner.thread).toBe(thread); expect(f.owner.inbox).toBe(inbox); expect(thread.read().draft.text).toBe('Keep this draft')
   expect(inbox.read().unreadShown).toBe(1); expect(f.owner.canNavigate('/world')).toBe(true)
 })
@@ -48,7 +52,7 @@ it('unknown post outcome blocks panel/back/target changes and preserves original
   const f = setup(r => { if (r.method === 'POST') throw new TypeError('lost result'); return response(r) })
   f.owner.enter('/feed/new'); f.owner.thread.setPostText('Uncertain write'); await f.owner.thread.submitPost()
   const key = f.owner.thread.read().mutation.key; expect(key).toBeTruthy(); expect(f.owner.canNavigate('/world')).toBe(false)
-  expect(f.owner.enter('/notifications')).toBe(false); expect(f.owner.navigate('/meet/people')).toBe(false)
+  expect(f.owner.enter('/notifications')).toBe(false); expect(f.owner.navigate('/discover/people')).toBe(false)
   expect(f.owner.thread.read()).toMatchObject({ draft: { text: 'Uncertain write' }, mutation: { key, phase: 'uncertain' } })
   expect(f.owner.read()).toMatchObject({ path: '/feed/new', notice: 'command' }); expect(f.requests.filter(r => r.method === 'POST')).toHaveLength(1)
 })
@@ -90,8 +94,8 @@ it.each(['intent', 'entry'] as const)('later %s navigation cancels a delayed inb
   f.owner.enter('/notifications'); await vi.waitFor(() => expect(f.owner.inbox.read().phase).toBe('ready'))
   const opening = f.owner.inbox.open(id(90))
   await vi.waitFor(() => expect(f.owner.inbox.read().target.phase).toBe('checking'))
-  if (mode === 'intent') f.owner.navigate('/meet/people'); else f.owner.enter('/meet/people')
+  if (mode === 'intent') f.owner.navigate('/discover/people'); else f.owner.enter('/discover/people')
   await opening; late.resolve(Response.json({ post, comments: [], next_cursor: null })); await Promise.resolve()
-  expect(f.navigations).toEqual(mode === 'intent' ? ['/meet/people'] : [])
+  expect(f.navigations).toEqual(mode === 'intent' ? ['/discover/people'] : [])
   expect(f.owner.inbox.read().target.phase).toBe('idle')
 })

@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import ia from '../../../../generated/IA_EN.json'
 import { adminPaths, panelRoutes, parentPath, publicPaths, resolvePanel, safeReturnTarget, tabs } from '../routes'
+import { sections, secondaryDestinations } from '../sections'
 import { giftPath, ids } from './fixtures/ports'
 
 const iaRoutes = ia.screens.map(screen => screen.route.replace(/\?.*$/, ''))
@@ -9,14 +10,23 @@ const optionalIAPaths = new Set(['/meet/parties/:partyId/chat', '/wall/history']
 // The two routes granted by 41d90738e; the inbox is an in-panel state of the detail route.
 // WP-07 adds the personal room as a subordinate screen of the profile (T-610): it
 // opens only from the profile's Room entry and is never embedded in an intro post.
+// WP-09 adds the three primary sections and their screens (T-901..T-904), the
+// notification detail, and the visitor profile's room under Discover.
 const authorizedPanelAdditions = ['/meet/invitations/:invitationId', '/meet/invitations/:invitationId/conversation',
-  '/people/:userId/room']
+  '/people/:userId/room',
+  '/discover', '/discover/people', '/discover/people/:profileId', '/discover/people/:profileId/room',
+  '/discover/intro', '/discover/intro/:introId', '/activity', '/notifications/:notificationId',
+  '/me/identity', '/me/posts/new', '/me/room']
 const requiredPanelPaths = iaRoutes.filter(route => participantPrefixes.some(prefix => route === prefix || route.startsWith(prefix + '/'))
   && !optionalIAPaths.has(route))
 
 describe('frozen plan route composition', () => {
-  it('uses the six actual top-level destinations and static siblings before identifiers', () => {
+  it('uses the six concert destinations and the three primary sections', () => {
+    // WP-09: `tabs` is the concert destination list (the secondary menu), not the
+    // tab bar. The tab bar is `sections`, and it has exactly three entries.
     expect(tabs.map(tab => tab.path)).toEqual(['/world', '/feed', '/meet', '/gifts', '/wall', '/me'])
+    expect(sections.map(section => section.path)).toEqual(['/discover', '/activity', '/me'])
+    expect(secondaryDestinations.map(destination => destination.path)).toEqual(['/world', '/feed', '/meet', '/gifts', '/wall'])
     expect(resolvePanel('/gifts/mine')?.route.title).toBe('My gifts')
     expect(resolvePanel('/gifts/new')?.route.title).toBe('Create giveaway')
     expect(resolvePanel(`/gifts/pickups/${ids.gift}`)?.route.title).toBe('My pickup')
@@ -24,7 +34,10 @@ describe('frozen plan route composition', () => {
   })
   it('keeps the two granted invitation routes and adds no parent list URL', () => {
     expect(authorizedPanelAdditions).toEqual(['/meet/invitations/:invitationId',
-      '/meet/invitations/:invitationId/conversation', '/people/:userId/room'])
+      '/meet/invitations/:invitationId/conversation', '/people/:userId/room',
+      '/discover', '/discover/people', '/discover/people/:profileId', '/discover/people/:profileId/room',
+      '/discover/intro', '/discover/intro/:introId', '/activity', '/notifications/:notificationId',
+      '/me/identity', '/me/posts/new', '/me/room'])
     expect(panelRoutes.map(route => route.path)).not.toContain('/meet/invitations')
     expect(panelRoutes.filter(route => route.path.startsWith('/meet/invitations'))).toHaveLength(2)
   })

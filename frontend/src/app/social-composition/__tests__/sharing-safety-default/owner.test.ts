@@ -73,7 +73,7 @@ it('aborts and ignores a late authorized introduction after leaving its Profile'
   owner.enter(`/people/${f.service.recipient}`); await owner.people.load(); await owner.people.openProfile(f.service.recipient)
   const opening = owner.openSharing(f.service.recipient)
   while (!introRead) await new Promise(resolve => setTimeout(resolve, 0))
-  owner.enter('/meet/people')
+  owner.enter('/discover/people')
   expect(introRead?.signal.aborted).toBe(true); gate.resolve(Response.json(f.service.intro))
   expect(await opening).toBe(false); expect(f.navigations).toEqual([]); expect(owner.requests()).toBeNull()
 })
