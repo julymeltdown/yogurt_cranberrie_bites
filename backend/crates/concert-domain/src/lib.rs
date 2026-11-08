@@ -279,6 +279,8 @@ pub mod beacon;
 pub mod rally;
 pub mod feed;
 pub mod avatar;
+/// WP-08: the profile-owned avatar. No event, no participant key.
+pub mod profile_avatar;
 pub mod world;
 pub mod community;
 
