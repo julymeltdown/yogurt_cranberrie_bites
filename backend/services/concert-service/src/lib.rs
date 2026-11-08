@@ -40,6 +40,7 @@ pub mod operations_live;
 pub mod event_cleanup_live;
 pub mod event_cleanup_social_owner;
 
+pub mod discovery;
 pub mod intro_live;
 
 pub mod notification_target_policy;

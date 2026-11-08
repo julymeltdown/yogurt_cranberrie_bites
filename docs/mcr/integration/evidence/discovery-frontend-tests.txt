@@ -1,0 +1,11 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/yogurt-worktrees/wp03-discovery/frontend
+
+ ✓ src/features/discovery/__tests__/Discovery.test.tsx (12 tests) 257ms
+ ✓ src/features/favorites/__tests__/FavoritePicker.test.tsx (12 tests) 597ms
+
+ Test Files  2 passed (2)
+      Tests  24 passed (24)
+   Start at  04:39:27
+   Duration  1.23s (transform 351ms, setup 112ms, import 481ms, tests 854ms, environment 520ms)
+

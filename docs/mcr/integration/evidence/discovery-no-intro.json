@@ -1,0 +1,146 @@
+{
+  "verification": "DISCOVERY-NO-INTRO",
+  "status": "PASS",
+  "commit": "b5926f288dfe0efbb393a51741bc7c6f5a7ff201",
+  "branch": "codex/yc-wp03-discovery",
+  "base_commit": "b5926f288",
+  "recorded_at": "2026-11-08T19:39:11Z",
+  "work_package": "WP-03",
+  "tasks": [
+    "T-801",
+    "T-802",
+    "T-803",
+    "T-804",
+    "T-805",
+    "T-806"
+  ],
+  "commands": [
+    {
+      "command": "cd backend && cargo +1.88.0 check --locked --workspace",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 backend/scripts/mcr/wp03_discovery_tests.py --profile-test catalog_search",
+      "exit_code": 0,
+      "note": "15 passed"
+    },
+    {
+      "command": "python3 backend/scripts/mcr/wp03_discovery_tests.py --concert-test discovery",
+      "exit_code": 0,
+      "note": "17 passed"
+    },
+    {
+      "command": "python3 backend/scripts/mcr/wp03_discovery_tests.py --concert-test discovery_routes",
+      "exit_code": 0,
+      "note": "11 passed"
+    },
+    {
+      "command": "cd frontend && corepack pnpm@11.7.0 run typecheck",
+      "exit_code": 0
+    },
+    {
+      "command": "cd frontend && corepack pnpm@11.7.0 run test",
+      "exit_code": 1,
+      "note": "18 pre-existing failures in 4 files, identical on the untouched master baseline b5926f288; the two new feature suites pass (24 tests)"
+    },
+    {
+      "command": "cd frontend && npx vitest run src/features/favorites/__tests__/FavoritePicker.test.tsx",
+      "exit_code": 0,
+      "note": "12 passed"
+    },
+    {
+      "command": "cd frontend && npx vitest run src/features/discovery/__tests__/Discovery.test.tsx",
+      "exit_code": 0,
+      "note": "12 passed"
+    }
+  ],
+  "cases": [
+    {
+      "id": "DISCOVERY-NO-INTRO-a",
+      "result": "PASS",
+      "note": "A profile with no intro post appears in discovery. tests/discovery.rs::a_profile_with_no_intro_post_is_discoverable asserts the subject has zero intro_posts rows and is still returned."
+    },
+    {
+      "id": "DISCOVERY-NO-INTRO-b",
+      "result": "PASS",
+      "note": "The discovery query text never references intro_posts or intro_id. tests/discovery.rs::the_discovery_query_never_references_intro_posts."
+    },
+    {
+      "id": "DISCOVERY-NO-INTRO-c",
+      "result": "PASS",
+      "note": "A profile with no overlap is not claimed as sharing. tests/discovery.rs::a_profile_with_no_overlap_is_not_claimed_as_sharing: absent from the people list, and shared_items is a present empty array, never omitted."
+    },
+    {
+      "id": "DISCOVERY-NO-INTRO-d",
+      "result": "PASS",
+      "note": "The response contains no numeric score field. tests/discovery.rs::the_response_contains_no_numeric_score_field walks the serialized page, rejects every numeric value and every score/rank/match/count-like key, and asserts the PeopleCard key set."
+    },
+    {
+      "id": "DISCOVERY-NO-INTRO-e",
+      "result": "PASS",
+      "note": "Ordering is not a ranking. tests/discovery.rs::the_order_does_not_rank_by_shared_item_count."
+    },
+    {
+      "id": "DISCOVERY-NO-INTRO-f",
+      "result": "PASS",
+      "note": "The discovery schema has no score column and no intro reference. tests/discovery.rs::the_discovery_schema_has_no_score_column, a_discovery_profile_has_no_intro_reference."
+    },
+    {
+      "id": "DISCOVERY-NO-INTRO-g",
+      "result": "PASS",
+      "note": "K-pop is absent from music search results. tests/catalog_search.rs::a_kpop_artist_is_absent_from_music_search (seed policy records, no stored row, no search hit)."
+    },
+    {
+      "id": "DISCOVERY-NO-INTRO-h",
+      "result": "PASS",
+      "note": "K-pop exclusion is catalog policy, not string filtering. tests/catalog_search.rs::the_database_refuses_a_kpop_music_row asserts constraint catalog_items_music_excludes_kpop; a_music_row_requires_an_exclusion_review asserts catalog_items_music_requires_exclusion_review."
+    },
+    {
+      "id": "DISCOVERY-NO-INTRO-i",
+      "result": "PASS",
+      "note": "The same query returns the same order twice. tests/catalog_search.rs::the_same_query_returns_the_same_order_twice, including across a page boundary."
+    },
+    {
+      "id": "DISCOVERY-NO-INTRO-j",
+      "result": "PASS",
+      "note": "An unknown discovery query field is 400. tests/discovery_routes.rs::an_unknown_query_field_is_a_client_error."
+    },
+    {
+      "id": "DISCOVERY-NO-INTRO-k",
+      "result": "PASS",
+      "note": "A sixth favorite in one category is rejected. tests/catalog_search.rs and tests/discovery.rs::a_sixth_mirrored_favorite_is_refused assert the database constraint; FavoritePicker.test.tsx::blocks_a_sixth_pick_in_one_category asserts the UI and the contract."
+    },
+    {
+      "id": "DISCOVERY-NO-INTRO-l",
+      "result": "PASS",
+      "note": "Skipping all categories leaves the profile usable. FavoritePicker.test.tsx::skipping_every_category_leaves_the_profile_usable: empty selection is valid, canSave is true, no control is blocked."
+    },
+    {
+      "id": "DISCOVERY-NO-INTRO-m",
+      "result": "PASS",
+      "note": "The shared-interest line is omitted when there is no overlap. Discovery.test.tsx::omits_the_shared-interest_line_when_there_is_no_overlap (sharedInterestLine returns null, the decoder refuses a card that claims nothing)."
+    },
+    {
+      "id": "DISCOVERY-NO-INTRO-n",
+      "result": "PASS",
+      "note": "Opening the room is not offered from a discovery card. Discovery.test.tsx::offers_no_room_preview_or_room_action_on_a_discovery_card."
+    },
+    {
+      "id": "DISCOVERY-NO-INTRO-o",
+      "result": "PASS",
+      "note": "The people list and the mutuals-intro list are never merged. Discovery.test.tsx::keeps_the_people_list_and_the_mutuals-intro_list_as_separate_tabs."
+    }
+  ],
+  "artifacts": [
+    "docs/mcr/integration/evidence/discovery-wp03.md",
+    "docs/mcr/integration/evidence/discovery-backend-tests.txt",
+    "docs/mcr/integration/evidence/discovery-frontend-tests.txt"
+  ],
+  "limitations": [
+    "The gateway does not serve /api/catalog/{category}/search or /api/discover/people yet. The frozen operations exist and the producers exist; mounting the routes is the gateway work package's scope, so this evidence is at the producer and client level, not an end-to-end HTTP capture.",
+    "The discovery projection (discovery_profiles, discovery_favorite_items, discovery_blocks) is written by no producer yet. Favorites are owned by the profile service and discovery reads the concert service, so a projection writer is a separate work package. The query and schema are complete and tested against real rows.",
+    "core.PeopleCard.avatar is required by the frozen schema but the concert service has no avatar store; the card type omits it until the avatar projection exists. This is recorded as a deviation.",
+    "The catalog seed is a curated manifest of 39 stored rows plus 4 K-pop policy records. It is a seed, not a provider integration, and it is intentionally small.",
+    "The full frontend suite has 18 pre-existing failures in 4 unrelated files, reproduced identically on the untouched master baseline b5926f288."
+  ]
+}
