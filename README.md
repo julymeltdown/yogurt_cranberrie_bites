@@ -58,3 +58,6 @@ world. The backend command builds only: do not launch imported services with the
 source-default database addresses. Isolated MCR launch and migration commands are
 being qualified separately. `infra/mcr/Dockerfile.frontend-check` is a build-only
 image definition; Docker execution and production serving are not yet qualified.
+
+<!-- check: integration baseline commit 2026-11-08 -->
+
