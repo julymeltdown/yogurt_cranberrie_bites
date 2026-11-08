@@ -33,6 +33,7 @@ check_backend() {
 
 check_guards() {
   python3 -B -m unittest discover -s "$mcr_root/scripts/mcr/tests" -p test_boundaries.py
+  python3 -B -m unittest discover -s "$mcr_root/scripts/mcr/tests" -p test_migration_numbering.py
   node --test "$mcr_root/scripts/mcr/tests/ui-origin.test.mjs"
   node "$mcr_root/scripts/mcr/check-ui-origin.mjs" --root "$mcr_root"
 }

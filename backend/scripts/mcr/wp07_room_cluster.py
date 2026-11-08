@@ -39,7 +39,7 @@ def migrations() -> list[Path]:
 
     WP-03 and WP-08 were authored in parallel worktrees against the same 0085
     head, so both produced an ``0086``. The integration renumbered the avatar
-    migration to ``0087_profile_avatars.sql``: neither file had been applied to
+    migration to ``0090_profile_avatars.sql``: neither file had been applied to
     any real database, so no applied migration was edited. The ledger check that
     owns numbering is ``wp02_migration_ledger.py``.
     """
