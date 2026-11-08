@@ -490,10 +490,7 @@ async fn dispatch(
         }
         _ => return error(StatusCode::SERVICE_UNAVAILABLE, "DEPENDENCY_UNAVAILABLE"),
     };
-    let image = matches!(
-        result.content_type.as_str(),
-        "image/jpeg" | "image/png" | "image/webp"
-    );
+    let image = is_image_type(&result.content_type);
     if image && (status != StatusCode::OK || !uri.path().ends_with("/content"))
         || (!image
             && (result.content_type != "application/json"
@@ -515,11 +512,32 @@ async fn dispatch(
     };
     let mut response = Response::new(body);
     *response.status_mut() = status;
+    media_headers(&mut response, &result.content_type);
+    protect(&mut response);
+    response.extensions_mut().insert(delivery);
+    response
+}
+
+/// The exact response framing of one profile representation.
+///
+/// A profile media response has to be indistinguishable from the concert media
+/// response (`concert_product`), because the browser treats both as private
+/// images. The framing is therefore one function, used by the live handler and
+/// asserted by the boundary tests:
+///
+/// * `content-type` is the closed image type, or `application/json`;
+/// * an image is `inline` and `cross-origin-resource-policy: same-origin`, so it
+///   can only be embedded by this origin;
+/// * every representation (image or JSON) is `cache-control: no-store` and
+///   `x-content-type-options: nosniff` through [`protect`], so a shared cache
+///   never stores a private photograph and a browser never sniffs a different
+///   type from the bytes.
+fn media_headers(response: &mut Response, content_type: &str) {
     response.headers_mut().insert(
         header::CONTENT_TYPE,
-        HeaderValue::from_str(&result.content_type).expect("closed content type"),
+        HeaderValue::from_str(content_type).expect("closed content type"),
     );
-    if image {
+    if is_image_type(content_type) {
         response
             .headers_mut()
             .insert(header::CONTENT_DISPOSITION, HeaderValue::from_static("inline"));
@@ -528,9 +546,30 @@ async fn dispatch(
             HeaderValue::from_static("same-origin"),
         );
     }
+}
+
+/// Build a fully framed profile media response.
+///
+/// This is the same framing the live handler applies, exposed so the boundary
+/// tests assert the real function rather than a copy of it. `body` is the
+/// representation the producer returned: image bytes for a `READY` asset, or the
+/// closed JSON envelope for a refusal.
+pub fn framed_media_response(status: u16, content_type: &str, body: Vec<u8>) -> Response {
+    let mut response = Response::new(Body::from(body));
+    *response.status_mut() =
+        StatusCode::from_u16(status).expect("profile media response status is closed");
+    media_headers(&mut response, content_type);
     protect(&mut response);
-    response.extensions_mut().insert(delivery);
     response
+}
+
+/// Whether a content type is one of the three image types the foundation
+/// supports. GIF and video are not, and are never served by this surface.
+fn is_image_type(content_type: &str) -> bool {
+    matches!(
+        content_type,
+        "image/jpeg" | "image/png" | "image/webp"
+    )
 }
 
 /// Cover outer transport rejections too, without discarding owner recovery

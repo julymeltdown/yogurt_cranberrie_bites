@@ -1,0 +1,182 @@
+/* WP-06: the profile media composer and gallery. */
+
+.profile-media-composer,
+.profile-media-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+  color: var(--color-text, #1b1b1f);
+}
+
+.profile-media-composer h1,
+.profile-media-gallery h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.profile-media-composer form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profile-media-composer fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 16px;
+  border: 1px solid var(--color-border, #d6d6dc);
+  border-radius: 12px;
+}
+
+.profile-media-composer legend {
+  padding: 0 6px;
+  font-weight: 600;
+}
+
+.profile-media-composer label,
+.profile-media-composer legend {
+  font-size: 0.95rem;
+}
+
+.profile-media-composer textarea {
+  min-height: 72px;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border, #d6d6dc);
+  border-radius: 10px;
+  font: inherit;
+  resize: vertical;
+}
+
+.profile-media-composer textarea[aria-invalid='true'] {
+  border-color: var(--color-danger, #b3261e);
+}
+
+.profile-media-hint {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--color-muted, #5b5b66);
+}
+
+.profile-media-error {
+  color: var(--color-danger, #b3261e);
+}
+
+.profile-media-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.profile-media-composer button,
+.profile-media-gallery button {
+  padding: 10px 16px;
+  border: 1px solid var(--color-border, #d6d6dc);
+  border-radius: 999px;
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+}
+
+.profile-media-composer button[type='submit'] {
+  border-color: var(--color-accent, #1b1b1f);
+  font-weight: 600;
+}
+
+.profile-media-composer button:disabled,
+.profile-media-gallery button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.profile-media-attachments {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.profile-media-attachments li {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.profile-media-file {
+  font-size: 0.85rem;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.profile-media-grid,
+.profile-media-tiles {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.profile-media-grid {
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+}
+
+.profile-media-tiles {
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+}
+
+.profile-media-post {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* The tile reserves the server-reported aspect ratio, so the grid never jumps. */
+.profile-media-tile {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--color-surface, #f2f2f5);
+}
+
+.profile-media-tile img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.profile-media-tile-error {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 12px;
+  text-align: center;
+}
+
+.profile-media-description {
+  margin: 0;
+  font-size: 0.95rem;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.profile-media-empty,
+.profile-media-unavailable {
+  margin: 0;
+  padding: 32px 16px;
+  text-align: center;
+  color: var(--color-muted, #5b5b66);
+}

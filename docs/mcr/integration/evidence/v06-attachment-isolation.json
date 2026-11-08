@@ -1,0 +1,89 @@
+{
+  "verification": "V-06",
+  "scope": "Attachment isolation — T-509, with the upload-lifecycle and read halves of T-501/T-502/T-505",
+  "work_package": "WP-06",
+  "branch": "codex/yc-wp06-posts",
+  "base_commit": "ff45c37d9",
+  "base_commit_subject": "Merge branch 'codex/yc-wp04b-identity'",
+  "recorded_at_utc": "2026-11-08T21:20:00Z",
+  "result": "PASS",
+  "result_scope": "V-06-a … V-06-f. V-06-e (a room poster referencing an intro attachment) is the room upload path and belongs to WP-07; the profile-side half — an INTRO_POST asset cannot be attached to a profile post, and a ROOM_POSTER asset cannot be finalized through the profile-post path — is proved here.",
+  "cases": [
+    {
+      "id": "V-06-a",
+      "claim": "A visitor's profile gallery does not contain the intro attachment.",
+      "result": "PASS",
+      "evidence": [
+        "backend/services/concert-service/tests/profile_post_read.rs::a_post_projects_its_attachments_in_position_order — a post projects only its own READY PROFILE_POST media; the read module never references intro_posts, intro_id, audience or room (the_read_module_never_references_an_intro_post).",
+        "frontend/src/features/profile-media/__tests__/ProfileMediaGallery.test.tsx::refuses_an_INTRO_POST_media_item_even_if_a_payload_carried_one — a malformed payload naming an INTRO_POST asset renders no image; admitGalleryMedia refuses every non-PROFILE_POST purpose (admits_only_a_READY_PROFILE_POST_asset)."
+      ]
+    },
+    {
+      "id": "V-06-b",
+      "claim": "The author's own profile gallery does not contain it either (it was never published there).",
+      "result": "PASS",
+      "evidence": [
+        "backend/services/concert-service/tests/profile_posts.rs::a_post_with_an_intro_post_media_id_is_rejected — the author owns a READY INTRO_POST asset, and create_profile_post refuses it with AttachmentNotPublishable (400); no post row and no association row is created.",
+        "The database refuses the same association independently of the command: the direct insert asserts constraint profile_post_attachments_purpose (migration 0084).",
+        "frontend/src/features/profile-media/__tests__/ProfileMediaGallery.test.tsx::refuses_an_INTRO_POST_media_item_even_if_a_payload_carried_one."
+      ]
+    },
+    {
+      "id": "V-06-c",
+      "claim": "POST /api/me/posts with a media_id owned by another profile → 400/404, no post created.",
+      "result": "PASS",
+      "evidence": [
+        "backend/services/concert-service/tests/profile_posts.rs::a_foreign_media_id_is_rejected_without_revealing_whether_it_exists — the answer for a foreign id is identical to the answer for an absent id (ProfilePostError::Unavailable, 404 RESOURCE_UNAVAILABLE), so the endpoint is not an existence oracle.",
+        "backend/services/concert-service/tests/profile_posts.rs::a_mixed_body_with_one_foreign_id_creates_no_post — the whole command is one transaction; the valid attachment did not land either."
+      ]
+    },
+    {
+      "id": "V-06-d",
+      "claim": "POST /api/me/posts with a media_id owned by the author but attached to a restricted intro post → rejected unless the media purpose is PROFILE_POST.",
+      "result": "PASS",
+      "evidence": [
+        "backend/services/concert-service/tests/profile_posts.rs::a_post_with_an_intro_post_media_id_is_rejected — the specific attempt to republish a restricted intro attachment.",
+        "backend/services/concert-service/tests/profile_posts.rs::a_room_poster_or_profile_image_media_id_is_also_rejected — the rule is the purpose, not the attachment state: a ROOM_POSTER or PROFILE_IMAGE asset is refused too.",
+        "backend/services/concert-service/tests/profile_media_upload.rs::a_room_poster_cannot_be_finalized_through_the_profile_post_path — the upload context refuses the purpose at init, put and finalize."
+      ]
+    },
+    {
+      "id": "V-06-e",
+      "claim": "POST /api/me/room/posters referencing an intro attachment → rejected.",
+      "result": "NOT_RUN",
+      "note": "The room poster operation is WP-07 (T-604). WP-06 supplies the profile-side prohibition it depends on: UploadPurpose::RoomPoster admits only Purpose::RoomPoster, so an INTRO_POST asset cannot be finalized in the room context either (backend/services/concert-service/tests/profile_media_upload.rs::every_context_refuses_every_other_purpose). The room route itself is not in this branch."
+    },
+    {
+      "id": "V-06-f",
+      "claim": "Reading the media by ID as an unauthorized viewer → 404.",
+      "result": "PASS",
+      "evidence": [
+        "backend/services/concert-service/src/profile_media/authorization.rs::can_view_media — the single decision (E-03 metadata, E-04 bytes), exhaustively tested in that module's unit tests: a visitor sees only public attachments, nothing absent is readable, and a purpose never crosses a surface.",
+        "backend/services/concert-service/tests/profile_media_upload.rs::a_foreign_owner_cannot_see_or_continue_an_asset — a non-owner gets ProfileMediaError::Unavailable for metadata and content, the same answer an absent id gets.",
+        "backend/services/api-gateway/tests/profile_media_routes.rs::an_unauthorized_media_read_is_a_closed_404_with_no_image_body and ::an_unauthenticated_media_read_is_401_with_no_body — the refusal carries no image bytes."
+      ]
+    }
+  ],
+  "commands": [
+    {
+      "command": "cd backend && cargo +1.88.0 test --locked -p concert-service --test profile_media_upload",
+      "exit_code": 0,
+      "note": "16 passed"
+    },
+    {
+      "command": "cd backend && cargo +1.88.0 test --locked -p concert-service --test profile_posts",
+      "exit_code": 0,
+      "note": "16 passed"
+    },
+    {
+      "command": "cd backend && cargo +1.88.0 test --locked -p api-gateway --test profile_media_routes",
+      "exit_code": 0,
+      "note": "10 passed"
+    },
+    {
+      "command": "cd frontend && corepack pnpm@11.7.0 exec vitest run src/features/profile-media",
+      "exit_code": 0,
+      "note": "55 passed (4 files)"
+    }
+  ]
+}

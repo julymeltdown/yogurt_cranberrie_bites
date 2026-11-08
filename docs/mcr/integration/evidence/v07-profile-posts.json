@@ -1,0 +1,154 @@
+{
+  "verification": "V-07",
+  "scope": "Ordinary posts are independent and unconverted — T-502, T-503, T-504, T-506, T-508, T-512",
+  "work_package": "WP-06",
+  "branch": "codex/yc-wp06-posts",
+  "base_commit": "ff45c37d9",
+  "base_commit_subject": "Merge branch 'codex/yc-wp04b-identity'",
+  "recorded_at_utc": "2026-11-08T21:20:00Z",
+  "result": "PASS",
+  "cases": [
+    {
+      "id": "V-07-a",
+      "claim": "A profile with no intro post and an undecorated room can publish a photo post.",
+      "result": "PASS",
+      "evidence": [
+        "backend/services/concert-service/tests/profile_posts.rs::publishing_works_with_a_default_room_and_no_intro_post — the fixture asserts zero intro_posts rows, inserts a default room, publishes, and asserts the room row is byte-identical afterwards and there is still no intro post.",
+        "frontend/src/features/profile-media/__tests__/ProfileMediaComposer.test.tsx::publishes_a_photo_post_with_a_default_room_and_no_intro_post — the request sequence is exactly the four profile-post operations; no intro-post or room operation is ever sent.",
+        "frontend/src/features/profile-media/__tests__/ProfileMediaComposer.test.tsx::never_names_an_event_an_intro_post_or_a_room_in_any_request."
+      ]
+    },
+    {
+      "id": "V-07-b",
+      "claim": "The published image bytes are the normalized photograph, not a pixel conversion.",
+      "result": "PASS",
+      "evidence": [
+        "backend/services/concert-service/tests/profile_posts.rs::the_stored_bytes_are_the_normalized_photograph_not_a_conversion — the stored sanitized bytes decode to the source pixels exactly, at the source dimensions (120 x 90, not a poster's 128 px cap).",
+        "backend/services/concert-service/tests/profile_media_upload.rs::the_stored_bytes_are_the_normalized_photograph_not_a_conversion — the same assertion at the upload layer, plus no EXIF/ICC/text chunk survives the sanitizer.",
+        "backend/services/concert-service/tests/profile_posts.rs::the_command_module_contains_no_pixel_conversion — the post command module contains no image code at all (no posterize/palette/quantize/resize/sanitize call).",
+        "frontend/src/features/profile-media/__tests__/ProfileMediaComposer.test.tsx::the_module_contains_no_conversion_call_and_no_poster_path and ::the_rendered_composer_has_no_poster_or_conversion_control."
+      ]
+    },
+    {
+      "id": "V-07-c",
+      "claim": "No poster record is created as a side effect.",
+      "result": "PASS",
+      "evidence": [
+        "backend/services/concert-service/tests/profile_posts.rs::no_poster_record_is_created_as_a_side_effect — no ROOM_POSTER asset exists for the author afterwards, no room row is created, and the media purpose is still PROFILE_POST."
+      ]
+    },
+    {
+      "id": "V-07-d",
+      "claim": "The photo post appears in the profile gallery for an authorized visitor.",
+      "result": "PASS",
+      "evidence": [
+        "backend/services/concert-service/tests/profile_post_read.rs::a_public_post_is_visible_to_a_visitor_in_both_reads and ::a_post_projects_its_attachments_in_position_order.",
+        "frontend/src/features/profile-media/__tests__/ProfileMediaGallery.test.tsx::renders_the_posts_with_a_preserved_aspect_ratio_and_lazy_loading."
+      ]
+    },
+    {
+      "id": "V-07-e",
+      "claim": "Deleting the photo post leaves the room and intro posts intact.",
+      "result": "PASS",
+      "evidence": [
+        "backend/services/concert-service/tests/profile_post_lifecycle.rs::deleting_a_profile_post_leaves_the_room_avatar_intro_and_favorites_untouched — a full snapshot (room revision/layout/visibility, avatar revision/config, every intro post row, every intro attachment, the like count) is compared before and after.",
+        "backend/services/concert-service/tests/profile_post_lifecycle.rs::deleting_a_profile_post_keeps_its_media_available_to_other_posts — the media file survives a delete while another post still references it.",
+        "backend/services/concert-service/tests/profile_post_lifecycle.rs::a_profile_post_delete_statement_names_no_neighbour_table — the command's SQL never names profile_rooms, profile_avatars, intro_posts, intro_attachments, intro_likes or profile_favorites."
+      ]
+    }
+  ],
+  "hard_constraints": [
+    {
+      "constraint": "A post with an INTRO_POST media id is REJECTED.",
+      "result": "PASS",
+      "evidence": "backend/services/concert-service/tests/profile_posts.rs::a_post_with_an_intro_post_media_id_is_rejected (command and database trigger)."
+    },
+    {
+      "constraint": "The stored bytes are the normalized photograph, NOT a pixel conversion.",
+      "result": "PASS",
+      "evidence": "See V-07-b above."
+    },
+    {
+      "constraint": "Publishing works with a default room and no intro post.",
+      "result": "PASS",
+      "evidence": "See V-07-a above."
+    },
+    {
+      "constraint": "A private post is absent from a visitor's list and 404 on direct read; the author sees it.",
+      "result": "PASS",
+      "evidence": "backend/services/concert-service/tests/profile_post_read.rs::a_private_post_is_absent_from_a_visitors_list_and_404_on_direct_read."
+    },
+    {
+      "constraint": "Deleting a profile post leaves room, avatar, intro posts, and favorites untouched.",
+      "result": "PASS",
+      "evidence": "See V-07-e above."
+    },
+    {
+      "constraint": "A foreign media id is rejected without revealing whether it exists.",
+      "result": "PASS",
+      "evidence": "backend/services/concert-service/tests/profile_posts.rs::a_foreign_media_id_is_rejected_without_revealing_whether_it_exists — the foreign and absent answers are compared for equality."
+    },
+    {
+      "constraint": "Only JPEG/PNG/WebP; 10 MiB; 4096 px; 16M pixels. No GIF, no video.",
+      "result": "PASS",
+      "evidence": "backend/services/concert-service/tests/profile_media_upload.rs::a_gif_is_refused_and_never_becomes_ready, ::a_body_over_ten_mebibytes_is_refused_before_any_row, ::a_photograph_wider_than_4096_pixels_is_refused_at_finalize, ::a_photograph_over_sixteen_megapixels_is_refused_at_finalize, ::the_profile_media_table_refuses_a_concert_purpose_and_a_gif; backend/services/concert-service/tests/profile_post_routes.rs::only_the_three_image_types_are_accepted_for_raw_bytes; backend/services/api-gateway/tests/profile_media_routes.rs::a_bytes_upload_accepts_only_the_image_allowlist_and_requires_the_envelope."
+    },
+    {
+      "constraint": "A cancelled upload leaves no orphan.",
+      "result": "PASS",
+      "evidence": "backend/services/concert-service/tests/profile_media_upload.rs::a_cancelled_upload_leaves_no_orphan_once_the_window_passes and ::an_abandoned_upload_is_cleaned_after_the_orphan_window; frontend/src/features/profile-media/__tests__/failure.test.tsx::cancelling_before_finalize_never_publishes_and_never_creates_a_post and ::leaving_the_screen_mid_upload_cancels_cleanly. See v10-upload-failure.json for the client half."
+    }
+  ],
+  "commands": [
+    {
+      "command": "cd backend && cargo +1.88.0 check --locked --workspace",
+      "exit_code": 0
+    },
+    {
+      "command": "cd backend && cargo +1.88.0 test --locked -p concert-service --test profile_media_upload",
+      "exit_code": 0,
+      "note": "16 passed"
+    },
+    {
+      "command": "cd backend && cargo +1.88.0 test --locked -p concert-service --test profile_posts",
+      "exit_code": 0,
+      "note": "16 passed"
+    },
+    {
+      "command": "cd backend && cargo +1.88.0 test --locked -p concert-service --test profile_post_read",
+      "exit_code": 0,
+      "note": "11 passed"
+    },
+    {
+      "command": "cd backend && cargo +1.88.0 test --locked -p concert-service --test profile_post_routes",
+      "exit_code": 0,
+      "note": "14 passed"
+    },
+    {
+      "command": "cd backend && cargo +1.88.0 test --locked -p concert-service --test profile_post_lifecycle",
+      "exit_code": 0,
+      "note": "4 passed"
+    },
+    {
+      "command": "cd backend && cargo +1.88.0 test --locked -p concert-service --lib profile_",
+      "exit_code": 0,
+      "note": "17 passed, 3 ignored"
+    },
+    {
+      "command": "cd backend && cargo +1.88.0 test --locked -p api-gateway --test profile_media_routes",
+      "exit_code": 0,
+      "note": "10 passed"
+    },
+    {
+      "command": "cd frontend && corepack pnpm@11.7.0 run typecheck",
+      "exit_code": 0
+    },
+    {
+      "command": "cd frontend && corepack pnpm@11.7.0 exec vitest run src/features/profile-media",
+      "exit_code": 0,
+      "note": "55 passed (4 files)"
+    }
+  ],
+  "runner": "backend/scripts/mcr/wp06_profile_posts_verify.py",
+  "runner_report": "docs/mcr/integration/evidence/v07-profile-posts-run.json"
+}

@@ -1308,11 +1308,26 @@ async fn new_concert_migrations_follow_the_previous_head() -> anyhow::Result<()>
     numbers.sort_unstable();
     let head = *numbers.last().expect("at least one migration");
     assert!(head >= 85, "the new migrations must be numbered 0080 and later");
-    let new: Vec<u32> = numbers.iter().copied().filter(|number| *number >= 80).collect();
+    // WP-02 delivered 0080..0085. Later work packages add their own migrations
+    // above that head (WP-03 discovery, WP-08 avatars, and so on), so this test
+    // asserts the WP-02 block is present and in order rather than that it is the
+    // entire set above 0079. `0086` is currently carried by two files from two
+    // packages; the duplicate is an integrator renumbering task and is recorded
+    // in the WP-06 evidence, not something this schema test can resolve.
+    let mut new: Vec<u32> = numbers.iter().copied().filter(|number| *number >= 80).collect();
+    new.dedup();
+    for expected in [80, 81, 82, 83, 84, 85] {
+        assert!(
+            new.contains(&expected),
+            "migration {expected:03} must follow the previous head of 0079: {new:?}"
+        );
+    }
+    // The WP-02 block is contiguous and ordered.
+    let block: Vec<u32> = new.iter().copied().filter(|number| *number <= 85).collect();
     assert_eq!(
-        new,
+        block,
         vec![80, 81, 82, 83, 84, 85],
-        "exactly the six new migrations must follow the previous head of 0079"
+        "the six new migrations must follow the previous head of 0079"
     );
     Ok(())
 }
