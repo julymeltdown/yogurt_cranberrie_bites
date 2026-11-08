@@ -846,6 +846,1395 @@
         }
       },
       "required": []
+    },
+    "IntroAudience": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Author-only audience bounds. Both age bounds are present or both are null; the upper bound is half-open. This object is never part of a viewer-facing projection.",
+      "properties": {
+        "allowed_gender": {
+          "enum": [
+            "any",
+            "female",
+            "male",
+            "unknown"
+          ]
+        },
+        "minimum_age": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 14,
+              "maximum": 100
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "maximum_age_exclusive": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 15,
+              "maximum": 101
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "allowed_gender",
+        "minimum_age",
+        "maximum_age_exclusive"
+      ],
+      "dependentRequired": {
+        "minimum_age": [
+          "maximum_age_exclusive"
+        ],
+        "maximum_age_exclusive": [
+          "minimum_age"
+        ]
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "minimum_age": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "minimum_age"
+            ]
+          },
+          "then": {
+            "properties": {
+              "maximum_age_exclusive": {
+                "exclusiveMinimum": 14
+              }
+            },
+            "description": "minimum_age < maximum_age_exclusive; the server enforces the pairing in the same transaction."
+          }
+        }
+      ]
+    },
+    "IntroPostQuery": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 20
+        },
+        "cursor": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
+        },
+        "q": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        }
+      },
+      "required": []
+    },
+    "OwnIntroQuery": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 20
+        },
+        "cursor": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
+        },
+        "state": {
+          "enum": [
+            "DRAFT",
+            "PUBLISHED",
+            "DELETED"
+          ]
+        }
+      },
+      "required": []
+    },
+    "IntroLikeSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "liked_by_viewer": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "count",
+        "liked_by_viewer"
+      ]
+    },
+    "IntroPostDetail": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Viewer-facing intro post. Deliberately carries no audience, age bound, gender bound, room reference, or external-account field.",
+      "properties": {
+        "intro_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "author": {
+          "$ref": "https://contracts.mcr.invalid/core/v1/core.schema.json#/$defs/PublicProfileV2"
+        },
+        "body": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "favorites_snapshot": {
+          "type": "array",
+          "items": {
+            "$ref": "https://contracts.mcr.invalid/core/v1/core.schema.json#/$defs/FavoriteItem"
+          },
+          "minItems": 0,
+          "maxItems": 15
+        },
+        "currently_seeking": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 120
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "interaction_style": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 120
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "attachments": {
+          "type": "array",
+          "items": {
+            "$ref": "https://contracts.mcr.invalid/domain/v1/feed.schema.json#/$defs/Media"
+          },
+          "minItems": 0,
+          "maxItems": 4
+        },
+        "like": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/social.schema.json#/$defs/IntroLikeSummary"
+        },
+        "comment_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "published_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        },
+        "expires_at": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "intro_id",
+        "author",
+        "body",
+        "favorites_snapshot",
+        "currently_seeking",
+        "interaction_style",
+        "attachments",
+        "like",
+        "comment_count",
+        "published_at",
+        "expires_at"
+      ]
+    },
+    "IntroPostPage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "https://contracts.mcr.invalid/domain/v1/social.schema.json#/$defs/IntroPostDetail"
+          },
+          "minItems": 0,
+          "maxItems": 100
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "items",
+        "next_cursor"
+      ]
+    },
+    "OwnIntroPost": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Author-only projection. audience_summary is server-derived so the client never recomputes bounds.",
+      "properties": {
+        "intro_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "state": {
+          "enum": [
+            "DRAFT",
+            "PUBLISHED",
+            "DELETED"
+          ]
+        },
+        "body": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 1000
+        },
+        "favorites_snapshot": {
+          "type": "array",
+          "items": {
+            "$ref": "https://contracts.mcr.invalid/core/v1/core.schema.json#/$defs/FavoriteItem"
+          },
+          "minItems": 0,
+          "maxItems": 15
+        },
+        "currently_seeking": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 120
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "interaction_style": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 120
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "attachment_media_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+          },
+          "minItems": 0,
+          "maxItems": 4,
+          "uniqueItems": true
+        },
+        "audience": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/social.schema.json#/$defs/IntroAudience"
+        },
+        "audience_summary": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "like_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "comment_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2147483647
+        },
+        "published_at": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "expires_at": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        },
+        "updated_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        }
+      },
+      "required": [
+        "intro_id",
+        "state",
+        "body",
+        "favorites_snapshot",
+        "currently_seeking",
+        "interaction_style",
+        "attachment_media_ids",
+        "audience",
+        "audience_summary",
+        "like_count",
+        "comment_count",
+        "published_at",
+        "expires_at",
+        "revision",
+        "updated_at"
+      ]
+    },
+    "OwnIntroPostPage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "https://contracts.mcr.invalid/domain/v1/social.schema.json#/$defs/OwnIntroPost"
+          },
+          "minItems": 0,
+          "maxItems": 100
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "items",
+        "next_cursor"
+      ]
+    },
+    "SaveIntroPost": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expected_revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/CreationRevision"
+        },
+        "body": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 1000
+        },
+        "favorites_snapshot": {
+          "type": "array",
+          "items": {
+            "$ref": "https://contracts.mcr.invalid/core/v1/core.schema.json#/$defs/FavoriteItem"
+          },
+          "minItems": 0,
+          "maxItems": 15
+        },
+        "currently_seeking": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 120
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "interaction_style": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 120
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "attachment_media_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+          },
+          "minItems": 0,
+          "maxItems": 4,
+          "uniqueItems": true
+        },
+        "audience": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/social.schema.json#/$defs/IntroAudience"
+        },
+        "expires_at": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "expected_revision",
+        "body",
+        "favorites_snapshot",
+        "currently_seeking",
+        "interaction_style",
+        "attachment_media_ids",
+        "audience",
+        "expires_at"
+      ]
+    },
+    "IntroLikeState": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "like_count is null only on the DELETE path when the viewer no longer satisfies the audience, so removing your own heart never discloses the current count.",
+      "properties": {
+        "liked": {
+          "type": "boolean"
+        },
+        "like_count": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 2147483647
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "liked",
+        "like_count"
+      ]
+    },
+    "LikerQuery": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 20
+        },
+        "cursor": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
+        }
+      },
+      "required": []
+    },
+    "LikerProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "profile_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "nickname": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "profile_image_media_id": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "avatar": {
+          "$ref": "https://contracts.mcr.invalid/core/v1/core.schema.json#/$defs/AvatarState"
+        },
+        "shared_with_author": {
+          "type": "array",
+          "items": {
+            "$ref": "https://contracts.mcr.invalid/core/v1/core.schema.json#/$defs/FavoriteItem"
+          },
+          "minItems": 0,
+          "maxItems": 15
+        },
+        "interaction_style": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 120
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "liked_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        }
+      },
+      "required": [
+        "profile_id",
+        "nickname",
+        "profile_image_media_id",
+        "avatar",
+        "shared_with_author",
+        "interaction_style",
+        "liked_at"
+      ]
+    },
+    "LikerPage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "https://contracts.mcr.invalid/domain/v1/social.schema.json#/$defs/LikerProfile"
+          },
+          "minItems": 0,
+          "maxItems": 100
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "items",
+        "next_cursor"
+      ]
+    },
+    "IntroComment": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "comment_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "intro_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "author": {
+          "$ref": "https://contracts.mcr.invalid/core/v1/core.schema.json#/$defs/PublicProfileV2"
+        },
+        "parent_comment_id": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "body": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "created_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        },
+        "deleted": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "comment_id",
+        "intro_id",
+        "author",
+        "parent_comment_id",
+        "body",
+        "created_at",
+        "deleted"
+      ]
+    },
+    "CreateIntroComment": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "body": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "parent_comment_id": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "body",
+        "parent_comment_id"
+      ]
+    },
+    "IntroCommentPage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "https://contracts.mcr.invalid/domain/v1/social.schema.json#/$defs/IntroComment"
+          },
+          "minItems": 0,
+          "maxItems": 100
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "items",
+        "next_cursor"
+      ]
+    },
+    "ActivityQuery": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 20
+        },
+        "cursor": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
+        },
+        "kind": {
+          "enum": [
+            "INTRO_LIKED",
+            "INTRO_COMMENT",
+            "INTRO_REPLY",
+            "FOLLOW"
+          ]
+        }
+      },
+      "required": []
+    },
+    "ActivityActor": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "profile_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "nickname": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "profile_image_media_id": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "shared_with_author": {
+          "type": "array",
+          "items": {
+            "$ref": "https://contracts.mcr.invalid/core/v1/core.schema.json#/$defs/FavoriteItem"
+          },
+          "minItems": 0,
+          "maxItems": 15
+        },
+        "interaction_style": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 120
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "profile_id",
+        "nickname",
+        "profile_image_media_id",
+        "shared_with_author",
+        "interaction_style"
+      ]
+    },
+    "ActivityItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "activity_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "kind": {
+          "enum": [
+            "INTRO_LIKED",
+            "INTRO_COMMENT",
+            "INTRO_REPLY",
+            "FOLLOW"
+          ]
+        },
+        "actor": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/social.schema.json#/$defs/ActivityActor"
+        },
+        "intro_id": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "comment_id": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "created_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        },
+        "read": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "activity_id",
+        "kind",
+        "actor",
+        "intro_id",
+        "comment_id",
+        "created_at",
+        "read"
+      ]
+    },
+    "ActivityPage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "https://contracts.mcr.invalid/domain/v1/social.schema.json#/$defs/ActivityItem"
+          },
+          "minItems": 0,
+          "maxItems": 100
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "items",
+        "next_cursor"
+      ]
+    },
+    "ProfilePost": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "post_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "author": {
+          "$ref": "https://contracts.mcr.invalid/core/v1/core.schema.json#/$defs/PublicProfileV2"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 500
+        },
+        "media": {
+          "type": "array",
+          "items": {
+            "$ref": "https://contracts.mcr.invalid/domain/v1/feed.schema.json#/$defs/Media"
+          },
+          "minItems": 0,
+          "maxItems": 4
+        },
+        "visibility": {
+          "enum": [
+            "PUBLIC",
+            "PRIVATE"
+          ]
+        },
+        "created_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        },
+        "expires_at": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        }
+      },
+      "required": [
+        "post_id",
+        "author",
+        "description",
+        "media",
+        "visibility",
+        "created_at",
+        "expires_at",
+        "revision"
+      ]
+    },
+    "CreateProfilePost": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "type": "string",
+          "minLength": 0,
+          "maxLength": 500
+        },
+        "media_ids": {
+          "type": "array",
+          "items": {
+            "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+          },
+          "minItems": 0,
+          "maxItems": 4,
+          "uniqueItems": true
+        },
+        "visibility": {
+          "enum": [
+            "PUBLIC",
+            "PRIVATE"
+          ]
+        },
+        "expires_at": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "description",
+        "media_ids",
+        "visibility",
+        "expires_at"
+      ]
+    },
+    "ProfilePostPage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "https://contracts.mcr.invalid/domain/v1/social.schema.json#/$defs/ProfilePost"
+          },
+          "minItems": 0,
+          "maxItems": 100
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Cursor"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "items",
+        "next_cursor"
+      ]
+    },
+    "FurniturePlacement": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "item_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "pattern": "^[a-z][a-z0-9_]{0,63}$"
+        },
+        "cell_x": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 31
+        },
+        "cell_y": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 31
+        },
+        "layer": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3
+        }
+      },
+      "required": [
+        "item_id",
+        "cell_x",
+        "cell_y",
+        "layer"
+      ]
+    },
+    "PosterPlacement": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "poster_media_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "slot": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3
+        },
+        "x": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 31
+        },
+        "y": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 31
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 32
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 32
+        }
+      },
+      "required": [
+        "poster_media_id",
+        "slot",
+        "x",
+        "y",
+        "width",
+        "height"
+      ]
+    },
+    "CharacterPlacement": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "cell_x": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 31
+        },
+        "cell_y": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 31
+        },
+        "facing": {
+          "enum": [
+            "LEFT",
+            "RIGHT"
+          ]
+        }
+      },
+      "required": [
+        "cell_x",
+        "cell_y",
+        "facing"
+      ]
+    },
+    "RoomLayout": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Fixed-grid personal room layout. Carries no intro post and no event reference.",
+      "properties": {
+        "version": {
+          "const": 1
+        },
+        "wall": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "pattern": "^[a-z][a-z0-9_]{0,63}$"
+        },
+        "floor": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "pattern": "^[a-z][a-z0-9_]{0,63}$"
+        },
+        "furniture": {
+          "type": "array",
+          "items": {
+            "$ref": "https://contracts.mcr.invalid/domain/v1/social.schema.json#/$defs/FurniturePlacement"
+          },
+          "minItems": 0,
+          "maxItems": 32
+        },
+        "posters": {
+          "type": "array",
+          "items": {
+            "$ref": "https://contracts.mcr.invalid/domain/v1/social.schema.json#/$defs/PosterPlacement"
+          },
+          "minItems": 0,
+          "maxItems": 4
+        },
+        "character": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/social.schema.json#/$defs/CharacterPlacement"
+        }
+      },
+      "required": [
+        "version",
+        "wall",
+        "floor",
+        "furniture",
+        "posters",
+        "character"
+      ]
+    },
+    "ProfileRoom": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "owner_profile_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "visibility": {
+          "enum": [
+            "PUBLIC",
+            "PRIVATE"
+          ]
+        },
+        "layout": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/social.schema.json#/$defs/RoomLayout"
+        },
+        "posters": {
+          "type": "array",
+          "items": {
+            "$ref": "https://contracts.mcr.invalid/domain/v1/feed.schema.json#/$defs/Media"
+          },
+          "minItems": 0,
+          "maxItems": 4
+        },
+        "revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        },
+        "updated_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        }
+      },
+      "required": [
+        "owner_profile_id",
+        "visibility",
+        "layout",
+        "posters",
+        "revision",
+        "updated_at"
+      ]
+    },
+    "OwnRoom": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "owner_profile_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "is_owner": {
+          "const": true
+        },
+        "visibility": {
+          "enum": [
+            "PUBLIC",
+            "PRIVATE"
+          ]
+        },
+        "layout": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/social.schema.json#/$defs/RoomLayout"
+        },
+        "posters": {
+          "type": "array",
+          "items": {
+            "$ref": "https://contracts.mcr.invalid/domain/v1/feed.schema.json#/$defs/Media"
+          },
+          "minItems": 0,
+          "maxItems": 4
+        },
+        "poster_moderation": {
+          "type": "array",
+          "items": {
+            "$ref": "https://contracts.mcr.invalid/domain/v1/social.schema.json#/$defs/PosterModeration"
+          },
+          "minItems": 0,
+          "maxItems": 4
+        },
+        "revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        },
+        "updated_at": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/UtcTimestamp"
+        }
+      },
+      "required": [
+        "owner_profile_id",
+        "is_owner",
+        "visibility",
+        "layout",
+        "posters",
+        "poster_moderation",
+        "revision",
+        "updated_at"
+      ]
+    },
+    "PosterModeration": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "media_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "state": {
+          "enum": [
+            "VISIBLE",
+            "HIDDEN",
+            "PENDING_REVIEW"
+          ]
+        }
+      },
+      "required": [
+        "media_id",
+        "state"
+      ]
+    },
+    "SaveRoom": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expected_revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/CreationRevision"
+        },
+        "layout": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/social.schema.json#/$defs/RoomLayout"
+        }
+      },
+      "required": [
+        "expected_revision",
+        "layout"
+      ]
+    },
+    "SetRoomVisibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expected_revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        },
+        "visibility": {
+          "enum": [
+            "PUBLIC",
+            "PRIVATE"
+          ]
+        }
+      },
+      "required": [
+        "expected_revision",
+        "visibility"
+      ]
+    },
+    "UploadPoster": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "preset": {
+          "enum": [
+            "FINE",
+            "CHUNKY"
+          ]
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 8,
+          "maximum": 128
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 8,
+          "maximum": 128
+        },
+        "content_type": {
+          "const": "image/png"
+        },
+        "bytes_base64": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1048576
+        }
+      },
+      "required": [
+        "preset",
+        "width",
+        "height",
+        "content_type",
+        "bytes_base64"
+      ]
+    },
+    "RoomPoster": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "media": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/feed.schema.json#/$defs/Media"
+        },
+        "preset": {
+          "enum": [
+            "FINE",
+            "CHUNKY"
+          ]
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 8,
+          "maximum": 128
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 8,
+          "maximum": 128
+        },
+        "revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        }
+      },
+      "required": [
+        "media",
+        "preset",
+        "width",
+        "height",
+        "revision"
+      ]
+    },
+    "FollowState": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "profile_id": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+        },
+        "following": {
+          "type": "boolean"
+        },
+        "followed_by": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "profile_id",
+        "following",
+        "followed_by"
+      ]
     }
   }
 }

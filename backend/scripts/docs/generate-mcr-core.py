@@ -164,6 +164,16 @@ def build_document():
             if "{" + parameter + "}" in path:
                 schema = {"type": "string", "format": "uuid"} if parameter != "placeId" else {"$ref": "#/components/schemas/PlaceId"}
                 parameters.append({"name": parameter, "in": "path", "required": True, "schema": schema})
+        for parameter in ("profileId",):
+            if "{" + parameter + "}" in path:
+                parameters.append({"name": parameter, "in": "path", "required": True,
+                                   "schema": {"type": "string", "format": "uuid"}})
+        if "{provider}" in path:
+            parameters.append({"name": "provider", "in": "path", "required": True,
+                               "schema": {"type": "string", "enum": ["naver"]}})
+        if "{category}" in path:
+            parameters.append({"name": "category", "in": "path", "required": True,
+                               "schema": {"type": "string", "enum": ["MUSIC", "ANIME", "GAME"]}})
         error_reasons = {
             400: ["INVALID_INPUT"], 401: ["AUTHENTICATION_REQUIRED"],
             403: ["PERMISSION_DENIED", "CONSENT_REQUIRED"], 404: ["RESOURCE_UNAVAILABLE"],
@@ -190,9 +200,31 @@ def build_document():
                   "x-mcr-runtime-status": "NOT_IMPLEMENTED", "x-mcr-cache": "NO_STORE",
                   "x-mcr-retry": ("READ_ONCE_AFTER_REFRESH" if operation["authenticated"]
                                   else "PUBLIC_READ_NO_AUTH_REFRESH") if method == "get" else "NO_AUTOMATIC_REPLAY"}
-        if operation.get("request"):
+        query_location = operation.get("request_location") == "query"
+        if operation.get("request") and not query_location:
             target["requestBody"] = {"required": True, "content": {"application/json": {
                 "schema": {"$ref": f'#/components/schemas/{operation["request"]}'}}}}
+        if query_location:
+            query = schemas[operation["request"]]
+            if query.get("type") != "object" or query.get("additionalProperties") is not False:
+                raise ValueError(f"Closed query object required: {identity}")
+            target["parameters"].extend({
+                "name": name, "in": "query", "required": name in query.get("required", []),
+                "style": "form", "explode": False, "allowReserved": False,
+                "schema": json_schema(copy.deepcopy(value))}
+                for name, value in query["properties"].items())
+        if operation.get("successStatus") == 303:
+            # The provider callback answers with a server-derived redirect only.
+            target["responses"].pop("200")
+            target["responses"]["303"] = {
+                "description": "Redirect to the stored, validated return path",
+                "headers": {
+                    "Location": {"required": True, "schema": {"type": "string", "minLength": 1, "maxLength": 512},
+                                 "description": "Server-derived same-origin application path from the stored verification state; never echoed from the request."},
+                    "Cache-Control": {"required": True, "schema": {"type": "string", "const": "no-store"}}}}
+            target["x-mcr-redirect"] = "SERVER_DERIVED_STORED_RETURN_PATH_ONLY"
+            target["x-mcr-anonymous-provider-callback"] = True
+            target["x-mcr-retry"] = "NO_AUTOMATIC_REPLAY"
         if method in {"put", "patch", "post", "delete"}:
             target["x-mcr-origin-policy"] = "EXACT_ALLOWLIST_AND_X_MCR_INTENT_BROWSER"
             target["x-mcr-origin-rejection"] = {

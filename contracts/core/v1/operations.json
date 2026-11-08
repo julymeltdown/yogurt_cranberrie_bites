@@ -132,5 +132,89 @@
     "authenticated": true,
     "successStatus": 200,
     "enrollmentContractVersion": "1.0"
+  },
+  {
+    "method": "get",
+    "path": "/api/me/profile",
+    "operationId": "getOwnProfile",
+    "response": "OwnProfile",
+    "request": null,
+    "authenticated": true
+  },
+  {
+    "method": "patch",
+    "path": "/api/me/profile",
+    "operationId": "updateOwnProfile",
+    "response": "OwnProfile",
+    "request": "UpdateProfile",
+    "authenticated": true
+  },
+  {
+    "method": "put",
+    "path": "/api/me/profile/favorites",
+    "operationId": "setOwnFavorites",
+    "response": "OwnProfile",
+    "request": "SetFavorites",
+    "authenticated": true
+  },
+  {
+    "method": "get",
+    "path": "/api/profiles/{profileId}",
+    "operationId": "getProfile",
+    "response": "PublicProfileV2",
+    "request": null,
+    "authenticated": true
+  },
+  {
+    "method": "get",
+    "path": "/api/catalog/{category}/search",
+    "operationId": "searchCatalog",
+    "response": "CatalogPage",
+    "request": "CatalogQuery",
+    "authenticated": true,
+    "request_location": "query"
+  },
+  {
+    "method": "get",
+    "path": "/api/discover/people",
+    "operationId": "discoverProfiles",
+    "response": "PeoplePage",
+    "request": "PeopleQuery",
+    "authenticated": true,
+    "request_location": "query"
+  },
+  {
+    "method": "get",
+    "path": "/api/me/identity/{provider}",
+    "operationId": "getOwnIdentityVerification",
+    "response": "IdentityVerification",
+    "request": null,
+    "authenticated": true
+  },
+  {
+    "method": "post",
+    "path": "/api/me/identity/{provider}/verifications",
+    "operationId": "startIdentityVerification",
+    "response": "IdentityVerificationStart",
+    "request": "StartIdentityVerification",
+    "authenticated": true
+  },
+  {
+    "method": "get",
+    "path": "/api/identity/{provider}/callback",
+    "operationId": "completeIdentityVerification",
+    "response": null,
+    "request": "IdentityCallbackQuery",
+    "authenticated": false,
+    "successStatus": 303,
+    "request_location": "query"
+  },
+  {
+    "method": "delete",
+    "path": "/api/me/identity/{provider}",
+    "operationId": "disconnectIdentityVerification",
+    "response": "IdentityVerification",
+    "request": null,
+    "authenticated": true
   }
 ]

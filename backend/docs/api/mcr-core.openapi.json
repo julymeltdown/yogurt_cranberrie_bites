@@ -7182,6 +7182,442 @@
         }
       }
     },
+    "/api/catalog/{category}/search": {
+      "get": {
+        "operationId": "searchCatalog",
+        "parameters": [
+          {
+            "name": "category",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "MUSIC",
+                "ANIME",
+                "GAME"
+              ]
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "style": "form",
+            "explode": false,
+            "allowReserved": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "style": "form",
+            "explode": false,
+            "allowReserved": false,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1024,
+              "pattern": "^[A-Za-z0-9_-]+$"
+            }
+          },
+          {
+            "name": "q",
+            "in": "query",
+            "required": false,
+            "style": "form",
+            "explode": false,
+            "allowReserved": false,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 80,
+              "pattern": "^[^\\u0000-\\u001f\\u007f]+$"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_INPUT"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "AUTHENTICATION_REQUIRED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Not permitted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "PERMISSION_DENIED",
+                                "CONSENT_REQUIRED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "RESOURCE_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Revision or state conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "VERSION_CONFLICT",
+                                "MAP_VERSION_MISMATCH",
+                                "EVENT_READ_ONLY"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "PAYLOAD_TOO_LARGE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "JSON media type required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_MEDIA_TYPE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid field types",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_INPUT"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limited",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "RATE_LIMITED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INTERNAL_ERROR"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad dependency response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEPENDENCY_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required dependency unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEPENDENCY_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Dependency deadline exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEADLINE_EXCEEDED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CatalogPage"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "x-mcr-runtime-status": "NOT_IMPLEMENTED",
+        "x-mcr-cache": "NO_STORE",
+        "x-mcr-retry": "READ_ONCE_AFTER_REFRESH"
+      }
+    },
     "/api/concert/events/{eventId}/bootstrap": {
       "get": {
         "operationId": "getConcertBootstrap",
@@ -9994,6 +10430,3687 @@
         "x-mcr-cache": "NO_STORE",
         "x-mcr-retry": "READ_ONCE_AFTER_REFRESH"
       }
+    },
+    "/api/discover/people": {
+      "get": {
+        "operationId": "discoverProfiles",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "style": "form",
+            "explode": false,
+            "allowReserved": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20
+            }
+          },
+          {
+            "name": "cursor",
+            "in": "query",
+            "required": false,
+            "style": "form",
+            "explode": false,
+            "allowReserved": false,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1024,
+              "pattern": "^[A-Za-z0-9_-]+$"
+            }
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "required": false,
+            "style": "form",
+            "explode": false,
+            "allowReserved": false,
+            "schema": {
+              "enum": [
+                "MUSIC",
+                "ANIME",
+                "GAME"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_INPUT"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "AUTHENTICATION_REQUIRED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Not permitted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "PERMISSION_DENIED",
+                                "CONSENT_REQUIRED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "RESOURCE_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Revision or state conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "VERSION_CONFLICT",
+                                "MAP_VERSION_MISMATCH",
+                                "EVENT_READ_ONLY"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "PAYLOAD_TOO_LARGE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "JSON media type required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_MEDIA_TYPE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid field types",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_INPUT"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limited",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "RATE_LIMITED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INTERNAL_ERROR"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad dependency response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEPENDENCY_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required dependency unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEPENDENCY_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Dependency deadline exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEADLINE_EXCEEDED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PeoplePage"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "x-mcr-runtime-status": "NOT_IMPLEMENTED",
+        "x-mcr-cache": "NO_STORE",
+        "x-mcr-retry": "READ_ONCE_AFTER_REFRESH"
+      }
+    },
+    "/api/identity/{provider}/callback": {
+      "get": {
+        "operationId": "completeIdentityVerification",
+        "parameters": [
+          {
+            "name": "provider",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "naver"
+              ]
+            }
+          },
+          {
+            "name": "code",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "allowReserved": false,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 512
+            }
+          },
+          {
+            "name": "state",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "explode": false,
+            "allowReserved": false,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 512
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_INPUT"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "AUTHENTICATION_REQUIRED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Not permitted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "PERMISSION_DENIED",
+                                "CONSENT_REQUIRED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "RESOURCE_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Revision or state conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "VERSION_CONFLICT",
+                                "MAP_VERSION_MISMATCH",
+                                "EVENT_READ_ONLY"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "PAYLOAD_TOO_LARGE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "JSON media type required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_MEDIA_TYPE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid field types",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_INPUT"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limited",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "RATE_LIMITED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INTERNAL_ERROR"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad dependency response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEPENDENCY_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required dependency unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEPENDENCY_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Dependency deadline exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEADLINE_EXCEEDED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "303": {
+            "description": "Redirect to the stored, validated return path",
+            "headers": {
+              "Location": {
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 512
+                },
+                "description": "Server-derived same-origin application path from the stored verification state; never echoed from the request."
+              },
+              "Cache-Control": {
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "const": "no-store"
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "x-mcr-runtime-status": "NOT_IMPLEMENTED",
+        "x-mcr-cache": "NO_STORE",
+        "x-mcr-retry": "NO_AUTOMATIC_REPLAY",
+        "x-mcr-redirect": "SERVER_DERIVED_STORED_RETURN_PATH_ONLY",
+        "x-mcr-anonymous-provider-callback": true
+      }
+    },
+    "/api/me/identity/{provider}": {
+      "get": {
+        "operationId": "getOwnIdentityVerification",
+        "parameters": [
+          {
+            "name": "provider",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "naver"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_INPUT"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "AUTHENTICATION_REQUIRED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Not permitted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "PERMISSION_DENIED",
+                                "CONSENT_REQUIRED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "RESOURCE_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Revision or state conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "VERSION_CONFLICT",
+                                "MAP_VERSION_MISMATCH",
+                                "EVENT_READ_ONLY"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "PAYLOAD_TOO_LARGE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "JSON media type required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_MEDIA_TYPE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid field types",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_INPUT"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limited",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "RATE_LIMITED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INTERNAL_ERROR"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad dependency response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEPENDENCY_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required dependency unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEPENDENCY_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Dependency deadline exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEADLINE_EXCEEDED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IdentityVerification"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "x-mcr-runtime-status": "NOT_IMPLEMENTED",
+        "x-mcr-cache": "NO_STORE",
+        "x-mcr-retry": "READ_ONCE_AFTER_REFRESH"
+      },
+      "delete": {
+        "operationId": "disconnectIdentityVerification",
+        "parameters": [
+          {
+            "name": "provider",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "naver"
+              ]
+            }
+          },
+          {
+            "name": "X-MCR-Intent",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "const": "browser"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_INPUT"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "AUTHENTICATION_REQUIRED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Not permitted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/CoreErrorResponse"
+                        },
+                        {
+                          "properties": {
+                            "details": {
+                              "properties": {
+                                "reason": {
+                                  "enum": [
+                                    "PERMISSION_DENIED",
+                                    "CONSENT_REQUIRED"
+                                  ]
+                                }
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "$ref": "#/components/schemas/OriginErrorResponse"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "RESOURCE_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Revision or state conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "VERSION_CONFLICT",
+                                "MAP_VERSION_MISMATCH",
+                                "EVENT_READ_ONLY"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "PAYLOAD_TOO_LARGE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "JSON media type required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_MEDIA_TYPE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid field types",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_INPUT"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limited",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "RATE_LIMITED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INTERNAL_ERROR"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad dependency response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEPENDENCY_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required dependency unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEPENDENCY_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Dependency deadline exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEADLINE_EXCEEDED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IdentityVerification"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "x-mcr-runtime-status": "NOT_IMPLEMENTED",
+        "x-mcr-cache": "NO_STORE",
+        "x-mcr-retry": "NO_AUTOMATIC_REPLAY",
+        "x-mcr-origin-policy": "EXACT_ALLOWLIST_AND_X_MCR_INTENT_BROWSER",
+        "x-mcr-origin-rejection": {
+          "status": 403,
+          "schema": {
+            "$ref": "#/components/schemas/OriginErrorResponse"
+          },
+          "downstream_dispatch": false
+        }
+      }
+    },
+    "/api/me/identity/{provider}/verifications": {
+      "post": {
+        "operationId": "startIdentityVerification",
+        "parameters": [
+          {
+            "name": "provider",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "naver"
+              ]
+            }
+          },
+          {
+            "name": "X-MCR-Intent",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "const": "browser"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_INPUT"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "AUTHENTICATION_REQUIRED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Not permitted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/CoreErrorResponse"
+                        },
+                        {
+                          "properties": {
+                            "details": {
+                              "properties": {
+                                "reason": {
+                                  "enum": [
+                                    "PERMISSION_DENIED",
+                                    "CONSENT_REQUIRED"
+                                  ]
+                                }
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "$ref": "#/components/schemas/OriginErrorResponse"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "RESOURCE_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Revision or state conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "VERSION_CONFLICT",
+                                "MAP_VERSION_MISMATCH",
+                                "EVENT_READ_ONLY"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "PAYLOAD_TOO_LARGE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "JSON media type required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_MEDIA_TYPE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid field types",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_INPUT"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limited",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "RATE_LIMITED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INTERNAL_ERROR"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad dependency response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEPENDENCY_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required dependency unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEPENDENCY_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Dependency deadline exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEADLINE_EXCEEDED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IdentityVerificationStart"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "x-mcr-runtime-status": "NOT_IMPLEMENTED",
+        "x-mcr-cache": "NO_STORE",
+        "x-mcr-retry": "NO_AUTOMATIC_REPLAY",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StartIdentityVerification"
+              }
+            }
+          }
+        },
+        "x-mcr-origin-policy": "EXACT_ALLOWLIST_AND_X_MCR_INTENT_BROWSER",
+        "x-mcr-origin-rejection": {
+          "status": 403,
+          "schema": {
+            "$ref": "#/components/schemas/OriginErrorResponse"
+          },
+          "downstream_dispatch": false
+        }
+      }
+    },
+    "/api/me/profile": {
+      "get": {
+        "operationId": "getOwnProfile",
+        "parameters": [],
+        "responses": {
+          "400": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_INPUT"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "AUTHENTICATION_REQUIRED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Not permitted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "PERMISSION_DENIED",
+                                "CONSENT_REQUIRED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "RESOURCE_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Revision or state conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "VERSION_CONFLICT",
+                                "MAP_VERSION_MISMATCH",
+                                "EVENT_READ_ONLY"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "PAYLOAD_TOO_LARGE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "JSON media type required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_MEDIA_TYPE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid field types",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_INPUT"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limited",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "RATE_LIMITED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INTERNAL_ERROR"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad dependency response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEPENDENCY_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required dependency unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEPENDENCY_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Dependency deadline exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEADLINE_EXCEEDED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OwnProfile"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "x-mcr-runtime-status": "NOT_IMPLEMENTED",
+        "x-mcr-cache": "NO_STORE",
+        "x-mcr-retry": "READ_ONCE_AFTER_REFRESH"
+      },
+      "patch": {
+        "operationId": "updateOwnProfile",
+        "parameters": [
+          {
+            "name": "X-MCR-Intent",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "const": "browser"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_INPUT"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "AUTHENTICATION_REQUIRED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Not permitted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/CoreErrorResponse"
+                        },
+                        {
+                          "properties": {
+                            "details": {
+                              "properties": {
+                                "reason": {
+                                  "enum": [
+                                    "PERMISSION_DENIED",
+                                    "CONSENT_REQUIRED"
+                                  ]
+                                }
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "$ref": "#/components/schemas/OriginErrorResponse"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "RESOURCE_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Revision or state conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "VERSION_CONFLICT",
+                                "MAP_VERSION_MISMATCH",
+                                "EVENT_READ_ONLY"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "PAYLOAD_TOO_LARGE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "JSON media type required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_MEDIA_TYPE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid field types",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_INPUT"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limited",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "RATE_LIMITED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INTERNAL_ERROR"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad dependency response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEPENDENCY_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required dependency unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEPENDENCY_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Dependency deadline exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEADLINE_EXCEEDED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OwnProfile"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "x-mcr-runtime-status": "NOT_IMPLEMENTED",
+        "x-mcr-cache": "NO_STORE",
+        "x-mcr-retry": "NO_AUTOMATIC_REPLAY",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProfile"
+              }
+            }
+          }
+        },
+        "x-mcr-origin-policy": "EXACT_ALLOWLIST_AND_X_MCR_INTENT_BROWSER",
+        "x-mcr-origin-rejection": {
+          "status": 403,
+          "schema": {
+            "$ref": "#/components/schemas/OriginErrorResponse"
+          },
+          "downstream_dispatch": false
+        }
+      }
+    },
+    "/api/me/profile/favorites": {
+      "put": {
+        "operationId": "setOwnFavorites",
+        "parameters": [
+          {
+            "name": "X-MCR-Intent",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "const": "browser"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_INPUT"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "AUTHENTICATION_REQUIRED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Not permitted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "allOf": [
+                        {
+                          "$ref": "#/components/schemas/CoreErrorResponse"
+                        },
+                        {
+                          "properties": {
+                            "details": {
+                              "properties": {
+                                "reason": {
+                                  "enum": [
+                                    "PERMISSION_DENIED",
+                                    "CONSENT_REQUIRED"
+                                  ]
+                                }
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "$ref": "#/components/schemas/OriginErrorResponse"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "RESOURCE_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Revision or state conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "VERSION_CONFLICT",
+                                "MAP_VERSION_MISMATCH",
+                                "EVENT_READ_ONLY"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "PAYLOAD_TOO_LARGE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "JSON media type required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_MEDIA_TYPE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid field types",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_INPUT"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limited",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "RATE_LIMITED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INTERNAL_ERROR"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad dependency response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEPENDENCY_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required dependency unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEPENDENCY_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Dependency deadline exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEADLINE_EXCEEDED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OwnProfile"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "x-mcr-runtime-status": "NOT_IMPLEMENTED",
+        "x-mcr-cache": "NO_STORE",
+        "x-mcr-retry": "NO_AUTOMATIC_REPLAY",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetFavorites"
+              }
+            }
+          }
+        },
+        "x-mcr-origin-policy": "EXACT_ALLOWLIST_AND_X_MCR_INTENT_BROWSER",
+        "x-mcr-origin-rejection": {
+          "status": 403,
+          "schema": {
+            "$ref": "#/components/schemas/OriginErrorResponse"
+          },
+          "downstream_dispatch": false
+        }
+      }
+    },
+    "/api/profiles/{profileId}": {
+      "get": {
+        "operationId": "getProfile",
+        "parameters": [
+          {
+            "name": "profileId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_INPUT"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "AUTHENTICATION_REQUIRED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Not permitted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "PERMISSION_DENIED",
+                                "CONSENT_REQUIRED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "RESOURCE_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Revision or state conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "VERSION_CONFLICT",
+                                "MAP_VERSION_MISMATCH",
+                                "EVENT_READ_ONLY"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Payload too large",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "PAYLOAD_TOO_LARGE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "JSON media type required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_MEDIA_TYPE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Invalid field types",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INVALID_INPUT"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Rate limited",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "RATE_LIMITED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal failure",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "INTERNAL_ERROR"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "502": {
+            "description": "Bad dependency response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEPENDENCY_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Required dependency unavailable",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEPENDENCY_UNAVAILABLE"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "504": {
+            "description": "Dependency deadline exceeded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/CoreErrorResponse"
+                    },
+                    {
+                      "properties": {
+                        "details": {
+                          "properties": {
+                            "reason": {
+                              "enum": [
+                                "DEADLINE_EXCEEDED"
+                              ]
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PublicProfileV2"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "x-mcr-runtime-status": "NOT_IMPLEMENTED",
+        "x-mcr-cache": "NO_STORE",
+        "x-mcr-retry": "READ_ONCE_AFTER_REFRESH"
+      }
     }
   },
   "components": {
@@ -10471,6 +14588,110 @@
             }
           }
         ]
+      },
+      "CatalogItem": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "catalog_item_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "category": {
+            "enum": [
+              "MUSIC",
+              "ANIME",
+              "GAME"
+            ]
+          },
+          "external_url": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uri",
+                "maxLength": 2048
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "catalog_item_id",
+          "label",
+          "category",
+          "external_url"
+        ]
+      },
+      "CatalogPage": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "category": {
+            "enum": [
+              "MUSIC",
+              "ANIME",
+              "GAME"
+            ]
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CatalogItem"
+            },
+            "minItems": 0,
+            "maxItems": 100
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1024,
+                "pattern": "^[A-Za-z0-9_-]+$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "category",
+          "items",
+          "next_cursor"
+        ]
+      },
+      "CatalogQuery": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "default": 20
+          },
+          "cursor": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024,
+            "pattern": "^[A-Za-z0-9_-]+$"
+          },
+          "q": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80,
+            "pattern": "^[^\\u0000-\\u001f\\u007f]+$"
+          }
+        },
+        "required": []
       },
       "Cell": {
         "type": "object",
@@ -11450,6 +15671,202 @@
           "revision"
         ]
       },
+      "FavoriteItem": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "catalog_item_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "category": {
+            "enum": [
+              "MUSIC",
+              "ANIME",
+              "GAME"
+            ]
+          },
+          "external_url": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uri",
+                "maxLength": 2048
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "catalog_item_id",
+          "label",
+          "category",
+          "external_url"
+        ]
+      },
+      "FavoriteSelection": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "music": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FavoriteItem"
+            },
+            "minItems": 0,
+            "maxItems": 5
+          },
+          "anime": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FavoriteItem"
+            },
+            "minItems": 0,
+            "maxItems": 5
+          },
+          "games": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FavoriteItem"
+            },
+            "minItems": 0,
+            "maxItems": 5
+          }
+        },
+        "required": [
+          "music",
+          "anime",
+          "games"
+        ]
+      },
+      "IdentityCallbackQuery": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512
+          },
+          "state": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512
+          }
+        },
+        "required": [
+          "code",
+          "state"
+        ]
+      },
+      "IdentityClaims": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "age": {
+            "type": "integer",
+            "minimum": 14,
+            "maximum": 100
+          },
+          "gender_bucket": {
+            "enum": [
+              "female",
+              "male",
+              "unknown"
+            ]
+          }
+        },
+        "required": [
+          "age",
+          "gender_bucket"
+        ]
+      },
+      "IdentityVerification": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "provider": {
+            "enum": [
+              "naver"
+            ]
+          },
+          "status": {
+            "enum": [
+              "NOT_VERIFIED",
+              "VERIFIED",
+              "EXPIRED",
+              "REVOKED",
+              "PROVIDER_UNAVAILABLE"
+            ]
+          },
+          "verified_at": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/UtcTimestamp"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "expires_at": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/UtcTimestamp"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "claims": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/IdentityClaims"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "display_on_profile": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "provider",
+          "status",
+          "verified_at",
+          "expires_at",
+          "claims",
+          "display_on_profile"
+        ]
+      },
+      "IdentityVerificationStart": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "authorization_url": {
+            "type": "string",
+            "format": "uri",
+            "maxLength": 2048
+          },
+          "expires_at": {
+            "$ref": "#/components/schemas/UtcTimestamp"
+          }
+        },
+        "required": [
+          "authorization_url",
+          "expires_at"
+        ]
+      },
       "LayeredAvatarConfig": {
         "type": "object",
         "additionalProperties": false,
@@ -12095,6 +16512,88 @@
           }
         }
       },
+      "OwnProfile": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "profile_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "account_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "nickname": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40
+          },
+          "bio": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 0,
+                "maxLength": 160
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "profile_image_media_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "visibility": {
+            "enum": [
+              "PUBLIC",
+              "PRIVATE"
+            ]
+          },
+          "favorites": {
+            "$ref": "#/components/schemas/FavoriteSelection"
+          },
+          "avatar": {
+            "$ref": "#/components/schemas/AvatarState"
+          },
+          "room_summary": {
+            "$ref": "#/components/schemas/RoomSummary"
+          },
+          "created_at": {
+            "$ref": "#/components/schemas/UtcTimestamp"
+          },
+          "updated_at": {
+            "$ref": "#/components/schemas/UtcTimestamp"
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          }
+        },
+        "required": [
+          "profile_id",
+          "account_id",
+          "nickname",
+          "bio",
+          "profile_image_media_id",
+          "visibility",
+          "favorites",
+          "avatar",
+          "room_summary",
+          "created_at",
+          "updated_at",
+          "revision"
+        ]
+      },
       "PasswordResetConfirmRequest": {
         "type": "object",
         "properties": {
@@ -12141,6 +16640,120 @@
         "required": [
           "status"
         ]
+      },
+      "PeopleCard": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "profile_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "nickname": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40
+          },
+          "profile_image_media_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "avatar": {
+            "$ref": "#/components/schemas/AvatarState"
+          },
+          "shared_items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FavoriteItem"
+            },
+            "minItems": 1,
+            "maxItems": 15
+          },
+          "interaction_style": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 0,
+                "maxLength": 120
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "profile_id",
+          "nickname",
+          "profile_image_media_id",
+          "avatar",
+          "shared_items",
+          "interaction_style"
+        ]
+      },
+      "PeoplePage": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PeopleCard"
+            },
+            "minItems": 0,
+            "maxItems": 100
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1024,
+                "pattern": "^[A-Za-z0-9_-]+$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "items",
+          "next_cursor"
+        ]
+      },
+      "PeopleQuery": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "default": 20
+          },
+          "cursor": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024,
+            "pattern": "^[A-Za-z0-9_-]+$"
+          },
+          "category": {
+            "enum": [
+              "MUSIC",
+              "ANIME",
+              "GAME"
+            ]
+          }
+        },
+        "required": []
       },
       "Place": {
         "type": "object",
@@ -12380,6 +16993,22 @@
           "age_status"
         ]
       },
+      "ProfileFollowState": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "following": {
+            "type": "boolean"
+          },
+          "followed_by": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "following",
+          "followed_by"
+        ]
+      },
       "Provenance": {
         "type": "object",
         "additionalProperties": false,
@@ -12541,6 +17170,112 @@
           "display_name",
           "bio",
           "avatar"
+        ]
+      },
+      "PublicProfileV2": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "profile_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "nickname": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40
+          },
+          "bio": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 0,
+                "maxLength": 160
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "profile_image_media_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "avatar": {
+            "$ref": "#/components/schemas/AvatarState"
+          },
+          "favorites_public": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FavoriteItem"
+            },
+            "minItems": 0,
+            "maxItems": 15
+          },
+          "shared_with_viewer": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FavoriteItem"
+            },
+            "minItems": 0,
+            "maxItems": 15
+          },
+          "interaction_style": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 0,
+                "maxLength": 120
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "gender_bucket": {
+            "anyOf": [
+              {
+                "enum": [
+                  "female",
+                  "male",
+                  "unknown"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "follow": {
+            "$ref": "#/components/schemas/ProfileFollowState"
+          },
+          "blocked": {
+            "type": "boolean"
+          },
+          "room_available": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "profile_id",
+          "nickname",
+          "bio",
+          "profile_image_media_id",
+          "avatar",
+          "favorites_public",
+          "shared_with_viewer",
+          "interaction_style",
+          "gender_bucket",
+          "follow",
+          "blocked",
+          "room_available"
         ]
       },
       "ResendVerificationRequest": {
@@ -16420,6 +21155,25 @@
           "content_hash": "sha256:7f2891c81ffa1d5850107118898a7ef9377b222ab8639b3f2c9daf7908cf9018"
         }
       },
+      "RoomSummary": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "visibility": {
+            "enum": [
+              "PUBLIC",
+              "PRIVATE"
+            ]
+          },
+          "decorated": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "visibility",
+          "decorated"
+        ]
+      },
       "Scenery": {
         "type": "object",
         "additionalProperties": false,
@@ -16601,6 +21355,24 @@
           "config"
         ]
       },
+      "SetFavorites": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "expected_revision": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "favorites": {
+            "$ref": "#/components/schemas/FavoriteSelection"
+          }
+        },
+        "required": [
+          "expected_revision",
+          "favorites"
+        ]
+      },
       "SignupResponse": {
         "type": "object",
         "properties": {
@@ -16616,6 +21388,21 @@
         "required": [
           "userId",
           "status"
+        ]
+      },
+      "StartIdentityVerification": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "return_path": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512,
+            "pattern": "^/(?!/)[A-Za-z0-9._~!$&'()*+,;=:@%/-]*$"
+          }
+        },
+        "required": [
+          "return_path"
         ]
       },
       "TextureMetadata": {
@@ -16848,6 +21635,55 @@
           },
           "preferences": {
             "$ref": "#/components/schemas/Preferences"
+          }
+        },
+        "required": [
+          "expected_revision"
+        ],
+        "minProperties": 2
+      },
+      "UpdateProfile": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "expected_revision": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 9007199254740991
+          },
+          "nickname": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40
+          },
+          "bio": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 0,
+                "maxLength": 160
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "profile_image_media_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "visibility": {
+            "enum": [
+              "PUBLIC",
+              "PRIVATE"
+            ]
           }
         },
         "required": [

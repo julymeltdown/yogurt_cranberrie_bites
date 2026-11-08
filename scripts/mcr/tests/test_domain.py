@@ -52,7 +52,8 @@ class DomainTests(unittest.TestCase):
         path = row['path']
         for name in row['path_parameters']:
             path = path.replace('{' + name + '}', 'X' if name == 'platform' else event or uid(1))
-        return self.contract.validate_target(operation, path, query, event_id=event or uid(1))
+        bound = event or uid(1) if 'eventId' in row['path_parameters'] else None
+        return self.contract.validate_target(operation, path, query, event_id=bound)
 
     def test_all_operation_targets_have_typed_closed_paths_and_queries(self):
         required = {'expected_revision': 1, 'party_revision': 2, 'after_revision': 1,
@@ -60,10 +61,13 @@ class DomainTests(unittest.TestCase):
                     'idempotency_key': uid(9)}
         for row in self.contract.operations:
             with self.subTest(operation=row['operationId']):
-                fields = self.contract._definition(row['query_schema'])['required']
+                fields = self.contract._definition(row['query_schema']).get('required', [])
                 query = urlencode({name: required[name] for name in fields})
                 result = self.target(row['operationId'], query)
-                self.assertEqual(result['path']['eventId'], uid(1))
+                if 'eventId' in row['path_parameters']:
+                    self.assertEqual(result['path']['eventId'], uid(1))
+                else:
+                    self.assertNotIn('eventId', result['path'])
                 self.rejected(lambda: self.target(row['operationId'], query + ('&' if query else '') + 'token=hidden'))
 
     def test_missing_unknown_or_wrong_path_parameter_metadata_fails(self):
@@ -373,6 +377,213 @@ class DomainTests(unittest.TestCase):
                                     ('notification-safe', 'feed.Notification', 'handle')]:
             value = fixture(name); value[field] = 'private'
             self.rejected(lambda: self.contract.validate(value, schema))
+
+    # --- WP-01 profile domain contract (T-002 .. T-005) --------------------
+
+    PROFILE_OPERATIONS = [
+        'listIntroPosts', 'getIntroPost', 'getOwnIntroPost', 'listOwnIntroPosts',
+        'saveIntroPostDraft', 'publishIntroPost', 'deleteIntroPost', 'setIntroPostLike',
+        'clearIntroPostLike', 'listIntroPostLikers', 'listIntroPostComments',
+        'listProfilePosts', 'createProfilePost', 'deleteProfilePost', 'initProfileMediaUpload',
+        'putProfileMediaBytes', 'finalizeProfileMedia', 'getProfileMedia', 'readProfileMedia',
+        'getProfileRoom', 'getOwnRoom', 'saveOwnRoom', 'setOwnRoomVisibility', 'uploadRoomPoster',
+        'getOwnProfileAvatar', 'setOwnProfileAvatar', 'listActivity', 'listNotifications',
+        'markNotificationRead', 'followProfile', 'unfollowProfile',
+    ]
+
+    # Viewer-facing objects: none may reveal the audience or a numeric age.
+    VIEWER_FACING = ['IntroPostDetail', 'IntroPostPage', 'LikerProfile', 'IntroComment',
+                     'ActivityActor', 'ActivityItem', 'ProfilePost', 'ProfileRoom']
+
+    def definition(self, name):
+        return self.contract._definition('social.' + name)
+
+    def test_profile_operation_register_is_additive_unique_and_event_free(self):
+        new = [op for op in self.contract.operations if op['operationId'] in self.PROFILE_OPERATIONS]
+        self.assertEqual(len(new), len(self.PROFILE_OPERATIONS))
+        for op in new:
+            with self.subTest(operation=op['operationId']):
+                self.assertNotIn('/events/{eventId}', op['path'])
+                self.assertEqual(op['cache_control'], 'no-store')
+                self.assertIn(op['rule'], self.contract.policy['rules'])
+                self.assertTrue(op['errors'])
+        self.assertEqual(len(self.contract.operations), 148)
+        ids = [op['operationId'] for op in self.contract.operations]
+        routes = [(op['method'], op['path']) for op in self.contract.operations]
+        self.assertEqual(len(ids), len(set(ids)))
+        self.assertEqual(len(routes), len(set(routes)))
+
+    def test_profile_mutations_declare_conflict_and_rate_limit(self):
+        for op in self.contract.operations:
+            if op['operationId'] not in self.PROFILE_OPERATIONS or op['method'] == 'get':
+                continue
+            with self.subTest(operation=op['operationId']):
+                self.assertIn('429', op['errors'])
+                self.assertIn('RATE_LIMITED', op['errors']['429'])
+                self.assertIn('409', op['errors'])
+                if op['idempotency_key']:
+                    self.assertIn('IDEMPOTENCY_CONFLICT', op['errors']['409'])
+
+    def test_intro_post_detail_never_reveals_the_audience(self):
+        properties = set(self.definition('IntroPostDetail')['properties'])
+        for field in ('audience', 'allowed_gender', 'minimum_age', 'maximum_age_exclusive',
+                      'age_bounds', 'audience_summary', 'room_id', 'event_id',
+                      'external_account', 'handle', 'age'):
+            with self.subTest(field=field):
+                self.assertNotIn(field, properties)
+        self.assertIs(self.definition('IntroPostDetail')['additionalProperties'], False)
+
+    def test_intro_post_detail_rejects_audience_payload_fields(self):
+        value = {
+            'intro_id': uid(40), 'author': None, 'body': 'Looking for mutuals',
+            'favorites_snapshot': [], 'currently_seeking': None, 'interaction_style': None,
+            'attachments': [],
+            'like': {'count': 3, 'liked_by_viewer': False}, 'comment_count': 1,
+            'published_at': '2026-11-08T00:00:00Z', 'expires_at': None,
+        }
+        for field, injected in [('audience', {'allowed_gender': 'female'}),
+                                ('allowed_gender', 'female'), ('minimum_age', 18),
+                                ('maximum_age_exclusive', 30), ('room_id', uid(41))]:
+            with self.subTest(field=field):
+                self.rejected(lambda: self.contract.validate({**value, field: injected},
+                                                             'social.IntroPostDetail'))
+
+    def test_viewer_facing_objects_never_expose_age_or_audience(self):
+        forbidden = {'age', 'minimum_age', 'maximum_age_exclusive', 'age_bounds',
+                     'allowed_gender', 'audience', 'audience_summary', 'exact_age',
+                     'verified_age', 'date_of_birth'}
+        for name in self.VIEWER_FACING:
+            with self.subTest(name=name):
+                self.assertFalse(forbidden & set(self.definition(name)['properties']))
+
+    def test_own_intro_post_carries_paired_audience_bounds(self):
+        audience = self.definition('IntroAudience')
+        self.assertIs(audience['additionalProperties'], False)
+        self.assertEqual(audience['required'],
+                         ['allowed_gender', 'minimum_age', 'maximum_age_exclusive'])
+        self.assertIn('dependentRequired', audience)
+        self.contract.validate({'allowed_gender': 'any', 'minimum_age': None,
+                                'maximum_age_exclusive': None}, 'social.IntroAudience')
+        self.contract.validate({'allowed_gender': 'female', 'minimum_age': 18,
+                                'maximum_age_exclusive': 30}, 'social.IntroAudience')
+        for bounds in [{'allowed_gender': 'any', 'minimum_age': 18, 'maximum_age_exclusive': None},
+                       {'allowed_gender': 'any', 'minimum_age': None, 'maximum_age_exclusive': 30},
+                       {'allowed_gender': 'any', 'minimum_age': 13, 'maximum_age_exclusive': 30},
+                       {'allowed_gender': 'any', 'minimum_age': 18, 'maximum_age_exclusive': 102},
+                       {'allowed_gender': 'everyone', 'minimum_age': None,
+                        'maximum_age_exclusive': None}]:
+            with self.subTest(bounds=bounds):
+                self.rejected(lambda: self.contract.validate(bounds, 'social.IntroAudience'))
+
+    def test_intro_like_state_count_is_nullable_only_for_lost_access(self):
+        schema = self.definition('IntroLikeState')
+        self.assertIs(schema['additionalProperties'], False)
+        self.assertEqual(schema['required'], ['liked', 'like_count'])
+        self.contract.validate({'liked': True, 'like_count': 4}, 'social.IntroLikeState')
+        self.contract.validate({'liked': False, 'like_count': None}, 'social.IntroLikeState')
+        self.rejected(lambda: self.contract.validate({'liked': True, 'like_count': -1},
+                                                     'social.IntroLikeState'))
+
+    def test_room_layout_limits_posters_and_carries_no_event_or_intro(self):
+        layout = self.definition('RoomLayout')
+        self.assertIs(layout['additionalProperties'], False)
+        self.assertEqual(layout['properties']['posters']['maxItems'], 4)
+        self.assertEqual(layout['properties']['furniture']['maxItems'], 32)
+        self.assertEqual(layout['properties']['version']['const'], 1)
+        self.assertNotIn('intro_id', layout['properties'])
+        self.assertNotIn('event_id', layout['properties'])
+        posters = [{'poster_media_id': uid(50 + index), 'slot': index, 'x': index, 'y': 0,
+                    'width': 8, 'height': 8} for index in range(4)]
+        base = {'version': 1, 'wall': 'wall_default', 'floor': 'floor_default',
+                'furniture': [], 'character': {'cell_x': 4, 'cell_y': 4, 'facing': 'RIGHT'}}
+        self.contract.validate({**base, 'posters': posters}, 'social.RoomLayout')
+        self.rejected(lambda: self.contract.validate({**base, 'posters': posters + [
+            {'poster_media_id': uid(60), 'slot': 0, 'x': 0, 'y': 0, 'width': 8, 'height': 8}]},
+            'social.RoomLayout'))
+        self.rejected(lambda: self.contract.validate({**base, 'posters': [], 'intro_id': uid(61)},
+                                                     'social.RoomLayout'))
+        self.rejected(lambda: self.contract.validate({**base, 'posters': [], 'event_id': uid(62)},
+                                                     'social.RoomLayout'))
+        self.rejected(lambda: self.contract.validate({**base, 'posters': [], 'version': 2},
+                                                     'social.RoomLayout'))
+
+    def test_upload_poster_content_type_is_the_png_literal(self):
+        schema = self.definition('UploadPoster')
+        self.assertIs(schema['additionalProperties'], False)
+        self.assertEqual(schema['properties']['content_type'], {'const': 'image/png'})
+        self.assertEqual(schema['properties']['preset']['enum'], ['FINE', 'CHUNKY'])
+        self.assertEqual(schema['properties']['width']['maximum'], 128)
+        self.assertEqual(schema['properties']['height']['maximum'], 128)
+        self.assertEqual(schema['properties']['bytes_base64']['maxLength'], 1048576)
+        value = {'preset': 'FINE', 'width': 64, 'height': 64,
+                 'content_type': 'image/png', 'bytes_base64': 'iVBORw0KGgo='}
+        self.contract.validate(value, 'social.UploadPoster')
+        for content_type in ['image/jpeg', 'image/webp', 'image/gif', 'IMAGE/PNG', 'image/png;q=1']:
+            with self.subTest(content_type=content_type):
+                self.rejected(lambda: self.contract.validate({**value, 'content_type': content_type},
+                                                             'social.UploadPoster'))
+
+    def test_room_and_post_requests_are_closed(self):
+        for name in ['ProfileRoom', 'OwnRoom', 'SaveRoom', 'SetRoomVisibility', 'RoomPoster',
+                     'ProfilePost', 'CreateProfilePost', 'ProfilePostPage', 'IntroPostDetail',
+                     'OwnIntroPost', 'SaveIntroPost', 'LikerPage', 'IntroComment',
+                     'CreateIntroComment', 'IntroCommentPage', 'ActivityPage', 'FollowState']:
+            with self.subTest(name=name):
+                schema = self.definition(name)
+                self.assertIs(schema['additionalProperties'], False)
+                self.assertIn('required', schema)
+                self.assertLessEqual(set(schema['required']), set(schema['properties']))
+
+    def test_new_policy_rules_are_complete(self):
+        required = ['intro_like', 'intro_likers', 'intro_comment_read', 'intro_comment_create',
+                    'intro_comment_delete', 'room_save', 'room_visibility', 'room_poster_upload',
+                    'profile_post_create', 'profile_post_delete', 'identity_start',
+                    'identity_callback', 'identity_disconnect', 'profile_update',
+                    'favorites_set', 'avatar_set', 'follow']
+        for name in required:
+            with self.subTest(rule=name):
+                rule = self.contract.policy['rules'][name]
+                self.assertTrue(rule['preconditions'])
+                self.assertTrue(rule['result'])
+
+    def test_every_profile_operation_rule_exists_in_policy(self):
+        for op in self.contract.operations:
+            if op['operationId'] in self.PROFILE_OPERATIONS:
+                with self.subTest(operation=op['operationId']):
+                    self.assertIn(op['rule'], self.contract.policy['rules'])
+
+    def test_notification_kind_and_target_are_additive(self):
+        notification = self.contract._definition('feed.Notification')
+        target = self.contract._definition('feed.NotificationTarget')
+        self.assertEqual(notification['properties']['kind']['enum'],
+                         ['PARTY', 'GIVEAWAY', 'SOCIAL', 'MODERATION', 'NOTICE', 'FEED', 'INTRO_LIKED'])
+        self.assertEqual(target['properties']['target_type']['enum'],
+                         ['PARTY', 'APPLICATION', 'GIVEAWAY', 'RESERVATION', 'SOCIAL_REQUEST',
+                          'POST', 'NOTICE', 'REPORT', 'INTRO_POST'])
+
+    def test_proto_enum_numbers_are_append_only(self):
+        source = (domain.ROOT / 'backend/proto/notification/v1/concert_inbox.proto').read_text()
+        kind = source.split('enum NotificationKind {', 1)[1].split('}', 1)[0]
+        target = source.split('enum TargetType {', 1)[1].split('}', 1)[0]
+        def numbers(block):
+            return {name: int(value) for name, value in
+                    (row.strip().rstrip(';').split(' = ') for row in block.strip().splitlines())}
+        kind_values = numbers(kind)
+        target_values = numbers(target)
+        self.assertEqual(kind_values['NOTIFICATION_KIND_UNSPECIFIED'], 0)
+        self.assertEqual(kind_values['PARTY'], 1)
+        self.assertEqual(kind_values['GIVEAWAY'], 2)
+        self.assertEqual(kind_values['SOCIAL'], 3)
+        self.assertEqual(kind_values['MODERATION'], 4)
+        self.assertEqual(kind_values['NOTICE'], 5)
+        self.assertEqual(kind_values['FEED'], 6)
+        self.assertEqual(kind_values['INTRO_LIKED'], 7)
+        self.assertEqual(target_values['TARGET_TYPE_UNSPECIFIED'], 0)
+        self.assertEqual(target_values['TARGET_PARTY'], 1)
+        self.assertEqual(target_values['REPORT'], 8)
+        self.assertEqual(target_values['INTRO_POST'], 9)
+        self.assertEqual(len(set(kind_values.values())), len(kind_values))
+        self.assertEqual(len(set(target_values.values())), len(target_values))
 
 
 if __name__ == '__main__':

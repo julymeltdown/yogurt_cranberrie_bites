@@ -1243,6 +1243,211 @@
         "Command success is a safe CommandReceipt; it is not a fresh public policy decision, admission or server-enforcement grant",
         "Same current policy must gate genuine World and non-exempt mutation effects; preserve existing owner-classified READ_ONLY safety/cancellation exceptions"
       ]
+    },
+    "intro_like": {
+      "preconditions": [
+        "Active canonical Auth member; actor is the session, never a request-body identity",
+        "Target intro post is PUBLISHED, unexpired and passes the same can_view_intro decision used by list and detail",
+        "Author cannot like their own post",
+        "At most one like per (intro, actor); repeated PUT is idempotent"
+      ],
+      "result": [
+        "Insert or keep the like and return liked=true with the current like_count",
+        "A denied view returns 404 RESOURCE_UNAVAILABLE and writes nothing",
+        "No reward, score, application or approval state is created",
+        "Enqueue INTRO_LIKED notification to the author, deduplicated on (recipient, kind, intro_id, actor_profile_id)"
+      ]
+    },
+    "intro_likers": {
+      "preconditions": [
+        "Actor is the author of the target intro post; anyone else receives 403 PERMISSION_DENIED",
+        "Blocked, deleted or otherwise inaccessible likers are omitted from the page",
+        "Cursor is bound to actor, operation, collection and canonical filters"
+      ],
+      "result": [
+        "Return author-only liker rows with shared catalog items computed from catalog IDs",
+        "Never return a compatibility score, contact handle or external-account field",
+        "A page may be shorter than limit because inaccessible likers are omitted"
+      ]
+    },
+    "intro_comment_read": {
+      "preconditions": [
+        "Active canonical Auth member",
+        "Target intro post passes the same can_view_intro decision as detail",
+        "Each row is re-authorized under the parent post's current audience"
+      ],
+      "result": [
+        "Return the comment page newest first with an opaque next cursor",
+        "A denied view returns 404 RESOURCE_UNAVAILABLE"
+      ]
+    },
+    "intro_comment_create": {
+      "preconditions": [
+        "Active canonical Auth member with browser Origin and X-MCR-Intent",
+        "Target intro post passes can_view_intro before insert",
+        "Body is 1..500 characters, single-line safe, and passes the existing intro_policy contact-bypass rules",
+        "parent_comment_id, when present, belongs to the same intro post"
+      ],
+      "result": [
+        "Insert the comment or reply and increment comment_count",
+        "Denied audience writes nothing and returns 404 RESOURCE_UNAVAILABLE",
+        "Enqueue INTRO_COMMENT or INTRO_REPLY notification to the post author"
+      ]
+    },
+    "intro_comment_delete": {
+      "preconditions": [
+        "Actor authored the comment, or is the intro post author or a moderator",
+        "Expected revision is checked in the same transaction when supplied"
+      ],
+      "result": [
+        "Mark the comment deleted; replies keep their parent reference",
+        "Decrement comment_count once; repeated delete is idempotent"
+      ]
+    },
+    "room_save": {
+      "preconditions": [
+        "Actor owns the room; ownership is verified server-side, never inferred from a supplied profile_id",
+        "Expected revision matches the stored room revision or creation revision 0",
+        "Layout version is 1; coordinates are inside the fixed grid; at most 4 posters; at most 32 furniture placements; furniture cells are unique per layer; style IDs are known",
+        "Every poster_media_id is owned by the actor, is READY and has purpose ROOM_POSTER"
+      ],
+      "result": [
+        "Persist the layout atomically and increment room revision",
+        "Revision mismatch returns 409 REVISION_CONFLICT with the current OwnRoom body so the client can offer explicit resolution",
+        "Never silently overwrite a concurrent layout"
+      ]
+    },
+    "room_visibility": {
+      "preconditions": [
+        "Actor owns the room",
+        "Expected revision matches the stored room revision"
+      ],
+      "result": [
+        "Persist PUBLIC or PRIVATE and increment room revision",
+        "A visitor of a PRIVATE room receives 404 RESOURCE_UNAVAILABLE and the profile reports room_available=false"
+      ]
+    },
+    "room_poster_upload": {
+      "preconditions": [
+        "Actor owns the room",
+        "Body content_type is exactly image/png; PNG signature, dimensions and decodability are validated server-side",
+        "Width and height are 8..128 and the decoded payload is at most 1 MiB",
+        "Preset is FINE or CHUNKY; the server stores the browser conversion and never re-pixelates"
+      ],
+      "result": [
+        "Store a ROOM_POSTER media asset owned by the actor and return it with its revision",
+        "Invalid media type returns 415 INVALID_MEDIA_TYPE; oversize payload returns 413 PAYLOAD_TOO_LARGE",
+        "No source photograph is accepted or retained"
+      ]
+    },
+    "profile_post_create": {
+      "preconditions": [
+        "Active canonical Auth member with browser Origin and X-MCR-Intent",
+        "Description is 0..500 characters with no NUL; media_ids has at most 4 unique entries",
+        "Every media_id is owned by the actor, is READY and has purpose PROFILE_POST",
+        "Visibility is PUBLIC or PRIVATE; expiry, when present, is in the future"
+      ],
+      "result": [
+        "Insert the profile post with its own visibility, independent of any intro post",
+        "Return the created ProfilePost projection; no event reference is created"
+      ]
+    },
+    "profile_post_delete": {
+      "preconditions": [
+        "Actor authored the profile post",
+        "Expected revision matches in the same transaction"
+      ],
+      "result": [
+        "Mark the post deleted and detach its attachments",
+        "Media assets are released only when their reference count reaches zero",
+        "Repeated delete is idempotent"
+      ]
+    },
+    "identity_start": {
+      "preconditions": [
+        "Active canonical Auth member with browser Origin and X-MCR-Intent",
+        "return_path is a same-origin application path from the closed allowlist",
+        "At most one live one-use state per (user, provider); a new start supersedes the previous state",
+        "Provider configuration is present and not a production placeholder"
+      ],
+      "result": [
+        "Create a one-use state with a 10-minute lifetime bound to the session and account context version",
+        "Return the provider authorization_url and its expiry; never return a provider token",
+        "When the provider is unavailable return 503 DEPENDENCY_UNAVAILABLE and write no state"
+      ]
+    },
+    "identity_callback": {
+      "preconditions": [
+        "Anonymous provider redirect: no session, no CSRF token and no X-MCR-Intent header is required",
+        "The state value is consumed exactly once and must match an unexpired start for the same provider",
+        "The provider profile gender must be F, M or U; a missing or unrecognized value fails with profile_incomplete and writes no claim row",
+        "The Location is derived from the stored, validated return path and is never echoed from the request"
+      ],
+      "result": [
+        "Write the verified claim (age_at_verification, next_birthday_at, gender_bucket) with at most a 90-day expiry",
+        "Redirect with 303 to the stored return path; this is the only redirect response in the contract",
+        "Perform no mutation beyond consuming the one-use state and writing the claim"
+      ]
+    },
+    "identity_disconnect": {
+      "preconditions": [
+        "Active canonical Auth member with browser Origin and X-MCR-Intent",
+        "Actor owns the verification record for the provider"
+      ],
+      "result": [
+        "Mark the canonical claim REVOKED; every restricted post keeps its audience but this user's attributes become unavailable",
+        "Return the resulting IdentityVerification projection; repeated disconnect is idempotent"
+      ]
+    },
+    "profile_update": {
+      "preconditions": [
+        "Active canonical Auth member with browser Origin and X-MCR-Intent",
+        "Actor owns the profile; ownership is verified server-side",
+        "Expected revision matches the stored profile revision",
+        "Nickname is 1..40 characters, bio 0..160, visibility is PUBLIC or PRIVATE",
+        "profile_image_media_id, when present, is owned by the actor with purpose PROFILE_IMAGE and state READY"
+      ],
+      "result": [
+        "Persist the changed fields and increment profile revision",
+        "Return the OwnProfile projection",
+        "Revision mismatch returns 409 REVISION_CONFLICT"
+      ]
+    },
+    "favorites_set": {
+      "preconditions": [
+        "Active canonical Auth member with browser Origin and X-MCR-Intent",
+        "Actor owns the profile and expected revision matches",
+        "At most 5 items per category; each catalog_item_id exists; each item category matches its containing array",
+        "The music catalog excludes K-pop"
+      ],
+      "result": [
+        "Replace the profile favorites and increment profile revision",
+        "Return the OwnProfile projection",
+        "Invalid catalog references return 400 INVALID_INPUT"
+      ]
+    },
+    "avatar_set": {
+      "preconditions": [
+        "Active canonical Auth member with browser Origin and X-MCR-Intent",
+        "Actor owns the profile avatar and expected revision matches",
+        "Config is validated by the existing avatar catalog; no asset URL or arbitrary bytes are accepted"
+      ],
+      "result": [
+        "Persist the avatar config keyed by profile ownership, never by an event participant key",
+        "Increment avatar revision and return AvatarState"
+      ]
+    },
+    "follow": {
+      "preconditions": [
+        "Active canonical Auth member with browser Origin and X-MCR-Intent",
+        "Target profile exists and is not the actor",
+        "A block in either direction returns 404 RESOURCE_UNAVAILABLE"
+      ],
+      "result": [
+        "Create or remove the independent follow edge through the existing friend service",
+        "No follow request, approval step or pending state is created",
+        "Return FollowState with following and followed_by; repeated calls are idempotent"
+      ]
     }
   },
   "remaining_before_freeze": [

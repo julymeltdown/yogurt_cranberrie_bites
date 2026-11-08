@@ -50,7 +50,8 @@ class CoreContractTests(unittest.TestCase):
         for methods in self.document["paths"].values():
             for method, operation in methods.items():
                 ids.append(operation["operationId"])
-                self.assertIn(operation["x-mcr-runtime-status"], {"NOT_IMPLEMENTED", "ADAPTATION_REQUIRED"})
+                self.assertIn(operation["x-mcr-runtime-status"],
+                              {"NOT_IMPLEMENTED", "ADAPTATION_REQUIRED", "IMPLEMENTATION_IN_PROGRESS"})
                 if method in {"post", "delete", "patch", "put"} and "callback" not in operation["operationId"].lower():
                     if operation["operationId"] in {"receiveAppleOAuthFormPost", "completeAppleOAuthFormPost"}:
                         continue
@@ -249,6 +250,150 @@ class CoreContractTests(unittest.TestCase):
             with self.subTest(target=target):
                 core.validate({**step, "target": target}, "UserDeletionStep", self.document)
         self.reject({**step, "target": "CONCERT_ALL"}, "UserDeletionStep")
+
+    # --- WP-01 profile core contract (T-001, T-004, T-007) -----------------
+
+    PROFILE_DEFINITIONS = ["OwnProfile", "PublicProfileV2", "IdentityVerification",
+                           "StartIdentityVerification", "IdentityCallbackQuery",
+                           "IdentityVerificationStart", "FavoriteItem", "UpdateProfile",
+                           "SetFavorites", "CatalogQuery", "CatalogPage", "PeopleQuery",
+                           "PeoplePage"]
+
+    PROFILE_OPERATIONS = ["getOwnProfile", "updateOwnProfile", "setOwnFavorites", "getProfile",
+                          "searchCatalog", "discoverProfiles", "getOwnIdentityVerification",
+                          "startIdentityVerification", "completeIdentityVerification",
+                          "disconnectIdentityVerification"]
+
+    # Objects a viewer can receive for another member. None may carry a numeric age.
+    VIEWER_FACING = ["PublicProfileV2", "PeopleCard", "CatalogItem", "CatalogPage", "PeoplePage"]
+
+    def definitions(self):
+        return self.document["components"]["schemas"]
+
+    def test_profile_core_definitions_exist_and_are_closed(self):
+        for name in self.PROFILE_DEFINITIONS:
+            with self.subTest(name=name):
+                schema = self.definitions()[name]
+                self.assertIs(schema.get("additionalProperties"), False)
+                self.assertIn("required", schema)
+                self.assertLessEqual(set(schema["required"]), set(schema["properties"]))
+                Draft202012Validator.check_schema(schema)
+
+    def test_viewer_facing_objects_never_expose_a_numeric_age(self):
+        forbidden = {"age", "minimum_age", "maximum_age_exclusive", "exact_age",
+                     "age_at_verification", "birthyear", "birthday", "date_of_birth",
+                     "verified_age", "age_bounds", "audience", "allowed_gender"}
+        for name in self.VIEWER_FACING:
+            with self.subTest(name=name):
+                self.assertFalse(forbidden & set(self.definitions()[name]["properties"]))
+
+    def test_public_profile_v2_rejects_age_and_audience_fields(self):
+        value = {
+            "profile_id": "00000000-0000-4000-8000-000000000002",
+            "nickname": "Fixture fan",
+            "bio": None,
+            "profile_image_media_id": None,
+            "avatar": {"revision": 1, "config": self.fixture("avatar-state")["config"]},
+            "favorites_public": [],
+            "shared_with_viewer": [],
+            "interaction_style": None,
+            "gender_bucket": None,
+            "follow": {"following": False, "followed_by": False},
+            "blocked": False,
+            "room_available": True,
+        }
+        core.validate(value, "PublicProfileV2", self.document)
+        for name, injected in [("age", 25), ("minimum_age", 18), ("maximum_age_exclusive", 30),
+                               ("audience", {"allowed_gender": "any"}), ("allowed_gender", "female"),
+                               ("exact_age", 25), ("date_of_birth", "2000-01-01")]:
+            with self.subTest(field=name):
+                self.reject({**value, name: injected}, "PublicProfileV2")
+        value["gender_bucket"] = "female"
+        core.validate(value, "PublicProfileV2", self.document)
+        value["gender_bucket"] = "any"
+        self.reject(value, "PublicProfileV2")
+
+    def test_gender_bucket_appears_only_on_the_owner_claim_and_public_projection(self):
+        holders = sorted(name for name, schema in self.definitions().items()
+                         if "gender_bucket" in schema.get("properties", {}))
+        self.assertEqual(holders, ["IdentityClaims", "PublicProfileV2"])
+        for name in ["OwnProfile", "UpdateProfile", "PeopleCard", "CatalogItem"]:
+            with self.subTest(name=name):
+                self.assertNotIn("gender_bucket", self.definitions()[name]["properties"])
+
+    def test_identity_verification_owner_view_and_claim_bounds(self):
+        value = {
+            "provider": "naver",
+            "status": "VERIFIED",
+            "verified_at": "2026-11-08T00:00:00Z",
+            "expires_at": "2027-02-06T00:00:00Z",
+            "claims": {"age": 25, "gender_bucket": "female"},
+            "display_on_profile": False,
+        }
+        core.validate(value, "IdentityVerification", self.document)
+        for claims in [{"age": 13, "gender_bucket": "female"},
+                       {"age": 101, "gender_bucket": "female"},
+                       {"age": 25, "gender_bucket": "any"},
+                       {"age": 25}]:
+            with self.subTest(claims=claims):
+                self.reject({**value, "claims": claims}, "IdentityVerification")
+        self.reject({**value, "provider": "google"}, "IdentityVerification")
+        self.reject({**value, "status": "UNKNOWN"}, "IdentityVerification")
+
+    def test_identity_start_return_path_is_same_origin_only(self):
+        core.validate({"return_path": "/me/settings"}, "StartIdentityVerification", self.document)
+        for path in ["//evil.example/steal", "https://evil.example/", "me/settings", "/a\nb", ""]:
+            with self.subTest(path=path):
+                self.reject({"return_path": path}, "StartIdentityVerification")
+
+    def test_profile_operation_register_is_unique_and_event_free(self):
+        register = json.loads((ROOT / "contracts/core/v1/operations.json").read_text())
+        ids = [row["operationId"] for row in register]
+        self.assertEqual(len(ids), len(set(ids)))
+        routes = [(row["method"], row["path"]) for row in register]
+        self.assertEqual(len(routes), len(set(routes)))
+        self.assertEqual(len(register), 25)
+        ids = {row["operationId"] for row in register}
+        self.assertLessEqual(set(self.PROFILE_OPERATIONS), ids)
+        for row in register:
+            if row["operationId"] in self.PROFILE_OPERATIONS:
+                with self.subTest(operation=row["operationId"]):
+                    self.assertNotIn("/events/{eventId}", row["path"])
+
+    def test_complete_identity_verification_is_the_only_303(self):
+        redirects = []
+        for path, methods in self.document["paths"].items():
+            for method, operation in methods.items():
+                if "303" in operation["responses"]:
+                    redirects.append(operation["operationId"])
+        self.assertEqual(redirects, ["completeIdentityVerification"])
+        operation = self.document["paths"]["/api/identity/{provider}/callback"]["get"]
+        self.assertEqual(operation["security"], [])
+        self.assertNotIn("X-MCR-Intent", [p["name"] for p in operation["parameters"]])
+        self.assertEqual(operation["x-mcr-redirect"], "SERVER_DERIVED_STORED_RETURN_PATH_ONLY")
+        self.assertIs(operation["x-mcr-anonymous-provider-callback"], True)
+        location = operation["responses"]["303"]["headers"]["Location"]
+        self.assertIs(location["required"], True)
+        self.assertNotIn("content", operation["responses"]["303"])
+
+    def test_profile_operations_are_anonymous_only_for_the_provider_callback(self):
+        anonymous = []
+        for path, methods in self.document["paths"].items():
+            for operation in methods.values():
+                if operation["operationId"] in self.PROFILE_OPERATIONS and operation["security"] == []:
+                    anonymous.append(operation["operationId"])
+        self.assertEqual(anonymous, ["completeIdentityVerification"])
+
+    def test_profile_operations_declare_closed_queries_and_no_unknown_fields(self):
+        operation = self.document["paths"]["/api/catalog/{category}/search"]["get"]
+        query = [p for p in operation["parameters"] if p["in"] == "query"]
+        self.assertEqual([p["name"] for p in query], ["limit", "cursor", "q"])
+        self.assertNotIn("requestBody", operation)
+        category = next(p for p in operation["parameters"] if p["name"] == "category")
+        self.assertEqual(category["schema"]["enum"], ["MUSIC", "ANIME", "GAME"])
+        provider = self.document["paths"]["/api/me/identity/{provider}"]["get"]
+        self.assertEqual(next(p for p in provider["parameters"] if p["name"] == "provider")["schema"]["enum"],
+                         ["naver"])
 
 
 if __name__ == "__main__":

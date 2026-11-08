@@ -22,6 +22,11 @@ DIRECTORY = ROOT / 'contracts/domain/v1'
 FIXTURES = ROOT / 'contracts/fixtures/domain'
 MAX_SAFE = 9007199254740991
 SEOUL = ZoneInfo('Asia/Seoul')
+# Profile-owned operations are rooted at /api and never at an event. The event
+# prefix stays reserved for the concert product and is rejected for them.
+EVENT_PREFIX = '/api/concert/events/{eventId}/'
+PROFILE_PREFIXES = ('/api/me/', '/api/profiles/', '/api/intro-posts/', '/api/discover/',
+                    '/api/catalog/', '/api/media/', '/api/notifications/')
 
 
 class ContractError(ValueError):
@@ -207,6 +212,12 @@ class Contract:
                     self.validators[group + '.' + name] = Draft202012Validator(
                         {'$ref': doc['$id'] + '#/$defs/' + name}, registry=self.registry,
                         format_checker=FORMATS)
+            elif path.name == 'core.schema.json':
+                # Profile-owned operations reuse core DTOs under the core. prefix.
+                for name in doc['$defs']:
+                    self.validators['core.' + name] = Draft202012Validator(
+                        {'$ref': doc['$id'] + '#/$defs/' + name}, registry=self.registry,
+                        format_checker=FORMATS)
             self._resolve_all(doc, doc['$id'])
         self.policy = read(DIRECTORY / 'policy.json')
         self.operations = read(DIRECTORY / 'operations.json')
@@ -226,6 +237,17 @@ class Contract:
             for child in value:
                 self._resolve_all(child, base)
 
+    def check_scope(self, path, operation_id):
+        """Event operations stay under the concert prefix; profile operations never do."""
+        if path.startswith(EVENT_PREFIX):
+            return
+        require('/events/{eventId}' not in path,
+                'profile operation must not carry an event path: ' + operation_id)
+        for prefix in PROFILE_PREFIXES:
+            if path.startswith(prefix):
+                return
+        raise ContractError('invalid operation scope: ' + operation_id)
+
     def check_register(self):
         ids, routes = set(), set()
         known_reasons = {b['properties']['reason']['const'] for doc in self.documents
@@ -235,7 +257,7 @@ class Contract:
             require(op['operationId'] not in ids, 'duplicate operation ID')
             require((op['method'], op['path']) not in routes, 'duplicate route')
             ids.add(op['operationId']); routes.add((op['method'], op['path']))
-            require(op['path'].startswith('/api/concert/events/{eventId}/'), 'invalid event scope')
+            self.check_scope(op['path'], op['operationId'])
             require(op['method'] in ('get', 'post', 'put', 'patch', 'delete'), 'invalid method')
             require(op['actor'] and op['rule'] in self.policy['rules'], 'missing semantic rule')
             rule = self.policy['rules'][op['rule']]
@@ -375,6 +397,7 @@ class Contract:
             self.validate(value, 'common.Platform' if name == 'platform' else 'common.Uuid')
         if event_id is not None:
             self.validate(event_id, 'common.Uuid')
+            require('eventId' in parameters, 'event scope required for an event-bound target')
             require(parameters['eventId'] == event_id, 'request event mismatch')
         policy = self.policy['request_targets']
         require(isinstance(raw_query, str) and raw_query.isascii() and

@@ -1360,6 +1360,725 @@
         "acceptedRevision",
         "serverTime"
       ]
+    },
+    "FavoriteItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "catalog_item_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "category": {
+          "enum": [
+            "MUSIC",
+            "ANIME",
+            "GAME"
+          ]
+        },
+        "external_url": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uri",
+              "maxLength": 2048
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "catalog_item_id",
+        "label",
+        "category",
+        "external_url"
+      ]
+    },
+    "FavoriteSelection": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "music": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FavoriteItem"
+          },
+          "minItems": 0,
+          "maxItems": 5
+        },
+        "anime": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FavoriteItem"
+          },
+          "minItems": 0,
+          "maxItems": 5
+        },
+        "games": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FavoriteItem"
+          },
+          "minItems": 0,
+          "maxItems": 5
+        }
+      },
+      "required": [
+        "music",
+        "anime",
+        "games"
+      ]
+    },
+    "RoomSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "visibility": {
+          "enum": [
+            "PUBLIC",
+            "PRIVATE"
+          ]
+        },
+        "decorated": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "visibility",
+        "decorated"
+      ]
+    },
+    "OwnProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "profile_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "account_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "nickname": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "bio": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 160
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "profile_image_media_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "visibility": {
+          "enum": [
+            "PUBLIC",
+            "PRIVATE"
+          ]
+        },
+        "favorites": {
+          "$ref": "#/$defs/FavoriteSelection"
+        },
+        "avatar": {
+          "$ref": "#/$defs/AvatarState"
+        },
+        "room_summary": {
+          "$ref": "#/$defs/RoomSummary"
+        },
+        "created_at": {
+          "$ref": "#/$defs/UtcTimestamp"
+        },
+        "updated_at": {
+          "$ref": "#/$defs/UtcTimestamp"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "profile_id",
+        "account_id",
+        "nickname",
+        "bio",
+        "profile_image_media_id",
+        "visibility",
+        "favorites",
+        "avatar",
+        "room_summary",
+        "created_at",
+        "updated_at",
+        "revision"
+      ]
+    },
+    "UpdateProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expected_revision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "nickname": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "bio": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 160
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "profile_image_media_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "visibility": {
+          "enum": [
+            "PUBLIC",
+            "PRIVATE"
+          ]
+        }
+      },
+      "required": [
+        "expected_revision"
+      ],
+      "minProperties": 2
+    },
+    "SetFavorites": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expected_revision": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "favorites": {
+          "$ref": "#/$defs/FavoriteSelection"
+        }
+      },
+      "required": [
+        "expected_revision",
+        "favorites"
+      ]
+    },
+    "ProfileFollowState": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "following": {
+          "type": "boolean"
+        },
+        "followed_by": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "following",
+        "followed_by"
+      ]
+    },
+    "PublicProfileV2": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "profile_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "nickname": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "bio": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 160
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "profile_image_media_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "avatar": {
+          "$ref": "#/$defs/AvatarState"
+        },
+        "favorites_public": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FavoriteItem"
+          },
+          "minItems": 0,
+          "maxItems": 15
+        },
+        "shared_with_viewer": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FavoriteItem"
+          },
+          "minItems": 0,
+          "maxItems": 15
+        },
+        "interaction_style": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 120
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "gender_bucket": {
+          "anyOf": [
+            {
+              "enum": [
+                "female",
+                "male",
+                "unknown"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "follow": {
+          "$ref": "#/$defs/ProfileFollowState"
+        },
+        "blocked": {
+          "type": "boolean"
+        },
+        "room_available": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "profile_id",
+        "nickname",
+        "bio",
+        "profile_image_media_id",
+        "avatar",
+        "favorites_public",
+        "shared_with_viewer",
+        "interaction_style",
+        "gender_bucket",
+        "follow",
+        "blocked",
+        "room_available"
+      ]
+    },
+    "IdentityClaims": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "age": {
+          "type": "integer",
+          "minimum": 14,
+          "maximum": 100
+        },
+        "gender_bucket": {
+          "enum": [
+            "female",
+            "male",
+            "unknown"
+          ]
+        }
+      },
+      "required": [
+        "age",
+        "gender_bucket"
+      ]
+    },
+    "IdentityVerification": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "provider": {
+          "enum": [
+            "naver"
+          ]
+        },
+        "status": {
+          "enum": [
+            "NOT_VERIFIED",
+            "VERIFIED",
+            "EXPIRED",
+            "REVOKED",
+            "PROVIDER_UNAVAILABLE"
+          ]
+        },
+        "verified_at": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/UtcTimestamp"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "expires_at": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/UtcTimestamp"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "claims": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/IdentityClaims"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "display_on_profile": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "provider",
+        "status",
+        "verified_at",
+        "expires_at",
+        "claims",
+        "display_on_profile"
+      ]
+    },
+    "StartIdentityVerification": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "return_path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512,
+          "pattern": "^/(?!/)[A-Za-z0-9._~!$&'()*+,;=:@%/-]*$"
+        }
+      },
+      "required": [
+        "return_path"
+      ]
+    },
+    "IdentityCallbackQuery": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        },
+        "state": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 512
+        }
+      },
+      "required": [
+        "code",
+        "state"
+      ]
+    },
+    "IdentityVerificationStart": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "authorization_url": {
+          "type": "string",
+          "format": "uri",
+          "maxLength": 2048
+        },
+        "expires_at": {
+          "$ref": "#/$defs/UtcTimestamp"
+        }
+      },
+      "required": [
+        "authorization_url",
+        "expires_at"
+      ]
+    },
+    "CatalogQuery": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 20
+        },
+        "cursor": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024,
+          "pattern": "^[A-Za-z0-9_-]+$"
+        },
+        "q": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80,
+          "pattern": "^[^\\u0000-\\u001f\\u007f]+$"
+        }
+      },
+      "required": []
+    },
+    "CatalogItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "catalog_item_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "category": {
+          "enum": [
+            "MUSIC",
+            "ANIME",
+            "GAME"
+          ]
+        },
+        "external_url": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uri",
+              "maxLength": 2048
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "catalog_item_id",
+        "label",
+        "category",
+        "external_url"
+      ]
+    },
+    "CatalogPage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "category": {
+          "enum": [
+            "MUSIC",
+            "ANIME",
+            "GAME"
+          ]
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CatalogItem"
+          },
+          "minItems": 0,
+          "maxItems": 100
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1024,
+              "pattern": "^[A-Za-z0-9_-]+$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "category",
+        "items",
+        "next_cursor"
+      ]
+    },
+    "PeopleQuery": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "default": 20
+        },
+        "cursor": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024,
+          "pattern": "^[A-Za-z0-9_-]+$"
+        },
+        "category": {
+          "enum": [
+            "MUSIC",
+            "ANIME",
+            "GAME"
+          ]
+        }
+      },
+      "required": []
+    },
+    "PeopleCard": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "profile_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "nickname": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "profile_image_media_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "avatar": {
+          "$ref": "#/$defs/AvatarState"
+        },
+        "shared_items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/FavoriteItem"
+          },
+          "minItems": 1,
+          "maxItems": 15
+        },
+        "interaction_style": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 0,
+              "maxLength": 120
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "profile_id",
+        "nickname",
+        "profile_image_media_id",
+        "avatar",
+        "shared_items",
+        "interaction_style"
+      ]
+    },
+    "PeoplePage": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PeopleCard"
+          },
+          "minItems": 0,
+          "maxItems": 100
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1024,
+              "pattern": "^[A-Za-z0-9_-]+$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "items",
+        "next_cursor"
+      ]
     }
   }
 }
