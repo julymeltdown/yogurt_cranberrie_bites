@@ -1,0 +1,72 @@
+{
+  "verification": "V-08",
+  "status": "PARTIAL",
+  "work_package": "WP-10",
+  "task": "T-954",
+  "branch": "codex/yc-wp07-room",
+  "base_commit": "d2f545a89b78073f05fef8868867378f469c7611",
+  "recorded_at": "2026-11-09T00:00:00Z",
+  "claim": "Every lifecycle pairing is independent in both directions, with before/after state capture.",
+  "commands": [
+    {
+      "command": "python3 backend/scripts/mcr/wp10_profile_social.py --bin-dir <abs>/backend/target/debug --report /tmp/wp10/report.json",
+      "exit_code": 1,
+      "note": "exit 1 = INCOMPLETE; the lifecycle sweep itself completed"
+    }
+  ],
+  "artifact": "docs/mcr/integration/evidence/wp10-gate-report.json#sweeps.lifecycle",
+  "layers": {
+    "durable": {
+      "method": "The same operations the HTTP routes call, run against the gate's own database, with full row images captured before and after (updated_at excluded, every other column compared).",
+      "cases": [
+        {
+          "id": "room_visibility",
+          "status": "PASS",
+          "observed": {
+            "room_changed": true,
+            "avatar_unchanged": true,
+            "posts_unchanged": true,
+            "media_unchanged": true
+          }
+        },
+        {
+          "id": "room_visibility_restore",
+          "status": "PASS",
+          "observed": {"room_restored": true, "revision_advanced": true}
+        },
+        {
+          "id": "avatar_save",
+          "status": "PASS",
+          "observed": {
+            "avatar_changed": true,
+            "room_unchanged": true,
+            "posts_unchanged": true,
+            "media_unchanged": true
+          }
+        },
+        {
+          "id": "post_delete",
+          "status": "NOT_RUN",
+          "reason": "No profile post row exists: the profile post producer is not reachable over HTTP on this master, so the gate could not create one to delete."
+        },
+        {
+          "id": "intro_audience_to_room_visibility",
+          "status": "BLOCKED",
+          "reason": "No intro post surface exists on this master."
+        }
+      ]
+    },
+    "http": {
+      "method": "The same operations over the gateway.",
+      "observed": {
+        "GET /api/me/room": {"http": 403, "reason": "PERMISSION_DENIED"},
+        "GET /api/me/avatar": {"http": 403, "reason": "PERMISSION_DENIED"},
+        "GET /api/profiles/{A}/posts": {"http": 403, "reason": "PERMISSION_DENIED"},
+        "PATCH /api/me/room/visibility": {"http": 403, "reason": "PERMISSION_DENIED"}
+      },
+      "blocked_on": "The profile product producer's closed operation set does not include the room, avatar, profile post or profile media operations."
+    }
+  },
+  "why_not_pass": "V-08 names three pairings. Two of the three (room visibility vs avatar/photo posts, avatar vs room/photo posts) are proved durably. The pairing the task names first — the intro audience vs room and photo visibility — cannot be exercised because no intro post exists in the running product. A PASS would claim a pairing that was never run.",
+  "to_close": "Compose the intro post surface, then re-run: change the intro audience and assert the room and photo post rows are byte-identical, and change the room visibility and assert every intro post's audience columns are byte-identical."
+}

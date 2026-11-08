@@ -1,0 +1,33 @@
+{
+  "verification": "V-03",
+  "status": "BLOCKED",
+  "work_package": "WP-10",
+  "task": "T-953",
+  "branch": "codex/yc-wp07-room",
+  "base_commit": "d2f545a89b78073f05fef8868867378f469c7611",
+  "recorded_at": "2026-11-09T00:00:00Z",
+  "claim": "For one restricted post, every surface answers C with the same denial and no content.",
+  "commands": [
+    {
+      "command": "python3 backend/scripts/mcr/wp10_profile_social.py --bin-dir <abs>/backend/target/debug --report /tmp/wp10/report.json",
+      "exit_code": 1,
+      "note": "exit 1 = INCOMPLETE; the sweep itself completed and recorded all eight surfaces"
+    }
+  ],
+  "artifact": "docs/mcr/integration/evidence/wp10-gate-report.json#sweeps.cross_surface",
+  "surfaces": [
+    {"id": "list", "request": "GET /api/profiles/{A}/posts", "http": 403, "reason": "PERMISSION_DENIED", "is_audience_denial": false},
+    {"id": "detail", "request": "GET /api/intro-posts/{id}", "http": 404, "reason": null, "is_audience_denial": false},
+    {"id": "attachment", "request": "GET /api/intro-posts/{id}/attachments", "http": 404, "reason": null, "is_audience_denial": false},
+    {"id": "thumbnail", "request": "GET /api/media/{id}", "http": 403, "reason": "PERMISSION_DENIED", "is_audience_denial": false},
+    {"id": "bytes", "request": "GET /api/media/{id}/content", "http": 403, "reason": "PERMISSION_DENIED", "is_audience_denial": false},
+    {"id": "shared_link", "request": "GET /api/intro-posts/resolve", "http": 404, "reason": null, "is_audience_denial": false},
+    {"id": "like", "request": "PUT /api/intro-posts/{id}/like", "http": 400, "reason": null, "is_audience_denial": false},
+    {"id": "comment", "request": "POST /api/intro-posts/{id}/comments", "http": 400, "reason": null, "is_audience_denial": false}
+  ],
+  "identical_denials": false,
+  "distinct_statuses": [400, 403, 404],
+  "blocked_on": "The intro post routes are not registered by the gateway, and the profile product producer's closed operation set does not include the profile post or media operations. No audience decision exists to be consistent, so this sweep cannot be satisfied by construction.",
+  "why_not_pass": "Eight surfaces, eight identical denials, is the acceptance rule. The run observed three distinct statuses, and every one of them is a missing route or a missing producer rather than an authorization decision. Counting them as a pass would be a false claim about the audience decision.",
+  "to_close": "Register the intro post routes and the audience predicate (WP-04/WP-05), then re-run this sweep: all eight surfaces must answer 404 RESOURCE_UNAVAILABLE with no content for C."
+}
