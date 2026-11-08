@@ -15,6 +15,7 @@ pub mod notification_authority;
 pub mod notification_client;
 pub mod post_client;
 pub mod profile_client;
+pub mod profile_product_client;
 pub mod repository;
 pub mod runtime;
 pub mod signing_keys;

@@ -983,6 +983,10 @@ pub struct AppState {
     pub concert_client: Option<crate::adapters::out::concert_client::GrpcConcertClient>,
     pub concert_product_client:
         Option<crate::adapters::out::concert_product::GrpcConcertProductClient>,
+    /// Profile product dispatch. Absent in test-double compositions; only the
+    /// configured concrete client populates it.
+    pub profile_product_client:
+        Option<crate::adapters::out::profile_product_client::GrpcProfileProductClient>,
     pub concert_world_client: Option<crate::adapters::out::concert_world::GrpcConcertWorldClient>,
     pub concert_participant_client:
         Option<Arc<crate::adapters::out::concert_participant::GrpcConcertParticipantClient>>,
@@ -1861,6 +1865,14 @@ pub async fn build_state(config: &AppConfig, pool: PgPool) -> anyhow::Result<App
             )
         })
         .transpose()?;
+    state.profile_product_client = Some(
+        crate::adapters::out::profile_product_client::GrpcProfileProductClient::connect(
+            &config.profile_grpc_endpoint,
+            &config.outbound_identity,
+            config.tls_material.as_ref(),
+            config.actor_delegation_signer.clone(),
+        )?,
+    );
     state.concert_participant_client = config
         .concert_release_digest
         .as_ref()
@@ -2004,6 +2016,7 @@ async fn build_state_with_clients_and_moderation_with_metrics(
         concert_identity: None,
         concert_client: None,
         concert_product_client: None,
+        profile_product_client: None,
         concert_world_client: None,
         concert_participant_client: None,
         high_risk_sessions: HighRiskSessionGuard::over_auth_client(

@@ -76,7 +76,15 @@ async fn main() -> anyhow::Result<()> {
         Some((profile, settlement)) => (Some(profile), Some(settlement)),
         None => (None, None),
     };
-    let state = Arc::new(build_state(&config, pool).await?);
+    let state = Arc::new(build_state(&config, pool.clone()).await?);
+    // The profile product transport serves profile-owned operations that carry
+    // no event. It is registered beside the Profile service, not inside it,
+    // because its request shape and its authority binding are its own.
+    let profile_product = profile_service::profile_product::runtime(
+        pool.clone(),
+        config.caller_registry.clone(),
+        config.actor_delegation.clone(),
+    )?;
     let world_profile_verifier = platform::actor_delegation::relationship_read::RelationshipReadVerifier::configured_from_env(
         platform::grpc_auth::Workload::Profile, &config.actor_delegation,
     )?;
@@ -156,6 +164,8 @@ async fn main() -> anyhow::Result<()> {
                     config.caller_registry.clone(),
                     config.actor_delegation.clone(),
                 )?)
+                .add_service(profile_product.dispatch)
+                .add_service(profile_product.settlement)
                 .add_service(platform::grpc_method_policy::guard_with_forwarding(
                     &profile_service::adapters::r#in::grpc::author_authority::PROFILE_AUTHOR_POLICY,
                     profile_service::adapters::r#in::grpc::author_authority::PROFILE_AUTHOR_FORWARDING,

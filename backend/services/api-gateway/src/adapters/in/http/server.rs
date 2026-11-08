@@ -72,6 +72,7 @@ pub fn with_transport_layers(
         ))
         .layer(from_fn(super::concert_bootstrap::protect_response))
         .layer(from_fn(super::concert_product::protect_response))
+        .layer(from_fn(super::profile_product::protect_response))
         .layer(from_fn(super::concert_participant::protect_response))
         // Outermost body boundary: inner middleware may transform response data.
         // Preserve canonical product scopes until actual terminal HTTP framing.
@@ -138,9 +139,14 @@ pub(super) fn idempotency_owner(method: &Method, route: &str) -> Option<Mutation
 }
 
 async fn enforce_idempotency_scope(request: Request<Body>, next: Next) -> Response {
+    // The profile product owns its own receipts, exactly like the concert
+    // product owns C04 command receipts. Every profile mutation carries an
+    // `Idempotency-Key` and is recovered by the profile producer, so the
+    // Gateway's replay journal must not claim it.
     if request.headers().contains_key("idempotency-key")
         && !supports_idempotency(request.method(), matched_route(&request))
         && !super::concert_product::owns_receipt(request.method(), request.uri().path())
+        && !super::profile_product::owns_receipt(request.method(), request.uri().path())
     {
         let mut response = GatewayError::bad_request(
             "Idempotency-Key is supported only for post, follow/unfollow, profile edits/privacy, and moderation report creation",

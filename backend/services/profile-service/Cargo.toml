@@ -21,10 +21,12 @@ async-trait.workspace = true
 axum.workspace = true
 chrono.workspace = true
 http.workspace = true
+http-body.workspace = true
 http-body-util.workspace = true
 image.workspace = true
 platform = { path = "../../crates/platform" }
 prost.workspace = true
+ring = "0.17.14"
 serde.workspace = true
 serde_json.workspace = true
 sha2.workspace = true
@@ -43,6 +45,7 @@ tonic-prost-build.workspace = true
 
 [dev-dependencies]
 image.workspace = true
+tokio-stream = { workspace = true, features = ["net"] }
 testcontainers.workspace = true
 testcontainers-modules.workspace = true
 test-support = { path = "../../crates/test-support" }

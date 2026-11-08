@@ -500,6 +500,10 @@ fn is_product(path: &str) -> bool {
         || tail.starts_with("me/blocks/")
 }
 /// Cover outer transport rejections too, without discarding owner recovery details.
+/// Re-exported for the profile product boundary, which uses the same disclosure
+/// ceiling discipline for its response body.
+pub(crate) use super::response_disclosure::DisclosureBody;
+
 pub async fn protect_response(request: Request, next: axum::middleware::Next) -> Response {
     // Router::layer also wraps the shared fallback. Keep unmounted feature
     // suffixes out of unrelated service middleware and return a closed C04 error.
