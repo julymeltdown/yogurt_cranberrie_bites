@@ -8,13 +8,39 @@ pub const MAX_DIMENSION: u32 = 4096;
 pub const MAX_PIXELS: u64 = 16_000_000;
 pub const UPLOAD_SECONDS: i64 = 900;
 pub const ORPHAN_SECONDS: i64 = 86400;
+/// The closed purpose set of one media asset.
+///
+/// The first four are the event-scoped concert purposes (`concert_media`). The
+/// last four are the profile purposes (`profile_media`, WP-02 T-106). They live
+/// in **one** enum on purpose: a second media domain would be a second place for
+/// the byte, dimension and pixel limits to drift. What keeps the two scopes
+/// apart is not the type but [`Purpose::scope`], which every producer checks
+/// before it touches a row.
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum Purpose {
     Post,
     Giveaway,
     Report,
     Beacon,
+    ProfileImage,
+    ProfilePost,
+    IntroPost,
+    RoomPoster,
 }
+
+/// Which media table a purpose belongs to.
+///
+/// A purpose is never valid in both scopes. The concert table's CHECK constraint
+/// refuses the profile values and the profile table's CHECK constraint refuses
+/// the concert values, so this method is the in-process half of the same rule.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum MediaScope {
+    /// `concert_media`: event-scoped, participant-fenced.
+    Concert,
+    /// `profile_media`: profile-scoped, no event.
+    Profile,
+}
+
 impl Purpose {
     pub fn as_str(self) -> &'static str {
         match self {
@@ -22,6 +48,10 @@ impl Purpose {
             Self::Giveaway => "GIVEAWAY",
             Self::Report => "REPORT",
             Self::Beacon => "BEACON",
+            Self::ProfileImage => "PROFILE_IMAGE",
+            Self::ProfilePost => "PROFILE_POST",
+            Self::IntroPost => "INTRO_POST",
+            Self::RoomPoster => "ROOM_POSTER",
         }
     }
     pub fn parse(v: &str) -> Result<Self, CommandError> {
@@ -30,9 +60,35 @@ impl Purpose {
             "GIVEAWAY" => Ok(Self::Giveaway),
             "REPORT" => Ok(Self::Report),
             "BEACON" => Ok(Self::Beacon),
+            "PROFILE_IMAGE" => Ok(Self::ProfileImage),
+            "PROFILE_POST" => Ok(Self::ProfilePost),
+            "INTRO_POST" => Ok(Self::IntroPost),
+            "ROOM_POSTER" => Ok(Self::RoomPoster),
             _ => Err(CommandError::InvalidInput),
         }
     }
+    /// The media table this purpose is stored in.
+    pub fn scope(self) -> MediaScope {
+        match self {
+            Self::Post | Self::Giveaway | Self::Report | Self::Beacon => MediaScope::Concert,
+            Self::ProfileImage | Self::ProfilePost | Self::IntroPost | Self::RoomPoster => {
+                MediaScope::Profile
+            }
+        }
+    }
+    /// Whether this purpose is one of the four profile purposes.
+    pub fn is_profile(self) -> bool {
+        self.scope() == MediaScope::Profile
+    }
+    /// The four profile purposes, in the order the contract lists them.
+    pub const PROFILE: [Self; 4] = [
+        Self::ProfileImage,
+        Self::ProfilePost,
+        Self::IntroPost,
+        Self::RoomPoster,
+    ];
+    /// The event-scoped concert purposes, in the order `concert_media` lists them.
+    pub const CONCERT: [Self; 4] = [Self::Post, Self::Giveaway, Self::Report, Self::Beacon];
 }
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum Mime {

@@ -46,6 +46,12 @@ pub mod intro_live;
 /// WP-08: the profile-owned avatar (`GET`/`PUT /api/me/avatar`).
 pub mod profile_avatar;
 
+/// WP-06: profile-scoped media (upload lifecycle, read authorization).
+pub mod profile_media;
+
+/// WP-06: ordinary profile posts (selfies, photographs, artwork).
+pub mod profile_posts;
+
 pub mod notification_target_policy;
 pub mod account_private_data;
 

@@ -120,6 +120,11 @@ const publicAuthCommands = new Set([
   '/api/auth/email/signup', '/api/auth/email/verify', '/api/auth/email/resend', '/api/auth/login',
   '/api/auth/password/reset/request', '/api/auth/password/reset/confirm', '/api/auth/refresh', '/api/auth/logout',
 ])
+// The registered raw-binary upload operations. A profile media upload is the same
+// shape as the concert one: a Blob of one of the three image types, bounded.
+const rawUploadOperations: ReadonlySet<string> = new Set([
+  'putConcertUploadBytes', 'putProfileMediaBytes',
+])
 // Frozen ed50c2f1 enrollment operations only. Body idempotency is not a domain header.
 const enrollmentOperations: Readonly<Record<string, readonly [HttpRequest<unknown>['method'], HttpRequest<unknown>['access']]>> = {
   '/api/auth/enrollment/policy': ['GET', 'public'],
@@ -196,7 +201,7 @@ function prepare<T>(request: HttpRequest<T>, snapshot: SessionSnapshot) {
     || !Array.isArray(binaryRead.contentTypes) || binaryRead.contentTypes.length < 1
     || binaryRead.contentTypes.some(t => !imageTypes.includes(t)))) throw new TransportError('invalid-request')
   if (request.domainOperation === 'readConcertMedia' && !binaryRead) throw new TransportError('invalid-request')
-  if (request.domainOperation === 'putConcertUploadBytes' && (!request.body || !('binary' in request.body))) throw new TransportError('invalid-request')
+  if (rawUploadOperations.has(request.domainOperation ?? '') && (!request.body || !('binary' in request.body))) throw new TransportError('invalid-request')
   if (binaryRead) headers.set('Accept', binaryRead.contentTypes.join(', '))
   let body: string | FormData | Blob | undefined
   if (request.body) {
@@ -207,7 +212,7 @@ function prepare<T>(request: HttpRequest<T>, snapshot: SessionSnapshot) {
       headers.set('Content-Type', 'application/json')
     } else if ('binary' in request.body && Object.keys(request.body).length === 1) {
       const image = request.body.binary
-      if (request.domainOperation !== 'putConcertUploadBytes' || !(image instanceof Blob)
+      if (!rawUploadOperations.has(request.domainOperation ?? '') || !(image instanceof Blob)
         || image.size < 1 || image.size > 10 * 1024 * 1024 || !imageTypes.includes(image.type)) throw new TransportError('invalid-request')
       // Blob bytes are immutable; slice snapshots size/type without retaining caller metadata or filename.
       body = image.slice(0, image.size, image.type)

@@ -1,0 +1,53 @@
+{
+  "verification": "V-10",
+  "scope": "Failure handling and resource cleanup — cases a and b, the profile post and media half",
+  "work_package": "WP-06",
+  "branch": "codex/yc-wp06-posts",
+  "base_commit": "ff45c37d9",
+  "recorded_at_utc": "2026-11-08T21:20:00Z",
+  "result": "PASS",
+  "result_scope": "V-10-a and V-10-b. V-10-c (concurrent room saves) is WP-07, V-10-d/e (room scene disposal) is WP-07.",
+  "cases": [
+    {
+      "id": "V-10-a",
+      "claim": "Photo upload cancelled mid-flight → no orphan post, staged media cleaned.",
+      "result": "PASS",
+      "client_evidence": [
+        "frontend/src/features/profile-media/__tests__/failure.test.tsx::cancelling_before_finalize_never_publishes_and_never_creates_a_post — the byte upload is held open, the composer is cancelled, and the recorded requests are exactly the init and the put: no finalize, no create. Nothing was published.",
+        "frontend/src/features/profile-media/__tests__/failure.test.tsx::the_upload_reports_its_phase_as_cancelled_and_never_ready — the upload state is `cancelled`, `media` is null, and the staged media id is reported so the caller can say it will be cleaned.",
+        "frontend/src/features/profile-media/__tests__/failure.test.tsx::leaving_the_screen_mid_upload_cancels_cleanly — unmounting the composer aborts the in-flight upload; no finalize and no create is sent afterwards.",
+        "frontend/src/features/profile-media/__tests__/failure.test.tsx::removing_an_image_cancels_its_upload_before_it_can_be_published."
+      ],
+      "server_evidence": [
+        "backend/services/concert-service/tests/profile_media_upload.rs::a_cancelled_upload_leaves_no_orphan_once_the_window_passes — an init with no bytes is PENDING, unattached and erased by the orphan window.",
+        "backend/services/concert-service/tests/profile_media_upload.rs::an_uploaded_but_never_finalized_asset_is_also_cleaned — an upload that reached PUT but never finalized is erased too, and its staged bytes are cleared.",
+        "backend/services/concert-service/tests/profile_media_upload.rs::an_abandoned_upload_is_cleaned_after_the_orphan_window — a fresh upload and a READY asset survive the same run.",
+        "backend/services/concert-service/tests/profile_media_upload.rs::cleanup_never_erases_media_a_live_post_still_uses — a READY asset is never an orphan."
+      ],
+      "note": "The client cannot delete a PENDING row: the frozen §2.3 contract has no delete-media operation. The guarantee is therefore that a cancelled upload never reaches finalize and never creates a post, so the only row it can leave is a PENDING intent with no bytes, which the server's 24-hour orphan window erases. Both halves are asserted."
+    },
+    {
+      "id": "V-10-b",
+      "claim": "Photo upload fails → the composer keeps the draft and offers retry.",
+      "result": "PASS",
+      "evidence": [
+        "frontend/src/features/profile-media/__tests__/failure.test.tsx::keeps_the_description_the_visibility_and_the_alt_text_after_a_failed_publish — after a failed create the description, visibility and alt text are exactly what the user typed, and the retry sends the same draft.",
+        "frontend/src/features/profile-media/__tests__/failure.test.tsx::keeps_the_draft_when_the_upload_itself_fails — a failed init keeps the draft and creates no post.",
+        "frontend/src/features/profile-media/__tests__/failure.test.tsx::renders_the_failure_and_the_retry_affordance — the failure line says the draft is kept, the description field still holds the text, and the publish button is enabled again.",
+        "frontend/src/features/profile-media/__tests__/failure.test.tsx::the_failure_vocabulary — only transient failures are retryable, and no user-facing line carries a server diagnostic."
+      ]
+    }
+  ],
+  "commands": [
+    {
+      "command": "cd frontend && corepack pnpm@11.7.0 exec vitest run src/features/profile-media",
+      "exit_code": 0,
+      "note": "55 passed (4 files)"
+    },
+    {
+      "command": "cd backend && cargo +1.88.0 test --locked -p concert-service --test profile_media_upload",
+      "exit_code": 0,
+      "note": "16 passed"
+    }
+  ]
+}
