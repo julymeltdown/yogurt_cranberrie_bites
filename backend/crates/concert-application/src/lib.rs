@@ -185,6 +185,7 @@ pub mod community;
 pub mod media;
 
 pub mod intro_policy;
+pub mod intro_posts;
 pub mod age_policy;
 pub mod intro;
 

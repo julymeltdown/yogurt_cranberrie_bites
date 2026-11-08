@@ -1,0 +1,24 @@
+
+ RUN  v4.1.9 /Users/lhs/Desktop/yogurt-worktrees/wp05-intro/frontend
+
+ ✓ src/features/media/__tests__/preparation.test.ts (11 tests) 6ms
+ ✓ src/features/media/__tests__/profile-media-upload.test.ts (8 tests) 19ms
+ ✓ src/features/media/model/__tests__/policy.test.ts (23 tests) 12ms
+ ✓ src/features/media/model/__tests__/preparation.test.ts (3 tests) 113ms
+ ✓ src/features/media/model/__tests__/read-media.test.ts (7 tests) 127ms
+ ✓ src/features/intros/__tests__/draft-recovery.test.ts (7 tests) 4ms
+ ✓ src/features/intros/__tests__/composer-reducer.test.ts (15 tests) 5ms
+ ✓ src/features/intros/__tests__/IntroLikersPanel.test.tsx (8 tests) 86ms
+ ✓ src/features/media/model/__tests__/controller.test.ts (31 tests) 437ms
+ ✓ src/features/activity/__tests__/ActivityFeed.test.tsx (11 tests) 100ms
+ ✓ src/features/intros/__tests__/IntroAudienceFields.test.tsx (10 tests) 123ms
+ ✓ src/features/intros/__tests__/IntroLikeButton.test.tsx (10 tests) 124ms
+ ✓ src/features/intros/__tests__/IntroPost.test.tsx (10 tests) 150ms
+ ✓ src/features/intros/__tests__/IntroComposer.test.tsx (8 tests) 460ms
+ ✓ src/features/media/model/__tests__/transport.test.ts (9 tests) 25ms
+
+ Test Files  15 passed (15)
+      Tests  171 passed (171)
+   Start at  08:24:52
+   Duration  1.82s (transform 3.72s, setup 1.51s, import 5.32s, tests 1.79s, environment 3.19s)
+

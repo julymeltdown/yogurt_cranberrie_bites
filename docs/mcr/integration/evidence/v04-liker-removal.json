@@ -1,0 +1,83 @@
+{
+  "commit": "8a3424731",
+  "branch": "codex/yc-wp05-intro",
+  "base_commit": "ff45c37d9",
+  "recorded_at": "2026-11-08T23:26:07Z",
+  "work_package": "WP-05",
+  "tasks": [
+    "T-401",
+    "T-402",
+    "T-403",
+    "T-404",
+    "T-405",
+    "T-406",
+    "T-407",
+    "T-408",
+    "T-409",
+    "T-410",
+    "T-411",
+    "T-412",
+    "T-413",
+    "T-414",
+    "T-415",
+    "T-416"
+  ],
+  "commands": [
+    {
+      "command": "cd backend && cargo +1.88.0 check --locked --workspace",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 backend/scripts/mcr/wp05_intro_cluster.py --test intro_post_commands --test intro_snapshot --test intro_attachments --test intro_comments --test intro_likes --test intro_routes",
+      "exit_code": 0,
+      "note": "52 passed across six binaries"
+    },
+    {
+      "command": "cd backend && cargo +1.88.0 test --locked -p concert-application --test intro_post_rules",
+      "exit_code": 0,
+      "note": "27 passed"
+    },
+    {
+      "command": "cd frontend && corepack pnpm@11.7.0 run typecheck",
+      "exit_code": 0
+    },
+    {
+      "command": "cd frontend && corepack pnpm@11.7.0 exec vitest run src/features/intros src/features/media src/features/activity",
+      "exit_code": 0,
+      "note": "171 passed in 15 files"
+    }
+  ],
+  "artifacts": [
+    "docs/mcr/integration/evidence/wp05-intro.md",
+    "docs/mcr/integration/evidence/wp05-backend-tests.txt",
+    "docs/mcr/integration/evidence/wp05-frontend-tests.txt"
+  ],
+  "verification": "V-04",
+  "title": "Like removal by an unauthorized viewer discloses nothing",
+  "status": "PASS",
+  "cases": [
+    {
+      "id": "V-04-a",
+      "result": "PASS",
+      "note": "intro_likes.rs::delete_by_a_viewer_who_lost_access_returns_a_null_count \u2014 the author restricts the post after the like; DELETE returns liked=false and like_count=None, serialized as JSON null."
+    },
+    {
+      "id": "V-04-b",
+      "result": "PASS",
+      "note": "Same test asserts the intro_likes row count is 0 afterwards."
+    },
+    {
+      "id": "V-04-c",
+      "result": "PASS",
+      "note": "LikeState carries exactly {liked, like_count}; the wire object has no body text, attachment id or author field. The type has no other field to carry one."
+    },
+    {
+      "id": "V-04-d",
+      "result": "PASS",
+      "note": "intro_likes.rs::liking_an_invisible_post_is_404 \u2014 PUT on a restricted post by an unauthorized viewer returns LikeError::Unavailable, status 404."
+    }
+  ],
+  "limitations": [
+    "The visibility decision is the fail-closed default (VisibilityPolicy::deny_restricted) because WP-04's can_view_intro has not landed in this worktree. Every restricted post is therefore denied to non-authors, which is strictly stronger than the real policy. When WP-04 composes its policy, these cases still hold; only the set of viewers who lose access grows."
+  ]
+}
