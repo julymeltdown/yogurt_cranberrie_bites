@@ -37,13 +37,11 @@ DATABASE = "mcr_room"
 def migrations() -> list[Path]:
     """Every forward concert-service migration, in file-name order.
 
-    The set contains two files numbered 0086 (``0086_discovery_projection.sql``
-    from WP-03 and ``0086_profile_avatars.sql`` from WP-08). That is the merged
-    master state, not a defect of this harness: both were authored in parallel
-    worktrees against the same 0085 head, both are applied by the merged branch,
-    and renumbering either one would edit an already-applied migration. The
-    ledger check that owns numbering is ``wp02_migration_ledger.py``; this harness
-    applies the merged set exactly as a fresh database receives it.
+    WP-03 and WP-08 were authored in parallel worktrees against the same 0085
+    head, so both produced an ``0086``. The integration renumbered the avatar
+    migration to ``0087_profile_avatars.sql``: neither file had been applied to
+    any real database, so no applied migration was edited. The ledger check that
+    owns numbering is ``wp02_migration_ledger.py``.
     """
     directory = ROOT / "backend/services/concert-service/migrations"
     files = [

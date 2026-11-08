@@ -47,7 +47,7 @@ async fn pool() -> anyhow::Result<PgPool> {
         sqlx::query_scalar("select to_regclass('public.profile_avatars') is not null")
             .fetch_one(&pool)
             .await?;
-    anyhow::ensure!(applied, "migration 0086_profile_avatars is not applied");
+    anyhow::ensure!(applied, "migration 0087_profile_avatars is not applied");
     Ok(pool)
 }
 

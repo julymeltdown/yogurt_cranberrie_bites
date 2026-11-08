@@ -36,11 +36,16 @@ import migration_smoke as migration  # noqa: E402
 
 # The previous head of each service, before WP-02.
 PREVIOUS_HEAD = {"profile-service": 10, "concert-service": 79}
-# The migrations this work package adds.
+# The migrations WP-02 added. Later work packages append their own numbers; the
+# previous-head scenario still applies exactly the WP-02 block, so this list is
+# the WP-02 scope and not the current head.
 NEW_MIGRATIONS = {
     "profile-service": [11, 12, 13, 14, 15],
     "concert-service": [80, 81, 82, 83, 84, 85],
 }
+# Every migration number now on disk, per service. The scenario applies this
+# full set from empty, and the WP-02 block on top of the previous head.
+ALL_MIGRATIONS = {"profile-service": None, "concert-service": None}
 DATABASES = {"profile-service": "mcr_wp02_ledger_profile", "concert-service": "mcr_wp02_ledger_concert"}
 
 
@@ -149,13 +154,23 @@ def scenario(cluster: migration.Cluster, service: str, files: dict[int, Path],
         before = ledger(cluster, database)
         applied = apply(cluster, database, service, files, only=NEW_MIGRATIONS[service])
         after = ledger(cluster, database)
+        # Later work packages append migrations above the WP-02 block. The
+        # previous-head scenario proves the WP-02 block itself is what lands on
+        # top of head N, so compare against that block rather than the head.
         if set(after) - set(before) != set(NEW_MIGRATIONS[service]):
             raise SystemExit(f"{service}: ledger gained unexpected versions")
         if any(before[version] != after[version] for version in before):
             raise SystemExit(f"{service}: an applied migration checksum changed")
         scenario_name = f"previous-head-{from_head}"
     receipts = ledger(cluster, database)
-    expected = {number: sqlx_checksum(path) for number, path in files.items()}
+    # Empty scenario: every file on disk. Previous-head scenario: the head-N
+    # prefix plus the WP-02 block, which is exactly what was applied above.
+    if from_head is None:
+        expected_numbers = set(files)
+    else:
+        expected_numbers = {n for n in files if n <= from_head} | set(NEW_MIGRATIONS[service])
+    expected = {number: sqlx_checksum(path) for number, path in files.items()
+                if number in expected_numbers}
     if receipts != expected:
         raise SystemExit(f"{service}: ledger differs from the migration files")
     return {
