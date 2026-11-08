@@ -12,6 +12,7 @@ platform = { path = "../../crates/platform" }
 anyhow.workspace = true
 async-trait.workspace = true
 axum = { workspace = true, features = ["ws"] }
+base64ct.workspace = true
 chrono.workspace = true
 futures.workspace = true
 image.workspace = true

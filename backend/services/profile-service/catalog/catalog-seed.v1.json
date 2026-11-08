@@ -1,0 +1,244 @@
+{
+  "format": "mcr.catalog.v1",
+  "note": "Seed/import manifest for the favorites catalog (WP-03 T-801). Every row is a hand-curated entry, not a provider feed. `excluded` rows document the K-pop catalog policy: they are listed here so the exclusion is visible and reviewable, and the importer refuses to store them in the music category. The database constraint catalog_items_music_excludes_kpop makes that refusal structural.",
+  "items": [
+    {
+      "category": "music",
+      "label": "My Chemical Romance",
+      "external_url": "https://www.mychemicalromance.com/",
+      "exclusion_reason": "reviewed: western rock act, not K-pop"
+    },
+    {
+      "category": "music",
+      "label": "Fall Out Boy",
+      "external_url": "https://falloutboy.com/",
+      "exclusion_reason": "reviewed: western rock act, not K-pop"
+    },
+    {
+      "category": "music",
+      "label": "Paramore",
+      "external_url": "https://paramore.net/",
+      "exclusion_reason": "reviewed: western rock act, not K-pop"
+    },
+    {
+      "category": "music",
+      "label": "Pierce the Veil",
+      "external_url": "https://www.piercetheveil.net/",
+      "exclusion_reason": "reviewed: western rock act, not K-pop"
+    },
+    {
+      "category": "music",
+      "label": "Bring Me the Horizon",
+      "external_url": "https://www.bmthofficial.com/",
+      "exclusion_reason": "reviewed: western rock act, not K-pop"
+    },
+    {
+      "category": "music",
+      "label": "Sleeping with Sirens",
+      "external_url": "https://www.sleepingwithsirens.net/",
+      "exclusion_reason": "reviewed: western rock act, not K-pop"
+    },
+    {
+      "category": "music",
+      "label": "The Used",
+      "external_url": "https://theused.net/",
+      "exclusion_reason": "reviewed: western rock act, not K-pop"
+    },
+    {
+      "category": "music",
+      "label": "Taking Back Sunday",
+      "external_url": "https://takingbacksunday.com/",
+      "exclusion_reason": "reviewed: western rock act, not K-pop"
+    },
+    {
+      "category": "music",
+      "label": "Jimmy Eat World",
+      "external_url": "https://www.jimmyeatworld.com/",
+      "exclusion_reason": "reviewed: western rock act, not K-pop"
+    },
+    {
+      "category": "music",
+      "label": "Sunny Day Real Estate",
+      "external_url": null,
+      "exclusion_reason": "reviewed: western rock act, not K-pop"
+    },
+    {
+      "category": "music",
+      "label": "American Football",
+      "external_url": "https://www.americanfootballmusic.com/",
+      "exclusion_reason": "reviewed: western rock act, not K-pop"
+    },
+    {
+      "category": "music",
+      "label": "Slowdive",
+      "external_url": null,
+      "exclusion_reason": "reviewed: western rock act, not K-pop"
+    },
+    {
+      "category": "music",
+      "label": "Radiohead",
+      "external_url": "https://www.radiohead.com/",
+      "exclusion_reason": "reviewed: western rock act, not K-pop"
+    },
+    {
+      "category": "music",
+      "label": "Nirvana",
+      "external_url": "https://www.nirvana.com/",
+      "exclusion_reason": "reviewed: western rock act, not K-pop"
+    },
+    {
+      "category": "music",
+      "label": "Linkin Park",
+      "external_url": "https://www.linkinpark.com/",
+      "exclusion_reason": "reviewed: western rock act, not K-pop"
+    },
+    {
+      "category": "anime",
+      "label": "NANA",
+      "external_url": null
+    },
+    {
+      "category": "anime",
+      "label": "Neon Genesis Evangelion",
+      "external_url": null
+    },
+    {
+      "category": "anime",
+      "label": "Cowboy Bebop",
+      "external_url": null
+    },
+    {
+      "category": "anime",
+      "label": "Serial Experiments Lain",
+      "external_url": null
+    },
+    {
+      "category": "anime",
+      "label": "Revolutionary Girl Utena",
+      "external_url": null
+    },
+    {
+      "category": "anime",
+      "label": "Bocchi the Rock!",
+      "external_url": null
+    },
+    {
+      "category": "anime",
+      "label": "A Silent Voice",
+      "external_url": null
+    },
+    {
+      "category": "anime",
+      "label": "Your Name",
+      "external_url": null
+    },
+    {
+      "category": "anime",
+      "label": "Frieren: Beyond Journey's End",
+      "external_url": null
+    },
+    {
+      "category": "anime",
+      "label": "Mushishi",
+      "external_url": null
+    },
+    {
+      "category": "anime",
+      "label": "Paradise Kiss",
+      "external_url": null
+    },
+    {
+      "category": "anime",
+      "label": "Haibane Renmei",
+      "external_url": null
+    },
+    {
+      "category": "game",
+      "label": "The Legend of Zelda: Majora's Mask",
+      "external_url": null
+    },
+    {
+      "category": "game",
+      "label": "Final Fantasy VII",
+      "external_url": null
+    },
+    {
+      "category": "game",
+      "label": "Silent Hill 2",
+      "external_url": null
+    },
+    {
+      "category": "game",
+      "label": "Omori",
+      "external_url": null
+    },
+    {
+      "category": "game",
+      "label": "Hollow Knight",
+      "external_url": null
+    },
+    {
+      "category": "game",
+      "label": "Disco Elysium",
+      "external_url": null
+    },
+    {
+      "category": "game",
+      "label": "NieR: Automata",
+      "external_url": null
+    },
+    {
+      "category": "game",
+      "label": "Persona 4 Golden",
+      "external_url": null
+    },
+    {
+      "category": "game",
+      "label": "Stardew Valley",
+      "external_url": null
+    },
+    {
+      "category": "game",
+      "label": "Outer Wilds",
+      "external_url": null
+    },
+    {
+      "category": "game",
+      "label": "Celeste",
+      "external_url": null
+    },
+    {
+      "category": "game",
+      "label": "Kentucky Route Zero",
+      "external_url": null
+    },
+    {
+      "category": "music",
+      "label": "BTS",
+      "external_url": null,
+      "excluded": true,
+      "exclusion_reason": "K-pop is excluded from the music catalog by product policy"
+    },
+    {
+      "category": "music",
+      "label": "BLACKPINK",
+      "external_url": null,
+      "excluded": true,
+      "exclusion_reason": "K-pop is excluded from the music catalog by product policy"
+    },
+    {
+      "category": "music",
+      "label": "NewJeans",
+      "external_url": null,
+      "excluded": true,
+      "exclusion_reason": "K-pop is excluded from the music catalog by product policy"
+    },
+    {
+      "category": "music",
+      "label": "TWICE",
+      "external_url": null,
+      "excluded": true,
+      "exclusion_reason": "K-pop is excluded from the music catalog by product policy"
+    }
+  ]
+}

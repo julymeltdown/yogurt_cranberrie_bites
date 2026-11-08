@@ -15,3 +15,8 @@ grant select, insert, update, delete on
     public.profile_mutation_receipts,
     public.profiles
 to :"runtime_role";
+-- WP-03: the favorites catalog is read by every member and written only by the
+-- import path, so the runtime role gets read access and no write access.
+grant select on
+    public.catalog_items
+to :"runtime_role";

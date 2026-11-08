@@ -1,0 +1,26 @@
+/* WP-03 T-804: favorite picker. Scoped to the picker; no root token changes. */
+.favorites-picker { box-sizing: border-box; width: 100%; max-width: 42rem; margin-inline: auto; padding: 0 0 max(12px, env(safe-area-inset-bottom)); color: var(--pi-ink, #171717); background: var(--pi-paper, #f9f9f8); font: 400 16px/22px var(--pi-font-body, Arial, sans-serif); overflow-wrap: anywhere; }
+.favorites-picker * { box-sizing: border-box; }
+.favorites-picker h1 { margin: 8px 0; font: 700 26px/32px var(--pi-font-display, "Arial Narrow", Arial, sans-serif); }
+.favorites-picker h2 { margin: 16px 0 6px; font: 700 18px/24px var(--pi-font-display, "Arial Narrow", Arial, sans-serif); }
+.favorites-picker p { margin: 8px 0; }
+.favorites-picker header > p { color: var(--pi-muted, #545454); }
+.favorites-picker button, .favorites-picker input { min-height: 44px; padding: 8px 12px; color: inherit; background: var(--pi-paper, #f9f9f8); border: 1px solid var(--pi-rule, #c9c9c6); border-radius: 2px; font: inherit; }
+.favorites-picker input { width: 100%; min-width: 0; }
+.favorites-picker button { cursor: pointer; }
+.favorites-picker button:disabled { opacity: .55; cursor: default; }
+.favorites-picker :focus-visible { outline: 3px solid var(--pi-focus, #1f5fd6); outline-offset: 3px; }
+.favorites-tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--pi-rule, #c9c9c6); }
+.favorites-tab { flex: 1 1 0; min-width: 0; display: inline-flex; align-items: center; justify-content: center; gap: 6px; border: 0; border-bottom: 3px solid transparent; background: transparent; font-weight: 650; }
+.favorites-tab-active { border-bottom-color: var(--pi-ink, #171717); }
+.favorites-tab-count { font-variant-numeric: tabular-nums; color: var(--pi-muted, #545454); }
+.favorites-search { display: flex; gap: 8px; align-items: center; margin-block: 8px; }
+.favorites-results { list-style: none; margin: 12px 0; padding: 0; }
+.favorites-result { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 8px; align-items: center; padding-block: 10px; border-bottom: 1px solid var(--pi-rule, #c9c9c6); }
+.favorites-result-copy { display: grid; min-width: 0; }
+.favorites-result-copy span { color: var(--pi-muted, #545454); font-size: 14px; }
+.favorites-result-external { display: inline-flex; align-items: center; min-height: 44px; color: inherit; text-underline-offset: .2em; }
+.favorites-picked ul { list-style: none; margin: 0; padding: 0; }
+.favorites-picked li { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding-block: 8px; border-bottom: 1px solid var(--pi-rule, #c9c9c6); }
+.favorites-summary { color: var(--pi-muted, #545454); }
+.favorites-message { font-weight: 650; }
