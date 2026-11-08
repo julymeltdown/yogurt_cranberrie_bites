@@ -1,252 +1,278 @@
 /**
- * WP-07: the room screen styles.
+ * WP-07 T-609/T-611 / WP-10: the room screen styles.
  *
- * Plain, restrained presentation: spacing, typography and ordinary symmetric
- * control borders. No decorative left accent bars, no inset rails and no
- * pseudo-element left bars, per the product's UI rules.
+ * Presentation only. The editor and screen keep their markup, class hooks and
+ * behavior. The chrome now consumes the shared pi01-photo2-v1 contract instead
+ * of hardcoded hex values, so the room reads as part of the same product as the
+ * profile and discovery screens.
+ *
+ * The Phaser canvas is deliberately untouched: `.room-stage` keeps its own
+ * dark field and pixelated scaling, because it is a rendered scene rather than
+ * UI chrome.
+ *
+ * No decorative left accent bar, coloured left border, inset rail or
+ * pseudo-element left bar. Borders are symmetric; focus stays a visible ring.
  */
 
 .room-screen {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding: 16px;
-  max-width: 720px;
-  margin: 0 auto;
-  color: #1d1f24;
+  display: grid;
+  gap: var(--pi-section-gap);
+  box-sizing: border-box;
+  inline-size: 100%;
+  max-inline-size: 45rem;
+  min-inline-size: 0;
+  margin-inline: auto;
+  padding: var(--pi-space-3) var(--pi-space-3) max(var(--pi-space-5), env(safe-area-inset-bottom));
+  color: var(--pi-ink);
+  background: var(--pi-paper);
+  font: var(--pi-weight-body) var(--pi-body-size)/var(--pi-body-leading) var(--pi-font-body);
+  overflow-wrap: anywhere;
 }
+.room-screen * { box-sizing: border-box; }
 
 .room-screen__header {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  gap: 8px 16px;
+  gap: var(--pi-space-1) var(--pi-space-4);
 }
-
 .room-screen__header h1 {
-  font-size: 20px;
   margin: 0;
+  font: var(--pi-weight-strong) var(--pi-title-size)/var(--pi-title-leading) var(--pi-font-display);
+  text-transform: uppercase;
+  letter-spacing: .01em;
 }
-
 .room-screen__status {
-  font-size: 14px;
-  color: #454a53;
+  margin: 0;
+  color: var(--pi-muted);
+  font: var(--pi-weight-body) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
 }
 
+/* The rendered scene: a dark field with a symmetric frame. This is the canvas
+   host, not UI chrome, so it keeps its own surface. */
 .room-stage {
   position: relative;
-  width: 100%;
+  inline-size: 100%;
   aspect-ratio: 1;
-  background: #14161a;
-  border: 2px solid #2a2d33;
-  border-radius: 4px;
   overflow: hidden;
+  border: var(--pi-frame-border) solid var(--pi-ink);
+  border-radius: var(--pi-radius);
+  background: var(--pi-ink);
 }
-
 .room-stage canvas {
   display: block;
-  width: 100% !important;
-  height: 100% !important;
+  inline-size: 100% !important;
+  block-size: 100% !important;
   image-rendering: pixelated;
 }
-
 .room-stage__fallback {
   display: grid;
   place-items: center;
-  width: 100%;
-  height: 100%;
-  color: #d8dbe2;
-  font-size: 14px;
+  inline-size: 100%;
+  block-size: 100%;
+  padding: var(--pi-space-4);
+  color: var(--pi-on-dark);
+  font: var(--pi-weight-body) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
   text-align: center;
-  padding: 16px;
+  overflow-wrap: anywhere;
 }
 
-.room-editor {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
+.room-editor { display: grid; gap: var(--pi-space-4); min-inline-size: 0; }
 
+/* A fieldset is a section: symmetric rule, shared radius, no local palette. */
 .room-editor fieldset {
-  border: 1px solid #c8ccd4;
-  border-radius: 4px;
-  padding: 12px;
+  display: grid;
+  gap: var(--pi-space-2);
   margin: 0;
+  padding: var(--pi-space-3);
+  border: var(--pi-rule-width) solid var(--pi-divider);
+  border-radius: var(--pi-radius);
+  background: var(--pi-card);
 }
-
 .room-editor legend {
-  font-weight: 600;
-  padding: 0 4px;
+  padding: 0 var(--pi-space-1);
+  font: var(--pi-weight-strong) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+  text-transform: uppercase;
+  letter-spacing: .02em;
+}
+.room-editor label { font: var(--pi-weight-body) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body); }
+
+.room-editor__row { display: flex; flex-wrap: wrap; gap: var(--pi-space-2); align-items: center; }
+.room-editor__actions { display: flex; flex-wrap: wrap; gap: var(--pi-space-2); }
+.room-editor__note {
+  margin: 0;
+  color: var(--pi-muted);
+  font: var(--pi-weight-body) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
 }
 
-.room-editor__row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  align-items: center;
-}
-
-.room-editor__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
+/* Controls: symmetric rule, 2px radius, shared focus ring. */
 .room-editor button,
 .room-importer button {
-  min-height: 40px;
-  padding: 0 14px;
-  border: 1px solid #6b7280;
-  border-radius: 4px;
-  background: #ffffff;
-  color: #1d1f24;
-  font: inherit;
+  min-block-size: var(--pi-hit);
+  padding: 0 var(--pi-space-3);
+  border: var(--pi-rule-width) solid var(--pi-rule);
+  border-radius: var(--pi-radius);
+  color: var(--pi-ink);
+  background: var(--pi-paper);
+  font: var(--pi-weight-strong) var(--pi-control-size)/var(--pi-control-leading) var(--pi-font-display);
+  text-transform: uppercase;
+  letter-spacing: .01em;
   cursor: pointer;
 }
-
+.room-editor button[aria-pressed="true"] {
+  color: var(--pi-selected-ink);
+  background: var(--pi-selected-surface);
+  border-color: var(--pi-selected-surface);
+}
 .room-editor button:disabled,
 .room-importer button:disabled {
-  cursor: not-allowed;
-  color: #8b9099;
-  border-color: #c8ccd4;
+  cursor: default;
+  color: var(--pi-muted);
+  background: var(--pi-disabled);
+  border-color: var(--pi-soft-rule);
 }
 
 .room-editor button:focus-visible,
 .room-importer button:focus-visible,
 .room-editor input:focus-visible,
-.room-importer input:focus-visible {
-  outline: 2px solid #1f5fd0;
-  outline-offset: 2px;
+.room-importer input:focus-visible,
+.room-screen a:focus-visible,
+.room-entry a:focus-visible {
+  outline: var(--pi-focus-ring) solid var(--pi-focus);
+  outline-offset: var(--pi-focus-offset);
 }
 
-.room-editor__list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
+/* Placed items: a dense list with symmetric dividers, not per-item boxes. */
+.room-editor__list { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
 .room-editor__list li {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: var(--pi-space-2);
   align-items: center;
-  padding: 6px;
-  border: 1px solid #dde0e6;
-  border-radius: 4px;
+  padding-block: var(--pi-space-2);
+  border-block-start: var(--pi-rule-width) solid var(--pi-divider);
 }
-
+.room-editor__list li:first-child { border-block-start: 0; }
 .room-editor__list li[data-selected='true'] {
-  border-color: #1f5fd0;
+  color: var(--pi-selected-ink);
+  background: var(--pi-selected-surface);
+  border-radius: var(--pi-radius);
+  padding-inline: var(--pi-space-2);
+}
+.room-editor__list li[data-selected='true'] button {
+  color: var(--pi-ink);
+  background: var(--pi-paper);
+  border-color: var(--pi-paper);
 }
 
+/* A revision conflict is an inline error: symmetric danger border, tinted field. */
 .room-editor__conflict {
-  border: 1px solid #b45309;
-  border-radius: 4px;
-  padding: 12px;
-  background: #fffaf0;
+  display: grid;
+  gap: var(--pi-space-2);
+  padding: var(--pi-space-3);
+  border: var(--pi-rule-width) solid var(--pi-status-danger);
+  border-radius: var(--pi-radius);
+  background: var(--pi-status-danger-field);
+  color: var(--pi-ink);
 }
-
 .room-editor__conflict h2 {
-  margin: 0 0 8px;
-  font-size: 16px;
+  margin: 0;
+  color: var(--pi-status-danger);
+  font: var(--pi-weight-strong) var(--pi-control-size)/var(--pi-control-leading) var(--pi-font-display);
+  text-transform: uppercase;
+  letter-spacing: .01em;
 }
 
 .room-importer {
-  border: 1px solid #c8ccd4;
-  border-radius: 4px;
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  display: grid;
+  gap: var(--pi-space-3);
+  padding: var(--pi-space-3);
+  border: var(--pi-rule-width) solid var(--pi-divider);
+  border-radius: var(--pi-radius);
+  background: var(--pi-card);
 }
-
 .room-importer h2 {
   margin: 0;
-  font-size: 16px;
+  font: var(--pi-weight-strong) var(--pi-heading-size)/var(--pi-heading-leading) var(--pi-font-display);
+  text-transform: uppercase;
+  letter-spacing: .01em;
 }
 
+/* Import steps: symmetric chips, the current step marked by surface, not an edge. */
 .room-importer__steps {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  padding: 0;
+  gap: var(--pi-space-2);
   margin: 0;
+  padding: 0;
   list-style: none;
-  font-size: 13px;
+  font: var(--pi-weight-body) var(--pi-caption-size)/var(--pi-caption-leading) var(--pi-font-body);
 }
-
 .room-importer__steps li {
-  padding: 4px 8px;
-  border: 1px solid #c8ccd4;
+  padding: 2px var(--pi-space-2);
+  border: var(--pi-rule-width) solid var(--pi-divider);
   border-radius: 999px;
+  color: var(--pi-muted);
+  background: var(--pi-field);
 }
-
 .room-importer__steps li[data-state='current'] {
-  border-color: #1f5fd0;
-  font-weight: 600;
+  color: var(--pi-selected-ink);
+  background: var(--pi-selected-surface);
+  border-color: var(--pi-selected-surface);
+  font-weight: var(--pi-weight-strong);
 }
+.room-importer__steps li[data-state='done'] { color: var(--pi-muted); background: var(--pi-paper); }
 
-.room-importer__steps li[data-state='done'] {
-  color: #454a53;
-}
-
-.room-importer__crop {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
+.room-importer__crop { display: grid; gap: var(--pi-space-3); }
 .room-importer__preview canvas {
-  width: 192px;
-  height: 192px;
+  inline-size: 192px;
+  block-size: 192px;
   image-rendering: pixelated;
-  border: 1px solid #2a2d33;
-  background: #14161a;
+  border: var(--pi-rule-width) solid var(--pi-ink);
+  border-radius: var(--pi-radius);
+  background: var(--pi-ink);
 }
-
-.room-importer__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
+.room-importer__actions { display: flex; flex-wrap: wrap; gap: var(--pi-space-2); }
 .room-importer__note {
-  font-size: 13px;
-  color: #454a53;
+  margin: 0;
+  color: var(--pi-muted);
+  font: var(--pi-weight-body) var(--pi-caption-size)/var(--pi-caption-leading) var(--pi-font-body);
 }
 
-/* The profile's Room entry: an ordinary link row, never a room preview. */
+/* The profile's Room entry: an ordinary row, never a room preview. */
 .room-entry {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  padding: 12px;
-  border: 1px solid #c8ccd4;
-  border-radius: 4px;
+  gap: var(--pi-space-3);
+  padding: var(--pi-space-3);
+  border: var(--pi-rule-width) solid var(--pi-divider);
+  border-radius: var(--pi-radius);
+  background: var(--pi-card);
+  color: var(--pi-ink);
 }
-
 .room-entry a {
-  min-height: 40px;
   display: inline-flex;
   align-items: center;
-  padding: 0 14px;
-  border: 1px solid #6b7280;
-  border-radius: 4px;
-  color: #1d1f24;
+  min-block-size: var(--pi-hit);
+  padding: 0 var(--pi-space-3);
+  border: var(--pi-rule-width) solid var(--pi-rule);
+  border-radius: var(--pi-radius);
+  color: var(--pi-ink);
+  background: var(--pi-paper);
+  font: var(--pi-weight-strong) var(--pi-control-size)/var(--pi-control-leading) var(--pi-font-display);
+  text-transform: uppercase;
+  letter-spacing: .01em;
   text-decoration: none;
 }
 
-.room-entry a:focus-visible {
-  outline: 2px solid #1f5fd0;
-  outline-offset: 2px;
-}
-
 .room-unavailable {
-  padding: 24px;
+  padding: var(--pi-space-5) var(--pi-space-3);
+  border: var(--pi-rule-width) dashed var(--pi-soft-rule);
+  border-radius: var(--pi-radius);
+  background: var(--pi-card);
+  color: var(--pi-muted);
+  font: var(--pi-weight-body) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
   text-align: center;
-  color: #454a53;
+  overflow-wrap: anywhere;
 }

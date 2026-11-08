@@ -1,64 +1,153 @@
 /*
  * Identity verification surfaces.
  *
+ * WP-10: presentation only. The surfaces keep their markup, class hooks and
+ * behavior; the appearance now comes from the shared pi01-photo2-v1 contract
+ * instead of the dark --mcr-* palette this file used to define locally. Status
+ * is carried by the shared status tokens and by the status word itself, never
+ * by an asymmetric edge.
+ *
  * Deliberately plain: spacing, typography and ordinary symmetric borders. No
  * decorative left accent bar, no coloured left border, no inset rail and no
  * pseudo-element substitute for one. Focus stays a visible outline.
  */
 .identity-surface {
+  display: grid;
+  gap: var(--pi-space-3);
   box-sizing: border-box;
-  width: 100%;
-  max-width: 42rem;
+  inline-size: 100%;
+  max-inline-size: 42rem;
+  min-inline-size: 0;
   margin-inline: auto;
-  padding: 1.25rem;
-  padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
-  color: var(--mcr-text, #f4f1e8);
-  background: var(--mcr-surface, #201e25);
-  font: 1rem/1.5 system-ui, sans-serif;
+  padding: var(--pi-space-3) var(--pi-space-3) max(var(--pi-space-5), env(safe-area-inset-bottom));
+  color: var(--pi-ink);
+  background: var(--pi-paper);
+  font: var(--pi-weight-body) var(--pi-body-size)/var(--pi-body-leading) var(--pi-font-body);
   overflow-wrap: anywhere;
 }
 .identity-surface * { box-sizing: border-box; }
-.identity-surface h1 { font-size: 1.5rem; margin-block: 0.25rem 0.75rem; }
-.identity-surface h2 { font-size: 1.15rem; margin-block: 0.25rem 0.5rem; }
-.identity-surface p { margin-block: 0.5rem; }
-.identity-surface :focus-visible { outline: 3px solid var(--mcr-focus, #f7cd7a); outline-offset: 3px; }
+.identity-surface > header { display: grid; gap: var(--pi-space-1); }
+.identity-surface h1 {
+  margin: 0;
+  font: var(--pi-weight-strong) var(--pi-title-size)/var(--pi-title-leading) var(--pi-font-display);
+  text-transform: uppercase;
+  letter-spacing: .01em;
+}
+.identity-surface h2 {
+  margin: 0;
+  font: var(--pi-weight-strong) var(--pi-heading-size)/var(--pi-heading-leading) var(--pi-font-display);
+  text-transform: uppercase;
+  letter-spacing: .01em;
+}
+.identity-surface p { margin: 0; }
+.identity-surface > header > p { color: var(--pi-muted); font-size: var(--pi-meta-size); line-height: var(--pi-meta-leading); }
+.identity-surface :focus-visible { outline: var(--pi-focus-ring) solid var(--pi-focus); outline-offset: var(--pi-focus-offset); }
 
 .identity-surface button {
-  max-width: 100%;
-  min-height: 44px;
-  padding: 0.5rem 0.9rem;
-  color: inherit;
-  background: var(--mcr-background, #131217);
-  border: 1px solid var(--mcr-border, #827e8b);
-  border-radius: 0.2rem;
-  font: inherit;
+  max-inline-size: 100%;
+  min-block-size: var(--pi-hit);
+  padding: 0 var(--pi-space-3);
+  color: var(--pi-ink);
+  background: var(--pi-paper);
+  border: var(--pi-rule-width) solid var(--pi-rule);
+  border-radius: var(--pi-radius);
+  font: var(--pi-weight-strong) var(--pi-control-size)/var(--pi-control-leading) var(--pi-font-display);
+  text-transform: uppercase;
+  letter-spacing: .01em;
   cursor: pointer;
 }
-.identity-surface button:disabled { opacity: 0.55; cursor: default; }
+.identity-surface button:disabled { color: var(--pi-muted); background: var(--pi-disabled); border-color: var(--pi-soft-rule); cursor: default; }
 
-.identity-status { font-size: 1.1rem; }
-.identity-status[data-status='VERIFIED'] strong { color: var(--mcr-positive, #8fd7a8); }
-.identity-status[data-status='EXPIRED'] strong,
-.identity-status[data-status='REVOKED'] strong { color: var(--mcr-warning, #f0c674); }
-.identity-status[data-status='PROVIDER_UNAVAILABLE'] strong { color: var(--mcr-muted, #b6b2bd); }
+/* The status line is a badge: a symmetric pill whose text carries the meaning. */
+.identity-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--pi-space-1);
+  justify-self: start;
+  max-inline-size: 100%;
+  margin: 0;
+  padding: 2px var(--pi-space-2);
+  border: var(--pi-rule-width) solid var(--pi-status-neutral);
+  border-radius: 999px;
+  color: var(--pi-status-neutral);
+  background: var(--pi-status-neutral-field);
+  font: var(--pi-weight-strong) var(--pi-caption-size)/var(--pi-caption-leading) var(--pi-font-body);
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+.identity-status strong { font-weight: var(--pi-weight-strong); }
+.identity-status[data-status='VERIFIED'] {
+  color: var(--pi-status-ok);
+  border-color: var(--pi-status-ok);
+  background: var(--pi-status-ok-field);
+}
+.identity-status[data-status='EXPIRED'],
+.identity-status[data-status='REVOKED'] {
+  color: var(--pi-status-warn);
+  border-color: var(--pi-status-warn);
+  background: var(--pi-status-warn-field);
+}
+.identity-status[data-status='PROVIDER_UNAVAILABLE'] {
+  color: var(--pi-status-neutral);
+  border-color: var(--pi-status-neutral);
+  background: var(--pi-status-neutral-field);
+}
 
-.identity-claims { display: grid; gap: 0.5rem; margin-block: 0.75rem; }
-.identity-claims > div { display: flex; gap: 0.75rem; align-items: baseline; }
-.identity-claims dt { min-width: 6rem; color: var(--mcr-muted, #b6b2bd); }
-.identity-claims dd { margin: 0; font-weight: 650; }
+/* Claims: a definition list with symmetric dividers, not coloured rows. */
+.identity-claims {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  border: var(--pi-rule-width) solid var(--pi-divider);
+  border-radius: var(--pi-radius);
+  background: var(--pi-card);
+}
+.identity-claims > div {
+  display: flex;
+  gap: var(--pi-space-3);
+  align-items: baseline;
+  justify-content: space-between;
+  padding: var(--pi-space-2) var(--pi-space-3);
+  border-block-start: var(--pi-rule-width) solid var(--pi-divider);
+}
+.identity-claims > div:first-child { border-block-start: 0; }
+.identity-claims dt {
+  color: var(--pi-muted);
+  font: var(--pi-weight-body) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+}
+.identity-claims dd {
+  margin: 0;
+  font: var(--pi-weight-strong) var(--pi-control-size)/var(--pi-control-leading) var(--pi-font-body);
+  text-align: end;
+  overflow-wrap: anywhere;
+}
 
-.identity-actions { display: flex; flex-wrap: wrap; gap: 0.65rem; align-items: center; margin-block: 1rem; }
+.identity-actions { display: flex; flex-wrap: wrap; gap: var(--pi-space-2); align-items: center; }
 
+/* A report or message is a symmetric bordered panel, never a left rail. */
 .identity-report,
 .identity-message {
-  margin-block: 0.75rem;
-  padding: 0.75rem;
-  border: 1px solid var(--mcr-border, #827e8b);
-  border-radius: 0.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--pi-space-2);
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--pi-space-2) var(--pi-space-3);
+  border: var(--pi-rule-width) solid var(--pi-divider);
+  border-radius: var(--pi-radius);
+  background: var(--pi-field);
+  color: var(--pi-ink);
+  font: var(--pi-weight-body) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
 }
-.identity-report { display: flex; flex-wrap: wrap; gap: 0.65rem; align-items: center; justify-content: space-between; }
-.identity-report p { margin: 0; }
+.identity-report p,
+.identity-message { margin: 0; }
+.identity-message { justify-content: flex-start; }
 
 /* The gated-post prompt. It renders no restricted content of any kind. */
-.identity-prompt { max-width: 42rem; margin-inline: auto; }
-.identity-prompt__note { color: var(--mcr-muted, #b6b2bd); }
+.identity-prompt { max-inline-size: 42rem; margin-inline: auto; }
+.identity-prompt__note {
+  color: var(--pi-muted);
+  font: var(--pi-weight-body) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+}

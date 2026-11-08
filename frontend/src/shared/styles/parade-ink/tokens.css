@@ -47,4 +47,74 @@
   --pi-tab-gap: 4px;
   --pi-radius: 2px;
   --pi-row-gap: 8px;
+
+  /* ---------------------------------------------------------------------
+   * Profile/social extension — WP-10.
+   *
+   * The same pi01-photo2-v1 contract, extended with the roles the new
+   * profile, discovery, media, room, identity and avatar screens need.
+   * These are additions to the one token system, never a second palette:
+   * every value below either derives from an existing token or is a scale
+   * step, and no new hue is introduced.
+   * ------------------------------------------------------------------- */
+
+  /* Spacing scale. 4px base; the existing inset (6) and row gap (8) are steps. */
+  --pi-space-1: 4px;
+  --pi-space-2: 8px;
+  --pi-space-3: 12px;
+  --pi-space-4: 16px;
+  --pi-space-5: 24px;
+  --pi-space-6: 32px;
+
+  /* Type scale. Body/title/control/meta already exist above; these are the
+   * smaller and larger steps the dense rows and section headers need. */
+  --pi-caption-size: 12px;
+  --pi-caption-leading: 16px;
+  --pi-heading-size: 20px;
+  --pi-heading-leading: 26px;
+  --pi-display-size: 32px;
+  --pi-display-leading: 38px;
+  --pi-weight-body: 400;
+  --pi-weight-strong: 700;
+
+  /* Surface and border roles. A card is paper on a surface field; a row is a
+   * card without its own field. Both use the same symmetric rule. */
+  --pi-field: #efeeea;
+  --pi-card: var(--pi-paper);
+  --pi-card-rule: var(--pi-rule);
+  --pi-divider: #d8d7d3;
+  --pi-inverse-surface: var(--pi-ink);
+  --pi-inverse-rule: #4a4a48;
+
+  /* Accent roles. The crimson is the only accent; there is no secondary hue. */
+  --pi-accent: var(--pi-crimson);
+  --pi-accent-ink: var(--pi-on-dark);
+  --pi-accent-quiet: #f0e2e4;
+  --pi-selected-surface: var(--pi-ink);
+  --pi-selected-ink: var(--pi-on-dark);
+
+  /* Status roles. Semantic only — never used as decoration. Each pairs a text
+   * colour with a tinted field that keeps >= 4.5:1 against it. */
+  --pi-status-ok: #1f5c38;
+  --pi-status-ok-field: #e6efe8;
+  --pi-status-warn: #6b4a10;
+  --pi-status-warn-field: #f6eeda;
+  --pi-status-danger: var(--pi-crimson);
+  --pi-status-danger-field: var(--pi-accent-quiet);
+  --pi-status-neutral: var(--pi-muted);
+  --pi-status-neutral-field: var(--pi-field);
+
+  /* Focus ring. Same crimson as the base contract, with an explicit offset so
+   * a ring never reads as a border on the element it surrounds. */
+  --pi-focus-ring: 3px;
+  --pi-focus-offset: 2px;
+
+  /* Component geometry the new primitives share. */
+  --pi-card-padding: var(--pi-space-3);
+  --pi-card-gap: var(--pi-space-2);
+  --pi-chip-size: 40px;
+  --pi-chip-size-lg: 56px;
+  --pi-media-radius: var(--pi-radius);
+  --pi-badge-height: 22px;
+  --pi-section-gap: var(--pi-space-5);
 }
