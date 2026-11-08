@@ -10,7 +10,15 @@
       "title": "Age boundary allows 18 and 29, denies 17 and 30",
       "owner": "WP-04",
       "status": "NOT_RUN",
-      "cases": ["V-01-a", "V-01-b", "V-01-c", "V-01-d", "V-01-e", "V-01-f", "V-01-g"],
+      "cases": [
+        "V-01-a",
+        "V-01-b",
+        "V-01-c",
+        "V-01-d",
+        "V-01-e",
+        "V-01-f",
+        "V-01-g"
+      ],
       "test_paths": [
         "backend/crates/concert-domain/tests/intro_audience.rs",
         "backend/services/concert-service/tests/intro_visibility_contract.rs"
@@ -19,11 +27,25 @@
     },
     {
       "id": "V-02",
-      "title": "Unknown or unavailable attributes fail closed",
+      "title": "Unknown, expired, or revoked attributes fail closed",
       "owner": "WP-04",
       "status": "NOT_RUN",
-      "cases": ["V-02-a", "V-02-b", "V-02-c", "V-02-d", "V-02-e", "V-02-f", "V-02-g"],
-      "test_paths": ["backend/services/concert-service/tests/intro_visibility_contract.rs"],
+      "cases": [
+        "V-02-a",
+        "V-02-b",
+        "V-02-c",
+        "V-02-d",
+        "V-02-e",
+        "V-02-f",
+        "V-02-g",
+        "V-02-h",
+        "V-02-i",
+        "V-02-j",
+        "V-02-k"
+      ],
+      "test_paths": [
+        "backend/services/concert-service/tests/intro_visibility_contract.rs"
+      ],
       "requires_real_services": false
     },
     {
@@ -31,8 +53,20 @@
       "title": "One visibility decision across list, detail, attachment, thumbnail, link, and like",
       "owner": "WP-04",
       "status": "NOT_RUN",
-      "cases": ["V-03-a", "V-03-b", "V-03-c", "V-03-d", "V-03-e", "V-03-f", "V-03-g", "V-03-h", "V-03-i"],
-      "test_paths": ["backend/services/concert-service/tests/intro_visibility_contract.rs"],
+      "cases": [
+        "V-03-a",
+        "V-03-b",
+        "V-03-c",
+        "V-03-d",
+        "V-03-e",
+        "V-03-f",
+        "V-03-g",
+        "V-03-h",
+        "V-03-i"
+      ],
+      "test_paths": [
+        "backend/services/concert-service/tests/intro_visibility_contract.rs"
+      ],
       "requires_real_services": true
     },
     {
@@ -40,8 +74,15 @@
       "title": "Like removal by an unauthorized viewer discloses nothing",
       "owner": "WP-05",
       "status": "NOT_RUN",
-      "cases": ["V-04-a", "V-04-b", "V-04-c", "V-04-d"],
-      "test_paths": ["backend/services/concert-service/tests/intro_likes_contract.rs"],
+      "cases": [
+        "V-04-a",
+        "V-04-b",
+        "V-04-c",
+        "V-04-d"
+      ],
+      "test_paths": [
+        "backend/services/concert-service/tests/intro_likes_contract.rs"
+      ],
       "requires_real_services": true
     },
     {
@@ -49,8 +90,17 @@
       "title": "Repeated likes produce one like and one notification with no side effects",
       "owner": "WP-05",
       "status": "NOT_RUN",
-      "cases": ["V-05-a", "V-05-b", "V-05-c", "V-05-d", "V-05-e", "V-05-f"],
-      "test_paths": ["backend/services/concert-service/tests/intro_likes_contract.rs"],
+      "cases": [
+        "V-05-a",
+        "V-05-b",
+        "V-05-c",
+        "V-05-d",
+        "V-05-e",
+        "V-05-f"
+      ],
+      "test_paths": [
+        "backend/services/concert-service/tests/intro_likes_contract.rs"
+      ],
       "requires_real_services": true
     },
     {
@@ -58,8 +108,17 @@
       "title": "Restricted intro attachments never leak into galleries or posters",
       "owner": "WP-06",
       "status": "NOT_RUN",
-      "cases": ["V-06-a", "V-06-b", "V-06-c", "V-06-d", "V-06-e", "V-06-f"],
-      "test_paths": ["backend/services/concert-service/tests/profile_media_authorization.rs"],
+      "cases": [
+        "V-06-a",
+        "V-06-b",
+        "V-06-c",
+        "V-06-d",
+        "V-06-e",
+        "V-06-f"
+      ],
+      "test_paths": [
+        "backend/services/concert-service/tests/profile_media_authorization.rs"
+      ],
       "requires_real_services": true
     },
     {
@@ -67,7 +126,13 @@
       "title": "Ordinary posts need no intro post or room and are never pixel converted",
       "owner": "WP-06",
       "status": "NOT_RUN",
-      "cases": ["V-07-a", "V-07-b", "V-07-c", "V-07-d", "V-07-e"],
+      "cases": [
+        "V-07-a",
+        "V-07-b",
+        "V-07-c",
+        "V-07-d",
+        "V-07-e"
+      ],
       "test_paths": [
         "backend/services/concert-service/tests/profile_posts.rs",
         "frontend/src/features/profile-media/__tests__/composer.test.tsx"
@@ -79,8 +144,16 @@
       "title": "Intro post, room, and photo post lifecycles are independent",
       "owner": "WP-05",
       "status": "NOT_RUN",
-      "cases": ["V-08-a", "V-08-b", "V-08-c", "V-08-d", "V-08-e"],
-      "test_paths": ["backend/services/concert-service/tests/profile_room_lifecycle.rs"],
+      "cases": [
+        "V-08-a",
+        "V-08-b",
+        "V-08-c",
+        "V-08-d",
+        "V-08-e"
+      ],
+      "test_paths": [
+        "backend/services/concert-service/tests/profile_room_lifecycle.rs"
+      ],
       "requires_real_services": true
     },
     {
@@ -88,7 +161,13 @@
       "title": "Only the owning profile mutates its room and avatar; account switching leaks nothing",
       "owner": "WP-08",
       "status": "NOT_RUN",
-      "cases": ["V-09-a", "V-09-b", "V-09-c", "V-09-d", "V-09-e"],
+      "cases": [
+        "V-09-a",
+        "V-09-b",
+        "V-09-c",
+        "V-09-d",
+        "V-09-e"
+      ],
       "test_paths": [
         "backend/services/concert-service/tests/profile_avatar_ownership.rs",
         "frontend/src/features/profile-room/__tests__/account-switch.test.tsx"
@@ -100,7 +179,13 @@
       "title": "Upload failure, cancellation, save conflict, and scene cleanup",
       "owner": "WP-07",
       "status": "NOT_RUN",
-      "cases": ["V-10-a", "V-10-b", "V-10-c", "V-10-d", "V-10-e"],
+      "cases": [
+        "V-10-a",
+        "V-10-b",
+        "V-10-c",
+        "V-10-d",
+        "V-10-e"
+      ],
       "test_paths": [
         "frontend/src/features/media/__tests__/preparation.test.ts",
         "frontend/src/features/profile-room/__tests__/scene-lifecycle.test.ts"
@@ -112,20 +197,120 @@
       "title": "Full three-identity end-to-end scenario",
       "owner": "WP-10",
       "status": "NOT_RUN",
-      "cases": ["V-11-1", "V-11-2", "V-11-3", "V-11-4", "V-11-5", "V-11-6"],
-      "test_paths": ["frontend/e2e/real/profile-social.spec.ts"],
+      "cases": [
+        "V-11-1",
+        "V-11-2",
+        "V-11-3",
+        "V-11-4",
+        "V-11-5",
+        "V-11-6"
+      ],
+      "test_paths": [
+        "frontend/e2e/real/profile-social.spec.ts"
+      ],
+      "requires_real_services": true
+    },
+    {
+      "id": "V-12",
+      "title": "NAVER verification produces a real, event-free claim",
+      "owner": "WP-04b",
+      "status": "NOT_RUN",
+      "cases": [
+        "V-12-a",
+        "V-12-b",
+        "V-12-c",
+        "V-12-d",
+        "V-12-e",
+        "V-12-f",
+        "V-12-g",
+        "V-12-h",
+        "V-12-i",
+        "V-12-j",
+        "V-12-k",
+        "V-12-l",
+        "V-12-m",
+        "V-12-n",
+        "V-12-o",
+        "V-12-p"
+      ],
+      "test_paths": [
+        "backend/services/profile-service/tests/identity_verification.rs",
+        "backend/crates/concert-domain/tests/intro_audience.rs"
+      ],
+      "requires_real_services": true
+    },
+    {
+      "id": "V-13",
+      "title": "Unrestricted posts need no verification",
+      "owner": "WP-04",
+      "status": "NOT_RUN",
+      "cases": [
+        "V-13-a",
+        "V-13-b",
+        "V-13-c",
+        "V-13-d",
+        "V-13-e"
+      ],
+      "test_paths": [
+        "backend/services/concert-service/tests/intro_visibility_contract.rs"
+      ],
       "requires_real_services": true
     }
   ],
   "supporting_checks": [
-    { "id": "CONTRACT-CHECK", "command": "scripts/mcr/check.sh contracts", "owner": "WP-01", "status": "NOT_RUN" },
-    { "id": "MIGRATION-LEDGER", "command": "backend migration ledger test", "owner": "WP-02", "status": "NOT_RUN" },
-    { "id": "GUARDS", "command": "scripts/mcr/check.sh guards", "owner": "ALL", "status": "NOT_RUN" },
-    { "id": "DISCOVERY-NO-INTRO", "command": "discovery returns a profile with no intro post", "owner": "WP-03", "status": "NOT_RUN" },
-    { "id": "UI-360-390-430", "command": "capture comparison at 360, 390, and 430 px", "owner": "WP-09", "status": "NOT_RUN" }
+    {
+      "id": "CONTRACT-CHECK",
+      "command": "scripts/mcr/check.sh contracts",
+      "owner": "WP-01",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "MIGRATION-LEDGER",
+      "command": "backend migration ledger test",
+      "owner": "WP-02",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "GUARDS",
+      "command": "scripts/mcr/check.sh guards",
+      "owner": "ALL",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "DISCOVERY-NO-INTRO",
+      "command": "discovery returns a profile with no intro post",
+      "owner": "WP-03",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "UI-360-390-430",
+      "command": "capture comparison at 360, 390, and 430 px",
+      "owner": "WP-09",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "NAVER-CONSOLE",
+      "command": "NAVER developer console review approved for birthyear, birthday, and gender scope",
+      "owner": "WP-04b",
+      "status": "NOT_RUN"
+    }
   ],
   "evidence_format": {
-    "required_fields": ["verification", "status", "commit", "recorded_at", "commands", "cases", "artifacts", "limitations"],
-    "status_values": ["PASS", "FAIL", "NOT_RUN", "BLOCKED"]
+    "required_fields": [
+      "verification",
+      "status",
+      "commit",
+      "recorded_at",
+      "commands",
+      "cases",
+      "artifacts",
+      "limitations"
+    ],
+    "status_values": [
+      "PASS",
+      "FAIL",
+      "NOT_RUN",
+      "BLOCKED"
+    ]
   }
 }

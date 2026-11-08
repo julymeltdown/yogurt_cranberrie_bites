@@ -53,7 +53,7 @@ Verified by reading the seed tree, not assumed:
 | Six-service Rust backend (auth, profile, friend, post, notification, gateway) plus a concert service | `backend/services/` | New social/profile/room data belongs to the concert service and the profile service, not to a new service. |
 | Canonical identity: one Auth UUID, session context version, CSRF, browser-origin checks | `backend/services/api-gateway/src/adapters/in/http/` | Reuse the existing session/CSRF/context validation. Do not add a second login. |
 | Mutuals-intro post entity with paired age bounds (no gender) | `contracts/domain/v1/social.schema.json`, `concert-service/migrations/0049_intro_native_witness.sql`, `concert-domain/src/intro_policy/` | Extend with gender + audience summary; keep the existing paired-bounds and fail-closed semantics. |
-| Age verification claims, canonical claim ordering, Seoul-date birthday arithmetic | `concert-domain/src/age_policy/`, `concert-application/src/intro_policy/` | Reuse as the age source for `IdentityClaimsPort`. Gender has no source; see §6. |
+| Age verification claims, canonical claim ordering, Seoul-date birthday arithmetic | `concert-domain/src/age_policy/`, `concert-application/src/intro_policy/` | Reuse the arithmetic unchanged. The claim store itself moves to the profile service and gains the NAVER gender bucket; see §6.1. |
 | Media upload with normalization, dimension and pixel limits, owner-scoped read | `concert-application/src/media/`, `concert-service/src/media_runtime/`, `contracts/domain/v1/operations.json` media operations | Reuse for profile photo/artwork posts and mutuals-intro attachments. |
 | Feed posts with `media_ids`, comments, reactions | `post-service/` (`post_concert_posts`, `post_concert_comments`) | Reference implementation for independent profile posts; do not overload event feed semantics. |
 | Notifications with deduplicated delivery | `notification-service/`, `concert-service/src/notification_live/` | Add an `INTRO_LIKED` kind through the existing pipeline. |
@@ -92,22 +92,67 @@ Excluding a feature means **not integrating it**, not deleting it from MCR's
 history. MCR's 112-task register keeps its own status; this charter does not
 change it.
 
-## 6. Decisions that must be recorded before coding
+## 6. Decisions
 
-These are the points where the source code does not already answer the question.
-Each becomes a dated entry in §7 once the user decides. Until then the stated
-default applies.
+The user answered the three open questions on 2026-11-08. They are recorded in
+§7 and implemented as follows.
 
-| ID | Question | Default until decided | Why it blocks work |
+### 6.1 How NAVER supplies age and gender (verified in the donor)
+
+The claim is **not** entered by the user and it is **not** a free-form profile
+field. Bigyeting obtains it from the NAVER Login profile API
+(`https://openapi.naver.com/v1/nid/me`) during a dedicated verification flow:
+
+| Step | Source (audited checkout `5eecdcaf`) |
+| --- | --- |
+| Authorization start | `POST /v1/naver-verification/start` → `begin_naver_verification` in `application/use_cases/oauth_start.rs` |
+| Callback | `GET /v1/naver-verification/callback` → `application/use_cases/naver_verification.rs` |
+| Profile fetch | `adapters/out/oauth_naver_provider.rs` `load_naver_profile` → `oauth_profiles.rs` `NaverProfile` |
+| Raw fields | `id`, `gender` (`F`/`M`/`U`), `birthyear` (`YYYY`), `birthday` (`MM-DD`) |
+| Age derivation | `domain/privacy.rs` `derive_exact_age_claim(birthyear, birthday, seoul_date)` → `age_at_verification` + `next_birthday_at` |
+| Storage | `naver_verifications(member_id, gender_bucket, age_at_verification, next_birthday_at, verified_at, expires_at, status)` |
+| Current age | `current_age.rs` `current_verified_age_sql_at`: `age_at_verification + (today >= next_birthday_at)` in the Seoul time zone |
+| Read model | `repository/naver.rs` `naver_verification_response_at` → `{ status, verified_at, expires_at, claims: { age, gender_bucket } }` |
+
+Consequences that the integration must preserve:
+
+- Gender is a **verified provider attribute**, bucket `female | male | unknown`.
+  It is not self-declared, and it must never be entered by the user.
+- A missing or unrecognized `gender` produces `profile_incomplete` and writes no
+  claim row. It does not default to `unknown`.
+- Explicit provider `U` becomes `unknown`, and `unknown` passes only an audience
+  whose author selected `unknown`.
+- Claims expire (90-day maximum). An expired claim yields no attributes, so a
+  restricted post becomes invisible again until the user re-verifies.
+- The donor requires a supported claim for **every** post, including unrestricted
+  ones (`exact_age_intro_policy_contract.rs`
+  `unrestricted_intros_require_a_supported_naver_claim_across_every_surface`).
+  The integration removes that requirement for unrestricted posts and keeps it
+  for restricted ones — this is the change the user asked for, and it is recorded
+  as D-03.
+
+### 6.2 What the destination must change
+
+| Donor behavior | Destination behavior | Reason |
+| --- | --- | --- |
+| NAVER claim required for every intro post | Required only when `minimum_age` is set or `gender != any` | User: restriction is for choosing who may see the post, not a global gate |
+| Gender compared as `allowed_gender = 'any' OR allowed_gender = viewer.gender_bucket` | Same comparison, but `unknown` is a real audience value and a viewer with no claim never matches `female`/`male`/`unknown` | Fail-closed on unknown attributes |
+| Age verification bound to `(user_id, event_id)` | Bound to `user_id` only, with the event column retained as an optional audit reference | A personal profile must outlive a concert |
+| Claim tables owned by the concert service | Owned by the profile service, with the concert service reading through `IdentityClaimsPort` | Profile-owned data must not depend on an event |
+| `age_at_verification` + `next_birthday_at` arithmetic | Reuse MCR's existing `age_policy` arithmetic unchanged | Already adapted and tested |
+
+### 6.3 Remaining decisions
+
+| ID | Question | Default | Blocks |
 | --- | --- | --- | --- |
-| D-01 | Where does gender come from? MCR has **no** gender field anywhere in contracts, schema, or services; Bigyeting's `allowed_gender` has no verified source. | `IdentityClaimsPort` returns `Unspecified` for every user, so `allowed_gender = any` is the only usable setting. Any other value fails closed. | A gender-restricted post would be invisible to everyone, which is correct but makes the feature unusable. A source of truth must be chosen: self-declared at profile setup, or verified by an identity provider. |
-| D-02 | Is self-declared gender acceptable for an access-control decision? | No. Self-declared attributes must be labelled unverified and must not be presented as verified. | The product plan requires age/gender restrictions to be server-side access control. An unverified self-declaration weakens that guarantee and must be a recorded product decision. |
-| D-03 | Does the global NAVER-linking requirement remain? | Removed for posts **without** age or gender restrictions; retained only as one possible identity provider for restricted posts. | Bigyeting's current policy requires a NAVER claim for every post. The product plan explicitly removes that for unrestricted posts. |
-| D-04 | Are rooms public, followers-only, or private by default? | `public` with an explicit owner toggle to `private`. | Room visibility is independent of intro audience; a default must be stated so the independence test is meaningful. |
-| D-05 | Are ordinary profile photo posts public by default? | `public`, owner-adjustable to `private`. | Same reason; also required for verification V-06. |
-| D-06 | Do events remain at all? | Yes, as an optional grouping for MCR's existing world, not as a prerequisite for profile, room, or intro features. | The MCR schema keys many tables by `event_id`. New profile-owned tables must not. |
-| D-07 | Is following in scope? | Yes, as an independent relationship with no approval step and no effect on likes. | The product plan lists "follow a profile" as an action; it must not become a friend request. |
-| D-08 | Age range limits | Keep the existing `14..=100` minimum and `15..=101` exclusive maximum as *configuration*, exposed as inclusive `18–29` style input. | The product plan warns these are product configuration, not a finalized global policy. |
+| D-04 | Room default visibility | `public`, owner toggle to `private` | WP-07 |
+| D-05 | Profile photo post default visibility | `public`, owner toggle to `private` | WP-06 |
+| D-06 | Do events remain? | Yes, optional grouping only; never required for profile, room, or intro features | — |
+| D-07 | Is following in scope? | Yes, independent follow with no approval step | WP-09 |
+| D-08 | Age range limits | Keep `14..=100` and `15..=101` as configuration, exposed as inclusive input | — |
+| D-09 | Should a user be able to see and disconnect the NAVER claim, as the donor allows? | Yes, mirroring the donor's connect/disconnect/reconnect flow | WP-04 |
+
+D-01, D-02, and D-03 are resolved by the user's 2026-11-08 answers.
 
 ## 7. Decision log
 
@@ -115,6 +160,16 @@ default applies.
 | --- | --- | --- | --- |
 | 2026-11-08 | — | Delivery repository is `yogurt_cranberrie_bites`; foundation is MCR `a2b10bf9`; seed is an empty commit on top of it. | User instruction |
 | 2026-11-08 | — | All work is document-driven; documents precede code. | User instruction |
+| 2026-11-08 | D-01 | Gender comes from the verified NAVER Login profile (`gender` field), not from a self-declared field. `IdentityClaimsPort` reads it from the claim store. | User instruction |
+| 2026-11-08 | D-02 | Provider-verified gender is acceptable for access control. It is never presented as self-declared, and a user cannot edit it. | User instruction |
+| 2026-11-08 | D-03 | Age/gender restrictions must exist. NAVER linking is required only for posts that carry an age or gender restriction, not for every post. | User instruction |
+| 2026-11-08 | D-04 | Room visibility defaults to `public` with an owner toggle. | Lead, per user delegation ("you decide") |
+| 2026-11-08 | D-05 | Profile photo posts default to `public` with an owner toggle. | Lead, per user delegation |
+| 2026-11-08 | D-06 | Events remain an optional grouping; no profile-owned feature may require one. | Lead, per user delegation |
+| 2026-11-08 | D-07 | Following is in scope as an independent relationship with no approval step. | Lead, per user delegation |
+| 2026-11-08 | D-08 | Age bounds stay `14..=100` / `15..=101` as configuration, shown as inclusive input. | Lead, per user delegation |
+| 2026-11-08 | D-09 | The user can connect, inspect, and disconnect their NAVER claim from their own profile settings. | Lead, per user delegation |
+| 2026-11-08 | D-10 | The concert world leaves the primary navigation and stays reachable from a secondary menu. | Lead, per user delegation |
 
 ## 8. Delivery discipline
 

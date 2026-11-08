@@ -18,12 +18,12 @@ instruction; see [AGENTS.md](../../../AGENTS.md)).
 | --- | --- | --- |
 | 1 | [integration-charter.md](integration-charter.md) | Authority, repository routing, baselines, what is in and out of scope, decision log |
 | 2 | [product-plan.md](product-plan.md) | Product entities, ownership rules, user flows, acceptance criteria, open product decisions |
-| 3 | [domain-contract.md](domain-contract.md) | `IntroAudience`, `IdentityClaimsPort`, identity, visibility decision table, data model |
+| 3 | [domain-contract.md](domain-contract.md) | `IntroAudience`, `IdentityClaimsPort`, the verified NAVER claim, visibility decision table, data model |
 | 4 | [http-contract.md](http-contract.md) | Every operation, request/response shape, error, cache, and enforcement point |
 | 5 | [migration-plan.md](migration-plan.md) | Source-to-destination mapping for Bigyeting and MCR code, with adaptation rules |
 | 6 | [implementation-plan.md](implementation-plan.md) | Work packages, dependencies, ownership, definition of done, verification matrix |
 | 7 | [source-register.md](source-register.md) | Pinned revisions, audit status, provenance obligations |
-| 8 | [verification-plan.md](verification-plan.md) | Ten mandatory verifications, test-case tables, evidence format |
+| 8 | [verification-plan.md](verification-plan.md) | Thirteen mandatory verifications, test-case tables, evidence format |
 
 Machine-readable companions live beside them:
 
@@ -67,9 +67,27 @@ task IDs.
 
 The seed commit is the integration base for every work package in this set.
 
+## Decisions already taken
+
+The user settled the three blocking questions on 2026-11-08:
+
+1. **Gender** comes from the verified NAVER Login profile, not a self-declared
+   field. The donor already implements the flow: OAuth start → callback →
+   profile API (`birthyear`, `birthday`, `gender`) → derived exact age plus a
+   gender bucket, stored with a 90-day lifetime.
+2. **Age and gender restrictions must exist.** They decide who may see a post.
+3. **NAVER linking is required only for restricted posts.** The donor's global
+   gate is narrowed, not deleted.
+
+Everything else was decided by the lead under the user's delegation. See
+[integration-charter.md](integration-charter.md) §7 for the full log.
+
 ## What to do first
 
-1. Read the charter and confirm the decisions marked **OPEN** in
-   [product-plan.md](product-plan.md) §8.
-2. Freeze `IntroAudience` and the operation list (WP-01) before any feature code.
+1. Freeze `IntroAudience`, the identity-verification operations, and the rest of
+   the operation list (WP-01) before any feature code.
+2. Confirm the NAVER developer console can be reviewed for the `birthyear`,
+   `birthday`, and `gender` scope. Without that approval no user can obtain a
+   claim, and every restricted post stays invisible. This is an external
+   prerequisite, not a code task.
 3. Follow [implementation-plan.md](implementation-plan.md) §3 for the wave order.

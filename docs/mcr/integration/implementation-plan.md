@@ -29,7 +29,7 @@ has started. The machine-readable register is
 | Owner | Contract writer (single writer) |
 | Write scope | `contracts/core/v1/`, `contracts/domain/v1/`, `contracts/generated/`, `frontend/src/generated/api-client/`, `backend/scripts/docs/` |
 | Depends on | — |
-| Deliverable | Every operation in [http-contract.md](http-contract.md) §2 declared with schemas; `Kind::INTRO_LIKED` and `TargetType::INTRO_POST` added to the proto and domain enum; generators run; `scripts/mcr/check.sh contracts` passes. |
+| Deliverable | Every operation in [http-contract.md](http-contract.md) §2 declared with schemas, including the four identity-verification operations; `Kind::INTRO_LIKED` and `TargetType::INTRO_POST` added to the proto and domain enum; the `303` redirect allowance for the verification callback; generators run; `scripts/mcr/check.sh contracts` passes. |
 | Definition of done | `python3 backend/scripts/docs/generate-mcr-domain.py --check` and `generate-mcr-core.py --check` exit 0; `python3 scripts/mcr/validate-domain.py` exits 0; generated client typechecks; a contract test asserts each new operation's rule, cache, and error set. |
 | Blocks | Everything else. |
 
@@ -40,9 +40,9 @@ has started. The machine-readable register is
 | Owner | Backend |
 | Write scope | `backend/services/concert-service/migrations/0080_*.sql`, `backend/services/profile-service/migrations/`, `backend/crates/concert-domain/src/` (new modules only) |
 | Depends on | WP-01 |
-| Deliverable | `profiles`, `profile_favorites`, `profile_rooms`, `profile_avatars`, `intro_posts`, `intro_attachments`, `intro_likes`, `intro_comments`, `profile_posts`, `profile_post_attachments`, `media_assets` (profile-scoped) with the invariants of [domain-contract.md](domain-contract.md) §4. |
+| Deliverable | `profiles`, `profile_favorites`, `identity_claims`, `identity_verifications`, `profile_rooms`, `profile_avatars`, `intro_posts`, `intro_attachments`, `intro_likes`, `intro_comments`, `profile_posts`, `profile_post_attachments`, `profile_media` with the invariants of [domain-contract.md](domain-contract.md) §4 and [http-contract.md](http-contract.md) §4.1. |
 | Definition of done | Migrations apply cleanly to an empty database and to a database at the current head; CHECK constraints reject the documented invalid rows; no migration edits an applied file; the migration ledger test passes. |
-| Blocks | WP-04, WP-05, WP-06, WP-07, WP-08 |
+| Blocks | WP-03, WP-04, WP-04b, WP-05, WP-06, WP-07, WP-08 |
 
 ### WP-03 — Favorites and discovery
 
@@ -60,11 +60,22 @@ has started. The machine-readable register is
 | Field | Value |
 | --- | --- |
 | Owner | Backend |
-| Write scope | `backend/crates/concert-application/src/identity_claims.rs`, `backend/crates/concert-application/src/intro_visibility.rs`, `backend/services/concert-service/src/intro_posts/visibility_sql.rs`, `backend/services/concert-service/tests/intro_visibility_contract.rs` |
-| Depends on | WP-02 |
-| Deliverable | `IdentityClaimsPort` with the age adapter over the existing claim store and a gender adapter that returns `Unspecified` until D-01 is decided; `can_view_intro`; the SQL predicate; a shared case table executed against both. |
+| Write scope | `backend/crates/concert-application/src/identity_claims.rs`, `backend/crates/concert-application/src/intro_visibility.rs`, `backend/services/concert-service/src/intro_posts/visibility_sql.rs`, `backend/services/concert-service/src/intro_posts/claims_adapter.rs`, `backend/services/concert-service/tests/intro_visibility_contract.rs` |
+| Depends on | WP-02, WP-04b |
+| Deliverable | `IdentityClaimsPort` reading the verified claim store; `can_view_intro`; the SQL predicate; a shared case table executed against both. |
 | Definition of done | V-01, V-02, V-03 pass. The pure function and the SQL predicate return identical decisions for the full case table. |
 | Blocks | WP-05, WP-06, WP-07 |
+
+### WP-04b — NAVER identity verification
+
+| Field | Value |
+| --- | --- |
+| Owner | Backend (`-be`) and frontend (`-fe`) |
+| Write scope | `backend/services/profile-service/src/identity/`, `backend/services/profile-service/migrations/`, `backend/services/api-gateway/src/adapters/in/http/identity_routes.rs`, `frontend/src/features/identity/` |
+| Depends on | WP-01, WP-02 |
+| Deliverable | `identity_claims` and `identity_verifications` tables; NAVER start / callback / status / disconnect; provider config with production placeholder refusal; `IdentityStatus` owner view; verification callback landing. |
+| Definition of done | V-12 passes: a claimed age and gender are derived from `birthyear`/`birthday`/`gender`, a missing or unrecognized gender writes no claim, the claim expires after 90 days, disconnect revokes it, and re-verification supersedes the old row. The flow is event-free. |
+| Blocks | WP-04 |
 
 ### WP-05 — Intro posts, hearts, likers, notifications
 
@@ -137,10 +148,11 @@ has started. The machine-readable register is
 ```text
 Wave 0   WP-01  (contract freeze)
 Wave 1   WP-02  (schema)
-Wave 2   WP-03, WP-04, WP-08   (parallel; disjoint scopes)
-Wave 3   WP-05, WP-06, WP-07   (parallel; disjoint scopes)
-Wave 4   WP-09  (needs the screens' data)
-Wave 5   WP-10  (needs everything)
+Wave 2   WP-03, WP-04b, WP-08   (parallel; disjoint scopes)
+Wave 3   WP-04  (needs the claim store from WP-04b)
+Wave 4   WP-05, WP-06, WP-07   (parallel; disjoint scopes)
+Wave 5   WP-09  (needs the screens' data)
+Wave 6   WP-10  (needs everything)
 ```
 
 Within a wave, backend and frontend packages of the same feature run in parallel
@@ -159,6 +171,8 @@ not wait for its backend package to finish; it waits for the contract only.
 | `backend/services/concert-service/src/profile_room/` | WP-07 | |
 | `backend/services/concert-service/src/profile_avatar/` | WP-08 | |
 | `backend/services/concert-service/src/discovery/` | WP-03 | |
+| `backend/services/profile-service/src/identity/`, `backend/services/profile-service/migrations/` | WP-04b | Claim store, NAVER provider, start/callback/status/disconnect. |
+| `frontend/src/features/identity/` | WP-04b | Verification status, connect/disconnect, callback landing. |
 | `backend/services/api-gateway/src/adapters/in/http/` | Gatekeeper | New route modules only; the shared router registration is a single-writer transfer. |
 | `frontend/src/features/intros/` | WP-05 | |
 | `frontend/src/features/profile-media/`, `frontend/src/features/media/` | WP-06 | `features/media/` is shared with WP-05; assign it to WP-06 and let WP-05 consume it. |
@@ -185,11 +199,13 @@ not wait for its backend package to finish; it waits for the contract only.
 
 | Risk | Impact | Mitigation |
 | --- | --- | --- |
-| Gender has no source of truth | Audience gender control is unusable or misleading | Decide D-01 before WP-04 ships; ship `any`-only and hide the control otherwise. Never present a self-declared value as verified. |
-| Age claim store is incomplete for many accounts | Restricted posts invisible to most users | This is correct fail-closed behavior. Surface an explicit "verify your age to see this post" state that does not reveal content. |
+| NAVER console review not approved for age/gender scope | No user can obtain a claim; every restricted post is invisible | The donor's runbook already documents the console requirements (explicit `birthyear`, `birthday`, `gender` as required profile fields). Treat console approval as an external prerequisite, record it as `BLOCKED` when absent, and never fake a claim. |
+| NAVER returns an unrecognized or missing gender | A user cannot complete verification | This is the donor's `profile_incomplete` path. Show a specific message, write no claim, and leave every other feature usable. |
+| Claim expires while a user is browsing | Restricted post disappears mid-session | P-08: the next request re-evaluates and the UI offers re-verification without revealing hidden content. |
+| Claim store moves from concert to profile service | Existing event-scoped claims become unreadable | The destination starts with no production claim data. If any is imported, it is a one-time migration that maps `user_id` and drops `event_id`; record it explicitly rather than assuming. |
 | Room layout conflicts under fast dragging | Lost user work | Revision conflict returns the current layout; the client keeps the unsaved layout and offers resolution. |
 | Phaser instance duplication | Memory and lifecycle bugs | One instance per shell; the room scene acquires a lease and releases it on unmount. Verification V-10 covers cleanup. |
 | Contract drift between pure policy and SQL | Access bypass | One case table executed against both (WP-04). |
 | Media authorization broadened by accident | Restricted photo leak | Media authorization always joins the attached post; V-06 tests the leak explicitly. |
 | Bigyeting baseline mismatch (`dd47ed5` vs `5ee…`) | Adapting a file that changed | Reconcile per [source-register.md](source-register.md) §3 before adapting. |
-| Concert world left in the primary navigation | Product focus diluted | P-02 decision; default hides it from primary tabs. |
+| Concert world left in the primary navigation | Product focus diluted | P-02 is decided: the concert world leaves the primary tabs and stays reachable from a secondary menu. |

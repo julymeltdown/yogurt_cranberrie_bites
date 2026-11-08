@@ -41,8 +41,11 @@ Reuse the existing gateway contract unchanged:
 ### 1.3 IdentityClaimsPort
 
 The audience decision needs attributes that the profile table does not own: age
-(from the existing age-verification claim store) and gender (no source exists
-today).
+and gender. Both come from the verified NAVER Login claim described below.
+The MCR foundation has an event-scoped age claim store
+(`concert_age_claims`, keyed by `user_id` and `event_id`) but no gender field
+anywhere; the integration moves the claim store to the profile service and adds
+the provider gender attribute to it.
 
 ```rust
 // backend/crates/concert-application/src/identity_claims.rs (proposed)
@@ -61,36 +64,71 @@ pub struct IdentityClaims {
     pub profile: ProfileId,
     pub age: Attribute<ExactAge>,      // years, Seoul-date arithmetic
     pub gender: Attribute<Gender>,
+    pub source: ClaimSource,           // provider + revision + verified_at + expires_at
     pub evaluated_at: DateTime<Utc>,
 }
 
 pub enum Attribute<T> {
     Known(T),
-    Unspecified,   // the user has no such attribute recorded
-    Unavailable,   // the source could not be read or the value is expired/revoked
+    Unspecified,   // the provider returned an explicit "not specified" value
+    Unavailable,   // no claim, expired claim, revoked claim, or source failure
 }
 
 pub enum Gender { Female, Male }
+
+pub struct ClaimSource {
+    pub verifier: String,              // e.g. "naver"
+    pub source_revision: String,
+    pub verified_at: DateTime<Utc>,
+    pub expires_at: DateTime<Utc>,
+}
 
 pub enum ClaimsError { Unavailable }   // never carries the attribute value
 ```
 
 Rules:
 
-- Age comes from the existing claim store
-  (`backend/crates/concert-domain/src/age_policy/`), preserving the source of the
-  value and its verification timestamps. Reuse `AgeStatus`; map every status
-  other than `Verified` to `Attribute::Unavailable` **or** `Unspecified`
-  according to §3.2, and never to a numeric age.
-- Gender has no existing source. Until charter decision D-01 is recorded, the
-  port returns `Attribute::Unspecified` for gender for every profile. The
-  implementation must be a single adapter so that a real source can be added
-  without touching the policy.
+- **Age and gender both come from the verified NAVER Login claim.** The donor
+  flow is the authority: `GET https://openapi.naver.com/v1/nid/me` returns
+  `gender` (`F`/`M`/`U`), `birthyear`, and `birthday`; `derive_exact_age_claim`
+  turns the date of birth into `age_at_verification` plus `next_birthday_at`; the
+  current age is `age_at_verification + (seoul_today >= next_birthday_at)`.
+  Reuse MCR's already-adapted arithmetic in
+  `backend/crates/concert-domain/src/age_policy/arithmetic.rs` unchanged.
+- Gender is a **verified provider attribute**, never a user-entered field. The
+  profile UI shows it read-only with its verification date and expiry, and offers
+  connect / disconnect, mirroring the donor's `NaverAccountStatus` and
+  `DELETE /v1/naver-verification`.
+- Missing or unrecognized provider gender is `profile_incomplete`: no claim row
+  is written, and the user stays `Attribute::Unavailable`. It must never be
+  coerced to `unknown`.
+- Explicit provider `U` maps to `Attribute::Unspecified` (the donor's
+  `gender_bucket = 'unknown'`). `Unspecified` matches only an audience whose
+  author selected `unknown`.
+- Every status other than a live `Verified` claim maps to
+  `Attribute::Unavailable`, never to a numeric age or a guessed gender.
 - The port never returns raw claim rows, provider tokens, or exact age to a
   viewer-facing DTO. Only `can_view` results and the author's own summary leave
-  the server.
-- Isolate anything currently tied to NAVER behind this port. Creating the port
-  does not mean verification for global users exists.
+  the server. The owner may read their own derived age and gender bucket, exactly
+  as the donor's `NaverAccountStatus` does.
+- The claim store moves from the concert service to the profile service and is
+  keyed by `user_id` only. The concert service reads it through this port. The
+  donor's `naver_verifications` table shape is reused (§4.3).
+
+### 1.4 Claim lifecycle
+
+| Event | Effect |
+| --- | --- |
+| User connects NAVER | Provider callback writes a claim with `verified_at` and a 90-day maximum `expires_at` |
+| User disconnects | Claim becomes `REVOKED`; every restricted post the user authored keeps its audience but this user's own attributes become unavailable |
+| Claim expires | `Attribute::Unavailable`; the user is offered re-verification |
+| User re-verifies | A new claim supersedes the old one; the old row's `expires_at` is capped at the replacement instant |
+| Account deletion | Claims are deleted with the account |
+
+A user without a claim can still use the whole product: profile, photos, room,
+favorites, and unrestricted intro posts. They simply cannot view, or be matched
+by, a post that carries an age or gender restriction. The UI must say this
+plainly rather than showing an empty screen.
 
 ## 2. IntroAudience
 
@@ -121,15 +159,18 @@ pub enum GenderCondition { Any, Female, Male, Unknown }
 | Value | Meaning for the author | Effect on a viewer |
 | --- | --- | --- |
 | `any` | No gender restriction | Anyone whose other conditions pass |
-| `female` | Only women may view | Viewer must have `gender = Known(Female)` |
-| `male` | Only men may view | Viewer must have `gender = Known(Male)` |
-| `unknown` | Only viewers whose gender is not specified | Viewer must have `gender = Unspecified` |
+| `female` | Only women may view | Viewer must have `gender = Known(Female)` from a live claim |
+| `male` | Only men may view | Viewer must have `gender = Known(Male)` from a live claim |
+| `unknown` | Only viewers whose provider reported an explicit "not specified" | Viewer must have `gender = Unspecified` |
 
-- `unknown` is **not** "any". It exists because the donor contract has it and
-  because a user may legitimately want to address people who have not declared a
-  gender. It must never be treated as a wildcard.
-- `Unavailable` never satisfies `female`, `male`, or `unknown`. Only `any`
-  ignores gender.
+- `unknown` is **not** "any". It maps to the donor's `gender_bucket = 'unknown'`,
+  which only exists when the provider explicitly returned `U`. It must never be
+  treated as a wildcard.
+- `Unavailable` (no claim, expired claim, provider failure, unrecognized value)
+  never satisfies `female`, `male`, or `unknown`. Only `any` ignores gender.
+- The author's UI offers `any`, `female`, `male`, and `unknown`. It does not offer
+  a "verified only" toggle: a restricted audience already implies verification,
+  because an unverified viewer can never satisfy it.
 
 ### 2.3 Audience summary
 
@@ -180,7 +221,10 @@ Notes that the implementation must not soften:
   Row 7 is the whole point: unknown age fails closed.
 - An unrestricted post (row 6) requires no identity claim at all. This is the
   change introduced by this redesign: the global NAVER-linking requirement is
-  removed for posts without age or gender restrictions.
+  removed for posts without age or gender restrictions. The donor required a
+  claim for every post; that requirement is narrowed, not deleted.
+- A restricted post always requires a live claim from the viewer. There is no
+  path where a missing claim is treated as satisfying a restriction.
 - The author's own path bypasses rows 2–12 but still requires an active session
   and ownership.
 
@@ -221,6 +265,8 @@ before authoring.
 | --- | --- | --- |
 | `profiles` (profile service) | `id`, `account_id`, `nickname`, `bio`, `profile_image_media_id`, `visibility`, `created_at`, `updated_at` | `account_id` unique; `id` immutable; nickname 1–40 chars |
 | `profile_favorites` (profile service) | `profile_id`, `category`, `catalog_item_id`, `position` | `category IN ('music','anime','game')`; `UNIQUE(profile_id, category, catalog_item_id)`; at most 5 per category; music excludes K-pop by catalog policy |
+| `identity_claims` (profile service) | `claim_id`, `user_id`, `verifier`, `source_revision`, `subject_hash`, `gender_bucket`, `age_at_verification`, `next_birthday_at`, `verified_at`, `expires_at`, `status` | See §4.3. Keyed by `user_id` only |
+| `identity_verifications` (profile service) | `verification_id`, `user_id`, `verifier`, `state`, `state_digest`, `created_at`, `expires_at`, `completed_at` | One-use OAuth state, ≤10 minute expiry |
 | `profile_rooms` (concert service) | `owner_profile_id UNIQUE`, `layout jsonb`, `visibility`, `revision`, `updated_at` | No `intro_id`, no `event_id`; revision monotonic |
 | `profile_avatars` (concert service) | `owner_profile_id UNIQUE`, `config jsonb`, `revision`, `updated_at` | No participant key; validated by the existing avatar catalog |
 | `intro_posts` | `intro_id`, `author_profile_id`, `body`, `favorites_snapshot jsonb`, `audience_gender`, `audience_min_age`, `audience_max_age_exclusive`, `state`, `revision`, `published_at`, `expires_at` | No `room_id`; bounds paired; `state IN ('DRAFT','PUBLISHED','DELETED')` |
@@ -232,7 +278,52 @@ before authoring.
 | `media_assets` | `media_id`, `owner_profile_id`, `purpose`, `state`, `width`, `height`, `bytes`, `checksum` | Purpose distinguishes `PROFILE_POST`, `INTRO_POST`, `PROFILE_IMAGE`, `ROOM_POSTER` |
 | `notifications` (existing service) | add kind `INTRO_LIKED` | Dedupe on `(recipient, kind, intro_id, actor_profile_id)` |
 
-### 4.1 Deletion semantics
+### 4.3 Identity claim store
+
+The donor's `naver_verifications` table is the model. The destination renames it
+to a provider-neutral `identity_claims` and removes the event dependency.
+
+```sql
+create table identity_claims (
+  claim_id            uuid primary key,
+  user_id             uuid not null,
+  verifier            text not null check (verifier ~ '^[a-z][a-z0-9._-]{0,63}$'),
+  source_revision     text not null check (source_revision ~ '^[A-Za-z0-9._-]{1,100}$'),
+  subject_hash        bytea not null check (octet_length(subject_hash) = 32),
+  gender_bucket       text not null check (gender_bucket in ('female','male','unknown')),
+  age_at_verification smallint check (age_at_verification between 14 and 100),
+  next_birthday_at    date,
+  verified_at         timestamptz not null,
+  expires_at          timestamptz not null,
+  status              text not null check (status in ('VERIFIED','REPLACED','REVOKED')),
+  constraint identity_claims_verified_requires_attributes
+    check (status <> 'VERIFIED'
+           or (age_at_verification is not null and next_birthday_at is not null)),
+  constraint identity_claims_lifetime
+    check (expires_at > verified_at and expires_at <= verified_at + interval '90 days'),
+  constraint identity_claims_next_birthday_future
+    check (next_birthday_at is null
+           or next_birthday_at > (verified_at at time zone 'Asia/Seoul')::date)
+);
+create unique index identity_claims_one_verified
+  on identity_claims (user_id) where status = 'VERIFIED';
+create index identity_claims_canonical
+  on identity_claims (user_id, verified_at desc, expires_at desc, claim_id desc);
+```
+
+- `subject_hash` is a salted hash of the provider subject, so the same NAVER
+  account cannot back two users. Reuse the donor's `stable_hash` approach.
+- The canonical row is selected exactly as the donor does: newest `verified_at`,
+  then newest `expires_at`, then newest `claim_id`. Never fall back to an older
+  usable claim.
+- Current age is computed in the Seoul time zone from `age_at_verification` and
+  `next_birthday_at`. There is no stored "current age" column: it would go stale
+  between birthdays.
+- `event_id` is deliberately absent. The donor's `concert_age_claims` table is
+  event-scoped and its event cleanup can erase a user's verification when a
+  concert ends; a personal profile must not inherit that.
+
+### 4.4 Deletion semantics
 
 | Delete | Also removes | Must leave intact |
 | --- | --- | --- |
@@ -243,7 +334,7 @@ before authoring.
 
 Before physically deleting a shared media file, verify no remaining reference.
 
-### 4.2 Revision and concurrency
+### 4.5 Revision and concurrency
 
 - `intro_posts.revision`, `profile_rooms.revision`, `profile_avatars.revision`,
   `profile_posts` use the existing MCR revision discipline: a mutation carries

@@ -40,6 +40,38 @@ All paths are rooted at `/api`.
 | 2.1.5 | `searchCatalog` | GET | `/api/catalog/{category}/search` | `core.CatalogQuery` | `core.CatalogPage` | MEMBER | public_read | private, 60s |
 | 2.1.6 | `discoverProfiles` | GET | `/api/discover/people` | `core.PeopleQuery` | `core.PeoplePage` | MEMBER | public_read | no-store |
 
+### 2.1b Identity verification (core contract)
+
+The donor's flow is `POST /v1/naver-verification/start` →
+`GET /v1/naver-verification/callback` → `GET /v1/naver-verification` →
+`DELETE /v1/naver-verification`. The destination keeps that shape, drops the
+event prefix, and makes the provider explicit so a second provider can be added
+without a contract change.
+
+| # | operationId | Method | Path | Request | Response | Actor | Rule | Cache |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 2.1b.1 | `getOwnIdentityVerification` | GET | `/api/me/identity/{provider}` | — | `core.IdentityVerification` | MEMBER | owner_read | no-store |
+| 2.1b.2 | `startIdentityVerification` | POST | `/api/me/identity/{provider}/verifications` | `core.StartIdentityVerification` | `core.IdentityVerificationStart` | MEMBER | identity_start | no-store |
+| 2.1b.3 | `completeIdentityVerification` | GET | `/api/identity/{provider}/callback` | `core.IdentityCallbackQuery` | `303` redirect to the stored return path | ANON | identity_callback | no-store |
+| 2.1b.4 | `disconnectIdentityVerification` | DELETE | `/api/me/identity/{provider}` | — | `core.IdentityVerification` | MEMBER | identity_disconnect | no-store |
+
+`{provider}` is a closed enum: `naver` in the initial release. Anything else is
+`404 RESOURCE_UNAVAILABLE`.
+
+Rules carried over from the donor:
+
+- The start operation is authenticated and bound to the current session, account
+  context version, and a one-use state value with a 10-minute lifetime.
+- The callback is anonymous (it comes from the provider) but consumes the state
+  exactly once and never auto-submits the work the user was doing.
+- The callback redirects to a stored, validated return path. It never redirects
+  to a caller-supplied URL.
+- A missing or unrecognized provider `gender` fails the verification with
+  `profile_incomplete` and writes no claim row.
+- `completeIdentityVerification` returns a redirect, so the gateway must allow a
+  `303` for this operation only, with a fixed `Location` that is validated
+  against the stored return path.
+
 ### 2.2 Mutuals-intro posts (domain contract, `contracts/domain/v1/`)
 
 | # | operationId | Method | Path | Request | Response | Actor | Rule | Cache |
@@ -143,6 +175,36 @@ Names are added to the existing schema files. Every object is
 "category": "MUSIC|ANIME|GAME", "external_url": "uri|null" }`.
 At most 5 per category; `category` must match the containing array.
 
+### 3.1b `core.IdentityVerification`
+
+```json
+{
+  "provider": "naver",
+  "status": "NOT_VERIFIED | VERIFIED | EXPIRED | REVOKED | PROVIDER_UNAVAILABLE",
+  "verified_at": "UtcTimestamp | null",
+  "expires_at": "UtcTimestamp | null",
+  "claims": {
+    "age": "integer 14..100",
+    "gender_bucket": "female | male | unknown"
+  },
+  "display_on_profile": "boolean"
+}
+```
+
+- `claims` is `null` unless `status` is `VERIFIED`.
+- This is the owner's own view. It mirrors the donor's `NaverAccountStatus`,
+  which shows the derived age and gender bucket to the owner only.
+- `display_on_profile` defaults to `false` (product decision P-10). When true,
+  the public profile may show the gender bucket, never the numeric age.
+
+`core.StartIdentityVerification` = `{ "return_path": "string 1..512" }` where
+`return_path` must be a same-origin application path from a closed allowlist.
+
+`core.IdentityCallbackQuery` = `{ "code": "string 1..512", "state": "string 1..512" }`.
+
+`core.IdentityVerificationStart` = `{ "authorization_url": "uri", "expires_at": "UtcTimestamp" }`.
+The URL is provider-owned and short-lived; the client redirects the browser to it.
+
 ### 3.2 `core.PublicProfileV2`
 
 ```json
@@ -155,6 +217,7 @@ At most 5 per category; `category` must match the containing array.
   "favorites_public": [FavoriteItem],
   "shared_with_viewer": [FavoriteItem],
   "interaction_style": "string 0..120 | null",
+  "gender_bucket": "female | male | unknown | null",
   "follow": { "following": "boolean", "followed_by": "boolean" },
   "blocked": "boolean",
   "room_available": "boolean"
@@ -164,6 +227,9 @@ At most 5 per category; `category` must match the containing array.
 - `shared_with_viewer` contains only items the viewer also selected. It is the
   source of the "You both love MCR and NANA" line. It is empty when there is no
   overlap, and the client must then show no shared-interest claim.
+- `gender_bucket` is `null` unless the profile owner enabled
+  `display_on_profile` (product decision P-10). The numeric age is never exposed
+  on a public profile.
 - `interaction_style` is omitted (`null`) when the user did not set one.
 - No age, gender, or audience field ever appears here.
 
@@ -328,14 +394,61 @@ from stored free text.
 | `attachment_media_ids` | ≤ 4; unique; each owned by the author; each `READY`; each purpose `INTRO_POST` | `400 INVALID_INPUT` / `404` |
 | `favorites` | ≤ 5 per category; catalog item must exist; music catalog excludes K-pop | `400 INVALID_INPUT` |
 | `layout` | grid bounds; ≤ 4 posters; unique furniture cells per layer; known style IDs | `400 INVALID_INPUT` |
-| media bytes | JPEG/PNG/WebP; ≤ 6 MiB; ≤ 4096 px per side; ≤ 16 M pixels | `415` / `413` / `400` |
+| media bytes | JPEG/PNG/WebP; ≤ 10 MiB; ≤ 4096 px per side; ≤ 16 M pixels | `415` / `413` / `400` |
 | poster | PNG; ≤ 128 px per side; ≤ 1 MiB | `415` / `413` |
 
-Media limits are aligned with the existing MCR media domain
-(`concert-application/src/media/mod.rs`: `MAX_BYTES` 10 MiB, `MAX_DIMENSION`
-4096, `MAX_PIXELS` 16 M). The product limit of 6 MiB is stricter than the
-foundation's 10 MiB and must be enforced at the profile-media operation, not by
-changing the shared constant.
+Media limits are the foundation's existing values, not new ones:
+`concert-application/src/media/mod.rs` sets `MAX_BYTES` 10 MiB,
+`MAX_DIMENSION` 4096, `MAX_PIXELS` 16 M, and the media table's CHECK constraints
+enforce the same bounds. Do not introduce a stricter product limit in the
+contract; if the product later wants 6 MiB, that is a separate decision that
+must change both the constant and the migration.
+
+The gateway already accepts exactly `image/jpeg`, `image/png`, and `image/webp`
+for byte uploads (`concert_product/mod.rs` `request_metadata`) and for image
+responses. GIF is **not** supported by the foundation, so the destination does
+not accept GIF either. Do not add GIF support as part of this integration.
+
+### 4.1 Media ownership model
+
+The foundation's `concert_media` table is event-scoped and has three purposes:
+
+```sql
+purpose text NOT NULL CHECK(purpose IN ('POST','GIVEAWAY','REPORT'))
+FOREIGN KEY(event_id,owner_id) REFERENCES concert_participants(event_id,user_id)
+```
+
+That shape cannot carry profile media, because a profile must outlive any event
+and a user may never have been a concert participant. The integration therefore
+adds a **separate** profile-scoped media table rather than loosening the
+existing one:
+
+```sql
+create table profile_media (
+  media_id        uuid primary key,
+  owner_profile_id uuid not null,
+  purpose         text not null
+                  check (purpose in ('PROFILE_IMAGE','PROFILE_POST','INTRO_POST','ROOM_POSTER')),
+  content_type    text not null check (content_type in ('image/jpeg','image/png','image/webp')),
+  state           text not null check (state in ('PENDING','UPLOADED','READY','DELETED')),
+  declared_bytes  integer not null check (declared_bytes between 1 and 10485760),
+  sanitized       bytea,
+  width           integer check (width between 1 and 4096),
+  height          integer check (height between 1 and 4096),
+  input_sha256    bytea not null check (octet_length(input_sha256) = 32),
+  revision        bigint not null default 1 check (revision between 1 and 9007199254740991),
+  created_at      timestamptz not null default clock_timestamp(),
+  updated_at      timestamptz not null default clock_timestamp(),
+  check (width is null or height is null or width::bigint * height <= 16000000)
+);
+```
+
+- No `event_id`, no participant foreign key.
+- Purpose is closed. A media asset created for `INTRO_POST` cannot be attached to
+  a profile post or a poster without a purpose transition that re-validates
+  ownership and visibility (verification V-06).
+- The existing `concert_media` table and its operations stay untouched for the
+  concert feed.
 
 ## 5. Error mapping
 

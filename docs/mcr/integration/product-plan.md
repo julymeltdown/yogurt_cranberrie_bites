@@ -31,6 +31,7 @@ interest.
 | `intro_like` | A heart on an intro post | `(intro_id, actor_profile_id, created_at)` | Any approval, application, or reward state |
 | `profile_post` | An ordinary selfie/photo/artwork post | Description, attachments, visibility | `intro_id` |
 | `media_asset` | An uploaded image file plus its transformed derivatives | File ownership and status | — (viewing authorization comes from the attached post) |
+| `identity_claim` | The verified NAVER age and gender attributes for one account | Provider, verification time, expiry, derived age | Any user-editable field; any event |
 
 Hard rules, each of which has a verification case in
 [verification-plan.md](verification-plan.md):
@@ -49,6 +50,31 @@ Hard rules, each of which has a verification case in
    room posters.
 6. Viewing a profile or a room never generates a like or a visit notification.
    Only deliberate actions (like, comment, follow) notify.
+7. Age and gender are verified provider attributes, never user-entered fields.
+   The user can connect, inspect, and disconnect the verification; they cannot
+   type a different value.
+
+## 2.1 Age and gender verification
+
+An age or gender restriction is only meaningful if the attribute is real.
+The service therefore uses the NAVER Login verification the donor already
+implements: the user completes a NAVER authorization, the server reads the
+profile API, and the returned `birthyear`, `birthday`, and `gender` become a
+verified claim with a fixed lifetime.
+
+| Aspect | Behavior |
+| --- | --- |
+| Obtained from | NAVER Login profile API during a dedicated verification flow, not from a form |
+| Stored | Provider, subject hash, gender bucket, age at verification, next birthday, verification time, expiry |
+| Lifetime | At most 90 days; the user is prompted to re-verify after expiry |
+| Gender values | `female`, `male`, and the provider's explicit `unknown` |
+| Missing provider field | Verification fails; no claim is written; the user stays unverified |
+| User control | Connect, see the verification date and expiry, disconnect |
+| Required for | Viewing or being matched by a post that carries an age or gender restriction |
+| Not required for | Profile, photos, room, favorites, unrestricted intro posts |
+
+A user who never verifies can use the whole product except restricted posts. The
+interface must state that in one line rather than showing a dead end.
 
 ## 3. First-time experience
 
@@ -165,20 +191,23 @@ The audience controls live under the heading **"Who can view my mutuals-intro
 post"** inside the intro composer and editor — never in a global settings page,
 never labelled as a search filter.
 
-## 8. Open product decisions
+## 8. Product decisions
 
-These need the user's answer before the dependent work package starts. The
-default applies until then.
+The user answered the three blocking questions on 2026-11-08 (charter §7). The
+remaining items were decided by the lead under the user's delegation.
 
-| ID | Question | Default | Blocks |
+| ID | Question | Decision | Status |
 | --- | --- | --- | --- |
-| P-01 | Gender source (see charter D-01/D-02). Options: (a) self-declared at profile setup, marked unverified; (b) verified by an identity provider; (c) ship `any`-only and hide the gender control until (a) or (b) exists. | (c) | WP-04, WP-05 |
-| P-02 | Should the concert world remain in the primary navigation at all? | Hidden from primary tabs, reachable from a secondary menu. | WP-09 |
-| P-03 | Room default visibility. | `public` | WP-07 |
-| P-04 | Photo post default visibility. | `public` | WP-06 |
-| P-05 | Are comments on photo posts in scope, or only on intro posts? | Both, sharing one implementation. | WP-06 |
-| P-06 | Maximum favorites per category. | 5 | WP-03 |
-| P-07 | Is the follow edge the existing `friend-service` follow, or a new profile-level follow? | Existing `friend-service` follow, exposed through a profile-shaped operation. | WP-08 |
+| P-01 | Gender source | Verified NAVER Login claim, same flow the donor already implements. Not self-declared. | DECIDED by user |
+| P-02 | Concert world in the primary navigation | Removed from primary tabs; reachable from a secondary menu. | DECIDED |
+| P-03 | Room default visibility | `public`, owner toggle to `private`. | DECIDED |
+| P-04 | Photo post default visibility | `public`, owner toggle to `private`. | DECIDED |
+| P-05 | Comments on photo posts | In scope, sharing one implementation with intro comments. | DECIDED |
+| P-06 | Maximum favorites per category | 5 | DECIDED |
+| P-07 | Follow edge source | Existing `friend-service` follow, exposed through a profile-shaped operation. | DECIDED |
+| P-08 | What happens to a user whose claim expired while browsing | The restricted post disappears on the next request; the UI offers re-verification without revealing the hidden content. | DECIDED |
+| P-09 | Should the audience control offer `unknown` | Yes. It addresses users whose provider reported no gender, and it is never a wildcard. | DECIDED |
+| P-10 | Can a user hide their verified age/gender from their own profile display | Yes. The claim is used for access decisions; showing it on the public profile is optional and off by default. | DECIDED |
 
 ## 9. Acceptance criteria for the integrated release
 

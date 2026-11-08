@@ -50,6 +50,60 @@ baseline and record the difference. See [source-register.md](source-register.md)
 | `backend/services/bigyeting-api/src/application/dto/api/exact_age_values.rs` (50 lines) | `bounded_integer!`, `ExactAge`, `MaximumAgeExclusive` | `backend/crates/concert-domain/src/intro_audience.rs` | Port the macro and both types. The destination already validates `14..=100`/`15..=101` in `age_policy::AgeBounds`; keep one implementation and make the other delegate. |
 | `backend/services/bigyeting-api/migrations/0019_intro_drafts.sql` | gender/min/max columns and CHECK constraints | `backend/services/concert-service/migrations/0080_profile_social.sql` | Add `audience_gender text NOT NULL CHECK (audience_gender IN ('any','female','male','unknown'))` and the paired-bounds CHECK to the **new** `intro_posts` table. Do not alter `concert_intros`. |
 
+## 2b. Bigyeting → destination: NAVER identity verification
+
+This is the source of both the age and the gender used by `IntroAudience`. It is
+a real OAuth verification flow, not a profile form. The donor flow, verified in
+the audited checkout:
+
+```text
+POST /v1/naver-verification/start
+  → begin_naver_verification (application/use_cases/oauth_start.rs)
+  → provider authorize URL with a one-use state (oauth_states table)
+
+GET  /v1/naver-verification/callback?code&state
+  → naver_verification_callback (adapters/in/http/oauth_naver_callback.rs)
+  → exchange_naver_authorization_code → load_naver_profile
+  → GET https://openapi.naver.com/v1/nid/me
+  → { id, gender: F|M|U, birthyear: YYYY, birthday: MM-DD }
+  → validated_claim → derive_exact_age_claim(birthyear, birthday, seoul_date)
+  → store_naver_verification(gender_bucket, age_at_verification, next_birthday_at)
+
+GET    /v1/naver-verification   → naver_verification_response_at (owner view)
+DELETE /v1/naver-verification   → revoke_naver_verification
+```
+
+| Source | Symbols | Destination | Adaptation |
+| --- | --- | --- | --- |
+| `backend/services/bigyeting-api/src/adapters/out/oauth_profiles.rs` | `NaverProfileResponse`, `NaverProfile`, `NaverProfile::normalized_gender`, `NaverGender` | `backend/services/profile-service/src/identity/naver_profile.rs` | Keep the field mapping `F→female`, `M→male`, `U→unknown`, and the rule that an unrecognized or missing value yields `None` (which fails the verification). |
+| `backend/services/bigyeting-api/src/adapters/out/oauth_naver_provider.rs` | `fetch_naver_profile`, `load_naver_profile`, `gender_bucket` | `backend/services/profile-service/src/identity/naver_provider.rs` | Keep the bearer-token profile fetch and the bucket mapping. Provider endpoint, client id, secret, and redirect URI come from server configuration only. |
+| `backend/services/bigyeting-api/src/application/use_cases/naver_verification.rs` | `validated_claim`, the callback use case, `NaverCallbackResult` | `backend/services/profile-service/src/identity/verification.rs` | Keep the order: validate subject → require gender → derive age → store. Keep `ProfileIncomplete` and `AgeNotSupported` as distinct outcomes. Drop the draft-key and return-path coupling to the intro composer; keep a validated same-origin return path. |
+| `backend/services/bigyeting-api/src/application/use_cases/oauth_start.rs` | `begin_naver_verification`, `BeginNaverVerification`, `begin_oauth` | `backend/services/profile-service/src/identity/start.rs` | Keep the one-use state, the browser nonce, and the account-context-version check. Remove the event binding. |
+| `backend/services/bigyeting-api/src/adapters/out/repository/naver.rs` | `naver_verification_response_at`, `upsert_naver_verification`, `revoke_naver_verification` | `backend/services/profile-service/src/identity/repository.rs` | Keep the canonical-row ordering, the supersede-on-replace behavior, and the duplicate-subject rejection. Re-key from `member_id` to `user_id`; drop `event_id`. |
+| `backend/services/bigyeting-api/src/adapters/out/repository/current_age.rs` | `current_verified_age_sql_at`, `current_supported_claim_sql_at`, `canonical_member_claim_sql` | `backend/services/profile-service/src/identity/current_age.rs` | Keep the Seoul-date arithmetic and the "select before validity" rule. MCR already has the equivalent in `concert-domain/src/age_policy`; use **one** implementation and have the other delegate. |
+| `backend/services/bigyeting-api/src/domain/privacy.rs` | `derive_exact_age_claim`, `ExactAgeClaim`, `ProviderBirthDate`, `SeoulDate` | **Already migrated.** `backend/crates/concert-domain/src/age_policy/arithmetic.rs` | MCR adapted this file in BE25. Do not port it a second time; import it. |
+| `backend/services/bigyeting-api/migrations/0001_bigyeting.sql` (`naver_verifications`), `0025_normalize_naver_claims.sql` | table shape, gender CHECK, age CHECK, next-birthday CHECK | `backend/services/profile-service/migrations/` | New `identity_claims` and `identity_verifications` tables per [domain-contract.md](domain-contract.md) §4.3. Keep every CHECK; remove `event_id`. |
+| `backend/services/bigyeting-api/src/config/mod.rs` (`naver_oauth`, `NAVER_OAUTH_*`) | provider config shape | `backend/services/profile-service/src/config/` | Keep `client_id`, `client_secret`, `authorize_url`, `token_url`, `profile_url`, `redirect_uri`, `scopes`. Production must refuse placeholder values, as the donor's `require_production_setting` does. |
+| `backend/services/bigyeting-api/src/adapters/in/http/naver_verification.rs`, `oauth_naver_callback.rs` | disconnect handler, callback handler | `backend/services/api-gateway/src/adapters/in/http/identity_routes.rs` | Keep the one-use state consumption and the fixed redirect target. Drop the `/v1/` prefix in favor of the destination's `/api/` shape. |
+| `frontend/src/features/account/NaverAccountStatus.tsx` | `NaverAccountStatus`, `genderLabel` | `frontend/src/features/identity/IdentityStatus.tsx` | Keep the owner-only display of derived age, gender bucket, and expiry. Rebuild on destination primitives; the donor uses Tailwind utility classes that the destination does not share. |
+| `frontend/src/components/app/naver-callback.tsx` | callback landing | `frontend/src/features/identity/VerificationCallback.tsx` | Keep the "return to where you were, do not auto-submit" behavior. |
+
+Newly authored (no donor):
+
+- `backend/crates/concert-application/src/identity_claims.rs` (`IdentityClaimsPort`)
+- `backend/services/concert-service/src/intro_posts/claims_adapter.rs` (reads the
+  profile service's claim API; no cross-database join)
+
+### 2b.1 What must change relative to the donor
+
+| Donor behavior | Destination behavior | Why |
+| --- | --- | --- |
+| A supported NAVER claim is required for **every** intro post, including unrestricted ones (`exact_age_intro_policy_contract.rs` `unrestricted_intros_require_a_supported_naver_claim_across_every_surface`) | Required only when the post carries an age bound or a non-`any` gender | The user's instruction: the restriction exists so the author chooses their audience, not as a global gate |
+| Claims are keyed by `(member_id)` in Bigyeting, but MCR's equivalent `concert_age_claims` is keyed by `(user_id, event_id)` and is erased by event cleanup | Keyed by `user_id` only, owned by the profile service | A personal profile must survive the concert |
+| Gender comparison `allowed_gender = 'any' OR allowed_gender = viewer.gender_bucket` | Same comparison, but a viewer with no live claim never matches `female`, `male`, or `unknown` | Fail closed on missing attributes |
+| Verification is bound to an event participant | Bound to the account only | Same reason |
+| `unknown` bucket is reachable only via explicit provider `U` | Unchanged | It is a real provider value, not a default |
+
 ## 3. Bigyeting → destination: visibility policy
 
 | Source | Symbols | Destination | Adaptation |
@@ -121,9 +175,9 @@ Newly authored (no donor):
 | `frontend/src/features/post/PostMediaGrid.tsx` (135 lines) | `PostMediaGrid` | `frontend/src/features/media/MediaGrid.tsx` | Keep aspect-ratio preservation, lazy loading, failure retry. |
 | `frontend/src/features/account/AccountPostGallery.tsx` (108 lines) | — | **Do not migrate.** | It is an owner-facing intro list, not a visitor-facing gallery. The visitor gallery is newly authored. |
 | `backend/services/bigyeting-api/src/application/use_cases/media_uploads.rs` | `start_media_upload`, `complete_media_upload`, `delete_media` | `backend/crates/concert-application/src/media/mod.rs` (extend) | The destination already has a media domain with `Purpose`, `Mime`, limits, and upload lifecycle. **Extend the existing module** with `Purpose::ProfilePost`, `Purpose::IntroPost`, `Purpose::ProfileImage`, `Purpose::RoomPoster`; do not import a second media system. |
-| `backend/services/bigyeting-api/src/domain/media_normalization.rs`, `media_image.rs` | `normalize_media`, signature/dimension validation | `backend/crates/concert-application/src/media/` | Compare against the destination's existing normalization first. Extend only what is missing (for example GIF support if the product requires it; the destination currently supports JPEG/PNG/WebP). |
+| `backend/services/bigyeting-api/src/domain/media_normalization.rs`, `media_image.rs` | `normalize_media`, signature/dimension validation | `backend/crates/concert-application/src/media/` | Compare against the destination's existing normalization first. The destination already validates JPEG/PNG/WebP, 10 MiB, 4096 px, and 16 M pixels; extend only what is genuinely missing. Do not add GIF or video support. |
 | `backend/services/bigyeting-api/src/domain/intro_media.rs` | attachment-count, duplicate-asset, alt-text validation | `backend/crates/concert-application/src/intro_posts/media_rules.rs` | Keep the count and duplicate rules; the destination limit is 4 attachments and alt text up to 160 characters. |
-| `backend/services/bigyeting-api/src/domain/media_mp4.rs`, `media_video.rs`, `media_webm.rs`, `media_webm_metadata.rs`, `media_gif_metadata.rs` | video/animation handling | **Do not migrate.** | Still images only. |
+| `backend/services/bigyeting-api/src/domain/media_mp4.rs`, `media_video.rs`, `media_webm.rs`, `media_webm_metadata.rs`, `media_gif_metadata.rs` | video/animation handling | **Do not migrate.** | Still images only; the destination gateway and media table accept JPEG/PNG/WebP only. |
 | `backend/services/bigyeting-api/src/adapters/out/repository/media_content.rs` | `authorized_media_sql` | `backend/services/concert-service/src/profile_media/authorization.rs` | Reference for the authorization join. The destination must authorize through the **attached post**, not through file ownership. |
 | `backend/services/bigyeting-api/src/adapters/in/http/media_redirect.rs` | `get_media` | `backend/services/api-gateway/src/adapters/in/http/profile_media_routes.rs` | Reuse the authentication and authorization check order; the destination already has an image response path in `concert_product/mod.rs` to follow. |
 

@@ -47,19 +47,64 @@ timestamp.
 
 **Claim**: If age or gender cannot be determined, the viewer never bypasses a
 restriction. `allowed_gender = unknown` does not imply an unverified age is
-acceptable.
+acceptable, and an explicit provider `unknown` is not the same as "no claim".
 
 | Case | Viewer state | Audience | Expected |
 | --- | --- | --- | --- |
-| V-02-a | age `Unspecified` | age 18–29, gender any | Denied |
-| V-02-b | age `Unavailable` (provider error) | age 18–29, gender any | Denied |
-| V-02-c | age known 25, gender `Unspecified` | gender `unknown` | Allowed |
-| V-02-d | age `Unspecified`, gender `Unspecified` | gender `unknown`, no age bound | Allowed |
-| V-02-e | age `Unspecified`, gender `Unspecified` | gender `unknown`, age 18–29 | Denied |
-| V-02-f | age known 25, gender `Unavailable` | gender `female` | Denied |
-| V-02-g | any | `any`, no bounds | Allowed without any claim read |
+| V-02-a | no claim at all | age 18–29, gender any | Denied |
+| V-02-b | claim exists but expired | age 18–29, gender any | Denied |
+| V-02-c | claim exists, provider gender `U` (bucket `unknown`), age 25 | gender `unknown` | Allowed |
+| V-02-d | provider `unknown`, no age bound | gender `unknown` | Allowed |
+| V-02-e | provider `unknown`, age 25 | gender `unknown`, age 18–29 | Allowed |
+| V-02-f | provider `unknown`, age 25 | gender `female` | Denied |
+| V-02-g | claim exists, age 25, gender `female` | gender `female` | Allowed |
+| V-02-h | claim exists, age 25, gender `male` | gender `female` | Denied |
+| V-02-i | no claim | `any`, no bounds | Allowed without any claim read |
+| V-02-j | claim expired, was `female` | gender `female` | Denied |
+| V-02-k | claim revoked by the user | gender `female` | Denied |
 
 **Owner**: WP-04.
+
+### V-12 — NAVER verification produces a real claim
+
+**Claim**: Age and gender come from the verified provider profile, not from a
+form, and every failure mode leaves the user unverified rather than guessing.
+
+| Case | Input | Expected |
+| --- | --- | --- |
+| V-12-a | `birthyear=2000`, `birthday=07-12`, Seoul date 2026-07-12 | `age_at_verification=26`, `next_birthday_at=2027-07-12` |
+| V-12-b | Same claim read on 2027-07-12 | current age 27, no stored mutation |
+| V-12-c | `gender=F` | bucket `female` |
+| V-12-d | `gender=M` | bucket `male` |
+| V-12-e | `gender=U` | bucket `unknown` |
+| V-12-f | `gender` missing | verification fails `profile_incomplete`, no claim row written |
+| V-12-g | `gender=X` (unrecognized) | verification fails `profile_incomplete`, no claim row written |
+| V-12-h | `birthyear` missing | verification fails, no claim row written |
+| V-12-i | Derived age outside 14–100 | verification fails `age_not_supported`, no claim row written |
+| V-12-j | Same provider subject already backs another user | verification fails as duplicate, no second claim row |
+| V-12-k | Re-verify after expiry | new claim supersedes; old row capped at the replacement instant |
+| V-12-l | `DELETE /api/me/identity/naver` | status becomes `REVOKED`; restricted posts authored by this user keep their audience; this user's own viewing of others' restricted posts is denied |
+| V-12-m | Callback state reused | second use rejected; no claim written |
+| V-12-n | Callback for an expired state (>10 min) | rejected; no claim written |
+| V-12-o | Any of the above | no provider token, subject, birth date, or exact age appears in logs or persisted state outside the claim row |
+| V-12-p | Production config with placeholder client id/secret | service refuses to start | 
+
+**Owner**: WP-04b.
+
+### V-13 — Unrestricted posts need no verification
+
+**Claim**: The donor's global gate is removed. A user with no NAVER claim can
+publish and view an unrestricted intro post.
+
+| Case | Expected |
+| --- | --- |
+| V-13-a | Unverified user publishes an intro post with `gender=any`, no age bounds | succeeds |
+| V-13-b | Unverified user views another user's unrestricted post | allowed |
+| V-13-c | Unverified user views a restricted post | `404 RESOURCE_UNAVAILABLE`, and the UI offers verification without revealing content |
+| V-13-d | Unverified user likes an unrestricted post | succeeds |
+| V-13-e | Unverified user likes a restricted post | `404` |
+
+**Owner**: WP-04 + WP-05.
 
 ### V-03 — One decision across every surface
 
@@ -177,14 +222,18 @@ profile gallery or in room posters, and nobody can attach another person's media
 ### V-11 — End-to-end scenario
 
 The scenario in [product-plan.md](product-plan.md) §9, executed with three real
-identities against real services:
+identities against real services. B and C complete the NAVER verification with
+test accounts that have the required provider attributes; A publishes the
+restricted post.
 
 1. A publishes a selfie and an artwork post; room stays default.
-2. A publishes a restricted intro post; B satisfies it and leaves a heart.
+2. A publishes a restricted intro post (women, 18–29); B, verified as a woman
+   aged 18–29, can view it and leaves a heart.
 3. A opens the liker notification → B's profile → follows or comments.
 4. A places a poster; the intro post and its like records are unchanged.
 5. A deletes the intro post; room and photo posts intact.
-6. C fails the audience and cannot see the post, its attachments, or its bytes.
+6. C, either unverified or verified outside the audience, cannot see the post,
+   its attachments, or its bytes.
 
 **Owner**: WP-10.
 

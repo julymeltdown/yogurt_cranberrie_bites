@@ -52,196 +52,281 @@
   "bigyeting_candidates": [
     {
       "source_path": "frontend/src/features/write/AudienceStep.tsx",
-      "symbols": ["AudienceStep"],
+      "symbols": [
+        "AudienceStep"
+      ],
       "destination": "frontend/src/features/intros/IntroAudienceFields.tsx",
       "work_package": "WP-05",
       "decision": "ADAPT"
     },
     {
       "source_path": "frontend/src/features/write/WritePostAgeRangeControl.tsx",
-      "symbols": ["WritePostAgeRangeControl"],
+      "symbols": [
+        "WritePostAgeRangeControl"
+      ],
       "destination": "frontend/src/features/intros/IntroAgeRangeControl.tsx",
       "work_package": "WP-05",
       "decision": "ADAPT_REPLACE_MANTINE_SLIDER"
     },
     {
       "source_path": "frontend/src/features/write/post-draft.ts",
-      "symbols": ["validateAgeAuthoring", "ageRangeSummary", "visibilityRequest"],
+      "symbols": [
+        "validateAgeAuthoring",
+        "ageRangeSummary",
+        "visibilityRequest"
+      ],
       "destination": "frontend/src/features/intros/intro-audience.ts",
       "work_package": "WP-05",
       "decision": "ADAPT_SELECTED_SYMBOLS"
     },
     {
       "source_path": "frontend/src/lib/api/canonical-response-contract.ts",
-      "symbols": ["introVisibilitySchema"],
+      "symbols": [
+        "introVisibilitySchema"
+      ],
       "destination": "frontend/src/lib/api/intro-audience-contract.ts",
       "work_package": "WP-05",
       "decision": "ADAPT_SELECTED_SYMBOLS"
     },
     {
       "source_path": "backend/services/bigyeting-api/src/application/dto/api/intro_visibility.rs",
-      "symbols": ["IntroVisibilityRequest", "GenderCondition"],
+      "symbols": [
+        "IntroVisibilityRequest",
+        "GenderCondition"
+      ],
       "destination": "backend/crates/concert-domain/src/intro_audience.rs",
       "work_package": "WP-04",
       "decision": "ADAPT"
     },
     {
       "source_path": "backend/services/bigyeting-api/src/application/dto/api/exact_age_values.rs",
-      "symbols": ["ExactAge", "MaximumAgeExclusive"],
+      "symbols": [
+        "ExactAge",
+        "MaximumAgeExclusive"
+      ],
       "destination": "backend/crates/concert-domain/src/intro_audience.rs",
       "work_package": "WP-04",
       "decision": "ADAPT_MERGE_WITH_EXISTING_AGE_BOUNDS"
     },
     {
       "source_path": "backend/services/bigyeting-api/migrations/0019_intro_drafts.sql",
-      "symbols": ["audience columns and CHECK constraints"],
+      "symbols": [
+        "audience columns and CHECK constraints"
+      ],
       "destination": "backend/services/concert-service/migrations/0080_profile_social.sql",
       "work_package": "WP-02",
       "decision": "ADAPT_INTO_NEW_TABLE"
     },
     {
       "source_path": "backend/services/bigyeting-api/src/adapters/out/repository/intro_policy.rs",
-      "symbols": ["exposed_intro_policy_sql_at", "exposed_intro_detail_policy_sql_at", "exposed_external_intro_link_policy_sql_at"],
+      "symbols": [
+        "exposed_intro_policy_sql_at",
+        "exposed_intro_detail_policy_sql_at",
+        "exposed_external_intro_link_policy_sql_at"
+      ],
       "destination": "backend/services/concert-service/src/intro_posts/visibility_sql.rs",
       "work_package": "WP-04",
       "decision": "ADAPT_SHAPE_ONLY"
     },
     {
       "source_path": "backend/services/bigyeting-api/migrations/0062_provider_neutral_intros.sql",
-      "symbols": ["bigyeting_social_intro_policy_allows", "bigyeting_social_intro_is_eligible"],
+      "symbols": [
+        "bigyeting_social_intro_policy_allows",
+        "bigyeting_social_intro_is_eligible"
+      ],
       "destination": null,
       "work_package": "WP-04",
       "decision": "DO_NOT_MIGRATE"
     },
     {
       "source_path": "frontend/src/features/write/ContentStep.tsx",
-      "symbols": ["ContentStep"],
+      "symbols": [
+        "ContentStep"
+      ],
       "destination": "frontend/src/features/intros/IntroComposer.tsx",
       "work_package": "WP-05",
       "decision": "ADAPT"
     },
     {
       "source_path": "frontend/src/features/write/publish-intro-with-media.ts",
-      "symbols": ["ensureUploadedMedia", "saveIntroDraft", "publishSavedIntro"],
+      "symbols": [
+        "ensureUploadedMedia",
+        "saveIntroDraft",
+        "publishSavedIntro"
+      ],
       "destination": "frontend/src/features/intros/publish-intro.ts",
       "work_package": "WP-05",
       "decision": "ADAPT"
     },
     {
       "source_path": "frontend/src/features/write/intro-composer-reducer.ts",
-      "symbols": ["introComposerSteps", "IntroComposerState", "IntroComposerAction"],
+      "symbols": [
+        "introComposerSteps",
+        "IntroComposerState",
+        "IntroComposerAction"
+      ],
       "destination": "frontend/src/features/intros/composer-reducer.ts",
       "work_package": "WP-05",
       "decision": "ADAPT"
     },
     {
       "source_path": "frontend/src/features/write/write-draft-recovery.ts",
-      "symbols": ["WriteDraftRecovery", "PendingPublishRecovery"],
+      "symbols": [
+        "WriteDraftRecovery",
+        "PendingPublishRecovery"
+      ],
       "destination": "frontend/src/features/intros/draft-recovery.ts",
       "work_package": "WP-05",
       "decision": "ADAPT"
     },
     {
       "source_path": "frontend/src/features/post/PostDetailPage.tsx",
-      "symbols": ["heart button aria-pressed state", "in-flight guard", "like cache update"],
+      "symbols": [
+        "heart button aria-pressed state",
+        "in-flight guard",
+        "like cache update"
+      ],
       "destination": "frontend/src/features/intros/IntroLikeButton.tsx",
       "work_package": "WP-05",
       "decision": "EXTRACT_BUTTON_ONLY"
     },
     {
       "source_path": "frontend/src/lib/api/real/canonical-music-taste-event-client.ts",
-      "symbols": ["setIntroLiked"],
+      "symbols": [
+        "setIntroLiked"
+      ],
       "destination": "frontend/src/features/intros/api/intro-likes.ts",
       "work_package": "WP-05",
       "decision": "ADAPT_RENAME"
     },
     {
       "source_path": "backend/services/bigyeting-api/src/application/use_cases/intro_likes.rs",
-      "symbols": ["change_intro_like", "SetIntroLikeCommand", "SetIntroLikeOutcome"],
+      "symbols": [
+        "change_intro_like",
+        "SetIntroLikeCommand",
+        "SetIntroLikeOutcome"
+      ],
       "destination": "backend/crates/concert-application/src/intro_likes.rs",
       "work_package": "WP-05",
       "decision": "ADAPT"
     },
     {
       "source_path": "backend/services/bigyeting-api/src/application/ports/intro_likes.rs",
-      "symbols": ["IntroLikeActor", "SetIntroLikeWrite", "IntroLikePort"],
+      "symbols": [
+        "IntroLikeActor",
+        "SetIntroLikeWrite",
+        "IntroLikePort"
+      ],
       "destination": "backend/crates/concert-application/src/ports/intro_likes.rs",
       "work_package": "WP-05",
       "decision": "ADAPT"
     },
     {
       "source_path": "backend/services/bigyeting-api/src/adapters/out/repository/intro_likes.rs",
-      "symbols": ["set_intro_like", "intro_like_count"],
+      "symbols": [
+        "set_intro_like",
+        "intro_like_count"
+      ],
       "destination": "backend/services/concert-service/src/intro_posts/likes.rs",
       "work_package": "WP-05",
       "decision": "ADAPT"
     },
     {
       "source_path": "backend/services/bigyeting-api/src/adapters/in/http/music_taste_event.rs",
-      "symbols": ["like_intro", "unlike_intro", "set_intro_like"],
+      "symbols": [
+        "like_intro",
+        "unlike_intro",
+        "set_intro_like"
+      ],
       "destination": "backend/services/concert-service/src/intro_posts/http_likes.rs",
       "work_package": "WP-05",
       "decision": "ADAPT_HANDLERS_ONLY"
     },
     {
       "source_path": "backend/services/bigyeting-api/migrations/0046_music_taste_event.sql",
-      "symbols": ["intro_likes table", "intro_likes_music_event_reward trigger"],
+      "symbols": [
+        "intro_likes table",
+        "intro_likes_music_event_reward trigger"
+      ],
       "destination": "backend/services/concert-service/migrations/0080_profile_social.sql",
       "work_package": "WP-02",
       "decision": "ADAPT_TABLE_ONLY_DROP_TRIGGER"
     },
     {
       "source_path": "frontend/src/features/gate/ApplicationPhotoPicker.tsx",
-      "symbols": ["ApplicationPhotoPicker"],
+      "symbols": [
+        "ApplicationPhotoPicker"
+      ],
       "destination": "frontend/src/features/media/MediaPicker.tsx",
       "work_package": "WP-06",
       "decision": "ADAPT"
     },
     {
       "source_path": "frontend/src/features/gate/application-photo-processing.ts",
-      "symbols": ["processAttachment", "updateAttachment", "selectionError"],
+      "symbols": [
+        "processAttachment",
+        "updateAttachment",
+        "selectionError"
+      ],
       "destination": "frontend/src/features/media/preparation.ts",
       "work_package": "WP-06",
       "decision": "ADAPT"
     },
     {
       "source_path": "frontend/src/features/media/media-policy.ts",
-      "symbols": ["mediaPolicy", "planMediaPreparation"],
+      "symbols": [
+        "mediaPolicy",
+        "planMediaPreparation"
+      ],
       "destination": "frontend/src/features/media/media-policy.ts",
       "work_package": "WP-06",
       "decision": "ADAPT"
     },
     {
       "source_path": "frontend/src/features/media/media-preparation.ts",
-      "symbols": ["createMediaPreparer"],
+      "symbols": [
+        "createMediaPreparer"
+      ],
       "destination": "frontend/src/features/media/media-preparation.ts",
       "work_package": "WP-06",
       "decision": "ADAPT"
     },
     {
       "source_path": "frontend/src/features/media/static-image-compressor.ts",
-      "symbols": ["compressStaticImage"],
+      "symbols": [
+        "compressStaticImage"
+      ],
       "destination": "frontend/src/features/media/static-image-compressor.ts",
       "work_package": "WP-06",
       "decision": "ADAPT"
     },
     {
       "source_path": "frontend/src/features/media/SortableMediaTile.tsx",
-      "symbols": ["SortableMediaTile"],
+      "symbols": [
+        "SortableMediaTile"
+      ],
       "destination": "frontend/src/features/media/MediaTile.tsx",
       "work_package": "WP-06",
       "decision": "ADAPT_REPLACE_DND_KIT"
     },
     {
       "source_path": "frontend/src/features/post/PostMediaGrid.tsx",
-      "symbols": ["PostMediaGrid"],
+      "symbols": [
+        "PostMediaGrid"
+      ],
       "destination": "frontend/src/features/media/MediaGrid.tsx",
       "work_package": "WP-06",
       "decision": "ADAPT"
     },
     {
       "source_path": "frontend/src/lib/api/real/canonical-intro-write-client.ts",
-      "symbols": ["uploadIntroMedia", "deleteIntroMedia", "createIntroDraft", "updateIntroDraft", "publishIntro"],
+      "symbols": [
+        "uploadIntroMedia",
+        "deleteIntroMedia",
+        "createIntroDraft",
+        "updateIntroDraft",
+        "publishIntro"
+      ],
       "destination": "frontend/src/features/media/api/profile-media.ts",
       "work_package": "WP-06",
       "decision": "ADAPT_SPLIT"
@@ -255,66 +340,214 @@
     },
     {
       "source_path": "backend/services/bigyeting-api/src/application/use_cases/media_uploads.rs",
-      "symbols": ["start_media_upload", "complete_media_upload", "delete_media"],
+      "symbols": [
+        "start_media_upload",
+        "complete_media_upload",
+        "delete_media"
+      ],
       "destination": "backend/crates/concert-application/src/media/mod.rs",
       "work_package": "WP-06",
       "decision": "EXTEND_EXISTING_DESTINATION_MEDIA"
     },
     {
       "source_path": "backend/services/bigyeting-api/src/domain/intro_media.rs",
-      "symbols": ["attachment count", "duplicate asset", "alt text validation"],
+      "symbols": [
+        "attachment count",
+        "duplicate asset",
+        "alt text validation"
+      ],
       "destination": "backend/crates/concert-application/src/intro_posts/media_rules.rs",
       "work_package": "WP-06",
       "decision": "ADAPT"
     },
     {
       "source_path": "backend/services/bigyeting-api/src/adapters/out/repository/media_content.rs",
-      "symbols": ["authorized_media_sql"],
+      "symbols": [
+        "authorized_media_sql"
+      ],
       "destination": "backend/services/concert-service/src/profile_media/authorization.rs",
       "work_package": "WP-06",
       "decision": "ADAPT_REFERENCE_ONLY"
     },
     {
       "source_path": "backend/services/bigyeting-api/src/adapters/in/http/media_redirect.rs",
-      "symbols": ["get_media"],
+      "symbols": [
+        "get_media"
+      ],
       "destination": "backend/services/api-gateway/src/adapters/in/http/profile_media_routes.rs",
       "work_package": "WP-06",
       "decision": "ADAPT"
     },
     {
       "source_path": "frontend/src/features/taste-profile/TasteCatalogSearchPanel.tsx",
-      "symbols": ["TasteCatalogSearchPanel"],
+      "symbols": [
+        "TasteCatalogSearchPanel"
+      ],
       "destination": "frontend/src/features/favorites/FavoritePicker.tsx",
       "work_package": "WP-03",
       "decision": "ADAPT"
     },
     {
       "source_path": "frontend/src/features/taste-profile/catalog-provider.ts",
-      "symbols": ["provider labeling", "provenance", "external-link validation"],
+      "symbols": [
+        "provider labeling",
+        "provenance",
+        "external-link validation"
+      ],
       "destination": "frontend/src/features/favorites/catalog-provider.ts",
       "work_package": "WP-03",
       "decision": "ADAPT"
     },
     {
       "source_path": "frontend/src/lib/api/real/canonical-explicit-taste-client.ts",
-      "symbols": ["catalog search", "favorite read/write"],
+      "symbols": [
+        "catalog search",
+        "favorite read/write"
+      ],
       "destination": "frontend/src/features/favorites/api/favorites.ts",
       "work_package": "WP-03",
       "decision": "ADAPT_SELECTED_SYMBOLS"
     },
     {
       "source_path": "backend/services/bigyeting-api/src/adapters/out/repository/explicit_taste_matches.rs",
-      "symbols": ["explicit_taste_matches"],
+      "symbols": [
+        "explicit_taste_matches"
+      ],
       "destination": "backend/services/concert-service/src/discovery/repository.rs",
       "work_package": "WP-03",
       "decision": "ADAPT_REFERENCE_ONLY"
     },
     {
       "source_path": "frontend/src/lib/query/intro-visibility-cache.ts",
-      "symbols": ["invalidateIntroVisibilityQueries"],
+      "symbols": [
+        "invalidateIntroVisibilityQueries"
+      ],
       "destination": "frontend/src/lib/query/intro-visibility-cache.ts",
       "work_package": "WP-05",
       "decision": "ADAPT_EXTEND_KEYS"
+    },
+    {
+      "source_path": "backend/services/bigyeting-api/src/adapters/out/oauth_profiles.rs",
+      "symbols": [
+        "NaverProfileResponse",
+        "NaverProfile",
+        "normalized_gender",
+        "NaverGender"
+      ],
+      "destination": "backend/services/profile-service/src/identity/naver_profile.rs",
+      "work_package": "WP-04b",
+      "decision": "ADAPT"
+    },
+    {
+      "source_path": "backend/services/bigyeting-api/src/adapters/out/oauth_naver_provider.rs",
+      "symbols": [
+        "fetch_naver_profile",
+        "load_naver_profile",
+        "gender_bucket"
+      ],
+      "destination": "backend/services/profile-service/src/identity/naver_provider.rs",
+      "work_package": "WP-04b",
+      "decision": "ADAPT"
+    },
+    {
+      "source_path": "backend/services/bigyeting-api/src/application/use_cases/naver_verification.rs",
+      "symbols": [
+        "validated_claim",
+        "NaverCallbackResult"
+      ],
+      "destination": "backend/services/profile-service/src/identity/verification.rs",
+      "work_package": "WP-04b",
+      "decision": "ADAPT"
+    },
+    {
+      "source_path": "backend/services/bigyeting-api/src/application/use_cases/oauth_start.rs",
+      "symbols": [
+        "begin_naver_verification",
+        "BeginNaverVerification"
+      ],
+      "destination": "backend/services/profile-service/src/identity/start.rs",
+      "work_package": "WP-04b",
+      "decision": "ADAPT"
+    },
+    {
+      "source_path": "backend/services/bigyeting-api/src/adapters/out/repository/naver.rs",
+      "symbols": [
+        "naver_verification_response_at",
+        "upsert_naver_verification",
+        "revoke_naver_verification"
+      ],
+      "destination": "backend/services/profile-service/src/identity/repository.rs",
+      "work_package": "WP-04b",
+      "decision": "ADAPT"
+    },
+    {
+      "source_path": "backend/services/bigyeting-api/src/adapters/out/repository/current_age.rs",
+      "symbols": [
+        "current_verified_age_sql_at",
+        "current_supported_claim_sql_at",
+        "canonical_member_claim_sql"
+      ],
+      "destination": "backend/services/profile-service/src/identity/current_age.rs",
+      "work_package": "WP-04b",
+      "decision": "ADAPT_SHARE_WITH_MCR_AGE_POLICY"
+    },
+    {
+      "source_path": "backend/services/bigyeting-api/src/domain/privacy.rs",
+      "symbols": [
+        "derive_exact_age_claim",
+        "ExactAgeClaim",
+        "ProviderBirthDate",
+        "SeoulDate"
+      ],
+      "destination": "backend/crates/concert-domain/src/age_policy/arithmetic.rs",
+      "work_package": "WP-04b",
+      "decision": "ALREADY_MIGRATED_IMPORT_DO_NOT_REPORT"
+    },
+    {
+      "source_path": "backend/services/bigyeting-api/migrations/0001_bigyeting.sql",
+      "symbols": [
+        "naver_verifications table"
+      ],
+      "destination": "backend/services/profile-service/migrations/",
+      "work_package": "WP-04b",
+      "decision": "ADAPT_DROP_EVENT"
+    },
+    {
+      "source_path": "backend/services/bigyeting-api/src/adapters/in/http/naver_verification.rs",
+      "symbols": [
+        "disconnect_naver_verification"
+      ],
+      "destination": "backend/services/api-gateway/src/adapters/in/http/identity_routes.rs",
+      "work_package": "WP-04b",
+      "decision": "ADAPT"
+    },
+    {
+      "source_path": "backend/services/bigyeting-api/src/adapters/in/http/oauth_naver_callback.rs",
+      "symbols": [
+        "naver_verification_callback"
+      ],
+      "destination": "backend/services/api-gateway/src/adapters/in/http/identity_routes.rs",
+      "work_package": "WP-04b",
+      "decision": "ADAPT"
+    },
+    {
+      "source_path": "frontend/src/features/account/NaverAccountStatus.tsx",
+      "symbols": [
+        "NaverAccountStatus",
+        "genderLabel"
+      ],
+      "destination": "frontend/src/features/identity/IdentityStatus.tsx",
+      "work_package": "WP-04b",
+      "decision": "ADAPT"
+    },
+    {
+      "source_path": "frontend/src/components/app/naver-callback.tsx",
+      "symbols": [
+        "callback landing"
+      ],
+      "destination": "frontend/src/features/identity/VerificationCallback.tsx",
+      "work_package": "WP-04b",
+      "decision": "ADAPT"
     }
   ],
   "bigyeting_exclusions": [
@@ -335,85 +568,126 @@
   "mcr_candidates": [
     {
       "source_path": "frontend/src/features/avatar/motion-adoption/MotionEditor.tsx",
-      "symbols": ["MotionEditor"],
+      "symbols": [
+        "MotionEditor"
+      ],
       "destination": "frontend/src/features/profile-avatar/ProfileAvatarEditor.tsx",
       "work_package": "WP-08"
     },
     {
       "source_path": "frontend/src/features/avatar/motion-adoption/controller.ts",
-      "symbols": ["createMotionEditorController", "MotionPersistence"],
+      "symbols": [
+        "createMotionEditorController",
+        "MotionPersistence"
+      ],
       "destination": "frontend/src/features/profile-avatar/model/controller.ts",
       "work_package": "WP-08"
     },
     {
       "source_path": "frontend/src/features/avatar/motion-adoption/production-persistence.ts",
-      "symbols": ["createReviewedMotionPersistence"],
+      "symbols": [
+        "createReviewedMotionPersistence"
+      ],
       "destination": "frontend/src/features/profile-avatar/api/persistence.ts",
       "work_package": "WP-08"
     },
     {
       "source_path": "frontend/src/entities/avatar/runtime/motion-adoption/art.ts",
-      "symbols": ["validateMotionSelection", "motionFrame", "loadMotionArtwork", "validateMotionArt"],
+      "symbols": [
+        "validateMotionSelection",
+        "motionFrame",
+        "loadMotionArtwork",
+        "validateMotionArt"
+      ],
       "destination": "frontend/src/entities/emo-avatar/art.ts",
       "work_package": "WP-08"
     },
     {
       "source_path": "frontend/src/entities/avatar/runtime/motion-adoption/compositor.ts",
-      "symbols": ["createMotionCompositor"],
+      "symbols": [
+        "createMotionCompositor"
+      ],
       "destination": "frontend/src/entities/emo-avatar/compositor.ts",
       "work_package": "WP-08"
     },
     {
       "source_path": "frontend/src/entities/avatar/runtime/motion-adoption/runtime.ts",
-      "symbols": ["createMotionRuntime"],
+      "symbols": [
+        "createMotionRuntime"
+      ],
       "destination": "frontend/src/entities/emo-avatar/runtime.ts",
       "work_package": "WP-08"
     },
     {
       "source_path": "frontend/src/app/account-entry/panels.tsx",
-      "symbols": ["MotionEditor selection order"],
+      "symbols": [
+        "MotionEditor selection order"
+      ],
       "destination": "frontend/src/features/profile-avatar/ProfileAvatarEditor.tsx",
       "work_package": "WP-08"
     },
     {
       "source_path": "backend/crates/concert-domain/src/avatar/mod.rs",
-      "symbols": ["SetAvatar::parse", "parse_config", "AvatarCatalog::validate"],
+      "symbols": [
+        "SetAvatar::parse",
+        "parse_config",
+        "AvatarCatalog::validate"
+      ],
       "destination": "backend/crates/concert-domain/src/profile_avatar.rs",
       "work_package": "WP-08"
     },
     {
       "source_path": "backend/services/concert-service/src/adapters/out/repository/avatar.rs",
-      "symbols": ["AvatarPersistence", "set_avatar", "selection_from_row"],
+      "symbols": [
+        "AvatarPersistence",
+        "set_avatar",
+        "selection_from_row"
+      ],
       "destination": "backend/services/concert-service/src/profile_avatar/repository.rs",
       "work_package": "WP-08"
     },
     {
       "source_path": "frontend/src/world/illustrated/model.ts",
-      "symbols": ["SceneryTexture", "SceneryObject", "sceneryDepth", "sceneryLimits"],
+      "symbols": [
+        "SceneryTexture",
+        "SceneryObject",
+        "sceneryDepth",
+        "sceneryLimits"
+      ],
       "destination": "frontend/src/features/profile-room/model/layout.ts",
       "work_package": "WP-07"
     },
     {
       "source_path": "frontend/src/world/illustrated/phaser.ts",
-      "symbols": ["prepareIllustratedSkin"],
+      "symbols": [
+        "prepareIllustratedSkin"
+      ],
       "destination": "frontend/src/features/profile-room/scene/objects.ts",
       "work_package": "WP-07"
     },
     {
       "source_path": "frontend/src/world/runtime.ts",
-      "symbols": ["createWorldRuntime", "EngineLease"],
+      "symbols": [
+        "createWorldRuntime",
+        "EngineLease"
+      ],
       "destination": "frontend/src/features/profile-room/scene/runtime.ts",
       "work_package": "WP-07"
     },
     {
       "source_path": "frontend/src/world/scenes/MapScene.ts",
-      "symbols": ["loadPhaserEngine", "character texture and sprite handling"],
+      "symbols": [
+        "loadPhaserEngine",
+        "character texture and sprite handling"
+      ],
       "destination": "frontend/src/features/profile-room/scene/RoomScene.ts",
       "work_package": "WP-07"
     },
     {
       "source_path": "frontend/src/features/world-rooms/model/contract.ts",
-      "symbols": ["listConcertRooms"],
+      "symbols": [
+        "listConcertRooms"
+      ],
       "destination": null,
       "work_package": "WP-07",
       "decision": "DO_NOT_MIGRATE"
@@ -433,5 +707,40 @@
   "licensing": {
     "status": "UNRESOLVED",
     "note": "No tracked LICENSE/COPYING/NOTICE in MCR or Bigyeting; user authorization covers internal reuse only. Resolve before public release."
-  }
+  },
+  "identity_claims": {
+    "source": "verified NAVER Login profile API (openapi.naver.com/v1/nid/me)",
+    "fields": [
+      "id",
+      "gender (F|M|U)",
+      "birthyear (YYYY)",
+      "birthday (MM-DD)"
+    ],
+    "age_derivation": "derive_exact_age_claim(birthyear, birthday, seoul_date) -> age_at_verification + next_birthday_at",
+    "current_age": "age_at_verification + (seoul_today >= next_birthday_at)",
+    "lifetime": "at most 90 days",
+    "missing_or_unrecognized_gender": "profile_incomplete; no claim row written",
+    "explicit_unknown": "gender bucket unknown; matches only an audience that selected unknown",
+    "destination_key": "user_id only; no event_id"
+  },
+  "resolved_decisions": [
+    {
+      "id": "D-01",
+      "decision": "Gender comes from the verified NAVER Login profile field",
+      "decided_by": "user",
+      "date": "2026-11-08"
+    },
+    {
+      "id": "D-02",
+      "decision": "Provider-verified gender is acceptable for access control",
+      "decided_by": "user",
+      "date": "2026-11-08"
+    },
+    {
+      "id": "D-03",
+      "decision": "Age/gender restrictions must exist; NAVER linking required only for restricted posts",
+      "decided_by": "user",
+      "date": "2026-11-08"
+    }
+  ]
 }

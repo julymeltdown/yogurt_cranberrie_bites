@@ -30,6 +30,12 @@ Machine-readable companion: [source-register.json](source-register.json).
 | Bigyeting's like flow runs through the music-taste-event module | `adapters/in/http/music_taste_event.rs` `like_intro`/`unlike_intro`/`set_intro_like` |
 | Bigyeting's reward trigger exists | `migrations/0046_music_taste_event.sql` |
 | The C08 guard rejects Bigyeting-only rendering dependencies | `scripts/mcr/check-ui-origin.mjs` `forbiddenImport` |
+| Gender and age come from the NAVER Login profile API, not a user form | `oauth_naver_provider.rs` `load_naver_profile`, `oauth_profiles.rs` `NaverProfile`, `naver_verification.rs` `validated_claim` |
+| The donor requires a NAVER claim for every post, including unrestricted ones | `tests/exact_age_intro_policy_contract.rs` `unrestricted_intros_require_a_supported_naver_claim_across_every_surface` |
+| The donor stores `gender_bucket` with CHECK `('female','male','unknown')` | `migrations/0025_normalize_naver_claims.sql` |
+| MCR's age claim table is event-scoped and erased with the event | `concert-service/migrations/0038_age_runtime.sql` (`event_id ... references concert_events`) |
+| MCR's `concert_media` table is event-scoped with three purposes and a participant foreign key | `concert-service/migrations/0012_media.sql` |
+| The gateway accepts only JPEG, PNG, and WebP for media bytes | `api-gateway/.../concert_product/mod.rs` `request_metadata` |
 
 Claims about behavior that were **not** executed are not listed. In particular,
 no integrated build, no database migration, and no end-to-end flow has been run
