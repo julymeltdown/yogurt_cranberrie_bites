@@ -1,0 +1,64 @@
+/*
+ * Identity verification surfaces.
+ *
+ * Deliberately plain: spacing, typography and ordinary symmetric borders. No
+ * decorative left accent bar, no coloured left border, no inset rail and no
+ * pseudo-element substitute for one. Focus stays a visible outline.
+ */
+.identity-surface {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 42rem;
+  margin-inline: auto;
+  padding: 1.25rem;
+  padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+  color: var(--mcr-text, #f4f1e8);
+  background: var(--mcr-surface, #201e25);
+  font: 1rem/1.5 system-ui, sans-serif;
+  overflow-wrap: anywhere;
+}
+.identity-surface * { box-sizing: border-box; }
+.identity-surface h1 { font-size: 1.5rem; margin-block: 0.25rem 0.75rem; }
+.identity-surface h2 { font-size: 1.15rem; margin-block: 0.25rem 0.5rem; }
+.identity-surface p { margin-block: 0.5rem; }
+.identity-surface :focus-visible { outline: 3px solid var(--mcr-focus, #f7cd7a); outline-offset: 3px; }
+
+.identity-surface button {
+  max-width: 100%;
+  min-height: 44px;
+  padding: 0.5rem 0.9rem;
+  color: inherit;
+  background: var(--mcr-background, #131217);
+  border: 1px solid var(--mcr-border, #827e8b);
+  border-radius: 0.2rem;
+  font: inherit;
+  cursor: pointer;
+}
+.identity-surface button:disabled { opacity: 0.55; cursor: default; }
+
+.identity-status { font-size: 1.1rem; }
+.identity-status[data-status='VERIFIED'] strong { color: var(--mcr-positive, #8fd7a8); }
+.identity-status[data-status='EXPIRED'] strong,
+.identity-status[data-status='REVOKED'] strong { color: var(--mcr-warning, #f0c674); }
+.identity-status[data-status='PROVIDER_UNAVAILABLE'] strong { color: var(--mcr-muted, #b6b2bd); }
+
+.identity-claims { display: grid; gap: 0.5rem; margin-block: 0.75rem; }
+.identity-claims > div { display: flex; gap: 0.75rem; align-items: baseline; }
+.identity-claims dt { min-width: 6rem; color: var(--mcr-muted, #b6b2bd); }
+.identity-claims dd { margin: 0; font-weight: 650; }
+
+.identity-actions { display: flex; flex-wrap: wrap; gap: 0.65rem; align-items: center; margin-block: 1rem; }
+
+.identity-report,
+.identity-message {
+  margin-block: 0.75rem;
+  padding: 0.75rem;
+  border: 1px solid var(--mcr-border, #827e8b);
+  border-radius: 0.2rem;
+}
+.identity-report { display: flex; flex-wrap: wrap; gap: 0.65rem; align-items: center; justify-content: space-between; }
+.identity-report p { margin: 0; }
+
+/* The gated-post prompt. It renders no restricted content of any kind. */
+.identity-prompt { max-width: 42rem; margin-inline: auto; }
+.identity-prompt__note { color: var(--mcr-muted, #b6b2bd); }

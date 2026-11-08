@@ -36,7 +36,7 @@ pub struct InMemoryRateLimiter {
     policies: Arc<AdmissionPolicies>,
     window: Duration,
     state: Arc<Mutex<RateLimitState>>,
-    in_flight: Arc<[Arc<Semaphore>; 8]>,
+    in_flight: Arc<[Arc<Semaphore>; 9]>,
     /// Per-instance read allowance used only while the store is unavailable.
     fallback: Arc<Mutex<HashMap<RouteClass, Window>>>,
     shared_pool: Option<PgPool>,

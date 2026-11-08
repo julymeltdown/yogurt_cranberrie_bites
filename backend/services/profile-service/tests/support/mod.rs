@@ -174,6 +174,8 @@ pub async fn start_postgres_app(seed_enabled: bool) -> Result<TestApp> {
         mutation_receipt_retention_worker_enabled: false,
         mutation_receipt_retention_worker_interval_ms: 3_600_000,
         mutation_receipt_retention_batch_size: 1_000,
+        naver_oauth: profile_service::identity::NaverOAuthConfig::local(),
+        identity_subject_salt: b"profile-service-test-identity-subject-salt".to_vec(),
     };
     let pool = connect_pool(&config).await?;
     let state = Arc::new(build_state(&config, pool.clone()).await?);

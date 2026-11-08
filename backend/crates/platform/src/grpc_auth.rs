@@ -87,6 +87,10 @@ pub enum RpcAction {
     MutationReceiptLookup,
     /// Read paths proxied by the edge or by another service.
     Read,
+    /// The anonymous NAVER verification callback. It arrives from the provider
+    /// with no session, so the Gateway forwards it without an actor; the
+    /// profile service reads the user from the stored one-use state row.
+    VerificationCallback,
 }
 
 /// Which callers may invoke which sensitive action.
@@ -117,6 +121,9 @@ impl CallerPolicy {
             // Receipt IDs can reveal cross-user mutation history, so this
             // lookup is intentionally narrower than ordinary service reads.
             RpcAction::MutationReceiptLookup => matches!(caller, Workload::Gateway),
+            // Only the Gateway receives the provider's callback. No sibling
+            // service can complete a verification on a user's behalf.
+            RpcAction::VerificationCallback => matches!(caller, Workload::Gateway),
             // Reads are needed by the edge and by services that aggregate data.
             RpcAction::Read => matches!(
                 caller,

@@ -11,6 +11,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         contracts_build::source_world_proto(),
         contracts_build::proto_root().join("concert/v1/product.proto"),
         contracts_build::proto_root().join("profile/v1/profile_product.proto"),
+        contracts_build::proto_root().join("profile/v1/identity_verification.proto"),
     ];
     let includes = vec![
         contracts_build::source_auth_include_dir(),

@@ -1,0 +1,274 @@
+{
+  "verification": "V-12",
+  "title": "NAVER verification produces a real, event-free claim",
+  "status": "PASS",
+  "commit": "HEAD of codex/yc-wp04b-identity (base b5926f288)",
+  "recorded_at": "2026-11-08T20:02:22.388725+00:00",
+  "work_package": "WP-04b",
+  "tasks": [
+    "T-201",
+    "T-202",
+    "T-203",
+    "T-204",
+    "T-205",
+    "T-206",
+    "T-207",
+    "T-208",
+    "T-209",
+    "T-210",
+    "T-211",
+    "T-212"
+  ],
+  "environment": {
+    "postgres": "16.14 (Homebrew), private marker-owned mcr-pg-* cluster in /tmp, Unix socket only",
+    "harness": "backend/scripts/mcr/wp04b_identity_cluster.py (migration_smoke.py pattern)",
+    "provider": "fake NAVER provider on loopback; the production NaverProviderClient is under test",
+    "rust": "1.88.0",
+    "node": "v26.7.0 with pnpm 11.7.0 (package.json wants node 24.22.2; the engine warning does not affect the checks)"
+  },
+  "commands": [
+    {
+      "command": "cargo +1.88.0 check --locked --workspace",
+      "cwd": "backend",
+      "exit_code": 0,
+      "result": "workspace compiles"
+    },
+    {
+      "command": "PROFILE_TEST_DATABASE_URL=... cargo +1.88.0 test --locked -p profile-service --test naver_profile",
+      "cwd": "backend",
+      "exit_code": 0,
+      "result": "9 passed"
+    },
+    {
+      "command": "PROFILE_TEST_DATABASE_URL=... cargo +1.88.0 test --locked -p profile-service --test naver_provider",
+      "cwd": "backend",
+      "exit_code": 0,
+      "result": "9 passed"
+    },
+    {
+      "command": "PROFILE_TEST_DATABASE_URL=... cargo +1.88.0 test --locked -p profile-service --test naver_config",
+      "cwd": "backend",
+      "exit_code": 0,
+      "result": "15 passed"
+    },
+    {
+      "command": "PROFILE_TEST_DATABASE_URL=... cargo +1.88.0 test --locked -p profile-service --test identity_start",
+      "cwd": "backend",
+      "exit_code": 0,
+      "result": "8 passed"
+    },
+    {
+      "command": "PROFILE_TEST_DATABASE_URL=... cargo +1.88.0 test --locked -p profile-service --test identity_callback",
+      "cwd": "backend",
+      "exit_code": 0,
+      "result": "25 passed"
+    },
+    {
+      "command": "PROFILE_TEST_DATABASE_URL=... cargo +1.88.0 test --locked -p profile-service --test identity_status",
+      "cwd": "backend",
+      "exit_code": 0,
+      "result": "11 passed"
+    },
+    {
+      "command": "PROFILE_TEST_DATABASE_URL=... cargo +1.88.0 test --locked -p profile-service --test identity_disconnect",
+      "cwd": "backend",
+      "exit_code": 0,
+      "result": "8 passed"
+    },
+    {
+      "command": "cargo +1.88.0 test --locked -p api-gateway --test identity_routes",
+      "cwd": "backend",
+      "exit_code": 0,
+      "result": "12 passed"
+    },
+    {
+      "command": "cargo +1.88.0 test --locked -p profile-service --test unit",
+      "cwd": "backend",
+      "exit_code": 0,
+      "result": "47 passed"
+    },
+    {
+      "command": "PROFILE_TEST_DATABASE_URL=... cargo +1.88.0 test --locked -p profile-service --test profile_product_transport",
+      "cwd": "backend",
+      "exit_code": 0,
+      "result": "7 passed"
+    },
+    {
+      "command": "cargo +1.88.0 test --locked -p api-gateway --test unit",
+      "cwd": "backend",
+      "exit_code": 0,
+      "result": "218 passed"
+    },
+    {
+      "command": "cargo +1.88.0 test --locked -p api-gateway --test profile_product_routes",
+      "cwd": "backend",
+      "exit_code": 0,
+      "result": "10 passed"
+    },
+    {
+      "command": "cargo +1.88.0 test --locked -p api-gateway --test browser_auth_http",
+      "cwd": "backend",
+      "exit_code": 0,
+      "result": "14 passed"
+    },
+    {
+      "command": "corepack pnpm@11.7.0 run typecheck",
+      "cwd": "frontend",
+      "exit_code": 0,
+      "result": "no type errors"
+    },
+    {
+      "command": "corepack pnpm@11.7.0 exec vitest run src/features/identity",
+      "cwd": "frontend",
+      "exit_code": 0,
+      "result": "20 passed (3 files)"
+    }
+  ],
+  "cases": [
+    {
+      "id": "V-12-a",
+      "input": "birthyear=2000, birthday=07-12, Seoul date 2026-07-12",
+      "expected": "age_at_verification=26, next_birthday_at=2027-07-12",
+      "status": "PASS",
+      "evidence": "backend/services/profile-service/tests/identity_callback.rs::a_complete_profile_writes_one_claim_with_the_derived_age"
+    },
+    {
+      "id": "V-12-b",
+      "input": "same claim read on the next birthday",
+      "expected": "current age advances, no stored mutation",
+      "status": "PASS",
+      "evidence": "backend/services/profile-service/tests/identity_status.rs::the_current_age_advances_on_the_seoul_birthday_without_a_stored_mutation"
+    },
+    {
+      "id": "V-12-c",
+      "input": "gender=F",
+      "expected": "bucket female",
+      "status": "PASS",
+      "evidence": "backend/services/profile-service/tests/naver_profile.rs::the_donor_gender_mapping_is_preserved_exactly"
+    },
+    {
+      "id": "V-12-d",
+      "input": "gender=M",
+      "expected": "bucket male",
+      "status": "PASS",
+      "evidence": "backend/services/profile-service/tests/identity_callback.rs::the_male_gender_writes_the_male_bucket"
+    },
+    {
+      "id": "V-12-e",
+      "input": "gender=U",
+      "expected": "bucket unknown",
+      "status": "PASS",
+      "evidence": "backend/services/profile-service/tests/identity_callback.rs::an_explicit_unspecified_gender_writes_the_unknown_bucket"
+    },
+    {
+      "id": "V-12-f",
+      "input": "gender missing",
+      "expected": "profile_incomplete, no claim row",
+      "status": "PASS",
+      "evidence": "backend/services/profile-service/tests/identity_callback.rs::a_missing_gender_is_profile_incomplete_with_no_claim_row"
+    },
+    {
+      "id": "V-12-g",
+      "input": "gender=X (unrecognized)",
+      "expected": "profile_incomplete, no claim row",
+      "status": "PASS",
+      "evidence": "backend/services/profile-service/tests/identity_callback.rs::an_unrecognized_gender_is_profile_incomplete_with_no_claim_row"
+    },
+    {
+      "id": "V-12-h",
+      "input": "birthyear missing",
+      "expected": "fails, no claim row",
+      "status": "PASS",
+      "evidence": "backend/services/profile-service/tests/identity_callback.rs::a_missing_birthyear_is_profile_incomplete_with_no_claim_row"
+    },
+    {
+      "id": "V-12-i",
+      "input": "derived age outside 14-100",
+      "expected": "age_not_supported, no claim row",
+      "status": "PASS",
+      "evidence": "backend/services/profile-service/tests/identity_callback.rs::an_age_outside_the_supported_range_is_age_not_supported"
+    },
+    {
+      "id": "V-12-j",
+      "input": "same provider subject already backs another user",
+      "expected": "duplicate, no second claim",
+      "status": "PASS",
+      "evidence": "backend/services/profile-service/tests/identity_callback.rs::a_duplicate_provider_subject_is_rejected_with_no_second_claim"
+    },
+    {
+      "id": "V-12-k",
+      "input": "re-verify after expiry",
+      "expected": "new claim supersedes; old row capped at the replacement instant",
+      "status": "PASS",
+      "evidence": "backend/services/profile-service/tests/identity_callback.rs::a_re_verification_supersedes_and_caps_the_old_expiry"
+    },
+    {
+      "id": "V-12-l",
+      "input": "DELETE /api/me/identity/naver",
+      "expected": "REVOKED; own posts keep audience; own viewing denied",
+      "status": "PASS",
+      "evidence": "backend/services/profile-service/tests/identity_disconnect.rs::a_disconnect_makes_the_read_return_revoked"
+    },
+    {
+      "id": "V-12-m",
+      "input": "callback state reused",
+      "expected": "second use rejected; no claim",
+      "status": "PASS",
+      "evidence": "backend/services/profile-service/tests/identity_callback.rs::a_reused_state_is_rejected_with_no_claim"
+    },
+    {
+      "id": "V-12-n",
+      "input": "callback for an expired state (>10 min)",
+      "expected": "rejected; no claim",
+      "status": "PASS",
+      "evidence": "backend/services/profile-service/tests/identity_callback.rs::an_expired_state_is_rejected_with_no_claim"
+    },
+    {
+      "id": "V-12-o",
+      "input": "any of the above",
+      "expected": "no provider token, subject, birth date or exact age in logs or persisted state outside the claim row",
+      "status": "PASS",
+      "evidence": "backend/services/profile-service/tests/naver_provider.rs::the_access_token_and_profile_render_no_value_in_debug"
+    },
+    {
+      "id": "V-12-p",
+      "input": "production config with placeholder client id/secret",
+      "expected": "service refuses to start",
+      "status": "PASS",
+      "evidence": "backend/services/profile-service/tests/naver_config.rs::a_production_start_with_placeholders_refuses_to_start"
+    },
+    {
+      "id": "NAVER-CONSOLE",
+      "input": "test NAVER application registered with the callback URL",
+      "expected": "console approval reference recorded",
+      "status": "BLOCKED",
+      "evidence": "no NAVER developer application exists in this environment"
+    }
+  ],
+  "artifacts": [
+    "docs/mcr/integration/evidence/v12-naver-verification.md",
+    "backend/services/profile-service/src/identity/",
+    "backend/services/profile-service/tests/naver_profile.rs",
+    "backend/services/profile-service/tests/naver_provider.rs",
+    "backend/services/profile-service/tests/naver_config.rs",
+    "backend/services/profile-service/tests/identity_start.rs",
+    "backend/services/profile-service/tests/identity_callback.rs",
+    "backend/services/profile-service/tests/identity_status.rs",
+    "backend/services/profile-service/tests/identity_disconnect.rs",
+    "backend/services/api-gateway/tests/identity_routes.rs",
+    "frontend/src/features/identity/"
+  ],
+  "limitations": [
+    "NAVER-CONSOLE is BLOCKED: no test NAVER developer application exists in this environment, so a real authorization round trip could not be executed. Every other V-12 case ran against a real PostgreSQL 16 cluster and the real provider client.",
+    "The client-side identity feature has no route mounted in src/app/router.tsx; route composition is integrator-owned.",
+    "display_on_profile is always false until a profile display setting exists.",
+    "identity_verifications rows are erased by the account-deletion saga; no separate retention purge is part of this work package."
+  ],
+  "pre_existing_failures": {
+    "profile-service --lib": [
+      "config::tests::external_migration_mode_rejects_schema_damage_without_owner_privileges (Docker socket absent)"
+    ],
+    "profile-service --test contract": "6 of 10 fail identically on master b5926f288 with the same shared fixture database",
+    "frontend vitest": "18 tests in 4 files fail identically on master b5926f288 (5750 passed before, 5770 after)"
+  }
+}

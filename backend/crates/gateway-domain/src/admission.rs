@@ -22,6 +22,11 @@ pub enum RouteClass {
     Reset,
     /// Resending a verification email.
     VerificationResend,
+    /// The anonymous NAVER verification callback. It is a top-level browser
+    /// navigation from the provider, so it is neither a login nor a write: it
+    /// gets its own small budget so a flood of guessed states cannot spend the
+    /// login budget a real user needs.
+    VerificationCallback,
     /// Refresh-token rotation.
     Refresh,
     /// Profile and post search.
@@ -33,11 +38,12 @@ pub enum RouteClass {
 }
 
 impl RouteClass {
-    pub const ALL: [RouteClass; 8] = [
+    pub const ALL: [RouteClass; 9] = [
         Self::Login,
         Self::Signup,
         Self::Reset,
         Self::VerificationResend,
+        Self::VerificationCallback,
         Self::Refresh,
         Self::Search,
         Self::Write,
@@ -61,6 +67,10 @@ impl RouteClass {
             }
             "/auth/password/reset/request" | "/auth/password/reset/confirm" => return Self::Reset,
             "/auth/email/resend" => return Self::VerificationResend,
+            // The identity callback is a provider navigation, not a login and
+            // not a write. It is classified by route, so a path parameter cannot
+            // move it into a cheaper or more expensive class.
+            "/api/identity/naver/callback" => return Self::VerificationCallback,
             "/auth/refresh" => return Self::Refresh,
             _ => {}
         }
@@ -80,6 +90,7 @@ impl RouteClass {
             Self::Signup => "signup",
             Self::Reset => "reset",
             Self::VerificationResend => "verification_resend",
+            Self::VerificationCallback => "verification_callback",
             Self::Refresh => "refresh",
             Self::Search => "search",
             Self::Write => "write",
@@ -104,6 +115,10 @@ impl RouteClass {
             Self::Signup => 10,
             Self::Reset => 10,
             Self::VerificationResend => 5,
+            // A user completes at most a handful of verifications; 20 per
+            // network per minute leaves room for a shared address and still
+            // bounds a guessing flood.
+            Self::VerificationCallback => 20,
             Self::Refresh => 120,
             Self::Search => 120,
             Self::Write => 300,
@@ -117,7 +132,7 @@ impl RouteClass {
     pub fn default_max_in_flight(self) -> usize {
         match self {
             Self::Login | Self::Refresh => 32,
-            Self::Signup | Self::Reset | Self::VerificationResend => 8,
+            Self::Signup | Self::Reset | Self::VerificationResend | Self::VerificationCallback => 8,
             Self::Search => 32,
             Self::Write => 64,
             Self::Read => 128,
@@ -208,15 +223,15 @@ impl AdmissionMode {
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct AdmissionPolicies {
-    budgets: [u32; 8],
+    budgets: [u32; 9],
     /// Optional budgets keyed by an HMAC of a normalized anonymous account
     /// identifier. Zero disables that class's identity budget.
-    identity_budgets: [u32; 8],
+    identity_budgets: [u32; 9],
     /// Optional budgets keyed by an HMAC of a verified access-token subject.
     /// Zero disables that class's authenticated-principal budget.
-    principal_budgets: [u32; 8],
+    principal_budgets: [u32; 9],
     /// Maximum simultaneous requests per route class on each Gateway process.
-    max_in_flight: [usize; 8],
+    max_in_flight: [usize; 9],
     /// Whether quota and cardinality decisions are enforced or observed only.
     pub mode: AdmissionMode,
     /// While detailed capacity is full, identities without a budget of their
@@ -236,16 +251,16 @@ pub const DEFAULT_V6_PREFIX_LENGTH: u8 = 64;
 
 impl Default for AdmissionPolicies {
     fn default() -> Self {
-        let mut budgets = [0; 8];
-        let mut max_in_flight = [0; 8];
+        let mut budgets = [0; 9];
+        let mut max_in_flight = [0; 9];
         for class in RouteClass::ALL {
             budgets[class.index()] = class.default_budget();
             max_in_flight[class.index()] = class.default_max_in_flight();
         }
         Self {
             budgets,
-            identity_budgets: [0; 8],
-            principal_budgets: [0; 8],
+            identity_budgets: [0; 9],
+            principal_budgets: [0; 9],
             max_in_flight,
             mode: AdmissionMode::Enforce,
             overflow_factor: DEFAULT_OVERFLOW_FACTOR,
@@ -259,7 +274,7 @@ impl AdmissionPolicies {
     /// Every class with the same budget.
     pub fn uniform(budget: u32) -> Self {
         Self {
-            budgets: [budget; 8],
+            budgets: [budget; 9],
             ..Self::default()
         }
     }
