@@ -21,6 +21,7 @@ pub mod operation_routes;
 pub mod operation_worker;
 pub mod owner_receipts;
 pub mod post_routes;
+pub mod profile_product;
 pub mod profile_routes;
 pub mod refresh_routes;
 pub mod request_journal;
@@ -283,6 +284,7 @@ pub fn router(state: Arc<AppState>) -> Router {
         .merge(concert_bootstrap::router(state.clone()))
         .merge(participant)
         .merge(concert_product::router(state.clone()))
+        .merge(profile_product::router(state.clone()))
         .merge(concert_world::router_with_boundary(state.clone()))
         .merge(profile_routes::router(state.clone()))
         .merge(friend_routes::router(state.clone()))
@@ -324,6 +326,7 @@ pub fn router(state: Arc<AppState>) -> Router {
         ))
         .layer(axum::middleware::from_fn(concert_bootstrap::protect_response))
         .layer(axum::middleware::from_fn(concert_product::protect_response))
+        .layer(axum::middleware::from_fn(profile_product::protect_response))
 }
 
 pub fn metrics_router(metrics_state: GatewayMetrics) -> Router {

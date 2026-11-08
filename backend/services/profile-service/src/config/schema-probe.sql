@@ -7,14 +7,32 @@ WITH required_tables(name) AS (
         ('profile_audit_events'),
         ('profile_mutation_receipts'),
         ('profile_user_deletion_tombstones'),
-        ('profiles')
+        ('profiles'),
+        -- WP-02 profile-owned schema.
+        ('profile_identities'),
+        ('profile_favorites'),
+        ('identity_claims'),
+        ('identity_verifications'),
+        ('profile_product_scopes'),
+        ('profile_account_deletion_progress')
 ), required_columns(relation, name, kind) AS (
     VALUES ('profiles', 'user_id', 'uuid'),
         ('profiles', 'username', 'text'),
         ('profiles', 'deleted_at', 'timestamptz'),
         ('avatars', 'user_id', 'uuid'),
         ('avatars', 'content', 'bytea'),
-        ('profile_user_deletion_tombstones', 'user_id', 'uuid')
+        ('profile_user_deletion_tombstones', 'user_id', 'uuid'),
+        ('profile_identities', 'profile_id', 'uuid'),
+        ('profile_identities', 'account_id', 'uuid'),
+        ('profile_identities', 'visibility', 'text'),
+        ('profile_favorites', 'profile_id', 'uuid'),
+        ('profile_favorites', 'category', 'text'),
+        ('identity_claims', 'claim_id', 'uuid'),
+        ('identity_claims', 'user_id', 'uuid'),
+        ('identity_claims', 'expires_at', 'timestamptz'),
+        ('identity_verifications', 'verification_id', 'uuid'),
+        ('profile_product_scopes', 'scope_id', 'uuid'),
+        ('profile_product_scopes', 'phase', 'text')
 ), required_triggers(relation, name, function_name, kind) AS (
     VALUES ('profiles', 'profiles_user_deletion_fence', 'profile_guard_user_deletion_fence', 23),
         ('avatars', 'avatars_user_deletion_fence', 'profile_guard_user_deletion_fence', 23)

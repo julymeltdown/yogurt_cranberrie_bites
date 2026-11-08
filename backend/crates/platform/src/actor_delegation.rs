@@ -737,18 +737,23 @@ where
     ) {
         parts.extensions.insert(authority);
     }
-    let product_parent = verifier.audience() == Workload::Concert
-        && matches!(
-            parts.uri.path(),
+    // The profile product transport is the profile analogue of the concert
+    // product: it needs the exact verified frame so its producer can re-decode
+    // the signed parent and bind the owner scope to it. It is listed by exact
+    // service and method, so no other Profile method gains parent authority.
+    let product_parent = matches!(
+        (verifier.audience(), parts.uri.path()),
+        (
+            Workload::Concert,
             "/concert.product.v1.ProductService/Dispatch"
                 | "/concert.participant.v1.ConcertParticipantService/GetParticipant"
                 | "/concert.participant.v1.ConcertParticipantService/SetAvatar"
                 | "/concert.participant.v1.ConcertParticipantService/UpdatePreferences"
-        )
-        && parts
-            .extensions
-            .get::<read_authority::VerifiedReadAuthority>()
-            .is_some();
+        ) | (Workload::Profile, "/profile.product.v1.ProfileProductService/Dispatch")
+    ) && parts
+        .extensions
+        .get::<read_authority::VerifiedReadAuthority>()
+        .is_some();
     // The dedicated Post callback needs its exact verified frame for the root
     // handler. Preserve its original caller deadline; no other Post route gets
     // this capability and forwarded proofs never become parent authority.

@@ -1,0 +1,68 @@
+syntax = "proto3";
+
+package profile.product.v1;
+
+// Profile-owned product transport, mirroring `concert.product.v1.ProductRequest`
+// with one deliberate difference: there is no event. A profile operation has no
+// event scope, so this message carries `profile_id` instead of `event_id` and
+// the producer rejects any target that names an event path.
+//
+// Internal transport only. The workload/actor guard signs the exact protobuf
+// body, including the original HTTP bytes and every authority/target binding.
+message ProfileRequest {
+  string user_id = 1;
+  // Canonical profile UUID. Never an event UUID, never nil.
+  string profile_id = 2;
+  string session_family_id = 3;
+  string request_id = 4;
+  string http_method = 5;
+  string http_target = 6;
+  bytes http_body = 7;
+  string content_type = 8;
+  string idempotency_key = 9;
+  int64 authority_expires_unix_micros = 10;
+  int64 auth_observed_at_unix_micros = 11;
+  int64 profile_observed_at_unix_micros = 12;
+  int64 access_expires_unix_micros = 13;
+  // Optional stable privacy HMAC, derived only from Gateway's typed actual
+  // transport address using a dedicated key. The exact signed request binds it.
+  // Empty means unavailable; raw IP and browser-selected buckets are forbidden.
+  bytes trusted_network_bucket = 14;
+}
+
+// Same delivery discipline as the concert product response so cancellation and
+// settlement behave identically: the body is only readable under a published
+// delivery capability, and completion is a separate system operation.
+message ProfileResponse {
+  uint32 status = 1;
+  string content_type = 2;
+  bytes body = 3;
+  // Internal only; NEVER serialize into HTTP JSON/headers.
+  ProfileResponseDelivery delivery = 4;
+  // Actual root-wide disclosure ceiling, clipped by every retained private
+  // child. Gateway checks it before each HTTP data frame, using the original
+  // access monotonic stop as an additional ceiling. Zero is not authority.
+  int64 content_expires_unix_micros = 5;
+}
+
+// Completion is a separate bounded system operation, never renewed content
+// authority. Only Gateway may report its actual HTTP body terminal. A missing
+// callback, cancellation or lost reply leaves the canonical scope quarantined.
+message ProfileResponseDelivery {
+  string instance_id = 1;
+  string scope_id = 2;
+  bytes binding_digest = 3;
+  bytes completion_secret = 4;
+}
+
+message CompleteProfileResponseResult {
+  bool completed = 1;
+}
+
+service ProfileProductService {
+  rpc Dispatch(ProfileRequest) returns (ProfileResponse);
+}
+
+service ProfileProductDeliveryService {
+  rpc CompleteResponse(ProfileResponseDelivery) returns (CompleteProfileResponseResult);
+}
