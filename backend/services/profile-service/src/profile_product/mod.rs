@@ -441,6 +441,41 @@ pub fn runtime(
     callers: platform::grpc_auth::CallerRegistry,
     verifier: platform::actor_delegation::ActorDelegationVerifier,
 ) -> anyhow::Result<ProfileProductRuntime> {
+    build_runtime(
+        pool.clone(),
+        callers,
+        verifier,
+        targets::ProfileProductProducer::new(pool),
+    )
+}
+
+/// The runtime with the NAVER verification flow attached.
+///
+/// The identity operations (`getOwnIdentityVerification`,
+/// `startIdentityVerification`, `disconnectIdentityVerification`) are served by
+/// the same producer, under the same owner scope and the same delivery
+/// discipline as every other profile operation. The callback is not: it is
+/// anonymous and travels through `profile.identity.v1` instead.
+pub fn runtime_with_identity(
+    pool: sqlx::PgPool,
+    callers: platform::grpc_auth::CallerRegistry,
+    verifier: platform::actor_delegation::ActorDelegationVerifier,
+    identity: std::sync::Arc<crate::identity::IdentityRuntime>,
+) -> anyhow::Result<ProfileProductRuntime> {
+    build_runtime(
+        pool.clone(),
+        callers,
+        verifier,
+        targets::ProfileProductProducer::with_identity(pool, (*identity).clone()),
+    )
+}
+
+fn build_runtime(
+    pool: sqlx::PgPool,
+    callers: platform::grpc_auth::CallerRegistry,
+    verifier: platform::actor_delegation::ActorDelegationVerifier,
+    producer: targets::ProfileProductProducer,
+) -> anyhow::Result<ProfileProductRuntime> {
     let registry = crate::adapters::out::profile_owner_guard::ProfileScopeRegistry::new();
     let ledger = ledger::ProfileScopeLedger::new(pool.clone());
     let fence = Arc::new(crate::adapters::out::profile_owner_guard::ProfileOwnerFence::new(
@@ -448,8 +483,7 @@ pub fn runtime(
         ledger.clone(),
     ));
     let publisher = delivery::ProfileDeliveryPublisher::new(ledger, registry.clone());
-    let producer: Arc<dyn scoped::ScopedProfileProducer> =
-        Arc::new(targets::ProfileProductProducer::new(pool.clone()));
+    let producer: Arc<dyn scoped::ScopedProfileProducer> = Arc::new(producer);
     let owner = Arc::new(scoped::ScopedProfileOwner::new(fence, publisher.clone(), producer));
     let dispatch = platform::grpc_method_policy::guard(
         &POLICY,

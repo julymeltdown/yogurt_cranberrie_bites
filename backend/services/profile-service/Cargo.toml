@@ -13,6 +13,7 @@ name = "profile-service"
 path = "src/main.rs"
 
 [dependencies]
+concert-domain = { path = "../../crates/concert-domain" }
 migration-runtime = { path = "../../crates/migration-runtime" }
 profile-domain = { path = "../../crates/profile-domain" }
 profile-application = { path = "../../crates/profile-application" }
@@ -26,6 +27,7 @@ http-body-util.workspace = true
 image.workspace = true
 platform = { path = "../../crates/platform" }
 prost.workspace = true
+reqwest.workspace = true
 ring = "0.17.14"
 serde.workspace = true
 serde_json.workspace = true

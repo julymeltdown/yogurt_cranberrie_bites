@@ -987,6 +987,10 @@ pub struct AppState {
     /// configured concrete client populates it.
     pub profile_product_client:
         Option<crate::adapters::out::profile_product_client::GrpcProfileProductClient>,
+    /// The anonymous NAVER verification callback. Absent in test-double
+    /// compositions, where the callback fails closed.
+    pub identity_callback_client:
+        Option<crate::adapters::out::identity_callback_client::GrpcIdentityCallbackClient>,
     pub concert_world_client: Option<crate::adapters::out::concert_world::GrpcConcertWorldClient>,
     pub concert_participant_client:
         Option<Arc<crate::adapters::out::concert_participant::GrpcConcertParticipantClient>>,
@@ -1873,6 +1877,13 @@ pub async fn build_state(config: &AppConfig, pool: PgPool) -> anyhow::Result<App
             config.actor_delegation_signer.clone(),
         )?,
     );
+    state.identity_callback_client = Some(
+        crate::adapters::out::identity_callback_client::GrpcIdentityCallbackClient::connect(
+            &config.profile_grpc_endpoint,
+            &config.outbound_identity,
+            config.tls_material.as_ref(),
+        )?,
+    );
     state.concert_participant_client = config
         .concert_release_digest
         .as_ref()
@@ -2017,6 +2028,7 @@ async fn build_state_with_clients_and_moderation_with_metrics(
         concert_client: None,
         concert_product_client: None,
         profile_product_client: None,
+        identity_callback_client: None,
         concert_world_client: None,
         concert_participant_client: None,
         high_risk_sessions: HighRiskSessionGuard::over_auth_client(

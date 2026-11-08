@@ -13,6 +13,7 @@ pub mod concert_participant;
 pub(crate) mod response_disclosure;
 
 pub mod friend_routes;
+pub mod identity_routes;
 pub mod moderation_decision_worker;
 pub mod moderation_routes;
 pub mod notification_routes;
@@ -285,6 +286,12 @@ pub fn router(state: Arc<AppState>) -> Router {
         .merge(participant)
         .merge(concert_product::router(state.clone()))
         .merge(profile_product::router(state.clone()))
+        // The anonymous callback is registered at the router root, but the
+        // browser boundary below skips it by path: a provider navigation cannot
+        // carry an Origin or `X-MCR-Intent`, and relaxing the boundary for every
+        // route would be the actual vulnerability. The route carries its own,
+        // narrower discipline instead (see `identity_routes`).
+        .merge(identity_routes::router(state.clone()))
         .merge(concert_world::router_with_boundary(state.clone()))
         .merge(profile_routes::router(state.clone()))
         .merge(friend_routes::router(state.clone()))

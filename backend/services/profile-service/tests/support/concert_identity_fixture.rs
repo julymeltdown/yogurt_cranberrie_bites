@@ -75,6 +75,8 @@ pub async fn state(
         mutation_receipt_retention_worker_enabled: false,
         mutation_receipt_retention_worker_interval_ms: 3600000,
         mutation_receipt_retention_batch_size: 100,
+        naver_oauth: profile_service::identity::NaverOAuthConfig::local(),
+        identity_subject_salt: b"profile-service-test-identity-subject-salt".to_vec(),
     };
     let mut state = build_state(&config, pool).await?;
     if let Some(repository) = repository {

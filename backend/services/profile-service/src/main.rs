@@ -80,10 +80,28 @@ async fn main() -> anyhow::Result<()> {
     // The profile product transport serves profile-owned operations that carry
     // no event. It is registered beside the Profile service, not inside it,
     // because its request shape and its authority binding are its own.
-    let profile_product = profile_service::profile_product::runtime(
+    // The NAVER verification flow. Its provider settings were resolved (and
+    // validated) in `AppConfig::load`, so a production placeholder has already
+    // refused to start by now.
+    let identity = Arc::new(profile_service::identity::IdentityRuntime::new(
+        pool.clone(),
+        config.naver_oauth.clone(),
+        config.identity_subject_salt.clone(),
+    )?);
+    let profile_product = profile_service::profile_product::runtime_with_identity(
         pool.clone(),
         config.caller_registry.clone(),
         config.actor_delegation.clone(),
+        identity.clone(),
+    )?;
+    let identity_callback = platform::grpc_method_policy::guard_without_delegation(
+        &profile_service::adapters::r#in::grpc::identity_verification::POLICY,
+        profile_service::adapters::r#in::grpc::identity_verification::proto::identity_verification_service_server::IdentityVerificationServiceServer::new(
+            profile_service::adapters::r#in::grpc::identity_verification::IdentityVerificationServer::new(
+                identity,
+            ),
+        ),
+        config.caller_registry.clone(),
     )?;
     let world_profile_verifier = platform::actor_delegation::relationship_read::RelationshipReadVerifier::configured_from_env(
         platform::grpc_auth::Workload::Profile, &config.actor_delegation,
@@ -166,6 +184,7 @@ async fn main() -> anyhow::Result<()> {
                 )?)
                 .add_service(profile_product.dispatch)
                 .add_service(profile_product.settlement)
+                .add_service(identity_callback)
                 .add_service(platform::grpc_method_policy::guard_with_forwarding(
                     &profile_service::adapters::r#in::grpc::author_authority::PROFILE_AUTHOR_POLICY,
                     profile_service::adapters::r#in::grpc::author_authority::PROFILE_AUTHOR_FORWARDING,

@@ -4,6 +4,7 @@ pub mod aggregation;
 pub mod client;
 pub mod contract;
 pub mod high_risk;
+pub mod identity_verification;
 pub mod moderation;
 pub mod operation;
 pub mod policy;

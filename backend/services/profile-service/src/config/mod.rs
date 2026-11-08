@@ -68,6 +68,18 @@ pub struct AppConfig {
     pub mutation_receipt_retention_worker_enabled: bool,
     pub mutation_receipt_retention_worker_interval_ms: u64,
     pub mutation_receipt_retention_batch_size: i32,
+    /// The NAVER verification provider settings.
+    ///
+    /// Resolved at startup so a production placeholder refuses to start rather
+    /// than failing on the first user who tries to verify.
+    pub naver_oauth: crate::identity::NaverOAuthConfig,
+    /// Domain-separating salt for the provider subject hash.
+    ///
+    /// It must be stable across restarts: it is what stops one NAVER account
+    /// from backing two profiles, so a per-restart value would let the same
+    /// account back a second profile after a deploy. In production it is
+    /// required; in parity a fixed development salt is used.
+    pub identity_subject_salt: Vec<u8>,
 }
 
 impl AppConfig {
@@ -154,6 +166,8 @@ impl AppConfig {
                 1,
                 5_000,
             )?,
+            naver_oauth: crate::identity::NaverOAuthConfig::load(production_mode)?,
+            identity_subject_salt: resolve_identity_subject_salt(production_mode)?,
         };
         validate_production_config(production_mode, &config)?;
         Ok(config)
@@ -180,6 +194,32 @@ fn validate_production_config(production_mode: bool, config: &AppConfig) -> anyh
         "demo seed data must not run in production",
     )?;
     Ok(())
+}
+
+/// Resolve the subject-hash salt.
+///
+/// Production requires `PROFILE_IDENTITY_SUBJECT_SALT` (or its `_FILE`
+/// companion) and refuses anything shorter than 32 bytes, because a short or
+/// guessable salt makes the unsalted preimage of a provider subject recoverable.
+/// Parity uses a fixed value so a development stack restarts onto the same
+/// hashes; that value is a constant in this file, never a secret.
+fn resolve_identity_subject_salt(production_mode: bool) -> anyhow::Result<Vec<u8>> {
+    const LOCAL_SALT: &[u8] = b"mcr-parity-identity-subject-salt-v1-not-a-secret";
+    let value = crate::identity::naver_config::env_or_file(
+        "PROFILE_IDENTITY_SUBJECT_SALT",
+        "",
+    )?;
+    let trimmed = value.trim();
+    if trimmed.is_empty() {
+        if production_mode {
+            anyhow::bail!("PROFILE_IDENTITY_SUBJECT_SALT is required in production");
+        }
+        return Ok(LOCAL_SALT.to_vec());
+    }
+    if trimmed.len() < 32 {
+        anyhow::bail!("PROFILE_IDENTITY_SUBJECT_SALT must be at least 32 bytes");
+    }
+    Ok(trimmed.as_bytes().to_vec())
 }
 
 fn resolve_retention_purge_actor_id(
@@ -611,6 +651,8 @@ mod tests {
             mutation_receipt_retention_worker_enabled: true,
             mutation_receipt_retention_worker_interval_ms: 3_600_000,
             mutation_receipt_retention_batch_size: 1_000,
+            naver_oauth: crate::identity::NaverOAuthConfig::local(),
+            identity_subject_salt: b"profile-service-test-identity-subject-salt".to_vec(),
         }
     }
 

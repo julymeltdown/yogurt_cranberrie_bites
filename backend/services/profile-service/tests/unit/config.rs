@@ -26,6 +26,16 @@ const PROFILE_ENV_KEYS: &[&str] = &[
     "PROFILE_GRPC_TLS_CERT_PATH",
     "PROFILE_GRPC_TLS_KEY_PATH",
     "PROFILE_GRPC_TLS_CA_PATH",
+    "NAVER_OAUTH_CLIENT_ID",
+    "NAVER_OAUTH_CLIENT_SECRET",
+    "NAVER_OAUTH_CLIENT_SECRET_FILE",
+    "NAVER_OAUTH_AUTHORIZE_URL",
+    "NAVER_OAUTH_TOKEN_URL",
+    "NAVER_OAUTH_PROFILE_URL",
+    "NAVER_OAUTH_REDIRECT_URI",
+    "NAVER_OAUTH_SCOPES",
+    "PROFILE_IDENTITY_SUBJECT_SALT",
+    "PROFILE_IDENTITY_SUBJECT_SALT_FILE",
 ];
 
 #[test]
@@ -279,6 +289,19 @@ fn set_safe_production_env() {
     std::env::set_var(
         "PROFILE_MUTATION_RECEIPT_RETENTION_WORKER_INTERVAL_MS",
         "1000",
+    );
+    // The NAVER verification flow is part of every production start. Its
+    // settings are supplied here so a case about some other setting fails for
+    // its own reason rather than for a missing provider credential.
+    std::env::set_var("NAVER_OAUTH_CLIENT_ID", "production-naver-client");
+    std::env::set_var("NAVER_OAUTH_CLIENT_SECRET", "production-naver-secret");
+    std::env::set_var(
+        "NAVER_OAUTH_REDIRECT_URI",
+        "https://mcr-julymeltdown.example.org/api/identity/naver/callback",
+    );
+    std::env::set_var(
+        "PROFILE_IDENTITY_SUBJECT_SALT",
+        "production-identity-subject-salt-0001",
     );
     std::env::set_var("PROFILE_MUTATION_RECEIPT_RETENTION_BATCH_SIZE", "1");
     // Production refuses to load without internal TLS material, so point the

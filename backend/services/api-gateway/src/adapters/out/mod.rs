@@ -9,6 +9,7 @@ pub mod concert_participant;
 pub mod concert_world;
 pub mod friend_client;
 pub(crate) mod grpc_call;
+pub mod identity_callback_client;
 pub mod jwt;
 pub mod moderation_runtime;
 pub mod notification_authority;

@@ -89,6 +89,14 @@ pub async fn boundary(
     );
     let capabilities =
         request.uri().path() == "/api/auth/capabilities" && request.method() == Method::GET;
+    // The identity callback is a top-level navigation from the provider. It is
+    // a `GET`, so the mutation branch below would let it through anyway; the
+    // explicit exemption documents that it is deliberately outside this
+    // boundary and that no future change may route it through it. The route's
+    // own module enforces its narrower rules.
+    if super::identity_routes::is_callback(request.uri().path()) {
+        return next.run(request).await;
+    }
     // All public Gateway mutations are browser commands. Internal service traffic
     // uses authenticated gRPC, never an unguarded HTTP exception here.
     if !auth_surface(request.uri().path()) && !mutation {

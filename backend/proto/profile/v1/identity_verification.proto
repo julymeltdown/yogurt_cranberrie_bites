@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package profile.identity.v1;
+
+// Internal transport for the NAVER verification callback.
+//
+// The browser-facing callback (`GET /api/identity/naver/callback`) is anonymous:
+// it arrives from the provider, with no session and no actor to delegate. It
+// therefore cannot travel through the profile product transport, whose every
+// message is bound to a verified actor. This service is the profile-owned
+// counterpart of that one operation, and it is deliberately narrow:
+//
+// * it carries no user identity. The user is read from the stored state row, so
+//   a caller cannot verify a claim for someone else;
+// * it carries no claim value. The only claim inputs are the provider's own
+//   query parameters;
+// * its reply carries no claim value either: a result marker and the stored
+//   return path, which the gateway turns into a `303`.
+//
+// Only the Gateway workload may call it, and it is registered without an actor
+// delegation because there is no actor.
+message CompleteIdentityVerificationRequest {
+  // The provider's `state` query parameter, verbatim.
+  string state = 1;
+  // The provider's `code` query parameter. Empty when the provider reported an
+  // error instead.
+  string code = 2;
+  // The provider's `error` query parameter, when present.
+  string provider_error = 3;
+}
+
+message CompleteIdentityVerificationReply {
+  // The stored, start-time-validated return path. Always a same-origin path.
+  string return_path = 1;
+  // One of: success, duplicate, profile_incomplete, age_not_supported, failed,
+  // cancelled, expired, replayed.
+  string result = 2;
+}
+
+service IdentityVerificationService {
+  rpc Complete(CompleteIdentityVerificationRequest) returns (CompleteIdentityVerificationReply);
+}
