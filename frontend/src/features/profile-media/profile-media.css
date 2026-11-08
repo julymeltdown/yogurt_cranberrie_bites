@@ -1,182 +1,182 @@
-/* WP-06: the profile media composer and gallery. */
+/* WP-06 / WP-10: the profile media composer and gallery.
+ *
+ * Presentation only. The composer and gallery keep their markup, class hooks
+ * and behavior; the appearance now comes from the shared pi01-photo2-v1
+ * contract instead of a local --color-* palette with 12px radii and 999px
+ * pills. Tiles keep their server-reported aspect ratio. */
 
 .profile-media-composer,
 .profile-media-gallery {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  max-width: 640px;
-  margin: 0 auto;
-  padding: 24px 16px 40px;
-  color: var(--color-text, #1b1b1f);
+  display: grid;
+  gap: var(--pi-section-gap);
+  box-sizing: border-box;
+  inline-size: 100%;
+  max-inline-size: 42rem;
+  min-inline-size: 0;
+  margin-inline: auto;
+  padding: var(--pi-space-3) var(--pi-space-3) max(var(--pi-space-5), env(safe-area-inset-bottom));
+  color: var(--pi-ink);
+  background: var(--pi-paper);
+  font: var(--pi-weight-body) var(--pi-body-size)/var(--pi-body-leading) var(--pi-font-body);
+  overflow-wrap: anywhere;
 }
+.profile-media-composer *,
+.profile-media-gallery * { box-sizing: border-box; }
 
 .profile-media-composer h1,
 .profile-media-gallery h2 {
   margin: 0;
-  font-size: 1.25rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
+  font: var(--pi-weight-strong) var(--pi-title-size)/var(--pi-title-leading) var(--pi-font-display);
+  text-transform: uppercase;
+  letter-spacing: .01em;
+  overflow-wrap: anywhere;
+}
+.profile-media-gallery h2 {
+  font-size: var(--pi-heading-size);
+  line-height: var(--pi-heading-leading);
 }
 
-.profile-media-composer form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
+.profile-media-composer form { display: grid; gap: var(--pi-space-4); }
 
+/* A fieldset is a section, not a rounded card: symmetric rule, no radius bump. */
 .profile-media-composer fieldset {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  display: grid;
+  gap: var(--pi-space-2);
   margin: 0;
-  padding: 16px;
-  border: 1px solid var(--color-border, #d6d6dc);
-  border-radius: 12px;
+  padding: var(--pi-space-3);
+  border: var(--pi-rule-width) solid var(--pi-divider);
+  border-radius: var(--pi-radius);
+  background: var(--pi-card);
 }
-
 .profile-media-composer legend {
-  padding: 0 6px;
-  font-weight: 600;
+  padding: 0 var(--pi-space-1);
+  font: var(--pi-weight-strong) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+  text-transform: uppercase;
+  letter-spacing: .02em;
 }
-
-.profile-media-composer label,
-.profile-media-composer legend {
-  font-size: 0.95rem;
-}
+.profile-media-composer label { font: var(--pi-weight-strong) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body); }
 
 .profile-media-composer textarea {
-  min-height: 72px;
-  padding: 10px 12px;
-  border: 1px solid var(--color-border, #d6d6dc);
-  border-radius: 10px;
-  font: inherit;
+  min-block-size: 72px;
+  padding: var(--pi-space-1) var(--pi-space-2);
+  border: var(--pi-rule-width) solid var(--pi-rule);
+  border-radius: var(--pi-radius);
+  color: var(--pi-ink);
+  background: var(--pi-paper);
+  font: var(--pi-weight-body) var(--pi-body-size)/var(--pi-body-leading) var(--pi-font-body);
   resize: vertical;
 }
-
-.profile-media-composer textarea[aria-invalid='true'] {
-  border-color: var(--color-danger, #b3261e);
-}
+.profile-media-composer textarea[aria-invalid='true'] { border: 2px solid var(--pi-status-danger); }
 
 .profile-media-hint {
   margin: 0;
-  font-size: 0.85rem;
-  color: var(--color-muted, #5b5b66);
+  color: var(--pi-muted);
+  font: var(--pi-weight-body) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
 }
-
 .profile-media-error {
-  color: var(--color-danger, #b3261e);
+  padding: var(--pi-space-2) var(--pi-space-3);
+  border: var(--pi-rule-width) solid var(--pi-status-danger);
+  border-radius: var(--pi-radius);
+  color: var(--pi-ink);
+  background: var(--pi-status-danger-field);
+  font: var(--pi-weight-strong) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
 }
 
-.profile-media-actions {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
+.profile-media-actions { display: flex; flex-wrap: wrap; gap: var(--pi-space-2); }
 
+/* Buttons: symmetric rule, 2px radius. No pill shape. */
 .profile-media-composer button,
 .profile-media-gallery button {
-  padding: 10px 16px;
-  border: 1px solid var(--color-border, #d6d6dc);
-  border-radius: 999px;
-  background: transparent;
-  font: inherit;
+  min-block-size: var(--pi-hit);
+  padding: var(--pi-space-1) var(--pi-space-3);
+  border: var(--pi-rule-width) solid var(--pi-rule);
+  border-radius: var(--pi-radius);
+  color: var(--pi-ink);
+  background: var(--pi-paper);
+  font: var(--pi-weight-strong) var(--pi-control-size)/var(--pi-control-leading) var(--pi-font-display);
+  text-transform: uppercase;
+  letter-spacing: .01em;
   cursor: pointer;
 }
-
 .profile-media-composer button[type='submit'] {
-  border-color: var(--color-accent, #1b1b1f);
-  font-weight: 600;
+  color: var(--pi-accent-ink);
+  background: var(--pi-accent);
+  border-color: var(--pi-accent);
 }
-
 .profile-media-composer button:disabled,
-.profile-media-gallery button:disabled {
-  cursor: not-allowed;
-  opacity: 0.55;
-}
+.profile-media-gallery button:disabled { color: var(--pi-muted); background: var(--pi-disabled); border-color: var(--pi-soft-rule); cursor: default; }
+.profile-media-composer :focus-visible,
+.profile-media-gallery :focus-visible { outline: var(--pi-focus-ring) solid var(--pi-focus); outline-offset: var(--pi-focus-offset); }
 
-.profile-media-attachments {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.profile-media-attachments li {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
+.profile-media-attachments { display: grid; gap: var(--pi-space-2); margin: 0; padding: 0; list-style: none; }
+.profile-media-attachments li { display: grid; gap: var(--pi-space-1); }
 .profile-media-file {
-  font-size: 0.85rem;
-  font-weight: 600;
+  font: var(--pi-weight-strong) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
   overflow-wrap: anywhere;
 }
 
 .profile-media-grid,
-.profile-media-tiles {
-  display: grid;
-  gap: 12px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.profile-media-grid {
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-}
-
-.profile-media-tiles {
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-}
+.profile-media-tiles { display: grid; gap: var(--pi-space-2); margin: 0; padding: 0; list-style: none; min-inline-size: 0; }
+.profile-media-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+.profile-media-tiles { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
 
 .profile-media-post {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  display: grid;
+  gap: var(--pi-space-2);
+  min-inline-size: 0;
+  padding-block: var(--pi-space-3);
+  border-block-start: var(--pi-rule-width) solid var(--pi-divider);
 }
+.profile-media-grid > li:first-child > .profile-media-post { border-block-start: 0; padding-block-start: 0; }
 
-/* The tile reserves the server-reported aspect ratio, so the grid never jumps. */
+/* The tile reserves the server-reported aspect ratio, so the grid never jumps.
+   The border is symmetric; the field is the shared inset surface. */
 .profile-media-tile {
   position: relative;
+  display: grid;
+  place-items: center;
   margin: 0;
   overflow: hidden;
-  border-radius: 12px;
-  background: var(--color-surface, #f2f2f5);
+  border: var(--pi-rule-width) solid var(--pi-divider);
+  border-radius: var(--pi-media-radius);
+  background: var(--pi-field);
 }
-
 .profile-media-tile img {
   display: block;
-  width: 100%;
-  height: 100%;
+  inline-size: 100%;
+  block-size: 100%;
   object-fit: contain;
 }
-
 .profile-media-tile-error {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  align-items: center;
+  display: grid;
+  gap: var(--pi-space-2);
+  place-items: center;
   justify-content: center;
-  height: 100%;
-  padding: 12px;
+  inline-size: 100%;
+  block-size: 100%;
+  padding: var(--pi-space-3);
+  color: var(--pi-muted);
+  font: var(--pi-weight-body) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
   text-align: center;
 }
 
 .profile-media-description {
   margin: 0;
-  font-size: 0.95rem;
+  font: var(--pi-weight-body) var(--pi-body-size)/var(--pi-body-leading) var(--pi-font-body);
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
 
+/* An empty gallery states a fact about the profile, never a restriction. */
 .profile-media-empty,
 .profile-media-unavailable {
   margin: 0;
-  padding: 32px 16px;
+  padding: var(--pi-space-5) var(--pi-space-3);
+  border: var(--pi-rule-width) dashed var(--pi-soft-rule);
+  border-radius: var(--pi-radius);
+  background: var(--pi-card);
+  color: var(--pi-muted);
+  font: var(--pi-weight-body) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
   text-align: center;
-  color: var(--color-muted, #5b5b66);
+  overflow-wrap: anywhere;
 }

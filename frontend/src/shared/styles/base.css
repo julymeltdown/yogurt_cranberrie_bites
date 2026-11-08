@@ -2,6 +2,7 @@
 @import "./cozy-identity-backgrounds-v1.css" layer(mcr-foundation-legacy);
 @import "./cozy-community-backgrounds-v1.css" layer(mcr-foundation-legacy);
 @import "./parade-ink/primitives.css";
+@import "./parade-ink/profile-social.css";
 
 /* Retained landing/layout/accessibility rules; shared PI01 paint takes precedence. */
 @layer mcr-foundation-legacy {

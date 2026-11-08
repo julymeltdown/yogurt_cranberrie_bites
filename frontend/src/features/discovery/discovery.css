@@ -1,26 +1,130 @@
-/* WP-03 T-805: discovery screen. Scoped; no root token changes. */
-.discovery-surface { box-sizing: border-box; width: 100%; max-width: 42rem; margin-inline: auto; padding: 0 0 max(12px, env(safe-area-inset-bottom)); color: var(--pi-ink, #171717); background: var(--pi-paper, #f9f9f8); font: 400 16px/22px var(--pi-font-body, Arial, sans-serif); overflow-wrap: anywhere; }
+/* WP-03 T-805 / WP-10: discovery screen.
+ *
+ * Presentation only. The screen keeps its class hooks and behavior; the
+ * appearance now comes from the shared pi01-photo2-v1 contract. The tab rows
+ * are the shared black-selected strip rather than a local underline rail, and
+ * the people list is a dense row list rather than a stack of boxed cards. */
+.discovery-surface {
+  display: grid;
+  gap: var(--pi-section-gap);
+  box-sizing: border-box;
+  inline-size: 100%;
+  max-inline-size: 42rem;
+  min-inline-size: 0;
+  margin-inline: auto;
+  padding: var(--pi-space-3) var(--pi-space-3) max(var(--pi-space-5), env(safe-area-inset-bottom));
+  color: var(--pi-ink);
+  background: var(--pi-paper);
+  font: var(--pi-weight-body) var(--pi-body-size)/var(--pi-body-leading) var(--pi-font-body);
+  overflow-wrap: anywhere;
+}
 .discovery-surface * { box-sizing: border-box; }
-.discovery-surface h1 { margin: 8px 0; font: 700 26px/32px var(--pi-font-display, "Arial Narrow", Arial, sans-serif); }
-.discovery-surface h2 { margin: 0 0 4px; font: 700 20px/26px var(--pi-font-display, "Arial Narrow", Arial, sans-serif); }
-.discovery-surface p { margin: 8px 0; }
-.discovery-surface header > p:first-child { color: var(--pi-muted, #545454); font-size: 14px; line-height: 18px; }
-.discovery-surface button, .discovery-surface a { min-height: 44px; display: inline-flex; align-items: center; }
-.discovery-surface button { padding: 8px 12px; color: inherit; background: var(--pi-paper, #f9f9f8); border: 1px solid var(--pi-rule, #c9c9c6); border-radius: 2px; font: inherit; cursor: pointer; }
-.discovery-surface a { color: inherit; text-underline-offset: .2em; }
-.discovery-surface button:disabled { opacity: .55; cursor: default; }
-.discovery-surface :focus-visible { outline: 3px solid var(--pi-focus, #1f5fd6); outline-offset: 3px; }
-.discovery-tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--pi-rule, #c9c9c6); }
-.discovery-tab { flex: 1 1 0; justify-content: center; border: 0; border-bottom: 3px solid transparent; background: transparent; font-weight: 650; }
-.discovery-tab-active { border-bottom-color: var(--pi-ink, #171717); }
-.discovery-categories { display: flex; gap: 8px; flex-wrap: wrap; margin-block: 12px; }
+.discovery-surface > header { display: grid; gap: 0; }
+.discovery-surface h1 {
+  margin: 0;
+  font: var(--pi-weight-strong) var(--pi-title-size)/var(--pi-title-leading) var(--pi-font-display);
+  text-transform: uppercase;
+  letter-spacing: .01em;
+}
+.discovery-surface h2 {
+  margin: 0;
+  font: var(--pi-weight-strong) var(--pi-control-size)/var(--pi-control-leading) var(--pi-font-body);
+  overflow-wrap: anywhere;
+}
+.discovery-surface p { margin: 0; }
+.discovery-surface header > p:first-child {
+  color: var(--pi-muted);
+  font: var(--pi-weight-strong) var(--pi-caption-size)/var(--pi-caption-leading) var(--pi-font-body);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+/* Controls inherit the shared appearance. */
+.discovery-surface button,
+.discovery-surface a { min-block-size: var(--pi-hit); display: inline-flex; align-items: center; }
+.discovery-surface button {
+  padding: var(--pi-space-1) var(--pi-space-3);
+  color: var(--pi-ink);
+  background: var(--pi-paper);
+  border: var(--pi-rule-width) solid var(--pi-rule);
+  border-radius: var(--pi-radius);
+  font: var(--pi-weight-strong) var(--pi-control-size)/var(--pi-control-leading) var(--pi-font-display);
+  text-transform: uppercase;
+  letter-spacing: .01em;
+  cursor: pointer;
+}
+.discovery-surface button[aria-pressed="true"] {
+  color: var(--pi-selected-ink);
+  background: var(--pi-selected-surface);
+  border-color: var(--pi-selected-surface);
+}
+.discovery-surface a { color: var(--pi-ink); text-underline-offset: 3px; }
+.discovery-surface button:disabled { color: var(--pi-muted); background: var(--pi-disabled); border-color: var(--pi-soft-rule); cursor: default; }
+.discovery-surface :focus-visible { outline: var(--pi-focus-ring) solid var(--pi-focus); outline-offset: var(--pi-focus-offset); }
+
+/* Tab rows: shared black-selected strip. */
+.discovery-tabs { display: flex; gap: var(--pi-tab-gap); min-inline-size: 0; overflow-x: auto; border: 0; }
+.discovery-tab {
+  flex: 1 1 0;
+  justify-content: center;
+  min-inline-size: 0;
+  min-block-size: var(--pi-tab-height);
+  border: var(--pi-rule-width) solid var(--pi-rule);
+  background: var(--pi-paper);
+  overflow-wrap: anywhere;
+}
+.discovery-tab[aria-selected="true"],
+.discovery-tab-active {
+  color: var(--pi-selected-ink);
+  background: var(--pi-selected-surface);
+  border-color: var(--pi-selected-surface);
+}
+
+/* Category chips: symmetric rounded rectangles, black when selected. */
+.discovery-categories { display: flex; flex-wrap: wrap; gap: var(--pi-space-2); margin: 0; }
 .discovery-category { border-radius: 999px; }
-.discovery-category-active { border-color: var(--pi-ink, #171717); font-weight: 650; }
-.discovery-people { list-style: none; margin: 16px 0; padding: 0; }
-.discovery-people > li { padding-block: 16px; border-bottom: 1px solid var(--pi-rule, #c9c9c6); }
-.discovery-card { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 12px; align-items: start; }
-.discovery-avatar { display: grid; place-items: center; width: 56px; height: 56px; font: 700 22px/1 var(--pi-font-display, Arial, sans-serif); border: 1px solid var(--pi-rule, #c9c9c6); border-radius: 50%; }
-.discovery-card-body { min-width: 0; }
-.discovery-shared { font-weight: 650; }
-.discovery-interaction { color: var(--pi-muted, #545454); }
-.discovery-actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 8px; }
+.discovery-category[aria-selected="true"],
+.discovery-category-active {
+  color: var(--pi-selected-ink);
+  background: var(--pi-selected-surface);
+  border-color: var(--pi-selected-surface);
+  font-weight: var(--pi-weight-strong);
+}
+
+.discovery-panel { display: grid; gap: var(--pi-space-3); min-inline-size: 0; }
+
+/* People: a dense list with symmetric dividers, not a stack of boxed cards. */
+.discovery-people { list-style: none; margin: 0; padding: 0; min-inline-size: 0; }
+.discovery-people > li { padding-block: var(--pi-space-3); border-block-start: var(--pi-rule-width) solid var(--pi-divider); }
+.discovery-people > li:first-child { border-block-start: 0; }
+.discovery-card {
+  display: grid;
+  grid-template-columns: var(--pi-chip-size-lg) minmax(0, 1fr);
+  gap: var(--pi-space-3);
+  align-items: start;
+  min-inline-size: 0;
+}
+.discovery-avatar {
+  display: grid;
+  place-items: center;
+  inline-size: var(--pi-chip-size-lg);
+  block-size: var(--pi-chip-size-lg);
+  overflow: hidden;
+  border: var(--pi-rule-width) solid var(--pi-rule);
+  border-radius: var(--pi-radius);
+  background: var(--pi-field);
+  color: var(--pi-muted);
+  font: var(--pi-weight-strong) var(--pi-heading-size)/1 var(--pi-font-display);
+  text-transform: uppercase;
+}
+.discovery-card-body { display: grid; gap: var(--pi-space-1); min-inline-size: 0; }
+.discovery-shared {
+  font: var(--pi-weight-strong) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+  overflow-wrap: anywhere;
+}
+.discovery-interaction {
+  color: var(--pi-muted);
+  font: var(--pi-weight-body) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+  overflow-wrap: anywhere;
+}
+.discovery-actions { display: flex; flex-wrap: wrap; gap: var(--pi-space-2); align-items: center; margin-block-start: var(--pi-space-1); }

@@ -1,0 +1,522 @@
+/* ---------------------------------------------------------------------------
+ * WP-10 profile/social primitives.
+ *
+ * The reusable presentation for the new profile, discovery, media, room,
+ * identity and avatar screens. Every value comes from the pi01-photo2-v1
+ * contract in tokens.css; this file introduces no colour, radius or font of its
+ * own.
+ *
+ * Design rules encoded here, and enforced by
+ * shared/ui/__tests__/profile-social-primitives.test.tsx:
+ *
+ *  - No decorative left accent line, coloured left border, inset left rail or
+ *    pseudo-element left bar anywhere. Status is carried by a full symmetric
+ *    border plus the badge text, never by an asymmetric edge.
+ *  - Borders are ordinary and symmetric. A selected state changes surface and
+ *    ink, not one edge.
+ *  - Keyboard focus stays a visible outline, offset from the control.
+ *  - No repetitive accented cards: a list of rows is plain paper with dividers;
+ *    only a genuinely distinct object gets a card field.
+ * ------------------------------------------------------------------------- */
+
+/* --- Section header -------------------------------------------------------
+ * A section title with an optional count and an optional trailing action. It
+ * is typography plus a symmetric rule, not a coloured band.
+ */
+.pi-section {
+  display: grid;
+  gap: var(--pi-space-2);
+  min-inline-size: 0;
+}
+.pi-section__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--pi-space-2);
+  min-inline-size: 0;
+  padding-block-end: var(--pi-space-2);
+  border-block-end: var(--pi-rule-width) solid var(--pi-divider);
+}
+.pi-section__heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--pi-space-2);
+  min-inline-size: 0;
+  margin: 0;
+  font: var(--pi-weight-strong) var(--pi-heading-size)/var(--pi-heading-leading) var(--pi-font-display);
+  letter-spacing: .01em;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+.pi-section__count {
+  color: var(--pi-muted);
+  font: var(--pi-weight-body) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+  font-variant-numeric: tabular-nums;
+  text-transform: none;
+  letter-spacing: normal;
+}
+.pi-section__description {
+  margin: 0;
+  color: var(--pi-muted);
+  font: var(--pi-weight-body) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+}
+.pi-section__action { flex: 0 0 auto; }
+
+/* --- Card -----------------------------------------------------------------
+ * A card is a distinct object: its own paper field inside a symmetric border.
+ * It is never used to wrap each item of a list — that is what a row is for.
+ */
+.pi-card {
+  display: grid;
+  gap: var(--pi-card-gap);
+  min-inline-size: 0;
+  padding: var(--pi-card-padding);
+  border: var(--pi-rule-width) solid var(--pi-card-rule);
+  border-radius: var(--pi-radius);
+  background: var(--pi-card);
+  color: var(--pi-ink);
+  overflow-wrap: anywhere;
+}
+.pi-card--inset { background: var(--pi-field); border-color: var(--pi-divider); }
+.pi-card--flush { padding: 0; }
+.pi-card__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--pi-space-2);
+  min-inline-size: 0;
+}
+.pi-card__title {
+  margin: 0;
+  font: var(--pi-weight-strong) var(--pi-control-size)/var(--pi-control-leading) var(--pi-font-display);
+  overflow-wrap: anywhere;
+}
+.pi-card__body { min-inline-size: 0; }
+.pi-card__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--pi-space-2);
+}
+
+/* --- List and row ---------------------------------------------------------
+ * A dense list: rows separated by a symmetric divider, no per-row border box,
+ * no per-row colour. This is the reference's Feed/Meet/Giveaway density.
+ */
+.pi-list {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  min-inline-size: 0;
+}
+.pi-list > li { min-inline-size: 0; }
+.pi-list > li + li > .pi-row,
+.pi-list > li + li > .pi-row-link { border-block-start: var(--pi-rule-width) solid var(--pi-divider); }
+
+.pi-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: start;
+  gap: var(--pi-space-3);
+  min-inline-size: 0;
+  padding-block: var(--pi-space-3);
+  color: var(--pi-ink);
+  text-align: start;
+  overflow-wrap: anywhere;
+}
+.pi-row--no-media { grid-template-columns: minmax(0, 1fr) auto; }
+.pi-row--stacked { grid-template-columns: minmax(0, 1fr); }
+.pi-row__media { grid-column: 1; grid-row: 1; min-inline-size: 0; }
+.pi-row__body {
+  grid-column: 2;
+  grid-row: 1;
+  display: grid;
+  gap: var(--pi-space-1);
+  min-inline-size: 0;
+}
+.pi-row--no-media > .pi-row__body,
+.pi-row--stacked > .pi-row__body { grid-column: 1; }
+.pi-row__title {
+  margin: 0;
+  font: var(--pi-weight-strong) var(--pi-control-size)/var(--pi-control-leading) var(--pi-font-body);
+  overflow-wrap: anywhere;
+}
+.pi-row__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--pi-space-1) var(--pi-space-2);
+  margin: 0;
+  color: var(--pi-muted);
+  font: var(--pi-weight-body) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+}
+.pi-row__meta > span { min-inline-size: 0; overflow-wrap: anywhere; }
+.pi-row__text {
+  margin: 0;
+  font: var(--pi-weight-body) var(--pi-body-size)/var(--pi-body-leading) var(--pi-font-body);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.pi-row__actions {
+  grid-column: 3;
+  grid-row: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--pi-space-2);
+  min-inline-size: 0;
+}
+.pi-row--no-media > .pi-row__actions,
+.pi-row--stacked > .pi-row__actions { grid-column: 1; grid-row: auto; justify-content: flex-start; }
+/* A row that is itself a link: the whole row is the target, so it must still
+   show a focus ring and must not rely on colour alone for its affordance. */
+.pi-row-link {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: start;
+  gap: var(--pi-space-3);
+  min-inline-size: 0;
+  padding-block: var(--pi-space-3);
+  color: var(--pi-ink);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+.pi-row-link:hover { background: var(--pi-field); }
+.pi-row-link:focus-visible {
+  outline: var(--pi-focus-ring) solid var(--pi-focus);
+  outline-offset: calc(var(--pi-focus-offset) * -1);
+}
+
+/* --- Media tile -----------------------------------------------------------
+ * A square media cell that reserves its aspect ratio so a grid never jumps.
+ * The border is symmetric; a missing or failed image shows an explicit
+ * unavailable state, never substitute artwork.
+ */
+.pi-media-tile {
+  position: relative;
+  display: block;
+  inline-size: 100%;
+  aspect-ratio: 1;
+  margin: 0;
+  overflow: hidden;
+  border: var(--pi-rule-width) solid var(--pi-divider);
+  border-radius: var(--pi-media-radius);
+  background: var(--pi-field);
+}
+.pi-media-tile--wide { aspect-ratio: 4 / 3; }
+.pi-media-tile > img {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+.pi-media-tile__caption {
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline: 0;
+  margin: 0;
+  padding: var(--pi-space-1) var(--pi-space-2);
+  color: var(--pi-on-dark);
+  background: var(--pi-ink);
+  font: var(--pi-weight-body) var(--pi-caption-size)/var(--pi-caption-leading) var(--pi-font-body);
+  overflow-wrap: anywhere;
+}
+.pi-media-tile__state {
+  display: grid;
+  place-items: center;
+  inline-size: 100%;
+  block-size: 100%;
+  padding: var(--pi-space-2);
+  color: var(--pi-muted);
+  font: var(--pi-weight-body) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+.pi-media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: var(--pi-space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  min-inline-size: 0;
+}
+.pi-media-grid > li { min-inline-size: 0; }
+
+/* --- Avatar chip ----------------------------------------------------------
+ * A small identity mark: a square pixel-art frame plus name and optional meta.
+ * The frame is symmetric; there is no ring, halo or coloured edge.
+ */
+.pi-avatar-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--pi-space-2);
+  min-inline-size: 0;
+  color: var(--pi-ink);
+  text-decoration: none;
+}
+.pi-avatar-chip__frame {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  inline-size: var(--pi-chip-size);
+  block-size: var(--pi-chip-size);
+  overflow: hidden;
+  border: var(--pi-rule-width) solid var(--pi-rule);
+  border-radius: var(--pi-radius);
+  background: var(--pi-field);
+}
+.pi-avatar-chip--lg .pi-avatar-chip__frame {
+  inline-size: var(--pi-chip-size-lg);
+  block-size: var(--pi-chip-size-lg);
+}
+.pi-avatar-chip__frame > canvas,
+.pi-avatar-chip__frame > img {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  image-rendering: pixelated;
+  object-fit: cover;
+}
+.pi-avatar-chip__initial {
+  color: var(--pi-muted);
+  font: var(--pi-weight-strong) var(--pi-heading-size)/1 var(--pi-font-display);
+  text-transform: uppercase;
+}
+.pi-avatar-chip__text {
+  display: grid;
+  gap: 0;
+  min-inline-size: 0;
+}
+.pi-avatar-chip__name {
+  font: var(--pi-weight-strong) var(--pi-control-size)/var(--pi-control-leading) var(--pi-font-body);
+  overflow-wrap: anywhere;
+}
+.pi-avatar-chip__meta {
+  color: var(--pi-muted);
+  font: var(--pi-weight-body) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+  overflow-wrap: anywhere;
+}
+.pi-avatar-chip--link:hover .pi-avatar-chip__name { text-decoration: underline; text-underline-offset: 3px; }
+.pi-avatar-chip--link:focus-visible {
+  outline: var(--pi-focus-ring) solid var(--pi-focus);
+  outline-offset: var(--pi-focus-offset);
+}
+
+/* --- Badge / pill ---------------------------------------------------------
+ * A short status word. The shape is a symmetric rounded rectangle; the tone
+ * comes from the status tokens and the text always carries the meaning, so a
+ * colour-blind reader loses nothing.
+ */
+.pi-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--pi-space-1);
+  min-block-size: var(--pi-badge-height);
+  max-inline-size: 100%;
+  padding: 2px var(--pi-space-2);
+  border: var(--pi-rule-width) solid var(--pi-status-neutral);
+  border-radius: 999px;
+  color: var(--pi-status-neutral);
+  background: var(--pi-status-neutral-field);
+  font: var(--pi-weight-strong) var(--pi-caption-size)/var(--pi-caption-leading) var(--pi-font-body);
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow-wrap: anywhere;
+}
+.pi-badge--ok { color: var(--pi-status-ok); border-color: var(--pi-status-ok); background: var(--pi-status-ok-field); }
+.pi-badge--warn { color: var(--pi-status-warn); border-color: var(--pi-status-warn); background: var(--pi-status-warn-field); }
+.pi-badge--danger { color: var(--pi-status-danger); border-color: var(--pi-status-danger); background: var(--pi-status-danger-field); }
+.pi-badge--accent { color: var(--pi-accent-ink); border-color: var(--pi-accent); background: var(--pi-accent); }
+.pi-badge--count {
+  min-inline-size: var(--pi-badge-height);
+  justify-content: center;
+  color: var(--pi-ink);
+  border-color: var(--pi-divider);
+  background: var(--pi-field);
+  font-variant-numeric: tabular-nums;
+  text-transform: none;
+}
+
+/* --- Empty state ----------------------------------------------------------
+ * A quiet, centred statement of what is missing and what to do next. No
+ * illustration, no accent edge, no decorative glyph.
+ */
+.pi-empty {
+  display: grid;
+  justify-items: center;
+  gap: var(--pi-space-2);
+  padding: var(--pi-space-5) var(--pi-space-3);
+  border: var(--pi-rule-width) dashed var(--pi-soft-rule);
+  border-radius: var(--pi-radius);
+  background: var(--pi-card);
+  color: var(--pi-ink);
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+.pi-empty__title {
+  margin: 0;
+  font: var(--pi-weight-strong) var(--pi-control-size)/var(--pi-control-leading) var(--pi-font-display);
+  text-transform: uppercase;
+  letter-spacing: .01em;
+}
+.pi-empty__body {
+  max-inline-size: 34ch;
+  margin: 0;
+  color: var(--pi-muted);
+  font: var(--pi-weight-body) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+}
+.pi-empty__action { margin-block-start: var(--pi-space-1); }
+
+/* --- Inline error ---------------------------------------------------------
+ * A refusal or failure attached to a region of a screen. It is a symmetric
+ * bordered panel with a strong first line; it is not a left rail, and it is
+ * not a toast (transient messages stay in ToastRegion).
+ */
+.pi-inline-error {
+  display: grid;
+  gap: var(--pi-space-1);
+  min-inline-size: 0;
+  padding: var(--pi-space-3);
+  border: var(--pi-rule-width) solid var(--pi-status-danger);
+  border-radius: var(--pi-radius);
+  background: var(--pi-status-danger-field);
+  color: var(--pi-ink);
+  overflow-wrap: anywhere;
+}
+.pi-inline-error__title {
+  margin: 0;
+  color: var(--pi-status-danger);
+  font: var(--pi-weight-strong) var(--pi-control-size)/var(--pi-control-leading) var(--pi-font-display);
+  text-transform: uppercase;
+  letter-spacing: .01em;
+}
+.pi-inline-error__body {
+  margin: 0;
+  font: var(--pi-weight-body) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+}
+.pi-inline-error__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--pi-space-2);
+  margin-block-start: var(--pi-space-1);
+}
+
+/* --- Screen frame ---------------------------------------------------------
+ * The shared page frame for the new profile/social screens: a bounded column,
+ * one screen title, and consistent vertical rhythm. It replaces the per-feature
+ * padding/max-width/colour declarations.
+ */
+.pi-screen {
+  display: grid;
+  gap: var(--pi-section-gap);
+  inline-size: 100%;
+  max-inline-size: 42rem;
+  min-inline-size: 0;
+  margin-inline: auto;
+  padding: var(--pi-space-3) var(--pi-space-3) max(var(--pi-space-5), env(safe-area-inset-bottom));
+  color: var(--pi-ink);
+  background: var(--pi-paper);
+  font: var(--pi-weight-body) var(--pi-body-size)/var(--pi-body-leading) var(--pi-font-body);
+  overflow-wrap: anywhere;
+}
+.pi-screen * { box-sizing: border-box; }
+.pi-screen__title {
+  margin: 0;
+  font: var(--pi-weight-strong) var(--pi-title-size)/var(--pi-title-leading) var(--pi-font-display);
+  text-transform: uppercase;
+  letter-spacing: .01em;
+  overflow-wrap: anywhere;
+}
+.pi-screen__lead {
+  margin: 0;
+  color: var(--pi-muted);
+  font: var(--pi-weight-body) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+}
+.pi-screen__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--pi-space-2);
+}
+
+/* --- Tab strip ------------------------------------------------------------
+ * The reference's compact tab row: equal cells, black selected state, no
+ * underline rail. This is the shared presentation for the feature tab lists
+ * that previously each drew their own border-bottom.
+ */
+.pi-tabs {
+  display: flex;
+  gap: var(--pi-tab-gap);
+  min-inline-size: 0;
+  padding: 0;
+  border: 0;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+.pi-tabs__tab {
+  flex: 1 1 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--pi-space-1);
+  min-inline-size: 0;
+  min-block-size: var(--pi-tab-height);
+  padding: var(--pi-space-1) var(--pi-space-2);
+  border: var(--pi-rule-width) solid var(--pi-rule);
+  border-radius: var(--pi-radius);
+  color: var(--pi-ink);
+  background: var(--pi-paper);
+  font: var(--pi-weight-strong) var(--pi-control-size)/var(--pi-control-leading) var(--pi-font-display);
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: .01em;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+.pi-tabs__tab[aria-selected="true"],
+.pi-tabs__tab[aria-current="page"] {
+  color: var(--pi-selected-ink);
+  background: var(--pi-selected-surface);
+  border-color: var(--pi-selected-surface);
+}
+.pi-tabs__tab:disabled { color: var(--pi-muted); background: var(--pi-disabled); border-color: var(--pi-soft-rule); cursor: default; }
+
+/* --- Control normalisation ------------------------------------------------
+ * Feature screens previously styled their own buttons and inputs with their
+ * own borders, radii and focus colours. These rules let a feature keep its
+ * existing markup while inheriting the shared control appearance.
+ */
+.pi-screen :is(button, input, select, textarea),
+.pi-card :is(button, input, select, textarea) {
+  font-family: inherit;
+  font-size: var(--pi-control-size);
+  line-height: var(--pi-control-leading);
+}
+.pi-screen :is(button, input, select, textarea):focus-visible,
+.pi-card :is(button, input, select, textarea):focus-visible,
+.pi-tabs__tab:focus-visible {
+  outline: var(--pi-focus-ring) solid var(--pi-focus);
+  outline-offset: var(--pi-focus-offset);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pi-card, .pi-row, .pi-row-link, .pi-media-tile, .pi-avatar-chip, .pi-badge, .pi-tabs__tab {
+    transition: none;
+    animation: none;
+    scroll-behavior: auto;
+  }
+}
+@media (forced-colors: active) {
+  .pi-badge { border-color: CanvasText; }
+  .pi-tabs__tab[aria-selected="true"] { outline: 2px solid Highlight; outline-offset: -4px; }
+  .pi-inline-error { border-color: CanvasText; }
+  .pi-media-tile { border-color: CanvasText; }
+}

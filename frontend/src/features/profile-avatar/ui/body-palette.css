@@ -1,9 +1,9 @@
 .mcr-motion-body-palette { min-inline-size:0; margin:8px 0; padding:0; border:0; color:inherit; }
-.mcr-motion-body-palette legend { padding:0; margin-block-end:4px; font:400 14px/18px var(--pi-font-body,Roboto,sans-serif); }
+.mcr-motion-body-palette legend { padding:0; margin-block-end:4px; font:400 14px/18px var(--pi-font-body); }
 .mcr-motion-body-palette__choices { display:flex; flex-wrap:wrap; justify-content:center; gap:0; }
-.mcr-motion-body-palette__choices > button { display:grid; place-items:center; inline-size:44px; block-size:44px; min-inline-size:44px; min-block-size:44px; padding:10px; box-sizing:border-box; border:0; border-radius:2px; background:transparent; color:var(--pi-ink,#171717); }
-.mcr-motion-body-palette__choices > button > span { display:grid; place-items:center; inline-size:22px; block-size:22px; border:1px solid var(--pi-rule,#3c3c3b); box-sizing:border-box; }
-.mcr-motion-body-palette__choices > button[aria-pressed="true"] > span { outline:2px solid var(--pi-ink,#171717); outline-offset:2px; }
-.mcr-motion-body-palette__choices > button:focus-visible { outline:3px solid var(--pi-crimson,#922532); outline-offset:2px; }
+.mcr-motion-body-palette__choices > button { display:grid; place-items:center; inline-size:44px; block-size:44px; min-inline-size:44px; min-block-size:44px; padding:10px; box-sizing:border-box; border:0; border-radius:var(--pi-radius); background:transparent; color:var(--pi-ink); }
+.mcr-motion-body-palette__choices > button > span { display:grid; place-items:center; inline-size:22px; block-size:22px; border:1px solid var(--pi-rule); box-sizing:border-box; }
+.mcr-motion-body-palette__choices > button[aria-pressed="true"] > span { outline:2px solid var(--pi-ink); outline-offset:2px; }
+.mcr-motion-body-palette__choices > button:focus-visible { outline:3px solid var(--pi-crimson); outline-offset:2px; }
 .mcr-motion-body-palette__choices > button:disabled > span { opacity:.45; }
-.mcr-motion-body-palette p,.mcr-motion-body-unavailable { margin:4px 0; font:400 14px/18px var(--pi-font-body,Roboto,sans-serif); }
+.mcr-motion-body-palette p,.mcr-motion-body-unavailable { margin:4px 0; font:400 14px/18px var(--pi-font-body); }
