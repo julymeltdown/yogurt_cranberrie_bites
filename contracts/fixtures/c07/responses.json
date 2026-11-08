@@ -10846,6 +10846,429 @@
         "Cache-Control": "no-store"
       },
       "mediaType": "application/json",
+      "operation": "createIntroPostComment",
+      "request": {
+        "body": {
+          "body": "Synthetic metadata probes only; not approved product artwork.",
+          "parent_comment_id": null
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "introId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 400
+    },
+    {
+      "body": {
+        "code": "401",
+        "details": {
+          "reason": "AUTHENTICATION_REQUIRED"
+        },
+        "message": "Request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "createIntroPostComment",
+      "request": {
+        "body": {
+          "body": "Synthetic metadata probes only; not approved product artwork.",
+          "parent_comment_id": null
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "introId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 401
+    },
+    {
+      "body": {
+        "code": "GATEWAY_403",
+        "details": {
+          "reason": "BROWSER_INTENT_REQUIRED"
+        },
+        "message": "The request is not permitted."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "createIntroPostComment",
+      "request": {
+        "body": {
+          "body": "Synthetic metadata probes only; not approved product artwork.",
+          "parent_comment_id": null
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "introId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 403
+    },
+    {
+      "body": {
+        "code": "GATEWAY_404",
+        "details": {
+          "reason": "RESOURCE_UNAVAILABLE"
+        },
+        "message": "The requested action is unavailable.",
+        "timestamp": "2026-11-03T00:00:00Z",
+        "traceId": "fixture-correlation-123"
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "createIntroPostComment",
+      "request": {
+        "body": {
+          "body": "Synthetic metadata probes only; not approved product artwork.",
+          "parent_comment_id": null
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "introId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 404
+    },
+    {
+      "body": {
+        "code": "429",
+        "details": {
+          "reason": "RATE_LIMITED",
+          "retry_after_ms": 1000
+        },
+        "message": "Request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "createIntroPostComment",
+      "request": {
+        "body": {
+          "body": "Synthetic metadata probes only; not approved product artwork.",
+          "parent_comment_id": null
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "introId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 429
+    },
+    {
+      "body": {
+        "code": "GATEWAY_500",
+        "details": {
+          "reason": "INTERNAL_ERROR"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "createIntroPostComment",
+      "request": {
+        "body": {
+          "body": "Synthetic metadata probes only; not approved product artwork.",
+          "parent_comment_id": null
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "introId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 500
+    },
+    {
+      "body": {
+        "code": "GATEWAY_502",
+        "details": {
+          "reason": "DEPENDENCY_UNAVAILABLE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "createIntroPostComment",
+      "request": {
+        "body": {
+          "body": "Synthetic metadata probes only; not approved product artwork.",
+          "parent_comment_id": null
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "introId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 503
+    },
+    {
+      "body": {
+        "code": "GATEWAY_504",
+        "details": {
+          "reason": "DEADLINE_EXCEEDED"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "createIntroPostComment",
+      "request": {
+        "body": {
+          "body": "Synthetic metadata probes only; not approved product artwork.",
+          "parent_comment_id": null
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "introId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 504
+    },
+    {
+      "body": {
+        "code": "GATEWAY_409",
+        "details": {
+          "reason": "EVENT_READ_ONLY"
+        },
+        "message": "The requested action is unavailable.",
+        "timestamp": "2026-11-03T00:00:00Z",
+        "traceId": "fixture-correlation-123"
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "createIntroPostComment",
+      "request": {
+        "body": {
+          "body": "Synthetic metadata probes only; not approved product artwork.",
+          "parent_comment_id": null
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "introId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 409
+    },
+    {
+      "body": {
+        "code": "GATEWAY_413",
+        "details": {
+          "reason": "PAYLOAD_TOO_LARGE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "createIntroPostComment",
+      "request": {
+        "body": {
+          "body": "Synthetic metadata probes only; not approved product artwork.",
+          "parent_comment_id": null
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "introId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 413
+    },
+    {
+      "body": {
+        "code": "GATEWAY_415",
+        "details": {
+          "reason": "INVALID_MEDIA_TYPE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "createIntroPostComment",
+      "request": {
+        "body": {
+          "body": "Synthetic metadata probes only; not approved product artwork.",
+          "parent_comment_id": null
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "introId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 415
+    },
+    {
+      "body": {
+        "author": {
+          "avatar": {
+            "config": {
+              "contract_version": "1.0.0",
+              "item_ids": {
+                "accessory": "accessory_fixture",
+                "body": "body_fixture",
+                "eyes": "eyes_fixture",
+                "hair": "hair_fixture",
+                "outfit": "outfit_fixture"
+              },
+              "kind": "avatar_config",
+              "manifest_id": "avatar_fixture",
+              "manifest_version": 1,
+              "skin_tone_id": "tone_fixture"
+            },
+            "revision": 1
+          },
+          "bio": "Synthetic metadata probes only; not approved product artwork.",
+          "blocked": true,
+          "favorites_public": [],
+          "follow": {
+            "followed_by": true,
+            "following": true
+          },
+          "gender_bucket": null,
+          "interaction_style": "Synthetic metadata probes only; not approved product artwork.",
+          "nickname": "valid-base",
+          "profile_id": "00000000-0000-4000-8000-000000000001",
+          "profile_image_media_id": null,
+          "room_available": true,
+          "shared_with_viewer": []
+        },
+        "body": "Synthetic metadata probes only; not approved product artwork.",
+        "comment_id": "00000000-0000-4000-8000-000000000001",
+        "created_at": "2026-11-03T00:00:00Z",
+        "deleted": true,
+        "intro_id": "00000000-0000-4000-8000-000000000001",
+        "parent_comment_id": null
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "createIntroPostComment",
+      "request": {
+        "body": {
+          "body": "Synthetic metadata probes only; not approved product artwork.",
+          "parent_comment_id": null
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "introId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "actor_id": "00000000-0000-4000-8000-000000000002",
+        "created_at": "2026-11-07T08:00:00Z",
+        "event_id": "00000000-0000-4000-8000-000000000001",
+        "expires_at": "2026-11-08T08:00:00Z",
+        "failure_reason": null,
+        "idempotency_key": "00000000-0000-4000-8000-000000000047",
+        "operation_id": "reserveConcertGiveaway",
+        "receipt_id": "00000000-0000-4000-8000-000000000046",
+        "resource_id": null,
+        "resource_revision": null,
+        "result_status": null,
+        "state": "PENDING"
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "createIntroPostComment",
+      "request": {
+        "body": {
+          "body": "Synthetic metadata probes only; not approved product artwork.",
+          "parent_comment_id": null
+        },
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "mediaType": "application/json",
+        "path": {
+          "introId": "00000000-0000-4000-8000-000000000001"
+        }
+      },
+      "status": 202
+    },
+    {
+      "body": {
+        "code": "GATEWAY_422",
+        "details": {
+          "reason": "INVALID_INPUT"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
       "operation": "createProfilePost",
       "request": {
         "body": {
@@ -13813,6 +14236,380 @@
           "X-MCR-Intent": "browser"
         },
         "path": {
+          "introId": "00000000-0000-4000-8000-000000000001"
+        },
+        "query": {
+          "expected_revision": 1
+        }
+      },
+      "status": 202
+    },
+    {
+      "body": {
+        "code": "GATEWAY_422",
+        "details": {
+          "reason": "INVALID_INPUT"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "deleteIntroPostComment",
+      "request": {
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "path": {
+          "commentId": "00000000-0000-4000-8000-000000000001",
+          "introId": "00000000-0000-4000-8000-000000000001"
+        },
+        "query": {
+          "expected_revision": 1
+        }
+      },
+      "status": 400
+    },
+    {
+      "body": {
+        "code": "401",
+        "details": {
+          "reason": "AUTHENTICATION_REQUIRED"
+        },
+        "message": "Request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "deleteIntroPostComment",
+      "request": {
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "path": {
+          "commentId": "00000000-0000-4000-8000-000000000001",
+          "introId": "00000000-0000-4000-8000-000000000001"
+        },
+        "query": {
+          "expected_revision": 1
+        }
+      },
+      "status": 401
+    },
+    {
+      "body": {
+        "code": "GATEWAY_403",
+        "details": {
+          "reason": "BROWSER_INTENT_REQUIRED"
+        },
+        "message": "The request is not permitted."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "deleteIntroPostComment",
+      "request": {
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "path": {
+          "commentId": "00000000-0000-4000-8000-000000000001",
+          "introId": "00000000-0000-4000-8000-000000000001"
+        },
+        "query": {
+          "expected_revision": 1
+        }
+      },
+      "status": 403
+    },
+    {
+      "body": {
+        "code": "GATEWAY_404",
+        "details": {
+          "reason": "RESOURCE_UNAVAILABLE"
+        },
+        "message": "The requested action is unavailable.",
+        "timestamp": "2026-11-03T00:00:00Z",
+        "traceId": "fixture-correlation-123"
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "deleteIntroPostComment",
+      "request": {
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "path": {
+          "commentId": "00000000-0000-4000-8000-000000000001",
+          "introId": "00000000-0000-4000-8000-000000000001"
+        },
+        "query": {
+          "expected_revision": 1
+        }
+      },
+      "status": 404
+    },
+    {
+      "body": {
+        "code": "429",
+        "details": {
+          "reason": "RATE_LIMITED",
+          "retry_after_ms": 1000
+        },
+        "message": "Request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "deleteIntroPostComment",
+      "request": {
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "path": {
+          "commentId": "00000000-0000-4000-8000-000000000001",
+          "introId": "00000000-0000-4000-8000-000000000001"
+        },
+        "query": {
+          "expected_revision": 1
+        }
+      },
+      "status": 429
+    },
+    {
+      "body": {
+        "code": "GATEWAY_500",
+        "details": {
+          "reason": "INTERNAL_ERROR"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "deleteIntroPostComment",
+      "request": {
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "path": {
+          "commentId": "00000000-0000-4000-8000-000000000001",
+          "introId": "00000000-0000-4000-8000-000000000001"
+        },
+        "query": {
+          "expected_revision": 1
+        }
+      },
+      "status": 500
+    },
+    {
+      "body": {
+        "code": "GATEWAY_502",
+        "details": {
+          "reason": "DEPENDENCY_UNAVAILABLE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "deleteIntroPostComment",
+      "request": {
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "path": {
+          "commentId": "00000000-0000-4000-8000-000000000001",
+          "introId": "00000000-0000-4000-8000-000000000001"
+        },
+        "query": {
+          "expected_revision": 1
+        }
+      },
+      "status": 503
+    },
+    {
+      "body": {
+        "code": "GATEWAY_504",
+        "details": {
+          "reason": "DEADLINE_EXCEEDED"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "deleteIntroPostComment",
+      "request": {
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "path": {
+          "commentId": "00000000-0000-4000-8000-000000000001",
+          "introId": "00000000-0000-4000-8000-000000000001"
+        },
+        "query": {
+          "expected_revision": 1
+        }
+      },
+      "status": 504
+    },
+    {
+      "body": {
+        "code": "GATEWAY_409",
+        "details": {
+          "reason": "EVENT_READ_ONLY"
+        },
+        "message": "The requested action is unavailable.",
+        "timestamp": "2026-11-03T00:00:00Z",
+        "traceId": "fixture-correlation-123"
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "deleteIntroPostComment",
+      "request": {
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "path": {
+          "commentId": "00000000-0000-4000-8000-000000000001",
+          "introId": "00000000-0000-4000-8000-000000000001"
+        },
+        "query": {
+          "expected_revision": 1
+        }
+      },
+      "status": 409
+    },
+    {
+      "body": {
+        "code": "GATEWAY_413",
+        "details": {
+          "reason": "PAYLOAD_TOO_LARGE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "deleteIntroPostComment",
+      "request": {
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "path": {
+          "commentId": "00000000-0000-4000-8000-000000000001",
+          "introId": "00000000-0000-4000-8000-000000000001"
+        },
+        "query": {
+          "expected_revision": 1
+        }
+      },
+      "status": 413
+    },
+    {
+      "body": {
+        "code": "GATEWAY_415",
+        "details": {
+          "reason": "INVALID_MEDIA_TYPE"
+        },
+        "message": "The request could not be completed."
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "deleteIntroPostComment",
+      "request": {
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "path": {
+          "commentId": "00000000-0000-4000-8000-000000000001",
+          "introId": "00000000-0000-4000-8000-000000000001"
+        },
+        "query": {
+          "expected_revision": 1
+        }
+      },
+      "status": 415
+    },
+    {
+      "body": {
+        "resource_id": "00000000-0000-4000-8000-000000000001",
+        "revision": 1,
+        "state": "DELETED"
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "deleteIntroPostComment",
+      "request": {
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "path": {
+          "commentId": "00000000-0000-4000-8000-000000000001",
+          "introId": "00000000-0000-4000-8000-000000000001"
+        },
+        "query": {
+          "expected_revision": 1
+        }
+      },
+      "status": 200
+    },
+    {
+      "body": {
+        "actor_id": "00000000-0000-4000-8000-000000000002",
+        "created_at": "2026-11-07T08:00:00Z",
+        "event_id": "00000000-0000-4000-8000-000000000001",
+        "expires_at": "2026-11-08T08:00:00Z",
+        "failure_reason": null,
+        "idempotency_key": "00000000-0000-4000-8000-000000000047",
+        "operation_id": "reserveConcertGiveaway",
+        "receipt_id": "00000000-0000-4000-8000-000000000046",
+        "resource_id": null,
+        "resource_revision": null,
+        "result_status": null,
+        "state": "PENDING"
+      },
+      "headers": {
+        "Cache-Control": "no-store"
+      },
+      "mediaType": "application/json",
+      "operation": "deleteIntroPostComment",
+      "request": {
+        "headers": {
+          "Idempotency-Key": "00000000-0000-4000-8000-000000000001",
+          "X-MCR-Intent": "browser"
+        },
+        "path": {
+          "commentId": "00000000-0000-4000-8000-000000000001",
           "introId": "00000000-0000-4000-8000-000000000001"
         },
         "query": {

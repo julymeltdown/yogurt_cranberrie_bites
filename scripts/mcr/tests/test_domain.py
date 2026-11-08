@@ -384,6 +384,7 @@ class DomainTests(unittest.TestCase):
         'listIntroPosts', 'getIntroPost', 'getOwnIntroPost', 'listOwnIntroPosts',
         'saveIntroPostDraft', 'publishIntroPost', 'deleteIntroPost', 'setIntroPostLike',
         'clearIntroPostLike', 'listIntroPostLikers', 'listIntroPostComments',
+        'createIntroPostComment', 'deleteIntroPostComment',
         'listProfilePosts', 'createProfilePost', 'deleteProfilePost', 'initProfileMediaUpload',
         'putProfileMediaBytes', 'finalizeProfileMedia', 'getProfileMedia', 'readProfileMedia',
         'getProfileRoom', 'getOwnRoom', 'saveOwnRoom', 'setOwnRoomVisibility', 'uploadRoomPoster',
@@ -407,7 +408,7 @@ class DomainTests(unittest.TestCase):
                 self.assertEqual(op['cache_control'], 'no-store')
                 self.assertIn(op['rule'], self.contract.policy['rules'])
                 self.assertTrue(op['errors'])
-        self.assertEqual(len(self.contract.operations), 148)
+        self.assertEqual(len(self.contract.operations), 150)
         ids = [op['operationId'] for op in self.contract.operations]
         routes = [(op['method'], op['path']) for op in self.contract.operations]
         self.assertEqual(len(ids), len(set(ids)))

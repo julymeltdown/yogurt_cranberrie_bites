@@ -29925,6 +29925,507 @@ export const document = {
       "x-mcr-runtime-status": "NOT_IMPLEMENTED",
       "x-mcr-write-policy": "NORMAL"
     },
+    "createIntroPostComment": {
+      "method": "POST",
+      "operationId": "createIntroPostComment",
+      "parameters": [
+        {
+          "in": "path",
+          "name": "introId",
+          "required": true,
+          "schema": {
+            "$ref": "#/components/schemas/Domain_common_Uuid"
+          }
+        },
+        {
+          "in": "header",
+          "name": "X-MCR-Intent",
+          "required": true,
+          "schema": {
+            "const": "browser",
+            "type": "string"
+          }
+        },
+        {
+          "in": "header",
+          "name": "Idempotency-Key",
+          "required": true,
+          "schema": {
+            "$ref": "#/components/schemas/Domain_common_Uuid"
+          }
+        }
+      ],
+      "path": "/api/intro-posts/{introId}/comments",
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Domain_social_CreateIntroComment"
+            }
+          }
+        },
+        "required": true
+      },
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Domain_social_IntroComment"
+              }
+            }
+          },
+          "description": "Success",
+          "headers": {
+            "Cache-Control": {
+              "required": true,
+              "schema": {
+                "const": "no-store",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "202": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Domain_common_CommandReceipt"
+              }
+            }
+          },
+          "description": "Pending; not successful completion or media readiness",
+          "headers": {
+            "Cache-Control": {
+              "required": true,
+              "schema": {
+                "const": "no-store",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "400": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Domain_common_DomainError"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "INVALID_INPUT"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Domain error",
+          "headers": {
+            "Cache-Control": {
+              "required": true,
+              "schema": {
+                "const": "no-store",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "401": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Domain_common_DomainError"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "AUTHENTICATION_REQUIRED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Domain error",
+          "headers": {
+            "Cache-Control": {
+              "required": true,
+              "schema": {
+                "const": "no-store",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "403": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Domain_common_DomainError"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "PERMISSION_DENIED",
+                              "ORIGIN_NOT_ALLOWED",
+                              "BROWSER_INTENT_REQUIRED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Domain error",
+          "headers": {
+            "Cache-Control": {
+              "required": true,
+              "schema": {
+                "const": "no-store",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "404": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Domain_common_DomainError"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "RESOURCE_UNAVAILABLE"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Domain error",
+          "headers": {
+            "Cache-Control": {
+              "required": true,
+              "schema": {
+                "const": "no-store",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "409": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Domain_common_DomainError"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "VERSION_CONFLICT",
+                              "INVALID_TRANSITION",
+                              "IDEMPOTENCY_CONFLICT",
+                              "IDEMPOTENCY_EXPIRED",
+                              "EVENT_READ_ONLY"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Domain error",
+          "headers": {
+            "Cache-Control": {
+              "required": true,
+              "schema": {
+                "const": "no-store",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "413": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Domain_common_DomainError"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "PAYLOAD_TOO_LARGE"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Domain error",
+          "headers": {
+            "Cache-Control": {
+              "required": true,
+              "schema": {
+                "const": "no-store",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "415": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Domain_common_DomainError"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "INVALID_MEDIA_TYPE"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Domain error",
+          "headers": {
+            "Cache-Control": {
+              "required": true,
+              "schema": {
+                "const": "no-store",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "429": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Domain_common_DomainError"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "RATE_LIMITED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Domain error",
+          "headers": {
+            "Cache-Control": {
+              "required": true,
+              "schema": {
+                "const": "no-store",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "500": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Domain_common_DomainError"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "INTERNAL_ERROR"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Domain error",
+          "headers": {
+            "Cache-Control": {
+              "required": true,
+              "schema": {
+                "const": "no-store",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "503": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Domain_common_DomainError"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "DEPENDENCY_UNAVAILABLE",
+                              "FEATURE_UNAVAILABLE"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Domain error",
+          "headers": {
+            "Cache-Control": {
+              "required": true,
+              "schema": {
+                "const": "no-store",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "504": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Domain_common_DomainError"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "DEADLINE_EXCEEDED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Domain error",
+          "headers": {
+            "Cache-Control": {
+              "required": true,
+              "schema": {
+                "const": "no-store",
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "security": [
+        {
+          "BearerAuth": []
+        }
+      ],
+      "x-mcr-actor": "MEMBER",
+      "x-mcr-cache": "NO_STORE",
+      "x-mcr-closed-query": true,
+      "x-mcr-origin-policy": "EXACT_ALLOWLIST_AND_X_MCR_INTENT_BROWSER",
+      "x-mcr-query-schema": {
+        "$ref": "#/components/schemas/Domain_common_EmptyRequest"
+      },
+      "x-mcr-retry": "STATUS_THEN_IDENTICAL_COMMAND",
+      "x-mcr-rule": "intro_comment_create",
+      "x-mcr-runtime-status": "NOT_IMPLEMENTED",
+      "x-mcr-write-policy": "NORMAL"
+    },
     "createProfilePost": {
       "method": "POST",
       "operationId": "createProfilePost",
@@ -33590,6 +34091,515 @@ export const document = {
       },
       "x-mcr-retry": "STATUS_THEN_IDENTICAL_COMMAND",
       "x-mcr-rule": "intro_close",
+      "x-mcr-runtime-status": "NOT_IMPLEMENTED",
+      "x-mcr-write-policy": "SAFETY"
+    },
+    "deleteIntroPostComment": {
+      "method": "DELETE",
+      "operationId": "deleteIntroPostComment",
+      "parameters": [
+        {
+          "in": "path",
+          "name": "introId",
+          "required": true,
+          "schema": {
+            "$ref": "#/components/schemas/Domain_common_Uuid"
+          }
+        },
+        {
+          "in": "path",
+          "name": "commentId",
+          "required": true,
+          "schema": {
+            "$ref": "#/components/schemas/Domain_common_Uuid"
+          }
+        },
+        {
+          "allowReserved": false,
+          "explode": false,
+          "in": "query",
+          "name": "expected_revision",
+          "required": true,
+          "schema": {
+            "$ref": "#/components/schemas/Domain_common_Revision"
+          },
+          "style": "form"
+        },
+        {
+          "in": "header",
+          "name": "X-MCR-Intent",
+          "required": true,
+          "schema": {
+            "const": "browser",
+            "type": "string"
+          }
+        },
+        {
+          "in": "header",
+          "name": "Idempotency-Key",
+          "required": true,
+          "schema": {
+            "$ref": "#/components/schemas/Domain_common_Uuid"
+          }
+        }
+      ],
+      "path": "/api/intro-posts/{introId}/comments/{commentId}",
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Domain_common_Deleted"
+              }
+            }
+          },
+          "description": "Success",
+          "headers": {
+            "Cache-Control": {
+              "required": true,
+              "schema": {
+                "const": "no-store",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "202": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Domain_common_CommandReceipt"
+              }
+            }
+          },
+          "description": "Pending; not successful completion or media readiness",
+          "headers": {
+            "Cache-Control": {
+              "required": true,
+              "schema": {
+                "const": "no-store",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "400": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Domain_common_DomainError"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "INVALID_INPUT"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Domain error",
+          "headers": {
+            "Cache-Control": {
+              "required": true,
+              "schema": {
+                "const": "no-store",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "401": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Domain_common_DomainError"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "AUTHENTICATION_REQUIRED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Domain error",
+          "headers": {
+            "Cache-Control": {
+              "required": true,
+              "schema": {
+                "const": "no-store",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "403": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Domain_common_DomainError"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "PERMISSION_DENIED",
+                              "ORIGIN_NOT_ALLOWED",
+                              "BROWSER_INTENT_REQUIRED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Domain error",
+          "headers": {
+            "Cache-Control": {
+              "required": true,
+              "schema": {
+                "const": "no-store",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "404": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Domain_common_DomainError"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "RESOURCE_UNAVAILABLE"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Domain error",
+          "headers": {
+            "Cache-Control": {
+              "required": true,
+              "schema": {
+                "const": "no-store",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "409": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Domain_common_DomainError"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "VERSION_CONFLICT",
+                              "INVALID_TRANSITION",
+                              "IDEMPOTENCY_CONFLICT",
+                              "IDEMPOTENCY_EXPIRED",
+                              "EVENT_READ_ONLY"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Domain error",
+          "headers": {
+            "Cache-Control": {
+              "required": true,
+              "schema": {
+                "const": "no-store",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "413": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Domain_common_DomainError"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "PAYLOAD_TOO_LARGE"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Domain error",
+          "headers": {
+            "Cache-Control": {
+              "required": true,
+              "schema": {
+                "const": "no-store",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "415": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Domain_common_DomainError"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "INVALID_MEDIA_TYPE"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Domain error",
+          "headers": {
+            "Cache-Control": {
+              "required": true,
+              "schema": {
+                "const": "no-store",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "429": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Domain_common_DomainError"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "RATE_LIMITED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Domain error",
+          "headers": {
+            "Cache-Control": {
+              "required": true,
+              "schema": {
+                "const": "no-store",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "500": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Domain_common_DomainError"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "INTERNAL_ERROR"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Domain error",
+          "headers": {
+            "Cache-Control": {
+              "required": true,
+              "schema": {
+                "const": "no-store",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "503": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Domain_common_DomainError"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "DEPENDENCY_UNAVAILABLE"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Domain error",
+          "headers": {
+            "Cache-Control": {
+              "required": true,
+              "schema": {
+                "const": "no-store",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "504": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "allOf": [
+                  {
+                    "$ref": "#/components/schemas/Domain_common_DomainError"
+                  },
+                  {
+                    "properties": {
+                      "details": {
+                        "properties": {
+                          "reason": {
+                            "enum": [
+                              "DEADLINE_EXCEEDED"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "description": "Domain error",
+          "headers": {
+            "Cache-Control": {
+              "required": true,
+              "schema": {
+                "const": "no-store",
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "security": [
+        {
+          "BearerAuth": []
+        }
+      ],
+      "x-mcr-actor": "OWNER",
+      "x-mcr-cache": "NO_STORE",
+      "x-mcr-closed-query": true,
+      "x-mcr-origin-policy": "EXACT_ALLOWLIST_AND_X_MCR_INTENT_BROWSER",
+      "x-mcr-query-schema": {
+        "$ref": "#/components/schemas/Domain_common_RevisionRequest"
+      },
+      "x-mcr-retry": "STATUS_THEN_IDENTICAL_COMMAND",
+      "x-mcr-rule": "intro_comment_delete",
       "x-mcr-runtime-status": "NOT_IMPLEMENTED",
       "x-mcr-write-policy": "SAFETY"
     },

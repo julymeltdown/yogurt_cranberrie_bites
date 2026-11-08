@@ -7729,6 +7729,140 @@
     "query_schema": "common.PageQuery"
   },
   {
+    "operationId": "createIntroPostComment",
+    "method": "post",
+    "path": "/api/intro-posts/{introId}/comments",
+    "request": "social.CreateIntroComment",
+    "request_location": "body",
+    "response": "social.IntroComment",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "MEMBER",
+    "rule": "intro_comment_create",
+    "write_policy": "NORMAL",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE",
+        "FEATURE_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "introId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.EmptyRequest"
+  },
+  {
+    "operationId": "deleteIntroPostComment",
+    "method": "delete",
+    "path": "/api/intro-posts/{introId}/comments/{commentId}",
+    "request": "common.RevisionRequest",
+    "request_location": "query",
+    "response": "common.Deleted",
+    "success_status": 200,
+    "pending_response": "common.CommandReceipt",
+    "pending_status": 202,
+    "actor": "OWNER",
+    "rule": "intro_comment_delete",
+    "write_policy": "SAFETY",
+    "idempotency_key": true,
+    "retry": "STATUS_THEN_IDENTICAL_COMMAND",
+    "cache_control": "no-store",
+    "errors": {
+      "400": [
+        "INVALID_INPUT"
+      ],
+      "401": [
+        "AUTHENTICATION_REQUIRED"
+      ],
+      "403": [
+        "PERMISSION_DENIED",
+        "ORIGIN_NOT_ALLOWED",
+        "BROWSER_INTENT_REQUIRED"
+      ],
+      "404": [
+        "RESOURCE_UNAVAILABLE"
+      ],
+      "429": [
+        "RATE_LIMITED"
+      ],
+      "500": [
+        "INTERNAL_ERROR"
+      ],
+      "503": [
+        "DEPENDENCY_UNAVAILABLE"
+      ],
+      "504": [
+        "DEADLINE_EXCEEDED"
+      ],
+      "409": [
+        "VERSION_CONFLICT",
+        "INVALID_TRANSITION",
+        "IDEMPOTENCY_CONFLICT",
+        "IDEMPOTENCY_EXPIRED",
+        "EVENT_READ_ONLY"
+      ],
+      "413": [
+        "PAYLOAD_TOO_LARGE"
+      ],
+      "415": [
+        "INVALID_MEDIA_TYPE"
+      ]
+    },
+    "implementation": "NOT_IMPLEMENTED",
+    "path_parameters": {
+      "introId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      },
+      "commentId": {
+        "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Uuid"
+      }
+    },
+    "query_schema": "common.RevisionRequest"
+  },
+  {
     "operationId": "listProfilePosts",
     "method": "get",
     "path": "/api/profiles/{profileId}/posts",
