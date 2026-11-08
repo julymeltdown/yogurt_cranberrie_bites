@@ -24,6 +24,7 @@ instruction; see [AGENTS.md](../../../AGENTS.md)).
 | 6 | [implementation-plan.md](implementation-plan.md) | Work packages, dependencies, ownership, definition of done, verification matrix |
 | 7 | [source-register.md](source-register.md) | Pinned revisions, audit status, provenance obligations |
 | 8 | [verification-plan.md](verification-plan.md) | Thirteen mandatory verifications, test-case tables, evidence format |
+| 9 | [task-breakdown.md](task-breakdown.md) | 110 implementation tasks with files, symbols, dependencies, acceptance, tests, and evidence |
 
 Machine-readable companions live beside them:
 
@@ -32,6 +33,7 @@ Machine-readable companions live beside them:
 | [source-register.json](source-register.json) | Pinned source revisions, audit state, file-level candidate list |
 | [work-packages.json](work-packages.json) | Work package IDs, owners, dependencies, write scopes, acceptance |
 | [verification-matrix.json](verification-matrix.json) | Mandatory verification IDs mapped to work packages and test paths |
+| [task-register.json](task-register.json) | Machine-readable task rows: lane, status, dependencies, write scopes, verification ids |
 
 ## Precedence
 

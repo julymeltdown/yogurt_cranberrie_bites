@@ -1,0 +1,2099 @@
+{
+  "schema_version": 1,
+  "status": "PLANNING_COMPLETE",
+  "implementation_status": "NOT_STARTED",
+  "recorded_date": "2026-11-09",
+  "timezone": "Asia/Seoul",
+  "source_document": "docs/mcr/integration/task-breakdown.md",
+  "task_count": 110,
+  "lane_counts": {
+    "CONTRACT": 8,
+    "BACKEND": 61,
+    "FRONTEND": 35,
+    "INTEGRATOR": 6
+  },
+  "external_prerequisites": [
+    {
+      "id": "NAVER-CONSOLE",
+      "status": "APPROVED",
+      "decided_by": "user",
+      "date": "2026-11-09",
+      "note": "NAVER developer console review approved for birthyear, birthday, and gender scope."
+    }
+  ],
+  "status_vocabulary": [
+    "NOT_STARTED",
+    "IN_PROGRESS",
+    "INTEGRATED",
+    "ACCEPTED",
+    "BLOCKED",
+    "NOT_RUN"
+  ],
+  "tasks": [
+    {
+      "id": "T-001",
+      "title": "Declare the profile core schema definitions",
+      "lane": "CONTRACT",
+      "status": "NOT_STARTED",
+      "depends_on": [],
+      "writes": [
+        "contracts/core/v1/core.schema.json"
+      ],
+      "verifies": [
+        "CONTRACT-CHECK"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-002",
+      "title": "Declare the intro post domain schemas",
+      "lane": "CONTRACT",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-001"
+      ],
+      "writes": [
+        "contracts/domain/v1/social.schema.json"
+      ],
+      "verifies": [
+        "CONTRACT-CHECK",
+        "V-04"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-003",
+      "title": "Declare the profile post, media, and room schemas",
+      "lane": "CONTRACT",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-001",
+        "T-002"
+      ],
+      "writes": [
+        "contracts/domain/v1/social.schema.json",
+        "contracts/domain/v1/feed.schema.json"
+      ],
+      "verifies": [
+        "CONTRACT-CHECK",
+        "V-06",
+        "V-08"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-004",
+      "title": "Declare the 30 new operations",
+      "lane": "CONTRACT",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-001",
+        "T-002",
+        "T-003"
+      ],
+      "writes": [
+        "contracts/core/v1/operations.json",
+        "contracts/domain/v1/operations.json"
+      ],
+      "verifies": [
+        "CONTRACT-CHECK"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-005",
+      "title": "Add the notification kind and target type",
+      "lane": "CONTRACT",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-004"
+      ],
+      "writes": [
+        "backend/proto/notification/v1/concert_inbox.proto",
+        "backend/proto/notification/v1/concert_delivery.proto",
+        "contracts/domain/v1/feed.schema.json",
+        "contracts/domain/v1/policy.json"
+      ],
+      "verifies": [
+        "CONTRACT-CHECK"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-006",
+      "title": "Regenerate contracts and the client",
+      "lane": "CONTRACT",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-004",
+        "T-005"
+      ],
+      "writes": [
+        "contracts/generated/mcr-core.openapi.json",
+        "contracts/generated/mcr-domain.openapi.json",
+        "frontend/src/generated/api-client/",
+        "backend/docs/api/"
+      ],
+      "verifies": [
+        "CONTRACT-CHECK"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-007",
+      "title": "Allow the verification callback redirect in the gateway contract",
+      "lane": "CONTRACT",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-004",
+        "T-006"
+      ],
+      "writes": [
+        "contracts/core/v1/operations.json",
+        "backend/docs/api/"
+      ],
+      "verifies": [
+        "CONTRACT-CHECK",
+        "V-12"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-008",
+      "title": "Contract review gate",
+      "lane": "CONTRACT",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-001",
+        "T-002",
+        "T-003",
+        "T-004",
+        "T-005",
+        "T-006",
+        "T-007"
+      ],
+      "writes": [
+        "docs/mcr/integration/contract-freeze.md"
+      ],
+      "verifies": [
+        "CONTRACT-CHECK"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-101",
+      "title": "Profile product RPC transport",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-008"
+      ],
+      "writes": [
+        "backend/proto/profile/v1/profile_product.proto",
+        "backend/services/profile-service/src/profile_product/"
+      ],
+      "verifies": [
+        "GUARDS"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-102",
+      "title": "Gateway route for profile product dispatch",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-101"
+      ],
+      "writes": [
+        "backend/services/api-gateway/src/adapters/in/http/profile_product/",
+        "backend/services/api-gateway/src/adapters/out/profile_product_client.rs"
+      ],
+      "verifies": [
+        "GUARDS"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-103",
+      "title": "`profiles` table and profile identity",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-101"
+      ],
+      "writes": [
+        "backend/services/profile-service/migrations/00NN_profile_identity.sql"
+      ],
+      "verifies": [
+        "MIGRATION-LEDGER"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-104",
+      "title": "`profile_favorites` table",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-103"
+      ],
+      "writes": [
+        "backend/services/profile-service/migrations/",
+        "backend/services/profile-service/src/profile_favorites/"
+      ],
+      "verifies": [
+        "DISCOVERY-NO-INTRO"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-105",
+      "title": "`identity_claims` and `identity_verifications` tables",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-103"
+      ],
+      "writes": [
+        "backend/services/profile-service/migrations/00NN_identity_claims.sql"
+      ],
+      "verifies": [
+        "V-12"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-106",
+      "title": "`profile_media` table",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-103"
+      ],
+      "writes": [
+        "backend/services/concert-service/migrations/00NN_profile_media.sql"
+      ],
+      "verifies": [
+        "V-06"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-107",
+      "title": "`profile_rooms` table",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-103"
+      ],
+      "writes": [
+        "backend/services/concert-service/migrations/00NN_profile_rooms.sql"
+      ],
+      "verifies": [
+        "V-08"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-108",
+      "title": "`intro_posts` table with audience columns",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-103",
+        "T-105"
+      ],
+      "writes": [
+        "backend/services/concert-service/migrations/00NN_intro_posts.sql"
+      ],
+      "verifies": [
+        "V-01",
+        "V-08"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-109",
+      "title": "`intro_attachments`, `intro_likes`, `intro_comments`",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-106",
+        "T-108"
+      ],
+      "writes": [
+        "backend/services/concert-service/migrations/00NN_intro_children.sql"
+      ],
+      "verifies": [
+        "V-05"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-110",
+      "title": "`profile_posts` and attachments",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-106"
+      ],
+      "writes": [
+        "backend/services/concert-service/migrations/00NN_profile_posts.sql"
+      ],
+      "verifies": [
+        "V-06",
+        "V-07"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-111",
+      "title": "Account deletion coverage for the new tables",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-104",
+        "T-105",
+        "T-106",
+        "T-107",
+        "T-108",
+        "T-109",
+        "T-110"
+      ],
+      "writes": [
+        "backend/services/concert-service/migrations/00NN_profile_social_deletion.sql",
+        "backend/services/profile-service/migrations/"
+      ],
+      "verifies": [
+        "MIGRATION-LEDGER"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-112",
+      "title": "Migration ledger and head check",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-103",
+        "T-104",
+        "T-105",
+        "T-106",
+        "T-107",
+        "T-108",
+        "T-109",
+        "T-110",
+        "T-111"
+      ],
+      "writes": [
+        "— (verification only)"
+      ],
+      "verifies": [
+        "MIGRATION-LEDGER"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-201",
+      "title": "Provider profile decoding",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-105"
+      ],
+      "writes": [
+        "backend/services/profile-service/src/identity/naver_profile.rs"
+      ],
+      "verifies": [
+        "V-12"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-202",
+      "title": "Provider client",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-201"
+      ],
+      "writes": [
+        "backend/services/profile-service/src/identity/naver_provider.rs"
+      ],
+      "verifies": [
+        "V-12"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-203",
+      "title": "Provider configuration with production refusal",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-202"
+      ],
+      "writes": [
+        "backend/services/profile-service/src/config/"
+      ],
+      "verifies": [
+        "V-12"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-204",
+      "title": "Verification start",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-203"
+      ],
+      "writes": [
+        "backend/services/profile-service/src/identity/start.rs",
+        "backend/services/profile-service/src/identity/repository.rs"
+      ],
+      "verifies": [
+        "V-12"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-205",
+      "title": "Verification callback",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-204"
+      ],
+      "writes": [
+        "backend/services/profile-service/src/identity/callback.rs"
+      ],
+      "verifies": [
+        "V-12"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-206",
+      "title": "Verification status read",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-205"
+      ],
+      "writes": [
+        "backend/services/profile-service/src/identity/status.rs"
+      ],
+      "verifies": [
+        "V-02",
+        "V-12"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-207",
+      "title": "Verification disconnect",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-206"
+      ],
+      "writes": [
+        "backend/services/profile-service/src/identity/disconnect.rs"
+      ],
+      "verifies": [
+        "V-08",
+        "V-12"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-208",
+      "title": "Identity routes in the gateway",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-205",
+        "T-206",
+        "T-207",
+        "T-102"
+      ],
+      "writes": [
+        "backend/services/api-gateway/src/adapters/in/http/identity_routes.rs"
+      ],
+      "verifies": [
+        "V-12"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-209",
+      "title": "Identity status UI",
+      "lane": "FRONTEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-208"
+      ],
+      "writes": [
+        "frontend/src/features/identity/IdentityStatus.tsx",
+        "frontend/src/features/identity/api/identity.ts"
+      ],
+      "verifies": [
+        "UI-360-390-430",
+        "V-12"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-210",
+      "title": "Verification start and callback UI",
+      "lane": "FRONTEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-208"
+      ],
+      "writes": [
+        "frontend/src/features/identity/VerificationStart.tsx",
+        "frontend/src/features/identity/VerificationCallback.tsx"
+      ],
+      "verifies": [
+        "V-12"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-211",
+      "title": "Gated-post prompt",
+      "lane": "FRONTEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-209"
+      ],
+      "writes": [
+        "frontend/src/features/identity/VerificationPrompt.tsx"
+      ],
+      "verifies": [
+        "V-13"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-212",
+      "title": "Verification package verification",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-201",
+        "T-202",
+        "T-203",
+        "T-204",
+        "T-205",
+        "T-206",
+        "T-207",
+        "T-208",
+        "T-209",
+        "T-210",
+        "T-211"
+      ],
+      "writes": [
+        "docs/mcr/integration/evidence/v12-*.json"
+      ],
+      "verifies": [
+        "NAVER-CONSOLE",
+        "V-12",
+        "V-13"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-301",
+      "title": "`IdentityClaimsPort` trait",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-212"
+      ],
+      "writes": [
+        "backend/crates/concert-application/src/identity_claims.rs"
+      ],
+      "verifies": [
+        "V-02"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-302",
+      "title": "Claim adapter over the profile service",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-301"
+      ],
+      "writes": [
+        "backend/services/concert-service/src/intro_posts/claims_adapter.rs",
+        "backend/proto/profile/v1/` (read RPC)"
+      ],
+      "verifies": [
+        "V-02"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-303",
+      "title": "`IntroAudience` value and validation",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-108"
+      ],
+      "writes": [
+        "backend/crates/concert-domain/src/intro_audience.rs"
+      ],
+      "verifies": [
+        "V-01",
+        "V-13"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-304",
+      "title": "`can_view_intro` pure decision",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-302",
+        "T-303"
+      ],
+      "writes": [
+        "backend/crates/concert-application/src/intro_visibility.rs"
+      ],
+      "verifies": [
+        "V-01",
+        "V-02",
+        "V-03",
+        "V-13"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-305",
+      "title": "SQL visibility predicate",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-304"
+      ],
+      "writes": [
+        "backend/services/concert-service/src/intro_posts/visibility_sql.rs"
+      ],
+      "verifies": [
+        "V-01",
+        "V-02",
+        "V-03"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-306",
+      "title": "Discovery query predicate",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-305"
+      ],
+      "writes": [
+        "backend/services/concert-service/src/intro_posts/repository.rs"
+      ],
+      "verifies": [
+        "V-03"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-307",
+      "title": "Attachment and media authorization",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-305",
+        "T-106"
+      ],
+      "writes": [
+        "backend/services/concert-service/src/profile_media/authorization.rs"
+      ],
+      "verifies": [
+        "V-03",
+        "V-06"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-308",
+      "title": "Shared link resolution",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-306"
+      ],
+      "writes": [
+        "backend/services/concert-service/src/intro_posts/links.rs"
+      ],
+      "verifies": [
+        "V-03"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-309",
+      "title": "Like creation and removal policy",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-305",
+        "T-109"
+      ],
+      "writes": [
+        "backend/crates/concert-application/src/intro_likes.rs",
+        "backend/crates/concert-application/src/ports/intro_likes.rs",
+        "backend/services/concert-service/src/intro_posts/likes.rs"
+      ],
+      "verifies": [
+        "V-04",
+        "V-05"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-310",
+      "title": "Likers list",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-309"
+      ],
+      "writes": [
+        "backend/services/concert-service/src/intro_posts/likers.rs"
+      ],
+      "verifies": [
+        "V-05"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-311",
+      "title": "`INTRO_LIKED` notification",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-309",
+        "T-005"
+      ],
+      "writes": [
+        "backend/services/concert-service/src/notification_live/",
+        "backend/crates/concert-domain/src/notification/mod.rs"
+      ],
+      "verifies": [
+        "V-05"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-312",
+      "title": "Claims and policy package verification",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-301",
+        "T-302",
+        "T-303",
+        "T-304",
+        "T-305",
+        "T-306",
+        "T-307",
+        "T-308",
+        "T-309",
+        "T-310",
+        "T-311"
+      ],
+      "writes": [
+        "docs/mcr/integration/evidence/v01-*.json",
+        "v02-*.json",
+        "v03-*.json",
+        "v13-*.json"
+      ],
+      "verifies": [
+        "V-01",
+        "V-02",
+        "V-03",
+        "V-13"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-401",
+      "title": "Intro post draft and publish commands",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-312"
+      ],
+      "writes": [
+        "backend/crates/concert-application/src/intro_posts/mod.rs",
+        "backend/services/concert-service/src/intro_posts/commands.rs"
+      ],
+      "verifies": [
+        "V-08"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-402",
+      "title": "Favorites snapshot import",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-401",
+        "T-104"
+      ],
+      "writes": [
+        "backend/services/concert-service/src/intro_posts/snapshot.rs"
+      ],
+      "verifies": [
+        "V-08"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-403",
+      "title": "Attachment rules",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-401",
+        "T-106"
+      ],
+      "writes": [
+        "backend/services/concert-service/src/intro_posts/attachments.rs"
+      ],
+      "verifies": [
+        "V-06"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-404",
+      "title": "Comments and replies",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-401",
+        "T-305"
+      ],
+      "writes": [
+        "backend/services/concert-service/src/intro_posts/comments.rs"
+      ],
+      "verifies": [
+        "V-03"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-405",
+      "title": "Intro routes in the profile product transport",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-401",
+        "T-402",
+        "T-403",
+        "T-404",
+        "T-102"
+      ],
+      "writes": [
+        "backend/services/concert-service/src/intro_posts/http.rs",
+        "backend/services/api-gateway/src/adapters/in/http/profile_product/"
+      ],
+      "verifies": [
+        "V-03"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-406",
+      "title": "Intro composer reducer",
+      "lane": "FRONTEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-405"
+      ],
+      "writes": [
+        "frontend/src/features/intros/composer-reducer.ts"
+      ],
+      "verifies": [
+        "V-08"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-407",
+      "title": "Audience fields component",
+      "lane": "FRONTEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-406"
+      ],
+      "writes": [
+        "frontend/src/features/intros/IntroAudienceFields.tsx",
+        "frontend/src/features/intros/IntroAgeRangeControl.tsx"
+      ],
+      "verifies": [
+        "UI-360-390-430",
+        "V-01"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-408",
+      "title": "Intro composer screen",
+      "lane": "FRONTEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-407"
+      ],
+      "writes": [
+        "frontend/src/features/intros/IntroComposer.tsx"
+      ],
+      "verifies": [
+        "V-08"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-409",
+      "title": "Media picker and preparation",
+      "lane": "FRONTEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-102"
+      ],
+      "writes": [
+        "frontend/src/features/media/"
+      ],
+      "verifies": [
+        "V-10"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-410",
+      "title": "Profile media upload client",
+      "lane": "FRONTEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-409"
+      ],
+      "writes": [
+        "frontend/src/features/media/api/profile-media.ts"
+      ],
+      "verifies": [
+        "V-09",
+        "V-10"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-411",
+      "title": "Heart button",
+      "lane": "FRONTEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-309",
+        "T-405"
+      ],
+      "writes": [
+        "frontend/src/features/intros/IntroLikeButton.tsx",
+        "frontend/src/features/intros/api/intro-likes.ts"
+      ],
+      "verifies": [
+        "V-04",
+        "V-05"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-412",
+      "title": "Liker list panel",
+      "lane": "FRONTEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-310",
+        "T-411"
+      ],
+      "writes": [
+        "frontend/src/features/intros/IntroLikersPanel.tsx"
+      ],
+      "verifies": [
+        "V-05"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-413",
+      "title": "Intro post card and detail",
+      "lane": "FRONTEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-411"
+      ],
+      "writes": [
+        "frontend/src/features/intros/IntroPostCard.tsx",
+        "frontend/src/features/intros/IntroPostDetail.tsx"
+      ],
+      "verifies": [
+        "V-08"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-414",
+      "title": "Draft recovery",
+      "lane": "FRONTEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-408"
+      ],
+      "writes": [
+        "frontend/src/features/intros/draft-recovery.ts"
+      ],
+      "verifies": [
+        "V-09"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-415",
+      "title": "Activity feed",
+      "lane": "FRONTEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-311"
+      ],
+      "writes": [
+        "frontend/src/features/activity/"
+      ],
+      "verifies": [
+        "V-05"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-416",
+      "title": "Intro package verification",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-401",
+        "T-402",
+        "T-403",
+        "T-404",
+        "T-405",
+        "T-406",
+        "T-407",
+        "T-408",
+        "T-409",
+        "T-410",
+        "T-411",
+        "T-412",
+        "T-413",
+        "T-414",
+        "T-415"
+      ],
+      "writes": [
+        "docs/mcr/integration/evidence/v04-*.json",
+        "v05-*.json",
+        "v08-*.json"
+      ],
+      "verifies": [
+        "V-04",
+        "V-05",
+        "V-08"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-501",
+      "title": "Profile media upload lifecycle",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-106",
+        "T-102"
+      ],
+      "writes": [
+        "backend/services/concert-service/src/profile_media/upload.rs",
+        "backend/crates/concert-application/src/media/` (extend)"
+      ],
+      "verifies": [
+        "V-07"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-502",
+      "title": "Profile post commands",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-501",
+        "T-110"
+      ],
+      "writes": [
+        "backend/services/concert-service/src/profile_posts/commands.rs"
+      ],
+      "verifies": [
+        "V-06",
+        "V-07"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-503",
+      "title": "Profile post reads",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-502"
+      ],
+      "writes": [
+        "backend/services/concert-service/src/profile_posts/read.rs"
+      ],
+      "verifies": [
+        "V-07",
+        "V-08"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-504",
+      "title": "Profile post routes",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-503"
+      ],
+      "writes": [
+        "backend/services/concert-service/src/profile_posts/http.rs"
+      ],
+      "verifies": [
+        "V-07"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-505",
+      "title": "Profile media routes and byte serving",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-307",
+        "T-405",
+        "T-501"
+      ],
+      "writes": [
+        "backend/services/api-gateway/src/adapters/in/http/profile_product/"
+      ],
+      "verifies": [
+        "V-06"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-506",
+      "title": "Profile media composer UI",
+      "lane": "FRONTEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-409",
+        "T-505"
+      ],
+      "writes": [
+        "frontend/src/features/profile-media/ProfileMediaComposer.tsx"
+      ],
+      "verifies": [
+        "V-07"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-507",
+      "title": "Profile media gallery",
+      "lane": "FRONTEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-506"
+      ],
+      "writes": [
+        "frontend/src/features/profile-media/ProfileMediaGallery.tsx"
+      ],
+      "verifies": [
+        "V-06"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-508",
+      "title": "Alt text and description validation",
+      "lane": "FRONTEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-506"
+      ],
+      "writes": [
+        "frontend/src/features/profile-media/"
+      ],
+      "verifies": [
+        "V-07"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-509",
+      "title": "Attachment isolation test",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-502",
+        "T-507"
+      ],
+      "writes": [
+        "docs/mcr/integration/evidence/v06-*.json"
+      ],
+      "verifies": [
+        "V-06"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-510",
+      "title": "Upload failure and cancellation handling",
+      "lane": "FRONTEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-506",
+        "T-508"
+      ],
+      "writes": [
+        "frontend/src/features/profile-media/"
+      ],
+      "verifies": [
+        "V-10"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-511",
+      "title": "Profile post deletion independence",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-503"
+      ],
+      "writes": [
+        "backend/services/concert-service/tests/profile_post_lifecycle.rs"
+      ],
+      "verifies": [
+        "V-08"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-512",
+      "title": "Profile post package verification",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-501",
+        "T-502",
+        "T-503",
+        "T-504",
+        "T-505",
+        "T-506",
+        "T-507",
+        "T-508",
+        "T-509",
+        "T-510",
+        "T-511"
+      ],
+      "writes": [
+        "docs/mcr/integration/evidence/v07-*.json"
+      ],
+      "verifies": [
+        "V-07"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-601",
+      "title": "Room layout value and validation",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-107"
+      ],
+      "writes": [
+        "backend/crates/concert-domain/src/profile_room.rs"
+      ],
+      "verifies": [
+        "V-08",
+        "V-10"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-602",
+      "title": "Room persistence",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-601"
+      ],
+      "writes": [
+        "backend/services/concert-service/src/profile_room/repository.rs"
+      ],
+      "verifies": [
+        "V-09",
+        "V-10"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-603",
+      "title": "Room visibility",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-602"
+      ],
+      "writes": [
+        "backend/services/concert-service/src/profile_room/visibility.rs"
+      ],
+      "verifies": [
+        "V-08"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-604",
+      "title": "Poster upload",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-602",
+        "T-501"
+      ],
+      "writes": [
+        "backend/services/concert-service/src/profile_room/posters.rs"
+      ],
+      "verifies": [
+        "V-06"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-605",
+      "title": "Room routes",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-603",
+        "T-604"
+      ],
+      "writes": [
+        "backend/services/concert-service/src/profile_room/http.rs"
+      ],
+      "verifies": [
+        "V-08"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-606",
+      "title": "Pixel conversion",
+      "lane": "FRONTEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-604"
+      ],
+      "writes": [
+        "frontend/src/features/profile-room/pixelize.ts"
+      ],
+      "verifies": [
+        "UI-360-390-430",
+        "V-10"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-607",
+      "title": "Poster importer UI",
+      "lane": "FRONTEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-606"
+      ],
+      "writes": [
+        "frontend/src/features/profile-room/PosterImporter.tsx"
+      ],
+      "verifies": [
+        "V-10"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-608",
+      "title": "Room scene runtime",
+      "lane": "FRONTEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-602"
+      ],
+      "writes": [
+        "frontend/src/features/profile-room/scene/"
+      ],
+      "verifies": [
+        "V-10"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-609",
+      "title": "Room editor UI",
+      "lane": "FRONTEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-608"
+      ],
+      "writes": [
+        "frontend/src/features/profile-room/RoomPage.tsx"
+      ],
+      "verifies": [
+        "UI-360-390-430",
+        "V-10"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-610",
+      "title": "Room entry from the profile",
+      "lane": "FRONTEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-609"
+      ],
+      "writes": [
+        "frontend/src/features/profile/RoomEntry.tsx"
+      ],
+      "verifies": [
+        "V-08"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-611",
+      "title": "Room persistence across sessions",
+      "lane": "FRONTEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-609"
+      ],
+      "writes": [
+        "frontend/src/features/profile-room/__tests__/persistence.test.tsx"
+      ],
+      "verifies": [
+        "V-10"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-612",
+      "title": "Room package verification",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-601",
+        "T-602",
+        "T-603",
+        "T-604",
+        "T-605",
+        "T-606",
+        "T-607",
+        "T-608",
+        "T-609",
+        "T-610",
+        "T-611"
+      ],
+      "writes": [
+        "docs/mcr/integration/evidence/v08-*.json",
+        "v10-*.json"
+      ],
+      "verifies": [
+        "V-08",
+        "V-10"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-701",
+      "title": "Profile avatar domain",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-103"
+      ],
+      "writes": [
+        "backend/crates/concert-domain/src/profile_avatar.rs"
+      ],
+      "verifies": [
+        "V-09"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-702",
+      "title": "Profile avatar persistence",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-701"
+      ],
+      "writes": [
+        "backend/services/concert-service/src/profile_avatar/repository.rs"
+      ],
+      "verifies": [
+        "V-09"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-703",
+      "title": "Avatar routes",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-702"
+      ],
+      "writes": [
+        "backend/services/concert-service/src/profile_avatar/http.rs"
+      ],
+      "verifies": [
+        "V-09"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-704",
+      "title": "Avatar editor migration",
+      "lane": "FRONTEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-703"
+      ],
+      "writes": [
+        "frontend/src/features/profile-avatar/",
+        "frontend/src/entities/emo-avatar/"
+      ],
+      "verifies": [
+        "V-09"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-705",
+      "title": "Avatar cache isolation on account switch",
+      "lane": "FRONTEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-704"
+      ],
+      "writes": [
+        "frontend/src/features/profile-avatar/"
+      ],
+      "verifies": [
+        "V-09"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-706",
+      "title": "Avatar package verification",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-701",
+        "T-702",
+        "T-703",
+        "T-704",
+        "T-705"
+      ],
+      "writes": [
+        "docs/mcr/integration/evidence/v09-*.json"
+      ],
+      "verifies": [
+        "V-09"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-801",
+      "title": "Catalog search",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-104"
+      ],
+      "writes": [
+        "backend/services/profile-service/src/catalog/"
+      ],
+      "verifies": [
+        "GUARDS"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-802",
+      "title": "Profile discovery query",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-801",
+        "T-104"
+      ],
+      "writes": [
+        "backend/services/concert-service/src/discovery/repository.rs"
+      ],
+      "verifies": [
+        "DISCOVERY-NO-INTRO"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-803",
+      "title": "Discovery routes",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-802"
+      ],
+      "writes": [
+        "backend/services/concert-service/src/discovery/http.rs"
+      ],
+      "verifies": [
+        "DISCOVERY-NO-INTRO"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-804",
+      "title": "Favorite picker UI",
+      "lane": "FRONTEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-801"
+      ],
+      "writes": [
+        "frontend/src/features/favorites/"
+      ],
+      "verifies": [
+        "DISCOVERY-NO-INTRO"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-805",
+      "title": "Discovery UI",
+      "lane": "FRONTEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-803",
+        "T-804"
+      ],
+      "writes": [
+        "frontend/src/features/discovery/"
+      ],
+      "verifies": [
+        "DISCOVERY-NO-INTRO"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-806",
+      "title": "Favorites and discovery verification",
+      "lane": "BACKEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-801",
+        "T-802",
+        "T-803",
+        "T-804",
+        "T-805"
+      ],
+      "writes": [
+        "docs/mcr/integration/evidence/discovery-*.json"
+      ],
+      "verifies": [
+        "DISCOVERY-NO-INTRO"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-901",
+      "title": "Three-section navigation",
+      "lane": "FRONTEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-416",
+        "T-512",
+        "T-612",
+        "T-706"
+      ],
+      "writes": [
+        "frontend/src/app/routes.ts",
+        "frontend/src/app/navigation.tsx"
+      ],
+      "verifies": [
+        "UI-360-390-430"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-902",
+      "title": "Profile page",
+      "lane": "FRONTEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-901"
+      ],
+      "writes": [
+        "frontend/src/features/profile/ProfilePage.tsx"
+      ],
+      "verifies": [
+        "UI-360-390-430",
+        "V-08"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-903",
+      "title": "Visitor profile page",
+      "lane": "FRONTEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-902"
+      ],
+      "writes": [
+        "frontend/src/features/profile/PublicProfilePage.tsx"
+      ],
+      "verifies": [
+        "V-08"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-904",
+      "title": "Router integration",
+      "lane": "FRONTEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-903"
+      ],
+      "writes": [
+        "frontend/src/app/router.tsx"
+      ],
+      "verifies": [
+        "V-11"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-905",
+      "title": "Shell and tab bar",
+      "lane": "FRONTEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-901"
+      ],
+      "writes": [
+        "frontend/src/app/WorldShell.tsx",
+        "frontend/src/shared/ui/"
+      ],
+      "verifies": [
+        "UI-360-390-430"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-906",
+      "title": "Identity settings screen",
+      "lane": "FRONTEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-209",
+        "T-904"
+      ],
+      "writes": [
+        "frontend/src/features/identity/IdentitySettings.tsx"
+      ],
+      "verifies": [
+        "V-12"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-907",
+      "title": "Accessibility and responsive pass",
+      "lane": "FRONTEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-905"
+      ],
+      "writes": [
+        "frontend/src/features/**` (accessibility fixes only)"
+      ],
+      "verifies": [
+        "UI-360-390-430"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-908",
+      "title": "Navigation package verification",
+      "lane": "FRONTEND",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-901",
+        "T-902",
+        "T-903",
+        "T-904",
+        "T-905",
+        "T-906",
+        "T-907"
+      ],
+      "writes": [
+        "docs/mcr/integration/evidence/ui-*.json"
+      ],
+      "verifies": [
+        "UI-360-390-430"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-951",
+      "title": "Three-identity fixture",
+      "lane": "INTEGRATOR",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-908"
+      ],
+      "writes": [
+        "frontend/e2e/real/fixtures/"
+      ],
+      "verifies": [
+        "V-11"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-952",
+      "title": "End-to-end scenario",
+      "lane": "INTEGRATOR",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-951"
+      ],
+      "writes": [
+        "frontend/e2e/real/profile-social.spec.ts"
+      ],
+      "verifies": [
+        "V-11"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-953",
+      "title": "Cross-surface consistency sweep",
+      "lane": "INTEGRATOR",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-952"
+      ],
+      "writes": [
+        "docs/mcr/integration/evidence/v03-sweep.json"
+      ],
+      "verifies": [
+        "V-03"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-954",
+      "title": "Lifecycle independence sweep",
+      "lane": "INTEGRATOR",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-952"
+      ],
+      "writes": [
+        "docs/mcr/integration/evidence/v08-sweep.json"
+      ],
+      "verifies": [
+        "V-08"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-955",
+      "title": "Release evidence assembly",
+      "lane": "INTEGRATOR",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-953",
+        "T-954"
+      ],
+      "writes": [
+        "docs/mcr/integration/release-evidence.md"
+      ],
+      "verifies": [
+        "GUARDS"
+      ],
+      "commit": null,
+      "evidence": null
+    },
+    {
+      "id": "T-956",
+      "title": "Release decision",
+      "lane": "INTEGRATOR",
+      "status": "NOT_STARTED",
+      "depends_on": [
+        "T-955"
+      ],
+      "writes": [
+        "docs/mcr/integration/release-decision.md"
+      ],
+      "verifies": [
+        "GUARDS"
+      ],
+      "commit": null,
+      "evidence": null
+    }
+  ]
+}
