@@ -39,6 +39,7 @@ use std::{sync::Arc, time::Duration};
 use tonic::{Request, Response, Status};
 use uuid::Uuid;
 
+pub mod coverage;
 pub mod delivery;
 pub mod ledger;
 pub mod scoped;

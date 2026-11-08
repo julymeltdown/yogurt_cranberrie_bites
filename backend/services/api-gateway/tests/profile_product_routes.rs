@@ -220,6 +220,39 @@ async fn a_read_carries_no_body_and_reaches_dispatch() {
 }
 
 #[tokio::test]
+async fn the_discovery_routes_wp03_left_unmounted_now_reach_dispatch() {
+    // WP-03 left `/api/catalog/{category}/search` and `/api/discover/people`
+    // unmounted. Both are mounted now; this proves the router matches them and
+    // forwards, rather than 404-ing at the boundary.
+    let harness = RouteHarness::new().await;
+    for path in [
+        "/api/catalog/music/search".to_owned(),
+        "/api/catalog/anime/search?q=test".to_owned(),
+        "/api/catalog/game/search?limit=5".to_owned(),
+        "/api/discover/people".to_owned(),
+        "/api/discover/people?category=MUSIC".to_owned(),
+    ] {
+        let (status, reason) = status_and_reason(&harness, request(&harness, "GET", &path)).await;
+        assert_eq!(status, StatusCode::SERVICE_UNAVAILABLE, "{path}");
+        assert_eq!(
+            reason, "DEPENDENCY_UNAVAILABLE",
+            "{path} must reach profile dispatch"
+        );
+    }
+    // The router matches the `{category}` segment structurally; the closed enum
+    // is enforced by the producer, which is the layer that owns the catalog.
+    // So an unknown category still reaches dispatch and is refused there.
+    let path = "/api/catalog/kpop/search";
+    assert!(
+        api_gateway::adapters::r#in::http::profile_product::protects(path),
+        "the router matches the segment; the producer owns the enum"
+    );
+    let (status, reason) = status_and_reason(&harness, request(&harness, "GET", path)).await;
+    assert_eq!(status, StatusCode::SERVICE_UNAVAILABLE, "{path}");
+    assert_eq!(reason, "DEPENDENCY_UNAVAILABLE", "{path}");
+}
+
+#[tokio::test]
 async fn a_read_with_a_body_is_refused() {
     let harness = RouteHarness::new().await;
     let request = Request::builder()

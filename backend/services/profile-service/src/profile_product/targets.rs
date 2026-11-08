@@ -15,6 +15,7 @@ use super::{
     proto, rejects_event_path, scoped::ProfileRepresentation, VerifiedProfile,
 };
 use crate::adapters::out::profile_owner_guard::ProfileOwnerScope;
+use crate::catalog;
 use crate::identity::{
     CallbackCommand, CallbackError, CallbackResult, IdentityRuntime, StartError,
 };
@@ -38,6 +39,8 @@ pub enum ProfileOperation {
     StartIdentityVerification,
     /// `disconnectIdentityVerification` — revoke the live claim.
     DisconnectIdentityVerification,
+    /// `searchCatalog` — search one favorites category.
+    SearchCatalog(catalog::Category),
 }
 
 impl ProfileOperation {
@@ -48,6 +51,7 @@ impl ProfileOperation {
             Self::GetOwnIdentityVerification => "getOwnIdentityVerification",
             Self::StartIdentityVerification => "startIdentityVerification",
             Self::DisconnectIdentityVerification => "disconnectIdentityVerification",
+            Self::SearchCatalog(_) => "searchCatalog",
         }
     }
     pub fn mutation(self) -> bool {
@@ -74,6 +78,22 @@ pub fn parse(method: &str, target: &str) -> Result<ProfileOperation, Status> {
         .map_or((target, None), |(path, query)| (path, Some(query)));
     if !path.starts_with("/api/") {
         return Err(Status::permission_denied("Unsupported profile operation"));
+    }
+    // `searchCatalog` is the one served operation that carries a query
+    // (`q`, `cursor`, `limit`). It is matched before the generic "no query"
+    // rule below, and its query is validated by the catalog module.
+    if method == "GET" {
+        if let Some(rest) = path.strip_prefix("/api/catalog/") {
+            let mut segments = rest.split('/');
+            let (Some(category), Some("search"), None) =
+                (segments.next(), segments.next(), segments.next())
+            else {
+                return Err(Status::permission_denied("Unsupported profile operation"));
+            };
+            let category = catalog::Category::parse(category)
+                .ok_or_else(|| Status::not_found("Catalog category is unavailable"))?;
+            return Ok(ProfileOperation::SearchCatalog(category));
+        }
     }
     let result = match (method, path) {
         ("GET", "/api/me/profile") => ProfileOperation::GetOwnProfile,
@@ -264,6 +284,15 @@ impl super::scoped::ScopedProfileProducer for ProfileProductProducer {
                     .await;
                 json(200, verification.to_json())
             }
+            ProfileOperation::SearchCatalog(category) => {
+                let query = catalog_query(&request.http_target)?;
+                let page = catalog::search(&self.pool, category, &query)
+                    .await
+                    .map_err(catalog_error)?;
+                json(200, serde_json::to_value(&page).map_err(|_| {
+                    Status::internal("Catalog projection")
+                })?)
+            }
         }
     }
 }
@@ -332,6 +361,63 @@ pub fn callback_command(
         code: code.map(str::to_owned),
         provider_error: provider_error.map(str::to_owned),
         now,
+    }
+}
+
+/// Parse the frozen `core.CatalogQuery` from a target's query string.
+///
+/// The field set is closed (`q`, `cursor`, `limit`), a repeated field is a
+/// client error, and an unknown field is refused rather than ignored. Value
+/// bounds are enforced by `catalog::validate`.
+fn catalog_query(target: &str) -> Result<catalog::CatalogQuery, Status> {
+    let invalid = || Status::invalid_argument("Invalid catalog query");
+    let mut q = None;
+    let mut cursor = None;
+    let mut limit = catalog::DEFAULT_LIMIT;
+    let mut limit_seen = false;
+    if let Some((_, query)) = target.split_once('?') {
+        for pair in query.split('&') {
+            if pair.is_empty() {
+                continue;
+            }
+            let (name, value) = pair.split_once('=').unwrap_or((pair, ""));
+            match name {
+                "q" => {
+                    if q.is_some() {
+                        return Err(invalid());
+                    }
+                    q = Some(value.to_owned());
+                }
+                "cursor" => {
+                    if cursor.is_some() {
+                        return Err(invalid());
+                    }
+                    cursor = Some(value.to_owned());
+                }
+                "limit" => {
+                    if limit_seen {
+                        return Err(invalid());
+                    }
+                    limit_seen = true;
+                    limit = value.parse::<i64>().map_err(|_| invalid())?;
+                }
+                _ => return Err(invalid()),
+            }
+        }
+    }
+    catalog::validate(catalog::CatalogQuery { q, cursor, limit }).map_err(catalog_error)
+}
+
+/// Map a catalog refusal to a closed gRPC status. No message carries a value
+/// from the request.
+fn catalog_error(error: catalog::CatalogError) -> Status {
+    match error {
+        catalog::CatalogError::InvalidQuery(_) | catalog::CatalogError::InvalidCursor => {
+            Status::invalid_argument("Invalid catalog query")
+        }
+        catalog::CatalogError::Unavailable => {
+            Status::unavailable("Catalog store is unavailable")
+        }
     }
 }
 

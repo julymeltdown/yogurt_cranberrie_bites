@@ -73,6 +73,25 @@ pub const ROUTES: &[Route] = &[
         body_limit: READ,
         bytes: false,
     },
+    // WP-03 left these two unmounted. `searchCatalog` is answered by the
+    // profile service's catalog module; `discoverProfiles` reads a concert
+    // service projection and is mounted here so the route exists, while the
+    // producer refuses it until that composition is owned (see
+    // `profile_product::coverage`).
+    Route {
+        method: "GET",
+        path: "/api/catalog/:category/search",
+        operation: "searchCatalog",
+        body_limit: READ,
+        bytes: false,
+    },
+    Route {
+        method: "GET",
+        path: "/api/discover/people",
+        operation: "discoverProfiles",
+        body_limit: READ,
+        bytes: false,
+    },
     Route {
         method: "GET",
         path: "/api/me/identity/:provider",
