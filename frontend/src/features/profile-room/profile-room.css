@@ -1,0 +1,252 @@
+/**
+ * WP-07: the room screen styles.
+ *
+ * Plain, restrained presentation: spacing, typography and ordinary symmetric
+ * control borders. No decorative left accent bars, no inset rails and no
+ * pseudo-element left bars, per the product's UI rules.
+ */
+
+.room-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  max-width: 720px;
+  margin: 0 auto;
+  color: #1d1f24;
+}
+
+.room-screen__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 16px;
+}
+
+.room-screen__header h1 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.room-screen__status {
+  font-size: 14px;
+  color: #454a53;
+}
+
+.room-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  background: #14161a;
+  border: 2px solid #2a2d33;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.room-stage canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  image-rendering: pixelated;
+}
+
+.room-stage__fallback {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  color: #d8dbe2;
+  font-size: 14px;
+  text-align: center;
+  padding: 16px;
+}
+
+.room-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.room-editor fieldset {
+  border: 1px solid #c8ccd4;
+  border-radius: 4px;
+  padding: 12px;
+  margin: 0;
+}
+
+.room-editor legend {
+  font-weight: 600;
+  padding: 0 4px;
+}
+
+.room-editor__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.room-editor__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.room-editor button,
+.room-importer button {
+  min-height: 40px;
+  padding: 0 14px;
+  border: 1px solid #6b7280;
+  border-radius: 4px;
+  background: #ffffff;
+  color: #1d1f24;
+  font: inherit;
+  cursor: pointer;
+}
+
+.room-editor button:disabled,
+.room-importer button:disabled {
+  cursor: not-allowed;
+  color: #8b9099;
+  border-color: #c8ccd4;
+}
+
+.room-editor button:focus-visible,
+.room-importer button:focus-visible,
+.room-editor input:focus-visible,
+.room-importer input:focus-visible {
+  outline: 2px solid #1f5fd0;
+  outline-offset: 2px;
+}
+
+.room-editor__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.room-editor__list li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  padding: 6px;
+  border: 1px solid #dde0e6;
+  border-radius: 4px;
+}
+
+.room-editor__list li[data-selected='true'] {
+  border-color: #1f5fd0;
+}
+
+.room-editor__conflict {
+  border: 1px solid #b45309;
+  border-radius: 4px;
+  padding: 12px;
+  background: #fffaf0;
+}
+
+.room-editor__conflict h2 {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.room-importer {
+  border: 1px solid #c8ccd4;
+  border-radius: 4px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.room-importer h2 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.room-importer__steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font-size: 13px;
+}
+
+.room-importer__steps li {
+  padding: 4px 8px;
+  border: 1px solid #c8ccd4;
+  border-radius: 999px;
+}
+
+.room-importer__steps li[data-state='current'] {
+  border-color: #1f5fd0;
+  font-weight: 600;
+}
+
+.room-importer__steps li[data-state='done'] {
+  color: #454a53;
+}
+
+.room-importer__crop {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.room-importer__preview canvas {
+  width: 192px;
+  height: 192px;
+  image-rendering: pixelated;
+  border: 1px solid #2a2d33;
+  background: #14161a;
+}
+
+.room-importer__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.room-importer__note {
+  font-size: 13px;
+  color: #454a53;
+}
+
+/* The profile's Room entry: an ordinary link row, never a room preview. */
+.room-entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid #c8ccd4;
+  border-radius: 4px;
+}
+
+.room-entry a {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 14px;
+  border: 1px solid #6b7280;
+  border-radius: 4px;
+  color: #1d1f24;
+  text-decoration: none;
+}
+
+.room-entry a:focus-visible {
+  outline: 2px solid #1f5fd0;
+  outline-offset: 2px;
+}
+
+.room-unavailable {
+  padding: 24px;
+  text-align: center;
+  color: #454a53;
+}

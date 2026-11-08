@@ -1,0 +1,142 @@
+{
+  "verification": "V-10",
+  "status": "PASS",
+  "scope": "WP-07 — Personal room and posters (T-601 … T-612). V-10 cases c, d, e.",
+  "work_package": "WP-07",
+  "branch": "codex/yc-wp07-room",
+  "base_commit": "ff45c37d9ac30633860370c631a736bc503939a4",
+  "base_commit_subject": "Merge branch 'codex/yc-wp04b-identity'",
+  "recorded_at": "2026-11-08T21:20:16Z",
+  "tasks": ["T-606", "T-607", "T-608", "T-609", "T-610", "T-611", "T-612"],
+  "commands": [
+    {
+      "command": "cd frontend && corepack pnpm@11.7.0 run typecheck",
+      "exit_code": 0
+    },
+    {
+      "command": "cd frontend && corepack pnpm@11.7.0 exec vitest run src/features/profile-room",
+      "exit_code": 0,
+      "result": "5 files, 57 tests passed"
+    },
+    {
+      "command": "cd frontend && corepack pnpm@11.7.0 exec vitest run src/features/profile-room src/features/profile/__tests__/RoomEntry.test.tsx",
+      "exit_code": 0,
+      "result": "6 files, 64 tests passed"
+    }
+  ],
+  "test_files": [
+    { "path": "frontend/src/features/profile-room/__tests__/pixelize.test.ts", "tests": 16 },
+    { "path": "frontend/src/features/profile-room/__tests__/PosterImporter.test.tsx", "tests": 9 },
+    { "path": "frontend/src/features/profile-room/__tests__/scene-lifecycle.test.ts", "tests": 14 },
+    { "path": "frontend/src/features/profile-room/__tests__/RoomPage.test.tsx", "tests": 13 },
+    { "path": "frontend/src/features/profile-room/__tests__/persistence.test.tsx", "tests": 5 },
+    { "path": "frontend/src/features/profile/__tests__/RoomEntry.test.tsx", "tests": 7 }
+  ],
+  "cases": [
+    {
+      "id": "V-10-c",
+      "result": "PASS",
+      "claim": "Two concurrent room saves with the same expected_revision: one succeeds, one gets 409 with the current layout.",
+      "evidence": [
+        "backend concert-service/tests/profile_room_persistence.rs::concurrent_saves_at_the_same_revision_are_one_success_and_one_conflict",
+        "backend concert-service/tests/profile_room_persistence.rs::many_concurrent_savers_at_one_revision_commit_exactly_once",
+        "frontend RoomPage.test.tsx::a_conflict_never_silently_discards_the_users_layout — the draft survives the 409 and the resolution is an explicit choice"
+      ]
+    },
+    {
+      "id": "V-10-d",
+      "result": "PASS",
+      "claim": "Leaving the room screen destroys the Phaser scene and releases textures.",
+      "evidence": [
+        "frontend scene-lifecycle.test.ts::leaving_the_room_destroys_the_scene_and_releases_textures — after destroy the scene reports 0 textures and 0 objects, the game is destroyed, every game object was destroyed, and a second destroy is a no-op",
+        "frontend scene-lifecycle.test.ts::a failed poster load releases everything the scene acquired",
+        "frontend scene-lifecycle.test.ts::a texture that cannot be created releases the scene and reports the failure",
+        "frontend RoomPage.test.tsx::leaving the screen destroys the scene — unmounting the screen calls destroy on the scene it created"
+      ]
+    },
+    {
+      "id": "V-10-e",
+      "result": "PASS",
+      "claim": "Re-entering the room restores the saved layout exactly.",
+      "evidence": [
+        "frontend scene-lifecycle.test.ts::re_entering_the_room_restores_the_saved_layout_exactly — the draw list and the live object/texture counts of a fresh mount equal the first mount's",
+        "frontend persistence.test.tsx::layout_equality_after_reload — save, unmount, remount from the server and the drawn layout equals the stored layout",
+        "frontend persistence.test.tsx::a_visitor_sees_the_saved_layout_while_the_owner_is_offline"
+      ]
+    },
+    {
+      "id": "V-10-e-pixel-determinism",
+      "result": "PASS",
+      "claim": "Pixel conversion is deterministic: same input + crop + preset produce byte-identical PNGs.",
+      "evidence": [
+        "frontend pixelize.test.ts::two_runs_on_the_same_input_produce_byte_identical_pngs — the pixel grids are element-identical and the encoded PNG bytes are identical",
+        "frontend pixelize.test.ts::the whole conversion is deterministic end to end",
+        "frontend pixelize.test.ts::the sampling is nearest-neighbour: every output pixel is a source pixel"
+      ]
+    },
+    {
+      "id": "V-10-e-poster-flow",
+      "result": "PASS",
+      "claim": "Exactly three poster steps, two presets, the preview is the placed result, and upload happens on placement.",
+      "evidence": [
+        "frontend PosterImporter.test.tsx::there_is_no_separate_workshop_screen",
+        "frontend PosterImporter.test.tsx::offers exactly two presets with Fine as the default",
+        "frontend PosterImporter.test.tsx::nothing is uploaded before placement",
+        "frontend PosterImporter.test.tsx::the_preview_matches_the_placed_result"
+      ]
+    },
+    {
+      "id": "V-10-e-keyboard",
+      "result": "PASS",
+      "claim": "Every placement is reachable by keyboard.",
+      "evidence": [
+        "frontend RoomPage.test.tsx::every_placement_is_reachable_by_keyboard — wall, floor, furniture (add, move, layer, remove), character (move, turn) and poster (move, remove) all through buttons and arrow keys"
+      ]
+    }
+  ],
+  "hard_constraints": [
+    {
+      "constraint": "Pixel conversion is DETERMINISTIC: same input + crop + preset produce byte-identical PNGs",
+      "evidence": [
+        "pixelize.test.ts::two_runs_on_the_same_input_produce_byte_identical_pngs",
+        "pixelize.test.ts::a different crop or preset produces a different poster",
+        "pixelize.ts::downsample uses pure integer cell mapping (no resampling filter, no clock, no randomness)"
+      ]
+    },
+    {
+      "constraint": "Leaving the room screen destroys the scene and releases textures; re-entering restores the saved layout exactly",
+      "evidence": [
+        "scene-lifecycle.test.ts::leaving_the_room_destroys_the_scene_and_releases_textures",
+        "scene-lifecycle.test.ts::re_entering_the_room_restores_the_saved_layout_exactly",
+        "scene-lifecycle.test.ts::a scene is the only owner of its Phaser game"
+      ]
+    },
+    {
+      "constraint": "No presence or \"online\" affordance anywhere in the room",
+      "evidence": [
+        "scene-lifecycle.test.ts::no_presence_or_online_affordance_exists_anywhere_in_the_room — every non-test source file under features/profile-room is scanned for online/offline/presence/last seen/active now/heartbeat/typing; the one negation the editor states is removed before the scan",
+        "scene-lifecycle.test.ts::the scene exposes no network, session or presence method — the scene surface is exactly closed/destroy/read/render, and the source has no WebSocket, EventSource, fetch, presence or session",
+        "scene-lifecycle.test.ts::the character is drawn as room decoration with no status field",
+        "RoomPage.test.tsx::the room never offers a presence affordance"
+      ]
+    },
+    {
+      "constraint": "No intro post component imports from features/profile-room/",
+      "evidence": [
+        "frontend/src/features/profile/__tests__/RoomEntry.test.tsx::no_intro_post_component_renders_a_room_preview — every file under features/intro, features/event-feed and features/feed-thread is scanned for a profile-room import and for a room render",
+        "RoomEntry.test.tsx::the room feature exports nothing an intro post could embed",
+        "RoomEntry.test.tsx::the room screen is a route, not a panel of the profile"
+      ]
+    }
+  ],
+  "ui_widths": {
+    "status": "NOT_RUN",
+    "reason": "360/390/430 px browser captures need a running browser session against a live stack; this package ran the jsdom suite and typecheck. The layout is fluid (a 1:1 aspect-ratio stage, flex rows that wrap) and the CSS has no fixed-width breakpoint, but no pixel capture was taken. Recorded as NOT_RUN, not PASS."
+  },
+  "limitations": [
+    "The scene tests replace Phaser with a recording double (Phaser needs a real canvas and frame loop, which jsdom does not provide). The assertions cover ownership, release, draw order and texture filtering; Phaser's own rendering is not exercised here.",
+    "No browser was started for the 360/390/430 px captures; the visual acceptance for the room screen remains open.",
+    "The room route is registered in the shell router, but the shell's profile screen does not yet compose the RoomEntry section (that composition is the profile screen's owner). The entry component and its route are delivered and tested.",
+    "Room poster bytes are read through a direct fetch of the media path; the producer that serves that path belongs to the gateway/media package."
+  ]
+}

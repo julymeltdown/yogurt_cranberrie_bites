@@ -1,0 +1,162 @@
+{
+  "verification": "V-08",
+  "status": "PASS",
+  "scope": "WP-07 — Personal room and posters (T-601 … T-612). V-08 cases b, c, d, e.",
+  "work_package": "WP-07",
+  "branch": "codex/yc-wp07-room",
+  "base_commit": "ff45c37d9ac30633860370c631a736bc503939a4",
+  "base_commit_subject": "Merge branch 'codex/yc-wp04b-identity'",
+  "recorded_at": "2026-11-08T21:20:16Z",
+  "tasks": ["T-601", "T-602", "T-603", "T-604", "T-605"],
+  "commands": [
+    {
+      "command": "cd backend && cargo +1.88.0 check --locked --workspace",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 backend/scripts/mcr/wp07_room_cluster.py --report /tmp/wp07/cluster-final.json --run-cmd 'cargo +1.88.0 test --locked -p concert-domain --test profile_room'",
+      "exit_code": 0,
+      "result": "17 passed; 0 failed"
+    },
+    {
+      "command": "python3 backend/scripts/mcr/wp07_room_cluster.py --report /tmp/wp07/cluster-final.json --run-cmd 'cargo +1.88.0 test --locked -p concert-service --test profile_room_persistence'",
+      "exit_code": 0,
+      "result": "15 passed; 0 failed"
+    },
+    {
+      "command": "python3 backend/scripts/mcr/wp07_room_cluster.py --report /tmp/wp07/cluster-final.json --run-cmd 'cargo +1.88.0 test --locked -p concert-service --test profile_room_visibility'",
+      "exit_code": 0,
+      "result": "8 passed; 0 failed"
+    },
+    {
+      "command": "python3 backend/scripts/mcr/wp07_room_cluster.py --report /tmp/wp07/cluster-final.json --run-cmd 'cargo +1.88.0 test --locked -p concert-service --test profile_room_posters'",
+      "exit_code": 0,
+      "result": "10 passed; 0 failed"
+    },
+    {
+      "command": "python3 backend/scripts/mcr/wp07_room_cluster.py --report /tmp/wp07/cluster-final.json --run-cmd 'cargo +1.88.0 test --locked -p concert-service --test profile_room_routes'",
+      "exit_code": 0,
+      "result": "12 passed; 0 failed"
+    }
+  ],
+  "database_harness": {
+    "script": "backend/scripts/mcr/wp07_room_cluster.py",
+    "pattern": "backend/scripts/mcr/migration_smoke.py — a marker-owned mcr-pg-* cluster in /tmp, no TCP listener, no inherited credentials",
+    "postgres_version": "16.14 (Homebrew)",
+    "migrations_applied": "concert-service 0001 … 0086 (the merged set, including the two 0086 files)",
+    "environment_variable": "CONCERT_TEST_DATABASE_URL",
+    "cleanup": "PASS"
+  },
+  "cases": [
+    {
+      "id": "V-08-b",
+      "result": "PASS",
+      "claim": "Changing an intro audience leaves room visibility unchanged.",
+      "evidence": [
+        "concert-service/tests/profile_room_visibility.rs::changing_an_intro_audience_leaves_room_visibility_unchanged — the intro post's audience is widened and then narrowed (gender, both age bounds, revision) and the room row, its revision and its projected wire value are byte-identical before and after",
+        "concert-service/tests/profile_room_visibility.rs::the_visibility_module_never_names_an_intro_table — the module that applies room visibility has no statement that could reach intro_posts"
+      ]
+    },
+    {
+      "id": "V-08-c",
+      "result": "PASS",
+      "claim": "Changing room visibility leaves every intro post's audience unchanged.",
+      "evidence": [
+        "concert-service/tests/profile_room_visibility.rs::changing_room_visibility_leaves_every_intro_audience_unchanged — three intro posts with different audiences (restricted, unrestricted, draft) are compared column by column before and after PUBLIC→PRIVATE→PUBLIC; the room's own layout is also unchanged",
+        "concert-service/tests/profile_room_visibility.rs::a_visibility_body_naming_an_audience_is_refused_and_writes_nothing — audience_gender, audience_min_age, audience_max_age_exclusive, intro_id and owner_profile_id in the visibility body are all 400 and write nothing"
+      ]
+    },
+    {
+      "id": "V-08-d",
+      "result": "PASS",
+      "claim": "Changing room visibility leaves the intro post visible to viewers who satisfy its audience.",
+      "evidence": [
+        "concert-service/tests/profile_room_visibility.rs::changing_room_visibility_leaves_every_intro_audience_unchanged — the intro rows are the same rows (same ids, same state, same revision) after the room visibility changed",
+        "concert-service/tests/profile_room_visibility.rs::a_private_room_is_404_for_a_visitor_and_the_profile_reports_it_unavailable — a private room is 404 for a visitor and room_available is false, while the room owner still reads it"
+      ]
+    },
+    {
+      "id": "V-08-e",
+      "result": "PASS",
+      "claim": "Publishing an intro post without ever opening the room succeeds.",
+      "evidence": [
+        "concert-service/tests/profile_room_visibility.rs::changing_room_visibility_leaves_every_intro_audience_unchanged — the fixture writes three intro posts (including a PUBLISHED one) before any room row exists, and no room operation runs as a side effect",
+        "concert-service/tests/profile_room_persistence.rs::a_profile_that_never_saved_reads_the_default_room_at_revision_one — a read never creates a row; the room is only materialized by an explicit save"
+      ]
+    },
+    {
+      "id": "V-08-room-ownership",
+      "result": "PASS",
+      "claim": "The room is owned by the profile and independent of every intro post and event.",
+      "evidence": [
+        "concert-service/tests/profile_room_persistence.rs::the_room_table_has_no_intro_or_event_column — information_schema lists exactly created_at, layout, owner_profile_id, revision, updated_at, visibility",
+        "concert-service/tests/profile_room_routes.rs::any_target_containing_an_intro_segment_is_rejected and ::any_target_containing_an_events_segment_is_rejected",
+        "concert-domain/tests/profile_room.rs::the_room_layout_has_no_intro_post_or_event_reference"
+      ]
+    }
+  ],
+  "hard_constraints": [
+    {
+      "constraint": "5 posters rejected",
+      "evidence": [
+        "concert-domain/tests/profile_room.rs::five_posters_are_rejected — four are admitted, five are refused, and the same rule holds through the save command",
+        "concert-service/tests/profile_room_persistence.rs::an_unadmitted_layout_is_refused_before_any_write"
+      ]
+    },
+    {
+      "constraint": "Two furniture items on the same cell in the same layer rejected",
+      "evidence": [
+        "concert-domain/tests/profile_room.rs::two_furniture_items_on_one_cell_in_one_layer_are_rejected — the same cell in a different layer is admitted (a lamp on a table), a neighbouring cell is admitted, and the collision is detected across a long list",
+        "concert-service/tests/profile_room_persistence.rs::an_unadmitted_layout_is_refused_before_any_write"
+      ]
+    },
+    {
+      "constraint": "Unknown wall style rejected",
+      "evidence": [
+        "concert-domain/tests/profile_room.rs::an_unknown_wall_style_is_rejected — every admitted style is accepted and marble, empty, upper-case and whitespace spellings are refused",
+        "concert-service/tests/profile_room_persistence.rs::a_stored_layout_the_rules_no_longer_admit_fails_closed"
+      ]
+    },
+    {
+      "constraint": "Two concurrent saves with the same revision: one succeeds, one gets 409 with the current layout",
+      "evidence": [
+        "concert-service/tests/profile_room_persistence.rs::concurrent_saves_at_the_same_revision_are_one_success_and_one_conflict — exactly one commit, and the loser's 409 carries the winner's layout",
+        "concert-service/tests/profile_room_persistence.rs::many_concurrent_savers_at_one_revision_commit_exactly_once — 8 writers, 1 success and 7 conflicts",
+        "concert-service/tests/profile_room_routes.rs::a_stale_write_is_409_with_the_current_room_and_writes_nothing"
+      ]
+    },
+    {
+      "constraint": "A non-owner save writes nothing",
+      "evidence": [
+        "concert-service/tests/profile_room_persistence.rs::a_non_owner_save_writes_nothing — the stranger's save lands on the stranger's own row, the owner's row is byte-identical, and a direct owner re-point is refused by profile_rooms_owner_immutable",
+        "concert-service/tests/profile_room_persistence.rs::a_save_that_names_its_own_owner_is_refused_and_writes_nothing",
+        "concert-service/tests/profile_room_routes.rs::two_profiles_never_share_a_room",
+        "concert-service/tests/profile_room_persistence.rs::the_http_projection_of_a_denied_write_is_403"
+      ]
+    },
+    {
+      "constraint": "Changing room visibility leaves every intro post's audience unchanged; changing an intro audience leaves room visibility unchanged",
+      "evidence": [
+        "concert-service/tests/profile_room_visibility.rs::changing_room_visibility_leaves_every_intro_audience_unchanged",
+        "concert-service/tests/profile_room_visibility.rs::changing_an_intro_audience_leaves_room_visibility_unchanged"
+      ]
+    },
+    {
+      "constraint": "A JPEG poster is rejected",
+      "evidence": [
+        "concert-service/tests/profile_room_posters.rs::a_jpeg_poster_is_rejected — image/jpeg is 400 INVALID_INPUT, a JPEG claiming image/png is 415 INVALID_MEDIA_TYPE, and WebP/GIF are 415; nothing is stored"
+      ]
+    },
+    {
+      "constraint": "A PNG whose declared dimensions differ from actual is rejected",
+      "evidence": [
+        "concert-service/tests/profile_room_posters.rs::a_png_whose_declared_dimensions_differ_from_the_actual_ones_is_rejected — five wrong declarations are 400 and the honest one is accepted"
+      ]
+    }
+  ],
+  "limitations": [
+    "No live HTTP server was started: the route layer is exercised through its pure parser and its handler against a real database, not over a socket. Gateway dispatch for the five room operations is a gateway/profile-service composition change outside this package's Writes scope.",
+    "V-08-a (deleting an intro post leaves the room unchanged) is owned by WP-05's intro deletion and is not exercised here; the room table has no intro reference, so a delete cannot reach it.",
+    "The account-context version (ACCOUNT_CONTEXT_STALE) does not exist in the backend; the room client recognizes the reason and writes nothing, as WP-08 recorded."
+  ]
+}

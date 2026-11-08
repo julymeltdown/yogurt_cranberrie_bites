@@ -46,6 +46,9 @@ pub mod intro_live;
 /// WP-08: the profile-owned avatar (`GET`/`PUT /api/me/avatar`).
 pub mod profile_avatar;
 
+/// WP-07: the personal room (`/api/me/room`, `/api/profiles/{id}/room`).
+pub mod profile_room;
+
 pub mod notification_target_policy;
 pub mod account_private_data;
 

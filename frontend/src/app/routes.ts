@@ -40,6 +40,9 @@ export const panelRoutes: readonly PanelRoute[] = [
   { path: '/meet/people', title: 'People', tab: '/meet', parent: '/meet' },
   { path: '/meet/intro/edit', title: 'Your intro', tab: '/meet', parent: '/meet' },
   { path: '/people/:userId', title: 'Profile', tab: '/meet', parent: '/meet/people' },
+  // WP-07: the personal room is a subordinate screen of the profile, opened only
+  // from the profile's Room entry. It is never embedded in an intro post.
+  { path: '/people/:userId/room', title: 'Room', tab: '/meet', parent: '/people/:userId' },
   { path: '/gifts', title: 'Gifts', tab: '/gifts', parent: '/world', links: links(
     ['/gifts/mine', 'My gifts'], ['/gifts/new', 'Create giveaway']) },
   { path: '/gifts/new', title: 'Create giveaway', tab: '/gifts', parent: '/gifts' },
