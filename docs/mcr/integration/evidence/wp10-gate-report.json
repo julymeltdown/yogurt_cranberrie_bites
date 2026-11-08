@@ -1,0 +1,732 @@
+{
+  "scope": "WP-10 profile/social end-to-end integration gate",
+  "release": "development stack, NOT production qualification",
+  "qa08": "NOT_RUN",
+  "production": "NOT_CLAIMED",
+  "candidate": {
+    "worktree": "/Users/lhs/Desktop/yogurt-worktrees/wp07-room",
+    "revision": "6b38f33974103c462523aa500188f29a1348dc33",
+    "script_sha256": "a8ae124507bc09a25da442680039239700d509b78a7a5c36c19f4df9315d894a",
+    "binaries": {
+      "api-gateway": {
+        "sha256": "e8cd419be7d79baacb5d8f45ff885345637bf4defa284e3454932613a854e2db",
+        "bytes": 69115680
+      },
+      "auth-service": {
+        "sha256": "fd3590211c1c01ef503561a1f4bef212a8943e600702a295573ee1b5f25162d2",
+        "bytes": 56203104
+      },
+      "concert-service": {
+        "sha256": "f2c94f0e04059f95cd7b148ff3ec30e55ff01497b1836de59b53dbd00491cade",
+        "bytes": 98550208
+      },
+      "friend-service": {
+        "sha256": "a650f02bc5b2af9f154b078e86091052648c264e1d3513aa3be1ec94329a3ddb",
+        "bytes": 44672832
+      },
+      "notification-service": {
+        "sha256": "02641ea62909d2340ddae479bc6e25e35627ec6d06e57698e865096694082fe5",
+        "bytes": 40779656
+      },
+      "post-service": {
+        "sha256": "f024bf5c8f2011be1a4a3174acd8965e889e58733653b7d05a6820a23d3206d4",
+        "bytes": 58158784
+      },
+      "profile-service": {
+        "sha256": "6821938af297c82a45ce17b40d6e4ec3d885c2c6c997eea88ec1f2cd87304d3a",
+        "bytes": 52431232
+      }
+    }
+  },
+  "started_at_utc": "2026-11-08T23:43:49.233001+00:00",
+  "identities": {
+    "author": {
+      "user_id": "000e9d7b-caa2-44e9-8bc1-122a67299322",
+      "profile_id": "0b3b118d-136b-45cd-927e-f7dcfe0678e8",
+      "verification": "NOT_RUN (author needs no claim)"
+    },
+    "viewer": {
+      "user_id": "7260e2a1-6bc2-47ee-8aaa-e8babdacbdbc",
+      "profile_id": "00be7995-6d53-4745-aec0-3787863083c4"
+    },
+    "outsider": {
+      "user_id": "f731089b-b0ff-4b30-97bf-8ddc675d561e",
+      "profile_id": "2df5adef-c628-407e-9158-5a4aca70c415"
+    },
+    "verification": {
+      "viewer": {
+        "callback_http": 200,
+        "callback_location_marker": "success",
+        "status": "VERIFIED",
+        "claims_present": true
+      },
+      "outsider": {
+        "callback_http": 200,
+        "callback_location_marker": "success",
+        "status": "VERIFIED",
+        "claims_present": true
+      }
+    }
+  },
+  "steps": {
+    "step1_profile_posts": {
+      "status": "BLOCKED",
+      "checks": {
+        "selfie_init": {
+          "http": 403,
+          "media_id": null
+        }
+      },
+      "blocked_on": "the profile product producer does not serve the profile post and media operations: the gateway route exists but the producer's closed operation set answers PERMISSION_DENIED"
+    },
+    "step2_intro_post": {
+      "status": "BLOCKED",
+      "checks": {
+        "create": {
+          "http": 404
+        },
+        "list": {
+          "http": 404
+        }
+      },
+      "blocked_on": "WP-05 intro post operations are not composed on master: the frozen routes /api/me/intro-posts and /api/discover/intro-posts are not registered by the gateway, so the audience decision, the attachments and the heart have no surface to exercise"
+    },
+    "step3_liker_navigation": {
+      "status": "BLOCKED",
+      "checks": {
+        "notification inbox": {
+          "http": 200
+        },
+        "likers list": {
+          "http": 404
+        },
+        "viewer profile": {
+          "http": 200
+        }
+      },
+      "blocked_on": "WP-05 hearts, the INTRO_LIKED notification and the author-only liker list are not composed on master"
+    },
+    "step4_poster_and_delete": {
+      "status": "PARTIAL",
+      "checks": {
+        "room_before": {
+          "http": 403
+        },
+        "poster_upload": {
+          "http": 403
+        },
+        "intro_delete": {
+          "http": 404
+        }
+      },
+      "blocked_on": "the room, avatar and profile post producers are not reachable over HTTP on master, and the intro post delete is not composed; the durable half of the same statement is asserted in the lifecycle sweep"
+    },
+    "step5_outsider_denial": {
+      "status": "BLOCKED",
+      "checks": {
+        "restricted post": {
+          "http": 404
+        },
+        "restricted attachments": {
+          "http": 404
+        },
+        "restricted bytes": {
+          "http": 403
+        }
+      },
+      "blocked_on": "WP-04 audience decision and WP-05 intro surfaces are not composed on master; the outsider identity itself is verified (see identities.verification)"
+    }
+  },
+  "sweeps": {
+    "cross_surface": {
+      "status": "BLOCKED",
+      "surfaces": {
+        "list": {
+          "http": 403,
+          "path": "/api/profiles/0b3b118d-136b-45cd-927e-f7dcfe0678e8/posts",
+          "reason": "PERMISSION_DENIED"
+        },
+        "detail": {
+          "http": 404,
+          "path": "/api/intro-posts/00000000-0000-4000-8000-000000000001",
+          "reason": null
+        },
+        "attachment": {
+          "http": 404,
+          "path": "/api/intro-posts/00000000-0000-4000-8000-000000000001/attachments",
+          "reason": null
+        },
+        "thumbnail": {
+          "http": 403,
+          "path": "/api/media/00000000-0000-4000-8000-000000000002",
+          "reason": "PERMISSION_DENIED"
+        },
+        "bytes": {
+          "http": 403,
+          "path": "/api/media/00000000-0000-4000-8000-000000000002/content",
+          "reason": "PERMISSION_DENIED"
+        },
+        "shared_link": {
+          "http": 404,
+          "path": "/api/intro-posts/resolve?token=wp10",
+          "reason": null
+        },
+        "like": {
+          "http": 400,
+          "path": "/api/intro-posts/00000000-0000-4000-8000-000000000001/like",
+          "reason": null
+        },
+        "comment": {
+          "http": 400,
+          "path": "/api/intro-posts/00000000-0000-4000-8000-000000000001/comments",
+          "reason": null
+        }
+      },
+      "blocked_on": "WP-04/WP-05 intro surfaces are not composed on master"
+    },
+    "lifecycle": {
+      "status": "PARTIAL",
+      "cases": {},
+      "http": {
+        "room read": {
+          "http": 403,
+          "reason": "PERMISSION_DENIED"
+        },
+        "avatar read": {
+          "http": 403,
+          "reason": "PERMISSION_DENIED"
+        },
+        "posts list": {
+          "http": 403,
+          "reason": "PERMISSION_DENIED"
+        },
+        "room visibility": {
+          "http": 403,
+          "reason": "PERMISSION_DENIED"
+        }
+      },
+      "durable": {
+        "cases": {
+          "room_visibility": {
+            "unchanged": true,
+            "avatar_unchanged": true,
+            "posts_unchanged": true,
+            "media_unchanged": true,
+            "room_changed": true,
+            "intro_audience": "BLOCKED: no intro post surface on this master"
+          },
+          "room_visibility_restore": {
+            "unchanged": true,
+            "room_restored": true,
+            "revision_advanced": true
+          },
+          "avatar_save": {
+            "unchanged": true,
+            "room_unchanged": true,
+            "posts_unchanged": true,
+            "media_unchanged": true,
+            "avatar_changed": true
+          },
+          "post_delete": {
+            "unchanged": false,
+            "note": "no profile post row exists to delete (the profile post producer is not reachable over HTTP on this master)"
+          }
+        },
+        "captures": {
+          "before_last": {
+            "room": [
+              {
+                "layout": {},
+                "revision": 3,
+                "created_at": "2026-11-09T08:44:07.644797+09:00",
+                "visibility": "PUBLIC",
+                "owner_profile_id": "0b3b118d-136b-45cd-927e-f7dcfe0678e8"
+              }
+            ],
+            "avatar": [],
+            "posts": [],
+            "media": []
+          },
+          "after_last": {
+            "room": [
+              {
+                "layout": {},
+                "revision": 3,
+                "created_at": "2026-11-09T08:44:07.644797+09:00",
+                "visibility": "PUBLIC",
+                "owner_profile_id": "0b3b118d-136b-45cd-927e-f7dcfe0678e8"
+              }
+            ],
+            "avatar": [
+              {
+                "config": {
+                  "contract_version": "1.0.0"
+                },
+                "revision": 2,
+                "created_at": "2026-11-09T08:44:08.006708+09:00",
+                "owner_profile_id": "0b3b118d-136b-45cd-927e-f7dcfe0678e8"
+              }
+            ],
+            "posts": [],
+            "media": []
+          }
+        }
+      },
+      "http_blocked_on": "the profile product producer's closed operation set does not include the room, avatar, profile post or profile media operations",
+      "not_run_cases": [
+        "post_delete"
+      ]
+    }
+  },
+  "checks": {},
+  "stack": {
+    "gateway_url": "http://127.0.0.1:57308",
+    "event": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
+    "release_digest": "5a51442b4b4c62d99c329f39aafbf277b4a37a384efc3fdfd1f5c219997bec3b",
+    "gateway_request_timeout_ms": 5000,
+    "readiness": {
+      "api-gateway": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "database": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->auth": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->friend": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->notification": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->post": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->profile": {
+            "required": true,
+            "status": "up"
+          },
+          "signing-keys": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      },
+      "auth-service": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "auth->friend": {
+            "required": false,
+            "status": "up"
+          },
+          "auth->notification": {
+            "required": false,
+            "status": "up"
+          },
+          "auth->post": {
+            "required": false,
+            "status": "up"
+          },
+          "auth->profile": {
+            "required": false,
+            "status": "up"
+          },
+          "concert-owner-authority": {
+            "required": true,
+            "status": "up"
+          },
+          "database": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      },
+      "profile-service": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "database": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      },
+      "friend-service": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "concert-owner-authority": {
+            "required": true,
+            "status": "up"
+          },
+          "database": {
+            "required": true,
+            "status": "up"
+          },
+          "friend->profile": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      },
+      "post-service": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "database": {
+            "required": true,
+            "status": "up"
+          },
+          "post->friend": {
+            "required": true,
+            "status": "up"
+          },
+          "post->gateway": {
+            "required": true,
+            "status": "up"
+          },
+          "post->notification": {
+            "required": false,
+            "status": "up"
+          },
+          "post->profile": {
+            "required": false,
+            "status": "up"
+          }
+        }
+      },
+      "notification-service": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "database": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      },
+      "concert-service": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "database": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      }
+    },
+    "owned_root": "/private/tmp/mcr-pg-tjfba5ep",
+    "naver_provider": "local test application",
+    "mail": "private local HTTP capture"
+  },
+  "enrollment_policy": {
+    "revision": "11234a4c-5daa-4b37-b9ab-602c9e596921",
+    "approval_reference": "development-not-admitted",
+    "production_approval": "NOT_PRESENT_IN_CHECKOUT_SCHEMA"
+  },
+  "catalog": {
+    "items": {
+      "mcr": {
+        "item_id": "wp10_mcr_three_cheers",
+        "kind": "MUSIC",
+        "name": "Three Cheers for Sweet Revenge"
+      },
+      "nana": {
+        "item_id": "wp10_nana_seven",
+        "kind": "MUSIC",
+        "name": "NANA OST - Seven"
+      }
+    },
+    "table_columns": [
+      {
+        "type": "uuid",
+        "column": "catalog_item_id"
+      },
+      {
+        "type": "text",
+        "column": "category"
+      },
+      {
+        "type": "text",
+        "column": "label"
+      },
+      {
+        "type": "text",
+        "column": "external_url"
+      },
+      {
+        "type": "text",
+        "column": "source"
+      },
+      {
+        "type": "boolean",
+        "column": "excluded"
+      },
+      {
+        "type": "text",
+        "column": "exclusion_reason"
+      },
+      {
+        "type": "text",
+        "column": "status"
+      },
+      {
+        "type": "timestamp with time zone",
+        "column": "created_at"
+      }
+    ],
+    "seed": "NOT_RUN"
+  },
+  "probes": [
+    {
+      "label": "step1 selfie init",
+      "role": "author",
+      "method": "POST",
+      "path": "/api/me/media/uploads",
+      "http": 403,
+      "reason": "PERMISSION_DENIED",
+      "bytes": 191
+    },
+    {
+      "label": "step2 intro create",
+      "role": "author",
+      "method": "POST",
+      "path": "/api/me/intro-posts",
+      "http": 404,
+      "reason": "RESOURCE_UNAVAILABLE",
+      "bytes": 194
+    },
+    {
+      "label": "step2 intro list",
+      "role": "viewer",
+      "method": "GET",
+      "path": "/api/discover/intro-posts",
+      "http": 404,
+      "reason": null,
+      "bytes": 0
+    },
+    {
+      "label": "step3 notification inbox",
+      "role": "author",
+      "method": "GET",
+      "path": "/api/notifications",
+      "http": 200,
+      "reason": null,
+      "bytes": 30
+    },
+    {
+      "label": "step3 likers list",
+      "role": "author",
+      "method": "GET",
+      "path": "/api/intro-posts/00000000-0000-4000-8000-000000000001/likes",
+      "http": 404,
+      "reason": null,
+      "bytes": 0
+    },
+    {
+      "label": "step3 viewer profile",
+      "role": "author",
+      "method": "GET",
+      "path": "/api/profiles/00be7995-6d53-4745-aec0-3787863083c4",
+      "http": 200,
+      "reason": null,
+      "bytes": 138
+    },
+    {
+      "label": "step4 room before",
+      "role": "author",
+      "method": "GET",
+      "path": "/api/me/room",
+      "http": 403,
+      "reason": "PERMISSION_DENIED",
+      "bytes": 191
+    },
+    {
+      "label": "step4 poster upload",
+      "role": "author",
+      "method": "POST",
+      "path": "/api/me/room/posters",
+      "http": 403,
+      "reason": "PERMISSION_DENIED",
+      "bytes": 191
+    },
+    {
+      "label": "step4 intro delete",
+      "role": "author",
+      "method": "DELETE",
+      "path": "/api/me/intro-posts/00000000-0000-4000-8000-000000000001",
+      "http": 404,
+      "reason": "RESOURCE_UNAVAILABLE",
+      "bytes": 194
+    },
+    {
+      "label": "step5 restricted post",
+      "role": "outsider",
+      "method": "GET",
+      "path": "/api/intro-posts/00000000-0000-4000-8000-000000000001",
+      "http": 404,
+      "reason": null,
+      "bytes": 0
+    },
+    {
+      "label": "step5 restricted attachments",
+      "role": "outsider",
+      "method": "GET",
+      "path": "/api/intro-posts/00000000-0000-4000-8000-000000000001/attachments",
+      "http": 404,
+      "reason": null,
+      "bytes": 0
+    },
+    {
+      "label": "step5 restricted bytes",
+      "role": "outsider",
+      "method": "GET",
+      "path": "/api/media/00000000-0000-4000-8000-000000000002/content",
+      "http": 403,
+      "reason": "PERMISSION_DENIED",
+      "bytes": 191
+    },
+    {
+      "label": "cross-surface list",
+      "role": "outsider",
+      "method": "GET",
+      "path": "/api/profiles/0b3b118d-136b-45cd-927e-f7dcfe0678e8/posts",
+      "http": 403,
+      "reason": "PERMISSION_DENIED",
+      "bytes": 191
+    },
+    {
+      "label": "cross-surface detail",
+      "role": "outsider",
+      "method": "GET",
+      "path": "/api/intro-posts/00000000-0000-4000-8000-000000000001",
+      "http": 404,
+      "reason": null,
+      "bytes": 0
+    },
+    {
+      "label": "cross-surface attachment",
+      "role": "outsider",
+      "method": "GET",
+      "path": "/api/intro-posts/00000000-0000-4000-8000-000000000001/attachments",
+      "http": 404,
+      "reason": null,
+      "bytes": 0
+    },
+    {
+      "label": "cross-surface thumbnail",
+      "role": "outsider",
+      "method": "GET",
+      "path": "/api/media/00000000-0000-4000-8000-000000000002",
+      "http": 403,
+      "reason": "PERMISSION_DENIED",
+      "bytes": 191
+    },
+    {
+      "label": "cross-surface bytes",
+      "role": "outsider",
+      "method": "GET",
+      "path": "/api/media/00000000-0000-4000-8000-000000000002/content",
+      "http": 403,
+      "reason": "PERMISSION_DENIED",
+      "bytes": 191
+    },
+    {
+      "label": "cross-surface shared_link",
+      "role": "outsider",
+      "method": "GET",
+      "path": "/api/intro-posts/resolve?token=wp10",
+      "http": 404,
+      "reason": null,
+      "bytes": 0
+    },
+    {
+      "label": "cross-surface like",
+      "role": "outsider",
+      "method": "PUT",
+      "path": "/api/intro-posts/00000000-0000-4000-8000-000000000001/like",
+      "http": 400,
+      "reason": null,
+      "bytes": 255
+    },
+    {
+      "label": "cross-surface comment",
+      "role": "outsider",
+      "method": "POST",
+      "path": "/api/intro-posts/00000000-0000-4000-8000-000000000001/comments",
+      "http": 400,
+      "reason": null,
+      "bytes": 255
+    },
+    {
+      "label": "lifecycle http room read",
+      "role": "author",
+      "method": "GET",
+      "path": "/api/me/room",
+      "http": 403,
+      "reason": "PERMISSION_DENIED",
+      "bytes": 191
+    },
+    {
+      "label": "lifecycle http avatar read",
+      "role": "author",
+      "method": "GET",
+      "path": "/api/me/avatar",
+      "http": 403,
+      "reason": "PERMISSION_DENIED",
+      "bytes": 191
+    },
+    {
+      "label": "lifecycle http posts list",
+      "role": "author",
+      "method": "GET",
+      "path": "/api/profiles/0b3b118d-136b-45cd-927e-f7dcfe0678e8/posts",
+      "http": 403,
+      "reason": "PERMISSION_DENIED",
+      "bytes": 191
+    },
+    {
+      "label": "lifecycle http room visibility",
+      "role": "author",
+      "method": "PATCH",
+      "path": "/api/me/room/visibility",
+      "http": 403,
+      "reason": "PERMISSION_DENIED",
+      "bytes": 191
+    }
+  ],
+  "result": "INCOMPLETE",
+  "tally": {
+    "PASS": 0,
+    "PARTIAL": 2,
+    "FAIL": 0,
+    "BLOCKED": 5,
+    "NOT_RUN": 0
+  },
+  "finished_at_utc": "2026-11-08T23:44:08.576115+00:00",
+  "service_teardown": "PASS",
+  "cleanup": "PASS"
+}

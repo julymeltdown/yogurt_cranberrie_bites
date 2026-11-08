@@ -1,0 +1,41 @@
+{
+  "verification": "V-11",
+  "status": "BLOCKED",
+  "work_package": "WP-10",
+  "tasks": ["T-951", "T-952"],
+  "branch": "codex/yc-wp07-room",
+  "base_commit": "d2f545a89b78073f05fef8868867378f469c7611",
+  "recorded_at": "2026-11-09T00:00:00Z",
+  "claim": "The six-step product-plan §9 scenario runs with three real identities against real services.",
+  "commands": [
+    {
+      "command": "python3 backend/scripts/mcr/wp10_profile_social.py --bin-dir <abs>/backend/target/debug --report /tmp/wp10/report.json",
+      "exit_code": 1,
+      "note": "exit 1 = INCOMPLETE (2 PARTIAL, 5 BLOCKED, 0 FAIL)"
+    }
+  ],
+  "artifact": "docs/mcr/integration/evidence/wp10-gate-report.json",
+  "fixture": {
+    "status": "PARTIAL",
+    "identities": {
+      "author": {"role": "A — publishes", "verification": "not required"},
+      "viewer": {"role": "B — must satisfy Women 18–29", "verification": "VERIFIED", "provider_profile": "gender=F birthyear=2001 birthday=03-14"},
+      "outsider": {"role": "C — must fail the audience", "verification": "VERIFIED", "provider_profile": "gender=M birthyear=1990"}
+    },
+    "enrollment": "real /api/auth/enrollment/* flow with the private mail capture",
+    "verification_flow": "real start → provider code → /api/identity/naver/callback (303) → status VERIFIED with claims",
+    "provider": "LOCAL TEST APPLICATION, not the NAVER console application",
+    "catalog_items": "declared (MCR, NANA) but NOT seeded: the favorites surface is not reachable over HTTP",
+    "unverified_C_variant": "NOT_RUN"
+  },
+  "steps": [
+    {"step": 1, "status": "BLOCKED", "observed": "POST /api/me/media/uploads → 403 PERMISSION_DENIED", "blocked_on": "profile product producer does not serve the profile post and media operations"},
+    {"step": 2, "status": "BLOCKED", "observed": "POST /api/me/intro-posts → 404; GET /api/discover/intro-posts → 404", "blocked_on": "WP-05 intro post routes are not registered by the gateway"},
+    {"step": 3, "status": "BLOCKED", "observed": "notification inbox, likers list and viewer profile requests recorded", "blocked_on": "WP-05 hearts, INTRO_LIKED notification and author-only liker list"},
+    {"step": 4, "status": "PARTIAL", "observed": "POST /api/me/room/posters → 403; DELETE /api/me/intro-posts/{id} → 404", "blocked_on": "room producer not reachable over HTTP; intro delete not composed"},
+    {"step": 5, "status": "BLOCKED", "observed": "three C requests recorded, none reachable", "blocked_on": "WP-04 audience decision and WP-05 surfaces"}
+  ],
+  "root_cause": "One composition gap, not four defects: the gateway registers the profile product routes, but the producer that answers them (the profile-service) has a closed operation set of getOwnProfile, getProfile and the three identity operations. Every other profile route answers 403 from the producer.",
+  "blocked_on": "The profile product producer does not serve the profile post, media, room, avatar or intro operations, and the intro routes are not registered by the gateway.",
+  "to_close": "Compose the profile producers (WP-06/07/08) behind the profile product transport and register the intro routes (WP-05), then re-run the gate: all six steps must be PASS and step 5 must assert 404 for the post, its attachments and its bytes."
+}
