@@ -1,0 +1,54 @@
+/* WP-05: mutuals-intro posts. Scoped; no root token changes. */
+.intro-composer, .intro-detail, .intro-likers, .intro-card { box-sizing: border-box; width: 100%; max-width: 42rem; margin-inline: auto; padding: 0 0 max(12px, env(safe-area-inset-bottom)); color: var(--pi-ink, #171717); background: var(--pi-paper, #f9f9f8); font: 400 16px/22px var(--pi-font-body, Arial, sans-serif); overflow-wrap: anywhere; }
+.intro-composer *, .intro-detail *, .intro-likers *, .intro-card * { box-sizing: border-box; }
+.intro-composer h1, .intro-detail h1 { margin: 8px 0; font: 700 26px/32px var(--pi-font-display, "Arial Narrow", Arial, sans-serif); }
+.intro-composer h2, .intro-detail h2, .intro-likers h2 { margin: 16px 0 6px; font: 700 18px/24px var(--pi-font-display, "Arial Narrow", Arial, sans-serif); }
+.intro-composer p, .intro-detail p, .intro-likers p, .intro-card p { margin: 8px 0; }
+.intro-composer button, .intro-composer input, .intro-composer select, .intro-composer textarea,
+.intro-detail button, .intro-likers button, .intro-card button { min-height: 44px; padding: 8px 12px; color: inherit; background: var(--pi-paper, #f9f9f8); border: 1px solid var(--pi-rule, #c9c9c6); border-radius: 2px; font: inherit; }
+.intro-composer input, .intro-composer select, .intro-composer textarea { width: 100%; min-width: 0; }
+.intro-composer textarea { min-height: 9rem; resize: vertical; }
+.intro-composer label { display: block; margin: 12px 0 4px; font-weight: 650; }
+.intro-composer button:disabled, .intro-detail button:disabled, .intro-likers button:disabled, .intro-card button:disabled { opacity: .55; cursor: default; }
+.intro-composer :focus-visible, .intro-detail :focus-visible, .intro-likers :focus-visible, .intro-card :focus-visible { outline: 3px solid var(--pi-focus, #1f5fd6); outline-offset: 3px; }
+.intro-composer-steps { display: flex; gap: 12px; flex-wrap: wrap; list-style: none; margin: 12px 0; padding: 0; color: var(--pi-muted, #545454); }
+.intro-composer-steps [aria-current="step"] { color: var(--pi-ink, #171717); font-weight: 650; }
+.intro-audience { margin-block: 16px; padding: 0; border: 0; min-width: 0; }
+.intro-audience legend { padding: 0; }
+.intro-audience-explanation { color: var(--pi-muted, #545454); }
+.intro-audience-toggle { display: flex !important; align-items: center; gap: 8px; font-weight: 400 !important; }
+.intro-audience-toggle input { width: auto; }
+.intro-age-range { display: grid; grid-template-columns: auto minmax(0, 7rem) auto minmax(0, 7rem); gap: 8px; align-items: center; }
+.intro-age-range label { margin: 0; }
+.intro-audience-error, .intro-composer-error, .intro-like-error { font-weight: 650; }
+.intro-composer-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+.intro-composer-count { color: var(--pi-muted, #545454); font-size: 14px; }
+.intro-composer-review dl { display: grid; grid-template-columns: minmax(0, 10rem) minmax(0, 1fr); gap: 8px 16px; margin: 12px 0; }
+.intro-composer-review dt { font-weight: 650; }
+.intro-composer-review dd { margin: 0; }
+.intro-composer-note { color: var(--pi-muted, #545454); }
+.intro-card { padding-block: 16px; border-bottom: 1px solid var(--pi-rule, #c9c9c6); }
+.intro-card-author, .intro-detail-author { display: flex; align-items: center; gap: 8px; }
+.intro-card-avatar { display: grid; place-items: center; width: 40px; height: 40px; border: 1px solid var(--pi-rule, #c9c9c6); border-radius: 50%; font: 700 16px/1 var(--pi-font-display, Arial, sans-serif); }
+.intro-card-body { white-space: pre-wrap; }
+.intro-card-favorites { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 8px 0; padding: 0; }
+.intro-card-favorites li { padding: 2px 8px; border: 1px solid var(--pi-rule, #c9c9c6); border-radius: 999px; font-size: 14px; }
+.intro-card-footer { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+.intro-card-comments, .intro-card-attachments { color: var(--pi-muted, #545454); font-size: 14px; }
+.intro-like { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.intro-like-button { min-width: 44px; }
+.intro-like-button-active { border-color: var(--pi-ink, #171717); }
+.intro-like-count { font-variant-numeric: tabular-nums; min-width: 1.5em; }
+.intro-like-note { color: var(--pi-muted, #545454); }
+.intro-detail-attachments { display: grid; grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr)); gap: 8px; list-style: none; margin: 12px 0; padding: 0; }
+.intro-detail-attachments img { width: 100%; height: auto; display: block; }
+.intro-detail-comments ul { list-style: none; margin: 0; padding: 0; }
+.intro-detail-comments li { padding-block: 8px; border-bottom: 1px solid var(--pi-rule, #c9c9c6); }
+.intro-comment-reply { padding-inline-start: 24px; }
+.intro-detail-unavailable { font-weight: 650; }
+.intro-likers ul { list-style: none; margin: 0; padding: 0; }
+.intro-likers li { border-bottom: 1px solid var(--pi-rule, #c9c9c6); }
+.intro-liker-row { display: flex; align-items: center; gap: 12px; min-height: 44px; padding-block: 10px; color: inherit; text-decoration: none; }
+.intro-liker-copy { display: grid; min-width: 0; }
+.intro-liker-shared { font-weight: 650; }
+.intro-liker-style { color: var(--pi-muted, #545454); font-size: 14px; }

@@ -1,0 +1,98 @@
+{
+  "commit": "ff45c37d9ac30633860370c631a736bc503939a4",
+  "branch": "codex/yc-wp05-intro",
+  "base_commit": "ff45c37d9",
+  "recorded_at": "2026-11-08T23:26:07Z",
+  "work_package": "WP-05",
+  "tasks": [
+    "T-401",
+    "T-402",
+    "T-403",
+    "T-404",
+    "T-405",
+    "T-406",
+    "T-407",
+    "T-408",
+    "T-409",
+    "T-410",
+    "T-411",
+    "T-412",
+    "T-413",
+    "T-414",
+    "T-415",
+    "T-416"
+  ],
+  "commands": [
+    {
+      "command": "cd backend && cargo +1.88.0 check --locked --workspace",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 backend/scripts/mcr/wp05_intro_cluster.py --test intro_post_commands --test intro_snapshot --test intro_attachments --test intro_comments --test intro_likes --test intro_routes",
+      "exit_code": 0,
+      "note": "52 passed across six binaries"
+    },
+    {
+      "command": "cd backend && cargo +1.88.0 test --locked -p concert-application --test intro_post_rules",
+      "exit_code": 0,
+      "note": "27 passed"
+    },
+    {
+      "command": "cd frontend && corepack pnpm@11.7.0 run typecheck",
+      "exit_code": 0
+    },
+    {
+      "command": "cd frontend && corepack pnpm@11.7.0 exec vitest run src/features/intros src/features/media src/features/activity",
+      "exit_code": 0,
+      "note": "171 passed in 15 files"
+    }
+  ],
+  "artifacts": [
+    "docs/mcr/integration/evidence/wp05-intro.md",
+    "docs/mcr/integration/evidence/wp05-backend-tests.txt",
+    "docs/mcr/integration/evidence/wp05-frontend-tests.txt"
+  ],
+  "verification": "V-05",
+  "title": "Repeated likes produce one like and one notification with no side effects",
+  "status": "PASS",
+  "cases": [
+    {
+      "id": "V-05-a",
+      "result": "PASS",
+      "note": "intro_likes.rs::two_puts_produce_one_row_and_one_notification \u2014 two PUTs, one intro_likes row."
+    },
+    {
+      "id": "V-05-b",
+      "result": "PASS",
+      "note": "Same test \u2014 exactly one intro_like_notifications row, deduped by (recipient, intro, actor)."
+    },
+    {
+      "id": "V-05-c",
+      "result": "PASS",
+      "note": "intro_likes.rs::a_like_creates_no_relationship \u2014 the only rows a like produces are the like and its notification; intro_like_notifications has no state/pending/accepted/approval/deadline column (asserted through information_schema)."
+    },
+    {
+      "id": "V-05-d",
+      "result": "PASS",
+      "note": "intro_likes.rs::withdrawing_a_heart_removes_the_notification (still visible: like_count 0) and delete_by_a_viewer_who_lost_access_returns_a_null_count (not visible: like_count null)."
+    },
+    {
+      "id": "V-05-e",
+      "result": "PASS",
+      "note": "intro_likes.rs::an_author_cannot_like_their_own_post \u2014 LikeError::SelfLike from the command, and constraint intro_likes_no_self_like from the database."
+    },
+    {
+      "id": "V-05-f",
+      "result": "PASS",
+      "note": "intro_likes.rs::a_non_author_liker_list_is_403 \u2014 403 for the liker and for a stranger, 200 for the author."
+    },
+    {
+      "id": "V-05-g",
+      "result": "PASS",
+      "note": "ActivityFeed.test.tsx \u2014 a like entry opens the liker's profile and no entry carries an approval affordance."
+    }
+  ],
+  "limitations": [
+    "The notification is written to intro_like_notifications (migration 0087), not to the notification-service's own table. Wiring that projection into the notification service is a separate composition step; the dedupe and the one-row guarantee are proven here."
+  ]
+}

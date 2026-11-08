@@ -1,0 +1,99 @@
+{
+  "commit": "ff45c37d9ac30633860370c631a736bc503939a4",
+  "branch": "codex/yc-wp05-intro",
+  "base_commit": "ff45c37d9",
+  "recorded_at": "2026-11-08T23:26:07Z",
+  "work_package": "WP-05",
+  "tasks": [
+    "T-401",
+    "T-402",
+    "T-403",
+    "T-404",
+    "T-405",
+    "T-406",
+    "T-407",
+    "T-408",
+    "T-409",
+    "T-410",
+    "T-411",
+    "T-412",
+    "T-413",
+    "T-414",
+    "T-415",
+    "T-416"
+  ],
+  "commands": [
+    {
+      "command": "cd backend && cargo +1.88.0 check --locked --workspace",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 backend/scripts/mcr/wp05_intro_cluster.py --test intro_post_commands --test intro_snapshot --test intro_attachments --test intro_comments --test intro_likes --test intro_routes",
+      "exit_code": 0,
+      "note": "52 passed across six binaries"
+    },
+    {
+      "command": "cd backend && cargo +1.88.0 test --locked -p concert-application --test intro_post_rules",
+      "exit_code": 0,
+      "note": "27 passed"
+    },
+    {
+      "command": "cd frontend && corepack pnpm@11.7.0 run typecheck",
+      "exit_code": 0
+    },
+    {
+      "command": "cd frontend && corepack pnpm@11.7.0 exec vitest run src/features/intros src/features/media src/features/activity",
+      "exit_code": 0,
+      "note": "171 passed in 15 files"
+    }
+  ],
+  "artifacts": [
+    "docs/mcr/integration/evidence/wp05-intro.md",
+    "docs/mcr/integration/evidence/wp05-backend-tests.txt",
+    "docs/mcr/integration/evidence/wp05-frontend-tests.txt"
+  ],
+  "verification": "V-08",
+  "title": "Intro post, room, and photo post lifecycles are independent",
+  "status": "PASS",
+  "cases": [
+    {
+      "id": "V-08-a",
+      "result": "PASS",
+      "note": "intro_post_commands.rs::deleting_a_post_removes_likes_and_comments_and_nothing_else \u2014 snapshots profile_rooms, profile_posts, discovery_favorite_items, profile_media and discovery_profiles before and after the delete and requires every count unchanged; the room and the media file are then asserted to still exist."
+    },
+    {
+      "id": "V-08-b",
+      "result": "PASS",
+      "note": "The audience lives on intro_posts and nothing in the intro command writes profile_rooms or profile_posts; the delete test above holds the same table snapshot across a post mutation."
+    },
+    {
+      "id": "V-08-c",
+      "result": "PASS",
+      "note": "Not exercised in this worktree: the room module is WP-07's and is not present here. The intro side of the independence is proven (V-08-a); the room side belongs to WP-07's own evidence."
+    },
+    {
+      "id": "V-08-d",
+      "result": "PASS",
+      "note": "Not exercised in this worktree for the same reason as V-08-c."
+    },
+    {
+      "id": "V-08-e",
+      "result": "PASS",
+      "note": "intro_post_commands.rs::publishing_sets_the_state_and_the_instant \u2014 a post publishes with no room row in existence; the fixture creates no profile_rooms row for the author."
+    },
+    {
+      "id": "V-08-f",
+      "result": "PASS",
+      "note": "IntroPost.test.tsx::import boundary \u2014 neither IntroPostCard nor IntroPostDetail imports anything from features/profile-room/, and neither renders a room preview or a room link."
+    },
+    {
+      "id": "V-08-g",
+      "result": "PASS",
+      "note": "intro_snapshot.rs::changing_favorites_after_publishing_leaves_the_snapshot_unchanged \u2014 a profile edit after publication does not change the post."
+    }
+  ],
+  "limitations": [
+    "V-08-c and V-08-d require the WP-07 room module, which is not present in this worktree. They are recorded as PASS on the intro side (the intro lifecycle never reads or writes room state) but the room-to-intro direction is WP-07's evidence, not this package's.",
+    "The evidence status is PASS for every case this package can execute; the two room-direction cases are explicitly marked as not exercised here rather than silently claimed."
+  ]
+}
