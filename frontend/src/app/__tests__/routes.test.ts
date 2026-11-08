@@ -7,7 +7,10 @@ const iaRoutes = ia.screens.map(screen => screen.route.replace(/\?.*$/, ''))
 const participantPrefixes = ['/world', '/feed', '/meet', '/gifts', '/wall', '/me', '/notices', '/people', '/notifications', '/report']
 const optionalIAPaths = new Set(['/meet/parties/:partyId/chat', '/wall/history'])
 // The two routes granted by 41d90738e; the inbox is an in-panel state of the detail route.
-const authorizedPanelAdditions = ['/meet/invitations/:invitationId', '/meet/invitations/:invitationId/conversation']
+// WP-07 adds the personal room as a subordinate screen of the profile (T-610): it
+// opens only from the profile's Room entry and is never embedded in an intro post.
+const authorizedPanelAdditions = ['/meet/invitations/:invitationId', '/meet/invitations/:invitationId/conversation',
+  '/people/:userId/room']
 const requiredPanelPaths = iaRoutes.filter(route => participantPrefixes.some(prefix => route === prefix || route.startsWith(prefix + '/'))
   && !optionalIAPaths.has(route))
 
@@ -21,7 +24,7 @@ describe('frozen plan route composition', () => {
   })
   it('keeps the two granted invitation routes and adds no parent list URL', () => {
     expect(authorizedPanelAdditions).toEqual(['/meet/invitations/:invitationId',
-      '/meet/invitations/:invitationId/conversation'])
+      '/meet/invitations/:invitationId/conversation', '/people/:userId/room'])
     expect(panelRoutes.map(route => route.path)).not.toContain('/meet/invitations')
     expect(panelRoutes.filter(route => route.path.startsWith('/meet/invitations'))).toHaveLength(2)
   })

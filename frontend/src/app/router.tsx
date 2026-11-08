@@ -32,6 +32,7 @@ const SocialPanel = lazy(() => import('./social-composition').then(module => ({ 
 const VenueInvitationPanel = lazy(() => import('./venue-community-entry').then(module => ({ default: module.VenueInvitationPanel })))
 const VenueConversationPanel = lazy(() => import('./venue-community-entry').then(module => ({ default: module.VenueConversationPanel })))
 const WorldHelp = lazy(() => import('../features/world-help/WorldHelp').then(module => ({ default: module.WorldHelp })))
+const RoomPanel = lazy(() => import('./profile-room-entry/RoomPanel').then(module => ({ default: module.RoomRoutePanel })))
 const socialPaths = ['/feed', '/feed/new', '/feed/:postId', '/feed/:postId/edit', '/notices/:noticeId', '/meet/people', '/people/:userId', '/meet/intro/edit', '/me/age', '/notifications', '/me/social', '/me/requests'] as const
 const featurePanels: Readonly<Record<string, ReactNode>> = {
   ...communityEntryPanels,
@@ -54,6 +55,7 @@ const featurePanels: Readonly<Record<string, ReactNode>> = {
   '/world/nearby': <Suspense fallback={<p role="status">Opening nearby…</p>}><NearbyPanel /></Suspense>,
   '/world/check-in': <Suspense fallback={<p role="status">Opening check-in…</p>}><MeetingCheckInPanel /></Suspense>,
   '/meet/beacons/:beaconId': <Suspense fallback={<p role="status">Opening meeting…</p>}><MeetingBeaconPanel /></Suspense>,
+  '/people/:userId/room': <Suspense fallback={<p role="status">Opening room…</p>}><RoomPanel /></Suspense>,
   '/meet': <Suspense fallback={<p role="status">Opening parties…</p>}><PartiesPanel /></Suspense>,
   '/meet/parties/:partyId': <Suspense fallback={<p role="status">Opening parties…</p>}><PartiesPanel detail /></Suspense>,
   '/gifts': <Suspense fallback={<p role="status">Opening gifts…</p>}><GiftsPanel view="list" /></Suspense>,

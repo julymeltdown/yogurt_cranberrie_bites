@@ -281,6 +281,8 @@ pub mod feed;
 pub mod avatar;
 /// WP-08: the profile-owned avatar. No event, no participant key.
 pub mod profile_avatar;
+/// WP-07: the personal room layout. Subordinate to the profile, never an intro post.
+pub mod profile_room;
 pub mod world;
 pub mod community;
 
