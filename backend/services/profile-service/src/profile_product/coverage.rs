@@ -18,8 +18,14 @@
 //! Three rules this module encodes:
 //!
 //! * **No fabricated producers.** An operation is [`Producer::Served`] only when
-//!   a real module answers it. Everything else names the work package that will
-//!   build it, so the gap is tracked rather than hidden.
+//!   a real module in *this* service answers it, and
+//!   [`Producer::ServedByConcertService`] only when a real module in the concert
+//!   service answers it. Everything else names the work package that will build
+//!   it, so the gap is tracked rather than hidden.
+//! * **The split is explicit.** Fifteen operations read concert-owned tables.
+//!   They are recorded as served *by the concert service* rather than as
+//!   `Served`, so the register states which database answers each operation and
+//!   the Gateway's routing rule can be checked against it.
 //! * **No silent omission.** The register and the contract are compared by
 //!   operation id, and a mismatch in either direction fails the test.
 //! * **The event rule is not negotiable.** Every entry's path is checked to be
@@ -28,8 +34,15 @@
 /// Who answers an operation.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Producer {
-    /// A real producer exists and the route parser accepts the operation.
+    /// This service's producer answers it: the operation's tables live in
+    /// `mcr_profile` and `profile_product::targets::parse` accepts it.
     Served,
+    /// The **concert** service's producer answers it. The operation's tables
+    /// live in `mcr_concert`, so the Gateway routes it to the concert-hosted
+    /// profile transport (`concert_service::profile_product`) rather than here.
+    /// This register still tracks it, because it is a profile-owned operation
+    /// and the split must be visible in one place.
+    ServedByConcertService,
     /// No producer exists yet. The route parser refuses the operation and the
     /// gateway does not mount it. `owner` names the work package that will
     /// build it.
@@ -56,6 +69,21 @@ const fn served(operation: &'static str, method: &'static str, path: &'static st
         method,
         path,
         producer: Producer::Served,
+        owner,
+    }
+}
+
+const fn concert(
+    operation: &'static str,
+    method: &'static str,
+    path: &'static str,
+    owner: &'static str,
+) -> Coverage {
+    Coverage {
+        operation,
+        method,
+        path,
+        producer: Producer::ServedByConcertService,
         owner,
     }
 }
@@ -111,27 +139,28 @@ pub const COVERAGE: &[Coverage] = &[
     owed("createIntroPostComment", "POST", "/api/intro-posts/{introId}/comments", "WP-05 intro posts"),
     owed("deleteIntroPostComment", "DELETE", "/api/intro-posts/{introId}/comments/{commentId}", "WP-05 intro posts"),
     // ── §2.3 profile posts and media (domain) ──────────────────────────────
-    // WP-06 built these producers, but they read `profile_posts`,
-    // `profile_post_attachments` and `profile_media`, which live in the CONCERT
-    // database. The profile producer runs against `mcr_profile` and cannot
-    // reach them. See `CROSS_SERVICE` below.
-    owed("listProfilePosts", "GET", "/api/profiles/{profileId}/posts", "WP-06 profile_posts (concert-service)"),
-    owed("createProfilePost", "POST", "/api/me/posts", "WP-06 profile_posts (concert-service)"),
-    owed("deleteProfilePost", "DELETE", "/api/me/posts/{postId}", "WP-06 profile_posts (concert-service)"),
-    owed("initProfileMediaUpload", "POST", "/api/me/media/uploads", "WP-06 profile_media (concert-service)"),
-    owed("putProfileMediaBytes", "PUT", "/api/me/media/{mediaId}/bytes", "WP-06 profile_media (concert-service)"),
-    owed("finalizeProfileMedia", "POST", "/api/me/media/{mediaId}/finalize", "WP-06 profile_media (concert-service)"),
-    owed("getProfileMedia", "GET", "/api/media/{mediaId}", "WP-06 profile_media (concert-service)"),
-    owed("readProfileMedia", "GET", "/api/media/{mediaId}/content", "WP-06 profile_media (concert-service)"),
+    // These read `profile_posts`, `profile_post_attachments` and
+    // `profile_media`, which live in the CONCERT database. The profile
+    // producer runs against `mcr_profile` and cannot reach them, so the Gateway
+    // routes them to the concert-hosted profile transport. See
+    // `CROSS_SERVICE_NOTE` below.
+    concert("listProfilePosts", "GET", "/api/profiles/{profileId}/posts", "concert_service::profile_product::targets"),
+    concert("createProfilePost", "POST", "/api/me/posts", "concert_service::profile_product::targets"),
+    concert("deleteProfilePost", "DELETE", "/api/me/posts/{postId}", "concert_service::profile_product::targets"),
+    concert("initProfileMediaUpload", "POST", "/api/me/media/uploads", "concert_service::profile_product::targets"),
+    concert("putProfileMediaBytes", "PUT", "/api/me/media/{mediaId}/bytes", "concert_service::profile_product::targets"),
+    concert("finalizeProfileMedia", "POST", "/api/me/media/{mediaId}/finalize", "concert_service::profile_product::targets"),
+    concert("getProfileMedia", "GET", "/api/media/{mediaId}", "concert_service::profile_product::targets"),
+    concert("readProfileMedia", "GET", "/api/media/{mediaId}/content", "concert_service::profile_product::targets"),
     // ── §2.4 room (domain) ─────────────────────────────────────────────────
-    owed("getProfileRoom", "GET", "/api/profiles/{profileId}/room", "WP-07 profile_room (concert-service)"),
-    owed("getOwnRoom", "GET", "/api/me/room", "WP-07 profile_room (concert-service)"),
-    owed("saveOwnRoom", "PUT", "/api/me/room", "WP-07 profile_room (concert-service)"),
-    owed("setOwnRoomVisibility", "PATCH", "/api/me/room/visibility", "WP-07 profile_room (concert-service)"),
-    owed("uploadRoomPoster", "POST", "/api/me/room/posters", "WP-07 profile_room (concert-service)"),
+    concert("getProfileRoom", "GET", "/api/profiles/{profileId}/room", "concert_service::profile_product::targets"),
+    concert("getOwnRoom", "GET", "/api/me/room", "concert_service::profile_product::targets"),
+    concert("saveOwnRoom", "PUT", "/api/me/room", "concert_service::profile_product::targets"),
+    concert("setOwnRoomVisibility", "PATCH", "/api/me/room/visibility", "concert_service::profile_product::targets"),
+    concert("uploadRoomPoster", "POST", "/api/me/room/posters", "concert_service::profile_product::targets"),
     // ── §2.5 avatar (domain) ───────────────────────────────────────────────
-    owed("getOwnProfileAvatar", "GET", "/api/me/avatar", "WP-08 profile_avatar (concert-service)"),
-    owed("setOwnProfileAvatar", "PUT", "/api/me/avatar", "WP-08 profile_avatar (concert-service)"),
+    concert("getOwnProfileAvatar", "GET", "/api/me/avatar", "concert_service::profile_product::targets"),
+    concert("setOwnProfileAvatar", "PUT", "/api/me/avatar", "concert_service::profile_product::targets"),
     // ── §2.6 activity and notifications (domain) ───────────────────────────
     owed("listActivity", "GET", "/api/me/activity", "WP-05 activity feed"),
     owed("listNotifications", "GET", "/api/me/notifications", "WP-05 notification inbox"),
@@ -169,18 +198,25 @@ pub const COVERAGE: &[Coverage] = &[
 /// Both are composition decisions with an owner outside this work package. This
 /// register records the gap rather than papering over it with a producer that
 /// would answer an operation it cannot actually serve.
-pub const CROSS_SERVICE_NOTE: &str = "producer exists in the concert service; the tables it reads live in mcr_concert, not mcr_profile";
+pub const CROSS_SERVICE_NOTE: &str = "served by the concert service, because the tables this operation reads live in mcr_concert; the Gateway routes it there through the routing rule in api_gateway::adapters::in::http::profile_owner";
 
 /// The register row for an operation id, if the register knows it.
 pub fn find(operation: &str) -> Option<&'static Coverage> {
     COVERAGE.iter().find(|row| row.operation == operation)
 }
 
-/// Every operation the producer serves.
+/// Every operation this service's producer serves.
 pub fn served_operations() -> impl Iterator<Item = &'static Coverage> {
     COVERAGE
         .iter()
         .filter(|row| row.producer == Producer::Served)
+}
+
+/// Every operation the concert service's producer serves.
+pub fn concert_served_operations() -> impl Iterator<Item = &'static Coverage> {
+    COVERAGE
+        .iter()
+        .filter(|row| row.producer == Producer::ServedByConcertService)
 }
 
 /// Every operation with no producer yet.
@@ -190,12 +226,20 @@ pub fn not_implemented() -> impl Iterator<Item = &'static Coverage> {
         .filter(|row| row.producer == Producer::NotImplemented)
 }
 
-/// Counts for reporting: `(served, not_implemented)`.
-pub fn counts() -> (usize, usize) {
+/// Counts for reporting: `(served_here, served_by_concert, not_implemented)`.
+pub fn counts() -> (usize, usize, usize) {
     (
         served_operations().count(),
+        concert_served_operations().count(),
         not_implemented().count(),
     )
+}
+
+/// Every operation a real producer answers, in either service.
+pub fn served_anywhere() -> impl Iterator<Item = &'static Coverage> {
+    COVERAGE
+        .iter()
+        .filter(|row| row.producer != Producer::NotImplemented)
 }
 
 #[cfg(test)]

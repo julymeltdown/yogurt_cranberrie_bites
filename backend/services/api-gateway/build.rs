@@ -11,6 +11,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         contracts_build::source_world_proto(),
         contracts_build::proto_root().join("concert/v1/product.proto"),
         contracts_build::proto_root().join("profile/v1/profile_product.proto"),
+        // The concert-hosted profile product transport. Fifteen profile
+        // operations read concert-owned tables, so the Gateway needs a client
+        // for the service that serves them.
+        contracts_build::proto_root().join("concert/v1/profile_product.proto"),
         contracts_build::proto_root().join("profile/v1/identity_verification.proto"),
     ];
     let includes = vec![

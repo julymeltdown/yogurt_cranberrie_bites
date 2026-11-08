@@ -31,6 +31,7 @@ sys.path.insert(0, str(ROOT / "backend/scripts/mcr"))
 import migration_smoke as migration  # noqa: E402
 
 DATABASE = "mcr_wp_four_b_identity"
+CONCERT_DATABASE = "mcr_wp_four_b_concert"
 
 
 def start(pg_bin_dir: Path, state_file: Path) -> int:
@@ -40,9 +41,14 @@ def start(pg_bin_dir: Path, state_file: Path) -> int:
     cluster.start()
     version = cluster.sql("postgres", "show server_version;")
     cluster.sql("postgres", f"create database {DATABASE} template template0;")
+    # The concert service's tests read `CONCERT_TEST_DATABASE_URL`; both
+    # services' suites run against this one private cluster, each in its own
+    # database, exactly as the compose topology separates them.
+    cluster.sql("postgres", f"create database {CONCERT_DATABASE} template template0;")
     # The harness validates the database name against its own `mcr_` namespace;
     # this database is named in that namespace so the URL check applies.
     url = cluster.url(DATABASE)
+    concert_url = cluster.url(CONCERT_DATABASE)
     state_file.write_text(
         json.dumps(
             {
@@ -50,13 +56,19 @@ def start(pg_bin_dir: Path, state_file: Path) -> int:
                 "token": cluster.token,
                 "password": cluster.password,
                 "database": DATABASE,
+                "concert_database": CONCERT_DATABASE,
                 "url": url,
+                "concert_url": concert_url,
                 "server_version": version,
             }
         )
     )
     state_file.chmod(0o600)
-    print(json.dumps({"database_url": url, "server_version": version}))
+    print(json.dumps({
+        "database_url": url,
+        "concert_database_url": concert_url,
+        "server_version": version,
+    }))
     return 0
 
 

@@ -748,6 +748,8 @@ dependencies = [
  "contracts-build",
  "friend-service",
  "futures",
+ "http",
+ "http-body",
  "http-body-util",
  "image",
  "jsonschema",

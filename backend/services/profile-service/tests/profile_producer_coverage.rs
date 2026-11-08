@@ -145,7 +145,25 @@ fn every_operation_is_either_served_or_explicitly_not_implemented() {
     for entry in coverage::COVERAGE {
         assert!(!entry.owner.is_empty(), "{} has no owner", entry.operation);
         match entry.producer {
-            Producer::Served => {}
+            Producer::Served => {
+                // A served operation names a module in THIS service.
+                assert!(
+                    !entry.owner.starts_with("WP-"),
+                    "{} is Served but names a work package rather than a module: {}",
+                    entry.operation,
+                    entry.owner
+                );
+            }
+            Producer::ServedByConcertService => {
+                // A concert-served operation names a module in the CONCERT
+                // service, so the split is visible in the register itself.
+                assert!(
+                    entry.owner.starts_with("concert_service::"),
+                    "{} is served by the concert service but names {}",
+                    entry.operation,
+                    entry.owner
+                );
+            }
             Producer::NotImplemented => {
                 assert!(
                     entry.owner.starts_with("WP-"),
@@ -156,8 +174,12 @@ fn every_operation_is_either_served_or_explicitly_not_implemented() {
             }
         }
     }
-    let (served, owed) = coverage::counts();
-    assert_eq!(served + owed, 43, "every operation is accounted for");
+    let (served, by_concert, owed) = coverage::counts();
+    assert_eq!(
+        served + by_concert + owed,
+        43,
+        "every operation is accounted for"
+    );
 }
 
 #[test]
@@ -183,6 +205,17 @@ fn a_served_operation_parses_and_a_not_implemented_one_is_refused() {
                             operation.contract_id()
                         ));
                     }
+                }
+            }
+            Producer::ServedByConcertService => {
+                // The profile service's parser must refuse a concert-served
+                // operation: its tables are not in this database, so answering
+                // it here would read the wrong store.
+                if parsed.is_ok() {
+                    failures.push(format!(
+                        "{} is served by the concert service but this parser accepted it",
+                        entry.operation
+                    ));
                 }
             }
             Producer::NotImplemented => {
@@ -237,16 +270,45 @@ fn the_served_set_is_exactly_what_the_producer_answers() {
             "startIdentityVerification",
             "disconnectIdentityVerification",
         ]),
-        "the served set changed; update coverage::COVERAGE in the same commit"
+        "the profile-service served set changed; update coverage::COVERAGE in the same commit"
     );
+
+    // And the concert-served set is exactly the fifteen cross-database
+    // operations. This is the other half of the split: an operation may not be
+    // claimed as concert-served unless the concert service really answers it.
+    let by_concert: BTreeSet<&str> = coverage::concert_served_operations()
+        .map(|entry| entry.operation)
+        .collect();
+    assert_eq!(
+        by_concert,
+        BTreeSet::from([
+            "listProfilePosts",
+            "createProfilePost",
+            "deleteProfilePost",
+            "initProfileMediaUpload",
+            "putProfileMediaBytes",
+            "finalizeProfileMedia",
+            "getProfileMedia",
+            "readProfileMedia",
+            "getProfileRoom",
+            "getOwnRoom",
+            "saveOwnRoom",
+            "setOwnRoomVisibility",
+            "uploadRoomPoster",
+            "getOwnProfileAvatar",
+            "setOwnProfileAvatar",
+        ]),
+        "the concert-served set changed; update coverage::COVERAGE in the same commit"
+    );
+    assert_eq!(by_concert.len(), 15);
 }
 
 #[test]
-fn the_cross_service_gap_is_recorded_rather_than_hidden() {
-    // WP-06, WP-07 and WP-08 each built a producer. None of them is reachable
-    // from the profile producer, because their tables live in the concert
-    // database. Every such operation must say so in its owner string, so the
-    // gap is visible in the register and in the coverage document.
+fn the_cross_service_operations_are_served_by_the_concert_service() {
+    // WP-06, WP-07 and WP-08 built producers for operations whose tables live
+    // in the concert database. They are now served by the concert-hosted
+    // profile transport and routed there by the Gateway, so the register
+    // records them as `ServedByConcertService` rather than as a gap.
     let cross_service = [
         "listProfilePosts",
         "createProfilePost",
@@ -269,17 +331,17 @@ fn the_cross_service_gap_is_recorded_rather_than_hidden() {
             .unwrap_or_else(|| panic!("{operation} is not in the register"));
         assert_eq!(
             entry.producer,
-            Producer::NotImplemented,
-            "{operation} cannot be served from the profile database"
+            Producer::ServedByConcertService,
+            "{operation} reads concert-owned tables and must be served there"
         );
         assert!(
-            entry.owner.contains("concert-service"),
-            "{operation} must name the concert service as the producer's home: {}",
+            entry.owner.starts_with("concert_service::"),
+            "{operation} must name the concert module that serves it: {}",
             entry.owner
         );
     }
     assert!(
-        !coverage::CROSS_SERVICE_NOTE.is_empty(),
-        "the cross-service note must explain why these are not served"
+        coverage::CROSS_SERVICE_NOTE.contains("Gateway routes it there"),
+        "the cross-service note must explain how these are routed"
     );
 }

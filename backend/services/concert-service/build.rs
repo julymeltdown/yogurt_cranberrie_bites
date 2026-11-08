@@ -9,6 +9,11 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let self_profile_proto =
         contracts_build::proto_root().join("profile/v1/concert_self_profile.proto");
     let post_concert_proto = contracts_build::proto_root().join("post/v1/concert_feed.proto");
+    // The concert-side profile product transport. Fifteen frozen profile
+    // operations read concert-owned tables, so this service serves them under
+    // its own authority discipline; see `concert_service::profile_product`.
+    let profile_product_proto =
+        contracts_build::proto_root().join("concert/v1/profile_product.proto");
     let protoc = protoc_bin_vendored::protoc_bin_path()?;
     unsafe {
         std::env::set_var("PROTOC", protoc);
@@ -66,6 +71,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 profile.clone(),
                 public_profile_proto.clone(),
                 self_profile_proto.clone(),
+                profile_product_proto.clone(),
             ],
             &[contracts_build::proto_root()],
         )?;
@@ -75,6 +81,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("cargo:rerun-if-changed={}", public_profile_proto.display());
     println!("cargo:rerun-if-changed={}", self_profile_proto.display());
     println!("cargo:rerun-if-changed={}", post_concert_proto.display());
+    println!("cargo:rerun-if-changed={}", profile_product_proto.display());
     println!("cargo:rerun-if-changed={}", relationship.display());
     println!("cargo:rerun-if-changed={}", profile.display());
     let participant_proto = contracts_build::proto_root().join("concert/v1/participant.proto");
