@@ -31,8 +31,8 @@ class DomainBundleTests(unittest.TestCase):
 
     def test_every_registered_http_operation_once_and_no_fake_websocket_endpoint(self):
         ids = [o["operationId"] for methods in self.document["paths"].values() for o in methods.values()]
-        self.assertEqual(len(ids), 140)
-        self.assertEqual(len(set(ids)), 140)
+        self.assertEqual(len(ids), 191)
+        self.assertEqual(len(set(ids)), 191)
         for row in self.rows + self.world:
             self.assertEqual(self.operation(row)["operationId"], row["operationId"])
         self.assertFalse(any("websocket" in p or p.endswith("/world") for p in self.document["paths"]))
@@ -72,7 +72,7 @@ class DomainBundleTests(unittest.TestCase):
                     self.assertEqual(bundle.resolve(document, references[absolute]),
                                      bundle.rewrite(schema, references, source["$id"]))
                     counts[family] += 1
-        self.assertEqual(counts, {"domain": 173, "realtime": 21})
+        self.assertEqual(counts, {"domain": 214, "realtime": 24})
 
     def test_query_projection_is_exact_closed_and_delete_has_no_body(self):
         for row in self.rows:
@@ -83,12 +83,13 @@ class DomainBundleTests(unittest.TestCase):
             self.assertTrue(target["x-mcr-closed-query"])
             for name, parameter in parameters.items():
                 self.assertEqual(parameter["schema"], query["properties"][name])
-                self.assertEqual(parameter["required"], name in query["required"])
+                self.assertEqual(parameter["required"], name in query.get("required", []))
             if row["method"] in {"get", "delete"}:
                 self.assertNotIn("requestBody", target)
-            self.validate(target["x-mcr-query-schema"], {name: 1 for name in query["required"]}
+            required = query.get("required", [])
+            self.validate(target["x-mcr-query-schema"], {name: 1 for name in required}
                           if row["query_schema"] in {"common.RevisionRequest", "party.RemoveMember", "mural.RevisionQuery"}
-                          else {} if not query["required"] else self.required_query(row))
+                          else {} if not required else self.required_query(row))
 
     def required_query(self, row):
         if row["query_schema"] == "social.RevealQuery":

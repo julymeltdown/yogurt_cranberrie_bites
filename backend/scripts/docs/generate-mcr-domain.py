@@ -102,6 +102,9 @@ def add_schemas(document, root):
 
 def domain_ref(name):
     group, definition = name.split(".", 1)
+    # Core definitions keep their unnamespaced component name in the bundle.
+    if group == "core":
+        return local_ref(definition)
     return local_ref(f"Domain_{group}_{definition}")
 
 
@@ -228,7 +231,8 @@ def validate_document(document):
             actual = {p["name"] for p in parameters if p["in"] == "path" and p.get("required") is True}
             if expected != actual:
                 raise ValueError(f"Path parameter mismatch: {identity}")
-            if method in {"get", "delete"} and "requestBody" in operation:
+            if (method in {"get", "delete"} and "requestBody" in operation
+                    and operation.get("x-mcr-request-location") != "query"):
                 raise ValueError(f"Unexpected read/delete body: {identity}")
 
     def walk(value):

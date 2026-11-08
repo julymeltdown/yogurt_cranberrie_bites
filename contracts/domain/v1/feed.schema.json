@@ -417,7 +417,8 @@
             "SOCIAL",
             "MODERATION",
             "NOTICE",
-            "FEED"
+            "FEED",
+            "INTRO_LIKED"
           ]
         },
         "target": {
@@ -776,7 +777,8 @@
             "SOCIAL_REQUEST",
             "POST",
             "NOTICE",
-            "REPORT"
+            "REPORT",
+            "INTRO_POST"
           ]
         },
         "target_id": {
@@ -960,6 +962,18 @@
         "event_id",
         "unread_total",
         "as_of"
+      ]
+    },
+    "MarkRead": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expected_revision": {
+          "$ref": "https://contracts.mcr.invalid/domain/v1/common.schema.json#/$defs/Revision"
+        }
+      },
+      "required": [
+        "expected_revision"
       ]
     }
   }

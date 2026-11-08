@@ -58,6 +58,7 @@ enum NotificationKind {
   MODERATION = 4;
   NOTICE = 5;
   FEED = 6;
+  INTRO_LIKED = 7;
 }
 enum TargetType {
   TARGET_TYPE_UNSPECIFIED = 0;
@@ -69,6 +70,7 @@ enum TargetType {
   POST = 6;
   TARGET_NOTICE = 7;
   REPORT = 8;
+  INTRO_POST = 9;
 }
 message Target { TargetType target_type = 1; string target_id = 2; }
 message Notification {
