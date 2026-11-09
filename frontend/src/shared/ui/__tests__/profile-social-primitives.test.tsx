@@ -2,7 +2,7 @@
 import '@testing-library/jest-dom/vitest'
 import { readFileSync } from 'node:fs'
 import { afterEach, describe, expect, it } from 'vitest'
-import { cleanup, render, screen } from '@testing-library/react'
+import { cleanup, render, screen, within } from '@testing-library/react'
 import {
   AvatarChip,
   Badge,
@@ -18,6 +18,13 @@ import {
   Section,
   SectionHeader,
   TabStrip,
+  /* WP-10 round 2. */
+  Chips,
+  Facts,
+  IconButton,
+  SocialIcon,
+  State,
+  Steps,
 } from '../index'
 
 afterEach(cleanup)
@@ -45,6 +52,9 @@ const SURFACES = [
   '../../../features/identity/identity.css',
   '../../../features/profile-avatar/ui/profile-avatar.css',
   '../../../features/profile-avatar/ui/body-palette.css',
+  /* WP-10 round 2: the screens this round restyled. */
+  '../../../features/intros/intros.css',
+  '../../../features/profile/profile.css',
 ] as const
 
 /** Strip comments so prose that *names* the prohibition is not a violation. */
@@ -243,5 +253,99 @@ describe('the primitives render accessible, symmetric markup', () => {
     expect(tabs[1]).toHaveAttribute('tabindex', '-1')
     tabs[1]!.click()
     expect(calls).toEqual(['intros'])
+  })
+})
+
+describe('round-2 primitives', () => {
+  it('State shares one geometry across empty, loading and error', () => {
+    const { rerender } = render(<State kind="empty" title="No posts yet">Nothing here.</State>)
+    expect(screen.getByRole('status')).toHaveClass('pi-state')
+    expect(screen.getByText('No posts yet')).toHaveClass('pi-state__title')
+    rerender(<State kind="loading" title="Loading posts" />)
+    expect(screen.getByRole('status')).toHaveClass('pi-state', 'pi-state--loading')
+    rerender(<State kind="error" title="Could not load" action={<button type="button">Retry</button>} />)
+    // An error is announced assertively, not as a passive status.
+    expect(screen.getByRole('alert')).toHaveClass('pi-state', 'pi-state--error')
+    expect(screen.getByRole('button', { name: 'Retry' })).toBeInTheDocument()
+  })
+
+  it('Chips renders a labelled pill row and nothing when empty', () => {
+    const { rerender } = render(<Chips label="Favorites" items={['MCR', 'NANA']} />)
+    const list = screen.getByRole('list', { name: 'Favorites' })
+    expect(list).toHaveClass('pi-chips')
+    expect(within(list).getAllByRole('listitem')).toHaveLength(2)
+    rerender(<Chips label="Favorites" items={[]} />)
+    expect(screen.queryByRole('list')).toBeNull()
+  })
+
+  it('Steps keeps ordered-list semantics and marks the current step', () => {
+    render(<Steps label="Composer steps" current="content"
+      items={[{ id: 'audience', label: 'Audience' }, { id: 'content', label: 'Content' }, { id: 'review', label: 'Review' }]} />)
+    const list = screen.getByRole('list', { name: 'Composer steps' })
+    expect(list.tagName).toBe('OL')
+    const items = within(list).getAllByRole('listitem')
+    expect(items).toHaveLength(3)
+    expect(items[1]).toHaveAttribute('aria-current', 'step')
+    expect(items[0]).not.toHaveAttribute('aria-current')
+  })
+
+  it('Facts renders a label/value definition list', () => {
+    render(<Facts rows={[{ label: 'Audience', value: 'Everyone' }, { label: 'Body', value: 'Hello' }]} />)
+    expect(screen.getByText('Audience').tagName).toBe('DT')
+    expect(screen.getByText('Everyone').tagName).toBe('DD')
+  })
+
+  it('IconButton carries its accessible name and pressed state', () => {
+    const calls: number[] = []
+    render(<IconButton icon={<SocialIcon name="heart" />} label="Leave a heart" count={42}
+      pressed={false} onClick={() => calls.push(1)} />)
+    const button = screen.getByRole('button', { name: 'Leave a heart' })
+    expect(button).toHaveClass('pi-icon-button')
+    expect(button).toHaveAttribute('aria-pressed', 'false')
+    expect(button).toHaveTextContent('42')
+    button.click()
+    expect(calls).toHaveLength(1)
+  })
+
+  it('IconButton blocks activation while busy', () => {
+    const calls: number[] = []
+    render(<IconButton icon={<SocialIcon name="heart" />} label="Leave a heart" busy onClick={() => calls.push(1)} />)
+    const button = screen.getByRole('button', { name: 'Leave a heart' })
+    expect(button).toBeDisabled()
+    expect(button).toHaveAttribute('aria-busy', 'true')
+    button.click()
+    expect(calls).toHaveLength(0)
+  })
+})
+
+describe('the icon set', () => {
+  it('renders one family: 24px viewBox, stroke 2, square caps, decorative', () => {
+    const { container } = render(<SocialIcon name="heart" />)
+    const svg = container.querySelector('svg')!
+    expect(svg).toHaveAttribute('viewBox', '0 0 24 24')
+    expect(svg).toHaveAttribute('stroke', 'currentColor')
+    expect(svg).toHaveAttribute('stroke-width', '2')
+    expect(svg).toHaveAttribute('stroke-linecap', 'square')
+    expect(svg).toHaveAttribute('fill', 'none')
+    // Decorative: the containing control supplies the name.
+    expect(svg).toHaveAttribute('aria-hidden', 'true')
+    expect(svg).toHaveAttribute('focusable', 'false')
+  })
+
+  it('every named icon renders a path', () => {
+    const names = ['heart', 'heart-filled', 'comment', 'share', 'people', 'person', 'photo',
+      'calendar', 'location', 'lock', 'chevron-right', 'edit', 'plus', 'warning'] as const
+    for (const name of names) {
+      const { container, unmount } = render(<SocialIcon name={name} />)
+      expect(container.querySelector('svg')!.children.length, name).toBeGreaterThan(0)
+      unmount()
+    }
+  })
+
+  it('the filled heart is a distinct pressed state, not a colour swap', () => {
+    const { container, rerender } = render(<SocialIcon name="heart" />)
+    expect(container.querySelector('path[fill="currentColor"]')).toBeNull()
+    rerender(<SocialIcon name="heart-filled" />)
+    expect(container.querySelector('path[fill="currentColor"]')).not.toBeNull()
   })
 })

@@ -113,6 +113,12 @@ export function ProfilePage({ view, isOwner, onFollow, posts, character }: Profi
   return <section className="profile-page" aria-labelledby={`${id}-title`}>
     <header className="profile-page__header">
       <h1 id={`${id}-title`}>{title}</h1>
+      {/* The reference's profile card leads with the character frame. It is
+          decorative here: the nickname beside it is the accessible name, and no
+          substitute character art is ever drawn in the frame. */}
+      <div className="profile-page__portrait" aria-hidden="true">
+        {view.nickname.slice(0, 1).toUpperCase()}
+      </div>
       <p className="profile-page__name">{view.nickname}</p>
       <p className="profile-page__bio">{view.bio === null || view.bio === ''
         ? 'No bio yet.'
@@ -151,7 +157,7 @@ export function ProfilePage({ view, isOwner, onFollow, posts, character }: Profi
     {/* Omitted entirely when there is no overlap. */}
     {shared !== null && <section className="profile-page__block" aria-labelledby={`${id}-shared`}>
       <h2 id={`${id}-shared`}>Shared interests</h2>
-      <p>{shared}</p>
+      <p className="profile-page__shared">{shared}</p>
     </section>}
 
     {/* The gender bucket appears only when the owner opted in. There is no age
