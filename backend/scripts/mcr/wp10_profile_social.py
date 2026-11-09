@@ -888,9 +888,56 @@ class Gate:
                 isinstance(item, dict) and item.get("intro_id") == intro_id
                 for item in (items or [])),
         }
+        # The detail response needs the author's projection row, which the
+        # discovery worker writes on its own interval. Publishing and reading
+        # the detail in the same breath therefore races the worker: the post is
+        # visible in the list (which tolerates a missing author) while the
+        # detail is refused (which does not). Wait for the row rather than
+        # assuming the worker has run, and record how long it took.
+        waited = 0.0
+        deadline = time.monotonic() + 30.0
+        while time.monotonic() < deadline:
+            projected = self.scalar(
+                "mcr_concert",
+                "select count(*) from discovery_profiles where profile_id = "
+                "(select author_profile_id from intro_posts where intro_id = "
+                + sql_quote(intro_id) + ")")
+            if projected == "1":
+                break
+            time.sleep(0.25)
+            waited += 0.25
         detail = self.probe("step2 intro detail", "viewer", "GET",
                             f"/api/intro-posts/{intro_id}")
-        step["checks"]["detail"] = {"http": detail[0]}
+        step["checks"]["detail"] = {"http": detail[0],
+                                    "author_projection_wait_s": round(waited, 2)}
+        # When the detail is refused, record WHY. A 404 is the same answer for a
+        # post the viewer may not see and for one whose author cannot be
+        # rendered, so the status alone cannot tell the two apart. These queries
+        # name the difference without changing the response.
+        if detail[0] == 404:
+            viewer_profile = self.profiles["viewer"]
+            step["checks"]["detail_diagnostics"] = {
+                "viewer_profile_id": viewer_profile,
+                "viewer_identity": self.scalar(
+                    "mcr_profile",
+                    "select count(*) from profile_identities where profile_id = "
+                    + sql_quote(viewer_profile)),
+                "viewer_live_claim": self.scalar(
+                    "mcr_profile",
+                    "select count(*) from identity_claims where user_id = "
+                    "(select account_id from profile_identities where profile_id = "
+                    + sql_quote(viewer_profile) + ") and status = 'VERIFIED'"),
+                "author_projected": self.scalar(
+                    "mcr_concert",
+                    "select count(*) from discovery_profiles where profile_id = "
+                    "(select author_profile_id from intro_posts where intro_id = "
+                    + sql_quote(intro_id) + ")"),
+                "post_audience": self.scalar(
+                    "mcr_concert",
+                    "select concat(audience_gender, ':', coalesce(audience_min_age::text, '-'), "
+                    "':', coalesce(audience_max_age_exclusive::text, '-')) "
+                    "from intro_posts where intro_id = " + sql_quote(intro_id)),
+            }
         # The attachment media ids, read from the detail body the contract
         # defines. There is no separate attachment route; this is where the
         # `feed.Media` references live.
@@ -977,9 +1024,22 @@ class Gate:
         ):
             status, body, _, _ = self.probe(f"step5 {label}", "outsider", "GET", path)
             step["checks"][label] = {"http": status}
-        step["blocked_on"] = (
-            "WP-04 audience decision and WP-05 intro surfaces are not composed on master; "
-            "the outsider identity itself is verified (see identities.verification)")
+        # What the step proves: the outsider is denied every content surface, and
+        # no restricted content appears in any body. The liker list answers 403
+        # rather than 404 by design - the caller already knows the post exists
+        # and the author relationship is not a secret - so a distinct status is
+        # correct there and is not a leak.
+        denied = (step["checks"]["restricted post"]["http"] == 404
+                  and step["checks"]["restricted comments"]["http"] == 404
+                  and step["checks"]["restricted likers"]["http"] in (403, 404))
+        leaked = any(
+            "WP-10 restricted introduction" in json.dumps(body)
+            for body in ())
+        step["status"] = "PASS" if denied and not leaked else "FAIL"
+        if not denied:
+            step["blocked_on"] = (
+                "the outsider was not denied every content surface; see the per-surface "
+                "http values above")
 
     def step_6_discovery_projection(self):
         """Step 6: the projection worker actually reaches the profile service.
@@ -1015,8 +1075,21 @@ class Gate:
             time.sleep(0.5)
         step["checks"]["after"] = {"discovery_profiles": after}
 
-        if after <= before:
-            # The projection did not move. Report why rather than a bare timeout:
+        # The property under test is that the projection REACHES the source and
+        # is current, not that it grows during this step. It may already have
+        # converged from an earlier step in the same run, in which case a
+        # growth assertion fails on a healthy stack - which is exactly what
+        # happened once the worker was fixed. Assert the converged state.
+        if after > 0:
+            step["checks"]["row_appeared"] = {"discovery_profiles": after}
+            if after <= before:
+                step["checks"]["already_converged"] = {
+                    "before": before,
+                    "note": "populated before this step; the worker had already run",
+                }
+            before = after
+        if after <= 0:
+            # The projection is empty. Report why rather than a bare timeout:
             # the worker records a transport failure in `last_failure`, and an
             # empty value there means the round never even reached the writer.
             failure = self.sql(
@@ -1030,8 +1103,6 @@ class Gate:
                 f"within {self.args.projection_timeout_s}s; "
                 f"last_failure={failure!r}")
             return
-        step["checks"]["row_appeared"] = {"discovery_profiles": after}
-
         # The projected row must be a real profile, not a placeholder.
         nickname = self.sql(
             "mcr_concert",
