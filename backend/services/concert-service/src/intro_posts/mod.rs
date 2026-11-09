@@ -39,6 +39,8 @@
 //! * [`visibility_sql`] — the SQL form of the decision (T-305);
 //! * [`repository`] — the page and detail queries that embed it (T-306).
 pub mod attachments;
+pub mod claims_adapter;
+pub mod facts;
 pub mod commands;
 pub mod comments;
 pub mod http;

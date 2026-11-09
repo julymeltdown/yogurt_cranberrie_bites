@@ -168,6 +168,13 @@ impl ClaimRow {
     }
 }
 
+/// A canonical claim row with the provenance it was written with.
+pub struct SourcedClaimRow {
+    pub row: ClaimRow,
+    pub verifier: String,
+    pub source_revision: String,
+}
+
 /// A claim to write. Everything the schema requires, and nothing else.
 pub struct NewClaim {
     pub user_id: Uuid,
@@ -566,6 +573,51 @@ impl IdentityRepository {
             next_birthday_at: row.get("next_birthday_at"),
             verified_at: row.get("verified_at"),
             expires_at: row.get("expires_at"),
+        }))
+    }
+
+    /// The canonical claim row together with the verifier and source revision
+    /// it was written with.
+    ///
+    /// This is [`Self::canonical_claim`] for the internal claim read, which must
+    /// report the claim's provenance so the caller can record which mapping
+    /// produced the attributes. The ordering and decoding are identical; only the
+    /// two extra columns are selected.
+    pub async fn canonical_claim_with_source(
+        &self,
+        user_id: Uuid,
+    ) -> anyhow::Result<Option<SourcedClaimRow>> {
+        let row = sqlx::query(
+            "select claim_id, status, gender_bucket, age_at_verification, next_birthday_at, \
+                    verified_at, expires_at, verifier, source_revision \
+             from identity_claims where user_id = $1 \
+             order by verified_at desc, expires_at desc, claim_id desc \
+             limit 1",
+        )
+        .bind(user_id)
+        .fetch_optional(&self.pool)
+        .await?;
+        let Some(row) = row else {
+            return Ok(None);
+        };
+        let status = match row.get::<String, _>("status").as_str() {
+            "VERIFIED" => ClaimStatus::Verified,
+            "REPLACED" => ClaimStatus::Replaced,
+            "REVOKED" => ClaimStatus::Revoked,
+            _ => anyhow::bail!("stored claim status is not a known value"),
+        };
+        Ok(Some(SourcedClaimRow {
+            row: ClaimRow {
+                claim_id: row.get("claim_id"),
+                status,
+                gender_bucket: GenderBucket::parse(&row.get::<String, _>("gender_bucket"))?,
+                age_at_verification: row.get("age_at_verification"),
+                next_birthday_at: row.get("next_birthday_at"),
+                verified_at: row.get("verified_at"),
+                expires_at: row.get("expires_at"),
+            },
+            verifier: row.get("verifier"),
+            source_revision: row.get("source_revision"),
         }))
     }
 

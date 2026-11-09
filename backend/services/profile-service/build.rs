@@ -20,6 +20,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 contracts_build::proto_root().join("profile/v1/profile_product.proto"),
                 contracts_build::proto_root().join("profile/v1/identity_verification.proto"),
                 contracts_build::proto_root().join("profile/v1/discovery_source.proto"),
+                contracts_build::proto_root().join("profile/v1/identity_claim_reader.proto"),
             ],
             &[include_dir],
         )?;
@@ -45,6 +46,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         "authority/v1/lease.proto",
         "concert/v1/participant.proto",
         "profile/v1/profile_product.proto",
+        "profile/v1/identity_claim_reader.proto",
     ] {
         println!(
             "cargo:rerun-if-changed={}",

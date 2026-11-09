@@ -21,6 +21,7 @@
 //!   and no `Serialize` anywhere in this module, and the types that do render
 //!   redact them by hand.
 pub mod callback;
+pub mod claim_read;
 pub mod disconnect;
 pub mod naver_config;
 pub mod naver_profile;
@@ -37,7 +38,8 @@ pub use naver_provider::{
     NaverAccessToken, NaverProviderClient, NaverProviderEndpoints, NaverProviderError,
     NaverProviderProfile,
 };
-pub use repository::IdentityRepository;
+pub use claim_read::{ClaimObservation, ClaimRead, ClaimReadError, ReadClaim};
+pub use repository::{IdentityRepository, SourcedClaimRow};
 pub use start::{StartError, StartVerification, StartedVerification};
 pub use status::{IdentityVerification, ReadVerification, VerificationState};
 

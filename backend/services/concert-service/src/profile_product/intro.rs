@@ -30,6 +30,7 @@ use crate::intro_posts::{
     repository,
     visibility_sql::{ViewerAttributes, VisibilityScope},
 };
+use concert_application::identity_claims::{Attribute, Gender, IdentityClaimsPort, ProfileId};
 use concert_application::intro_posts::{
     audience::{Audience, GenderCondition},
     content::IntroContent,
@@ -105,6 +106,9 @@ pub struct IntroProducer {
     /// by one instance must open on another, so this is configuration in the
     /// same way the identity subject salt is.
     cursor: Arc<repository::IntroCursorCodec>,
+    /// The claim port. `None` when the profile service endpoint is not
+    /// configured, which makes every restricted post fail closed.
+    claims: Option<Arc<dyn IdentityClaimsPort>>,
 }
 
 impl IntroProducer {
@@ -126,7 +130,15 @@ impl IntroProducer {
             likes: Arc::new(LikeStore::new(pool.clone())),
             comments: Arc::new(CommentStore::new(pool)),
             cursor: Arc::new(repository::IntroCursorCodec::new(cursor_key)),
+            claims: None,
         }
+    }
+
+    /// Attach the claim port. Without it every restricted post fails closed,
+    /// because the scope's attributes are `Unavailable`.
+    pub fn with_claims(mut self, claims: Arc<dyn IdentityClaimsPort>) -> Self {
+        self.claims = Some(claims);
+        self
     }
 
     pub fn posts(&self) -> &Arc<IntroPostStore> {
@@ -162,7 +174,7 @@ impl IntroProducer {
                     }
                     _ => Status::invalid_argument("Invalid intro query"),
                 })?;
-                let scope = self.page_scope(actor)?;
+                let scope = self.page_scope(actor).await?;
                 let page = repository::list_intro_posts(
                     self.posts.pool(),
                     self.cursor.as_ref(),
@@ -174,7 +186,7 @@ impl IntroProducer {
                 json(200, page_wire(&page))
             }
             IntroOperation::GetIntroPost(intro_id) => {
-                let scope = self.detail_scope(actor)?;
+                let scope = self.detail_scope(actor).await?;
                 let detail =
                     repository::get_intro_post(self.posts.pool(), &scope, intro_id)
                         .await
@@ -624,35 +636,105 @@ fn comment_wire(comment: &crate::intro_posts::comments::IntroComment) -> serde_j
 }
 
 impl IntroProducer {
-    /// The page scope for a viewer.
+    /// The viewer's claim attributes, as the SQL predicate needs them.
     ///
-    /// The claim attributes are `Unavailable`: the concert service has no claim
-    /// adapter yet (that is WP-04's separate deliverable), so a restricted post
-    /// is denied rather than admitted. The fail-closed direction is the only
-    /// safe one — an adapter that guessed would admit viewers a restricted
-    /// audience excludes. An unrestricted post is unaffected, because the
-    /// predicate's unrestricted arm never consults the claims.
-    fn page_scope(
-        &self,
-        viewer: Uuid,
-    ) -> Result<repository::PageScope, Status> {
+    /// This is the T-302 wiring. The concert service owns the audience decision
+    /// but not the claim store, so the attributes come through
+    /// [`IdentityClaimsPort`] and never from a local join.
+    ///
+    /// The three states map exactly as the decision table requires:
+    ///
+    /// * a live claim with an age and a gender becomes
+    ///   `ViewerAttributes::read(current_age, Some(gender), false)`;
+    /// * the provider's explicit "not specified" answer becomes
+    ///   `ViewerAttributes::read(current_age, None, true)`, which satisfies only
+    ///   an audience whose author selected `unknown`;
+    /// * no claim, an expired or revoked claim, and any transport failure all
+    ///   become `ViewerAttributes::Unavailable`, which denies rows 7-11.
+    ///
+    /// A missing port (the profile endpoint is not configured) is
+    /// `Unavailable`, never a default.
+    async fn viewer_attributes(&self, viewer: Uuid, now: chrono::DateTime<chrono::Utc>) -> ViewerAttributes {
+        let Some(claims) = self.claims.as_ref() else {
+            return ViewerAttributes::Unavailable;
+        };
+        let Ok(snapshot) = claims.read(ProfileId::from_uuid(viewer), now).await else {
+            return ViewerAttributes::Unavailable;
+        };
+        // The current age is the Seoul-date arithmetic the decision uses, so the
+        // SQL predicate and the pure function cannot disagree about a birthday.
+        let age = snapshot
+            .age
+            .known()
+            .and_then(|claim| concert_application::intro_visibility::current_age(claim, now));
+        match snapshot.gender {
+            Attribute::Known(gender) => {
+                ViewerAttributes::read(age, Some(gender), false)
+            }
+            Attribute::Unspecified => ViewerAttributes::read(age, None, true),
+            Attribute::Unavailable => {
+                // An unavailable gender with a known age is still a live age
+                // snapshot: the age rows need it, and the gender rows deny.
+                if age.is_some() {
+                    ViewerAttributes::read(age, None, false)
+                } else {
+                    ViewerAttributes::Unavailable
+                }
+            }
+        }
+    }
+
+    /// The page scope for a viewer.
+    async fn page_scope(&self, viewer: Uuid) -> Result<repository::PageScope, Status> {
+        let now = chrono::Utc::now();
+        let attributes = self.viewer_attributes(viewer, now).await;
         Ok(repository::PageScope {
             viewer_profile_id: viewer,
-            blocks: concert_application::intro_visibility::BlockState::None,
-            attributes: ViewerAttributes::Unavailable,
-            now: chrono::Utc::now(),
+            blocks: self.blocks(viewer).await,
+            attributes,
+            now,
         })
     }
 
-    /// The detail scope for a viewer. Same claim limitation as [`Self::page_scope`].
-    fn detail_scope(&self, viewer: Uuid) -> Result<VisibilityScope, Status> {
+    /// The detail scope for a viewer.
+    async fn detail_scope(&self, viewer: Uuid) -> Result<VisibilityScope, Status> {
+        let now = chrono::Utc::now();
+        let attributes = self.viewer_attributes(viewer, now).await;
         Ok(VisibilityScope::new(
             viewer,
-            concert_application::intro_visibility::BlockState::None,
+            self.blocks(viewer).await,
             concert_application::intro_visibility::AuthorStanding::Active,
-            ViewerAttributes::Unavailable,
-            chrono::Utc::now(),
+            attributes,
+            now,
         ))
+    }
+
+    /// The viewer's block state against every other profile.
+    ///
+    /// The page and detail scopes carry one block state for the whole request,
+    /// so a viewer who has blocked anyone is reported as blocking everyone. That
+    /// is the fail-closed direction: the predicate then denies rows that a
+    /// per-row block check would have allowed, rather than admitting a post whose
+    /// author the viewer has blocked. A per-row block join is the correct long-term
+    /// shape and is recorded as a limitation.
+    async fn blocks(&self, viewer: Uuid) -> concert_application::intro_visibility::BlockState {
+        use concert_application::intro_visibility::BlockState;
+        let blocked: Option<bool> = sqlx::query_scalar(
+            "select exists(select 1 from discovery_blocks b \
+             join discovery_profiles p on p.account_id = b.blocker_account_id \
+             where p.profile_id = $1 and b.deleted_at is null)",
+        )
+        .bind(viewer)
+        .fetch_optional(self.posts.pool())
+        .await
+        .ok()
+        .flatten();
+        match blocked {
+            Some(true) => BlockState::ViewerBlockedAuthor,
+            Some(false) => BlockState::None,
+            // A store failure is not "no block".
+            None => BlockState::Mutual,
+        }
     }
 }
 

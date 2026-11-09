@@ -86,3 +86,17 @@ pub fn runtime(
 ) -> anyhow::Result<ProfileProductRuntime> {
     transport::runtime(pool, callers, verifier)
 }
+
+/// Build the transport with the T-302 claim port attached.
+///
+/// Without it the intro producer fails closed on every restricted post. This is
+/// the call site that turns the age/gender audience from "enforced and never
+/// satisfied" into a working feature.
+pub fn runtime_with_claims(
+    pool: sqlx::PgPool,
+    callers: platform::grpc_auth::CallerRegistry,
+    verifier: platform::actor_delegation::ActorDelegationVerifier,
+    claims: std::sync::Arc<dyn concert_application::identity_claims::IdentityClaimsPort>,
+) -> anyhow::Result<ProfileProductRuntime> {
+    transport::runtime_with_claims(pool, callers, verifier, Some(claims))
+}

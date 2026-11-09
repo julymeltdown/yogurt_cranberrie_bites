@@ -167,7 +167,7 @@ impl LikeStore {
             profile_id: viewer,
             claims_known: false,
         };
-        if !self.visibility.can_view(&facts, &viewer_facts) {
+        if !self.visibility.can_view(&facts, &viewer_facts, Utc::now()).await {
             return Ok(None);
         }
         Ok(Some(facts))
@@ -244,7 +244,10 @@ impl LikeStore {
             profile_id: actor,
             claims_known: false,
         };
-        let visible = self.visibility.can_view(&facts, &viewer_facts);
+        let visible = self
+            .visibility
+            .can_view(&facts, &viewer_facts, Utc::now())
+            .await;
         let count = if visible {
             Some(
                 sqlx::query_scalar("select count(*) from intro_likes where intro_id=$1")

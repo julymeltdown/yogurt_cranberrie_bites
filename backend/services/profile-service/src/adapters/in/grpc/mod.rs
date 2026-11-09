@@ -8,4 +8,5 @@ pub mod server;
 pub mod author_authority;
 pub mod world_identity;
 pub mod concert_public_profile;
+pub mod identity_claim_reader;
 pub mod identity_verification;
