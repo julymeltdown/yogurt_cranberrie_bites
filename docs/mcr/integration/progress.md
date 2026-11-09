@@ -5,13 +5,13 @@ updated as work lands; it is the single place to read current progress.
 
 | Field | Value |
 | --- | --- |
-| Snapshot | 2026-11-09 13:40 Asia/Seoul |
+| Snapshot | 2026-11-09 15:45 Asia/Seoul |
 | Delivery branch | `julymeltdown/yogurt_cranberrie_bites` `master` |
-| Head at snapshot | `78e912a47` |
+| Head at snapshot | `3f49da8e2` |
 | Task register | 110 tasks in [task-breakdown.md](task-breakdown.md) |
-| Tasks integrated | **82 / 110** |
-| Tasks in flight | 12 (WP-04) |
-| Tasks not started | 16 (blocked on WP-04) |
+| Tasks integrated | **87 / 110** |
+| Tasks in flight | 7 (WP-04 remainder) |
+| Tasks not started | 16 |
 | Release gate | **INCOMPLETE** — see §6 |
 
 Progress is counted per task, not per package. A task counts as integrated only
@@ -27,7 +27,7 @@ exit code, and its acceptance statements are demonstrated.
 | WP-01 Contract freeze | 8 | **8** | Complete |
 | WP-02 Schema and migrations | 12 | **12** | Complete |
 | WP-03 Favorites and discovery | 6 | **6** | Complete |
-| WP-04 Claims and visibility policy | 12 | 0 | In flight |
+| WP-04 Claims and visibility policy | 12 | **5** | Partial — security core in, surfaces open |
 | WP-04b NAVER verification | 12 | **12** | Complete |
 | WP-05 Intro posts and hearts | 16 | **16** | Complete |
 | WP-06 Profile posts and media | 12 | **12** | Complete |
@@ -103,7 +103,10 @@ Each row is a product element, its state, and the evidence that supports it.
 | Intro operation parser (13 operations, closed) | Integrated | `intro_routes` |
 | Intro mutation stores (draft, publish, delete, like, comment) | Integrated | `intro_post_commands`, `intro_likes`, `intro_comments` |
 | Composer, audience fields, heart button, likers panel, activity feed | Integrated | `src/features/intros` — 171 tests |
-| **Real `can_view_intro` wired into likes and reads** | **Not wired** | WP-05 wired a fail-closed `DenyRestricted` port; the real policy lands with WP-04 |
+| `can_view_intro` pure decision (12-row table) | Integrated | `intro_visibility` — 14 tests |
+| SQL predicate, proven identical to the pure function | Integrated | `intro_visibility_contract` — 8 tests, shared case table compiled into both binaries |
+| Page and detail queries with the predicate inside | Integrated | `intro_posts_page` — 15 tests, `intro_cursor` — 7 tests |
+| **Real `can_view_intro` wired into the `Visibility` port** | **Not wired** | WP-05's fail-closed `DenyRestricted` default is still in place; safe but restricted posts are author-only |
 | Intro operations served over HTTP | Integrated (11 of 13) | `concert_profile_product_routes` — 12 tests |
 | Intro composer mounted at `/discover/intro` | Integrated | `router.test.tsx` |
 | **`listIntroPosts` / `getIntroPost` queries** | **Do not exist** | Needs a visibility-filtered page and detail query plus the viewer's like state; owner `WP-04 visibility + WP-05 list/detail query` |
@@ -176,9 +179,9 @@ Each row is a product element, its state, and the evidence that supports it.
 
 | ID | Subject | State |
 | --- | --- | --- |
-| V-01 | Age boundary 18/29 allowed, 17/30 denied | Not run (WP-04) |
-| V-02 | Unknown, expired, revoked attributes fail closed | Not run (WP-04) |
-| V-03 | One decision across every surface | Blocked — the intro read queries do not exist |
+| V-01 | Age boundary 18/29 allowed, 17/30 denied | Integrated (unit) — shared case table |
+| V-02 | Unknown, expired, revoked attributes fail closed | Integrated (unit) — shared case table |
+| V-03 | One decision across every surface | Partial — pure/SQL parity proven; the surfaces are not all wired |
 | V-04 | Like removal discloses nothing | Integrated (unit) |
 | V-05 | Idempotent likes, one notification | Integrated (unit) |
 | V-06 | Attachment isolation | Integrated (unit) |
@@ -188,7 +191,7 @@ Each row is a product element, its state, and the evidence that supports it.
 | V-10 | Failure handling and resource cleanup | Integrated (unit) |
 | V-11 | End-to-end three-identity scenario | **Blocked** |
 | V-12 | NAVER verification produces a real claim | 15 of 16 cases pass; console case blocked |
-| V-13 | Unrestricted posts need no verification | Not run (WP-04) |
+| V-13 | Unrestricted posts need no verification | Integrated (unit) — the unrestricted path reads no claim |
 
 ---
 
@@ -210,6 +213,8 @@ Each row is a product element, its state, and the evidence that supports it.
 | Discovery projection | 35 | — | 19 projection + 11 block consumer + 5 live source |
 | Discovery worker | 12 | — | shutdown and failure behaviour |
 | Frontend refactor | — | 6 | query-key audit; net -358 lines across 49 files |
+| WP-04 visibility | 63 | — | 10 audience + 9 claims + 14 pure + 8 SQL parity + 7 cursor + 15 page |
+| Backend refactor | — | — | test counts identical before and after: 342 / 1449 / 737 |
 | Producer routing | 16 | — | 7 gateway + 9 concert transport |
 
 Frontend full-suite baseline: **19 tests fail on `master` before any of this
@@ -230,6 +235,9 @@ pre-existing, not as passes.
 | Stale typecheck error in an unrelated test | Blocked the required `typecheck` command | Fixed |
 | Projection watermark used `profile_identities.updated_at` | A favorites change after a pass was never seen again | Added a `profile_favorites` touch trigger (migration `0017`); no-lost-updates test now mutates the source after convergence |
 | Duplicate CSS rule blocks across 15 places | Drift between copies | Deduplicated to 0, verified in the built bundle |
+| Three attachment decoders, two defaulting an unparseable purpose to `ProfilePost` | An intro asset could cross to the profile surface (V-06-d) | One shared decoder that defaults nothing that matters |
+| `INVALID_PURPOSE` and `BYTES_MISMATCH` outside the closed error set | Gateway and client would drop a precise refusal into an opaque one | Both project to `INVALID_INPUT` |
+| `seal_cursor` accepted windows `open_cursor` rejects | A cursor token no reader could ever accept | Fixed; cursor tests cover the round trip |
 
 ---
 
