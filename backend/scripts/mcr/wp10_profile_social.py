@@ -970,12 +970,20 @@ class Gate:
                             ("viewer profile", f"/api/profiles/{self.profiles['viewer']}")):
             status, body, _, _ = self.probe(f"step3 {label}", "author", "GET", path)
             step["checks"][label] = {"http": status}
+        # The notification inbox is part of what this step claims to prove: the
+        # scenario reaches the liker from "the like notification OR the likers
+        # list". The inbox was previously probed and then left out of the pass
+        # condition, so the step passed while the inbox answered 404.
+        inbox = step["checks"]["notification inbox"]["http"]
         passed = (liked[0] == 200
+                  and inbox == 200
                   and step["checks"]["likers list"]["http"] == 200
                   and step["checks"]["viewer profile"]["http"] == 200)
         step["status"] = "PASS" if passed else "FAIL"
         if not passed:
-            step["blocked_on"] = "the like, the liker list or the viewer profile did not return 200"
+            step["blocked_on"] = (
+                "the like, the notification inbox, the liker list or the viewer "
+                "profile did not return 200; see the per-call http values above")
 
     def step_4_poster_and_delete(self):
         """Step 4: A places a poster; the intro post and its likes are unchanged."""
