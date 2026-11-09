@@ -196,14 +196,18 @@ async fn a_lifted_block_restores_access() -> anyhow::Result<()> {
     Ok(())
 }
 
-/// The fail-closed case: a pair that cannot be resolved denies.
+/// A viewer with no projection row is admitted: an absent row means no block is
+/// recorded, not that the pair is blocked.
 ///
-/// A viewer with no mirrored account cannot be proven unblocked, so the post is
-/// withheld. This is the property that stops the fix from flipping to
-/// over-admission: the unresolved case is the one where a naive join would
-/// compare against `NULL` and silently admit.
+/// This is the composed decision on master (`an_unprojected_pair_is_not_treated_as_blocked`
+/// in `intro_visibility_contract.rs`). It is recorded here too because the two
+/// suites must agree: a projection row that has not been written yet is a lagging
+/// projection, and denying it would hide every post from a newly registered user
+/// until the worker catches up. The security consequence is that a block is
+/// unenforced for a pair whose projection has not landed; that is a property of
+/// the projection, not of this predicate.
 #[tokio::test]
-async fn an_unresolvable_pair_denies() -> anyhow::Result<()> {
+async fn an_unprojected_viewer_is_admitted() -> anyhow::Result<()> {
     let pool = pool().await?;
     let _serial = fixture_guard(&pool).await;
     let author = profile(&pool, "block-author5").await?;
@@ -211,15 +215,15 @@ async fn an_unresolvable_pair_denies() -> anyhow::Result<()> {
     // A viewer that has never been mirrored: no `discovery_profiles` row.
     let stranger = Uuid::new_v4();
     assert!(
-        !visible(&pool, stranger, intro).await?,
-        "an unresolvable viewer denies rather than admitting"
+        visible(&pool, stranger, intro).await?,
+        "an unprojected viewer is not treated as blocked"
     );
     Ok(())
 }
 
-/// An unresolvable *author* denies too, in the other direction.
+/// An unprojected *author* is admitted too, for the same reason.
 #[tokio::test]
-async fn an_unresolvable_author_denies() -> anyhow::Result<()> {
+async fn an_unprojected_author_is_admitted() -> anyhow::Result<()> {
     let pool = pool().await?;
     let _serial = fixture_guard(&pool).await;
     let viewer = profile(&pool, "block-viewer4").await?;
@@ -236,8 +240,8 @@ async fn an_unresolvable_author_denies() -> anyhow::Result<()> {
     .execute(&pool)
     .await?;
     assert!(
-        !visible(&pool, viewer.profile_id, intro).await?,
-        "an unresolvable author denies rather than admitting"
+        visible(&pool, viewer.profile_id, intro).await?,
+        "an unprojected author is not treated as blocked"
     );
     Ok(())
 }

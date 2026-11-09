@@ -842,6 +842,54 @@ mod tests {
         ORIGINS.iter().map(|origin| (*origin).to_owned()).collect()
     }
 
+    /// A bodyless `DELETE` is still a mutation, so it needs an
+    /// `Idempotency-Key` before the request is forwarded.
+    ///
+    /// The end-to-end gate's intro-delete probe sent no key and got
+    /// `INVALID_INPUT`. The product is right to refuse: a delete is not
+    /// replay-safe without a key, and the gateway cannot tell a retry from a
+    /// second delete. This test pins the requirement and records the cause next
+    /// to the code that produces it, so the next reader does not have to
+    /// rediscover that the 400 never reached the intro parser.
+    #[test]
+    fn a_delete_requires_an_idempotency_key() {
+        let route = ROUTES
+            .iter()
+            .find(|route| route.operation == "deleteIntroPost")
+            .expect("the intro delete route exists");
+        let method = Method::DELETE;
+        let without = request_metadata(
+            &method,
+            route,
+            &headers(&[
+                ("origin", "https://mcr.example"),
+                ("x-mcr-intent", "browser"),
+            ]),
+            &origins(),
+        );
+        assert_eq!(
+            without,
+            Err((StatusCode::BAD_REQUEST, "INVALID_INPUT")),
+            "a bodyless delete without a key is refused before dispatch"
+        );
+        // With a UUID key the same request is accepted, and no content type is
+        // required because the body is empty.
+        let with = request_metadata(
+            &method,
+            route,
+            &headers(&[
+                ("origin", "https://mcr.example"),
+                ("x-mcr-intent", "browser"),
+                ("idempotency-key", "00000000-0000-4000-8000-000000000001"),
+            ]),
+            &origins(),
+        );
+        assert_eq!(
+            with,
+            Ok((String::new(), "00000000-0000-4000-8000-000000000001".to_owned()))
+        );
+    }
+
     #[test]
     fn every_route_is_a_frozen_operation_and_no_route_names_an_event() {
         let root = std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
