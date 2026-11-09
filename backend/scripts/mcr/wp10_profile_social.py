@@ -221,6 +221,11 @@ class Api:
         if body is not None:
             payload = json.dumps(body).encode()
             hdrs["Content-Type"] = "application/json"
+        elif raw is None and method in ("POST", "PUT", "PATCH"):
+            # A bodyless mutation still carries the closed JSON envelope; the
+            # gateway answers 415 without it. DELETE is bodyless by contract.
+            payload = b""
+            hdrs["Content-Type"] = "application/json"
         if content_type:
             hdrs["Content-Type"] = content_type
         if key:
@@ -423,6 +428,14 @@ class Gate:
         for role in ("auth", "friend", "profile"):
             envs["concert-service"]["CONCERT_PARTICIPANT_" + role.upper() + "_GRPC_ENDPOINT"] = urls[role]
             envs["concert-service"]["CONCERT_" + role.upper() + "_GRPC_ENDPOINT"] = urls[role]
+        # The Introduction audience decision needs the viewer's verified age
+        # and gender, which live in the profile service. Without this endpoint
+        # the claim port stays detached and every restricted post fails closed,
+        # which is safe but makes the audience feature untestable here.
+        envs["concert-service"].update(
+            CONCERT_PROFILE_GRPC_ENDPOINT=urls["profile"],
+            CONCERT_SERVICE_CREDENTIAL=credentials["CONCERT_SERVICE_CREDENTIAL"],
+        )
         envs["concert-service"]["RUST_LOG"] = "info"
         envs["post-service"]["RUST_LOG"] = "info"
         envs["post-service"].update(
@@ -766,37 +779,84 @@ class Gate:
         step["status"] = "PASS" if passed else "FAIL"
 
     def step_2_intro_post(self):
-        """Step 2: A publishes a restricted intro post; B satisfies it."""
+        """Step 2: A publishes a restricted intro post; B satisfies it.
+
+        The paths are the frozen contract's, not invented ones. Creation is a
+        draft `PUT` followed by a `POST .../publish`; there is no
+        `POST /api/me/intro-posts` and no `/attachments` or `/resolve` sub-path.
+        The earlier version of this step probed paths the contract does not
+        define, so it could never have passed no matter how much was composed.
+        """
         step = {"status": "BLOCKED", "checks": {}}
         self.report["steps"]["step2_intro_post"] = step
-        status, body, _, _ = self.probe(
-            "step2 intro create", "author", "POST", "/api/me/intro-posts",
-            {"body": "WP-10 restricted introduction",
-             "audience": {"gender": "female", "minimum_age": 18,
+        intro_id = str(uuid4())
+        self.intro_id = intro_id
+        draft = self.probe(
+            "step2 intro draft", "author", "PUT", f"/api/me/intro-posts/{intro_id}",
+            {"expected_revision": 0,
+             "body": "WP-10 restricted introduction",
+             "favorites_snapshot": [],
+             "currently_seeking": None,
+             "interaction_style": None,
+             "attachment_media_ids": [],
+             "audience": {"allowed_gender": "female",
+                          "minimum_age": 18,
                           "maximum_age_exclusive": 30},
-             "visibility": "PUBLIC"}, key=str(uuid4()))
-        step["checks"]["create"] = {"http": status}
-        status, body, _, _ = self.probe("step2 intro list", "viewer", "GET",
-                                        "/api/discover/intro-posts")
-        step["checks"]["list"] = {"http": status}
-        step["blocked_on"] = (
-            "WP-05 intro post operations are not composed on master: the frozen routes "
-            "/api/me/intro-posts and /api/discover/intro-posts are not registered by the "
-            "gateway, so the audience decision, the attachments and the heart have no "
-            "surface to exercise")
+             "expires_at": None}, key=str(uuid4()))
+        step["checks"]["draft"] = {"http": draft[0]}
+        published = self.probe(
+            "step2 intro publish", "author", "POST",
+            f"/api/me/intro-posts/{intro_id}/publish",
+            {"expected_revision": 1}, key=str(uuid4()))
+        step["checks"]["publish"] = {"http": published[0]}
+        # The published revision is what the later delete must name.
+        if isinstance(published[1], dict) and published[1].get("revision") is not None:
+            self.intro_revision = published[1]["revision"]
+        listed = self.probe("step2 intro list", "viewer", "GET",
+                            "/api/discover/intro-posts")
+        # A 200 list that does not contain the post is a different defect from a
+        # 404 detail, so record the count and whether the post is in it.
+        items = (listed[1] or {}).get("items") if isinstance(listed[1], dict) else None
+        step["checks"]["list"] = {
+            "http": listed[0],
+            "items": len(items) if isinstance(items, list) else None,
+            "contains_post": any(
+                isinstance(item, dict) and item.get("intro_id") == intro_id
+                for item in (items or [])),
+        }
+        detail = self.probe("step2 intro detail", "viewer", "GET",
+                            f"/api/intro-posts/{intro_id}")
+        step["checks"]["detail"] = {"http": detail[0]}
+        passed = (draft[0] == 200 and published[0] == 200
+                  and listed[0] == 200 and detail[0] == 200)
+        step["status"] = "PASS" if passed else "FAIL"
+        if not passed:
+            step["blocked_on"] = (
+                "the contract-shaped draft, publish, list or detail call did not return "
+                "200; see the per-call http values above")
 
     def step_3_liker_navigation(self):
         """Step 3: A reaches B's profile from the like notification or likers list."""
         step = {"status": "BLOCKED", "checks": {}}
         self.report["steps"]["step3_liker_navigation"] = step
-        for label, path in (("notification inbox", "/api/notifications"),
-                            ("likers list", "/api/intro-posts/00000000-0000-4000-8000-000000000001/likes"),
+        intro = getattr(self, "intro_id", None)
+        if intro is None:
+            step["blocked_on"] = "step 2 did not publish an introduction, so there is nothing to like"
+            return
+        liked = self.probe("step3 like", "viewer", "PUT",
+                           f"/api/intro-posts/{intro}/like", key=str(uuid4()))
+        step["checks"]["like"] = {"http": liked[0]}
+        for label, path in (("notification inbox", "/api/me/notifications"),
+                            ("likers list", f"/api/intro-posts/{intro}/likes"),
                             ("viewer profile", f"/api/profiles/{self.profiles['viewer']}")):
             status, body, _, _ = self.probe(f"step3 {label}", "author", "GET", path)
             step["checks"][label] = {"http": status}
-        step["blocked_on"] = (
-            "WP-05 hearts, the INTRO_LIKED notification and the author-only liker list are "
-            "not composed on master")
+        passed = (liked[0] == 200
+                  and step["checks"]["likers list"]["http"] == 200
+                  and step["checks"]["viewer profile"]["http"] == 200)
+        step["status"] = "PASS" if passed else "FAIL"
+        if not passed:
+            step["blocked_on"] = "the like, the liker list or the viewer profile did not return 200"
 
     def step_4_poster_and_delete(self):
         """Step 4: A places a poster; the intro post and its likes are unchanged."""
@@ -811,25 +871,37 @@ class Gate:
              "bytes_base64": base64.b64encode(make_png((120, 60, 200), side=32)).decode()},
             key=str(uuid4()))
         step["checks"]["poster_upload"] = {"http": status}
-        status, body, _, _ = self.probe(
-            "step4 intro delete", "author", "DELETE",
-            "/api/me/intro-posts/00000000-0000-4000-8000-000000000001")
-        step["checks"]["intro_delete"] = {"http": status}
-        step["blocked_on"] = (
-            "the room, avatar and profile post producers are not reachable over HTTP on "
-            "master, and the intro post delete is not composed; the durable half of the "
-            "same statement is asserted in the lifecycle sweep")
+        intro = getattr(self, "intro_id", None)
+        if intro is not None:
+            revision = getattr(self, "intro_revision", None)
+            suffix = f"?expected_revision={revision}" if revision is not None else ""
+            status, body, _, _ = self.probe(
+                "step4 intro delete", "author", "DELETE",
+                f"/api/me/intro-posts/{intro}{suffix}")
+            step["checks"]["intro_delete"] = {"http": status}
+        passed = (step["checks"]["room_before"]["http"] == 200
+                  and step["checks"]["poster_upload"]["http"] == 200
+                  and step["checks"].get("intro_delete", {}).get("http") == 200)
+        step["status"] = "PASS" if passed else "FAIL"
+        if not passed:
+            step["blocked_on"] = "the room read, the poster upload or the intro delete did not return 200"
 
     def step_5_outsider_denial(self):
         """Step 5: C, who fails the audience or cannot be evaluated, sees nothing."""
         step = {"status": "BLOCKED", "checks": {}}
         self.report["steps"]["step5_outsider_denial"] = step
+        intro = getattr(self, "intro_id", None)
+        if intro is None:
+            step["blocked_on"] = "step 2 did not publish an introduction, so there is nothing to deny"
+            return
+        # The contract has no `/attachments` sub-path: an attachment is a
+        # `feed.Media` reference inside the detail body, and its bytes are read
+        # through `/api/media/{mediaId}/content`. The detail call is therefore the
+        # surface that decides whether the attachment list is visible at all.
         for label, path in (
-            ("restricted post", "/api/intro-posts/00000000-0000-4000-8000-000000000001"),
-            ("restricted attachments",
-             "/api/intro-posts/00000000-0000-4000-8000-000000000001/attachments"),
-            ("restricted bytes",
-             "/api/media/00000000-0000-4000-8000-000000000002/content"),
+            ("restricted post", f"/api/intro-posts/{intro}"),
+            ("restricted comments", f"/api/intro-posts/{intro}/comments"),
+            ("restricted likers", f"/api/intro-posts/{intro}/likes"),
         ):
             status, body, _, _ = self.probe(f"step5 {label}", "outsider", "GET", path)
             step["checks"][label] = {"http": status}
