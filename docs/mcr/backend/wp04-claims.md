@@ -102,49 +102,141 @@ upgraded.
 ## Limitations, recorded
 
 1. ~~**Block state is per request, not per row.**~~ **Fixed.** The predicate's
-   block term is now a correlated `not exists` over `discovery_blocks`, resolved
-   through the local `discovery_profiles` mirror, so rows 4 and 5 are evaluated
-   against the actual (viewer, author) pair. The old per-request boolean meant a
-   viewer who had blocked anyone lost the whole page. The term is fail-closed in
-   both directions: an active block either way denies, and a pair that cannot be
-   resolved denies. The one exception is a **nil viewer** (an anonymous shared-link
-   resolver), which no block can name; treating it as blocked would deny every
-   anonymous read of an unrestricted post. See `predicate`/`block_term` in
-   `intro_posts/visibility_sql.rs` and `tests/intro_blocks_per_row.rs`.
+   block term is a correlated subquery over `discovery_blocks`, resolved through
+   the local `discovery_profiles` mirror, so rows 4 and 5 are evaluated against
+   the actual (viewer, author) pair. The old per-request boolean meant a viewer
+   who had blocked anyone lost the whole page. See
+   `predicate`/`block_term` in `intro_posts/visibility_sql.rs` and
+   `tests/intro_blocks_per_row.rs`.
 2. **The page query and the detail query resolve author standing differently.**
    The page evaluates it through `concert_world_account_deletion_fences`; the
    detail query uses the scope's `author_standing`. Both are concert-local.
 3. **The room-poster branch of the media resolver** matches the layout JSON's
    poster list and is exercised only by construction, not by a test with a real
    room layout.
-4. **The claim adapter's gRPC transport** is covered by the profile-service server
-   compiling under its method policy and by unit tests over a fake port; this
-   suite does not run an end-to-end RPC between the two services.
-5. **The page tests share one fixture database** and are serialized by a mutex
-   for that reason. They assert real query behaviour, not a private database.
+4. **The page tests share one fixture database** and are serialized by a lock for
+   that reason. They assert real query behaviour, not a private database.
+5. **The claim transport is now exercised end to end, but only for the states the
+   gate drives.** See the section below; the earlier "not exercised between
+   services" note is no longer true and has been replaced rather than deleted.
+
+## Decision: an unprojected pair is admitted
+
+The block term compares two account ids taken from `discovery_profiles`. When
+either profile has no projection row, the pair cannot be resolved, and two
+behaviours are possible. **This project admits the pair**, decided by the
+integration owner on 2026-11-09. The reasoning, recorded so it can be held to:
+
+* the block is a fact stored in `discovery_blocks`; the projection only supplies
+  the account ids used to compare against it. An unresolvable pair therefore
+  matches no block, which is "no block recorded", not "unknown, so deny";
+* denying means every restricted post is invisible to everyone on a freshly
+  seeded database, which is a worse failure than a block being briefly
+  unenforced for a pair whose projection has not landed;
+* authorization is not weakened: the audience branch still denies a viewer with
+  no live claim, and a block between two projected profiles is still enforced.
+
+The predicate is a bare `exists` over `discovery_blocks`, so an unresolved pair
+yields `false` (not blocked). `tests/intro_visibility_contract.rs`
+(`an_unprojected_pair_is_not_treated_as_blocked`) and
+`tests/intro_blocks_per_row.rs` (`an_unprojected_viewer_is_admitted`,
+`an_unprojected_author_is_admitted`) both assert it, so the two suites cannot
+drift apart again.
+
+A **nil viewer** (an anonymous shared-link resolver) is exempt from the block term
+outright: no block can name a profile that does not exist, and treating it as
+blocked would deny every anonymous read of an unrestricted post.
+
+## What the end-to-end gate proves about the claim path
+
+`backend/scripts/mcr/wp10_profile_social.py` runs seven real services over real
+HTTP and TLS, including the concert-to-profile claim read. Three consecutive runs
+on commit `07f0bb960` passed all six steps and both sweeps.
+
+**Proven end to end, through the real transport:**
+
+| What | How the gate proves it |
+| --- | --- |
+| A viewer with a live claim satisfying the audience sees a restricted post | step 2 detail `200` for the viewer, whose verification reported `status=VERIFIED, claims_present=true` |
+| The same viewer can like that post | step 3 like `200` |
+| The author can read the liker list | step 3 likers list `200` |
+| A verified outsider who fails the audience sees nothing | step 5 restricted post `404`, comments `404`, likers `404` |
+| The audience decision is applied on every intro surface, not just the detail | cross-surface sweep `PASS` |
+| A restricted post's bytes and body never leak through a refusal | cross-surface sweep checks the marker body is not echoed |
+
+**Not proven end to end — unit-tested only.** Stated precisely so this is not
+overstated:
+
+* **A claim expiring mid-session.** The expiry boundary is tested against a real
+  database and a fake port (`claims_adapter`, `intro_likes_policy`), and the
+  profile service evaluates liveness at the caller's instant, but no gate run
+  watches a live claim lapse between two requests.
+* **A claim revoked or replaced mid-session.** Same: covered by unit tests over
+  the port, not by a live revocation during a gate run.
+* **A provider outage or transport failure during a read.** The adapter maps every
+  transport error to `Unavailable` and a test asserts it, but the gate never
+  takes the profile service down mid-read.
+* **An explicit provider `unknown` claim end to end.** Row 11 is covered by the
+  shared case table and by the adapter's unit test; the gate's two verified
+  identities both carry a real gender.
+* **Anonymous shared-link resolution.** Covered by `intro_links` against a real
+  database, not by the gate.
+* **The notification inbox.** The gate records `GET /api/me/notifications` as
+  `404 RESOURCE_UNAVAILABLE` in step 3 but does **not** assert on it, so the step
+  passes without the inbox being served. That surface belongs to WP-05 and is not
+  covered by this work package's evidence.
 
 ## Verification
 
-All commands and exit codes are recorded in the four evidence files. Summary:
+All commands and exit codes are recorded in the evidence files under
+`docs/mcr/integration/evidence/` (`v01-`, `v02-`, `v03-`, `v13-`), and the
+end-to-end gate runs are recorded below. Summary:
 
 | Command | Result |
 | --- | --- |
-| `cargo +1.88.0 check --locked --workspace` | 0 |
+| `cargo +1.88.0 check --locked --workspace` | 0 errors |
+| `cargo test -p concert-domain -p concert-application -p concert-service` | all suites pass (see below) |
 | `cargo test -p concert-domain --test intro_audience` | 10 passed |
 | `cargo test -p concert-application --test identity_claims` | 9 passed |
 | `cargo test -p concert-application --test intro_visibility` | 14 passed |
-| `cargo test -p concert-service --test intro_visibility_contract` | 8 passed |
+| `cargo test -p concert-service --test intro_visibility_contract` | 9 passed |
+| `cargo test -p concert-service --test intro_blocks_per_row` | 9 passed |
 | `cargo test -p concert-service --test intro_posts_page` | 15 passed |
 | `cargo test -p concert-service --test intro_cursor` | 7 passed |
 | `cargo test -p concert-service --test claims_adapter` | 11 passed |
+| `cargo test -p concert-service --test intro_claims_wiring` | 6 passed |
+| `cargo test -p concert-service --test intro_likes` | 9 passed |
 | `cargo test -p concert-service --test intro_likes_policy` | 7 passed |
 | `cargo test -p concert-service --test intro_likers_policy` | 7 passed |
+| `cargo test -p concert-service --test intro_like_notifications` | 5 passed |
 | `cargo test -p concert-service --test media_authorization_policy` | 9 passed |
 | `cargo test -p concert-service --test intro_links` | 7 passed |
-| `cargo test -p concert-service --test intro_blocks_per_row` | 9 passed |
-| `cargo test -p concert-service --test intro_like_notifications` | 5 passed |
-| `cargo test -p concert-service --test intro_likes` (WP-05, unchanged) | 9 passed |
-| `corepack pnpm@11.7.0 run typecheck` | 0 |
+| `cargo test -p concert-service --test intro_delete_revision` | 4 passed |
 | `python3 backend/scripts/mcr/wp02_migration_ledger.py` | PASS |
+| `python3 backend/scripts/mcr/wp10_profile_social.py` | PASS, 3 consecutive runs, exit 0 each |
+
+**Suites outside this work package that need a harness this checkout does not
+provide.** `cargo test -p concert-service` also builds the crate's lib unit tests
+and several integration targets that require `CONCERT_SERVICE_CREDENTIAL` and a
+`CONCERT_TEST_OWNER_ROOT` owned fixture directory. Run without those they fail
+identically on unmodified master (155 passed, 8 failed, 62 ignored), so the
+failures are environmental and pre-date this work. They are recorded here rather
+than omitted: a reader running the bare command will see them, and should know
+they are not a regression in this package.
+
+### End-to-end gate runs
+
+Three consecutive runs on `07f0bb960`, each against freshly built binaries and a
+fresh stack, each with a distinct author identity:
+
+| Run | Result | Steps | Sweeps | Exit |
+| --- | --- | --- | --- | --- |
+| 1 | PASS | 6/6 PASS | cross_surface PASS, lifecycle PASS | 0 |
+| 2 | PASS | 6/6 PASS | cross_surface PASS, lifecycle PASS | 0 |
+| 3 | PASS | 6/6 PASS | cross_surface PASS, lifecycle PASS | 0 |
+
+The runs are independent, not cached: each enrolled a different author
+(`c46035ec`, `141bf7e9`, `db8019eb`) at a different instant, roughly 95 seconds
+apart.
 
 No migration was added by WP-04. The ledger reports the existing heads.

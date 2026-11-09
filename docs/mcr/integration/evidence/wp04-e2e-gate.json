@@ -1,0 +1,112 @@
+{
+  "verification": "WP-04-E2E-GATE",
+  "title": "The end-to-end gate passes three consecutive times, so the claim path is exercised between services and not merely unit-tested",
+  "status": "PASS",
+  "commit": "07f0bb960",
+  "branch": "codex/yc-wp04-claims",
+  "recorded_at": "2026-11-09T11:20:00Z",
+  "mechanism": "seven real services over real HTTP and TLS, driven by backend/scripts/mcr/wp10_profile_social.py",
+  "mechanism_rationale": "docs/mcr/backend/wp04-claims.md § What the end-to-end gate proves about the claim path",
+  "commands": [
+    {
+      "command": "cd backend && cargo build --locked --workspace",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 backend/scripts/mcr/wp10_profile_social.py --bin-dir <abs>/backend/target/debug --report /tmp/gate-run-1.json",
+      "exit_code": 0,
+      "note": "PASS, 6/6 steps, both sweeps"
+    },
+    {
+      "command": "python3 backend/scripts/mcr/wp10_profile_social.py --bin-dir <abs>/backend/target/debug --report /tmp/gate-run-2.json",
+      "exit_code": 0,
+      "note": "PASS, 6/6 steps, both sweeps"
+    },
+    {
+      "command": "python3 backend/scripts/mcr/wp10_profile_social.py --bin-dir <abs>/backend/target/debug --report /tmp/gate-run-3.json",
+      "exit_code": 0,
+      "note": "PASS, 6/6 steps, both sweeps"
+    }
+  ],
+  "runs": [
+    {
+      "run": 1,
+      "result": "PASS",
+      "exit_code": 0,
+      "started_at_utc": "2026-11-09T11:12:58.814001+00:00",
+      "author_user_id": "c46035ec-0174-496a-b566-b417855af3b6",
+      "steps": {
+        "step1_profile_posts": "PASS",
+        "step2_intro_post": "PASS",
+        "step3_liker_navigation": "PASS",
+        "step4_poster_and_delete": "PASS",
+        "step5_outsider_denial": "PASS",
+        "step6_discovery_projection": "PASS"
+      },
+      "sweeps": {
+        "cross_surface": "PASS",
+        "lifecycle": "PASS"
+      },
+      "candidate_revision": "07f0bb960b5c429e5b88a46109c9d9576cb3d4c3"
+    },
+    {
+      "run": 2,
+      "result": "PASS",
+      "exit_code": 0,
+      "started_at_utc": "2026-11-09T11:14:36.274409+00:00",
+      "author_user_id": "141bf7e9-4e19-47ff-98fa-36fac35ba65f",
+      "steps": {
+        "step1_profile_posts": "PASS",
+        "step2_intro_post": "PASS",
+        "step3_liker_navigation": "PASS",
+        "step4_poster_and_delete": "PASS",
+        "step5_outsider_denial": "PASS",
+        "step6_discovery_projection": "PASS"
+      },
+      "sweeps": {
+        "cross_surface": "PASS",
+        "lifecycle": "PASS"
+      },
+      "candidate_revision": "07f0bb960b5c429e5b88a46109c9d9576cb3d4c3"
+    },
+    {
+      "run": 3,
+      "result": "PASS",
+      "exit_code": 0,
+      "started_at_utc": "2026-11-09T11:16:10.393987+00:00",
+      "author_user_id": "db8019eb-5626-485a-8562-e25dbd5414da",
+      "steps": {
+        "step1_profile_posts": "PASS",
+        "step2_intro_post": "PASS",
+        "step3_liker_navigation": "PASS",
+        "step4_poster_and_delete": "PASS",
+        "step5_outsider_denial": "PASS",
+        "step6_discovery_projection": "PASS"
+      },
+      "sweeps": {
+        "cross_surface": "PASS",
+        "lifecycle": "PASS"
+      },
+      "candidate_revision": "07f0bb960b5c429e5b88a46109c9d9576cb3d4c3"
+    }
+  ],
+  "independence": "Each run enrolled a distinct author identity and started at a distinct instant, roughly 95 seconds apart, against freshly built binaries. The passes are not a cached result.",
+  "proven_end_to_end": [
+    "A viewer with a live claim satisfying the audience sees a restricted post (step 2 detail 200; verification reported status=VERIFIED, claims_present=true).",
+    "That viewer can like the restricted post (step 3 like 200).",
+    "The author can read the liker list (step 3 likers list 200).",
+    "A verified outsider who fails the audience sees nothing on any intro surface (step 5: post 404, comments 404, likers 404).",
+    "The audience decision is applied on every intro surface, not only the detail (cross-surface sweep PASS).",
+    "A refusal does not echo the restricted body (the cross-surface sweep checks the marker body)."
+  ],
+  "not_proven_end_to_end": [
+    "A claim expiring mid-session: the expiry boundary is tested against a real database with a fake port, but no gate run watches a live claim lapse between two requests.",
+    "A claim revoked or replaced mid-session: unit-tested over the port only.",
+    "A provider outage or transport failure during a read: the adapter maps every transport error to Unavailable and a test asserts it, but the gate never takes the profile service down mid-read.",
+    "An explicit provider 'unknown' claim end to end: row 11 is covered by the shared case table and the adapter unit test; both gate identities carry a real gender.",
+    "Anonymous shared-link resolution: covered by intro_links against a real database, not by the gate."
+  ],
+  "gaps_observed_in_the_gate": [
+    "GET /api/me/notifications returns 404 RESOURCE_UNAVAILABLE in step 3, and step 3 does not assert on it, so the step passes while the notification inbox is not served. That surface belongs to WP-05 and is outside this work package's evidence."
+  ]
+}
