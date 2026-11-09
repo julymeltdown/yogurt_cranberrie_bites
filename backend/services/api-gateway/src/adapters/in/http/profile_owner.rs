@@ -78,6 +78,22 @@ pub const PROFILE_OWNERS: &[(&str, ProfileOwner)] = &[
     // `profile_avatars` (0087).
     ("getOwnProfileAvatar", ProfileOwner::ConcertService),
     ("setOwnProfileAvatar", ProfileOwner::ConcertService),
+    // `intro_posts`, `intro_attachments`, `intro_likes`, `intro_comments` (0082,
+    // 0083). Only the operations WP-05's producer actually serves are listed;
+    // `listIntroPosts` and `getIntroPost` are absent because no producer answers
+    // them yet, and an entry here would route them to a service that refuses
+    // them. The coverage register records them with their real owner.
+    ("getOwnIntroPost", ProfileOwner::ConcertService),
+    ("listOwnIntroPosts", ProfileOwner::ConcertService),
+    ("saveIntroPostDraft", ProfileOwner::ConcertService),
+    ("publishIntroPost", ProfileOwner::ConcertService),
+    ("deleteIntroPost", ProfileOwner::ConcertService),
+    ("setIntroPostLike", ProfileOwner::ConcertService),
+    ("clearIntroPostLike", ProfileOwner::ConcertService),
+    ("listIntroPostLikers", ProfileOwner::ConcertService),
+    ("listIntroPostComments", ProfileOwner::ConcertService),
+    ("createIntroPostComment", ProfileOwner::ConcertService),
+    ("deleteIntroPostComment", ProfileOwner::ConcertService),
 ];
 
 /// The owner of one operation, or `None` when the operation is not mounted.
@@ -139,9 +155,21 @@ mod tests {
                 "uploadRoomPoster",
                 "getOwnProfileAvatar",
                 "setOwnProfileAvatar",
+                // WP-05 intro operations served by the concert transport.
+                "getOwnIntroPost",
+                "listOwnIntroPosts",
+                "saveIntroPostDraft",
+                "publishIntroPost",
+                "deleteIntroPost",
+                "setIntroPostLike",
+                "clearIntroPostLike",
+                "listIntroPostLikers",
+                "listIntroPostComments",
+                "createIntroPostComment",
+                "deleteIntroPostComment",
             ])
         );
-        assert_eq!(concert.len(), 15);
+        assert_eq!(concert.len(), 26);
     }
 
     #[test]

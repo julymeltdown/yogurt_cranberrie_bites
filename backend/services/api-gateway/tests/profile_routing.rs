@@ -115,31 +115,57 @@ fn the_owner_agrees_with_the_coverage_register() {
 }
 
 #[test]
-fn the_fifteen_cross_database_operations_route_to_the_concert_service() {
-    // The exact set the task names. Pinned so a later change has to justify
-    // itself against the migrations that created these tables.
+fn the_cross_database_operations_route_to_the_concert_service() {
+    // Two groups, both pinned so a later change has to justify itself against
+    // the migrations that created the tables.
     let concert: BTreeSet<&str> = operations_for(ProfileOwner::ConcertService).collect();
-    assert_eq!(
-        concert,
-        BTreeSet::from([
-            "listProfilePosts",
-            "createProfilePost",
-            "deleteProfilePost",
-            "initProfileMediaUpload",
-            "putProfileMediaBytes",
-            "finalizeProfileMedia",
-            "getProfileMedia",
-            "readProfileMedia",
-            "getProfileRoom",
-            "getOwnRoom",
-            "saveOwnRoom",
-            "setOwnRoomVisibility",
-            "uploadRoomPoster",
-            "getOwnProfileAvatar",
-            "setOwnProfileAvatar",
-        ])
+
+    // Group 1: the fifteen profile post / media / room / avatar operations
+    // (`profile_media` 0080, `profile_rooms` 0081, `profile_posts` 0084,
+    // `profile_avatars` 0087).
+    let profile_owned = BTreeSet::from([
+        "listProfilePosts",
+        "createProfilePost",
+        "deleteProfilePost",
+        "initProfileMediaUpload",
+        "putProfileMediaBytes",
+        "finalizeProfileMedia",
+        "getProfileMedia",
+        "readProfileMedia",
+        "getProfileRoom",
+        "getOwnRoom",
+        "saveOwnRoom",
+        "setOwnRoomVisibility",
+        "uploadRoomPoster",
+        "getOwnProfileAvatar",
+        "setOwnProfileAvatar",
+    ]);
+    // Group 2: the eleven WP-05 intro operations the concert transport serves
+    // (`intro_posts` 0082, `intro_attachments`/`intro_likes`/`intro_comments`
+    // 0083). `listIntroPosts` and `getIntroPost` are absent because no producer
+    // answers them yet; see `the_two_unserved_intro_reads_are_not_routed`.
+    let intro_owned = BTreeSet::from([
+        "getOwnIntroPost",
+        "listOwnIntroPosts",
+        "saveIntroPostDraft",
+        "publishIntroPost",
+        "deleteIntroPost",
+        "setIntroPostLike",
+        "clearIntroPostLike",
+        "listIntroPostLikers",
+        "listIntroPostComments",
+        "createIntroPostComment",
+        "deleteIntroPostComment",
+    ]);
+    assert_eq!(profile_owned.len(), 15);
+    assert_eq!(intro_owned.len(), 11);
+    assert!(
+        profile_owned.is_disjoint(&intro_owned),
+        "the two groups must not overlap"
     );
-    assert_eq!(concert.len(), 15, "fifteen cross-database operations");
+    let expected: BTreeSet<&str> = profile_owned.union(&intro_owned).copied().collect();
+    assert_eq!(concert, expected);
+    assert_eq!(concert.len(), 26, "twenty-six concert-owned operations");
 
     // And every one of them is actually mounted by the gateway, so the route
     // exists for the frontend contract while the producer decides.
@@ -148,6 +174,25 @@ fn the_fifteen_cross_database_operations_route_to_the_concert_service() {
         assert!(
             mounted.contains(operation),
             "{operation} is routed to the concert service but not mounted"
+        );
+    }
+}
+
+#[test]
+fn the_two_unserved_intro_reads_are_not_routed() {
+    // `listIntroPosts` and `getIntroPost` need a visibility-filtered query that
+    // does not exist yet (WP-04 owns the predicate, WP-05 the query). Routing
+    // them would send the browser to a route that always fails, so they are
+    // neither mounted nor owned.
+    for operation in ["listIntroPosts", "getIntroPost"] {
+        assert_eq!(
+            owner_of(operation),
+            None,
+            "{operation} has no producer, so it must not be routed"
+        );
+        assert!(
+            !ROUTES.iter().any(|route| route.operation == operation),
+            "{operation} must not be mounted while no producer answers it"
         );
     }
 }
