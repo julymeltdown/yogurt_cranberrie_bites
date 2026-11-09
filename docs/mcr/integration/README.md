@@ -52,6 +52,7 @@ See [product-plan.md](product-plan.md) for the complete requirements and
 | 10 | [verification-plan.md](verification-plan.md) | Thirteen mandatory verifications, case tables, and evidence format. |
 | 11 | [task-breakdown.md](task-breakdown.md) | 110 task definitions, exact paths, dependencies, acceptance, and required evidence. |
 | 12 | [progress.md](progress.md) | Current implementation progress per feature element, verification state, defects found, and the release gate. |
+| 13 | [release-readiness.md](release-readiness.md) | What is proven, what is broken in dependency order, and what must be true to call this complete. |
 
 The assessment describes implementation; it does not amend frozen contracts,
 reduce product scope, or accept tasks on behalf of their implementation owners.
