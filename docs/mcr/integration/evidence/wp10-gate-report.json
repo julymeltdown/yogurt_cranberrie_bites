@@ -5,8 +5,8 @@
   "production": "NOT_CLAIMED",
   "candidate": {
     "worktree": "/Users/lhs/Desktop/mcr",
-    "revision": "bcd9b0f479a70db4bd2997f302c0c39c7cda00dd",
-    "script_sha256": "8fffe6c8403cfa2c62757a02a5fa72d4a83c29d55cf0c09e04c2f7f5360757ce",
+    "revision": "1c5b79c773ba80f378757654ca4d34614d2ad699",
+    "script_sha256": "7a5f4cc93a17e0fb9bc669c433177495cdcb67590f9aa81aa1c1e9d7274c1a15",
     "binaries": {
       "api-gateway": {
         "sha256": "e6d81a2ef55d396c3a30b19ff6585ef5f9ff8e742dc765e4ef08827e2182fad6",
@@ -38,20 +38,20 @@
       }
     }
   },
-  "started_at_utc": "2026-11-09T12:07:41.062546+00:00",
+  "started_at_utc": "2026-11-09T15:20:47.792776+00:00",
   "identities": {
     "author": {
-      "user_id": "4fab8667-fb02-4f0e-aab8-a9140cbbd527",
-      "profile_id": "813f858f-23f9-49c5-a034-c429160a274f",
+      "user_id": "a34a8fd5-4e76-45d3-8a61-28bec32bd0bf",
+      "profile_id": "3572b928-127a-4e9e-8b2c-abea5957846c",
       "verification": "NOT_RUN (author needs no claim)"
     },
     "viewer": {
-      "user_id": "341c0059-623a-40dd-b897-eddb4d883a32",
-      "profile_id": "b185fb87-c649-4b00-9409-4f8710f6eee4"
+      "user_id": "4d803d17-75eb-43e3-a6ca-4308cbb02ea4",
+      "profile_id": "7735655c-9986-42fb-8c75-5cb1b6127ff9"
     },
     "outsider": {
-      "user_id": "87c5fa73-ac12-47dd-b796-71d1631872b1",
-      "profile_id": "ab73bd84-fcba-4bed-9aec-dad1895010fa"
+      "user_id": "cddcf441-94e9-4c77-8a5d-360024478575",
+      "profile_id": "2aa2e225-525c-467b-a9a1-1bdcb17ebeb6"
     },
     "verification": {
       "viewer": {
@@ -74,7 +74,7 @@
       "checks": {
         "selfie_init": {
           "http": 200,
-          "media_id": "faa5151b-cb8a-409b-9737-7d53d3f42e89"
+          "media_id": "87afb5f9-9159-40f5-b782-63f0658bd2c0"
         },
         "selfie_bytes": {
           "http": 200
@@ -84,7 +84,7 @@
         },
         "artwork_init": {
           "http": 200,
-          "media_id": "42623a41-5baf-4826-9289-dfff5d0fa99a"
+          "media_id": "a1265b4e-07aa-47ae-948c-10faf5d65fb7"
         },
         "artwork_bytes": {
           "http": 200
@@ -94,11 +94,11 @@
         },
         "selfie_post": {
           "http": 200,
-          "post_id": "cf644339-535e-463e-83a3-89b6160e6f30"
+          "post_id": "25a37e84-64bb-452e-9627-0598e41b020b"
         },
         "artwork_post": {
           "http": 200,
-          "post_id": "f58167a1-f088-47ee-bc65-ba533f15b9d0"
+          "post_id": "8e437a98-a010-4eb6-ae91-0a9aaf98bca7"
         },
         "author_list": {
           "http": 200,
@@ -111,12 +111,12 @@
         }
       },
       "media": {
-        "selfie": "faa5151b-cb8a-409b-9737-7d53d3f42e89",
-        "artwork": "42623a41-5baf-4826-9289-dfff5d0fa99a"
+        "selfie": "87afb5f9-9159-40f5-b782-63f0658bd2c0",
+        "artwork": "a1265b4e-07aa-47ae-948c-10faf5d65fb7"
       },
       "posts": {
-        "selfie": "cf644339-535e-463e-83a3-89b6160e6f30",
-        "artwork": "f58167a1-f088-47ee-bc65-ba533f15b9d0"
+        "selfie": "25a37e84-64bb-452e-9627-0598e41b020b",
+        "artwork": "8e437a98-a010-4eb6-ae91-0a9aaf98bca7"
       }
     },
     "step2_intro_post": {
@@ -205,7 +205,7 @@
           "nickname": "WP-10 outsider"
         },
         "favorites_propagation": {
-          "profile_id": "813f858f-23f9-49c5-a034-c429160a274f",
+          "profile_id": "3572b928-127a-4e9e-8b2c-abea5957846c",
           "catalog_item_id": "d4f09a27-067e-5a87-97d1-3ef3ebc2cc2f",
           "favorite_rows": 1
         },
@@ -230,37 +230,37 @@
         },
         "detail": {
           "http": 404,
-          "path": "/api/intro-posts/7ed0c5a9-263c-470a-91c1-9abef15154ad",
+          "path": "/api/intro-posts/df0d103e-95a4-4dd5-9e91-fb1feb056b74",
           "reason": "RESOURCE_UNAVAILABLE",
           "leaks": []
         },
         "like": {
           "http": 404,
-          "path": "/api/intro-posts/7ed0c5a9-263c-470a-91c1-9abef15154ad/like",
+          "path": "/api/intro-posts/df0d103e-95a4-4dd5-9e91-fb1feb056b74/like",
           "reason": "RESOURCE_UNAVAILABLE",
           "leaks": []
         },
         "unlike": {
           "http": 200,
-          "path": "/api/intro-posts/7ed0c5a9-263c-470a-91c1-9abef15154ad/like",
+          "path": "/api/intro-posts/df0d103e-95a4-4dd5-9e91-fb1feb056b74/like",
           "reason": null,
           "leaks": []
         },
         "comments": {
           "http": 404,
-          "path": "/api/intro-posts/7ed0c5a9-263c-470a-91c1-9abef15154ad/comments",
+          "path": "/api/intro-posts/df0d103e-95a4-4dd5-9e91-fb1feb056b74/comments",
           "reason": "RESOURCE_UNAVAILABLE",
           "leaks": []
         },
         "comment": {
           "http": 404,
-          "path": "/api/intro-posts/7ed0c5a9-263c-470a-91c1-9abef15154ad/comments",
+          "path": "/api/intro-posts/df0d103e-95a4-4dd5-9e91-fb1feb056b74/comments",
           "reason": "RESOURCE_UNAVAILABLE",
           "leaks": []
         },
         "likers": {
           "http": 404,
-          "path": "/api/intro-posts/7ed0c5a9-263c-470a-91c1-9abef15154ad/likes",
+          "path": "/api/intro-posts/df0d103e-95a4-4dd5-9e91-fb1feb056b74/likes",
           "reason": "RESOURCE_UNAVAILABLE",
           "leaks": []
         }
@@ -269,7 +269,7 @@
         "attachment": "no contract route: an attachment is a feed.Media reference inside the detail body, covered by the detail and media probes",
         "shared_link": "no contract route: the frozen operation set has no intro-post resolve/shared-link path"
       },
-      "intro_id": "7ed0c5a9-263c-470a-91c1-9abef15154ad",
+      "intro_id": "df0d103e-95a4-4dd5-9e91-fb1feb056b74",
       "attachment_media_ids": [],
       "distinct_outcomes": [
         {
@@ -352,9 +352,9 @@
               {
                 "layout": {},
                 "revision": 3,
-                "created_at": "2026-11-09T21:09:06.929583+09:00",
+                "created_at": "2026-11-10T00:22:08.120508+09:00",
                 "visibility": "PUBLIC",
-                "owner_profile_id": "813f858f-23f9-49c5-a034-c429160a274f"
+                "owner_profile_id": "3572b928-127a-4e9e-8b2c-abea5957846c"
               }
             ],
             "avatar": [
@@ -363,51 +363,51 @@
                   "contract_version": "1.0.0"
                 },
                 "revision": 2,
-                "created_at": "2026-11-09T21:09:07.230186+09:00",
-                "owner_profile_id": "813f858f-23f9-49c5-a034-c429160a274f"
+                "created_at": "2026-11-10T00:22:08.413197+09:00",
+                "owner_profile_id": "3572b928-127a-4e9e-8b2c-abea5957846c"
               }
             ],
             "posts": [
               {
                 "state": "PUBLISHED",
-                "post_id": "cf644339-535e-463e-83a3-89b6160e6f30",
+                "post_id": "25a37e84-64bb-452e-9627-0598e41b020b",
                 "revision": 1,
-                "created_at": "2026-11-09T21:08:04.745314+09:00",
+                "created_at": "2026-11-10T00:21:05.819425+09:00",
                 "deleted_at": null,
                 "expires_at": null,
                 "visibility": "PUBLIC",
                 "description": "WP-10 selfie",
-                "author_profile_id": "813f858f-23f9-49c5-a034-c429160a274f"
+                "author_profile_id": "3572b928-127a-4e9e-8b2c-abea5957846c"
               },
               {
                 "state": "PUBLISHED",
-                "post_id": "f58167a1-f088-47ee-bc65-ba533f15b9d0",
+                "post_id": "8e437a98-a010-4eb6-ae91-0a9aaf98bca7",
                 "revision": 1,
-                "created_at": "2026-11-09T21:08:04.758132+09:00",
+                "created_at": "2026-11-10T00:21:05.8293+09:00",
                 "deleted_at": null,
                 "expires_at": null,
                 "visibility": "PUBLIC",
                 "description": "WP-10 artwork",
-                "author_profile_id": "813f858f-23f9-49c5-a034-c429160a274f"
+                "author_profile_id": "3572b928-127a-4e9e-8b2c-abea5957846c"
               }
             ],
             "media": [
               {
                 "state": "READY",
-                "purpose": "PROFILE_POST",
-                "media_id": "42623a41-5baf-4826-9289-dfff5d0fa99a",
-                "revision": 3
-              },
-              {
-                "state": "READY",
                 "purpose": "ROOM_POSTER",
-                "media_id": "e89a62eb-ac14-4c91-aaa1-d4d8db957e5b",
+                "media_id": "13ba2f8a-70c2-4fdc-8e54-86df14567341",
                 "revision": 1
               },
               {
                 "state": "READY",
                 "purpose": "PROFILE_POST",
-                "media_id": "faa5151b-cb8a-409b-9737-7d53d3f42e89",
+                "media_id": "87afb5f9-9159-40f5-b782-63f0658bd2c0",
+                "revision": 3
+              },
+              {
+                "state": "READY",
+                "purpose": "PROFILE_POST",
+                "media_id": "a1265b4e-07aa-47ae-948c-10faf5d65fb7",
                 "revision": 3
               }
             ]
@@ -417,9 +417,9 @@
               {
                 "layout": {},
                 "revision": 3,
-                "created_at": "2026-11-09T21:09:06.929583+09:00",
+                "created_at": "2026-11-10T00:22:08.120508+09:00",
                 "visibility": "PUBLIC",
-                "owner_profile_id": "813f858f-23f9-49c5-a034-c429160a274f"
+                "owner_profile_id": "3572b928-127a-4e9e-8b2c-abea5957846c"
               }
             ],
             "avatar": [
@@ -428,51 +428,51 @@
                   "contract_version": "1.0.0"
                 },
                 "revision": 2,
-                "created_at": "2026-11-09T21:09:07.230186+09:00",
-                "owner_profile_id": "813f858f-23f9-49c5-a034-c429160a274f"
+                "created_at": "2026-11-10T00:22:08.413197+09:00",
+                "owner_profile_id": "3572b928-127a-4e9e-8b2c-abea5957846c"
               }
             ],
             "posts": [
               {
                 "state": "DELETED",
-                "post_id": "cf644339-535e-463e-83a3-89b6160e6f30",
+                "post_id": "25a37e84-64bb-452e-9627-0598e41b020b",
                 "revision": 2,
-                "created_at": "2026-11-09T21:08:04.745314+09:00",
-                "deleted_at": "2026-11-09T21:09:07.408899+09:00",
+                "created_at": "2026-11-10T00:21:05.819425+09:00",
+                "deleted_at": "2026-11-10T00:22:08.581303+09:00",
                 "expires_at": null,
                 "visibility": "PUBLIC",
                 "description": "WP-10 selfie",
-                "author_profile_id": "813f858f-23f9-49c5-a034-c429160a274f"
+                "author_profile_id": "3572b928-127a-4e9e-8b2c-abea5957846c"
               },
               {
                 "state": "PUBLISHED",
-                "post_id": "f58167a1-f088-47ee-bc65-ba533f15b9d0",
+                "post_id": "8e437a98-a010-4eb6-ae91-0a9aaf98bca7",
                 "revision": 1,
-                "created_at": "2026-11-09T21:08:04.758132+09:00",
+                "created_at": "2026-11-10T00:21:05.8293+09:00",
                 "deleted_at": null,
                 "expires_at": null,
                 "visibility": "PUBLIC",
                 "description": "WP-10 artwork",
-                "author_profile_id": "813f858f-23f9-49c5-a034-c429160a274f"
+                "author_profile_id": "3572b928-127a-4e9e-8b2c-abea5957846c"
               }
             ],
             "media": [
               {
                 "state": "READY",
-                "purpose": "PROFILE_POST",
-                "media_id": "42623a41-5baf-4826-9289-dfff5d0fa99a",
-                "revision": 3
-              },
-              {
-                "state": "READY",
                 "purpose": "ROOM_POSTER",
-                "media_id": "e89a62eb-ac14-4c91-aaa1-d4d8db957e5b",
+                "media_id": "13ba2f8a-70c2-4fdc-8e54-86df14567341",
                 "revision": 1
               },
               {
                 "state": "READY",
                 "purpose": "PROFILE_POST",
-                "media_id": "faa5151b-cb8a-409b-9737-7d53d3f42e89",
+                "media_id": "87afb5f9-9159-40f5-b782-63f0658bd2c0",
+                "revision": 3
+              },
+              {
+                "state": "READY",
+                "purpose": "PROFILE_POST",
+                "media_id": "a1265b4e-07aa-47ae-948c-10faf5d65fb7",
                 "revision": 3
               }
             ]
@@ -491,7 +491,7 @@
   },
   "checks": {},
   "stack": {
-    "gateway_url": "http://127.0.0.1:64697",
+    "gateway_url": "http://127.0.0.1:51317",
     "event": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
     "release_digest": "5a51442b4b4c62d99c329f39aafbf277b4a37a384efc3fdfd1f5c219997bec3b",
     "gateway_request_timeout_ms": 5000,
@@ -649,12 +649,12 @@
         }
       }
     },
-    "owned_root": "/private/tmp/mcr-pg-y02vggxl",
+    "owned_root": "/private/tmp/mcr-pg-q185ry1q",
     "naver_provider": "local test application",
     "mail": "private local HTTP capture"
   },
   "enrollment_policy": {
-    "revision": "e47a7693-e66d-4c1c-84e5-859ce43ef2b3",
+    "revision": "899711c8-6ef3-4bda-b29c-7ad5dd16939e",
     "approval_reference": "development-not-admitted",
     "production_approval": "NOT_PRESENT_IN_CHECKOUT_SCHEMA"
   },
@@ -727,7 +727,7 @@
       "label": "step1 selfie bytes",
       "role": "author",
       "method": "PUT",
-      "path": "/api/me/media/faa5151b-cb8a-409b-9737-7d53d3f42e89/bytes",
+      "path": "/api/me/media/87afb5f9-9159-40f5-b782-63f0658bd2c0/bytes",
       "http": 200,
       "reason": null,
       "bytes": 14
@@ -736,7 +736,7 @@
       "label": "step1 selfie finalize",
       "role": "author",
       "method": "POST",
-      "path": "/api/me/media/faa5151b-cb8a-409b-9737-7d53d3f42e89/finalize",
+      "path": "/api/me/media/87afb5f9-9159-40f5-b782-63f0658bd2c0/finalize",
       "http": 200,
       "reason": null,
       "bytes": 225
@@ -754,7 +754,7 @@
       "label": "step1 artwork bytes",
       "role": "author",
       "method": "PUT",
-      "path": "/api/me/media/42623a41-5baf-4826-9289-dfff5d0fa99a/bytes",
+      "path": "/api/me/media/a1265b4e-07aa-47ae-948c-10faf5d65fb7/bytes",
       "http": 200,
       "reason": null,
       "bytes": 14
@@ -763,7 +763,7 @@
       "label": "step1 artwork finalize",
       "role": "author",
       "method": "POST",
-      "path": "/api/me/media/42623a41-5baf-4826-9289-dfff5d0fa99a/finalize",
+      "path": "/api/me/media/a1265b4e-07aa-47ae-948c-10faf5d65fb7/finalize",
       "http": 200,
       "reason": null,
       "bytes": 225
@@ -790,7 +790,7 @@
       "label": "step1 author list",
       "role": "author",
       "method": "GET",
-      "path": "/api/profiles/813f858f-23f9-49c5-a034-c429160a274f/posts",
+      "path": "/api/profiles/3572b928-127a-4e9e-8b2c-abea5957846c/posts",
       "http": 200,
       "reason": null,
       "bytes": 975
@@ -808,7 +808,7 @@
       "label": "step2 intro draft",
       "role": "author",
       "method": "PUT",
-      "path": "/api/me/intro-posts/7ed0c5a9-263c-470a-91c1-9abef15154ad",
+      "path": "/api/me/intro-posts/df0d103e-95a4-4dd5-9e91-fb1feb056b74",
       "http": 200,
       "reason": null,
       "bytes": 452
@@ -817,7 +817,7 @@
       "label": "step2 intro publish",
       "role": "author",
       "method": "POST",
-      "path": "/api/me/intro-posts/7ed0c5a9-263c-470a-91c1-9abef15154ad/publish",
+      "path": "/api/me/intro-posts/df0d103e-95a4-4dd5-9e91-fb1feb056b74/publish",
       "http": 200,
       "reason": null,
       "bytes": 474
@@ -835,7 +835,7 @@
       "label": "step2 intro detail",
       "role": "viewer",
       "method": "GET",
-      "path": "/api/intro-posts/7ed0c5a9-263c-470a-91c1-9abef15154ad",
+      "path": "/api/intro-posts/df0d103e-95a4-4dd5-9e91-fb1feb056b74",
       "http": 200,
       "reason": null,
       "bytes": 446
@@ -844,7 +844,7 @@
       "label": "step3 like",
       "role": "viewer",
       "method": "PUT",
-      "path": "/api/intro-posts/7ed0c5a9-263c-470a-91c1-9abef15154ad/like",
+      "path": "/api/intro-posts/df0d103e-95a4-4dd5-9e91-fb1feb056b74/like",
       "http": 200,
       "reason": null,
       "bytes": 29
@@ -862,7 +862,7 @@
       "label": "step3 likers list",
       "role": "author",
       "method": "GET",
-      "path": "/api/intro-posts/7ed0c5a9-263c-470a-91c1-9abef15154ad/likes",
+      "path": "/api/intro-posts/df0d103e-95a4-4dd5-9e91-fb1feb056b74/likes",
       "http": 200,
       "reason": null,
       "bytes": 217
@@ -871,7 +871,7 @@
       "label": "step3 viewer profile",
       "role": "author",
       "method": "GET",
-      "path": "/api/profiles/b185fb87-c649-4b00-9409-4f8710f6eee4",
+      "path": "/api/profiles/7735655c-9986-42fb-8c75-5cb1b6127ff9",
       "http": 200,
       "reason": null,
       "bytes": 200
@@ -898,7 +898,7 @@
       "label": "step4 intro delete",
       "role": "author",
       "method": "DELETE",
-      "path": "/api/me/intro-posts/7ed0c5a9-263c-470a-91c1-9abef15154ad?expected_revision=2",
+      "path": "/api/me/intro-posts/df0d103e-95a4-4dd5-9e91-fb1feb056b74?expected_revision=2",
       "http": 200,
       "reason": null,
       "bytes": 85
@@ -907,7 +907,7 @@
       "label": "step5 restricted post",
       "role": "outsider",
       "method": "GET",
-      "path": "/api/intro-posts/7ed0c5a9-263c-470a-91c1-9abef15154ad",
+      "path": "/api/intro-posts/df0d103e-95a4-4dd5-9e91-fb1feb056b74",
       "http": 404,
       "reason": "RESOURCE_UNAVAILABLE",
       "bytes": 194
@@ -916,7 +916,7 @@
       "label": "step5 restricted comments",
       "role": "outsider",
       "method": "GET",
-      "path": "/api/intro-posts/7ed0c5a9-263c-470a-91c1-9abef15154ad/comments",
+      "path": "/api/intro-posts/df0d103e-95a4-4dd5-9e91-fb1feb056b74/comments",
       "http": 404,
       "reason": "RESOURCE_UNAVAILABLE",
       "bytes": 194
@@ -925,7 +925,7 @@
       "label": "step5 restricted likers",
       "role": "outsider",
       "method": "GET",
-      "path": "/api/intro-posts/7ed0c5a9-263c-470a-91c1-9abef15154ad/likes",
+      "path": "/api/intro-posts/df0d103e-95a4-4dd5-9e91-fb1feb056b74/likes",
       "http": 404,
       "reason": "RESOURCE_UNAVAILABLE",
       "bytes": 194
@@ -943,7 +943,7 @@
       "label": "cross-surface detail",
       "role": "outsider",
       "method": "GET",
-      "path": "/api/intro-posts/7ed0c5a9-263c-470a-91c1-9abef15154ad",
+      "path": "/api/intro-posts/df0d103e-95a4-4dd5-9e91-fb1feb056b74",
       "http": 404,
       "reason": "RESOURCE_UNAVAILABLE",
       "bytes": 194
@@ -952,7 +952,7 @@
       "label": "cross-surface like",
       "role": "outsider",
       "method": "PUT",
-      "path": "/api/intro-posts/7ed0c5a9-263c-470a-91c1-9abef15154ad/like",
+      "path": "/api/intro-posts/df0d103e-95a4-4dd5-9e91-fb1feb056b74/like",
       "http": 404,
       "reason": "RESOURCE_UNAVAILABLE",
       "bytes": 194
@@ -961,7 +961,7 @@
       "label": "cross-surface unlike",
       "role": "outsider",
       "method": "DELETE",
-      "path": "/api/intro-posts/7ed0c5a9-263c-470a-91c1-9abef15154ad/like",
+      "path": "/api/intro-posts/df0d103e-95a4-4dd5-9e91-fb1feb056b74/like",
       "http": 200,
       "reason": null,
       "bytes": 33
@@ -970,7 +970,7 @@
       "label": "cross-surface comments",
       "role": "outsider",
       "method": "GET",
-      "path": "/api/intro-posts/7ed0c5a9-263c-470a-91c1-9abef15154ad/comments",
+      "path": "/api/intro-posts/df0d103e-95a4-4dd5-9e91-fb1feb056b74/comments",
       "http": 404,
       "reason": "RESOURCE_UNAVAILABLE",
       "bytes": 194
@@ -979,7 +979,7 @@
       "label": "cross-surface comment",
       "role": "outsider",
       "method": "POST",
-      "path": "/api/intro-posts/7ed0c5a9-263c-470a-91c1-9abef15154ad/comments",
+      "path": "/api/intro-posts/df0d103e-95a4-4dd5-9e91-fb1feb056b74/comments",
       "http": 404,
       "reason": "RESOURCE_UNAVAILABLE",
       "bytes": 194
@@ -988,7 +988,7 @@
       "label": "cross-surface likers",
       "role": "outsider",
       "method": "GET",
-      "path": "/api/intro-posts/7ed0c5a9-263c-470a-91c1-9abef15154ad/likes",
+      "path": "/api/intro-posts/df0d103e-95a4-4dd5-9e91-fb1feb056b74/likes",
       "http": 404,
       "reason": "RESOURCE_UNAVAILABLE",
       "bytes": 194
@@ -1015,7 +1015,7 @@
       "label": "lifecycle http posts list",
       "role": "author",
       "method": "GET",
-      "path": "/api/profiles/813f858f-23f9-49c5-a034-c429160a274f/posts",
+      "path": "/api/profiles/3572b928-127a-4e9e-8b2c-abea5957846c/posts",
       "http": 200,
       "reason": null,
       "bytes": 975
@@ -1038,7 +1038,7 @@
     "BLOCKED": 0,
     "NOT_RUN": 0
   },
-  "finished_at_utc": "2026-11-09T12:09:08.030443+00:00",
+  "finished_at_utc": "2026-11-09T15:22:09.231415+00:00",
   "service_teardown": "PASS",
   "cleanup": "PASS"
 }

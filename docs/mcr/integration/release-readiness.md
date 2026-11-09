@@ -6,10 +6,10 @@ before a release decision.
 
 | Field | Value |
 | --- | --- |
-| Snapshot | 2026-11-09 20:20 Asia/Seoul |
-| Head | `07f0bb960` |
+| Snapshot | 2026-11-10 00:25 Asia/Seoul |
+| Head | `1c5b79c77` |
 | Tasks integrated | 106 / 110 |
-| Release gate | **PASS** — 6 of 6 steps, both sweeps, verified twice |
+| Release gate | **PASS** — 6 of 6 steps, both sweeps, verified six times across separate runs |
 
 ---
 
@@ -118,7 +118,7 @@ The gate is green. These are the items it does not cover.
 
 | Item | State | Why it matters |
 | --- | --- | --- |
-| Browser captures at 360/390/430 | Not run | The plan requires them for every new screen; visual acceptance against the reference target stays open until they exist |
+| Browser captures at 360/390/430 | Blocked | The harness is built and drives a real browser, but the shell will not open a route. Four of its five prerequisites are now composed; the fifth is the signed, transaction-bound profile read (`BoundCanonicalSelfProfile`), which needs the full concert admission composition rather than another seeded row. `me` moved 403 -> 404, so the remaining refusal is one layer deeper than seeding. |
 | Live NAVER authorization | Blocked | No console-issued application in this environment; the gate uses a local test provider with fixed profiles |
 | Claim expiry mid-session | Unit-tested only | The gate proves the happy path and the absent/expired cases at the adapter; it does not expire a claim during a live session |
 | Provider outage during a read | Unit-tested only | The adapter fails closed on transport error; the gate does not simulate an outage mid-scenario |

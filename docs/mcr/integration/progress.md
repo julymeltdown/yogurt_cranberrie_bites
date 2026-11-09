@@ -5,14 +5,14 @@ updated as work lands; it is the single place to read current progress.
 
 | Field | Value |
 | --- | --- |
-| Snapshot | 2026-11-09 21:20 Asia/Seoul |
+| Snapshot | 2026-11-10 00:25 Asia/Seoul |
 | Delivery branch | `julymeltdown/yogurt_cranberrie_bites` `master` |
-| Head at snapshot | `c2018beef` |
+| Head at snapshot | `1c5b79c77` |
 | Task register | 110 tasks in [task-breakdown.md](task-breakdown.md) |
 | Tasks integrated | **106 / 110** |
 | Tasks in flight | 0 |
 | Tasks not started | 16 |
-| Release gate | **PASS** — 6 of 6 steps, both sweeps, verified twice |
+| Release gate | **PASS** — 6 of 6 steps, both sweeps, verified six times |
 
 Progress is counted per task, not per package. A task counts as integrated only
 when its code is merged to `master`, its tests pass with a recorded command and
