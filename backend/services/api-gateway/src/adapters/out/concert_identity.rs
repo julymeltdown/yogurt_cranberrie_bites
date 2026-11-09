@@ -166,6 +166,15 @@ impl ConcertIdentityObservation<'_> {
         self.check()?;
         Ok(self.profile.bio()?)
     }
+    /// The canonical profile id for this account, or `None` when the account has
+    /// no live profile identity.
+    ///
+    /// This is not the account id in [`Self::user_id`]. A caller that addresses
+    /// profile-owned tables treats `None` as a refusal.
+    pub fn profile_id(&self) -> Result<Option<Uuid>, ConcertIdentityReadError> {
+        self.check()?;
+        Ok(self.profile.profile_id()?)
+    }
     pub fn binding_state(&self) -> Result<BindingState, ConcertIdentityReadError> {
         self.check()?;
         Ok(self.admission.binding_state()?)

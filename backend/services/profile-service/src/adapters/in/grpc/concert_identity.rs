@@ -55,6 +55,10 @@ pub(super) async fn read(
             display_name: profile.display_name().to_owned(),
             bio: profile.bio().map(str::to_owned),
             observed_at_unix_micros: profile.observed_at().timestamp_micros(),
+            // Absent when the account has no live profile identity. The Gateway
+            // decides what a missing mapping means for its own operation; the
+            // producer reports the fact rather than inventing an id.
+            profile_id: profile.profile_id().map(|id| id.to_string()),
         }),
     });
     response.metadata_mut().insert(

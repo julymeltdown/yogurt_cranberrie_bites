@@ -169,11 +169,25 @@ pub enum Mode {
     Error,
     Misbound,
     Malformed,
+    /// The account has no live profile identity.
+    NoProfile,
     Stale,
     Future,
     Hold,
     Block(Duration),
 }
+
+/// A deterministic profile id for an account, distinct from the account id.
+fn profile_id_for(user: Uuid) -> Uuid {
+    let digest = <sha2::Sha256 as sha2::Digest>::digest(user.as_bytes());
+    let mut bytes = [0u8; 16];
+    bytes.copy_from_slice(&digest[..16]);
+    bytes[6] = (bytes[6] & 0x0f) | 0x40;
+    bytes[8] = (bytes[8] & 0x3f) | 0x80;
+    Uuid::from_bytes(bytes)
+}
+
+
 pub struct Controlled {
     pub mode: Mutex<Mode>,
     pub calls: AtomicUsize,
@@ -208,6 +222,13 @@ impl ConcertProfileRepository for Controlled {
                 Uuid::new_v4()
             } else {
                 q.user_id()
+            },
+            // The profile id is a different UUID from the account id. The
+            // `NoProfile` mode models an account with no live profile identity.
+            profile_id: match mode {
+                Mode::NoProfile => None,
+                Mode::Misbound => Some(Uuid::new_v4()),
+                _ => Some(profile_id_for(q.user_id())),
             },
             nickname: if matches!(mode, Mode::Malformed) {
                 "bad\nname".into()

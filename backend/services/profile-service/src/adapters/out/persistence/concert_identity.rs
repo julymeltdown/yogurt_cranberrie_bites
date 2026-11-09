@@ -36,9 +36,17 @@ impl PgConcertProfileRepository {
         // Character limits also exclude oversized ASCII without truncating stored content.
         // Private profiles remain readable by their authenticated self producer. Auth is
         // enforced by the signed RPC; this selector is not an actor proof.
+        // The profile id is resolved in the SAME statement and the SAME database:
+        // `profile_identities` is the authoritative account -> profile mapping and
+        // it lives here, not in the concert service. A left join keeps "account
+        // with no live profile" representable (NULL) instead of dropping the row
+        // or inventing an id.
         let row = sqlx::query(
-            "select p.user_id, p.nickname, p.bio, statement_timestamp() as observed_at
+            "select p.user_id, p.nickname, p.bio, statement_timestamp() as observed_at,
+                    i.profile_id
              from profiles p
+             left join profile_identities i
+                    on i.account_id = p.user_id and i.deleted_at is null
              where p.user_id = $1 and p.deleted_at is null
                and octet_length(p.nickname) <= 160 and char_length(p.nickname) <= 40
                and octet_length(p.bio) <= 640 and char_length(p.bio) <= 160
@@ -56,6 +64,9 @@ impl PgConcertProfileRepository {
                 Ok(ConcertProfileRecord {
                     user_id: row
                         .try_get("user_id")
+                        .map_err(|_| ConcertProfileError::DependencyUnavailable)?,
+                    profile_id: row
+                        .try_get("profile_id")
                         .map_err(|_| ConcertProfileError::DependencyUnavailable)?,
                     nickname: row
                         .try_get("nickname")

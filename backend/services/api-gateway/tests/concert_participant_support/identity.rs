@@ -85,6 +85,20 @@ fn admission() -> auth_proto::ReadConcertAdmissionResponse {
         binding_state: 1,
     }
 }
+/// A deterministic profile id for an account, distinct from the account id.
+///
+/// The account id and the profile id are separate UUIDs; the Gateway refuses an
+/// observation that echoes one for the other, so a fixture must not.
+fn profile_id_for(user: &str) -> String {
+    let digest = <sha2::Sha256 as sha2::Digest>::digest(user.as_bytes());
+    let mut bytes = [0u8; 16];
+    bytes.copy_from_slice(&digest[..16]);
+    // Set the RFC 4122 version and variant bits so the value is a real UUID.
+    bytes[6] = (bytes[6] & 0x0f) | 0x40;
+    bytes[8] = (bytes[8] & 0x3f) | 0x80;
+    uuid::Uuid::from_bytes(bytes).to_string()
+}
+
 fn profile(user: &str, name: &str) -> profile_proto::ReadConcertSelfProfileResponse {
     profile_proto::ReadConcertSelfProfileResponse {
         profile: Some(profile_proto::ConcertSelfProfile {
@@ -92,6 +106,9 @@ fn profile(user: &str, name: &str) -> profile_proto::ReadConcertSelfProfileRespo
             display_name: name.into(),
             bio: None,
             observed_at_unix_micros: Utc::now().timestamp_micros(),
+            // The profile id is a different UUID from the account id; the
+            // Gateway refuses an observation that echoes one for the other.
+            profile_id: Some(profile_id_for(user).into()),
         }),
     }
 }

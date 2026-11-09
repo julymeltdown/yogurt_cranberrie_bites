@@ -49,6 +49,8 @@ static POLICY: MethodPolicy = MethodPolicy {
 const METHOD: &str = "/profile.v1.ProfileService/ReadConcertSelfProfile";
 const TOKEN: &str = "controlled-gateway-profile-token";
 const USER: &str = "7e023b36-5ca9-4a40-850d-d01dc16874a8";
+/// The canonical profile id for `USER`. Deliberately a different UUID.
+const PROFILE: &str = "2c9f1a44-6b7e-4d2a-9f31-8e5d0c4b7a16";
 const FAMILY: &str = "fa60b0de-7277-447c-aa36-eaf530dd3018";
 const PRIVATE: &str = "PRIVATE_SQL_PROFILE_CANARY";
 
@@ -81,6 +83,9 @@ fn profile(name: &str, bio: Option<&str>) -> proto::ConcertSelfProfile {
         display_name: name.into(),
         bio: bio.map(str::to_owned),
         observed_at_unix_micros: Utc::now().timestamp_micros(),
+        // A distinct profile id: the account id and the profile id are separate
+        // UUIDs, and the Gateway refuses an observation that conflates them.
+        profile_id: Some(PROFILE.into()),
     }
 }
 fn reply() -> proto::ReadConcertSelfProfileResponse {
@@ -449,6 +454,105 @@ async fn signed_self_reads_validate_minimal_content_and_fresh_changes() {
         }
     }
     h.close().await;
+}
+
+/// The observation carries the profile id, and it is a different UUID from the
+/// account id.
+///
+/// Every profile-owned table in the concert service is keyed by the profile id,
+/// so a caller that had only the account id could not address them. The profile
+/// service owns the mapping and reports it here.
+#[tokio::test]
+async fn the_observation_carries_the_profile_id_distinct_from_the_account_id() {
+    let h = Harness::start(Mode::Reply(reply()), false).await;
+    let ctx = live();
+    let observation = h.client.read_concert_self_profile(&ctx).await.unwrap();
+    assert_eq!(observation.user_id().unwrap().to_string(), USER);
+    let profile_id = observation
+        .profile_id()
+        .unwrap()
+        .expect("the fixture reports a profile id");
+    assert_eq!(profile_id.to_string(), PROFILE);
+    assert_ne!(
+        profile_id.to_string(),
+        USER,
+        "the profile id must never be the account id"
+    );
+    h.close().await;
+}
+
+/// An account with no live profile identity reports no profile id.
+///
+/// The observation is still a valid read — the account has content — but there is
+/// no profile to address. A caller that needs one must refuse; it must not
+/// substitute the account id.
+#[tokio::test]
+async fn an_account_without_a_profile_reports_no_profile_id() {
+    let mut without = profile("Mira", Some("Loves live sets"));
+    without.profile_id = None;
+    let h = Harness::start(
+        Mode::Reply(proto::ReadConcertSelfProfileResponse {
+            profile: Some(without),
+        }),
+        false,
+    )
+    .await;
+    let ctx = live();
+    let observation = h.client.read_concert_self_profile(&ctx).await.unwrap();
+    assert_eq!(observation.user_id().unwrap().to_string(), USER);
+    assert_eq!(observation.profile_id().unwrap(), None);
+    h.close().await;
+}
+
+/// A producer that echoes the account id as the profile id is refused.
+///
+/// The two are separate UUIDs. Accepting the echo would send every profile-owned
+/// write to rows keyed by an account id, which is exactly the defect this field
+/// exists to remove.
+#[tokio::test]
+async fn a_profile_id_that_echoes_the_account_id_is_refused() {
+    let mut conflated = profile("Mira", Some("Loves live sets"));
+    conflated.profile_id = Some(USER.into());
+    let h = Harness::start(
+        Mode::Reply(proto::ReadConcertSelfProfileResponse {
+            profile: Some(conflated),
+        }),
+        false,
+    )
+    .await;
+    let ctx = live();
+    assert_eq!(
+        h.client.read_concert_self_profile(&ctx).await.err(),
+        Some(ConcertProfileReadError::InvalidResponse)
+    );
+    h.close().await;
+}
+
+/// A non-canonical or nil profile id is refused rather than normalized.
+#[tokio::test]
+async fn a_malformed_profile_id_is_refused() {
+    for bad in [
+        "not-a-uuid",
+        "00000000-0000-0000-0000-000000000000",
+        "2C9F1A44-6B7E-4D2A-9F31-8E5D0C4B7A16",
+    ] {
+        let mut malformed = profile("Mira", Some("Loves live sets"));
+        malformed.profile_id = Some(bad.into());
+        let h = Harness::start(
+            Mode::Reply(proto::ReadConcertSelfProfileResponse {
+                profile: Some(malformed),
+            }),
+            false,
+        )
+        .await;
+        let ctx = live();
+        assert_eq!(
+            h.client.read_concert_self_profile(&ctx).await.err(),
+            Some(ConcertProfileReadError::InvalidResponse),
+            "{bad}"
+        );
+        h.close().await;
+    }
 }
 
 #[tokio::test]

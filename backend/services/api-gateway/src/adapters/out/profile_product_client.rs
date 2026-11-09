@@ -156,11 +156,16 @@ impl GrpcProfileProductClient {
             if remaining.is_zero() || expires <= now {
                 return Err(Status::deadline_exceeded("Profile deadline expired"));
             }
+            // The profile id is the actor's own canonical profile, resolved by
+            // the profile service (which owns the account -> profile mapping).
+            // It is NOT the account id: every profile-owned table in the concert
+            // service is keyed by the profile id, so substituting the account id
+            // would address rows that do not exist. A missing mapping is a
+            // refusal, never a fallback.
+            let profile_id = profile_identity(&identity)?;
             let message = proto::ProfileRequest {
                 user_id: actor.to_string(),
-                // The profile id is the actor's own canonical profile. The
-                // producer still authorizes every target against the session.
-                profile_id: actor.to_string(),
+                profile_id: profile_id.to_string(),
                 session_family_id: context
                     .session_family()
                     .map_err(|_| Status::unauthenticated("Invalid profile session"))?
@@ -228,6 +233,22 @@ impl GrpcProfileProductClient {
             ),
         )
     }
+}
+
+/// The profile id for a verified identity, or a refusal.
+///
+/// The profile service resolves `account_id -> profile_id` and reports it on the
+/// identity observation. It is absent when the account has no live profile
+/// identity. Every profile-owned operation needs it, so absence is
+/// `Unauthenticated` here — the same closed answer the rest of the identity
+/// composition gives — and the account id is never used in its place.
+fn profile_identity(
+    identity: &crate::adapters::out::concert_identity::ConcertIdentityObservation<'_>,
+) -> Result<Uuid, Status> {
+    identity
+        .profile_id()
+        .map_err(|_| Status::unauthenticated("Profile identity expired"))?
+        .ok_or_else(|| Status::unauthenticated("Profile identity has no profile"))
 }
 
 /// The signed client for the concert-hosted profile transport.
@@ -340,9 +361,13 @@ impl GrpcConcertProfileProductClient {
             if remaining.is_zero() || expires <= now {
                 return Err(Status::deadline_exceeded("Profile deadline expired"));
             }
+            // Same resolution as the profile-service transport: the profile id
+            // comes from the profile service's own mapping, and a missing one is
+            // a refusal rather than a substitution of the account id.
+            let profile_id = profile_identity(&identity)?;
             let message = concert_proto::ProfileRequest {
                 user_id: actor.to_string(),
-                profile_id: actor.to_string(),
+                profile_id: profile_id.to_string(),
                 session_family_id: context
                     .session_family()
                     .map_err(|_| Status::unauthenticated("Invalid profile session"))?

@@ -54,6 +54,13 @@ impl std::fmt::Debug for ConcertProfileQuery {
 #[derive(Clone)]
 pub struct ConcertProfileRecord {
     pub user_id: Uuid,
+    /// The canonical profile id for this account, from `profile_identities`.
+    ///
+    /// `None` when the account has no live profile identity. It is deliberately
+    /// not defaulted to `user_id`: the two are different UUIDs, and substituting
+    /// one for the other would address the wrong rows in every profile-owned
+    /// table.
+    pub profile_id: Option<Uuid>,
     pub nickname: String,
     pub bio: String,
     pub observed_at: DateTime<Utc>,
@@ -75,6 +82,7 @@ impl std::fmt::Debug for ConcertProfileRecord {
 #[derive(Clone, PartialEq, Eq)]
 pub struct ConcertSelfProfile {
     user_id: Uuid,
+    profile_id: Option<Uuid>,
     display_name: String,
     bio: Option<String>,
     observed_at: DateTime<Utc>,
@@ -82,6 +90,13 @@ pub struct ConcertSelfProfile {
 impl ConcertSelfProfile {
     pub fn user_id(&self) -> Uuid {
         self.user_id
+    }
+    /// The canonical profile id, or `None` when the account has no live profile.
+    ///
+    /// A caller that must address profile-owned tables treats `None` as a
+    /// refusal. It never falls back to [`Self::user_id`].
+    pub fn profile_id(&self) -> Option<Uuid> {
+        self.profile_id
     }
     pub fn display_name(&self) -> &str {
         &self.display_name
@@ -127,6 +142,9 @@ impl ReadConcertSelfProfile {
         // Portable finite timestamp range only; this does not claim clock freshness.
         if row.user_id != query.user_id()
             || row.user_id.is_nil()
+            // A present profile id must be a real UUID. A nil one is a defective
+            // repository, not "no profile".
+            || row.profile_id.is_some_and(|id| id.is_nil())
             || !(1..=9999).contains(&row.observed_at.year())
             || row.nickname.trim().is_empty()
             || row.nickname.chars().count() > 40
@@ -138,6 +156,7 @@ impl ReadConcertSelfProfile {
         }
         Ok(ConcertSelfProfile {
             user_id: row.user_id,
+            profile_id: row.profile_id,
             display_name: row.nickname,
             bio: if row.bio.is_empty() {
                 None
