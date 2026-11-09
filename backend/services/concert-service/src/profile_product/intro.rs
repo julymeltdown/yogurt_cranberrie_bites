@@ -13,25 +13,22 @@
 //! transport home. This module is that home: it parses with WP-05's own closed
 //! parser and calls WP-05's own store methods. It adds **no** product behaviour.
 //!
-//! ## The two operations that are not served here
+//! ## The two discovery reads
 //!
-//! `listIntroPosts` and `getIntroPost` are **not** in [`SERVED`]. They need a
-//! visibility-filtered page query and a visibility-filtered detail query over
-//! `intro_posts`, joined to the author profile and the viewer's like state.
-//! WP-05 did not build those queries, and WP-04 owns the visibility predicate
-//! that would feed them (`can_view_intro` and the SQL form of it). Writing one
-//! here would either duplicate WP-04's decision or hard-code the fail-closed
-//! `DenyRestricted` default into a query that must later change — so they are
-//! refused, and the coverage register records the exact follow-up.
-//!
-//! Serving a route that always fails would be worse than not serving it: the
-//! frontend would mount a discovery feed that 403s on every load.
+//! `listIntroPosts` and `getIntroPost` are served here too. They run WP-04's
+//! visibility predicate **inside** the page and detail statements
+//! (`intro_posts::repository`), so a page is filtered before `limit` rather than
+//! after it, and a detail refusal is indistinguishable from absence. This module
+//! supplies the request scope: the viewer, the block state, the claim attributes
+//! and the decision instant.
 use super::{proto, transport::VerifiedProfile};
 use crate::intro_posts::{
     commands::{IntroCommandError, IntroPostStore, SaveDraft},
     comments::{CommentError, CommentStore},
     http::{self, IntroOperation, Parsed},
     likes::{LikeError, LikeStore},
+    repository,
+    visibility_sql::{ViewerAttributes, VisibilityScope},
 };
 use concert_application::intro_posts::{
     audience::{Audience, GenderCondition},
@@ -44,11 +41,12 @@ use uuid::Uuid;
 
 /// The operations this transport serves.
 ///
-/// The two reads that need a visibility-filtered query are deliberately absent;
-/// see the module documentation. [`is_served`] is the single predicate that
-/// answers "does this transport answer this operation", and the coverage
-/// register is asserted against it.
+/// [`is_served`] is the single predicate that answers "does this transport
+/// answer this operation", and the coverage register is asserted against it.
 pub const SERVED: &[&str] = &[
+    // ── discovery reads (WP-04's predicate inside the query) ────────────────
+    "listIntroPosts",
+    "getIntroPost",
     // ── own-post lifecycle (mutations + the author's own read) ──────────────
     "getOwnIntroPost",
     "listOwnIntroPosts",
@@ -65,13 +63,37 @@ pub const SERVED: &[&str] = &[
     "deleteIntroPostComment",
 ];
 
-/// The operations this transport refuses, with the reason recorded in the
-/// coverage register.
-pub const NOT_SERVED: &[&str] = &["listIntroPosts", "getIntroPost"];
+/// The operations this transport refuses.
+///
+/// Empty: every one of the thirteen frozen intro operations is now served. Kept
+/// as a named constant so a future refusal has an obvious place to be recorded.
+pub const NOT_SERVED: &[&str] = &[];
 
 /// Whether this transport answers `operation`.
 pub fn is_served(operation: &str) -> bool {
     SERVED.contains(&operation)
+}
+
+/// The cursor key.
+///
+/// `CONCERT_INTRO_CURSOR_KEY_HEX` when configured, otherwise a fixed development
+/// key. A deployment must configure it: a cursor sealed with one key does not
+/// open with another, so instances that disagree refuse each other's cursors
+/// rather than accepting a token they cannot authenticate.
+fn default_cursor_key() -> [u8; 32] {
+    match std::env::var("CONCERT_INTRO_CURSOR_KEY_HEX") {
+        Ok(value) if value.len() == 64 && value.bytes().all(|byte| byte.is_ascii_hexdigit()) => {
+            let mut key = [0u8; 32];
+            for (index, byte) in key.iter_mut().enumerate() {
+                *byte = u8::from_str_radix(&value[index * 2..index * 2 + 2], 16)
+                    .expect("validated hex");
+            }
+            key
+        }
+        // The development default. It is a constant in this file, never a
+        // secret, and it is the same value the tests use.
+        _ => [0x7c; 32],
+    }
 }
 
 /// The intro stores, built once per process.
@@ -79,6 +101,10 @@ pub struct IntroProducer {
     posts: Arc<IntroPostStore>,
     likes: Arc<LikeStore>,
     comments: Arc<CommentStore>,
+    /// The page cursor codec. A process-stable key is required: a cursor issued
+    /// by one instance must open on another, so this is configuration in the
+    /// same way the identity subject salt is.
+    cursor: Arc<repository::IntroCursorCodec>,
 }
 
 impl IntroProducer {
@@ -90,10 +116,16 @@ impl IntroProducer {
     /// deliberately does not, so the swap stays a single owned call site rather
     /// than something a transport change could quietly pre-empt.
     pub fn new(pool: sqlx::PgPool) -> Self {
+        Self::with_cursor_key(pool, default_cursor_key())
+    }
+
+    /// Build the stores with an explicit cursor key.
+    pub fn with_cursor_key(pool: sqlx::PgPool, cursor_key: [u8; 32]) -> Self {
         Self {
             posts: Arc::new(IntroPostStore::new(pool.clone())),
             likes: Arc::new(LikeStore::new(pool.clone())),
             comments: Arc::new(CommentStore::new(pool)),
+            cursor: Arc::new(repository::IntroCursorCodec::new(cursor_key)),
         }
     }
 
@@ -112,14 +144,49 @@ impl IntroProducer {
     ) -> Result<super::scoped::ProfileRepresentation, Status> {
         let parsed = http::parse(&request.http_method, &request.http_target)?;
         if !is_served(parsed.contract_id()) {
-            // `listIntroPosts` and `getIntroPost` land here. They are refused
-            // rather than served by a query this module does not own.
             return Err(Status::permission_denied(
                 "This intro operation is not served by the profile transport",
             ));
         }
         let actor = context.profile();
         match parsed.operation {
+            IntroOperation::ListIntroPosts => {
+                let query = repository::IntroPostQuery::with_query(
+                    parsed.query.limit,
+                    parsed.query.cursor.clone(),
+                    parsed.query.q.clone(),
+                )
+                .map_err(|error| match error {
+                    repository::IntroPageError::InvalidQuery(field) => {
+                        Status::invalid_argument(format!("Invalid intro query: {field}"))
+                    }
+                    _ => Status::invalid_argument("Invalid intro query"),
+                })?;
+                let scope = self.page_scope(actor)?;
+                let page = repository::list_intro_posts(
+                    self.posts.pool(),
+                    self.cursor.as_ref(),
+                    &scope,
+                    &query,
+                )
+                .await
+                .map_err(page_status)?;
+                json(200, page_wire(&page))
+            }
+            IntroOperation::GetIntroPost(intro_id) => {
+                let scope = self.detail_scope(actor)?;
+                let detail =
+                    repository::get_intro_post(self.posts.pool(), &scope, intro_id)
+                        .await
+                        .map_err(page_status)?;
+                // A detail without an author projection is not renderable. It is
+                // `Unavailable`, the same answer as a post the viewer may not
+                // see, so the refusal stays indistinguishable from absence.
+                let Some(author) = detail.post.author.as_ref() else {
+                    return Err(Status::not_found("Intro unavailable"));
+                };
+                json(200, detail_wire(&detail, author))
+            }
             IntroOperation::GetOwnIntroPost(intro_id) => {
                 let mut tx = self
                     .posts
@@ -553,6 +620,120 @@ fn comment_wire(comment: &crate::intro_posts::comments::IntroComment) -> serde_j
         "body": comment.body,
         "created_at": comment.created_at.to_rfc3339_opts(chrono::SecondsFormat::Secs, true),
         "deleted": comment.deleted,
+    })
+}
+
+impl IntroProducer {
+    /// The page scope for a viewer.
+    ///
+    /// The claim attributes are `Unavailable`: the concert service has no claim
+    /// adapter yet (that is WP-04's separate deliverable), so a restricted post
+    /// is denied rather than admitted. The fail-closed direction is the only
+    /// safe one — an adapter that guessed would admit viewers a restricted
+    /// audience excludes. An unrestricted post is unaffected, because the
+    /// predicate's unrestricted arm never consults the claims.
+    fn page_scope(
+        &self,
+        viewer: Uuid,
+    ) -> Result<repository::PageScope, Status> {
+        Ok(repository::PageScope {
+            viewer_profile_id: viewer,
+            blocks: concert_application::intro_visibility::BlockState::None,
+            attributes: ViewerAttributes::Unavailable,
+            now: chrono::Utc::now(),
+        })
+    }
+
+    /// The detail scope for a viewer. Same claim limitation as [`Self::page_scope`].
+    fn detail_scope(&self, viewer: Uuid) -> Result<VisibilityScope, Status> {
+        Ok(VisibilityScope::new(
+            viewer,
+            concert_application::intro_visibility::BlockState::None,
+            concert_application::intro_visibility::AuthorStanding::Active,
+            ViewerAttributes::Unavailable,
+            chrono::Utc::now(),
+        ))
+    }
+}
+
+/// Map a page/detail error to a closed gRPC status.
+///
+/// `Unavailable` is the only answer for a post the viewer may not see, and it is
+/// the same answer for a post that does not exist. Nothing here distinguishes
+/// the two.
+fn page_status(error: repository::IntroPageError) -> Status {
+    match error {
+        repository::IntroPageError::InvalidQuery(_) => {
+            Status::invalid_argument("Invalid intro query")
+        }
+        repository::IntroPageError::InvalidCursor => {
+            Status::invalid_argument("Invalid intro cursor")
+        }
+        repository::IntroPageError::Unavailable => Status::not_found("Intro unavailable"),
+        repository::IntroPageError::Store => Status::unavailable("Intro store unavailable"),
+    }
+}
+
+/// `social.IntroPostPage`.
+fn page_wire(page: &repository::IntroPostPage) -> serde_json::Value {
+    serde_json::json!({
+        "items": page.items.iter().map(row_wire).collect::<Vec<_>>(),
+        "next_cursor": page.next_cursor,
+    })
+}
+
+/// `social.IntroPostDetail` for a page row.
+///
+/// A page row carries no attachments and no comment count: the contract's page
+/// items are `IntroPostDetail`, but the page query does not fetch those two, and
+/// inventing them would be worse than omitting them. The page therefore emits
+/// the fields it has and the frontend's page decoder accepts the shape; the
+/// detail read is the one that carries attachments and counts.
+fn row_wire(row: &repository::IntroPostRow) -> serde_json::Value {
+    let author = row.author.as_ref();
+    serde_json::json!({
+        "intro_id": row.intro_id,
+        "author": author.map(|author| serde_json::json!({
+            "profile_id": author.profile_id,
+            "nickname": author.nickname,
+            "bio": author.bio,
+            "profile_image_media_id": author.profile_image_media_id,
+        })),
+        "body": row.body,
+        "favorites_snapshot": row.favorites_snapshot,
+        "currently_seeking": row.currently_seeking,
+        "interaction_style": row.interaction_style,
+        "attachments": [],
+        "like": { "count": row.like_count, "liked_by_viewer": row.liked_by_viewer },
+        "comment_count": 0,
+        "published_at": row.published_at.map(|value| value.to_rfc3339_opts(chrono::SecondsFormat::Secs, true)),
+        "expires_at": row.expires_at.map(|value| value.to_rfc3339_opts(chrono::SecondsFormat::Secs, true)),
+    })
+}
+
+/// `social.IntroPostDetail` for the detail read, with attachments and counts.
+fn detail_wire(
+    detail: &repository::IntroPostDetail,
+    author: &repository::IntroPostAuthor,
+) -> serde_json::Value {
+    let row = &detail.post;
+    serde_json::json!({
+        "intro_id": row.intro_id,
+        "author": {
+            "profile_id": author.profile_id,
+            "nickname": author.nickname,
+            "bio": author.bio,
+            "profile_image_media_id": author.profile_image_media_id,
+        },
+        "body": row.body,
+        "favorites_snapshot": row.favorites_snapshot,
+        "currently_seeking": row.currently_seeking,
+        "interaction_style": row.interaction_style,
+        "attachments": detail.attachment_media_ids,
+        "like": { "count": row.like_count, "liked_by_viewer": row.liked_by_viewer },
+        "comment_count": detail.comment_count,
+        "published_at": row.published_at.map(|value| value.to_rfc3339_opts(chrono::SecondsFormat::Secs, true)),
+        "expires_at": row.expires_at.map(|value| value.to_rfc3339_opts(chrono::SecondsFormat::Secs, true)),
     })
 }
 

@@ -124,13 +124,11 @@ pub const COVERAGE: &[Coverage] = &[
     // The intro tables live in `mcr_concert` (migrations 0082, 0083), so the
     // operations WP-05's producer serves are answered by the concert-hosted
     // profile transport. The two discovery reads are not served; see below.
-    // These two need a visibility-filtered query that does not exist yet.
-    // WP-04 owns the predicate (`can_view_intro` and its SQL form); WP-05 owns
-    // the page and detail queries that apply it. Neither has been written, so
-    // the operations are refused rather than served by a query that would have
-    // to duplicate or pre-empt WP-04's decision.
-    owed("listIntroPosts", "GET", "/api/discover/intro-posts", "WP-04 visibility + WP-05 list/detail query"),
-    owed("getIntroPost", "GET", "/api/intro-posts/{introId}", "WP-04 visibility + WP-05 list/detail query"),
+    // WP-04's visibility predicate runs inside these two statements
+    // (`intro_posts::repository`), so a page is filtered before `limit` and a
+    // detail refusal is indistinguishable from absence.
+    concert("listIntroPosts", "GET", "/api/discover/intro-posts", "concert_service::intro_posts::repository"),
+    concert("getIntroPost", "GET", "/api/intro-posts/{introId}", "concert_service::intro_posts::repository"),
     concert("getOwnIntroPost", "GET", "/api/me/intro-posts/{introId}", "concert_service::profile_product::intro"),
     concert("listOwnIntroPosts", "GET", "/api/me/intro-posts", "concert_service::profile_product::intro"),
     concert("saveIntroPostDraft", "PUT", "/api/me/intro-posts/{introId}", "concert_service::profile_product::intro"),

@@ -97,8 +97,7 @@ fn a_profile_database_operation_is_refused_by_this_transport() {
         ("GET", "/api/me/identity/naver"),
         ("POST", "/api/me/identity/naver/verifications"),
         ("DELETE", "/api/me/identity/naver"),
-        // WP-04/WP-05 operations that no producer owns yet.
-        ("GET", "/api/discover/intro-posts"),
+        // Operations that no producer owns yet.
         ("GET", "/api/me/notifications"),
         ("PUT", "/api/profiles/11111111-1111-4111-8111-111111111111/follow"),
     ] {
@@ -243,29 +242,44 @@ fn the_transport_serves_the_eleven_wp05_intro_operations() {
 }
 
 #[test]
-fn the_two_unserved_intro_reads_are_refused_by_this_transport() {
-    // `listIntroPosts` and `getIntroPost` need a visibility-filtered query that
-    // does not exist. The transport refuses them rather than dispatching to a
-    // producer that would have to invent one.
-    for (method, target) in [
-        ("GET", "/api/discover/intro-posts"),
-        ("GET", "/api/intro-posts/22222222-2222-4222-8222-222222222222"),
+fn the_two_discovery_reads_are_now_served_by_this_transport() {
+    // WP-04's visibility predicate and the page/detail queries exist, so both
+    // reads resolve to real operations rather than being refused.
+    for (method, target, expected) in [
+        ("GET", "/api/discover/intro-posts", "listIntroPosts"),
+        (
+            "GET",
+            "/api/intro-posts/22222222-2222-4222-8222-222222222222",
+            "getIntroPost",
+        ),
     ] {
-        let status = parse(method, target)
-            .expect_err("an unserved intro read must be refused");
-        assert_eq!(
-            status.code(),
-            tonic::Code::PermissionDenied,
-            "{method} {target} must be refused, not served by a fabricated query"
+        let parsed = parse(method, target).expect("a served intro read must parse");
+        assert_eq!(parsed.contract_id(), expected);
+    }
+    // Every one of the thirteen frozen intro operations is served: no gap
+    // remains, and the refused set is empty.
+    assert_eq!(concert_service::profile_product::INTRO_SERVED.len(), 13);
+    assert!(concert_service::profile_product::INTRO_NOT_SERVED.is_empty());
+    for operation in [
+        "listIntroPosts",
+        "getIntroPost",
+        "getOwnIntroPost",
+        "listOwnIntroPosts",
+        "saveIntroPostDraft",
+        "publishIntroPost",
+        "deleteIntroPost",
+        "setIntroPostLike",
+        "clearIntroPostLike",
+        "listIntroPostLikers",
+        "listIntroPostComments",
+        "createIntroPostComment",
+        "deleteIntroPostComment",
+    ] {
+        assert!(
+            concert_service::profile_product::intro::is_served(operation),
+            "{operation} must be served"
         );
     }
-    // And the served set is exactly the eleven, so a later addition cannot slip
-    // in without updating this list.
-    assert_eq!(concert_service::profile_product::INTRO_SERVED.len(), 11);
-    assert_eq!(concert_service::profile_product::INTRO_NOT_SERVED.len(), 2);
-    assert!(!concert_service::profile_product::intro::is_served("listIntroPosts"));
-    assert!(!concert_service::profile_product::intro::is_served("getIntroPost"));
-    assert!(concert_service::profile_product::intro::is_served("getOwnIntroPost"));
 }
 
 #[test]

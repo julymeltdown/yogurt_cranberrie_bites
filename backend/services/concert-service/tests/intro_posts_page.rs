@@ -860,13 +860,13 @@ async fn the_detail_row_carries_no_audience() -> anyhow::Result<()> {
     // The row type has no audience field at all; this asserts the selected
     // columns do not accidentally include one by checking the struct shape.
     let _ = (
-        row.intro_id,
-        row.author_profile_id,
-        row.body,
-        row.currently_seeking,
-        row.interaction_style,
-        row.published_at,
-        row.expires_at,
+        row.post.intro_id,
+        row.post.author_profile_id,
+        row.post.body,
+        row.post.currently_seeking,
+        row.post.interaction_style,
+        row.post.published_at,
+        row.post.expires_at,
     );
     cleanup(&pool, &[intro_id]).await?;
     Ok(())
@@ -899,7 +899,7 @@ async fn the_author_reads_their_own_unpublished_post_through_the_detail_query() 
         intro_id,
     )
     .await?;
-    assert_eq!(row.intro_id, intro_id);
+    assert_eq!(row.post.intro_id, intro_id);
     // A stranger is denied.
     assert_eq!(
         get_intro_post(
