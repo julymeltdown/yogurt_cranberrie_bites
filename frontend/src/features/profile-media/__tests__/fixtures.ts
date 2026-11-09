@@ -1,6 +1,4 @@
-import { QueryClient } from '@tanstack/react-query'
-import { createHttpClient, createMemorySession } from '../../../shared/api/http'
-import { createQueryPrivacy, type PrivacyScope } from '../../../shared/query/privacy'
+import { createTransportHarness } from '../../../test-support/harness'
 import type { UploadAuth } from '../upload'
 
 /** The account every fixture is bound to. */
@@ -38,38 +36,38 @@ export async function setup() {
   if (globalThis.location === undefined) {
     Object.defineProperty(globalThis, 'location', { value: { origin: 'https://mcr.test' }, configurable: true })
   }
-  const session = createMemorySession()
-  const client = new QueryClient()
-  const privacy = createQueryPrivacy({ session, client })
-  session.replace(0, { userId: ACCOUNT, eventId: EVENT, accessToken: 'deterministic-test-token' })
-  const scope: PrivacyScope = privacy.capture()
   const calls: RecordedCall[] = []
   let handler: Handler | null = null
   let counter = 0
-  const http = createHttpClient({ session, fetch: async input => {
-    if (!(input instanceof Request)) throw new Error('Expected canonical Request')
-    const path = new URL(input.url).pathname
-    const contentType = input.headers.get('content-type')
-    // A raw upload is an image Blob; everything else is JSON. The Blob is read
-    // through its own array buffer so the recorded value is exactly the bytes
-    // the client put on the wire.
-    const body: unknown = input.method === 'GET'
-      ? null
-      : path.endsWith('/bytes')
-        ? new Uint8Array(await input.blob().then(blob => blob.arrayBuffer()) as ArrayBuffer)
-        : await input.clone().json()
-    const call: RecordedCall = {
-      path,
-      method: input.method,
-      body,
-      contentType,
-      idempotencyKey: input.headers.get('idempotency-key'),
-    }
-    calls.push(call)
-    if (!handler) throw new Error(`Unexpected profile media request: ${input.method} ${path}`)
-    return handler(input, call)
-  } })
-  const auth: UploadAuth = { session, privacy, request: http.request }
+  const transport = createTransportHarness({
+    userId: ACCOUNT,
+    eventId: EVENT,
+    respond: async input => {
+      const path = new URL(input.url).pathname
+      const contentType = input.headers.get('content-type')
+      // A raw upload is an image Blob; everything else is JSON. The Blob is read
+      // through its own array buffer so the recorded value is exactly the bytes
+      // the client put on the wire.
+      const body: unknown = input.method === 'GET'
+        ? null
+        : path.endsWith('/bytes')
+          ? new Uint8Array(await input.blob().then(blob => blob.arrayBuffer()) as ArrayBuffer)
+          : await input.clone().json()
+      const call: RecordedCall = {
+        path,
+        method: input.method,
+        body,
+        contentType,
+        idempotencyKey: input.headers.get('idempotency-key'),
+      }
+      calls.push(call)
+      if (!handler) throw new Error(`Unexpected profile media request: ${input.method} ${path}`)
+      return handler(input, call)
+    },
+  })
+  const session = transport.session, privacy = transport.privacy
+  const scope = transport.scope()
+  const auth: UploadAuth = { session, privacy, request: transport.http.request }
   const signal = new AbortController()
   return {
     auth,
@@ -87,7 +85,7 @@ export async function setup() {
       const text = Array.from(bytes, byte => byte.toString(16).padStart(2, '0')).join('')
       return text === Array.from(BYTES, byte => byte.toString(16).padStart(2, '0')).join('') ? DIGEST : 'b'.repeat(64)
     },
-    dispose() { signal.abort(); privacy.dispose(); client.clear() },
+    dispose() { signal.abort(); transport.dispose() },
   }
 }
 

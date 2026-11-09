@@ -6,6 +6,7 @@ import { dataFromNotice } from '../../model/controller'
 import type { CreateNotice, Notice, Operation, Receipt, Settings } from '../../model/contract'
 import type { OperatorLease, PlaceWritePort, PlaceWriteRelease } from '../../model/ports'
 import type { PlaceAdmin, SetPlace } from '../../../places/contract'
+export { deferred } from '../../../../../test-support/fixtures'
 
 export const uid = (n: number) => `00000000-0000-4000-8000-${n.toString(16).padStart(12, '0')}`
 export const actorId = uid(1), eventId = uid(2), placeId = uid(3), noticeId = uid(4), key = uid(5)
@@ -21,7 +22,6 @@ export function notice(): Notice { return { notice_id: noticeId, event_id: event
   source_uri: 'https://notice.example.invalid/source', confirmed_at: time(-60000), created_at: time(-120000), state: 'PUBLISHED' } }
 export const errorResponse = (status: number, reason: string) => Response.json({ code: 'SYNTHETIC_FAILURE', message: 'Raw sensitive failure text must never render', details: { reason,
   ...(reason === 'RATE_LIMITED' ? { retry_after_ms: 5000 } : {}) } }, { status })
-export function deferred<T>() { let resolve!: (value: T) => void; const promise = new Promise<T>(done => { resolve = done }); return { promise, resolve } }
 export type Mode = 'success' | 'pending' | 'lost' | 'forbidden' | 'conflict' | 'read-only' | 'rate' | 'unavailable' | 'bad-result'
 export function fixture(options: { role?: OperatorLease['role']; absent?: boolean; placePort?: boolean } = {}) {
   let currentNow = now, mode: Mode = 'success', currentSettings = settings(), currentPlace = place(), currentNotices = [notice()], nextKey = 5

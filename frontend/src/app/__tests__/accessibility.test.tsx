@@ -132,7 +132,7 @@ describe('every interactive control has an accessible name', () => {
       navigate: () => undefined,
       request: async request => {
         const data = { provider: 'naver', status: 'NOT_VERIFIED', verified_at: null, expires_at: null, claims: null, display_on_profile: false }
-        return { data: request.decode(data, { scope: { generation: 1, userId: '00000000-0000-4000-8000-000000000003', eventId: null }, status: 200, path: request.path }) }
+        return { data: request.decode(data, { scope: { generation: 1, userId: '00000000-0000-4000-8000-000000000003', eventId: null }, status: 200, path: request.path }), scope: { generation: 1, userId: '00000000-0000-4000-8000-000000000003', eventId: null } }
       },
     })
     disposals.push(() => controller.dispose())

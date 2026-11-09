@@ -38,8 +38,6 @@ export const PRESET_SIDE: Readonly<Record<PosterPreset, number>> = Object.freeze
 /** The default preset: immediately usable, no question asked. */
 export const DEFAULT_PRESET: PosterPreset = 'FINE'
 
-/** The largest accepted source side, matching the server's poster bound. */
-export const MAX_POSTER_SIDE = 128
 /** The largest accepted poster byte length, matching the server's bound. */
 export const MAX_POSTER_BYTES = 1024 * 1024
 

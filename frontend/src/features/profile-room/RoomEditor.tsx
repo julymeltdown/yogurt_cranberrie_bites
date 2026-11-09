@@ -18,11 +18,10 @@
  * Nothing here decides visibility or authorization: the screen renders what the
  * server returned and the save is the server's answer.
  */
-import { useEffect, useId, useRef, useState, type KeyboardEvent } from 'react'
+import { useId, useRef, useState, type KeyboardEvent } from 'react'
 import {
   FLOOR_STYLES,
   FURNITURE_ITEMS,
-  GRID_CELLS,
   MAX_FURNITURE,
   MAX_POSTERS,
   WALL_STYLES,
@@ -31,7 +30,7 @@ import {
   type RoomLayout,
   type WallStyle,
 } from './model/layout'
-import { defaultPosterPlacement, isDirty, reduce, type EditorAction, type EditorState } from './model/editor'
+import { defaultPosterPlacement, isDirty, type EditorAction, type EditorState } from './model/editor'
 import type { PosterPreset } from './pixelize'
 import type { RoomClient, RoomVisibility } from './api/room'
 import type { PosterConverter } from './worker/client'
@@ -249,23 +248,3 @@ function nextSlot(layout: RoomLayout): number | null {
   return null
 }
 
-/** The grid size, exported so the screen and the editor cannot disagree. */
-export { GRID_CELLS }
-
-/**
- * A hook that keeps the editor's draft in sync with a freshly loaded room without
- * overwriting unsaved work on a re-render.
- */
-export function useRoomDraft(loaded: { readonly layout: RoomLayout; readonly revision: number } | null) {
-  const [state, setState] = useState<EditorState>(() => ({
-    draft: { version: 1, wall: 'plaster', floor: 'wood', furniture: [], posters: [], character: { cell_x: 16, cell_y: 24, facing: 'RIGHT' } },
-    saved: null, revision: 1, message: null, selected: null, conflict: null, saving: false,
-  }))
-  const applied = useRef<number | null>(null)
-  useEffect(() => {
-    if (!loaded || applied.current === loaded.revision) return
-    applied.current = loaded.revision
-    setState(current => reduce(current, { type: 'loaded', layout: loaded.layout, revision: loaded.revision }))
-  }, [loaded])
-  return [state, setState] as const
-}

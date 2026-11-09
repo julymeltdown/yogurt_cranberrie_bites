@@ -361,10 +361,6 @@ h2 {
   scrollbar-width: thin;
 }
 
-.mcr-tablist[aria-orientation="vertical"] {
-  flex-direction: column;
-}
-
 .mcr-tab {
   flex: 0 0 auto;
   padding: 0.6rem 0.85rem;
@@ -417,10 +413,6 @@ h2 {
   background: var(--mcr-cream);
 }
 
-.mcr-skeleton__line:last-child {
-  inline-size: 70%;
-}
-
 .mcr-toasts {
   inline-size: 100%;
   color: var(--mcr-ink);
@@ -450,11 +442,6 @@ h2 {
   overflow-wrap: anywhere;
 }
 
-.mcr-toast p {
-  flex: 1 1 12rem;
-  min-inline-size: 0;
-}
-
 @media (prefers-reduced-motion: reduce) {
   .mcr-button,
   .mcr-tab,
@@ -466,14 +453,4 @@ h2 {
   }
 }
 
-@media (forced-colors: active) {
-  .mcr-overlay {
-    background: Canvas;
-  }
-
-  .mcr-tab[aria-selected="true"] {
-    outline: 2px solid Highlight;
-    outline-offset: -4px;
-  }
-}
 }

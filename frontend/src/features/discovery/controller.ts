@@ -1,7 +1,13 @@
-import type { HttpClient, HttpRequest } from '../../shared/api/http'
-import { TransportError } from '../../shared/api/errors'
+import type { HttpClient } from '../../shared/api/http'
 import type { SessionController } from '../auth/model/session'
-import type { PrivacyScope } from '../../shared/query/privacy'
+import {
+  blank,
+  createControllerRuntime,
+  failureOf,
+  type Failure,
+  type Slot,
+} from '../../shared/query/controller-runtime'
+import { newIdempotencyKey } from '../../shared/api/request'
 import type { Category } from '../favorites/contract'
 import {
   DEFAULT_PEOPLE_CATEGORY,
@@ -31,13 +37,7 @@ export interface DiscoveryOptions {
   readonly request: HttpClient['request']
 }
 
-export type Failure = 'unavailable' | 'invalid' | 'offline' | 'rate-limited'
-
-export interface Slot<T> {
-  readonly phase: 'idle' | 'loading' | 'ready' | 'error'
-  readonly data: T | null
-  readonly failure: Failure | null
-}
+export type { Failure, Slot }
 
 export interface DiscoveryState {
   readonly tab: DiscoveryTab
@@ -49,16 +49,6 @@ export interface DiscoveryState {
   readonly available: boolean
 }
 
-const blank = <T>(): Slot<T> => ({ phase: 'idle', data: null, failure: null })
-
-function failure(error: unknown): Failure {
-  if (!(error instanceof TransportError)) return 'invalid'
-  if (error.status === 429) return 'rate-limited'
-  if (error.kind === 'network' || error.kind === 'timeout') return 'offline'
-  if (error.status === 400) return 'invalid'
-  return 'unavailable'
-}
-
 const failureMessage: Readonly<Record<Failure, string>> = Object.freeze({
   unavailable: 'People are unavailable right now. Try again in a moment.',
   invalid: 'The people list could not be verified.',
@@ -67,64 +57,29 @@ const failureMessage: Readonly<Record<Failure, string>> = Object.freeze({
 })
 
 export function createDiscoveryController(options: DiscoveryOptions) {
-  let state: DiscoveryState = Object.freeze({
-    tab: 'PEOPLE',
-    category: DEFAULT_PEOPLE_CATEGORY,
-    people: blank<readonly PeopleCard[]>(),
-    nextCursor: null,
-    following: [],
-    message: '',
-    available: false,
-  })
-  let disposed = false
-  let started = false
-  let epoch = 0
-  const flights = new Map<string, AbortController>()
-  const listeners = new Set<() => void>()
-
-  const emit = (patch: Partial<DiscoveryState>) => {
-    state = Object.freeze({ ...state, ...patch })
-    for (const listener of [...listeners]) {
-      try {
-        listener()
-      } catch {
-        // Isolate observers.
-      }
-    }
+  const runtime = createControllerRuntime<DiscoveryState>(
+    { privacy: options.auth.privacy, request: options.request },
+    () => ({
+      tab: 'PEOPLE',
+      category: DEFAULT_PEOPLE_CATEGORY,
+      people: blank<readonly PeopleCard[]>(),
+      nextCursor: null,
+      following: [],
+      message: '',
+      available: false,
+    }),
+  )
+  // The runtime publishes through this closure; it is defined before `runtime`
+  // runs because the runtime never publishes during construction.
+  function emit(patch: Partial<DiscoveryState>) {
+    runtime.publish(patch)
   }
-
-  const scope = (): PrivacyScope | null => {
-    const captured = options.auth.privacy.capture()
-    return options.auth.privacy.isCurrent(captured) ? captured : null
-  }
-  const usable = () => started && !disposed && scope() !== null
-
-  function cancel(lane: string) {
-    flights.get(lane)?.abort()
-    flights.delete(lane)
-  }
-
-  async function run<T>(lane: string, build: () => HttpRequest<T>): Promise<T> {
-    const captured = scope()
-    if (!captured) throw new TransportError('authentication-required')
-    cancel(lane)
-    const flight = new AbortController()
-    const version = epoch
-    flights.set(lane, flight)
-    try {
-      const result = await options.request({ ...build(), signal: flight.signal })
-      if (version !== epoch || !options.auth.privacy.isCurrent(captured)) {
-        throw new TransportError('session-changed')
-      }
-      return result.data
-    } finally {
-      if (flights.get(lane) === flight) flights.delete(lane)
-    }
-  }
+  const { run, usable, cancel } = runtime
+  const state = () => runtime.read()
 
   async function load(category: Category, cursor: string | null): Promise<void> {
     emit({
-      people: { phase: 'loading', data: cursor === null ? null : state.people.data, failure: null },
+      people: { phase: 'loading', data: cursor === null ? null : state().people.data, failure: null },
       message: '',
     })
     try {
@@ -136,15 +91,15 @@ export function createDiscoveryController(options: DiscoveryOptions) {
         query: { category, limit: 20, ...(cursor === null ? {} : { cursor }) },
         decode: (value: unknown) => decodePeoplePage(value),
       }))
-      if (state.category !== category) return
-      const previous = cursor === null ? [] : state.people.data ?? []
+      if (state().category !== category) return
+      const previous = cursor === null ? [] : state().people.data ?? []
       emit({
         people: { phase: 'ready', data: [...previous, ...page.items], failure: null },
         nextCursor: page.next_cursor,
       })
     } catch (error) {
-      if (state.category !== category) return
-      const reason = failure(error)
+      if (state().category !== category) return
+      const reason = failureOf(error)
       emit({
         people: { phase: 'error', data: null, failure: reason },
         nextCursor: null,
@@ -154,28 +109,19 @@ export function createDiscoveryController(options: DiscoveryOptions) {
   }
 
   return {
-    read: () => state,
-    subscribe(listener: () => void) {
-      listeners.add(listener)
-      return () => {
-        listeners.delete(listener)
-      }
-    },
-    start() {
-      if (started || disposed) return
-      started = true
-      emit({ available: usable() })
-    },
+    read: runtime.read,
+    subscribe: runtime.subscribe,
+    start: runtime.start,
     /** The top-level tabs: people, then mutuals-intro posts. Never merged. */
     tabs: () => DISCOVERY_TABS,
     selectTab(tab: DiscoveryTab) {
-      if (!DISCOVERY_TABS.includes(tab) || state.tab === tab) return
+      if (!DISCOVERY_TABS.includes(tab) || state().tab === tab) return
       if (tab === 'MUTUALS_INTROS') cancel('people')
       emit({ tab, message: '' })
     },
     /** Switch the people category. The default tab is music. */
     selectCategory(category: Category) {
-      if (state.category === category) return
+      if (state().category === category) return
       cancel('people')
       emit({
         category,
@@ -183,22 +129,22 @@ export function createDiscoveryController(options: DiscoveryOptions) {
         nextCursor: null,
         message: '',
       })
-      if (usable() && state.tab === 'PEOPLE') void load(category, null)
+      if (usable() && state().tab === 'PEOPLE') void load(category, null)
     },
     load(): Promise<void> {
       if (!usable()) return Promise.resolve()
-      return load(state.category, null)
+      return load(state().category, null)
     },
     more(): Promise<void> {
-      if (!usable() || state.nextCursor === null) return Promise.resolve()
-      return load(state.category, state.nextCursor)
+      if (!usable() || state().nextCursor === null) return Promise.resolve()
+      return load(state().category, state().nextCursor)
     },
     /**
      * Follow a profile. This is an explicit action with its own effect; merely
      * viewing a discovery card never follows anybody.
      */
     async follow(card: PeopleCard): Promise<boolean> {
-      if (!usable() || state.following.includes(card.profile_id)) return false
+      if (!usable() || state().following.includes(card.profile_id)) return false
       try {
         await run(`follow:${card.profile_id}`, () => ({
           path: `/api/profiles/${card.profile_id}/follow`,
@@ -206,39 +152,19 @@ export function createDiscoveryController(options: DiscoveryOptions) {
           access: 'protected',
           errorFamily: 'domain',
           domainOperation: 'followProfile',
-          idempotencyKey: newId(),
+          idempotencyKey: newIdempotencyKey(),
           decode: (value: unknown) => value as { following: boolean },
         }))
-        emit({ following: [...state.following, card.profile_id], message: '' })
+        emit({ following: [...state().following, card.profile_id], message: '' })
         return true
       } catch (error) {
-        emit({ message: failureMessage[failure(error)] })
+        emit({ message: failureMessage[failureOf(error)] })
         return false
       }
     },
-    isFollowing: (card: PeopleCard) => state.following.includes(card.profile_id),
-    dispose() {
-      if (disposed) return
-      disposed = true
-      started = false
-      epoch++
-      flights.forEach((flight) => flight.abort())
-      flights.clear()
-      listeners.clear()
-    },
+    isFollowing: (card: PeopleCard) => state().following.includes(card.profile_id),
+    dispose: runtime.dispose,
   }
-}
-
-function newId(): string {
-  const crypto = globalThis.crypto
-  if (crypto && typeof crypto.randomUUID === 'function') return crypto.randomUUID()
-  // A deterministic fallback keeps the transport contract satisfied in a
-  // non-browser test environment; it is never used to derive authority.
-  const bytes = Array.from({ length: 16 }, () => Math.floor(Math.random() * 256))
-  bytes[6] = ((bytes[6] ?? 0) & 0x0f) | 0x40
-  bytes[8] = ((bytes[8] ?? 0) & 0x3f) | 0x80
-  const hex = bytes.map((byte) => byte.toString(16).padStart(2, '0')).join('')
-  return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`
 }
 
 export type DiscoveryController = ReturnType<typeof createDiscoveryController>

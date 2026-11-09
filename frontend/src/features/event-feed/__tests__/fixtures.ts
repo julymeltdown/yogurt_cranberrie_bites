@@ -4,6 +4,7 @@ import { withAdmission } from '../../auth/__tests__/fixtures/admission'
 import { createEventFeedController } from '../controller'
 import type { FeedAccess } from '../runtime'
 import type { Post } from '../contract'
+export { deferred } from '../../../test-support/fixtures'
 export const post = postFixture as Post
 export const eventId = post.event_id, userId = post.author.user_id
 export const id = (tail: number) => `00000000-0000-4000-8000-${String(tail).padStart(12, '0')}`
@@ -17,4 +18,3 @@ export function setup(fetch: typeof globalThis.fetch) {
   const controller = createEventFeedController({ auth, access: accessPort })
   return { auth, controller, access: accessPort, setAccess(next: FeedAccess) { access = next; subscribers.forEach(fn => fn()) }, dispose() { controller.dispose(); auth.dispose() } }
 }
-export function deferred<T>() { let resolve!: (value: T) => void; const promise = new Promise<T>(r => { resolve = r }); return { promise, resolve } }

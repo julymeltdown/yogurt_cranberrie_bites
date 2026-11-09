@@ -3,6 +3,7 @@ import { contentHash, digest } from '../../../../world/map/json'
 import type { MapManifest } from '../../../../world/map/manifest'
 import type { PlaceMapRelease } from '../../model/controller'
 import type { Place, PlaceList } from '../../model/contract'
+export { deferred } from '../../../../test-support/fixtures'
 
 export const eventId = '00000000-0000-4000-8000-000000000201'
 export const userId = '00000000-0000-4000-8000-000000000202'
@@ -34,9 +35,4 @@ export async function release(items = places(), mapRevision = 1): Promise<PlaceM
   map.geometry_hash = await digest(map.geometry)
   map.content_hash = await contentHash(map)
   return { scope: { generation: 1, userId, eventId }, manifest: map, expected: { mapId: map.map_id, revision: map.map_revision, contentHash: map.content_hash, geometryHash: map.geometry_hash } }
-}
-export function deferred<T>() {
-  let resolve!: (value: T) => void
-  const promise = new Promise<T>(r => { resolve = r })
-  return { promise, resolve }
 }

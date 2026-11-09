@@ -5,6 +5,7 @@ import { bootstrapFor, createFixturePorts } from '../../__tests__/fixtures/ports
 import { post, notice, id } from '../../../features/event-feed/__tests__/fixtures'
 import introSource from '../../../../../contracts/fixtures/domain/public-intro.json'
 import type { SocialAvailability, SocialAvailabilityPort, SocialOptions } from '../ports'
+export { deferred } from '../../../test-support/fixtures'
 export { post, notice, id }
 export const user = post.author.user_id, event = post.event_id
 export const publicIntro = () => ({ ...structuredClone(introSource), event_id: event })
@@ -37,4 +38,3 @@ export function fixture(handler: (r: Request) => Response | Promise<Response> = 
   return { auth, scope, bootstrap, options, requests, navigations, ports, stats: world.stats,
     availability, listenerCount: () => listeners.size, setLease(value: SocialAvailability | null) { lease = value; for (const f of Array.from(listeners)) f() }, dispose: () => auth.dispose() }
 }
-export function deferred<T>() { let resolve!: (value: T) => void; const promise = new Promise<T>(r => { resolve = r }); return { promise, resolve } }

@@ -1,3 +1,4 @@
+export { deferred } from '../../../../test-support/fixtures'
 // TEST ONLY: abstract pixel fixture, never production character art or fallback data.
 export const id = (n: number) => '00000000-0000-4000-8000-' + String(n).padStart(12, '0');
 export const eventId = id(1);
@@ -10,13 +11,6 @@ export function page(second = false, event = eventId) {
             pixels: Array.from({ length: 16384 }, (_, i) => (Math.floor((i % 128) / 16) + Math.floor(i / 128 / 16)) % 16),
             created_at: '2026-11-07T15:00:00Z', server_time: '2026-11-07T15:01:00Z', cooldown_ms: 5000, next_allowed_at: null }
     };
-}
-export function deferred<T>() {
-    let resolve!: (value: T) => void;
-    const promise = new Promise<T>(yes => {
-        resolve = yes;
-    });
-    return { promise, resolve };
 }
 export function imageBlob() {
     return new Blob([Uint8Array.from(atob('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aWQAAAABJRU5ErkJggg=='), c => c.charCodeAt(0))], { type: 'image/png' });

@@ -2,6 +2,7 @@ import { createSessionController } from '../../model/session'
 import { authResponse, capabilities, eventId, isolatedCookiePolicy, userId } from '../fixtures/data'
 import { withAdmission } from '../fixtures/admission'
 import { deletionSaga } from '../../../account/__tests__/deletion-fixtures'
+export { deferred } from '../../../../test-support/fixtures'
 export { eventId, userId }
 export const otherId = '00000000-0000-4000-8000-000000000999'
 export function saga(complete = false) {
@@ -29,4 +30,3 @@ export function fixtureAuth(handle: (request: Request) => Response | Promise<Res
     if (!await auth.login('synthetic@example.org', 'fixture-password')) throw new Error('Synthetic login failed')
   }, dispose() { auth.dispose() } }
 }
-export function deferred<T>() { let resolve!: (value: T) => void; const promise = new Promise<T>(r => { resolve = r }); return { promise, resolve } }

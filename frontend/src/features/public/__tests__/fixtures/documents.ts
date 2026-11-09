@@ -1,4 +1,5 @@
 import type { DocumentKey, DocumentProvider } from '../../model/documents'
+export { deferred } from '../../../../test-support/fixtures'
 /** Deliberately synthetic UI input. Never imported from the production entry. */
 export const syntheticDocument = (key: DocumentKey = 'terms') => ({ status: 'published', document: {
   key, version: 'TEST-2026.11.03', publishedAt: '2026-11-03T00:00:00Z', effectiveAt: '2026-11-04T00:00:00Z',
@@ -8,9 +9,3 @@ export const syntheticDocument = (key: DocumentKey = 'terms') => ({ status: 'pub
   ], links: [{ label: 'Open the synthetic privacy page', to: '/legal/privacy' }] }],
 } })
 export const syntheticDocuments: DocumentProvider = { syntheticPreview: true, read: async key => syntheticDocument(key) }
-export function deferred<T>() {
-  let resolve!: (value: T) => void
-  let reject!: (error: unknown) => void
-  const promise = new Promise<T>((yes, no) => { resolve = yes; reject = no })
-  return { promise, resolve, reject }
-}

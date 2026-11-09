@@ -4,6 +4,8 @@ import manifest from '../../../../../../contracts/fixtures/assets/selected-stati
 import { createSessionController } from '../../../../features/auth/model/session'
 import { createWholeCharacterRuntime, type WholeCharacterRuntimeOptions } from '../runtime'
 import { REVIEWED } from '../contract'
+import { deferred } from '../../../../test-support/fixtures'
+export { deferred }
 export { manifest }
 export const config = manifest.presets[0]!.config
 export const pin = { manifest_id: manifest.manifest_id, manifest_version: manifest.manifest_version, content_hash: manifest.content_hash }
@@ -25,5 +27,4 @@ export function fixture(patch: Partial<WholeCharacterRuntimeOptions> = {}) {
   const runtime = createWholeCharacterRuntime({ privacy: auth.privacy, manifest, pin, origin: 'https://fixture.invalid', fetch: fetcher, decode, ...patch })
   return { auth, runtime, fetcher, decode, disposed, signal: () => new AbortController().signal, dispose() { runtime.dispose(); auth.dispose() } }
 }
-export const deferred = <T>() => { let resolve!: (v: T) => void; const promise = new Promise<T>(done => { resolve = done }); return { promise, resolve } }
 export const atlas64 = REVIEWED.texture

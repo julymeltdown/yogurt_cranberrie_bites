@@ -6,6 +6,7 @@ import { createReviewedProductionAuthority, type PublicReviewedConfig } from '..
 import { REVIEWED_MOTION } from '../../../entities/emo-avatar/reviewed-manifest'
 import { decodeReviewedMotionConfig } from '../../../entities/emo-avatar/reviewed-config'
 import { PROFILE_AVATAR_PATH } from '../api/persistence'
+export { deferred } from '../../../test-support/fixtures'
 
 /** The pinned reviewed manifest document, exactly as the profile shell reads it. */
 export const manifest = schema.$defs.ReviewedMotionAvatarManifest.const
@@ -15,11 +16,6 @@ export const layered = (body = 'motion_v2_body_0') => decodeReviewedMotionConfig
   manifest_id: pin.manifest_id, manifest_version: 2, representation: 'motion_layered',
   item_ids: { body, hair: 'motion_v2_hair_0', eyes: 'motion_v2_eyes_0', outfit: null, accessory: null } })
 
-export function deferred<T>() {
-  let resolve!: (value: T) => void
-  const promise = new Promise<T>(yes => { resolve = yes })
-  return { promise, resolve }
-}
 
 export const ACCOUNT = '00000000-0000-4000-8000-000000000811'
 export const OTHER_ACCOUNT = '00000000-0000-4000-8000-000000000812'

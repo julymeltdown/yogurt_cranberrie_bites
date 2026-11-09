@@ -13,11 +13,9 @@
 import {
   cellFree,
   clampCell,
-  FURNITURE_ITEMS,
   GRID_CELLS,
   MAX_FURNITURE,
   MAX_POSTERS,
-  nextPosterSlot,
   sameCell,
   sameLayout,
   slotRect,
@@ -79,16 +77,6 @@ export type EditorAction =
   | { readonly type: 'use-server' }
 
 type CharacterMove = CharacterPlacement['facing']
-
-export const initialEditorState = (): EditorState => ({
-  draft: { version: 1, wall: 'plaster', floor: 'wood', furniture: [], posters: [], character: { cell_x: 16, cell_y: 24, facing: 'RIGHT' } },
-  saved: null,
-  revision: 1,
-  message: null,
-  selected: null,
-  conflict: null,
-  saving: false,
-})
 
 /** Whether the draft differs from the last confirmed layout. */
 export const isDirty = (state: EditorState) => !state.saved || !sameLayout(state.draft, state.saved)
@@ -216,5 +204,3 @@ export const defaultPosterPlacement = (mediaId: string, slot: number): PosterPla
   const rect = slotRect(slot)
   return { poster_media_id: mediaId, slot, ...rect }
 }
-
-export { nextPosterSlot, FURNITURE_ITEMS, MAX_POSTERS, MAX_FURNITURE, GRID_CELLS }
