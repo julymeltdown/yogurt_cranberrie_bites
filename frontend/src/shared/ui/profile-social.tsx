@@ -322,3 +322,113 @@ export function TabStrip<T extends string>({ items, selected, onSelect, label, i
     </div>
   )
 }
+
+/* --- State ----------------------------------------------------------------
+ * One treatment for empty, loading and error. The three share geometry so a
+ * screen does not jump between them; only the border style, the title colour
+ * and the live role change.
+ */
+export type StateKind = 'empty' | 'loading' | 'error'
+
+export function State({ kind, title, children, action, className }: {
+  kind: StateKind
+  title: string
+  children?: ReactNode
+  action?: ReactNode
+  className?: string
+}) {
+  const role = kind === 'error' ? 'alert' : 'status'
+  return (
+    <div className={join('pi-state', kind !== 'empty' && `pi-state--${kind}`, className)} role={role}>
+      <p className="pi-state__title">{title}</p>
+      {children && <p className="pi-state__body">{children}</p>}
+      {action && <div className="pi-state__action">{action}</div>}
+    </div>
+  )
+}
+
+/* --- Chips ----------------------------------------------------------------
+ * A wrapping row of small pills: favorites, tags, an audience summary.
+ */
+export function Chips({ items, label, className }: {
+  items: readonly ReactNode[]
+  label?: string
+  className?: string
+}) {
+  if (items.length === 0) return null
+  return (
+    <ul className={join('pi-chips', className)} {...(label ? { 'aria-label': label } : {})}>
+      {items.map((item, index) => <li key={index} className="pi-chip">{item}</li>)}
+    </ul>
+  )
+}
+
+/* --- Steps ----------------------------------------------------------------
+ * The composer's step indicator. `current` is the step id that is in progress;
+ * the list keeps the ordered-list semantics of the markup it replaces.
+ */
+export function Steps({ items, current, label }: {
+  items: readonly { readonly id: string; readonly label: string }[]
+  current: string
+  label: string
+}) {
+  return (
+    <ol className="pi-steps" aria-label={label}>
+      {items.map((item, index) => (
+        <li key={item.id} {...(item.id === current ? { 'aria-current': 'step' as const } : {})}>
+          <span aria-hidden="true">{index + 1}.</span>
+          {item.label}
+        </li>
+      ))}
+    </ol>
+  )
+}
+
+/* --- Facts ----------------------------------------------------------------
+ * A label/value list with symmetric dividers.
+ */
+export function Facts({ rows, className }: {
+  rows: readonly { readonly label: string; readonly value: ReactNode }[]
+  className?: string
+}) {
+  return (
+    <dl className={join('pi-facts', className)}>
+      {rows.map(row => (
+        <div key={row.label} className="pi-facts__row">
+          <dt className="pi-facts__label">{row.label}</dt>
+          <dd className="pi-facts__value">{row.value}</dd>
+        </div>
+      ))}
+    </dl>
+  )
+}
+
+/* --- IconButton -----------------------------------------------------------
+ * A square icon control with an accessible name and an optional count. The
+ * icon is decorative; the label carries the meaning.
+ */
+export function IconButton({ icon, label, count, pressed, busy, disabled, onClick, className }: {
+  icon: ReactNode
+  label: string
+  count?: ReactNode
+  pressed?: boolean
+  busy?: boolean
+  disabled?: boolean
+  onClick?: () => void
+  className?: string
+}) {
+  return (
+    <button
+      type="button"
+      className={join('pi-icon-button', className)}
+      aria-label={label}
+      {...(pressed === undefined ? {} : { 'aria-pressed': pressed })}
+      {...(busy ? { 'aria-busy': true } : {})}
+      disabled={disabled || busy}
+      {...(onClick ? { onClick } : {})}
+    >
+      {icon}
+      {count !== undefined && count !== null && <span className="pi-row__stat">{count}</span>}
+    </button>
+  )
+}

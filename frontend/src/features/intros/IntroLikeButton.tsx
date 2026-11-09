@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react'
 import { TransportError } from '../../shared/api/errors'
+import { SocialIcon } from '../../shared/ui'
 import { clearLike, setLike, type LikeTransport } from './api/intro-likes'
 import { likeCountLabel, type IntroLikeState } from './contract'
 
@@ -140,7 +141,7 @@ export function IntroLikeButton({ introId, initial, transport, onUnavailable }: 
         disabled={state.pending || state.unavailable}
         onClick={() => void toggle()}
       >
-        <span aria-hidden="true">{state.liked ? '\u2665' : '\u2661'}</span>
+        <SocialIcon name={state.liked ? 'heart-filled' : 'heart'} />
       </button>
       <span className="intro-like-count" aria-live="polite">
         {likeCountLabel(state.count)}

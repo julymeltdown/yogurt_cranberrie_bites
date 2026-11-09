@@ -1,24 +1,279 @@
+/* WP-09 / WP-10 round 2: the profile screens.
+ *
+ * Presentation only. The pages keep their view models, their owner/visitor
+ * split and every accessible name the tests assert. The appearance now follows
+ * the reference target's "MY PROFILE" card: a large square character frame, the
+ * name and a level-style metadata line beside it, then a row of compact icon
+ * actions, then a tab-style section navigation.
+ *
+ * No decorative left accent bar, coloured left border, inset rail or
+ * pseudo-element left bar. Borders are symmetric; focus stays a visible ring.
+ */
+
+.profile-page {
+  display: grid;
+  gap: var(--pi-section-gap);
+  box-sizing: border-box;
+  inline-size: 100%;
+  max-inline-size: 42rem;
+  min-inline-size: 0;
+  margin-inline: auto;
+  padding: var(--pi-space-3) var(--pi-space-3) max(var(--pi-space-5), env(safe-area-inset-bottom));
+  color: var(--pi-ink);
+  background: var(--pi-paper);
+  font: var(--pi-weight-body) var(--pi-body-size)/var(--pi-body-leading) var(--pi-font-body);
+  overflow-wrap: anywhere;
+}
+.profile-page * { box-sizing: border-box; }
+
+/* --- Identity header ------------------------------------------------------
+ * The reference's profile card: a large square character frame on the left,
+ * the name and metadata on the right, then a compact action row underneath.
+ */
+.profile-page__header {
+  display: grid;
+  grid-template-columns: var(--pi-chip-size-lg) minmax(0, 1fr);
+  gap: var(--pi-space-1) var(--pi-space-3);
+  align-items: start;
+  min-inline-size: 0;
+  padding-block-end: var(--pi-space-3);
+  border-block-end: var(--pi-frame-border) solid var(--pi-rule);
+}
+.profile-page__header > h1 {
+  grid-column: 1 / -1;
+  margin: 0 0 var(--pi-space-1);
+  font: var(--pi-weight-strong) var(--pi-title-size)/var(--pi-title-leading) var(--pi-font-display);
+  text-transform: uppercase;
+  letter-spacing: .01em;
+}
+/* The character frame occupies the left column across the name and bio rows. */
+.profile-page__portrait {
+  grid-column: 1;
+  grid-row: 2 / span 2;
+  display: grid;
+  place-items: center;
+  inline-size: var(--pi-chip-size-lg);
+  block-size: var(--pi-chip-size-lg);
+  overflow: hidden;
+  border: var(--pi-frame-border) solid var(--pi-rule);
+  border-radius: var(--pi-radius);
+  background: var(--pi-field);
+  color: var(--pi-muted);
+  font: var(--pi-weight-strong) var(--pi-heading-size)/1 var(--pi-font-display);
+  text-transform: uppercase;
+}
+.profile-page__portrait canvas,
+.profile-page__portrait img {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  image-rendering: pixelated;
+  object-fit: cover;
+}
+.profile-page__name {
+  grid-column: 2;
+  margin: 0;
+  font: var(--pi-weight-strong) var(--pi-heading-size)/var(--pi-heading-leading) var(--pi-font-body);
+  overflow-wrap: anywhere;
+}
+.profile-page__bio {
+  grid-column: 2;
+  margin: 0;
+  color: var(--pi-ink);
+  font: var(--pi-weight-body) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+/* The action row spans the card and reads as a compact control strip. */
+.profile-page__actions {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--pi-space-1);
+  margin-block-start: var(--pi-space-2);
+}
+.profile-page__actions :is(a, button) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--pi-space-1);
+  min-block-size: var(--pi-hit);
+  min-inline-size: var(--pi-hit);
+  padding: 0 var(--pi-space-2);
+  border: var(--pi-rule-width) solid var(--pi-rule);
+  border-radius: var(--pi-radius);
+  color: var(--pi-ink);
+  background: var(--pi-paper);
+  font: var(--pi-weight-strong) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-display);
+  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-decoration: none;
+  cursor: pointer;
+}
+.profile-page__actions :is(a, button):hover { background: var(--pi-field); }
+.profile-page__actions button[aria-pressed="true"] {
+  color: var(--pi-selected-ink);
+  background: var(--pi-selected-surface);
+  border-color: var(--pi-selected-surface);
+}
+.profile-page__actions button:disabled {
+  color: var(--pi-muted);
+  background: var(--pi-disabled);
+  border-color: var(--pi-soft-rule);
+  cursor: default;
+}
+.profile-page :focus-visible {
+  outline: var(--pi-focus-ring) solid var(--pi-focus);
+  outline-offset: var(--pi-focus-offset);
+}
+
+/* --- Sections -------------------------------------------------------------
+ * Each block is a titled section with a symmetric rule under its heading, not a
+ * bordered card. That keeps a long profile from reading as a stack of boxes.
+ */
+.profile-page__block {
+  display: grid;
+  gap: var(--pi-space-2);
+  min-inline-size: 0;
+}
+.profile-page__block > h2 {
+  margin: 0;
+  padding-block-end: var(--pi-space-1);
+  border-block-end: var(--pi-rule-width) solid var(--pi-divider);
+  font: var(--pi-weight-strong) var(--pi-heading-size)/var(--pi-heading-leading) var(--pi-font-display);
+  text-transform: uppercase;
+  letter-spacing: .01em;
+}
+.profile-page__block > h3 {
+  margin: var(--pi-space-2) 0 0;
+  color: var(--pi-muted);
+  font: var(--pi-weight-strong) var(--pi-caption-size)/var(--pi-caption-leading) var(--pi-font-body);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+.profile-page__block p { margin: 0; }
+
+/* Favorites: a chip row per category, matching the reference's tag treatment. */
+.profile-page__block ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--pi-space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  min-inline-size: 0;
+}
+.profile-page__block ul > li {
+  max-inline-size: 100%;
+  padding: 2px var(--pi-space-2);
+  border: var(--pi-rule-width) solid var(--pi-divider);
+  border-radius: 999px;
+  background: var(--pi-field);
+  font: var(--pi-weight-body) var(--pi-caption-size)/var(--pi-caption-leading) var(--pi-font-body);
+  overflow-wrap: anywhere;
+}
+
+/* A block-level action link reads as a row, not a bare inline link. */
+.profile-page__block > a,
+.profile-page > a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--pi-space-1);
+  min-block-size: var(--pi-hit);
+  color: var(--pi-ink);
+  font: var(--pi-weight-strong) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+  text-transform: uppercase;
+  text-underline-offset: 3px;
+}
+
+/* The unavailable state is the shared quiet frame. */
+.profile-page > p[role="status"] {
+  padding: var(--pi-space-5) var(--pi-space-3);
+  border: var(--pi-rule-width) dashed var(--pi-soft-rule);
+  border-radius: var(--pi-radius);
+  background: var(--pi-card);
+  color: var(--pi-muted);
+  font: var(--pi-weight-body) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+  text-align: center;
+}
+.profile-page__block > p[role="status"] {
+  padding: var(--pi-space-3);
+  border: var(--pi-rule-width) dashed var(--pi-soft-rule);
+  border-radius: var(--pi-radius);
+  background: var(--pi-card);
+  color: var(--pi-muted);
+  font: var(--pi-weight-body) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+}
+
+/* --- Shared-interest and fact lines -------------------------------------- */
+.profile-page__shared {
+  font: var(--pi-weight-strong) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+  overflow-wrap: anywhere;
+}
+
+/* --- Room entry ----------------------------------------------------------
+ * One link row, never an inline preview. */
+.room-entry {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--pi-space-2);
+  padding: var(--pi-space-3);
+  border: var(--pi-rule-width) solid var(--pi-divider);
+  border-radius: var(--pi-radius);
+  background: var(--pi-card);
+  color: var(--pi-ink);
+}
+.room-entry a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: var(--pi-hit);
+  padding: 0 var(--pi-space-3);
+  border: var(--pi-rule-width) solid var(--pi-rule);
+  border-radius: var(--pi-radius);
+  color: var(--pi-ink);
+  background: var(--pi-paper);
+  font: var(--pi-weight-strong) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-display);
+  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-decoration: none;
+}
+.room-entry p {
+  margin: 0;
+  color: var(--pi-muted);
+  font: var(--pi-weight-body) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+}
+
+/* --- Reference public profile --------------------------------------------
+ * The pre-existing reference composition is retained; it already consumes the
+ * shared contract. Only the avatar frame is aligned to the square rule.
+ */
 .reference-public-profile{min-width:0;width:100%;color:var(--pi-ink);font:400 var(--pi-body-size)/var(--pi-body-leading) var(--pi-font-body)}
 .reference-public-profile .concert-window__body{padding:0}
-.reference-public-profile .public-profile-header{padding:10px var(--pi-content-inset);background:var(--pi-paper);border-bottom:var(--pi-rule-width) solid var(--pi-rule)}
-.reference-public-profile .public-profile-identity{display:grid;grid-template-columns:128px minmax(0,1fr);gap:16px;align-items:start}
-.reference-public-profile .intro-avatar{width:128px;min-height:170px;display:grid;place-items:center;text-align:center;color:var(--pi-muted);font:400 var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body)}
+.reference-public-profile .public-profile-header{padding:var(--pi-space-3) var(--pi-content-inset);background:var(--pi-paper);border-bottom:var(--pi-rule-width) solid var(--pi-rule)}
+.reference-public-profile .public-profile-identity{display:grid;grid-template-columns:128px minmax(0,1fr);gap:var(--pi-space-4);align-items:start}
+.reference-public-profile .intro-avatar{width:128px;min-height:170px;display:grid;place-items:center;text-align:center;color:var(--pi-muted);border:var(--pi-rule-width) solid var(--pi-rule);border-radius:var(--pi-radius);background:var(--pi-field);font:400 var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body)}
 .reference-public-profile .public-profile-copy{min-width:0}
-.reference-public-profile .public-profile-copy h2{margin:0 0 8px;color:var(--pi-crimson);font:700 24px/28px var(--pi-font-body);overflow-wrap:anywhere}
+.reference-public-profile .public-profile-copy h2{margin:0 0 var(--pi-space-2);color:var(--pi-crimson);font:700 var(--pi-heading-size)/var(--pi-heading-leading) var(--pi-font-body);overflow-wrap:anywhere}
 .reference-public-profile .public-profile-bio{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
-.reference-public-profile .public-profile-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:8px}
-.reference-public-profile .public-profile-actions :is(a,button){display:grid;place-items:center;width:44px;min-width:44px;min-height:44px;padding:8px;background:var(--pi-paper);color:var(--pi-ink);border:var(--pi-frame-border) solid var(--pi-rule);border-radius:var(--pi-radius);cursor:pointer}
+.reference-public-profile .public-profile-actions{display:flex;justify-content:flex-end;gap:var(--pi-space-2);margin-top:var(--pi-space-2)}
+.reference-public-profile .public-profile-actions :is(a,button){display:grid;place-items:center;width:var(--pi-hit);min-width:var(--pi-hit);min-height:var(--pi-hit);padding:var(--pi-space-2);background:var(--pi-paper);color:var(--pi-ink);border:var(--pi-frame-border) solid var(--pi-rule);border-radius:var(--pi-radius);cursor:pointer}
 .reference-public-profile .reference-profile-icon{display:block;width:var(--pi-icon);height:var(--pi-icon)}
 .reference-public-profile .public-profile-navigation{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--pi-tab-gap);padding:var(--pi-content-inset);border-bottom:var(--pi-rule-width) solid var(--pi-rule)}
-.reference-public-profile .public-profile-navigation :is(button,span){display:flex;justify-content:center;align-items:center;min-height:var(--pi-hit);min-width:0;padding:4px;background:var(--pi-paper);color:var(--pi-ink);border:var(--pi-frame-border) solid var(--pi-rule);border-radius:var(--pi-radius);font:600 var(--pi-control-size)/var(--pi-control-leading) var(--pi-font-display);text-transform:uppercase}
+.reference-public-profile .public-profile-navigation :is(button,span){display:flex;justify-content:center;align-items:center;min-height:var(--pi-hit);min-width:0;padding:var(--pi-space-1);background:var(--pi-paper);color:var(--pi-ink);border:var(--pi-frame-border) solid var(--pi-rule);border-radius:var(--pi-radius);font:700 var(--pi-control-size)/var(--pi-control-leading) var(--pi-font-display);text-transform:uppercase}
 .reference-public-profile .public-profile-navigation [aria-current]{background:var(--pi-ink);color:var(--pi-on-dark)}
 .reference-public-profile button:disabled{background:var(--pi-disabled);color:var(--pi-muted);cursor:not-allowed}
 .reference-public-profile .public-profile-privacy{margin:0 var(--pi-content-inset);border-top:var(--pi-rule-width) solid var(--pi-soft-rule);font:400 var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body)}
-.reference-public-profile .public-profile-privacy p{margin:8px 0;overflow-wrap:anywhere}
-.reference-public-profile .public-profile-privacy a,.reference-public-profile .concert-window__footer a{display:inline-flex;align-items:center;min-height:44px;min-width:44px;color:inherit;font-size:var(--pi-meta-size)}
-.reference-public-profile .public-profile-unavailable{padding:12px}
-.reference-public-profile .public-profile-unavailable button{min-height:44px;min-width:44px;padding:8px;font:inherit;color:inherit;background:var(--pi-paper);border:var(--pi-frame-border) solid var(--pi-rule)}
-.reference-public-profile :focus-visible{outline:3px solid var(--pi-focus);outline-offset:3px}
-@media(max-width:374px){.reference-public-profile .public-profile-identity{gap:10px}}
+.reference-public-profile .public-profile-privacy p{margin:var(--pi-space-2) 0;overflow-wrap:anywhere}
+.reference-public-profile .public-profile-privacy a,.reference-public-profile .concert-window__footer a{display:inline-flex;align-items:center;min-height:var(--pi-hit);min-width:var(--pi-hit);color:inherit;font-size:var(--pi-meta-size)}
+.reference-public-profile .public-profile-unavailable{padding:var(--pi-space-3)}
+.reference-public-profile .public-profile-unavailable button{min-height:var(--pi-hit);min-width:var(--pi-hit);padding:var(--pi-space-2);font:inherit;color:inherit;background:var(--pi-paper);border:var(--pi-frame-border) solid var(--pi-rule)}
+.reference-public-profile :focus-visible{outline:var(--pi-focus-ring) solid var(--pi-focus);outline-offset:var(--pi-focus-offset)}
+@media(max-width:374px){.reference-public-profile .public-profile-identity{gap:var(--pi-space-2)}}
 @media(prefers-reduced-motion:reduce){.reference-public-profile *{scroll-behavior:auto}}
 @media(forced-colors:active){.reference-public-profile :focus-visible{outline-color:Highlight}}
+
+@media (prefers-reduced-motion: reduce) {
+  .profile-page * { scroll-behavior: auto; transition: none; animation: none; }
+}

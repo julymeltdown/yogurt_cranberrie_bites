@@ -507,8 +507,279 @@
   outline-offset: var(--pi-focus-offset);
 }
 
+
+/* ===========================================================================
+ * WP-10 round 2 — rhythm, media and state.
+ *
+ * The additions below make the reference target's density explicit and shared,
+ * instead of each screen inventing its own spacing. Nothing here introduces a
+ * colour, radius or font: every value is an existing token.
+ * ======================================================================== */
+
+/* --- Icon -----------------------------------------------------------------
+ * One icon family at one size and weight. An icon is decorative; the control
+ * or adjacent text carries the meaning.
+ */
+.pi-icon {
+  display: block;
+  flex: 0 0 auto;
+  inline-size: var(--pi-icon);
+  block-size: var(--pi-icon);
+  color: currentColor;
+}
+.pi-icon--sm { inline-size: 16px; block-size: 16px; }
+.pi-icon--inline { display: inline-block; vertical-align: -0.15em; inline-size: 16px; block-size: 16px; }
+
+/* --- Dense list rhythm ----------------------------------------------------
+ * The reference's Feed and Meet rows are tight: a 12px vertical step, a 12px
+ * gap between the avatar and the copy, and one divider between rows. This is
+ * the shared rhythm for every list of people or posts.
+ */
+.pi-list--dense > li .pi-row,
+.pi-list--dense > li .pi-row-link { padding-block: var(--pi-space-3); }
+.pi-list--dense > li:first-child .pi-row,
+.pi-list--dense > li:first-child .pi-row-link { padding-block-start: 0; }
+
+/* A row whose first line is a name plus a timestamp, as in the reference. */
+.pi-row__byline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--pi-space-1) var(--pi-space-2);
+  min-inline-size: 0;
+}
+.pi-row__byline > :first-child {
+  font: var(--pi-weight-strong) var(--pi-control-size)/var(--pi-control-leading) var(--pi-font-body);
+  overflow-wrap: anywhere;
+}
+.pi-row__time {
+  color: var(--pi-muted);
+  font: var(--pi-weight-body) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+  white-space: nowrap;
+}
+
+/* The action strip under a post: icon + count pairs, evenly spaced. */
+.pi-row__stats {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--pi-space-1) var(--pi-space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--pi-muted);
+  font: var(--pi-weight-body) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+}
+.pi-row__stat {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--pi-space-1);
+  min-block-size: var(--pi-hit);
+  color: inherit;
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Media ratios ---------------------------------------------------------
+ * One rule for every thumbnail: a fixed ratio, one gap, one radius. A poster
+ * thumbnail, a photo cell and an attachment tile all use the same frame.
+ */
+.pi-media-tile--poster { aspect-ratio: 3 / 4; }
+.pi-media-tile--thumb { aspect-ratio: 1; }
+.pi-media-grid--tight { gap: var(--pi-space-1); }
+.pi-media-grid--wide { grid-template-columns: repeat(auto-fill, minmax(128px, 1fr)); }
+
+/* A single wide media block inside a post, as in the reference's Feed image. */
+.pi-media-block {
+  display: block;
+  inline-size: 100%;
+  margin: 0;
+  overflow: hidden;
+  border: var(--pi-rule-width) solid var(--pi-divider);
+  border-radius: var(--pi-media-radius);
+  background: var(--pi-field);
+}
+.pi-media-block > img {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  object-fit: cover;
+}
+
+/* --- Unified states -------------------------------------------------------
+ * Empty, loading and error share one geometry so a screen never jumps between
+ * them: the same padding, the same centred column, the same measure.
+ */
+.pi-state {
+  display: grid;
+  justify-items: center;
+  gap: var(--pi-space-2);
+  padding: var(--pi-space-5) var(--pi-space-3);
+  border: var(--pi-rule-width) dashed var(--pi-soft-rule);
+  border-radius: var(--pi-radius);
+  background: var(--pi-card);
+  color: var(--pi-ink);
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+.pi-state__title {
+  margin: 0;
+  font: var(--pi-weight-strong) var(--pi-control-size)/var(--pi-control-leading) var(--pi-font-display);
+  text-transform: uppercase;
+  letter-spacing: .01em;
+}
+.pi-state__body {
+  max-inline-size: 34ch;
+  margin: 0;
+  color: var(--pi-muted);
+  font: var(--pi-weight-body) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+}
+.pi-state__action { margin-block-start: var(--pi-space-1); }
+/* A loading state uses the same frame with solid borders, so it reads as
+ * pending rather than as an absence. */
+.pi-state--loading { border-style: solid; border-color: var(--pi-divider); }
+/* An error state uses the danger treatment already defined for inline errors. */
+.pi-state--error {
+  border-style: solid;
+  border-color: var(--pi-status-danger);
+  background: var(--pi-status-danger-field);
+}
+.pi-state--error .pi-state__title { color: var(--pi-status-danger); }
+
+/* --- Chip row -------------------------------------------------------------
+ * A wrapping row of small pills: favorites, tags, audience summaries.
+ */
+.pi-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--pi-space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  min-inline-size: 0;
+}
+.pi-chips > li { min-inline-size: 0; }
+.pi-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--pi-space-1);
+  max-inline-size: 100%;
+  min-block-size: var(--pi-badge-height);
+  padding: 2px var(--pi-space-2);
+  border: var(--pi-rule-width) solid var(--pi-divider);
+  border-radius: 999px;
+  color: var(--pi-ink);
+  background: var(--pi-field);
+  font: var(--pi-weight-body) var(--pi-caption-size)/var(--pi-caption-leading) var(--pi-font-body);
+  overflow-wrap: anywhere;
+}
+
+/* --- Icon button ----------------------------------------------------------
+ * A square control that holds one icon and an accessible name. Used for the
+ * heart and the comment/share actions, matching the reference's compact
+ * icon-only controls while keeping a 44px target.
+ */
+.pi-icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--pi-space-1);
+  min-inline-size: var(--pi-hit);
+  min-block-size: var(--pi-hit);
+  padding: 0 var(--pi-space-2);
+  border: var(--pi-rule-width) solid var(--pi-rule);
+  border-radius: var(--pi-radius);
+  color: var(--pi-ink);
+  background: var(--pi-paper);
+  font: var(--pi-weight-strong) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+}
+.pi-icon-button[aria-pressed="true"] {
+  color: var(--pi-on-dark);
+  background: var(--pi-crimson);
+  border-color: var(--pi-crimson);
+}
+.pi-icon-button:disabled {
+  color: var(--pi-muted);
+  background: var(--pi-disabled);
+  border-color: var(--pi-soft-rule);
+  cursor: default;
+}
+.pi-icon-button:focus-visible {
+  outline: var(--pi-focus-ring) solid var(--pi-focus);
+  outline-offset: var(--pi-focus-offset);
+}
+
+/* --- Step list ------------------------------------------------------------
+ * The composer's step indicator: numbered cells, the current one inverted.
+ * This replaces a bare ordered list with no visual step state.
+ */
+.pi-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--pi-space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: pi-step;
+}
+.pi-steps > li {
+  flex: 1 1 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--pi-space-1);
+  min-inline-size: 0;
+  min-block-size: var(--pi-tab-height);
+  padding: var(--pi-space-1) var(--pi-space-2);
+  border: var(--pi-rule-width) solid var(--pi-rule);
+  border-radius: var(--pi-radius);
+  color: var(--pi-muted);
+  background: var(--pi-paper);
+  font: var(--pi-weight-strong) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-display);
+  text-transform: uppercase;
+  letter-spacing: .01em;
+  overflow-wrap: anywhere;
+}
+.pi-steps > li[aria-current="step"] {
+  color: var(--pi-selected-ink);
+  background: var(--pi-selected-surface);
+  border-color: var(--pi-selected-surface);
+}
+
+/* --- Definition rows ------------------------------------------------------
+ * A label/value pair list with symmetric dividers, used for the composer's
+ * review summary and the profile's fact rows.
+ */
+.pi-facts {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  border: var(--pi-rule-width) solid var(--pi-divider);
+  border-radius: var(--pi-radius);
+  background: var(--pi-card);
+}
+.pi-facts__row {
+  display: grid;
+  grid-template-columns: minmax(0, 9rem) minmax(0, 1fr);
+  gap: var(--pi-space-2);
+  padding: var(--pi-space-2) var(--pi-space-3);
+  border-block-start: var(--pi-rule-width) solid var(--pi-divider);
+}
+.pi-facts__row:first-child { border-block-start: 0; }
+.pi-facts__label {
+  color: var(--pi-muted);
+  font: var(--pi-weight-body) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+}
+.pi-facts__value {
+  margin: 0;
+  font: var(--pi-weight-body) var(--pi-body-size)/var(--pi-body-leading) var(--pi-font-body);
+  overflow-wrap: anywhere;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .pi-card, .pi-row, .pi-row-link, .pi-media-tile, .pi-avatar-chip, .pi-badge, .pi-tabs__tab {
+  .pi-card, .pi-row, .pi-row-link, .pi-media-tile, .pi-avatar-chip, .pi-badge, .pi-tabs__tab,
+  .pi-icon-button, .pi-steps > li, .pi-state {
     transition: none;
     animation: none;
     scroll-behavior: auto;
@@ -519,4 +790,7 @@
   .pi-tabs__tab[aria-selected="true"] { outline: 2px solid Highlight; outline-offset: -4px; }
   .pi-inline-error { border-color: CanvasText; }
   .pi-media-tile { border-color: CanvasText; }
+  .pi-icon-button[aria-pressed="true"] { outline: 2px solid Highlight; outline-offset: -4px; }
+  .pi-steps > li[aria-current="step"] { outline: 2px solid Highlight; outline-offset: -4px; }
+  .pi-state--error { border-color: CanvasText; }
 }

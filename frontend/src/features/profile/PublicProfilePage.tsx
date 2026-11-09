@@ -134,6 +134,12 @@ export function PublicProfilePage({ view, onFollow, posts }: PublicProfilePagePr
   return <section className="profile-page" aria-labelledby={`${id}-title`}>
     <header className="profile-page__header">
       <h1 id={`${id}-title`}>Profile</h1>
+      {/* The visitor card leads with the same square frame as the owner card.
+          It is decorative: the nickname beside it is the accessible name, and
+          no substitute character art is ever drawn in the frame. */}
+      <div className="profile-page__portrait" aria-hidden="true">
+        {view.nickname.slice(0, 1).toUpperCase()}
+      </div>
       <p className="profile-page__name">{view.nickname}</p>
       <p className="profile-page__bio">{view.bio === null || view.bio === ''
         ? 'No bio shared.'
@@ -150,7 +156,7 @@ export function PublicProfilePage({ view, onFollow, posts }: PublicProfilePagePr
     {/* Omitted entirely when there is no overlap: no heading, no filler. */}
     {shared !== null && <section className="profile-page__block" aria-labelledby={`${id}-shared`}>
       <h2 id={`${id}-shared`}>Shared interests</h2>
-      <p>{shared}</p>
+      <p className="profile-page__shared">{shared}</p>
     </section>}
 
     {/* The gender bucket appears only when the owner opted in. There is no age

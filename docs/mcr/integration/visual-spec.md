@@ -288,3 +288,190 @@ failed: the 28 new cases are the primitive and prohibition guard tests.
   the new profile/social surfaces.
 - The primitives are adopted by these six screens. Other profile/social screens
   added later should adopt them rather than adding local CSS.
+
+---
+
+# Round 2 — density, hierarchy, media, states and icons
+
+Status: **INTEGRATED** on `codex/yc-design-2` (base `62a31f104`). Presentation
+only; no behavior, controller, contract or backend change.
+
+Round 1 gave the profile/social surfaces one token system and thirteen
+primitives. Round 2 addresses the screens that existed but still read as
+unfinished, and closes the gaps against the reference target: **dense rows, a
+real typography hierarchy, one media rule, uniform states, and a consistent
+icon set.**
+
+## 9. What round 2 added to the system
+
+### 9.1 Icon set
+
+`frontend/src/shared/ui/social-icon.tsx` — `SocialIcon`, fourteen names
+(`heart`, `heart-filled`, `comment`, `share`, `people`, `person`, `photo`,
+`calendar`, `location`, `lock`, `chevron-right`, `edit`, `plus`, `warning`).
+
+The set follows the two icon families already in the product: a 24×24 viewBox,
+`stroke="currentColor"`, `strokeWidth="2"`, `fill="none"`, square caps and mitre
+joins, and `aria-hidden`/`focusable="false"`. An icon is **decorative**; the
+control or adjacent text supplies the accessible name. The filled heart is a
+distinct pressed state, not a colour swap.
+
+Before round 2 the new screens used **no icons at all**, or a bare text glyph
+(`\u2665`) for the heart. That was the single largest "unfinished" signal.
+
+### 9.2 New primitives
+
+| Primitive | Class | React | Purpose |
+| --- | --- | --- | --- |
+| State | `.pi-state*` | `State` | One geometry for empty, loading and error |
+| Chips | `.pi-chips`, `.pi-chip` | `Chips` | Wrapping pill row: favorites, tags, audience |
+| Steps | `.pi-steps` | `Steps` | Numbered step cells, current one inverted |
+| Facts | `.pi-facts*` | `Facts` | Label/value list with symmetric dividers |
+| Icon button | `.pi-icon-button` | `IconButton` | Square icon control with a name and count |
+
+Plus rhythm and media helpers in CSS: `.pi-list--dense`, `.pi-row__byline`,
+`.pi-row__time`, `.pi-row__stats`, `.pi-row__stat`, `.pi-media-tile--poster`
+(3:4), `.pi-media-tile--thumb` (1:1), `.pi-media-block`, `.pi-media-grid--tight`,
+`.pi-media-grid--wide`, `.pi-icon--sm`, `.pi-icon--inline`.
+
+### 9.3 The states rule
+
+Empty, loading and error now share **one** geometry: `.pi-state` with the same
+padding, centred column and 34ch measure. Only three things change:
+
+| Kind | Border | Title | Live role |
+| --- | --- | --- | --- |
+| `empty` | dashed soft rule | ink | `status` |
+| `loading` | solid divider | ink | `status` |
+| `error` | solid danger | danger | `alert` |
+
+A screen therefore never jumps between an empty and a loading frame, and an
+error is announced assertively rather than as a passive status.
+
+### 9.4 The media rule
+
+One rule for every thumbnail: a fixed aspect ratio, one gap, one radius.
+
+| Context | Ratio | Class |
+| --- | --- | --- |
+| Photo cell | 1:1 | `.pi-media-tile--thumb` |
+| Poster thumbnail | 3:4 | `.pi-media-tile--poster` |
+| Wide post image | natural | `.pi-media-block` |
+| Attachment grid | auto-fill 8rem | `.intro-detail-attachments` |
+
+Gap is `--pi-space-1` for tight grids and `--pi-space-2` for standard grids;
+radius is always `--pi-media-radius`. A missing image shows an explicit text
+state and never substitutes another image.
+
+### 9.5 The density rule
+
+The reference's Feed and Meet rows are tight. `.pi-list--dense` sets a
+`--pi-space-3` vertical step with the first row flush, and the byline pattern
+puts the name and timestamp on one line:
+
+```text
+[avatar chip]  name   ·   2h ago
+               body text
+               ♥ 42   💬 7
+```
+
+Avatars are **square framed chips** (`--pi-chip-size`, 2px radius), never
+circles — this matches the reference's pixel-art frames and is applied to the
+intro card, the intro detail, the likers panel and the discovery people list.
+
+## 10. Per-screen changes
+
+### 10.1 Intros (`frontend/src/features/intros/`)
+
+The product's core surface, previously built for function.
+
+| Area | Before | After |
+| --- | --- | --- |
+| Post card | Circular avatar, flat body, text-only footer | Square avatar chip, byline, body, favorite pills, icon+count action strip |
+| Like button | Text glyph `♡`/`♥` | `SocialIcon` heart pair; filled = pressed |
+| Comment/photo counts | Bare text | Icon + count with tabular numerals |
+| Composer steps | Bare ordered list | Shared inverted-cell step list |
+| Audience fieldset | Borderless | Card fieldset with a symmetric rule |
+| Review summary | Loose `dl` | `.pi-facts`-style divided definition list |
+| Errors | Bold text only | Shared danger panel: symmetric border + tinted field |
+| Detail attachments | Unframed images | One ratio, one gap, one radius |
+| Comments | Flat list | Divided rows; replies indented by spacing, never a rail |
+| Likers | Flat list | Dense rows with square chips and a hover field |
+
+Every class hook the tests read is preserved: `.intro-like-count`,
+`.intro-liker-shared`, `.intro-liker-style`, `.intro-detail-attachments img`.
+
+### 10.2 Profile (`ProfilePage.tsx`, `PublicProfilePage.tsx`)
+
+Both pages now lead with the reference's profile card:
+
+- a large square character frame (`--pi-chip-size-lg`, 2px rule) on the left;
+- the nickname and bio beside it;
+- a compact icon-scale action row underneath;
+- a 2px rule closing the header.
+
+Sections are **titled with a rule under the heading**, not wrapped in bordered
+cards, so a long profile does not read as a stack of boxes. Favorites render as
+a pill row per category. The unavailable state uses the shared quiet frame.
+
+The portrait frame is `aria-hidden` and shows the initial: it is decorative, the
+nickname beside it is the accessible name, and **no substitute character art is
+ever drawn in it**. Both pages keep their owner/visitor split, their no-age
+guarantee and every accessible name the tests assert.
+
+### 10.3 Discovery (`frontend/src/features/discovery/`)
+
+Round 1 already applied the shared layer. Round 2 tightened the people rows to
+the dense rhythm, aligned the card heading hierarchy, and removed the last row's
+bottom padding so the list ends flush. The class hooks the tests read
+(`.discovery-shared`, `.discovery-interaction`, `.discovery-card`) are unchanged.
+
+### 10.4 Section navigation
+
+There is no `app/shell-sections` directory in this tree; section navigation lives
+in `app/shell-chrome` and `app/router.tsx`, which are **not** restyled by this
+package. The shared `.pi-tabs` strip from round 1 remains the presentation for
+in-screen tab rows.
+
+## 11. Prohibitions — guard extended
+
+The round-1 guard now also reads `features/intros/intros.css` and
+`features/profile/profile.css`. It still fails on any `border-left`,
+`border-inline-start` (or a longhand), any `::before`/`::after`, an inset left
+rail, a raw colour literal, or an off-system radius.
+
+During this round the guard caught a real violation: a `::before` bullet added to
+`.discovery-shared`. It was removed and replaced with spacing and typography
+rather than a decorative element.
+
+## 12. Verification (round 2)
+
+| Command | Exit | Result |
+| --- | --- | --- |
+| `cd frontend && corepack pnpm@11.7.0 run typecheck` | **0** | — |
+| `cd frontend && corepack pnpm@11.7.0 exec vitest run src/features/intros src/features/profile src/features/discovery src/shared` | **1** | 812 passed, 2 failed, 14 skipped |
+| `cd frontend && corepack pnpm@11.7.0 run build` | **0** | — |
+| `cd frontend && corepack pnpm@11.7.0 run lint` | **0** | 49 warnings, 0 errors |
+
+Before/after on the scoped run:
+
+| | Passed | Failed | Files |
+| --- | --- | --- | --- |
+| Baseline at `62a31f104` | 801 | 2 | 48 |
+| After round 2 | **812** | **2** | 48 |
+
+The two failures are the same pre-existing ones at both points:
+`src/shared/api/__tests__/c07-social-client/compatibility.test.ts` and
+`src/shared/api/paradise-city-v1/__tests__/location-registration.test.ts`. The
+eleven new passing cases are the round-2 primitive and icon tests.
+
+## 13. Round-2 limitations
+
+- Still source-level: no browser captures were taken. Visual acceptance against
+  the reference remains open.
+- The reference's decorative grunge texture, poster lettering and character
+  illustrations are **not** reproduced: character art must come from the
+  user-selected source pack, and the other two are outside a presentation-only
+  change.
+- Concert screens remain untouched.
+- Section navigation chrome (`app/shell-chrome`) was out of scope for this round.

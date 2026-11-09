@@ -25,4 +25,12 @@ export {
   type RowProps,
   type SectionHeaderProps,
   type TabStripItem,
+  /* WP-10 round 2. */
+  Chips,
+  Facts,
+  IconButton,
+  State,
+  Steps,
+  type StateKind,
 } from './profile-social'
+export { SocialIcon, type SocialIconName } from './social-icon'

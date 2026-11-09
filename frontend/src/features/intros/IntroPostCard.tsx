@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { SocialIcon } from '../../shared/ui'
 import { IntroLikeButton } from './IntroLikeButton'
 import type { LikeTransport } from './api/intro-likes'
 import type { IntroPostDetail } from './contract'
@@ -54,8 +55,14 @@ export function IntroPostCard({ post, transport, excerpt = DEFAULT_EXCERPT, onUn
           transport={transport}
           {...(onUnavailable === undefined ? {} : { onUnavailable })}
         />
-        <span className="intro-card-comments">{post.comment_count} comments</span>
-        <span className="intro-card-attachments">{post.attachments.length} photographs</span>
+        <span className="intro-card-comments">
+          <SocialIcon name="comment" className="pi-icon--inline" />
+          {post.comment_count} comments
+        </span>
+        <span className="intro-card-attachments">
+          <SocialIcon name="photo" className="pi-icon--inline" />
+          {post.attachments.length} photographs
+        </span>
         <Link to={`/intro-posts/${post.intro_id}`}>Open post</Link>
       </footer>
     </article>

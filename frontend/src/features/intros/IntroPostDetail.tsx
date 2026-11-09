@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { SocialIcon } from '../../shared/ui'
 import { IntroLikeButton } from './IntroLikeButton'
 import type { LikeTransport } from './api/intro-likes'
 import type { IntroComment, IntroPostDetail as Detail } from './contract'
@@ -79,7 +80,10 @@ export function IntroPostDetail({ post, comments, transport, unavailable = false
           transport={transport}
           {...(onUnavailable === undefined ? {} : { onUnavailable })}
         />
-        <span>{post.comment_count} comments</span>
+        <span className="intro-card-comments">
+          <SocialIcon name="comment" className="pi-icon--inline" />
+          {post.comment_count} comments
+        </span>
       </footer>
       <section className="intro-detail-comments" aria-label="Comments">
         <h2>Comments</h2>

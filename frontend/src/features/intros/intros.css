@@ -1,54 +1,486 @@
-/* WP-05: mutuals-intro posts. Scoped; no root token changes. */
-.intro-composer, .intro-detail, .intro-likers, .intro-card { box-sizing: border-box; width: 100%; max-width: 42rem; margin-inline: auto; padding: 0 0 max(12px, env(safe-area-inset-bottom)); color: var(--pi-ink, #171717); background: var(--pi-paper, #f9f9f8); font: 400 16px/22px var(--pi-font-body, Arial, sans-serif); overflow-wrap: anywhere; }
-.intro-composer *, .intro-detail *, .intro-likers *, .intro-card * { box-sizing: border-box; }
-.intro-composer h1, .intro-detail h1 { margin: 8px 0; font: 700 26px/32px var(--pi-font-display, "Arial Narrow", Arial, sans-serif); }
-.intro-composer h2, .intro-detail h2, .intro-likers h2 { margin: 16px 0 6px; font: 700 18px/24px var(--pi-font-display, "Arial Narrow", Arial, sans-serif); }
-.intro-composer p, .intro-detail p, .intro-likers p, .intro-card p { margin: 8px 0; }
-.intro-composer button, .intro-composer input, .intro-composer select, .intro-composer textarea,
-.intro-detail button, .intro-likers button, .intro-card button { min-height: 44px; padding: 8px 12px; color: inherit; background: var(--pi-paper, #f9f9f8); border: 1px solid var(--pi-rule, #c9c9c6); border-radius: 2px; font: inherit; }
-.intro-composer input, .intro-composer select, .intro-composer textarea { width: 100%; min-width: 0; }
-.intro-composer textarea { min-height: 9rem; resize: vertical; }
-.intro-composer label { display: block; margin: 12px 0 4px; font-weight: 650; }
-.intro-composer button:disabled, .intro-detail button:disabled, .intro-likers button:disabled, .intro-card button:disabled { opacity: .55; cursor: default; }
-.intro-composer :focus-visible, .intro-detail :focus-visible, .intro-likers :focus-visible, .intro-card :focus-visible { outline: 3px solid var(--pi-focus, #1f5fd6); outline-offset: 3px; }
-.intro-composer-steps { display: flex; gap: 12px; flex-wrap: wrap; list-style: none; margin: 12px 0; padding: 0; color: var(--pi-muted, #545454); }
-.intro-composer-steps [aria-current="step"] { color: var(--pi-ink, #171717); font-weight: 650; }
-.intro-audience { margin-block: 16px; padding: 0; border: 0; min-width: 0; }
-.intro-audience legend { padding: 0; }
-.intro-audience-explanation { color: var(--pi-muted, #545454); }
-.intro-audience-toggle { display: flex !important; align-items: center; gap: 8px; font-weight: 400 !important; }
-.intro-audience-toggle input { width: auto; }
-.intro-age-range { display: grid; grid-template-columns: auto minmax(0, 7rem) auto minmax(0, 7rem); gap: 8px; align-items: center; }
+/* WP-05 / WP-10 round 2: mutuals-intro posts.
+ *
+ * Presentation only. Every class hook the tests assert is preserved
+ * (`.intro-like-count`, `.intro-liker-shared`, `.intro-liker-style`,
+ * `.intro-detail-attachments img`). The appearance now comes from the shared
+ * pi01-photo2-v1 contract and the profile/social primitives, so the product's
+ * core surface reads at the reference target's density instead of as a form.
+ *
+ * Reference decisions applied here:
+ *  - a post is a dense row: square avatar chip, name plus time byline, body,
+ *    media, then an icon+count action strip;
+ *  - avatars are square framed chips, not circles;
+ *  - favorites and audience are small pills, not a bordered list;
+ *  - the step indicator is the shared inverted-cell step list;
+ *  - empty, loading and error share one geometry.
+ *
+ * No decorative left accent bar, coloured left border, inset rail or
+ * pseudo-element left bar. Borders are symmetric; focus stays a visible ring.
+ */
+
+/* --- Screen frames -------------------------------------------------------- */
+.intro-composer,
+.intro-detail,
+.intro-likers,
+.intro-card {
+  display: grid;
+  gap: var(--pi-space-3);
+  box-sizing: border-box;
+  inline-size: 100%;
+  max-inline-size: 42rem;
+  min-inline-size: 0;
+  margin-inline: auto;
+  padding: var(--pi-space-3) var(--pi-space-3) max(var(--pi-space-5), env(safe-area-inset-bottom));
+  color: var(--pi-ink);
+  background: var(--pi-paper);
+  font: var(--pi-weight-body) var(--pi-body-size)/var(--pi-body-leading) var(--pi-font-body);
+  overflow-wrap: anywhere;
+}
+.intro-composer *,
+.intro-detail *,
+.intro-likers *,
+.intro-card * { box-sizing: border-box; }
+
+/* A card in a list is a row, not its own screen: no page padding, one divider. */
+.intro-card {
+  padding: var(--pi-space-3) 0;
+  border-block-start: var(--pi-rule-width) solid var(--pi-divider);
+}
+.intro-card:first-child { border-block-start: 0; padding-block-start: 0; }
+
+/* --- Typography hierarchy ------------------------------------------------- */
+.intro-composer h1,
+.intro-detail h1 {
+  margin: 0;
+  font: var(--pi-weight-strong) var(--pi-title-size)/var(--pi-title-leading) var(--pi-font-display);
+  text-transform: uppercase;
+  letter-spacing: .01em;
+}
+.intro-composer h2,
+.intro-detail h2,
+.intro-likers h2 {
+  margin: 0;
+  font: var(--pi-weight-strong) var(--pi-heading-size)/var(--pi-heading-leading) var(--pi-font-display);
+  text-transform: uppercase;
+  letter-spacing: .01em;
+}
+.intro-composer > header,
+.intro-detail > header { display: grid; gap: var(--pi-space-1); }
+.intro-composer > header > p {
+  margin: 0;
+  color: var(--pi-muted);
+  font: var(--pi-weight-strong) var(--pi-caption-size)/var(--pi-caption-leading) var(--pi-font-body);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+.intro-composer p,
+.intro-detail p,
+.intro-likers p,
+.intro-card p { margin: 0; }
+
+/* --- Controls ------------------------------------------------------------- */
+.intro-composer button,
+.intro-composer input,
+.intro-composer select,
+.intro-composer textarea,
+.intro-detail button,
+.intro-likers button,
+.intro-card button {
+  min-block-size: var(--pi-hit);
+  padding: var(--pi-space-1) var(--pi-space-3);
+  color: var(--pi-ink);
+  background: var(--pi-paper);
+  border: var(--pi-rule-width) solid var(--pi-rule);
+  border-radius: var(--pi-radius);
+  font: var(--pi-weight-strong) var(--pi-control-size)/var(--pi-control-leading) var(--pi-font-display);
+  text-transform: uppercase;
+  letter-spacing: .01em;
+  cursor: pointer;
+}
+.intro-composer input,
+.intro-composer select,
+.intro-composer textarea {
+  inline-size: 100%;
+  min-inline-size: 0;
+  font: var(--pi-weight-body) var(--pi-body-size)/var(--pi-body-leading) var(--pi-font-body);
+  text-transform: none;
+  letter-spacing: normal;
+  cursor: text;
+}
+.intro-composer select { cursor: pointer; }
+.intro-composer textarea { min-block-size: 9rem; resize: vertical; }
+.intro-composer label {
+  display: block;
+  margin: var(--pi-space-3) 0 var(--pi-space-1);
+  font: var(--pi-weight-strong) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+  text-transform: uppercase;
+  letter-spacing: .02em;
+}
+.intro-composer button:disabled,
+.intro-detail button:disabled,
+.intro-likers button:disabled,
+.intro-card button:disabled {
+  color: var(--pi-muted);
+  background: var(--pi-disabled);
+  border-color: var(--pi-soft-rule);
+  cursor: default;
+}
+.intro-composer :focus-visible,
+.intro-detail :focus-visible,
+.intro-likers :focus-visible,
+.intro-card :focus-visible {
+  outline: var(--pi-focus-ring) solid var(--pi-focus);
+  outline-offset: var(--pi-focus-offset);
+}
+
+/* --- Composer steps -------------------------------------------------------
+ * The shared step list: numbered cells with the current step inverted. */
+.intro-composer-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--pi-space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: intro-step;
+}
+.intro-composer-steps > li {
+  flex: 1 1 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-inline-size: 0;
+  min-block-size: var(--pi-tab-height);
+  padding: var(--pi-space-1) var(--pi-space-2);
+  border: var(--pi-rule-width) solid var(--pi-rule);
+  border-radius: var(--pi-radius);
+  color: var(--pi-muted);
+  background: var(--pi-paper);
+  font: var(--pi-weight-strong) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-display);
+  text-transform: uppercase;
+  letter-spacing: .01em;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+.intro-composer-steps > li[aria-current="step"] {
+  color: var(--pi-selected-ink);
+  background: var(--pi-selected-surface);
+  border-color: var(--pi-selected-surface);
+}
+
+/* --- Audience ------------------------------------------------------------- */
+.intro-audience {
+  display: grid;
+  gap: var(--pi-space-2);
+  margin-block: var(--pi-space-2);
+  padding: var(--pi-space-3);
+  border: var(--pi-rule-width) solid var(--pi-divider);
+  border-radius: var(--pi-radius);
+  background: var(--pi-card);
+  min-inline-size: 0;
+}
+.intro-audience legend {
+  padding: 0 var(--pi-space-1);
+  font: var(--pi-weight-strong) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+  text-transform: uppercase;
+  letter-spacing: .02em;
+}
+.intro-audience-explanation {
+  color: var(--pi-muted);
+  font: var(--pi-weight-body) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+}
+.intro-audience-toggle {
+  display: flex !important;
+  align-items: center;
+  gap: var(--pi-space-2);
+  margin: 0 !important;
+  font: var(--pi-weight-body) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body) !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+}
+.intro-audience-toggle input { inline-size: auto; min-inline-size: var(--pi-hit); min-block-size: var(--pi-hit); }
+.intro-age-range {
+  display: grid;
+  grid-template-columns: auto minmax(0, 7rem) auto minmax(0, 7rem);
+  gap: var(--pi-space-2);
+  align-items: center;
+}
 .intro-age-range label { margin: 0; }
-.intro-audience-error, .intro-composer-error, .intro-like-error { font-weight: 650; }
-.intro-composer-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
-.intro-composer-count { color: var(--pi-muted, #545454); font-size: 14px; }
-.intro-composer-review dl { display: grid; grid-template-columns: minmax(0, 10rem) minmax(0, 1fr); gap: 8px 16px; margin: 12px 0; }
-.intro-composer-review dt { font-weight: 650; }
-.intro-composer-review dd { margin: 0; }
-.intro-composer-note { color: var(--pi-muted, #545454); }
-.intro-card { padding-block: 16px; border-bottom: 1px solid var(--pi-rule, #c9c9c6); }
-.intro-card-author, .intro-detail-author { display: flex; align-items: center; gap: 8px; }
-.intro-card-avatar { display: grid; place-items: center; width: 40px; height: 40px; border: 1px solid var(--pi-rule, #c9c9c6); border-radius: 50%; font: 700 16px/1 var(--pi-font-display, Arial, sans-serif); }
-.intro-card-body { white-space: pre-wrap; }
-.intro-card-favorites { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 8px 0; padding: 0; }
-.intro-card-favorites li { padding: 2px 8px; border: 1px solid var(--pi-rule, #c9c9c6); border-radius: 999px; font-size: 14px; }
-.intro-card-footer { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
-.intro-card-comments, .intro-card-attachments { color: var(--pi-muted, #545454); font-size: 14px; }
-.intro-like { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
-.intro-like-button { min-width: 44px; }
-.intro-like-button-active { border-color: var(--pi-ink, #171717); }
-.intro-like-count { font-variant-numeric: tabular-nums; min-width: 1.5em; }
-.intro-like-note { color: var(--pi-muted, #545454); }
-.intro-detail-attachments { display: grid; grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr)); gap: 8px; list-style: none; margin: 12px 0; padding: 0; }
-.intro-detail-attachments img { width: 100%; height: auto; display: block; }
+.intro-audience-age { display: grid; gap: var(--pi-space-2); }
+
+/* Errors use the shared danger treatment: a symmetric border and a strong line. */
+.intro-audience-error,
+.intro-composer-error,
+.intro-like-error {
+  padding: var(--pi-space-2) var(--pi-space-3);
+  border: var(--pi-rule-width) solid var(--pi-status-danger);
+  border-radius: var(--pi-radius);
+  color: var(--pi-ink);
+  background: var(--pi-status-danger-field);
+  font: var(--pi-weight-strong) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+}
+
+.intro-composer-actions { display: flex; flex-wrap: wrap; gap: var(--pi-space-2); margin-block-start: var(--pi-space-2); }
+.intro-composer-content { display: grid; gap: var(--pi-space-1); min-inline-size: 0; }
+.intro-composer-count {
+  color: var(--pi-muted);
+  font: var(--pi-weight-body) var(--pi-caption-size)/var(--pi-caption-leading) var(--pi-font-body);
+  font-variant-numeric: tabular-nums;
+  text-align: end;
+}
+.intro-composer-note {
+  color: var(--pi-muted);
+  font: var(--pi-weight-body) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+}
+
+/* The review summary is a definition list with symmetric dividers. */
+.intro-composer-review { display: grid; gap: var(--pi-space-2); }
+.intro-composer-review dl {
+  display: grid;
+  grid-template-columns: minmax(0, 9rem) minmax(0, 1fr);
+  gap: 0;
+  margin: 0;
+  border: var(--pi-rule-width) solid var(--pi-divider);
+  border-radius: var(--pi-radius);
+  background: var(--pi-card);
+}
+.intro-composer-review dt,
+.intro-composer-review dd {
+  margin: 0;
+  padding: var(--pi-space-2) var(--pi-space-3);
+  border-block-start: var(--pi-rule-width) solid var(--pi-divider);
+}
+.intro-composer-review dt:first-of-type,
+.intro-composer-review dt:first-of-type + dd { border-block-start: 0; }
+.intro-composer-review dt {
+  color: var(--pi-muted);
+  font: var(--pi-weight-body) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+}
+.intro-composer-review dd {
+  font: var(--pi-weight-body) var(--pi-body-size)/var(--pi-body-leading) var(--pi-font-body);
+  overflow-wrap: anywhere;
+}
+
+/* --- Post card ------------------------------------------------------------
+ * A dense row: square avatar chip, byline, body, favorites, action strip. */
+.intro-card-author,
+.intro-detail-author {
+  display: flex;
+  align-items: center;
+  gap: var(--pi-space-2);
+  min-inline-size: 0;
+}
+.intro-card-author a,
+.intro-detail-author a {
+  color: var(--pi-ink);
+  font: var(--pi-weight-strong) var(--pi-control-size)/var(--pi-control-leading) var(--pi-font-body);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+.intro-card-author a:hover,
+.intro-detail-author a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* A square framed chip, matching the reference's pixel-art avatar frames. */
+.intro-card-avatar {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  inline-size: var(--pi-chip-size);
+  block-size: var(--pi-chip-size);
+  overflow: hidden;
+  border: var(--pi-rule-width) solid var(--pi-rule);
+  border-radius: var(--pi-radius);
+  background: var(--pi-field);
+  color: var(--pi-muted);
+  font: var(--pi-weight-strong) var(--pi-heading-size)/1 var(--pi-font-display);
+  text-transform: uppercase;
+}
+
+.intro-card-body {
+  font: var(--pi-weight-body) var(--pi-body-size)/var(--pi-body-leading) var(--pi-font-body);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* Favorites are small pills, not a bordered list. */
+.intro-card-favorites {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--pi-space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  min-inline-size: 0;
+}
+.intro-card-favorites li {
+  max-inline-size: 100%;
+  padding: 2px var(--pi-space-2);
+  border: var(--pi-rule-width) solid var(--pi-divider);
+  border-radius: 999px;
+  color: var(--pi-ink);
+  background: var(--pi-field);
+  font: var(--pi-weight-body) var(--pi-caption-size)/var(--pi-caption-leading) var(--pi-font-body);
+  overflow-wrap: anywhere;
+}
+
+/* The action strip: icon+count pairs with an even rhythm, as in the reference. */
+.intro-card-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--pi-space-1) var(--pi-space-4);
+  margin-block-start: var(--pi-space-1);
+  color: var(--pi-muted);
+  font: var(--pi-weight-body) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+}
+.intro-card-footer > a {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: var(--pi-hit);
+  color: var(--pi-ink);
+  font: var(--pi-weight-strong) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+  text-transform: uppercase;
+  text-underline-offset: 3px;
+}
+.intro-card-comments,
+.intro-card-attachments {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--pi-space-1);
+  color: var(--pi-muted);
+  font: var(--pi-weight-body) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Like control ---------------------------------------------------------
+ * The heart is a filled/outline icon pair inside a square control, with the
+ * count beside it. The count keeps its own element because tests read it. */
+.intro-like { display: flex; align-items: center; gap: var(--pi-space-1); flex-wrap: wrap; }
+.intro-like-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-inline-size: var(--pi-hit);
+  min-block-size: var(--pi-hit);
+  padding: 0 var(--pi-space-2);
+  border: var(--pi-rule-width) solid var(--pi-rule);
+  border-radius: var(--pi-radius);
+  color: var(--pi-ink);
+  background: var(--pi-paper);
+  cursor: pointer;
+}
+.intro-like-button[aria-pressed="true"],
+.intro-like-button-active {
+  color: var(--pi-on-dark);
+  background: var(--pi-crimson);
+  border-color: var(--pi-crimson);
+}
+.intro-like-count {
+  min-inline-size: 1.5em;
+  color: var(--pi-muted);
+  font: var(--pi-weight-strong) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+  font-variant-numeric: tabular-nums;
+}
+.intro-like-note {
+  color: var(--pi-muted);
+  font: var(--pi-weight-body) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+}
+
+/* --- Detail --------------------------------------------------------------- */
+.intro-detail-body {
+  font: var(--pi-weight-body) var(--pi-body-size)/var(--pi-body-leading) var(--pi-font-body);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.intro-detail-seeking,
+.intro-detail-style {
+  color: var(--pi-muted);
+  font: var(--pi-weight-body) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+}
+/* Attachments: one ratio, one gap, one radius — the shared media rule. */
+.intro-detail-attachments {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+  gap: var(--pi-space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.intro-detail-attachments li {
+  overflow: hidden;
+  border: var(--pi-rule-width) solid var(--pi-divider);
+  border-radius: var(--pi-media-radius);
+  background: var(--pi-field);
+}
+.intro-detail-attachments img {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+  object-fit: cover;
+}
+
+.intro-detail-comments { display: grid; gap: var(--pi-space-2); }
 .intro-detail-comments ul { list-style: none; margin: 0; padding: 0; }
-.intro-detail-comments li { padding-block: 8px; border-bottom: 1px solid var(--pi-rule, #c9c9c6); }
-.intro-comment-reply { padding-inline-start: 24px; }
-.intro-detail-unavailable { font-weight: 650; }
+.intro-detail-comments li {
+  display: grid;
+  gap: var(--pi-space-1);
+  padding-block: var(--pi-space-2);
+  border-block-start: var(--pi-rule-width) solid var(--pi-divider);
+}
+.intro-detail-comments li:first-child { border-block-start: 0; }
+.intro-detail-comments li > a {
+  color: var(--pi-ink);
+  font: var(--pi-weight-strong) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+  text-underline-offset: 3px;
+}
+.intro-detail-comments li > p {
+  font: var(--pi-weight-body) var(--pi-body-size)/var(--pi-body-leading) var(--pi-font-body);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+/* A reply is indented by spacing, never by a rail. */
+.intro-comment-reply { padding-inline-start: var(--pi-space-5); }
+.intro-detail-note {
+  color: var(--pi-muted);
+  font: var(--pi-weight-body) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+}
+.intro-detail-unavailable {
+  padding: var(--pi-space-5) var(--pi-space-3);
+  border: var(--pi-rule-width) dashed var(--pi-soft-rule);
+  border-radius: var(--pi-radius);
+  background: var(--pi-card);
+  color: var(--pi-muted);
+  font: var(--pi-weight-strong) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+/* --- Likers ---------------------------------------------------------------
+ * Dense rows with a square chip, name, shared line and style line. */
 .intro-likers ul { list-style: none; margin: 0; padding: 0; }
-.intro-likers li { border-bottom: 1px solid var(--pi-rule, #c9c9c6); }
-.intro-liker-row { display: flex; align-items: center; gap: 12px; min-height: 44px; padding-block: 10px; color: inherit; text-decoration: none; }
-.intro-liker-copy { display: grid; min-width: 0; }
-.intro-liker-shared { font-weight: 650; }
-.intro-liker-style { color: var(--pi-muted, #545454); font-size: 14px; }
+.intro-likers li { border-block-start: var(--pi-rule-width) solid var(--pi-divider); }
+.intro-likers li:first-child { border-block-start: 0; }
+.intro-liker-row {
+  display: flex;
+  align-items: center;
+  gap: var(--pi-space-2);
+  min-block-size: var(--pi-hit);
+  padding-block: var(--pi-space-2);
+  color: var(--pi-ink);
+  text-decoration: none;
+}
+.intro-liker-row:hover { background: var(--pi-field); }
+.intro-liker-copy { display: grid; gap: 0; min-inline-size: 0; }
+.intro-liker-copy strong {
+  font: var(--pi-weight-strong) var(--pi-control-size)/var(--pi-control-leading) var(--pi-font-body);
+  overflow-wrap: anywhere;
+}
+.intro-liker-shared {
+  font: var(--pi-weight-strong) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+  overflow-wrap: anywhere;
+}
+.intro-liker-style {
+  color: var(--pi-muted);
+  font: var(--pi-weight-body) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
+  overflow-wrap: anywhere;
+}

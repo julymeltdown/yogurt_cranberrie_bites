@@ -96,6 +96,7 @@
 /* People: a dense list with symmetric dividers, not a stack of boxed cards. */
 .discovery-people { list-style: none; margin: 0; padding: 0; min-inline-size: 0; }
 .discovery-people > li { padding-block: var(--pi-space-3); border-block-start: var(--pi-rule-width) solid var(--pi-divider); }
+.discovery-people > li:last-child { padding-block-end: 0; }
 .discovery-people > li:first-child { border-block-start: 0; }
 .discovery-card {
   display: grid;
@@ -118,6 +119,7 @@
   text-transform: uppercase;
 }
 .discovery-card-body { display: grid; gap: var(--pi-space-1); min-inline-size: 0; }
+.discovery-card-body > h2 { margin: 0; }
 .discovery-shared {
   font: var(--pi-weight-strong) var(--pi-meta-size)/var(--pi-meta-leading) var(--pi-font-body);
   overflow-wrap: anywhere;
