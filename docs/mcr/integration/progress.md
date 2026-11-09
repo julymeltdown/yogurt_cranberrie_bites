@@ -5,12 +5,12 @@ updated as work lands; it is the single place to read current progress.
 
 | Field | Value |
 | --- | --- |
-| Snapshot | 2026-11-09 15:45 Asia/Seoul |
+| Snapshot | 2026-11-09 16:30 Asia/Seoul |
 | Delivery branch | `julymeltdown/yogurt_cranberrie_bites` `master` |
-| Head at snapshot | `3f49da8e2` |
+| Head at snapshot | `1e014e6b2` |
 | Task register | 110 tasks in [task-breakdown.md](task-breakdown.md) |
-| Tasks integrated | **87 / 110** |
-| Tasks in flight | 7 (WP-04 remainder) |
+| Tasks integrated | **94 / 110** |
+| Tasks in flight | 0 |
 | Tasks not started | 16 |
 | Release gate | **INCOMPLETE** — see §6 |
 
@@ -27,7 +27,7 @@ exit code, and its acceptance statements are demonstrated.
 | WP-01 Contract freeze | 8 | **8** | Complete |
 | WP-02 Schema and migrations | 12 | **12** | Complete |
 | WP-03 Favorites and discovery | 6 | **6** | Complete |
-| WP-04 Claims and visibility policy | 12 | **5** | Partial — security core in, surfaces open |
+| WP-04 Claims and visibility policy | 12 | **6** | Claim adapter in; like/media/link/likers surfaces open |
 | WP-04b NAVER verification | 12 | **12** | Complete |
 | WP-05 Intro posts and hearts | 16 | **16** | Complete |
 | WP-06 Profile posts and media | 12 | **12** | Complete |
@@ -106,10 +106,12 @@ Each row is a product element, its state, and the evidence that supports it.
 | `can_view_intro` pure decision (12-row table) | Integrated | `intro_visibility` — 14 tests |
 | SQL predicate, proven identical to the pure function | Integrated | `intro_visibility_contract` — 8 tests, shared case table compiled into both binaries |
 | Page and detail queries with the predicate inside | Integrated | `intro_posts_page` — 15 tests, `intro_cursor` — 7 tests |
-| **Real `can_view_intro` wired into the `Visibility` port** | **Not wired** | WP-05's fail-closed `DenyRestricted` default is still in place; safe but restricted posts are author-only |
+| Claim adapter over the profile service | Integrated | `claims_adapter` — 11 tests |
+| Real `can_view_intro` wired into the `Visibility` port | Integrated | `ComposedPolicy`; the fail-closed default remains only when the endpoint is unset |
+| **Audience feature end to end** | **Works** | A live matching claim sees a restricted post; expired, absent, and wrong-gender claims do not; unrestricted is visible to all |
 | Intro operations served over HTTP | Integrated (11 of 13) | `concert_profile_product_routes` — 12 tests |
 | Intro composer mounted at `/discover/intro` | Integrated | `router.test.tsx` |
-| **`listIntroPosts` / `getIntroPost` queries** | **Do not exist** | Needs a visibility-filtered page and detail query plus the viewer's like state; owner `WP-04 visibility + WP-05 list/detail query` |
+| `listIntroPosts` / `getIntroPost` | Integrated | `intro_reads` — 11 tests; predicate inside the query, viewer-bound cursor |
 
 ### 2.5 Photographs and artwork
 
@@ -181,7 +183,7 @@ Each row is a product element, its state, and the evidence that supports it.
 | --- | --- | --- |
 | V-01 | Age boundary 18/29 allowed, 17/30 denied | Integrated (unit) — shared case table |
 | V-02 | Unknown, expired, revoked attributes fail closed | Integrated (unit) — shared case table |
-| V-03 | One decision across every surface | Partial — pure/SQL parity proven; the surfaces are not all wired |
+| V-03 | One decision across every surface | Partial — reads and likes wired; media and shared links open |
 | V-04 | Like removal discloses nothing | Integrated (unit) |
 | V-05 | Idempotent likes, one notification | Integrated (unit) |
 | V-06 | Attachment isolation | Integrated (unit) |
@@ -189,7 +191,7 @@ Each row is a product element, its state, and the evidence that supports it.
 | V-08 | Lifecycle independence | Partial — intro half not exercised |
 | V-09 | Ownership and account switching | Partial — `ACCOUNT_CONTEXT_STALE` never emitted |
 | V-10 | Failure handling and resource cleanup | Integrated (unit) |
-| V-11 | End-to-end three-identity scenario | **Blocked** |
+| V-11 | End-to-end three-identity scenario | Not yet re-run since the audience feature became satisfiable |
 | V-12 | NAVER verification produces a real claim | 15 of 16 cases pass; console case blocked |
 | V-13 | Unrestricted posts need no verification | Integrated (unit) — the unrestricted path reads no claim |
 
@@ -213,7 +215,8 @@ Each row is a product element, its state, and the evidence that supports it.
 | Discovery projection | 35 | — | 19 projection + 11 block consumer + 5 live source |
 | Discovery worker | 12 | — | shutdown and failure behaviour |
 | Frontend refactor | — | 6 | query-key audit; net -358 lines across 49 files |
-| WP-04 visibility | 63 | — | 10 audience + 9 claims + 14 pure + 8 SQL parity + 7 cursor + 15 page |
+| WP-04 visibility | 74 | — | 10 audience + 9 claims + 14 pure + 8 SQL parity + 7 cursor + 15 page + 11 claim adapter |
+| Intro reads | 11 | — | predicate inside the query, viewer-bound cursor |
 | Backend refactor | — | — | test counts identical before and after: 342 / 1449 / 737 |
 | Producer routing | 16 | — | 7 gateway + 9 concert transport |
 
@@ -238,6 +241,9 @@ pre-existing, not as passes.
 | Three attachment decoders, two defaulting an unparseable purpose to `ProfilePost` | An intro asset could cross to the profile surface (V-06-d) | One shared decoder that defaults nothing that matters |
 | `INVALID_PURPOSE` and `BYTES_MISMATCH` outside the closed error set | Gateway and client would drop a precise refusal into an opaque one | Both project to `INVALID_INPUT` |
 | `seal_cursor` accepted windows `open_cursor` rejects | A cursor token no reader could ever accept | Fixed; cursor tests cover the round trip |
+| Comment count filtered on `state = 'VISIBLE'` | The schema admits `PUBLISHED`; the count was always 0 | Found by the read test |
+| Inner join on `discovery_profiles` in the detail query | Every post without a projection row became `Unavailable` | Left join; the "author required for rendering" decision moved to the transport |
+| No claim adapter in the concert service | The audience feature was enforced but never satisfiable — nobody saw a restricted post | T-302 claim adapter; verified with live, expired, absent, and wrong-gender claims |
 
 ---
 
