@@ -385,12 +385,18 @@ pub struct ProfileProductRuntime {
 /// `verifier` must accept delegations addressed to the Concert workload. The
 /// dispatch method acts for a user, so the method policy refuses to wrap it
 /// without a verifier; that is the same requirement the concert product has.
+///
+/// `media` is the profile media store, bound to the sanitizer the composition
+/// supplies. Without it the producer answers every media operation with
+/// `DEPENDENCY_UNAVAILABLE` — a truthful refusal, but not a served operation, so
+/// the composition must supply it for the media routes to work.
 pub fn runtime(
     pool: sqlx::PgPool,
     callers: platform::grpc_auth::CallerRegistry,
     verifier: platform::actor_delegation::ActorDelegationVerifier,
+    media: Option<Arc<super::super::profile_media::ProfileMediaStore>>,
 ) -> anyhow::Result<ProfileProductRuntime> {
-    runtime_with_claims(pool, callers, verifier, None)
+    runtime_with_claims_and_media(pool, callers, verifier, None, media)
 }
 
 /// Build the transport with the claim port attached.
@@ -404,17 +410,31 @@ pub fn runtime_with_claims(
     verifier: platform::actor_delegation::ActorDelegationVerifier,
     claims: Option<std::sync::Arc<dyn concert_application::identity_claims::IdentityClaimsPort>>,
 ) -> anyhow::Result<ProfileProductRuntime> {
+    runtime_with_claims_and_media(pool, callers, verifier, claims, None)
+}
+
+/// The full composition: both optional dependencies the producer can carry.
+///
+/// The two arrived from parallel work packages and each was wired alone. A
+/// composition that supplies one and not the other silently disables the half it
+/// omits, so this is the single entry point both callers go through.
+pub fn runtime_with_claims_and_media(
+    pool: sqlx::PgPool,
+    callers: platform::grpc_auth::CallerRegistry,
+    verifier: platform::actor_delegation::ActorDelegationVerifier,
+    claims: Option<std::sync::Arc<dyn concert_application::identity_claims::IdentityClaimsPort>>,
+    media: Option<Arc<super::super::profile_media::ProfileMediaStore>>,
+) -> anyhow::Result<ProfileProductRuntime> {
     let mut intro = super::intro::IntroProducer::new(pool.clone());
     if let Some(claims) = claims {
         intro = intro.with_claims(claims);
     }
-    build_runtime(
-        pool.clone(),
-        callers,
-        verifier,
-        targets::ProfileProductProducer::new(pool.clone())
-            .with_intro(std::sync::Arc::new(intro)),
-    )
+    let mut producer = targets::ProfileProductProducer::new(pool.clone())
+        .with_intro(Arc::new(intro));
+    if let Some(media) = media {
+        producer = producer.with_media(media);
+    }
+    build_runtime(pool, callers, verifier, producer)
 }
 
 fn build_runtime(

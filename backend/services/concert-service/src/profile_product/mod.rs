@@ -83,8 +83,9 @@ pub fn runtime(
     pool: sqlx::PgPool,
     callers: platform::grpc_auth::CallerRegistry,
     verifier: platform::actor_delegation::ActorDelegationVerifier,
+    media: Option<std::sync::Arc<crate::profile_media::ProfileMediaStore>>,
 ) -> anyhow::Result<ProfileProductRuntime> {
-    transport::runtime(pool, callers, verifier)
+    transport::runtime(pool, callers, verifier, media)
 }
 
 /// Build the transport with the T-302 claim port attached.
@@ -99,4 +100,19 @@ pub fn runtime_with_claims(
     claims: std::sync::Arc<dyn concert_application::identity_claims::IdentityClaimsPort>,
 ) -> anyhow::Result<ProfileProductRuntime> {
     transport::runtime_with_claims(pool, callers, verifier, Some(claims))
+}
+
+/// The full composition: the claim port and the profile media store together.
+///
+/// Both arrived from parallel work packages and each was wired alone, so a
+/// composition that supplied one and not the other silently disabled the half it
+/// omitted. This is the entry point the service binary uses.
+pub fn runtime_with_claims_and_media(
+    pool: sqlx::PgPool,
+    callers: platform::grpc_auth::CallerRegistry,
+    verifier: platform::actor_delegation::ActorDelegationVerifier,
+    claims: Option<std::sync::Arc<dyn concert_application::identity_claims::IdentityClaimsPort>>,
+    media: Option<std::sync::Arc<super::profile_media::ProfileMediaStore>>,
+) -> anyhow::Result<ProfileProductRuntime> {
+    transport::runtime_with_claims_and_media(pool, callers, verifier, claims, media)
 }

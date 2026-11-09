@@ -741,6 +741,21 @@ where
     // product: it needs the exact verified frame so its producer can re-decode
     // the signed parent and bind the owner scope to it. It is listed by exact
     // service and method, so no other Profile method gains parent authority.
+    //
+    // There are **two** profile product transports, because profile-owned tables
+    // live in two databases (`profile_owner` in the Gateway is the routing rule):
+    //
+    // * `/profile.product.v1.ProfileProductService/Dispatch` — served by the
+    //   profile service for `mcr_profile` (profiles, favorites, claims, catalog);
+    // * `/concert.profile_product.v1.ProfileProductService/Dispatch` — served by
+    //   the concert service for `mcr_concert` (posts, media, rooms, avatars,
+    //   intro posts).
+    //
+    // Both producers re-decode the signed parent and refuse the request without
+    // it, so both must be listed. The concert-hosted one was added by the
+    // profile-owner routing work and was missing here, which made every
+    // concert-owned profile operation fail with `Unauthenticated` at the
+    // Gateway's own client before any producer work began.
     let product_parent = matches!(
         (verifier.audience(), parts.uri.path()),
         (
@@ -749,6 +764,7 @@ where
                 | "/concert.participant.v1.ConcertParticipantService/GetParticipant"
                 | "/concert.participant.v1.ConcertParticipantService/SetAvatar"
                 | "/concert.participant.v1.ConcertParticipantService/UpdatePreferences"
+                | "/concert.profile_product.v1.ProfileProductService/Dispatch"
         ) | (Workload::Profile, "/profile.product.v1.ProfileProductService/Dispatch")
     ) && parts
         .extensions
@@ -1033,6 +1049,61 @@ mod tests {
                     _ => wrong.http_method = "POST".into(),
                 };
                 assert!(wrong.matches_parent(parent).is_err());
+            }
+        }
+    }
+
+    /// Both profile product transports must receive the verified parent frame.
+    ///
+    /// Profile-owned tables live in two databases, so there are two transports:
+    /// the profile service serves `mcr_profile` and the concert service serves
+    /// `mcr_concert`. Each producer re-decodes the signed parent and refuses the
+    /// request without it. The concert-hosted one was missing from the allowlist,
+    /// which made every concert-owned profile operation fail with
+    /// `Unauthenticated` at the Gateway's own client before any producer work.
+    #[tokio::test]
+    async fn both_profile_product_transports_receive_the_verified_parent() {
+        use exchange::VerifiedParentAuthority;
+        let actor = Uuid::new_v4();
+        let body = frame(&uuid_field(1, actor));
+        let signer = ActorDelegationSigner::from_seed(Workload::Gateway, &[7; 32]).unwrap();
+        for (audience, method, granted) in [
+            (
+                Workload::Profile,
+                "/profile.product.v1.ProfileProductService/Dispatch",
+                true,
+            ),
+            (
+                Workload::Concert,
+                "/concert.profile_product.v1.ProfileProductService/Dispatch",
+                true,
+            ),
+            // A neighbouring method on the same service is not granted.
+            (
+                Workload::Concert,
+                "/concert.profile_product.v1.ProfileProductService/DispatchOther",
+                false,
+            ),
+        ] {
+            let verifier = ActorDelegationVerifier::new(audience, &[signer.public_key()]).unwrap();
+            let token = signer.issue(audience, method, actor, None, &body, now());
+            let request = http::Request::builder()
+                .uri(method)
+                .header(HEADER, token)
+                .body(Full::new(tonic::codegen::Bytes::from(body.clone())))
+                .unwrap();
+            let verified = verify_request(request, Workload::Gateway, &[&[1]], &verifier)
+                .await
+                .unwrap();
+            let parent = verified.extensions().get::<VerifiedParentAuthority>();
+            assert_eq!(
+                parent.is_some(),
+                granted,
+                "{method} parent authority must be {granted}"
+            );
+            if let Some(parent) = parent {
+                assert_eq!(parent.request().method, method);
+                assert_eq!(parent.actor(), actor);
             }
         }
     }

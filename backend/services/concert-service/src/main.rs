@@ -731,19 +731,33 @@ async fn main() -> anyhow::Result<()> {
                             }
                             _ => None,
                         };
-                    let profile_product = match claims {
-                        Some(claims) => concert_service::profile_product::runtime_with_claims(
+                    // The profile media store is bound to the same bounded
+                    // sanitizer the concert upload uses: a profile photograph is
+                    // normalized by the same code as a concert one, and the
+                    // limits are the shared `concert_application::media`
+                    // constants rather than a second set.
+                    let profile_media = {
+                        let workers = platform::cpu::WorkerPool::new(2)?;
+                        Arc::new(concert_service::profile_media::ProfileMediaStore::new(
+                            grpc_pool.clone(),
+                            Arc::new(
+                                concert_service::adapters::out::media::codec::BoundedImageSanitizer::new(
+                                    workers.class(16)?,
+                                ),
+                            ),
+                        ))
+                    };
+                    // Both optional dependencies go through one entry point: a
+                    // composition that supplies one and not the other silently
+                    // disables the half it omits.
+                    let profile_product =
+                        concert_service::profile_product::runtime_with_claims_and_media(
                             grpc_pool.clone(),
                             runtime.callers.clone(),
                             runtime.actors.clone(),
                             claims,
-                        )?,
-                        None => concert_service::profile_product::runtime(
-                            grpc_pool.clone(),
-                            runtime.callers.clone(),
-                            runtime.actors.clone(),
-                        )?,
-                    };
+                            Some(profile_media),
+                        )?;
                     // This callback uses the original shared registry and the
                     // dedicated Notification workload identity. It accepts no
                     // Gateway actor delegation and shares this listener's TLS
