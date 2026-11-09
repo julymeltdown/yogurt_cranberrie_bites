@@ -41,10 +41,18 @@ const ActivityPanel = lazy(() => import('./section-entry/ActivityPanel').then(mo
 const MyProfilePanel = lazy(() => import('./section-entry/MyProfilePanel').then(module => ({ default: module.MyProfilePanel })))
 const PhotoComposerPanel = lazy(() => import('./section-entry/PhotoComposerPanel').then(module => ({ default: module.PhotoComposerPanel })))
 const IdentitySettingsPanel = lazy(() => import('./section-entry/IdentitySettingsPanel').then(module => ({ default: module.IdentitySettingsPanel })))
-// WP-05 owns the intro screens. This package registers their routes and leaves
-// the slot: until WP-05 lands, the route renders an explicit placeholder rather
-// than a broken or empty screen.
+// WP-05 owns the intro screens. The composer is mounted: every operation it uses
+// (`saveIntroPostDraft`, `publishIntroPost`, `deleteIntroPost`, `getOwnIntroPost`)
+// is served by the concert-hosted profile transport, so it works end to end.
+//
+// The discovery list and the post detail are NOT mounted. They need
+// `listIntroPosts` and `getIntroPost`, which require a visibility-filtered query
+// that does not exist yet (WP-04 owns the predicate, WP-05 the query). Those
+// routes stay on the explicit placeholder rather than mounting a screen that
+// would fail on every load — an empty or broken feed is worse than an honest
+// "not in this build yet".
 const IntroSlotPanel = lazy(() => import('./section-entry/IntroSlot').then(module => ({ default: module.IntroSlot })))
+const IntroComposerPanel = lazy(() => import('./section-entry/IntroComposerPanel').then(module => ({ default: module.IntroComposerPanel })))
 // WP-09: the people list and the visitor profile moved under Discover. The
 // legacy spellings stay in this list so a panel registered under one still gets
 // the social surface rather than the generic placeholder.
@@ -80,7 +88,9 @@ const featurePanels: Readonly<Record<string, ReactNode>> = {
   '/discover/people': <Suspense fallback={<p role="status">Opening people…</p>}><SocialPanel /></Suspense>,
   '/discover/people/:profileId': <Suspense fallback={<p role="status">Opening profile…</p>}><SocialPanel /></Suspense>,
   '/discover/people/:profileId/room': <Suspense fallback={<p role="status">Opening room…</p>}><RoomPanel /></Suspense>,
-  '/discover/intro': <Suspense fallback={<p role="status">Opening mutuals-intro posts…</p>}><IntroSlotPanel view="list" /></Suspense>,
+  // The composer works end to end; the list and detail wait on the two unserved
+  // reads. See the `IntroSlotPanel` comment above.
+  '/discover/intro': <Suspense fallback={<p role="status">Opening your introduction…</p>}><IntroComposerPanel /></Suspense>,
   '/discover/intro/:introId': <Suspense fallback={<p role="status">Opening mutuals-intro post…</p>}><IntroSlotPanel view="detail" /></Suspense>,
   '/activity': <Suspense fallback={<p role="status">Opening activity…</p>}><ActivityPanel /></Suspense>,
   '/me/identity': <Suspense fallback={<p role="status">Opening identity settings…</p>}><IdentitySettingsPanel /></Suspense>,
