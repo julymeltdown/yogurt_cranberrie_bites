@@ -1,0 +1,1261 @@
+{
+  "kind": "wp10-visual-captures",
+  "revision": "865f76401838612e7f00a13e1ac06efd3369fec5",
+  "widths": [
+    360,
+    390,
+    430
+  ],
+  "browser": "156.0.8078.80",
+  "stack": "real (seven services, private cluster, three identities)",
+  "captures": [
+    {
+      "screen": "owner-profile",
+      "label": "Owner profile",
+      "route": "/me",
+      "role": "author",
+      "width": 360,
+      "file": "owner-profile-360.png",
+      "status": "LAYOUT_DEFECT",
+      "reason": "failed checks: focusOutline",
+      "checks": {
+        "horizontalOverflow": {
+          "ok": true,
+          "documentScrollWidth": 360,
+          "viewportWidth": 360,
+          "overflow": false,
+          "offenders": []
+        },
+        "focusOutline": {
+          "checked": 3,
+          "failures": [
+            {
+              "tag": "a",
+              "text": "MCR Concert World",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "button",
+              "text": "Check again",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "a",
+              "text": "Back to home",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            }
+          ],
+          "ok": false
+        },
+        "leftAccentBar": {
+          "offenders": [],
+          "ok": true
+        },
+        "textClipping": {
+          "clipped": [],
+          "overlaps": [],
+          "ok": true
+        }
+      }
+    },
+    {
+      "screen": "owner-profile",
+      "label": "Owner profile",
+      "route": "/me",
+      "role": "author",
+      "width": 390,
+      "file": "owner-profile-390.png",
+      "status": "LAYOUT_DEFECT",
+      "reason": "failed checks: focusOutline",
+      "checks": {
+        "horizontalOverflow": {
+          "ok": true,
+          "documentScrollWidth": 390,
+          "viewportWidth": 390,
+          "overflow": false,
+          "offenders": []
+        },
+        "focusOutline": {
+          "checked": 3,
+          "failures": [
+            {
+              "tag": "a",
+              "text": "MCR Concert World",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "button",
+              "text": "Check again",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "a",
+              "text": "Back to home",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            }
+          ],
+          "ok": false
+        },
+        "leftAccentBar": {
+          "offenders": [],
+          "ok": true
+        },
+        "textClipping": {
+          "clipped": [],
+          "overlaps": [],
+          "ok": true
+        }
+      }
+    },
+    {
+      "screen": "owner-profile",
+      "label": "Owner profile",
+      "route": "/me",
+      "role": "author",
+      "width": 430,
+      "file": "owner-profile-430.png",
+      "status": "LAYOUT_DEFECT",
+      "reason": "failed checks: focusOutline",
+      "checks": {
+        "horizontalOverflow": {
+          "ok": true,
+          "documentScrollWidth": 430,
+          "viewportWidth": 430,
+          "overflow": false,
+          "offenders": []
+        },
+        "focusOutline": {
+          "checked": 3,
+          "failures": [
+            {
+              "tag": "a",
+              "text": "MCR Concert World",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "button",
+              "text": "Check again",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "a",
+              "text": "Back to home",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            }
+          ],
+          "ok": false
+        },
+        "leftAccentBar": {
+          "offenders": [],
+          "ok": true
+        },
+        "textClipping": {
+          "clipped": [],
+          "overlaps": [],
+          "ok": true
+        }
+      }
+    },
+    {
+      "screen": "visitor-profile",
+      "label": "Visitor profile",
+      "route": "/discover/people/dcb94e55-9548-4bc9-9734-dcede3e8b76a",
+      "role": "author",
+      "width": 360,
+      "file": "visitor-profile-360.png",
+      "status": "LAYOUT_DEFECT",
+      "reason": "failed checks: focusOutline",
+      "checks": {
+        "horizontalOverflow": {
+          "ok": true,
+          "documentScrollWidth": 360,
+          "viewportWidth": 360,
+          "overflow": false,
+          "offenders": []
+        },
+        "focusOutline": {
+          "checked": 3,
+          "failures": [
+            {
+              "tag": "a",
+              "text": "MCR Concert World",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "button",
+              "text": "Check again",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "a",
+              "text": "Back to home",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            }
+          ],
+          "ok": false
+        },
+        "leftAccentBar": {
+          "offenders": [],
+          "ok": true
+        },
+        "textClipping": {
+          "clipped": [],
+          "overlaps": [],
+          "ok": true
+        }
+      }
+    },
+    {
+      "screen": "visitor-profile",
+      "label": "Visitor profile",
+      "route": "/discover/people/dcb94e55-9548-4bc9-9734-dcede3e8b76a",
+      "role": "author",
+      "width": 390,
+      "file": "visitor-profile-390.png",
+      "status": "LAYOUT_DEFECT",
+      "reason": "failed checks: focusOutline",
+      "checks": {
+        "horizontalOverflow": {
+          "ok": true,
+          "documentScrollWidth": 390,
+          "viewportWidth": 390,
+          "overflow": false,
+          "offenders": []
+        },
+        "focusOutline": {
+          "checked": 3,
+          "failures": [
+            {
+              "tag": "a",
+              "text": "MCR Concert World",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "button",
+              "text": "Check again",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "a",
+              "text": "Back to home",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            }
+          ],
+          "ok": false
+        },
+        "leftAccentBar": {
+          "offenders": [],
+          "ok": true
+        },
+        "textClipping": {
+          "clipped": [],
+          "overlaps": [],
+          "ok": true
+        }
+      }
+    },
+    {
+      "screen": "visitor-profile",
+      "label": "Visitor profile",
+      "route": "/discover/people/dcb94e55-9548-4bc9-9734-dcede3e8b76a",
+      "role": "author",
+      "width": 430,
+      "file": "visitor-profile-430.png",
+      "status": "LAYOUT_DEFECT",
+      "reason": "failed checks: focusOutline",
+      "checks": {
+        "horizontalOverflow": {
+          "ok": true,
+          "documentScrollWidth": 430,
+          "viewportWidth": 430,
+          "overflow": false,
+          "offenders": []
+        },
+        "focusOutline": {
+          "checked": 3,
+          "failures": [
+            {
+              "tag": "a",
+              "text": "MCR Concert World",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "button",
+              "text": "Check again",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "a",
+              "text": "Back to home",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            }
+          ],
+          "ok": false
+        },
+        "leftAccentBar": {
+          "offenders": [],
+          "ok": true
+        },
+        "textClipping": {
+          "clipped": [],
+          "overlaps": [],
+          "ok": true
+        }
+      }
+    },
+    {
+      "screen": "discover-people",
+      "label": "Discovery people",
+      "route": "/discover/people",
+      "role": "author",
+      "width": 360,
+      "file": "discover-people-360.png",
+      "status": "LAYOUT_DEFECT",
+      "reason": "failed checks: focusOutline",
+      "checks": {
+        "horizontalOverflow": {
+          "ok": true,
+          "documentScrollWidth": 360,
+          "viewportWidth": 360,
+          "overflow": false,
+          "offenders": []
+        },
+        "focusOutline": {
+          "checked": 3,
+          "failures": [
+            {
+              "tag": "a",
+              "text": "MCR Concert World",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "button",
+              "text": "Check again",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "a",
+              "text": "Back to home",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            }
+          ],
+          "ok": false
+        },
+        "leftAccentBar": {
+          "offenders": [],
+          "ok": true
+        },
+        "textClipping": {
+          "clipped": [],
+          "overlaps": [],
+          "ok": true
+        }
+      }
+    },
+    {
+      "screen": "discover-people",
+      "label": "Discovery people",
+      "route": "/discover/people",
+      "role": "author",
+      "width": 390,
+      "file": "discover-people-390.png",
+      "status": "LAYOUT_DEFECT",
+      "reason": "failed checks: focusOutline",
+      "checks": {
+        "horizontalOverflow": {
+          "ok": true,
+          "documentScrollWidth": 390,
+          "viewportWidth": 390,
+          "overflow": false,
+          "offenders": []
+        },
+        "focusOutline": {
+          "checked": 3,
+          "failures": [
+            {
+              "tag": "a",
+              "text": "MCR Concert World",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "button",
+              "text": "Check again",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "a",
+              "text": "Back to home",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            }
+          ],
+          "ok": false
+        },
+        "leftAccentBar": {
+          "offenders": [],
+          "ok": true
+        },
+        "textClipping": {
+          "clipped": [],
+          "overlaps": [],
+          "ok": true
+        }
+      }
+    },
+    {
+      "screen": "discover-people",
+      "label": "Discovery people",
+      "route": "/discover/people",
+      "role": "author",
+      "width": 430,
+      "file": "discover-people-430.png",
+      "status": "LAYOUT_DEFECT",
+      "reason": "failed checks: focusOutline",
+      "checks": {
+        "horizontalOverflow": {
+          "ok": true,
+          "documentScrollWidth": 430,
+          "viewportWidth": 430,
+          "overflow": false,
+          "offenders": []
+        },
+        "focusOutline": {
+          "checked": 3,
+          "failures": [
+            {
+              "tag": "a",
+              "text": "MCR Concert World",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "button",
+              "text": "Check again",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "a",
+              "text": "Back to home",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            }
+          ],
+          "ok": false
+        },
+        "leftAccentBar": {
+          "offenders": [],
+          "ok": true
+        },
+        "textClipping": {
+          "clipped": [],
+          "overlaps": [],
+          "ok": true
+        }
+      }
+    },
+    {
+      "screen": "discover-intro",
+      "label": "Discovery intro list",
+      "route": "/discover/intro",
+      "role": "author",
+      "width": 360,
+      "file": "discover-intro-360.png",
+      "status": "LAYOUT_DEFECT",
+      "reason": "failed checks: focusOutline",
+      "checks": {
+        "horizontalOverflow": {
+          "ok": true,
+          "documentScrollWidth": 360,
+          "viewportWidth": 360,
+          "overflow": false,
+          "offenders": []
+        },
+        "focusOutline": {
+          "checked": 3,
+          "failures": [
+            {
+              "tag": "a",
+              "text": "MCR Concert World",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "button",
+              "text": "Check again",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "a",
+              "text": "Back to home",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            }
+          ],
+          "ok": false
+        },
+        "leftAccentBar": {
+          "offenders": [],
+          "ok": true
+        },
+        "textClipping": {
+          "clipped": [],
+          "overlaps": [],
+          "ok": true
+        }
+      }
+    },
+    {
+      "screen": "discover-intro",
+      "label": "Discovery intro list",
+      "route": "/discover/intro",
+      "role": "author",
+      "width": 390,
+      "file": "discover-intro-390.png",
+      "status": "LAYOUT_DEFECT",
+      "reason": "failed checks: focusOutline",
+      "checks": {
+        "horizontalOverflow": {
+          "ok": true,
+          "documentScrollWidth": 390,
+          "viewportWidth": 390,
+          "overflow": false,
+          "offenders": []
+        },
+        "focusOutline": {
+          "checked": 3,
+          "failures": [
+            {
+              "tag": "a",
+              "text": "MCR Concert World",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "button",
+              "text": "Check again",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "a",
+              "text": "Back to home",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            }
+          ],
+          "ok": false
+        },
+        "leftAccentBar": {
+          "offenders": [],
+          "ok": true
+        },
+        "textClipping": {
+          "clipped": [],
+          "overlaps": [],
+          "ok": true
+        }
+      }
+    },
+    {
+      "screen": "discover-intro",
+      "label": "Discovery intro list",
+      "route": "/discover/intro",
+      "role": "author",
+      "width": 430,
+      "file": "discover-intro-430.png",
+      "status": "LAYOUT_DEFECT",
+      "reason": "failed checks: focusOutline",
+      "checks": {
+        "horizontalOverflow": {
+          "ok": true,
+          "documentScrollWidth": 430,
+          "viewportWidth": 430,
+          "overflow": false,
+          "offenders": []
+        },
+        "focusOutline": {
+          "checked": 3,
+          "failures": [
+            {
+              "tag": "a",
+              "text": "MCR Concert World",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "button",
+              "text": "Check again",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "a",
+              "text": "Back to home",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            }
+          ],
+          "ok": false
+        },
+        "leftAccentBar": {
+          "offenders": [],
+          "ok": true
+        },
+        "textClipping": {
+          "clipped": [],
+          "overlaps": [],
+          "ok": true
+        }
+      }
+    },
+    {
+      "screen": "intro-composer",
+      "label": "Intro composer",
+      "route": "/discover/intro",
+      "role": "author",
+      "width": 360,
+      "file": "intro-composer-360.png",
+      "status": "LAYOUT_DEFECT",
+      "reason": "failed checks: focusOutline",
+      "checks": {
+        "horizontalOverflow": {
+          "ok": true,
+          "documentScrollWidth": 360,
+          "viewportWidth": 360,
+          "overflow": false,
+          "offenders": []
+        },
+        "focusOutline": {
+          "checked": 3,
+          "failures": [
+            {
+              "tag": "a",
+              "text": "MCR Concert World",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "button",
+              "text": "Check again",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "a",
+              "text": "Back to home",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            }
+          ],
+          "ok": false
+        },
+        "leftAccentBar": {
+          "offenders": [],
+          "ok": true
+        },
+        "textClipping": {
+          "clipped": [],
+          "overlaps": [],
+          "ok": true
+        }
+      }
+    },
+    {
+      "screen": "intro-composer",
+      "label": "Intro composer",
+      "route": "/discover/intro",
+      "role": "author",
+      "width": 390,
+      "file": "intro-composer-390.png",
+      "status": "LAYOUT_DEFECT",
+      "reason": "failed checks: focusOutline",
+      "checks": {
+        "horizontalOverflow": {
+          "ok": true,
+          "documentScrollWidth": 390,
+          "viewportWidth": 390,
+          "overflow": false,
+          "offenders": []
+        },
+        "focusOutline": {
+          "checked": 3,
+          "failures": [
+            {
+              "tag": "a",
+              "text": "MCR Concert World",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "button",
+              "text": "Check again",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "a",
+              "text": "Back to home",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            }
+          ],
+          "ok": false
+        },
+        "leftAccentBar": {
+          "offenders": [],
+          "ok": true
+        },
+        "textClipping": {
+          "clipped": [],
+          "overlaps": [],
+          "ok": true
+        }
+      }
+    },
+    {
+      "screen": "intro-composer",
+      "label": "Intro composer",
+      "route": "/discover/intro",
+      "role": "author",
+      "width": 430,
+      "file": "intro-composer-430.png",
+      "status": "LAYOUT_DEFECT",
+      "reason": "failed checks: focusOutline",
+      "checks": {
+        "horizontalOverflow": {
+          "ok": true,
+          "documentScrollWidth": 430,
+          "viewportWidth": 430,
+          "overflow": false,
+          "offenders": []
+        },
+        "focusOutline": {
+          "checked": 3,
+          "failures": [
+            {
+              "tag": "a",
+              "text": "MCR Concert World",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "button",
+              "text": "Check again",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "a",
+              "text": "Back to home",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            }
+          ],
+          "ok": false
+        },
+        "leftAccentBar": {
+          "offenders": [],
+          "ok": true
+        },
+        "textClipping": {
+          "clipped": [],
+          "overlaps": [],
+          "ok": true
+        }
+      }
+    },
+    {
+      "screen": "intro-detail",
+      "label": "Intro detail",
+      "route": "/discover/intro/08daef97-317e-4cfa-a2c4-ab0e00b973a4",
+      "role": "viewer",
+      "width": 360,
+      "file": "intro-detail-360.png",
+      "status": "LAYOUT_DEFECT",
+      "reason": "failed checks: focusOutline",
+      "checks": {
+        "horizontalOverflow": {
+          "ok": true,
+          "documentScrollWidth": 360,
+          "viewportWidth": 360,
+          "overflow": false,
+          "offenders": []
+        },
+        "focusOutline": {
+          "checked": 3,
+          "failures": [
+            {
+              "tag": "a",
+              "text": "MCR Concert World",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "button",
+              "text": "Check again",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "a",
+              "text": "Back to home",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            }
+          ],
+          "ok": false
+        },
+        "leftAccentBar": {
+          "offenders": [],
+          "ok": true
+        },
+        "textClipping": {
+          "clipped": [],
+          "overlaps": [],
+          "ok": true
+        }
+      }
+    },
+    {
+      "screen": "intro-detail",
+      "label": "Intro detail",
+      "route": "/discover/intro/08daef97-317e-4cfa-a2c4-ab0e00b973a4",
+      "role": "viewer",
+      "width": 390,
+      "file": "intro-detail-390.png",
+      "status": "LAYOUT_DEFECT",
+      "reason": "failed checks: focusOutline",
+      "checks": {
+        "horizontalOverflow": {
+          "ok": true,
+          "documentScrollWidth": 390,
+          "viewportWidth": 390,
+          "overflow": false,
+          "offenders": []
+        },
+        "focusOutline": {
+          "checked": 3,
+          "failures": [
+            {
+              "tag": "a",
+              "text": "MCR Concert World",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "button",
+              "text": "Check again",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "a",
+              "text": "Back to home",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            }
+          ],
+          "ok": false
+        },
+        "leftAccentBar": {
+          "offenders": [],
+          "ok": true
+        },
+        "textClipping": {
+          "clipped": [],
+          "overlaps": [],
+          "ok": true
+        }
+      }
+    },
+    {
+      "screen": "intro-detail",
+      "label": "Intro detail",
+      "route": "/discover/intro/08daef97-317e-4cfa-a2c4-ab0e00b973a4",
+      "role": "viewer",
+      "width": 430,
+      "file": "intro-detail-430.png",
+      "status": "LAYOUT_DEFECT",
+      "reason": "failed checks: focusOutline",
+      "checks": {
+        "horizontalOverflow": {
+          "ok": true,
+          "documentScrollWidth": 430,
+          "viewportWidth": 430,
+          "overflow": false,
+          "offenders": []
+        },
+        "focusOutline": {
+          "checked": 3,
+          "failures": [
+            {
+              "tag": "a",
+              "text": "MCR Concert World",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "button",
+              "text": "Check again",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "a",
+              "text": "Back to home",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            }
+          ],
+          "ok": false
+        },
+        "leftAccentBar": {
+          "offenders": [],
+          "ok": true
+        },
+        "textClipping": {
+          "clipped": [],
+          "overlaps": [],
+          "ok": true
+        }
+      }
+    },
+    {
+      "screen": "room",
+      "label": "Personal room",
+      "route": "/me/room",
+      "role": "author",
+      "width": 360,
+      "file": "room-360.png",
+      "status": "LAYOUT_DEFECT",
+      "reason": "failed checks: focusOutline",
+      "checks": {
+        "horizontalOverflow": {
+          "ok": true,
+          "documentScrollWidth": 360,
+          "viewportWidth": 360,
+          "overflow": false,
+          "offenders": []
+        },
+        "focusOutline": {
+          "checked": 3,
+          "failures": [
+            {
+              "tag": "a",
+              "text": "MCR Concert World",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "button",
+              "text": "Check again",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "a",
+              "text": "Back to home",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            }
+          ],
+          "ok": false
+        },
+        "leftAccentBar": {
+          "offenders": [],
+          "ok": true
+        },
+        "textClipping": {
+          "clipped": [],
+          "overlaps": [],
+          "ok": true
+        }
+      }
+    },
+    {
+      "screen": "room",
+      "label": "Personal room",
+      "route": "/me/room",
+      "role": "author",
+      "width": 390,
+      "file": "room-390.png",
+      "status": "LAYOUT_DEFECT",
+      "reason": "failed checks: focusOutline",
+      "checks": {
+        "horizontalOverflow": {
+          "ok": true,
+          "documentScrollWidth": 390,
+          "viewportWidth": 390,
+          "overflow": false,
+          "offenders": []
+        },
+        "focusOutline": {
+          "checked": 3,
+          "failures": [
+            {
+              "tag": "a",
+              "text": "MCR Concert World",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "button",
+              "text": "Check again",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "a",
+              "text": "Back to home",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            }
+          ],
+          "ok": false
+        },
+        "leftAccentBar": {
+          "offenders": [],
+          "ok": true
+        },
+        "textClipping": {
+          "clipped": [],
+          "overlaps": [],
+          "ok": true
+        }
+      }
+    },
+    {
+      "screen": "room",
+      "label": "Personal room",
+      "route": "/me/room",
+      "role": "author",
+      "width": 430,
+      "file": "room-430.png",
+      "status": "LAYOUT_DEFECT",
+      "reason": "failed checks: focusOutline",
+      "checks": {
+        "horizontalOverflow": {
+          "ok": true,
+          "documentScrollWidth": 430,
+          "viewportWidth": 430,
+          "overflow": false,
+          "offenders": []
+        },
+        "focusOutline": {
+          "checked": 3,
+          "failures": [
+            {
+              "tag": "a",
+              "text": "MCR Concert World",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "button",
+              "text": "Check again",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "a",
+              "text": "Back to home",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            }
+          ],
+          "ok": false
+        },
+        "leftAccentBar": {
+          "offenders": [],
+          "ok": true
+        },
+        "textClipping": {
+          "clipped": [],
+          "overlaps": [],
+          "ok": true
+        }
+      }
+    },
+    {
+      "screen": "identity-settings",
+      "label": "Identity settings",
+      "route": "/me/identity",
+      "role": "author",
+      "width": 360,
+      "file": "identity-settings-360.png",
+      "status": "LAYOUT_DEFECT",
+      "reason": "failed checks: focusOutline",
+      "checks": {
+        "horizontalOverflow": {
+          "ok": true,
+          "documentScrollWidth": 360,
+          "viewportWidth": 360,
+          "overflow": false,
+          "offenders": []
+        },
+        "focusOutline": {
+          "checked": 3,
+          "failures": [
+            {
+              "tag": "a",
+              "text": "MCR Concert World",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "button",
+              "text": "Check again",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "a",
+              "text": "Back to home",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            }
+          ],
+          "ok": false
+        },
+        "leftAccentBar": {
+          "offenders": [],
+          "ok": true
+        },
+        "textClipping": {
+          "clipped": [],
+          "overlaps": [],
+          "ok": true
+        }
+      }
+    },
+    {
+      "screen": "identity-settings",
+      "label": "Identity settings",
+      "route": "/me/identity",
+      "role": "author",
+      "width": 390,
+      "file": "identity-settings-390.png",
+      "status": "LAYOUT_DEFECT",
+      "reason": "failed checks: focusOutline",
+      "checks": {
+        "horizontalOverflow": {
+          "ok": true,
+          "documentScrollWidth": 390,
+          "viewportWidth": 390,
+          "overflow": false,
+          "offenders": []
+        },
+        "focusOutline": {
+          "checked": 3,
+          "failures": [
+            {
+              "tag": "a",
+              "text": "MCR Concert World",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "button",
+              "text": "Check again",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "a",
+              "text": "Back to home",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            }
+          ],
+          "ok": false
+        },
+        "leftAccentBar": {
+          "offenders": [],
+          "ok": true
+        },
+        "textClipping": {
+          "clipped": [],
+          "overlaps": [],
+          "ok": true
+        }
+      }
+    },
+    {
+      "screen": "identity-settings",
+      "label": "Identity settings",
+      "route": "/me/identity",
+      "role": "author",
+      "width": 430,
+      "file": "identity-settings-430.png",
+      "status": "LAYOUT_DEFECT",
+      "reason": "failed checks: focusOutline",
+      "checks": {
+        "horizontalOverflow": {
+          "ok": true,
+          "documentScrollWidth": 430,
+          "viewportWidth": 430,
+          "overflow": false,
+          "offenders": []
+        },
+        "focusOutline": {
+          "checked": 3,
+          "failures": [
+            {
+              "tag": "a",
+              "text": "MCR Concert World",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "button",
+              "text": "Check again",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            },
+            {
+              "tag": "a",
+              "text": "Back to home",
+              "outlineStyle": "none",
+              "outlineWidth": "3px"
+            }
+          ],
+          "ok": false
+        },
+        "leftAccentBar": {
+          "offenders": [],
+          "ok": true
+        },
+        "textClipping": {
+          "clipped": [],
+          "overlaps": [],
+          "ok": true
+        }
+      }
+    }
+  ]
+}
