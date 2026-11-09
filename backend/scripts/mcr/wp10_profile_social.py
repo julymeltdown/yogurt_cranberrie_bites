@@ -994,9 +994,12 @@ class Gate:
         if intro is not None:
             revision = getattr(self, "intro_revision", None)
             suffix = f"?expected_revision={revision}" if revision is not None else ""
+            # Every mutation carries an Idempotency-Key; the gateway refuses a
+            # DELETE without one before dispatch, so omitting it here would test
+            # the gateway's header rule rather than the intro delete.
             status, body, _, _ = self.probe(
                 "step4 intro delete", "author", "DELETE",
-                f"/api/me/intro-posts/{intro}{suffix}")
+                f"/api/me/intro-posts/{intro}{suffix}", key=str(uuid4()))
             step["checks"]["intro_delete"] = {"http": status}
         passed = (step["checks"]["room_before"]["http"] == 200
                   and step["checks"]["poster_upload"]["http"] == 200
