@@ -108,7 +108,7 @@ async fn main() -> anyhow::Result<()> {
         &profile_service::adapters::r#in::grpc::identity_verification::POLICY,
         profile_service::adapters::r#in::grpc::identity_verification::proto::identity_verification_service_server::IdentityVerificationServiceServer::new(
             profile_service::adapters::r#in::grpc::identity_verification::IdentityVerificationServer::new(
-                identity,
+                identity.clone(),
             ),
         ),
         config.caller_registry.clone(),
@@ -195,6 +195,19 @@ async fn main() -> anyhow::Result<()> {
                 )?)
                 .add_service(profile_product.dispatch)
                 .add_service(profile_product.settlement)
+                // The concert service evaluates an intro audience by asking for
+                // claim facts. Without this registration the concert side's
+                // claims port has nothing to call, and every intro write fails
+                // closed with DEPENDENCY_UNAVAILABLE.
+                .add_service(platform::grpc_method_policy::guard_without_delegation(
+                    &profile_service::adapters::r#in::grpc::identity_claim_reader::POLICY,
+                    profile_service::adapters::r#in::grpc::identity_claim_reader::proto::identity_claim_reader_server::IdentityClaimReaderServer::new(
+                        profile_service::adapters::r#in::grpc::identity_claim_reader::IdentityClaimReaderServer::new(
+                            std::sync::Arc::new(identity.claims()),
+                        ),
+                    ),
+                    config.caller_registry.clone(),
+                )?)
                 .add_service(identity_callback)
                 .add_service(platform::grpc_method_policy::guard_with_forwarding(
                     &profile_service::adapters::r#in::grpc::author_authority::PROFILE_AUTHOR_POLICY,

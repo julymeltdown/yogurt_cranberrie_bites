@@ -90,6 +90,20 @@ impl IdentityRuntime {
         ReadVerification::new(self.repository.clone())
     }
 
+    /// The claim reader the concert service calls to evaluate an intro audience.
+    ///
+    /// The audience decision needs claim *facts* (a live gender bucket and age),
+    /// not the owner's own verification DTO, so this is a separate port with its
+    /// own closed method policy: only the Concert workload may call it, and it
+    /// declares no actor field because the request names the subject rather than
+    /// acting for it.
+    pub fn claims(&self) -> crate::identity::claim_read::ReadClaim {
+        crate::identity::claim_read::ReadClaim::new(
+            self.repository.pool().clone(),
+            self.repository.clone(),
+        )
+    }
+
     pub fn disconnect(&self) -> DisconnectVerification {
         DisconnectVerification::new(self.repository.clone())
     }

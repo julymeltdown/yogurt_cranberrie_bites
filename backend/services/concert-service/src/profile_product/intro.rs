@@ -464,19 +464,32 @@ fn parse_snapshot(value: &serde_json::Value) -> Result<Snapshot, Status> {
         .ok_or_else(|| Status::invalid_argument("Invalid intro draft"))?;
     let mut items = Vec::with_capacity(array.len());
     for entry in array {
+        // `core.FavoriteItem` is a closed object. Checking the key set — not
+        // just the count — keeps the `get` calls below total: a map with three
+        // other keys would otherwise index a missing field and panic.
         let object = entry
             .as_object()
-            .filter(|object| object.len() == 3)
+            .filter(|object| {
+                object.len() == 3
+                    && ["catalog_item_id", "label", "category"]
+                        .iter()
+                        .all(|field| object.contains_key(*field))
+            })
             .ok_or_else(|| Status::invalid_argument("Invalid intro draft"))?;
-        let catalog_item_id = object["catalog_item_id"]
-            .as_str()
+        let catalog_item_id = object
+            .get("catalog_item_id")
+            .and_then(serde_json::Value::as_str)
             .and_then(|text| Uuid::parse_str(text).ok())
             .ok_or_else(|| Status::invalid_argument("Invalid intro draft"))?;
-        let label = object["label"]
-            .as_str()
+        let label = object
+            .get("label")
+            .and_then(serde_json::Value::as_str)
             .ok_or_else(|| Status::invalid_argument("Invalid intro draft"))?
             .to_owned();
-        let category = match object["category"].as_str() {
+        let category = match object
+            .get("category")
+            .and_then(serde_json::Value::as_str)
+        {
             Some("music") => "music",
             Some("anime") => "anime",
             Some("game") => "game",
@@ -517,14 +530,23 @@ fn parse_audience(value: &serde_json::Value) -> Result<Audience, Status> {
         .as_object()
         .filter(|object| object.len() == 3)
         .ok_or_else(|| Status::invalid_argument("Invalid intro draft"))?;
-    let gender = match object["allowed_gender"].as_str() {
+    // `serde_json::Map`'s `Index` panics on a missing key, so every field is
+    // fetched with `get` and a missing one is a client error. A panic here would
+    // take down the request's worker thread instead of answering 400.
+    let gender = match object
+        .get("allowed_gender")
+        .and_then(serde_json::Value::as_str)
+    {
         Some("any") => GenderCondition::Any,
         Some("female") => GenderCondition::Female,
         Some("male") => GenderCondition::Male,
         Some("unknown") => GenderCondition::Unknown,
         _ => return Err(Status::invalid_argument("Invalid intro draft")),
     };
-    let minimum = match &object["minimum_age"] {
+    let minimum = match object
+        .get("minimum_age")
+        .unwrap_or(&serde_json::Value::Null)
+    {
         serde_json::Value::Null => None,
         value => Some(
             value
@@ -533,7 +555,10 @@ fn parse_audience(value: &serde_json::Value) -> Result<Audience, Status> {
                 .ok_or_else(|| Status::invalid_argument("Invalid intro draft"))?,
         ),
     };
-    let maximum = match &object["maximum_age_exclusive"] {
+    let maximum = match object
+        .get("maximum_age_exclusive")
+        .unwrap_or(&serde_json::Value::Null)
+    {
         serde_json::Value::Null => None,
         value => Some(
             value
@@ -866,5 +891,73 @@ fn comment_status(error: CommentError) -> Status {
         400 => Status::invalid_argument("Invalid intro comment"),
         404 => Status::not_found("Comment unavailable"),
         _ => Status::unavailable("Intro store unavailable"),
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// A malformed audience is a client error, never a panic.
+    ///
+    /// `serde_json::Map`'s `Index` panics on a missing key, so reading a field
+    /// with `object["field"]` on a body that simply omits it aborts the worker
+    /// thread instead of answering `400`. These bodies each omit or rename one
+    /// field of a closed object.
+    #[test]
+    fn a_malformed_audience_is_a_client_error_not_a_panic() {
+        for audience in [
+            // `allowed_gender` absent entirely.
+            serde_json::json!({"minimum_age": 18, "maximum_age_exclusive": 30}),
+            // Renamed field.
+            serde_json::json!({"gender": "any", "minimum_age": 18, "maximum_age_exclusive": 30}),
+            // Wrong arity.
+            serde_json::json!({"allowed_gender": "any"}),
+            // Not an object at all.
+            serde_json::json!("any"),
+            serde_json::json!(null),
+        ] {
+            let status = parse_audience(&audience).expect_err("must be refused");
+            assert_eq!(status.code(), tonic::Code::InvalidArgument, "{audience}");
+        }
+    }
+
+    /// A snapshot item with the wrong key set is a client error, never a panic.
+    #[test]
+    fn a_snapshot_item_with_other_keys_is_a_client_error_not_a_panic() {
+        let id = Uuid::new_v4();
+        for item in [
+            // Three keys, none of them the expected ones.
+            serde_json::json!({"a": 1, "b": 2, "c": 3}),
+            // The right count but one field renamed.
+            serde_json::json!({"catalog_item_id": id, "label": "x", "kind": "music"}),
+            // Missing the label.
+            serde_json::json!({"catalog_item_id": id, "category": "music", "other": 1}),
+        ] {
+            let snapshot = serde_json::json!([item]);
+            let status = parse_snapshot(&snapshot).expect_err("must be refused");
+            assert_eq!(status.code(), tonic::Code::InvalidArgument, "{item}");
+        }
+    }
+
+    /// A well-formed audience and snapshot still parse.
+    #[test]
+    fn a_well_formed_audience_and_snapshot_parse() {
+        let audience = serde_json::json!({
+            "allowed_gender": "female",
+            "minimum_age": 18,
+            "maximum_age_exclusive": 30,
+        });
+        parse_audience(&audience).expect("valid audience");
+        let id = Uuid::new_v4();
+        let snapshot = serde_json::json!([
+            {"catalog_item_id": id, "label": "Three Cheers", "category": "music"}
+        ]);
+        let parsed = parse_snapshot(&snapshot).expect("valid snapshot");
+        assert_eq!(parsed.len(), 1);
+        let item = &parsed.items()[0];
+        assert_eq!(item.catalog_item_id, id);
+        assert_eq!(item.label, "Three Cheers");
+        assert_eq!(item.category, "music");
     }
 }

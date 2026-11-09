@@ -5,53 +5,53 @@
   "production": "NOT_CLAIMED",
   "candidate": {
     "worktree": "/Users/lhs/Desktop/yogurt-worktrees/refactor-1",
-    "revision": "3f49da8e242c183c38abeef9824214e7f9e8d176",
+    "revision": "9e32617c074345e7e99c508d5d060f1bfad98bd9",
     "script_sha256": "a8ae124507bc09a25da442680039239700d509b78a7a5c36c19f4df9315d894a",
     "binaries": {
       "api-gateway": {
-        "sha256": "c44f6be4dacec92ba28ef85b6457941c5e17041a0f9177869c8fae2cedf6c62f",
-        "bytes": 69701984
+        "sha256": "b9769d37c29f880ad7d59cad741943220907b83943435ce2b18898792b6fdf83",
+        "bytes": 69721744
       },
       "auth-service": {
-        "sha256": "d7ab97231e9f20b4f96849f2756c0e2f2a61124a15d788b8eb3adddd1d7af257",
-        "bytes": 56148832
+        "sha256": "ca6ac4c17b4e0abc06273d88a0ef49fb85d8de70c662ce7925bfb1970e4198d9",
+        "bytes": 56148800
       },
       "concert-service": {
-        "sha256": "371f68a2ae2b4309e0f18d68001927ea52376dce5df9cec31b7b2dacb53f94b4",
-        "bytes": 98549856
+        "sha256": "354355a6cf2a4f8e54daf48d6a84e3038ad8ec9d1c2cd2a6722fdfc7be88a999",
+        "bytes": 98901712
       },
       "friend-service": {
-        "sha256": "9f33eb06bd12ede1c3bef3ae571ba9f3e72d704ca7c44f5f2389fa7831f7fa2e",
-        "bytes": 44688080
+        "sha256": "466392470d0e86fd1361a48ac6700d104c5a84fd4fe528db6fe8a6f1050682a5",
+        "bytes": 44688128
       },
       "notification-service": {
         "sha256": "968a9e6c3f274e937e1c35f84bd67bc738109f2d94d342f1e77b35d3af5c8dc9",
         "bytes": 40745448
       },
       "post-service": {
-        "sha256": "87b41f5726cf880d13324c91a2b715f928c7f6a294437800d550d70b188f4956",
+        "sha256": "7d9bb15f9a6a4767c5b5e419ac45e87cd7b169a985f1f38152d7a1509c9fc5f3",
         "bytes": 58178048
       },
       "profile-service": {
-        "sha256": "17d6bd9de6eb494d73facc329f471e85e4514d63c6ef1c4b92a16f021db7e0f3",
-        "bytes": 52787024
+        "sha256": "8385c78a38a31e07e0c87f3c19fa418841783a402d6e6d5dcfd63abdf572326f",
+        "bytes": 53156864
       }
     }
   },
-  "started_at_utc": "2026-11-09T07:46:12.741933+00:00",
+  "started_at_utc": "2026-11-09T08:59:29.146896+00:00",
   "identities": {
     "author": {
-      "user_id": "98a54a52-3c7b-4500-b62f-954f12fdbb73",
-      "profile_id": "705bf55a-2e94-478f-b454-2e6726389023",
+      "user_id": "d2671850-956c-43e9-9a25-62857190731c",
+      "profile_id": "93c8772c-e2aa-426e-8b57-34cef48c4bc3",
       "verification": "NOT_RUN (author needs no claim)"
     },
     "viewer": {
-      "user_id": "ebe488f8-0dbd-4102-a1be-47e4cbba5027",
-      "profile_id": "d8072b6a-4c4b-42b2-a1a8-02970db38e62"
+      "user_id": "0242affc-4555-4992-8e4f-d39f69b96584",
+      "profile_id": "29387cf3-cd0d-46c7-a0f0-a9143da1a159"
     },
     "outsider": {
-      "user_id": "20defeff-da2d-4f83-8537-93cc3121bdb0",
-      "profile_id": "7d78064c-62d4-4034-885e-81b093b0d858"
+      "user_id": "54a7734d-62cc-4a6b-8585-19f37d2ba4f4",
+      "profile_id": "03cb4c13-2aa6-4ad9-ab2f-64ba9b3066dd"
     },
     "verification": {
       "viewer": {
@@ -70,11 +70,11 @@
   },
   "steps": {
     "step1_profile_posts": {
-      "status": "FAIL",
+      "status": "PASS",
       "checks": {
         "selfie_init": {
           "http": 200,
-          "media_id": "45aa6395-4356-4aea-8f57-3b00c1f7ebf4"
+          "media_id": "e30798b1-83a3-4190-8754-b0fcda76aee3"
         },
         "selfie_bytes": {
           "http": 200
@@ -84,7 +84,7 @@
         },
         "artwork_init": {
           "http": 200,
-          "media_id": "ce3b5523-5070-4c3d-8bfc-3f4ab5dd2a7f"
+          "media_id": "c10936d6-bcf1-4eeb-b611-54cde3e6c7d2"
         },
         "artwork_bytes": {
           "http": 200
@@ -94,15 +94,15 @@
         },
         "selfie_post": {
           "http": 200,
-          "post_id": "dbe81a47-923e-4be0-b266-0a4beb3f109a"
+          "post_id": "21e9d7ab-82dc-4e92-a15f-d63007dfc0de"
         },
         "artwork_post": {
           "http": 200,
-          "post_id": "87c1788a-7ca9-4830-a37f-31f77d5d9bf2"
+          "post_id": "02cab792-294e-4db3-83ec-436173ee8520"
         },
         "author_list": {
           "http": 200,
-          "count": 0
+          "count": 2
         },
         "room_default": {
           "http": 200,
@@ -111,12 +111,12 @@
         }
       },
       "media": {
-        "selfie": "45aa6395-4356-4aea-8f57-3b00c1f7ebf4",
-        "artwork": "ce3b5523-5070-4c3d-8bfc-3f4ab5dd2a7f"
+        "selfie": "e30798b1-83a3-4190-8754-b0fcda76aee3",
+        "artwork": "c10936d6-bcf1-4eeb-b611-54cde3e6c7d2"
       },
       "posts": {
-        "selfie": "dbe81a47-923e-4be0-b266-0a4beb3f109a",
-        "artwork": "87c1788a-7ca9-4830-a37f-31f77d5d9bf2"
+        "selfie": "21e9d7ab-82dc-4e92-a15f-d63007dfc0de",
+        "artwork": "02cab792-294e-4db3-83ec-436173ee8520"
       }
     },
     "step2_intro_post": {
@@ -126,7 +126,7 @@
           "http": 400
         },
         "list": {
-          "http": 404
+          "http": 200
         }
       },
       "blocked_on": "WP-05 intro post operations are not composed on master: the frozen routes /api/me/intro-posts and /api/discover/intro-posts are not registered by the gateway, so the audience decision, the attachments and the heart have no surface to exercise"
@@ -183,13 +183,13 @@
       "surfaces": {
         "list": {
           "http": 200,
-          "path": "/api/profiles/705bf55a-2e94-478f-b454-2e6726389023/posts",
+          "path": "/api/profiles/93c8772c-e2aa-426e-8b57-34cef48c4bc3/posts",
           "reason": null
         },
         "detail": {
           "http": 404,
           "path": "/api/intro-posts/00000000-0000-4000-8000-000000000001",
-          "reason": null
+          "reason": "RESOURCE_UNAVAILABLE"
         },
         "attachment": {
           "http": 404,
@@ -207,9 +207,9 @@
           "reason": "RESOURCE_UNAVAILABLE"
         },
         "shared_link": {
-          "http": 404,
+          "http": 403,
           "path": "/api/intro-posts/resolve?token=wp10",
-          "reason": null
+          "reason": "PERMISSION_DENIED"
         },
         "like": {
           "http": 415,
@@ -225,7 +225,7 @@
       "blocked_on": "WP-04/WP-05 intro surfaces are not composed on master"
     },
     "lifecycle": {
-      "status": "PARTIAL",
+      "status": "NOT_RUN",
       "cases": {},
       "http": {
         "room read": {
@@ -246,81 +246,16 @@
         }
       },
       "durable": {
-        "cases": {
-          "room_visibility": {
-            "unchanged": true,
-            "avatar_unchanged": true,
-            "posts_unchanged": true,
-            "media_unchanged": true,
-            "room_changed": true,
-            "intro_audience": "BLOCKED: no intro post surface on this master"
-          },
-          "room_visibility_restore": {
-            "unchanged": true,
-            "room_restored": true,
-            "revision_advanced": true
-          },
-          "avatar_save": {
-            "unchanged": true,
-            "room_unchanged": true,
-            "posts_unchanged": true,
-            "media_unchanged": true,
-            "avatar_changed": true
-          },
-          "post_delete": {
-            "unchanged": false,
-            "note": "no profile post row exists to delete (the profile post producer is not reachable over HTTP on this master)"
-          }
-        },
-        "captures": {
-          "before_last": {
-            "room": [
-              {
-                "layout": {},
-                "revision": 3,
-                "created_at": "2026-11-09T16:46:36.002859+09:00",
-                "visibility": "PUBLIC",
-                "owner_profile_id": "705bf55a-2e94-478f-b454-2e6726389023"
-              }
-            ],
-            "avatar": [],
-            "posts": [],
-            "media": []
-          },
-          "after_last": {
-            "room": [
-              {
-                "layout": {},
-                "revision": 3,
-                "created_at": "2026-11-09T16:46:36.002859+09:00",
-                "visibility": "PUBLIC",
-                "owner_profile_id": "705bf55a-2e94-478f-b454-2e6726389023"
-              }
-            ],
-            "avatar": [
-              {
-                "config": {
-                  "contract_version": "1.0.0"
-                },
-                "revision": 2,
-                "created_at": "2026-11-09T16:46:36.381988+09:00",
-                "owner_profile_id": "705bf55a-2e94-478f-b454-2e6726389023"
-              }
-            ],
-            "posts": [],
-            "media": []
-          }
-        }
+        "error": "JSONDecodeError",
+        "detail": "Extra data: line 1 column 2 (char 1)"
       },
       "http_blocked_on": "the profile product producer's closed operation set does not include the room, avatar, profile post or profile media operations",
-      "not_run_cases": [
-        "post_delete"
-      ]
+      "not_run_cases": []
     }
   },
   "checks": {},
   "stack": {
-    "gateway_url": "http://127.0.0.1:63293",
+    "gateway_url": "http://127.0.0.1:53223",
     "event": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
     "release_digest": "5a51442b4b4c62d99c329f39aafbf277b4a37a384efc3fdfd1f5c219997bec3b",
     "gateway_request_timeout_ms": 5000,
@@ -478,12 +413,12 @@
         }
       }
     },
-    "owned_root": "/private/tmp/mcr-pg-3i8c9u1i",
+    "owned_root": "/private/tmp/mcr-pg-gpo6rymv",
     "naver_provider": "local test application",
     "mail": "private local HTTP capture"
   },
   "enrollment_policy": {
-    "revision": "4892bef2-0244-4051-be1e-8fd20adfff06",
+    "revision": "04ce027e-a753-4b55-85f5-70ab7ad6936e",
     "approval_reference": "development-not-admitted",
     "production_approval": "NOT_PRESENT_IN_CHECKOUT_SCHEMA"
   },
@@ -554,7 +489,7 @@
       "label": "step1 selfie bytes",
       "role": "author",
       "method": "PUT",
-      "path": "/api/me/media/45aa6395-4356-4aea-8f57-3b00c1f7ebf4/bytes",
+      "path": "/api/me/media/e30798b1-83a3-4190-8754-b0fcda76aee3/bytes",
       "http": 200,
       "reason": null,
       "bytes": 14
@@ -563,7 +498,7 @@
       "label": "step1 selfie finalize",
       "role": "author",
       "method": "POST",
-      "path": "/api/me/media/45aa6395-4356-4aea-8f57-3b00c1f7ebf4/finalize",
+      "path": "/api/me/media/e30798b1-83a3-4190-8754-b0fcda76aee3/finalize",
       "http": 200,
       "reason": null,
       "bytes": 225
@@ -581,7 +516,7 @@
       "label": "step1 artwork bytes",
       "role": "author",
       "method": "PUT",
-      "path": "/api/me/media/ce3b5523-5070-4c3d-8bfc-3f4ab5dd2a7f/bytes",
+      "path": "/api/me/media/c10936d6-bcf1-4eeb-b611-54cde3e6c7d2/bytes",
       "http": 200,
       "reason": null,
       "bytes": 14
@@ -590,7 +525,7 @@
       "label": "step1 artwork finalize",
       "role": "author",
       "method": "POST",
-      "path": "/api/me/media/ce3b5523-5070-4c3d-8bfc-3f4ab5dd2a7f/finalize",
+      "path": "/api/me/media/c10936d6-bcf1-4eeb-b611-54cde3e6c7d2/finalize",
       "http": 200,
       "reason": null,
       "bytes": 225
@@ -617,10 +552,10 @@
       "label": "step1 author list",
       "role": "author",
       "method": "GET",
-      "path": "/api/profiles/705bf55a-2e94-478f-b454-2e6726389023/posts",
+      "path": "/api/profiles/93c8772c-e2aa-426e-8b57-34cef48c4bc3/posts",
       "http": 200,
       "reason": null,
-      "bytes": 31
+      "bytes": 975
     },
     {
       "label": "step1 room default",
@@ -645,9 +580,9 @@
       "role": "viewer",
       "method": "GET",
       "path": "/api/discover/intro-posts",
-      "http": 404,
+      "http": 200,
       "reason": null,
-      "bytes": 0
+      "bytes": 31
     },
     {
       "label": "step3 notification inbox",
@@ -671,10 +606,10 @@
       "label": "step3 viewer profile",
       "role": "author",
       "method": "GET",
-      "path": "/api/profiles/d8072b6a-4c4b-42b2-a1a8-02970db38e62",
+      "path": "/api/profiles/29387cf3-cd0d-46c7-a0f0-a9143da1a159",
       "http": 200,
       "reason": null,
-      "bytes": 138
+      "bytes": 200
     },
     {
       "label": "step4 room before",
@@ -709,8 +644,8 @@
       "method": "GET",
       "path": "/api/intro-posts/00000000-0000-4000-8000-000000000001",
       "http": 404,
-      "reason": null,
-      "bytes": 0
+      "reason": "RESOURCE_UNAVAILABLE",
+      "bytes": 194
     },
     {
       "label": "step5 restricted attachments",
@@ -734,10 +669,10 @@
       "label": "cross-surface list",
       "role": "outsider",
       "method": "GET",
-      "path": "/api/profiles/705bf55a-2e94-478f-b454-2e6726389023/posts",
+      "path": "/api/profiles/93c8772c-e2aa-426e-8b57-34cef48c4bc3/posts",
       "http": 200,
       "reason": null,
-      "bytes": 31
+      "bytes": 975
     },
     {
       "label": "cross-surface detail",
@@ -745,8 +680,8 @@
       "method": "GET",
       "path": "/api/intro-posts/00000000-0000-4000-8000-000000000001",
       "http": 404,
-      "reason": null,
-      "bytes": 0
+      "reason": "RESOURCE_UNAVAILABLE",
+      "bytes": 194
     },
     {
       "label": "cross-surface attachment",
@@ -780,9 +715,9 @@
       "role": "outsider",
       "method": "GET",
       "path": "/api/intro-posts/resolve?token=wp10",
-      "http": 404,
-      "reason": null,
-      "bytes": 0
+      "http": 403,
+      "reason": "PERMISSION_DENIED",
+      "bytes": 191
     },
     {
       "label": "cross-surface like",
@@ -824,10 +759,10 @@
       "label": "lifecycle http posts list",
       "role": "author",
       "method": "GET",
-      "path": "/api/profiles/705bf55a-2e94-478f-b454-2e6726389023/posts",
+      "path": "/api/profiles/93c8772c-e2aa-426e-8b57-34cef48c4bc3/posts",
       "http": 200,
       "reason": null,
-      "bytes": 31
+      "bytes": 975
     },
     {
       "label": "lifecycle http room visibility",
@@ -839,17 +774,15 @@
       "bytes": 537
     }
   ],
-  "result": "FAIL",
+  "result": "INCOMPLETE",
   "tally": {
-    "PASS": 0,
-    "PARTIAL": 2,
-    "FAIL": 1,
+    "PASS": 1,
+    "PARTIAL": 1,
+    "FAIL": 0,
     "BLOCKED": 4,
-    "NOT_RUN": 0
+    "NOT_RUN": 1
   },
-  "finished_at_utc": "2026-11-09T07:46:36.981956+00:00",
+  "finished_at_utc": "2026-11-09T08:59:52.089078+00:00",
   "service_teardown": "PASS",
-  "cleanup": "PASS",
-  "gate_script_modified": false,
-  "note": "Gate re-run unchanged after the authority and media-composition fixes. Step 1 now reaches the full media and post pipeline (all 200s) and fails only on author_list count 0, because the Gateway sends the account UUID as profile_id while profile_posts is keyed by the profile UUID."
+  "cleanup": "PASS"
 }
