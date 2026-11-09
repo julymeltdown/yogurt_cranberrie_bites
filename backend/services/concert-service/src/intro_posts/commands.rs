@@ -13,9 +13,8 @@
 //! mentions. The test `deleting_a_post_removes_likes_and_comments_and_nothing_else`
 //! snapshots every one of those tables before and after.
 use super::visibility::VisibilityPolicy;
-use crate::intro_posts::attachments;
 use concert_application::intro_posts::{
-    attachments::{plan, AttachmentCandidate, AttachmentError},
+    attachments::{plan, AttachmentError},
     audience::Audience,
     content::IntroContent,
     snapshot::Snapshot,
@@ -507,34 +506,9 @@ impl IntroPostStore {
         author: Uuid,
         requested: &[Uuid],
     ) -> Result<Vec<Uuid>, IntroCommandError> {
-        if requested.is_empty() {
-            return Ok(Vec::new());
-        }
-        let rows = sqlx::query(
-            "select media_id,owner_profile_id,purpose,state from profile_media \
-             where media_id = any($1)",
-        )
-        .bind(requested)
-        .fetch_all(&mut **tx)
-        .await?;
-        let found: Vec<AttachmentCandidate> = rows
-            .iter()
-            .map(|row| {
-                let state: String = row.try_get("state").unwrap_or_else(|_| "DELETED".to_owned());
-                AttachmentCandidate {
-                    media_id: row.try_get("media_id").unwrap_or_else(|_| Uuid::nil()),
-                    owner_profile_id: row
-                        .try_get("owner_profile_id")
-                        .unwrap_or_else(|_| Uuid::nil()),
-                    purpose: row
-                        .try_get::<String, _>("purpose")
-                        .ok()
-                        .and_then(|value| attachments::MediaPurpose::parse(&value))
-                        .unwrap_or(attachments::MediaPurpose::ProfilePost),
-                    ready: state == "READY",
-                }
-            })
-            .collect();
+        // The row decoding is shared with the profile-post command, so the two
+        // surfaces cannot disagree about what a media row means.
+        let found = crate::profile_media::candidates_in(&mut **tx, requested).await?;
         let plan = plan(requested, author, &found)?;
         Ok(plan.media_ids)
     }

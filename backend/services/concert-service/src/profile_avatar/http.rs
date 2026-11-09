@@ -74,13 +74,7 @@ impl ProfileAvatarRefusal {
 /// This is checked on the raw target, before any parsing, so a percent-encoded
 /// or nested segment cannot slip past a later, narrower parser. `%2Fevents%2F`
 /// decodes to the same path and is refused too.
-pub fn names_event_path(target: &str) -> bool {
-    let lowered = target.to_ascii_lowercase();
-    lowered.contains("/events/")
-        || lowered.contains("%2fevents%2f")
-        || lowered.contains("%2fevents/")
-        || lowered.contains("/events%2f")
-}
+pub use crate::profile_http::names_event_path;
 
 /// Parse a profile avatar target into its operation.
 ///

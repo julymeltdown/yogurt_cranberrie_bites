@@ -28,13 +28,17 @@
 //! Modules:
 //!
 //! * [`upload`] — the upload lifecycle (T-501);
-//! * [`authorization`] — who may read which profile media (T-505, E-03/E-04).
+//! * [`authorization`] — who may read which profile media (T-505, E-03/E-04);
+//! * [`rows`] — the one decoder from a `profile_media` row to the facts the
+//!   attachment rules decide over.
 pub mod authorization;
+pub mod rows;
 pub mod upload;
 
 pub use authorization::{
     can_view_media, media_read_path, MediaViewer, MediaVisibility, ProfileMediaRead,
 };
+pub use rows::candidates_in;
 pub use upload::{
     cleanup_orphans, cleanup_owner_orphans, ProfileMediaError, ProfileMediaId, ProfileMediaIntent,
     ProfileMediaState, ProfileMediaStore, ProfileMediaUpload, UploadPurpose,

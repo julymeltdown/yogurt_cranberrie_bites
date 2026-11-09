@@ -108,36 +108,14 @@ impl RoomRefusal {
 ///
 /// Checked on the raw target before any parsing, so a percent-encoded or nested
 /// segment cannot slip past a later, narrower parser.
-pub fn names_event_path(target: &str) -> bool {
-    let lowered = target.to_ascii_lowercase();
-    lowered.contains("/events/")
-        || lowered.contains("%2fevents%2f")
-        || lowered.contains("%2fevents/")
-        || lowered.contains("/events%2f")
-}
+pub use crate::profile_http::names_event_path;
 
 /// Whether a raw target names an intro post.
 ///
 /// A room is never addressed through an intro post. This is checked on the raw
 /// target, including percent-encoded spellings, before the route table is
 /// consulted.
-pub fn names_intro_path(target: &str) -> bool {
-    let lowered = target.to_ascii_lowercase();
-    // Exact segment spellings only: a word that merely starts with "intro" is not
-    // an intro post, and refusing it would be a false positive.
-    lowered.contains("/intro/")
-        || lowered.contains("/intro?")
-        || lowered.contains("/intros/")
-        || lowered.contains("/intros?")
-        || lowered.contains("/intro-posts")
-        || lowered.contains("?intro=")
-        || lowered.ends_with("/intro")
-        || lowered.ends_with("/intros")
-        || lowered.contains("%2fintro%2f")
-        || lowered.contains("%2fintro/")
-        || lowered.contains("/intro%2f")
-        || lowered.contains("%2fintro?")
-}
+pub use crate::profile_http::names_intro_path;
 
 /// Parse a room target into its operation.
 ///

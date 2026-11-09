@@ -84,11 +84,16 @@ impl ProfileMediaError {
         }
     }
     /// The frozen `details.reason` string.
+    ///
+    /// Every value here is in the operation register's closed error set for the
+    /// profile media operations (`contracts/domain/v1/operations.json`). A
+    /// purpose/context mismatch and a byte mismatch are both *client input*
+    /// errors, so both project to `INVALID_INPUT`; a reason the contract does not
+    /// declare would be dropped by the gateway's closed envelope and by the
+    /// client's error decoder, turning a precise refusal into an opaque one.
     pub fn reason(self) -> &'static str {
         match self {
-            Self::Invalid => "INVALID_INPUT",
-            Self::PurposeMismatch => "INVALID_PURPOSE",
-            Self::BytesMismatch => "BYTES_MISMATCH",
+            Self::Invalid | Self::PurposeMismatch | Self::BytesMismatch => "INVALID_INPUT",
             Self::UnsupportedMedia => "INVALID_MEDIA_TYPE",
             Self::TooLarge => "PAYLOAD_TOO_LARGE",
             Self::Denied => "PERMISSION_DENIED",

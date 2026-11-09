@@ -21,25 +21,13 @@ use uuid::Uuid;
 pub const MAX_ATTACHMENTS: usize = 4;
 
 /// The purpose an intro attachment must carry.
-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
-pub enum MediaPurpose {
-    ProfileImage,
-    ProfilePost,
-    IntroPost,
-    RoomPoster,
-}
-
-impl MediaPurpose {
-    pub fn parse(value: &str) -> Option<Self> {
-        match value {
-            "PROFILE_IMAGE" => Some(Self::ProfileImage),
-            "PROFILE_POST" => Some(Self::ProfilePost),
-            "INTRO_POST" => Some(Self::IntroPost),
-            "ROOM_POSTER" => Some(Self::RoomPoster),
-            _ => None,
-        }
-    }
-}
+///
+/// This is the same closed set as [`crate::media::Purpose`], and the same values
+/// the `profile_media` CHECK constraint admits. It is a re-export rather than a
+/// second enum so the two cannot drift: a purpose added to the media domain
+/// appears here automatically, and a purpose this module does not expect is
+/// still parseable by the caller that needs to reject it.
+pub use crate::media::Purpose as MediaPurpose;
 
 impl std::fmt::Display for AttachmentError {
     fn fmt(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {

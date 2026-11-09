@@ -202,9 +202,13 @@ fn the_profile_upload_path_admits_only_profile_post() {
     for purpose in ["ROOM_POSTER", "INTRO_POST", "PROFILE_IMAGE", "POST", "GIVEAWAY", "BEACON"] {
         assert_eq!(
             parse_init_upload(&body(purpose), UploadPurpose::ProfilePost),
+            // A purpose/context mismatch is a client input error. The reason is
+            // the contract's `INVALID_INPUT`: the operation register's closed
+            // error set declares no purpose-specific reason, and a reason
+            // outside it is dropped by the gateway's closed envelope.
             Err(RouteRefusal {
                 status: 400,
-                reason: "INVALID_PURPOSE",
+                reason: "INVALID_INPUT",
             }),
             "{purpose}"
         );

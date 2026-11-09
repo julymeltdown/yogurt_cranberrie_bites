@@ -33,6 +33,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT / "backend/scripts/mcr"))
 import migration_smoke as migration  # noqa: E402
+import wp_cluster_harness as harness  # noqa: E402
 
 # The previous head of each service, before WP-02.
 PREVIOUS_HEAD = {"profile-service": 10, "concert-service": 79}
@@ -50,18 +51,15 @@ DATABASES = {"profile-service": "mcr_wp02_ledger_profile", "concert-service": "m
 
 
 def manifest(service: str) -> dict[int, Path]:
-    directory = ROOT / "backend/services" / service / "migrations"
-    files: dict[int, Path] = {}
-    for path in sorted(directory.glob("*.sql")):
-        if path.name.endswith(".down.sql"):
-            continue
-        number = int(path.name.split("_", 1)[0])
-        if number in files:
-            raise SystemExit(f"duplicate migration number {number} in {service}")
-        files[number] = path
-    if not files:
-        raise SystemExit(f"empty migration set: {service}")
-    return files
+    """Every forward migration of `service`, keyed by number.
+
+    The duplicate-number refusal is the shared harness rule, so this script and
+    the work-package clusters cannot disagree about what a valid migration set
+    is.
+    """
+    files = harness.forward_migrations(service)
+    harness.refuse_duplicate_numbers(files, service)
+    return {harness.migration_number(path): path for path in files}
 
 
 def sqlx_checksum(path: Path) -> str:
@@ -95,25 +93,14 @@ def schema_hash(cluster: migration.Cluster, database: str) -> str:
 
 def apply(cluster: migration.Cluster, database: str, service: str, files: dict[int, Path],
           only: list[int] | None = None) -> list[int]:
-    applied: list[int] = []
-    for number, path in sorted(files.items()):
-        if only is not None and number not in only:
-            continue
-        # Apply through the SQLx-style ledger so the receipt is comparable to a
-        # real service migration run. The SQL is executed as one script.
-        body = path.read_text()
-        escaped = body.replace("'", "''")
-        cluster.sql(database, f"begin; {body} commit;")
-        cluster.sql(
-            database,
-            "insert into public._sqlx_migrations(version, description, installed_on, "
-            f"success, checksum, execution_time) values({number}, "
-            f"'{path.stem}', clock_timestamp(), true, "
-            f"decode('{sqlx_checksum(path)}','hex'), 0)",
-        )
-        assert escaped  # keep the variable meaningful for readers
-        applied.append(number)
-    return applied
+    """Apply `files` through the SQLx-style ledger.
+
+    The receipt is written the way the service migrator writes it, so the ledger
+    this script reads back is comparable to a real migration run.
+    """
+    selected = [path for number, path in sorted(files.items())
+                if only is None or number in only]
+    return harness.apply_migrations(cluster, database, selected, with_ledger=True)
 
 
 def ledger(cluster: migration.Cluster, database: str) -> dict[int, str]:
@@ -139,12 +126,7 @@ def scenario(cluster: migration.Cluster, service: str, files: dict[int, Path],
     database = f"{DATABASES[service]}_{suffix}"
     cluster.sql("postgres", f"create database {database} template template0;")
     # The ledger table SQLx itself creates.
-    cluster.sql(
-        database,
-        "create table public._sqlx_migrations(version bigint primary key, "
-        "description text not null, installed_on timestamptz not null default now(), "
-        "success boolean not null, checksum bytea not null, execution_time bigint not null)",
-    )
+    harness.create_ledger_table(cluster, database)
     if from_head is None:
         applied = apply(cluster, database, service, files)
         scenario_name = "empty"
@@ -190,15 +172,8 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     if not args.report.is_absolute():
         parser.error("--report must be an absolute new file path")
-    tools = {
-        name: migration.executable(args.pg_bin_dir / name) for name in migration.PG_TOOLS
-    }
-    report: dict = {
-        "scope": "WP-02 T-112 migration ledger and head check",
-        "result": "FAIL",
-        "cleanup": "NOT_RUN",
-        "started_at_utc": datetime.now(timezone.utc).isoformat(),
-    }
+    tools = harness.resolve_tools(args.pg_bin_dir)
+    report = harness.new_report("WP-02 T-112 migration ledger and head check")
     cluster = migration.Cluster(tools)
     try:
         cluster.init()
@@ -217,20 +192,10 @@ def main(argv: list[str] | None = None) -> int:
                 ],
             }
         report["result"] = "PASS"
-    except migration.SmokeError as error:
-        report["failure"] = error.detail
     except BaseException as error:  # noqa: BLE001 - the report must always be written
-        report["failure"] = {"phase": "harness", "diagnostic": type(error).__name__}
+        harness.record_failure(report, error)
     finally:
-        try:
-            cluster.cleanup()
-            report["cleanup"] = "PASS"
-        except BaseException as error:  # noqa: BLE001
-            report["cleanup"] = "FAIL"
-            report["cleanup_failure"] = type(error).__name__
-            report["result"] = "FAIL"
-        report["finished_at_utc"] = datetime.now(timezone.utc).isoformat()
-        args.report.write_text(json.dumps(report, indent=2) + "\n")
+        harness.finish(report, args.report, cluster=cluster)
     print(json.dumps({"result": report["result"], "cleanup": report["cleanup"]}))
     return 0 if report["result"] == "PASS" else 1
 

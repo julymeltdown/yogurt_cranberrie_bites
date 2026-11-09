@@ -29,13 +29,14 @@ import time
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT / "backend/scripts/mcr"))
 import migration_smoke as migration  # noqa: E402
+import wp_cluster_harness as harness  # noqa: E402
 
 DATABASE = "mcr_wp_four_b_identity"
 CONCERT_DATABASE = "mcr_wp_four_b_concert"
 
 
 def start(pg_bin_dir: Path, state_file: Path) -> int:
-    tools = {name: migration.executable(pg_bin_dir / name) for name in migration.PG_TOOLS}
+    tools = harness.resolve_tools(pg_bin_dir)
     cluster = migration.Cluster(tools)
     cluster.init()
     cluster.start()

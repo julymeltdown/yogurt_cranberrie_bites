@@ -15,37 +15,15 @@ use uuid::Uuid;
 /// Read the candidate rows for a requested set.
 ///
 /// An id that is not in the result is either absent or unreadable; the caller
-/// cannot tell which, and neither can the pure rule.
+/// cannot tell which, and neither can the pure rule. The row decoding itself is
+/// shared with the profile-post command, so the two surfaces cannot disagree
+/// about what a media row means.
 pub async fn candidates(
     pool: &PgPool,
     requested: &[Uuid],
 ) -> Result<Vec<AttachmentCandidate>, sqlx::Error> {
-    if requested.is_empty() {
-        return Ok(Vec::new());
-    }
-    let rows = sqlx::query(
-        "select media_id,owner_profile_id,purpose,state from profile_media where media_id = any($1)",
-    )
-    .bind(requested)
-    .fetch_all(pool)
-    .await?;
-    Ok(rows
-        .iter()
-        .map(|row| AttachmentCandidate {
-            media_id: row.try_get("media_id").unwrap_or_else(|_| Uuid::nil()),
-            owner_profile_id: row
-                .try_get("owner_profile_id")
-                .unwrap_or_else(|_| Uuid::nil()),
-            purpose: row
-                .try_get::<String, _>("purpose")
-                .ok()
-                .and_then(|value| MediaPurpose::parse(&value))
-                .unwrap_or(MediaPurpose::ProfilePost),
-            ready: row
-                .try_get::<String, _>("state")
-                .is_ok_and(|state| state == "READY"),
-        })
-        .collect())
+    let mut connection = pool.acquire().await?;
+    crate::profile_media::candidates_in(&mut connection, requested).await
 }
 
 /// Validate a requested set for `author`.

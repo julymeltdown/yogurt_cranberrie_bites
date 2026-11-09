@@ -177,15 +177,9 @@ impl From<ProfilePostError> for RouteRefusal {
 
 /// Whether a raw target names a concert event path.
 ///
-/// Checked on the raw target, before parsing, so a percent-encoded or nested
-/// segment cannot slip past a later, narrower parser.
-pub fn names_event_path(target: &str) -> bool {
-    let lowered = target.to_ascii_lowercase();
-    lowered.contains("/events/")
-        || lowered.contains("%2fevents%2f")
-        || lowered.contains("%2fevents/")
-        || lowered.contains("/events%2f")
-}
+/// The guard itself is shared with the room and avatar surfaces; see
+/// [`crate::profile_http::names_event_path`].
+pub use crate::profile_http::names_event_path;
 
 /// Percent-decode one path segment. A malformed escape is a client error.
 fn decode_segment(value: &str) -> Result<String, RouteRefusal> {
@@ -417,8 +411,11 @@ pub fn delete_revision(target: &str) -> Result<i64, RouteRefusal> {
 ///
 /// The purpose must be admitted by the upload context. A `ROOM_POSTER` or an
 /// `INTRO_POST` purpose sent to the profile-post upload path is
-/// `400 INVALID_PURPOSE` — the purpose/context mismatch T-501 requires — and
-/// nothing is written.
+/// `400 INVALID_INPUT` — the purpose/context mismatch T-501 requires — and
+/// nothing is written. The reason is `INVALID_INPUT` rather than a bespoke
+/// string because the operation register's closed error set does not declare a
+/// purpose-specific reason, and a reason outside it is dropped by the gateway's
+/// closed envelope.
 pub fn parse_init_upload(
     bytes: &[u8],
     context: super::super::profile_media::UploadPurpose,
@@ -435,10 +432,7 @@ pub fn parse_init_upload(
     let purpose = Purpose::parse(object["purpose"].as_str().ok_or_else(RouteRefusal::invalid)?)
         .map_err(|_| RouteRefusal::invalid())?;
     if !context.admits(purpose) {
-        return Err(RouteRefusal {
-            status: 400,
-            reason: "INVALID_PURPOSE",
-        });
+        return Err(RouteRefusal::invalid());
     }
     let mime = Mime::parse(
         object["content_type"]
@@ -503,12 +497,10 @@ fn reject_duplicate_keys(bytes: &[u8]) -> Result<(), RouteRefusal> {
         Array,
     }
     let mut stack: Vec<(Frame, std::collections::BTreeSet<String>)> = Vec::new();
-    let mut current = String::new();
     let mut pending_key: Option<String> = None;
     let mut expecting_key = false;
-    let mut parser = serde_json::Deserializer::from_slice(bytes).into_iter::<serde_json::Value>();
     // A raw scanner is simpler than a full JSON parser: walk the bytes, track
-    // object depth and string boundaries, and record each top-level key.
+    // object depth and string boundaries, and record each object's keys.
     let mut index = 0;
     while index < bytes.len() {
         match bytes[index] {
@@ -528,8 +520,7 @@ fn reject_duplicate_keys(bytes: &[u8]) -> Result<(), RouteRefusal> {
                 let text = std::str::from_utf8(&bytes[start..end])
                     .map_err(|_| RouteRefusal::invalid())?;
                 if expecting_key {
-                    current = text.to_owned();
-                    pending_key = Some(current.clone());
+                    pending_key = Some(text.to_owned());
                 }
                 index = end + 1;
                 continue;
@@ -573,7 +564,6 @@ fn reject_duplicate_keys(bytes: &[u8]) -> Result<(), RouteRefusal> {
         }
     }
     // The scan is only a duplicate check; `serde_json` still parses the value.
-    let _ = &mut parser;
     Ok(())
 }
 
@@ -736,10 +726,7 @@ mod tests {
         for purpose in ["ROOM_POSTER", "INTRO_POST", "PROFILE_IMAGE", "POST", "GIVEAWAY"] {
             assert_eq!(
                 parse_init_upload(&body(purpose), UploadPurpose::ProfilePost),
-                Err(RouteRefusal {
-                    status: 400,
-                    reason: "INVALID_PURPOSE"
-                }),
+                Err(RouteRefusal::invalid()),
                 "{purpose}"
             );
         }

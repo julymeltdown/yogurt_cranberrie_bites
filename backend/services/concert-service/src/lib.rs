@@ -50,6 +50,9 @@ pub mod profile_avatar;
 /// WP-06: profile-scoped media (upload lifecycle, read authorization).
 pub mod profile_media;
 
+/// The guards every profile-owned HTTP surface shares.
+pub mod profile_http;
+
 /// WP-06: ordinary profile posts (selfies, photographs, artwork).
 pub mod profile_posts;
 
