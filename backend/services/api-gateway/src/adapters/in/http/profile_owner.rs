@@ -80,9 +80,10 @@ pub const PROFILE_OWNERS: &[(&str, ProfileOwner)] = &[
     ("setOwnProfileAvatar", ProfileOwner::ConcertService),
     // `intro_posts`, `intro_attachments`, `intro_likes`, `intro_comments` (0082,
     // 0083). Only the operations WP-05's producer actually serves are listed;
-    // `listIntroPosts` and `getIntroPost` are absent because no producer answers
-    // them yet, and an entry here would route them to a service that refuses
-    // them. The coverage register records them with their real owner.
+    // The two discovery reads, served by WP-04's visibility predicate and the
+    // page/detail queries over `intro_posts`.
+    ("listIntroPosts", ProfileOwner::ConcertService),
+    ("getIntroPost", ProfileOwner::ConcertService),
     ("getOwnIntroPost", ProfileOwner::ConcertService),
     ("listOwnIntroPosts", ProfileOwner::ConcertService),
     ("saveIntroPostDraft", ProfileOwner::ConcertService),
@@ -156,6 +157,8 @@ mod tests {
                 "getOwnProfileAvatar",
                 "setOwnProfileAvatar",
                 // WP-05 intro operations served by the concert transport.
+                "listIntroPosts",
+                "getIntroPost",
                 "getOwnIntroPost",
                 "listOwnIntroPosts",
                 "saveIntroPostDraft",
@@ -169,7 +172,7 @@ mod tests {
                 "deleteIntroPostComment",
             ])
         );
-        assert_eq!(concert.len(), 26);
+        assert_eq!(concert.len(), 28);
     }
 
     #[test]

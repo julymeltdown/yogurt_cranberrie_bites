@@ -223,15 +223,27 @@ pub const ROUTES: &[Route] = &[
     },
     // ── WP-05 intro posts ──────────────────────────────────────────────────
     //
+    // The two discovery reads are mounted: WP-04's visibility predicate and the
+    // page/detail queries now exist, so these answer instead of failing.
+    Route {
+        method: "GET",
+        path: "/api/discover/intro-posts",
+        operation: "listIntroPosts",
+        body_limit: READ,
+        bytes: false,
+    },
+    Route {
+        method: "GET",
+        path: "/api/intro-posts/:intro_id",
+        operation: "getIntroPost",
+        body_limit: READ,
+        bytes: false,
+    },
+    //
     // The intro tables (`intro_posts`, `intro_attachments`, `intro_likes`,
     // `intro_comments`) live in `mcr_concert`, so these route to the concert
     // profile transport like the profile-post operations above.
     //
-    // `listIntroPosts` and `getIntroPost` are deliberately NOT mounted. They need
-    // a visibility-filtered page/detail query that does not exist yet (WP-04 owns
-    // the predicate, WP-05 the query), and a mounted route that always fails
-    // would give the frontend a discovery feed that 403s on every load. The
-    // coverage register records them as NOT_IMPLEMENTED with that owner.
     Route {
         method: "GET",
         path: "/api/me/intro-posts",

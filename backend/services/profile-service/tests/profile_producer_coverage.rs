@@ -298,6 +298,8 @@ fn the_served_set_is_exactly_what_the_producer_answers() {
             "getOwnProfileAvatar",
             "setOwnProfileAvatar",
             // WP-05 intro operations served by the concert transport.
+            "listIntroPosts",
+            "getIntroPost",
             "getOwnIntroPost",
             "listOwnIntroPosts",
             "saveIntroPostDraft",
@@ -312,7 +314,7 @@ fn the_served_set_is_exactly_what_the_producer_answers() {
         ]),
         "the concert-served set changed; update coverage::COVERAGE in the same commit"
     );
-    assert_eq!(by_concert.len(), 26);
+    assert_eq!(by_concert.len(), 28);
 }
 
 #[test]

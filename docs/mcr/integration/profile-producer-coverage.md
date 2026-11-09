@@ -1,8 +1,12 @@
 # Profile producer coverage
 
-Status: **PARTIAL — 21 of 43 operations served** (6 by the profile service,
-15 by the concert service). Every remaining operation is tracked with an owning
+Status: **PARTIAL — 34 of 43 operations served** (6 by the profile service,
+28 by the concert service). Every remaining operation is tracked with an owning
 work package and a concrete reason; none is silently missing.
+
+All thirteen frozen intro operations are now served: WP-04's visibility predicate
+runs inside the page and detail statements, so the two discovery reads answer
+instead of failing.
 
 The cross-database gap described in §2 is **closed**. The fifteen operations
 whose tables live in `mcr_concert` are now served by the concert service and
@@ -107,26 +111,26 @@ and the owner column names who will build it.
 | --- | --- | --- | --- | --- | --- |
 | 2.1b.1 | `getOwnIdentityVerification` | GET | `/api/me/identity/{provider}` | **Served** | `profile_service::identity` |
 | 2.1b.2 | `startIdentityVerification` | POST | `/api/me/identity/{provider}/verifications` | **Served** | `profile_service::identity` |
-| 2.1b.3 | `completeIdentityVerification` | GET | `/api/identity/{provider}/callback` | NOT_IMPLEMENTED | WP-04b callback transport |
+| 2.1b.3 | `completeIdentityVerification` | GET | `/api/identity/{provider}/callback` | **Served** | `profile_service::adapters::in::grpc::identity_verification` |
 | 2.1b.4 | `disconnectIdentityVerification` | DELETE | `/api/me/identity/{provider}` | **Served** | `profile_service::identity` |
 
 ### §2.2 Intro posts (domain)
 
 | # | operationId | Method | Path | Producer | Owner |
 | --- | --- | --- | --- | --- | --- |
-| 2.2.1 | `listIntroPosts` | GET | `/api/discover/intro-posts` | NOT_IMPLEMENTED | WP-05 intro posts |
-| 2.2.2 | `getIntroPost` | GET | `/api/intro-posts/{introId}` | NOT_IMPLEMENTED | WP-05 intro posts |
-| 2.2.3 | `getOwnIntroPost` | GET | `/api/me/intro-posts/{introId}` | NOT_IMPLEMENTED | WP-05 intro posts |
-| 2.2.4 | `listOwnIntroPosts` | GET | `/api/me/intro-posts` | NOT_IMPLEMENTED | WP-05 intro posts |
-| 2.2.5 | `saveIntroPostDraft` | PUT | `/api/me/intro-posts/{introId}` | NOT_IMPLEMENTED | WP-05 intro posts |
-| 2.2.6 | `publishIntroPost` | POST | `/api/me/intro-posts/{introId}/publish` | NOT_IMPLEMENTED | WP-05 intro posts |
-| 2.2.7 | `deleteIntroPost` | DELETE | `/api/me/intro-posts/{introId}` | NOT_IMPLEMENTED | WP-05 intro posts |
-| 2.2.8 | `setIntroPostLike` | PUT | `/api/intro-posts/{introId}/like` | NOT_IMPLEMENTED | WP-05 intro posts |
-| 2.2.9 | `clearIntroPostLike` | DELETE | `/api/intro-posts/{introId}/like` | NOT_IMPLEMENTED | WP-05 intro posts |
-| 2.2.10 | `listIntroPostLikers` | GET | `/api/intro-posts/{introId}/likes` | NOT_IMPLEMENTED | WP-05 intro posts |
-| 2.2.11 | `listIntroPostComments` | GET | `/api/intro-posts/{introId}/comments` | NOT_IMPLEMENTED | WP-05 intro posts |
-| 2.2.12 | `createIntroPostComment` | POST | `/api/intro-posts/{introId}/comments` | NOT_IMPLEMENTED | WP-05 intro posts |
-| 2.2.13 | `deleteIntroPostComment` | DELETE | `/api/intro-posts/{introId}/comments/{commentId}` | NOT_IMPLEMENTED | WP-05 intro posts |
+| 2.2.1 | `listIntroPosts` | GET | `/api/discover/intro-posts` | **Served** (concert) | `concert_service::intro_posts::repository` |
+| 2.2.2 | `getIntroPost` | GET | `/api/intro-posts/{introId}` | **Served** (concert) | `concert_service::intro_posts::repository` |
+| 2.2.3 | `getOwnIntroPost` | GET | `/api/me/intro-posts/{introId}` | **Served** (concert) | `concert_service::profile_product::intro` |
+| 2.2.4 | `listOwnIntroPosts` | GET | `/api/me/intro-posts` | **Served** (concert) | `concert_service::profile_product::intro` |
+| 2.2.5 | `saveIntroPostDraft` | PUT | `/api/me/intro-posts/{introId}` | **Served** (concert) | `concert_service::profile_product::intro` |
+| 2.2.6 | `publishIntroPost` | POST | `/api/me/intro-posts/{introId}/publish` | **Served** (concert) | `concert_service::profile_product::intro` |
+| 2.2.7 | `deleteIntroPost` | DELETE | `/api/me/intro-posts/{introId}` | **Served** (concert) | `concert_service::profile_product::intro` |
+| 2.2.8 | `setIntroPostLike` | PUT | `/api/intro-posts/{introId}/like` | **Served** (concert) | `concert_service::profile_product::intro` |
+| 2.2.9 | `clearIntroPostLike` | DELETE | `/api/intro-posts/{introId}/like` | **Served** (concert) | `concert_service::profile_product::intro` |
+| 2.2.10 | `listIntroPostLikers` | GET | `/api/intro-posts/{introId}/likes` | **Served** (concert) | `concert_service::profile_product::intro` |
+| 2.2.11 | `listIntroPostComments` | GET | `/api/intro-posts/{introId}/comments` | **Served** (concert) | `concert_service::profile_product::intro` |
+| 2.2.12 | `createIntroPostComment` | POST | `/api/intro-posts/{introId}/comments` | **Served** (concert) | `concert_service::profile_product::intro` |
+| 2.2.13 | `deleteIntroPostComment` | DELETE | `/api/intro-posts/{introId}/comments/{commentId}` | **Served** (concert) | `concert_service::profile_product::intro` |
 
 Rows 2.2.12 and 2.2.13 were added by `c79ed25c1` after the freeze record.
 
@@ -190,8 +194,8 @@ WP-08 built these producers. They read `profile_avatars`, in `mcr_concert`
 | Producer | Count | Operations |
 | --- | --- | --- |
 | **Served by the profile service** | **6** | `getOwnProfile`, `getProfile`, `searchCatalog`, `getOwnIdentityVerification`, `startIdentityVerification`, `disconnectIdentityVerification` |
-| **Served by the concert service** | **15** | the eight `profile_posts`/`profile_media` operations, the five room operations, and the two avatar operations |
-| NOT_IMPLEMENTED | 22 | everything else |
+| **Served by the concert service** | **28** | the eight `profile_posts`/`profile_media` operations, the five room operations, the two avatar operations, and all thirteen intro operations |
+| NOT_IMPLEMENTED | 9 | everything else |
 | **Total** | **43** | |
 
 By blocker:
@@ -199,7 +203,7 @@ By blocker:
 | Blocker | Count |
 | --- | --- |
 | Cross-database (producer exists in the concert service) | **0 — closed** |
-| Feature not yet built (WP-04, WP-05, WP-03 gaps) | 22 |
+| Feature not yet built (WP-04, WP-05, WP-03 gaps) | 9 |
 
 ## 5. What this change delivered
 

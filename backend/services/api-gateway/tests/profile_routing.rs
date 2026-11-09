@@ -145,6 +145,8 @@ fn the_cross_database_operations_route_to_the_concert_service() {
     // 0083). `listIntroPosts` and `getIntroPost` are absent because no producer
     // answers them yet; see `the_two_unserved_intro_reads_are_not_routed`.
     let intro_owned = BTreeSet::from([
+        "listIntroPosts",
+        "getIntroPost",
         "getOwnIntroPost",
         "listOwnIntroPosts",
         "saveIntroPostDraft",
@@ -158,14 +160,14 @@ fn the_cross_database_operations_route_to_the_concert_service() {
         "deleteIntroPostComment",
     ]);
     assert_eq!(profile_owned.len(), 15);
-    assert_eq!(intro_owned.len(), 11);
+    assert_eq!(intro_owned.len(), 13);
     assert!(
         profile_owned.is_disjoint(&intro_owned),
         "the two groups must not overlap"
     );
     let expected: BTreeSet<&str> = profile_owned.union(&intro_owned).copied().collect();
     assert_eq!(concert, expected);
-    assert_eq!(concert.len(), 26, "twenty-six concert-owned operations");
+    assert_eq!(concert.len(), 28, "twenty-eight concert-owned operations");
 
     // And every one of them is actually mounted by the gateway, so the route
     // exists for the frontend contract while the producer decides.
@@ -179,21 +181,39 @@ fn the_cross_database_operations_route_to_the_concert_service() {
 }
 
 #[test]
-fn the_two_unserved_intro_reads_are_not_routed() {
-    // `listIntroPosts` and `getIntroPost` need a visibility-filtered query that
-    // does not exist yet (WP-04 owns the predicate, WP-05 the query). Routing
-    // them would send the browser to a route that always fails, so they are
-    // neither mounted nor owned.
+fn the_two_discovery_reads_are_routed_and_mounted() {
+    // WP-04's visibility predicate and the page/detail queries now exist, so
+    // these two answer instead of failing. They are routed to the concert
+    // service like the rest of the intro operations, and both are mounted.
     for operation in ["listIntroPosts", "getIntroPost"] {
         assert_eq!(
             owner_of(operation),
-            None,
-            "{operation} has no producer, so it must not be routed"
+            Some(ProfileOwner::ConcertService),
+            "{operation} reads intro_posts and must route to the concert service"
         );
         assert!(
-            !ROUTES.iter().any(|route| route.operation == operation),
-            "{operation} must not be mounted while no producer answers it"
+            ROUTES.iter().any(|route| route.operation == operation),
+            "{operation} must be mounted now that a producer answers it"
         );
+    }
+    // And every intro operation in the contract is now routed: no gap remains.
+    let routed: BTreeSet<&str> = operations_for(ProfileOwner::ConcertService).collect();
+    for operation in [
+        "listIntroPosts",
+        "getIntroPost",
+        "getOwnIntroPost",
+        "listOwnIntroPosts",
+        "saveIntroPostDraft",
+        "publishIntroPost",
+        "deleteIntroPost",
+        "setIntroPostLike",
+        "clearIntroPostLike",
+        "listIntroPostLikers",
+        "listIntroPostComments",
+        "createIntroPostComment",
+        "deleteIntroPostComment",
+    ] {
+        assert!(routed.contains(operation), "{operation} must be routed");
     }
 }
 

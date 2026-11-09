@@ -51,23 +51,80 @@ pub const CURSOR_LIFETIME_MINUTES: i64 = 15;
 pub const OPERATION: &str = "listIntroPosts";
 pub const COLLECTION: &str = "intro-posts";
 
+/// The longest search term the frozen `social.IntroPostQuery.q` admits.
+pub const MAX_QUERY_CHARS: usize = 100;
+
 /// A closed page query.
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct IntroPostQuery {
     pub limit: i64,
     pub cursor: Option<String>,
+    /// The free-text filter. `None` means "no filter", which is different from
+    /// `Some("")` — an empty term is refused rather than silently matching
+    /// everything.
+    pub q: Option<String>,
 }
 
 impl IntroPostQuery {
     pub fn new(limit: Option<i64>, cursor: Option<String>) -> Result<Self, IntroPageError> {
+        Self::with_query(limit, cursor, None)
+    }
+
+    /// Build a query including the `q` term.
+    ///
+    /// `q` is trimmed and bounded to [`MAX_QUERY_CHARS`] Unicode code points, the
+    /// contract's `maxLength: 100`. A term that is empty after trimming is
+    /// `InvalidQuery("q")` rather than a filter that matches every row: a caller
+    /// that sent `q=` asked for a search and would otherwise get an unfiltered
+    /// page that looks like a successful search.
+    pub fn with_query(
+        limit: Option<i64>,
+        cursor: Option<String>,
+        q: Option<String>,
+    ) -> Result<Self, IntroPageError> {
         let limit = limit.unwrap_or(DEFAULT_LIMIT);
         if !(1..=MAX_LIMIT).contains(&limit) {
             return Err(IntroPageError::InvalidQuery("limit"));
         }
+        let q = match q {
+            None => None,
+            Some(value) => {
+                let trimmed = value.trim();
+                if trimmed.is_empty() || trimmed.chars().count() > MAX_QUERY_CHARS {
+                    return Err(IntroPageError::InvalidQuery("q"));
+                }
+                Some(trimmed.to_owned())
+            }
+        };
         Ok(Self {
             limit,
             cursor: cursor.filter(|value| !value.is_empty()),
+            q,
         })
+    }
+
+    /// The query tag folded into the cursor binding.
+    ///
+    /// A cursor must not be replayable against a different filter set, so the
+    /// presence and the content of `q` are part of the binding. The value is a
+    /// stable 64-bit digest rather than the term itself, so the tag does not
+    /// carry the viewer's search text in the token.
+    pub fn tag(&self) -> u64 {
+        match self.q.as_deref() {
+            None => 0,
+            Some(term) => {
+                // FNV-1a, 64-bit. Stable across processes and platforms, which
+                // is what a cursor tag needs; it is not a security primitive.
+                let mut hash: u64 = 0xcbf2_9ce4_8422_2325;
+                for byte in term.as_bytes() {
+                    hash ^= u64::from(*byte);
+                    hash = hash.wrapping_mul(0x0000_0100_0000_01b3);
+                }
+                // `0` is reserved for "no filter", so a term that hashes to it is
+                // mapped away rather than colliding with the unfiltered tag.
+                if hash == 0 { 1 } else { hash }
+            }
+        }
     }
 }
 
@@ -118,6 +175,42 @@ pub struct IntroPostRow {
     /// `None` for a row that was never published, which only the author's own
     /// detail read can return.
     pub position: Option<Position>,
+    /// The author projection from `discovery_profiles`.
+    ///
+    /// `None` when the projection has no row for this author yet. The page keeps
+    /// such a post and reports the author as unavailable; the detail query
+    /// refuses it, because a detail without an author is not renderable.
+    pub author: Option<IntroPostAuthor>,
+    /// The stored favorites snapshot, as the author froze it.
+    pub favorites_snapshot: serde_json::Value,
+    /// How many likes the post has.
+    pub like_count: i64,
+    /// Whether the *viewer* of this read has liked it.
+    pub liked_by_viewer: bool,
+}
+
+/// The author projection a viewer-facing row carries.
+///
+/// Deliberately absent: the author's account id, their claims, and anything the
+/// profile service owns but the concert projection does not mirror.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct IntroPostAuthor {
+    pub profile_id: Uuid,
+    pub nickname: String,
+    pub bio: Option<String>,
+    pub profile_image_media_id: Option<Uuid>,
+}
+
+/// One viewer-facing detail.
+///
+/// The same row as the page, plus the two things only a detail shows: the
+/// attachments in position order and the comment count.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct IntroPostDetail {
+    pub post: IntroPostRow,
+    /// Attachment media ids in `position` order. At most four, per the schema.
+    pub attachment_media_ids: Vec<Uuid>,
+    pub comment_count: i64,
 }
 
 /// One page.
@@ -342,9 +435,9 @@ pub fn binding(viewer_profile_id: Uuid, query: &IntroPostQuery) -> CursorBinding
         event: viewer_profile_id,
         operation: OPERATION,
         collection: COLLECTION,
-        // The profile product's page has no filter beyond the cursor, so the
-        // query tag is a constant. A future filter must fold into this value.
-        query: Some(0),
+        // The query tag folds in the filter set, so a cursor issued for one
+        // search cannot be replayed against another. `0` means "no filter".
+        query: Some(query.tag()),
     }
 }
 
@@ -353,11 +446,15 @@ pub fn binding(viewer_profile_id: Uuid, query: &IntroPostQuery) -> CursorBinding
 /// The foundation's `validate_tag` is hard-wired to the event operation; this is
 /// the same check against the profile product's names.
 pub fn validate_binding(binding: &CursorBinding) -> Result<(), IntroError> {
+    // The query tag is checked for *presence* only. Its value is the filter set,
+    // which `binding()` derives from the request; pinning it to a constant here
+    // would refuse every filtered page. The tag is authenticated as part of the
+    // MAC, so a caller cannot substitute a different one.
     if binding.actor.is_nil()
         || binding.event != binding.actor
         || binding.operation != OPERATION
         || binding.collection != COLLECTION
-        || binding.query != Some(0)
+        || binding.query.is_none()
     {
         return Err(IntroError::Invalid);
     }
@@ -423,19 +520,69 @@ impl PageScope {
 /// caller resolves and supplies through the scope, so the page query cannot
 /// express it per row; the detail query can, and does. See
 /// `docs/mcr/backend/wp04-claims.md` for the recorded limitation.
-pub const PAGE_SQL: &str = "select p.intro_id, p.author_profile_id, p.body, p.currently_seeking, \
-     p.interaction_style, p.published_at, p.expires_at \
+/// The columns every read selects.
+///
+/// The author projection comes from `discovery_profiles` (the concert-owned
+/// projection, migration 0086), so no cross-database join is needed: the profile
+/// service's own tables are never referenced. The like state and the like count
+/// come from `intro_likes` in this database.
+///
+/// `coalesce` on the author columns: a published post whose author has no
+/// projection row yet would otherwise drop out of the page through an inner
+/// join. The projection is written by a worker, so a post can briefly precede its
+/// author row; the page keeps the post and reports the author as unavailable
+/// rather than hiding the post. The detail query refuses such a row instead,
+/// because a detail without an author is not renderable.
+const SELECT_COLUMNS: &str = "p.intro_id, p.author_profile_id, p.body, p.currently_seeking, \
+     p.interaction_style, p.published_at, p.expires_at, \
+     p.favorites_snapshot, \
+     d.nickname as author_nickname, d.bio as author_bio, \
+     d.profile_image_media_id as author_profile_image_media_id, \
+     (select count(*) from intro_likes l where l.intro_id = p.intro_id) as like_count, \
+     exists (select 1 from intro_likes lv \
+             where lv.intro_id = p.intro_id \
+               and lv.actor_profile_id = cast($1 as uuid)) as liked_by_viewer";
+
+/// The page query.
+///
+/// The predicate is `where`-clause text, so the `limit` is applied to the rows
+/// the predicate admitted. `limit + 1` is fetched to prove a next page exists
+/// without a second round trip.
+///
+/// The `q` filter is applied in the same `where` clause as the predicate, so the
+/// scan is filtered before `limit`. Filtering after the limit would return short
+/// pages that still report a `next_cursor`, which is the V-03-i defect.
+///
+/// Placeholders: `$1`-`$7` are the predicate's, `$8`/`$9` the cursor position,
+/// `$10` the search term.
+pub const PAGE_SQL: &str = "select {columns} \
      from intro_posts p \
+     left join discovery_profiles d on d.profile_id = p.author_profile_id \
      where {predicate} \
+       and (cast($10 as text) is null \
+            or p.body ilike ('%' || cast($10 as text) || '%') \
+            or coalesce(p.currently_seeking, '') ilike ('%' || cast($10 as text) || '%') \
+            or coalesce(p.interaction_style, '') ilike ('%' || cast($10 as text) || '%')) \
        and (cast($8 as timestamptz) is null \
             or (p.published_at, p.intro_id) < (cast($8 as timestamptz), cast($9 as uuid))) \
      order by p.published_at desc, p.intro_id desc \
      limit {limit}";
 
 /// The detail query: the same predicate, one row.
-pub const DETAIL_SQL: &str = "select p.intro_id, p.author_profile_id, p.body, p.currently_seeking, \
-     p.interaction_style, p.published_at, p.expires_at \
+///
+/// The same projection and the same like state as the page. The author join is a
+/// **left** join for the same reason as the page: a post can precede its author's
+/// projection row, and the visibility decision must not depend on whether the
+/// projection worker has caught up. A caller that needs a renderable author
+/// checks `row.author` itself; the transport does, and refuses a detail without
+/// one.
+pub const DETAIL_SQL: &str = "select {columns}, \
+     (select count(*) from intro_comments c \
+      where c.intro_id = p.intro_id and c.state = 'PUBLISHED') as comment_count, \
+     (select coalesce(json_agg(a.media_id order by a.position), '[]'::json) \
+      from intro_attachments a where a.intro_id = p.intro_id) as attachment_media_ids \
      from intro_posts p \
+     left join discovery_profiles d on d.profile_id = p.author_profile_id \
      where p.intro_id = cast($8 as uuid) and {predicate}";
 
 /// The author-standing substitution used by the page query.
@@ -460,18 +607,25 @@ pub fn page_predicate() -> String {
 /// Build the page query text for a limit.
 pub fn page_sql(limit: i64) -> String {
     PAGE_SQL
+        .replace("{columns}", SELECT_COLUMNS)
         .replace("{predicate}", &page_predicate())
         .replace("{limit}", &limit.to_string())
 }
 
 /// Build the detail query text.
 pub fn detail_sql() -> String {
-    DETAIL_SQL.replace("{predicate}", &predicate(1))
+    DETAIL_SQL
+        .replace("{columns}", SELECT_COLUMNS)
+        .replace("{predicate}", &predicate(1))
 }
+
+/// The number of placeholders the detail query uses: the predicate's seven, then
+/// the intro id. The like state reuses `$1` (the viewer), so it adds none.
+pub const DETAIL_PLACEHOLDERS: usize = VisibilityParameters::PLACEHOLDERS + 1;
 
 /// The placeholders the page query uses: the predicate's seven, then the cursor
 /// pair. `$8` and `$9` are the cursor's `(published_at, intro_id)`.
-pub const PAGE_PLACEHOLDERS: usize = VisibilityParameters::PLACEHOLDERS + 2;
+pub const PAGE_PLACEHOLDERS: usize = VisibilityParameters::PLACEHOLDERS + 3;
 
 /// Read one page, returning the driver error for diagnosis.
 ///
@@ -507,6 +661,7 @@ pub async fn list_intro_posts_diagnostic(
         .bind(parameters.now)
         .bind(after.map(|position| position.created_at))
         .bind(after.map(|position| position.intro_id))
+        .bind(query.q.as_deref())
         .fetch_all(pool)
         .await
         .map(|_| IntroPostPage {
@@ -549,6 +704,7 @@ pub async fn list_intro_posts(
         .bind(parameters.now)
         .bind(after.map(|position| position.created_at))
         .bind(after.map(|position| position.intro_id))
+        .bind(query.q.as_deref())
         .fetch_all(pool)
         .await
         .map_err(|_| IntroPageError::Store)?;
@@ -613,7 +769,7 @@ pub async fn get_intro_post(
     pool: &PgPool,
     scope: &VisibilityScope,
     intro_id: Uuid,
-) -> Result<IntroPostRow, IntroPageError> {
+) -> Result<IntroPostDetail, IntroPageError> {
     if intro_id.is_nil() {
         return Err(IntroPageError::Unavailable);
     }
@@ -632,7 +788,24 @@ pub async fn get_intro_post(
         .await
         .map_err(|_| IntroPageError::Store)?
         .ok_or(IntroPageError::Unavailable)?;
-    decode_row(&row)
+    let post = decode_row(&row)?;
+    let attachment_media_ids: Vec<Uuid> = row
+        .try_get::<serde_json::Value, _>("attachment_media_ids")
+        .ok()
+        .and_then(|value| value.as_array().cloned())
+        .map(|items| {
+            items
+                .iter()
+                .filter_map(|item| item.as_str().and_then(|text| Uuid::parse_str(text).ok()))
+                .collect()
+        })
+        .unwrap_or_default();
+    let comment_count: i64 = row.try_get("comment_count").unwrap_or(0);
+    Ok(IntroPostDetail {
+        post,
+        attachment_media_ids,
+        comment_count,
+    })
 }
 
 /// Decode one selected row.
@@ -645,11 +818,28 @@ fn decode_row(row: &sqlx::postgres::PgRow) -> Result<IntroPostRow, IntroPageErro
     // so the row must decode; `published_at` is `None` for a draft and the
     // cursor position is then meaningless, which is why the page query never
     // returns a draft (row 2) and only the detail query can.
+    let author_profile_id: Uuid = row
+        .try_get("author_profile_id")
+        .map_err(|_| IntroPageError::Store)?;
+    // The author projection is optional: a post can precede its author's
+    // projection row. `nickname` is the discriminator, because the join is a
+    // left join and every other author column is nullable.
+    let author = row
+        .try_get::<Option<String>, _>("author_nickname")
+        .ok()
+        .flatten()
+        .map(|nickname| IntroPostAuthor {
+            profile_id: author_profile_id,
+            nickname,
+            bio: row.try_get("author_bio").ok().flatten(),
+            profile_image_media_id: row
+                .try_get("author_profile_image_media_id")
+                .ok()
+                .flatten(),
+        });
     Ok(IntroPostRow {
         intro_id,
-        author_profile_id: row
-            .try_get("author_profile_id")
-            .map_err(|_| IntroPageError::Store)?,
+        author_profile_id,
         body: row.try_get("body").map_err(|_| IntroPageError::Store)?,
         currently_seeking: row.try_get("currently_seeking").ok(),
         interaction_style: row.try_get("interaction_style").ok(),
@@ -659,6 +849,12 @@ fn decode_row(row: &sqlx::postgres::PgRow) -> Result<IntroPostRow, IntroPageErro
             created_at: published_at,
             intro_id,
         }),
+        author,
+        favorites_snapshot: row
+            .try_get("favorites_snapshot")
+            .unwrap_or(serde_json::Value::Array(Vec::new())),
+        like_count: row.try_get("like_count").unwrap_or(0),
+        liked_by_viewer: row.try_get("liked_by_viewer").unwrap_or(false),
     })
 }
 
