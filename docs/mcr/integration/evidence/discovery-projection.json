@@ -2,7 +2,7 @@
   "verification": "DISCOVERY-PROJECTION",
   "title": "The discovery projection is populated, idempotent, and loses no updates",
   "status": "PASS",
-  "commit": "62a31f104e2fc967a943d67f85c5ad0dbed2d220",
+  "commit": "82cbb5ade",
   "branch": "codex/yc-discovery-proj",
   "base_commit": "62a31f104",
   "recorded_at": "2026-11-09T03:41:48Z",
