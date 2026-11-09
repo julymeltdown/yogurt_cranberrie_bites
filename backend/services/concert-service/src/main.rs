@@ -616,7 +616,9 @@ async fn main() -> anyhow::Result<()> {
                         // Outermost: a closed gate answers every non-settlement
                         // service without composing or touching any owner.
                         .layer(world_gate);
-                    if let Some(tls) = runtime.tls {
+                    // Borrow rather than move: the claim adapter below also needs
+                    // this listener's mTLS material to reach the profile service.
+                    if let Some(tls) = runtime.tls.as_ref() {
                         server = server.tls_config(tls.server_config()?)?;
                     }
                     let bootstrap =
@@ -705,11 +707,43 @@ async fn main() -> anyhow::Result<()> {
                     // Gateway routes those operations here. This transport is the
                     // event-free profile analogue of `concert.product.v1`: same
                     // authority discipline, keyed by `profile_id`.
-                    let profile_product = concert_service::profile_product::runtime(
-                        grpc_pool.clone(),
-                        runtime.callers.clone(),
-                        runtime.actors.clone(),
-                    )?;
+                    // T-302: the claim port. The Introduction audience decision
+                    // needs the viewer's age and gender, which live in the
+                    // profile service. Without this adapter every restricted post
+                    // fails closed (enforced, and never satisfiable); with it the
+                    // decision reads the claim through the profile service rather
+                    // than a cross-database join. A missing endpoint or credential
+                    // leaves the port detached, which keeps the fail-closed
+                    // default rather than guessing.
+                    let claims: Option<std::sync::Arc<dyn concert_application::identity_claims::IdentityClaimsPort>> =
+                        match (
+                            std::env::var("CONCERT_PROFILE_GRPC_ENDPOINT"),
+                            std::env::var("CONCERT_SERVICE_CREDENTIAL"),
+                        ) {
+                            (Ok(endpoint), Ok(credential)) if !endpoint.is_empty() => {
+                                Some(std::sync::Arc::new(
+                                    concert_service::intro_posts::claims_adapter::ProfileClaimsAdapter::connect(
+                                        &endpoint,
+                                        &credential,
+                                        runtime.tls.as_ref(),
+                                    )?,
+                                ))
+                            }
+                            _ => None,
+                        };
+                    let profile_product = match claims {
+                        Some(claims) => concert_service::profile_product::runtime_with_claims(
+                            grpc_pool.clone(),
+                            runtime.callers.clone(),
+                            runtime.actors.clone(),
+                            claims,
+                        )?,
+                        None => concert_service::profile_product::runtime(
+                            grpc_pool.clone(),
+                            runtime.callers.clone(),
+                            runtime.actors.clone(),
+                        )?,
+                    };
                     // This callback uses the original shared registry and the
                     // dedicated Notification workload identity. It accepts no
                     // Gateway actor delegation and shares this listener's TLS

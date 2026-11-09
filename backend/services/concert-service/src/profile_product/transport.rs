@@ -390,12 +390,30 @@ pub fn runtime(
     callers: platform::grpc_auth::CallerRegistry,
     verifier: platform::actor_delegation::ActorDelegationVerifier,
 ) -> anyhow::Result<ProfileProductRuntime> {
+    runtime_with_claims(pool, callers, verifier, None)
+}
+
+/// Build the transport with the claim port attached.
+///
+/// `claims` is the T-302 adapter over the profile service. When it is `None` the
+/// intro producer keeps its fail-closed default: every restricted post is denied,
+/// which is the only safe answer when the claim source is not configured.
+pub fn runtime_with_claims(
+    pool: sqlx::PgPool,
+    callers: platform::grpc_auth::CallerRegistry,
+    verifier: platform::actor_delegation::ActorDelegationVerifier,
+    claims: Option<std::sync::Arc<dyn concert_application::identity_claims::IdentityClaimsPort>>,
+) -> anyhow::Result<ProfileProductRuntime> {
+    let mut intro = super::intro::IntroProducer::new(pool.clone());
+    if let Some(claims) = claims {
+        intro = intro.with_claims(claims);
+    }
     build_runtime(
         pool.clone(),
         callers,
         verifier,
         targets::ProfileProductProducer::new(pool.clone())
-            .with_intro(std::sync::Arc::new(super::intro::IntroProducer::new(pool))),
+            .with_intro(std::sync::Arc::new(intro)),
     )
 }
 

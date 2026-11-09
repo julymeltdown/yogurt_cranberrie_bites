@@ -134,7 +134,7 @@ impl CommentStore {
             profile_id: viewer,
             claims_known: false,
         };
-        if !self.visibility.can_view(&facts, &viewer_facts) {
+        if !self.visibility.can_view(&facts, &viewer_facts, Utc::now()).await {
             return Ok(None);
         }
         Ok(Some(facts))

@@ -1,0 +1,80 @@
+syntax = "proto3";
+
+package profile.claims.v1;
+
+// Internal, Concert-only claim read.
+//
+// This is the port behind `IdentityClaimsPort` (domain-contract.md §1.3). The
+// concert service owns the Introduction audience decision but does not own the
+// claim store: `identity_claims` lives in the profile service, keyed by the Auth
+// `user_id` only. This RPC is the one way the concert service may read it, and it
+// exists so there is no cross-database join.
+//
+// What it deliberately does **not** carry:
+//
+// * no decision. The reply is raw claim facts; the audience decision is made by
+//   the caller, against the post's audience, in exactly one place.
+// * no viewer. The subject is the *author or viewer whose attributes are being
+//   evaluated*, resolved by the caller from its own profile binding. A caller
+//   cannot ask for an arbitrary Auth UUID: the profile service resolves the
+//   `profile_id` through its own `profile_identities` row, so the two services
+//   agree on who the subject is without either trusting the other's text.
+// * no provider token, provider subject or birth date. The reply carries the
+//   derived claim facts only, and the derived age is never a field: the caller
+//   computes the current age from `age_at_verification` + `next_birthday_at`
+//   with the Seoul-date rule it already imports.
+//
+// Only the Concert workload may call it, and it is registered with the same
+// method policy discipline as the other internal profile reads.
+message ReadClaimRequest {
+  // The canonical profile UUID whose claim is being read. Never nil.
+  string profile_id = 1;
+  // The instant the caller evaluates the decision at, in Unix microseconds.
+  // The profile service selects the canonical claim row and reports whether it
+  // is live at this instant; it does not use its own clock, so the caller's
+  // decision and the reported validity cannot disagree.
+  int64 evaluated_at_unix_micros = 2;
+  // The caller's request id, for correlation only. Never used for authority.
+  string request_id = 3;
+}
+
+// The canonical claim row, as the audience decision needs it.
+//
+// `status` is the closed stored set. A caller must treat every value other than
+// `VERIFIED` as unavailable; the field is present so the caller can record why.
+message ClaimObservation {
+  // One of: VERIFIED, REPLACED, REVOKED. Empty when no row exists at all.
+  string status = 1;
+  // One of: female, male, unknown. Empty when no row exists.
+  string gender_bucket = 2;
+  // The derived age at verification, and the next birthday the Seoul-date rule
+  // increments on. Both are present exactly when the row carries attributes.
+  optional int32 age_at_verification = 3;
+  // ISO-8601 calendar date (YYYY-MM-DD). Absent when the row carries none.
+  optional string next_birthday_at = 4;
+  // The verifier name and the revision of our reading of its profile contract.
+  string verifier = 5;
+  string source_revision = 6;
+  // RFC 3339 UTC timestamps with second precision.
+  string verified_at = 7;
+  string expires_at = 8;
+  // Whether the row is a live claim at `evaluated_at_unix_micros`: status
+  // VERIFIED, not expired, both attributes present, and the current age inside
+  // the supported range. This is the profile service's own `is_usable` rule,
+  // reported so the caller does not re-implement it.
+  bool live = 9;
+}
+
+message ReadClaimReply {
+  // Absent when the subject has no claim row at all. That is not an error: an
+  // unverified user is a normal user, and the caller maps it to
+  // `Attribute::Unavailable` for both attributes.
+  ClaimObservation claim = 1;
+  // The profile UUID the observation belongs to, echoed so the caller can
+  // refuse a misrouted reply.
+  string profile_id = 2;
+}
+
+service IdentityClaimReader {
+  rpc ReadClaim(ReadClaimRequest) returns (ReadClaimReply);
+}
