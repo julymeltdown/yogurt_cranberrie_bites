@@ -1,0 +1,87 @@
+syntax = "proto3";
+package profile.discovery_source.v1;
+
+// The profile service's internal discovery-source read.
+//
+// Discovery lives in the concert service, but the data it mirrors is
+// profile-owned and lives in `mcr_profile`. `domain-contract.md` §1.1 forbids a
+// cross-database join, so the concert service's projection writer asks this
+// service for the facts instead of reading its tables.
+//
+// This is a **pull** read for a bounded reconciliation job, not an event feed.
+// It answers one question: *which profiles changed after this cursor?* — and it
+// answers it in a stable order so the caller can advance a watermark without
+// skipping or repeating a row.
+//
+// What it deliberately does not carry:
+//
+//   * no score, rank, weight or favorite count. The projection must not acquire
+//     a column the discovery query forbids, and the simplest way to guarantee
+//     that is for this read to have nothing to copy.
+//   * no audience, no claim, no identity attribute. Discovery is about shared
+//     catalog picks, not about who may see a restricted post.
+//   * no Auth token, session or account secret. `account_id` is the opaque
+//     profile-owner key the block filter needs.
+service DiscoverySourceService {
+  // One page of profile facts ordered by `(updated_at, profile_id)`.
+  //
+  // `after_updated_at` and `after_profile_id` are the caller's watermark. Both
+  // are unset on the first call, which means "from the beginning". The reply
+  // carries the cursor of the last row it returned, so the caller advances the
+  // watermark to exactly that pair and never to a value it invented.
+  rpc ReadChanged(ReadChangedRequest) returns (ReadChangedReply);
+}
+
+message ReadChangedRequest {
+  // The caller's watermark. Both are present or both are absent.
+  optional int64 after_updated_at_unix_micros = 1;
+  optional string after_profile_id = 2;
+  // How many profiles to return. Bounded by the server; a caller asking for
+  // more than the cap receives the cap.
+  int32 limit = 3;
+}
+
+message ReadChangedReply {
+  repeated DiscoveryProfile profiles = 1;
+  // The cursor of the last returned profile, or absent when the page is empty.
+  // The caller advances its watermark to this pair, and only after committing
+  // the page.
+  optional int64 next_updated_at_unix_micros = 2;
+  optional string next_profile_id = 3;
+  // Whether more rows exist after this page. A caller that sees `false` has
+  // caught up as of the read.
+  bool more = 4;
+}
+
+// One profile's discovery-relevant facts.
+message DiscoveryProfile {
+  string profile_id = 1;
+  // The opaque profile-owner key. Blocks are recorded against accounts.
+  string account_id = 2;
+  string nickname = 3;
+  // Absent when the profile has no bio. Never a fabricated default.
+  optional string bio = 4;
+  optional string profile_image_media_id = 5;
+  // Absent when the profile never set one.
+  optional string interaction_style = 6;
+  // `PUBLIC` or `PRIVATE`.
+  string visibility = 7;
+  // The favorites, in display order. Empty is a real answer: a profile with no
+  // picks is still discoverable as a profile.
+  repeated DiscoveryFavorite favorites = 8;
+  // The source row's `updated_at`, which is the watermark component.
+  int64 updated_at_unix_micros = 9;
+  // True when the profile was deleted. The caller removes its projection rows;
+  // a tombstone is reported rather than the row silently vanishing, because a
+  // silent omission would leave a stale projection row behind forever.
+  bool deleted = 10;
+}
+
+message DiscoveryFavorite {
+  // `music`, `anime` or `game`.
+  string category = 1;
+  string catalog_item_id = 2;
+  string label = 3;
+  // The display slot, 0..4.
+  int32 position = 4;
+}

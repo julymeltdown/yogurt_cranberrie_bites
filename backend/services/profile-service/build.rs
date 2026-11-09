@@ -19,6 +19,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 contracts_build::proto_root().join("concert/v1/participant.proto"),
                 contracts_build::proto_root().join("profile/v1/profile_product.proto"),
                 contracts_build::proto_root().join("profile/v1/identity_verification.proto"),
+                contracts_build::proto_root().join("profile/v1/discovery_source.proto"),
             ],
             &[include_dir],
         )?;
@@ -38,6 +39,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             .display()
     );
     for relative in [
+        "profile/v1/discovery_source.proto",
         "profile/v1/identity_verification.proto",
         "profile/v1/concert_self_profile.proto",
         "authority/v1/lease.proto",

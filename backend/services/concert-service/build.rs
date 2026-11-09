@@ -8,6 +8,11 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         contracts_build::proto_root().join("profile/v1/concert_public_profile.proto");
     let self_profile_proto =
         contracts_build::proto_root().join("profile/v1/concert_self_profile.proto");
+    // The profile service's internal discovery-source read. The projection
+    // writer pulls changed profiles through it rather than joining across
+    // databases (domain-contract.md §1.1).
+    let discovery_source_proto =
+        contracts_build::proto_root().join("profile/v1/discovery_source.proto");
     let post_concert_proto = contracts_build::proto_root().join("post/v1/concert_feed.proto");
     // The concert-side profile product transport. Fifteen frozen profile
     // operations read concert-owned tables, so this service serves them under
@@ -71,6 +76,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 profile.clone(),
                 public_profile_proto.clone(),
                 self_profile_proto.clone(),
+                discovery_source_proto.clone(),
                 profile_product_proto.clone(),
             ],
             &[contracts_build::proto_root()],
@@ -80,6 +86,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("cargo:rerun-if-changed={}", product_proto.display());
     println!("cargo:rerun-if-changed={}", public_profile_proto.display());
     println!("cargo:rerun-if-changed={}", self_profile_proto.display());
+    println!("cargo:rerun-if-changed={}", discovery_source_proto.display());
     println!("cargo:rerun-if-changed={}", post_concert_proto.display());
     println!("cargo:rerun-if-changed={}", profile_product_proto.display());
     println!("cargo:rerun-if-changed={}", relationship.display());
