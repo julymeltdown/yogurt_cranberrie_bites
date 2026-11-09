@@ -46,6 +46,7 @@ pub mod comments;
 pub mod http;
 pub mod likes;
 pub mod links;
+pub mod notifications;
 pub mod repository;
 pub mod snapshot;
 pub mod visibility;

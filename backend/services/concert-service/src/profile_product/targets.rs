@@ -78,6 +78,11 @@ pub enum ProfileOperation {
     /// they are refused by `parse` rather than served by a query this transport
     /// does not own.
     Intro(&'static str),
+    /// `listNotifications` — the recipient's own inbox over
+    /// `intro_like_notifications`.
+    ListNotifications,
+    /// `markNotificationRead` — records that the recipient opened one.
+    MarkNotificationRead { notification_id: Uuid },
 }
 
 impl ProfileOperation {
@@ -100,6 +105,8 @@ impl ProfileOperation {
             Self::GetOwnProfileAvatar => "getOwnProfileAvatar",
             Self::SetOwnProfileAvatar => "setOwnProfileAvatar",
             Self::Intro(operation) => operation,
+            Self::ListNotifications => "listNotifications",
+            Self::MarkNotificationRead { .. } => "markNotificationRead",
         }
     }
 
@@ -116,6 +123,7 @@ impl ProfileOperation {
                 | Self::SetOwnRoomVisibility
                 | Self::UploadRoomPoster
                 | Self::SetOwnProfileAvatar
+                | Self::MarkNotificationRead { .. }
         )
     }
 
@@ -219,6 +227,24 @@ pub fn parse(method: &str, target: &str) -> Result<ProfileOperation, Status> {
         });
     }
 
+    // The notification inbox. Two operations, both addressed by the verified
+    // session: the list reads the caller's own rows, and the mark names one of
+    // them. A notification belongs to a profile, not to an event, so neither
+    // path carries an event segment.
+    if method == "GET" && path == "/api/me/notifications" {
+        return Ok(ProfileOperation::ListNotifications);
+    }
+    if method == "PATCH" {
+        if let Some(id) = path.strip_prefix("/api/me/notifications/") {
+            if !id.contains('/') {
+                return Ok(ProfileOperation::MarkNotificationRead {
+                    notification_id: Uuid::parse_str(id)
+                        .map_err(|_| Status::invalid_argument("Invalid notification id"))?,
+                });
+            }
+        }
+    }
+
     // WP-05's intro operations. Its own closed parser decides what is an intro
     // operation; this transport only decides whether it serves it. The two
     // reads that need a visibility-filtered query are refused here rather than
@@ -247,6 +273,7 @@ pub struct ProfileProductProducer {
     avatars: Option<Arc<ProfileAvatarPersistence>>,
     media: Option<Arc<ProfileMediaStore>>,
     intro: Option<Arc<super::intro::IntroProducer>>,
+    notifications: Option<Arc<crate::intro_posts::notifications::NotificationInbox>>,
 }
 
 impl ProfileProductProducer {
@@ -260,7 +287,17 @@ impl ProfileProductProducer {
             avatars: None,
             media: None,
             intro: None,
+            notifications: None,
         }
+    }
+
+    /// Attach the notification inbox.
+    pub fn with_notifications(
+        mut self,
+        notifications: Arc<crate::intro_posts::notifications::NotificationInbox>,
+    ) -> Self {
+        self.notifications = Some(notifications);
+        self
     }
 
     /// Attach WP-05's intro producer.
@@ -288,6 +325,13 @@ impl ProfileProductProducer {
     pub fn with_media(mut self, media: Arc<ProfileMediaStore>) -> Self {
         self.media = Some(media);
         self
+    }
+
+    /// The notification inbox, over `intro_like_notifications`.
+    fn notifications(&self) -> Result<&Arc<crate::intro_posts::notifications::NotificationInbox>, Status> {
+        self.notifications
+            .as_ref()
+            .ok_or_else(|| Status::unavailable("Notification inbox is unavailable"))
     }
 
     fn avatars(&self) -> Result<&Arc<ProfileAvatarPersistence>, Status> {
@@ -469,6 +513,34 @@ impl super::scoped::ScopedProfileProducer for ProfileProductProducer {
                 .await;
                 json(response.status as u32, response.body)
             }
+            ProfileOperation::ListNotifications => {
+                // The recipient is the verified actor, never a request value, so
+                // a caller cannot read another profile's inbox.
+                let query = crate::intro_posts::notifications::NotificationQuery::parse(
+                    target.split_once('?').map(|(_, query)| query),
+                )
+                .map_err(notification_status)?;
+                let page = self
+                    .notifications()?
+                    .list(profile_id(actor)?.uuid(), &query)
+                    .await
+                    .map_err(notification_status)?;
+                json(
+                    200,
+                    crate::intro_posts::notifications::page_wire(&page),
+                )
+            }
+            ProfileOperation::MarkNotificationRead { notification_id } => {
+                let notification = self
+                    .notifications()?
+                    .mark_read(profile_id(actor)?.uuid(), notification_id)
+                    .await
+                    .map_err(notification_status)?;
+                json(
+                    200,
+                    crate::intro_posts::notifications::notification_wire(&notification),
+                )
+            }
             ProfileOperation::Intro(_) => {
                 // WP-05's producer owns the whole intro dispatch. This transport
                 // contributes only the verified context and the closed route
@@ -509,6 +581,22 @@ fn post_status(error: profile_posts::ProfilePostError) -> Status {
         413 => Status::resource_exhausted(error.reason()),
         415 => Status::invalid_argument(error.reason()),
         _ => Status::unavailable("Profile posts unavailable"),
+    }
+}
+
+/// Map an inbox refusal to a closed gRPC status.
+///
+/// `Unavailable` is one variant for "no such notification" and "not yours", so
+/// the transport cannot distinguish them either.
+fn notification_status(
+    error: crate::intro_posts::notifications::NotificationError,
+) -> Status {
+    use crate::intro_posts::notifications::NotificationError as E;
+    match error {
+        E::InvalidQuery => Status::invalid_argument("Invalid notification query"),
+        E::InvalidCursor => Status::invalid_argument("Invalid notification cursor"),
+        E::Unavailable => Status::not_found("Notification unavailable"),
+        E::Store => Status::unavailable("Notification inbox unavailable"),
     }
 }
 

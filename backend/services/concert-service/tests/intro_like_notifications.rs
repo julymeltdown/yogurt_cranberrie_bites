@@ -247,9 +247,12 @@ async fn the_notification_carries_no_actor_attributes() -> anyhow::Result<()> {
     )
     .await?;
     store(&pool).like(intro, liker.profile_id).await?;
-    // The table's columns are exactly the four the contract allows. A column
-    // holding an age or a gender would be a privacy defect; the assertion is on
-    // the schema, so adding one later fails here.
+    // The table carries identity, time and the inbox's own bookkeeping, and
+    // nothing about the actor's attributes. A column holding an age or a gender
+    // would be a privacy defect; the assertion is on the schema, so adding one
+    // later fails here. Migration 0093 added the four inbox columns
+    // (`notification_id`, `event_id`, `read_at`, `revision`); none of them
+    // describes the actor.
     let columns: Vec<String> = sqlx::query_scalar(
         "select column_name::text from information_schema.columns \
          where table_schema='public' and table_name='intro_like_notifications' \
@@ -264,9 +267,22 @@ async fn the_notification_carries_no_actor_attributes() -> anyhow::Result<()> {
             "intro_id".to_owned(),
             "actor_profile_id".to_owned(),
             "created_at".to_owned(),
+            // The inbox columns (0093): an addressable id, the contract's
+            // required event id, the read marker and the revision.
+            "notification_id".to_owned(),
+            "event_id".to_owned(),
+            "read_at".to_owned(),
+            "revision".to_owned(),
         ],
-        "the notification carries only identity and time"
+        "the notification carries only identity, time and inbox bookkeeping"
     );
+    // None of the added columns describes the actor's attributes.
+    for forbidden in ["age", "gender", "birthday", "claim", "audience"] {
+        assert!(
+            !columns.iter().any(|column| column.contains(forbidden)),
+            "the notification table must not carry {forbidden}: {columns:?}"
+        );
+    }
     Ok(())
 }
 

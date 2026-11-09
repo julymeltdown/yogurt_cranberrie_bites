@@ -169,8 +169,8 @@ pub const COVERAGE: &[Coverage] = &[
     concert("setOwnProfileAvatar", "PUT", "/api/me/avatar", "concert_service::profile_product::targets"),
     // ── §2.6 activity and notifications (domain) ───────────────────────────
     owed("listActivity", "GET", "/api/me/activity", "WP-05 activity feed"),
-    owed("listNotifications", "GET", "/api/me/notifications", "WP-05 notification inbox"),
-    owed("markNotificationRead", "PATCH", "/api/me/notifications/{notificationId}", "WP-05 notification inbox"),
+    concert("listNotifications", "GET", "/api/me/notifications", "concert_service::intro_posts::notifications"),
+    concert("markNotificationRead", "PATCH", "/api/me/notifications/{notificationId}", "concert_service::intro_posts::notifications"),
     // ── §2.7 follow (domain) ───────────────────────────────────────────────
     owed("followProfile", "PUT", "/api/profiles/{profileId}/follow", "WP-03 follow"),
     owed("unfollowProfile", "DELETE", "/api/profiles/{profileId}/follow", "WP-03 follow"),
