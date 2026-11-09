@@ -969,14 +969,24 @@ class Gate:
                             ("likers list", f"/api/intro-posts/{intro}/likes"),
                             ("viewer profile", f"/api/profiles/{self.profiles['viewer']}")):
             status, body, _, _ = self.probe(f"step3 {label}", "author", "GET", path)
-            step["checks"][label] = {"http": status}
+            check = {"http": status}
+            if label == "notification inbox" and isinstance(body, dict):
+                items = body.get("items")
+                check["items"] = len(items) if isinstance(items, list) else None
+            step["checks"][label] = check
         # The notification inbox is part of what this step claims to prove: the
         # scenario reaches the liker from "the like notification OR the likers
         # list". The inbox was previously probed and then left out of the pass
         # condition, so the step passed while the inbox answered 404.
+        # A 200 with an empty list would satisfy a status-only assertion while
+        # proving nothing: the scenario needs the author to find the liker in the
+        # inbox. Assert the like is actually in it.
         inbox = step["checks"]["notification inbox"]["http"]
+        inbox_items = step["checks"]["notification inbox"].get("items")
+        inbox_has_like = inbox_items is not None and inbox_items > 0
         passed = (liked[0] == 200
                   and inbox == 200
+                  and inbox_has_like
                   and step["checks"]["likers list"]["http"] == 200
                   and step["checks"]["viewer profile"]["http"] == 200)
         step["status"] = "PASS" if passed else "FAIL"
