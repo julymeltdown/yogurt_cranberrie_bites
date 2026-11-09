@@ -27,6 +27,20 @@ use visibility_cases::*;
 // Fixture
 // ---------------------------------------------------------------------------
 
+/// The fixture database is shared by every test **and every test binary**, and the
+/// block rows are global state: two tests writing `discovery_blocks` at once would
+/// each see the other's rows. A process-local mutex cannot coordinate across
+/// binaries, so the guard is a PostgreSQL advisory lock held for the test body —
+/// the same mechanism the migration helper uses.
+async fn fixture_guard(pool: &PgPool) -> sqlx::pool::PoolConnection<sqlx::Postgres> {
+    let mut connection = pool.acquire().await.expect("a fixture connection");
+    sqlx::query("select pg_advisory_lock(hashtextextended('wp04-shared-fixture', 0))")
+        .execute(&mut *connection)
+        .await
+        .expect("the fixture lock");
+    connection
+}
+
 async fn pool() -> anyhow::Result<PgPool> {
     let url = std::env::var("CONCERT_TEST_DATABASE_URL")
         .map_err(|_| anyhow::anyhow!("CONCERT_TEST_DATABASE_URL is required"))?;
@@ -55,6 +69,9 @@ async fn migrate(pool: &PgPool) -> anyhow::Result<()> {
         .await?;
     if applied {
         tx.commit().await?;
+        // The mirror rows are idempotent and must exist even when the schema was
+        // migrated by an earlier run or another test binary.
+        seed_profiles(pool).await?;
         return Ok(());
     }
     let directory = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("migrations");
@@ -75,6 +92,67 @@ async fn migrate(pool: &PgPool) -> anyhow::Result<()> {
         sqlx::raw_sql(&sql).execute(&mut *tx).await?;
     }
     tx.commit().await?;
+    seed_profiles(pool).await?;
+    Ok(())
+}
+
+/// Mirror the fixture profiles into `discovery_profiles`.
+///
+/// The predicate's block term resolves a viewer/author pair through this mirror.
+/// A pair it cannot resolve is denied, which is the fail-closed direction, so the
+/// fixture must contain the profiles the cases use or every case would be denied
+/// for the wrong reason. The rows are inserted idempotently, so a second test
+/// binary in the same run does not fail on the primary key.
+async fn seed_profiles(pool: &PgPool) -> anyhow::Result<()> {
+    for (index, profile_id) in [AUTHOR, VIEWER, OTHER_VIEWER].into_iter().enumerate() {
+        sqlx::query(
+            "insert into discovery_profiles(profile_id, account_id, nickname, bio, visibility) \
+             values($1,$2,$3,'fixture','PUBLIC') on conflict (profile_id) do nothing",
+        )
+        .bind(profile_id)
+        // The account mapping is the shared table's, so a block case's declared
+        // rows name accounts this fixture actually created.
+        .bind(visibility_cases::account_of(profile_id))
+        .bind(format!("wp04-fixture-{index}"))
+        .execute(pool)
+        .await?;
+    }
+    Ok(())
+}
+
+/// Create the block rows a case declares, and remove any left by another case.
+///
+/// The block cases run in one binary against one database, so a row written for
+/// one case would deny every later case. The table is cleared for the two fixture
+/// accounts before each insert, which is safe because these accounts exist only
+/// for this fixture.
+async fn apply_block_rows(
+    pool: &PgPool,
+    rows: &[(Uuid, Uuid)],
+) -> anyhow::Result<()> {
+    for account in [
+        visibility_cases::account_of(AUTHOR),
+        visibility_cases::account_of(VIEWER),
+        visibility_cases::account_of(OTHER_VIEWER),
+    ] {
+        sqlx::query(
+            "delete from discovery_blocks \
+             where blocker_account_id = $1 or blocked_account_id = $1",
+        )
+        .bind(account)
+        .execute(pool)
+        .await?;
+    }
+    for (blocker, blocked) in rows {
+        sqlx::query(
+            "insert into discovery_blocks(blocker_account_id, blocked_account_id) \
+             values($1,$2) on conflict do nothing",
+        )
+        .bind(blocker)
+        .bind(blocked)
+        .execute(pool)
+        .await?;
+    }
     Ok(())
 }
 
@@ -141,10 +219,17 @@ async fn cleanup(pool: &PgPool, intro_id: Uuid) -> anyhow::Result<()> {
 #[tokio::test]
 async fn every_shared_case_agrees_between_the_pure_function_and_sql() -> anyhow::Result<()> {
     let pool = pool().await?;
+    let _serial = fixture_guard(&pool).await;
+    // A previous test (or the parity loop) may have left block rows; every test
+    // here asserts against a known fixture, so the blocks start empty.
+    apply_block_rows(&pool, &[]).await?;
     let cases = all_cases();
     assert!(cases.len() >= 40, "the shared table must be exhaustive");
     let mut disagreements = Vec::new();
     for case in &cases {
+        // The block rows are per case: a row left by an earlier case would deny
+        // this one, so the fixture is reset to exactly what this case declares.
+        apply_block_rows(&pool, case.block_rows).await?;
         let intro_id = insert_case(&pool, case).await?;
         let scope = VisibilityScope::new(
             case.viewer.profile_id,
@@ -240,6 +325,10 @@ fn scope_attributes(case: &visibility_cases::Case) -> concert_service::intro_pos
 #[tokio::test]
 async fn the_predicate_is_a_boolean_expression_over_the_post_alias() -> anyhow::Result<()> {
     let pool = pool().await?;
+    let _serial = fixture_guard(&pool).await;
+    // A previous test (or the parity loop) may have left block rows; every test
+    // here asserts against a known fixture, so the blocks start empty.
+    apply_block_rows(&pool, &[]).await?;
     // The fragment must be usable as a `where` clause with no subquery: this
     // query has no `join` and no `exists`, so a row is admitted by the predicate
     // alone.
@@ -268,6 +357,11 @@ async fn the_predicate_is_a_boolean_expression_over_the_post_alias() -> anyhow::
 #[tokio::test]
 async fn an_unrestricted_row_is_admitted_without_any_claim_parameter() -> anyhow::Result<()> {
     let pool = pool().await?;
+    let _serial = fixture_guard(&pool).await;
+    // A previous test (or the parity loop) may have left block rows; every test
+    // here asserts against a known fixture, so the blocks start empty.
+    apply_block_rows(&pool, &[]).await?;
+    apply_block_rows(&pool, &[]).await?;
     // A viewer with no claim at all sees an unrestricted post: the SQL predicate
     // must not require the age or gender parameters to be present, only that the
     // row's audience is unrestricted.
@@ -305,6 +399,11 @@ async fn an_unrestricted_row_is_admitted_without_any_claim_parameter() -> anyhow
 #[tokio::test]
 async fn the_author_sees_their_own_row_whatever_its_state() -> anyhow::Result<()> {
     let pool = pool().await?;
+    let _serial = fixture_guard(&pool).await;
+    // A previous test (or the parity loop) may have left block rows; every test
+    // here asserts against a known fixture, so the blocks start empty.
+    apply_block_rows(&pool, &[]).await?;
+    apply_block_rows(&pool, &[]).await?;
     let intro_id = Uuid::new_v4();
     // A draft, expired, restricted by a female audience the author cannot
     // satisfy. Row 1 still admits the author.
@@ -347,6 +446,10 @@ async fn the_author_sees_their_own_row_whatever_its_state() -> anyhow::Result<()
 #[tokio::test]
 async fn a_block_denies_even_an_unrestricted_row() -> anyhow::Result<()> {
     let pool = pool().await?;
+    let _serial = fixture_guard(&pool).await;
+    // A previous test (or the parity loop) may have left block rows; every test
+    // here asserts against a known fixture, so the blocks start empty.
+    apply_block_rows(&pool, &[]).await?;
     let intro_id = Uuid::new_v4();
     sqlx::query(
         "insert into intro_posts(intro_id,author_profile_id,body,audience_gender,state,published_at) \
@@ -358,19 +461,45 @@ async fn a_block_denies_even_an_unrestricted_row() -> anyhow::Result<()> {
     .bind(now() - chrono::Duration::days(1))
     .execute(&pool)
     .await?;
-    for blocks in [
-        concert_application::intro_visibility::BlockState::ViewerBlockedAuthor,
-        concert_application::intro_visibility::BlockState::AuthorBlockedViewer,
-        concert_application::intro_visibility::BlockState::Mutual,
+    // The predicate resolves the block per row from the actual pair, so the test
+    // writes the block rows rather than setting a scope flag. Each direction is
+    // its own case: a block denies in both.
+    let scope = VisibilityScope::without_claims(
+        VIEWER,
+        concert_application::intro_visibility::BlockState::None,
+        concert_application::intro_visibility::AuthorStanding::Active,
+        now(),
+    );
+    for (label, rows) in [
+        (
+            "viewer blocked author",
+            vec![(visibility_cases::account_of(VIEWER), visibility_cases::account_of(AUTHOR))],
+        ),
+        (
+            "author blocked viewer",
+            vec![(visibility_cases::account_of(AUTHOR), visibility_cases::account_of(VIEWER))],
+        ),
+        (
+            "mutual",
+            vec![
+                (visibility_cases::account_of(VIEWER), visibility_cases::account_of(AUTHOR)),
+                (visibility_cases::account_of(AUTHOR), visibility_cases::account_of(VIEWER)),
+            ],
+        ),
     ] {
-        let scope = VisibilityScope::without_claims(
-            VIEWER,
-            blocks,
-            concert_application::intro_visibility::AuthorStanding::Active,
-            now(),
+        apply_block_rows(&pool, &rows).await?;
+        assert!(
+            !sql_visible(&pool, &scope, intro_id).await?,
+            "a block denies an unrestricted row: {label}"
         );
-        assert!(!sql_visible(&pool, &scope, intro_id).await?, "{blocks:?}");
     }
+    // With no block rows, the same row is visible: the denial above came from the
+    // block, not from the fixture.
+    apply_block_rows(&pool, &[]).await?;
+    assert!(
+        sql_visible(&pool, &scope, intro_id).await?,
+        "the same row is visible once the block is lifted"
+    );
     cleanup(&pool, intro_id).await?;
     Ok(())
 }
@@ -378,6 +507,12 @@ async fn a_block_denies_even_an_unrestricted_row() -> anyhow::Result<()> {
 #[tokio::test]
 async fn the_predicate_can_be_composed_after_other_parameters() -> anyhow::Result<()> {
     let pool = pool().await?;
+    let _serial = fixture_guard(&pool).await;
+    // A previous test (or the parity loop) may have left block rows; every test
+    // here asserts against a known fixture, so the blocks start empty.
+    apply_block_rows(&pool, &[]).await?;
+    // Another test may have left a block row; this test asserts admission.
+    apply_block_rows(&pool, &[]).await?;
     // A caller with its own parameter takes the fragment at an offset. This is
     // what the page query does: `$1` is the cursor, the predicate starts at `$2`.
     let intro_id = Uuid::new_v4();
@@ -406,7 +541,6 @@ async fn the_predicate_can_be_composed_after_other_parameters() -> anyhow::Resul
     let count: i64 = sqlx::query_scalar::<_, i64>(&sql)
         .bind(intro_id)
         .bind(scope.parameters().viewer)
-        .bind(scope.parameters().blocked)
         .bind(scope.parameters().author_active)
         .bind(scope.parameters().age)
         .bind(scope.parameters().gender)
@@ -421,14 +555,19 @@ async fn the_predicate_can_be_composed_after_other_parameters() -> anyhow::Resul
 
 #[tokio::test]
 async fn the_fragment_interpolates_no_value() -> anyhow::Result<()> {
+    // The fragment is built from placeholder numbers only and no database is
+    // touched, so this test needs no fixture lock.
     // The fragment is built from placeholder numbers only. A value that reached
     // the SQL text would be a SQL injection path and would also make the
     // predicate unplannable. This asserts the text contains nothing but
     // placeholders.
     let text = predicate(1);
     assert!(text.contains("$1"));
-    assert!(text.contains("$7"));
-    assert!(!text.contains("$8"));
+    // Six placeholders: the block term is a correlated subquery that reuses the
+    // viewer's `$1`, so it adds none of its own.
+    assert_eq!(VisibilityParameters::PLACEHOLDERS, 6);
+    assert!(text.contains("$6"));
+    assert!(!text.contains("$7"));
     for forbidden in ["'female'", "'male'", "'unknown'", "18", "30"] {
         // The audience *column values* `'any'`, `'female'`, `'male'` and
         // `'unknown'` are literals by design (they are the closed column
@@ -451,6 +590,10 @@ async fn the_row_table_is_reproducible_from_sql_columns() -> anyhow::Result<()> 
     // test pins the column set so a later change to the table cannot silently
     // read a column the fragment does not select.
     let pool = pool().await?;
+    let _serial = fixture_guard(&pool).await;
+    // A previous test (or the parity loop) may have left block rows; every test
+    // here asserts against a known fixture, so the blocks start empty.
+    apply_block_rows(&pool, &[]).await?;
     let columns: Vec<String> = sqlx::query_scalar(
         "select column_name from information_schema.columns \
          where table_name = 'intro_posts' order by column_name",

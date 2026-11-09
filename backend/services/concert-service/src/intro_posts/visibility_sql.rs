@@ -198,7 +198,6 @@ impl VisibilityScope {
     pub fn parameters(&self) -> VisibilityParameters {
         VisibilityParameters {
             viewer: self.viewer_profile_id,
-            blocked: self.blocks.blocks(),
             author_active: matches!(self.author_standing, AuthorStanding::Active),
             age: self.attributes.age(),
             gender: self.attributes.gender_bucket(),
@@ -212,7 +211,6 @@ impl VisibilityScope {
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct VisibilityParameters {
     pub viewer: Uuid,
-    pub blocked: bool,
     pub author_active: bool,
     pub age: Option<i16>,
     pub gender: Option<&'static str>,
@@ -232,7 +230,6 @@ impl VisibilityParameters {
     ) -> sqlx::query::QueryAs<'q, sqlx::Postgres, O, sqlx::postgres::PgArguments> {
         query
             .bind(self.viewer)
-            .bind(self.blocked)
             .bind(self.author_active)
             .bind(self.age)
             .bind(self.gender)
@@ -247,7 +244,6 @@ impl VisibilityParameters {
     ) -> sqlx::query::QueryScalar<'q, sqlx::Postgres, O, sqlx::postgres::PgArguments> {
         query
             .bind(self.viewer)
-            .bind(self.blocked)
             .bind(self.author_active)
             .bind(self.age)
             .bind(self.gender)
@@ -256,25 +252,97 @@ impl VisibilityParameters {
     }
 
     /// The number of placeholders the fragment uses.
-    pub const PLACEHOLDERS: usize = 7;
+    ///
+    /// The block term is a correlated subquery rather than a bound value, so it
+    /// adds no placeholder; the viewer id it reads is the one already bound.
+    pub const PLACEHOLDERS: usize = 6;
+}
+
+/// The per-row block term: true when this viewer and this post's author are
+/// blocked from each other, or when the pair cannot be resolved.
+///
+/// `viewer` is the placeholder number holding the viewer's profile id. The term
+/// is a correlated subquery over the post alias `p`, so it is evaluated once per
+/// row against that row's author.
+///
+/// The `coalesce(..., true)` is the fail-closed part. Each side's account id
+/// comes from a scalar subquery that yields `NULL` when the profile has never
+/// been mirrored; comparing against `NULL` would make both `exists` arms false
+/// and silently admit the row, so the unresolved case is forced to `true`
+/// (blocked) instead.
+///
+/// ## The one exception: a nil viewer
+///
+/// A nil viewer is an anonymous resolver, not a profile. No block can name it —
+/// `discovery_blocks_not_self` and the account mirror both require a real
+/// account — so "the pair cannot be resolved" says nothing about it. Treating it
+/// as blocked would deny every anonymous read of an unrestricted post, which is
+/// the opposite of what an unrestricted post means. The term is therefore `false`
+/// for a nil viewer and fail-closed for every real one. An anonymous viewer is
+/// still unable to satisfy any restriction, because the audience branch denies a
+/// viewer with no claim.
+pub fn block_term(viewer: usize) -> String {
+    format!(
+        "(cast(${viewer} as uuid) <> '00000000-0000-0000-0000-000000000000'::uuid \
+          and coalesce((\
+             select (\
+                 exists (\
+                     select 1 from discovery_blocks b \
+                     where b.deleted_at is null \
+                       and b.blocker_account_id = viewer_account.account_id \
+                       and b.blocked_account_id = author_account.account_id) \
+                 or exists (\
+                     select 1 from discovery_blocks b \
+                     where b.deleted_at is null \
+                       and b.blocker_account_id = author_account.account_id \
+                       and b.blocked_account_id = viewer_account.account_id)\
+             ) \
+             from (select account_id from discovery_profiles \
+                   where profile_id = cast(${viewer} as uuid)) viewer_account, \
+                  (select account_id from discovery_profiles \
+                   where profile_id = p.author_profile_id) author_account\
+         ), true))"
+    )
 }
 
 /// Build the predicate for a scope whose parameters start at `first`.
 ///
 /// The returned string is a parenthesized `boolean` expression over the
-/// `intro_posts` alias `p`. It is never a subquery and never a scalar function,
-/// so it composes into a `where` clause, a `join ... on`, or an `exists (...)`.
+/// `intro_posts` alias `p`, so it composes into a `where` clause, a
+/// `join ... on`, or an `exists (...)`.
 ///
 /// The fragment has no string interpolation of values: every value is a
-/// placeholder. The only interpolated text is the placeholder numbers.
+/// placeholder. The only interpolated text is the placeholder numbers, plus the
+/// block term below, which is a fixed correlated subquery rather than a value.
+///
+/// ## The block term is per row, not per request
+///
+/// Rows 4 and 5 must be evaluated against the **actual pair** — this viewer and
+/// *this post's author* — not against the viewer's block state in general. A
+/// per-request boolean would have to mean "this viewer has blocked somebody",
+/// which is true for anyone with one active block and would then deny every post
+/// on the page. The term is therefore a correlated `not exists` over
+/// `discovery_blocks`, resolved through the local `discovery_profiles` mirror of
+/// account ids. That is the same shape the discovery projection query uses, so
+/// the two surfaces cannot disagree about what a block means.
+///
+/// It is **fail-closed in both directions**: the subquery is satisfied (that is,
+/// the row is denied) when an active block exists in either direction, *and*
+/// when the pair cannot be resolved at all. A viewer or author with no mirrored
+/// account row cannot be proven unblocked, so the post is not shown. That is the
+/// same answer the per-request boolean gave for the unresolvable case, so this
+/// change removes the over-denial without introducing over-admission.
 pub fn predicate(first: usize) -> String {
     let viewer = first;
-    let blocked = first + 1;
-    let author_active = first + 2;
-    let age = first + 3;
-    let gender = first + 4;
-    let provider_answered = first + 5;
-    let now = first + 6;
+    // The block term is a correlated subquery over the post alias, not a bound
+    // value, so it consumes no placeholder of its own. It reads the viewer's
+    // profile id, which is the same `$viewer` the author comparison uses.
+    let blocked = block_term(viewer);
+    let author_active = first + 1;
+    let age = first + 2;
+    let gender = first + 3;
+    let provider_answered = first + 4;
+    let now = first + 5;
     // Rows 1-5 are a conjunction of per-request facts. Rows 6-12 are the
     // audience branch, written once as a `case` so the unrestricted arm is
     // visibly claim-free.
@@ -289,7 +357,7 @@ pub fn predicate(first: usize) -> String {
                   p.state = 'PUBLISHED' \
                   and (p.expires_at is null or p.expires_at > cast(${now} as timestamptz)) \
                   and cast(${author_active} as boolean) \
-                  and not cast(${blocked} as boolean) \
+                  and not ({blocked}) \
                   and case \
                       when p.audience_min_age is null and p.audience_gender = 'any' \
                           then true \

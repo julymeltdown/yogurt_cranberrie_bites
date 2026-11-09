@@ -78,15 +78,22 @@ fn now() -> DateTime<Utc> {
     Utc::now()
 }
 
-/// The fixture database is shared by every test in this binary, and a page is a
-/// global ordered set. Two tests inserting rows at once would change each
-/// other's page contents, so the page tests take this lock for their whole body.
-/// It serializes them within the binary; the assertions are still about real
-/// query behaviour, not about a private database.
-static PAGE_LOCK: std::sync::Mutex<()> = std::sync::Mutex::new(());
-
-fn page_guard() -> std::sync::MutexGuard<'static, ()> {
-    PAGE_LOCK.lock().unwrap_or_else(|poisoned| poisoned.into_inner())
+/// The fixture database is shared by every test **and every test binary**, and a
+/// page is a global ordered set. Two tests inserting rows at once would change
+/// each other's page contents, and the block fixture is global state that another
+/// binary also writes.
+///
+/// A process-local mutex cannot coordinate across binaries, so the guard is a
+/// PostgreSQL advisory lock on a connection held for the test body. That is the
+/// same mechanism the migration helper uses, and it serializes the suites that
+/// share this database.
+async fn page_guard(pool: &PgPool) -> sqlx::pool::PoolConnection<sqlx::Postgres> {
+    let mut connection = pool.acquire().await.expect("a fixture connection");
+    sqlx::query("select pg_advisory_lock(hashtextextended('wp04-shared-fixture', 0))")
+        .execute(&mut *connection)
+        .await
+        .expect("the fixture lock");
+    connection
 }
 
 fn codec() -> IntroCursorCodec {
@@ -106,6 +113,7 @@ async fn insert_post(
     expires_at: Option<DateTime<Utc>>,
 ) -> anyhow::Result<Uuid> {
     let intro_id = Uuid::new_v4();
+    mirror(pool, author).await?;
     sqlx::query(
         "insert into intro_posts(intro_id,author_profile_id,body,audience_gender,\
          audience_min_age,audience_max_age_exclusive,state,published_at,expires_at) \
@@ -142,6 +150,11 @@ async fn list_page(
     scope: &PageScope,
     query: &IntroPostQuery,
 ) -> Result<concert_service::intro_posts::repository::IntroPostPage, IntroPageError> {
+    // The predicate resolves the viewer/author pair per row, so the viewer must
+    // be mirrored or every row is denied for an unrelated reason.
+    mirror(pool, scope.viewer_profile_id)
+        .await
+        .expect("the viewer mirror");
     match list_intro_posts(pool, codec, scope, query).await {
         Ok(page) => Ok(page),
         // A policy refusal is the answer the test asked for, not a failure of the
@@ -171,6 +184,24 @@ fn test_author() -> Uuid {
     Uuid::new_v4()
 }
 
+/// Mirror a profile into `discovery_profiles`.
+///
+/// The predicate resolves a block per row through this mirror, and a pair it
+/// cannot resolve is denied. A viewer that is never mirrored would therefore see
+/// nothing, for a reason unrelated to what a page test asserts.
+async fn mirror(pool: &PgPool, profile: Uuid) -> anyhow::Result<Uuid> {
+    sqlx::query(
+        "insert into discovery_profiles(profile_id,account_id,nickname,bio,visibility) \
+         values($1,$2,$3,'fixture','PUBLIC') on conflict (profile_id) do nothing",
+    )
+    .bind(profile)
+    .bind(profile)
+    .bind(format!("pg-{}", &profile.simple().to_string()[..8]))
+    .execute(pool)
+    .await?;
+    Ok(profile)
+}
+
 fn scope(viewer: Uuid, attributes: ViewerAttributes) -> PageScope {
     PageScope {
         viewer_profile_id: viewer,
@@ -198,8 +229,8 @@ fn man_25() -> ViewerAttributes {
 
 #[tokio::test]
 async fn the_page_query_is_preparable() -> anyhow::Result<()> {
-    let _serial = page_guard();
     let pool = pool().await?;
+    let _serial = page_guard(&pool).await;
     let error = concert_service::intro_posts::repository::list_intro_posts_diagnostic(
         &pool,
         &codec(),
@@ -226,8 +257,8 @@ async fn the_page_query_is_preparable() -> anyhow::Result<()> {
 
 #[tokio::test]
 async fn a_page_is_full_when_the_filtered_set_has_more_rows() -> anyhow::Result<()> {
-    let _serial = page_guard();
     let pool = pool().await?;
+    let _serial = page_guard(&pool).await;
     // The reader is the author of every row this test creates, so row 1 admits
     // all of them. Ten posts alternate restricted and unrestricted; a page of
     // four must return four rows, not "four fetched, three filtered, three
@@ -307,8 +338,8 @@ async fn a_page_is_full_when_the_filtered_set_has_more_rows() -> anyhow::Result<
 
 #[tokio::test]
 async fn a_restricted_row_is_filtered_inside_the_page_query() -> anyhow::Result<()> {
-    let _serial = page_guard();
     let pool = pool().await?;
+    let _serial = page_guard(&pool).await;
     // The reader is a different profile from the author, so row 1 does not apply
     // and the audience decides. The test's own rows are asserted by id.
     let author = test_author();
@@ -334,15 +365,26 @@ async fn a_restricted_row_is_filtered_inside_the_page_query() -> anyhow::Result<
             .await?,
         );
     }
-    let page = list_page(
-        &pool,
-        &codec(),
-        &scope(reader, man_25()),
-        &IntroPostQuery::new(Some(100), None)?,
-    )
-    .await?;
-    let visible: std::collections::BTreeSet<Uuid> =
-        page.items.iter().map(|row| row.intro_id).collect();
+    // Walk the whole filtered set. A single page of `MAX_LIMIT` rows is not
+    // enough on a shared fixture: other suites' rows can push this test's rows
+    // past the limit, which would fail the membership assertion for a reason
+    // unrelated to the predicate.
+    let mut visible: std::collections::BTreeSet<Uuid> = std::collections::BTreeSet::new();
+    let mut cursor = None;
+    for _ in 0..10_000 {
+        let page = list_page(
+            &pool,
+            &codec(),
+            &scope(reader, man_25()),
+            &IntroPostQuery::new(Some(100), cursor.clone())?,
+        )
+        .await?;
+        visible.extend(page.items.iter().map(|row| row.intro_id));
+        cursor = page.next_cursor;
+        if cursor.is_none() || ids.iter().all(|id| visible.contains(id)) {
+            break;
+        }
+    }
     for (index, id) in ids.iter().enumerate() {
         if index % 2 == 0 {
             assert!(visible.contains(id), "the unrestricted row {index} is visible");
@@ -356,8 +398,8 @@ async fn a_restricted_row_is_filtered_inside_the_page_query() -> anyhow::Result<
 
 #[tokio::test]
 async fn the_cursor_is_derived_from_the_filtered_set() -> anyhow::Result<()> {
-    let _serial = page_guard();
     let pool = pool().await?;
+    let _serial = page_guard(&pool).await;
     // The reader is the author, so the page contains exactly this test's rows.
     // Three posts: the newest is restricted, the two older ones are not. The
     // author passes row 1, so all three are visible to them; the *other* viewer
@@ -399,16 +441,44 @@ async fn the_cursor_is_derived_from_the_filtered_set() -> anyhow::Result<()> {
         None,
     )
     .await?;
-    // The author sees the newest row first.
-    let first = list_page(
-        &pool,
-        &codec(),
-        &scope(author, unrestricted()),
-        &IntroPostQuery::new(Some(1), None)?,
-    )
-    .await?;
-    assert_eq!(first.items.len(), 1);
-    assert_eq!(first.items[0].intro_id, restricted, "the newest row");
+    // The author's own rows are ordered newest first. The fixture database is
+    // shared, so the page also contains other tests' rows; what this asserts is
+    // the order *among this test's rows*, which is the property the cursor
+    // depends on.
+    let mut author_seen = Vec::new();
+    let mut author_cursor = None;
+    for _ in 0..10_000 {
+        let page = list_page(
+            &pool,
+            &codec(),
+            &scope(author, unrestricted()),
+            &IntroPostQuery::new(Some(1), author_cursor.clone())?,
+        )
+        .await?;
+        author_seen.extend(page.items.iter().map(|row| row.intro_id));
+        author_cursor = page.next_cursor;
+        if author_cursor.is_none() {
+            break;
+        }
+        if author_seen.contains(&restricted)
+            && author_seen.contains(&older_a)
+            && author_seen.contains(&older_b)
+        {
+            break;
+        }
+    }
+    let restricted_at = author_seen
+        .iter()
+        .position(|id| *id == restricted)
+        .expect("the author reaches their restricted row");
+    let older_at = author_seen
+        .iter()
+        .position(|id| *id == older_a)
+        .expect("the author reaches the older row");
+    assert!(
+        restricted_at < older_at,
+        "the author's own rows are ordered newest first"
+    );
     // A different viewer cannot see the restricted newest row. The fixture
     // database is shared, so the page also contains other tests' rows; what this
     // test asserts is that this viewer's restricted row is absent and that the
@@ -456,8 +526,8 @@ async fn the_cursor_is_derived_from_the_filtered_set() -> anyhow::Result<()> {
 
 #[tokio::test]
 async fn a_page_never_returns_more_than_the_limit() -> anyhow::Result<()> {
-    let _serial = page_guard();
     let pool = pool().await?;
+    let _serial = page_guard(&pool).await;
     let author = test_author();
     let base = now() - Duration::seconds(5);
     let mut ids = Vec::new();
@@ -512,8 +582,8 @@ async fn a_page_never_returns_more_than_the_limit() -> anyhow::Result<()> {
 
 #[tokio::test]
 async fn a_cursor_issued_to_one_viewer_is_refused_for_another() -> anyhow::Result<()> {
-    let _serial = page_guard();
     let pool = pool().await?;
+    let _serial = page_guard(&pool).await;
     // The reader is the author, so the page contains exactly this test's rows.
     let author = test_author();
     // This test's rows are the newest in the fixture, so the first page of a
@@ -569,8 +639,8 @@ async fn a_cursor_issued_to_one_viewer_is_refused_for_another() -> anyhow::Resul
 
 #[tokio::test]
 async fn a_tampered_cursor_is_refused() -> anyhow::Result<()> {
-    let _serial = page_guard();
     let pool = pool().await?;
+    let _serial = page_guard(&pool).await;
     let author = test_author();
     // This test's rows are the newest in the fixture.
     let base = now() - Duration::seconds(1);
@@ -625,8 +695,8 @@ async fn a_tampered_cursor_is_refused() -> anyhow::Result<()> {
 
 #[tokio::test]
 async fn an_expired_cursor_is_refused() -> anyhow::Result<()> {
-    let _serial = page_guard();
     let pool = pool().await?;
+    let _serial = page_guard(&pool).await;
     let author = test_author();
     // This test's rows are the newest in the fixture.
     let base = now() - Duration::seconds(1);
@@ -670,8 +740,8 @@ async fn an_expired_cursor_is_refused() -> anyhow::Result<()> {
 
 #[tokio::test]
 async fn widening_the_audience_makes_the_post_visible() -> anyhow::Result<()> {
-    let _serial = page_guard();
     let pool = pool().await?;
+    let _serial = page_guard(&pool).await;
     let author = Uuid::new_v4();
     let intro_id = insert_post(
         &pool,
@@ -720,8 +790,8 @@ async fn widening_the_audience_makes_the_post_visible() -> anyhow::Result<()> {
 
 #[tokio::test]
 async fn narrowing_the_audience_hides_the_post_on_the_next_request() -> anyhow::Result<()> {
-    let _serial = page_guard();
     let pool = pool().await?;
+    let _serial = page_guard(&pool).await;
     let author = Uuid::new_v4();
     let intro_id = insert_post(&pool, author, "any", None, None, now(), None).await?;
     let viewer = Uuid::new_v4();
@@ -786,8 +856,8 @@ async fn narrowing_the_audience_hides_the_post_on_the_next_request() -> anyhow::
 
 #[tokio::test]
 async fn a_missing_post_and_an_unauthorized_post_are_the_same_answer() -> anyhow::Result<()> {
-    let _serial = page_guard();
     let pool = pool().await?;
+    let _serial = page_guard(&pool).await;
     let intro_id = insert_post(
         &pool,
         Uuid::new_v4(),
@@ -833,8 +903,8 @@ async fn a_missing_post_and_an_unauthorized_post_are_the_same_answer() -> anyhow
 
 #[tokio::test]
 async fn the_detail_row_carries_no_audience() -> anyhow::Result<()> {
-    let _serial = page_guard();
     let pool = pool().await?;
+    let _serial = page_guard(&pool).await;
     let intro_id = insert_post(
         &pool,
         Uuid::new_v4(),
@@ -845,10 +915,13 @@ async fn the_detail_row_carries_no_audience() -> anyhow::Result<()> {
         None,
     )
     .await?;
+    // The viewer must be mirrored: the predicate resolves the block pair per row
+    // and denies a pair it cannot resolve.
+    let viewer = mirror(&pool, Uuid::new_v4()).await?;
     let row = get_intro_post(
         &pool,
         &VisibilityScope::new(
-            Uuid::new_v4(),
+            viewer,
             BlockState::None,
             concert_application::intro_visibility::AuthorStanding::Active,
             woman_25(),
@@ -874,8 +947,8 @@ async fn the_detail_row_carries_no_audience() -> anyhow::Result<()> {
 
 #[tokio::test]
 async fn the_author_reads_their_own_unpublished_post_through_the_detail_query() -> anyhow::Result<()> {
-    let _serial = page_guard();
     let pool = pool().await?;
+    let _serial = page_guard(&pool).await;
     let author = test_author();
     let intro_id = Uuid::new_v4();
     sqlx::query(
@@ -922,8 +995,8 @@ async fn the_author_reads_their_own_unpublished_post_through_the_detail_query() 
 
 #[tokio::test]
 async fn a_fenced_author_is_filtered_out_of_the_page() -> anyhow::Result<()> {
-    let _serial = page_guard();
     let pool = pool().await?;
+    let _serial = page_guard(&pool).await;
     // The page query evaluates row 4 from the permanent deletion fence, which is
     // the one author-standing fact the concert service owns locally.
     let author = Uuid::new_v4();
@@ -968,7 +1041,7 @@ async fn a_fenced_author_is_filtered_out_of_the_page() -> anyhow::Result<()> {
 
 #[tokio::test]
 async fn the_query_rejects_an_out_of_range_limit() -> anyhow::Result<()> {
-    let _serial = page_guard();
+    // No database is touched, so this test needs no fixture lock.
     assert_eq!(
         IntroPostQuery::new(Some(0), None).expect_err("zero"),
         IntroPageError::InvalidQuery("limit")
