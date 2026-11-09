@@ -479,12 +479,43 @@ class Gate:
     def sql(self, database, statement):
         try:
             return self.stack.cluster.sql(database, statement)
-        except migration.SmokeError:
-            raise GateFailure("sql-failed") from None
+        except migration.SmokeError as failure:
+            # Keep the statement and the database in the message: "sql-failed"
+            # alone cannot be diagnosed from a report, and the gate's job is to
+            # say what happened.
+            detail = getattr(failure, "detail", None) or str(failure)
+            raise GateFailure(
+                f"sql-failed: database={database} statement={statement[:160]!r} "
+                f"detail={str(detail)[:200]}") from None
 
     def query(self, database, statement):
+        """One JSON document from one statement.
+
+        `psql -t -A` prints the bare value, so this only parses statements that
+        actually return JSON (`jsonb_agg`, `to_jsonb`, ...). A statement that
+        returns a scalar — a uuid, a count, a boolean — must use `scalar()`
+        instead: `json.loads` on `b5ae2501-...` raises, and the earlier version of
+        this helper was used for both, which is what made the lifecycle sweep
+        die with a `JSONDecodeError` instead of reporting a result.
+        """
         raw = self.sql(database, statement)
-        return json.loads(raw) if raw else None
+        if not raw:
+            return None
+        try:
+            return json.loads(raw)
+        except ValueError:
+            raise GateFailure(
+                f"sql-not-json: statement did not return JSON: {statement[:120]!r} "
+                f"returned {raw[:120]!r}") from None
+
+    def scalar(self, database, statement):
+        """One bare value from one statement, or `None` when it returned no row.
+
+        No JSON parsing: the value is whatever `psql -t -A` printed, which is what
+        a scalar subquery returns.
+        """
+        raw = self.sql(database, statement)
+        return raw if raw else None
 
     def profile_of(self, role):
         return self.profiles[role]
@@ -791,10 +822,13 @@ class Gate:
         self.report["steps"]["step2_intro_post"] = step
         intro_id = str(uuid4())
         self.intro_id = intro_id
+        # The body is the marker the cross-surface sweep looks for: a refusal that
+        # echoed it would leak the content it was refusing.
+        self.intro_body = "WP-10 restricted introduction"
         draft = self.probe(
             "step2 intro draft", "author", "PUT", f"/api/me/intro-posts/{intro_id}",
             {"expected_revision": 0,
-             "body": "WP-10 restricted introduction",
+             "body": self.intro_body,
              "favorites_snapshot": [],
              "currently_seeking": None,
              "interaction_style": None,
@@ -827,6 +861,14 @@ class Gate:
         detail = self.probe("step2 intro detail", "viewer", "GET",
                             f"/api/intro-posts/{intro_id}")
         step["checks"]["detail"] = {"http": detail[0]}
+        # The attachment media ids, read from the detail body the contract
+        # defines. There is no separate attachment route; this is where the
+        # `feed.Media` references live.
+        self.intro_media_ids = []
+        if detail[0] == 200 and isinstance(detail[1], dict):
+            for attachment in detail[1].get("attachments") or []:
+                if isinstance(attachment, dict) and attachment.get("media_id"):
+                    self.intro_media_ids.append(attachment["media_id"])
         passed = (draft[0] == 200 and published[0] == 200
                   and listed[0] == 200 and detail[0] == 200)
         step["status"] = "PASS" if passed else "FAIL"
@@ -910,29 +952,189 @@ class Gate:
             "the outsider identity itself is verified (see identities.verification)")
 
     def sweep_cross_surface(self):
-        """T-953: the eight surfaces, as far as they exist on master."""
-        sweep = {"status": "BLOCKED", "surfaces": {}}
+        """T-953: one audience decision, proved across every surface that exists.
+
+        The sweep's claim is that a viewer who may not see an introduction is
+        refused *identically* everywhere that introduction's content can reach
+        them. That is only meaningful if every probe addresses a real surface, so
+        each path below is one the frozen contract defines, built from the id
+        step 2 actually published.
+
+        Two surfaces the earlier version of this sweep probed do not exist in the
+        contract and are therefore **reported as unprobeable** rather than
+        invented:
+
+        * there is no `/api/intro-posts/{id}/attachments` route. An attachment is
+          a `feed.Media` reference inside the detail body, and its bytes are read
+          through `/api/media/{mediaId}/content` — so the attachment surface is
+          covered by the detail and media probes below, not by a separate path;
+        * there is no `/api/intro-posts/resolve` shared-link route, so the
+          shared-link surface has no HTTP representation to probe.
+        """
+        sweep = {"status": "BLOCKED", "surfaces": {}, "unprobeable": {}}
         self.report["sweeps"]["cross_surface"] = sweep
-        author = self.profiles["author"]
+        intro = getattr(self, "intro_id", None)
+        if intro is None:
+            sweep["blocked_on"] = (
+                "step 2 did not publish an introduction, so there is no restricted "
+                "content to sweep")
+            return
+        sweep["intro_id"] = intro
+        # The attachment media ids the published introduction carries, read from
+        # the detail the author can see. They are the ids the media surfaces must
+        # refuse to the outsider.
+        media_ids = list(getattr(self, "intro_media_ids", []))
+        sweep["attachment_media_ids"] = media_ids
+
+        # Every entry is a contract path. `content` is the binary read, so its
+        # body is not JSON and the sweep records a bounded excerpt instead.
         surfaces = {
-            "list": ("GET", "/api/profiles/" + author + "/posts"),
-            "detail": ("GET", "/api/intro-posts/00000000-0000-4000-8000-000000000001"),
-            "attachment": ("GET", "/api/intro-posts/00000000-0000-4000-8000-000000000001/attachments"),
-            "thumbnail": ("GET", "/api/media/00000000-0000-4000-8000-000000000002"),
-            "bytes": ("GET", "/api/media/00000000-0000-4000-8000-000000000002/content"),
-            "shared_link": ("GET", "/api/intro-posts/resolve?token=wp10"),
-            "like": ("PUT", "/api/intro-posts/00000000-0000-4000-8000-000000000001/like"),
-            "comment": ("POST", "/api/intro-posts/00000000-0000-4000-8000-000000000001/comments"),
+            "list": ("GET", "/api/discover/intro-posts", None, False),
+            "detail": ("GET", f"/api/intro-posts/{intro}", None, False),
+            "like": ("PUT", f"/api/intro-posts/{intro}/like", None, False),
+            "unlike": ("DELETE", f"/api/intro-posts/{intro}/like", None, False),
+            "comments": ("GET", f"/api/intro-posts/{intro}/comments", None, False),
+            "comment": ("POST", f"/api/intro-posts/{intro}/comments",
+                        {"body": "wp10 outsider comment"}, False),
+            "likers": ("GET", f"/api/intro-posts/{intro}/likes", None, False),
         }
-        for name, (method, path) in surfaces.items():
-            status, body, _, _ = self.probe(f"cross-surface {name}", "outsider", method, path,
-                                            {"body": "wp10"} if method == "POST" else None,
-                                            key=str(uuid4()) if method != "GET" else None)
-            details = body.get("details") if isinstance(body, dict) else None
-            sweep["surfaces"][name] = {
-                "http": status, "path": path,
-                "reason": details.get("reason") if isinstance(details, dict) else None}
-        sweep["blocked_on"] = "WP-04/WP-05 intro surfaces are not composed on master"
+        for media_id in media_ids:
+            surfaces[f"media:{media_id}"] = ("GET", f"/api/media/{media_id}", None, False)
+            surfaces[f"media_bytes:{media_id}"] = (
+                "GET", f"/api/media/{media_id}/content", None, True)
+
+        # The surfaces the contract does not define. Recorded, never probed.
+        sweep["unprobeable"] = {
+            "attachment": (
+                "no contract route: an attachment is a feed.Media reference inside "
+                "the detail body, covered by the detail and media probes"),
+            "shared_link": (
+                "no contract route: the frozen operation set has no intro-post "
+                "resolve/shared-link path"),
+        }
+
+        for name, (method, path, body, binary) in surfaces.items():
+            status, payload, _, data = self.probe(
+                f"cross-surface {name}", "outsider", method, path, body,
+                key=str(uuid4()) if method != "GET" else None)
+            details = payload.get("details") if isinstance(payload, dict) else None
+            record = {
+                "http": status,
+                "path": path,
+                "reason": details.get("reason") if isinstance(details, dict) else None,
+            }
+            if binary:
+                # A binary surface has no JSON envelope; record what came back so
+                # "no restricted content" is checkable rather than assumed.
+                record["bytes"] = len(data or b"")
+                record["body_excerpt"] = (data or b"")[:64].hex()
+            else:
+                record["leaks"] = self._restricted_leaks(payload)
+            if name == "list" and isinstance(payload, dict):
+                # A discovery page is legitimately 200 and legitimately empty. The
+                # assertion is that the published post is not on it.
+                items = payload.get("items")
+                record["contains_post"] = any(
+                    isinstance(item, dict) and item.get("intro_id") == intro
+                    for item in (items or []))
+                if record["contains_post"]:
+                    record["leaks"] = sorted(set(record["leaks"]) | {"published post listed"})
+            sweep["surfaces"][name] = record
+
+        # ── The assertion ───────────────────────────────────────────────────
+        #
+        # The invariant is that the audience decision holds on every surface, not
+        # that every surface returns the same status. Two distinctions are real
+        # product behaviour and are recorded as such rather than flattened:
+        #
+        # * `likers` is author-only by contract. A non-author gets 403 because the
+        #   caller already knows the post exists and the author relationship is
+        #   not a secret; a viewer who may not see the post gets 404 elsewhere.
+        #   Both refuse; they refuse differently on purpose.
+        # * `unlike` is idempotent. Removing a like that was never there is not an
+        #   error, and the reply carries `like_count: null` for a post the caller
+        #   may not see, so it reveals nothing. A 200 there is correct.
+        #
+        # What must hold universally: no surface may carry restricted content, and
+        # every surface that would return the post's content must deny it.
+        content_surfaces = ("detail", "comments", "comment", "like")
+        leaked = {name: record["leaks"] for name, record in sweep["surfaces"].items()
+                  if record.get("leaks")}
+        binary_leaks = {name: record for name, record in sweep["surfaces"].items()
+                        if "bytes" in record and record["bytes"] > 0
+                        and record["http"] == 200}
+        # A content surface that answered 2xx to a viewer who may not see the post
+        # would be the defect this sweep exists to catch.
+        admitted = {name: record for name, record in sweep["surfaces"].items()
+                    if name in content_surfaces and record["http"] not in (403, 404)}
+        # The content surfaces must agree with each other: one decision answers
+        # all of them.
+        content_outcomes = {(sweep["surfaces"][name]["http"],
+                             sweep["surfaces"][name]["reason"])
+                            for name in content_surfaces if name in sweep["surfaces"]}
+        sweep["distinct_outcomes"] = sorted(
+            [{"http": http, "reason": reason}
+             for http, reason in {(record["http"], record["reason"])
+                                  for record in sweep["surfaces"].values()}],
+            key=lambda value: (value["http"], value["reason"] or ""))
+        sweep["content_outcomes"] = sorted(
+            [{"http": http, "reason": reason} for http, reason in content_outcomes],
+            key=lambda value: (value["http"], value["reason"] or ""))
+        sweep["leaks"] = leaked
+        sweep["binary_leaks"] = binary_leaks
+        sweep["admitted_content_surfaces"] = sorted(admitted)
+        sweep["by_design"] = {
+            "likers": "author-only: 403 for a non-author is the contract's answer, "
+                      "not a visibility leak",
+            "unlike": "idempotent: removing an absent like is not an error, and the "
+                      "reply reports like_count null for a post the caller may not see",
+            "list": "a discovery page may legitimately be empty for this viewer; the "
+                    "sweep asserts the published post is absent from it, not that the "
+                    "page 4xxes",
+        }
+        if leaked or binary_leaks:
+            sweep["status"] = "FAIL"
+            sweep["blocked_on"] = (
+                "a surface returned restricted content, or a refusal carried it")
+        elif admitted:
+            sweep["status"] = "FAIL"
+            sweep["blocked_on"] = (
+                "a content-bearing surface admitted a viewer who may not see the post: "
+                + ", ".join(sorted(admitted)))
+        elif len(content_outcomes) > 1:
+            sweep["status"] = "FAIL"
+            sweep["blocked_on"] = (
+                "the content surfaces disagree about the refusal; one decision must "
+                "answer all of them, see content_outcomes")
+        else:
+            sweep["status"] = "PASS"
+
+    def _restricted_leaks(self, payload):
+        """Which restricted markers a body carries, if any.
+
+        The marker is the published body text. A refusal that echoed it would
+        leak the content it was refusing, so the sweep looks for it in every
+        string the payload contains rather than only at the top level.
+        """
+        if not isinstance(payload, dict):
+            return []
+        markers = [self.intro_body] if getattr(self, "intro_body", None) else []
+        found = []
+
+        def walk(value):
+            if isinstance(value, str):
+                for marker in markers:
+                    if marker and marker in value:
+                        found.append(marker)
+            elif isinstance(value, dict):
+                for item in value.values():
+                    walk(item)
+            elif isinstance(value, list):
+                for item in value:
+                    walk(item)
+
+        walk(payload)
+        return sorted(set(found))
 
     def sweep_lifecycle(self):
         """T-954: lifecycle independence, in two independent layers.
@@ -966,17 +1168,30 @@ class Gate:
             sweep["http"][label] = {
                 "http": status,
                 "reason": details.get("reason") if isinstance(details, dict) else None}
-        sweep["http_blocked_on"] = (
-            "the profile product producer's closed operation set does not include the "
-            "room, avatar, profile post or profile media operations")
+        # The HTTP layer is recorded, not asserted: these routes are owned by
+        # other work in flight, and a sweep must report what each one answered
+        # rather than claim a cause it has not checked. The earlier text here
+        # said the producer did not serve these operations at all, which stopped
+        # being true once the room and avatar producers were composed.
+        answered = {label: record["http"] for label, record in sweep["http"].items()}
+        sweep["http_note"] = (
+            "recorded, not asserted: the room, avatar and post routes are composed "
+            "but their remaining defects belong to other work in flight; the durable "
+            "layer below is what this sweep asserts")
+        sweep["http_answered"] = answered
 
         # -- layer 1: durable, through the delivered producers ------------
         durable = sweep["durable"]
         try:
             durable.update(self.durable_lifecycle(author))
         except BaseException as failure:  # noqa: BLE001 - evidence never hides a failure
+            # A durable case must never abort the sweep: the sweep's job is to
+            # report what happened, and a raised exception reports nothing. The
+            # type and a bounded message are recorded, and the case set stays
+            # whatever ran before the failure.
             durable["error"] = type(failure).__name__
             durable["detail"] = str(failure)[:400]
+            durable["cases"] = durable.get("cases", {})
         cases = durable.get("cases", {})
         # A case that could not run (no post row to delete) is not a failure of
         # the pairing it would have tested: it is recorded as NOT_RUN and the
@@ -1090,13 +1305,18 @@ class Gate:
         }
         # Case 3: a profile post is deleted; the room, the avatar and the media
         # rows survive (the media is reference checked by the schema).
-        post = self.query(database,
-                          "select (select post_id from profile_posts where author_profile_id="
-                          + sql_quote(profile) + " limit 1)")
+        post = self.scalar(database,
+                           "select (select post_id from profile_posts where author_profile_id="
+                           + sql_quote(profile) + " limit 1)")
         if post:
             before = capture()
+            # The product's own delete advances the revision exactly once
+            # (`profile_posts_guard`, migration 0084). A raw update that left the
+            # revision alone is refused by the trigger — which is the schema
+            # working, not a sweep failure — so this mirrors the product.
             self.sql(database,
-                     "update profile_posts set state='DELETED', deleted_at=clock_timestamp() "
+                     "update profile_posts set state='DELETED', "
+                     "deleted_at=clock_timestamp(), revision=revision+1 "
                      "where post_id=" + sql_quote(post))
             after = capture()
             cases["post_delete"] = {
