@@ -470,6 +470,147 @@ async fn a_private_profile_is_unavailable_to_another_actor() -> anyhow::Result<(
     Ok(())
 }
 
+/// The visitor profile carries the three fields the visitor card renders.
+///
+/// `shared_items` is the catalog overlap between the viewer and the owner,
+/// computed from `profile_favorites` in this database — not from the concert
+/// service's `discovery_favorite_items` projection, which is a display copy
+/// written by a background worker.
+#[tokio::test]
+async fn a_visitor_profile_reports_the_shared_catalog_overlap() -> anyhow::Result<()> {
+    let pool = pool().await?;
+    let harness = Harness::start(pool.clone()).await?;
+    let owner_account = Uuid::new_v4();
+    let owner = seed_profile(&pool, owner_account).await?;
+    let viewer_account = Uuid::new_v4();
+    let viewer = seed_profile(&pool, viewer_account).await?;
+    // Two catalog items the owner selected, one of which the viewer also did.
+    let shared = Uuid::new_v4();
+    let owner_only = Uuid::new_v4();
+    // Labels are unique across the shared fixture database, so each run scopes
+    // its own with the item id.
+    for (id, label, category) in [
+        (shared, format!("Visitor Overlap Shared {shared}"), "music"),
+        (owner_only, format!("Visitor Overlap Owner Only {owner_only}"), "anime"),
+    ] {
+        // A music row must carry an explicit exclusion review (0016); the
+        // non-music row must not claim one.
+        let review: Option<&str> = (category == "music").then_some("reviewed: not K-pop");
+        sqlx::query(
+            "insert into catalog_items(catalog_item_id,category,label,exclusion_reason) \
+             values($1,$2,$3,$4)",
+        )
+        .bind(id)
+        .bind(category)
+        .bind(&label)
+        .bind(review)
+        .execute(&pool)
+        .await?;
+    }
+    for (profile, item, category, position) in [
+        (owner, shared, "music", 0i16),
+        (owner, owner_only, "anime", 0i16),
+        (viewer, shared, "music", 0i16),
+    ] {
+        sqlx::query(
+            "insert into profile_favorites(profile_id,category,catalog_item_id,position) \
+             values($1,$2,$3,$4)",
+        )
+        .bind(profile)
+        .bind(category)
+        .bind(item)
+        .bind(position)
+        .execute(&pool)
+        .await?;
+    }
+    let mut as_viewer = actor(viewer);
+    as_viewer.user = viewer_account;
+    let request = as_viewer.message("GET", &format!("/api/profiles/{owner}"));
+    let mut signed = platform::actor_delegation::request_for(request, &as_viewer.user.to_string())?;
+    signed.set_timeout(std::time::Duration::from_secs(2));
+    let response = harness.dispatch_client().dispatch(signed).await?.into_inner();
+    assert_eq!(response.status, 200);
+    let body: serde_json::Value = serde_json::from_slice(&response.body)?;
+    let items = body["shared_items"].as_array().expect("shared_items is an array");
+    assert_eq!(items.len(), 1, "only the overlapping item is shared");
+    assert_eq!(items[0]["catalog_item_id"], shared.to_string());
+    assert_eq!(
+        items[0]["label"],
+        format!("Visitor Overlap Shared {shared}")
+    );
+    assert_eq!(items[0]["category"], "MUSIC");
+    // No age is ever exposed on a visitor profile.
+    assert!(body.get("age").is_none());
+    assert!(body.get("age_at_verification").is_none());
+    harness.close().await;
+    Ok(())
+}
+
+/// A viewer with no profile of their own sees no overlap, not an error.
+#[tokio::test]
+async fn a_viewer_without_a_profile_has_no_shared_items() -> anyhow::Result<()> {
+    let pool = pool().await?;
+    let harness = Harness::start(pool.clone()).await?;
+    let owner_account = Uuid::new_v4();
+    let owner = seed_profile(&pool, owner_account).await?;
+    let item = Uuid::new_v4();
+    sqlx::query(
+        "insert into catalog_items(catalog_item_id,category,label,exclusion_reason) \
+         values($1,'music',$2,'reviewed: not K-pop')",
+    )
+    .bind(item)
+    .bind(format!("Visitor Overlap Solo {item}"))
+    .execute(&pool)
+    .await?;
+    sqlx::query(
+        "insert into profile_favorites(profile_id,category,catalog_item_id,position) \
+         values($1,'music',$2,0)",
+    )
+    .bind(owner)
+    .bind(item)
+    .execute(&pool)
+    .await?;
+    // An account with no profile row at all.
+    let mut stranger = actor(owner);
+    stranger.user = Uuid::new_v4();
+    let request = stranger.message("GET", &format!("/api/profiles/{owner}"));
+    let mut signed = platform::actor_delegation::request_for(request, &stranger.user.to_string())?;
+    signed.set_timeout(std::time::Duration::from_secs(2));
+    let response = harness.dispatch_client().dispatch(signed).await?.into_inner();
+    assert_eq!(response.status, 200);
+    let body: serde_json::Value = serde_json::from_slice(&response.body)?;
+    assert_eq!(body["shared_items"].as_array().map(Vec::len), Some(0));
+    harness.close().await;
+    Ok(())
+}
+
+/// `gender_bucket` is absent unless the owner opted in, and `room_available`
+/// never claims a room this service cannot verify.
+#[tokio::test]
+async fn an_unverified_owner_shows_no_gender_bucket() -> anyhow::Result<()> {
+    let pool = pool().await?;
+    let harness = Harness::start(pool.clone()).await?;
+    let owner_account = Uuid::new_v4();
+    let owner = seed_profile(&pool, owner_account).await?;
+    let viewer_account = Uuid::new_v4();
+    seed_profile(&pool, viewer_account).await?;
+    let mut as_viewer = actor(owner);
+    as_viewer.user = viewer_account;
+    let request = as_viewer.message("GET", &format!("/api/profiles/{owner}"));
+    let mut signed = platform::actor_delegation::request_for(request, &as_viewer.user.to_string())?;
+    signed.set_timeout(std::time::Duration::from_secs(2));
+    let response = harness.dispatch_client().dispatch(signed).await?.into_inner();
+    assert_eq!(response.status, 200);
+    let body: serde_json::Value = serde_json::from_slice(&response.body)?;
+    // No claim, and no opt-in: the value is null, never a guess.
+    assert_eq!(body["gender_bucket"], serde_json::Value::Null);
+    // `profile_rooms` lives in `mcr_concert`; this service cannot verify it, so
+    // it reports the closed answer rather than asserting a room exists.
+    assert_eq!(body["room_available"], serde_json::Value::Bool(false));
+    harness.close().await;
+    Ok(())
+}
+
 #[tokio::test]
 async fn an_unauthenticated_caller_never_reaches_the_producer() -> anyhow::Result<()> {
     let pool = pool().await?;

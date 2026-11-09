@@ -18,6 +18,7 @@ use crate::adapters::out::profile_owner_guard::ProfileOwnerScope;
 use crate::catalog;
 use crate::identity::{
     CallbackCommand, CallbackError, CallbackResult, IdentityRuntime, StartError,
+    VerificationState,
 };
 use chrono::Utc;
 use std::sync::Arc;
@@ -154,6 +155,105 @@ impl ProfileProductProducer {
             .as_ref()
             .ok_or_else(|| Status::unavailable("Identity verification is unavailable"))
     }
+
+    /// The catalog items the viewer and `profile_id` both selected.
+    ///
+    /// One statement over `profile_favorites` and `catalog_items`, both in this
+    /// database. A favorite whose catalog row is missing is skipped rather than
+    /// emitted with an invented label: the label is the only thing the card
+    /// prints, and a blank one would be a fabricated value.
+    ///
+    /// A viewer with no profile of their own (an account that never created one)
+    /// has no favorites, so the overlap is empty. That is a real answer, not an
+    /// error: the card simply shows no shared interest.
+    async fn shared_items(
+        &self,
+        profile_id: Uuid,
+        viewer_account: Uuid,
+    ) -> Result<Vec<serde_json::Value>, Status> {
+        // The viewer's own profile, if any. `None` means no overlap.
+        let viewer_profile: Option<Uuid> = sqlx::query_scalar(
+            "select profile_id from profile_identities \
+             where account_id=$1 and deleted_at is null",
+        )
+        .bind(viewer_account)
+        .fetch_optional(&self.pool)
+        .await
+        .map_err(|_| Status::unavailable("Profile store unavailable"))?;
+        let Some(viewer_profile) = viewer_profile else {
+            return Ok(Vec::new());
+        };
+        if viewer_profile == profile_id {
+            // The owner viewing their own profile: every favorite is "shared".
+            // The visitor card is not shown to the owner, so this is not a
+            // privacy question — but reporting the owner's own set as an overlap
+            // would be misleading, so it is empty.
+            return Ok(Vec::new());
+        }
+        let rows: Vec<(Uuid, String, String)> = sqlx::query_as(
+            "select c.catalog_item_id, c.label, c.category \
+             from profile_favorites mine \
+             join profile_favorites theirs \
+               on theirs.catalog_item_id = mine.catalog_item_id \
+              and theirs.profile_id = $1 \
+             join catalog_items c on c.catalog_item_id = mine.catalog_item_id \
+             where mine.profile_id = $2 \
+             order by c.category, c.label, c.catalog_item_id \
+             limit 15",
+        )
+        .bind(profile_id)
+        .bind(viewer_profile)
+        .fetch_all(&self.pool)
+        .await
+        .map_err(|_| Status::unavailable("Profile store unavailable"))?;
+        Ok(rows
+            .into_iter()
+            .map(|(id, label, category)| {
+                serde_json::json!({
+                    "catalog_item_id": id,
+                    "label": label,
+                    "category": category.to_uppercase(),
+                })
+            })
+            .collect())
+    }
+
+    /// The owner's gender bucket, only when the owner opted in to showing it.
+    ///
+    /// The opt-in is `display_on_profile`. It is `false` until a profile display
+    /// setting exists, so this returns `None` today — by construction, not by a
+    /// missing query. The claim is still read so that the moment the setting
+    /// exists this reports the verified value instead of a placeholder, and so
+    /// that the "no claim" and "not opted in" cases are distinct in the code.
+    ///
+    /// An expired or revoked claim is not a live claim and is never shown.
+    async fn visible_gender_bucket(
+        &self,
+        owner_account: Uuid,
+        _profile_id: Uuid,
+        _viewer_account: Uuid,
+    ) -> Result<Option<&'static str>, Status> {
+        // The identity runtime is optional: without a configured provider there
+        // is no claim to read, and no claim is never shown.
+        let Ok(identity) = self.identity() else {
+            return Ok(None);
+        };
+        let verification = identity.read().read(owner_account, Utc::now()).await;
+        // The owner's opt-in is the gate. `display_on_profile` is `false` until a
+        // profile display setting exists, so this returns `None` today.
+        if !verification.display_on_profile {
+            return Ok(None);
+        }
+        // Only a live, verified claim is shown. An expired or revoked claim is
+        // not a current fact about the owner.
+        if verification.status != VerificationState::Verified {
+            return Ok(None);
+        }
+        Ok(verification
+            .claims
+            .as_ref()
+            .map(|claims| claims.gender_bucket.as_str()))
+    }
 }
 
 #[async_trait::async_trait]
@@ -218,11 +318,46 @@ impl super::scoped::ScopedProfileProducer for ProfileProductProducer {
                 if visibility != "PUBLIC" && context.actor() != owner {
                     return Err(Status::not_found("Profile is unavailable"));
                 }
+                // ── The visitor fields ─────────────────────────────────────
+                //
+                // All three are read from THIS database. A cross-database join
+                // is forbidden (domain-contract §1.1), and none is needed:
+                // `profile_favorites`/`catalog_items` and `identity_claims` both
+                // live in `mcr_profile` alongside `profile_identities`.
+                //
+                // `shared_items` is the catalog overlap between the viewer and
+                // the profile owner, computed from the two favorite sets rather
+                // than from the concert service's `discovery_favorite_items`
+                // projection: the projection is a display copy written by a
+                // background worker, and a read must not depend on a worker
+                // having run.
+                let shared_items = self.shared_items(profile_id, context.actor()).await?;
+                // `room_available` is whether the owner's room is visible to
+                // this viewer. `profile_rooms` lives in `mcr_concert`, so this
+                // service cannot read its `visibility` column without a
+                // cross-database join. The owner's own room visibility is
+                // therefore reported as unavailable here (see the module note),
+                // and the field is `false` — the closed answer a viewer gets for
+                // a room they may not see, which is also what an absent room
+                // means. It never claims a room exists that this service cannot
+                // verify.
+                let room_available = false;
+                // `gender_bucket` is the owner's verified claim, and only when
+                // the owner opted in. The opt-in is `display_on_profile`, which
+                // is `false` until a profile display setting exists
+                // (`identity::status`), so this is `null` today by construction:
+                // the value is never sent without the owner's consent.
+                let gender_bucket = self
+                    .visible_gender_bucket(owner, profile_id, context.actor())
+                    .await?;
                 json(200, serde_json::json!({
                     "profile_id": profile_id,
                     "nickname": nickname,
                     "bio": bio,
                     "profile_image_media_id": image,
+                    "shared_items": shared_items,
+                    "room_available": room_available,
+                    "gender_bucket": gender_bucket,
                 }))
             }
             ProfileOperation::GetOwnIdentityVerification => {
