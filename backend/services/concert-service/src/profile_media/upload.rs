@@ -341,11 +341,29 @@ async fn stored_in(
 pub struct ProfileMediaStore {
     pool: PgPool,
     sanitizer: Arc<dyn ImageSanitizer>,
+    /// The visibility decision used to authorize a read through the attached
+    /// post. `None` keeps the fail-closed default, under which only the owner may
+    /// read an asset.
+    visibility: Option<crate::intro_posts::visibility::VisibilityPolicy>,
 }
 
 impl ProfileMediaStore {
     pub fn new(pool: PgPool, sanitizer: Arc<dyn ImageSanitizer>) -> Self {
-        Self { pool, sanitizer }
+        Self {
+            pool,
+            sanitizer,
+            visibility: None,
+        }
+    }
+
+    /// Attach the real visibility policy, so a media read is authorized through
+    /// the post the asset is attached to (T-307).
+    pub fn with_visibility(
+        mut self,
+        visibility: crate::intro_posts::visibility::VisibilityPolicy,
+    ) -> Self {
+        self.visibility = Some(visibility);
+        self
     }
 
     /// The production sanitizer: the same bounded codec the concert media runtime
@@ -624,6 +642,50 @@ impl ProfileMediaStore {
     ///
     /// A caller that is not the owner gets [`ProfileMediaError::Unavailable`],
     /// which is the same answer an absent id gets.
+    /// Authorize one media read (T-307, E-03 metadata and E-04 bytes).
+    ///
+    /// The asset is authorized **through the post it is attached to**, never
+    /// through file ownership alone:
+    ///
+    /// * the owner always sees their own asset;
+    /// * a non-owner sees it only when a live attachment is visible to them, and
+    ///   an intro attachment re-evaluates that post's audience on every request;
+    /// * an asset attached to nothing is readable by its owner only.
+    ///
+    /// Every refusal is `Unavailable`, so a caller cannot tell "not yours" from
+    /// "does not exist".
+    async fn authorize_read(
+        &self,
+        viewer: Uuid,
+        media_id: Uuid,
+    ) -> Result<(), ProfileMediaError> {
+        use crate::profile_media::authorization::{can_view_media, MediaViewer};
+        let now = chrono::Utc::now();
+        // The fail-closed default policy denies every restricted intro, so an
+        // unconfigured store still never widens visibility.
+        let policy = self
+            .visibility
+            .clone()
+            .unwrap_or_else(crate::intro_posts::visibility::VisibilityPolicy::deny_restricted);
+        let facts = crate::profile_media::resolver::read_facts(
+            &self.pool,
+            &policy,
+            media_id,
+            viewer,
+            now,
+        )
+        .await
+        .map_err(store)?;
+        let Some(facts) = facts else {
+            return Err(ProfileMediaError::Unavailable);
+        };
+        if can_view_media(MediaViewer { profile_id: viewer }, &facts) {
+            Ok(())
+        } else {
+            Err(ProfileMediaError::Unavailable)
+        }
+    }
+
     pub async fn metadata(
         &self,
         owner: Uuid,
@@ -640,10 +702,7 @@ impl ProfileMediaStore {
         let Some(row) = row else {
             return Err(ProfileMediaError::Unavailable);
         };
-        let row_owner: Uuid = row.try_get("owner_profile_id").map_err(decode)?;
-        if row_owner != owner {
-            return Err(ProfileMediaError::Unavailable);
-        }
+        self.authorize_read(owner, id.uuid()).await?;
         let state = ProfileMediaState::parse(&row.try_get::<String, _>("state").map_err(decode)?)?;
         if state != ProfileMediaState::Ready {
             return Err(ProfileMediaError::Unavailable);
@@ -681,10 +740,7 @@ impl ProfileMediaStore {
         let Some(row) = row else {
             return Err(ProfileMediaError::Unavailable);
         };
-        let row_owner: Uuid = row.try_get("owner_profile_id").map_err(decode)?;
-        if row_owner != owner {
-            return Err(ProfileMediaError::Unavailable);
-        }
+        self.authorize_read(owner, id.uuid()).await?;
         let state = ProfileMediaState::parse(&row.try_get::<String, _>("state").map_err(decode)?)?;
         if state != ProfileMediaState::Ready {
             return Err(ProfileMediaError::Unavailable);

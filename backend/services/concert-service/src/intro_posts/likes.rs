@@ -295,13 +295,31 @@ impl LikeStore {
             return Err(LikeError::PermissionDenied);
         }
         let after = cursor.and_then(decode_cursor);
+        // A liker is omitted when they are no longer an accessible profile:
+        //
+        // * they were deleted, so the projection row is gone;
+        // * the author blocked them, or they blocked the author. The block is
+        //   recorded against accounts, so the join goes through the local
+        //   `discovery_profiles` mirror rather than a cross-service call.
+        //
+        // The filter is inside the page query, so a page is never post-filtered
+        // and `next_cursor` is derived from the rows actually returned. A page may
+        // therefore be shorter than `limit` while still carrying a cursor.
         let rows = sqlx::query(
             "select l.actor_profile_id, l.created_at, p.nickname, p.profile_image_media_id, \
                     p.interaction_style \
              from intro_likes l \
              join discovery_profiles p on p.profile_id = l.actor_profile_id \
+             left join discovery_profiles author on author.profile_id = $5 \
              where l.intro_id = $1 \
                and ($2::timestamptz is null or (l.created_at, l.actor_profile_id) < ($2, $3)) \
+               and not exists ( \
+                   select 1 from discovery_blocks b \
+                   where b.deleted_at is null \
+                     and ((b.blocker_account_id = author.account_id \
+                           and b.blocked_account_id = p.account_id) \
+                       or (b.blocker_account_id = p.account_id \
+                           and b.blocked_account_id = author.account_id))) \
              order by l.created_at desc, l.actor_profile_id desc \
              limit $4",
         )
@@ -309,19 +327,21 @@ impl LikeStore {
         .bind(after.as_ref().map(|(at, _)| *at))
         .bind(after.as_ref().map(|(_, id)| *id))
         .bind(limit + 1)
+        .bind(author)
         .fetch_all(&self.pool)
         .await?;
         let mut items = Vec::with_capacity(rows.len());
         for row in &rows {
             let profile_id: Uuid = row.try_get("actor_profile_id")?;
             let liked_at: DateTime<Utc> = row.try_get("created_at")?;
+            // Shared items are computed from catalog ids only, never from a label
+            // comparison: the id is the identity of a favorite.
+            let shared_with_author = shared_items(&self.pool, profile_id, author).await?;
             items.push(LikerProfile {
                 profile_id,
                 nickname: row.try_get("nickname")?,
                 profile_image_media_id: row.try_get("profile_image_media_id")?,
-                // The shared-items join is filled by the caller's projection
-                // when the catalog is available; an empty list is honest.
-                shared_with_author: Vec::new(),
+                shared_with_author,
                 interaction_style: row.try_get("interaction_style")?,
                 liked_at,
             });
@@ -355,6 +375,36 @@ impl LikeStore {
             like_count: Some(count),
         })
     }
+}
+
+/// The catalog items the liker and the author both selected.
+///
+/// Overlap is computed from `catalog_item_id` only. The label and category are
+/// carried for display and are never compared, so two favorites with the same
+/// label but different ids are not "shared".
+async fn shared_items(pool: &PgPool, liker: Uuid, author: Uuid) -> Result<Vec<SharedItem>, LikeError> {
+    let rows = sqlx::query(
+        "select mine.catalog_item_id, mine.label, mine.category \
+         from discovery_favorite_items mine \
+         join discovery_favorite_items theirs \
+           on theirs.catalog_item_id = mine.catalog_item_id \
+          and theirs.profile_id = $2 \
+         where mine.profile_id = $1 \
+         order by mine.category, mine.position",
+    )
+    .bind(liker)
+    .bind(author)
+    .fetch_all(pool)
+    .await?;
+    let mut items = Vec::with_capacity(rows.len());
+    for row in &rows {
+        items.push(SharedItem {
+            catalog_item_id: row.try_get("catalog_item_id")?,
+            label: row.try_get("label")?,
+            category: row.try_get("category")?,
+        });
+    }
+    Ok(items)
 }
 
 /// The keyset cursor: `(created_at, profile_id)` of the last row of a page.
