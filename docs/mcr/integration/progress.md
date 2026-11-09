@@ -5,9 +5,9 @@ updated as work lands; it is the single place to read current progress.
 
 | Field | Value |
 | --- | --- |
-| Snapshot | 2026-11-09 12:40 Asia/Seoul |
+| Snapshot | 2026-11-09 13:40 Asia/Seoul |
 | Delivery branch | `julymeltdown/yogurt_cranberrie_bites` `master` |
-| Head at snapshot | `588a8a0a9` |
+| Head at snapshot | `78e912a47` |
 | Task register | 110 tasks in [task-breakdown.md](task-breakdown.md) |
 | Tasks integrated | **82 / 110** |
 | Tasks in flight | 12 (WP-04) |
@@ -72,7 +72,7 @@ Each row is a product element, its state, and the evidence that supports it.
 | Catalog search served end to end | Integrated | `profile_producer_coverage` — 8 tests |
 | Favorite picker UI (three tabs, max 5, skipping allowed) | Integrated | `FavoritePicker.test.tsx` |
 | Own profile read/write | Partial | `getOwnProfile` and `getProfile` served; `updateOwnProfile` and `setOwnFavorites` are NOT_IMPLEMENTED |
-| Visitor profile page | Integrated (view model) | `PublicProfilePage.test.tsx` — 17 tests; route still mounts the concert profile pending the profile-service read |
+| Visitor profile page | Partial | `PublicProfilePage.test.tsx` — 17 tests; the route still mounts the concert component because `getProfile` returns four fields and the view model needs three it does not produce |
 
 ### 2.3 Discovery
 
@@ -83,7 +83,10 @@ Each row is a product element, its state, and the evidence that supports it.
 | No score, rank, or weight column anywhere | Integrated | `discovery` |
 | Discovery route mounted in the gateway | Integrated | `profile_product_routes` — 11 tests |
 | Discovery UI (people list separate from intro list) | Integrated | `Discovery.test.tsx` |
-| **Discovery projection writer** | **Not implemented** | `discovery_profiles` has no producer; discovery returns empty in production |
+| Discovery projection writer | Integrated | `discovery_projection` — 19 tests; bounded incremental reconciliation, idempotent, no lost updates |
+| Projection worker scheduled | Integrated | `discovery_worker` — 12 tests; never exits on a round failure, stops without leaking a task |
+| Block source consumer | Integrated (not on the worker loop) | `discovery_block_consumer` — 11 tests; needs the friend invalidation endpoint in startup config |
+| gRPC discovery source | Integrated (loopback) | `discovery_source_live` — 5 tests; one process, not two containers |
 
 ### 2.4 Mutuals-intro posts and hearts
 
@@ -101,8 +104,9 @@ Each row is a product element, its state, and the evidence that supports it.
 | Intro mutation stores (draft, publish, delete, like, comment) | Integrated | `intro_post_commands`, `intro_likes`, `intro_comments` |
 | Composer, audience fields, heart button, likers panel, activity feed | Integrated | `src/features/intros` — 171 tests |
 | **Real `can_view_intro` wired into likes and reads** | **Not wired** | WP-05 wired a fail-closed `DenyRestricted` port; the real policy lands with WP-04 |
-| **Intro operations served over HTTP** | **Not served** | The parser is reached only by its own test; no transport dispatches to it |
-| **`listIntroPosts` / `getIntroPost` queries** | **Do not exist** | `IntroPostStore` has `read_own` only; there is no visibility-filtered list or detail query |
+| Intro operations served over HTTP | Integrated (11 of 13) | `concert_profile_product_routes` — 12 tests |
+| Intro composer mounted at `/discover/intro` | Integrated | `router.test.tsx` |
+| **`listIntroPosts` / `getIntroPost` queries** | **Do not exist** | Needs a visibility-filtered page and detail query plus the viewer's like state; owner `WP-04 visibility + WP-05 list/detail query` |
 
 ### 2.5 Photographs and artwork
 
@@ -129,7 +133,7 @@ Each row is a product element, its state, and the evidence that supports it.
 | Three-step poster importer | Integrated | `PosterImporter.test.tsx` |
 | Scoped Phaser scene with release on unmount | Integrated | `scene-lifecycle.test.ts` |
 | Room editor with keyboard placement | Integrated | `RoomPage.test.tsx` |
-| **Profile screen composes the room entry** | **Not wired** | `RoomEntry` and the route exist; the shell profile screen does not render the section |
+| Profile screen composes the room entry | Integrated | `ProfilePage` renders `RoomEntry`; `ProfilePage.test.tsx` asserts the link |
 
 ### 2.7 Avatar
 
@@ -163,8 +167,8 @@ Each row is a product element, its state, and the evidence that supports it.
 | Event-free concert profile transport | Integrated | `concert_profile_product_routes` — 9 tests |
 | Routing rule: the service that owns the tables | Integrated | `profile_routing` — 7 tests |
 | Coverage register over all 43 profile operations | Integrated | `profile_producer_coverage` — 8 tests |
-| **Operations served** | **21 / 43** | 6 by profile-service, 15 by concert-service |
-| **Operations NOT_IMPLEMENTED** | **22 / 43** | WP-04 and WP-05 surfaces, plus profile write commands |
+| **Operations served** | **32 / 43** | 6 by profile-service, 26 by concert-service |
+| **Operations NOT_IMPLEMENTED** | **11 / 43** | `listIntroPosts`, `getIntroPost`, and the profile write commands |
 
 ---
 
@@ -202,6 +206,10 @@ Each row is a product element, its state, and the evidence that supports it.
 | WP-08 | 34 | 27 | |
 | WP-09 | — | 112 | seven new suites: navigation 19, router 19, shell 12, accessibility 26, profile 10, public profile 17, identity settings 9 |
 | Art layer | — | 28 | CSS-reading guard suite |
+| Design round 2 | — | 39 | guard suite grew 28 -> 39; 812 scoped tests pass |
+| Discovery projection | 35 | — | 19 projection + 11 block consumer + 5 live source |
+| Discovery worker | 12 | — | shutdown and failure behaviour |
+| Frontend refactor | — | 6 | query-key audit; net -358 lines across 49 files |
 | Producer routing | 16 | — | 7 gateway + 9 concert transport |
 
 Frontend full-suite baseline: **19 tests fail on `master` before any of this
@@ -220,6 +228,8 @@ pre-existing, not as passes.
 | `-0` clamp in the room reducer | Left-edge furniture moves silently dropped | Fixed by the keyboard test |
 | `GET /api/intro-posts/{id}/like` parsed as a mutation | A read could reach a mutation handler | Parser refuses it; test added |
 | Stale typecheck error in an unrelated test | Blocked the required `typecheck` command | Fixed |
+| Projection watermark used `profile_identities.updated_at` | A favorites change after a pass was never seen again | Added a `profile_favorites` touch trigger (migration `0017`); no-lost-updates test now mutates the source after convergence |
+| Duplicate CSS rule blocks across 15 places | Drift between copies | Deduplicated to 0, verified in the built bundle |
 
 ---
 
@@ -258,7 +268,7 @@ feature's rows byte-identical.
 | Live NAVER authorization | No console-issued client id, secret, or registered callback in this environment |
 | Browser captures at 360/390/430 | No browser session against a live stack |
 | End-to-end three-identity scenario | Blocked on WP-04 and on the intro routes |
-| Discovery against real data | The projection has no writer |
+| Discovery against real data | The writer and worker exist and are tested; the worker is opt-in and the block consumer is not on the worker loop, so a deployment must enable it |
 | `ACCOUNT_CONTEXT_STALE` | The reason does not exist anywhere in `backend/`; the docs named a header the code never had |
 | Performance | Deferred by the earlier MCR decision; not a gate for this integration |
 | Licensing | Unresolved; recorded in [source-register.md](source-register.md) §6 |
@@ -267,10 +277,12 @@ feature's rows byte-identical.
 
 ## 8. Next
 
-1. Land WP-04 and wire the real `can_view_intro` into likes and reads, replacing
-   the fail-closed placeholder.
-2. Register the intro list and detail gateway routes.
-3. Re-run the integration gate unchanged; every step must be `PASS`.
-4. Compose the room entry into the profile screen.
-5. Add the discovery projection writer.
+1. **Land WP-04** and wire the real `can_view_intro` into likes and reads,
+   replacing the fail-closed placeholder. This is the last security blocker.
+2. Write the two missing intro reads (`listIntroPosts`, `getIntroPost`). Both
+   need the visibility-filtered query plus the viewer's like state.
+3. Produce the three fields `PublicProfilePage` needs (`shared_items`,
+   `room_available`, `gender_bucket`), then switch the visitor profile route.
+4. Mount the block consumer on the discovery worker loop.
+5. Re-run the integration gate unchanged; every step must be `PASS`.
 6. Run browser captures at the three widths.
