@@ -385,18 +385,23 @@ pub struct ProfileProductRuntime {
 /// `verifier` must accept delegations addressed to the Concert workload. The
 /// dispatch method acts for a user, so the method policy refuses to wrap it
 /// without a verifier; that is the same requirement the concert product has.
+///
+/// `media` is the profile media store, bound to the sanitizer the composition
+/// supplies. Without it the producer answers every media operation with
+/// `DEPENDENCY_UNAVAILABLE` — a truthful refusal, but not a served operation, so
+/// the composition must supply it for the media routes to work.
 pub fn runtime(
     pool: sqlx::PgPool,
     callers: platform::grpc_auth::CallerRegistry,
     verifier: platform::actor_delegation::ActorDelegationVerifier,
+    media: Option<Arc<super::super::profile_media::ProfileMediaStore>>,
 ) -> anyhow::Result<ProfileProductRuntime> {
-    build_runtime(
-        pool.clone(),
-        callers,
-        verifier,
-        targets::ProfileProductProducer::new(pool.clone())
-            .with_intro(std::sync::Arc::new(super::intro::IntroProducer::new(pool))),
-    )
+    let mut producer = targets::ProfileProductProducer::new(pool.clone())
+        .with_intro(Arc::new(super::intro::IntroProducer::new(pool.clone())));
+    if let Some(media) = media {
+        producer = producer.with_media(media);
+    }
+    build_runtime(pool, callers, verifier, producer)
 }
 
 fn build_runtime(

@@ -705,10 +705,27 @@ async fn main() -> anyhow::Result<()> {
                     // Gateway routes those operations here. This transport is the
                     // event-free profile analogue of `concert.product.v1`: same
                     // authority discipline, keyed by `profile_id`.
+                    // The profile media store is bound to the same bounded
+                    // sanitizer the concert upload uses: a profile photograph is
+                    // normalized by the same code as a concert one, and the
+                    // limits are the shared `concert_application::media`
+                    // constants rather than a second set.
+                    let profile_media = {
+                        let workers = platform::cpu::WorkerPool::new(2)?;
+                        Arc::new(concert_service::profile_media::ProfileMediaStore::new(
+                            grpc_pool.clone(),
+                            Arc::new(
+                                concert_service::adapters::out::media::codec::BoundedImageSanitizer::new(
+                                    workers.class(16)?,
+                                ),
+                            ),
+                        ))
+                    };
                     let profile_product = concert_service::profile_product::runtime(
                         grpc_pool.clone(),
                         runtime.callers.clone(),
                         runtime.actors.clone(),
+                        Some(profile_media),
                     )?;
                     // This callback uses the original shared registry and the
                     // dedicated Notification workload identity. It accepts no

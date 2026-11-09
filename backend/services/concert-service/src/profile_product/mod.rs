@@ -83,6 +83,7 @@ pub fn runtime(
     pool: sqlx::PgPool,
     callers: platform::grpc_auth::CallerRegistry,
     verifier: platform::actor_delegation::ActorDelegationVerifier,
+    media: Option<std::sync::Arc<crate::profile_media::ProfileMediaStore>>,
 ) -> anyhow::Result<ProfileProductRuntime> {
-    transport::runtime(pool, callers, verifier)
+    transport::runtime(pool, callers, verifier, media)
 }
