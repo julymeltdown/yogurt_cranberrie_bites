@@ -532,6 +532,11 @@ async fn main() -> anyhow::Result<()> {
     // A dedicated handle for the discovery worker, so the closure below does not
     // have to move the pool the serving listeners also use.
     let discovery_pool = pool.clone();
+    // The worker's TLS material, captured here because `runtime` is moved into
+    // the gRPC closure below. Without it the worker would build a plaintext
+    // channel to an HTTPS listener and every round would fail before reaching
+    // the source.
+    let discovery_tls = runtime.as_ref().and_then(|runtime| runtime.tls.clone());
     let health = health::router(health::readiness(pool.clone()));
     let listener = tokio::net::TcpListener::bind(config.metrics_addr)
         .await
@@ -889,14 +894,16 @@ async fn main() -> anyhow::Result<()> {
         let discovery = async move {
             match discovery_projection {
                 Some(settings) => {
-                    let endpoint = settings.endpoint().to_owned();
-                    let interval = settings.interval();
-                    let channel = tonic::transport::Channel::from_shared(endpoint)
-                        .map_err(|_| anyhow::anyhow!("Discovery source endpoint is invalid"))?
-                        .connect_lazy();
-                    let source = Arc::new(concert_service::discovery::GrpcDiscoverySource::new(
-                        concert_service::discovery::projection::proto::discovery_source_service_client::DiscoverySourceServiceClient::new(channel),
-                    ));
+                    // The same edge shape every other concert->profile call uses:
+                    // the shared TLS helper addressed to the Profile workload, plus
+                    // the Concert workload's service identity. A bare
+                    // `connect_lazy()` here would be plaintext and anonymous, and
+                    // the profile service would refuse every round.
+                    let source = Arc::new(concert_service::discovery::GrpcDiscoverySource::connect(
+                        settings.endpoint(),
+                        settings.credential(),
+                        discovery_tls.as_ref(),
+                    )?);
                     let writer = Arc::new(concert_service::discovery::ProjectionWriter::new(
                         discovery_pool,
                         source,
@@ -904,7 +911,7 @@ async fn main() -> anyhow::Result<()> {
                     let worker = concert_service::discovery::ProjectionWorker::new(
                         writer,
                         None,
-                        interval,
+                        settings.interval(),
                         concert_service::discovery::ROUND_DEADLINE,
                     )
                     .map_err(|_| anyhow::anyhow!("Discovery projection worker configuration is invalid"))?;

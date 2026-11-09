@@ -16,6 +16,13 @@ pub const MODE_VARIABLE: &str = "CONCERT_DISCOVERY_PROJECTION_MODE";
 pub const ENDPOINT_VARIABLE: &str = "CONCERT_DISCOVERY_SOURCE_GRPC_ENDPOINT";
 /// The interval between rounds, in milliseconds.
 pub const INTERVAL_VARIABLE: &str = "CONCERT_DISCOVERY_PROJECTION_INTERVAL_MS";
+/// The concert workload's service credential.
+///
+/// The profile service's caller registry admits only the Concert workload, and
+/// the discovery-source read is no exception. Without this credential the
+/// channel would be anonymous and every round would be refused before it
+/// reached the source — which is exactly the defect this settings change fixes.
+pub const CREDENTIAL_VARIABLE: &str = "CONCERT_SERVICE_CREDENTIAL";
 
 /// The default interval when the variable is unset.
 pub const DEFAULT_INTERVAL_MS: u64 = 30_000;
@@ -26,15 +33,36 @@ pub const MIN_INTERVAL_MS: u64 = 1_000;
 /// behind a favorite that the feature feels broken.
 pub const MAX_INTERVAL_MS: u64 = 600_000;
 
-#[derive(Clone, Debug, PartialEq, Eq)]
+/// The settings the worker needs to reach the profile service.
+///
+/// `Debug` is hand-written so the credential is never printed: a struct that
+/// derived it would put a live secret into any log line or panic message that
+/// formats the settings.
+#[derive(Clone, PartialEq, Eq)]
 pub struct DiscoveryProjectionSettings {
     endpoint: String,
+    credential: String,
     interval: Duration,
+}
+
+impl std::fmt::Debug for DiscoveryProjectionSettings {
+    fn fmt(&self, formatter: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        formatter
+            .debug_struct("DiscoveryProjectionSettings")
+            .field("endpoint", &self.endpoint)
+            .field("credential", &"[redacted]")
+            .field("interval", &self.interval)
+            .finish()
+    }
 }
 
 impl DiscoveryProjectionSettings {
     pub fn endpoint(&self) -> &str {
         &self.endpoint
+    }
+    /// The concert workload's service credential. Never logged.
+    pub fn credential(&self) -> &str {
+        &self.credential
     }
     pub fn interval(&self) -> Duration {
         self.interval
@@ -59,6 +87,17 @@ impl DiscoveryProjectionSettings {
         let endpoint = lookup(ENDPOINT_VARIABLE)
             .filter(|value| !value.trim().is_empty())
             .ok_or_else(|| anyhow::anyhow!("{ENDPOINT_VARIABLE} is required for live discovery projection"))?;
+        // The credential is required, not optional. A live worker without it
+        // would build an anonymous channel that the profile service refuses on
+        // every call; refusing at startup turns that silent, permanent failure
+        // into one clear error.
+        let credential = lookup(CREDENTIAL_VARIABLE)
+            .filter(|value| !value.trim().is_empty())
+            .ok_or_else(|| {
+                anyhow::anyhow!(
+                    "{CREDENTIAL_VARIABLE} is required for live discovery projection"
+                )
+            })?;
         // The endpoint must be an explicit HTTPS host and port with no
         // credentials, query or path — the same rule every other owner endpoint
         // in this service uses.
@@ -85,6 +124,7 @@ impl DiscoveryProjectionSettings {
         );
         Ok(Some(Self {
             endpoint,
+            credential,
             interval: Duration::from_millis(interval_ms),
         }))
     }

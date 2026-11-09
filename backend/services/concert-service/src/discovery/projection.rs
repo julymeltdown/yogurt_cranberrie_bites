@@ -38,6 +38,7 @@
 //! indistinguishable from "nobody has favorites", which would be a fabricated
 //! fact. A stale-but-consistent projection is the honest failure.
 use chrono::{DateTime, Utc};
+use std::time::Duration;
 use sqlx::{PgPool, Row};
 use tonic::transport::Channel;
 use uuid::Uuid;
@@ -140,14 +141,75 @@ enum DiscoveryClient {
     ),
 }
 
+/// The per-call budget for one discovery-source read.
+///
+/// A read happens once per worker round, not inside a user request, so it may be
+/// more generous than a claim read — but it is still bounded, because a wedged
+/// source must not hold a round open past the worker's own deadline.
+const SOURCE_BUDGET: Duration = Duration::from_secs(5);
+
 impl GrpcDiscoverySource {
     /// A source over a plain channel client.
+    ///
+    /// Test-only in practice: the profile service's caller registry admits only
+    /// the Concert workload, so a plain client is refused. Production uses
+    /// [`Self::connect`].
     pub fn new(
         client: proto::discovery_source_service_client::DiscoverySourceServiceClient<Channel>,
     ) -> Self {
         Self {
             client: DiscoveryClient::Plain(client),
         }
+    }
+
+    /// Connect to the profile service's discovery-source read.
+    ///
+    /// This is the same edge shape every other concert-to-profile call uses
+    /// (`intro_posts::claims_adapter::ProfileClaimsAdapter::connect`): the shared
+    /// TLS helper with the optional service material, addressed to the Profile
+    /// workload, plus a `ServiceIdentityClientInterceptor` presenting the Concert
+    /// workload's credential.
+    ///
+    /// Building a bare `Channel::from_shared(..).connect_lazy()` instead — which
+    /// is what this module did before — produces a plaintext, anonymous channel.
+    /// The profile service listens on HTTPS and admits only the Concert workload,
+    /// so every round fails before it reaches the source, and because a round
+    /// failure is retried by design the projection stays empty forever. That is
+    /// the defect this constructor exists to make impossible.
+    pub fn connect(
+        endpoint: &str,
+        credential: &str,
+        tls: Option<&platform::grpc_tls::TlsMaterial>,
+    ) -> anyhow::Result<Self> {
+        if credential.trim().is_empty() {
+            anyhow::bail!("Discovery source requires the Concert workload credential");
+        }
+        let channel = platform::grpc_tls::lazy_channel_for_edge_with_optional_tls(
+            tls,
+            endpoint,
+            platform::grpc_auth::Workload::Profile,
+            platform::edge::EdgeBudget {
+                edge: "concert->profile-discovery-source",
+                expected_latency: Duration::from_millis(100),
+                deadline: SOURCE_BUDGET,
+                connect_deadline: Duration::from_millis(500),
+                retry: platform::edge::RetryClass::SafeToRetry,
+                failure_policy: platform::edge::FailurePolicy::FailRequest,
+            },
+        )?;
+        let identity = platform::grpc_auth::ServiceIdentityClientInterceptor::new(
+            platform::grpc_auth::Workload::Concert,
+            credential,
+        )?;
+        Ok(Self {
+            client: DiscoveryClient::Intercepted(
+                proto::discovery_source_service_client::DiscoverySourceServiceClient::new(
+                    tonic::service::interceptor::InterceptedService::new(channel, identity),
+                )
+                .max_decoding_message_size(4 * 1024 * 1024)
+                .max_encoding_message_size(64 * 1024),
+            ),
+        })
     }
 
     /// A source over a client that presents the Concert workload identity.
