@@ -45,6 +45,7 @@ pub mod commands;
 pub mod comments;
 pub mod http;
 pub mod likes;
+pub mod links;
 pub mod repository;
 pub mod snapshot;
 pub mod visibility;

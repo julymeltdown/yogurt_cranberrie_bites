@@ -1,0 +1,119 @@
+{
+  "verification": "V-02",
+  "title": "An unknown or unavailable attribute never matches a restriction it was not explicitly selected for",
+  "status": "PASS",
+  "commit": "d7f551669",
+  "branch": "codex/yc-wp04-claims",
+  "base_commit": "620ef5851",
+  "recorded_at": "2026-11-09T07:43:55Z",
+  "mechanism": "Attribute<T> has no Unknown variant; the provider's explicit 'not specified' is a distinct Unspecified state",
+  "mechanism_rationale": "docs/mcr/integration/domain-contract.md §1.3 and §3.2 rows 7 and 11",
+  "commands": [
+    {
+      "command": "cd backend && cargo +1.88.0 check --locked --workspace",
+      "exit_code": 0
+    },
+    {
+      "command": "cd frontend && corepack pnpm@11.7.0 run typecheck",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 backend/scripts/mcr/wp02_migration_ledger.py --report /tmp/wp04b-ledger.json",
+      "exit_code": 0,
+      "note": "result PASS, cleanup PASS; no new migration in WP-04"
+    },
+    {
+      "command": "cd backend && cargo +1.88.0 test --locked -p concert-application --test identity_claims",
+      "exit_code": 0,
+      "note": "9 passed"
+    },
+    {
+      "command": "cd backend && cargo +1.88.0 test --locked -p concert-service --test claims_adapter",
+      "exit_code": 0,
+      "note": "11 passed"
+    }
+  ],
+  "cases": [
+    {
+      "id": "V-02-a",
+      "what": "an age-bound audience denies a viewer whose age is Unavailable (row 7)",
+      "status": "PASS",
+      "test": "every_shared_case_agrees_between_the_pure_function_and_sql"
+    },
+    {
+      "id": "V-02-b",
+      "what": "a gender-bound audience denies a viewer whose gender is Unavailable",
+      "status": "PASS",
+      "test": "every_shared_case_agrees_between_the_pure_function_and_sql"
+    },
+    {
+      "id": "V-02-c",
+      "what": "an audience of gender unknown admits exactly the provider's explicit 'not specified' answer (row 11)",
+      "status": "PASS",
+      "test": "an_explicit_not_specified_claim_becomes_unspecified"
+    },
+    {
+      "id": "V-02-d",
+      "what": "an audience of gender unknown denies a viewer with a known female or male claim",
+      "status": "PASS",
+      "test": "every_shared_case_agrees_between_the_pure_function_and_sql"
+    },
+    {
+      "id": "V-02-e",
+      "what": "an expired claim is Unavailable and never falls back to an older claim",
+      "status": "PASS",
+      "test": "an_expired_claim_does_not_see_a_restricted_post"
+    },
+    {
+      "id": "V-02-f",
+      "what": "a revoked or replaced claim is Unavailable",
+      "status": "PASS",
+      "test": "an_unavailable_claim_becomes_unavailable_attributes"
+    },
+    {
+      "id": "V-02-g",
+      "what": "a viewer with no claim row at all is Unavailable",
+      "status": "PASS",
+      "test": "a_viewer_with_no_claim_does_not_see_a_restricted_post"
+    },
+    {
+      "id": "V-02-h",
+      "what": "a transport failure is Unavailable and never a default",
+      "status": "PASS",
+      "test": "a_transport_failure_is_unavailable_and_never_a_default"
+    },
+    {
+      "id": "V-02-i",
+      "what": "a claim read never renders an age or a birth date through Debug",
+      "status": "PASS",
+      "test": "identity_claims: the redacting Debug tests"
+    },
+    {
+      "id": "V-02-j",
+      "what": "a malformed reply (unknown status or gender string) is refused rather than coerced",
+      "status": "PASS",
+      "test": "claims_adapter: gender_attribute and age_attribute reject unknown values"
+    },
+    {
+      "id": "V-02-k",
+      "what": "an audience of gender unknown with an age bound requires both attributes",
+      "status": "PASS",
+      "test": "every_shared_case_agrees_between_the_pure_function_and_sql"
+    },
+    {
+      "id": "V-02-l",
+      "what": "a viewer whose age is known but whose gender is Unavailable is still age-checked",
+      "status": "PASS",
+      "test": "claims_adapter: viewer_attributes keeps a known age when the gender is unavailable"
+    },
+    {
+      "id": "V-02-m",
+      "what": "the SQL predicate and the pure function agree on every unknown-attribute case",
+      "status": "PASS",
+      "test": "every_shared_case_agrees_between_the_pure_function_and_sql"
+    }
+  ],
+  "limitations": [
+    "The claim adapter's reply is exercised through a fake IdentityClaimsPort in these tests; the gRPC transport itself is covered by the profile-service server compiling and its method policy, not by an end-to-end RPC in this suite."
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "verification": "V-13",
+  "title": "INTRO_LIKED is written once per first like, deduped by the database, and removed with the like",
+  "status": "PASS",
+  "commit": "d7f551669",
+  "branch": "codex/yc-wp04-claims",
+  "base_commit": "620ef5851",
+  "recorded_at": "2026-11-09T07:43:55Z",
+  "mechanism": "primary key (recipient, intro, actor) with on conflict do nothing, plus a delete trigger",
+  "mechanism_rationale": "backend/services/concert-service/migrations/0087_intro_like_notifications.sql (built by WP-05; WP-04 added no second mechanism)",
+  "commands": [
+    {
+      "command": "cd backend && cargo +1.88.0 check --locked --workspace",
+      "exit_code": 0
+    },
+    {
+      "command": "cd frontend && corepack pnpm@11.7.0 run typecheck",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 backend/scripts/mcr/wp02_migration_ledger.py --report /tmp/wp04b-ledger.json",
+      "exit_code": 0,
+      "note": "result PASS, cleanup PASS; no new migration in WP-04"
+    },
+    {
+      "command": "cd backend && CONCERT_TEST_DATABASE_URL=... cargo +1.88.0 test --locked -p concert-service --test intro_like_notifications",
+      "exit_code": 0,
+      "note": "5 passed"
+    },
+    {
+      "command": "cd backend && CONCERT_TEST_DATABASE_URL=... cargo +1.88.0 test --locked -p concert-service --test intro_likes",
+      "exit_code": 0,
+      "note": "9 passed, unchanged from WP-05"
+    }
+  ],
+  "cases": [
+    {
+      "id": "V-13-a",
+      "what": "two sequential PUTs produce one row and one notification",
+      "status": "PASS",
+      "test": "two_puts_produce_one_row_and_one_notification"
+    },
+    {
+      "id": "V-13-b",
+      "what": "eight concurrent PUTs produce one row and one notification",
+      "status": "PASS",
+      "test": "concurrent_likes_produce_one_row_and_one_notification"
+    },
+    {
+      "id": "V-13-c",
+      "what": "a like on a restricted post notifies exactly once",
+      "status": "PASS",
+      "test": "a_like_on_a_restricted_post_notifies_exactly_once"
+    },
+    {
+      "id": "V-13-d",
+      "what": "the recipient is the author and the actor is the liker",
+      "status": "PASS",
+      "test": "the_notification_names_the_author_and_the_actor"
+    },
+    {
+      "id": "V-13-e",
+      "what": "withdrawing the like removes the notification",
+      "status": "PASS",
+      "test": "withdrawing_a_heart_removes_the_notification"
+    },
+    {
+      "id": "V-13-f",
+      "what": "a withdrawn and repeated like notifies again",
+      "status": "PASS",
+      "test": "a_withdrawn_and_repeated_like_notifies_again"
+    },
+    {
+      "id": "V-13-g",
+      "what": "a refused like writes no notification",
+      "status": "PASS",
+      "test": "a_refused_like_writes_no_notification"
+    },
+    {
+      "id": "V-13-h",
+      "what": "the notification table carries only identity and time, with no age or gender column",
+      "status": "PASS",
+      "test": "the_notification_carries_no_actor_attributes"
+    }
+  ],
+  "limitations": [
+    "The recipient's inbox read (marking an entry read, ordering) is WP-05's activity feed and is not part of this verification."
+  ]
+}

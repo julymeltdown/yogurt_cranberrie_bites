@@ -32,6 +32,7 @@
 //! * [`rows`] — the one decoder from a `profile_media` row to the facts the
 //!   attachment rules decide over.
 pub mod authorization;
+pub mod resolver;
 pub mod rows;
 pub mod upload;
 
