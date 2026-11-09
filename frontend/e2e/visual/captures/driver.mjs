@@ -69,6 +69,10 @@ const overflowCheck = () => {
 //    focused in turn and its computed outline is read. `outline: none` with no
 //    other focus indicator is the failure this catches.
 const focusCheck = () => {
+  // The RESTING state only: no control may be permanently ringed. Nothing is
+  // focused here, because focusing an element and then reading its outline
+  // measures `:focus`, not rest - and `:focus-visible` does not match a
+  // programmatic focus at all, which is what produced false failures.
   const selector = 'a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])'
   const controls = Array.from(document.querySelectorAll(selector))
     .filter(element => {
@@ -77,28 +81,51 @@ const focusCheck = () => {
         && element.getBoundingClientRect().width > 0
     })
   const failures = []
-  let checked = 0
   for (const element of controls.slice(0, 40)) {
-    element.focus()
-    if (document.activeElement !== element) continue
-    checked += 1
     const style = getComputedStyle(element)
     const width = parseFloat(style.outlineWidth) || 0
-    const style_ = style.outlineStyle
-    const visible = width > 0 && style_ !== 'none'
-    // A box-shadow or border change is an accepted alternative indicator, but
-    // only when it is not the resting state.
-    const shadow = style.boxShadow
-    const hasShadow = shadow && shadow !== 'none' && !/rgba\(0, 0, 0, 0\)/.test(shadow)
-    if (!visible && !hasShadow) {
+    if (width > 0 && style.outlineStyle !== 'none') {
       failures.push({
         tag: element.tagName.toLowerCase(),
         text: (element.textContent || element.getAttribute('aria-label') || '').trim().slice(0, 40),
-        outlineStyle: style_, outlineWidth: style.outlineWidth,
+        outlineStyle: style.outlineStyle,
+        outlineWidth: style.outlineWidth,
       })
     }
   }
-  return { checked, failures: failures.slice(0, 8), ok: failures.length === 0 }
+  return { checked: Math.min(controls.length, 40), failures: failures.slice(0, 8), ok: failures.length === 0 }
+}
+
+// 2b. The real focus-ring check: drive Tab and read the focused element.
+//
+// Only a keyboard-driven focus matches `:focus-visible`, so this is the check
+// that can actually see the product's focus rule. It walks the tab order with
+// real key presses and requires each focused control to show an outline or a
+// non-resting box-shadow.
+const keyboardFocusCheck = async (page, maxStops = 12) => {
+  const results = []
+  for (let stop = 0; stop < maxStops; stop += 1) {
+    await page.keyboard.press('Tab')
+    const observed = await page.evaluate(() => {
+      const element = document.activeElement
+      if (!element || element === document.body) return null
+      const style = getComputedStyle(element)
+      const width = parseFloat(style.outlineWidth) || 0
+      const shadow = style.boxShadow
+      const hasShadow = shadow && shadow !== 'none' && !/rgba\(0, 0, 0, 0\)/.test(shadow)
+      return {
+        tag: element.tagName.toLowerCase(),
+        text: (element.textContent || element.getAttribute('aria-label') || '').trim().slice(0, 40),
+        outlineStyle: style.outlineStyle,
+        outlineWidth: style.outlineWidth,
+        visible: (width > 0 && style.outlineStyle !== 'none') || Boolean(hasShadow),
+      }
+    })
+    if (observed === null) break
+    results.push(observed)
+  }
+  const failures = results.filter(row => !row.visible)
+  return { stops: results.length, failures: failures.slice(0, 8), ok: failures.length === 0 }
 }
 
 // 3. No decorative left accent bar. The CSS guard rejects the source pattern;
@@ -291,15 +318,30 @@ try {
         // eight routes, and a shorter wait would capture a loading state.
         await page.waitForTimeout(2500)
         const text = (await page.evaluate(() => document.body.innerText || '')).slice(0, 4000)
+        // An empty document makes every check pass vacuously: no overflow, no
+        // clipped text, no focusable control to lose a ring. That is how a blank
+        // page produced 24 "CAPTURED" results. Treat it as a failure of the
+        // harness, not a pass of the screen.
+        const rootChildren = await page.evaluate(
+          () => (document.getElementById('root')?.childElementCount) ?? -1)
+        if (text.trim().length === 0 && rootChildren <= 0) {
+          entry.status = 'FAILED'
+          entry.reason = 'the page rendered nothing: empty document and empty #root'
+          entry.checks = { renderedNothing: { ok: false, textLength: 0, rootChildren } }
+          await page.screenshot({ path: `${output}/${entry.file}`, fullPage: true })
+          continue
+        }
         const blocker = blockerFor(text)
         const overflow = await page.evaluate(overflowCheck)
-        const focus = await page.evaluate(focusCheck)
+        const resting = await page.evaluate(focusCheck)
+        const keyboard = await keyboardFocusCheck(page)
         const accent = await page.evaluate(accentBarCheck)
         const textState = await page.evaluate(textCheck)
         await page.screenshot({ path: `${output}/${entry.file}`, fullPage: true })
         entry.checks = {
           horizontalOverflow: { ok: !overflow.overflow, ...overflow },
-          focusOutline: focus,
+          focusRestingState: resting,
+          focusRingKeyboard: keyboard,
           leftAccentBar: accent,
           textClipping: textState,
         }

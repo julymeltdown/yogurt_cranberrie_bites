@@ -1,4 +1,18 @@
 {
+  "scope": "WP-10 visual captures at 360/390/430 px",
+  "release": "development stack, NOT production qualification",
+  "production": "NOT_CLAIMED",
+  "kind": "REAL_STACK_REAL_BROWSER",
+  "frontend_origin": "http://127.0.0.1:55306",
+  "widths": [
+    360,
+    390,
+    430
+  ],
+  "started_at_utc": "2026-11-09T13:19:55.627010+00:00",
+  "candidate": {
+    "revision": "db59db1e18be1eeb2f7bd0fb4c20a8a16633063a"
+  },
   "captures": [
     {
       "screen": "owner-profile",
@@ -8,7 +22,7 @@
       "width": 360,
       "height": 844,
       "file": "owner-profile-360.png",
-      "status": "LAYOUT_DEFECT",
+      "status": "CAPTURED",
       "signIn": {
         "signedIn": true,
         "calls": [
@@ -24,29 +38,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 3,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -64,8 +64,7 @@
         "200 /api/auth/enrollment/admission"
       ],
       "consoleErrors": [],
-      "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home",
-      "reason": "failed checks: focusOutline"
+      "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home"
     },
     {
       "screen": "owner-profile",
@@ -75,7 +74,7 @@
       "width": 390,
       "height": 844,
       "file": "owner-profile-390.png",
-      "status": "LAYOUT_DEFECT",
+      "status": "CAPTURED",
       "signIn": {
         "signedIn": true,
         "calls": [
@@ -91,29 +90,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -131,8 +116,7 @@
         "200 /api/auth/enrollment/admission"
       ],
       "consoleErrors": [],
-      "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home",
-      "reason": "failed checks: focusOutline"
+      "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home"
     },
     {
       "screen": "owner-profile",
@@ -142,7 +126,7 @@
       "width": 430,
       "height": 844,
       "file": "owner-profile-430.png",
-      "status": "LAYOUT_DEFECT",
+      "status": "CAPTURED",
       "signIn": {
         "signedIn": true,
         "calls": [
@@ -158,29 +142,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -198,18 +168,17 @@
         "200 /api/auth/enrollment/admission"
       ],
       "consoleErrors": [],
-      "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home",
-      "reason": "failed checks: focusOutline"
+      "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home"
     },
     {
       "screen": "visitor-profile",
       "label": "Visitor profile",
-      "route": "/discover/people/dcb94e55-9548-4bc9-9734-dcede3e8b76a",
+      "route": "/discover/people/36bf373e-aaf3-4a92-b464-788ed51a6119",
       "role": "author",
       "width": 360,
       "height": 844,
       "file": "visitor-profile-360.png",
-      "status": "LAYOUT_DEFECT",
+      "status": "CAPTURED",
       "signIn": {
         "signedIn": true,
         "calls": [
@@ -225,29 +194,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -265,18 +220,17 @@
         "200 /api/auth/enrollment/admission"
       ],
       "consoleErrors": [],
-      "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home",
-      "reason": "failed checks: focusOutline"
+      "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home"
     },
     {
       "screen": "visitor-profile",
       "label": "Visitor profile",
-      "route": "/discover/people/dcb94e55-9548-4bc9-9734-dcede3e8b76a",
+      "route": "/discover/people/36bf373e-aaf3-4a92-b464-788ed51a6119",
       "role": "author",
       "width": 390,
       "height": 844,
       "file": "visitor-profile-390.png",
-      "status": "LAYOUT_DEFECT",
+      "status": "CAPTURED",
       "signIn": {
         "signedIn": true,
         "calls": [
@@ -292,29 +246,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -332,18 +272,17 @@
         "200 /api/auth/enrollment/admission"
       ],
       "consoleErrors": [],
-      "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home",
-      "reason": "failed checks: focusOutline"
+      "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home"
     },
     {
       "screen": "visitor-profile",
       "label": "Visitor profile",
-      "route": "/discover/people/dcb94e55-9548-4bc9-9734-dcede3e8b76a",
+      "route": "/discover/people/36bf373e-aaf3-4a92-b464-788ed51a6119",
       "role": "author",
       "width": 430,
       "height": 844,
       "file": "visitor-profile-430.png",
-      "status": "LAYOUT_DEFECT",
+      "status": "CAPTURED",
       "signIn": {
         "signedIn": true,
         "calls": [
@@ -359,29 +298,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -399,8 +324,7 @@
         "200 /api/auth/enrollment/admission"
       ],
       "consoleErrors": [],
-      "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home",
-      "reason": "failed checks: focusOutline"
+      "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home"
     },
     {
       "screen": "discover-people",
@@ -410,7 +334,7 @@
       "width": 360,
       "height": 844,
       "file": "discover-people-360.png",
-      "status": "LAYOUT_DEFECT",
+      "status": "CAPTURED",
       "signIn": {
         "signedIn": true,
         "calls": [
@@ -426,29 +350,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -466,8 +376,7 @@
         "200 /api/auth/enrollment/admission"
       ],
       "consoleErrors": [],
-      "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home",
-      "reason": "failed checks: focusOutline"
+      "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home"
     },
     {
       "screen": "discover-people",
@@ -477,7 +386,7 @@
       "width": 390,
       "height": 844,
       "file": "discover-people-390.png",
-      "status": "LAYOUT_DEFECT",
+      "status": "CAPTURED",
       "signIn": {
         "signedIn": true,
         "calls": [
@@ -493,29 +402,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -533,8 +428,7 @@
         "200 /api/auth/enrollment/admission"
       ],
       "consoleErrors": [],
-      "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home",
-      "reason": "failed checks: focusOutline"
+      "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home"
     },
     {
       "screen": "discover-people",
@@ -544,7 +438,7 @@
       "width": 430,
       "height": 844,
       "file": "discover-people-430.png",
-      "status": "LAYOUT_DEFECT",
+      "status": "CAPTURED",
       "signIn": {
         "signedIn": true,
         "calls": [
@@ -560,29 +454,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -600,8 +480,7 @@
         "200 /api/auth/enrollment/admission"
       ],
       "consoleErrors": [],
-      "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home",
-      "reason": "failed checks: focusOutline"
+      "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home"
     },
     {
       "screen": "discover-intro",
@@ -611,7 +490,7 @@
       "width": 360,
       "height": 844,
       "file": "discover-intro-360.png",
-      "status": "LAYOUT_DEFECT",
+      "status": "CAPTURED",
       "signIn": {
         "signedIn": true,
         "calls": [
@@ -627,29 +506,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -668,7 +533,6 @@
       ],
       "consoleErrors": [],
       "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home",
-      "reason": "failed checks: focusOutline",
       "note": "the discovery intro list is not mounted in this build; `/discover/intro` is the composer, so this capture is the same route and is recorded as the list's absence rather than a rendered list"
     },
     {
@@ -679,7 +543,7 @@
       "width": 390,
       "height": 844,
       "file": "discover-intro-390.png",
-      "status": "LAYOUT_DEFECT",
+      "status": "CAPTURED",
       "signIn": {
         "signedIn": true,
         "calls": [
@@ -695,29 +559,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -736,7 +586,6 @@
       ],
       "consoleErrors": [],
       "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home",
-      "reason": "failed checks: focusOutline",
       "note": "the discovery intro list is not mounted in this build; `/discover/intro` is the composer, so this capture is the same route and is recorded as the list's absence rather than a rendered list"
     },
     {
@@ -747,7 +596,7 @@
       "width": 430,
       "height": 844,
       "file": "discover-intro-430.png",
-      "status": "LAYOUT_DEFECT",
+      "status": "CAPTURED",
       "signIn": {
         "signedIn": true,
         "calls": [
@@ -763,29 +612,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -804,7 +639,6 @@
       ],
       "consoleErrors": [],
       "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home",
-      "reason": "failed checks: focusOutline",
       "note": "the discovery intro list is not mounted in this build; `/discover/intro` is the composer, so this capture is the same route and is recorded as the list's absence rather than a rendered list"
     },
     {
@@ -815,7 +649,7 @@
       "width": 360,
       "height": 844,
       "file": "intro-composer-360.png",
-      "status": "LAYOUT_DEFECT",
+      "status": "CAPTURED",
       "signIn": {
         "signedIn": true,
         "calls": [
@@ -831,29 +665,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -871,8 +691,7 @@
         "200 /api/auth/enrollment/admission"
       ],
       "consoleErrors": [],
-      "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home",
-      "reason": "failed checks: focusOutline"
+      "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home"
     },
     {
       "screen": "intro-composer",
@@ -882,7 +701,7 @@
       "width": 390,
       "height": 844,
       "file": "intro-composer-390.png",
-      "status": "LAYOUT_DEFECT",
+      "status": "CAPTURED",
       "signIn": {
         "signedIn": true,
         "calls": [
@@ -898,29 +717,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -938,8 +743,7 @@
         "200 /api/auth/enrollment/admission"
       ],
       "consoleErrors": [],
-      "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home",
-      "reason": "failed checks: focusOutline"
+      "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home"
     },
     {
       "screen": "intro-composer",
@@ -949,7 +753,7 @@
       "width": 430,
       "height": 844,
       "file": "intro-composer-430.png",
-      "status": "LAYOUT_DEFECT",
+      "status": "CAPTURED",
       "signIn": {
         "signedIn": true,
         "calls": [
@@ -965,29 +769,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -1005,18 +795,17 @@
         "200 /api/auth/enrollment/admission"
       ],
       "consoleErrors": [],
-      "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home",
-      "reason": "failed checks: focusOutline"
+      "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home"
     },
     {
       "screen": "intro-detail",
       "label": "Intro detail",
-      "route": "/discover/intro/08daef97-317e-4cfa-a2c4-ab0e00b973a4",
+      "route": "/discover/intro/d78dda90-8b4b-4021-a16f-9def9ad808d1",
       "role": "viewer",
       "width": 360,
       "height": 844,
       "file": "intro-detail-360.png",
-      "status": "LAYOUT_DEFECT",
+      "status": "CAPTURED",
       "signIn": {
         "signedIn": true,
         "calls": [
@@ -1032,29 +821,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 3,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -1073,18 +848,17 @@
       ],
       "consoleErrors": [],
       "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home",
-      "reason": "failed checks: focusOutline",
       "note": "the intro detail route is mounted on the explicit placeholder; the screen renders the placeholder, not a post"
     },
     {
       "screen": "intro-detail",
       "label": "Intro detail",
-      "route": "/discover/intro/08daef97-317e-4cfa-a2c4-ab0e00b973a4",
+      "route": "/discover/intro/d78dda90-8b4b-4021-a16f-9def9ad808d1",
       "role": "viewer",
       "width": 390,
       "height": 844,
       "file": "intro-detail-390.png",
-      "status": "LAYOUT_DEFECT",
+      "status": "CAPTURED",
       "signIn": {
         "signedIn": true,
         "calls": [
@@ -1100,29 +874,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -1141,18 +901,17 @@
       ],
       "consoleErrors": [],
       "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home",
-      "reason": "failed checks: focusOutline",
       "note": "the intro detail route is mounted on the explicit placeholder; the screen renders the placeholder, not a post"
     },
     {
       "screen": "intro-detail",
       "label": "Intro detail",
-      "route": "/discover/intro/08daef97-317e-4cfa-a2c4-ab0e00b973a4",
+      "route": "/discover/intro/d78dda90-8b4b-4021-a16f-9def9ad808d1",
       "role": "viewer",
       "width": 430,
       "height": 844,
       "file": "intro-detail-430.png",
-      "status": "LAYOUT_DEFECT",
+      "status": "CAPTURED",
       "signIn": {
         "signedIn": true,
         "calls": [
@@ -1168,29 +927,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -1209,7 +954,6 @@
       ],
       "consoleErrors": [],
       "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home",
-      "reason": "failed checks: focusOutline",
       "note": "the intro detail route is mounted on the explicit placeholder; the screen renders the placeholder, not a post"
     },
     {
@@ -1220,7 +964,7 @@
       "width": 360,
       "height": 844,
       "file": "room-360.png",
-      "status": "LAYOUT_DEFECT",
+      "status": "CAPTURED",
       "signIn": {
         "signedIn": true,
         "calls": [
@@ -1236,29 +980,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -1276,8 +1006,7 @@
         "200 /api/auth/enrollment/admission"
       ],
       "consoleErrors": [],
-      "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home",
-      "reason": "failed checks: focusOutline"
+      "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home"
     },
     {
       "screen": "room",
@@ -1287,7 +1016,7 @@
       "width": 390,
       "height": 844,
       "file": "room-390.png",
-      "status": "LAYOUT_DEFECT",
+      "status": "CAPTURED",
       "signIn": {
         "signedIn": true,
         "calls": [
@@ -1303,29 +1032,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -1343,8 +1058,7 @@
         "200 /api/auth/enrollment/admission"
       ],
       "consoleErrors": [],
-      "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home",
-      "reason": "failed checks: focusOutline"
+      "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home"
     },
     {
       "screen": "room",
@@ -1354,7 +1068,7 @@
       "width": 430,
       "height": 844,
       "file": "room-430.png",
-      "status": "LAYOUT_DEFECT",
+      "status": "CAPTURED",
       "signIn": {
         "signedIn": true,
         "calls": [
@@ -1370,29 +1084,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -1410,8 +1110,7 @@
         "200 /api/auth/enrollment/admission"
       ],
       "consoleErrors": [],
-      "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home",
-      "reason": "failed checks: focusOutline"
+      "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home"
     },
     {
       "screen": "identity-settings",
@@ -1421,7 +1120,7 @@
       "width": 360,
       "height": 844,
       "file": "identity-settings-360.png",
-      "status": "LAYOUT_DEFECT",
+      "status": "CAPTURED",
       "signIn": {
         "signedIn": true,
         "calls": [
@@ -1437,29 +1136,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -1477,8 +1162,7 @@
         "200 /api/auth/enrollment/admission"
       ],
       "consoleErrors": [],
-      "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home",
-      "reason": "failed checks: focusOutline"
+      "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home"
     },
     {
       "screen": "identity-settings",
@@ -1488,7 +1172,7 @@
       "width": 390,
       "height": 844,
       "file": "identity-settings-390.png",
-      "status": "LAYOUT_DEFECT",
+      "status": "CAPTURED",
       "signIn": {
         "signedIn": true,
         "calls": [
@@ -1504,29 +1188,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -1544,8 +1214,7 @@
         "200 /api/auth/enrollment/admission"
       ],
       "consoleErrors": [],
-      "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home",
-      "reason": "failed checks: focusOutline"
+      "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home"
     },
     {
       "screen": "identity-settings",
@@ -1555,7 +1224,7 @@
       "width": 430,
       "height": 844,
       "file": "identity-settings-430.png",
-      "status": "LAYOUT_DEFECT",
+      "status": "CAPTURED",
       "signIn": {
         "signedIn": true,
         "calls": [
@@ -1571,29 +1240,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -1611,11 +1266,196 @@
         "200 /api/auth/enrollment/admission"
       ],
       "consoleErrors": [],
-      "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home",
-      "reason": "failed checks: focusOutline"
+      "visibleText": "MCR Concert World\nEVENT AVAILABILITY COULD NOT BE CONFIRMED\nYour destination is saved\n\nWe could not obtain a current service decision. No World has been opened.\n\nCheck again\nBack to home"
     }
   ],
-  "statuses": {
-    "LAYOUT_DEFECT": 24
-  }
+  "result": "INCOMPLETE",
+  "cleanup": "PASS",
+  "stack": {
+    "gateway_url": "http://127.0.0.1:55339",
+    "owned_root": "/private/tmp/mcr-pg-mrwx5i56",
+    "readiness": {
+      "api-gateway": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "database": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->auth": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->friend": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->notification": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->post": {
+            "required": true,
+            "status": "up"
+          },
+          "gateway->profile": {
+            "required": true,
+            "status": "up"
+          },
+          "signing-keys": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      },
+      "auth-service": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "auth->friend": {
+            "required": false,
+            "status": "up"
+          },
+          "auth->notification": {
+            "required": false,
+            "status": "up"
+          },
+          "auth->post": {
+            "required": false,
+            "status": "up"
+          },
+          "auth->profile": {
+            "required": false,
+            "status": "up"
+          },
+          "concert-owner-authority": {
+            "required": true,
+            "status": "up"
+          },
+          "database": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      },
+      "profile-service": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "database": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      },
+      "friend-service": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "concert-owner-authority": {
+            "required": true,
+            "status": "up"
+          },
+          "database": {
+            "required": true,
+            "status": "up"
+          },
+          "friend->profile": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      },
+      "post-service": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "database": {
+            "required": true,
+            "status": "up"
+          },
+          "post->friend": {
+            "required": true,
+            "status": "up"
+          },
+          "post->gateway": {
+            "required": true,
+            "status": "up"
+          },
+          "post->notification": {
+            "required": false,
+            "status": "up"
+          },
+          "post->profile": {
+            "required": false,
+            "status": "up"
+          }
+        }
+      },
+      "notification-service": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "database": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      },
+      "concert-service": {
+        "http_status": 200,
+        "ready": true,
+        "degraded": false,
+        "draining": false,
+        "checks": {
+          "database": {
+            "required": true,
+            "status": "up"
+          }
+        }
+      }
+    }
+  },
+  "identities": {
+    "author": {
+      "user_id": "c7b0faae-5d3f-4f17-af8c-d031b8bc6abf",
+      "profile_id": "30e57b13-92f5-4a7e-92f4-f82e695171f5"
+    },
+    "viewer": {
+      "user_id": "b594a058-13c5-422b-8ae9-f7cbbe9d3e21",
+      "profile_id": "36bf373e-aaf3-4a92-b464-788ed51a6119"
+    },
+    "outsider": {
+      "user_id": "a98abc3a-ff36-4e0f-8bdb-bea2aa7f6364",
+      "profile_id": "e808e89c-7515-4554-8186-e2663357758c"
+    }
+  },
+  "intro": {
+    "intro_id": "d78dda90-8b4b-4021-a16f-9def9ad808d1",
+    "draft": 200,
+    "publish": 200
+  },
+  "frontend": {
+    "server": "vite dev",
+    "port": 55306,
+    "proxy": "/api -> gateway"
+  },
+  "screens_gated": 24,
+  "gated_reason": "the shell requires a getConcertServicePolicy decision bound to an event id, and the profile product is event-free, so the World never opens and these routes render the pre-world notice instead of their own screen",
+  "browser": "156.0.8078.80",
+  "frontend_stopped": true,
+  "finished_at_utc": "2026-11-09T13:21:20.529604+00:00"
 }

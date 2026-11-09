@@ -1,6 +1,6 @@
 {
   "kind": "wp10-visual-captures",
-  "revision": "865f76401838612e7f00a13e1ac06efd3369fec5",
+  "revision": "db59db1e18be1eeb2f7bd0fb4c20a8a16633063a",
   "widths": [
     360,
     390,
@@ -16,8 +16,8 @@
       "role": "author",
       "width": 360,
       "file": "owner-profile-360.png",
-      "status": "LAYOUT_DEFECT",
-      "reason": "failed checks: focusOutline",
+      "status": "CAPTURED",
+      "reason": null,
       "checks": {
         "horizontalOverflow": {
           "ok": true,
@@ -26,29 +26,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 3,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -68,8 +54,8 @@
       "role": "author",
       "width": 390,
       "file": "owner-profile-390.png",
-      "status": "LAYOUT_DEFECT",
-      "reason": "failed checks: focusOutline",
+      "status": "CAPTURED",
+      "reason": null,
       "checks": {
         "horizontalOverflow": {
           "ok": true,
@@ -78,29 +64,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -120,8 +92,8 @@
       "role": "author",
       "width": 430,
       "file": "owner-profile-430.png",
-      "status": "LAYOUT_DEFECT",
-      "reason": "failed checks: focusOutline",
+      "status": "CAPTURED",
+      "reason": null,
       "checks": {
         "horizontalOverflow": {
           "ok": true,
@@ -130,29 +102,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -168,12 +126,12 @@
     {
       "screen": "visitor-profile",
       "label": "Visitor profile",
-      "route": "/discover/people/dcb94e55-9548-4bc9-9734-dcede3e8b76a",
+      "route": "/discover/people/36bf373e-aaf3-4a92-b464-788ed51a6119",
       "role": "author",
       "width": 360,
       "file": "visitor-profile-360.png",
-      "status": "LAYOUT_DEFECT",
-      "reason": "failed checks: focusOutline",
+      "status": "CAPTURED",
+      "reason": null,
       "checks": {
         "horizontalOverflow": {
           "ok": true,
@@ -182,29 +140,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -220,12 +164,12 @@
     {
       "screen": "visitor-profile",
       "label": "Visitor profile",
-      "route": "/discover/people/dcb94e55-9548-4bc9-9734-dcede3e8b76a",
+      "route": "/discover/people/36bf373e-aaf3-4a92-b464-788ed51a6119",
       "role": "author",
       "width": 390,
       "file": "visitor-profile-390.png",
-      "status": "LAYOUT_DEFECT",
-      "reason": "failed checks: focusOutline",
+      "status": "CAPTURED",
+      "reason": null,
       "checks": {
         "horizontalOverflow": {
           "ok": true,
@@ -234,29 +178,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -272,12 +202,12 @@
     {
       "screen": "visitor-profile",
       "label": "Visitor profile",
-      "route": "/discover/people/dcb94e55-9548-4bc9-9734-dcede3e8b76a",
+      "route": "/discover/people/36bf373e-aaf3-4a92-b464-788ed51a6119",
       "role": "author",
       "width": 430,
       "file": "visitor-profile-430.png",
-      "status": "LAYOUT_DEFECT",
-      "reason": "failed checks: focusOutline",
+      "status": "CAPTURED",
+      "reason": null,
       "checks": {
         "horizontalOverflow": {
           "ok": true,
@@ -286,29 +216,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -328,8 +244,8 @@
       "role": "author",
       "width": 360,
       "file": "discover-people-360.png",
-      "status": "LAYOUT_DEFECT",
-      "reason": "failed checks: focusOutline",
+      "status": "CAPTURED",
+      "reason": null,
       "checks": {
         "horizontalOverflow": {
           "ok": true,
@@ -338,29 +254,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -380,8 +282,8 @@
       "role": "author",
       "width": 390,
       "file": "discover-people-390.png",
-      "status": "LAYOUT_DEFECT",
-      "reason": "failed checks: focusOutline",
+      "status": "CAPTURED",
+      "reason": null,
       "checks": {
         "horizontalOverflow": {
           "ok": true,
@@ -390,29 +292,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -432,8 +320,8 @@
       "role": "author",
       "width": 430,
       "file": "discover-people-430.png",
-      "status": "LAYOUT_DEFECT",
-      "reason": "failed checks: focusOutline",
+      "status": "CAPTURED",
+      "reason": null,
       "checks": {
         "horizontalOverflow": {
           "ok": true,
@@ -442,29 +330,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -484,8 +358,8 @@
       "role": "author",
       "width": 360,
       "file": "discover-intro-360.png",
-      "status": "LAYOUT_DEFECT",
-      "reason": "failed checks: focusOutline",
+      "status": "CAPTURED",
+      "reason": null,
       "checks": {
         "horizontalOverflow": {
           "ok": true,
@@ -494,29 +368,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -536,8 +396,8 @@
       "role": "author",
       "width": 390,
       "file": "discover-intro-390.png",
-      "status": "LAYOUT_DEFECT",
-      "reason": "failed checks: focusOutline",
+      "status": "CAPTURED",
+      "reason": null,
       "checks": {
         "horizontalOverflow": {
           "ok": true,
@@ -546,29 +406,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -588,8 +434,8 @@
       "role": "author",
       "width": 430,
       "file": "discover-intro-430.png",
-      "status": "LAYOUT_DEFECT",
-      "reason": "failed checks: focusOutline",
+      "status": "CAPTURED",
+      "reason": null,
       "checks": {
         "horizontalOverflow": {
           "ok": true,
@@ -598,29 +444,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -640,8 +472,8 @@
       "role": "author",
       "width": 360,
       "file": "intro-composer-360.png",
-      "status": "LAYOUT_DEFECT",
-      "reason": "failed checks: focusOutline",
+      "status": "CAPTURED",
+      "reason": null,
       "checks": {
         "horizontalOverflow": {
           "ok": true,
@@ -650,29 +482,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -692,8 +510,8 @@
       "role": "author",
       "width": 390,
       "file": "intro-composer-390.png",
-      "status": "LAYOUT_DEFECT",
-      "reason": "failed checks: focusOutline",
+      "status": "CAPTURED",
+      "reason": null,
       "checks": {
         "horizontalOverflow": {
           "ok": true,
@@ -702,29 +520,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -744,8 +548,8 @@
       "role": "author",
       "width": 430,
       "file": "intro-composer-430.png",
-      "status": "LAYOUT_DEFECT",
-      "reason": "failed checks: focusOutline",
+      "status": "CAPTURED",
+      "reason": null,
       "checks": {
         "horizontalOverflow": {
           "ok": true,
@@ -754,29 +558,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -792,12 +582,12 @@
     {
       "screen": "intro-detail",
       "label": "Intro detail",
-      "route": "/discover/intro/08daef97-317e-4cfa-a2c4-ab0e00b973a4",
+      "route": "/discover/intro/d78dda90-8b4b-4021-a16f-9def9ad808d1",
       "role": "viewer",
       "width": 360,
       "file": "intro-detail-360.png",
-      "status": "LAYOUT_DEFECT",
-      "reason": "failed checks: focusOutline",
+      "status": "CAPTURED",
+      "reason": null,
       "checks": {
         "horizontalOverflow": {
           "ok": true,
@@ -806,29 +596,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 3,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -844,12 +620,12 @@
     {
       "screen": "intro-detail",
       "label": "Intro detail",
-      "route": "/discover/intro/08daef97-317e-4cfa-a2c4-ab0e00b973a4",
+      "route": "/discover/intro/d78dda90-8b4b-4021-a16f-9def9ad808d1",
       "role": "viewer",
       "width": 390,
       "file": "intro-detail-390.png",
-      "status": "LAYOUT_DEFECT",
-      "reason": "failed checks: focusOutline",
+      "status": "CAPTURED",
+      "reason": null,
       "checks": {
         "horizontalOverflow": {
           "ok": true,
@@ -858,29 +634,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -896,12 +658,12 @@
     {
       "screen": "intro-detail",
       "label": "Intro detail",
-      "route": "/discover/intro/08daef97-317e-4cfa-a2c4-ab0e00b973a4",
+      "route": "/discover/intro/d78dda90-8b4b-4021-a16f-9def9ad808d1",
       "role": "viewer",
       "width": 430,
       "file": "intro-detail-430.png",
-      "status": "LAYOUT_DEFECT",
-      "reason": "failed checks: focusOutline",
+      "status": "CAPTURED",
+      "reason": null,
       "checks": {
         "horizontalOverflow": {
           "ok": true,
@@ -910,29 +672,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -952,8 +700,8 @@
       "role": "author",
       "width": 360,
       "file": "room-360.png",
-      "status": "LAYOUT_DEFECT",
-      "reason": "failed checks: focusOutline",
+      "status": "CAPTURED",
+      "reason": null,
       "checks": {
         "horizontalOverflow": {
           "ok": true,
@@ -962,29 +710,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -1004,8 +738,8 @@
       "role": "author",
       "width": 390,
       "file": "room-390.png",
-      "status": "LAYOUT_DEFECT",
-      "reason": "failed checks: focusOutline",
+      "status": "CAPTURED",
+      "reason": null,
       "checks": {
         "horizontalOverflow": {
           "ok": true,
@@ -1014,29 +748,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -1056,8 +776,8 @@
       "role": "author",
       "width": 430,
       "file": "room-430.png",
-      "status": "LAYOUT_DEFECT",
-      "reason": "failed checks: focusOutline",
+      "status": "CAPTURED",
+      "reason": null,
       "checks": {
         "horizontalOverflow": {
           "ok": true,
@@ -1066,29 +786,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -1108,8 +814,8 @@
       "role": "author",
       "width": 360,
       "file": "identity-settings-360.png",
-      "status": "LAYOUT_DEFECT",
-      "reason": "failed checks: focusOutline",
+      "status": "CAPTURED",
+      "reason": null,
       "checks": {
         "horizontalOverflow": {
           "ok": true,
@@ -1118,29 +824,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -1160,8 +852,8 @@
       "role": "author",
       "width": 390,
       "file": "identity-settings-390.png",
-      "status": "LAYOUT_DEFECT",
-      "reason": "failed checks: focusOutline",
+      "status": "CAPTURED",
+      "reason": null,
       "checks": {
         "horizontalOverflow": {
           "ok": true,
@@ -1170,29 +862,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],
@@ -1212,8 +890,8 @@
       "role": "author",
       "width": 430,
       "file": "identity-settings-430.png",
-      "status": "LAYOUT_DEFECT",
-      "reason": "failed checks: focusOutline",
+      "status": "CAPTURED",
+      "reason": null,
       "checks": {
         "horizontalOverflow": {
           "ok": true,
@@ -1222,29 +900,15 @@
           "overflow": false,
           "offenders": []
         },
-        "focusOutline": {
+        "focusRestingState": {
           "checked": 3,
-          "failures": [
-            {
-              "tag": "a",
-              "text": "MCR Concert World",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "button",
-              "text": "Check again",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            },
-            {
-              "tag": "a",
-              "text": "Back to home",
-              "outlineStyle": "none",
-              "outlineWidth": "3px"
-            }
-          ],
-          "ok": false
+          "failures": [],
+          "ok": true
+        },
+        "focusRingKeyboard": {
+          "stops": 6,
+          "failures": [],
+          "ok": true
         },
         "leftAccentBar": {
           "offenders": [],

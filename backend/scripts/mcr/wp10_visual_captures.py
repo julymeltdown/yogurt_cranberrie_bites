@@ -293,16 +293,26 @@ def start_vite(frontend: Path, gateway_url: str, port: int,
              # missing injection leaves the policy gate closed, which is what the
              # "Event availability could not be confirmed" screen means.
              "VITE_MCR_APPLICATION_RELEASE": json.dumps(release)})
-    deadline = time.monotonic() + 120
+    # A listening socket is not a serving server: Vite binds the port before it
+    # can resolve modules, so a connection-only poll lets the browser navigate to
+    # a page that renders nothing. Poll for an actual HTTP response carrying the
+    # entry document instead, and fail loudly if it never arrives.
+    deadline = time.monotonic() + 180
     while time.monotonic() < deadline:
+        if process.poll() is not None:
+            output = process.stdout.read() if process.stdout else ""
+            raise gate.GateFailure(f"vite exited: {output[-800:]}")
         try:
-            with socket.create_connection(("127.0.0.1", port), timeout=1):
+            with socket.create_connection(("127.0.0.1", port), timeout=1) as probe:
+                probe.sendall(
+                    f"GET / HTTP/1.1\r\nHost: 127.0.0.1:{port}\r\n"
+                    "Connection: close\r\n\r\n".encode())
+                response = probe.recv(4096).decode("utf-8", "replace")
+            if response.startswith("HTTP/1.") and " 200" in response.split("\r\n", 1)[0]:
                 return process
         except OSError:
-            if process.poll() is not None:
-                output = process.stdout.read() if process.stdout else ""
-                raise gate.GateFailure(f"vite exited: {output[-800:]}")
-            time.sleep(0.25)
+            pass
+        time.sleep(0.25)
     process.kill()
     raise gate.GateFailure("vite did not start within 120s")
 
@@ -405,13 +415,23 @@ def main(argv=None) -> int:
             raise gate.GateFailure(f"capture driver failed: {completed.stderr[-600:]}")
         driver_report = json.loads(completed.stdout)
         report["captures"] = driver_report["captures"]
-        report["screens_gated"] = (
-            "every screen renders the pre-world policy notice, not its own content: "
-            "the shell requires a `getConcertServicePolicy` decision before it opens "
-            "the World, and that decision is not obtained in this stack. The capture "
-            "is of the state the product actually reaches.")
+        # A capture whose page shows the pre-world policy notice is not a capture
+        # of the screen it names. Counting it as CAPTURED would report coverage
+        # that does not exist, so gated screens are counted separately and the
+        # run cannot pass while any remain.
+        gated = [entry for entry in report["captures"]
+                 if "EVENT AVAILABILITY COULD NOT BE CONFIRMED"
+                 in (entry.get("visibleText") or "")]
+        report["screens_gated"] = len(gated)
+        if gated:
+            report["gated_reason"] = (
+                "the shell requires a getConcertServicePolicy decision bound to an "
+                "event id, and the profile product is event-free, so the World never "
+                "opens and these routes render the pre-world notice instead of their "
+                "own screen")
         report["browser"] = driver_report.get("browser")
-        report["result"] = "PASS" if driver_report.get("ok") else "INCOMPLETE"
+        report["result"] = ("PASS" if driver_report.get("ok") and not gated
+                            else "INCOMPLETE")
     except gate.GateFailure as failure:
         report["failure"] = str(failure)[:600]
     except BaseException as failure:  # noqa: BLE001 - the report must always be written
