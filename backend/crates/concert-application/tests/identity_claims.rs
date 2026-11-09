@@ -106,16 +106,24 @@ fn debug_never_renders_the_numeric_age() {
     };
     let rendered = format!("{claims:?}");
     // The claim is a 26-year-old on the fixture date; neither the age at
-    // verification nor the current age may appear. The UUIDs are excluded from
-    // the scan because a random hex digit pair could contain either number by
-    // chance; everything the claim itself contributes is checked.
-    let without_ids = rendered
+    // verification nor the current age may appear.
+    //
+    // The scan covers the attribute fields only. A profile id is a random UUID,
+    // so its hex can contain "26" or "27" by chance and scanning it would make
+    // this test fail for reasons unrelated to redaction. The fields that could
+    // carry an age are the two attributes, and the source carries no age at all.
+    let attributes = rendered
         .split("source:")
         .next()
         .expect("the rendered claim has a source field");
-    assert!(!without_ids.contains("26"), "{rendered}");
-    assert!(!without_ids.contains("27"), "{rendered}");
-    assert!(rendered.contains("REDACTED"), "{rendered}");
+    let attributes = attributes
+        .split("profile:")
+        .nth(1)
+        .and_then(|rest| rest.split_once(',').map(|(_, tail)| tail))
+        .expect("the rendered claim has a profile field followed by the attributes");
+    assert!(!attributes.contains("26"), "{rendered}");
+    assert!(!attributes.contains("27"), "{rendered}");
+    assert!(attributes.contains("REDACTED"), "{rendered}");
     // The attribute renders the same way on its own.
     let attribute = format!("{:?}", claims.age);
     assert_eq!(attribute, "Known([REDACTED])");

@@ -1,0 +1,123 @@
+{
+  "verification": "V-03",
+  "title": "The predicate is inside the query, a refusal is indistinguishable from absence, and no restricted content leaks",
+  "status": "PASS",
+  "commit": "d7f551669",
+  "branch": "codex/yc-wp04-claims",
+  "base_commit": "620ef5851",
+  "recorded_at": "2026-11-09T07:43:55Z",
+  "mechanism": "the predicate is a where-clause fragment, never a post-filter; every surface returns one refusal value",
+  "mechanism_rationale": "docs/mcr/integration/http-contract.md §6 and verification-plan.md V-03",
+  "commands": [
+    {
+      "command": "cd backend && cargo +1.88.0 check --locked --workspace",
+      "exit_code": 0
+    },
+    {
+      "command": "cd frontend && corepack pnpm@11.7.0 run typecheck",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 backend/scripts/mcr/wp02_migration_ledger.py --report /tmp/wp04b-ledger.json",
+      "exit_code": 0,
+      "note": "result PASS, cleanup PASS; no new migration in WP-04"
+    },
+    {
+      "command": "cd backend && CONCERT_TEST_DATABASE_URL=... cargo +1.88.0 test --locked -p concert-service --test intro_posts_page",
+      "exit_code": 0,
+      "note": "15 passed"
+    },
+    {
+      "command": "cd backend && CONCERT_TEST_DATABASE_URL=... cargo +1.88.0 test --locked -p concert-service --test intro_links",
+      "exit_code": 0,
+      "note": "7 passed"
+    },
+    {
+      "command": "cd backend && CONCERT_TEST_DATABASE_URL=... cargo +1.88.0 test --locked -p concert-service --test intro_likes_policy",
+      "exit_code": 0,
+      "note": "7 passed"
+    },
+    {
+      "command": "cd backend && CONCERT_TEST_DATABASE_URL=... cargo +1.88.0 test --locked -p concert-service --test media_authorization_policy",
+      "exit_code": 0,
+      "note": "9 passed"
+    }
+  ],
+  "cases": [
+    {
+      "id": "V-03-a",
+      "what": "a page is full when the filtered set has more rows, so the filter runs before the limit",
+      "status": "PASS",
+      "test": "a_page_is_full_when_the_filtered_set_has_more_rows"
+    },
+    {
+      "id": "V-03-b",
+      "what": "a restricted row is removed by the query, not by the caller",
+      "status": "PASS",
+      "test": "a_restricted_row_is_filtered_inside_the_page_query"
+    },
+    {
+      "id": "V-03-c",
+      "what": "the cursor is derived from the filtered set and never repeats a row",
+      "status": "PASS",
+      "test": "the_cursor_is_derived_from_the_filtered_set"
+    },
+    {
+      "id": "V-03-d",
+      "what": "a missing post and an unauthorized post are the same answer",
+      "status": "PASS",
+      "test": "a_missing_post_and_an_unauthorized_post_are_the_same_answer"
+    },
+    {
+      "id": "V-03-e",
+      "what": "a shared link cannot distinguish 'does not exist' from 'not available to you', and carries no bytes",
+      "status": "PASS",
+      "test": "a_missing_link_and_an_unauthorized_link_are_indistinguishable"
+    },
+    {
+      "id": "V-03-f",
+      "what": "an unpublished link is the same answer as a missing one",
+      "status": "PASS",
+      "test": "an_unpublished_link_is_the_same_answer_as_missing"
+    },
+    {
+      "id": "V-03-g",
+      "what": "liking an invisible post is 404 and writes nothing",
+      "status": "PASS",
+      "test": "a_viewer_excluded_by_the_audience_gets_404"
+    },
+    {
+      "id": "V-03-h",
+      "what": "unliking after losing access returns like_count null and no other field",
+      "status": "PASS",
+      "test": "a_viewer_who_lost_access_can_unlike_without_learning_the_count"
+    },
+    {
+      "id": "V-03-i",
+      "what": "the SQL fragment interpolates no value and is a boolean expression over the post alias",
+      "status": "PASS",
+      "test": "the_fragment_interpolates_no_value"
+    },
+    {
+      "id": "V-03-j",
+      "what": "media is authorized through the attached post, and narrowing the audience revokes access on the next request",
+      "status": "PASS",
+      "test": "narrowing_the_audience_revokes_media_access_immediately"
+    },
+    {
+      "id": "V-03-k",
+      "what": "an unattached asset is readable by its owner only",
+      "status": "PASS",
+      "test": "an_unattached_asset_is_readable_by_its_owner_only"
+    },
+    {
+      "id": "V-03-l",
+      "what": "the liker list omits blocked likers and carries no age or gender field",
+      "status": "PASS",
+      "test": "the_liker_list_carries_no_age_or_gender"
+    }
+  ],
+  "limitations": [
+    "The media resolver's room-poster branch matches the layout JSON's poster list; it is exercised only by construction, not by a test with a real room layout."
+  ]
+}

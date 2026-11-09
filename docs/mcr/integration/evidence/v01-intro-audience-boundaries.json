@@ -1,0 +1,90 @@
+{
+  "verification": "V-01",
+  "title": "The audience boundary cases decide exactly as the table says, in both the pure function and the SQL predicate",
+  "status": "PASS",
+  "commit": "d7f551669",
+  "branch": "codex/yc-wp04-claims",
+  "base_commit": "620ef5851",
+  "recorded_at": "2026-11-09T07:43:55Z",
+  "mechanism": "one shared case table compiled into both test binaries",
+  "mechanism_rationale": "docs/mcr/integration/domain-contract.md §3.2; crates/concert-application/tests/visibility_cases/mod.rs",
+  "commands": [
+    {
+      "command": "cd backend && cargo +1.88.0 check --locked --workspace",
+      "exit_code": 0
+    },
+    {
+      "command": "cd frontend && corepack pnpm@11.7.0 run typecheck",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 backend/scripts/mcr/wp02_migration_ledger.py --report /tmp/wp04b-ledger.json",
+      "exit_code": 0,
+      "note": "result PASS, cleanup PASS; no new migration in WP-04"
+    },
+    {
+      "command": "cd backend && cargo +1.88.0 test --locked -p concert-application --test intro_visibility",
+      "exit_code": 0,
+      "note": "14 passed"
+    },
+    {
+      "command": "cd backend && CONCERT_TEST_DATABASE_URL=... cargo +1.88.0 test --locked -p concert-service --test intro_visibility_contract",
+      "exit_code": 0,
+      "note": "8 passed against a real PostgreSQL 16 cluster; every_shared_case_agrees_between_the_pure_function_and_sql covers the whole table"
+    }
+  ],
+  "cases": [
+    {
+      "id": "V-01-a",
+      "what": "no age bound and gender any is visible to a viewer with no claim, and the claim port is never called",
+      "status": "PASS",
+      "test": "an_unrestricted_row_is_admitted_without_any_claim_parameter"
+    },
+    {
+      "id": "V-01-b",
+      "what": "the minimum age is inclusive: a viewer exactly at the minimum is admitted",
+      "status": "PASS",
+      "test": "every_shared_case_agrees_between_the_pure_function_and_sql"
+    },
+    {
+      "id": "V-01-c",
+      "what": "the maximum age is exclusive: a viewer exactly at maximum_age_exclusive is denied",
+      "status": "PASS",
+      "test": "every_shared_case_agrees_between_the_pure_function_and_sql"
+    },
+    {
+      "id": "V-01-d",
+      "what": "an expired post is denied to a non-author even when the audience would admit them",
+      "status": "PASS",
+      "test": "every_shared_case_agrees_between_the_pure_function_and_sql"
+    },
+    {
+      "id": "V-01-e",
+      "what": "a draft is denied to a non-author",
+      "status": "PASS",
+      "test": "every_shared_case_agrees_between_the_pure_function_and_sql"
+    },
+    {
+      "id": "V-01-f",
+      "what": "the author sees their own post whatever its state and audience",
+      "status": "PASS",
+      "test": "the_author_sees_their_own_row_whatever_its_state"
+    },
+    {
+      "id": "V-01-g",
+      "what": "a block in either direction denies even an unrestricted post",
+      "status": "PASS",
+      "test": "a_block_denies_even_an_unrestricted_row"
+    },
+    {
+      "id": "V-01-h",
+      "what": "the current age is derived with the Seoul-date rule, so a birthday boundary agrees between the pure function and SQL",
+      "status": "PASS",
+      "test": "every_shared_case_agrees_between_the_pure_function_and_sql"
+    }
+  ],
+  "limitations": [
+    "The page and detail scopes carry one block state per request, so a viewer who has blocked anyone is reported as blocking everyone. That over-denies and never over-admits; a per-row block join is the correct long-term shape.",
+    "The page query evaluates the author's account standing through concert_world_account_deletion_fences; the detail query uses the scope's author_standing. Both are concert-local and neither joins across services."
+  ]
+}
