@@ -5,9 +5,9 @@ updated as work lands; it is the single place to read current progress.
 
 | Field | Value |
 | --- | --- |
-| Snapshot | 2026-11-09 20:25 Asia/Seoul |
+| Snapshot | 2026-11-09 21:20 Asia/Seoul |
 | Delivery branch | `julymeltdown/yogurt_cranberrie_bites` `master` |
-| Head at snapshot | `07f0bb960` |
+| Head at snapshot | `c2018beef` |
 | Task register | 110 tasks in [task-breakdown.md](task-breakdown.md) |
 | Tasks integrated | **106 / 110** |
 | Tasks in flight | 0 |
@@ -177,8 +177,8 @@ Each row is a product element, its state, and the evidence that supports it.
 | Event-free concert profile transport | Integrated | `concert_profile_product_routes` — 9 tests |
 | Routing rule: the service that owns the tables | Integrated | `profile_routing` — 7 tests |
 | Coverage register over all 43 profile operations | Integrated | `profile_producer_coverage` — 8 tests |
-| **Operations served** | **32 / 43** | 6 by profile-service, 26 by concert-service |
-| **Operations NOT_IMPLEMENTED** | **11 / 43** | `listIntroPosts`, `getIntroPost`, and the profile write commands |
+| **Operations served** | **36 / 43** | 6 by profile-service, 30 by concert-service |
+| **Operations NOT_IMPLEMENTED** | **7 / 43** | `listActivity` and the profile write commands |
 
 ---
 
@@ -269,7 +269,7 @@ Against `07f0bb960`, verified twice in succession:
 | --- | --- |
 | 1 — profile posts | PASS |
 | 2 — intro post | PASS |
-| 3 — liker navigation | PASS |
+| 3 — liker navigation | PASS — like 200, inbox 200 with 1 item, likers 200, profile 200 |
 | 4 — poster and delete | PASS |
 | 5 — outsider denial | PASS |
 | 6 — discovery projection | PASS |
@@ -277,8 +277,15 @@ Against `07f0bb960`, verified twice in succession:
 | Lifecycle sweep | PASS |
 
 The earlier snapshot of this section recorded PASS 0 / PARTIAL 2 / BLOCKED 5.
-Eleven defects were found and fixed between the two: seven in the product and
-four in the gate itself. See [release-readiness.md](release-readiness.md) §3.
+Twelve defects were found and fixed between the two: seven in the product and
+five in the gate itself. See [release-readiness.md](release-readiness.md) §3.
+
+Three of the gate defects were the same shape: a check satisfied by something
+adjacent to what it was meant to prove. A probe collected but never asserted
+(the notification inbox). A transition asserted where a state was meant (the
+projection step). A status asserted where content was meant (the inbox again,
+after the first correction). Each was found by re-reading the gate, not by the
+gate failing — which is the argument for re-reading it.
 
 ## 7. What is not proven
 
