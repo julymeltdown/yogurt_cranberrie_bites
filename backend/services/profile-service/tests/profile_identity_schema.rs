@@ -919,3 +919,142 @@ async fn every_profile_migration_is_ledgered_in_order() -> anyhow::Result<()> {
     assert_eq!(row.get::<i64, _>("total"), 6, "every new table exists");
     Ok(())
 }
+
+// ---------------------------------------------------------------------------
+// 0018: the runtime identity and the gap backfill
+// ---------------------------------------------------------------------------
+
+/// The profile id the backfill derives for an account.
+///
+/// This is the expression migration 0011 and 0018 both use. A runtime insert
+/// that derived the id any other way would give one account two profiles, so the
+/// tests below compare against this rather than against whatever the code did.
+async fn derived_profile_id(pool: &PgPool, account: Uuid) -> anyhow::Result<Uuid> {
+    Ok(sqlx::query_scalar(
+        "select md5('mcr profile identity v1:' || $1::text)::uuid",
+    )
+    .bind(account)
+    .fetch_one(pool)
+    .await?)
+}
+
+/// Saving a new profile creates its identity in the same transaction.
+///
+/// This is the defect 0018 repairs: before the runtime insert existed, an
+/// account registered after migration 0011 got a `profiles` row and no
+/// `profile_identities` row, so it could own no profile-owned table and the intro
+/// audience decision denied every restricted post to it.
+#[tokio::test]
+async fn saving_a_new_profile_creates_its_identity_with_the_backfill_id() -> anyhow::Result<()> {
+    use profile_application::dto::repository_dto::{ProfileRecordDto, ProfileVisibilityDto};
+    use profile_application::ports::ProfileRepositoryPort;
+    use profile_service::adapters::out::persistence::profile_repository::PgProfileRepository;
+
+    let pool = pool().await?;
+    let account = Uuid::new_v4();
+    let repository = PgProfileRepository::new(pool.clone());
+    repository
+        .save(&ProfileRecordDto {
+            user_id: account,
+            username: format!("newcomer{}", account.simple()),
+            nickname: "Newcomer".to_owned(),
+            avatar_url: String::new(),
+            bio: "Fresh account".to_owned(),
+            follower_count: 0,
+            post_count: 0,
+            following_count: 0,
+            account_visibility: ProfileVisibilityDto::Public,
+            lifecycle_status: "ACTIVE".to_owned(),
+        })
+        .await?;
+    // The identity exists...
+    let created: Option<Uuid> =
+        sqlx::query_scalar("select profile_id from profile_identities where account_id=$1")
+            .bind(account)
+            .fetch_optional(&pool)
+            .await?;
+    let created = created.expect("a new profile must have an identity");
+    // ...and it is the id the backfill would have derived.
+    assert_eq!(created, derived_profile_id(&pool, account).await?);
+    Ok(())
+}
+
+/// A second save reuses the identity and never rewrites its id.
+///
+/// A profile edit must not move the id that posts, media, rooms and avatars
+/// already reference.
+#[tokio::test]
+async fn a_second_save_keeps_the_same_identity() -> anyhow::Result<()> {
+    use profile_application::dto::repository_dto::{ProfileRecordDto, ProfileVisibilityDto};
+    use profile_application::ports::ProfileRepositoryPort;
+    use profile_service::adapters::out::persistence::profile_repository::PgProfileRepository;
+
+    let pool = pool().await?;
+    let account = Uuid::new_v4();
+    let repository = PgProfileRepository::new(pool.clone());
+    let record = |nickname: &str| ProfileRecordDto {
+        user_id: account,
+        username: format!("editor{}", account.simple()),
+        nickname: nickname.to_owned(),
+        avatar_url: String::new(),
+        bio: "Bio".to_owned(),
+        follower_count: 0,
+        post_count: 0,
+        following_count: 0,
+        account_visibility: ProfileVisibilityDto::Public,
+        lifecycle_status: "ACTIVE".to_owned(),
+    };
+    repository.save(&record("First")).await?;
+    let first: Uuid =
+        sqlx::query_scalar("select profile_id from profile_identities where account_id=$1")
+            .bind(account)
+            .fetch_one(&pool)
+            .await?;
+    repository.save(&record("Second")).await?;
+    let rows: Vec<Uuid> =
+        sqlx::query_scalar("select profile_id from profile_identities where account_id=$1")
+            .bind(account)
+            .fetch_all(&pool)
+            .await?;
+    assert_eq!(rows, vec![first], "an edit must not create or move an identity");
+    Ok(())
+}
+
+/// The 0018 backfill repairs accounts that have a profile and no identity.
+#[tokio::test]
+async fn the_gap_backfill_creates_only_the_missing_identities() -> anyhow::Result<()> {
+    let pool = pool().await?;
+    // One account that already has an identity, and one that is missing it.
+    let with_identity = account(&pool).await?;
+    let existing = profile_of(&pool, with_identity).await?;
+    let missing = Uuid::new_v4();
+    sqlx::query("insert into profiles(user_id,username,nickname,avatar_url,bio) values($1,$2,'Gap','a','b')")
+        .bind(missing)
+        .bind(format!("gap{}", missing.simple()))
+        .execute(&pool)
+        .await?;
+    // Apply the migration's own SQL.
+    let sql = std::fs::read_to_string(
+        std::path::Path::new(env!("CARGO_MANIFEST_DIR"))
+            .join("migrations/0018_profile_identity_gap_backfill.sql"),
+    )?;
+    sqlx::raw_sql(&sql).execute(&pool).await?;
+    // The gap is closed, with the derived id.
+    let repaired: Option<Uuid> =
+        sqlx::query_scalar("select profile_id from profile_identities where account_id=$1")
+            .bind(missing)
+            .fetch_optional(&pool)
+            .await?;
+    assert_eq!(repaired, Some(derived_profile_id(&pool, missing).await?));
+    // The account that already had one kept exactly the id it had.
+    assert_eq!(profile_of(&pool, with_identity).await?, existing);
+    // Every profile row now has an identity.
+    let orphans: i64 = sqlx::query_scalar(
+        "select count(*) from profiles p where not exists ( \
+             select 1 from profile_identities i where i.account_id = p.user_id)",
+    )
+    .fetch_one(&pool)
+    .await?;
+    assert_eq!(orphans, 0, "the backfill must be total");
+    Ok(())
+}

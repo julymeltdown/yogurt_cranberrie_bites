@@ -146,6 +146,17 @@ impl ProfileRepositoryPort for PgProfileRepository {
 
     async fn save(&self, profile: &ProfileRecordDto) -> Result<ProfileRecordDto> {
         let result: anyhow::Result<_> = async {
+        // The profile row and its profile identity are one unit of work.
+        //
+        // `profile_identities` is what keys every profile-owned table in the
+        // concert service (posts, media, rooms, avatars, intro posts) and what
+        // the intro audience decision resolves a viewer through. Migration 0011
+        // backfilled it once; without this insert an account registered after
+        // that migration would have a `profiles` row and no identity, so it could
+        // publish a restricted intro post that nobody — including its intended
+        // audience — could ever see. Creating both in one transaction is what
+        // makes "a profile exists" and "its identity exists" the same fact.
+        let mut tx = self.pool.begin().await?;
         let row = sqlx::query(
             r#"
             insert into profiles (
@@ -173,9 +184,40 @@ impl ProfileRepositoryPort for PgProfileRepository {
         .bind(profile.follower_count)
         .bind(profile.post_count)
         .bind(profile.following_count)
-        .fetch_optional(&self.pool)
+        .fetch_optional(&mut *tx)
         .await?
         .ok_or(ProfileError::InvalidInput("Profile is deleted"))?;
+        // The identity is created only when the account has none, and its id is
+        // derived by the database from the SAME expression migration 0011 uses,
+        // so a backfilled account and a newly created one cannot end up with two
+        // different profile ids for the same account.
+        //
+        // `on conflict (account_id) where deleted_at is null do nothing` leaves an
+        // existing live identity untouched: a profile edit must never rewrite the
+        // id that other tables already reference.
+        sqlx::query(
+            r#"
+            insert into profile_identities (profile_id, account_id, nickname, bio, visibility)
+            select
+                md5('mcr profile identity v1:' || $1::text)::uuid,
+                $1,
+                case
+                    when char_length(btrim($2)) between 1 and 40 then btrim($2)
+                    when char_length(btrim($3)) between 1 and 40 then btrim($3)
+                    else left(coalesce(nullif(btrim($3), ''), 'member'), 40)
+                end,
+                case when char_length($4) between 1 and 160 then $4 else null end,
+                'PUBLIC'
+            on conflict do nothing
+            "#,
+        )
+        .bind(profile.user_id)
+        .bind(&profile.nickname)
+        .bind(&profile.username)
+        .bind(&profile.bio)
+        .execute(&mut *tx)
+        .await?;
+        tx.commit().await?;
         Ok(Self::map_profile(row))
 
         }.await;
