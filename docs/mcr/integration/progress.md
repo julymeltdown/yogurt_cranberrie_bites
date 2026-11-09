@@ -5,11 +5,11 @@ updated as work lands; it is the single place to read current progress.
 
 | Field | Value |
 | --- | --- |
-| Snapshot | 2026-11-09 16:30 Asia/Seoul |
+| Snapshot | 2026-11-09 17:00 Asia/Seoul |
 | Delivery branch | `julymeltdown/yogurt_cranberrie_bites` `master` |
-| Head at snapshot | `1e014e6b2` |
+| Head at snapshot | `22c0a7575` |
 | Task register | 110 tasks in [task-breakdown.md](task-breakdown.md) |
-| Tasks integrated | **94 / 110** |
+| Tasks integrated | **106 / 110** |
 | Tasks in flight | 0 |
 | Tasks not started | 16 |
 | Release gate | **INCOMPLETE** — see §6 |
@@ -27,7 +27,7 @@ exit code, and its acceptance statements are demonstrated.
 | WP-01 Contract freeze | 8 | **8** | Complete |
 | WP-02 Schema and migrations | 12 | **12** | Complete |
 | WP-03 Favorites and discovery | 6 | **6** | Complete |
-| WP-04 Claims and visibility policy | 12 | **6** | Claim adapter in; like/media/link/likers surfaces open |
+| WP-04 Claims and visibility policy | 12 | **12** | Complete |
 | WP-04b NAVER verification | 12 | **12** | Complete |
 | WP-05 Intro posts and hearts | 16 | **16** | Complete |
 | WP-06 Profile posts and media | 12 | **12** | Complete |
@@ -108,7 +108,12 @@ Each row is a product element, its state, and the evidence that supports it.
 | Page and detail queries with the predicate inside | Integrated | `intro_posts_page` — 15 tests, `intro_cursor` — 7 tests |
 | Claim adapter over the profile service | Integrated | `claims_adapter` — 11 tests |
 | Real `can_view_intro` wired into the `Visibility` port | Integrated | `ComposedPolicy`; the fail-closed default remains only when the endpoint is unset |
-| **Audience feature end to end** | **Works** | A live matching claim sees a restricted post; expired, absent, and wrong-gender claims do not; unrestricted is visible to all |
+| Audience feature end to end | Integrated | A live matching claim sees a restricted post; expired, absent, and wrong-gender claims do not; unrestricted is visible to all |
+| Like policy under the real decision | Integrated | `intro_likes_policy` — 7 tests |
+| Liker list under the real decision | Integrated | `intro_likers_policy` — 7 tests |
+| Media authorization through the attached post | Integrated | `media_authorization_policy` — 9 tests |
+| Shared link indistinguishable from absence | Integrated | `intro_links` — 7 tests |
+| `INTRO_LIKED` under concurrent likes | Integrated | `intro_like_notifications` — 5 tests; 8 concurrent PUTs produce one row and one notification |
 | Intro operations served over HTTP | Integrated (11 of 13) | `concert_profile_product_routes` — 12 tests |
 | Intro composer mounted at `/discover/intro` | Integrated | `router.test.tsx` |
 | `listIntroPosts` / `getIntroPost` | Integrated | `intro_reads` — 11 tests; predicate inside the query, viewer-bound cursor |
@@ -183,10 +188,10 @@ Each row is a product element, its state, and the evidence that supports it.
 | --- | --- | --- |
 | V-01 | Age boundary 18/29 allowed, 17/30 denied | Integrated (unit) — shared case table |
 | V-02 | Unknown, expired, revoked attributes fail closed | Integrated (unit) — shared case table |
-| V-03 | One decision across every surface | Partial — reads and likes wired; media and shared links open |
-| V-04 | Like removal discloses nothing | Integrated (unit) |
-| V-05 | Idempotent likes, one notification | Integrated (unit) |
-| V-06 | Attachment isolation | Integrated (unit) |
+| V-03 | One decision across every surface | Integrated (unit) — reads, likes, likers, media, and links all share one predicate |
+| V-04 | Like removal discloses nothing | Integrated (unit) — proven under the real policy |
+| V-05 | Idempotent likes, one notification | Integrated (unit) — including 8 concurrent PUTs |
+| V-06 | Attachment isolation | Integrated (unit) — media now authorized through the attached post |
 | V-07 | Ordinary posts independent and unconverted | Integrated (unit) |
 | V-08 | Lifecycle independence | Partial — intro half not exercised |
 | V-09 | Ownership and account switching | Partial — `ACCOUNT_CONTEXT_STALE` never emitted |
@@ -217,6 +222,7 @@ Each row is a product element, its state, and the evidence that supports it.
 | Frontend refactor | — | 6 | query-key audit; net -358 lines across 49 files |
 | WP-04 visibility | 74 | — | 10 audience + 9 claims + 14 pure + 8 SQL parity + 7 cursor + 15 page + 11 claim adapter |
 | Intro reads | 11 | — | predicate inside the query, viewer-bound cursor |
+| WP-04 surfaces | 35 | — | likes 7, likers 7, media 9, links 7, notifications 5 |
 | Backend refactor | — | — | test counts identical before and after: 342 / 1449 / 737 |
 | Producer routing | 16 | — | 7 gateway + 9 concert transport |
 
@@ -244,6 +250,9 @@ pre-existing, not as passes.
 | Comment count filtered on `state = 'VISIBLE'` | The schema admits `PUBLISHED`; the count was always 0 | Found by the read test |
 | Inner join on `discovery_profiles` in the detail query | Every post without a projection row became `Unavailable` | Left join; the "author required for rendering" decision moved to the transport |
 | No claim adapter in the concert service | The audience feature was enforced but never satisfiable — nobody saw a restricted post | T-302 claim adapter; verified with live, expired, absent, and wrong-gender claims |
+| Media authorized by owner only | No non-owner could ever read a photograph; every gallery and attachment was dead | Authorized through the attached post via one pure decision, re-evaluated per request |
+| A fix that queried `profile_identities` from the concert service | The exact cross-database reference the constraint forbids | Caught by its own test; now reads the local discovery mirror |
+| `debug_never_renders_the_numeric_age` scanned the whole claim including the random UUID | Flaked roughly one run in ten | Scans only the attribute fields; 30 consecutive runs verified |
 
 ---
 
