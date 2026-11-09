@@ -168,6 +168,13 @@ pub struct Case {
     /// the "row 6 reads no claim" property, asserted per case rather than
     /// globally so a case that quietly started reading would fail.
     pub may_read_claims: bool,
+    /// The block rows this case describes, as `(blocker, blocked)` account pairs.
+    ///
+    /// The SQL predicate resolves a block per row, from the actual viewer/author
+    /// pair, so a case that asserts a block must declare the rows that create it
+    /// rather than a scope flag. The pure side derives `viewer.blocks` from the
+    /// same declaration, so the two cannot describe different situations.
+    pub block_rows: &'static [(Uuid, Uuid)],
 }
 
 impl Case {
@@ -216,7 +223,19 @@ fn case(
         expected,
         expected_row,
         may_read_claims,
+        block_rows: &[],
     }
+}
+
+/// The account id the fixture mirrors for a profile.
+///
+/// The SQL predicate resolves a profile to its account through
+/// `discovery_profiles`, so a block case must name accounts. The mapping is
+/// deterministic so the shared table and the SQL fixture agree without passing
+/// values between them.
+pub const fn account_of(profile: Uuid) -> Uuid {
+    let bytes = profile.as_u128();
+    Uuid::from_u128(bytes ^ 0x00000000_0000_4000_8000_0000000d_0000)
 }
 
 const ALLOWED: Decision = Decision::Allowed;
@@ -323,22 +342,35 @@ pub fn row_cases() -> Vec<Case> {
         ));
     }
 
-    // Row 5: a block in either direction.
-    for (id, blocks, reason) in [
+    // Row 5: a block in either direction. Each case declares the block rows that
+    // create it, so the SQL fixture writes real rows and the pure side derives
+    // the same `BlockState` from the same declaration.
+    const VIEWER_BLOCKED_AUTHOR: &[(Uuid, Uuid)] =
+        &[(account_of(VIEWER), account_of(AUTHOR))];
+    const AUTHOR_BLOCKED_VIEWER: &[(Uuid, Uuid)] =
+        &[(account_of(AUTHOR), account_of(VIEWER))];
+    const MUTUAL: &[(Uuid, Uuid)] = &[
+        (account_of(VIEWER), account_of(AUTHOR)),
+        (account_of(AUTHOR), account_of(VIEWER)),
+    ];
+    for (id, blocks, reason, rows) in [
         (
             "row-5-viewer-blocked-author",
             BlockState::ViewerBlockedAuthor,
             DenialReason::ViewerBlocked,
+            VIEWER_BLOCKED_AUTHOR,
         ),
         (
             "row-5-author-blocked-viewer",
             BlockState::AuthorBlockedViewer,
             DenialReason::AuthorBlocked,
+            AUTHOR_BLOCKED_VIEWER,
         ),
         (
             "row-5-mutual",
             BlockState::Mutual,
             DenialReason::AuthorBlocked,
+            MUTUAL,
         ),
     ] {
         let mut blocked = viewer(Some(claims(
@@ -346,7 +378,7 @@ pub fn row_cases() -> Vec<Case> {
             Attribute::Known(Gender::Female),
         )));
         blocked.blocks = blocks;
-        cases.push(case(
+        let mut entry = case(
             id,
             "a block in either direction denies",
             published(anyone()),
@@ -354,7 +386,9 @@ pub fn row_cases() -> Vec<Case> {
             denied(reason),
             Row::FiveBlocked,
             false,
-        ));
+        );
+        entry.block_rows = rows;
+        cases.push(entry);
     }
 
     // Row 6: unrestricted. This is the row that must not read a claim, so the

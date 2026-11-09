@@ -553,18 +553,20 @@ const SELECT_COLUMNS: &str = "p.intro_id, p.author_profile_id, p.body, p.current
 /// scan is filtered before `limit`. Filtering after the limit would return short
 /// pages that still report a `next_cursor`, which is the V-03-i defect.
 ///
-/// Placeholders: `$1`-`$7` are the predicate's, `$8`/`$9` the cursor position,
-/// `$10` the search term.
+/// Placeholders are derived from [`VisibilityParameters::PLACEHOLDERS`] rather
+/// than written out, so changing the predicate's arity cannot leave a stale
+/// number behind: the predicate occupies `$1` through `$N`, the cursor position
+/// takes `$N+1`/`$N+2`, and the search term takes `$N+3`.
 pub const PAGE_SQL: &str = "select {columns} \
      from intro_posts p \
      left join discovery_profiles d on d.profile_id = p.author_profile_id \
      where {predicate} \
-       and (cast($10 as text) is null \
-            or p.body ilike ('%' || cast($10 as text) || '%') \
-            or coalesce(p.currently_seeking, '') ilike ('%' || cast($10 as text) || '%') \
-            or coalesce(p.interaction_style, '') ilike ('%' || cast($10 as text) || '%')) \
-       and (cast($8 as timestamptz) is null \
-            or (p.published_at, p.intro_id) < (cast($8 as timestamptz), cast($9 as uuid))) \
+       and (cast({search} as text) is null \
+            or p.body ilike ('%' || cast({search} as text) || '%') \
+            or coalesce(p.currently_seeking, '') ilike ('%' || cast({search} as text) || '%') \
+            or coalesce(p.interaction_style, '') ilike ('%' || cast({search} as text) || '%')) \
+       and (cast({cursor_at} as timestamptz) is null \
+            or (p.published_at, p.intro_id) < (cast({cursor_at} as timestamptz), cast({cursor_id} as uuid))) \
      order by p.published_at desc, p.intro_id desc \
      limit {limit}";
 
@@ -583,7 +585,7 @@ pub const DETAIL_SQL: &str = "select {columns}, \
       from intro_attachments a where a.intro_id = p.intro_id) as attachment_media_ids \
      from intro_posts p \
      left join discovery_profiles d on d.profile_id = p.author_profile_id \
-     where p.intro_id = cast($8 as uuid) and {predicate}";
+     where p.intro_id = cast({intro_id} as uuid) and {predicate}";
 
 /// The author-standing substitution used by the page query.
 ///
@@ -594,8 +596,13 @@ pub const DETAIL_SQL: &str = "select {columns}, \
 /// once.
 pub fn page_predicate() -> String {
     let text = predicate(1);
+    // The author-standing placeholder is the second one the fragment uses, after
+    // the viewer. Deriving the number keeps this substitution correct when the
+    // predicate's arity changes; hardcoding `$3` silently substituted a different
+    // parameter the moment the block term stopped consuming a slot.
+    let author_active = format!("${}", 1 + 1);
     let substituted = text.replacen(
-        "$3",
+        &author_active,
         "(not exists (select 1 from concert_world_account_deletion_fences f \
           where f.user_id = p.author_profile_id))",
         1,
@@ -606,17 +613,25 @@ pub fn page_predicate() -> String {
 
 /// Build the page query text for a limit.
 pub fn page_sql(limit: i64) -> String {
+    let cursor_at = VisibilityParameters::PLACEHOLDERS + 1;
+    let cursor_id = VisibilityParameters::PLACEHOLDERS + 2;
+    let search = VisibilityParameters::PLACEHOLDERS + 3;
     PAGE_SQL
         .replace("{columns}", SELECT_COLUMNS)
         .replace("{predicate}", &page_predicate())
+        .replace("{cursor_at}", &format!("${cursor_at}"))
+        .replace("{cursor_id}", &format!("${cursor_id}"))
+        .replace("{search}", &format!("${search}"))
         .replace("{limit}", &limit.to_string())
 }
 
 /// Build the detail query text.
 pub fn detail_sql() -> String {
+    let intro_id = VisibilityParameters::PLACEHOLDERS + 1;
     DETAIL_SQL
         .replace("{columns}", SELECT_COLUMNS)
         .replace("{predicate}", &predicate(1))
+        .replace("{intro_id}", &format!("${intro_id}"))
 }
 
 /// The number of placeholders the detail query uses: the predicate's seven, then
@@ -653,7 +668,6 @@ pub async fn list_intro_posts_diagnostic(
     let parameters = scope.parameters();
     sqlx::query(&sql)
         .bind(parameters.viewer)
-        .bind(parameters.blocked)
         .bind(parameters.author_active)
         .bind(parameters.age)
         .bind(parameters.gender)
@@ -696,7 +710,6 @@ pub async fn list_intro_posts(
     let parameters = scope.parameters();
     let rows = sqlx::query(&sql)
         .bind(parameters.viewer)
-        .bind(parameters.blocked)
         .bind(parameters.author_active)
         .bind(parameters.age)
         .bind(parameters.gender)
@@ -777,7 +790,6 @@ pub async fn get_intro_post(
     let parameters = scope.parameters();
     let row = sqlx::query(&sql)
         .bind(parameters.viewer)
-        .bind(parameters.blocked)
         .bind(parameters.author_active)
         .bind(parameters.age)
         .bind(parameters.gender)

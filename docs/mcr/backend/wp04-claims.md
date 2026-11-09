@@ -101,10 +101,16 @@ upgraded.
 
 ## Limitations, recorded
 
-1. **Block state is per request, not per row.** The page and detail scopes carry
-   one `BlockState`. A viewer who has blocked anyone is reported as blocking
-   everyone, so the predicate over-denies. It never over-admits. A per-row block
-   join is the correct long-term shape.
+1. ~~**Block state is per request, not per row.**~~ **Fixed.** The predicate's
+   block term is now a correlated `not exists` over `discovery_blocks`, resolved
+   through the local `discovery_profiles` mirror, so rows 4 and 5 are evaluated
+   against the actual (viewer, author) pair. The old per-request boolean meant a
+   viewer who had blocked anyone lost the whole page. The term is fail-closed in
+   both directions: an active block either way denies, and a pair that cannot be
+   resolved denies. The one exception is a **nil viewer** (an anonymous shared-link
+   resolver), which no block can name; treating it as blocked would deny every
+   anonymous read of an unrestricted post. See `predicate`/`block_term` in
+   `intro_posts/visibility_sql.rs` and `tests/intro_blocks_per_row.rs`.
 2. **The page query and the detail query resolve author standing differently.**
    The page evaluates it through `concert_world_account_deletion_fences`; the
    detail query uses the scope's `author_standing`. Both are concert-local.
@@ -135,6 +141,7 @@ All commands and exit codes are recorded in the four evidence files. Summary:
 | `cargo test -p concert-service --test intro_likers_policy` | 7 passed |
 | `cargo test -p concert-service --test media_authorization_policy` | 9 passed |
 | `cargo test -p concert-service --test intro_links` | 7 passed |
+| `cargo test -p concert-service --test intro_blocks_per_row` | 9 passed |
 | `cargo test -p concert-service --test intro_like_notifications` | 5 passed |
 | `cargo test -p concert-service --test intro_likes` (WP-05, unchanged) | 9 passed |
 | `corepack pnpm@11.7.0 run typecheck` | 0 |
