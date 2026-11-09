@@ -666,3 +666,62 @@ pub async fn evidence_rows(pool: &PgPool) -> anyhow::Result<Vec<EvidenceRow>> {
 pub fn case_audience(case: &visibility_cases::Case) -> IntroAudience {
     case.post.audience
 }
+
+/// A viewer and author with **no** discovery projection row are not "blocked".
+///
+/// The block term resolves the pair's account ids through `discovery_profiles`,
+/// which is a projection written by a background worker. When either side has
+/// never been mirrored the subquery yields nothing, and an earlier version
+/// wrapped that in `coalesce(..., true)` — so an unprojected pair evaluated to
+/// "blocked" and every restricted post was denied to every viewer on a database
+/// whose projection had not run yet. That is the state a freshly seeded stack is
+/// in, which is why the product appeared to work only after a worker caught up.
+///
+/// A missing projection row means "no block is recorded", which is what an
+/// absent block is. This test removes both mirror rows and asserts the pair is
+/// still admitted.
+#[tokio::test]
+async fn an_unprojected_pair_is_not_treated_as_blocked() -> anyhow::Result<()> {
+    let pool = pool().await?;
+    let _serial = fixture_guard(&pool).await;
+    apply_block_rows(&pool, &[]).await?;
+    // Remove the mirror rows for exactly this pair, leaving the fixture's third
+    // profile so a later test still finds its own.
+    sqlx::query("delete from discovery_profiles where profile_id = any($1)")
+        .bind(vec![AUTHOR, VIEWER])
+        .execute(&pool)
+        .await?;
+    let scope = VisibilityScope::new(
+        VIEWER,
+        concert_application::intro_visibility::BlockState::None,
+        concert_application::intro_visibility::AuthorStanding::Active,
+        // A live, matching claim: the audience is satisfied, so the only thing
+        // that could deny the row is the block term.
+        concert_service::intro_posts::visibility_sql::ViewerAttributes::read(
+            Some(25),
+            Some(concert_application::identity_claims::Gender::Female),
+            true,
+        ),
+        now(),
+    );
+    // An unrestricted published row owned by the unprojected author.
+    let intro_id = Uuid::new_v4();
+    sqlx::query(
+        "insert into intro_posts(intro_id,author_profile_id,body,audience_gender,\
+         audience_min_age,audience_max_age_exclusive,state,published_at,favorites_snapshot) \
+         values($1,$2,'unprojected pair','any',null,null,'PUBLISHED',now(),'[]'::jsonb)",
+    )
+    .bind(intro_id)
+    .bind(AUTHOR)
+    .execute(&pool)
+    .await?;
+    let visible = sql_visible(&pool, &scope, intro_id).await?;
+    cleanup(&pool, intro_id).await?;
+    // Restore the mirror so the other cases in this binary keep their fixture.
+    seed_profiles(&pool).await?;
+    assert!(
+        visible,
+        "an unprojected viewer/author pair must not be denied as blocked"
+    );
+    Ok(())
+}

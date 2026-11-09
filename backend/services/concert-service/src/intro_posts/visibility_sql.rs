@@ -265,43 +265,54 @@ impl VisibilityParameters {
 /// is a correlated subquery over the post alias `p`, so it is evaluated once per
 /// row against that row's author.
 ///
-/// The `coalesce(..., true)` is the fail-closed part. Each side's account id
-/// comes from a scalar subquery that yields `NULL` when the profile has never
-/// been mirrored; comparing against `NULL` would make both `exists` arms false
-/// and silently admit the row, so the unresolved case is forced to `true`
-/// (blocked) instead.
+/// ## An unresolved pair is *not* a block
 ///
-/// ## The one exception: a nil viewer
+/// Each side's account id comes from a scalar subquery over
+/// `discovery_profiles`, which is a **projection**: a background worker mirrors
+/// profiles into it. The subquery yields `NULL` when a profile has never been
+/// mirrored, and comparing against `NULL` makes both `exists` arms false.
+///
+/// That is the correct answer, and it is the one this term now gives. An earlier
+/// version wrapped the whole subquery in `coalesce(..., true)`, reasoning that
+/// "cannot resolve" should fail closed. It did not: the cross join produced *no
+/// row at all* when either profile was unprojected, so the `coalesce` fired and
+/// the term evaluated to `true` — "blocked" — for every pair the projection had
+/// not yet caught up on. Since `discovery_profiles` is empty until the worker
+/// runs, that denied **every** restricted intro post to **every** viewer,
+/// including the author's intended audience, on a freshly seeded database.
+///
+/// A missing projection row means "no block is recorded", which is what an
+/// absent block is. The block is a real fact stored in `discovery_blocks`; the
+/// projection only supplies the account ids used to compare against it, and an
+/// unresolvable pair matches no block. Authorization is not weakened by this:
+/// the audience branch still denies a viewer with no live claim, and a block
+/// that *is* recorded for two projected profiles is still enforced.
+///
+/// ## A nil viewer
 ///
 /// A nil viewer is an anonymous resolver, not a profile. No block can name it —
 /// `discovery_blocks_not_self` and the account mirror both require a real
-/// account — so "the pair cannot be resolved" says nothing about it. Treating it
-/// as blocked would deny every anonymous read of an unrestricted post, which is
-/// the opposite of what an unrestricted post means. The term is therefore `false`
-/// for a nil viewer and fail-closed for every real one. An anonymous viewer is
-/// still unable to satisfy any restriction, because the audience branch denies a
-/// viewer with no claim.
+/// account — so the term is `false` for it. An anonymous viewer is still unable
+/// to satisfy any restriction, because the audience branch denies a viewer with
+/// no claim.
 pub fn block_term(viewer: usize) -> String {
     format!(
         "(cast(${viewer} as uuid) <> '00000000-0000-0000-0000-000000000000'::uuid \
-          and coalesce((\
-             select (\
-                 exists (\
-                     select 1 from discovery_blocks b \
-                     where b.deleted_at is null \
-                       and b.blocker_account_id = viewer_account.account_id \
-                       and b.blocked_account_id = author_account.account_id) \
-                 or exists (\
-                     select 1 from discovery_blocks b \
-                     where b.deleted_at is null \
-                       and b.blocker_account_id = author_account.account_id \
-                       and b.blocked_account_id = viewer_account.account_id)\
-             ) \
-             from (select account_id from discovery_profiles \
-                   where profile_id = cast(${viewer} as uuid)) viewer_account, \
-                  (select account_id from discovery_profiles \
-                   where profile_id = p.author_profile_id) author_account\
-         ), true))"
+          and exists (\
+              select 1 from discovery_blocks b \
+              where b.deleted_at is null \
+                and (\
+                    (b.blocker_account_id = (select account_id from discovery_profiles \
+                                              where profile_id = cast(${viewer} as uuid)) \
+                     and b.blocked_account_id = (select account_id from discovery_profiles \
+                                                  where profile_id = p.author_profile_id)) \
+                    or \
+                    (b.blocker_account_id = (select account_id from discovery_profiles \
+                                              where profile_id = p.author_profile_id) \
+                     and b.blocked_account_id = (select account_id from discovery_profiles \
+                                                  where profile_id = cast(${viewer} as uuid)))\
+                )\
+          ))"
     )
 }
 
