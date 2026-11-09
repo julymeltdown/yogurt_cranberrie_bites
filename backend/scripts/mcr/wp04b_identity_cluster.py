@@ -33,7 +33,7 @@ import migration_smoke as migration  # noqa: E402
 DATABASE = "mcr_wp_four_b_identity"
 
 
-def start(pg_bin_dir: Path, state_file: Path) -> int:
+def start(pg_bin_dir: Path, state_file: Path, serve: bool) -> int:
     tools = {name: migration.executable(pg_bin_dir / name) for name in migration.PG_TOOLS}
     cluster = migration.Cluster(tools)
     cluster.init()
@@ -57,6 +57,22 @@ def start(pg_bin_dir: Path, state_file: Path) -> int:
     )
     state_file.chmod(0o600)
     print(json.dumps({"database_url": url, "server_version": version}))
+    if serve:
+        # Hold the cluster open until signalled. The owned root lives under
+        # `TMPDIR`, so a caller that wants the cluster to outlive this process
+        # must keep it running; `--stop` then shuts it down through the marker.
+        # A file descriptor is kept open on the root so the OS does not reap a
+        # directory whose owner process is otherwise idle.
+        print("cluster ready; press Ctrl-C to stop", file=sys.stderr, flush=True)
+        keep = os.open(str(cluster.root), os.O_RDONLY)
+        try:
+            while not (cluster.root / "STOP").exists():
+                time.sleep(1)
+        except KeyboardInterrupt:
+            pass
+        finally:
+            os.close(keep)
+        return stop(state_file)
     return 0
 
 
@@ -99,10 +115,15 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--pg-bin-dir", type=Path, default=Path("/opt/homebrew/bin"))
     parser.add_argument("--state-file", type=Path, default=Path("/tmp/wp04b-identity-cluster.json"))
     parser.add_argument("--stop", action="store_true")
+    parser.add_argument(
+        "--serve",
+        action="store_true",
+        help="keep the cluster running until interrupted (the owned root is under TMPDIR)",
+    )
     args = parser.parse_args(argv)
     if args.stop:
         return stop(args.state_file)
-    return start(args.pg_bin_dir, args.state_file)
+    return start(args.pg_bin_dir, args.state_file, args.serve)
 
 
 if __name__ == "__main__":

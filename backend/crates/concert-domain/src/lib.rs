@@ -1,5 +1,6 @@
 //! Pure Concert values. Auth UUIDs are references, never a second identity store.
 pub mod avatar_motion_v2;
+pub mod intro_audience;
 pub mod report;
 pub mod place;
 pub mod venue_meeting;

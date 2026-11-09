@@ -186,7 +186,9 @@ pub mod media;
 
 pub mod intro_policy;
 pub mod age_policy;
+pub mod identity_claims;
 pub mod intro;
+pub mod intro_visibility;
 
 pub mod event_lifecycle;
 
