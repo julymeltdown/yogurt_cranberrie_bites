@@ -77,6 +77,9 @@ pub const PROFILE_OWNERS: &[(&str, ProfileOwner)] = &[
     ("uploadRoomPoster", ProfileOwner::ConcertService),
     // `profile_avatars` (0087).
     ("getOwnProfileAvatar", ProfileOwner::ConcertService),
+    // `intro_like_notifications` (0087, extended by 0093).
+    ("listNotifications", ProfileOwner::ConcertService),
+    ("markNotificationRead", ProfileOwner::ConcertService),
     ("setOwnProfileAvatar", ProfileOwner::ConcertService),
     // `intro_posts`, `intro_attachments`, `intro_likes`, `intro_comments` (0082,
     // 0083). Only the operations WP-05's producer actually serves are listed;

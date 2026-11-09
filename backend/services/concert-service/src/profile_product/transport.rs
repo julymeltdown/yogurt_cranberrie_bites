@@ -434,6 +434,12 @@ pub fn runtime_with_claims_and_media(
     if let Some(media) = media {
         producer = producer.with_media(media);
     }
+    // The inbox reads `intro_like_notifications`, which lives in this database,
+    // so it has no external dependency that could be missing: it is always
+    // attached.
+    producer = producer.with_notifications(Arc::new(
+        crate::intro_posts::notifications::NotificationInbox::new(pool.clone()),
+    ));
     build_runtime(pool, callers, verifier, producer)
 }
 

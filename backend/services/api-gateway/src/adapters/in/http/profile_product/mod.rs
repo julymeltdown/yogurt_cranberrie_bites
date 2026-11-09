@@ -146,6 +146,20 @@ pub const ROUTES: &[Route] = &[
     },
     Route {
         method: "GET",
+        path: "/api/me/notifications",
+        operation: "listNotifications",
+        body_limit: READ,
+        bytes: false,
+    },
+    Route {
+        method: "PATCH",
+        path: "/api/me/notifications/:notification_id",
+        operation: "markNotificationRead",
+        body_limit: JSON,
+        bytes: false,
+    },
+    Route {
+        method: "GET",
         path: "/api/me/avatar",
         operation: "getOwnProfileAvatar",
         body_limit: READ,

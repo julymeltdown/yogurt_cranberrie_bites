@@ -311,10 +311,14 @@ fn the_served_set_is_exactly_what_the_producer_answers() {
             "listIntroPostComments",
             "createIntroPostComment",
             "deleteIntroPostComment",
+            // The notification inbox, served from `intro_like_notifications`
+            // (0087, extended by 0093).
+            "listNotifications",
+            "markNotificationRead",
         ]),
         "the concert-served set changed; update coverage::COVERAGE in the same commit"
     );
-    assert_eq!(by_concert.len(), 28);
+    assert_eq!(by_concert.len(), 30);
 }
 
 #[test]
