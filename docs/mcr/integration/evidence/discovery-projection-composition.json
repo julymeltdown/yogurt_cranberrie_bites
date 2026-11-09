@@ -2,7 +2,7 @@
   "verification": "DISCOVERY-PROJECTION-COMPOSITION",
   "title": "The projection job is scheduled, the block source is wired, and the gRPC source is live-tested",
   "status": "PASS",
-  "commit": "ce938ec0d388e50ecb8757224b57b6a581ae527d",
+  "commit": "c8fd4268c",
   "branch": "codex/yc-discovery-proj",
   "base_commit": "ce938ec0d",
   "recorded_at": "2026-11-09T04:11:34Z",
