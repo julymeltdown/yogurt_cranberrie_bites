@@ -5,10 +5,10 @@ and what must be true before the integration can be called complete.
 
 | Field | Value |
 | --- | --- |
-| Snapshot | 2026-11-09 19:20 Asia/Seoul |
-| Head | `421a4e620` |
+| Snapshot | 2026-11-09 19:50 Asia/Seoul |
+| Head | `115899d14` |
 | Tasks integrated | 106 / 110 |
-| Release gate | **FAIL** — 1 PASS, 3 FAIL, 1 BLOCKED, 2 sweeps incomplete |
+| Release gate | **FAIL** — 4 PASS, 2 FAIL, 0 BLOCKED, both sweeps PASS |
 
 ---
 
@@ -55,7 +55,24 @@ and listed through real HTTP against seven real services.
 
 ## 3. What is broken, in dependency order
 
+### Resolved since the first snapshot
+
+| Defect | Fix | Gate movement |
+| --- | --- | --- |
+| B-1 projection worker never reached the source | TLS material plus the Concert service identity, following `ProfileClaimsAdapter::connect`; the settings refuse to start live without the credential | step 6 added and PASS; step 2 list went 0 → 1 item |
+| The gate probed paths the contract does not define | Steps 2–5 rewritten to contract paths with real ids from earlier steps | step 2 became measurable |
+| The gate never configured the claim endpoint | `CONCERT_PROFILE_GRPC_ENDPOINT` and `CONCERT_SERVICE_CREDENTIAL` wired | step 2 detail became possible |
+| `profile_identities` had no runtime creation | Created in the same transaction as the profile row, same derivation as the backfill; gap backfill migration 0018 | step 2 list went 0 → 1 item |
+| An empty projection was read as "blocked" | A missing projection row now means no block is recorded | step 2 list |
+| Step 2 raced the discovery worker | The gate waits for the author projection row and records the wait | step 2 PASS |
+| Step 5 never set a status | It now asserts the outsider denial | step 5 PASS |
+| The sweeps used invented paths and crashed on a bare scalar | Contract paths only; `query()` split from `scalar()`; the leak detector negative-tested | both sweeps PASS |
+
 ### B-1 — The discovery projection is never populated
+
+**Status**: resolved. Kept here because it is the clearest example of the
+failure mode this document describes — a defect that no package test could see
+and that a process-level check ("did the worker start?") actively hid.
 
 **Symptom**: `discovery_profiles` is empty in a running stack.
 
