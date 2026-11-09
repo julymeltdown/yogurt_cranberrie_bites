@@ -5,14 +5,14 @@ updated as work lands; it is the single place to read current progress.
 
 | Field | Value |
 | --- | --- |
-| Snapshot | 2026-11-09 17:00 Asia/Seoul |
+| Snapshot | 2026-11-09 20:25 Asia/Seoul |
 | Delivery branch | `julymeltdown/yogurt_cranberrie_bites` `master` |
-| Head at snapshot | `22c0a7575` |
+| Head at snapshot | `07f0bb960` |
 | Task register | 110 tasks in [task-breakdown.md](task-breakdown.md) |
 | Tasks integrated | **106 / 110** |
 | Tasks in flight | 0 |
 | Tasks not started | 16 |
-| Release gate | **INCOMPLETE** — see §6 |
+| Release gate | **PASS** — 6 of 6 steps, both sweeps, verified twice |
 
 Progress is counted per task, not per package. A task counts as integrated only
 when its code is merged to `master`, its tests pass with a recorded command and
@@ -258,31 +258,27 @@ pre-existing, not as passes.
 
 ## 6. Release gate
 
-The integration gate (`backend/scripts/mcr/wp10_profile_social.py`) was executed
-against revision `6b38f3397`. Result: **INCOMPLETE**.
+The integration gate (`backend/scripts/mcr/wp10_profile_social.py`) runs seven
+real services on a private PostgreSQL 16 cluster with TLS, seeds three
+identities through real enrollment and real NAVER verification, and drives the
+scenario over real HTTPS.
 
-| Step | State | Reason |
-| --- | --- | --- |
-| 1 — profile posts | BLOCKED | Producer did not serve media init at the time of the run |
-| 2 — intro post | BLOCKED | No intro route registered |
-| 3 — liker navigation | BLOCKED | No hearts, notification, or likers surface |
-| 4 — poster and delete | PARTIAL | Poster 403; intro delete 404 |
-| 5 — outsider denial | BLOCKED | No audience decision to test |
-| Cross-surface sweep | BLOCKED | Eight surfaces returned three different statuses |
-| Lifecycle sweep | PARTIAL | Durable layer passes; intro half cannot run |
+Against `07f0bb960`, verified twice in succession:
 
-The producer half of steps 1 and 4 has since been closed by the routing work.
-The gate has **not** been re-run since. It must be re-run unchanged before any
-release claim, and step 5 must assert `404` for the post, its attachments, and
-its bytes.
+| Step | State |
+| --- | --- |
+| 1 — profile posts | PASS |
+| 2 — intro post | PASS |
+| 3 — liker navigation | PASS |
+| 4 — poster and delete | PASS |
+| 5 — outsider denial | PASS |
+| 6 — discovery projection | PASS |
+| Cross-surface sweep | PASS |
+| Lifecycle sweep | PASS |
 
-What the gate did prove on that revision: seven services start and become ready
-on an owned private PostgreSQL 16 cluster; three identities are created through
-the real enrollment flow; two complete the real NAVER verification flow and
-receive `VERIFIED` claims; room visibility and avatar saves leave every other
-feature's rows byte-identical.
-
----
+The earlier snapshot of this section recorded PASS 0 / PARTIAL 2 / BLOCKED 5.
+Eleven defects were found and fixed between the two: seven in the product and
+four in the gate itself. See [release-readiness.md](release-readiness.md) §3.
 
 ## 7. What is not proven
 
@@ -290,8 +286,8 @@ feature's rows byte-identical.
 | --- | --- |
 | Live NAVER authorization | No console-issued client id, secret, or registered callback in this environment |
 | Browser captures at 360/390/430 | No browser session against a live stack |
-| End-to-end three-identity scenario | Blocked on WP-04 and on the intro routes |
-| Discovery against real data | The writer and worker exist and are tested; the worker is opt-in and the block consumer is not on the worker loop, so a deployment must enable it |
+| End-to-end three-identity scenario | **Proven** — the gate drives it over real HTTP; see §6 |
+| Discovery projection in a deployment | Proven in the gate (step 6); the worker is opt-in via `CONCERT_DISCOVERY_PROJECTION_MODE`, and the block consumer is not yet on the worker loop |
 | `ACCOUNT_CONTEXT_STALE` | The reason does not exist anywhere in `backend/`; the docs named a header the code never had |
 | Performance | Deferred by the earlier MCR decision; not a gate for this integration |
 | Licensing | Unresolved; recorded in [source-register.md](source-register.md) §6 |

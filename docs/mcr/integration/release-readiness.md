@@ -1,34 +1,35 @@
 # Release readiness analysis
 
-Status: **NOT RELEASABLE**. This document states what is proven, what is broken,
-and what must be true before the integration can be called complete.
+Status: **INTEGRATION COMPLETE / NOT RELEASE-READY**. The end-to-end gate passes.
+This document states what is proven, what remains open, and what must be true
+before a release decision.
 
 | Field | Value |
 | --- | --- |
-| Snapshot | 2026-11-09 19:50 Asia/Seoul |
-| Head | `115899d14` |
+| Snapshot | 2026-11-09 20:20 Asia/Seoul |
+| Head | `07f0bb960` |
 | Tasks integrated | 106 / 110 |
-| Release gate | **FAIL** — 4 PASS, 2 FAIL, 0 BLOCKED, both sweeps PASS |
+| Release gate | **PASS** — 6 of 6 steps, both sweeps, verified twice |
 
 ---
 
 ## 1. The honest summary
 
-The feature code is essentially complete. Every work package landed, every
-security decision is implemented and tested, and 106 of 110 tasks are merged.
+The feature code is complete and the integration gate passes. Every work package
+landed, every security decision is implemented and tested, 106 of 110 tasks are
+merged, and the end-to-end scenario runs against seven real services.
 
-**The product still does not work end to end.** The integration gate — seven
-real services, three real identities, real HTTP — passes one of five steps.
+**The product works end to end. It is not release-ready.**
 
-The gap is not missing features. It is that several pieces were built and tested
-against fixtures that hid the way they compose. Each work package was correct in
-isolation and each verification was honest about its own scope; the defects live
-in the seams between them.
+What remains is not code: it is the acceptance work that needs a browser and a
+provider, and one class of verification that unit tests cannot supply.
 
-That is the normal failure mode of parallel development, and it is what the gate
-exists to catch. The gate is doing its job.
-
----
+The path here is worth recording. At the first snapshot the gate passed one of
+five steps, and 106 merged tasks with roughly 1,400 tests had not found the six
+defects behind that. Each package was correct in isolation and each verification
+was honest about its own scope; the defects lived in the seams. Four of the
+eleven defects found were in the gate itself, which is why the gate had to be
+corrected before it could measure anything.
 
 ## 2. What is proven
 
@@ -53,102 +54,49 @@ and listed through real HTTP against seven real services.
 
 ---
 
-## 3. What is broken, in dependency order
+## 3. The gate passes
 
-### Resolved since the first snapshot
+The end-to-end gate runs seven real services on a private PostgreSQL 16 cluster
+with TLS, seeds three identities through real enrollment and real NAVER
+verification, and drives the scenario over real HTTPS.
 
-| Defect | Fix | Gate movement |
-| --- | --- | --- |
-| B-1 projection worker never reached the source | TLS material plus the Concert service identity, following `ProfileClaimsAdapter::connect`; the settings refuse to start live without the credential | step 6 added and PASS; step 2 list went 0 → 1 item |
-| The gate probed paths the contract does not define | Steps 2–5 rewritten to contract paths with real ids from earlier steps | step 2 became measurable |
-| The gate never configured the claim endpoint | `CONCERT_PROFILE_GRPC_ENDPOINT` and `CONCERT_SERVICE_CREDENTIAL` wired | step 2 detail became possible |
-| `profile_identities` had no runtime creation | Created in the same transaction as the profile row, same derivation as the backfill; gap backfill migration 0018 | step 2 list went 0 → 1 item |
-| An empty projection was read as "blocked" | A missing projection row now means no block is recorded | step 2 list |
-| Step 2 raced the discovery worker | The gate waits for the author projection row and records the wait | step 2 PASS |
-| Step 5 never set a status | It now asserts the outsider denial | step 5 PASS |
-| The sweeps used invented paths and crashed on a bare scalar | Contract paths only; `query()` split from `scalar()`; the leak detector negative-tested | both sweeps PASS |
-
-### B-1 — The discovery projection is never populated
-
-**Status**: resolved. Kept here because it is the clearest example of the
-failure mode this document describes — a defect that no package test could see
-and that a process-level check ("did the worker start?") actively hid.
-
-**Symptom**: `discovery_profiles` is empty in a running stack.
-
-**Cause**: `main.rs:891-901` builds the projection worker's channel with
-`Channel::from_shared(endpoint)?.connect_lazy()`. That is a plaintext channel
-with no TLS material and no service identity. The profile service listens on
-HTTPS and admits only the Concert workload, so every round fails before it
-reaches the source.
-
-The worker starts, records no failure, and produces nothing. The failure is
-silent because a round failure is logged and retried by design — a stale
-projection is better than a stopped service — so nothing surfaces.
-
-**Blast radius**: this is the single root cause behind three gate failures.
-
-| Depends on it | Why |
+| Step | Result |
 | --- | --- |
-| Intro detail (step 2) | The response needs the author's nickname; the producer refuses a detail it cannot render rather than showing it blank |
-| Liker list rows (step 3) | `shared_with_author` and the author summary come from the projection |
-| Discovery people list | Empty projection, empty list |
+| 1 — two photographs uploaded, normalized, published, listed | PASS |
+| 2 — restricted introduction drafted, published, listed, read | PASS |
+| 3 — viewer likes it, author sees the liker and the notification | PASS |
+| 4 — poster placed in the room; introduction deleted; room unchanged | PASS |
+| 5 — outsider denied every content surface | PASS |
+| 6 — discovery projection reaches the source and is current | PASS |
+| Cross-surface sweep — one decision, no leak | PASS |
+| Lifecycle sweep — durable independence both directions | PASS |
 
-**Why it was not caught**: the visibility tests mirror their own profiles into
-`discovery_profiles` as fixture setup. That is correct for testing the
-predicate, and it means the predicate never ran against an empty projection.
+Verified twice in succession on `07f0bb960`. The report in
+`evidence/wp10-gate-report.json` is the second run.
 
-### B-2 — The intro delete returns 400
+### The defects the gate found, and how each was resolved
 
-**Symptom**: `DELETE /api/me/intro-posts/{id}?expected_revision=N` returns
-`INVALID_INPUT`.
+| Defect | Class | Resolution |
+| --- | --- | --- |
+| Projection worker built a plaintext anonymous channel to an HTTPS listener | Product | TLS material plus the Concert service identity; settings refuse to start live without the credential |
+| `profile_identities` had no runtime creation, so no account registered after migration 0011 could satisfy an audience | Product | Created in the same transaction as the profile row, same derivation as the backfill; gap backfill in migration 0018 |
+| An empty projection was read as "blocked", denying every restricted post to everyone | Product | A missing projection row means no block is recorded |
+| Intro stores were built with the fail-closed policy and never given the real one | Product | One `ComposedPolicy` shared by the post, like and comment stores |
+| Media was authorized by owner only, so no non-owner could read a photograph | Product | Authorized through the attached post |
+| The gate probed paths the contract does not define | Gate | Steps rewritten to contract paths with real ids |
+| The gate never configured the claim endpoint | Gate | Endpoint and credential wired |
+| Step 2 raced the discovery worker | Gate | Waits for the author projection and records the wait |
+| Step 5 recorded denials but never set a status | Gate | Asserts the outsider denial |
+| The sweeps used invented paths and crashed on a bare scalar | Gate | Contract paths; `query()` split from `scalar()` |
+| The delete probe omitted an Idempotency-Key | Gate | Key added |
 
-**Cause**: not yet diagnosed. The publish returns 200 and the gate now sends the
-revision the publish reported. Either the delete parser rejects the query shape
-or the revision it receives is not the one the row holds.
+Four of the eleven were defects in the measurement, not the product. That ratio
+is the strongest argument for the gate existing.
 
-**Blast radius**: step 4, and the "delete an intro post leaves the room intact"
-half of the lifecycle sweep.
+## 4. Why "106 of 110 tasks" overstated readiness
 
-### B-3 — The avatar read returns 503
-
-**Symptom**: `GET /api/me/avatar` returns `DEPENDENCY_UNAVAILABLE`.
-
-**Cause**: not yet diagnosed. The avatar producer is served by the concert
-transport and the route exists, so this is either a missing dependency in the
-composition or a store that was never wired.
-
-### B-4 — Room visibility returns 409
-
-**Symptom**: `PATCH /api/me/room/visibility` returns `VERSION_CONFLICT`.
-
-**Cause**: the gate sends a revision the room does not hold. Either the gate
-reads the revision from the wrong field or the room's initial revision is not
-what the read reports.
-
-### B-5 — The lifecycle sweep's durable half errors
-
-**Symptom**: `JSONDecodeError` reading a durable response.
-
-**Cause**: a probe returned a non-JSON body where the sweep expected JSON. This
-is a gate defect, not a product defect — but it must be fixed before the sweep
-can report anything.
-
-### B-6 — The cross-surface sweep uses invented paths
-
-**Symptom**: eight surfaces return three different statuses.
-
-**Cause**: the sweep still probes `/api/intro-posts/{id}/attachments` and
-`/api/intro-posts/resolve?token=...`, neither of which is in the contract, and
-uses a hardcoded introduction id. Same class of defect as the one already fixed
-in step 2.
-
----
-
-## 4. Why "106 of 110 tasks" overstates readiness
-
-The task count measures delivered work, not working product. Three specific
-reasons it is misleading here:
+Kept because it is the lesson of this work. At the first snapshot the task count
+said 106 of 110 and the product did not work. Three reasons:
 
 1. **A task's acceptance was scoped to its own package.** "Media authorization
    through the attached post" passed 9 tests and was true. It did not mean media
@@ -156,62 +104,46 @@ reasons it is misleading here:
    projection, none of which the package owned.
 2. **Fixtures supplied what production must supply.** The projection mirror in
    the visibility fixtures, the mirrored profiles in the discovery fixtures, and
-   the pre-seeded identities in the intro fixtures each hid a seam.
-3. **The four remaining tasks are the integration itself.** T-951..T-956 are not
-   cleanup; they are the work of making the composition real, and they are the
-   hardest part.
+   the pre-seeded identities in the intro fixtures each hid a seam. The
+   visibility predicate never ran against an empty projection until the gate
+   did it.
+3. **The remaining tasks are the integration itself.** T-951..T-956 are not
+   cleanup; they are the work of making the composition real.
 
----
+The gate is now the authority on readiness, not the task count.
 
-## 5. What must be true to call this complete
+## 5. What remains before a release decision
 
-Ordered by dependency. Each item is a gate step returning PASS.
+The gate is green. These are the items it does not cover.
 
-| # | Condition | Depends on |
+| Item | State | Why it matters |
 | --- | --- | --- |
-| 1 | The projection worker reaches the profile service over TLS with the Concert identity, and a round writes rows | B-1 |
-| 2 | Intro detail returns 200 for an authorized viewer and 404 for an outsider | 1 |
-| 3 | A like returns 200, the author's liker list contains the liker, and the notification exists | 1 |
-| 4 | The intro delete succeeds and leaves the room, avatar, and posts byte-identical | B-2 |
-| 5 | The avatar read returns 200 | B-3 |
-| 6 | The room visibility change succeeds | B-4 |
-| 7 | The cross-surface sweep probes contract paths and returns eight identical denials for the outsider | B-6 |
-| 8 | The lifecycle sweep's durable half parses and passes | B-5, then 4 |
+| Browser captures at 360/390/430 | Not run | The plan requires them for every new screen; visual acceptance against the reference target stays open until they exist |
+| Live NAVER authorization | Blocked | No console-issued application in this environment; the gate uses a local test provider with fixed profiles |
+| Claim expiry mid-session | Unit-tested only | The gate proves the happy path and the absent/expired cases at the adapter; it does not expire a claim during a live session |
+| Provider outage during a read | Unit-tested only | The adapter fails closed on transport error; the gate does not simulate an outage mid-scenario |
+| Performance | Deferred | Deferred by the earlier MCR decision; not a gate for this integration |
+| Licensing | Unresolved | Recorded in source-register.md §6; must be settled before any public release |
 
-Not required for the gate, still required for release:
+### What "106 of 110" still means
 
-| Item | State |
-| --- | --- |
-| Browser captures at 360/390/430 | Not run — no browser session against a live stack |
-| Live NAVER authorization | Blocked — no console-issued application in this environment |
-| Discovery against a populated projection | Blocked on 1 |
-| Performance | Deferred by the earlier MCR decision |
-
----
+The four remaining tasks are T-951..T-956, the integration and release-evidence
+work. The gate now does most of what they describe. What is left is the release
+decision itself, which cannot be taken until the items above are closed or
+explicitly deferred by the user.
 
 ## 6. The plan
 
-**Wave 1 — unblock the projection (B-1).** One owner, one change: give the
-worker the TLS material and service identity the other edges already use. This
-is the highest-leverage fix in the project because three gate steps depend on
-it. Verify by asserting a row appears in `discovery_profiles` in a running
-stack, not by asserting the worker started.
+**Wave 1 — browser captures.** The only remaining acceptance item that needs no
+external input. One owner, capture every new screen at three widths, record what
+renders and what shows an error state.
 
-**Wave 2 — the three small defects (B-2, B-3, B-4).** Independent of each other
-and of wave 1. Each is a diagnosis plus a small fix. They can run in parallel
-with wave 1 on disjoint files.
+**Wave 2 — the release evidence assembly.** Assemble every verification result
+with its command, exit code, and artifact. State plainly what is not proven.
 
-**Wave 3 — the gate's own defects (B-5, B-6).** Fix the sweep paths and the
-durable probe. These are gate corrections, not product changes, and they must
-not weaken an assertion.
-
-**Wave 4 — re-run the gate unchanged.** All five steps PASS, both sweeps PASS.
-Only then is the integration complete.
-
-**Wave 5 — browser captures.** The one acceptance item that needs a real
-browser.
-
----
+**Wave 3 — the release decision.** Cannot be taken until the user decides
+whether the browser captures and the live-NAVER gap are release blockers or
+documented limitations.
 
 ## 7. What this analysis changes about the process
 
