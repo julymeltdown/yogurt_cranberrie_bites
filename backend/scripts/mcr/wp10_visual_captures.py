@@ -167,9 +167,22 @@ class CaptureGate(gate.Gate):
         # The page is served from the Vite origin, so a mutation from it carries
         # that Origin. The gateway admits an explicit list, so the frontend origin
         # is appended to the gateway's own origin rather than replacing it.
-        # The event id the stack was seeded with, kept for the policy probe: the
-        # gate builds it locally in this hook and does not store it.
-        self.event_id = envs["concert-service"].get("CONCERT_WORLD_EVENT_ID", "")
+        # `CONCERT_WORLD_EVENT_ID` is added by the gate AFTER this hook returns,
+        # so it is not in `envs` here. The event id is the bootstrap template's,
+        # which is the same value the gate uses, so it is read from there.
+        try:
+            import json as _json
+            from pathlib import Path as _Path
+            import world_in01_prepare as _prep
+            _template = _json.loads(
+                _Path(_prep.release_inputs()["CONCERT_BOOTSTRAP_FILE"]).read_bytes())
+            self.event_id = str(_template["event"]["event_id"])
+        except BaseException:  # noqa: BLE001 - a missing template fails later, loudly
+            self.event_id = ""
+        # The gateway mounts its participant route only when this digest is set.
+        # Recorded because a missing route answers 404 with no downstream call,
+        # which is indistinguishable from a refused read without this value.
+        self.release_digest = envs["api-gateway"].get("GATEWAY_CONCERT_RELEASE_DIGEST")
         gateway = envs["api-gateway"]["GATEWAY_CORS_ALLOWED_ORIGINS"]
         envs["api-gateway"]["GATEWAY_CORS_ALLOWED_ORIGINS"] = (
             gateway if self.frontend_origin in gateway.split(",")
@@ -247,6 +260,19 @@ class CaptureGate(gate.Gate):
         descriptor = self.stack.descriptor()
         self.api = gate.Api(descriptor["gateway_url"], self.state["origin"], tokens)
         self.tokens = tokens
+        self.seed_profiles()
+        # The browser shell is still concert-shaped: it reads the participant
+        # (`GET /api/concert/events/{event}/me`) and the service policy before it
+        # opens the World. The HTTP gate never needs either because profile
+        # operations are event-free, so neither is seeded there. Without a
+        # participant row the shell answers 403 and every screen renders the
+        # pre-world notice instead of its content.
+        if not self.event_id:
+            raise gate.GateFailure(
+                "CONCERT_WORLD_EVENT_ID is not set; participants, admissions and "
+                "the policy probe all need it")
+        self.seed_participants()
+        self.seed_admissions()
         # The browser stops after admission and never issues the pre-world policy
         # call, so the shell cannot open. Probe the same endpoint over HTTP with
         # the same session to separate a backend refusal from a client-side
@@ -256,24 +282,21 @@ class CaptureGate(gate.Gate):
             import closure_vertical_stack as _closure
             event = getattr(self, "event_id", "") or ""
             status, body, _ = _closure.request(
-                descriptor["gateway_url"] + f"/api/concert/events/{event}/service-policy",
+                descriptor["gateway_url"]
+                + f"/api/concert/events/{event}/service-policy"
+                + "?client_version=1.0.0&client_release=" + "a" * 64,
                 "GET", None, token=tokens["author"], origin=self.state["origin"])
+            self.report["gateway_release_digest_present"] = bool(
+                getattr(self, "release_digest", None))
             self.report["policy_probe"] = {
                 "event_id": event,
                 "http": status,
                 "body": body if isinstance(body, dict) else str(body)[:300],
             }
         except BaseException as probe_failure:  # noqa: BLE001 - a probe must not kill the run
+            self.report["gateway_release_digest_present"] = bool(
+                getattr(self, "release_digest", None))
             self.report["policy_probe"] = {"error": f"{type(probe_failure).__name__}: {probe_failure}"[:300]}
-        self.seed_profiles()
-        # The browser shell is still concert-shaped: it reads the participant
-        # (`GET /api/concert/events/{event}/me`) and the service policy before it
-        # opens the World. The HTTP gate never needs either because profile
-        # operations are event-free, so neither is seeded there. Without a
-        # participant row the shell answers 403 and every screen renders the
-        # pre-world notice instead of its content.
-        self.seed_participants()
-        self.seed_admissions()
         for role in ("viewer", "outsider"):
             try:
                 self.verify_identity(role)
