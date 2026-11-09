@@ -113,15 +113,55 @@ impl std::fmt::Display for SourceFailure {
 impl std::error::Error for SourceFailure {}
 
 /// The gRPC-backed source: the profile service's `DiscoverySourceService`.
+///
+/// Two constructors, because the real composition presents the Concert workload
+/// identity through a service-identity interceptor while a test may connect to a
+/// plain loopback channel. The intercepted form is the one production uses.
 pub struct GrpcDiscoverySource {
-    client: proto::discovery_source_service_client::DiscoverySourceServiceClient<Channel>,
+    client: DiscoveryClient,
+}
+
+/// The client the source reads through.
+///
+/// The intercepted variant is what `main` builds; the plain variant exists so a
+/// test can connect without an interceptor. Both are the same generated client,
+/// so the source's decoding path is identical either way.
+enum DiscoveryClient {
+    Plain(
+        proto::discovery_source_service_client::DiscoverySourceServiceClient<Channel>,
+    ),
+    Intercepted(
+        proto::discovery_source_service_client::DiscoverySourceServiceClient<
+            tonic::service::interceptor::InterceptedService<
+                Channel,
+                platform::grpc_auth::ServiceIdentityClientInterceptor,
+            >,
+        >,
+    ),
 }
 
 impl GrpcDiscoverySource {
+    /// A source over a plain channel client.
     pub fn new(
         client: proto::discovery_source_service_client::DiscoverySourceServiceClient<Channel>,
     ) -> Self {
-        Self { client }
+        Self {
+            client: DiscoveryClient::Plain(client),
+        }
+    }
+
+    /// A source over a client that presents the Concert workload identity.
+    pub fn intercepted(
+        client: proto::discovery_source_service_client::DiscoverySourceServiceClient<
+            tonic::service::interceptor::InterceptedService<
+                Channel,
+                platform::grpc_auth::ServiceIdentityClientInterceptor,
+            >,
+        >,
+    ) -> Self {
+        Self {
+            client: DiscoveryClient::Intercepted(client),
+        }
     }
 }
 
@@ -144,19 +184,20 @@ impl DiscoverySource for GrpcDiscoverySource {
             after_profile_id: after.map(|(_, id)| id.to_string()),
             limit,
         };
-        let reply = self
-            .client
-            .clone()
-            .read_changed(request)
-            .await
-            .map_err(|status| {
-                if status.code() == tonic::Code::InvalidArgument {
-                    SourceFailure::Invalid
-                } else {
-                    SourceFailure::Unavailable
-                }
-            })?
-            .into_inner();
+        let reply = match self.client {
+            DiscoveryClient::Plain(ref client) => client.clone().read_changed(request).await,
+            DiscoveryClient::Intercepted(ref client) => {
+                client.clone().read_changed(request).await
+            }
+        }
+        .map_err(|status| {
+            if status.code() == tonic::Code::InvalidArgument {
+                SourceFailure::Invalid
+            } else {
+                SourceFailure::Unavailable
+            }
+        })?
+        .into_inner();
         let mut profiles = Vec::with_capacity(reply.profiles.len());
         for profile in reply.profiles {
             let profile_id = uuid(&profile.profile_id).ok_or(SourceFailure::Invalid)?;
@@ -299,6 +340,11 @@ impl ProjectionWriter {
         for _ in 0..MAX_PAGES_PER_PASS {
             let page = self.source.read_changed(watermark, PAGE_SIZE).await?;
             if page.profiles.is_empty() {
+                // A caught-up pass with nothing to apply is still a successful
+                // pass, so it clears any failure marker from an earlier round.
+                // Leaving the marker set would make a recovered projection look
+                // broken forever.
+                self.clear_failure().await?;
                 report.caught_up = !page.more;
                 break;
             }
@@ -380,6 +426,11 @@ impl ProjectionWriter {
                 .await?;
             }
         }
+        // A successful page always clears the failure marker. The watermark only
+        // moves when the source returned a cursor, but the marker clearing must
+        // not depend on that: a caught-up pass with an empty page is still a
+        // successful pass, and leaving a stale failure recorded would make a
+        // recovered projection look broken forever.
         if let Some((at, id)) = page.next {
             sqlx::query(
                 "update discovery_projection_state set source_updated_at=$1, \
@@ -388,6 +439,13 @@ impl ProjectionWriter {
             )
             .bind(at)
             .bind(id)
+            .execute(&mut *tx)
+            .await?;
+        } else {
+            sqlx::query(
+                "update discovery_projection_state set updated_at=clock_timestamp(), \
+                 last_failure=null where singleton",
+            )
             .execute(&mut *tx)
             .await?;
         }
@@ -410,6 +468,20 @@ impl ProjectionWriter {
         .bind(report.pages as i32)
         .bind(report.profiles as i32)
         .bind(report.caught_up)
+        .execute(&self.pool)
+        .await?;
+        Ok(())
+    }
+
+    /// Clear the failure marker after a successful pass.
+    ///
+    /// Separate from [`Self::apply_page`] because a pass that has nothing to
+    /// apply never reaches it.
+    async fn clear_failure(&self) -> Result<(), ProjectionError> {
+        sqlx::query(
+            "update discovery_projection_state set updated_at=clock_timestamp(), \
+             last_failure=null where singleton",
+        )
         .execute(&self.pool)
         .await?;
         Ok(())

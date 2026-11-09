@@ -76,6 +76,16 @@ async fn main() -> anyhow::Result<()> {
         Some((profile, settlement)) => (Some(profile), Some(settlement)),
         None => (None, None),
     };
+    // The discovery-source read is an internal service-to-service read for the
+    // concert service's projection writer. It carries no actor delegation because
+    // it acts for no user, and it is never mounted on the Gateway.
+    let discovery_source = platform::grpc_method_policy::guard_without_delegation(
+        &profile_service::discovery_source::DISCOVERY_SOURCE_POLICY,
+        profile_service::discovery_source::proto::discovery_source_service_server::DiscoverySourceServiceServer::new(
+            profile_service::discovery_source::DiscoverySourceServer::from_pool(pool.clone()),
+        ),
+        config.caller_registry.clone(),
+    )?;
     let state = Arc::new(build_state(&config, pool.clone()).await?);
     // The profile product transport serves profile-owned operations that carry
     // no event. It is registered beside the Profile service, not inside it,
@@ -176,6 +186,7 @@ async fn main() -> anyhow::Result<()> {
                 .add_optional_service(public_profile)
                 .add_optional_service(self_profile_server)
                 .add_optional_service(self_settlement_server)
+                .add_service(discovery_source)
                 .add_service(platform::grpc_method_policy::guard(
                     &profile_service::adapters::r#in::grpc::method_policy::PROFILE_METHOD_POLICY,
                     ProfileServiceServer::new(server),
