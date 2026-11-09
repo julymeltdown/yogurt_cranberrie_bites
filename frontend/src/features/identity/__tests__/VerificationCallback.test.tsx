@@ -47,6 +47,7 @@ function harness(read: unknown, start: unknown = { authorization_url: authorizat
           status: 200,
           path: request.path,
         }),
+        scope: { generation: 1, userId, eventId: null },
       }
     },
   })

@@ -5,10 +5,14 @@
  * editor, the poster importer, the pixel conversion and the scoped scene. It
  * deliberately exports nothing that an intro post could embed: there is no room
  * preview component and no room data in any intro post type.
+ *
+ * The barrel is the feature's *public* surface, not a re-export of every module.
+ * A symbol is here only when a consumer outside `features/profile-room` imports
+ * it: the screen and its client are imported by the shell panel, and the rest is
+ * imported by the feature's own tests. Everything else stays reachable at its
+ * module path, so an internal helper does not silently become API.
  */
 export { RoomPage, type RoomPageProps } from './RoomPage'
-export { RoomEditor, type RoomEditorProps } from './RoomEditor'
-export { PosterImporter, IMPORT_STEPS, type PosterImporterProps } from './PosterImporter'
 export {
   createRoomClient, decodeConflictRoom, decodeOwnRoom, decodeProfileRoom, decodeRoomPoster,
   isRoomUnavailable, ownRoomRequest, profileRoomRequest, saveRoomRequest, setVisibilityRequest,
@@ -21,12 +25,11 @@ export {
   decodeSource, downsample, encodePng, pixelDigest, validateCrop, PosterConversionError,
   type Crop, type PosterPixels, type PosterPreset,
 } from './pixelize'
-export { createDirectConverter, createPosterConverter, createWorkerConverter, ConverterUnavailableError, type PosterConverter } from './worker/client'
+export { createPosterConverter, type PosterConverter } from './worker/client'
 export { createRoomScene, roomDepth, roomDrawList, CELL_PX, SCENE_PX, type RoomDraw, type RoomScene } from './scene/room-scene'
 export {
-  FLOOR_STYLES, FURNITURE_ITEMS, GRID_CELLS, MAX_FURNITURE, MAX_POSTERS, WALL_STYLES,
-  decodeLayout, initialLayout, layoutKey, sameLayout, validateLayout,
+  GRID_CELLS, initialLayout,
   type CharacterPlacement, type FloorStyle, type FurnitureItem, type FurniturePlacement,
   type PosterPlacement, type RoomLayout, type WallStyle,
 } from './model/layout'
-export { initialEditorState, isDirty, reduce as reduceEditor, type Conflict, type EditorAction, type EditorState, type Selection } from './model/editor'
+export { type Conflict, type EditorAction, type EditorState, type Selection } from './model/editor'

@@ -254,16 +254,3 @@ export const allSectionRoutes: readonly string[] = Object.freeze([
   ...sectionRoutes.ACTIVITY,
   ...sectionRoutes.MY_PROFILE,
 ])
-
-/**
- * The visitor profile route.
- *
- * A visitor profile is not the viewer's own profile, so it is not in
- * `MY_PROFILE`; it lives under Discover because that is where a viewer finds
- * people. It is listed separately so the router can register it without a
- * section claiming it as its own home.
- */
-export const VISITOR_PROFILE_ROUTE = '/discover/people/:profileId'
-
-/** The room route. A subordinate screen of a profile, never a section. */
-export const visitorRoomRoute = (profileId: string) => `/discover/people/${profileId}/room`

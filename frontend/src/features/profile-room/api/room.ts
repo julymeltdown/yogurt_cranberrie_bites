@@ -20,6 +20,7 @@
 import { z } from 'zod'
 import type { HttpRequest } from '../../../shared/api/http'
 import type { TransportError } from '../../../shared/api/errors'
+import { isConflict, isUnavailable, send, type RequestPort } from '../../../shared/api/request'
 import { decodeLayout, type RoomLayout } from '../model/layout'
 
 /** The five frozen paths. There is no event segment and no intro segment. */
@@ -182,22 +183,6 @@ export function uploadPosterRequest(input: {
 }
 
 /**
- * The current room a `409 VERSION_CONFLICT` carries.
- *
- * The frozen core envelope allows `details.current_revision` and nothing else, so
- * the current *layout* is not in the error body; the caller re-reads the room to
- * obtain it. This helper extracts the revision the conflict named when the server
- * supplied one, so the caller can decide whether a re-read is even necessary.
- */
-export function conflictRevision(error: TransportError): number | null {
-  if (error.kind !== 'http' || error.status !== 409) return null
-  const details = error.server?.core
-  return details && details.reason === 'VERSION_CONFLICT' && 'current_revision' in details
-    ? (details.current_revision ?? null)
-    : null
-}
-
-/**
  * The current room a `409` carries when the producer sends the whole room.
  *
  * The room producer answers a conflict with `details.current` (the current
@@ -222,10 +207,7 @@ export function decodeConflictRoom(value: unknown): OwnRoom | null {
  * this module owns the request shapes and the response decoding but never the
  * session, the credentials or the retry policy.
  */
-export interface RoomTransport {
-  /** The shell's transport: one generic request, decoded by the request itself. */
-  request<T>(request: HttpRequest<T>): Promise<{ readonly data: T; readonly scope: unknown }>
-}
+export type RoomTransport = RequestPort
 
 /** A conflict as the editor needs it: the current room, already decoded. */
 export class RoomConflictError extends Error {
@@ -248,32 +230,27 @@ export function createRoomClient(transport: RoomTransport) {
   // One call per operation, each with its own concrete request type: the
   // transport's generic is instantiated at the call site, never widened.
   async function own(): Promise<OwnRoom> {
-    return guard(transport.request<OwnRoom>(ownRoomRequest()))
+    return guard(ownRoomRequest())
   }
   async function profile(profileId: string): Promise<ProfileRoom> {
-    return guard(transport.request<ProfileRoom>(profileRoomRequest(profileId)))
+    return guard(profileRoomRequest(profileId))
   }
   async function save(expectedRevision: number, layout: RoomLayout): Promise<OwnRoom> {
-    return guard(transport.request<OwnRoom>(saveRoomRequest(expectedRevision, layout)))
+    return guard(saveRoomRequest(expectedRevision, layout))
   }
   async function visibility(expectedRevision: number, value: RoomVisibility): Promise<OwnRoom> {
-    return guard(transport.request<OwnRoom>(setVisibilityRequest(expectedRevision, value)))
+    return guard(setVisibilityRequest(expectedRevision, value))
   }
   async function poster(input: { readonly preset: 'FINE' | 'CHUNKY'; readonly width: number; readonly height: number; readonly bytesBase64: string }): Promise<RoomPoster> {
-    return guard(transport.request<RoomPoster>(uploadPosterRequest(input)))
+    return guard(uploadPosterRequest(input))
   }
-  async function guard<T>(pending: Promise<{ readonly data: T; readonly scope: unknown }>): Promise<T> {
+  /** Send one request, translating the two refusals the room screen acts on. */
+  async function guard<T>(request: HttpRequest<T>): Promise<T> {
     try {
-      const result = await pending
-      return result.data
+      return await send(transport, request)
     } catch (error) {
-      const failure = error as TransportError
-      if (failure && typeof failure === 'object' && 'kind' in failure) {
-        if (failure.kind === 'http' && failure.status === 409) {
-          throw new RoomConflictError(conflictRoomOf(failure))
-        }
-        if (isRoomUnavailable(failure)) throw new RoomUnavailableError()
-      }
+      if (isConflict(error)) throw new RoomConflictError(conflictRoomOf(error as TransportError))
+      if (isUnavailable(error)) throw new RoomUnavailableError()
       throw error
     }
   }
@@ -309,6 +286,5 @@ function conflictRoomOf(error: TransportError): OwnRoom | null {
 
 /** Whether an error is the `404` of a room a visitor may not open. */
 export function isRoomUnavailable(error: TransportError): boolean {
-  return error.kind === 'http' && error.status === 404
-    && error.server?.core?.reason === 'RESOURCE_UNAVAILABLE'
+  return isUnavailable(error) && error.server?.core?.reason === 'RESOURCE_UNAVAILABLE'
 }

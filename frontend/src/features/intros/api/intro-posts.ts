@@ -1,4 +1,4 @@
-import type { HttpClient, HttpRequest } from '../../../shared/api/http'
+import { cleanQuery, send, type RequestPort } from '../../../shared/api/request'
 import {
   decodeCommentPage,
   decodeIntroComment,
@@ -23,16 +23,10 @@ import {
  * anything is sent. A typo in a path fails locally rather than reaching the
  * server.
  */
-export interface IntroTransport {
-  readonly request: HttpClient['request']
-}
-
-function get<T>(transport: IntroTransport, request: HttpRequest<T>): Promise<T> {
-  return transport.request(request).then((result) => result.data)
-}
+export type IntroTransport = RequestPort
 
 export function getIntroPost(transport: IntroTransport, introId: string): Promise<IntroPostDetail> {
-  return get(transport, {
+  return send(transport, {
     path: `/api/intro-posts/${introId}`,
     method: 'GET',
     access: 'protected',
@@ -46,19 +40,19 @@ export function listIntroPosts(
   transport: IntroTransport,
   query: { limit?: number; cursor?: string; q?: string },
 ): Promise<IntroPostPage> {
-  return get(transport, {
+  return send(transport, {
     path: '/api/discover/intro-posts',
     method: 'GET',
     access: 'protected',
     errorFamily: 'domain',
     domainOperation: 'listIntroPosts',
-    query: clean(query),
+    query: cleanQuery(query),
     decode: decodeIntroPostPage,
   })
 }
 
 export function getOwnIntroPost(transport: IntroTransport, introId: string): Promise<OwnIntroPost> {
-  return get(transport, {
+  return send(transport, {
     path: `/api/me/intro-posts/${introId}`,
     method: 'GET',
     access: 'protected',
@@ -74,7 +68,7 @@ export function saveIntroPostDraft(
   body: SaveIntroPost,
   idempotencyKey: string,
 ): Promise<OwnIntroPost> {
-  return get(transport, {
+  return send(transport, {
     path: `/api/me/intro-posts/${introId}`,
     method: 'PUT',
     access: 'protected',
@@ -92,7 +86,7 @@ export function publishIntroPost(
   expectedRevision: number,
   idempotencyKey: string,
 ): Promise<OwnIntroPost> {
-  return get(transport, {
+  return send(transport, {
     path: `/api/me/intro-posts/${introId}/publish`,
     method: 'POST',
     access: 'protected',
@@ -110,7 +104,7 @@ export function deleteIntroPost(
   expectedRevision: number,
   idempotencyKey: string,
 ): Promise<unknown> {
-  return get(transport, {
+  return send(transport, {
     path: `/api/me/intro-posts/${introId}`,
     method: 'DELETE',
     access: 'protected',
@@ -127,13 +121,13 @@ export function listIntroPostLikers(
   introId: string,
   query: { limit?: number; cursor?: string },
 ): Promise<LikerPage> {
-  return get(transport, {
+  return send(transport, {
     path: `/api/intro-posts/${introId}/likes`,
     method: 'GET',
     access: 'protected',
     errorFamily: 'domain',
     domainOperation: 'listIntroPostLikers',
-    query: clean(query),
+    query: cleanQuery(query),
     decode: decodeLikerPage,
   })
 }
@@ -143,13 +137,13 @@ export function listIntroPostComments(
   introId: string,
   query: { limit?: number; cursor?: string },
 ): Promise<IntroCommentPage> {
-  return get(transport, {
+  return send(transport, {
     path: `/api/intro-posts/${introId}/comments`,
     method: 'GET',
     access: 'protected',
     errorFamily: 'domain',
     domainOperation: 'listIntroPostComments',
-    query: clean(query),
+    query: cleanQuery(query),
     decode: decodeCommentPage,
   })
 }
@@ -161,7 +155,7 @@ export function createIntroPostComment(
   parentCommentId: string | null,
   idempotencyKey: string,
 ): Promise<IntroComment> {
-  return get(transport, {
+  return send(transport, {
     path: `/api/intro-posts/${introId}/comments`,
     method: 'POST',
     access: 'protected',
@@ -179,7 +173,7 @@ export function deleteIntroPostComment(
   commentId: string,
   idempotencyKey: string,
 ): Promise<unknown> {
-  return get(transport, {
+  return send(transport, {
     path: `/api/intro-posts/${introId}/comments/${commentId}`,
     method: 'DELETE',
     access: 'protected',
@@ -190,11 +184,3 @@ export function deleteIntroPostComment(
   })
 }
 
-/** Drop empty query values so the closed parser never sees an empty field. */
-function clean(query: Record<string, string | number | undefined>): Record<string, string | number> {
-  const result: Record<string, string | number> = {}
-  for (const [key, value] of Object.entries(query)) {
-    if (value !== undefined && value !== '') result[key] = value
-  }
-  return result
-}

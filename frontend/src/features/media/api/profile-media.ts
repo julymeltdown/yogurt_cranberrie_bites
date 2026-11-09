@@ -1,5 +1,12 @@
-import type { HttpClient, HttpRequest } from '../../../shared/api/http'
+import type { HttpRequest } from '../../../shared/api/http'
 import { TransportError } from '../../../shared/api/errors'
+import {
+  isAborted,
+  newIdempotencyKey,
+  send,
+  withRetry,
+  type RequestPort,
+} from '../../../shared/api/request'
 
 /**
  * WP-05 T-410: the profile media upload client.
@@ -47,8 +54,7 @@ export interface UploadInput {
   readonly type: 'image/jpeg' | 'image/png' | 'image/webp'
 }
 
-export interface UploadOptions {
-  readonly request: HttpClient['request']
+export interface UploadOptions extends RequestPort {
   /** Deterministic fixtures only; production uses `crypto.randomUUID`. */
   readonly key?: () => string
   /** How many times a transient step is retried. */
@@ -97,13 +103,6 @@ function decodeReady(value: unknown): ReadyMedia {
   })
 }
 
-/** Whether a failure is worth retrying: a network blip or a 5xx, never a 4xx. */
-function transient(error: unknown): boolean {
-  if (!(error instanceof TransportError)) return false
-  if (error.kind === 'network' || error.kind === 'timeout') return true
-  return typeof error.status === 'number' && error.status >= 500
-}
-
 /**
  * Upload one prepared image.
  *
@@ -114,7 +113,7 @@ export async function uploadProfileMedia(
   input: UploadInput,
   options: UploadOptions,
 ): Promise<UploadResult> {
-  const key = options.key ?? (() => crypto.randomUUID())
+  const key = options.key ?? newIdempotencyKey
   const retries = options.retries ?? 1
   const signal = options.signal
   const cancelled = () => signal?.aborted === true
@@ -124,25 +123,15 @@ export async function uploadProfileMedia(
   const attemptKey = key()
   let mediaId: string | null = null
 
-  const attempt = async <T>(run: () => Promise<T>): Promise<T> => {
-    let lastError: unknown
-    for (let index = 0; index <= retries; index += 1) {
-      if (cancelled()) throw new TransportError('aborted')
-      try {
-        return await run()
-      } catch (error) {
-        lastError = error
-        if (!transient(error) || index === retries) throw error
-      }
-    }
-    throw lastError
-  }
+  const attempt = <T>(run: () => Promise<T>): Promise<T> =>
+    withRetry(run, { retries, ...(signal === undefined ? {} : { signal }) })
 
   try {
     // 1. init
     const intent = await attempt(() =>
-      options
-        .request({
+      send(
+        options,
+        {
           path: '/api/me/media/uploads',
           method: 'POST',
           access: 'protected',
@@ -159,15 +148,16 @@ export async function uploadProfileMedia(
             } as never,
           },
           decode: decodeIntent,
-        } as HttpRequest<ProfileMediaIntent>)
-        .then((result) => result.data),
+        } as HttpRequest<ProfileMediaIntent>,
+      ),
     )
     mediaId = intent.media_id
 
     // 2. PUT bytes
     await attempt(() =>
-      options
-        .request({
+      send(
+        options,
+        {
           path: intent.upload_path,
           method: 'PUT',
           access: 'protected',
@@ -176,14 +166,15 @@ export async function uploadProfileMedia(
           idempotencyKey: attemptKey,
           body: { binary: input.blob },
           decode: (value: unknown) => value,
-        } as HttpRequest<unknown>)
-        .then((result) => result.data),
+        } as HttpRequest<unknown>,
+      ),
     )
 
     // 3. finalize
     const ready = await attempt(() =>
-      options
-        .request({
+      send(
+        options,
+        {
           path: `/api/me/media/${intent.media_id}/finalize`,
           method: 'POST',
           access: 'protected',
@@ -192,8 +183,8 @@ export async function uploadProfileMedia(
           idempotencyKey: attemptKey,
           body: { json: { expected_revision: intent.revision } as never },
           decode: decodeReady,
-        } as HttpRequest<ReadyMedia>)
-        .then((result) => result.data),
+        } as HttpRequest<ReadyMedia>,
+      ),
     )
     return { ok: true, media: ready }
   } catch (error) {
@@ -201,7 +192,7 @@ export async function uploadProfileMedia(
     if (mediaId !== null) {
       await deleteStaged(options, mediaId).catch(() => undefined)
     }
-    if (cancelled() || (error instanceof TransportError && error.kind === 'aborted')) {
+    if (cancelled() || isAborted(error)) {
       return { ok: false, cancelled: true, message: 'Upload cancelled.' }
     }
     return {

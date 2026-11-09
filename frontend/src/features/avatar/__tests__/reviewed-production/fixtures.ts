@@ -7,6 +7,7 @@ import { createQueryPrivacy } from '../../../../shared/query/privacy'
 import { createReviewedProductionAuthority, type PublicReviewedConfig } from '../../../../entities/avatar/runtime/motion-adoption/reviewed-production'
 import { REVIEWED_MOTION } from '../../../../entities/avatar/runtime/motion-adoption/reviewed-manifest'
 import { decodeReviewedMotionConfig } from '../../../../entities/avatar/runtime/motion-adoption/reviewed-config'
+export { deferred } from '../../../../test-support/fixtures'
 
 export const manifest = schema.$defs.ReviewedMotionAvatarManifest.const
 export const pin = { manifest_id: REVIEWED_MOTION.manifestId, manifest_version: 2, content_hash: REVIEWED_MOTION.contentHash }
@@ -32,11 +33,6 @@ export async function reviewedBundle() {
     await rehash(theme)
   }
   return bundle
-}
-export function deferred<T>() {
-  let resolve!: (value: T) => void
-  const promise = new Promise<T>(yes => { resolve = yes })
-  return { promise, resolve }
 }
 export async function setup() {
   const session = createMemorySession(), client = new QueryClient(), privacy = createQueryPrivacy({ session, client })

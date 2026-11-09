@@ -1,7 +1,12 @@
 import type { SessionController } from '../auth/model/session'
-import type { HttpClient, HttpRequest } from '../../shared/api/http'
-import { TransportError } from '../../shared/api/errors'
-import type { PrivacyScope } from '../../shared/query/privacy'
+import type { HttpClient } from '../../shared/api/http'
+import {
+  blank,
+  createControllerRuntime,
+  failureOf,
+  type Failure,
+  type Slot,
+} from '../../shared/query/controller-runtime'
 import {
   addFavorite,
   canAdd,
@@ -45,13 +50,7 @@ export interface FavoritesOptions {
   readonly request: HttpClient['request']
 }
 
-export type Failure = 'unavailable' | 'invalid' | 'offline' | 'rate-limited'
-
-export interface Slot<T> {
-  readonly phase: 'idle' | 'loading' | 'ready' | 'error'
-  readonly data: T | null
-  readonly failure: Failure | null
-}
+export type { Failure, Slot }
 
 export interface FavoritesState {
   readonly category: Category
@@ -63,16 +62,6 @@ export interface FavoritesState {
   readonly available: boolean
 }
 
-const blank = <T>(): Slot<T> => ({ phase: 'idle', data: null, failure: null })
-
-function failure(error: unknown): Failure {
-  if (!(error instanceof TransportError)) return 'invalid'
-  if (error.status === 429) return 'rate-limited'
-  if (error.kind === 'network' || error.kind === 'timeout') return 'offline'
-  if (error.status === 400) return 'invalid'
-  return 'unavailable'
-}
-
 const failureMessage: Readonly<Record<Failure, string>> = Object.freeze({
   unavailable: 'The catalog is unavailable. Try again in a moment.',
   invalid: 'That search could not be sent. Check the term and try again.',
@@ -81,62 +70,25 @@ const failureMessage: Readonly<Record<Failure, string>> = Object.freeze({
 })
 
 export function createFavoritesController(options: FavoritesOptions) {
-  let state: FavoritesState = Object.freeze({
-    category: 'MUSIC',
-    term: '',
-    results: blank<readonly CatalogItem[]>(),
-    nextCursor: null,
-    selection: emptySelection(),
-    message: '',
-    available: false,
-  })
-  let disposed = false
-  let started = false
-  let epoch = 0
-  const flights = new Map<string, AbortController>()
-  const listeners = new Set<() => void>()
-
-  const emit = (patch: Partial<FavoritesState>) => {
-    state = Object.freeze({ ...state, ...patch })
-    for (const listener of [...listeners]) {
-      try {
-        listener()
-      } catch {
-        // Isolate observers so one bad subscriber cannot stop the others.
-      }
-    }
+  const runtime = createControllerRuntime<FavoritesState>(
+    { privacy: options.auth.privacy, request: options.request },
+    () => ({
+      category: 'MUSIC',
+      term: '',
+      results: blank<readonly CatalogItem[]>(),
+      nextCursor: null,
+      selection: emptySelection(),
+      message: '',
+      available: false,
+    }),
+  )
+  // The runtime publishes through this closure; it is defined before `runtime`
+  // runs because the runtime never publishes during construction.
+  function emit(patch: Partial<FavoritesState>) {
+    runtime.publish(patch)
   }
-
-  const scope = (): PrivacyScope | null => {
-    const captured = options.auth.privacy.capture()
-    return options.auth.privacy.isCurrent(captured) ? captured : null
-  }
-
-  const usable = () => started && !disposed && scope() !== null
-
-  function cancel(lane: string) {
-    flights.get(lane)?.abort()
-    flights.delete(lane)
-  }
-
-  async function run<T>(lane: string, build: () => HttpRequest<T>): Promise<T> {
-    const captured = scope()
-    if (!captured) throw new TransportError('authentication-required')
-    cancel(lane)
-    const flight = new AbortController()
-    const version = epoch
-    flights.set(lane, flight)
-    try {
-      const request = build()
-      const result = await options.request({ ...request, signal: flight.signal })
-      if (version !== epoch || !options.auth.privacy.isCurrent(captured)) {
-        throw new TransportError('session-changed')
-      }
-      return result.data
-    } finally {
-      if (flights.get(lane) === flight) flights.delete(lane)
-    }
-  }
+  const { run, usable, cancel } = runtime
+  const state = () => runtime.read()
 
   async function search(category: Category, term: string, cursor: string | null): Promise<void> {
     const query = validQuery(term)
@@ -145,7 +97,7 @@ export function createFavoritesController(options: FavoritesOptions) {
       return
     }
     emit({
-      results: { phase: 'loading', data: cursor === null ? null : state.results.data, failure: null },
+      results: { phase: 'loading', data: cursor === null ? null : state().results.data, failure: null },
       message: '',
     })
     try {
@@ -157,16 +109,16 @@ export function createFavoritesController(options: FavoritesOptions) {
         query: { q: query, limit: 20, ...(cursor === null ? {} : { cursor }) },
         decode: (value: unknown) => decodeCatalogPage(value, category),
       }))
-      if (state.category !== category) return
-      const previous = cursor === null ? [] : state.results.data ?? []
+      if (state().category !== category) return
+      const previous = cursor === null ? [] : state().results.data ?? []
       const merged = [...previous, ...page.items]
       emit({
         results: { phase: 'ready', data: merged, failure: null },
         nextCursor: page.next_cursor,
       })
     } catch (error) {
-      if (state.category !== category) return
-      const reason = failure(error)
+      if (state().category !== category) return
+      const reason = failureOf(error)
       emit({
         results: { phase: 'error', data: null, failure: reason },
         nextCursor: null,
@@ -176,22 +128,13 @@ export function createFavoritesController(options: FavoritesOptions) {
   }
 
   return {
-    read: () => state,
-    subscribe(listener: () => void) {
-      listeners.add(listener)
-      return () => {
-        listeners.delete(listener)
-      }
-    },
-    start() {
-      if (started || disposed) return
-      started = true
-      emit({ available: usable() })
-    },
+    read: runtime.read,
+    subscribe: runtime.subscribe,
+    start: runtime.start,
     /** Switch tab. The order of the tabs is the product's, not the caller's. */
     selectCategory(category: Category) {
-      if (!CATEGORIES.includes(category) || state.category === category) return
-      cancel(`catalog:${state.category}`)
+      if (!CATEGORIES.includes(category) || state().category === category) return
+      cancel(`catalog:${state().category}`)
       emit({
         category,
         term: '',
@@ -208,18 +151,18 @@ export function createFavoritesController(options: FavoritesOptions) {
     /** Run the search for the current term. A blank term clears the results. */
     submit(): Promise<void> {
       if (!usable()) return Promise.resolve()
-      return search(state.category, state.term, null)
+      return search(state().category, state().term, null)
     },
     more(): Promise<void> {
-      if (!usable() || state.nextCursor === null) return Promise.resolve()
-      return search(state.category, state.term, state.nextCursor)
+      if (!usable() || state().nextCursor === null) return Promise.resolve()
+      return search(state().category, state().term, state().nextCursor)
     },
     /**
      * Add an item to its own category. A sixth item in one category is refused
      * here, before any request, and the message says why.
      */
     add(item: CatalogItem): boolean {
-      const result = addFavorite(state.selection, item)
+      const result = addFavorite(state().selection, item)
       if (!result.ok) {
         emit({
           message:
@@ -235,14 +178,14 @@ export function createFavoritesController(options: FavoritesOptions) {
       return true
     },
     remove(item: FavoriteItem): void {
-      emit({ selection: removeFavorite(state.selection, item.category, item.catalog_item_id), message: '' })
+      emit({ selection: removeFavorite(state().selection, item.category, item.catalog_item_id), message: '' })
     },
     /** Whether the item is already picked. */
-    selected: (item: CatalogItem) => isSelected(state.selection, item),
+    selected: (item: CatalogItem) => isSelected(state().selection, item),
     /** Whether another pick fits in that category. */
-    canAdd: (category: Category) => canAdd(state.selection, category),
+    canAdd: (category: Category) => canAdd(state().selection, category),
     /** The picks in the open tab. */
-    picks: () => itemsFor(state.selection, state.category),
+    picks: () => itemsFor(state().selection, state().category),
     /** Replace the selection from a server read (`core.OwnProfile.favorites`). */
     replaceSelection(value: unknown): boolean {
       const selection = validateSelection(value)
@@ -262,15 +205,7 @@ export function createFavoritesController(options: FavoritesOptions) {
      * savable: skipping every category is allowed and blocks nothing.
      */
     canSave: () => true,
-    dispose() {
-      if (disposed) return
-      disposed = true
-      started = false
-      epoch++
-      flights.forEach((flight) => flight.abort())
-      flights.clear()
-      listeners.clear()
-    },
+    dispose: runtime.dispose,
   }
 }
 

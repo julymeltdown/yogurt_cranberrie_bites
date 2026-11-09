@@ -56,7 +56,7 @@ function harness(initial: unknown): Harness {
         })
       }
       const data = await response.json()
-      return { data: request.decode(data, { scope: { generation: 1, userId, eventId: null }, status: 200, path: request.path }) }
+      return { data: request.decode(data, { scope: { generation: 1, userId, eventId: null }, status: 200, path: request.path }), scope: { generation: 1, userId, eventId: null } }
     },
   })
   disposals.push(() => controller.dispose())

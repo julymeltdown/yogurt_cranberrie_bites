@@ -1,3 +1,6 @@
-body { margin: 0; background: #e5dfd4; }
-main { max-width: 50rem; margin-inline: auto; }
-.fixture-caption { margin: 1rem; font: 14px/1.5 Arial,sans-serif; }
+/*
+ * Fixture-only preview scaffolding. The three shared rules live with the mural
+ * preview fixture; this file adds nothing of its own, so it imports them rather
+ * than keeping a second copy that can drift.
+ */
+@import '../../../mural/__tests__/preview.css';

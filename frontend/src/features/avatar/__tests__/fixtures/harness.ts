@@ -5,12 +5,13 @@ import { createMemorySession, createHttpClient } from '../../../../shared/api/ht
 import { createQueryPrivacy } from '../../../../shared/query/privacy'
 import { createAvatarEditorController } from '../../controller'
 import { copyConfig, decodeAvatar, layers, type AvatarConfig, type AvatarPreviewPort, type AvatarState, type PreviewLease } from '../../contract'
+import { deferred } from '../../../../test-support/fixtures'
+export { deferred }
 
 export const userId = participant.user_id, eventId = participant.event_id
 export const original: AvatarConfig = decodeAvatar(participant.profile.avatar).config
 export const alternate: AvatarConfig = copyConfig({ ...original, item_ids: { ...original.item_ids, hair: 'hair_second' } })
 export const unsupported: AvatarConfig = copyConfig({ ...original, skin_tone_id: 'tone_unsupported' })
-export function deferred<T>() { let resolve!: (value: T) => void, reject!: (reason: unknown) => void; const promise = new Promise<T>((yes, no) => { resolve = yes; reject = no }); return { promise, resolve, reject } }
 export type Mode = 'ok' | 'conflict' | 'denied' | 'uncertain' | 'invalid' | 'slow' | 'stale-read' | 'read-failed' | 'other-user'
 /** Explicit test-only port. It draws no character art and has no production import. */
 export function testPreview() {

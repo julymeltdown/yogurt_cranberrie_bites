@@ -6,10 +6,11 @@ import { createMemorySession, createHttpClient } from '../../../../shared/api/ht
 import { createQueryPrivacy } from '../../../../shared/query/privacy'
 import { createWholeCharacterEditorController, type WholeCharacterChoice } from '../controller'
 import { decodeWholeConfig, type WholeCharacterState } from '../model'
+import { deferred } from '../../../../test-support/fixtures'
+export { deferred }
 
 export const configs = manifest.presets.map(p => decodeWholeConfig(p.config))
 export const initial: WholeCharacterState = Object.freeze({ revision: 1, config: configs[0]! })
-export function deferred<T>() { let resolve!: (value: T) => void; const promise = new Promise<T>(yes => { resolve = yes }); return { promise, resolve } }
 type Mode = 'ok' | 'denied' | 'conflict' | 'uncertain' | 'invalid' | 'slow' | 'other-user' | 'read-failed'
 /** Test-only canonical HTTP/Privacy harness, no synthetic character drawing or production adapter. */
 export function harness() {

@@ -1,6 +1,7 @@
 import { z } from 'zod'
-import type { HttpRequest, SessionScope } from '../../../shared/api/http'
+import type { SessionScope } from '../../../shared/api/http'
 import { TransportError } from '../../../shared/api/errors'
+import { send, type RequestPort } from '../../../shared/api/request'
 import { freeze, timestamp } from '../../people/contract'
 
 /**
@@ -127,9 +128,7 @@ export function decodeStart(value: unknown, now: number): IdentityVerificationSt
   return freeze(start)
 }
 
-export interface IdentityApiOptions {
-  /** The shared HTTP client entry point. */
-  readonly request: <T>(request: HttpRequest<T>) => Promise<{ data: T }>
+export interface IdentityApiOptions extends RequestPort {
   readonly now?: () => number
 }
 
@@ -145,19 +144,18 @@ export function createIdentityApi(options: IdentityApiOptions) {
   return {
     /** `getOwnIdentityVerification` — GET `/api/me/identity/{provider}`. */
     async read(): Promise<IdentityVerification> {
-      const result = await options.request({
+      return send(options, {
         path: base,
         method: 'GET',
         access: 'protected',
         errorFamily: 'core',
         decode: (value: unknown) => decodeVerification(value),
       })
-      return result.data
     },
     /** `startIdentityVerification` — POST `/api/me/identity/{provider}/verifications`. */
     async start(returnPath: ReturnPath): Promise<IdentityVerificationStart> {
       if (!RETURN_PATHS.includes(returnPath)) throw new TransportError('invalid-request')
-      const result = await options.request({
+      return send(options, {
         path: `${base}/verifications`,
         method: 'POST',
         access: 'protected',
@@ -165,18 +163,16 @@ export function createIdentityApi(options: IdentityApiOptions) {
         body: { json: { return_path: returnPath } },
         decode: (value: unknown) => decodeStart(value, now()),
       })
-      return result.data
     },
     /** `disconnectIdentityVerification` — DELETE `/api/me/identity/{provider}`. */
     async disconnect(): Promise<IdentityVerification> {
-      const result = await options.request({
+      return send(options, {
         path: base,
         method: 'DELETE',
         access: 'protected',
         errorFamily: 'core',
         decode: (value: unknown) => decodeVerification(value),
       })
-      return result.data
     },
   }
 }

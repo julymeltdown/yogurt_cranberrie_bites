@@ -1,5 +1,4 @@
 import { matchPath } from 'react-router-dom'
-import { sectionForPath, type SectionId } from './sections'
 
 /**
  * WP-09 T-901: the primary navigation is three sections, not six tabs.
@@ -16,15 +15,6 @@ export const tabs = [
 ] as const
 export type TabPath = typeof tabs[number]['path']
 
-/**
- * The section a panel route belongs to, or `null` for a concert panel.
- *
- * A panel's `tab` field predates the three-section navigation and still names the
- * concert tab it used to hang from. The section is derived from the path so the
- * two can never disagree: `/me` is My Profile, `/discover/*` is Discover, and
- * everything else is a concert panel reached from the secondary menu.
- */
-export const sectionOf = (pathname: string): SectionId | null => sectionForPath(pathname)
 export interface PanelRoute {
   path: string
   title: string

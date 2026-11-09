@@ -4,6 +4,7 @@ import { createImageUploadController } from '../upload-controller'
 import type { MediaUploadTransport } from '../../../../shared/media/transport'
 import type { CommandBinding, MediaReceipt } from '../../../../shared/media/contract'
 import type { PrepareImage } from '../../../../shared/media/prepare-image'
+export { deferred } from '../../../../test-support/fixtures'
 export const uid = (n: number) => `00000000-0000-4000-8000-${n.toString().padStart(12, '0')}`
 export const user = uid(1), event = uid(2), mediaId = uid(3), now = Date.parse('2026-11-04T00:00:00Z')
 export const bytes = () => Uint8Array.from(atob('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aGr8AAAAASUVORK5CYII='), c => c.charCodeAt(0))
@@ -16,7 +17,6 @@ export const ready = () => ({ media_id: mediaId, state: 'READY' as const, revisi
 export const receipt = (b: CommandBinding, patch: Partial<MediaReceipt> = {}): MediaReceipt => ({ receipt_id: uid(4), event_id: event, actor_id: user,
   operation_id: b.operation, idempotency_key: b.key, state: 'PENDING', resource_id: null, resource_revision: null, failure_reason: null,
   created_at: '2026-11-04T00:00:00Z', expires_at: '2026-11-05T00:00:00Z', result_status: null, ...patch })
-export function deferred<T>() { let resolve!: (v: T) => void; const promise = new Promise<T>(r => { resolve = r }); return { promise, resolve } }
 export function setup(patch: Partial<MediaUploadTransport> = {}, prepare: PrepareImage = async () => image()) {
   const session = createMemorySession(); session.replace(0, { userId: user, eventId: event, accessToken: 'memory' })
   const transport: MediaUploadTransport = {

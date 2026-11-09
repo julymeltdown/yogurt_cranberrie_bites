@@ -6,6 +6,7 @@
  * assertion about what the production client would actually send.
  */
 import type { HttpRequest } from '../../../shared/api/http'
+import { TransportError } from '../../../shared/api/errors'
 import { createRoomClient, type OwnRoom, type ProfileRoom, type RoomClient, type RoomTransport, type RoomVisibility } from '../api/room'
 import { initialLayout, type RoomLayout } from '../model/layout'
 import type { PosterConverter } from '../worker/client'
@@ -72,15 +73,12 @@ export function createRoomServer(): RoomServer {
     async request<T>(request: HttpRequest<T>) {
       const body = request.body && 'json' in request.body ? request.body.json : null
       calls.push({ path: request.path, method: request.method, body })
-      if (mode === 'failed') throw Object.assign(new Error('network'), { kind: 'network' })
+      if (mode === 'failed') throw new TransportError('network')
       if (mode === 'save-failed' && request.method !== 'GET') {
-        throw Object.assign(new Error('unavailable'), { kind: 'http', status: 503, server: { envelope: { code: 'ROOM_503', message: 'Room request unavailable', details: { reason: 'DEPENDENCY_UNAVAILABLE' } }, core: { reason: 'DEPENDENCY_UNAVAILABLE' }, reason: 'DEPENDENCY_UNAVAILABLE' } })
+        throw new TransportError('http', { status: 503, server: { envelope: { code: 'ROOM_503', message: 'Room request unavailable', details: { reason: 'DEPENDENCY_UNAVAILABLE' } }, core: { reason: 'DEPENDENCY_UNAVAILABLE' }, reason: 'DEPENDENCY_UNAVAILABLE' } })
       }
       if (mode === 'unavailable') {
-        throw Object.assign(new Error('unavailable'), {
-          kind: 'http', status: 404,
-          server: { envelope: { code: 'ROOM_404', message: 'Room request unavailable', details: { reason: 'RESOURCE_UNAVAILABLE' } }, core: { reason: 'RESOURCE_UNAVAILABLE' }, reason: 'RESOURCE_UNAVAILABLE' },
-        })
+        throw new TransportError('http', { status: 404, server: { envelope: { code: 'ROOM_404', message: 'Room request unavailable', details: { reason: 'RESOURCE_UNAVAILABLE' } }, core: { reason: 'RESOURCE_UNAVAILABLE' }, reason: 'RESOURCE_UNAVAILABLE' } })
       }
       if (request.method === 'GET' && request.path === '/api/me/room') {
         return { data: request.decode(ownRoomWire(layout, revision, visibility), { scope: SCOPE, status: 200, path: request.path }), scope: {} } as never
@@ -94,7 +92,7 @@ export function createRoomServer(): RoomServer {
           const envelope = mode === 'conflict-with-room'
             ? { code: 'ROOM_409', message: 'Room request unavailable', details: { reason: 'VERSION_CONFLICT', current: ownRoomWire(layout, revision, visibility) } }
             : { code: 'ROOM_409', message: 'Room request unavailable', details: { reason: 'VERSION_CONFLICT' } }
-          throw Object.assign(new Error('conflict'), { kind: 'http', status: 409, server: { envelope, core: { reason: 'VERSION_CONFLICT' }, reason: 'VERSION_CONFLICT' } })
+          throw new TransportError('http', { status: 409, server: { envelope, core: { reason: 'VERSION_CONFLICT' }, reason: 'VERSION_CONFLICT' } })
         }
         layout = submitted.layout
         revision += 1
@@ -103,7 +101,7 @@ export function createRoomServer(): RoomServer {
       if (request.method === 'PATCH' && request.path === '/api/me/room/visibility') {
         const submitted = body as { expected_revision: number; visibility: RoomVisibility }
         if (submitted.expected_revision !== revision) {
-          throw Object.assign(new Error('conflict'), { kind: 'http', status: 409, server: { envelope: { code: 'ROOM_409', message: 'Room request unavailable', details: { reason: 'VERSION_CONFLICT' } }, core: { reason: 'VERSION_CONFLICT' }, reason: 'VERSION_CONFLICT' } })
+          throw new TransportError('http', { status: 409, server: { envelope: { code: 'ROOM_409', message: 'Room request unavailable', details: { reason: 'VERSION_CONFLICT' } }, core: { reason: 'VERSION_CONFLICT' }, reason: 'VERSION_CONFLICT' } })
         }
         visibility = submitted.visibility
         revision += 1
@@ -111,7 +109,7 @@ export function createRoomServer(): RoomServer {
       }
       if (request.method === 'POST' && request.path === '/api/me/room/posters') {
         if (mode === 'upload-failed') {
-          throw Object.assign(new Error('invalid'), { kind: 'http', status: 400, server: { envelope: { code: 'ROOM_400', message: 'Room request unavailable', details: { reason: 'INVALID_INPUT' } }, core: { reason: 'INVALID_INPUT' }, reason: 'INVALID_INPUT' } })
+          throw new TransportError('http', { status: 400, server: { envelope: { code: 'ROOM_400', message: 'Room request unavailable', details: { reason: 'INVALID_INPUT' } }, core: { reason: 'INVALID_INPUT' }, reason: 'INVALID_INPUT' } })
         }
         const submitted = body as { preset: PosterPreset; width: number; height: number }
         posterCounter += 1
@@ -124,7 +122,7 @@ export function createRoomServer(): RoomServer {
           scope: {},
         } as never
       }
-      throw Object.assign(new Error('unexpected'), { kind: 'network' })
+      throw new TransportError('network')
     },
   }
 

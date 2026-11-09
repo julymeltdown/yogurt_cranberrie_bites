@@ -8,11 +8,11 @@ import { places, release, eventId, userId } from '../../../places/__tests__/fixt
 import { createMeetingBeaconController } from '../../model/controller'
 import type { MeetingAuthority, QualifiedMeetingPhoto } from '../../model/ports'
 import type { MeetBeacon, Receipt } from '../../model/contract'
+export { deferred } from '../../../../test-support/fixtures'
 
 export { eventId, userId }
 export const beaconId = fixture.beacon_id, partyId = '00000000-0000-4000-8000-000000000250'
 export const key = '00000000-0000-4000-8000-000000000551'
-export function deferred<T>() { let resolve!: (value: T) => void; const promise = new Promise<T>(yes => { resolve = yes }); return { promise, resolve } }
 export function sampleBeacon(): MeetBeacon {
   return { ...structuredClone(fixture), event_id: eventId, owner_id: userId, state: 'ACTIVE',
     meeting: { ...structuredClone(fixture.meeting), place_id: places()[1]!.place_id, place_revision: 3,

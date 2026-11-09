@@ -31,8 +31,6 @@ export const FURNITURE_ITEMS = ['bed', 'chair', 'desk', 'lamp', 'plant', 'shelf'
 export type WallStyle = typeof WALL_STYLES[number]
 export type FloorStyle = typeof FLOOR_STYLES[number]
 export type FurnitureItem = typeof FURNITURE_ITEMS[number]
-export type Facing = 'LEFT' | 'RIGHT'
-
 const cell = z.number().int().min(0).max(GRID_CELLS - 1)
 const styleId = z.enum(WALL_STYLES)
 const floorId = z.enum(FLOOR_STYLES)
@@ -87,27 +85,6 @@ export const initialLayout = (): RoomLayout => ({
   character: { cell_x: 16, cell_y: 24, facing: 'RIGHT' },
 })
 
-/** The structural rules the server also enforces, applied to a local layout. */
-export function validateLayout(layout: RoomLayout): string | null {
-  const parsed = layoutSchema.safeParse(layout)
-  if (!parsed.success) return 'This room layout is not valid.'
-  const cells = new Set<string>()
-  for (const placement of layout.furniture) {
-    const key = `${placement.layer}:${placement.cell_x}:${placement.cell_y}`
-    if (cells.has(key)) return 'Two pieces of furniture cannot share a cell in the same layer.'
-    cells.add(key)
-  }
-  const slots = new Set<number>(), media = new Set<string>()
-  for (const poster of layout.posters) {
-    if (poster.x + poster.width > GRID_CELLS || poster.y + poster.height > GRID_CELLS) return 'A poster must stay inside the wall.'
-    if (slots.has(poster.slot)) return 'Two posters cannot share a wall slot.'
-    if (media.has(poster.poster_media_id)) return 'The same poster cannot hang twice.'
-    slots.add(poster.slot)
-    media.add(poster.poster_media_id)
-  }
-  return null
-}
-
 /** Decode a `social.RoomLayout` from the server. Throws on anything else. */
 export function decodeLayout(value: unknown): RoomLayout {
   return layoutSchema.parse(value)
@@ -153,14 +130,6 @@ export const sameCell = (a: number, b: number) => Math.trunc(a) + 0 === Math.tru
 export function cellFree(layout: RoomLayout, cellX: number, cellY: number, layer: number, except?: number): boolean {
   return !layout.furniture.some((placement, index) => index !== except
     && placement.layer === layer && placement.cell_x === cellX && placement.cell_y === cellY)
-}
-
-/** The next free poster slot, or null when all four are taken. */
-export function nextPosterSlot(layout: RoomLayout): number | null {
-  for (let slot = 0; slot < MAX_POSTERS; slot++) {
-    if (!layout.posters.some(poster => poster.slot === slot)) return slot
-  }
-  return null
 }
 
 /** The default wall rectangle of a poster slot, in grid cells. */

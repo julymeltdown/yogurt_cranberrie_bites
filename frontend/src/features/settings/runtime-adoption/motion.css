@@ -1,6 +1,7 @@
-[data-mcr-reduced-motion="true"],
-[data-mcr-reduced-motion="true"] * {
-  animation: none !important;
-  transition: none !important;
-  scroll-behavior: auto !important;
-}
+/*
+ * The reduced-motion kill-switch is a shell-wide rule, not a settings-only one.
+ * It lives in `shared/styles/themes/themes.css` (loaded by the shell theme hook)
+ * and this file imports it, so the settings surface and the shell cannot drift
+ * apart about what "reduced motion" disables.
+ */
+@import '../../../shared/styles/themes/themes.css';

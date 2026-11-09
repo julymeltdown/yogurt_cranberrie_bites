@@ -6,6 +6,7 @@ import { CAPABILITIES, projectCapabilities } from '../../../../app/capabilities'
 import type { GiftContext } from '../../model/controller'
 import { createGiftDiscoveryController, type GiftClock } from '../../model/controller'
 import type { Giveaway, Reservation } from '../../model/contract'
+export { deferred } from '../../../../test-support/fixtures'
 
 // Synthetic data only. Avatar metadata is never rendered as product artwork.
 export const uid = (number: number) => `00000000-0000-4000-8000-${number.toString(16).padStart(12, '0')}`
@@ -14,7 +15,6 @@ export const now = Date.parse('2026-11-07T07:00:00Z')
 export function giveaway(patch: Partial<Giveaway> = {}): Giveaway { return { ...structuredClone(management.giveaway) as Giveaway, ...patch } }
 export function reservation(patch: Partial<Reservation> = {}): Reservation { return { ...structuredClone(management.reservations[0]!) as Reservation, ...patch } }
 export const allCapabilities = () => projectCapabilities(Object.fromEntries(CAPABILITIES.map(key => [key, { available: true, reason: null }])))
-export function deferred<T>() { let resolve!: (value: T) => void; const promise = new Promise<T>(done => { resolve = done }); return { resolve, promise } }
 export function fixture(options: { handler?: (request: Request) => Response | Promise<Response>; clock?: GiftClock; limit?: number } = {}) {
   const admissionRequests: Request[] = [], requests: Request[] = []
   const auth = createSessionController({ eventId, timeoutMs: 2000, cookiePolicy: {
