@@ -9,3 +9,4 @@ pub mod identity;
 pub mod profile_product;
 
 pub mod deletion_receipt;
+pub mod discovery_source;

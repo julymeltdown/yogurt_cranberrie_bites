@@ -1,0 +1,104 @@
+{
+  "verification": "DISCOVERY-PROJECTION",
+  "title": "The discovery projection is populated, idempotent, and loses no updates",
+  "status": "PASS",
+  "commit": "82cbb5ade",
+  "branch": "codex/yc-discovery-proj",
+  "base_commit": "62a31f104",
+  "recorded_at": "2026-11-09T03:41:48Z",
+  "mechanism": "bounded incremental reconciliation job (option b)",
+  "mechanism_rationale": "docs/mcr/integration/discovery-projection.md",
+  "commands": [
+    {
+      "command": "cd backend && cargo +1.88.0 check --locked --workspace",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 backend/scripts/mcr/wp03_discovery_tests.py --concert-test discovery",
+      "exit_code": 0,
+      "note": "17 passed \u2014 the existing discovery tests are unchanged and still pass"
+    },
+    {
+      "command": "python3 backend/scripts/mcr/discovery_projection_cluster.py --test discovery_projection",
+      "exit_code": 0,
+      "note": "19 passed against two real databases"
+    },
+    {
+      "command": "python3 backend/scripts/mcr/wp02_migration_ledger.py --report /tmp/proj-ledger.json",
+      "exit_code": 0,
+      "note": "profile head 17, concert head 91"
+    }
+  ],
+  "cases": [
+    {
+      "id": "PROJ-a",
+      "result": "PASS",
+      "note": "The writer populates the projection at all. discovery_projection.rs::the_writer_populates_the_projection \u2014 the projection is empty before the pass and contains the profile after it."
+    },
+    {
+      "id": "PROJ-b",
+      "result": "PASS",
+      "note": "A profile with no favorites is still projected as a profile. ::a_profile_with_no_favorites_is_still_projected \u2014 the discovery_profiles row exists with its nickname and bio and zero favorites; ::a_profile_with_no_favorites_claims_no_shared_interest \u2014 it is absent from another viewer's people list, so it never claims a shared interest."
+    },
+    {
+      "id": "PROJ-c",
+      "result": "PASS",
+      "note": "Deleted profiles disappear. ::a_deleted_profile_disappears_from_the_projection \u2014 after the source soft-deletes, the projection row and its favorites are gone and the profile is no longer discovered."
+    },
+    {
+      "id": "PROJ-d",
+      "result": "PASS",
+      "note": "Idempotent. ::the_writer_is_idempotent rewinds the watermark and replays: the same rows, no duplicates. ::applying_the_same_page_twice_is_a_no_op asserts the profile count is unchanged."
+    },
+    {
+      "id": "PROJ-e",
+      "result": "PASS",
+      "note": "No lost updates. ::an_update_after_a_pass_is_not_lost changes the favorites after the pass caught up and requires the later change in the projection. ::a_visibility_change_reaches_the_projection does the same for visibility."
+    },
+    {
+      "id": "PROJ-f",
+      "result": "PASS",
+      "note": "Concurrent writers converge. ::concurrent_writers_converge_without_losing_updates runs two writers at once and requires every subject present and no duplicate rows."
+    },
+    {
+      "id": "PROJ-g",
+      "result": "PASS",
+      "note": "The watermark names a real source row. ::the_watermark_advances_only_to_the_source_cursor."
+    },
+    {
+      "id": "PROJ-h",
+      "result": "PASS",
+      "note": "No fabricated data. ::an_absent_source_field_is_projected_absent (null bio, null interaction_style, null image) and ::a_favorite_without_a_catalog_row_is_not_fabricated (the profile is projected; the unlabelled favorite is dropped, not given an invented label)."
+    },
+    {
+      "id": "PROJ-i",
+      "result": "PASS",
+      "note": "A source failure leaves the projection untouched. ::a_source_failure_leaves_the_projection_untouched \u2014 an empty projection would be a fabricated fact."
+    },
+    {
+      "id": "PROJ-j",
+      "result": "PASS",
+      "note": "Blocks hide and restore. ::a_block_hides_and_unhides_the_profile, ::mirroring_a_block_twice_is_idempotent, ::a_block_batch_is_applied_idempotently."
+    },
+    {
+      "id": "PROJ-k",
+      "result": "PASS",
+      "note": "The no-score property survives. ::the_writer_adds_no_score_column walks information_schema for every discovery_* table; ::the_writer_bookkeeping_is_not_a_ranking asserts the run table names no profile. The unchanged tests/discovery.rs::the_response_contains_no_numeric_score_field still passes."
+    },
+    {
+      "id": "PROJ-l",
+      "result": "PASS",
+      "note": "A pass is bounded. ::a_pass_is_bounded."
+    }
+  ],
+  "artifacts": [
+    "docs/mcr/integration/discovery-projection.md",
+    "docs/mcr/integration/evidence/discovery-projection.md",
+    "docs/mcr/integration/evidence/discovery-projection-tests.txt"
+  ],
+  "limitations": [
+    "The block source is a port, not a wired consumer. blocks.rs turns a resolved BlockState into a projection row and is tested; resolving a FRIEND_RELATIONSHIP_CHANGED pair signal to that state through the relationship authority is the caller's job and is not wired into a running worker in this package.",
+    "The job is not scheduled by a running service. ProjectionWriter::run_pass is the unit of work and is fully tested; mounting it on a periodic worker in concert-service main is a composition step.",
+    "The gRPC source (GrpcDiscoverySource) is implemented and compiles but is not exercised by a live two-service test; the tests use the real profile-service query against the profile database through the DiscoverySource port, which is the same code path minus the transport."
+  ]
+}
