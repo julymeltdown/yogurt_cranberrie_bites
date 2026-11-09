@@ -133,6 +133,14 @@ impl LikeStore {
         Self { pool, visibility }
     }
 
+    /// The pool this store reads through.
+    ///
+    /// The producer needs it to build the one shared visibility policy that every
+    /// store receives, so the three cannot be given different ones.
+    pub fn pool(&self) -> &PgPool {
+        &self.pool
+    }
+
     /// Load the post facts the visibility decision needs.
     async fn facts(&self, intro_id: Uuid) -> Result<Option<PostFacts>, LikeError> {
         let row = sqlx::query(

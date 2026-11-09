@@ -107,6 +107,14 @@ impl CommentStore {
         Self { pool, visibility }
     }
 
+    /// The pool this store reads through.
+    ///
+    /// The producer needs it to build the one shared visibility policy that every
+    /// store receives, so the three cannot be given different ones.
+    pub fn pool(&self) -> &PgPool {
+        &self.pool
+    }
+
     /// Whether `viewer` may see `intro_id`, and the post facts if so.
     async fn visible(&self, intro_id: Uuid, viewer: Uuid) -> Result<Option<PostFacts>, CommentError> {
         let row = sqlx::query(

@@ -112,18 +112,16 @@ pub struct IntroProducer {
 }
 
 impl IntroProducer {
-    /// Build the stores over one pool.
-    ///
-    /// The visibility policy is WP-05's fail-closed default
-    /// (`VisibilityPolicy::deny_restricted`). WP-04's composition installs the
-    /// real policy through `IntroPostStore::with_visibility`; this constructor
-    /// deliberately does not, so the swap stays a single owned call site rather
-    /// than something a transport change could quietly pre-empt.
+    /// Build the stores over one pool, with the fail-closed policy.
     pub fn new(pool: sqlx::PgPool) -> Self {
         Self::with_cursor_key(pool, default_cursor_key())
     }
 
     /// Build the stores with an explicit cursor key.
+    ///
+    /// Every store starts on the fail-closed default. [`Self::with_claims`]
+    /// replaces it with the composed policy, which is the only path that can
+    /// admit a restricted post.
     pub fn with_cursor_key(pool: sqlx::PgPool, cursor_key: [u8; 32]) -> Self {
         Self {
             posts: Arc::new(IntroPostStore::new(pool.clone())),
@@ -134,15 +132,50 @@ impl IntroProducer {
         }
     }
 
-    /// Attach the claim port. Without it every restricted post fails closed,
-    /// because the scope's attributes are `Unavailable`.
+    /// Attach the claim port, and install the composed policy in **every** store.
+    ///
+    /// Without this the stores keep `DenyRestricted`, so a restricted post is
+    /// denied on the like, comment and command paths no matter what claim the
+    /// viewer holds — the detail and page reads would admit them while every
+    /// mutation refused. The policy is built once here and shared, so the three
+    /// stores cannot disagree, and it is the same `ComposedPolicy` the reads use.
     pub fn with_claims(mut self, claims: Arc<dyn IdentityClaimsPort>) -> Self {
-        self.claims = Some(claims);
+        self.claims = Some(claims.clone());
+        let policy = super::super::intro_posts::visibility::VisibilityPolicy::with(Arc::new(
+            super::super::intro_posts::visibility::ComposedPolicy::new(
+                claims,
+                Arc::new(super::super::intro_posts::facts::PgIntroFacts::new(
+                    self.posts.pool().clone(),
+                )),
+            ),
+        ));
+        self.posts = Arc::new(IntroPostStore::with_visibility(
+            self.posts.pool().clone(),
+            policy.clone(),
+        ));
+        self.likes = Arc::new(LikeStore::with_visibility(
+            self.likes.pool().clone(),
+            policy.clone(),
+        ));
+        self.comments = Arc::new(CommentStore::with_visibility(
+            self.comments.pool().clone(),
+            policy,
+        ));
         self
     }
 
     pub fn posts(&self) -> &Arc<IntroPostStore> {
         &self.posts
+    }
+
+    /// The like store, carrying whatever policy the producer was built with.
+    pub fn likes(&self) -> &Arc<LikeStore> {
+        &self.likes
+    }
+
+    /// The comment store, carrying whatever policy the producer was built with.
+    pub fn comments(&self) -> &Arc<CommentStore> {
+        &self.comments
     }
 
     /// Serve one intro request.
