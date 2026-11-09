@@ -268,34 +268,30 @@ pub async fn create_profile_post(
         .execute(&mut *tx)
         .await
         .map_err(store)?;
-    // Check every attachment before writing anything. The order of the checks is
-    // deliberate: ownership first, so a foreign id is `Unavailable` (404) and
-    // never reveals whether the asset exists or what its purpose is.
-    for media_id in &command.media_ids {
-        let row = sqlx::query(
-            "select owner_profile_id, purpose, state from public.profile_media where media_id=$1",
-        )
-        .bind(media_id)
-        .fetch_optional(&mut *tx)
+    // Every attachment is checked before anything is written. The row decoding
+    // is shared with the intro store, and the decision is the same pure rule the
+    // intro surface uses, parameterised by the purpose this surface accepts.
+    //
+    // The order of the checks is deliberate: ownership first, so a foreign id is
+    // `Unavailable` (404) and never reveals whether the asset exists or what its
+    // purpose is; the purpose is checked only once the asset is known to be the
+    // author's own.
+    let found = crate::profile_media::candidates_in(&mut tx, &command.media_ids)
         .await
         .map_err(store)?;
-        let Some(row) = row else {
+    for media_id in &command.media_ids {
+        let Some(candidate) = found.iter().find(|candidate| candidate.media_id == *media_id) else {
+            // Absent and unreadable are the same answer, exactly as a foreign id
+            // is: the caller cannot tell them apart.
             return Err(ProfilePostError::Unavailable);
         };
-        let owner: Uuid = row.try_get("owner_profile_id").map_err(decode)?;
-        if owner != author {
+        if candidate.owner_profile_id != author {
             return Err(ProfilePostError::Unavailable);
         }
-        let purpose = Purpose::parse(&row.try_get::<String, _>("purpose").map_err(decode)?)
-            .map_err(|_| ProfilePostError::AttachmentNotPublishable)?;
         // An INTRO_POST asset is rejected here, before the insert. The database
         // trigger refuses it too; this check exists so the refusal carries the
         // right status and so no post row is ever created for it.
-        if purpose != Purpose::ProfilePost {
-            return Err(ProfilePostError::AttachmentNotPublishable);
-        }
-        let state: String = row.try_get("state").map_err(decode)?;
-        if state != "READY" {
+        if candidate.purpose != Purpose::ProfilePost || !candidate.ready {
             return Err(ProfilePostError::AttachmentNotPublishable);
         }
     }
