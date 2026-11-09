@@ -33,6 +33,9 @@ pub use crate::domain::concert_identity::ConcertProfileReadError;
 pub struct ConcertProfileObservation<'a> {
     context: &'a ConcertAccessContext,
     user_id: Uuid,
+    /// The canonical profile id for this account, when the profile service
+    /// reported one. `None` means the account has no live profile identity.
+    profile_id: Option<Uuid>,
     display_name: String,
     bio: Option<String>,
     observed_at: DateTime<Utc>,
@@ -51,6 +54,15 @@ impl ConcertProfileObservation<'_> {
     pub fn user_id(&self) -> Result<Uuid, ConcertProfileReadError> {
         self.check()?;
         Ok(self.user_id)
+    }
+    /// The canonical profile id, or `None` when the account has no live profile.
+    ///
+    /// This is NOT the account id. A caller that addresses profile-owned tables
+    /// must treat `None` as a refusal and must never substitute
+    /// [`Self::user_id`].
+    pub fn profile_id(&self) -> Result<Option<Uuid>, ConcertProfileReadError> {
+        self.check()?;
+        Ok(self.profile_id)
     }
     pub fn display_name(&self) -> Result<&str, ConcertProfileReadError> {
         self.check()?;
@@ -170,10 +182,24 @@ impl GrpcProfileClient {
         let observed_at = DateTime::from_timestamp_micros(profile.observed_at_unix_micros)
             .filter(|value| (1..=9999).contains(&value.year()))
             .ok_or(ConcertProfileReadError::InvalidResponse)?;
+        // A profile id, when present, must be canonical and must not be the
+        // account id: the two are separate UUIDs, and a producer that echoed one
+        // for the other would send every profile-owned write to the wrong rows.
+        let profile_id = match profile.profile_id.as_deref() {
+            None => None,
+            Some(value) => {
+                let id = canonical_uuid(value).ok_or(ConcertProfileReadError::InvalidResponse)?;
+                if id == user_id {
+                    return Err(ConcertProfileReadError::InvalidResponse);
+                }
+                Some(id)
+            }
+        };
         access()?;
         let observation = ConcertProfileObservation {
             context,
             user_id,
+            profile_id,
             display_name: profile.display_name,
             bio,
             observed_at,

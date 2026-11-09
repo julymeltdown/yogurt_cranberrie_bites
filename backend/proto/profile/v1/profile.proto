@@ -36,6 +36,18 @@ message ConcertSelfProfile {
   string display_name = 2; // 1..40 Unicode scalars; nonblank, no controls.
   optional string bio = 3; // At most 160 scalars, no controls; empty maps to absent.
   int64 observed_at_unix_micros = 4; // Statement observation, not revision or TTL.
+  // The canonical profile id for this account (`profile_identities.profile_id`).
+  //
+  // The Auth account id in field 1 and the profile id are different UUIDs. Every
+  // profile-owned table in the concert service (`profile_posts`,
+  // `profile_media`, `profile_rooms`, `profile_avatars`, `intro_posts`) is keyed
+  // by the profile id, so a caller that has only the account id cannot address
+  // them. The profile service owns this mapping, so it is resolved here rather
+  // than guessed or projected elsewhere.
+  //
+  // Absent when the account has no live profile identity. A caller that needs it
+  // must fail closed; it must never substitute the account id.
+  optional string profile_id = 5;
 }
 
 message ReadConcertSelfProfileResponse {

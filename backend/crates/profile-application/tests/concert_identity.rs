@@ -18,6 +18,7 @@ fn observation() -> DateTime<Utc> {
 fn row() -> ConcertProfileRecord {
     ConcertProfileRecord {
         user_id: user(),
+        profile_id: Some(Uuid::from_u128(0x123456)),
         nickname: "  Mira  ".into(),
         bio: "Private self bio".into(),
         observed_at: observation(),
