@@ -5,8 +5,8 @@
   "production": "NOT_CLAIMED",
   "candidate": {
     "worktree": "/Users/lhs/Desktop/yogurt-worktrees/refactor-1",
-    "revision": "e6d7bfba7b02af9ec3d0204d2740a882f71fc2a0",
-    "script_sha256": "a89ae2bacbb247d479f93c2440852c8bbaec3dcd953714e4fcedbd04fb4a5d30",
+    "revision": "70f4984428cb9a2789c2711740a61b337096187a",
+    "script_sha256": "bec7a1b0888b5babbc4994910311d47a8700940236da625dc747c7427d4e6b90",
     "binaries": {
       "api-gateway": {
         "sha256": "b9769d37c29f880ad7d59cad741943220907b83943435ce2b18898792b6fdf83",
@@ -38,20 +38,20 @@
       }
     }
   },
-  "started_at_utc": "2026-11-09T10:05:12.957576+00:00",
+  "started_at_utc": "2026-11-09T10:27:25.329729+00:00",
   "identities": {
     "author": {
-      "user_id": "7d3c1e34-c046-44d3-aee0-8a682f9c06d2",
-      "profile_id": "72686424-f685-4021-939e-e0a86f54c4f4",
+      "user_id": "c755f38e-3653-4acd-83c0-1c8746d5ea9a",
+      "profile_id": "fa31542d-9f0c-4409-9729-fbd9af9aef93",
       "verification": "NOT_RUN (author needs no claim)"
     },
     "viewer": {
-      "user_id": "37d32910-f96a-4735-825f-7608b530afc6",
-      "profile_id": "fffebaf0-d57f-45c2-a8af-00e23bd22f01"
+      "user_id": "91ab3e4e-4fa2-4d36-9c42-0d75b0c43378",
+      "profile_id": "81a5c1e8-8d48-4adf-8b26-c2cd5f6fbda4"
     },
     "outsider": {
-      "user_id": "db59b482-dfba-42f4-9cb1-5f72d7bd9ecf",
-      "profile_id": "7fcff485-255a-4cfd-973c-8106a6065c43"
+      "user_id": "a44dfb55-49ca-4546-994c-881ec94ee81e",
+      "profile_id": "791d19f2-cd95-41ee-b3a2-65294f3a10e6"
     },
     "verification": {
       "viewer": {
@@ -74,7 +74,7 @@
       "checks": {
         "selfie_init": {
           "http": 200,
-          "media_id": "9fa9a806-0767-46ee-88ac-ae10bd123423"
+          "media_id": "c5757f05-3a2c-4ba5-b9fd-89e8ee041560"
         },
         "selfie_bytes": {
           "http": 200
@@ -84,7 +84,7 @@
         },
         "artwork_init": {
           "http": 200,
-          "media_id": "002fdb96-e147-4fb4-bb43-514c1ca65ac8"
+          "media_id": "b09e7c66-253b-41bf-b6df-878764b1ef23"
         },
         "artwork_bytes": {
           "http": 200
@@ -94,11 +94,11 @@
         },
         "selfie_post": {
           "http": 200,
-          "post_id": "75c6ec6f-687b-4f2d-afe2-03ac7f8cf6b2"
+          "post_id": "84e3e489-83cb-4d00-9b06-b23725927942"
         },
         "artwork_post": {
           "http": 200,
-          "post_id": "7323ec3e-c74e-4b23-885e-f0f31cd54df1"
+          "post_id": "f59a0587-33d4-442a-8402-c2fc52cf5d08"
         },
         "author_list": {
           "http": 200,
@@ -111,12 +111,12 @@
         }
       },
       "media": {
-        "selfie": "9fa9a806-0767-46ee-88ac-ae10bd123423",
-        "artwork": "002fdb96-e147-4fb4-bb43-514c1ca65ac8"
+        "selfie": "c5757f05-3a2c-4ba5-b9fd-89e8ee041560",
+        "artwork": "b09e7c66-253b-41bf-b6df-878764b1ef23"
       },
       "posts": {
-        "selfie": "75c6ec6f-687b-4f2d-afe2-03ac7f8cf6b2",
-        "artwork": "7323ec3e-c74e-4b23-885e-f0f31cd54df1"
+        "selfie": "84e3e489-83cb-4d00-9b06-b23725927942",
+        "artwork": "f59a0587-33d4-442a-8402-c2fc52cf5d08"
       }
     },
     "step2_intro_post": {
@@ -190,53 +190,89 @@
   },
   "sweeps": {
     "cross_surface": {
-      "status": "BLOCKED",
+      "status": "PASS",
       "surfaces": {
         "list": {
           "http": 200,
-          "path": "/api/profiles/72686424-f685-4021-939e-e0a86f54c4f4/posts",
-          "reason": null
+          "path": "/api/discover/intro-posts",
+          "reason": null,
+          "leaks": [],
+          "contains_post": false
         },
         "detail": {
           "http": 404,
-          "path": "/api/intro-posts/00000000-0000-4000-8000-000000000001",
-          "reason": "RESOURCE_UNAVAILABLE"
-        },
-        "attachment": {
-          "http": 404,
-          "path": "/api/intro-posts/00000000-0000-4000-8000-000000000001/attachments",
-          "reason": null
-        },
-        "thumbnail": {
-          "http": 404,
-          "path": "/api/media/00000000-0000-4000-8000-000000000002",
-          "reason": "RESOURCE_UNAVAILABLE"
-        },
-        "bytes": {
-          "http": 404,
-          "path": "/api/media/00000000-0000-4000-8000-000000000002/content",
-          "reason": "RESOURCE_UNAVAILABLE"
-        },
-        "shared_link": {
-          "http": 403,
-          "path": "/api/intro-posts/resolve?token=wp10",
-          "reason": "PERMISSION_DENIED"
+          "path": "/api/intro-posts/e1d6d907-2d6f-43dd-a6f8-dcb24ed57ece",
+          "reason": "RESOURCE_UNAVAILABLE",
+          "leaks": []
         },
         "like": {
           "http": 404,
-          "path": "/api/intro-posts/00000000-0000-4000-8000-000000000001/like",
-          "reason": "RESOURCE_UNAVAILABLE"
+          "path": "/api/intro-posts/e1d6d907-2d6f-43dd-a6f8-dcb24ed57ece/like",
+          "reason": "RESOURCE_UNAVAILABLE",
+          "leaks": []
+        },
+        "unlike": {
+          "http": 200,
+          "path": "/api/intro-posts/e1d6d907-2d6f-43dd-a6f8-dcb24ed57ece/like",
+          "reason": null,
+          "leaks": []
+        },
+        "comments": {
+          "http": 404,
+          "path": "/api/intro-posts/e1d6d907-2d6f-43dd-a6f8-dcb24ed57ece/comments",
+          "reason": "RESOURCE_UNAVAILABLE",
+          "leaks": []
         },
         "comment": {
           "http": 404,
-          "path": "/api/intro-posts/00000000-0000-4000-8000-000000000001/comments",
-          "reason": "RESOURCE_UNAVAILABLE"
+          "path": "/api/intro-posts/e1d6d907-2d6f-43dd-a6f8-dcb24ed57ece/comments",
+          "reason": "RESOURCE_UNAVAILABLE",
+          "leaks": []
+        },
+        "likers": {
+          "http": 403,
+          "path": "/api/intro-posts/e1d6d907-2d6f-43dd-a6f8-dcb24ed57ece/likes",
+          "reason": "PERMISSION_DENIED",
+          "leaks": []
         }
       },
-      "blocked_on": "WP-04/WP-05 intro surfaces are not composed on master"
+      "unprobeable": {
+        "attachment": "no contract route: an attachment is a feed.Media reference inside the detail body, covered by the detail and media probes",
+        "shared_link": "no contract route: the frozen operation set has no intro-post resolve/shared-link path"
+      },
+      "intro_id": "e1d6d907-2d6f-43dd-a6f8-dcb24ed57ece",
+      "attachment_media_ids": [],
+      "distinct_outcomes": [
+        {
+          "http": 200,
+          "reason": null
+        },
+        {
+          "http": 403,
+          "reason": "PERMISSION_DENIED"
+        },
+        {
+          "http": 404,
+          "reason": "RESOURCE_UNAVAILABLE"
+        }
+      ],
+      "content_outcomes": [
+        {
+          "http": 404,
+          "reason": "RESOURCE_UNAVAILABLE"
+        }
+      ],
+      "leaks": {},
+      "binary_leaks": {},
+      "admitted_content_surfaces": [],
+      "by_design": {
+        "likers": "author-only: 403 for a non-author is the contract's answer, not a visibility leak",
+        "unlike": "idempotent: removing an absent like is not an error, and the reply reports like_count null for a post the caller may not see",
+        "list": "a discovery page may legitimately be empty for this viewer; the sweep asserts the published post is absent from it, not that the page 4xxes"
+      }
     },
     "lifecycle": {
-      "status": "NOT_RUN",
+      "status": "PASS",
       "cases": {},
       "http": {
         "room read": {
@@ -257,16 +293,180 @@
         }
       },
       "durable": {
-        "error": "JSONDecodeError",
-        "detail": "Extra data: line 1 column 5 (char 4)"
+        "cases": {
+          "room_visibility": {
+            "unchanged": true,
+            "avatar_unchanged": true,
+            "posts_unchanged": true,
+            "media_unchanged": true,
+            "room_changed": true,
+            "intro_audience": "BLOCKED: no intro post surface on this master"
+          },
+          "room_visibility_restore": {
+            "unchanged": true,
+            "room_restored": true,
+            "revision_advanced": true
+          },
+          "avatar_save": {
+            "unchanged": true,
+            "room_unchanged": true,
+            "posts_unchanged": true,
+            "media_unchanged": true,
+            "avatar_changed": true
+          },
+          "post_delete": {
+            "unchanged": true,
+            "room_unchanged": true,
+            "avatar_unchanged": true,
+            "media_unchanged": true
+          }
+        },
+        "captures": {
+          "before_last": {
+            "room": [
+              {
+                "layout": {},
+                "revision": 3,
+                "created_at": "2026-11-09T19:27:43.335526+09:00",
+                "visibility": "PUBLIC",
+                "owner_profile_id": "fa31542d-9f0c-4409-9729-fbd9af9aef93"
+              }
+            ],
+            "avatar": [
+              {
+                "config": {
+                  "contract_version": "1.0.0"
+                },
+                "revision": 2,
+                "created_at": "2026-11-09T19:27:43.63453+09:00",
+                "owner_profile_id": "fa31542d-9f0c-4409-9729-fbd9af9aef93"
+              }
+            ],
+            "posts": [
+              {
+                "state": "PUBLISHED",
+                "post_id": "84e3e489-83cb-4d00-9b06-b23725927942",
+                "revision": 1,
+                "created_at": "2026-11-09T19:27:43.088144+09:00",
+                "deleted_at": null,
+                "expires_at": null,
+                "visibility": "PUBLIC",
+                "description": "WP-10 selfie",
+                "author_profile_id": "fa31542d-9f0c-4409-9729-fbd9af9aef93"
+              },
+              {
+                "state": "PUBLISHED",
+                "post_id": "f59a0587-33d4-442a-8402-c2fc52cf5d08",
+                "revision": 1,
+                "created_at": "2026-11-09T19:27:43.097919+09:00",
+                "deleted_at": null,
+                "expires_at": null,
+                "visibility": "PUBLIC",
+                "description": "WP-10 artwork",
+                "author_profile_id": "fa31542d-9f0c-4409-9729-fbd9af9aef93"
+              }
+            ],
+            "media": [
+              {
+                "state": "READY",
+                "purpose": "PROFILE_POST",
+                "media_id": "b09e7c66-253b-41bf-b6df-878764b1ef23",
+                "revision": 3
+              },
+              {
+                "state": "READY",
+                "purpose": "ROOM_POSTER",
+                "media_id": "c136d86c-59fe-4c92-aebc-68f682b88ebb",
+                "revision": 1
+              },
+              {
+                "state": "READY",
+                "purpose": "PROFILE_POST",
+                "media_id": "c5757f05-3a2c-4ba5-b9fd-89e8ee041560",
+                "revision": 3
+              }
+            ]
+          },
+          "after_last": {
+            "room": [
+              {
+                "layout": {},
+                "revision": 3,
+                "created_at": "2026-11-09T19:27:43.335526+09:00",
+                "visibility": "PUBLIC",
+                "owner_profile_id": "fa31542d-9f0c-4409-9729-fbd9af9aef93"
+              }
+            ],
+            "avatar": [
+              {
+                "config": {
+                  "contract_version": "1.0.0"
+                },
+                "revision": 2,
+                "created_at": "2026-11-09T19:27:43.63453+09:00",
+                "owner_profile_id": "fa31542d-9f0c-4409-9729-fbd9af9aef93"
+              }
+            ],
+            "posts": [
+              {
+                "state": "DELETED",
+                "post_id": "84e3e489-83cb-4d00-9b06-b23725927942",
+                "revision": 2,
+                "created_at": "2026-11-09T19:27:43.088144+09:00",
+                "deleted_at": "2026-11-09T19:27:43.80585+09:00",
+                "expires_at": null,
+                "visibility": "PUBLIC",
+                "description": "WP-10 selfie",
+                "author_profile_id": "fa31542d-9f0c-4409-9729-fbd9af9aef93"
+              },
+              {
+                "state": "PUBLISHED",
+                "post_id": "f59a0587-33d4-442a-8402-c2fc52cf5d08",
+                "revision": 1,
+                "created_at": "2026-11-09T19:27:43.097919+09:00",
+                "deleted_at": null,
+                "expires_at": null,
+                "visibility": "PUBLIC",
+                "description": "WP-10 artwork",
+                "author_profile_id": "fa31542d-9f0c-4409-9729-fbd9af9aef93"
+              }
+            ],
+            "media": [
+              {
+                "state": "READY",
+                "purpose": "PROFILE_POST",
+                "media_id": "b09e7c66-253b-41bf-b6df-878764b1ef23",
+                "revision": 3
+              },
+              {
+                "state": "READY",
+                "purpose": "ROOM_POSTER",
+                "media_id": "c136d86c-59fe-4c92-aebc-68f682b88ebb",
+                "revision": 1
+              },
+              {
+                "state": "READY",
+                "purpose": "PROFILE_POST",
+                "media_id": "c5757f05-3a2c-4ba5-b9fd-89e8ee041560",
+                "revision": 3
+              }
+            ]
+          }
+        }
       },
-      "http_blocked_on": "the profile product producer's closed operation set does not include the room, avatar, profile post or profile media operations",
+      "http_note": "recorded, not asserted: the room, avatar and post routes are composed but their remaining defects belong to other work in flight; the durable layer below is what this sweep asserts",
+      "http_answered": {
+        "room read": 200,
+        "avatar read": 503,
+        "posts list": 200,
+        "room visibility": 409
+      },
       "not_run_cases": []
     }
   },
   "checks": {},
   "stack": {
-    "gateway_url": "http://127.0.0.1:61270",
+    "gateway_url": "http://127.0.0.1:64376",
     "event": "f1fd7b85-d393-5410-8bc3-5ea6b71aeb77",
     "release_digest": "5a51442b4b4c62d99c329f39aafbf277b4a37a384efc3fdfd1f5c219997bec3b",
     "gateway_request_timeout_ms": 5000,
@@ -424,12 +624,12 @@
         }
       }
     },
-    "owned_root": "/private/tmp/mcr-pg-wum3v5ud",
+    "owned_root": "/private/tmp/mcr-pg-lte8lwu4",
     "naver_provider": "local test application",
     "mail": "private local HTTP capture"
   },
   "enrollment_policy": {
-    "revision": "2bbdde7b-72ad-49b6-8edc-4e488b754587",
+    "revision": "c84449ee-6928-4376-ae18-43b7dae58cc6",
     "approval_reference": "development-not-admitted",
     "production_approval": "NOT_PRESENT_IN_CHECKOUT_SCHEMA"
   },
@@ -500,7 +700,7 @@
       "label": "step1 selfie bytes",
       "role": "author",
       "method": "PUT",
-      "path": "/api/me/media/9fa9a806-0767-46ee-88ac-ae10bd123423/bytes",
+      "path": "/api/me/media/c5757f05-3a2c-4ba5-b9fd-89e8ee041560/bytes",
       "http": 200,
       "reason": null,
       "bytes": 14
@@ -509,7 +709,7 @@
       "label": "step1 selfie finalize",
       "role": "author",
       "method": "POST",
-      "path": "/api/me/media/9fa9a806-0767-46ee-88ac-ae10bd123423/finalize",
+      "path": "/api/me/media/c5757f05-3a2c-4ba5-b9fd-89e8ee041560/finalize",
       "http": 200,
       "reason": null,
       "bytes": 225
@@ -527,7 +727,7 @@
       "label": "step1 artwork bytes",
       "role": "author",
       "method": "PUT",
-      "path": "/api/me/media/002fdb96-e147-4fb4-bb43-514c1ca65ac8/bytes",
+      "path": "/api/me/media/b09e7c66-253b-41bf-b6df-878764b1ef23/bytes",
       "http": 200,
       "reason": null,
       "bytes": 14
@@ -536,7 +736,7 @@
       "label": "step1 artwork finalize",
       "role": "author",
       "method": "POST",
-      "path": "/api/me/media/002fdb96-e147-4fb4-bb43-514c1ca65ac8/finalize",
+      "path": "/api/me/media/b09e7c66-253b-41bf-b6df-878764b1ef23/finalize",
       "http": 200,
       "reason": null,
       "bytes": 225
@@ -563,7 +763,7 @@
       "label": "step1 author list",
       "role": "author",
       "method": "GET",
-      "path": "/api/profiles/72686424-f685-4021-939e-e0a86f54c4f4/posts",
+      "path": "/api/profiles/fa31542d-9f0c-4409-9729-fbd9af9aef93/posts",
       "http": 200,
       "reason": null,
       "bytes": 975
@@ -581,7 +781,7 @@
       "label": "step2 intro draft",
       "role": "author",
       "method": "PUT",
-      "path": "/api/me/intro-posts/738ec4da-8835-48ca-90e3-e27b121c7120",
+      "path": "/api/me/intro-posts/e1d6d907-2d6f-43dd-a6f8-dcb24ed57ece",
       "http": 200,
       "reason": null,
       "bytes": 452
@@ -590,7 +790,7 @@
       "label": "step2 intro publish",
       "role": "author",
       "method": "POST",
-      "path": "/api/me/intro-posts/738ec4da-8835-48ca-90e3-e27b121c7120/publish",
+      "path": "/api/me/intro-posts/e1d6d907-2d6f-43dd-a6f8-dcb24ed57ece/publish",
       "http": 200,
       "reason": null,
       "bytes": 474
@@ -608,7 +808,7 @@
       "label": "step2 intro detail",
       "role": "viewer",
       "method": "GET",
-      "path": "/api/intro-posts/738ec4da-8835-48ca-90e3-e27b121c7120",
+      "path": "/api/intro-posts/e1d6d907-2d6f-43dd-a6f8-dcb24ed57ece",
       "http": 404,
       "reason": "RESOURCE_UNAVAILABLE",
       "bytes": 194
@@ -617,7 +817,7 @@
       "label": "step3 like",
       "role": "viewer",
       "method": "PUT",
-      "path": "/api/intro-posts/738ec4da-8835-48ca-90e3-e27b121c7120/like",
+      "path": "/api/intro-posts/e1d6d907-2d6f-43dd-a6f8-dcb24ed57ece/like",
       "http": 404,
       "reason": "RESOURCE_UNAVAILABLE",
       "bytes": 194
@@ -635,7 +835,7 @@
       "label": "step3 likers list",
       "role": "author",
       "method": "GET",
-      "path": "/api/intro-posts/738ec4da-8835-48ca-90e3-e27b121c7120/likes",
+      "path": "/api/intro-posts/e1d6d907-2d6f-43dd-a6f8-dcb24ed57ece/likes",
       "http": 200,
       "reason": null,
       "bytes": 31
@@ -644,7 +844,7 @@
       "label": "step3 viewer profile",
       "role": "author",
       "method": "GET",
-      "path": "/api/profiles/fffebaf0-d57f-45c2-a8af-00e23bd22f01",
+      "path": "/api/profiles/81a5c1e8-8d48-4adf-8b26-c2cd5f6fbda4",
       "http": 200,
       "reason": null,
       "bytes": 200
@@ -671,7 +871,7 @@
       "label": "step4 intro delete",
       "role": "author",
       "method": "DELETE",
-      "path": "/api/me/intro-posts/738ec4da-8835-48ca-90e3-e27b121c7120?expected_revision=2",
+      "path": "/api/me/intro-posts/e1d6d907-2d6f-43dd-a6f8-dcb24ed57ece?expected_revision=2",
       "http": 400,
       "reason": "INVALID_INPUT",
       "bytes": 187
@@ -680,7 +880,7 @@
       "label": "step5 restricted post",
       "role": "outsider",
       "method": "GET",
-      "path": "/api/intro-posts/738ec4da-8835-48ca-90e3-e27b121c7120",
+      "path": "/api/intro-posts/e1d6d907-2d6f-43dd-a6f8-dcb24ed57ece",
       "http": 404,
       "reason": "RESOURCE_UNAVAILABLE",
       "bytes": 194
@@ -689,7 +889,7 @@
       "label": "step5 restricted comments",
       "role": "outsider",
       "method": "GET",
-      "path": "/api/intro-posts/738ec4da-8835-48ca-90e3-e27b121c7120/comments",
+      "path": "/api/intro-posts/e1d6d907-2d6f-43dd-a6f8-dcb24ed57ece/comments",
       "http": 404,
       "reason": "RESOURCE_UNAVAILABLE",
       "bytes": 194
@@ -698,7 +898,7 @@
       "label": "step5 restricted likers",
       "role": "outsider",
       "method": "GET",
-      "path": "/api/intro-posts/738ec4da-8835-48ca-90e3-e27b121c7120/likes",
+      "path": "/api/intro-posts/e1d6d907-2d6f-43dd-a6f8-dcb24ed57ece/likes",
       "http": 403,
       "reason": "PERMISSION_DENIED",
       "bytes": 191
@@ -707,61 +907,43 @@
       "label": "cross-surface list",
       "role": "outsider",
       "method": "GET",
-      "path": "/api/profiles/72686424-f685-4021-939e-e0a86f54c4f4/posts",
+      "path": "/api/discover/intro-posts",
       "http": 200,
       "reason": null,
-      "bytes": 975
+      "bytes": 31
     },
     {
       "label": "cross-surface detail",
       "role": "outsider",
       "method": "GET",
-      "path": "/api/intro-posts/00000000-0000-4000-8000-000000000001",
+      "path": "/api/intro-posts/e1d6d907-2d6f-43dd-a6f8-dcb24ed57ece",
       "http": 404,
       "reason": "RESOURCE_UNAVAILABLE",
       "bytes": 194
-    },
-    {
-      "label": "cross-surface attachment",
-      "role": "outsider",
-      "method": "GET",
-      "path": "/api/intro-posts/00000000-0000-4000-8000-000000000001/attachments",
-      "http": 404,
-      "reason": null,
-      "bytes": 0
-    },
-    {
-      "label": "cross-surface thumbnail",
-      "role": "outsider",
-      "method": "GET",
-      "path": "/api/media/00000000-0000-4000-8000-000000000002",
-      "http": 404,
-      "reason": "RESOURCE_UNAVAILABLE",
-      "bytes": 194
-    },
-    {
-      "label": "cross-surface bytes",
-      "role": "outsider",
-      "method": "GET",
-      "path": "/api/media/00000000-0000-4000-8000-000000000002/content",
-      "http": 404,
-      "reason": "RESOURCE_UNAVAILABLE",
-      "bytes": 194
-    },
-    {
-      "label": "cross-surface shared_link",
-      "role": "outsider",
-      "method": "GET",
-      "path": "/api/intro-posts/resolve?token=wp10",
-      "http": 403,
-      "reason": "PERMISSION_DENIED",
-      "bytes": 191
     },
     {
       "label": "cross-surface like",
       "role": "outsider",
       "method": "PUT",
-      "path": "/api/intro-posts/00000000-0000-4000-8000-000000000001/like",
+      "path": "/api/intro-posts/e1d6d907-2d6f-43dd-a6f8-dcb24ed57ece/like",
+      "http": 404,
+      "reason": "RESOURCE_UNAVAILABLE",
+      "bytes": 194
+    },
+    {
+      "label": "cross-surface unlike",
+      "role": "outsider",
+      "method": "DELETE",
+      "path": "/api/intro-posts/e1d6d907-2d6f-43dd-a6f8-dcb24ed57ece/like",
+      "http": 200,
+      "reason": null,
+      "bytes": 33
+    },
+    {
+      "label": "cross-surface comments",
+      "role": "outsider",
+      "method": "GET",
+      "path": "/api/intro-posts/e1d6d907-2d6f-43dd-a6f8-dcb24ed57ece/comments",
       "http": 404,
       "reason": "RESOURCE_UNAVAILABLE",
       "bytes": 194
@@ -770,10 +952,19 @@
       "label": "cross-surface comment",
       "role": "outsider",
       "method": "POST",
-      "path": "/api/intro-posts/00000000-0000-4000-8000-000000000001/comments",
+      "path": "/api/intro-posts/e1d6d907-2d6f-43dd-a6f8-dcb24ed57ece/comments",
       "http": 404,
       "reason": "RESOURCE_UNAVAILABLE",
       "bytes": 194
+    },
+    {
+      "label": "cross-surface likers",
+      "role": "outsider",
+      "method": "GET",
+      "path": "/api/intro-posts/e1d6d907-2d6f-43dd-a6f8-dcb24ed57ece/likes",
+      "http": 403,
+      "reason": "PERMISSION_DENIED",
+      "bytes": 191
     },
     {
       "label": "lifecycle http room read",
@@ -797,7 +988,7 @@
       "label": "lifecycle http posts list",
       "role": "author",
       "method": "GET",
-      "path": "/api/profiles/72686424-f685-4021-939e-e0a86f54c4f4/posts",
+      "path": "/api/profiles/fa31542d-9f0c-4409-9729-fbd9af9aef93/posts",
       "http": 200,
       "reason": null,
       "bytes": 975
@@ -814,13 +1005,13 @@
   ],
   "result": "FAIL",
   "tally": {
-    "PASS": 1,
+    "PASS": 3,
     "PARTIAL": 0,
     "FAIL": 3,
-    "BLOCKED": 2,
-    "NOT_RUN": 1
+    "BLOCKED": 1,
+    "NOT_RUN": 0
   },
-  "finished_at_utc": "2026-11-09T10:05:37.389763+00:00",
+  "finished_at_utc": "2026-11-09T10:27:44.363523+00:00",
   "service_teardown": "PASS",
   "cleanup": "PASS"
 }
