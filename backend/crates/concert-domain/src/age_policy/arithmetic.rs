@@ -27,6 +27,22 @@ pub struct ExactAgeClaim {
 }
 
 impl ExactAgeClaim {
+    /// The stored pair, as the claim store records it.
+    ///
+    /// Used by the visibility SQL predicate's reconstruction of a scope and by
+    /// the claim adapter, which receives the pair from the profile service. The
+    /// range is the arithmetic module's own supported window, so a pair that
+    /// could not have come from `derive_exact_age_claim` is refused.
+    pub fn from_parts(age_at_verification: i16, next_birthday_at: SeoulDate) -> Option<Self> {
+        if !(MIN_SUPPORTED_AGE..=MAX_SUPPORTED_AGE).contains(&i32::from(age_at_verification)) {
+            return None;
+        }
+        Some(Self {
+            age_at_verification: u8::try_from(age_at_verification).ok()?,
+            next_birthday_at: next_birthday_at.as_naive_date(),
+        })
+    }
+
     pub const fn age_at_verification(self) -> u8 {
         self.age_at_verification
     }
