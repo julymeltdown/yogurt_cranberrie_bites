@@ -5,7 +5,7 @@ updated as work lands; it is the single place to read current progress.
 
 | Field | Value |
 | --- | --- |
-| Snapshot | 2026-11-09 09:55 Asia/Seoul |
+| Snapshot | 2026-11-09 12:40 Asia/Seoul |
 | Delivery branch | `julymeltdown/yogurt_cranberrie_bites` `master` |
 | Head at snapshot | `588a8a0a9` |
 | Task register | 110 tasks in [task-breakdown.md](task-breakdown.md) |
@@ -97,10 +97,12 @@ Each row is a product element, its state, and the evidence that supports it.
 | Like removal returns null count when access lost | Integrated | `intro_likes` |
 | Author-only liker list | Integrated | `intro_likes` |
 | `INTRO_LIKED` notification with dedupe | Integrated | `0087_intro_like_notifications` |
-| Intro routes on the profile transport | Integrated | `intro_routes` |
+| Intro operation parser (13 operations, closed) | Integrated | `intro_routes` |
+| Intro mutation stores (draft, publish, delete, like, comment) | Integrated | `intro_post_commands`, `intro_likes`, `intro_comments` |
 | Composer, audience fields, heart button, likers panel, activity feed | Integrated | `src/features/intros` — 171 tests |
 | **Real `can_view_intro` wired into likes and reads** | **Not wired** | WP-05 wired a fail-closed `DenyRestricted` port; the real policy lands with WP-04 |
-| **Intro list/detail HTTP routes registered** | **Not registered** | The producer parses them; no gateway route is mounted |
+| **Intro operations served over HTTP** | **Not served** | The parser is reached only by its own test; no transport dispatches to it |
+| **`listIntroPosts` / `getIntroPost` queries** | **Do not exist** | `IntroPostStore` has `read_own` only; there is no visibility-filtered list or detail query |
 
 ### 2.5 Photographs and artwork
 
@@ -172,7 +174,7 @@ Each row is a product element, its state, and the evidence that supports it.
 | --- | --- | --- |
 | V-01 | Age boundary 18/29 allowed, 17/30 denied | Not run (WP-04) |
 | V-02 | Unknown, expired, revoked attributes fail closed | Not run (WP-04) |
-| V-03 | One decision across every surface | Blocked at the gate |
+| V-03 | One decision across every surface | Blocked — the intro read queries do not exist |
 | V-04 | Like removal discloses nothing | Integrated (unit) |
 | V-05 | Idempotent likes, one notification | Integrated (unit) |
 | V-06 | Attachment isolation | Integrated (unit) |
