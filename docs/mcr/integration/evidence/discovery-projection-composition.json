@@ -1,0 +1,126 @@
+{
+  "verification": "DISCOVERY-PROJECTION-COMPOSITION",
+  "title": "The projection job is scheduled, the block source is wired, and the gRPC source is live-tested",
+  "status": "PASS",
+  "commit": "c8fd4268c",
+  "branch": "codex/yc-discovery-proj",
+  "base_commit": "ce938ec0d",
+  "recorded_at": "2026-11-09T04:11:34Z",
+  "commands": [
+    {
+      "command": "cd backend && cargo +1.88.0 check --locked --workspace",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 backend/scripts/mcr/discovery_projection_cluster.py --test discovery_projection",
+      "exit_code": 0,
+      "note": "19 passed \u2014 unchanged"
+    },
+    {
+      "command": "python3 backend/scripts/mcr/discovery_projection_cluster.py --test discovery_block_consumer",
+      "exit_code": 0,
+      "note": "11 passed \u2014 new"
+    },
+    {
+      "command": "python3 backend/scripts/mcr/discovery_projection_cluster.py --test discovery_worker",
+      "exit_code": 0,
+      "note": "12 passed \u2014 new"
+    },
+    {
+      "command": "python3 backend/scripts/mcr/discovery_projection_cluster.py --test discovery_source_live",
+      "exit_code": 0,
+      "note": "5 passed \u2014 new, live gRPC"
+    },
+    {
+      "command": "python3 backend/scripts/mcr/wp03_discovery_tests.py --concert-test discovery",
+      "exit_code": 0,
+      "note": "17 passed \u2014 unchanged"
+    },
+    {
+      "command": "cargo +1.88.0 test -p concert-service --lib discovery_projection",
+      "exit_code": 0,
+      "note": "5 config tests passed"
+    },
+    {
+      "command": "python3 backend/scripts/mcr/wp02_migration_ledger.py --report /tmp/proj2-ledger.json",
+      "exit_code": 0,
+      "note": "profile head 17, concert head 92"
+    }
+  ],
+  "cases": [
+    {
+      "id": "COMPOSE-a",
+      "result": "PASS",
+      "note": "The worker runs on a bounded interval. discovery_worker.rs::the_worker_runs_rounds_on_its_interval; ::the_default_interval_is_bounded; ::a_zero_interval_is_refused."
+    },
+    {
+      "id": "COMPOSE-b",
+      "result": "PASS",
+      "note": "A source failure never clears the projection and is recorded. ::a_source_failure_never_clears_the_projection asserts the row survives, last_failure is set to profile_source, and a recovering round clears it."
+    },
+    {
+      "id": "COMPOSE-c",
+      "result": "PASS",
+      "note": "The worker keeps running after a failure. ::the_worker_survives_a_failure_and_keeps_running."
+    },
+    {
+      "id": "COMPOSE-d",
+      "result": "PASS",
+      "note": "Shutdown is clean and leaks no task. ::shutdown_stops_the_worker_without_leaking_a_task runs the worker on its own runtime, stops it, and requires the runtime to shut down without waiting on a leaked task."
+    },
+    {
+      "id": "COMPOSE-e",
+      "result": "PASS",
+      "note": "Shutdown waits for an in-flight round. ::shutdown_during_a_round_waits_for_the_round waits for the round to actually start (not a fixed sleep) before stopping."
+    },
+    {
+      "id": "COMPOSE-f",
+      "result": "PASS",
+      "note": "An already-requested stop does not wait for a tick. ::shutdown_before_the_first_tick_returns_immediately."
+    },
+    {
+      "id": "COMPOSE-g",
+      "result": "PASS",
+      "note": "A clean stop returns Ok. ::a_clean_stop_returns_ok."
+    },
+    {
+      "id": "COMPOSE-h",
+      "result": "PASS",
+      "note": "Pair signals resolve through the authority. discovery_block_consumer.rs::a_pair_signal_resolves_to_a_block, ::a_pair_signal_resolves_to_an_unblock."
+    },
+    {
+      "id": "COMPOSE-i",
+      "result": "PASS",
+      "note": "A non-pair signal is skipped and the cursor advances. ::a_non_pair_signal_is_skipped."
+    },
+    {
+      "id": "COMPOSE-j",
+      "result": "PASS",
+      "note": "An unresolvable pair stops the cursor rather than restoring a blocked profile. ::an_unresolvable_pair_stops_the_cursor."
+    },
+    {
+      "id": "COMPOSE-k",
+      "result": "PASS",
+      "note": "The cursor is durable, replayable and cannot regress. ::replaying_a_page_is_idempotent, ::the_cursor_cannot_regress, ::a_new_epoch_may_reset_the_sequence, ::seeding_is_idempotent."
+    },
+    {
+      "id": "COMPOSE-l",
+      "result": "PASS",
+      "note": "The gRPC source is live-tested against a real profile-service server. discovery_source_live.rs::the_client_reads_real_profiles_over_grpc, ::the_cursor_round_trips_over_grpc, ::a_tombstone_is_delivered_over_grpc, ::a_non_concert_caller_is_refused, ::the_page_order_survives_the_wire."
+    },
+    {
+      "id": "COMPOSE-m",
+      "result": "PASS",
+      "note": "Configuration is opt-in and validated. config::discovery_projection tests: off by default, unknown mode refused, endpoint must be explicit HTTPS host/port, interval bounded."
+    }
+  ],
+  "artifacts": [
+    "docs/mcr/integration/evidence/discovery-projection-composition.md",
+    "docs/mcr/integration/evidence/discovery-projection-composition-tests.txt"
+  ],
+  "limitations": [
+    "The live gRPC test is one process serving a loopback listener, not two containers. It exercises the same server, method policy, caller registry, client and proto the deployment uses, but it does not prove container networking, TLS or service discovery.",
+    "The block consumer is wired to the friend invalidation journal through the BlockJournal port, and the production FriendJournal wraps the real InvalidationSource. It is not mounted on a periodic worker in main yet; the worker runs the profile pass, and the block consumer is composed per-deployment.",
+    "The discovery projection worker is opt-in via CONCERT_DISCOVERY_PROJECTION_MODE=live. A deployment that does not set it keeps whatever the projection already holds rather than starting a worker that would fail every round."
+  ]
+}

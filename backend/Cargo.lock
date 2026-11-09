@@ -767,11 +767,13 @@ dependencies = [
  "sha2",
  "sqlx",
  "tokio",
+ "tokio-stream",
  "tokio-tungstenite",
  "tonic",
  "tonic-prost",
  "tonic-prost-build",
  "tower",
+ "tracing",
  "uuid",
 ]
 

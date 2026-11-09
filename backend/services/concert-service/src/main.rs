@@ -525,6 +525,13 @@ async fn main() -> anyhow::Result<()> {
     let _application = config::build_application(pool.clone());
     let receipt_maintenance =
         concert_service::workers::receipts::ReceiptMaintenance::new(pool.clone());
+    // The discovery projection worker is opt-in. When it is off, discovery keeps
+    // whatever the projection already holds rather than starting a worker that
+    // would fail every round against an unconfigured endpoint.
+    let discovery_projection = config::discovery_projection::DiscoveryProjectionSettings::load()?;
+    // A dedicated handle for the discovery worker, so the closure below does not
+    // have to move the pool the serving listeners also use.
+    let discovery_pool = pool.clone();
     let health = health::router(health::readiness(pool.clone()));
     let listener = tokio::net::TcpListener::bind(config.metrics_addr)
         .await
@@ -827,9 +834,43 @@ async fn main() -> anyhow::Result<()> {
                 .await
                 .map_err(anyhow::Error::from)
         };
+        // The discovery projection worker. It is idle when unconfigured, so the
+        // composition has one shape either way. A round failure is logged and
+        // retried by the worker itself; it never stops the process, because a
+        // stale projection is better than a stopped concert service.
+        let discovery = async move {
+            match discovery_projection {
+                Some(settings) => {
+                    let endpoint = settings.endpoint().to_owned();
+                    let interval = settings.interval();
+                    let channel = tonic::transport::Channel::from_shared(endpoint)
+                        .map_err(|_| anyhow::anyhow!("Discovery source endpoint is invalid"))?
+                        .connect_lazy();
+                    let source = Arc::new(concert_service::discovery::GrpcDiscoverySource::new(
+                        concert_service::discovery::projection::proto::discovery_source_service_client::DiscoverySourceServiceClient::new(channel),
+                    ));
+                    let writer = Arc::new(concert_service::discovery::ProjectionWriter::new(
+                        discovery_pool,
+                        source,
+                    ));
+                    let worker = concert_service::discovery::ProjectionWorker::new(
+                        writer,
+                        None,
+                        interval,
+                        concert_service::discovery::ROUND_DEADLINE,
+                    )
+                    .map_err(|_| anyhow::anyhow!("Discovery projection worker configuration is invalid"))?;
+                    worker
+                        .run_until(platform::shutdown::global().cancelled())
+                        .await
+                        .map_err(anyhow::Error::from)
+                }
+                None => platform::shutdown::idle().await,
+            }
+        };
         // Each component requests shared shutdown on failure. Join rather than
         // dropping peer futures so native replay, membership and recovery drain.
-        let (http, grpc, readiness, world, recovery, children, social, receipts) = tokio::join!(
+        let (http, grpc, readiness, world, recovery, children, social, receipts, discovery) = tokio::join!(
             component("health", http, platform::shutdown::global()),
             component("gRPC", grpc, platform::shutdown::global()),
             component("World readiness", readiness, platform::shutdown::global()),
@@ -838,6 +879,7 @@ async fn main() -> anyhow::Result<()> {
             component("canonical child recovery", children, platform::shutdown::global()),
             component("Social delivery", social, platform::shutdown::global()),
             component("BE15 receipt maintenance", receipts, platform::shutdown::global()),
+            component("discovery projection", discovery, platform::shutdown::global()),
         );
         http?;
         grpc?;
@@ -847,6 +889,7 @@ async fn main() -> anyhow::Result<()> {
         children?;
         social?;
         receipts?;
+        discovery?;
         Ok(())
     })
     .await;

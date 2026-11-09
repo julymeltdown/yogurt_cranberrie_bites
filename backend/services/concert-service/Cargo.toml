@@ -30,6 +30,7 @@ tokio-tungstenite = "=0.24.0"
 tonic.workspace = true
 tonic-prost.workspace = true
 tower.workspace = true
+tracing.workspace = true
 uuid.workspace = true
 
 [build-dependencies]
@@ -46,3 +47,4 @@ auth-service = { path = "../auth-service" }
 friend-service = { path = "../friend-service" }
 tower.workspace = true
 http-body-util.workspace = true
+tokio-stream = { workspace = true, features = ["net"] }
