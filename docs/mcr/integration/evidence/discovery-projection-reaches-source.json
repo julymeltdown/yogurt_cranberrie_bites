@@ -2,7 +2,7 @@
   "verification": "DISCOVERY-PROJECTION-REACHES-SOURCE",
   "title": "The projection worker reaches the profile service over the real TLS edge",
   "status": "PASS",
-  "commit": "70f4984428cb9a2789c2711740a61b337096187a",
+  "commit": "10f24a34a",
   "branch": "codex/yc-discovery-proj",
   "base_commit": "70f498442",
   "recorded_at": "2026-11-09T10:30:36Z",
