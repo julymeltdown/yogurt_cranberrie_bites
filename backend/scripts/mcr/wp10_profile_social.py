@@ -350,6 +350,17 @@ class Gate:
                                            mapped["map_id"], mapped["map_revision"],
                                            avatar["manifest_id"], avatar["manifest_version"]]))
                 + ",true)")
+        # The browser shell requires a PUBLISHED NORMAL service policy before it
+        # opens the World; a missing publication reads as UNAVAILABLE and every
+        # screen renders the pre-world notice instead of its content. The
+        # migration seeds none by design, so the stack publishes one.
+        statements.append(
+            "INSERT INTO concert_event_service_policy(event_id,policy_revision,"
+            "event_revision,publication_state,mode,minimum_client_version,"
+            "published_at,expires_at,reason) VALUES("
+            + ",".join(map(sql_quote, [event, 1, 1, "PUBLISHED", "NORMAL", "1.0.0"]))
+            + ",clock_timestamp(),clock_timestamp()+interval '2 hours',"
+            + sql_quote("WP-10 integration gate") + ")")
         cluster.sql("mcr_concert", ";".join(statements))
         world_address = ports.address("concert-service:world")
         relationship, self_profile, decision, post_read, post_callback = world.joined.keys(cluster, 5)
@@ -442,6 +453,11 @@ class Gate:
         # variables the worker is off and `discovery_profiles` stays empty, which
         # is the defect this gate step exists to catch.
         envs["concert-service"].update(
+            # The browser shell requires a getConcertServicePolicy decision before
+            # it opens the World. The producer is composed only when this mode is
+            # `read`; the default is `off`, so a stack without it answers 503 and
+            # every screen renders the pre-world notice instead of its content.
+            CONCERT_SERVICE_POLICY_MODE="read",
             CONCERT_DISCOVERY_PROJECTION_MODE="live",
             CONCERT_DISCOVERY_SOURCE_GRPC_ENDPOINT=urls["profile"],
             CONCERT_DISCOVERY_PROJECTION_INTERVAL_MS="1000",

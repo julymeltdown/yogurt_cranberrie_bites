@@ -1,6 +1,6 @@
 {
   "kind": "wp10-visual-captures",
-  "revision": "db59db1e18be1eeb2f7bd0fb4c20a8a16633063a",
+  "revision": "159d29e01326c28f0ffbffdc60ce1ca172fb0174",
   "widths": [
     360,
     390,
@@ -126,7 +126,7 @@
     {
       "screen": "visitor-profile",
       "label": "Visitor profile",
-      "route": "/discover/people/36bf373e-aaf3-4a92-b464-788ed51a6119",
+      "route": "/discover/people/88dab4f7-c6c5-4a95-a833-c5823a6636b0",
       "role": "author",
       "width": 360,
       "file": "visitor-profile-360.png",
@@ -164,7 +164,7 @@
     {
       "screen": "visitor-profile",
       "label": "Visitor profile",
-      "route": "/discover/people/36bf373e-aaf3-4a92-b464-788ed51a6119",
+      "route": "/discover/people/88dab4f7-c6c5-4a95-a833-c5823a6636b0",
       "role": "author",
       "width": 390,
       "file": "visitor-profile-390.png",
@@ -202,7 +202,7 @@
     {
       "screen": "visitor-profile",
       "label": "Visitor profile",
-      "route": "/discover/people/36bf373e-aaf3-4a92-b464-788ed51a6119",
+      "route": "/discover/people/88dab4f7-c6c5-4a95-a833-c5823a6636b0",
       "role": "author",
       "width": 430,
       "file": "visitor-profile-430.png",
@@ -582,7 +582,7 @@
     {
       "screen": "intro-detail",
       "label": "Intro detail",
-      "route": "/discover/intro/d78dda90-8b4b-4021-a16f-9def9ad808d1",
+      "route": "/discover/intro/4460c5ac-b793-4710-9825-108bd58037a1",
       "role": "viewer",
       "width": 360,
       "file": "intro-detail-360.png",
@@ -620,7 +620,7 @@
     {
       "screen": "intro-detail",
       "label": "Intro detail",
-      "route": "/discover/intro/d78dda90-8b4b-4021-a16f-9def9ad808d1",
+      "route": "/discover/intro/4460c5ac-b793-4710-9825-108bd58037a1",
       "role": "viewer",
       "width": 390,
       "file": "intro-detail-390.png",
@@ -658,7 +658,7 @@
     {
       "screen": "intro-detail",
       "label": "Intro detail",
-      "route": "/discover/intro/d78dda90-8b4b-4021-a16f-9def9ad808d1",
+      "route": "/discover/intro/4460c5ac-b793-4710-9825-108bd58037a1",
       "role": "viewer",
       "width": 430,
       "file": "intro-detail-430.png",

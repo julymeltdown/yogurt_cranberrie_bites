@@ -121,6 +121,45 @@ class CaptureGate(gate.Gate):
         self.tokens = {}
         self.accounts = {}
 
+    def seed_participants(self):
+        """One concert participant per account, so the shell can open the World.
+
+        This is the composition the browser needs and the HTTP gate does not: the
+        shell reads the participant before it renders any route. The row is the
+        product's own store, keyed by (event_id, user_id).
+        """
+        event = getattr(self, "event_id", "")
+        if not event:
+            raise gate.GateFailure("the event id was not captured; participants cannot be seeded")
+        statements = []
+        for role in gate.ROLES:
+            user = self.users[role]
+            statements.append(
+                "INSERT INTO concert_participants(event_id,user_id,theme,low_power,"
+                "reduced_motion,sound_enabled) VALUES("
+                + ",".join(map(gate.sql_quote, [event, user, "PARADE"]))
+                + ",false,false,true) ON CONFLICT(event_id,user_id) DO NOTHING")
+        self.sql("mcr_concert", ";".join(statements))
+
+    def seed_admissions(self):
+        """One ACTIVE event admission per account, so the shell can read `me`.
+
+        A participant row alone is not enough: `GET /api/concert/events/{event}/me`
+        reads `concert_event_admissions` and answers 403 without an ACTIVE row.
+        The HTTP gate never calls `me`, so it never needed this; the browser shell
+        calls it before it renders any route.
+        """
+        event = getattr(self, "event_id", "")
+        if not event:
+            raise gate.GateFailure("the event id was not captured; admissions cannot be seeded")
+        statements = []
+        for role in gate.ROLES:
+            statements.append(
+                "INSERT INTO concert_event_admissions(event_id,user_id,state) VALUES("
+                + ",".join(map(gate.sql_quote, [event, self.users[role]]))
+                + ",'ACTIVE') ON CONFLICT(event_id,user_id) DO NOTHING")
+        self.sql("mcr_concert", ";".join(statements))
+
     def environments(self, cluster, ports, keys, credentials, redis_password,
                      mail_token, browser_origin=None):
         envs = super().environments(cluster, ports, keys, credentials, redis_password,
@@ -128,6 +167,9 @@ class CaptureGate(gate.Gate):
         # The page is served from the Vite origin, so a mutation from it carries
         # that Origin. The gateway admits an explicit list, so the frontend origin
         # is appended to the gateway's own origin rather than replacing it.
+        # The event id the stack was seeded with, kept for the policy probe: the
+        # gate builds it locally in this hook and does not store it.
+        self.event_id = envs["concert-service"].get("CONCERT_WORLD_EVENT_ID", "")
         gateway = envs["api-gateway"]["GATEWAY_CORS_ALLOWED_ORIGINS"]
         envs["api-gateway"]["GATEWAY_CORS_ALLOWED_ORIGINS"] = (
             gateway if self.frontend_origin in gateway.split(",")
@@ -205,7 +247,33 @@ class CaptureGate(gate.Gate):
         descriptor = self.stack.descriptor()
         self.api = gate.Api(descriptor["gateway_url"], self.state["origin"], tokens)
         self.tokens = tokens
+        # The browser stops after admission and never issues the pre-world policy
+        # call, so the shell cannot open. Probe the same endpoint over HTTP with
+        # the same session to separate a backend refusal from a client-side
+        # ordering problem: if this answers 200, the endpoint is fine and the
+        # block is in the browser.
+        try:
+            import closure_vertical_stack as _closure
+            event = getattr(self, "event_id", "") or ""
+            status, body, _ = _closure.request(
+                descriptor["gateway_url"] + f"/api/concert/events/{event}/service-policy",
+                "GET", None, token=tokens["author"], origin=self.state["origin"])
+            self.report["policy_probe"] = {
+                "event_id": event,
+                "http": status,
+                "body": body if isinstance(body, dict) else str(body)[:300],
+            }
+        except BaseException as probe_failure:  # noqa: BLE001 - a probe must not kill the run
+            self.report["policy_probe"] = {"error": f"{type(probe_failure).__name__}: {probe_failure}"[:300]}
         self.seed_profiles()
+        # The browser shell is still concert-shaped: it reads the participant
+        # (`GET /api/concert/events/{event}/me`) and the service policy before it
+        # opens the World. The HTTP gate never needs either because profile
+        # operations are event-free, so neither is seeded there. Without a
+        # participant row the shell answers 403 and every screen renders the
+        # pre-world notice instead of its content.
+        self.seed_participants()
+        self.seed_admissions()
         for role in ("viewer", "outsider"):
             try:
                 self.verify_identity(role)
@@ -361,6 +429,9 @@ def main(argv=None) -> int:
         capture_gate = CaptureGate(args, origin)
         capture_gate.prepare()
         descriptor = capture_gate.stack.descriptor()
+        # The gate writes its own diagnostics to its own report; carry them over
+        # rather than letting them vanish into an object nobody reads.
+        report["policy_probe"] = capture_gate.report.get("policy_probe")
         report["stack"] = {
             "gateway_url": descriptor["gateway_url"],
             "owned_root": descriptor["root"],

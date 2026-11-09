@@ -241,9 +241,19 @@ async function signIn(page, role) {
   await email.fill(credentials.email)
   await page.locator('#sign-in-password').fill(credentials.password)
   const calls = []
-  page.on('response', response => {
+  page.on('response', async response => {
     const url = new URL(response.url())
-    if (url.pathname.startsWith('/api/auth/')) calls.push(`${response.status()} ${url.pathname}`)
+    if (!url.pathname.startsWith('/api/auth/')) return
+    let detail = ''
+    try {
+      // The admission decision decides whether the shell can open at all, so its
+      // body is the fact worth recording when the World does not open.
+      if (url.pathname.endsWith('/enrollment/admission')) {
+        const body = await response.json()
+        detail = ` decision=${body?.decision ?? '?'}`
+      }
+    } catch { detail = ' (unreadable body)' }
+    calls.push(`${response.status()} ${url.pathname}${detail}`)
   })
   await page.getByRole('button', { name: /sign in with email/i }).click()
   try {
@@ -295,6 +305,15 @@ try {
       await page.setViewportSize({ width, height })
       const consoleErrors = []
       page.on('pageerror', error => consoleErrors.push(String(error.message).slice(0, 300)))
+      // A request that never leaves the page is invisible in a response log.
+      // Record failed and finished requests so a blocked or aborted call is
+      // distinguishable from one that was never made.
+      page.on('requestfailed', request => {
+        const url = new URL(request.url())
+        if (url.pathname.startsWith('/api/')) {
+          consoleErrors.push(`requestfailed ${url.pathname}: ${request.failure()?.errorText ?? '?'}`)
+        }
+      })
       page.on('console', message => {
         if (message.type() === 'error') consoleErrors.push('console: ' + message.text().slice(0, 200))
       })
