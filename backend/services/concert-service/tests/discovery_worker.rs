@@ -632,3 +632,130 @@ async fn discovery_answers_after_the_worker_runs() -> anyhow::Result<()> {
     assert!(fixture.discovered(viewer, Category::Music).await?.contains(&subject));
     Ok(())
 }
+
+// ---------------------------------------------------------------------------
+// A transport failure must be visible
+// ---------------------------------------------------------------------------
+
+/// The defect this test exists to prevent.
+///
+/// The worker used to build a plaintext, anonymous channel to an HTTPS listener.
+/// Every round was refused before it reached the source, and because a round
+/// failure is retried by design, nothing surfaced: `discovery_profiles` stayed
+/// empty forever and `last_failure` stayed null, so a failing round was
+/// indistinguishable from an idle one.
+///
+/// This test points a real `GrpcDiscoverySource` at a port nothing listens on.
+/// That is the same class of failure as the wrong transport — the call cannot
+/// reach the source — and it must:
+///
+/// * produce a `ProfileSource` round failure,
+/// * land in `discovery_projection_state.last_failure`,
+/// * leave the projection untouched.
+#[tokio::test]
+async fn a_transport_failure_lands_in_last_failure() -> anyhow::Result<()> {
+    let fixture = Fixture::new().await?;
+    let subject = fixture.profile("transport-failure").await?;
+    // A clean pass first, so there is something to preserve.
+    let healthy = Arc::new(ProjectionWriter::new(
+        fixture.concert.clone(),
+        Arc::new(SwitchableSource::new(fixture.profile.clone())),
+    ));
+    healthy.run_pass().await?;
+    assert!(fixture.projected(subject).await?);
+    assert_eq!(fixture.last_failure().await?, None);
+
+    // A real gRPC client aimed at a closed port. `connect_lazy` succeeds — that
+    // is the trap — and every call fails, exactly as the anonymous plaintext
+    // channel did against the HTTPS listener.
+    let listener = std::net::TcpListener::bind("127.0.0.1:0")?;
+    let dead = listener.local_addr()?;
+    drop(listener);
+    let source = Arc::new(
+        concert_service::discovery::GrpcDiscoverySource::new(
+            concert_service::discovery::projection::proto::discovery_source_service_client::DiscoverySourceServiceClient::new(
+                tonic::transport::Channel::from_shared(format!("http://{dead}"))?
+                    .connect_lazy(),
+            ),
+        ),
+    );
+    let writer = Arc::new(ProjectionWriter::new(fixture.concert.clone(), source));
+    let worker = ProjectionWorker::new(
+        writer,
+        None,
+        Duration::from_millis(10),
+        Duration::from_secs(10),
+    )?;
+    let report = worker.run_round().await;
+    assert_eq!(
+        report.failures,
+        vec![RoundFailure::ProfileSource],
+        "an unreachable source must be a ProfileSource failure"
+    );
+    // The failure is visible to an operator, not swallowed.
+    assert_eq!(
+        fixture.last_failure().await?,
+        Some("profile_source".to_owned()),
+        "a transport failure must land in discovery_projection_state.last_failure"
+    );
+    // And the projection still holds what it held.
+    assert!(
+        fixture.projected(subject).await?,
+        "a transport failure must never clear the projection"
+    );
+    Ok(())
+}
+
+/// A worker whose source is unreachable keeps running: the round fails, the
+/// worker survives, and a later healthy round converges.
+#[tokio::test]
+async fn the_worker_recovers_after_a_transport_failure() -> anyhow::Result<()> {
+    let fixture = Fixture::new().await?;
+    let subject = fixture.profile("transport-recovers").await?;
+    // The switchable source stands in for the transport: it fails, then works.
+    let source = Arc::new(SwitchableSource::new(fixture.profile.clone()));
+    source.fail(true);
+    let writer = Arc::new(ProjectionWriter::new(
+        fixture.concert.clone(),
+        source.clone(),
+    ));
+    let worker = ProjectionWorker::new(
+        writer,
+        None,
+        Duration::from_millis(10),
+        Duration::from_secs(5),
+    )?;
+    let (stop, stopped) = tokio::sync::oneshot::channel::<()>();
+    let handle = tokio::spawn(worker.run_until(async move {
+        let _ = stopped.await;
+    }));
+    // Let the failing rounds run and record the failure.
+    let mut recorded = false;
+    for _ in 0..200 {
+        if fixture.last_failure().await?.is_some() {
+            recorded = true;
+            break;
+        }
+        tokio::time::sleep(Duration::from_millis(5)).await;
+    }
+    assert!(recorded, "the failure must be recorded while the worker runs");
+    // The transport recovers.
+    source.fail(false);
+    let mut projected = false;
+    for _ in 0..400 {
+        if fixture.projected(subject).await? {
+            projected = true;
+            break;
+        }
+        tokio::time::sleep(Duration::from_millis(5)).await;
+    }
+    let _ = stop.send(());
+    handle.await.expect("the worker must not panic")?;
+    assert!(projected, "a recovered source must populate the projection");
+    assert_eq!(
+        fixture.last_failure().await?,
+        None,
+        "a recovered round must clear the failure marker"
+    );
+    Ok(())
+}

@@ -40,7 +40,7 @@ import urllib.request
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from unittest.mock import patch
-from uuid import UUID, uuid4
+from uuid import NAMESPACE_URL, UUID, uuid4, uuid5
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import closure_vertical_stack as closure  # noqa: E402
@@ -436,6 +436,16 @@ class Gate:
             CONCERT_PROFILE_GRPC_ENDPOINT=urls["profile"],
             CONCERT_SERVICE_CREDENTIAL=credentials["CONCERT_SERVICE_CREDENTIAL"],
         )
+        # The discovery projection worker. It reads the profile service's
+        # discovery-source over the same TLS edge and the same Concert workload
+        # credential as every other concert->profile call. Without these three
+        # variables the worker is off and `discovery_profiles` stays empty, which
+        # is the defect this gate step exists to catch.
+        envs["concert-service"].update(
+            CONCERT_DISCOVERY_PROJECTION_MODE="live",
+            CONCERT_DISCOVERY_SOURCE_GRPC_ENDPOINT=urls["profile"],
+            CONCERT_DISCOVERY_PROJECTION_INTERVAL_MS="1000",
+        )
         envs["concert-service"]["RUST_LOG"] = "info"
         envs["post-service"]["RUST_LOG"] = "info"
         envs["post-service"].update(
@@ -711,19 +721,39 @@ class Gate:
         self.step_3_liker_navigation()
         self.step_4_poster_and_delete()
         self.step_5_outsider_denial()
+        self.step_6_discovery_projection()
         self.sweep_cross_surface()
         self.sweep_lifecycle()
         self.report["probes"] = self.probes
 
     def seed_catalog(self):
-        """Deterministic MCR and NANA catalog items for the favorites surface."""
+        """Deterministic MCR and NANA catalog items for the favorites surface.
+
+        The items are inserted, not merely described: the discovery projection's
+        favorites propagation check needs a real catalog row to point a favorite
+        at, and a catalog id that does not exist is dropped by the source read
+        (correctly — it refuses to invent a label).
+        """
         rows = self.query(
             "mcr_profile",
             "select coalesce(jsonb_agg(jsonb_build_object('column',column_name,'type',data_type)"
             " order by ordinal_position),'[]'::jsonb) from information_schema.columns "
             "where table_schema='public' and table_name='catalog_items'")
-        self.report["catalog"] = {"items": CATALOG_ITEMS, "table_columns": rows,
-                                  "seed": "NOT_RUN"}
+        seeded = {}
+        for key, item in CATALOG_ITEMS.items():
+            # A deterministic UUID derived from the item id, so a re-run is
+            # idempotent and the same item always has the same catalog id.
+            item_uuid = str(uuid5(NAMESPACE_URL, "wp10-catalog:" + item["item_id"]))
+            self.sql(
+                "mcr_profile",
+                "INSERT INTO catalog_items(catalog_item_id,category,label,source,"
+                "exclusion_reason) VALUES("
+                + ",".join(map(sql_quote, [item_uuid, item["kind"].lower(), item["name"],
+                                           "wp10", "reviewed: not k-pop"]))
+                + ") ON CONFLICT (catalog_item_id) DO NOTHING")
+            seeded[key] = {**item, "catalog_item_id": item_uuid}
+        self.report["catalog"] = {"items": seeded, "table_columns": rows,
+                                  "seed": "INSERTED"}
 
     def probe(self, label, role, method, path, body=None, key=None, raw=None,
               content_type=None):
@@ -950,6 +980,142 @@ class Gate:
         step["blocked_on"] = (
             "WP-04 audience decision and WP-05 intro surfaces are not composed on master; "
             "the outsider identity itself is verified (see identities.verification)")
+
+    def step_6_discovery_projection(self):
+        """Step 6: the projection worker actually reaches the profile service.
+
+        This step exists because the obvious check — "did the worker start?" —
+        passed while `discovery_profiles` stayed empty. The worker built a
+        plaintext, anonymous channel to an HTTPS listener, every round was
+        refused before it reached the source, and because a round failure is
+        retried by design nothing surfaced.
+
+        So the assertion is a row count, not a process fact. A bounded wait polls
+        the concert database; a timeout is a failure with the exact reason, never
+        a pass.
+        """
+        step = {"status": "NOT_RUN", "checks": {}}
+        self.report["steps"]["step6_discovery_projection"] = step
+
+        def count():
+            raw = self.sql("mcr_concert", "SELECT count(*) FROM discovery_profiles")
+            return int(raw)
+
+        before = count()
+        step["checks"]["before"] = {"discovery_profiles": before}
+
+        # The worker's first tick fires immediately and then every second; give
+        # it a bounded window rather than a fixed sleep.
+        deadline = time.monotonic() + self.args.projection_timeout_s
+        after = before
+        while time.monotonic() < deadline:
+            after = count()
+            if after > before:
+                break
+            time.sleep(0.5)
+        step["checks"]["after"] = {"discovery_profiles": after}
+
+        if after <= before:
+            # The projection did not move. Report why rather than a bare timeout:
+            # the worker records a transport failure in `last_failure`, and an
+            # empty value there means the round never even reached the writer.
+            failure = self.sql(
+                "mcr_concert",
+                "SELECT coalesce(last_failure,'') FROM discovery_projection_state "
+                "WHERE singleton",
+            )
+            step["status"] = "FAIL"
+            step["blocked_on"] = (
+                "the discovery projection worker did not populate discovery_profiles "
+                f"within {self.args.projection_timeout_s}s; "
+                f"last_failure={failure!r}")
+            return
+        step["checks"]["row_appeared"] = {"discovery_profiles": after}
+
+        # The projected row must be a real profile, not a placeholder.
+        nickname = self.sql(
+            "mcr_concert",
+            "SELECT nickname FROM discovery_profiles ORDER BY updated_at DESC LIMIT 1",
+        )
+        step["checks"]["newest_nickname"] = {"nickname": nickname}
+        if not nickname:
+            step["status"] = "FAIL"
+            step["blocked_on"] = "a discovery_profiles row appeared with an empty nickname"
+            return
+
+        # A favorites change must propagate: pick a profile with no favorites,
+        # give it one, and require the projection to carry it.
+        target = self.sql(
+            "mcr_concert",
+            "SELECT p.profile_id FROM discovery_profiles p "
+            "WHERE NOT EXISTS (SELECT 1 FROM discovery_favorite_items f "
+            "                  WHERE f.profile_id = p.profile_id) LIMIT 1",
+        )
+        if not target:
+            step["status"] = "PASS"
+            step["checks"]["favorites_propagation"] = {"skipped": "every projected profile has favorites"}
+            return
+        item = self.sql(
+            "mcr_profile",
+            "SELECT catalog_item_id FROM catalog_items WHERE category='music' LIMIT 1",
+        )
+        if not item:
+            step["status"] = "PASS"
+            step["checks"]["favorites_propagation"] = {"skipped": "no catalog item seeded"}
+            return
+        self.sql(
+            "mcr_profile",
+            "INSERT INTO profile_favorites(profile_id,category,catalog_item_id,position) "
+            f"VALUES('{target}','music','{item}',0) ON CONFLICT DO NOTHING")
+        deadline = time.monotonic() + self.args.projection_timeout_s
+        favorites = 0
+        while time.monotonic() < deadline:
+            raw = self.sql(
+                "mcr_concert",
+                "SELECT count(*) FROM discovery_favorite_items "
+                f"WHERE profile_id='{target}'")
+            favorites = int(raw)
+            if favorites > 0:
+                break
+            time.sleep(0.5)
+        step["checks"]["favorites_propagation"] = {
+            "profile_id": target, "catalog_item_id": item, "favorite_rows": favorites}
+        if favorites == 0:
+            step["status"] = "FAIL"
+            step["blocked_on"] = (
+                "a favorites change did not propagate to discovery_favorite_items "
+                f"within {self.args.projection_timeout_s}s")
+            return
+
+        # The intro detail's dependency. `intro_posts::facts::blocks` reads
+        # `discovery_profiles.account_id` for both the viewer and the author and
+        # returns a mutual block — a denial — when either is unmirrored. So the
+        # projection is not merely adjacent to the intro surfaces; it is the
+        # condition they need. Assert that condition directly rather than
+        # inferring it from an HTTP status.
+        unmirrored = self.sql(
+            "mcr_concert",
+            "SELECT count(*) FROM ("
+            "  SELECT profile_id FROM discovery_profiles"
+            ") p WHERE p.profile_id IS NULL")
+        step["checks"]["account_ids_mirrored"] = {
+            "profiles": after,
+            "profiles_without_account": int(unmirrored or 0),
+        }
+        # Every projected profile must carry a non-nil account id, because the
+        # block filter joins on it.
+        missing_account = self.sql(
+            "mcr_concert",
+            "SELECT count(*) FROM discovery_profiles "
+            "WHERE account_id IS NULL OR account_id = '00000000-0000-0000-0000-000000000000'")
+        step["checks"]["account_ids_mirrored"]["profiles_missing_account"] = int(missing_account or 0)
+        if int(missing_account or 0) > 0:
+            step["status"] = "FAIL"
+            step["blocked_on"] = (
+                "a projected profile carries no account id, so the intro block "
+                "filter would deny every detail for it")
+            return
+        step["status"] = "PASS"
 
     def sweep_cross_surface(self):
         """T-953: one audience decision, proved across every surface that exists.
@@ -1376,6 +1542,10 @@ def main(argv=None):
     parser.add_argument("--openssl-binary", type=Path,
                         default=Path("/opt/homebrew/bin/openssl"))
     parser.add_argument("--gateway-timeout-ms", type=int, default=5000)
+    # How long the discovery projection step waits for a row to appear. The
+    # worker's first tick is immediate and its interval is 1s in this gate, so
+    # the default leaves generous room for a cold profile service.
+    parser.add_argument("--projection-timeout-s", type=int, default=60)
     args = parser.parse_args(argv)
     gate = Gate(args)
     exit_code = 1

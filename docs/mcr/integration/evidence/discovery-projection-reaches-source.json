@@ -1,0 +1,114 @@
+{
+  "verification": "DISCOVERY-PROJECTION-REACHES-SOURCE",
+  "title": "The projection worker reaches the profile service over the real TLS edge",
+  "status": "PASS",
+  "commit": "10f24a34a",
+  "branch": "codex/yc-discovery-proj",
+  "base_commit": "70f498442",
+  "recorded_at": "2026-11-09T10:30:36Z",
+  "defect": "The worker built a plaintext, anonymous channel (Channel::from_shared(..).connect_lazy()) to an HTTPS listener whose caller registry admits only the Concert workload. Every round failed before reaching the source, and because a round failure is retried by design nothing surfaced: discovery_profiles stayed empty and last_failure stayed null.",
+  "fix": [
+    "GrpcDiscoverySource::connect uses platform::grpc_tls::lazy_channel_for_edge_with_optional_tls addressed to the Profile workload, plus ServiceIdentityClientInterceptor presenting the Concert workload credential - the same shape as intro_posts::claims_adapter::ProfileClaimsAdapter::connect.",
+    "DiscoveryProjectionSettings now carries the credential (CONCERT_SERVICE_CREDENTIAL) and refuses to start live without it, so an anonymous worker cannot be configured.",
+    "main.rs captures the TLS material before runtime is moved into the gRPC closure and passes it to connect."
+  ],
+  "commands": [
+    {
+      "command": "cd backend && cargo +1.88.0 check --locked --workspace",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 backend/scripts/mcr/discovery_projection_cluster.py --test discovery_projection",
+      "exit_code": 0,
+      "note": "19 passed \u2014 unchanged"
+    },
+    {
+      "command": "python3 backend/scripts/mcr/discovery_projection_cluster.py --test discovery_block_consumer",
+      "exit_code": 0,
+      "note": "11 passed \u2014 unchanged"
+    },
+    {
+      "command": "python3 backend/scripts/mcr/discovery_projection_cluster.py --test discovery_worker",
+      "exit_code": 0,
+      "note": "14 passed \u2014 12 unchanged + 2 new transport-failure cases"
+    },
+    {
+      "command": "python3 backend/scripts/mcr/discovery_projection_cluster.py --test discovery_source_live",
+      "exit_code": 0,
+      "note": "5 passed \u2014 unchanged"
+    },
+    {
+      "command": "python3 backend/scripts/mcr/wp03_discovery_tests.py --concert-test discovery",
+      "exit_code": 0,
+      "note": "17 passed \u2014 unchanged"
+    },
+    {
+      "command": "python3 backend/scripts/mcr/wp02_migration_ledger.py --report /tmp/proj3-ledger.json",
+      "exit_code": 0,
+      "note": "profile head 18, concert head 92"
+    },
+    {
+      "command": "python3 backend/scripts/mcr/wp10_profile_social.py --bin-dir <abs>/backend/target/debug --report /tmp/wp10-proj/report.json",
+      "exit_code": 1,
+      "note": "the gate as a whole is FAIL because the intro surfaces (steps 2-4) are not composed; step6_discovery_projection is PASS. See row_evidence."
+    }
+  ],
+  "row_evidence": {
+    "query": "SELECT count(*) FROM discovery_profiles",
+    "database": "mcr_concert (the concert service's database, on the gate's private TLS cluster)",
+    "before": 0,
+    "after": 3,
+    "row_appeared": 3,
+    "newest_nickname": "WP-10 outsider",
+    "favorites_query": "SELECT count(*) FROM discovery_favorite_items WHERE profile_id='<target>'",
+    "favorites_result": 1,
+    "account_query": "SELECT count(*) FROM discovery_profiles WHERE account_id IS NULL OR account_id = '00000000-0000-0000-0000-000000000000'",
+    "account_result": 0,
+    "note": "The assertion is a row count, not a process fact. The worker started successfully in the defective build too; that is why a 'did it start' check passed while the projection stayed empty."
+  },
+  "cases": [
+    {
+      "id": "REACH-a",
+      "result": "PASS",
+      "note": "A row appears in discovery_profiles on the real TLS stack: 0 -> 3, within the bounded wait."
+    },
+    {
+      "id": "REACH-b",
+      "result": "PASS",
+      "note": "A favorites change propagates: discovery_favorite_items gains 1 row for the target profile."
+    },
+    {
+      "id": "REACH-c",
+      "result": "PASS",
+      "note": "Every projected profile carries a non-nil account_id, which is the condition intro_posts::facts::blocks needs to stop denying."
+    },
+    {
+      "id": "REACH-d",
+      "result": "PASS",
+      "note": "A transport failure lands in discovery_projection_state.last_failure. discovery_worker.rs::a_transport_failure_lands_in_last_failure points a real GrpcDiscoverySource at a closed port (connect_lazy succeeds, calls fail - the same trap) and requires last_failure = 'profile_source'."
+    },
+    {
+      "id": "REACH-e",
+      "result": "PASS",
+      "note": "The worker recovers after a transport failure. ::the_worker_recovers_after_a_transport_failure requires the marker to clear and the projection to populate."
+    },
+    {
+      "id": "REACH-f",
+      "result": "PASS",
+      "note": "No cross-database join: the worker reads through gRPC; the projection is written locally."
+    },
+    {
+      "id": "REACH-g",
+      "result": "PASS",
+      "note": "A source failure never clears the projection; the worker does not exit on a round failure; shutdown is clean. All covered by the unchanged worker tests."
+    }
+  ],
+  "artifacts": [
+    "docs/mcr/integration/evidence/discovery-projection-reaches-source.md",
+    "docs/mcr/integration/evidence/wp10-step6-projection.json"
+  ],
+  "limitations": [
+    "The gate as a whole is FAIL: steps 2-4 (intro surfaces) still fail and step 5 is BLOCKED. Those are WP-05 composition gaps, not this defect. Step 6 proves the projection now reaches the source and mirrors real rows with account ids, which is the precondition those steps were missing.",
+    "The favorites propagation check seeds a catalog item first; before this change the gate's seed_catalog only inspected the table and never inserted, so the check was skipped rather than failing."
+  ]
+}

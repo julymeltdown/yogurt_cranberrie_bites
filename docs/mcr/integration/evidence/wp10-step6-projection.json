@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "checks": {
+    "before": {
+      "discovery_profiles": 0
+    },
+    "after": {
+      "discovery_profiles": 3
+    },
+    "row_appeared": {
+      "discovery_profiles": 3
+    },
+    "newest_nickname": {
+      "nickname": "WP-10 outsider"
+    },
+    "favorites_propagation": {
+      "profile_id": "818ea818-d45c-46da-8b98-84924639359d",
+      "catalog_item_id": "d4f09a27-067e-5a87-97d1-3ef3ebc2cc2f",
+      "favorite_rows": 1
+    },
+    "account_ids_mirrored": {
+      "profiles": 3,
+      "profiles_without_account": 0,
+      "profiles_missing_account": 0
+    }
+  }
+}
