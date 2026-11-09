@@ -221,6 +221,94 @@ pub const ROUTES: &[Route] = &[
         body_limit: READ,
         bytes: false,
     },
+    // ── WP-05 intro posts ──────────────────────────────────────────────────
+    //
+    // The intro tables (`intro_posts`, `intro_attachments`, `intro_likes`,
+    // `intro_comments`) live in `mcr_concert`, so these route to the concert
+    // profile transport like the profile-post operations above.
+    //
+    // `listIntroPosts` and `getIntroPost` are deliberately NOT mounted. They need
+    // a visibility-filtered page/detail query that does not exist yet (WP-04 owns
+    // the predicate, WP-05 the query), and a mounted route that always fails
+    // would give the frontend a discovery feed that 403s on every load. The
+    // coverage register records them as NOT_IMPLEMENTED with that owner.
+    Route {
+        method: "GET",
+        path: "/api/me/intro-posts",
+        operation: "listOwnIntroPosts",
+        body_limit: READ,
+        bytes: false,
+    },
+    Route {
+        method: "GET",
+        path: "/api/me/intro-posts/:intro_id",
+        operation: "getOwnIntroPost",
+        body_limit: READ,
+        bytes: false,
+    },
+    Route {
+        method: "PUT",
+        path: "/api/me/intro-posts/:intro_id",
+        operation: "saveIntroPostDraft",
+        body_limit: JSON,
+        bytes: false,
+    },
+    Route {
+        method: "POST",
+        path: "/api/me/intro-posts/:intro_id/publish",
+        operation: "publishIntroPost",
+        body_limit: JSON,
+        bytes: false,
+    },
+    Route {
+        method: "DELETE",
+        path: "/api/me/intro-posts/:intro_id",
+        operation: "deleteIntroPost",
+        body_limit: READ,
+        bytes: false,
+    },
+    Route {
+        method: "PUT",
+        path: "/api/intro-posts/:intro_id/like",
+        operation: "setIntroPostLike",
+        body_limit: READ,
+        bytes: false,
+    },
+    Route {
+        method: "DELETE",
+        path: "/api/intro-posts/:intro_id/like",
+        operation: "clearIntroPostLike",
+        body_limit: READ,
+        bytes: false,
+    },
+    Route {
+        method: "GET",
+        path: "/api/intro-posts/:intro_id/likes",
+        operation: "listIntroPostLikers",
+        body_limit: READ,
+        bytes: false,
+    },
+    Route {
+        method: "GET",
+        path: "/api/intro-posts/:intro_id/comments",
+        operation: "listIntroPostComments",
+        body_limit: READ,
+        bytes: false,
+    },
+    Route {
+        method: "POST",
+        path: "/api/intro-posts/:intro_id/comments",
+        operation: "createIntroPostComment",
+        body_limit: JSON,
+        bytes: false,
+    },
+    Route {
+        method: "DELETE",
+        path: "/api/intro-posts/:intro_id/comments/:comment_id",
+        operation: "deleteIntroPostComment",
+        body_limit: READ,
+        bytes: false,
+    },
 ];
 
 pub fn router(state: Arc<AppState>) -> Router {

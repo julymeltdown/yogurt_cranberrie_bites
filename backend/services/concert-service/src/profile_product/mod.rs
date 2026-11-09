@@ -46,6 +46,7 @@
 //!   actual HTTP body terminal, never by returning from the producer.
 pub mod delivery;
 pub mod guard;
+pub mod intro;
 pub mod ledger;
 pub mod retained;
 pub mod scoped;
@@ -57,6 +58,7 @@ pub mod proto {
 }
 
 pub use guard::{ProfileOwnerFence, ProfileOwnerScope, ProfileScopeRegistry};
+pub use intro::{IntroProducer, NOT_SERVED as INTRO_NOT_SERVED, SERVED as INTRO_SERVED};
 pub use ledger::ProfileScopeLedger;
 pub use scoped::{ProfileRepresentation, ScopedProfileOwner, ScopedProfileProducer};
 pub use targets::{parse, ProfileOperation, ProfileProductProducer};

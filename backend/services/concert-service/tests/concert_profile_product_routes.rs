@@ -202,6 +202,85 @@ fn a_non_canonical_uuid_is_refused() {
     }
 }
 
+/// The eleven WP-05 intro operations the transport serves.
+const INTRO_SERVED: &[(&str, &str, &str)] = &[
+    ("getOwnIntroPost", "GET", "/api/me/intro-posts/{introId}"),
+    ("listOwnIntroPosts", "GET", "/api/me/intro-posts"),
+    ("saveIntroPostDraft", "PUT", "/api/me/intro-posts/{introId}"),
+    ("publishIntroPost", "POST", "/api/me/intro-posts/{introId}/publish"),
+    ("deleteIntroPost", "DELETE", "/api/me/intro-posts/{introId}"),
+    ("setIntroPostLike", "PUT", "/api/intro-posts/{introId}/like"),
+    ("clearIntroPostLike", "DELETE", "/api/intro-posts/{introId}/like"),
+    ("listIntroPostLikers", "GET", "/api/intro-posts/{introId}/likes"),
+    ("listIntroPostComments", "GET", "/api/intro-posts/{introId}/comments"),
+    ("createIntroPostComment", "POST", "/api/intro-posts/{introId}/comments"),
+    ("deleteIntroPostComment", "DELETE", "/api/intro-posts/{introId}/comments/{commentId}"),
+];
+
+fn intro_concrete(path: &str) -> String {
+    path.replace("{introId}", "22222222-2222-4222-8222-222222222222")
+        .replace("{commentId}", "55555555-5555-4555-8555-555555555555")
+}
+
+#[test]
+fn the_transport_serves_the_eleven_wp05_intro_operations() {
+    assert_eq!(INTRO_SERVED.len(), 11);
+    for (operation, method, path) in INTRO_SERVED {
+        let mut target = intro_concrete(path);
+        // A bodyless DELETE carries its revision in the query.
+        if *operation == "deleteIntroPost" {
+            target.push_str("?expected_revision=1");
+        }
+        let parsed = parse(method, &target)
+            .unwrap_or_else(|status| panic!("{operation} must parse: {status}"));
+        assert_eq!(
+            parsed.contract_id(),
+            *operation,
+            "{method} {target} parsed as {}",
+            parsed.contract_id()
+        );
+    }
+}
+
+#[test]
+fn the_two_unserved_intro_reads_are_refused_by_this_transport() {
+    // `listIntroPosts` and `getIntroPost` need a visibility-filtered query that
+    // does not exist. The transport refuses them rather than dispatching to a
+    // producer that would have to invent one.
+    for (method, target) in [
+        ("GET", "/api/discover/intro-posts"),
+        ("GET", "/api/intro-posts/22222222-2222-4222-8222-222222222222"),
+    ] {
+        let status = parse(method, target)
+            .expect_err("an unserved intro read must be refused");
+        assert_eq!(
+            status.code(),
+            tonic::Code::PermissionDenied,
+            "{method} {target} must be refused, not served by a fabricated query"
+        );
+    }
+    // And the served set is exactly the eleven, so a later addition cannot slip
+    // in without updating this list.
+    assert_eq!(concert_service::profile_product::INTRO_SERVED.len(), 11);
+    assert_eq!(concert_service::profile_product::INTRO_NOT_SERVED.len(), 2);
+    assert!(!concert_service::profile_product::intro::is_served("listIntroPosts"));
+    assert!(!concert_service::profile_product::intro::is_served("getIntroPost"));
+    assert!(concert_service::profile_product::intro::is_served("getOwnIntroPost"));
+}
+
+#[test]
+fn an_intro_operation_never_carries_an_event_path() {
+    let event = "99999999-9999-4999-8999-999999999999";
+    for target in [
+        format!("/api/me/intro-posts/events/{event}"),
+        format!("/api/intro-posts/events/{event}/likes"),
+        "/api/discover/intro-posts/events/1".to_owned(),
+    ] {
+        let status = parse("GET", &target).expect_err("an event path must be refused");
+        assert_eq!(status.code(), tonic::Code::InvalidArgument, "{target}");
+    }
+}
+
 #[test]
 fn the_operation_variants_are_distinct_and_named_by_the_contract() {
     use std::collections::BTreeSet;

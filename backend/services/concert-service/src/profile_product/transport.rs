@@ -394,7 +394,8 @@ pub fn runtime(
         pool.clone(),
         callers,
         verifier,
-        targets::ProfileProductProducer::new(pool),
+        targets::ProfileProductProducer::new(pool.clone())
+            .with_intro(std::sync::Arc::new(super::intro::IntroProducer::new(pool))),
     )
 }
 

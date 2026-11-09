@@ -87,12 +87,24 @@ describe('every screen is reachable by URL', () => {
     expect(headings.some(text => text?.includes(heading)), `${path}: ${headings.join(' | ')}`).toBe(true)
   })
 
-  it('renders the intro slot explicitly rather than an empty list', async () => {
+  it('mounts the intro composer, whose operations are all served', async () => {
+    // `/discover/intro` is the composer. Every operation it uses
+    // (`saveIntroPostDraft`, `publishIntroPost`, `deleteIntroPost`,
+    // `getOwnIntroPost`) is served by the concert-hosted profile transport, so
+    // the screen works end to end and is no longer a placeholder.
     setup('/discover/intro')
     await settle()
-    // The panel header and the slot both name the screen; the slot's own heading
-    // is the one inside its section.
-    expect(screen.getAllByRole('heading', { name: 'Mutuals-intro posts' }).length).toBeGreaterThan(0)
+    expect(screen.getAllByRole('heading', { name: 'Your introduction' }).length).toBeGreaterThan(0)
+    expect(screen.queryByText(/not part of this build yet/)).toBeNull()
+  })
+
+  it('keeps the intro detail on the explicit placeholder', async () => {
+    // `getIntroPost` needs a visibility-filtered detail query that does not
+    // exist yet, so the detail route stays an honest placeholder rather than a
+    // screen that would fail on every load.
+    setup('/discover/intro/22222222-2222-4222-8222-222222222222')
+    await settle()
+    expect(screen.getAllByRole('heading', { name: 'Mutuals-intro post' }).length).toBeGreaterThan(0)
     expect(screen.getByText(/not part of this build yet/)).toBeInTheDocument()
   })
 

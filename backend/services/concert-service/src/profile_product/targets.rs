@@ -69,6 +69,15 @@ pub enum ProfileOperation {
     GetOwnProfileAvatar,
     /// `setOwnProfileAvatar` — `profile_avatars`.
     SetOwnProfileAvatar,
+    /// One of WP-05's intro operations this transport serves. The intro
+    /// producer owns the dispatch; this variant is the routing marker so the
+    /// closed table below stays the single statement of what is served.
+    ///
+    /// `listIntroPosts` and `getIntroPost` are deliberately absent: they need a
+    /// visibility-filtered query that WP-04 and WP-05 have not built yet, so
+    /// they are refused by `parse` rather than served by a query this transport
+    /// does not own.
+    Intro(&'static str),
 }
 
 impl ProfileOperation {
@@ -90,6 +99,7 @@ impl ProfileOperation {
             Self::UploadRoomPoster => "uploadRoomPoster",
             Self::GetOwnProfileAvatar => "getOwnProfileAvatar",
             Self::SetOwnProfileAvatar => "setOwnProfileAvatar",
+            Self::Intro(operation) => operation,
         }
     }
 
@@ -107,6 +117,17 @@ impl ProfileOperation {
                 | Self::UploadRoomPoster
                 | Self::SetOwnProfileAvatar
         )
+    }
+
+    /// Whether this operation mutates state, consulting WP-05's own parser for
+    /// the intro operations so the two cannot disagree.
+    pub fn is_mutation(self, method: &str, target: &str) -> bool {
+        match self {
+            Self::Intro(_) => crate::intro_posts::http::parse(method, target)
+                .map(|parsed| parsed.mutation())
+                .unwrap_or(false),
+            other => other.mutation(),
+        }
     }
 }
 
@@ -198,6 +219,20 @@ pub fn parse(method: &str, target: &str) -> Result<ProfileOperation, Status> {
         });
     }
 
+    // WP-05's intro operations. Its own closed parser decides what is an intro
+    // operation; this transport only decides whether it serves it. The two
+    // reads that need a visibility-filtered query are refused here rather than
+    // dispatched to a producer that would have to invent one.
+    if let Ok(parsed) = crate::intro_posts::http::parse(method, target) {
+        let operation = parsed.contract_id();
+        if super::intro::is_served(operation) {
+            return Ok(ProfileOperation::Intro(operation));
+        }
+        return Err(Status::permission_denied(
+            "This intro operation is not served by the profile transport",
+        ));
+    }
+
     // Anything else is not a concert-hosted profile operation. That includes
     // every operation whose tables live in the profile database, so this service
     // can never answer one from the wrong database.
@@ -211,6 +246,7 @@ pub struct ProfileProductProducer {
     rooms: Arc<RoomPersistence>,
     avatars: Option<Arc<ProfileAvatarPersistence>>,
     media: Option<Arc<ProfileMediaStore>>,
+    intro: Option<Arc<super::intro::IntroProducer>>,
 }
 
 impl ProfileProductProducer {
@@ -223,7 +259,23 @@ impl ProfileProductProducer {
             pool,
             avatars: None,
             media: None,
+            intro: None,
         }
+    }
+
+    /// Attach WP-05's intro producer.
+    ///
+    /// The intro stores are built over the same pool this producer already
+    /// holds, so the transport never opens a second connection pool for them.
+    pub fn with_intro(mut self, intro: Arc<super::intro::IntroProducer>) -> Self {
+        self.intro = Some(intro);
+        self
+    }
+
+    fn intro(&self) -> Result<&Arc<super::intro::IntroProducer>, Status> {
+        self.intro
+            .as_ref()
+            .ok_or_else(|| Status::unavailable("Intro posts are unavailable"))
     }
 
     /// Attach the avatar persistence, which is bound to one validated release.
@@ -416,6 +468,12 @@ impl super::scoped::ScopedProfileProducer for ProfileProductProducer {
                 )
                 .await;
                 json(response.status as u32, response.body)
+            }
+            ProfileOperation::Intro(_) => {
+                // WP-05's producer owns the whole intro dispatch. This transport
+                // contributes only the verified context and the closed route
+                // decision above.
+                self.intro()?.dispatch(context, &request).await
             }
         }
     }

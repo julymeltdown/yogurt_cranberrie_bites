@@ -121,23 +121,31 @@ pub const COVERAGE: &[Coverage] = &[
     owed("completeIdentityVerification", "GET", "/api/identity/{provider}/callback", "WP-04b callback transport"),
     served("disconnectIdentityVerification", "DELETE", "/api/me/identity/{provider}", "profile_service::identity"),
     // ── §2.2 intro posts (domain) ──────────────────────────────────────────
-    owed("listIntroPosts", "GET", "/api/discover/intro-posts", "WP-05 intro posts"),
-    owed("getIntroPost", "GET", "/api/intro-posts/{introId}", "WP-05 intro posts"),
-    owed("getOwnIntroPost", "GET", "/api/me/intro-posts/{introId}", "WP-05 intro posts"),
-    owed("listOwnIntroPosts", "GET", "/api/me/intro-posts", "WP-05 intro posts"),
-    owed("saveIntroPostDraft", "PUT", "/api/me/intro-posts/{introId}", "WP-05 intro posts"),
-    owed("publishIntroPost", "POST", "/api/me/intro-posts/{introId}/publish", "WP-05 intro posts"),
-    owed("deleteIntroPost", "DELETE", "/api/me/intro-posts/{introId}", "WP-05 intro posts"),
-    owed("setIntroPostLike", "PUT", "/api/intro-posts/{introId}/like", "WP-05 intro posts"),
-    owed("clearIntroPostLike", "DELETE", "/api/intro-posts/{introId}/like", "WP-05 intro posts"),
-    owed("listIntroPostLikers", "GET", "/api/intro-posts/{introId}/likes", "WP-05 intro posts"),
-    owed("listIntroPostComments", "GET", "/api/intro-posts/{introId}/comments", "WP-05 intro posts"),
+    // The intro tables live in `mcr_concert` (migrations 0082, 0083), so the
+    // operations WP-05's producer serves are answered by the concert-hosted
+    // profile transport. The two discovery reads are not served; see below.
+    // These two need a visibility-filtered query that does not exist yet.
+    // WP-04 owns the predicate (`can_view_intro` and its SQL form); WP-05 owns
+    // the page and detail queries that apply it. Neither has been written, so
+    // the operations are refused rather than served by a query that would have
+    // to duplicate or pre-empt WP-04's decision.
+    owed("listIntroPosts", "GET", "/api/discover/intro-posts", "WP-04 visibility + WP-05 list/detail query"),
+    owed("getIntroPost", "GET", "/api/intro-posts/{introId}", "WP-04 visibility + WP-05 list/detail query"),
+    concert("getOwnIntroPost", "GET", "/api/me/intro-posts/{introId}", "concert_service::profile_product::intro"),
+    concert("listOwnIntroPosts", "GET", "/api/me/intro-posts", "concert_service::profile_product::intro"),
+    concert("saveIntroPostDraft", "PUT", "/api/me/intro-posts/{introId}", "concert_service::profile_product::intro"),
+    concert("publishIntroPost", "POST", "/api/me/intro-posts/{introId}/publish", "concert_service::profile_product::intro"),
+    concert("deleteIntroPost", "DELETE", "/api/me/intro-posts/{introId}", "concert_service::profile_product::intro"),
+    concert("setIntroPostLike", "PUT", "/api/intro-posts/{introId}/like", "concert_service::profile_product::intro"),
+    concert("clearIntroPostLike", "DELETE", "/api/intro-posts/{introId}/like", "concert_service::profile_product::intro"),
+    concert("listIntroPostLikers", "GET", "/api/intro-posts/{introId}/likes", "concert_service::profile_product::intro"),
+    concert("listIntroPostComments", "GET", "/api/intro-posts/{introId}/comments", "concert_service::profile_product::intro"),
     // Added by commit c79ed25c1 after the freeze record was written; the freeze
     // document's own reconciliation section notes they were "subsequently
     // added". They are profile-owned by path and are tracked here so the
     // register stays complete.
-    owed("createIntroPostComment", "POST", "/api/intro-posts/{introId}/comments", "WP-05 intro posts"),
-    owed("deleteIntroPostComment", "DELETE", "/api/intro-posts/{introId}/comments/{commentId}", "WP-05 intro posts"),
+    concert("createIntroPostComment", "POST", "/api/intro-posts/{introId}/comments", "concert_service::profile_product::intro"),
+    concert("deleteIntroPostComment", "DELETE", "/api/intro-posts/{introId}/comments/{commentId}", "concert_service::profile_product::intro"),
     // ── §2.3 profile posts and media (domain) ──────────────────────────────
     // These read `profile_posts`, `profile_post_attachments` and
     // `profile_media`, which live in the CONCERT database. The profile
